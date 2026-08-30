@@ -1,0 +1,124 @@
+---
+title: "Production Verification: from “Verify core transactions, metrics, logs, alerts, and rollback conditions after an order-service release” to a reviewable conclusion"
+description: "Production Verification field guide covering project inputs, evidence, execution boundaries, advanced composition, and team gates."
+date: 2026-09-17T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Production Verification"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+AI testing rarely loses time on one check alone. The slower part is turning requirements, logs, interfaces, and prior defects into a judgment the team can execute and review. A reusable Skill keeps that repeated analysis in one place, so testers spend less time rebuilding the same context and handoffs carry their evidence forward. Production Verification applies that approach to a concrete task: AI testing rarely loses time on one check alone. This guide starts with AI-testing workflow efficiency, then shows when to use the Skill, what to provide, and what it should produce.
+
+## Production Verification Skill: what it is for
+
+Production Verification is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Production Verification prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification/prompts/production-verification.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+
+The entry point calls out these constraints:
+
+- start with read-only checks before low-risk writes
+- use approved accounts and cleanable data
+- stop and escalate on stop conditions
+
+## Begin with project facts
+
+Put the material you have on the table. Gaps may remain; their status needs to stay explicit.
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Goal and scope | Verify core transactions, metrics, logs, alerts, and rollback conditions after an order-service release | Name journeys outside this pass |
+| Version and environment | Requirement version, build, environment, time window | Stay in design or analysis mode |
+| Evidence | Requirements, interfaces, logs, metrics, traces, or defects | Separate facts, assumptions, and open questions |
+| Decision boundary | Risk approver and actions that are not authorized | Name the owner and next step |
+
+Use a request like this:
+
+```text
+Use the production-verification Skill.
+
+Task: Verify core transactions, metrics, logs, alerts, and rollback conditions after an order-service release
+Inputs: [versions, links, log paths, or reports]
+Scope: [included and excluded objects]
+Constraints: [time, data, permissions, compliance]
+
+Audit the inputs first. Order results by risk and evidence strength. Label unsupported claims as assumptions and give a validation method.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Finding or judgment | Describes observed behavior, difference, or risk | Confirmed / Assumption / Open |
+| Basis | Points to a version, log, trace, test, or requirement | source_id or link |
+| Impact | Explains affected users, journeys, or release decision | P0, P1, or accepted residual risk |
+| Next action | Names verification work and an owner | Owner, date, expected evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. Static analysis and runtime proof are different things.
+
+## Run one focused pass
+
+Start with a bounded pass—Verify core transactions, metrics, logs, alerts, and rollback conditions after an order-service release. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
+
+Production verification must be an authorized minimum check with explicit read/write boundaries. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
+
+## Run one focused pass
+
+Start with a bounded pass—Verify core transactions, metrics, logs, alerts, and rollback conditions after an order-service release. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
+
+Production verification must be an authorized minimum check with explicit read/write boundaries. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
+
+## Advanced use: turn one analysis into a maintained mechanism
+
+Production verification must be an authorized minimum check with explicit read/write boundaries.
+
+Keep input versions and source IDs with every result. When requirements, code, environment, or data change, recompute only affected judgments and mark them `changed`, `unchanged`, or `needs-review`. Old conclusions are not new evidence.
+
+### A three-Skill chain
+
+`release-testing-workflow` → `production-verification` → `production-incident-analysis`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to production-verification | Source versions, scope, risk, open items | Staleness and conflicts |
+| production-verification to downstream | Judgments, evidence index, residual risk, tasks | Executability and ownership |
+| Feedback to production-verification | Runs, defects, changed facts | Baseline and regression scope |
+
+Hand over a summary, an evidence index, and locations for the source artifacts. That gives the receiver enough context and keeps the trail recoverable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| production-verification input | Version, environment, sources, and owner | Stop and list gaps |
+| production-verification artifact | Material claims have basis, status, and impact | Return for evidence |
+| production-verification execution | Command, query, or verification path is repeatable | Classify infrastructure or test issue |
+| production-verification decision | Residual risk has an accepter and date | Do not enter the next stage |
+
+## Common traps
+
+1. Listing checks without input conditions, expected results, or evidence.
+2. Marking every finding high priority and removing the team’s ability to choose.
+3. Refusing to produce a bounded first pass, or presenting guesses as facts.
+4. Treating one success or one anomaly as long-term behavior while ignoring repeated trials and version changes.
+
+## Two practical questions
+
+### Can I start with incomplete input?
+
+Yes. Produce a constrained first pass with known facts, assumptions, gaps, and the smallest validation action. Missing environment, data, or permission cannot support an execution claim.
+
+### When is human confirmation required?
+
+The accountable owner must confirm scope trade-offs, risk acceptance, production actions, data permission, and release decisions. The Skill organizes evidence and options; it does not grant authority.
+
+Run Production Verification with one real artifact and keep the input, output, human edits, and verification evidence in the same work chain. That is what makes the next change cheaper to assess.
+
+## References
+- [Production Verification prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification/prompts/production-verification.md)
+- [Awesome QA Skills: Production Verification Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)
+- [Production Verification Skill details](https://inaodeng.com/en/qaskills/production-verification/)

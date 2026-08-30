@@ -1,0 +1,138 @@
+---
+title: "Process Prose Trimming, making Skill documentation reviewable"
+description: "Process Prose Trimming field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+date: 2026-09-23T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Process Prose Trimming"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Process Prose Trimming is easiest to understand with imperfect project material. The working task is simple: Shorten an oversized Skill entry point without losing activation, critical rules, or failure handling.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Process Prose Trimming.
+
+## Read the source Skill first
+
+The main prompt covers Deleted or restated, Preserved contracts and facts, Unchanged scope, Bilingual synchronization, Workflow. Those headings are navigation; the project artifacts still provide the facts.
+
+This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
+
+## Findings need a location
+
+Shorten an oversized Skill entry point without losing activation, critical rules, or failure handling
+
+“This could be better” gives the author nothing to act on.
+
+| Severity | Location | Finding | Fix |
+| --- | --- | --- | --- |
+| P1 | Input contract | Source priority is undefined | Add conflict and degradation rules |
+| P2 | Output contract | Conclusions have no evidence field | Add source, status, and owner |
+
+Every finding needs a location, impact, and practical fix. Otherwise it is review noise.
+
+## Compare one finding before and after revision
+
+For Shorten an oversized Skill entry point without losing activation, critical rules, or failure handling, the first draft often contains a broad quality request.
+
+```text
+Before: Check output quality and make the result accurate and complete.
+
+After: Every conclusion carries source, status, and owner.
+Use assumption when no source exists. Do not use passed without a run record.
+```
+
+The second contract is testable. During a Deleted or restated and Preserved contracts and facts review, also inspect trigger overlap, degraded behavior for missing input, and examples that imply execution without evidence.
+
+| Recheck | Method | Passing signal |
+| --- | --- | --- |
+| Trigger | Run positive and neighboring negative requests | Correct activation boundary |
+| Contract | Try input with missing fields | Missing facts are named |
+| Example | Trace each claim to a source | No invented files or results |
+| Scope | Read the diff | Unrelated rules remain untouched |
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the skill-prose-trim Skill.
+
+Task: Shorten an oversized Skill entry point without losing activation, critical rules, or failure handling
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+Give location, severity, impact, and a proposed edit for every finding. Separate contract gaps, factual defects, and preference; include a recheck method.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Turn representative findings into regression examples. After a Process Prose Trimming edit, run expected-pass, expected-reject, and missing-input checks.
+
+### A three-Skill chain
+
+`skill-prose-review` → `skill-prose-trim` → `skill-change-verification`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to skill-prose-trim | Source versions, scope, risks, open questions | Process Prose Trimming staleness and conflicts |
+| skill-prose-trim to downstream | Primary artifact, evidence index, unfinished work | Process Prose Trimming executability and owners |
+| Feedback to skill-prose-trim | Runs, defects, new risks | Process Prose Trimming baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Process Prose Trimming a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| skill-prose-trim input | Version, environment, owner, accessible sources | Stop Process Prose Trimming and list gaps |
+| skill-prose-trim artifact | Material claims carry basis and status | Return Process Prose Trimming for evidence |
+| skill-prose-trim execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| skill-prose-trim decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Process Prose Trimming adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## Keep the original text and evidence in the review
+
+Quote a location before describing the problem. Separate contract gaps, wording defects, and personal preference. Findings related to Deleted or restated should explain the behavioral drift they can cause. Recheck behavior after the edit.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim -g -a codex -y
+```
+
+Invoke it with “Use the skill-prose-trim Skill,” then attach the real artifacts.
+
+## Two practical questions
+
+### Must every review finding be accepted?
+
+No. Use severity and contract impact. A preference can be declined if the choice is recorded.
+
+### Does shorter prose mean a better Skill?
+
+No. Triggers, inputs, outputs, and risk boundaries still need to survive the edit.
+
+### When is human review mandatory?
+
+Require an accountable person for scope trade-offs, risk acceptance, release decisions, and source conflicts.
+
+### What should be archived?
+
+Keep the input version, Skill output, human edits, and final evidence so the conclusion can be reconstructed.
+
+Run Process Prose Trimming against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+
+## References
+- [Awesome QA Skills project](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [Awesome QA Skills: Process Prose Trimming Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim)
+- [Process Prose Trimming Skill details](https://inaodeng.com/en/qaskills/skill-prose-trim/)

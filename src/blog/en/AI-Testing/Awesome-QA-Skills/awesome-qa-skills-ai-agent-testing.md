@@ -1,0 +1,124 @@
+---
+title: "AI Agent Testing: from “Evaluate a support agent for goal completion, planning, memory, tool use, recovery, and safety boundaries” to a reviewable conclusion"
+description: "AI Agent Testing field guide covering project inputs, evidence, execution boundaries, advanced composition, and team gates."
+date: 2026-09-22T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "AI Agent Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+AI testing rarely loses time on one check alone. The slower part is turning requirements, logs, interfaces, and prior defects into a judgment the team can execute and review. A reusable Skill keeps that repeated analysis in one place, so testers spend less time rebuilding the same context and handoffs carry their evidence forward. AI Agent Testing applies that approach to a concrete task: AI testing rarely loses time on one check alone. This guide starts with AI-testing workflow efficiency, then shows when to use the Skill, what to provide, and what it should produce.
+
+## AI Agent Testing Skill: what it is for
+
+AI Agent Testing is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
+## Start with the source Skill
+
+The complete execution contract lives in [AI Agent Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-agent-testing/prompts/ai-agent-testing.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+
+The entry point calls out these constraints:
+
+- evaluate both final results and execution traces
+- use repeated trials for stochastic behavior
+- never treat one success as reliability evidence
+
+## Begin with project facts
+
+Put the material you have on the table. Gaps may remain; their status needs to stay explicit.
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Goal and scope | Evaluate a support agent for goal completion, planning, memory, tool use, recovery, and safety boundaries | Name journeys outside this pass |
+| Version and environment | Requirement version, build, environment, time window | Stay in design or analysis mode |
+| Evidence | Requirements, interfaces, logs, metrics, traces, or defects | Separate facts, assumptions, and open questions |
+| Decision boundary | Risk approver and actions that are not authorized | Name the owner and next step |
+
+Use a request like this:
+
+```text
+Use the ai-agent-testing Skill.
+
+Task: Evaluate a support agent for goal completion, planning, memory, tool use, recovery, and safety boundaries
+Inputs: [versions, links, log paths, or reports]
+Scope: [included and excluded objects]
+Constraints: [time, data, permissions, compliance]
+
+Audit the inputs first. Order results by risk and evidence strength. Label unsupported claims as assumptions and give a validation method.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Finding or judgment | Describes observed behavior, difference, or risk | Confirmed / Assumption / Open |
+| Basis | Points to a version, log, trace, test, or requirement | source_id or link |
+| Impact | Explains affected users, journeys, or release decision | P0, P1, or accepted residual risk |
+| Next action | Names verification work and an owner | Owner, date, expected evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. Static analysis and runtime proof are different things.
+
+## Run one focused pass
+
+Start with a bounded pass—Evaluate a support agent for goal completion, planning, memory, tool use, recovery, and safety boundaries. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
+
+A single success does not establish reliability; repeated trials need traces and failure classes. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
+
+## Run one focused pass
+
+Start with a bounded pass—Evaluate a support agent for goal completion, planning, memory, tool use, recovery, and safety boundaries. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
+
+A single success does not establish reliability; repeated trials need traces and failure classes. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
+
+## Advanced use: turn one analysis into a maintained mechanism
+
+A single success does not establish reliability; repeated trials need traces and failure classes.
+
+Keep input versions and source IDs with every result. When requirements, code, environment, or data change, recompute only affected judgments and mark them `changed`, `unchanged`, or `needs-review`. Old conclusions are not new evidence.
+
+### A three-Skill chain
+
+`llm-testing` → `ai-agent-testing` → `agent-tool-testing`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to ai-agent-testing | Source versions, scope, risk, open items | Staleness and conflicts |
+| ai-agent-testing to downstream | Judgments, evidence index, residual risk, tasks | Executability and ownership |
+| Feedback to ai-agent-testing | Runs, defects, changed facts | Baseline and regression scope |
+
+Hand over a summary, an evidence index, and locations for the source artifacts. That gives the receiver enough context and keeps the trail recoverable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| ai-agent-testing input | Version, environment, sources, and owner | Stop and list gaps |
+| ai-agent-testing artifact | Material claims have basis, status, and impact | Return for evidence |
+| ai-agent-testing execution | Command, query, or verification path is repeatable | Classify infrastructure or test issue |
+| ai-agent-testing decision | Residual risk has an accepter and date | Do not enter the next stage |
+
+## Common traps
+
+1. Listing checks without input conditions, expected results, or evidence.
+2. Marking every finding high priority and removing the team’s ability to choose.
+3. Refusing to produce a bounded first pass, or presenting guesses as facts.
+4. Treating one success or one anomaly as long-term behavior while ignoring repeated trials and version changes.
+
+## Two practical questions
+
+### Can I start with incomplete input?
+
+Yes. Produce a constrained first pass with known facts, assumptions, gaps, and the smallest validation action. Missing environment, data, or permission cannot support an execution claim.
+
+### When is human confirmation required?
+
+The accountable owner must confirm scope trade-offs, risk acceptance, production actions, data permission, and release decisions. The Skill organizes evidence and options; it does not grant authority.
+
+Run AI Agent Testing with one real artifact and keep the input, output, human edits, and verification evidence in the same work chain. That is what makes the next change cheaper to assess.
+
+## References
+- [AI Agent Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-agent-testing/prompts/ai-agent-testing.md)
+- [Awesome QA Skills: AI Agent Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-agent-testing)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)
+- [AI Agent Testing Skill details](https://inaodeng.com/en/qaskills/ai-agent-testing/)

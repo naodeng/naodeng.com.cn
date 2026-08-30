@@ -1,0 +1,135 @@
+---
+title: "Test Strategy Plus, keeping traceability across multiple inputs"
+description: "Test Strategy Plus field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+date: 2026-09-01T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Test Strategy Plus"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Build a traceable strategy from requirements, architecture, schedule, and historical defects. The task sounds familiar, yet evidence and boundaries are easy to lose. Test Strategy Plus starts there.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Test Strategy Plus.
+
+## Read the source Skill first
+
+The main prompt covers Diff vs baseline (test-strategy), Structured strategy fields (per focus area), Quality Bar, Gotchas, Pre-delivery checklist. Those headings are navigation; the project artifacts still provide the facts.
+
+The source directory contains 8 example files, 1 references, 8 script entries. Start with [Analysis result example](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-strategy-plus/examples/analysis-sample.md), [test-strategy-plus (EN) supporting references](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-strategy-plus/references/local).
+
+## Start multiple inputs with a source ledger
+
+Build a traceable strategy from requirements, architecture, schedule, and historical defects
+
+The plus Skills often read requirements, analysis, and planning files together. Record their authority first.
+
+| source_id | File | Purpose | Conflict rule |
+| --- | --- | --- | --- |
+| RQ-01 | requirements.md | Business rules | Highest authority |
+| AN-02 | analysis.xlsx | Risks and boundaries | Flag conflicts with requirements |
+| PL-03 | release-plan.md | Dates and owners | Cannot override business rules |
+
+Each strategy item or case should carry a source ID. Mark unsupported conclusions as assumptions.
+
+## Resolve version conflicts before combining files
+
+The task is Build a traceable strategy from requirements, architecture, schedule, and historical defects. Parsing is the easy part; the same fact may appear in three incompatible versions.
+
+| Conflict | Treatment | Output status |
+| --- | --- | --- |
+| Requirement supports refunds, plan has no work | Keep the rule and expose the delivery gap | blocked |
+| Analysis and interface use different fields | Use the current interface version and request review | needs-review |
+| Test data predates the requirement | Do not use it as evidence for new behavior | stale-source |
+
+Store a source ID and version or update time. After generation, sample three strategy items or cases and trace them back. One unsupported item is enough to repair the source chain before handoff.
+
+The deliverable includes a source ledger, conflict list, source-linked primary artifact, and a visible list of unparsed items.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the test-strategy-plus Skill.
+
+Task: Build a traceable strategy from requirements, architecture, schedule, and historical defects
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+Build a source ledger and conflict order first. Add source_id to material outputs and label anything unsupported as an assumption.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Add a checksum or version to the source ledger. Recompute affected conclusions and emit changed, unchanged, and needs-review states.
+
+### A three-Skill chain
+
+`requirements-analysis-plus` → `test-strategy-plus` → `testcase-writer-plus`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to test-strategy-plus | Source versions, scope, risks, open questions | Test Strategy Plus staleness and conflicts |
+| test-strategy-plus to downstream | Primary artifact, evidence index, unfinished work | Test Strategy Plus executability and owners |
+| Feedback to test-strategy-plus | Runs, defects, new risks | Test Strategy Plus baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Test Strategy Plus a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| test-strategy-plus input | Version, environment, owner, accessible sources | Stop Test Strategy Plus and list gaps |
+| test-strategy-plus artifact | Material claims carry basis and status | Return Test Strategy Plus for evidence |
+| test-strategy-plus execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| test-strategy-plus decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Test Strategy Plus adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## “Plus” does not mean “load every file”
+
+Multi-format parsing expands context and creates version conflicts. Establish authoritative sources first. Every conclusion related to Diff vs baseline (test-strategy) should resolve to a source ID.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-strategy-plus -g -a codex -y
+```
+
+Invoke it with “Use the test-strategy-plus Skill,” then attach the real artifacts.
+
+## Two practical questions
+
+### When should I choose the plus version?
+
+Use the basic Skill for one clear input. Choose plus when multiple files need parsing and traceability.
+
+### What if sources conflict?
+
+Preserve the conflict, apply source authority, and mark affected conclusions.
+
+### When is human review mandatory?
+
+Require an accountable person for scope trade-offs, risk acceptance, release decisions, and source conflicts.
+
+### What should be archived?
+
+Keep the input version, Skill output, human edits, and final evidence so the conclusion can be reconstructed.
+
+Run Test Strategy Plus against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+
+## References
+- [Awesome QA Skills project](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [Analysis result example](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-strategy-plus/examples/analysis-sample.md)
+- [test-strategy-plus (EN) supporting references](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-strategy-plus/references/local)
+- [Awesome QA Skills: test-strategy-plus (EN) Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-strategy-plus)
+- [Test Strategy Plus Skill details](https://inaodeng.com/en/qaskills/test-strategy-plus/)

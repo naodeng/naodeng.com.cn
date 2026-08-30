@@ -1,0 +1,136 @@
+---
+title: "Daily Testing Workflow, putting testing into the delivery rhythm"
+description: "Daily Testing Workflow field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+date: 2026-08-29T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Daily Testing Workflow"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A team needs a result it can hand off. Using “Plan build checks, risk cases, defect retests, blocker updates, and end-of-day handoff,” we can see which inputs and evidence Daily Testing Workflow expects.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Daily Testing Workflow.
+
+## Read the source Skill first
+
+The main prompt covers Stage goals and entry/exit criteria, Daily gates, Handoff to type skills (names only—no file links), Quality Bar, Gotchas. Those headings are navigation; the project artifacts still provide the facts.
+
+The source directory contains 17 script entries. Start with [Template conversion script](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/daily-testing-workflow/scripts/batch_convert_templates.py).
+
+## Put the task on a timeline
+
+Plan build checks, risk cases, defect retests, blocker updates, and end-of-day handoff
+
+Workflow Skills become useful at handoffs. This is a planning sample; dates, owners, and evidence must come from the project.
+
+| Stage | Action | Evidence | Owner |
+| --- | --- | --- | --- |
+| Entry | Confirm scope and environment | Requirement version, build ID | QA |
+| Execution | Run high-risk journeys first | Run record, defect links | QA and engineering |
+| Decision | Check exit criteria | Residual risk list | Release owner |
+| Handoff | Record unfinished work | Owner and due date | Project lead |
+
+If approval ownership or evidence is blank, the plan is not ready for a decision meeting.
+
+## Give the workflow a normal path and interruption paths
+
+The working task is Plan build checks, risk cases, defect retests, blocker updates, and end-of-day handoff. Put it into the actual delivery cadence.
+
+| Moment | Team action | Artifact | Exit condition |
+| --- | --- | --- | --- |
+| Before entry | Lock requirement version, build, and owner | Scope note | High-risk unknowns have owners |
+| During execution | Run delivery-blocking journeys first | Run record and defects | P0 results are reviewed |
+| Before decision | Collect omissions and residual risks | Decision packet | Approver has read the risks |
+| After handoff | Track deferred work | Owner, date, link | Follow-up exists in the work system |
+
+When an environment arrives late, finish static review and data preparation. Repeated build failures are blockers with duration, not failed product tests. A late scope addition triggers a new look at Stage goals and entry/exit criteria and Daily gates; it does not silently stretch the old plan.
+
+A clean handoff names the tested build, evidence-backed journeys, accepted risks, and the owner of the next action.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the daily-testing-workflow Skill.
+
+Task: Plan build checks, risk cases, defect retests, blocker updates, and end-of-day handoff
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+List entry criteria, actions, evidence, owners, and exit criteria on a timeline. Track environment and build blockers separately from product failures.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Assign a workflow_run_id and connect scope, build, owners, and handoff. The next Daily Testing Workflow run should load unfinished work instead of rediscovering it.
+
+### A three-Skill chain
+
+`discover-testing` → `daily-testing-workflow` → `sprint-testing-workflow`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to daily-testing-workflow | Source versions, scope, risks, open questions | Daily Testing Workflow staleness and conflicts |
+| daily-testing-workflow to downstream | Primary artifact, evidence index, unfinished work | Daily Testing Workflow executability and owners |
+| Feedback to daily-testing-workflow | Runs, defects, new risks | Daily Testing Workflow baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Daily Testing Workflow a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| daily-testing-workflow input | Version, environment, owner, accessible sources | Stop Daily Testing Workflow and list gaps |
+| daily-testing-workflow artifact | Material claims carry basis and status | Return Daily Testing Workflow for evidence |
+| daily-testing-workflow execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| daily-testing-workflow decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Daily Testing Workflow adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## Keep the workflow out of ceremony land
+
+Daily Testing Workflow should say who acts, when they act, which evidence they produce, and what allows the next stage to begin. Meeting names matter less than Stage goals and entry/exit criteria, ownership, due dates, and exit criteria. Every unfinished item needs an owner.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/daily-testing-workflow -g -a codex -y
+```
+
+Invoke it with “Use the daily-testing-workflow Skill,” then attach the real artifacts.
+
+## Two practical questions
+
+### When does Daily Testing Workflow begin?
+
+Begin when entry criteria are met. At minimum, know the scope, build, environment, owner, and target date.
+
+### Can the Skill make a Go/No-Go decision?
+
+No. It organizes evidence, risk, and unfinished work. The accountable project owner decides.
+
+### What if the plan becomes stale halfway through?
+
+Record when it changed, affected scope, and the new owner. Keep the old plan for the retrospective.
+
+### Who maintains the workflow artifacts?
+
+Stage owners update their evidence; the handoff owner checks links and unfinished items.
+
+Run Daily Testing Workflow against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+
+## References
+- [Awesome QA Skills project](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [Daily Testing Workflow helper script: batch_convert_templates.py](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/daily-testing-workflow/scripts/batch_convert_templates.py)
+- [Awesome QA Skills: Daily Testing Workflow Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/daily-testing-workflow)
+- [Daily Testing Workflow Skill details](https://inaodeng.com/en/qaskills/daily-testing-workflow/)

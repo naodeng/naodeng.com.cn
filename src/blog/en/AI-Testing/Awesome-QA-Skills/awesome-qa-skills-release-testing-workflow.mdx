@@ -1,0 +1,136 @@
+---
+title: "Release Testing Workflow, putting testing into the delivery rhythm"
+description: "Release Testing Workflow field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+date: 2026-08-30T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Release Testing Workflow"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Run smoke, risk regression, defect retest, residual-risk review, and release handoff for a candidate build. The task sounds familiar, yet evidence and boundaries are easy to lose. Release Testing Workflow starts there.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Release Testing Workflow.
+
+## Read the source Skill first
+
+The main prompt covers Stage goals and entry/exit (relative to release day T), Release gates, Handoff to type skills, Quality Bar, Gotchas. Those headings are navigation; the project artifacts still provide the facts.
+
+The source directory contains 17 script entries. Start with [Template conversion script](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/release-testing-workflow/scripts/batch_convert_templates.py).
+
+## Put the task on a timeline
+
+Run smoke, risk regression, defect retest, residual-risk review, and release handoff for a candidate build
+
+Workflow Skills become useful at handoffs. This is a planning sample; dates, owners, and evidence must come from the project.
+
+| Stage | Action | Evidence | Owner |
+| --- | --- | --- | --- |
+| Entry | Confirm scope and environment | Requirement version, build ID | QA |
+| Execution | Run high-risk journeys first | Run record, defect links | QA and engineering |
+| Decision | Check exit criteria | Residual risk list | Release owner |
+| Handoff | Record unfinished work | Owner and due date | Project lead |
+
+If approval ownership or evidence is blank, the plan is not ready for a decision meeting.
+
+## Give the workflow a normal path and interruption paths
+
+The working task is Run smoke, risk regression, defect retest, residual-risk review, and release handoff for a candidate build. Put it into the actual delivery cadence.
+
+| Moment | Team action | Artifact | Exit condition |
+| --- | --- | --- | --- |
+| Before entry | Lock requirement version, build, and owner | Scope note | High-risk unknowns have owners |
+| During execution | Run delivery-blocking journeys first | Run record and defects | P0 results are reviewed |
+| Before decision | Collect omissions and residual risks | Decision packet | Approver has read the risks |
+| After handoff | Track deferred work | Owner, date, link | Follow-up exists in the work system |
+
+When an environment arrives late, finish static review and data preparation. Repeated build failures are blockers with duration, not failed product tests. A late scope addition triggers a new look at Stage goals and entry/exit (relative to release day T) and Release gates; it does not silently stretch the old plan.
+
+A clean handoff names the tested build, evidence-backed journeys, accepted risks, and the owner of the next action.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the release-testing-workflow Skill.
+
+Task: Run smoke, risk regression, defect retest, residual-risk review, and release handoff for a candidate build
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+List entry criteria, actions, evidence, owners, and exit criteria on a timeline. Track environment and build blockers separately from product failures.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Assign a workflow_run_id and connect scope, build, owners, and handoff. The next Release Testing Workflow run should load unfinished work instead of rediscovering it.
+
+### A three-Skill chain
+
+`test-strategy` → `release-testing-workflow` → `test-reporting`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to release-testing-workflow | Source versions, scope, risks, open questions | Release Testing Workflow staleness and conflicts |
+| release-testing-workflow to downstream | Primary artifact, evidence index, unfinished work | Release Testing Workflow executability and owners |
+| Feedback to release-testing-workflow | Runs, defects, new risks | Release Testing Workflow baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Release Testing Workflow a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| release-testing-workflow input | Version, environment, owner, accessible sources | Stop Release Testing Workflow and list gaps |
+| release-testing-workflow artifact | Material claims carry basis and status | Return Release Testing Workflow for evidence |
+| release-testing-workflow execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| release-testing-workflow decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Release Testing Workflow adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## Keep the workflow out of ceremony land
+
+Release Testing Workflow should say who acts, when they act, which evidence they produce, and what allows the next stage to begin. Meeting names matter less than Stage goals and entry/exit (relative to release day T), ownership, due dates, and exit criteria. Every unfinished item needs an owner.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/release-testing-workflow -g -a codex -y
+```
+
+Invoke it with “Use the release-testing-workflow Skill,” then attach the real artifacts.
+
+## Two practical questions
+
+### When does Release Testing Workflow begin?
+
+Begin when entry criteria are met. At minimum, know the scope, build, environment, owner, and target date.
+
+### Can the Skill make a Go/No-Go decision?
+
+No. It organizes evidence, risk, and unfinished work. The accountable project owner decides.
+
+### What if the plan becomes stale halfway through?
+
+Record when it changed, affected scope, and the new owner. Keep the old plan for the retrospective.
+
+### Who maintains the workflow artifacts?
+
+Stage owners update their evidence; the handoff owner checks links and unfinished items.
+
+Run Release Testing Workflow against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+
+## References
+- [Awesome QA Skills project](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [Release Testing Workflow helper script: batch_convert_templates.py](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/release-testing-workflow/scripts/batch_convert_templates.py)
+- [Awesome QA Skills: Release Testing Workflow Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/release-testing-workflow)
+- [Release Testing Workflow Skill details](https://inaodeng.com/en/qaskills/release-testing-workflow/)

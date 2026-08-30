@@ -1,0 +1,139 @@
+---
+title: "Test Case Reviewer Plus, review findings need evidence and impact"
+description: "Test Case Reviewer Plus field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+date: 2026-09-04T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Test Case Reviewer Plus"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Review order coverage against requirements, risks, and existing cases while recording source conflicts. The task sounds familiar, yet evidence and boundaries are easy to lose. Test Case Reviewer Plus starts there.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Test Case Reviewer Plus.
+
+## Read the source Skill first
+
+The main prompt covers Diff vs baseline (test-case-reviewer), Severity definitions (default), Quality Bar, Gotchas, Pre-delivery checklist. Those headings are navigation; the project artifacts still provide the facts.
+
+The source directory contains 10 example files, 8 script entries. Start with [Analysis result example](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-case-reviewer-plus/examples/analysis-sample.md).
+
+## Findings need a location
+
+Review order coverage against requirements, risks, and existing cases while recording source conflicts
+
+“This could be better” gives the author nothing to act on.
+
+| Severity | Location | Finding | Fix |
+| --- | --- | --- | --- |
+| P1 | Input contract | Source priority is undefined | Add conflict and degradation rules |
+| P2 | Output contract | Conclusions have no evidence field | Add source, status, and owner |
+
+Every finding needs a location, impact, and practical fix. Otherwise it is review noise.
+
+## Compare one finding before and after revision
+
+For Review order coverage against requirements, risks, and existing cases while recording source conflicts, the first draft often contains a broad quality request.
+
+```text
+Before: Check output quality and make the result accurate and complete.
+
+After: Every conclusion carries source, status, and owner.
+Use assumption when no source exists. Do not use passed without a run record.
+```
+
+The second contract is testable. During a Diff vs baseline (test-case-reviewer) and Severity definitions (default) review, also inspect trigger overlap, degraded behavior for missing input, and examples that imply execution without evidence.
+
+| Recheck | Method | Passing signal |
+| --- | --- | --- |
+| Trigger | Run positive and neighboring negative requests | Correct activation boundary |
+| Contract | Try input with missing fields | Missing facts are named |
+| Example | Trace each claim to a source | No invented files or results |
+| Scope | Read the diff | Unrelated rules remain untouched |
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the test-case-reviewer-plus Skill.
+
+Task: Review order coverage against requirements, risks, and existing cases while recording source conflicts
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+Give location, severity, impact, and a proposed edit for every finding. Separate contract gaps, factual defects, and preference; include a recheck method.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Turn representative findings into regression examples. After a Test Case Reviewer Plus edit, run expected-pass, expected-reject, and missing-input checks.
+
+### A three-Skill chain
+
+`testcase-writer-plus` → `test-case-reviewer-plus` → `test-reporting`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to test-case-reviewer-plus | Source versions, scope, risks, open questions | Test Case Reviewer Plus staleness and conflicts |
+| test-case-reviewer-plus to downstream | Primary artifact, evidence index, unfinished work | Test Case Reviewer Plus executability and owners |
+| Feedback to test-case-reviewer-plus | Runs, defects, new risks | Test Case Reviewer Plus baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Test Case Reviewer Plus a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| test-case-reviewer-plus input | Version, environment, owner, accessible sources | Stop Test Case Reviewer Plus and list gaps |
+| test-case-reviewer-plus artifact | Material claims carry basis and status | Return Test Case Reviewer Plus for evidence |
+| test-case-reviewer-plus execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| test-case-reviewer-plus decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Test Case Reviewer Plus adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## Keep the original text and evidence in the review
+
+Quote a location before describing the problem. Separate contract gaps, wording defects, and personal preference. Findings related to Diff vs baseline (test-case-reviewer) should explain the behavioral drift they can cause. Recheck behavior after the edit.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-case-reviewer-plus -g -a codex -y
+```
+
+Invoke it with “Use the test-case-reviewer-plus Skill,” then attach the real artifacts.
+
+## Two practical questions
+
+### Must every review finding be accepted?
+
+No. Use severity and contract impact. A preference can be declined if the choice is recorded.
+
+### Does shorter prose mean a better Skill?
+
+No. Triggers, inputs, outputs, and risk boundaries still need to survive the edit.
+
+### When is human review mandatory?
+
+Require an accountable person for scope trade-offs, risk acceptance, release decisions, and source conflicts.
+
+### What should be archived?
+
+Keep the input version, Skill output, human edits, and final evidence so the conclusion can be reconstructed.
+
+Run Test Case Reviewer Plus against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+
+## References
+- [Awesome QA Skills project](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [Analysis result example](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-case-reviewer-plus/examples/analysis-sample.md)
+- [Awesome QA Skills: test-case-reviewer-plus (EN) Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-case-reviewer-plus)
+- [Test Case Reviewer Plus Skill details](https://inaodeng.com/en/qaskills/test-case-reviewer-plus/)

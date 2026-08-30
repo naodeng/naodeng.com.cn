@@ -1,0 +1,141 @@
+---
+title: "发布测试工作流程，把测试放进真实交付节奏"
+description: "发布测试工作流程 实战：发布测试工作流程，把测试放进真实交付节奏。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+date: 2026-08-30T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "发布测试工作流程"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+组织候选版本的冒烟、风险回归、缺陷复测、残余风险确认和发布交接。这类任务看着熟，真正动手时却很容易漏掉证据和边界。发布测试工作流程 Skill 就从这里介入。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 发布测试工作流程。
+
+## 先看源 Skill
+
+主 Prompt 把工作拆到 阶段目标与进入/退出标准（相对发布日 T）、发布门禁（Release Gates）、如何交接给类型 skill、质量要求、常见误区（Gotchas）。这些标题只是导航，真正使用时还要回到项目材料。
+
+源目录现有 17 个脚本入口。可以先看 [模板批量转换脚本](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/release-testing-workflow/scripts/batch_convert_templates.py)。
+
+## 把任务放进时间线
+
+组织候选版本的冒烟、风险回归、缺陷复测、残余风险确认和发布交接
+
+工作流 Skill 的价值在交接。下面这段是计划样例，日期、负责人和证据都要换成项目里的真实信息。
+
+| 阶段 | 动作 | 证据 | 负责人 |
+| --- | --- | --- | --- |
+| 进入 | 确认范围与环境 | 需求版本、构建号 | QA |
+| 执行 | 先跑高风险链路 | 运行记录、缺陷链接 | QA 与开发 |
+| 决策 | 检查退出条件 | 残余风险清单 | 发布负责人 |
+| 交接 | 记录未完成项 | Owner 与截止时间 | 项目负责人 |
+
+如果“谁批准”和“拿什么证明”仍是空白，这张表还不能拿去开会。
+
+## 工作流里的正常路径和插曲
+
+组织候选版本的冒烟、风险回归、缺陷复测、残余风险确认和发布交接。我会先把它排进真实节奏，而不是只列会议名称。
+
+| 时点 | 团队动作 | 产物 | 退出条件 |
+| --- | --- | --- | --- |
+| 开始前 | 锁定需求版本、构建和负责人 | 范围说明 | 高风险未知项已有 Owner |
+| 执行中 | 先跑会阻断交付的链路 | 运行记录与缺陷 | P0 结果已复核 |
+| 决策前 | 汇总未测项和残余风险 | 决策包 | 批准人看过风险 |
+| 交接后 | 跟踪延期项 | Owner、日期、链接 | 后续任务已经落库 |
+
+真实项目总会插进来点事。环境晚到，先完成静态评审和数据准备；构建连续失败，记录阻塞时长，别把它算成测试失败；范围临时增加，重新评估 阶段目标与进入/退出标准（相对发布日 T）、发布门禁（Release Gates），原计划不能悄悄膨胀。
+
+### 交接时要说清的四句话
+
+1. 这次实际测了哪个构建。
+2. 哪些链路有运行证据。
+3. 哪些风险还留着，谁接受。
+4. 下一次动作由谁在什么时候完成。
+
+## 一段可以直接改的调用词
+
+把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+
+```text
+请使用 release-testing-workflow Skill。
+
+任务：组织候选版本的冒烟、风险回归、缺陷复测、残余风险确认和发布交接
+版本与环境：[需求版本 / 构建号 / 环境]
+输入材料：[文件路径或链接]
+范围：[本次包含与排除的业务链路]
+限制：[账号、数据、时间、合规要求]
+
+按时间线列出进入条件、动作、证据、负责人和退出条件。环境或构建阻塞要单列，不能混进产品失败。
+最后列出待确认问题，不要补写材料里没有的事实。
+```
+
+第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
+
+## 进阶使用，从一次调用走到持续流程
+
+给每次运行一个 workflow_run_id，把范围、构建、负责人和交接结果串起来。下次启动 发布测试工作流程 时先读取上次未完成项，避免每天重新问一遍。
+
+### 三段式 Skill 链
+
+`test-strategy` → `release-testing-workflow` → `test-reporting`
+
+| 交接 | 传递内容 | 接收方检查 |
+| --- | --- | --- |
+| 上游到 release-testing-workflow | 来源版本、范围、风险和未决问题 | 发布测试工作流程 输入是否过期，冲突是否标记 |
+| release-testing-workflow 到下游 | 主产物、证据索引、未完成项 | 发布测试工作流程 产物能否继续执行，Owner 是否明确 |
+| 下游回写 release-testing-workflow | 运行结果、缺陷和新风险 | 是否更新 发布测试工作流程 基线与回归范围 |
+
+不要把三次输出复制进一个大 Prompt。发布测试工作流程 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
+
+### 放进团队流程的门禁
+
+| 门禁 | 建议检查 | 失败动作 |
+| --- | --- | --- |
+| release-testing-workflow 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 发布测试工作流程 并列出缺口 |
+| release-testing-workflow 产物门禁 | 关键结论带依据和状态 | 退回 发布测试工作流程 补证据 |
+| release-testing-workflow 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
+| release-testing-workflow 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
+
+团队可以每个 Sprint 看一次 发布测试工作流程 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+
+## 工作流别写成仪式清单
+
+发布测试工作流程 应该回答谁在什么时候做什么，拿什么证据进入下一阶段。会议名称和模板不是重点。真正需要盯的是 阶段目标与进入/退出标准（相对发布日 T）、负责人、截止时间和退出条件。任何未完成项都要有 Owner。
+
+## 安装与调用
+
+安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/release-testing-workflow -g -a codex -y
+```
+
+调用时直接写“请使用 release-testing-workflow Skill”，然后附上真实材料。
+
+## 两个实际问题
+
+### 发布测试工作流程 从什么时候开始？
+
+进入条件满足时开始。至少要知道范围、版本、环境、负责人和目标日期。
+
+### Skill 能做 Go/No-Go 决定吗？
+
+不能。它整理证据、风险和未完成项，决定仍由项目里承担责任的人作出。
+
+### 计划中途失效怎么办？
+
+记录变化发生的时间、受影响范围和新负责人。旧计划保留，方便复盘为什么改。
+
+### 谁维护工作流产物？
+
+阶段负责人更新自己的证据，最终交接人检查链接和未完成项。
+
+先拿一份真实材料跑 发布测试工作流程，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+
+## 参考
+- [Awesome QA Skills 项目主页](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills 系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [发布测试工作流程 辅助脚本：batch_convert_templates.py](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/release-testing-workflow/scripts/batch_convert_templates.py)
+- [Awesome QA Skills：发布测试工作流程 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/release-testing-workflow)
+- [发布测试工作流程 Skill 详情页](https://inaodeng.com/zh-cn/qaskills/release-testing-workflow/)

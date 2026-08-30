@@ -1,0 +1,168 @@
+---
+title: "Selenium UI 自动化，稳定性从定位和数据开始"
+description: "Selenium UI 自动化测试 实战：Selenium UI 自动化，稳定性从定位和数据开始。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+date: 2026-09-07T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Selenium UI 自动化测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+我会用一个具体任务介绍 Selenium UI 自动化测试。场景很普通：用 Selenium 自动化结账主路径，处理稳定定位、等待、数据隔离和失败证据。重点在于怎么把材料变成可以继续执行的结果。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 Selenium UI 自动化测试。
+
+## 先看源 Skill
+
+主 Prompt 把工作拆到 质量要求、输出格式选项、如何使用、参考文件、常见误区。这些标题只是导航，真正使用时还要回到项目材料。
+
+源目录现有 1 份示例、2 份参考、1 个脚本入口。可以先看 [测试场景上下文示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selenium/examples/sample-context.md)、[框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selenium/references/framework-spec.md)、[测试执行脚本](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selenium/scripts/run-tests.sh)。
+
+## 从材料到可运行入口
+
+这次任务是：用 Selenium 自动化结账主路径，处理稳定定位、等待、数据隔离和失败证据。
+
+给 Skill 的输入可以很短，但不能含糊。
+
+```text
+业务链路：登录 → 创建订单 → 支付 → 查询结果
+环境：staging
+已有材料：接口定义、测试账号、CI 运行方式
+交付：tests/e2e/test_checkout.py，附本地命令和失败证据
+```
+
+Skill 应先确认版本、认证方式和数据清理策略，再生成文件。示例输出片段如下，它展示结构，不代表代码已经运行。
+
+```yaml
+tool: Selenium
+entry: tests/e2e/test_checkout.py
+checks: 用户可见定位、测试数据隔离、失败 Trace 或截图
+run_evidence: pending
+```
+
+最后一行很重要。没有命令输出、报告或 Trace，就只能写 pending。源 Prompt 还要求关注 质量要求、输出格式选项、如何使用。
+
+## 把示例补成项目骨架
+
+代码片段只有放回目录和命令里才有用。下面这份骨架够小，适合先接通一条链路。
+
+```text
+tests/e2e/test_checkout.py
+├── 场景与断言
+├── 数据或 feeder
+├── 环境配置
+└── 失败证据输出到 artifacts/
+```
+
+本地或 CI 的第一条命令可以写成：
+
+```bash
+pytest tests/e2e/test_checkout.py --junitxml=artifacts/ui.xml
+```
+
+CI 中锁定浏览器与 Driver 兼容范围，把显式等待集中到可观察的页面状态。
+
+### 怎么算接入完成
+
+| 检查项 | 最低要求 | 不满足时怎么处理 |
+| --- | --- | --- |
+| 可重复执行 | 连续运行不依赖上一次残留数据 | 重做数据创建与清理 |
+| 失败可定位 | 测试报告、失败截图或 Trace、浏览器日志、构建号 能回到同一次运行 | 给产物加 run ID 和构建号 |
+| CI 可判定 | 进程退出码与质量门禁一致 | 修正 reporter 或 threshold 配置 |
+| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取 fixture、specification 或页面动作 |
+
+先只接一条关键链路。它在本地和 CI 都稳定以后，再扩到异常、边界和并发场景。
+
+## 一段可以直接改的调用词
+
+把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+
+```text
+请使用 ui-test-selenium Skill。
+
+任务：用 Selenium 自动化结账主路径，处理稳定定位、等待、数据隔离和失败证据
+版本与环境：[需求版本 / 构建号 / 环境]
+输入材料：[文件路径或链接]
+范围：[本次包含与排除的业务链路]
+限制：[账号、数据、时间、合规要求]
+
+先检查框架版本、目录和认证方式。生成最小可运行入口、执行命令与 artifacts 清单。代码未运行时，把结果标成待验证。
+最后列出待确认问题，不要补写材料里没有的事实。
+```
+
+第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
+
+## 进阶使用，从一次调用走到持续流程
+
+跨浏览器矩阵可以交给 Grid 或云端节点，能力配置要版本化。并行数受环境容量约束，排队时间和执行时间分开记录。
+
+进阶阶段要保存基线。至少记录执行时长、通过率、不稳定用例、失败分类和证据完整率。只有通过率会把问题藏起来。
+
+### 三段式 Skill 链
+
+`requirements-analysis` → `ui-test-selenium` → `test-reporting`
+
+| 交接 | 传递内容 | 接收方检查 |
+| --- | --- | --- |
+| 上游到 ui-test-selenium | 来源版本、范围、风险和未决问题 | Selenium UI 自动化测试 输入是否过期，冲突是否标记 |
+| ui-test-selenium 到下游 | 主产物、证据索引、未完成项 | Selenium UI 自动化测试 产物能否继续执行，Owner 是否明确 |
+| 下游回写 ui-test-selenium | 运行结果、缺陷和新风险 | 是否更新 Selenium UI 自动化测试 基线与回归范围 |
+
+不要把三次输出复制进一个大 Prompt。Selenium UI 自动化测试 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
+
+### 放进团队流程的门禁
+
+| 门禁 | 建议检查 | 失败动作 |
+| --- | --- | --- |
+| ui-test-selenium 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 Selenium UI 自动化测试 并列出缺口 |
+| ui-test-selenium 产物门禁 | 关键结论带依据和状态 | 退回 Selenium UI 自动化测试 补证据 |
+| ui-test-selenium 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
+| ui-test-selenium 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
+
+团队可以每个 Sprint 看一次 Selenium UI 自动化测试 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+
+## 这类工具最容易踩的坑
+
+1. 只生成代码，不给运行命令。拿到文件的人仍然不知道怎么验证。
+2. 忽略版本和依赖。Selenium 的配置、API 和报告插件都会变化。
+3. 共用脏数据。接口、UI 和性能测试都会被残留数据拖垮。
+4. 把一次绿色结果写成长期稳定。至少保留报告、日志和失败重试信息。
+
+## 安装与调用
+
+安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selenium -g -a codex -y
+```
+
+调用时直接写“请使用 ui-test-selenium Skill”，然后附上真实材料。
+
+## 两个实际问题
+
+### Selenium UI 自动化测试 会直接给我一个能跑的项目吗？
+
+有完整定义、版本、目录和依赖时，它可以生成很接近可运行的入口。最终仍要在你的仓库里安装依赖、执行命令并修正环境差异。
+
+### 什么时候应该停下来补信息？
+
+认证方式、测试数据或目标版本缺失时先停。继续生成只会得到一份看起来完整的猜测。
+
+### 代码生成后先检查哪一处？
+
+先看入口命令能否发现并运行目标文件，再看失败产物是否写到约定目录。连入口都没接通时，先别扩用例。
+
+### 可以直接放进发布门禁吗？
+
+等本地和 CI 使用同一命令、数据可重置、失败证据可追踪以后再放。
+
+先拿一份真实材料跑 Selenium UI 自动化测试，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+
+## 参考
+- [Awesome QA Skills 项目主页](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills 系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [测试场景上下文示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selenium/examples/sample-context.md)
+- [Selenium UI 自动化测试 补充参考资料](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selenium/references/framework-spec.md)
+- [Selenium UI 自动化测试 辅助脚本：run-tests.sh](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selenium/scripts/run-tests.sh)
+- [Awesome QA Skills：Selenium UI 自动化测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selenium)
+- [Selenium UI 自动化测试 Skill 详情页](https://inaodeng.com/zh-cn/qaskills/ui-test-selenium/)

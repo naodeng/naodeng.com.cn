@@ -1,0 +1,132 @@
+---
+title: "Product Quality Perspective, keeping disagreement visible in quality decisions"
+description: "Product Quality Perspective field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+date: 2026-09-18T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Product Quality Perspective"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Product Quality Perspective is easiest to understand with imperfect project material. The working task is simple: Review membership upgrades for user value, business rules, failure states, and acceptance gaps.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Product Quality Perspective.
+
+## Read the source Skill first
+
+The main prompt covers Inputs, Applicability Check, Product Questions, Output Contract, Evidence and Boundaries. Those headings are navigation; the project artifacts still provide the facts.
+
+This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
+
+## A review fragment that keeps disagreement visible
+
+Review membership upgrades for user value, business rules, failure states, and acceptance gaps
+
+Different roles can read the same artifact and find different risks.
+
+| Observation | Evidence | Impact | Recommendation |
+| --- | --- | --- | --- |
+| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
+| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
+
+Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
+
+## Merge evidence without flattening disagreement
+
+For Review membership upgrades for user value, business rules, failure states, and acceptance gaps, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
+
+| Role | Observation | Evidence needed | Decision ownership |
+| --- | --- | --- | --- |
+| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
+| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
+| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
+
+Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Inputs and Applicability Check need source links because paraphrasing can change their meaning.
+
+The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the product-quality-perspective Skill.
+
+Task: Review membership upgrades for user value, business rules, failure states, and acceptance gaps
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+
+### A three-Skill chain
+
+`requirements-analysis` → `product-quality-perspective` → `multi-role-quality-synthesis`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to product-quality-perspective | Source versions, scope, risks, open questions | Product Quality Perspective staleness and conflicts |
+| product-quality-perspective to downstream | Primary artifact, evidence index, unfinished work | Product Quality Perspective executability and owners |
+| Feedback to product-quality-perspective | Runs, defects, new risks | Product Quality Perspective baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Product Quality Perspective a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| product-quality-perspective input | Version, environment, owner, accessible sources | Stop Product Quality Perspective and list gaps |
+| product-quality-perspective artifact | Material claims carry basis and status | Return Product Quality Perspective for evidence |
+| product-quality-perspective execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| product-quality-perspective decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Product Quality Perspective adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## A perspective Skill is not role-play
+
+Do not invent what product, QA, or engineering would say. Product Quality Perspective can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/product-quality-perspective -g -a codex -y
+```
+
+Invoke it with “Use the product-quality-perspective Skill,” then attach the real artifacts.
+
+## Two practical questions
+
+### Can one perspective overrule the others?
+
+No. It adds observations. Keep disagreement and supporting evidence visible.
+
+### What if that role is absent?
+
+Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
+
+### What if roles reach opposite conclusions?
+
+Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
+
+### Can a perspective be written without data?
+
+It can be an observation or assumption if the missing source and next evidence request stay visible.
+
+Run Product Quality Perspective against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+
+## References
+- [Awesome QA Skills project](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [Awesome QA Skills: Product Quality Perspective Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/product-quality-perspective)
+- [Product Quality Perspective Skill details](https://inaodeng.com/en/qaskills/product-quality-perspective/)

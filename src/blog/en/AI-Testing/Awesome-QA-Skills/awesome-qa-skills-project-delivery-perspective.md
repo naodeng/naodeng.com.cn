@@ -1,0 +1,132 @@
+---
+title: "Project Delivery Perspective, keeping disagreement visible in quality decisions"
+description: "Project Delivery Perspective field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+date: 2026-09-19T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Project Delivery Perspective"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Start with the task: Assess whether schedule, dependencies, and owners support entry into the release gate. Project Delivery Perspective supplies a reviewable path through it.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Project Delivery Perspective.
+
+## Read the source Skill first
+
+The main prompt covers Required inputs, Delivery work, Source and quality boundary, Inputs, Workflow. Those headings are navigation; the project artifacts still provide the facts.
+
+This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
+
+## A review fragment that keeps disagreement visible
+
+Assess whether schedule, dependencies, and owners support entry into the release gate
+
+Different roles can read the same artifact and find different risks.
+
+| Observation | Evidence | Impact | Recommendation |
+| --- | --- | --- | --- |
+| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
+| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
+
+Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
+
+## Merge evidence without flattening disagreement
+
+For Assess whether schedule, dependencies, and owners support entry into the release gate, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
+
+| Role | Observation | Evidence needed | Decision ownership |
+| --- | --- | --- | --- |
+| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
+| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
+| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
+
+Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Required inputs and Delivery work need source links because paraphrasing can change their meaning.
+
+The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+
+```text
+Use the project-delivery-perspective Skill.
+
+Task: Assess whether schedule, dependencies, and owners support entry into the release gate
+Version and environment: [requirement / build / environment]
+Inputs: [file paths or links]
+Scope: [included and excluded journeys]
+Constraints: [accounts, data, time, compliance]
+
+Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
+Finish with open questions. Do not invent missing facts.
+```
+
+Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+
+## Advanced use, from one call to a maintained flow
+
+Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+
+### A three-Skill chain
+
+`requirements-analysis` → `project-delivery-perspective` → `multi-role-quality-synthesis`
+
+| Handoff | Payload | Receiver check |
+| --- | --- | --- |
+| Upstream to project-delivery-perspective | Source versions, scope, risks, open questions | Project Delivery Perspective staleness and conflicts |
+| project-delivery-perspective to downstream | Primary artifact, evidence index, unfinished work | Project Delivery Perspective executability and owners |
+| Feedback to project-delivery-perspective | Runs, defects, new risks | Project Delivery Perspective baseline and regression update |
+
+Do not paste three complete outputs into one large prompt. Give Project Delivery Perspective a structured summary and accessible source artifacts. It saves context and makes defects traceable.
+
+### Team gates
+
+| Gate | Check | Failure action |
+| --- | --- | --- |
+| project-delivery-perspective input | Version, environment, owner, accessible sources | Stop Project Delivery Perspective and list gaps |
+| project-delivery-perspective artifact | Material claims carry basis and status | Return Project Delivery Perspective for evidence |
+| project-delivery-perspective execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
+| project-delivery-perspective decision | Residual risks have accepter and date | Do not enter the next stage |
+
+Review Project Delivery Perspective adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
+
+## A perspective Skill is not role-play
+
+Do not invent what product, QA, or engineering would say. Project Delivery Perspective can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/project-delivery-perspective -g -a codex -y
+```
+
+Invoke it with “Use the project-delivery-perspective Skill,” then attach the real artifacts.
+
+## Two practical questions
+
+### Can one perspective overrule the others?
+
+No. It adds observations. Keep disagreement and supporting evidence visible.
+
+### What if that role is absent?
+
+Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
+
+### What if roles reach opposite conclusions?
+
+Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
+
+### Can a perspective be written without data?
+
+It can be an observation or assumption if the missing source and next evidence request stay visible.
+
+Run Project Delivery Perspective against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+
+## References
+- [Awesome QA Skills project](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [Awesome QA Skills: Project Delivery Perspective Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/project-delivery-perspective)
+- [Project Delivery Perspective Skill details](https://inaodeng.com/en/qaskills/project-delivery-perspective/)
