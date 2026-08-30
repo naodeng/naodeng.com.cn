@@ -1,16 +1,16 @@
 ---
-title: "Testing Skill Discovery，把测试放进真实交付节奏"
-description: "Testing Skill Discovery 实战：Testing Skill Discovery，把测试放进真实交付节奏。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+title: "测试技能探索，把测试放进真实交付节奏"
+description: "测试技能探索实战：在执行前判断该使用哪个测试 Skill，并把测试放进真实交付节奏。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
 date: 2026-08-29T09:00:00.000Z
 author: "nao.deng"
-tags: ["AI 测试", "Agent Skills", "Testing Skill Discovery"]
+tags: ["AI 测试", "Agent Skills", "测试技能探索"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-第一次接手陌生项目时梳理入口、依赖、环境、风险、现有测试和待确认问题。这类任务看着熟，真正动手时却很容易漏掉证据和边界。Testing Skill Discovery Skill 就从这里介入。
+第一次接手陌生项目时，要先梳理入口、依赖、环境、风险、现有测试和待确认问题。这类任务看着熟，真正动手时却很容易漏掉证据和边界。测试技能探索 Skill 就从这里介入。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 Testing Skill Discovery。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里聚焦测试技能探索。
 
 ## 先看源 Skill
 
@@ -74,7 +74,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 进阶使用，从一次调用走到持续流程
 
-给每次运行一个 workflow_run_id，把范围、构建、负责人和交接结果串起来。下次启动 Testing Skill Discovery 时先读取上次未完成项，避免每天重新问一遍。
+给每次运行一个 `workflow_run_id`，把范围、构建、负责人和交接结果串起来。下次启动测试技能探索时先读取上次未完成项，避免每天重新问一遍。
 
 ### 三段式 Skill 链
 
@@ -82,26 +82,26 @@ series: ["Awesome QA Skills 实战"]
 
 | 交接 | 传递内容 | 接收方检查 |
 | --- | --- | --- |
-| 上游到 discover-testing | 来源版本、范围、风险和未决问题 | Testing Skill Discovery 输入是否过期，冲突是否标记 |
-| discover-testing 到下游 | 主产物、证据索引、未完成项 | Testing Skill Discovery 产物能否继续执行，Owner 是否明确 |
-| 下游回写 discover-testing | 运行结果、缺陷和新风险 | 是否更新 Testing Skill Discovery 基线与回归范围 |
+| 上游到测试技能探索 | 来源版本、范围、风险和未决问题 | 测试技能探索输入是否过期，冲突是否标记 |
+| 测试技能探索到下游 | 主产物、证据索引、未完成项 | 测试技能探索产物能否继续执行，Owner 是否明确 |
+| 下游回写测试技能探索 | 运行结果、缺陷和新风险 | 是否更新测试技能探索基线与回归范围 |
 
-不要把三次输出复制进一个大 Prompt。Testing Skill Discovery 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
+不要把三次输出复制进一个大 Prompt。测试技能探索只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
 
 ### 放进团队流程的门禁
 
 | 门禁 | 建议检查 | 失败动作 |
 | --- | --- | --- |
-| discover-testing 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 Testing Skill Discovery 并列出缺口 |
-| discover-testing 产物门禁 | 关键结论带依据和状态 | 退回 Testing Skill Discovery 补证据 |
+| 测试技能探索输入门禁 | 版本、环境、Owner、来源可访问 | 停止测试技能探索并列出缺口 |
+| 测试技能探索产物门禁 | 关键结论带依据和状态 | 退回测试技能探索补证据 |
 | discover-testing 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
 | discover-testing 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
 
-团队可以每个 Sprint 看一次 Testing Skill Discovery 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+团队可以每个 Sprint 看一次测试技能探索的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
 
 ## 工作流别写成仪式清单
 
-Testing Skill Discovery 应该回答谁在什么时候做什么，拿什么证据进入下一阶段。会议名称和模板不是重点。真正需要盯的是 路由决策规则（按顺序判断）、负责人、截止时间和退出条件。任何未完成项都要有 Owner。
+测试技能探索应该回答谁在什么时候做什么，拿什么证据进入下一阶段。会议名称和模板不是重点。真正需要盯的是路由决策规则、负责人、截止时间和退出条件。任何未完成项都要有 Owner。
 
 ## 安装与调用
 
@@ -115,7 +115,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 两个实际问题
 
-### Testing Skill Discovery 从什么时候开始？
+### 测试技能探索从什么时候开始？
 
 进入条件满足时开始。至少要知道范围、版本、环境、负责人和目标日期。
 
@@ -131,11 +131,11 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 阶段负责人更新自己的证据，最终交接人检查链接和未完成项。
 
-先拿一份真实材料跑 Testing Skill Discovery，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+先拿一份真实材料跑测试技能探索，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
 
 ## 参考
 - [Awesome QA Skills 项目主页](https://github.com/naodeng/awesome-qa-skills)
 - [Awesome QA Skills 系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- [测试技能路由 辅助脚本：batch_convert_templates.py](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing/scripts/batch_convert_templates.py)
-- [Awesome QA Skills：测试技能路由 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing)
-- [Testing Skill Discovery Skill 详情页](https://inaodeng.com/zh-cn/qaskills/discover-testing/)
+- [测试技能探索辅助脚本：模板批量转换脚本](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing/scripts/batch_convert_templates.py)
+- [Awesome QA Skills：测试技能探索 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing)
+- [测试技能探索 Skill 详情页](https://inaodeng.com/zh-cn/qaskills/discover-testing/)
