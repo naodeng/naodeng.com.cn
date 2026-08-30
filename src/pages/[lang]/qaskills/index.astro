@@ -207,13 +207,13 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
         )}
       </div>
       <p id="qaskills-results" class="results-count" aria-live="polite" data-label={text.resultsLabel}>{totalCount} {text.resultsLabel}</p>
+      <button type="button" id="qaskills-clear" class="btn btn-outline" hidden>{text.clearFilters}</button>
     </section>
 
     <section class="section" id="categories">
       <h2>{text.categories}</h2>
       <p id="qaskills-empty" class="empty-state" hidden>
         {text.empty}
-        <button type="button" id="qaskills-clear" class="btn btn-outline">{text.clearFilters}</button>
       </p>
 
       {grouped.catalogGroups.map((catalogGroup) => (
@@ -390,6 +390,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       defaultOnly.forEach((el) => el.toggleAttribute("hidden", searchActive()));
 
       empty.hidden = visible > 0;
+      clearBtn?.toggleAttribute("hidden", !searchActive());
       if (results) results.textContent = `${visible} ${results.dataset.label || ""}`.trim();
     };
 
