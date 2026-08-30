@@ -56,6 +56,7 @@ const text = lang === "zh-cn" ? {
   platform: "平台",
   aiTool: "AI 工具",
   quickInstall: "快速安装（一行命令）",
+  npxInstall: "npm 安装（推荐）",
   fullScript: "完整脚本",
   callExample: "调用示例",
   related: "相关技能",
@@ -82,6 +83,7 @@ const text = lang === "zh-cn" ? {
   platform: "Platform",
   aiTool: "AI Tool",
   quickInstall: "Quick install (one line)",
+  npxInstall: "npm install (recommended)",
   fullScript: "Full script",
   callExample: "Call example",
   related: "Related skills",
@@ -122,13 +124,14 @@ const toolMeta = {
   trae: { icon: "bolt", label: "trae" },
 } as const;
 
-const skillKindMatch = skill.sourceSkillUrl.match(/\/skills\/(?:zh|en)\/(testing-types|testing-workflows)\//);
+const skillKindMatch = skill.sourceSkillUrl.match(/\/skills\/(?:zh|en)\/(testing-types|testing-workflows|skill-engineering)\//);
 const skillKind = skillKindMatch?.[1] || (skill.category === "workflow" ? "testing-workflows" : "testing-types");
 const installContext = {
   slug: skill.slug,
   lang: installerLang,
   kind: skillKind,
 };
+const npxInstallCommand = `npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/${installerLang}/${skillKind}/${skill.slug} -g -a codex -y`;
 
 const callExample =
   lang === "zh-cn"
@@ -187,19 +190,21 @@ const tocHeadings = [
   <article class="qaskill-detail">
     <header class="detail-header">
       <div class="detail-header-main">
-        <p class="meta-row">
-          <span class="tag">{categoryLabel}</span>
-          <span class="tag tag-evals">{skill.hasEvals ? text.evals : text.noEvals}</span>
-          <span class="tag">{text.updated}: {skill.updatedAt || "-"}</span>
+        <p class="detail-status-icons" aria-label={`${text.category}: ${categoryLabel}；${skill.hasEvals ? text.evals : text.noEvals}`}>
+          <span class="detail-status-icon" title={categoryLabel}>⌘</span>
+          <span class="detail-status-icon" title={skill.hasEvals ? text.evals : text.noEvals}>✓</span>
         </p>
         <h1>{displayName}</h1>
-        <p class="sub-meta">{text.author}: {skill.author || "-"}</p>
-      </div>
-      <div class="actions header-actions">
-        <a href="#install-section" class="btn btn-primary">{text.installNow}</a>
-        {skill.sourceSkillUrl && (
-          <a href={skill.sourceSkillUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline">{text.sourceSkill}</a>
-        )}
+        <div class="actions detail-header-actions">
+          <a href="#install-section" class="btn btn-primary">{text.installNow}</a>
+          {skill.sourceSkillUrl && (
+            <a href={skill.sourceSkillUrl} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">{text.sourceSkill}</a>
+          )}
+        </div>
+        <div class="detail-header-footer">
+          <p class="detail-author">{text.author}: {skill.author || "-"}</p>
+          <p class="detail-updated">{text.updated}: {skill.updatedAt || "-"}</p>
+        </div>
       </div>
     </header>
 
@@ -272,6 +277,14 @@ const tocHeadings = [
             </div>
 
             <div class="installer-snippet">
+              <p class="installer-label">{text.npxInstall}</p>
+              <div class="code-card">
+                <pre data-lang="shell"><code id="npx-install-code" class="language-bash">{npxInstallCommand}</code></pre>
+                <button type="button" id="copy-npx-btn" class="copy-mini">{lang === "zh-cn" ? "复制" : "Copy"}</button>
+              </div>
+            </div>
+
+            <div class="installer-snippet">
               <p class="installer-label">{text.quickInstall}</p>
               <div class="code-card">
                 <pre data-lang="shell"><code id="quick-install-code" class="language-bash">…</code></pre>
@@ -300,15 +313,14 @@ const tocHeadings = [
         {related.length > 0 && (
           <section class="related-block related-block--main">
             <h2>{text.related}</h2>
-            <ul>
+            <div class="related-grid">
               {related.map((item) => (
-                <li>
-                  <a href={getRelativeLocaleUrl(lang, `/qaskills/${item.slug}/`)}>
-                    {lang === "zh-cn" ? (item.chineseName || item.title) : item.title}
+                <a class="related-card" href={getRelativeLocaleUrl(lang, `/qaskills/${item.slug}/`)}>
+                  <span class="related-card-title">{lang === "zh-cn" ? (item.chineseName || item.title) : item.title}</span>
+                  <span class="related-card-meta">{item.category === "workflow" ? text.catWorkflow : text.catType}</span>
                   </a>
-                </li>
               ))}
-            </ul>
+            </div>
           </section>
         )}
 
@@ -406,8 +418,10 @@ const tocHeadings = [
     const osButtons = Array.from(panel.querySelectorAll("[data-os]"));
     const toolButtons = Array.from(panel.querySelectorAll("[data-tool]"));
     const quickCodeEl = document.getElementById("quick-install-code");
+    const npxCodeEl = document.getElementById("npx-install-code");
     const fullCodeEl = document.getElementById("full-install-code");
     const copyQuickBtn = document.getElementById("copy-quick-btn");
+    const copyNpxBtn = document.getElementById("copy-npx-btn");
     const copyFullBtn = document.getElementById("copy-full-btn");
     const copyCallBtn = document.getElementById("copy-call-btn");
     const callCodeEl = document.getElementById("call-example-code");
@@ -534,6 +548,7 @@ const tocHeadings = [
     });
 
     bindCopy(copyQuickBtn, quickCodeEl);
+    if (copyNpxBtn && npxCodeEl) bindCopy(copyNpxBtn, npxCodeEl);
     bindCopy(copyFullBtn, fullCodeEl);
     if (copyCallBtn && callCodeEl) bindCopy(copyCallBtn, callCodeEl);
 
@@ -556,21 +571,22 @@ const tocHeadings = [
     border-radius: var(--radius-md);
     border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
     background: color-mix(in srgb, var(--color-theme) 6%, var(--color-base));
-    padding: 0.95rem;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
+    padding: 1rem 1.15rem;
+    display: block;
     min-width: 0;
   }
   .detail-header-main {
+    position: relative;
+    display: grid;
+    gap: 0.75rem;
     min-width: 0;
-    flex: 1 1 auto;
+    padding-right: 3.25rem;
   }
   .detail-header h1 {
-    margin: 0.35rem 0 0;
-    line-height: 1.25;
-    font-size: clamp(1.6rem, 2.5vw, 1.95rem);
+    margin: 0.22rem 0 0;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    font-size: clamp(1.65rem, 2.7vw, 2.15rem);
   }
   .meta-row, .card-meta {
     display: flex;
@@ -578,7 +594,27 @@ const tocHeadings = [
     gap: 0.35rem;
     margin: 0;
   }
-  .sub-meta { margin: 0.4rem 0 0; opacity: 0.85; }
+  .sub-meta { margin: 0.25rem 0 0; opacity: 0.72; font-size: 0.9rem; }
+  .detail-status-icons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 0.35rem;
+    margin: 0;
+  }
+  .detail-status-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    color: var(--color-theme);
+    font-size: 0.83rem;
+    font-weight: 800;
+  }
   .tag {
     display: inline-flex;
     align-items: center;
@@ -766,28 +802,56 @@ const tocHeadings = [
     margin: 0 0 0.5rem;
     font-size: 1.05rem;
   }
-  .related-block ul {
-    margin: 0;
-    padding-inline-start: 1.1rem;
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.55rem;
   }
-  .related-block a { color: var(--color-theme); font-weight: 700; }
+  .related-card {
+    display: grid;
+    gap: 0.3rem;
+    min-height: 74px;
+    padding: 0.65rem 0.7rem;
+    border: 1px solid color-mix(in srgb, var(--color-main) 16%, transparent);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
+    color: inherit;
+    text-decoration: none;
+  }
+  .related-card:hover {
+    border-color: color-mix(in srgb, var(--color-theme) 44%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, var(--color-base));
+  }
+  .related-card-title { color: var(--color-theme); font-size: 0.9rem; font-weight: 750; line-height: 1.35; }
+  .related-card-meta { color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 650; }
   .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
-  .header-actions { justify-content: flex-end; align-self: center; flex-shrink: 0; }
+  .detail-header-actions { justify-content: flex-start; }
+  .detail-header-footer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.1rem;
+  }
+  .detail-author, .detail-updated { margin: 0; color: var(--color-text-secondary); font-size: 0.76rem; line-height: 1.35; }
+  .detail-author { text-align: left; }
+  .detail-updated { text-align: right; }
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    border-radius: var(--radius-sm);
-    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    min-height: 38px;
+    padding: 0.42rem 0.82rem;
     font-weight: 700;
     font-size: 0.875rem;
   }
-  .btn-primary { background: var(--color-theme); color: white; }
-  .btn-outline {
+  .btn-primary { background: var(--color-theme); color: white; box-shadow: 0 6px 16px color-mix(in srgb, var(--color-theme) 25%, transparent); }
+  .btn-secondary {
     color: var(--color-theme);
     border: 1px solid color-mix(in srgb, var(--color-theme) 35%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    background: transparent;
   }
   .installer-panel { display: grid; gap: 0.8rem; min-width: 0; max-width: 100%; }
   .installer-row, .installer-snippet { display: grid; gap: 0.5rem; min-width: 0; max-width: 100%; }
@@ -910,7 +974,8 @@ const tocHeadings = [
     .elevator-link.is-active {
       border-color: var(--color-theme);
     }
-    .detail-header { flex-direction: column; }
-    .header-actions { width: 100%; justify-content: flex-start; }
+    .detail-header-main { padding-right: 0; }
+    .detail-status-icons { position: static; order: -1; }
+    .detail-header-actions { width: 100%; }
   }
 </style>

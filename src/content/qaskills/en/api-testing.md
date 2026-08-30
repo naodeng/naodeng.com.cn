@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-testing/SKILL.md
 - description: Use this skill when you need to design API test plans or cases for REST, GraphQL, or gRPC interfaces; triggers include API testing and API test cases.
 

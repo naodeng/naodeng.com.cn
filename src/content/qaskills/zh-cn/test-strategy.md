@@ -6,7 +6,7 @@
 - slug: test-strategy
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-strategy/SKILL.md
 - description: Use this skill when you need to define a test strategy covering scope, methods, resources, risks, and quality gates; triggers include 测试策略 and test strategy.
 

@@ -4,9 +4,9 @@ Author: naodeng
 
 ## Metadata
 - slug: test-strategy-plus
-- category: plus
+- category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-strategy-plus/SKILL.md
 - description: Use this skill when you need a structured test strategy from requirement, analysis, tech, and plan docs; triggers include test strategy plus and advanced test strategy.
 
@@ -18,15 +18,18 @@ Author: naodeng
 ## Workflow
 
 1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
-2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
-3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
-4. Default to Markdown; switch formats only when the user asks.
+2. Direct requirements, analysis, technical, and plan materials remain sufficient for standalone use. Role reports with a declared `source_role` are optional composition inputs and never require installing a role Skill.
+3. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+4. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+5. Default to Markdown; switch formats only when the user asks.
 
 ## Core Constraints
 
 - Prioritize by risk / business impact — do not treat everything equally.
 - Separate confirmed facts from current assumptions.
 - Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Preserve source-role attribution when using role reports, and keep delivery constraints, quality facts/conclusions, and risk acceptance separate.
+- A Project Manager may supply schedule, resources, dependencies, and action tracking, but these cannot rewrite quality conclusions, test facts, or risk acceptance. Consume report content only; do not depend on role Skill internals.
 - Keep output executable: concrete scenarios, clear priority, clear next steps.
 
 ## Progressive Disclosure
@@ -46,6 +49,8 @@ Author: naodeng
 - [ ] High-risk items have explicit priority
 - [ ] Did not invent details the user did not provide
 - [ ] Assumptions and gaps are marked
+- [ ] Project Manager schedule/resource/dependency constraints did not override quality conclusions or substitute for authorized risk acceptance
+- [ ] Role-report content retains source roles; direct inputs remain sufficient and no role Skill internal file was linked
 
 ## Common Pitfalls
 
@@ -74,15 +79,18 @@ description: Use this skill when you need a structured test strategy from requir
 ## Workflow
 
 1. Read and follow the main prompt listed under Progressive disclosure (coverage, structure, quality bar).
-2. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
-3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
-4. Default to Markdown; switch formats only when the user asks.
+2. Direct requirements, analysis, technical, and plan materials remain sufficient for standalone use. Role reports with a declared `source_role` are optional composition inputs and never require installing a role Skill.
+3. Add only project context that changes the result: scope, environment, constraints, risks, dependencies, expected deliverable.
+4. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
+5. Default to Markdown; switch formats only when the user asks.
 
 ## Core Constraints
 
 - Prioritize by risk / business impact — do not treat everything equally.
 - Separate confirmed facts from current assumptions.
 - Do not invent endpoints, fields, environments, or root causes the user did not provide.
+- Preserve source-role attribution when using role reports, and keep delivery constraints, quality facts/conclusions, and risk acceptance separate.
+- A Project Manager may supply schedule, resources, dependencies, and action tracking, but these cannot rewrite quality conclusions, test facts, or risk acceptance. Consume report content only; do not depend on role Skill internals.
 - Keep output executable: concrete scenarios, clear priority, clear next steps.
 
 ## Progressive Disclosure
@@ -102,6 +110,8 @@ description: Use this skill when you need a structured test strategy from requir
 - [ ] High-risk items have explicit priority
 - [ ] Did not invent details the user did not provide
 - [ ] Assumptions and gaps are marked
+- [ ] Project Manager schedule/resource/dependency constraints did not override quality conclusions or substitute for authorized risk acceptance
+- [ ] Role-report content retains source roles; direct inputs remain sufficient and no role Skill internal file was linked
 
 ## Common Pitfalls
 
