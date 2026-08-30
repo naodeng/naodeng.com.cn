@@ -116,7 +116,10 @@ test.describe("QA Skills", () => {
   test("detail header prioritizes installation and keeps source as a secondary action", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/discover-testing/");
     const header = page.locator(".detail-header");
-    await expect(header.locator(".detail-status-icons")).toBeVisible();
+    await expect(header.locator(".detail-status-tags")).toBeVisible();
+    await expect(header.locator(".detail-intro")).not.toBeEmpty();
+    await expect(header.getByText(/工作流|Workflow/)).toBeVisible();
+    await expect(header.getByText(/^Evals$/)).toBeVisible();
     await expect(header.locator(".detail-author")).toBeVisible();
     await expect(header.locator(".detail-updated")).toBeVisible();
   });

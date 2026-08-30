@@ -190,11 +190,12 @@ const tocHeadings = [
   <article class="qaskill-detail">
     <header class="detail-header">
       <div class="detail-header-main">
-        <p class="detail-status-icons" aria-label={`${text.category}: ${categoryLabel}；${skill.hasEvals ? text.evals : text.noEvals}`}>
-          <span class="detail-status-icon" title={categoryLabel}>⌘</span>
-          <span class="detail-status-icon" title={skill.hasEvals ? text.evals : text.noEvals}>✓</span>
-        </p>
+        <div class="detail-status-tags" aria-label={`${text.category}: ${categoryLabel}；${skill.hasEvals ? text.evals : text.noEvals}`}>
+          <span class="tag">{categoryLabel}</span>
+          <span class="tag">{skill.hasEvals ? text.evals : text.noEvals}</span>
+        </div>
         <h1>{displayName}</h1>
+        <p class="detail-intro">{skill.intro}</p>
         <div class="actions detail-header-actions">
           <a href="#install-section" class="btn btn-primary">{text.installNow}</a>
           {skill.sourceSkillUrl && (
@@ -576,14 +577,12 @@ const tocHeadings = [
     min-width: 0;
   }
   .detail-header-main {
-    position: relative;
     display: grid;
-    gap: 0.75rem;
+    gap: 0.7rem;
     min-width: 0;
-    padding-right: 3.25rem;
   }
   .detail-header h1 {
-    margin: 0.22rem 0 0;
+    margin: 0;
     line-height: 1.12;
     letter-spacing: -0.035em;
     font-size: clamp(1.65rem, 2.7vw, 2.15rem);
@@ -595,25 +594,17 @@ const tocHeadings = [
     margin: 0;
   }
   .sub-meta { margin: 0.25rem 0 0; opacity: 0.72; font-size: 0.9rem; }
-  .detail-status-icons {
-    position: absolute;
-    top: 0;
-    right: 0;
+  .detail-status-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.35rem;
     margin: 0;
   }
-  .detail-status-icon {
-    display: inline-grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-    color: var(--color-theme);
-    font-size: 0.83rem;
-    font-weight: 800;
+  .detail-intro {
+    margin: -0.18rem 0 0;
+    max-width: 68ch;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
   }
   .tag {
     display: inline-flex;
@@ -831,7 +822,8 @@ const tocHeadings = [
     align-items: end;
     justify-content: space-between;
     gap: 1rem;
-    padding-top: 0.1rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
   }
   .detail-author, .detail-updated { margin: 0; color: var(--color-text-secondary); font-size: 0.76rem; line-height: 1.35; }
   .detail-author { text-align: left; }
@@ -974,8 +966,10 @@ const tocHeadings = [
     .elevator-link.is-active {
       border-color: var(--color-theme);
     }
-    .detail-header-main { padding-right: 0; }
-    .detail-status-icons { position: static; order: -1; }
     .detail-header-actions { width: 100%; }
+  }
+  @media (max-width: 520px) {
+    .detail-header-footer { align-items: flex-start; flex-direction: column; gap: 0.2rem; }
+    .detail-updated { text-align: left; }
   }
 </style>
