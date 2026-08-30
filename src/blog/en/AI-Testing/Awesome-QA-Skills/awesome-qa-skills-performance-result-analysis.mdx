@@ -8,7 +8,7 @@ categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
 
-Interpret a checkout load-test result across throughput, tail latency, error rate, resource use, and test validity. This kind of work often becomes a broad checklist with no ordering, evidence, or handoff. Performance Result Analysis brings the task back to scope, evidence, and the next action.
+Interpret a checkout load-test result across throughput, tail latency, error rate, resource use, and test validity. The useful record is the decision trail: which version supplied the evidence, which finding has runtime proof, and which item is still open. Write that down early—test design, release review, and the next handoff all depend on it.
 
 ## Start with the source Skill
 
@@ -24,7 +24,7 @@ The entry point calls out these constraints:
 
 ## Begin with project facts
 
-You do not need every document before the first pass, but the facts below determine whether the conclusion can be trusted.
+Put the material you have on the table. Gaps may remain; their status needs to stay explicit.
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -57,6 +57,18 @@ Audit the inputs first. Order results by risk and evidence strength. Label unsup
 
 Do not write “passed” without a run record, query result, or source artifact. Static analysis and runtime proof are different things.
 
+## Run one focused pass
+
+Start with a bounded pass—Interpret a checkout load-test result across throughput, tail latency, error rate, resource use, and test validity. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
+
+Establish workload validity before interpreting results; average response time alone is insufficient. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
+
+## Run one focused pass
+
+Start with a bounded pass—Interpret a checkout load-test result across throughput, tail latency, error rate, resource use, and test validity. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
+
+Establish workload validity before interpreting results; average response time alone is insufficient. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
+
 ## Advanced use: turn one analysis into a maintained mechanism
 
 Establish workload validity before interpreting results; average response time alone is insufficient.
@@ -73,7 +85,7 @@ Keep input versions and source IDs with every result. When requirements, code, e
 | performance-result-analysis to downstream | Judgments, evidence index, residual risk, tasks | Executability and ownership |
 | Feedback to performance-result-analysis | Runs, defects, changed facts | Baseline and regression scope |
 
-Do not paste three complete outputs into one prompt. Pass a summary and accessible source artifacts so the chain stays small and traceable.
+Hand over a summary, an evidence index, and locations for the source artifacts. That gives the receiver enough context and keeps the trail recoverable.
 
 ### Team gates
 
