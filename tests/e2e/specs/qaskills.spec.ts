@@ -73,14 +73,30 @@ test.describe("QA Skills", () => {
     await expect(card.locator(".tag-evals")).toBeVisible();
   });
 
-  test("catalog cards show when-to-use, input, output, and human review rows", async ({ page }) => {
+  test("catalog cards show their README-aligned summary", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/");
     const card = page.locator('a.card[data-slug="requirements-analysis"]').first();
     await expect(card).toBeVisible();
-    await expect(card.locator("[data-summary-when]")).not.toBeEmpty();
-    await expect(card.locator("[data-summary-input]")).not.toBeEmpty();
-    await expect(card.locator("[data-summary-output]")).not.toBeEmpty();
-    await expect(card.locator("[data-summary-review]")).not.toBeEmpty();
+    await expect(card.locator(".card-intro")).not.toBeEmpty();
+  });
+
+  test("primary filters reveal and apply README subcategory filters", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/");
+    const typeFilter = page.locator('[data-filter="type"]');
+    const secondary = page.locator("#qaskills-secondary-filters");
+
+    await expect(secondary).toBeHidden();
+    await typeFilter.click();
+    await expect(secondary).toBeVisible();
+
+    const requirements = secondary.locator('[data-parent-category="type"][data-secondary-filter*="需求发现与分析"]').first();
+    await expect(requirements).toBeVisible();
+    await requirements.click();
+    await expect(page.locator('a.card[data-slug="requirements-analysis"]')).toBeVisible();
+    await expect(page.locator('a.card[data-slug="api-testing"]')).toBeHidden();
+
+    await page.locator("#qaskills-clear").click();
+    await expect(secondary).toBeHidden();
   });
 
   test("detail shows Guide section, raw SKILL tab, and install panel", async ({ page }) => {
@@ -92,7 +108,20 @@ test.describe("QA Skills", () => {
     await expect(page.locator("#copy-raw-skill-btn")).toBeVisible();
     await expect(page.locator("#install-section")).toBeVisible();
     await expect(page.locator("#installer-panel")).toBeVisible();
+    await expect(page.locator("#npx-install-code")).toContainText("npx skills add");
     await expect(page.locator("#copy-quick-btn")).toBeVisible();
+    await expect(page.locator(".related-card").first()).toBeVisible();
+  });
+
+  test("detail header prioritizes installation and keeps source as a secondary action", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/discover-testing/");
+    const header = page.locator(".detail-header");
+    await expect(header.locator(".detail-status-tags")).toBeVisible();
+    await expect(header.locator(".detail-intro")).not.toBeEmpty();
+    await expect(header.getByText(/工作流|Workflow/)).toBeVisible();
+    await expect(header.getByText(/^Evals$/)).toBeVisible();
+    await expect(header.locator(".detail-author")).toBeVisible();
+    await expect(header.locator(".detail-updated")).toBeVisible();
   });
 
   test("detail page does not overflow horizontally on mobile", async ({ page }) => {

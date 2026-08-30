@@ -1,4 +1,6 @@
 ---
+import GoogleAdThin from "@/components/GoogleAdThin.astro";
+
 /**
  * Giscus 评论组件（基于 GitHub Discussions）
  * 默认使用 naodeng/naodeng.com.cn 的配置；可通过 .env 覆盖：
@@ -45,6 +47,9 @@ const enabled = Boolean(repo && repoId && category && categoryId);
 
 {enabled && (
   <section class="giscus-section" aria-label={lang === "zh-CN" ? "评论" : "Comments"}>
+    <div class="giscus-ad-slot" aria-label={lang === "zh-CN" ? "评论区广告" : "Ad before comments"}>
+      <GoogleAdThin />
+    </div>
     <div class="giscus"></div>
     <script is:inline
       src="https://giscus.app/client.js"

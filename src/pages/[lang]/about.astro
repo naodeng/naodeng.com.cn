@@ -89,7 +89,14 @@ export const getStaticPaths = () =>
 
   <section class="about-section">
     <h2 class="section-title">{t(ABOUT_ME_TITLE)}</h2>
-    <div class="prose" set:html={aboutMeHtml} />
+    <div class="about-me-grid">
+      <div class="about-me-lead">
+        <span class="about-me-lead__eyebrow">NAODENG / QA</span>
+        <p class="about-me-lead__title">{t(ABOUT_HERO_TAGLINE)}</p>
+        <span class="about-me-lead__mark" aria-hidden="true">N</span>
+      </div>
+      <div class="about-me-copy prose" set:html={aboutMeHtml} />
+    </div>
   </section>
 
   <section class="about-section">
@@ -238,6 +245,65 @@ export const getStaticPaths = () =>
   }
 
   /* ── Prose ── */
+  .about-me-grid {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.72fr) minmax(0, 1.28fr);
+    gap: var(--sp-s);
+  }
+  .about-me-lead,
+  .about-me-copy {
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-glass-medium);
+    box-shadow: var(--shadow-glass-sm);
+    backdrop-filter: blur(12px) saturate(114%);
+  }
+  .about-me-lead {
+    position: relative;
+    display: flex;
+    min-height: 15rem;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: var(--sp-m);
+  }
+  .about-me-lead::after {
+    position: absolute;
+    right: -2rem;
+    bottom: -3rem;
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
+    border-radius: 50%;
+    content: "";
+  }
+  .about-me-lead__eyebrow {
+    color: var(--color-theme);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+  .about-me-lead__title {
+    max-width: 18rem;
+    margin: var(--sp-s) 0 0;
+    color: var(--color-main);
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.25;
+  }
+  .about-me-lead__mark {
+    align-self: flex-end;
+    color: var(--color-theme);
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 0.8;
+    opacity: 0.3;
+  }
+  .about-me-copy {
+    padding: var(--sp-m);
+  }
   .prose :global(ul) {
     padding-inline-start: 1.2em;
   }
@@ -400,6 +466,7 @@ export const getStaticPaths = () =>
   }
 
   @media (max-width: 700px) {
+    .about-me-grid,
     .tech-grid,
     .project-grid,
     .about-two-col {

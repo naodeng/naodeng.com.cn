@@ -32,6 +32,8 @@ const isExactPath = (path: string) => {
   return Astro.url.pathname === localizedPath || Astro.url.pathname === `${localizedPath}/`;
 };
 
+const usesZhCobrandLogos = locale === "zh-cn";
+
 const isSectionPath = (path: string) => pathWithoutLang === path || pathWithoutLang.startsWith(`${path}/`);
 const isWikiSection = () => isSectionPath("/wiki");
 const isAiWikiSection = () => isSectionPath("/AIWiki");
@@ -185,12 +187,34 @@ const mobilePriorityItems = [
       <div class="site-brand-row">
         <p class="site-brand-heading">
           <a href={getRelativeLocaleUrl(locale, "/")} class="site-brand-link">
-            <img src="/favicon.svg" alt="" class="site-logo" width="24" height="24" />
+            {!usesZhCobrandLogos && <img src="/favicon.svg" alt="" class="site-logo" width="24" height="24" />}
             {locale === "zh-cn" ? (
               <span class="site-title-cobrand" aria-label={siteTitle}>
-                <span class="site-title-primary">软件测试同学</span>
+                <span class="site-title-segment">
+                  {usesZhCobrandLogos && (
+                    <img
+                      src="/brand/software-testing-students-logo-final.png"
+                      alt=""
+                      class="site-title-logo site-title-logo--students"
+                      width="24"
+                      height="24"
+                    />
+                  )}
+                  <span class="site-title-primary">软件测试同学</span>
+                </span>
                 <span class="site-title-cobrand-x" aria-hidden="true">X</span>
-                <span class="site-title-secondary">naodeng</span>
+                <span class="site-title-segment site-title-segment--secondary">
+                  {usesZhCobrandLogos && (
+                    <img
+                      src="/favicon.svg"
+                      alt=""
+                      class="site-title-logo site-title-logo--naodeng"
+                      width="24"
+                      height="24"
+                    />
+                  )}
+                  <span class="site-title-secondary">naodeng</span>
+                </span>
               </span>
             ) : (
               <span>{siteTitle}</span>
@@ -289,6 +313,33 @@ const mobilePriorityItems = [
       <div class="nav-tool nav-tool--bar">
         <LocaleSelect compact />
       </div>
+      {usesZhCobrandLogos && (
+        <div class="header-wechat-entry">
+          <button
+            type="button"
+            class="btn-icon header-wechat-follow"
+            aria-label="关注公众号"
+            aria-haspopup="dialog"
+            data-wechat-follow
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8.7 3.5C4.45 3.5 1 6.25 1 9.65c0 1.95 1.16 3.7 2.96 4.82l-.72 2.2 2.62-1.28c.9.27 1.85.42 2.84.42 4.25 0 7.7-2.75 7.7-6.16S12.95 3.5 8.7 3.5Zm-2.58 4.2a1.02 1.02 0 1 1 0-2.04 1.02 1.02 0 0 1 0 2.04Zm5.17 0a1.02 1.02 0 1 1 0-2.04 1.02 1.02 0 0 1 0 2.04Z" />
+              <path d="M23 14.02c0-2.91-2.95-5.28-6.58-5.28-.36 0-.71.03-1.05.07.03.28.05.56.05.84 0 4.01-3.83 7.18-8.63 7.18h-.22c1.1 1.5 3.12 2.48 5.43 2.48.85 0 1.66-.13 2.4-.36l2.24 1.1-.62-1.88C20.16 17.34 23 15.23 23 14.02Zm-8.79-1.5a.87.87 0 1 1 0-1.74.87.87 0 0 1 0 1.74Zm4.42 0a.87.87 0 1 1 0-1.74.87.87 0 0 1 0 1.74Z" />
+            </svg>
+          </button>
+          <div class="wechat-follow-coachmark" data-wechat-coachmark hidden>
+            <button type="button" class="wechat-follow-coachmark__action" data-wechat-coachmark-open>
+              快速关注微信公众号吧
+            </button>
+            <button
+              type="button"
+              class="wechat-follow-coachmark__close"
+              aria-label="关闭关注提示"
+              data-wechat-coachmark-close
+            >×</button>
+          </div>
+        </div>
+      )}
       <button type="button" class="btn-icon" aria-label={t(NAV_SEARCH)} data-search-open>
         <span class="material-icons-sharp" aria-hidden="true">search</span>
       </button>
@@ -590,6 +641,19 @@ const mobilePriorityItems = [
     gap: 0.28em;
     white-space: nowrap;
     line-height: 1;
+  }
+  .site-title-segment {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.32em;
+    min-width: 0;
+  }
+  .site-title-logo {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    border-radius: 50%;
   }
   .site-title-cobrand-x {
     display: inline-flex;
@@ -920,6 +984,78 @@ const mobilePriorityItems = [
     opacity: 0.95;
     flex-shrink: 0;
   }
+  .header-wechat-follow {
+    color: #07c160;
+  }
+  .header-wechat-entry {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+  .header-wechat-follow svg {
+    width: 20px;
+    height: 20px;
+  }
+  .wechat-follow-coachmark {
+    position: absolute;
+    z-index: 30;
+    inset-block-start: calc(100% + 12px);
+    inset-inline-start: 50%;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    max-width: min(240px, calc(100vw - 32px));
+    padding: 0.38rem 0.42rem 0.38rem 0.8rem;
+    color: white;
+    border: 1px solid color-mix(in srgb, #07c160 58%, white);
+    border-radius: 999px;
+    background: color-mix(in srgb, #07c160 88%, #082f24);
+    box-shadow: 0 12px 30px rgba(7, 193, 96, 0.24);
+    transform: translateX(-50%);
+  }
+  .wechat-follow-coachmark[hidden] {
+    display: none;
+  }
+  .wechat-follow-coachmark::before {
+    content: "";
+    position: absolute;
+    inset-block-start: -6px;
+    inset-inline-start: 50%;
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    border-block-start: 1px solid color-mix(in srgb, #07c160 58%, white);
+    border-inline-start: 1px solid color-mix(in srgb, #07c160 58%, white);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  .wechat-follow-coachmark__action,
+  .wechat-follow-coachmark__close {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    color: inherit;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .wechat-follow-coachmark__action {
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .wechat-follow-coachmark__close {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    margin-inline-start: 0.35rem;
+    font-size: 1rem;
+    border-radius: 50%;
+  }
+  .wechat-follow-coachmark__close:hover,
+  .wechat-follow-coachmark__close:focus-visible {
+    background: rgba(255, 255, 255, 0.16);
+  }
   .theme-toggle__dark { display: none; }
   :global(html[data-theme="dark"]) .theme-toggle__light { display: none; }
   :global(html[data-theme="dark"]) .theme-toggle__dark { display: inline-block; }
@@ -954,6 +1090,7 @@ const mobilePriorityItems = [
     .site-brand .site-brand-heading {
       min-width: 0;
       max-width: 100%;
+      font-size: 1.05rem;
     }
     .site-brand-link {
       max-width: 100%;
@@ -964,8 +1101,12 @@ const mobilePriorityItems = [
     }
     /* Keep brand readable; hide cobrand suffix that collided with utils */
     .site-title-cobrand-x,
-    .site-title-secondary {
+    .site-title-segment--secondary {
       display: none;
+    }
+    .site-title-logo {
+      width: 22px;
+      height: 22px;
     }
     .header-utils {
       grid-column: 2;
@@ -1279,6 +1420,27 @@ const mobilePriorityItems = [
 
     .site-brand {
       min-height: 64px;
+    }
+
+    .site-brand .site-brand-heading {
+      font-size: 0.95rem;
+    }
+
+    .site-title-logo {
+      width: 20px;
+      height: 20px;
+    }
+
+    .header-utils {
+      gap: 0.15rem;
+    }
+
+    .nav-tool :global(.locale-trigger),
+    .btn-icon {
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      padding-inline: 0;
     }
 
     .nav-toggle {

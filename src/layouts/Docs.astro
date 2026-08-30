@@ -75,6 +75,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
         menuLabel={menuLabel}
         searchPlaceholder={sidebarSearchPlaceholder}
       />
+      <div class="docs-sidebar-ad" aria-label={locale === "zh-cn" ? "侧栏广告" : "Sidebar advertisement"}>
+        <SidebarAd />
+      </div>
     </aside>
     <div class="docs-content">
       <slot />
@@ -108,6 +111,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     min-inline-size: 220px;
     overflow: visible;
   }
+  .docs-sidebar-ad {
+    margin-block-start: var(--sp-m);
+  }
   .docs-content {
     min-inline-size: 0;
     max-inline-size: 900px;
@@ -128,6 +134,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+  @media (max-width: 959px) {
+    .docs-sidebar-ad { display: none; }
   }
   @supports not (backdrop-filter: blur(1px)) {
     .docs-content { background: var(--color-glass-solid); }

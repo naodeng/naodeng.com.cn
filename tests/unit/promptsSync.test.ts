@@ -13,6 +13,9 @@ import { spawnSync } from "node:child_process";
 import {
   buildPromptDocument,
   buildWorkflowDocument,
+  displayPromptTitle,
+  parsePromptCategories,
+  promptDescription,
   rewriteWorkflowLinks,
   selectFullPrompt,
   syncFromRepo,
@@ -38,6 +41,11 @@ function createUpstreamFixture() {
 
   for (const sourceLang of ["en", "zh"] as const) {
     const title = sourceLang === "en" ? "API Testing" : "API 测试";
+    writeFixtureFile(
+      root,
+      sourceLang === "en" ? "README_EN.md" : "README.md",
+      `### 1. ${sourceLang === "en" ? "API Testing" : "API 测试"}\n\n| Prompt | Module |\n| --- | --- |\n| API | [api-testing](./testing-types/${sourceLang}/api-testing/README.md) |\n`,
+    );
     writeFixtureFile(root, `testing-types/${sourceLang}/api-testing/README.md`, `# ${title}\n`);
 
     for (const version of versions) {
@@ -79,6 +87,20 @@ afterEach(() => {
 });
 
 describe("prompt source selection", () => {
+  it("reads prompt categories from the upstream README table links", () => {
+    const root = makeTemporaryDirectory("awesome-qa-prompt-categories-");
+    writeFixtureFile(
+      root,
+      "README.md",
+      "### 1. 需求、规划与测试策略\n\n| Prompt | 模块入口 |\n| --- | --- |\n| API 测试 | [api-testing](./testing-types/zh/api-testing/README.md) |\n\n### 2. 测试设计\n\n| Prompt | 模块入口 |\n| --- | --- |\n| 用例编写 | [test-case-writing](./testing-types/zh/test-case-writing/README.md) |\n",
+    );
+
+    expect(parsePromptCategories(join(root, "README.md"), "zh")).toEqual(new Map([
+      ["api-testing", { title: "需求、规划与测试策略", order: 1 }],
+      ["test-case-writing", { title: "测试设计", order: 2 }],
+    ]));
+  });
+
   it("selects the sole full prompt and ignores Lite and platform variants", () => {
     expect(selectFullPrompt([
       "FunctionalTesting-CRISPE-Full.md",
@@ -108,20 +130,62 @@ describe("prompt source selection", () => {
 });
 
 describe("site document mapping", () => {
+  it("uses the prompt name instead of a Default version label", () => {
+    expect(displayPromptTitle("测试策略 Prompt - Default版")).toBe("测试策略 Prompt");
+    expect(displayPromptTitle("Test Strategy Prompt - Default version")).toBe("Test Strategy Prompt");
+  });
+
+  it("uses the upstream task as a prompt description instead of its title", () => {
+    expect(promptDescription("# API 测试\n\n**Task:** 根据接口文档设计测试策略。", "API 测试"))
+      .toBe("根据接口文档设计测试策略。");
+  });
+
+  it("uses the upstream Prompt purpose as the preferred description", () => {
+    expect(promptDescription(
+      "# 测试策略 Prompt\n\n<!-- Prompt purpose: 用于测试策略的风险识别、证据梳理与可执行测试建议输出。 -->\n\n**Task:** 制定测试策略。",
+      "测试策略 Prompt",
+    )).toBe("用于测试策略的风险识别、证据梳理与可执行测试建议输出。");
+  });
+
+  it("uses the opening prompt instruction when no metadata field exists", () => {
+    expect(promptDescription(
+      "# 分布式事务测试设计 Prompt\n\n你是一名消息与分布式系统测试专家。仅根据用户提供的材料，围绕分布式事务测试设计形成可执行、可核验的结果。\n\n## 必要输入",
+      "分布式事务测试设计 Prompt",
+    )).toBe("你是一名消息与分布式系统测试专家。仅根据用户提供的材料，围绕分布式事务测试设计形成可执行、可核验的结果。");
+  });
+
+  it("records the canonical upstream file without a prompt-version field", () => {
+    const output = buildPromptDocument({
+      body: "# API Testing Prompt\n\nOriginal body.",
+      category: "API Testing",
+      categoryOrder: 1,
+      lang: "en",
+      testingType: "api-testing",
+      sourcePath: "testing-types/en/api-testing/Standard-version/APITestingPrompt.md",
+      title: "API Testing Prompt",
+      order: 1,
+    });
+
+    expect(output).toContain('sourcePath: "testing-types/en/api-testing/Standard-version/APITestingPrompt.md"');
+    expect(output).not.toContain("promptVersion:");
+  });
+
   it("adds prompt schema fields without changing the body", () => {
     const body = "# API Testing Prompt\n\nOriginal body.";
     const output = buildPromptDocument({
       body,
+      category: "API Testing",
+      categoryOrder: 1,
       lang: "en",
       testingType: "api-testing",
-      promptVersion: "Standard",
+      sourcePath: "testing-types/en/api-testing/Standard-version/APITestingPrompt.md",
       title: "API Testing",
       order: 1,
     });
 
-    expect(output).toContain('title: "Standard - API Testing"');
+    expect(output).toContain('title: "API Testing"');
     expect(output).toContain('testingType: "api-testing"');
-    expect(output).toContain('promptVersion: "Standard"');
+    expect(output).toContain('sourcePath: "testing-types/en/api-testing/Standard-version/APITestingPrompt.md"');
     expect(output.endsWith(`${body}\n`)).toBe(true);
   });
 
@@ -143,6 +207,18 @@ describe("site document mapping", () => {
 });
 
 describe("repository synchronization", () => {
+  it("skips empty upstream Standard-version directories", () => {
+    const repoRoot = createUpstreamFixture();
+    const siteRoot = makeTemporaryDirectory("qa-site-output-");
+    mkdirSync(join(repoRoot, "testing-types/en/empty-category/Standard-version"), { recursive: true });
+    mkdirSync(join(repoRoot, "testing-types/zh/empty-category/Standard-version"), { recursive: true });
+
+    const result = syncFromRepo(repoRoot, siteRoot, { failOnLangMismatch: true });
+
+    expect(result.promptCounts).toEqual({ en: 1, "zh-cn": 1 });
+    expect(existsSync(join(siteRoot, "src/content/prompts/en/empty-category.md"))).toBe(false);
+  });
+
   it("writes bilingual prompts and workflows, removes orphans, and is idempotent", () => {
     const repoRoot = createUpstreamFixture();
     const siteRoot = makeTemporaryDirectory("qa-site-output-");
@@ -150,15 +226,15 @@ describe("repository synchronization", () => {
     writeFixtureFile(siteRoot, "src/content/workflows/en/orphan.md", "orphan\n");
 
     const first = syncFromRepo(repoRoot, siteRoot, { failOnLangMismatch: true });
-    expect(first.promptCounts).toEqual({ en: 6, "zh-cn": 6 });
+    expect(first.promptCounts).toEqual({ en: 1, "zh-cn": 1 });
     expect(first.workflowCounts).toEqual({ en: 3, "zh-cn": 3 });
     expect(first.removed.prompts.en).toContain("orphan/Standard.md");
     expect(first.removed.workflows.en).toContain("orphan.md");
-    expect(existsSync(join(siteRoot, "src/content/prompts/en/api-testing/Standard.md"))).toBe(true);
+    expect(existsSync(join(siteRoot, "src/content/prompts/en/api-testing.md"))).toBe(true);
     expect(existsSync(join(siteRoot, "src/content/workflows/zh-cn/daily.md"))).toBe(true);
 
     const snapshot = readFileSync(
-      join(siteRoot, "src/content/prompts/en/api-testing/Standard.md"),
+      join(siteRoot, "src/content/prompts/en/api-testing.md"),
       "utf8",
     );
     const second = syncFromRepo(repoRoot, siteRoot, { failOnLangMismatch: true });
@@ -167,7 +243,7 @@ describe("repository synchronization", () => {
       workflows: { en: [], "zh-cn": [] },
     });
     expect(readFileSync(
-      join(siteRoot, "src/content/prompts/en/api-testing/Standard.md"),
+      join(siteRoot, "src/content/prompts/en/api-testing.md"),
       "utf8",
     )).toBe(snapshot);
   });
@@ -175,7 +251,7 @@ describe("repository synchronization", () => {
   it("warns on language mismatch by default and fails in strict mode", () => {
     const repoRoot = createUpstreamFixture();
     const siteRoot = makeTemporaryDirectory("qa-site-output-");
-    rmSync(join(repoRoot, "testing-types/zh/api-testing/RISE-version"), { recursive: true });
+    rmSync(join(repoRoot, "testing-types/zh/api-testing/Standard-version"), { recursive: true });
     const warn = vi.spyOn(console, "warn").mockImplementation(() => undefined);
 
     expect(() => syncFromRepo(repoRoot, siteRoot, { failOnLangMismatch: false })).not.toThrow();
@@ -205,7 +281,7 @@ describe("repository synchronization", () => {
 
     expect(result.status, result.stderr || result.stdout).toBe(0);
     expect(readFileSync(
-      join(siteRoot, "src/content/prompts/en/api-testing/Standard.md"),
+      join(siteRoot, "src/content/prompts/en/api-testing.md"),
       "utf8",
     )).toContain("en canonical Standard.");
   });
@@ -216,7 +292,7 @@ describe("repository synchronization", () => {
       "能够辅助设计功能测试步骤，并根据真实执行结果整理定位线索。";
     writeFixtureFile(
       repoRoot,
-      "testing-types/zh/api-testing/CRISPE-version/APITesting-CRISPE-Full.md",
+      "testing-types/zh/api-testing/Standard-version/APITestingPrompt.md",
       `# API 测试 CRISPE\n\n${corrected}\n`,
     );
     const siteRoot = makeTemporaryDirectory("qa-site-output-");
@@ -224,7 +300,7 @@ describe("repository synchronization", () => {
     syncFromRepo(repoRoot, siteRoot, { failOnLangMismatch: true });
 
     const generated = readFileSync(
-      join(siteRoot, "src/content/prompts/zh-cn/api-testing/CRISPE.md"),
+      join(siteRoot, "src/content/prompts/zh-cn/api-testing.md"),
       "utf8",
     );
     expect(generated).toContain(corrected);

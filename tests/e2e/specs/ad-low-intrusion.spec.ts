@@ -89,4 +89,20 @@ test.describe("广告低干扰专项检查", () => {
       expect(cls, `route=${route}, cls=${cls}`).toBeLessThanOrEqual(0.1);
     }
   });
+
+  test("广告位保持嵌入文档流，移动端不使用悬浮定位", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto((baseURL || "") + "/zh-cn/wiki/acceptance-testing/", { waitUntil: "domcontentloaded" });
+
+    const adLayout = await page.evaluate((selector) => Array.from(document.querySelectorAll(selector)).map((node) => {
+      const style = getComputedStyle(node as HTMLElement);
+      const rect = (node as HTMLElement).getBoundingClientRect();
+      return { position: style.position, width: rect.width };
+    }), AD_WRAPPER_SELECTOR);
+
+    for (const ad of adLayout) {
+      expect(ad.position).not.toMatch(/fixed|sticky/);
+      expect(ad.width).toBeLessThanOrEqual(390);
+    }
+  });
 });

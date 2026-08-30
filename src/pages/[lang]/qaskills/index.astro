@@ -7,7 +7,7 @@ import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getQASkillsGrouped, resolveLifecyclePath } from "@/utils/qaskills";
 import { shouldShowEvalsFilter } from "@/utils/qaskillsFilter";
-import { getQASkillCardSummary, QA_SKILL_TOOLS, RECOMMENDED_QA_SKILL_SLUGS } from "@/data/qaSkillLibrary";
+import { QA_SKILL_TOOLS, RECOMMENDED_QA_SKILL_SLUGS } from "@/data/qaSkillLibrary";
 
 export function getStaticPaths() {
   return [
@@ -31,7 +31,7 @@ const recommendedSkills = RECOMMENDED_QA_SKILL_SLUGS
   .map((slug) => allSkills.find((skill) => skill.slug === slug))
   .filter((skill): skill is NonNullable<typeof skill> => Boolean(skill));
 
-// 构建期判断：数据无区分度时不渲染 eval 筛选 chip（当前 38 个 skill 均含评测用例）
+// 构建期判断：数据无区分度时不渲染 eval 筛选 chip。
 const showEvalsFilter = shouldShowEvalsFilter(allSkills);
 
 const text = lang === "zh-cn" ? {
@@ -51,14 +51,7 @@ const text = lang === "zh-cn" ? {
   filterAll: "全部",
   filterType: "测试类型",
   filterWorkflow: "工作流",
-  filterPlus: "Plus",
   filterEvals: "有 Evals",
-  typeTitle: "测试类型",
-  workflowTitle: "测试工作流程",
-  plusTitle: "加强版",
-  typeDesc: "按测试能力方向查看技能。",
-  workflowDesc: "按日常、迭代、发布流程查看技能。",
-  plusDesc: "更深度、结构更完整的增强版本技能。",
   viewDetail: "查看详情",
   empty: "没有匹配的技能。试试 discover-testing，或清空筛选。",
   clearFilters: "清空筛选",
@@ -96,14 +89,7 @@ const text = lang === "zh-cn" ? {
   filterAll: "All",
   filterType: "Types",
   filterWorkflow: "Workflows",
-  filterPlus: "Plus",
   filterEvals: "Has Evals",
-  typeTitle: "Testing Types",
-  workflowTitle: "Testing Workflows",
-  plusTitle: "Plus",
-  typeDesc: "Browse by testing capability.",
-  workflowDesc: "Browse by daily, sprint, and release workflows.",
-  plusDesc: "Enhanced skills with deeper and more complete structure.",
   viewDetail: "View Details",
   empty: "No matching skills. Try discover-testing, or clear filters.",
   clearFilters: "Clear filters",
@@ -167,10 +153,6 @@ const breadcrumbs = [
 const displayNameOf = (skill: (typeof allSkills)[number]) =>
   lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title;
 
-const summaryBySlug = new Map(
-  allSkills.map((skill) => [skill.slug, getQASkillCardSummary(skill, lang)]),
-);
-const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill.slug)!;
 ---
 
 <Base
@@ -211,117 +193,78 @@ const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill
         <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">{text.filterAll}</button>
         <button type="button" class="chip" data-filter="type" aria-pressed="false">{text.filterType}</button>
         <button type="button" class="chip" data-filter="workflow" aria-pressed="false">{text.filterWorkflow}</button>
-        <button type="button" class="chip" data-filter="plus" aria-pressed="false">{text.filterPlus}</button>
         {showEvalsFilter && (
           <button type="button" class="chip" data-evals-toggle="1" aria-pressed="false">{text.filterEvals}</button>
         )}
       </div>
+      <div id="qaskills-secondary-filters" class="chips chips-secondary" role="group" aria-label={lang === "zh-cn" ? "二级分类" : "Subcategories"} hidden>
+        {grouped.catalogGroups.flatMap((catalogGroup) =>
+          catalogGroup.groups.map((subgroup) => {
+            const key = `${catalogGroup.key}--${subgroup.key}`;
+            const parentCategory = subgroup.skills[0]?.category || "type";
+            return <button type="button" class="chip chip-secondary" data-secondary-filter={key} data-parent-category={parentCategory} aria-pressed="false" hidden>{subgroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</button>;
+          })
+        )}
+      </div>
       <p id="qaskills-results" class="results-count" aria-live="polite" data-label={text.resultsLabel}>{totalCount} {text.resultsLabel}</p>
+      <button type="button" id="qaskills-clear" class="btn btn-outline" hidden>{text.clearFilters}</button>
     </section>
 
     <section class="section" id="categories">
       <h2>{text.categories}</h2>
       <p id="qaskills-empty" class="empty-state" hidden>
         {text.empty}
-        <button type="button" id="qaskills-clear" class="btn btn-outline">{text.clearFilters}</button>
       </p>
 
-      <div class="category-block" data-block="type">
-        <h3>{text.typeTitle}</h3>
-        <p>{text.typeDesc}</p>
-        {grouped.testingTypeSubgroups.map((group) => (
-          <div class="subgroup">
-            <h4>{group.title[lang === "zh-cn" ? "zh-cn" : "en"]}</h4>
+      {grouped.catalogGroups.map((catalogGroup) => (
+        <div class="category-block" data-block={catalogGroup.key}>
+          <h3>{catalogGroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</h3>
+          {catalogGroup.skills.length > 0 && (
             <ul class="cards" role="list">
-              {group.skills.map((skill) => (
-                <li>
-                  <a
-                    class="card"
-                    data-slug={skill.slug}
-                    data-category={skill.category}
-                    data-evals={skill.hasEvals ? "true" : "false"}
-                    data-title={displayNameOf(skill)}
-                    data-intro={skill.intro}
-                    href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
-                  >
-                    <h5>{displayNameOf(skill)}</h5>
-                    <p class="card-meta">
-                      <span class="tag">{categoryLabel(skill.category)}</span>
-                      <span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span>
-                      <span class="tag">{skill.updatedAt || "-"}</span>
-                    </p>
-                    <div class="card-summary">
-                      <p data-summary-when><span class="summary-label">{text.summaryWhen}</span><span class="summary-text">{summaryOf(skill).whenToUse}</span></p>
-                      <p data-summary-input><span class="summary-label">{text.summaryInput}</span><span class="summary-text">{summaryOf(skill).input}</span></p>
-                      <p data-summary-output><span class="summary-label">{text.summaryOutput}</span><span class="summary-text">{summaryOf(skill).output}</span></p>
-                      <p data-summary-review><span class="summary-label">{text.summaryReview}</span><span class="summary-text">{summaryOf(skill).humanReview}</span></p>
-                    </div>
-                    <span>{text.viewDetail} →</span>
-                  </a>
-                </li>
+              {catalogGroup.skills.map((skill) => (
+            <li>
+              <a
+                class="card"
+                data-slug={skill.slug}
+                data-category={skill.category}
+                data-secondary-category=""
+                data-evals={skill.hasEvals ? "true" : "false"}
+                data-title={displayNameOf(skill)}
+                data-intro={skill.intro}
+                href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
+              >
+                <h5>{displayNameOf(skill)}</h5>
+                <p class="card-meta">
+                  <span class="tag">{categoryLabel(skill.category)}</span>
+                  <span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span>
+                  <span class="tag">{skill.updatedAt || "-"}</span>
+                </p>
+                <p class="card-intro">{skill.intro}</p>
+                <span>{text.viewDetail} →</span>
+              </a>
+            </li>
               ))}
             </ul>
-          </div>
-        ))}
-      </div>
-
-      <div class="category-block" data-block="workflow">
-        <h3>{text.workflowTitle}</h3>
-        <p>{text.workflowDesc}</p>
-        <ul class="cards" role="list">
-          {grouped.testingWorkflows.map((skill) => (
-            <li>
-              <a
-                class="card"
-                data-slug={skill.slug}
-                data-category={skill.category}
-                data-evals={skill.hasEvals ? "true" : "false"}
-                data-title={displayNameOf(skill)}
-                data-intro={skill.intro}
-                href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
-              >
-                <h5>{displayNameOf(skill)}</h5>
-                <p class="card-meta">
-                  <span class="tag">{categoryLabel(skill.category)}</span>
-                  <span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span>
-                  <span class="tag">{skill.updatedAt || "-"}</span>
-                </p>
-                <p class="card-intro">{skill.intro}</p>
-                <span>{text.viewDetail} →</span>
-              </a>
-            </li>
+          )}
+          {catalogGroup.groups.map((subgroup) => (
+            <div class="subgroup">
+              <h4>{subgroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</h4>
+              <ul class="cards" role="list">
+                {subgroup.skills.map((skill) => (
+                  <li>
+                    <a class="card" data-slug={skill.slug} data-category={skill.category} data-secondary-category={`${catalogGroup.key}--${subgroup.key}`} data-evals={skill.hasEvals ? "true" : "false"} data-title={displayNameOf(skill)} data-intro={skill.intro} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+                      <h5>{displayNameOf(skill)}</h5>
+                      <p class="card-meta"><span class="tag">{categoryLabel(skill.category)}</span><span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span><span class="tag">{skill.updatedAt || "-"}</span></p>
+                      <p class="card-intro">{skill.intro}</p>
+                      <span>{text.viewDetail} →</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
-      </div>
-
-      <div class="category-block" data-block="plus">
-        <h3>{text.plusTitle}</h3>
-        <p>{text.plusDesc}</p>
-        <ul class="cards" role="list">
-          {grouped.plus.map((skill) => (
-            <li>
-              <a
-                class="card"
-                data-slug={skill.slug}
-                data-category={skill.category}
-                data-evals={skill.hasEvals ? "true" : "false"}
-                data-title={displayNameOf(skill)}
-                data-intro={skill.intro}
-                href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
-              >
-                <h5>{displayNameOf(skill)}</h5>
-                <p class="card-meta">
-                  <span class="tag">{categoryLabel(skill.category)}</span>
-                  <span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span>
-                  <span class="tag">{skill.updatedAt || "-"}</span>
-                </p>
-                <p class="card-intro">{skill.intro}</p>
-                <span>{text.viewDetail} →</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+        </div>
+      ))}
 
       <div class="ad-slot-250">
         <GoogleAd />
@@ -385,24 +328,37 @@ const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill
     const results = document.getElementById("qaskills-results");
     const clearBtn = document.getElementById("qaskills-clear");
     const chips = Array.from(document.querySelectorAll(".chip[data-filter], .chip[data-evals-toggle]"));
+    const secondaryFilters = document.getElementById("qaskills-secondary-filters");
+    const secondaryChips = Array.from(document.querySelectorAll(".chip[data-secondary-filter]"));
     const cards = Array.from(document.querySelectorAll("a.card[data-slug]"));
     const blocks = Array.from(document.querySelectorAll(".category-block"));
     const defaultOnly = Array.from(document.querySelectorAll("[data-qaskills-default-only]"));
     if (!search || !empty || !cards.length) return;
 
     let category = "all";
+    let secondaryCategory = "";
     let evalsOnly = false;
 
     // 与 src/utils/qaskillsFilter.ts 的 isQASkillSearchActive 保持等价
     // （is:inline 脚本无法 import 模块，两处需同步维护）
     const searchActive = () =>
-      (search.value || "").trim().length > 0 || category !== "all" || evalsOnly;
+      (search.value || "").trim().length > 0 || category !== "all" || secondaryCategory !== "" || evalsOnly;
+
+    const updateSecondaryFilters = () => {
+      const visible = secondaryChips.filter((chip) => chip.getAttribute("data-parent-category") === category);
+      secondaryFilters?.toggleAttribute("hidden", visible.length === 0);
+      secondaryChips.forEach((chip) => chip.toggleAttribute("hidden", !visible.includes(chip)));
+      if (!visible.some((chip) => chip.getAttribute("data-secondary-filter") === secondaryCategory)) {
+        secondaryCategory = "";
+      }
+    };
 
     const apply = () => {
       const q = (search.value || "").trim().toLowerCase();
       let visible = 0;
       cards.forEach((card) => {
         const cat = card.getAttribute("data-category") || "type";
+        const subcategory = card.getAttribute("data-secondary-category") || "";
         const hasEvals = card.getAttribute("data-evals") === "true";
         const haystack = [
           card.getAttribute("data-slug") || "",
@@ -412,9 +368,10 @@ const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill
           .join(" ")
           .toLowerCase();
         const okCat = category === "all" || cat === category;
+        const okSecondary = !secondaryCategory || subcategory === secondaryCategory;
         const okEvals = !evalsOnly || hasEvals;
         const okQuery = !q || haystack.includes(q);
-        const show = okCat && okEvals && okQuery;
+        const show = okCat && okSecondary && okEvals && okQuery;
         card.closest("li")?.toggleAttribute("hidden", !show);
         if (show) visible += 1;
       });
@@ -425,16 +382,15 @@ const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill
       });
 
       blocks.forEach((block) => {
-        const blockCat = block.getAttribute("data-block");
-        const relevant = category === "all" || category === blockCat;
         const hasVisible = Array.from(block.querySelectorAll("li")).some((li) => !li.hasAttribute("hidden"));
-        block.toggleAttribute("hidden", !relevant || !hasVisible);
+        block.toggleAttribute("hidden", !hasVisible);
       });
 
       // 搜索态下隐藏默认辅助区，让目录结果紧邻筛选区
       defaultOnly.forEach((el) => el.toggleAttribute("hidden", searchActive()));
 
       empty.hidden = visible > 0;
+      clearBtn?.toggleAttribute("hidden", !searchActive());
       if (results) results.textContent = `${visible} ${results.dataset.label || ""}`.trim();
     };
 
@@ -450,7 +406,19 @@ const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill
             c.classList.toggle("is-active", c === chip);
             c.setAttribute("aria-pressed", String(c === chip));
           });
+          updateSecondaryFilters();
         }
+        apply();
+      });
+    });
+
+    secondaryChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        secondaryCategory = chip.getAttribute("data-secondary-filter") || "";
+        secondaryChips.forEach((item) => {
+          item.classList.toggle("is-active", item === chip);
+          item.setAttribute("aria-pressed", String(item === chip));
+        });
         apply();
       });
     });
@@ -459,6 +427,7 @@ const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill
     clearBtn?.addEventListener("click", () => {
       search.value = "";
       category = "all";
+      secondaryCategory = "";
       evalsOnly = false;
       document.querySelectorAll(".chip[data-filter]").forEach((c) => {
         c.classList.toggle("is-active", c.getAttribute("data-filter") === "all");
@@ -467,10 +436,12 @@ const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill
       const evalsChip = document.querySelector(".chip[data-evals-toggle]");
       evalsChip?.classList.remove("is-active");
       evalsChip?.setAttribute("aria-pressed", "false");
+      updateSecondaryFilters();
       apply();
       search?.focus();
     });
 
+    updateSecondaryFilters();
     apply();
   })();
 </script>
@@ -489,7 +460,7 @@ const summaryOf = (skill: (typeof allSkills)[number]) => summaryBySlug.get(skill
     background:
       radial-gradient(circle at 18% 12%, rgba(79, 70, 229, 0.16), transparent 34%),
       radial-gradient(circle at 90% 18%, rgba(67, 56, 202, 0.16), transparent 30%),
-      rgba(255, 255, 255, 0.78);
+      var(--color-surface-elevated);
     border: 1px solid rgba(148, 163, 184, 0.22);
     box-shadow: var(--shadow-md);
   }

@@ -25,6 +25,10 @@ import {
 
 const locale = Astro.currentLocale as Lang;
 const paths = getLocalePaths(Astro.url);
+const localizedHomePath = getRelativeLocaleUrl(locale, "/");
+const isZhHome =
+  locale === "zh-cn" &&
+  (Astro.url.pathname === localizedHomePath || Astro.url.pathname === `${localizedHomePath}/`);
 
 // 找到另一种语言的路径
 const otherLocalePath = paths.find(p => p.lang !== locale)?.path || (locale === 'zh-cn' ? '/en/' : '/zh-cn/');
@@ -114,6 +118,21 @@ const footerGroups = [
           {link.icon === 'email' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>}
         </a>
       ))}
+
+      {isZhHome && (
+        <button
+          type="button"
+          class="social-icon wechat-follow-trigger"
+          aria-label="关注公众号"
+          aria-haspopup="dialog"
+          data-wechat-follow
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8.7 3.5C4.45 3.5 1 6.25 1 9.65c0 1.95 1.16 3.7 2.96 4.82l-.72 2.2 2.62-1.28c.9.27 1.85.42 2.84.42 4.25 0 7.7-2.75 7.7-6.16S12.95 3.5 8.7 3.5Zm-2.58 4.2a1.02 1.02 0 1 1 0-2.04 1.02 1.02 0 0 1 0 2.04Zm5.17 0a1.02 1.02 0 1 1 0-2.04 1.02 1.02 0 0 1 0 2.04Z" />
+            <path d="M23 14.02c0-2.91-2.95-5.28-6.58-5.28-.36 0-.71.03-1.05.07.03.28.05.56.05.84 0 4.01-3.83 7.18-8.63 7.18h-.22c1.1 1.5 3.12 2.48 5.43 2.48.85 0 1.66-.13 2.4-.36l2.24 1.1-.62-1.88C20.16 17.34 23 15.23 23 14.02Zm-8.79-1.5a.87.87 0 1 1 0-1.74.87.87 0 0 1 0 1.74Zm4.42 0a.87.87 0 1 1 0-1.74.87.87 0 0 1 0 1.74Z" />
+          </svg>
+        </button>
+      )}
       
       <a href={otherLocalePath} class="social-icon lang-toggle" title={locale === 'zh-cn' ? 'Switch to English' : '切换至中文'}>
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -174,7 +193,66 @@ const footerGroups = [
       </div>
     </div>
   </div>
+
+  {locale === "zh-cn" && (
+    <dialog class="wechat-follow-dialog" aria-label="关注软件测试同学公众号" data-wechat-dialog>
+      <div class="wechat-follow-card">
+        <button type="button" class="wechat-follow-close" aria-label="关闭二维码" data-wechat-close>×</button>
+        <p class="wechat-follow-eyebrow">WECHAT OFFICIAL ACCOUNT</p>
+        <h2>关注软件测试同学</h2>
+        <p class="wechat-follow-description">使用微信扫描二维码，获取软件测试与 AI 测试的最新内容。</p>
+        <img
+          src="/brand/software-testing-students-wechat-qr.jpg"
+          alt="软件测试同学微信公众号二维码"
+          width="258"
+          height="258"
+          loading="lazy"
+        />
+        <p class="wechat-follow-hint">微信扫码关注公众号</p>
+      </div>
+    </dialog>
+  )}
 </footer>
+
+<script>
+  const followTriggers = document.querySelectorAll<HTMLButtonElement>("[data-wechat-follow]");
+  const followDialog = document.querySelector<HTMLDialogElement>("[data-wechat-dialog]");
+  const followClose = document.querySelector<HTMLButtonElement>("[data-wechat-close]");
+  const followCoachmark = document.querySelector<HTMLElement>("[data-wechat-coachmark]");
+  const followCoachmarkOpen = document.querySelector<HTMLButtonElement>("[data-wechat-coachmark-open]");
+  const followCoachmarkClose = document.querySelector<HTMLButtonElement>("[data-wechat-coachmark-close]");
+  const followPromptCookie = "wechat_follow_prompt_seen";
+  let followCoachmarkTimer: ReturnType<typeof setTimeout> | undefined;
+
+  const hideFollowCoachmark = () => {
+    if (followCoachmarkTimer) clearTimeout(followCoachmarkTimer);
+    followCoachmarkTimer = undefined;
+    if (followCoachmark) followCoachmark.hidden = true;
+  };
+
+  const openFollowDialog = () => {
+    hideFollowCoachmark();
+    followDialog?.showModal();
+  };
+
+  const hasSeenFollowPrompt = document.cookie
+    .split(";")
+    .some((cookie) => cookie.trim().startsWith(`${followPromptCookie}=`));
+
+  if (followCoachmark && !hasSeenFollowPrompt) {
+    followCoachmark.hidden = false;
+    document.cookie = `${followPromptCookie}=1; Max-Age=31536000; Path=/; SameSite=Lax`;
+    followCoachmarkTimer = setTimeout(hideFollowCoachmark, 7_000);
+  }
+
+  followTriggers.forEach((trigger) => trigger.addEventListener("click", openFollowDialog));
+  followCoachmarkOpen?.addEventListener("click", openFollowDialog);
+  followCoachmarkClose?.addEventListener("click", hideFollowCoachmark);
+  followClose?.addEventListener("click", () => followDialog?.close());
+  followDialog?.addEventListener("click", (event) => {
+    if (event.target === followDialog) followDialog.close();
+  });
+</script>
 
 <style>
   /* Zenix footer: glass panel on cool gradient */
@@ -231,6 +309,8 @@ const footerGroups = [
     transition: color 0.2s ease, border-color 0.2s ease;
     text-decoration: none;
     position: relative;
+    padding: 0;
+    cursor: pointer;
   }
 
   .social-icon svg {
@@ -242,7 +322,7 @@ const footerGroups = [
   .social-icon:focus-visible {
     color: var(--color-theme);
     border-color: color-mix(in srgb, var(--color-theme) 26%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 8%, white);
+    background: var(--color-theme-soft);
     transform: translateY(-2px);
   }
 
@@ -260,6 +340,104 @@ const footerGroups = [
     line-height: 1;
     background: linear-gradient(135deg, var(--color-theme), var(--color-theme-light));
     color: white;
+  }
+
+  .wechat-follow-trigger {
+    color: #07c160;
+  }
+
+  .wechat-follow-dialog {
+    width: min(420px, calc(100vw - 32px));
+    max-width: none;
+    margin: auto;
+    padding: 0;
+    color: var(--color-main);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 24px;
+    background: var(--color-glass-solid);
+    box-shadow: 0 28px 80px rgba(15, 23, 42, 0.28);
+    overflow: hidden;
+  }
+
+  .wechat-follow-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.48);
+    backdrop-filter: blur(8px);
+  }
+
+  .wechat-follow-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 34px;
+    text-align: center;
+    background:
+      radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-theme) 15%, transparent), transparent 48%),
+      var(--color-glass-solid);
+  }
+
+  .wechat-follow-close {
+    position: absolute;
+    inset-block-start: 14px;
+    inset-inline-end: 14px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    color: var(--color-text-secondary);
+    font-size: 1.55rem;
+    line-height: 1;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-glass-solid) 90%, transparent);
+    cursor: pointer;
+  }
+
+  .wechat-follow-close:hover,
+  .wechat-follow-close:focus-visible {
+    color: var(--color-theme);
+    border-color: color-mix(in srgb, var(--color-theme) 28%, transparent);
+  }
+
+  .wechat-follow-eyebrow {
+    margin: 0 0 0.55rem;
+    color: var(--color-theme);
+    font-family: var(--english-font);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+  }
+
+  .wechat-follow-card h2 {
+    margin: 0;
+    font-size: 1.55rem;
+    color: var(--color-main);
+  }
+
+  .wechat-follow-description {
+    max-width: 30ch;
+    margin: 0.75rem 0 1.25rem;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+
+  .wechat-follow-card img {
+    display: block;
+    width: min(258px, 100%);
+    height: auto;
+    padding: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 18px;
+    background: white;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wechat-follow-hint {
+    margin: 0.9rem 0 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--text-xs);
   }
 
   /* 底部次级导航 */
@@ -312,7 +490,7 @@ const footerGroups = [
   .footer-nav a:hover,
   .footer-nav a:focus-visible {
     color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 8%, white);
+    background: var(--color-theme-soft);
   }
 
   /* 版权与信息区域 */
@@ -435,6 +613,10 @@ const footerGroups = [
     .social-icon {
       width: 48px;
       height: 48px;
+    }
+
+    .wechat-follow-card {
+      padding: 30px 24px 26px;
     }
 
     .footer-nav {

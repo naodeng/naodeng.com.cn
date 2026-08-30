@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-case-reviewer
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-case-reviewer/SKILL.md
 - description: Use this skill when you need to review test cases for completeness, clarity, maintainability, and missing scenarios; triggers include test case review and test case QA.
 

@@ -7,13 +7,17 @@ order: 2
 ---
 # Sprint Testing Workflow
 
+<div align="right"><a href="../zh/sprint-testing-workflow.md">简体中文</a> · <strong>English</strong></div>
+
 ## 📋 Metadata
+
 - **Audience**: QA Engineers, Scrum Teams
 - **Sprint Duration**: 2 weeks (typical)
 - **Last Updated**: 2026-01-01
 - **Version**: 1.0
 
 ## 🎯 Objective
+
 Complete testing workflow for a 2-week sprint cycle, from planning to retrospective.
 
 ---
@@ -21,9 +25,10 @@ Complete testing workflow for a 2-week sprint cycle, from planning to retrospect
 ## 📅 Sprint Planning (Day 1)
 
 ### Morning: Sprint Planning Meeting
+
 **Preparation** (Before meeting):
 - Review product backlog
-- Use [Test Strategy](/en/prompts/test-strategy/) for upcoming stories
+- Use [Test Strategy](/en/prompts/en/) for upcoming stories
 
 **During Meeting**:
 - Understand acceptance criteria
@@ -32,9 +37,10 @@ Complete testing workflow for a 2-week sprint cycle, from planning to retrospect
 - Flag testing dependencies
 
 ### Afternoon: Test Planning
+
 **Prompts to Use**:
-- [Test Strategy](/en/prompts/test-strategy/)
-- [Requirements Analysis](/en/prompts/requirements-analysis/)
+- [Test Strategy](/en/prompts/en/)
+- [Requirements Analysis](/en/prompts/en/)
 
 **Deliverables**:
 - [ ] Test strategy document
@@ -44,7 +50,7 @@ Complete testing workflow for a 2-week sprint cycle, from planning to retrospect
 - [ ] Automation candidates identified
 
 **Template**:
-```
+```text
 Sprint: [Sprint Number]
 Stories: [List user stories]
 Testing Focus: [Areas to test]
@@ -57,18 +63,20 @@ Risks: [Identified risks]
 ## 🏗️ Sprint Days 2-3: Setup & Early Testing
 
 ### Test Environment Setup
+
 **Actions**:
 - Set up test environments
 - Configure CI/CD pipelines
 - Prepare test data
 
 **Prompts to Use**:
-- [Automation Testing](/en/prompts/automation-testing/)
-- [Test Strategy](/en/prompts/test-strategy/) - Test data generation
+- [Automation Testing](/en/prompts/en/)
+- [Test Strategy](/en/prompts/en/) - Test data generation
 
 ### Early Story Testing
+
 **For Ready Stories**:
-1. Generate test cases using [Test Case Writing](/en/prompts/test-case-writing/)
+1. Generate test cases using [Test Case Writing](/en/prompts/en/)
 2. Review with developers
 3. Start exploratory testing on completed work
 
@@ -79,24 +87,27 @@ Risks: [Identified risks]
 ### Daily Activities
 
 #### Morning Stand-up
+
 **Report**:
 - Tests completed yesterday
 - Tests planned for today
 - Blockers
 
 #### Test Execution
+
 **Manual Testing**:
 - Execute test cases for completed stories
-- Use [Manual Testing](/en/prompts/manual-testing/) for exploratory testing on new features
-- Log bugs using [Bug Reporting](/en/prompts/bug-reporting/)
+- Use [Manual Testing](/en/prompts/en/) for exploratory testing on new features
+- Log bugs using [Bug Reporting](/en/prompts/en/)
 
 **Automation**:
 - Write automated tests for completed stories
 - Use framework-specific prompts:
-  - [Automation Testing](/en/prompts/automation-testing/)
-  - [API Testing](/en/prompts/api-testing/)
+  - [Automation Testing](/en/prompts/en/)
+  - [API Testing](/en/prompts/en/)
 
 #### Bug Triage (Daily)
+
 **Process**:
 1. Review new bugs
 2. Prioritize with team
@@ -104,6 +115,7 @@ Risks: [Identified risks]
 4. Update bug status
 
 ### Mid-Sprint Review (Day 5-6)
+
 **Actions**:
 - Review testing progress
 - Adjust test plan if needed
@@ -121,9 +133,10 @@ Risks: [Identified risks]
 ## 🔍 Sprint Days 9-10: Intensive Testing
 
 ### Regression Testing
+
 **Prompts to Use**:
-- [Functional Testing](/en/prompts/functional-testing/) - Regression scenarios
-- [AI-Assisted Testing](/en/prompts/ai-assisted-testing/) - Intelligent test selection
+- [Functional Testing](/en/prompts/en/) - Regression scenarios
+- [AI-Assisted Testing](/en/prompts/en/) - Intelligent test selection
 
 **Execute**:
 - Automated regression suite
@@ -132,9 +145,10 @@ Risks: [Identified risks]
 - Mobile testing (if applicable)
 
 ### Integration Testing
+
 **Prompts to Use**:
-- [Functional Testing](/en/prompts/functional-testing/) - E2E scenarios
-- [API Testing](/en/prompts/api-testing/) - API integration
+- [Functional Testing](/en/prompts/en/) - E2E scenarios
+- [API Testing](/en/prompts/en/) - API integration
 
 **Test**:
 - End-to-end user journeys
@@ -142,8 +156,9 @@ Risks: [Identified risks]
 - Data flow across services
 
 ### Visual Testing
+
 **Prompts to Use**:
-- [Accessibility Testing](/en/prompts/accessibility-testing/) - Visual testing
+- [Accessibility Testing](/en/prompts/en/) - Visual testing
 
 **Actions**:
 - Run visual regression tests
@@ -155,18 +170,21 @@ Risks: [Identified risks]
 ## ✅ Sprint Day 11: Stabilization
 
 ### Bug Bash (Optional)
+
 **Format**:
 - 2-hour focused testing session
 - Entire team participates
-- Use [Manual Testing](/en/prompts/manual-testing/) exploratory testing charters
+- Use [Manual Testing](/en/prompts/en/) exploratory testing charters
 
 ### Final Bug Fixes
+
 **Priority**:
 - Critical bugs must be fixed
 - High priority bugs reviewed
 - Medium/Low bugs moved to backlog
 
 ### Test Completion
+
 **Checklist**:
 - [ ] All stories tested
 - [ ] Critical bugs fixed and retested
@@ -179,9 +197,10 @@ Risks: [Identified risks]
 ## 📊 Sprint Day 12: Review & Demo
 
 ### Sprint Review Preparation
+
 **Prompts to Use**:
-- [Test Reporting](/en/prompts/test-reporting/)
-- [Test Strategy](/en/prompts/test-strategy/) - Quality assessment
+- [Test Reporting](/en/prompts/en/)
+- [Test Strategy](/en/prompts/en/) - Quality assessment
 
 **Prepare**:
 - Test execution summary
@@ -190,6 +209,7 @@ Risks: [Identified risks]
 - Quality dashboard
 
 ### Sprint Review Meeting
+
 **Present**:
 - Testing achievements
 - Quality metrics
@@ -205,6 +225,7 @@ Risks: [Identified risks]
 ## 🔄 Sprint Day 13: Retrospective & Planning
 
 ### Sprint Retrospective
+
 **Testing Focus**:
 - What went well in testing?
 - What testing challenges did we face?
@@ -218,6 +239,7 @@ Risks: [Identified risks]
 - Tool improvements needed
 
 ### Next Sprint Preparation
+
 **Actions**:
 - Review upcoming stories
 - Identify testing challenges
@@ -229,6 +251,7 @@ Risks: [Identified risks]
 ## 📈 Continuous Activities (Throughout Sprint)
 
 ### Daily
+
 - [ ] Execute test cases
 - [ ] Log and track bugs
 - [ ] Update test automation
@@ -236,12 +259,14 @@ Risks: [Identified risks]
 - [ ] Sync with developers
 
 ### Every 2-3 Days
+
 - [ ] Update test metrics
 - [ ] Review automation coverage
 - [ ] Refactor test code
 - [ ] Update documentation
 
 ### Weekly
+
 - [ ] Team testing sync
 - [ ] Review test strategy
 - [ ] Update risk analysis
@@ -252,6 +277,7 @@ Risks: [Identified risks]
 ## 🎯 Testing Priorities by Sprint Phase
 
 ### Early Sprint (Days 1-4)
+
 **Focus**: Planning & Setup
 - Test planning
 - Environment setup
@@ -259,6 +285,7 @@ Risks: [Identified risks]
 - Automation framework updates
 
 ### Mid Sprint (Days 5-8)
+
 **Focus**: Active Testing
 - Feature testing
 - Bug fixing
@@ -266,6 +293,7 @@ Risks: [Identified risks]
 - Exploratory testing
 
 ### Late Sprint (Days 9-12)
+
 **Focus**: Stabilization
 - Regression testing
 - Integration testing
@@ -277,6 +305,7 @@ Risks: [Identified risks]
 ## 🚨 Red Flags to Watch
 
 ### Testing Falling Behind
+
 **Signs**:
 - Stories marked "Done" but not tested
 - Growing untested backlog
@@ -289,18 +318,20 @@ Risks: [Identified risks]
 4. Adjust scope if needed
 
 ### Quality Issues
+
 **Signs**:
 - High bug count late in sprint
 - Critical bugs discovered
 - Regression failures
 
 **Actions**:
-1. Use [Test Strategy](/en/prompts/test-strategy/) risk analysis
+1. Use [Test Strategy](/en/prompts/en/) risk analysis
 2. Focus on critical paths
 3. Consider extending sprint
 4. Plan technical debt sprint
 
 ### Environment Problems
+
 **Signs**:
 - Frequent environment downtime
 - Data issues
@@ -317,6 +348,7 @@ Risks: [Identified risks]
 ## 📋 Sprint Testing Checklist
 
 ### Sprint Start
+
 - [ ] Test plan created
 - [ ] Environments ready
 - [ ] Test data prepared
@@ -324,12 +356,14 @@ Risks: [Identified risks]
 - [ ] Team aligned on testing approach
 
 ### Mid-Sprint
+
 - [ ] 50%+ stories tested
 - [ ] Automation progressing
 - [ ] Bugs being fixed
 - [ ] No major blockers
 
 ### Sprint End
+
 - [ ] All stories tested
 - [ ] Regression passed
 - [ ] Critical bugs fixed
@@ -341,28 +375,32 @@ Risks: [Identified risks]
 ## 🔧 Recommended Prompts by Sprint Phase
 
 ### Planning Phase
-- [Test Strategy](/en/prompts/test-strategy/)
-- [Requirements Analysis](/en/prompts/requirements-analysis/)
+
+- [Test Strategy](/en/prompts/en/)
+- [Requirements Analysis](/en/prompts/en/)
 
 ### Execution Phase
-- [Test Case Writing](/en/prompts/test-case-writing/)
-- [Manual Testing](/en/prompts/manual-testing/)
-- [API Testing](/en/prompts/api-testing/)
-- [Automation Testing](/en/prompts/automation-testing/)
+
+- [Test Case Writing](/en/prompts/en/)
+- [Manual Testing](/en/prompts/en/)
+- [API Testing](/en/prompts/en/)
+- [Automation Testing](/en/prompts/en/)
 
 ### Stabilization Phase
-- [Functional Testing](/en/prompts/functional-testing/)
-- [Accessibility Testing](/en/prompts/accessibility-testing/)
+
+- [Functional Testing](/en/prompts/en/)
+- [Accessibility Testing](/en/prompts/en/)
 
 ### Review Phase
-- [Test Reporting](/en/prompts/test-reporting/)
+
+- [Test Reporting](/en/prompts/en/)
 
 ---
 
 ## 📚 Related Workflows
 
-- [Daily Testing Workflow](daily-testing-workflow_EN.md) - Day-to-day activities
-- [Release Testing Workflow](release-testing-workflow_EN.md) - Pre-release process
+- [Daily Testing Workflow](daily-testing-workflow.md) - Day-to-day activities
+- [Release Testing Workflow](release-testing-workflow.md) - Pre-release process
 
 ---
 

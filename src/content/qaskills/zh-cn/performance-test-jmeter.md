@@ -6,7 +6,7 @@
 - slug: performance-test-jmeter
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/performance-test-jmeter/SKILL.md
 - description: Use this skill when you need to design JMeter test plans with Thread Groups, samplers, data sets, assertions, timers, CLI runs, and HTML reports; triggers include JMeter performance testing, performance testing, and performance-test-jmeter.
 
@@ -14,6 +14,12 @@
 
 - 需要输出面向 JMeter 性能测试工作流的测试方案或自动化设计。
 - 项目已经使用相关工具，或希望得到可直接落地的工具专项方案。
+
+## 执行流程
+
+1. 打开 `prompts/performance-test-jmeter.md`，将其作为主提示词。
+2. 补充真实项目上下文：范围、环境、约束、风险、依赖和期望交付物。
+3. 如果输入不完整，先返回可用的第一版，并标出缺失信息和假设。
 
 ## 常见误区
 

@@ -4,6 +4,7 @@ import { marked } from "marked";
 import type { Lang } from "@/i18n";
 import type { QASkillCategory } from "@/utils/qaskillsFilter";
 import { getRelatedQASkills } from "@/utils/qaskillsRelated";
+import { QA_SKILL_CATALOG } from "@/data/qaskillsCatalog";
 import {
   SECTION_KEYS,
   SECTION_LABELS,
@@ -45,6 +46,16 @@ export type QASkillsGrouped = {
     key: string;
     title: { "zh-cn": string; en: string };
     skills: QASkill[];
+  }>;
+  catalogGroups: Array<{
+    key: string;
+    title: { "zh-cn": string; en: string };
+    skills: QASkill[];
+    groups: Array<{
+      key: string;
+      title: { "zh-cn": string; en: string };
+      skills: QASkill[];
+    }>;
   }>;
 };
 
@@ -400,6 +411,31 @@ export async function getQASkills(lang: Lang) {
 
 export async function getQASkillsGrouped(lang: Lang): Promise<QASkillsGrouped> {
   const skills = await getQASkills(lang);
+  const bySlug = new Map(skills.map((skill) => [skill.slug, skill]));
+  const catalogued = new Set<string>();
+  const catalogGroups = QA_SKILL_CATALOG.map((group) => {
+    const groupSkills = group.slugs.map((slug) => bySlug.get(slug)).filter(Boolean) as QASkill[];
+    groupSkills.forEach((skill) => catalogued.add(skill.slug));
+    const groups = group.groups.map((subgroup) => {
+      const subgroupSkills = subgroup.slugs
+        .map((slug) => bySlug.get(slug))
+        .filter(Boolean) as QASkill[];
+      subgroupSkills.forEach((skill) => catalogued.add(skill.slug));
+      return { ...subgroup, skills: subgroupSkills };
+    }).filter((subgroup) => subgroup.skills.length > 0);
+    return { ...group, skills: groupSkills, groups };
+  }).filter((group) => group.skills.length > 0 || group.groups.length > 0);
+
+  const uncatalogued = skills.filter((skill) => !catalogued.has(skill.slug));
+  if (uncatalogued.length) {
+    catalogGroups.push({
+      key: "uncatalogued",
+      title: { "zh-cn": "其他技能", en: "Other Skills" },
+      slugs: [],
+      skills: uncatalogued.sort((a, b) => a.slug.localeCompare(b.slug)),
+      groups: [],
+    });
+  }
 
   const testingWorkflows = sortBySlugOrder(
     skills.filter((skill) => skill.category === "workflow" || WORKFLOW_SLUGS.has(skill.slug)),
@@ -439,6 +475,7 @@ export async function getQASkillsGrouped(lang: Lang): Promise<QASkillsGrouped> {
     testingWorkflows,
     plus,
     testingTypeSubgroups,
+    catalogGroups,
   };
 }
 
