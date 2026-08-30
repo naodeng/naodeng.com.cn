@@ -6,7 +6,7 @@ Author: naodeng
 - slug: performance-test-jmeter
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-test-jmeter/SKILL.md
 - description: Use this skill when you need to design JMeter test plans with Thread Groups, samplers, data sets, assertions, timers, CLI runs, and HTML reports; triggers include JMeter performance testing, performance testing, and performance-test-jmeter.
 
@@ -14,6 +14,12 @@ Author: naodeng
 
 - Need outputs that should land in a JMeter performance testing workflow.
 - The project already uses JMeter or wants JMeter-ready planning.
+
+## Workflow
+
+1. Open `prompts/performance-test-jmeter.md` and use it as the main prompt.
+2. Add the real project context: scope, environment, constraints, risks, dependencies, and expected deliverable.
+3. If the input is incomplete, return a usable first version and mark missing information and assumptions.
 
 ## Common Pitfalls
 

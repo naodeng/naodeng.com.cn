@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ui-test-puppeteer
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ui-test-puppeteer/SKILL.md
 - description: Use this skill when you need to design Puppeteer automation for Chromium-driven checks, screenshots, PDFs, network interception, and CDP use cases; triggers include Puppeteer UI testing, UI automation testing, and ui-test-puppeteer.
 
@@ -14,6 +14,12 @@ Author: naodeng
 
 - Need outputs that should land in a Puppeteer UI testing workflow.
 - The project already uses Puppeteer or wants Puppeteer-ready planning.
+
+## Workflow
+
+1. Open `prompts/ui-test-puppeteer.md` and use it as the main prompt.
+2. Add the real project context: scope, environment, constraints, risks, dependencies, and expected deliverable.
+3. If the input is incomplete, return a usable first version and mark missing information and assumptions.
 
 ## Common Pitfalls
 

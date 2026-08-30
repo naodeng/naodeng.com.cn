@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ui-test-cypress
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ui-test-cypress/SKILL.md
 - description: Use this skill when you need to design Cypress e2e and component testing plans with commands, fixtures, network stubbing, and CI reporting; triggers include Cypress UI testing, UI automation testing, and ui-test-cypress.
 
@@ -14,6 +14,12 @@ Author: naodeng
 
 - Need outputs that should land in a Cypress UI testing workflow.
 - The project already uses Cypress or wants Cypress-ready planning.
+
+## Workflow
+
+1. Open `prompts/ui-test-cypress.md` and use it as the main prompt.
+2. Add the real project context: scope, environment, constraints, risks, dependencies, and expected deliverable.
+3. If the input is incomplete, return a usable first version and mark missing information and assumptions.
 
 ## Common Pitfalls
 

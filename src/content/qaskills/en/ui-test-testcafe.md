@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ui-test-testcafe
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ui-test-testcafe/SKILL.md
 - description: Use this skill when you need to design TestCafe UI automation with fixtures, selectors, roles, browser matrix execution, and reports; triggers include TestCafe UI testing, UI automation testing, and ui-test-testcafe.
 
@@ -14,6 +14,12 @@ Author: naodeng
 
 - Need outputs that should land in a TestCafe UI testing workflow.
 - The project already uses TestCafe or wants TestCafe-ready planning.
+
+## Workflow
+
+1. Open `prompts/ui-test-testcafe.md` and use it as the main prompt.
+2. Add the real project context: scope, environment, constraints, risks, dependencies, and expected deliverable.
+3. If the input is incomplete, return a usable first version and mark missing information and assumptions.
 
 ## Common Pitfalls
 

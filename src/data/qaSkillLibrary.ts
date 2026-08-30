@@ -96,6 +96,21 @@ const SUMMARY_FALLBACKS: Record<Lang, Partial<Record<string, SummaryFallback>>> 
   en: buildToolSummaryFallbacks("en"),
 };
 
+const GENERIC_SUMMARY_FALLBACKS: Record<Lang, QASkillCardSummary> = {
+  "zh-cn": {
+    whenToUse: "需要按该 Skill 的方法处理当前质量任务时使用。",
+    input: "当前任务范围、已有上下文、约束条件与可用证据。",
+    output: "可执行的结果，并明确事实、假设、风险和下一步。",
+    humanReview: "人工确认范围、证据边界和关键结论后再采用。",
+  },
+  en: {
+    whenToUse: "Use this Skill when its method fits the current quality task.",
+    input: "The current scope, available context, constraints, and evidence.",
+    output: "An actionable result that distinguishes facts, assumptions, risks, and next steps.",
+    humanReview: "Confirm scope, evidence boundaries, and key conclusions before adoption.",
+  },
+};
+
 /** 通用句检测：像“处理相关任务”这种没有信息量的句子不能作为卡片摘要。 */
 const GENERIC_WHEN: Record<Lang, RegExp> = {
   "zh-cn": /处理.*相关任务|相关任务/,
@@ -171,10 +186,11 @@ export function getQASkillCardSummary(
   lang: Lang,
 ): QASkillCardSummary {
   const fallback = SUMMARY_FALLBACKS[lang][skill.slug] ?? {};
+  const generic = GENERIC_SUMMARY_FALLBACKS[lang];
   return {
-    whenToUse: pickWhenToUse(skill, lang) || fallback.whenToUse || "",
-    input: pickInput(skill, lang) || fallback.input || "",
-    output: pickOutput(skill, lang) || fallback.output || "",
-    humanReview: pickHumanReview(skill) || fallback.humanReview || "",
+    whenToUse: pickWhenToUse(skill, lang) || fallback.whenToUse || generic.whenToUse,
+    input: pickInput(skill, lang) || fallback.input || generic.input,
+    output: pickOutput(skill, lang) || fallback.output || generic.output,
+    humanReview: pickHumanReview(skill) || fallback.humanReview || generic.humanReview,
   };
 }

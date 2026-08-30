@@ -6,7 +6,7 @@ Author: naodeng
 - slug: release-testing-workflow
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/release-testing-workflow/SKILL.md
 - description: Use this skill when you need release-phase QA workflow from T-14 planning to go/no-go and post-release monitoring; triggers include release testing workflow and go/no-go QA.
 

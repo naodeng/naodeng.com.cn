@@ -6,7 +6,7 @@
 - slug: api-test-bruno
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-10
+- syncedAt: 2026-08-30
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-test-bruno/SKILL.md
 - description: Use this skill when you need to parse multi-format API definitions and generate Bruno collections for executable regression; triggers include Bruno、Bruno 集合 and Bruno API testing.
 
