@@ -10,17 +10,19 @@ series: ["Awesome QA Skills 实战"]
 
 在授权沙箱中验证检索型 Agent 对直接和间接提示注入、数据外泄与越权工具调用的防护。这里最容易丢的东西是判断过程：谁提供了哪一版材料，哪条结论已经验证，哪条还只是待查项。把这三件事写清楚，后面的用例、排期和发布讨论才接得住。
 
+## 这个 Skill 用来做什么
+
+提示注入测试 面向需要把测试判断讲清楚、交接出去的工作。它把项目材料、判断依据和下一步动作放在同一条线上——读者可以先知道该检查什么，再决定怎么执行与复核。本文用一个具体场景展开，并保留需要人工确认的边界。
+
 ## 先回到源 Skill
 
-这个 Skill 的完整执行规则在 [prompts/prompt-injection-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing/prompts/prompt-injection-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
+这个 Skill 的完整执行规则在 [提示注入测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing/prompts/prompt-injection-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
 
 它要求特别注意：
 
 - 仅在授权环境使用安全占位数据
 - 不提供可用于真实攻击的敏感目标
 - 验证拒绝后是否仍有副作用
-
-- [打开 提示注入测试 源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing)
 
 ## 用一份项目材料开始
 
@@ -117,5 +119,5 @@ series: ["Awesome QA Skills 实战"]
 
 ## 参考
 
-- [prompts/prompt-injection-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing/prompts/prompt-injection-testing.md)
-- [打开 提示注入测试 源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing)
+- [提示注入测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing/prompts/prompt-injection-testing.md)
+- [Awesome QA Skills：提示注入测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing)

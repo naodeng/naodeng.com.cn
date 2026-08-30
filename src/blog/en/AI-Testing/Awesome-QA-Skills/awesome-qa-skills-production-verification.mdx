@@ -10,17 +10,19 @@ series: ["Awesome QA Skills Field Guides"]
 
 Verify core transactions, metrics, logs, alerts, and rollback conditions after an order-service release. The useful record is the decision trail: which version supplied the evidence, which finding has runtime proof, and which item is still open. Write that down early—test design, release review, and the next handoff all depend on it.
 
+## What this Skill is for
+
+Production Verification is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
 ## Start with the source Skill
 
-The complete execution contract lives in [prompts/production-verification.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification/prompts/production-verification.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+The complete execution contract lives in [Production Verification prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification/prompts/production-verification.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
 
 The entry point calls out these constraints:
 
 - start with read-only checks before low-risk writes
 - use approved accounts and cleanable data
 - stop and escalate on stop conditions
-
-- [Open the Production Verification source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification)
 
 ## Begin with project facts
 
@@ -117,5 +119,5 @@ Run Production Verification with one real artifact and keep the input, output, h
 
 ## References
 
-- [prompts/production-verification.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification/prompts/production-verification.md)
-- [Open the Production Verification source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification)
+- [Production Verification prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification/prompts/production-verification.md)
+- [Awesome QA Skills: Production Verification Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/production-verification)

@@ -10,17 +10,19 @@ series: ["Awesome QA Skills Field Guides"]
 
 Test an order-support LLM for factual accuracy, citations, refusal behavior, latency, and sensitive-data handling. The useful record is the decision trail: which version supplied the evidence, which finding has runtime proof, and which item is still open. Write that down early—test design, release review, and the next handoff all depend on it.
 
+## What this Skill is for
+
+LLM Testing is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
 ## Start with the source Skill
 
-The complete execution contract lives in [prompts/llm-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-testing/prompts/llm-testing.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+The complete execution contract lives in [LLM Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-testing/prompts/llm-testing.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
 
 The entry point calls out these constraints:
 
 - avoid exact-string assertions alone
 - pin and record model settings
 - evaluate stochastic outputs with repetitions and distributions
-
-- [Open the LLM Testing source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-testing)
 
 ## Begin with project facts
 
@@ -117,5 +119,5 @@ Run LLM Testing with one real artifact and keep the input, output, human edits, 
 
 ## References
 
-- [prompts/llm-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-testing/prompts/llm-testing.md)
-- [Open the LLM Testing source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-testing)
+- [LLM Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-testing/prompts/llm-testing.md)
+- [Awesome QA Skills: LLM Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-testing)

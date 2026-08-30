@@ -10,17 +10,19 @@ series: ["Awesome QA Skills 实战"]
 
 分析退款状态机修改会影响哪些服务、接口、数据、测试和发布门禁。这里最容易丢的东西是判断过程：谁提供了哪一版材料，哪条结论已经验证，哪条还只是待查项。把这三件事写清楚，后面的用例、排期和发布讨论才接得住。
 
+## 这个 Skill 用来做什么
+
+变更影响分析 面向需要把测试判断讲清楚、交接出去的工作。它把项目材料、判断依据和下一步动作放在同一条线上——读者可以先知道该检查什么，再决定怎么执行与复核。本文用一个具体场景展开，并保留需要人工确认的边界。
+
 ## 先回到源 Skill
 
-这个 Skill 的完整执行规则在 [prompts/change-impact-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/change-impact-analysis/prompts/change-impact-analysis.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
+这个 Skill 的完整执行规则在 [变更影响分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/change-impact-analysis/prompts/change-impact-analysis.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
 
 它要求特别注意：
 
 - 区分已证实影响与推测影响
 - 不要只按改动文件选测试
 - 无法追踪的依赖要显式标为风险
-
-- [打开 变更影响分析 源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/change-impact-analysis)
 
 ## 用一份项目材料开始
 
@@ -117,5 +119,5 @@ series: ["Awesome QA Skills 实战"]
 
 ## 参考
 
-- [prompts/change-impact-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/change-impact-analysis/prompts/change-impact-analysis.md)
-- [打开 变更影响分析 源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/change-impact-analysis)
+- [变更影响分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/change-impact-analysis/prompts/change-impact-analysis.md)
+- [Awesome QA Skills：变更影响分析 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/change-impact-analysis)

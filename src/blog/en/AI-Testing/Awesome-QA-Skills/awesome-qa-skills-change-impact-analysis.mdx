@@ -10,17 +10,19 @@ series: ["Awesome QA Skills Field Guides"]
 
 Analyze how a refund state-machine change affects services, interfaces, data, tests, and release gates. The useful record is the decision trail: which version supplied the evidence, which finding has runtime proof, and which item is still open. Write that down early—test design, release review, and the next handoff all depend on it.
 
+## What this Skill is for
+
+Change Impact Analysis is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
 ## Start with the source Skill
 
-The complete execution contract lives in [prompts/change-impact-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/change-impact-analysis/prompts/change-impact-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+The complete execution contract lives in [Change Impact Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/change-impact-analysis/prompts/change-impact-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
 
 The entry point calls out these constraints:
 
 - separate confirmed from inferred impact
 - do not select tests only by changed files
 - flag untraceable dependencies as risk
-
-- [Open the Change Impact Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/change-impact-analysis)
 
 ## Begin with project facts
 
@@ -117,5 +119,5 @@ Run Change Impact Analysis with one real artifact and keep the input, output, hu
 
 ## References
 
-- [prompts/change-impact-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/change-impact-analysis/prompts/change-impact-analysis.md)
-- [Open the Change Impact Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/change-impact-analysis)
+- [Change Impact Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/change-impact-analysis/prompts/change-impact-analysis.md)
+- [Awesome QA Skills: Change Impact Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/change-impact-analysis)

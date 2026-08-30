@@ -10,17 +10,19 @@ series: ["Awesome QA Skills Field Guides"]
 
 Analyze post-release error logs to cluster failures, locate version changes, identify user impact, and form verification actions. The useful record is the decision trail: which version supplied the evidence, which finding has runtime proof, and which item is still open. Write that down early—test design, release review, and the next handoff all depend on it.
 
+## What this Skill is for
+
+Log Analysis is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
 ## Start with the source Skill
 
-The complete execution contract lives in [prompts/log-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/log-analysis/prompts/log-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+The complete execution contract lives in [Log Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/log-analysis/prompts/log-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
 
 The entry point calls out these constraints:
 
 - do not treat a log line as root cause
 - redact sensitive data
 - state timezone, sampling, and missing-log limitations
-
-- [Open the Log Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/log-analysis)
 
 ## Begin with project facts
 
@@ -117,5 +119,5 @@ Run Log Analysis with one real artifact and keep the input, output, human edits,
 
 ## References
 
-- [prompts/log-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/log-analysis/prompts/log-analysis.md)
-- [Open the Log Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/log-analysis)
+- [Log Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/log-analysis/prompts/log-analysis.md)
+- [Awesome QA Skills: Log Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/log-analysis)

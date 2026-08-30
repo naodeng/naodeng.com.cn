@@ -10,17 +10,19 @@ series: ["Awesome QA Skills 实战"]
 
 评估客服 Agent 的目标完成、规划、记忆、工具调用、失败恢复和安全边界。这里最容易丢的东西是判断过程：谁提供了哪一版材料，哪条结论已经验证，哪条还只是待查项。把这三件事写清楚，后面的用例、排期和发布讨论才接得住。
 
+## 这个 Skill 用来做什么
+
+AI Agent 测试 面向需要把测试判断讲清楚、交接出去的工作。它把项目材料、判断依据和下一步动作放在同一条线上——读者可以先知道该检查什么，再决定怎么执行与复核。本文用一个具体场景展开，并保留需要人工确认的边界。
+
 ## 先回到源 Skill
 
-这个 Skill 的完整执行规则在 [prompts/ai-agent-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing/prompts/ai-agent-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
+这个 Skill 的完整执行规则在 [AI Agent 测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing/prompts/ai-agent-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
 
 它要求特别注意：
 
 - 同时评价最终结果和过程轨迹
 - 将随机性纳入重复试验
 - 不要把单次成功当作可靠性证明
-
-- [打开 AI Agent 测试 源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing)
 
 ## 用一份项目材料开始
 
@@ -117,5 +119,5 @@ series: ["Awesome QA Skills 实战"]
 
 ## 参考
 
-- [prompts/ai-agent-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing/prompts/ai-agent-testing.md)
-- [打开 AI Agent 测试 源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing)
+- [AI Agent 测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing/prompts/ai-agent-testing.md)
+- [Awesome QA Skills：AI Agent 测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing)

@@ -10,17 +10,19 @@ series: ["Awesome QA Skills Field Guides"]
 
 Verify an agent using order lookup, refund, and notification tools for parameter boundaries, authorization, idempotency, and side effects. The useful record is the decision trail: which version supplied the evidence, which finding has runtime proof, and which item is still open. Write that down early—test design, release review, and the next handoff all depend on it.
 
+## What this Skill is for
+
+Agent Tool Testing is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
 ## Start with the source Skill
 
-The complete execution contract lives in [prompts/agent-tool-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing/prompts/agent-tool-testing.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+The complete execution contract lives in [Agent Tool Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing/prompts/agent-tool-testing.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
 
 The entry point calls out these constraints:
 
 - default to mocks, dry runs, or isolated environments
 - never execute real writes without authorization
 - retry tests must detect duplicate side effects
-
-- [Open the Agent Tool Testing source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing)
 
 ## Begin with project facts
 
@@ -117,5 +119,5 @@ Run Agent Tool Testing with one real artifact and keep the input, output, human 
 
 ## References
 
-- [prompts/agent-tool-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)
-- [Open the Agent Tool Testing source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing)
+- [Agent Tool Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)
+- [Awesome QA Skills: Agent Tool Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing)

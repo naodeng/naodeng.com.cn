@@ -10,17 +10,19 @@ series: ["Awesome QA Skills 实战"]
 
 验证 Agent 调用订单查询、退款和通知工具时的参数边界、权限、幂等性与副作用。这里最容易丢的东西是判断过程：谁提供了哪一版材料，哪条结论已经验证，哪条还只是待查项。把这三件事写清楚，后面的用例、排期和发布讨论才接得住。
 
+## 这个 Skill 用来做什么
+
+Agent 工具调用测试 面向需要把测试判断讲清楚、交接出去的工作。它把项目材料、判断依据和下一步动作放在同一条线上——读者可以先知道该检查什么，再决定怎么执行与复核。本文用一个具体场景展开，并保留需要人工确认的边界。
+
 ## 先回到源 Skill
 
-这个 Skill 的完整执行规则在 [prompts/agent-tool-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
+这个 Skill 的完整执行规则在 [Agent 工具调用测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
 
 它要求特别注意：
 
 - 默认只使用 mock、dry-run 或隔离环境
 - 未经授权不得执行真实写操作
 - 重试测试必须验证重复副作用
-
-- [打开 Agent 工具调用测试 源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing)
 
 ## 用一份项目材料开始
 
@@ -117,5 +119,5 @@ series: ["Awesome QA Skills 实战"]
 
 ## 参考
 
-- [prompts/agent-tool-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)
-- [打开 Agent 工具调用测试 源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing)
+- [Agent 工具调用测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)
+- [Awesome QA Skills：Agent 工具调用测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing)

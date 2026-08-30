@@ -10,17 +10,19 @@ series: ["Awesome QA Skills Field Guides"]
 
 Use a failed checkout trace to locate latency and error propagation across gateway, order, payment, and notification services. The useful record is the decision trail: which version supplied the evidence, which finding has runtime proof, and which item is still open. Write that down early—test design, release review, and the next handoff all depend on it.
 
+## What this Skill is for
+
+Distributed Trace Analysis is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
 ## Start with the source Skill
 
-The complete execution contract lives in [prompts/distributed-trace-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/distributed-trace-analysis/prompts/distributed-trace-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+The complete execution contract lives in [Distributed Trace Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/distributed-trace-analysis/prompts/distributed-trace-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
 
 The entry point calls out these constraints:
 
 - correlation is not causation
 - account for sampling and clock skew
 - inspect retries and queues, not only total latency
-
-- [Open the Distributed Trace Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/distributed-trace-analysis)
 
 ## Begin with project facts
 
@@ -117,5 +119,5 @@ Run Distributed Trace Analysis with one real artifact and keep the input, output
 
 ## References
 
-- [prompts/distributed-trace-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/distributed-trace-analysis/prompts/distributed-trace-analysis.md)
-- [Open the Distributed Trace Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/distributed-trace-analysis)
+- [Distributed Trace Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/distributed-trace-analysis/prompts/distributed-trace-analysis.md)
+- [Awesome QA Skills: Distributed Trace Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/distributed-trace-analysis)

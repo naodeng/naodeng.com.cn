@@ -10,17 +10,19 @@ series: ["Awesome QA Skills Field Guides"]
 
 Analyze a PR changing order validation rules and select affected unit, API, UI, and regression tests. The useful record is the decision trail: which version supplied the evidence, which finding has runtime proof, and which item is still open. Write that down early—test design, release review, and the next handoff all depend on it.
 
+## What this Skill is for
+
+PR Test Impact Analysis is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+
 ## Start with the source Skill
 
-The complete execution contract lives in [prompts/pr-test-impact-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis/prompts/pr-test-impact-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+The complete execution contract lives in [PR Test Impact Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis/prompts/pr-test-impact-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
 
 The entry point calls out these constraints:
 
 - do not infer only from filenames
 - provide evidence for test selection
 - expand scope when risk is high and evidence is weak
-
-- [Open the PR Test Impact Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis)
 
 ## Begin with project facts
 
@@ -117,5 +119,5 @@ Run PR Test Impact Analysis with one real artifact and keep the input, output, h
 
 ## References
 
-- [prompts/pr-test-impact-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis/prompts/pr-test-impact-analysis.md)
-- [Open the PR Test Impact Analysis source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis)
+- [PR Test Impact Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis/prompts/pr-test-impact-analysis.md)
+- [Awesome QA Skills: PR Test Impact Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis)
