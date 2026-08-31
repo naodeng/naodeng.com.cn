@@ -1,21 +1,12 @@
 ---
-import type { Lang } from "@/i18n";
 import HomeSectionHeading from "@/components/home/HomeSectionHeading.astro";
 interface Props {
-  locale: Lang;
   title: string;
   subtitle: string;
   moreLabel: string;
   cards: Array<{ key: string; href: string; title: string; desc: string; icon: string; meta?: string }>;
 }
-const { locale, title, subtitle, moreLabel, cards } = Astro.props;
-
-const DECOR_LABELS: Record<string, Record<Lang, [string, string]>> = {
-  wiki: { "zh-cn": ["QA WIKI", "测试知识"], en: ["QA WIKI", "TEST KNOWLEDGE"] },
-  aiwiki: { "zh-cn": ["AI · AGENTS", "智能体"], en: ["AI · AGENTS", "INTELLIGENCE"] },
-  guild: { "zh-cn": ["PLAYBOOKS", "实践指南"], en: ["PLAYBOOKS", "FIELD GUIDES"] },
-  projects: { "zh-cn": ["OPEN SOURCE", "开源项目"], en: ["OPEN SOURCE", "PROJECTS"] },
-};
+const { title, subtitle, moreLabel, cards } = Astro.props;
 
 ---
 <section class="home-band home-band--white home-explore-hub" aria-labelledby="home-explore-title">
@@ -31,6 +22,7 @@ const DECOR_LABELS: Record<string, Record<Lang, [string, string]>> = {
       {cards.map((card) => (
         <li>
           <a class="home-card" href={card.href}>
+            <span class="home-card__signal material-icons-sharp" aria-hidden="true">{card.icon}</span>
             <span class="home-card__icon material-icons-sharp" aria-hidden="true">{card.icon}</span>
             <span class="home-card__topline">
               <h3 class="home-card__title">{card.title}</h3>
@@ -39,13 +31,6 @@ const DECOR_LABELS: Record<string, Record<Lang, [string, string]>> = {
             <p class="home-card__desc">{card.desc}</p>
             <span class="home-card__more">{moreLabel}</span>
           </a>
-          {DECOR_LABELS[card.key] && (
-            <span class="explore-ornament" aria-hidden="true">
-              <span class="explore-ornament__icon material-icons-sharp">{card.icon}</span>
-              <span class="explore-ornament__primary">{DECOR_LABELS[card.key][locale][0]}</span>
-              <span class="explore-ornament__secondary">{DECOR_LABELS[card.key][locale][1]}</span>
-            </span>
-          )}
         </li>
       ))}
     </ul>
@@ -71,51 +56,9 @@ const DECOR_LABELS: Record<string, Record<Lang, [string, string]>> = {
     align-self: flex-end;
   }
 
-  .explore-ornament {
-    position: absolute;
-    top: 50%;
-    left: calc(100% + 3rem);
-    width: min(26vw, 18rem);
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--color-theme);
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .home-grid > li:nth-child(even) .explore-ornament {
-    right: calc(100% + 3rem);
-    left: auto;
-  }
-
-  .explore-ornament__icon {
-    font-size: clamp(4.8rem, 7vw, 7rem);
-    line-height: 1;
-    opacity: .07;
-  }
-
-  .explore-ornament__primary {
-    margin-top: .35rem;
-    font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 3.8vw, 4rem);
-    font-weight: 900;
-    letter-spacing: -.03em;
-    line-height: 1;
-    opacity: .04;
-    white-space: nowrap;
-  }
-
-  .explore-ornament__secondary {
-    margin-top: .35rem;
-    font-size: .95rem;
-    font-weight: 800;
-    letter-spacing: .08em;
-    opacity: .06;
-  }
-
   .home-card {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -194,6 +137,16 @@ const DECOR_LABELS: Record<string, Record<Lang, [string, string]>> = {
     overflow: hidden;
   }
 
+  .home-card__signal {
+    position: absolute;
+    inset: 50% 1.1rem auto auto;
+    transform: translateY(-50%);
+    color: var(--color-theme);
+    font-size: clamp(3.4rem, 5vw, 5.4rem);
+    opacity: 0.11;
+    pointer-events: none;
+  }
+
   .home-card__more {
     margin-top: 18px;
     font-size: 15px;
@@ -206,7 +159,7 @@ const DECOR_LABELS: Record<string, Record<Lang, [string, string]>> = {
     .home-grid > li { width: 100%; }
     .home-grid > li:nth-child(even) { align-self: stretch; }
     .home-card { padding: 17px 2px; }
-    .explore-ornament { display: none; }
+    .home-card__signal { font-size: 3.4rem; opacity: 0.09; }
   }
 
   @media (prefers-reduced-motion: reduce) {

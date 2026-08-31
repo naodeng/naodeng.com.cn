@@ -65,12 +65,11 @@ const totalTestTypes = guildConfig.testTypes.length;
 <style>
   .guild-hero {
     padding: 3rem 2rem 2.5rem;
-    border-radius: var(--radius-lg);
-    background: var(--color-glass-medium);
-    border: 1px solid var(--color-glass-border);
-    box-shadow: var(--shadow-glass-md);
-    backdrop-filter: blur(16px) saturate(118%);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-surface));
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, var(--color-border));
+    box-shadow: none;
+    backdrop-filter: none;
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -80,7 +79,7 @@ const totalTestTypes = guildConfig.testTypes.length;
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 70% 50% at 50% 0%, color-mix(in srgb, var(--color-theme) 10%, transparent), transparent 70%);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-theme) 8%, transparent), transparent 48%);
     pointer-events: none;
   }
 
@@ -112,10 +111,7 @@ const totalTestTypes = guildConfig.testTypes.length;
     letter-spacing: -0.03em;
     line-height: 1.15;
     margin: 0 0 1rem;
-    background: linear-gradient(135deg, var(--color-main) 20%, color-mix(in srgb, var(--color-theme) 80%, var(--color-main)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-main);
   }
 
   .guild-hero__description {

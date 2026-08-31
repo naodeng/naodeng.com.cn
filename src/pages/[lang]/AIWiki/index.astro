@@ -160,7 +160,7 @@ const itemListSchema = {
     border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
     border-radius: var(--radius-md) !important;
     overflow: hidden;
-    box-shadow: 0 4px 18px color-mix(in srgb, var(--color-main) 8%, transparent);
+    box-shadow: none;
   }
 
   .wiki-hero {
@@ -230,7 +230,7 @@ const itemListSchema = {
     font-size: 0.9rem;
     font-weight: 600;
     color: color-mix(in srgb, var(--color-main) 75%, transparent);
-    background: var(--color-glass-medium);
+    background: transparent;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     text-decoration: none;
@@ -263,8 +263,8 @@ const itemListSchema = {
   }
   .wiki-letter-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 0.6em;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -272,10 +272,11 @@ const itemListSchema = {
   .wiki-letter-list .wiki-letter-link {
     display: block;
     min-height: 44px;
-    padding: 0.6em 0.9em;
-    background: var(--color-glass-weak);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    padding: 0.8em 0.9em;
+    background: transparent;
+    border: 0;
+    border-block-end: 1px solid var(--color-border);
+    border-radius: 0;
     color: var(--color-main);
     text-decoration: none;
     font-size: 0.95rem;
@@ -283,9 +284,7 @@ const itemListSchema = {
   }
   .wiki-letter-list .wiki-letter-link:hover {
     color: var(--color-theme);
-    border-color: var(--color-theme);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    background: color-mix(in srgb, var(--color-theme) 5%, transparent);
   }
   .wiki-back-top {
     margin: var(--sp-l) 0 0;

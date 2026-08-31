@@ -1269,18 +1269,18 @@ const mobilePriorityItems = [
     }
   }
 
-  /* Zenix-inspired SaaS navigation skin. Keep behavior intact, replace the visual system. */
+  /* A compact editorial navigation skin. Keep behavior and labels intact. */
   .l-header {
-    height: 72px;
+    height: 64px;
     color: var(--color-main);
-    background: var(--color-glass-strong);
-    border-block-end: 1px solid var(--color-glass-border);
-    box-shadow: var(--shadow-glass-sm);
-    backdrop-filter: blur(22px) saturate(120%);
+    background: color-mix(in srgb, var(--color-base) 94%, transparent);
+    border-block-end: 1px solid var(--color-border);
+    box-shadow: none;
+    backdrop-filter: blur(12px);
   }
 
   .header-shell {
-    height: 72px;
+    height: 64px;
     max-inline-size: 1440px;
     padding-inline: clamp(1rem, 3vw, 2rem);
   }
@@ -1313,20 +1313,20 @@ const mobilePriorityItems = [
   }
 
   .site-nav > ul {
-    gap: 0.18rem;
-    padding: 0.28rem;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: 999px;
-    background: var(--color-glass-medium);
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(20px);
+    gap: 0.1rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
   }
 
   .site-nav > ul > li > a,
   .nav-group-trigger {
-    min-height: 42px;
-    padding: 0 0.9rem;
-    border-radius: 999px;
+    min-height: 36px;
+    padding: 0 0.65rem;
+    border-radius: var(--radius-sm);
     font-size: var(--text-sm);
     font-weight: 700;
     color: var(--color-text-secondary);
@@ -1341,7 +1341,7 @@ const mobilePriorityItems = [
   .site-nav > ul > li > a.active,
   .nav-group-trigger.active {
     color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 9%, white);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
   }
 
   .site-nav > ul > li > a.active::after,
@@ -1355,11 +1355,11 @@ const mobilePriorityItems = [
 
   .nav-submenu,
   .nav-tool :global(.locale-panel) {
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: var(--radius-lg);
-    background: var(--color-glass-strong);
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(24px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-elevated);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: none;
   }
 
   .nav-submenu a,
@@ -1381,7 +1381,7 @@ const mobilePriorityItems = [
   }
 
   .header-utils {
-    gap: 0.35rem;
+    gap: 0.15rem;
   }
 
   .nav-toggle {
@@ -1391,9 +1391,9 @@ const mobilePriorityItems = [
   .nav-tool :global(.locale-trigger),
   .btn-icon {
     color: var(--color-text-secondary);
-    background: var(--color-glass-medium);
-    border: 1px solid rgba(148, 163, 184, 0.25);
-    border-radius: 999px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
   }
 
   .nav-tool :global(.locale-trigger:hover),
@@ -1401,8 +1401,8 @@ const mobilePriorityItems = [
   .btn-icon:hover,
   .btn-icon:focus-visible {
     color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 9%, white);
-    border-color: color-mix(in srgb, var(--color-theme) 22%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border-color: color-mix(in srgb, var(--color-theme) 18%, transparent);
   }
 
   .nav-tool :global(.icon-lang),
@@ -1414,12 +1414,12 @@ const mobilePriorityItems = [
   @media (width < 834px) {
     .l-header,
     .header-shell {
-      min-height: 64px;
+      min-height: 60px;
       height: auto;
     }
 
     .site-brand {
-      min-height: 64px;
+      min-height: 60px;
     }
 
     .site-brand .site-brand-heading {
@@ -1452,9 +1452,9 @@ const mobilePriorityItems = [
     }
 
     .site-nav > ul {
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       align-items: stretch;
-      background: var(--color-glass-strong);
+      background: var(--color-surface-elevated);
     }
 
     .mobile-priority-nav {
@@ -1484,7 +1484,7 @@ const mobilePriorityItems = [
     }
 
     .nav-backdrop {
-      inset: 64px 0 0;
+      inset: 60px 0 0;
       background: rgba(15, 23, 42, 0.28);
       backdrop-filter: blur(4px);
     }
