@@ -1374,10 +1374,26 @@ const mobilePriorityItems = [
 
   .nav-submenu a:hover,
   .nav-submenu a:focus-visible,
-  .nav-submenu a.active,
   .nav-tool :global(.locale-panel a:hover) {
+    color: var(--color-main);
+    background: color-mix(in srgb, var(--color-theme) 12%, var(--color-surface));
+    border-color: color-mix(in srgb, var(--color-theme) 28%, var(--color-border));
+  }
+
+  .nav-submenu a.active {
+    color: var(--color-main);
+    background: color-mix(in srgb, var(--color-theme) 18%, var(--color-surface));
+    border-color: color-mix(in srgb, var(--color-theme) 38%, var(--color-border));
+  }
+
+  .nav-submenu a.active .nav-submenu-icon {
     color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 9%, white);
+  }
+
+  .nav-submenu a:hover .nav-submenu-text,
+  .nav-submenu a:focus-visible .nav-submenu-text,
+  .nav-submenu a.active .nav-submenu-text {
+    color: var(--color-main);
   }
 
   .header-utils {
