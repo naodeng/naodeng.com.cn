@@ -22,7 +22,7 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
       {cards.map((card) => (
         <li>
           <a class="home-card" href={card.href}>
-            <span class="home-card__signal material-icons-sharp" aria-hidden="true">{card.icon}</span>
+            <span class="home-card__signal" aria-hidden="true">{card.icon}</span>
             <span class="home-card__icon material-icons-sharp" aria-hidden="true">{card.icon}</span>
             <span class="home-card__topline">
               <h3 class="home-card__title">{card.title}</h3>
@@ -142,6 +142,10 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     inset: 50% 1.1rem auto auto;
     transform: translateY(-50%);
     color: var(--color-theme);
+    font-family: "Material Icons Sharp";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
     font-size: clamp(3.4rem, 5vw, 5.4rem);
     opacity: 0.11;
     pointer-events: none;
