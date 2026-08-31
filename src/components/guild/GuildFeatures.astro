@@ -60,10 +60,11 @@ const text = content[locale as keyof typeof content] ?? content['en'];
 
 <style>
   .gf-section {
-    background: var(--color-glass-medium);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 1.75rem 1.5rem;
+    background: transparent;
+    border: 0;
+    border-block-start: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: 1.75rem 0;
   }
 
   .gf-heading {
@@ -96,14 +97,15 @@ const text = content[locale as keyof typeof content] ?? content['en'];
 
   .gf-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
   }
 
   .gf-card {
-    background: var(--color-glass-weak);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    background: transparent;
+    border: 0;
+    border-inline-start: 2px solid color-mix(in srgb, var(--color-theme) 34%, transparent);
+    border-radius: 0;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -112,9 +114,8 @@ const text = content[locale as keyof typeof content] ?? content['en'];
   }
 
   .gf-card:hover {
-    border-color: var(--color-theme);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+    background: color-mix(in srgb, var(--color-theme) 5%, transparent);
+    transform: none;
   }
 
   .gf-card__icon {

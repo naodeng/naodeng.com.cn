@@ -92,19 +92,23 @@ test.describe("Prompts selection and review flow", () => {
       const toggle = category.locator(".prompt-category-toggle");
       const list = category.locator(".prompts-grid");
 
-      await expect(toggle).toHaveAttribute("aria-expanded", "true");
-      await expect(list).toBeVisible();
-      await toggle.click();
       await expect(toggle).toHaveAttribute("aria-expanded", "false");
       await expect(list).toBeHidden();
+      await toggle.click();
+      await expect(toggle).toHaveAttribute("aria-expanded", "true");
+      await expect(list).toBeVisible();
 
       await page.reload({ waitUntil: "domcontentloaded" });
-      await expect(page.locator(".prompt-category").first().locator(".prompt-category-toggle")).toHaveAttribute("aria-expanded", "true");
+      await expect(page.locator(".prompt-category").first().locator(".prompt-category-toggle")).toHaveAttribute("aria-expanded", "false");
 
       const search = page.locator("#prompt-search-input");
       await search.fill(lang === "zh-cn" ? "API测试" : "API Testing");
-      await expect(page.locator('[data-prompt-type="api-testing"]')).toBeVisible();
+      const apiPrompt = page.locator('[data-prompt-type="api-testing"]');
+      await expect(apiPrompt).toBeVisible();
+      await expect(page.locator(".prompt-category").filter({ has: apiPrompt }).locator(".prompt-category-toggle")).toHaveAttribute("aria-expanded", "true");
       await expect(page.locator(".prompt-search-empty")).toBeHidden();
+      await search.fill("");
+      await expect(page.locator(".prompt-category").first().locator(".prompts-grid")).toBeHidden();
     });
 
     test(`${lang} unifies the page name and frames the flow as assisted`, async ({

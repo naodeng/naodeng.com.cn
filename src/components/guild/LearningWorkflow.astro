@@ -121,10 +121,11 @@ const text = content[locale as keyof typeof content] || content['en'];
 
 <style>
   .learning-workflow {
-    background: var(--color-glass-medium);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 1.75rem 1.5rem;
+    background: transparent;
+    border: 0;
+    border-block-start: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: 1.75rem 0;
   }
 
   .learning-workflow__header {
@@ -147,23 +148,23 @@ const text = content[locale as keyof typeof content] || content['en'];
 
   .workflow-steps {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 
   .workflow-step {
     position: relative;
-    background: var(--color-glass-weak);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     padding: 1.5rem;
     transition: var(--transition-base);
   }
 
   .workflow-step:hover {
-    border-color: var(--color-theme);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
+    border-color: color-mix(in srgb, var(--color-theme) 42%, var(--color-border));
+    transform: none;
+    box-shadow: none;
   }
 
   .workflow-step__number {
@@ -179,6 +180,10 @@ const text = content[locale as keyof typeof content] || content['en'];
     font-weight: 800;
     margin-bottom: 1.5rem;
     font-family: var(--english-font);
+  }
+
+  .workflow-step:last-child {
+    grid-column: 1 / -1;
   }
 
   .workflow-step__content {

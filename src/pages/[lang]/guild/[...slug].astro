@@ -524,7 +524,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     flex-direction: column;
     gap: 0.5em;
     padding: var(--sp-m);
-    background: var(--color-glass-medium);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     text-decoration: none;
@@ -532,9 +532,9 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   }
 
   .guild-pagination-link:hover {
-    background: var(--color-glass-weak);
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-surface));
     border-color: var(--color-theme);
-    box-shadow: var(--shadow-sm);
+    box-shadow: none;
   }
 
   .guild-pagination-prev:hover {

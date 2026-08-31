@@ -141,11 +141,12 @@ const isZh = locale === 'zh-cn';
   }
 
   .gs-type-block {
-    background: var(--color-glass-medium);
+    background: transparent;
     border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: var(--shadow-sm);
+    border-radius: 0;
+    border-inline-start: 3px solid var(--color-theme);
+    padding: 24px 0 24px 20px;
+    box-shadow: none;
   }
 
   .gs-type-header {
@@ -194,8 +195,8 @@ const isZh = locale === 'zh-cn';
     flex-direction: column;
     gap: 6px;
     padding: 16px;
-    border-radius: var(--radius-lg);
-    background: var(--color-glass-medium);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
     border: 1px solid rgba(148, 163, 184, 0.18);
     text-decoration: none;
     color: inherit;
@@ -205,8 +206,9 @@ const isZh = locale === 'zh-cn';
 
   .gs-fw-card:hover {
     border-color: rgba(79, 70, 229, 0.34);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-surface));
+    box-shadow: none;
+    transform: none;
   }
 
   .gs-fw-card:active {

@@ -131,10 +131,11 @@ const steps = isZh
 
 <style>
   .fw-workflow {
-    background: var(--color-glass-medium);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 1.25rem 1.5rem;
+    background: transparent;
+    border: 0;
+    border-block: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: 1.25rem 0;
   }
 
   .fw-workflow__header {
@@ -162,7 +163,7 @@ const steps = isZh
   }
 
   .fw-step {
-    background: var(--color-glass-weak);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 1.25rem;
@@ -174,8 +175,9 @@ const steps = isZh
 
   .fw-step:hover {
     border-color: var(--color-theme);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-surface));
+    box-shadow: none;
+    transform: none;
   }
 
   /* Step 1 is "done" — highlight it */

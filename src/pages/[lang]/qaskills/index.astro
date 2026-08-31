@@ -218,7 +218,19 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
 
       {grouped.catalogGroups.map((catalogGroup) => (
         <div class="category-block" data-block={catalogGroup.key}>
-          <h3>{catalogGroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</h3>
+          <h3>
+            <button
+              type="button"
+              class="category-toggle"
+              aria-expanded="false"
+              aria-controls={`category-content-${catalogGroup.key}`}
+            >
+              <span>{catalogGroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</span>
+              <span class="category-toggle-count">{catalogGroup.skills.length + catalogGroup.groups.reduce((count, group) => count + group.skills.length, 0)}</span>
+              <span class="material-icons-sharp" aria-hidden="true">expand_more</span>
+            </button>
+          </h3>
+          <div id={`category-content-${catalogGroup.key}`} class="category-content" hidden>
           {catalogGroup.skills.length > 0 && (
             <ul class="cards" role="list">
               {catalogGroup.skills.map((skill) => (
@@ -263,6 +275,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
               </ul>
             </div>
           ))}
+          </div>
         </div>
       ))}
 
@@ -332,6 +345,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     const secondaryChips = Array.from(document.querySelectorAll(".chip[data-secondary-filter]"));
     const cards = Array.from(document.querySelectorAll("a.card[data-slug]"));
     const blocks = Array.from(document.querySelectorAll(".category-block"));
+    const categoryToggles = Array.from(document.querySelectorAll(".category-toggle"));
     const defaultOnly = Array.from(document.querySelectorAll("[data-qaskills-default-only]"));
     if (!search || !empty || !cards.length) return;
 
@@ -384,7 +398,19 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       blocks.forEach((block) => {
         const hasVisible = Array.from(block.querySelectorAll("li")).some((li) => !li.hasAttribute("hidden"));
         block.toggleAttribute("hidden", !hasVisible);
+        if (searchActive() && hasVisible) {
+          const toggle = block.querySelector(".category-toggle");
+          const content = document.getElementById(toggle?.getAttribute("aria-controls") || "");
+          toggle?.setAttribute("aria-expanded", "true");
+          content?.removeAttribute("hidden");
+        }
       });
+      if (!searchActive()) {
+        categoryToggles.forEach((toggle) => {
+          toggle.setAttribute("aria-expanded", "false");
+          document.getElementById(toggle.getAttribute("aria-controls") || "")?.setAttribute("hidden", "");
+        });
+      }
 
       // 搜索态下隐藏默认辅助区，让目录结果紧邻筛选区
       defaultOnly.forEach((el) => el.toggleAttribute("hidden", searchActive()));
@@ -424,6 +450,15 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     });
 
     search.addEventListener("input", apply);
+    categoryToggles.forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        const content = document.getElementById(toggle.getAttribute("aria-controls") || "");
+        if (!content) return;
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!expanded));
+        content.toggleAttribute("hidden", expanded);
+      });
+    });
     clearBtn?.addEventListener("click", () => {
       search.value = "";
       category = "all";
@@ -611,7 +646,13 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     box-shadow: var(--shadow-glass-sm);
     backdrop-filter: blur(10px) saturate(112%);
   }
-  .category-block h3 { margin-bottom: 0.2rem; }
+  .category-block h3 { margin: 0; }
+  .category-toggle { display: flex; align-items: center; width: 100%; gap: 0.6rem; padding: 0; border: 0; background: transparent; color: var(--color-text-primary); font: inherit; font-size: 1.08rem; font-weight: 800; text-align: start; cursor: pointer; }
+  .category-toggle-count { margin-left: auto; color: var(--color-text-tertiary); font-size: 0.82rem; font-weight: 700; }
+  .category-toggle .material-icons-sharp { transition: transform 0.18s ease; }
+  .category-toggle[aria-expanded="false"] .material-icons-sharp { transform: rotate(-90deg); }
+  .category-toggle:focus-visible { outline: 2px solid var(--color-theme); outline-offset: 4px; border-radius: 2px; }
+  .category-content { margin-top: 0.8rem; }
   .category-block > p { margin-top: 0; opacity: 0.85; }
   .subgroup {
     margin-top: 0.85rem;

@@ -46,6 +46,7 @@ test.describe("QA Skills", () => {
       const firstCard = page.locator("a.card[data-slug]:visible").first();
       await expect(firstCard).toContainText(/api/i);
       await expect(page.locator("#qaskills-results")).toContainText(/\d+/);
+      await expect(page.locator(".category-toggle[aria-expanded='true']").first()).toBeVisible();
 
       // 清空后辅助区恢复，焦点回到搜索框
       await search.fill("");
@@ -69,6 +70,9 @@ test.describe("QA Skills", () => {
     await expect(page.locator("#qaskills-search")).toBeVisible();
     await expect(page.locator("#qaskills-empty")).toBeHidden();
     const card = page.locator('a.card[data-slug="code-review"]');
+    const category = page.locator(".category-block").filter({ has: card });
+    await expect(category.locator(".category-toggle")).toHaveAttribute("aria-expanded", "false");
+    await category.locator(".category-toggle").click();
     await expect(card).toBeVisible();
     await expect(card.locator(".tag-evals")).toBeVisible();
   });
@@ -76,6 +80,7 @@ test.describe("QA Skills", () => {
   test("catalog cards show their README-aligned summary", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/");
     const card = page.locator('a.card[data-slug="requirements-analysis"]').first();
+    await page.locator(".category-block").filter({ has: card }).locator(".category-toggle").click();
     await expect(card).toBeVisible();
     await expect(card.locator(".card-intro")).not.toBeEmpty();
   });

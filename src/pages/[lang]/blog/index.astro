@@ -21,6 +21,8 @@ const totalPosts = allPosts.length;
 const totalPages = Math.max(1, Math.ceil(totalPosts / BLOG_POSTS_PER_PAGE));
 const currentPage = 1;
 const posts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);
+const featuredPost = posts[0];
+const listPosts = posts.slice(1);
 
 const title = t({ en: "Blog", "zh-cn": "博客" });
 const description = t(BLOG_INDEX_DESCRIPTION);
@@ -68,9 +70,31 @@ export const getStaticPaths = () =>
   </section>
 
   <div class="blog-container">
+    {featuredPost && (() => {
+      const [, ...id] = featuredPost.id.split("/");
+      const postUrl = `/${locale}/blog/${id.join("/").toLowerCase()}/`;
+      const dateStr = featuredPost.data.date.toLocaleDateString(
+        locale === "zh-cn" ? "zh-CN" : "en-US",
+        { year: "numeric", month: "short", day: "numeric" },
+      );
+      return (
+        <article class="featured-post">
+          <div class="featured-post__meta">
+            <span>{locale === "zh-cn" ? "最新文章" : "Latest article"}</span>
+            <time>{dateStr}</time>
+          </div>
+          <h2><a href={postUrl}>{featuredPost.data.title}</a></h2>
+          {featuredPost.data.description && <p>{featuredPost.data.description}</p>}
+          <a class="featured-post__link" href={postUrl}>
+            {locale === "zh-cn" ? "阅读全文" : "Read article"}
+            <span class="material-icons-sharp" aria-hidden="true">arrow_forward</span>
+          </a>
+        </article>
+      );
+    })()}
     <div class="post-grid">
       {
-        posts.map((post) => {
+        listPosts.map((post) => {
           const [, ...id] = post.id.split("/");
           const postUrl = `/${locale}/blog/${id.join("/").toLowerCase()}/`;
           const dateStr = post.data.date.toLocaleDateString(
@@ -121,43 +145,67 @@ export const getStaticPaths = () =>
     margin-block-start: var(--sp-l);
   }
 
+  .featured-post {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 2rem;
+    margin-block-end: 1.5rem;
+    padding: clamp(1.35rem, 3vw, 2.25rem);
+    border: 1px solid color-mix(in srgb, var(--color-theme) 26%, var(--color-border));
+    border-inline-start: 4px solid var(--color-theme);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-surface));
+  }
+
+  .featured-post__meta {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .featured-post h2 {
+    margin: 0.75rem 0;
+    color: var(--color-main);
+    font-family: var(--font-heading);
+    font-size: clamp(1.45rem, 3vw, 2.3rem);
+    line-height: 1.2;
+  }
+
+  .featured-post h2 a,
+  .featured-post__link { color: inherit; text-decoration: none; }
+  .featured-post p { max-width: 65ch; margin: 0; color: var(--color-text-secondary); line-height: 1.7; }
+  .featured-post__link { align-self: end; display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-theme); font-weight: 800; white-space: nowrap; }
+  .featured-post__link:hover { text-decoration: underline; }
+
   .post-grid {
     display: grid;
-    gap: var(--sp-m);
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
   }
 
-  @media (max-width: 960px) {
-    .post-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .post-grid {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width: 640px) {
+    .featured-post { grid-template-columns: 1fr; }
+    .featured-post__link { margin-top: 1rem; justify-self: start; }
   }
 
   .post-card {
     display: flex;
     flex-direction: column;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: var(--color-glass-medium);
-    border-color: var(--color-glass-border);
-    box-shadow: var(--shadow-glass-sm);
-    backdrop-filter: blur(12px) saturate(114%);
-    border: 1px solid var(--color-border);
+    border-radius: 0;
+    background: transparent;
+    border-block-end: 1px solid var(--color-border);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .post-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-theme);
-    box-shadow: var(--shadow-md);
+    transform: none;
+    background: color-mix(in srgb, var(--color-theme) 4%, transparent);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -177,7 +225,7 @@ export const getStaticPaths = () =>
   }
 
   .post-content {
-    padding: var(--sp-m);
+    padding: 1.35rem 1.25rem 0.7rem;
     flex-grow: 1;
   }
 
@@ -214,8 +262,8 @@ export const getStaticPaths = () =>
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding: 0.75rem var(--sp-m);
-    border-top: 1px solid var(--color-border);
+    padding: 0 1.25rem 1rem;
+    border-top: 0;
   }
 
   .post-reading-time {

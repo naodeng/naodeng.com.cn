@@ -290,9 +290,10 @@ const itemListSchema = {
 
   /* ── Hero header ── */
   .fw-hero {
-    background: var(--color-glass-medium);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-surface));
+    border: 0;
+    border-inline-start: 4px solid var(--color-theme);
+    border-radius: 0;
     padding: 1.75rem;
     display: flex;
     flex-direction: column;
@@ -322,7 +323,7 @@ const itemListSchema = {
     object-fit: contain;
     border-radius: var(--radius-md);
     flex-shrink: 0;
-    background: var(--color-glass-weak);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     padding: 6px;
   }
@@ -497,10 +498,11 @@ const itemListSchema = {
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    background: var(--color-glass-medium);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 1rem 1.25rem;
+    background: transparent;
+    border: 0;
+    border-block: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: 1rem 0;
   }
 
   .lp-header__left {
@@ -590,7 +592,7 @@ const itemListSchema = {
     flex-direction: column;
     gap: 0.4rem;
     padding: 1rem 1.1rem;
-    background: var(--color-glass-weak);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     text-decoration: none;
@@ -598,9 +600,9 @@ const itemListSchema = {
   }
 
   .article-card:hover {
-    border-color: var(--color-theme);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
+    border-color: color-mix(in srgb, var(--color-theme) 55%, var(--color-border));
+    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-surface));
+    transform: none;
   }
 
   .article-title {

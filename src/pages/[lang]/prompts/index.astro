@@ -122,25 +122,16 @@ const itemListSchema = {
             </a>
           </div>
         </div>
-        <div class="prompts-hero-img">
-          <div class="prompt-console" aria-hidden="true">
-            <div class="prompt-console-bar">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="prompt-console-body">
-              <span class="prompt-label">{lang === "zh-cn" ? "测试提示词" : "QA Prompt"}</span>
-              <strong>{lang === "zh-cn" ? "辅助设计更完整的测试用例" : "Help design more complete test cases"}</strong>
-              <p>{lang === "zh-cn" ? "输入需求、接口或用户故事，输出结构化测试策略。" : "Turn requirements, APIs, or user stories into a structured testing strategy."}</p>
-              <div class="prompt-lines">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <aside class="prompts-hero-summary" aria-label={lang === "zh-cn" ? "提示词库适用范围" : "Prompt library scope"}>
+          <span class="prompt-label">{lang === "zh-cn" ? "测试提示词" : "QA Prompt"}</span>
+          <strong>{lang === "zh-cn" ? "辅助设计更完整的测试用例" : "Help design more complete test cases"}</strong>
+          <p>{lang === "zh-cn" ? "输入需求、接口或用户故事，输出结构化测试策略。" : "Turn requirements, APIs, or user stories into a structured testing strategy."}</p>
+          <dl>
+            <div><dt>{lang === "zh-cn" ? "测试类型" : "Testing types"}</dt><dd>{testingTypeCount}</dd></div>
+            <div><dt>{lang === "zh-cn" ? "工作流程" : "Workflows"}</dt><dd>{workflowCount}</dd></div>
+            <div><dt>{lang === "zh-cn" ? "专业提示词" : "Prompts"}</dt><dd>{promptCount}</dd></div>
+          </dl>
+        </aside>
       </div>
     </header>
 
@@ -159,14 +150,14 @@ const itemListSchema = {
         <section class="prompt-category" data-prompt-category-block aria-labelledby={`prompt-category-${category.order}`}>
           <div class="prompt-category-heading">
             <h3 id={`prompt-category-${category.order}`}>
-              <button type="button" class="prompt-category-toggle" aria-expanded="true" aria-controls={`prompt-category-list-${category.order}`}>
+              <button type="button" class="prompt-category-toggle" aria-expanded="false" aria-controls={`prompt-category-list-${category.order}`}>
                 <span class="material-icons-sharp" aria-hidden="true">expand_more</span>
                 <span>{category.title}</span>
               </button>
             </h3>
             <span>{category.prompts.length} {lang === "zh-cn" ? "个提示词" : "prompts"}</span>
           </div>
-          <ul id={`prompt-category-list-${category.order}`} class="prompts-grid" role="list">
+          <ul id={`prompt-category-list-${category.order}`} class="prompts-grid" role="list" hidden>
             {category.prompts.map((entry) => (
               <li>
                 <a
@@ -275,6 +266,12 @@ const itemListSchema = {
         toggle?.setAttribute("aria-expanded", "true");
       }
     });
+    if (!query) {
+      categoryBlocks.forEach((block) => {
+        block.querySelector<HTMLElement>(".prompts-grid")?.setAttribute("hidden", "");
+        block.querySelector<HTMLButtonElement>(".prompt-category-toggle")?.setAttribute("aria-expanded", "false");
+      });
+    }
     if (emptyState) emptyState.hidden = visible > 0;
   });
   document.querySelectorAll<HTMLButtonElement>(".prompt-category-toggle").forEach((button) => {
@@ -404,45 +401,33 @@ const itemListSchema = {
     transform: translateY(-1px);
   }
 
-  .prompts-hero-img {
-    min-width: 0;
-  }
-
-  .prompt-console {
+  .prompts-hero-summary {
+    display: grid;
+    align-content: start;
+    gap: 0.8rem;
     border: 1px solid rgba(148, 163, 184, 0.24);
     border-radius: var(--radius-lg);
-    background: var(--color-glass-medium);
-    box-shadow: var(--shadow-lg);
-    overflow: hidden;
+    background: var(--color-surface);
+    padding: 1.25rem;
   }
 
-  .prompt-console-bar {
-    display: flex;
-    gap: 0.45rem;
-    padding: 0.85rem 1rem;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  .prompts-hero-summary dl {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin: 0.35rem 0 0;
+  }
+
+  .prompts-hero-summary dl div {
+    padding: 0.7rem;
+    border-left: 2px solid var(--color-theme);
     background: var(--color-surface-muted);
   }
 
-  .prompt-console-bar span {
-    width: 0.64rem;
-    height: 0.64rem;
-    border-radius: 999px;
-    background: rgba(79, 70, 229, 0.42);
-  }
-
-  .prompt-console-bar span:nth-child(2) {
-    background: rgba(129, 140, 248, 0.42);
-  }
-
-  .prompt-console-bar span:nth-child(3) {
-    background: rgba(245, 158, 11, 0.5);
-  }
-
-  .prompt-console-body {
-    display: grid;
-    gap: 0.75rem;
-    padding: 1.25rem;
+  .prompts-hero-summary dt {
+    color: var(--color-text-tertiary);
+    font-size: 0.72rem;
+    font-weight: 700;
   }
 
   .prompt-label {
@@ -455,36 +440,24 @@ const itemListSchema = {
     font-weight: 800;
   }
 
-  .prompt-console-body strong {
+  .prompts-hero-summary strong {
     font-family: var(--font-heading);
     font-size: 1.08rem;
     color: var(--color-text-primary);
   }
 
-  .prompt-console-body p {
+  .prompts-hero-summary p {
     margin: 0;
     color: var(--color-text-secondary);
     line-height: 1.55;
   }
 
-  .prompt-lines {
-    display: grid;
-    gap: 0.5rem;
-    margin-top: 0.25rem;
-  }
-
-  .prompt-lines span {
-    height: 0.62rem;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(79, 70, 229, 0.18), rgba(129, 140, 248, 0.12));
-  }
-
-  .prompt-lines span:nth-child(2) {
-    width: 76%;
-  }
-
-  .prompt-lines span:nth-child(3) {
-    width: 58%;
+  .prompts-hero-summary dd {
+    margin: 0.2rem 0 0;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
   }
 
   /* ── Sections ── */
@@ -856,8 +829,8 @@ const itemListSchema = {
     .prompts-hero-text h1 {
       font-size: 34px;
     }
-    .prompts-hero-img {
-      display: none;
+    .prompts-hero-summary dl {
+      grid-template-columns: 1fr;
     }
   }
 

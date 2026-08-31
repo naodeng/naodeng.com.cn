@@ -121,16 +121,17 @@ const learningPathListSchema = {
   }
 
   .filter-card {
-    background: var(--color-glass-medium);
-    border: 1px solid var(--color-glass-border);
-    border-radius: var(--radius-md);
-    padding: 1.25rem 1.5rem;
+    background: transparent;
+    border: 0;
+    border-block: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: 1rem 0;
     display: flex;
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
-    box-shadow: var(--shadow-glass-sm);
-    backdrop-filter: blur(14px) saturate(116%);
+    box-shadow: none;
+    backdrop-filter: none;
   }
 
   .filter-card__label {
