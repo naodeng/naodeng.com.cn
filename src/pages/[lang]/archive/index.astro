@@ -4,6 +4,7 @@ import Layout from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 import { ARCHIVE_PAGE_TITLE, ARCHIVE_PAGE_DESCRIPTION, NAV_HOME } from "@/consts";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -17,7 +18,7 @@ const breadcrumbs = [
 ];
 
 // 获取并按日期排序
-const allPosts = (await getCollection("blog"))
+const allPosts = filterPublishedBlogPosts(await getCollection("blog"))
   .filter((post) => post.id.split("/")[0] === locale)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 

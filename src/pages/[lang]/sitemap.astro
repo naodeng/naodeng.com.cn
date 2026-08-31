@@ -14,6 +14,7 @@ import {
   NAV_SPONSOR,
 } from "@/consts";
 import { wikiIdToSlug, getTitleZhFromBody, getTitleZh, slugToTitleEn } from "@/data/wiki";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -21,7 +22,7 @@ const t = useTranslations(locale);
 const title = t(SITEMAP_PAGE_TITLE);
 
 // 当前语言的博文列表（用于站点地图展示）
-const posts = (await getCollection("blog"))
+const posts = filterPublishedBlogPosts(await getCollection("blog"))
   .filter((post) => post.id.split("/")[0] === locale)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 

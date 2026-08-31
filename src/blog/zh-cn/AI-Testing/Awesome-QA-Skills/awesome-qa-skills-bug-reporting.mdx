@@ -1,0 +1,151 @@
+---
+title: "把“偶尔失败”写成开发能复现的问题"
+description: "缺陷上报 实战：把“偶尔失败”写成开发能复现的问题。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+date: 2026-09-05T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "缺陷上报"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+缺陷上报 最适合从一份不太完整的项目材料开始。本文采用的任务是：把支付页偶发重复扣款整理成开发可以稳定复现和定位的缺陷。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 缺陷上报。
+
+## 先看源 Skill
+
+主 Prompt 把工作拆到 质量要求、执行流程、核心约束、按需加载、交付前自检。这些标题只是导航，真正使用时还要回到项目材料。
+
+源目录现有 1 份示例、1 份参考、17 个脚本入口。可以先看 [缺陷报告模板示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting/examples/bug-report-templates)、[缺陷上报 补充参考资料](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting/references/local)、[模板批量转换脚本](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting/scripts/batch_convert_templates.py)。
+
+## 用一个具体任务跑通思路
+
+把支付页偶发重复扣款整理成开发可以稳定复现和定位的缺陷
+
+可以先给 Skill 这组材料。
+
+```text
+事实源：当前需求版本、相关页面或接口、已知缺陷
+范围：只覆盖本次变更影响的链路
+未知项：环境、账号、数据准备方式
+期望输出：风险排序、覆盖清单、待确认问题
+```
+
+下面是示例输出片段。它用于说明格式，不是执行结果。
+
+| 优先级 | 测试点 | 依据 | 状态 |
+| --- | --- | --- | --- |
+| P0 | 核心业务主路径 | 验收标准 AC-01 | 待执行 |
+| P1 | 异常与恢复 | 历史缺陷 BUG-17 | 待补数据 |
+| P1 | 边界和状态转换 | 需求规则 BR-03 | 待确认 |
+
+状态列不能提前写成“通过”。静态设计到这里结束，后面还需要真实执行。
+
+## 从覆盖清单走到决策
+
+把支付页偶发重复扣款整理成开发可以稳定复现和定位的缺陷。先按风险拆任务，再决定写多少用例。
+
+| 风险问题 | 测试设计 | 需要的证据 |
+| --- | --- | --- |
+| 主路径失败会不会阻断交易 | 端到端主路径加关键状态断言 | 运行记录、订单状态、构建号 |
+| 重试会不会产生重复数据 | 重复提交和幂等性检查 | 请求 ID、数据查询结果 |
+| 失败后用户能不能恢复 | 超时、刷新、重新进入 | 页面状态、日志、恢复结果 |
+
+这张表会继续长，但别一开始就追求面面俱到。先确认 质量要求、执行流程 是否命中本次改动，再补边界和兼容性。
+
+### 评审输出时怎么判断够不够
+
+拿每条测试点去问三个问题。它依据哪条需求或风险，执行需要什么环境和数据，失败后留下什么。回答不出来的条目仍是想法，还不能交给执行者。
+
+## 一段可以直接改的调用词
+
+把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+
+```text
+请使用 bug-reporting Skill。
+
+任务：把支付页偶发重复扣款整理成开发可以稳定复现和定位的缺陷
+版本与环境：[需求版本 / 构建号 / 环境]
+输入材料：[文件路径或链接]
+范围：[本次包含与排除的业务链路]
+限制：[账号、数据、时间、合规要求]
+
+按业务风险排序覆盖，区分设计状态与执行状态。每条测试点注明依据、数据和预期证据。
+最后列出待确认问题，不要补写材料里没有的事实。
+```
+
+第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
+
+## 进阶使用，从一次调用走到持续流程
+
+把 把支付页偶发重复扣款整理成开发可以稳定复现和定位的缺陷 的结果保存成基线。需求或代码变化后先做影响分析，只重跑受影响链路和固定门禁集，完整回归留给合适的阶段。
+
+### 三段式 Skill 链
+
+`requirements-analysis` → `bug-reporting` → `test-reporting`
+
+| 交接 | 传递内容 | 接收方检查 |
+| --- | --- | --- |
+| 上游到 bug-reporting | 来源版本、范围、风险和未决问题 | 缺陷上报 输入是否过期，冲突是否标记 |
+| bug-reporting 到下游 | 主产物、证据索引、未完成项 | 缺陷上报 产物能否继续执行，Owner 是否明确 |
+| 下游回写 bug-reporting | 运行结果、缺陷和新风险 | 是否更新 缺陷上报 基线与回归范围 |
+
+不要把三次输出复制进一个大 Prompt。缺陷上报 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
+
+### 放进团队流程的门禁
+
+| 门禁 | 建议检查 | 失败动作 |
+| --- | --- | --- |
+| bug-reporting 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 缺陷上报 并列出缺口 |
+| bug-reporting 产物门禁 | 关键结论带依据和状态 | 退回 缺陷上报 补证据 |
+| bug-reporting 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
+| bug-reporting 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
+
+团队可以每个 Sprint 看一次 缺陷上报 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+
+## 使用时我会特别检查什么
+
+- 范围是否落到具体业务链路，避免把 缺陷上报 写成百科全书。
+- 质量要求 是否引用了真实需求、页面、接口或缺陷。
+- 正常、异常、边界和恢复路径有没有按风险排序。
+- 输出状态是否诚实区分待设计、待执行、通过和失败。
+
+## 安装与调用
+
+安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting -g -a codex -y
+```
+
+调用时直接写“请使用 bug-reporting Skill”，然后附上真实材料。
+
+## 两个实际问题
+
+### 材料不完整时还能使用 缺陷上报 吗？
+
+可以，但输出应降级为已知事实、假设和待确认问题。缺失环境或数据时，不能写执行结论。
+
+### 怎么判断 执行流程 做得够不够？
+
+拿需求和风险逐项回查。能说明覆盖依据、遗漏原因和下一步动作，才算可交接。
+
+### 什么时候需要人工复核？
+
+涉及范围取舍、风险接受、发布决定或材料冲突时必须由负责人确认。
+
+### 输出怎么留档？
+
+保存输入版本、Skill 输出、人工修改和最终证据。只留最后一份文档，很难解释结论怎么来的。
+
+先拿一份真实材料跑 缺陷上报，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+
+## 参考
+- [Awesome QA Skills 项目主页](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills 系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [缺陷报告模板示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting/examples/bug-report-templates)
+- [缺陷上报 补充参考资料](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting/references/local)
+- [缺陷上报 辅助脚本：batch_convert_templates.py](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting/scripts/batch_convert_templates.py)
+- [Awesome QA Skills：缺陷上报 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting)
+- [缺陷上报 Skill 详情页](https://inaodeng.com/zh-cn/qaskills/bug-reporting/)

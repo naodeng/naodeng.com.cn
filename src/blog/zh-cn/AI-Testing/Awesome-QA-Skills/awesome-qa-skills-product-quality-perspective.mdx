@@ -1,0 +1,133 @@
+---
+title: "产品质量视角：把用户价值与业务取舍写进质量结论"
+description: "产品质量视角 实战：产品质量视角，把分歧写进质量结论。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+date: 2026-09-18T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "产品质量视角"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+产品质量视角 最适合从一份不太完整的项目材料开始。本文采用的任务是：从用户价值与业务规则评审会员升级功能的范围、失败状态和验收缺口。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 产品质量视角。
+
+## 先看源 Skill
+
+主 Prompt 把工作拆到 适用性判断、产品问题、输出合同、证据与边界、执行流程。这些标题只是导航，真正使用时还要回到项目材料。
+
+这个 Skill 没有单独示例目录，文章里的片段依据入口、主 Prompt 和评测约束整理。
+
+## 一份保留分歧的评审片段
+
+从用户价值与业务规则评审会员升级功能的范围、失败状态和验收缺口
+
+同一份材料，不同角色会看到不同风险。示例片段如下。
+
+| 观察 | 证据 | 影响 | 建议 |
+| --- | --- | --- | --- |
+| 关键状态缺少用户反馈 | 原型只画了成功态 | 用户可能重复提交 | 补失败态和恢复路径 |
+| 当前排期没有回归窗口 | 发布计划只留半天 | 高风险链路无法复测 | 调整范围或延后门禁 |
+
+这里不需要强行统一意见。先把证据和影响写清楚，再交给有权限的人决定。
+
+## 分歧怎么合进一个结论
+
+围绕 从用户价值与业务规则评审会员升级功能的范围、失败状态和验收缺口，产品可能担心转化，QA 盯着恢复路径，技术更在意可观测性和回滚成本。三种意见都合理，但不能揉成一句「整体风险可控」。
+
+| 角色 | 观察 | 需要的证据 | 决策权 |
+| --- | --- | --- | --- |
+| 产品 | 主路径是否影响用户完成任务 | 漏斗、验收记录 | 范围取舍 |
+| QA | 异常和恢复是否可验证 | 用例、运行记录、缺陷 | 测试结论 |
+| 技术 | 失败是否可定位并回滚 | 日志、指标、部署记录 | 技术风险 |
+
+合并时保留原始观察，再写共同事实。遇到冲突，Skill 应输出待决策项、可选方案和批准人，别替团队做决定。适用性判断、产品问题 相关结论尤其要带来源，因为它们很容易在转述中变味。
+
+最后的质量结论可以只有三行：已证实什么、仍不知道什么、谁会处理。短一点没关系，证据要能点开。
+
+## 一段可以直接改的调用词
+
+把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+
+```text
+请使用 product-quality-perspective Skill。
+
+任务：从用户价值与业务规则评审会员升级功能的范围、失败状态和验收缺口
+版本与环境：[需求版本 / 构建号 / 环境]
+输入材料：[文件路径或链接]
+范围：[本次包含与排除的业务链路]
+限制：[账号、数据、时间、合规要求]
+
+分别保留各角色观察、依据和影响。共同事实与分歧分开写，待决策项注明批准人。
+最后列出待确认问题，不要补写材料里没有的事实。
+```
+
+第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
+
+## 进阶使用，从一次调用走到持续流程
+
+给观察加 confidence 和 source_id。证据更新后重新评估结论，但保留旧版本与决策记录，方便解释团队为什么改变判断。
+
+### 三段式 Skill 链
+
+`requirements-analysis` → `product-quality-perspective` → `multi-role-quality-synthesis`
+
+| 交接 | 传递内容 | 接收方检查 |
+| --- | --- | --- |
+| 上游到 product-quality-perspective | 来源版本、范围、风险和未决问题 | 产品质量视角 输入是否过期，冲突是否标记 |
+| product-quality-perspective 到下游 | 主产物、证据索引、未完成项 | 产品质量视角 产物能否继续执行，Owner 是否明确 |
+| 下游回写 product-quality-perspective | 运行结果、缺陷和新风险 | 是否更新 产品质量视角 基线与回归范围 |
+
+不要把三次输出复制进一个大 Prompt。产品质量视角 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
+
+### 放进团队流程的门禁
+
+| 门禁 | 建议检查 | 失败动作 |
+| --- | --- | --- |
+| product-quality-perspective 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 产品质量视角 并列出缺口 |
+| product-quality-perspective 产物门禁 | 关键结论带依据和状态 | 退回 产品质量视角 补证据 |
+| product-quality-perspective 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
+| product-quality-perspective 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
+
+团队可以每个 Sprint 看一次 产品质量视角 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+
+## 角色视角不是角色扮演
+
+不要替产品、QA 或技术凭空发言。产品质量视角 只能依据现有材料提出观察。观点发生冲突时，记录证据、影响和决策人，比写一段“综合来看”更诚实。
+
+## 安装与调用
+
+安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/product-quality-perspective -g -a codex -y
+```
+
+调用时直接写“请使用 product-quality-perspective Skill”，然后附上真实材料。
+
+## 两个实际问题
+
+### 一个视角可以否决其他视角吗？
+
+不可以。它提供补充观察。发现冲突后要保留分歧和依据。
+
+### 没有对应角色参加怎么办？
+
+把结果标成代理分析，并列出需要该角色确认的问题，别伪造批准。
+
+### 多个角色给出相反结论怎么办？
+
+保留两边证据，明确各自承担的风险，再交给对应决策人。
+
+### 没有数据能不能写观点？
+
+可以写观察或假设，但要标明来源不足以及需要补什么。
+
+先拿一份真实材料跑 产品质量视角，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+
+## 参考
+- [Awesome QA Skills 项目主页](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills 系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [Awesome QA Skills：产品质量视角 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/product-quality-perspective)
+- [产品质量视角 Skill 详情页](https://inaodeng.com/zh-cn/qaskills/product-quality-perspective/)

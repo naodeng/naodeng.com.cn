@@ -6,6 +6,7 @@ import PageHeadline from "@/components/PageHeadline.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_TAGS } from "@/consts";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 /** 标签链接统一使用编码；getStaticPaths 传原始值，让 Astro 负责路由编码与匹配。 */
 function tagToSlug(t: string) {
@@ -16,7 +17,7 @@ function slugToTag(slug: string) {
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog");
+  const allPosts = filterPublishedBlogPosts(await getCollection("blog"));
   const paths: { params: { lang: string; tag: string }; props: { posts: CollectionEntry<"blog">[]; redirectTo?: string } }[] = [];
 
   for (const lang of Object.keys(LOCALES)) {

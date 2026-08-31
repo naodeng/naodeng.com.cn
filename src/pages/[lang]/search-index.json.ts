@@ -1,6 +1,7 @@
 import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
 import { wikiIdToSlug, getTitleZhFromBody, getTitleZh } from "@/data/wiki";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 export interface SearchIndexItem {
   title: string;
@@ -21,7 +22,7 @@ export const GET: APIRoute = async ({ params }) => {
   const lang = params.lang as string;
   
   // 获取博客文章
-  const allPosts = await getCollection("blog");
+  const allPosts = filterPublishedBlogPosts(await getCollection("blog"));
   const posts = allPosts.filter((p) => p.id.startsWith(`${lang}/`));
 
   const blogIndex: SearchIndexItem[] = posts.map((post) => {

@@ -10,6 +10,8 @@ const blog = defineCollection({
       title: z.string(),
       description: z.string(),
       date: z.coerce.date(),
+      /** 草稿不生成任何公开页面或订阅内容。 */
+      draft: z.boolean().optional(),
       updated: z.coerce.date().optional(),
       author: z.string().optional(),
       tags: z.array(z.string()).min(1).max(3).optional(),

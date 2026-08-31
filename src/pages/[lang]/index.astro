@@ -22,11 +22,12 @@ import HomeExploreHub from "@/components/home/HomeExploreHub.astro";
 import HomeSectionHeading from "@/components/home/HomeSectionHeading.astro";
 import { PROJECTS_LIST } from "@/data/projects";
 import HomeGlassHero from "@/components/home/HomeGlassHero.astro";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
-const allPosts = (await getCollection("blog")).filter(
+const allPosts = filterPublishedBlogPosts(await getCollection("blog")).filter(
   (post) => post.id.split("/")[0] === locale,
 );
 

@@ -2,6 +2,7 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import { localeParams } from "@/i18n";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 export const getStaticPaths = () => localeParams;
 
@@ -15,9 +16,9 @@ export async function GET(context) {
       ? SITE_DESCRIPTION
       : SITE_DESCRIPTION[locale];
 
-  const posts = await getCollection("blog", ({ id }) => {
-    return id.split("/")[0] === locale;
-  });
+  const posts = filterPublishedBlogPosts(await getCollection("blog")).filter(
+    ({ id }) => id.split("/")[0] === locale,
+  );
   posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   const siteOrigin = context.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";

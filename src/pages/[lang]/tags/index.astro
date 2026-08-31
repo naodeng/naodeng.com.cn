@@ -5,11 +5,12 @@ import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_TAGS, TAGS_INDEX_DESCRIPTION } from "@/consts";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
-const allPosts = (await getCollection("blog"))
+const allPosts = filterPublishedBlogPosts(await getCollection("blog"))
   .filter((post) => post.id.split("/")[0] === locale);
 
 const tagCounts = allPosts

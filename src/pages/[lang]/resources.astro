@@ -7,6 +7,7 @@ import { PROJECTS_LIST } from "@/data/projects";
 import { LEARNING_SITES } from "@/consts";
 import { getQASkillsGrouped } from "@/utils/qaskills";
 import { aiwikiIdToLang, aiwikiIdToSlug, getAiWikiDisplayTitle } from "@/data/aiwiki";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 export const getStaticPaths = () => Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
 
@@ -29,7 +30,7 @@ const aiwiki = (await getCollection("aiwiki")).filter((item) => (item.data.lang 
 const wiki = isZh ? (await getCollection("wiki")).map((item) => ({ title: item.data.title || item.id, description: item.data.description || "", href: getRelativeLocaleUrl(locale, `/wiki/${item.id}/`), tags: item.data.section ? [item.data.section] : [] })) : [];
 const guides = (await getCollection("guild")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => a.data.order - b.data.order).map((item) => ({ title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/guild/${item.data.testType}/${item.data.framework}/`), tags: [item.data.framework, item.data.stage] }));
 const projects = PROJECTS_LIST.map((item) => ({ title: item.name[locale] || item.name.en || "Project", description: item.description[locale] || item.description.en || "", href: item.url, tags: (item.techStack[locale] || item.techStack.en || "").split(/[、,，]/).slice(0, 3) }));
-const posts = (await getCollection("blog")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).map((item) => { const [, ...parts] = item.id.split("/"); return { title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/blog/${parts.join("/").toLowerCase()}/`), tags: item.data.tags || [] }; });
+const posts = filterPublishedBlogPosts(await getCollection("blog")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).map((item) => { const [, ...parts] = item.id.split("/"); return { title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/blog/${parts.join("/").toLowerCase()}/`), tags: item.data.tags || [] }; });
 const plans = LEARNING_SITES.map((item) => ({ title: item.label[locale as "en" | "zh-cn"], description: text.descriptions.plans, href: item.url, tags: [isZh ? "30 天" : "30 days", isZh ? "学习计划" : "learning plan"] }));
 
 const sections = [

@@ -12,6 +12,7 @@ import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL, SITE_SLOGAN } from "@/co
 import type { Lang } from "@/i18n";
 import { wikiIdToSlug, getTitleZhFromBody, getTitleZh, slugToTitleEn } from "@/data/wiki";
 import { aiwikiIdToSlug, aiwikiIdToLang, getAiWikiDisplayTitle } from "@/data/aiwiki";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 /** 根据正文字符数估算阅读时长（约 1000 字/分钟，至少 1 分钟） */
 function readingTimeMinutes(rawBody: string): number {
@@ -20,7 +21,7 @@ function readingTimeMinutes(rawBody: string): number {
 }
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = filterPublishedBlogPosts(await getCollection("blog"));
   return posts.map((post) => {
     const [lang, ...idParts] = post.id.split("/");
     // 博文 URL 路径段统一小写，避免大小写不一致导致 404
@@ -82,7 +83,7 @@ const breadcrumbs = [
 ];
 
 // 站点统计（用于侧栏作者卡片）
-const allPosts = await getCollection("blog");
+const allPosts = filterPublishedBlogPosts(await getCollection("blog"));
 const totalArticles = allPosts.length;
 const allCategories = new Set(allPosts.flatMap((p) => p.data.categories ?? []));
 const allTags = new Set(allPosts.flatMap((p) => p.data.tags ?? []));

@@ -1,0 +1,141 @@
+---
+title: "测试用例编写加强版：让需求、规则与用例来源保持可追溯"
+description: "测试用例编写加强版 实战：测试用例编写加强版，多份材料怎样保持来源追踪。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+date: 2026-09-04T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "测试用例编写加强版"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+测试用例编写加强版 最适合从一份不太完整的项目材料开始。本文采用的任务是：从需求、接口定义和风险清单生成可追踪用例，并标出材料之间的冲突。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 测试用例编写加强版。
+
+## 先看源 Skill
+
+主 Prompt 把工作拆到 相对基础版（test-case-writing）的差异、用例字段（结构化，缺一需说明原因）、质量要求、常见误区（Gotchas）、交付前自检。这些标题只是导航，真正使用时还要回到项目材料。
+
+源目录现有 7 份示例、1 份参考、8 个脚本入口。可以先看 [分析结果示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testcase-writer-plus/examples/analysis-sample.md)、[测试用例编写增强版 补充参考资料](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testcase-writer-plus/references/local)。
+
+## 多份材料先做来源账本
+
+从需求、接口定义和风险清单生成可追踪用例，并标出材料之间的冲突
+
+增强版 Skill 常常同时读取需求、分析稿和计划。第一步应记录来源。
+
+| source_id | 文件 | 用途 | 冲突处理 |
+| --- | --- | --- | --- |
+| RQ-01 | requirements.md | 业务规则 | 最高优先级 |
+| AN-02 | analysis.xlsx | 风险与边界 | 与需求冲突时标红 |
+| PL-03 | release-plan.md | 时间和负责人 | 不覆盖业务规则 |
+
+示例输出里每条策略或用例都应带 source_id。找不到来源的结论要标成假设。
+
+## 多文件输入要先解决版本问题
+
+从需求、接口定义和风险清单生成可追踪用例，并标出材料之间的冲突。加强版的难点通常不在解析格式，而在同一事实出现了三种说法。
+
+| 冲突 | 处理办法 | 输出标记 |
+| --- | --- | --- |
+| 需求写支持退款，计划没排期 | 保留业务规则，标记交付缺口 | blocked |
+| 分析稿和接口定义字段不同 | 以当前接口版本为准，要求确认 | needs-review |
+| 测试数据日期早于需求版本 | 不拿旧数据证明新行为 | stale-source |
+
+Skill 需要保存 source_id、版本或更新时间。生成测试策略或用例以后，再随机抽三条回查原文。只要有一条找不到依据，就先停下来修来源链。
+
+### 一份能交接的加强版产物
+
+- 来源账本，记录文件、版本、用途和优先级。
+- 冲突清单，写清受影响的结论和确认人。
+- 主产物，每条关键内容携带 source_id。
+- 未解析项，不把缺失内容包装成推断。
+
+## 一段可以直接改的调用词
+
+把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+
+```text
+请使用 testcase-writer-plus Skill。
+
+任务：从需求、接口定义和风险清单生成可追踪用例，并标出材料之间的冲突
+版本与环境：[需求版本 / 构建号 / 环境]
+输入材料：[文件路径或链接]
+范围：[本次包含与排除的业务链路]
+限制：[账号、数据、时间、合规要求]
+
+先建立来源账本和冲突优先级。每条关键输出带 source_id，无法追踪的内容标记为假设。
+最后列出待确认问题，不要补写材料里没有的事实。
+```
+
+第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
+
+## 进阶使用，从一次调用走到持续流程
+
+给来源账本加 checksum 或版本号。输入变化时只重算受影响的结论，再输出 changed、unchanged 和 needs-review 三种状态。
+
+### 三段式 Skill 链
+
+`test-strategy-plus` → `testcase-writer-plus` → `test-case-reviewer-plus`
+
+| 交接 | 传递内容 | 接收方检查 |
+| --- | --- | --- |
+| 上游到 testcase-writer-plus | 来源版本、范围、风险和未决问题 | 测试用例编写加强版 输入是否过期，冲突是否标记 |
+| testcase-writer-plus 到下游 | 主产物、证据索引、未完成项 | 测试用例编写加强版 产物能否继续执行，Owner 是否明确 |
+| 下游回写 testcase-writer-plus | 运行结果、缺陷和新风险 | 是否更新 测试用例编写加强版 基线与回归范围 |
+
+不要把三次输出复制进一个大 Prompt。测试用例编写加强版 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
+
+### 放进团队流程的门禁
+
+| 门禁 | 建议检查 | 失败动作 |
+| --- | --- | --- |
+| testcase-writer-plus 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 测试用例编写加强版 并列出缺口 |
+| testcase-writer-plus 产物门禁 | 关键结论带依据和状态 | 退回 测试用例编写加强版 补证据 |
+| testcase-writer-plus 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
+| testcase-writer-plus 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
+
+团队可以每个 Sprint 看一次 测试用例编写加强版 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+
+## 增强版不等于输入越多越好
+
+多格式解析会扩大上下文，也会带来版本冲突。先确定事实源，再加载相关文件。围绕 相对基础版（test-case-writing）的差异 生成的每条结论都要能回到 source_id。
+
+## 安装与调用
+
+安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testcase-writer-plus -g -a codex -y
+```
+
+调用时直接写“请使用 testcase-writer-plus Skill”，然后附上真实材料。
+
+## 两个实际问题
+
+### 普通版和加强版怎么选？
+
+输入单一、任务清楚时用普通版。需要解析多份文件并保持来源追踪时再用加强版。
+
+### 文件之间冲突怎么办？
+
+保留冲突，按事实源优先级处理，并把受影响结论标出来。
+
+### 什么时候需要人工复核？
+
+涉及范围取舍、风险接受、发布决定或材料冲突时必须由负责人确认。
+
+### 输出怎么留档？
+
+保存输入版本、Skill 输出、人工修改和最终证据。只留最后一份文档，很难解释结论怎么来的。
+
+先拿一份真实材料跑 测试用例编写加强版，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+
+## 参考
+- [Awesome QA Skills 项目主页](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills 系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- [分析结果示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testcase-writer-plus/examples/analysis-sample.md)
+- [测试用例编写增强版 补充参考资料](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testcase-writer-plus/references/local)
+- [Awesome QA Skills：测试用例编写增强版 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testcase-writer-plus)
+- [测试用例编写加强版 Skill 详情页](https://inaodeng.com/zh-cn/qaskills/testcase-writer-plus/)
