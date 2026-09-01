@@ -8,6 +8,7 @@ test.describe("Guild 概览页", () => {
     await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".guild-hero__title")).toContainText("让自动化测试成为你的超能力", { timeout: 10000 });
     await expect(page.locator(".tts__title").filter({ hasText: "接口自动化测试" })).toBeVisible();
+    await expect(page.locator(".tts__title").filter({ hasText: "UI 自动化测试" })).toBeVisible();
     await expect(page.locator(".tts__title").filter({ hasText: "性能测试" })).toBeVisible();
   });
 
@@ -15,6 +16,7 @@ test.describe("Guild 概览页", () => {
     await page.goto((baseURL || "") + "/en/guild/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".guild-hero__title")).toContainText("Make Test Automation Your Superpower", { timeout: 10000 });
     await expect(page.locator(".tts__title").filter({ hasText: "API Automation Testing" })).toBeVisible();
+    await expect(page.locator(".tts__title").filter({ hasText: "UI Automation Testing" })).toBeVisible();
     await expect(page.locator(".tts__title").filter({ hasText: "Performance Testing" })).toBeVisible();
   });
 
@@ -334,4 +336,67 @@ test.describe("Guild 文章详情页", () => {
       await expect(meta.filter({ hasText: "Read" })).toBeVisible();
     }
   });
+});
+
+// ─────────────────────────────────────────────
+// 新增工具学习路径
+// ─────────────────────────────────────────────
+test.describe("新增工具学习路径", () => {
+  const frameworks = [
+    { lang: "zh-cn", testType: "performance-testing", framework: "jmeter", name: "JMeter", articleCount: 5 },
+    { lang: "en", testType: "performance-testing", framework: "jmeter", name: "JMeter", articleCount: 5 },
+    { lang: "zh-cn", testType: "ui-testing", framework: "selenium", name: "Selenium", articleCount: 5 },
+    { lang: "en", testType: "ui-testing", framework: "selenium", name: "Selenium", articleCount: 5 },
+    { lang: "zh-cn", testType: "ui-testing", framework: "playwright", name: "Playwright", articleCount: 6 },
+    { lang: "en", testType: "ui-testing", framework: "playwright", name: "Playwright", articleCount: 6 },
+    { lang: "zh-cn", testType: "ui-testing", framework: "cypress", name: "Cypress", articleCount: 5 },
+    { lang: "en", testType: "ui-testing", framework: "cypress", name: "Cypress", articleCount: 5 },
+  ];
+
+  for (const item of frameworks) {
+    test(`${item.lang} ${item.name}：五阶段学习路径及首篇文章可访问`, async ({ page, baseURL }) => {
+      const base = `${baseURL || ""}/${item.lang}/guild/${item.testType}/${item.framework}/`;
+      await page.goto(base, { waitUntil: "domcontentloaded" });
+      await expect(page.locator(".fw-hero__title")).toContainText(item.name);
+      await expect(page.locator(".article-card")).toHaveCount(item.articleCount);
+      await expect(page.locator(".fw-link--primary")).toHaveCount(0);
+
+      const firstArticle = page.locator(".article-card").first();
+      await firstArticle.click();
+      await expect(page).toHaveURL(new RegExp(`/${item.lang}/guild/${item.testType}/${item.framework}/.+/`));
+      await expect(page.locator(".guild-content")).toBeVisible();
+      await expect(page.getByRole("link", { name: /示例代码|Demo Code/ })).toHaveCount(0);
+    });
+  }
+});
+
+test.describe("Playwright MCP 进阶教程", () => {
+  const pages = [
+    {
+      lang: "zh-cn",
+      title: "Playwright MCP：用 AI Agent 探索浏览器并沉淀测试",
+      mobile: true,
+    },
+    {
+      lang: "en",
+      title: "Playwright MCP: Agent-Assisted Browser Exploration",
+      mobile: false,
+    },
+  ];
+
+  for (const item of pages) {
+    test(`${item.lang}：新教程可访问并提供 MCP 配置`, async ({ page, baseURL }) => {
+      if (item.mobile) await page.setViewportSize({ width: 375, height: 667 });
+
+      await page.goto(
+        `${baseURL || ""}/${item.lang}/guild/ui-testing/playwright/mcp-agent-browser-automation/`,
+        { waitUntil: "domcontentloaded" },
+      );
+
+      await expect(page.locator("h1")).toContainText(item.title);
+      await expect(page.locator(".guild-content")).toContainText("Playwright MCP");
+      await expect(page.locator(".guild-content")).toContainText("@playwright/mcp@latest");
+      await expect(page.getByRole("link", { name: /示例代码|Demo Code/ })).toHaveCount(0);
+    });
+  }
 });
