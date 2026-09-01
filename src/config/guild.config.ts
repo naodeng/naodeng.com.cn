@@ -95,11 +95,19 @@ export const guildConfigZhCn: GuildConfig = {
       icon: 'desktop_windows',
       frameworks: [
         {
+          id: 'selenium',
+          name: 'Selenium',
+          language: 'Python',
+          description: '成熟的 WebDriver 自动化框架，适合跨浏览器和 Grid 并行执行',
+          officialDocs: 'https://www.selenium.dev/documentation/',
+          color: '#43B02A',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg',
+        },
+        {
           id: 'playwright',
           name: 'Playwright',
           language: 'JavaScript/TypeScript/Python/Java/.NET',
           description: '微软出品的现代化 Web 测试框架，支持多浏览器',
-          githubDemo: 'https://github.com/naodeng/playwright-demo',
           officialDocs: 'https://playwright.dev/',
           color: '#2EAD33',
           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg',
@@ -109,7 +117,6 @@ export const guildConfigZhCn: GuildConfig = {
           name: 'Cypress',
           language: 'JavaScript/TypeScript',
           description: '开发者友好的端到端测试框架',
-          githubDemo: 'https://github.com/naodeng/cypress-demo',
           officialDocs: 'https://www.cypress.io/',
           color: '#17202C',
           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg',
@@ -122,6 +129,15 @@ export const guildConfigZhCn: GuildConfig = {
       description: '学习如何进行性能测试和压力测试',
       icon: 'bolt',
       frameworks: [
+        {
+          id: 'jmeter',
+          name: 'JMeter',
+          language: 'Java',
+          description: '基于 Java 的性能测试工具，适合 HTTP、JDBC 等协议的负载测试',
+          officialDocs: 'https://jmeter.apache.org/usermanual/',
+          color: '#D22128',
+          icon: 'https://jmeter.apache.org/images/logo.svg',
+        },
         {
           id: 'k6',
           name: 'K6',
@@ -215,11 +231,19 @@ export const guildConfigEn: GuildConfig = {
       icon: 'desktop_windows',
       frameworks: [
         {
+          id: 'selenium',
+          name: 'Selenium',
+          language: 'Python',
+          description: 'Mature WebDriver framework for cross-browser automation and Grid execution',
+          officialDocs: 'https://www.selenium.dev/documentation/',
+          color: '#43B02A',
+          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg',
+        },
+        {
           id: 'playwright',
           name: 'Playwright',
           language: 'JavaScript/TypeScript/Python/Java/.NET',
           description: 'Modern web testing framework by Microsoft with multi-browser support',
-          githubDemo: 'https://github.com/naodeng/playwright-demo',
           officialDocs: 'https://playwright.dev/',
           color: '#2EAD33',
           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg',
@@ -229,7 +253,6 @@ export const guildConfigEn: GuildConfig = {
           name: 'Cypress',
           language: 'JavaScript/TypeScript',
           description: 'Developer-friendly end-to-end testing framework',
-          githubDemo: 'https://github.com/naodeng/cypress-demo',
           officialDocs: 'https://www.cypress.io/',
           color: '#17202C',
           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg',
@@ -242,6 +265,15 @@ export const guildConfigEn: GuildConfig = {
       description: 'Learn how to perform performance and load testing',
       icon: 'bolt',
       frameworks: [
+        {
+          id: 'jmeter',
+          name: 'JMeter',
+          language: 'Java',
+          description: 'Java-based load-testing tool for HTTP, JDBC, and other protocols',
+          officialDocs: 'https://jmeter.apache.org/usermanual/',
+          color: '#D22128',
+          icon: 'https://jmeter.apache.org/images/logo.svg',
+        },
         {
           id: 'k6',
           name: 'K6',

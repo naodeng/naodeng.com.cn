@@ -44,7 +44,7 @@ const guildSchema = {
     : ["API testing", "UI testing", "performance testing", "test automation"],
 };
 
-const visibleTestTypes = guildConfig.testTypes.filter((t) => t.id !== "ui-testing");
+const visibleTestTypes = guildConfig.testTypes;
 const learningPathListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
