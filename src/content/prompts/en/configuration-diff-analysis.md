@@ -6,7 +6,7 @@ category: "Data, Database, And Test Environment"
 categoryOrder: 7
 sourcePath: "testing-types/en/configuration-diff-analysis/Standard-version/ConfigurationDiffAnalyzerPrompt.md"
 lang: "en"
-order: 56
+order: 61
 ---
 # Configuration Difference Analysis Prompt
 

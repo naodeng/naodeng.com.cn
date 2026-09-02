@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/nginx-performance-analysis/Standard-version/NginxPerformanceAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 121
+order: 126
 ---
 # Nginx 性能分析 Prompt
 

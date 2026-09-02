@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/defect-clustering-analysis/Standard-version/DefectClusteringAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 68
+order: 73
 ---
 # 缺陷聚类分析 Prompt
 

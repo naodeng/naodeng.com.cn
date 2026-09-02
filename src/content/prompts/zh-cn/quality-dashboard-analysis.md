@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/quality-dashboard-analysis/Standard-version/QualityDashboardAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 148
+order: 153
 ---
 # 质量看板分析 Prompt
 

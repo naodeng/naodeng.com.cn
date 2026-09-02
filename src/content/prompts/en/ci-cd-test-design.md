@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/ci-cd-test-design/Standard-version/CICDTestDesignerPrompt.md"
 lang: "en"
-order: 50
+order: 55
 ---
 # CI/CD Test Design Prompt
 

@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/ai-safety-test-analysis/Standard-version/AISafetyTestAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 10
+order: 15
 ---
 # AI 安全测试分析 Prompt
 

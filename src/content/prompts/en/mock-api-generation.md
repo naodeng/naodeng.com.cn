@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/mock-api-generation/Standard-version/MockAPIGeneratorPrompt.md"
 lang: "en"
-order: 117
+order: 122
 ---
 # Mock API Design Prompt
 

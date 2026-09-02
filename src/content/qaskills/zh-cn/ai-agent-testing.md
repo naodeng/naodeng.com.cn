@@ -6,7 +6,7 @@
 - slug: ai-agent-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-agent-testing/SKILL.md
 - description: Use this skill when you need to test AI agent goals, state, planning, recovery, and safety boundaries; triggers include AI Agent 测试 and ai agent testing.
 

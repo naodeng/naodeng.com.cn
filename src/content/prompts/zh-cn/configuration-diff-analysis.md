@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/configuration-diff-analysis/Standard-version/ConfigurationDiffAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 56
+order: 61
 ---
 # 配置差异分析 Prompt
 

@@ -6,7 +6,7 @@
 - slug: test-data-generation
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-data-generation/SKILL.md
 - description: Use this skill when you need to design safe, representative test data from stated constraints; triggers include 测试数据生成 and test data generation.
 

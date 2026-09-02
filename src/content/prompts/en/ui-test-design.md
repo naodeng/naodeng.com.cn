@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/ui-test-design/Standard-version/UITestDesignerPrompt.md"
 lang: "en"
-order: 230
+order: 235
 ---
 # UI Test Design Prompt
 

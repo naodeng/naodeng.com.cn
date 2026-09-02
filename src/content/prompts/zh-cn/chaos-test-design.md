@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/chaos-test-design/Standard-version/ChaosTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 49
+order: 54
 ---
 # Chaos 测试设计 Prompt
 

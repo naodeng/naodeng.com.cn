@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/compatibility-test-design/Standard-version/CompatibilityTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 54
+order: 59
 ---
 # 兼容性测试设计 Prompt
 

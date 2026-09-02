@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/test-scope-analysis/Standard-version/TestScopeAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 219
+order: 224
 ---
 # 测试范围分析 Prompt
 

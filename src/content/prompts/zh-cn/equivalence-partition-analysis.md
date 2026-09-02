@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/equivalence-partition-analysis/Standard-version/EquivalencePartitionAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 79
+order: 84
 ---
 # 等价类分析 Prompt
 

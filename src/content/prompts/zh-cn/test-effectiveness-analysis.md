@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/test-effectiveness-analysis/Standard-version/TestEffectivenessAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 210
+order: 215
 ---
 # 测试有效性分析 Prompt
 

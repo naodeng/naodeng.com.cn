@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/defect-trend-analysis/Standard-version/DefectTrendAnalyzerPrompt.md"
 lang: "en"
-order: 71
+order: 76
 ---
 # Defect Trend Analysis Prompt
 

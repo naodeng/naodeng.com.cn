@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/requirements-analysis-plus/Standard-version/RequirementsAnalysisPlusPrompt.md"
 lang: "zh-cn"
-order: 170
+order: 175
 ---
 # 需求分析增强版 Prompt
 

@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/kafka-test-design/Standard-version/KafkaTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 98
+order: 103
 ---
 # Kafka 测试设计 Prompt
 

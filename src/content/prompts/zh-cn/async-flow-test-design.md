@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/async-flow-test-design/Standard-version/AsyncFlowTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 30
+order: 35
 ---
 # 异步流程测试设计 Prompt
 

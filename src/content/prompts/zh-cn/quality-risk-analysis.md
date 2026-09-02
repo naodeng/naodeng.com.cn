@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/quality-risk-analysis/Standard-version/QualityRiskAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 151
+order: 156
 ---
 # 质量风险分析 Prompt
 

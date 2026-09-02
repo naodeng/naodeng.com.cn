@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/release-readiness-analysis/Standard-version/ReleaseReadinessAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 159
+order: 164
 ---
 # 发布就绪分析 Prompt
 

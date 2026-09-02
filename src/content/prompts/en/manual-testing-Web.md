@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/manual-testing-Web/Standard-version/ManualTestingPrompt.md"
 lang: "en"
-order: 108
+order: 113
 ---
 # Manual Testing Prompt - Web Version
 

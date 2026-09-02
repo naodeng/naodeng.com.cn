@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/test-scope-analysis/Standard-version/TestScopeAnalyzerPrompt.md"
 lang: "en"
-order: 219
+order: 224
 ---
 # Test Scope Analyzer Prompt
 

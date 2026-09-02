@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/timezone-test-design/Standard-version/TimezoneTestDesignerPrompt.md"
 lang: "en"
-order: 228
+order: 233
 ---
 # Timezone Test Design Prompt
 

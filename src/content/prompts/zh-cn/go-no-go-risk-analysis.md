@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/go-no-go-risk-analysis/Standard-version/GoNoGoRiskAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 89
+order: 94
 ---
 # Go/No-Go 风险分析 Prompt
 

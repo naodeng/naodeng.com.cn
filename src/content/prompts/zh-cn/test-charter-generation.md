@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/test-charter-generation/Standard-version/TestCharterGeneratorPrompt.md"
 lang: "zh-cn"
-order: 203
+order: 208
 ---
 # 探索式测试章程设计 Prompt
 

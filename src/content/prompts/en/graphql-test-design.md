@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/graphql-test-design/Standard-version/GraphQLTestDesignerPrompt.md"
 lang: "en"
-order: 90
+order: 95
 ---
 # GraphQL Test Designer Prompt
 

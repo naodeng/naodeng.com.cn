@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/test-strategy-plus/Standard-version/TestStrategyPlusPrompt.md"
 lang: "zh-cn"
-order: 223
+order: 228
 ---
 # 测试策略增强版 Prompt
 

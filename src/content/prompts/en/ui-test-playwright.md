@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/ui-test-playwright/Standard-version/UITestPlaywrightPrompt.md"
 lang: "en"
-order: 231
+order: 236
 ---
 # UI Test Playwright Prompt
 

@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/change-impact-analysis/Standard-version/ChangeImpactAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 48
+order: 53
 ---
 # 变更影响分析 Prompt
 

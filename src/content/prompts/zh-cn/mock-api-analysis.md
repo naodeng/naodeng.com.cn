@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/mock-api-analysis/Standard-version/MockAPIAnalysisPrompt.md"
 lang: "zh-cn"
-order: 116
+order: 121
 ---
 # Mock API 分析 Prompt
 

@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/websocket-test-design/Standard-version/WebSocketTestDesignerPrompt.md"
 lang: "en"
-order: 239
+order: 244
 ---
 # WebSocket Test Designer Prompt
 

@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/quality-trend-analysis/Standard-version/QualityTrendAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 152
+order: 157
 ---
 # 质量趋势分析 Prompt
 

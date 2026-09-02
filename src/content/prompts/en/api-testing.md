@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/api-testing/Standard-version/APITestingPrompt.md"
 lang: "en"
-order: 27
+order: 32
 ---
 # API Testing Prompt
 

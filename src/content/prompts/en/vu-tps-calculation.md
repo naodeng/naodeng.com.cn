@@ -6,7 +6,7 @@ category: "Performance, Reliability, And Resilience"
 categoryOrder: 5
 sourcePath: "testing-types/en/vu-tps-calculation/Standard-version/VUTPSCalculatorPrompt.md"
 lang: "en"
-order: 237
+order: 242
 ---
 # VU And TPS Estimation Prompt
 

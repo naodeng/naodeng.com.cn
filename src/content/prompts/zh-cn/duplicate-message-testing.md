@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/duplicate-message-testing/Standard-version/DuplicateMessageTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 76
+order: 81
 ---
 # 消息重复消费测试 Prompt
 

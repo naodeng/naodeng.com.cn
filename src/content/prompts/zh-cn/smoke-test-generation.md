@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/smoke-test-generation/Standard-version/SmokeTestGeneratorPrompt.md"
 lang: "zh-cn"
-order: 183
+order: 188
 ---
 # 冒烟测试生成 Prompt
 

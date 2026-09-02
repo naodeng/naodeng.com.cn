@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/mobile-testing/Standard-version/MobileTestingPrompt.md"
 lang: "zh-cn"
-order: 115
+order: 120
 ---
 # 移动端测试 Prompt
 

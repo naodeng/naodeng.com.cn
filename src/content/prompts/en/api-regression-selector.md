@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/api-regression-selector/Standard-version/APIRegressionSelectorPrompt.md"
 lang: "en"
-order: 19
+order: 24
 ---
 # API Regression Test Selection Prompt
 

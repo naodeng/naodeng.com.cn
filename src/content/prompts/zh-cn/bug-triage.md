@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/bug-triage/Standard-version/BugTriageAssistantPrompt.md"
 lang: "zh-cn"
-order: 43
+order: 48
 ---
 # 缺陷分诊 Prompt
 

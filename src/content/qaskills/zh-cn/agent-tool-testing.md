@@ -6,7 +6,7 @@
 - slug: agent-tool-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/agent-tool-testing/SKILL.md
 - description: Use this skill when you need to test AI agent tool-call contracts, authorization, failures, and side-effect boundaries; triggers include Agent 工具调用测试 and agent tool testing.
 

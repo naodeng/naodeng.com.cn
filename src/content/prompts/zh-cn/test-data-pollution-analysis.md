@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/test-data-pollution-analysis/Standard-version/TestDataPollutionAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 209
+order: 214
 ---
 # 测试数据污染分析 Prompt
 

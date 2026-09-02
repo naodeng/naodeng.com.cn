@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/change-impact-analysis/Standard-version/ChangeImpactAnalyzerPrompt.md"
 lang: "en"
-order: 48
+order: 53
 ---
 # Change Impact Analysis Prompt
 

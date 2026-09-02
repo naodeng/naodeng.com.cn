@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/code-review/Standard-version/CodeReviewPrompt.md"
 lang: "zh-cn"
-order: 53
+order: 58
 ---
 # 代码审查 Prompt
 

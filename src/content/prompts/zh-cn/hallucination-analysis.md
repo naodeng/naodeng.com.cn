@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/hallucination-analysis/Standard-version/HallucinationAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 91
+order: 96
 ---
 # 幻觉检测分析 Prompt
 

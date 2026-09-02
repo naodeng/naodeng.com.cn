@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/automation-candidate-analysis/Standard-version/AutomationCandidateAnalyzerPrompt.md"
 lang: "en"
-order: 33
+order: 38
 ---
 # Automation Candidate Analysis Prompt
 

@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/test-code-quality-analysis/Standard-version/TestCodeQualityAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 204
+order: 209
 ---
 # 测试代码质量分析 Prompt
 

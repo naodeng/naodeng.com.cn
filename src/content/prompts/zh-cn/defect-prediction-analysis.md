@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/defect-prediction-analysis/Standard-version/DefectPredictionAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 70
+order: 75
 ---
 # 缺陷风险预测分析 Prompt
 

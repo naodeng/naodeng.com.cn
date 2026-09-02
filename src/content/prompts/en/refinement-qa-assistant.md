@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/refinement-qa-assistant/Standard-version/RefinementQAAssistantPrompt.md"
 lang: "en"
-order: 155
+order: 160
 ---
 # Refinement QA Assistant Prompt
 

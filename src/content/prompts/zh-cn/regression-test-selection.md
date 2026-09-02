@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/regression-test-selection/Standard-version/RegressionTestSelectorPrompt.md"
 lang: "zh-cn"
-order: 157
+order: 162
 ---
 # 回归测试选择 Prompt
 

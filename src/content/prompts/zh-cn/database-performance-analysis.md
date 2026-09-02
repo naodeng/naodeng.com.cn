@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/database-performance-analysis/Standard-version/DatabasePerformanceAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 63
+order: 68
 ---
 # 数据库性能分析 Prompt
 

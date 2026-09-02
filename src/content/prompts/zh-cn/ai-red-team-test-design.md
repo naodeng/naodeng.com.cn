@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/ai-red-team-test-design/Standard-version/AIRedTeamTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 9
+order: 14
 ---
 # AI Red Team 测试设计 Prompt
 

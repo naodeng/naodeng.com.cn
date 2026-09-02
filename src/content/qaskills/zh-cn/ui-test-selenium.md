@@ -6,7 +6,7 @@
 - slug: ui-test-selenium
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ui-test-selenium/SKILL.md
 - description: Use this skill when you need to design Selenium WebDriver UI automation plans with stable locators, waits, Page Objects, Grid, and CI execution; triggers include Selenium UI testing, UI automation testing, and ui-test-selenium.
 

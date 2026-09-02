@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/internationalization-analysis/Standard-version/InternationalizationAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 95
+order: 100
 ---
 # 国际化问题分析 Prompt
 

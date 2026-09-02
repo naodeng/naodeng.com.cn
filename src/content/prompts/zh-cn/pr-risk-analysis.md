@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/pr-risk-analysis/Standard-version/PRRiskAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 138
+order: 143
 ---
 # PR 风险分析 Prompt
 

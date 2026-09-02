@@ -6,7 +6,7 @@ Author: naodeng
 - slug: performance-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-testing/SKILL.md
 - description: Use this skill when you need to design performance testing for load, stress, spike, endurance, or capacity objectives; triggers include performance testing and load testing.
 

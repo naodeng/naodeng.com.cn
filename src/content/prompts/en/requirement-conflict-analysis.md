@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/requirement-conflict-analysis/Standard-version/RequirementConflictAnalyzerPrompt.md"
 lang: "en"
-order: 163
+order: 168
 ---
 # Requirement Conflict Analysis Prompt
 

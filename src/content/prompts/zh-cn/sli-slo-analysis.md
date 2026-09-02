@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/sli-slo-analysis/Standard-version/SLISLOAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 181
+order: 186
 ---
 # SLI/SLO 分析 Prompt
 

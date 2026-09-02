@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/api-test-postman/Standard-version/APITestPostmanPrompt.md"
 lang: "zh-cn"
-order: 23
+order: 28
 ---
 # API 测试（Postman） Prompt
 

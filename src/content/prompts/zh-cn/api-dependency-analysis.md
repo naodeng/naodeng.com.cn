@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-dependency-analysis/Standard-version/APIDependencyAnalysisPrompt.md"
 lang: "zh-cn"
-order: 15
+order: 20
 ---
 # API 依赖分析 Prompt
 

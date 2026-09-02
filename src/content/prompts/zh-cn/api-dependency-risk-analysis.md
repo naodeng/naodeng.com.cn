@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-dependency-risk-analysis/Standard-version/APIDependencyRiskAnalysisPrompt.md"
 lang: "zh-cn"
-order: 16
+order: 21
 ---
 # API 依赖风险分析 Prompt
 

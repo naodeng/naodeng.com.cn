@@ -6,7 +6,7 @@ category: "安全、隐私与无障碍"
 categoryOrder: 6
 sourcePath: "testing-types/zh/data-privacy-analysis/Standard-version/DataPrivacyTestAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 62
+order: 67
 ---
 # 数据隐私分析 Prompt
 

@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/api-version-change-risk/Standard-version/APIVersionChangeRiskPrompt.md"
 lang: "en"
-order: 29
+order: 34
 ---
 # API Version Change Risk Analysis Prompt
 

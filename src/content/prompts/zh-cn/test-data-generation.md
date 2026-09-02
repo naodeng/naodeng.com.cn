@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/test-data-generation/Standard-version/TestDataGeneratorPrompt.md"
 lang: "zh-cn"
-order: 208
+order: 213
 ---
 # 测试数据生成 Prompt
 

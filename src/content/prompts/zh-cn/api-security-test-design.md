@@ -6,7 +6,7 @@ category: "安全、隐私与无障碍"
 categoryOrder: 6
 sourcePath: "testing-types/zh/api-security-test-design/Standard-version/APISecurityTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 21
+order: 26
 ---
 # API 安全测试设计 Prompt
 

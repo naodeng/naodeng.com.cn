@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/pr-risk-analysis/Standard-version/PRRiskAnalyzerPrompt.md"
 lang: "en"
-order: 138
+order: 143
 ---
 # Pull Request Risk Analysis Prompt
 

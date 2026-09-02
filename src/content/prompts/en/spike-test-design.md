@@ -6,7 +6,7 @@ category: "Performance, Reliability, And Resilience"
 categoryOrder: 5
 sourcePath: "testing-types/en/spike-test-design/Standard-version/SpikeTestDesignerPrompt.md"
 lang: "en"
-order: 185
+order: 190
 ---
 # Spike Test Designer Prompt
 

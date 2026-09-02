@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/duplicate-test-detection/Standard-version/DuplicateTestDetectorPrompt.md"
 lang: "en"
-order: 77
+order: 82
 ---
 # Duplicate Test Detection Prompt
 

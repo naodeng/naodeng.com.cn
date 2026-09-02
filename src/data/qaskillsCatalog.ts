@@ -193,7 +193,8 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
           "flaky-test-analysis",
           "regression-scope-analysis",
           "regression-test-selection",
-          "ai-assisted-testing"
+          "ai-assisted-testing",
+          "ai-generated-test-review"
         ]
       },
       {

@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/ui-test-selenium/Standard-version/UITestSeleniumPrompt.md"
 lang: "zh-cn"
-order: 233
+order: 238
 ---
 # UI 自动化测试（Selenium） Prompt
 

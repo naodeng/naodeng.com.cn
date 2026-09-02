@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/circuit-breaker-test-design/Standard-version/CircuitBreakerTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 52
+order: 57
 ---
 # 熔断测试设计 Prompt
 

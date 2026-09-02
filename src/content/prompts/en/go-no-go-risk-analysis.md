@@ -6,7 +6,7 @@ category: "Release, Production, And Observability"
 categoryOrder: 9
 sourcePath: "testing-types/en/go-no-go-risk-analysis/Standard-version/GoNoGoRiskAnalyzerPrompt.md"
 lang: "en"
-order: 89
+order: 94
 ---
 # Go/No-Go Risk Analysis Prompt
 

@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/database-test-data-analysis/Standard-version/DatabaseTestDataAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 64
+order: 69
 ---
 # 数据库测试数据分析 Prompt
 

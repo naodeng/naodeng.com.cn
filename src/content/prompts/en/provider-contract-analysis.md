@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/provider-contract-analysis/Standard-version/ProviderContractAnalyzerPrompt.md"
 lang: "en"
-order: 147
+order: 152
 ---
 # Provider Contract Analysis Prompt
 

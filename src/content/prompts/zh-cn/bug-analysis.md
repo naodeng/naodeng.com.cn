@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/bug-analysis/Standard-version/BugAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 41
+order: 46
 ---
 # 缺陷分析 Prompt
 

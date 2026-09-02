@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/consumer-contract-analysis/Standard-version/ConsumerContractAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 58
+order: 63
 ---
 # Consumer Contract 分析 Prompt
 

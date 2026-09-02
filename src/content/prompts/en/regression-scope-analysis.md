@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/regression-scope-analysis/Standard-version/RegressionScopeAnalyzerPrompt.md"
 lang: "en"
-order: 156
+order: 161
 ---
 # Regression Scope Analysis Prompt
 

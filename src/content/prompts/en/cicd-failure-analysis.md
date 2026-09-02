@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/cicd-failure-analysis/Standard-version/CICDFailureAnalyzerPrompt.md"
 lang: "en"
-order: 51
+order: 56
 ---
 # CI/CD Failure Analysis Prompt
 

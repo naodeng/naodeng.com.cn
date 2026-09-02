@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/stack-trace-analysis/Standard-version/StackTraceAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 189
+order: 194
 ---
 # 堆栈跟踪分析 Prompt
 

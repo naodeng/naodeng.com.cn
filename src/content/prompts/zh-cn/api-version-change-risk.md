@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-version-change-risk/Standard-version/APIVersionChangeRiskPrompt.md"
 lang: "zh-cn"
-order: 29
+order: 34
 ---
 # API 版本变更风险分析 Prompt
 

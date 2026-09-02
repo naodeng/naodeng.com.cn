@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/release-change-summary/Standard-version/ReleaseChangeSummaryGeneratorPrompt.md"
 lang: "zh-cn"
-order: 158
+order: 163
 ---
 # 发布变更摘要 Prompt
 

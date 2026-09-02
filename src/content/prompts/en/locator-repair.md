@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/locator-repair/Standard-version/LocatorRepairAssistantPrompt.md"
 lang: "en"
-order: 104
+order: 109
 ---
 # Locator Repair Assistant Prompt
 

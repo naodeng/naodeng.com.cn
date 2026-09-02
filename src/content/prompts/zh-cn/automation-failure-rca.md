@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/automation-failure-rca/Standard-version/AutomationFailureRCAAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 35
+order: 40
 ---
 # 自动化失败根因分析 Prompt
 

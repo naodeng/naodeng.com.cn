@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/api-test-restassure/Standard-version/APITestRestAssuredPrompt.md"
 lang: "en"
-order: 25
+order: 30
 ---
 # API Test Rest Assured Prompt
 

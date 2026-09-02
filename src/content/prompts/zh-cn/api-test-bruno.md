@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/api-test-bruno/Standard-version/APITestBrunoPrompt.md"
 lang: "zh-cn"
-order: 22
+order: 27
 ---
 # API 测试（Bruno） Prompt
 

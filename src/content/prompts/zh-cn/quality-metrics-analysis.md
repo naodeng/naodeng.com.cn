@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/quality-metrics-analysis/Standard-version/QualityMetricsAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 150
+order: 155
 ---
 # 质量指标分析 Prompt
 

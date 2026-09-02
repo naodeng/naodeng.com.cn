@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/microservice-dependency-analysis/Standard-version/MicroserviceDependencyAnalysisPrompt.md"
 lang: "zh-cn"
-order: 113
+order: 118
 ---
 # 微服务依赖分析 Prompt
 

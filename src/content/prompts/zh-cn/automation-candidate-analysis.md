@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/automation-candidate-analysis/Standard-version/AutomationCandidateAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 33
+order: 38
 ---
 # 自动化候选分析 Prompt
 

@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/functional-testing/Standard-version/FunctionalTestingPrompt.md"
 lang: "zh-cn"
-order: 86
+order: 91
 ---
 # 功能测试 Prompt
 

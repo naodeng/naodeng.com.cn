@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/rollback-verification/Standard-version/RollbackVerificationGeneratorPrompt.md"
 lang: "zh-cn"
-order: 173
+order: 178
 ---
 # 回滚验证设计 Prompt
 

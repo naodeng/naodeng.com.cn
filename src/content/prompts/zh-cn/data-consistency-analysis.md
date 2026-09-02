@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/data-consistency-analysis/Standard-version/DataConsistencyAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 60
+order: 65
 ---
 # 数据一致性分析 Prompt
 

@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/testing-heuristics-analysis/Standard-version/TestingHeuristicsAnalyzerPrompt.md"
 lang: "en"
-order: 226
+order: 231
 ---
 # Testing Heuristics Analysis Prompt
 

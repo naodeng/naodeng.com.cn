@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/quality-dashboard-analysis/Standard-version/QualityDashboardAnalyzerPrompt.md"
 lang: "en"
-order: 148
+order: 153
 ---
 # Quality Dashboard Analysis Prompt
 

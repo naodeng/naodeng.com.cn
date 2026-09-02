@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/reliability-requirement-analysis/Standard-version/ReliabilityRequirementAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 162
+order: 167
 ---
 # 可靠性需求分析 Prompt
 

@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/release-risk-scoring/Standard-version/ReleaseRiskScorerPrompt.md"
 lang: "zh-cn"
-order: 161
+order: 166
 ---
 # 发布风险评分 Prompt
 

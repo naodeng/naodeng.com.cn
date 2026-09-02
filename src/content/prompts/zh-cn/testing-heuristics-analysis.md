@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/testing-heuristics-analysis/Standard-version/TestingHeuristicsAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 226
+order: 231
 ---
 # 测试启发式分析 Prompt
 

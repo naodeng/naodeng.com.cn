@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/defect-trend-analysis/Standard-version/DefectTrendAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 71
+order: 76
 ---
 # 缺陷趋势分析 Prompt
 

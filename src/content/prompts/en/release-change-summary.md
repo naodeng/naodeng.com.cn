@@ -6,7 +6,7 @@ category: "Release, Production, And Observability"
 categoryOrder: 9
 sourcePath: "testing-types/en/release-change-summary/Standard-version/ReleaseChangeSummaryGeneratorPrompt.md"
 lang: "en"
-order: 158
+order: 163
 ---
 # Release Change Summary Prompt
 

@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/quality-metrics-analysis/Standard-version/QualityMetricsAnalyzerPrompt.md"
 lang: "en"
-order: 150
+order: 155
 ---
 # Quality Metrics Analysis Prompt
 

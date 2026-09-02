@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/defect-prediction-analysis/Standard-version/DefectPredictionAnalyzerPrompt.md"
 lang: "en"
-order: 70
+order: 75
 ---
 # Defect Risk Prediction Analysis Prompt
 

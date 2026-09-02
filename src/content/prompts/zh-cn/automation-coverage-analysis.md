@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/automation-coverage-analysis/Standard-version/AutomationCoverageAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 34
+order: 39
 ---
 # 自动化覆盖率分析 Prompt
 

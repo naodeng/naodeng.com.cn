@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/functional-testing-Mobile/Standard-version/FunctionalTestingPrompt.md"
 lang: "en"
-order: 87
+order: 92
 ---
 # Functional Testing Prompt - Mobile Version
 

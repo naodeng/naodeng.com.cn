@@ -6,7 +6,7 @@
 - slug: performance-bottleneck-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/performance-bottleneck-analysis/SKILL.md
 - description: Use this skill when you need to form evidence-based performance bottleneck hypotheses and validation steps; triggers include 性能瓶颈分析 and performance bottleneck analysis.
 

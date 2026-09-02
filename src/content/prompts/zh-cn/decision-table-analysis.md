@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/decision-table-analysis/Standard-version/DecisionTableAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 67
+order: 72
 ---
 # 决策表分析 Prompt
 

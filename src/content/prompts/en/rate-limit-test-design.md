@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/rate-limit-test-design/Standard-version/RateLimitTestDesignerPrompt.md"
 lang: "en"
-order: 153
+order: 158
 ---
 # Rate Limit Test Designer Prompt
 

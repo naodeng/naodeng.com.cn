@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/browser-compatibility-analysis/Standard-version/BrowserCompatibilityAnalyzerPrompt.md"
 lang: "en"
-order: 40
+order: 45
 ---
 # Browser Compatibility Analysis Prompt
 

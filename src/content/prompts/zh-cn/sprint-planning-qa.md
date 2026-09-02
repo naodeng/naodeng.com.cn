@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/sprint-planning-qa/Standard-version/SprintPlanningQAAssistantPrompt.md"
 lang: "zh-cn"
-order: 186
+order: 191
 ---
 # Sprint Planning QA Prompt
 

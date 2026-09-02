@@ -6,7 +6,7 @@ category: "安全、隐私与无障碍"
 categoryOrder: 6
 sourcePath: "testing-types/zh/input-validation-test/Standard-version/InputValidationTestGeneratorPrompt.md"
 lang: "zh-cn"
-order: 94
+order: 99
 ---
 # 输入校验测试 Prompt
 

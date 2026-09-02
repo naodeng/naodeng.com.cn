@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/automation-testing/Standard-version/AutomationTestingPrompt.md"
 lang: "zh-cn"
-order: 36
+order: 41
 ---
 # 自动化测试 Prompt
 

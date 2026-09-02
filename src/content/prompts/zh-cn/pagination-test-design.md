@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/pagination-test-design/Standard-version/PaginationTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 125
+order: 130
 ---
 # 分页测试设计 Prompt
 

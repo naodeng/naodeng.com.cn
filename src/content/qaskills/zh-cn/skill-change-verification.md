@@ -6,7 +6,7 @@
 - slug: skill-change-verification
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/skill-engineering/skill-change-verification/SKILL.md
 - description: Use this skill when selecting and reporting verification for Skill changes; triggers include Skill 变更验证、质量门禁、evidence level。
 

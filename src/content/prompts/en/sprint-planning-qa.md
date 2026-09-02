@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/sprint-planning-qa/Standard-version/SprintPlanningQAAssistantPrompt.md"
 lang: "en"
-order: 186
+order: 191
 ---
 # Sprint Planning QA Assistant Prompt
 

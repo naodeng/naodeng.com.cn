@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/scalability-analysis/Standard-version/ScalabilityAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 175
+order: 180
 ---
 # 可扩展性分析 Prompt
 

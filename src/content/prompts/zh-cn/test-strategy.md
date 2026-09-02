@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/test-strategy/Standard-version/TestStrategyPrompt.md"
 lang: "zh-cn"
-order: 220
+order: 225
 ---
 # 测试策略 Prompt
 

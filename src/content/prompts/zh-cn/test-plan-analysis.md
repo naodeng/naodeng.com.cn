@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/test-plan-analysis/Standard-version/TestPlanAnalysisPrompt.md"
 lang: "zh-cn"
-order: 214
+order: 219
 ---
 # 测试计划分析 Prompt
 

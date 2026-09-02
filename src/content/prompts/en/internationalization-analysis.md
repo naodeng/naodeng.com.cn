@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/internationalization-analysis/Standard-version/InternationalizationAnalyzerPrompt.md"
 lang: "en"
-order: 95
+order: 100
 ---
 # Internationalization Analysis Prompt
 

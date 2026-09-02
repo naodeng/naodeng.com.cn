@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/manual-testing-Mobile/Standard-version/ManualTestingPrompt.md"
 lang: "zh-cn"
-order: 107
+order: 112
 ---
 # 手动测试 Prompt - 移动端版
 

@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/disaster-recovery-test-design/Standard-version/DisasterRecoveryTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 72
+order: 77
 ---
 # 容灾测试设计 Prompt
 

@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/quality-trend-analysis/Standard-version/QualityTrendAnalyzerPrompt.md"
 lang: "en"
-order: 152
+order: 157
 ---
 # Quality Trend Analysis Prompt
 

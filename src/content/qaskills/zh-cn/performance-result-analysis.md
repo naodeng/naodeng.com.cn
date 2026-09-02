@@ -6,7 +6,7 @@
 - slug: performance-result-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/performance-result-analysis/SKILL.md
 - description: Use this skill when you need to interpret performance results, evidence quality, and risk without inventing conclusions; triggers include 性能结果分析 and performance result analysis.
 

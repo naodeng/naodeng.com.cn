@@ -6,7 +6,7 @@ category: "AI And LLM Testing"
 categoryOrder: 10
 sourcePath: "testing-types/en/test-strategy-Mobile/Standard-version/TestStrategyPrompt.md"
 lang: "en"
-order: 221
+order: 226
 ---
 # Test Strategy Prompt - Mobile Version
 

@@ -43,6 +43,7 @@ const HEADING_TO_KEY = {
   "何时使用": "whenToUse",
   "When to Use": "whenToUse",
   "执行流程": "workflow",
+  "工作方式": "workflow",
   Workflow: "workflow",
   "如何使用": "workflow",
   "How to Use": "workflow",

@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/requirement-conflict-analysis/Standard-version/RequirementConflictAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 163
+order: 168
 ---
 # 需求冲突分析 Prompt
 

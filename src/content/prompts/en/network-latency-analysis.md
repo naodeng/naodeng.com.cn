@@ -6,7 +6,7 @@ category: "Performance, Reliability, And Resilience"
 categoryOrder: 5
 sourcePath: "testing-types/en/network-latency-analysis/Standard-version/NetworkLatencyAnalyzerPrompt.md"
 lang: "en"
-order: 119
+order: 124
 ---
 # Network Latency Analysis Prompt
 

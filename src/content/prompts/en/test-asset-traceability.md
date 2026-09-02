@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/test-asset-traceability/Standard-version/TestAssetTraceabilityPrompt.md"
 lang: "en"
-order: 193
+order: 198
 ---
 # Test Asset Traceability Analysis Prompt
 

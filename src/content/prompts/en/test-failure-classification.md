@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/test-failure-classification/Standard-version/TestFailureClassifierPrompt.md"
 lang: "en"
-order: 213
+order: 218
 ---
 # Test Failure Classifier Prompt
 

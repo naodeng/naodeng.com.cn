@@ -6,7 +6,7 @@
 - slug: api-contract-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-contract-testing/SKILL.md
 - description: Use this skill when you need to verify API contract compatibility, consumer expectations, and schema change risk; triggers include API 契约测试 and API contract testing.
 

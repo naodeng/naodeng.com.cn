@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/timeout-test-design/Standard-version/TimeoutTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 227
+order: 232
 ---
 # 超时测试设计 Prompt
 

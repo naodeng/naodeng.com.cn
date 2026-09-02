@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/production-verification-review/Standard-version/ProductionVerificationReviewPrompt.md"
 lang: "zh-cn"
-order: 143
+order: 148
 ---
 # 生产验证评审 Prompt
 

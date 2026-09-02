@@ -6,7 +6,7 @@ category: "Release, Production, And Observability"
 categoryOrder: 9
 sourcePath: "testing-types/en/release-readiness-analysis/Standard-version/ReleaseReadinessAnalyzerPrompt.md"
 lang: "en"
-order: 159
+order: 164
 ---
 # Release Readiness Analysis Prompt
 

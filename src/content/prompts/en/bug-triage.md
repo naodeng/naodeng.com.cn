@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/bug-triage/Standard-version/BugTriageAssistantPrompt.md"
 lang: "en"
-order: 43
+order: 48
 ---
 # Bug Triage Prompt
 

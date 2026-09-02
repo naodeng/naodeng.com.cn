@@ -6,7 +6,7 @@ category: "Security, Privacy, And Accessibility"
 categoryOrder: 6
 sourcePath: "testing-types/en/wcag-compliance-analysis/Standard-version/WCAGComplianceAnalyzerPrompt.md"
 lang: "en"
-order: 238
+order: 243
 ---
 # WCAG Conformance Analysis Prompt
 

@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/test-scenario-design/Standard-version/TestScenarioDesignerPrompt.md"
 lang: "zh-cn"
-order: 218
+order: 223
 ---
 # 测试场景设计 Prompt
 

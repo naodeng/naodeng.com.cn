@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { parseQASkillMarkdown } from "@/utils/qaskills";
 
 const SITE_MD = `# API 测试
@@ -68,5 +70,15 @@ describe("parseQASkillMarkdown", () => {
     expect(skill.rawSkillMarkdown).toContain("不要编造细节");
     expect(skill.rawSkillMarkdown).not.toContain("## 安装");
     expect(skill.sections.whenToUse).toBe("- 需要 API 测试方案。");
+  });
+
+  it("keeps 工作方式 in the rendered guide when an upstream Skill uses that workflow heading", () => {
+    const generated = readFileSync(
+      join(process.cwd(), "..", "src", "content", "qaskills", "zh-cn", "ai-generated-test-review.md"),
+      "utf8"
+    );
+
+    expect(generated).toContain("## 执行流程");
+    expect(generated).toContain("先盘点当前范围内实际存在的测试类型与文件");
   });
 });

@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/release-readiness-review/Standard-version/ReleaseReadinessReviewPrompt.md"
 lang: "zh-cn"
-order: 160
+order: 165
 ---
 # 发布就绪评审 Prompt
 

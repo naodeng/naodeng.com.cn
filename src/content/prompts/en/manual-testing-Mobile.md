@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/manual-testing-Mobile/Standard-version/ManualTestingPrompt.md"
 lang: "en"
-order: 107
+order: 112
 ---
 # Manual Testing Prompt - Mobile Version
 

@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/performance-trend-analysis/Standard-version/PerformanceTrendAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 137
+order: 142
 ---
 # 性能趋势分析 Prompt
 

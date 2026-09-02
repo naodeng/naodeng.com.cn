@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-test-postman
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-postman/SKILL.md
 - description: Use this skill when you need to design Postman collections, environments, scripts, and Newman-ready API regression plans; triggers include Postman API testing, API testing, and api-test-postman.
 

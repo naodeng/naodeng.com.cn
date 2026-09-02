@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/business-flow-analysis/Standard-version/BusinessFlowAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 44
+order: 49
 ---
 # 业务流程分析 Prompt
 

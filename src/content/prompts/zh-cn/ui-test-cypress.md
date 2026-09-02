@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/ui-test-cypress/Standard-version/UITestCypressPrompt.md"
 lang: "zh-cn"
-order: 229
+order: 234
 ---
 # UI 自动化测试（Cypress） Prompt
 

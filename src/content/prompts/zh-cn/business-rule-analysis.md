@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/business-rule-analysis/Standard-version/BusinessRuleAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 46
+order: 51
 ---
 # 业务规则分析 Prompt
 

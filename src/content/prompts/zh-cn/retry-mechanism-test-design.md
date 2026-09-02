@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/retry-mechanism-test-design/Standard-version/RetryMechanismTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 172
+order: 177
 ---
 # 重试机制测试设计 Prompt
 

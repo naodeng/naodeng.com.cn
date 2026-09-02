@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/database-test-design/Standard-version/DatabaseTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 65
+order: 70
 ---
 # 数据库测试设计 Prompt
 

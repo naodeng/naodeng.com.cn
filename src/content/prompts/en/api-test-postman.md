@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/api-test-postman/Standard-version/APITestPostmanPrompt.md"
 lang: "en"
-order: 23
+order: 28
 ---
 # API Test Postman Prompt
 

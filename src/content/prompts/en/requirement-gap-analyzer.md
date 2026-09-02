@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/requirement-gap-analyzer/Standard-version/RequirementGapAnalyzerPrompt.md"
 lang: "en"
-order: 165
+order: 170
 ---
 # Requirement Gap Analyzer Prompt
 

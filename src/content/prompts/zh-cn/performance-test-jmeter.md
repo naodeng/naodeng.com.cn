@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/performance-test-jmeter/Standard-version/PerformanceTestJMeterPrompt.md"
 lang: "zh-cn"
-order: 134
+order: 139
 ---
 # 性能测试（JMeter） Prompt
 

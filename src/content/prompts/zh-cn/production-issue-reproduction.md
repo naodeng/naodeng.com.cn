@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/production-issue-reproduction/Standard-version/ProductionIssueReproducerPrompt.md"
 lang: "zh-cn"
-order: 140
+order: 145
 ---
 # 生产问题复现设计 Prompt
 

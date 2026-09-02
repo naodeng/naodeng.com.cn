@@ -6,7 +6,7 @@ category: "安全、隐私与无障碍"
 categoryOrder: 6
 sourcePath: "testing-types/zh/sensitive-data-exposure-analysis/Standard-version/SensitiveDataExposureAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 178
+order: 183
 ---
 # 敏感数据泄露分析 Prompt
 

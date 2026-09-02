@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-version-change-analysis/Standard-version/APIVersionChangeAnalysisPrompt.md"
 lang: "zh-cn"
-order: 28
+order: 33
 ---
 # API 版本变更分析 Prompt
 

@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/bug-reporting/Standard-version/BugReportingPrompt.md"
 lang: "en"
-order: 42
+order: 47
 ---
 # Bug Reporting Prompt
 

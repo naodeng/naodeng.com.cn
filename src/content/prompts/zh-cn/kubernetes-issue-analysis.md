@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/kubernetes-issue-analysis/Standard-version/KubernetesIssueAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 99
+order: 104
 ---
 # Kubernetes 问题分析 Prompt
 

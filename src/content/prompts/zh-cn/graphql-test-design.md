@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/graphql-test-design/Standard-version/GraphQLTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 90
+order: 95
 ---
 # GraphQL 测试设计 Prompt
 

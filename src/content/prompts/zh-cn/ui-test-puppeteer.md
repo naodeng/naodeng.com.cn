@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/ui-test-puppeteer/Standard-version/UITestPuppeteerPrompt.md"
 lang: "zh-cn"
-order: 232
+order: 237
 ---
 # UI 自动化测试（Puppeteer） Prompt
 

@@ -6,7 +6,7 @@
 - slug: root-cause-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/root-cause-analysis/SKILL.md
 - description: Use this skill when you need to form and verify evidence-based root-cause hypotheses; triggers include 根因分析 and root cause analysis.
 

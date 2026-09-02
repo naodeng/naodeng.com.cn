@@ -6,7 +6,7 @@ category: "安全、隐私与无障碍"
 categoryOrder: 6
 sourcePath: "testing-types/zh/authorization-test-design/Standard-version/AuthorizationTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 32
+order: 37
 ---
 # 权限测试设计 Prompt
 

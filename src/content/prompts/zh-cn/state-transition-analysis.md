@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/state-transition-analysis/Standard-version/StateTransitionAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 190
+order: 195
 ---
 # 状态转换分析 Prompt
 

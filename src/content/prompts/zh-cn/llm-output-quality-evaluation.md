@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/llm-output-quality-evaluation/Standard-version/LLMOutputQualityEvaluatorPrompt.md"
 lang: "zh-cn"
-order: 101
+order: 106
 ---
 # LLM 输出质量评估 Prompt
 

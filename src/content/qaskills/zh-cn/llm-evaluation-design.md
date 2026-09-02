@@ -6,7 +6,7 @@
 - slug: llm-evaluation-design
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/llm-evaluation-design/SKILL.md
 - description: Use this skill when you need to design LLM evaluation datasets, judges, metrics, and human-review boundaries; triggers include LLM Eval 设计 and llm evaluation design.
 

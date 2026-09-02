@@ -6,7 +6,7 @@ category: "AI And LLM Testing"
 categoryOrder: 10
 sourcePath: "testing-types/en/ai-safety-test-analysis/Standard-version/AISafetyTestAnalyzerPrompt.md"
 lang: "en"
-order: 10
+order: 15
 ---
 # AI Safety Test Analysis Prompt
 

@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/performance-scenario-design/Standard-version/PerformanceScenarioDesignerPrompt.md"
 lang: "zh-cn"
-order: 132
+order: 137
 ---
 # 性能场景设计 Prompt
 

@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/websocket-test-design/Standard-version/WebSocketTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 239
+order: 244
 ---
 # WebSocket 测试设计 Prompt
 

@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/cicd-failure-analysis/Standard-version/CICDFailureAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 51
+order: 56
 ---
 # CI/CD 失败分析 Prompt
 

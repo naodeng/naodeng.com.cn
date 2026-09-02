@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-negative-testing/Standard-version/APINegativeTestingPrompt.md"
 lang: "zh-cn"
-order: 17
+order: 22
 ---
 # API 负向测试 Prompt
 

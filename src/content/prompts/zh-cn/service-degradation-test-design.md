@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/service-degradation-test-design/Standard-version/ServiceDegradationTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 180
+order: 185
 ---
 # 服务降级测试设计 Prompt
 

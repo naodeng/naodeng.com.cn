@@ -6,7 +6,7 @@
 - slug: acceptance-criteria-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/acceptance-criteria-review/SKILL.md
 - description: Use this skill when you need to review acceptance criteria for ambiguity, missing rules, and verifiability; triggers include 验收标准评审 and acceptance criteria review.
 

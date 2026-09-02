@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/eventual-consistency-test-design/Standard-version/EventualConsistencyTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 81
+order: 86
 ---
 # 最终一致性测试设计 Prompt
 

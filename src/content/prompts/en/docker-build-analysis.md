@@ -6,7 +6,7 @@ category: "Data, Database, And Test Environment"
 categoryOrder: 7
 sourcePath: "testing-types/en/docker-build-analysis/Standard-version/DockerBuildAnalyzerPrompt.md"
 lang: "en"
-order: 75
+order: 80
 ---
 # Docker Build Analysis Prompt
 

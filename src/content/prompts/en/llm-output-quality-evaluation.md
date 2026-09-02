@@ -6,7 +6,7 @@ category: "AI And LLM Testing"
 categoryOrder: 10
 sourcePath: "testing-types/en/llm-output-quality-evaluation/Standard-version/LLMOutputQualityEvaluatorPrompt.md"
 lang: "en"
-order: 101
+order: 106
 ---
 # LLM Output Quality Evaluation Prompt
 

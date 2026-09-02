@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/browser-compatibility-analysis/Standard-version/BrowserCompatibilityAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 40
+order: 45
 ---
 # 浏览器兼容性分析 Prompt
 

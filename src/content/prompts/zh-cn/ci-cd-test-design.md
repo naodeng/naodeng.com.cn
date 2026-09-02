@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/ci-cd-test-design/Standard-version/CICDTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 50
+order: 55
 ---
 # CI/CD 测试设计 Prompt
 

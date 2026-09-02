@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/test-charter-generation/Standard-version/TestCharterGeneratorPrompt.md"
 lang: "en"
-order: 203
+order: 208
 ---
 # Exploratory Test Charter Design Prompt
 

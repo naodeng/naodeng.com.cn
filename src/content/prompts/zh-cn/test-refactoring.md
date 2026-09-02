@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/test-refactoring/Standard-version/TestRefactoringAssistantPrompt.md"
 lang: "zh-cn"
-order: 216
+order: 221
 ---
 # 自动化测试重构 Prompt
 

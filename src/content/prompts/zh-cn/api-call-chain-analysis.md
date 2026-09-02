@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-call-chain-analysis/Standard-version/APICallChainAnalysisPrompt.md"
 lang: "zh-cn"
-order: 12
+order: 17
 ---
 # API 调用链分析 Prompt
 

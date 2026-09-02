@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/sprint-quality-analysis/Standard-version/SprintQualityAnalyzerPrompt.md"
 lang: "en"
-order: 187
+order: 192
 ---
 # Sprint Quality Analysis Prompt
 

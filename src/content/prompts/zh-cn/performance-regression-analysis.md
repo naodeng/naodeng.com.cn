@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/performance-regression-analysis/Standard-version/PerformanceRegressionAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 129
+order: 134
 ---
 # 性能回归分析 Prompt
 

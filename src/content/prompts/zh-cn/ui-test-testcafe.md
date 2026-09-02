@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/ui-test-testcafe/Standard-version/UITestTestCafePrompt.md"
 lang: "zh-cn"
-order: 234
+order: 239
 ---
 # UI 自动化测试（TestCafe） Prompt
 

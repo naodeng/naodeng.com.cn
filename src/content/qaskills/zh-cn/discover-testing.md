@@ -6,7 +6,7 @@
 - slug: discover-testing
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/discover-testing/SKILL.md
 - description: Use this skill when you need to route a request to the right testing skill before execution; triggers include 测试技能路由、discover testing and which testing skill.
 

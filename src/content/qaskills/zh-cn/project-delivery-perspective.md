@@ -6,7 +6,7 @@
 - slug: project-delivery-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/project-delivery-perspective/SKILL.md
 - description: Use this skill when project delivery constraints or action tracking are needed for test strategy, test strategy review, or test report review; triggers include 项目交付视角、交付计划、排期与资源 and project delivery perspective.
 

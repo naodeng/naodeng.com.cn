@@ -6,7 +6,7 @@
 - slug: skill-prose-trim
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/skill-engineering/skill-prose-trim/SKILL.md
 - description: Use this skill when auditing or trimming process residue from Skill、Prompt、注释或文档；触发词包括过程性文案清理、审查残留、当前状态改写。
 

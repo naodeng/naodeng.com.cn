@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/retrospective-analysis/Standard-version/RetrospectiveAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 171
+order: 176
 ---
 # Sprint 回顾分析 Prompt
 
