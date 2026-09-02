@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/microservice-dependency-analysis/Standard-version/MicroserviceDependencyAnalysisPrompt.md"
 lang: "en"
-order: 113
+order: 118
 ---
 # Microservice Dependency Analysis Prompt
 

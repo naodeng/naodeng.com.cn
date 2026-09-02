@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-regression-impact/Standard-version/APIRegressionImpactPrompt.md"
 lang: "zh-cn"
-order: 18
+order: 23
 ---
 # API 回归影响分析 Prompt
 

@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/recovery-test-design/Standard-version/RecoveryTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 154
+order: 159
 ---
 # 故障恢复测试设计 Prompt
 

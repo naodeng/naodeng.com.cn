@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/slow-query-analysis/Standard-version/SlowQueryAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 182
+order: 187
 ---
 # 数据库慢查询分析 Prompt
 

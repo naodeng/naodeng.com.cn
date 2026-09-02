@@ -6,7 +6,7 @@ category: "Release, Production, And Observability"
 categoryOrder: 9
 sourcePath: "testing-types/en/hotfix-risk-analysis/Standard-version/HotfixRiskAnalyzerPrompt.md"
 lang: "en"
-order: 92
+order: 97
 ---
 # Hotfix Risk Analysis Prompt
 

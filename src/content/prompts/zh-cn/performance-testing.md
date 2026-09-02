@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/performance-testing/Standard-version/PerformanceTestingPrompt.md"
 lang: "zh-cn"
-order: 136
+order: 141
 ---
 # 性能测试 Prompt
 

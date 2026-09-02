@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/requirements-analysis-Web/Standard-version/RequirementsAnalysisPrompt.md"
 lang: "zh-cn"
-order: 169
+order: 174
 ---
 # 需求分析 Prompt - Web端版
 

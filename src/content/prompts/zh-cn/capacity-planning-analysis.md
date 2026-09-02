@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/capacity-planning-analysis/Standard-version/CapacityPlanningAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 47
+order: 52
 ---
 # 容量规划分析 Prompt
 

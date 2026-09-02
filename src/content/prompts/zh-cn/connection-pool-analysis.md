@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/connection-pool-analysis/Standard-version/ConnectionPoolAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 57
+order: 62
 ---
 # 连接池分析 Prompt
 

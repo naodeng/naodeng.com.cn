@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/mock-api-generation/Standard-version/MockAPIGeneratorPrompt.md"
 lang: "zh-cn"
-order: 117
+order: 122
 ---
 # Mock API 设计 Prompt
 

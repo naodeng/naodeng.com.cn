@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/test-failure-classification/Standard-version/TestFailureClassifierPrompt.md"
 lang: "zh-cn"
-order: 213
+order: 218
 ---
 # 测试失败分类 Prompt
 

@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/test-data-dependency-analysis/Standard-version/TestDataDependencyAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 207
+order: 212
 ---
 # 测试数据依赖分析 Prompt
 

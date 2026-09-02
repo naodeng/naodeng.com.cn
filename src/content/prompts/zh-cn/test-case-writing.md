@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/test-case-writing/Standard-version/TestCaseWritingPrompt.md"
 lang: "zh-cn"
-order: 200
+order: 205
 ---
 # 测试用例编写 Prompt
 

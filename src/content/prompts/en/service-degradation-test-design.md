@@ -6,7 +6,7 @@ category: "Performance, Reliability, And Resilience"
 categoryOrder: 5
 sourcePath: "testing-types/en/service-degradation-test-design/Standard-version/ServiceDegradationTestDesignerPrompt.md"
 lang: "en"
-order: 180
+order: 185
 ---
 # Service Degradation Test Designer Prompt
 

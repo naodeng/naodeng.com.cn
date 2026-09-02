@@ -6,7 +6,7 @@ category: "Security, Privacy, And Accessibility"
 categoryOrder: 6
 sourcePath: "testing-types/en/data-masking-analysis/Standard-version/DataMaskingAnalyzerPrompt.md"
 lang: "en"
-order: 61
+order: 66
 ---
 # Data Masking Analysis Prompt
 

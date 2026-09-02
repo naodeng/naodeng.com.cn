@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/docker-build-analysis/Standard-version/DockerBuildAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 75
+order: 80
 ---
 # Docker 构建问题分析 Prompt
 

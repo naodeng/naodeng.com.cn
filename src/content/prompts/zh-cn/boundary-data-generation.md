@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/boundary-data-generation/Standard-version/BoundaryDataGeneratorPrompt.md"
 lang: "zh-cn"
-order: 38
+order: 43
 ---
 # 边界测试数据生成 Prompt
 

@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/localization-test-design/Standard-version/LocalizationTestDesignerPrompt.md"
 lang: "en"
-order: 103
+order: 108
 ---
 # Localization Test Design Prompt
 

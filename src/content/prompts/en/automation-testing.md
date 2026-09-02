@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/automation-testing/Standard-version/AutomationTestingPrompt.md"
 lang: "en"
-order: 36
+order: 41
 ---
 # Test Automation Prompt
 

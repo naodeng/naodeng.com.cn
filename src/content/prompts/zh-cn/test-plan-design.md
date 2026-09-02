@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/test-plan-design/Standard-version/TestPlanDesignerPrompt.md"
 lang: "zh-cn"
-order: 215
+order: 220
 ---
 # 测试计划设计 Prompt
 

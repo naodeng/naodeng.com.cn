@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/ui-test-testcafe/Standard-version/UITestTestCafePrompt.md"
 lang: "en"
-order: 234
+order: 239
 ---
 # UI Test TestCafe Prompt
 

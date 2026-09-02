@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/requirements-analysis/Standard-version/RequirementsAnalysisPrompt.md"
 lang: "en"
-order: 167
+order: 172
 ---
 # Requirements Analysis Prompt
 

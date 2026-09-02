@@ -6,7 +6,7 @@ Author: naodeng
 - slug: product-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/product-quality-perspective/SKILL.md
 - description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include product quality perspective, product quality review, and 产品质量视角.
 

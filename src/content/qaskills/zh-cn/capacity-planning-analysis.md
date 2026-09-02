@@ -6,7 +6,7 @@
 - slug: capacity-planning-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/capacity-planning-analysis/SKILL.md
 - description: Use this skill when you need to assess capacity demand, headroom, constraints, and planning assumptions; triggers include 容量规划分析 and capacity planning analysis.
 

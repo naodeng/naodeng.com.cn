@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/mobile-compatibility-analysis/Standard-version/MobileCompatibilityAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 114
+order: 119
 ---
 # 移动端兼容性分析 Prompt
 

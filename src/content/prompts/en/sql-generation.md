@@ -6,7 +6,7 @@ category: "Data, Database, And Test Environment"
 categoryOrder: 7
 sourcePath: "testing-types/en/sql-generation/Standard-version/SQLGeneratorPrompt.md"
 lang: "en"
-order: 188
+order: 193
 ---
 # SQL Generation Prompt
 

@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/log-analysis/Standard-version/LogAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 105
+order: 110
 ---
 # 日志分析 Prompt
 

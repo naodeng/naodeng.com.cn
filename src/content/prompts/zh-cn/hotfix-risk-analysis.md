@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/hotfix-risk-analysis/Standard-version/HotfixRiskAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 92
+order: 97
 ---
 # 热修复风险分析 Prompt
 

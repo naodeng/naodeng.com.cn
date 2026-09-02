@@ -6,7 +6,7 @@ category: "AI And LLM Testing"
 categoryOrder: 10
 sourcePath: "testing-types/en/test-case-reviewer-Mobile/Standard-version/TestCaseReviewerPrompt.md"
 lang: "en"
-order: 197
+order: 202
 ---
 # Test Case Review Prompt - Mobile Version
 

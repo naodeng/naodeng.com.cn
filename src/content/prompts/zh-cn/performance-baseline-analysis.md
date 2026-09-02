@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/performance-baseline-analysis/Standard-version/PerformanceBaselineAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 127
+order: 132
 ---
 # 性能基线分析 Prompt
 

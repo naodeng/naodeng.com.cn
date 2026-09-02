@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/test-case-reviewer/Standard-version/TestCaseReviewerPrompt.md"
 lang: "zh-cn"
-order: 196
+order: 201
 ---
 # 测试用例评审 Prompt
 

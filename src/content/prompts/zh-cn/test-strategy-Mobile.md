@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/test-strategy-Mobile/Standard-version/TestStrategyPrompt.md"
 lang: "zh-cn"
-order: 221
+order: 226
 ---
 # 测试策略 Prompt - 移动端版
 

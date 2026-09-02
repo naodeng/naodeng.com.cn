@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-compatibility-analysis/Standard-version/APICompatibilityAnalysisPrompt.md"
 lang: "zh-cn"
-order: 13
+order: 18
 ---
 # API 兼容性分析 Prompt
 

@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/distributed-trace-analysis/Standard-version/DistributedTraceAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 73
+order: 78
 ---
 # 分布式追踪分析 Prompt
 

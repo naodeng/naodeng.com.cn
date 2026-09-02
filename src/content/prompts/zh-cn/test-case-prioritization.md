@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/test-case-prioritization/Standard-version/TestCasePrioritizerPrompt.md"
 lang: "zh-cn"
-order: 195
+order: 200
 ---
 # 测试用例优先级分析 Prompt
 

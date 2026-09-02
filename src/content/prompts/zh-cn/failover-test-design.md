@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/failover-test-design/Standard-version/FailoverTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 82
+order: 87
 ---
 # Failover 测试设计 Prompt
 

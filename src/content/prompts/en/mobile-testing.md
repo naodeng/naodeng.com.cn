@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/mobile-testing/Standard-version/MobileTestingPrompt.md"
 lang: "en"
-order: 115
+order: 120
 ---
 # Mobile Testing Prompt
 

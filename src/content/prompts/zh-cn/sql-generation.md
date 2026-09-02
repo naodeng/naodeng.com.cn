@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/sql-generation/Standard-version/SQLGeneratorPrompt.md"
 lang: "zh-cn"
-order: 188
+order: 193
 ---
 # SQL 生成 Prompt
 

@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/defect-leakage-analysis/Standard-version/DefectLeakageAnalyzerPrompt.md"
 lang: "en"
-order: 69
+order: 74
 ---
 # Defect Leakage Analysis Prompt
 

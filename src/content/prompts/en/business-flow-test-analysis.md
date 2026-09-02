@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/business-flow-test-analysis/Standard-version/BusinessFlowTestAnalysisPrompt.md"
 lang: "en"
-order: 45
+order: 50
 ---
 # Business Flow Test Analysis Prompt
 

@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/rate-limit-test-design/Standard-version/RateLimitTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 153
+order: 158
 ---
 # 限流测试设计 Prompt
 

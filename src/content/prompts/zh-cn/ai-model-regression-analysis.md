@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/ai-model-regression-analysis/Standard-version/AIModelRegressionAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 8
+order: 13
 ---
 # AI 模型回归分析 Prompt
 

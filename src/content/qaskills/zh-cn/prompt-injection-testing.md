@@ -6,7 +6,7 @@
 - slug: prompt-injection-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/prompt-injection-testing/SKILL.md
 - description: Use this skill when you need to design safe prompt-injection tests for AI systems and tool boundaries; triggers include Prompt Injection 测试 and prompt injection testing.
 

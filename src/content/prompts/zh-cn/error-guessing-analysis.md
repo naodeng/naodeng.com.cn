@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/error-guessing-analysis/Standard-version/ErrorGuessingAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 80
+order: 85
 ---
 # 错误猜测分析 Prompt
 

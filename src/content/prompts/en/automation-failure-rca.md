@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/automation-failure-rca/Standard-version/AutomationFailureRCAAnalyzerPrompt.md"
 lang: "en"
-order: 35
+order: 40
 ---
 # Automation Failure RCA Analyzer Prompt
 

@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/defect-clustering-analysis/Standard-version/DefectClusteringAnalyzerPrompt.md"
 lang: "en"
-order: 68
+order: 73
 ---
 # Defect Clustering Analysis Prompt
 

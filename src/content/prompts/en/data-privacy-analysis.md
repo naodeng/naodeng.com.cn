@@ -6,7 +6,7 @@ category: "Security, Privacy, And Accessibility"
 categoryOrder: 6
 sourcePath: "testing-types/en/data-privacy-analysis/Standard-version/DataPrivacyTestAnalyzerPrompt.md"
 lang: "en"
-order: 62
+order: 67
 ---
 # Data Privacy Analysis Prompt
 

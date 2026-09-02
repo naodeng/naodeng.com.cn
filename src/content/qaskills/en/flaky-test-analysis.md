@@ -6,7 +6,7 @@ Author: naodeng
 - slug: flaky-test-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/flaky-test-analysis/SKILL.md
 - description: Use this skill when you need to investigate intermittent test failures from run history and evidence; triggers include flaky test analysis.
 

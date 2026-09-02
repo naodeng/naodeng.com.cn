@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/alert-analysis/Standard-version/AlertAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 11
+order: 16
 ---
 # 告警分析 Prompt
 

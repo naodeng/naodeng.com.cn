@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/idempotency-test-design/Standard-version/IdempotencyTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 93
+order: 98
 ---
 # 幂等性测试设计 Prompt
 

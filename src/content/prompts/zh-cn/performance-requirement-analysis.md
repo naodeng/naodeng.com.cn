@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/performance-requirement-analysis/Standard-version/PerformanceRequirementAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 130
+order: 135
 ---
 # 性能需求分析 Prompt
 

@@ -6,7 +6,7 @@ category: "Data, Database, And Test Environment"
 categoryOrder: 7
 sourcePath: "testing-types/en/test-data-cleanup/Standard-version/TestDataCleanupAssistantPrompt.md"
 lang: "en"
-order: 206
+order: 211
 ---
 # Test Data Cleanup Prompt
 

@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/mobile-compatibility-analysis/Standard-version/MobileCompatibilityAnalyzerPrompt.md"
 lang: "en"
-order: 114
+order: 119
 ---
 # Mobile Compatibility Analysis Prompt
 

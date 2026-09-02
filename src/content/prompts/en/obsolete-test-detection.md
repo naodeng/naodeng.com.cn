@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/obsolete-test-detection/Standard-version/ObsoleteTestDetectorPrompt.md"
 lang: "en"
-order: 122
+order: 127
 ---
 # Obsolete Test Detection Prompt
 

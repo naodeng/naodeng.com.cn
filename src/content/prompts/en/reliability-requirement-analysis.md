@@ -6,7 +6,7 @@ category: "Performance, Reliability, And Resilience"
 categoryOrder: 5
 sourcePath: "testing-types/en/reliability-requirement-analysis/Standard-version/ReliabilityRequirementAnalyzerPrompt.md"
 lang: "en"
-order: 162
+order: 167
 ---
 # Reliability Requirement Analysis Prompt
 

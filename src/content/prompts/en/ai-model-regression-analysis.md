@@ -6,7 +6,7 @@ category: "AI And LLM Testing"
 categoryOrder: 10
 sourcePath: "testing-types/en/ai-model-regression-analysis/Standard-version/AIModelRegressionAnalyzerPrompt.md"
 lang: "en"
-order: 8
+order: 13
 ---
 # AI Model Regression Analysis Prompt
 

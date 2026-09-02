@@ -6,7 +6,7 @@ category: "安全、隐私与无障碍"
 categoryOrder: 6
 sourcePath: "testing-types/zh/data-masking-analysis/Standard-version/DataMaskingAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 61
+order: 66
 ---
 # 数据脱敏分析 Prompt
 

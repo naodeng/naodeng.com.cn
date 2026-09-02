@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/business-rule-analysis/Standard-version/BusinessRuleAnalyzerPrompt.md"
 lang: "en"
-order: 46
+order: 51
 ---
 # Business Rule Analysis Prompt
 

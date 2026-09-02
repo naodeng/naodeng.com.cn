@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/test-strategy/Standard-version/TestStrategyPrompt.md"
 lang: "en"
-order: 220
+order: 225
 ---
 # Test Strategy Prompt
 

@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/requirement-dependency-analysis/Standard-version/RequirementDependencyAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 164
+order: 169
 ---
 # 需求依赖分析 Prompt
 

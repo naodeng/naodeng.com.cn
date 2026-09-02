@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/database-validation-analysis/Standard-version/DatabaseValidationAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 66
+order: 71
 ---
 # 数据库校验分析 Prompt
 

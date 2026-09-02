@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/neoload-script-assistance/Standard-version/NeoLoadScriptAssistantPrompt.md"
 lang: "zh-cn"
-order: 118
+order: 123
 ---
 # NeoLoad 脚本辅助 Prompt
 

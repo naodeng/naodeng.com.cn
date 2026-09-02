@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/test-asset-health-analysis/Standard-version/TestAssetHealthAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 192
+order: 197
 ---
 # 测试资产健康分析 Prompt
 

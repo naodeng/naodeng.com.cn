@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/requirement-dependency-analysis/Standard-version/RequirementDependencyAnalyzerPrompt.md"
 lang: "en"
-order: 164
+order: 169
 ---
 # Requirement Dependency Analysis Prompt
 

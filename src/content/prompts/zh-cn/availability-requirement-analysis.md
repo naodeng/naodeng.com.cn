@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/availability-requirement-analysis/Standard-version/AvailabilityRequirementAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 37
+order: 42
 ---
 # 可用性需求分析 Prompt
 

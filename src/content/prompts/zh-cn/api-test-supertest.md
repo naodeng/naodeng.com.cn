@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/api-test-supertest/Standard-version/APITestSupertestPrompt.md"
 lang: "zh-cn"
-order: 26
+order: 31
 ---
 # API 测试（Supertest） Prompt
 

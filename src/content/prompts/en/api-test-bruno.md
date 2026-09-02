@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/api-test-bruno/Standard-version/APITestBrunoPrompt.md"
 lang: "en"
-order: 22
+order: 27
 ---
 # API Test Bruno Prompt
 

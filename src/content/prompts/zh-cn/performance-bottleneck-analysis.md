@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/performance-bottleneck-analysis/Standard-version/PerformanceBottleneckAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 128
+order: 133
 ---
 # 性能瓶颈分析 Prompt
 

@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/performance-test-gatling/Standard-version/PerformanceTestGatlingPrompt.md"
 lang: "zh-cn"
-order: 133
+order: 138
 ---
 # 性能测试（Gatling） Prompt
 

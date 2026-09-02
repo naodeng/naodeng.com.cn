@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/duplicate-test-detection/Standard-version/DuplicateTestDetectorPrompt.md"
 lang: "zh-cn"
-order: 77
+order: 82
 ---
 # 测试重复检测 Prompt
 

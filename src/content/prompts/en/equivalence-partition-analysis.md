@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/equivalence-partition-analysis/Standard-version/EquivalencePartitionAnalyzerPrompt.md"
 lang: "en"
-order: 79
+order: 84
 ---
 # Equivalence Partition Analyzer Prompt
 

@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/boundary-value-analysis/Standard-version/BoundaryValueAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 39
+order: 44
 ---
 # 边界值分析 Prompt
 

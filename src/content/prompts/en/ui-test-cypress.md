@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/ui-test-cypress/Standard-version/UITestCypressPrompt.md"
 lang: "en"
-order: 229
+order: 234
 ---
 # UI Test Cypress Prompt
 

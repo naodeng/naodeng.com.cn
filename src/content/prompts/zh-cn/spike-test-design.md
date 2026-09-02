@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/spike-test-design/Standard-version/SpikeTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 185
+order: 190
 ---
 # 峰值测试设计 Prompt
 

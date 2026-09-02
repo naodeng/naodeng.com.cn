@@ -6,7 +6,7 @@ category: "Release, Production, And Observability"
 categoryOrder: 9
 sourcePath: "testing-types/en/smoke-test-generation/Standard-version/SmokeTestGeneratorPrompt.md"
 lang: "en"
-order: 183
+order: 188
 ---
 # Smoke Test Generation Prompt
 

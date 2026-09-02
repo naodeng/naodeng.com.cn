@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/prompt-test-analysis/Standard-version/PromptTestAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 146
+order: 151
 ---
 # Prompt 测试分析 Prompt
 

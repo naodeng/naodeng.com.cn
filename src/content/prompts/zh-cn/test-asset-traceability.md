@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/test-asset-traceability/Standard-version/TestAssetTraceabilityPrompt.md"
 lang: "zh-cn"
-order: 193
+order: 198
 ---
 # 测试资产追踪分析 Prompt
 

@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/consumer-contract-analysis/Standard-version/ConsumerContractAnalyzerPrompt.md"
 lang: "en"
-order: 58
+order: 63
 ---
 # Consumer Contract Analyzer Prompt
 

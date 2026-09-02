@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/duplicate-message-testing/Standard-version/DuplicateMessageTestDesignerPrompt.md"
 lang: "en"
-order: 76
+order: 81
 ---
 # Duplicate Message Test Designer Prompt
 

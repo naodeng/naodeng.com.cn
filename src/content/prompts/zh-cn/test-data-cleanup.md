@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/test-data-cleanup/Standard-version/TestDataCleanupAssistantPrompt.md"
 lang: "zh-cn"
-order: 206
+order: 211
 ---
 # 测试数据清理 Prompt
 

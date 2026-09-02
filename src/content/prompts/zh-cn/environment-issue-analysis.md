@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/environment-issue-analysis/Standard-version/EnvironmentIssueAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 78
+order: 83
 ---
 # 环境问题分析 Prompt
 

@@ -6,7 +6,7 @@ category: "AI And LLM Testing"
 categoryOrder: 10
 sourcePath: "testing-types/en/ai-red-team-test-design/Standard-version/AIRedTeamTestDesignerPrompt.md"
 lang: "en"
-order: 9
+order: 14
 ---
 # AI Red Team Test Design Prompt
 

@@ -6,7 +6,7 @@ category: "Security, Privacy, And Accessibility"
 categoryOrder: 6
 sourcePath: "testing-types/en/api-security-test-design/Standard-version/APISecurityTestDesignerPrompt.md"
 lang: "en"
-order: 21
+order: 26
 ---
 # API Security Test Design Prompt
 

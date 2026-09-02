@@ -6,7 +6,7 @@
 - slug: regression-scope-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/regression-scope-analysis/SKILL.md
 - description: Use this skill when you need to define risk-based regression scope after a change or release; triggers include 回归范围分析 and regression scope analysis.
 

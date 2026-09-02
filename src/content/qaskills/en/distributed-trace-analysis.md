@@ -6,7 +6,7 @@ Author: naodeng
 - slug: distributed-trace-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/distributed-trace-analysis/SKILL.md
 - description: Use this skill when you need to analyze distributed traces for call paths, latency, errors, and evidence gaps; triggers include distributed trace analysis.
 

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-case-reviewer-plus
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-case-reviewer-plus/SKILL.md
 - description: Use this skill when you need structured test-case review findings from requirements, strategy, and case docs; triggers include test case reviewer plus and advanced test case review.
 

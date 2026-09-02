@@ -6,7 +6,7 @@ category: "发布、生产与可观测性"
 categoryOrder: 9
 sourcePath: "testing-types/zh/metrics-anomaly-analysis/Standard-version/MetricsAnomalyAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 112
+order: 117
 ---
 # 指标异常分析 Prompt
 

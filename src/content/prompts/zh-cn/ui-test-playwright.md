@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/ui-test-playwright/Standard-version/UITestPlaywrightPrompt.md"
 lang: "zh-cn"
-order: 231
+order: 236
 ---
 # UI 自动化测试（Playwright） Prompt
 

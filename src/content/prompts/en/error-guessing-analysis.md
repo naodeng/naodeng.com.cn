@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/error-guessing-analysis/Standard-version/ErrorGuessingAnalyzerPrompt.md"
 lang: "en"
-order: 80
+order: 85
 ---
 # Error Guessing Analysis Prompt
 

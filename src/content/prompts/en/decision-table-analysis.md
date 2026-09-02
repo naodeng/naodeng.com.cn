@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/decision-table-analysis/Standard-version/DecisionTableAnalyzerPrompt.md"
 lang: "en"
-order: 67
+order: 72
 ---
 # Decision Table Analyzer Prompt
 

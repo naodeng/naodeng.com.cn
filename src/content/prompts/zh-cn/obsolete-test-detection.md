@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/obsolete-test-detection/Standard-version/ObsoleteTestDetectorPrompt.md"
 lang: "zh-cn"
-order: 122
+order: 127
 ---
 # 过期测试检测 Prompt
 

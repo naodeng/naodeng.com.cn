@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/refinement-qa-assistant/Standard-version/RefinementQAAssistantPrompt.md"
 lang: "zh-cn"
-order: 155
+order: 160
 ---
 # 需求梳理 QA Prompt
 

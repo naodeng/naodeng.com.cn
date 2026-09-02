@@ -6,7 +6,7 @@ category: "Release, Production, And Observability"
 categoryOrder: 9
 sourcePath: "testing-types/en/release-readiness-review/Standard-version/ReleaseReadinessReviewPrompt.md"
 lang: "en"
-order: 160
+order: 165
 ---
 # Release Readiness Review Prompt
 

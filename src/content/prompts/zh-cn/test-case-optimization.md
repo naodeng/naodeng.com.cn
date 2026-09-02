@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/test-case-optimization/Standard-version/TestCaseOptimizerPrompt.md"
 lang: "zh-cn"
-order: 194
+order: 199
 ---
 # 测试用例优化 Prompt
 

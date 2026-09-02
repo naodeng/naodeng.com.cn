@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/fault-simulation-design/Standard-version/FaultSimulationDesignerPrompt.md"
 lang: "zh-cn"
-order: 84
+order: 89
 ---
 # 故障模拟设计 Prompt
 

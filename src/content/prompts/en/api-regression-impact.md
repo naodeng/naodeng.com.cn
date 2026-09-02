@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/api-regression-impact/Standard-version/APIRegressionImpactPrompt.md"
 lang: "en"
-order: 18
+order: 23
 ---
 # API Regression Impact Analysis Prompt
 

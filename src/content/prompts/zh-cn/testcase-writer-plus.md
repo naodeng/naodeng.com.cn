@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/testcase-writer-plus/Standard-version/TestCaseWriterPlusPrompt.md"
 lang: "zh-cn"
-order: 225
+order: 230
 ---
 # 测试用例编写增强版 Prompt
 

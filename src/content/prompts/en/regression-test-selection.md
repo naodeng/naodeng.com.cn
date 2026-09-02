@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/regression-test-selection/Standard-version/RegressionTestSelectorPrompt.md"
 lang: "en"
-order: 157
+order: 162
 ---
 # Regression Test Selection Prompt
 

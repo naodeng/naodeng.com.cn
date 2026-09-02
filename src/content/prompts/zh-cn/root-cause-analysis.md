@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/root-cause-analysis/Standard-version/RootCauseAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 174
+order: 179
 ---
 # 根因分析 Prompt
 

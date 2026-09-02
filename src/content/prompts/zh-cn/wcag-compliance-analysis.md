@@ -6,7 +6,7 @@ category: "安全、隐私与无障碍"
 categoryOrder: 6
 sourcePath: "testing-types/zh/wcag-compliance-analysis/Standard-version/WCAGComplianceAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 238
+order: 243
 ---
 # WCAG 符合性分析 Prompt
 

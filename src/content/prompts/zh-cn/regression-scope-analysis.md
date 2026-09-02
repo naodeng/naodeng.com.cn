@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/regression-scope-analysis/Standard-version/RegressionScopeAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 156
+order: 161
 ---
 # 回归范围分析 Prompt
 

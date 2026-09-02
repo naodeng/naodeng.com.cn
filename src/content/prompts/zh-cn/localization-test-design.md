@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/localization-test-design/Standard-version/LocalizationTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 103
+order: 108
 ---
 # 多语言测试设计 Prompt
 

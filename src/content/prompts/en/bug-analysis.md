@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/bug-analysis/Standard-version/BugAnalyzerPrompt.md"
 lang: "en"
-order: 41
+order: 46
 ---
 # Bug Analysis Prompt
 

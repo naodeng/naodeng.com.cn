@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/pairwise-test-design/Standard-version/PairwiseTestGeneratorPrompt.md"
 lang: "zh-cn"
-order: 126
+order: 131
 ---
 # Pairwise 组合测试生成 Prompt
 

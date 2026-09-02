@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-strategy-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-strategy-review/SKILL.md
 - description: Use this skill when a proposed test strategy needs evidence-based review before Human approval; triggers include test strategy review, strategy approval review, 测试策略评审、策略评审 and 测试方案审核.
 

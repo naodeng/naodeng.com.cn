@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/automation-coverage-analysis/Standard-version/AutomationCoverageAnalyzerPrompt.md"
 lang: "en"
-order: 34
+order: 39
 ---
 # Automation Coverage Analysis Prompt
 

@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/llm-test-case-generation/Standard-version/LLMTestCaseGeneratorPrompt.md"
 lang: "zh-cn"
-order: 102
+order: 107
 ---
 # LLM 测试用例生成 Prompt
 

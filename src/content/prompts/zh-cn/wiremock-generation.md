@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/wiremock-generation/Standard-version/WireMockGeneratorPrompt.md"
 lang: "zh-cn"
-order: 240
+order: 245
 ---
 # WireMock 配置设计 Prompt
 

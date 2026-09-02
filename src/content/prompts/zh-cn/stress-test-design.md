@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/stress-test-design/Standard-version/StressTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 191
+order: 196
 ---
 # 压力测试设计 Prompt
 

@@ -6,7 +6,7 @@ category: "Data, Database, And Test Environment"
 categoryOrder: 7
 sourcePath: "testing-types/en/wiremock-generation/Standard-version/WireMockGeneratorPrompt.md"
 lang: "en"
-order: 240
+order: 245
 ---
 # WireMock Configuration Design Prompt
 

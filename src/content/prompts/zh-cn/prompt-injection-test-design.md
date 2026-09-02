@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/prompt-injection-test-design/Standard-version/PromptInjectionTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 144
+order: 149
 ---
 # Prompt Injection 测试设计 Prompt
 

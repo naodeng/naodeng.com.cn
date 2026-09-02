@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-test-pytest/Standard-version/APITestPytestPrompt.md"
 lang: "zh-cn"
-order: 24
+order: 29
 ---
 # API 测试（Pytest） Prompt
 

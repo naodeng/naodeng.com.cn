@@ -6,7 +6,7 @@ category: "AI 与 LLM 测试"
 categoryOrder: 10
 sourcePath: "testing-types/zh/prompt-regression-testing/Standard-version/PromptRegressionTesterPrompt.md"
 lang: "zh-cn"
-order: 145
+order: 150
 ---
 # Prompt 回归测试 Prompt
 

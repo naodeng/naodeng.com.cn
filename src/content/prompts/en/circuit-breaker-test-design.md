@@ -6,7 +6,7 @@ category: "Performance, Reliability, And Resilience"
 categoryOrder: 5
 sourcePath: "testing-types/en/circuit-breaker-test-design/Standard-version/CircuitBreakerTestDesignerPrompt.md"
 lang: "en"
-order: 52
+order: 57
 ---
 # Circuit Breaker Test Designer Prompt
 

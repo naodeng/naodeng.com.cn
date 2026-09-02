@@ -6,7 +6,7 @@ category: "Performance, Reliability, And Resilience"
 categoryOrder: 5
 sourcePath: "testing-types/en/disaster-recovery-test-design/Standard-version/DisasterRecoveryTestDesignerPrompt.md"
 lang: "en"
-order: 72
+order: 77
 ---
 # Disaster Recovery Test Designer Prompt
 

@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/api-dependency-analysis/Standard-version/APIDependencyAnalysisPrompt.md"
 lang: "en"
-order: 15
+order: 20
 ---
 # API Dependency Analysis Prompt
 

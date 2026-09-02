@@ -6,7 +6,7 @@ category: "安全、隐私与无障碍"
 categoryOrder: 6
 sourcePath: "testing-types/zh/owasp-risk-analysis/Standard-version/OWASPRiskAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 124
+order: 129
 ---
 # OWASP 风险分析 Prompt
 

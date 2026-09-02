@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/api-test-supertest/Standard-version/APITestSupertestPrompt.md"
 lang: "en"
-order: 26
+order: 31
 ---
 # API Test Supertest Prompt
 

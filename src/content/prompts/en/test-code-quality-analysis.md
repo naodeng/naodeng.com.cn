@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/test-code-quality-analysis/Standard-version/TestCodeQualityAnalyzerPrompt.md"
 lang: "en"
-order: 204
+order: 209
 ---
 # Test Code Quality Analyzer Prompt
 

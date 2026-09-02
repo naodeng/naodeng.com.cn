@@ -6,7 +6,7 @@ Author: naodeng
 - slug: skill-prose-trim
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/skill-engineering/skill-prose-trim/SKILL.md
 - description: Use this skill when auditing or trimming process residue from Skills, Prompts, comments, or docs; triggers include process prose cleanup, review residue, and current-state rewriting.
 

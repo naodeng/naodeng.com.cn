@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/kubernetes-performance-analysis/Standard-version/KubernetesPerformanceAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 100
+order: 105
 ---
 # Kubernetes 性能分析 Prompt
 

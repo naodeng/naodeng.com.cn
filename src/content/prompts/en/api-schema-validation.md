@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/api-schema-validation/Standard-version/APISchemaValidationPrompt.md"
 lang: "en"
-order: 20
+order: 25
 ---
 # API Schema Validation Prompt
 

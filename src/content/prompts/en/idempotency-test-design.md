@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/idempotency-test-design/Standard-version/IdempotencyTestDesignerPrompt.md"
 lang: "en"
-order: 93
+order: 98
 ---
 # Idempotency Test Designer Prompt
 

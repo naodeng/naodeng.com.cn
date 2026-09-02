@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/flaky-test-analysis/Standard-version/FlakyTestAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 85
+order: 90
 ---
 # 不稳定测试分析 Prompt
 

@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/concurrency-test-design/Standard-version/ConcurrencyTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 55
+order: 60
 ---
 # 并发测试设计 Prompt
 

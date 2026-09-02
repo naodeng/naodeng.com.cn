@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/database-test-design/Standard-version/DatabaseTestDesignerPrompt.md"
 lang: "en"
-order: 65
+order: 70
 ---
 # Database Test Design Prompt
 

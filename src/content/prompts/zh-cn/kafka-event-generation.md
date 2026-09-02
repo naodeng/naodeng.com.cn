@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/kafka-event-generation/Standard-version/KafkaEventGeneratorPrompt.md"
 lang: "zh-cn"
-order: 97
+order: 102
 ---
 # Kafka Event 生成 Prompt
 

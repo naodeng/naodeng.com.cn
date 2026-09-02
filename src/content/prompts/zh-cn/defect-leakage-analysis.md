@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/defect-leakage-analysis/Standard-version/DefectLeakageAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 69
+order: 74
 ---
 # 缺陷逃逸分析 Prompt
 

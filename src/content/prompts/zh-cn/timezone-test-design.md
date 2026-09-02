@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/timezone-test-design/Standard-version/TimezoneTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 228
+order: 233
 ---
 # 时区测试设计 Prompt
 

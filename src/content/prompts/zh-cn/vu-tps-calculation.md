@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/vu-tps-calculation/Standard-version/VUTPSCalculatorPrompt.md"
 lang: "zh-cn"
-order: 237
+order: 242
 ---
 # VU 与 TPS 估算 Prompt
 

@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/nfr-analysis/Standard-version/NFRAnalyzerPrompt.md"
 lang: "en"
-order: 120
+order: 125
 ---
 # NFR Analysis Prompt
 

@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/message-consistency-analysis/Standard-version/MessageConsistencyAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 109
+order: 114
 ---
 # 消息一致性分析 Prompt
 

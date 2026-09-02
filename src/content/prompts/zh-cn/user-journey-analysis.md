@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/user-journey-analysis/Standard-version/UserJourneyAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 236
+order: 241
 ---
 # 用户旅程分析 Prompt
 

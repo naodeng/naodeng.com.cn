@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/test-refactoring/Standard-version/TestRefactoringAssistantPrompt.md"
 lang: "en"
-order: 216
+order: 221
 ---
 # Test Refactoring Assistant Prompt
 

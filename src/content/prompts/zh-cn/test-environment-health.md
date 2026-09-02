@@ -6,7 +6,7 @@ category: "数据、数据库与测试环境"
 categoryOrder: 7
 sourcePath: "testing-types/zh/test-environment-health/Standard-version/TestEnvironmentHealthCheckerPrompt.md"
 lang: "zh-cn"
-order: 212
+order: 217
 ---
 # 测试环境健康检查 Prompt
 

@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/distributed-transaction-test-design/Standard-version/DistributedTransactionTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 74
+order: 79
 ---
 # 分布式事务测试设计 Prompt
 

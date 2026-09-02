@@ -6,7 +6,7 @@ category: "自动化与测试工程"
 categoryOrder: 4
 sourcePath: "testing-types/zh/locator-repair/Standard-version/LocatorRepairAssistantPrompt.md"
 lang: "zh-cn"
-order: 104
+order: 109
 ---
 # Locator 修复 Prompt
 

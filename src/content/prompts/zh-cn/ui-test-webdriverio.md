@@ -6,7 +6,7 @@ category: "其他提示词"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/zh/ui-test-webdriverio/Standard-version/UITestWebdriverIOPrompt.md"
 lang: "zh-cn"
-order: 235
+order: 240
 ---
 # UI 自动化测试（WebdriverIO） Prompt
 

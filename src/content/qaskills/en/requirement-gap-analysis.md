@@ -6,7 +6,7 @@ Author: naodeng
 - slug: requirement-gap-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/requirement-gap-analysis/SKILL.md
 - description: Use this skill when you need to find missing, conflicting, or untestable requirement information; triggers include requirement gap analysis.
 

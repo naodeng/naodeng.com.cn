@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/testability-analysis/Standard-version/TestabilityAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 224
+order: 229
 ---
 # 可测试性分析 Prompt
 

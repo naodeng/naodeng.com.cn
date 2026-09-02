@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/sprint-quality-analysis/Standard-version/SprintQualityAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 187
+order: 192
 ---
 # Sprint 质量分析 Prompt
 

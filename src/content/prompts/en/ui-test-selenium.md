@@ -6,7 +6,7 @@ category: "Automation And Test Engineering"
 categoryOrder: 4
 sourcePath: "testing-types/en/ui-test-selenium/Standard-version/UITestSeleniumPrompt.md"
 lang: "en"
-order: 233
+order: 238
 ---
 # UI Test Selenium Prompt
 

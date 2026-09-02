@@ -6,7 +6,7 @@
 - slug: metrics-anomaly-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/metrics-anomaly-analysis/SKILL.md
 - description: Use this skill when you need to identify, contextualize, and investigate metric anomalies from observability evidence; triggers include 指标异常分析 and metrics anomaly analysis.
 

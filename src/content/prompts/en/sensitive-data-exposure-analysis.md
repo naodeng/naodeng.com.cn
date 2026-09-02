@@ -6,7 +6,7 @@ category: "Security, Privacy, And Accessibility"
 categoryOrder: 6
 sourcePath: "testing-types/en/sensitive-data-exposure-analysis/Standard-version/SensitiveDataExposureAnalyzerPrompt.md"
 lang: "en"
-order: 178
+order: 183
 ---
 # Sensitive Data Exposure Analysis Prompt
 

@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/bug-reporting/Standard-version/BugReportingPrompt.md"
 lang: "zh-cn"
-order: 42
+order: 47
 ---
 # 缺陷上报 Prompt
 

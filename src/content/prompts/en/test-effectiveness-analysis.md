@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/test-effectiveness-analysis/Standard-version/TestEffectivenessAnalyzerPrompt.md"
 lang: "en"
-order: 210
+order: 215
 ---
 # Test Effectiveness Analysis Prompt
 

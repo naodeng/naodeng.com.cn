@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/root-cause-analysis/Standard-version/RootCauseAnalyzerPrompt.md"
 lang: "en"
-order: 174
+order: 179
 ---
 # Root Cause Analysis Prompt
 

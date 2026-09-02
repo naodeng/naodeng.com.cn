@@ -6,7 +6,7 @@ category: "测试分析与测试设计"
 categoryOrder: 2
 sourcePath: "testing-types/zh/ui-test-design/Standard-version/UITestDesignerPrompt.md"
 lang: "zh-cn"
-order: 230
+order: 235
 ---
 # UI 测试设计 Prompt
 

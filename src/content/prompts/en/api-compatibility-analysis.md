@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/api-compatibility-analysis/Standard-version/APICompatibilityAnalysisPrompt.md"
 lang: "en"
-order: 13
+order: 18
 ---
 # API Compatibility Analysis Prompt
 

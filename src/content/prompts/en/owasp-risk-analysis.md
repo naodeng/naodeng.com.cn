@@ -6,7 +6,7 @@ category: "Security, Privacy, And Accessibility"
 categoryOrder: 6
 sourcePath: "testing-types/en/owasp-risk-analysis/Standard-version/OWASPRiskAnalyzerPrompt.md"
 lang: "en"
-order: 124
+order: 129
 ---
 # OWASP Risk Analysis Prompt
 

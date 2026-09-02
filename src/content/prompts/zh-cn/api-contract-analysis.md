@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/api-contract-analysis/Standard-version/APIContractAnalysisPrompt.md"
 lang: "zh-cn"
-order: 14
+order: 19
 ---
 # API 契约分析 Prompt
 

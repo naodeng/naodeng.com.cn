@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/api-contract-analysis/Standard-version/APIContractAnalysisPrompt.md"
 lang: "en"
-order: 14
+order: 19
 ---
 # API Contract Analysis Prompt
 

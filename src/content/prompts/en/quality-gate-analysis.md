@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/quality-gate-analysis/Standard-version/QualityGateAnalyzerPrompt.md"
 lang: "en"
-order: 149
+order: 154
 ---
 # Quality Gate Analysis Prompt
 

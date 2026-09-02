@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/requirement-traceability-analysis/Standard-version/RequirementTraceabilityAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 166
+order: 171
 ---
 # 需求可追踪性分析 Prompt
 

@@ -6,7 +6,7 @@ category: "Performance, Reliability, And Resilience"
 categoryOrder: 5
 sourcePath: "testing-types/en/availability-requirement-analysis/Standard-version/AvailabilityRequirementAnalyzerPrompt.md"
 lang: "en"
-order: 37
+order: 42
 ---
 # Availability Requirement Analysis Prompt
 

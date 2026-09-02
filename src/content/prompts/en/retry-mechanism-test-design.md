@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/retry-mechanism-test-design/Standard-version/RetryMechanismTestDesignerPrompt.md"
 lang: "en"
-order: 172
+order: 177
 ---
 # Retry Mechanism Test Designer Prompt
 

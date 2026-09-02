@@ -6,7 +6,7 @@ category: "Defects, Quality, And Test Governance"
 categoryOrder: 8
 sourcePath: "testing-types/en/quality-risk-analysis/Standard-version/QualityRiskAnalyzerPrompt.md"
 lang: "en"
-order: 151
+order: 156
 ---
 # Quality Risk Analysis Prompt
 

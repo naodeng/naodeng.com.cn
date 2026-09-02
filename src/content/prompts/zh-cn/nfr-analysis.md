@@ -6,7 +6,7 @@ category: "需求、规划与测试策略"
 categoryOrder: 1
 sourcePath: "testing-types/zh/nfr-analysis/Standard-version/NFRAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 120
+order: 125
 ---
 # 非功能需求分析 Prompt
 

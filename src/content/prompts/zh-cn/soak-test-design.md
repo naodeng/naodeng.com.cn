@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/soak-test-design/Standard-version/SoakTestDesignerPrompt.md"
 lang: "zh-cn"
-order: 184
+order: 189
 ---
 # 稳定性测试设计 Prompt
 

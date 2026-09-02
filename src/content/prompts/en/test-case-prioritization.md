@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/test-case-prioritization/Standard-version/TestCasePrioritizerPrompt.md"
 lang: "en"
-order: 195
+order: 200
 ---
 # Test Case Prioritizer Prompt
 

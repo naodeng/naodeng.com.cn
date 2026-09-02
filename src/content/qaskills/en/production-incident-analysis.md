@@ -6,7 +6,7 @@ Author: naodeng
 - slug: production-incident-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/production-incident-analysis/SKILL.md
 - description: Use this skill when you need to analyze production-incident evidence, impact, and follow-up actions; triggers include production incident analysis.
 

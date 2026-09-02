@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/contract-test-generation/Standard-version/ContractTestGeneratorPrompt.md"
 lang: "zh-cn"
-order: 59
+order: 64
 ---
 # 契约测试生成 Prompt
 

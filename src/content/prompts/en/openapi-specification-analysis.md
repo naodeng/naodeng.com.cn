@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/openapi-specification-analysis/Standard-version/OpenAPISpecificationAnalysisPrompt.md"
 lang: "en"
-order: 123
+order: 128
 ---
 # OpenAPI Specification Analysis Prompt
 

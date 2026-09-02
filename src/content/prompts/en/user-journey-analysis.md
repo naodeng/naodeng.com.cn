@@ -6,7 +6,7 @@ category: "Test Analysis And Design"
 categoryOrder: 2
 sourcePath: "testing-types/en/user-journey-analysis/Standard-version/UserJourneyAnalyzerPrompt.md"
 lang: "en"
-order: 236
+order: 241
 ---
 # User Journey Analysis Prompt
 

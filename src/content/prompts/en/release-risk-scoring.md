@@ -6,7 +6,7 @@ category: "Release, Production, And Observability"
 categoryOrder: 9
 sourcePath: "testing-types/en/release-risk-scoring/Standard-version/ReleaseRiskScorerPrompt.md"
 lang: "en"
-order: 161
+order: 166
 ---
 # Release Risk Scoring Prompt
 

@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/ui-test-webdriverio/Standard-version/UITestWebdriverIOPrompt.md"
 lang: "en"
-order: 235
+order: 240
 ---
 # UI Test WebdriverIO Prompt
 

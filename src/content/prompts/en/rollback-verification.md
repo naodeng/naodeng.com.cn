@@ -6,7 +6,7 @@ category: "Release, Production, And Observability"
 categoryOrder: 9
 sourcePath: "testing-types/en/rollback-verification/Standard-version/RollbackVerificationGeneratorPrompt.md"
 lang: "en"
-order: 173
+order: 178
 ---
 # Rollback Verification Design Prompt
 

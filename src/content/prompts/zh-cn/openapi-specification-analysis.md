@@ -6,7 +6,7 @@ category: "API、契约、消息与集成"
 categoryOrder: 3
 sourcePath: "testing-types/zh/openapi-specification-analysis/Standard-version/OpenAPISpecificationAnalysisPrompt.md"
 lang: "zh-cn"
-order: 123
+order: 128
 ---
 # OpenAPI 规范分析 Prompt
 

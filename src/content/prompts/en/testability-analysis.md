@@ -6,7 +6,7 @@ category: "Requirements, Planning, And Test Strategy"
 categoryOrder: 1
 sourcePath: "testing-types/en/testability-analysis/Standard-version/TestabilityAnalyzerPrompt.md"
 lang: "en"
-order: 224
+order: 229
 ---
 # Testability Analyzer Prompt
 

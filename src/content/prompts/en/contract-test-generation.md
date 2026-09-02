@@ -6,7 +6,7 @@ category: "API, Contract, Messaging, And Integration"
 categoryOrder: 3
 sourcePath: "testing-types/en/contract-test-generation/Standard-version/ContractTestGeneratorPrompt.md"
 lang: "en"
-order: 59
+order: 64
 ---
 # Contract Test Generator Prompt
 

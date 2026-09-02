@@ -6,7 +6,7 @@ category: "Other Prompts"
 categoryOrder: 9007199254740991
 sourcePath: "testing-types/en/ui-test-puppeteer/Standard-version/UITestPuppeteerPrompt.md"
 lang: "en"
-order: 232
+order: 237
 ---
 # UI Test Puppeteer Prompt
 

@@ -6,7 +6,7 @@ category: "缺陷、质量与测试治理"
 categoryOrder: 8
 sourcePath: "testing-types/zh/quality-gate-analysis/Standard-version/QualityGateAnalyzerPrompt.md"
 lang: "zh-cn"
-order: 149
+order: 154
 ---
 # 质量门禁分析 Prompt
 

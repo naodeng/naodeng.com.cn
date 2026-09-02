@@ -6,7 +6,7 @@
 - slug: log-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-08-30
+- syncedAt: 2026-09-02
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/log-analysis/SKILL.md
 - description: Use this skill when you need to analyze logs into evidence, timelines, anomalies, and follow-up hypotheses; triggers include 日志分析 and log analysis.
 

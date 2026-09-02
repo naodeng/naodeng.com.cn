@@ -6,7 +6,7 @@ category: "性能、可靠性与韧性"
 categoryOrder: 5
 sourcePath: "testing-types/zh/workload-model-design/Standard-version/WorkloadModelDesignerPrompt.md"
 lang: "zh-cn"
-order: 241
+order: 246
 ---
 # 负载模型设计 Prompt
 

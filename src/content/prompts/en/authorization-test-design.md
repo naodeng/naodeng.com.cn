@@ -6,7 +6,7 @@ category: "Security, Privacy, And Accessibility"
 categoryOrder: 6
 sourcePath: "testing-types/en/authorization-test-design/Standard-version/AuthorizationTestDesignerPrompt.md"
 lang: "en"
-order: 32
+order: 37
 ---
 # Authorization Test Design Prompt
 
