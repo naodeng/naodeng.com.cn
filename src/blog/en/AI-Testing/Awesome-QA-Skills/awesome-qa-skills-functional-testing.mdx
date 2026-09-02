@@ -2,14 +2,17 @@
 title: "Functional Testing: Systematically design test scenarios from business flows"
 description: "Functional Testing field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
 date: 2026-09-02T09:00:00.000Z
-draft: true
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Functional Testing"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
 
-A team needs a result it can hand off. Using “Design order, payment, cancellation, and refund tests across state transitions and recovery paths,” we can see which inputs and evidence Functional Testing expects.
+An order completing successfully does not prove that the business flow is reliable. Can a user recover after payment fails? Does cancellation leave the right state behind? Does a refund reach the correct order and balance? Those transitions decide whether the customer can complete the journey.
+
+The Functional Testing Skill organizes tests around business states rather than page count. It connects order, payment, cancellation, and refund into a traceable flow, making the preconditions, expected result, and recovery path for every transition explicit—so a happy path cannot hide an untested failure branch.
+
+This guide uses an order lifecycle to show how to separate core flow, exception branches, and recovery scenarios, then turn them into a functional-test design another teammate can execute.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Functional Testing.
 
