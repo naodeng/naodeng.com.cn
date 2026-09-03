@@ -388,6 +388,32 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       });
     };
 
+    const updateLifecycleFilters = () => {
+      lifecycleChips.forEach((chip) => {
+        const stage = chip.getAttribute("data-lifecycle-filter") || "";
+        const count = cards.filter((card) => {
+          const cardCategory = card.getAttribute("data-category") || "type";
+          const stages = (card.getAttribute("data-lifecycle-stages") || "").split(" ");
+          const hasEvals = card.getAttribute("data-evals") === "true";
+          return (
+            stages.includes(stage) &&
+            (category === "all" || cardCategory === category) &&
+            (!evalsOnly || hasEvals)
+          );
+        }).length;
+        chip.disabled = count === 0;
+        chip.classList.toggle("is-unavailable", count === 0);
+        const countLabel = chip.querySelector("span");
+        if (countLabel) countLabel.textContent = String(count);
+        if (count === 0 && lifecycleStage === stage) lifecycleStage = "";
+      });
+      lifecycleChips.forEach((chip) => {
+        const selected = chip.getAttribute("data-lifecycle-filter") === lifecycleStage;
+        chip.classList.toggle("is-active", selected);
+        chip.setAttribute("aria-pressed", String(selected));
+      });
+    };
+
     const updateActiveFilters = () => {
       if (!activeFilters) return;
       const active = [
@@ -469,6 +495,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
           evalsOnly = !evalsOnly;
           chip.classList.toggle("is-active", evalsOnly);
           chip.setAttribute("aria-pressed", String(evalsOnly));
+          updateLifecycleFilters();
         } else {
           category = chip.getAttribute("data-filter") || "all";
           document.querySelectorAll(".chip[data-filter]").forEach((c) => {
@@ -476,6 +503,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
             c.setAttribute("aria-pressed", String(c === chip));
           });
           updateSecondaryFilters();
+          updateLifecycleFilters();
         }
         apply();
       });
@@ -533,11 +561,13 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
         chip.setAttribute("aria-pressed", "false");
       });
       updateSecondaryFilters();
+      updateLifecycleFilters();
       apply();
       search?.focus();
     });
 
     updateSecondaryFilters();
+    updateLifecycleFilters();
     apply();
   })();
 </script>
@@ -700,6 +730,11 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     background: var(--gradient-theme);
     border-color: transparent;
     color: white;
+  }
+  .chip.is-unavailable,
+  .chip:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
   }
   .section h2 {
     margin-top: 0;

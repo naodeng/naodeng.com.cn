@@ -119,6 +119,15 @@ test.describe("QA Skills", () => {
     await expect(page.locator('a.card[data-slug="api-testing"]')).toBeHidden();
   });
 
+  test("lifecycle filters without matches are disabled for the chosen skill category", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/");
+    await page.locator('[data-filter="plus"]').click();
+
+    await expect(page.locator('[data-lifecycle-filter="functional-compatibility"]')).toBeDisabled();
+    await expect(page.locator('[data-lifecycle-filter="requirements-strategy"]')).toBeEnabled();
+    await expect(page.locator("#qaskills-results")).toContainText("4");
+  });
+
   test("catalog cards keep the browsing view to title and concise description", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/");
     const card = page.locator('a.card[data-slug="requirements-analysis"]').first();
