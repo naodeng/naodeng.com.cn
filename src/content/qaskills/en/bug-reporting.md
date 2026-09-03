@@ -6,7 +6,7 @@ Author: naodeng
 - slug: bug-reporting
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/bug-reporting/SKILL.md
 - description: Use this skill when you need to write clear, reproducible bug reports with steps, environment details, and evidence; triggers include bug reporting and defect reporting.
 
@@ -64,7 +64,7 @@ description: Use this skill when you need to write clear, reproducible bug repor
 
 # Bug Reporting
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

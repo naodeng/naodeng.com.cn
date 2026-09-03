@@ -6,9 +6,9 @@ Author: naodeng
 - slug: multi-role-quality-synthesis
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/multi-role-quality-synthesis/SKILL.md
-- description: Use this skill when multiple role reports for one quality stage must be combined into a traceable synthesis; triggers include multi-role quality synthesis, role report consolidation, disagreement summary, 多角色质量汇总 and 角色报告合并.
+- description: Use this skill when multiple role reports for one quality stage must be combined into a traceable synthesis; triggers include multi-role quality synthesis, role report consolidation, disagreement summary..
 
 ## Workflow
 
@@ -23,7 +23,7 @@ Author: naodeng
 ```markdown
 ---
 name: multi-role-quality-synthesis
-description: Use this skill when multiple role reports for one quality stage must be combined into a traceable synthesis; triggers include multi-role quality synthesis, role report consolidation, disagreement summary, 多角色质量汇总 and 角色报告合并.
+description: Use this skill when multiple role reports for one quality stage must be combined into a traceable synthesis; triggers include multi-role quality synthesis, role report consolidation, disagreement summary..
 ---
 
 # Multi-Role Quality Synthesis

@@ -6,9 +6,9 @@ Author: naodeng
 - slug: product-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/product-quality-perspective/SKILL.md
-- description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include product quality perspective, product quality review, and 产品质量视角.
+- description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include product quality perspective, product quality review..
 
 ## When to Use
 
@@ -57,12 +57,12 @@ Author: naodeng
 ```markdown
 ---
 name: product-quality-perspective
-description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include product quality perspective, product quality review, and 产品质量视角.
+description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include product quality perspective, product quality review..
 ---
 
 # Product Quality Perspective (English)
 
-**中文版：** 见对应中文技能。
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

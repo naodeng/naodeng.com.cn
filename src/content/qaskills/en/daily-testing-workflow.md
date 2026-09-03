@@ -6,7 +6,7 @@ Author: naodeng
 - slug: daily-testing-workflow
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/daily-testing-workflow/SKILL.md
 - description: Use this skill when you need a day-by-day QA routine including planning, execution, bug reporting, and end-of-day wrap-up; triggers include daily testing workflow and daily QA routine.
 
@@ -61,7 +61,7 @@ description: Use this skill when you need a day-by-day QA routine including plan
 
 # Daily Testing Workflow
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

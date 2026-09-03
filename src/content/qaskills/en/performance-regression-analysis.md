@@ -6,7 +6,7 @@ Author: naodeng
 - slug: performance-regression-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-regression-analysis/SKILL.md
 - description: Use this skill when you need to compare performance evidence across versions and assess regression risk; triggers include performance regression analysis.
 

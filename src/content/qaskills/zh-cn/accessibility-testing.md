@@ -6,7 +6,7 @@
 - slug: accessibility-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/accessibility-testing/SKILL.md
 - description: Use this skill when you need to design accessibility testing against WCAG, keyboard navigation, and assistive technology scenarios; triggers include 可访问性测试 and accessibility testing.
 

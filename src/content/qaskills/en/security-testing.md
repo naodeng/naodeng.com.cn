@@ -6,7 +6,7 @@ Author: naodeng
 - slug: security-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/security-testing/SKILL.md
 - description: Use this skill when you need to design security testing around OWASP risks, vulnerability scanning, and penetration scenarios; triggers include security testing and vulnerability testing.
 
@@ -64,7 +64,7 @@ description: Use this skill when you need to design security testing around OWAS
 
 # Security Testing (English)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

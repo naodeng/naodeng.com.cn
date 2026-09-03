@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ui-test-webdriverio
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ui-test-webdriverio/SKILL.md
 - description: Use this skill when you need to design WebdriverIO suites with config, services, runner behavior, Page Objects, capabilities, and reporters; triggers include WebdriverIO UI testing, UI automation testing, and ui-test-webdriverio.
 
@@ -37,7 +37,7 @@ description: Use this skill when you need to design WebdriverIO suites with conf
 
 # WebdriverIO UI Testing (EN)
 
-**中文版：** 见对应中文技能。
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

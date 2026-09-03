@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-test-supertest
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-supertest/SKILL.md
 - description: Use this skill when you need to parse multi-format API definitions and generate executable Supertest scripts; triggers include Supertest, Node.js API testing, and Supertest automation.
 
@@ -65,7 +65,7 @@ description: Use this skill when you need to parse multi-format API definitions 
 
 # api-test-supertest (EN)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

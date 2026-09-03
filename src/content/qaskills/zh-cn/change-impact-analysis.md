@@ -6,7 +6,7 @@
 - slug: change-impact-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/change-impact-analysis/SKILL.md
 - description: Use this skill when you need to analyze how a code, configuration, or requirement change affects quality scope; triggers include 变更影响分析 and change impact analysis.
 

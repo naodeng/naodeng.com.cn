@@ -6,7 +6,7 @@ Author: naodeng
 - slug: requirements-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/requirements-analysis/SKILL.md
 - description: Use this skill when you need to analyze requirements, identify test points, boundaries, dependencies, and risks before test design; triggers include requirements analysis and test point analysis.
 
@@ -64,7 +64,7 @@ description: Use this skill when you need to analyze requirements, identify test
 
 # Requirements Analysis (English)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

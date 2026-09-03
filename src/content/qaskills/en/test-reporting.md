@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-reporting
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-reporting/SKILL.md
 - description: Use this skill when you need to generate test reports with summary, metrics, defect analysis, and risk assessment; triggers include test reporting and QA status report.
 
@@ -68,7 +68,7 @@ description: Use this skill when you need to generate test reports with summary,
 
 # Test Reporting
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

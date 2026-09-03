@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-test-restassure
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-restassure/SKILL.md
 - description: Use this skill when you need to parse multi-format API definitions and generate Rest Assured Java test classes; triggers include Rest Assured, RestAssured, and Java API automation.
 
@@ -65,7 +65,7 @@ description: Use this skill when you need to parse multi-format API definitions 
 
 # api-test-restassure (EN)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

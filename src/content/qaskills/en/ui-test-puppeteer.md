@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ui-test-puppeteer
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ui-test-puppeteer/SKILL.md
 - description: Use this skill when you need to design Puppeteer automation for Chromium-driven checks, screenshots, PDFs, network interception, and CDP use cases; triggers include Puppeteer UI testing, UI automation testing, and ui-test-puppeteer.
 
@@ -37,7 +37,7 @@ description: Use this skill when you need to design Puppeteer automation for Chr
 
 # Puppeteer UI Testing (EN)
 
-**中文版：** 见对应中文技能。
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

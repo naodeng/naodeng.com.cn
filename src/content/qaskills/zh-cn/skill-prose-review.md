@@ -6,7 +6,7 @@
 - slug: skill-prose-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/skill-engineering/skill-prose-review/SKILL.md
 - description: Use this skill when reviewing Skill、Prompt、元数据或 QA 文档的契约完整性；触发词包括 Skill 文案审查、Prompt review、契约检查。
 

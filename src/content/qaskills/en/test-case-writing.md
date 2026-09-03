@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-case-writing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-case-writing/SKILL.md
 - description: Use this skill when you need to create high-quality test cases with normal, exception, and boundary scenarios; triggers include test case writing and test design.
 
@@ -70,7 +70,7 @@ description: Use this skill when you need to create high-quality test cases with
 
 # Test Case Writing (English)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

@@ -6,7 +6,7 @@
 - slug: ux-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/ux-quality-perspective/SKILL.md
 - description: Use this skill when a quality stage needs a UX perspective on information architecture, interaction states, consistency, responsive behavior, or accessibility; triggers include UX 质量视角、用户体验评审 and UX quality perspective.
 

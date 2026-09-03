@@ -6,7 +6,7 @@ Author: naodeng
 - slug: performance-test-gatling
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-test-gatling/SKILL.md
 - description: Use this skill when you need Gatling performance scope, simulations, or runnable entry points; triggers include Gatling, Gatling simulations, and Gatling performance testing.
 
@@ -65,7 +65,7 @@ description: Use this skill when you need Gatling performance scope, simulations
 
 # performance-test-gatling (EN)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-strategy-plus
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-strategy-plus/SKILL.md
 - description: Use this skill when you need a structured test strategy from requirement, analysis, tech, and plan docs; triggers include test strategy plus and advanced test strategy.
 
@@ -69,7 +69,7 @@ description: Use this skill when you need a structured test strategy from requir
 
 # test-strategy-plus (EN)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

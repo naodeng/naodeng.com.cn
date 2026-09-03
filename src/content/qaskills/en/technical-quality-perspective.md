@@ -6,16 +6,16 @@ Author: naodeng
 - slug: technical-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/technical-quality-perspective/SKILL.md
-- description: Use this skill when a technical quality perspective is needed for requirements, strategy, code, test cases, or reports; triggers include 技术质量视角, technical quality review, architecture review, and code review.
+- description: Use this skill when a technical quality perspective is needed for requirements, strategy, code, test cases, or reports; triggers include technical quality review, architecture review, and code review.
 
 ## Raw SKILL.md
 
 ```markdown
 ---
 name: technical-quality-perspective
-description: Use this skill when a technical quality perspective is needed for requirements, strategy, code, test cases, or reports; triggers include 技术质量视角, technical quality review, architecture review, and code review.
+description: Use this skill when a technical quality perspective is needed for requirements, strategy, code, test cases, or reports; triggers include technical quality review, architecture review, and code review.
 ---
 
 # Technical quality perspective

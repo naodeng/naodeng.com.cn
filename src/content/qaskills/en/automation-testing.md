@@ -6,7 +6,7 @@ Author: naodeng
 - slug: automation-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/automation-testing/SKILL.md
 - description: Use this skill when you need to design automation testing approaches using patterns like POM, data-driven testing, or BDD; triggers include automation testing and test automation strategy.
 
@@ -64,7 +64,7 @@ description: Use this skill when you need to design automation testing approache
 
 # Automation Testing (English)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: performance-test-k6
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-02
+- syncedAt: 2026-09-03
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/performance-test-k6/SKILL.md
 - description: Use this skill when you need k6 load/stress/spike/soak scope, scripts, or runnable entry points; triggers include k6, k6 scripts, and k6 performance testing.
 
@@ -65,7 +65,7 @@ description: Use this skill when you need k6 load/stress/spike/soak scope, scrip
 
 # performance-test-k6 (EN)
 
-**中文版：** See the corresponding Chinese skill.
+**Chinese version：** See the corresponding Chinese skill.
 
 ## When to Use
 
