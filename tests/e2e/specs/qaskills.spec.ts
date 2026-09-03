@@ -65,7 +65,7 @@ test.describe("QA Skills", () => {
     });
   }
 
-  test("zh-cn index shows search and code-review card metadata", async ({ page }) => {
+  test("zh-cn index shows search and a concise code-review card", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/");
     await expect(page.locator("#qaskills-search")).toBeVisible();
     await expect(page.locator("#qaskills-empty")).toBeHidden();
@@ -74,7 +74,9 @@ test.describe("QA Skills", () => {
     await expect(category.locator(".category-toggle")).toHaveAttribute("aria-expanded", "false");
     await category.locator(".category-toggle").click();
     await expect(card).toBeVisible();
-    await expect(card.locator(".tag-evals")).toBeVisible();
+    await expect(card.locator("h5")).toBeVisible();
+    await expect(card.locator(".card-intro")).toBeVisible();
+    await expect(card.locator(".card-meta")).toHaveCount(0);
   });
 
   test("catalog cards show their README-aligned summary", async ({ page }) => {
@@ -90,7 +92,7 @@ test.describe("QA Skills", () => {
     const typeFilter = page.locator('[data-filter="type"]');
     const secondary = page.locator("#qaskills-secondary-filters");
 
-    await expect(secondary).toBeHidden();
+    await expect(secondary).toBeVisible();
     await typeFilter.click();
     await expect(secondary).toBeVisible();
 
@@ -101,7 +103,56 @@ test.describe("QA Skills", () => {
     await expect(page.locator('a.card[data-slug="api-testing"]')).toBeHidden();
 
     await page.locator("#qaskills-clear").click();
-    await expect(secondary).toBeHidden();
+    await expect(secondary).toBeVisible();
+  });
+
+  test("catalog supports plus and lifecycle shortcuts as combinable discovery filters", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/");
+
+    await page.locator('[data-filter="plus"]').click();
+    await expect(page.locator('a.card[data-slug="test-strategy-plus"]')).toBeVisible();
+    await expect(page.locator('a.card[data-slug="api-testing"]')).toBeHidden();
+
+    await page.locator("#qaskills-clear").click();
+    await page.locator('[data-lifecycle-filter="requirements-strategy"]').click();
+    await expect(page.locator('a.card[data-slug="requirements-analysis"]')).toBeVisible();
+    await expect(page.locator('a.card[data-slug="api-testing"]')).toBeHidden();
+  });
+
+  test("catalog cards keep the browsing view to title and concise description", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/");
+    const card = page.locator('a.card[data-slug="requirements-analysis"]').first();
+    await page.locator(".category-block").filter({ has: card }).locator(".category-toggle").click();
+
+    await expect(card).toBeVisible();
+    await expect(card.locator("h5")).toBeVisible();
+    await expect(card.locator(".card-intro")).toBeVisible();
+    await expect(card.locator(".card-meta")).toHaveCount(0);
+    await expect(card.locator(".tag")).toHaveCount(0);
+  });
+
+  test("lifecycle filters stay compact and horizontally browsable on mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/zh-cn/qaskills/#qaskills-search");
+    const buttons = page.locator(".chips-lifecycle [data-lifecycle-filter]");
+    const heights = await buttons.evaluateAll((elements) =>
+      elements.map((element) => Math.round(element.getBoundingClientRect().height))
+    );
+
+    expect(heights.length).toBeGreaterThan(0);
+    expect(Math.max(...heights)).toBeLessThanOrEqual(48);
+  });
+
+  test("secondary category filters do not collapse into vertical text on mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/zh-cn/qaskills/#qaskills-search");
+    const buttons = page.locator(".chips-secondary [data-secondary-filter]");
+    const heights = await buttons.evaluateAll((elements) =>
+      elements.map((element) => Math.round(element.getBoundingClientRect().height))
+    );
+
+    expect(heights.length).toBeGreaterThan(0);
+    expect(Math.max(...heights)).toBeLessThanOrEqual(48);
   });
 
   test("detail shows Guide section, raw SKILL tab, and install panel", async ({ page }) => {

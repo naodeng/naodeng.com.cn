@@ -23,6 +23,12 @@ const lifecycleStages = resolveLifecyclePath(
   allSkills,
   lang === "zh-cn" ? "zh-cn" : "en"
 );
+const lifecycleStagesBySlug = new Map<string, string[]>();
+lifecycleStages.forEach((stage) => {
+  stage.nodes.forEach((node) => {
+    lifecycleStagesBySlug.set(node.slug, [...(lifecycleStagesBySlug.get(node.slug) || []), stage.key]);
+  });
+});
 const totalCount = allSkills.length;
 const evalsCount = allSkills.filter((s) => s.hasEvals).length;
 const latestSync = allSkills.map((s) => s.updatedAt).filter(Boolean).sort().at(-1) || "-";
@@ -51,7 +57,11 @@ const text = lang === "zh-cn" ? {
   filterAll: "全部",
   filterType: "测试类型",
   filterWorkflow: "工作流",
+  filterPlus: "Plus",
   filterEvals: "有 Evals",
+  lifecycleFilters: "按测试阶段筛选",
+  activeFilters: "已选条件",
+  removeFilter: "移除",
   viewDetail: "查看详情",
   empty: "没有匹配的技能。试试 discover-testing，或清空筛选。",
   clearFilters: "清空筛选",
@@ -89,7 +99,11 @@ const text = lang === "zh-cn" ? {
   filterAll: "All",
   filterType: "Types",
   filterWorkflow: "Workflows",
+  filterPlus: "Plus",
   filterEvals: "Has Evals",
+  lifecycleFilters: "Filter by testing stage",
+  activeFilters: "Active filters",
+  removeFilter: "Remove",
   viewDetail: "View Details",
   empty: "No matching skills. Try discover-testing, or clear filters.",
   clearFilters: "Clear filters",
@@ -110,12 +124,6 @@ const text = lang === "zh-cn" ? {
     { title: "Prepare input", desc: "Provide scope, environment, timeline, and output format." },
     { title: "Install & run", desc: "Open the detail page, install, then trigger with the example." },
   ],
-};
-
-const categoryLabel = (category: string) => {
-  if (category === "workflow") return text.catWorkflow;
-  if (category === "plus") return text.catPlus;
-  return text.catType;
 };
 
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
@@ -193,9 +201,20 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
         <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">{text.filterAll}</button>
         <button type="button" class="chip" data-filter="type" aria-pressed="false">{text.filterType}</button>
         <button type="button" class="chip" data-filter="workflow" aria-pressed="false">{text.filterWorkflow}</button>
+        <button type="button" class="chip" data-filter="plus" aria-pressed="false">{text.filterPlus}</button>
         {showEvalsFilter && (
           <button type="button" class="chip" data-evals-toggle="1" aria-pressed="false">{text.filterEvals}</button>
         )}
+      </div>
+      <div class="filter-row">
+        <p class="filter-label">{text.lifecycleFilters}</p>
+        <div class="chips chips-lifecycle" role="group" aria-label={text.lifecycleFilters}>
+          {lifecycleStages.map((stage) => (
+            <button type="button" class="chip chip-secondary" data-lifecycle-filter={stage.key} aria-pressed="false">
+              {stage.title} <span aria-hidden="true">{stage.nodes.length}</span>
+            </button>
+          ))}
+        </div>
       </div>
       <div id="qaskills-secondary-filters" class="chips chips-secondary" role="group" aria-label={lang === "zh-cn" ? "二级分类" : "Subcategories"} hidden>
         {grouped.catalogGroups.flatMap((catalogGroup) =>
@@ -206,6 +225,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
           })
         )}
       </div>
+      <div id="qaskills-active-filters" class="active-filters" aria-label={text.activeFilters} data-remove-label={text.removeFilter} hidden></div>
       <p id="qaskills-results" class="results-count" aria-live="polite" data-label={text.resultsLabel}>{totalCount} {text.resultsLabel}</p>
       <button type="button" id="qaskills-clear" class="btn btn-outline" hidden>{text.clearFilters}</button>
     </section>
@@ -238,21 +258,16 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
               <a
                 class="card"
                 data-slug={skill.slug}
-                data-category={skill.category}
+                data-category={skill.slug.endsWith("-plus") ? "plus" : skill.category}
                 data-secondary-category=""
                 data-evals={skill.hasEvals ? "true" : "false"}
+                data-lifecycle-stages={(lifecycleStagesBySlug.get(skill.slug) || []).join(" ")}
                 data-title={displayNameOf(skill)}
                 data-intro={skill.intro}
                 href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
               >
                 <h5>{displayNameOf(skill)}</h5>
-                <p class="card-meta">
-                  <span class="tag">{categoryLabel(skill.category)}</span>
-                  <span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span>
-                  <span class="tag">{skill.updatedAt || "-"}</span>
-                </p>
                 <p class="card-intro">{skill.intro}</p>
-                <span>{text.viewDetail} →</span>
               </a>
             </li>
               ))}
@@ -264,11 +279,9 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
               <ul class="cards" role="list">
                 {subgroup.skills.map((skill) => (
                   <li>
-                    <a class="card" data-slug={skill.slug} data-category={skill.category} data-secondary-category={`${catalogGroup.key}--${subgroup.key}`} data-evals={skill.hasEvals ? "true" : "false"} data-title={displayNameOf(skill)} data-intro={skill.intro} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+                    <a class="card" data-slug={skill.slug} data-category={skill.slug.endsWith("-plus") ? "plus" : skill.category} data-secondary-category={`${catalogGroup.key}--${subgroup.key}`} data-evals={skill.hasEvals ? "true" : "false"} data-lifecycle-stages={(lifecycleStagesBySlug.get(skill.slug) || []).join(" ")} data-title={displayNameOf(skill)} data-intro={skill.intro} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
                       <h5>{displayNameOf(skill)}</h5>
-                      <p class="card-meta"><span class="tag">{categoryLabel(skill.category)}</span><span class="tag tag-evals">{skill.hasEvals ? text.hasEvals : text.noEvals}</span><span class="tag">{skill.updatedAt || "-"}</span></p>
                       <p class="card-intro">{skill.intro}</p>
-                      <span>{text.viewDetail} →</span>
                     </a>
                   </li>
                 ))}
@@ -340,9 +353,11 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     const empty = document.getElementById("qaskills-empty");
     const results = document.getElementById("qaskills-results");
     const clearBtn = document.getElementById("qaskills-clear");
+    const activeFilters = document.getElementById("qaskills-active-filters");
     const chips = Array.from(document.querySelectorAll(".chip[data-filter], .chip[data-evals-toggle]"));
     const secondaryFilters = document.getElementById("qaskills-secondary-filters");
     const secondaryChips = Array.from(document.querySelectorAll(".chip[data-secondary-filter]"));
+    const lifecycleChips = Array.from(document.querySelectorAll(".chip[data-lifecycle-filter]"));
     const cards = Array.from(document.querySelectorAll("a.card[data-slug]"));
     const blocks = Array.from(document.querySelectorAll(".category-block"));
     const categoryToggles = Array.from(document.querySelectorAll(".category-toggle"));
@@ -351,20 +366,45 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
 
     let category = "all";
     let secondaryCategory = "";
+    let lifecycleStage = "";
     let evalsOnly = false;
 
     // 与 src/utils/qaskillsFilter.ts 的 isQASkillSearchActive 保持等价
     // （is:inline 脚本无法 import 模块，两处需同步维护）
     const searchActive = () =>
-      (search.value || "").trim().length > 0 || category !== "all" || secondaryCategory !== "" || evalsOnly;
+      (search.value || "").trim().length > 0 || category !== "all" || secondaryCategory !== "" || lifecycleStage !== "" || evalsOnly;
 
     const updateSecondaryFilters = () => {
-      const visible = secondaryChips.filter((chip) => chip.getAttribute("data-parent-category") === category);
+      const visible = secondaryChips.filter((chip) => category === "all" || chip.getAttribute("data-parent-category") === category);
       secondaryFilters?.toggleAttribute("hidden", visible.length === 0);
       secondaryChips.forEach((chip) => chip.toggleAttribute("hidden", !visible.includes(chip)));
       if (!visible.some((chip) => chip.getAttribute("data-secondary-filter") === secondaryCategory)) {
         secondaryCategory = "";
       }
+      secondaryChips.forEach((chip) => {
+        const selected = chip.getAttribute("data-secondary-filter") === secondaryCategory;
+        chip.classList.toggle("is-active", selected);
+        chip.setAttribute("aria-pressed", String(selected));
+      });
+    };
+
+    const updateActiveFilters = () => {
+      if (!activeFilters) return;
+      const active = [
+        ...Array.from(document.querySelectorAll(".chip.is-active[data-filter], .chip.is-active[data-evals-toggle], .chip.is-active[data-secondary-filter], .chip.is-active[data-lifecycle-filter]")),
+      ].filter((chip) => chip.getAttribute("data-filter") !== "all");
+      activeFilters.replaceChildren(
+        ...active.map((chip) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "active-filter";
+          button.textContent = `${(chip.textContent || "").trim()} ×`;
+          button.setAttribute("aria-label", `${activeFilters.dataset.removeLabel || "Remove"} ${(chip.textContent || "").trim()} filter`);
+          button.addEventListener("click", () => chip.click());
+          return button;
+        })
+      );
+      activeFilters.toggleAttribute("hidden", active.length === 0);
     };
 
     const apply = () => {
@@ -373,6 +413,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       cards.forEach((card) => {
         const cat = card.getAttribute("data-category") || "type";
         const subcategory = card.getAttribute("data-secondary-category") || "";
+        const stages = (card.getAttribute("data-lifecycle-stages") || "").split(" ");
         const hasEvals = card.getAttribute("data-evals") === "true";
         const haystack = [
           card.getAttribute("data-slug") || "",
@@ -383,9 +424,10 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
           .toLowerCase();
         const okCat = category === "all" || cat === category;
         const okSecondary = !secondaryCategory || subcategory === secondaryCategory;
+        const okLifecycle = !lifecycleStage || stages.includes(lifecycleStage);
         const okEvals = !evalsOnly || hasEvals;
         const okQuery = !q || haystack.includes(q);
-        const show = okCat && okSecondary && okEvals && okQuery;
+        const show = okCat && okSecondary && okLifecycle && okEvals && okQuery;
         card.closest("li")?.toggleAttribute("hidden", !show);
         if (show) visible += 1;
       });
@@ -417,6 +459,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
 
       empty.hidden = visible > 0;
       clearBtn?.toggleAttribute("hidden", !searchActive());
+      updateActiveFilters();
       if (results) results.textContent = `${visible} ${results.dataset.label || ""}`.trim();
     };
 
@@ -440,10 +483,23 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
 
     secondaryChips.forEach((chip) => {
       chip.addEventListener("click", () => {
-        secondaryCategory = chip.getAttribute("data-secondary-filter") || "";
+        const selected = chip.getAttribute("data-secondary-filter") || "";
+        secondaryCategory = secondaryCategory === selected ? "" : selected;
         secondaryChips.forEach((item) => {
-          item.classList.toggle("is-active", item === chip);
-          item.setAttribute("aria-pressed", String(item === chip));
+          item.classList.toggle("is-active", item.getAttribute("data-secondary-filter") === secondaryCategory);
+          item.setAttribute("aria-pressed", String(item.getAttribute("data-secondary-filter") === secondaryCategory));
+        });
+        apply();
+      });
+    });
+
+    lifecycleChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const selected = chip.getAttribute("data-lifecycle-filter") || "";
+        lifecycleStage = lifecycleStage === selected ? "" : selected;
+        lifecycleChips.forEach((item) => {
+          item.classList.toggle("is-active", item.getAttribute("data-lifecycle-filter") === lifecycleStage);
+          item.setAttribute("aria-pressed", String(item.getAttribute("data-lifecycle-filter") === lifecycleStage));
         });
         apply();
       });
@@ -463,6 +519,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       search.value = "";
       category = "all";
       secondaryCategory = "";
+      lifecycleStage = "";
       evalsOnly = false;
       document.querySelectorAll(".chip[data-filter]").forEach((c) => {
         c.classList.toggle("is-active", c.getAttribute("data-filter") === "all");
@@ -471,6 +528,10 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       const evalsChip = document.querySelector(".chip[data-evals-toggle]");
       evalsChip?.classList.remove("is-active");
       evalsChip?.setAttribute("aria-pressed", "false");
+      lifecycleChips.forEach((chip) => {
+        chip.classList.remove("is-active");
+        chip.setAttribute("aria-pressed", "false");
+      });
       updateSecondaryFilters();
       apply();
       search?.focus();
@@ -575,6 +636,54 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+  .filter-row {
+    display: grid;
+    gap: 0.45rem;
+    padding-top: 0.15rem;
+  }
+  .filter-label {
+    margin: 0;
+    font-weight: 800;
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+  }
+  .chips-lifecycle .chip span {
+    margin-left: 0.2rem;
+    opacity: 0.72;
+    font-size: 0.78em;
+  }
+  @media (max-width: 720px) {
+    .chips-lifecycle {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .chips-lifecycle .chip {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+    .chips-secondary .chip {
+      white-space: nowrap;
+    }
+  }
+  .active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .active-filter {
+    appearance: none;
+    border: 1px solid rgba(79, 70, 229, 0.28);
+    border-radius: 999px;
+    padding: 0.3rem 0.65rem;
+    background: rgba(79, 70, 229, 0.08);
+    color: var(--color-theme);
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 800;
+    cursor: pointer;
   }
   .chip {
     appearance: none;
@@ -700,28 +809,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     box-shadow: var(--shadow-md);
   }
   .card h5 { margin: 0 0 0.4rem; font-size: 1rem; }
-  .card-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin: 0 0 0.5rem;
-  }
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.15rem 0.45rem;
-    border-radius: 999px;
-    border: 1px solid rgba(79, 70, 229, 0.16);
-    background: rgba(79, 70, 229, 0.08);
-    color: var(--color-theme);
-  }
-  .card-summary {
-    display: grid;
-    gap: 0.3rem;
-  }
-  .card-summary p {
+  .card-intro {
     margin: 0;
     font-size: 0.86rem;
     line-height: 1.5;
@@ -730,18 +818,6 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-  .card-summary .summary-label {
-    color: var(--color-theme);
-    font-weight: 800;
-    margin-right: 0.35rem;
-  }
-  .card > span {
-    display: inline-block;
-    margin-top: 0.7rem;
-    color: var(--color-theme);
-    font-weight: 700;
-    font-size: 0.9rem;
   }
   .lifecycle-intro {
     margin: 0 0 0.85rem;
