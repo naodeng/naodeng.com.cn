@@ -9,7 +9,11 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-AI 测试真正耗时间的部分，往往不是跑一轮检查，而是把需求、日志、接口和历史问题整理成团队能执行、能复核的判断。把重复的分析方式沉淀成 Skill，测试同学少做一遍无效整理，结论也更容易交给下一位同事。分布式链路分析 把这套方式用在具体场景里：AI 测试真正耗时间的部分，往往不是跑一轮检查，而是把需求、日志、接口和历史问题整理成团队能执行、能复核的判断。本文从 AI 测试的协作效率切入，说明它该在什么时候用、输入什么、会产出什么。
+分布式请求跨过多个服务后，单一日志很难解释延迟来自哪里。Trace 的价值不在瀑布图本身，而在于它能还原一次用户请求的因果路径。
+
+The tracing skill reads spans, propagation, and timing as an end-to-end story, locating where latency or failure is introduced rather than merely observed.
+
+本文通过具体场景说明如何收集、连接和解释证据，让结论能够服务下一步的工程或业务决定。
 
 ## 分布式链路分析 Skill 用来做什么
 

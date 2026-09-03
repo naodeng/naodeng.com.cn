@@ -9,7 +9,11 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-AI 测试真正耗时间的部分，往往不是跑一轮检查，而是把需求、日志、接口和历史问题整理成团队能执行、能复核的判断。把重复的分析方式沉淀成 Skill，测试同学少做一遍无效整理，结论也更容易交给下一位同事。AI 功能测试 把这套方式用在具体场景里：AI 测试真正耗时间的部分，往往不是跑一轮检查，而是把需求、日志、接口和历史问题整理成团队能执行、能复核的判断。本文从 AI 测试的协作效率切入，说明它该在什么时候用、输入什么、会产出什么。
+带有模型能力的功能，失败时不一定表现为报错：它可能给出自信但错误的建议、忽略上下文，或在边界输入上改变行为。测试必须围绕用户后果定义。
+
+The AI-feature skill combines deterministic product checks with evaluated model behavior, making uncertainty visible instead of hiding it behind a pass flag.
+
+本文给出可落地的检查框架和案例，帮助你在不确定性存在时仍能做出有证据的判断。
 
 ## AI 功能测试 Skill 用来做什么
 

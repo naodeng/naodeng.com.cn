@@ -9,7 +9,11 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-AI 测试真正耗时间的部分，往往不是跑一轮检查，而是把需求、日志、接口和历史问题整理成团队能执行、能复核的判断。把重复的分析方式沉淀成 Skill，测试同学少做一遍无效整理，结论也更容易交给下一位同事。PR 测试影响分析 把这套方式用在具体场景里：AI 测试真正耗时间的部分，往往不是跑一轮检查，而是把需求、日志、接口和历史问题整理成团队能执行、能复核的判断。本文从 AI 测试的协作效率切入，说明它该在什么时候用、输入什么、会产出什么。
+PR 里变动的文件不等于受影响的功能。只按目录挑回归用例，往往会漏掉调用链另一端的行为。
+
+The PR impact skill reads the diff as a behavior change, then connects it to contracts, dependencies, and the smallest credible test set.
+
+本文将用明确的输入、边界和输出组织实践过程，帮助你把结论交给下一个需要据此行动的人。
 
 ## PR 测试影响分析 Skill 用来做什么
 

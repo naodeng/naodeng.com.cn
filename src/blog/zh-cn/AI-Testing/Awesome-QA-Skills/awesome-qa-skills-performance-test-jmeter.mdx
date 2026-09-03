@@ -9,7 +9,11 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-先把任务摆出来：用 JMeter 建模结账负载，设置延迟与错误率阈值，并关联服务端指标。JMeter 性能测试 提供的是一条可复核的处理路径。
+JMeter 计划经常因为线程组、CSV 数据和监听器设置不透明而难以复现。能打开一个 jmx 文件，并不等于别人能相信它的负载含义。
+
+The JMeter skill makes workload setup, test data, assertions, and result capture explicit so a shared plan survives handoff and CI execution.
+
+本文通过具体场景说明如何收集、连接和解释证据，让结论能够服务下一步的工程或业务决定。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 JMeter 性能测试。
 

@@ -9,7 +9,11 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-先把任务摆出来：用 Cypress 自动化结账主路径，处理稳定定位、等待、数据隔离和失败证据。Cypress UI 自动化测试 提供的是一条可复核的处理路径。
+前端改动后只点击一次主流程，很难发现接口桩、重试行为和浏览器状态共同造成的回归。Cypress 用得好，应该让失败停在用户可见的路径上。
+
+The Cypress skill organizes network control, user flows, and assertion timing so the suite exposes product regressions instead of test-run noise.
+
+本文会用可复现的场景说明如何落地这套方法：先界定风险与证据，再组织检查与结果，让后续行动有据可循。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 Cypress UI 自动化测试。
 

@@ -9,7 +9,11 @@ categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
 
-AI testing rarely loses time on one check alone. The slower part is turning requirements, logs, interfaces, and prior defects into a judgment the team can execute and review. A reusable Skill keeps that repeated analysis in one place, so testers spend less time rebuilding the same context and handoffs carry their evidence forward. Test Data Generation applies that approach to a concrete task: AI testing rarely loses time on one check alone. This guide starts with AI-testing workflow efficiency, then shows when to use the Skill, what to provide, and what it should produce.
+A test-data set that can log in usually cannot cover the business risk that matters. Insufficient balance, cross-tenant access, expired coupons, and boundary dates need different data relationships. Hand-made data is hard to reproduce and can bring real sensitive information into a test environment.
+
+The Test Data Generation Skill works backward from rules and scenarios: which preconditions serve normal, boundary, error, and permission states, and which fields need masking or isolation. Its purpose is not to fill tables; it is to make data support a judgment and remain safe to reuse in the next run.
+
+This guide shows how to generate data that covers critical business states while retaining the source, purpose, and safety boundary for every data set.
 
 ## Test Data Generation Skill: what it is for
 
