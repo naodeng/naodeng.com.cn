@@ -9,7 +9,11 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-团队真正需要的往往是一份能交接的结果。围绕“为 Node.js API 生成 Supertest 测试套件，隔离应用实例、数据和认证状态”，我们看看 Supertest 接口自动化 会要求哪些输入和证据。
+Node 服务的接口测试如果只断言状态码，很容易遗漏中间件、错误体和异步状态带来的真实行为变化。Supertest 应围绕 HTTP 边界而不是内部实现组织。
+
+Supertest API 测试 Skill 从客户端视角覆盖路由、鉴权、载荷校验和错误结构，而不耦合框架内部。
+
+本文将用明确的输入、边界和输出组织实践过程，帮助你把结论交给下一个需要据此行动的人。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 Supertest 接口自动化。
 

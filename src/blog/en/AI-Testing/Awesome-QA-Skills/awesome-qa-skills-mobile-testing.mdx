@@ -9,7 +9,11 @@ categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
 
-This guide uses one concrete task to explain Mobile Testing: Verify mobile sign-in under poor networks, permission changes, backgrounding, and system interruptions.
+A sign-in screen loading over Wi-Fi does not prove that mobile sign-in is reliable. A request can duplicate when a weak network recovers, a permission can be revoked in the background, and an interrupted app can return to a state that looks normal but no longer works. Those are the changes users actually meet.
+
+The Mobile Testing Skill puts network conditions, permissions, and app lifecycle on the same sign-in journey. It establishes the device, OS, and account conditions first, then observes state after backgrounding, retries, and recovery. The goal is to test a real mobile environment, not repeat a happy path in a stable emulator.
+
+Using mobile sign-in, this guide shows how to cover weak networks, permission changes, and system interruptions while retaining reviewable device details, actions, and results for every scenario.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Mobile Testing.
 

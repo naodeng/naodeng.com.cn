@@ -9,7 +9,11 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-为订单 API 设计认证、契约、幂等性、错误处理和状态转换测试。这类任务看着熟，真正动手时却很容易漏掉证据和边界。API 测试 Skill 就从这里介入。
+接口返回 200 并不代表契约正确：字段含义、错误分支、鉴权和幂等行为都可能让调用方在上线后才受伤。API 测试应从消费者真正依赖的承诺出发。
+
+API 测试 Skill 将请求、响应、异常路径和数据归属看作完整契约，而不是状态码断言的集合。
+
+本文会用可复现的场景说明如何落地这套方法：先界定风险与证据，再组织检查与结果，让后续行动有据可循。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 API 测试。
 
