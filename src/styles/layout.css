@@ -8,21 +8,26 @@
   animation: page-fade-in 420ms ease-out both;
 }
 
-/* 主页面内容区宽度调到 1400px */
+/* 主页面内容区采用 Astro 风格的 1280px 最大宽度 */
 .l-main.l-content {
-  max-inline-size: 1400px;
+  max-inline-size: var(--layout-max);
 }
 
-/* 全站主内容区宽度（1000px） */
+/* 全站主内容区使用统一宽度与响应式 gutter */
 .l-content {
-  max-inline-size: 1000px;
-  padding-inline: var(--sp-m);
+  inline-size: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter))));
+  max-inline-size: var(--layout-max);
+  padding-inline: 0;
   margin-inline: auto;
 }
 
 /* 博文页侧栏：正文 1000px，侧栏区靠右，总宽约 1280px */
 .l-content--with-sidebar {
-  max-inline-size: 1280px;
+  max-inline-size: var(--sidebar-layout-max);
+}
+
+@media (min-width: 768px) {
+  :root { --layout-gutter: 32px; }
 }
 
 .l-footer {

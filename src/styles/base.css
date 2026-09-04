@@ -1,36 +1,40 @@
 :root {
   color-scheme: light;
-  --color-theme: #4f46e5;
-  --color-theme-focus: #4338ca;
-  --color-theme-on-dark: #a5b4fc;
-  --color-theme-light: #818cf8;
+  --layout-max: 1280px;
+  --layout-gutter: 24px;
+  --reading-max: 768px;
+  --sidebar-layout-max: 1280px;
+  --header-height: 80px;
+  --color-theme: #2563eb;
+  --color-theme-focus: #1d4ed8;
+  --color-theme-on-dark: #78a9ff;
+  --color-theme-light: #60a5fa;
   --color-base: #f8fafc;
-  --color-canvas: #ffffff;
-  --color-main: #0f172a;
+  --color-canvas: #f8fafc;
+  --color-main: #172033;
   --color-surface: #ffffff;
-  --color-border: #e2e8f0;
+  --color-border: #dce2ea;
+  --color-code-surface: #f1f5f9;
   --color-caution: #be123c;
 
   --color-warn: #f59e0b;
   --color-text-primary: var(--color-main);
-  --color-text-secondary: #334155;
+  --color-text-secondary: #526071;
   --color-text-tertiary: #64748b;
   --color-surface-muted: #f1f5f9;
-  --color-surface-elevated: rgba(255, 255, 255, 0.86);
+  --color-surface-elevated: #ffffff;
   --color-border-strong: rgba(79, 70, 229, 0.16);
-  --color-glass-strong: rgba(255, 255, 255, 0.78);
-  --color-glass-medium: rgba(248, 249, 255, 0.58);
-  --color-glass-weak: rgba(244, 246, 255, 0.38);
-  --color-glass-solid: #ffffff;
-  --color-glass-border: rgba(79, 70, 229, 0.22);
-  --color-glass-highlight: rgba(255, 255, 255, 0.88);
-  --color-mist-primary: rgba(99, 102, 241, 0.23);
-  --color-mist-secondary: rgba(129, 140, 248, 0.18);
+  --color-glass-strong: var(--color-surface-elevated);
+  --color-glass-medium: var(--color-surface-elevated);
+  --color-glass-weak: var(--color-surface-muted);
+  --color-glass-solid: var(--color-surface-elevated);
+  --color-glass-border: var(--color-border);
+  --color-glass-highlight: transparent;
+  --color-mist-secondary: transparent;
   --color-theme-soft: color-mix(in srgb, var(--color-theme) 10%, white);
   --color-theme-soft-hover: color-mix(in srgb, var(--color-theme) 16%, white);
 
-  --gradient-hero: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  --gradient-theme: linear-gradient(135deg, var(--color-theme) 0%, var(--color-theme-light) 100%);
+  --gradient-theme: var(--color-theme);
 
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
   --shadow-md: 0 14px 35px rgba(15, 23, 42, 0.08);
@@ -48,7 +52,7 @@
   --text-display: 2.5rem;
 
   --font-sans: "Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: "Sora", "Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
 
   --sp-l: 64px;
   --sp-m: 32px;
@@ -90,13 +94,8 @@
   color: var(--color-main);
   background-color: var(--color-base);
   accent-color: var(--color-theme);
-  background-image:
-    radial-gradient(circle at 8% 12%, var(--color-mist-primary), transparent 36rem),
-    radial-gradient(circle at 92% 38%, var(--color-mist-secondary), transparent 34rem),
-    radial-gradient(circle at 42% 88%, color-mix(in srgb, var(--color-mist-primary) 58%, transparent), transparent 38rem);
-  background-attachment: fixed;
 
-  line-height: 1.47;
+  line-height: 1.65;
   font-weight: 400;
   font-size: var(--text-base);
   font-family: var(--font-sans);
@@ -104,29 +103,31 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-base: #0b1020;
-  --color-canvas: #11182a;
-  --color-main: #eef0ff;
-  --color-surface: #151d32;
-  --color-border: rgba(190, 193, 255, 0.18);
-  --color-text-primary: #eef0ff;
-  --color-text-secondary: #c0c4df;
-  --color-text-tertiary: #8d94b7;
-  --color-surface-muted: #11182a;
-  --color-surface-elevated: rgba(21, 29, 50, 0.86);
+  --color-theme: #78a9ff;
+  --color-theme-focus: #a5c8ff;
+  --color-theme-light: #a5c8ff;
+  --color-base: #111827;
+  --color-canvas: #18212f;
+  --color-main: #e6eaf0;
+  --color-surface: #18212f;
+  --color-border: #2c394b;
+  --color-code-surface: #111827;
+  --color-text-primary: #e6eaf0;
+  --color-text-secondary: #aab4c3;
+  --color-text-tertiary: #8490a1;
+  --color-surface-muted: #111827;
+  --color-surface-elevated: #18212f;
   --color-border-strong: rgba(164, 160, 255, 0.34);
-  --color-glass-strong: rgba(18, 25, 44, 0.84);
-  --color-glass-medium: rgba(18, 25, 44, 0.7);
-  --color-glass-weak: rgba(18, 25, 44, 0.52);
-  --color-glass-solid: #151d32;
-  --color-glass-border: rgba(190, 193, 255, 0.24);
-  --color-glass-highlight: rgba(255, 255, 255, 0.1);
-  --color-mist-primary: rgba(99, 102, 241, 0.2);
-  --color-mist-secondary: rgba(67, 56, 202, 0.16);
-  --color-theme-on-dark: #d8d5ff;
+  --color-glass-strong: var(--color-surface-elevated);
+  --color-glass-medium: var(--color-surface-elevated);
+  --color-glass-weak: var(--color-surface-muted);
+  --color-glass-solid: var(--color-surface-elevated);
+  --color-glass-border: var(--color-border);
+  --color-glass-highlight: transparent;
+  --color-mist-secondary: transparent;
+  --color-theme-on-dark: #78a9ff;
   --color-theme-soft: color-mix(in srgb, var(--color-theme) 18%, #11182a);
   --color-theme-soft-hover: color-mix(in srgb, var(--color-theme) 28%, #11182a);
-  --gradient-hero: linear-gradient(180deg, #11182a 0%, #0b1020 100%);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.24);
   --shadow-md: 0 14px 35px rgba(0, 0, 0, 0.28);
   --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.38);

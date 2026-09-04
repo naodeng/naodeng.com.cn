@@ -143,6 +143,8 @@ export const getStaticPaths = () =>
 <style>
   .blog-container {
     margin-block-start: var(--sp-l);
+    max-inline-size: var(--layout-max);
+    margin-inline: auto;
   }
 
   .featured-post {
@@ -154,7 +156,8 @@ export const getStaticPaths = () =>
     border: 1px solid color-mix(in srgb, var(--color-theme) 26%, var(--color-border));
     border-inline-start: 4px solid var(--color-theme);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-surface));
+    background: var(--color-surface);
+    box-shadow: none;
   }
 
   .featured-post__meta {

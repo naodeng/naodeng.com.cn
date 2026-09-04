@@ -97,13 +97,13 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     grid-template-columns: 220px 1fr;
     gap: var(--sp-l);
     align-items: start;
-    max-inline-size: 1400px;
+    max-inline-size: var(--layout-max);
     margin-inline: auto;
     padding-inline: var(--sp-m);
   }
   .l-docs[data-has-toc="true"] {
     grid-template-columns: 220px minmax(0, 1fr) 200px;
-    max-inline-size: 1400px;
+    max-inline-size: var(--layout-max);
   }
   .docs-sidebar-wrap {
     position: sticky;
@@ -116,13 +116,13 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   }
   .docs-content {
     min-inline-size: 0;
-    max-inline-size: 900px;
+    max-inline-size: var(--reading-max);
     padding: clamp(1.25rem, 3vw, 2.5rem);
-    border: 1px solid var(--color-glass-border);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    background: var(--color-glass-weak);
-    box-shadow: var(--shadow-glass-sm);
-    backdrop-filter: blur(10px) saturate(112%);
+    background: var(--color-surface-elevated);
+    box-shadow: none;
+    backdrop-filter: none;
   }
   .l-docs[data-has-toc="true"] .docs-content {
     max-inline-size: none;
@@ -137,9 +137,6 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   }
   @media (max-width: 959px) {
     .docs-sidebar-ad { display: none; }
-  }
-  @supports not (backdrop-filter: blur(1px)) {
-    .docs-content { background: var(--color-glass-solid); }
   }
   .docs-content :global(h1) {
     font-size: 2rem;
