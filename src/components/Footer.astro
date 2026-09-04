@@ -638,7 +638,7 @@ const footerGroups = [
   }
 
   /* Astro Editorial Footer: subscription, navigation, social, legal. */
-  .l-footer { padding-block: 56px 32px; background: var(--color-surface-muted); border-top: 1px solid var(--color-border); }
+  .l-footer { padding-block: 56px 32px; background: var(--color-surface-muted); border-top: 1px solid var(--color-border); overflow-x: clip; }
   .footer-container { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.6fr); align-items: start; gap: 2rem 4rem; inline-size: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter)))); max-inline-size: none; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
   .footer-subscribe { display: flex; gap: 1rem; align-items: center; color: var(--color-text-secondary); }
   .footer-subscribe img { width: 112px; height: 112px; padding: 5px; background: white; border: 1px solid var(--color-border); border-radius: 8px; }
