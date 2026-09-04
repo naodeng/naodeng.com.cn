@@ -180,6 +180,7 @@ const homePageSchema = {
 <style>
   /* 首页挣脱 .l-content 窄栏，色带全宽铺开 */
   :global(main.l-main:has(.home-page)) {
+    inline-size: 100%;
     max-inline-size: none;
     padding-inline: 0;
     margin-block-start: 0;
@@ -192,7 +193,7 @@ const homePageSchema = {
   }
 
   :global(.home-inner) {
-    width: min(980px, calc(100% - 48px));
+    width: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter))));
     margin-inline: auto;
     text-align: center;
   }
@@ -275,12 +276,12 @@ const homePageSchema = {
     }
 
     :global(.home-inner) {
-      width: min(980px, calc(100% - 32px));
+      width: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter))));
     }
   }
 
   /* Zenix-inspired product surface for the bilingual knowledge platform. */
-  .home-page { background: transparent; }
+  .home-page { background: var(--color-base); }
 
   :global(.home-band) {
     position: relative;
@@ -298,14 +299,14 @@ const homePageSchema = {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: var(--color-glass-weak);
+    background: var(--color-surface-muted);
     pointer-events: none;
   }
 
   :global(.home-inner) {
     position: relative;
     z-index: 1;
-    width: min(1120px, calc(100% - 48px));
+    width: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter))));
   }
 
   .home-hero {
@@ -334,7 +335,7 @@ const homePageSchema = {
     height: 5px;
     margin: 22px auto 0;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--color-theme), var(--color-theme-light));
+    background: var(--color-theme);
   }
 
   .home-hero__subtitle {
@@ -359,17 +360,17 @@ const homePageSchema = {
   }
 
   .pill-cta--primary {
-    background: linear-gradient(135deg, var(--color-theme), color-mix(in srgb, var(--color-theme) 76%, var(--color-theme-light)));
+    background: var(--color-theme);
     color: white;
     border: 0;
     box-shadow: 0 4px 8px rgba(79, 70, 229, 0.2);
   }
 
   .pill-cta--ghost {
-    background: var(--color-glass-medium);
+    background: var(--color-surface);
     color: var(--color-theme);
     border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
-    backdrop-filter: blur(16px);
+    backdrop-filter: none;
   }
 
   .pill-cta:hover,
@@ -504,7 +505,7 @@ const homePageSchema = {
     }
 
     :global(.home-inner) {
-      width: min(980px, calc(100% - 32px));
+      width: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter))));
     }
 
     :global(.home-band__title) {

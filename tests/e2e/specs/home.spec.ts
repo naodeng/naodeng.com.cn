@@ -120,7 +120,8 @@ test.describe("home information architecture", () => {
       };
     });
 
-    expect(layout.width).toBeLessThanOrEqual(1120);
+    // Astro editorial layout: 1440px viewport uses the 1280px desktop content cap.
+    expect(layout.width).toBe(1280);
     expect(Math.abs(layout.left - layout.right)).toBeLessThanOrEqual(2);
     // 区块标题归位 DESIGN.md 阶梯：headline = 1.3 × 根字号
     const titleRatio = parseFloat(layout.titleSize) / parseFloat(layout.rootSize);

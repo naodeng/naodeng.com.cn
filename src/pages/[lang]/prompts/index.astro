@@ -305,10 +305,7 @@ const itemListSchema = {
     padding: 2rem;
     border: 1px solid rgba(148, 163, 184, 0.22);
     border-radius: var(--radius-lg);
-    background:
-      radial-gradient(circle at 18% 12%, rgba(79, 70, 229, 0.16), transparent 34%),
-      radial-gradient(circle at 92% 18%, rgba(67, 56, 202, 0.16), transparent 30%),
-      var(--color-surface-elevated);
+    background: var(--color-surface-elevated);
     box-shadow: var(--shadow-md);
     overflow: hidden;
   }
@@ -364,7 +361,7 @@ const itemListSchema = {
   }
 
   .hero-btn--primary {
-    background: var(--gradient-theme);
+    background: var(--color-theme);
     color: #fff;
     border: 1px solid transparent;
     box-shadow: var(--shadow-product);
@@ -375,7 +372,7 @@ const itemListSchema = {
   }
 
   .hero-btn--outline {
-    background: var(--color-glass-weak);
+    background: var(--color-surface-muted);
     color: var(--color-text-primary);
     border: 1px solid rgba(148, 163, 184, 0.28);
   }
@@ -508,7 +505,7 @@ const itemListSchema = {
     padding: 0.7rem 0.85rem;
     border: 1px solid var(--color-glass-border);
     border-radius: var(--radius-md);
-    background: var(--color-glass-medium);
+    background: var(--color-surface-elevated);
     color: var(--color-text-tertiary);
   }
 
@@ -615,14 +612,14 @@ const itemListSchema = {
     gap: 0.5rem;
     padding: var(--sp-m);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--color-glass-border);
-    background: var(--color-glass-medium);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-elevated);
     text-decoration: none;
     color: inherit;
     height: 100%;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    box-shadow: var(--shadow-glass-sm), inset 0 1px 0 var(--color-glass-highlight);
-    backdrop-filter: blur(14px) saturate(116%);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: none;
   }
 
   .prompt-card:hover,
@@ -687,7 +684,7 @@ const itemListSchema = {
     padding: var(--sp-m);
     border-radius: var(--radius-lg);
     border: 1px solid rgba(148, 163, 184, 0.2);
-    background: var(--color-glass-medium);
+    background: var(--color-surface-elevated);
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
@@ -702,7 +699,7 @@ const itemListSchema = {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background: var(--gradient-theme);
+    background: var(--color-theme);
     color: #fff;
     font-weight: 800;
     font-size: 0.95rem;
@@ -747,7 +744,7 @@ const itemListSchema = {
     padding: var(--sp-m);
     border-radius: var(--radius-lg);
     border: 1px solid rgba(148, 163, 184, 0.2);
-    background: var(--color-glass-weak);
+    background: var(--color-surface-muted);
   }
 
   /* each cell = node + optional arrow, laid out as a row pair */
@@ -763,7 +760,7 @@ const itemListSchema = {
     padding: var(--sp-s) var(--sp-m);
     border-radius: var(--radius-md);
     border: 1px solid rgba(148, 163, 184, 0.2);
-    background: var(--color-glass-medium);
+    background: var(--color-surface-elevated);
     text-decoration: none;
     color: inherit;
     transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;

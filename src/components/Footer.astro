@@ -106,6 +106,17 @@ const footerGroups = [
 
 <footer class="l-footer">
   <div class="footer-container l-content">
+    {locale === "zh-cn" && (
+      <section class="footer-subscribe" aria-labelledby="footer-subscribe-title">
+        <img src="/brand/software-testing-students-wechat-qr.jpg" alt="软件测试同学微信公众号二维码" width="112" height="112" loading="lazy" />
+        <div>
+          <p class="footer-subscribe__eyebrow">WECHAT OFFICIAL ACCOUNT</p>
+          <h2 id="footer-subscribe-title">关注软件测试同学</h2>
+          <p>扫码获取软件测试与 AI 测试的最新内容。</p>
+          <a href={getRelativeLocaleUrl(locale, "/rss.xml")}>{t.rss}</a>
+        </div>
+      </section>
+    )}
     <!-- 社交与语言切换区域 -->
     <div class="social-links">
       {socialLinks.map(link => (
@@ -624,5 +635,26 @@ const footerGroups = [
       gap: 1.4rem 1rem;
       text-align: start;
     }
+  }
+
+  /* Astro Editorial Footer: subscription, navigation, social, legal. */
+  .l-footer { padding-block: 56px 32px; background: var(--color-surface-muted); border-top: 1px solid var(--color-border); overflow-x: clip; }
+  .footer-container { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.6fr); align-items: start; gap: 2rem 4rem; inline-size: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter)))); max-inline-size: none; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
+  .footer-subscribe { display: flex; gap: 1rem; align-items: center; color: var(--color-text-secondary); }
+  .footer-subscribe img { width: 112px; height: 112px; padding: 5px; background: white; border: 1px solid var(--color-border); border-radius: 8px; }
+  .footer-subscribe__eyebrow { margin: 0 0 .35rem; font-size: .7rem; letter-spacing: .08em; color: var(--color-text-tertiary); }
+  .footer-subscribe h2 { margin: 0; font-size: 1rem; color: var(--color-text-primary); }
+  .footer-subscribe p { margin: .35rem 0; font-size: var(--text-sm); }
+  .footer-subscribe a { color: var(--color-theme); font-size: var(--text-sm); }
+  .footer-nav { grid-column: 2; grid-row: 1; width: 100%; }
+  .footer-container:not(:has(.footer-subscribe)) .footer-nav { grid-column: 1 / -1; }
+  .social-links { position: static; transform: none; justify-content: center; width: 100%; grid-column: 1 / -1; grid-row: 2; padding: 1.5rem 0 .25rem; border-top: 1px solid var(--color-border); }
+  .social-icon, .lang-toggle { width: 38px; height: 38px; background: transparent; border-color: transparent; box-shadow: none; border-radius: var(--radius-sm); }
+  .social-icon:hover, .social-icon:focus-visible { background: var(--color-theme-soft); border-color: transparent; transform: none; }
+  .footer-info { grid-column: 1 / -1; grid-row: 3; width: 100%; max-inline-size: none; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+  @media (max-width: 760px) {
+    .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-nav { grid-column: 1; grid-row: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .social-links, .footer-info { grid-column: 1; grid-row: auto; }
   }
 </style>

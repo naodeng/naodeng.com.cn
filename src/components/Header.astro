@@ -1505,4 +1505,16 @@ const mobilePriorityItems = [
       backdrop-filter: blur(4px);
     }
   }
+
+  /* Astro Editorial override: neutral, content-first navigation. */
+  .l-header { min-height: var(--header-height); background: color-mix(in srgb, var(--color-surface) 96%, transparent); border-bottom: 1px solid var(--color-border); box-shadow: none; backdrop-filter: blur(8px); }
+  .header-shell { min-height: var(--header-height); inline-size: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter)))); max-inline-size: none; padding-inline: 0; }
+  .site-nav > ul { background: transparent; border: 0; box-shadow: none; }
+  .site-nav > ul > li > a, .nav-group-trigger { border-radius: var(--radius-sm); color: var(--color-text-secondary); }
+  .site-nav > ul > li > a:hover, .site-nav > ul > li > a.active, .nav-group-trigger:hover, .nav-group-trigger.active { color: var(--color-theme); background: color-mix(in srgb, var(--color-theme) 8%, var(--color-surface)); }
+  .site-nav > ul > li > a.active::after { background: var(--color-theme); height: 2px; }
+  .nav-submenu { background: var(--color-surface); border-color: var(--color-border); box-shadow: var(--shadow-sm); }
+  .btn-icon, .nav-tool :global(.locale-trigger) { border-color: var(--color-border); background: transparent; box-shadow: none; }
+  @media (width < 834px) { .l-header, .header-shell { min-height: 60px; } .site-nav > ul { background: var(--color-surface); border: 1px solid var(--color-border); } }
+  @media (width < 480px) { .header-wechat-entry { display: none; } }
 </style>
