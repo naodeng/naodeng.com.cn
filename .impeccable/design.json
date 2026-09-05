@@ -1,163 +1,75 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T11:53:48Z",
-  "title": "Design System: Nao's Blog — Zenix",
+  "generatedAt": "2026-09-05T01:54:33.564Z",
+  "title": "Design System: Astro Editorial",
   "extensions": {
-    "colorMeta": {
-      "indigo": { "role": "primary", "displayName": "Zenix Indigo", "canonical": "#4f46e5", "tonalRamp": ["#0a0836", "#151070", "#2018aa", "#2a1fe0", "#665ee8", "#a19df1", "#ccc9f7", "#eeedfc"] },
-      "indigo-deep": { "role": "primary", "displayName": "Deep Indigo", "canonical": "#4338ca", "tonalRamp": ["#100d30", "#201b65", "#312999", "#4136c9", "#766ed8", "#aba6e7", "#d1cff2", "#f0effb"] },
-      "indigo-light": { "role": "primary", "displayName": "Light Indigo", "canonical": "#818cf8", "tonalRamp": ["#03083a", "#071179", "#0a1ab8", "#0d23f2", "#5160f5", "#959ef9", "#c5cafc", "#ecedfe"] },
-      "indigo-on-dark": { "role": "primary", "displayName": "Indigo On Dark", "canonical": "#a5b4fc", "tonalRamp": ["#040a2e", "#091864", "#0d2799", "#1235cc", "#4d62d9", "#8895e8", "#c2c8f3", "#eceefb"] },
-      "indigo-soft": { "role": "primary", "displayName": "Indigo Soft", "canonical": "color-mix(in srgb, #4f46e5 10%, white)", "tonalRamp": ["#ecebfc", "#e5e3fb", "#dddbfa", "#d6d3f9", "#cecbf8", "#c7c3f7", "#bfbbf6", "#b8b3f5"] },
-      "canvas": { "role": "neutral", "displayName": "Cool Canvas", "canonical": "#f8fafc", "tonalRamp": ["#10192d", "#22335e", "#334e8f", "#4367bc", "#7891cf", "#acbce1", "#d2daef", "#f0f3fa"] },
-      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#ffffff", "tonalRamp": ["#0f172a", "#28334a", "#41506b", "#5b6d8c", "#8996ad", "#b6c0ce", "#d8dde5", "#f8fafc"] },
-      "surface-elevated": { "role": "neutral", "displayName": "Surface Elevated", "canonical": "rgba(255, 255, 255, 0.86)", "tonalRamp": ["#10192d", "#22335e", "#334e8f", "#4367bc", "#7891cf", "#acbce1", "#d2daef", "#f0f3fa"] },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0f172a", "tonalRamp": ["#0a0f1a", "#161f35", "#22304f", "#2d406a", "#64718f", "#9ba4b8", "#c9cdd8", "#eef0f3"] },
-      "slate": { "role": "neutral", "displayName": "Slate", "canonical": "#334155", "tonalRamp": ["#171d26", "#303d50", "#495d79", "#607a9f", "#8c9fba", "#b9c4d5", "#d9dfe8", "#f2f4f7"] },
-      "slate-soft": { "role": "neutral", "displayName": "Slate Soft", "canonical": "#64748b", "tonalRamp": ["#1a1e24", "#353e4a", "#515e71", "#6b7c94", "#94a1b2", "#bec5d0", "#dbe0e5", "#f3f5f6"] },
-      "surface-muted": { "role": "neutral", "displayName": "Surface Muted", "canonical": "#f1f5f9", "tonalRamp": ["#121f2b", "#264059", "#3a6188", "#4c80b3", "#7ea3c8", "#b0c7dd", "#d4e0ed", "#f1f5f9"] },
-      "border": { "role": "neutral", "displayName": "Border", "canonical": "#e2e8f0", "tonalRamp": ["#151d28", "#2b3d54", "#425c80", "#577aa8", "#869fc0", "#b5c4d9", "#d7dfea", "#f2f4f8"] },
-      "border-strong": { "role": "neutral", "displayName": "Border Strong", "canonical": "rgba(79, 70, 229, 0.16)", "tonalRamp": ["#ecebfa", "#e3e1f8", "#dad7f5", "#d1cdf3", "#c8c3f0", "#bfbaee", "#b6b0eb", "#ada6e9"] },
-      "caution": { "role": "semantic", "displayName": "Caution", "canonical": "#be123c", "tonalRamp": ["#2c0710", "#5c0e1f", "#8c152e", "#b81c3e", "#cd5d76", "#e19eae", "#efd0d7", "#f9eef1"] },
-      "warn": { "role": "semantic", "displayName": "Warn", "canonical": "#f59e0b", "tonalRamp": ["#2c1d02", "#5c3d05", "#8c5c07", "#b87b09", "#cd9c4c", "#e1bd8f", "#efdcc8", "#f9f1e6"] }
-    },
-    "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "首页 hero 与超大标题，Sora 800，2.5rem。" },
-      "headline": { "displayName": "Headline", "purpose": "区块标题、卡片标题；h1–h4 统一 Sora，~1.3rem。" },
-      "title": { "displayName": "Title", "purpose": "小节标题、强调数字，1.25rem。" },
-      "body": { "displayName": "Body", "purpose": "正文与阅读内容，Noto Sans 400，1.0625rem，最长 65–75ch。" },
-      "label": { "displayName": "Label", "purpose": "导航、页脚、元信息、徽章，Sora 700，0.875rem / 0.75rem。" }
-    },
     "shadows": [
-      { "name": "sm", "value": "0 1px 2px rgba(15, 23, 42, 0.06)", "purpose": "药丸控件、社交图标、卡片静止态。" },
-      { "name": "md", "value": "0 14px 35px rgba(15, 23, 42, 0.08)", "purpose": "常规卡片、玻璃卡、卡片 hover 态。" },
-      { "name": "lg", "value": "0 24px 70px rgba(15, 23, 42, 0.12)", "purpose": "大面板、下拉菜单、玻璃面板。" },
-      { "name": "product", "value": "0 18px 48px rgba(79, 70, 229, 0.16)", "purpose": "indigo 色调的产品光晕，用于需要强调的悬浮元素。" }
+      {
+        "name": "sm",
+        "value": "0 1px 2px rgba(15, 23, 42, 0.06)",
+        "purpose": "轻量表面"
+      }
     ],
     "motion": [
-      { "name": "ease-base", "value": "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "默认状态过渡（--transition-base）。" },
-      { "name": "ease-fast", "value": "160ms ease", "purpose": "hover / focus 微过渡（--transition-fast：链接、按钮、chip、输入框）。" },
-      { "name": "card-hover", "value": "220ms ease", "purpose": "卡片上浮过渡（首页任务卡 / 能力卡 / 文章卡 / 探索卡，transform + border-color + box-shadow）。" }
+      {
+        "name": "hover",
+        "value": "translateY(-2px)",
+        "purpose": "卡片位移上限"
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "480px" },
-      { "name": "md", "value": "600px" },
-      { "name": "lg", "value": "834px" }
+      {
+        "name": "gutter",
+        "value": "768px"
+      },
+      {
+        "name": "footer",
+        "value": "760px"
+      },
+      {
+        "name": "navigation",
+        "value": "834px"
+      }
     ]
   },
   "components": [
     {
-      "name": "Primary Button",
-      "kind": "button",
-      "refersTo": "button-pill",
-      "description": "药丸形主 CTA，白底 + indigo 文字 + indigo hairline 描边 + 淡阴影。",
-      "html": "<button class=\"ds-btn ds-btn-primary\"><span>探索知识库</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"M13 6l6 6-6 6\"/></svg></button>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:14px;border:1px solid transparent;cursor:pointer;transition:background 160ms ease,color 160ms ease,border-color 160ms ease,transform 160ms ease}.ds-btn svg{width:16px;height:16px;flex-shrink:0}.ds-btn-primary{min-height:44px;padding:0 1rem;border-radius:9999px;background:var(--color-surface,#ffffff);color:var(--color-theme,#4f46e5);border-color:var(--color-border-strong,rgba(79,70,229,0.16));box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06))}.ds-btn-primary:hover,.ds-btn-primary:focus-visible{background:var(--color-theme-soft-hover,#e3e1fb);border-color:var(--color-theme,#4f46e5)}.ds-btn-primary:active{transform:scale(0.95)}"
+      "name": "Task card",
+      "kind": "card",
+      "description": "Extracted from src/components/home/HomeTaskNavigator.astro; preview copy only, production links unchanged.",
+      "html": "<article class=\"task-card\">Explore testing skills</article>",
+      "css": ".task-card {\n    position: relative;\n    display:flex;\n    flex-direction:column;\n    min-height:0;\n    padding:1.15rem 1.2rem;\n    border:1px solid var(--color-border-strong);\n    border-radius:var(--radius-md);\n    background:var(--color-surface-elevated);\n    transition: transform 220ms cubic-bezier(.22,1,.36,1), border-color 220ms ease;\n    overflow:hidden;\n  }"
     },
     {
-      "name": "Hero CTA",
-      "kind": "button",
-      "refersTo": "pill-cta--primary",
-      "description": "首页 hero 主 CTA：indigo 渐变底 + 白字 + indigo 产品光晕，hover 上浮 2px。",
-      "html": "<a class=\"ds-cta ds-cta-hero\" href=\"#\">从当前测试任务开始</a>",
-      "css": ".ds-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:9999px;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:800;text-decoration:none;box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06));transition:transform 220ms ease,border-color 220ms ease}.ds-cta-hero{background:linear-gradient(135deg,var(--color-theme,#4f46e5),color-mix(in srgb,var(--color-theme,#4f46e5) 76%,var(--color-theme-light,#818cf8)));color:#fff;border:1px solid color-mix(in srgb,var(--color-theme,#4f46e5) 24%,transparent);box-shadow:0 18px 40px rgba(79,70,229,0.22)}.ds-cta-hero:hover,.ds-cta-hero:focus-visible{transform:translateY(-2px)}.ds-cta-hero:active{transform:scale(0.95)}"
-    },
-    {
-      "name": "Ghost Pill",
-      "kind": "button",
-      "refersTo": "pill-cta--ghost",
-      "description": "次级药丸 CTA：白玻璃底 + indigo 文字 + indigo hairline 描边 + 背景模糊。",
-      "html": "<a class=\"ds-ghost\" href=\"#\">浏览 QA Skills</a>",
-      "css": ".ds-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:9999px;background:rgba(255,255,255,0.76);color:var(--color-theme,#4f46e5);border:1px solid color-mix(in srgb,var(--color-theme,#4f46e5) 22%,transparent);backdrop-filter:blur(16px);font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:800;text-decoration:none;box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06));transition:transform 220ms ease,border-color 220ms ease}.ds-ghost:hover,.ds-ghost:focus-visible{transform:translateY(-2px);border-color:var(--color-theme,#4f46e5)}.ds-ghost:active{transform:scale(0.95)}"
-    },
-    {
-      "name": "Tag / Chip",
+      "name": "Task chip",
       "kind": "chip",
-      "refersTo": "chip",
-      "description": "药丸标签，indigo-soft 底 + indigo 文字 + indigo hairline 描边，最小高 44px。",
-      "html": "<a class=\"ds-chip\" href=\"#\">软件测试</a>",
-      "css": ".ds-chip{display:inline-flex;align-items:center;min-height:44px;padding:0.35rem 0.75rem;border-radius:9999px;border:1px solid var(--color-border-strong,rgba(79,70,229,0.16));background:var(--color-theme-soft,#edecfc);color:var(--color-theme,#4f46e5);font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:600;line-height:1.3;text-decoration:none;box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06));transition:background 160ms ease,border-color 160ms ease}.ds-chip:hover,.ds-chip:focus-visible{background:var(--color-theme-soft-hover,#e3e1fb);border-color:var(--color-theme,#4f46e5)}"
+      "description": "Extracted from src/components/home/HomeTaskNavigator.astro; preview copy only, production links unchanged.",
+      "html": "<span class=\"task-card__chip\">Testing</span>",
+      "css": ".task-card__chip {\n    display:inline-flex;\n    align-items:center;\n    padding:.18rem .55rem;\n    border-radius:var(--radius-xl);\n    background:var(--color-theme-soft);\n    color:var(--color-theme);\n    font-size:.7rem;\n    font-weight:800;\n    letter-spacing:.02em;\n    white-space:nowrap;\n  }"
     },
     {
-      "name": "Search Input",
-      "kind": "input",
-      "refersTo": "input",
-      "description": "白玻璃底 + indigo hairline 描边 + 中圆角；聚焦转 indigo 描边 + 外圈光环。",
-      "html": "<div class=\"ds-field\"><input class=\"ds-input\" type=\"search\" placeholder=\"搜索内容…\"/></div>",
-      "css": ".ds-field{position:relative}.ds-input{width:100%;min-height:44px;padding:0 1rem;border-radius:12px;border:1px solid var(--color-border-strong,rgba(79,70,229,0.16));background:var(--color-surface-elevated,rgba(255,255,255,0.86));color:var(--color-text-primary,#0f172a);font-family:\"Noto Sans\",\"Noto Sans SC\",ui-sans-serif,system-ui,sans-serif;font-size:16px;box-shadow:none;transition:border-color 160ms ease,box-shadow 160ms ease}.ds-input::placeholder{color:var(--color-text-tertiary,#64748b)}.ds-input:focus{outline:none;border-color:var(--color-theme,#4f46e5);box-shadow:0 0 0 3px color-mix(in srgb,var(--color-theme,#4f46e5) 18%,transparent)}"
-    },
-    {
-      "name": "Card",
+      "name": "Explore card",
       "kind": "card",
-      "refersTo": "card",
-      "description": "白玻璃卡：大圆角 + hairline 边框 + 淡阴影；hover 上浮 4px + indigo 边框。",
-      "html": "<a class=\"ds-card\" href=\"#\"><h3 class=\"ds-card-title\">测试百科</h3><p class=\"ds-card-desc\">从测试基础到专项测试的系统化知识，按主题持续积累与更新。</p></a>",
-      "css": ".ds-card{display:flex;flex-direction:column;gap:8px;min-height:190px;padding:24px;border-radius:18px;border:1px solid rgba(148,163,184,0.22);background:linear-gradient(180deg,rgba(255,255,255,0.92),rgba(248,250,252,0.82));box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06));color:inherit;text-decoration:none;transition:transform 220ms ease,border-color 220ms ease,box-shadow 220ms ease}.ds-card:hover,.ds-card:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--color-theme,#4f46e5) 32%,transparent);box-shadow:var(--shadow-md,0 14px 35px rgba(15,23,42,0.08))}.ds-card-title{margin:0;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:18px;font-weight:800;line-height:1.3;color:var(--color-main,#0f172a)}.ds-card-desc{margin:0;font-size:14px;line-height:1.45;color:var(--color-text-tertiary,#64748b)}"
+      "description": "Extracted from src/components/home/HomeExploreHub.astro; preview copy only, production links unchanged.",
+      "html": "<a class=\"home-card\" href=\"#preview\">Explore the knowledge base</a>",
+      "css": ".home-card {\n    position: relative;\n    overflow: hidden;\n    display: flex;\n    flex-direction: column;\n    gap: 0;\n    min-height: 0;\n    height: 100%;\n    padding: 22px 4px;\n    border: 0;\n    border-bottom: 1px solid var(--color-border);\n    border-radius: 0;\n    background: transparent;\n    color: inherit;\n    text-decoration: none;\n    transition:\n      transform 220ms ease,\n      color 220ms ease;\n  }"
     },
     {
-      "name": "Task Card",
+      "name": "Language badge",
+      "kind": "chip",
+      "description": "Extracted from src/components/Footer.astro; preview copy only, production links unchanged.",
+      "html": "<span class=\"lang-label\">EN</span>",
+      "css": ".lang-label {\n    position: absolute;\n    bottom: 10px;\n    font-size: var(--text-xs);\n    font-weight: 900;\n    padding: 2px 4px;\n    border-radius: var(--radius-sm);\n    line-height: 1;\n    background: var(--color-theme);\n    color: white;\n  }"
+    },
+    {
+      "name": "Subscription panel",
       "kind": "card",
-      "refersTo": "home-task-card",
-      "description": "首页任务卡签名组件：左侧 3px indigo 彩条 + 中圆角；单目标任务整卡可点，hover 上浮 + 彩条转纯 indigo。",
-      "html": "<a class=\"ds-task\" href=\"#\"><h3 class=\"ds-task-title\">分析需求</h3><p class=\"ds-task-desc\">识别信息缺口、业务规则和高风险测试场景。</p><span class=\"ds-task-row\"><span>需求分析</span><span>开始任务 →</span></span></a>",
-      "css": ".ds-task{display:flex;flex-direction:column;gap:4px;height:100%;padding:1rem 1.1rem;border-left:3px solid color-mix(in srgb,var(--color-theme,#4f46e5) 62%,transparent);border-radius:12px;background:rgba(255,255,255,0.82);box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06));color:inherit;text-decoration:none;transition:transform 220ms ease,border-color 220ms ease,box-shadow 220ms ease}.ds-task:hover,.ds-task:focus-visible{transform:translateY(-4px);border-left-color:var(--color-theme,#4f46e5);box-shadow:var(--shadow-md,0 14px 35px rgba(15,23,42,0.08))}.ds-task-title{margin:0;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:1rem;line-height:1.35;color:var(--color-main,#0f172a)}.ds-task-desc{margin:0;font-size:14px;line-height:1.5;color:var(--color-text-secondary,#334155)}.ds-task-row{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;color:var(--color-theme,#4f46e5);font-size:14px;font-weight:800}"
-    },
-    {
-      "name": "Explore Card",
-      "kind": "card",
-      "refersTo": "home-card",
-      "description": "首页探索卡：Material 图标圆底 + 标题 + 数量徽标（indigo-soft 药丸）；hover 上浮 + indigo 边框。",
-      "html": "<a class=\"ds-explore\" href=\"#\"><span class=\"ds-explore-icon\">menu_book</span><span class=\"ds-explore-top\"><h3 class=\"ds-explore-title\">测试百科</h3><span class=\"ds-explore-meta\">226 篇</span></span><p class=\"ds-explore-desc\">从测试基础到专项测试的系统化知识，按主题持续积累与更新。</p></a>",
-      "css": ".ds-explore{display:flex;flex-direction:column;min-height:190px;padding:24px;border-radius:18px;border:1px solid rgba(148,163,184,0.22);background:linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.88));box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06));color:inherit;text-decoration:none;transition:transform 220ms ease,border-color 220ms ease,box-shadow 220ms ease}.ds-explore:hover,.ds-explore:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--color-theme,#4f46e5) 32%,transparent);box-shadow:var(--shadow-md,0 14px 35px rgba(15,23,42,0.08))}.ds-explore-icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-bottom:14px;border-radius:50%;background:var(--color-theme-soft,#edecfc);color:var(--color-theme,#4f46e5);font-size:22px;box-shadow:var(--shadow-sm,0 1px 2px rgba(15,23,42,0.06))}.ds-explore-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.ds-explore-title{margin:0 0 8px;font-family:\"Sora\",\"Noto Sans\",ui-sans-serif,system-ui,sans-serif;font-size:18px;font-weight:800;line-height:1.3;color:var(--color-main,#0f172a)}.ds-explore-meta{flex:none;padding:0.25rem 0.6rem;border-radius:9999px;background:var(--color-theme-soft,#edecfc);color:var(--color-theme,#4f46e5);font-size:12px;font-weight:700;white-space:nowrap}.ds-explore-desc{margin:0;font-size:14px;line-height:1.45;color:var(--color-text-tertiary,#64748b)}"
-    },
-    {
-      "name": "Navigation Pill",
-      "kind": "nav",
-      "refersTo": "nav-item",
-      "description": "顶栏导航项：14px / 400 次级灰文字，hover 转不透明；active 带 2px indigo 下划线。",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item active\" href=\"#\">博客</a><a class=\"ds-nav-item\" href=\"#\">Wiki</a><a class=\"ds-nav-item\" href=\"#\">AI Wiki</a></nav>",
-      "css": ".ds-nav{display:flex;align-items:center;gap:0}.ds-nav-item{display:inline-flex;align-items:center;gap:0.2rem;min-height:60px;padding:0 0.95rem;position:relative;white-space:nowrap;text-decoration:none;font-size:14px;font-weight:400;letter-spacing:-0.16px;opacity:0.8;color:var(--color-main,#0f172a);transition:opacity 0.18s ease,background-color 0.18s ease}.ds-nav-item:hover,.ds-nav-item:focus-visible{opacity:1}.ds-nav-item:focus-visible{outline:2px solid color-mix(in srgb,white 70%,transparent);outline-offset:-2px}.ds-nav-item.active{opacity:1}.ds-nav-item.active::after{content:\"\";position:absolute;left:0.95rem;right:0.95rem;bottom:10px;height:2px;background:var(--color-theme,#4f46e5)}"
-    },
-    {
-      "name": "Glass Panel",
-      "kind": "custom",
-      "refersTo": "nav-submenu",
-      "description": "下拉玻璃面板：白玻璃 94% + blur 24px + 18px 圆角 + lg 阴影；条目 hover 转 indigo。",
-      "html": "<div class=\"ds-glass\"><a class=\"ds-glass-item\" href=\"#\"><span class=\"ds-glass-text\">测试百科</span></a><a class=\"ds-glass-item\" href=\"#\"><span class=\"ds-glass-text\">AI Wiki</span></a></div>",
-      "css": ".ds-glass{display:flex;flex-direction:column;padding:0.5rem;border-radius:18px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);border:1px solid var(--color-border,#e2e8f0);box-shadow:var(--shadow-lg,0 24px 70px rgba(15,23,42,0.12))}.ds-glass-item{display:flex;align-items:center;gap:0.5rem;padding:0.55rem 0.75rem;border-radius:12px;text-decoration:none;color:var(--color-text-secondary,#334155);font-size:14px;transition:background-color 160ms ease,color 160ms ease}.ds-glass-item:hover,.ds-glass-item:focus-visible{background:color-mix(in srgb,var(--color-theme,#4f46e5) 9%,transparent);color:var(--color-theme,#4f46e5)}"
+      "description": "Extracted from src/components/Footer.astro; preview copy only, production links unchanged.",
+      "html": "<section class=\"wechat-follow-card\">Official account subscription</section>",
+      "css": ".wechat-follow-card {\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 34px;\n    text-align: center;\n    background: var(--color-surface);\n  }"
     }
   ],
   "narrative": {
-    "northStar": "The Frosted Lab",
-    "overview": "Zenix 是一套为双语技术知识库打造的冷色 SaaS 设计体系：冷静、清晰、高效、工具感。它像一间磨砂玻璃隔出的实验室——白色磨砂玻璃顶栏与玻璃页脚界定出壳层，内部是接近无色的冷灰画布（#f8fafc）和一张淡淡的 indigo 细网格，所有注意力都留给内容本身。\n\n视觉权威在壳层（顶栏 / 页脚）与首页，内容页（博客 / Wiki / Guild / Docs 阅读页）保持克制、不卡片化，只继承 token。indigo（#4f46e5）是全站唯一的主色，承担链接、主 CTA、焦点环与强调的全部职责；其余都是 slate 中性灰。系统浅色唯一，无暗色模式。",
-    "keyCharacteristics": [
-      "indigo 单一主色 + slate 冷灰中性色，无第二个 accent",
-      "磨砂玻璃（backdrop-filter blur 22px）作为壳层标志材质",
-      "冷灰画布 + 42px indigo 细网格背景",
-      "四档圆角（8 / 12 / 18 / 药丸），交互元素一律药丸形",
-      "内容优先、低噪、克制；hairline 边框 + 克制阴影，不重阴影",
-      "已确认的视觉反例：苹果风（已废弃）、16px 点阵背景、emoji 当图标、重阴影、内容页卡片化"
-    ],
-    "rules": [
-      { "name": "The One Accent Rule", "body": "indigo 是唯一主色。禁止新增第二个 accent 色（原 teal `--color-accent` 已删除）；所有渐变一律 indigo 系（theme → theme-focus 或 theme → theme-light）。", "section": "colors" },
-      { "name": "The Flat-By-Default Rule", "body": "表面静止时是平的。阴影只响应状态（hover / 悬浮 / 焦点）与层级，且一律 slate 色相——禁用纯黑阴影。", "section": "elevation" },
-      { "name": "The Four-Radius Rule", "body": "新增界面不得出现 8/12/18/药丸 之外的散值，一律写 `var(--radius-*)`。", "section": "shapes" }
-    ],
-    "dos": [
-      "Do 使用四档圆角 `var(--radius-sm/md/lg/xl)`，交互元素一律药丸。",
-      "Do 用 indigo 单一主色承担强调；渐变只走 indigo 系。",
-      "Do 用 hairline 边框（1px，slate 22% / indigo 16%）区分表面，阴影保持克制（slate 色相）。",
-      "Do 图标统一 Material Icons Sharp（`<span class=\"material-icons-sharp\">` 连字），禁止 emoji 当图标。",
-      "Do 内容页（博客 / Wiki / Guild / Docs）保持克制排版，不卡片化，只继承 token。"
-    ],
-    "donts": [
-      "Don't 新增第二个 accent 色。",
-      "Don't 使用纯黑阴影（阴影一律 slate 色相）。",
-      "Don't 把背景改回 16px 点阵（42px indigo 网格有契约测试守护）。",
-      "Don't 在四档圆角之外散布新散值。",
-      "Don't 做暗色模式（浅色唯一，契约测试锁定）。",
-      "Don't 在英文 UI 与英文文案中用 em-dash / en-dash 作分隔符（用冒号、逗号或句号；中文正文「——」保留）。",
-      "Don't 在卡片上堆重阴影或夸张渐变。"
-    ]
+    "overview": "面向中英文软件开发者与测试者的技术知识库。沿用已批准的 Astro 编辑化方向：内容优先、低饱和中性表面、清楚的层级与克制的蓝色强调。"
   }
 }

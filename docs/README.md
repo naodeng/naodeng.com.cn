@@ -4,7 +4,7 @@
 
 ## 目录地图
 
-- `standards/`: 长期有效的规范（Wiki 格式、Zenix 设计语言、广告位清单）
+- `standards/`: 长期有效的规范（Wiki 格式、设计规范入口、广告位清单）
 - `architecture/`: 模板与架构约定（词条模板等）
 - `skills/`: 站点维护技能（Claude Skill 格式，含 OpenAI agent 配置）
   - `blog-series-drafting/`: 博客系列双语草稿生成
@@ -23,6 +23,8 @@
 | `temporary/seo/` | `scripts/seo-static-check.mjs` 的基线报告与模板 | 脚本自动生成，勿手工编辑 |
 
 ## 约定
+
+- 当前主题以根目录 [DESIGN.md](../DESIGN.md) 为准，机器可读设计同步到 [design.json](../.impeccable/design.json)。旧 Zenix 和 Diffuse Glass 文档只保留历史背景，不作为当前实现指令。
 
 - 新的长期文档放入 `docs/` 对应目录；规范类进 `standards/`，模板类进 `architecture/`。
 - 已完成的计划、规格、需求、设计、任务文档移入 `docs/archive/`，不再留在顶层目录。

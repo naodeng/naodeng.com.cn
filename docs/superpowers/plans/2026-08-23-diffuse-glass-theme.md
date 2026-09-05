@@ -1,5 +1,7 @@
 # Diffuse Glass Theme Implementation Plan
 
+> 历史计划，已被 [Astro Editorial](2026-09-04-astro-editorial-theme.md) 取代。以下步骤仅为历史记录，不应重新执行。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 将全站从已废止的 ASCII Glass 方向迁移为克制弥散玻璃主题，并完整支持 Light/Dark、双语、内容阅读和响应式布局。

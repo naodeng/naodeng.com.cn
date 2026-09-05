@@ -1,5 +1,7 @@
 # Diffuse Glass Theme Design
 
+> 历史规格，已被 [Astro Editorial](2026-09-04-astro-editorial-theme-design.md) 取代。以下保留原始决策记录，不再作为当前主题要求。
+
 ## 目标
 
 将 naodeng.com.cn 的全站视觉方向调整为“克制弥散玻璃”。玻璃承担空间层级和品牌识别，柔和色雾负责画布氛围；页面不再使用 ASCII 字符、字符纹理、终端模拟或代码图形作为视觉元素。

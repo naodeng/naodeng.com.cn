@@ -12,7 +12,13 @@
 
 ## Implementation status — 2026-09-04
 
-The editorial token system, shared navigation and Footer, home, blog, docs, Prompt, QA Skills, and Guild presentation surfaces have been implemented. Focused token tests, complete unit tests, static build, SEO checks, and diff validation have passed. Footer and blog editorial E2E contracts are included; their execution remains environment-dependent because the local Chromium launcher is permission-blocked.
+The editorial token system, shared navigation and Footer, home, blog, docs, Prompt, QA Skills, and Guild presentation surfaces were delivered in PR #112 (merged as `9bdb753d2`). The earlier local Chromium permission limitation is historical, not the current acceptance status.
+
+## Review closure — 2026-09-05
+
+The follow-up repairs synchronize DESIGN.md and .impeccable/design.json, retire the old theme guidance, cap QA Skills reading width at 768px, remove Footer gradient/blur remnants, and limit card hover lift to 2px. Verification results are recorded in [the review closure record](../../verification/2026-09-05-editorial-review.md).
+
+The checkboxes below preserve the original execution plan, not a current outstanding-task list. Historical failing-first runs and per-step commits were not independently recorded; they must not be retroactively marked as verified. Current acceptance is based on the implemented source and the explicit verification record above.
 
 ## Global Constraints
 
