@@ -1,4 +1,5 @@
 :root {
+  overflow-x: clip;
   color-scheme: light;
   --layout-max: 1280px;
   --layout-gutter: 24px;

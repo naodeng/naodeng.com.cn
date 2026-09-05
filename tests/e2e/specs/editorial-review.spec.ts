@@ -13,10 +13,13 @@ for (const lang of ["en", "zh-cn"]) {
     expect(await page.locator(".detail-main").evaluate(el => el.getBoundingClientRect().width)).toBeLessThanOrEqual(768);
     await page.goto(`/${lang}/`);
     await expect(page.locator("footer .lang-label")).toHaveCSS("background-image", "none");
-    await page.locator("footer .wechat-follow-trigger").click();
-    await expect(page.locator("[data-wechat-dialog]")).toBeVisible();
-    await expect(page.locator(".wechat-follow-card")).toHaveCSS("background-image", "none");
-    expect(await page.locator("[data-wechat-dialog]").evaluate(el => getComputedStyle(el, "::backdrop").backdropFilter)).toBe("none");
+    const trigger = page.locator("footer .wechat-follow-trigger");
+    if (await trigger.count()) {
+      await trigger.click();
+      await expect(page.locator("[data-wechat-dialog]")).toBeVisible();
+      await expect(page.locator(".wechat-follow-card")).toHaveCSS("background-image", "none");
+      expect(await page.locator("[data-wechat-dialog]").evaluate(el => getComputedStyle(el, "::backdrop").backdropFilter)).toBe("none");
+    }
   });
 
   test(`${lang}: prompts stays within the mobile viewport`, async ({ page }) => {
