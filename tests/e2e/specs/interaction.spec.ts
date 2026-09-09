@@ -1,74 +1,64 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("用户交互", () => {
+  const articlePaths = {
+    en: "/en/blog/ai-testing/introduction_of_awesome_qa_prompt/",
+    "zh-cn": "/zh-cn/blog/ai-testing/introduction_of_awesome_qa_prompt/",
+  } as const;
+
+  async function openArticle(
+    page: import("@playwright/test").Page,
+    baseURL: string | undefined,
+    locale: keyof typeof articlePaths,
+  ) {
+    await page.goto((baseURL || "") + articlePaths[locale], { waitUntil: "domcontentloaded" });
+    await expect(page.locator("article")).toBeVisible();
+  }
+
   test("en 首页：返回顶部按钮功能", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    await page.waitForTimeout(500);
     
     const backToTop = page.locator('button[aria-label*="top" i], [class*="back-to-top"], [class*="scroll-top"]').first();
-    if (await backToTop.isVisible({ timeout: 5000 })) {
-      await backToTop.click();
-      await page.waitForFunction(() => window.scrollY < 100, { timeout: 3000 }).catch(() => {});
-      
-      const scrollY = await page.evaluate(() => window.scrollY);
-      expect(scrollY).toBeLessThan(100);
-    }
+    await expect(backToTop).toBeVisible();
+    await backToTop.click();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(100);
   });
 
   test("zh-cn 首页：返回顶部按钮功能", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
     
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    await page.waitForTimeout(500);
     
     const backToTop = page.locator('button[aria-label*="顶部"], [class*="back-to-top"], [class*="scroll-top"]').first();
-    if (await backToTop.isVisible({ timeout: 5000 })) {
-      await backToTop.click();
-      await page.waitForFunction(() => window.scrollY < 100, { timeout: 3000 }).catch(() => {});
-      
-      const scrollY = await page.evaluate(() => window.scrollY);
-      expect(scrollY).toBeLessThan(100);
-    }
+    await expect(backToTop).toBeVisible();
+    await backToTop.click();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(100);
   });
 
   test("en 博客详情页：目录导航可点击", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
-    const firstPost = page.locator("main a[href*='/en/blog/']").first();
-    
-    if (await firstPost.isVisible({ timeout: 10000 })) {
-      const href = await firstPost.getAttribute("href");
-      await page.goto(new URL(href!, baseURL).href, { waitUntil: "domcontentloaded" });
-      
-      const toc = page.locator('[class*="toc"], [class*="table-of-contents"], aside nav').first();
-      if (await toc.isVisible({ timeout: 5000 })) {
-        const tocLink = toc.locator("a").first();
-        if (await tocLink.isVisible()) {
-          await tocLink.click();
-          await page.waitForTimeout(500);
-        }
-      }
-    }
+    await openArticle(page, baseURL, "en");
+    const tocLink = page.locator(".toc-sidebar .toc-list--desktop .toc-link").first();
+    await expect(tocLink).toBeVisible();
+    const href = await tocLink.getAttribute("href");
+    expect(href).toMatch(/^#.+$/);
+
+    await tocLink.click();
+    await expect.poll(() => page.evaluate(() => decodeURIComponent(window.location.hash))).toBe(href);
+    await expect(page.locator(href!)).toBeInViewport();
   });
 
   test("zh-cn 博客详情页：目录导航可点击", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
-    const firstPost = page.locator("main a[href*='/zh-cn/blog/']").first();
-    
-    if (await firstPost.isVisible({ timeout: 10000 })) {
-      const href = await firstPost.getAttribute("href");
-      await page.goto(new URL(href!, baseURL).href, { waitUntil: "domcontentloaded" });
-      
-      const toc = page.locator('[class*="toc"], [class*="table-of-contents"], aside nav').first();
-      if (await toc.isVisible({ timeout: 5000 })) {
-        const tocLink = toc.locator("a").first();
-        if (await tocLink.isVisible()) {
-          await tocLink.click();
-          await page.waitForTimeout(500);
-        }
-      }
-    }
+    await openArticle(page, baseURL, "zh-cn");
+    const tocLink = page.locator(".toc-sidebar .toc-list--desktop .toc-link").first();
+    await expect(tocLink).toBeVisible();
+    const href = await tocLink.getAttribute("href");
+    expect(href).toMatch(/^#.+$/);
+
+    await tocLink.click();
+    await expect.poll(() => page.evaluate(() => decodeURIComponent(window.location.hash))).toBe(href);
+    await expect(page.locator(href!)).toBeInViewport();
   });
 
   test("en 标签云：标签可点击", async ({ page, baseURL }) => {
@@ -97,43 +87,24 @@ test.describe("用户交互", () => {
     await expect(page.locator("main")).toBeVisible();
   });
 
-  test("en 博客详情页：代码块复制按钮", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
-    const firstPost = page.locator("main a[href*='/en/blog/']").first();
-    
-    if (await firstPost.isVisible({ timeout: 10000 })) {
-      const href = await firstPost.getAttribute("href");
-      await page.goto(new URL(href!, baseURL).href, { waitUntil: "domcontentloaded" });
-      
-      const codeBlock = page.locator("pre").first();
-      if (await codeBlock.isVisible({ timeout: 5000 })) {
-        const copyButton = page.locator('button[class*="copy"], button[aria-label*="copy" i]').first();
-        if (await copyButton.isVisible({ timeout: 2000 })) {
-          await copyButton.click();
-          await page.waitForTimeout(500);
-        }
-      }
-    }
-  });
+  for (const locale of ["en", "zh-cn"] as const) {
+    test(`${locale} 博客详情页：代码块复制后显示确认状态`, async ({ page, baseURL }) => {
+      await page.addInitScript(() => {
+        Object.defineProperty(navigator, "clipboard", {
+          configurable: true,
+          value: { writeText: () => Promise.resolve() },
+        });
+      });
 
-  test("zh-cn 博客详情页：代码块复制按钮", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
-    const firstPost = page.locator("main a[href*='/zh-cn/blog/']").first();
-    
-    if (await firstPost.isVisible({ timeout: 10000 })) {
-      const href = await firstPost.getAttribute("href");
-      await page.goto(new URL(href!, baseURL).href, { waitUntil: "domcontentloaded" });
-      
-      const codeBlock = page.locator("pre").first();
-      if (await codeBlock.isVisible({ timeout: 5000 })) {
-        const copyButton = page.locator('button[class*="copy"], button[aria-label*="复制"]').first();
-        if (await copyButton.isVisible({ timeout: 2000 })) {
-          await copyButton.click();
-          await page.waitForTimeout(500);
-        }
-      }
-    }
-  });
+      await openArticle(page, baseURL, locale);
+      const copyButton = page.locator(".code-copy-btn").first();
+      await expect(copyButton).toBeVisible();
+      await copyButton.hover();
+      await copyButton.click();
+      await expect(copyButton).toHaveText(locale === "en" ? "Copied!" : "已复制");
+      await expect(copyButton).toHaveClass(/copied/);
+    });
+  }
 
   test("en 社交分享按钮可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
