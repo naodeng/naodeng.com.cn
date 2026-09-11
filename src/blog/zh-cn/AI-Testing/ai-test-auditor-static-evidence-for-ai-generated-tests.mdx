@@ -1,0 +1,220 @@
+---
+title: "AI Test Auditor：别急着相信 AI 生成的测试，先检查它到底测了什么"
+description: "介绍 AI Test Auditor：一个本地优先的测试源码审计工具，用确定性静态证据发现 AI 生成测试中的虚假与薄弱信号。"
+date: 2026-09-11T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI 测试", "AI Native QA", "测试质量"]
+categories: ["AI 测试"]
+---
+
+AI 开始大量参与软件开发之后，测试代码变多了。让 Copilot、Claude Code、Codex 或其他 Coding Agent 补一批测试，已经是很普通的工作流。
+
+我自己用 AI 补测试时，真正开始在意的不是“它又写了多少条”，而是“它到底测了什么”。测试数量不是测试证据。下面这段代码可以执行、可以通过，CI 也会是绿色；它却没有验证任何业务行为：
+
+```ts
+test("should return user", () => {
+  const result = getUser();
+
+  expect(true).toBe(true);
+});
+```
+
+还有这种：
+
+```ts
+test("should create order", async () => {
+  await createOrder();
+});
+```
+
+名称完整，异步调用也完成了，唯独没有断言。把这类代码批量合入，团队得到的是一片绿色和一份很难察觉的虚假信心。
+
+[AI Test Auditor](https://github.com/AI-Native-QA-Lab/ai-test-auditor) 是我为这件事做的一层检查：在团队依赖一段测试之前，先从源码中寻找确定性的可疑证据。它不替人批准发布，也不装作理解所有业务。它先把那些明显没测什么的测试挑出来。
+
+> Do not trust AI-generated tests. Verify their static evidence.
+
+## 它审计什么，也刻意不审计什么
+
+AI Test Auditor 是一个面向 JavaScript / TypeScript 测试的本地优先源码审计工具，支持直接提取 Jest、Vitest 和 Playwright 的测试回调。它解析测试源码，通过 TypeScript AST 和确定性规则输出带位置的发现项与修复建议。
+
+它的链路很简单：
+
+```text
+测试源码 → AST → 测试用例提取 → 确定性规则 → Finding
+```
+
+它只读测试源码，结论来自可复查的 AST 规则。运行时行为、覆盖率、生产代码关联和业务正确性留给对应的证据层处理；这里不需要一个 LLM 给出看似精确、其实无法复查的分数。它只回答一个更窄、但可以重复的问题：
+
+> 从测试源码中，能否找到明确值得人工关注的低质量测试证据？
+
+因此它适合进入本地开发、PR 审查和 CI：输入留在本机，结论可复现，规则变化也能被审查。
+
+## 为什么 v1.0 不让 LLM 直接审查测试
+
+这是一个有意的设计选择。既然问题来自 AI 生成测试，为什么不再让一个 LLM 判断测试质量？因为有些问题根本不需要猜：
+
+```ts
+expect(1).toBe(1);
+expect(result).toBe(result);
+```
+
+这些模式可以从源码直接确认。把它们放进「源码 → Prompt → 模型 → 也许有问题」的链路，会额外引入模型、提示词、网络、成本和隐私依赖，也让 CI 的结论更难重复。
+
+项目因此选择 `Deterministic First`：先建立稳定的静态证据层；需要结合需求、生产代码、历史缺陷和业务语义的判断，留给后续可选能力和人工审查。AI 可以增强证据，不能悄悄改写已有的确定性结论。
+
+## FAKE、WEAK 与 UNASSESSED
+
+AI Test Auditor 不把测试粗暴分为“好”或“坏”。它区分三种状态。
+
+`FAKE` 是高置信度的确定性源码信号。例如没有断言、常量自己验证自己，或 `actual` 与 `expected` 的 AST 结构完全相同：
+
+```ts
+expect("success").toBe("success");
+expect(result).toEqual(result);
+```
+
+`WEAK` 是需要进一步审查的上下文，而不是自动判错。例如一条 API 测试只断言 `200`，或一条 E2E 测试使用固定等待。它们有时是合理的；把它们一律变成构建失败只会制造噪声。
+
+最值得坚持的是 `UNASSESSED`。未命中规则不等于测试很强，只表示当前静态规则没有发现确定性问题。像下面的断言也许完全正确，也许遗漏了重要业务状态——单凭这一行源码，工具不应该假装知道答案：
+
+```ts
+expect(order.status).toBe("PAID");
+```
+
+这比“质量 92 分”更诚实。没有发现问题与证明测试可靠，本来就是两件不同的事。
+
+## 能尽早发现哪些信号
+
+当前规则覆盖 Unit、API 与 E2E 测试中常见的可疑模式。比如单元测试没有任何 `expect(...)`、吞掉异常、只做 truthy 断言；API 测试只验证状态码；Playwright 测试只有操作没有可观察结果，或者使用 `waitForTimeout`。
+
+以 E2E 为例：
+
+```ts
+test("checkout", async ({ page }) => {
+  await page.goto("/checkout");
+  await page.click("#pay");
+});
+```
+
+页面点击发生过，不代表支付完成过。工具会把这类缺少有效断言的情况作为 `FAKE` 信号提出，留给团队核对真正应被用户观察到的结果。
+
+工具也不会把规则当成质量裁判。每条规则都只证明局部的静态模式，不能证明运行时质量、覆盖率、变异得分，更不能代替发布决策。
+
+### 几个有代表性的规则
+
+| 场景 | 例子 | 审计信号 |
+| --- | --- | --- |
+| Unit Test 没有断言 | 只调用 `createUser()` | `UT001` / `FAKE` |
+| 基本字面量自证 | `expect("ok").toBe("ok")` | `UT002` / `FAKE` |
+| 同一个表达式两边比较 | `expect(result).toEqual(result)` | `UT003` / `FAKE` |
+| 异常被吞掉 | `catch` 后只记录日志 | `UT008` / `FAKE` |
+| 唯一断言过弱 | `expect(result).toBeTruthy()` | `UT004` / `WEAK` |
+| API 只检查状态码 | `expect(response.status).toBe(200)` | `API001` / `WEAK` |
+| E2E 没有有效断言 | 只导航、输入、点击 | `E2E001` / `FAKE` |
+| 固定等待 | `page.waitForTimeout(3000)` | `E2E004` / `WEAK` |
+
+规则编号让审查对话有可追踪的起点，但它们不是业务结论。例如 API 只断言状态码时，团队仍应根据接口风险决定是否还要核对响应体、schema、业务状态、副作用、权限与错误契约。
+
+## 从本地检查开始
+
+项目需要 Node.js 20 或更高版本。源码方式可以这样运行：
+
+```bash
+npm install
+npm run build
+node dist/cli.js review ./tests --format json
+```
+
+安装后的命令是：
+
+```bash
+ata review ./tests
+```
+
+输出包含提取到的测试、发现项、分类、源码位置和修复建议。退出码也适合脚本化：`0` 表示没有发现确定性的 `FAKE`，`1` 表示至少发现一个 `FAKE`，`2` 表示命令、路径或输入错误。特别注意：退出 `0` 并不等于“测试很强”。
+
+真实项目里，我更推荐先聚焦当前改动：
+
+```bash
+node dist/cli.js review . \
+  --changed-since HEAD~1 \
+  --format json
+```
+
+这样可以把工作流放在 Agent 新增或修改测试之后、PR 审查之前：
+
+```text
+Coding Agent → 新增或修改测试 → 静态审计 → PR Review
+```
+
+它也能生成可离线打开的报告：
+
+```bash
+node dist/cli.js review ./tests \
+  --format html \
+  --locale zh-CN \
+  --output audit-zh.html
+```
+
+JSON 更适合 CI、仪表盘或其他 Agent 消费；HTML 则让团队可以直接筛选和阅读本地审计结果。
+
+## 门禁应由团队明确选择
+
+工具提供显式 opt-in 的策略门禁，但默认不会替团队做发布决定。一个常见的策略是只阻断 `FAKE`：
+
+```text
+FAKE → 阻断并修复或说明
+WEAK → 审查信号，不自动阻断
+```
+
+这条分界很实用。`expect(response.status).toBe(200)` 在某些用例中不充分，在另一些用例中却正是要验证的契约。把 `WEAK` 直接等同于失败，会让开发者学会忽略告警；把它保留为上下文，审查者才有空间回到业务风险做判断。
+
+策略、基线比较、变异证据和决策投影也各有边界：它们可以帮助选择和排序审查工作，不能篡改原始静态 finding、分类、退出语义，更不能把门禁通过包装成发布许可。
+
+## 它和通用静态分析有什么不同
+
+SonarQube 一类工具同样会分析代码，但通常聚焦 Bug、代码异味、安全、重复、复杂度和可维护性。AI Test Auditor 聚焦的是更窄的 `Test Source Trust`：这段测试本身是否制造了「已经覆盖」的假象。
+
+两者存在交集，各自回答不同问题。覆盖率和变异测试同样重要；一次 AST 扫描解决不了它们要证明的事，它们也不会替你指出一条测试是否只是摆了个姿势。
+
+## 它在 AI Native QA 里的位置
+
+AI Test Auditor 是一层静态证据。覆盖率、变异测试、运行时验证和人工审查都该在自己的位置上工作。
+
+更完整的质量链路可以是：
+
+```text
+需求 → Coding Agent → 生产代码与测试 → 静态审计
+   → 运行时测试 / 变异证据 / 语义审查 → 人工决策
+```
+
+每一层只能对自己的证据负责。静态审计发现“没有断言”；运行时验证回答“实际行为是否成立”；变异和语义分析补充另一类信息；最终由对风险负责的人做决定。
+
+当前 v1.0 是这条链路的稳定静态基线。路线图讨论的运行时、变异和 AI/LLM 方向仍是未来的可选能力，不应被理解为已经交付的功能。无论后续增加什么适配器，它们都应保持来源、结论和边界清晰。
+
+## 谁适合先试一轮
+
+- QA：批量定位值得进入人工审查的自动化测试。
+- 开发者：在提交前自检由 Agent 生成或修改的测试。
+- 技术负责人：避免测试数量增长掩盖测试证据下降。
+- Agent 构建者：把审计结果接入生成测试后的反馈循环。
+
+```text
+生成测试 → 执行测试 → 审计测试 → FAKE？
+                              ├─ 是：修复或重新生成
+                              └─ 否：进入人工审查与后续证据层
+```
+
+“否”依然是 `UNASSESSED`，不是自动放行。这个区别能避免一个工具承担它没有证据承担的责任。
+
+当测试可以被 Agent 一次生成几十条、几百条时，稀缺的不是测试代码，而是值得相信的测试证据。AI Test Auditor 从一个朴素的问题开始：先把看起来像测试、实际上没测什么的代码找出来。
+
+如果你的团队已经让 AI 参与测试生成，先拿一组 changed tests 跑一次审计。你不需要立刻重做 CI，也不用把每个 `WEAK` 当事故。先看它抓到了什么，再把输出带进 PR 审查。测试变多很容易；知道哪些测试值得信任，才是后面的工作。
+
+## 参考
+
+- [AI Test Auditor 项目](https://github.com/AI-Native-QA-Lab/ai-test-auditor)
+- [中文 README](https://github.com/AI-Native-QA-Lab/ai-test-auditor/blob/main/README_ZH.md)
+- [规则目录](https://github.com/AI-Native-QA-Lab/ai-test-auditor/blob/main/docs/zh/rules.md)
+- [架构说明](https://github.com/AI-Native-QA-Lab/ai-test-auditor/blob/main/docs/zh/architecture.md)
+- [路线图](https://github.com/AI-Native-QA-Lab/ai-test-auditor/blob/main/docs/zh/roadmap.md)

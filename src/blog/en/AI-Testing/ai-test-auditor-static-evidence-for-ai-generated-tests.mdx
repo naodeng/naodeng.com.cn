@@ -1,0 +1,219 @@
+---
+title: "AI Test Auditor: Inspect what AI-generated tests actually verify"
+description: "An introduction to AI Test Auditor, a local-first test-source auditor that finds deterministic signals of false confidence in AI-generated tests."
+date: 2026-09-11T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "AI Native QA", "Test Quality"]
+categories: ["AI Testing"]
+---
+
+AI is producing more test code. Asking Copilot, Claude Code, Codex, or another coding agent to fill in a batch of tests has become a normal development workflow.
+
+While using AI to add tests, I kept returning to one question: what does this test actually verify? Test count is not evidence. This test runs, passes, and can leave CI green. It still verifies no business behavior:
+
+```ts
+test("should return user", () => {
+  const result = getUser();
+
+  expect(true).toBe(true);
+});
+```
+
+So does this one:
+
+```ts
+test("should create order", async () => {
+  await createOrder();
+});
+```
+
+The name looks right. The asynchronous call completes. There is no assertion. Merge this pattern at scale and you get a lot of green alongside a kind of confidence that does not hold up.
+
+[AI Test Auditor](https://github.com/AI-Native-QA-Lab/ai-test-auditor) is the check I built for that moment. Before a team relies on a test, it looks for deterministic evidence in the source. It does not approve releases or pretend to understand every business rule. It starts by surfacing tests that plainly do not test much.
+
+> Do not trust AI-generated tests. Verify their static evidence.
+
+## What it audits—and deliberately does not
+
+AI Test Auditor is a local-first source auditor for JavaScript and TypeScript tests. It extracts direct Jest, Vitest, and Playwright callbacks, then uses the TypeScript AST and deterministic rules to produce source-located findings and remediation.
+
+Its path is intentionally small:
+
+```text
+Test source → AST → test-case extraction → deterministic rules → finding
+```
+
+It reads test source and bases its result on reviewable AST rules. Runtime behavior, coverage, production-code relevance, and business correctness belong to their own evidence layers; this job does not need an LLM to produce a precise-looking score that nobody can replay. It answers a narrower, repeatable question:
+
+> Can the test source show clear evidence that deserves human attention?
+
+That makes it useful in local development, pull-request review, and CI. Input stays local, results are repeatable, and rule changes remain reviewable.
+
+## Why v1.0 does not send tests to an LLM
+
+This is a deliberate design choice. If the problem starts with AI-generated tests, why not ask another LLM to judge their quality? Some patterns do not need a guess:
+
+```ts
+expect(1).toBe(1);
+expect(result).toBe(result);
+```
+
+Those patterns can be established directly from source. Putting them through “source → prompt → model → maybe a problem” adds model, prompt, network, cost, and privacy dependencies while making CI less repeatable.
+
+The project therefore follows `Deterministic First`: establish a stable static-evidence layer first. Judgments that need requirements, production code, prior defects, and business semantics belong to later optional capabilities and human review. AI can add evidence; it must not silently rewrite an existing deterministic conclusion.
+
+## FAKE, WEAK, and UNASSESSED
+
+AI Test Auditor does not reduce a test to “good” or “bad.” It uses three states.
+
+`FAKE` is high-confidence, deterministic source evidence: no assertion, a constant asserting itself, or `actual` and `expected` with the same AST structure.
+
+```ts
+expect("success").toBe("success");
+expect(result).toEqual(result);
+```
+
+`WEAK` is review context, not an automatic verdict. An API test that asserts only `200`, or an E2E test that uses a fixed wait, may be reasonable in a specific case. Treating every such signal as a build failure would create noise.
+
+The most important state is `UNASSESSED`. A test that matches no rule is not thereby strong; it simply has no deterministic finding under the current static rules. This assertion may be correct, or it may omit critical business state. One line of source cannot honestly settle that question.
+
+```ts
+expect(order.status).toBe("PAID");
+```
+
+This is more useful than a “quality score of 92.” No finding and proven reliability are different claims.
+
+## Signals it can surface early
+
+The current rules cover common source-level signals in unit, API, and E2E tests: no `expect(...)`, swallowed errors, truthy-only assertions, status-only API checks, action-only Playwright tests, and fixed waits.
+
+For example:
+
+```ts
+test("checkout", async ({ page }) => {
+  await page.goto("/checkout");
+  await page.click("#pay");
+});
+```
+
+Clicking a button does not establish that payment completed. The auditor flags an E2E test without an effective assertion as a `FAKE` signal, then leaves the team to verify the observable result that matters.
+
+Rules are not quality verdicts. Each one establishes a narrow static pattern; none proves runtime quality, coverage, mutation score, or release readiness.
+
+### Representative rules
+
+| Situation | Example | Audit signal |
+| --- | --- | --- |
+| Unit test without an assertion | Calls only `createUser()` | `UT001` / `FAKE` |
+| Literal self-assertion | `expect("ok").toBe("ok")` | `UT002` / `FAKE` |
+| Same expression on both sides | `expect(result).toEqual(result)` | `UT003` / `FAKE` |
+| Swallowed error | A `catch` that only logs | `UT008` / `FAKE` |
+| A single weak assertion | `expect(result).toBeTruthy()` | `UT004` / `WEAK` |
+| API test checks only a status | `expect(response.status).toBe(200)` | `API001` / `WEAK` |
+| E2E test lacks an effective assertion | Only navigates, types, and clicks | `E2E001` / `FAKE` |
+| Fixed wait | `page.waitForTimeout(3000)` | `E2E004` / `WEAK` |
+
+Rule IDs give a review conversation a traceable starting point; they are not business conclusions. When an API test asserts only its status, the team still needs to decide whether the risk calls for the body, schema, business state, side effect, permission, or error contract to be checked too.
+
+## Start with a local audit
+
+The project requires Node.js 20 or later. From a source checkout:
+
+```bash
+npm install
+npm run build
+node dist/cli.js review ./tests --format json
+```
+
+The installed package exposes:
+
+```bash
+ata review ./tests
+```
+
+Output includes extracted tests, findings, classifications, locations, and remediation. Its exit codes work in automation: `0` means no deterministic `FAKE` was found, `1` means at least one `FAKE`, and `2` signals invalid command, path, or input. Exit `0` does not mean the tests are strong.
+
+For a real project, start with the changed tests:
+
+```bash
+node dist/cli.js review . \
+  --changed-since HEAD~1 \
+  --format json
+```
+
+That places the audit after an agent adds or changes tests and before pull-request review:
+
+```text
+Coding agent → added or changed tests → static audit → PR review
+```
+
+It can also produce an offline HTML report:
+
+```bash
+node dist/cli.js review ./tests \
+  --format html \
+  --output audit.html
+```
+
+JSON fits CI, dashboards, and other agents. HTML gives a team a filterable local report to read directly.
+
+## Let the team choose the gate
+
+The project offers an explicit opt-in policy gate; it does not make release decisions by default. A practical policy is to block only on `FAKE`:
+
+```text
+FAKE → block and fix or explain
+WEAK → review signal, not an automatic block
+```
+
+`expect(response.status).toBe(200)` is insufficient in some tests and exactly the right contract in others. Turning every `WEAK` signal into a failure teaches people to ignore warnings. Keeping it as context leaves room for review against business risk.
+
+Policy, baseline comparison, mutation evidence, and decision projection keep their own boundaries as well. They can help select and prioritize review work; they cannot alter raw static findings, classifications, exit semantics, or turn a passing gate into release approval.
+
+## How it differs from general static analysis
+
+Tools such as SonarQube also analyze source, but their usual focus is bugs, code smells, security, duplication, complexity, and maintainability. AI Test Auditor focuses on the narrower question of `Test Source Trust`: does this test source create the appearance of coverage without meaningful verification?
+
+The tools overlap, but they answer different questions. Coverage and mutation testing matter too; an AST scan cannot establish what they establish, and they will not tell you when a test is mostly posing for the camera.
+
+## Its place in AI-native QA
+
+AI Test Auditor contributes one layer of static evidence. Coverage, mutation testing, runtime validation, and human review all have work to do around it.
+
+A fuller quality chain can look like this:
+
+```text
+Requirements → coding agent → production code and tests → static audit
+             → runtime tests / mutation evidence / semantic review → human decision
+```
+
+Each layer should only claim what its evidence supports. Static audit can show “no assertion.” Runtime validation can establish observed behavior. Mutation and semantic analysis provide other evidence. A person accountable for the risk makes the decision.
+
+v1.0 is the stable static baseline for that chain. The roadmap describes runtime, mutation, and AI/LLM directions as future optional capabilities, not delivered functionality. Whatever adapters come next should keep their source, conclusion, and boundary explicit.
+
+## Who should try it first
+
+- QA practitioners who need to locate automated tests worth human review at scale.
+- Developers who want to check tests generated or changed by an agent before a pull request.
+- Technical leads who want test-count growth to remain separate from evidence quality.
+- Agent builders who want an audit result in the feedback loop after test generation.
+
+```text
+Generate tests → run tests → audit tests → FAKE?
+                                      ├─ yes: fix or regenerate
+                                      └─ no: human review and further evidence
+```
+
+“No” remains `UNASSESSED`; it is not automatic approval. That distinction keeps a tool from claiming responsibility that its evidence cannot support.
+
+When an agent can generate dozens or hundreds of tests at once, test code is no longer scarce. Trustworthy test evidence is. AI Test Auditor starts with a plain question: find code that looks like a test but does not actually test much.
+
+If AI already helps your team generate tests, run one changed-tests audit. You do not need to redesign CI on day one, and you do not need to treat every `WEAK` as an incident. See what it catches, then bring that evidence to pull-request review. Producing more tests is easy. Knowing which ones deserve trust is the work after that.
+
+## References
+
+- [AI Test Auditor project](https://github.com/AI-Native-QA-Lab/ai-test-auditor)
+- [README](https://github.com/AI-Native-QA-Lab/ai-test-auditor/blob/main/README.md)
+- [Rule catalog](https://github.com/AI-Native-QA-Lab/ai-test-auditor/blob/main/docs/rules.md)
+- [Architecture](https://github.com/AI-Native-QA-Lab/ai-test-auditor/blob/main/docs/architecture.md)
+- [Roadmap](https://github.com/AI-Native-QA-Lab/ai-test-auditor/blob/main/docs/roadmap.md)
