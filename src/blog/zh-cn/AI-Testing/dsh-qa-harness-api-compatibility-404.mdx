@@ -1,0 +1,165 @@
+---
+title: "一次 404 背后的插件兼容性问题：dsh-qa 如何适配 DeepSeek Harness 的 API 演进"
+description: "DeepSeek Harness 升级后，dsh-qa 因调用废弃 RPC 与 Remote 接口出现 404。本文复盘问题原因、适配策略，以及如何用契约测试和真实宿主冒烟测试降低升级风险。"
+date: 2026-09-12T00:00:00.000Z
+author: "nao.deng"
+cover: "./dsh-qa-ai-testing-workbench-cover.png"
+tags: ["AI 测试", "工程实践"]
+categories: ["AI", "测试工具"]
+series: ["AI 辅助测试"]
+
+---
+
+# 一次 404 背后的插件兼容性问题：dsh-qa 如何适配 DeepSeek Harness 的 API 演进
+
+404 通常不算什么大新闻。接口没了，改个路径，重新发版——听起来事情就结束了。
+
+但这次 dsh-qa 的两个 404，暴露了一个更大的问题：DeepSeek Harness 的 API 契约已经发生了变化。
+
+dsh-qa 最近遇到的就是这一类问题。DeepSeek Harness 更新后，浏览器控制台出现了两条 404：
+
+```text
+POST http://127.0.0.1:3080/api/agentPreset.list 404 (Not Found)
+GET  http://127.0.0.1:3080/api/pair/status 404 (Not Found)
+```
+
+表面上是两个接口找不到，实际涉及三层变化：宿主的 RPC 命名从点式方法迁移到斜杠命名空间，请求参数的封装方式发生变化，而 dsh-qa 中低使用率的 Remote 配对能力也依赖了已经不再提供的接口。
+
+这次修复随 [dsh-qa v0.3.1](https://github.com/naodeng/dsh-qa/releases/tag/v0.3.1) 发布。这篇文章复盘的是插件与快速演进宿主之间，如何建立更可靠的兼容边界。
+
+## 先看现象：工作台能打开，但核心请求失败
+
+dsh-qa 的工作台运行在 DeepSeek Harness 中。每个测试项目会绑定 DSH 原生会话，读取模型、技能、命令，并使用 `qa` 测试模式 preset。
+
+旧实现仍按早期 API Proxy 的命名调用接口，例如：
+
+```js
+dshRpc('agentPreset.list')
+dshRpc('session.models')
+dshRpc('session.history')
+```
+
+界面初始化时还会检查 Remote 配对状态：
+
+```text
+GET /api/pair/status
+```
+
+当 Harness 更新后，这些请求不再对应可用路由，于是出现了局部可用：页面和部分独立工作台功能看起来正常，但测试模式、会话数据和 Remote 状态已经进入不完整状态。这种现象比白屏更难排查，因为用户很难判断到底是哪条能力链路失效。
+
+## 根因不只是接口改名
+
+### RPC 命名空间发生迁移
+
+旧版本使用 `agentPreset.list`、`session.create` 一类点式方法名。当前接口采用斜杠命名空间，例如：
+
+```text
+agentPresets/list
+session/list
+session/modelCatalog
+skills/list
+commands/list
+session/prompt
+session/cancel
+session/selectModel
+```
+
+点号改成斜杠看起来是小改动，但它影响的是 preset、会话、模型、技能、命令和消息发送等整条协作链路。插件不会因为语义相同就自动获得兼容性。
+
+### 请求参数的外形也变了
+
+路径更新只是第一步。新 RPC 约定使用 `args` 包装调用参数。概念上，旧代码可能是：
+
+```js
+dshRpc('session.create', { cwd, presetId: 'qa' })
+```
+
+新调用则需要遵守当前请求信封：
+
+```js
+dshRpc('session/create', {
+  args: { request: { cwd, presetId: 'qa' } }
+})
+```
+
+兼容性检查不能只问“有没有同名能力”。路径、请求信封、字段嵌套、返回值形状以及流式协议，任何一层不匹配都会让调用失败。
+
+### 会话模型从 history 变成 follow
+
+旧实现通过传统 history 接口读取消息。当前会话机制使用 `session/follow` 提供会话快照和后续事件跟随。dsh-qa 因此改为通过 WebSocket 打开 `session/follow`，读取初始快照，再把宿主事件规范化为工作台需要的消息列表。
+
+这里真正重要的是接受宿主对会话状态的表达方式：DSH 负责会话、模型、权限和事件，dsh-qa 负责测试项目、需求、用例、风险、证据和质量门禁。插件不再维护第二套会话系统。
+
+### Remote 已经失去稳定依赖
+
+Remote 配对不是 dsh-qa 的核心价值，却依赖 `/api/pair/status`、配对链接和相关前端状态。继续保留它会产生无意义的 404，给用户展示无法可靠工作的入口，也让维护者持续追踪宿主已经变化的安全和配对机制。
+
+因此，这次一并移除了 Remote 配对、状态检查、前端入口、样式、文案和相关测试。删除一个已经失去验证基础的功能，有时比继续增加兼容代码更可靠。这样可以把维护成本集中到真正影响用户工作的本地 QA 工作台和 DSH 原生会话上。
+
+## 修复策略：收敛适配点，缩小产品边界
+
+这次修复主要分为三步。
+
+首先，所有宿主调用迁移到当前命名空间：
+
+| 能力 | 旧调用 | 当前调用 |
+| --- | --- | --- |
+| 测试模式 preset | `agentPreset.list` | `agentPresets/list` |
+| 会话列表 | `session.list` | `session/list` |
+| 模型目录 | `session.models` | `session/modelCatalog` |
+| 技能列表 | `skill.list` | `skills/list` |
+| 命令列表 | 旧聚合调用 | `commands/list` |
+| 发送消息 | `session.prompt` | `session/prompt` |
+| 切换模型 | `session.selectModel` | `session/selectModel` |
+
+其次，让 `dshRpc()` 统一处理当前请求外层封装。业务页面不直接散落路径、参数信封和返回值转换。下一次宿主改变认证头、错误形状或请求结构时，维护点会集中在适配层和契约测试中。
+
+最后，使用 `session/follow` 获取会话快照和后续事件，并移除已经不能可靠验证的 Remote 入口。适配层把宿主版本差异限制在一个可审查、可测试的位置。
+
+## 修复后如何验证
+
+这次验证分成三层，避免把一种证据误当成全部证据。
+
+### 静态兼容契约测试
+
+新增的 `dsh-compatibility.test.js` 明确断言旧点式 RPC 名称不再出现，当前斜杠命名空间必须存在，已移除的 Remote 入口和实现不能重新出现。测试会拒绝 `agentPreset.list`、`session.models`、`session.history`、`btn-remote`、`openRemotePanel` 等遗留字符串。
+
+它不能证明真实宿主一定可用，但能防止最常见的回归：新代码又复制进旧 API 名称。
+
+### 工作台回归测试与打包检查
+
+发布前运行了：
+
+```bash
+npm run test:unit
+npx playwright test --config=playwright.release.config.js
+npm pack --dry-run
+```
+
+在 v0.3.1 发布前的验证中，100 个单元/API 测试通过、20 个 Chromium 端到端测试通过，npm 包预检通过并包含 49 个文件。Chromium 测试使用隔离端口，因为本机默认端口已被既有服务占用；这是测试环境事实，不应被包装成产品测试结论。
+
+### 真实宿主冒烟仍需单独看待
+
+单元测试和独立工作台 E2E 证明的是 dsh-qa 自己的行为，并不等同于“当前 DSH 宿主已完成集成验证”。完整宿主冒烟应覆盖：启动指定 Harness、安装插件、启动 web profile、挂载工作台、获取 `qa` preset、创建会话、读取模型/技能/命令、发送消息并读取跟随结果。
+
+因此，报告应分别记录插件自身测试、独立工作台 E2E、当前 Harness 宿主集成，以及 npm/GitHub 发布状态。它们回答的是不同问题，不能互相替代。
+
+## 下一次升级如何降低风险
+
+建议在仓库维护小而明确的兼容矩阵，写清已验证的 Harness 版本、核心链路和证据范围。与其笼统宣称“支持所有版本”，不如直接记录已验证的组合。例如：
+
+| dsh-qa | Harness | 核心范围 | 状态 |
+| --- | --- | --- | --- |
+| v0.3.1 | `dsh-v0.1.5-rc.2` | preset、session、model、skill、command、follow | 代码与回归测试已覆盖 |
+
+同时，把宿主交互收敛为 `listAgentPresets()`、`createProjectSession()`、`listModels()`、`followSession()`、`sendPrompt()` 等能力函数，让业务页面依赖能力函数，不直接依赖具体路由。
+
+在 CI 中还应增加真实宿主集成门禁：安装指定 Harness 版本，安装本地 dsh-qa 包，启动 web profile，再用浏览器和核心 RPC 完成一次冒烟。它不必覆盖全部 QA 工作流，目标是尽早发现“宿主 API 已变、插件仍调用旧契约”。
+
+最后，对非核心能力设置退出机制：当一项能力依赖不稳定宿主接口、使用率低、缺少持续验证，且不属于产品核心路径时，优先评估下线，而不是无限追加兼容代码。
+
+## 结语
+
+这次 404 的直接修复并不复杂：更新 RPC 路径，调整参数包装，改用当前会话跟随机制，并移除失去维护基础的 Remote 能力。
+
+值得保留的工程方法很简单：把宿主 API 当作持续演进的契约，把单元测试和宿主集成证据分开，也不要为了边缘能力扩大不可靠的兼容层。用适配层、契约测试、真实冒烟和版本矩阵，让下一次升级更早暴露问题，插件才能在宿主快速变化时继续保持可靠。

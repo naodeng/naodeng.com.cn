@@ -1,0 +1,159 @@
+---
+title: "What a 404 Revealed About Plugin Compatibility: dsh-qa and DeepSeek Harness API Evolution"
+description: "After a DeepSeek Harness upgrade, dsh-qa hit 404s because it still called retired RPC and Remote endpoints. This post explains the root cause, the adapter strategy, and how contract tests and host smoke tests reduce upgrade risk."
+date: 2026-09-12T00:00:00.000Z
+author: "nao.deng"
+cover: "./dsh-qa-ai-testing-workbench-cover.png"
+tags: ["AI in Testing", "Engineering Practice"]
+categories: ["AI", "QA Tools"]
+series: ["AI Testing"]
+
+---
+
+# What a 404 Revealed About Plugin Compatibility: dsh-qa and DeepSeek Harness API Evolution
+
+404s are usually not big news. The route is gone, you update the path, publish a release, and move on—or so it sounds.
+
+In this case, dsh-qa's two 404s exposed more than a typo. The DeepSeek Harness API contract had changed.
+
+That is what happened to dsh-qa after a DeepSeek Harness update. The browser console showed two 404s:
+
+```text
+POST http://127.0.0.1:3080/api/agentPreset.list 404 (Not Found)
+GET  http://127.0.0.1:3080/api/pair/status 404 (Not Found)
+```
+
+The visible symptom was “two endpoints are missing”. The underlying problem had three layers: RPC names had moved from dotted methods to slash namespaces, the request envelope had changed, and dsh-qa's low-usage Remote pairing feature depended on endpoints the current host no longer provided.
+
+The fix shipped in [dsh-qa v0.3.1](https://github.com/naodeng/dsh-qa/releases/tag/v0.3.1). This postmortem is about creating a dependable compatibility boundary between a plugin and a fast-moving host.
+
+## The symptom: the workbench opened, but core requests failed
+
+dsh-qa runs as a DeepSeek Harness workbench. Each test project binds a native DSH session and uses the `qa` test-mode preset while reading models, skills, and commands.
+
+The old implementation still called early API Proxy names such as:
+
+```js
+dshRpc('agentPreset.list')
+dshRpc('session.models')
+dshRpc('session.history')
+```
+
+Startup also checked the Remote pairing state:
+
+```text
+GET /api/pair/status
+```
+
+After the Harness update, those requests no longer mapped to live routes. The result was partial availability: the page and some standalone workbench features looked fine, while test mode, session data, and Remote state were incomplete. That is harder to diagnose than a blank page because users cannot easily see which capability chain has broken.
+
+## The root cause was more than a renamed endpoint
+
+### RPC namespaces moved
+
+Older versions used dotted method names such as `agentPreset.list` and `session.create`. The current interface uses slash namespaces, for example:
+
+```text
+agentPresets/list
+session/list
+session/modelCatalog
+skills/list
+commands/list
+session/prompt
+session/cancel
+session/selectModel
+```
+
+Changing a dot to a slash looks small, but it affects the whole preset, session, model, skill, command, and messaging chain. A plugin does not become compatible merely because the underlying capability has the same meaning.
+
+### The request envelope changed too
+
+Updating the path was only the first step. The current RPC contract wraps call parameters in `args`:
+
+```js
+dshRpc('session/create', {
+  args: { request: { cwd, presetId: 'qa' } }
+})
+```
+
+Compatibility is not just a question of whether a similarly named method exists. The route, request envelope, nested fields, response shape, and streaming protocol can each break a call.
+
+### The session model moved from history to follow
+
+The old implementation read messages through a traditional history endpoint. The current session model uses `session/follow` for an initial snapshot and subsequent events. dsh-qa now opens that stream over WebSocket, reads the snapshot, and normalizes host events into the message list used by the workbench.
+
+The important decision was accepting the host's state model: DSH owns sessions, models, permissions, and session events; dsh-qa owns test projects, requirements, cases, risks, evidence, and quality gates. The plugin no longer maintains a second session system.
+
+### Remote had lost a stable dependency
+
+Remote pairing was not central to dsh-qa, but it depended on `/api/pair/status`, pairing links, and related UI state. Keeping it created noisy 404s, exposed an unreliable entry point, and forced maintainers to track a host security and pairing mechanism that had already moved on.
+
+The fix removed the Remote pairing flow, status check, UI entry point, styles, copy, and related tests. Removing an unreliable feature can be safer than adding another compatibility layer.
+
+## The fix: concentrate the adapter and narrow the product boundary
+
+The migration had three parts.
+
+First, host calls moved to the current namespaces:
+
+| Capability | Old call | Current call |
+| --- | --- | --- |
+| Test-mode preset | `agentPreset.list` | `agentPresets/list` |
+| Session list | `session.list` | `session/list` |
+| Model catalog | `session.models` | `session/modelCatalog` |
+| Skills | `skill.list` | `skills/list` |
+| Commands | Old aggregate call | `commands/list` |
+| Send a message | `session.prompt` | `session/prompt` |
+| Select a model | `session.selectModel` | `session/selectModel` |
+
+Second, `dshRpc()` became the single place that handles the current request envelope. Business pages do not scatter routes, argument wrappers, and response conversions throughout the codebase. If the host changes headers, error shapes, or envelopes again, the review surface is the adapter plus its contract tests.
+
+Third, the workbench uses `session/follow` for snapshots and subsequent events, while the unverifiable Remote entry point is gone. The adapter keeps host-version differences in one reviewable and testable place.
+
+## How the fix was verified
+
+The evidence was separated into three layers.
+
+### Static compatibility contracts
+
+The new `dsh-compatibility.test.js` asserts that old dotted RPC names are absent, the current slash namespaces exist, and removed Remote entries cannot return. It rejects leftovers such as `agentPreset.list`, `session.models`, `session.history`, `btn-remote`, and `openRemotePanel`.
+
+This cannot prove that a real host will work, but it prevents the most common regression: reintroducing an old API name in new code.
+
+### Workbench regression and package checks
+
+The release checks were:
+
+```bash
+npm run test:unit
+npx playwright test --config=playwright.release.config.js
+npm pack --dry-run
+```
+
+For the v0.3.1 release, 100 unit/API tests passed, 20 Chromium end-to-end tests passed, and the npm dry run reported 49 files. Chromium used an isolated port because the default local port was already occupied. That is a test-environment fact, not a product-quality conclusion.
+
+### Real host smoke testing is a separate claim
+
+Unit tests and standalone workbench E2E tests prove dsh-qa's own behavior. They do not prove that the current DSH host integration is complete. A full host smoke test should start a specified Harness version, install the plugin, launch the web profile, mount the workbench, obtain the `qa` preset, create a session, read models/skills/commands, send a message, and read the follow result.
+
+Release reports should therefore distinguish plugin tests, standalone workbench E2E, current Harness integration, and npm/GitHub delivery. Each answers a different question.
+
+## Reducing the next upgrade's risk
+
+Maintain a small compatibility matrix that names the verified Harness version, core paths, and evidence scope. Recording verified combinations is more useful than claiming support for every version. For example:
+
+| dsh-qa | Harness | Core scope | Status |
+| --- | --- | --- | --- |
+| v0.3.1 | `dsh-v0.1.5-rc.2` | preset, session, model, skill, command, follow | Covered by code and regression tests |
+
+Also expose host interactions through capability functions such as `listAgentPresets()`, `createProjectSession()`, `listModels()`, `followSession()`, and `sendPrompt()`. Business pages should depend on those capabilities rather than concrete host routes.
+
+CI should add a real-host integration gate: install a specified Harness version, install the local dsh-qa package, start the web profile, and exercise the core RPC path from a browser. It does not need to cover every QA workflow. Its job is to catch “the host changed, but the plugin still speaks the old contract” early.
+
+Finally, define an exit path for non-core features. When a feature depends on unstable host APIs, has low usage, lacks continuous verification, and is outside the product's core path, retiring it may be safer than adding compatibility code forever.
+
+## Conclusion
+
+The immediate fix for these 404s was short: update RPC paths, change the request envelope, use the current session-follow model, and remove Remote capabilities that no longer had a reliable foundation.
+
+The useful lesson is simple: host APIs are evolving contracts. Keep unit tests separate from host-integration evidence, and do not grow an unreliable compatibility layer to preserve an edge feature. With an adapter, contract tests, real smoke tests, and a version matrix, the next breaking change becomes visible earlier—and the plugin has a better chance of staying reliable while its host evolves.
