@@ -18,6 +18,7 @@ export const MAIN_PATHS = [
 export const EXTRA_PATHS = [
   "/about",
   "/projects/",
+  "/dsh-qa/",
   "/copyright",
   "/privacy",
   "/links",
@@ -89,6 +90,7 @@ export function getExtraPageUrls(): { locale: string; path: string; name: string
   const names: Record<string, string> = {
     "/about": "about",
     "/projects/": "projects",
+    "/dsh-qa/": "dsh-qa",
     "/copyright": "copyright",
     "/privacy": "privacy",
     "/links": "links",

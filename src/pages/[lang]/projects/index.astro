@@ -3,6 +3,7 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import PageHeadline from "@/components/PageHeadline.astro";
 import { PROJECTS_LIST } from "@/data/projects";
+import { getProjectHref, isExternalProject } from "@/utils/projectLinks";
 import { NAV_HOME, PROJECTS_PAGE_DESCRIPTION, PROJECTS_PAGE_TITLE } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
@@ -28,15 +29,15 @@ export const getStaticPaths = () =>
   <div class="project-container">
     <div class="project-grid">
       {PROJECTS_LIST.map((proj) => (
-        <a href={proj.url} target="_blank" rel="noopener noreferrer" class="project-card">
+        <a href={getProjectHref(locale, proj)} target={isExternalProject(proj) ? "_blank" : undefined} rel={isExternalProject(proj) ? "noopener noreferrer" : undefined} class="project-card">
           <div class="project-header">
             <div class="project-title-row">
               <h2 class="project-name">{t(proj.name)}</h2>
               {proj.badge ? <span class="project-badge">{t(proj.badge)}</span> : null}
             </div>
-            <span class="external-icon">
+            {isExternalProject(proj) && <span class="external-icon">
                <span class="material-icons-sharp">open_in_new</span>
-            </span>
+            </span>}
           </div>
           
           <div class="project-tech-tags">
@@ -48,7 +49,7 @@ export const getStaticPaths = () =>
           <p class="project-desc">{t(proj.description)}</p>
           
           <div class="project-footer">
-            <span class="view-link">{locale === "zh-cn" ? "查看源码" : "View Source"}</span>
+            <span class="view-link">{isExternalProject(proj) ? (locale === "zh-cn" ? "查看源码" : "View Source") : (locale === "zh-cn" ? "查看项目" : "View project")}</span>
           </div>
         </a>
       ))}

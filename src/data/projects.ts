@@ -5,6 +5,7 @@ import type { Multilingual } from "@/i18n";
 
 export interface ProjectItem {
   url: string;
+  kind?: "internal" | "external";
   name: Multilingual;
   techStack: Multilingual;
   description: Multilingual;
@@ -13,7 +14,8 @@ export interface ProjectItem {
 
 export const PROJECTS_LIST: ProjectItem[] = [
   {
-    url: "https://github.com/naodeng/dsh-qa",
+    url: "/dsh-qa/",
+    kind: "internal",
     name: { en: "DSH-QA · QA Workbench", "zh-cn": "DSH-QA · 质量工作台" },
     techStack: {
       en: "JavaScript, DeepSeek Harness, DSH Plugin",

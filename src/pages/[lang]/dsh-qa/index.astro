@@ -1,0 +1,89 @@
+---
+import { LOCALES, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+import { DSH_QA_SITE } from "@/data/dshQaSite";
+
+export const getStaticPaths = () => Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+
+const locale = Astro.currentLocale as Lang;
+const site = DSH_QA_SITE[locale];
+const homeName = locale === "zh-cn" ? "首页" : "Home";
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: "dsh-qa", url: `/${locale}/dsh-qa/` },
+];
+---
+
+<Layout title={site.meta.title} description={site.meta.description} breadcrumbs={breadcrumbs}>
+  <main class="dsh-qa-page" data-dsh-qa-page>
+    <section class="hero" aria-labelledby="dsh-qa-title">
+      <div class="hero-copy">
+        <p class="eyebrow">{site.hero.eyebrow}</p>
+        <h1 id="dsh-qa-title">{site.hero.title}</h1>
+        <p class="hero-summary">{site.hero.summary}</p>
+        <div class="hero-actions">
+          {site.hero.actions.map((action) => <a class:list={["hero-action", { primary: action.external }]} href={action.href} target={action.external ? "_blank" : undefined} rel={action.external ? "noopener noreferrer" : undefined} data-dsh-qa-action>{action.label}<span aria-hidden="true">{action.external ? "↗" : "↓"}</span></a>)}
+        </div>
+      </div>
+      <div class="hero-panel" aria-label={locale === "zh-cn" ? "质量交付状态" : "Quality delivery status"}>
+        <p>QUALITY / DELIVERY</p>
+        <strong>PASS · WARN · BLOCK</strong>
+        <span>{locale === "zh-cn" ? "证据先于结论，人工保留最终决策。" : "Evidence precedes conclusions; people retain the final decision."}</span>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="features-title">
+      <p class="section-kicker">01 / {site.labels.features}</p>
+      <h2 id="features-title">{site.labels.features}</h2>
+      <div class="feature-grid">
+        {site.features.map((feature) => <article class="feature-card" data-dsh-qa-feature><span class="material-icons-sharp" aria-hidden="true">{feature.icon}</span><h3>{feature.title}</h3><p>{feature.description}</p></article>)}
+      </div>
+    </section>
+
+    <section class="section flow-section" aria-labelledby="flow-title">
+      <p class="section-kicker">02 / {site.labels.flow}</p>
+      <h2 id="flow-title">{site.labels.flow}</h2>
+      <ol class="flow-list">
+        {site.deliveryFlow.map((stage, index) => <li data-dsh-qa-flow-stage><span class="flow-index">0{index + 1}</span><div><h3>{stage.title}</h3><p>{stage.description}</p></div><span class:list={["flow-status", stage.status.toLowerCase()]}>{stage.status}</span></li>)}
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="install-title">
+      <p class="section-kicker">03 / {site.labels.install}</p>
+      <h2 id="install-title">{site.labels.install}</h2>
+      <div class="install-grid">
+        {site.installModes.map((mode) => <article class="install-card" id={mode.id} data-install-mode><h3>{mode.title}</h3><p>{mode.description}</p><span class="command-label">{site.labels.commandLabel}</span>{mode.commands.map((command) => <pre><code>{command}</code></pre>)}</article>)}
+      </div>
+    </section>
+
+    <section class="section ecosystem" aria-labelledby="ecosystem-title">
+      <p class="section-kicker">04 / {site.labels.ecosystem}</p>
+      <h2 id="ecosystem-title">{site.labels.ecosystem}</h2>
+      <div class="ecosystem-links">{site.ecosystemLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>{link.label}<span aria-hidden="true">→</span></a>)}</div>
+    </section>
+
+    <section class="section releases" data-release-notes aria-labelledby="releases-title">
+      <p class="section-kicker">05 / RELEASES</p>
+      <h2 id="releases-title">{site.labels.releaseNotes}</h2>
+      <div class="release-list">
+        {site.releases.map((release) => <details data-release-note><summary><span><strong>{release.version}</strong><time datetime={release.publishedAt}>{release.publishedAt}</time></span><span>{release.summary}</span></summary><div class="release-body"><ul>{release.changes.map((change) => <li>{change}</li>)}</ul><a href={release.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} <span aria-hidden="true">↗</span></a></div></details>)}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .dsh-qa-page { --dsh-surface: #07181d; --dsh-panel: #0b252c; --dsh-ink: #e5fffb; --dsh-muted: #a7c5c1; --dsh-line: rgba(107, 238, 215, .24); --dsh-accent: #6eeed7; --dsh-blue: #8bc7ff; max-width: 76rem; margin: 0 auto; padding: 2rem var(--sp-m) 6rem; color: var(--dsh-ink); }
+  .hero, .section { border: 1px solid var(--dsh-line); background: var(--dsh-surface); box-shadow: 0 24px 60px rgba(3, 16, 20, .18); }.hero { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(16rem, .75fr); gap: 2rem; padding: clamp(1.5rem, 5vw, 4.5rem); position: relative; overflow: hidden; }.hero::before { content: ""; position: absolute; inset: 0; opacity: .26; background-image: linear-gradient(var(--dsh-line) 1px, transparent 1px), linear-gradient(90deg, var(--dsh-line) 1px, transparent 1px); background-size: 2rem 2rem; pointer-events: none; }.hero-copy, .hero-panel { position: relative; }.eyebrow, .section-kicker { margin: 0 0 .8rem; color: var(--dsh-accent); font-size: .75rem; font-weight: 800; letter-spacing: .14em; }.hero h1, .section h2 { margin: 0; color: var(--dsh-ink); font-family: "Sora", sans-serif; }.hero h1 { font-size: clamp(2.7rem, 7vw, 5.8rem); line-height: .94; }.hero-summary { max-width: 42rem; margin: 1.35rem 0 0; color: var(--dsh-muted); font-size: 1.1rem; line-height: 1.7; }.hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }.hero-action { display: inline-flex; gap: .55rem; align-items: center; min-height: 2.75rem; padding: .55rem 1rem; border: 1px solid var(--dsh-line); color: var(--dsh-ink); text-decoration: none; font-weight: 800; }.hero-action.primary, .hero-action:hover, .hero-action:focus-visible { background: var(--dsh-accent); color: #072027; }.hero-panel { align-self: end; display: grid; gap: .75rem; padding: 1.2rem; border: 1px solid var(--dsh-line); background: rgba(3, 20, 25, .76); }.hero-panel p { margin: 0; color: var(--dsh-accent); font-size: .72rem; font-weight: 800; letter-spacing: .1em; }.hero-panel strong { color: var(--dsh-blue); font-family: monospace; font-size: 1.15rem; }.hero-panel span { color: var(--dsh-muted); line-height: 1.5; }.section { margin-top: 1rem; padding: clamp(1.4rem, 4vw, 3rem); }.section h2 { font-size: clamp(1.8rem, 4vw, 3rem); }.feature-grid, .install-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin-top: 1.5rem; }.feature-card, .install-card { padding: 1.25rem; border: 1px solid var(--dsh-line); background: var(--dsh-panel); }.feature-card .material-icons-sharp { color: var(--dsh-accent); }.feature-card h3, .install-card h3, .flow-list h3 { margin: .8rem 0 .45rem; color: var(--dsh-ink); }.feature-card p, .install-card p, .flow-list p { margin: 0; color: var(--dsh-muted); line-height: 1.55; }.flow-list { display: grid; gap: .5rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }.flow-list li { display: grid; grid-template-columns: 3rem 1fr auto; gap: 1rem; align-items: start; padding: 1rem; border-left: 3px solid var(--dsh-line); background: var(--dsh-panel); }.flow-index, .flow-status { font-family: monospace; font-size: .78rem; font-weight: 800; }.flow-index { color: var(--dsh-accent); }.flow-status { padding: .2rem .45rem; border: 1px solid currentColor; color: var(--dsh-blue); }.flow-status.pass { color: var(--dsh-accent); }.command-label { display: block; margin-top: 1.25rem; color: var(--dsh-accent); font-size: .7rem; font-weight: 800; letter-spacing: .1em; }.install-card pre { overflow-x: auto; margin: .45rem 0 0; padding: .8rem; background: #031216; border: 1px solid rgba(139, 199, 255, .2); color: var(--dsh-blue); font-size: .8rem; }.ecosystem-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .7rem; margin-top: 1.5rem; }.ecosystem-links a, .release-body a { display: flex; justify-content: space-between; gap: 1rem; padding: .85rem 1rem; border: 1px solid var(--dsh-line); color: var(--dsh-ink); text-decoration: none; font-weight: 700; }.ecosystem-links a:hover, .ecosystem-links a:focus-visible, .release-body a:hover, .release-body a:focus-visible { background: var(--dsh-accent); color: #072027; }.release-list { display: grid; gap: .6rem; margin-top: 1.5rem; }.release-list details { border: 1px solid var(--dsh-line); background: var(--dsh-panel); }.release-list summary { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem; cursor: pointer; color: var(--dsh-ink); }.release-list summary span { display: grid; gap: .25rem; }.release-list time { color: var(--dsh-muted); font-size: .8rem; }.release-body { padding: 0 1rem 1rem; color: var(--dsh-muted); }.release-body ul { margin: .1rem 0 1rem; padding-left: 1.2rem; line-height: 1.6; }.dsh-qa-page a:focus-visible, .release-list summary:focus-visible { outline: 3px solid var(--dsh-blue); outline-offset: 3px; } @media (prefers-reduced-motion: no-preference) { .hero-action, .ecosystem-links a, .release-body a { transition: background .2s ease, color .2s ease; } } @media (max-width: 720px) { .hero, .feature-grid, .install-grid { grid-template-columns: 1fr; }.hero-panel { align-self: auto; }.flow-list li { grid-template-columns: 2.2rem 1fr; }.flow-status { grid-column: 2; justify-self: start; }.release-list summary { display: grid; }.dsh-qa-page { padding-inline: 1rem; } }
+  /* Keep the project content inside the site's editorial visual system. */
+  .dsh-qa-page { max-width: 72rem; padding: 2rem var(--sp-m) 5rem; color: var(--color-main); }
+  .hero, .section { border: 0; background: transparent; box-shadow: none; }
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(15rem, .55fr); padding: 2.5rem 0 3rem; border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); overflow: visible; }
+  .hero::before { display: none; }.hero h1, .section h2 { color: var(--color-main); font-family: inherit; }.hero h1 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: .98; }.hero-summary { color: inherit; opacity: .78; }
+  .eyebrow, .section-kicker, .command-label { color: var(--color-theme); }.hero-action { border-color: color-mix(in srgb, var(--color-theme) 24%, transparent); border-radius: var(--radius-sm); color: var(--color-main); }.hero-action.primary, .hero-action:hover, .hero-action:focus-visible { background: var(--color-theme); color: var(--color-base); }
+  .hero-panel { align-self: center; padding: 1.25rem; border-color: color-mix(in srgb, var(--color-theme) 22%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.hero-panel p, .hero-panel strong { color: var(--color-theme); }.hero-panel span { color: inherit; opacity: .72; }
+  .section { margin-top: 0; padding: 3.5rem 0 0; }.section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }.feature-grid, .install-grid { gap: 1rem; }.feature-card, .install-card { min-width: 0; padding: 1.15rem; border-color: color-mix(in srgb, var(--color-theme) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.feature-card .material-icons-sharp, .feature-card h3, .install-card h3, .flow-list h3 { color: var(--color-main); }.feature-card p, .install-card p, .flow-list p { color: inherit; opacity: .72; }
+  .flow-list li { border-left: 3px solid color-mix(in srgb, var(--color-theme) 45%, transparent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: color-mix(in srgb, var(--color-base) 97%, var(--color-theme)); }.flow-index, .flow-status { color: var(--color-theme); }.flow-status.pass { color: #16803a; }.install-card pre { border-color: color-mix(in srgb, var(--color-theme) 20%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--color-base) 92%, var(--color-theme)); color: var(--color-main); }
+  .ecosystem-links a, .release-body a { border-color: color-mix(in srgb, var(--color-theme) 18%, transparent); border-radius: var(--radius-sm); color: var(--color-main); }.ecosystem-links a:hover, .ecosystem-links a:focus-visible, .release-body a:hover, .release-body a:focus-visible { background: color-mix(in srgb, var(--color-theme) 12%, var(--color-base)); color: var(--color-main); }.release-list details { border-color: color-mix(in srgb, var(--color-theme) 18%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--color-base) 97%, var(--color-theme)); }.release-list summary, .release-body { color: var(--color-main); }.release-list time, .release-body { opacity: .76; }
+  @media (max-width: 720px) { .hero { grid-template-columns: 1fr; padding-top: 1.5rem; }.hero-panel { margin-top: 1.5rem; }.section { padding-top: 2.75rem; } }
+</style>

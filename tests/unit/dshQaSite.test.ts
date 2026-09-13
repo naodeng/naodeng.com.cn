@@ -1,0 +1,27 @@
+import { describe, expect, it } from "vitest";
+import { DSH_QA_SITE } from "@/data/dshQaSite";
+
+describe("dsh-qa site data", () => {
+  it.each(["en", "zh-cn"] as const)("provides complete localized product content for %s", (lang) => {
+    const site = DSH_QA_SITE[lang];
+
+    expect(site.hero.title.toLowerCase()).toContain("dsh-qa");
+    expect(site.hero.actions).toHaveLength(3);
+    expect(site.features).toHaveLength(4);
+    expect(site.deliveryFlow).toHaveLength(5);
+    expect(site.installModes).toHaveLength(2);
+    expect(site.ecosystemLinks.map((link) => link.href)).toEqual(expect.arrayContaining([
+      `/${lang}/qaskills/`,
+      `/${lang}/prompts/`,
+      `/${lang}/blog/ai-testing/dsh-qa-harness-api-compatibility-404/`,
+    ]));
+  });
+
+  it.each(["en", "zh-cn"] as const)("keeps verified release facts in newest-first order for %s", (lang) => {
+    expect(DSH_QA_SITE[lang].releases.map((release) => [release.version, release.publishedAt, release.url])).toEqual([
+      ["v0.3.1", "2026-09-11", "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.1"],
+      ["v0.3.0", "2026-09-11", "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.0"],
+      ["v0.2.0", "2026-09-01", "https://github.com/naodeng/dsh-qa/releases/tag/v0.2.0"],
+    ]);
+  });
+});
