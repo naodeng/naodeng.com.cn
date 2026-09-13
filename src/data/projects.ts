@@ -28,6 +28,20 @@ export const PROJECTS_LIST: ProjectItem[] = [
     badge: { en: "Latest", "zh-cn": "最新项目" },
   },
   {
+    url: "/ai-test-auditor/",
+    kind: "internal",
+    name: { en: "AI Test Auditor · Static Test Audit", "zh-cn": "AI Test Auditor · 测试静态审计" },
+    techStack: {
+      en: "TypeScript, Jest/Vitest, Playwright, CLI",
+      "zh-cn": "TypeScript、Jest/Vitest、Playwright、CLI",
+    },
+    description: {
+      en: "A local-first, source-only auditor for deterministic signs of ineffective JavaScript and TypeScript tests. It reports source-located FAKE and WEAK findings with remediation, while keeping runtime quality, coverage, and release readiness explicitly unassessed.",
+      "zh-cn": "一个本地优先、仅分析源码的测试审计工具，用于识别 JavaScript 与 TypeScript 测试中的确定性无效信号。它输出带修复建议的 FAKE 与 WEAK 发现，同时明确不代替运行时质量、覆盖率或发布就绪度判断。",
+    },
+    badge: { en: "AI Testing", "zh-cn": "AI 测试" },
+  },
+  {
     url: "https://github.com/naodeng/awesome-qa-prompt",
     name: { en: "Awesome QA Prompt", "zh-cn": "Awesome QA Prompt" },
     techStack: {
