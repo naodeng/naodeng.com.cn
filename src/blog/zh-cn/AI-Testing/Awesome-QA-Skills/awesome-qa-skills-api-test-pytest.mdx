@@ -8,17 +8,15 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-Python 服务测试最怕夹杂全局状态、真实外部依赖和难读的夹具链。pytest 的灵活性只有在测试边界清楚时才会变成效率。
+Python 接口测试经常被全局状态、真实外部依赖和难读的夹具链拖垮。先把边界画清楚，pytest 的灵活性才真正省时间。
 
-Pytest API 测试 Skill 围绕隔离行为设计夹具、客户端调用和失败断言，让快速测试保持可理解。
-
-本文将用明确的输入、边界和输出组织实践过程，帮助你把结论交给下一个需要据此行动的人。
+Pytest API 测试 Skill 会围绕隔离行为组织夹具、客户端调用和失败断言。本文从一份接口定义开始，落到可运行入口和可复核的执行证据。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 Pytest 接口自动化。
 
 ## 先看源 Skill
 
-主 Prompt 把工作拆到 输入解析顺序、默认约定（无用户指定时直接采用）、Gotchas、交付前自检、质量要求。这些标题只是导航，真正使用时还要回到项目材料。
+主 Prompt 会依次处理输入、默认约定、常见陷阱、交付前自检和质量要求。标题负责导航；版本、认证和数据策略仍要以项目材料为准。
 
 源目录现有 8 份示例、4 份参考、4 个脚本入口。可以先看 [Bruno 测试示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/examples/bruno)、[框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/references/framework-spec.md)。
 
@@ -44,7 +42,7 @@ checks: 401/403 权限边界、错误 schema、重复请求幂等性
 run_evidence: pending
 ```
 
-最后一行很重要。没有命令输出、报告或 Trace，就只能写 pending。源 Prompt 还要求关注 输入解析顺序、默认约定（无用户指定时直接采用）、Gotchas。
+`run_evidence` 只有在拿到命令输出、报告或 Trace 后才能更新。缺少这些材料时，结果就是 `pending`。
 
 ## 把示例补成项目骨架
 
@@ -73,7 +71,7 @@ pytest tests/api/test_orders.py -q --junitxml=artifacts/api.xml
 | 可重复执行 | 连续运行不依赖上一次残留数据 | 重做数据创建与清理 |
 | 失败可定位 | 测试报告、失败请求与响应、接口版本、构建号 能回到同一次运行 | 给产物加 run ID 和构建号 |
 | CI 可判定 | 进程退出码与质量门禁一致 | 修正 reporter 或 threshold 配置 |
-| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取 fixture、specification 或页面动作 |
+| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取 fixture、请求封装或 specification |
 
 先只接一条关键链路。它在本地和 CI 都稳定以后，再扩到异常、边界和并发场景。
 
@@ -106,24 +104,11 @@ pytest tests/api/test_orders.py -q --junitxml=artifacts/api.xml
 
 `requirements-analysis` → `api-test-pytest` → `test-reporting`
 
-| 交接 | 传递内容 | 接收方检查 |
-| --- | --- | --- |
-| 上游到 api-test-pytest | 来源版本、范围、风险和未决问题 | Pytest 接口自动化 输入是否过期，冲突是否标记 |
-| api-test-pytest 到下游 | 主产物、证据索引、未完成项 | Pytest 接口自动化 产物能否继续执行，Owner 是否明确 |
-| 下游回写 api-test-pytest | 运行结果、缺陷和新风险 | 是否更新 Pytest 接口自动化 基线与回归范围 |
+上游交给 `api-test-pytest` 的是来源版本、范围、风险和未决问题；下游收到主产物、证据索引和未完成项；运行结果、缺陷和新风险再回写到基线。每次交接都检查材料能否访问、结论是否带状态、命令与报告能否复现，以及残余风险是否有接受人和日期。
 
 不要把三次输出复制进一个大 Prompt。Pytest 接口自动化 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
 
-### 放进团队流程的门禁
-
-| 门禁 | 建议检查 | 失败动作 |
-| --- | --- | --- |
-| api-test-pytest 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 Pytest 接口自动化 并列出缺口 |
-| api-test-pytest 产物门禁 | 关键结论带依据和状态 | 退回 Pytest 接口自动化 补证据 |
-| api-test-pytest 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
-| api-test-pytest 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
-
-团队可以每个 Sprint 看一次 Pytest 接口自动化 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+团队可以每个 Sprint 看一次采用率、人工修改率、无依据结论数和失败定位时间。先连续记录几轮，再决定阈值。
 
 ## 这类工具最容易踩的坑
 
@@ -142,7 +127,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 调用时直接写“请使用 api-test-pytest Skill”，然后附上真实材料。
 
-## 两个实际问题
+## 四个实际问题
 
 ### Pytest 接口自动化 会直接给我一个能跑的项目吗？
 
@@ -160,7 +145,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 等本地和 CI 使用同一命令、数据可重置、失败证据可追踪以后再放。
 
-先拿一份真实材料跑 Pytest 接口自动化，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+先拿一份真实材料跑 Pytest 接口自动化，保存 OpenAPI 版本、执行命令、JUnit XML、失败响应、构建号和复核意见。文章里的片段只负责搭结构，项目证据要在项目里产生。
 
 ## 参考
 - Awesome QA Skills 项目主页：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
