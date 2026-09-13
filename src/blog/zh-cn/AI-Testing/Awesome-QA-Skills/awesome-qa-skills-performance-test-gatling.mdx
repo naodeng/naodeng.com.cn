@@ -1,6 +1,6 @@
 ---
-title: "Gatling 性能测试：把真实负载模型变成可执行的压测脚本"
-description: "Gatling 性能测试 实战：Gatling 性能测试，把负载模型写进脚本。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+title: "业务负载要从注入模型开始写：Gatling 性能测试"
+description: "Gatling 性能测试实战：用场景注入、断言与报告描述真实业务负载。"
 date: 2026-09-18T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -15,13 +15,23 @@ Gatling 性能测试 Skill 通过可读场景、数据源和注入模型，让�
 
 本文通过具体场景说明如何收集、连接和解释证据，让结论能够服务下一步的工程或业务决定。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 Gatling 性能测试。
+这篇文章只讨论 Gatling：它用 DSL、注入曲线和结构化报告描述负载，适合将性能场景作为可评审代码维护。
 
 ## 先看源 Skill
 
-主 Prompt 把工作拆到 输入解析顺序、场景选择决策树、默认约定（无用户指定时直接采用）、Gotchas、交付前自检。这些标题只是导航，真正使用时还要回到项目材料。
+Gatling 的主 Prompt 会先确认场景链、注入曲线、feeder 和断言。场景名要对应业务动作，报告才能回答哪条链路在什么阶段退化。
 
 源目录现有 2 份示例、3 份参考、4 个脚本入口。可以先看 [CI 集成示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-gatling/examples/ci)、[框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-gatling/references/framework-spec.md)、[本地冒烟测试脚本](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-gatling/scripts/run-local-smoke.sh)。
+
+## 相关 Skill
+
+Gatling 负责把注入模型和业务链路写成可执行场景。压测前后的三个判断可以交给这些 Skill：
+
+| Skill | 什么时候接上 | 它补什么 |
+| --- | --- | --- |
+| [性能负载建模](https://inaodeng.com/zh-cn/qaskills/performance-workload-modeling/) | 还没有把生产流量转成注入曲线时 | 明确用户行为、开放或封闭模型、峰值和数据假设 |
+| [性能结果分析](https://inaodeng.com/zh-cn/qaskills/performance-result-analysis/) | Gatling 报告已经生成时 | 关联延迟、错误率、资源指标和运行条件 |
+| [性能回归分析](https://inaodeng.com/zh-cn/qaskills/performance-regression-analysis/) | 需要与基线或上一版本比较时 | 判断差异是否达到回归门槛，并保留证据 |
 
 ## 从材料到可运行入口
 
@@ -45,7 +55,7 @@ checks: p95 延迟、错误率、吞吐量和资源曲线
 run_evidence: pending
 ```
 
-最后一行很重要。没有命令输出、报告或 Trace，就只能写 pending。源 Prompt 还要求关注 输入解析顺序、场景选择决策树、默认约定（无用户指定时直接采用）。
+`run_evidence` 要同时保留 simulation 配置、HTML 报告、断言结果和依赖指标。只有最终成功率时，注入阶段带来的差异会丢失。
 
 ## 把示例补成项目骨架
 
@@ -74,7 +84,7 @@ src/test/scala/simulations/CheckoutSimulation.scala
 | 可重复执行 | 连续运行不依赖上一次残留数据 | 重做数据创建与清理 |
 | 失败可定位 | 负载模型、阈值结果、服务端资源曲线、错误样本 能回到同一次运行 | 给产物加 run ID 和构建号 |
 | CI 可判定 | 进程退出码与质量门禁一致 | 修正 reporter 或 threshold 配置 |
-| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取 fixture、specification 或页面动作 |
+| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取 ScenarioBuilder、注入配置或 feeder |
 
 先只接一条关键链路。它在本地和 CI 都稳定以后，再扩到异常、边界和并发场景。
 
@@ -91,47 +101,24 @@ src/test/scala/simulations/CheckoutSimulation.scala
 范围：[本次包含与排除的业务链路]
 限制：[账号、数据、时间、合规要求]
 
-先检查框架版本、目录和认证方式。生成最小可运行入口、执行命令与 artifacts 清单。代码未运行时，把结果标成待验证。
+先确认 Gatling 版本、ScenarioBuilder、注入曲线和 feeder 数据。生成 Scala DSL 场景、断言、执行命令与报告目录；脚本未运行时，把结果标成待验证。
 最后列出待确认问题，不要补写材料里没有的事实。
 ```
 
 第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
 
-## 进阶使用，从一次调用走到持续流程
+## Gatling 要先把注入模型和业务断言写成同一件事
 
-把 injection profile、feeder 和断言分开维护。容量测试逐级升压，每一级都检查错误样本和资源拐点，不能只看最终平均值。
+Gatling 的 DSL 适合把场景、feeder 和注入曲线放在一起阅读。先说明是恒定到达率、阶梯增长还是突发流量，再把每条业务链的断言放在对应请求旁边。只写“100 个用户压十分钟”无法让人判断这个负载代表什么。
 
-进阶阶段要保存基线。至少记录执行时长、通过率、不稳定用例、失败分类和证据完整率。只有通过率会把问题藏起来。
-
-### 三段式 Skill 链
-
-`requirements-analysis` → `performance-test-gatling` → `test-reporting`
-
-| 交接 | 传递内容 | 接收方检查 |
-| --- | --- | --- |
-| 上游到 performance-test-gatling | 来源版本、范围、风险和未决问题 | Gatling 性能测试 输入是否过期，冲突是否标记 |
-| performance-test-gatling 到下游 | 主产物、证据索引、未完成项 | Gatling 性能测试 产物能否继续执行，Owner 是否明确 |
-| 下游回写 performance-test-gatling | 运行结果、缺陷和新风险 | 是否更新 Gatling 性能测试 基线与回归范围 |
-
-不要把三次输出复制进一个大 Prompt。Gatling 性能测试 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
-
-### 放进团队流程的门禁
-
-| 门禁 | 建议检查 | 失败动作 |
-| --- | --- | --- |
-| performance-test-gatling 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 Gatling 性能测试 并列出缺口 |
-| performance-test-gatling 产物门禁 | 关键结论带依据和状态 | 退回 Gatling 性能测试 补证据 |
-| performance-test-gatling 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
-| performance-test-gatling 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
-
-团队可以每个 Sprint 看一次 Gatling 性能测试 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+报告出现高延迟时，按场景名、请求名和注入阶段回看。若慢的是登录而结账正常，扩容结账服务不会改变结论。feeder 耗尽、会话变量丢失和重定向链也要在脚本里单独暴露，别让它们伪装成服务性能问题。
 
 ## 这类工具最容易踩的坑
 
-1. 只生成代码，不给运行命令。拿到文件的人仍然不知道怎么验证。
-2. 忽略版本和依赖。Gatling 的配置、API 和报告插件都会变化。
-3. 共用脏数据。接口、UI 和性能测试都会被残留数据拖垮。
-4. 把一次绿色结果写成长期稳定。至少保留报告、日志和失败重试信息。
+1. 把注入曲线写成固定并发，却声称模拟了外部到达率。
+2. feeder 耗尽或会话变量缺失后仍继续压测，结果混入脚本错误。
+3. 只看总览图，不按场景和请求名定位尾延迟。
+4. 断言过宽，性能退化没有让 CI 失败。
 
 ## 安装与调用
 
@@ -143,7 +130,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 调用时直接写“请使用 performance-test-gatling Skill”，然后附上真实材料。
 
-## 两个实际问题
+## 常见问题
 
 ### Gatling 性能测试 会直接给我一个能跑的项目吗？
 

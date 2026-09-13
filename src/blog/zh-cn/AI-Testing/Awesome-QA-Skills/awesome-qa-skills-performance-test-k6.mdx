@@ -1,6 +1,6 @@
 ---
-title: "k6 性能测试：把真实负载模型变成可执行的压测脚本"
-description: "k6 性能测试 实战：k6 性能测试，把负载模型写进脚本。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+title: "k6 压测要回答到达率和阈值：k6 性能测试这样组织"
+description: "k6 性能测试实战：将用户节奏转成到达率、阈值与可定位的压测证据。"
 date: 2026-09-17T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -11,17 +11,27 @@ series: ["Awesome QA Skills 实战"]
 
 性能脚本如果只制造请求量，却没有代表真实用户节奏和业务比例，得到的数字很可能无法支持容量决定。k6 场景要先回答“谁在做什么、以多快的频率”。
 
-K6 性能测试 Skill 围绕工作负载假设建模到达率、阈值和遥测，使压测结果能支撑工程决策。
+k6 性能测试 Skill 围绕工作负载假设建模到达率、阈值和遥测，使压测结果能支撑工程决策。
 
 本文通过具体场景说明如何收集、连接和解释证据，让结论能够服务下一步的工程或业务决定。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 k6 性能测试。
+这篇文章只讨论 k6：它用 JavaScript 场景描述到达率、事务标签和阈值，适合把负载假设直接放进版本库。
 
 ## 先看源 Skill
 
-主 Prompt 把工作拆到 输入解析顺序、场景选择决策树、默认约定（无用户指定时直接采用）、Gotchas、交付前自检。这些标题只是导航，真正使用时还要回到项目材料。
+k6 的主 Prompt 重点是到达率、场景比例、阈值和数据隔离。先确认这些输入，再决定脚本怎么写；没有业务节奏时，虚拟用户数没有解释力。
 
 源目录现有 1 份示例、2 份参考、6 个脚本入口。可以先看 [秒杀场景环境变量示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-k6/examples/seckill-sample.env)、[框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-k6/references/framework-spec.md)、[测试配置脚本](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-k6/scripts/config.js)。
+
+## 相关 Skill
+
+k6 负责把到达率、场景比例和阈值写进 JavaScript。以下 Skill 帮你补齐运行前后的判断：
+
+| Skill | 什么时候接上 | 它补什么 |
+| --- | --- | --- |
+| [性能负载建模](https://inaodeng.com/zh-cn/qaskills/performance-workload-modeling/) | 需要把业务流量换成 arrival rate 和场景比例时 | 明确开放模型、用户行为、峰值和数据假设 |
+| [性能结果分析](https://inaodeng.com/zh-cn/qaskills/performance-result-analysis/) | k6 summary、趋势和资源指标已经生成时 | 解释 p95、错误率、标签维度与环境条件 |
+| [性能回归分析](https://inaodeng.com/zh-cn/qaskills/performance-regression-analysis/) | 需要比较基线与候选版本时 | 固定负载和统计口径，判断差异是否可归因 |
 
 ## 从材料到可运行入口
 
@@ -45,7 +55,7 @@ checks: p95 延迟、错误率、吞吐量和资源曲线
 run_evidence: pending
 ```
 
-最后一行很重要。没有命令输出、报告或 Trace，就只能写 pending。源 Prompt 还要求关注 输入解析顺序、场景选择决策树、默认约定（无用户指定时直接采用）。
+`run_evidence` 只在拿到 k6 summary、阈值结果和同窗口服务指标后更新。缺少其中任何一项，都不能说压测结论成立。
 
 ## 把示例补成项目骨架
 
@@ -74,7 +84,7 @@ k6 run --summary-export=artifacts/summary.json load/checkout.js
 | 可重复执行 | 连续运行不依赖上一次残留数据 | 重做数据创建与清理 |
 | 失败可定位 | 负载模型、阈值结果、服务端资源曲线、错误样本 能回到同一次运行 | 给产物加 run ID 和构建号 |
 | CI 可判定 | 进程退出码与质量门禁一致 | 修正 reporter 或 threshold 配置 |
-| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取 fixture、specification 或页面动作 |
+| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取场景函数、阈值配置或数据生成器 |
 
 先只接一条关键链路。它在本地和 CI 都稳定以后，再扩到异常、边界和并发场景。
 
@@ -91,47 +101,24 @@ k6 run --summary-export=artifacts/summary.json load/checkout.js
 范围：[本次包含与排除的业务链路]
 限制：[账号、数据、时间、合规要求]
 
-先检查框架版本、目录和认证方式。生成最小可运行入口、执行命令与 artifacts 清单。代码未运行时，把结果标成待验证。
+先确认 k6 版本、场景类型、到达率、事务标签和阈值。生成 JavaScript 入口、`--summary-export` 命令与指标对齐清单；脚本未运行时，把结果标成待验证。
 最后列出待确认问题，不要补写材料里没有的事实。
 ```
 
 第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
 
-## 进阶使用，从一次调用走到持续流程
+## k6 要把用户节奏写成到达率，而不是只堆虚拟用户
 
-用 scenarios 表达不同到达率与持续时间，用 thresholds 决定 CI 成败。输出趋势指标时保留 tags，才能定位到具体业务事务。
+k6 的场景先定义到达率、持续时间和业务比例。结账每分钟 600 次，并不等于 10 个 VU 循环 60 次；前者描述外部压力，后者会被响应时间反向影响。把登录、浏览、结账拆成带 tag 的事务，阈值直接绑定 p95、错误率和关键业务检查。
 
-进阶阶段要保存基线。至少记录执行时长、通过率、不稳定用例、失败分类和证据完整率。只有通过率会把问题藏起来。
-
-### 三段式 Skill 链
-
-`requirements-analysis` → `performance-test-k6` → `test-reporting`
-
-| 交接 | 传递内容 | 接收方检查 |
-| --- | --- | --- |
-| 上游到 performance-test-k6 | 来源版本、范围、风险和未决问题 | k6 性能测试 输入是否过期，冲突是否标记 |
-| performance-test-k6 到下游 | 主产物、证据索引、未完成项 | k6 性能测试 产物能否继续执行，Owner 是否明确 |
-| 下游回写 performance-test-k6 | 运行结果、缺陷和新风险 | 是否更新 k6 性能测试 基线与回归范围 |
-
-不要把三次输出复制进一个大 Prompt。k6 性能测试 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
-
-### 放进团队流程的门禁
-
-| 门禁 | 建议检查 | 失败动作 |
-| --- | --- | --- |
-| performance-test-k6 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 k6 性能测试 并列出缺口 |
-| performance-test-k6 产物门禁 | 关键结论带依据和状态 | 退回 k6 性能测试 补证据 |
-| performance-test-k6 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
-| performance-test-k6 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
-
-团队可以每个 Sprint 看一次 k6 性能测试 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+脚本输出只在同一时间窗口内才有意义。将 summary、服务端 CPU、数据库连接数和错误样本写进同一个 run ID；当阈值失败时，先看是哪一个 tag 触发，再决定是容量问题、数据问题还是脚本问题。
 
 ## 这类工具最容易踩的坑
 
-1. 只生成代码，不给运行命令。拿到文件的人仍然不知道怎么验证。
-2. 忽略版本和依赖。k6 的配置、API 和报告插件都会变化。
-3. 共用脏数据。接口、UI 和性能测试都会被残留数据拖垮。
-4. 把一次绿色结果写成长期稳定。至少保留报告、日志和失败重试信息。
+1. 把 VU 数当作生产流量，忽略到达率会随响应时间变化。
+2. 只看全局 p95，不给事务加 tag，慢请求无法定位到业务路径。
+3. 阈值失败后立刻调大资源，没有先排除脚本、数据和依赖波动。
+4. 保存 summary 却不保存时间窗口和构建号，后续无法对比基线。
 
 ## 安装与调用
 
@@ -143,7 +130,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 调用时直接写“请使用 performance-test-k6 Skill”，然后附上真实材料。
 
-## 两个实际问题
+## 常见问题
 
 ### k6 性能测试 会直接给我一个能跑的项目吗？
 

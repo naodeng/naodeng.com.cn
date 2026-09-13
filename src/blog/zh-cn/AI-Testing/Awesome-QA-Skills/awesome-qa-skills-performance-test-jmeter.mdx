@@ -1,6 +1,6 @@
 ---
-title: "JMeter 性能测试：把真实负载模型变成可执行的压测脚本"
-description: "JMeter 性能测试 实战：JMeter 性能测试，把负载模型写进脚本。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+title: "JMeter 压测跑完以后，JMeter 性能测试如何让 JTL 可复核"
+description: "JMeter 性能测试实战：用线程组、数据隔离与 JTL 结果组织可复现的压测。"
 date: 2026-09-18T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -15,13 +15,23 @@ JMeter 性能测试 Skill 显式描述工作负载、测试数据、断言和结
 
 本文通过具体场景说明如何收集、连接和解释证据，让结论能够服务下一步的工程或业务决定。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 JMeter 性能测试。
+这篇文章只讨论 JMeter：它用线程组、控制器、定时器和监听器描述负载，适合已有 JMX 资产或需要排查协议细节的团队。
 
 ## 先看源 Skill
 
-主 Prompt 把工作拆到 质量要求、输出格式选项、如何使用、参考文件、常见误区。这些标题只是导航，真正使用时还要回到项目材料。
+JMeter 的主 Prompt 先确认线程模型、定时器、CSV 数据和执行模式。线程数只是起点，ramp-up、循环条件和数据复用才会决定压测行为。
 
 源目录现有 1 份示例、2 份参考、1 个脚本入口。可以先看 [测试场景上下文示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-jmeter/examples/sample-context.md)、[框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-jmeter/references/framework-spec.md)、[测试执行脚本](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/performance-test-jmeter/scripts/run-tests.sh)。
+
+## 相关 Skill
+
+JMeter 负责维护线程组、定时器和 JMX 执行入口。下面三个 Skill 分别覆盖建模、JTL 结果解释和版本比较：
+
+| Skill | 什么时候接上 | 它补什么 |
+| --- | --- | --- |
+| [性能负载建模](https://inaodeng.com/zh-cn/qaskills/performance-workload-modeling/) | 线程数和 ramp-up 还没有业务依据时 | 把流量、用户节奏、数据复用和环境假设写清楚 |
+| [性能结果分析](https://inaodeng.com/zh-cn/qaskills/performance-result-analysis/) | JTL、日志和资源指标已经产生时 | 区分采样结果、异常请求、资源瓶颈和证据缺口 |
+| [性能回归分析](https://inaodeng.com/zh-cn/qaskills/performance-regression-analysis/) | 要比较候选版本与基线时 | 统一负载、环境和统计口径，再判断是否回归 |
 
 ## 从材料到可运行入口
 
@@ -45,7 +55,7 @@ checks: p95 延迟、错误率、吞吐量和资源曲线
 run_evidence: pending
 ```
 
-最后一行很重要。没有命令输出、报告或 Trace，就只能写 pending。源 Prompt 还要求关注 质量要求、输出格式选项、如何使用。
+`run_evidence` 需要包含非 GUI 执行命令、JTL、HTML 报告和服务端时间窗口。GUI 截图不能替代这些产物。
 
 ## 把示例补成项目骨架
 
@@ -74,7 +84,7 @@ jmeter -n -t load/checkout.jmx -l artifacts/results.jtl -e -o artifacts/report
 | 可重复执行 | 连续运行不依赖上一次残留数据 | 重做数据创建与清理 |
 | 失败可定位 | 负载模型、阈值结果、服务端资源曲线、错误样本 能回到同一次运行 | 给产物加 run ID 和构建号 |
 | CI 可判定 | 进程退出码与质量门禁一致 | 修正 reporter 或 threshold 配置 |
-| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取 fixture、specification 或页面动作 |
+| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取测试片段、CSV 数据集或 properties 配置 |
 
 先只接一条关键链路。它在本地和 CI 都稳定以后，再扩到异常、边界和并发场景。
 
@@ -91,47 +101,24 @@ jmeter -n -t load/checkout.jmx -l artifacts/results.jtl -e -o artifacts/report
 范围：[本次包含与排除的业务链路]
 限制：[账号、数据、时间、合规要求]
 
-先检查框架版本、目录和认证方式。生成最小可运行入口、执行命令与 artifacts 清单。代码未运行时，把结果标成待验证。
+先确认 JMeter 版本、线程组、CSV 数据和 properties 配置。生成可提交的 JMX 入口、非 GUI 命令与 JTL 保存位置；脚本未运行时，把结果标成待验证。
 最后列出待确认问题，不要补写材料里没有的事实。
 ```
 
 第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
 
-## 进阶使用，从一次调用走到持续流程
+## JMeter 的可信度靠执行方式和结果文件守住
 
-用 properties 管理线程数和环境，不复制多份 JMX。分布式执行前同步插件、数据和时钟，结果合并时排除控制机开销。
+线程组只描述并发模型的一部分。文章里的场景需要同时写清 ramp-up、持续时间、定时器和 CSV 数据策略；同一账号被多个线程复用时，压测结果会先测到数据冲突。正式压测使用非 GUI 模式，GUI 只用来调试脚本。
 
-进阶阶段要保存基线。至少记录执行时长、通过率、不稳定用例、失败分类和证据完整率。只有通过率会把问题藏起来。
-
-### 三段式 Skill 链
-
-`requirements-analysis` → `performance-test-jmeter` → `test-reporting`
-
-| 交接 | 传递内容 | 接收方检查 |
-| --- | --- | --- |
-| 上游到 performance-test-jmeter | 来源版本、范围、风险和未决问题 | JMeter 性能测试 输入是否过期，冲突是否标记 |
-| performance-test-jmeter 到下游 | 主产物、证据索引、未完成项 | JMeter 性能测试 产物能否继续执行，Owner 是否明确 |
-| 下游回写 performance-test-jmeter | 运行结果、缺陷和新风险 | 是否更新 JMeter 性能测试 基线与回归范围 |
-
-不要把三次输出复制进一个大 Prompt。JMeter 性能测试 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
-
-### 放进团队流程的门禁
-
-| 门禁 | 建议检查 | 失败动作 |
-| --- | --- | --- |
-| performance-test-jmeter 输入门禁 | 版本、环境、Owner、来源可访问 | 停止 JMeter 性能测试 并列出缺口 |
-| performance-test-jmeter 产物门禁 | 关键结论带依据和状态 | 退回 JMeter 性能测试 补证据 |
-| performance-test-jmeter 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
-| performance-test-jmeter 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
-
-团队可以每个 Sprint 看一次 JMeter 性能测试 的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
+JTL 不是最终结论。把采样结果与服务端指标按时间窗口关联，保留失败请求的响应摘要，并在报告中区分连接错误、业务错误和阈值失败。分布式执行前统一插件、JDK、时钟和数据版本，否则节点差异会污染结果。
 
 ## 这类工具最容易踩的坑
 
-1. 只生成代码，不给运行命令。拿到文件的人仍然不知道怎么验证。
-2. 忽略版本和依赖。JMeter 的配置、API 和报告插件都会变化。
-3. 共用脏数据。接口、UI 和性能测试都会被残留数据拖垮。
-4. 把一次绿色结果写成长期稳定。至少保留报告、日志和失败重试信息。
+1. 用 GUI 跑正式压测，客户端资源先成为瓶颈。
+2. 多线程复用同一账号或 CSV 行，得到的是数据冲突而不是服务容量。
+3. 只导出汇总监听器，不保留 JTL，错误请求无法回溯。
+4. 分布式节点的插件和时钟不一致，却把结果直接合并。
 
 ## 安装与调用
 
@@ -143,7 +130,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 调用时直接写“请使用 performance-test-jmeter Skill”，然后附上真实材料。
 
-## 两个实际问题
+## 常见问题
 
 ### JMeter 性能测试 会直接给我一个能跑的项目吗？
 
