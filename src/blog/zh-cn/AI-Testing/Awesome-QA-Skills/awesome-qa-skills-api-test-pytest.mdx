@@ -8,7 +8,7 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-Python 接口测试经常被全局状态、真实外部依赖和难读的夹具链拖垮。先把边界画清楚，pytest 的灵活性才真正省时间。
+API 测试经常被全局状态、真实外部依赖和难读的夹具链拖垮。无论服务用什么语言实现，只要团队选择 pytest 来维护接口自动化，先把边界画清楚才能真正省时间。
 
 Pytest API 测试 Skill 会围绕隔离行为组织夹具、客户端调用和失败断言。本文从一份接口定义开始，落到可运行入口和可复核的执行证据。
 
@@ -18,7 +18,9 @@ Pytest API 测试 Skill 会围绕隔离行为组织夹具、客户端调用和�
 
 主 Prompt 会依次处理输入、默认约定、常见陷阱、交付前自检和质量要求。标题负责导航；版本、认证和数据策略仍要以项目材料为准。
 
-源目录现有 8 份示例、4 份参考、4 个脚本入口。可以先看 [Bruno 测试示例](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/examples/bruno)、[框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/references/framework-spec.md)。
+源目录现有 8 份示例、4 份参考、4 个脚本入口。先从[框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/references/framework-spec.md)了解 pytest 的目录、fixture 和报告约定。
+
+已有 Bruno Collection 也可以作为输入材料。Skill 会读取其中的请求，再生成 pytest 结构；Bruno 不是 pytest 的依赖，也不是开始接口自动化的前提。
 
 ## 从材料到可运行入口
 
@@ -150,7 +152,6 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 ## 参考
 - Awesome QA Skills 项目主页：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 - Awesome QA Skills 系列总览：[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- Bruno 测试示例：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/examples/bruno](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/examples/bruno)
 - API 测试（Pytest）补充参考资料：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/references/framework-spec.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest/references/framework-spec.md)
 - Awesome QA Skills：API 测试（Pytest）Skill 源文件：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-pytest)
 - Pytest 接口自动化 Skill 详情页：[https://inaodeng.com/zh-cn/qaskills/api-test-pytest/](https://inaodeng.com/zh-cn/qaskills/api-test-pytest/)
