@@ -1,0 +1,184 @@
+---
+title: "QCov：从测试通过走向可审查的质量证据"
+description: "介绍 QCov：一个本地、确定性的质量证据缺口引擎与质量覆盖协议，连接需求、风险、测试工件和变更影响，帮助团队发现测试还没有证明什么。"
+date: 2026-09-14T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI 测试", "质量工程", "测试工具"]
+categories: ["AI", "质量工程"]
+series: ["AI 辅助测试"]
+
+---
+
+# QCov：从测试通过走向可审查的质量证据
+
+“测试通过”经常是发布讨论里的最后一句话。真正难回答的是：它证明了哪项需求？它覆盖了哪一个风险？这次代码变更有没有让原来的证据失效？
+
+如果需求写在文档里，测试结果写在报告里，风险写在评审记录里，变更又躺在 Git diff 里，团队很容易用一片绿色代替完整证据。测试数量、覆盖率百分比和 CI 状态都有用，但它们不会自动回答“这个业务义务是否已经被证明”。
+
+[QCov](https://github.com/AI-Native-QA-Lab/QCov) 就是为填补这个缺口设计的。它是开源的**质量证据缺口引擎**与**质量覆盖协议**，核心问题只有一句：
+
+> Find what your tests still don't prove.
+
+这句话听起来简单，落到工程里却需要明确的测试义务、证据、映射、变更和策略。QCov 把这些记录放进本地、可版本化、可复查的流程里。
+
+如果你先想检查 AI 生成的测试本身是否包含明确的静态证据，可以先读 [AI Test Auditor：检查 AI 生成测试实际验证了什么](/zh-cn/blog/ai-testing/ai-test-auditor-static-evidence-for-ai-generated-tests/)。QCov 关注的是另一层：这些测试结果是否与需求、风险和变更形成可审查的证据链。
+
+## 先回答一个经常被跳过的问题：测试通过究竟证明了什么？
+
+假设一个退款需求是：累计退款金额不能超过支付金额。它至少可以提炼出一个业务不变量：
+
+```yaml
+invariants:
+  - id: INV-REFUND-001
+    expression: total_refund <= paid_amount
+requiredEvidence:
+  behavior: [api_test]
+  boundary: [property_test]
+  data: [database_invariant]
+  concurrency: [concurrency_test]
+  idempotency: [idempotency_test]
+  production: [runtime_monitor]
+```
+
+一个 API 测试通过，只能说明它在自己的执行范围内没有失败。它不等于边界、数据库不变量、并发、幂等和生产行为也都已经被证明。
+
+QCov 的 `TestingObligation` 描述“为什么必须验证这件事”，`QualityEvidence` 描述“哪一条机器可读证据被绑定到这项义务”。引擎比较二者，输出每项义务当前的状态：
+
+| 状态 | 说明 |
+| --- | --- |
+| `COVERED` | 声明所需的证据维度已经满足 |
+| `PARTIAL` | 一部分维度有证据，仍有缺口 |
+| `MISSING` | 需要的证据没有提供 |
+| `UNKNOWN` | 当前输入不足以做出可靠判断 |
+
+仓库里的 Refund 示例会刻意保持为 `PARTIAL`：行为、边界和数据证据存在，并发、幂等性和生产证据仍未证明。这比把一个通过的 API 测试扩展成“退款逻辑已覆盖”更接近真实的质量讨论。
+
+## QCov 的核心链路：从工件到证据，中间必须有显式映射
+
+QCov 的数据流可以概括为：
+
+```text
+TestingObligation
+    → 本地测试报告 / 观察工件（inventory）
+    → 显式 EvidenceMapping
+    → QualityEvidence
+    → 确定性 Gap Engine
+    → Markdown / JSON 报告
+```
+
+这里最重要的是中间那一步。QCov 不根据测试名称猜测试义务，也不根据覆盖率数字推断业务覆盖。`EvidenceMapping` 必须明确写出生产者和记录标识——例如某个 JUnit、Playwright 或 production-observation 记录——以及它对应的测试义务、证据维度和证据类型。
+
+`qcov scan` 负责发现本地工件。它可以读取显式 `@pytest.mark.qcov` 标记、JUnit XML、coverage.py XML、Playwright JSON、LCOV 和生产观察记录，但它不会执行 pytest、Maven、Gradle、npm 或 Playwright。
+
+扫描到报告或观察记录，不代表缺口已经消失。JUnit、Playwright 和生产观察工件都需要经过显式映射，才能物化为 `QualityEvidence`；coverage.py、LCOV 和 JaCoCo 仍然只是工件清单。它们可以帮助你知道哪里有数据，却不能单独证明某项业务义务。
+
+这条边界有点严格，但它解决了一个更麻烦的问题：报告里明明有很多测试，为什么 `gaps` 仍然显示缺口？因为“有一份报告”和“这份报告证明了指定义务”本来就是两件事。
+
+## 五分钟跑一遍 QCov
+
+QCov 要求 Python 3.11+。QCov 本身是 Python CLI，即使被分析的项目使用 Java、TypeScript 或其他技术栈，也不需要把被测项目改造成 Python 项目。
+
+```bash
+git clone https://github.com/AI-Native-QA-Lab/QCov.git
+cd QCov
+python3 -m venv .venv
+.venv/bin/python -m pip install -e '.[dev]'
+
+.venv/bin/python -m qcov gaps \
+  --obligation examples/refund/obligation.yaml \
+  --evidence examples/refund/evidence \
+  --locale zh-CN
+```
+
+这个 fixture 会刻意保留缺口，输出类似：
+
+```text
+状态: `PARTIAL`
+未证实维度: 并发, 幂等性, 生产环境
+```
+
+接下来可以按仓库的五分钟流程继续：
+
+```bash
+# 读取本地报告工件，不执行测试
+.venv/bin/python -m qcov scan \
+  --config examples/imported-reports/qcov.yaml
+
+# 预览显式工件清单 → 证据映射
+.venv/bin/python -m qcov map preview \
+  --config examples/imported-reports/qcov.yaml \
+  --format json
+
+# 合并配置中的证据并重新评估缺口
+.venv/bin/python -m qcov gaps \
+  --config examples/imported-reports/qcov.yaml
+```
+
+这个顺序是有意设计的：先看已有缺口，再扫描工具产生的工件，然后预览映射，最后重新评估。每一步都能单独检查，出了问题也比较容易判断是测试义务、路径、工件清单、映射还是证据本身。
+
+## 让变更影响和本地策略进入同一条工作流
+
+QCov 不只看当前快照。对于已经提交的 Git 树，`qcov diff` 可以比较测试义务和证据快照；`qcov impact` 根据显式的变更路径映射找出受影响的义务；`qcov affected` 则只列出当前还没有 `COVERED` 的受影响义务。
+
+以下命令假设被测项目已经准备好 `qcov.yaml` 和 `impact.yaml`，用于声明测试义务与变更路径映射；它是接入示例，不是克隆 QCov 后即可直接运行的命令。
+
+```bash
+.venv/bin/python -m qcov impact \
+  --config qcov.yaml \
+  --impact-config impact.yaml \
+  --changed-file src/payments/refund.py \
+  --format json
+```
+
+直接提供 `--changed-file` 时，QCov 可以报告受影响的测试义务，但不会假装已经算出缺口变化量。要比较两个本地 Git 快照，再使用 `--base` 和 `--head`。它只读取 Git 对象，不会 fetch、切换提交、执行测试，也不会把未提交或未跟踪文件悄悄混进结果。
+
+策略门禁也保持在本地：
+
+```bash
+.venv/bin/python -m qcov policy check \
+  --config examples/imported-reports/qcov.yaml \
+  --policy examples/refund/policy.yaml \
+  --as-of 2026-09-07T00:00:00+08:00
+```
+
+`policy check` 只对已有的 coverage 状态做策略判断。允许的状态、精确的义务豁免和到期时间都写在策略文件里；策略输出 `PASS`、`WARN` 或 `BLOCK`，但不会修改原始 evidence，也不会把一个 `PARTIAL` 改写成 `COVERED`。
+
+仓库还提供 `qcov obligation suggest`、`qcov risk analyze`、`qcov plan` 和 Agent helper。它们可以帮助整理需求、分析风险、排序下一步验证工作或解释缺口，但它们只是提案或助手输出，不是 QualityEvidence，也不是门禁权威。
+
+## QCov 可以接入 Python、Java 和 TypeScript 工具链
+
+QCov 不要求所有团队使用同一个测试框架。不同工具的输出通过 Adapter 和显式映射接入，最终判断由统一协议完成。
+
+| 项目入口 | QCov 读取什么 | 证据边界 |
+| --- | --- | --- |
+| Python / pytest | 显式 `@pytest.mark.qcov` 标记、手写 `QualityEvidence`、coverage.py | 显式标记会生成 `unknown` 状态的证据，不会单独满足义务；有效的手写 `QualityEvidence` 才能参与评估；coverage.py 只是工件清单 |
+| Java / JUnit / JaCoCo | JUnit XML、JaCoCo 工件清单 | 选定的 JUnit 记录标识需要显式映射；JaCoCo 比率不能单独满足义务 |
+| TypeScript / Playwright | Playwright JSON、LCOV | 选定的 Playwright 记录标识需要显式映射；LCOV 只是工件清单 |
+| 生产观察 | 版本化的运行时、事故和可观测性工件 | 生产观察需要显式映射，QCov 不直接访问远程可观测性平台 |
+
+这就是 QCov 和传统覆盖率报告的分工。覆盖率报告告诉你哪些代码位置被执行过，QCov 进一步要求团队说明：这次执行和哪项需求、风险或不变量有关，它证明了哪个维度，还缺什么。
+
+## v1.0.0 已经交付了什么，也还没有承诺什么
+
+QCov 的 [`v1.0.0`](https://github.com/AI-Native-QA-Lab/QCov/tree/v1.0.0) 增加了确定性的 `qcov impact` / `qcov affected`、稳定的 `qcov.impact/v1` 输出契约、公开的 `qcov.adapter/v1` Adapter SDK、JaCoCo 工件清单适配器，以及三类基于真实项目的案例输入。文档、协议和报告都提供中英文入口。
+
+案例输入包的定位也需要说清楚：它们是脱敏、可复现的验证输入，保留元数据、测试义务、命令和映射边界，不是把外部项目复制进 QCov，也不是一份“所有项目都能自动得到完整覆盖”的证明。[仓库案例文档](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/case-studies/README.zh-CN.md) 当前仍将三个 Release Gate 保持为 `NOT_MET`，因为发现的 false gap（误报缺口）还需要在修复后重新裁决。
+
+这恰恰是项目应该公开说明的边界。QCov 的价值就在于把已证明、部分证明、缺失和未能判断的内容分开记录。代码质量检查通过、测试运行通过、案例输入可复现和业务 Release Gate 通过，也应当分别记录。
+
+## 谁适合先用一轮
+
+- QA 和测试负责人：把需求、风险、测试结果和发布讨论放进同一份可追踪记录。
+- 使用 Coding Agent 的团队：检查 AI 生成或修改的测试到底绑定了什么证据。
+- 维护多语言项目的工程团队：用同一套测试义务和映射模型连接 pytest、JUnit、Playwright 等工具链。
+- 需要 PR 级风险提示的团队：在变更路径影响到业务义务时，先缩小回归和补证范围。
+
+QCov 不适合用来替代测试运行器、覆盖率工具、安全扫描器或可观测性平台。它更像这些工具之上的一层证据整理和缺口判断——负责把“已经运行过什么”与“已经证明什么”分开。
+
+## 从一个小义务开始
+
+最快的方式，是先写一条真实的 `TestingObligation`，声明需要的证据维度，运行 `qcov gaps`，再把一个已经存在的 JUnit 或 Playwright 记录显式映射进去。这样很快就能看出哪些结果只是工件清单，哪些结果真的能改变缺口。
+
+可以从 [QCov GitHub 仓库](https://github.com/AI-Native-QA-Lab/QCov) 开始，再阅读 [五分钟快速上手](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/zh-CN/getting-started.md)、[核心概念](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/zh-CN/concepts.md)、[显式证据映射](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/zh-CN/mapping.md) 和 [策略门禁](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/zh-CN/policy.md)。
+
+测试都通过了。很好。现在再问一句：它到底证明了什么？

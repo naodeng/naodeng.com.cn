@@ -1,0 +1,183 @@
+---
+title: "QCov: From Passing Tests to Reviewable Quality Evidence"
+description: "An introduction to QCov, a local deterministic quality-evidence gap engine and coverage protocol that connects requirements, risks, test artifacts, and change impact."
+date: 2026-09-14T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "Quality Engineering", "QA Tools"]
+categories: ["AI", "Quality Engineering"]
+series: ["AI Testing"]
+
+---
+
+# QCov: From Passing Tests to Reviewable Quality Evidence
+
+“The tests pass” is often the last sentence in a release conversation. The harder questions come after it: which requirement did they prove? Which risk did they exercise? Did the latest code change invalidate the evidence that used to count?
+
+When requirements live in documents, test results live in reports, risks live in review notes, and changes live in a Git diff, a green pipeline can quietly stand in for a complete argument. Test count, coverage percentage, and CI status all matter. None of them automatically answers whether a business obligation has been proven.
+
+[QCov](https://github.com/AI-Native-QA-Lab/QCov) is built for that gap. It is an open-source **Quality Evidence Gap Engine** and **Quality Coverage Protocol** with one central question:
+
+> Find what your tests still don't prove.
+
+The sentence is simple. Turning it into an engineering workflow requires explicit obligations, evidence, mappings, changes, and policy. QCov keeps those records local, versionable, and reviewable.
+
+If you first want to inspect whether AI-generated tests contain explicit static evidence, read [AI Test Auditor: Inspect what AI-generated tests actually verify](/en/blog/ai-testing/ai-test-auditor-static-evidence-for-ai-generated-tests/). QCov addresses the next layer: whether those results form a reviewable evidence chain around requirements, risks, and changes.
+
+## Start with the question teams often skip: what did the passing test prove?
+
+Suppose a refund requirement says that the total refunded amount must never exceed the amount paid. That requirement has at least one business invariant:
+
+```yaml
+invariants:
+  - id: INV-REFUND-001
+    expression: total_refund <= paid_amount
+requiredEvidence:
+  behavior: [api_test]
+  boundary: [property_test]
+  data: [database_invariant]
+  concurrency: [concurrency_test]
+  idempotency: [idempotency_test]
+  production: [runtime_monitor]
+```
+
+A passing API test only tells you that it did not fail within its own execution scope. It does not mean that boundary behavior, database invariants, concurrency, idempotency, and production behavior have also been proven.
+
+QCov's `TestingObligation` describes why something must be verified. `QualityEvidence` describes which machine-readable evidence is bound to that obligation. The engine compares the two and reports the current state:
+
+| Status | Meaning |
+| --- | --- |
+| `COVERED` | The declared evidence dimensions are satisfied |
+| `PARTIAL` | Some dimensions have evidence, while gaps remain |
+| `MISSING` | Required evidence has not been supplied |
+| `UNKNOWN` | The current inputs are insufficient for a reliable decision |
+
+The repository's Refund fixture intentionally reports `PARTIAL`: behavior, boundary, and data evidence exist, while concurrency, idempotency, and production evidence remain unproven. That is closer to an honest quality conversation than expanding one passing API test into “the refund logic is covered.”
+
+## The core path: artifacts become evidence only through explicit mapping
+
+QCov's data flow looks like this:
+
+```text
+TestingObligation
+    → local test reports / observation artifacts as inventory
+    → explicit EvidenceMapping
+    → QualityEvidence
+    → deterministic Gap Engine
+    → Markdown / JSON report
+```
+
+The middle step is the important one. QCov does not guess obligations from test names or infer business coverage from a percentage. An `EvidenceMapping` explicitly names the producer and identity—for example, a JUnit, Playwright, or production-observation record—along with the obligation it supports, the evidence dimension, and the evidence type.
+
+`qcov scan` discovers local artifacts. It can read explicit `@pytest.mark.qcov` markers, JUnit XML, coverage.py XML, Playwright JSON, LCOV, and production observations, but it does not run pytest, Maven, Gradle, npm, or Playwright.
+
+Finding a report or observation does not remove a gap. JUnit, Playwright, and production-observation inventory records need explicit mapping before they can materialize as `QualityEvidence`; coverage.py, LCOV, and JaCoCo remain inventory only. They can tell you where data exists. They cannot, by themselves, prove a business obligation.
+
+The boundary is strict because it answers a common and annoying question: why does `gaps` still show a gap when the report contains plenty of tests? Because “a report exists” and “the report proves this specific obligation” are different facts.
+
+## Run QCov in five minutes
+
+QCov requires Python 3.11+. QCov is a Python CLI even when the project being assessed uses Java, TypeScript, or another stack.
+
+```bash
+git clone https://github.com/AI-Native-QA-Lab/QCov.git
+cd QCov
+python3 -m venv .venv
+.venv/bin/python -m pip install -e '.[dev]'
+
+.venv/bin/python -m qcov gaps \
+  --obligation examples/refund/obligation.yaml \
+  --evidence examples/refund/evidence
+```
+
+The fixture intentionally keeps a gap open and returns a result like this:
+
+```text
+Status: `PARTIAL`
+Unproven dimensions: Concurrency, Idempotency, Production
+```
+
+Then follow the repository's five-minute path:
+
+```bash
+# Read local report inventory without running tests
+.venv/bin/python -m qcov scan \
+  --config examples/imported-reports/qcov.yaml
+
+# Preview the explicit inventory → evidence mappings
+.venv/bin/python -m qcov map preview \
+  --config examples/imported-reports/qcov.yaml \
+  --format json
+
+# Merge configured evidence and evaluate the gaps again
+.venv/bin/python -m qcov gaps \
+  --config examples/imported-reports/qcov.yaml
+```
+
+The order is deliberate: inspect the gaps, scan the artifacts produced by existing tools, preview the mapping, and then evaluate again. Each step can be inspected on its own, so a problem is easier to locate—whether it is an obligation, path, inventory, mapping, or evidence issue.
+
+## Bring change impact and local policy into the same workflow
+
+QCov can compare more than the current snapshot. For committed Git trees, `qcov diff` compares obligation and evidence snapshots. `qcov impact` uses explicit changed-path mappings to find affected obligations. `qcov affected` narrows that list to affected obligations that are not currently `COVERED`.
+
+The following example assumes that the assessed project already has `qcov.yaml` and `impact.yaml` defining its obligations and changed-path mappings. It is an integration example, not a command that runs immediately after cloning QCov.
+
+```bash
+.venv/bin/python -m qcov impact \
+  --config qcov.yaml \
+  --impact-config impact.yaml \
+  --changed-file src/payments/refund.py \
+  --format json
+```
+
+With a direct `--changed-file`, QCov can report affected obligations, but it does not pretend to have calculated a gap delta. To compare two local Git snapshots, use `--base` and `--head`. QCov reads Git objects only—it does not fetch, switch commits, run tests, or silently include uncommitted or untracked files.
+
+Policy gates stay local as well:
+
+```bash
+.venv/bin/python -m qcov policy check \
+  --config examples/imported-reports/qcov.yaml \
+  --policy examples/refund/policy.yaml \
+  --as-of 2026-09-07T00:00:00+08:00
+```
+
+`policy check` applies policy to an existing coverage status. Allowed statuses, exact obligation waivers, and expiry dates live in the policy file. The policy report can return `PASS`, `WARN`, or `BLOCK`, but it does not mutate the original evidence or turn `PARTIAL` into `COVERED`.
+
+The repository also provides `qcov obligation suggest`, `qcov risk analyze`, `qcov plan`, and Agent helpers. They can organize requirements, analyze risk, rank the next verification task, or explain a gap. They are proposal or assistant outputs—not QualityEvidence, and not gate authority.
+
+## QCov can consume evidence from Python, Java, and TypeScript toolchains
+
+QCov does not require every team to use the same test framework. Tool output enters through adapters and explicit mappings; final evaluation uses one protocol.
+
+| Entry point | What QCov reads | Evidence boundary |
+| --- | --- | --- |
+| Python / pytest | Explicit `@pytest.mark.qcov` markers, authored `QualityEvidence`, coverage.py | An explicit marker creates `unknown` evidence and does not satisfy an obligation on its own; valid authored `QualityEvidence` can be evaluated; coverage.py is inventory only |
+| Java / JUnit / JaCoCo | JUnit XML and JaCoCo inventory | Selected JUnit identities need explicit mapping; JaCoCo ratios do not satisfy an obligation by themselves |
+| TypeScript / Playwright | Playwright JSON and LCOV | Selected Playwright identities need explicit mapping; LCOV is inventory only |
+| Production observations | Versioned runtime, incident, and observability artifacts | Production observations need explicit mapping; QCov does not access a remote observability platform |
+
+That is the division of labor between QCov and a traditional coverage report. Coverage tells you which code locations were executed. QCov asks the next questions: which requirement, risk, or invariant does that execution relate to, which dimension did it prove, and what remains?
+
+## What QCov v1.0.0 ships—and what it still does not promise
+
+QCov [`v1.0.0`](https://github.com/AI-Native-QA-Lab/QCov/tree/v1.0.0) adds deterministic `qcov impact` / `qcov affected`, the stable `qcov.impact/v1` output contract, the public `qcov.adapter/v1` Adapter SDK, a JaCoCo inventory adapter, and case-study input packages based on real Python, Java, and TypeScript projects. The documentation, protocol, and reports have English and Chinese entry points.
+
+The case-study inputs need a precise description. They are redacted, reproducible validation inputs that retain metadata, obligations, commands, and mapping boundaries. They do not copy external projects into QCov, and they are not proof that every project will automatically receive complete coverage. The repository's [case-study documentation](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/case-studies/README.md) currently keeps all three Release Gates at `NOT_MET` because identified false gaps still need to be re-adjudicated after fixes.
+
+That is a boundary the project should state plainly. QCov is useful because it keeps proven, partially proven, missing, and unresolved claims separate. A passing code-quality check, a passing test run, reproducible case inputs, and a passing business Release Gate are separate facts.
+
+## Who should try it first
+
+- QA and test leads who want requirements, risks, test results, and release conversations in one traceable record.
+- Teams using coding agents who need to inspect what evidence an AI-generated or AI-modified test actually binds to.
+- Engineering teams supporting multiple stacks who want a single obligation-and-mapping model across pytest, JUnit, Playwright, and related tools.
+- Teams that want PR-level risk signals before deciding where regression or additional evidence belongs.
+
+QCov is not a replacement for a test runner, coverage tool, security scanner, or observability platform. It is the evidence and gap layer above those tools—keeping “what ran” separate from “what has been proven.”
+
+## Start with one real obligation
+
+Start with one real `TestingObligation`, declare its required evidence dimensions, run `qcov gaps`, and explicitly map one existing JUnit or Playwright identity. This makes it clear which results are only inventory and which results can actually change the gap.
+
+Start with the [QCov GitHub repository](https://github.com/AI-Native-QA-Lab/QCov), then read the [five-minute getting-started guide](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/en/getting-started.md), [concepts](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/en/concepts.md), [explicit evidence mapping](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/en/mapping.md), and [policy gates](https://github.com/AI-Native-QA-Lab/QCov/blob/main/docs/en/policy.md).
+
+Your tests passed. Good. Now ask one more question: what did they actually prove?
