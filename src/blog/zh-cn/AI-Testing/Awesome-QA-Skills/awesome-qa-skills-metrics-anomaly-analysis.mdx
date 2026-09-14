@@ -1,5 +1,5 @@
 ---
-title: "指标异常分析先确定时间窗口和影响范围"
+title: "指标异常分析 Skill：先确定时间窗口和影响范围"
 description: "指标异常分析 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-22T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ series: ["Awesome QA Skills 实战"]
 2. 直接套固定阈值，没说明季节性、活动或流量变化。
 3. 把相关性写成根因，跳过日志、Trace 或实验验证。
 4. 告警恢复后删除窗口和样本，下一次无法复盘。
+
+## 相关 Skill
+
+指标异常需要和日志、Trace 及性能结果互相验证：
+
+- [日志分析](https://inaodeng.com/zh-cn/qaskills/log-analysis/)：从异常时间窗中归并同一类错误。
+- [分布式链路分析](https://inaodeng.com/zh-cn/qaskills/distributed-trace-analysis/)：定位异常是否集中在某条服务链路。
+- [性能结果分析](https://inaodeng.com/zh-cn/qaskills/performance-result-analysis/)：解释延迟、吞吐和资源曲线的变化。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

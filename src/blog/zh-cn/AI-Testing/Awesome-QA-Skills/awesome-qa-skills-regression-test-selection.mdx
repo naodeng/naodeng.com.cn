@@ -1,5 +1,5 @@
 ---
-title: "回归测试选择：时间不够时怎样挑出最值得跑的用例"
+title: "回归测试选择 Skill：时间不够时怎样挑出最值得跑的用例"
 description: "回归测试选择 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-16T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ series: ["Awesome QA Skills 实战"]
 2. 说“跑核心用例”却没有定义核心范围。
 3. 排除测试后没有保留风险和补跑时间。
 4. 结果出来后没有回写选择规则，下一次仍靠个人经验挑选。
+
+## 相关 Skill
+
+回归测试选择需要先知道改了什么，再判断时间预算内跑什么：
+
+- [回归范围分析](https://inaodeng.com/zh-cn/qaskills/regression-scope-analysis/)：明确受影响的模块和边界。
+- [变更影响分析](https://inaodeng.com/zh-cn/qaskills/change-impact-analysis/)：连接代码、依赖和业务链路。
+- [测试报告](https://inaodeng.com/zh-cn/qaskills/test-reporting/)：记录选择依据、执行结果和未覆盖项。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

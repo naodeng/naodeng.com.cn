@@ -1,5 +1,5 @@
 ---
-title: "AI Agent 测试要看：记忆、规划和失败恢复能否接上"
+title: "AI Agent 测试 Skill：记忆、规划和失败恢复能否接上"
 description: "AI Agent 测试 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-30T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ AI Agent 测试适合验证客服、研发或运营 Agent 的规划、记忆和�
 2. 用一条成功会话代表 Agent 在多轮任务中的稳定性。
 3. 记忆没有版本和来源，导致旧事实继续影响新任务。
 4. 失败后无限重试，却没有停止条件和人工接管路径。
+
+## 相关 Skill
+
+AI Agent 测试要和模型、工具及安全测试互相校验：
+
+- [Agent 工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：检查具体工具的权限、参数和副作用。
+- [LLM 测试](https://inaodeng.com/zh-cn/qaskills/llm-testing/)：覆盖事实、拒答、稳定性和安全边界。
+- [提示注入测试](https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/)：验证恶意输入下的越权和数据外泄风险。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

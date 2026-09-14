@@ -108,6 +108,36 @@ Skill 变更验证 Skill 在代表性任务上对照预期与观察到的行为�
 
 先引用位置，再写问题。区分契约缺失、表达问题和个人偏好。证据等级 相关的问题应说明会导致什么行为漂移。修完以后重新检查，不要只把措辞改得更顺。
 
+## 相关 Skill
+
+Skill 变更验证需要同时检查文案、示例和实际行为：
+
+- [Skill 文案契约审查](https://inaodeng.com/zh-cn/qaskills/skill-prose-review/)：检查承诺、边界、优先级和证据要求。
+- [Skill 文案清理](https://inaodeng.com/zh-cn/qaskills/skill-prose-trim/)：删除过程噪声，保留可执行约束。
+- [测试报告](https://inaodeng.com/zh-cn/qaskills/test-reporting/)：留存运行命令、结果和未完成项。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
+
 ## 安装与调用
 
 安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。

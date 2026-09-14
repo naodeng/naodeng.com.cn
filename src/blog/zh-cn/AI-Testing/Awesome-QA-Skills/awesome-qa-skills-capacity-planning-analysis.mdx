@@ -1,5 +1,5 @@
 ---
-title: "容量规划分析：流量再涨一倍，系统先会在哪条曲线拐弯"
+title: "容量规划分析 Skill：流量再涨一倍，系统先会在哪条曲线拐弯"
 description: "容量规划分析 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-21T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ series: ["Awesome QA Skills 实战"]
 2. 看到 CPU 余量就宣布容量充足，忽略数据库、连接池或队列先到上限。
 3. 用一次压测曲线外推全年增长，没有说明假设和置信度。
 4. 给出扩容数字，却没有成本、交付周期和回滚条件。
+
+## 相关 Skill
+
+容量规划要接上负载假设、性能结果和线上验证：
+
+- [性能负载建模](https://inaodeng.com/zh-cn/qaskills/performance-workload-modeling/)：把业务增长和峰值流量变成可复现负载。
+- [性能结果分析](https://inaodeng.com/zh-cn/qaskills/performance-result-analysis/)：解释吞吐、尾延迟和资源曲线。
+- [生产验证](https://inaodeng.com/zh-cn/qaskills/production-verification/)：用线上业务信号复核容量假设。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

@@ -1,5 +1,5 @@
 ---
-title: "性能负载建模：生产流量怎样变成可复现的性能负载"
+title: "性能负载建模 Skill：生产流量怎样变成可复现的性能负载"
 description: "性能负载建模 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-17T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ series: ["Awesome QA Skills 实战"]
 2. 把峰值瞬间当成持续负载，导致容量判断失真。
 3. 忽略数据创建、清理和账号隔离，脚本无法重复运行。
 4. 没有写出排除项，读者误以为模型覆盖完整生产流量。
+
+## 相关 Skill
+
+性能负载建模产出的假设要继续进入容量和结果判断：
+
+- [容量规划分析](https://inaodeng.com/zh-cn/qaskills/capacity-planning-analysis/)：把负载增长和资源上限接成扩容条件。
+- [性能测试](https://inaodeng.com/zh-cn/qaskills/performance-testing/)：把模型落成可执行的测试目标和门禁。
+- [性能结果分析](https://inaodeng.com/zh-cn/qaskills/performance-result-analysis/)：检查结果是否真的覆盖模型假设。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

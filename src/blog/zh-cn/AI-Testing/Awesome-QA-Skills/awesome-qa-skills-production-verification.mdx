@@ -1,5 +1,5 @@
 ---
-title: "生产验证要对齐业务信号，发布完成才有后续证据"
+title: "生产验证 Skill：要对齐业务信号，发布完成才有后续证据"
 description: "生产验证 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-23T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ series: ["Awesome QA Skills 实战"]
 2. 没有对照窗口，把自然波动当成发布影响。
 3. 验证结果没有绑定构建号和发布批次。
 4. 设了回滚阈值，却没有明确谁执行、如何确认恢复。
+
+## 相关 Skill
+
+生产验证需要和事故背景、发布证据及业务质量判断互相连接：
+
+- [生产事故分析](https://inaodeng.com/zh-cn/qaskills/production-incident-analysis/)：理解验证动作要覆盖的风险来源。
+- [测试报告](https://inaodeng.com/zh-cn/qaskills/test-reporting/)：固定命令、结果、时间窗口和证据边界。
+- [QA 质量视角](https://inaodeng.com/zh-cn/qaskills/qa-quality-perspective/)：把线上信号接回发布结论。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

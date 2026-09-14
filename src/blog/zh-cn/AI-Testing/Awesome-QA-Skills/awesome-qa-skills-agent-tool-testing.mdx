@@ -1,5 +1,5 @@
 ---
-title: "退款工具被调用时，Agent 工具调用测试先看权限和副作用"
+title: "Agent 工具调用测试 Skill：退款工具被调用时先看权限和副作用"
 description: "Agent 工具调用测试 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-30T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ Agent 工具调用测试适合维护 Agent 工具目录、权限策略和写操�
 2. 用 mock 的成功响应替代真实失败、超时和拒绝路径。
 3. 重试写操作却没有检查重复订单、重复通知或重复扣款。
 4. 记录了响应，却没有记录工具调用造成的数据变化。
+
+## 相关 Skill
+
+工具调用测试需要和 Agent 行为、安全边界及上线后的验证接起来：
+
+- [AI Agent 测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：检查规划、记忆、失败恢复和最终目标是否一致。
+- [提示注入测试](https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/)：验证恶意输入能否诱导越权调用或泄露数据。
+- [生产验证](https://inaodeng.com/zh-cn/qaskills/production-verification/)：把线上业务信号和工具副作用接回发布判断。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

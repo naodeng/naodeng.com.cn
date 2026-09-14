@@ -1,5 +1,5 @@
 ---
-title: "分布式链路分析：一条 Trace 里慢请求究竟卡在哪个服务"
+title: "分布式链路分析 Skill：一条 Trace 里慢请求究竟卡在哪个服务"
 description: "分布式链路分析 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-22T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ series: ["Awesome QA Skills 实战"]
 2. 把采样不完整的 Trace 当作全链路事实。
 3. 没有对齐部署版本和时间窗口，就比较不同请求。
 4. 看到最长 Span 就直接归责，未用指标和日志验证。
+
+## 相关 Skill
+
+Trace 只能说明链路上的事实，根因和时间窗口还需要其他证据：
+
+- [指标异常分析](https://inaodeng.com/zh-cn/qaskills/metrics-anomaly-analysis/)：对齐同一时间窗口的系统信号。
+- [根因分析](https://inaodeng.com/zh-cn/qaskills/root-cause-analysis/)：把候选原因推进成可验证结论。
+- [生产事故分析](https://inaodeng.com/zh-cn/qaskills/production-incident-analysis/)：把链路证据接进止损和复盘时间线。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

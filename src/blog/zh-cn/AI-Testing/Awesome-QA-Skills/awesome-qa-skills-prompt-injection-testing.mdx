@@ -1,5 +1,5 @@
 ---
-title: "提示注入测试：Agent 遇到恶意输入时，越权和外泄怎么验"
+title: "提示注入测试 Skill：Agent 遇到恶意输入时，越权和外泄怎么验"
 description: "提示注入测试 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-30T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ series: ["Awesome QA Skills 实战"]
 2. 看到一次拒绝就宣布安全，没有测试改写、编码和多轮攻击。
 3. 在真实生产数据上测试，扩大了不必要的暴露面。
 4. 只记录模型回复，不记录工具调用和数据访问结果。
+
+## 相关 Skill
+
+提示注入测试要和模型行为、工具权限及整体安全评估一起看：
+
+- [LLM 测试](https://inaodeng.com/zh-cn/qaskills/llm-testing/)：检查拒答、事实和输出约束。
+- [Agent 工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：验证注入后是否发生越权工具调用。
+- [安全测试](https://inaodeng.com/zh-cn/qaskills/security-testing/)：补充攻击面、可利用性和修复验证。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

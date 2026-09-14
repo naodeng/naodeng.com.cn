@@ -1,5 +1,5 @@
 ---
-title: "性能瓶颈分析从哪里下手：压测、指标和 Trace 对不上时"
+title: "性能瓶颈分析 Skill：压测、指标和 Trace 对不上时从哪里下手"
 description: "性能瓶颈分析 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-21T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ CPU 高不一定是根因，数据库慢也可能只是上游重试的结果。�
 2. 用不同到达率或不同数据量比较两次压测。
 3. 看到相关曲线就下根因结论，没有做资源隔离或实验。
 4. 修复后只看平均响应时间，不复核尾延迟和错误率。
+
+## 相关 Skill
+
+性能瓶颈分析需要把压测数字和运行时因果链接起来：
+
+- [性能结果分析](https://inaodeng.com/zh-cn/qaskills/performance-result-analysis/)：解释吞吐、尾延迟、错误率和资源指标。
+- [分布式链路分析](https://inaodeng.com/zh-cn/qaskills/distributed-trace-analysis/)：确认慢请求卡在哪个服务和下游调用。
+- [指标异常分析](https://inaodeng.com/zh-cn/qaskills/metrics-anomaly-analysis/)：核对瓶颈是否对应同一时间窗的资源异常。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

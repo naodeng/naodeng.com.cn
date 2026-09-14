@@ -1,5 +1,5 @@
 ---
-title: "Prompt 改了一句，提示词测试要看多轮行为会不会漂"
+title: "提示词测试 Skill：Prompt 改了一句，多轮行为会不会漂"
 description: "提示词测试 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-28T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ Prompt 改动要使用固定任务集和明确评分规则，避免靠主观印�
 2. 用主观“更好”代替可复核的评分标准。
 3. 修改 Prompt 后没有保存旧版本，无法解释回归来源。
 4. 只测正常问题，漏掉边界、拒答和多语言输入。
+
+## 相关 Skill
+
+提示词测试要把 Prompt 变化和模型、Agent 的实际行为连接起来：
+
+- [LLM 测试](https://inaodeng.com/zh-cn/qaskills/llm-testing/)：比较事实、拒答、稳定性和安全边界。
+- [LLM 评测设计](https://inaodeng.com/zh-cn/qaskills/llm-evaluation-design/)：固定样本、评分规则和回归门槛。
+- [提示注入测试](https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/)：覆盖恶意指令、越权和数据外泄。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 

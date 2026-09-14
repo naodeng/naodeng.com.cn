@@ -1,5 +1,5 @@
 ---
-title: "性能回归分析怎样排除两个版本之间的环境噪声"
+title: "性能回归分析 Skill：怎样排除两个版本之间的环境噪声"
 description: "性能回归分析 实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
 date: 2026-09-21T09:00:00.000Z
 draft: true
@@ -104,6 +104,36 @@ series: ["Awesome QA Skills 实战"]
 2. 只看平均值，忽略尾延迟和错误率退化。
 3. 把缓存预热、依赖波动或流量差异当成代码回归。
 4. 发现退化后只调阈值，没有保留接受风险的理由。
+
+## 相关 Skill
+
+性能回归判断需要固定负载、解释结果并排除环境噪声：
+
+- [性能负载建模](https://inaodeng.com/zh-cn/qaskills/performance-workload-modeling/)：保持两个版本使用同一业务负载假设。
+- [性能结果分析](https://inaodeng.com/zh-cn/qaskills/performance-result-analysis/)：按统计口径解释差异和异常。
+- [性能测试](https://inaodeng.com/zh-cn/qaskills/performance-testing/)：确认执行条件、门禁和运行证据完整。
+
+## 交付前复核：把判断落到证据
+
+Skill 输出拿到手后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
+
+| 项目 | 需要留下 | 缺失时 |
+| --- | --- | --- |
+| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
+| 证据索引 | 日志、报告、Trace、截图或命令输出 | 标记 `evidence_pending` |
+| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
+| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
+
+```text
+source_version: [版本或提交]
+scope: [本次包含和排除的对象]
+evidence: [日志、报告、Trace 或命令输出]
+status: pending
+owner: [负责人]
+next_action: [最小验证动作]
+```
+
+分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，下一次复核才知道结论从哪里变化。
 
 ## 安装与调用
 
