@@ -1,6 +1,6 @@
 ---
-title: "REST Assured API 自动化：打造稳定可维护的 Java 接口回归"
-description: "REST Assured 接口自动化实战：用 RequestSpecification、对象映射和失败诊断维护 Java API 回归。"
+title: "REST Assured API 测试 Skill：把接口场景落成可执行自动化"
+description: "从接口定义、业务场景到可执行 REST Assured 用例：覆盖断言、数据、证据和回归接入。"
 date: 2026-09-14T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI 测试", "Agent Skills", "REST Assured 接口自动化"]
@@ -8,152 +8,169 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-Java 接口测试的可读性常在复杂的请求构造和断言链中消失。读者应能一眼看到请求意图、预期响应和失败时的重要线索。
+API 自动化测试测的是接口行为。用户能否创建订单、未授权请求返回什么、重复提交会不会多扣库存，这些规则和测试框架无关。REST Assured 的角色很明确：把已经确认的 API 场景落成 Java 项目能执行、能进 CI 的测试类。
 
-REST Assured API 测试 Skill 将请求准备、契约断言与诊断信息放在一起，使 Java 检查便于评审。
+`api-test-restassure` Skill 用于读取多种 API 材料，整理场景、断言、测试数据和证据要求，再生成 REST Assured 自动化。它不会替团队发明状态码，也不会把未执行的代码包装成测试结果。
 
-本文将用明确的输入、边界和输出组织实践过程，帮助你把结论交给下一个需要据此行动的人。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。通用安装方式见[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)；本文讲通用 API 测试怎样落到 REST Assured。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 REST Assured 接口自动化。
+## 先准备接口测试材料
 
-## 先看源 Skill
+OpenAPI、Swagger、Postman/Bruno Collection、接口文档、需求说明和既有测试都可以成为输入。选择哪一种不重要，版本和业务规则必须清楚。
 
-主 Prompt 把工作拆到 输入解析顺序、默认约定（无用户指定时直接采用）、Gotchas、交付前自检、质量要求。这些标题只是导航，真正使用时还要回到项目材料。
+开始前至少写明：
 
-源目录现有示例、参考和脚本入口。先看 [框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-restassure/references/framework-spec.md)。
+- 接口版本、基础地址和认证方式；
+- 本次覆盖的接口与业务链路；
+- 成功、权限、参数校验、状态冲突等关键场景；
+- 测试数据的创建、清理与隔离方式；
+- Java 版本、JUnit、构建工具和既有测试目录。
 
-如果团队已经维护 Bruno Collection，也可以把它作为接口材料交给 Skill 解析；Bruno 不是 REST Assured 的依赖，更不是开始回归测试的前提。
+例如，接口文档写了“创建订单”，却没有说幂等请求的返回语义。Skill 应把它列为待确认，而不是在测试里随手写一个 `409`。看起来完整的猜测，通常会在回归门禁里找回来。
 
-## 相关 Skill
+## 先写清场景，再生成框架代码
 
-REST Assured 负责把 Java 接口场景落成可执行测试。以下 Skill 处理它周围的契约、范围和证据问题：
-
-| Skill | 什么时候接上 | 它补什么 |
-| --- | --- | --- |
-| [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/) | schema、状态码或错误行为需要兼容性评审时 | 检查提供方与消费者的契约和版本演进风险 |
-| [回归测试选择](https://inaodeng.com/zh-cn/qaskills/regression-test-selection/) | 已知某个接口或 DTO 发生变更时 | 根据变更影响选择 REST Assured 回归集合 |
-| [测试报告](https://inaodeng.com/zh-cn/qaskills/test-reporting/) | 需要把 JUnit 结果交给评审或 CI 门禁时 | 固化命令、报告、失败请求和未覆盖边界 |
-
-## 从材料到可运行入口
-
-这次任务是：根据 OpenAPI 生成 REST Assured 测试类，处理认证、对象映射、断言和 CI 回归。
-
-给 Skill 的输入可以很短，但不能含糊。
+API 测试场景可以独立于 REST Assured 存在：
 
 ```text
-业务链路：登录 → 创建订单 → 支付 → 查询结果
-环境：staging
-已有材料：接口定义、测试账号、CI 运行方式
-交付：src/test/java/api/OrdersApiTest.java，附本地命令和失败证据
+场景：已登录用户创建订单
+前置：库存 book-001 为 2；用户拥有 buyer 权限
+请求：POST /api/orders，body 为 { "sku": "book-001", "quantity": 1 }
+预期响应：201；返回订单 ID、sku 和 PENDING 状态
+预期副作用：库存变为 1；发布 order.created 事件
+证据：测试报告、失败响应、构建号
 ```
 
-Skill 应先确认版本、认证方式和数据清理策略，再生成文件。示例输出片段如下，它展示结构，不代表代码已经运行。
+每项预期都对应一个可验证的接口规则。响应断言覆盖状态码、错误码和关键字段；有状态变化时，再检查数据库、事件或下游调用。这里的规则可以复用给其他框架，变化的是测试代码的语法和项目集成方式。
 
-```yaml
-tool: REST Assured
-entry: src/test/java/api/OrdersApiTest.java
-checks: 401/403 权限边界、错误 schema、重复请求幂等性
-run_evidence: pending
-```
+## 从输入材料到回归入口
 
-最后一行很重要。没有命令输出、报告或 Trace，就只能写 pending。源 Prompt 还要求关注 输入解析顺序、默认约定（无用户指定时直接采用）、Gotchas。
-
-## 把示例补成项目骨架
-
-代码片段只有放回目录和命令里才有用。下面这份骨架够小，适合先接通一条链路。
+先让 Skill 输出场景清单，再生成 Java 测试类。把业务规则、测试数据和构建入口分开存放，后续换框架或换环境时不必重新整理全部上下文：
 
 ```text
+docs/openapi.yaml                 # 路径、参数、schema
+docs/order-rules.md               # 幂等、库存和权限规则
+src/test/java/support/ApiSpec.java
 src/test/java/api/OrdersApiTest.java
-├── 场景与断言
-├── 数据或 feeder
-├── 环境配置
-└── 失败证据输出到 artifacts/
+build/test-results/               # JUnit 结果与失败响应
 ```
 
-本地或 CI 的第一条命令可以写成：
+场景清单至少列出请求、预期响应、状态变化、数据负责人和待确认项。生成的 `RequestSpecification`、fixture 和断言应当接入已有测试基础设施，避免并行维护两套认证和环境配置。
 
-```bash
-./gradlew test --tests api.OrdersApiTest
+## REST Assured 在这里做什么
+
+REST Assured 用 Java 链式 API 发送请求、校验响应，并和 JUnit、Gradle 或 Maven 进入同一套测试流程。认证、基础地址和公共 Header 可以放在 `RequestSpecification` 中，业务测试保持聚焦。
+
+```java
+String orderId = given()
+    .spec(ApiSpec.authenticated(token))
+    .contentType(ContentType.JSON)
+    .body(Map.of("sku", "book-001", "quantity", 1))
+.when()
+    .post("/api/orders")
+.then()
+    .statusCode(201)
+    .body("sku", equalTo("book-001"))
+    .body("status", equalTo("PENDING"))
+    .extract().path("id");
+
+assertThat(orderRepository.findById(orderId)).isPresent();
 ```
 
-把 RequestSpecification 与业务断言分开，认证变化时不用改遍所有测试类。
+项目若已有认证 helper、Testcontainers、fixture 或断言库，Skill 应复用它们。公共配置集中处理，测试方法表达具体业务场景，维护时会轻松很多。
 
-### 怎么算接入完成
+## 用 Skill 生成第一版用例
 
-| 检查项 | 最低要求 | 不满足时怎么处理 |
-| --- | --- | --- |
-| 可重复执行 | 连续运行不依赖上一次残留数据 | 重做数据创建与清理 |
-| 失败可定位 | 测试报告、失败请求与响应、接口版本、构建号 能回到同一次运行 | 给产物加 run ID 和构建号 |
-| CI 可判定 | 进程退出码与质量门禁一致 | 修正 reporter 或 threshold 配置 |
-| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取 RequestSpecification、对象映射或公共请求封装 |
-
-先只接一条关键链路。它在本地和 CI 都稳定以后，再扩到异常、边界和并发场景。
-
-## 一段可以直接改的调用词
-
-把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
-
-```text
-请使用 api-test-restassure Skill。
-
-任务：根据 OpenAPI 生成 Rest Assured 测试类，处理认证、对象映射、断言和 CI 回归
-版本与环境：[需求版本 / 构建号 / 环境]
-输入材料：[文件路径或链接]
-范围：[本次包含与排除的业务链路]
-限制：[账号、数据、时间、合规要求]
-
-先检查 Java、REST Assured 和构建工具版本，再确认 RequestSpecification、DTO 映射和认证方式。生成测试类、Gradle/Maven 命令与失败响应留档方式；代码未运行时，把结果标成待验证。
-最后列出待确认问题，不要补写材料里没有的事实。
-```
-
-第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
-
-## REST Assured 先解决对象映射和共享约定
-
-Java 项目最容易把请求构造、JSON 映射和业务断言塞进一个测试方法。先把认证、公共 Header 与基础地址收进 `RequestSpecification`，再让每个用例只表达业务前置条件、请求和断言。DTO 映射失败时保留原始响应；否则失败报告只会告诉你“反序列化失败”，定位不到接口变化。
-
-多人维护时，公共 Specification 的改动要配一个契约用例。它覆盖默认 Header、序列化格式和错误响应，而不是替每个业务场景重复做一遍登录。这样改认证或 API 版本时，失败会集中出现。
-
-## 这类工具最容易踩的坑
-
-1. 只生成代码，不给运行命令。拿到文件的人仍然不知道怎么验证。
-2. 忽略版本和依赖。REST Assured 的配置、API 和报告插件都会变化。
-3. 共用脏数据。接口、UI 和性能测试都会被残留数据拖垮。
-4. 把一次绿色结果写成长期稳定。至少保留报告、日志和失败重试信息。
-
-## 安装与调用
-
-安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
+安装：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-restassure -g -a codex -y
 ```
 
-调用时直接写“请使用 api-test-restassure Skill”，然后附上真实材料。
+调用时，把通用 API 规则和 Java 框架约束一起给出：
+
+```text
+请使用 api-test-restassure Skill。
+
+接口材料：docs/openapi.yaml、docs/order-rules.md
+测试范围：创建订单的成功、未登录、库存不足、重复提交
+测试数据：现有 Testcontainers 配置；每个用例结束后清理
+项目约定：Java 21、JUnit 5、Gradle；现有测试目录为 src/test/java/api
+交付：生成或更新 REST Assured 测试类，列出覆盖场景、未确认规则和未执行命令。
+
+复用已有 RequestSpecification、认证和断言约定；不要创建平行的测试基础设施。
+响应断言覆盖状态码、错误码和关键字段；有状态变化时检查必要副作用。
+不要把文档中没有定义的业务规则当成事实。
+```
+
+生成后先核对场景是否逐条对应接口材料，再执行项目测试：
+
+```bash
+./gradlew test --tests api.OrdersApiTest
+```
+
+Maven 项目使用项目约定的测试命令。测试报告、失败请求和响应、构建号才是执行证据；生成文件仍然需要运行验证。
+
+### 怎么判断已经接入
+
+| 检查项 | 最低要求 | 失败时的处理 |
+| --- | --- | --- |
+| 场景覆盖 | 成功、权限、参数、状态冲突都有明确结果 | 回到接口材料补规则 |
+| 可重复执行 | 每次运行创建自己的数据并完成清理 | 修正 fixture 或 Testcontainers |
+| 失败可定位 | 请求、响应、版本和 run ID 能对应同一次运行 | 补 Allure/JUnit 输出字段 |
+| CI 可判定 | Gradle/Maven 退出码与门禁规则一致 | 修正插件和测试筛选参数 |
+
+先接一条高价值链路。它在开发机和 CI 都能稳定复跑以后，再扩展分页、并发和跨服务场景。
+
+## 这类 API 自动化最容易踩的坑
+
+1. 只给 Skill 一个 URL，没有接口版本、账号和业务范围，生成结果只能猜。
+2. 把 Collection 的一次绿色执行当成 Java 回归证据，实际没有接入 Gradle 或 Maven。
+3. 所有用例共用固定订单号、Token 或库存，顺序一变就互相污染。
+4. 只断言 HTTP 状态码，错误体、对象映射和关键副作用变化没有被发现。
+5. 生成了测试类，却没有报告、失败响应和构建号，问题无法回溯。
+
+先看测试类能否被构建工具发现，再看报告能否回到具体请求。代码能编译只是入口成立，不能替代一次真实运行。
+
+## REST Assured 与其他 API 自动化框架的区别
+
+接口场景、验收规则和证据要求可以共享。框架按项目栈选，负责把它们变成可维护的代码。
+
+| 框架 | 适合的项目栈 | 生成产物 |
+| --- | --- | --- |
+| REST Assured | Java、JUnit、Gradle 或 Maven | Java 测试类 |
+| Supertest | Node.js、JavaScript、TypeScript | Supertest 测试脚本 |
+| Pytest | Python | Pytest 接口测试 |
+| Bruno | Collection 驱动的接口调试与回归 | Bruno Collection 与脚本 |
+
+项目从 Supertest 迁移到 REST Assured 时，业务场景和接口规则依然有效。需要调整的是语言、断言库、数据工具和 CI 命令。
+
+## 相关 Skill
+
+| Skill | 何时接入 |
+| --- | --- |
+| [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/) | OpenAPI、字段或错误语义发生变化 |
+| [回归测试选择](https://inaodeng.com/zh-cn/qaskills/regression-test-selection/) | 需要按改动范围挑选接口回归集合 |
+| [测试报告](https://inaodeng.com/zh-cn/qaskills/test-reporting/) | 需要把命令、报告、失败信息交给评审或 CI |
+
+先确认接口行为，再用 REST Assured 交付 Java 自动化。框架是执行层，业务规则才是测试真正要保护的东西。
 
 ## 常见问题
 
-### REST Assured 接口自动化会直接给我一个能跑的项目吗？
+### 没有 OpenAPI 也能用吗？
 
-有完整定义、版本、目录和依赖时，它可以生成很接近可运行的入口。最终仍要在你的仓库里安装依赖、执行命令并修正环境差异。
+可以。提供现有 Collection、接口文档、调用示例或需求说明；没有定义的状态码、错误码和业务规则要明确标为待确认。
 
-### 什么时候应该停下来补信息？
+### 可以把 Bruno Collection 直接交给这个 Skill 吗？
 
-认证方式、测试数据或目标版本缺失时先停。继续生成只会得到一份看起来完整的猜测。
+可以。它是 API 材料来源之一。最终交付是 REST Assured Java 测试类，Bruno 不需要成为 Java 项目依赖。
 
-### 代码生成后先检查哪一处？
+### 什么时候可以接入发布门禁？
 
-先看入口命令能否发现并运行目标文件，再看失败产物是否写到约定目录。连入口都没接通时，先别扩用例。
-
-### 可以直接放进发布门禁吗？
-
-等本地和 CI 使用同一命令、数据可重置、失败证据可追踪以后再放。
-
-先拿一份真实材料跑 REST Assured 接口自动化，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+当本地与 CI 使用同一命令、测试数据可重置、失败报告能定位到请求和版本时，就可以纳入门禁。
 
 ## 参考
+
 - Awesome QA Skills 项目主页：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- Awesome QA Skills 系列总览：[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- API 测试（REST Assured）补充参考资料：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-restassure/references/framework-spec.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-restassure/references/framework-spec.md)
-- Awesome QA Skills：API 测试（REST Assured）Skill 源文件：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-restassure](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-restassure)
-- REST Assured 接口自动化 Skill 详情页：[https://inaodeng.com/zh-cn/qaskills/api-test-restassure/](https://inaodeng.com/zh-cn/qaskills/api-test-restassure/)
+- REST Assured Skill：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-restassure](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-restassure)
+- REST Assured Skill 详情页：[https://inaodeng.com/zh-cn/qaskills/api-test-restassure/](https://inaodeng.com/zh-cn/qaskills/api-test-restassure/)

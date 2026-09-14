@@ -1,6 +1,6 @@
 ---
-title: "Supertest API 测试 Skill：让接口验证融入 Node.js 测试体系"
-description: "Supertest 接口自动化实战：围绕应用实例、HTTP 断言和测试数据隔离组织 Node API 回归。"
+title: "Supertest API 测试 Skill：把接口场景落成可执行自动化"
+description: "从接口定义、业务场景到可执行 Supertest 用例：覆盖断言、数据、证据和回归接入。"
 date: 2026-09-14T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI 测试", "Agent Skills", "Supertest 接口自动化"]
@@ -8,152 +8,164 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-Node 服务的接口测试如果只断言状态码，很容易遗漏中间件、错误体和异步状态带来的真实行为变化。Supertest 应围绕 HTTP 边界而不是内部实现组织。
+API 自动化测试先回答业务问题，再选择框架。登录失败该返回什么？订单重复提交怎么处理？库存不足时调用方依赖哪个错误码？这些答案来自接口定义、需求和现有行为。Supertest 负责把答案写成 Node.js 项目能执行的测试。
 
-Supertest API 测试 Skill 从客户端视角覆盖路由、鉴权、载荷校验和错误结构，而不耦合框架内部。
+`api-test-supertest` Skill 的工作是读取多种 API 材料，整理场景和边界，再生成可运行的 Supertest 脚本。它不替项目定义接口，也不把没有执行过的测试写成已通过。
 
-本文将用明确的输入、边界和输出组织实践过程，帮助你把结论交给下一个需要据此行动的人。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。通用安装方式见[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)；本文只讲 API 测试落到 Supertest 时该如何使用它。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里只讲 Supertest 接口自动化。
+## 先准备接口测试材料
 
-## 先看源 Skill
+Skill 可以读取 OpenAPI、Swagger、Postman/Bruno Collection、接口文档、需求说明和已有测试。材料越接近当前版本，生成结果越能直接进入回归。
 
-主 Prompt 把工作拆到 输入解析顺序、默认约定（无用户指定时直接采用）、Gotchas、交付前自检、质量要求。这些标题只是导航，真正使用时还要回到项目材料。
+至少明确这几件事：
 
-源目录现有示例、参考和脚本入口。先看 [框架使用说明](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-supertest/references/framework-spec.md)。
+- 接口版本、基础地址和认证方式；
+- 本次业务范围，例如“创建订单”和“取消订单”；
+- 成功、权限、参数校验、状态冲突等关键场景；
+- 测试数据如何创建和清理；
+- 现有测试目录、运行命令和 CI 产物位置。
 
-如果团队已经维护 Bruno Collection，也可以把它作为接口材料交给 Skill 解析；Bruno 不是 Supertest 的依赖，更不是开始回归测试的前提。
+接口文档只写了 `POST /orders` 时，Skill 可以补出待确认问题；它不能凭空决定重复请求应返回 `200`、`201` 还是 `409`。这一步省不了，后面所有断言都依赖它。
 
-## 相关 Skill
+## 用统一场景描述 API 测试
 
-Supertest 负责把接口场景落成 Node 应用实例上的 HTTP 测试。遇到下面这些相邻问题时，再把结果交给对应 Skill：
-
-| Skill | 什么时候接上 | 它补什么 |
-| --- | --- | --- |
-| [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/) | OpenAPI、错误体或字段兼容性发生变化时 | 检查提供方与消费者之间的契约、语义和迁移风险 |
-| [回归测试选择](https://inaodeng.com/zh-cn/qaskills/regression-test-selection/) | 接口改动已经定位到影响范围时 | 根据变更、依赖和历史失败选择本次回归集合 |
-| [测试报告](https://inaodeng.com/zh-cn/qaskills/test-reporting/) | 测试已经执行，需要给出可复核结论时 | 整理命令、报告、失败请求和证据边界 |
-
-## 从材料到可运行入口
-
-这次任务是：为 Node.js API 生成 Supertest 测试套件，隔离应用实例、数据和认证状态。
-
-给 Skill 的输入可以很短，但不能含糊。
+框架会变，场景骨架保持稳定。先把接口行为写清楚，再把它交给 Supertest：
 
 ```text
-业务链路：登录 → 创建订单 → 支付 → 查询结果
-环境：staging
-已有材料：接口定义、测试账号、CI 运行方式
-交付：tests/api/orders.api.test.ts，附本地命令和失败证据
+场景：已登录用户创建订单
+前置：库存 book-001 为 2；用户拥有 buyer 权限
+请求：POST /api/orders，body 为 { "sku": "book-001", "quantity": 1 }
+预期响应：201；返回订单 ID、sku 和 PENDING 状态
+预期副作用：库存变为 1；发布 order.created 事件
+证据：测试报告、失败响应、构建号
 ```
 
-Skill 应先确认版本、认证方式和数据清理策略，再生成文件。示例输出片段如下，它展示结构，不代表代码已经运行。
+一条完整的 API 用例至少验证响应语义；有状态变化时，再验证数据库、事件或下游调用。只断言状态码很快，接口把错误码、字段类型或副作用改坏时也容易漏过去。
 
-```yaml
-tool: Supertest
-entry: tests/api/orders.api.test.ts
-checks: 401/403 权限边界、错误 schema、重复请求幂等性
-run_evidence: pending
-```
+## 从输入材料到回归入口
 
-最后一行很重要。没有命令输出、报告或 Trace，就只能写 pending。源 Prompt 还要求关注 输入解析顺序、默认约定（无用户指定时直接采用）、Gotchas。
-
-## 把示例补成项目骨架
-
-代码片段只有放回目录和命令里才有用。下面这份骨架够小，适合先接通一条链路。
+把接口材料交给 Skill 后，先要求它输出场景清单，再生成测试文件。这个顺序能把“缺少业务规则”和“代码还没接通”分开：
 
 ```text
-tests/api/orders.api.test.ts
-├── 场景与断言
-├── 数据或 feeder
-├── 环境配置
-└── 失败证据输出到 artifacts/
+docs/openapi.yaml                 # 路径、参数、schema
+docs/order-rules.md               # 幂等、库存和权限规则
+tests/fixtures/orders.ts          # 数据创建与清理
+tests/api/orders.api.test.ts      # Supertest 回归入口
+artifacts/api/<run-id>/           # 报告、失败响应和日志
 ```
 
-本地或 CI 的第一条命令可以写成：
+场景清单至少列出请求、预期响应、状态变化、数据负责人和待确认项。Skill 生成代码时使用这些字段；评审时也能从测试反查业务规则。
 
-```bash
-npm test -- orders.api.test.ts
+## Supertest 在这里做什么
+
+场景确定后，Supertest 负责发送 HTTP 请求和断言响应。它在 Node.js 测试栈里落地，不改变 API 测试本身的业务语义。
+
+```ts
+import request from 'supertest';
+
+const response = await request(app)
+  .post('/api/orders')
+  .set('Authorization', `Bearer ${token}`)
+  .send({ sku: 'book-001', quantity: 1 });
+
+expect(response.status).toBe(201);
+expect(response.body).toMatchObject({ sku: 'book-001', status: 'PENDING' });
 ```
 
-每组测试创建隔离的应用实例，数据库状态在用例之间重置，别让执行顺序决定结果。
+认证、测试数据和外部依赖的具体写法由项目决定。Skill 应沿用项目已有的 fixture、helper 和断言库，避免生成一套没人维护的新约定。
 
-### 怎么算接入完成
+## 用 Skill 生成第一版用例
 
-| 检查项 | 最低要求 | 不满足时怎么处理 |
-| --- | --- | --- |
-| 可重复执行 | 连续运行不依赖上一次残留数据 | 重做数据创建与清理 |
-| 失败可定位 | 测试报告、失败请求与响应、接口版本、构建号 能回到同一次运行 | 给产物加 run ID 和构建号 |
-| CI 可判定 | 进程退出码与质量门禁一致 | 修正 reporter 或 threshold 配置 |
-| 维护成本 | 定位、认证或公共请求只有一个修改点 | 提取应用创建器、中间件装配或公共请求封装 |
-
-先只接一条关键链路。它在本地和 CI 都稳定以后，再扩到异常、边界和并发场景。
-
-## 一段可以直接改的调用词
-
-把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
-
-```text
-请使用 api-test-supertest Skill。
-
-任务：为 Node.js API 生成 Supertest 测试套件，隔离应用实例、数据和认证状态
-版本与环境：[需求版本 / 构建号 / 环境]
-输入材料：[文件路径或链接]
-范围：[本次包含与排除的业务链路]
-限制：[账号、数据、时间、合规要求]
-
-先确认 Node、应用创建器和中间件装配方式，再生成 Supertest 入口、测试数据清理和执行命令。断言要覆盖响应与关键副作用；代码未运行时，把结果标成待验证。
-最后列出待确认问题，不要补写材料里没有的事实。
-```
-
-第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
-
-## Supertest 的边界在应用实例，不在 HTTP 客户端
-
-Supertest 可以直接接入 Express 或 Nest 的应用实例。测试先决定哪些中间件、异常过滤器和依赖替身必须保留；把真实数据库、第三方支付和后台队列换成可控替身。否则测试看起来在验路由，实际把部署环境也拖进了断言。
-
-一条高价值用例要验证状态码、响应体和副作用。创建订单后，既检查 `201` 与订单字段，也检查消息是否入队或库存是否变化。清理数据写进 `afterEach`，不要依赖测试执行顺序。
-
-## 这类工具最容易踩的坑
-
-1. 只生成代码，不给运行命令。拿到文件的人仍然不知道怎么验证。
-2. 忽略版本和依赖。Supertest 的配置、API 和报告插件都会变化。
-3. 共用脏数据。接口、UI 和性能测试都会被残留数据拖垮。
-4. 把一次绿色结果写成长期稳定。至少保留报告、日志和失败重试信息。
-
-## 安装与调用
-
-安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
+安装：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-supertest -g -a codex -y
 ```
 
-调用时直接写“请使用 api-test-supertest Skill”，然后附上真实材料。
+调用时把通用 API 测试目标和 Supertest 的落地约束同时交代清楚：
+
+```text
+请使用 api-test-supertest Skill。
+
+接口材料：docs/openapi.yaml、docs/order-rules.md
+测试范围：创建订单的成功、未登录、库存不足、重复提交
+测试数据：tests/fixtures/orders.ts 创建；每个用例后清理
+项目约定：Vitest；现有 API 测试在 tests/api；执行命令为 npm test
+交付：生成或更新 Supertest 测试文件，列出覆盖场景、未确认规则和未执行命令。
+
+响应断言覆盖状态码、错误码和关键字段；有状态变化时检查必要副作用。
+不要把文档中没有定义的业务规则当成事实。
+```
+
+先检查生成的场景是否与接口规则逐条对应，再运行项目命令：
+
+```bash
+npm test -- orders.api.test.ts
+```
+
+命令输出、报告、失败请求与响应才是运行证据。生成的代码只是待验证产物。
+
+### 怎么判断已经接入
+
+| 检查项 | 最低要求 | 失败时的处理 |
+| --- | --- | --- |
+| 场景覆盖 | 成功、权限、参数、状态冲突都有明确结果 | 回到接口材料补规则 |
+| 可重复执行 | 每次运行创建自己的数据并完成清理 | 修正 fixture 或隔离策略 |
+| 失败可定位 | 请求、响应、版本和 run ID 能对应同一次运行 | 补 reporter 或日志字段 |
+| CI 可判定 | 测试退出码与门禁规则一致 | 修正脚本和 threshold |
+
+先接一条高价值链路。它在本地和 CI 都能稳定复跑以后，再扩展分页、并发和跨服务场景。
+
+## 这类 API 自动化最容易踩的坑
+
+1. 只给 Skill 一个 URL，没有接口版本、账号和业务范围，生成结果只能猜。
+2. 把 Bruno 或 Postman 的一次绿色执行当成长期回归证据，实际没有接入项目命令。
+3. 所有用例共用固定订单号或 Token，单独运行正常，并发运行就互相污染。
+4. 只断言 HTTP 状态码，错误体和关键副作用变化没有被发现。
+5. 生成文件放在仓库里，却没有报告目录、失败请求和构建号，问题无法回溯。
+
+这些问题都能在交付前检查出来。先看入口能否被测试运行器发现，再看证据是否能回到具体请求。
+
+## Supertest 与其他 API 自动化框架的区别
+
+测试目标相同：验证 HTTP 接口的业务行为与契约。差异在项目语言、测试生态和最终代码形态。
+
+| 框架 | 适合的项目栈 | 生成产物 |
+| --- | --- | --- |
+| Supertest | Node.js、JavaScript、TypeScript | Supertest 测试脚本 |
+| REST Assured | Java、JUnit、Gradle 或 Maven | Java 测试类 |
+| Pytest | Python | Pytest 接口测试 |
+| Bruno | Collection 驱动的接口调试与回归 | Bruno Collection 与脚本 |
+
+先按项目技术栈选框架，再复用同一份接口场景和验收规则。切换框架不该把业务测试重新想一遍。
+
+## 相关 Skill
+
+| Skill | 何时接入 |
+| --- | --- |
+| [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/) | OpenAPI、字段或错误语义发生变化 |
+| [回归测试选择](https://inaodeng.com/zh-cn/qaskills/regression-test-selection/) | 需要按改动范围挑选接口回归集合 |
+| [测试报告](https://inaodeng.com/zh-cn/qaskills/test-reporting/) | 需要把命令、报告、失败信息交给评审或 CI |
+
+API 测试的重点一直在接口行为。Supertest 是把它落进 Node.js 工程的工具，别让框架细节盖住真正要验证的规则。
 
 ## 常见问题
 
-### Supertest 接口自动化 会直接给我一个能跑的项目吗？
+### 没有 OpenAPI 也能用吗？
 
-有完整定义、版本、目录和依赖时，它可以生成很接近可运行的入口。最终仍要在你的仓库里安装依赖、执行命令并修正环境差异。
+可以。提供现有 Collection、接口文档、调用示例或需求说明；缺失的状态码、错误码和业务规则要列为待确认项。
 
-### 什么时候应该停下来补信息？
+### 可以把 Bruno Collection 直接交给这个 Skill 吗？
 
-认证方式、测试数据或目标版本缺失时先停。继续生成只会得到一份看起来完整的猜测。
+可以把它作为接口材料。最终交付仍是 Supertest 测试脚本，Bruno 不需要成为项目依赖。
 
-### 代码生成后先检查哪一处？
+### 什么时候可以接入发布门禁？
 
-先看入口命令能否发现并运行目标文件，再看失败产物是否写到约定目录。连入口都没接通时，先别扩用例。
-
-### 可以直接放进发布门禁吗？
-
-等本地和 CI 使用同一命令、数据可重置、失败证据可追踪以后再放。
-
-先拿一份真实材料跑 Supertest 接口自动化，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+本地和 CI 都用同一命令执行，测试数据可重置，失败报告可以定位到请求和版本后，再把它放进门禁。
 
 ## 参考
+
 - Awesome QA Skills 项目主页：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- Awesome QA Skills 系列总览：[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- API 测试（Supertest）补充参考资料：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-supertest/references/framework-spec.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-supertest/references/framework-spec.md)
-- Awesome QA Skills：API 测试（Supertest）Skill 源文件：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-supertest](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-supertest)
-- Supertest 接口自动化 Skill 详情页：[https://inaodeng.com/zh-cn/qaskills/api-test-supertest/](https://inaodeng.com/zh-cn/qaskills/api-test-supertest/)
+- Supertest Skill：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-supertest](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-test-supertest)
+- Supertest Skill 详情页：[https://inaodeng.com/zh-cn/qaskills/api-test-supertest/](https://inaodeng.com/zh-cn/qaskills/api-test-supertest/)
