@@ -425,7 +425,7 @@ BVA 通常与 **[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-parti
 
 在**设计阶段**，测试人员根据需求准备[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)和案例，而不考虑内部代码结构。随着**开发阶段**的进展，[黑盒测试](https://inaodeng.com/zh-cn/wiki/black-box-testing/) 用于根据要求验证开发的功能。这通常通过 **[手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/)** 或 **自动 [用户界面测试](https://inaodeng.com/zh-cn/wiki/ui-testing/)** 完成。
 
-在**测试阶段**，使用**边界值分析**、**[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)**和**[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)**等黑盒方法来确保全面覆盖应用程序的功能。这些技术有助于识别通过代码 [[检查](https://inaodeng.com/zh-cn/wiki/inspection/)](<https://inaodeng.com/zh-cn/wiki/[检查>](<https://inaodeng.com/zh-cn/wiki/inspection/)/>) 或 [白盒测试](https://inaodeng.com/zh-cn/wiki/white-box-testing/) 方法可能不明显的缺陷。
+在**测试阶段**，使用**边界值分析**、**[等价划分](https://inaodeng.com/zh-cn/wiki/equivalence-partitioning/)**和**[决策表测试](https://inaodeng.com/zh-cn/wiki/decision-table-testing/)**等黑盒方法来确保全面覆盖应用程序的功能。这些技术有助于识别通过代码 [检查](https://inaodeng.com/zh-cn/wiki/inspection/) 或 [白盒测试](https://inaodeng.com/zh-cn/wiki/white-box-testing/) 方法可能不明显的缺陷。
 
 在**暂存或预生产环境**中，[黑盒测试](https://inaodeng.com/zh-cn/wiki/black-box-testing/) 对于 **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** 和 **[用户验收测试](https://inaodeng.com/zh-cn/wiki/user-acceptance-testing/) (UAT)** 至关重要，确保软件满足业务需求并准备好部署。
 

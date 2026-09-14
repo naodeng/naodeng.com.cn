@@ -125,7 +125,7 @@ OTT测试评估通过互联网提供的视频、数据和语音服务的质量�
 - **内容测试**：验证媒体内容的准确性和质量。自动检查可以确保视频正确播放，并具有正确的音频和字幕轨道。
 - **流媒体质量测试**：自动化脚本模拟不同的网络条件来测试自适应比特率流媒体和缓冲区运行状况。
 - **[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)**：涉及向OTT平台的后端服务发送请求并验证响应，确保[API](https://inaodeng.com/zh-cn/wiki/api/)在各种场景下按预期执行。
-- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)**：自动化工具可用于测试不同版本的 OTT 服务，以确定哪些功能或设计可以带来更好的用户参与度。
+- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)**：自动化工具可用于测试不同版本的 OTT 服务，以确定哪些功能或设计可以带来更好的用户参与度。
 - **[本地化测试](https://inaodeng.com/zh-cn/wiki/localization-testing/)**：自动化测试验证服务是否针对不同区域进行了正确本地化，包括正确的翻译和内容可用性。
 - **分析测试**：确保正确跟踪用户交互，并确保收集的数据准确以供进一步分析。 这些技术通常集成到连续测试管道中，以实现 OTT 服务的快速反馈和迭代改进。
 
@@ -135,7 +135,7 @@ OTT测试评估通过互联网提供的视频、数据和语音服务的质量�
 - **内容测试**：验证媒体内容的准确性和质量。自动检查可以确保视频正确播放，并具有正确的音频和字幕轨道。
 - **流媒体质量测试**：自动化脚本模拟不同的网络条件来测试自适应比特率流媒体和缓冲区运行状况。
 - **[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)**：涉及向OTT平台的后端服务发送请求并验证响应，确保[API](https://inaodeng.com/zh-cn/wiki/api/)在各种场景下按预期执行。
-- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)**：自动化工具可用于测试不同版本的 OTT 服务，以确定哪些功能或设计可产生更好的用户参与度。
+- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)**：自动化工具可用于测试不同版本的 OTT 服务，以确定哪些功能或设计可产生更好的用户参与度。
 - **[本地化测试](https://inaodeng.com/zh-cn/wiki/localization-testing/)**：自动化测试验证服务是否针对不同区域进行了正确本地化，包括正确的翻译和内容可用性。
 - **分析测试**：确保正确跟踪用户交互，并确保收集的数据准确以供进一步分析。
 
@@ -371,7 +371,7 @@ OTT（Over-the-Top）中的 [功能测试](https://inaodeng.com/zh-cn/wiki/funct
 
 - **完善自动化框架**定期进行，以减少维护开销并提高测试稳定性。
 
-- **进行[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)**根据实际数据比较不同的方法并改善用户体验。
+- **进行[A/B testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)**根据实际数据比较不同的方法并改善用户体验。
 
 - **关注设备和平台覆盖**确保用于 OTT 服务的不同设备生态系统的兼容性。 通过实施这些策略，您可以提高 [OTT 测试](https://inaodeng.com/zh-cn/wiki/ott-testing/) 工作的效率和效果，从而获得更可靠和用户友好的产品。
 
@@ -391,6 +391,6 @@ OTT（Over-the-Top）中的 [功能测试](https://inaodeng.com/zh-cn/wiki/funct
 
 - **完善自动化框架**定期进行，以减少维护开销并提高测试稳定性。
 
-- **执行[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)**根据实际数据比较不同的方法并改善用户体验。
+- **执行[A/B testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)**根据实际数据比较不同的方法并改善用户体验。
 
 - **关注设备和平台覆盖**确保用于 OTT 服务的不同设备生态系统的兼容性。

@@ -317,6 +317,6 @@ SDLC 的维护阶段对于确保软件部署后的**寿命**和**相关性**至�
 ```
 **测试**：利用不同测试级别的工具——单元、集成、系统和验收。确保它们支持自动 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 创建、执行和报告。
   **登台/预生产**：自动进行回归和性能测试，以在模拟生产的环境中运行。
-  **生产**：实施用于部署后测试的监控工具，例如 [金丝雀测试](https://inaodeng.com/zh-cn/wiki/canary-testing/) 和 [A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)，以在实时环境中验证新功能。
+  **生产**：实施用于部署后测试的监控工具，例如 [金丝雀测试](https://inaodeng.com/zh-cn/wiki/canary-testing/) 和 [A/B testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)，以在实时环境中验证新功能。
   **维护**：安排自动测试定期运行，确保应用程序随着时间的推移保持稳定。
   在整个这些阶段中，保持对开发团队的反馈循环，以便对测试失败立即采取行动，并不断完善[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)以获得最大效率和覆盖范围。

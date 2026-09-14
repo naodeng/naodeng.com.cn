@@ -249,7 +249,7 @@ order: 0
 - **完善缓存策略**：调整静态资源的缓存策略以减少加载时间和服务器请求。
 - **简化代码**：缩小 CSS、JavaScript 和 HTML，以减小文件大小并提高解析效率。
 - **调整配置**：调整服务器和数据库配置，以在各种条件下实现最佳性能。
-- **执行[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)**：逐步实施变更并衡量其对性能的影响，以找到最有效的解决方案。
+- **执行[A/B testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)**：逐步实施变更并衡量其对性能的影响，以找到最有效的解决方案。
 - **持续监控**：建立持续的绩效监控以发现回归并确保持续改进。 通过系统地解决 [网页性能测试](https://inaodeng.com/zh-cn/wiki/web-performance-testing/) 突出显示的问题，您可以显着提高站点速度、可靠性和用户满意度。
 
 ### 挑战和解决方案

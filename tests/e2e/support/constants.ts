@@ -31,7 +31,7 @@ export const DOCS_SLUGS = ["why-astro", "installation", "project-structure", "co
 export const WIKI_SLUGS = [
   "acceptance-testing",
   "manual-testing",
-  "A-B-Testing",
+  "a-b-testing",
   "api-testing",
   "end-to-end-testing",
 ] as const;

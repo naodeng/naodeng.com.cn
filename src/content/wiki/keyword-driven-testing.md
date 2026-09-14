@@ -3,7 +3,7 @@ title: "关键字驱动测试 ｜ Keyword Driven Testing"
 description: "关键字驱动测试 (Keyword Driven Testing, KDT) 是一种测试自动化脚本技术，它将测试用例指令与实际的测试脚本逻辑分离。它利用一组预定义的关键字来代表在被测应用 (AUT) 上执行的动作。这些关键字是用户交互或系统状态的抽象表示，使测试更易于阅读和维护。在 KDT 中…"
 section: "K"
 related:
-  - A-B-Testing
+  - a-b-testing
   - automated-testing
   - test-script
   - manual-testing

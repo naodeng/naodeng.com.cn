@@ -204,7 +204,7 @@ test.describe("SEO 元数据", () => {
     }
   });
 
-  test("robots 与 sitemap 规则一致（不包含 /en/wiki/）", async ({ page, baseURL }) => {
+  test("robots 与 sitemap 规则一致（排除所有 Wiki 兼容旧路径）", async ({ page, baseURL }) => {
     const base = normalizeBase(baseURL);
 
     const robotsResp = await page.request.get(base + "/robots.txt");
@@ -246,7 +246,19 @@ test.describe("SEO 元数据", () => {
         return;
       }
     }
+
+    const childSitemapUrl = sitemapText.match(/<loc>([^<]*\/sitemap-0\.xml)<\/loc>/i)?.[1];
+    if (childSitemapUrl) {
+      const childSitemapPath = new URL(childSitemapUrl, base).pathname;
+      const childResp = await page.request.get(base + childSitemapPath);
+      if (childResp.ok()) sitemapText = await childResp.text();
+    }
+
     expect(sitemapText).not.toContain("/en/wiki/");
+    expect(sitemapText).not.toMatch(/\/zh-cn\/wiki\/wiki\//i);
+    expect(sitemapText).not.toMatch(/\/zh-cn\/wiki\/[^<]+\.md\//i);
+    expect(sitemapText).not.toMatch(/<loc>https:\/\/inaodeng\.com\/zh-cn\/wiki\/[^<]*[A-Z][^<]*<\/loc>/);
+    expect(sitemapText).toContain("<loc>https://inaodeng.com/zh-cn/wiki/a-b-testing/</loc>");
   });
 
   test("首页：JSON-LD 可解析且包含 WebSite", async ({ page, baseURL }) => {

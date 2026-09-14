@@ -8,6 +8,7 @@ import { getProjectHref } from "@/utils/projectLinks";
 import { LEARNING_SITES } from "@/consts";
 import { getQASkillsGrouped } from "@/utils/qaskills";
 import { aiwikiIdToLang, aiwikiIdToSlug, getAiWikiDisplayTitle } from "@/data/aiwiki";
+import { wikiIdToSlug } from "@/data/wiki";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 export const getStaticPaths = () => Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
@@ -32,7 +33,7 @@ const getPromptDescription = (title: string, description: string) => {
 };
 const prompts = (await getCollection("prompts")).filter((item) => item.data.lang === locale).sort((a, b) => a.data.order - b.data.order).map((item) => ({ title: item.data.title, description: getPromptDescription(item.data.title, item.data.description), href: getRelativeLocaleUrl(locale, `/prompts/${item.data.testingType}/`), tags: [item.data.testingType] }));
 const aiwiki = (await getCollection("aiwiki")).filter((item) => (item.data.lang || aiwikiIdToLang(item.id)) === locale).map((item) => ({ title: getAiWikiDisplayTitle(item, locale), description: item.data.summary || item.data.description || "", href: getRelativeLocaleUrl(locale, `/AIWiki/${item.data.slug || aiwikiIdToSlug(item.id)}/`), tags: item.data.topic ? [item.data.topic] : [] }));
-const wiki = isZh ? (await getCollection("wiki")).map((item) => ({ title: item.data.title || item.id, description: item.data.description || "", href: getRelativeLocaleUrl(locale, `/wiki/${item.id}/`), tags: item.data.section ? [item.data.section] : [] })) : [];
+const wiki = isZh ? (await getCollection("wiki")).map((item) => ({ title: item.data.title || item.id, description: item.data.description || "", href: getRelativeLocaleUrl(locale, `/wiki/${wikiIdToSlug(item.id)}/`), tags: item.data.section ? [item.data.section] : [] })) : [];
 const guides = (await getCollection("guild")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => a.data.order - b.data.order).map((item) => ({ title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/guild/${item.data.testType}/${item.data.framework}/`), tags: [item.data.framework, item.data.stage] }));
 const projects = PROJECTS_LIST.map((item) => ({ title: item.name[locale] || item.name.en || "Project", description: item.description[locale] || item.description.en || "", href: getProjectHref(locale, item), tags: (item.techStack[locale] || item.techStack.en || "").split(/[、,，]/).slice(0, 3) }));
 const posts = filterPublishedBlogPosts(await getCollection("blog")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).map((item) => { const [, ...parts] = item.id.split("/"); return { title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/blog/${parts.join("/").toLowerCase()}/`), tags: item.data.tags || [] }; });

@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
 import { defineConfig } from "astro/config";
 import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/locales";
+import { shouldIncludeInSitemap } from "./src/utils/seoUrls";
 
 // https://astro.build/config
 export default defineConfig({
@@ -48,11 +49,7 @@ export default defineConfig({
           ])
         ),
       },
-      filter: (page) => {
-        // 排除语言探测跳转页和英文 wiki 页面（wiki 是中文专属内容）。
-        // 根路径输出 noindex，不能进入 XML sitemap 或成为 hreflang 目标。
-        return page !== 'https://inaodeng.com/' && !page.includes('/en/wiki/');
-      },
+      filter: shouldIncludeInSitemap,
     }),
   ],
 });

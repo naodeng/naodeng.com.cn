@@ -144,7 +144,7 @@ function extractTocAnchors(body) {
 const wikiFiles = walk(WIKI_DIR, [".md"]);
 const aiwikiFiles = walk(AIWIKI_DIR, [".md"]);
 
-const wikiSlugs = new Set(wikiFiles.map((f) => path.basename(f, ".md")));
+const wikiSlugs = new Set(wikiFiles.map((f) => path.basename(f, ".md").toLowerCase()));
 const aiwikiSlugs = { en: new Set(), "zh-cn": new Set() };
 const aiwikiMeta = [];
 
@@ -208,7 +208,7 @@ for (const file of wikiFiles) {
   for (const link of collectLinks(body)) {
     if (/^https?:\/\//i.test(link) || link.startsWith("#") || link.startsWith("mailto:")) continue;
     const wikiMatch = link.match(/^\/(?:zh-cn|en)\/wiki\/([^/#?]+)\/?$/i);
-    if (wikiMatch && !wikiSlugs.has(wikiMatch[1])) {
+    if (wikiMatch && !wikiSlugs.has(wikiMatch[1].toLowerCase())) {
       pushIssue("broken_wiki_link", file, `无效 wiki 链接: ${link}`);
     }
     const aiMatch = link.match(/^\/(zh-cn|en)\/AIWiki\/([^/#?]+)\/?$/);
@@ -229,7 +229,7 @@ for (const file of wikiFiles) {
         pushIssue("related_self_ref", file, `related 包含自身: ${ref}`, "warn");
         continue;
       }
-      if (!wikiSlugs.has(ref)) pushIssue("related_unknown_slug", file, `related 指向不存在词条: ${ref}`);
+      if (!wikiSlugs.has(ref.toLowerCase())) pushIssue("related_unknown_slug", file, `related 指向不存在词条: ${ref}`);
     }
   }
 }
@@ -283,7 +283,7 @@ for (const meta of aiwikiMeta) {
   for (const link of collectLinks(body)) {
     if (/^https?:\/\//i.test(link) || link.startsWith("#") || link.startsWith("mailto:")) continue;
     const wikiMatch = link.match(/^\/(?:zh-cn|en)\/wiki\/([^/#?]+)\/?$/i);
-    if (wikiMatch && !wikiSlugs.has(wikiMatch[1])) {
+    if (wikiMatch && !wikiSlugs.has(wikiMatch[1].toLowerCase())) {
       pushIssue("broken_wiki_link", file, `无效 wiki 链接: ${link}`);
     }
     const aiMatch = link.match(/^\/(zh-cn|en)\/AIWiki\/([^/#?]+)\/?$/);

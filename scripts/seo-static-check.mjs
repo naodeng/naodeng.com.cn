@@ -82,7 +82,7 @@ const wikiFiles = walk(path.join(ROOT, "src/content/wiki"), [".md"]);
 const aiwikiFiles = walk(path.join(ROOT, "src/content/aiwiki"), [".md"]);
 const blogFiles = walk(path.join(ROOT, "src/blog"), [".mdx"]);
 
-const wikiSlugs = new Set(wikiFiles.map(slugifyFile));
+const wikiSlugs = new Set(wikiFiles.map((file) => slugifyFile(file).toLowerCase()));
 const aiwikiByLang = { en: new Set(), "zh-cn": new Set() };
 const pendingAIRelated = [];
 const pendingAILinks = [];
@@ -93,6 +93,8 @@ const issues = {
   longDescription: [],
   duplicateTitle: [],
   brokenLinks: [],
+  malformedMarkdownLinks: [],
+  legacyRelativeLinks: [],
   relatedUnknown: [],
   relatedSelf: [],
   orphanWiki: [],
@@ -127,37 +129,57 @@ for (const file of wikiFiles) {
   const raw = fs.readFileSync(file, "utf8");
   const { data, body } = parseFrontmatter(raw);
   const slug = slugifyFile(file);
+  const canonicalSlug = slug.toLowerCase();
+  const rel = toRepoPath(file);
   const title = data.title || "";
   const description = data.description || "";
-  if (!title) issues.missingTitle.push(toRepoPath(file));
-  if (!description) issues.missingDescription.push(toRepoPath(file));
+  if (!title) issues.missingTitle.push(rel);
+  if (!description) issues.missingDescription.push(rel);
   if (description && String(description).length > 155) {
-    issues.longDescription.push(`${toRepoPath(file)} (${String(description).length})`);
+    issues.longDescription.push(`${rel} (${String(description).length})`);
   }
-  addTitle(title, toRepoPath(file), "zh-cn");
+  addTitle(title, rel, "zh-cn");
   termLexicon["zh-cn"].add(String(slug).toLowerCase());
   termLexicon["zh-cn"].add(String(title).toLowerCase());
+
+  if (body.includes("[[")) issues.malformedMarkdownLinks.push(rel);
+  for (const match of body.matchAll(/\]\(\s*((?:\.\.\/[A-Z]\/|\/sections\/)[^)]+)/g)) {
+    issues.legacyRelativeLinks.push(`${rel} -> ${match[1].trim()}`);
+  }
 
   const related = Array.isArray(data.related) ? data.related : [];
   for (const r of related) {
     const norm = String(r).trim();
     if (!norm) continue;
-    if (norm.toLowerCase() === slug.toLowerCase()) {
+    const canonicalRelated = norm.toLowerCase();
+    if (canonicalRelated === canonicalSlug) {
       issues.relatedSelf.push(`${toRepoPath(file)} -> ${norm}`);
       continue;
     }
-    if (!wikiSlugs.has(norm)) {
+    if (!wikiSlugs.has(canonicalRelated)) {
       issues.relatedUnknown.push(`${toRepoPath(file)} -> ${norm}`);
       continue;
     }
-    relatedIncomingWiki.set(norm, (relatedIncomingWiki.get(norm) ?? 0) + 1);
+    relatedIncomingWiki.set(canonicalRelated, (relatedIncomingWiki.get(canonicalRelated) ?? 0) + 1);
   }
 
   for (const link of collectMarkdownLinks(body)) {
-    if (/^https?:\/\//i.test(link) || link.startsWith("#")) continue;
-    const mWiki = link.match(/^\/(?:zh-cn|en)\/wiki\/([^/#?]+)\/?$/i);
-    if (mWiki && !wikiSlugs.has(mWiki[1])) {
-      issues.brokenLinks.push(`${toRepoPath(file)} -> ${link}`);
+    if (link.startsWith("#")) continue;
+    let pathname;
+    try {
+      const url = new URL(link, "https://inaodeng.com");
+      if (url.origin !== "https://inaodeng.com") continue;
+      pathname = url.pathname;
+    } catch {
+      continue;
+    }
+    const mWiki = pathname.match(/^\/(zh-cn|en)\/wiki\/(.+?)\/?$/i);
+    if (!mWiki) continue;
+    const linkedSlug = decodeURIComponent(mWiki[2]).replace(/\/$/, "");
+    const normalizedLinkedSlug = linkedSlug.toLowerCase();
+    const isChineseWiki = mWiki[1].toLowerCase() === "zh-cn";
+    if (!wikiSlugs.has(normalizedLinkedSlug) || (isChineseWiki && (linkedSlug !== normalizedLinkedSlug || /\.md$/i.test(linkedSlug)))) {
+      issues.brokenLinks.push(`${rel} -> ${link}`);
     }
   }
 }
@@ -284,6 +306,8 @@ const summary = {
     longDescription: issues.longDescription.length,
     duplicateTitle: issues.duplicateTitle.length,
     brokenLinks: issues.brokenLinks.length,
+    malformedMarkdownLinks: issues.malformedMarkdownLinks.length,
+    legacyRelativeLinks: issues.legacyRelativeLinks.length,
     relatedUnknown: issues.relatedUnknown.length,
     relatedSelf: issues.relatedSelf.length,
     orphanWiki: issues.orphanWiki.length,
@@ -309,6 +333,8 @@ const md = `# SEO Baseline Report v1
 - longDescription: ${summary.counts.longDescription}
 - duplicateTitle: ${summary.counts.duplicateTitle}
 - brokenLinks: ${summary.counts.brokenLinks}
+- malformedMarkdownLinks: ${summary.counts.malformedMarkdownLinks}
+- legacyRelativeLinks: ${summary.counts.legacyRelativeLinks}
 - relatedUnknown: ${summary.counts.relatedUnknown}
 - relatedSelf: ${summary.counts.relatedSelf}
 - orphanWiki: ${summary.counts.orphanWiki}
@@ -325,6 +351,12 @@ ${topN(issues.missingDescription).map((x) => `- ${x}`).join("\n") || "- none"}
 
 ### brokenLinks
 ${topN(issues.brokenLinks).map((x) => `- ${x}`).join("\n") || "- none"}
+
+### malformedMarkdownLinks
+${topN(issues.malformedMarkdownLinks).map((x) => `- ${x}`).join("\n") || "- none"}
+
+### legacyRelativeLinks
+${topN(issues.legacyRelativeLinks).map((x) => `- ${x}`).join("\n") || "- none"}
 
 ### relatedUnknown
 ${topN(issues.relatedUnknown).map((x) => `- ${x}`).join("\n") || "- none"}
@@ -416,6 +448,8 @@ const p0 =
   summary.counts.missingTitle +
   summary.counts.missingDescription +
   summary.counts.brokenLinks +
+  summary.counts.malformedMarkdownLinks +
+  summary.counts.legacyRelativeLinks +
   summary.counts.relatedUnknown;
 
 if (STRICT && p0 > 0) {

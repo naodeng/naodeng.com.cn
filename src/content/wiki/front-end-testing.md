@@ -578,7 +578,7 @@ By applying these strategies, you can streamline front-end testing, making it mo
 
 #### A/B 测试在前端测试中的作用是什么？
 
-[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/) 也称为对比测试，是 [前端测试](https://inaodeng.com/zh-cn/wiki/front-end-testing/) 中的一种方法，用于比较网页或应用程序的两个版本，以确定哪个版本在用户参与度、转化率或其他预定义指标方面表现更好。它通过提供有关用户偏好和行为的经验数据，在优化用户体验和界面方面发挥着至关重要的作用。
-  在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的上下文中，[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/) 通常不是自动化的，因为它处理用户行为和转化指标而不是代码正确性。然而，自动化测试可以确保版本 A 和 B 在暴露给用户之前功能健全。这可确保性能指标中的任何差异都是由于 UI/UX 中的更改引起的，而不是底层[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
-  在[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)期间，流量分为两个变体，并收集有关用户如何与每个版本交互的数据。然后分析这些数据，以确定哪种变体可以针对预期目标带来更好的性能。结果决定是否将测试变体的更改实施到主应用程序中。
-  对于[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师来说，了解[A/B testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/) 的角色对于与 UX 设计师和产品经理协调以确保正在测试的前端更改不会引入功能回归非常重要。他们可能还需要调整或配置自动化测试，以适应 A/B [测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/) 中测试的变化。
+[A/B testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/) 也称为对比测试，是 [前端测试](https://inaodeng.com/zh-cn/wiki/front-end-testing/) 中的一种方法，用于比较网页或应用程序的两个版本，以确定哪个版本在用户参与度、转化率或其他预定义指标方面表现更好。它通过提供有关用户偏好和行为的经验数据，在优化用户体验和界面方面发挥着至关重要的作用。
+  在 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的上下文中，[A/B testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/) 通常不是自动化的，因为它处理用户行为和转化指标而不是代码正确性。然而，自动化测试可以确保版本 A 和 B 在暴露给用户之前功能健全。这可确保性能指标中的任何差异都是由于 UI/UX 中的更改引起的，而不是底层[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
+  在[A/B testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)期间，流量分为两个变体，并收集有关用户如何与每个版本交互的数据。然后分析这些数据，以确定哪种变体可以针对预期目标带来更好的性能。结果决定是否将测试变体的更改实施到主应用程序中。
+  对于[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师来说，了解[A/B testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/) 的角色对于与 UX 设计师和产品经理协调以确保正在测试的前端更改不会引入功能回归非常重要。他们可能还需要调整或配置自动化测试，以适应 A/B [测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/) 中测试的变化。

@@ -5,8 +5,6 @@
  * - 英文：重定向 https://ray.run/wiki
  */
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import fs from "node:fs";
-import path from "node:path";
 import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
@@ -32,13 +30,6 @@ export async function getStaticPaths() {
     props: { entry },
   }));
 
-  // Keep compatibility with legacy wiki URLs that use original filename casing,
-  // e.g. /zh-cn/wiki/A-B-Testing/
-  const wikiDir = path.resolve(process.cwd(), "src/content/wiki");
-  const fileNames = fs.readdirSync(wikiDir).filter((name) => name.endsWith(".md"));
-  const entryByLowerSlug = new Map(entries.map((entry) => [wikiIdToSlug(entry.id).toLowerCase(), entry]));
-  const existingExact = new Set(basePaths.map((p) => String(p.params.slug)));
-
   // Older versions of the site exposed the source filename below an extra
   // `wiki/` segment and sometimes kept the `.md` suffix. Keep those known
   // URLs routable so search engines can discover the canonical page instead
@@ -51,18 +42,6 @@ export async function getStaticPaths() {
         props: { entry, legacyCanonical: canonical } as typeof basePaths[number]["props"],
       });
     }
-  }
-
-  for (const fileName of fileNames) {
-    const fileSlug = fileName.replace(/\.md$/, "");
-    const lower = fileSlug.toLowerCase();
-    const mappedEntry = entryByLowerSlug.get(lower);
-    if (existingExact.has(fileSlug) || !mappedEntry) continue;
-    basePaths.push({
-      params: { lang: "zh-cn", slug: fileSlug },
-      props: { entry: mappedEntry },
-    });
-    existingExact.add(fileSlug);
   }
 
   return [...basePaths, ...legacyEnglishPaths];

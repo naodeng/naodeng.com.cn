@@ -60,13 +60,13 @@ const files = fs.readdirSync(WIKI_DIR).filter((f) => f.endsWith('.md'));
 const profiles = files.map((file) => {
   const fullPath = path.join(WIKI_DIR, file);
   const markdown = fs.readFileSync(fullPath, 'utf8');
-  const slug = file.replace(/\.md$/, '');
+  const slug = file.replace(/\.md$/, '').toLowerCase();
   const tokens = extractTokens(markdown);
   return {
     slug,
     freq: buildFreq(tokens),
     tokenSet: new Set(tokens),
-    explicitRelated: parseFrontmatterRelated(markdown),
+    explicitRelated: parseFrontmatterRelated(markdown).map((ref) => ref.toLowerCase()),
   };
 });
 

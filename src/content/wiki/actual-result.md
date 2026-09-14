@@ -148,7 +148,7 @@ assert.equal(element.getText(), "Expected Text");
 
 在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)中捕获**实际结果**通常涉及多种工具和方法：
 
-- **自动化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**：在诸如**[Selenium](../S/selenium)**、**[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)**或**Appium**等框架中编写的脚本在[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间自动捕获输出。例如：
+- **自动化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**：在诸如**[Selenium](/zh-cn/wiki/selenium/)**、**[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)**或**Appium**等框架中编写的脚本在[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)期间自动捕获输出。例如：
 
 ```javascript
 // 示例：使用 Selenium 进行文本验证

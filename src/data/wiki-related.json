@@ -1,5 +1,5 @@
 {
-  "A-B-Testing": [
+  "a-b-testing": [
     "keyword-driven-testing",
     "automated-testing",
     "test-script",
@@ -494,7 +494,7 @@
     "use-case-testing",
     "automated-testing",
     "test-case",
-    "A-B-Testing"
+    "a-b-testing"
   ],
   "glass-box-testing": [
     "black-box-testing",
@@ -672,7 +672,7 @@
     "test-suite"
   ],
   "keyword-driven-testing": [
-    "A-B-Testing",
+    "a-b-testing",
     "automated-testing",
     "test-script",
     "manual-testing",

@@ -108,7 +108,7 @@ order: 0
 - **中断测试**：评估应用程序对呼叫或通知等中断的响应。
 - **恢复测试**：测试应用程序承受故障和从故障中恢复的能力。
 - **[Beta 测试](https://inaodeng.com/zh-cn/wiki/beta-testing/)** ：将应用程序发布给一组用户以在现实世界中曝光。
-- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)** ：比较两个版本以确定哪个版本性能更好。
+- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)** ：比较两个版本以确定哪个版本性能更好。
 - **一致性测试**：确保应用程序遵守标准和指南。
 - **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)** ：评估高用户负载下的性能。
 - **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。
@@ -123,7 +123,7 @@ order: 0
 - **中断测试**：评估应用程序对呼叫或通知等中断的响应。
 - **恢复测试**：测试应用程序承受故障和从故障中恢复的能力。
 - **[Beta 测试](https://inaodeng.com/zh-cn/wiki/beta-testing/)** ：将应用程序发布给一组用户以供真实世界使用。
-- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)** ：比较两个版本以确定哪个版本性能更好。
+- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)** ：比较两个版本以确定哪个版本性能更好。
 - **一致性测试**：确保应用程序遵守标准和指南。
 - **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)** ：评估高用户负载下的性能。
 - **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)** ：确定极端条件下应用程序的稳定性。

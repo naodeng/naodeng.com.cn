@@ -17,6 +17,31 @@ if (!fs.existsSync(sitemapPath)) {
   if (sitemap.includes("https://inaodeng.com/en/wiki/")) {
     failures.push("legacy English Wiki redirect URLs are present in sitemap-0.xml");
   }
+  const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  if (sitemapUrls.some((url) => /\/zh-cn\/wiki\/wiki\//i.test(url))) {
+    failures.push("legacy nested Chinese Wiki URLs are present in sitemap-0.xml");
+  }
+  if (sitemapUrls.some((url) => /\/zh-cn\/wiki\/[^/]+\.md\/?$/i.test(url))) {
+    failures.push("legacy Chinese Wiki .md URLs are present in sitemap-0.xml");
+  }
+  if (sitemapUrls.some((url) => /^https:\/\/inaodeng\.com\/zh-cn\/wiki\/[^/]*[A-Z][^/]*\/$/.test(url))) {
+    failures.push("uppercase Chinese Wiki detail URLs are present in sitemap-0.xml");
+  }
+}
+
+const canonicalABTesting = path.join(DIST, "zh-cn", "wiki", "a-b-testing", "index.html");
+if (!fs.existsSync(canonicalABTesting)) {
+  failures.push("missing canonical Chinese Wiki page: /zh-cn/wiki/a-b-testing/");
+}
+
+const redirectsPath = path.join(DIST, "_redirects");
+if (!fs.existsSync(redirectsPath)) {
+  failures.push("missing generated _redirects file");
+} else {
+  const redirects = fs.readFileSync(redirectsPath, "utf8");
+  if (!redirects.split(/\r?\n/).some((line) => line.trim() === "/zh-cn/wiki/A-B-Testing/ /zh-cn/wiki/a-b-testing/ 301")) {
+    failures.push("missing lowercase redirect for /zh-cn/wiki/A-B-Testing/");
+  }
 }
 
 for (const slug of ["software-testing", "decision-table-testing", "test-case"]) {

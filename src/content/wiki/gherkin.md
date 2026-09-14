@@ -7,7 +7,7 @@ related:
   - use-case-testing
   - automated-testing
   - test-case
-  - A-B-Testing
+  - a-b-testing
 order: 0
 ---
 

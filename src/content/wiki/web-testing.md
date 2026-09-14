@@ -72,7 +72,7 @@ order: 0
 - **SEO 测试**：评估网站的搜索引擎优化，包括元数据、关键字和 URL 结构。
 - **内容测试**：验证网站内容的准确性、相关性和质量。
 - **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：测试网站不同部分与外部服务之间的交互，以确保它们无缝协作。
-- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)**：比较网页的两个版本，以确定哪个版本在用户参与度或转化率方面表现更好。
+- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)**：比较网页的两个版本，以确定哪个版本在用户参与度或转化率方面表现更好。
 - **跨站请求伪造 (CSRF) 和跨站脚本 (XSS) 测试**：确保网站免受可能损害用户数据或网站完整性的常见 Web 攻击。
 - **[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/)**：确保所有功能按预期工作，包括表单、[数据库](https://inaodeng.com/zh-cn/wiki/database/)、链接和用户流。
 - **UI/UX 测试**：专注于视觉元素和用户体验，确保界面在不同设备上直观且一致。
@@ -83,7 +83,7 @@ order: 0
 - **SEO 测试**：评估网站的搜索引擎优化，包括元数据、关键字和 URL 结构。
 - **内容测试**：验证网站内容的准确性、相关性和质量。
 - **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：测试网站不同部分与外部服务之间的交互，以确保它们无缝协作。
-- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/A-B-Testing/)**：比较网页的两个版本，以确定哪个版本在用户参与度或转化率方面表现更好。
+- **[A/B Testing](https://inaodeng.com/zh-cn/wiki/a-b-testing/)**：比较网页的两个版本，以确定哪个版本在用户参与度或转化率方面表现更好。
 - **跨站请求伪造 (CSRF) 和跨站脚本 (XSS) 测试**：确保网站免受可能损害用户数据或网站完整性的常见 Web 攻击。
 
 #### 网络测试员的角色是什么？

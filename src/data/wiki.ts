@@ -1,4 +1,5 @@
 import type { DocsNavSection } from "@/data/docsNav";
+import { canonicalWikiSlug } from "@/utils/seoUrls";
 
 /**
  * 测试百科：从 slug（文件名）得到英文标题，用于排序
@@ -43,7 +44,8 @@ function firstLetterEn(slug: string): string {
 
 /** 从 wiki 条目 id 得到 URL slug（content.config 中 generateId 使用前缀 wiki--） */
 export function wikiIdToSlug(id: string): string {
-  return id.startsWith("wiki--") ? id.slice(6) : id.replace(/\.md$/, "");
+  const slug = id.startsWith("wiki--") ? id.slice(6) : id.replace(/\.md$/, "");
+  return canonicalWikiSlug(slug);
 }
 
 /** 根据 wiki 词条列表生成侧栏（按英文首字母分组、组内按英文排序，展示中文名称），用于 Docs 布局 */
