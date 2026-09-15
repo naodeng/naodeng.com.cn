@@ -174,6 +174,54 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         ]
       },
       {
+        "key": "可靠性与安全",
+        "title": {
+          "zh-cn": "可靠性与安全",
+          "en": "Reliability and Security"
+        },
+        "slugs": [
+          "reliability-testing",
+          "resilience-testing",
+          "chaos-testing",
+          "failover-testing",
+          "recovery-testing",
+          "retry-testing",
+          "timeout-testing",
+          "circuit-breaker-testing",
+          "dependency-failure-testing",
+          "disaster-recovery-testing",
+          "authentication-testing",
+          "authorization-testing",
+          "session-security-testing",
+          "api-security-testing",
+          "security-requirement-review",
+          "threat-modeling",
+          "secrets-exposure-review"
+        ]
+      },
+      {
+        "key": "质量工程与效能",
+        "title": {
+          "zh-cn": "质量工程与效能",
+          "en": "Quality Engineering and Productivity"
+        },
+        "slugs": [
+          "quality-gate-design",
+          "quality-metrics-design",
+          "quality-dashboard-design",
+          "quality-debt-analysis",
+          "quality-maturity-assessment",
+          "test-effectiveness-analysis",
+          "automation-roi-analysis",
+          "testing-bottleneck-analysis",
+          "regression-optimization",
+          "ci-test-optimization",
+          "test-runtime-optimization",
+          "test-maintenance-cost-analysis",
+          "quality-productivity-metrics"
+        ]
+      },
+      {
         "key": "开发与持续集成",
         "title": {
           "zh-cn": "开发与持续集成",
@@ -329,7 +377,11 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         "slugs": [
           "llm-evaluation-design",
           "llm-testing",
-          "prompt-testing"
+          "prompt-testing",
+          "rag-quality-testing",
+          "rag-retrieval-testing",
+          "llm-hallucination-testing",
+          "llm-consistency-testing"
         ]
       },
       {
@@ -341,7 +393,14 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         "slugs": [
           "ai-agent-testing",
           "agent-tool-testing",
-          "prompt-injection-testing"
+          "prompt-injection-testing",
+          "agent-loop-testing",
+          "agent-memory-testing",
+          "agent-permission-testing",
+          "agent-failure-recovery-testing",
+          "agent-long-running-testing",
+          "multi-agent-testing",
+          "ai-safety-testing"
         ]
       }
     ]

@@ -12,7 +12,7 @@ for (const locale of ["en", "zh-cn"] as const) {
     await expect(page.locator("[data-dsh-qa-feature]")).toHaveCount(4);
     await expect(page.locator("[data-dsh-qa-flow-stage]")).toHaveCount(5);
     await expect(page.locator("[data-install-mode]")).toHaveCount(2);
-    await expect(page.locator("[data-release-note]")).toHaveCount(3);
+    await expect(page.locator("[data-release-note]")).toHaveCount(5);
     expect(await page.locator("[data-release-note]").evaluateAll((notes) => notes.every((note) => !note.hasAttribute("open")))).toBe(true);
   });
 

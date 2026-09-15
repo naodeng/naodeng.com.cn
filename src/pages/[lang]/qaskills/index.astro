@@ -1,13 +1,14 @@
 ---
 import Base from "@/layouts/Base.astro";
 import GoogleAd from "@/components/GoogleAd.astro";
-import QASkillStarterPaths from "@/components/qaskills/QASkillStarterPaths.astro";
-import RecommendedQASkills from "@/components/qaskills/RecommendedQASkills.astro";
 import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getQASkillsGrouped, resolveLifecyclePath } from "@/utils/qaskills";
 import { shouldShowEvalsFilter } from "@/utils/qaskillsFilter";
-import { QA_SKILL_TOOLS, RECOMMENDED_QA_SKILL_SLUGS } from "@/data/qaSkillLibrary";
+import {
+  getQASkillCardIntro,
+  RECOMMENDED_QA_SKILL_SLUGS,
+} from "@/data/qaSkillLibrary";
 
 export function getStaticPaths() {
   return [
@@ -32,7 +33,6 @@ lifecycleStages.forEach((stage) => {
 const totalCount = allSkills.length;
 const evalsCount = allSkills.filter((s) => s.hasEvals).length;
 const latestSync = allSkills.map((s) => s.updatedAt).filter(Boolean).sort().at(-1) || "-";
-const toolCount = QA_SKILL_TOOLS.length;
 const recommendedSkills = RECOMMENDED_QA_SKILL_SLUGS
   .map((slug) => allSkills.find((skill) => skill.slug === slug))
   .filter((skill): skill is NonNullable<typeof skill> => Boolean(skill));
@@ -44,14 +44,20 @@ const text = lang === "zh-cn" ? {
   title: "软件测试技能库",
   description: "覆盖测试类型、工作流与增强技能的 QA Skills Library",
   intro: "收录测试类型、测试工作流程和加强版技能，帮助你快速找到合适技能并直接上手。",
-  quickStart: "快速开始",
+  directoryLabel: "技能目录",
+  searchLabel: "搜索 Skills",
+  searchHint: "按名称、场景或关键词搜索…",
+  filterTitle: "筛选目录",
+  moreFilters: "更多筛选",
+  featuredTitle: "常用入口",
+  featuredIntro: "从高频任务开始，或直接搜索整个目录。",
+  catalogTitle: "全部 Skills",
+  catalogIntro: "按分类浏览，点击卡片直接打开使用指南。",
+  quickStart: "如何使用",
   categories: "Skills 分类",
-  startBtn: "快速开始",
   githubBtn: "查看 GitHub",
   skillCountLabel: "个 Skills",
-  toolsLabel: "个 AI 工具",
   syncedLabel: "最近同步",
-  evalsLabel: "提供自动化评测用例",
   resultsLabel: "个匹配结果",
   searchPlaceholder: "搜索 skill 名称 / 场景关键词…",
   filterAll: "全部",
@@ -60,6 +66,7 @@ const text = lang === "zh-cn" ? {
   filterPlus: "Plus",
   filterEvals: "有 Evals",
   lifecycleFilters: "按测试阶段筛选",
+  subcategoryFilters: "按目录分组筛选",
   activeFilters: "已选条件",
   removeFilter: "移除",
   viewDetail: "查看详情",
@@ -67,10 +74,7 @@ const text = lang === "zh-cn" ? {
   clearFilters: "清空筛选",
   hasEvals: "含评测用例",
   noEvals: "暂无评测用例",
-  summaryWhen: "适用场景",
-  summaryInput: "输入",
-  summaryOutput: "输出",
-  summaryReview: "人工复核",
+  resultPrefix: "显示",
   catType: "类型",
   catWorkflow: "工作流",
   catPlus: "Plus",
@@ -86,14 +90,20 @@ const text = lang === "zh-cn" ? {
   title: "QA Skill Library",
   description: "Software testing skill library for testing types, workflows, and enhanced QA skills",
   intro: "Browse testing types, testing workflows, and plus skills to quickly find the right skill and start using it.",
-  quickStart: "Quick Start",
+  directoryLabel: "Skill directory",
+  searchLabel: "Search Skills",
+  searchHint: "Search by name, scenario, or keyword…",
+  filterTitle: "Filter directory",
+  moreFilters: "More filters",
+  featuredTitle: "Popular entry points",
+  featuredIntro: "Start with a common QA task, or search the full directory.",
+  catalogTitle: "All Skills",
+  catalogIntro: "Browse by category and open any card to read its usage guide.",
+  quickStart: "How to use",
   categories: "Skill Categories",
-  startBtn: "Quick Start",
   githubBtn: "View GitHub",
   skillCountLabel: "skills",
-  toolsLabel: "AI tools",
   syncedLabel: "Synced",
-  evalsLabel: "with automated evaluation cases",
   resultsLabel: "matching results",
   searchPlaceholder: "Search by skill name or scenario…",
   filterAll: "All",
@@ -102,6 +112,7 @@ const text = lang === "zh-cn" ? {
   filterPlus: "Plus",
   filterEvals: "Has Evals",
   lifecycleFilters: "Filter by testing stage",
+  subcategoryFilters: "Filter by catalog group",
   activeFilters: "Active filters",
   removeFilter: "Remove",
   viewDetail: "View Details",
@@ -109,10 +120,7 @@ const text = lang === "zh-cn" ? {
   clearFilters: "Clear filters",
   hasEvals: "Evaluation cases included",
   noEvals: "No evaluation cases yet",
-  summaryWhen: "Use case",
-  summaryInput: "Input",
-  summaryOutput: "Output",
-  summaryReview: "Human review",
+  resultPrefix: "Showing",
   catType: "Type",
   catWorkflow: "Workflow",
   catPlus: "Plus",
@@ -161,6 +169,42 @@ const breadcrumbs = [
 const displayNameOf = (skill: (typeof allSkills)[number]) =>
   lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title;
 
+const displayCatalogTitle = (title: string) => title.replace(/\s+—\s+/g, " / ");
+
+const catalogCategoryOf = (skill: (typeof allSkills)[number]) =>
+  skill.category === "plus" || skill.slug.endsWith("-plus") ? "plus" : skill.category;
+
+const catalogCategoriesOf = (skills: (typeof allSkills)[number][]) =>
+  Array.from(new Set(skills.map(catalogCategoryOf))).join(" ");
+
+const categoryOptions = [
+  { key: "all", label: text.filterAll, count: totalCount },
+  { key: "type", label: text.filterType, count: allSkills.filter((skill) => catalogCategoryOf(skill) === "type").length },
+  { key: "workflow", label: text.filterWorkflow, count: allSkills.filter((skill) => catalogCategoryOf(skill) === "workflow").length },
+  { key: "plus", label: text.filterPlus, count: allSkills.filter((skill) => catalogCategoryOf(skill) === "plus").length },
+];
+
+const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
+  key: catalogGroup.key,
+  title: displayCatalogTitle(catalogGroup.title[lang === "zh-cn" ? "zh-cn" : "en"]),
+  filters: [
+    ...(catalogGroup.skills.length > 0
+      ? [{
+          key: `${catalogGroup.key}--root`,
+          label: displayCatalogTitle(catalogGroup.title[lang === "zh-cn" ? "zh-cn" : "en"]),
+          parentCategory: catalogCategoriesOf(catalogGroup.skills),
+          count: catalogGroup.skills.length,
+        }]
+      : []),
+    ...catalogGroup.groups.map((subgroup) => ({
+      key: `${catalogGroup.key}--${subgroup.key}`,
+      label: subgroup.title[lang === "zh-cn" ? "zh-cn" : "en"],
+      parentCategory: catalogCategoriesOf(subgroup.skills),
+      count: subgroup.skills.length,
+    })),
+  ],
+})).filter((group) => group.filters.length > 0);
+
 ---
 
 <Base
@@ -170,168 +214,234 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
   breadcrumbs={breadcrumbs}
   extraStructuredData={[collectionSchema, itemListSchema]}
 >
-  <div class="qaskills-page">
-    <header class="hero">
-      <h1>{text.title}</h1>
-      <p class="hero-sub">{text.description}</p>
-      <p class="hero-intro">{text.intro}</p>
-      <p class="hero-stats">
-        <span>{totalCount} {text.skillCountLabel}</span>
-        <span>{toolCount} {text.toolsLabel}</span>
-        <span>{text.syncedLabel}: {latestSync}</span>
-        <span>{evalsCount} {text.evalsLabel}</span>
-      </p>
-      <div class="hero-actions">
-        <a href="#quickstart" class="btn btn-primary">{text.startBtn}</a>
-        <a href="https://github.com/naodeng/awesome-qa-skills" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{text.githubBtn}</a>
+  <div class="qaskills-page" data-qaskills-directory>
+    <header class="directory-hero">
+      <div class="directory-hero-topline">
+        <span class="eyebrow">{text.directoryLabel}</span>
+        <span class="hero-sync">{totalCount} {text.skillCountLabel} · {text.syncedLabel} {latestSync}</span>
+      </div>
+      <div class="directory-hero-main">
+        <div>
+          <h1>{text.title}</h1>
+          <p class="hero-intro">{text.intro}</p>
+        </div>
+        <a href="https://github.com/naodeng/awesome-qa-skills" target="_blank" rel="noopener noreferrer" class="source-link">
+          <span>{text.githubBtn}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="hero-metrics" aria-label={lang === "zh-cn" ? "目录信息" : "Directory information"}>
+        <span><strong>{totalCount}</strong> {text.skillCountLabel}</span>
+        {categoryOptions.slice(1).map((option) => (
+          <span><strong>{option.count}</strong> {option.label}</span>
+        ))}
       </div>
     </header>
 
-    <QASkillStarterPaths lang={lang} />
-
-    <section class="section discovery" aria-label={lang === "zh-cn" ? "搜索与筛选" : "Search and filters"}>
-      <input
-        id="qaskills-search"
-        class="search-input"
-        type="search"
-        placeholder={text.searchPlaceholder}
-        autocomplete="off"
-      />
-      <div class="chips" role="group">
-        <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">{text.filterAll}</button>
-        <button type="button" class="chip" data-filter="type" aria-pressed="false">{text.filterType}</button>
-        <button type="button" class="chip" data-filter="workflow" aria-pressed="false">{text.filterWorkflow}</button>
-        <button type="button" class="chip" data-filter="plus" aria-pressed="false">{text.filterPlus}</button>
-        {showEvalsFilter && (
-          <button type="button" class="chip" data-evals-toggle="1" aria-pressed="false">{text.filterEvals}</button>
-        )}
+    <section class="section discovery directory-toolbar" aria-label={lang === "zh-cn" ? "搜索 Skills" : "Search Skills"}>
+      <div class="toolbar-main">
+        <div class="search-control">
+          <span class="material-icons-sharp search-control-icon" aria-hidden="true">search</span>
+          <label class="sr-only" for="qaskills-search">{text.searchLabel}</label>
+          <input
+            id="qaskills-search"
+            class="search-input"
+            type="search"
+            placeholder={text.searchHint}
+            autocomplete="off"
+          />
+          <button type="button" id="qaskills-clear" class="toolbar-clear" hidden>{text.clearFilters}</button>
+        </div>
+        <p id="qaskills-results" class="results-count" aria-live="polite" data-label={text.resultsLabel} data-prefix={text.resultPrefix}>{totalCount} {text.resultsLabel}</p>
       </div>
-      <div class="filter-row">
-        <p class="filter-label">{text.lifecycleFilters}</p>
-        <div class="chips chips-lifecycle" role="group" aria-label={text.lifecycleFilters}>
-          {lifecycleStages.map((stage) => (
-            <button type="button" class="chip chip-secondary" data-lifecycle-filter={stage.key} aria-pressed="false">
-              {stage.title} <span aria-hidden="true">{stage.nodes.length}</span>
-            </button>
+
+      <section id="recommended-skills" class="featured-strip" data-qaskills-default-only aria-labelledby="featured-title">
+        <div class="featured-copy">
+          <h2 id="featured-title">{text.featuredTitle}</h2>
+          <p>{text.featuredIntro}</p>
+        </div>
+        <div class="featured-list">
+          {recommendedSkills.map((skill, index) => (
+            <a class:list={["featured-link", index === 0 && "featured-link-primary"]} data-recommended-skill={skill.slug} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+              <span class="featured-number">0{index + 1}</span>
+              <span class="featured-link-copy">
+                <strong>{displayNameOf(skill)}</strong>
+                <small>{getQASkillCardIntro(skill, lang)}</small>
+              </span>
+              <span class="featured-arrow" aria-hidden="true">↗</span>
+            </a>
           ))}
         </div>
-      </div>
-      <div id="qaskills-secondary-filters" class="chips chips-secondary" role="group" aria-label={lang === "zh-cn" ? "二级分类" : "Subcategories"} hidden>
-        {grouped.catalogGroups.flatMap((catalogGroup) =>
-          catalogGroup.groups.map((subgroup) => {
-            const key = `${catalogGroup.key}--${subgroup.key}`;
-            const parentCategory = subgroup.skills[0]?.category || "type";
-            return <button type="button" class="chip chip-secondary" data-secondary-filter={key} data-parent-category={parentCategory} aria-pressed="false" hidden>{subgroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</button>;
-          })
-        )}
-      </div>
-      <div id="qaskills-active-filters" class="active-filters" aria-label={text.activeFilters} data-remove-label={text.removeFilter} hidden></div>
-      <p id="qaskills-results" class="results-count" aria-live="polite" data-label={text.resultsLabel}>{totalCount} {text.resultsLabel}</p>
-      <button type="button" id="qaskills-clear" class="btn btn-outline" hidden>{text.clearFilters}</button>
+      </section>
     </section>
 
-    <section class="section" id="categories">
-      <h2>{text.categories}</h2>
-      <p id="qaskills-empty" class="empty-state" hidden>
-        {text.empty}
-      </p>
-
-      {grouped.catalogGroups.map((catalogGroup) => (
-        <div class="category-block" data-block={catalogGroup.key}>
-          <h3>
-            <button
-              type="button"
-              class="category-toggle"
-              aria-expanded="false"
-              aria-controls={`category-content-${catalogGroup.key}`}
-            >
-              <span>{catalogGroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</span>
-              <span class="category-toggle-count">{catalogGroup.skills.length + catalogGroup.groups.reduce((count, group) => count + group.skills.length, 0)}</span>
-              <span class="material-icons-sharp" aria-hidden="true">expand_more</span>
-            </button>
-          </h3>
-          <div id={`category-content-${catalogGroup.key}`} class="category-content" hidden>
-          {catalogGroup.skills.length > 0 && (
-            <ul class="cards" role="list">
-              {catalogGroup.skills.map((skill) => (
-            <li>
-              <a
-                class="card"
-                data-slug={skill.slug}
-                data-category={skill.slug.endsWith("-plus") ? "plus" : skill.category}
-                data-secondary-category=""
-                data-evals={skill.hasEvals ? "true" : "false"}
-                data-lifecycle-stages={(lifecycleStagesBySlug.get(skill.slug) || []).join(" ")}
-                data-title={displayNameOf(skill)}
-                data-intro={skill.intro}
-                href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}
-              >
-                <h5>{displayNameOf(skill)}</h5>
-                <p class="card-intro">{skill.intro}</p>
-              </a>
-            </li>
-              ))}
-            </ul>
-          )}
-          {catalogGroup.groups.map((subgroup) => (
-            <div class="subgroup">
-              <h4>{subgroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</h4>
-              <ul class="cards" role="list">
-                {subgroup.skills.map((skill) => (
-                  <li>
-                    <a class="card" data-slug={skill.slug} data-category={skill.slug.endsWith("-plus") ? "plus" : skill.category} data-secondary-category={`${catalogGroup.key}--${subgroup.key}`} data-evals={skill.hasEvals ? "true" : "false"} data-lifecycle-stages={(lifecycleStagesBySlug.get(skill.slug) || []).join(" ")} data-title={displayNameOf(skill)} data-intro={skill.intro} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
-                      <h5>{displayNameOf(skill)}</h5>
-                      <p class="card-intro">{skill.intro}</p>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+    <section class="section directory-section" id="categories">
+      <div class="directory-layout">
+        <aside class="filter-sidebar" aria-label={lang === "zh-cn" ? "目录筛选" : "Directory filters"}>
+          <div class="filter-sidebar-heading">
+            <div>
+              <h2>{text.filterTitle}</h2>
             </div>
-          ))}
+            <span class="filter-sidebar-count">{totalCount}</span>
           </div>
-        </div>
-      ))}
 
-      <div class="ad-slot-250">
-        <GoogleAd />
+          <div class="filter-group">
+            <p class="filter-group-label">{text.categories}</p>
+            <div class="filter-options" role="group" aria-label={text.categories}>
+              {categoryOptions.map((option) => (
+                <button type="button" class:list={["filter-option", option.key === "all" && "is-active"]} data-filter={option.key} aria-pressed={option.key === "all" ? "true" : "false"}>
+                  <span>{option.label}</span><span>{option.count}</span>
+                </button>
+              ))}
+              {showEvalsFilter && (
+                <button type="button" class="filter-option" data-evals-toggle="1" aria-pressed="false">
+                  <span>{text.filterEvals}</span><span>{evalsCount}</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          <details class="more-filter-details">
+            <summary>{text.moreFilters}<span class="material-icons-sharp" aria-hidden="true">expand_more</span></summary>
+            <div class="more-filter-content">
+              <div class="filter-group">
+                <p class="filter-group-label">{text.lifecycleFilters}</p>
+                <div class="chips chips-lifecycle" role="group" aria-label={text.lifecycleFilters}>
+                  {lifecycleStages.map((stage) => (
+                    <button type="button" class="chip chip-secondary" data-lifecycle-filter={stage.key} aria-pressed="false">
+                      <span data-filter-label>{stage.title}</span><span data-filter-count aria-hidden="true">{stage.nodes.length}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <p class="filter-group-label secondary-filter-label" data-secondary-filter-label hidden>{text.subcategoryFilters}</p>
+              <div id="qaskills-secondary-filters" class="chips-secondary" role="group" aria-label={lang === "zh-cn" ? "二级分类" : "Subcategories"} hidden>
+                {secondaryFilterGroups.map((group) => (
+                  <details class="secondary-filter-group" data-secondary-group>
+                    <summary>
+                      <span>{group.title}</span>
+                      <span class="material-icons-sharp" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <div class="secondary-filter-group-content">
+                      {group.filters.map((filter) => (
+                        <button type="button" class="chip chip-secondary" data-secondary-filter={filter.key} data-parent-category={filter.parentCategory} aria-pressed="false" hidden>
+                          <span data-filter-label>{filter.label}</span>
+                          <span class="filter-chip-count" data-filter-count aria-hidden="true">{filter.count}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </details>
+          <div id="qaskills-active-filters" class="active-filters" aria-label={text.activeFilters} data-remove-label={text.removeFilter} hidden></div>
+        </aside>
+
+        <div class="results-column">
+          <div class="results-heading">
+            <div>
+              <h2>{text.catalogTitle}</h2>
+            </div>
+            <p>{text.catalogIntro}</p>
+          </div>
+          <p id="qaskills-empty" class="empty-state" hidden>{text.empty}</p>
+
+          <div class="category-list">
+            {grouped.catalogGroups.map((catalogGroup) => {
+              const groupCount = catalogGroup.skills.length + catalogGroup.groups.reduce((count, group) => count + group.skills.length, 0);
+              const rootSecondaryKey = `${catalogGroup.key}--root`;
+              return (
+                <section class="category-block" data-block={catalogGroup.key}>
+                  <h3>
+                    <button type="button" class="category-toggle" aria-expanded="true" aria-controls={`category-content-${catalogGroup.key}`}>
+                      <span>{displayCatalogTitle(catalogGroup.title[lang === "zh-cn" ? "zh-cn" : "en"])}</span>
+                      <span class="category-toggle-count">{groupCount}</span>
+                      <span class="material-icons-sharp" aria-hidden="true">expand_more</span>
+                    </button>
+                  </h3>
+                  <div id={`category-content-${catalogGroup.key}`} class="category-content">
+                    {catalogGroup.skills.length > 0 && (
+                      <ul class="cards" role="list">
+                        {catalogGroup.skills.map((skill) => {
+                          const cardCategory = catalogCategoryOf(skill);
+                          const showCardType = cardCategory === "workflow" || cardCategory === "plus";
+                          const cardIntro = getQASkillCardIntro(skill, lang);
+                          return (
+                            <li data-skill-item={skill.slug}>
+                              <a class="card skill-card" data-slug={skill.slug} data-category={cardCategory} data-secondary-category={rootSecondaryKey} data-evals={skill.hasEvals ? "true" : "false"} data-lifecycle-stages={(lifecycleStagesBySlug.get(skill.slug) || []).join(" ")} data-title={displayNameOf(skill)} data-intro={cardIntro} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+                                <div class="skill-card-title-row">
+                                  <h5>{displayNameOf(skill)}</h5>
+                                  {showCardType && <span class="skill-card-type">{cardCategory === "plus" ? text.catPlus : text.catWorkflow}</span>}
+                                </div>
+                                <p class="card-intro">{cardIntro}</p>
+                              </a>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                    {catalogGroup.groups.map((subgroup) => (
+                      <div class="subgroup">
+                        <h4>{subgroup.title[lang === "zh-cn" ? "zh-cn" : "en"]}</h4>
+                        <ul class="cards" role="list">
+                          {subgroup.skills.map((skill) => {
+                            const cardCategory = catalogCategoryOf(skill);
+                            const showCardType = cardCategory === "workflow" || cardCategory === "plus";
+                            const cardIntro = getQASkillCardIntro(skill, lang);
+                            return (
+                              <li data-skill-item={skill.slug}>
+                                <a class="card skill-card" data-slug={skill.slug} data-category={cardCategory} data-secondary-category={`${catalogGroup.key}--${subgroup.key}`} data-evals={skill.hasEvals ? "true" : "false"} data-lifecycle-stages={(lifecycleStagesBySlug.get(skill.slug) || []).join(" ")} data-title={displayNameOf(skill)} data-intro={cardIntro} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+                                  <div class="skill-card-title-row">
+                                    <h5>{displayNameOf(skill)}</h5>
+                                    {showCardType && <span class="skill-card-type">{cardCategory === "plus" ? text.catPlus : text.catWorkflow}</span>}
+                                  </div>
+                                  <p class="card-intro">{cardIntro}</p>
+                                </a>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+
+          <div class="ad-slot-250"><GoogleAd /></div>
+        </div>
       </div>
     </section>
 
-    <RecommendedQASkills lang={lang} skills={recommendedSkills} />
-
-    <section id="quickstart" class="section" data-qaskills-default-only>
-      <h2>{text.quickStart}</h2>
-      <ol class="quick-grid">
+    <section id="quickstart" class="section usage-note" data-qaskills-default-only>
+      <div>
+        <h2>{text.quickStart}</h2>
+      </div>
+      <ol>
         {text.quickSteps.map((step, index) => (
-          <li class="quick-card">
-            <span class="num">{index + 1}</span>
-            <h3>{step.title}</h3>
-            <p>{step.desc}</p>
-          </li>
+          <li><span>{index + 1}</span><div><strong>{step.title}</strong><p>{step.desc}</p></div></li>
         ))}
       </ol>
     </section>
 
     <section id="lifecycle-path" class="section lifecycle-path" data-qaskills-default-only aria-labelledby="lifecycle-path-title">
-      <h2 id="lifecycle-path-title">{text.lifecycleTitle}</h2>
-      <p class="lifecycle-intro">{text.lifecycleIntro}</p>
+      <div class="lifecycle-heading">
+        <div>
+          <h2 id="lifecycle-path-title">{text.lifecycleTitle}</h2>
+        </div>
+        <p>{text.lifecycleIntro}</p>
+      </div>
       <div class="lifecycle-track">
         {lifecycleStages.map((stage, index) => (
           <div class="lifecycle-cell">
             <div class="lifecycle-stage" data-stage={stage.key}>
-              <p class="lifecycle-stage-title">
-                <span class="lifecycle-stage-num" aria-hidden="true">{index + 1}</span>
-                {stage.title}
-              </p>
+              <p class="lifecycle-stage-title"><span class="lifecycle-stage-num" aria-hidden="true">{index + 1}</span>{stage.title}</p>
               <ul class="lifecycle-skills" role="list">
                 {stage.nodes.map((node) => (
                   <li>
-                    <a
-                      class:list={["lifecycle-skill", node.kind === "plus" && "lifecycle-skill--plus"]}
-                      href={getRelativeLocaleUrl(lang, `/qaskills/${node.slug}/`)}
-                      data-slug={node.slug}
-                      data-kind={node.kind}
-                    >
+                    <a class:list={["lifecycle-skill", node.kind === "plus" && "lifecycle-skill--plus"]} href={getRelativeLocaleUrl(lang, `/qaskills/${node.slug}/`)} data-slug={node.slug} data-kind={node.kind}>
                       <span>{node.label}</span>
                       {node.kind === "plus" && <span class="lifecycle-plus-tag">{text.lifecyclePlusLabel}</span>}
                     </a>
@@ -354,8 +464,11 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     const results = document.getElementById("qaskills-results");
     const clearBtn = document.getElementById("qaskills-clear");
     const activeFilters = document.getElementById("qaskills-active-filters");
-    const chips = Array.from(document.querySelectorAll(".chip[data-filter], .chip[data-evals-toggle]"));
+    const chips = Array.from(document.querySelectorAll("[data-filter], [data-evals-toggle]"));
+    const categoryFilters = Array.from(document.querySelectorAll(".filter-option[data-filter]"));
     const secondaryFilters = document.getElementById("qaskills-secondary-filters");
+    const secondaryFilterLabel = document.querySelector("[data-secondary-filter-label]");
+    const secondaryFilterGroups = Array.from(document.querySelectorAll("[data-secondary-group]"));
     const secondaryChips = Array.from(document.querySelectorAll(".chip[data-secondary-filter]"));
     const lifecycleChips = Array.from(document.querySelectorAll(".chip[data-lifecycle-filter]"));
     const cards = Array.from(document.querySelectorAll("a.card[data-slug]"));
@@ -369,20 +482,68 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     let lifecycleStage = "";
     let evalsOnly = false;
 
+    const queryValue = () => (search.value || "").trim().toLowerCase();
+
+    const cardMatches = (card, overrides = {}) => {
+      const selectedCategory = overrides.category ?? category;
+      const selectedSecondary = overrides.secondaryCategory ?? secondaryCategory;
+      const selectedLifecycle = overrides.lifecycleStage ?? lifecycleStage;
+      const selectedEvals = overrides.evalsOnly ?? evalsOnly;
+      const query = overrides.query ?? queryValue();
+      const cardCategory = card.getAttribute("data-category") || "type";
+      const subcategory = card.getAttribute("data-secondary-category") || "";
+      const stages = (card.getAttribute("data-lifecycle-stages") || "").split(" ");
+      const hasEvals = card.getAttribute("data-evals") === "true";
+      const haystack = [
+        card.getAttribute("data-slug") || "",
+        card.getAttribute("data-title") || "",
+        card.getAttribute("data-intro") || "",
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      return (
+        (selectedCategory === "all" || cardCategory === selectedCategory) &&
+        (!selectedSecondary || subcategory === selectedSecondary) &&
+        (!selectedLifecycle || stages.includes(selectedLifecycle)) &&
+        (!selectedEvals || hasEvals) &&
+        (!query || haystack.includes(query))
+      );
+    };
+
+    const countMatchingCards = (overrides = {}) => cards.filter((card) => cardMatches(card, overrides)).length;
+
+    const belongsToCategory = (chip, selectedCategory) =>
+      selectedCategory === "all" || (chip.getAttribute("data-parent-category") || "").split(/\s+/).includes(selectedCategory);
+
     // 与 src/utils/qaskillsFilter.ts 的 isQASkillSearchActive 保持等价
     // （is:inline 脚本无法 import 模块，两处需同步维护）
     const searchActive = () =>
       (search.value || "").trim().length > 0 || category !== "all" || secondaryCategory !== "" || lifecycleStage !== "" || evalsOnly;
 
     const updateSecondaryFilters = () => {
-      const visible = secondaryChips.filter((chip) => category === "all" || chip.getAttribute("data-parent-category") === category);
-      secondaryFilters?.toggleAttribute("hidden", visible.length === 0);
+      const visible = secondaryChips.filter((chip) => belongsToCategory(chip, category));
+      const hasVisible = visible.length > 0;
+      secondaryFilters?.toggleAttribute("hidden", !hasVisible);
+      secondaryFilterLabel?.toggleAttribute("hidden", !hasVisible);
       secondaryChips.forEach((chip) => chip.toggleAttribute("hidden", !visible.includes(chip)));
+      secondaryFilterGroups.forEach((group) => {
+        const hasVisibleChip = Array.from(group.querySelectorAll("[data-secondary-filter]")).some((chip) => !chip.hasAttribute("hidden"));
+        group.toggleAttribute("hidden", !hasVisibleChip);
+      });
       if (!visible.some((chip) => chip.getAttribute("data-secondary-filter") === secondaryCategory)) {
         secondaryCategory = "";
       }
       secondaryChips.forEach((chip) => {
+        const key = chip.getAttribute("data-secondary-filter") || "";
+        const count = cards.filter((card) =>
+          card.getAttribute("data-secondary-category") === key && cardMatches(card, { secondaryCategory: "" })
+        ).length;
+        const countLabel = chip.querySelector("[data-filter-count]");
+        if (countLabel) countLabel.textContent = String(count);
         const selected = chip.getAttribute("data-secondary-filter") === secondaryCategory;
+        chip.disabled = count === 0 && !selected;
+        chip.classList.toggle("is-unavailable", count === 0 && !selected);
         chip.classList.toggle("is-active", selected);
         chip.setAttribute("aria-pressed", String(selected));
       });
@@ -391,19 +552,13 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     const updateLifecycleFilters = () => {
       lifecycleChips.forEach((chip) => {
         const stage = chip.getAttribute("data-lifecycle-filter") || "";
-        const count = cards.filter((card) => {
-          const cardCategory = card.getAttribute("data-category") || "type";
-          const stages = (card.getAttribute("data-lifecycle-stages") || "").split(" ");
-          const hasEvals = card.getAttribute("data-evals") === "true";
-          return (
-            stages.includes(stage) &&
-            (category === "all" || cardCategory === category) &&
-            (!evalsOnly || hasEvals)
-          );
-        }).length;
+        const count = cards.filter((card) =>
+          (card.getAttribute("data-lifecycle-stages") || "").split(" ").includes(stage) &&
+          cardMatches(card, { lifecycleStage: "" })
+        ).length;
         chip.disabled = count === 0;
         chip.classList.toggle("is-unavailable", count === 0);
-        const countLabel = chip.querySelector("span");
+        const countLabel = chip.querySelector("[data-filter-count]");
         if (countLabel) countLabel.textContent = String(count);
         if (count === 0 && lifecycleStage === stage) lifecycleStage = "";
       });
@@ -414,18 +569,44 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       });
     };
 
+    const updateCategoryFilters = () => {
+      categoryFilters.forEach((chip) => {
+        const selectedCategory = chip.getAttribute("data-filter") || "all";
+        const count = countMatchingCards({ category: selectedCategory });
+        const countLabel = chip.querySelector("span:last-child");
+        if (countLabel) countLabel.textContent = String(count);
+      });
+    };
+
+    const updateCategoryGroupCounts = () => {
+      blocks.forEach((block) => {
+        const count = Array.from(block.querySelectorAll("li")).filter((item) => !item.hasAttribute("hidden")).length;
+        const countLabel = block.querySelector(".category-toggle-count");
+        if (countLabel) countLabel.textContent = String(count);
+      });
+    };
+
+    const updateEvalsFilter = () => {
+      const evalsFilter = document.querySelector("[data-evals-toggle]");
+      if (!evalsFilter) return;
+      const count = cards.filter((card) => card.getAttribute("data-evals") === "true" && cardMatches(card, { evalsOnly: false })).length;
+      const countLabel = evalsFilter.querySelector("span:last-child");
+      if (countLabel) countLabel.textContent = String(count);
+    };
+
     const updateActiveFilters = () => {
       if (!activeFilters) return;
       const active = [
-        ...Array.from(document.querySelectorAll(".chip.is-active[data-filter], .chip.is-active[data-evals-toggle], .chip.is-active[data-secondary-filter], .chip.is-active[data-lifecycle-filter]")),
+        ...Array.from(document.querySelectorAll(".is-active[data-filter], .is-active[data-evals-toggle], .is-active[data-secondary-filter], .is-active[data-lifecycle-filter]")),
       ].filter((chip) => chip.getAttribute("data-filter") !== "all");
       activeFilters.replaceChildren(
         ...active.map((chip) => {
           const button = document.createElement("button");
           button.type = "button";
           button.className = "active-filter";
-          button.textContent = `${(chip.textContent || "").trim()} ×`;
-          button.setAttribute("aria-label", `${activeFilters.dataset.removeLabel || "Remove"} ${(chip.textContent || "").trim()} filter`);
+          const label = chip.querySelector("[data-filter-label]")?.textContent?.trim() || (chip.textContent || "").trim();
+          button.textContent = `${label} ×`;
+          button.setAttribute("aria-label", `${activeFilters.dataset.removeLabel || "Remove"} ${label} filter`);
           button.addEventListener("click", () => chip.click());
           return button;
         })
@@ -434,26 +615,9 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
     };
 
     const apply = () => {
-      const q = (search.value || "").trim().toLowerCase();
       let visible = 0;
       cards.forEach((card) => {
-        const cat = card.getAttribute("data-category") || "type";
-        const subcategory = card.getAttribute("data-secondary-category") || "";
-        const stages = (card.getAttribute("data-lifecycle-stages") || "").split(" ");
-        const hasEvals = card.getAttribute("data-evals") === "true";
-        const haystack = [
-          card.getAttribute("data-slug") || "",
-          card.getAttribute("data-title") || "",
-          card.getAttribute("data-intro") || "",
-        ]
-          .join(" ")
-          .toLowerCase();
-        const okCat = category === "all" || cat === category;
-        const okSecondary = !secondaryCategory || subcategory === secondaryCategory;
-        const okLifecycle = !lifecycleStage || stages.includes(lifecycleStage);
-        const okEvals = !evalsOnly || hasEvals;
-        const okQuery = !q || haystack.includes(q);
-        const show = okCat && okSecondary && okLifecycle && okEvals && okQuery;
+        const show = cardMatches(card);
         card.closest("li")?.toggleAttribute("hidden", !show);
         if (show) visible += 1;
       });
@@ -473,18 +637,23 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
           content?.removeAttribute("hidden");
         }
       });
-      if (!searchActive()) {
-        categoryToggles.forEach((toggle) => {
-          toggle.setAttribute("aria-expanded", "false");
-          document.getElementById(toggle.getAttribute("aria-controls") || "")?.setAttribute("hidden", "");
-        });
-      }
 
-      // 搜索态下隐藏默认辅助区，让目录结果紧邻筛选区
-      defaultOnly.forEach((el) => el.toggleAttribute("hidden", searchActive()));
+      // 搜索态下隐藏默认辅助区，让目录结果紧邻筛选区。
+      defaultOnly.forEach((el) => {
+        const hidden = searchActive();
+        el.toggleAttribute("hidden", hidden);
+        if (hidden) {
+          el.style.setProperty("display", "none", "important");
+        } else {
+          el.style.removeProperty("display");
+        }
+      });
 
       empty.hidden = visible > 0;
       clearBtn?.toggleAttribute("hidden", !searchActive());
+      updateCategoryFilters();
+      updateCategoryGroupCounts();
+      updateEvalsFilter();
       updateActiveFilters();
       if (results) results.textContent = `${visible} ${results.dataset.label || ""}`.trim();
     };
@@ -495,10 +664,11 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
           evalsOnly = !evalsOnly;
           chip.classList.toggle("is-active", evalsOnly);
           chip.setAttribute("aria-pressed", String(evalsOnly));
+          updateSecondaryFilters();
           updateLifecycleFilters();
         } else {
           category = chip.getAttribute("data-filter") || "all";
-          document.querySelectorAll(".chip[data-filter]").forEach((c) => {
+          categoryFilters.forEach((c) => {
             c.classList.toggle("is-active", c === chip);
             c.setAttribute("aria-pressed", String(c === chip));
           });
@@ -517,6 +687,7 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
           item.classList.toggle("is-active", item.getAttribute("data-secondary-filter") === secondaryCategory);
           item.setAttribute("aria-pressed", String(item.getAttribute("data-secondary-filter") === secondaryCategory));
         });
+        updateLifecycleFilters();
         apply();
       });
     });
@@ -529,11 +700,16 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
           item.classList.toggle("is-active", item.getAttribute("data-lifecycle-filter") === lifecycleStage);
           item.setAttribute("aria-pressed", String(item.getAttribute("data-lifecycle-filter") === lifecycleStage));
         });
+        updateSecondaryFilters();
         apply();
       });
     });
 
-    search.addEventListener("input", apply);
+    search.addEventListener("input", () => {
+      updateSecondaryFilters();
+      updateLifecycleFilters();
+      apply();
+    });
     categoryToggles.forEach((toggle) => {
       toggle.addEventListener("click", () => {
         const content = document.getElementById(toggle.getAttribute("aria-controls") || "");
@@ -549,16 +725,20 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
       secondaryCategory = "";
       lifecycleStage = "";
       evalsOnly = false;
-      document.querySelectorAll(".chip[data-filter]").forEach((c) => {
+      document.querySelectorAll("[data-filter]").forEach((c) => {
         c.classList.toggle("is-active", c.getAttribute("data-filter") === "all");
         c.setAttribute("aria-pressed", String(c.getAttribute("data-filter") === "all"));
       });
-      const evalsChip = document.querySelector(".chip[data-evals-toggle]");
+      const evalsChip = document.querySelector("[data-evals-toggle]");
       evalsChip?.classList.remove("is-active");
       evalsChip?.setAttribute("aria-pressed", "false");
       lifecycleChips.forEach((chip) => {
         chip.classList.remove("is-active");
         chip.setAttribute("aria-pressed", "false");
+      });
+      categoryToggles.forEach((toggle) => {
+        toggle.setAttribute("aria-expanded", "true");
+        document.getElementById(toggle.getAttribute("aria-controls") || "")?.removeAttribute("hidden");
       });
       updateSecondaryFilters();
       updateLifecycleFilters();
@@ -979,4 +1159,617 @@ const displayNameOf = (skill: (typeof allSkills)[number]) =>
   .hero::before, .hero::after { display: none; }
   .hero h1, .section h2 { color: var(--color-main); }
   .hero .cta, .quick-card:hover, .card:hover { border-color: var(--color-theme) !important; }
+
+  /* Directory demo: an editorial catalogue with search-first discovery. */
+  .qaskills-page {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 4.5rem) clamp(1rem, 3vw, 2.5rem) 5rem;
+    gap: 1.25rem;
+  }
+  .eyebrow {
+    display: inline-block;
+    color: var(--color-theme);
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .directory-hero {
+    padding: clamp(1.25rem, 3vw, 2.4rem) 0 1.35rem;
+    border-block-end: 1px solid var(--color-border);
+    background: transparent;
+  }
+  .directory-hero-topline,
+  .directory-hero-main,
+  .hero-metrics,
+  .toolbar-main,
+  .results-heading,
+  .lifecycle-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .hero-sync {
+    color: var(--color-text-tertiary);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .directory-hero-main {
+    align-items: end;
+    margin-top: 1.15rem;
+  }
+  .directory-hero h1 {
+    margin: 0;
+    max-width: 14ch;
+    color: var(--color-main);
+    font-size: clamp(2.25rem, 6vw, 4.75rem);
+    letter-spacing: -0.06em;
+    line-height: 0.98;
+  }
+  .hero-sub {
+    margin: 0.8rem 0 0;
+    color: var(--color-theme);
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .hero-intro {
+    max-width: 60ch;
+    margin: 0.55rem 0 0;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+  .source-link,
+  .featured-link,
+  .shortcut-list a {
+    color: var(--color-theme);
+    text-decoration: none;
+  }
+  .source-link {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.45rem;
+    padding-block: 0.45rem;
+    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 45%, transparent);
+    font-size: 0.86rem;
+    font-weight: 800;
+  }
+  .source-link:hover,
+  .featured-link:hover,
+  .shortcut-list a:hover { border-color: var(--color-theme); color: var(--color-theme-focus); }
+  .hero-metrics {
+    justify-content: flex-start;
+    margin-top: 1.4rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-tertiary);
+    font-size: 0.78rem;
+  }
+  .hero-metrics span { display: inline-flex; align-items: baseline; gap: 0.32rem; }
+  .hero-metrics strong { color: var(--color-main); font-size: 1.05rem; }
+
+  .directory-toolbar {
+    position: sticky;
+    top: 0.75rem;
+    z-index: 5;
+    padding: 0.8rem;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-surface) 94%, transparent) !important;
+    box-shadow: 0 10px 25px color-mix(in srgb, var(--color-main) 7%, transparent) !important;
+    backdrop-filter: blur(12px);
+  }
+  .toolbar-main { align-items: center; }
+  .search-control {
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    min-width: 0;
+  }
+  .search-control-icon {
+    position: absolute;
+    inset-inline-start: 0.95rem;
+    z-index: 1;
+    color: var(--color-theme);
+    font-size: 1.2rem;
+    pointer-events: none;
+  }
+  .search-input {
+    min-height: 50px;
+    padding-inline: 2.8rem 6.2rem;
+    border-color: var(--color-border-strong);
+    background: var(--color-surface-elevated);
+    font-size: 1rem;
+  }
+  .toolbar-clear {
+    position: absolute;
+    inset-inline-end: 0.45rem;
+    min-height: 34px;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-muted);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: 0.76rem;
+    font-weight: 800;
+  }
+  .toolbar-clear:hover { border-color: var(--color-theme); color: var(--color-theme); }
+  .results-count {
+    flex: 0 0 auto;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.82rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .task-shortcuts {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .toolbar-label,
+  .filter-group-label,
+  .filter-footnote {
+    color: var(--color-text-tertiary);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .toolbar-label { display: block; }
+  .shortcut-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  .shortcut-list a {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: 0;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-muted);
+  }
+  .shortcut-list a:hover { border-color: var(--color-border-strong); background: var(--color-theme-soft); }
+  .shortcut-number,
+  .featured-number,
+  .category-index {
+    color: var(--color-theme);
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+  .shortcut-list strong,
+  .shortcut-list small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .shortcut-list strong { color: var(--color-main); font-size: 0.82rem; }
+  .shortcut-list small { margin-top: 0.12rem; color: var(--color-text-tertiary); font-size: 0.7rem; }
+
+  .featured-strip {
+    display: grid;
+    grid-template-columns: minmax(165px, 0.65fr) minmax(0, 2fr);
+    gap: 1rem;
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .featured-copy h2,
+  .results-heading h2,
+  .filter-sidebar h2,
+  .usage-note h2,
+  .lifecycle-heading h2 {
+    margin: 0.25rem 0 0;
+    color: var(--color-main);
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+  }
+  .featured-copy p,
+  .results-heading p,
+  .lifecycle-heading p {
+    margin: 0.35rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .featured-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+  .featured-link {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.45rem;
+    min-width: 0;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-elevated);
+  }
+  .featured-link:hover,
+  .featured-link-primary { border-color: color-mix(in srgb, var(--color-theme) 55%, var(--color-border)); }
+  .featured-link-primary { background: var(--color-theme-soft); }
+  .featured-link-copy { min-width: 0; }
+  .featured-link strong,
+  .featured-link small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .featured-link strong { color: var(--color-main); font-size: 0.78rem; }
+  .featured-link small { margin-top: 0.12rem; color: var(--color-text-tertiary); font-size: 0.68rem; }
+  .featured-arrow { font-size: 0.8rem; }
+
+  .directory-section { padding-top: 0.5rem; }
+  .directory-layout {
+    display: grid;
+    grid-template-columns: minmax(190px, 220px) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+  .filter-sidebar {
+    position: sticky;
+    top: 6.4rem;
+    min-width: 0;
+    padding-block-start: 0.1rem;
+    padding-inline: 0.75rem 0.5rem;
+  }
+  .filter-sidebar-heading { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding-bottom: 0.65rem; border-bottom: 1px solid var(--color-border); }
+  .filter-sidebar h2 { margin: 0.2rem 0 0; font-size: 1rem; }
+  .filter-sidebar-count { color: var(--color-theme); font-size: 1.1rem; font-weight: 900; }
+  .filter-group { margin-top: 0.8rem; }
+  .filter-group-label { margin: 0 0 0.35rem; font-size: 0.68rem; }
+  .filter-options { display: grid; gap: 0.12rem; }
+  .filter-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    width: 100%;
+    min-height: 32px;
+    padding: 0.25rem 0.45rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-align: start;
+  }
+  .filter-option span:last-child { color: var(--color-text-tertiary); font-size: 0.68rem; }
+  .filter-option:hover { border-color: var(--color-border); background: var(--color-surface-muted); color: var(--color-main); }
+  .filter-option.is-active { border-color: color-mix(in srgb, var(--color-theme) 25%, transparent); background: var(--color-theme-soft); color: var(--color-theme); }
+  .filter-option.is-active span:last-child { color: var(--color-theme); }
+  .more-filter-details { margin-top: 0.75rem; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+  .more-filter-details summary { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.55rem 0; color: var(--color-main); cursor: pointer; font-size: 0.76rem; font-weight: 900; list-style: none; }
+  .more-filter-details summary::-webkit-details-marker { display: none; }
+  .more-filter-details[open] summary .material-icons-sharp { transform: rotate(180deg); }
+  .more-filter-content { padding-bottom: 0.9rem; }
+  .secondary-filter-label { margin-top: 0.9rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip {
+    appearance: none;
+    min-height: 34px;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-elevated);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: 0.74rem;
+    font-weight: 800;
+    line-height: 1.25;
+    text-align: start;
+  }
+  .chip:hover { border-color: var(--color-theme); color: var(--color-theme); }
+  .chip.is-active { border-color: var(--color-theme); background: var(--color-theme); color: white; }
+  .chip.is-unavailable,
+  .chip:disabled { cursor: not-allowed; opacity: 0.45; }
+  .chips-secondary { display: grid; gap: 0.7rem; margin-top: 0.75rem; }
+  .secondary-filter-group { display: grid; gap: 0.35rem; }
+  .secondary-filter-group[hidden] { display: none; }
+  .secondary-filter-group-title { margin: 0; color: var(--color-text-tertiary); font-size: 0.66rem; font-weight: 900; letter-spacing: 0.04em; }
+  .secondary-filter-group .chips { margin-top: 0; }
+  .chip [data-filter-count] { margin-inline-start: 0.3rem; opacity: 0.7; font-size: 0.8em; }
+  .active-filters { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
+  .active-filter { padding: 0.3rem 0.5rem; border: 1px solid color-mix(in srgb, var(--color-theme) 30%, transparent); border-radius: var(--radius-sm); background: var(--color-theme-soft); color: var(--color-theme); cursor: pointer; font-size: 0.7rem; font-weight: 800; }
+  .filter-footnote { margin: 0.75rem 0 0; padding-top: 0.65rem; border-top: 1px solid var(--color-border); color: var(--color-text-tertiary); font-size: 0.7rem; font-weight: 800; line-height: 1.5; }
+
+  .results-column { min-width: 0; }
+  .results-heading { align-items: end; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border); }
+  .results-heading p { max-width: 42ch; margin-bottom: 0.1rem; text-align: end; }
+  .empty-state { padding: 1.2rem; border: 1px dashed var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-muted); color: var(--color-text-secondary); }
+  .empty-state[hidden] { display: none; }
+  .category-list { display: grid; gap: 1.55rem; }
+  .category-block { margin: 0; padding: 0; border: 0 !important; border-top: 1px solid var(--color-border) !important; border-radius: 0; background: transparent !important; }
+  .category-block:first-child { border-top: 0 !important; }
+  .category-block > h3 { margin: 0; }
+  .category-toggle { display: flex; align-items: center; width: 100%; gap: 0.55rem; padding: 0.7rem 0 0.55rem; border: 0; background: transparent; color: var(--color-main); cursor: pointer; font: inherit; font-size: 1.02rem; font-weight: 900; text-align: start; }
+  .category-index { flex: 0 0 auto; min-width: 1.8rem; }
+  .category-toggle-count { margin-inline-start: auto; color: var(--color-text-tertiary); font-size: 0.72rem; font-weight: 800; }
+  .category-toggle .material-icons-sharp { color: var(--color-text-tertiary); transition: transform 0.16s ease; }
+  .category-toggle[aria-expanded="false"] .material-icons-sharp { transform: rotate(-90deg); }
+  .category-toggle:focus-visible { outline: 2px solid var(--color-theme); outline-offset: 3px; border-radius: var(--radius-sm); }
+  .category-content { margin-top: 0.1rem; }
+  .category-block[hidden] { display: none; }
+  .subgroup { margin-top: 1.05rem; padding-top: 0.75rem; border-top: 1px dashed var(--color-border); }
+  .subgroup:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  .subgroup h4 { margin: 0 0 0.5rem; color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 900; letter-spacing: 0.02em; }
+  .cards { --skill-card-height: 148px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: var(--skill-card-height); gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .cards > li { min-height: 0; }
+  .cards > li[hidden] { display: none; }
+  .skill-card { display: flex; flex-direction: column; height: 100%; min-width: 0; min-height: 0; padding: 0.72rem; border: 1px solid var(--color-border) !important; border-radius: var(--radius-md); background: var(--color-surface) !important; box-shadow: none !important; color: inherit; overflow: hidden; text-decoration: none; transition: border-color 0.16s ease, background-color 0.16s ease; }
+  .skill-card:hover { transform: none; border-color: color-mix(in srgb, var(--color-theme) 48%, var(--color-border)) !important; background: var(--color-theme-soft) !important; box-shadow: none !important; }
+  .skill-card-type { display: block; margin-bottom: 0.34rem; color: var(--color-theme); font-size: 0.66rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+  .skill-card h5 { display: -webkit-box; min-height: 2.58rem; margin: 0; color: var(--color-main); font-size: 0.96rem; line-height: 1.35; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .card-intro { display: -webkit-box; min-height: 2.32rem; overflow: hidden; margin: 0.35rem 0 0; color: var(--color-text-secondary); font-size: 0.79rem; line-height: 1.48; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .ad-slot-250 { margin-top: 1.25rem; }
+  .ad-slot-250 :global(.ad-collapse) { width: 100%; height: 250px; margin-block: 0; overflow: hidden; }
+  .ad-slot-250 :global(.adsbygoogle) { height: 250px !important; }
+
+  .usage-note,
+  .lifecycle-path {
+    padding-block-start: 1.35rem;
+    padding-inline: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .usage-note { display: grid; grid-template-columns: minmax(150px, 0.55fr) minmax(0, 2fr); gap: 1rem; }
+  .usage-note ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
+  .usage-note li { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem; padding: 0.55rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .usage-note li > span { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--color-theme-soft); color: var(--color-theme); font-size: 0.7rem; font-weight: 900; }
+  .usage-note li strong { display: block; color: var(--color-main); font-size: 0.76rem; }
+  .usage-note li p { margin: 0.2rem 0 0; color: var(--color-text-secondary); font-size: 0.7rem; line-height: 1.45; }
+  .lifecycle-heading { align-items: end; margin-bottom: 0.8rem; }
+  .lifecycle-heading p { max-width: 42ch; margin-bottom: 0.1rem; text-align: end; }
+  .lifecycle-track { display: flex; align-items: stretch; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.3rem; -webkit-overflow-scrolling: touch; }
+  .lifecycle-cell { display: flex; flex: 1 1 0; min-width: 9.5rem; align-items: stretch; gap: 0.4rem; }
+  .lifecycle-stage { flex: 1; min-width: 0; padding: 0.65rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .lifecycle-stage-title { display: flex; align-items: center; gap: 0.35rem; margin: 0 0 0.45rem; color: var(--color-main); font-size: 0.76rem; font-weight: 900; line-height: 1.35; }
+  .lifecycle-stage-num { display: inline-grid; flex: 0 0 auto; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--color-theme-soft); color: var(--color-theme); font-size: 0.68rem; }
+  .lifecycle-skills { display: grid; gap: 0.28rem; margin: 0; padding: 0; list-style: none; }
+  .lifecycle-skill { display: flex; align-items: center; justify-content: space-between; gap: 0.3rem; padding: 0.34rem 0.42rem; border: 1px solid color-mix(in srgb, var(--color-theme) 18%, var(--color-border)); border-radius: 6px; background: var(--color-theme-soft); color: var(--color-main); font-size: 0.7rem; font-weight: 700; line-height: 1.3; text-decoration: none; }
+  .lifecycle-skill:hover { border-color: var(--color-theme); color: var(--color-theme); }
+  .lifecycle-skill--plus { border-style: dashed; background: transparent; }
+  .lifecycle-plus-tag { flex: 0 0 auto; color: var(--color-theme); font-size: 0.62rem; font-weight: 900; }
+  .lifecycle-arrow { align-self: center; flex: 0 0 auto; color: var(--color-text-tertiary); font-weight: 800; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+  @media (max-width: 980px) {
+    .directory-layout { grid-template-columns: 180px minmax(0, 1fr); gap: 1.2rem; }
+    .featured-strip { grid-template-columns: 1fr; }
+    .featured-copy { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.45rem 0.7rem; }
+    .featured-copy h2 { margin-top: 0; }
+    .featured-copy p { flex-basis: 100%; margin-top: 0; }
+  }
+  @media (max-width: 760px) {
+    .directory-toolbar { position: static; }
+    .toolbar-main { display: grid; gap: 0.55rem; }
+    .results-count { justify-self: start; }
+    .directory-layout { grid-template-columns: 1fr; }
+    .filter-sidebar { position: static; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border); }
+    .filter-sidebar-heading { padding-bottom: 0.6rem; }
+    .filter-options { display: flex; gap: 0.35rem; overflow-x: auto; padding-bottom: 0.2rem; }
+    .filter-option { flex: 0 0 auto; width: auto; min-height: 35px; white-space: nowrap; }
+    .more-filter-details { margin-top: 0.75rem; }
+    .results-heading { display: grid; gap: 0.35rem; }
+    .results-heading p,
+    .lifecycle-heading p { max-width: none; text-align: start; }
+    .usage-note { grid-template-columns: 1fr; }
+    .lifecycle-heading { display: grid; gap: 0.35rem; }
+  }
+  @media (max-width: 640px) {
+    .qaskills-page { padding: 1.5rem 1rem 3.5rem; }
+    .directory-hero-main { display: grid; gap: 0.9rem; }
+    .directory-hero h1 { max-width: 12ch; font-size: clamp(2.3rem, 13vw, 3.8rem); }
+    .hero-metrics { flex-wrap: wrap; gap: 0.45rem 0.8rem; }
+    .shortcut-list { display: flex; overflow-x: auto; gap: 0.45rem; margin-inline: -0.1rem; padding-bottom: 0.2rem; }
+    .shortcut-list a { flex: 0 0 12rem; }
+    .featured-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cards { grid-template-columns: 1fr; }
+    .usage-note ol { grid-template-columns: 1fr; }
+    .lifecycle-track { margin-inline: 0; }
+  }
+  @media (max-width: 420px) {
+    .featured-list { grid-template-columns: 1fr; }
+  }
+  .qaskills-page [hidden],
+  .qaskills-page [data-qaskills-default-only][hidden] { display: none !important; }
+  .directory-toolbar { position: relative; top: auto; z-index: auto; backdrop-filter: none; }
+
+  /* Final refinement: one clear search path, one consistent control system. */
+  :global(.l-main:has(.qaskills-page)) { margin-block-start: 0; }
+  .qaskills-page { padding-top: clamp(1rem, 2vw, 1.75rem); }
+  .directory-hero { padding-top: clamp(0.65rem, 1.25vw, 1.1rem); }
+  .directory-hero-topline .eyebrow { letter-spacing: 0.12em; }
+  .hero-intro { max-width: 58ch; }
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+  }
+  .hero-metrics span {
+    min-width: 0;
+    padding-inline: 0.85rem;
+    border-inline-start: 1px solid var(--color-border);
+  }
+  .hero-metrics span:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  .hero-metrics strong,
+  .filter-sidebar-count,
+  .filter-option span:last-child,
+  .chip [data-filter-count],
+  .category-toggle-count { font-variant-numeric: tabular-nums; }
+
+  .featured-strip { align-items: start; }
+  .featured-copy h2 { margin-top: 0; }
+  .featured-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .featured-link { min-height: 76px; }
+
+  .filter-sidebar {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-muted);
+  }
+  .filter-sidebar-heading { padding-bottom: 0.8rem; }
+  .filter-sidebar-heading h2 { font-size: 1.16rem; }
+  .filter-sidebar-count { font-size: 1.2rem; }
+  .filter-options { gap: 0.3rem; }
+  .filter-option {
+    min-height: 40px;
+    padding: 0.45rem 0.65rem;
+    border-color: transparent;
+  }
+  .filter-option span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .more-filter-details { margin-top: 1rem; }
+  .more-filter-details > summary {
+    min-height: 42px;
+    padding-block: 0.55rem;
+  }
+  .more-filter-details > summary:focus-visible,
+  .secondary-filter-group > summary:focus-visible { outline-offset: 3px; border-radius: var(--radius-sm); }
+  .more-filter-content { display: grid; gap: 0.9rem; padding-top: 0.15rem; }
+  .secondary-filter-label { margin: 0; }
+  .chips-secondary { gap: 0.5rem; margin-top: 0; }
+  .secondary-filter-group {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-elevated);
+  }
+  .secondary-filter-group > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 38px;
+    padding: 0.45rem 0.65rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: 0.76rem;
+    font-weight: 900;
+    list-style: none;
+  }
+  .secondary-filter-group > summary::-webkit-details-marker { display: none; }
+  .secondary-filter-group > summary .material-icons-sharp { color: var(--color-text-tertiary); font-size: 1.05rem; transition: transform 0.16s ease; }
+  .secondary-filter-group[open] > summary { color: var(--color-main); border-bottom: 1px solid var(--color-border); }
+  .secondary-filter-group[open] > summary .material-icons-sharp { transform: rotate(180deg); }
+  .secondary-filter-group-content { display: grid; gap: 0.2rem; padding: 0.35rem 0.5rem; }
+  .secondary-filter-group-content .chip {
+    width: 100%;
+    min-height: 34px;
+    padding-inline: 0.35rem;
+    border-color: transparent;
+    border-radius: 6px;
+    background: transparent;
+  }
+  .secondary-filter-group-content .chip:hover { background: var(--color-theme-soft); }
+  .secondary-filter-group-content .chip.is-active { background: var(--color-theme); }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.45rem;
+  }
+  .chip [data-filter-count] { flex: 0 0 auto; }
+  .chip.is-active { border-color: var(--color-theme); background: var(--color-theme); color: var(--color-surface-muted); }
+  .chip.is-active [data-filter-count] { color: currentColor; opacity: 0.78; }
+
+  .active-filters { margin-top: 0.85rem; }
+  .active-filter { border-radius: 999px; }
+  .results-heading { margin-bottom: 1.25rem; }
+  .results-heading h2 { margin-top: 0; }
+  .category-list { gap: 2rem; }
+  .category-toggle { min-height: 46px; padding-block: 0.65rem 0.55rem; }
+  .category-toggle > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .category-toggle .material-icons-sharp { flex: 0 0 auto; }
+  .category-index { display: none; }
+
+  .cards { grid-auto-rows: var(--skill-card-height); }
+  .cards > li { height: var(--skill-card-height); }
+  .skill-card {
+    box-sizing: border-box;
+    position: relative;
+    height: var(--skill-card-height);
+    padding: 0.72rem;
+  }
+  .skill-card-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-width: 0;
+    min-height: 2.58rem;
+  }
+  .skill-card-title-row h5 { flex: 1 1 auto; min-width: 0; }
+  .skill-card-type {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    max-width: 5.5rem;
+    margin: 0 0 0 auto;
+    padding: 0.18rem 0.42rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 36%, var(--color-border));
+    border-radius: 999px;
+    color: var(--color-theme);
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .skill-card:focus-visible { outline-offset: 4px; }
+
+  .usage-note,
+  .lifecycle-path {
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+  .usage-note h2,
+  .lifecycle-heading h2 { margin-top: 0; }
+  .lifecycle-track { min-width: 0; }
+  .lifecycle-stage { box-sizing: border-box; height: 100%; }
+
+  @media (max-width: 760px) {
+    .hero-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem 0; }
+    .hero-metrics span:nth-child(3) { border-inline-start: 0; }
+    .hero-metrics span { padding-inline: 0.65rem; }
+    .hero-metrics span:nth-child(odd) { padding-inline-start: 0; }
+    .filter-sidebar { padding: 1rem; }
+    .filter-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; padding-bottom: 0; }
+    .filter-option { width: 100%; }
+    .directory-layout { gap: 1.1rem; }
+    .featured-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .featured-link { min-height: 82px; }
+    .usage-note { grid-template-columns: 1fr; }
+    .usage-note ol { grid-template-columns: 1fr; }
+    .lifecycle-track { flex-direction: column; overflow: visible; }
+    .lifecycle-cell { min-width: 0; flex-direction: column; gap: 0.35rem; }
+    .lifecycle-arrow { align-self: center; padding: 0.1rem 0; transform: rotate(90deg); }
+  }
+  @media (max-width: 640px) {
+    .qaskills-page { padding: 1.5rem 1rem 3.5rem; }
+    .directory-hero-topline { display: grid; gap: 0.35rem; }
+    .directory-hero-main { margin-top: 0.9rem; }
+    .directory-hero h1 { max-width: 13ch; }
+    .toolbar-main { gap: 0.65rem; }
+    .search-input { min-height: 52px; }
+    .results-heading { gap: 0.45rem; }
+    .results-heading p { margin-top: 0; }
+    .cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 360px) {
+    .featured-list { grid-template-columns: 1fr; }
+  }
 </style>

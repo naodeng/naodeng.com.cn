@@ -19,6 +19,8 @@ describe("dsh-qa site data", () => {
 
   it.each(["en", "zh-cn"] as const)("keeps verified release facts in newest-first order for %s", (lang) => {
     expect(DSH_QA_SITE[lang].releases.map((release) => [release.version, release.publishedAt, release.url])).toEqual([
+      ["v0.4.1", "2026-09-15", "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.1"],
+      ["v0.4.0", "2026-09-15", "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.0"],
       ["v0.3.1", "2026-09-11", "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.1"],
       ["v0.3.0", "2026-09-11", "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.0"],
       ["v0.2.0", "2026-09-01", "https://github.com/naodeng/dsh-qa/releases/tag/v0.2.0"],
