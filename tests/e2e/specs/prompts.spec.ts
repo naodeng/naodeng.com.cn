@@ -16,6 +16,30 @@ test.describe("Prompts selection and review flow", () => {
     expect(boxes[3].width).toBeGreaterThan(boxes[0].width);
   });
 
+  test("prompt cards use a compact desktop grid footprint", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL}/zh-cn/prompts/`);
+    await page.locator(".prompt-category").first().locator(".prompt-category-toggle").click();
+
+    const metrics = await page.locator(".prompt-category").first().locator(".prompts-grid").evaluate((grid) => {
+      const card = grid.querySelector<HTMLElement>(".prompt-card");
+      const gridStyles = getComputedStyle(grid);
+      const cardStyles = card ? getComputedStyle(card) : null;
+
+      return {
+        columnCount: gridStyles.gridTemplateColumns.split(" ").filter(Boolean).length,
+        cardWidth: card ? Math.round(card.getBoundingClientRect().width) : 0,
+        columnGap: parseFloat(gridStyles.columnGap),
+        paddingInline: cardStyles ? parseFloat(cardStyles.paddingInlineStart) : 0,
+      };
+    });
+
+    expect(metrics.columnCount).toBeGreaterThanOrEqual(5);
+    expect(metrics.cardWidth).toBeLessThanOrEqual(230);
+    expect(metrics.columnGap).toBeLessThanOrEqual(16);
+    expect(metrics.paddingInline).toBeLessThanOrEqual(16);
+  });
+
   test("content sections keep visible separation without overlap", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${baseURL}/zh-cn/prompts/`);

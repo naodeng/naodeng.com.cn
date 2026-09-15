@@ -473,8 +473,8 @@ const itemListSchema = {
 
   .prompts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: var(--sp-m);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -609,8 +609,8 @@ const itemListSchema = {
   .workflow-card {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    padding: var(--sp-m);
+    gap: 0.35rem;
+    padding: 0.85rem 0.9rem;
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border);
     background: var(--color-surface-elevated);
@@ -637,7 +637,7 @@ const itemListSchema = {
 
   .prompt-card-title,
   .workflow-card-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 800;
     color: var(--color-theme);
     margin: 0;
@@ -646,7 +646,7 @@ const itemListSchema = {
 
   .prompt-card-desc,
   .workflow-card-desc {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: var(--color-text-secondary);
     line-height: 1.5;
     margin: 0;
@@ -655,10 +655,10 @@ const itemListSchema = {
 
   .prompt-card-cta,
   .workflow-card-cta {
-    font-size: 0.8rem;
+    font-size: 0.74rem;
     font-weight: 600;
     color: var(--color-theme);
-    margin-block-start: 0.25rem;
+    margin-block-start: 0.1rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
