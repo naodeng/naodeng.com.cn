@@ -95,7 +95,16 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
           "test-case-writing",
           "testcase-writer-plus",
           "test-case-reviewer",
-          "test-case-reviewer-plus"
+          "test-case-reviewer-plus",
+          "decision-table-testing",
+          "state-transition-testing",
+          "boundary-value-testing",
+          "equivalence-partitioning",
+          "pairwise-testing",
+          "combinatorial-testing",
+          "model-based-testing",
+          "property-based-testing",
+          "metamorphic-testing"
         ]
       },
       {
@@ -145,7 +154,23 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
           "acceptance-criteria-review",
           "requirement-gap-analysis",
           "quality-risk-analysis",
-          "testability-analysis"
+          "testability-analysis",
+          "requirement-quality-review",
+          "requirement-ambiguity-analysis",
+          "requirement-consistency-analysis",
+          "requirement-conflict-detection",
+          "requirement-traceability-analysis",
+          "business-rule-extraction",
+          "technical-design-quality-review",
+          "api-design-quality-review",
+          "database-design-quality-review",
+          "observability-design-review",
+          "error-handling-design-review",
+          "test-scope-analysis",
+          "test-gap-analysis",
+          "risk-based-testing",
+          "edge-case-discovery",
+          "negative-scenario-discovery"
         ]
       },
       {
@@ -159,7 +184,14 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
           "change-impact-analysis",
           "pr-test-impact-analysis",
           "api-contract-testing",
-          "automation-testing"
+          "automation-testing",
+          "api-schema-validation",
+          "api-negative-testing",
+          "api-idempotency-testing",
+          "api-pagination-testing",
+          "api-rate-limit-testing",
+          "api-version-compatibility-testing",
+          "api-error-contract-testing"
         ]
       },
       {
@@ -169,6 +201,7 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
           "en": "Test Data and Automation Implementation"
         },
         "slugs": [
+          "test-data-requirement-analysis",
           "test-data-generation",
           "api-test-bruno",
           "api-test-postman",
@@ -180,7 +213,12 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
           "ui-test-testcafe",
           "ui-test-cypress",
           "ui-test-puppeteer",
-          "ui-test-webdriverio"
+          "ui-test-webdriverio",
+          "ui-test-strategy",
+          "ui-test-selector-review",
+          "ui-test-wait-strategy-review",
+          "visual-regression-testing",
+          "cross-browser-testing"
         ]
       },
       {
@@ -194,7 +232,11 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
           "regression-scope-analysis",
           "regression-test-selection",
           "ai-assisted-testing",
-          "ai-generated-test-review"
+          "ai-generated-test-review",
+          "test-code-review",
+          "mutation-testing-analysis",
+          "mock-quality-review",
+          "test-suite-health-analysis"
         ]
       },
       {

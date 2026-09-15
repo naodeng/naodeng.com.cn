@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-report-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-03
+- syncedAt: 2026-09-15
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-report-review/SKILL.md
 - description: Use this skill when a test report needs an evidence-consistency review before Human approval; triggers include test report review, quality report audit, test evidence review..
 

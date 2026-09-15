@@ -6,7 +6,7 @@ Author: naodeng
 - slug: qa-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-03
+- syncedAt: 2026-09-15
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/qa-quality-perspective/SKILL.md
 - description: Use this skill when QA quality perspective is needed for requirements, strategy, review, test cases, or reports; triggers include QA quality perspective.
 
