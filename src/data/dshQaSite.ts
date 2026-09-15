@@ -58,6 +58,8 @@ export interface DshQaSiteCopy {
 }
 
 export const DSH_QA_RELEASE_FACTS: DshQaReleaseFact[] = [
+  { version: "v0.4.1", publishedAt: "2026-09-15", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.1" },
+  { version: "v0.4.0", publishedAt: "2026-09-15", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.0" },
   { version: "v0.3.1", publishedAt: "2026-09-11", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.1" },
   { version: "v0.3.0", publishedAt: "2026-09-11", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.0" },
   { version: "v0.2.0", publishedAt: "2026-09-01", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.2.0" },
@@ -105,6 +107,8 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { label: "Compatibility postmortem", href: "/en/blog/ai-testing/dsh-qa-harness-api-compatibility-404/" },
     ],
     releases: releases([
+      { summary: "Hardened DeepSeek Harness compatibility and verified the embedded workbench host path.", changes: ["Locked the current client-request and session/follow WebSocket envelopes, standardized snapshot.records and cursor handling, and routed follow through the Remote mux.", "Added bounded error, close, timeout, and duplicate-frame handling for Session follow so host capability failures remain visible.", "Aligned the dsh-v0.1.6-alpha.1 QA preset workflow, persona prefix, skills/list envelope, and commands/execute submittedAttachments argument.", "Added an explicit opt-in Harness host smoke and verified the embedded Workbench client's refresh and reconnect path."] },
+      { summary: "Introduced verifiable evidence bundles and quality-workbench execution flows.", changes: ["Added terminal-run finalization, canonical manifest hashes, per-file SHA-256 digests, evidence types, MIME metadata, capture timestamps, and text/image previews.", "Added tamper detection, invalid-evidence quarantine, interrupted-finalization recovery, gate and open-defect reference protection, quotas, and path hardening.", "Added structured failure analysis, human-confirmed defect promotion, deterministic calculated regression sets, recalculation, and before/after test-run comparison.", "Bound test runs to source digests and Git commits, and completed evidence list, per-run evidence, download, and quality-workbench UI flows.", "Fixed stale or invalid evidence entering gates, restart recovery, referenced-evidence cleanup, MIME handling, traversal and symlink protection, unknown regression cases, and comparison validation."] },
       { summary: "Clearer DSH plugin and standalone installation guidance.", changes: ["Documented npx and source-checkout plugin installation paths.", "Added standalone npm installation, update, and qabench startup guidance."] },
       { summary: "DeepSeek Harness RPC compatibility and a narrower product boundary.", changes: ["Updated RPC endpoints and request envelopes for current DSH APIs.", "Removed retired Remote pairing checks while retaining local workbench and native session support."] },
       { summary: "Introduced the QA control workbench and computed delivery gates.", changes: ["Added traceable quality tasks, controlled runs, evidence bundles, and regression workflows.", "Added PASS, WARN, and BLOCK delivery decisions with controlled exceptions."] },
@@ -147,6 +151,8 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { label: "兼容性复盘文章", href: "/zh-cn/blog/ai-testing/dsh-qa-harness-api-compatibility-404/" },
     ],
     releases: releases([
+      { summary: "加固 DeepSeek Harness 兼容性，并完成嵌入式工作台宿主链路验证。", changes: ["固化当前 client-request 与 session/follow WebSocket 封装，统一读取 snapshot.records 与 cursor，并通过 Remote mux 处理 follow。", "补充 Session follow 的错误、关闭、超时与重复 frame 边界处理，避免宿主能力列表失败时静默显示为空。", "对齐 dsh-v0.1.6-alpha.1 的 QA preset workflow、persona prefix、skills/list 请求封装和 commands/execute 的 submittedAttachments 参数。", "新增显式 opt-in 的 Harness host smoke，并验证嵌入式 Workbench client 的刷新与重连路径。"] },
+      { summary: "引入可验证的质量证据包与质量工作台执行链路。", changes: ["新增终态运行 finalize、规范 manifest hash、逐文件 SHA-256、证据类型、MIME、捕获时间和文本/图片预览。", "新增篡改检测、无效证据隔离、中断 finalize 恢复、门禁与未关闭缺陷引用保护、配额和路径安全检查。", "新增结构化失败分析、人工确认后的缺陷升级、确定性计算回归集、回归集重算和测试运行前后对比。", "将测试运行绑定到源文件摘要与 Git commit，并补齐证据列表、单次运行证据、下载和质量工作台 UI。", "修复无效或过期证据进入门禁、重启恢复、引用中证据清理、MIME、路径越界、符号链接、未知回归用例和运行对比参数校验问题。"] },
       { summary: "补充 DSH 插件与独立运行的安装说明。", changes: ["说明 npx 与源码工作区的插件安装路径。", "补充独立模式的 npm 安装、更新与 qabench 启动方式。"] },
       { summary: "适配 DeepSeek Harness RPC，并收敛产品边界。", changes: ["更新当前 DSH API 的 RPC 端点与请求封装。", "移除废弃的 Remote 配对检查，保留本地工作台与原生会话支持。"] },
       { summary: "引入研发质量控制工作台与计算型交付门禁。", changes: ["新增可追溯的质量任务、受控运行、证据包与回归工作流。", "新增 PASS、WARN、BLOCK 交付决策与受控例外。"] },
