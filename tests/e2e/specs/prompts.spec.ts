@@ -40,6 +40,43 @@ test.describe("Prompts selection and review flow", () => {
     expect(metrics.paddingInline).toBeLessThanOrEqual(16);
   });
 
+  test("prompt directory keeps category filtering and direct card navigation compact", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL}/zh-cn/prompts/`);
+
+    await expect(page.locator(".prompt-directory-toolbar")).toBeVisible();
+    await expect(page.locator(".prompt-filter-sidebar")).toBeVisible();
+    await expect(page.locator("#prompt-results-count")).toContainText("246");
+
+    const targetCategory = page.locator(".prompt-category").nth(1);
+    await page.locator(".prompt-category-filter").nth(2).click();
+    await expect(page.locator(".prompt-category").first()).toBeHidden();
+    await expect(targetCategory).toBeVisible();
+    await expect(targetCategory.locator(".prompts-grid")).toBeVisible();
+
+    const metrics = await targetCategory.locator(".prompts-grid").evaluate((grid) => {
+      const card = grid.querySelector<HTMLElement>(".prompt-card");
+      const gridStyles = getComputedStyle(grid);
+      const cardStyles = card ? getComputedStyle(card) : null;
+
+      return {
+        columnCount: gridStyles.gridTemplateColumns.split(" ").filter(Boolean).length,
+        cardWidth: card ? Math.round(card.getBoundingClientRect().width) : 0,
+        cardHeight: card ? Math.round(card.getBoundingClientRect().height) : 0,
+        columnGap: parseFloat(gridStyles.columnGap),
+        paddingInline: cardStyles ? parseFloat(cardStyles.paddingInlineStart) : 0,
+      };
+    });
+
+    expect(metrics.columnCount).toBeGreaterThanOrEqual(5);
+    expect(metrics.cardWidth).toBeLessThanOrEqual(230);
+    expect(metrics.cardHeight).toBeLessThanOrEqual(130);
+    expect(metrics.columnGap).toBeLessThanOrEqual(16);
+    expect(metrics.paddingInline).toBeLessThanOrEqual(16);
+    await expect(targetCategory.locator(".prompt-card").first()).toHaveAttribute("href", /\/zh-cn\/prompts\/.+\/$/);
+    await expect(targetCategory.locator(".prompt-card-cta")).toHaveCount(0);
+  });
+
   test("content sections keep visible separation without overlap", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${baseURL}/zh-cn/prompts/`);
