@@ -263,7 +263,10 @@ function parseCatalog(readme) {
   let capabilityMap = false;
 
   for (const line of lines) {
-    if (/^##\s+技能目录\s*$/.test(line) || /^##\s+Skill catalog\s*$/i.test(line)) {
+    if (
+      /^##\s+(?:技能目录|完整技能目录)\s*$/.test(line)
+      || /^##\s+(?:Skill catalog|Complete Skill catalog)\s*$/i.test(line)
+    ) {
       inCatalog = true;
       continue;
     }
