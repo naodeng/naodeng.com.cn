@@ -90,6 +90,46 @@ test.describe("响应式布局", () => {
     await expect(page.locator("header [data-site-nav]")).toBeHidden();
   });
 
+  test("移动端：滚动后打开导航菜单仍保持清晰层级", async ({ page, baseURL }) => {
+    await page.setViewportSize(MOBILE_VIEWPORT);
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
+    await page.evaluate(() => window.scrollTo(0, 600));
+    await page.waitForFunction(() => window.scrollY > 0);
+
+    await page.locator("header [data-nav-toggle]").click();
+    await page.waitForFunction(() => {
+      const nav = document.querySelector("[data-site-nav]");
+      return nav instanceof HTMLElement && getComputedStyle(nav).opacity === "1";
+    });
+    const state = await page.evaluate(() => {
+      const nav = document.querySelector("[data-site-nav]");
+      const backdrop = document.querySelector("[data-nav-backdrop]");
+      const firstLink = nav?.querySelector("a");
+      if (
+        !(nav instanceof HTMLElement) ||
+        !(backdrop instanceof HTMLElement) ||
+        !(firstLink instanceof HTMLElement)
+      ) {
+        return { error: "missing navigation elements" };
+      }
+      const linkRect = firstLink.getBoundingClientRect();
+      const hit = document.elementFromPoint(linkRect.left + linkRect.width / 2, linkRect.top + linkRect.height / 2);
+      const navStyle = getComputedStyle(nav);
+      const backdropStyle = getComputedStyle(backdrop);
+      const navZIndex = Number.parseInt(navStyle.zIndex, 10);
+      const backdropZIndex = Number.parseInt(backdropStyle.zIndex, 10);
+      return {
+        navBackground: navStyle.backgroundColor,
+        navIsAboveBackdrop: Number.isFinite(navZIndex) && Number.isFinite(backdropZIndex) && navZIndex > backdropZIndex,
+        hitInsideNav: Boolean(hit?.closest("[data-site-nav]")),
+      };
+    });
+    expect(state).not.toHaveProperty("error");
+    expect(state.navBackground).not.toMatch(/rgba?\(\s*0\s*,\s*0\s*,\s*0\s*,\s*0\s*\)/);
+    expect(state.navIsAboveBackdrop).toBeTruthy();
+    expect(state.hitInsideNav).toBeTruthy();
+  });
+
   test("en 博客列表在移动端正常显示", async ({ page, baseURL }) => {
     await page.setViewportSize(MOBILE_VIEWPORT);
     await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });

@@ -73,6 +73,18 @@ test.describe("home information architecture", () => {
     }
   });
 
+  test("hero exposes three topical entry points in both locales", async ({ page, baseURL }) => {
+    for (const lang of ["zh-cn", "en"] as const) {
+      await page.goto(`${baseURL || ""}/${lang}/`);
+      const topics = page.locator(".hero-topic-map a");
+      await expect(page.locator(".home-hero .hero-topic-map")).toBeVisible();
+      await expect(topics).toHaveCount(3);
+      await expect(topics.nth(0)).toBeVisible();
+      await expect(topics.nth(1)).toBeVisible();
+      await expect(topics.nth(2)).toBeVisible();
+    }
+  });
+
   test("five top-level sections appear in expected order", async ({ page, baseURL }) => {
     await page.goto(`${baseURL || ""}/zh-cn/`);
     const classes = await page
