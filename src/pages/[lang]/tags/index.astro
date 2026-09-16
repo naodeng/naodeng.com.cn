@@ -3,7 +3,6 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_TAGS, TAGS_INDEX_DESCRIPTION } from "@/consts";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
@@ -61,7 +60,6 @@ export const getStaticPaths = () =>
       <p class="aggregate-empty">{locale === "zh-cn" ? "暂无标签" : "No tags yet"}</p>
     )}
   </div>
-  <GoogleAd />
 </Layout>
 
 <style>

@@ -9,7 +9,6 @@ import {
   SECTION_KEYS,
   SECTION_LABELS,
 } from "@/utils/qaskills";
-import GoogleAd from "@/components/GoogleAd.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
 
@@ -344,9 +343,6 @@ const tocHeadings = [
     </div>
 
     <ArticleShare title={displayName} url={canonicalUrl} locale={pageLocale} />
-    <div class="ad-slot-250">
-      <GoogleAd />
-    </div>
     <Giscus
       lang={lang === "zh-cn" ? "zh-CN" : "en"}
       theme="preferred_color_scheme"
@@ -946,14 +942,6 @@ const tocHeadings = [
     cursor: pointer;
     z-index: 1;
   }
-  .ad-slot-250 { margin-top: 0.25rem; }
-  .ad-slot-250 :global(.ad-collapse) {
-    margin-block: 0;
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-  }
-  .ad-slot-250 :global(.adsbygoogle) { height: 250px !important; }
   :global(.qaskill-detail .prose) { line-height: 1.75; }
   :global(.qaskill-detail .prose ul),
   :global(.qaskill-detail .prose ol) {

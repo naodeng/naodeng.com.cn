@@ -2,10 +2,8 @@
 import { getCollection, render } from "astro:content";
 import Base from "@/layouts/Base.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
-import SidebarAd from "@/components/SidebarAd.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import Giscus from "@/components/Giscus.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -125,8 +123,6 @@ const howToSchema = {
         <Content />
       </div>
 
-      <GoogleAd />
-
       <ArticleShare
         title={entry.data.title}
         url={canonicalUrl}
@@ -144,7 +140,6 @@ const howToSchema = {
     {tocHeadings.length > 0 && (
       <aside class="workflow-toc-wrap" id="workflow-toc-wrap">
         <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
-        <SidebarAd />
       </aside>
     )}
   </div>

@@ -28,7 +28,7 @@ web
 - 技术栈：Astro + MDX + TypeScript；部署在 Cloudflare Workers（边缘）与 GitHub Pages；CI 用 GitHub Actions。
 - 阅读与互动：本地索引搜索、Giscus（GitHub 评论）、Google Analytics。
 - 质量保障：Playwright E2E、SEO 静态检查、Wiki 样式与完整性检查，以及封面 / 相关推荐等生成脚本。
-- 变现：站点含广告位（近期把正文内广告移到页尾的持久 footer 插槽）。
+- 变现：目前不展示广告，保留独立赞助入口。
 - 双语约定：站点语言路径为 en 与 zh-cn，页面 / 导航 / 内容需两边可达，无对译时需明确说明。
 
 ## Capabilities and Constraints

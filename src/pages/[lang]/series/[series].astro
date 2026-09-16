@@ -3,7 +3,6 @@ import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import PageHeadline from "@/components/PageHeadline.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_SERIES } from "@/consts";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
@@ -119,7 +118,6 @@ const breadcrumbs = [
       }
     </div>
   </div>
-  <GoogleAd />
 </Layout>
 
 <style>

@@ -1,7 +1,6 @@
 ---
 import Analytics from "@/components/Analytics.astro";
 import Footer from "@/components/Footer.astro";
-import FooterAd from "@/components/FooterAd.astro";
 import Header from "@/components/Header.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import SearchModal from "@/components/SearchModal.astro";
@@ -262,13 +261,6 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <Analytics />
     {import.meta.env.PROD && (
       <>
-        <!-- Google AdSense -->
-        <script
-          is:inline
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249159446737834"
-          crossorigin="anonymous"
-        />
         <!-- Counterscale 自部署统计 (https://analytics.inaodeng.com) -->
         <script
           is:inline
@@ -356,8 +348,6 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
       <slot />
     </main>
 
-    <FooterAd />
-
     <Footer />
 
     <ScrollToTop lang={locale} />
@@ -388,67 +378,6 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
       })();
     </script>
 
-    {import.meta.env.PROD && (
-      <script is:inline>
-        (() => {
-          const roots = Array.from(
-            document.querySelectorAll("[data-ad-collapse]"),
-          );
-          if (!roots.length) return;
-
-          const isFilled = (ins) => {
-            const status = ins.getAttribute("data-ad-status");
-            if (status === "unfilled") return false;
-            if (status === "filled") return true;
-            if (ins.querySelector("iframe")) return true;
-            return ins.offsetHeight > 40;
-          };
-
-          const watch = (root) => {
-            const ins = root.querySelector("ins.adsbygoogle");
-            if (!ins) {
-              root.hidden = true;
-              return;
-            }
-
-            const reveal = () => {
-              if (!isFilled(ins)) return false;
-              root.hidden = false;
-              root.setAttribute("aria-hidden", "false");
-              return true;
-            };
-
-            if (reveal()) return;
-
-            const observer = new MutationObserver(() => {
-              if (reveal()) observer.disconnect();
-            });
-            observer.observe(ins, {
-              attributes: true,
-              attributeFilter: ["data-ad-status", "style", "class"],
-              childList: true,
-              subtree: true,
-            });
-
-            let tries = 0;
-            const timer = window.setInterval(() => {
-              tries += 1;
-              if (reveal() || tries >= 20) {
-                window.clearInterval(timer);
-                observer.disconnect();
-                if (!isFilled(ins)) {
-                  root.hidden = true;
-                  root.setAttribute("aria-hidden", "true");
-                }
-              }
-            }, 500);
-          };
-
-          roots.forEach(watch);
-        })();
-      </script>
-    )}
-
     {import.meta.env.DEV && (
       <style>
         :root {
@@ -471,15 +400,6 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
       .skip-link:focus {
         left: 0;
         top: 0;
-      }
-      /* 固定高度广告槽：子广告未展开时整槽不占位 */
-      .ad-slot-250:has([data-ad-collapse][hidden]) {
-        display: none !important;
-        margin: 0 !important;
-        height: 0 !important;
-        min-height: 0 !important;
-        overflow: hidden;
-        padding: 0 !important;
       }
     </style>
   </body>

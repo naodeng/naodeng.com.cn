@@ -1,11 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-/** AdSense/GTM 在非生产域名下的已知 pageerror（如 TagError: Y） */
+/** 标签管理脚本在非生产域名下的已知 pageerror（如 TagError: Y） */
 function isThirdPartyPageError(error: Error): boolean {
   const text = `${error.name}\n${error.message}\n${error.stack ?? ""}`;
-  return /TagError|adsbygoogle|googlesyndication|googletagmanager|doubleclick\.net|ca-pub-/i.test(
-    text,
-  );
+  return /TagError|googletagmanager/i.test(text);
 }
 
 test.describe("性能与加载", () => {
@@ -82,7 +80,7 @@ test.describe("性能与加载", () => {
   test("en 页面无 JavaScript 错误", async ({ page, baseURL }) => {
     const errors: string[] = [];
     page.on("pageerror", (error) => {
-      // AdSense / GTM 在 localhost 常抛 TagError（如 message "Y"），属第三方已知噪声
+      // GTM 在 localhost 常抛 TagError（如 message "Y"），属第三方已知噪声
       if (isThirdPartyPageError(error)) return;
       errors.push(error.message);
     });
@@ -107,9 +105,9 @@ test.describe("性能与加载", () => {
     page.on("console", (msg) => {
       if (msg.type() === "error") {
         const text = msg.text();
-        // 过滤第三方脚本（AdSense、Analytics、Counterscale）在非生产域名下的已知错误
+        // 过滤第三方脚本（GTM、Analytics、Counterscale）在非生产域名下的已知错误
         // 也过滤网络层面的资源加载失败（ERR_BLOCKED_BY_CLIENT、ERR_FAILED 等）
-        const isThirdParty = /pagead2\.googlesyndication|googletagmanager|google-analytics|analytics\.inaodeng\.com|adsbygoogle|ca-pub-|googlesyndication|doubleclick\.net|google\.com|Content Security Policy|frame-ancestors|net::ERR_|Failed to load resource/.test(text);
+        const isThirdParty = /googletagmanager|google-analytics|analytics\.inaodeng\.com|google\.com|Content Security Policy|frame-ancestors|net::ERR_|Failed to load resource/.test(text);
         if (!isThirdParty) {
           consoleErrors.push(text);
         }
@@ -128,9 +126,9 @@ test.describe("性能与加载", () => {
     page.on("console", (msg) => {
       if (msg.type() === "error") {
         const text = msg.text();
-        // 过滤第三方脚本（AdSense、Analytics、Counterscale）在非生产域名下的已知错误
+        // 过滤第三方脚本（GTM、Analytics、Counterscale）在非生产域名下的已知错误
         // 也过滤网络层面的资源加载失败（ERR_BLOCKED_BY_CLIENT、ERR_FAILED 等）
-        const isThirdParty = /pagead2\.googlesyndication|googletagmanager|google-analytics|analytics\.inaodeng\.com|adsbygoogle|ca-pub-|googlesyndication|doubleclick\.net|google\.com|Content Security Policy|frame-ancestors|net::ERR_|Failed to load resource/.test(text);
+        const isThirdParty = /googletagmanager|google-analytics|analytics\.inaodeng\.com|google\.com|Content Security Policy|frame-ancestors|net::ERR_|Failed to load resource/.test(text);
         if (!isThirdParty) {
           consoleErrors.push(text);
         }

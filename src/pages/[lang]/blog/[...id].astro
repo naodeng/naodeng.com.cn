@@ -3,9 +3,7 @@ import Layout from "@/layouts/Article.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
 import AuthorStatsCard from "@/components/AuthorStatsCard.astro";
 import Giscus from "@/components/Giscus.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
-import SidebarAd from "@/components/SidebarAd.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
 import { getCollection, render } from "astro:content";
 import { ARTICLE_LICENSE, NAV_HOME, READING_TIME_LABEL, SITE_SLOGAN } from "@/consts";
@@ -252,7 +250,6 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
             </div>
           </section>
         )}
-        <GoogleAd />
         <ArticleShare title={title} url={canonicalUrl} locale={locale as "zh-cn" | "en"} />
         <Giscus
           lang={locale === "zh-cn" ? "zh-CN" : "en"}
@@ -282,7 +279,6 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
           }}
         />
         <TableOfContents headings={headings} label={tocLabel} placement="below" />
-        <SidebarAd />
       </div>
     </aside>
   </div>

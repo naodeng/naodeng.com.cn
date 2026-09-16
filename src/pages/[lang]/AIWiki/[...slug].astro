@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
@@ -109,7 +108,6 @@ const structuredData = {
 >
   <article class="aiwiki-article" data-locale={locale}>
     <Content />
-    <GoogleAd />
 
     {entry.data.related && entry.data.related.length > 0 && (
       <section class="aiwiki-related" aria-labelledby="aiwiki-related-heading">

@@ -4,7 +4,7 @@
 
 ## 目录地图
 
-- `standards/`: 长期有效的规范（Wiki 格式、设计规范入口、广告位清单）
+- `standards/`: 长期有效的规范（Wiki 格式、设计规范入口）
 - `architecture/`: 模板与架构约定（词条模板等）
 - `skills/`: 站点维护技能（Claude Skill 格式，含 OpenAI agent 配置）
   - `blog-series-drafting/`: 博客系列双语草稿生成

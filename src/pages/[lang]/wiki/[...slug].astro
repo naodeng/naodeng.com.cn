@@ -7,7 +7,6 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
 import { NAV_HOME } from "@/consts";
 import { slugToTitleEn, getTitleZhFromBody, getTitleZh, buildWikiSidebar, wikiIdToSlug } from "@/data/wiki";
@@ -152,7 +151,6 @@ const definedTermSchema = {
 >
   <article class="wiki-article">
     <Content />
-    <GoogleAd />
     {relatedItems.length > 0 && (
       <section class="wiki-related" aria-labelledby="wiki-related-heading">
         <h2 id="wiki-related-heading" class="wiki-related-title">相关词条</h2>

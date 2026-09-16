@@ -2,10 +2,8 @@
 import { getCollection, render } from "astro:content";
 import Base from "@/layouts/Base.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
-import SidebarAd from "@/components/SidebarAd.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import Giscus from "@/components/Giscus.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -263,8 +261,6 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
         </div>
       ))}
 
-      <GoogleAd />
-
       <ArticleShare
         title={pageTitle}
         url={canonicalUrl}
@@ -302,7 +298,6 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     {tocHeadings.length > 0 && (
       <aside class="prompts-toc-wrap" id="prompts-toc-wrap">
         <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
-        <SidebarAd />
       </aside>
     )}
   </div>
@@ -384,11 +379,6 @@ const sidebarLabel = lang === "zh-cn" ? "测试类型" : "Testing Types";
     border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
     border-radius: var(--radius-md);
     background: var(--color-surface-elevated);
-  }
-  .sidebar-ad-wrap {
-    max-height: 200px;
-    overflow: hidden;
-    margin: var(--sp-s) var(--sp-m) var(--sp-m);
   }
   .prompts-sidebar-toggle {
     display: none;

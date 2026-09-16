@@ -5,7 +5,6 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 import PaginationNav from "@/components/PaginationNav.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import { BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, BLOG_INTRO, NAV_HOME, NAV_SERIES, NAV_TAGS, NAV_ARCHIVE } from "@/consts";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
@@ -136,7 +135,6 @@ export const getStaticPaths = () =>
     {totalPages > 1 && (
       <PaginationNav {currentPage} {totalPages} {locale} />
     )}
-    <GoogleAd />
   </div>
 </Layout>
 

@@ -6,7 +6,6 @@
 import { getCollection, render } from "astro:content";
 import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
-import GoogleAd from "@/components/GoogleAd.astro";
 import { NAV_HOME, NAV_GUILD } from "@/consts";
 import {
   guildIdToSlug,
@@ -296,7 +295,6 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
         </div>
       </section>
     )}
-    <GoogleAd />
 
     <!-- 前后导航 -->
     {(prev || next) && (
