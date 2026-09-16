@@ -135,6 +135,15 @@ const {
       background-color: color-mix(in srgb, var(--color-main) 10%, transparent);
     }
 
+    :global(img.article-content-image) {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 1600 / 979;
+      object-fit: contain;
+    }
+
     /* 2.9: pre 代码块 */
     pre {
       direction: ltr;

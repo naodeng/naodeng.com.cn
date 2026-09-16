@@ -5,9 +5,23 @@ import { defineConfig } from "astro/config";
 import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/locales";
 import { shouldIncludeInSitemap } from "./src/utils/seoUrls";
 
+const sanitizeRollupFileName = (fileName) =>
+  fileName
+    .replace(/@/g, "-")
+    .replace(/[\u0000-\u001F"#$%&*+,:;<=>?[\]^`{|}\u007F]/g, "_");
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://inaodeng.com",
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          sanitizeFileName: sanitizeRollupFileName,
+        },
+      },
+    },
+  },
   markdown: {
     rehypePlugins: [rehypeSlug],
     shikiConfig: {

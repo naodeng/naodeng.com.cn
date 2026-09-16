@@ -1652,4 +1652,29 @@ const mobilePriorityItems = [
       background: var(--color-surface);
     }
   }
+
+  /* Reserve the desktop navigation geometry before web fonts and icon glyphs arrive. */
+  .l-header,
+  .l-header .site-brand-heading,
+  .l-header .site-nav {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", "Noto Sans SC", sans-serif;
+  }
+  .site-nav {
+    min-height: var(--header-height);
+    align-items: center;
+  }
+  .l-header .material-icons-sharp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 21px;
+    block-size: 21px;
+    flex: 0 0 21px;
+    line-height: 1;
+  }
+  @media (width < 834px) {
+    .site-nav {
+      min-height: 0;
+    }
+  }
 </style>
