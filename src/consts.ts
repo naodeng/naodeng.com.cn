@@ -132,6 +132,18 @@ export const NAV_AI_TESTING: Multilingual = {
   "zh-cn": "AI测试",
 };
 
+/** 顶部导航：QA 专业内容分组 */
+export const NAV_QA_CONTENT: Multilingual = {
+  en: "QA Library",
+  "zh-cn": "QA 专业库",
+};
+
+/** 顶部导航：项目与资源分组 */
+export const NAV_ECOSYSTEM: Multilingual = {
+  en: "Ecosystem",
+  "zh-cn": "生态与项目",
+};
+
 /** 顶部导航：更多分组 */
 export const NAV_MORE: Multilingual = {
   en: "More",

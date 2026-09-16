@@ -10,11 +10,10 @@ import {
   NAV_PROJECTS,
   NAV_QA_WIKI,
   NAV_AI_WIKI,
-  NAV_ENCYCLOPEDIA,
+  NAV_QA_CONTENT,
   NAV_GUILD,
-  NAV_GUIDES,
   NAV_AI_TESTING,
-  NAV_MORE,
+  NAV_ECOSYSTEM,
   NAV_QA_PROMPTS,
   NAV_QA_SKILLS,
   NAV_SPONSOR,
@@ -51,6 +50,8 @@ type NavItem = {
   label: string;
   icon: string;
   active: boolean;
+  description?: string;
+  meta?: string;
   external?: boolean;
 };
 
@@ -59,13 +60,20 @@ type NavGroup = {
   label: string;
   active: boolean;
   items: NavItem[];
+  description?: string;
+  meta?: string;
 };
 
 const navGroups: NavGroup[] = [
   {
-    key: "encyclopedia",
-    label: t(NAV_ENCYCLOPEDIA),
-    active: isWikiSection() || isAiWikiSection(),
+    key: "qa-content",
+    label: t(NAV_QA_CONTENT),
+    active: isWikiSection() || isGuildSection(),
+    description:
+      locale === "zh-cn"
+        ? "从测试术语到 API、UI、性能测试实践，按主题查找可复用的质量知识。"
+        : "Explore software testing terminology and API, UI, and performance testing practices.",
+    meta: locale === "zh-cn" ? "200+ 词条 · 50+ 指南" : "200+ terms · 50+ guides",
     items: [
       {
         key: "qa-wiki",
@@ -73,42 +81,60 @@ const navGroups: NavGroup[] = [
         label: t(NAV_QA_WIKI),
         icon: "menu_book",
         active: isWikiSection(),
+        description:
+          locale === "zh-cn"
+            ? "查询软件测试、质量分析和测试自动化术语。"
+            : "Look up software testing, QA, and test automation terminology.",
+        meta: locale === "zh-cn" ? "200+ 个词条" : "200+ terms",
         external: locale !== "zh-cn",
       },
-      {
-        key: "ai-wiki",
-        href: getRelativeLocaleUrl(locale, "/AIWiki"),
-        label: t(NAV_AI_WIKI),
-        icon: "psychology",
-        active: isAiWikiSection(),
-      },
-    ],
-  },
-  {
-    key: "guides",
-    label: t(NAV_GUIDES),
-    active: isGuildSection(),
-    items: [
       {
         key: "guild",
         href: getRelativeLocaleUrl(locale, "/guild"),
         label: t(NAV_GUILD),
         icon: "route",
         active: isGuildSection(),
+        description:
+          locale === "zh-cn"
+            ? "按学习路径掌握 API、UI 自动化和性能测试，覆盖主流测试框架。"
+            : "Learn API, UI automation, and performance testing through structured paths.",
+        meta: locale === "zh-cn" ? "50+ 篇指南" : "50+ guides",
       },
     ],
   },
   {
     key: "ai-testing",
     label: t(NAV_AI_TESTING),
-    active: isPromptsSection() || isQASkillsSection(),
+    active: isAiWikiSection() || isPromptsSection() || isQASkillsSection(),
+    description:
+      locale === "zh-cn"
+        ? "用 AI 辅助需求分析、测试设计、自动化与质量评审。"
+        : "Use AI to support requirements analysis, test design, automation, and quality review.",
+    meta: locale === "zh-cn" ? "AI 知识 · QA 工作流" : "AI knowledge · QA workflows",
     items: [
+      {
+        key: "ai-wiki",
+        href: getRelativeLocaleUrl(locale, "/AIWiki"),
+        label: t(NAV_AI_WIKI),
+        icon: "psychology",
+        active: isAiWikiSection(),
+        description:
+          locale === "zh-cn"
+            ? "理解 AI、Agent、LLM 与 Vibe Coding 相关术语和工程实践。"
+            : "Understand AI, agent, LLM, and vibe-coding terminology and practice.",
+        meta: locale === "zh-cn" ? "60+ 个词条" : "60+ entries",
+      },
       {
         key: "qa-prompts",
         href: getRelativeLocaleUrl(locale, "/prompts"),
         label: t(NAV_QA_PROMPTS),
         icon: "tips_and_updates",
         active: isPromptsSection(),
+        description:
+          locale === "zh-cn"
+            ? "从需求分析到测试报告，按测试类型使用结构化 QA 提示词。"
+            : "Use structured QA prompts by testing type, from analysis to test reporting.",
+        meta: locale === "zh-cn" ? "200+ 个提示词" : "200+ prompts",
       },
       {
         key: "qa-skills",
@@ -116,13 +142,23 @@ const navGroups: NavGroup[] = [
         label: t(NAV_QA_SKILLS),
         icon: "build",
         active: isQASkillsSection(),
+        description:
+          locale === "zh-cn"
+            ? "面向 AI 编码 Agent 的可安装 QA Skills，覆盖测试生命周期与工作流。"
+            : "Installable QA skills for coding agents across the testing lifecycle.",
+        meta: locale === "zh-cn" ? "100+ 个 Skills" : "100+ skills",
       },
     ],
   },
   {
-    key: "more",
-    label: t(NAV_MORE),
+    key: "ecosystem",
+    label: t(NAV_ECOSYSTEM),
     active: isProjectsSection() || isSponsorSection() || isResourcesSection(),
+    description:
+      locale === "zh-cn"
+        ? "开源软件测试项目、学习计划与社区资源。"
+        : "Open-source testing projects, learning plans, and community resources.",
+    meta: locale === "zh-cn" ? "工具 · 学习 · 资源" : "Tools · learning · resources",
     items: [
       ...(locale === "zh-cn"
         ? LEARNING_SITES.map((site) => ({
@@ -131,6 +167,8 @@ const navGroups: NavGroup[] = [
             label: site.label["zh-cn"],
             icon: site.icon,
             active: false,
+            description: "30 天专题学习站",
+            meta: "站外学习资源",
             external: true,
           }))
         : []),
@@ -140,6 +178,11 @@ const navGroups: NavGroup[] = [
         label: t(NAV_PROJECTS),
         icon: "folder",
         active: isProjectsSection(),
+        description:
+          locale === "zh-cn"
+            ? "开源 QA 工具、AI 测试项目与 API 测试 Starter。"
+            : "Open-source QA tools, AI testing projects, and API test starters.",
+        meta: locale === "zh-cn" ? "开源项目" : "Open-source projects",
       },
       {
         key: "resources",
@@ -147,6 +190,11 @@ const navGroups: NavGroup[] = [
         label: locale === "zh-cn" ? "资源导航" : "Resources",
         icon: "apps",
         active: isResourcesSection(),
+        description:
+          locale === "zh-cn"
+            ? "整理软件测试、自动化测试和 AI 测试相关资源。"
+            : "Curated resources for software testing, automation, and AI testing.",
+        meta: locale === "zh-cn" ? "测试资源" : "Testing resources",
       },
       {
         key: "sponsor",
@@ -154,6 +202,9 @@ const navGroups: NavGroup[] = [
         label: t(NAV_SPONSOR),
         icon: "favorite",
         active: isSponsorSection(),
+        description:
+          locale === "zh-cn" ? "支持 QA 内容与开源项目持续维护。" : "Support ongoing QA content and open-source work.",
+        meta: locale === "zh-cn" ? "支持本站" : "Support this site",
       },
     ],
   },
@@ -225,7 +276,12 @@ const mobilePriorityItems = [
       </div>
     </div>
 
-    <nav class="site-nav" id="site-primary-nav" data-site-nav>
+    <nav
+      class="site-nav"
+      id="site-primary-nav"
+      data-site-nav
+      aria-label={locale === "zh-cn" ? "主导航" : "Primary navigation"}
+    >
       <ul>
         <li class="mobile-priority-nav" aria-label={locale === "zh-cn" ? "推荐入口" : "Featured entries"}>
           {mobilePriorityItems.map((item) => (
@@ -277,6 +333,12 @@ const mobilePriorityItems = [
                     <span class="material-icons-sharp nav-group-chevron" aria-hidden="true">expand_more</span>
                   </summary>
                   <ul class="nav-submenu">
+                    {(group.description || group.meta) && (
+                      <li class="nav-submenu-intro">
+                        {group.description && <span class="nav-submenu-intro__description">{group.description}</span>}
+                        {group.meta && <span class="nav-submenu-intro__meta">{group.meta}</span>}
+                      </li>
+                    )}
                     {group.items.map((item) => (
                       <li>
                         <a
@@ -287,7 +349,11 @@ const mobilePriorityItems = [
                           rel={item.external ? "noopener noreferrer" : undefined}
                         >
                           <span class="nav-submenu-icon material-icons-sharp" aria-hidden="true">{item.icon}</span>
-                          <span class="nav-submenu-text">{item.label}</span>
+                          <span class="nav-submenu-copy">
+                            <span class="nav-submenu-text">{item.label}</span>
+                            {item.description && <span class="nav-submenu-description">{item.description}</span>}
+                            {item.meta && <span class="nav-submenu-meta">{item.meta}</span>}
+                          </span>
                         </a>
                       </li>
                     ))}
@@ -1517,4 +1583,67 @@ const mobilePriorityItems = [
   .btn-icon, .nav-tool :global(.locale-trigger) { border-color: var(--color-border); background: transparent; box-shadow: none; }
   @media (width < 834px) { .l-header, .header-shell { min-height: 60px; } .site-nav > ul { background: var(--color-surface); border: 1px solid var(--color-border); } }
   @media (width < 480px) { .header-wechat-entry { display: none; } }
+
+  /* SEO-friendly content navigation: descriptions stay in the HTML and remain readable when the menu opens. */
+  .nav-submenu {
+    width: min(24rem, calc(100vw - 2rem));
+    min-width: min(20rem, calc(100vw - 2rem));
+    padding: 0.65rem;
+  }
+  .nav-submenu-intro {
+    display: grid;
+    gap: 0.24rem;
+    margin: 0 0 0.25rem;
+    padding: 0.35rem 0.75rem 0.65rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav-submenu-intro__description {
+    color: var(--color-main);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+  .nav-submenu-intro__meta,
+  .nav-submenu-meta {
+    color: var(--color-theme);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+  }
+  .nav-submenu a {
+    align-items: flex-start;
+    min-width: 0;
+    width: 100%;
+    padding: 0.7rem 0.75rem;
+  }
+  .nav-submenu-icon {
+    margin-top: 0.12rem;
+  }
+  .nav-submenu-copy {
+    display: grid;
+    min-width: 0;
+    gap: 0.18rem;
+  }
+  .nav-submenu-text {
+    font-weight: 750;
+  }
+  .nav-submenu-description {
+    color: var(--color-text-secondary);
+    font-size: 0.74rem;
+    line-height: 1.4;
+    white-space: normal;
+  }
+  .nav-group[data-nav-group="ecosystem"] .nav-submenu {
+    left: auto;
+    right: 0;
+  }
+  @media (width < 834px) {
+    .nav-submenu {
+      width: 100%;
+      min-width: 0;
+    }
+    .nav-submenu-intro {
+      padding-inline: 0.8rem;
+    }
+  }
 </style>

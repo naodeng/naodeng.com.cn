@@ -35,10 +35,9 @@ test.describe("Header 导航", () => {
     const nav = page.locator("header nav");
     await expect(nav.locator("[data-nav-item='home']")).toBeVisible();
     await expect(nav.locator("[data-nav-item='blog']")).toBeVisible();
-    await expect(nav.locator("[data-nav-group='encyclopedia'] summary")).toBeVisible();
-    await expect(nav.locator("[data-nav-group='guides'] a[data-nav-item='guild']")).toBeVisible();
+    await expect(nav.locator("[data-nav-group='qa-content'] summary")).toBeVisible();
     await expect(nav.locator("[data-nav-group='ai-testing'] summary")).toBeVisible();
-    await expect(nav.locator("[data-nav-group='more'] summary")).toBeVisible();
+    await expect(nav.locator("[data-nav-group='ecosystem'] summary")).toBeVisible();
     await expect(nav.locator("[data-nav-item='about']")).toBeVisible();
     await expect(nav.locator("a[href*='/en/archive']")).toHaveCount(0);
   });
@@ -48,10 +47,9 @@ test.describe("Header 导航", () => {
     const nav = page.locator("header nav");
     await expect(nav.locator("[data-nav-item='home']")).toBeVisible();
     await expect(nav.locator("[data-nav-item='blog']")).toBeVisible();
-    await expect(nav.locator("[data-nav-group='encyclopedia'] summary")).toContainText("百科");
-    await expect(nav.locator("[data-nav-group='guides'] a[data-nav-item='guild']")).toContainText("指南");
+    await expect(nav.locator("[data-nav-group='qa-content'] summary")).toContainText("QA 专业库");
     await expect(nav.locator("[data-nav-group='ai-testing'] summary")).toContainText("AI测试");
-    await expect(nav.locator("[data-nav-group='more'] summary")).toContainText("更多");
+    await expect(nav.locator("[data-nav-group='ecosystem'] summary")).toContainText("生态与项目");
     await expect(nav.locator("[data-nav-item='about']")).toBeVisible();
     await expect(nav.locator("a[href*='/zh-cn/archive']")).toHaveCount(0);
   });
@@ -70,43 +68,62 @@ test.describe("Header 导航", () => {
 
   test("zh-cn Guild 页：指南导航链接有 active 样式", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
-    const guidesTrigger = page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']");
+    const guidesTrigger = page.locator("header nav [data-nav-group='qa-content'] a[data-nav-item='guild']");
     await expect(guidesTrigger).toHaveClass(/active/);
   });
 
   test("en Guild 文章页：Guild 导航链接有 active 样式（section 匹配）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/guild/api-testing/postman/", { waitUntil: "domcontentloaded" });
-    const guidesTrigger = page.locator("header nav [data-nav-group='guides'] a[data-nav-item='guild']");
+    const guidesTrigger = page.locator("header nav [data-nav-group='qa-content'] a[data-nav-item='guild']");
     await expect(guidesTrigger).toHaveClass(/active/);
   });
 
   test("zh-cn Wiki 页：百科导航链接有 active 样式（section 匹配）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
-    const encyclopediaTrigger = page.locator("header nav [data-nav-group='encyclopedia'] summary");
+    const encyclopediaTrigger = page.locator("header nav [data-nav-group='qa-content'] summary");
     await expect(encyclopediaTrigger).toHaveClass(/active/);
   });
 
-  test("en 首页：百科菜单下 QA wiki 链接指向 ray.run（外链）", async ({ page, baseURL }) => {
+  test("en 首页：QA Library 菜单下 QA wiki 链接指向 ray.run（外链）", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
-    await page.locator("[data-nav-group='encyclopedia'] summary").click();
+    await page.locator("[data-nav-group='qa-content'] summary").click();
     const wikiLink = page.locator("header nav a[data-nav-item='qa-wiki']");
     await expect(wikiLink).toBeVisible();
     await expect(wikiLink).toHaveAttribute("target", "_blank");
     await expect(wikiLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  test("zh-cn 首页：更多菜单下项目和支持可见", async ({ page, baseURL }) => {
+  test("zh-cn 首页：QA 与 AI 菜单展示可抓取的内容说明和规模", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
-    await page.locator("[data-nav-group='more'] summary").click();
+
+    const qaMenu = page.locator("header nav [data-nav-group='qa-content']");
+    await qaMenu.locator("summary").click();
+    await expect(qaMenu.locator(".nav-submenu-intro")).toContainText("测试术语");
+    await expect(qaMenu.locator("a[data-nav-item='qa-wiki'] .nav-submenu-description")).toContainText("术语");
+    await expect(qaMenu.locator("a[data-nav-item='qa-wiki'] .nav-submenu-meta")).toContainText("200+");
+    await expect(qaMenu.locator("a[data-nav-item='guild'] .nav-submenu-description")).toContainText("API");
+    await expect(qaMenu.locator("a[data-nav-item='guild'] .nav-submenu-meta")).toContainText("50+");
+
+    const aiMenu = page.locator("header nav [data-nav-group='ai-testing']");
+    await aiMenu.locator("summary").click();
+    await expect(aiMenu.locator(".nav-submenu-intro")).toContainText("AI");
+    await expect(aiMenu.locator("a[data-nav-item='ai-wiki'] .nav-submenu-meta")).toContainText("60+");
+    await expect(aiMenu.locator("a[data-nav-item='qa-prompts'] .nav-submenu-meta")).toContainText("200+");
+    await expect(aiMenu.locator("a[data-nav-item='qa-skills'] .nav-submenu-meta")).toContainText("100+");
+  });
+
+  test("zh-cn 首页：生态与项目菜单下项目和支持可见", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
+    await page.locator("[data-nav-group='ecosystem'] summary").click();
     await expect(page.locator("header nav a[data-nav-item='projects']")).toBeVisible();
     await expect(page.locator("header nav a[data-nav-item='sponsor']")).toBeVisible();
   });
 
-  test("zh-cn 首页：更多菜单包含英语学习外链", async ({ page, baseURL }) => {
+  test("zh-cn 首页：生态与项目菜单包含英语学习外链", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
     const englishLearningUrl = "https://30-day-qa-english-learning-plan.inaodeng.com/";
-    await page.locator("[data-nav-group='more'] summary").click();
+    await page.locator("[data-nav-group='ecosystem'] summary").click();
     const menuLink = page.locator("header nav a[data-nav-item='english-learning']");
     await expect(menuLink).toBeVisible();
     await expect(menuLink).toContainText("英语学习");
@@ -115,11 +132,11 @@ test.describe("Header 导航", () => {
     await expect(menuLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  test("zh-cn 首页：更多菜单包含 Agent学习 外链", async ({ page, baseURL }) => {
+  test("zh-cn 首页：生态与项目菜单包含 Agent学习 外链", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
     const agentLearningUrl = "https://ai-agent-30-day-learning-plan.inaodeng.com/";
-    await page.locator("[data-nav-group='more'] summary").click();
+    await page.locator("[data-nav-group='ecosystem'] summary").click();
     const menuLink = page.locator("header nav a[data-nav-item='agent-learning']");
     await expect(menuLink).toBeVisible();
     await expect(menuLink).toContainText("Agent学习");
@@ -128,11 +145,11 @@ test.describe("Header 导航", () => {
     await expect(menuLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  test("zh-cn 首页：更多菜单包含 Playwright学习 外链", async ({ page, baseURL }) => {
+  test("zh-cn 首页：生态与项目菜单包含 Playwright学习 外链", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
     const playwrightLearningUrl = "https://30-day-qa-playwright-learning-plan.inaodeng.com/";
-    await page.locator("[data-nav-group='more'] summary").click();
+    await page.locator("[data-nav-group='ecosystem'] summary").click();
     const menuLink = page.locator("header nav a[data-nav-item='playwright-learning']");
     await expect(menuLink).toBeVisible();
     await expect(menuLink).toContainText("Playwright学习");
