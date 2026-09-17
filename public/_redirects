@@ -3,6 +3,51 @@
 # 英文博文仅存在中文版时，将 /en/ 请求 301 到 /zh-cn/ 同路径
 /en/blog/ui-automation-testing/ui-testing-best-practice-generic-testing-perks-tests-as-documentation/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-generic-testing-perks-tests-as-documentation/ 301
 /en/blog/qa-glossary-wiki/qa-glossary-wiki-api-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-api-testing/ 301
+# GSC 2026-09-17 中确认的旧英文博客地址；每个目标均有对应的中文文章
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-testing/ 301
+/en/blog/others/edge-enablenew-ui/ /zh-cn/blog/others/edge-enablenew-ui/ 301
+/en/blog/performance-testing/k6-tutorial-advanced-usage-output-html-report-and-ci-cd-integration/ /zh-cn/blog/performance-testing/k6-tutorial-advanced-usage-output-html-report-and-ci-cd-integration/ 301
+/en/blog/others/80-20-rule/ /zh-cn/blog/others/80-20-rule/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-ad-hoc-testing/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-a-b-testing/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-from-unreadable-react-component-tests-to-simple-ones/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-from-unreadable-react-component-tests-to-simple-ones/ 301
+/en/blog/others/cypress-demo2/ /zh-cn/blog/others/cypress-demo2/ 301
+/en/blog/performance-testing/k6-tutorial-common-functions-2-thresholds-test-lifecycle-and-scenarios/ /zh-cn/blog/performance-testing/k6-tutorial-common-functions-2-thresholds-test-lifecycle-and-scenarios/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-backward-compatibility/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-backward-compatibility/ 301
+/en/blog/others/cypress-demo6/ /zh-cn/blog/others/cypress-demo6/ 301
+/en/blog/performance-testing/gatling-tool-intro1/ /zh-cn/blog/performance-testing/gatling-tool-intro1/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-alpha-testing/ 301
+/en/blog/performance-testing/gatling-tool-intro-advanced-usage/ /zh-cn/blog/performance-testing/gatling-tool-intro-advanced-usage/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-agile-development/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-agile-development/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-astqb/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-astqb/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-agile-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-agile-testing/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-test-states-and-test-flake/ 301
+/en/blog/others/cypress-demo1/ /zh-cn/blog/others/cypress-demo1/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy--1-component-tests-vs-ui-integration-tests-vs-e2e-tests/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy--1-component-tests-vs-ui-integration-tests-vs-e2e-tests/ 301
+/en/blog/others/30-days-of-agile-testing/ /zh-cn/blog/others/30-days-of-agile-testing/ 301
+/en/blog/others/different-types-of-ai-join-waiting-list/ /zh-cn/blog/others/different-types-of-ai-join-waiting-list/ 301
+/en/blog/performance-testing/gatling-tool-intro-ci-cd-integration/ /zh-cn/blog/performance-testing/gatling-tool-intro-ci-cd-integration/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-testing-strategy-2-more-reasonable-testing-strategy-for-ui-testing/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-beginners-top-to-botton-approach/ 301
+/en/blog/others/cypress-demo3/ /zh-cn/blog/others/cypress-demo3/ 301
+/en/blog/performance-testing/gatling-tool-intro2/ /zh-cn/blog/performance-testing/gatling-tool-intro2/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-1-await-dont-sleep-and-name-test-files-wisely/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-acceptance-test-driven-development/ 301
+/en/blog/others/playwright-get-started/ /zh-cn/blog/others/playwright-get-started/ 301
+/en/blog/performance-testing/k6-tutorial-advanced-usage-how-to-quickly-writing-k6-performance-test-script/ /zh-cn/blog/performance-testing/k6-tutorial-advanced-usage-how-to-quickly-writing-k6-performance-test-script/ 301
+/en/blog/others/cypress-demo5/ /zh-cn/blog/others/cypress-demo5/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-real-life-examples-test-front-end-with-integration-back-end-with-e2e/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-actual-result/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-actual-result/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-server-communication-testing-test-the-request-and-response-payloads-and-monitoring-tests/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-api/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-api/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-combinatorial-testing-and-performance-testing/ 301
+/en/blog/others/cypress-demo4/ /zh-cn/blog/others/cypress-demo4/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-analytical-test-strategy/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-tools-ui-testing-problems-cypress/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-tools-ui-testing-problems-cypress/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-tools-visual-regression-testing/ 301
+/en/blog/ui-automation-testing/ui-testing-best-practice-advanced-email-testing/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-advanced-email-testing/ 301
+/en/blog/qa-glossary-wiki/qa-glossary-wiki-back-to-back-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-back-to-back-testing/ 301
 # 标签 "Data Driven" 已无对应文章，重定向到标签首页（源路径不能含空格，否则 _redirects 解析报错）
 /en/tags/Data%20Driven/ /en/tags/ 301
 # RSS 旧地址仅在静态资源层重定向，避免覆盖 Astro 的 RSS 路由

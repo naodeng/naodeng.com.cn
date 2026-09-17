@@ -1,3 +1,5 @@
+export { hasNoindexRobots } from "./seoNoindex.mjs";
+
 /**
  * Return the stable URL slug used by the Chinese Wiki.
  * Source filenames are historical input; published URLs are lowercase.
@@ -8,6 +10,13 @@ export function canonicalWikiSlug(slug: string): string {
     .replace(/\.md$/i, "")
     .toLowerCase();
 }
+
+const NON_INDEXABLE_SITEMAP_PATHS = new Set([
+  "/en/sitemap",
+  "/zh-cn/sitemap",
+  "/prompts",
+  "/qaskills",
+]);
 
 /**
  * Keep only indexable, canonical pages in the generated XML sitemap.
@@ -22,7 +31,11 @@ export function shouldIncludeInSitemap(page: string): boolean {
   }
 
   const normalizedPath = pathname.replace(/\/{2,}/g, "/").replace(/\/+$/, "/");
+  const pathWithoutTrailingSlash = normalizedPath !== "/" && normalizedPath.endsWith("/")
+    ? normalizedPath.slice(0, -1)
+    : normalizedPath;
   if (normalizedPath === "/") return false;
+  if (NON_INDEXABLE_SITEMAP_PATHS.has(pathWithoutTrailingSlash)) return false;
   if (normalizedPath.startsWith("/en/wiki/")) return false;
 
   const zhWikiPrefix = "/zh-cn/wiki/";

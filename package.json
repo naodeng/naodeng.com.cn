@@ -11,10 +11,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev --open",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && npm run seo:build:check",
     "preview": "astro preview",
-    "preview:worker": "astro build && wrangler dev",
-    "deploy": "astro build && wrangler deploy",
+    "preview:worker": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
     "astro": "astro",
     "generate-covers": "node scripts/generate-blog-covers.mjs",
     "wiki:related": "node scripts/generate-wiki-related.mjs",

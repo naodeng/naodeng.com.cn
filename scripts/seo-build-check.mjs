@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { hasNoindexRobots } from "../src/utils/seoNoindex.mjs";
 
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, "dist");
@@ -18,6 +19,38 @@ if (!fs.existsSync(sitemapPath)) {
     failures.push("legacy English Wiki redirect URLs are present in sitemap-0.xml");
   }
   const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const noindexSitemapUrls = sitemapUrls.filter((url) => {
+    let parsed;
+    try {
+      parsed = new URL(url);
+      if (parsed.origin !== "https://inaodeng.com") return false;
+    } catch {
+      return false;
+    }
+    const pathVariants = [parsed.pathname];
+    try {
+      pathVariants.push(decodeURIComponent(parsed.pathname));
+    } catch {
+      // Keep the encoded path when a URL contains an invalid escape sequence.
+    }
+    for (const pathname of [...new Set(pathVariants)]) {
+      const relativePath = pathname.replace(/^\/+/, "");
+      const pagePath = path.resolve(
+        DIST,
+        relativePath,
+        pathname.endsWith("/") ? "index.html" : "",
+      );
+      if (!pagePath.startsWith(`${DIST}${path.sep}`) || !fs.existsSync(pagePath)) {
+        continue;
+      }
+      const html = fs.readFileSync(pagePath, "utf8");
+      if (hasNoindexRobots(html)) return true;
+    }
+    return false;
+  });
+  if (noindexSitemapUrls.length > 0) {
+    failures.push(`sitemap contains ${noindexSitemapUrls.length} noindex page(s)`);
+  }
   if (sitemapUrls.some((url) => /\/zh-cn\/wiki\/wiki\//i.test(url))) {
     failures.push("legacy nested Chinese Wiki URLs are present in sitemap-0.xml");
   }

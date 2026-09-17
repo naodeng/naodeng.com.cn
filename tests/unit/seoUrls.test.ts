@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { canonicalWikiSlug, shouldIncludeInSitemap } from "../../src/utils/seoUrls";
+import { canonicalWikiSlug, hasNoindexRobots, shouldIncludeInSitemap } from "../../src/utils/seoUrls";
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const astroConfig = readFileSync(path.join(REPO_ROOT, "astro.config.mjs"), "utf8");
@@ -24,6 +24,15 @@ describe("SEO URL policy", () => {
   });
 
   it.each([
+    ['<meta name="robots" content="noindex, follow">', true],
+    ['<meta content="noindex, nofollow" name="robots">', true],
+    ['<meta name="robots" content="index, follow">', false],
+    ["<meta name=\"description\" content=\"noindex is a word\">", false],
+  ])("detects an actual noindex robots directive", (html, expected) => {
+    expect(hasNoindexRobots(html)).toBe(expected);
+  });
+
+  it.each([
     ["https://inaodeng.com/", false],
     ["https://inaodeng.com/en/wiki/inspection/", false],
     ["https://inaodeng.com/zh-cn/wiki/wiki/inspection/", false],
@@ -32,13 +41,23 @@ describe("SEO URL policy", () => {
     ["https://inaodeng.com/zh-cn/wiki/a-b-testing/", true],
     ["https://inaodeng.com/zh-cn/wiki/", true],
     ["https://inaodeng.com/zh-cn/blog/", true],
+    ["https://inaodeng.com/en/sitemap/", false],
+    ["https://inaodeng.com/zh-cn/sitemap/", false],
+    ["https://inaodeng.com/prompts/", false],
+    ["https://inaodeng.com/qaskills/", false],
   ])("applies sitemap inclusion policy to %s", (page, expected) => {
     expect(shouldIncludeInSitemap(page)).toBe(expected);
   });
 
   it("uses the centralized sitemap policy in Astro config", () => {
-    expect(astroConfig).toContain('import { shouldIncludeInSitemap } from "./src/utils/seoUrls"');
+    expect(astroConfig).toContain('import { hasNoindexRobots, shouldIncludeInSitemap } from "./src/utils/seoUrls"');
     expect(astroConfig).toContain("filter: shouldIncludeInSitemap");
+    expect(astroConfig).toContain("serialize: stripNoindexSitemapItem");
+    expect(seoBuildChecker).toContain('from "../src/utils/seoNoindex.mjs"');
+    expect(seoBuildChecker).toContain("hasNoindexRobots(html)");
+    expect(seoBuildChecker).not.toContain("const robotsMeta =");
+    expect(seoBuildChecker).toContain("const pathVariants = [parsed.pathname]");
+    expect(seoBuildChecker).toContain("pathVariants.push(decodeURIComponent(parsed.pathname))");
   });
 
   it("normalizes Wiki IDs and redirects case-only aliases", () => {
