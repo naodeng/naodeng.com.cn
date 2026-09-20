@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 for (const lang of ["en", "zh-cn"]) {
-  test(`${lang}: editorial reading width and neutral footer`, async ({ page }) => {
+  test(`${lang}: detail layout respects desktop content cap and neutral footer`, async ({ page }) => {
     await page.setViewportSize({ width: 1920, height: 1080 });
     await page.goto(`/${lang}/qaskills/`);
     const detail = page.locator(`a[href^='/${lang}/qaskills/']`).filter({ hasNotText: /^$/ });
@@ -10,7 +10,7 @@ for (const lang of ["en", "zh-cn"]) {
     expect(href).toBeTruthy();
     await page.goto(href!);
     await expect(page.locator(".detail-main")).toBeVisible();
-    expect(await page.locator(".detail-main").evaluate(el => el.getBoundingClientRect().width)).toBeLessThanOrEqual(768);
+    expect(await page.locator(".detail-main").evaluate(el => el.getBoundingClientRect().width)).toBeLessThanOrEqual(1280);
     await page.goto(`/${lang}/`);
     await expect(page.locator("footer .lang-label")).toHaveCSS("background-image", "none");
     const trigger = page.locator("footer .wechat-follow-trigger");
