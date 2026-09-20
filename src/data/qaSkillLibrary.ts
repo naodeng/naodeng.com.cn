@@ -17,7 +17,7 @@ type RecommendedSlug = (typeof RECOMMENDED_QA_SKILL_SLUGS)[number];
 const INTRO_FALLBACKS: Record<Lang, Partial<Record<RecommendedSlug, string>>> = {
   "zh-cn": {
     "discover-testing": "输入当前测试任务和项目背景，选择最匹配的主 Skill，并给出下一步执行方式。",
-    "requirements-analysis": "输入需求文档或 User Story，输出信息缺口、业务规则、风险和测试范围。",
+    "requirements-analysis": "输入需求文档或用户故事，输出信息缺口、业务规则、风险和测试范围。",
     "test-case-writing": "输入测试场景和业务约束，输出带优先级的结构化测试用例。",
     "test-strategy": "输入项目目标、范围和风险，输出可执行的测试策略与质量保障重点。",
     "bug-reporting": "输入问题现象、日志和复现信息，输出清晰、可诊断的缺陷报告。",
@@ -34,11 +34,17 @@ const INTRO_FALLBACKS: Record<Lang, Partial<Record<RecommendedSlug, string>>> = 
 };
 
 export function getQASkillCardIntro(
-  skill: Pick<QASkill, "slug" | "intro">,
+  skill: Pick<QASkill, "slug" | "intro"> & { chineseName?: string | null; title?: string | null },
   lang: Lang,
 ): string {
   const generic = /(?:真实项目里处理|real project.*related task)/i.test(skill.intro);
-  return generic ? INTRO_FALLBACKS[lang][skill.slug as RecommendedSlug] || skill.intro : skill.intro;
+  if (!generic) return skill.intro;
+  const boundedFallback = INTRO_FALLBACKS[lang][skill.slug as RecommendedSlug];
+  if (boundedFallback) return boundedFallback;
+  const displayName = lang === "zh-cn" ? skill.chineseName || skill.title || skill.slug : skill.title || skill.slug;
+  return lang === "zh-cn"
+    ? `围绕「${displayName}」处理当前质量任务。`
+    : `Use ${displayName} for the current quality task.`;
 }
 
 export type QASkillCardSummary = {

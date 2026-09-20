@@ -515,29 +515,143 @@ test.describe("QA Skills", () => {
     for (const summary of await groups.locator("summary").all()) await expect(summary).toBeVisible();
   });
 
-  test("detail shows Guide section, raw SKILL tab, and install panel", async ({ page }) => {
+  test("detail exposes the product sections, raw SKILL tab, and install command", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/api-testing/", { waitUntil: "domcontentloaded" });
-    await expect(page.getByRole("heading", { name: /何时使用|When to Use/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /解决什么问题|Why this Skill/ })).toBeVisible();
     await expect(page.locator("#skill-elevator")).toBeVisible();
     await page.getByRole("tab", { name: /SKILL\.md/i }).click();
     await expect(page.locator(".skill-raw")).toContainText("name: api-testing");
-    await expect(page.locator("#copy-raw-skill-btn")).toBeVisible();
+    await expect(page.locator(".quick-doc-top [data-doc-copy]")).toBeVisible();
     await expect(page.locator("#install-section")).toBeVisible();
-    await expect(page.locator("#installer-panel")).toBeVisible();
     await expect(page.locator("#npx-install-code")).toContainText("npx skills add");
-    await expect(page.locator("#copy-quick-btn")).toBeVisible();
-    await expect(page.locator(".related-card").first()).toBeVisible();
+    await expect(page.locator("#install-section button")).toBeVisible();
+    await expect(page.locator("#section-related-skills")).toBeVisible();
   });
 
-  test("detail header prioritizes installation and keeps source as a secondary action", async ({ page }) => {
+  test("other skill details derive their sections from the source Skill", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/api-testing/", { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".console-tag-row")).toContainText("软件测试");
+    await expect(page.locator(".console-tag-row")).toContainText("测试设计");
+    await expect(page.locator(".console-hero-copy .console-tag-row")).toHaveCount(0);
+    await expect(page.locator(".console-hero-side .console-tag-row")).toBeVisible();
+    await expect(page.locator("#skill-info-strip")).toContainText("QA / DEV");
+    await expect(page.locator("#skill-info-strip")).not.toContainText("未单独定义");
+    await expect(page.locator("#skill-info-strip")).not.toContainText("暂无可展示内容");
+    await expect(page.locator("#section-problem")).toContainText("按风险/业务影响排优先级");
+    await expect(page.locator("#section-when")).toContainText("常见误区");
+    await expect(page.locator("#section-input")).toContainText("当前任务范围、目标和待处理对象");
+    await expect(page.locator("#section-output")).toContainText("最低覆盖关注");
+    await expect(page.locator("#section-how-it-works")).toContainText("信息不全时先给可用初版");
+    await expect(page.locator("#section-workflow")).toHaveCount(0);
+    await expect(page.locator("#section-related-skills")).not.toContainText("automation testing");
+    await expect(page.locator("#section-output-preview")).toHaveCount(0);
+    await expect(page.locator("#section-real-example")).toHaveCount(0);
+  });
+
+  test("detail header prioritizes usage and keeps installation visible", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/discover-testing/");
-    const header = page.locator(".detail-header");
-    await expect(header.locator(".detail-status-tags")).toBeVisible();
-    await expect(header.locator(".detail-intro")).not.toBeEmpty();
-    await expect(header.getByText(/工作流|Workflow/)).toBeVisible();
-    await expect(header.getByText(/^Evals$/)).toBeVisible();
-    await expect(header.locator(".detail-author")).toBeVisible();
-    await expect(header.locator(".detail-updated")).toBeVisible();
+    await expect(page.locator(".console-hero")).toBeVisible();
+    await expect(page.locator(".console-tag-row")).toBeVisible();
+    await expect(page.locator(".console-hero-intro")).not.toBeEmpty();
+    await expect(page.locator("#skill-info-strip")).toBeVisible();
+    await expect(page.locator("#install-section")).toBeVisible();
+  });
+
+  test("detail hero keeps metadata inside the command card and uses restrained typography", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/api-test-restassure/", { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".console-hero-command .console-tag-row")).toHaveCount(1);
+    await expect(page.locator(".console-tag-row")).toHaveAttribute("aria-label", "技能属性");
+    await expect(page.locator(".console-hero-command-kind")).toHaveText("调用命令");
+    await expect(page.locator(".console-hero-title-line")).toHaveText(["API 测试", "（Rest Assured）"]);
+    await expect(page.locator(".console-hero h1")).toHaveAttribute("aria-label", "API 测试（Rest Assured）");
+
+    const layout = await page.locator(".l-main").evaluate((element) => {
+      const style = getComputedStyle(element);
+      return { marginBlockStart: style.marginBlockStart };
+    });
+    expect(layout.marginBlockStart).toBe("0px");
+
+    const typography = await page.locator(".console-hero h1").evaluate((element) => {
+      const style = getComputedStyle(element);
+      return { fontSize: Number.parseFloat(style.fontSize), letterSpacing: Number.parseFloat(style.letterSpacing) };
+    });
+    expect(typography.fontSize).toBeLessThanOrEqual(68);
+    expect(typography.letterSpacing).toBeGreaterThan(-4.6);
+
+    await page.goto("/zh-cn/qaskills/performance-testing/", { waitUntil: "domcontentloaded" });
+    const heroIntro = (await page.locator(".console-hero-intro").textContent())?.trim() || "";
+    await expect(page.locator(".console-hero-intro")).toContainText("需要一份可以直接用于执行");
+    await expect(page.locator("#section-problem .problem-lead > p").first()).not.toHaveText(heroIntro);
+    await expect(page.locator("#section-problem .problem-list")).not.toContainText(heroIntro);
+  });
+
+  test("production detail follows the approved C console path", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/requirements-analysis/");
+
+    await expect(page.locator(".skill-console")).toBeVisible();
+    await expect(page.locator(".console-hero-main")).toBeVisible();
+    await expect(page.locator(".console-hero-command")).toContainText("@skill requirements-analysis");
+    await expect(page.locator(".console-hero")).not.toContainText("Requirements Analysis");
+    await expect(page.getByRole("link", { name: "立即使用" })).toHaveAttribute("href", "#quick-start");
+    await expect(page.locator("#npx-install-code")).toContainText("-g");
+    await expect(page.locator("#npx-install-code")).not.toContainText("-a codex -y");
+    await expect(page.locator("#skill-info-strip")).toContainText("稳定");
+    await expect(page.locator("#skill-info-strip")).toContainText("QA / BA / PM / DEV");
+    await expect(page.locator("#skill-info-strip")).toContainText("中文 / 英文");
+    await expect(page.locator("#skill-info-strip")).not.toContainText("Developer");
+    for (const sectionId of [
+      "#section-problem",
+      "#section-when",
+      "#section-input",
+      "#section-output",
+      "#section-output-preview",
+      "#section-real-example",
+      "#section-how-it-works",
+      "#quick-start",
+      "#section-related-skills",
+    ]) {
+      await expect(page.locator(sectionId)).toBeVisible();
+    }
+    await expect(page.locator("#section-output-preview")).toContainText("P0");
+    await expect(page.locator("#section-problem")).toContainText("验收标准无法直接验证");
+    await expect(page.locator("#section-problem")).not.toContainText("Acceptance Criteria");
+    await expect(page.locator("#section-input")).toContainText("需求 / 用户故事");
+    await expect(page.locator("#section-input")).toContainText("源代码");
+    await expect(page.locator("#section-input")).not.toContainText("User Story");
+    await expect(page.locator(".quick-start-tip")).toHaveCount(0);
+    await expect(page.locator(".example-details")).toHaveCount(0);
+    await expect(page.locator("#section-how-it-works")).toBeVisible();
+    await expect(page.locator("#section-workflow")).toBeVisible();
+    await expect(page.locator("#section-similar-skills")).toHaveCount(0);
+    await expect(page.locator("#advanced")).toHaveCount(0);
+    await expect(page.locator(".article-share-label")).toHaveCount(0);
+    await expect(page.locator(".giscus-section")).toHaveCount(1);
+    await expect(page.locator(".console-panel-head i")).toHaveCount(0);
+    await expect(page.locator("#section-when > .console-panel-head h2")).toHaveText("适用场景");
+
+    await page.getByRole("link", { name: "立即使用" }).click();
+    await expect(page).toHaveURL(/#quick-start$/);
+    await expect(page.locator("#quick-start")).toHaveClass(/is-highlighted/);
+    await expect(page.locator(".quick-start-tip")).toHaveCount(0);
+    await expect(page.getByRole("tab", { name: "Prompt" })).toBeVisible();
+    await expect(page.getByRole("tab", { name: "SKILL.md" })).toBeVisible();
+
+    await page.getByRole("tab", { name: "SKILL.md" }).click();
+    await expect(page.locator("[data-doc-panel='skill']")).toBeVisible();
+    await expect(page.locator("[data-doc-panel='prompt']")).toBeHidden();
+    await expect(page.locator("[data-doc-panel='skill'] .skill-raw")).toContainText("name: requirements-analysis");
+    await expect(page.locator("#quick-prompt")).toHaveAttribute("aria-labelledby", "quick-tab-prompt");
+    await expect(page.locator("#quick-skill-md")).toHaveAttribute("aria-labelledby", "quick-tab-skill");
+  });
+
+  test("english detail keeps the console UI in English", async ({ page }) => {
+    await page.goto("/en/qaskills/requirements-analysis/");
+
+    await expect(page.getByRole("link", { name: "Use now" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Quick start" })).toBeVisible();
+    await expect(page.locator(".quick-start-tip")).toHaveCount(0);
   });
 
   test("detail page does not overflow horizontally on mobile", async ({ page }) => {
@@ -548,7 +662,7 @@ test.describe("QA Skills", () => {
       scrollWidth: document.documentElement.scrollWidth,
       clientWidth: document.documentElement.clientWidth,
       codeCardWidth: Math.round(
-        (document.querySelector(".code-card") as HTMLElement | null)?.getBoundingClientRect().width || 0,
+        (document.querySelector("#install-section") as HTMLElement | null)?.getBoundingClientRect().width || 0,
       ),
     }));
     expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth + 1);

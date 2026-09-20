@@ -2,180 +2,156 @@
 import Base from "@/layouts/Base.astro";
 import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import {
-  getQASkills,
-  getQASkillBySlug,
-  getRelatedForSkill,
-  SECTION_KEYS,
-  SECTION_LABELS,
-} from "@/utils/qaskills";
+import { getQASkills } from "@/utils/qaskills";
+import { getRelatedQASkills } from "@/utils/qaskillsRelated";
+import { getQASkillCardIntro, getQASkillCardSummary } from "@/data/qaSkillLibrary";
+import { buildGenericQASkillDetailData, getQASkillDetailData } from "@/data/qaSkillDetail";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
 
 export async function getStaticPaths() {
   const langs: Lang[] = ["en", "zh-cn"];
   const routes: Array<{ params: { lang: string; skillSlug: string } }> = [];
-
   for (const lang of langs) {
     const skills = await getQASkills(lang);
-    for (const skill of skills) {
-      routes.push({
-        params: {
-          lang,
-          skillSlug: skill.slug,
-        },
-      });
-    }
+    for (const skill of skills) routes.push({ params: { lang, skillSlug: skill.slug } });
   }
-
   return routes;
 }
 
 const lang = Astro.params.lang as Lang;
 const skillSlug = Astro.params.skillSlug as string;
-const skill = await getQASkillBySlug(lang, skillSlug);
+const allSkills = await getQASkills(lang);
+const skill = allSkills.find((item) => item.slug === skillSlug) ?? null;
+if (!skill) throw new Error(`QASkill not found: ${lang}/${skillSlug}`);
 
-if (!skill) {
-  throw new Error(`QASkill not found: ${lang}/${skillSlug}`);
-}
-
-const related = await getRelatedForSkill(lang, skill.slug, 5);
-const localeKey = lang === "zh-cn" ? "zh-cn" : "en";
+const related = getRelatedQASkills(allSkills, skill.slug, 5);
 const displayName = lang === "zh-cn" ? (skill.chineseName || skill.title) : skill.title;
+const heroTitleLines = (() => {
+  const match = displayName.match(/^(.*?)(\s*[（(][^）)]*[）)])$/);
+  return match ? [match[1].trim(), match[2].trim()] : [displayName];
+})();
+const secondaryName = skill.slug === "requirements-analysis"
+  ? lang === "zh-cn" ? "" : "需求分析"
+  : "";
+const localizedIntro = getQASkillCardIntro(skill, lang);
 
 const text = lang === "zh-cn" ? {
-  home: "首页",
-  list: "QA Skills",
-  installNow: "立即安装",
-  sourceSkill: "源 SKILL.md",
-  guideTab: "Guide",
-  rawTab: "SKILL.md",
-  copyRaw: "复制全文",
-  copied: "已复制",
-  platform: "平台",
-  aiTool: "AI 工具",
-  quickInstall: "快速安装（一行命令）",
-  npxInstall: "npm 安装（推荐）",
-  fullScript: "完整脚本",
-  callExample: "调用示例",
-  related: "相关技能",
-  category: "分类",
-  evals: "Evals",
-  noEvals: "No Evals",
-  updated: "同步日期",
-  author: "作者",
-  rawMissing: "暂无源文件预览，请打开 GitHub 查看。",
-  catType: "类型",
-  catWorkflow: "工作流",
-  catPlus: "Plus",
-  installPanel: "安装与调用",
-  onThisPage: "本页导航",
+  home: "首页", list: "QA 技能库", consoleName: "Skill 详情", skillDetail: "技能详情",
+  source: "GitHub 源码", sourceSkill: "源 SKILL.md", useNow: "立即使用", copyPrompt: "复制调用示例",
+  copy: "复制", copied: "已复制", copyFailed: "复制失败，请手动复制", synced: "同步日期", noSyncDate: "暂无同步日期",
+  status: "状态", stable: "稳定", type: "类型", domain: "领域", sdlc: "生命周期", roles: "适合角色",
+  language: "语言", languageValue: "中文 / 英文", evals: "评测", evalsAvailable: "有评测 ✓", noEvals: "暂无评测",
+  install: "安装命令", shell: "SHELL", problem: "解决什么问题", recommended: "适用场景", recommendedLabel: "推荐使用",
+  notRecommended: "不建议直接使用", input: "输入", minimum: "最低输入",
+  recommendedInput: "推荐输入", optional: "可选上下文", output: "输出",
+  outputHint: "不安装也能判断输出价值", preview: "输出预览", priority: "优先级",
+  finding: "发现", evidence: "证据", impact: "影响", action: "行动", example: "真实示例", before: "输入",
+  runSkill: "调用", after: "结果", fullExample: "查看完整示例", howItWorks: "工作原理",
+  workflow: "Skill 工作流", workflowHint: "当前 Skill 在质量工作流中的位置",
+  info: "Skill 信息", examples: "示例", related: "相关 Skill", beforeSkill: "前置 Skill",
+  noPrerequisite: "无需前置 Skill", deepen: "深入分析", continueTo: "下一步", similar: "相似 Skill",
+  purpose: "主要解决的问题", timing: "推荐时机", quickStart: "安装与快速开始",
+  promptTab: "Prompt", skillMdTab: "SKILL.md", moreDetails: "更多详情", outputFull: "查看完整输出结构", advanced: "高级用法",
+  deepDive: "深入阅读", resources: "资源", sourceFiles: "源文件", references: "参考资料", agentConfig: "Agent 配置",
+  noContent: "当前 Skill 暂无可展示内容。", notProvided: "未单独定义", relatedHint: "继续探索相邻的质量能力。", nextSkill: "下一步 Skill",
+  nextHint: "完成需求分析后，继续进入下一步质量活动。", noMatch: "暂无可用 Skill",
+  rawMissing: "暂无源文件预览，请打开 GitHub 查看。", onThisPage: "本页导航", categoryType: "测试类型",
+  categoryWorkflow: "工作流", categoryPlus: "增强 Skill", skillAttributes: "技能属性", heroCommand: "调用入口", heroCommandKind: "调用命令", heroCommandHint: "在 Codex 中输入以下命令即可开始使用。",
+  prompt: `@skill ${skill.slug}\n\n${skill.slug === "requirements-analysis" ? "分析这个需求，识别业务规则、边界、依赖、信息缺口和质量风险。\n\n需求：\n[粘贴需求内容]" : "结合当前项目上下文，按该 Skill 的要求给出可执行结果。\n\n补充上下文：\n[粘贴项目背景或需求]"}`,
 } : {
-  home: "Home",
-  list: "QA Skills",
-  installNow: "Install Now",
-  sourceSkill: "Source SKILL.md",
-  guideTab: "Guide",
-  rawTab: "SKILL.md",
-  copyRaw: "Copy all",
-  copied: "Copied",
-  platform: "Platform",
-  aiTool: "AI Tool",
-  quickInstall: "Quick install (one line)",
-  npxInstall: "npm install (recommended)",
-  fullScript: "Full script",
-  callExample: "Call example",
-  related: "Related skills",
-  category: "Category",
-  evals: "Evals",
-  noEvals: "No Evals",
-  updated: "Synced",
-  author: "Author",
-  rawMissing: "Raw preview unavailable. Open GitHub instead.",
-  catType: "Type",
-  catWorkflow: "Workflow",
-  catPlus: "Plus",
-  installPanel: "Install & call",
-  onThisPage: "On this page",
+  home: "Home", list: "QA Skills", consoleName: "Skill Detail", skillDetail: "SKILL DETAIL", source: "GitHub source",
+  sourceSkill: "Source SKILL.md", useNow: "Use now", copyPrompt: "Copy call example", copy: "Copy", copied: "Copied",
+  copyFailed: "Copy failed. Please copy manually.", synced: "Synced", noSyncDate: "No sync date", status: "Status",
+  stable: "Stable", type: "Type", domain: "Domain", sdlc: "SDLC", roles: "Good for", language: "Language",
+  languageValue: "Chinese / English", evals: "Evals", evalsAvailable: "Evals ✓", noEvals: "No evals yet",
+  install: "Install command", shell: "SHELL", problem: "Why this Skill", recommended: "When to use", recommendedLabel: "Use this Skill",
+  notRecommended: "When not to use", input: "Input", minimum: "Minimum Input",
+  recommendedInput: "Recommended Input", optional: "Optional Context", output: "Output",
+  outputHint: "Judge the output value before installing", preview: "Output preview",
+  priority: "Priority", finding: "Finding", evidence: "Evidence", impact: "Impact", action: "Action", example: "Real example",
+  before: "Before", runSkill: "Run Skill", after: "After", fullExample: "View full example", howItWorks: "How It Works",
+  workflow: "Skill Workflow", workflowHint: "Where this Skill sits in the quality workflow",
+  info: "Skill information", examples: "Examples", related: "Related Skills", beforeSkill: "Before This Skill",
+  noPrerequisite: "No prerequisite Skill required", deepen: "Deepen the Analysis", continueTo: "Continue To", similar: "Similar Skills",
+  purpose: "Main problem solved", timing: "Recommended timing", quickStart: "Install & Quick Start",
+  promptTab: "Prompt", skillMdTab: "SKILL.md", moreDetails: "More details", outputFull: "View full output structure", advanced: "Advanced",
+  deepDive: "Deep dive", resources: "Resources", sourceFiles: "Source files", references: "References", agentConfig: "Agent config",
+  noContent: "No content is available for this Skill yet.", notProvided: "Not specified", relatedHint: "Continue exploring adjacent quality capabilities.", nextSkill: "Next Skill",
+  nextHint: "After requirements analysis, continue to the next quality activity.", noMatch: "No matching Skill available",
+  rawMissing: "Raw preview unavailable. Open GitHub instead.", onThisPage: "On this page", categoryType: "Testing type",
+  categoryWorkflow: "Workflow", categoryPlus: "Enhanced Skill", skillAttributes: "Skill attributes", heroCommand: "Call this Skill", heroCommandKind: "Command", heroCommandHint: "Enter this command in Codex to start.",
+  prompt: `@skill ${skill.slug}\n\n${skill.slug === "requirements-analysis" ? "Analyze this requirement. Identify business rules, boundaries, dependencies, information gaps, and quality risks.\n\nRequirement:\n[Paste requirement here]" : "Using the current project context, produce an actionable result following this Skill.\n\nAdditional context:\n[Paste project context or requirement]"}`,
 };
 
-const categoryLabel =
-  skill.category === "workflow"
-    ? text.catWorkflow
-    : skill.category === "plus"
-      ? text.catPlus
-      : text.catType;
+const summary = getQASkillCardSummary(skill, lang);
+const localizedDescription = (lang === "zh-cn" ? localizedIntro || skill.description || skill.title : skill.description || localizedIntro || skill.title).trim();
+const heroIntro = /当前质量任务|current quality task/i.test(localizedDescription) && summary.whenToUse
+  ? summary.whenToUse
+  : localizedDescription;
+const configuredDetail = getQASkillDetailData(skill.slug);
+  const genericDetail = buildGenericQASkillDetailData({
+    skill,
+  lang,
+  summary,
+  relatedSlugs: related.map((item) => item.slug),
+});
+const local = <T,>(value: Record<Lang, T>): T => value[lang];
+const detailSource = configuredDetail ?? genericDetail;
+const detail = {
+  domain: local(detailSource.domain), sdlc: local(detailSource.sdlc), type: local(detailSource.type),
+  status: local(detailSource.status), problemValue: local(detailSource.problemValue), outputSummary: local(detailSource.outputSummary),
+  notRecommendedLabel: local(detailSource.notRecommendedLabel), roles: local(detailSource.roles), problem: local(detailSource.problem),
+  whenToUse: local(detailSource.whenToUse), whenNotToUse: local(detailSource.whenNotToUse),
+  input: { minimum: local(detailSource.input.minimum), recommended: local(detailSource.input.recommended), optional: local(detailSource.input.optional) },
+  outputSections: local(detailSource.outputSections),
+  outputPreview: detailSource.outputPreview.map((row) => ({ priority: row.priority, finding: local(row.finding), evidence: local(row.evidence), impact: local(row.impact), action: local(row.action) })),
+  example: detailSource.example ? { before: local(detailSource.example.before), run: local(detailSource.example.run), after: local(detailSource.example.after), full: local(detailSource.example.full) } : null,
+  howItWorks: local(detailSource.howItWorks), workflow: detailSource.workflow, relations: detailSource.relations, similarNotes: detailSource.similarNotes,
+};
+const problemItems = configuredDetail
+  ? detail.problem
+  : detail.problem.filter((item) => item.trim() !== heroIntro.trim());
 
-const breadcrumbs = [
-  { name: text.home, url: getRelativeLocaleUrl(lang, "/") },
-  { name: text.list, url: getRelativeLocaleUrl(lang, "/qaskills/") },
-  { name: displayName, url: getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`) },
-];
+const skillMap = new Map(allSkills.map((item) => [item.slug, item]));
+const relationCards = (slugs: string[]) => slugs.map((slug) => skillMap.get(slug)).filter(Boolean).map((item) => ({ slug: item!.slug, name: lang === "zh-cn" ? (item!.chineseName || item!.title) : item!.title, intro: getQASkillCardIntro(item!, lang) }));
+const beforeCards = relationCards(detail.relations.before);
+const deepenCards = relationCards(detail.relations.deepen);
+const continueCards = relationCards(detail.relations.continueTo);
+const similarCards = relationCards(detail.relations.similar);
+const outputHighlights = detail.outputSections.slice(0, 4);
+const outputMore = detail.outputSections.slice(4);
+const relatedPreviewCards = [
+  ...beforeCards.slice(0, 1).map((item) => ({ item, kind: text.beforeSkill })),
+  ...deepenCards.slice(0, 1).map((item) => ({ item, kind: text.deepen })),
+  ...continueCards.slice(0, 1).map((item) => ({ item, kind: text.continueTo })),
+  ...similarCards.map((item) => ({ item, kind: text.similar })),
+].filter((entry, index, entries) => entries.findIndex((candidate) => candidate.item.slug === entry.item.slug) === index).slice(0, 6);
+const relationDescription = (item: { slug: string; intro: string }, kind: string) => {
+  const notes = kind === text.similar ? configuredDetail?.similarNotes[item.slug] : undefined;
+  return notes ? `${local(notes.problem)} · ${local(notes.timing)}` : item.intro;
+};
 
 const installerLang = lang === "zh-cn" ? "zh" : "en";
-const aiTools = ["codex", "cursor", "claudecode", "kiro", "opencode", "trae"] as const;
-const toolMeta = {
-  codex: { icon: "code", label: "codex" },
-  cursor: { icon: "ads_click", label: "cursor" },
-  claudecode: { icon: "auto_awesome", label: "claudecode" },
-  kiro: { icon: "psychology_alt", label: "kiro" },
-  opencode: { icon: "integration_instructions", label: "opencode" },
-  trae: { icon: "bolt", label: "trae" },
-} as const;
-
-const skillKindMatch = skill.sourceSkillUrl.match(/\/skills\/(?:zh|en)\/(testing-types|testing-workflows|skill-engineering)\//);
+const skillKindMatch = (skill.sourceSkillUrl || "").match(/\/skills\/(?:zh|en)\/(testing-types|testing-workflows|skill-engineering)\//);
 const skillKind = skillKindMatch?.[1] || (skill.category === "workflow" ? "testing-workflows" : "testing-types");
-const installContext = {
-  slug: skill.slug,
-  lang: installerLang,
-  kind: skillKind,
-};
-const npxInstallCommand = `npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/${installerLang}/${skillKind}/${skill.slug} -g -a codex -y`;
-
-const callExample =
-  lang === "zh-cn"
-    ? `@skill ${skill.slug}\n结合当前项目上下文，按该技能的要求给出可执行结果。`
-    : `@skill ${skill.slug}\nUsing the current project context, produce an actionable result following this skill.`;
-
+const installTarget = `https://github.com/naodeng/awesome-qa-skills/tree/main/skills/${installerLang}/${skillKind}/${skill.slug}`;
+const npxInstallCommand = `npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/${installerLang}/${skillKind}/${skill.slug} -g`;
+const npxInstallCommandDisplay = ["npx skills add \\", `  ${installTarget}`, "  -g"].join("\n");
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}`;
 const pageLocale = (lang === "zh-cn" ? "zh-cn" : "en") as "en" | "zh-cn";
-const pageTitle = lang === "zh-cn"
-  ? `${displayName} - 软件测试技能库`
-  : `${displayName} - QA Skill Library`;
-const rawPageDescription = (skill.intro || skill.description || skill.title || "").trim();
-const pageDescription = rawPageDescription.length < 80
-  ? lang === "zh-cn"
-    ? `${rawPageDescription} 提供可直接使用的安装、调用、输入输出与人工复核说明。`
-    : `${rawPageDescription} Includes practical installation, calling, input/output, and human-review guidance.`
-  : rawPageDescription;
-const pageKeywords = [
-  skill.title,
-  skill.chineseName,
-  lang === "zh-cn" ? "软件测试技能库" : "QA skill library",
-  lang === "zh-cn" ? "测试技能" : "testing skills",
-].filter(Boolean).join(", ");
-const skillSchema = {
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  headline: displayName,
-  description: pageDescription,
-  url: canonicalUrl,
-  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
-  dateModified: skill.updatedAt || undefined,
-  author: { "@type": "Person", name: skill.author || "naodeng" },
-  publisher: { "@type": "Organization", name: "naodeng", url: siteOrigin },
-  mainEntityOfPage: canonicalUrl,
-};
-const showRawTab = Boolean(skill.rawSkillMarkdown || skill.sourceSkillUrl);
-const visibleSections = SECTION_KEYS.filter((key) => Boolean(skill.sections[key]));
+const pageTitle = lang === "zh-cn" ? `${displayName} - 软件测试技能库` : `${displayName} - QA Skill Library`;
+const pageDescription = localizedDescription.length < 80
+  ? lang === "zh-cn" ? `${localizedDescription} 提供可直接使用的安装、调用、输入输出与人工复核说明。` : `${localizedDescription} Includes practical installation, input, output, and human-review guidance.`
+  : localizedDescription;
+const pageKeywords = [skill.title, skill.chineseName, detail.domain, lang === "zh-cn" ? "软件测试技能库" : "QA skill library"].filter(Boolean).join(", ");
+const skillSchema = { "@context": "https://schema.org", "@type": "TechArticle", headline: displayName, description: pageDescription, url: canonicalUrl, inLanguage: lang === "zh-cn" ? "zh-CN" : "en", dateModified: skill.updatedAt || undefined, author: { "@type": "Person", name: skill.author || "naodeng" }, publisher: { "@type": "Organization", name: "naodeng", url: siteOrigin }, mainEntityOfPage: canonicalUrl };
 const tocHeadings = [
-  ...visibleSections.map((key) => ({
-    depth: 2 as const,
-    slug: `section-${key}`,
-    text: SECTION_LABELS[key][localeKey],
-  })),
-  { depth: 2 as const, slug: "install-section", text: text.installPanel },
+  { slug: "section-problem", text: text.problem }, { slug: "section-when", text: text.recommended }, { slug: "section-input", text: text.input }, { slug: "section-output", text: text.output },
+  ...(detail.outputPreview.length ? [{ slug: "section-output-preview", text: text.preview }] : []), ...(detail.example ? [{ slug: "section-real-example", text: text.example }] : []),
+  ...(detail.howItWorks.length ? [{ slug: "section-how-it-works", text: text.howItWorks }] : []),
+  { slug: "quick-start", text: text.quickStart }, { slug: "section-related-skills", text: text.related },
 ];
 ---
 
@@ -183,803 +159,292 @@ const tocHeadings = [
   title={pageTitle}
   description={pageDescription}
   keywords={pageKeywords}
-  breadcrumbs={breadcrumbs}
+  breadcrumbs={[
+    { name: text.home, url: getRelativeLocaleUrl(lang, "/") },
+    { name: text.list, url: getRelativeLocaleUrl(lang, "/qaskills/") },
+    { name: displayName, url: getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`) },
+  ]}
   extraStructuredData={[skillSchema]}
 >
-  <article class="qaskill-detail">
-    <header class="detail-header">
-      <div class="detail-header-main">
-        <div class="detail-status-panel" aria-label={`${text.category}: ${categoryLabel}；${skill.hasEvals ? text.evals : text.noEvals}`}>
-          <div class="detail-status-tags">
-            <span class="tag">{categoryLabel}</span>
-            <span class="tag">{skill.hasEvals ? text.evals : text.noEvals}</span>
+  <article class="qaskill-detail skill-console">
+    <header class="console-hero">
+      <div class="console-hero-main">
+        <div class="console-hero-copy">
+          <p class="console-kicker">{text.skillDetail}</p>
+          <h1 aria-label={displayName}>{heroTitleLines.map((line) => <span class="console-hero-title-line">{line}</span>)}</h1>
+          {secondaryName && <p class="console-hero-alias">{secondaryName}</p>}
+          <p class="console-hero-intro">{heroIntro}</p>
+          <div class="console-actions">
+            <a href="#quick-start" class="console-button console-button--primary" data-use-now>{text.useNow} <span aria-hidden="true">→</span></a>
+            {skill.sourceSkillUrl && <a class="console-source-link" href={skill.sourceSkillUrl} target="_blank" rel="noopener noreferrer">{text.source} ↗</a>}
           </div>
-          <p class="detail-updated">{text.updated}: {skill.updatedAt || "-"}</p>
         </div>
-        <h1>{displayName}</h1>
-        <p class="detail-intro">{skill.intro}</p>
-        <div class="actions detail-header-actions">
-          <a href="#install-section" class="btn btn-primary">{text.installNow}</a>
-          {skill.sourceSkillUrl && (
-            <a href={skill.sourceSkillUrl} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">{text.sourceSkill}</a>
-          )}
-        </div>
-        <div class="detail-header-footer">
-          <p class="detail-author">{text.author}: {skill.author || "-"}</p>
+        <div class="console-hero-side">
+          <aside class="console-hero-command" aria-label={text.heroCommand}>
+            <div class="console-hero-command-meta">
+              <span class="console-hero-command-meta-label">{text.skillAttributes}</span>
+              <div class="console-tag-row" aria-label={text.skillAttributes}><span class="tag">{detail.domain}</span><span class="tag">{detail.sdlc}</span><span class="tag">{detail.type}</span></div>
+            </div>
+            <div class="console-hero-command-head"><span>{text.heroCommand}</span><span class="console-hero-command-kind">{text.heroCommandKind}</span></div>
+            <pre><code>@skill {skill.slug}</code></pre>
+            <p>{text.heroCommandHint}</p>
+          </aside>
         </div>
       </div>
     </header>
 
+    <section class="console-info-strip" id="skill-info-strip" aria-label={text.info}>
+      <div><span>{text.status}</span><strong>{detail.status}</strong></div><div><span>{text.type}</span><strong>{detail.type}</strong></div><div><span>{text.domain}</span><strong>{detail.domain}</strong></div><div><span>{text.sdlc}</span><strong>{detail.sdlc}</strong></div><div><span>{text.roles}</span><strong>{detail.roles.length ? detail.roles.join(" / ") : text.notProvided}</strong></div><div><span>{text.language}</span><strong>{text.languageValue}</strong></div><div><span>{text.evals}</span><strong>{skill.hasEvals ? text.evalsAvailable : text.noEvals}</strong></div><div><span>{text.synced}</span><strong>{skill.updatedAt || text.noSyncDate}</strong></div>
+    </section>
+
+    <nav class="detail-nav" id="skill-elevator" aria-label={text.onThisPage}><p class="elevator-title">{text.onThisPage}</p><ul class="elevator-list">{tocHeadings.map((item) => <li><a class="elevator-link" href={`#${item.slug}`} data-elevator-target={item.slug}>{item.text}</a></li>)}</ul></nav>
+
     <div class="detail-layout">
-      <div class="detail-main">
-        <div class="detail-tabs" role="tablist" aria-label="Skill content">
-          <button type="button" class="detail-tab is-active" role="tab" aria-selected="true" data-tab="guide">{text.guideTab}</button>
-          {showRawTab && (
-            <button type="button" class="detail-tab" role="tab" aria-selected="false" data-tab="raw">{text.rawTab}</button>
-          )}
-        </div>
-
-        <div id="panel-guide" class="tab-panel" role="tabpanel">
-          {visibleSections.map((key) => (
-            <section class="detail-section" id={`section-${key}`}>
-              <h2>{SECTION_LABELS[key][localeKey]}</h2>
-              <div class="prose" set:html={skill.sectionHtml[key]} />
-            </section>
-          ))}
-        </div>
-
-        {showRawTab && (
-          <div id="panel-raw" class="tab-panel" role="tabpanel" hidden>
-            {skill.rawSkillMarkdown ? (
-              <div class="raw-wrap">
-                <div class="raw-toolbar">
-                  <span class="raw-toolbar-label">SKILL.md</span>
-                  <button type="button" id="copy-raw-skill-btn" class="copy-raw-btn">{text.copyRaw}</button>
-                </div>
-                <pre class="skill-raw"><code id="raw-skill-code">{skill.rawSkillMarkdown}</code></pre>
-              </div>
-            ) : (
-              <p>
-                {text.rawMissing}{" "}
-                {skill.sourceSkillUrl && (
-                  <a href={skill.sourceSkillUrl} target="_blank" rel="noopener noreferrer">{text.sourceSkill}</a>
-                )}
-              </p>
-            )}
-          </div>
-        )}
-
-        <section class="install-block" id="install-section">
-          <h2>{text.installPanel}</h2>
-          <div class="installer-panel" id="installer-panel" data-default-lang={installerLang}>
-            <div class="installer-row">
-              <p class="installer-label">{text.platform}</p>
-              <div class="tab-group platform-tabs" role="tablist">
-                <button type="button" class="tab-btn is-active" data-os="mac">
-                  <span class="material-icons-sharp tab-icon" aria-hidden="true">terminal</span>
-                  <span>macOS / Linux</span>
-                </button>
-                <button type="button" class="tab-btn" data-os="windows">
-                  <span class="material-icons-sharp tab-icon" aria-hidden="true">desktop_windows</span>
-                  <span>Windows</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="installer-row">
-              <p class="installer-label">{text.aiTool}</p>
-              <div class="tab-group tools-tabs" role="tablist">
-                {aiTools.map((tool, i) => (
-                  <button type="button" class:list={["tab-btn", i === 0 && "is-active"]} data-tool={tool}>
-                    <span class="material-icons-sharp tab-icon" aria-hidden="true">{toolMeta[tool].icon}</span>
-                    <span>{toolMeta[tool].label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div class="installer-snippet">
-              <p class="installer-label">{text.npxInstall}</p>
-              <div class="code-card">
-                <pre data-lang="shell"><code id="npx-install-code" class="language-bash">{npxInstallCommand}</code></pre>
-                <button type="button" id="copy-npx-btn" class="copy-mini">{lang === "zh-cn" ? "复制" : "Copy"}</button>
-              </div>
-            </div>
-
-            <div class="installer-snippet">
-              <p class="installer-label">{text.quickInstall}</p>
-              <div class="code-card">
-                <pre data-lang="shell"><code id="quick-install-code" class="language-bash">…</code></pre>
-                <button type="button" id="copy-quick-btn" class="copy-mini">{lang === "zh-cn" ? "复制" : "Copy"}</button>
-              </div>
-            </div>
-
-            <div class="installer-snippet">
-              <p class="installer-label">{text.fullScript}</p>
-              <div class="code-card">
-                <pre data-lang="shell"><code id="full-install-code" class="language-bash">…</code></pre>
-                <button type="button" id="copy-full-btn" class="copy-mini">{lang === "zh-cn" ? "复制" : "Copy"}</button>
-              </div>
-            </div>
-
-            <div class="installer-snippet">
-              <p class="installer-label">{text.callExample}</p>
-              <div class="code-card">
-                <pre data-lang="text"><code id="call-example-code">{callExample}</code></pre>
-                <button type="button" id="copy-call-btn" class="copy-mini">{lang === "zh-cn" ? "复制" : "Copy"}</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {related.length > 0 && (
-          <section class="related-block related-block--main">
-            <h2>{text.related}</h2>
-            <div class="related-grid">
-              {related.map((item) => (
-                <a class="related-card" href={getRelativeLocaleUrl(lang, `/qaskills/${item.slug}/`)}>
-                  <span class="related-card-title">{lang === "zh-cn" ? (item.chineseName || item.title) : item.title}</span>
-                  <span class="related-card-meta">{item.category === "workflow" ? text.catWorkflow : text.catType}</span>
-                  </a>
-              ))}
-            </div>
+      <main class="detail-main">
+        <div class="console-grid">
+          <section class="console-panel console-panel--wide" id="section-problem">
+            <div class="console-panel-head"><h2>{text.problem}</h2></div>
+            <div class="problem-layout"><div class="problem-lead">{configuredDetail && <p>{localizedDescription}</p>}<p class="problem-value">{detail.problemValue}</p></div><ul class="problem-list">{problemItems.map((item) => <li>{item}</li>)}</ul></div>
           </section>
-        )}
 
-      </div>
+          <section class="console-panel console-panel--wide" id="section-when">
+            <div class="console-panel-head"><h2>{text.recommended}</h2></div>
+            <div class="decision-grid"><div class="decision-card decision-card--yes"><span>{text.recommendedLabel}</span><ul>{detail.whenToUse.map((item) => <li>{item}</li>)}</ul></div><div class="decision-card decision-card--no"><span>{detail.notRecommendedLabel}</span><ul>{detail.whenNotToUse.length ? detail.whenNotToUse.map((item) => <li>{item}</li>) : <li>{text.noContent}</li>}</ul></div></div>
+          </section>
 
-      <aside class="detail-aside" aria-label={text.onThisPage}>
-        <nav class="elevator" id="skill-elevator">
-          <p class="elevator-title">{text.onThisPage}</p>
-          <ul class="elevator-list">
-            {tocHeadings.map((item) => (
-              <li>
-                <a class="elevator-link" href={`#${item.slug}`} data-elevator-target={item.slug}>{item.text}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </aside>
+          <section class="console-panel console-panel--wide" id="section-input">
+            <div class="console-panel-head"><h2>{text.input}</h2></div>
+            <div class="contract-grid"><div class="contract-card contract-card--required"><span>{text.minimum}</span><ul>{detail.input.minimum.map((item) => <li>{item}</li>)}</ul></div><div class="contract-card"><span>{text.recommendedInput}</span><ul>{detail.input.recommended.length ? detail.input.recommended.map((item) => <li>{item}</li>) : <li>{text.noContent}</li>}</ul></div><div class="contract-card"><span>{text.optional}</span><ul>{detail.input.optional.length ? detail.input.optional.map((item) => <li>{item}</li>) : <li>{text.noContent}</li>}</ul></div></div>
+          </section>
+
+          <section class="console-panel console-panel--wide" id="section-output">
+            <div class="console-panel-head"><h2>{text.output}</h2></div>
+            <div class="output-layout"><div class="output-summary"><p>{detail.outputSummary}</p><p class="output-hint">{text.outputHint}</p></div><div><ol class="output-sections">{outputHighlights.map((item, index) => <li><b>{String(index + 1).padStart(2, "0")}</b><span>{item}</span></li>)}</ol>{outputMore.length > 0 && <details class="output-more"><summary>{text.outputFull}<span aria-hidden="true">↗</span></summary><ol class="output-sections output-sections--more">{outputMore.map((item, index) => <li><b>{String(index + outputHighlights.length + 1).padStart(2, "0")}</b><span>{item}</span></li>)}</ol></details>}</div></div>
+          </section>
+
+          {detail.outputPreview.length > 0 && <section class="console-panel console-panel--wide" id="section-output-preview"><div class="console-panel-head"><h2>{text.preview}</h2></div><div class="preview-table" role="table" aria-label={text.preview}><div class="preview-row preview-row--head" role="row"><span role="columnheader">{text.priority}</span><span role="columnheader">{text.finding}</span><span role="columnheader">{text.evidence}</span><span role="columnheader">{text.impact}</span><span role="columnheader">{text.action}</span></div>{detail.outputPreview.map((row) => <div class="preview-row" role="row"><strong role="cell" class:list={["priority", `priority--${row.priority.toLowerCase()}`]} data-label={text.priority}>{row.priority}</strong><span role="cell" data-label={text.finding}>{row.finding}</span><span role="cell" data-label={text.evidence}>{row.evidence}</span><span role="cell" data-label={text.impact}>{row.impact}</span><span role="cell" data-label={text.action}>{row.action}</span></div>)}</div></section>}
+
+          {detail.example && <section class="console-panel console-panel--wide" id="section-real-example"><div class="console-panel-head"><h2>{text.example}</h2></div><div class="example-flow"><div class="example-step"><span>{text.before}</span><p>{detail.example.before}</p></div><div class="example-step"><span>{text.runSkill}</span><pre><code>{detail.example.run}</code></pre></div><div class="example-step example-step--after"><span>{text.after}</span><ul>{detail.example.after.map((item) => <li><b>{item.label}</b><span>{item.value}</span></li>)}</ul></div></div></section>}
+
+          {detail.howItWorks.length > 0 && <section class="console-panel console-panel--wide" id="section-how-it-works"><div class="console-panel-head"><h2>{text.howItWorks}</h2></div><ol class="how-it-works">{detail.howItWorks.map((step, index) => <li><b>{String(index + 1).padStart(2, "0")}</b><span>{step}</span></li>)}</ol></section>}
+
+        </div>
+
+        <section class="console-panel console-panel--wide console-panel--quick" id="quick-start" tabindex="-1"><div class="console-panel-head"><h2>{text.quickStart}</h2></div><div class="quick-install-block" id="install-section"><div class="quick-install-top"><span>{text.install} / {text.shell}</span><button type="button" data-copy={npxInstallCommand}>{text.copy}</button></div><pre><code id="npx-install-code">{npxInstallCommandDisplay}</code></pre></div><div class="quick-start-tabs" role="tablist" aria-label={text.quickStart}><button type="button" id="quick-tab-prompt" role="tab" aria-selected="true" aria-controls="quick-prompt" data-doc-tab="prompt">{text.promptTab}</button><button type="button" id="quick-tab-skill" role="tab" aria-selected="false" aria-controls="quick-skill-md" data-doc-tab="skill">{text.skillMdTab}</button></div><div class="quick-doc-card"><div class="quick-doc-top"><span data-doc-title>{skill.slug}.prompt</span><button type="button" data-doc-copy>{text.copy}</button></div><div id="quick-prompt" class="quick-doc-panel" data-doc-panel="prompt" role="tabpanel" aria-labelledby="quick-tab-prompt" tabindex="0"><pre><code>{text.prompt}</code></pre></div><div id="quick-skill-md" class="quick-doc-panel" data-doc-panel="skill" role="tabpanel" aria-labelledby="quick-tab-skill" tabindex="0" hidden><div class="raw-wrap">{skill.rawSkillMarkdown ? <pre class="skill-raw"><code id="raw-skill-code">{skill.rawSkillMarkdown}</code></pre> : <p class="console-empty">{text.rawMissing}</p>}</div></div></div></section>
+
+        <section class="console-panel console-panel--wide" id="section-related-skills"><div class="console-panel-head"><h2>{text.related}</h2></div>{detail.workflow.length > 1 && <div class="related-workflow" id="section-workflow"><div class="related-subhead"><span>{text.workflow}</span><small>{text.workflowHint}</small></div><ol class="workflow-track">{detail.workflow.map((slug, index) => { const item = skillMap.get(slug); const label = item ? (lang === "zh-cn" ? (item.chineseName || item.title) : item.title) : slug; return <li class:list={[slug === skill.slug && "is-current"]}>{item ? <a href={getRelativeLocaleUrl(lang, `/qaskills/${slug}/`)}>{label}</a> : <span>{label}</span>}{index < detail.workflow.length - 1 && <b aria-hidden="true">→</b>}</li>; })}</ol></div>}{relatedPreviewCards.length ? <div class="related-preview-grid">{relatedPreviewCards.map(({ item, kind }) => <a class="relation-card" href={getRelativeLocaleUrl(lang, `/qaskills/${item.slug}/`)}><span class="relation-card-kind">{kind}</span><b>{item.name}</b><small>{relationDescription(item, kind)}</small></a>)}</div> : <p class="relation-empty">{text.noMatch}</p>}</section>
+      </main>
+
     </div>
 
-    <ArticleShare title={displayName} url={canonicalUrl} locale={pageLocale} />
-    <Giscus
-      lang={lang === "zh-cn" ? "zh-CN" : "en"}
-      theme="preferred_color_scheme"
-      inputPosition="bottom"
-      reactionsEnabled={true}
-      loading="lazy"
-    />
+    <ArticleShare title={displayName} url={canonicalUrl} locale={pageLocale} showLabel={false} />
+    <Giscus lang={lang === "zh-cn" ? "zh-CN" : "en"} theme="preferred_color_scheme" inputPosition="bottom" reactionsEnabled={true} loading="eager" />
   </article>
 </Base>
 
-<script is:inline define:vars={{ installContext, lang, copiedLabel: text.copied, copyLabel: lang === "zh-cn" ? "复制" : "Copy", copyRawLabel: text.copyRaw }}>
+<script is:inline define:vars={{ copiedLabel: text.copied, copyLabel: text.copy, copyFailedLabel: text.copyFailed }}>
   (() => {
-    const tabButtons = Array.from(document.querySelectorAll(".detail-tab[data-tab]"));
-    const panelGuide = document.getElementById("panel-guide");
-    const panelRaw = document.getElementById("panel-raw");
-    const activateTab = (tab) => {
-      tabButtons.forEach((b) => {
-        const active = b.getAttribute("data-tab") === tab;
-        b.classList.toggle("is-active", active);
-        b.setAttribute("aria-selected", active ? "true" : "false");
-      });
-      if (panelGuide) panelGuide.hidden = tab !== "guide";
-      if (panelRaw) panelRaw.hidden = tab !== "raw";
+    const root = document.querySelector(".skill-console");
+    if (!root) return;
+    const docTabs = Array.from(root.querySelectorAll("[data-doc-tab]"));
+    const docPanels = Array.from(root.querySelectorAll("[data-doc-panel]"));
+    const docTitle = root.querySelector("[data-doc-title]");
+    const docCopyButton = root.querySelector("[data-doc-copy]");
+    const promptTitle = docTitle?.textContent || "prompt";
+    const quickStart = root.querySelector("#quick-start");
+    const applyDoc = (doc) => {
+      const selected = doc === "skill" ? "skill" : "prompt";
+      docTabs.forEach((tab) => { const isSelected = tab.getAttribute("data-doc-tab") === selected; tab.setAttribute("aria-selected", String(isSelected)); tab.setAttribute("tabindex", isSelected ? "0" : "-1"); });
+      docPanels.forEach((panel) => { panel.hidden = panel.getAttribute("data-doc-panel") !== selected; });
+      if (docTitle) docTitle.textContent = selected === "skill" ? "SKILL.md" : promptTitle;
+      if (docCopyButton) { const content = selected === "skill" ? root.querySelector("#raw-skill-code")?.textContent || "" : root.querySelector("#quick-prompt code")?.textContent || ""; docCopyButton.setAttribute("data-copy", content); docCopyButton.textContent = copyLabel; }
     };
-    tabButtons.forEach((btn) => {
-      btn.addEventListener("click", () => activateTab(btn.getAttribute("data-tab") || "guide"));
+    docTabs.forEach((tab) => {
+      tab.addEventListener("click", () => applyDoc(tab.getAttribute("data-doc-tab") || "prompt"));
+      tab.addEventListener("keydown", (event) => { const currentIndex = docTabs.indexOf(tab); if (currentIndex < 0) return; let nextIndex = currentIndex; if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (currentIndex + 1) % docTabs.length; if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (currentIndex - 1 + docTabs.length) % docTabs.length; if (event.key === "Home") nextIndex = 0; if (event.key === "End") nextIndex = docTabs.length - 1; if (nextIndex === currentIndex) return; event.preventDefault(); const nextTab = docTabs[nextIndex]; nextTab.focus(); applyDoc(nextTab.getAttribute("data-doc-tab") || "prompt"); });
     });
-
-    const elevatorLinks = Array.from(document.querySelectorAll("[data-elevator-target]"));
-    const setActiveElevator = (slug) => {
-      elevatorLinks.forEach((a) => {
-        a.classList.toggle("is-active", a.getAttribute("data-elevator-target") === slug);
-      });
+    applyDoc("prompt");
+    const focusQuickStart = () => {
+      if (!quickStart) return;
+      const url = new URL(window.location.href);
+      url.hash = "quick-start";
+      window.history.replaceState({}, "", url);
+      window.setTimeout(() => {
+        const headerHeight = document.querySelector(".l-header")?.getBoundingClientRect().height || 0;
+        const targetTop = quickStart.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+      }, 0);
+      quickStart.classList.remove("is-highlighted");
+      window.requestAnimationFrame(() => { quickStart.classList.add("is-highlighted"); quickStart.focus({ preventScroll: true }); });
+      window.setTimeout(() => quickStart.classList.remove("is-highlighted"), 1800);
     };
-    elevatorLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        const target = link.getAttribute("data-elevator-target") || "";
-        if (target.startsWith("section-")) activateTab("guide");
-        setActiveElevator(target);
-      });
-    });
-    const observed = elevatorLinks
-      .map((link) => document.getElementById(link.getAttribute("data-elevator-target") || ""))
-      .filter(Boolean);
-    if (observed.length && "IntersectionObserver" in window) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((e) => e.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-          if (visible?.target?.id) setActiveElevator(visible.target.id);
-        },
-        { rootMargin: "-20% 0px -55% 0px", threshold: [0.1, 0.35, 0.6] }
-      );
-      observed.forEach((el) => io.observe(el));
-    }
-
-    const copyRawBtn = document.getElementById("copy-raw-skill-btn");
-    const rawCode = document.getElementById("raw-skill-code");
-    copyRawBtn?.addEventListener("click", async () => {
-      const content = rawCode?.textContent || "";
-      if (!content) return;
-      try {
-        await navigator.clipboard.writeText(content);
-        copyRawBtn.textContent = copiedLabel;
-        setTimeout(() => { copyRawBtn.textContent = copyRawLabel; }, 1200);
-      } catch {}
-    });
-
-    const panel = document.getElementById("installer-panel");
-    if (!panel) return;
-    const osButtons = Array.from(panel.querySelectorAll("[data-os]"));
-    const toolButtons = Array.from(panel.querySelectorAll("[data-tool]"));
-    const quickCodeEl = document.getElementById("quick-install-code");
-    const npxCodeEl = document.getElementById("npx-install-code");
-    const fullCodeEl = document.getElementById("full-install-code");
-    const copyQuickBtn = document.getElementById("copy-quick-btn");
-    const copyNpxBtn = document.getElementById("copy-npx-btn");
-    const copyFullBtn = document.getElementById("copy-full-btn");
-    const copyCallBtn = document.getElementById("copy-call-btn");
-    const callCodeEl = document.getElementById("call-example-code");
-    if (!quickCodeEl || !fullCodeEl || !copyQuickBtn || !copyFullBtn) return;
-
-    let currentOS = /windows/i.test(navigator.userAgent) ? "windows" : "mac";
-    let currentTool = "codex";
-
-    const escapeHTML = (value) =>
-      value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-    const highlightCode = (source, langKey) => {
-      if (!source) return "";
-      let html = escapeHTML(source);
-      const slots = [];
-      const stash = (pattern, cls) => {
-        html = html.replace(pattern, (m) => {
-          const id = slots.push(`<span class="${cls}">${m}</span>`) - 1;
-          return `@@CODE_SLOT_${id}@@`;
-        });
-      };
-      stash(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g, "tok-string");
-      stash(/\$\{[^}]+\}|\$[A-Za-z_][A-Za-z0-9_:]*/g, "tok-var");
-      stash(/(^|\n)\s*#.*$/gm, "tok-comment");
-      stash(/\b(?:if|then|fi|for|do|done|while|case|esac)\b/g, "tok-keyword");
-      stash(/\b(?:curl|irm|iex|exec|set|mkdir|cd|git|cp|echo|bash|trap|Join-Path|Set-Location|Copy-Item|Write-Host|New-Item|Remove-Item)\b/g, "tok-fn");
-      stash(/\|\||&&|\||=>|->/g, "tok-op");
-      if (langKey === "powershell") {
-        stash(/\b(?:param|function|foreach|switch|where|select)\b/g, "tok-keyword");
-      }
-      return html.replace(/@@CODE_SLOT_(\d+)@@/g, (_, i) => slots[Number(i)] || "");
-    };
-
-    const renderCode = (el, source, langKey) => {
-      el.innerHTML = highlightCode(source, langKey);
-    };
-
-    const renderActive = () => {
-      osButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.os === currentOS));
-      toolButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.tool === currentTool));
-    };
-
-    // Per-skill shortcut installers under installers/ are not portable for website visitors.
-    // Use the official scripts/install-skills-* after a shallow clone instead.
-    const getQuickCommand = () => {
-      if (currentOS === "windows") {
-        return [
-          `$repo = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString("N"));`,
-          `git clone --depth 1 https://github.com/naodeng/awesome-qa-skills.git $repo;`,
-          `& (Join-Path $repo "scripts\\install-skills-windows.ps1") -Tool ${currentTool} -Lang ${installContext.lang} -Skill ${installContext.slug};`,
-          `Remove-Item -Recurse -Force $repo`,
-        ].join(" ");
-      }
-      return [
-        `REPO="$(mktemp -d)"`,
-        `git clone --depth 1 https://github.com/naodeng/awesome-qa-skills.git "$REPO"`,
-        `bash "$REPO/scripts/install-skills-mac.sh" --tool ${currentTool} --lang ${installContext.lang} --skill ${installContext.slug}`,
-        `rm -rf "$REPO"`,
-      ].join(" && ");
-    };
-
-    const getFullScript = () => {
-      if (currentOS === "windows") {
-        return [
-          `# Install ${installContext.slug} for ${currentTool}`,
-          `$ErrorActionPreference = "Stop"`,
-          `$repo = Join-Path $env:TEMP ("aqs-" + [guid]::NewGuid().ToString("N"))`,
-          `try {`,
-          `  git clone --depth 1 https://github.com/naodeng/awesome-qa-skills.git $repo`,
-          `  & (Join-Path $repo "scripts\\install-skills-windows.ps1") -Tool ${currentTool} -Lang ${installContext.lang} -Skill ${installContext.slug}`,
-          `}`,
-          `finally {`,
-          `  if (Test-Path $repo) { Remove-Item -Recurse -Force $repo }`,
-          `}`,
-        ].join("\n");
-      }
-      return [
-        `#!/usr/bin/env bash`,
-        `set -euo pipefail`,
-        `# Install ${installContext.slug} for ${currentTool}`,
-        `REPO="$(mktemp -d)"`,
-        `trap 'rm -rf "$REPO"' EXIT`,
-        `git clone --depth 1 https://github.com/naodeng/awesome-qa-skills.git "$REPO"`,
-        `bash "$REPO/scripts/install-skills-mac.sh" --tool ${currentTool} --lang ${installContext.lang} --skill ${installContext.slug}`,
-      ].join("\n");
-    };
-
-    const refreshCommands = () => {
-      const langKey = currentOS === "windows" ? "powershell" : "shell";
-      const codeClass = currentOS === "windows" ? "language-powershell" : "language-bash";
-      [quickCodeEl, fullCodeEl].forEach((el) => {
-        el.className = codeClass;
-        el.closest("pre")?.setAttribute("data-lang", langKey);
-      });
-      renderCode(quickCodeEl, getQuickCommand(), langKey);
-      renderCode(fullCodeEl, getFullScript(), langKey);
-    };
-
-    const bindCopy = (btn, el) => {
-      btn.addEventListener("click", async () => {
-        const content = el.textContent || "";
-        if (!content) return;
-        try {
-          await navigator.clipboard.writeText(content);
-          btn.textContent = copiedLabel;
-          setTimeout(() => { btn.textContent = copyLabel; }, 1200);
-        } catch {}
-      });
-    };
-
-    osButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        currentOS = btn.dataset.os || "mac";
-        renderActive();
-        refreshCommands();
-      });
-    });
-    toolButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        currentTool = btn.dataset.tool || "codex";
-        renderActive();
-        refreshCommands();
-      });
-    });
-
-    bindCopy(copyQuickBtn, quickCodeEl);
-    if (copyNpxBtn && npxCodeEl) bindCopy(copyNpxBtn, npxCodeEl);
-    bindCopy(copyFullBtn, fullCodeEl);
-    if (copyCallBtn && callCodeEl) bindCopy(copyCallBtn, callCodeEl);
-
-    renderActive();
-    refreshCommands();
+    root.querySelector("[data-use-now]")?.addEventListener("click", (event) => { event.preventDefault(); applyDoc("prompt"); focusQuickStart(); });
+    if (window.location.hash === "#quick-start") window.setTimeout(focusQuickStart, 0);
+    const bindCopy = (button) => { button.addEventListener("click", async () => { const content = button.getAttribute("data-copy") || ""; if (!content) return; const defaultLabel = button.dataset.defaultLabel || button.textContent || copyLabel; button.dataset.defaultLabel = defaultLabel; try { await navigator.clipboard.writeText(content); button.textContent = copiedLabel; window.setTimeout(() => { button.textContent = defaultLabel; }, 1200); } catch { button.textContent = copyFailedLabel; window.setTimeout(() => { button.textContent = defaultLabel; }, 1200); } }); };
+    root.querySelectorAll("[data-copy]").forEach(bindCopy);
+    const elevatorLinks = Array.from(root.querySelectorAll("[data-elevator-target]"));
+    const setActiveElevator = (slug) => { elevatorLinks.forEach((link) => { const active = link.getAttribute("data-elevator-target") === slug; link.classList.toggle("is-active", active); if (active) link.setAttribute("aria-current", "location"); else link.removeAttribute("aria-current"); }); };
+    elevatorLinks.forEach((link) => link.addEventListener("click", () => setActiveElevator(link.getAttribute("data-elevator-target") || "")));
+    const observed = elevatorLinks.map((link) => document.getElementById(link.getAttribute("data-elevator-target") || "")).filter(Boolean);
+    if (observed.length && "IntersectionObserver" in window) { const io = new IntersectionObserver((entries) => { const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]; if (visible?.target?.id) setActiveElevator(visible.target.id); }, { rootMargin: "-20% 0px -55% 0px", threshold: [0.1, 0.35, 0.6] }); observed.forEach((element) => io.observe(element)); }
   })();
 </script>
 
 <style>
-  .qaskill-detail {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.85rem;
-    min-width: 0;
-  }
-  .detail-header {
-    border-radius: var(--radius-md);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-base));
-    padding: 1rem 1.15rem;
-    display: block;
-    min-width: 0;
-  }
-  .detail-header-main {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      "title status"
-      "intro status"
-      "actions status"
-      "footer status";
-    column-gap: clamp(1rem, 4vw, 3rem);
-    row-gap: 0.7rem;
-    min-width: 0;
-  }
-  .detail-header h1 {
-    grid-area: title;
-    margin: 0;
-    line-height: 1.12;
-    letter-spacing: -0.035em;
-    font-size: clamp(1.65rem, 2.7vw, 2.15rem);
-  }
-  .meta-row, .card-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin: 0;
-  }
-  .sub-meta { margin: 0.25rem 0 0; opacity: 0.72; font-size: 0.9rem; }
-  .detail-status-panel {
-    grid-area: status;
-    align-self: stretch;
-    display: grid;
-    align-content: space-between;
-    justify-items: end;
-    gap: 0.8rem;
-    min-width: max-content;
-    padding-left: clamp(0.9rem, 2vw, 1.4rem);
-    border-left: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
-  }
-  .detail-status-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin: 0;
-  }
-  .detail-intro {
-    grid-area: intro;
-    margin: -0.18rem 0 0;
-    max-width: 68ch;
-    color: var(--color-text-secondary);
-    line-height: 1.55;
-  }
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.15rem 0.5rem;
-    border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--color-main) 18%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-    color: var(--color-theme);
-  }
-  .detail-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(160px, 200px);
-    gap: 0.85rem;
-    align-items: start;
-    min-width: 0;
-  }
-  .detail-main {
-    min-width: 0;
-    width: 100%;
-    max-inline-size: var(--reading-max);
-  }
-  .detail-aside {
-    position: sticky;
-    top: 0.75rem;
-    display: grid;
-    gap: 0.75rem;
-    min-width: 0;
-  }
-  .elevator {
-    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
-    padding: 0.7rem 0.75rem;
-  }
-  .elevator-title {
-    margin: 0 0 0.45rem;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    opacity: 0.72;
-  }
-  .elevator-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.2rem;
-  }
-  .elevator-link {
-    display: block;
-    padding: 0.28rem 0.4rem;
-    border-radius: var(--radius-sm);
-    border-left: 2px solid transparent;
-    color: inherit;
-    text-decoration: none;
-    font-size: 0.86rem;
-    font-weight: 650;
-    line-height: 1.35;
-    opacity: 0.82;
-  }
-  .elevator-link:hover {
-    opacity: 1;
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-  }
-  .elevator-link.is-active {
-    opacity: 1;
-    color: var(--color-theme);
-    border-left-color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-  }
-  .detail-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-main) 14%, transparent);
-  }
-  .detail-tab {
-    appearance: none;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    font-weight: 700;
-    padding: 0.45rem 0.7rem;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-  }
-  .detail-tab.is-active { border-bottom-color: var(--color-theme); color: var(--color-theme); }
-  .detail-section {
-    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
-    padding: 0.8rem;
-    margin-bottom: 0.75rem;
-    scroll-margin-top: 1rem;
-    min-width: 0;
-  }
-  .detail-section h2 {
-    margin-top: 0;
-    margin-bottom: 0.65rem;
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
-  }
-  .raw-wrap {
-    border: 1px solid color-mix(in srgb, var(--color-main) 15%, transparent);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    background: color-mix(in srgb, var(--color-main) 8%, var(--color-base));
-  }
-  .raw-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.45rem 0.7rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
-    background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
-  }
-  .raw-toolbar-label {
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    opacity: 0.75;
-  }
-  .copy-raw-btn {
-    appearance: none;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 38%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-    color: var(--color-theme);
-    border-radius: var(--radius-sm);
-    min-height: 30px;
-    padding: 0.2rem 0.65rem;
-    font-weight: 700;
-    font-size: 0.82rem;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .copy-raw-btn:hover {
-    color: white;
-    background: var(--color-theme);
-    border-color: var(--color-theme);
-  }
-  .skill-raw {
-    max-height: min(70vh, 640px);
-    overflow: auto;
-    margin: 0;
-    padding: 0.85rem;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    font-size: 0.82rem;
-    line-height: 1.55;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-  .skill-raw code {
-    font: inherit;
-    white-space: inherit;
-    word-break: inherit;
-  }
-  .install-block {
-    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
-    padding: 0.85rem;
-    margin: 0.85rem 0;
-    scroll-margin-top: 1rem;
-    min-width: 0;
-    max-width: 100%;
-  }
-  .install-block > h2 {
-    margin: 0 0 0.75rem;
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
-  }
-  .related-block {
-    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-base) 97%, var(--color-main));
-    padding: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-  .related-block h2 {
-    margin: 0 0 0.5rem;
-    font-size: 1.05rem;
-  }
-  .related-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 0.55rem;
-  }
-  .related-card {
-    display: grid;
-    gap: 0.3rem;
-    min-height: 74px;
-    padding: 0.65rem 0.7rem;
-    border: 1px solid color-mix(in srgb, var(--color-main) 16%, transparent);
-    border-radius: var(--radius-sm);
-    background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
-    color: inherit;
-    text-decoration: none;
-  }
-  .related-card:hover {
-    border-color: color-mix(in srgb, var(--color-theme) 44%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 8%, var(--color-base));
-  }
-  .related-card-title { color: var(--color-theme); font-size: 0.9rem; font-weight: 750; line-height: 1.35; }
-  .related-card-meta { color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 650; }
-  .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
-  .detail-header-actions { grid-area: actions; justify-content: flex-start; }
-  .detail-header-footer {
-    grid-area: footer;
-    padding-top: 0.7rem;
-    border-top: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
-  }
-  .detail-author, .detail-updated { margin: 0; color: var(--color-text-secondary); font-size: 0.76rem; line-height: 1.35; }
-  .detail-author { text-align: left; }
-  .detail-updated { text-align: right; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 999px;
-    min-height: 38px;
-    padding: 0.42rem 0.82rem;
-    font-weight: 700;
-    font-size: 0.875rem;
-  }
-  .btn-primary { background: var(--color-theme); color: white; box-shadow: 0 6px 16px color-mix(in srgb, var(--color-theme) 25%, transparent); }
-  .btn-secondary {
-    color: var(--color-theme);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 35%, transparent);
-    background: transparent;
-  }
-  .installer-panel { display: grid; gap: 0.8rem; min-width: 0; max-width: 100%; }
-  .installer-row, .installer-snippet { display: grid; gap: 0.5rem; min-width: 0; max-width: 100%; }
-  .installer-label {
-    margin: 0;
-    font-size: 0.92rem;
-    font-weight: 700;
-  }
-  .tab-group { display: inline-flex; flex-wrap: wrap; gap: 0.5rem; }
-  .tab-btn {
-    appearance: none;
-    font-family: inherit;
-    border: 1px solid color-mix(in srgb, var(--color-main) 34%, transparent);
-    background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
-    color: var(--color-main);
-    border-radius: 0;
-    padding: 0.34rem 0.55rem;
-    font-size: 0.82rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .tab-btn.is-active {
-    color: white;
-    border-color: var(--color-theme);
-    background: var(--color-theme);
-  }
-  .tab-icon { font-size: 1rem; line-height: 1; }
-  .code-card {
-    position: relative;
-    border: 1px solid color-mix(in srgb, var(--color-main) 18%, transparent);
-    background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
-    min-width: 0;
-    max-width: 100%;
-    overflow: hidden;
-  }
-  .code-card pre {
-    margin: 0;
-    padding: 1.7rem 0.72rem 0.72rem;
-    overflow: auto;
-    max-height: 220px;
-    max-width: 100%;
-  }
-  .code-card pre::before {
-    content: attr(data-lang);
-    position: absolute;
-    top: 0.36rem;
-    left: 0.72rem;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: color-mix(in srgb, var(--color-theme) 78%, white 22%);
-    font-weight: 700;
-  }
-  .code-card code {
-    font-size: 0.82rem;
-    line-height: 1.4;
-    white-space: pre;
-    display: block;
-    width: max-content;
-    max-width: none;
-    min-width: 0;
-  }
-  .copy-mini {
-    position: absolute;
-    top: 0.45rem;
-    right: 0.45rem;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 38%, transparent);
-    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-    color: var(--color-theme);
-    border-radius: var(--radius-sm);
-    min-height: 28px;
-    min-width: 52px;
-    padding: 0.2rem 0.46rem;
-    font-weight: 700;
-    font-size: 0.8rem;
-    cursor: pointer;
-    z-index: 1;
-  }
-  :global(.qaskill-detail .prose) { line-height: 1.75; }
-  :global(.qaskill-detail .prose ul),
-  :global(.qaskill-detail .prose ol) {
-    margin: 0.65rem 0;
-    padding-inline-start: 1.3rem;
-  }
-  :global(.qaskill-detail .code-card code .tok-comment) { color: #7b879b; }
-  :global(.qaskill-detail .code-card code .tok-string) { color: #9be38f; }
-  :global(.qaskill-detail .code-card code .tok-var) { color: #7bd4ff; }
-  :global(.qaskill-detail .code-card code .tok-keyword) { color: #ffae70; font-weight: 700; }
-  :global(.qaskill-detail .code-card code .tok-fn) { color: #ffd479; }
-  :global(.qaskill-detail .code-card code .tok-op) { color: #f58c66; }
+  :global(.l-main:has(.qaskill-detail)) { margin-block-start: 0; }
+  .qaskill-detail { width: 100%; max-width: none; margin: 0; padding: 0; overflow: visible; color: var(--color-main); }
+  .console-hero { padding: clamp(1.25rem, 3vw, 2.4rem) clamp(1rem, 3vw, 3rem) 2.6rem; border-bottom: 1px solid var(--color-border); background: transparent; }
+  .console-hero-main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr); align-items: start; gap: clamp(1.75rem, 4vw, 4rem); max-width: 1240px; margin: 0 auto; min-width: 0; }
+  .console-hero-copy { display: flex; flex-direction: column; gap: 0.7rem; max-width: 760px; min-width: 0; }
+  .console-hero-side { display: flex; flex-direction: column; align-items: stretch; gap: 0.7rem; min-width: 0; }
+  .console-kicker, .quick-install-top { margin: 0; color: var(--color-theme); font-size: 0.64rem; font-style: normal; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+  .console-tag-row { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0.35rem; }
+  .tag { display: inline-flex; align-items: center; padding: 0.18rem 0.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: transparent; color: var(--color-text-secondary); font-size: 0.68rem; font-weight: 800; }
+  .console-hero-title-line { display: block; }
+  .console-hero h1 { max-width: 100%; margin: 0; color: var(--color-main); font-size: clamp(2.35rem, 4.5vw, 3.8rem); line-height: 1.04; letter-spacing: -0.04em; text-wrap: balance; }
+  .console-hero-alias { margin: -0.35rem 0 0; color: var(--color-theme); font-size: clamp(0.95rem, 2vw, 1.35rem); font-weight: 700; letter-spacing: -0.02em; }
+  .console-hero-intro { max-width: 62ch; margin: 0; color: var(--color-text-secondary); line-height: 1.65; }
+  .console-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; margin-top: 0.2rem; }
+  .console-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 40px; padding: 0.5rem 0.85rem; border: 1px solid transparent; border-radius: var(--radius-xl); font: inherit; font-size: 0.82rem; font-weight: 800; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: var(--transition-fast); }
+  .console-button--primary { border-color: var(--color-theme); background: var(--color-theme); color: var(--color-base); box-shadow: 0 6px 16px color-mix(in srgb, var(--color-theme) 25%, transparent); }
+  .console-button--primary:hover, .console-button--primary:focus-visible { border-color: var(--color-theme); background: var(--color-theme); color: var(--color-base); transform: translateY(-1px); }
+  .console-source-link { color: var(--color-theme); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
+  .console-source-link:hover { color: var(--color-theme); }
+  .console-hero-command { justify-self: stretch; width: 100%; max-width: 420px; padding: 1.1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-muted); }
+  .console-hero-command-meta { display: grid; gap: 0.55rem; margin-bottom: 0.9rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--color-border); }
+  .console-hero-command-meta-label { color: var(--color-text-tertiary); font-size: 0.64rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+  .console-hero-command-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; color: var(--color-theme); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+  .console-hero-command-kind { color: var(--color-text-tertiary); }
+  .console-hero-command pre { margin: 0.85rem 0 0.75rem; padding: 0.85rem; overflow: auto; border-left: 3px solid var(--color-theme); background: var(--color-code-surface); color: var(--color-text-primary); font-size: 0.86rem; line-height: 1.5; }
+  .console-hero-command code { font: inherit; }
+  .console-hero-command p { margin: 0; color: var(--color-text-secondary); font-size: 0.8rem; line-height: 1.55; }
+  .quick-install-top, .quick-doc-top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--color-border); }
+  .quick-install-top button, .quick-doc-top button { border: 1px solid color-mix(in srgb, var(--color-theme) 38%, transparent); border-radius: var(--radius-sm); background: transparent; color: var(--color-theme); padding: 0.24rem 0.5rem; font: inherit; font-size: 0.72rem; font-weight: 800; cursor: pointer; }
+  .quick-install-top button:hover, .quick-install-top button:focus-visible, .quick-doc-top button:hover, .quick-doc-top button:focus-visible { background: var(--color-theme); color: var(--color-base); }
+  .quick-install-block pre { margin: 0; padding: 0.8rem; overflow: auto; color: var(--color-text-primary); font-size: 0.76rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .quick-install-block code { font: inherit; }
+  .console-info-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--color-border); background: var(--color-base); }
+  .console-info-strip > div { min-width: 0; padding: 0.75rem 0.9rem; border-right: 1px solid var(--color-border); }
+  .console-info-strip > div:last-child, .console-info-strip > div:nth-child(4n) { border-right: 0; }
+  .console-info-strip span { display: block; color: var(--color-text-tertiary); font-size: 0.62rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+  .console-info-strip strong { display: block; margin-top: 0.35rem; color: var(--color-main); font-size: 0.76rem; line-height: 1.4; }
+  .detail-nav { display: flex; align-items: center; gap: 1rem; padding: 0.65rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-base); }
+  .detail-layout, .detail-main { min-width: 0; background: transparent; }
+  .elevator-title { flex: 0 0 auto; margin: 0; color: var(--color-text-tertiary); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+  .elevator-list { display: flex; flex: 1 1 auto; flex-wrap: wrap; gap: 0.35rem; min-width: 0; margin: 0; padding: 0; list-style: none; }
+  .elevator-link { display: block; padding: 0.28rem 0.55rem; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-text-secondary); font-size: 0.74rem; font-weight: 700; line-height: 1.35; text-decoration: none; }
+  .elevator-link:hover, .elevator-link.is-active { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-theme); }
+  .console-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; background: var(--color-border); }
+  .console-panel { grid-column: 1 / -1; min-width: 0; padding: clamp(1rem, 2.5vw, 1.55rem); background: var(--color-surface); scroll-margin-top: calc(var(--header-height) + 1rem); }
+  .console-panel-head { margin-bottom: 0.8rem; }
+  .console-panel-head h2 { margin: 0; color: var(--color-main); font-size: 1.12rem; letter-spacing: -0.03em; }
+  .problem-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 0.95fr); gap: 1.2rem; }
+  .problem-lead p { margin: 0; color: var(--color-text-secondary); line-height: 1.7; }
+  .problem-lead .problem-value { margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px solid var(--color-border); color: var(--color-main); font-weight: 700; }
+  .problem-list, .decision-card ul, .contract-card ul { display: grid; gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
+  .problem-list li, .decision-card li { position: relative; padding-left: 1.15rem; color: var(--color-text-secondary); line-height: 1.55; }
+  .problem-list li::before, .decision-card li::before { position: absolute; left: 0; top: 0.55em; width: 0.42rem; height: 0.42rem; border-radius: 50%; background: var(--color-theme); content: ""; }
+  .decision-grid, .contract-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+  .decision-card, .contract-card { min-width: 0; padding: 0.9rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface-muted); }
+  .contract-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .decision-card > span, .contract-card > span, .preview-row--head, .relation-card-kind { color: var(--color-theme); font-size: 0.64rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+  .decision-card--no > span { color: var(--color-text-secondary); }
+  .decision-card ul, .contract-card ul { margin-top: 0.7rem; }
+  .contract-card li { color: var(--color-text-secondary); font-size: 0.84rem; line-height: 1.45; }
+  .contract-card li::before { content: "○"; margin-right: 0.45rem; color: var(--color-theme); }
+  .contract-card--required { border-color: color-mix(in srgb, var(--color-theme) 38%, var(--color-border)); background: var(--color-theme-soft); }
+  .output-layout { display: grid; grid-template-columns: minmax(230px, 0.75fr) minmax(0, 1.25fr); gap: 1.1rem; }
+  .output-summary p { margin: 0; color: var(--color-text-secondary); line-height: 1.7; }
+  .output-hint { margin-top: 0.9rem !important; color: var(--color-theme) !important; font-size: 0.78rem; font-weight: 800; }
+  .output-sections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem 1rem; margin: 0; padding: 0; list-style: none; }
+  .output-sections li { display: flex; gap: 0.55rem; align-items: baseline; color: var(--color-text-secondary); font-size: 0.84rem; line-height: 1.45; }
+  .output-sections b { color: var(--color-theme); font-size: 0.68rem; }
+  .output-more { margin-top: 1rem; border-top: 1px solid var(--color-border); }
+  .output-more summary { padding-top: 0.7rem; color: var(--color-theme); font-size: 0.78rem; font-weight: 800; cursor: pointer; list-style: none; }
+  .output-more summary::-webkit-details-marker { display: none; }
+  .output-more summary span { float: right; }
+  .output-sections--more { margin-top: 0.7rem; }
+  .preview-table { overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+  .preview-row { display: grid; grid-template-columns: 0.45fr 1.2fr 0.7fr 1fr 1fr; gap: 0.7rem; align-items: start; padding: 0.72rem 0.8rem; background: var(--color-surface-muted); color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.45; }
+  .preview-row + .preview-row { border-top: 1px solid var(--color-border); }
+  .preview-row--head { background: color-mix(in srgb, var(--color-theme) 8%, var(--color-surface-muted)); }
+  .priority { font-weight: 900; }
+  .priority--p0 { color: #d14c4c; }
+  .priority--p1 { color: var(--color-theme); }
+  .example-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+  .example-step { min-width: 0; padding: 0.9rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface-muted); }
+  .example-step > span, .relation-group > span { display: block; color: var(--color-theme); font-size: 0.64rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+  .example-step p { margin: 0.55rem 0 0; color: var(--color-text-secondary); line-height: 1.6; }
+  .example-step pre { margin: 0.55rem 0 0; padding: 0.65rem; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-code-surface); color: var(--color-text-primary); white-space: pre-wrap; overflow-wrap: anywhere; }
+  .example-step code { font: inherit; }
+  .example-step--after ul { display: grid; gap: 0.5rem; margin: 0.55rem 0 0; padding: 0; list-style: none; }
+  .example-step--after li { display: grid; gap: 0.12rem; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.45; }
+  .example-step--after b { color: var(--color-main); }
+  .how-it-works { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.25rem; margin: 0; padding: 0; list-style: none; }
+  .how-it-works li { display: grid; align-content: start; gap: 0.55rem; min-width: 0; padding: 0.75rem 0.55rem; border: 1px solid var(--color-border); background: var(--color-surface-muted); }
+  .how-it-works b { color: var(--color-theme); font-size: 0.68rem; }
+  .how-it-works span { color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 700; line-height: 1.35; }
+  .workflow-track { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+  .workflow-track li { display: inline-flex; align-items: center; gap: 0.35rem; min-width: 0; }
+  .workflow-track a, .workflow-track li > span { display: inline-flex; padding: 0.5rem 0.65rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface-muted); color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 750; text-decoration: none; }
+  .workflow-track li.is-current a { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-theme); }
+  .workflow-track li > b { color: var(--color-text-tertiary); }
+  .related-workflow { margin-bottom: 1rem; padding: 0.8rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface-muted); }
+  .related-subhead { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; margin-bottom: 0.65rem; }
+  .related-subhead span { color: var(--color-main); font-size: 0.8rem; font-weight: 850; }
+  .related-subhead small { color: var(--color-text-tertiary); font-size: 0.64rem; font-weight: 700; }
+  .related-preview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem; }
+  .relation-group { min-width: 0; }
+  .relation-group > span { margin-bottom: 0.55rem; }
+  .relation-card { display: grid; gap: 0.25rem; padding: 0.7rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface-muted); color: inherit; text-decoration: none; }
+  .relation-card:hover { border-color: var(--color-theme); background: var(--color-theme-soft); }
+  .relation-card b { color: var(--color-theme); font-size: 0.82rem; line-height: 1.35; }
+  .relation-card small { display: -webkit-box; overflow: hidden; color: var(--color-text-secondary); font-size: 0.72rem; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .relation-empty { margin: 0; padding: 0.7rem; border: 1px dashed var(--color-border); color: var(--color-text-tertiary); font-size: 0.78rem; line-height: 1.45; }
+  .console-panel--quick { scroll-margin-top: calc(var(--header-height) + 1rem); }
+  .quick-install-block { margin-bottom: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-code-surface); }
+  .quick-start-tabs { display: inline-flex; gap: 0.25rem; margin-bottom: 0.75rem; padding: 0.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-muted); }
+  .quick-start-tabs button { border: 1px solid transparent; border-radius: var(--radius-sm); background: transparent; color: var(--color-text-secondary); padding: 0.42rem 0.7rem; font: inherit; font-size: 0.7rem; font-weight: 900; letter-spacing: 0.06em; cursor: pointer; }
+  .quick-start-tabs button:hover, .quick-start-tabs button:focus-visible { color: var(--color-theme); }
+  .quick-start-tabs button[aria-selected="true"] { border-color: var(--color-theme); background: var(--color-theme); color: var(--color-base); }
+  .quick-doc-card { overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-code-surface); }
+  .quick-doc-top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 700; }
+  .quick-doc-top > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .quick-doc-panel[hidden] { display: none; }
+  .quick-doc-panel > pre { max-height: 420px; overflow: auto; margin: 0; padding: 1rem; background: transparent; color: var(--color-text-primary); white-space: pre-wrap; word-break: break-word; }
+  .quick-doc-panel code { font: inherit; line-height: 1.6; }
+  .raw-wrap { border: 0; background: transparent; }
+  .skill-raw { max-height: 420px; overflow: auto; margin: 0; padding: 0.85rem; color: var(--color-text-primary); font-size: 0.82rem; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+  .console-panel.is-highlighted { outline: 2px solid var(--color-theme); outline-offset: -2px; animation: console-quick-pulse 1.8s ease-out; }
+  @keyframes console-quick-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-theme) 42%, transparent); } 100% { box-shadow: 0 0 0 16px transparent; } }
+  :global(.qaskill-detail .prose) { color: var(--color-text-secondary); line-height: 1.7; }
+  :global(.qaskill-detail .prose ul), :global(.qaskill-detail .prose ol) { margin: 0.65rem 0; padding-inline-start: 1.35rem; }
+  :global(.qaskill-detail .prose li + li) { margin-top: 0.4rem; }
+  .console-empty { margin: 0; color: var(--color-text-tertiary); line-height: 1.6; }
   @media (max-width: 900px) {
-    .detail-layout { grid-template-columns: minmax(0, 1fr); }
-    .detail-aside { position: static; order: -1; }
-    .elevator {
-      max-height: none;
-    }
-    .elevator-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-    .elevator-link {
-      border-left: 0;
-      border: 1px solid color-mix(in srgb, var(--color-main) 16%, transparent);
-      border-radius: 999px;
-      padding: 0.25rem 0.55rem;
-      font-size: 0.8rem;
-    }
-    .elevator-link.is-active {
-      border-color: var(--color-theme);
-    }
-    .detail-header-main { grid-template-columns: minmax(0, 1fr); grid-template-areas: "status" "title" "intro" "actions" "footer"; }
-    .detail-status-panel { justify-items: start; align-self: auto; border-left: 0; border-bottom: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent); padding: 0 0 0.65rem; }
-    .detail-header-actions { width: 100%; }
+    .console-hero-main { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+    .console-hero-side { align-items: stretch; }
+    .console-tag-row { justify-content: flex-start; }
+    .console-hero-command { justify-self: stretch; max-width: none; }
+    .problem-layout, .output-layout { grid-template-columns: minmax(0, 1fr); }
+    .how-it-works { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
-  @media (max-width: 520px) {
-    .detail-updated { text-align: left; }
+  @media (max-width: 680px) {
+    .detail-nav { display: block; }
+    .elevator-title { margin-bottom: 0.45rem; }
+    .console-info-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .console-info-strip > div:nth-child(2n) { border-right: 0; }
+    .decision-grid, .contract-grid, .example-flow, .related-preview-grid { grid-template-columns: minmax(0, 1fr); }
+    .output-sections { grid-template-columns: minmax(0, 1fr); }
+    .elevator-list { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.2rem; scrollbar-width: thin; }
+    .elevator-list li { flex: 0 0 auto; }
+    .preview-row--head { display: none; }
+    .preview-row { grid-template-columns: minmax(0, 1fr); gap: 0.45rem; }
+    .preview-row > * { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.55rem; align-items: start; }
+    .preview-row > *::before { content: attr(data-label); color: var(--color-text-tertiary); font-size: 0.62rem; font-weight: 900; letter-spacing: 0.06em; line-height: 1.45; text-transform: uppercase; }
+    .related-subhead { display: grid; gap: 0.25rem; }
+    .how-it-works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .quick-start-tabs { max-width: 100%; }
+    .quick-start-tabs button { padding-inline: 0.55rem; }
   }
 </style>

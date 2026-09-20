@@ -1,0 +1,1156 @@
+---
+// PROTOTYPE — three throwaway UI directions for the Skill detail redesign.
+// Switch with ?variant=a|b|c. This route is intentionally separate from the
+// production detail page and should be removed after the winning direction is
+// folded into [skillSlug].astro.
+import Base from "@/layouts/Base.astro";
+import { type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getQASkills } from "@/utils/qaskills";
+
+export async function getStaticPaths() {
+  return (["en", "zh-cn"] as Lang[]).map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === "zh-cn";
+const skills = await getQASkills(lang);
+const skillBySlug = new Map(skills.map((skill) => [skill.slug, skill]));
+const mainSkill = skillBySlug.get("requirements-analysis");
+
+if (!mainSkill) {
+  throw new Error(`QASkill not found: ${lang}/requirements-analysis`);
+}
+
+const labelOf = (slug: string) => {
+  const skill = skillBySlug.get(slug);
+  return skill ? (isZh ? skill.chineseName || skill.title : skill.title) : slug;
+};
+const hrefOf = (slug: string) => getRelativeLocaleUrl(lang, `/qaskills/${slug}/`);
+const sourceHref = mainSkill.sourceSkillUrl || mainSkill.sourceRepoUrl;
+const displayName = isZh ? mainSkill.chineseName || mainSkill.title : mainSkill.title;
+const installerLang = lang === "zh-cn" ? "zh" : "en";
+const skillKind = mainSkill.sourceSkillUrl.match(/\/skills\/(?:zh|en)\/(testing-types|testing-workflows|skill-engineering)\//)?.[1]
+  || (mainSkill.category === "workflow" ? "testing-workflows" : "testing-types");
+const installCommand = `npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/${installerLang}/${skillKind}/${mainSkill.slug} -g`;
+
+const copy = isZh
+  ? {
+      prototype: "UI 原型 / 详情页基准",
+      prototypeNote: "这是视觉确认用原型，不代表最终实现。使用底部切换器比较三种信息架构。",
+      backToSkills: "返回 Skills",
+      source: "GitHub 源码",
+      install: "立即安装",
+      useNow: "立即使用",
+      copyPrompt: "复制调用示例",
+      copied: "已复制",
+      documented: "已文档化",
+      statusLabel: "状态",
+      readyState: "可使用",
+      statusDetail: "安装命令已准备",
+      evals: "Evals ✓",
+      synced: "同步",
+      consoleName: "Skill 控制台",
+      prototypeVersion: "v0 / 原型",
+      runbook: "运行手册",
+      language: "语言",
+      languageValue: "中文 · 英文",
+      passReady: "通过 / 就绪",
+      beforeTestDesign: "测试设计前",
+      signal: "信号",
+      routing: "路由",
+      useLabel: "适用",
+      avoidLabel: "不适用",
+      inputRequired: "输入 / 必需",
+      inputContext: "输入 / 上下文",
+      outputReport: "输出 / 报告",
+      contract: "契约",
+      priority: "优先级",
+      finding: "发现",
+      action: "行动",
+      report: "报告",
+      preview: "预览",
+      processLabel: "过程",
+      replay: "复盘",
+      graph: "流程",
+      compare: "对比",
+      execute: "执行",
+      variantLabel: "原型方案",
+      prototypeVariants: "原型方案切换",
+      type: "类型",
+      testingType: "测试类型",
+      requirementQuality: "需求质量",
+      what: "是什么",
+      why: "为什么",
+      when: "使用时机",
+      whenNot: "不适用场景",
+      input: "输入",
+      output: "输出",
+      example: "真实示例",
+      how: "工作方式",
+      workflow: "Skill 工作流",
+      related: "相关 Skill",
+      similar: "相似 Skill",
+      quickStart: "快速开始",
+      advanced: "高级用法",
+      required: "最低输入",
+      recommended: "推荐上下文",
+      optional: "可选证据",
+      confirmed: "已确认事实",
+      assumption: "当前假设",
+      missing: "信息缺口",
+      before: "开始前",
+      run: "运行 Skill",
+      after: "运行后",
+      use: "适合使用",
+      avoid: "不建议直接使用",
+      deepens: "深入分析",
+      continueTo: "继续下一步",
+      noPrerequisite: "不需要前置 Skill",
+      copy: "复制",
+      installTab: "安装命令",
+      promptTab: "Prompt",
+      skillMdTab: "SKILL.md",
+      openSource: "打开源文件",
+      sourceLabel: "来源",
+      previous: "上一个方案",
+      next: "下一个方案",
+      variantA: "A · 实战指南",
+      variantB: "B · 编辑分栏",
+      variantC: "C · 操作控制台",
+      prompt: `@skill requirements-analysis\n\n分析下面的需求。\n\n重点关注：\n- 业务规则\n- 边界条件\n- 状态变化\n- 外部依赖\n- 信息缺口\n- 潜在质量风险\n\n需求：\n[粘贴需求内容]`,
+    }
+  : {
+      prototype: "UI Prototype / Golden Detail Page",
+      prototypeNote: "Visual review prototype only. Use the switcher below to compare three information architectures.",
+      backToSkills: "Back to Skills",
+      source: "GitHub source",
+      install: "Install now",
+      useNow: "Use now",
+      copyPrompt: "Copy call example",
+      copied: "Copied",
+      documented: "Documented",
+      statusLabel: "Status",
+      readyState: "READY",
+      statusDetail: "Install command ready",
+      evals: "Evals ✓",
+      synced: "Synced",
+      consoleName: "SKILL CONSOLE",
+      prototypeVersion: "v0 / PROTOTYPE",
+      runbook: "RUNBOOK",
+      language: "LANG",
+      languageValue: "ZH · EN",
+      passReady: "PASS / READY",
+      beforeTestDesign: "BEFORE TEST DESIGN",
+      signal: "signal",
+      routing: "routing",
+      useLabel: "USE",
+      avoidLabel: "AVOID",
+      inputRequired: "IN / REQUIRED",
+      inputContext: "IN / CONTEXT",
+      outputReport: "OUT / REPORT",
+      contract: "contract",
+      priority: "PRI",
+      finding: "FINDING",
+      action: "ACTION",
+      report: "report",
+      preview: "Preview",
+      processLabel: "PROCESS",
+      replay: "replay",
+      graph: "graph",
+      compare: "compare",
+      execute: "execute",
+      variantLabel: "Prototype variant",
+      prototypeVariants: "Prototype variants",
+      type: "Type",
+      testingType: "Testing type",
+      requirementQuality: "Requirement quality",
+      what: "What",
+      why: "Why",
+      when: "When",
+      whenNot: "When not",
+      input: "Input",
+      output: "Output",
+      example: "Real Example",
+      how: "How it works",
+      workflow: "Skill workflow",
+      related: "Related skills",
+      similar: "Similar skills",
+      quickStart: "Quick start",
+      advanced: "Advanced",
+      required: "Minimum input",
+      recommended: "Recommended context",
+      optional: "Optional evidence",
+      confirmed: "Confirmed",
+      assumption: "Assumption",
+      missing: "Missing",
+      before: "Before",
+      run: "Run Skill",
+      after: "After",
+      use: "Use it when",
+      avoid: "Do not use it directly for",
+      deepens: "Deepen the analysis",
+      continueTo: "Continue to",
+      noPrerequisite: "No prerequisite Skill required",
+      copy: "Copy",
+      installTab: "Install command",
+      promptTab: "Prompt",
+      skillMdTab: "SKILL.md",
+      openSource: "Open source file",
+      sourceLabel: "Source",
+      previous: "Previous variant",
+      next: "Next variant",
+      variantA: "A · Field Guide",
+      variantB: "B · Editorial Split",
+      variantC: "C · Operator Console",
+      prompt: `@skill requirements-analysis\n\nAnalyze the requirement below.\n\nFocus on:\n- business rules\n- boundary conditions\n- state changes\n- external dependencies\n- information gaps\n- quality risks\n\nRequirement:\n[Paste requirement here]`,
+    };
+
+const content = isZh
+  ? {
+      intro: "在测试设计之前，把需求拆成范围、规则、边界、依赖、信息缺口和质量风险。",
+      problemLead: "很多测试问题并不是用例写得不够多，而是需求从未被整理成可验证的结构。",
+      problem: [
+        "正常流程明确，异常流程却没有定义。",
+        "状态变化、边界条件和外部依赖散落在不同文档里。",
+        "Acceptance Criteria 无法直接转成验证动作。",
+      ],
+      use: ["新需求进入 Refinement", "PRD / User Story 初步完成", "开始测试分析之前", "需求发生重大变化"],
+      avoid: ["只需要生成 Test Case", "单纯分析 PR Diff", "单纯排查生产事故", "单纯执行 Regression"],
+      input: {
+        required: ["Requirement / User Story", "当前变更目标"],
+        recommended: ["PRD", "Acceptance Criteria", "Business Rules", "API Specification"],
+        optional: ["UI / Prototype", "Architecture", "Existing Test Cases", "Historical Defects"],
+      },
+      output: ["Scope Summary", "Business Rules", "Main / Exception Flow", "State Changes", "Boundaries", "Dependencies", "Missing Information", "Quality Risks"],
+      preview: [
+        ["P0", "升级失败后的会员状态未定义", "AC-03", "状态可能不一致", "PM 明确失败规则"],
+        ["P1", "外部权益接口超时行为未知", "API Spec", "无法设计恢复场景", "Dev 补充 Timeout 策略"],
+        ["P1", "10,000 元边界未明确", "PRD", "边界测试无法确定", "明确 >= / >"],
+      ],
+      example: {
+        before: "新增会员等级自动升级功能。Gold 用户累计消费达到 10,000 元后，自动升级为 Platinum，并立即获得 Platinum 权益。",
+        run: "提取业务规则、状态变化、边界、依赖和信息缺口，并按风险排序。",
+        after: "识别出 Gold → Platinum、9,999.99 / 10,000.00 / 10,000.01 三个边界，以及“等级已升级但权益发放失败”的 P0 风险。",
+      },
+      how: ["理解上下文", "提取业务规则", "识别流程 / 状态", "识别边界条件", "发现信息缺口", "按优先级梳理质量风险"],
+      workflow: ["requirements-analysis", "requirement-gap-analysis", "testability-analysis", "quality-risk-analysis", "test-strategy", "test-case-writing"],
+      deepens: ["requirement-gap-analysis", "testability-analysis", "quality-risk-analysis"],
+      continueTo: ["test-strategy", "test-case-writing"],
+      similar: [
+        ["requirement-gap-analysis", "找遗漏、冲突", "深入 Review"],
+        ["testability-analysis", "判断是否容易验证", "开始测试设计前"],
+        ["acceptance-criteria-review", "检查 AC 是否可验收", "Story Refinement"],
+      ],
+    }
+  : {
+      intro: "Turn requirements into scope, rules, boundaries, dependencies, gaps, and quality risks before test design.",
+      problemLead: "Many test problems are not caused by too few cases. The requirement was never shaped into something verifiable.",
+      problem: [
+        "The happy path is clear while exception behavior is undefined.",
+        "State changes, boundaries, and dependencies are scattered across documents.",
+        "Acceptance Criteria cannot be translated directly into verification actions.",
+      ],
+      use: ["A new requirement enters refinement", "A PRD / user story is taking shape", "Before test analysis begins", "A requirement changes materially"],
+      avoid: ["You only need test cases", "You are reviewing a PR diff", "You are investigating a production incident", "You only need regression execution"],
+      input: {
+        required: ["Requirement / User Story", "Current change goal"],
+        recommended: ["PRD", "Acceptance Criteria", "Business Rules", "API Specification"],
+        optional: ["UI / Prototype", "Architecture", "Existing Test Cases", "Historical Defects"],
+      },
+      output: ["Scope Summary", "Business Rules", "Main / Exception Flow", "State Changes", "Boundaries", "Dependencies", "Missing Information", "Quality Risks"],
+      preview: [
+        ["P0", "Membership state after upgrade failure is undefined", "AC-03", "State may diverge", "PM defines failure rule"],
+        ["P1", "Timeout behavior for benefits API is unknown", "API Spec", "Recovery cases cannot be designed", "Dev defines timeout policy"],
+        ["P1", "10,000 boundary is ambiguous", "PRD", "Boundary test is undecidable", "Clarify >= / >"],
+      ],
+      example: {
+        before: "Add automatic membership upgrades. When a Gold user reaches 10,000 in cumulative spend, upgrade them to Platinum and grant Platinum benefits immediately.",
+        run: "Extract rules, state changes, boundaries, dependencies, and missing information, then prioritize by risk.",
+        after: "The analysis surfaces Gold → Platinum, 9,999.99 / 10,000.00 / 10,000.01 boundaries, and the P0 risk of an upgraded member without benefits.",
+      },
+      how: ["Understand context", "Extract business rules", "Identify flow / state", "Identify boundaries", "Discover missing information", "Prioritize quality risk"],
+      workflow: ["requirements-analysis", "requirement-gap-analysis", "testability-analysis", "quality-risk-analysis", "test-strategy", "test-case-writing"],
+      deepens: ["requirement-gap-analysis", "testability-analysis", "quality-risk-analysis"],
+      continueTo: ["test-strategy", "test-case-writing"],
+      similar: [
+        ["requirement-gap-analysis", "Find omissions and conflicts", "Deep review"],
+        ["testability-analysis", "Judge whether behavior is verifiable", "Before test design"],
+        ["acceptance-criteria-review", "Check whether AC is testable", "Story refinement"],
+      ],
+    };
+
+const breadcrumbs = [
+  { name: isZh ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
+  { name: "QA Skills", url: getRelativeLocaleUrl(lang, "/qaskills/") },
+  { name: `${displayName} · Prototype`, url: getRelativeLocaleUrl(lang, "/qaskills/detail-prototype/") },
+];
+
+const pageTitle = `${displayName} · UI Prototype`;
+---
+
+<Base
+  title={pageTitle}
+  description={copy.prototypeNote}
+  breadcrumbs={breadcrumbs}
+  robots="noindex, nofollow"
+>
+  <div class="skill-prototype" data-prototype-root data-lang={lang}>
+    <aside class="prototype-banner" aria-label={copy.prototype}>
+      <span class="prototype-kicker">Prototype</span>
+      <p>{copy.prototypeNote}</p>
+      <a href={getRelativeLocaleUrl(lang, "/qaskills/")}>{copy.backToSkills} ↗</a>
+    </aside>
+
+    <section class="variant variant-a is-active" data-variant-view="a" aria-label={copy.variantA}>
+      <div class="a-page-grid">
+        <aside class="a-rail">
+          <p class="rail-mark">QA<br />FIELD<br />GUIDE</p>
+          <div class="rail-rule"></div>
+          <p class="rail-caption">01 / {copy.requirementQuality}</p>
+          <div class="rail-stamp">{copy.documented}</div>
+        </aside>
+
+        <div class="a-content">
+          <header class="a-hero">
+            <div class="a-hero-topline">
+              <span>SKILL / {mainSkill.slug}</span>
+              <span>{copy.synced} {mainSkill.updatedAt || "—"}</span>
+            </div>
+            <div class="a-hero-body">
+              <div>
+                <p class="a-eyebrow">{copy.testingType} · {copy.requirementQuality}</p>
+                <h1>{displayName}</h1>
+                <p class="a-intro">{content.intro}</p>
+              </div>
+              <div class="a-hero-side">
+                <p class="side-label">{copy.what}</p>
+                <p>{content.problemLead}</p>
+                <div class="a-hero-actions">
+                  <a class="button button-primary" href="#a-quick-start">{copy.install} <span>↓</span></a>
+                  <button class="button button-quiet" type="button" data-copy={copy.prompt}>{copy.copyPrompt}</button>
+                </div>
+              </div>
+            </div>
+            <div class="a-hero-meta">
+              <span class="meta-token meta-token--solid">{copy.documented}</span>
+              <span class="meta-token">{copy.evals}</span>
+              <span class="meta-token">ZH · EN</span>
+              <span class="meta-token">{copy.type} / {copy.testingType}</span>
+              <a href={sourceHref} target="_blank" rel="noopener noreferrer">{copy.source} ↗</a>
+            </div>
+          </header>
+
+          <div class="a-section-label"><span>01</span><span>{copy.why}</span></div>
+          <section class="a-problem-block" id="a-problem">
+            <div>
+              <h2>{copy.why}</h2>
+              <p>{content.problemLead}</p>
+            </div>
+            <ul class="signal-list">
+              {content.problem.map((item) => <li><span class="signal-dot"></span>{item}</li>)}
+            </ul>
+          </section>
+
+          <div class="a-section-label"><span>02</span><span>{copy.when}</span></div>
+          <section class="a-decision-grid">
+            <div class="decision-card decision-card--use">
+              <div class="decision-card-head"><span>✓</span><h2>{copy.use}</h2></div>
+              <ul>{content.use.map((item) => <li>{item}</li>)}</ul>
+            </div>
+            <div class="decision-card decision-card--avoid">
+              <div class="decision-card-head"><span>×</span><h2>{copy.avoid}</h2></div>
+              <ul>{content.avoid.map((item) => <li>{item}</li>)}</ul>
+            </div>
+          </section>
+
+          <div class="a-section-label"><span>03</span><span>{copy.input} → {copy.output}</span></div>
+          <section class="a-contract-grid">
+            <div class="contract-panel">
+              <div class="contract-heading"><span class="contract-index">IN</span><h2>{copy.input}</h2></div>
+              <div class="contract-group"><span class="contract-label contract-label--required">{copy.required}</span>{content.input.required.map((item) => <span class="contract-chip">{item}</span>)}</div>
+              <div class="contract-group"><span class="contract-label">{copy.recommended}</span>{content.input.recommended.map((item) => <span class="contract-chip">{item}</span>)}</div>
+              <div class="contract-group"><span class="contract-label contract-label--optional">{copy.optional}</span>{content.input.optional.map((item) => <span class="contract-chip">{item}</span>)}</div>
+            </div>
+            <div class="contract-panel contract-panel--output">
+              <div class="contract-heading"><span class="contract-index">OUT</span><h2>{copy.output}</h2></div>
+              <ol class="output-list">{content.output.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ol>
+            </div>
+          </section>
+
+          <section class="a-preview-block">
+            <div class="preview-heading"><div><p class="a-eyebrow">{copy.output} / PREVIEW</p><h2>{copy.output} Preview</h2></div><span class="preview-note">{copy.confirmed} · {copy.assumption} · {copy.missing}</span></div>
+            <div class="preview-table" role="table">
+              <div class="preview-row preview-row--head" role="row"><span>PRIORITY</span><span>FINDING</span><span>EVIDENCE</span><span>IMPACT</span><span>ACTION</span></div>
+              {content.preview.map((row) => <div class="preview-row" role="row">{row.map((cell, index) => <span class:list={[index === 0 && "priority-cell"]}>{cell}</span>)}</div>)}
+            </div>
+          </section>
+
+          <section class="a-example-block" id="a-example">
+            <div class="example-head"><p class="a-eyebrow">04 / {copy.example}</p><h2>{copy.example}</h2><span>Before → Run Skill → After</span></div>
+            <div class="example-flow">
+              <div class="example-step"><span class="step-number">01</span><p class="step-label">{copy.before}</p><p>{content.example.before}</p></div>
+              <div class="example-arrow">→</div>
+              <div class="example-step example-step--active"><span class="step-number">02</span><p class="step-label">{copy.run}</p><p>{content.example.run}</p></div>
+              <div class="example-arrow">→</div>
+              <div class="example-step"><span class="step-number">03</span><p class="step-label">{copy.after}</p><p>{content.example.after}</p></div>
+            </div>
+          </section>
+
+          <section class="a-process-block" id="a-how">
+            <div class="process-title"><p class="a-eyebrow">05 / {copy.how}</p><h2>{copy.how}</h2></div>
+            <div class="process-track">{content.how.map((item, index) => <div class="process-node"><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong>{index < content.how.length - 1 && <i aria-hidden="true">↓</i>}</div>)}</div>
+          </section>
+
+          <section class="a-workflow-block" id="a-workflow">
+            <div class="workflow-head"><div><p class="a-eyebrow">06 / {copy.workflow}</p><h2>{copy.workflow}</h2></div><span>Current Skill highlighted</span></div>
+            <div class="workflow-line">{content.workflow.map((slug, index) => <a class:list={["workflow-node", slug === "requirements-analysis" && "workflow-node--current"]} href={hrefOf(slug)}><span>{String(index + 1).padStart(2, "0")}</span>{labelOf(slug)}</a>)}</div>
+          </section>
+
+          <section class="a-navigation-grid" id="a-related">
+            <div class="navigation-column"><p class="a-eyebrow">07 / {copy.related}</p><h2>{copy.related}</h2><p class="muted-note">{copy.noPrerequisite}</p><div class="skill-link-list">{content.deepens.map((slug) => <a href={hrefOf(slug)}><span>→</span>{labelOf(slug)}<small>{copy.deepens}</small></a>)}</div></div>
+            <div class="navigation-column"><p class="a-eyebrow">08 / {copy.continueTo}</p><h2>{copy.continueTo}</h2><div class="skill-link-list">{content.continueTo.map((slug) => <a href={hrefOf(slug)}><span>↳</span>{labelOf(slug)}<small>{copy.continueTo}</small></a>)}</div></div>
+          </section>
+
+          <section class="a-quick-start" id="a-quick-start">
+            <div><p class="a-eyebrow">09 / {copy.quickStart}</p><h2>{copy.quickStart}</h2><p>{isZh ? "复制这段 Skill-specific Prompt，直接把需求交给 Agent。" : "Copy this Skill-specific prompt and give the requirement to your agent."}</p></div>
+            <div class="prompt-card"><div class="prompt-card-top"><span>requirements-analysis.prompt</span><button type="button" data-copy={copy.prompt}>{copy.copy}</button></div><pre><code>{copy.prompt}</code></pre></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="variant variant-b" data-variant-view="b" aria-label={copy.variantB}>
+      <div class="b-layout">
+        <aside class="b-sidebar">
+          <div class="b-sidebar-stamp">RQ<br /><span>01</span></div>
+          <p class="b-sidebar-kicker">{copy.testingType}</p>
+          <h1>{displayName}</h1>
+          <p>{content.intro}</p>
+          <div class="b-sidebar-actions"><a class="button button-primary" href="#b-quick-start">{copy.install}</a><button class="button button-quiet" type="button" data-copy={copy.prompt}>{copy.copyPrompt}</button></div>
+          <dl class="b-facts"><div><dt>{copy.type}</dt><dd>{copy.testingType}</dd></div><div><dt>{copy.synced}</dt><dd>{mainSkill.updatedAt || "—"}</dd></div><div><dt>{copy.evals}</dt><dd>{copy.documented}</dd></div></dl>
+          <a class="b-source-link" href={sourceHref} target="_blank" rel="noopener noreferrer">{copy.openSource} ↗</a>
+        </aside>
+        <main class="b-main">
+          <div class="b-index-bar"><span>Requirements / Quality / Analysis</span><span>01—09</span></div>
+          <section class="b-lead-section"><p class="b-overline">01 / {copy.why}</p><h2>{content.problemLead}</h2><div class="b-rule"></div><div class="b-two-col"><p>{isZh ? "详情页首先帮助人判断：这是不是当前真正需要的 Skill。" : "The detail page first helps a person decide whether this is the right Skill for the current moment."}</p><ul>{content.problem.map((item) => <li>{item}</li>)}</ul></div></section>
+          <section class="b-section"><div class="b-section-title"><span>02</span><h2>{copy.when}</h2></div><div class="b-split-list"><div><p class="b-list-label">{copy.use}</p>{content.use.map((item) => <p class="b-list-item"><span>+</span>{item}</p>)}</div><div><p class="b-list-label b-list-label--avoid">{copy.avoid}</p>{content.avoid.map((item) => <p class="b-list-item"><span>−</span>{item}</p>)}</div></div></section>
+          <section class="b-section"><div class="b-section-title"><span>03</span><h2>{copy.input} / {copy.output}</h2></div><div class="b-contract-rows"><div class="b-contract-row"><span class="b-contract-marker">IN</span><div><h3>{copy.required}</h3><p>{content.input.required.join(" · ")}</p></div></div><div class="b-contract-row"><span class="b-contract-marker">+</span><div><h3>{copy.recommended}</h3><p>{content.input.recommended.join(" · ")}</p></div></div><div class="b-contract-row"><span class="b-contract-marker">OUT</span><div><h3>{copy.output}</h3><p>{content.output.join(" · ")}</p></div></div></div></section>
+          <section class="b-callout"><span class="b-callout-index">04</span><div><p class="b-overline">{copy.example}</p><h2>{content.example.before}</h2><p class="b-callout-action"><strong>{copy.run}:</strong> {content.example.run}</p><p class="b-callout-result"><strong>{copy.after}:</strong> {content.example.after}</p></div></section>
+          <section class="b-section"><div class="b-section-title"><span>05</span><h2>{copy.output} Preview</h2></div><div class="b-report-list">{content.preview.map((row) => <div class="b-report-row"><strong>{row[0]}</strong><div><h3>{row[1]}</h3><p><span>{row[2]}</span>{row[3]}</p></div><em>{row[4]}</em></div>)}</div></section>
+          <section class="b-section"><div class="b-section-title"><span>06</span><h2>{copy.how}</h2></div><div class="b-step-list">{content.how.map((item, index) => <div><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></div>)}</div></section>
+          <section class="b-section"><div class="b-section-title"><span>07</span><h2>{copy.workflow}</h2></div><div class="b-workflow-stack">{content.workflow.map((slug, index) => <a class:list={[slug === "requirements-analysis" && "is-current"]} href={hrefOf(slug)}><span>{String(index + 1).padStart(2, "0")}</span><strong>{labelOf(slug)}</strong><small>{slug === "requirements-analysis" ? copy.documented : index < 2 ? copy.deepens : copy.continueTo}</small></a>)}</div></section>
+          <section class="b-section"><div class="b-section-title"><span>08</span><h2>{copy.similar}</h2></div><div class="b-similar-table"><div class="b-similar-head"><span>SKILL</span><span>PROBLEM</span><span>WHEN</span></div>{content.similar.map((row) => <a href={hrefOf(row[0])}><span>{labelOf(row[0])}</span><span>{row[1]}</span><span>{row[2]}</span></a>)}</div></section>
+          <section class="b-quick" id="b-quick-start"><div><p class="b-overline">09 / {copy.quickStart}</p><h2>{copy.quickStart}</h2></div><div class="prompt-card"><div class="prompt-card-top"><span>requirements-analysis.prompt</span><button type="button" data-copy={copy.prompt}>{copy.copy}</button></div><pre><code>{copy.prompt}</code></pre></div></section>
+        </main>
+      </div>
+    </section>
+
+    <section class="variant variant-c" data-variant-view="c" aria-label={copy.variantC}>
+      <div class="c-console">
+        <header class="c-topbar"><div class="c-brand"><span class="c-live-dot"></span><span>{copy.consoleName}</span><small>{copy.prototypeVersion}</small></div><div class="c-topbar-meta"><span>{copy.synced} {mainSkill.updatedAt || "—"}</span><a href={sourceHref} target="_blank" rel="noopener noreferrer">{copy.source} ↗</a></div></header>
+        <section class="c-hero"><div class="c-hero-copy"><p class="c-console-label">{copy.runbook} / 01</p><h1>{displayName}</h1><p>{content.intro}</p><div class="c-hero-actions"><a class="c-console-button c-console-button--primary" data-install-cta href="#c-quick-start">{copy.useNow} <span>→</span></a><button class="c-console-button" type="button" data-copy={copy.prompt}>{copy.copyPrompt}</button></div><div id="c-install-command" class="c-install-command"><div class="c-install-command-top"><span>{copy.installTab} / SHELL</span><button type="button" data-copy={installCommand}>{copy.copy}</button></div><pre><code>$ {installCommand}</code></pre></div></div><div class="c-hero-status"><span class="c-status-label">{copy.statusLabel}</span><strong>{copy.readyState}</strong><span>{copy.statusDetail}</span></div></section>
+        <div class="c-kpi-row"><div><span>{copy.type}</span><strong>{copy.testingType}</strong></div><div><span>{copy.evals}</span><strong>{copy.passReady}</strong></div><div><span>{copy.language}</span><strong>{copy.languageValue}</strong></div><div><span>{copy.when}</span><strong>{copy.beforeTestDesign}</strong></div></div>
+        <div class="c-grid">
+          <section class="c-panel c-panel--problem"><div class="c-panel-head"><span>02</span><h2>{copy.why}</h2><i>{copy.signal}</i></div><p>{content.problemLead}</p><ul class="c-check-list">{content.problem.map((item) => <li><span>!</span>{item}</li>)}</ul></section>
+          <section class="c-panel c-panel--routing"><div class="c-panel-head"><span>03</span><h2>{copy.when}</h2><i>{copy.routing}</i></div><div class="c-routing-grid"><div><span class="c-routing-label">{copy.useLabel}</span>{content.use.slice(0, 3).map((item) => <p>+ {item}</p>)}</div><div><span class="c-routing-label c-routing-label--warn">{copy.avoidLabel}</span>{content.avoid.slice(0, 3).map((item) => <p>− {item}</p>)}</div></div></section>
+          <section class="c-panel c-panel--contract"><div class="c-panel-head"><span>04</span><h2>{copy.input} / {copy.output}</h2><i>{copy.contract}</i></div><div class="c-contract-matrix"><div><span>{copy.inputRequired}</span>{content.input.required.map((item) => <b>{item}</b>)}</div><div><span>{copy.inputContext}</span>{content.input.recommended.map((item) => <b>{item}</b>)}</div><div><span>{copy.outputReport}</span>{content.output.slice(0, 6).map((item) => <b>{item}</b>)}</div></div></section>
+          <section class="c-panel c-panel--report"><div class="c-panel-head"><span>05</span><h2>{copy.output} {copy.preview}</h2><i>{copy.report}</i></div><div class="c-report-grid"><div class="c-report-row c-report-row--head"><span>{copy.priority}</span><span>{copy.finding}</span><span>{copy.action}</span></div>{content.preview.map((row) => <div class="c-report-row"><strong>{row[0]}</strong><span>{row[1]}<small>{row[2]} · {row[3]}</small></span><em>{row[4]}</em></div>)}</div></section>
+          <section class="c-panel c-panel--example"><div class="c-panel-head"><span>06</span><h2>{copy.example}</h2><i>{copy.replay}</i></div><div class="c-example-grid"><div><span>{copy.input}</span><p>{content.example.before}</p></div><div><span>{copy.processLabel}</span><p>{content.example.run}</p></div><div><span>{copy.output}</span><p>{content.example.after}</p></div></div></section>
+          <section class="c-panel c-panel--workflow"><div class="c-panel-head"><span>07</span><h2>{copy.workflow}</h2><i>{copy.graph}</i></div><div class="c-flow-lane">{content.workflow.map((slug, index) => <a class:list={[slug === "requirements-analysis" && "is-current"]} href={hrefOf(slug)}><span>{String(index + 1).padStart(2, "0")}</span><strong>{labelOf(slug)}</strong>{index < content.workflow.length - 1 && <i>→</i>}</a>)}</div></section>
+          <section class="c-panel c-panel--similar"><div class="c-panel-head"><span>08</span><h2>{copy.similar}</h2><i>{copy.compare}</i></div><div class="c-compare-list">{content.similar.map((row) => <a href={hrefOf(row[0])}><strong>{labelOf(row[0])}</strong><span>{row[1]}</span><em>{row[2]}</em></a>)}</div></section>
+          <section class="c-panel c-panel--quick" id="c-quick-start" tabindex="-1">
+            <div class="c-quick-head">
+              <div class="c-panel-head"><span>09</span><h2>{copy.quickStart}</h2><i>{copy.execute}</i></div>
+              <aside class="c-quick-tip"><p>{isZh ? "确认 Skill 已安装即可。" : "Just confirm the Skill is installed."}</p></aside>
+            </div>
+            <div class="c-quick-tabs" role="tablist" aria-label={copy.quickStart}>
+              <button type="button" role="tab" aria-selected="true" aria-controls="c-quick-prompt" data-doc-tab="prompt">{copy.promptTab}</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="c-quick-skill-md" data-doc-tab="skill">{copy.skillMdTab}</button>
+            </div>
+            <div class="prompt-card c-doc-card">
+              <div class="prompt-card-top"><span data-doc-title>requirements-analysis.prompt</span><button type="button" data-copy={copy.prompt}>{copy.copy}</button></div>
+              <div id="c-quick-prompt" class="c-doc-panel" data-doc-panel="prompt" role="tabpanel"><pre><code>{copy.prompt}</code></pre></div>
+              <div id="c-quick-skill-md" class="c-doc-panel c-doc-panel--skill" data-doc-panel="skill" role="tabpanel" hidden><pre><code>{mainSkill.rawSkillMarkdown || (isZh ? "当前 Skill 暂无原始 SKILL.md 内容。" : "This Skill has no raw SKILL.md content yet.")}</code></pre></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <nav class="prototype-switcher" aria-label={copy.prototypeVariants}>
+      <button type="button" data-variant-prev aria-label={copy.previous}>←</button>
+      <span><strong data-variant-label>{copy.variantA}</strong><small>{copy.variantLabel}</small></span>
+      <button type="button" data-variant-next aria-label={copy.next}>→</button>
+    </nav>
+    <div class="prototype-toast" data-prototype-toast role="status" aria-live="polite"></div>
+  </div>
+</Base>
+
+<script is:inline define:vars={{ copiedLabel: copy.copied, copyButtonLabel: copy.copy, promptText: copy.prompt, skillMarkdown: mainSkill.rawSkillMarkdown, variantLabels: { a: copy.variantA, b: copy.variantB, c: copy.variantC } }}>
+  (() => {
+    const root = document.querySelector("[data-prototype-root]");
+    if (!root) return;
+    const variants = ["a", "b", "c"];
+    const labels = variantLabels;
+    const views = Array.from(root.querySelectorAll("[data-variant-view]"));
+    const label = root.querySelector("[data-variant-label]");
+    const toast = root.querySelector("[data-prototype-toast]");
+    const docTabs = Array.from(root.querySelectorAll("[data-doc-tab]"));
+    const docPanels = Array.from(root.querySelectorAll("[data-doc-panel]"));
+    const docTitle = root.querySelector("[data-doc-title]");
+    const docCopyButton = root.querySelector(".c-doc-card [data-copy]");
+    const quickStart = root.querySelector("#c-quick-start");
+    const installCta = root.querySelector("[data-install-cta]");
+    const getCurrent = () => new URL(window.location.href).searchParams.get("variant")?.toLowerCase();
+    const applyVariant = (candidate, replace = false) => {
+      const variant = variants.includes(candidate) ? candidate : "a";
+      views.forEach((view) => view.classList.toggle("is-active", view.getAttribute("data-variant-view") === variant));
+      if (label) label.textContent = labels[variant];
+      if (replace) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("variant", variant);
+        window.history.replaceState({}, "", url);
+      }
+    };
+    const cycle = (direction) => {
+      const current = variants.indexOf(getCurrent() || "a");
+      const next = variants[(current + direction + variants.length) % variants.length];
+      applyVariant(next, true);
+    };
+    applyVariant(getCurrent() || "a");
+    root.querySelector("[data-variant-prev]")?.addEventListener("click", () => cycle(-1));
+    root.querySelector("[data-variant-next]")?.addEventListener("click", () => cycle(1));
+    const applyDoc = (doc) => {
+      docTabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.getAttribute("data-doc-tab") === doc)));
+      docPanels.forEach((panel) => { panel.hidden = panel.getAttribute("data-doc-panel") !== doc; });
+      if (docTitle) docTitle.textContent = doc === "skill" ? "SKILL.md" : "requirements-analysis.prompt";
+      if (docCopyButton) docCopyButton.setAttribute("data-copy", doc === "skill" ? skillMarkdown : promptText);
+    };
+    docTabs.forEach((tab) => tab.addEventListener("click", () => applyDoc(tab.getAttribute("data-doc-tab") || "prompt")));
+    applyDoc("prompt");
+    installCta?.addEventListener("click", (event) => {
+      event.preventDefault();
+      applyDoc("prompt");
+      const url = new URL(window.location.href);
+      url.hash = "c-quick-start";
+      window.history.replaceState({}, "", url);
+      quickStart?.scrollIntoView({ behavior: "smooth", block: "start" });
+      quickStart?.classList.remove("is-highlighted");
+      window.requestAnimationFrame(() => {
+        quickStart?.classList.add("is-highlighted");
+        quickStart?.focus({ preventScroll: true });
+      });
+      window.setTimeout(() => quickStart?.classList.remove("is-highlighted"), 1800);
+    });
+    window.addEventListener("keydown", (event) => {
+      const target = event.target;
+      if (target instanceof HTMLElement && (target.matches("input, textarea, [contenteditable='true']") || target.isContentEditable)) return;
+      if (event.key === "ArrowLeft") cycle(-1);
+      if (event.key === "ArrowRight") cycle(1);
+    });
+    root.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const content = button.getAttribute("data-copy") || "";
+        try {
+          await navigator.clipboard.writeText(content);
+          button.textContent = copiedLabel;
+          if (toast) toast.textContent = copiedLabel;
+          window.setTimeout(() => {
+            button.textContent = copyButtonLabel;
+            if (toast) toast.textContent = "";
+          }, 1200);
+        } catch {
+          if (toast) toast.textContent = content;
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  .skill-prototype {
+    --proto-ink: #0c172a;
+    --proto-dark: #0c172a;
+    --proto-ink-soft: #243248;
+    --proto-blue: #2563eb;
+    --proto-blue-light: #dbeafe;
+    --proto-mint: #b8f2d0;
+    --proto-lime: #d9f99d;
+    --proto-coral: #ff7866;
+    --proto-amber: #ffc857;
+    --proto-paper: #f8fafc;
+    --proto-line: rgba(12, 23, 42, 0.16);
+    --proto-muted: #617087;
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    color: var(--proto-ink);
+    font-family: var(--font-sans);
+  }
+  :global([data-theme="dark"]) .skill-prototype {
+    --proto-paper: #101827;
+    --proto-ink: #eff6ff;
+    --proto-ink-soft: #cbd5e1;
+    --proto-blue-light: #172a4e;
+    --proto-line: rgba(226, 232, 240, 0.18);
+    --proto-muted: #9aa9bb;
+  }
+  .prototype-banner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0 0 1rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px dashed color-mix(in srgb, var(--proto-coral) 60%, transparent);
+    background: color-mix(in srgb, var(--proto-coral) 8%, var(--color-base));
+    color: var(--proto-ink);
+    font-size: 0.76rem;
+  }
+  .prototype-banner p { margin: 0; color: var(--proto-muted); }
+  .prototype-banner a { color: var(--proto-ink); font-weight: 800; text-decoration: none; }
+  .prototype-kicker {
+    padding: 0.24rem 0.45rem;
+    background: var(--proto-coral);
+    color: #1b1010;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .variant { display: none; min-width: 0; }
+  .variant.is-active { display: block; }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 40px;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .button-primary { border-color: var(--proto-blue); background: var(--proto-blue); color: white; }
+  .button-quiet { border-color: var(--proto-line); color: inherit; }
+  .button:hover, .button:focus-visible { transform: translateY(-1px); }
+  .a-page-grid { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 1rem; min-width: 0; }
+  .a-rail { display: flex; flex-direction: column; min-height: 100%; padding: 1rem 0.55rem; background: var(--proto-dark); color: white; }
+  .rail-mark { margin: 0; font-size: 0.7rem; font-weight: 900; letter-spacing: 0.18em; line-height: 1.25; }
+  .rail-rule { width: 100%; height: 1px; margin: 1rem 0; background: rgba(255,255,255,0.3); }
+  .rail-caption { margin: 0; color: #bfd0ea; font-size: 0.65rem; line-height: 1.45; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .rail-stamp { margin-top: auto; padding: 0.3rem 0; border: 1px solid var(--proto-lime); color: var(--proto-lime); font-size: 0.56rem; font-weight: 900; letter-spacing: 0.12em; text-align: center; writing-mode: vertical-rl; }
+  .a-content { min-width: 0; padding-bottom: 5rem; }
+  .a-hero { overflow: hidden; background: var(--proto-dark); color: white; }
+  .a-hero-topline { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; padding: 0.7rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.18); color: #9fb3d3; font-size: 0.67rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .a-hero-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr); gap: 1rem; padding: clamp(1.4rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem) 2rem; }
+  .a-eyebrow, .side-label { margin: 0 0 0.55rem; color: var(--proto-lime); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+  .a-hero h1 { max-width: 10ch; margin: 0; color: white; font-size: clamp(2.4rem, 7vw, 5.8rem); line-height: 0.95; letter-spacing: -0.08em; }
+  .a-intro { max-width: 42ch; margin: 1.2rem 0 0; color: #b9c8df; font-size: 1rem; line-height: 1.65; }
+  .a-hero-side { align-self: end; padding: 1rem 0 0 1rem; border-left: 1px solid rgba(255,255,255,0.24); }
+  .a-hero-side p:not(.side-label) { margin: 0; color: #eff6ff; font-size: 0.9rem; line-height: 1.6; }
+  .a-hero-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .a-hero .button-quiet { border-color: rgba(255,255,255,0.35); color: white; }
+  .a-hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; padding: 0.75rem 1rem; background: #14233a; color: #c4d4e9; font-size: 0.72rem; }
+  .a-hero-meta a { margin-left: auto; color: var(--proto-lime); font-weight: 800; text-decoration: none; }
+  .meta-token { padding: 0.24rem 0.48rem; border: 1px solid rgba(255,255,255,0.25); }
+  .meta-token--solid { border-color: var(--proto-mint); background: var(--proto-mint); color: var(--proto-ink); font-weight: 900; }
+  .a-section-label { display: flex; align-items: center; gap: 0.65rem; margin: 2.4rem 0 0.75rem; color: var(--proto-muted); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; }
+  .a-section-label::after { content: ""; height: 1px; flex: 1; background: var(--proto-line); }
+  .a-section-label span:first-child { color: var(--proto-blue); }
+  .a-problem-block, .a-preview-block, .a-example-block, .a-process-block, .a-workflow-block, .a-quick-start { padding: clamp(1rem, 2.5vw, 1.8rem); border: 1px solid var(--proto-line); background: color-mix(in srgb, var(--proto-paper) 80%, var(--proto-blue-light)); }
+  .a-problem-block { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 2rem; }
+  .a-problem-block h2, .a-decision-grid h2, .a-contract-grid h2, .a-preview-block h2, .a-example-block h2, .a-process-block h2, .a-workflow-block h2, .a-navigation-grid h2, .a-quick-start h2 { margin: 0; color: var(--proto-ink); font-size: clamp(1.3rem, 3vw, 2rem); letter-spacing: -0.04em; }
+  .a-problem-block p { margin: 0.5rem 0 0; color: var(--proto-muted); line-height: 1.6; }
+  .signal-list { display: grid; gap: 0.75rem; align-content: center; margin: 0; padding: 0; list-style: none; }
+  .signal-list li { display: grid; grid-template-columns: 9px minmax(0,1fr); gap: 0.65rem; align-items: start; color: var(--proto-ink-soft); font-size: 0.92rem; line-height: 1.5; }
+  .signal-dot { width: 9px; height: 9px; margin-top: 0.42rem; background: var(--proto-coral); }
+  .a-decision-grid, .a-contract-grid, .a-navigation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+  .decision-card { min-width: 0; padding: 1.1rem; border: 1px solid var(--proto-line); background: var(--proto-paper); }
+  .decision-card--use { border-top: 4px solid #1e9c68; }
+  .decision-card--avoid { border-top: 4px solid var(--proto-coral); }
+  .decision-card-head { display: flex; gap: 0.6rem; align-items: center; }
+  .decision-card-head span { display: grid; width: 1.8rem; height: 1.8rem; place-items: center; border-radius: 50%; background: var(--proto-mint); color: var(--proto-ink); font-weight: 900; }
+  .decision-card--avoid .decision-card-head span { background: color-mix(in srgb, var(--proto-coral) 25%, white); }
+  .decision-card h2 { font-size: 1.05rem; }
+  .decision-card ul { display: grid; gap: 0.55rem; margin: 1rem 0 0; padding: 0; list-style: none; color: var(--proto-muted); font-size: 0.85rem; }
+  .decision-card li { padding-top: 0.55rem; border-top: 1px solid var(--proto-line); }
+  .contract-panel { min-width: 0; padding: 1.1rem; border: 1px solid var(--proto-line); background: var(--proto-paper); }
+  .contract-panel--output { background: var(--proto-dark); color: white; }
+  .contract-heading { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem; }
+  .contract-heading h2 { font-size: 1.1rem; }
+  .contract-panel--output .contract-heading h2 { color: white; }
+  .contract-index { color: var(--proto-blue); font-size: 0.7rem; font-weight: 900; letter-spacing: 0.1em; }
+  .contract-group { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
+  .contract-label { width: 100%; color: var(--proto-muted); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+  .contract-label--required { color: #178653; }
+  .contract-label--optional { color: var(--proto-coral); }
+  .contract-chip { padding: 0.34rem 0.48rem; border: 1px solid var(--proto-line); color: var(--proto-ink-soft); font-size: 0.75rem; }
+  .output-list { display: grid; gap: 0.34rem; margin: 0; padding: 0; list-style: none; }
+  .output-list li { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 0.55rem; align-items: start; padding: 0.42rem 0; border-bottom: 1px solid rgba(255,255,255,0.17); color: #d7e2f1; font-size: 0.82rem; }
+  .output-list li span { color: var(--proto-lime); font-weight: 900; }
+  .preview-heading, .example-head, .workflow-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+  .preview-heading .a-eyebrow, .example-head .a-eyebrow, .process-title .a-eyebrow, .workflow-head .a-eyebrow, .a-quick-start .a-eyebrow { color: var(--proto-blue); }
+  .preview-note, .workflow-head > span, .example-head > span { max-width: 26ch; color: var(--proto-muted); font-size: 0.7rem; text-align: right; }
+  .preview-table { overflow: auto; border: 1px solid var(--proto-line); }
+  .preview-row { display: grid; grid-template-columns: 70px minmax(190px, 1.3fr) minmax(90px, 0.65fr) minmax(130px, 0.85fr) minmax(120px, 0.85fr); min-width: 650px; border-top: 1px solid var(--proto-line); }
+  .preview-row:first-child { border-top: 0; }
+  .preview-row span { padding: 0.68rem 0.6rem; color: var(--proto-muted); font-size: 0.76rem; line-height: 1.4; }
+  .preview-row--head span { background: var(--proto-dark); color: #b5c6de; font-size: 0.62rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+  .preview-row .priority-cell { color: var(--proto-coral); font-weight: 900; }
+  .example-head h2 { margin-right: auto; }
+  .example-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 0.65rem; align-items: stretch; }
+  .example-step { padding: 0.9rem; background: var(--proto-paper); border: 1px solid var(--proto-line); }
+  .example-step--active { border-color: var(--proto-blue); box-shadow: 5px 5px 0 var(--proto-blue); }
+  .step-number { color: var(--proto-blue); font-size: 0.72rem; font-weight: 900; }
+  .step-label { margin: 0.65rem 0 0.35rem; color: var(--proto-ink); font-size: 0.78rem; font-weight: 900; text-transform: uppercase; }
+  .example-step p:last-child { margin: 0; color: var(--proto-muted); font-size: 0.82rem; line-height: 1.55; }
+  .example-arrow { align-self: center; color: var(--proto-coral); font-size: 1.5rem; font-weight: 900; }
+  .process-title { margin-bottom: 1rem; }
+  .process-track { display: grid; gap: 0.35rem; }
+  .process-node { position: relative; display: grid; grid-template-columns: 36px minmax(0,1fr); gap: 0.6rem; align-items: center; max-width: 440px; padding: 0.62rem 0.75rem; border-left: 3px solid var(--proto-blue); background: var(--proto-paper); }
+  .process-node > span { color: var(--proto-blue); font-size: 0.68rem; font-weight: 900; }
+  .process-node strong { color: var(--proto-ink-soft); font-size: 0.85rem; }
+  .process-node i { position: absolute; left: 0.8rem; bottom: -0.62rem; color: var(--proto-coral); font-size: 0.75rem; font-style: normal; z-index: 1; }
+  .workflow-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+  .workflow-node { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.6rem; border: 1px solid var(--proto-line); background: var(--proto-paper); color: var(--proto-muted); font-size: 0.78rem; font-weight: 800; text-decoration: none; }
+  .workflow-node span { color: var(--proto-blue); font-size: 0.65rem; }
+  .workflow-node--current { border-color: var(--proto-blue); background: var(--proto-blue); color: white; box-shadow: 4px 4px 0 var(--proto-coral); }
+  .workflow-node--current span { color: var(--proto-lime); }
+  .a-navigation-grid { margin-top: 2.4rem; }
+  .navigation-column { min-width: 0; padding: 1rem; border-top: 3px solid var(--proto-ink); }
+  .navigation-column h2 { margin-top: 0.25rem; }
+  .muted-note { color: var(--proto-muted); font-size: 0.78rem; }
+  .skill-link-list { display: grid; gap: 0.45rem; margin-top: 1rem; }
+  .skill-link-list a { display: grid; grid-template-columns: 20px minmax(0,1fr) auto; gap: 0.45rem; align-items: center; padding: 0.58rem 0; border-bottom: 1px solid var(--proto-line); color: var(--proto-ink); font-size: 0.82rem; font-weight: 800; text-decoration: none; }
+  .skill-link-list a span { color: var(--proto-coral); }
+  .skill-link-list a small { color: var(--proto-muted); font-size: 0.65rem; font-weight: 500; }
+  .a-quick-start { display: grid; grid-template-columns: minmax(180px, 0.4fr) minmax(0, 1fr); gap: 1rem; margin-top: 2.4rem; background: var(--proto-dark); color: white; }
+  .a-quick-start h2 { color: white; }
+  .a-quick-start p:not(.a-eyebrow) { color: #b9c8df; font-size: 0.82rem; }
+  .prompt-card { overflow: hidden; border: 1px solid var(--proto-line); background: #111d30; color: #d7e2f1; }
+  .prompt-card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.52rem 0.65rem; border-bottom: 1px solid rgba(255,255,255,0.15); color: #9fb3d3; font-size: 0.68rem; }
+  .prompt-card-top button { border: 1px solid var(--proto-lime); background: transparent; color: var(--proto-lime); padding: 0.25rem 0.48rem; font: inherit; font-size: 0.68rem; font-weight: 900; cursor: pointer; }
+  .prompt-card pre { overflow: auto; max-height: 260px; margin: 0; padding: 0.9rem; }
+  .prompt-card code { color: inherit; font-size: 0.75rem; line-height: 1.55; white-space: pre-wrap; }
+  .b-layout { display: grid; grid-template-columns: minmax(220px, 0.34fr) minmax(0, 0.92fr); gap: 1rem; min-width: 0; }
+  .b-sidebar { position: sticky; top: 1rem; align-self: start; padding: clamp(1rem, 3vw, 2rem); background: var(--proto-dark); color: white; }
+  .b-sidebar-stamp { display: grid; width: 64px; height: 64px; place-items: center; margin-bottom: 2.4rem; border: 1px solid var(--proto-lime); color: var(--proto-lime); font-size: 0.8rem; font-weight: 900; line-height: 1; text-align: center; }
+  .b-sidebar-stamp span { font-size: 0.65rem; }
+  .b-sidebar-kicker, .b-overline { margin: 0 0 0.55rem; color: var(--proto-blue); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; }
+  .b-sidebar-kicker { color: var(--proto-lime); }
+  .b-sidebar h1 { margin: 0; color: white; font-size: clamp(2.2rem, 5vw, 4.3rem); line-height: 0.98; letter-spacing: -0.08em; }
+  .b-sidebar > p:not(.b-sidebar-kicker) { color: #bdcbe0; font-size: 0.86rem; line-height: 1.6; }
+  .b-sidebar-actions { display: grid; gap: 0.5rem; margin: 1.2rem 0 2rem; }
+  .b-sidebar .button { width: 100%; }
+  .b-sidebar .button-quiet { border-color: rgba(255,255,255,0.28); color: white; }
+  .b-facts { display: grid; gap: 0.8rem; margin: 0; }
+  .b-facts div { padding-top: 0.65rem; border-top: 1px solid rgba(255,255,255,0.18); }
+  .b-facts dt { color: #94a9c7; font-size: 0.62rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+  .b-facts dd { margin: 0.15rem 0 0; color: white; font-size: 0.82rem; }
+  .b-source-link { display: inline-block; margin-top: 2.5rem; color: var(--proto-lime); font-size: 0.75rem; font-weight: 800; text-decoration: none; }
+  .b-main { min-width: 0; padding: 0 1rem 5rem; }
+  .b-index-bar { display: flex; justify-content: space-between; gap: 1rem; padding: 0.4rem 0; border-bottom: 1px solid var(--proto-line); color: var(--proto-muted); font-size: 0.65rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+  .b-section, .b-lead-section, .b-quick { padding: clamp(1.4rem, 4vw, 3.2rem) 0; border-bottom: 1px solid var(--proto-line); }
+  .b-lead-section h2 { max-width: 28ch; margin: 0; color: var(--proto-ink); font-size: clamp(1.8rem, 4vw, 3.8rem); line-height: 1.06; letter-spacing: -0.07em; }
+  .b-rule { width: 100%; height: 5px; margin: 1.5rem 0; background: linear-gradient(90deg, var(--proto-blue) 0 46%, var(--proto-coral) 46% 67%, var(--proto-lime) 67%); }
+  .b-two-col { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 2rem; color: var(--proto-muted); font-size: 0.9rem; line-height: 1.65; }
+  .b-two-col p { margin: 0; }
+  .b-two-col ul { display: grid; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
+  .b-two-col li { padding-left: 1rem; border-left: 3px solid var(--proto-coral); color: var(--proto-ink-soft); }
+  .b-section-title { display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 0.75rem; align-items: baseline; margin-bottom: 1.4rem; }
+  .b-section-title > span { color: var(--proto-coral); font-size: 0.8rem; font-weight: 900; }
+  .b-section-title h2, .b-quick h2 { margin: 0; color: var(--proto-ink); font-size: clamp(1.45rem, 3vw, 2.1rem); letter-spacing: -0.05em; }
+  .b-split-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.5rem; }
+  .b-list-label { color: #178653; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+  .b-list-label--avoid { color: var(--proto-coral); }
+  .b-list-item { display: flex; gap: 0.65rem; margin: 0.55rem 0; color: var(--proto-ink-soft); font-size: 0.86rem; }
+  .b-list-item span { color: var(--proto-blue); font-weight: 900; }
+  .b-contract-rows { border-top: 1px solid var(--proto-line); }
+  .b-contract-row { display: grid; grid-template-columns: 54px minmax(0,1fr); gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--proto-line); }
+  .b-contract-marker { color: var(--proto-blue); font-size: 0.7rem; font-weight: 900; letter-spacing: 0.08em; }
+  .b-contract-row h3 { margin: 0; color: var(--proto-ink); font-size: 0.9rem; }
+  .b-contract-row p { margin: 0.25rem 0 0; color: var(--proto-muted); font-size: 0.82rem; line-height: 1.55; }
+  .b-callout { display: grid; grid-template-columns: 54px minmax(0,1fr); gap: 1rem; margin: 0 -1rem; padding: clamp(1.3rem, 4vw, 2.5rem) 1rem; background: var(--proto-blue); color: white; }
+  .b-callout-index { color: var(--proto-lime); font-size: 0.8rem; font-weight: 900; }
+  .b-callout .b-overline { color: var(--proto-lime); }
+  .b-callout h2 { max-width: 28ch; margin: 0; color: white; font-size: clamp(1.4rem, 3vw, 2.2rem); line-height: 1.15; letter-spacing: -0.05em; }
+  .b-callout-action, .b-callout-result { max-width: 64ch; color: #dbeafe; font-size: 0.85rem; line-height: 1.6; }
+  .b-callout-result { margin-bottom: 0; color: var(--proto-lime); }
+  .b-report-list { border-top: 1px solid var(--proto-line); }
+  .b-report-row { display: grid; grid-template-columns: 44px minmax(0,1fr) minmax(120px, 0.42fr); gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--proto-line); }
+  .b-report-row > strong { color: var(--proto-coral); font-size: 0.8rem; }
+  .b-report-row h3 { margin: 0; color: var(--proto-ink); font-size: 0.86rem; }
+  .b-report-row p { margin: 0.25rem 0 0; color: var(--proto-muted); font-size: 0.72rem; }
+  .b-report-row p span { margin-right: 0.45rem; color: var(--proto-blue); font-weight: 800; }
+  .b-report-row em { align-self: center; color: var(--proto-muted); font-size: 0.75rem; font-style: normal; line-height: 1.45; }
+  .b-similar-table { border-top: 2px solid var(--proto-ink); }
+  .b-similar-head, .b-similar-table a { display: grid; grid-template-columns: 1.1fr 1fr 0.8fr; gap: 0.75rem; padding: 0.65rem 0; border-bottom: 1px solid var(--proto-line); }
+  .b-similar-head { color: var(--proto-muted); font-size: 0.62rem; font-weight: 900; letter-spacing: 0.1em; }
+  .b-similar-table a { color: var(--proto-ink-soft); font-size: 0.76rem; text-decoration: none; }
+  .b-similar-table a span:first-child { color: var(--proto-blue); font-weight: 800; }
+  .b-similar-table a span:nth-child(2), .b-similar-table a span:nth-child(3) { color: var(--proto-muted); }
+  .b-quick { display: grid; grid-template-columns: minmax(150px, 0.4fr) minmax(0,1fr); gap: 1rem; }
+  .c-console { overflow: hidden; background: #0d1728; color: #e3edf9; }
+  .c-topbar { display: flex; justify-content: space-between; gap: 1rem; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(226,232,240,0.14); color: #9db0ca; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .c-brand, .c-topbar-meta { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  .c-brand small { color: #617b9f; font-size: 0.6rem; }
+  .c-live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--proto-lime); box-shadow: 0 0 0 4px rgba(217,249,157,0.12); }
+  .c-topbar-meta a { color: var(--proto-lime); text-decoration: none; }
+  .c-hero { display: grid; grid-template-columns: minmax(0,1fr) 180px; gap: 1rem; padding: clamp(1.5rem,5vw,3.5rem); background: radial-gradient(circle at 78% 20%, rgba(37,99,235,0.5), transparent 36%), linear-gradient(135deg, #0d1728 0%, #102d4a 100%); }
+  .c-console-label, .c-panel-head i { margin: 0; color: var(--proto-lime); font-size: 0.65rem; font-style: normal; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+  .c-hero h1 { max-width: 12ch; margin: 0.65rem 0 0; color: white; font-size: clamp(2.5rem, 7vw, 5.2rem); line-height: 0.95; letter-spacing: -0.08em; }
+  .c-hero-copy > p:not(.c-console-label) { max-width: 52ch; margin: 1rem 0 0; color: #afc1da; line-height: 1.65; }
+  .c-hero-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+  .c-console-button { display: inline-flex; align-items: center; gap: 0.55rem; min-height: 38px; padding: 0.5rem 0.75rem; border: 1px solid rgba(255,255,255,0.28); background: transparent; color: white; font: inherit; font-size: 0.75rem; font-weight: 800; cursor: pointer; text-decoration: none; }
+  .c-console-button--primary { border-color: var(--proto-lime); background: var(--proto-lime); color: var(--proto-ink); }
+  .c-install-command { max-width: 760px; margin-top: 1rem; border: 1px solid rgba(217,249,157,0.52); background: rgba(5,13,25,0.42); scroll-margin-top: 5rem; }
+  .c-install-command-top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.45rem 0.65rem; border-bottom: 1px solid rgba(217,249,157,0.24); color: var(--proto-lime); font-size: 0.62rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+  .c-install-command-top button { border: 1px solid var(--proto-lime); background: transparent; color: var(--proto-lime); padding: 0.24rem 0.48rem; font: inherit; font-size: 0.64rem; font-weight: 900; cursor: pointer; }
+  .c-install-command pre { overflow-x: auto; margin: 0; padding: 0.78rem 0.8rem; }
+  .c-install-command code { color: #eff6ff; font-size: 0.72rem; line-height: 1.5; white-space: pre; }
+  .c-install-command.is-highlighted { outline: 3px solid var(--proto-coral); outline-offset: 4px; animation: c-install-pulse 1.8s ease-out; }
+  @keyframes c-install-pulse { 0% { box-shadow: 0 0 0 0 rgba(255,107,107,0.7); } 100% { box-shadow: 0 0 0 18px rgba(255,107,107,0); } }
+  .c-hero-status { align-self: center; display: grid; gap: 0.55rem; justify-items: end; padding: 1rem; border: 1px solid rgba(217,249,157,0.5); color: var(--proto-lime); }
+  .c-status-label { font-size: 0.65rem; font-weight: 900; letter-spacing: 0.1em; }
+  .c-hero-status strong { font-size: 4.5rem; line-height: 0.8; letter-spacing: -0.12em; }
+  .c-hero-status > span:last-child { color: #9db0ca; font-size: 0.62rem; }
+  .c-kpi-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); border-bottom: 1px solid rgba(226,232,240,0.14); }
+  .c-kpi-row > div { min-width: 0; padding: 0.85rem 1rem; border-right: 1px solid rgba(226,232,240,0.14); }
+  .c-kpi-row span { display: block; color: #7088a8; font-size: 0.6rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+  .c-kpi-row strong { display: block; margin-top: 0.35rem; color: #eff6ff; font-size: 0.75rem; line-height: 1.4; }
+  .c-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap: 1px; background: rgba(226,232,240,0.14); }
+  .c-panel { min-width: 0; padding: clamp(1rem, 2.3vw, 1.5rem); background: #111f34; }
+  .c-panel--problem { grid-column: span 7; }
+  .c-panel--routing { grid-column: span 5; }
+  .c-panel--contract, .c-panel--report, .c-panel--example, .c-panel--workflow, .c-panel--similar, .c-panel--quick { grid-column: span 6; }
+  .c-panel-head { display: grid; grid-template-columns: 32px minmax(0,1fr) auto; gap: 0.5rem; align-items: baseline; margin-bottom: 1rem; }
+  .c-panel-head > span { color: var(--proto-lime); font-size: 0.68rem; font-weight: 900; }
+  .c-panel-head h2 { margin: 0; color: white; font-size: 1.1rem; letter-spacing: -0.03em; }
+  .c-panel-head i { color: #6d87a9; font-size: 0.58rem; }
+  .c-panel--problem > p { color: #aac0dc; font-size: 0.85rem; line-height: 1.55; }
+  .c-check-list { display: grid; gap: 0.55rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .c-check-list li { display: flex; gap: 0.55rem; color: #e2ecf8; font-size: 0.78rem; line-height: 1.45; }
+  .c-check-list li span { flex: 0 0 auto; display: grid; width: 1.1rem; height: 1.1rem; place-items: center; background: var(--proto-coral); color: var(--proto-ink); font-size: 0.65rem; font-weight: 900; }
+  .c-routing-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+  .c-routing-label, .c-contract-matrix > div > span, .c-example-grid > div > span { display: block; color: var(--proto-lime); font-size: 0.62rem; font-weight: 900; letter-spacing: 0.1em; }
+  .c-routing-label--warn { color: var(--proto-coral); }
+  .c-routing-grid p { margin: 0.55rem 0 0; color: #adc0d8; font-size: 0.75rem; line-height: 1.45; }
+  .c-contract-matrix { display: grid; gap: 0.65rem; }
+  .c-contract-matrix > div { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 0.5rem; align-items: start; padding: 0.55rem 0; border-bottom: 1px solid rgba(226,232,240,0.12); }
+  .c-contract-matrix > div > span { color: #6f88a9; }
+  .c-contract-matrix b { color: #dbe8f7; font-size: 0.72rem; font-weight: 500; line-height: 1.5; }
+  .c-report-grid { display: grid; gap: 0.35rem; }
+  .c-report-row { display: grid; grid-template-columns: 36px minmax(0,1fr) minmax(110px,0.6fr); gap: 0.45rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(226,232,240,0.12); }
+  .c-report-row > strong { color: var(--proto-coral); font-size: 0.72rem; }
+  .c-report-row > span { color: #e5eef9; font-size: 0.72rem; line-height: 1.4; }
+  .c-report-row > span small { display: block; margin-top: 0.22rem; color: #7189a8; font-size: 0.61rem; }
+  .c-report-row > em { color: #9eb4d0; font-size: 0.65rem; font-style: normal; line-height: 1.4; }
+  .c-report-row--head { color: #6f88a9; font-size: 0.58rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+  .c-report-row--head span { color: inherit; font-size: inherit; }
+  .c-example-grid { display: grid; gap: 0.7rem; }
+  .c-example-grid > div { padding: 0.65rem; border: 1px solid rgba(226,232,240,0.15); background: rgba(5,13,25,0.22); }
+  .c-example-grid > div:nth-child(2) { border-color: var(--proto-blue); }
+  .c-example-grid p { margin: 0.45rem 0 0; color: #afc1d8; font-size: 0.75rem; line-height: 1.5; }
+  .c-flow-lane { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: center; }
+  .c-flow-lane a { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem; color: #afc1d8; font-size: 0.7rem; font-weight: 800; text-decoration: none; }
+  .c-flow-lane a > span { color: #6f88a9; font-size: 0.58rem; }
+  .c-flow-lane a > i { margin-left: 0.3rem; color: var(--proto-coral); font-style: normal; }
+  .c-flow-lane a.is-current { background: var(--proto-blue); color: white; box-shadow: 3px 3px 0 var(--proto-lime); }
+  .c-flow-lane a.is-current > span { color: var(--proto-lime); }
+  .c-compare-list { display: grid; gap: 0.35rem; }
+  .c-compare-list a { display: grid; grid-template-columns: 1.1fr 1fr 0.75fr; gap: 0.5rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(226,232,240,0.12); color: #e5eef9; font-size: 0.7rem; text-decoration: none; }
+  .c-compare-list a span, .c-compare-list a em { color: #8ea6c3; font-style: normal; line-height: 1.4; }
+  .c-compare-list a strong { color: var(--proto-lime); font-size: 0.72rem; }
+  .c-panel--quick { grid-column: 1 / -1; }
+  .c-quick-tabs { display: inline-flex; width: fit-content; gap: 0.25rem; padding: 0.25rem; border: 1px solid rgba(226,232,240,0.16); background: rgba(5,13,25,0.28); }
+  .c-quick-tabs button { border: 1px solid transparent; background: transparent; color: #8ea6c3; padding: 0.42rem 0.7rem; font: inherit; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; cursor: pointer; }
+  .c-quick-tabs button:hover, .c-quick-tabs button:focus-visible { color: white; }
+  .c-quick-tabs button[aria-selected="true"] { border-color: var(--proto-lime); background: var(--proto-lime); color: var(--proto-ink); }
+  .c-doc-panel[hidden] { display: none; }
+  .c-doc-card .prompt-card-top span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .c-doc-card .prompt-card pre { max-height: 420px; }
+  .c-doc-panel--skill pre { background: #0a1425; }
+
+  /* Keep the console information architecture, but make it a native part of the site system. */
+  .variant-c {
+    --proto-ink: var(--color-main);
+    --proto-dark: var(--color-canvas);
+    --proto-ink-soft: var(--color-text-primary);
+    --proto-blue: var(--color-theme);
+    --proto-blue-light: var(--color-theme-soft);
+    --proto-mint: var(--color-theme-soft);
+    --proto-lime: var(--color-theme);
+    --proto-coral: var(--color-caution);
+    --proto-amber: var(--color-warn);
+    --proto-paper: var(--color-base);
+    --proto-line: var(--color-border);
+    --proto-muted: var(--color-text-secondary);
+    color: var(--color-main);
+  }
+  .variant-c .c-console {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    color: var(--color-main);
+    box-shadow: var(--shadow-sm);
+  }
+  .variant-c .c-topbar {
+    border-bottom-color: var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+  }
+  .variant-c .c-brand small { color: var(--color-text-tertiary); }
+  .variant-c .c-live-dot {
+    background: var(--color-theme);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-theme) 14%, transparent);
+  }
+  .variant-c .c-topbar-meta a { color: var(--color-theme); }
+  .variant-c .c-hero {
+    border-bottom: 1px solid var(--color-border);
+    background: radial-gradient(circle at 88% 20%, color-mix(in srgb, var(--color-theme) 16%, transparent), transparent 34%), color-mix(in srgb, var(--color-theme) 4%, var(--color-surface));
+  }
+  .variant-c .c-console-label,
+  .variant-c .c-panel-head i { color: var(--color-theme); }
+  .variant-c .c-hero h1 { color: var(--color-main); }
+  .variant-c .c-hero-copy > p:not(.c-console-label) { color: var(--color-text-secondary); }
+  .variant-c .c-console-button {
+    border-color: var(--color-border-strong);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    color: var(--color-main);
+    transition: var(--transition-fast);
+  }
+  .variant-c .c-console-button:hover,
+  .variant-c .c-console-button:focus-visible {
+    border-color: var(--color-theme);
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+  }
+  .variant-c .c-console-button--primary,
+  .variant-c .c-console-button--primary:hover,
+  .variant-c .c-console-button--primary:focus-visible {
+    border-color: var(--color-theme);
+    background: var(--color-theme);
+    color: #fff;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--color-theme) 25%, transparent);
+  }
+  .variant-c .c-install-command {
+    border-color: color-mix(in srgb, var(--color-theme) 32%, var(--color-border));
+    border-radius: var(--radius-md);
+    background: var(--color-code-surface);
+  }
+  .variant-c .c-install-command-top {
+    border-bottom-color: var(--color-border);
+    color: var(--color-theme);
+  }
+  .variant-c .c-install-command-top button {
+    border-color: color-mix(in srgb, var(--color-theme) 38%, transparent);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-theme);
+  }
+  .variant-c .c-install-command-top button:hover,
+  .variant-c .c-install-command-top button:focus-visible {
+    background: var(--color-theme);
+    color: #fff;
+  }
+  .variant-c .c-install-command code { color: var(--color-text-primary); }
+  .variant-c .c-hero-status {
+    border-color: color-mix(in srgb, var(--color-theme) 34%, var(--color-border));
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-theme);
+  }
+  .variant-c .c-hero-status > span:last-child { color: var(--color-text-secondary); }
+  .variant-c .c-kpi-row {
+    border-bottom-color: var(--color-border);
+    background: var(--color-surface-muted);
+  }
+  .variant-c .c-kpi-row > div { border-right-color: var(--color-border); }
+  .variant-c .c-kpi-row span { color: var(--color-text-tertiary); }
+  .variant-c .c-kpi-row strong { color: var(--color-main); }
+  .variant-c .c-grid { background: var(--color-border); }
+  .variant-c .c-panel { background: var(--color-surface); }
+  .variant-c .c-panel-head > span,
+  .variant-c .c-routing-label,
+  .variant-c .c-contract-matrix > div > span,
+  .variant-c .c-example-grid > div > span { color: var(--color-theme); }
+  .variant-c .c-panel-head h2 { color: var(--color-main); }
+  .variant-c .c-panel-head i { color: var(--color-text-tertiary); }
+  .variant-c .c-panel--problem > p,
+  .variant-c .c-routing-grid p,
+  .variant-c .c-example-grid p { color: var(--color-text-secondary); }
+  .variant-c .c-check-list li { color: var(--color-text-primary); }
+  .variant-c .c-check-list li span {
+    border-radius: 50%;
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+  }
+  .variant-c .c-routing-label--warn { color: var(--color-caution); }
+  .variant-c .c-contract-matrix > div,
+  .variant-c .c-report-row,
+  .variant-c .c-compare-list a { border-bottom-color: var(--color-border); }
+  .variant-c .c-contract-matrix > div > span,
+  .variant-c .c-report-row--head,
+  .variant-c .c-report-row > span small { color: var(--color-text-tertiary); }
+  .variant-c .c-contract-matrix b,
+  .variant-c .c-report-row > span { color: var(--color-text-primary); }
+  .variant-c .c-report-row > strong { color: var(--color-caution); }
+  .variant-c .c-report-row > em,
+  .variant-c .c-compare-list a span,
+  .variant-c .c-compare-list a em { color: var(--color-text-secondary); }
+  .variant-c .c-example-grid > div {
+    border-color: var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-muted);
+  }
+  .variant-c .c-example-grid > div:nth-child(2) { border-color: color-mix(in srgb, var(--color-theme) 48%, var(--color-border)); }
+  .variant-c .c-flow-lane a { color: var(--color-text-secondary); border-radius: var(--radius-sm); }
+  .variant-c .c-flow-lane a > span { color: var(--color-text-tertiary); }
+  .variant-c .c-flow-lane a > i { color: var(--color-theme); }
+  .variant-c .c-flow-lane a.is-current {
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+    box-shadow: none;
+  }
+  .variant-c .c-flow-lane a.is-current > span { color: var(--color-theme); }
+  .variant-c .c-compare-list a { color: var(--color-text-primary); }
+  .variant-c .c-compare-list a strong { color: var(--color-theme); }
+  .variant-c .c-quick-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .variant-c .c-quick-head .c-panel-head { flex: 1; margin-bottom: 0; }
+  .variant-c .c-quick-tip {
+    max-width: 290px;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 28%, var(--color-border));
+    border-radius: var(--radius-md);
+    background: var(--color-theme-soft);
+    color: var(--color-text-secondary);
+    font-size: 0.72rem;
+  }
+  .variant-c .c-quick-tip p { margin: 0; line-height: 1.45; }
+  .variant-c .c-panel--quick { scroll-margin-top: 1rem; }
+  .variant-c .c-panel--quick.is-highlighted {
+    outline: 2px solid var(--color-theme);
+    outline-offset: -2px;
+    animation: c-quick-pulse 1.8s ease-out;
+  }
+  @keyframes c-quick-pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-theme) 42%, transparent); }
+    100% { box-shadow: 0 0 0 16px transparent; }
+  }
+  .variant-c .c-quick-tabs {
+    border-color: var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-muted);
+  }
+  .variant-c .c-quick-tabs button {
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+  }
+  .variant-c .c-quick-tabs button:hover,
+  .variant-c .c-quick-tabs button:focus-visible { color: var(--color-theme); }
+  .variant-c .c-quick-tabs button[aria-selected="true"] {
+    border-color: var(--color-theme);
+    background: var(--color-theme);
+    color: #fff;
+  }
+  .variant-c .c-doc-card {
+    border-color: var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-code-surface);
+    color: var(--color-text-primary);
+  }
+  .variant-c .c-doc-card .prompt-card-top {
+    border-bottom-color: var(--color-border);
+    color: var(--color-text-secondary);
+  }
+  .variant-c .c-doc-card .prompt-card-top button {
+    border-color: color-mix(in srgb, var(--color-theme) 38%, transparent);
+    border-radius: var(--radius-sm);
+    color: var(--color-theme);
+  }
+  .variant-c .c-doc-card .prompt-card-top button:hover,
+  .variant-c .c-doc-card .prompt-card-top button:focus-visible {
+    background: var(--color-theme);
+    color: #fff;
+  }
+  .variant-c .c-doc-panel--skill pre { background: var(--color-code-surface); }
+  .skill-prototype .prototype-switcher {
+    border-color: var(--color-border);
+    background: var(--color-surface-elevated);
+    color: var(--color-main);
+    box-shadow: var(--shadow-md);
+  }
+  .skill-prototype .prototype-switcher button {
+    border-color: var(--color-border);
+    color: var(--color-theme);
+  }
+  .skill-prototype .prototype-switcher button:hover,
+  .skill-prototype .prototype-switcher button:focus-visible { background: var(--color-theme-soft); }
+  .skill-prototype .prototype-switcher small { color: var(--color-text-tertiary); }
+  .skill-prototype .prototype-toast { color: var(--color-theme); }
+
+  .prototype-switcher { position: fixed; z-index: 20; right: 50%; bottom: 1rem; display: flex; align-items: center; gap: 0.7rem; transform: translateX(50%); padding: 0.45rem 0.6rem; border: 1px solid #2b405f; border-radius: 999px; background: #0c172a; color: white; box-shadow: 0 16px 40px rgba(3,10,22,0.28); }
+  .prototype-switcher button { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid rgba(255,255,255,0.24); border-radius: 50%; background: transparent; color: var(--proto-lime); font-size: 1.05rem; cursor: pointer; }
+  .prototype-switcher button:hover { background: var(--proto-blue); }
+  .prototype-switcher span { display: grid; min-width: 145px; text-align: center; }
+  .prototype-switcher strong { font-size: 0.73rem; }
+  .prototype-switcher small { color: #8fa4bf; font-size: 0.6rem; }
+  .prototype-toast { position: fixed; z-index: 21; right: 50%; bottom: 4.6rem; transform: translateX(50%); color: var(--proto-ink); font-size: 0.75rem; font-weight: 800; pointer-events: none; }
+  @media (max-width: 900px) {
+    .prototype-banner { grid-template-columns: auto minmax(0,1fr); }
+    .prototype-banner a { grid-column: 2; }
+    .a-hero-body, .b-layout, .b-two-col { grid-template-columns: minmax(0,1fr); }
+    .a-hero-side { padding: 1rem 0 0; border-top: 1px solid rgba(255,255,255,0.24); border-left: 0; }
+    .b-sidebar { position: static; }
+    .b-sidebar-actions { display: flex; flex-wrap: wrap; }
+    .b-sidebar .button { width: auto; }
+    .c-panel--problem, .c-panel--routing, .c-panel--contract, .c-panel--report, .c-panel--example, .c-panel--workflow, .c-panel--similar { grid-column: span 12; }
+  }
+  @media (max-width: 680px) {
+    .prototype-banner { grid-template-columns: minmax(0,1fr); }
+    .prototype-banner a { grid-column: auto; }
+    .a-page-grid { grid-template-columns: 1fr; }
+    .a-rail { display: none; }
+    .a-problem-block, .a-decision-grid, .a-contract-grid, .a-navigation-grid, .a-quick-start, .b-split-list, .b-quick { grid-template-columns: minmax(0,1fr); }
+    .a-hero-meta a { width: 100%; margin-left: 0; }
+    .preview-heading, .example-head, .workflow-head { display: block; }
+    .preview-note, .workflow-head > span, .example-head > span { display: block; margin-top: 0.5rem; text-align: left; }
+    .example-flow { grid-template-columns: minmax(0,1fr); }
+    .example-arrow { justify-self: center; transform: rotate(90deg); }
+    .b-main { padding-inline: 0.75rem; }
+    .b-callout { margin-inline: -0.75rem; }
+    .b-report-row { grid-template-columns: 36px minmax(0,1fr); }
+    .b-report-row em { grid-column: 2; }
+    .b-similar-head, .b-similar-table a { grid-template-columns: 1fr; gap: 0.25rem; }
+    .b-similar-head span:not(:first-child) { display: none; }
+    .c-topbar, .c-topbar-meta { align-items: flex-start; flex-direction: column; }
+    .c-hero { grid-template-columns: minmax(0,1fr); }
+    .c-hero-status { justify-self: start; justify-items: start; }
+    .c-kpi-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .c-kpi-row > div:nth-child(2n) { border-right: 0; }
+    .c-panel--quick { grid-column: span 12; }
+    .variant-c .c-quick-head { display: block; }
+    .variant-c .c-quick-tip { max-width: none; margin-top: 0.8rem; }
+    .c-contract-matrix > div, .c-report-row, .c-compare-list a { grid-template-columns: 1fr; }
+    .c-report-row--head { display: none; }
+    .c-flow-lane { display: grid; }
+    .c-flow-lane a { width: 100%; }
+    .prototype-switcher { bottom: 0.6rem; }
+    .prototype-switcher span { min-width: 122px; }
+  }
+</style>

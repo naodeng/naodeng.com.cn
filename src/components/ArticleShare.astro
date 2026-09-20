@@ -7,9 +7,11 @@ interface Props {
   url: string;
   /** 是否中文环境，用于文案与是否显示微博 */
   locale?: "zh-cn" | "en";
+  /** 是否显示分享区域标题 */
+  showLabel?: boolean;
 }
 
-const { title, url, locale = "en" } = Astro.props;
+const { title, url, locale = "en", showLabel = true } = Astro.props;
 const isZh = locale === "zh-cn";
 const labelShare = isZh ? "分享" : "Share";
 const labelCopy = isZh ? "复制链接" : "Copy link";
@@ -30,7 +32,7 @@ const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
 ---
 
 <section class="article-share" aria-label={labelShare}>
-  <span class="article-share-label">{labelShare}</span>
+  {showLabel && <span class="article-share-label">{labelShare}</span>}
   <div class="article-share-buttons">
     <button
       type="button"
