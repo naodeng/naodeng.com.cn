@@ -23,7 +23,11 @@ const currentLocale = Astro.currentLocale as Lang;
     const linkText = document.getElementById("js-linkText");
     pathnames[1] = lang;
     link.href = pathnames.join("/");
-    linkText.innerText = LOCALES[lang].label;
+    linkText.innerText = currentLocale === "zh-cn" && lang === "en"
+      ? "切换至英文"
+      : currentLocale === "en" && lang === "zh-cn"
+        ? "Switch to Chinese"
+        : LOCALES[lang].label;
     suggest.style.display = "block";
   };
 
