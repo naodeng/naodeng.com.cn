@@ -7,7 +7,7 @@ order: 2
 ---
 # 迭代测试工作流程
 
-<div align="right"><strong>简体中文</strong> · <a href="../en/sprint-testing-workflow.md">English</a></div>
+<div align="right"><strong>简体中文</strong> · <a href="/en/prompts/workflows/sprint/">English</a></div>
 
 ## 📋 元数据
 
@@ -16,19 +16,13 @@ order: 2
 - **最后更新**：2026-01-01
 - **版本**：1.0
 
-## 🎯 目标
-
-2周迭代周期的完整测试工作流程，从规划到回顾。
-
----
-
 ## 📅 迭代规划（第1天）
 
 ### 上午：迭代规划会议
 
 **准备工作**（会议前）：
 - 审查产品待办列表
-- 使用 [测试策略](/zh-cn/prompts/zh/) 分析即将到来的故事
+- 使用 [测试策略](/zh-cn/prompts/test-strategy/) 分析即将到来的故事
 
 **会议期间**：
 - 理解验收标准
@@ -39,8 +33,8 @@ order: 2
 ### 下午：测试规划
 
 **使用的提示词**：
-- [测试策略](/zh-cn/prompts/zh/)
-- [需求分析](/zh-cn/prompts/zh/)
+- [测试策略](/zh-cn/prompts/test-strategy/)
+- [需求分析](/zh-cn/prompts/requirements-analysis/)
 
 **交付物**：
 - [ ] 测试策略文档
@@ -70,13 +64,13 @@ order: 2
 - 准备测试数据
 
 **使用的提示词**：
-- [自动化测试](/zh-cn/prompts/zh/)
-- [测试策略](/zh-cn/prompts/zh/) - 测试数据生成
+- [自动化测试](/zh-cn/prompts/automation-testing/)
+- [测试策略](/zh-cn/prompts/test-strategy/) - 测试数据生成
 
 ### 早期故事测试
 
 **针对就绪的故事**：
-1. 使用 [测试用例编写](/zh-cn/prompts/zh/) 生成测试用例
+1. 使用 [测试用例编写](/zh-cn/prompts/test-case-writing/) 生成测试用例
 2. 与开发人员审查
 3. 开始对已完成工作进行探索性测试
 
@@ -97,14 +91,14 @@ order: 2
 
 **手动测试**：
 - 执行已完成故事的测试用例
-- 使用 [手动测试](/zh-cn/prompts/zh/) 对新功能进行探索性测试
-- 使用 [缺陷上报](/zh-cn/prompts/zh/) 记录缺陷
+- 使用 [手动测试](/zh-cn/prompts/manual-testing/) 对新功能进行探索性测试
+- 使用 [缺陷上报](/zh-cn/prompts/bug-reporting/) 记录缺陷
 
 **自动化**：
 - 为已完成的故事编写自动化测试
 - 使用框架特定的提示词：
-  - [自动化测试](/zh-cn/prompts/zh/)
-  - [API测试](/zh-cn/prompts/zh/)
+  - [自动化测试](/zh-cn/prompts/automation-testing/)
+  - [API测试](/zh-cn/prompts/api-testing/)
 
 #### 缺陷分类（每日）
 
@@ -135,8 +129,8 @@ order: 2
 ### 回归测试
 
 **使用的提示词**：
-- [功能测试](/zh-cn/prompts/zh/) - 回归测试场景
-- [AI辅助测试](/zh-cn/prompts/zh/) - 智能测试选择
+- [功能测试](/zh-cn/prompts/functional-testing/) - 回归测试场景
+- [AI辅助测试](/zh-cn/prompts/ai-assisted-testing/) - 智能测试选择
 
 **执行**：
 - 自动化回归套件
@@ -147,8 +141,8 @@ order: 2
 ### 集成测试
 
 **使用的提示词**：
-- [功能测试](/zh-cn/prompts/zh/) - 端到端场景
-- [API测试](/zh-cn/prompts/zh/) - API集成
+- [功能测试](/zh-cn/prompts/functional-testing/) - 端到端场景
+- [API测试](/zh-cn/prompts/api-testing/) - API集成
 
 **测试**：
 - 端到端用户旅程
@@ -158,7 +152,7 @@ order: 2
 ### 可视化测试
 
 **使用的提示词**：
-- [可访问性测试](/zh-cn/prompts/zh/) - 视觉测试
+- [可访问性测试](/zh-cn/prompts/accessibility-testing/) - 视觉测试
 
 **行动**：
 - 运行视觉回归测试
@@ -174,7 +168,7 @@ order: 2
 **形式**：
 - 2小时集中测试会话
 - 整个团队参与
-- 使用 [手动测试](/zh-cn/prompts/zh/) 探索性测试章程
+- 使用 [手动测试](/zh-cn/prompts/manual-testing/) 探索性测试章程
 
 ### 最终缺陷修复
 
@@ -199,8 +193,8 @@ order: 2
 ### 迭代评审准备
 
 **使用的提示词**：
-- [测试报告](/zh-cn/prompts/zh/)
-- [测试策略](/zh-cn/prompts/zh/) - 质量评估
+- [测试报告](/zh-cn/prompts/test-reporting/)
+- [测试策略](/zh-cn/prompts/test-strategy/) - 质量评估
 
 **准备**：
 - 测试执行摘要
@@ -325,7 +319,7 @@ order: 2
 - 回归失败
 
 **行动**：
-1. 使用 [测试策略](/zh-cn/prompts/zh/) 风险分析
+1. 使用 [测试策略](/zh-cn/prompts/test-strategy/) 风险分析
 2. 专注于关键路径
 3. 考虑延长迭代
 4. 计划技术债务迭代
@@ -376,31 +370,31 @@ order: 2
 
 ### 规划阶段
 
-- [测试策略](/zh-cn/prompts/zh/)
-- [需求分析](/zh-cn/prompts/zh/)
+- [测试策略](/zh-cn/prompts/test-strategy/)
+- [需求分析](/zh-cn/prompts/requirements-analysis/)
 
 ### 执行阶段
 
-- [测试用例编写](/zh-cn/prompts/zh/)
-- [手动测试](/zh-cn/prompts/zh/)
-- [API测试](/zh-cn/prompts/zh/)
-- [自动化测试](/zh-cn/prompts/zh/)
+- [测试用例编写](/zh-cn/prompts/test-case-writing/)
+- [手动测试](/zh-cn/prompts/manual-testing/)
+- [API测试](/zh-cn/prompts/api-testing/)
+- [自动化测试](/zh-cn/prompts/automation-testing/)
 
 ### 稳定化阶段
 
-- [功能测试](/zh-cn/prompts/zh/)
-- [可访问性测试](/zh-cn/prompts/zh/)
+- [功能测试](/zh-cn/prompts/functional-testing/)
+- [可访问性测试](/zh-cn/prompts/accessibility-testing/)
 
 ### 评审阶段
 
-- [测试报告](/zh-cn/prompts/zh/)
+- [测试报告](/zh-cn/prompts/test-reporting/)
 
 ---
 
 ## 📚 相关工作流程
 
-- [日常测试工作流程](daily-testing-workflow.md) - 日常活动
-- [发布测试工作流程](release-testing-workflow.md) - 发布前流程
+- [日常测试工作流程](/zh-cn/prompts/workflows/daily/) - 日常活动
+- [发布测试工作流程](/zh-cn/prompts/workflows/release/) - 发布前流程
 
 ---
 

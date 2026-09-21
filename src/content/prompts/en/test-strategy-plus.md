@@ -53,7 +53,7 @@ Build a decision-ready, executable test strategy: scope, depth, ownership, miles
 | --- | --- | --- |
 | Inputs | Goals/risks/constraints may suffice | **Multi-source**: requirements/analysis + plan + tech constraints + team/env reality |
 | Structure | Mostly narrative strategy | **Mandatory structured fields**: scope, depth, Owner, gates, entry/exit, explicit out-of-scope |
-| Gates | May mention entry/exit thinking | **Checkable quality gates** (metrics or clear criteria—not “tested enough”) |
+| Gates | May mention entry/exit thinking | **Checkable quality gates** (metrics or clear criteria---not --�tested enough--�) |
 | Quality bar | Make tradeoffs clear | Tradeoffs must land as **focus / sample / defer** + risk-acceptor role |
 
 Use baseline for directional advice with thin inputs; use this skill for project-plan / release decisions.
@@ -72,7 +72,7 @@ Use baseline for directional advice with thin inputs; use this skill for project
 
 1. Align business goals with real constraints (time, people, env, dependencies).
 2. Turn quality threats into layered strategy: what, how deep, who owns, when gated.
-3. State entry/exit criteria and explicit deferrals—do not pretend full coverage.
+3. State entry/exit criteria and explicit deferrals---do not pretend full coverage.
 
 ## Execution Rules
 
@@ -80,14 +80,14 @@ Use baseline for directional advice with thin inputs; use this skill for project
 - For each focus area, state test types and depth (smoke / full functional / sample / exploratory / specialty).
 - Gate criteria must be checkable (e.g., 100% P0 cases pass; no open Blockers; critical-path smoke green).
 - No ISTQB/generic methodology chapters; keep only control points useful to this project.
-- You may name follow-on execution skills (`functional-testing`, `api-testing`, `performance-testing`) by **name only**—no links to other skill files.
+- You may name follow-on execution skills (`functional-testing`, `api-testing`, `performance-testing`) by **name only**---no links to other skill files.
 
 ## Structured strategy fields (per focus area)
 
 - `Area` (feature domain / system / API cluster)
-- `Risk` (P0–P3)
+- `Risk` (P0---P3)
 - `Depth` (smoke / core-full / sample / exploratory / specialty)
-- `Methods` (functional, API, automation, performance, …)
+- `Methods` (functional, API, automation, performance, --�)
 - `Owner` (role)
 - `Entry` (start conditions)
 - `Exit` (done/complete conditions)
@@ -98,7 +98,7 @@ Use baseline for directional advice with thin inputs; use this skill for project
 
 Unless the user explicitly narrows scope, cover:
 - objectives and in/out of scope
-- risk priorities (P0–P3)
+- risk priorities (P0---P3)
 - per-area strategy with structured fields
 - resources and ownership (RACI may simplify to Owner + collaborators)
 - milestones and quality gates (at least: test start, feature complete, release candidate)
@@ -119,7 +119,7 @@ Return in this order:
 
 ### 2. Risk-Based Priorities
 
-- P0–P3 areas/threats with rationale
+- P0---P3 areas/threats with rationale
 
 ### 3. Recommended Strategy (by area)
 
@@ -143,14 +143,14 @@ For each key gate:
 
 ## Quality Bar
 
-- Strategy must break into sprint tasks—not principle slogans.
-- “Fully tested” / “comprehensive coverage” are invalid gate criteria.
+- Strategy must break into sprint tasks---not principle slogans.
+- --�Fully tested--� / --�comprehensive coverage--� are invalid gate criteria.
 - Tradeoffs visible: readers can see what was deprioritized or dropped.
 
 ## Gotchas
 
 - Encyclopedia of test types with no Owner, gates, or deferrals.
-- Gates that only say “testing complete” with no checkable criteria.
+- Gates that only say --�testing complete--� with no checkable criteria.
 - Ignoring env/data reality so the plan cannot execute.
 - Output indistinguishable from baseline (no structured per-area fields, no checkable gates).
 
@@ -158,7 +158,7 @@ For each key gate:
 
 - [ ] Plus enhancements visible: multi-source, structured fields, checkable gates, explicit deferrals
 - [ ] Each focus Area has Risk/Depth/Owner/Entry/Exit
-- [ ] At least 2–3 gates with checkable pass criteria
+- [ ] At least 2---3 gates with checkable pass criteria
 - [ ] Out-of-scope items and risk-acceptor roles stated
 - [ ] Assumptions and gaps marked; no invented env/headcount details
-- [ ] Handoffs name type skills only—no cross-skill file links
+- [ ] Handoffs name type skills only---no cross-skill file links

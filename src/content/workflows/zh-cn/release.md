@@ -7,7 +7,7 @@ order: 3
 ---
 # 发布测试工作流程
 
-<div align="right"><strong>简体中文</strong> · <a href="../en/release-testing-workflow.md">English</a></div>
+<div align="right"><strong>简体中文</strong> · <a href="/en/prompts/workflows/release/">English</a></div>
 
 ## 📋 元数据
 
@@ -15,12 +15,6 @@ order: 3
 - **时间线**：发布前1-2周
 - **最后更新**：2026-01-01
 - **版本**：1.0
-
-## 🎯 目标
-
-全面的测试工作流程，确保发布质量和生产部署就绪。
-
----
 
 ## 📅 发布时间线
 
@@ -49,8 +43,8 @@ order: 3
 - 计划测试策略
 
 **使用的提示词**：
-- [测试策略](/zh-cn/prompts/zh/)
-- [需求分析](/zh-cn/prompts/zh/) - 风险分析
+- [测试策略](/zh-cn/prompts/test-strategy/)
+- [需求分析](/zh-cn/prompts/requirements-analysis/) - 风险分析
 
 **交付物**：
 - [ ] 发布测试计划
@@ -72,8 +66,8 @@ order: 3
 - 准备测试账号
 
 **使用的提示词**：
-- [自动化测试](/zh-cn/prompts/zh/) - CI/CD集成
-- [测试策略](/zh-cn/prompts/zh/) - 测试数据生成
+- [自动化测试](/zh-cn/prompts/automation-testing/) - CI/CD集成
+- [测试策略](/zh-cn/prompts/test-strategy/) - 测试数据生成
 
 ### 测试套件准备
 
@@ -105,8 +99,8 @@ order: 3
 #### 1. 功能测试
 
 **使用的提示词**：
-- [功能测试](/zh-cn/prompts/zh/)
-- [测试用例编写](/zh-cn/prompts/zh/)
+- [功能测试](/zh-cn/prompts/functional-testing/)
+- [测试用例编写](/zh-cn/prompts/test-case-writing/)
 
 **执行**：
 - 所有新功能
@@ -123,12 +117,12 @@ order: 3
 - 移动端测试
 
 **使用的提示词**：
-- [AI辅助测试](/zh-cn/prompts/zh/) - 智能测试选择
+- [AI辅助测试](/zh-cn/prompts/ai-assisted-testing/) - 智能测试选择
 
 #### 3. 端到端测试
 
 **使用的提示词**：
-- [功能测试](/zh-cn/prompts/zh/) - 端到端场景
+- [功能测试](/zh-cn/prompts/functional-testing/) - 端到端场景
 
 **测试**：
 - 完整的用户旅程
@@ -143,7 +137,7 @@ order: 3
 ### 性能测试
 
 **使用的提示词**：
-- [性能测试](/zh-cn/prompts/zh/)
+- [性能测试](/zh-cn/prompts/performance-testing/)
 
 **执行**：
 - 负载测试（预期负载）
@@ -160,7 +154,7 @@ order: 3
 ### 安全测试
 
 **使用的提示词**：
-- [安全测试](/zh-cn/prompts/zh/)
+- [安全测试](/zh-cn/prompts/security-testing/)
 
 **执行**：
 - 漏洞扫描
@@ -172,7 +166,7 @@ order: 3
 ### 可访问性测试
 
 **使用的提示词**：
-- [可访问性测试](/zh-cn/prompts/zh/)
+- [可访问性测试](/zh-cn/prompts/accessibility-testing/)
 
 **执行**：
 - 屏幕阅读器测试
@@ -183,7 +177,7 @@ order: 3
 ### 可视化测试
 
 **使用的提示词**：
-- [可访问性测试](/zh-cn/prompts/zh/) - 视觉测试
+- [可访问性测试](/zh-cn/prompts/accessibility-testing/) - 视觉测试
 
 **执行**：
 - 视觉回归测试
@@ -217,7 +211,7 @@ order: 3
 - 探索性测试会话
 
 **使用的提示词**：
-- [手动测试](/zh-cn/prompts/zh/) - 探索性测试
+- [手动测试](/zh-cn/prompts/manual-testing/) - 探索性测试
 
 ### 缺陷分类
 
@@ -240,8 +234,8 @@ order: 3
 ### 测试指标审查
 
 **使用的提示词**：
-- [测试报告](/zh-cn/prompts/zh/)
-- [测试策略](/zh-cn/prompts/zh/) - 质量评估
+- [测试报告](/zh-cn/prompts/test-reporting/)
+- [测试策略](/zh-cn/prompts/test-strategy/) - 质量评估
 
 **要审查的指标**：
 - 测试执行率：___%
@@ -380,7 +374,7 @@ order: 3
 - 流程改进？
 
 **使用的提示词**：
-- [测试报告](/zh-cn/prompts/zh/)
+- [测试报告](/zh-cn/prompts/test-reporting/)
 
 ---
 
@@ -449,26 +443,26 @@ order: 3
 
 ### 规划
 
-- [测试策略](/zh-cn/prompts/zh/)
-- [需求分析](/zh-cn/prompts/zh/)
+- [测试策略](/zh-cn/prompts/test-strategy/)
+- [需求分析](/zh-cn/prompts/requirements-analysis/)
 
 ### 测试
 
-- [功能测试](/zh-cn/prompts/zh/)
-- [性能测试](/zh-cn/prompts/zh/)
-- [安全测试](/zh-cn/prompts/zh/)
-- [可访问性测试](/zh-cn/prompts/zh/)
+- [功能测试](/zh-cn/prompts/functional-testing/)
+- [性能测试](/zh-cn/prompts/performance-testing/)
+- [安全测试](/zh-cn/prompts/security-testing/)
+- [可访问性测试](/zh-cn/prompts/accessibility-testing/)
 
 ### 评估
 
-- [测试报告](/zh-cn/prompts/zh/)
+- [测试报告](/zh-cn/prompts/test-reporting/)
 
 ---
 
 ## 📚 相关工作流程
 
-- [日常测试工作流程](daily-testing-workflow.md) - 日常活动
-- [迭代测试工作流程](sprint-testing-workflow.md) - 迭代周期
+- [日常测试工作流程](/zh-cn/prompts/workflows/daily/) - 日常活动
+- [迭代测试工作流程](/zh-cn/prompts/workflows/sprint/) - 迭代周期
 
 ---
 

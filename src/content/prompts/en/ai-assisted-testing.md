@@ -41,7 +41,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" â€” never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## AI-Assisted Testing Methodology
 
@@ -197,7 +197,7 @@ class IntelligentTestGenerator:
 
 **Evaluation Metrics:**
 - Generated case count: Target 300% improvement
-- Case quality score: Target â‰¥ 85 points
+- Case quality score: Target -‰¥ 85 points
 - Generation time: Target 80% reduction
 - Coverage improvement: Target 25% increase
 
@@ -237,10 +237,10 @@ class DefectPredictionModel:
 ```text
 
 **Prediction Accuracy Targets:**
-- Precision: â‰¥ 80%
-- Recall: â‰¥ 75%
-- F1 Score: â‰¥ 77%
-- AUC Value: â‰¥ 0.85
+- Precision: -‰¥ 80%
+- Recall: -‰¥ 75%
+- F1 Score: -‰¥ 77%
+- AUC Value: -‰¥ 0.85
 
 ---
 

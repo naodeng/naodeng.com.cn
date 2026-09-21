@@ -1,198 +1,268 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("Prompts selection and review flow", () => {
-  test("desktop quick-start row balances all five steps", async ({ page, baseURL }) => {
+test.describe("Prompt library discovery and review flow", () => {
+  test("homepage starts with tasks and keeps the directory as a secondary action", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(`${baseURL}/zh-cn/prompts/`);
-    const boxes = await page.locator("[data-prompt-quick-step]").evaluateAll((cards) =>
-      cards.map((card) => {
-        const rect = card.getBoundingClientRect();
-        return { left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width) };
-      }),
+    await page.goto(`${baseURL}/en/prompts/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator("#prompt-home-title")).toContainText("Start with the task");
+    await expect(page.locator(".prompt-home-search")).toBeVisible();
+    await expect(page.locator("[data-prompt-task]")).toHaveCount(13);
+    await expect(page.locator("[data-prompt-area]")).toHaveCount(10);
+    await expect(page.locator(".prompt-outline-link")).toHaveAttribute("href", "/en/prompts/all/");
+    await expect(page.locator("[data-featured-prompt]").first()).toHaveAttribute("href", /\/en\/prompts\//);
+    await expect(page.locator("#quickstart-heading")).toBeVisible();
+    await expect(page.locator("[data-prompt-quick-step]")).toHaveCount(5);
+  });
+
+  test("prompt controls keep readable contrast in dark theme", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL}/en/prompts/`, { waitUntil: "domcontentloaded" });
+    await page.evaluate(() => document.documentElement.dataset.theme = "dark");
+
+    const homeContrast = await page.locator(".prompt-search-control button").evaluate((button) => {
+      const input = button.parentElement?.querySelector("input");
+      const parse = (value: string) => value.match(/\d+(?:\.\d+)?/g)?.map(Number) || [0, 0, 0];
+      const luminance = (value: string) => {
+        const [r, g, b] = parse(value).map((channel) => channel / 255);
+        const transform = (channel: number) => channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+        return 0.2126 * transform(r) + 0.7152 * transform(g) + 0.0722 * transform(b);
+      };
+      const ratio = (foreground: string, background: string) => {
+        const [light, dark] = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
+        return (light + 0.05) / (dark + 0.05);
+      };
+      const buttonStyle = getComputedStyle(button);
+      const surfaceStyle = input?.parentElement ? getComputedStyle(input.parentElement) : buttonStyle;
+      const placeholder = input ? getComputedStyle(input, "::placeholder") : buttonStyle;
+      return {
+        button: ratio(buttonStyle.color, buttonStyle.backgroundColor),
+        placeholder: ratio(placeholder.color, surfaceStyle.backgroundColor),
+      };
+    });
+
+    expect(homeContrast.button).toBeGreaterThanOrEqual(4.5);
+    expect(homeContrast.placeholder).toBeGreaterThanOrEqual(4.5);
+
+    await page.goto(`${baseURL}/en/prompts/all/`, { waitUntil: "domcontentloaded" });
+    await page.evaluate(() => document.documentElement.dataset.theme = "dark");
+    const explorerPlaceholder = await page.locator("#prompt-explorer-search").evaluate((input) => getComputedStyle(input, "::placeholder").color);
+    expect(explorerPlaceholder).toBe("rgb(132, 144, 161)");
+  });
+
+  test("header controls keep one size and one visible state on desktop and mobile", async ({ page, baseURL }) => {
+    const viewports = [
+      { width: 1440, height: 900, controlSize: 44 },
+      { width: 390, height: 844, controlSize: 40 },
+    ];
+
+    for (const viewport of viewports) {
+      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      await page.goto(`${baseURL}/zh-cn/prompts/requirements-analysis/`, { waitUntil: "domcontentloaded" });
+      await page.evaluate(() => {
+        document.documentElement.dataset.theme = "light";
+        document.querySelector("header.l-header")?.removeAttribute("data-nav-open");
+      });
+
+      const controls = page.locator(
+        "header.l-header [data-locale-trigger], header.l-header [data-search-open], header.l-header [data-theme-toggle], header.l-header [data-nav-toggle]",
+      );
+      const sizes = await controls.evaluateAll((elements) =>
+        elements
+          .filter((element) => getComputedStyle(element).display !== "none")
+          .map((element) => {
+            const rect = element.getBoundingClientRect();
+            return { width: Math.round(rect.width), height: Math.round(rect.height) };
+          }),
+      );
+      expect(sizes.length).toBeGreaterThanOrEqual(3);
+      expect(sizes).toEqual(sizes.map(() => ({ width: viewport.controlSize, height: viewport.controlSize })));
+
+      const iconState = await page.locator("header.l-header").evaluate((header) => {
+        const visible = (selector: string) => {
+          const element = header.querySelector(selector);
+          return Boolean(element && getComputedStyle(element).display !== "none");
+        };
+        return {
+          light: visible(".theme-toggle__light"),
+          dark: visible(".theme-toggle__dark"),
+          menu: visible(".nav-toggle__open"),
+          close: visible(".nav-toggle__close"),
+        };
+      });
+      expect(iconState).toEqual({ light: true, dark: false, menu: true, close: false });
+
+      await page.locator("[data-theme-toggle]").click();
+      await expect.poll(() => page.locator(".theme-toggle__dark").evaluate((icon) => getComputedStyle(icon).display)).not.toBe("none");
+      await expect.poll(() => page.locator(".theme-toggle__light").evaluate((icon) => getComputedStyle(icon).display)).toBe("none");
+
+      if (viewport.width < 834) {
+        await page.locator("[data-nav-toggle]").click();
+        await expect.poll(() => page.locator(".nav-toggle__close").evaluate((icon) => getComputedStyle(icon).display)).not.toBe("none");
+        await expect.poll(() => page.locator(".nav-toggle__open").evaluate((icon) => getComputedStyle(icon).display)).toBe("none");
+      }
+    }
+  });
+
+  test("mobile homepage search keeps the button compact", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`${baseURL}/zh-cn/prompts/`, { waitUntil: "domcontentloaded" });
+
+    const layout = await page.locator(".prompt-search-control").evaluate((control) => {
+      const button = control.querySelector("button");
+      if (!(button instanceof HTMLElement)) return null;
+      const controlRect = control.getBoundingClientRect();
+      const buttonRect = button.getBoundingClientRect();
+      return {
+        display: getComputedStyle(control).display,
+        controlWidth: controlRect.width,
+        buttonWidth: buttonRect.width,
+        buttonHeight: buttonRect.height,
+      };
+    });
+
+    expect(layout).not.toBeNull();
+    expect(layout?.display).toBe("flex");
+    expect(layout?.buttonWidth).toBeLessThan((layout?.controlWidth || 0) / 2);
+    expect(layout?.buttonHeight).toBeLessThan(52);
+  });
+
+  test("explorer searches and filters the real prompt registry", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`${baseURL}/en/prompts/all/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator("[data-prompt-card]")).toHaveCount(246);
+    await expect(page.locator(".explorer-card").first()).toHaveAttribute("href", /\/en\/prompts\//);
+    await expect(page.locator(".explorer-card-link")).toHaveCount(0);
+    await expect(page.locator("#prompt-explorer-count")).toContainText("246");
+
+    await page.locator("#prompt-explorer-search").fill("performance result analysis");
+    await expect(page.locator("#prompt-explorer-count")).toContainText("1");
+    await expect(page.locator('[data-prompt-card]:visible')).toHaveCount(1);
+    await expect(page.locator('[data-prompt-card]:visible h2')).toContainText("Performance Result Analysis");
+    await expect(page).toHaveURL(/q=performance\+result\+analysis|q=performance%20result%20analysis/);
+
+    await page.locator("#prompt-clear-filters").click();
+    await page.locator("#prompt-area-filter").selectOption("api-integration");
+    await expect(page).toHaveURL(/area=api-integration/);
+    const apiCards = page.locator('[data-prompt-card]:visible');
+    expect(await apiCards.count()).toBeGreaterThan(1);
+    await expect(apiCards.first()).toHaveAttribute("data-area", "api-integration");
+  });
+
+  test("detail pages expose context, variants, copy, and next steps", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL}/en/prompts/test-strategy/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".prompt-detail-header h1")).toHaveText("Test Strategy Prompt");
+    await expect(page.locator(".prompt-at-a-glance")).toBeVisible();
+    await expect(page.locator("#prompt-at-a-glance-heading")).toHaveClass(/visually-hidden/);
+    await expect(page.locator(".prompt-variants")).toBeVisible();
+    await expect(page.locator(".prompt-variants a")).toHaveCount(4);
+    await expect(page.locator(".prompt-copy-btn")).toBeVisible();
+    await page.context().grantPermissions(["clipboard-read", "clipboard-write"], { origin: baseURL });
+    await page.locator(".prompt-copy-btn").click();
+    await expect(page.locator(".prompt-copy-btn-text")).toHaveText("Copied!");
+    await expect(page.locator(".prompt-source-link")).toHaveAttribute(
+      "href",
+      /github\.com\/naodeng\/awesome-qa-prompt\/blob\/main\/testing-types\//,
     );
-    expect(boxes).toHaveLength(5);
-    expect(Math.abs(boxes[3].left - boxes[0].left)).toBeLessThanOrEqual(2);
-    expect(Math.abs(boxes[4].right - boxes[2].right)).toBeLessThanOrEqual(2);
-    expect(boxes[3].width).toBeGreaterThan(boxes[0].width);
-  });
-
-  test("prompt cards use a compact desktop grid footprint", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(`${baseURL}/zh-cn/prompts/`);
-    await page.locator(".prompt-category").first().locator(".prompt-category-toggle").click();
-
-    const metrics = await page.locator(".prompt-category").first().locator(".prompts-grid").evaluate((grid) => {
-      const card = grid.querySelector<HTMLElement>(".prompt-card");
-      const gridStyles = getComputedStyle(grid);
-      const cardStyles = card ? getComputedStyle(card) : null;
-
-      return {
-        columnCount: gridStyles.gridTemplateColumns.split(" ").filter(Boolean).length,
-        cardWidth: card ? Math.round(card.getBoundingClientRect().width) : 0,
-        columnGap: parseFloat(gridStyles.columnGap),
-        paddingInline: cardStyles ? parseFloat(cardStyles.paddingInlineStart) : 0,
-      };
-    });
-
-    expect(metrics.columnCount).toBeGreaterThanOrEqual(5);
-    expect(metrics.cardWidth).toBeLessThanOrEqual(230);
-    expect(metrics.columnGap).toBeLessThanOrEqual(16);
-    expect(metrics.paddingInline).toBeLessThanOrEqual(16);
-  });
-
-  test("prompt directory keeps category filtering and direct card navigation compact", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(`${baseURL}/zh-cn/prompts/`);
-
-    await expect(page.locator(".prompt-directory-toolbar")).toBeVisible();
-    await expect(page.locator(".prompt-filter-sidebar")).toBeVisible();
-    await expect(page.locator("#prompt-results-count")).toContainText("246");
-
-    const targetCategory = page.locator(".prompt-category").nth(1);
-    await page.locator(".prompt-category-filter").nth(2).click();
-    await expect(page.locator(".prompt-category").first()).toBeHidden();
-    await expect(targetCategory).toBeVisible();
-    await expect(targetCategory.locator(".prompts-grid")).toBeVisible();
-
-    const metrics = await targetCategory.locator(".prompts-grid").evaluate((grid) => {
-      const card = grid.querySelector<HTMLElement>(".prompt-card");
-      const gridStyles = getComputedStyle(grid);
-      const cardStyles = card ? getComputedStyle(card) : null;
-
-      return {
-        columnCount: gridStyles.gridTemplateColumns.split(" ").filter(Boolean).length,
-        cardWidth: card ? Math.round(card.getBoundingClientRect().width) : 0,
-        cardHeight: card ? Math.round(card.getBoundingClientRect().height) : 0,
-        columnGap: parseFloat(gridStyles.columnGap),
-        paddingInline: cardStyles ? parseFloat(cardStyles.paddingInlineStart) : 0,
-      };
-    });
-
-    expect(metrics.columnCount).toBeGreaterThanOrEqual(5);
-    expect(metrics.cardWidth).toBeLessThanOrEqual(230);
-    expect(metrics.cardHeight).toBeLessThanOrEqual(130);
-    expect(metrics.columnGap).toBeLessThanOrEqual(16);
-    expect(metrics.paddingInline).toBeLessThanOrEqual(16);
-    await expect(targetCategory.locator(".prompt-card").first()).toHaveAttribute("href", /\/zh-cn\/prompts\/.+\/$/);
-    await expect(targetCategory.locator(".prompt-card-cta")).toHaveCount(0);
-  });
-
-  test("content sections keep visible separation without overlap", async ({ page, baseURL }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(`${baseURL}/zh-cn/prompts/`);
-    const gaps = await page.evaluate(() => {
-      const rect = (selector: string) => document.querySelector(selector)?.getBoundingClientRect();
-      const categories = rect("#testing-types-heading");
-      const quick = rect("#quickstart-heading");
-      const examples = rect(".examples");
-      const notice = rect("#ai-output-notice");
-      const flow = rect("#flow-heading");
-      return {
-        categoriesToQuick: categories && quick ? Math.round(quick.top - categories.bottom) : -999,
-        examplesToNotice: examples && notice ? Math.round(notice.top - examples.bottom) : -999,
-        noticeToFlow: notice && flow ? Math.round(flow.top - notice.bottom) : -999,
-      };
-    });
-    expect(gaps.categoriesToQuick).toBeGreaterThanOrEqual(24);
-    expect(gaps.examplesToNotice).toBeGreaterThanOrEqual(24);
-    expect(gaps.noticeToFlow).toBeGreaterThanOrEqual(24);
-  });
-
-  test("prompt details show the prompt name without a Default version label", async ({ page, baseURL }) => {
-    await page.goto(`${baseURL}/zh-cn/prompts/test-strategy/`, { waitUntil: "domcontentloaded" });
-
-    await expect(page.locator(".prompt-detail-header h1")).toHaveText("测试策略 Prompt");
-    await expect(page.locator(".prompt-detail-header h1")).not.toContainText("Default");
     await expect(page.locator(".prompt-content > h1")).toBeHidden();
+    await expect(page.locator("#prompt-workflow-heading")).toBeVisible();
+    await expect(page.locator("[data-related-prompt]")).toHaveCount(6);
   });
 
-  test("prompt details keep the prompt name before a platform version", async ({ page, baseURL }) => {
+  test("legacy platform URLs remain navigable and show the current variant", async ({ page, baseURL }) => {
     await page.goto(`${baseURL}/zh-cn/prompts/test-strategy-Mobile/`, { waitUntil: "domcontentloaded" });
 
     await expect(page.locator(".prompt-detail-header h1")).toHaveText("测试策略 Prompt - 移动端版");
+    await expect(page.locator(".prompt-detail-badges")).toContainText("移动端");
+    await expect(page.locator(".prompt-detail-badges")).not.toContainText(/基础|进阶|高级/);
+    await expect(page.locator(".prompt-variants a.is-current")).toContainText("移动端");
+    await expect(page.locator(".prompt-related-prompts")).toBeVisible();
+    await page.locator("[data-related-prompt]").first().click();
+    await expect(page).toHaveURL(/\/zh-cn\/prompts\/[^/]+\/$/);
   });
-
-  test("prompt details show five linked related prompts below sharing", async ({ page, baseURL }) => {
-    await page.goto(`${baseURL}/zh-cn/prompts/test-strategy-Mobile/`, { waitUntil: "domcontentloaded" });
-
-    const related = page.locator(".prompt-related-prompts");
-    await expect(related).toBeVisible();
-    await expect(related.locator("[data-related-prompt]")).toHaveCount(5);
-    const firstRelated = related.locator("[data-related-prompt]").first();
-    const href = await firstRelated.getAttribute("href");
-    expect(href).toMatch(/^\/zh-cn\/prompts\/.+\/$/);
-    await expect(related.locator(".prompt-related-prompt-description")).toHaveCount(0);
-    await firstRelated.click();
-    await expect(page).toHaveURL(new RegExp(`${href}$`));
-  });
-
 
   for (const lang of ["zh-cn", "en"] as const) {
-    test(`${lang} lists every prompt category without version choices`, async ({
-      page,
-      baseURL,
-    }) => {
+    test(`${lang} keeps the task-first homepage bilingual`, async ({ page, baseURL }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
       await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
 
-      await expect(page.locator("[data-prompt-version]")).toHaveCount(0);
-      await expect(page.locator(".prompt-category")).toHaveCount(11);
-      await expect(page.locator("main")).not.toContainText("9007199254740991");
-      await expect(page.locator("[data-prompt-quick-step]")).toHaveCount(5);
-      await expect(page.locator("[data-prompt-example]")).toHaveCount(6);
+      const expectedTitle = lang === "zh-cn" ? "先说你要完成什么" : "Start with the task";
+      await expect(page.locator("main h1")).toContainText(expectedTitle);
+      const titleLines = await page.locator("#prompt-home-title").evaluate((heading) => {
+        const range = document.createRange();
+        range.selectNodeContents(heading);
+        return new Set(Array.from(range.getClientRects()).map((rect) => Math.round(rect.top))).size;
+      });
+      expect(titleLines).toBeLessThanOrEqual(2);
+      await expect(page.locator("[data-prompt-task]")).toHaveCount(13);
+      await expect(page.locator("[data-prompt-area]")).toHaveCount(10);
       await expect(page.locator("#ai-output-notice")).toBeVisible();
-      expect(await page.locator("[data-prompt-type]").count()).toBeGreaterThanOrEqual(200);
-
-      const text = await page.locator("main").innerText();
-      expect(text).not.toContain("_EN.md");
-      expect(text).not.toContain("_Lite.md");
+      await expect(page.locator("main")).not.toContainText("9007199254740991");
+      await expect(page.locator("main")).not.toContainText("_EN.md");
+      await expect(page.locator(".prompt-home")).not.toContainText("⌕");
+      await expect(page.locator(".prompt-home")).not.toContainText("↗");
+      if (lang === "zh-cn") {
+        await expect(page.locator(".prompt-home")).toContainText("QA 提示词库");
+        await expect(page.locator(".prompt-home")).toContainText("测试工作流");
+        await expect(page.locator(".prompt-search-examples a")).toHaveText(["需求分析", "接口", "性能", "智能体"]);
+        await expect(page.locator(".prompt-search-examples")).not.toContainText("requirements");
+        await expect(page.locator(".prompt-search-examples")).not.toContainText("performance");
+        await expect(page.locator(".prompt-home")).not.toContainText("WORKFLOW LIBRARY");
+        await expect(page.locator(".prompt-home")).not.toContainText("Playwri的");
+        await expect(page.locator(".prompt-home")).not.toContainText("Prompt的");
+      }
     });
 
-    test(`${lang} searches prompts and keeps categories expanded after refresh`, async ({ page, baseURL }) => {
-      await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
-      const category = page.locator(".prompt-category").first();
-      const toggle = category.locator(".prompt-category-toggle");
-      const list = category.locator(".prompts-grid");
-
-      await expect(toggle).toHaveAttribute("aria-expanded", "false");
-      await expect(list).toBeHidden();
-      await toggle.click();
-      await expect(toggle).toHaveAttribute("aria-expanded", "true");
-      await expect(list).toBeVisible();
-
-      await page.reload({ waitUntil: "domcontentloaded" });
-      await expect(page.locator(".prompt-category").first().locator(".prompt-category-toggle")).toHaveAttribute("aria-expanded", "false");
-
-      const search = page.locator("#prompt-search-input");
-      await search.fill(lang === "zh-cn" ? "API测试" : "API Testing");
-      const apiPrompt = page.locator('[data-prompt-type="api-testing"]');
-      await expect(apiPrompt).toBeVisible();
-      await expect(page.locator(".prompt-category").filter({ has: apiPrompt }).locator(".prompt-category-toggle")).toHaveAttribute("aria-expanded", "true");
-      await expect(page.locator(".prompt-search-empty")).toBeHidden();
-      await search.fill("");
-      await expect(page.locator(".prompt-category").first().locator(".prompts-grid")).toBeHidden();
+    test(`${lang} provides an all-prompts explorer`, async ({ page, baseURL }) => {
+      await page.goto(`${baseURL}/${lang}/prompts/all/`, { waitUntil: "domcontentloaded" });
+      await expect(page.locator("#prompt-explorer-search")).toBeVisible();
+      await expect(page.locator("#prompt-area-filter")).toBeVisible();
+      await expect(page.locator("#prompt-task-filter")).toBeVisible();
+      await expect(page.locator("#prompt-level-filter")).toBeVisible();
+      await expect(page.locator("#prompt-variant-filter")).toBeVisible();
+      await expect(page.locator("[data-prompt-card]")).toHaveCount(246);
+      if (lang === "zh-cn") {
+        await expect(page.locator("#prompt-variant-filter")).toContainText("轻量版");
+        await expect(page.locator("#prompt-variant-filter")).not.toContainText("Lite");
+      }
     });
 
-    test(`${lang} unifies the page name and frames the flow as assisted`, async ({
-      page,
-      baseURL,
-    }) => {
-      await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
-      const h1 = lang === "zh-cn" ? "软件测试提示词库" : "Software Testing Prompt Library";
-      await expect(page.locator("main h1")).toHaveText(h1);
-      await expect(page).toHaveTitle(new RegExp(h1));
-      await expect(page.locator("#flow-heading")).toContainText(lang === "zh-cn" ? "辅助" : /assisted/i);
+    test(`${lang} detail content keeps structural labels localized`, async ({ page, baseURL }) => {
+      await page.goto(`${baseURL}/${lang}/prompts/requirements-analysis/`, { waitUntil: "domcontentloaded" });
+
+      if (lang === "zh-cn") {
+        await expect(page.locator('meta[name="description"]')).not.toHaveAttribute("content", /角色：/);
+        const detailContent = page.locator(".prompt-content");
+        for (const label of [
+          "Default",
+          "Role",
+          "Context",
+          "Task",
+          "Output Format",
+          "Execution Instructions",
+          "Quality Requirements",
+          "Special Considerations",
+          "Test Design Methodology",
+          "Coverage Dimensions",
+          "Happy Path",
+          "Negative Path",
+          "Gotchas",
+        ]) {
+          await expect(detailContent).not.toContainText(label);
+        }
+        await expect(detailContent).not.toContainText("�");
+      }
     });
 
-    test(`${lang} opens a category with one prompt and its GitHub source link`, async ({ page, baseURL }) => {
-      await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
-      const href = await page.locator("[data-prompt-type]").first().getAttribute("href");
-      await page.goto(`${baseURL}${href}`, { waitUntil: "domcontentloaded" });
-
-      await expect(page.locator('[role="tablist"]')).toHaveCount(0);
-      await expect(page.locator(".prompt-source-link")).toHaveAttribute(
-        "href",
-        /github\.com\/naodeng\/awesome-qa-prompt\/blob\/main\/testing-types\//,
-      );
+    test(`${lang} prompt surfaces have no mobile horizontal overflow`, async ({ page, baseURL }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      for (const route of ["prompts/", "prompts/all/", "prompts/requirements-analysis/"]) {
+        await page.goto(`${baseURL}/${lang}/${route}`, { waitUntil: "domcontentloaded" });
+        const width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
+        expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+      }
     });
   }
 });

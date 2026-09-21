@@ -54,7 +54,7 @@ Return:
 5. Result table:
 
 | Case reference | Classification | Confidence | Impact | Behavior and observable business outcome | Evidence reference | Mock/replacement status | Problem and why wrong business can still pass | Candidate minimal regression (static inference) | Missing assertion/revision |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 6. Missing scenarios, state branches, and rules to confirm
 7. Clarifying questions and human review items

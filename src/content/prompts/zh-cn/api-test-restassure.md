@@ -1,6 +1,6 @@
 ---
 title: "API 测试（Rest Assured） Prompt"
-description: "用于API 测试（Rest Assu的风险识别、证据梳理与可执行测试建议输出。"
+description: "用于API 测试（Rest Assured）的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "api-test-restassure"
 category: "其他提示词"
 categoryOrder: 9007199254740991
@@ -10,7 +10,7 @@ order: 30
 ---
 # API 测试（Rest Assured） Prompt
 
-<!-- Prompt purpose: 用于API 测试（Rest Assu的风险识别、证据梳理与可执行测试建议输出。 -->
+<!-- Prompt purpose: 用于API 测试（Rest Assured）的风险识别、证据梳理与可执行测试建议输出。 -->
 面向 Java Rest Assured 技术栈的 API 自动化测试提示词，覆盖请求封装、断言、契约和流水线集成。
 
 ## 使用约束与降级规则
@@ -105,7 +105,7 @@ src/test/resources/
 
 若用户已有 Base 类或分层，**优先对齐**。
 
-## Gotchas
+## 常见误区
 
 - **禁止**在 `test.properties`、示例代码、输出中硬编码真实 token/密码/cookie。
 - 从 curl/Postman 迁移时脱敏敏感 header。

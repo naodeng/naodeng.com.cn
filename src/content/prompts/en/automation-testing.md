@@ -41,7 +41,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" â€” never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## Test Automation Methodology
 
@@ -182,30 +182,30 @@ Please output test automation plans in the following Markdown format:
 #### Project Structure Design
 ```text
 automation-framework/
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ main/
-â”‚   â”‚   â”œâ”€â”€ java/
-â”‚   â”‚   â”‚   â”œâ”€â”€ pages/          # Page object classes
-â”‚   â”‚   â”‚   â”œâ”€â”€ utils/          # Utility classes and helper methods
-â”‚   â”‚   â”‚   â”œâ”€â”€ config/         # Configuration management
-â”‚   â”‚   â”‚   â””â”€â”€ data/           # Test data models
-â”‚   â”‚   â””â”€â”€ resources/
-â”‚   â”‚       â”œâ”€â”€ config/         # Configuration files
-â”‚   â”‚       â”œâ”€â”€ testdata/       # Test data files
-â”‚   â”‚       â””â”€â”€ drivers/        # Browser drivers
-â”‚   â””â”€â”€ test/
-â”‚       â”œâ”€â”€ java/
-â”‚       â”‚   â”œâ”€â”€ web/            # Web UI tests
-â”‚       â”‚   â”œâ”€â”€ api/            # API tests
-â”‚       â”‚   â”œâ”€â”€ mobile/         # Mobile tests
-â”‚       â”‚   â””â”€â”€ database/       # Database tests
-â”‚       â””â”€â”€ resources/
-â”‚           â”œâ”€â”€ features/       # BDD feature files
-â”‚           â””â”€â”€ testng.xml      # Test suite configuration
-â”œâ”€â”€ reports/                    # Test reports
-â”œâ”€â”€ logs/                       # Log files
-â”œâ”€â”€ pom.xml                     # Maven configuration
-â””â”€â”€ README.md                   # Project documentation
+--œ------ src/
+--‚   --œ------ main/
+--‚   --‚   --œ------ java/
+--‚   --‚   --‚   --œ------ pages/          # Page object classes
+--‚   --‚   --‚   --œ------ utils/          # Utility classes and helper methods
+--‚   --‚   --‚   --œ------ config/         # Configuration management
+--‚   --‚   --‚   --------- data/           # Test data models
+--‚   --‚   --------- resources/
+--‚   --‚       --œ------ config/         # Configuration files
+--‚   --‚       --œ------ testdata/       # Test data files
+--‚   --‚       --------- drivers/        # Browser drivers
+--‚   --------- test/
+--‚       --œ------ java/
+--‚       --‚   --œ------ web/            # Web UI tests
+--‚       --‚   --œ------ api/            # API tests
+--‚       --‚   --œ------ mobile/         # Mobile tests
+--‚       --‚   --------- database/       # Database tests
+--‚       --------- resources/
+--‚           --œ------ features/       # BDD feature files
+--‚           --------- testng.xml      # Test suite configuration
+--œ------ reports/                    # Test reports
+--œ------ logs/                       # Log files
+--œ------ pom.xml                     # Maven configuration
+--------- README.md                   # Project documentation
 ```
 
 #### Core Component Design
@@ -358,9 +358,9 @@ pipeline {
 #### Test Monitoring Metrics
 | Metric Type | Specific Metric | Target Value | Monitoring Frequency |
 |-------------|-----------------|--------------|---------------------|
-| Execution Efficiency | Test execution time | â‰¤ 30 minutes | Every execution |
-| Test Stability | Test pass rate | â‰¥ 95% | Daily statistics |
-| Code Coverage | Unit test coverage | â‰¥ 80% | Every build |
+| Execution Efficiency | Test execution time | -‰¤ 30 minutes | Every execution |
+| Test Stability | Test pass rate | -‰¥ 95% | Daily statistics |
+| Code Coverage | Unit test coverage | -‰¥ 80% | Every build |
 | Defect Discovery | Defects found by automation | Trend analysis | Weekly statistics |
 
 ---

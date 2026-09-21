@@ -51,7 +51,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" — never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## Test Design Methodology (Required Design Methods)
 

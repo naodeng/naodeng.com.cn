@@ -1,6 +1,6 @@
 ---
 title: "API 测试（Supertest） Prompt"
-description: "用于API 测试（Supertest的风险识别、证据梳理与可执行测试建议输出。"
+description: "用于API 测试（Supertest）的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "api-test-supertest"
 category: "其他提示词"
 categoryOrder: 9007199254740991
@@ -10,7 +10,7 @@ order: 31
 ---
 # API 测试（Supertest） Prompt
 
-<!-- Prompt purpose: 用于API 测试（Supertest的风险识别、证据梳理与可执行测试建议输出。 -->
+<!-- Prompt purpose: 用于API 测试（Supertest）的风险识别、证据梳理与可执行测试建议输出。 -->
 面向 Node.js Supertest 的 API 测试提示词，适合 Express/Koa/NestJS 等服务端接口测试。
 
 ## 使用约束与降级规则
@@ -107,7 +107,7 @@ package.json             # script: "test": "jest --runInBand"
 
 若用户已是 Mocha + chai 或 TypeScript，**对齐现有**，不要强行改 Jest，除非用户要求。
 
-## Gotchas
+## 常见误区
 
 - **禁止**硬编码真实 token、密码、cookie；一律环境变量 + 占位。
 - 从 curl/Postman 迁移时脱敏敏感 header。

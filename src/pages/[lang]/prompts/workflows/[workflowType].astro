@@ -68,6 +68,7 @@ const howToSchema = {
   extraStructuredData={[howToSchema]}
   contentWide={true}
 >
+  <Breadcrumb items={breadcrumbs} />
   <div class="workflow-layout" data-has-toc={tocHeadings.length > 0}>
     <!-- Left sidebar: workflow nav -->
     <aside class="workflow-sidebar-left" aria-label={sidebarLabel}>
@@ -105,7 +106,7 @@ const howToSchema = {
             href={getRelativeLocaleUrl(lang, "/prompts/")}
             class="workflow-sidebar-back"
           >
-            ← {lang === "zh-cn" ? "返回提示词库" : "Back to Prompts"}
+            <span class="material-icons-sharp" aria-hidden="true">arrow_back</span>{lang === "zh-cn" ? "返回提示词库" : "Back to Prompts"}
           </a>
         </nav>
       </div>
@@ -113,7 +114,6 @@ const howToSchema = {
 
     <!-- Main content -->
     <div class="workflow-main">
-      <Breadcrumb items={breadcrumbs} />
       <header class="workflow-detail-header">
         <h1>{entry.data.title}</h1>
         <p class="workflow-detail-desc">{entry.data.description}</p>
@@ -164,14 +164,14 @@ const howToSchema = {
     grid-template-columns: 220px minmax(0, 1fr);
     gap: var(--sp-l);
     align-items: start;
-    max-inline-size: 1400px;
+    max-inline-size: var(--layout-max);
     margin-inline: auto;
     padding-inline: var(--sp-m);
-    padding-block: var(--sp-l);
+    padding-block: 0 5rem;
   }
   .workflow-layout[data-has-toc="true"] {
     grid-template-columns: 220px minmax(0, 1fr) 200px;
-    max-inline-size: 1400px;
+    max-inline-size: var(--layout-max);
   }
 
   /* ── Left sidebar ── */
@@ -183,7 +183,7 @@ const howToSchema = {
   .workflow-sidebar-inner {
     border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
     border-radius: var(--radius-sm);
-    background: color-mix(in srgb, var(--color-base) 96%, var(--color-main));
+    background: var(--color-surface-elevated);
   }
   .workflow-sidebar-toggle {
     display: none;
@@ -282,7 +282,7 @@ const howToSchema = {
   .workflow-detail-header {
     margin-block-end: var(--sp-l);
     padding-block-end: var(--sp-m);
-    border-block-end: 2px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+    border-block-end: 1px solid var(--color-border);
   }
   .workflow-detail-header h1 {
     font-size: clamp(1.5rem, 3.5vw, 2.25rem);
@@ -298,6 +298,8 @@ const howToSchema = {
 
   /* ── Prose content ── */
   .workflow-content { line-height: 1.8; }
+  .workflow-content :global(h1:first-child) { display: none; }
+  .workflow-content :global(div[align="right"]) { display: flex; justify-content: flex-end; margin-block: 0 1.5rem; font-size: 0.8rem; }
   .workflow-content :global(h1) { font-size: 1.5rem; font-weight: 700; margin-block: 1.5em 0.5em; }
   .workflow-content :global(h2) {
     font-size: 1.25rem; font-weight: 700;
