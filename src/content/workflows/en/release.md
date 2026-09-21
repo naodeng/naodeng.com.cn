@@ -7,7 +7,7 @@ order: 3
 ---
 # Release Testing Workflow
 
-<div align="right"><a href="../zh/release-testing-workflow.md">简体中文</a> · <strong>English</strong></div>
+<div align="right"><a href="/zh-cn/prompts/workflows/release/">简体中文</a> · <strong>English</strong></div>
 
 ## 📋 Metadata
 
@@ -15,12 +15,6 @@ order: 3
 - **Timeline**: 1-2 weeks before release
 - **Last Updated**: 2026-01-01
 - **Version**: 1.0
-
-## 🎯 Objective
-
-Comprehensive testing workflow to ensure release quality and readiness for production deployment.
-
----
 
 ## 📅 Release Timeline
 
@@ -49,8 +43,8 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Plan testing strategy
 
 **Prompts to Use**:
-- [Test Strategy](/en/prompts/en/)
-- [Requirements Analysis](/en/prompts/en/) - Risk analysis
+- [Test Strategy](/en/prompts/test-strategy/)
+- [Requirements Analysis](/en/prompts/requirements-analysis/) - Risk analysis
 
 **Deliverables**:
 - [ ] Release test plan
@@ -72,8 +66,8 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Prepare test accounts
 
 **Prompts to Use**:
-- [Automation Testing](/en/prompts/en/) - CI/CD integration
-- [Test Strategy](/en/prompts/en/) - Test data generation
+- [Automation Testing](/en/prompts/automation-testing/) - CI/CD integration
+- [Test Strategy](/en/prompts/test-strategy/) - Test data generation
 
 ### Test Suite Preparation
 
@@ -105,8 +99,8 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 #### 1. Functional Testing
 
 **Prompts to Use**:
-- [Functional Testing](/en/prompts/en/)
-- [Test Case Writing](/en/prompts/en/)
+- [Functional Testing](/en/prompts/functional-testing/)
+- [Test Case Writing](/en/prompts/test-case-writing/)
 
 **Execute**:
 - All new features
@@ -123,12 +117,12 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Mobile testing
 
 **Prompts to Use**:
-- [AI-Assisted Testing](/en/prompts/en/) - Intelligent test selection
+- [AI-Assisted Testing](/en/prompts/ai-assisted-testing/) - Intelligent test selection
 
 #### 3. End-to-End Testing
 
 **Prompts to Use**:
-- [Functional Testing](/en/prompts/en/) - E2E scenarios
+- [Functional Testing](/en/prompts/functional-testing/) - E2E scenarios
 
 **Test**:
 - Complete user journeys
@@ -143,7 +137,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ### Performance Testing
 
 **Prompts to Use**:
-- [Performance Testing](/en/prompts/en/)
+- [Performance Testing](/en/prompts/performance-testing/)
 
 **Execute**:
 - Load testing (expected load)
@@ -160,7 +154,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ### Security Testing
 
 **Prompts to Use**:
-- [Security Testing](/en/prompts/en/)
+- [Security Testing](/en/prompts/security-testing/)
 
 **Execute**:
 - Vulnerability scanning
@@ -172,7 +166,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ### Accessibility Testing
 
 **Prompts to Use**:
-- [Accessibility Testing](/en/prompts/en/)
+- [Accessibility Testing](/en/prompts/accessibility-testing/)
 
 **Execute**:
 - Screen reader testing
@@ -183,7 +177,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 ### Visual Testing
 
 **Prompts to Use**:
-- [Accessibility Testing](/en/prompts/en/) - Visual testing
+- [Accessibility Testing](/en/prompts/accessibility-testing/) - Visual testing
 
 **Execute**:
 - Visual regression tests
@@ -217,7 +211,7 @@ Comprehensive testing workflow to ensure release quality and readiness for produ
 - Exploratory testing sessions
 
 **Prompts to Use**:
-- [Manual Testing](/en/prompts/en/) - Exploratory testing
+- [Manual Testing](/en/prompts/manual-testing/) - Exploratory testing
 
 ### Bug Triage
 
@@ -240,8 +234,8 @@ Medium/Low → Defer to next release
 ### Test Metrics Review
 
 **Prompts to Use**:
-- [Test Reporting](/en/prompts/en/)
-- [Test Strategy](/en/prompts/en/) - Quality assessment
+- [Test Reporting](/en/prompts/test-reporting/)
+- [Test Strategy](/en/prompts/test-strategy/) - Quality assessment
 
 **Metrics to Review**:
 - Test execution rate: ___%
@@ -380,7 +374,7 @@ Medium/Low → Defer to next release
 - Process improvements?
 
 **Prompts to Use**:
-- [Test Reporting](/en/prompts/en/)
+- [Test Reporting](/en/prompts/test-reporting/)
 
 ---
 
@@ -449,26 +443,26 @@ Medium/Low → Defer to next release
 
 ### Planning
 
-- [Test Strategy](/en/prompts/en/)
-- [Requirements Analysis](/en/prompts/en/)
+- [Test Strategy](/en/prompts/test-strategy/)
+- [Requirements Analysis](/en/prompts/requirements-analysis/)
 
 ### Testing
 
-- [Functional Testing](/en/prompts/en/)
-- [Performance Testing](/en/prompts/en/)
-- [Security Testing](/en/prompts/en/)
-- [Accessibility Testing](/en/prompts/en/)
+- [Functional Testing](/en/prompts/functional-testing/)
+- [Performance Testing](/en/prompts/performance-testing/)
+- [Security Testing](/en/prompts/security-testing/)
+- [Accessibility Testing](/en/prompts/accessibility-testing/)
 
 ### Assessment
 
-- [Test Reporting](/en/prompts/en/)
+- [Test Reporting](/en/prompts/test-reporting/)
 
 ---
 
 ## 📚 Related Workflows
 
-- [Daily Testing Workflow](daily-testing-workflow.md) - Day-to-day activities
-- [Sprint Testing Workflow](sprint-testing-workflow.md) - Sprint cycle
+- [Daily Testing Workflow](/en/prompts/workflows/daily/) - Day-to-day activities
+- [Sprint Testing Workflow](/en/prompts/workflows/sprint/) - Sprint cycle
 
 ---
 

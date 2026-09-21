@@ -54,7 +54,7 @@ Return:
 5. Result table:
 
 | Test reference | Classification | Confidence | Impact | Behavior and observable business outcome | Evidence reference | Mock/replacement status | Problem and why wrong production can still pass | Candidate minimal regression (static inference) | Missing assertion/revision |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 6. Missing behavior or unreliable test patterns (STRONG: likely catches realistic regressions; WEAK: misses important validation; FAKE: offers little or no regression protection)
 7. Clarifying questions and human review items

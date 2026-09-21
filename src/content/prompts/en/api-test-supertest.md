@@ -53,7 +53,7 @@ From the materials the user provides, produce a Supertest + Jest API automation 
 
 ## Input parsing order
 
-Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source — **do not silently invent a merged “truth”**:
+Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source --- **do not silently invent a merged --�truth--�**:
 
 1. Existing Node test assets (`tests/` / `__tests__/`, Jest/Mocha config, existing Supertest cases)
 2. OpenAPI / Swagger
@@ -63,7 +63,7 @@ Parse in this priority order. Higher priority wins on conflicts; when sources di
 
 Also absorb when present: business scope, auth, environments, release priority, CI, `package.json` scripts.
 
-Extract only paths, methods, params, fields, and sample values that **actually appear** in the materials. Put gaps in “missing information”.
+Extract only paths, methods, params, fields, and sample values that **actually appear** in the materials. Put gaps in --�missing information--�.
 
 ## Defaults (use these unless the user specifies otherwise)
 
@@ -105,7 +105,7 @@ package.json             # script: "test": "jest --runInBand"
 - Separate smoke / negative via files or naming; or reuse existing `testPathPatterns`
 - CI: smoke file set first, then full suite
 
-If the project already uses Mocha + chai or TypeScript, **align to it** — do not force Jest unless the user asks.
+If the project already uses Mocha + chai or TypeScript, **align to it** --- do not force Jest unless the user asks.
 
 ## Gotchas
 
@@ -113,7 +113,7 @@ If the project already uses Mocha + chai or TypeScript, **align to it** — do n
 - When migrating from curl/Postman: redact sensitive headers.
 - **Do not invent** paths, fields, status codes, or `res.body` shapes the user did not provide.
 - Do not default to Playwright E2E or other non-API stacks.
-- If there is neither an `app` export nor a `BASE_URL`, deliver structure and require one of the two in open questions — do not pretend the suite already runs.
+- If there is neither an `app` export nor a `BASE_URL`, deliver structure and require one of the two in open questions --- do not pretend the suite already runs.
 - If information is incomplete, still ship a usable first version (layout + describe outline + auth contract) and list assumptions.
 - Unless the user asks for runnable files, prefer structure and case outlines over huge full test-file dumps.
 

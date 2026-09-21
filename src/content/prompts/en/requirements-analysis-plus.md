@@ -51,7 +51,7 @@ Analyze multi-format, multi-source materials with cross-checks and return decisi
 
 | Dimension | Baseline | This plus skill (required) |
 | --- | --- | --- |
-| Inputs | Mostly one requirement/story pack | **Multi-format multi-source**: PRD, stories, prototypes, tech notes, plans, spreadsheets‚Äîcross-checked |
+| Inputs | Mostly one requirement/story pack | **Multi-format multi-source**: PRD, stories, prototypes, tech notes, plans, spreadsheets---cross-checked |
 | Conclusion shape | Risks and open questions | **Structured fields** (see output): sources, conflicts, testability, impact, priority, next action |
 | Conflicts | May note ambiguity | **Mandatory cross-status**: aligned / conflict / missing / stale, with source pairs |
 | Quality bar | Guides next steps | Questions must be assignable and closable; ordered by delivery/quality/testability blockage |
@@ -64,23 +64,23 @@ Use baseline when materials are single-source and the user only needs a quick sc
 
 ## Input processing order (default)
 
-1. **Scope**: PRD / epic / release notes ‚Üí boundaries first
-2. **Behavior**: stories / acceptance criteria / prototypes ‚Üí expected behavior
-3. **Constraints**: tech docs / APIs / permissions / data rules ‚Üí testable constraints
-4. **Plan**: schedule, dependencies, milestones ‚Üí timebox and external deps
-5. **Risk**: defect history, open questions, stakeholder concerns ‚Üí priority weighting
+1. **Scope**: PRD / epic / release notes -Üí boundaries first
+2. **Behavior**: stories / acceptance criteria / prototypes -Üí expected behavior
+3. **Constraints**: tech docs / APIs / permissions / data rules -Üí testable constraints
+4. **Plan**: schedule, dependencies, milestones -Üí timebox and external deps
+5. **Risk**: defect history, open questions, stakeholder concerns -Üí priority weighting
 
 If a class is missing, do not stop: ship a draft and mark that class as an information gap.
 
 ## What to do
 
-1. Digest materials in the order above; build topic ‚Üí per-source statements.
+1. Digest materials in the order above; build topic -Üí per-source statements.
 2. Find conflicts, missing rules, weak acceptance criteria, untestable statements.
 3. Rank by impact on delivery, quality, and testability; return first clarifications and next actions (you may name follow-on skills such as `test-strategy` / `testcase-writer-plus`).
 
 ## Execution Rules
 
-- Separate ‚Äúconfirmed in source‚Äù from ‚Äúinferred‚Äù; label inferences as assumptions.
+- Separate --úconfirmed in source--ù from --úinferred--ù; label inferences as assumptions.
 - Do not restatedump sources; keep minimal evidence for conclusions.
 - Do not invent business rules, SLAs, or fields; unknowns become questions.
 - Never silently merge conflicts: list both views and a suggested decider/question.
@@ -92,7 +92,7 @@ If a class is missing, do not stop: ship a draft and mark that class as an infor
 - `Sources`
 - `Status`: `aligned` / `conflict` / `missing` / `stale` / `untestable`
 - `Impact` on delivery / quality / testability (High/Med/Low)
-- `Priority`: P0‚ÄìP3
+- `Priority`: P0---P3
 - `Question or decision needed`
 - `Suggested owner` (role is enough: Product/Dev/QA)
 - `Suggested next action`
@@ -145,9 +145,9 @@ Return in this order:
 
 ## Quality Bar
 
-- Conclusions must support Product/Dev/QA tradeoffs‚Äînot ‚Äúread the docs again‚Äù.
+- Conclusions must support Product/Dev/QA tradeoffs---not --úread the docs again--ù.
 - Every P0/P1 item needs a suggested action and owner role.
-- Ban filler (‚Äúimprove communication‚Äù) without naming the decision to make.
+- Ban filler (--úimprove communication--ù) without naming the decision to make.
 
 ## Gotchas
 
@@ -158,7 +158,7 @@ Return in this order:
 
 ## Pre-delivery checklist
 
-- [ ] Multi-source/multi-format handling shown‚Äînot single-doc paraphrase
+- [ ] Multi-source/multi-format handling shown---not single-doc paraphrase
 - [ ] Conflicts/missing/untestable have Status and sources
 - [ ] P0/P1 items include Impact, Question, Suggested owner/action
 - [ ] Impact on test start and delivery gates is explicit

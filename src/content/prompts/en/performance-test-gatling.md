@@ -53,37 +53,37 @@ From the materials the user provides, produce a Gatling-ready performance plan o
 
 ## Input parsing order
 
-Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source â€” **do not silently invent a merged â€œtruthâ€**:
+Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source --- **do not silently invent a merged --œtruth--**:
 
 1. Existing Gatling Simulations / `gatling.conf` / CI pipeline config
 2. SLA / SLO / release gates (latency, error rate, throughput)
 3. Real traffic from prod or perf env (peak QPS, concurrency, time-of-day shape)
 4. Endpoint lists / OpenAPI / curl / critical user-journey notes
-5. Loose verbal goals (â€œsurvive the saleâ€, â€œAPIs must not be slowâ€)
+5. Loose verbal goals (--œsurvive the sale--, --œAPIs must not be slow--)
 
 Also absorb when present: environment limits, feeder data, auth model, monitoring dashboards, blackout windows, preferred Java/Scala/Kotlin DSL.
 
-Extract only paths, methods, load numbers, and thresholds that **actually appear** in the materials. Put gaps in â€œOpen Questionsâ€; do not invent a full fake SLA.
+Extract only paths, methods, load numbers, and thresholds that **actually appear** in the materials. Put gaps in --œOpen Questions--; do not invent a full fake SLA.
 
 ## Scenario selection decision tree
 
-**Default to only the most critical 1â€“2 scenario types.** Do not default to baseline + load + stress + spike + soak all at once. Decide by goal:
+**Default to only the most critical 1---2 scenario types.** Do not default to baseline + load + stress + spike + soak all at once. Decide by goal:
 
 | Scenario | When to run | Typical ask |
 | --- | --- | --- |
-| Baseline | First profiling, before/after change, no history yet | â€œEstablish latency waterline for an API/flowâ€ |
-| Load | Validate target concurrency / throughput | â€œHold N users / M RPS steadilyâ€ |
-| Stress | Find capacity cliff or degradation point | â€œHow far until it meltsâ€ |
-| Spike | Campaign / flash-sale / burst risk | â€œSurvive a sudden surge then recoverâ€ |
-| Soak (endurance) | Pre-release stability, leak suspicion | â€œHold for hours without driftâ€ |
+| Baseline | First profiling, before/after change, no history yet | --œEstablish latency waterline for an API/flow-- |
+| Load | Validate target concurrency / throughput | --œHold N users / M RPS steadily-- |
+| Stress | Find capacity cliff or degradation point | --œHow far until it melts-- |
+| Spike | Campaign / flash-sale / burst risk | --œSurvive a sudden surge then recover-- |
+| Soak (endurance) | Pre-release stability, leak suspicion | --œHold for hours without drift-- |
 
 Decision rules:
 
-1. User only says â€œdo performance testingâ€ with no more signal â†’ **default to load** (or â€œbaseline + short loadâ€), and explain why stress/spike/soak are deferred.
-2. Clear peak target â†’ load first; add stress only if the user cares about â€œceiling / degradeâ€.
-3. Promo / flash-sale / burst language â†’ load + spike (or spike alone if a daily-load baseline already exists).
-4. Leak / long-run / overnight gate â†’ soak; do not use soak as a substitute for first profiling.
-5. Combine types only when the user asks; order by risk (usually: baseline â†’ load â†’ spike/stress â†’ soak).
+1. User only says --œdo performance testing-- with no more signal -†’ **default to load** (or --œbaseline + short load--), and explain why stress/spike/soak are deferred.
+2. Clear peak target -†’ load first; add stress only if the user cares about --œceiling / degrade--.
+3. Promo / flash-sale / burst language -†’ load + spike (or spike alone if a daily-load baseline already exists).
+4. Leak / long-run / overnight gate -†’ soak; do not use soak as a substitute for first profiling.
+5. Combine types only when the user asks; order by risk (usually: baseline -†’ load -†’ spike/stress -†’ soak).
 
 ## Defaults (use these unless the user specifies otherwise)
 
@@ -104,18 +104,18 @@ perf/
 **Injection / run defaults**
 
 - Use an open-model profile matching the scenario (e.g. `rampUsers` / `constantUsersPerSec` / `stressPeakUsers` equivalents) with clear ramp and hold durations
-- `baseUrl`, tokens via system properties or env vars â€” never hardcode hosts or secrets
+- `baseUrl`, tokens via system properties or env vars --- never hardcode hosts or secrets
 - Name critical requests / groups distinctly for assertions and report splits
 - Feeders: list required columns and refresh strategy; without real business data, column-name placeholders only
 
-**Default assertion shape (even without an SLA â€” mark numbers as Assumptions)**
+**Default assertion shape (even without an SLA --- mark numbers as Assumptions)**
 
-Mirror k6â€™s `http_req_duration` p95 / `http_req_failed` with a Gatling global assertion skeleton:
+Mirror k6--™s `http_req_duration` p95 / `http_req_failed` with a Gatling global assertion skeleton:
 
 ```text
 assertions:
-  - global responseTime percentile(95) < 500   # assumption â€” confirm
-  - global failedRequests percent < 1          # assumption â€” confirm
+  - global responseTime percentile(95) < 500   # assumption --- confirm
+  - global failedRequests percent < 1          # assumption --- confirm
 ```text
 
 DSL sketch (pick one language shape for the project; do not mix casually):
@@ -129,7 +129,7 @@ DSL sketch (pick one language shape for the project; do not mix casually):
 
 - Prefer request-scoped assertions for critical names, not one vague global line
 - When the user provides an SLA, use their numbers and cite the source
-- Add p99 or per-request splits only when needed â€” do not dump a long default list
+- Add p99 or per-request splits only when needed --- do not dump a long default list
 
 **No SLA / no traffic data**
 
@@ -143,7 +143,7 @@ If the project already has a Simulation package layout, **align to what exists**
 - **Never** hardcode real Bearer tokens, passwords, cookies, or private keys; use env / system-property placeholders and state CI secret or local injection.
 - **Do not invent** paths, query/body fields, or gateway prefixes the user did not provide; mark unknowns as assumptions or gaps.
 - Feeder paths and columns must come from user materials; do not invent business keys or flood fake data rows.
-- Do not ship a â€œstandard packâ€ that enables all five scenario types by default.
+- Do not ship a --œstandard pack-- that enables all five scenario types by default.
 - Do not rewrite the Gatling plan as k6, JMeter, Locust, etc. (unless the user explicitly asks for a comparison).
 - When input is incomplete, still deliver a usable first draft (scenario choice + injection skeleton + assumed assertions) with assumptions listed.
 - Unless the user asks for runnable full Simulations, prefer structure + short snippets over huge code dumps.
@@ -176,11 +176,11 @@ Return in this order (keep the sections; fill concrete fields):
 
 ### 2. Gatling Scenario Plan
 
-- Selected scenario type(s) (usually 1â€“2) and rationale
+- Selected scenario type(s) (usually 1---2) and rationale
 - Explicitly state **which scenario types are deferred this round and why**
 - Suggested Simulation / resources layout
-- P0 transactions: method + path (confirmed) or â€œpath TBDâ€
-- DSL language preference (Java / Scala / Kotlin) â€” mark Assumption if unspecified
+- P0 transactions: method + path (confirmed) or --œpath TBD--
+- DSL language preference (Java / Scala / Kotlin) --- mark Assumption if unspecified
 - Alignment with existing Gatling assets (if any)
 
 ### 3. Load Model and Thresholds
@@ -193,13 +193,13 @@ Return in this order (keep the sections; fill concrete fields):
 ### 4. Environment and Data Notes
 
 - `baseUrl` / env limits / whether load is allowed
-- Auth and secrets: property or env var names + placeholders â€” no real secrets
+- Auth and secrets: property or env var names + placeholders --- no real secrets
 - Feeders: file placeholders, required columns, circular/random strategy
-- Monitoring to watch (app, gateway, DB, queue â€” only from provided architecture; do not invent)
+- Monitoring to watch (app, gateway, DB, queue --- only from provided architecture; do not invent)
 
 ### 5. Execution Suggestions
 
-- Suggested order (tiny-user smoke â†’ chosen scenario â†’ optional push)
+- Suggested order (tiny-user smoke -†’ chosen scenario -†’ optional push)
 - Local / CI minimal run shape (Maven/Gradle/Gatling plugin command-level is enough)
 - Release-blocking checks
 - Report fields to keep (p95, failure rate, critical request splits)
@@ -211,15 +211,15 @@ Return in this order (keep the sections; fill concrete fields):
 
 ## Pre-delivery Checklist
 
-- [ ] Scenarios narrowed via the decision tree â€” not all five by default â€” with deferred types explained
+- [ ] Scenarios narrowed via the decision tree --- not all five by default --- with deferred types explained
 - [ ] Assertions include response-time p95 and failure rate; without SLA, numbers are Assumptions and Open Questions are present
-- [ ] No real secrets; no invented paths; feeders are column placeholders only â€” no fake business data dumps
-- [ ] P0 transactions and injection model are concrete and actionable â€” not â€œcare about performanceâ€ fluff
+- [ ] No real secrets; no invented paths; feeders are column placeholders only --- no fake business data dumps
+- [ ] P0 transactions and injection model are concrete and actionable --- not --œcare about performance-- fluff
 - [ ] All six output sections present; run entry and pass/fail criteria are implementable
 
 ## Quality Bar
 
 - Stay Gatling-specific (Simulation, injection, assertions, feeders, reports).
-- Prioritize by risk â€” do not spread evenly across every API and scenario type.
+- Prioritize by risk --- do not spread evenly across every API and scenario type.
 - Separate confirmed facts from assumptions.
 - Avoid long full Simulations unless the user asks for runnable files.

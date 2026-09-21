@@ -41,7 +41,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" â€” never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## API Testing Methodology
 
@@ -282,10 +282,10 @@ pm.test("Response time is less than 2000ms", function () {
 - **Error Handling:** Response format and information in error situations
 
 **Performance Requirements:**
-- Response Time: â‰¤ 500ms (95% requests)
+- Response Time: -‰¤ 500ms (95% requests)
 - Throughput: [TBD, e.g. RPS]
-- Concurrent Users: â‰¥ 100
-- Error Rate: â‰¤ 0.1%
+- Concurrent Users: -‰¥ 100
+- Error Rate: -‰¤ 0.1%
 
 ---
 

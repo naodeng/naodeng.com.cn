@@ -60,11 +60,11 @@ If the user only needs a few smoke cases from a single source, prefer baseline `
 
 ## Role
 
-- Senior QA test designer: extract testable behavior from conflicting materials and prove coverage with a traceability matrix‚Äînot by case count.
+- Senior QA test designer: extract testable behavior from conflicting materials and prove coverage with a traceability matrix---not by case count.
 
 ## Input
 
-Users may provide (more sources ‚Üí stronger fit for this skill):
+Users may provide (more sources -Üí stronger fit for this skill):
 - requirements, user stories, acceptance criteria, PRDs, change notes
 - requirements-analysis conclusions and open questions
 - technical docs, API/flow notes, prototypes, spreadsheets
@@ -73,9 +73,9 @@ Users may provide (more sources ‚Üí stronger fit for this skill):
 
 ## What to do
 
-1. Inventory sources used; record conflicts under assumptions/gaps‚Äîdo not silently pick a side.
-2. Extract must-hold behaviors and highest failure risks; form a P0‚ÄìP3 coverage strategy.
-3. Write structured cases plus a **requirement/risk ‚Üí case** traceability map.
+1. Inventory sources used; record conflicts under assumptions/gaps---do not silently pick a side.
+2. Extract must-hold behaviors and highest failure risks; form a P0---P3 coverage strategy.
+3. Write structured cases plus a **requirement/risk -Üí case** traceability map.
 4. If inputs are incomplete, still ship an executable draft, but explicitly protect high-risk gaps.
 
 ## Execution Rules
@@ -83,7 +83,7 @@ Users may provide (more sources ‚Üí stronger fit for this skill):
 - Rank by business impact √ó failure likelihood; do not split one behavior into near-duplicate cases.
 - Each case must be independently executable: preconditions, data, steps, and decidable expected results.
 - Do not invent field names, error codes, or API paths the user did not provide; mark unknowns as TBD with assumptions.
-- On multi-source conflict: state ‚ÄúSource A says‚Ä¶ / Source B says‚Ä¶‚Äù, cover the disputed point or mark it blocking clarification.
+- On multi-source conflict: state --úSource A says--¶ / Source B says--¶--ù, cover the disputed point or mark it blocking clarification.
 - Default to Markdown tables/lists; switch only when the user asks for Excel/CSV/etc.
 
 ## Case fields (structured; omit only with a reason)
@@ -91,27 +91,27 @@ Users may provide (more sources ‚Üí stronger fit for this skill):
 Each case must include:
 - `Case ID` (stable short ID, e.g. `TC-LOGIN-001`)
 - `Title`
-- `Priority` (`P0`‚Äì`P3`)
+- `Priority` (`P0`---`P3`)
 - `Trace` (requirement/story/risk refs; separate with `;`)
 - `Type` (positive / negative / boundary / regression)
 - `Preconditions`
 - `Test data`
 - `Steps` (stepwise executable)
 - `Expected result` (decidable)
-- `Notes` (env, permissions, cleanup, automation candidate‚Äîoptional)
+- `Notes` (env, permissions, cleanup, automation candidate---optional)
 
 ## Minimum Coverage Checklist
 
 Unless the user explicitly narrows scope, cover:
 - in-scope and out-of-scope
-- multi-source consistency conclusion (write ‚Äúno conflict found‚Äù if none)
-- priority grouping (P0‚ÄìP3) with rationale
-- traceability matrix (at least: key requirement/risk ‚Üí Case IDs)
+- multi-source consistency conclusion (write --úno conflict found--ù if none)
+- priority grouping (P0---P3) with rationale
+- traceability matrix (at least: key requirement/risk -Üí Case IDs)
 - structured cases with complete fields
 - positive / negative / boundary (all three on high-risk paths, or explicit omit reason)
 - data setup and cleanup notes
 - assumptions and information gaps
-- suggested execution order (smoke ‚Üí core ‚Üí extended)
+- suggested execution order (smoke -Üí core -Üí extended)
 
 ## Output
 
@@ -130,7 +130,7 @@ Return in this order:
 
 ### 3. Prioritized Test Cases
 
-- group by P0 ‚Üí P3; list cases with structured fields
+- group by P0 -Üí P3; list cases with structured fields
 
 ### 4. Traceability Matrix
 
@@ -146,7 +146,7 @@ Return in this order:
 
 ## Quality Bar
 
-- Expected results must be decidable; ban phrases like ‚Äúsystem works‚Äù / ‚Äúas expected‚Äù without observables.
+- Expected results must be decidable; ban phrases like --úsystem works--ù / --úas expected--ù without observables.
 - No filler or duplicate cases.
 - Case IDs in the matrix must match the case list.
 - Do not dump generic textbook cases unrelated to the materials.
@@ -154,8 +154,8 @@ Return in this order:
 ## Gotchas
 
 - Treating multiple docs as one source and missing conflicts or stale rules.
-- Positive-only coverage with negative/boundary buried in notes‚Äîdoes not count.
-- Trace written as ‚Äúsee requirements‚Äù with no concrete item ‚Üí not reviewable.
+- Positive-only coverage with negative/boundary buried in notes---does not count.
+- Trace written as --úsee requirements--ù with no concrete item -Üí not reviewable.
 - Steps that assume login/data without stating preconditions.
 - Output indistinguishable from baseline (no matrix, no multi-source check, incomplete fields) means this skill was not applied.
 

@@ -53,7 +53,7 @@ From the materials the user provides, produce a pytest + requests API automation
 
 ## Input parsing order
 
-Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source ‚Äî **do not silently invent a merged ‚Äútruth‚Äù**:
+Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source --- **do not silently invent a merged --útruth--ù**:
 
 1. Existing pytest assets (`tests/`, `conftest.py`, fixtures, markers)
 2. OpenAPI / Swagger
@@ -63,7 +63,7 @@ Parse in this priority order. Higher priority wins on conflicts; when sources di
 
 Also absorb when present: business scope, auth, environments, release priority, CI (`pytest.ini` / GitHub Actions), dependency versions.
 
-Extract only paths, methods, params, fields, and sample values that **actually appear** in the materials. Put gaps in ‚Äúmissing information‚Äù.
+Extract only paths, methods, params, fields, and sample values that **actually appear** in the materials. Put gaps in --úmissing information--ù.
 
 ## Defaults (use these unless the user specifies otherwise)
 
@@ -95,7 +95,7 @@ Optional (only when the user wants a runnable skeleton): `requirements.txt` (`py
 
 - Minimum: `status_code` + critical JSON fields (when schema/examples exist)
 - Negative tests: assert status and **documented** error-body fields; if undocumented, assert status class (4xx/5xx) and mark the assumption
-- Boundaries: `@pytest.mark.parametrize`; share auth/data via fixtures ‚Äî do not copy-paste client setup
+- Boundaries: `@pytest.mark.parametrize`; share auth/data via fixtures --- do not copy-paste client setup
 
 **Layers and markers (default)**
 
@@ -144,7 +144,7 @@ Return results in this order:
 
 - proposed tree and file responsibilities
 - fixture inventory (name, scope, role)
-- env var contract (`BASE_URL`, `API_TOKEN`, ‚Ä¶)
+- env var contract (`BASE_URL`, `API_TOKEN`, --¶)
 - marker / layer strategy
 - alignment with an existing suite (if any)
 
@@ -160,7 +160,7 @@ For each P0/P1 case or case group:
 
 ### 4. Fixture and Data Notes
 
-- how auth is obtained/refreshed (if no login endpoint is provided, mark the gap ‚Äî do not invent a login flow)
+- how auth is obtained/refreshed (if no login endpoint is provided, mark the gap --- do not invent a login flow)
 - test-data create / isolation / cleanup
 - parametrization tables (known boundaries only)
 
@@ -180,7 +180,7 @@ For each P0/P1 case or case group:
 - [ ] Inputs followed the parsing order; conflicts and gaps are called out
 - [ ] Layout / fixtures / env placeholders match defaults (or explain reuse of existing)
 - [ ] No real secrets; no invented paths/fields/schemas
-- [ ] P0/P1 cases have concrete names and assertions ‚Äî not vague ‚Äúhappy/unhappy‚Äù
+- [ ] P0/P1 cases have concrete names and assertions --- not vague --úhappy/unhappy--ù
 - [ ] Smoke markers and CI path are actionable
 
 ## Quality bar

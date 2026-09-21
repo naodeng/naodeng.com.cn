@@ -7,7 +7,7 @@ order: 2
 ---
 # Sprint Testing Workflow
 
-<div align="right"><a href="../zh/sprint-testing-workflow.md">简体中文</a> · <strong>English</strong></div>
+<div align="right"><a href="/zh-cn/prompts/workflows/sprint/">简体中文</a> · <strong>English</strong></div>
 
 ## 📋 Metadata
 
@@ -16,19 +16,13 @@ order: 2
 - **Last Updated**: 2026-01-01
 - **Version**: 1.0
 
-## 🎯 Objective
-
-Complete testing workflow for a 2-week sprint cycle, from planning to retrospective.
-
----
-
 ## 📅 Sprint Planning (Day 1)
 
 ### Morning: Sprint Planning Meeting
 
 **Preparation** (Before meeting):
 - Review product backlog
-- Use [Test Strategy](/en/prompts/en/) for upcoming stories
+- Use [Test Strategy](/en/prompts/test-strategy/) for upcoming stories
 
 **During Meeting**:
 - Understand acceptance criteria
@@ -39,8 +33,8 @@ Complete testing workflow for a 2-week sprint cycle, from planning to retrospect
 ### Afternoon: Test Planning
 
 **Prompts to Use**:
-- [Test Strategy](/en/prompts/en/)
-- [Requirements Analysis](/en/prompts/en/)
+- [Test Strategy](/en/prompts/test-strategy/)
+- [Requirements Analysis](/en/prompts/requirements-analysis/)
 
 **Deliverables**:
 - [ ] Test strategy document
@@ -70,13 +64,13 @@ Risks: [Identified risks]
 - Prepare test data
 
 **Prompts to Use**:
-- [Automation Testing](/en/prompts/en/)
-- [Test Strategy](/en/prompts/en/) - Test data generation
+- [Automation Testing](/en/prompts/automation-testing/)
+- [Test Strategy](/en/prompts/test-strategy/) - Test data generation
 
 ### Early Story Testing
 
 **For Ready Stories**:
-1. Generate test cases using [Test Case Writing](/en/prompts/en/)
+1. Generate test cases using [Test Case Writing](/en/prompts/test-case-writing/)
 2. Review with developers
 3. Start exploratory testing on completed work
 
@@ -97,14 +91,14 @@ Risks: [Identified risks]
 
 **Manual Testing**:
 - Execute test cases for completed stories
-- Use [Manual Testing](/en/prompts/en/) for exploratory testing on new features
-- Log bugs using [Bug Reporting](/en/prompts/en/)
+- Use [Manual Testing](/en/prompts/manual-testing/) for exploratory testing on new features
+- Log bugs using [Bug Reporting](/en/prompts/bug-reporting/)
 
 **Automation**:
 - Write automated tests for completed stories
 - Use framework-specific prompts:
-  - [Automation Testing](/en/prompts/en/)
-  - [API Testing](/en/prompts/en/)
+  - [Automation Testing](/en/prompts/automation-testing/)
+  - [API Testing](/en/prompts/api-testing/)
 
 #### Bug Triage (Daily)
 
@@ -135,8 +129,8 @@ Risks: [Identified risks]
 ### Regression Testing
 
 **Prompts to Use**:
-- [Functional Testing](/en/prompts/en/) - Regression scenarios
-- [AI-Assisted Testing](/en/prompts/en/) - Intelligent test selection
+- [Functional Testing](/en/prompts/functional-testing/) - Regression scenarios
+- [AI-Assisted Testing](/en/prompts/ai-assisted-testing/) - Intelligent test selection
 
 **Execute**:
 - Automated regression suite
@@ -147,8 +141,8 @@ Risks: [Identified risks]
 ### Integration Testing
 
 **Prompts to Use**:
-- [Functional Testing](/en/prompts/en/) - E2E scenarios
-- [API Testing](/en/prompts/en/) - API integration
+- [Functional Testing](/en/prompts/functional-testing/) - E2E scenarios
+- [API Testing](/en/prompts/api-testing/) - API integration
 
 **Test**:
 - End-to-end user journeys
@@ -158,7 +152,7 @@ Risks: [Identified risks]
 ### Visual Testing
 
 **Prompts to Use**:
-- [Accessibility Testing](/en/prompts/en/) - Visual testing
+- [Accessibility Testing](/en/prompts/accessibility-testing/) - Visual testing
 
 **Actions**:
 - Run visual regression tests
@@ -174,7 +168,7 @@ Risks: [Identified risks]
 **Format**:
 - 2-hour focused testing session
 - Entire team participates
-- Use [Manual Testing](/en/prompts/en/) exploratory testing charters
+- Use [Manual Testing](/en/prompts/manual-testing/) exploratory testing charters
 
 ### Final Bug Fixes
 
@@ -199,8 +193,8 @@ Risks: [Identified risks]
 ### Sprint Review Preparation
 
 **Prompts to Use**:
-- [Test Reporting](/en/prompts/en/)
-- [Test Strategy](/en/prompts/en/) - Quality assessment
+- [Test Reporting](/en/prompts/test-reporting/)
+- [Test Strategy](/en/prompts/test-strategy/) - Quality assessment
 
 **Prepare**:
 - Test execution summary
@@ -325,7 +319,7 @@ Risks: [Identified risks]
 - Regression failures
 
 **Actions**:
-1. Use [Test Strategy](/en/prompts/en/) risk analysis
+1. Use [Test Strategy](/en/prompts/test-strategy/) risk analysis
 2. Focus on critical paths
 3. Consider extending sprint
 4. Plan technical debt sprint
@@ -376,31 +370,31 @@ Risks: [Identified risks]
 
 ### Planning Phase
 
-- [Test Strategy](/en/prompts/en/)
-- [Requirements Analysis](/en/prompts/en/)
+- [Test Strategy](/en/prompts/test-strategy/)
+- [Requirements Analysis](/en/prompts/requirements-analysis/)
 
 ### Execution Phase
 
-- [Test Case Writing](/en/prompts/en/)
-- [Manual Testing](/en/prompts/en/)
-- [API Testing](/en/prompts/en/)
-- [Automation Testing](/en/prompts/en/)
+- [Test Case Writing](/en/prompts/test-case-writing/)
+- [Manual Testing](/en/prompts/manual-testing/)
+- [API Testing](/en/prompts/api-testing/)
+- [Automation Testing](/en/prompts/automation-testing/)
 
 ### Stabilization Phase
 
-- [Functional Testing](/en/prompts/en/)
-- [Accessibility Testing](/en/prompts/en/)
+- [Functional Testing](/en/prompts/functional-testing/)
+- [Accessibility Testing](/en/prompts/accessibility-testing/)
 
 ### Review Phase
 
-- [Test Reporting](/en/prompts/en/)
+- [Test Reporting](/en/prompts/test-reporting/)
 
 ---
 
 ## 📚 Related Workflows
 
-- [Daily Testing Workflow](daily-testing-workflow.md) - Day-to-day activities
-- [Release Testing Workflow](release-testing-workflow.md) - Pre-release process
+- [Daily Testing Workflow](/en/prompts/workflows/daily/) - Day-to-day activities
+- [Release Testing Workflow](/en/prompts/workflows/release/) - Pre-release process
 
 ---
 

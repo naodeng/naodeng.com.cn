@@ -1,6 +1,6 @@
 ---
 title: "UI 自动化测试（WebdriverIO） Prompt"
-description: "用于UI 自动化测试（Webdriv的风险识别、证据梳理与可执行测试建议输出。"
+description: "用于UI 自动化测试（WebdriverIO）的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "ui-test-webdriverio"
 category: "其他提示词"
 categoryOrder: 9007199254740991
@@ -10,7 +10,7 @@ order: 240
 ---
 # UI 自动化测试（WebdriverIO） Prompt
 
-<!-- Prompt purpose: 用于UI 自动化测试（Webdriv的风险识别、证据梳理与可执行测试建议输出。 -->
+<!-- Prompt purpose: 用于UI 自动化测试（WebdriverIO）的风险识别、证据梳理与可执行测试建议输出。 -->
 面向 WebdriverIO 的 UI 自动化测试提示词，覆盖配置、服务、页面对象、并行和报告。
 
 ## 使用约束与降级规则

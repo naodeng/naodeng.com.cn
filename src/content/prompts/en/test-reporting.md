@@ -41,7 +41,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" ‚Äî never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## Test Reporting Methodology
 
@@ -147,10 +147,10 @@ Please output test reports in the following Markdown format:
 ### Core Metrics
 | Metric Category | Metric Name | Target Value | Actual Value | Achievement Status |
 |-----------------|-------------|--------------|--------------|-------------------|
-| Test Execution | Case Execution Rate | 100% | 98% | ‚úÖ Achieved |
-| Test Quality | Case Pass Rate | ‚â•95% | 92% | ‚ö†Ô∏è Close |
-| Defect Quality | P0 Defect Count | 0 | 1 | ‚ùå Not Achieved |
-| Coverage | Requirement Coverage | 100% | 100% | ‚úÖ Achieved |
+| Test Execution | Case Execution Rate | 100% | 98% | -úÖ Achieved |
+| Test Quality | Case Pass Rate | -â•95% | 92% | -ö†Ô∏è Close |
+| Defect Quality | P0 Defect Count | 0 | 1 | -ùå Not Achieved |
+| Coverage | Requirement Coverage | 100% | 100% | -úÖ Achieved |
 
 ---
 
@@ -268,9 +268,9 @@ Defect Trend Chart (recommend using charting tools)
 
 #### Non-Functional Quality Assessment
 - **Performance Quality:** [System performance assessment]
-  - Response time: Average 2.1 seconds (target ‚â§3 seconds) ‚úÖ
-  - Concurrent processing: Supports 500 users (target ‚â•300) ‚úÖ
-  - Resource usage: CPU 65%, Memory 70% ‚úÖ
+  - Response time: Average 2.1 seconds (target -â§3 seconds) -úÖ
+  - Concurrent processing: Supports 500 users (target -â•300) -úÖ
+  - Resource usage: CPU 65%, Memory 70% -úÖ
 
 - **Usability Quality:** [System usability assessment]
   - System stability: 99.5%

@@ -53,7 +53,7 @@ From the materials the user provides, produce a REST Assured (JUnit 5) API autom
 
 ## Input parsing order
 
-Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source — **do not silently invent a merged “truth”**:
+Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source --- **do not silently invent a merged --�truth--�**:
 
 1. Existing Java test assets (`src/test/java`, base classes, `pom.xml` / Gradle, TestNG/JUnit)
 2. OpenAPI / Swagger
@@ -63,7 +63,7 @@ Parse in this priority order. Higher priority wins on conflicts; when sources di
 
 Also absorb when present: business scope, auth, environments, release priority, CI, dependency versions.
 
-Extract only paths, methods, params, fields, and sample values that **actually appear** in the materials. Put gaps in “missing information”.
+Extract only paths, methods, params, fields, and sample values that **actually appear** in the materials. Put gaps in --�missing information--�.
 
 ## Defaults (use these unless the user specifies otherwise)
 
@@ -79,7 +79,7 @@ src/test/resources/
   test.properties           # non-secret defaults; secrets prefer env vars
 ```text
 
-Build: Maven + JUnit 5 + REST Assured by default. If the project already uses Gradle/TestNG, **align to it** — do not force a stack change.
+Build: Maven + JUnit 5 + REST Assured by default. If the project already uses Gradle/TestNG, **align to it** --- do not force a stack change.
 
 **Naming**
 
@@ -90,14 +90,14 @@ Build: Maven + JUnit 5 + REST Assured by default. If the project already uses Gr
 **Shared setup and auth**
 
 - `BaseApiTest` builds `RequestSpecification`: `baseUri`, JSON Content-Type, Authorization
-- `BASE_URL` / `API_TOKEN`: prefer `System.getenv`, then `test.properties`; property files may only hold placeholders (`replace-me`) — never real secrets
+- `BASE_URL` / `API_TOKEN`: prefer `System.getenv`, then `test.properties`; property files may only hold placeholders (`replace-me`) --- never real secrets
 - Cases call `given().spec(requestSpec)`
 
 **Assertion style**
 
 - Fluent: `.statusCode(...)` + `.body("field", equalTo(...))` (fields must come from materials)
 - Minimum: status + critical fields; Hamcrest matchers
-- Unknown error bodies: assert status family only and mark the assumption — do not invent errorCode
+- Unknown error bodies: assert status family only and mark the assumption --- do not invent errorCode
 
 **Layers (default)**
 
@@ -111,7 +111,7 @@ If a base class or layering already exists, **align to it**.
 - When migrating from curl/Postman: redact sensitive headers.
 - **Do not invent** paths, fields, status codes, or JSON paths the user did not provide.
 - Do not switch to Spring MockMvc / Karate / a non-Java stack unless the user asks.
-- If materials give relative paths without a host, use a placeholder `baseUrl` and list the gap — do not invent a gateway hostname as confirmed fact.
+- If materials give relative paths without a host, use a placeholder `baseUrl` and list the gap --- do not invent a gateway hostname as confirmed fact.
 - If information is incomplete, still ship a usable first version (package layout + Base + confirmed case outlines) and list assumptions.
 - Unless the user asks for runnable files, prefer structure and method outlines over huge full class dumps.
 
@@ -187,7 +187,7 @@ For each P0/P1 case:
 
 ## Quality bar
 
-- Stay REST Assured + JUnit 5 specific (or the user’s equivalent existing stack).
+- Stay REST Assured + JUnit 5 specific (or the user--�s equivalent existing stack).
 - Prioritize by risk.
 - Separate confirmed facts from assumptions.
 - Avoid huge Java dumps unless the user asks for runnable files.

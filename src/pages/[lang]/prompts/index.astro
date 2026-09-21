@@ -1,73 +1,58 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "@/layouts/Base.astro";
+import AIOutputNotice from "@/components/prompts/AIOutputNotice.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import {
-  PROMPTS_PAGE_TITLE,
   PROMPTS_PAGE_DESCRIPTION,
-  PROMPTS_WORKFLOWS_SECTION_TITLE,
+  PROMPTS_PAGE_TITLE,
   PROMPTS_QUICKSTART_TITLE,
-  PROMPTS_FLOW_TITLE,
+  PROMPTS_WORKFLOWS_SECTION_TITLE,
 } from "@/consts";
-import PromptExamples from "@/components/prompts/PromptExamples.astro";
-import AIOutputNotice from "@/components/prompts/AIOutputNotice.astro";
+import { PROMPT_QUICK_STEPS } from "@/data/promptLibrary";
 import {
-  PROMPT_ASSISTED_FLOW,
-  PROMPT_EXAMPLES,
-  PROMPT_QUICK_STEPS,
-} from "@/data/promptLibrary";
+  buildPromptRegistry,
+  getPromptAreaCounts,
+  getPromptTaskCounts,
+} from "@/data/promptRegistry";
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: "en" } },
-    { params: { lang: "zh-cn" } },
-  ];
+  return [{ params: { lang: "en" } }, { params: { lang: "zh-cn" } }];
 }
 
 const lang = Astro.params.lang as Lang;
 const t = useTranslations(lang);
-
-// Each upstream category has one canonical prompt.
 const allPrompts = await getCollection("prompts");
-const localePrompts = allPrompts.filter((p) => p.data.lang === lang);
-const promptCategories = Array.from(
-  localePrompts.reduce((categories, prompt) => {
-    const existing = categories.get(prompt.data.category) ?? {
-      title: prompt.data.category,
-      order: prompt.data.categoryOrder,
-      prompts: [],
-    };
-    existing.prompts.push(prompt);
-    categories.set(prompt.data.category, existing);
-    return categories;
-  }, new Map<string, { title: string; order: number; prompts: typeof localePrompts }>()).values(),
-).sort((a, b) => a.order - b.order || a.title.localeCompare(b.title, lang));
-
-for (const category of promptCategories) {
-  category.prompts.sort((a, b) => a.data.title.localeCompare(b.data.title, lang));
-}
-
-// Fetch workflows for this locale, sorted by order
+const registry = buildPromptRegistry(allPrompts, lang);
+const areas = getPromptAreaCounts(registry, lang).filter((area) => area.count > 0);
+const tasks = getPromptTaskCounts(registry, lang).filter((task) => task.count > 0);
 const allWorkflows = await getCollection("workflows");
 const localeWorkflows = allWorkflows
-  .filter((w) => w.data.lang === lang)
+  .filter((workflow) => workflow.data.lang === lang)
   .sort((a, b) => a.data.order - b.data.order);
-const promptCount = localePrompts.length;
-const categoryCount = promptCategories.length;
-const workflowCount = localeWorkflows.length;
+
+const promptCount = registry.length;
+const allUrl = getRelativeLocaleUrl(lang, "/prompts/all/");
+const promptUrl = (slug: string) => getRelativeLocaleUrl(lang, `/prompts/${slug}/`);
+const featuredIds = [
+  "requirements-analysis",
+  "test-strategy",
+  "test-case-writing",
+  "api-testing",
+  "ui-test-playwright",
+  "release-readiness-review",
+];
+const featuredPrompts = featuredIds
+  .map((id) => registry.find((entry) => entry.id === id))
+  .filter((entry): entry is (typeof registry)[number] => Boolean(entry));
 
 const breadcrumbs = [
   { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
-  { name: t(PROMPTS_PAGE_TITLE), url: getRelativeLocaleUrl(lang, "/prompts") },
+  { name: t(PROMPTS_PAGE_TITLE), url: getRelativeLocaleUrl(lang, "/prompts/") },
 ];
 
-const siteOrigin = "https://inaodeng.com";
-const promptsKeywords = lang === "zh-cn"
-  ? "QA提示词, AI测试提示词, 软件测试AI, ChatGPT测试, 测试自动化提示词, 需求分析提示词, 测试用例提示词"
-  : "QA prompt, AI testing prompt, software testing AI, ChatGPT testing, test automation prompt, requirements analysis prompt";
-
-// ItemList JSON-LD for the prompts index
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const itemListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -75,1097 +60,445 @@ const itemListSchema = {
   description: t(PROMPTS_PAGE_DESCRIPTION),
   url: `${siteOrigin}${getRelativeLocaleUrl(lang, "/prompts/")}`,
   inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
-  numberOfItems: localePrompts.length,
-  itemListElement: localePrompts.map((entry, i) => ({
+  numberOfItems: promptCount,
+  itemListElement: registry.map((entry, index) => ({
     "@type": "ListItem",
-    position: i + 1,
-    name: entry.data.title.replace(/^[^-]+ - /, ""),
-    url: `${siteOrigin}${getRelativeLocaleUrl(lang, `/prompts/${entry.data.testingType}/`)}`,
+    position: index + 1,
+    name: entry.title,
+    url: `${siteOrigin}${promptUrl(entry.slug)}`,
   })),
 };
+
+const copy = lang === "zh-cn"
+  ? {
+      eyebrow: "QA 提示词库",
+      title: "先说你要完成什么，再找到合适的提示词",
+      intro: "面向软件测试与质量工作的可复用提示词。按任务、测试领域和输入输出浏览，不必先记住提示词名称。",
+      searchLabel: "搜索提示词",
+      searchPlaceholder: "搜索需求分析、API、性能、智能体...",
+      searchButton: "搜索",
+      tryLabel: "试试",
+      browseAll: "浏览全部提示词",
+      source: "查看 GitHub 源码",
+      prompts: "个提示词",
+      areas: "个测试领域",
+      workflows: "个工作流程",
+      taskTitle: "你现在想完成什么？",
+      taskIntro: "选一个更接近当前工作的入口，探索器会保留这个筛选条件。",
+      areaTitle: "把问题放进正确的 QA 上下文",
+      areaIntro: "按稳定的测试领域浏览，从需求一路找到发布后的质量信号。",
+      openArea: "查看这个领域",
+      quickIntro: "从输入材料开始，逐步得到可评审的测试分析或设计结果。",
+      workflowIntro: "把单个提示词放进日常、迭代或发布测试流程中。",
+      featuredEyebrow: "精选入口",
+      featuredTitle: "从这些提示词开始",
+      featuredIntro: "先从适合当前任务的提示词开始，需要时再切换其他版本。",
+      input: "需要输入",
+      output: "可期待的输出",
+      vsEyebrow: "提示词还是技能",
+      vsTitle: "选择适合当前工作的工具",
+      vsIntro: "提示词适合一次任务的分析与设计；技能适合带有固定流程、工具调用或仓库约束的重复工作。",
+      promptColumn: "提示词",
+      skillColumn: "技能",
+      promptRow: "复制到 AI 对话中，围绕一项任务产出结构化结果。",
+      skillRow: "安装到支持的智能体环境中，按约定流程处理更完整的工作。",
+      promptFit: "需求分析、测试设计、评审和风险梳理",
+      skillFit: "需要脚本、工具、文件操作或多步执行的工作",
+      workflowEyebrow: "测试工作流",
+    }
+  : {
+      eyebrow: "QA PROMPT LIBRARY",
+      title: "Start with the task, then find the right prompt",
+      intro: "Reusable prompts for software testing and quality work. Browse by task, QA area, and inputs or outputs instead of memorizing prompt names.",
+      searchLabel: "Search prompts",
+      searchPlaceholder: "Try requirements, API, performance, agent...",
+      searchButton: "Search",
+      tryLabel: "Try",
+      browseAll: "Browse all prompts",
+      source: "View source on GitHub",
+      prompts: "prompts",
+      areas: "QA areas",
+      workflows: "workflows",
+      taskTitle: "What do you want to do?",
+      taskIntro: "Choose the entry point closest to your work. The explorer will keep the filter for you.",
+      areaTitle: "Put the problem in the right QA context",
+      areaIntro: "Browse stable QA areas that cover the path from requirements to post-release quality signals.",
+      openArea: "View this area",
+      quickIntro: "Start from source material and move toward a reviewable testing analysis or design result.",
+      workflowIntro: "Place an individual prompt inside a daily, sprint, or release testing workflow.",
+      featuredEyebrow: "Featured entry points",
+      featuredTitle: "Start with these prompts",
+      featuredIntro: "Start with the prompt that fits your task, then switch versions when needed.",
+      input: "Inputs",
+      output: "Expected output",
+      vsEyebrow: "Prompt or Skill",
+      vsTitle: "Choose the right tool for the work",
+      vsIntro: "A Prompt fits one analysis or design task. A Skill fits repeatable work with a fixed process, tool calls, or repository constraints.",
+      promptColumn: "Prompt",
+      skillColumn: "Skill",
+      promptRow: "Copy it into an AI conversation and produce a structured result for one task.",
+      skillRow: "Install it into a supported Agent environment and follow a fuller working process.",
+      promptFit: "Requirements analysis, test design, review, and risk mapping",
+      skillFit: "Work that needs scripts, tools, file operations, or multiple steps",
+      workflowEyebrow: "Testing workflows",
+    };
+
+const workflowTypeLabels = lang === "zh-cn"
+  ? { daily: "日常测试", sprint: "迭代测试", release: "发布测试" }
+  : { daily: "Daily testing", sprint: "Sprint testing", release: "Release testing" };
+const variantLabel = (variant: string) => (lang === "zh-cn"
+  ? ({ lite: "轻量版", standard: "默认版", plus: "增强版" }[variant] || variant)
+  : ({ lite: "Lite", standard: "Standard", plus: "Plus" }[variant] || variant));
+const searchExamples = lang === "zh-cn"
+  ? [
+      { label: "需求分析", query: "requirements" },
+      { label: "接口", query: "API" },
+      { label: "性能", query: "performance" },
+      { label: "智能体", query: "agent" },
+    ]
+  : [
+      { label: "requirements", query: "requirements" },
+      { label: "API", query: "API" },
+      { label: "performance", query: "performance" },
+      { label: "agent", query: "agent" },
+    ];
 ---
 
 <Base
   title={t(PROMPTS_PAGE_TITLE)}
   description={t(PROMPTS_PAGE_DESCRIPTION)}
-  keywords={promptsKeywords}
+  keywords={lang === "zh-cn"
+    ? "QA提示词, AI测试提示词, 软件测试提示词, 需求分析, 测试用例, 接口测试, 性能测试"
+    : "QA prompt, AI testing prompt, software testing prompt, requirements analysis, test cases, API testing, performance testing"}
   extraStructuredData={[itemListSchema]}
   breadcrumbs={breadcrumbs}
 >
-  <div class="prompts-page">
-    <header class="directory-hero">
-      <div class="directory-hero-topline">
-        <span class="eyebrow">{lang === "zh-cn" ? "提示词目录" : "PROMPT DIRECTORY"}</span>
-        <span class="hero-sync">{promptCount} {lang === "zh-cn" ? "个提示词" : "prompts"} · {categoryCount} {lang === "zh-cn" ? "个分类" : "categories"}</span>
+  <div class="prompt-home">
+    <section class="prompt-hero" aria-labelledby="prompt-home-title">
+      <div class="prompt-hero-copy">
+        <p class="prompt-eyebrow">{copy.eyebrow}</p>
+        <h1 id="prompt-home-title">{copy.title}</h1>
+        <p class="prompt-hero-intro">{copy.intro}</p>
+        <form class="prompt-home-search" action={allUrl} role="search">
+          <label for="prompt-home-search-input" class="visually-hidden">{copy.searchLabel}</label>
+          <div class="prompt-search-control">
+            <span class="prompt-search-icon material-icons-sharp" aria-hidden="true">search</span>
+            <input id="prompt-home-search-input" name="q" type="search" placeholder={copy.searchPlaceholder} autocomplete="off" />
+            <button type="submit">{copy.searchButton}</button>
+          </div>
+          <div class="prompt-search-examples" aria-label={copy.tryLabel}>
+            <span>{copy.tryLabel}</span>
+            {searchExamples.map((example) => <a href={`${allUrl}?q=${example.query}`}>{example.label}</a>)}
+          </div>
+        </form>
       </div>
-      <div class="directory-hero-main">
-        <div>
-          <h1>{lang === "zh-cn" ? "软件测试提示词库" : "Software Testing Prompt Library"}</h1>
-          <p class="hero-intro">
-            {lang === "zh-cn"
-              ? `收录 ${promptCount} 个可复用提示词，覆盖 ${categoryCount} 个测试主题，并提供 ${workflowCount} 个工作流程。`
-              : `${promptCount} reusable prompts across ${categoryCount} testing themes, with ${workflowCount} guided workflows.`}
-          </p>
+      <div class="prompt-hero-aside">
+        <div class="prompt-stat-grid" aria-label={lang === "zh-cn" ? "提示词库统计" : "Prompt library statistics"}>
+          <div><strong>{promptCount}</strong><span>{copy.prompts}</span></div>
+          <div><strong>{areas.length}</strong><span>{copy.areas}</span></div>
+          <div><strong>{localeWorkflows.length}</strong><span>{copy.workflows}</span></div>
         </div>
-        <a href="https://github.com/naodeng/awesome-qa-prompt" target="_blank" rel="noopener noreferrer" class="source-link">
-          <span>{lang === "zh-cn" ? "查看 GitHub" : "View GitHub"}</span>
-          <span aria-hidden="true">↗</span>
+        <a class="prompt-source-link" href="https://github.com/naodeng/awesome-qa-prompt" target="_blank" rel="noopener noreferrer">
+          {copy.source}<span class="material-icons-sharp prompt-inline-icon" aria-hidden="true">open_in_new</span>
         </a>
-      </div>
-      <div class="hero-metrics" aria-label={lang === "zh-cn" ? "提示词目录信息" : "Prompt directory information"}>
-        <span><strong>{promptCount}</strong> {lang === "zh-cn" ? "个专业提示词" : "prompts"}</span>
-        <span><strong>{categoryCount}</strong> {lang === "zh-cn" ? "个分类" : "categories"}</span>
-        <span><strong>{workflowCount}</strong> {lang === "zh-cn" ? "个工作流程" : "workflows"}</span>
-      </div>
-    </header>
-
-    <!-- Upstream prompt categories -->
-    <section class="prompts-section prompt-directory" aria-labelledby="testing-types-heading">
-      <div class="prompt-directory-toolbar">
-        <div class="prompt-toolbar-main">
-          <div class="prompt-search">
-            <label class="visually-hidden" for="prompt-search-input">{lang === "zh-cn" ? "搜索提示词" : "Search prompts"}</label>
-            <span class="material-icons-sharp" aria-hidden="true">search</span>
-            <input id="prompt-search-input" type="search" placeholder={lang === "zh-cn" ? "按名称、分类或描述搜索…" : "Search by name, category, or description…"} autocomplete="off" />
-          </div>
-          <p id="prompt-results-count" class="prompt-results-count" aria-live="polite" data-suffix={lang === "zh-cn" ? "个匹配结果" : "matching prompts"}>{promptCount} {lang === "zh-cn" ? "个匹配结果" : "matching prompts"}</p>
-        </div>
-      </div>
-      <div class="prompt-directory-layout">
-        <aside class="prompt-filter-sidebar" aria-labelledby="prompt-filter-title">
-          <div class="prompt-filter-heading">
-            <h2 id="prompt-filter-title">{lang === "zh-cn" ? "筛选目录" : "Filter directory"}</h2>
-            <strong>{categoryCount}</strong>
-          </div>
-          <p class="prompt-filter-label">{lang === "zh-cn" ? "提示词分类" : "PROMPT CATEGORIES"}</p>
-          <div class="prompt-filter-options" role="group" aria-label={lang === "zh-cn" ? "提示词分类筛选" : "Prompt category filters"}>
-            <button type="button" class="prompt-category-filter is-active" data-prompt-filter="all" aria-pressed="true">
-              <span>{lang === "zh-cn" ? "全部" : "All"}</span><span>{promptCount}</span>
-            </button>
-            {promptCategories.map((category) => (
-              <button type="button" class="prompt-category-filter" data-prompt-filter={category.order} aria-pressed="false">
-                <span>{category.title}</span><span>{category.prompts.length}</span>
-              </button>
-            ))}
-          </div>
-        </aside>
-
-        <div class="prompt-results-column">
-          <div class="prompt-results-heading">
-            <div>
-              <span class="prompt-results-eyebrow">{lang === "zh-cn" ? "目录浏览" : "BROWSE DIRECTORY"}</span>
-              <h2 id="testing-types-heading">{lang === "zh-cn" ? "全部提示词" : "All Prompts"}</h2>
-            </div>
-            <p>{lang === "zh-cn" ? "按分类浏览，点击卡片直接打开提示词。" : "Browse by category and open a prompt by clicking its card."}</p>
-          </div>
-          <p class="prompt-search-empty" hidden>{lang === "zh-cn" ? "未找到匹配的提示词。" : "No matching prompts found."}</p>
-          <div class="prompt-category-list">
-            {promptCategories.map((category) => (
-              <section class="prompt-category" data-prompt-category-block data-prompt-category-key={category.order} aria-labelledby={`prompt-category-${category.order}`}>
-                <div class="prompt-category-heading">
-                  <h3 id={`prompt-category-${category.order}`}>
-                    <button type="button" class="prompt-category-toggle" aria-expanded="false" aria-controls={`prompt-category-list-${category.order}`}>
-                      <span class="material-icons-sharp" aria-hidden="true">expand_more</span>
-                      <span>{category.title}</span>
-                    </button>
-                  </h3>
-                  <span>{category.prompts.length} {lang === "zh-cn" ? "个提示词" : "prompts"}</span>
-                </div>
-                <ul id={`prompt-category-list-${category.order}`} class="prompts-grid" role="list" hidden>
-                  {category.prompts.map((entry) => (
-                    <li>
-                      <a
-                        href={getRelativeLocaleUrl(lang, `/prompts/${entry.data.testingType}/`)}
-                        class="prompt-card"
-                        data-prompt-type={entry.data.testingType}
-                        data-prompt-category={category.title}
-                      >
-                        <h4 class="prompt-card-title">{entry.data.title}</h4>
-                        <p class="prompt-card-desc">{entry.data.description}</p>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
 
-    <section class="prompts-section" aria-labelledby="quickstart-heading">
-      <h2 id="quickstart-heading">{t(PROMPTS_QUICKSTART_TITLE)}</h2>
-      <ol class="qs-grid">
+    <section class="prompt-section task-section" aria-labelledby="prompt-task-heading">
+      <div class="prompt-section-heading">
+        <div>
+          <h2 id="prompt-task-heading">{copy.taskTitle}</h2>
+        </div>
+        <p>{copy.taskIntro}</p>
+      </div>
+      <div class="prompt-task-grid">
+        {tasks.map((task) => (
+          <a class="prompt-task-card" href={`${allUrl}?task=${task.key}`} data-prompt-task={task.key}>
+            <span class="prompt-task-card-content">
+              <strong>{task.label}</strong>
+              <span>{task.description}</span>
+              <small>{task.count} {copy.prompts}</small>
+            </span>
+            <span class="prompt-arrow material-icons-sharp" aria-hidden="true">arrow_forward</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="prompt-section area-section" aria-labelledby="prompt-area-heading">
+      <div class="prompt-section-heading">
+        <div>
+          <h2 id="prompt-area-heading">{copy.areaTitle}</h2>
+        </div>
+        <p>{copy.areaIntro}</p>
+      </div>
+      <div class="prompt-area-grid">
+        {areas.map((area) => (
+          <a class="prompt-area-card" href={`${allUrl}?area=${area.key}`} data-prompt-area={area.key}>
+            <span class="prompt-area-count"><strong>{area.count}</strong><span>{copy.prompts}</span></span>
+            <strong>{area.label}</strong>
+            <span>{area.description}</span>
+            <span class="prompt-area-link">{copy.openArea}<span class="material-icons-sharp prompt-inline-icon" aria-hidden="true">arrow_forward</span></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="prompt-section quick-section" aria-labelledby="quickstart-heading">
+      <div class="prompt-section-heading compact-heading">
+        <div>
+          <h2 id="quickstart-heading">{t(PROMPTS_QUICKSTART_TITLE)}</h2>
+        </div>
+        <p>{copy.quickIntro}</p>
+      </div>
+      <ol class="prompt-steps">
         {PROMPT_QUICK_STEPS[lang].map((step, index) => (
-          <li class="qs-card" data-prompt-quick-step>
-            <span class="qs-num">{index + 1}</span>
-            <h3 class="qs-title">{step.title}</h3>
-            <p class="qs-desc">{step.description}</p>
+          <li data-prompt-quick-step>
+            <span class="prompt-step-number">{index + 1}</span>
+            <div><h3>{step.title}</h3><p>{step.description}</p></div>
           </li>
         ))}
       </ol>
     </section>
 
-    <PromptExamples lang={lang} examples={PROMPT_EXAMPLES[lang]} />
-    <AIOutputNotice lang={lang} />
+    <section class="prompt-section comparison-section" aria-labelledby="prompt-vs-heading">
+      <div class="prompt-section-heading compact-heading">
+        <div>
+          <h2 id="prompt-vs-heading">{copy.vsTitle}</h2>
+        </div>
+        <p>{copy.vsIntro}</p>
+      </div>
+      <div class="prompt-comparison" role="table" aria-label={copy.vsTitle}>
+        <div class="prompt-comparison-row prompt-comparison-head" role="row">
+          <span role="columnheader">{copy.promptColumn}</span><span role="columnheader">{copy.skillColumn}</span>
+        </div>
+        <div class="prompt-comparison-row" role="row">
+          <span role="cell">{copy.promptRow}</span><span role="cell">{copy.skillRow}</span>
+        </div>
+        <div class="prompt-comparison-row" role="row">
+          <span role="cell">{copy.promptFit}</span><span role="cell">{copy.skillFit}</span>
+        </div>
+      </div>
+    </section>
 
-    <!-- Full Testing Flow -->
-    <section class="prompts-section" aria-labelledby="flow-heading">
-      <h2 id="flow-heading">{t(PROMPTS_FLOW_TITLE)}</h2>
-      <div class="flow-wrap">
-        {PROMPT_ASSISTED_FLOW[lang].map((step, i, arr) => (
-          <>
-            <a
-              href={getRelativeLocaleUrl(lang, `/prompts/${step.slug}/`)}
-              class="flow-node"
-            >
-              <span class="flow-icon material-icons-sharp" aria-hidden="true">{step.icon}</span>
-              <span class="flow-label">{step.label}</span>
-              <span class="flow-desc">{step.desc}</span>
-            </a>
-            {i < arr.length - 1 && (
-              <span class="flow-arrow" aria-hidden="true">→</span>
-            )}
-          </>
+    <section class="prompt-section workflow-section" aria-labelledby="workflows-heading">
+      <div class="prompt-section-heading">
+        <div>
+          <p class="prompt-eyebrow">{copy.workflowEyebrow}</p>
+          <h2 id="workflows-heading">{t(PROMPTS_WORKFLOWS_SECTION_TITLE)}</h2>
+        </div>
+        <p>{copy.workflowIntro}</p>
+      </div>
+      <div class="prompt-workflow-grid">
+        {localeWorkflows.map((workflow) => (
+          <a class="prompt-workflow-card" href={getRelativeLocaleUrl(lang, `/prompts/workflows/${workflow.data.workflowType}/`)}>
+            <span class="prompt-workflow-type">{workflowTypeLabels[workflow.data.workflowType]}</span>
+            <strong>{workflow.data.title}</strong>
+            <span>{workflow.data.description}</span>
+            <span class="prompt-arrow material-icons-sharp" aria-hidden="true">arrow_forward</span>
+          </a>
         ))}
       </div>
     </section>
 
-    <!-- Workflow Cards -->
-    <section class="prompts-section" aria-labelledby="workflows-heading">
-      <h2 id="workflows-heading">{t(PROMPTS_WORKFLOWS_SECTION_TITLE)}</h2>
-      <ul class="workflows-grid" role="list">
-        {localeWorkflows.map((wf) => (
-          <li>
-            <a
-              href={getRelativeLocaleUrl(lang, `/prompts/workflows/${wf.data.workflowType}/`)}
-              class="workflow-card"
-            >
-              <h3 class="workflow-card-title">{wf.data.title}</h3>
-              <p class="workflow-card-desc">{wf.data.description}</p>
-            </a>
-          </li>
+    <section class="prompt-section featured-section" aria-labelledby="prompt-featured-heading">
+      <div class="prompt-section-heading">
+        <div>
+          <p class="prompt-eyebrow">{copy.featuredEyebrow}</p>
+          <h2 id="prompt-featured-heading">{copy.featuredTitle}</h2>
+        </div>
+        <p>{copy.featuredIntro}</p>
+      </div>
+      <div class="prompt-featured-grid">
+        {featuredPrompts.map((entry) => (
+          <a class="prompt-featured-card" data-featured-prompt={entry.id} href={promptUrl(entry.slug)}>
+            <div class="prompt-card-meta">
+              <span>{entry.areaLabel}</span>
+              {entry.variant !== "standard" && <span>{variantLabel(entry.variant)}</span>}
+            </div>
+            <h3>{entry.title}</h3>
+            <p>{entry.cardDescription}</p>
+            <div class="prompt-card-signals">
+              <div><span>{copy.input}</span><strong>{entry.inputs[0]}</strong></div>
+              <div><span>{copy.output}</span><strong>{entry.outputs[0]}</strong></div>
+            </div>
+          </a>
         ))}
-      </ul>
+      </div>
+      <a class="prompt-outline-link" href={allUrl}>{copy.browseAll}<span class="material-icons-sharp prompt-inline-icon" aria-hidden="true">arrow_forward</span></a>
     </section>
 
+    <AIOutputNotice lang={lang} />
   </div>
 </Base>
 
-<script>
-  const searchInput = document.getElementById("prompt-search-input") as HTMLInputElement | null;
-  const emptyState = document.querySelector<HTMLElement>(".prompt-search-empty");
-  const resultsCount = document.getElementById("prompt-results-count");
-  const categoryBlocks = Array.from(document.querySelectorAll<HTMLElement>("[data-prompt-category-block]"));
-  const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".prompt-category-filter"));
-  let activeFilter = "all";
-
-  const updateDirectory = () => {
-    const query = searchInput?.value.trim().toLowerCase() ?? "";
-    let visible = 0;
-
-    categoryBlocks.forEach((block) => {
-      const cards = Array.from(block.querySelectorAll<HTMLElement>(".prompt-card"));
-      const categoryText = block.querySelector("h3")?.textContent?.toLowerCase() ?? "";
-      const categoryMatches = activeFilter === "all" || block.dataset.promptCategoryKey === activeFilter;
-
-      cards.forEach((card) => {
-        const matches = categoryMatches && (!query || `${categoryText} ${card.textContent ?? ""}`.toLowerCase().includes(query));
-        card.closest("li")!.hidden = !matches;
-        if (matches) visible += 1;
-      });
-      const hasMatches = cards.some((card) => !card.closest("li")!.hidden);
-      block.hidden = !categoryMatches || (query.length > 0 && !hasMatches);
-
-      const list = block.querySelector<HTMLElement>(".prompts-grid");
-      const toggle = block.querySelector<HTMLButtonElement>(".prompt-category-toggle");
-      const shouldOpen = categoryMatches && (query.length > 0 || activeFilter !== "all") && hasMatches;
-      if (query.length > 0 && hasMatches) {
-        list?.removeAttribute("hidden");
-        toggle?.setAttribute("aria-expanded", "true");
-      } else if (shouldOpen) {
-        list?.removeAttribute("hidden");
-        toggle?.setAttribute("aria-expanded", "true");
-      } else if (query.length === 0 && activeFilter === "all") {
-        list?.setAttribute("hidden", "");
-        toggle?.setAttribute("aria-expanded", "false");
-      }
-    });
-
-    if (resultsCount) {
-      const suffix = resultsCount.dataset.suffix ?? "matching prompts";
-      resultsCount.textContent = `${visible} ${suffix}`;
-    }
-    if (emptyState) emptyState.hidden = visible > 0;
-  };
-
-  searchInput?.addEventListener("input", updateDirectory);
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      activeFilter = button.dataset.promptFilter ?? "all";
-      filterButtons.forEach((filterButton) => {
-        const isActive = filterButton === button;
-        filterButton.classList.toggle("is-active", isActive);
-        filterButton.setAttribute("aria-pressed", String(isActive));
-      });
-      updateDirectory();
-    });
-  });
-
-  document.querySelectorAll<HTMLButtonElement>(".prompt-category-toggle").forEach((button) => {
-    button.addEventListener("click", () => {
-      const list = document.getElementById(button.getAttribute("aria-controls") ?? "");
-      if (!list) return;
-      const expanded = button.getAttribute("aria-expanded") === "true";
-      button.setAttribute("aria-expanded", String(!expanded));
-      list.hidden = expanded;
-    });
-  });
-</script>
-
 <style>
-  /* ── Sections ── */
-  :global(.prompts-section) {
-    margin-block-end: 2.5rem;
+  .prompt-home {
+    --prompt-ink-soft: color-mix(in srgb, var(--color-main) 65%, transparent);
+    --prompt-button-ink: #ffffff;
+    max-width: var(--layout-max);
+    margin: 0 auto;
+    padding: 0 0 4rem;
   }
 
-  :global(.prompts-section h2) {
-    font-size: 1.35rem;
-    font-weight: 800;
-    margin-block-end: 1rem;
-    padding-block-end: 0.4em;
-    border-block-end: 1px solid rgba(148, 163, 184, 0.22);
-    color: var(--color-text-primary);
-  }
+  :global(:root[data-theme="dark"]) .prompt-home { --prompt-button-ink: var(--color-base); }
 
-  .prompts-grid {
+  .prompt-hero {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.75rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    grid-template-columns: minmax(0, 1.55fr) minmax(230px, 0.45fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+    padding: 0 0 clamp(2.5rem, 5vw, 4rem);
   }
 
-  .prompts-grid[hidden] {
-    display: none;
-  }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .workflows-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: var(--sp-m);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .prompt-card,
-  .workflow-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    padding: 0.85rem 0.9rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface-elevated);
-    color: inherit;
-    text-decoration: none;
-    height: 100%;
-    box-shadow: var(--shadow-sm);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-  }
-
-  .prompt-card-title,
-  .workflow-card-title {
-    margin: 0;
+  .prompt-eyebrow {
+    margin: 0 0 0.85rem;
     color: var(--color-theme);
-    font-size: 0.95rem;
-    font-weight: 800;
-    line-height: 1.3;
-  }
-
-  .prompt-card-desc,
-  .workflow-card-desc {
-    flex: 1;
-    margin: 0;
-    color: var(--color-text-secondary);
-    font-size: 0.8rem;
-    line-height: 1.5;
-  }
-
-  /* ── Quick Start ── */
-  .qs-grid {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: var(--sp-m);
-  }
-
-  .qs-card {
-    grid-column: span 2;
-    padding: var(--sp-m);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    background: var(--color-surface-elevated);
-    box-shadow: var(--shadow-sm);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .qs-card:nth-last-child(-n + 2) {
-    grid-column: span 3;
-  }
-
-  .qs-num {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: var(--color-theme);
-    color: #fff;
-    font-weight: 800;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-block-end: 0.25rem;
-  }
-
-  .qs-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    margin: 0;
-  }
-
-  .qs-desc {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .qs-list {
-    margin: 0.25rem 0 0;
-    padding-inline-start: 1.25em;
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  /* ── Full Testing Flow ── */
-  .flow-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--sp-s);
-    padding: var(--sp-m);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    background: var(--color-surface-muted);
-  }
-
-  /* each cell = node + optional arrow, laid out as a row pair */
-  .flow-cell {
-    display: contents;
-  }
-
-  .flow-node {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
-    padding: var(--sp-s) var(--sp-m);
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    background: var(--color-surface-elevated);
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-    /* ~4 per row accounting for arrows */
-    width: clamp(140px, calc(25% - 2.5rem), 200px);
-    flex-shrink: 0;
-  }
-
-  .flow-node:hover {
-    border-color: color-mix(in srgb, var(--color-theme) 50%, transparent);
-    box-shadow: 0 2px 10px color-mix(in srgb, var(--color-theme) 10%, transparent);
-    transform: translateY(-2px);
-  }
-
-  .flow-node:focus-visible {
-    outline: 2px solid var(--color-theme);
-    outline-offset: 2px;
-  }
-
-  .flow-icon {
-    font-size: 1.75rem;
-    line-height: 1;
-    color: var(--color-theme);
-  }
-
-  .flow-label {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    line-height: 1.3;
-  }
-
-  .flow-desc {
-    font-size: 0.78rem;
-    color: var(--color-text-secondary);
-    line-height: 1.4;
-  }
-
-  .flow-arrow {
-    font-size: 1.1rem;
-    color: color-mix(in srgb, var(--color-theme) 55%, transparent);
-    flex-shrink: 0;
-  }
-
-  @media (width < 900px) {
-    .qs-grid {
-      grid-template-columns: 1fr;
-    }
-    .qs-card,
-    .qs-card:nth-last-child(-n + 2) {
-      grid-column: auto;
-    }
-    .flow-node {
-      width: min(100%, 220px);
-    }
-  }
-
-  @media (width < 540px) {
-    .flow-node {
-      width: 100%;
-    }
-    .flow-arrow {
-      display: none;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .prompt-card,
-    .workflow-card,
-    .flow-node {
-      transition: none;
-      transform: none !important;
-    }
-  }
-
-  /* ── Directory refinement ── */
-  :global(.l-main:has(.prompts-page)) { margin-block-start: 0; }
-
-  .prompts-page {
-    max-inline-size: 1400px;
-    margin-inline: auto;
-    padding-block: clamp(1rem, 2vw, 1.75rem) 3.5rem;
-  }
-
-  .directory-hero {
-    padding-block: 0.65rem 1.4rem;
-  }
-
-  .directory-hero-topline {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .eyebrow,
-  .prompt-results-eyebrow {
-    color: var(--color-theme);
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .hero-sync {
-    color: var(--color-text-tertiary);
-    font-size: 0.8rem;
-    font-weight: 800;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .directory-hero-main {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: end;
-    gap: 2rem;
-    margin-top: 1.1rem;
-  }
-
-  .directory-hero h1 {
-    max-width: 15ch;
-    margin: 0;
-    color: var(--color-main);
-    font-size: clamp(2.3rem, 6vw, 4.8rem);
-    letter-spacing: -0.06em;
-    line-height: 0.98;
-  }
-
-  .directory-hero .hero-intro {
-    max-width: 62ch;
-    margin: 0.7rem 0 0;
-    color: var(--color-text-secondary);
-    line-height: 1.65;
-  }
-
-  .directory-hero .source-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding-block: 0.45rem;
-    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 45%, transparent);
-    color: var(--color-theme);
-    font-size: 0.86rem;
-    font-weight: 800;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .directory-hero .source-link:hover {
-    border-color: var(--color-theme);
-    color: var(--color-theme-focus);
-  }
-
-  .hero-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0;
-    margin-top: 1.4rem;
-    padding-top: 0.8rem;
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-  }
-
-  .hero-metrics span {
-    min-width: 0;
-    padding-inline: 0.85rem;
-    border-inline-start: 1px solid var(--color-border);
-    font-size: 0.86rem;
-  }
-
-  .hero-metrics span:first-child {
-    padding-inline-start: 0;
-    border-inline-start: 0;
-  }
-
-  .hero-metrics strong {
-    margin-inline-end: 0.25rem;
-    color: var(--color-main);
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    font-weight: 900;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .prompt-directory {
-    margin-block-end: 3.5rem;
-  }
-
-  .prompt-directory-toolbar {
-    padding-block: 0.75rem;
-    border-block: 1px solid var(--color-border);
-  }
-
-  .prompt-toolbar-main {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .prompt-search {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    max-width: none;
-    min-height: 50px;
-    margin: 0;
-    padding: 0.65rem 0.85rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    color: var(--color-text-tertiary);
-  }
-
-  .prompt-search:focus-within {
-    border-color: var(--color-theme);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-theme) 16%, transparent);
-  }
-
-  .prompt-search input {
-    width: 100%;
-    min-width: 0;
-    min-height: 2rem;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: var(--color-text-primary);
-    font: inherit;
-  }
-
-  .prompt-search input::placeholder {
-    color: var(--color-text-tertiary);
-  }
-
-  .prompt-search-empty {
-    margin: 0.75rem 0 0;
-    color: var(--color-text-tertiary);
-  }
-
-  .prompt-results-count {
-    margin: 0;
-    color: var(--color-text-secondary);
-    font-size: 0.86rem;
-    font-weight: 900;
-    white-space: nowrap;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .prompt-directory-layout {
-    display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 2rem;
-    margin-top: 1.25rem;
-  }
-
-  .prompt-filter-sidebar {
-    position: sticky;
-    top: 6rem;
-    align-self: start;
-    min-width: 0;
-    padding: 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface-muted);
-  }
-
-  .prompt-filter-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .prompt-filter-heading h2 {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    color: var(--color-main);
-    font-size: 1.1rem;
-  }
-
-  .prompt-filter-heading strong {
-    color: var(--color-theme);
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .prompt-filter-label {
-    margin: 1rem 0 0.4rem;
-    color: var(--color-text-tertiary);
-    font-size: 0.68rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .prompt-filter-options {
-    display: grid;
-    gap: 0.3rem;
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  .prompt-category-filter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.6rem;
-    width: 100%;
-    min-height: 38px;
-    padding: 0.42rem 0.6rem;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    background: transparent;
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    font: inherit;
-    font-size: 0.76rem;
-    font-weight: 800;
-    line-height: 1.25;
-    text-align: start;
-  }
-
-  .prompt-category-filter span:first-child {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .prompt-category-filter span:last-child {
-    flex: 0 0 auto;
-    color: var(--color-text-tertiary);
-    font-size: 0.7rem;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .prompt-category-filter:hover {
-    border-color: var(--color-border);
-    background: var(--color-surface);
-    color: var(--color-main);
-  }
-
-  .prompt-category-filter.is-active {
-    border-color: color-mix(in srgb, var(--color-theme) 25%, transparent);
-    background: var(--color-theme-soft);
-    color: var(--color-theme);
-  }
-
-  .prompt-category-filter.is-active span:last-child {
-    color: var(--color-theme);
-  }
-
-  .prompt-category-filter:focus-visible,
-  .prompt-card:focus-visible,
-  .workflow-card:focus-visible {
-    outline: 2px solid var(--color-theme);
-    outline-offset: 3px;
-  }
-
-  .prompt-results-column {
-    min-width: 0;
-  }
-
-  .prompt-results-heading {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .prompt-results-heading h2 {
-    margin: 0.25rem 0 0;
-    padding: 0;
-    border: 0;
-    color: var(--color-main);
-    font-size: 1.65rem;
-    line-height: 1.1;
-  }
-
-  .prompt-results-heading p {
-    max-width: 34ch;
-    margin: 0;
-    color: var(--color-text-tertiary);
-    font-size: 0.78rem;
-    line-height: 1.5;
-    text-align: end;
-  }
-
-  .prompt-category-list {
-    display: grid;
-    gap: 1.15rem;
-    min-width: 0;
-  }
-
-  .prompt-category {
-    margin: 0;
-    min-width: 0;
-  }
-
-  .prompt-category[hidden] {
-    display: none;
-  }
-
-  .prompt-category-heading {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--sp-s);
-    min-width: 0;
-    min-height: 46px;
-    margin: 0;
-    padding-block: 0.5rem 0.45rem;
-    border-block: 1px solid var(--color-border);
-  }
-
-  .prompt-category-toggle {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 34px;
-    min-width: 0;
-    gap: 0.45rem;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: var(--color-main);
-    cursor: pointer;
-    font: inherit;
-    font-size: 0.96rem;
-    font-weight: 900;
-    text-align: start;
-    overflow: hidden;
-  }
-
-  .prompt-category-toggle > span:last-child {
-    color: var(--color-main);
-    font-size: inherit;
-    font-weight: inherit;
-  }
-
-  .prompt-category-toggle .material-icons-sharp {
-    flex: 0 0 auto;
-    color: var(--color-text-tertiary);
-    font-size: 1.05rem;
-    transition: transform 0.18s ease;
-  }
-
-  .prompt-category-toggle[aria-expanded="false"] .material-icons-sharp {
-    transform: rotate(-90deg);
-  }
-
-  .prompt-category-toggle:focus-visible {
-    outline: 2px solid var(--color-theme);
-    outline-offset: 4px;
-    border-radius: 2px;
-  }
-
-  .prompt-category-heading > span {
-    color: var(--color-text-tertiary);
     font-size: 0.72rem;
     font-weight: 800;
-    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
   }
 
-  .prompt-category-heading h3 {
+  .prompt-hero h1 {
+    max-width: 24ch;
     margin: 0;
-    flex: 1 1 auto;
-    min-width: 0;
+    font-size: clamp(2.4rem, 5.4vw, 4.8rem);
+    line-height: 1.02;
+    letter-spacing: -0.055em;
   }
 
-  .prompt-category-toggle > span:last-child {
-    flex: 1 1 auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .prompt-hero-intro {
+    max-width: 63ch;
+    margin: 1.35rem 0 0;
+    color: var(--prompt-ink-soft);
+    font-size: 1.08rem;
+    line-height: 1.75;
   }
 
-  .prompts-grid {
-    --prompt-card-height: 124px;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    grid-auto-rows: var(--prompt-card-height);
-    gap: 0.55rem;
-    margin-top: 0.65rem;
-  }
-
-  .prompts-grid > li {
-    min-width: 0;
-    height: var(--prompt-card-height);
-  }
-
-  .prompts-grid > li[hidden] {
-    display: none;
-  }
-
-  .prompt-card,
-  .workflow-card {
-    box-sizing: border-box;
-    min-width: 0;
+  .prompt-home-search { margin-top: 2rem; max-width: 700px; }
+  .prompt-search-control {
+    display: flex;
+    align-items: center;
+    min-height: 58px;
+    padding: 0.35rem;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    border-color: var(--color-border);
     background: var(--color-surface);
-    box-shadow: none;
-    transform: none;
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-main) 7%, transparent);
+  }
+  .prompt-search-control:focus-within { border-color: var(--color-theme); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-theme) 16%, transparent); }
+  .prompt-search-icon { padding-inline: 0.75rem; color: var(--color-theme); font-size: 1.25rem; line-height: 1; }
+  .prompt-search-control input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: var(--color-main); font: inherit; }
+  .prompt-search-control input::placeholder { color: var(--color-text-tertiary); opacity: 1; }
+  .prompt-search-control button { min-height: 44px; padding: 0 1rem; border: 0; border-radius: var(--radius-sm); background: var(--color-theme); color: var(--prompt-button-ink); font: inherit; font-weight: 800; cursor: pointer; }
+  .prompt-search-control button:hover { background: var(--color-theme-focus); }
+  .prompt-search-control button:active { transform: translateY(1px); }
+  .prompt-search-examples { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: center; margin-top: 0.7rem; color: var(--prompt-ink-soft); font-size: 0.82rem; }
+  .prompt-search-examples a { color: var(--color-theme); text-decoration: none; }
+  .prompt-search-examples a:hover { text-decoration: underline; }
+  .prompt-inline-icon { font-size: 1rem; line-height: 1; vertical-align: middle; }
+
+  .prompt-hero-aside { display: grid; align-content: start; gap: 1.35rem; padding-top: 0.65rem; }
+  .prompt-stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .prompt-stat-grid div { display: grid; gap: 0.25rem; }
+  .prompt-stat-grid strong { font-size: 1.8rem; letter-spacing: -0.05em; }
+  .prompt-stat-grid span { color: var(--prompt-ink-soft); font-size: 0.78rem; }
+  .prompt-source-link, .prompt-outline-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-theme); font-weight: 800; text-decoration: none; }
+  .prompt-source-link:hover, .prompt-outline-link:hover { text-decoration: underline; }
+
+  .prompt-section { padding: clamp(3rem, 6vw, 5.5rem) 0; }
+  .task-section { padding-top: clamp(2rem, 4vw, 3.5rem); }
+  .prompt-section-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 0.6fr); gap: 2rem; align-items: start; margin-bottom: 2rem; }
+  .prompt-section-heading h2 { margin: 0; max-width: 18ch; font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.05; letter-spacing: -0.04em; }
+  .prompt-section-heading > p { max-width: 42ch; margin: 0; color: var(--prompt-ink-soft); line-height: 1.7; }
+  .compact-heading { align-items: start; }
+  .compact-heading h2 { max-width: none; }
+
+  .prompt-task-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem 1rem; }
+  .prompt-task-card { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 0.8rem; min-height: 0; padding: 1.1rem 1.15rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; transition: border-color 0.15s, background-color 0.15s; }
+  .prompt-task-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); background: var(--color-theme-soft); }
+  .prompt-task-card-content { display: grid; align-content: start; gap: 0.45rem; }
+  .prompt-task-card-content strong { font-size: 1rem; }
+  .prompt-task-card-content span { color: var(--prompt-ink-soft); font-size: 0.86rem; line-height: 1.5; }
+  .prompt-task-card-content small { color: var(--color-theme); font-size: 0.75rem; font-weight: 700; }
+  .prompt-arrow { align-self: start; color: var(--color-theme); font-size: 1rem; }
+
+  .prompt-area-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1rem; }
+  .prompt-area-card { display: grid; align-content: start; gap: 0.55rem; min-height: 0; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
+  .prompt-area-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); background: var(--color-theme-soft); }
+  .prompt-area-count { display: flex; align-items: baseline; gap: 0.35rem; color: var(--color-theme); }
+  .prompt-area-count strong { font-size: 1.35rem; letter-spacing: -0.04em; }
+  .prompt-area-count span { font-size: 0.72rem; font-weight: 800; }
+  .prompt-area-card strong { font-size: 1rem; }
+  .prompt-area-card > span:not(.prompt-area-count):not(.prompt-area-link) { color: var(--prompt-ink-soft); font-size: 0.85rem; line-height: 1.55; }
+  .prompt-area-link { display: inline-flex; gap: 0.4rem; align-items: center; margin-top: auto; color: var(--color-theme); font-size: 0.8rem; font-weight: 800; }
+
+  .prompt-featured-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+  .prompt-featured-card { display: flex; flex-direction: column; padding: 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
+  .prompt-featured-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); }
+  .prompt-card-meta { display: flex; justify-content: space-between; gap: 0.5rem; color: var(--color-theme); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; }
+  .prompt-featured-card h3 { margin: 1rem 0 0.55rem; font-size: 1.08rem; line-height: 1.25; }
+  .prompt-featured-card:hover h3 { color: var(--color-theme); }
+  .prompt-featured-card > p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; margin: 0; color: var(--prompt-ink-soft); font-size: 0.87rem; line-height: 1.6; }
+  .prompt-card-signals { display: grid; gap: 0.7rem; margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid var(--color-border); }
+  .prompt-card-signals div { display: grid; gap: 0.2rem; }
+  .prompt-card-signals span { color: var(--color-theme); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+  .prompt-card-signals strong { font-size: 0.78rem; line-height: 1.45; }
+  .prompt-outline-link { margin-top: 1.5rem; }
+
+  .prompt-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; list-style: none; margin: 0; padding: 0; }
+  .prompt-steps li { display: grid; gap: 0.7rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+  .prompt-step-number { color: var(--color-theme); font-size: 1.5rem; font-weight: 800; }
+  .prompt-steps h3 { margin: 0; font-size: 1rem; }
+  .prompt-steps p { margin: 0.45rem 0 0; color: var(--prompt-ink-soft); font-size: 0.84rem; line-height: 1.55; }
+
+  .prompt-comparison { border-block: 1px solid var(--color-border); }
+  .prompt-comparison-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .prompt-comparison-row span { padding: 1rem 1.1rem; color: var(--prompt-ink-soft); line-height: 1.6; }
+  .prompt-comparison-row span + span { border-left: 1px solid var(--color-border); }
+  .prompt-comparison-head span { color: var(--color-main); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .prompt-workflow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1rem; }
+  .prompt-workflow-card { position: relative; display: grid; gap: 0.6rem; min-height: 0; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
+  .prompt-workflow-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); background: var(--color-theme-soft); }
+  .prompt-workflow-type { color: var(--color-theme); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .prompt-workflow-card strong { padding-right: 1rem; font-size: 1.1rem; }
+  .prompt-workflow-card > span:not(.prompt-workflow-type):not(.prompt-arrow) { color: var(--prompt-ink-soft); font-size: 0.87rem; line-height: 1.55; }
+  .prompt-workflow-card .prompt-arrow { position: absolute; top: 1.1rem; right: 1.1rem; }
+
+  :global(.ai-notice) { margin: 3.5rem 0 0; }
+
+  @media (max-width: 1000px) {
+    .prompt-featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .prompt-area-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .prompt-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem 0; }
+    .prompt-steps li:nth-child(4) { padding-left: 0; border-left: 0; }
   }
 
-  .prompt-card {
-    height: var(--prompt-card-height);
-    padding: 0.72rem;
-    gap: 0.3rem;
-    overflow: hidden;
+  @media (max-width: 720px) {
+    .prompt-home { padding-inline: 0; }
+    .prompt-hero { grid-template-columns: 1fr; gap: 2rem; }
+    .prompt-hero h1 { max-width: 18ch; }
+    .prompt-hero-aside { max-width: 520px; }
+    .prompt-section-heading { grid-template-columns: 1fr; gap: 0.8rem; }
+    .prompt-section-heading h2 { max-width: 20ch; }
+    .prompt-task-grid, .prompt-featured-grid, .prompt-workflow-grid { grid-template-columns: 1fr; }
+    .prompt-area-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .prompt-steps { grid-template-columns: 1fr; gap: 1.1rem; }
+    .prompt-steps li, .prompt-steps li:nth-child(4) { padding: 1rem 1rem 1rem 2.2rem; }
+    .prompt-steps li { position: relative; }
+    .prompt-step-number { position: absolute; left: 0; top: -0.25rem; }
   }
 
-  .prompt-card:hover,
-  .workflow-card:hover {
-    border-color: color-mix(in srgb, var(--color-theme) 48%, var(--color-border));
-    background: var(--color-theme-soft);
-    box-shadow: none;
-    transform: none;
-  }
-
-  .prompt-card-title {
-    display: -webkit-box;
-    min-height: 2.45rem;
-    margin: 0;
-    overflow: hidden;
-    color: var(--color-main);
-    font-size: 0.9rem;
-    line-height: 1.35;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
-
-  .prompt-card-desc {
-    display: -webkit-box;
-    margin: 0;
-    overflow: hidden;
-    color: var(--color-text-secondary);
-    font-size: 0.76rem;
-    line-height: 1.45;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
-
-  .workflows-grid {
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 0.65rem;
-  }
-
-  .workflow-card {
-    min-height: 116px;
-    padding: 0.8rem;
-    gap: 0.3rem;
-  }
-
-  .workflow-card-title {
-    color: var(--color-main);
-    font-size: 0.92rem;
-  }
-
-  .workflow-card-desc {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
-
-  @media (max-width: 980px) {
-    .prompt-directory-layout {
-      grid-template-columns: 190px minmax(0, 1fr);
-      gap: 1.25rem;
-    }
-  }
-
-  @media (max-width: 760px) {
-    .prompt-toolbar-main,
-    .prompt-results-heading {
-      display: grid;
-      gap: 0.55rem;
-    }
-
-    .prompt-results-count {
-      justify-self: start;
-    }
-
-    .prompt-directory-layout {
-      grid-template-columns: 1fr;
-      gap: 1.1rem;
-    }
-
-    .prompt-filter-sidebar {
-      position: static;
-      padding: 1rem;
-    }
-
-    .prompt-filter-options {
-      display: flex;
-      gap: 0.35rem;
-      overflow-x: auto;
-      padding-bottom: 0.2rem;
-    }
-
-    .prompt-category-filter {
-      flex: 0 0 auto;
-      width: auto;
-      min-height: 35px;
-      white-space: nowrap;
-    }
-
-    .prompt-results-heading p {
-      max-width: none;
-      text-align: start;
-    }
-
-    .hero-metrics {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.65rem 0;
-    }
-
-    .hero-metrics span:nth-child(3) {
-      border-inline-start: 0;
-    }
-
-    .hero-metrics span {
-      padding-inline: 0.65rem;
-    }
-
-    .hero-metrics span:nth-child(odd) {
-      padding-inline-start: 0;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .prompts-page {
-      padding-inline: 1rem;
-    }
-
-    .directory-hero-topline,
-    .directory-hero-main {
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .directory-hero-main {
-      margin-top: 0.9rem;
-    }
-
-    .directory-hero h1 {
-      max-width: 13ch;
-    }
-
-    .directory-hero .source-link {
-      justify-self: start;
-    }
-
-    .prompt-search {
-      min-height: 52px;
-    }
-
-    .prompt-results-heading h2 {
-      font-size: 1.45rem;
-    }
+  @media (max-width: 460px) {
+    .prompt-search-control { display: flex; padding: 0.35rem; }
+    .prompt-search-control button { flex: 0 0 auto; min-height: 40px; width: auto; padding-inline: 0.85rem; white-space: nowrap; }
+    .prompt-search-icon { padding-inline: 0.45rem; }
+    .prompt-area-grid { grid-template-columns: 1fr; }
+    .prompt-comparison-row { grid-template-columns: 1fr; }
+    .prompt-comparison-row span + span { border-top: 1px solid var(--color-border); border-left: 0; }
+    .prompt-comparison-head { display: none; }
+    .prompt-comparison-row span { padding: 0.9rem 0; }
   }
 </style>
