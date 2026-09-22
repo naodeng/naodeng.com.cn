@@ -66,7 +66,7 @@ const breadcrumbs = [
       <p class="section-kicker">05 / RELEASES</p>
       <h2 id="releases-title">{site.labels.releaseNotes}</h2>
       <div class="release-list">
-        {site.releases.map((release) => <details data-release-note><summary><span><strong>{release.version}</strong><time datetime={release.publishedAt}>{release.publishedAt}</time></span><span>{release.summary}</span></summary><div class="release-body"><ul>{release.changes.map((change) => <li>{change}</li>)}</ul><a href={release.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} <span aria-hidden="true">↗</span></a></div></details>)}
+        {site.releases.map((release, index) => <details data-release-note open={index === 0}><summary><span><strong>{release.version}</strong><time datetime={release.publishedAt}>{release.publishedAt}</time></span><span>{release.summary}</span></summary><div class="release-body"><ul>{release.changes.map((change) => <li>{change}</li>)}</ul><a href={release.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} <span aria-hidden="true">↗</span></a></div></details>)}
       </div>
     </section>
   </main>

@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 for (const locale of ["en", "zh-cn"] as const) {
   const otherLocale = locale === "en" ? "zh-cn" : "en";
 
-  test(`${locale} dsh-qa presents the complete product page with collapsed releases`, async ({ page }) => {
+  test(`${locale} dsh-qa presents the complete product page with the latest release expanded`, async ({ page }) => {
     const response = await page.goto(`/${locale}/dsh-qa/`, { waitUntil: "domcontentloaded" });
 
     expect(response?.status()).toBe(200);
@@ -12,13 +12,15 @@ for (const locale of ["en", "zh-cn"] as const) {
     await expect(page.locator("[data-dsh-qa-feature]")).toHaveCount(4);
     await expect(page.locator("[data-dsh-qa-flow-stage]")).toHaveCount(5);
     await expect(page.locator("[data-install-mode]")).toHaveCount(2);
-    await expect(page.locator("[data-release-note]")).toHaveCount(5);
-    expect(await page.locator("[data-release-note]").evaluateAll((notes) => notes.every((note) => !note.hasAttribute("open")))).toBe(true);
+    await expect(page.locator("[data-release-note]")).toHaveCount(16);
+    await expect(page.locator("[data-release-note]").first()).toHaveAttribute("open", "");
+    await expect(page.locator("[data-release-note]").first()).toContainText("v0.5.1");
+    expect(await page.locator("[data-release-note]").evaluateAll((notes) => notes.slice(1).every((note) => !note.hasAttribute("open")))).toBe(true);
   });
 
   test(`${locale} dsh-qa expands a release and exposes localized metadata`, async ({ page }) => {
     await page.goto(`/${locale}/dsh-qa/`, { waitUntil: "domcontentloaded" });
-    const release = page.locator("[data-release-note]").first();
+    const release = page.locator("[data-release-note]").nth(1);
 
     await release.locator("summary").click();
     await expect(release).toHaveAttribute("open", "");

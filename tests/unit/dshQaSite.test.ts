@@ -19,11 +19,22 @@ describe("dsh-qa site data", () => {
 
   it.each(["en", "zh-cn"] as const)("keeps verified release facts in newest-first order for %s", (lang) => {
     expect(DSH_QA_SITE[lang].releases.map((release) => [release.version, release.publishedAt, release.url])).toEqual([
+      ["v0.5.1", "2026-09-22", "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.1"],
+      ["v0.5.0", "2026-09-21", "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.0"],
       ["v0.4.1", "2026-09-15", "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.1"],
       ["v0.4.0", "2026-09-15", "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.0"],
       ["v0.3.1", "2026-09-11", "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.1"],
       ["v0.3.0", "2026-09-11", "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.0"],
       ["v0.2.0", "2026-09-01", "https://github.com/naodeng/dsh-qa/releases/tag/v0.2.0"],
+      ["v0.1.8", "2026-08-26", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.8"],
+      ["v0.1.7", "2026-08-25", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.7"],
+      ["v0.1.6", "2026-08-25", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.6"],
+      ["v0.1.5", "2026-08-24", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.5"],
+      ["v0.1.4", "2026-08-20", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.4"],
+      ["v0.1.3", "2026-08-19", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.3"],
+      ["v0.1.2", "2026-08-19", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.2"],
+      ["v0.1.1", "2026-08-19", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.1"],
+      ["v0.1.0", "2026-08-19", "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.0"],
     ]);
   });
 });

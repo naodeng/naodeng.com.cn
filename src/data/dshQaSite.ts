@@ -58,11 +58,22 @@ export interface DshQaSiteCopy {
 }
 
 export const DSH_QA_RELEASE_FACTS: DshQaReleaseFact[] = [
+  { version: "v0.5.1", publishedAt: "2026-09-22", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.1" },
+  { version: "v0.5.0", publishedAt: "2026-09-21", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.0" },
   { version: "v0.4.1", publishedAt: "2026-09-15", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.1" },
   { version: "v0.4.0", publishedAt: "2026-09-15", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.0" },
   { version: "v0.3.1", publishedAt: "2026-09-11", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.1" },
   { version: "v0.3.0", publishedAt: "2026-09-11", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.3.0" },
   { version: "v0.2.0", publishedAt: "2026-09-01", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.2.0" },
+  { version: "v0.1.8", publishedAt: "2026-08-26", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.8" },
+  { version: "v0.1.7", publishedAt: "2026-08-25", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.7" },
+  { version: "v0.1.6", publishedAt: "2026-08-25", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.6" },
+  { version: "v0.1.5", publishedAt: "2026-08-24", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.5" },
+  { version: "v0.1.4", publishedAt: "2026-08-20", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.4" },
+  { version: "v0.1.3", publishedAt: "2026-08-19", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.3" },
+  { version: "v0.1.2", publishedAt: "2026-08-19", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.2" },
+  { version: "v0.1.1", publishedAt: "2026-08-19", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.1" },
+  { version: "v0.1.0", publishedAt: "2026-08-19", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.1.0" },
 ];
 
 function releases(content: DshQaReleaseContent[]): DshQaRelease[] {
@@ -107,11 +118,22 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { label: "Compatibility postmortem", href: "/en/blog/ai-testing/dsh-qa-harness-api-compatibility-404/" },
     ],
     releases: releases([
+      { summary: "Migrated the QA profile to Harness 0.1.7 bundles and stabilized embedded Workbench lifecycle handling.", changes: ["Migrated the qa preset to the Harness 0.1.7 declarative profile-bundle model and made quality-control an independent profile bundle.", "Fixed same-origin Workbench popout cleanup and remounted-iframe frame-readiness timing; updated Host Smoke to dsh-v0.1.7-alpha.1.", "Verified 159 unit/API tests, 23 standalone Chromium E2E tests, and 6 real qa-bundle Host Smoke cases. The independent quality-control bundle is statically verified; its separate runtime Host Smoke is outside this release evidence."] },
+      { summary: "Moved the QA Workbench onto Harness's native Panel contract.", changes: ["Mounted the workbench through official sidebar.panellist and root-scoped keyed main slots, removing host DOM selectors, MutationObserver, and custom Panel activation.", "Preserved iframe, popout, Panel-close, and postMessage return flows with idempotent cleanup and lifecycle regression coverage.", "Restored project titles after host refresh and closed popouts when their Panel closes or unloads."] },
       { summary: "Hardened DeepSeek Harness compatibility and verified the embedded workbench host path.", changes: ["Locked the current client-request and session/follow WebSocket envelopes, standardized snapshot.records and cursor handling, and routed follow through the Remote mux.", "Added bounded error, close, timeout, and duplicate-frame handling for Session follow so host capability failures remain visible.", "Aligned the dsh-v0.1.6-alpha.1 QA preset workflow, persona prefix, skills/list envelope, and commands/execute submittedAttachments argument.", "Added an explicit opt-in Harness host smoke and verified the embedded Workbench client's refresh and reconnect path."] },
       { summary: "Introduced verifiable evidence bundles and quality-workbench execution flows.", changes: ["Added terminal-run finalization, canonical manifest hashes, per-file SHA-256 digests, evidence types, MIME metadata, capture timestamps, and text/image previews.", "Added tamper detection, invalid-evidence quarantine, interrupted-finalization recovery, gate and open-defect reference protection, quotas, and path hardening.", "Added structured failure analysis, human-confirmed defect promotion, deterministic calculated regression sets, recalculation, and before/after test-run comparison.", "Bound test runs to source digests and Git commits, and completed evidence list, per-run evidence, download, and quality-workbench UI flows.", "Fixed stale or invalid evidence entering gates, restart recovery, referenced-evidence cleanup, MIME handling, traversal and symlink protection, unknown regression cases, and comparison validation."] },
       { summary: "Clearer DSH plugin and standalone installation guidance.", changes: ["Documented npx and source-checkout plugin installation paths.", "Added standalone npm installation, update, and qabench startup guidance."] },
       { summary: "DeepSeek Harness RPC compatibility and a narrower product boundary.", changes: ["Updated RPC endpoints and request envelopes for current DSH APIs.", "Removed retired Remote pairing checks while retaining local workbench and native session support."] },
       { summary: "Introduced the QA control workbench and computed delivery gates.", changes: ["Added traceable quality tasks, controlled runs, evidence bundles, and regression workflows.", "Added PASS, WARN, and BLOCK delivery decisions with controlled exceptions."] },
+      { summary: "Refined recommendations and installation-state behaviour in the QA Skill catalog.", changes: ["Improved recommended-skill presentation for installed QA Skills.", "Updated bilingual README image assets."] },
+      { summary: "Added safe QA Skill removal from the workbench.", changes: ["Showed installed state in the Skill list and added confirmed uninstall support.", "Added bilingual removal actions, confirmation, and completion feedback."] },
+      { summary: "Added the language-aware QA Skill installer and completed QA preset workflow coverage.", changes: ["Added the QA Skill installation page and language categories.", "Completed the Quality Control Room preset and E2E workflow coverage, and fixed dynamic English UI text."] },
+      { summary: "Refined desktop workbench interactions, branding, and triage views.", changes: ["Added the QA Workbench logo and improved header branding.", "Polished the Quality Control Room and triage dashboard, extending the card treatment across workspaces."] },
+      { summary: "Completed English localization and introduced an automated test suite.", changes: ["Filled missing English UI strings for more complete language switching.", "Added npm test coverage for unit and Playwright end-to-end tests, with GitHub Actions automation."] },
+      { summary: "Added persistent Chinese/English UI switching.", changes: ["Added a top-bar language control and local browser persistence.", "Localized navigation, dashboard, kanban, calendar, radar, chat, drawers, and modal titles."] },
+      { summary: "Added the Test Mode QA preset and its one-command installer.", changes: ["Created the qa preset from DSH standard with test-quality principles.", "Added an installer and clearer guidance when the preset is missing."] },
+      { summary: "Fixed workbench header layout and added return-to-DSH navigation.", changes: ["Prevented title and search overlap and corrected the terminal watermark alignment.", "Added the embedded-only Back to DSH action through postMessage."] },
+      { summary: "Introduced the original QA Workbench.", changes: ["Added projects and iterations, a six-column QA kanban, AI tools, gate governance, and four QA themes.", "Added companion QA Skills installation and zero-dependency standalone or DSH-plugin operation."] },
     ]),
   },
   "zh-cn": {
@@ -151,11 +173,22 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { label: "兼容性复盘文章", href: "/zh-cn/blog/ai-testing/dsh-qa-harness-api-compatibility-404/" },
     ],
     releases: releases([
+      { summary: "将 QA profile 迁移到 Harness 0.1.7 bundle 模型，并稳定嵌入式 Workbench 生命周期。", changes: ["将 qa preset 迁移至 Harness 0.1.7 声明式 profile bundle 模型，并将 quality-control 改为独立 profile bundle。", "修复同源 Workbench popout 清理和重新挂载 iframe 的 frame readiness 时序，并将 Host Smoke 更新到 dsh-v0.1.7-alpha.1。", "验证通过 159 个单元/API 测试、23 个独立 Chromium E2E 和 6 个真实 qa bundle Host Smoke；独立 quality-control bundle 已静态验证，但其单独运行时 Host Smoke 不属于本次发布证据。"] },
+      { summary: "将 QA 工作台迁移至 Harness 原生 Panel 契约。", changes: ["通过官方 sidebar.panellist 与 root 作用域 keyed main slot 挂载工作台，移除宿主 DOM selector、MutationObserver 和自定义 Panel 激活依赖。", "保留 iframe、弹窗、Panel 关闭和 postMessage 返回链路，并增加幂等清理与生命周期回归覆盖。", "宿主刷新后恢复项目标题；Panel 关闭或卸载时同步关闭弹窗。"] },
       { summary: "加固 DeepSeek Harness 兼容性，并完成嵌入式工作台宿主链路验证。", changes: ["固化当前 client-request 与 session/follow WebSocket 封装，统一读取 snapshot.records 与 cursor，并通过 Remote mux 处理 follow。", "补充 Session follow 的错误、关闭、超时与重复 frame 边界处理，避免宿主能力列表失败时静默显示为空。", "对齐 dsh-v0.1.6-alpha.1 的 QA preset workflow、persona prefix、skills/list 请求封装和 commands/execute 的 submittedAttachments 参数。", "新增显式 opt-in 的 Harness host smoke，并验证嵌入式 Workbench client 的刷新与重连路径。"] },
       { summary: "引入可验证的质量证据包与质量工作台执行链路。", changes: ["新增终态运行 finalize、规范 manifest hash、逐文件 SHA-256、证据类型、MIME、捕获时间和文本/图片预览。", "新增篡改检测、无效证据隔离、中断 finalize 恢复、门禁与未关闭缺陷引用保护、配额和路径安全检查。", "新增结构化失败分析、人工确认后的缺陷升级、确定性计算回归集、回归集重算和测试运行前后对比。", "将测试运行绑定到源文件摘要与 Git commit，并补齐证据列表、单次运行证据、下载和质量工作台 UI。", "修复无效或过期证据进入门禁、重启恢复、引用中证据清理、MIME、路径越界、符号链接、未知回归用例和运行对比参数校验问题。"] },
       { summary: "补充 DSH 插件与独立运行的安装说明。", changes: ["说明 npx 与源码工作区的插件安装路径。", "补充独立模式的 npm 安装、更新与 qabench 启动方式。"] },
       { summary: "适配 DeepSeek Harness RPC，并收敛产品边界。", changes: ["更新当前 DSH API 的 RPC 端点与请求封装。", "移除废弃的 Remote 配对检查，保留本地工作台与原生会话支持。"] },
       { summary: "引入研发质量控制工作台与计算型交付门禁。", changes: ["新增可追溯的质量任务、受控运行、证据包与回归工作流。", "新增 PASS、WARN、BLOCK 交付决策与受控例外。"] },
+      { summary: "优化 QA Skill 目录的推荐与安装状态展示。", changes: ["改进已安装 QA Skill 的推荐展示。", "更新中英文 README 图片资源。"] },
+      { summary: "增加工作台内的安全 QA Skill 卸载能力。", changes: ["Skill 列表展示安装状态，并支持确认后卸载。", "补充中英文卸载操作、确认与完成反馈。"] },
+      { summary: "增加按语言分类的 QA Skill 安装页，并完善 QA preset 流程覆盖。", changes: ["新增 QA Skill 安装页和语言分类。", "完善质量控制室 preset 与端到端流程覆盖，并修复动态 UI 的英文本地化。"] },
+      { summary: "优化桌面工作台交互、品牌与 triage 视图。", changes: ["新增 QA Workbench Logo，并改进顶部品牌标识。", "细化质量控制室与 triage 看板，并将卡片视觉延展到各工作区。"] },
+      { summary: "完善英文界面本地化，并引入自动化测试体系。", changes: ["补齐遗漏英文文案，提升语言切换完整性。", "新增 npm test 的单元与 Playwright 端到端测试，并由 GitHub Actions 自动运行。"] },
+      { summary: "新增可持久化的中英文界面切换。", changes: ["增加顶栏语言控制与本地浏览器持久化。", "覆盖导航、首页、看板、日历、雷达、对话、抽屉和模态框标题。"] },
+      { summary: "新增测试模式 QA preset 及一键安装器。", changes: ["基于 DSH standard 创建 qa preset，并内置测试质量原则。", "新增安装脚本，以及 preset 缺失时的明确引导。"] },
+      { summary: "修复工作台顶部布局，并增加返回 DSH 的导航。", changes: ["修复标题与搜索框重叠及终端水印对齐问题。", "通过 postMessage 增加仅嵌入模式显示的返回 DSH 操作。"] },
+      { summary: "发布最初版本的 QA 工作台。", changes: ["新增项目与迭代、六列 QA 看板、AI 工具、门禁治理和四套 QA 主题。", "新增配套 QA Skills 安装，并支持零依赖独立运行或作为 DSH 插件安装。"] },
     ]),
   },
 };
