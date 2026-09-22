@@ -24,7 +24,7 @@ test.describe("文档页（Docs）", () => {
     await expect(page.locator(".docs-sidebar").first()).toBeVisible();
     await expect(page.locator(".docs-content").first()).toBeVisible();
     await expect(page.locator(".docs-content h1").first()).toBeVisible();
-    await expect(page.getByText("Why Astro", { exact: true }).first()).toBeVisible();
+    await expect(page.getByText("Why Astro?", { exact: true }).first()).toBeVisible();
   });
 
   test("zh-cn 文档子页 why-astro：侧栏、正文区、h1 可见", async ({ page, baseURL }) => {
