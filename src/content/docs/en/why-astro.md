@@ -18,4 +18,3 @@ This page is rendered from **Markdown** in the docs content collection. You can 
 ## Learn more
 
 - [Astro — Getting started](https://docs.astro.build/en/getting-started/)
-- Back to [docs overview](/en/docs/)

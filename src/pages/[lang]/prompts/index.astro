@@ -148,6 +148,7 @@ const itemListSchema = {
               </button>
             ))}
           </div>
+          <p class="prompt-filter-scroll-hint">{lang === "zh-cn" ? "左右滑动查看更多分类" : "Swipe to see more categories"}</p>
         </aside>
 
         <div class="prompt-results-column">
@@ -805,6 +806,13 @@ const itemListSchema = {
     max-width: 100%;
   }
 
+  .prompt-filter-scroll-hint {
+    display: none;
+    margin: 0.45rem 0 0;
+    color: var(--color-text-tertiary);
+    font-size: 0.72rem;
+  }
+
   .prompt-category-filter {
     display: flex;
     align-items: center;
@@ -1105,6 +1113,11 @@ const itemListSchema = {
       gap: 0.35rem;
       overflow-x: auto;
       padding-bottom: 0.2rem;
+      scrollbar-width: thin;
+    }
+
+    .prompt-filter-scroll-hint {
+      display: block;
     }
 
     .prompt-category-filter {

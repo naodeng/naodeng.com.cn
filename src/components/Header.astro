@@ -1583,6 +1583,11 @@ const mobilePriorityItems = [
   .btn-icon, .nav-tool :global(.locale-trigger) { border-color: var(--color-border); background: transparent; box-shadow: none; }
   @media (width < 834px) { .l-header, .header-shell { min-height: 60px; } .site-nav > ul { background: var(--color-surface); border: 1px solid var(--color-border); } }
   @media (width < 480px) { .header-wechat-entry { display: none; } }
+  @media (width < 480px) {
+    .header-utils { gap: 0.25rem; }
+    .nav-tool :global(.locale-trigger),
+    .btn-icon { border-color: transparent; }
+  }
 
   /* SEO-friendly content navigation: descriptions stay in the HTML and remain readable when the menu opens. */
   .nav-submenu {
@@ -1671,6 +1676,22 @@ const mobilePriorityItems = [
     block-size: 21px;
     flex: 0 0 21px;
     line-height: 1;
+  }
+  .l-header .theme-toggle__dark,
+  .l-header .nav-toggle__close {
+    display: none;
+  }
+  :global(html[data-theme="dark"]) .l-header .theme-toggle__light {
+    display: none;
+  }
+  :global(html[data-theme="dark"]) .l-header .theme-toggle__dark {
+    display: inline-flex;
+  }
+  .l-header[data-nav-open] .nav-toggle__open {
+    display: none;
+  }
+  .l-header[data-nav-open] .nav-toggle__close {
+    display: inline-flex;
   }
   @media (width < 834px) {
     .site-nav {

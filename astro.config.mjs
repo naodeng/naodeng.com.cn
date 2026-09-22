@@ -6,6 +6,7 @@ import rehypeSlug from "rehype-slug";
 import { defineConfig } from "astro/config";
 import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/locales";
 import { hasNoindexRobots, shouldIncludeInSitemap } from "./src/utils/seoUrls";
+import markdownPresentationRemark from "./src/utils/markdownPresentationRemark.mjs";
 
 const sanitizeRollupFileName = (fileName) =>
   fileName
@@ -65,6 +66,7 @@ export default defineConfig({
     },
   },
   markdown: {
+    remarkPlugins: [markdownPresentationRemark],
     rehypePlugins: [rehypeSlug],
     shikiConfig: {
       langAlias: {

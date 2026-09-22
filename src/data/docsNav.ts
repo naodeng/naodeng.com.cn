@@ -7,7 +7,7 @@ import type { Lang } from "@/i18n";
 export interface DocsNavItem {
   /** 显示文案（可多语言 key，由调用方根据 locale 解析） */
   label: string;
-  /** 链接路径（相对当前 locale 的 docs 根，如 "" 或 "getting-started"） */
+  /** 链接路径（相对当前 locale 的 docs 根，如 "getting-started"） */
   href?: string;
   /** 子项 */
   children?: DocsNavItem[];
@@ -24,7 +24,6 @@ const GETTING_STARTED_NAV: Record<Lang, DocsNavSection[]> = {
     {
       title: "Start",
       items: [
-        { label: "Overview", href: "" },
         { label: "Why Astro?", href: "why-astro" },
         { label: "Installation", href: "installation" },
         { label: "Project structure", href: "project-structure" },
@@ -42,7 +41,6 @@ const GETTING_STARTED_NAV: Record<Lang, DocsNavSection[]> = {
     {
       title: "入门",
       items: [
-        { label: "概述", href: "" },
         { label: "为什么选择 Astro？", href: "why-astro" },
         { label: "安装", href: "installation" },
         { label: "项目结构", href: "project-structure" },
@@ -66,12 +64,12 @@ export function getDocsNav(locale: Lang): DocsNavSection[] {
   return GETTING_STARTED_NAV[locale] ?? GETTING_STARTED_NAV.en;
 }
 
-/** 从 content collection 条目 id 得到 URL slug（无扩展名，index 转为 ""） */
+/** 从 content collection 条目 id 得到 URL slug（无扩展名） */
 export function docIdToSlug(id: string, lang: Lang): string {
   const prefix = `${lang}/`;
   if (!id.startsWith(prefix)) return "";
   const rest = id.slice(prefix.length).replace(/\.(md|mdx)$/, "");
-  return rest === "index" ? "" : rest;
+  return rest;
 }
 
 /** 由 docs collection 按 lang 分组、排序后生成侧栏结构（用于 Markdown 文档） */
@@ -88,6 +86,7 @@ export function buildDocsNavFromCollection(
       section: e.data.section ?? "",
       order: e.data.order ?? 999,
     }))
+    .filter((item) => item.href !== "index")
     .sort((a, b) => {
       if (a.section !== b.section) return (a.section || "").localeCompare(b.section || "");
       return a.order - b.order;

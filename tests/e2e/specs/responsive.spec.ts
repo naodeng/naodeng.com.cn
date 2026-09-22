@@ -14,7 +14,7 @@ test.describe("响应式布局", () => {
   ];
 
   for (const locale of ["zh-cn", "en"] as const) {
-    for (const route of ["", "qaskills/", "prompts/"] as const) {
+    for (const route of ["", "qaskills/", "prompts/", "AIWiki/agent-evals/"] as const) {
       test(`${locale}/${route || "home"} 在 390px 下无横向溢出`, async ({ page, baseURL }) => {
         await page.setViewportSize(MOBILE_VIEWPORT);
         await page.goto(`${baseURL || ""}/${locale}/${route}`, { waitUntil: "domcontentloaded" });
@@ -26,6 +26,16 @@ test.describe("响应式布局", () => {
         await expect(page.locator("header [data-nav-toggle]")).toBeVisible();
       });
     }
+
+    test(`${locale}/ai-test-auditor 在 390px 下无横向溢出`, async ({ page, baseURL }) => {
+      await page.setViewportSize(MOBILE_VIEWPORT);
+      await page.goto(`${baseURL || ""}/${locale}/ai-test-auditor/`, { waitUntil: "domcontentloaded" });
+      const width = await page.evaluate(() => ({
+        scroll: document.documentElement.scrollWidth,
+        client: document.documentElement.clientWidth,
+      }));
+      expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+    });
   }
 
   for (const viewport of viewports) {
@@ -152,7 +162,7 @@ test.describe("响应式布局", () => {
 
   test("en 文档页侧栏在移动端可切换", async ({ page, baseURL }) => {
     await page.setViewportSize(MOBILE_VIEWPORT);
-    await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "domcontentloaded" });
+    await page.goto((baseURL || "") + "/en/docs/why-astro/", { waitUntil: "domcontentloaded" });
     
     const sidebarToggle = page.locator('button[aria-label*="sidebar" i], button[aria-label*="menu" i], [class*="sidebar-toggle"]').first();
     
@@ -169,7 +179,7 @@ test.describe("响应式布局", () => {
 
   test("zh-cn 文档页侧栏在移动端可切换", async ({ page, baseURL }) => {
     await page.setViewportSize(MOBILE_VIEWPORT);
-    await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "domcontentloaded" });
+    await page.goto((baseURL || "") + "/zh-cn/docs/why-astro/", { waitUntil: "domcontentloaded" });
     
     const sidebarToggle = page.locator('button[aria-label*="侧边栏"], button[aria-label*="菜单"], [class*="sidebar-toggle"]').first();
     

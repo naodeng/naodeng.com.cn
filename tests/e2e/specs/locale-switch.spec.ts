@@ -58,23 +58,23 @@ test.describe("语言切换", () => {
   });
 
   test("从 en 文档页切换到 zh-cn 保持在文档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/docs/", { waitUntil: "domcontentloaded" });
+    await page.goto((baseURL || "") + "/en/docs/why-astro/", { waitUntil: "domcontentloaded" });
     const zhLink = page.locator('a[href*="/zh-cn/docs"]').first();
     
     if (await zhLink.isVisible()) {
       await zhLink.click();
-      await expect(page).toHaveURL(/\/zh-cn\/docs/);
+      await expect(page).toHaveURL(/\/zh-cn\/docs\/why-astro\/?/);
       await expect(page.locator(".docs-sidebar")).toBeVisible();
     }
   });
 
   test("从 zh-cn 文档页切换到 en 保持在文档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/docs/", { waitUntil: "domcontentloaded" });
+    await page.goto((baseURL || "") + "/zh-cn/docs/why-astro/", { waitUntil: "domcontentloaded" });
     const enLink = page.locator('a[href*="/en/docs"]').first();
     
     if (await enLink.isVisible()) {
       await enLink.click();
-      await expect(page).toHaveURL(/\/en\/docs/);
+      await expect(page).toHaveURL(/\/en\/docs\/why-astro\/?/);
       await expect(page.locator(".docs-sidebar")).toBeVisible();
     }
   });

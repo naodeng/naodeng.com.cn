@@ -18,4 +18,3 @@ order: 1
 ## 扩展阅读
 
 - [Astro 官方文档](https://docs.astro.build/en/getting-started/)
-- [返回文档概述](/zh-cn/docs/)

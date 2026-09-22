@@ -36,11 +36,10 @@ export const WIKI_SLUGS = [
   "end-to-end-testing",
 ] as const;
 
-/** 文档页（含首页与子页）带 locale 的路径 */
+/** 文档子页带 locale 的路径 */
 export function getDocsPageUrls(): { locale: string; path: string; name: string }[] {
   const out: { locale: string; path: string; name: string }[] = [];
   for (const locale of LOCALES) {
-    out.push({ locale, path: `/${locale}/docs/`, name: "docs-index" });
     for (const slug of DOCS_SLUGS) {
       out.push({ locale, path: `/${locale}/docs/${slug}/`, name: `docs-${slug}` });
     }

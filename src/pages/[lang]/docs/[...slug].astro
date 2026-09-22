@@ -1,7 +1,7 @@
 ---
 /**
  * 文档子页动态路由：从 content collection 渲染 Markdown/MDX。
- * 文档放在 src/content/docs/{lang}/ 下，如 en/why-astro.md。首页由 index.astro 渲染。
+ * 文档放在 src/content/docs/{lang}/ 下，如 en/why-astro.md。根路径不再生成。
  */
 import { getCollection, render } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -35,11 +35,8 @@ const currentPath = (Astro.params.slug ?? "") as string;
 const title = entry.data.title;
 const description = entry.data.description ?? title;
 const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
-const docsTitle = locale === "zh-cn" ? "文档" : "Documentation";
-
 const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },
-  { name: docsTitle, url: `/${locale}/docs/` },
   { name: title, url: `/${locale}/docs/${currentPath}/` },
 ];
 
