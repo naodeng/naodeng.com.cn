@@ -50,7 +50,7 @@ const labels = lang === "zh-cn" ? {
           </ul>
         </div>
         <a class="example-link" href={getRelativeLocaleUrl(lang, example.href)}>
-          {labels.detail} →
+          {labels.detail}<span class="material-icons-sharp" aria-hidden="true">arrow_forward</span>
         </a>
       </li>
     ))}
@@ -122,11 +122,15 @@ const labels = lang === "zh-cn" ? {
   .example-link {
     margin-top: auto;
     padding-top: .4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
     color: var(--color-theme);
     font-size: .9rem;
     font-weight: 800;
     text-decoration: none;
   }
+  .example-link .material-icons-sharp { font-size: 1rem; }
   .example-link:hover { text-decoration: underline; }
   @media (max-width: 860px) { .example-grid { grid-template-columns: 1fr; } }
 </style>

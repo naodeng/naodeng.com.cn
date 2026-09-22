@@ -1,0 +1,347 @@
+---
+import { getCollection } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import { useTranslations, type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { PROMPTS_PAGE_TITLE } from "@/consts";
+import {
+  buildPromptRegistry,
+  getPromptAreaCounts,
+  getPromptTaskCounts,
+} from "@/data/promptRegistry";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh-cn" } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const allPrompts = await getCollection("prompts");
+const registry = buildPromptRegistry(allPrompts, lang);
+const areas = getPromptAreaCounts(registry, lang).filter((area) => area.count > 0);
+const tasks = getPromptTaskCounts(registry, lang).filter((task) => task.count > 0);
+const areaOrder = new Map(areas.map((area, index) => [area.key, index]));
+const taskOrder = new Map(tasks.map((task, index) => [task.key, index]));
+const variantOrder = { standard: 0, lite: 1, plus: 2 };
+const platformOrder = { web: 0, mobile: 1 };
+const explorerRegistry = [...registry].sort((a, b) => {
+  const areaDifference = (areaOrder.get(a.areaKey) ?? Number.MAX_SAFE_INTEGER) - (areaOrder.get(b.areaKey) ?? Number.MAX_SAFE_INTEGER);
+  if (areaDifference !== 0) return areaDifference;
+
+  const taskDifference = (taskOrder.get(a.taskKey) ?? Number.MAX_SAFE_INTEGER) - (taskOrder.get(b.taskKey) ?? Number.MAX_SAFE_INTEGER);
+  if (taskDifference !== 0) return taskDifference;
+
+  const familyDifference = a.familyId.localeCompare(b.familyId, lang);
+  if (familyDifference !== 0) return familyDifference;
+
+  const variantDifference = variantOrder[a.variant] - variantOrder[b.variant];
+  if (variantDifference !== 0) return variantDifference;
+
+  const platformDifference = (a.platform ? platformOrder[a.platform] + 1 : 0) - (b.platform ? platformOrder[b.platform] + 1 : 0);
+  if (platformDifference !== 0) return platformDifference;
+
+  return a.title.localeCompare(b.title, lang) || a.order - b.order;
+});
+const homeUrl = getRelativeLocaleUrl(lang, "/prompts/");
+const allUrl = getRelativeLocaleUrl(lang, "/prompts/all/");
+const promptUrl = (slug: string) => getRelativeLocaleUrl(lang, `/prompts/${slug}/`);
+
+const copy = lang === "zh-cn"
+  ? {
+      eyebrow: "提示词探索器",
+      title: "全部 QA 提示词",
+      intro: "按 QA 领域、任务、难度和版本筛选。每张卡片都标注适合的输入和可期待的输出。",
+      back: "返回提示词首页",
+      search: "搜索提示词",
+      searchPlaceholder: "搜索名称、描述、标签或输入输出...",
+      area: "QA 领域",
+      task: "任务",
+      level: "难度",
+      variant: "版本",
+      all: "全部",
+      basic: "基础",
+      intermediate: "进阶",
+      advanced: "高级",
+      lite: "轻量版",
+      standard: "默认版",
+      plus: "增强版",
+      clear: "清除筛选",
+      results: "个匹配结果",
+      input: "输入",
+      output: "输出",
+      empty: "没有找到匹配的提示词。可以减少关键词，或清除筛选条件。",
+    }
+  : {
+      eyebrow: "PROMPT EXPLORER",
+      title: "All QA Prompts",
+      intro: "Filter by QA area, task, complexity, and variant. Every card shows the input it expects and the output it helps structure.",
+      back: "Back to prompt library",
+      search: "Search prompts",
+      searchPlaceholder: "Search names, descriptions, tags, inputs, or outputs...",
+      area: "QA area",
+      task: "Task",
+      level: "Level",
+      variant: "Variant",
+      all: "All",
+      basic: "Basic",
+      intermediate: "Intermediate",
+      advanced: "Advanced",
+      lite: "Lite",
+      standard: "Standard",
+      plus: "Plus",
+      clear: "Clear filters",
+      results: "matching prompts",
+      input: "Input",
+      output: "Output",
+      empty: "No prompts match these filters. Try fewer terms or clear the filters.",
+      };
+
+const variantLabel = (variant: string) => ({ lite: copy.lite, standard: copy.standard, plus: copy.plus }[variant] || variant);
+const complexityLabel = (complexity: string) => ({ basic: copy.basic, intermediate: copy.intermediate, advanced: copy.advanced }[complexity] || complexity);
+const platformLabel = (platform: string) => {
+  if (lang === "zh-cn") return ({ mobile: "移动端", web: "网页端" }[platform] || platform);
+  return platform;
+};
+
+const breadcrumbs = [
+  { name: lang === "zh-cn" ? "首页" : "Home", url: getRelativeLocaleUrl(lang, "/") },
+  { name: t(PROMPTS_PAGE_TITLE), url: homeUrl },
+  { name: copy.title, url: allUrl },
+];
+
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: copy.title,
+  description: copy.intro,
+  url: `${siteOrigin}${allUrl}`,
+  inLanguage: lang === "zh-cn" ? "zh-CN" : "en",
+  numberOfItems: registry.length,
+  itemListElement: explorerRegistry.map((entry, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: entry.title,
+    url: `${siteOrigin}${promptUrl(entry.slug)}`,
+  })),
+};
+---
+
+<Base
+  title={copy.title}
+  description={copy.intro}
+  keywords={lang === "zh-cn" ? "QA提示词, 软件测试提示词, 测试任务, 提示词筛选" : "QA prompts, software testing prompts, testing tasks, prompt explorer"}
+  extraStructuredData={[itemListSchema]}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="prompt-explorer" data-prompt-explorer>
+    <header class="explorer-header">
+      <div>
+        <p class="explorer-eyebrow">{copy.eyebrow}</p>
+        <h1>{copy.title}</h1>
+        <p>{copy.intro}</p>
+      </div>
+      <a class="explorer-back" href={homeUrl}><span class="material-icons-sharp" aria-hidden="true">arrow_back</span><span>{copy.back}</span></a>
+    </header>
+
+    <section class="explorer-toolbar" aria-labelledby="explorer-filter-title">
+      <h2 id="explorer-filter-title" class="visually-hidden">{lang === "zh-cn" ? "筛选提示词" : "Filter prompts"}</h2>
+      <form id="prompt-explorer-form" action={allUrl} method="get">
+        <div class="explorer-search-row">
+          <div class="explorer-search-field">
+            <label class="explorer-search-label" for="prompt-explorer-search">{copy.search}</label>
+            <div class="explorer-search-control">
+              <span class="material-icons-sharp" aria-hidden="true">search</span>
+              <input id="prompt-explorer-search" name="q" type="search" placeholder={copy.searchPlaceholder} autocomplete="off" />
+            </div>
+          </div>
+          <div class="explorer-search-actions">
+            <button class="explorer-submit" type="submit"><span class="material-icons-sharp" aria-hidden="true">search</span>{copy.search}</button>
+            <button id="prompt-clear-filters" class="explorer-clear" type="button">{copy.clear}</button>
+          </div>
+        </div>
+        <div class="explorer-filter-grid">
+          <label>{copy.area}
+            <select id="prompt-area-filter" name="area">
+              <option value="">{copy.all}</option>
+              {areas.map((area) => <option value={area.key}>{area.label} ({area.count})</option>)}
+            </select>
+          </label>
+          <label>{copy.task}
+            <select id="prompt-task-filter" name="task">
+              <option value="">{copy.all}</option>
+              {tasks.map((task) => <option value={task.key}>{task.label} ({task.count})</option>)}
+            </select>
+          </label>
+          <label>{copy.level}
+            <select id="prompt-level-filter" name="level">
+              <option value="">{copy.all}</option>
+              <option value="basic">{copy.basic}</option>
+              <option value="intermediate">{copy.intermediate}</option>
+              <option value="advanced">{copy.advanced}</option>
+            </select>
+          </label>
+          <label>{copy.variant}
+            <select id="prompt-variant-filter" name="variant">
+              <option value="">{copy.all}</option>
+              <option value="lite">{copy.lite}</option>
+              <option value="standard">{copy.standard}</option>
+              <option value="plus">{copy.plus}</option>
+            </select>
+          </label>
+        </div>
+      </form>
+      <p id="prompt-explorer-count" class="explorer-count" aria-live="polite">{registry.length} {copy.results}</p>
+    </section>
+
+    <div id="prompt-explorer-empty" class="explorer-empty" hidden>{copy.empty}</div>
+    <ul class="explorer-results" id="prompt-explorer-results" role="list">
+      {explorerRegistry.map((entry) => (
+        <li
+          data-prompt-card
+          data-search={entry.searchText}
+          data-area={entry.areaKey}
+          data-task={entry.taskKey}
+          data-level={entry.complexity}
+          data-variant={entry.variant}
+        >
+          <a class="explorer-card" href={promptUrl(entry.slug)}>
+            <div class="explorer-card-topline">
+              <span>{entry.areaLabel}</span>
+              {entry.variant !== "standard" && <span>{variantLabel(entry.variant)}</span>}
+            </div>
+            <h2>{entry.title}</h2>
+            <p class="explorer-card-description">{entry.cardDescription}</p>
+            <div class="explorer-card-tags">
+              <span>{entry.taskLabel}</span>
+              <span>{complexityLabel(entry.complexity)}</span>
+              {entry.platform && <span>{platformLabel(entry.platform)}</span>}
+            </div>
+            <div class="explorer-card-signals">
+              <div><span>{copy.input}</span><strong>{entry.inputs[0]}</strong></div>
+              <div><span>{copy.output}</span><strong>{entry.outputs[0]}</strong></div>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
+
+<script>
+  const explorer = document.querySelector<HTMLElement>("[data-prompt-explorer]");
+  if (explorer) {
+    const form = explorer.querySelector<HTMLFormElement>("#prompt-explorer-form");
+    const search = explorer.querySelector<HTMLInputElement>("#prompt-explorer-search");
+    const selects = Array.from(explorer.querySelectorAll<HTMLSelectElement>("select"));
+    const cards = Array.from(explorer.querySelectorAll<HTMLElement>("[data-prompt-card]"));
+    const count = explorer.querySelector<HTMLElement>("#prompt-explorer-count");
+    const empty = explorer.querySelector<HTMLElement>("#prompt-explorer-empty");
+    const clear = explorer.querySelector<HTMLButtonElement>("#prompt-clear-filters");
+    const resultSuffix = count?.textContent?.replace(/^\d+\s*/, "") || "matching prompts";
+
+    const normalise = (value: string) => value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").replace(/\s+/g, " ").trim();
+    const readParams = () => {
+      const params = new URLSearchParams(window.location.search);
+      if (search) search.value = params.get("q") || "";
+      for (const select of selects) {
+        const key = select.name;
+        select.value = params.get(key) || "";
+      }
+    };
+    const writeParams = () => {
+      const params = new URLSearchParams();
+      if (search?.value.trim()) params.set("q", search.value.trim());
+      for (const select of selects) {
+        if (select.value) params.set(select.name, select.value);
+      }
+      const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
+      window.history.replaceState({}, "", next);
+    };
+    const apply = () => {
+      const query = normalise(search?.value || "");
+      const area = explorer.querySelector<HTMLSelectElement>("#prompt-area-filter")?.value || "";
+      const task = explorer.querySelector<HTMLSelectElement>("#prompt-task-filter")?.value || "";
+      const level = explorer.querySelector<HTMLSelectElement>("#prompt-level-filter")?.value || "";
+      const variant = explorer.querySelector<HTMLSelectElement>("#prompt-variant-filter")?.value || "";
+      let visible = 0;
+      for (const card of cards) {
+        const matches = (!query || (card.dataset.search || "").includes(query))
+          && (!area || card.dataset.area === area)
+          && (!task || card.dataset.task === task)
+          && (!level || card.dataset.level === level)
+          && (!variant || card.dataset.variant === variant);
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      }
+      if (count) count.textContent = `${visible} ${resultSuffix}`;
+      if (empty) empty.hidden = visible > 0;
+    };
+
+    readParams();
+    apply();
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      writeParams();
+      apply();
+    });
+    search?.addEventListener("input", () => { writeParams(); apply(); });
+    selects.forEach((select) => select.addEventListener("change", () => { writeParams(); apply(); }));
+    clear?.addEventListener("click", () => {
+      if (search) search.value = "";
+      selects.forEach((select) => { select.value = ""; });
+      writeParams();
+      apply();
+      search?.focus();
+    });
+  }
+</script>
+
+<style>
+  .prompt-explorer { --explorer-button-ink: #ffffff; max-width: var(--layout-max); margin: 0 auto; padding: 0 0 5rem; }
+  :global(:root[data-theme="dark"]) .prompt-explorer { --explorer-button-ink: var(--color-base); }
+  .explorer-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(1.5rem, 5vw, 4rem); align-items: start; padding: 0 0 3rem; }
+  .explorer-eyebrow { margin: 0 0 0.8rem; color: var(--color-theme); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.13em; }
+  .explorer-header h1 { margin: 0; font-size: clamp(2.3rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -0.05em; }
+  .explorer-header p:not(.explorer-eyebrow) { max-width: 62ch; margin: 1rem 0 0; color: color-mix(in srgb, var(--color-main) 65%, transparent); line-height: 1.7; }
+  .explorer-back { display: inline-flex; gap: 0.45rem; align-items: center; margin-top: 2.15rem; color: var(--color-theme); font-weight: 800; text-decoration: none; }
+  .explorer-back:hover { text-decoration: underline; }
+  .explorer-toolbar { margin: 0 0 2.25rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface-muted); }
+  .explorer-toolbar form { display: grid; gap: 1rem; }
+  .explorer-search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.75rem; align-items: end; }
+  .explorer-search-field { display: grid; gap: 0.35rem; min-width: 0; }
+  .explorer-search-label, .explorer-filter-grid label { display: grid; gap: 0.35rem; color: color-mix(in srgb, var(--color-main) 70%, transparent); font-size: 0.76rem; font-weight: 800; }
+  .explorer-search-control { display: flex; min-height: 42px; align-items: center; padding-inline: 0.7rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .explorer-search-control > .material-icons-sharp { flex: 0 0 auto; color: var(--color-theme); font-size: 1.2rem; }
+  .explorer-search-control input { width: 100%; min-width: 0; padding-inline: 0.55rem; border: 0; outline: 0; background: transparent; color: var(--color-main); font: inherit; text-overflow: ellipsis; }
+  .explorer-search-control input::placeholder { color: var(--color-text-tertiary); opacity: 1; }
+  .explorer-search-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  .explorer-submit, .explorer-clear { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 0.35rem; padding: 0 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-main); font: inherit; font-size: 0.78rem; font-weight: 800; cursor: pointer; }
+  .explorer-submit { border-color: var(--color-theme); background: var(--color-theme); color: var(--explorer-button-ink); }
+  .explorer-submit:hover { background: var(--color-theme-focus); }
+  .explorer-submit .material-icons-sharp { font-size: 1rem; }
+  .explorer-submit:active, .explorer-clear:active { transform: translateY(1px); }
+  .explorer-filter-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; }
+  .explorer-filter-grid select { width: 100%; min-height: 42px; padding: 0 0.55rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-main); font: inherit; }
+  .explorer-clear:hover { border-color: var(--color-theme); color: var(--color-theme); }
+  .explorer-count { margin: 0.1rem 0 0; color: color-mix(in srgb, var(--color-main) 60%, transparent); font-size: 0.8rem; }
+  .explorer-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; margin: 0; padding: 0; }
+  .explorer-results > li[hidden] { display: none; }
+  .explorer-card { display: flex; flex-direction: column; padding: 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
+  .explorer-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); }
+  .explorer-card-topline { display: flex; justify-content: space-between; gap: 0.5rem; color: var(--color-theme); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+  .explorer-card h2 { margin: 0.95rem 0 0.55rem; font-size: 1.08rem; line-height: 1.25; }
+  .explorer-card:hover h2 { color: var(--color-theme); }
+  .explorer-card-description { display: -webkit-box; min-height: 4.5em; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; margin: 0; color: color-mix(in srgb, var(--color-main) 68%, transparent); font-size: 0.86rem; line-height: 1.55; }
+  .explorer-card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; }
+  .explorer-card-tags span { padding: 0.2rem 0.45rem; border-radius: 999px; background: var(--color-theme-soft); color: var(--color-theme); font-size: 0.68rem; font-weight: 800; }
+  .explorer-card-signals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; margin-top: 1rem; }
+  .explorer-card-signals div { display: grid; gap: 0.25rem; padding: 0.65rem; border-radius: var(--radius-sm); background: var(--color-surface-muted); }
+  .explorer-card-signals span { color: var(--color-theme); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; }
+  .explorer-card-signals strong { font-size: 0.77rem; line-height: 1.4; }
+  .explorer-empty { margin: 1rem 0; padding: 2rem; border: 1px dashed var(--color-border); border-radius: var(--radius-md); color: color-mix(in srgb, var(--color-main) 65%, transparent); text-align: center; }
+  @media (max-width: 1050px) { .explorer-search-row { grid-template-columns: 1fr; } .explorer-search-actions { justify-content: flex-start; } }
+  @media (max-width: 850px) { .explorer-results { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .prompt-explorer { padding-inline: 0; } .explorer-header { gap: 1.4rem; padding-bottom: 2.25rem; } .explorer-back { margin-top: 0; } .explorer-filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .explorer-results { grid-template-columns: 1fr; } }
+  @media (max-width: 390px) { .explorer-filter-grid { grid-template-columns: 1fr; } }
+</style>

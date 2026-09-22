@@ -51,7 +51,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" — never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## Test Strategy Methodology
 
@@ -170,7 +170,7 @@ Please output test strategies in the following Markdown format:
 - **Non-Functional Quality Objectives:** [Performance, security, usability objectives]
   - System response time: [Target value, mark as TBD if not provided]
   - System concurrent users: [TBD]
-  - System availability: ≥ 99.5%
+  - System availability: -�� 99.5%
   - Security vulnerabilities: 0 high-risk vulnerabilities
 
 #### Test Efficiency Objectives
@@ -222,13 +222,13 @@ Please output test strategies in the following Markdown format:
 ##### Layer-Specific Test Strategies
 - **Unit Test Layer (60%):**
   - Developers responsible for writing and maintenance
-  - Coverage target: ≥ 80%
+  - Coverage target: -�� 80%
   - Execution frequency: Every code commit
   - Tools: JUnit, pytest, Jest
 
 - **Interface Test Layer (30%):**
   - Joint responsibility of test and development teams
-  - Coverage target: ≥ 90%
+  - Coverage target: -�� 90%
   - Execution frequency: Daily builds
   - Tools: REST Assured, Postman, Karate
 
@@ -241,7 +241,7 @@ Please output test strategies in the following Markdown format:
 #### Test Type Strategies
 ##### Functional Test Strategy
 - **Smoke Testing:** [Quick verification after daily builds]
-  - Execution time: ≤ 30 minutes
+  - Execution time: -�� 30 minutes
   - Coverage scope: Core function paths
   - Automation level: 100%
   - Failure criteria: Any test case failure
@@ -249,8 +249,8 @@ Please output test strategies in the following Markdown format:
 - **Regression Testing:** [Comprehensive verification before version release]
   - Execution cycle: End of each iteration
   - Coverage scope: Full function regression
-  - Automation level: ≥ 80%
-  - Execution time: ≤ 4 hours
+  - Automation level: -�� 80%
+  - Execution time: -�� 4 hours
 
 - **Exploratory Testing:** [Manual intelligent problem discovery]
   - Execution proportion: 20% of testing time
@@ -299,18 +299,18 @@ Please output test strategies in the following Markdown format:
 ##### Team Organizational Architecture
 ```text
 Test Manager
-├── Functional Test Team
-│   ├── Senior Test Engineers × 2
-│   ├── Test Engineers × 4
-│   └── Junior Test Engineers × 2
-├── Automation Test Team
-│   ├── Automation Test Architect × 1
-│   ├── Automation Test Engineers × 3
-│   └── Automation Test Developers × 2
-└── Specialized Test Team
-    ├── Performance Test Engineers × 2
-    ├── Security Test Engineer × 1
-    └── Mobile Test Engineers × 2
+--�------ Functional Test Team
+--�   --�------ Senior Test Engineers × 2
+--�   --�------ Test Engineers × 4
+--�   --------- Junior Test Engineers × 2
+--�------ Automation Test Team
+--�   --�------ Automation Test Architect × 1
+--�   --�------ Automation Test Engineers × 3
+--�   --------- Automation Test Developers × 2
+--------- Specialized Test Team
+    --�------ Performance Test Engineers × 2
+    --�------ Security Test Engineer × 1
+    --------- Mobile Test Engineers × 2
 ```
 
 ##### Role Responsibility Definition
@@ -491,7 +491,7 @@ Test Manager
 |-----------|------------|--------------|-------------------|
 | Strategy Development Complete | Week 1 | Test strategy document | Strategy review passed |
 | Team Formation Complete | Week 4 | Team structure and responsibilities | 100% personnel in place |
-| Tools and Environment Ready | Week 8 | Tool chain and environment | Environment availability ≥95% |
+| Tools and Environment Ready | Week 8 | Tool chain and environment | Environment availability -��95% |
 | Framework Development Complete | Week 12 | Automation framework | Framework functionality verification passed |
 | First Round Testing Complete | Week 16 | Test report | Quality objectives achieved |
 

@@ -41,7 +41,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" â€” never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## Performance Testing Methodology
 
@@ -171,12 +171,12 @@ Please output performance testing plans in the following Markdown format:
 | Performance Metric | Target Value | Acceptable Value | Test Conditions |
 |-------------------|--------------|------------------|-----------------|
 | Page Response Time | [TBD] | [TBD] | Under normal load |
-| API Response Time | â‰¤ 500ms | â‰¤ 1s | Under normal load |
+| API Response Time | -‰¤ 500ms | -‰¤ 1s | Under normal load |
 | Concurrent Users | [TBD] | [TBD] | Under peak load |
-| TPS | â‰¥ 500 | â‰¥ 400 | Under peak load |
-| CPU Utilization | â‰¤ 70% | â‰¤ 80% | Under peak load |
-| Memory Utilization | â‰¤ 80% | â‰¤ 90% | Under peak load |
-| Error Rate | â‰¤ 0.1% | â‰¤ 0.5% | Under all loads |
+| TPS | -‰¥ 500 | -‰¥ 400 | Under peak load |
+| CPU Utilization | -‰¤ 70% | -‰¤ 80% | Under peak load |
+| Memory Utilization | -‰¤ 80% | -‰¤ 90% | Under peak load |
+| Error Rate | -‰¤ 0.1% | -‰¤ 0.5% | Under all loads |
 
 ---
 

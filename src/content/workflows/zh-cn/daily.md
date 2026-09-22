@@ -7,7 +7,7 @@ order: 1
 ---
 # 日常测试工作流程
 
-<div align="right"><strong>简体中文</strong> · <a href="../en/daily-testing-workflow.md">English</a></div>
+<div align="right"><strong>简体中文</strong> · <a href="/en/prompts/workflows/daily/">English</a></div>
 
 ## 📋 元数据
 
@@ -16,19 +16,13 @@ order: 1
 - **最后更新**：2026-01-01
 - **版本**：1.0
 
-## 🎯 目标
-
-为 QA 工程师提供实用的工作流程指南，帮助他们在日常测试活动中高效使用 QA 提示词库。
-
----
-
 ## 🌅 早晨例行工作
 
 ### 1. 审查测试计划（5-10分钟）
 
 **使用的提示词**：
-- [需求分析](/zh-cn/prompts/zh/) - 审查迭代目标
-- [测试策略](/zh-cn/prompts/zh/) - 识别高风险区域
+- [需求分析](/zh-cn/prompts/requirements-analysis/) - 审查迭代目标
+- [测试策略](/zh-cn/prompts/test-strategy/) - 识别高风险区域
 
 **行动**：
 - 审查当天的用户故事
@@ -38,8 +32,8 @@ order: 1
 ### 2. 设置测试环境（10-15分钟）
 
 **使用的提示词**：
-- [自动化测试](/zh-cn/prompts/zh/) - 检查流水线状态
-- [测试策略](/zh-cn/prompts/zh/) - 准备测试数据
+- [自动化测试](/zh-cn/prompts/automation-testing/) - 检查流水线状态
+- [测试策略](/zh-cn/prompts/test-strategy/) - 准备测试数据
 
 **行动**：
 - 验证测试环境已启动
@@ -53,10 +47,10 @@ order: 1
 ### 针对新功能
 
 **工作流程**：
-1. 使用 [测试用例编写](/zh-cn/prompts/zh/)
+1. 使用 [测试用例编写](/zh-cn/prompts/test-case-writing/)
 2. 生成全面的测试场景
-3. 添加 [需求分析](/zh-cn/prompts/zh/) 中的边界值测试
-4. 使用 [功能测试](/zh-cn/prompts/zh/) 检查清单审查
+3. 添加 [需求分析](/zh-cn/prompts/requirements-analysis/) 中的边界值测试
+4. 使用 [功能测试](/zh-cn/prompts/functional-testing/) 检查清单审查
 
 **示例提示词流程**：
 ```text
@@ -69,7 +63,7 @@ order: 1
 ### 针对缺陷修复
 
 **工作流程**：
-1. 使用 [功能测试](/zh-cn/prompts/zh/) 回归测试场景
+1. 使用 [功能测试](/zh-cn/prompts/functional-testing/) 回归测试场景
 2. 创建测试以验证修复
 3. 添加测试以防止回归
 
@@ -80,9 +74,9 @@ order: 1
 ### 编写新测试
 
 **选择你的框架**：
-- **Selenium**: 使用 [自动化测试](/zh-cn/prompts/zh/)
-- **Playwright**: 使用 [自动化测试](/zh-cn/prompts/zh/)
-- **API**: 使用 [API测试](/zh-cn/prompts/zh/)
+- **Selenium**: 使用 [自动化测试](/zh-cn/prompts/automation-testing/)
+- **Playwright**: 使用 [自动化测试](/zh-cn/prompts/automation-testing/)
+- **API**: 使用 [API测试](/zh-cn/prompts/api-testing/)
 
 **工作流程**：
 1. 打开相关的自动化测试提示词
@@ -94,8 +88,8 @@ order: 1
 ### 维护现有测试
 
 **使用的提示词**：
-- [自动化测试](/zh-cn/prompts/zh/) - 测试维护策略
-- [AI辅助测试](/zh-cn/prompts/zh/) - 智能测试维护
+- [自动化测试](/zh-cn/prompts/automation-testing/) - 测试维护策略
+- [AI辅助测试](/zh-cn/prompts/ai-assisted-testing/) - 智能测试维护
 
 **行动**：
 - 修复不稳定的测试
@@ -109,7 +103,7 @@ order: 1
 ### 基于会话的测试
 
 **工作流程**：
-1. 使用 [手动测试](/zh-cn/prompts/zh/) 探索性测试场景
+1. 使用 [手动测试](/zh-cn/prompts/manual-testing/) 探索性测试场景
 2. 创建测试章程
 3. 限时会话（60-90分钟）
 4. 记录发现
@@ -130,7 +124,7 @@ order: 1
 ### 当你发现缺陷时
 
 **工作流程**：
-1. 使用 [缺陷上报](/zh-cn/prompts/zh/) 模板
+1. 使用 [缺陷上报](/zh-cn/prompts/bug-reporting/) 模板
 2. 生成详细的缺陷报告
 3. 包含重现步骤
 4. 添加截图/视频
@@ -150,7 +144,7 @@ order: 1
 ### 针对 UI 变更
 
 **工作流程**：
-1. 使用 [可访问性测试](/zh-cn/prompts/zh/) 视觉测试场景
+1. 使用 [可访问性测试](/zh-cn/prompts/accessibility-testing/) 视觉测试场景
 2. 设置视觉回归测试
 3. 捕获基线截图
 4. 运行对比测试
@@ -167,7 +161,7 @@ order: 1
 ### 针对关键用户旅程
 
 **工作流程**：
-1. 使用 [功能测试](/zh-cn/prompts/zh/) 端到端场景
+1. 使用 [功能测试](/zh-cn/prompts/functional-testing/) 端到端场景
 2. 映射完整的用户旅程
 3. 生成端到端测试代码
 4. 跨所有系统验证
@@ -192,8 +186,8 @@ order: 1
 ### 2. 指标和报告
 
 **使用的提示词**：
-- [测试报告](/zh-cn/prompts/zh/)
-- [测试策略](/zh-cn/prompts/zh/) - 质量评估
+- [测试报告](/zh-cn/prompts/test-reporting/)
+- [测试策略](/zh-cn/prompts/test-strategy/) - 质量评估
 
 **生成**：
 - 测试覆盖率报告
@@ -234,11 +228,11 @@ order: 1
 
 ### 最常用的提示词
 
-1. [测试用例编写](/zh-cn/prompts/zh/)
-2. [自动化测试](/zh-cn/prompts/zh/)
-3. [API测试](/zh-cn/prompts/zh/)
-4. [缺陷上报](/zh-cn/prompts/zh/)
-5. [手动测试](/zh-cn/prompts/zh/)
+1. [测试用例编写](/zh-cn/prompts/test-case-writing/)
+2. [自动化测试](/zh-cn/prompts/automation-testing/)
+3. [API测试](/zh-cn/prompts/api-testing/)
+4. [缺陷上报](/zh-cn/prompts/bug-reporting/)
+5. [手动测试](/zh-cn/prompts/manual-testing/)
 
 ---
 
@@ -281,13 +275,13 @@ order: 1
 
 ### 流水线失败
 
-1. 检查 [自动化测试](/zh-cn/prompts/zh/) CI/CD 集成
+1. 检查 [自动化测试](/zh-cn/prompts/automation-testing/) CI/CD 集成
 2. 调试失败的测试
 3. 修复并重新运行
 
 ### 不稳定的测试
 
-1. 使用 [自动化测试](/zh-cn/prompts/zh/) 维护策略
+1. 使用 [自动化测试](/zh-cn/prompts/automation-testing/) 维护策略
 2. 实施适当的等待
 3. 添加重试逻辑
 
@@ -295,14 +289,14 @@ order: 1
 
 1. 记录阻碍
 2. 寻找替代测试区域
-3. 使用 [测试策略](/zh-cn/prompts/zh/) 重新确定优先级
+3. 使用 [测试策略](/zh-cn/prompts/test-strategy/) 重新确定优先级
 
 ---
 
 ## 📚 相关工作流程
 
-- [迭代测试工作流程](sprint-testing-workflow.md) - 迭代特定活动
-- [发布测试工作流程](release-testing-workflow.md) - 发布前检查清单
+- [迭代测试工作流程](/zh-cn/prompts/workflows/sprint/) - 迭代特定活动
+- [发布测试工作流程](/zh-cn/prompts/workflows/release/) - 发布前检查清单
 
 ---
 

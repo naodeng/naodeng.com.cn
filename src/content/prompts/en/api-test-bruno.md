@@ -53,7 +53,7 @@ From the materials the user provides, produce a Bruno collection plan or test-as
 
 ## Input parsing order
 
-Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source ‚Äî **do not silently invent a merged ‚Äútruth‚Äù**:
+Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source --- **do not silently invent a merged --útruth--ù**:
 
 1. Existing Bruno assets (`.bru` / `bruno.json` / collection tree)
 2. OpenAPI / Swagger (`openapi.yaml` / `swagger.json`)
@@ -63,7 +63,7 @@ Parse in this priority order. Higher priority wins on conflicts; when sources di
 
 Also absorb when present: business scope, auth model, environment baseUrl, release priority, CI needs, existing folder conventions.
 
-Extract only paths, methods, params, fields, and sample values that **actually appear** in the materials. Put gaps in ‚Äúmissing information‚Äù; do not complete a fake full API doc.
+Extract only paths, methods, params, fields, and sample values that **actually appear** in the materials. Put gaps in --úmissing information--ù; do not complete a fake full API doc.
 
 ## Defaults (use these unless the user specifies otherwise)
 
@@ -85,13 +85,13 @@ Prefer defaults; do not present a tool menu.
 
 - collection `name`: short domain name (e.g. `order-api`)
 - request `meta.name`: `kebab-case` method+resource (e.g. `get-users`, `create-order`)
-- folders: by resource or critical flow ‚Äî not one flat dump of every request
+- folders: by resource or critical flow --- not one flat dump of every request
 
 **Environments and variables**
 
 - Standard vars: `{{baseUrl}}`, `{{token}}` (reuse project names if they already exist)
-- Secrets only as placeholders in `environments/*.bru` (e.g. `replace-me`) or ‚Äúinject from CI secret / local env‚Äù
-- Request URLs: `{{baseUrl}}/path` ‚Äî do not hardcode host into every `.bru`
+- Secrets only as placeholders in `environments/*.bru` (e.g. `replace-me`) or --úinject from CI secret / local env--ù
+- Request URLs: `{{baseUrl}}/path` --- do not hardcode host into every `.bru`
 
 **Assertion style**
 
@@ -108,7 +108,7 @@ If a collection already exists, **align to it** and apply these defaults only wh
 
 ## Gotchas
 
-- **Never** hardcode real Bearer tokens, passwords, cookies, or private keys in examples, env files, or output; use placeholders or ‚Äúread from env‚Äù notes.
+- **Never** hardcode real Bearer tokens, passwords, cookies, or private keys in examples, env files, or output; use placeholders or --úread from env--ù notes.
 - When migrating from curl/Postman: **redact** Authorization / Cookie / signing headers before writing them into the plan.
 - **Do not invent** paths, query/header/body fields, status codes, or error codes the user did not provide; mark assumptions or gaps.
 - Do not rewrite the Bruno plan as Postman/Newman, pytest, k6, or other unrelated stacks.
@@ -141,13 +141,13 @@ Return results in this order (keep sections; make each concrete):
 - goal (new collection / strengthen / migrate from another format)
 - in-scope endpoints or flows
 - out-of-scope or unclear areas
-- input sources (OpenAPI / Postman / curl / ‚Ä¶) and how conflicts were handled
+- input sources (OpenAPI / Postman / curl / --¶) and how conflicts were handled
 
 ### 2. Bruno Collection Plan
 
 - proposed collection tree (concrete folder names)
 - `environments` variable list (name, purpose, placeholder example; no real secrets)
-- auth default: request-level / shared script / env vars ‚Äî which layer
+- auth default: request-level / shared script / env vars --- which layer
 - alignment with existing assets (if any)
 
 ### 3. Priority Request Coverage
@@ -163,7 +163,7 @@ For each P0/P1 request:
 
 ### 4. Execution Notes
 
-- suggested order (auth ‚Üí writes ‚Üí read checks ‚Üí cleanup)
+- suggested order (auth -Üí writes -Üí read checks -Üí cleanup)
 - smoke folder / request list
 - regression expansion
 - release-blocking checks
@@ -184,7 +184,7 @@ For each P0/P1 request:
 - [ ] Inputs followed the parsing order; conflicts and gaps are called out
 - [ ] Layout / naming / `{{baseUrl}}`+`{{token}}` placeholders match defaults (or explain reuse of existing)
 - [ ] No real secrets; no invented paths/fields/status codes
-- [ ] P0/P1 requests have concrete scenarios and assertions ‚Äî not vague ‚Äúcover happy and unhappy paths‚Äù
+- [ ] P0/P1 requests have concrete scenarios and assertions --- not vague --úcover happy and unhappy paths--ù
 - [ ] All six output sections present; smoke and CI are actionable
 
 ## Quality bar

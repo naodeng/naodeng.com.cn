@@ -1583,11 +1583,6 @@ const mobilePriorityItems = [
   .btn-icon, .nav-tool :global(.locale-trigger) { border-color: var(--color-border); background: transparent; box-shadow: none; }
   @media (width < 834px) { .l-header, .header-shell { min-height: 60px; } .site-nav > ul { background: var(--color-surface); border: 1px solid var(--color-border); } }
   @media (width < 480px) { .header-wechat-entry { display: none; } }
-  @media (width < 480px) {
-    .header-utils { gap: 0.25rem; }
-    .nav-tool :global(.locale-trigger),
-    .btn-icon { border-color: transparent; }
-  }
 
   /* SEO-friendly content navigation: descriptions stay in the HTML and remain readable when the menu opens. */
   .nav-submenu {
@@ -1677,6 +1672,23 @@ const mobilePriorityItems = [
     flex: 0 0 21px;
     line-height: 1;
   }
+
+  /* Header utility controls share one square hit area across the desktop and mobile layouts. */
+  .header-utils .nav-tool :global(.locale-dropdown.compact .locale-trigger),
+  .header-utils .btn-icon {
+    box-sizing: border-box;
+    inline-size: 44px;
+    min-inline-size: 44px;
+    block-size: 44px;
+    min-block-size: 44px;
+    padding: 0;
+  }
+
+  /* Keep mutually exclusive icons mutually exclusive after the shared icon geometry rule above. */
+  .l-header .theme-toggle__light,
+  .l-header .nav-toggle__open {
+    display: inline-flex;
+  }
   .l-header .theme-toggle__dark,
   .l-header .nav-toggle__close {
     display: none;
@@ -1693,9 +1705,23 @@ const mobilePriorityItems = [
   .l-header[data-nav-open] .nav-toggle__close {
     display: inline-flex;
   }
+
   @media (width < 834px) {
     .site-nav {
       min-height: 0;
+    }
+
+    .header-utils .nav-tool :global(.locale-dropdown.compact .locale-trigger),
+    .header-utils .btn-icon {
+      inline-size: 40px;
+      min-inline-size: 40px;
+      block-size: 40px;
+      min-block-size: 40px;
+    }
+  }
+  @media (width < 480px) {
+    .header-utils {
+      gap: 0.25rem;
     }
   }
 </style>

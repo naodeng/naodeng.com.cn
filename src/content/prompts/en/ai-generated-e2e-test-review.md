@@ -54,7 +54,7 @@ Return:
 5. Result table:
 
 | Case reference | Classification | Confidence | Impact | Behavior and observable business postcondition | Evidence reference | Mock/replacement status | Problem and why wrong production can still pass | Candidate minimal regression (static inference) | Missing assertion/revision |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 6. Missing journeys, reliability issues, and layer mismatch
 7. Clarifying questions and human review items

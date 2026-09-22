@@ -51,7 +51,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" â€” never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## Review Dimensions
 
@@ -144,9 +144,9 @@ Please output the review report in the following Markdown format:
 
 ### 2.1 Strengths Summary
 [List strengths and highlights of test cases]
-- âœ… [Strength 1]
-- âœ… [Strength 2]
-- âœ… [Strength 3]
+- -œ… [Strength 1]
+- -œ… [Strength 2]
+- -œ… [Strength 3]
 
 ### 2.2 Issue List
 

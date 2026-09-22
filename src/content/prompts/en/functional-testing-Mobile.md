@@ -51,7 +51,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" â€” never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## Functional Testing Methodology
 
@@ -273,15 +273,15 @@ Please output functional testing plans in the following Markdown format:
 
 #### Defect Criteria
 - **P0 Defects:** [Core function defect count = 0]
-- **P1 Defects:** [Important function defect count â‰¤ X]
-- **P2 Defects:** [General function defect count â‰¤ X]
-- **P3 Defects:** [Minor function defect count â‰¤ X]
+- **P1 Defects:** [Important function defect count -‰¤ X]
+- **P2 Defects:** [General function defect count -‰¤ X]
+- **P3 Defects:** [Minor function defect count -‰¤ X]
 
 #### Coverage Criteria
 - **Requirement Coverage:** [TBD / user-provided target]
-- **Function Coverage:** [â‰¥ 95%]
-- **Use Case Coverage:** [â‰¥ 90%]
-- **Path Coverage:** [â‰¥ 85%]
+- **Function Coverage:** [-‰¥ 95%]
+- **Use Case Coverage:** [-‰¥ 90%]
+- **Path Coverage:** [-‰¥ 85%]
 
 ---
 ```text

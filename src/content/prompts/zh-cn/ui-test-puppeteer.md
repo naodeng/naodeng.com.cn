@@ -1,6 +1,6 @@
 ---
 title: "UI 自动化测试（Puppeteer） Prompt"
-description: "用于UI 自动化测试（Puppete的风险识别、证据梳理与可执行测试建议输出。"
+description: "用于UI 自动化测试（Puppeteer）的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "ui-test-puppeteer"
 category: "其他提示词"
 categoryOrder: 9007199254740991
@@ -10,7 +10,7 @@ order: 237
 ---
 # UI 自动化测试（Puppeteer） Prompt
 
-<!-- Prompt purpose: 用于UI 自动化测试（Puppete的风险识别、证据梳理与可执行测试建议输出。 -->
+<!-- Prompt purpose: 用于UI 自动化测试（Puppeteer）的风险识别、证据梳理与可执行测试建议输出。 -->
 面向 Puppeteer 的浏览器自动化测试提示词，适合页面行为验证、截图、性能观察和轻量回归。
 
 ## 使用约束与降级规则

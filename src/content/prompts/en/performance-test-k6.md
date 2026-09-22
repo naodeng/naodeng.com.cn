@@ -53,37 +53,37 @@ From the materials the user provides, produce a k6-ready performance plan or scr
 
 ## Input parsing order
 
-Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source â€” **do not silently invent a merged â€œtruthâ€**:
+Parse in this priority order. Higher priority wins on conflicts; when sources disagree, state the conflict and source --- **do not silently invent a merged --œtruth--**:
 
 1. Existing k6 scripts / `options` / CI pipeline config
 2. SLA / SLO / release gates (latency, error rate, throughput)
 3. Real traffic from prod or perf env (peak QPS, concurrency, time-of-day shape)
 4. Endpoint lists / OpenAPI / curl / critical user-journey notes
-5. Loose verbal goals (â€œsurvive Black Fridayâ€, â€œAPIs must not be slowâ€)
+5. Loose verbal goals (--œsurvive Black Friday--, --œAPIs must not be slow--)
 
 Also absorb when present: environment limits, data setup, auth model, monitoring dashboards, blackout windows for load tests.
 
-Extract only paths, methods, load numbers, and thresholds that **actually appear** in the materials. Put gaps in â€œOpen Questionsâ€; do not invent a full fake SLA.
+Extract only paths, methods, load numbers, and thresholds that **actually appear** in the materials. Put gaps in --œOpen Questions--; do not invent a full fake SLA.
 
 ## Scenario selection decision tree
 
-**Default to only the most critical 1â€“2 scenario types.** Do not default to baseline + load + stress + spike + soak all at once. Decide by goal:
+**Default to only the most critical 1---2 scenario types.** Do not default to baseline + load + stress + spike + soak all at once. Decide by goal:
 
 | Scenario | When to run | Typical ask |
 | --- | --- | --- |
-| Baseline | First profiling, before/after change, no history yet | â€œEstablish latency waterline for an API/flowâ€ |
-| Load | Validate target concurrency / throughput | â€œHold N users / M RPS steadilyâ€ |
-| Stress | Find capacity cliff or degradation point | â€œHow far until it meltsâ€ |
-| Spike | Campaign / flash-sale / burst risk | â€œSurvive a sudden surge then recoverâ€ |
-| Soak (endurance) | Pre-release stability, leak suspicion | â€œHold for hours without driftâ€ |
+| Baseline | First profiling, before/after change, no history yet | --œEstablish latency waterline for an API/flow-- |
+| Load | Validate target concurrency / throughput | --œHold N users / M RPS steadily-- |
+| Stress | Find capacity cliff or degradation point | --œHow far until it melts-- |
+| Spike | Campaign / flash-sale / burst risk | --œSurvive a sudden surge then recover-- |
+| Soak (endurance) | Pre-release stability, leak suspicion | --œHold for hours without drift-- |
 
 Decision rules:
 
-1. User only says â€œdo performance testingâ€ with no more signal â†’ **default to load** (or â€œbaseline + short loadâ€), and explain why stress/spike/soak are deferred.
-2. Clear peak target â†’ load first; add stress only if the user cares about â€œceiling / degradeâ€.
-3. Promo / flash-sale / burst language â†’ load + spike (or spike alone if a daily-load baseline already exists).
-4. Leak / long-run / overnight gate â†’ soak; do not use soak as a substitute for first profiling.
-5. Combine types only when the user asks; order by risk (usually: baseline â†’ load â†’ spike/stress â†’ soak).
+1. User only says --œdo performance testing-- with no more signal -†’ **default to load** (or --œbaseline + short load--), and explain why stress/spike/soak are deferred.
+2. Clear peak target -†’ load first; add stress only if the user cares about --œceiling / degrade--.
+3. Promo / flash-sale / burst language -†’ load + spike (or spike alone if a daily-load baseline already exists).
+4. Leak / long-run / overnight gate -†’ soak; do not use soak as a substitute for first profiling.
+5. Combine types only when the user asks; order by risk (usually: baseline -†’ load -†’ spike/stress -†’ soak).
 
 ## Defaults (use these unless the user specifies otherwise)
 
@@ -102,21 +102,21 @@ perf/
 **options / run defaults**
 
 - Provide an explainable `stages` or `vus`+`duration` (or one of `ramping-vus` / `constant-arrival-rate`) that matches the chosen scenario
-- `BASE_URL`, tokens, etc. via `__ENV` â€” never hardcode hosts or secrets
+- `BASE_URL`, tokens, etc. via `__ENV` --- never hardcode hosts or secrets
 - Tag/group critical transactions so thresholds can be scoped per API
 
-**Default threshold shape (even without an SLA â€” mark numbers as Assumptions)**
+**Default threshold shape (even without an SLA --- mark numbers as Assumptions)**
 
 ```js
 thresholds: {
-  http_req_failed: ['rate<0.01'],           // error rate < 1% (assumption â€” confirm)
-  http_req_duration: ['p(95)<500'],         // p95 < 500ms (assumption â€” confirm)
+  http_req_failed: ['rate<0.01'],           // error rate < 1% (assumption --- confirm)
+  http_req_duration: ['p(95)<500'],         // p95 < 500ms (assumption --- confirm)
 }
 ```text
 
 - Prefer thresholds bound to critical transaction tags/groups, not one vague global sentence
 - When the user provides an SLA, use their numbers and cite the source
-- Add `p(99)` or per-API splits only when needed â€” do not dump a long default list
+- Add `p(99)` or per-API splits only when needed --- do not dump a long default list
 
 **No SLA / no traffic data**
 
@@ -130,7 +130,7 @@ If the project already has a k6 tree or `options`, **align to what exists** and 
 - **`open()` is init-only** (files/certs, etc.); never call it inside `default` or per-iteration code.
 - **Never** hardcode real Bearer tokens, passwords, cookies, or private keys; use `__ENV.TOKEN` / placeholders and state CI secret or local env injection.
 - **Do not invent** paths, query/body fields, or gateway prefixes the user did not provide; mark unknowns as assumptions or gaps.
-- Do not ship a â€œstandard packâ€ that enables all five scenario types by default.
+- Do not ship a --œstandard pack-- that enables all five scenario types by default.
 - Do not rewrite the k6 plan as Gatling, JMeter, Locust, etc. (unless the user explicitly asks for a comparison).
 - When input is incomplete, still deliver a usable first draft (scenario choice + options skeleton + assumed thresholds) with assumptions listed.
 - Unless the user asks for runnable full scripts, prefer structure + short snippets over huge code dumps.
@@ -163,10 +163,10 @@ Return in this order (keep the sections; fill concrete fields):
 
 ### 2. k6 Scenario Plan
 
-- Selected scenario type(s) (usually 1â€“2) and rationale
+- Selected scenario type(s) (usually 1---2) and rationale
 - Explicitly state **which scenario types are deferred this round and why**
 - Suggested script / directory layout
-- P0 transactions: method + path (confirmed) or â€œpath TBDâ€
+- P0 transactions: method + path (confirmed) or --œpath TBD--
 - Alignment with existing k6 assets (if any)
 
 ### 3. Load Model and Thresholds
@@ -179,13 +179,13 @@ Return in this order (keep the sections; fill concrete fields):
 ### 4. Environment and Data Notes
 
 - `BASE_URL` / env limits / whether load is allowed
-- Auth and secrets: env var names + placeholders â€” no real secrets
+- Auth and secrets: env var names + placeholders --- no real secrets
 - Test data / `open()` file needs (if any: emphasize init-only)
-- Monitoring to watch (app, gateway, DB, queue â€” only from provided architecture; do not invent)
+- Monitoring to watch (app, gateway, DB, queue --- only from provided architecture; do not invent)
 
 ### 5. Execution Suggestions
 
-- Suggested order (1-VU smoke â†’ chosen scenario â†’ optional push)
+- Suggested order (1-VU smoke -†’ chosen scenario -†’ optional push)
 - Local / CI minimal run shape (command-level is enough)
 - Release-blocking checks
 - Report fields to keep (p95, failure rate, critical transaction splits)
@@ -197,15 +197,15 @@ Return in this order (keep the sections; fill concrete fields):
 
 ## Pre-delivery Checklist
 
-- [ ] Scenarios narrowed via the decision tree â€” not all five by default â€” with deferred types explained
+- [ ] Scenarios narrowed via the decision tree --- not all five by default --- with deferred types explained
 - [ ] Thresholds include `http_req_duration` p95 and `http_req_failed`; without SLA, numbers are Assumptions and Open Questions are present
 - [ ] No real secrets; no invented paths; file reads respect `open()` init-only
-- [ ] P0 transactions and load model are concrete and actionable â€” not â€œcare about performanceâ€ fluff
+- [ ] P0 transactions and load model are concrete and actionable --- not --œcare about performance-- fluff
 - [ ] All six output sections present; run entry and pass/fail criteria are implementable
 
 ## Quality Bar
 
 - Stay k6-specific (`options`, thresholds, tags/groups, `__ENV`).
-- Prioritize by risk â€” do not spread evenly across every API and scenario type.
+- Prioritize by risk --- do not spread evenly across every API and scenario type.
 - Separate confirmed facts from assumptions.
 - Avoid long full scripts unless the user asks for runnable files.

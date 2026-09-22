@@ -41,7 +41,7 @@ Before producing the main output, run an input audit:
 - Prefer a minimum executable result first; add optional enhancements only when useful
 - Give a short rationale for priorities, risks, and recommendations
 - If the user asked for strategy/analysis, do not default to long implementation code; provide scripts/config only when requested or when inputs are sufficient
-- If a template field is missing, write "TBD" or "not provided" â€” never invent values
+- If a template field is missing, write "TBD" or "not provided" --- never invent values
 
 ## Bug Reporting Methodology
 
@@ -241,10 +241,10 @@ N. [Observe results, record actual problems that occurred]
 #### Status Change History
 | Date | Status Change | Operator | Notes |
 |------|---------------|----------|-------|
-| [YYYY-MM-DD] | New â†’ Assigned | [Reporter] | Initial creation |
-| [YYYY-MM-DD] | Assigned â†’ In Progress | [Developer] | Started fixing |
-| [YYYY-MM-DD] | In Progress â†’ Pending Verification | [Developer] | Fix completed |
-| [YYYY-MM-DD] | Pending Verification â†’ Closed | [Tester] | Verification passed |
+| [YYYY-MM-DD] | New -†’ Assigned | [Reporter] | Initial creation |
+| [YYYY-MM-DD] | Assigned -†’ In Progress | [Developer] | Started fixing |
+| [YYYY-MM-DD] | In Progress -†’ Pending Verification | [Developer] | Fix completed |
+| [YYYY-MM-DD] | Pending Verification -†’ Closed | [Tester] | Verification passed |
 
 #### Communication Records
 **[YYYY-MM-DD HH:MM] - [Communicator]**
@@ -339,11 +339,11 @@ N. [Observe results, record actual problems that occurred]
 
 #### Status Flow Specifications
 
-- **New â†’ Assigned:** Initial state after bug report creation
-- **Assigned â†’ In Progress:** Assigned to developer to start processing
-- **In Progress â†’ Pending Verification:** Developer fix completed, waiting for test verification
-- **Pending Verification â†’ Closed:** Test verification passed, bug closed
-- **Pending Verification â†’ Reopened:** Test verification failed, bug reopened
+- **New -†’ Assigned:** Initial state after bug report creation
+- **Assigned -†’ In Progress:** Assigned to developer to start processing
+- **In Progress -†’ Pending Verification:** Developer fix completed, waiting for test verification
+- **Pending Verification -†’ Closed:** Test verification passed, bug closed
+- **Pending Verification -†’ Reopened:** Test verification failed, bug reopened
 
 #### Communication Collaboration Requirements
 

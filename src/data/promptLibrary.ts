@@ -131,9 +131,9 @@ export const PROMPT_VERSION_GUIDE: Record<Lang, PromptVersionGuideItem[]> = {
 export const PROMPT_QUICK_STEPS: Record<Lang, PromptQuickStep[]> = {
   "zh-cn": [
     { title: "选择测试任务", description: "从当前要解决的测试问题出发选择类型。" },
-    { title: "选择 Prompt 版本", description: "默认使用 Standard，需要特定结构时再切换版本。" },
+    { title: "选择提示词版本", description: "先使用默认版本；只有任务明确需要特定结构时，再切换其他版本。" },
     { title: "准备输入材料", description: "提供需求、接口、用户故事、日志或缺陷信息。" },
-    { title: "交给 AI 助手", description: "同时提供 Prompt、输入材料和期望输出格式。" },
+    { title: "交给 AI 助手", description: "同时提供提示词、输入材料和期望输出格式。" },
     { title: "人工复核", description: "检查假设、遗漏、风险和不可验证结论。" },
   ],
   en: [
@@ -279,7 +279,7 @@ export const PROMPT_EXAMPLES: Record<Lang, PromptExample[]> = {
         "Scope summary: login, registration, and password recovery",
         "Business rules: password policy, captcha expiry, device binding",
         "Gaps: concurrent login and risk control are not specified",
-        "Risk priority: password recovery is high risk — verify first",
+        "Risk priority: password recovery is high risk - verify first",
       ],
       reviewPoints: ["Check rules against the latest requirements", "Confirm no invented endpoints or fields"],
       href: "/prompts/requirements-analysis/",
