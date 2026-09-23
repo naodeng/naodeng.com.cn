@@ -1,0 +1,128 @@
+---
+title: "Agent Loop Testing: Detect repetition, drift, and unsafe termination before the budget runs out"
+description: "Agent Loop Testing field guide: inspect iteration state, tool repetition, termination rules, budget use, and loop evidence."
+date: 2026-10-04T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Agent Loop Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An agent that keeps asking the same search service a slightly different question is not making progress. It is spending budget while hiding the fact that its plan has stopped moving.
+
+Agent Loop Testing evaluates whether each iteration changes the state of the task, whether the loop has useful stop conditions, and whether repeated tool calls remain safe and explainable.
+
+The Agent Loop Testing Skill is useful when a team needs a structured review of state delta, repeated actions, termination criteria, budget limits, and loop trace. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Agent Loop Testing.
+
+## Agent Loop Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of state delta, repeated actions, termination criteria, budget limits, and loop trace—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps state delta, repeated actions, termination criteria, budget limits, and loop trace connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Agent Loop Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers state delta, repeated actions, termination criteria, budget limits, and loop trace. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Goal and stop rule | Three verified sources, source authority criteria, and maximum iterations | Separate completion from “the model says done” |
+| Trace | Per-iteration plan, tool call, observation, state update, and token or time budget | Do not reconstruct a loop from the final answer |
+| Failure policy | Blocked source, duplicate result, empty result, and escalation behavior | Keep unresolved loops as blocked |
+
+Use a request like this:
+
+```text
+
+Use the agent-loop-testing Skill.
+
+Task: a research agent must collect three authoritative sources but keeps revisiting a blocked publisher page
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Iteration map | What changed between two iterations | Useful delta or no-progress |
+| Loop finding | Repetition, drift, premature stop, or runaway behavior | Evidence and severity |
+| Termination action | Stop, retry with a new strategy, ask for input, or escalate | Condition and owner |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong loop review compares state before and after each iteration. It does not punish repetition automatically—some retries are justified—but it requires a changed hypothesis, a changed input, or a changed verification path.
+
+## Run one focused pass
+
+Start with a bounded pass—a research agent must collect three authoritative sources but keeps revisiting a blocked publisher page. For the blocked publisher, cap attempts at two, record the reason for failure, and switch to an official repository or registry. The output should show the exact point where the strategy changed and why the loop was allowed to continue.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Counting iterations without comparing state.
+2. Using a global iteration cap that hides different risk levels.
+3. Stopping on a plausible sentence before the source requirement is met.
+
+## Related Skills
+
+- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/)：provides the broader behavior and goal context。
+- [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/)：checks time-based stopping and failure behavior。
+- [Agent Failure Recovery Testing](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/)：covers fallback after loop failure。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing -g
+
+```
+
+After installation, invoke it with the `agent-loop-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Is repeated tool use always a loop failure?
+
+No. It is a finding only when the retry adds no new evidence or violates the defined budget or side-effect boundary.
+
+
+
+### What should happen when the agent cannot progress?
+
+Stop with the missing condition, the attempted strategies, and one human or system action that can unblock it.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Agent Loop Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md)
+
+- Awesome QA Skills: Agent Loop Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Agent Loop Testing details:[https://inaodeng.com/en/qaskills/agent-loop-testing/](https://inaodeng.com/en/qaskills/agent-loop-testing/)

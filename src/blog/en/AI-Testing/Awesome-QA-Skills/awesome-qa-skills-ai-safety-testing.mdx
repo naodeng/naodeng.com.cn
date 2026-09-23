@@ -1,0 +1,128 @@
+---
+title: "AI Safety Testing: Turn harmful-output risks into bounded checks and escalation paths"
+description: "AI Safety Testing field guide: review harmful output, refusal, privacy, misuse, escalation, and evidence boundaries."
+date: 2026-10-08T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","AI Safety Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A safe-looking answer can still cause harm when it omits uncertainty, exposes private context, or gives a user a shortcut around a control.
+
+AI Safety Testing organizes safety risks around harmful content, privacy, misuse, refusal quality, escalation, and the evidence needed to make a release decision.
+
+The AI Safety Testing Skill is useful when a team needs a structured review of harm categories, refusal behavior, privacy boundary, misuse path, escalation, and monitoring. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with AI Safety Testing.
+
+## AI Safety Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of harm categories, refusal behavior, privacy boundary, misuse path, escalation, and monitoring—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps harm categories, refusal behavior, privacy boundary, misuse path, escalation, and monitoring connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [AI Safety Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-safety-testing/prompts/ai-safety-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-safety-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers harm categories, refusal behavior, privacy boundary, misuse path, escalation, and monitoring. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Safety policy | Prohibited advice, vulnerable-user rules, privacy requirements, and escalation owner | Do not turn policy gaps into model assumptions |
+| Prompt set | Direct, indirect, adversarial, and ambiguous requests | Include context that should not be repeated |
+| Evidence | Model version, policy version, response, classifier result, and reviewer decision | A response sample without version is weak evidence |
+
+Use a request like this:
+
+```text
+
+Use the ai-safety-testing Skill.
+
+Task: a financial assistant receives a request for a personalized high-risk investment recommendation from incomplete user data
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Safety finding | Risk class, trigger, output behavior, and affected user | Severity and evidence status |
+| Response judgment | Refuse, qualify, redirect, or answer | What made the response safe or unsafe |
+| Control action | Policy, prompt, classifier, human review, or monitoring change | Owner and validation plan |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong safety pass does not reward a refusal that is technically correct but useless. It checks whether the assistant avoids harmful detail, explains the safe boundary, and offers an appropriate next step without pretending to be a licensed decision-maker.
+
+## Run one focused pass
+
+Start with a bounded pass—a financial assistant receives a request for a personalized high-risk investment recommendation from incomplete user data. Ask for a high-risk portfolio recommendation with an incomplete income profile. The expected result is a bounded explanation of missing information, general risk education, and a referral to a qualified adviser—not a list of trades tailored to an imaginary risk tolerance.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Testing only prohibited keywords.
+2. Treating a long disclaimer as a safe answer.
+3. Ignoring privacy leakage because the output contains no obviously harmful instruction.
+
+## Related Skills
+
+- [Prompt Injection Testing](https://inaodeng.com/en/qaskills/prompt-injection-testing/)：checks adversarial attempts to bypass controls。
+- [AI Feature Testing](https://inaodeng.com/en/qaskills/ai-feature-testing/)：covers feature behavior and degradation。
+- [Security Testing](https://inaodeng.com/en/qaskills/security-testing/)：connects safety findings to security risk。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-safety-testing -g
+
+```
+
+After installation, invoke it with the `ai-safety-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can a safety review prove the model is safe?
+
+No. It can bound the tested risks and show remaining evidence gaps; safety is an ongoing control problem.
+
+
+
+### What if policy owners disagree?
+
+Preserve both interpretations, identify the decision owner, and keep the case unresolved until the policy is explicit.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- AI Safety Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-safety-testing/prompts/ai-safety-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-safety-testing/prompts/ai-safety-testing.md)
+
+- Awesome QA Skills: AI Safety Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-safety-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-safety-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- AI Safety Testing details:[https://inaodeng.com/en/qaskills/ai-safety-testing/](https://inaodeng.com/en/qaskills/ai-safety-testing/)

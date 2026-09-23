@@ -1,0 +1,111 @@
+---
+title: "Testing Bottleneck Analysis: Turn Queues, Handoffs, and Capacity into Actions"
+description: "A bilingual guide to analyzing testing queues, dependencies, capacity, handoffs, and constraint evidence without inventing causes or pass claims."
+date: 2026-12-18T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Testing Bottleneck Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A testing bottleneck is not always a slow test. It may be a shared environment, a review queue, missing data, a specialist handoff, or a capacity rule that no dashboard captures.
+
+The Testing Bottleneck Analysis Skill examines wait queues, dependencies, capacity, handoffs, and evidence for testing constraints. It converts a delay complaint into an evidence-bounded improvement path.
+
+The output should identify the next measurable constraint, not just the longest-looking queue.
+
+## Testing Bottleneck Analysis Skill: what it is for
+
+Use this Skill to review why testing work waits, where flow stops, and what evidence can distinguish demand, capacity, dependency, or handoff constraints. It does not invent root causes or approve a process change.
+
+A good result names the queue, dependency, capacity or handoff signal, time window, evidence state, priority, owner, close condition, and smallest validation.
+
+Use it when test work is repeatedly waiting for environments, data, reviews, specialists, or CI capacity and the team needs a decision-ready diagnosis.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Testing Bottleneck Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Flow evidence | Arrival, wait, service, handoff, queue, and completion timestamps | Keep missing timestamps explicit |
+| Dependencies | Environment, data, approval, service, and specialist constraints | Separate observed dependency from assumption |
+| Capacity | Workers, environments, review slots, windows, and utilization | Do not infer saturation from complaints |
+| Decision boundary | Owner, experiment, stop condition, and change authority | Human decides the trade-off |
+
+Use a request like this:
+
+~~~text
+Use the testing-bottleneck-analysis Skill.\n\nTask: Diagnose why checkout release validation waits two days for a shared staging environment and a security review.\nInputs: [queue timestamps, environment bookings, review handoffs, capacity, blocked reasons, release calendar]\nScope: [last four releases]\nConstraints: [do not invent root cause or promise throughput improvement]\n\nSeparate wait queue, dependency, capacity, handoff, and evidence findings. Give priority, owner, close condition, and a measurable next action.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Constraint finding | Observed queue, dependency, capacity, or handoff issue | Source and evidence state |
+| Impact | How delay affects validation or risk | Priority and scope |
+| Experiment | Smallest change that distinguishes hypotheses | Expected observation |
+| Decision boundary | What requires Human capacity or process choice | Owner and residual risk |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Separate staging scarcity from security-review handoff
+
+The release waits for staging, but timestamps show security review begins only after a manual environment handoff. The Skill should keep environment capacity and handoff sequencing as separate hypotheses, request a timestamped replay or parallel booking experiment, and avoid blaming the environment from queue length alone.
+
+The analysis classifies supplied flow evidence and proposes experiments. It cannot prove root cause, throughput gain, or release readiness without validation.
+
+## Improve the first result with better baseline input
+
+Provide a fixed release window, queue and service timestamps, blocked reasons, dependency map, capacity schedule, handoff ownership, and the decision the analysis supports. Missing timestamps remain unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Calling the longest queue the bottleneck without checking downstream wait or service time.
+2. Using utilization or complaints as proof of capacity saturation.
+3. Changing process before defining a small experiment and success evidence.
+
+## Related Skills
+
+- [Test Runtime Optimization](https://inaodeng.com/en/qaskills/test-runtime-optimization/)：handles slow execution after flow constraints are known。
+- [Quality Productivity Metrics](https://inaodeng.com/en/qaskills/quality-productivity-metrics/)：separates flow metrics from quality claims。
+- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/)：shows which scope is blocked or deferred。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis -g
+~~~
+
+~~~text
+Use the testing-bottleneck-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Does this Skill automatically recommend more people?
+
+No. It identifies evidence and trade-offs; capacity changes are a Human planning decision.
+
+### What if timestamps are incomplete?
+
+Return a bounded diagnosis, mark causal findings unassessed, and request the smallest missing event timestamps.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Testing Bottleneck Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)
+- [Testing Bottleneck Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis)
+- [Testing Bottleneck Analysis details](https://inaodeng.com/en/qaskills/testing-bottleneck-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

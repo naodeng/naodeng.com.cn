@@ -1,0 +1,111 @@
+---
+title: "Regression Optimization: Cut Feedback Time Without Dropping Risk"
+description: "A bilingual guide to optimizing regression selection, ordering, parallelism, caching, and risk preservation with evidence-bounded trade-offs."
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Regression Optimization"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A shorter regression run is not automatically a better regression run. Removing slow checks can improve feedback while quietly removing the only coverage for payment, permission, or migration risk.
+
+The Regression Optimization Skill reviews selection, ordering, parallelism, caching, and risk preservation as one trade-off. It helps a team make the fastest safe feedback loop that its evidence can support.
+
+Optimization succeeds only when feedback gets faster without making important risk invisible.
+
+## Regression Optimization Skill: what it is for
+
+Use this Skill when a suite is too slow, CI capacity is expensive, or a team proposes skipping tests based on changed files or historical pass rates. It keeps the risk basis and validation plan visible.
+
+A good proposal explains why a test is selected, when it runs, what risk it protects, how parallel or cached results remain trustworthy, and how the change will be validated.
+
+Use it when CI is being redesigned, a release train must accelerate, flaky tests are being removed, or an escape shows that selection missed a changed dependency.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Regression Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization/prompts/regression-optimization.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Changed surface | Commit, dependency, schema, configuration, and feature flags affected | Keep selection broad when impact is unknown |
+| Suite evidence | Historical runs, duration, failures, flakiness, ownership, and coverage rationale | Do not infer safety from pass rate alone |
+| Execution design | Selection rules, order, workers, cache key, environment, and isolation | Mark unproven reuse pending |
+| Risk boundary | Critical journeys, release constraints, and full-run fallback | Leave risk acceptance to the owner |
+
+Use a request like this:
+
+~~~text
+Use the regression-optimization Skill.\n\nTask: Reduce pre-release feedback time for a checkout change touching tax calculation and shared pricing code.\nInputs: [diff, dependency graph, suite inventory, run history, durations, cache keys, critical journeys]\nScope: [pre-merge and release pipelines]\nConstraints: [two CI workers, no loss of payment and tax coverage]\n\nEvaluate selection, ordering, parallelism, caching, and risk preservation. Give an isolated validation experiment and keep unsupported speed or safety claims pending.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Selection basis | Why each selected or skipped group is in scope | Changed surface and risk link |
+| Execution plan | Order, parallel groups, isolation, and cache conditions | Repeatable pipeline rule |
+| Risk preservation | Critical coverage and full-run fallback | Explicit escape boundary |
+| Validation result | What the experiment observed | Duration, failures, evidence state |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Speed up tax regression without hiding shared-code impact
+
+A file-based selector excludes payment tests because only pricing files changed. The Skill should question that boundary because shared pricing code feeds tax and payment totals, then propose a dependency-aware group with parallel execution. A cache is acceptable only when its key includes code, environment, data, and configuration that affect the result.
+
+The Skill can compare optimization rules with suite and risk evidence. It cannot claim escaped-risk reduction or safe cache reuse until a validation run produces evidence.
+
+## Improve the first result with better baseline input
+
+Provide the change surface, dependency information, suite inventory, historical runs, current cache keys, critical journeys, and full-run fallback. If impact is uncertain, state it instead of narrowing scope by convention.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Selecting only tests whose files changed and missing shared libraries, schemas, or configuration effects.
+2. Measuring duration improvement while dropping a critical journey from the selected set.
+3. Reusing cached results across different code, environment, data, or feature-flag conditions.
+
+## Related Skills
+
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：supplies duration, flakiness, ownership, and maintenance evidence。
+- [CI Test Optimization](https://inaodeng.com/en/qaskills/ci-test-optimization/)：focuses on pipeline feedback and execution cost。
+- [Risk-Based Testing](https://inaodeng.com/en/qaskills/risk-based-testing/)：provides the risk basis for preserving coverage。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization -g
+~~~
+
+~~~text
+Use the regression-optimization Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can historical pass rate justify skipping a test?
+
+No. Selection also needs changed-surface impact, protected risk, environment, and a validation experiment.
+
+### When should the full suite run?
+
+Define the boundary from risk: high-impact shared changes, selector uncertainty, cache invalidation, release gates, or stale optimized evidence.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Regression Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization/prompts/regression-optimization.md)
+- [Regression Optimization Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization)
+- [Regression Optimization details](https://inaodeng.com/en/qaskills/regression-optimization/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

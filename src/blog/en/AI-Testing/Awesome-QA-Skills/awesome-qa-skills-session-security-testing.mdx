@@ -1,0 +1,111 @@
+---
+title: "Session-Security Testing: Review Creation, Revocation, Expiry, and Device Boundaries"
+description: "A bilingual guide to reviewing session creation, fixation, expiry, revocation, concurrency, and cross-device security boundaries."
+date: 2026-12-07T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Session-Security Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Session security fails in the transitions: after login, after a password change, when a second device appears, or when a session should have expired but still carries authority.
+
+The Session-Security Testing Skill prepares evidence-bounded scenarios for session creation, fixation, expiry, revocation, concurrency, and cross-device boundaries. It keeps a design claim separate from an executed security result.
+
+A session rule is only useful when its lifecycle and invalidation boundary are observable.
+
+## Session-Security Testing Skill: what it is for
+
+Use this Skill to review session behavior in an isolated environment with synthetic accounts. It identifies security concerns and validation actions without logging into production, reading credentials, or claiming the system secure.
+
+A good result names the session state, actor and device, trigger, expected token or authority change, evidence, owner, close condition, and safe validation method.
+
+Use it when authentication changes, refresh-token behavior changes, logout or password-reset flows are redesigned, or cross-device policy is unclear.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Session-Security Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing/prompts/session-security-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Session model | Creation, refresh, expiry, logout, password reset, and revocation rules | Keep undocumented transitions open |
+| Actors and devices | User roles, browser/device classes, concurrency, and tenant scope | Mark boundaries missing |
+| Token evidence | Redacted claims, cookie flags, IDs, timestamps, and server records | Do not provide live tokens |
+| Validation environment | Synthetic accounts, isolated staging, logs, and cleanup | No production login |
+
+Use a request like this:
+
+~~~text
+Use the session-security-testing Skill.\n\nTask: Review whether a password reset revokes browser and mobile sessions, while keeping one approved recovery device active.\nInputs: [session policy, token metadata, reset flow, device rules, staging logs, synthetic accounts]\nScope: [web and mobile staging]\nConstraints: [no real credentials, no production access]\n\nCover creation, fixation, expiry, revocation, concurrency, and cross-device boundaries. Keep unsupported security claims pending.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Lifecycle scenario | Session state, trigger, actor, and device | Source and applicability |
+| Security concern | Unexpected authority, fixation, stale access, or cross-device leak | Evidence state |
+| Expected boundary | What should expire, rotate, revoke, or remain | Policy and owner |
+| Validation action | Safe replay and evidence needed | Synthetic account and cleanup |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Check reset revocation across web and mobile
+
+A password reset revokes the web cookie but leaves a mobile refresh token usable. The Skill should record the cross-device revocation gap, preserve the approved recovery-device exception if one exists, and propose a synthetic-account replay with token timestamps and server-side revocation evidence.
+
+The review prepares security scenarios and evidence checks. It cannot prove exploit success, absence of vulnerability, or release security without an authorized run.
+
+## Improve the first result with better baseline input
+
+Provide the session lifecycle, token types, cookie and storage policy, actor/device matrix, reset/logout rules, environment, synthetic accounts, and cleanup plan. Redact token values.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Testing logout only in one browser and missing refresh tokens or mobile sessions.
+2. Checking token expiry time without checking server-side revocation and resource authorization.
+3. Using a real user account or live token to prove a security boundary.
+
+## Related Skills
+
+- [Authentication Testing](https://inaodeng.com/en/qaskills/authentication-testing/)：checks identity establishment and login flows。
+- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：checks resource access after session state changes。
+- [Secrets-Exposure Review](https://inaodeng.com/en/qaskills/secrets-exposure-review/)：reviews token and log exposure boundaries。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing -g
+~~~
+
+~~~text
+Use the session-security-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Is a short token lifetime enough?
+
+No. Expiry, rotation, revocation, storage, concurrency, and resource checks all contribute to session security.
+
+### Can I reuse a production account in staging?
+
+No. Use synthetic accounts with explicit roles and cleanup; do not move real credentials across environments.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Session-Security Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing/prompts/session-security-testing.md)
+- [Session-Security Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing)
+- [Session-Security Testing details](https://inaodeng.com/en/qaskills/session-security-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

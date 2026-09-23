@@ -1,0 +1,128 @@
+---
+title: "Agent Long-Running Testing: Keep progress, leases, and cancellation visible during long jobs"
+description: "Agent Long-Running Testing field guide: review progress, checkpoints, leases, cancellation, and evidence across extended agent jobs."
+date: 2026-10-03T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Agent Long-Running Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A long-running agent can look healthy for an hour and still lose the only useful state when a worker restarts. Progress bars are decoration until they correspond to checkpoints someone can verify.
+
+Agent Long-Running Testing examines whether extended jobs make progress, preserve state, renew ownership, respond to cancellation, and leave enough evidence to explain a partial result.
+
+The Agent Long-Running Testing Skill is useful when a team needs a structured review of progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Agent Long-Running Testing.
+
+## Agent Long-Running Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Agent Long-Running Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Job contract | Ticket count, expected stages, completion definition, and partial-result policy | Do not infer completion from elapsed time |
+| Runtime controls | Worker lease, checkpoint interval, restart behavior, cancellation request, and queue state | Mark unobserved transitions as unassessed |
+| Evidence | Job ID, checkpoint records, processed counts, duplicate markers, and cancellation audit | Request a run record before making a reliability claim |
+
+Use a request like this:
+
+```text
+
+Use the agent-long-running-testing Skill.
+
+Task: an agent spends two hours classifying 80,000 support tickets while workers can restart and users can cancel the job
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Progress model | Stages, checkpoint meaning, and how counts map to work | A reproducible progress explanation |
+| Interruption result | What survives restart or cancellation | Partial, cancelled, recovered, or unknown |
+| Operational action | Lease, queue, or storage change to verify | Owner and evidence needed |
+
+Do not write “passed” without a run record, query result, or source artifact. A good analysis treats a checkpoint as a claim about durable work, not as a heartbeat. It asks whether the same ticket can be processed twice, whether a lease can expire mid-stage, and whether a cancelled job tells the user exactly what is still running.
+
+## Run one focused pass
+
+Start with a bounded pass—an agent spends two hours classifying 80,000 support tickets while workers can restart and users can cancel the job. Pause the ticket-classification job after checkpoint 37, restart the worker, and compare the resumed input set with the checkpoint manifest. The useful output is not “the job resumed”; it is the set of ticket IDs resumed, skipped, duplicated, or left unclassified.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Using a percentage without defining which work is durable.
+2. Calling a cancelled job successful because its worker stopped.
+3. Ignoring lease expiry because the happy-path run finished.
+
+## Related Skills
+
+- [Agent Failure Recovery Testing](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/)：covers failure and recovery decisions around the long job。
+- [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/)：focuses on time-bound interruption behavior。
+- [Production Verification](https://inaodeng.com/en/qaskills/production-verification/)：checks live progress and operational signals。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing -g
+
+```
+
+After installation, invoke it with the `agent-long-running-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### What if the system only exposes a progress number?
+
+Treat it as a claim to validate; request checkpoint or item-level evidence before trusting it.
+
+
+
+### Should partial results be published?
+
+Only when the contract defines their completeness, staleness, and safe downstream use.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Agent Long-Running Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md)
+
+- Awesome QA Skills: Agent Long-Running Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Agent Long-Running Testing details:[https://inaodeng.com/en/qaskills/agent-long-running-testing/](https://inaodeng.com/en/qaskills/agent-long-running-testing/)

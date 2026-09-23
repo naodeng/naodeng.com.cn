@@ -1,0 +1,116 @@
+---
+title: "边界场景发现：找出顺利流程之外那些尴尬的状态"
+description: "边界场景发现实战指南：探索异常数据、时间、身份、状态、环境和恢复条件，并保留证据。"
+date: 2026-11-01T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","边界场景发现"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+边界场景往往就是产品遇到现实的瞬间：昨天恢复的浏览器标签页、已经删除但仍在队列里的账号邮件，或者策略变化前一秒上传的文件。
+
+边界场景发现用于系统化寻找主流程之外的异常组合、时间、状态、身份、数据、环境和恢复条件。
+
+当团队需要围绕“异常数据、时间、状态、身份、环境、并发和恢复”工作时，使用边界场景发现 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦边界场景发现。
+
+## 边界场景发现 Skill 用来做什么
+
+好的边界场景发现既好奇又有纪律。它不会列出所有想象中的灾难，而是优先排列能改变用户结果或暴露重要状态转移的场景。
+
+它适合这些场景：团队需要重复检查异常数据、时间、状态、身份、环境、并发和恢复；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [边界场景发现 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/edge-case-discovery/prompts/edge-case-discovery.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/edge-case-discovery) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束异常数据、时间、状态、身份、环境、并发和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 主流程 | 正常步骤、假设、角色和成功状态 | 挑战前先写出假设 |
+| 变化维度 | 数据、时间、身份、状态、环境和并发 | 先改变一个维度，再看交互 |
+| 证据 | 需求、缺陷、日志、客服报告和观察行为 | 区分来源风险与想象 |
+
+可以这样调用：
+
+```text
+请使用 edge-case-discovery Skill。
+
+任务：发现文件上传流程中权限、网络、文件名和账号状态在中途发生变化时的边界场景
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 边界场景发现 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 边界场景 | 触发、状态、受影响角色和要回答的问题 | 来源或假设 |
+| 风险判断 | 影响、可能性和当前证据 | 优先级与状态 |
+| 探针 | 能确认或否定场景的最小检查 | 负责人和产物 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的边界场景发现既好奇又有纪律。它不会列出所有想象中的灾难，而是优先排列能改变用户结果或暴露重要状态转移的场景。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：发现文件上传流程中权限、网络、文件名和账号状态在中途发生变化时的边界场景。上传文件后，在处理完成前撤销用户权限，再让网络恢复并触发客户端重试。这个场景要回答文件是被存储、处理、暴露还是安全拒绝，以及什么证据能证明结果。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为异常数据、时间、状态、身份、环境、并发和恢复必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 列出奇怪输入，却没有业务后果。
+2. 一次改变所有维度。
+3. 把合理的边界假设写成已确认缺陷。
+
+## 相关 Skill
+
+- [边界值测试设计](https://inaodeng.com/zh-cn/qaskills/boundary-value-testing/)：聚焦正式限制。
+- [负向场景发现](https://inaodeng.com/zh-cn/qaskills/negative-scenario-discovery/)：聚焦拒绝与失败路径。
+- [状态迁移测试设计](https://inaodeng.com/zh-cn/qaskills/state-transition-testing/)：映射边界状态与转移。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/edge-case-discovery -g
+```
+
+安装后使用 `edge-case-discovery` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 要发现多少边界场景？
+
+覆盖高影响假设和交互即可；当新场景不再改变风险图景时停止扩展。
+
+### 这个 Skill 可以替代探索式测试吗？
+
+不能。它生成可追溯的发现清单和探针，人工探索仍然提供观察结果。
+
+## 参考
+
+- [边界场景发现 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/edge-case-discovery/prompts/edge-case-discovery.md)
+
+- [Awesome QA Skills：边界场景发现 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/edge-case-discovery)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [边界场景发现 详情页](https://inaodeng.com/zh-cn/qaskills/edge-case-discovery/)

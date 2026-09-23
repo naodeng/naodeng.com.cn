@@ -1,0 +1,116 @@
+---
+title: "API 安全测试：在接口边界把身份、资源和失败证据接起来"
+description: "API 安全测试实战指南：检查认证、授权、输入暴露、敏感信息、限流和安全证据。"
+date: 2026-10-16T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","API 安全测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+API 安全检查停在“Token 有效”还不够。它还要验证这个 Token 是否能访问当前资源，以及失败时是否泄露过多信息。
+
+API 安全测试用于评估调用者身份、请求资源、输入、响应和运行控制之间的安全边界。
+
+当团队需要围绕“认证、授权、对象范围、注入面、敏感信息暴露、限流和审计证据”工作时，使用 API 安全测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 API 安全测试。
+
+## API 安全测试 Skill 用来做什么
+
+好的 API 安全检查会沿着一次请求追踪对象的完整边界：谁拥有它、谁可以操作、记录了什么，以及失败时攻击者能学到什么。
+
+它适合这些场景：团队需要重复检查认证、授权、对象范围、注入面、敏感信息暴露、限流和审计证据；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [API 安全测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束认证、授权、对象范围、注入面、敏感信息暴露、限流和审计证据。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 安全模型 | 身份、角色、租户、资源所有权和允许操作 | 策略模糊时保留为待确认 |
+| 攻击面 | 路径、查询、请求体、请求头、文件名和错误响应 | 包含格式错误和超长输入 |
+| 证据 | 允许与拒绝日志、脱敏、限流事件和测试账号矩阵 | 不要从中间件名字推断保护成立 |
+
+可以这样调用：
+
+```text
+请使用 api-security-testing Skill。
+
+任务：评审一个供员工、外包人员和服务账号跨租户使用的文档下载 API
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## API 安全测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 安全发现 | 边界违规、泄露、绕过或控制缺失 | 资产、角色与证据 |
+| 利用条件 | 输入、身份、状态和前置条件 | 可复现准备 |
+| 修复动作 | 策略、代码、监控或验证动作 | 负责人和剩余风险 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的 API 安全检查会沿着一次请求追踪对象的完整边界：谁拥有它、谁可以操作、记录了什么，以及失败时攻击者能学到什么。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：评审一个供员工、外包人员和服务账号跨租户使用的文档下载 API。分别用资源所有者、同租户同事、跨租户用户和只读服务账号请求同一文档。比较响应状态、响应体、时间、审计事件和下载 URL，而不只看 200 或 403。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为认证、授权、对象范围、注入面、敏感信息暴露、限流和审计证据必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只测认证，不测对象授权。
+2. 响应体脱敏了，却把敏感信息留在请求头或 URL。
+3. 忽略暴露资源存在性的时间和错误差异。
+
+## 相关 Skill
+
+- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)：检查权限判断。
+- [敏感信息暴露审查](https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/)：检查载荷和日志中的敏感信息泄露。
+- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查安全失败响应。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing -g
+```
+
+安装后使用 `api-security-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 返回 403 就能证明资源受保护吗？
+
+不能。还要确认没有泄露数据、签名 URL、元数据或副作用。
+
+### 这个 Skill 会直接执行攻击吗？
+
+它组织有边界的安全检查；真实侵入动作需要明确授权和安全环境。
+
+## 参考
+
+- [API 安全测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md)
+
+- [Awesome QA Skills：API 安全测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [API 安全测试 详情页](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)

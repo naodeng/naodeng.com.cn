@@ -1,0 +1,116 @@
+---
+title: "错误处理设计评审：让失败对用户、运维和下游系统都可用"
+description: "错误处理设计评审实战指南：检查错误分类、用户消息、重试、回退、日志、隐私和恢复。"
+date: 2026-11-03T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","错误处理设计评审"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+错误消息可以技术上准确，却不给用户任何安全的下一步。堆栈信息可以帮助运维，也可能同时泄露秘密。
+
+错误处理设计评审用于检查系统如何分类、沟通、记录、重试失败，并恢复到安全状态。
+
+当团队需要围绕“失败分类、用户动作、可重试性、回退、可观察性、隐私和恢复”工作时，使用错误处理设计评审 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦错误处理设计评审。
+
+## 错误处理设计评审 Skill 用来做什么
+
+好的评审会要求同一个失败在三个层面都说得通：用户看到安全下一步，运维看到可诊断事件，下游客户端看到稳定契约。
+
+它适合这些场景：团队需要重复检查失败分类、用户动作、可重试性、回退、可观察性、隐私和恢复；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [错误处理设计评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束失败分类、用户动作、可重试性、回退、可观察性、隐私和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 失败点 | 校验、队列、Worker、存储、下载和用户状态 | 每个失败点都指定负责人 |
+| 契约 | 用户消息、错误码、重试规则、日志字段和隐私边界 | 分开机器消息与人类消息 |
+| 恢复 | 继续、重启、补偿、取消或转客服 | 定义用户可以安全做什么 |
+
+可以这样调用：
+
+```text
+请使用 error-handling-design-review Skill。
+
+任务：评审一个可能在校验、入队、生成、存储或下载阶段失败的报表导出流程
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 错误处理设计评审 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 错误判断 | 类别、影响、用户动作和可重试性 | 来源与状态 |
+| 可观察性要求 | 所需日志、指标、Trace 或告警 | 符合隐私的字段集合 |
+| 恢复决策 | 回退、补偿或升级 | 负责人和关闭条件 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的评审会要求同一个失败在三个层面都说得通：用户看到安全下一步，运维看到可诊断事件，下游客户端看到稳定契约。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：评审一个可能在校验、入队、生成、存储或下载阶段失败的报表导出流程。报表已经生成但存储失败时，要告诉用户重试是否安全；日志只记录报表任务 ID 和存储错误类别，不记录文件内容；除非契约允许，否则不要让客户端重新开始一次昂贵生成。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为失败分类、用户动作、可重试性、回退、可观察性、隐私和恢复必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 所有失败都返回一个通用错误。
+2. 为了诊断把敏感载荷写进日志。
+3. 没有判断原操作是否提交就重试。
+
+## 相关 Skill
+
+- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查机器可读的失败响应。
+- [根因分析](https://inaodeng.com/zh-cn/qaskills/root-cause-analysis/)：在设计评审后追踪失败根因。
+- [恢复测试](https://inaodeng.com/zh-cn/qaskills/recovery-testing/)：验证设计出的恢复路径。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review -g
+```
+
+安装后使用 `error-handling-design-review` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 用户应该看到技术错误码吗？
+
+必要时可以提供安全的支持查询编号，但内部细节和秘密不能出现在消息里。
+
+### 没有回退路径怎么办？
+
+明确说明，定义停止或升级动作，不要假装错误可以恢复。
+
+## 参考
+
+- [错误处理设计评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)
+
+- [Awesome QA Skills：错误处理设计评审 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [错误处理设计评审 详情页](https://inaodeng.com/zh-cn/qaskills/error-handling-design-review/)

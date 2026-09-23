@@ -1,0 +1,111 @@
+---
+title: "Requirement Ambiguity Analysis: Turn Vague Wording into Closeable Questions"
+description: "A bilingual guide to identifying ambiguous actors, scope, quantities, conditions, timing, states, and acceptance criteria without choosing an interpretation."
+date: 2026-11-27T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Requirement Ambiguity Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+“The dashboard should load quickly for normal users” sounds reasonable until design and testing need to decide what quickly, normal, and load mean.
+
+The Requirement Ambiguity Analysis Skill diagnoses under-specification while preserving the original wording and source. It lists plausible readings and the missing discriminator without silently choosing a business interpretation.
+
+The Skill makes ambiguity actionable without pretending to decide what the product owner meant.
+
+## Requirement Ambiguity Analysis Skill: what it is for
+
+Use this Skill before design or test planning when a requirement has unclear actors, objects, scope, quantity, timing, state, or acceptance criteria. It diagnoses and routes questions; it does not generate business rules.
+
+A good finding uses an RA identifier, quotes the ambiguous statement, names the missing discriminator, lists possible readings, explains impact, and assigns a closeable question to an owner role.
+
+Use it when a story uses words such as fast, timely, normal, appropriate, or when necessary, or when two teams can implement the same sentence differently.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Requirement Ambiguity Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-ambiguity-analysis/prompts/requirement-ambiguity-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-ambiguity-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Requirement source | Exact story, acceptance criterion, version, and location | Do not analyze a paraphrase when source exists |
+| Scope and actors | Product, role, state, platform, tenant, region, and time window | Mark applicability missing |
+| Current evidence | Examples, prototypes, contracts, prior decisions, and related artifacts | Separate evidence from convention |
+| Decision boundary | Role allowed to clarify and what cannot be inferred | Route the question instead of answering |
+
+Use a request like this:
+
+~~~text
+Use the requirement-ambiguity-analysis Skill.\n\nTask: Analyze “the dashboard should load quickly for normal users and show relevant data when necessary.”\nInputs: [story version, product scope, user roles, prototype, performance context, existing decisions]\nScope: [web dashboard, authenticated users, first load and refresh]\nConstraints: [do not choose a business threshold]\n\nPreserve each ambiguous phrase, source, missing discriminator, possible readings, impact, owner question, close condition, and validation method. Use RA-## IDs and distinguish ambiguity from conflict.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Ambiguous statement | Original wording and source location | Quoted evidence |
+| Missing discriminator | Actor, threshold, state, timing, scope, or rule absent | Named gap |
+| Possible readings | More than one plausible implementation meaning | Do not select one |
+| Closeable question | Question an owner can answer and how to validate | Owner, priority, method |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Make “fast” testable without defining it for the owner
+
+For “load quickly,” the Skill can ask whether the measure applies to first contentful paint, usable interaction, or complete data load; which network and device; and which user cohort. It should not pick two seconds because that is common practice. The output is a decision request with a validation method, not an invented acceptance criterion.
+
+The result shows that wording has multiple plausible readings from the supplied material. It does not decide the product rule, legal meaning, or final acceptance threshold.
+
+## Improve the first result with better baseline input
+
+Supply the exact requirement and source, scope, actors, known examples, related design or contract, and the role allowed to clarify it. Incomplete input is acceptable, but ask three to five high-value questions.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Replacing an ambiguous word with a familiar threshold and presenting the rewrite as the requirement.
+2. Treating a missing second source as a conflict instead of a missing discriminator.
+3. Listing ambiguity without preserving the original statement, owner, close condition, or validation method.
+
+## Related Skills
+
+- [Requirement Quality Review](https://inaodeng.com/en/qaskills/requirement-quality-review/)：checks broader readiness before design or testing。
+- [Requirement Consistency Analysis](https://inaodeng.com/en/qaskills/requirement-consistency-analysis/)：compares terms and rules across artifacts。
+- [Requirement Conflict Detection](https://inaodeng.com/en/qaskills/requirement-conflict-detection/)：handles explicit mutually exclusive statements。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-ambiguity-analysis -g
+~~~
+
+~~~text
+Use the requirement-ambiguity-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can the Skill rewrite the requirement?
+
+It can suggest a clarification question or candidate wording, but it must keep the source and avoid presenting an unapproved interpretation as final.
+
+### What if only one requirement document exists?
+
+Ambiguity can still be found within one source. Conflict requires mutually exclusive evidence; do not invent a second side.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Requirement Ambiguity Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-ambiguity-analysis/prompts/requirement-ambiguity-analysis.md)
+- [Requirement Ambiguity Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-ambiguity-analysis)
+- [Requirement Ambiguity Analysis details](https://inaodeng.com/en/qaskills/requirement-ambiguity-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

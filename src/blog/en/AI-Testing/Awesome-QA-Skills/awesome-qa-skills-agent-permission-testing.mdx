@@ -1,0 +1,128 @@
+---
+title: "Agent Permission Testing: Verify tool access, identity, and refusal at every boundary"
+description: "Agent Permission Testing field guide: check identity, least privilege, tool authorization, denial handling, and audit evidence."
+date: 2026-10-06T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Agent Permission Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An agent can follow the user’s request perfectly and still be wrong if the request asks for a document the user is not allowed to see.
+
+Agent Permission Testing verifies that identity, role, tenant, resource, and action are evaluated together before an agent reads data or calls a tool.
+
+The Agent Permission Testing Skill is useful when a team needs a structured review of identity binding, least privilege, resource scope, denial behavior, and auditability. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Agent Permission Testing.
+
+## Agent Permission Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of identity binding, least privilege, resource scope, denial behavior, and auditability—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps identity binding, least privilege, resource scope, denial behavior, and auditability connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Agent Permission Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing/prompts/agent-permission-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers identity binding, least privilege, resource scope, denial behavior, and auditability. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Identity matrix | Users, roles, tenants, resources, and allowed actions | Require an owner for ambiguous policy |
+| Agent surface | Prompt, tool schema, authorization middleware, and fallback path | Do not test the prompt as the permission system |
+| Evidence | Allow and deny logs, resource IDs, policy version, and user-visible response | A polite refusal without an audit record is incomplete |
+
+Use a request like this:
+
+```text
+
+Use the agent-permission-testing Skill.
+
+Task: an HR assistant receives a request to export salary records while the caller only has team-level employee access
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Authorization decision | Identity, resource, action, policy, and result | Allowed, denied, or unresolved |
+| Agent behavior | Whether it stops, explains, or tries a weaker path | No unauthorized workaround |
+| Audit requirement | What must be logged and retained | Owner and retention boundary |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong permission test varies identity and resource independently. It also checks the agent’s next move after denial—safe refusal, clarification, or escalation—not only the HTTP status.
+
+## Run one focused pass
+
+Start with a bounded pass—an HR assistant receives a request to export salary records while the caller only has team-level employee access. Send the same salary-export request as a team manager, HR administrator, and contractor. Keep the resource ID constant, then compare policy decisions, tool calls, response text, and audit events. The contractor should not receive a filtered export by accident; the operation should be denied before data retrieval.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Relying on the model to remember role rules.
+2. Testing only successful access.
+3. Allowing a denial to trigger an unlogged alternate tool.
+
+## Related Skills
+
+- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：covers product-level permission decisions。
+- [Agent Tool Testing](https://inaodeng.com/en/qaskills/agent-tool-testing/)：checks tool contracts and side effects after authorization。
+- [Session Security Testing](https://inaodeng.com/en/qaskills/session-security-testing/)：checks identity continuity across sessions。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing -g
+
+```
+
+After installation, invoke it with the `agent-permission-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Is a refusal response enough?
+
+No. Confirm that no protected data was fetched and that the denial is traceable to an identity and policy version.
+
+
+
+### What if the role matrix is missing?
+
+Stop at the policy gap, name the decision owner, and do not invent a default allow or deny rule.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Agent Permission Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing/prompts/agent-permission-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing/prompts/agent-permission-testing.md)
+
+- Awesome QA Skills: Agent Permission Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Agent Permission Testing details:[https://inaodeng.com/en/qaskills/agent-permission-testing/](https://inaodeng.com/en/qaskills/agent-permission-testing/)

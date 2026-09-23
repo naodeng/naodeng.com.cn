@@ -1,0 +1,111 @@
+---
+title: "Requirement Consistency Analysis: Compare Terms, States, and Rules Across Artifacts"
+description: "A bilingual guide to comparing requirement artifacts for terminology, identifiers, formats, states, rules, behavior, scope, and evidence status."
+date: 2026-11-29T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Requirement Consistency Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A product can fail before code is written when one document calls a state “paid,” another calls it “captured,” and a third treats both as terminal.
+
+The Requirement Consistency Analysis Skill compares artifacts using stable keys while preserving source and version boundaries. It distinguishes aligned, inconsistent, and conflict relations from assessed, missing, stale, and unassessed evidence states.
+
+Similar words are not automatically synonyms; the comparison must establish that the artifacts refer to the same object and scope.
+
+## Requirement Consistency Analysis Skill: what it is for
+
+Use this Skill when PRDs, stories, API contracts, prototypes, technical notes, or acceptance criteria describe the same flow with different terms, identifiers, formats, states, rules, or behavior.
+
+A good comparison gives each RC finding a source pair, comparison key, relation, evidence status, scope or version, impact, owner, action, and validation method.
+
+Use it when multiple artifacts should describe one actor, field, state transition, or outcome before implementation or integration testing.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Requirement Consistency Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-consistency-analysis/prompts/requirement-consistency-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-consistency-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Artifact set | PRD, API contract, prototype, acceptance criteria, and technical note | State which artifact is missing |
+| Comparison scope | Flow, actor, field, state, platform, tenant, version, and effective time | Do not compare across unknown boundaries |
+| Stable keys | Field, transition, business rule, identifier, or observable outcome | Create a key before comparing wording |
+| Evidence | Source locations, decisions, implementation notes, and examples | Keep absent evidence distinct from inconsistency |
+
+Use a request like this:
+
+~~~text
+Use the requirement-consistency-analysis Skill.\n\nTask: Compare the checkout PRD, payment API contract, and acceptance criteria for address fields, payment states, and refund behavior.\nInputs: [artifact versions, source locations, platform scope, examples, implementation notes]\nScope: [web checkout, card payments, release R25.1]\nConstraints: [do not invent state meanings or merge conflicts]\n\nProduce RC-## findings with source pair, stable key, relation, evidence status, impact, owner, open question, close condition, and validation method. Route explicit mutually exclusive rules to conflict detection by Skill name only.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Comparison key | The field, state, rule, or behavior being compared | Stable identifier |
+| Relation | Aligned, inconsistent, or conflict | Separate from evidence status |
+| Evidence state | Assessed, missing, stale, or unassessed | Source and version |
+| Action | Owner question, close condition, and validation | No silent merge |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Compare payment states without treating names as synonyms
+
+The PRD says an order is paid after authorization, the API returns authorized, and acceptance criteria expect captured before confirmation. The Skill should preserve all sources, compare the state transition and timing, and classify the relation only after scope and implementation meaning are checked. It should not choose the most familiar label as canonical.
+
+The result shows relationships among supplied artifacts. It cannot prove runtime state behavior, and static agreement does not replace an API or integration test.
+
+## Improve the first result with better baseline input
+
+Provide all artifacts with versions and locations, comparison scope, stable keys, examples, and known decisions. When only one source exists, mark missing comparison evidence instead of calling it consistent.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Treating similar labels as the same object without checking state, timing, or actor.
+2. Calling a missing second artifact consistent because no difference was found.
+3. Downgrading a true conflict into an inconsistency to make the report cleaner.
+
+## Related Skills
+
+- [Requirement Conflict Detection](https://inaodeng.com/en/qaskills/requirement-conflict-detection/)：routes mutually exclusive rules without choosing precedence。
+- [Requirement Traceability Analysis](https://inaodeng.com/en/qaskills/requirement-traceability-analysis/)：links requirements to downstream evidence。
+- [Requirement Quality Review](https://inaodeng.com/en/qaskills/requirement-quality-review/)：provides the broader readiness view。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-consistency-analysis -g
+~~~
+
+~~~text
+Use the requirement-consistency-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### What is the difference between relation and evidence status?
+
+Relation describes how two statements relate. Evidence status describes whether the comparison is sufficiently supported, fresh, or missing.
+
+### Should the Skill create a canonical glossary?
+
+It can propose a question or candidate mapping, but approved terminology and state meaning remain a Human or product decision.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Requirement Consistency Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-consistency-analysis/prompts/requirement-consistency-analysis.md)
+- [Requirement Consistency Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-consistency-analysis)
+- [Requirement Consistency Analysis details](https://inaodeng.com/en/qaskills/requirement-consistency-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

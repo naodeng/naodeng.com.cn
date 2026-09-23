@@ -1,0 +1,111 @@
+---
+title: "Test Maintenance Cost Analysis：让修复投入与 flaky 成本可见"
+description: "测试维护成本分析双语指南，围绕变更频率、修复投入、flaky 成本、Owner、可维护性和信心分析维护负担。"
+date: 2026-12-14T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "测试维护成本分析"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+测试套件可能运行便宜，保持可信却很贵。修复分钟数、flaky 重跑、Owner 不清和重复初始化，都是通过率藏起来的维护成本。
+
+Test Maintenance Cost Analysis Skill 根据已有证据检查变更频率、修复投入、flaky 成本、Owner、可维护性和信心，把成本信号变成改进选项，不自造因果指标。
+
+本文的目标是让保持测试可信的成本可见，而不是惩罚测试 Owner。
+
+## 测试维护成本分析 Skill 用来做什么
+
+当维护负担影响反馈或信任，需要复核套件、测试区域或自动化投入时，使用这个 Skill。它不决定人员配置、发布风险或个人绩效。
+
+好的分析要写清成本信号、来源、队列、时间窗口、信心限制、优先级、负责人、关闭条件和验证方式。
+
+当 flaky 修复不断增加、UI/API 变化后测试频繁破坏，或者没人说得清保持套件健康的成本时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [测试维护成本分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-maintenance-cost-analysis/prompts/test-maintenance-cost-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-maintenance-cost-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 成本信号 | 变更频率、修复投入、重跑、隔离、Owner 和辅助代码变化 | 定义事件与窗口 |
+| 质量上下文 | 保护风险、缺陷证据、时长和信心影响 | 不要只优化成本 |
+| 队列 | 套件、组件、团队、平台和对比周期 | 避免队列不断变化 |
+| 决策边界 | 重构、下线、隔离或投入 | 取舍由人工决定 |
+
+可以这样调用：
+
+~~~text
+请使用 test-maintenance-cost-analysis Skill。\n\n任务：分析设计系统迁移后结账 UI 套件的维护负担。\n输入材料：[变更历史、修复工单、重跑、隔离清单、Owner、运行数据和逃逸缺陷]\n范围：[最近三个发布的结账 UI 测试]\n限制：[不要推断团队绩效或发布批准]\n\n覆盖变更频率、修复投入、flaky 成本、Owner、可维护性、信心、证据状态和验证动作。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 成本发现 | 哪个维护信号对谁发生了什么变化 | 来源与队列 |
+| 信心影响 | 修复或 flaky 如何影响信任 | 证据与限制 |
+| 改进选项 | 重构、隔离、下线或增加观测 | 取舍与负责人 |
+| 验证 | 如何观察成本或信心是否变化 | 窗口与方法 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：解释设计系统迁移后的 UI 修复成本
+
+套件选择器修复翻倍，但失败大多集中在一个共享辅助函数，线上缺陷没有增加。这个 Skill 应把辅助代码可维护性与产品风险证据分开，建议聚焦重构，不要说整个套件无效或团队低效。
+
+分析可以说明已有成本和信心信号，不能在没有受控对比证据前证明根因、未来节省或人员绩效。
+
+## 先补基线输入，再期待更好的结果
+
+提供事件定义、时间窗口、套件和 Owner 队列、修复记录、重跑、隔离、缺陷和风险上下文，以及要支持的决策。缺少成本字段时保持未评估。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 没有修复上下文就把测试改动行数当维护成本。
+2. 把 flaky 重跑直接当成测试人员生产力或质量失败。
+3. 因为高风险测试成本高就下线，却不记录残余风险。
+
+## 相关 Skill
+
+- [测试套件健康度分析](https://inaodeng.com/zh-cn/qaskills/test-suite-health-analysis/)：补充时长、flaky 和重复证据。
+- [测试运行时间优化](https://inaodeng.com/zh-cn/qaskills/test-runtime-optimization/)：处理运行成本和执行基线。
+- [测试代码评审](https://inaodeng.com/zh-cn/qaskills/test-code-review/)：发现代码级可维护性风险。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-maintenance-cost-analysis -g
+~~~
+
+~~~text
+请使用 test-maintenance-cost-analysis Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 能给工程师做维护成本排名吗？
+
+不能。它分析系统和套件信号，不评价个人绩效。
+
+### flaky 测试一定应该删除吗？
+
+不一定。先了解它保护的风险、失败原因、隔离状态以及失去信号的代价。
+
+
+
+## 参考
+
+- [测试维护成本分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-maintenance-cost-analysis/prompts/test-maintenance-cost-analysis.md)
+- [测试维护成本分析 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-maintenance-cost-analysis)
+- [测试维护成本分析 详情页](https://inaodeng.com/zh-cn/qaskills/test-maintenance-cost-analysis/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

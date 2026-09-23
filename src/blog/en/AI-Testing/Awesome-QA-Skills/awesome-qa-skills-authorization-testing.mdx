@@ -1,0 +1,118 @@
+---
+title: "Authorization Testing: Prove the right identity can take the right action on the right resource"
+description: "Authorization Testing field guide: validate roles, resource ownership, tenant boundaries, action scope, denial, and audit evidence."
+date: 2026-10-19T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Authorization Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Authentication tells the system who arrived. Authorization decides whether that person may export this report, edit this record, or delete this tenant’s data.
+
+Authorization Testing evaluates permissions as a combination of identity, resource, action, context, and policy version.
+
+The Authorization Testing Skill is useful when a team needs a structured review of role, object ownership, tenant isolation, action scope, context, denial, and audit. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Authorization Testing.
+
+## Authorization Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A strong authorization pass holds the actor constant while changing the resource, then holds the resource constant while changing the actor. That is how horizontal and vertical gaps stop hiding behind a single happy-path role.
+
+Use it when the team needs a repeatable review of role, object ownership, tenant isolation, action scope, context, denial, and audit—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Authorization Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing/prompts/authorization-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers role, object ownership, tenant isolation, action scope, context, denial, and audit. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Permission matrix | Actors, resources, actions, ownership, and context conditions | List missing combinations |
+| State and policy | Draft, approved, archived, and cross-tenant states | Do not flatten state-dependent permissions |
+| Evidence | Decision log, response, resource state, and audit event | A status code without data evidence is incomplete |
+
+Use a request like this:
+
+```text
+Use the authorization-testing Skill.
+
+Task: check whether a project manager can edit their team’s budget but not another department’s approved forecast
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Access decision | Allow, deny, or unresolved with policy basis | Actor, resource, action |
+| Bypass finding | Horizontal, vertical, tenant, or state boundary failure | Reproducible condition |
+| Audit action | Log, alert, or policy repair needed | Owner and close condition |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong authorization pass holds the actor constant while changing the resource, then holds the resource constant while changing the actor. That is how horizontal and vertical gaps stop hiding behind a single happy-path role.
+
+## Run one focused pass
+
+Start with a bounded pass—check whether a project manager can edit their team’s budget but not another department’s approved forecast. Use the same edit request against an owned draft, a peer’s draft, an approved forecast, and an archived record. Compare the decision, response, state mutation, and audit trail for a project manager and a finance administrator.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because role, object ownership, tenant isolation, action scope, context, denial, and audit must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Testing roles without resource ownership.
+2. Treating UI visibility as authorization proof.
+3. Ignoring state transitions after an allowed write.
+
+## Related Skills
+
+- [Authentication Testing](https://inaodeng.com/en/qaskills/authentication-testing/)：establishes who the actor is。
+- [API Security Testing](https://inaodeng.com/en/qaskills/api-security-testing/)：checks authorization at the API boundary。
+- [Agent Permission Testing](https://inaodeng.com/en/qaskills/agent-permission-testing/)：applies permission checks to agent actions。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing -g
+```
+
+After installation, invoke it with the `authorization-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can authorization tests rely on the frontend?
+
+No. The server or policy decision point must enforce the boundary; the UI is only one consumer.
+
+### What if the matrix has an intentional exception?
+
+Record the exception, owner, expiry or review date, and the evidence that makes it deliberate.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Authorization Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing/prompts/authorization-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing/prompts/authorization-testing.md)
+
+- Awesome QA Skills: Authorization Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Authorization Testing details:[https://inaodeng.com/en/qaskills/authorization-testing/](https://inaodeng.com/en/qaskills/authorization-testing/)

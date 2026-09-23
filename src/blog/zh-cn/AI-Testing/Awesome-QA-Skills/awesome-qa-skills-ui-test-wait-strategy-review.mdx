@@ -1,0 +1,111 @@
+---
+title: "UI Test Wait Strategy Review：用可观察条件替换固定等待"
+description: "UI 测试等待策略评审双语指南，围绕异步状态、轮询条件、超时证据、重试和固定 sleep 复核等待策略。"
+date: 2026-12-23T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "UI 测试等待策略评审"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+固定 sleep 隐藏了 UI 测试真正要回答的问题：哪个可观察状态说明页面已准备好，如果它一直不出现怎么办？
+
+UI Test Wait Strategy Review Skill 根据异步状态、网络和渲染事件、可观察条件、轮询、超时配置、失败 Trace、重试和固定 sleep 复核等待，产出 UWR-## 发现。
+
+本文关注的等待策略应该观察重要的产品状态，而不是单纯消耗时间。
+
+## UI 测试等待策略评审 Skill 用来做什么
+
+当你要识别 UI 自动化中脆弱或误导性的等待时，使用这个 Skill。它不执行测试，也不把等待模式当成覆盖或通过证据。
+
+好的 UWR 发现需要写清异步对象、预期条件、超时、轮询或事件来源、失败行为、来源证据、负责人、关闭条件和验证方式。
+
+当 UI 测试使用固定 sleep、超时经常被修改，或者失败时看不出页面是否真的准备好时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [UI 测试等待策略评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-wait-strategy-review/prompts/ui-test-wait-strategy-review.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-wait-strategy-review) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 异步行为 | 网络、渲染、动画、轮询、WebSocket 或后台任务状态 | 就绪状态未知时保留未评估 |
+| 测试等待代码 | sleep、定位等待、事件、轮询、超时、重试和断言 | 检查完整顺序 |
+| 失败证据 | Trace、截图、网络日志、时间和环境 | 不要只从代码推断运行 |
+| 边界 | 用户可见预期状态、停止条件和负责人 | 人工时间取舍要可见 |
+
+可以这样调用：
+
+~~~text
+请使用 ui-test-wait-strategy-review Skill。\n\n任务：复核一个搜索结果 UI 测试：断言结果列表前固定等待五秒。\n输入材料：[测试代码、网络 Trace、DOM 状态、超时配置、失败截图和浏览器环境]\n范围：[搜索加载、空结果、错误和结果状态]\n限制：[不执行、不修改测试]\n\n输出 UWR-## 发现，包含对象、预期条件、证据、问题、影响、负责人、关闭条件和验证方式。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 等待发现 | 固定 sleep、弱条件、轮询、重试或超时问题 | UWR 编号与来源 |
+| 可观察条件 | 真正证明就绪的状态 | DOM、事件或 API 证据 |
+| 失败边界 | 条件一直不出现时如何处理 | 超时与诊断 |
+| 验证动作 | 最小重放或埋点检查 | 执行前为 NOT_RUN |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：用状态检查替换搜索的五秒等待
+
+测试固定等待五秒，但搜索列表可能是空结果、错误或旧数据。这个 Skill 应要求明确从 loading 到结果或错误的稳定条件，保留超时和诊断要求，不要简单把五秒改成另一个数字。
+
+复核可以识别等待质量候选，不能在没有执行证据前证明时序稳定、没有 flaky 或 UI 覆盖。
+
+## 先补基线输入，再期待更好的结果
+
+提供等待代码、组件状态、网络/渲染事件、超时与重试配置、失败 Trace、浏览器范围和用户可见预期。事件证据缺失时保持 pending。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把一个固定 sleep 换成另一个数字。
+2. 只等待元素存在，却不确认它没有隐藏、过期或仍在加载。
+3. 超时自动重试，却丢掉第一次失败的诊断证据。
+
+## 相关 Skill
+
+- [UI 测试选择器评审](https://inaodeng.com/zh-cn/qaskills/ui-test-selector-review/)：帮助识别稳定元素或状态。
+- [超时测试](https://inaodeng.com/zh-cn/qaskills/timeout-testing/)：检查超时预算和取消。
+- [测试代码评审](https://inaodeng.com/zh-cn/qaskills/test-code-review/)：复核断言与夹具交互。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-wait-strategy-review -g
+~~~
+
+~~~text
+请使用 ui-test-wait-strategy-review Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 显式等待一定比 sleep 好吗？
+
+只有条件有意义且可观察时才是。弱条件和 sleep 一样会误导。
+
+### UI 等待应该自动重试吗？
+
+不要默认重试。先判断是否掩盖产品缺陷、选择器问题或真实瞬态状态。
+
+
+
+## 参考
+
+- [UI 测试等待策略评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-wait-strategy-review/prompts/ui-test-wait-strategy-review.md)
+- [UI 测试等待策略评审 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-wait-strategy-review)
+- [UI 测试等待策略评审 详情页](https://inaodeng.com/zh-cn/qaskills/ui-test-wait-strategy-review/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

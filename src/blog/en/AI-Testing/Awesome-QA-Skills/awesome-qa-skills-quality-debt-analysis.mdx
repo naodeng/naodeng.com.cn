@@ -1,0 +1,118 @@
+---
+title: "Quality Debt Analysis: Prioritize the gaps that make future change more expensive"
+description: "Quality Debt Analysis field guide: identify quality debt, impact, interest, evidence, ownership, and repayment options."
+date: 2026-11-17T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Quality Debt Analysis"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Quality debt is not every imperfection. It is the gap that keeps charging the team—through slower feedback, repeated incidents, risky releases, or expensive diagnosis.
+
+Quality Debt Analysis identifies quality gaps, estimates their ongoing cost and risk, and turns them into owned repayment or containment actions.
+
+The Quality Debt Analysis Skill is useful when a team needs a structured review of gap, interest, impact, evidence, exposure, owner, containment, and repayment. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Quality Debt Analysis.
+
+## Quality Debt Analysis Skill: what it is for
+
+A practical standard for this Skill is simple: A useful debt analysis makes the interest visible. A flaky suite is not urgent because it is annoying; it is urgent when its reruns delay releases and its blind spots correlate with real defects.
+
+Use it when the team needs a repeatable review of gap, interest, impact, evidence, exposure, owner, containment, and repayment—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Quality Debt Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis) contains the entry point and supporting assets where they exist.
+
+The entry point centers gap, interest, impact, evidence, exposure, owner, containment, and repayment. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Debt signal | Repeated failure, delay, incident, manual workaround, or missing coverage | Use a time window |
+| Interest | Frequency, cost, user risk, diagnostic effort, and compounding effect | Separate impact from annoyance |
+| Action context | Owner, capacity, dependency, containment, and deadline | Do not create an ownerless backlog |
+
+Use a request like this:
+
+```text
+Use the quality-debt-analysis Skill.
+
+Task: analyze a flaky checkout suite that delays every release and still misses a recurring payment-state defect
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Debt record | Gap, evidence, impact, and ongoing cost | Confidence and age |
+| Priority | Repay, contain, monitor, accept, or retire | Decision basis |
+| Plan | Smallest action, owner, date, and closure evidence | Review trigger |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful debt analysis makes the interest visible. A flaky suite is not urgent because it is annoying; it is urgent when its reruns delay releases and its blind spots correlate with real defects.
+
+## Run one focused pass
+
+Start with a bounded pass—analyze a flaky checkout suite that delays every release and still misses a recurring payment-state defect. Compare four weeks of reruns, release delay, failure clusters, and escaped payment defects. A sensible plan may quarantine one test temporarily, add state evidence, and repay the root fixture problem before expanding coverage.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because gap, interest, impact, evidence, exposure, owner, containment, and repayment must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Calling every old test a debt item.
+2. Prioritizing by age alone.
+3. Removing a failing check without recording the risk it contained.
+
+## Related Skills
+
+- [Test Maintenance Cost Analysis](https://inaodeng.com/en/qaskills/test-maintenance-cost-analysis/)：measures recurring test cost。
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：checks suite reliability and value。
+- [Quality Risk Analysis](https://inaodeng.com/en/qaskills/quality-risk-analysis/)：prioritizes debt by product risk。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis -g
+```
+
+After installation, invoke it with the `quality-debt-analysis` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can debt be accepted?
+
+Yes, when the owner, impact, monitoring, expiry or review date, and residual risk are explicit.
+
+### How do I prove debt was repaid?
+
+Use the original evidence measure and show the behavior, cost, or risk changed.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Quality Debt Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md)
+
+- Awesome QA Skills: Quality Debt Analysis source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Quality Debt Analysis details:[https://inaodeng.com/en/qaskills/quality-debt-analysis/](https://inaodeng.com/en/qaskills/quality-debt-analysis/)

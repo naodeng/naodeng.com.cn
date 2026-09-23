@@ -1,0 +1,111 @@
+---
+title: "Test Maintenance Cost Analysis: Make Repair Effort and Flaky Cost Visible"
+description: "A bilingual guide to analyzing test change frequency, repair effort, flaky cost, ownership, maintainability, and confidence with evidence boundaries."
+date: 2026-12-14T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Test Maintenance Cost Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A test suite can be cheap to run and expensive to keep trustworthy. Repair minutes, flaky reruns, unclear ownership, and repeated setup work are maintenance costs that a pass rate hides.
+
+The Test Maintenance Cost Analysis Skill examines change frequency, repair effort, flaky cost, ownership, maintainability, and confidence using supplied evidence. It turns cost signals into improvement options without inventing causal metrics.
+
+The goal is to expose the cost of trust, not to punish a test owner.
+
+## Test Maintenance Cost Analysis Skill: what it is for
+
+Use this Skill to review a suite, test area, or automation investment when maintenance burden is affecting feedback or trust. It does not decide staffing, release risk, or individual performance.
+
+A good analysis names the cost signal, source, cohort, time window, confidence limit, priority, owner, close condition, and validation method.
+
+Use it when flaky repair work is growing, tests break after UI or API changes, or no one can explain the cost of keeping a suite healthy.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Test Maintenance Cost Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-maintenance-cost-analysis/prompts/test-maintenance-cost-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-maintenance-cost-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Cost signals | Change frequency, repair effort, reruns, quarantine, ownership, and helper churn | Define event and window |
+| Quality context | Risk protected, defect evidence, duration, and confidence impact | Do not optimize cost alone |
+| Cohort | Suite, component, team, platform, and comparison period | Avoid moving cohorts |
+| Decision boundary | Refactor, retire, isolate, or fund work | Human chooses the trade-off |
+
+Use a request like this:
+
+~~~text
+Use the test-maintenance-cost-analysis Skill.\n\nTask: Analyze maintenance burden in the checkout UI suite after a design-system migration.\nInputs: [change history, repair tickets, reruns, quarantine list, ownership, runtime data, escaped defects]\nScope: [checkout UI tests for the last three releases]\nConstraints: [do not infer team performance or release approval]\n\nCover change frequency, repair effort, flaky cost, ownership, maintainability, confidence, evidence state, and validation actions.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Cost finding | What maintenance signal moved and for whom | Source and cohort |
+| Confidence impact | How repair or flakiness affects trust | Evidence and limit |
+| Improvement option | Refactor, isolate, retire, or instrument | Trade-off and owner |
+| Validation | How to see whether cost or confidence changed | Window and method |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Explain UI repair cost after a design-system migration
+
+The suite's selector repairs doubled, but most failures are in one shared helper and escaped defects did not increase. The Skill should separate helper maintainability from product-risk evidence, propose a focused helper refactor, and avoid saying the whole suite is ineffective or the team is unproductive.
+
+The analysis describes supplied cost and confidence signals. It cannot prove a root cause, future savings, or staff performance without controlled comparison evidence.
+
+## Improve the first result with better baseline input
+
+Provide event definitions, time window, suite and ownership cohort, repair records, reruns, quarantine, defect and risk context, and the decision to support. Keep missing cost fields unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Counting changed test lines as maintenance cost without repair context.
+2. Treating flaky reruns as tester productivity or quality failure.
+3. Retiring high-risk tests because they are expensive without recording residual risk.
+
+## Related Skills
+
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：adds broader duration, flakiness, and duplication evidence。
+- [Test Runtime Optimization](https://inaodeng.com/en/qaskills/test-runtime-optimization/)：handles runtime cost and execution baselines。
+- [Test Code Review](https://inaodeng.com/en/qaskills/test-code-review/)：finds code-level maintainability risks。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-maintenance-cost-analysis -g
+~~~
+
+~~~text
+Use the test-maintenance-cost-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can this Skill rank engineers by maintenance cost?
+
+No. It analyzes system and suite signals, not individual performance.
+
+### Is a flaky test always a candidate for deletion?
+
+No. First understand protected risk, failure cause, isolation, and the cost of losing its signal.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Test Maintenance Cost Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-maintenance-cost-analysis/prompts/test-maintenance-cost-analysis.md)
+- [Test Maintenance Cost Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-maintenance-cost-analysis)
+- [Test Maintenance Cost Analysis details](https://inaodeng.com/en/qaskills/test-maintenance-cost-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

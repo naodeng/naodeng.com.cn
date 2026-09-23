@@ -1,0 +1,128 @@
+---
+title: "AI-Generated Test Review: Separate plausible test cases from traceable coverage"
+description: "AI-Generated Test Review field guide: inspect requirement traceability, invented behavior, oracle quality, gaps, and maintenance risk."
+date: 2026-10-07T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","AI-Generated Test Review"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An AI-generated test suite can contain fifty polished cases and still miss the one rule that refunds an expired coupon. Volume is a poor substitute for a source.
+
+AI-Generated Test Review checks whether generated tests are grounded in requirements, identify real risks, use valid oracles, and remain maintainable when the product changes.
+
+The AI-Generated Test Review Skill is useful when a team needs a structured review of source traceability, invented behavior, boundary coverage, oracle quality, and maintenance cost. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with AI-Generated Test Review.
+
+## AI-Generated Test Review Skill: what it is for
+
+
+Use it when the team needs a repeatable review of source traceability, invented behavior, boundary coverage, oracle quality, and maintenance cost—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps source traceability, invented behavior, boundary coverage, oracle quality, and maintenance cost connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [AI-Generated Test Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-generated-test-review/prompts/review-test.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-generated-test-review) also contains the entry point and supporting assets where they exist.
+
+The entry point centers source traceability, invented behavior, boundary coverage, oracle quality, and maintenance cost. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Source rules | Promotion requirements, examples, exclusions, and version | Reject tests that have no supporting rule |
+| Generated suite | Cases, data, expected results, setup, and cleanup | Mark invented fields and endpoints |
+| Review context | Known defects, risk priorities, test framework, and maintenance owner | Do not optimize for case count alone |
+
+Use a request like this:
+
+```text
+
+Use the ai-generated-test-review Skill.
+
+Task: review AI-generated tests for a promotion engine that combines customer tier, coupon expiry, and cart thresholds
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Traceability map | Case to rule, risk, and decision oracle | Covered, weak, or unsupported |
+| Finding | Missing boundary, hallucinated behavior, duplicate case, or brittle setup | Priority and basis |
+| Repair action | Keep, rewrite, remove, or request source clarification | Owner and next check |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful review asks what would make a generated case fail for the right reason. If the expected result is only “returns success,” the case probably needs a business state, invariant, or source-backed comparison.
+
+## Run one focused pass
+
+Start with a bounded pass—review AI-generated tests for a promotion engine that combines customer tier, coupon expiry, and cart thresholds. For an expired coupon, trace each generated case back to the expiry rule and check whether it asserts both the rejected discount and the unchanged cart total. Delete a case that invents a “coupon grace period” unless the requirements actually define one.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Treating natural language quality as requirement coverage.
+2. Accepting an expected result that cannot distinguish correct and incorrect behavior.
+3. Keeping duplicate cases because they use different wording.
+
+## Related Skills
+
+- [Test Case Reviewer](https://inaodeng.com/en/qaskills/test-case-reviewer/)：provides general case quality review。
+- [Requirement Traceability Analysis](https://inaodeng.com/en/qaskills/requirement-traceability-analysis/)：connects cases back to source requirements。
+- [AI Feature Testing](https://inaodeng.com/en/qaskills/ai-feature-testing/)：covers the product behavior of AI features。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-generated-test-review -g
+
+```
+
+After installation, invoke it with the `ai-generated-test-review` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can the reviewer use only the generated suite?
+
+No. The source requirement is the authority; the suite is the object under review.
+
+
+
+### Should every generated case be repaired?
+
+No. Remove unsupported cases when repair would require inventing product behavior.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- AI-Generated Test Review:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-generated-test-review/prompts/review-test.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-generated-test-review/prompts/review-test.md)
+
+- Awesome QA Skills: AI-Generated Test Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-generated-test-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-generated-test-review)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- AI-Generated Test Review details:[https://inaodeng.com/en/qaskills/ai-generated-test-review/](https://inaodeng.com/en/qaskills/ai-generated-test-review/)

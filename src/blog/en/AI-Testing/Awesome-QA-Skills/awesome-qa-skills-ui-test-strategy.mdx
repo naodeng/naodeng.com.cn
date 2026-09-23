@@ -1,0 +1,111 @@
+---
+title: "UI Test Strategy: Map Journeys, States, Platforms, and Risk Before Automation"
+description: "A bilingual guide to forming evidence-bounded UI test strategy candidates from journeys, interface states, platform differences, accessibility, and defect evidence."
+date: 2026-12-22T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "UI Test Strategy"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+UI automation becomes expensive when it starts from pages instead of user risk. A useful strategy connects journeys, states, platforms, roles, accessibility, and known failures before choosing a browser test.
+
+The UI Test Strategy Skill forms UTS-## candidates from user journeys, page and component inventories, state flows, designs, platform matrices, accessibility requirements, and defect evidence. It does not execute tests or claim coverage.
+
+The strategy starts from user outcomes and risk, then chooses the smallest defensible UI evidence.
+
+## UI Test Strategy Skill: what it is for
+
+Use this Skill to define traceable UI quality candidates and boundaries for a journey or release. It makes platform and state trade-offs explicit without becoming a complete test strategy or executable set.
+
+A good UTS finding names the journey or state, preconditions, risk, source evidence, platform applicability, priority, owner, close condition, and validation action.
+
+Use it when a team needs to decide which UI journeys, states, devices, browsers, locales, or accessibility paths deserve attention first.
+
+## Start with the source Skill
+
+The complete execution contract lives in [UI Test Strategy prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-strategy/prompts/ui-test-strategy.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-strategy) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Journeys and states | Core flows, empty/loading/error/success states, roles, and transitions | Keep missing states visible |
+| Platform matrix | Browsers, devices, viewport, locale, input mode, and accessibility needs | Do not assume one browser represents all |
+| Risk evidence | Defects, analytics, business criticality, and change surface | Separate facts and inference |
+| Existing assets | Designs, components, tests, fixtures, and environment | Do not treat presence as execution |
+
+Use a request like this:
+
+~~~text
+Use the ui-test-strategy Skill.\n\nTask: Define UI test strategy candidates for a travel-booking checkout across desktop, mobile web, keyboard navigation, and payment-error states.\nInputs: [journeys, state map, platform matrix, accessibility requirements, design, defect history]\nScope: [search, passenger details, payment, confirmation]\nConstraints: [one staging environment and limited device capacity]\n\nProduce UTS-## findings with subject, preconditions, concern, source, platform applicability, evidence state, owner, close condition, and validation.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Journey candidate | User outcome, state, and risk | UTS ID and source |
+| Platform boundary | Browser, device, locale, input, and accessibility scope | Applicability |
+| Priority rationale | Why this path deserves depth or sampling | Evidence and uncertainty |
+| Validation action | Smallest UI check before expanding | Owner and NOT_RUN state |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Cover payment errors across keyboard and mobile states
+
+The happy path exists on desktop, but defect history shows payment errors trap keyboard users and mobile users lose entered passenger details. The Skill should elevate error-state and recovery candidates, connect them to platform evidence, and leave unexecuted work NOT_RUN.
+
+The output is a strategy-candidate inventory. It cannot prove UI behavior, accessibility compliance, coverage, or release readiness.
+
+## Improve the first result with better baseline input
+
+Provide journeys, state transitions, platform and locale matrix, accessibility expectations, change and defect evidence, design, existing tests, data, and environment capacity. Unknown platform behavior stays unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Starting from page count instead of user journey and risk.
+2. Testing only the happy path on one desktop browser.
+3. Calling a list of candidate tests a complete strategy or executed coverage.
+
+## Related Skills
+
+- [UI Test Selector Review](https://inaodeng.com/en/qaskills/ui-test-selector-review/)：makes locators stable after scope is defined。
+- [UI Test Wait Strategy Review](https://inaodeng.com/en/qaskills/ui-test-wait-strategy-review/)：handles asynchronous UI states。
+- [Visual Regression Testing](https://inaodeng.com/en/qaskills/visual-regression-testing/)：adds baseline and visual-change boundaries。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-strategy -g
+~~~
+
+~~~text
+Use the ui-test-strategy Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Does this Skill choose a full browser matrix?
+
+It proposes evidence-backed candidates and trade-offs; platform coverage still depends on risk, capacity, and Human decisions.
+
+### Can a page inventory prove UI coverage?
+
+No. It is input material. Coverage requires traceable intent and execution evidence.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [UI Test Strategy prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-strategy/prompts/ui-test-strategy.md)
+- [UI Test Strategy Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-strategy)
+- [UI Test Strategy details](https://inaodeng.com/en/qaskills/ui-test-strategy/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

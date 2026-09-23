@@ -1,0 +1,118 @@
+---
+title: "Pairwise Testing: Cover the interactions most likely to expose a defect"
+description: "Pairwise Testing field guide: select factor values, constraints, pair coverage, risk weighting, and uncovered interactions."
+date: 2026-11-14T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Pairwise Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Two settings often interact in ways that neither setting reveals alone. Pairwise testing makes those interactions visible without asking the team to execute every full combination.
+
+Pairwise Testing selects cases that cover pairs of factor values while honoring constraints and preserving high-risk combinations.
+
+The Pairwise Testing Skill is useful when a team needs a structured review of factor pairs, value selection, constraints, risk weighting, coverage, and reproducibility. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Pairwise Testing.
+
+## Pairwise Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A useful pairwise design is not a magic generator output. It explains constraints, keeps rare high-risk pairs, and names what pair coverage cannot prove about three-way or stateful interactions.
+
+Use it when the team needs a repeatable review of factor pairs, value selection, constraints, risk weighting, coverage, and reproducibility—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Pairwise Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pairwise-testing/prompts/pairwise-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pairwise-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers factor pairs, value selection, constraints, risk weighting, coverage, and reproducibility. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Factor list | Factors, values, pair target, and risk | Collapse equivalent values first |
+| Constraints | Unsupported or mutually exclusive pairs | Record excluded pairs |
+| Execution context | Data, platform, environment, and evidence collection | Keep generated cases reproducible |
+
+Use a request like this:
+
+```text
+Use the pairwise-testing Skill.
+
+Task: cover account-settings interactions across notification channel, locale, device type, and privacy mode
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Pair set | Selected cases and factor values | Constraint-aware |
+| Coverage report | Covered, excluded, and uncovered pairs | Reason |
+| Risk review | High-impact pair needing an explicit case | Owner and next action |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful pairwise design is not a magic generator output. It explains constraints, keeps rare high-risk pairs, and names what pair coverage cannot prove about three-way or stateful interactions.
+
+## Run one focused pass
+
+Start with a bounded pass—cover account-settings interactions across notification channel, locale, device type, and privacy mode. Cover email, push, and SMS channels across two locales, mobile and desktop, and strict or relaxed privacy mode. Exclude SMS where the account has no verified phone, then inspect the remaining uncovered privacy pairs manually.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because factor pairs, value selection, constraints, risk weighting, coverage, and reproducibility must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Using pair coverage as full interaction coverage.
+2. Forgetting data or permission constraints.
+3. Failing to preserve the generated seed or case order.
+
+## Related Skills
+
+- [Combinatorial Testing](https://inaodeng.com/en/qaskills/combinatorial-testing/)：extends pairwise coverage to t-way design。
+- [Equivalence Partitioning](https://inaodeng.com/en/qaskills/equivalence-partitioning/)：reduces factor values first。
+- [Boundary Value Testing](https://inaodeng.com/en/qaskills/boundary-value-testing/)：protects values at rule edges。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pairwise-testing -g
+```
+
+After installation, invoke it with the `pairwise-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### When should I use t-way instead?
+
+Use a higher interaction strength when domain failures depend on more than two factors.
+
+### Can pairwise testing select values automatically?
+
+It can reduce selection work, but risk and constraints still require human review.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Pairwise Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pairwise-testing/prompts/pairwise-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pairwise-testing/prompts/pairwise-testing.md)
+
+- Awesome QA Skills: Pairwise Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pairwise-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pairwise-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Pairwise Testing details:[https://inaodeng.com/en/qaskills/pairwise-testing/](https://inaodeng.com/en/qaskills/pairwise-testing/)

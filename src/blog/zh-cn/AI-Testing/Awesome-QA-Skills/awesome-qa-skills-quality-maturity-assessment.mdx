@@ -1,0 +1,117 @@
+---
+title: "Quality Maturity Assessment：用 QA 实践证据形成改进路线图"
+description: "质量成熟度评估双语指南，围绕成熟度维度、评分锚点、证据状态、改进缺口和人工决策边界展开。"
+date: 2026-11-19T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "质量成熟度评估"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+成熟度标签很容易写，真正难的是证明。“高级 QA”如果没有证据、评分锚点和下一步缺口，几乎没有可执行价值。
+
+Quality Maturity Assessment Skill 把计划、测试报告、交付信号和线上反馈整理成有证据边界的质量实践视图，让团队得到可信基线，而不是把静态文档当成运行能力证明。
+
+本文关注的不是成熟度徽章，而是一条团队可以验证并关闭的可追溯缺口。
+
+## 质量成熟度评估 Skill 用来做什么
+
+当你要复核需求质量、测试设计、自动化、交付反馈和运营学习等成熟度维度时，使用这个 Skill。它分开事实、证据支持的推断、候选改进和人工决策，不把它们压成一个没有依据的分数。
+
+好的评估要写清维度、评分锚点、来源、证据状态、缺口、优先级、负责人、关闭条件和最小验证方式。
+
+当产品团队要比较质量实践、准备改进计划，或者要复核成熟度提升是否有证据支持时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [质量成熟度评估 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+在请求判断前先列出已有材料。缺口可以保留，但状态必须可见。
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 目标与范围 | 比较两个发布和四个成熟度维度的结账质量实践 | 明确排除的维度 |
+| 版本与时间窗口 | 发布标识、环境、复核周期和评分规则版本 | 比较窗口不完整时标记边界或过期 |
+| 证据 | 需求复核、CI 结果、逃逸缺陷、runbook 和线上反馈 | 把事实与假设分开 |
+| 决策边界 | 改进负责人、风险接受人和本次不能替代的决定 | 发布批准留给人工负责人 |
+
+可以这样调用：
+
+~~~text
+请使用 quality-maturity-assessment Skill。\n\n任务：比较结账团队在 R24.8 和 R24.9 中的需求复核、测试设计、CI 反馈和线上学习实践。\n输入材料：[评分规则、来源链接、CI 报告、缺陷记录和 runbook 路径]\n范围：[团队、发布和维度]\n限制：[时间窗口、缺失数据、隐私要求]\n\n保留来源、证据状态、评分锚点、优先级、负责人、关闭条件和验证方式。不要输出发布批准或无依据的成熟度分数。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 维度发现 | 证据支持的某项实践结论 | 已评估 / 未评估 / Pending |
+| 证据地图 | 结论来源和新鲜度 | 来源、版本、日期或缺失 |
+| 改进缺口 | 推动实践前进的最小变化 | 负责人、优先级和关闭条件 |
+| 决策边界 | 仍需人工确认的事项 | 明确不打分 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：比较两个发布，不要夸大成熟度
+
+结账团队新增了契约测试，并报告 R24.9 的线上逃逸缺陷减少。这个 Skill 可以说明指定 API 范围的覆盖已有证据，但如果事故复盘窗口缺失，线上学习仍应标为未评估。下一步可以补一份发布复核及学习记录，在证据出现前保持 pending。
+
+评估可以证明给定证据和缺口分析的质量，不能证明所有团队持续执行该实践、下一次发布安全，或成熟度标签就是业务决定。
+
+## 先补基线输入，再期待更好的结果
+
+提供评分规则、固定时间窗口、发布或团队标识、证据清单和结果用途。规则缺失时先请求规则，不要自创等级。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把工具或仪表盘存在当成实践持续执行的证明。
+2. 没有可比时间窗口，就把一个指标改善写成成熟度因果结论。
+3. 所有缺口都标成紧急，却没有负责人、关闭条件和验证方式。
+
+## 相关 Skill
+
+- [质量指标设计](https://inaodeng.com/zh-cn/qaskills/quality-metrics-design/)：定义可支撑成熟度维度的指标契约。
+- [质量门禁设计](https://inaodeng.com/zh-cn/qaskills/quality-gate-design/)：把高风险缺口转成明确的交付门禁。
+- [质量债务分析](https://inaodeng.com/zh-cn/qaskills/quality-debt-analysis/)：帮助排序未解决的质量实践债务。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment -g
+~~~
+
+安装后使用下面的调用方式，并附上项目材料：
+
+~~~text
+请使用 quality-maturity-assessment Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 证据不完整也能评估吗？
+
+可以。返回受限初稿，标记缺失或过期证据，并给出最小补证动作，不要用惯例成熟度等级填空。
+
+### 这个 Skill 会替团队决定改进优先级吗？
+
+不会。它按证据和影响排序，风险接受、投入和发布影响由对应人工负责人决定。
+
+
+
+## 参考
+
+- [质量成熟度评估 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md)
+- [质量成熟度评估 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment)
+- [质量成熟度评估 详情页](https://inaodeng.com/zh-cn/qaskills/quality-maturity-assessment/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

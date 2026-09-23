@@ -1,0 +1,125 @@
+---
+title: "Agent 故障恢复测试：从一次失败调用追踪重试、回退与人工接管"
+description: "Agent 故障恢复测试实战指南：把重试、回退、状态一致性、用户通知和恢复证据放到同一条检查链上。"
+date: 2026-10-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","Agent 故障恢复测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+Agent 在支付授权时超时，不只是页面上多转了一圈。它可能已经扣款、没有更新订单，或者在第一次请求仍未结束时就让用户再次提交。
+
+Agent 故障恢复测试用于拆解故障类型、Agent 的后续动作，以及用户和系统是否进入安全状态。它把重试、回退、升级、状态一致性和用户通知放在一起检查，不把恢复路径留到报告最后才补。
+
+当团队需要围绕“故障分类、重试或回退决策、状态一致性、用户通知和恢复证据”工作时，使用 Agent 故障恢复测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 Agent 故障恢复测试。
+
+## Agent 故障恢复测试 Skill 用来做什么
+
+
+它适合这些场景：团队需要重复检查故障分类、重试或回退决策、状态一致性、用户通知和恢复证据；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+好的结果会把故障分类、重试或回退决策、状态一致性、用户通知和恢复证据接回来源和验证动作。设计清单不能直接写成通过结论。
+
+## 先回到源 Skill
+
+完整执行契约位于 [Agent 故障恢复测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing) 中还包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束故障分类、重试或回退决策、状态一致性、用户通知和恢复证据。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 流程与边界 | 创建订单、支付授权、订单确认和超时恢复 | 本轮不含清算对账时要明确排除 |
+| 状态与时间 | 订单状态、支付状态、请求 ID、超时窗口和重试策略 | 时间不明确时保留为待确认项 |
+| 证据与负责人 | 网关响应、幂等记录、审计日志、用户通知和恢复负责人 | 缺少写入记录时只做分析 |
+
+可以这样调用：
+
+```text
+
+请使用 agent-failure-recovery-testing Skill。
+
+任务：订单 Agent 在支付授权时超时，系统必须避免重复扣款，同时告诉用户实际发生了什么
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+
+```
+
+## Agent 故障恢复测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 故障分类 | 超时、重复副作用、状态过期或依赖不可用 | 标记 confirmed、assumption 或 open |
+| 恢复决策 | 重试、轮询、补偿、升级或停止 | 保留依据和负责人 |
+| 证据索引 | 请求 ID、状态变化、日志和用户可见通知 | 记录产物位置与验证动作 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的初版会把 Agent 知道的内容和网关真正证明的内容分开。它会给下一位同事一个安全的验证动作，通常是用原始请求 ID 查询支付状态，然后才决定是否允许再次写入。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：订单 Agent 在支付授权时超时，系统必须避免重复扣款，同时告诉用户实际发生了什么。重试前先用原始支付请求 ID 查询网关。如果网关显示已授权而订单仍是 pending，恢复结果应建议对账或确认，而不是再次扣款。如果网关没有记录，只有在继续使用原幂等键并留下证据链时，才可以继续重试。
+
+交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从“看起来完整的清单”推进到可用评审。
+
+
+## 容易踩的坑
+
+1. 把超时直接当成没有写入的证明。
+2. 只测试重试，不检查第一次请求留下的副作用。
+3. 提出恢复建议，却没有指定谁可以批准补偿动作。
+
+## 相关 Skill
+
+- [AI Agent 测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：检查更大的 Agent 规划、记忆和目标行为。
+- [重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)：检查重试边界与重复执行。
+- [生产验证](https://inaodeng.com/zh-cn/qaskills/production-verification/)：把恢复判断接回线上信号。
+
+
+
+## 安装与调用
+
+全局安装这个 Skill：
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing -g
+
+```
+
+安装后使用 `agent-failure-recovery-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 没有网关日志还能开始吗？
+
+可以，但只能先做受限状态模型，并列出区分未知与失败所需的证据。
+
+
+
+### 什么时候重试不安全？
+
+当第一次写入状态未知，且操作可能产生资金、库存、通知或权限副作用时。
+
+
+
+## 参考
+
+- [Agent 故障恢复测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md)
+
+- [Awesome QA Skills：Agent 故障恢复测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [Agent 故障恢复测试 详情页](https://inaodeng.com/zh-cn/qaskills/agent-failure-recovery-testing/)

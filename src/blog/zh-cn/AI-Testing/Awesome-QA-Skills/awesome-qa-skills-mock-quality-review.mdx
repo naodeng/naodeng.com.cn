@@ -1,0 +1,116 @@
+---
+title: "Mock 质量评审：让测试替身有用，但不要把系统伪装得过于健康"
+description: "Mock 质量评审实战指南：检查契约一致性、真实性、失败模式、漂移、状态和测试替身负责人。"
+date: 2026-11-08T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","Mock 质量评审"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+一个总是返回 200 的 Mock 可以让测试变快，也可以让支付故障看起来像一个表现良好的功能。
+
+Mock 质量评审用于检查测试替身是否代表了测试真正关心的契约、时序、状态、失败和数据条件。
+
+当团队需要围绕“契约一致性、状态、延迟、失败模式、数据真实性、漂移和负责人”工作时，使用 Mock 质量评审 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 Mock 质量评审。
+
+## Mock 质量评审 Skill 用来做什么
+
+好的 Mock 评审会追问：如果真实提供商违反当前讨论的规则，这条测试会失败吗？如果不会，测试可能只是在测试自己的脚本。
+
+它适合这些场景：团队需要重复检查契约一致性、状态、延迟、失败模式、数据真实性、漂移和负责人；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [Mock 质量评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/mock-quality-review/prompts/mock-quality-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/mock-quality-review) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束契约一致性、状态、延迟、失败模式、数据真实性、漂移和负责人。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 真实契约 | 提供商 Schema、状态、错误、时序和副作用 | 使用当前版本 |
+| Mock 行为 | 成功、失败、延迟、状态和数据 fixture | 列出 Mock 无法表示的行为 |
+| 测试目的 | 契约、UI、重试、恢复或业务不变量 | 替身质量要结合使用目的判断 |
+
+可以这样调用：
+
+```text
+请使用 mock-quality-review Skill。
+
+任务：在支付提供商迁移前评审结算测试使用的支付 Mock
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## Mock 质量评审 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| Mock 发现 | 一致性、失败缺失、Schema 过期或数据不真实 | 对测试的影响 |
+| 覆盖边界 | Mock 能证明什么、不能证明什么 | 证据状态 |
+| 维护动作 | 契约检查、fixture 改动或负责人指定 | 下一次验证 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的 Mock 评审会追问：如果真实提供商违反当前讨论的规则，这条测试会失败吗？如果不会，测试可能只是在测试自己的脚本。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：在支付提供商迁移前评审结算测试使用的支付 Mock。在 Mock 中增加授权后超时、已经结算的响应和错误字段变化，并用记录的提供商 Schema 做契约检查，避免 fixture 静默漂移。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为契约一致性、状态、延迟、失败模式、数据真实性、漂移和负责人必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 让 Mock 比真实契约更简单。
+2. 所有状态都使用同一个 fixture。
+3. 把 Mock 覆盖当成提供商行为证据。
+
+## 相关 Skill
+
+- [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/)：检查真实接口边界。
+- [依赖故障测试](https://inaodeng.com/zh-cn/qaskills/dependency-failure-testing/)：定义有用的依赖失败。
+- [测试代码评审](https://inaodeng.com/zh-cn/qaskills/test-code-review/)：评审 Mock 周围的测试代码。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/mock-quality-review -g
+```
+
+安装后使用 `mock-quality-review` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### Mock 需要匹配提供商所有细节吗？
+
+匹配会影响测试决策的细节，其余边界要记录并在其他地方覆盖。
+
+### 如何发现 Mock 漂移？
+
+使用契约检查、版本化 fixture，并在提供商变化时指定复核负责人。
+
+## 参考
+
+- [Mock 质量评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/mock-quality-review/prompts/mock-quality-review.md)
+
+- [Awesome QA Skills：Mock 质量评审 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/mock-quality-review)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [Mock 质量评审 详情页](https://inaodeng.com/zh-cn/qaskills/mock-quality-review/)

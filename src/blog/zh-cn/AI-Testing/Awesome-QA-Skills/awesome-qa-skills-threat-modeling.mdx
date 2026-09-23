@@ -1,0 +1,111 @@
+---
+title: "Threat Modeling：把资产和信任边界变成可复核场景"
+description: "威胁建模双语指南，围绕资产、信任边界、攻击面、威胁场景、缓解措施、假设和安全验证展开。"
+date: 2026-12-19T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "威胁建模"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+威胁建模最有价值的时机是攻击发生前，但前提是模型写清什么重要、信任在哪里变化。没有资产和边界的攻击名称清单只是安全表演。
+
+Threat Modeling Skill 用有证据边界的方式整理资产、信任边界、攻击面、威胁场景、缓解措施和假设，准备安全验证，不登录、不调用真实 API，也不声称安全通过。
+
+本文关注的模型应说明攻击者可能在哪里跨越边界，以及什么证据会改变风险判断。
+
+## 威胁建模 Skill 用来做什么
+
+当新服务、数据流、集成或高影响变更需要让安全假设和缓解措施可复核时，使用这个 Skill。
+
+好的发现要写清资产、边界、角色、威胁场景、已有缓解、证据状态、影响、负责人、关闭条件和隔离验证方式。
+
+当系统跨越租户、网络、身份或数据边界，或者设计阶段需要先准备安全场景时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [威胁建模 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 系统范围 | 组件、数据流、角色、集成和环境 | 未提供路径保持开放 |
+| 资产 | 客户数据、凭证、资金、可用性和审计记录 | 不要自推价值 |
+| 信任边界 | 租户、网络、服务、权限、存储和第三方边界 | 边界证据要标出 |
+| 缓解与假设 | 控制、依赖、负责人和安全验证 | 设计与执行分开 |
+
+可以这样调用：
+
+~~~text
+请使用 threat-modeling Skill。\n\n任务：为多租户发票导出服务建模威胁，服务会把文件发送到对象存储并由客户门户下载。\n输入材料：[数据流图、角色、存储策略、API 契约、租户规则和审计设计]\n范围：[创建导出、存储、下载和删除]\n限制：[数据脱敏、不使用真实凭证或 API 调用]\n\n覆盖资产、信任边界、攻击面、威胁场景、缓解措施、假设、证据状态、负责人、关闭条件和安全验证。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 资产与边界 | 保护什么、信任在哪里变化 | 来源与适用性 |
+| 威胁场景 | 角色、路径、前置、影响和缓解 | 证据状态 |
+| 假设缺口 | 模型依赖但没有证明的内容 | 负责人问题 |
+| 验证动作 | 高风险场景的安全检查 | 隔离与停止条件 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：建模发票下载中的跨租户访问
+
+门户从浏览器接收 export ID，但设计没有说明 API 是否把导出所属租户与会话租户对比。这个 Skill 应建模跨租户访问场景，把它连接到授权控制和审计证据，并建议合成租户验证；不应对生产发起访问尝试。
+
+模型可以整理安全上下文和假设，不能证明漏洞、利用成功、缓解有效或发布安全。
+
+## 先补基线输入，再期待更好的结果
+
+提供最新数据流图、资产、角色矩阵、信任边界、版本、集成、缓解措施、负责人和安全验证环境。密钥和个人数据要脱敏。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 列出类似 STRIDE 的威胁，却不关联资产、边界和证据。
+2. 设计中出现控制名称，就假设控制已经存在。
+3. 为了让模型完整而读取凭证或探测生产。
+
+## 相关 Skill
+
+- [安全需求复核](https://inaodeng.com/zh-cn/qaskills/security-requirement-review/)：把保护目标变成可测试条件。
+- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)：在批准环境验证访问决定。
+- [敏感信息暴露审查](https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/)：检查凭证和日志暴露。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling -g
+~~~
+
+~~~text
+请使用 threat-modeling Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 威胁模型能直接发现漏洞吗？
+
+它识别场景和证据缺口，漏洞验证是另外需要授权的活动。
+
+### 数据流图不完整怎么办？
+
+先输出受限模型，标记未知边界，并请求最小缺失数据流或负责人决定。
+
+
+
+## 参考
+
+- [威胁建模 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)
+- [威胁建模 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling)
+- [威胁建模 详情页](https://inaodeng.com/zh-cn/qaskills/threat-modeling/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

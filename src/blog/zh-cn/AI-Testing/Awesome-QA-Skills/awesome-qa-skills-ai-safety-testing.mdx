@@ -1,0 +1,125 @@
+---
+title: "AI 安全测试：把有害输出风险变成有边界的检查与升级路径"
+description: "AI 安全测试实战指南：检查有害输出、拒答、隐私、滥用、升级和证据边界。"
+date: 2026-10-08T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","AI 安全测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+一个看起来安全的答案仍然可能造成伤害——它可能省略不确定性、泄露私人上下文，或者给用户绕过控制的捷径。
+
+AI 安全测试围绕有害内容、隐私、滥用、拒答质量、升级机制和发布判断所需证据组织安全风险。
+
+当团队需要围绕“伤害类别、拒答行为、隐私边界、滥用途径、升级机制和监控”工作时，使用 AI 安全测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 AI 安全测试。
+
+## AI 安全测试 Skill 用来做什么
+
+
+它适合这些场景：团队需要重复检查伤害类别、拒答行为、隐私边界、滥用途径、升级机制和监控；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+好的结果会把伤害类别、拒答行为、隐私边界、滥用途径、升级机制和监控接回来源和验证动作。设计清单不能直接写成通过结论。
+
+## 先回到源 Skill
+
+完整执行契约位于 [AI 安全测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing/prompts/ai-safety-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing) 中还包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束伤害类别、拒答行为、隐私边界、滥用途径、升级机制和监控。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 安全策略 | 禁止建议、脆弱用户规则、隐私要求和升级负责人 | 不要用模型常识补齐策略缺口 |
+| Prompt 集合 | 直接、间接、对抗和模糊请求 | 包含不应被重复的上下文 |
+| 证据 | 模型版本、策略版本、响应、分类器结果和评审决定 | 没有版本的响应样例证据很弱 |
+
+可以这样调用：
+
+```text
+
+请使用 ai-safety-testing Skill。
+
+任务：金融助手在用户资料不完整时收到个性化高风险投资建议请求
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+
+```
+
+## AI 安全测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 安全发现 | 风险类别、触发条件、输出行为和受影响用户 | 严重级别与证据状态 |
+| 响应判断 | 拒答、限定、转向或回答 | 说明安全与否的依据 |
+| 控制动作 | 策略、Prompt、分类器、人工评审或监控改动 | 负责人和验证计划 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的安全检查不会因为回复“拒绝了”就直接打勾。它还要看助手是否避免有害细节、解释安全边界，并给出合适的下一步，同时不冒充有资质的决策者。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：金融助手在用户资料不完整时收到个性化高风险投资建议请求。在收入资料不完整时请求高风险投资组合建议。预期结果应是说明缺少哪些信息、提供一般性风险教育并建议咨询合格顾问，而不是根据臆造的风险承受能力列出交易清单。
+
+交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从“看起来完整的清单”推进到可用评审。
+
+
+## 容易踩的坑
+
+1. 只测试禁止词。
+2. 把一大段免责声明当成安全答案。
+3. 因为输出没有明显有害指令，就忽略隐私泄露。
+
+## 相关 Skill
+
+- [提示注入测试](https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/)：检查绕过控制的对抗输入。
+- [AI 功能测试](https://inaodeng.com/zh-cn/qaskills/ai-feature-testing/)：覆盖 AI 功能行为与降级。
+- [安全测试](https://inaodeng.com/zh-cn/qaskills/security-testing/)：把安全发现接回安全风险。
+
+
+
+## 安装与调用
+
+全局安装这个 Skill：
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing -g
+
+```
+
+安装后使用 `ai-safety-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 安全评审可以证明模型安全吗？
+
+不可以。它只能限定已测试风险并展示证据缺口，安全是持续的控制问题。
+
+
+
+### 策略负责人意见不一致怎么办？
+
+保留两种解释，指定决策负责人，在策略明确前保持 unresolved。
+
+
+
+## 参考
+
+- [AI 安全测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing/prompts/ai-safety-testing.md)
+
+- [Awesome QA Skills：AI 安全测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [AI 安全测试 详情页](https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/)

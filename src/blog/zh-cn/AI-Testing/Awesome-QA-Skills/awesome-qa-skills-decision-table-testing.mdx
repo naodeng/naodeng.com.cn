@@ -1,0 +1,116 @@
+---
+title: "决策表测试设计：在生产例外出现之前展开规则组合"
+description: "决策表测试设计实战指南：建模条件、动作、不可能组合、优先级和预期结果。"
+date: 2026-10-29T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","决策表测试设计"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+当三个规则共同决定一个结果时， prose 很容易藏住真正重要的组合。决策表把选择摊开，也更容易发现分歧。
+
+决策表测试设计把业务条件和动作转成明确的规则组合，并覆盖不可能、冲突和依赖优先级的情况。
+
+当团队需要围绕“条件、动作、组合、约束、规则优先级和结果”工作时，使用决策表测试设计 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦决策表测试设计。
+
+## 决策表测试设计 Skill 用来做什么
+
+好的决策表会把业务条件和测试数据分开。它能在团队争论自动化哪个示例之前，先指出两条规则互相冲突。
+
+它适合这些场景：团队需要重复检查条件、动作、组合、约束、规则优先级和结果；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [决策表测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/decision-table-testing/prompts/decision-table-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/decision-table-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束条件、动作、组合、约束、规则优先级和结果。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 条件 | 业务事实、取值、未知项和来源 | 区分 true、false 和 not-applicable |
+| 动作 | 折扣、消息、资格和状态影响 | 动作冲突时定义优先级 |
+| 约束 | 不可能或互斥的行 | 记录约束，不要静默删除 |
+
+可以这样调用：
+
+```text
+请使用 decision-table-testing Skill。
+
+任务：测试一个根据客户等级、购物车金额、目的地和活动状态决定运费优惠的规则
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 决策表测试设计 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 规则表 | 条件组合和动作 | 来源与优先级 |
+| 覆盖发现 | 缺失、重复、冲突或不可能行 | 风险与负责人 |
+| 测试用例 | 输入状态、预期动作和预言机 | 可执行下一步 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的决策表会把业务条件和测试数据分开。它能在团队争论自动化哪个示例之前，先指出两条规则互相冲突。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：测试一个根据客户等级、购物车金额、目的地和活动状态决定运费优惠的规则。为高级和普通客户、超过和低于门槛的购物车、国内和国际目的地、活动有效和过期分别建行。国际高级客户且无活动的行要写成明确结果，而不是被误认为漏测。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为条件、动作、组合、约束、规则优先级和结果必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 把条件和动作混在同一句里。
+2. 删除不可能行，却不记录约束。
+3. 多个规则同时匹配时忽略优先级。
+
+## 相关 Skill
+
+- [业务规则提取](https://inaodeng.com/zh-cn/qaskills/business-rule-extraction/)：在建表前提取条件。
+- [组合测试设计](https://inaodeng.com/zh-cn/qaskills/combinatorial-testing/)：减少大型条件空间。
+- [边界值测试设计](https://inaodeng.com/zh-cn/qaskills/boundary-value-testing/)：为阈值条件选择取值。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/decision-table-testing -g
+```
+
+安装后使用 `decision-table-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 每一行都必须变成测试吗？
+
+每条有意义规则都应被表示，不可能行可以作为约束保留。
+
+### 条件未知怎么办？
+
+保留 unknown 状态或待确认问题，不要强行归入 true 或 false。
+
+## 参考
+
+- [决策表测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/decision-table-testing/prompts/decision-table-testing.md)
+
+- [Awesome QA Skills：决策表测试设计 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/decision-table-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [决策表测试设计 详情页](https://inaodeng.com/zh-cn/qaskills/decision-table-testing/)

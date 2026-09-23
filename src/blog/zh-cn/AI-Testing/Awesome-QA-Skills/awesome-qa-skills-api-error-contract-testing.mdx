@@ -1,0 +1,125 @@
+---
+title: "API 错误契约测试：让每个消费者都能预测失败响应"
+description: "API 错误契约测试实战指南：验证错误结构、错误码、可重试性、字段路径、安全性和消费者行为。"
+date: 2026-10-10T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","API 错误契约测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+成功响应通常最先被写进文档。然后消费者分别收到三种不同的校验、授权和依赖失败结构，最后有人把这叫作 API 契约。
+
+API 错误契约测试用于检查失败响应是否具有稳定结构、清晰分类、安全细节，以及足够支持客户端选择下一步动作的信息。
+
+当团队需要围绕“错误信封、错误码分类、字段路径、可重试性、脱敏和客户端处理”工作时，使用 API 错误契约测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 API 错误契约测试。
+
+## API 错误契约测试 Skill 用来做什么
+
+
+它适合这些场景：团队需要重复检查错误信封、错误码分类、字段路径、可重试性、脱敏和客户端处理；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+好的结果会把错误信封、错误码分类、字段路径、可重试性、脱敏和客户端处理接回来源和验证动作。设计清单不能直接写成通过结论。
+
+## 先回到源 Skill
+
+完整执行契约位于 [API 错误契约测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-error-contract-testing/prompts/api-error-contract-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-error-contract-testing) 中还包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束错误信封、错误码分类、字段路径、可重试性、脱敏和客户端处理。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 错误契约 | 错误信封、错误码、消息、字段路径、请求 ID 和状态码映射 | 标出客户端实际依赖的可选字段 |
+| 失败矩阵 | 校验、认证、授权、冲突、限流和依赖失败 | 不同动作不能都归为一个通用错误 |
+| 消费者行为 | 重试、展示、日志、回退和客服查询 | 把每个动作接回错误字段 |
+
+可以这样调用：
+
+```text
+
+请使用 api-error-contract-testing Skill。
+
+任务：验证结算服务和移动端共同使用的支付 API 错误响应
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+
+```
+
+## API 错误契约测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 错误发现 | 结构、分类、字段位置或安全问题 | 契约来源与影响 |
+| 消费者动作 | 重试、修正输入、重新认证、等待或停止 | 预期决策 |
+| 兼容性说明 | 破坏或削弱客户端假设的改动 | 迁移或版本动作 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的测试从客户端决策开始，而不是从服务端实现开始。如果移动端无法区分临时网关故障和无效银行卡，那么即使每个响应都是合法 JSON，错误契约也已经失败。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：验证结算服务和移动端共同使用的支付 API 错误响应。通过同一个结算接口提交无效卡号、过期授权令牌和网关超时。先断言错误结构，再断言客户端动作分别是修正输入、重新认证或延迟重试，同时检查网关内部细节已经脱敏。
+
+交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从“看起来完整的清单”推进到可用评审。
+
+
+## 容易踩的坑
+
+1. 只断言 HTTP 状态码。
+2. 让面向人的消息变成机器依赖的契约。
+3. 返回暴露内部状态的网关或数据库细节。
+
+## 相关 Skill
+
+- [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/)：覆盖更大的请求响应契约。
+- [API 负向测试](https://inaodeng.com/zh-cn/qaskills/api-negative-testing/)：生成无效与边界输入。
+- [API 安全测试](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)：检查泄露与授权失败处理。
+
+
+
+## 安装与调用
+
+全局安装这个 Skill：
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-error-contract-testing -g
+
+```
+
+安装后使用 `api-error-contract-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 每种错误都必须有唯一错误码吗？
+
+不一定，但每个错误码都要支持不同的消费者动作，或明确共享同一策略。
+
+
+
+### 快照可以证明契约吗？
+
+快照可以发现结构变化，但可重试性、隐私和客户端行为仍需要语义断言。
+
+
+
+## 参考
+
+- [API 错误契约测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-error-contract-testing/prompts/api-error-contract-testing.md)
+
+- [Awesome QA Skills：API 错误契约测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-error-contract-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [API 错误契约测试 详情页](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)

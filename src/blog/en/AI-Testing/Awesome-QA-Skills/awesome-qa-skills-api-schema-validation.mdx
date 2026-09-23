@@ -1,0 +1,118 @@
+---
+title: "API Schema Validation: Keep real payloads aligned with the contract at the edges"
+description: "API Schema Validation field guide: compare request and response payloads with schemas, formats, optionality, and version rules."
+date: 2026-10-15T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","API Schema Validation"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A schema can be valid on paper while the first real client sends a field as null, omits a supposedly optional property, or receives a value outside the documented enum.
+
+API Schema Validation checks whether actual request and response payloads obey the declared shape, constraints, formats, and compatibility rules.
+
+The API Schema Validation Skill is useful when a team needs a structured review of field shape, requiredness, nullability, format, enum, additional properties, and version drift. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Schema Validation.
+
+## API Schema Validation Skill: what it is for
+
+A practical standard for this Skill is simple: A useful schema pass validates the edges where real systems get untidy—nulls, missing arrays, unknown fields, date formats, and version-specific defaults.
+
+Use it when the team needs a repeatable review of field shape, requiredness, nullability, format, enum, additional properties, and version drift—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [API Schema Validation prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation/prompts/api-schema-validation.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation) contains the entry point and supporting assets where they exist.
+
+The entry point centers field shape, requiredness, nullability, format, enum, additional properties, and version drift. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Schema source | OpenAPI version, generated types, examples, and compatibility policy | Identify which source wins when they disagree |
+| Real payloads | Requests and responses from each consumer and error path | Synthetic fixtures cannot replace production shape evidence |
+| Validation rules | Required, nullable, format, enum, and additional-property behavior | Do not silently coerce unknown fields |
+
+Use a request like this:
+
+```text
+Use the api-schema-validation Skill.
+
+Task: validate checkout responses from three API versions consumed by web, mobile, and an invoice worker
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Schema finding | Shape, format, optionality, or version mismatch | Field path and source |
+| Consumer impact | Parser failure, silent default, or unsafe interpretation | Affected client |
+| Repair action | Schema, implementation, fixture, or migration change | Owner and compatibility check |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful schema pass validates the edges where real systems get untidy—nulls, missing arrays, unknown fields, date formats, and version-specific defaults.
+
+## Run one focused pass
+
+Start with a bounded pass—validate checkout responses from three API versions consumed by web, mobile, and an invoice worker. Replay a checkout response against the web type, mobile decoder, and invoice worker schema. A new nullable `taxAmount` is not automatically compatible: the worker may treat null as zero and issue the wrong invoice.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because field shape, requiredness, nullability, format, enum, additional properties, and version drift must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Validating only happy-path examples.
+2. Treating generated types as the only schema authority.
+3. Coercing invalid dates or enums before recording the contract violation.
+
+## Related Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：connects schemas to consumer behavior。
+- [API Version Compatibility Testing](https://inaodeng.com/en/qaskills/api-version-compatibility-testing/)：examines schema evolution。
+- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/)：provides invalid shape cases。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation -g
+```
+
+After installation, invoke it with the `api-schema-validation` Skill and attach the real project material.
+
+## Two practical questions
+
+### Should unknown response fields fail validation?
+
+Follow the consumer contract; strictness is a deliberate compatibility choice, not a universal default.
+
+### Can schema validation prove business correctness?
+
+No. It proves shape and constraints; domain invariants need separate checks.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- API Schema Validation prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation/prompts/api-schema-validation.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation/prompts/api-schema-validation.md)
+
+- Awesome QA Skills: API Schema Validation source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- API Schema Validation details:[https://inaodeng.com/en/qaskills/api-schema-validation/](https://inaodeng.com/en/qaskills/api-schema-validation/)

@@ -1,0 +1,116 @@
+---
+title: "多 Agent 协作测试：检查 Agent 角色之间的交接、权限和分歧"
+description: "多 Agent 协作测试实战指南：检查角色边界、交接、共享状态、冲突、工具权限和证据。"
+date: 2026-11-10T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","多 Agent 协作测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+增加一个 Agent 不会自动增加智能，只会增加一个可能丢上下文、混淆权限，或者让自信错误被批准的地方。
+
+多 Agent 协作测试用于评估协作 Agent 之间的角色契约、交接、共享状态、分歧、工具权限和端到端责任。
+
+当团队需要围绕“角色契约、交接载荷、共享状态、分歧、权限、工具范围和最终决策”工作时，使用多 Agent 协作测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦多 Agent 协作测试。
+
+## 多 Agent 协作测试 Skill 用来做什么
+
+好的多 Agent 测试会沿着一个说法跨角色追踪。它检查评审者能否看到来源、写作者是否保留不确定性，以及最终 Agent 是否真的有权做出它展示的决定。
+
+它适合这些场景：团队需要重复检查角色契约、交接载荷、共享状态、分歧、权限、工具范围和最终决策；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [多 Agent 协作测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing/prompts/multi-agent-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束角色契约、交接载荷、共享状态、分歧、权限、工具范围和最终决策。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 角色设计 | Agent 目的、输入、输出、权限和停止条件 | 不要用角色名称代替契约 |
+| 交接状态 | 来源、说法、未决项、版本和评审决定 | 记录每个 Agent 实际收到什么 |
+| 失败策略 | 冲突、来源缺失、工具拒绝、超时和人工升级 | 定义最终验收负责人 |
+
+可以这样调用：
+
+```text
+请使用 multi-agent-testing Skill。
+
+任务：测试由规划、来源核验、写作和评审 Agent 组成的研究流水线
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 多 Agent 协作测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 角色发现 | 边界、权限或责任缺失 | Agent 与证据 |
+| 交接发现 | 上下文丢失、状态过期或载荷模糊 | 输入与输出 ID |
+| 系统决策 | 接受、修改、停止或升级 | 人工负责人和证据 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的多 Agent 测试会沿着一个说法跨角色追踪。它检查评审者能否看到来源、写作者是否保留不确定性，以及最终 Agent 是否真的有权做出它展示的决定。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：测试由规划、来源核验、写作和评审 Agent 组成的研究流水线。让来源核验 Agent 拿到旧政策，规划 Agent 拿到新需求。写作者输出单一自信规则前，评审 Agent 应先暴露冲突。证据中保留交接载荷和每个 Agent 的工具权限。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为角色契约、交接载荷、共享状态、分歧、权限、工具范围和最终决策必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只单独测试每个 Agent。
+2. 让最终 Agent 静默解决来源冲突。
+3. 所有角色共享一个过宽的工具 Token。
+
+## 相关 Skill
+
+- [AI Agent 测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：覆盖 Agent 行为与目标。
+- [Agent 工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：检查各角色使用的工具。
+- [多角色质量综合](https://inaodeng.com/zh-cn/qaskills/multi-role-quality-synthesis/)：把多角色输出接到决策。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing -g
+```
+
+安装后使用 `multi-agent-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 人工只批准最终答案可以吗？
+
+人工可以接受最终决策，但关键来源冲突和副作用需要更早暴露。
+
+### Agent 本来就允许分歧怎么办？
+
+先定义分歧载荷、裁决规则和升级负责人，再把它称为协作。
+
+## 参考
+
+- [多 Agent 协作测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing/prompts/multi-agent-testing.md)
+
+- [Awesome QA Skills：多 Agent 协作测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [多 Agent 协作测试 详情页](https://inaodeng.com/zh-cn/qaskills/multi-agent-testing/)

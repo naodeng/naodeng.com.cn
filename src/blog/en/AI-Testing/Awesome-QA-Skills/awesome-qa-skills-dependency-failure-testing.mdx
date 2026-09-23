@@ -1,0 +1,118 @@
+---
+title: "Dependency Failure Testing: Make timeout, stale data, and partial failure observable"
+description: "Dependency Failure Testing field guide: model timeout, error, slow response, stale data, fallback, retry, and recovery evidence."
+date: 2026-10-30T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Dependency Failure Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A service rarely fails in one clean way. It can answer slowly, return old data, close the connection after a write, or fail only for one region.
+
+Dependency Failure Testing checks how a system classifies, contains, exposes, and recovers from failures in services, databases, queues, and external providers.
+
+The Dependency Failure Testing Skill is useful when a team needs a structured review of timeout, slow response, error, stale data, partial write, retry, fallback, and recovery. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Dependency Failure Testing.
+
+## Dependency Failure Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A good dependency test starts at the business effect. It asks whether an order may be paid without inventory, whether a reservation can be duplicated, and which record proves the final state.
+
+Use it when the team needs a repeatable review of timeout, slow response, error, stale data, partial write, retry, fallback, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Dependency Failure Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers timeout, slow response, error, stale data, partial write, retry, fallback, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Dependency contract | Timeout, error, consistency, retry, and fallback rules | Separate provider behavior from client assumptions |
+| Business state | Order, reservation, payment, and compensation states | Track partial writes |
+| Evidence | Request ID, provider trace, local state, retry count, and user message | Unknown write status needs explicit handling |
+
+Use a request like this:
+
+```text
+Use the dependency-failure-testing Skill.
+
+Task: test inventory reservation when the inventory service times out after receiving the reservation request
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Failure classification | Transient, permanent, partial, stale, or unknown | Evidence basis |
+| Containment action | Retry, queue, compensate, fallback, or stop | Side-effect guardrail |
+| Recovery check | State reconciliation and user-visible outcome | Owner and next evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. A good dependency test starts at the business effect. It asks whether an order may be paid without inventory, whether a reservation can be duplicated, and which record proves the final state.
+
+## Run one focused pass
+
+Start with a bounded pass—test inventory reservation when the inventory service times out after receiving the reservation request. Make inventory respond after the client timeout but before the retry. The expected result is one reservation or a clear reconciliation state, not a second reservation hidden behind a successful retry.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because timeout, slow response, error, stale data, partial write, retry, fallback, and recovery must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Testing only 5xx responses.
+2. Retrying a write without classifying its original state.
+3. Calling a fallback safe without checking freshness and business meaning.
+
+## Related Skills
+
+- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/)：checks repeated calls and backoff。
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：verifies final safe state。
+- [Circuit Breaker Testing](https://inaodeng.com/en/qaskills/circuit-breaker-testing/)：checks containment under dependency failure。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing -g
+```
+
+After installation, invoke it with the `dependency-failure-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can mocks prove dependency recovery?
+
+They can exercise client branches, but recovery claims need observable state and provider or simulation evidence.
+
+### What if the provider contract is incomplete?
+
+Keep the unknown state and define the smallest safe containment action.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Dependency Failure Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md)
+
+- Awesome QA Skills: Dependency Failure Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Dependency Failure Testing details:[https://inaodeng.com/en/qaskills/dependency-failure-testing/](https://inaodeng.com/en/qaskills/dependency-failure-testing/)

@@ -1,0 +1,116 @@
+---
+title: "业务规则提取：把政策文字变成团队真正可以验证的规则"
+description: "业务规则提取实战指南：从业务材料中识别角色、条件、决策、例外、状态和证据。"
+date: 2026-10-22T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","业务规则提取"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+藏在段落里的产品规则很难测试，也很容易被不同人理解成不同意思。要做的是找出决策，不是把段落写得更漂亮。
+
+业务规则提取用于从政策、需求、示例和运行说明中识别明确或隐含的条件、角色、结果、例外和状态变化。
+
+当团队需要围绕“角色、触发、条件、决策、例外、状态、优先级和来源”工作时，使用业务规则提取 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦业务规则提取。
+
+## 业务规则提取 Skill 用来做什么
+
+好的提取会把规则贴近来源，并区分“必须”“可以”和“通常”。这些词决定一个行为究竟是违规、选择还是普通观察。
+
+它适合这些场景：团队需要重复检查角色、触发、条件、决策、例外、状态、优先级和来源；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [业务规则提取 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/business-rule-extraction/prompts/business-rule-extraction.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/business-rule-extraction) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束角色、触发、条件、决策、例外、状态、优先级和来源。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 业务材料 | 政策、需求、示例、工单和负责人 | 区分权威文本与说明性文本 |
+| 术语 | 客户、订单、支付、日期、状态和例外定义 | 冲突定义要同时保留 |
+| 决策目的 | 测试设计、实现澄清或审计 | 不要提取超过决策所需的细节 |
+
+可以这样调用：
+
+```text
+请使用 business-rule-extraction Skill。
+
+任务：从客服政策、支付指南和五条历史工单中提取退款资格规则
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 业务规则提取 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 规则陈述 | 角色、条件、动作、结果和例外 | 来源引用 |
+| 冲突或缺口 | 定义不一致或决策缺失 | 负责人和问题 |
+| 验证钩子 | 验证规则所需的数据、状态或示例 | 下一步动作 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的提取会把规则贴近来源，并区分“必须”“可以”和“通常”。这些词决定一个行为究竟是违规、选择还是普通观察。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：从客服政策、支付指南和五条历史工单中提取退款资格规则。把“客户可以在 30 天内申请退款，但已使用优惠券除外”拆成角色、时间窗口、优惠券状态和结果规则，再追问“已使用”是已核销、部分核销还是订单已完成。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为角色、触发、条件、决策、例外、状态、优先级和来源必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 复制政策原文，却没有暴露条件。
+2. 把历史行为直接当成规则。
+3. 把多个例外合成模糊的“特殊情况”。
+
+## 相关 Skill
+
+- [需求分析](https://inaodeng.com/zh-cn/qaskills/requirements-analysis/)：组织更大的需求上下文。
+- [需求歧义分析](https://inaodeng.com/zh-cn/qaskills/requirement-ambiguity-analysis/)：检查规则措辞是否有多种解释。
+- [决策表测试设计](https://inaodeng.com/zh-cn/qaskills/decision-table-testing/)：把提取出的规则转成组合。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/business-rule-extraction -g
+```
+
+安装后使用 `business-rule-extraction` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 提取可以解决政策冲突吗？
+
+它可以展示冲突和影响，但由政策负责人决定哪条规则生效。
+
+### 示例应该直接变成规则吗？
+
+只有来源明确说明示例具有规范性时才可以，否则保留为证据或说明。
+
+## 参考
+
+- [业务规则提取 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/business-rule-extraction/prompts/business-rule-extraction.md)
+
+- [Awesome QA Skills：业务规则提取 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/business-rule-extraction)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [业务规则提取 详情页](https://inaodeng.com/zh-cn/qaskills/business-rule-extraction/)

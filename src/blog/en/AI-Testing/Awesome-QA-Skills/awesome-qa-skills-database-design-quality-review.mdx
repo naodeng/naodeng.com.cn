@@ -1,0 +1,118 @@
+---
+title: "Database Design Quality Review: Find integrity and migration risks before data is written"
+description: "Database Design Quality Review field guide: inspect entities, keys, constraints, indexes, lifecycle, tenancy, migration, and recovery."
+date: 2026-10-28T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Database Design Quality Review"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A database design is a product decision with a long memory. A missing uniqueness rule can become millions of duplicate records before anyone notices.
+
+Database Design Quality Review evaluates whether a schema can preserve business invariants, support access patterns, isolate tenants, and evolve safely.
+
+The Database Design Quality Review Skill is useful when a team needs a structured review of entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Database Design Quality Review.
+
+## Database Design Quality Review Skill: what it is for
+
+A practical standard for this Skill is simple: A good review starts from invariants and real queries. It asks what prevents two refunds for one payment, what stops a cross-tenant lookup, and what happens when a migration stops halfway.
+
+Use it when the team needs a repeatable review of entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Database Design Quality Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review) contains the entry point and supporting assets where they exist.
+
+The entry point centers entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Domain rules | Order identity, refund uniqueness, status lifecycle, and retention | Tie each invariant to a source |
+| Access patterns | Lookup, reporting, pagination, writes, and tenant filters | Do not choose indexes from table shape alone |
+| Change plan | Migration, backfill, rollback, volume, and recovery | Mark irreversible steps |
+
+Use a request like this:
+
+```text
+Use the database-design-quality-review Skill.
+
+Task: review a multi-tenant order and refund schema before the first production migration
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Design finding | Integrity, access, isolation, performance, or lifecycle gap | Source and impact |
+| Migration risk | Lock, backfill, dual-write, or rollback concern | Precondition |
+| Verification action | Constraint, query, load, restore, or migration check | Evidence owner |
+
+Do not write “passed” without a run record, query result, or source artifact. A good review starts from invariants and real queries. It asks what prevents two refunds for one payment, what stops a cross-tenant lookup, and what happens when a migration stops halfway.
+
+## Run one focused pass
+
+Start with a bounded pass—review a multi-tenant order and refund schema before the first production migration. Review a refund table with a unique payment reference, tenant key, status history, and a report query by order date. Then walk through a backfill that adds the reference to existing rows and define how duplicates are handled before adding the constraint.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Reviewing columns without lifecycle states.
+2. Adding an index without a query or volume assumption.
+3. Calling a migration reversible when data transformation loses the old representation.
+
+## Related Skills
+
+- [API Design Quality Review](https://inaodeng.com/en/qaskills/api-design-quality-review/)：connects data rules to API contracts。
+- [Technical Design Quality Review](https://inaodeng.com/en/qaskills/technical-design-quality-review/)：reviews the wider architecture。
+- [Disaster Recovery Testing](https://inaodeng.com/en/qaskills/disaster-recovery-testing/)：checks restore and data recovery assumptions。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review -g
+```
+
+After installation, invoke it with the `database-design-quality-review` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can the review happen before database choice?
+
+Yes. Invariants and access patterns should exist before a technology-specific design is finalized.
+
+### What if product rules conflict with legacy data?
+
+Keep the conflict visible and plan a data decision; do not hide it in a nullable column.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Database Design Quality Review prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md)
+
+- Awesome QA Skills: Database Design Quality Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Database Design Quality Review details:[https://inaodeng.com/en/qaskills/database-design-quality-review/](https://inaodeng.com/en/qaskills/database-design-quality-review/)

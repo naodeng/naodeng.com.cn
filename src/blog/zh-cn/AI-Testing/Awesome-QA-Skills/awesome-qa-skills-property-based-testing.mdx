@@ -1,0 +1,116 @@
+---
+title: "性质测试设计：用大量生成输入验证业务不变量"
+description: "性质测试设计实战指南：定义性质、生成器、缩减、输入域、不变量和可复现失败。"
+date: 2026-11-15T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","性质测试设计"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+示例测试说明几个输入可以工作，性质测试则追问规则能否在更大的输入空间里成立，并在失败时给出更小的反例。
+
+性质测试设计用于定义不变量并生成大量输入探索它们，同时保留随机种子并把失败缩减成有用反例。
+
+当团队需要围绕“性质、生成器、输入域、种子、缩减、不变量和反例”工作时，使用性质测试设计 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦性质测试设计。
+
+## 性质测试设计 Skill 用来做什么
+
+好的性质测试有业务或系统输入域性质，而不只是“函数没有崩溃”这种通用断言。这个性质必须对用户或系统状态有意义。
+
+它适合这些场景：团队需要重复检查性质、生成器、输入域、种子、缩减、不变量和反例；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [性质测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing/prompts/property-based-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束性质、生成器、输入域、种子、缩减、不变量和反例。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 性质 | 不变量、关系或安全规则 | 先写预言机再写生成器 |
+| 生成域 | 有效、无效、边界和依赖数据 | 约束不现实的取值 |
+| 失败证据 | 种子、缩减用例、版本和中间值 | 保留最小反例 |
+
+可以这样调用：
+
+```text
+请使用 property-based-testing Skill。
+
+任务：测试购物车总价计算在商品数量、折扣、币种和舍入下的不变量
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 性质测试设计 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 性质结果 | 不变量成立、违反或不可测试 | 运行与种子 |
+| 反例 | 破坏性质的最小输入 | 可复现 fixture |
+| 输入域缺口 | 生成器偏差或遗漏重要类别 | 生成器更新 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的性质测试有业务或系统输入域性质，而不只是“函数没有崩溃”这种通用断言。这个性质必须对用户或系统状态有意义。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：测试购物车总价计算在商品数量、折扣、币种和舍入下的不变量。生成包含数量和小数价格的购物车，断言增加商品不会降低总价，除非有文档化促销规则。保留种子，并把失败缩减到最小的折扣与舍入组合。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为性质、生成器、输入域、种子、缩减、不变量和反例必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 生成不现实的数据，掩盖真实行为。
+2. 使用比业务不变量更弱的性质。
+3. 失败后丢失随机种子或缩减示例。
+
+## 相关 Skill
+
+- [蜕变测试设计](https://inaodeng.com/zh-cn/qaskills/metamorphic-testing/)：在精确输出困难时测试关系。
+- [边界值测试设计](https://inaodeng.com/zh-cn/qaskills/boundary-value-testing/)：把生成域接到边界。
+- [测试数据生成](https://inaodeng.com/zh-cn/qaskills/test-data-generation/)：提供受控数据策略。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing -g
+```
+
+安装后使用 `property-based-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 性质测试可以替代示例测试吗？
+
+不能完全替代。示例仍然解释已知规则并帮助调试。
+
+### 缩减后丢掉了有意义上下文怎么办？
+
+如果上下文影响解释，就同时保留缩减反例和原始生成用例。
+
+## 参考
+
+- [性质测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing/prompts/property-based-testing.md)
+
+- [Awesome QA Skills：性质测试设计 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [性质测试设计 详情页](https://inaodeng.com/zh-cn/qaskills/property-based-testing/)

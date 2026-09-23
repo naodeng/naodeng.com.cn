@@ -1,0 +1,116 @@
+---
+title: "授权测试：证明正确身份只能对正确资源执行正确动作"
+description: "授权测试实战指南：验证角色、资源所有权、租户边界、动作范围、拒绝和审计证据。"
+date: 2026-10-19T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","授权测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+认证告诉系统谁来了，授权决定这个人能不能导出这份报表、编辑这条记录，或者删除这个租户的数据。
+
+授权测试把权限判断拆成身份、资源、动作、上下文和策略版本的组合来评估。
+
+当团队需要围绕“角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计”工作时，使用授权测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦授权测试。
+
+## 授权测试 Skill 用来做什么
+
+好的授权检查会先固定角色改变资源，再固定资源改变角色。这样水平越权和垂直越权不会被一个顺利角色的结果掩盖。
+
+它适合这些场景：团队需要重复检查角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [授权测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing/prompts/authorization-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 权限矩阵 | 角色、资源、动作、所有权和上下文条件 | 列出缺失组合 |
+| 状态与策略 | 草稿、已批准、已归档和跨租户状态 | 不要抹平依赖状态的权限差异 |
+| 证据 | 决策日志、响应、资源状态和审计事件 | 只有状态码没有数据证据不完整 |
+
+可以这样调用：
+
+```text
+请使用 authorization-testing Skill。
+
+任务：检查项目经理能否编辑自己团队的预算，但不能修改其他部门已经批准的预测
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 授权测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 访问判断 | 带策略依据的允许、拒绝或 unresolved | 角色、资源、动作 |
+| 绕过发现 | 水平、垂直、租户或状态边界失败 | 可复现条件 |
+| 审计动作 | 需要的日志、告警或策略修复 | 负责人和关闭条件 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的授权检查会先固定角色改变资源，再固定资源改变角色。这样水平越权和垂直越权不会被一个顺利角色的结果掩盖。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：检查项目经理能否编辑自己团队的预算，但不能修改其他部门已经批准的预测。对自己拥有的草稿、同事的草稿、已批准预测和已归档记录发送同一个编辑请求，再比较项目经理和财务管理员的判断、响应、状态变化和审计轨迹。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只测角色，不测资源所有权。
+2. 把 UI 是否显示当成授权证明。
+3. 允许写入后不检查状态转移。
+
+## 相关 Skill
+
+- [身份认证测试](https://inaodeng.com/zh-cn/qaskills/authentication-testing/)：建立调用者身份。
+- [API 安全测试](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)：检查 API 边界授权。
+- [Agent 权限测试](https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/)：把权限检查应用到 Agent 动作。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing -g
+```
+
+安装后使用 `authorization-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 授权测试可以依赖前端吗？
+
+不能。服务端或策略决策点必须执行边界，UI 只是消费者之一。
+
+### 权限矩阵里有有意例外怎么办？
+
+记录例外、负责人、过期或复核日期，以及证明它是有意设计的证据。
+
+## 参考
+
+- [授权测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing/prompts/authorization-testing.md)
+
+- [Awesome QA Skills：授权测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [授权测试 详情页](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)

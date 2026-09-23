@@ -1,0 +1,111 @@
+---
+title: "Requirement Consistency Analysis：跨材料比较术语、状态和规则"
+description: "需求一致性分析双语指南，比较需求材料中的术语、标识符、格式、状态、规则、行为、范围和证据状态。"
+date: 2026-11-29T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "需求一致性分析"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+代码还没写，产品就可能已经失败：一份文档把状态叫“已支付”，另一份叫“已授权”，第三份却把两者都当作终态。
+
+Requirement Consistency Analysis Skill 使用稳定比较键对多个材料进行对照，同时保留来源和版本边界。它区分 aligned、inconsistent、conflict 三种关系，也区分 assessed、missing、stale 和未评估四种证据状态。
+
+本文提醒：相似词不自动等义；比较前必须确认材料指的是同一对象和范围。
+
+## 需求一致性分析 Skill 用来做什么
+
+当 PRD、故事、API 契约、原型、技术说明或验收条件对同一个流程使用不同术语、标识符、格式、状态、规则或行为时，使用这个 Skill。
+
+好的结果需要为每条 RC 发现写清来源对、比较键、关系、证据状态、范围或版本、影响、负责人、动作和验证方式。
+
+如果多个材料应该描述同一个角色、字段、状态流转或结果，却看起来不一致，应在实现或集成测试前使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [需求一致性分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-consistency-analysis/prompts/requirement-consistency-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-consistency-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 材料集合 | PRD、API 契约、原型、验收条件和技术说明 | 明确指出缺失材料 |
+| 比较范围 | 流程、角色、字段、状态、平台、租户、版本和生效时间 | 边界不清时不要直接比较 |
+| 稳定键 | 字段名、流转、业务规则、标识符或可观察结果 | 先定义比较键 |
+| 证据 | 来源位置、历史决策、实现说明和样例 | 证据缺失与不一致分开 |
+
+可以这样调用：
+
+~~~text
+请使用 requirement-consistency-analysis Skill。\n\n任务：比较结账 PRD、支付 API 契约和验收条件中关于地址字段、支付状态和退款行为的描述。\n输入材料：[材料版本、来源位置、平台范围、样例和实现说明]\n范围：[Web 结账、银行卡支付、R25.1 发布]\n限制：[不要自行发明状态含义或合并冲突]\n\n输出 RC-## 发现，包含来源对、稳定键、关系、证据状态、影响、负责人、待决问题、关闭条件和验证方法。明确互斥规则只按 Skill 名称路由到冲突检测。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 比较键 | 正在比较的字段、状态、规则或行为 | 稳定标识 |
+| 关系 | aligned、inconsistent 或 conflict | 与证据状态分开 |
+| 证据状态 | assessed、missing、stale 或未评估 | 来源与版本 |
+| 动作 | 负责人问题、关闭条件和验证方式 | 不要静默合并 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：比较支付状态，不要把名称相似当成同义
+
+PRD 说授权后订单就是 paid，API 契约返回 authorized，验收条件却要求确认前必须 captured。这个 Skill 应保留三个来源，比较状态流转和时间点，确认范围及实现含义后再判断关系。不能因为 paid 更常见，就直接选它做标准术语。
+
+结果可以说明给定材料之间的关系，不能证明运行时状态行为；静态一致也不能替代 API 或集成测试。
+
+## 先补基线输入，再期待更好的结果
+
+提供所有材料的版本和位置、比较范围、稳定键、样例和已知决策。只有一份来源时，标记缺少比较证据，不要因为没发现差异就叫一致。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 没有检查状态、时间和角色，就把相似标签当成同一个对象。
+2. 缺少第二份材料时，因为没看到差异就称为一致。
+3. 为了让报告整洁，把真实冲突降级为普通不一致。
+
+## 相关 Skill
+
+- [需求冲突检测](https://inaodeng.com/zh-cn/qaskills/requirement-conflict-detection/)：处理互斥规则但不替人决定优先级。
+- [需求可追溯性分析](https://inaodeng.com/zh-cn/qaskills/requirement-traceability-analysis/)：把需求结论连接到下游证据。
+- [需求质量复核](https://inaodeng.com/zh-cn/qaskills/requirement-quality-review/)：提供更完整的需求就绪度视角。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-consistency-analysis -g
+~~~
+
+~~~text
+请使用 requirement-consistency-analysis Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 关系和证据状态有什么区别？
+
+关系说明两份陈述之间是什么关系，证据状态说明这次比较是否有足够、最新或完整的依据。
+
+### 这个 Skill 应该创建统一术语表吗？
+
+它可以提出问题或候选映射，但最终术语和状态含义仍然属于人工或产品决策。
+
+
+
+## 参考
+
+- [需求一致性分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-consistency-analysis/prompts/requirement-consistency-analysis.md)
+- [需求一致性分析 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-consistency-analysis)
+- [需求一致性分析 详情页](https://inaodeng.com/zh-cn/qaskills/requirement-consistency-analysis/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

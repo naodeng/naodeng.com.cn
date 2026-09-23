@@ -1,0 +1,116 @@
+---
+title: "蜕变测试设计：当没有单一答案时，用输入变化验证关系"
+description: "蜕变测试设计实战指南：定义输入变换、预期关系、不变量、随机输入和证据。"
+date: 2026-11-07T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","蜕变测试设计"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+有些系统太复杂或太不确定，无法为每个输入给出唯一正确答案。但你仍然可以问：受控改变输入后，某个关系是否应该保持或发生变化。
+
+蜕变测试设计通过输入变换和多次执行之间的关系，测试那些精确预言机昂贵、不完整或不可用的系统。
+
+当团队需要围绕“输入变换、预期关系、不变量、预言机限制、随机覆盖和关系违规证据”工作时，使用蜕变测试设计 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦蜕变测试设计。
+
+## 蜕变测试设计 Skill 用来做什么
+
+好的蜕变设计会在生成用例前先写清关系。“结果应该相似”不是预言机，除非相似被定义为集合重叠、分数单调或不变量保持。
+
+它适合这些场景：团队需要重复检查输入变换、预期关系、不变量、预言机限制、随机覆盖和关系违规证据；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [蜕变测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/metamorphic-testing/prompts/metamorphic-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/metamorphic-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束输入变换、预期关系、不变量、预言机限制、随机覆盖和关系违规证据。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 系统行为 | 输入、输出、已知不变量和可接受变化 | 明确哪些内容无法精确断言 |
+| 输入变换 | 同义词、置换、缩放、重复或无关字段变化 | 一次只隔离一种变换 |
+| 证据 | 原始与变换后输出、关系检查、模型版本和随机种子 | 记录第一次违规 |
+
+可以这样调用：
+
+```text
+请使用 metamorphic-testing Skill。
+
+任务：测试商品搜索排序器：加入同义词后，即使精确分数变化，相关商品集合仍应保持
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 蜕变测试设计 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 蜕变关系 | 输入变换与预期关系 | 来源与置信度 |
+| 关系违规 | 哪些变化超出了预期关系 | 输入对与产物 |
+| 后续动作 | 预言机、模型、数据或实现检查 | 负责人和下一轮运行 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的蜕变设计会在生成用例前先写清关系。“结果应该相似”不是预言机，除非相似被定义为集合重叠、分数单调或不变量保持。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：测试商品搜索排序器：加入同义词后，即使精确分数变化，相关商品集合仍应保持。给搜索查询增加一个同义词，再比较前 20 个商品 ID。允许排序变化，但要求相关集合达到最低重叠，并且不能出现被类别过滤排除的商品。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为输入变换、预期关系、不变量、预言机限制、随机覆盖和关系违规证据必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 没有领域关系就选择变换。
+2. 使用模糊的相似阈值。
+3. 没有先检查数据和模型漂移就把关系违规写成产品缺陷。
+
+## 相关 Skill
+
+- [性质测试设计](https://inaodeng.com/zh-cn/qaskills/property-based-testing/)：围绕性质生成大量输入。
+- [LLM 一致性测试](https://inaodeng.com/zh-cn/qaskills/llm-consistency-testing/)：检查模型输出中的稳定关系。
+- [测试有效性分析](https://inaodeng.com/zh-cn/qaskills/test-effectiveness-analysis/)：评估关系是否发现有意义缺陷。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/metamorphic-testing -g
+```
+
+安装后使用 `metamorphic-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 蜕变测试只适合机器学习吗？
+
+不适合。解析器、编译器、API、计算和工作流都可以有有用的关系。
+
+### 关系本身不确定怎么办？
+
+先标记为假设，验证领域预期后再把它用于失败预言机。
+
+## 参考
+
+- [蜕变测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/metamorphic-testing/prompts/metamorphic-testing.md)
+
+- [Awesome QA Skills：蜕变测试设计 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/metamorphic-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [蜕变测试设计 详情页](https://inaodeng.com/zh-cn/qaskills/metamorphic-testing/)

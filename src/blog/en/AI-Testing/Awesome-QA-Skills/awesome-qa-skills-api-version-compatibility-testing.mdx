@@ -1,0 +1,118 @@
+---
+title: "API Version Compatibility Testing: Find the consumer break before the rollout does"
+description: "API Version Compatibility Testing field guide: compare versions, consumer assumptions, deprecations, migrations, and rollback evidence."
+date: 2026-10-17T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","API Version Compatibility Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Changing an API version is not just adding `/v2`. It changes what clients assume about fields, errors, ordering, defaults, and the moment a migration becomes irreversible.
+
+API Version Compatibility Testing compares old and new contracts against real consumer behavior and identifies safe rollout, migration, and rollback boundaries.
+
+The API Version Compatibility Testing Skill is useful when a team needs a structured review of field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Version Compatibility Testing.
+
+## API Version Compatibility Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A useful compatibility pass includes mixed-version traffic. The old client and new server need to coexist long enough for the test to expose defaults and failure paths that a clean v2 environment hides.
+
+Use it when the team needs a repeatable review of field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [API Version Compatibility Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing/prompts/api-version-compatibility-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Version contracts | Old and new schemas, examples, errors, defaults, and deprecation dates | Mark undocumented behavior as an assumption |
+| Consumer inventory | Mobile versions, web, workers, partners, and rollout state | Include clients that cannot update quickly |
+| Migration controls | Feature flag, dual read, fallback, telemetry, and rollback plan | A rollback without data compatibility is incomplete |
+
+Use a request like this:
+
+```text
+Use the api-version-compatibility-testing Skill.
+
+Task: move a mobile checkout client from a v1 order response to a v2 response with nested pricing and new nullable fields
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Compatibility finding | Breaking, conditionally compatible, or safe change | Consumer and version |
+| Migration step | Dual read, adapter, feature flag, or client release | Precondition and evidence |
+| Rollback boundary | What can be reversed and what data has already changed | Decision owner |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful compatibility pass includes mixed-version traffic. The old client and new server need to coexist long enough for the test to expose defaults and failure paths that a clean v2 environment hides.
+
+## Run one focused pass
+
+Start with a bounded pass—move a mobile checkout client from a v1 order response to a v2 response with nested pricing and new nullable fields. Run v1 and v2 mobile clients against the migration flag while a worker still consumes the old flat price field. Verify totals, null handling, error recovery, telemetry, and rollback after a partial client rollout.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Comparing schemas without comparing consumer assumptions.
+2. Removing an old field before telemetry proves it is unused.
+3. Calling rollback safe after writes use only the new representation.
+
+## Related Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：checks consumer contract behavior。
+- [API Schema Validation](https://inaodeng.com/en/qaskills/api-schema-validation/)：compares field-level shape changes。
+- [Change Impact Analysis](https://inaodeng.com/en/qaskills/change-impact-analysis/)：maps version changes to affected surfaces。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing -g
+```
+
+After installation, invoke it with the `api-version-compatibility-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Is a new optional field always compatible?
+
+No. A consumer may reject unknown fields or misinterpret null and default behavior.
+
+### When should migration be stopped?
+
+When a breaking finding lacks an owner, evidence, or a reversible rollout step.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- API Version Compatibility Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing/prompts/api-version-compatibility-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing/prompts/api-version-compatibility-testing.md)
+
+- Awesome QA Skills: API Version Compatibility Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- API Version Compatibility Testing details:[https://inaodeng.com/en/qaskills/api-version-compatibility-testing/](https://inaodeng.com/en/qaskills/api-version-compatibility-testing/)

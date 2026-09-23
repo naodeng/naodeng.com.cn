@@ -1,0 +1,125 @@
+---
+title: "Agent 记忆测试：让记住的事实有范围、有时效，也能安全复用"
+description: "Agent 记忆测试实战指南：检查记忆的范围、检索、过期、删除、同意和跨会话证据。"
+date: 2026-10-05T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","Agent 记忆测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+记忆让助手显得有用，直到它记住了错误的收货地址，还很自信地把私人订单发给了上一位住户。
+
+Agent 记忆测试用于检查哪些信息可以存储、谁可以检索、过期事实如何替换，以及删除和同意边界能否跨会话成立。
+
+当团队需要围绕“记忆范围、检索授权、时效、删除、同意和跨会话泄露”工作时，使用 Agent 记忆测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 Agent 记忆测试。
+
+## Agent 记忆测试 Skill 用来做什么
+
+
+它适合这些场景：团队需要重复检查记忆范围、检索授权、时效、删除、同意和跨会话泄露；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+好的结果会把记忆范围、检索授权、时效、删除、同意和跨会话泄露接回来源和验证动作。设计清单不能直接写成通过结论。
+
+## 先回到源 Skill
+
+完整执行契约位于 [Agent 记忆测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing/prompts/agent-memory-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing) 中还包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束记忆范围、检索授权、时效、删除、同意和跨会话泄露。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 记忆策略 | 允许字段、保留期限、用户同意和删除触发条件 | 不要因为使用方便就推断敏感数据可存储 |
+| 会话状态 | 会话 A、订单关闭事件、会话 B 和另一个有权限的用户 | 写清身份与租户边界 |
+| 证据 | 写入日志、检索追踪、删除回执和脱敏响应 | 没有检索证据时把泄露风险标为 unassessed |
+
+可以这样调用：
+
+```text
+
+请使用 agent-memory-testing Skill。
+
+任务：客服助手记住客户偏好的配送时间，但订单关闭后必须忘记临时收货地址
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+
+```
+
+## Agent 记忆测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 记忆清单 | 存储事实、范围、所有者、过期时间和敏感度 | 标记已知、缺失或禁止 |
+| 检索判断 | 正确身份和上下文是否可以取到该事实 | 证据与影响 |
+| 生命周期动作 | 过期、覆盖、删除或要求确认 | 触发条件与验证方法 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的记忆测试一次只改变一个边界——身份、租户、时间或删除状态——这样每次取回的事实都能对应到允许它出现的策略。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：客服助手记住客户偏好的配送时间，但订单关闭后必须忘记临时收货地址。在会话 A 写入临时地址，关闭订单并触发删除事件，再在会话 B 询问包裹地址。预期输出应是当前确认地址或请求确认，而不是已经删除的旧值。
+
+交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从“看起来完整的清单”推进到可用评审。
+
+
+## 容易踩的坑
+
+1. 只测取回，不测用户同意。
+2. 把删除 API 成功响应当成无法继续检索的证明。
+3. 所有跨会话检查都使用同一个用户身份。
+
+## 相关 Skill
+
+- [Agent 权限测试](https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/)：检查谁可以取回记忆事实。
+- [AI 安全测试](https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/)：覆盖隐私与有害复用边界。
+- [会话安全测试](https://inaodeng.com/zh-cn/qaskills/session-security-testing/)：检查跨会话身份隔离。
+
+
+
+## 安装与调用
+
+全局安装这个 Skill：
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing -g
+
+```
+
+安装后使用 `agent-memory-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 记忆测试可以使用合成数据吗？
+
+可以，敏感字段应该使用合成数据；但身份、范围、过期和删除转移仍要足够真实。
+
+
+
+### 记忆策略不完整怎么办？
+
+先输出受限清单，标出缺失规则，并在继续存储数据前要求负责人确认。
+
+
+
+## 参考
+
+- [Agent 记忆测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing/prompts/agent-memory-testing.md)
+
+- [Awesome QA Skills：Agent 记忆测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [Agent 记忆测试 详情页](https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/)

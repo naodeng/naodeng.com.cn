@@ -1,0 +1,128 @@
+---
+title: "API Design Quality Review: Find contract gaps before consumers inherit them"
+description: "API Design Quality Review field guide: review schemas, errors, authorization, idempotency, compatibility, and consumer impact before implementation."
+date: 2026-10-09T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","API Design Quality Review"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An API can look tidy in an OpenAPI file and still make every consumer guess what happens after a partial failure.
+
+API Design Quality Review evaluates an API contract before implementation or versioning. It makes inputs, outputs, errors, permissions, lifecycle, and consumer impact explicit enough to test.
+
+The API Design Quality Review Skill is useful when a team needs a structured review of operation contract, error model, authorization, idempotency, compatibility, and consumer impact. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Design Quality Review.
+
+## API Design Quality Review Skill: what it is for
+
+
+Use it when the team needs a repeatable review of operation contract, error model, authorization, idempotency, compatibility, and consumer impact—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps operation contract, error model, authorization, idempotency, compatibility, and consumer impact connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [API Design Quality Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-design-quality-review/prompts/api-design-quality-review.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-design-quality-review) also contains the entry point and supporting assets where they exist.
+
+The entry point centers operation contract, error model, authorization, idempotency, compatibility, and consumer impact. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Contract material | OpenAPI, request and response examples, status codes, and version policy | List undefined fields instead of guessing |
+| Consumer context | Mobile, web, billing, retry behavior, and rollout order | Name consumers that were not consulted |
+| Risk boundary | Authorization, idempotency, state transitions, and backward compatibility | Leave release approval to the owner |
+
+Use a request like this:
+
+```text
+
+Use the api-design-quality-review Skill.
+
+Task: review a subscription cancellation API before mobile, web, and billing consumers implement it
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Contract finding | Missing, conflicting, stale, or unverifiable API rule | API-##, impact, and source |
+| Consumer consequence | What client behavior becomes ambiguous or unsafe | Affected consumer and version |
+| Readiness action | Field, error, policy, or migration decision to clarify | Owner and closure evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. A good review walks through one consumer journey, one failure path, and one version change. It does not approve the design by counting endpoints.
+
+## Run one focused pass
+
+Start with a bounded pass—review a subscription cancellation API before mobile, web, and billing consumers implement it. For cancellation, define what happens when the subscription is already cancelled, the billing provider is unavailable, or the request is repeated. The contract should tell consumers whether to retry, poll, display a final state, or ask a human to intervene.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Reviewing schemas without consumer journeys.
+2. Treating a 200 response as a complete success contract.
+3. Leaving version and retry behavior to implementation folklore.
+
+## Related Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：checks the implemented contract against consumers。
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：deepens the error behavior review。
+- [API Version Compatibility Testing](https://inaodeng.com/en/qaskills/api-version-compatibility-testing/)：verifies evolution across versions。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-design-quality-review -g
+
+```
+
+After installation, invoke it with the `api-design-quality-review` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can the review happen before code exists?
+
+That is the point. It can identify unverifiable or conflicting contract choices before they become compatibility work.
+
+
+
+### Does the Skill choose the API version?
+
+No. It exposes trade-offs and evidence gaps; the responsible owner makes the version decision.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- API Design Quality Review:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-design-quality-review/prompts/api-design-quality-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-design-quality-review/prompts/api-design-quality-review.md)
+
+- Awesome QA Skills: API Design Quality Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-design-quality-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-design-quality-review)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- API Design Quality Review details:[https://inaodeng.com/en/qaskills/api-design-quality-review/](https://inaodeng.com/en/qaskills/api-design-quality-review/)

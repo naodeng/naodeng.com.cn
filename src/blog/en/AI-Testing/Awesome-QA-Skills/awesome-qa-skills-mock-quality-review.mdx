@@ -1,0 +1,118 @@
+---
+title: "Mock Quality Review: Keep test doubles useful without making the system look healthier than it is"
+description: "Mock Quality Review field guide: inspect contract fidelity, realism, failure modes, drift, state, and ownership of test doubles."
+date: 2026-11-08T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Mock Quality Review"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A mock that always returns 200 makes a test fast. It also makes a payment outage look like a well-behaved feature.
+
+Mock Quality Review evaluates whether a test double represents the contract, timing, state, failure, and data conditions that matter to the test.
+
+The Mock Quality Review Skill is useful when a team needs a structured review of contract fidelity, state, latency, failure modes, data realism, drift, and ownership. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Mock Quality Review.
+
+## Mock Quality Review Skill: what it is for
+
+A practical standard for this Skill is simple: A useful mock review asks whether the test would fail if the real provider violated the exact rule under discussion. If not, the mock is probably testing its own script.
+
+Use it when the team needs a repeatable review of contract fidelity, state, latency, failure modes, data realism, drift, and ownership—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Mock Quality Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mock-quality-review/prompts/mock-quality-review.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mock-quality-review) contains the entry point and supporting assets where they exist.
+
+The entry point centers contract fidelity, state, latency, failure modes, data realism, drift, and ownership. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Real contract | Provider schema, status, errors, timing, and side effects | Use the current version |
+| Mock behavior | Success, failure, latency, state, and data fixtures | List behaviors the mock cannot represent |
+| Test purpose | Contract, UI, retry, recovery, or business invariant | A mock is only good relative to its use |
+
+Use a request like this:
+
+```text
+Use the mock-quality-review Skill.
+
+Task: review payment-provider mocks used by checkout tests before a provider migration
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Mock finding | Fidelity, missing failure, stale schema, or unrealistic data | Test impact |
+| Coverage boundary | What the mock proves and what it cannot prove | Evidence status |
+| Maintenance action | Contract check, fixture change, or owner assignment | Next verification |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful mock review asks whether the test would fail if the real provider violated the exact rule under discussion. If not, the mock is probably testing its own script.
+
+## Run one focused pass
+
+Start with a bounded pass—review payment-provider mocks used by checkout tests before a provider migration. Add a provider timeout after authorization, an already-settled response, and a changed error field to the mock. Keep a contract check against a recorded provider schema so the fixture cannot silently drift.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because contract fidelity, state, latency, failure modes, data realism, drift, and ownership must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Making mocks easier than the real contract.
+2. Using one fixture for every state.
+3. Treating mock coverage as provider behavior evidence.
+
+## Related Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：checks the real interface boundary。
+- [Dependency Failure Testing](https://inaodeng.com/en/qaskills/dependency-failure-testing/)：defines useful dependency failures。
+- [Test Code Review](https://inaodeng.com/en/qaskills/test-code-review/)：reviews the implementation around the mock。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mock-quality-review -g
+```
+
+After installation, invoke it with the `mock-quality-review` Skill and attach the real project material.
+
+## Two practical questions
+
+### Should mocks match every provider detail?
+
+Match the details that affect the test decision; record the remaining boundary and cover it elsewhere.
+
+### How should mock drift be detected?
+
+Use contract checks, versioned fixtures, and a review owner when the provider changes.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Mock Quality Review prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mock-quality-review/prompts/mock-quality-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mock-quality-review/prompts/mock-quality-review.md)
+
+- Awesome QA Skills: Mock Quality Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mock-quality-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mock-quality-review)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Mock Quality Review details:[https://inaodeng.com/en/qaskills/mock-quality-review/](https://inaodeng.com/en/qaskills/mock-quality-review/)

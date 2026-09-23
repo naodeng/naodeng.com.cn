@@ -1,0 +1,111 @@
+---
+title: "Test Gap Analysis: Turn Unprotected Obligations into Actionable TG Findings"
+description: "A bilingual guide to identifying missing or weak test obligations across requirements, risks, changes, defects, and test evidence without claiming coverage."
+date: 2026-12-13T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Test Gap Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+“Coverage is insufficient” is not a useful handoff. A useful gap says which obligation lacks protection, what evidence is missing, who owns the next action, and how the gap can close.
+
+The Test Gap Analysis Skill compares test obligations with test assets in both directions. It produces TG-## gaps for missing mappings, orphan tests, unverified execution, stale evidence, uncovered risks, and low-value duplicates.
+
+The result turns a vague coverage concern into a closeable work item.
+
+## Test Gap Analysis Skill: what it is for
+
+Use this Skill when requirements, risks, changes, defects, and tests need a bounded gap register. It is not a full traceability matrix, test-case authoring workflow, executable-set selector, or test execution.
+
+A good gap includes obligation, source, gap type, evidence state, impact, priority, proposed test intent, owner, close condition, and validation method.
+
+Use it when a release or change review needs to know what is not sufficiently protected before anyone claims full coverage.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Test Gap Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis/prompts/test-gap-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Obligations | Requirements, risks, changed behaviors, defects, and failure modes | Keep scope and versions fixed |
+| Test assets | Test intent, code, cases, execution records, and reports | Do not infer from filenames |
+| Evidence state | Run identity, time, environment, result, and freshness | Mark unverified or stale |
+| Decision boundary | Owner, priority, release context, and risk accepter | Do not accept residual risk |
+
+Use a request like this:
+
+~~~text
+Use the test-gap-analysis Skill.\n\nTask: Find gaps for a release that changes invoice export permissions and adds a retry path.\nInputs: [requirements, risk list, diff, defects, test inventory, run records]\nScope: [export authorization and retry side effects]\nConstraints: [do not execute tests or build a full traceability matrix]\n\nProduce TG-## findings with obligation, gap type, source, evidence, impact, priority, owner, close action, and validation method.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Obligation | What behavior or risk needs protection | Source and scope |
+| Gap type | Missing, orphan, stale, unverified, uncovered, or duplicate | Evidence state |
+| Close action | Test intent, mapping, rerun, or evidence request | Owner and condition |
+| Residual boundary | What remains unknown or deferred | Not a coverage claim |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Find a missing authorization negative path
+
+The export requirement covers an admin download, but no obligation covers a support agent attempting the same download. The Skill should record an uncovered authorization obligation, ask for a test intent and role matrix, and keep execution unassessed until a run exists.
+
+A gap register identifies missing protection and evidence. It cannot claim full coverage, pass, release readiness, or risk acceptance.
+
+## Improve the first result with better baseline input
+
+Provide stable obligation IDs, scope, versions, test assets, defect history, execution records, and the intended decision. If only names are available, mark mapping candidates unverified.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Treating a test file as proof that a requirement is covered.
+2. Saying coverage is insufficient without naming the missing obligation.
+3. Marking every gap P0 or turning a suggested test into an execution result.
+
+## Related Skills
+
+- [Requirement Traceability Analysis](https://inaodeng.com/en/qaskills/requirement-traceability-analysis/)：builds the broader bidirectional map。
+- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/)：examines whether existing signals protect the risk。
+- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/)：defines the boundary behind an obligation。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis -g
+~~~
+
+~~~text
+Use the test-gap-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Is this a test-case generator?
+
+No. It identifies obligations and gaps; detailed cases belong to the next design step.
+
+### Can an unexecuted test close a gap?
+
+It can close an intent or mapping gap, not an execution-evidence gap.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Test Gap Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis/prompts/test-gap-analysis.md)
+- [Test Gap Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis)
+- [Test Gap Analysis details](https://inaodeng.com/en/qaskills/test-gap-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

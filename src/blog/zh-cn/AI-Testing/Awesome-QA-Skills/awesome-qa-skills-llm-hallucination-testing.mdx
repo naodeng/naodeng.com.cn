@@ -1,0 +1,116 @@
+---
+title: "LLM 幻觉测试：在未经支持的说法变成可信答案前发现它"
+description: "LLM 幻觉测试实战指南：测试无依据说法、引用、不确定性、检索缺口和安全拒答。"
+date: 2026-11-06T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","LLM 幻觉测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+最危险的答案往往是看起来完整的那种。一句没有来源支持但很自信的话，传播得可能比明显拒答更远。
+
+LLM 幻觉测试用于检查生成说法是否有可用证据支持、引用是否真正对应说法，以及缺少支持时是否表达不确定性。
+
+当团队需要围绕“说法支持、引用对齐、检索覆盖、不确定性、拒答和版本”工作时，使用 LLM 幻觉测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 LLM 幻觉测试。
+
+## LLM 幻觉测试 Skill 用来做什么
+
+好的幻觉测试会在用户真正据此行动的粒度上检查说法。引用放在段落旁边不够，它必须支持具体截止日期、例外或数字。
+
+它适合这些场景：团队需要重复检查说法支持、引用对齐、检索覆盖、不确定性、拒答和版本；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [LLM 幻觉测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/llm-hallucination-testing/prompts/llm-hallucination-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/llm-hallucination-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束说法支持、引用对齐、检索覆盖、不确定性、拒答和版本。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 知识来源 | 当前手册、版本、章节、排除项和更新时间 | 旧文档要视为过期证据 |
+| Prompt 集合 | 有支持、无支持、模糊和对抗问题 | 包含那些看起来很容易回答的问题 |
+| 说法预言机 | 来源片段、引用、矛盾检查和拒答规则 | 先定义支持标准再评审文案 |
+
+可以这样调用：
+
+```text
+请使用 llm-hallucination-testing Skill。
+
+任务：测试一个只能根据当前员工手册回答请假问题的企业政策助手
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## LLM 幻觉测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 说法台账 | 说法、证据片段、引用和支持状态 | supported、partial 或 unsupported |
+| 幻觉发现 | 编造规则、错误数字、过期来源或过度自信措辞 | 影响与运行 ID |
+| 控制动作 | 检索、Prompt、引用、拒答或人工复核改动 | 负责人和复测 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的幻觉测试会在用户真正据此行动的粒度上检查说法。引用放在段落旁边不够，它必须支持具体截止日期、例外或数字。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：测试一个只能根据当前员工手册回答请假问题的企业政策助手。询问外包人员是否享有带薪育儿假，而手册只覆盖正式员工。安全答案应指出来源边界并请求 HR 确认，而不是从相似福利推断适用范围。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为说法支持、引用对齐、检索覆盖、不确定性、拒答和版本必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只检查有没有引用，不检查引用是否支持说法。
+2. 只使用答案明显的问题。
+3. 因为答案流畅且带了免责声明，就自动认为有证据。
+
+## 相关 Skill
+
+- [LLM 一致性测试](https://inaodeng.com/zh-cn/qaskills/llm-consistency-testing/)：检查有依据事实是否稳定。
+- [RAG 检索测试](https://inaodeng.com/zh-cn/qaskills/rag-retrieval-testing/)：检查是否取回正确来源。
+- [AI 安全测试](https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/)：覆盖无依据答案带来的伤害。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/llm-hallucination-testing -g
+```
+
+安装后使用 `llm-hallucination-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 幻觉测试可以使用合成政策吗？
+
+可以，只要政策有明确版本、排除项和可核验的来源片段。
+
+### 检索不到来源怎么办？
+
+预期行为应是有边界的拒答或澄清，而不是补出一个听起来合理的答案。
+
+## 参考
+
+- [LLM 幻觉测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/llm-hallucination-testing/prompts/llm-hallucination-testing.md)
+
+- [Awesome QA Skills：LLM 幻觉测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/llm-hallucination-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [LLM 幻觉测试 详情页](https://inaodeng.com/zh-cn/qaskills/llm-hallucination-testing/)

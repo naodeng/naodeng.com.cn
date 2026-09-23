@@ -1,0 +1,116 @@
+---
+title: "等价类划分测试设计：缩小输入空间，同时保留真正重要的规则"
+description: "等价类划分测试设计实战指南：划分有效、无效、空值、边界和条件输入类，并选择可追溯代表值。"
+date: 2026-11-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","等价类划分测试设计"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+把每个邮箱地址都测一遍不叫全面，那只是把时间用完。真正有用的问题是哪些输入共享同一条规则，哪些输入会跳出这个规则。
+
+等价类划分把预期行为相同的输入归组，再选择代表值覆盖有效、无效、空值和条件类。
+
+当团队需要围绕“有效与无效类、空值、类型、格式、业务规则和代表值选择”工作时，使用等价类划分测试设计 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦等价类划分测试设计。
+
+## 等价类划分测试设计 Skill 用来做什么
+
+好的等价类划分依据行为，而不只是语法。两个字符串格式相同，但一个是有效所有者、另一个是未知所有者时，它们可能属于不同业务类别。
+
+它适合这些场景：团队需要重复检查有效与无效类、空值、类型、格式、业务规则和代表值选择；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [等价类划分测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/equivalence-partitioning) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束有效与无效类、空值、类型、格式、业务规则和代表值选择。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 输入规则 | 类型、格式、允许值、可选性和业务条件 | 不同规则不要混成一类 |
+| 行为预言机 | 预期结果、错误、空集或标准化 | 每一类都要有可观察结果 |
+| 依赖关系 | 一个字段会随另一个字段改变有效范围 | 记录条件等价类 |
+
+可以这样调用：
+
+```text
+请使用 equivalence-partitioning Skill。
+
+任务：为支持日期范围、状态、所有者和自由文本过滤的搜索 API 设计输入等价类
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 等价类划分测试设计 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 等价类地图 | 类别定义、代表值和来源规则 | 有效、无效或条件类 |
+| 覆盖选择 | 选中的值与有意遗漏的值 | 选择理由 |
+| 缺口 | 没有预言机或行为模糊的类别 | 澄清动作 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的等价类划分依据行为，而不只是语法。两个字符串格式相同，但一个是有效所有者、另一个是未知所有者时，它们可能属于不同业务类别。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：为支持日期范围、状态、所有者和自由文本过滤的搜索 API 设计输入等价类。对日期过滤，划分缺省日期、有效同日范围、倒置范围、未来范围、无效时区和超过保留期的范围。每类选一个代表值，再在类别变化处增加边界值。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为有效与无效类、空值、类型、格式、业务规则和代表值选择必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只按数据类型分组，忽略业务行为。
+2. 选一个有效示例就声称覆盖整个类别。
+3. 遗漏账号或状态产生的条件类别。
+
+## 相关 Skill
+
+- [边界值测试设计](https://inaodeng.com/zh-cn/qaskills/boundary-value-testing/)：选择类别发生变化的点。
+- [组合测试设计](https://inaodeng.com/zh-cn/qaskills/combinatorial-testing/)：组合代表值。
+- [API 负向测试](https://inaodeng.com/zh-cn/qaskills/api-negative-testing/)：把无效类应用到 API 行为。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/equivalence-partitioning -g
+```
+
+安装后使用 `equivalence-partitioning` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 等价类可以替代边界测试吗？
+
+不能。等价类缩小空间，边界测试选择行为发生变化的位置。
+
+### 两个类别看起来一样怎么办？
+
+只有来源和可观察行为都一致时才合并，否则保留不确定性。
+
+## 参考
+
+- [等价类划分测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md)
+
+- [Awesome QA Skills：等价类划分测试设计 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/equivalence-partitioning)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [等价类划分测试设计 详情页](https://inaodeng.com/zh-cn/qaskills/equivalence-partitioning/)

@@ -1,0 +1,118 @@
+---
+title: "API Rate Limit Testing: Check fairness, retry behavior, and recovery after a limit is reached"
+description: "API Rate Limit Testing field guide: validate quotas, windows, identities, headers, retry timing, and safe recovery."
+date: 2026-10-14T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","API Rate Limit Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A rate limit that only returns 429 is not a complete contract. Clients need to know whether to wait, which identity was limited, and whether a retry will make the situation worse.
+
+API Rate Limit Testing verifies that limits apply to the intended identity and resource, remain fair across windows, expose actionable metadata, and recover predictably.
+
+The API Rate Limit Testing Skill is useful when a team needs a structured review of quota identity, window boundary, burst behavior, response metadata, retry timing, and recovery. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Rate Limit Testing.
+
+## API Rate Limit Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A good limit test changes one identity dimension at a time and uses the server-provided clock guidance. It checks both the blocked period and the first successful request after recovery.
+
+Use it when the team needs a repeatable review of quota identity, window boundary, burst behavior, response metadata, retry timing, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [API Rate Limit Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-rate-limit-testing/prompts/api-rate-limit-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-rate-limit-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers quota identity, window boundary, burst behavior, response metadata, retry timing, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Limit contract | Quota, window, burst allowance, identity key, and response headers | Name defaults that are not documented |
+| Traffic plan | Steady requests, bursts, concurrent identities, and retry schedule | Separate client retries from direct load |
+| Recovery evidence | 429 body, Retry-After, remaining count, and post-window success | Keep clock assumptions visible |
+
+Use a request like this:
+
+```text
+Use the api-rate-limit-testing Skill.
+
+Task: test a report-export API with per-user and per-tenant quotas while several browser tabs retry after receiving 429
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Limit decision | Which key was limited and why | User, tenant, token, or resource |
+| Client action | Wait, back off, switch queue, or stop | Header and policy basis |
+| Fairness finding | Identity starvation, burst leak, or cross-tenant impact | Evidence and repair |
+
+Do not write “passed” without a run record, query result, or source artifact. A good limit test changes one identity dimension at a time and uses the server-provided clock guidance. It checks both the blocked period and the first successful request after recovery.
+
+## Run one focused pass
+
+Start with a bounded pass—test a report-export API with per-user and per-tenant quotas while several browser tabs retry after receiving 429. Exhaust the user quota in one tab, keep a second user in the same tenant active, and retry both according to `Retry-After`. The result should show whether the user, tenant, or endpoint was limited—and whether an automatic retry stampedes the recovery window.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because quota identity, window boundary, burst behavior, response metadata, retry timing, and recovery must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Testing only one identity.
+2. Ignoring clock skew and retry headers.
+3. Calling a 429 response fair without checking unaffected users and tenants.
+
+## Related Skills
+
+- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/)：covers limit and rejection inputs。
+- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/)：checks backoff and retry boundaries。
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：validates actionable rate-limit errors。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-rate-limit-testing -g
+```
+
+After installation, invoke it with the `api-rate-limit-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Should rate-limit tests use a real quota?
+
+Use approved isolated quotas or a controllable test policy; do not exhaust shared production capacity.
+
+### What if Retry-After is missing?
+
+Record the contract gap and do not invent a client delay as if it were server behavior.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- API Rate Limit Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-rate-limit-testing/prompts/api-rate-limit-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-rate-limit-testing/prompts/api-rate-limit-testing.md)
+
+- Awesome QA Skills: API Rate Limit Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-rate-limit-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-rate-limit-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- API Rate Limit Testing details:[https://inaodeng.com/en/qaskills/api-rate-limit-testing/](https://inaodeng.com/en/qaskills/api-rate-limit-testing/)

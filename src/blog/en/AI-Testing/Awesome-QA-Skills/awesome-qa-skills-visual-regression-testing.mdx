@@ -1,0 +1,111 @@
+---
+title: "Visual Regression Testing: Define Baselines Before Calling a Diff a Defect"
+description: "A bilingual guide to visual-regression candidates, baselines, viewports, browsers, fonts, data, diff thresholds, and intentional changes."
+date: 2026-12-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Visual Regression Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A screenshot diff is an observation, not a defect verdict. Fonts, viewport, data, animation, browser rendering, and intentional design changes all determine whether the comparison is meaningful.
+
+The Visual Regression Testing Skill designs VRT-## candidates around baselines, viewports, fonts, data, diff thresholds, intentional changes, and prior diffs. It does not execute visual tests or turn a baseline file into pass evidence.
+
+A meaningful visual diff needs a controlled baseline and an intentional-change decision.
+
+## Visual Regression Testing Skill: what it is for
+
+Use this Skill to define visual regression candidates and comparison conditions for pages or components. It makes selection rationale, applicability, evidence gaps, and the smallest validation action explicit.
+
+A good VRT finding names the visual subject, baseline version, viewport and browser, font and data conditions, expected change, diff concern, owner, close condition, and validation method.
+
+Use it when a design-system change, responsive layout change, localization update, or screenshot pipeline needs a defensible visual comparison.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Visual Regression Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/visual-regression-testing/prompts/visual-regression-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/visual-regression-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Page and component inventory | Critical pages, states, themes, and component variants | Keep missing states unassessed |
+| Baseline conditions | Revision, viewport, browser, fonts, locale, timezone, and data | Do not compare unlike conditions |
+| Expected change | Design change, approved intent, and affected scope | Separate intended from unexplained |
+| Diff evidence | Screenshot, threshold, region, history, and review owner | A diff file is not a verdict |
+
+Use a request like this:
+
+~~~text
+Use the visual-regression-testing Skill.\n\nTask: Prepare visual regression candidates for a dashboard theme change across light mode, dark mode, compact viewport, and Chinese locale.\nInputs: [page inventory, baseline screenshots, design diff, fonts, data fixtures, browser matrix, threshold policy]\nScope: [dashboard cards, tables, empty and error states]\nConstraints: [do not execute screenshots or approve diffs]\n\nProduce VRT-## findings with subject, conditions, expected change, concern, evidence state, owner, close condition, and validation method.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Visual candidate | Page/component, state, variant, and risk | VRT ID and source |
+| Comparison condition | Baseline, viewport, browser, font, locale, and data | Applicability |
+| Diff judgment | Expected, unexplained, or unassessed change | Intent and evidence |
+| Validation action | Smallest screenshot or review check | Owner and NOT_RUN state |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Review a theme change without blaming the font
+
+A dark-mode diff shows text wrapping changes in a dashboard table, but the baseline used a different font fallback and data length. The Skill should separate font and fixture variance from the intended theme change, request controlled baseline conditions, and keep the diff unassessed until comparison inputs match.
+
+The output designs visual comparison candidates. It cannot prove a visual defect, pixel-perfect quality, accessibility, or release readiness without controlled screenshots and Human review.
+
+## Improve the first result with better baseline input
+
+Provide baseline revision, page states, viewport and browser, fonts, locale, timezone, data fixtures, threshold policy, intentional design scope, and review owner. Missing conditions stay blocked or unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Comparing screenshots with different fonts, data, viewport, or locale.
+2. Treating every pixel diff as a product defect.
+3. Updating baselines to make a pipeline green before understanding the change.
+
+## Related Skills
+
+- [UI Test Strategy](https://inaodeng.com/en/qaskills/ui-test-strategy/)：selects journeys, states, platforms, and risk。
+- [Cross-Browser Testing](https://inaodeng.com/en/qaskills/cross-browser-testing/)：adds browser-specific rendering scope。
+- [UI Test Selector Review](https://inaodeng.com/en/qaskills/ui-test-selector-review/)：covers behavior selectors rather than pixels。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/visual-regression-testing -g
+~~~
+
+~~~text
+Use the visual-regression-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Should the diff threshold be one global number?
+
+Not necessarily. Thresholds depend on rendering noise, region, component, and the cost of missed visual change.
+
+### Can an approved design change be auto-accepted?
+
+Only within a defined scope and review rule. Intentional change still needs baseline update evidence.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Visual Regression Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/visual-regression-testing/prompts/visual-regression-testing.md)
+- [Visual Regression Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/visual-regression-testing)
+- [Visual Regression Testing details](https://inaodeng.com/en/qaskills/visual-regression-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

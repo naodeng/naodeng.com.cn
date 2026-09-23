@@ -1,0 +1,118 @@
+---
+title: "Negative Scenario Discovery: Find the failure paths the happy journey carefully avoids"
+description: "Negative Scenario Discovery field guide: identify rejection, interruption, misuse, invalid state, dependency, and recovery scenarios."
+date: 2026-11-12T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Negative Scenario Discovery"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A happy path tells you the product can work. A negative scenario tells you what the product does when reality refuses to cooperate.
+
+Negative Scenario Discovery builds a traceable set of failure and misuse situations from journeys, rules, dependencies, states, and known risks.
+
+The Negative Scenario Discovery Skill is useful when a team needs a structured review of rejection, interruption, misuse, invalid state, dependency failure, and recovery. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Negative Scenario Discovery.
+
+## Negative Scenario Discovery Skill: what it is for
+
+A practical standard for this Skill is simple: A useful discovery pass describes the safe behavior, not just the bad input. “Invite rejected” is incomplete until the existing project, user notice, and audit trail are accounted for.
+
+Use it when the team needs a repeatable review of rejection, interruption, misuse, invalid state, dependency failure, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Negative Scenario Discovery prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/negative-scenario-discovery) contains the entry point and supporting assets where they exist.
+
+The entry point centers rejection, interruption, misuse, invalid state, dependency failure, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Happy journey | Actors, steps, state, and success condition | Make assumptions explicit |
+| Failure dimensions | Invalid input, denial, timeout, duplicate, stale link, and concurrent change | Rank by user and business impact |
+| Evidence | Requirements, defects, support cases, logs, and security policy | Label hypotheses separately |
+
+Use a request like this:
+
+```text
+Use the negative-scenario-discovery Skill.
+
+Task: discover negative paths for inviting a collaborator to a project with role, expiry, and duplicate-invite rules
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Negative scenario | Trigger, precondition, expected safe behavior, and evidence | Source or hypothesis |
+| Risk priority | Impact, likelihood, and detectability | P0 to unassessed |
+| Probe | Smallest test or question to clarify it | Owner and next action |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful discovery pass describes the safe behavior, not just the bad input. “Invite rejected” is incomplete until the existing project, user notice, and audit trail are accounted for.
+
+## Run one focused pass
+
+Start with a bounded pass—discover negative paths for inviting a collaborator to a project with role, expiry, and duplicate-invite rules. Use an expired invite, a duplicate invite, a removed user, and a role the inviter cannot grant. Check whether no membership is created, the old invite remains auditable, and the user gets a clear next step.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because rejection, interruption, misuse, invalid state, dependency failure, and recovery must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Listing invalid inputs without expected safe behavior.
+2. Mixing security abuse with ordinary validation without priority.
+3. Calling a rejection safe while leaving a partial membership.
+
+## Related Skills
+
+- [Edge Case Discovery](https://inaodeng.com/en/qaskills/edge-case-discovery/)：broadens unusual conditions。
+- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/)：turns negative scenarios into API cases。
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：checks what happens after rejection or failure。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/negative-scenario-discovery -g
+```
+
+After installation, invoke it with the `negative-scenario-discovery` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can this Skill invent negative cases?
+
+It can propose hypotheses, but each must be labeled and tied to a validation action before becoming a defect.
+
+### What if the happy path is incomplete?
+
+Stop and record the missing journey; negative coverage depends on knowing the state being challenged.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Negative Scenario Discovery prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md)
+
+- Awesome QA Skills: Negative Scenario Discovery source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/negative-scenario-discovery](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/negative-scenario-discovery)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Negative Scenario Discovery details:[https://inaodeng.com/en/qaskills/negative-scenario-discovery/](https://inaodeng.com/en/qaskills/negative-scenario-discovery/)

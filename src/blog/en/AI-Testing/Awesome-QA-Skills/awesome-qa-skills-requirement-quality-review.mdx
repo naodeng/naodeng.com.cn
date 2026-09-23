@@ -1,0 +1,111 @@
+---
+title: "Requirement Quality Review: Prepare a Requirement for Design and Testing"
+description: "A bilingual guide to reviewing requirement completeness, clarity, verifiability, feasibility, scope, and evidence quality before design or testing."
+date: 2026-11-30T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Requirement Quality Review"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A requirement can be readable and still be impossible to test. The missing piece is often a clear actor, exception, constraint, decision condition, or source of truth.
+
+The Requirement Quality Review Skill is a QA and delivery quality gate before design or test planning. It produces traceable gaps and routes deeper questions without turning a document review into release approval.
+
+The goal is to make the next engineering step possible, not to make the requirement look polished.
+
+## Requirement Quality Review Skill: what it is for
+
+Use this Skill to review completeness, clarity, verifiability, feasibility, scope, and evidence quality for requirements, acceptance criteria, or change briefs. It is an overview and routing entry point, not a test-case generator or numeric scorer.
+
+A good review uses RQ findings with source, evidence status, impact, priority, owner role, closeable question, action, and validation method. High-priority findings need a decision boundary.
+
+Use it when a story appears complete but exception paths, constraints, actors, or acceptance conditions may be missing before design, testing, or planning.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Requirement Quality Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-quality-review/prompts/requirement-quality-review.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-quality-review) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Requirement set | Story, acceptance criteria, change brief, constraints, versions, and decisions | Mark missing artifacts and stale versions |
+| Quality dimensions | Completeness, clarity, verifiability, feasibility, scope, and evidence quality | Assess dimensions separately |
+| Delivery context | Dependencies, platform, data, rollout, support, and operational constraints | Keep unknown context unassessed |
+| Decision boundary | Owners who can clarify, accept risk, or approve scope change | Do not issue Go or No-Go |
+
+Use a request like this:
+
+~~~text
+Use the requirement-quality-review Skill.\n\nTask: Review a subscription-cancellation story before technical design and test planning.\nInputs: [story, acceptance criteria, billing rules, platform scope, dependency notes, prior decisions]\nScope: [web cancellation, active subscriptions, refund eligibility]\nConstraints: [do not write test cases or approve release]\n\nAssess completeness, clarity, verifiability, feasibility, scope, and evidence quality separately. Use RQ-## findings, preserve known and missing information, route specialist work by Skill name, and give P0/P1 items an owner, decision question, close condition, and validation method.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Input audit | Known, missing, conflicting, stale, and assumed material | Source and evidence status |
+| Quality finding | Dimension-specific gap and impact | RQ ID and priority |
+| Routing or action | Owner question, specialist Skill, or smallest next step | Closeable action |
+| Validation boundary | How the requirement becomes testable or decision-ready | Method and evidence |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Review cancellation requirements before writing tests
+
+The story says users can cancel at any time, but does not define effective date, refund treatment, pending invoices, or mobile scope. The Skill should record separate completeness and verifiability findings, ask the billing owner to decide refund behavior, and route unclear terms to ambiguity analysis. It should not write a test that assumes a refund rule.
+
+The review shows whether the supplied requirement is ready for the next step and what evidence is missing. It cannot approve a release, assign a universal quality score, or prove implemented behavior.
+
+## Improve the first result with better baseline input
+
+Provide the exact requirement set, acceptance criteria, versions, constraints, dependencies, decisions, and intended next stage. If only a story is available, return a minimum draft with three to five high-value questions and leave unsupported dimensions unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Treating readable prose as complete and verifiable.
+2. Filling missing business rules from common product conventions.
+3. Giving a universal numeric score or Go/No-Go decision from one document.
+
+## Related Skills
+
+- [Requirement Ambiguity Analysis](https://inaodeng.com/en/qaskills/requirement-ambiguity-analysis/)：deepens unclear wording and missing discriminators。
+- [Requirement Traceability Analysis](https://inaodeng.com/en/qaskills/requirement-traceability-analysis/)：connects requirement claims to design and test evidence。
+- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/)：uses clarified requirements to define test boundaries。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-quality-review -g
+~~~
+
+~~~text
+Use the requirement-quality-review Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can this Skill write missing acceptance criteria?
+
+It can identify what must be decided and suggest a question or structure, but it must not invent business rules or present an unapproved criterion as final.
+
+### Does a clean review mean implementation will pass?
+
+No. It means the next step has clearer inputs. Runtime behavior still needs design, implementation, and execution evidence.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Requirement Quality Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-quality-review/prompts/requirement-quality-review.md)
+- [Requirement Quality Review Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-quality-review)
+- [Requirement Quality Review details](https://inaodeng.com/en/qaskills/requirement-quality-review/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

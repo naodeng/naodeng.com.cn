@@ -1,0 +1,116 @@
+---
+title: "CI 测试流水线优化：把流水线时间花在能改变决策的反馈上"
+description: "CI 测试流水线优化实战指南：分析耗时、波动、排序、并行、选择、资源和反馈价值。"
+date: 2026-10-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","CI 测试流水线优化"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+CI 流水线可以是绿色的，却慢到无法影响开发者下一步动作。优化要先找出哪些反馈来得太晚，或者根本不值得信任。
+
+CI 测试流水线优化用于识别瓶颈、重复工作、波动反馈、选择机会和安全的排序改动，同时不削弱有意义的覆盖。
+
+当团队需要围绕“反馈时间、测试价值、波动、依赖、并行、选择和资源成本”工作时，使用 CI 测试流水线优化 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 CI 测试流水线优化。
+
+## CI 测试流水线优化 Skill 用来做什么
+
+好的优化会保留测试存在的理由。它把昂贵反馈移动到真正需要它的决策点，而不是删除所有让流水线变慢的东西。
+
+它适合这些场景：团队需要重复检查反馈时间、测试价值、波动、依赖、并行、选择和资源成本；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [CI 测试流水线优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ci-test-optimization/prompts/ci-test-optimization.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ci-test-optimization) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束反馈时间、测试价值、波动、依赖、并行、选择和资源成本。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 流水线历史 | 耗时、排队时间、重试率、失败类型和改动范围 | 使用时间窗口，不要只看一次慢运行 |
+| 套件地图 | 依赖、标签、环境、数据和覆盖意图 | 不要因为看起来相似就删除测试 |
+| 决策目的 | PR 门禁、合并门禁、夜间信心或发布门禁 | 针对真实决策优化 |
+
+可以这样调用：
+
+```text
+请使用 ci-test-optimization Skill。
+
+任务：缩短一个共享 Runner 的 Monorepo 中浏览器、API 和契约测试的 PR 反馈时间
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## CI 测试流水线优化 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 瓶颈 | 排队、准备、执行、重试或产物时间 | 测量证据 |
+| 优化动作 | 选择、分片、排序、缓存或环境改动 | 覆盖与风险护栏 |
+| 后续指标 | 耗时、信任、缺陷发现或成本 | 负责人和复核日期 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的优化会保留测试存在的理由。它把昂贵反馈移动到真正需要它的决策点，而不是删除所有让流水线变慢的东西。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：缩短一个共享 Runner 的 Monorepo 中浏览器、API 和契约测试的 PR 反馈时间。比较四周的 PR 运行记录，再根据稳定耗时和依赖拆分浏览器测试。如果契约测试能更早发现接口断裂，就把它放在 UI 测试前，并测量新分片是否降低排队时间而没有增加重跑。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为反馈时间、测试价值、波动、依赖、并行、选择和资源成本必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只优化平均耗时，却忽略 p95 仍不可用。
+2. 把重试次数增加当成速度提升。
+3. 没有覆盖和依赖地图，只根据文件名选择测试。
+
+## 相关 Skill
+
+- [测试运行时间优化](https://inaodeng.com/zh-cn/qaskills/test-runtime-optimization/)：聚焦执行层耗时。
+- [波动测试分析](https://inaodeng.com/zh-cn/qaskills/flaky-test-analysis/)：把不稳定与耗时分开。
+- [回归测试选择](https://inaodeng.com/zh-cn/qaskills/regression-test-selection/)：提供基于风险的选择。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ci-test-optimization -g
+```
+
+安装后使用 `ci-test-optimization` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 波动测试可以从 CI 删除吗？
+
+只有在有负责人、替代证据和后续计划时，才能从阻塞门禁移出，不能只是隐藏失败。
+
+### 并行一定会加快反馈吗？
+
+不一定。排队、共享数据、Runner 争用和准备成本都可能让它更慢或更不可信。
+
+## 参考
+
+- [CI 测试流水线优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ci-test-optimization/prompts/ci-test-optimization.md)
+
+- [Awesome QA Skills：CI 测试流水线优化 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ci-test-optimization)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [CI 测试流水线优化 详情页](https://inaodeng.com/zh-cn/qaskills/ci-test-optimization/)

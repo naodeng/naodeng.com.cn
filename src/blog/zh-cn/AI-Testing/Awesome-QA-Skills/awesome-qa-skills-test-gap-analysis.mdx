@@ -1,0 +1,111 @@
+---
+title: "Test Gap Analysis：把未受保护的测试义务变成可执行缺口"
+description: "测试缺口分析双语指南，识别需求、风险、变更、缺陷和测试证据中的缺失或薄弱保护，不声称覆盖完成。"
+date: 2026-12-13T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "测试缺口分析"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+“覆盖不够”不是可交接结果。有效缺口应该说明哪个义务没有保护、缺什么证据、谁负责下一步，以及怎样关闭。
+
+Test Gap Analysis Skill 双向比较测试义务和测试资产，产出 TG-## 缺口，覆盖缺失映射、孤儿测试、未验证执行、过期证据、未覆盖风险和低价值重复。
+
+本文关注的是把模糊的覆盖担忧变成可关闭的工作项。
+
+## 测试缺口分析 Skill 用来做什么
+
+当发布或变更需要一份有边界的测试缺口清单时，使用这个 Skill。它不是完整可追溯矩阵、用例编写、可执行集选择或测试执行。
+
+好的缺口包含义务、来源、缺口类型、证据状态、影响、优先级、建议的测试意图、负责人、关闭条件和验证方式。
+
+当发布或变更复核需要在声称全覆盖前确认哪些风险没有得到充分保护时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [测试缺口分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-gap-analysis/prompts/test-gap-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-gap-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 测试义务 | 需求、风险、变更行为、缺陷和故障模式 | 固定范围和版本 |
+| 测试资产 | 测试意图、代码、用例、执行记录和报告 | 不要从文件名推断 |
+| 证据状态 | 运行 ID、时间、环境、结果和新鲜度 | 标为未验证或过期 |
+| 决策边界 | 负责人、优先级、发布上下文和风险接受人 | 不要替人接受残余风险 |
+
+可以这样调用：
+
+~~~text
+请使用 test-gap-analysis Skill。\n\n任务：为修改发票导出权限并新增重试路径的发布寻找测试缺口。\n输入材料：[需求、风险清单、diff、缺陷、测试清单和运行记录]\n范围：[导出授权和重试副作用]\n限制：[不执行测试、不构建完整追踪矩阵]\n\n输出 TG-## 发现，包含义务、缺口类型、来源、证据、影响、优先级、负责人、关闭动作和验证方式。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 测试义务 | 什么行为或风险需要保护 | 来源与范围 |
+| 缺口类型 | 缺失、孤儿、过期、未验证、未覆盖或重复 | 证据状态 |
+| 关闭动作 | 测试意图、映射、重跑或补证请求 | 负责人和条件 |
+| 残余边界 | 仍未知或延期的内容 | 不是覆盖结论 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：找出缺失的授权负向路径
+
+导出需求覆盖管理员下载，却没有覆盖支持人员尝试下载。这个 Skill 应记录未覆盖的授权义务，要求补测试意图和角色矩阵，在真实运行前保持执行状态未评估。
+
+缺口清单可以识别缺失保护和证据，不能声称全覆盖、通过、发布就绪或风险已接受。
+
+## 先补基线输入，再期待更好的结果
+
+提供稳定义务 ID、范围、版本、测试资产、缺陷历史、执行记录和目标决策。只有名称时，把映射候选标为未验证。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把测试文件当成需求已覆盖的证明。
+2. 只说覆盖不足，不指出缺少哪个义务。
+3. 所有缺口都标 P0，或把建议测试写成执行结果。
+
+## 相关 Skill
+
+- [需求可追溯性分析](https://inaodeng.com/zh-cn/qaskills/requirement-traceability-analysis/)：建立更完整的双向映射。
+- [测试有效性分析](https://inaodeng.com/zh-cn/qaskills/test-effectiveness-analysis/)：检查现有信号是否保护风险。
+- [测试范围分析](https://inaodeng.com/zh-cn/qaskills/test-scope-analysis/)：定义义务背后的范围边界。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-gap-analysis -g
+~~~
+
+~~~text
+请使用 test-gap-analysis Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这是测试用例生成器吗？
+
+不是。它识别义务和缺口，详细用例属于下一步设计。
+
+### 未执行的测试可以关闭缺口吗？
+
+可以关闭意图或映射缺口，但不能关闭执行证据缺口。
+
+
+
+## 参考
+
+- [测试缺口分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-gap-analysis/prompts/test-gap-analysis.md)
+- [测试缺口分析 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-gap-analysis)
+- [测试缺口分析 详情页](https://inaodeng.com/zh-cn/qaskills/test-gap-analysis/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

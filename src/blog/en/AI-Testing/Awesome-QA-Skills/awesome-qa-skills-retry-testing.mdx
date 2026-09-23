@@ -1,0 +1,111 @@
+---
+title: "Retry Testing: Prove Backoff and Idempotency Before Duplicates Multiply"
+description: "A bilingual guide to retry-testing analysis covering triggers, backoff, idempotency, retry limits, and duplicate side effects."
+date: 2026-12-03T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Retry Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Retries turn a temporary failure into a business risk when the first request may have succeeded. The test question is not simply whether a client tries again, but whether it can do so without duplicating a side effect.
+
+The Retry Testing Skill reviews retry triggers, backoff, idempotency, retry limits, and duplicate side effects as one controlled behavior. It separates a policy description from an executed retry result.
+
+The critical boundary is the interval where the client cannot tell whether the first attempt took effect.
+
+## Retry Testing Skill: what it is for
+
+Use this Skill for payment, notification, job, and API flows where timeouts or transient errors can cause repeated requests. It helps prepare safe, isolated validation without calling production systems.
+
+A good review names the retriable condition, backoff rule, idempotency key, attempt limit, side-effect expectation, evidence source, stop condition, and Human boundary.
+
+Use it when a service is adding retries, an incident shows duplicate writes, or a timeout path has no clear rule for uncertain success.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Retry Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/retry-testing/prompts/retry-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/retry-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Retry policy | Error classes, timeout handling, backoff, jitter, and limit | Keep unspecified behavior pending |
+| Operation contract | Read or write semantics, idempotency key, and side effect | Do not infer safety from HTTP method |
+| Failure scenario | Timeout, connection reset, 429, 5xx, or worker restart | Model one controlled trigger |
+| Evidence and environment | Logs, request IDs, mock dependency, data checks, and rollback | Do not use production credentials |
+
+Use a request like this:
+
+~~~text
+Use the retry-testing Skill.\n\nTask: Prepare validation for a payment-capture client after a connection reset during the first request.\nInputs: [retry policy, API contract, idempotency semantics, request logs, mock provider, data assertions]\nScope: [isolated staging flow]\nConstraints: [no real charge, bounded attempts, explicit cleanup]\n\nCover triggers, backoff, idempotency, limits, and duplicate side effects. Keep execution and pass claims separate from the plan.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Trigger judgment | Which failures should or should not retry | Policy and evidence |
+| Timing behavior | Backoff, jitter, ordering, and attempt limit | Expected timeline |
+| Side-effect safety | How duplicate writes or notifications are prevented | Idempotency and data check |
+| Validation boundary | What can run safely and when to stop | Owner and rollback |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Retry a payment capture without charging twice
+
+A connection reset occurs after the provider may have captured the payment. The Skill should require an idempotency key, a bounded retry, and a query or provider mock that distinguishes one capture from two. A successful second HTTP response alone is not evidence that duplicate side effects were prevented.
+
+The analysis prepares a controlled retry validation. It cannot prove idempotency, billing correctness, or absence of duplicate effects until an isolated run produces request and data evidence.
+
+## Improve the first result with better baseline input
+
+Provide error classification, timeout semantics, API contract, idempotency behavior, attempt limit, backoff rules, request IDs, mock or sandbox, data assertions, and cleanup. If any is missing, keep the corresponding conclusion pending.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Retrying every 4xx and 5xx response without checking whether the operation is safe.
+2. Checking the final response but not the number of writes, messages, or charges.
+3. Leaving backoff and maximum attempts implicit, so an outage becomes a request storm.
+
+## Related Skills
+
+- [API Idempotency Testing](https://inaodeng.com/en/qaskills/api-idempotency-testing/)：checks repeated requests against the API contract。
+- [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/)：isolates uncertain completion and timeout behavior。
+- [Circuit Breaker Testing](https://inaodeng.com/en/qaskills/circuit-breaker-testing/)：checks when repeated failures should stop calls。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/retry-testing -g
+~~~
+
+~~~text
+Use the retry-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Is an idempotency key always enough?
+
+No. The key, server behavior, retention, response semantics, and side-effect evidence all need to match the operation contract.
+
+### Can I test retries against production?
+
+Not by default. Use a mock, sandbox, or isolated environment with bounded attempts and cleanup; production testing requires explicit authorization.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Retry Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/retry-testing/prompts/retry-testing.md)
+- [Retry Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/retry-testing)
+- [Retry Testing details](https://inaodeng.com/en/qaskills/retry-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

@@ -1,0 +1,111 @@
+---
+title: "Security Requirement Review: Make Protection Goals Testable Before Build"
+description: "A bilingual guide to reviewing security objectives, testability, trace links, acceptance conditions, and evidence gaps without claiming a security pass."
+date: 2026-12-06T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Security Requirement Review"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+“The system must be secure” is a concern, not a testable requirement. Security work becomes reviewable when the protected asset, threat boundary, expected control, acceptance condition, and evidence source are explicit.
+
+The Security Requirement Review Skill reviews security objectives and their testability before implementation. It finds trace and acceptance gaps while keeping static design evidence separate from vulnerability or security-pass claims.
+
+The goal is not to make a security statement sound stronger; it is to make the intended protection observable.
+
+## Security Requirement Review Skill: what it is for
+
+Use this Skill to review authentication, authorization, data protection, audit, privacy, or abuse-prevention requirements with redacted material. It does not read credentials, call real APIs, or perform an exploit.
+
+A good finding names the protected asset, actor and boundary, security objective, acceptance condition, trace link, evidence state, owner, close condition, and safe validation method.
+
+Use it when a security requirement is broad, a threat-model decision must become an acceptance condition, or a design has controls without a verifiable success rule.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Security Requirement Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review/prompts/security-requirement-review.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Security objective | Asset, threat, actor, trust boundary, and expected control | Keep undefined assets or actors open |
+| Acceptance material | Requirement, design, policy, test idea, and trace IDs | Mark missing links |
+| Applicability | Role, tenant, region, data class, platform, and version | Do not compare unknown scopes |
+| Evidence plan | Redacted fixtures, safe environment, logs, and validation method | Do not use real secrets |
+
+Use a request like this:
+
+~~~text
+Use the security-requirement-review Skill.\n\nTask: Review a requirement that support agents may view customer invoices but must not export payment-card data.\nInputs: [security requirement, role matrix, data classification, UI/API design, audit policy, trace links]\nScope: [support portal, authenticated agents, staging]\nConstraints: [no real customer data or credentials]\n\nAssess objective, testability, trace links, acceptance conditions, and evidence gaps. Keep assumptions and Human risk decisions separate.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Security objective | What asset or behavior must be protected | Source and boundary |
+| Testability finding | Whether the requirement can be observed and checked | Acceptance gap |
+| Trace finding | Whether design, control, and validation are linked | ID and status |
+| Evidence action | Safe validation and close condition | Owner and environment |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Turn card-data protection into an observable condition
+
+The requirement prohibits exporting card data but does not say whether masked values may be copied, downloaded through an API, or included in audit logs. The Skill should ask the owner to define the data class, actors, channels, and evidence for each path, rather than inventing a security rule or claiming the portal is safe.
+
+The review assesses requirement quality and evidence gaps. It cannot prove vulnerability absence, exploit resistance, remediation completion, or release security.
+
+## Improve the first result with better baseline input
+
+Provide the exact security requirement, asset and threat context, role/data matrix, applicable channels, version, design links, acceptance conditions, and safe validation environment. Use redacted or synthetic data.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Treating a broad security adjective as an acceptance condition.
+2. Assuming a UI restriction covers direct API, export, logs, and support tooling.
+3. Calling a control secure because the design document contains its name.
+
+## Related Skills
+
+- [Threat Modeling](https://inaodeng.com/en/qaskills/threat-modeling/)：supplies asset, threat, and boundary context。
+- [Secrets-Exposure Review](https://inaodeng.com/en/qaskills/secrets-exposure-review/)：reviews credential and log exposure。
+- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：validates role and resource access boundaries。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review -g
+~~~
+
+~~~text
+Use the security-requirement-review Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can this Skill perform a penetration test?
+
+No. It prepares requirement and evidence review; security testing requires a separately authorized method and environment.
+
+### What if the owner cannot define a threshold?
+
+Mark the acceptance condition unassessed, record the decision question, and do not replace it with a generic security standard.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Security Requirement Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review/prompts/security-requirement-review.md)
+- [Security Requirement Review Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review)
+- [Security Requirement Review details](https://inaodeng.com/en/qaskills/security-requirement-review/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

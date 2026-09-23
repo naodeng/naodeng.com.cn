@@ -1,0 +1,111 @@
+---
+title: "Requirement Conflict Detection：区分真实矛盾与适用范围差异"
+description: "需求冲突检测双语指南，保留互斥规则的来源、条件和适用范围，把最终优先级决定留给负责人。"
+date: 2026-11-28T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "需求冲突检测"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+两份文档看起来矛盾，并不代表它们真的冲突；其中一份可能只适用于另一个租户、版本、区域或用户状态。检测冲突前必须先核对边界。
+
+Requirement Conflict Detection Skill 在不替业务决定优先级的前提下比较互斥规则，保留双方陈述、条件、证据和决策负责人，避免把适用范围缺失误判成产品冲突。
+
+本文先问的不是哪份文档语气更强，而是两条规则是否真的作用于同一个对象和范围。
+
+## 需求冲突检测 Skill 用来做什么
+
+当需求、政策、合同或验收材料在同一范围内同时允许和禁止某个行为时，使用这个 Skill。它负责诊断冲突，不负责接受风险、发明折中方案或决定谁优先。
+
+好的发现应使用 RF 编号，保留双方陈述和来源，核对对象与范围是否相同，指出最小证据，并向负责人提出可关闭的优先级问题。
+
+当一个材料说允许某行为、另一个说禁止，或者一次变更暴露出同一角色、状态、字段或动作存在不同规则时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [需求冲突检测 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-conflict-detection/prompts/requirement-conflict-detection.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-conflict-detection) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 来源对 | 带版本的需求、政策、合同、设计或验收陈述 | 不要把任何一方概括掉 |
+| 适用范围 | 角色、状态、平台、租户、区域、时间和发布范围 | 范围缺失时视为证据缺失 |
+| 候选冲突 | 看起来互斥的对象、动作、数量或约束 | 范围差异不要直接称为冲突 |
+| 决策负责人 | 能批准优先级或要求更新规格的角色 | 分析中不要替他决定 |
+
+可以这样调用：
+
+~~~text
+请使用 requirement-conflict-detection Skill。\n\n任务：判断隐私政策的 30 天删除规则，是否与分析合同对欧盟客户事件保留 90 天的规则冲突。\n输入材料：[政策版本、合同、租户和区域范围、数据分类、生效日期]\n范围：[欧盟生产数据和客户事件]\n限制：[不做最终法律解释、不修改数据]\n\n保留双方陈述，先检查适用范围，区分 conflict、missing、stale 和未评估，并为每条 RF-## 发现给出决策问题、负责人、关闭条件和验证方法。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 来源对 | 双方原始陈述和版本 | 可追溯证据 |
+| 适用性检查 | 角色、对象、区域、状态和时间是否一致 | 共同范围或缺失边界 |
+| 冲突状态 | 冲突、歧义、缺失、过期或未评估 | 不要默默降级 |
+| 决策请求 | 问题、负责人、关闭条件和验证方式 | 人工优先级边界 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：检查保留规则，但不要替法律负责人选赢家
+
+政策说欧盟客户事件 30 天后必须删除，分析合同却说事件保留 90 天。这个 Skill 应确认合同是否覆盖同一事件类型和区域，保留双方来源，并把优先级问题交给隐私和产品负责人。如果合同是全球范围且明确排除欧盟数据，表面冲突就会变成适用范围差异。
+
+分析可以说明给定规则在给定范围下是什么关系，不能提供法律意见、批准保留策略或修改数据。
+
+## 先补基线输入，再期待更好的结果
+
+提供原文、版本、生效日期、数据对象定义、角色、租户、区域、平台和状态。任何边界缺失时先标为 missing 或 stale，不要急着叫冲突。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 不检查范围和权威性，就选择看起来更严格或更新的规则。
+2. 把两条规则合并成未经批准的折中句子。
+3. 把缺失版本或区域边界叫作冲突，让团队修错问题。
+
+## 相关 Skill
+
+- [需求歧义分析](https://inaodeng.com/zh-cn/qaskills/requirement-ambiguity-analysis/)：区分措辞不清和规则互斥。
+- [需求一致性分析](https://inaodeng.com/zh-cn/qaskills/requirement-consistency-analysis/)：在路由冲突前比较多个材料。
+- [安全需求复核](https://inaodeng.com/zh-cn/qaskills/security-requirement-review/)：检查可能引发高影响冲突的安全约束。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-conflict-detection -g
+~~~
+
+~~~text
+请使用 requirement-conflict-detection Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 应该决定哪条需求优先吗？
+
+不应该。它保留证据，并把优先级、风险接受或规格修改交给有责任的人工负责人。
+
+### 如果来源版本不同怎么办？
+
+先检查生效日期和适用范围。比较窗口不清楚时标为 stale 或未评估，不要自动把版本漂移当成当前冲突。
+
+
+
+## 参考
+
+- [需求冲突检测 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-conflict-detection/prompts/requirement-conflict-detection.md)
+- [需求冲突检测 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-conflict-detection)
+- [需求冲突检测 详情页](https://inaodeng.com/zh-cn/qaskills/requirement-conflict-detection/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

@@ -1,0 +1,111 @@
+---
+title: "Reliability Testing：把故障模式连接到可用性证据"
+description: "可靠性测试双语指南，围绕可用性目标、故障模式、暴露窗口和证据就绪度准备有边界的分析。"
+date: 2026-11-26T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "可靠性测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+可靠性不是“服务通常能工作”这句话，而是可用性目标、真实故障模式、暴露窗口和可检查证据之间的关系。
+
+Reliability Testing Skill 用有证据边界的方式准备服务可靠性判断，帮助团队建模故障和暴露范围，不把静态架构图或一周没有事故当作证明。
+
+本文关注的结果应该告诉下一位工程师要隔离哪个故障，以及什么证据会改变当前判断。
+
+## 可靠性测试 Skill 用来做什么
+
+当你要复核可用性目标、依赖故障、降级模式、暴露窗口和验证证据是否就绪时，使用这个 Skill。它不会自行注入故障，也不会直接访问生产系统。
+
+好的可靠性复核需要把每个重要故障模式连到预期行为、受影响暴露、证据来源、验证方式、负责人和停止条件。
+
+当准备韧性演练、依赖或流量发生变化，或者已有 SLO 但没有清晰验证路径时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [可靠性测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing/prompts/reliability-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 可用性目标 | SLO 或业务目标、服务边界和统计窗口 | 目标没有依据时保留 pending |
+| 故障模式 | 队列延迟、供应商不可用、存储饱和或依赖超时 | 不要只写系统不可用 |
+| 暴露窗口 | 每个模式影响的用户、操作、区域和持续时间 | 影响范围未知时标为未评估 |
+| 证据就绪度 | 指标、日志、Trace、告警、runbook 和安全测试环境 | 设计证据与执行证据分开 |
+
+可以这样调用：
+
+~~~text
+请使用 reliability-testing Skill。\n\n任务：为依赖队列和第三方邮件供应商的通知服务准备可靠性复核。\n输入材料：[SLO、依赖图、故障模式、流量窗口、指标、告警和 runbook]\n范围：[staging 演练与生产证据复核]\n限制：[不注入生产故障、供应商数据脱敏]\n\n覆盖可用性目标、故障模式、暴露窗口和证据就绪度。明确标记 pending、blocked 或未评估，并给出最小隔离验证方法。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 可靠性目标 | 预期可用性或降级行为 | 来源与统计窗口 |
+| 故障模式判断 | 某个故障下服务应该如何表现 | 场景与证据状态 |
+| 暴露分析 | 谁或什么会受影响、影响多久 | 影响范围与未知项 |
+| 证据计划 | 哪个指标、Trace 或演练可以减少不确定性 | 负责人和停止条件 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：复核供应商故障，不要凭空推导可用性
+
+邮件供应商协议说请求可能超时，服务设计提到重试，却没有说明队列背压或用户可见状态。这个 Skill 应标记故障模式和暴露窗口不完整，要求补充重试、队列和告警证据；不能根据一次成功的 staging 冒烟测试推导可用性百分比。
+
+复核可以根据已有材料分类目标和证据就绪度，不能在授权验证产生运行时证据前证明真实可用性、故障隔离或恢复行为。
+
+## 先补基线输入，再期待更好的结果
+
+提供目标来源、依赖和故障模式图、暴露窗口、指标定义、告警与 runbook、环境和数据限制。没有批准的目标时写证据缺口，不要自行发明 SLO。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把历史在线率当作未观察过的依赖故障也能处理的证明。
+2. 只描述故障模式，不写用户暴露、预期降级行为或告警。
+3. 没有定义隔离场景和停止条件，就先做大范围故障注入。
+
+## 相关 Skill
+
+- [恢复测试](https://inaodeng.com/zh-cn/qaskills/recovery-testing/)：检查服务或数据恢复之后的行为。
+- [混沌测试](https://inaodeng.com/zh-cn/qaskills/chaos-testing/)：设计受控的故障实验。
+- [可观测性设计复核](https://inaodeng.com/zh-cn/qaskills/observability-design-review/)：检查可靠性证据能否被观察到。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing -g
+~~~
+
+~~~text
+请使用 reliability-testing Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 能替我们设定 SLO 吗？
+
+不能。它可以暴露目标、统计窗口和验证路径缺失，但目标必须由服务和业务负责人决定。
+
+### 一段时间没有事故算可靠性证据吗？
+
+它只是覆盖有限的一次观察。要保留时间窗口和故障暴露情况，不能证明没有发生过的故障场景。
+
+
+
+## 参考
+
+- [可靠性测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing/prompts/reliability-testing.md)
+- [可靠性测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing)
+- [可靠性测试 详情页](https://inaodeng.com/zh-cn/qaskills/reliability-testing/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

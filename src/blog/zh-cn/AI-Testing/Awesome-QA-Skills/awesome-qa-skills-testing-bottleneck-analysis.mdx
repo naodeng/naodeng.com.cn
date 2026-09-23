@@ -1,0 +1,111 @@
+---
+title: "Testing Bottleneck Analysis：把队列、交接和容量问题变成行动"
+description: "测试瓶颈分析双语指南，围绕等待队列、依赖、容量、交接和约束证据分析测试流转，不自造根因或通过结论。"
+date: 2026-12-18T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "测试瓶颈分析"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+测试瓶颈不一定是慢测试，也可能是共享环境、评审队列、缺少数据、专业交接，或仪表盘没有记录的容量规则。
+
+Testing Bottleneck Analysis Skill 检查等待队列、依赖、容量、交接和测试约束证据，把延迟抱怨变成有证据边界的改进路径。
+
+本文关注的产物应指出下一个可测量的约束，而不是只指出看起来最长的队列。
+
+## 测试瓶颈分析 Skill 用来做什么
+
+当你要复核测试为什么等待、流程停在哪里，以及什么证据能区分需求、容量、依赖或交接约束时，使用这个 Skill。它不自造根因，也不批准流程变化。
+
+好的结果要写清队列、依赖、容量或交接信号、时间窗口、证据状态、优先级、负责人、关闭条件和最小验证。
+
+当测试工作反复等待环境、数据、评审、专家或 CI 容量，需要可决策诊断时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [测试瓶颈分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 流转证据 | 到达、等待、服务、交接、排队和完成时间戳 | 缺时间戳要明确 |
+| 依赖 | 环境、数据、审批、服务和专家约束 | 观察到的依赖与假设分开 |
+| 容量 | Worker、环境、评审槽位、窗口和利用率 | 不要从抱怨推断饱和 |
+| 决策边界 | 负责人、实验、停止条件和变更权限 | 取舍由人工决定 |
+
+可以这样调用：
+
+~~~text
+请使用 testing-bottleneck-analysis Skill。\n\n任务：诊断结账发布验证为什么要等待两天的共享 staging 环境和安全评审。\n输入材料：[队列时间戳、环境预约、评审交接、容量、阻塞原因和发布日历]\n范围：[最近四次发布]\n限制：[不自造根因、不承诺吞吐改善]\n\n分开等待队列、依赖、容量、交接和证据发现，给出优先级、负责人、关闭条件和可测量的下一步。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 约束发现 | 观察到的队列、依赖、容量或交接问题 | 来源与证据状态 |
+| 影响 | 延迟如何影响验证或风险 | 优先级与范围 |
+| 实验 | 区分假设的最小变化 | 预期观察 |
+| 决策边界 | 需要人工做容量或流程选择的内容 | 负责人和残余风险 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：区分 staging 稀缺和安全评审交接
+
+发布确实在等 staging，但时间戳显示安全评审只有在手工环境交接后才开始。这个 Skill 应把环境容量和交接顺序作为两个假设，要求时间戳重放或并行预约实验，不要只因为队列长就归罪环境。
+
+分析可以分类流转证据并提出实验，不能在验证前证明根因、吞吐提升或发布就绪。
+
+## 先补基线输入，再期待更好的结果
+
+提供固定发布窗口、队列和服务时间戳、阻塞原因、依赖图、容量排期、交接负责人和分析要支持的决定。时间戳缺失时保持未评估。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 不检查下游等待或服务时间，就把最长队列叫瓶颈。
+2. 把利用率或抱怨当成容量饱和证明。
+3. 没有定义实验和成功证据就先改流程。
+
+## 相关 Skill
+
+- [测试运行时间优化](https://inaodeng.com/zh-cn/qaskills/test-runtime-optimization/)：在流程约束明确后处理慢执行。
+- [质量生产力指标](https://inaodeng.com/zh-cn/qaskills/quality-productivity-metrics/)：区分流程指标与质量结论。
+- [测试范围分析](https://inaodeng.com/zh-cn/qaskills/test-scope-analysis/)：显示哪些范围被阻塞或延期。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis -g
+~~~
+
+~~~text
+请使用 testing-bottleneck-analysis Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 会自动建议增加人员吗？
+
+不会。它识别证据和取舍，容量变化属于人工计划决定。
+
+### 时间戳不完整怎么办？
+
+返回受限诊断，把因果发现标为未评估，并请求最小缺失事件时间戳。
+
+
+
+## 参考
+
+- [测试瓶颈分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)
+- [测试瓶颈分析 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis)
+- [测试瓶颈分析 详情页](https://inaodeng.com/zh-cn/qaskills/testing-bottleneck-analysis/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

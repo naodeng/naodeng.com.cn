@@ -1,0 +1,128 @@
+---
+title: "API Idempotency Testing: Prove repeated writes do not create repeated business effects"
+description: "API Idempotency Testing field guide: test duplicate requests, keys, concurrency, timeouts, replay windows, and stored outcomes."
+date: 2026-10-11T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","API Idempotency Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Retries are ordinary. Duplicate refunds, orders, and notifications are not. Idempotency testing checks the business effect—not just whether the second HTTP response looks familiar.
+
+API Idempotency Testing verifies that repeated or concurrent requests with the same business intent produce one safe effect and a well-defined response.
+
+The API Idempotency Testing Skill is useful when a team needs a structured review of idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Idempotency Testing.
+
+## API Idempotency Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [API Idempotency Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Operation contract | Write effect, idempotency key format, replay window, and conflict policy | Do not infer the replay window from cache settings |
+| Request variants | Same key and payload, same key with changed payload, no key, and concurrent requests | Record exact body and headers |
+| Business evidence | Order IDs, payment attempts, event records, and response bodies | A matching response is not enough without state evidence |
+
+Use a request like this:
+
+```text
+
+Use the api-idempotency-testing Skill.
+
+Task: test a checkout POST when the client times out after the server has created the order
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Replay result | Whether the same key returns the original outcome | Response and stored state |
+| Side-effect count | Orders, charges, events, or notifications created | Exactly once, zero, or duplicate |
+| Conflict finding | Changed payload, expired key, or concurrent ownership | Policy and repair action |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong idempotency test follows the request into storage and downstream events. It also tests the uncomfortable case where the key is reused with a different payload—silently accepting it is usually worse than rejecting it.
+
+## Run one focused pass
+
+Start with a bounded pass—test a checkout POST when the client times out after the server has created the order. Submit checkout with key `cart-1842`, let the client time out, then replay it twice—once serially and once concurrently. Confirm one order, one payment attempt, one confirmation event, and a response that points to the original order. Reuse the key with a different cart and expect a conflict.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Checking duplicate responses without checking duplicate effects.
+2. Testing only serial retries.
+3. Allowing a changed payload to inherit an old key silently.
+
+## Related Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：anchors the request and response contract。
+- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/)：explores retry triggers and boundaries。
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：checks conflict and processing responses。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing -g
+
+```
+
+After installation, invoke it with the `api-idempotency-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### What if the first response is lost?
+
+The replay must recover the original business result or an explicit processing state without creating another effect.
+
+
+
+### Is a time-based key expiry enough?
+
+Only if the contract defines what happens after expiry and evidence shows the business risk is acceptable.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- API Idempotency Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md)
+
+- Awesome QA Skills: API Idempotency Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- API Idempotency Testing details:[https://inaodeng.com/en/qaskills/api-idempotency-testing/](https://inaodeng.com/en/qaskills/api-idempotency-testing/)

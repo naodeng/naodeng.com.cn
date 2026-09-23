@@ -1,0 +1,111 @@
+---
+title: "State Transition Testing：从真实规则推导可达与异常路径"
+description: "状态迁移测试双语指南，根据状态、事件、守卫、动作和持久化证据推导可追溯的测试设计候选。"
+date: 2026-12-08T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "状态迁移测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+状态图是设计材料，不是每条迁移都能发生的记录。有效的状态迁移测试要保留规则、守卫、目标状态以及仍需运行时证据的部分。
+
+State Transition Testing Skill 根据已有状态、事件、守卫、动作、角色和持久化证据，推导可达、不可达和异常迁移候选。它不执行测试，也不声称覆盖。
+
+本文关注的产物是有证据边界的候选路径，不是凭空补出的状态机。
+
+## 状态迁移测试 Skill 用来做什么
+
+当订单、订阅、审批或事故处理流程存在依赖状态的行为，需要在写用例前得到可追踪候选时，使用这个 Skill。
+
+好的 STT-## 发现包含源状态、事件、前置条件/守卫、动作、目标状态、可达性、证据、影响、负责人、关闭条件和验证方式。
+
+当状态模型发生变化、异常迁移重要，或者团队要在写用例前找出不可达或未验证路径时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [状态迁移测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/state-transition-testing/prompts/state-transition-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/state-transition-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 状态来源 | 状态模型、工作流、API 契约或领域决策 | 不要补写缺失状态 |
+| 事件与守卫 | 触发器、前置条件、角色、权限和时间 | 未知守卫保持未评估 |
+| 动作与持久化 | 副作用、持久状态、重试和错误迁移 | 设计与观察行为分开 |
+| 验证上下文 | 环境、数据、状态准备和运行证据 | 未执行候选标记 NOT_RUN |
+
+可以这样调用：
+
+~~~text
+请使用 state-transition-testing Skill。\n\n任务：为订单从待支付迁移到已支付、失败、取消或退款推导测试候选。\n输入材料：[状态模型、支付事件、角色规则、重试行为和持久化说明]\n范围：[结账 staging、银行卡支付流程]\n限制：[不要发明状态，也不要声称所有路径已执行]\n\n输出 STT-## 发现，包含状态、事件、守卫、动作、目标、可达性、来源证据、影响、负责人、关闭条件和验证方式。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 迁移候选 | 源状态、事件、守卫、动作和目标 | STT 编号与来源 |
+| 可达性 | 可达、不可达、未知或异常候选 | 证据状态 |
+| 持久化关注 | 迁移后必须保持什么一致 | 数据与副作用 |
+| 验证动作 | 状态准备和最小安全检查 | 执行前为 NOT_RUN |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：推导支付失败和退款路径，不要自创规则
+
+模型说明待支付可以到已支付或失败，却没有说明供应商已授权后发生超时怎么办。这个 Skill 应保留缺失守卫，追问目标状态是失败、待复核还是其他已批准状态；不能因为支付系统通常有超时，就自行添加状态。
+
+结果是可追踪的测试设计清单，不能证明可达性、执行、覆盖或发布就绪。
+
+## 先补基线输入，再期待更好的结果
+
+提供权威状态来源、事件、守卫、角色、动作、持久化规则、版本、环境和已知运行 Trace。未知规则保持未评估或 blocked。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把静态状态图当成每条箭头都可执行的证明。
+2. 按领域惯例补写缺失状态和守卫。
+3. 把候选数量当成覆盖或通过证据。
+
+## 相关 Skill
+
+- [判定表测试](https://inaodeng.com/zh-cn/qaskills/decision-table-testing/)：组织条件和结果组合。
+- [业务规则提取](https://inaodeng.com/zh-cn/qaskills/business-rule-extraction/)：在迁移设计前恢复显式规则。
+- [测试范围分析](https://inaodeng.com/zh-cn/qaskills/test-scope-analysis/)：保持状态迁移范围和排除项可见。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/state-transition-testing -g
+~~~
+
+~~~text
+请使用 state-transition-testing Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 会写完整测试用例吗？
+
+它可以推导可追踪候选，但不应扩展成完整策略或执行结果。
+
+### 这里的 NOT_RUN 是什么意思？
+
+迁移已经被识别，但没有授权运行时证据。它必须与不可达或通过分开。
+
+
+
+## 参考
+
+- [状态迁移测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/state-transition-testing/prompts/state-transition-testing.md)
+- [状态迁移测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/state-transition-testing)
+- [状态迁移测试 详情页](https://inaodeng.com/zh-cn/qaskills/state-transition-testing/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

@@ -1,0 +1,118 @@
+---
+title: "Observability Design Review: Make a future failure explainable before it happens"
+description: "Observability Design Review field guide: review logs, metrics, traces, correlation, privacy, alerts, and diagnostic actions."
+date: 2026-11-13T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Observability Design Review"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A dashboard full of green numbers is not observability if nobody can connect a failed checkout to the request, dependency, state, and user impact.
+
+Observability Design Review checks whether a system emits the signals needed to detect, explain, triage, and verify behavior while respecting privacy.
+
+The Observability Design Review Skill is useful when a team needs a structured review of logs, metrics, traces, correlation, dimensions, alerts, privacy, and diagnostic action. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Observability Design Review.
+
+## Observability Design Review Skill: what it is for
+
+A practical standard for this Skill is simple: A good review starts from a decision an operator must make. It asks which signal narrows the cause, which signal identifies the affected journey, and which data should never be emitted.
+
+Use it when the team needs a repeatable review of logs, metrics, traces, correlation, dimensions, alerts, privacy, and diagnostic action—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Observability Design Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review/prompts/observability-design-review.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review) contains the entry point and supporting assets where they exist.
+
+The entry point centers logs, metrics, traces, correlation, dimensions, alerts, privacy, and diagnostic action. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Journey map | User action, services, dependencies, states, and failure points | Name the first signal expected |
+| Signal design | Log fields, metric dimensions, trace propagation, and alert rule | Check cardinality and privacy |
+| Diagnostic need | What operator must decide and how fast | Tie every signal to an action |
+
+Use a request like this:
+
+```text
+Use the observability-design-review Skill.
+
+Task: review observability for checkout failures spanning browser, API gateway, payment provider, and order worker
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Observability gap | Missing signal, wrong dimension, broken correlation, or unsafe data | Impact |
+| Diagnostic path | Query, dashboard, trace, or alert needed | Owner and time |
+| Verification plan | Failure injection or replay that proves the signal works | Evidence artifact |
+
+Do not write “passed” without a run record, query result, or source artifact. A good review starts from a decision an operator must make. It asks which signal narrows the cause, which signal identifies the affected journey, and which data should never be emitted.
+
+## Run one focused pass
+
+Start with a bounded pass—review observability for checkout failures spanning browser, API gateway, payment provider, and order worker. Follow a failed checkout with one correlation ID across gateway, provider request, and worker event. Require the dashboard to separate provider timeout from order-state conflict without logging card data or raw customer content.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because logs, metrics, traces, correlation, dimensions, alerts, privacy, and diagnostic action must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Collecting fields without a diagnostic question.
+2. Using high-cardinality dimensions without a cost plan.
+3. Adding alerts that have no owner or response action.
+
+## Related Skills
+
+- [Log Analysis](https://inaodeng.com/en/qaskills/log-analysis/)：uses emitted logs to find patterns。
+- [Distributed Trace Analysis](https://inaodeng.com/en/qaskills/distributed-trace-analysis/)：follows requests across services。
+- [Production Incident Analysis](https://inaodeng.com/en/qaskills/production-incident-analysis/)：uses signals during incident review。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review -g
+```
+
+After installation, invoke it with the `observability-design-review` Skill and attach the real project material.
+
+## Two practical questions
+
+### Does more telemetry mean better observability?
+
+No. Useful signals are connected, queryable, safe, and tied to decisions.
+
+### Can a log line prove a state change?
+
+Only when its source, timing, correlation, and relation to durable state are defined.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Observability Design Review prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review/prompts/observability-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review/prompts/observability-design-review.md)
+
+- Awesome QA Skills: Observability Design Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Observability Design Review details:[https://inaodeng.com/en/qaskills/observability-design-review/](https://inaodeng.com/en/qaskills/observability-design-review/)

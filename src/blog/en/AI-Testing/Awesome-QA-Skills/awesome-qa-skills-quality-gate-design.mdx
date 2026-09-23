@@ -1,0 +1,118 @@
+---
+title: "Quality Gate Design: Make release decisions explicit without pretending every signal is complete"
+description: "Quality Gate Design field guide: define decision scope, evidence states, thresholds, exceptions, owners, and failure actions."
+date: 2026-11-18T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Quality Gate Design"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A gate that says “all tests must pass” sounds strict and explains almost nothing. Which tests, which evidence, which environment, and who decides when one is unavailable?
+
+Quality Gate Design creates evidence-bounded release or merge decisions with scope, thresholds, exceptions, owners, and explicit failure actions.
+
+The Quality Gate Design Skill is useful when a team needs a structured review of decision scope, evidence state, threshold, exception, owner, failure action, and expiry. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Quality Gate Design.
+
+## Quality Gate Design Skill: what it is for
+
+A practical standard for this Skill is simple: A good gate separates “not run,” “failed,” “blocked,” and “insufficient evidence.” It makes the decision stricter by making uncertainty visible, not by labeling every unknown as a failure.
+
+Use it when the team needs a repeatable review of decision scope, evidence state, threshold, exception, owner, failure action, and expiry—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Quality Gate Design prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-gate-design/prompts/quality-gate-design.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-gate-design) contains the entry point and supporting assets where they exist.
+
+The entry point centers decision scope, evidence state, threshold, exception, owner, failure action, and expiry. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Decision | Merge, deploy, stage, expand, or stop | One gate should answer one decision |
+| Evidence | Test run, environment, version, artifact, and business signal | Keep unavailable evidence explicit |
+| Exception policy | Owner, expiry, compensating control, and risk acceptance | No permanent exception by silence |
+
+Use a request like this:
+
+```text
+Use the quality-gate-design Skill.
+
+Task: design a staged-release gate for a checkout change with unit, contract, browser, and production signals
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Gate contract | Evidence, threshold, state, and decision | Versioned rule |
+| Failure action | Block, investigate, rerun, accept, or rollback | Owner and deadline |
+| Residual risk | What remains outside the gate | Visible acceptance |
+
+Do not write “passed” without a run record, query result, or source artifact. A good gate separates “not run,” “failed,” “blocked,” and “insufficient evidence.” It makes the decision stricter by making uncertainty visible, not by labeling every unknown as a failure.
+
+## Run one focused pass
+
+Start with a bounded pass—design a staged-release gate for a checkout change with unit, contract, browser, and production signals. Require unit and contract evidence before deployment, browser evidence before expanding traffic, and a production signal window before full rollout. If browser infrastructure is unavailable, block expansion or record an expiring human exception with a compensating check.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because decision scope, evidence state, threshold, exception, owner, failure action, and expiry must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. One threshold for every decision.
+2. Treating missing evidence as passing.
+3. Allowing exceptions without expiry, owner, or compensating control.
+
+## Related Skills
+
+- [Quality Dashboard Design](https://inaodeng.com/en/qaskills/quality-dashboard-design/)：presents gate signals for decisions。
+- [Release Testing Workflow](https://inaodeng.com/en/qaskills/release-testing-workflow/)：places gates into release flow。
+- [Quality Risk Analysis](https://inaodeng.com/en/qaskills/quality-risk-analysis/)：connects thresholds to risk。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-gate-design -g
+```
+
+After installation, invoke it with the `quality-gate-design` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can a gate include business acceptance?
+
+Yes, but business acceptance must remain a separate evidence source and owner from technical checks.
+
+### Should every failed test block release?
+
+Only when its risk and decision scope justify blocking; otherwise define investigation or acceptance behavior explicitly.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Quality Gate Design prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-gate-design/prompts/quality-gate-design.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-gate-design/prompts/quality-gate-design.md)
+
+- Awesome QA Skills: Quality Gate Design source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-gate-design](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-gate-design)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Quality Gate Design details:[https://inaodeng.com/en/qaskills/quality-gate-design/](https://inaodeng.com/en/qaskills/quality-gate-design/)

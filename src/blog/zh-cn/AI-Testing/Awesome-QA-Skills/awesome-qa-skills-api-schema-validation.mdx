@@ -1,0 +1,116 @@
+---
+title: "API Schema 校验：让真实请求响应在边界上对齐契约"
+description: "API Schema 校验实战指南：比较真实请求响应与 Schema 的字段、格式、可选性和版本规则。"
+date: 2026-10-15T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","API Schema 校验"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+Schema 在纸面上可以合法，真实客户端却可能传入 null、漏掉所谓可选字段，或者收到文档枚举之外的值。
+
+API Schema 校验用于检查真实请求和响应是否遵守声明的结构、约束、格式与兼容性规则。
+
+当团队需要围绕“字段结构、必填性、可空性、格式、枚举、额外属性和版本漂移”工作时，使用 API Schema 校验 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 API Schema 校验。
+
+## API Schema 校验 Skill 用来做什么
+
+好的 Schema 校验会检查真实系统最容易变乱的边界——null、缺失数组、未知字段、日期格式和版本默认值。
+
+它适合这些场景：团队需要重复检查字段结构、必填性、可空性、格式、枚举、额外属性和版本漂移；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [API Schema 校验 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation/prompts/api-schema-validation.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束字段结构、必填性、可空性、格式、枚举、额外属性和版本漂移。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| Schema 来源 | OpenAPI 版本、生成类型、示例和兼容策略 | 来源冲突时指定依据 |
+| 真实载荷 | 每个消费者和错误路径的请求与响应 | 合成 fixture 不能替代真实结构证据 |
+| 校验规则 | 必填、可空、格式、枚举和额外属性行为 | 不要静默吞掉未知字段 |
+
+可以这样调用：
+
+```text
+请使用 api-schema-validation Skill。
+
+任务：校验 Web、移动端和发票 Worker 使用的三个 API 版本的结算响应
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## API Schema 校验 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| Schema 发现 | 结构、格式、可选性或版本不一致 | 字段路径与来源 |
+| 消费者影响 | 解析失败、静默默认值或不安全解释 | 受影响客户端 |
+| 修复动作 | Schema、实现、fixture 或迁移改动 | 负责人和兼容性检查 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的 Schema 校验会检查真实系统最容易变乱的边界——null、缺失数组、未知字段、日期格式和版本默认值。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：校验 Web、移动端和发票 Worker 使用的三个 API 版本的结算响应。把结算响应分别交给 Web 类型、移动端解码器和发票 Worker 的 Schema 校验。新增可空字段 `taxAmount` 不一定兼容，因为 Worker 可能把 null 当成零并开出错误发票。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为字段结构、必填性、可空性、格式、枚举、额外属性和版本漂移必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只校验成功示例。
+2. 把生成类型当成唯一 Schema 依据。
+3. 在记录契约违规前先把错误日期或枚举强行转换。
+
+## 相关 Skill
+
+- [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/)：把 Schema 接回消费者行为。
+- [API 版本兼容性测试](https://inaodeng.com/zh-cn/qaskills/api-version-compatibility-testing/)：检查 Schema 演进。
+- [API 负向测试](https://inaodeng.com/zh-cn/qaskills/api-negative-testing/)：提供无效结构场景。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation -g
+```
+
+安装后使用 `api-schema-validation` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 响应多出未知字段必须失败吗？
+
+遵守消费者契约；严格程度是兼容性选择，不是统一默认值。
+
+### Schema 校验可以证明业务正确吗？
+
+不能。它证明结构和约束，业务不变量需要单独检查。
+
+## 参考
+
+- [API Schema 校验 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation/prompts/api-schema-validation.md)
+
+- [Awesome QA Skills：API Schema 校验 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [API Schema 校验 详情页](https://inaodeng.com/zh-cn/qaskills/api-schema-validation/)

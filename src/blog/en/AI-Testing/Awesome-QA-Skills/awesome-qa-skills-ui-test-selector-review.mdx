@@ -1,0 +1,111 @@
+---
+title: "UI Test Selector Review: Replace Brittle Locators with Stable Intent"
+description: "A bilingual guide to reviewing UI automation selectors for stability, semantics, accessibility, change resilience, and maintainability."
+date: 2026-12-21T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "UI Test Selector Review"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A selector can pass today and break tomorrow because a layout class changed. Stable UI automation starts from user intent and component semantics, not from whichever CSS path was easiest to copy.
+
+The UI Test Selector Review Skill reviews selectors using DOM and component code, accessible names, data-testid conventions, locator history, and failure evidence. It produces USR-## findings without executing tests or claiming coverage.
+
+The best selector describes the control a user or accessible interface exposes and survives irrelevant structure changes.
+
+## UI Test Selector Review Skill: what it is for
+
+Use this Skill to identify brittle, ambiguous, inaccessible, or high-maintenance selectors in UI automation. It keeps source evidence, applicability, and the smallest validation action visible.
+
+A good USR finding names the UI subject, precondition, selector concern, source evidence, impact, priority, owner, close condition, and validation method.
+
+Use it when UI tests fail after harmless markup changes, selectors depend on styling classes or position, or teams need a consistent locator convention.
+
+## Start with the source Skill
+
+The complete execution contract lives in [UI Test Selector Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-selector-review/prompts/ui-test-selector-review.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-selector-review) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| UI source | DOM snapshot, component code, accessible name, role, and data attributes | Mark missing semantics |
+| Test code | Locator, action, assertion, page state, and helper | Do not infer intent from selector alone |
+| Change evidence | Diff, locator history, failure screenshots, and reruns | Keep runtime unverified without a run |
+| Boundary | Browser, locale, responsive mode, and owner convention | Preserve scope |
+
+Use a request like this:
+
+~~~text
+Use the ui-test-selector-review Skill.\n\nTask: Review checkout UI selectors after a design-system button refactor.\nInputs: [component code, DOM snapshot, accessible roles and names, test code, failure screenshots, diff]\nScope: [checkout submit, coupon, and error controls]\nConstraints: [do not execute tests or edit selectors]\n\nProduce USR-## findings with subject, concern, source, evidence state, impact, owner, close condition, and validation method.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Selector finding | Why the locator is stable, ambiguous, or brittle | USR ID and source |
+| Semantic basis | Role, accessible name, test ID, or unsupported structure | Applicability |
+| Maintenance impact | How markup changes or localization affect it | Priority and evidence |
+| Validation action | Smallest check for a replacement locator | Owner and NOT_RUN boundary |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Review a checkout button after a component refactor
+
+A test locates the submit button by the third `.btn` element, while the component exposes an accessible name and a stable test ID. The Skill should flag positional and styling dependence, recommend validating the semantic locator, and preserve the fact that no test was executed.
+
+The review identifies selector-quality candidates from supplied material. It cannot prove runtime stability, coverage, or a passing UI suite.
+
+## Improve the first result with better baseline input
+
+Provide component and DOM evidence, accessible names and roles, test code, locator convention, change history, failure artifacts, browser and locale scope. Missing semantics stay unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Choosing a selector only because it is short or passes the current DOM.
+2. Using visible text without considering localization or duplicate names.
+3. Treating a stable-looking data-testid as proof that the test is behaviorally meaningful.
+
+## Related Skills
+
+- [UI Test Strategy](https://inaodeng.com/en/qaskills/ui-test-strategy/)：defines journeys, states, platforms, and risk。
+- [UI Test Wait Strategy Review](https://inaodeng.com/en/qaskills/ui-test-wait-strategy-review/)：checks the wait needed after locating a control。
+- [Test Code Review](https://inaodeng.com/en/qaskills/test-code-review/)：reviews assertions and isolation around the locator。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-selector-review -g
+~~~
+
+~~~text
+Use the ui-test-selector-review Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Are data-testid selectors always best?
+
+No. Prefer stable user-facing semantics when they are unique and intentional; use test IDs when the component needs an explicit automation contract.
+
+### Can this Skill change the test code?
+
+No. It provides review findings and a validation action; implementation is a separate change.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [UI Test Selector Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-selector-review/prompts/ui-test-selector-review.md)
+- [UI Test Selector Review Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-selector-review)
+- [UI Test Selector Review details](https://inaodeng.com/en/qaskills/ui-test-selector-review/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

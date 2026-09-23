@@ -1,0 +1,118 @@
+---
+title: "CI Test Optimization: Spend pipeline time where feedback changes the decision"
+description: "CI Test Optimization field guide: analyze duration, flakiness, ordering, parallelism, selection, resource use, and feedback value."
+date: 2026-10-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","CI Test Optimization"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A CI pipeline can be green and still be too slow to influence a developer’s next action. Optimization starts by finding which feedback arrives too late or cannot be trusted.
+
+CI Test Optimization identifies bottlenecks, redundant work, flaky feedback, selection opportunities, and safe ordering changes without weakening meaningful coverage.
+
+The CI Test Optimization Skill is useful when a team needs a structured review of feedback time, test value, flakiness, dependency, parallelism, selection, and resource cost. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with CI Test Optimization.
+
+## CI Test Optimization Skill: what it is for
+
+A practical standard for this Skill is simple: A good optimization preserves the reason a test exists. It moves expensive feedback to the decision where it matters, rather than deleting anything that makes the pipeline uncomfortable.
+
+Use it when the team needs a repeatable review of feedback time, test value, flakiness, dependency, parallelism, selection, and resource cost—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [CI Test Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ci-test-optimization/prompts/ci-test-optimization.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ci-test-optimization) contains the entry point and supporting assets where they exist.
+
+The entry point centers feedback time, test value, flakiness, dependency, parallelism, selection, and resource cost. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Pipeline history | Duration, queue time, retry rate, failure type, and changed-file scope | Use a time window, not one slow run |
+| Suite map | Dependencies, tags, environment, data, and coverage intent | Do not remove a test because it looks similar |
+| Decision need | PR gate, merge gate, nightly confidence, or release gate | Optimize for the actual decision |
+
+Use a request like this:
+
+```text
+Use the ci-test-optimization Skill.
+
+Task: reduce pull-request feedback time for a monorepo whose browser, API, and contract suites share runners
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Bottleneck | Queue, setup, execution, retry, or artifact time | Measured evidence |
+| Optimization | Selection, shard, order, cache, or environment change | Coverage and risk guardrail |
+| Follow-up metric | Time, trust, failure detection, or cost | Owner and review date |
+
+Do not write “passed” without a run record, query result, or source artifact. A good optimization preserves the reason a test exists. It moves expensive feedback to the decision where it matters, rather than deleting anything that makes the pipeline uncomfortable.
+
+## Run one focused pass
+
+Start with a bounded pass—reduce pull-request feedback time for a monorepo whose browser, API, and contract suites share runners. Compare PR runs over four weeks, then split browser tests by stable duration and dependency. Keep contract tests before UI tests when they catch interface breaks earlier, and measure whether the new shards reduce queue time without increasing reruns.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because feedback time, test value, flakiness, dependency, parallelism, selection, and resource cost must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Optimizing average duration while p95 remains unusable.
+2. Treating retries as speed improvements.
+3. Selecting tests from file names without a coverage or dependency map.
+
+## Related Skills
+
+- [Test Runtime Optimization](https://inaodeng.com/en/qaskills/test-runtime-optimization/)：focuses on execution-level cost。
+- [Flaky Test Analysis](https://inaodeng.com/en/qaskills/flaky-test-analysis/)：separates instability from duration。
+- [Regression Test Selection](https://inaodeng.com/en/qaskills/regression-test-selection/)：provides risk-based selection。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ci-test-optimization -g
+```
+
+After installation, invoke it with the `ci-test-optimization` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can a flaky test be removed from CI?
+
+Remove it from a blocking gate only with an owner, replacement evidence, and a visible follow-up—not by hiding the failure.
+
+### Does parallelism always improve feedback?
+
+No. Queue, shared data, runner contention, and setup overhead can make it slower or less trustworthy.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- CI Test Optimization prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ci-test-optimization/prompts/ci-test-optimization.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ci-test-optimization/prompts/ci-test-optimization.md)
+
+- Awesome QA Skills: CI Test Optimization source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ci-test-optimization](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ci-test-optimization)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- CI Test Optimization details:[https://inaodeng.com/en/qaskills/ci-test-optimization/](https://inaodeng.com/en/qaskills/ci-test-optimization/)

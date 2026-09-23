@@ -1,0 +1,117 @@
+---
+title: "Quality Productivity Metrics: Measure QA Flow Without Rewarding Test Theater"
+description: "A bilingual guide to designing quality and delivery productivity measures with valid denominators, attribution limits, gaming checks, and Human-use boundaries."
+date: 2026-11-21T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Quality Productivity Metrics"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Counting test cases and closed tickets can make a busy team look productive while user risk grows. Productivity measurement needs to ask what useful quality signal moved, under which conditions, and with what trade-off.
+
+The Quality Productivity Metrics Skill reviews quality and delivery measures together. It distinguishes flow evidence from individual activity, exposes attribution limits, and designs checks that make gaming harder.
+
+The Skill asks whether a measure describes a system outcome or merely rewards visible activity.
+
+## Quality Productivity Metrics Skill: what it is for
+
+Use this Skill when comparing QA flow after a process or tooling change, designing an engineering scorecard, or reviewing whether a productivity claim has quality support. It does not rank people or turn activity counts into a release decision.
+
+A good result names the quality metric, delivery metric, denominator, attribution limit, gaming risk, evidence state, and Human decision outside the analysis.
+
+Use it when a team wants to know whether faster execution, more automation, or shorter triage improved delivery without increasing escaped risk.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Quality Productivity Metrics prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+Put the material on the table before asking for a judgment. Gaps can remain, but their status must stay visible.
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Change evaluated | A CI migration that reduced queue time for two product squads | Do not attribute every change to it |
+| Quality and delivery events | Feedback time, escaped defects, flaky reruns, deploys, and rework | Keep unavailable events unassessed |
+| Denominator and cohort | Runs, releases, changed files, users, or fixed team period | Reject mismatched denominators |
+| Use boundary | Team learning, planning, or compensation context | Do not use a draft metric to punish people |
+
+Use a request like this:
+
+~~~text
+Use the quality-productivity-metrics Skill.\n\nTask: Evaluate whether CI parallelization improved QA productivity for checkout and catalog squads without increasing escaped risk.\nInputs: [before/after windows, run events, queue times, reruns, releases, defects, changed scope]\nScope: [two squads and named pipelines]\nConstraints: [missing incident linkage, different release volume, privacy limits]\n\nSeparate quality metrics, delivery metrics, denominators, attribution limits, gaming risks, and Human decisions. Do not convert activity counts into an employee score.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Quality signal | Whether the change affected user risk or detection outcome | Evidence and source |
+| Delivery signal | Whether feedback became faster under a comparable cohort | Window and denominator |
+| Attribution limit | Other changes that could explain movement | Candidate confounders |
+| Use boundary | How the result may be used safely | Team learning, not ranking |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Evaluate faster CI without celebrating rerun volume
+
+After parallelization, median feedback time falls from 28 minutes to 12, but reruns double and escaped defects are not linked to releases. The Skill can report an evidenced flow improvement and an unassessed quality impact. It should ask for flaky-rerun causes and release linkage before calling the change a productivity success.
+
+The result can show what supplied cohorts and events support. It cannot prove individual effort, causal impact from one change, or that shorter feedback is valuable if it increases false confidence.
+
+## Improve the first result with better baseline input
+
+Provide comparable windows, pipeline and release IDs, event definitions, changed-scope information, and known confounders. State whether the output is for planning, team learning, or another governed decision.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Using test count, commit count, or ticket closure as a stand-alone productivity score.
+2. Comparing teams with different risk, release volume, or denominator definitions.
+3. Calling a tooling change causal while ignoring flaky reruns, staffing changes, or scope reduction.
+
+## Related Skills
+
+- [Quality Metrics Design](https://inaodeng.com/en/qaskills/quality-metrics-design/)：defines the event and calculation rules。
+- [Quality Dashboard Design](https://inaodeng.com/en/qaskills/quality-dashboard-design/)：presents several signals with their evidence state。
+- [Automation ROI Analysis](https://inaodeng.com/en/qaskills/automation-roi-analysis/)：examines cost and value when automation is the change。
+
+## Install and invoke
+
+Install this Skill globally:
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics -g
+~~~
+
+Then invoke it by name with the project material:
+
+~~~text
+Use the quality-productivity-metrics Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can this Skill produce a team ranking?
+
+It can organize comparable evidence, but ranking is a separate governance decision. Expose uncertainty and gaming risk before anyone uses it for evaluation.
+
+### What if quality data is missing?
+
+Keep productivity and quality signals separate, mark the missing part unassessed, and name the smallest linkage or sampling action.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Quality Productivity Metrics prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md)
+- [Quality Productivity Metrics Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics)
+- [Quality Productivity Metrics details](https://inaodeng.com/en/qaskills/quality-productivity-metrics/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

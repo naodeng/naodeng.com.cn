@@ -1,0 +1,125 @@
+---
+title: "AI 生成测试评审：把看起来合理的用例和可追溯覆盖分开"
+description: "AI 生成测试评审实战指南：检查需求可追溯性、编造行为、预言机质量、覆盖缺口和维护风险。"
+date: 2026-10-07T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","AI 生成测试评审"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+AI 生成的测试套件可以有五十条写得很漂亮的用例，却漏掉“过期优惠券不能退款”这条规则。数量不能替代来源。
+
+AI 生成测试评审用于检查生成的测试是否有需求依据、覆盖真实风险、使用有效预言机，并能在产品变化后继续维护。
+
+当团队需要围绕“来源追溯、编造行为、边界覆盖、预言机质量和维护成本”工作时，使用 AI 生成测试评审 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 AI 生成测试评审。
+
+## AI 生成测试评审 Skill 用来做什么
+
+
+它适合这些场景：团队需要重复检查来源追溯、编造行为、边界覆盖、预言机质量和维护成本；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+好的结果会把来源追溯、编造行为、边界覆盖、预言机质量和维护成本接回来源和验证动作。设计清单不能直接写成通过结论。
+
+## 先回到源 Skill
+
+完整执行契约位于 [AI 生成测试评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-generated-test-review/prompts/review-test.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-generated-test-review) 中还包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束来源追溯、编造行为、边界覆盖、预言机质量和维护成本。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 规则来源 | 促销需求、示例、排除条件和版本 | 没有规则依据的用例要退回 |
+| 生成套件 | 用例、数据、预期结果、准备和清理 | 标记编造的字段与接口 |
+| 评审上下文 | 已知缺陷、风险优先级、测试框架和维护负责人 | 不要只优化用例数量 |
+
+可以这样调用：
+
+```text
+
+请使用 ai-generated-test-review Skill。
+
+任务：评审一个把客户等级、优惠券有效期和购物车金额门槛组合起来的促销引擎的 AI 生成测试
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+
+```
+
+## AI 生成测试评审 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 追溯矩阵 | 用例对应的规则、风险和判断预言机 | covered、weak 或 unsupported |
+| 评审发现 | 边界缺失、编造行为、重复用例或脆弱准备 | 优先级与依据 |
+| 修复动作 | 保留、重写、删除或请求补充来源 | 负责人和下一次检查 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的评审会追问：什么条件能让这条生成用例因为正确原因失败？如果预期结果只有“返回成功”，它通常还需要业务状态、不变量或有来源的比较。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：评审一个把客户等级、优惠券有效期和购物车金额门槛组合起来的促销引擎的 AI 生成测试。对过期优惠券，把每条生成用例追溯回有效期规则，并检查它是否同时断言优惠被拒绝、购物车总价没有被错误改变。除非需求明确规定，否则删除自行编造“宽限期”的用例。
+
+交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从“看起来完整的清单”推进到可用评审。
+
+
+## 容易踩的坑
+
+1. 把自然语言写得通顺当成需求覆盖。
+2. 接受无法区分正确与错误行为的预期结果。
+3. 因为措辞不同就保留重复用例。
+
+## 相关 Skill
+
+- [测试用例评审](https://inaodeng.com/zh-cn/qaskills/test-case-reviewer/)：提供通用测试用例质量评审。
+- [需求可追踪性分析](https://inaodeng.com/zh-cn/qaskills/requirement-traceability-analysis/)：把用例接回需求来源。
+- [AI 功能测试](https://inaodeng.com/zh-cn/qaskills/ai-feature-testing/)：覆盖 AI 功能本身的产品行为。
+
+
+
+## 安装与调用
+
+全局安装这个 Skill：
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-generated-test-review -g
+
+```
+
+安装后使用 `ai-generated-test-review` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 评审者只看生成的用例可以吗？
+
+不可以。需求来源才是依据，生成套件只是被评审对象。
+
+
+
+### 每条生成用例都需要修好吗？
+
+不需要。修复需要编造产品行为时，应删除没有依据的用例。
+
+
+
+## 参考
+
+- [AI 生成测试评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-generated-test-review/prompts/review-test.md)
+
+- [Awesome QA Skills：AI 生成测试评审 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-generated-test-review)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [AI 生成测试评审 详情页](https://inaodeng.com/zh-cn/qaskills/ai-generated-test-review/)

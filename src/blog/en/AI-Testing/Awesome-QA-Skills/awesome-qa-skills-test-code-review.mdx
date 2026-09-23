@@ -1,0 +1,111 @@
+---
+title: "Test Code Review: Find Assertion, Isolation, and Determinism Risks"
+description: "A bilingual guide to reviewing test code, fixtures, assertions, dependency injection, run history, and CI configuration for traceable test-engineering risks."
+date: 2026-12-10T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Test Code Review"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A test can pass and still fail to protect the product. Weak assertions, shared fixtures, hidden time dependence, and accidental network calls make green results hard to trust.
+
+The Test Code Review Skill identifies assertion, isolation, fixture, determinism, and maintainability risks from supplied test code and evidence. It produces TCR-## findings; it does not execute tests or call candidate counts coverage.
+
+The review asks whether the test would fail for the defect it claims to protect against.
+
+## Test Code Review Skill: what it is for
+
+Use this Skill during test-code changes, flaky-test investigations, fixture refactors, or CI review when the team needs evidence-backed quality candidates and a smallest validation action.
+
+A good TCR finding names the test subject, precondition, concern, source evidence, validation, impact, priority, owner, close condition, and evidence state.
+
+Use it when a test suite changes and its reliability, isolation, or maintenance cost needs review before trusting a new green run.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Test Code Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-code-review/prompts/test-code-review.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-code-review) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Test code and diff | Assertions, fixtures, setup, mocks, dependencies, and changed lines | Mark unsupplied code out of scope |
+| Behavior contract | Requirement, expected outcome, error rule, and data boundary | Do not infer missing expectations |
+| Run evidence | Failure logs, reruns, duration, environment, and CI config | Keep static review separate from runtime |
+| Maintenance context | Owners, duplication, helper APIs, and historical failures | Record unknown history |
+
+Use a request like this:
+
+~~~text
+Use the test-code-review Skill.\n\nTask: Review a new checkout API test that uses a shared database fixture and asserts only HTTP 200.\nInputs: [diff, requirement, fixture code, mock config, CI run log, failure history]\nScope: [API tests in the pre-merge suite]\nConstraints: [do not execute tests or edit code]\n\nProduce TCR-## findings with concern, source evidence, impact, owner, close condition, validation, and evidence state. Do not turn candidate findings into coverage or pass claims.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Assertion finding | Whether the assertion detects the intended defect | TCR ID and source |
+| Isolation finding | Shared state, network, time, or order dependence | Evidence state |
+| Determinism finding | Fixture, randomness, clock, or retry instability | Reproduction need |
+| Validation action | Smallest safe check before trusting the test | Owner and method |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Question a green API test that asserts only 200
+
+The endpoint returns 200 even when the response body contains an error code, and the shared fixture leaves records between tests. The Skill should identify weak assertion and isolation risks, ask for the contract's expected error semantics, and propose a controlled fixture cleanup check. It should not run or claim the test suite failed.
+
+The review produces test-engineering candidates from supplied material. It cannot prove a defect exists, a test passes, or coverage is complete without execution evidence.
+
+## Improve the first result with better baseline input
+
+Provide the changed test, fixture and helper code, behavior contract, CI configuration, relevant run records, and failure history. If execution evidence is missing, mark runtime conclusions NOT_RUN.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Treating a method name or test count as proof that the intended behavior is checked.
+2. Reviewing assertions without the requirement or API contract.
+3. Assuming a shared fixture is isolated because each test creates a different label.
+
+## Related Skills
+
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：examines suite-level flakiness and maintenance。
+- [Mock Quality Review](https://inaodeng.com/en/qaskills/mock-quality-review/)：checks whether mocks preserve the contract。
+- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/)：relates test signals to defects and risks。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-code-review -g
+~~~
+
+~~~text
+Use the test-code-review Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can the Skill fix the test code?
+
+No. It identifies traceable review findings and validation actions; code changes need a separate implementation request.
+
+### Can a static assertion review prove the test catches a defect?
+
+No. It can identify a weak assertion and propose a check; execution with a meaningful failing condition is separate evidence.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Test Code Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-code-review/prompts/test-code-review.md)
+- [Test Code Review Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-code-review)
+- [Test Code Review details](https://inaodeng.com/en/qaskills/test-code-review/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

@@ -1,0 +1,111 @@
+---
+title: "Test Scope Analysis：明确纳入、排除和扩展边界"
+description: "测试范围分析双语指南，在执行前明确目标、范围、深度、依赖、停止条件、扩展触发和残余风险。"
+date: 2026-12-16T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "测试范围分析"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+测试范围是在回答团队现在要学习什么、暂时留下什么未知。如果排除项和扩展触发被隐藏，有限检查很容易被误认为全覆盖。
+
+Test Scope Analysis Skill 在测试前分析目标、产品面、变更、风险、限制、资产、平台、角色、数据和环境，产出 TS-## 边界，不产出执行结果。
+
+本文关注的范围应该让不确定性可见，而不是藏在一份短测试清单后面。
+
+## 测试范围分析 Skill 用来做什么
+
+当你要为迭代、发布、变更或风险复核定义可解释范围，包括核心流程、直接和传递影响、非功能范围、兼容性、依赖和未评估区域时，使用这个 Skill。
+
+好的 TS-## 条目写清纳入和排除对象、理由、深度、依赖、停止条件、扩展触发、残余风险、来源和负责人。
+
+当发布或测试活动需要先限定范围，在选择可执行集合或汇报覆盖前，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [测试范围分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-scope-analysis/prompts/test-scope-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-scope-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 目标与产品面 | 发布目标、流程、组件、平台、角色和数据 | 产品面缺失要明确 |
+| 变更与风险 | 直接和传递影响、故障模式、缺陷和非功能关注 | 不要只看变更文件名 |
+| 限制与资产 | 时间、环境、测试数据、已有测试和依赖 | 阻塞要记录 |
+| 决策边界 | 负责人、残余风险接受人、停止与扩展规则 | 不要声称全覆盖 |
+
+可以这样调用：
+
+~~~text
+请使用 test-scope-analysis Skill。\n\n任务：为修改账号删除和通知偏好的发布定义测试范围。\n输入材料：[发布说明、依赖图、用户流程、平台矩阵、风险、缺陷、环境和数据限制]\n范围：[Web 与移动端、自助删除、通知事件]\n限制：[一个 staging 环境和固定验证窗口]\n\n输出 TS-## 的纳入、排除、深度、依赖、停止条件、扩展触发、证据、负责人和残余风险。不要执行测试或声称全覆盖。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 纳入范围 | 对象、流程、平台、角色、数据和深度 | 理由与来源 |
+| 排除范围 | 本次有意不评估的内容 | 原因与风险 |
+| 扩展触发 | 什么证据会让范围扩大 | 可观察条件 |
+| 残余风险 | 仍未评估或未执行的内容 | 负责人和决策边界 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：限定账号删除，不要隐藏移动端风险
+
+发布说明只改了 Web 删除，但同一个 API 也被移动端使用。这个 Skill 应纳入共享 API 和移动端确认行为，或者记录排除项并绑定 API 变化或删除缺陷的扩展触发。不能把仅 Web 的检查叫全覆盖。
+
+范围分析可以说明边界和取舍，不能证明测试已运行、覆盖完整、风险为零或发布批准。
+
+## 先补基线输入，再期待更好的结果
+
+提供目标、版本、产品面、直接和传递变更、风险、限制、平台、角色、数据、环境、已有资产和残余风险负责人。上下文缺失时保持未评估。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把变更文件名或范围表当成覆盖证明。
+2. 排除传递依赖却不给理由或扩展触发。
+3. 只要求范围分析，却顺手写成完整策略或可执行集合。
+
+## 相关 Skill
+
+- [基于风险的测试](https://inaodeng.com/zh-cn/qaskills/risk-based-testing/)：用风险解释深度和取舍。
+- [需求可追溯性分析](https://inaodeng.com/zh-cn/qaskills/requirement-traceability-analysis/)：把范围连接到义务和证据。
+- [UI 测试策略](https://inaodeng.com/zh-cn/qaskills/ui-test-strategy/)：覆盖流程、状态和平台边界。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-scope-analysis -g
+~~~
+
+~~~text
+请使用 test-scope-analysis Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 排除等于不重要吗？
+
+不等于。它表示本次活动没有评估，必须保留理由、残余风险和扩展触发。
+
+### 这个 Skill 会选择具体测试 ID 吗？
+
+不会。它定义范围和深度依据，可执行选择属于独立活动。
+
+
+
+## 参考
+
+- [测试范围分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-scope-analysis/prompts/test-scope-analysis.md)
+- [测试范围分析 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-scope-analysis)
+- [测试范围分析 详情页](https://inaodeng.com/zh-cn/qaskills/test-scope-analysis/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

@@ -1,0 +1,118 @@
+---
+title: "Multi-Agent Testing: Check handoffs, authority, and disagreement across agent roles"
+description: "Multi-Agent Testing field guide: review role boundaries, handoffs, shared state, conflicts, tool access, and evidence."
+date: 2026-11-10T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Multi-Agent Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Adding another agent does not automatically add intelligence. It adds another place where context can be dropped, authority can be confused, and a confident mistake can be approved.
+
+Multi-Agent Testing evaluates role contracts, handoffs, shared state, disagreement, tool permissions, and end-to-end accountability across collaborating agents.
+
+The Multi-Agent Testing Skill is useful when a team needs a structured review of role contract, handoff payload, shared state, disagreement, authority, tool scope, and final decision. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Multi-Agent Testing.
+
+## Multi-Agent Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A good multi-agent test follows one claim across roles. It checks whether the reviewer can see the source, whether the writer preserves uncertainty, and whether the final agent has authority to make the decision it presents.
+
+Use it when the team needs a repeatable review of role contract, handoff payload, shared state, disagreement, authority, tool scope, and final decision—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Multi-Agent Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/multi-agent-testing/prompts/multi-agent-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/multi-agent-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers role contract, handoff payload, shared state, disagreement, authority, tool scope, and final decision. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Role design | Agent purpose, input, output, authority, and stop condition | Do not let role names substitute for contracts |
+| Handoff state | Sources, claims, unresolved items, version, and reviewer decision | Record what each agent actually receives |
+| Failure policy | Conflict, missing source, tool denial, timeout, and human escalation | Define the owner of final acceptance |
+
+Use a request like this:
+
+```text
+Use the multi-agent-testing Skill.
+
+Task: test a research pipeline with planner, source checker, writer, and reviewer agents
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Role finding | Boundary, authority, or missing responsibility | Agent and evidence |
+| Handoff finding | Dropped context, stale state, or ambiguous payload | Input and output IDs |
+| System decision | Accept, revise, stop, or escalate | Human owner and evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. A good multi-agent test follows one claim across roles. It checks whether the reviewer can see the source, whether the writer preserves uncertainty, and whether the final agent has authority to make the decision it presents.
+
+## Run one focused pass
+
+Start with a bounded pass—test a research pipeline with planner, source checker, writer, and reviewer agents. Give the source checker an outdated policy and the planner a newer requirement. The reviewer should expose the conflict before the writer produces a single confident rule. Keep the handoff payload and each agent’s tool scope in the evidence.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because role contract, handoff payload, shared state, disagreement, authority, tool scope, and final decision must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Testing each agent in isolation only.
+2. Letting the final agent silently resolve source conflicts.
+3. Sharing a broad tool token across all roles.
+
+## Related Skills
+
+- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/)：covers agent behavior and goals。
+- [Agent Tool Testing](https://inaodeng.com/en/qaskills/agent-tool-testing/)：checks tools used by each role。
+- [Multi-Role Quality Synthesis](https://inaodeng.com/en/qaskills/multi-role-quality-synthesis/)：connects role outputs to a decision。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/multi-agent-testing -g
+```
+
+After installation, invoke it with the `multi-agent-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can a human approve only the final answer?
+
+The human may accept the final decision, but critical source conflicts and side effects need earlier visibility.
+
+### What if agents disagree by design?
+
+Define the disagreement payload, tie-break rule, and escalation owner before calling it collaboration.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Multi-Agent Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/multi-agent-testing/prompts/multi-agent-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/multi-agent-testing/prompts/multi-agent-testing.md)
+
+- Awesome QA Skills: Multi-Agent Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/multi-agent-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/multi-agent-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Multi-Agent Testing details:[https://inaodeng.com/en/qaskills/multi-agent-testing/](https://inaodeng.com/en/qaskills/multi-agent-testing/)

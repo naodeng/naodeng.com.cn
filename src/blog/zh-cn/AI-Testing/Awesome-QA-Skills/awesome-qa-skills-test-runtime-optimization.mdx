@@ -1,0 +1,111 @@
+---
+title: "Test Runtime Optimization：用可信基线缩短慢反馈"
+description: "测试运行时间优化双语指南，围绕性能剖析、初始化与清理、并行、隔离和可比运行基线优化测试反馈。"
+date: 2026-12-15T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "测试运行时间优化"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+让测试变快很容易，前提是正确性由别人负责。安全的运行时间优化要先有基线、瓶颈，以及并行或初始化变化没有改变测试含义的证据。
+
+Test Runtime Optimization Skill 分析慢测试、性能剖析、初始化与清理、并行、隔离和基线，把提速方案变成有边界的实验，而不是口头承诺。
+
+本文关注的速度只有在优化后的测试仍然产生可比较、可信信号时才有价值。
+
+## 测试运行时间优化 Skill 用来做什么
+
+当 CI 反馈慢，或者需要在改夹具、Worker、顺序或环境初始化前做剖析时，使用这个 Skill。
+
+好的结果要识别慢信号、测量基线、瓶颈假设、隔离约束、优化方式、预期行为和验证证据。
+
+当套件存在明确运行时间问题，需要决定先剖析、改初始化、并行还是隔离时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [测试运行时间优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 运行基线 | 时长分布、分位数、环境、版本和队列 | 不要只用一次偶然运行 |
+| 剖析证据 | 慢测试、初始化/清理、IO、网络、夹具和 Worker 数据 | 假设要标出来 |
+| 执行限制 | 顺序依赖、共享资源、并行 Worker 和隔离 | 不要假设并行安全 |
+| 验证计划 | 前后运行、正确性检查和回滚 | 速度与通过证据分开 |
+
+可以这样调用：
+
+~~~text
+请使用 test-runtime-optimization Skill。\n\n任务：降低商品目录 API 套件的合并前运行时间；当前每个测试都会创建完整数据库快照。\n输入材料：[时长分布、剖析输出、夹具代码、Worker 配置、隔离限制和运行记录]\n范围：[合并前 API 套件]\n限制：[保留数据隔离与断言]\n\n覆盖慢测试、剖析证据、初始化/清理、并行、隔离、基线和验证方式。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 瓶颈 | 测到的慢路径与证据 | 基线与剖析 |
+| 优化选项 | 初始化、清理、并行或隔离变化 | 预期取舍 |
+| 信任边界 | 必须保持等价的内容 | 数据与行为检查 |
+| 验证 | 可比的前后证据 | 负责人和回滚 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：替换完整快照初始化，但不要共享状态
+
+剖析显示大部分时间耗在快照创建，但测试也会修改共享参考数据。这个 Skill 应区分昂贵初始化与不安全共享，建议做更小的隔离夹具实验，并要求同时提供正确性和时长的前后证据。
+
+分析可以准备优化实验，不能在没有可比运行前证明提速、正确性或覆盖保持。
+
+## 先补基线输入，再期待更好的结果
+
+提供时长分布、版本和环境、剖析数据、初始化/清理代码、Worker 设置、资源限制和正确性检查。一次性的速度观察要限定范围。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 只根据最慢的一次运行，而不是可比的分布来优化。
+2. 并行运行共享数据库、端口、时钟或文件系统状态的测试。
+3. 删掉初始化或断言后，把更短的运行叫作等价。
+
+## 相关 Skill
+
+- [CI 测试优化](https://inaodeng.com/zh-cn/qaskills/ci-test-optimization/)：把运行时变化连接到流水线反馈。
+- [测试套件健康度分析](https://inaodeng.com/zh-cn/qaskills/test-suite-health-analysis/)：提供套件级时长和 flaky 上下文。
+- [测试代码评审](https://inaodeng.com/zh-cn/qaskills/test-code-review/)：复核优化影响的夹具和断言。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization -g
+~~~
+
+~~~text
+请使用 test-runtime-optimization Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 时长变短就能宣布成功吗？
+
+不能。要在定义好的队列中比较正确性、隔离、失败信号和运行时间。
+
+### 共享夹具总能提速吗？
+
+不能。共享可能引入顺序依赖或状态泄漏，必须有隔离边界证据。
+
+
+
+## 参考
+
+- [测试运行时间优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md)
+- [测试运行时间优化 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization)
+- [测试运行时间优化 详情页](https://inaodeng.com/zh-cn/qaskills/test-runtime-optimization/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

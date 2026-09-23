@@ -1,0 +1,118 @@
+---
+title: "Business Rule Extraction: Turn policy prose into rules a team can actually verify"
+description: "Business Rule Extraction field guide: identify actors, conditions, decisions, exceptions, states, and evidence from business material."
+date: 2026-10-22T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Business Rule Extraction"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A product rule hidden in a paragraph is hard to test and easy to interpret differently. The work is to find the decision, not to make the paragraph prettier.
+
+Business Rule Extraction identifies explicit and implied conditions, actors, outcomes, exceptions, and state changes from policies, requirements, examples, and operational notes.
+
+The Business Rule Extraction Skill is useful when a team needs a structured review of actor, trigger, condition, decision, exception, state, priority, and source. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Business Rule Extraction.
+
+## Business Rule Extraction Skill: what it is for
+
+A practical standard for this Skill is simple: A strong extraction keeps the rule close to its source and distinguishes “must,” “may,” and “usually.” Those words decide whether a test is a violation, a choice, or merely an observation.
+
+Use it when the team needs a repeatable review of actor, trigger, condition, decision, exception, state, priority, and source—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Business Rule Extraction prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/business-rule-extraction/prompts/business-rule-extraction.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/business-rule-extraction) contains the entry point and supporting assets where they exist.
+
+The entry point centers actor, trigger, condition, decision, exception, state, priority, and source. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Business material | Policy, requirement, examples, tickets, and owner | Separate authoritative from illustrative text |
+| Terminology | Customer, order, payment, date, status, and exception definitions | Keep conflicting definitions visible |
+| Decision need | Test design, implementation clarification, or audit | Do not extract more detail than the decision needs |
+
+Use a request like this:
+
+```text
+Use the business-rule-extraction Skill.
+
+Task: extract refund eligibility rules from a support policy, payment guide, and five historical tickets
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Rule statement | Actor, condition, action, result, and exception | Source reference |
+| Conflict or gap | Different definitions or missing decision | Owner and question |
+| Verification hook | Data, state, or example needed to test it | Next action |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong extraction keeps the rule close to its source and distinguishes “must,” “may,” and “usually.” Those words decide whether a test is a violation, a choice, or merely an observation.
+
+## Run one focused pass
+
+Start with a bounded pass—extract refund eligibility rules from a support policy, payment guide, and five historical tickets. Turn “customers can request a refund within 30 days except for used vouchers” into separate rules for actor, time window, voucher state, and outcome. Then flag whether “used” means redeemed, partially redeemed, or order completed.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because actor, trigger, condition, decision, exception, state, priority, and source must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Copying policy wording without exposing conditions.
+2. Treating historical behavior as a rule.
+3. Merging exceptions into one vague “special case.”
+
+## Related Skills
+
+- [Requirements Analysis](https://inaodeng.com/en/qaskills/requirements-analysis/)：organizes the wider requirement context。
+- [Requirement Ambiguity Analysis](https://inaodeng.com/en/qaskills/requirement-ambiguity-analysis/)：tests whether rule wording admits multiple readings。
+- [Decision Table Testing](https://inaodeng.com/en/qaskills/decision-table-testing/)：turns extracted rules into combinations。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/business-rule-extraction -g
+```
+
+After installation, invoke it with the `business-rule-extraction` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can extraction resolve conflicting policies?
+
+It can expose the conflict and its impact; the policy owner must decide which rule wins.
+
+### Should examples become rules?
+
+Only when the source says they are normative; otherwise keep them as evidence or illustration.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Business Rule Extraction prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/business-rule-extraction/prompts/business-rule-extraction.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/business-rule-extraction/prompts/business-rule-extraction.md)
+
+- Awesome QA Skills: Business Rule Extraction source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/business-rule-extraction](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/business-rule-extraction)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Business Rule Extraction details:[https://inaodeng.com/en/qaskills/business-rule-extraction/](https://inaodeng.com/en/qaskills/business-rule-extraction/)

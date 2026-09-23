@@ -1,0 +1,111 @@
+---
+title: "Test Code Review：发现断言、隔离和确定性风险"
+description: "测试代码评审双语指南，围绕测试代码、夹具、断言、依赖注入、运行历史和 CI 配置识别可追溯的测试工程风险。"
+date: 2026-12-10T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "测试代码评审"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+测试通过，不代表它真的保护了产品。弱断言、共享夹具、隐藏的时间依赖和意外网络调用，都会让绿色结果难以信任。
+
+Test Code Review Skill 根据提供的测试代码和证据识别断言、隔离、夹具、确定性和可维护性风险，产出 TCR-## 发现；它不执行测试，也不把候选数量叫作覆盖。
+
+本文会追问：这个测试真的会在它声称保护的缺陷出现时失败吗？
+
+## 测试代码评审 Skill 用来做什么
+
+在测试代码变更、flaky 调查、夹具重构或 CI 复核中，如果团队需要有证据的测试工程问题和最小验证动作，使用这个 Skill。
+
+好的 TCR 发现要写清测试对象、前置条件、问题、来源证据、验证、影响、优先级、负责人、关闭条件和证据状态。
+
+当测试套件发生变化，需要在相信新的绿色运行前复核可靠性、隔离性或维护成本时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [测试代码评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-code-review/prompts/test-code-review.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-code-review) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 测试代码与 diff | 断言、夹具、初始化、mock、依赖和改动行 | 未提供的代码标出范围外 |
+| 行为契约 | 需求、预期结果、错误规则和数据边界 | 缺失预期不要自推 |
+| 运行证据 | 失败日志、重跑、耗时、环境和 CI 配置 | 静态复核与运行分开 |
+| 维护上下文 | Owner、重复、辅助 API 和历史失败 | 未知历史要记录 |
+
+可以这样调用：
+
+~~~text
+请使用 test-code-review Skill。\n\n任务：复核一个新结账 API 测试：它使用共享数据库夹具，并且只断言 HTTP 200。\n输入材料：[diff、需求、夹具代码、mock 配置、CI 运行日志和失败历史]\n范围：[合并前 API 测试套件]\n限制：[不执行测试、不修改代码]\n\n输出 TCR-## 发现，包含问题、来源证据、影响、负责人、关闭条件、验证方式和证据状态。不要把候选发现写成覆盖或通过结论。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 断言发现 | 断言是否能发现目标缺陷 | TCR 编号与来源 |
+| 隔离发现 | 共享状态、网络、时间或顺序依赖 | 证据状态 |
+| 确定性发现 | 夹具、随机性、时钟或重试不稳定 | 需要复现 |
+| 验证动作 | 相信测试前的最小安全检查 | 负责人和方法 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：质疑只断言 200 的绿色 API 测试
+
+接口即使响应体有错误码也返回 200，共享夹具还把记录留给后续测试。这个 Skill 应指出弱断言和隔离风险，要求确认契约中的错误语义，并建议验证夹具清理。不能直接运行或宣布套件失败。
+
+复核可以从已有材料中产出测试工程候选，不能在没有执行证据时证明缺陷存在、测试通过或覆盖完整。
+
+## 先补基线输入，再期待更好的结果
+
+提供变更测试、夹具与辅助代码、行为契约、CI 配置、相关运行记录和失败历史。没有运行证据时，运行结论标记 NOT_RUN。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把方法名或测试数量当成目标行为已被检查的证明。
+2. 没有需求或 API 契约就只复核断言。
+3. 每个测试使用不同标签，就假设共享夹具已经隔离。
+
+## 相关 Skill
+
+- [测试套件健康度分析](https://inaodeng.com/zh-cn/qaskills/test-suite-health-analysis/)：检查套件级 flaky 和维护问题。
+- [Mock 质量复核](https://inaodeng.com/zh-cn/qaskills/mock-quality-review/)：检查 mock 是否保留契约。
+- [测试有效性分析](https://inaodeng.com/zh-cn/qaskills/test-effectiveness-analysis/)：把测试信号连接到缺陷和风险。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-code-review -g
+~~~
+
+~~~text
+请使用 test-code-review Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 会直接修改测试代码吗？
+
+不会。它识别可追溯复核发现和验证动作，代码修改需要单独的实现请求。
+
+### 静态断言复核能证明测试能抓住缺陷吗？
+
+不能。它可以发现弱断言并提出检查，带有实际失败条件的执行是另一类证据。
+
+
+
+## 参考
+
+- [测试代码评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-code-review/prompts/test-code-review.md)
+- [测试代码评审 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-code-review)
+- [测试代码评审 详情页](https://inaodeng.com/zh-cn/qaskills/test-code-review/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

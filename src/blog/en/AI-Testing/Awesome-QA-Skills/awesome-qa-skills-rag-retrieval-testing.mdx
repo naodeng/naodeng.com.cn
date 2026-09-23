@@ -1,0 +1,111 @@
+---
+title: "RAG Retrieval Testing: Find Recall and Ranking Gaps Before They Reach Answers"
+description: "A bilingual guide to testing RAG query variants, chunking, metadata filters, recall proxies, ranking, freshness, and retrieval evidence."
+date: 2026-11-23T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "RAG Retrieval Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+When a RAG answer is wrong, the failure may have happened before generation. The relevant paragraph might never have entered the context window, or a stale chunk may have outranked the current policy.
+
+The RAG Retrieval Testing Skill isolates the retrieval layer. It inspects query variants, chunking, filters, recall proxies, ranking, freshness, and the evidence needed before blaming the model.
+
+The practical question is whether the evidence needed by the answer is findable, eligible, current, and ranked high enough.
+
+## RAG Retrieval Testing Skill: what it is for
+
+Use this Skill when a knowledge assistant misses a known document, retrieves the wrong tenant or version, or returns too much low-value context. It focuses on retrieval evidence and does not treat a good top-k list as proof of a good final answer.
+
+A good retrieval review pairs each query with a relevant-document expectation, returned chunks, metadata filters, rank, freshness, and the limitation of the selected recall or precision proxy.
+
+Use it when you are changing embeddings, chunk sizes, metadata filters, or reranking logic, or after a retrieval regression is reported.
+
+## Start with the source Skill
+
+The complete execution contract lives in [RAG Retrieval Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-retrieval-testing/prompts/rag-retrieval-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-retrieval-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Query set | Canonical questions, paraphrases, abbreviations, multilingual variants, and adversarial filters | Keep unrepresented classes unassessed |
+| Corpus and gold evidence | Document IDs, versions, chunk boundaries, labels, and relevant passages | Do not infer recall without a relevance reference |
+| Retriever behavior | Top-k results, scores, rank, filters, query rewrite, and reranker output | Separate retrieval from answer quality |
+| Freshness and scope | Effective dates, tenant or region rules, index timestamp, and environment | Mark scope and freshness gaps |
+
+Use a request like this:
+
+~~~text
+Use the rag-retrieval-testing Skill.\n\nTask: Investigate why the policy assistant misses the new travel-expense rule for EU employees.\nInputs: [query variants, gold document, chunks, metadata filters, top-k results, rank scores, index timestamps]\nScope: [EU tenant, policy versions, staging index]\nConstraints: [no production reindex, masked data]\n\nAssess query coverage, chunking, filters, recall proxy, ranking, and freshness separately. Preserve the difference between retrieval evidence and answer-level evidence.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Query coverage | Which wording and language variants were exercised | Inventory and gaps |
+| Eligibility and recall proxy | Whether the relevant document could enter the result set | Gold evidence and proxy limits |
+| Ranking and freshness | Whether current evidence is discoverable and high enough | Rank, version, index time |
+| Next experiment | The smallest isolated change or replay | Expected observation and stop condition |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Trace a missing policy through filters and ranking
+
+The expected EU policy exists, but the retriever filters on region=global while the document carries region=eu. A broad query also returns an older global policy at rank one. The Skill should separate metadata eligibility from ranking and propose a staging replay with region variants. It should not call the generator hallucinating before retrieval evidence is checked.
+
+A retrieval review shows what the indexed corpus and replay returned for the supplied query set. It cannot prove final answer correctness or production behavior without a real run and a complete evaluation set.
+
+## Improve the first result with better baseline input
+
+Supply gold documents or relevance judgments, query variants, chunk and metadata definitions, top-k traces, effective dates, and index timestamps. Without a relevance reference, report observations but keep recall unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Changing embeddings before checking tenant, version, or permission filters.
+2. Calling top-k presence recall when the gold passage is undefined or query classes are missing.
+3. Treating a high retrieval score as proof that the final answer cites the right source.
+
+## Related Skills
+
+- [RAG Quality Testing](https://inaodeng.com/en/qaskills/rag-quality-testing/)：checks what the answer does with retrieved evidence。
+- [LLM Consistency Testing](https://inaodeng.com/en/qaskills/llm-consistency-testing/)：checks whether the same evidence yields stable answers。
+- [Edge Case Discovery](https://inaodeng.com/en/qaskills/edge-case-discovery/)：expands cases around scope, freshness, and rare wording。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-retrieval-testing -g
+~~~
+
+~~~text
+Use the rag-retrieval-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Do I need a labeled gold set?
+
+For a recall claim, some relevance reference is necessary. Without it, identify filter or freshness gaps but mark recall unassessed.
+
+### Should I fix retrieval or prompting first?
+
+Follow evidence. If the passage is absent or ineligible, fix retrieval boundaries; if it is present and misused, review the answer layer.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [RAG Retrieval Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-retrieval-testing/prompts/rag-retrieval-testing.md)
+- [RAG Retrieval Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-retrieval-testing)
+- [RAG Retrieval Testing details](https://inaodeng.com/en/qaskills/rag-retrieval-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

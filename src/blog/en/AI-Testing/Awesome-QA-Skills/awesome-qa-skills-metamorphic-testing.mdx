@@ -1,0 +1,118 @@
+---
+title: "Metamorphic Testing: Test transformations when a single expected answer is not enough"
+description: "Metamorphic Testing field guide: define transformations, expected relations, invariants, randomized inputs, and evidence."
+date: 2026-11-07T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Metamorphic Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Some systems are too large or too probabilistic to tell you the exact correct answer for every input. You can still ask whether a controlled input change should preserve or change a relationship.
+
+Metamorphic Testing uses transformations and relations between executions to test systems whose exact oracle is expensive, incomplete, or unavailable.
+
+The Metamorphic Testing Skill is useful when a team needs a structured review of input transformation, expected relation, invariant, oracle limitation, randomized coverage, and violation evidence. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Metamorphic Testing.
+
+## Metamorphic Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A good metamorphic design states the relation before generating cases. “The result should be similar” is not an oracle until similar means a set overlap, monotonic score, or preserved invariant.
+
+Use it when the team needs a repeatable review of input transformation, expected relation, invariant, oracle limitation, randomized coverage, and violation evidence—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Metamorphic Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/metamorphic-testing/prompts/metamorphic-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/metamorphic-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers input transformation, expected relation, invariant, oracle limitation, randomized coverage, and violation evidence. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| System behavior | Input, output, known invariant, and acceptable variation | State what cannot be asserted exactly |
+| Transformation | Synonym, permutation, scaling, duplication, or irrelevant-field change | Keep the transformation isolated |
+| Evidence | Original and transformed outputs, relation check, model version, and seed | Record the first violation |
+
+Use a request like this:
+
+```text
+Use the metamorphic-testing Skill.
+
+Task: test a product-search ranker when adding a synonym should preserve the relevant product set even if exact scores change
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Metamorphic relation | Transformation and expected relation | Source and confidence |
+| Violation | What changed beyond the relation | Input pair and artifact |
+| Follow-up | Oracle, model, data, or implementation check | Owner and next run |
+
+Do not write “passed” without a run record, query result, or source artifact. A good metamorphic design states the relation before generating cases. “The result should be similar” is not an oracle until similar means a set overlap, monotonic score, or preserved invariant.
+
+## Run one focused pass
+
+Start with a bounded pass—test a product-search ranker when adding a synonym should preserve the relevant product set even if exact scores change. Add a synonym to the search query and compare the top-20 product IDs. Allow ranking movement, but require a minimum relevant-set overlap and no appearance of products excluded by the category filter.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because input transformation, expected relation, invariant, oracle limitation, randomized coverage, and violation evidence must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Choosing a transformation without a domain relation.
+2. Using vague similarity thresholds.
+3. Treating a relation violation as a product defect before checking data and model drift.
+
+## Related Skills
+
+- [Property-Based Testing](https://inaodeng.com/en/qaskills/property-based-testing/)：generates broad inputs around a property。
+- [LLM Consistency Testing](https://inaodeng.com/en/qaskills/llm-consistency-testing/)：checks stable relations in model output。
+- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/)：reviews whether the relation finds meaningful defects。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/metamorphic-testing -g
+```
+
+After installation, invoke it with the `metamorphic-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Is metamorphic testing only for ML?
+
+No. Parsers, compilers, APIs, calculations, and workflows can all have useful relations.
+
+### What if the relation is uncertain?
+
+Mark it as a hypothesis and validate the domain expectation before using it as a failure oracle.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Metamorphic Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/metamorphic-testing/prompts/metamorphic-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/metamorphic-testing/prompts/metamorphic-testing.md)
+
+- Awesome QA Skills: Metamorphic Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/metamorphic-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/metamorphic-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Metamorphic Testing details:[https://inaodeng.com/en/qaskills/metamorphic-testing/](https://inaodeng.com/en/qaskills/metamorphic-testing/)

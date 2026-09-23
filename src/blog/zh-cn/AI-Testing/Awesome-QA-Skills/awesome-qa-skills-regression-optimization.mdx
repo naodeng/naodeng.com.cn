@@ -1,0 +1,111 @@
+---
+title: "Regression Optimization：缩短反馈时间，但不丢失风险覆盖"
+description: "回归优化双语指南，围绕回归选择、排序、并行、缓存和风险保留做有证据边界的取舍。"
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "回归优化"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+回归时间变短，不等于回归变好了。删掉慢检查可能让反馈更快，却同时删掉了支付、权限或迁移风险唯一的覆盖。
+
+Regression Optimization Skill 把选择、排序、并行、缓存和风险保留作为一组取舍来复核，帮助团队在证据允许的范围内得到更快且安全的反馈回路。
+
+本文的判断标准是：只有在反馈更快的同时没有让重要风险消失，优化才算成功。
+
+## 回归优化 Skill 用来做什么
+
+当测试套件太慢、CI 成本上升，或者团队准备根据变更文件和历史通过率跳过测试时，使用这个 Skill。它会把风险依据和验证方案保留下来。
+
+好的优化方案要说明为什么选择某组测试、什么时候运行、保护了什么风险、并行或缓存为何可信，以及如何验证改变。
+
+当重做 CI、加速发布列车、清理 flaky 套件，或者一次回归逃逸暴露选择模型漏掉变更依赖时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [回归优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/regression-optimization/prompts/regression-optimization.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/regression-optimization) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 变更面 | 受影响的提交、依赖、schema、配置和 feature flag | 影响未知时保留更宽范围 |
+| 套件证据 | 历史运行、时长、失败、flaky、Owner 和覆盖理由 | 不要只根据通过率推断安全 |
+| 执行设计 | 选择规则、排序、Worker、缓存键、环境和隔离 | 未经验证的缓存复用标为 pending |
+| 风险边界 | 关键流程、发布限制和全量回退条件 | 风险接受由负责人决定 |
+
+可以这样调用：
+
+~~~text
+请使用 regression-optimization Skill。\n\n任务：为同时修改税费计算和共享定价代码的结账变更缩短发布前反馈时间。\n输入材料：[diff、依赖图、套件清单、运行历史、耗时、缓存键和关键流程]\n范围：[合并前与发布流水线]\n限制：[两个 CI Worker、不能丢失支付与税费覆盖]\n\n评估选择依据、排序、并行、缓存和风险保留。给出隔离验证实验，没有证据支持的速度或安全结论保持 pending。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 选择依据 | 为什么某组测试被纳入或跳过 | 变更面与风险关联 |
+| 执行方案 | 顺序、并行组、隔离和缓存条件 | 可复现规则 |
+| 风险保留 | 关键覆盖和全量回退条件 | 明确逃逸边界 |
+| 验证结果 | 实验实际观察到什么 | 时长、失败与证据状态 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：加速税费回归，不要藏住共享代码影响
+
+基于文件的选择器因为只改了定价文件，就排除了支付测试。但共享定价代码也参与税费和支付总额，这个边界需要被质疑；下一步可以使用依赖感知的测试组并行执行。只有缓存键包含影响结果的代码、环境、数据和配置时，缓存复用才有验证基础。
+
+这个 Skill 可以把优化规则与套件和风险证据对照，不能在验证运行完成前声称风险降低或缓存复用安全。
+
+## 先补基线输入，再期待更好的结果
+
+提供变更面、依赖信息、套件清单、历史运行记录、当前缓存键、关键流程和全量回退条件。影响不确定时明确写出，不要凭惯例缩小范围。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 只选择变更文件对应的测试，漏掉共享库、schema 或配置影响。
+2. 只测到时长变短，却没有记录关键流程是否移出选择集。
+3. 在代码、环境、数据或 feature flag 不同的情况下复用缓存结果。
+
+## 相关 Skill
+
+- [测试套件健康度分析](https://inaodeng.com/zh-cn/qaskills/test-suite-health-analysis/)：提供时长、flaky、Owner 和维护成本证据。
+- [CI 测试优化](https://inaodeng.com/zh-cn/qaskills/ci-test-optimization/)：聚焦流水线反馈和执行成本。
+- [基于风险的测试](https://inaodeng.com/zh-cn/qaskills/risk-based-testing/)：为保留覆盖提供风险依据。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/regression-optimization -g
+~~~
+
+~~~text
+请使用 regression-optimization Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 历史通过率可以作为跳过测试的理由吗？
+
+不可以。还需要变更影响、被保护的风险、环境和验证实验。
+
+### 什么时候应该跑全量套件？
+
+根据风险定义，例如高影响共享改动、选择器不确定、缓存失效、发布门禁，或优化证据已经过期。
+
+
+
+## 参考
+
+- [回归优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/regression-optimization/prompts/regression-optimization.md)
+- [回归优化 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/regression-optimization)
+- [回归优化 详情页](https://inaodeng.com/zh-cn/qaskills/regression-optimization/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

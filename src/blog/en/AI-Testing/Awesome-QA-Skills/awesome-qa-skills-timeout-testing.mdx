@@ -1,0 +1,111 @@
+---
+title: "Timeout Testing: Connect Budgets, Cancellation, Feedback, and Retries"
+description: "A bilingual guide to reviewing timeout budgets, cancellation propagation, downstream boundaries, user feedback, and retry interaction."
+date: 2026-12-20T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Timeout Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A timeout is not just a number. It changes whether downstream work continues, whether the user sees a recoverable state, and whether a retry risks repeating an operation.
+
+The Timeout Testing Skill prepares evidence-bounded analysis of timeout budgets, cancellation propagation, downstream boundaries, user feedback, and retry interaction. It keeps a timeout design separate from a completed fault run.
+
+The important boundary is what still runs after the caller has stopped waiting.
+
+## Timeout Testing Skill: what it is for
+
+Use this Skill when an API, job, UI flow, or dependency chain needs explicit timeout behavior and safe validation. It does not inject faults or access production systems.
+
+A good review names each timeout budget, owner, cancellation path, downstream effect, user-visible result, retry rule, evidence source, stop condition, and validation method.
+
+Use it when a service adds a dependency, users report hanging requests, or timeout and retry behavior is inconsistent across layers.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Timeout Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/timeout-testing/prompts/timeout-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/timeout-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Timeout chain | Client, gateway, service, database, queue, and provider budgets | Keep missing budgets pending |
+| Cancellation behavior | Signal propagation, cleanup, partial work, and persistence | Do not infer cancellation |
+| User feedback | Error state, progress, retry affordance, and support signal | Separate expected from observed |
+| Retry interaction | Idempotency, attempt limit, backoff, and side effects | Link to the operation contract |
+
+Use a request like this:
+
+~~~text
+Use the timeout-testing Skill.\n\nTask: Review a report-download flow where the browser times out after 30 seconds but the export job continues and can be retried.\nInputs: [timeout budgets, cancellation behavior, job state model, retry policy, logs, user messages]\nScope: [staging export flow]\nConstraints: [no production fault injection]\n\nCover budgets, cancellation propagation, downstream boundaries, user feedback, retry interaction, evidence state, and safe validation.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Budget map | Timeout at each layer and its relationship | Source and gap |
+| Cancellation finding | What stops, continues, or persists | Evidence state |
+| User and retry behavior | Visible state and duplicate-side-effect risk | Contract and evidence |
+| Validation action | Smallest controlled delay or replay | Stop condition |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Stop waiting without losing track of the export job
+
+The browser reports timeout at 30 seconds, but the job continues and a second click creates another export. The Skill should separate caller timeout from downstream cancellation, require a job-status or idempotency decision, and propose a staged delayed-provider validation. It should not assume the UI timeout cancelled server work.
+
+The analysis prepares timeout validation and evidence classification. It cannot prove cancellation, user experience, or duplicate-side-effect safety without an authorized run.
+
+## Improve the first result with better baseline input
+
+Provide timeout budgets, layer ownership, cancellation and persistence rules, job state, retry/idempotency contract, user messages, environment, and safe delay mechanism. Missing budgets remain pending.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Setting every timeout to the same value without accounting for downstream work.
+2. Assuming a client timeout cancels server or provider work.
+3. Retrying a timed-out write without checking idempotency and job status.
+
+## Related Skills
+
+- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/)：examines repeated attempts and side effects。
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：checks timeout and error response contracts。
+- [Circuit Breaker Testing](https://inaodeng.com/en/qaskills/circuit-breaker-testing/)：checks repeated downstream failure boundaries。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/timeout-testing -g
+~~~
+
+~~~text
+Use the timeout-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Is a shorter timeout always better for users?
+
+No. It may improve responsiveness while leaving work running or creating ambiguous completion; budgets and cancellation need evidence.
+
+### Should a timeout automatically retry?
+
+No. Retry depends on operation safety, error classification, idempotency, and user-visible state.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Timeout Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/timeout-testing/prompts/timeout-testing.md)
+- [Timeout Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/timeout-testing)
+- [Timeout Testing details](https://inaodeng.com/en/qaskills/timeout-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

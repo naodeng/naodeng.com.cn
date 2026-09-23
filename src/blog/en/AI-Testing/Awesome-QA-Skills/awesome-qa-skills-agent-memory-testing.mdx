@@ -1,0 +1,128 @@
+---
+title: "Agent Memory Testing: Keep remembered facts scoped, current, and safe to reuse"
+description: "Agent Memory Testing field guide: review memory scope, retrieval, staleness, deletion, consent, and evidence across conversations."
+date: 2026-10-05T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Agent Memory Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Memory makes an assistant feel useful until it remembers the wrong shipping address and confidently sends a private order to the previous tenant.
+
+Agent Memory Testing checks what may be stored, who may retrieve it, how stale facts are replaced, and whether deletion or consent boundaries hold across sessions.
+
+The Agent Memory Testing Skill is useful when a team needs a structured review of memory scope, retrieval authorization, freshness, deletion, consent, and cross-session leakage. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Agent Memory Testing.
+
+## Agent Memory Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of memory scope, retrieval authorization, freshness, deletion, consent, and cross-session leakage—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps memory scope, retrieval authorization, freshness, deletion, consent, and cross-session leakage connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Agent Memory Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing/prompts/agent-memory-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers memory scope, retrieval authorization, freshness, deletion, consent, and cross-session leakage. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Memory policy | Allowed fields, retention period, user consent, and deletion triggers | Do not infer sensitive-data permission from convenience |
+| Conversation states | Session A, order closure event, Session B, and another authorized user | Name each identity and tenant boundary |
+| Evidence | Write log, retrieval trace, deletion receipt, and redacted response | Without retrieval evidence, mark leakage risk unassessed |
+
+Use a request like this:
+
+```text
+
+Use the agent-memory-testing Skill.
+
+Task: a support assistant remembers a customer's preferred delivery window but must forget a temporary address after the order is closed
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Memory inventory | Stored fact, scope, owner, expiry, and sensitivity | Known, missing, or prohibited |
+| Retrieval judgment | Whether the right identity and context can retrieve it | Evidence and impact |
+| Lifecycle action | Expire, overwrite, delete, or require confirmation | Trigger and verification method |
+
+Do not write “passed” without a run record, query result, or source artifact. A good memory test changes one boundary at a time—identity, tenant, time, or deletion state—so a retrieved fact can be tied to the policy that allowed it.
+
+## Run one focused pass
+
+Start with a bounded pass—a support assistant remembers a customer's preferred delivery window but must forget a temporary address after the order is closed. Store a temporary address in Session A, close the order, issue the deletion event, and ask the assistant in Session B where the parcel should go. The expected output is either the current confirmed address or a request for confirmation—not the deleted value.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Testing retrieval without testing consent.
+2. Treating a successful delete API response as proof that retrieval is impossible.
+3. Using one user identity for every cross-session check.
+
+## Related Skills
+
+- [Agent Permission Testing](https://inaodeng.com/en/qaskills/agent-permission-testing/)：checks who can retrieve a remembered fact。
+- [AI Safety Testing](https://inaodeng.com/en/qaskills/ai-safety-testing/)：covers privacy and harmful reuse boundaries。
+- [Session Security Testing](https://inaodeng.com/en/qaskills/session-security-testing/)：examines cross-session identity isolation。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing -g
+
+```
+
+After installation, invoke it with the `agent-memory-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can a memory test use synthetic data?
+
+Yes, and it should for sensitive fields; the test still needs realistic identity, scope, expiry, and deletion transitions.
+
+
+
+### What if the policy is incomplete?
+
+Produce a constrained inventory, mark the missing rule, and require a human owner before storing more data.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Agent Memory Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing/prompts/agent-memory-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing/prompts/agent-memory-testing.md)
+
+- Awesome QA Skills: Agent Memory Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Agent Memory Testing details:[https://inaodeng.com/en/qaskills/agent-memory-testing/](https://inaodeng.com/en/qaskills/agent-memory-testing/)

@@ -1,0 +1,111 @@
+---
+title: "State Transition Testing: Derive Reachable and Abnormal Paths from Real Rules"
+description: "A bilingual guide to deriving traceable state-transition test candidates from states, events, guards, actions, and persistence evidence."
+date: 2026-12-08T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "State Transition Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A state diagram is a design artifact, not a record that every transition can happen. Useful state-transition testing preserves the rule, the guard, the target state, and what still needs runtime evidence.
+
+The State Transition Testing Skill derives candidates for reachable, unreachable, and abnormal transitions from supplied states, events, guards, actions, roles, and persistence evidence. It does not execute tests or claim coverage.
+
+The output is a candidate path with evidence boundaries, not a fabricated state machine.
+
+## State Transition Testing Skill: what it is for
+
+Use this Skill when a workflow such as order, subscription, approval, or incident handling has state-dependent behavior that needs traceable test-design candidates.
+
+A good STT-## finding includes source state, event, precondition or guard, action, target state, reachability, evidence, impact, owner, close condition, and validation method.
+
+Use it when a state model is changing, abnormal transitions matter, or a team needs to identify unreachable or unverified paths before writing cases.
+
+## Start with the source Skill
+
+The complete execution contract lives in [State Transition Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/state-transition-testing/prompts/state-transition-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/state-transition-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| State source | State model, workflow, API contract, or domain decision | Do not invent missing states |
+| Events and guards | Triggers, preconditions, roles, permissions, and timing | Keep unknown guards unassessed |
+| Actions and persistence | Side effects, durable state, retries, and error transitions | Separate design from observed behavior |
+| Validation context | Environment, data, state setup, and run evidence | Mark candidates NOT_RUN without execution |
+
+Use a request like this:
+
+~~~text
+Use the state-transition-testing Skill.\n\nTask: Derive test candidates for an order moving from pending payment to paid, failed, cancelled, or refunded.\nInputs: [state model, payment events, role rules, retry behavior, persistence notes]\nScope: [checkout staging, card payment flow]\nConstraints: [do not invent states or claim all paths executed]\n\nProduce STT-## findings with state, event, guard, action, target, reachability, source evidence, impact, owner, close condition, and validation.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Transition candidate | Source, event, guard, action, and target | STT ID and source |
+| Reachability | Reachable, unreachable, unknown, or abnormal candidate | Evidence state |
+| Persistence concern | What must remain consistent after transition | Data and side effect |
+| Validation action | State setup and smallest safe check | NOT_RUN until executed |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Derive payment failure and refund paths without inventing rules
+
+The model shows pending payment can become paid or failed, but says nothing about a timeout after provider authorization. The Skill should preserve the missing guard and ask whether the state is failed, pending-review, or another approved state. It should not add a timeout state because it is common in payment systems.
+
+The result is a traceable test-design inventory. It does not prove reachability, execution, coverage, or release readiness.
+
+## Improve the first result with better baseline input
+
+Provide the authoritative state source, events, guards, roles, actions, persistence rules, versions, environment, and known runtime traces. Unknown rules stay unassessed or blocked.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Treating a static diagram as proof that every arrow is executable.
+2. Filling missing states and guards from domain convention.
+3. Calling candidate count coverage or pass evidence.
+
+## Related Skills
+
+- [Decision Table Testing](https://inaodeng.com/en/qaskills/decision-table-testing/)：organizes condition and outcome combinations。
+- [Business Rule Extraction](https://inaodeng.com/en/qaskills/business-rule-extraction/)：recovers explicit rules before transition design。
+- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/)：keeps transition scope and exclusions visible。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/state-transition-testing -g
+~~~
+
+~~~text
+Use the state-transition-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can the Skill write full test cases?
+
+It can derive traceable candidates, but it should not expand into a complete strategy or execution result.
+
+### What does NOT_RUN mean here?
+
+The transition is identified but has no authorized runtime evidence. Keep it separate from unreachable or passed.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [State Transition Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/state-transition-testing/prompts/state-transition-testing.md)
+- [State Transition Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/state-transition-testing)
+- [State Transition Testing details](https://inaodeng.com/en/qaskills/state-transition-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

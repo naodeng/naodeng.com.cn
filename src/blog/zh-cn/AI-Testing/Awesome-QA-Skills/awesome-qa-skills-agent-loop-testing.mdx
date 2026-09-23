@@ -1,0 +1,125 @@
+---
+title: "Agent 循环测试：在预算耗尽前发现重复、漂移和不安全终止"
+description: "Agent 循环测试实战指南：检查迭代状态、工具重复调用、终止规则、预算使用和循环证据。"
+date: 2026-10-04T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","Agent 循环测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+Agent 反复向同一个搜索服务换几个词提问，不代表它还在推进。它可能只是在消耗预算，同时掩盖计划已经停住。
+
+Agent 循环测试用于评估每次迭代是否改变任务状态、循环是否有有效终止条件，以及重复工具调用是否仍然安全且可解释。
+
+当团队需要围绕“状态增量、重复动作、终止条件、预算限制和循环追踪”工作时，使用 Agent 循环测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 Agent 循环测试。
+
+## Agent 循环测试 Skill 用来做什么
+
+
+它适合这些场景：团队需要重复检查状态增量、重复动作、终止条件、预算限制和循环追踪；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+好的结果会把状态增量、重复动作、终止条件、预算限制和循环追踪接回来源和验证动作。设计清单不能直接写成通过结论。
+
+## 先回到源 Skill
+
+完整执行契约位于 [Agent 循环测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing/prompts/agent-loop-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing) 中还包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束状态增量、重复动作、终止条件、预算限制和循环追踪。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 目标与停止规则 | 三个已核验来源、来源权威标准和最大迭代次数 | 把完成定义和“模型说完成了”分开 |
+| 追踪 | 每次迭代的计划、工具调用、观察、状态更新和 Token 或时间预算 | 不要只凭最终答案还原循环 |
+| 失败策略 | 来源被阻断、结果重复、结果为空和升级行为 | 未解决的循环保持 blocked |
+
+可以这样调用：
+
+```text
+
+请使用 agent-loop-testing Skill。
+
+任务：研究 Agent 需要收集三个可靠来源，却不断回到一个被阻断的发布者页面
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+
+```
+
+## Agent 循环测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 迭代地图 | 相邻两次迭代发生了什么变化 | 有效增量或无进展 |
+| 循环发现 | 重复、漂移、过早停止或失控运行 | 证据与严重级别 |
+| 终止动作 | 停止、换策略重试、请求补充信息或升级 | 条件与负责人 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的循环评审会比较每次迭代前后的状态。它不会自动把重复判成错误，因为有些重试是合理的；但它要求重试带来新假设、新输入或新的验证路径。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：研究 Agent 需要收集三个可靠来源，却不断回到一个被阻断的发布者页面。对被阻断的发布者最多尝试两次，记录失败原因，然后切换到官方仓库或注册表。输出要写清策略在哪个点发生变化，以及为什么允许循环继续。
+
+交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从“看起来完整的清单”推进到可用评审。
+
+
+## 容易踩的坑
+
+1. 只统计迭代次数，不比较状态。
+2. 用一个全局迭代上限掩盖不同风险等级。
+3. 答案看起来合理就停止，却没有满足来源要求。
+
+## 相关 Skill
+
+- [AI Agent 测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：提供更大的行为与目标上下文。
+- [超时测试](https://inaodeng.com/zh-cn/qaskills/timeout-testing/)：检查基于时间的停止与失败行为。
+- [Agent 故障恢复测试](https://inaodeng.com/zh-cn/qaskills/agent-failure-recovery-testing/)：覆盖循环失败后的回退。
+
+
+
+## 安装与调用
+
+全局安装这个 Skill：
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing -g
+
+```
+
+安装后使用 `agent-loop-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 重复调用工具一定是循环失败吗？
+
+不一定。只有在重试没有增加证据，或违反预算与副作用边界时，才应形成发现。
+
+
+
+### Agent 无法推进时应该输出什么？
+
+停止并写清缺少的条件、已经尝试的策略，以及一个可以解除阻塞的人工或系统动作。
+
+
+
+## 参考
+
+- [Agent 循环测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing/prompts/agent-loop-testing.md)
+
+- [Awesome QA Skills：Agent 循环测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [Agent 循环测试 详情页](https://inaodeng.com/zh-cn/qaskills/agent-loop-testing/)

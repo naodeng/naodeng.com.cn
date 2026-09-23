@@ -1,0 +1,118 @@
+---
+title: "Failover Testing: Prove the active path changes without losing the business state"
+description: "Failover Testing field guide: validate detection, routing, connection recovery, consistency, split-brain protection, and return."
+date: 2026-11-04T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Failover Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A secondary database accepting traffic is not proof of failover. The useful question is whether clients moved, writes stayed consistent, and users can finish the journey.
+
+Failover Testing checks detection, routing, connection recovery, state consistency, split-brain protection, and return to the primary path.
+
+The Failover Testing Skill is useful when a team needs a structured review of failure detection, route switch, in-flight work, consistency, split brain, recovery, and failback. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Failover Testing.
+
+## Failover Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A good failover test follows one business object across the switch. It does not stop at healthy checks; it verifies in-flight work, duplicate protection, and the reconciliation needed after the primary returns.
+
+Use it when the team needs a repeatable review of failure detection, route switch, in-flight work, consistency, split brain, recovery, and failback—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Failover Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing/prompts/failover-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers failure detection, route switch, in-flight work, consistency, split brain, recovery, and failback. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Topology | Primary, secondary, routing, replication, client connection, and health checks | Keep actual topology evidence |
+| Traffic | Reads, writes, in-flight transactions, webhooks, and retries | Separate safe and unsafe operations |
+| Consistency oracle | Order state, payment reference, event sequence, and duplicate check | Define what must never diverge |
+
+Use a request like this:
+
+```text
+Use the failover-testing Skill.
+
+Task: fail over an order database while checkout requests and payment webhooks are still arriving
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Failover timeline | Detection, decision, route change, reconnect, and stable traffic | Timestamps |
+| State result | Lost, duplicated, delayed, or consistent business state | Artifact evidence |
+| Failback action | Return path, reconciliation, and residual risk | Owner and next run |
+
+Do not write “passed” without a run record, query result, or source artifact. A good failover test follows one business object across the switch. It does not stop at healthy checks; it verifies in-flight work, duplicate protection, and the reconciliation needed after the primary returns.
+
+## Run one focused pass
+
+Start with a bounded pass—fail over an order database while checkout requests and payment webhooks are still arriving. Pause primary writes after an order receives payment authorization, route new traffic to the secondary, and replay the webhook. Confirm one order state, one payment reference, and an explicit reconciliation event if the transition cannot be made atomic.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because failure detection, route switch, in-flight work, consistency, split brain, recovery, and failback must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Checking health endpoints without business writes.
+2. Ignoring client connection pools after the route changes.
+3. Failing back without reconciling both sides.
+
+## Related Skills
+
+- [Disaster Recovery Testing](https://inaodeng.com/en/qaskills/disaster-recovery-testing/)：covers wider recovery objectives。
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：checks service return after failure。
+- [Dependency Failure Testing](https://inaodeng.com/en/qaskills/dependency-failure-testing/)：covers dependency behavior during the switch。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing -g
+```
+
+After installation, invoke it with the `failover-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can failover be tested with read traffic only?
+
+It can validate routing, but it cannot prove write consistency or business continuity.
+
+### What if the secondary is intentionally behind?
+
+Measure the lag against the accepted RPO and expose which user actions are unavailable during the gap.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Failover Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing/prompts/failover-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing/prompts/failover-testing.md)
+
+- Awesome QA Skills: Failover Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Failover Testing details:[https://inaodeng.com/en/qaskills/failover-testing/](https://inaodeng.com/en/qaskills/failover-testing/)

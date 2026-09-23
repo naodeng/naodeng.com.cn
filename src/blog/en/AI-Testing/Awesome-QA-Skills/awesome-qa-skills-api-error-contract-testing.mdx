@@ -1,0 +1,128 @@
+---
+title: "API Error Contract Testing: Make failure responses predictable for every consumer"
+description: "API Error Contract Testing field guide: validate error envelopes, codes, retryability, field paths, security, and consumer behavior."
+date: 2026-10-10T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","API Error Contract Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+The successful response usually gets documented first. Then a consumer receives three different error shapes for validation, authorization, and dependency failure—and somebody calls that an API contract.
+
+API Error Contract Testing checks whether failures have stable structure, useful classification, safe detail, and enough information for clients to choose the right next action.
+
+The API Error Contract Testing Skill is useful when a team needs a structured review of error envelope, code taxonomy, field paths, retryability, redaction, and client handling. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Error Contract Testing.
+
+## API Error Contract Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of error envelope, code taxonomy, field paths, retryability, redaction, and client handling—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps error envelope, code taxonomy, field paths, retryability, redaction, and client handling connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [API Error Contract Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-error-contract-testing/prompts/api-error-contract-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-error-contract-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers error envelope, code taxonomy, field paths, retryability, redaction, and client handling. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Error contract | Envelope, code, message, field path, request ID, and status mapping | Mark optional fields that clients currently rely on |
+| Failure matrix | Validation, authentication, authorization, conflict, rate limit, and dependency failure | Do not collapse different actions into one generic case |
+| Consumer behavior | Retry, display, logging, fallback, and support lookup | Trace each action to an error field |
+
+Use a request like this:
+
+```text
+
+Use the api-error-contract-testing Skill.
+
+Task: validate errors from a payment API used by a checkout service and a mobile client
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Error finding | Shape, classification, field location, or security problem | Contract source and impact |
+| Consumer action | Retry, correct input, re-authenticate, wait, or stop | Expected decision |
+| Compatibility note | Change that breaks or weakens a client assumption | Migration or version action |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful test starts from the client decision, not the server implementation. If a mobile client cannot distinguish a temporary provider outage from an invalid card, the error contract has failed even when every response is valid JSON.
+
+## Run one focused pass
+
+Start with a bounded pass—validate errors from a payment API used by a checkout service and a mobile client. Send an invalid card, an expired authorization token, and a provider timeout through the same checkout endpoint. Assert the envelope and then assert the client action: fix input, re-authenticate, or retry after a delay. Also check that provider details are redacted.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Asserting only HTTP status.
+2. Letting human-readable messages become machine contracts.
+3. Returning provider or database details that expose internal state.
+
+## Related Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：covers the wider request and response contract。
+- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/)：generates invalid and boundary inputs。
+- [API Security Testing](https://inaodeng.com/en/qaskills/api-security-testing/)：checks leakage and authorization failure handling。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-error-contract-testing -g
+
+```
+
+After installation, invoke it with the `api-error-contract-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Should every error have a unique code?
+
+Not necessarily, but each code must support a distinct consumer action or a deliberate shared policy.
+
+
+
+### Can snapshots prove the contract?
+
+They can catch shape changes, but they need semantic assertions for retryability, privacy, and client behavior.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- API Error Contract Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-error-contract-testing/prompts/api-error-contract-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-error-contract-testing/prompts/api-error-contract-testing.md)
+
+- Awesome QA Skills: API Error Contract Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-error-contract-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-error-contract-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- API Error Contract Testing details:[https://inaodeng.com/en/qaskills/api-error-contract-testing/](https://inaodeng.com/en/qaskills/api-error-contract-testing/)

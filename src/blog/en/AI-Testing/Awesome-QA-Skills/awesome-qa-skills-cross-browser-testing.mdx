@@ -1,0 +1,118 @@
+---
+title: "Cross-Browser Testing: Separate engine differences from product defects in real journeys"
+description: "Cross-Browser Testing field guide: define browser coverage, capabilities, journeys, rendering, input, storage, and evidence."
+date: 2026-10-27T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Cross-Browser Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A checkout button that works in one browser and disappears in another is a product problem only after the team can reproduce the difference and explain the environment.
+
+Cross-Browser Testing builds a browser and platform matrix around user journeys, browser capabilities, data, and evidence rather than a list of browser names.
+
+The Cross-Browser Testing Skill is useful when a team needs a structured review of engine, version, viewport, input method, storage, permissions, rendering, and journey risk. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Cross-Browser Testing.
+
+## Cross-Browser Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A useful cross-browser pass starts with a journey and records the first divergence. It avoids calling a visual difference a defect until viewport, font, data, and browser capability are accounted for.
+
+Use it when the team needs a repeatable review of engine, version, viewport, input method, storage, permissions, rendering, and journey risk—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Cross-Browser Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/cross-browser-testing/prompts/cross-browser-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/cross-browser-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers engine, version, viewport, input method, storage, permissions, rendering, and journey risk. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Browser matrix | Engine, version, OS, viewport, device, and input method | Prioritize supported user traffic |
+| Journey risk | Login, payment, file upload, focus, storage, and recovery steps | Do not distribute tests evenly |
+| Evidence | Screenshot, console, network, DOM state, and environment metadata | Capture the first divergent step |
+
+Use a request like this:
+
+```text
+Use the cross-browser-testing Skill.
+
+Task: test a saved-payment checkout across Chromium, WebKit, and Firefox with keyboard and touch input
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Coverage decision | Browser and journey combinations selected | Risk basis |
+| Difference finding | Product, browser, data, or environment behavior | Reproduction details |
+| Evidence package | Artifacts needed to confirm or hand off | Owner and next run |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful cross-browser pass starts with a journey and records the first divergence. It avoids calling a visual difference a defect until viewport, font, data, and browser capability are accounted for.
+
+## Run one focused pass
+
+Start with a bounded pass—test a saved-payment checkout across Chromium, WebKit, and Firefox with keyboard and touch input. Run the saved-card checkout with keyboard-only input in Firefox, then repeat it on a touch viewport in WebKit. If the focus ring disappears only after a modal opens, keep the DOM state and accessibility tree with the screenshot.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because engine, version, viewport, input method, storage, permissions, rendering, and journey risk must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Testing browser home pages instead of risky journeys.
+2. Changing browser, data, and viewport at once.
+3. Keeping screenshots without console or environment evidence.
+
+## Related Skills
+
+- [UI Test Strategy](https://inaodeng.com/en/qaskills/ui-test-strategy/)：defines the journey and platform coverage that cross-browser checks should protect。
+- [UI Test Selector Review](https://inaodeng.com/en/qaskills/ui-test-selector-review/)：checks selector behavior across engines。
+- [Accessibility Testing](https://inaodeng.com/en/qaskills/accessibility-testing/)：connects keyboard and assistive input。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/cross-browser-testing -g
+```
+
+After installation, invoke it with the `cross-browser-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Do I need every browser version?
+
+Use support policy and traffic evidence to choose versions; the matrix should explain omissions.
+
+### What if a cloud browser differs from local?
+
+Keep provider, OS image, engine version, and capability flags in the evidence.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Cross-Browser Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/cross-browser-testing/prompts/cross-browser-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/cross-browser-testing/prompts/cross-browser-testing.md)
+
+- Awesome QA Skills: Cross-Browser Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/cross-browser-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/cross-browser-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Cross-Browser Testing details:[https://inaodeng.com/en/qaskills/cross-browser-testing/](https://inaodeng.com/en/qaskills/cross-browser-testing/)

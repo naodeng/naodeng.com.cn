@@ -1,0 +1,111 @@
+---
+title: "Risk-Based Testing: Turn Risk Evidence into Test Depth and Scope"
+description: "A bilingual guide to turning supplied quality risks, failure modes, and delivery constraints into prioritized test objectives, methods, depth, and trade-offs."
+date: 2026-12-04T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Risk-Based Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Risk-based testing is not a risk list with red labels. It is a defensible explanation of why one objective gets deeper testing, another gets sampling, and a third is deferred with an explicit trigger.
+
+The Risk-Based Testing Skill translates supplied risk evidence, failure modes, and constraints into RBT-## test decisions. It is not a complete test strategy, a regression selector, or a release approval.
+
+The output explains a trade-off that another person can challenge, validate, or change.
+
+## Risk-Based Testing Skill: what it is for
+
+Use this Skill when business criticality, change surface, past defects, or failure modes must determine test priority, level, method, depth, and scope trade-offs under limited time or capacity.
+
+A good RBT decision links risk source, impact, likelihood or uncertainty, detectability, test objective, level/method, depth, priority basis, required evidence, stop condition, expansion trigger, and residual risk.
+
+Use it when time, environment, or capacity is constrained and the team must make test focus and deferral visible.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Risk-Based Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/risk-based-testing/prompts/risk-based-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/risk-based-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Risk evidence | Business criticality, change surface, defects, failure modes, and uncertainty | Use qualitative uncertainty when data is thin |
+| Delivery constraints | Time, environments, people, test data, and tooling | Keep constraints explicit |
+| Scope | Journeys, components, versions, and exclusions | Do not call limited scope full coverage |
+| Decision boundary | Risk accepter, escalation owner, and release context | RBT is not risk acceptance |
+
+Use a request like this:
+
+~~~text
+Use the risk-based-testing Skill.\n\nTask: Prioritize testing for a checkout release that changes tax rules under a two-day validation window.\nInputs: [business impact, changed components, prior defects, failure modes, environments, data constraints]\nScope: [tax, payment totals, refunds, and unaffected catalog flow]\nConstraints: [limited staging data and one test environment]\n\nProduce RBT-## decisions with objective, level/method, depth, rationale, required evidence, stop conditions, expansion triggers, and residual risk. Do not claim full coverage or release approval.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Risk-to-objective link | Why a risk creates a test objective | Source and uncertainty |
+| Priority decision | What gets focus, sampling, or deferral | Evidence-backed rationale |
+| Depth and method | Level, technique, environment, and data needed | Required evidence |
+| Trade-off boundary | Stop, expand, escalate, and residual risk | Human decision visible |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Protect tax and refunds under a two-day window
+
+A tax-rule change affects payment totals and refund calculations, while catalog browsing is unchanged. The Skill can recommend deeper API and end-to-end checks for tax and refunds, a smaller smoke set for catalog, and an expansion trigger if shared pricing code changes. It should not call this limited scope full coverage.
+
+The output is a test-priority recommendation. It does not prove risks are controlled, tests executed, or release approved.
+
+## Improve the first result with better baseline input
+
+Provide risk sources, failure modes, change surface, impact and uncertainty, available levels and environments, data constraints, exclusions, and the Human who accepts residual risk. Without evidence, use qualitative rationale rather than invented scores.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Listing risks without explaining how they change priority or test depth.
+2. Using a precise risk score when the underlying impact or likelihood is unknown.
+3. Silently dropping high-risk areas under time pressure without an expansion trigger.
+
+## Related Skills
+
+- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/)：makes included and excluded boundaries explicit。
+- [Regression Optimization](https://inaodeng.com/en/qaskills/regression-optimization/)：optimizes execution while preserving risk。
+- [Quality Gate Design](https://inaodeng.com/en/qaskills/quality-gate-design/)：turns evidence and residual risk into a gate discussion。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/risk-based-testing -g
+~~~
+
+~~~text
+Use the risk-based-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Does RBT produce a full test strategy?
+
+No. It produces traceable priority decisions and trade-offs; broader strategy and regression selection remain separate work.
+
+### Who accepts deferred risk?
+
+The accountable Human or governance owner. The Skill records the residual risk and trigger; it does not accept it.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Risk-Based Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/risk-based-testing/prompts/risk-based-testing.md)
+- [Risk-Based Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/risk-based-testing)
+- [Risk-Based Testing details](https://inaodeng.com/en/qaskills/risk-based-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

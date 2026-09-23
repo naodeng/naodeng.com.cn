@@ -1,0 +1,125 @@
+---
+title: "API 负向测试：把无效输入和禁止状态转移写成可验证契约"
+description: "API 负向测试实战指南：覆盖格式错误、边界值、禁止状态转移、依赖失败和安全错误。"
+date: 2026-10-12T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","API 负向测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+负向测试不是往接口里随便塞一串乱码。它应该明确说明 API 必须拒绝、保持不变或解释什么。
+
+API 负向测试根据契约规则、边界、授权、状态转移和依赖行为设计失败场景。
+
+当团队需要围绕“无效结构、边界值、禁止状态、授权、依赖失败和安全响应”工作时，使用 API 负向测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 API 负向测试。
+
+## API 负向测试 Skill 用来做什么
+
+
+它适合这些场景：团队需要重复检查无效结构、边界值、禁止状态、授权、依赖失败和安全响应；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+好的结果会把无效结构、边界值、禁止状态、授权、依赖失败和安全响应接回来源和验证动作。设计清单不能直接写成通过结论。
+
+## 先回到源 Skill
+
+完整执行契约位于 [API 负向测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-negative-testing/prompts/api-negative-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-negative-testing) 中还包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束无效结构、边界值、禁止状态、授权、依赖失败和安全响应。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 契约规则 | 必填字段、格式、限制、枚举值和状态转移 | 生成用例前先列规则 |
+| 无效分区 | 单个无效因素、组合无效因素和格式错误载荷 | 保留拒绝原因 |
+| 安全证据 | 状态码、错误体、持久化记录和下游事件 | 必须证明拒绝没有产生错误写入 |
+
+可以这样调用：
+
+```text
+
+请使用 api-negative-testing Skill。
+
+任务：用格式错误行、超大批次、重复记录和非法状态转移挑战批量导入 API
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+
+```
+
+## API 负向测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 负向用例 | 无效条件和预期拒绝 | 对应规则来源 |
+| 响应判断 | 状态码、错误码、安全消息和可重试性 | 客户端动作 |
+| 变更检查 | 不应变化的记录或事件 | 状态证据 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的负向套件是分区设计的，不是表演式的。先找出违反一条规则的最小输入，再只在交互本身有风险时增加组合。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：用格式错误行、超大批次、重复记录和非法状态转移挑战批量导入 API。对导入行分别测试未知币种、负金额、重复外部 ID，以及更新已关闭账户的请求。除了断言错误契约，还要确认除非 API 明确承诺部分成功，否则有效行不会被部分提交。
+
+交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从“看起来完整的清单”推进到可用评审。
+
+
+## 容易踩的坑
+
+1. 生成无效数据，却没有对应规则。
+2. 断言被拒绝，却忽略部分写入。
+3. 所有失败类别都使用同一个格式错误载荷。
+
+## 相关 Skill
+
+- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查失败响应。
+- [边界值测试](https://inaodeng.com/zh-cn/qaskills/boundary-value-testing/)：系统化选择边界。
+- [API 安全测试](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)：覆盖禁止访问与泄露。
+
+
+
+## 安装与调用
+
+全局安装这个 Skill：
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-negative-testing -g
+
+```
+
+安装后使用 `api-negative-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 负向测试应该直接打生产吗？
+
+应使用隔离环境或获批准的安全数据；设计用例不等于授权破坏性请求。
+
+
+
+### 无效组合要测多少？
+
+覆盖独立规则和高风险交互即可，按影响排序，不按组合数量堆积。
+
+
+
+## 参考
+
+- [API 负向测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-negative-testing/prompts/api-negative-testing.md)
+
+- [Awesome QA Skills：API 负向测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-negative-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [API 负向测试 详情页](https://inaodeng.com/zh-cn/qaskills/api-negative-testing/)

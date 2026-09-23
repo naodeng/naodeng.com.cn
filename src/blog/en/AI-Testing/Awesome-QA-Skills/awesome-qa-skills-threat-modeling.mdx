@@ -1,0 +1,111 @@
+---
+title: "Threat Modeling: Turn Assets and Trust Boundaries into Reviewable Scenarios"
+description: "A bilingual guide to threat-modeling assets, trust boundaries, attack surface, threat scenarios, mitigations, assumptions, and safe validation."
+date: 2026-12-19T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Threat Modeling"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Threat modeling is most useful before an attack happens, but only if the model names what matters and where trust changes. A list of attack names without assets or boundaries is security theater.
+
+The Threat Modeling Skill builds an evidence-bounded view of assets, trust boundaries, attack surface, threat scenarios, mitigations, and assumptions. It prepares validation without logging in, calling real APIs, or claiming a security pass.
+
+The model should show where an attacker could cross a boundary and what evidence would change the risk judgment.
+
+## Threat Modeling Skill: what it is for
+
+Use this Skill for a new service, data flow, integration, or high-impact change when the team needs to make security assumptions and mitigations reviewable.
+
+A good finding names the asset, boundary, actor, threat scenario, existing mitigation, evidence state, impact, owner, close condition, and isolated validation method.
+
+Use it when a system crosses tenant, network, identity, or data boundaries, or a design needs security scenarios before implementation.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Threat Modeling prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/threat-modeling/prompts/threat-modeling.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/threat-modeling) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| System scope | Components, data flows, actors, roles, integrations, and environments | Keep unsupplied paths open |
+| Assets | Customer data, credentials, money, availability, and audit records | Do not assume value |
+| Trust boundaries | Tenant, network, service, privilege, storage, and third-party boundaries | Mark boundary evidence |
+| Mitigations and assumptions | Controls, dependencies, owners, and safe validation | Separate design from execution |
+
+Use a request like this:
+
+~~~text
+Use the threat-modeling Skill.\n\nTask: Model threats for a multi-tenant invoice export service that sends files to object storage and a customer portal.\nInputs: [data-flow diagram, roles, storage policy, API contract, tenant rules, audit design]\nScope: [export creation, storage, download, deletion]\nConstraints: [redacted data, no real credentials or API calls]\n\nCover assets, trust boundaries, attack surface, threat scenarios, mitigations, assumptions, evidence state, owner, close condition, and safe validation.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Asset and boundary | What is protected and where trust changes | Source and applicability |
+| Threat scenario | Actor, path, precondition, impact, and mitigation | Evidence state |
+| Assumption gap | What the model relies on but does not prove | Owner question |
+| Validation action | Safe check for the highest-risk scenario | Isolation and stop condition |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Model tenant escape in an invoice download flow
+
+The portal receives an export ID from the browser, but the design does not say whether the API verifies the export's tenant against the session. The Skill should model a cross-tenant access scenario, connect it to the authorization control and audit evidence, and propose a synthetic-tenant validation. It should not perform the access attempt against production.
+
+The model organizes supplied security context and assumptions. It cannot prove vulnerability, exploit success, mitigation effectiveness, or release security.
+
+## Improve the first result with better baseline input
+
+Provide a current data-flow diagram, assets, actor and role matrix, trust boundaries, versions, integrations, mitigations, owners, and safe validation environment. Redact secrets and personal data.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Listing STRIDE-like threats without mapping assets, boundaries, or evidence.
+2. Assuming a control exists because the design uses its name.
+3. Reading credentials or probing production to make the model feel complete.
+
+## Related Skills
+
+- [Security Requirement Review](https://inaodeng.com/en/qaskills/security-requirement-review/)：turns protection goals into testable conditions。
+- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：validates access decisions in an approved environment。
+- [Secrets-Exposure Review](https://inaodeng.com/en/qaskills/secrets-exposure-review/)：examines credential and log exposure。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/threat-modeling -g
+~~~
+
+~~~text
+Use the threat-modeling Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Does a threat model find vulnerabilities?
+
+It identifies scenarios and evidence gaps; vulnerability validation is a separate authorized activity.
+
+### What if the data-flow diagram is incomplete?
+
+Produce a bounded model, mark unknown boundaries, and ask for the smallest missing flow or owner decision.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Threat Modeling prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/threat-modeling/prompts/threat-modeling.md)
+- [Threat Modeling Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/threat-modeling)
+- [Threat Modeling details](https://inaodeng.com/en/qaskills/threat-modeling/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

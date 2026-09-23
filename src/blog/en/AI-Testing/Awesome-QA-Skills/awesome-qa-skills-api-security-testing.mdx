@@ -1,0 +1,118 @@
+---
+title: "API Security Testing: Connect identities, resources, and failure evidence at the boundary"
+description: "API Security Testing field guide: review authentication, authorization, input exposure, secrets, rate limits, and security evidence."
+date: 2026-10-16T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","API Security Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An API security check that stops at “the token was valid” has not checked whether the token could access this resource or whether a failure disclosed too much.
+
+API Security Testing evaluates the boundary between caller identity, requested resource, input, response, and operational controls.
+
+The API Security Testing Skill is useful when a team needs a structured review of authentication, authorization, object scope, injection surface, secrets exposure, rate limits, and audit evidence. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Security Testing.
+
+## API Security Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A strong API security pass follows an object through the entire request. It asks who owns it, who may act on it, what is logged, and what an attacker learns when the request fails.
+
+Use it when the team needs a repeatable review of authentication, authorization, object scope, injection surface, secrets exposure, rate limits, and audit evidence—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [API Security Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers authentication, authorization, object scope, injection surface, secrets exposure, rate limits, and audit evidence. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Security model | Identity, role, tenant, resource ownership, and allowed operations | Keep policy ambiguity open |
+| Attack surface | Path, query, body, headers, file names, and error responses | Include malformed and overlong inputs |
+| Evidence | Allow and deny logs, redaction, rate-limit events, and test account matrix | Do not infer protection from middleware names |
+
+Use a request like this:
+
+```text
+Use the api-security-testing Skill.
+
+Task: review a document-download API shared by employees, contractors, and service accounts across tenants
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Security finding | Boundary violation, leakage, bypass, or missing control | Asset, actor, and evidence |
+| Exploit condition | Input, identity, state, and prerequisite | Reproducible setup |
+| Remediation | Policy, code, monitoring, or verification action | Owner and residual risk |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong API security pass follows an object through the entire request. It asks who owns it, who may act on it, what is logged, and what an attacker learns when the request fails.
+
+## Run one focused pass
+
+Start with a bounded pass—review a document-download API shared by employees, contractors, and service accounts across tenants. Request the same document as its owner, a same-tenant colleague, a cross-tenant user, and a service account with read-only scope. Compare response status, body, timing, audit event, and download URL—not just the 200 or 403.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because authentication, authorization, object scope, injection surface, secrets exposure, rate limits, and audit evidence must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Testing authentication without object authorization.
+2. Checking a sanitized body while leaving a secret in headers or URLs.
+3. Ignoring timing and error differences that reveal resource existence.
+
+## Related Skills
+
+- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：deepens permission decisions。
+- [Secrets Exposure Review](https://inaodeng.com/en/qaskills/secrets-exposure-review/)：checks secret leakage in payloads and logs。
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：examines safe failure responses。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing -g
+```
+
+After installation, invoke it with the `api-security-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Does a 403 prove the resource is protected?
+
+No. Confirm no data, signed URL, metadata, or side effect was exposed.
+
+### Can the Skill perform an attack?
+
+It organizes bounded security checks; real intrusive actions require explicit authorization and safe environments.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- API Security Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md)
+
+- Awesome QA Skills: API Security Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- API Security Testing details:[https://inaodeng.com/en/qaskills/api-security-testing/](https://inaodeng.com/en/qaskills/api-security-testing/)

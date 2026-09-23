@@ -1,0 +1,116 @@
+---
+title: "可观测性设计评审：在故障发生前让未来的失败可解释"
+description: "可观测性设计评审实战指南：检查日志、指标、Trace、关联、隐私、告警和诊断动作。"
+date: 2026-11-13T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","可观测性设计评审"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+一个全是绿色数字的仪表盘不等于可观测性。真正的可观测性要能把失败结算接到请求、依赖、状态和用户影响。
+
+可观测性设计评审用于检查系统是否发出足以发现、解释、定位和验证行为的信号，同时遵守隐私边界。
+
+当团队需要围绕“日志、指标、Trace、关联、维度、告警、隐私和诊断动作”工作时，使用可观测性设计评审 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦可观测性设计评审。
+
+## 可观测性设计评审 Skill 用来做什么
+
+好的评审从运维必须做出的决定开始。它会问哪个信号能缩小原因、哪个信号能识别受影响流程，以及哪些数据绝不能发出。
+
+它适合这些场景：团队需要重复检查日志、指标、Trace、关联、维度、告警、隐私和诊断动作；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [可观测性设计评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review/prompts/observability-design-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束日志、指标、Trace、关联、维度、告警、隐私和诊断动作。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 流程地图 | 用户动作、服务、依赖、状态和失败点 | 写出预期的第一信号 |
+| 信号设计 | 日志字段、指标维度、Trace 传递和告警规则 | 检查基数与隐私 |
+| 诊断目的 | 运维必须做什么决定、需要多快 | 每个信号都接回动作 |
+
+可以这样调用：
+
+```text
+请使用 observability-design-review Skill。
+
+任务：评审跨浏览器、API 网关、支付提供商和订单 Worker 的结算失败可观测性
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 可观测性设计评审 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 可观测性缺口 | 信号缺失、维度错误、关联断裂或数据不安全 | 影响 |
+| 诊断路径 | 需要的查询、仪表盘、Trace 或告警 | 负责人和时间 |
+| 验证计划 | 证明信号有效的故障注入或重放 | 证据产物 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的评审从运维必须做出的决定开始。它会问哪个信号能缩小原因、哪个信号能识别受影响流程，以及哪些数据绝不能发出。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：评审跨浏览器、API 网关、支付提供商和订单 Worker 的结算失败可观测性。用一个关联 ID 追踪失败结算穿过网关、提供商请求和 Worker 事件。仪表盘应能区分提供商超时与订单状态冲突，但不能记录卡数据或原始客户内容。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为日志、指标、Trace、关联、维度、告警、隐私和诊断动作必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 收集字段，却没有诊断问题。
+2. 没有成本计划就使用高基数维度。
+3. 创建没有负责人和响应动作的告警。
+
+## 相关 Skill
+
+- [日志分析](https://inaodeng.com/zh-cn/qaskills/log-analysis/)：使用日志发现模式。
+- [分布式 Trace 分析](https://inaodeng.com/zh-cn/qaskills/distributed-trace-analysis/)：跨服务追踪请求。
+- [生产事故分析](https://inaodeng.com/zh-cn/qaskills/production-incident-analysis/)：在事故复盘中使用信号。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review -g
+```
+
+安装后使用 `observability-design-review` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 遥测越多可观测性越好吗？
+
+不一定。有效信号要可关联、可查询、安全，并接回决策。
+
+### 一行日志可以证明状态变化吗？
+
+只有当来源、时间、关联以及它与持久状态的关系都被定义时才可以。
+
+## 参考
+
+- [可观测性设计评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review/prompts/observability-design-review.md)
+
+- [Awesome QA Skills：可观测性设计评审 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [可观测性设计评审 详情页](https://inaodeng.com/zh-cn/qaskills/observability-design-review/)

@@ -1,0 +1,117 @@
+---
+title: "Quality Productivity Metrics：衡量 QA 流程，不奖励测试表演"
+description: "质量生产力指标双语指南，围绕有效分母、归因限制、刷数风险和人工使用边界设计质量与交付指标。"
+date: 2026-11-21T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "质量生产力指标"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+测试用例数和关闭工单数可以让忙碌的团队看起来很高产，但用户风险可能正在上升。生产力指标要先问：什么有价值的质量信号变了，条件是什么，代价又是什么？
+
+Quality Productivity Metrics Skill 把质量指标与交付指标放在一起看，帮助团队区分流程证据和个人活动，暴露归因限制，并设计更难被刷数的复核方式。
+
+本文关注的不是团队做了多少可见动作，而是指标是否描述了系统结果。
+
+## 质量生产力指标 Skill 用来做什么
+
+当团队要评估流程或工具变化后的 QA 流程、设计工程记分卡，或者复核生产力结论是否有质量结果支撑时，使用这个 Skill。它不负责给个人排名，也不把活动数量直接变成发布决定。
+
+好的结果要写清质量指标、交付指标、分母、归因限制、刷数风险、证据状态，以及分析之外仍需人工决定的事项。
+
+当团队想知道执行更快、自动化更多或分诊更短，是否改善交付且没有增加线上逃逸风险时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [质量生产力指标 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+在请求判断前先列出已有材料。缺口可以保留，但状态必须可见。
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 评估变化 | 一次让两个产品团队排队时间缩短的 CI 改造 | 不要把所有后续变化都归因给它 |
+| 质量与交付事件 | 反馈时长、线上缺陷、flaky 重跑、发布和返工 | 没有的事件保留为未评估 |
+| 分母与队列 | 运行、发布、变更文件、用户或固定团队周期 | 拒绝不匹配的分母 |
+| 使用边界 | 团队学习、计划还是薪酬场景 | 草稿指标不能直接惩罚个人 |
+
+可以这样调用：
+
+~~~text
+请使用 quality-productivity-metrics Skill。\n\n任务：评估 CI 并行化是否改善结账和商品目录团队的 QA 生产力，同时没有增加线上逃逸风险。\n输入材料：[前后窗口、运行事件、排队时间、重跑、发布、缺陷和变更范围]\n范围：[两个团队和指定流水线]\n限制：[缺少事故关联、发布量不同、隐私要求]\n\n分开质量指标、交付指标、分母、归因限制、刷数风险和人工决策。不要把活动数量变成员工分数。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 质量信号 | 变化是否影响用户风险或缺陷发现 | 证据与来源 |
+| 交付信号 | 可比队列下反馈是否变快 | 窗口与分母 |
+| 归因限制 | 还可能解释变化的其他因素 | 候选混杂因素 |
+| 使用边界 | 结果怎样安全使用 | 团队学习，不是排名 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：评估 CI 变快，不要庆祝重跑数量增加
+
+并行化后反馈中位数从 28 分钟降到 12 分钟，但重跑翻倍，线上缺陷也没有关联到发布。这个 Skill 可以报告流程速度改善已有证据，同时把质量影响标为未评估；下一步应检查 flaky 原因和发布关联，再判断改造价值。
+
+结果只能说明给定队列和事件支持了什么，不能证明个人努力、单一改造的因果影响，也不能证明更短反馈一定有价值。
+
+## 先补基线输入，再期待更好的结果
+
+提供可比前后窗口、流水线和发布标识、事件定义、变更范围及混杂因素。说明结果用于计划、团队学习还是受治理的其他决策。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把测试数、提交数或关闭工单数直接当作生产力分数。
+2. 比较风险、发布量或分母定义不同的团队。
+3. 忽略 flaky 重跑、人员变化和范围缩减，就把工具改造认定为因果原因。
+
+## 相关 Skill
+
+- [质量指标设计](https://inaodeng.com/zh-cn/qaskills/quality-metrics-design/)：定义事件和计算规则。
+- [质量仪表盘设计](https://inaodeng.com/zh-cn/qaskills/quality-dashboard-design/)：展示多个带证据状态的信号。
+- [自动化 ROI 分析](https://inaodeng.com/zh-cn/qaskills/automation-roi-analysis/)：当变化是自动化时分析成本与价值。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics -g
+~~~
+
+安装后使用下面的调用方式，并附上项目材料：
+
+~~~text
+请使用 quality-productivity-metrics Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 能输出团队排名吗？
+
+它可以整理可比证据，但排名是另外的治理决定。先暴露不确定性和刷数风险，再由负责人决定是否用于评价。
+
+### 如果质量数据缺失怎么办？
+
+保留生产力和质量信号的区分，把缺失部分标为未评估，并给出最小的关联或抽样动作。
+
+
+
+## 参考
+
+- [质量生产力指标 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md)
+- [质量生产力指标 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics)
+- [质量生产力指标 详情页](https://inaodeng.com/zh-cn/qaskills/quality-productivity-metrics/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

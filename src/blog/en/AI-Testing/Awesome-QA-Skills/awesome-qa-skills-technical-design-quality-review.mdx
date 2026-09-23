@@ -1,0 +1,111 @@
+---
+title: "Technical Design Quality Review: Find Implementation Risks Before the First Commit"
+description: "Review technical designs before implementation for boundary, dependency, failure, data, security, performance, observability, and verification risks."
+date: 2026-12-09T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Technical Design Quality Review"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A diagram can be complete enough to present and still omit the boundary that will fail in production. Technical design review is where those omissions become questions before they become code.
+
+The Technical Design Quality Review Skill reviews ADRs, component designs, data flows, and non-functional constraints before implementation. It produces TD-## findings and validation preparation without reviewing unsupplied code or approving an architecture.
+
+The review should expose assumptions that the first implementation or validation must make explicit.
+
+## Technical Design Quality Review Skill: what it is for
+
+Use this Skill to inspect boundaries, dependencies, failure modes, data consistency, security, performance, observability, compatibility, maintainability, and verification readiness in a supplied design.
+
+A good finding names the design topic, source evidence, impact, priority, gap action, owner, decision question, and validation method.
+
+Use it when an architecture note, ADR, component design, or technical proposal needs an implementation-readiness pass while important details remain uncertain.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Technical Design Quality Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/technical-design-quality-review) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Design material | ADR, diagrams, interfaces, data flow, constraints, and success criteria | List unsupplied design areas |
+| Version and scope | Revision, components, environments, traffic, data, and compatibility boundary | Do not infer from names |
+| Risk topics | Dependencies, failures, security, performance, observability, and maintenance | Assess topics separately |
+| Verification readiness | Test ideas, metrics, fixtures, owners, and safe environment | Keep unverified claims open |
+
+Use a request like this:
+
+~~~text
+Use the technical-design-quality-review Skill.\n\nTask: Review a design for a multi-tenant invoice export service before implementation.\nInputs: [ADR, data flow, API contract, tenant boundary, storage plan, threat notes, observability plan]\nScope: [export jobs, object storage, customer access]\nConstraints: [no code or production probe supplied]\n\nProduce TD-## findings across boundaries, dependencies, failures, data, security, performance, observability, compatibility, maintainability, and verification readiness. Keep design claims separate from runtime evidence.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Design finding | The topic, source, impact, and priority | TD ID and evidence |
+| Gap action | What must be clarified or added | Owner and decision question |
+| Validation preparation | Smallest check for the design claim | Environment and evidence |
+| Human boundary | What remains an architecture or risk decision | Not an approval |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Review tenant isolation in an export design
+
+The design stores export files under a tenant-prefixed path but does not specify how download authorization checks the tenant ID. The Skill should record the boundary and trace it to API, storage, and audit evidence, then request a safe validation. It should not infer isolation from the path name or approve the design.
+
+The review assesses the supplied design and prepares validation. It cannot prove implementation compatibility, security, capacity, latency, or release readiness.
+
+## Improve the first result with better baseline input
+
+Provide the current design revision, scope, interfaces, dependency assumptions, data classification, non-functional objectives, observability plan, and intended validation environment. Missing design material stays unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Checking that a diagram exists without checking boundaries, failure handling, or recovery.
+2. Treating “supports high concurrency” or “has monitoring” as a verification criterion.
+3. Turning a recommendation into an approved architecture or release conclusion.
+
+## Related Skills
+
+- [Security Requirement Review](https://inaodeng.com/en/qaskills/security-requirement-review/)：checks whether protection goals are testable。
+- [Observability Design Review](https://inaodeng.com/en/qaskills/observability-design-review/)：reviews evidence and signals in the design。
+- [Database Design Quality Review](https://inaodeng.com/en/qaskills/database-design-quality-review/)：deepens storage and consistency concerns。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/technical-design-quality-review -g
+~~~
+
+~~~text
+Use the technical-design-quality-review Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can this Skill review code?
+
+Only code supplied as design evidence can be referenced. It must not claim to have reviewed unsupplied implementation.
+
+### Does a clean design review mean the build will pass?
+
+No. Build, compatibility, security, and performance still need their own execution evidence.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Technical Design Quality Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md)
+- [Technical Design Quality Review Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/technical-design-quality-review)
+- [Technical Design Quality Review details](https://inaodeng.com/en/qaskills/technical-design-quality-review/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

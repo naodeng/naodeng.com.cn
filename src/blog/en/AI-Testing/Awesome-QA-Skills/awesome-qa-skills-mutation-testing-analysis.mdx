@@ -1,0 +1,118 @@
+---
+title: "Mutation Testing Analysis: Learn which tests notice a meaningful rule change"
+description: "Mutation Testing Analysis field guide: interpret mutants, surviving changes, equivalent mutants, test oracles, and risk."
+date: 2026-11-11T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Mutation Testing Analysis"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A high mutation score can still miss the business rule that matters. A surviving mutant is useful only when the changed behavior has a reason to be observable.
+
+Mutation Testing Analysis interprets code changes introduced by mutation tools and connects surviving meaningful mutants to missing tests or weak oracles.
+
+The Mutation Testing Analysis Skill is useful when a team needs a structured review of mutant meaning, killed or survived result, equivalent change, oracle strength, and risk. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Mutation Testing Analysis.
+
+## Mutation Testing Analysis Skill: what it is for
+
+A practical standard for this Skill is simple: A useful analysis reads the mutant diff before reading the score. It asks whether the changed branch affects a user decision, then checks whether an existing test should have observed it.
+
+Use it when the team needs a repeatable review of mutant meaning, killed or survived result, equivalent change, oracle strength, and risk—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Mutation Testing Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mutation-testing-analysis/prompts/mutation-testing-analysis.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mutation-testing-analysis) contains the entry point and supporting assets where they exist.
+
+The entry point centers mutant meaning, killed or survived result, equivalent change, oracle strength, and risk. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Mutation run | Tool, version, scope, mutant diff, result, and timeout | Keep environment and exclusions |
+| Business rules | Discount thresholds, exclusions, rounding, and priority | Connect mutants to rules |
+| Test oracle | Assertions, invariants, and expected business result | Weak assertions create false confidence |
+
+Use a request like this:
+
+```text
+Use the mutation-testing-analysis Skill.
+
+Task: analyze surviving mutants in a discount calculation module after a test suite reports 82 percent mutation score
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Mutant classification | Meaningful, equivalent, untestable, or infrastructure-limited | Basis |
+| Coverage gap | Rule or oracle not detected by the suite | Risk and test |
+| Action | Add assertion, case, invariant, or retain documented exclusion | Owner and retest |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful analysis reads the mutant diff before reading the score. It asks whether the changed branch affects a user decision, then checks whether an existing test should have observed it.
+
+## Run one focused pass
+
+Start with a bounded pass—analyze surviving mutants in a discount calculation module after a test suite reports 82 percent mutation score. A mutant changes a discount comparison from `>=` to `>`. Map it to the threshold rule, add the exact boundary amount, and verify the test asserts the final price—not merely that the calculation returns a number.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because mutant meaning, killed or survived result, equivalent change, oracle strength, and risk must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Optimizing the score by killing irrelevant mutants.
+2. Calling every survivor a test gap.
+3. Ignoring timeouts and excluded files in the score.
+
+## Related Skills
+
+- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/)：connects mutation results to test value。
+- [Test Gap Analysis](https://inaodeng.com/en/qaskills/test-gap-analysis/)：organizes missing coverage。
+- [Test Code Review](https://inaodeng.com/en/qaskills/test-code-review/)：reviews the assertion implementation。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mutation-testing-analysis -g
+```
+
+After installation, invoke it with the `mutation-testing-analysis` Skill and attach the real project material.
+
+## Two practical questions
+
+### Is mutation score a release gate by itself?
+
+No. It is evidence about test sensitivity and must be interpreted with risk, exclusions, and runtime evidence.
+
+### What should happen to an equivalent mutant?
+
+Document why it cannot change observable behavior instead of adding a meaningless test.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Mutation Testing Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mutation-testing-analysis/prompts/mutation-testing-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mutation-testing-analysis/prompts/mutation-testing-analysis.md)
+
+- Awesome QA Skills: Mutation Testing Analysis source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mutation-testing-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mutation-testing-analysis)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Mutation Testing Analysis details:[https://inaodeng.com/en/qaskills/mutation-testing-analysis/](https://inaodeng.com/en/qaskills/mutation-testing-analysis/)

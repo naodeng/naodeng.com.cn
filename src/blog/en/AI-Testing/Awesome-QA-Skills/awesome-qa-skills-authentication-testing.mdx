@@ -1,0 +1,118 @@
+---
+title: "Authentication Testing: Verify who the system thinks is calling it—and when that proof expires"
+description: "Authentication Testing field guide: review login, tokens, sessions, expiry, recovery, MFA, and identity evidence."
+date: 2026-10-18T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Authentication Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Authentication is the answer to “who are you?” That answer needs a lifetime, a recovery path, and evidence that it was not quietly replaced halfway through the request.
+
+Authentication Testing checks credential and identity flows across login, token issuance, renewal, expiry, logout, recovery, and multi-factor challenges.
+
+The Authentication Testing Skill is useful when a team needs a structured review of credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Authentication Testing.
+
+## Authentication Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A good authentication test follows the identity across devices and time. It verifies that a link cannot be reused, a logged-out session cannot continue, and a recovery path does not become the weakest credential.
+
+Use it when the team needs a repeatable review of credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Authentication Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing/prompts/authentication-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Identity flow | Enrollment, login, link expiry, session issuance, logout, and recovery | Name each identity and device state |
+| Security policy | MFA trigger, token lifetime, replay rule, and recovery owner | Do not infer policy from UI wording |
+| Evidence | Token claims, session record, audit log, and user notification | A successful screen alone is insufficient |
+
+Use a request like this:
+
+```text
+Use the authentication-testing Skill.
+
+Task: verify a passwordless login flow that uses an email link, device session, and step-up MFA for payout changes
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Identity judgment | What proves the caller identity at each step | Evidence and confidence |
+| Lifecycle finding | Replay, expiry, logout, recovery, or binding gap | Affected state |
+| Control action | MFA, revocation, notification, or policy change | Owner and validation |
+
+Do not write “passed” without a run record, query result, or source artifact. A good authentication test follows the identity across devices and time. It verifies that a link cannot be reused, a logged-out session cannot continue, and a recovery path does not become the weakest credential.
+
+## Run one focused pass
+
+Start with a bounded pass—verify a passwordless login flow that uses an email link, device session, and step-up MFA for payout changes. Use the email link on Device A, copy it to Device B, log out, then request a payout change. The result should distinguish link replay, session invalidation, and step-up MFA—not reduce every failure to “unauthorized.”
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Testing login but not logout or recovery.
+2. Checking token format without checking revocation.
+3. Allowing a password reset to bypass the same MFA policy as login.
+
+## Related Skills
+
+- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：checks what an authenticated identity may do。
+- [Session Security Testing](https://inaodeng.com/en/qaskills/session-security-testing/)：examines session continuity and isolation。
+- [API Security Testing](https://inaodeng.com/en/qaskills/api-security-testing/)：connects auth to API boundaries。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing -g
+```
+
+After installation, invoke it with the `authentication-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can a test account use a real email?
+
+Use approved test identities; the important evidence is identity lifecycle, not personal data.
+
+### What if the expiry policy is unclear?
+
+Keep the case unresolved and ask the policy owner to define the boundary before testing it as fact.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Authentication Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing/prompts/authentication-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing/prompts/authentication-testing.md)
+
+- Awesome QA Skills: Authentication Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Authentication Testing details:[https://inaodeng.com/en/qaskills/authentication-testing/](https://inaodeng.com/en/qaskills/authentication-testing/)

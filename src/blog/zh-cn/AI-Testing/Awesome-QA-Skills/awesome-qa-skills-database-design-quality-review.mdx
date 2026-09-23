@@ -1,0 +1,116 @@
+---
+title: "数据库设计质量评审：在写入数据之前发现完整性和迁移风险"
+description: "数据库设计质量评审实战指南：检查实体、键、约束、索引、生命周期、租户、迁移和恢复。"
+date: 2026-10-28T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","数据库设计质量评审"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+数据库设计是一个记忆很长的产品决定。一个缺失的唯一性规则，可能在被发现前已经变成数百万条重复记录。
+
+数据库设计质量评审用于检查 Schema 能否保持业务不变量、支持访问模式、隔离租户并安全演进。
+
+当团队需要围绕“实体、关系、键、约束、索引、租户、生命周期、迁移和恢复”工作时，使用数据库设计质量评审 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦数据库设计质量评审。
+
+## 数据库设计质量评审 Skill 用来做什么
+
+好的评审从不变量和真实查询开始。它会追问什么阻止同一笔支付出现两次退款、什么阻止跨租户查询，以及迁移执行到一半停止时会发生什么。
+
+它适合这些场景：团队需要重复检查实体、关系、键、约束、索引、租户、生命周期、迁移和恢复；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [数据库设计质量评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review/prompts/database-design-quality-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束实体、关系、键、约束、索引、租户、生命周期、迁移和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 领域规则 | 订单身份、退款唯一性、状态生命周期和保留策略 | 每个不变量都接回来源 |
+| 访问模式 | 查询、报表、分页、写入和租户过滤 | 不要只根据表结构选索引 |
+| 变更计划 | 迁移、回填、回滚、容量和恢复 | 标记不可逆步骤 |
+
+可以这样调用：
+
+```text
+请使用 database-design-quality-review Skill。
+
+任务：在第一次生产迁移前评审多租户订单与退款数据模型
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 数据库设计质量评审 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 设计发现 | 完整性、访问、隔离、性能或生命周期缺口 | 来源与影响 |
+| 迁移风险 | 锁、回填、双写或回滚风险 | 前置条件 |
+| 验证动作 | 约束、查询、负载、恢复或迁移检查 | 证据负责人 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的评审从不变量和真实查询开始。它会追问什么阻止同一笔支付出现两次退款、什么阻止跨租户查询，以及迁移执行到一半停止时会发生什么。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：在第一次生产迁移前评审多租户订单与退款数据模型。评审退款表中的支付引用唯一性、租户键、状态历史和按订单日期查询的报表。再走一遍给历史数据回填支付引用的迁移流程，先定义重复记录如何处理，再添加约束。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为实体、关系、键、约束、索引、租户、生命周期、迁移和恢复必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只看字段，不看生命周期状态。
+2. 没有查询和数据量假设就添加索引。
+3. 数据转换丢失旧表示，却把迁移称为可逆。
+
+## 相关 Skill
+
+- [API 设计质量评审](https://inaodeng.com/zh-cn/qaskills/api-design-quality-review/)：把数据规则接回 API 契约。
+- [技术设计质量评审](https://inaodeng.com/zh-cn/qaskills/technical-design-quality-review/)：评审更大的技术架构。
+- [灾备测试](https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/)：检查恢复与数据灾备假设。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review -g
+```
+
+安装后使用 `database-design-quality-review` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 数据库技术还没选定可以评审吗？
+
+可以。不变量和访问模式应在技术方案定稿前明确。
+
+### 产品规则和历史数据冲突怎么办？
+
+保留冲突并安排数据决策，不要把问题隐藏在可空字段里。
+
+## 参考
+
+- [数据库设计质量评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review/prompts/database-design-quality-review.md)
+
+- [Awesome QA Skills：数据库设计质量评审 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [数据库设计质量评审 详情页](https://inaodeng.com/zh-cn/qaskills/database-design-quality-review/)

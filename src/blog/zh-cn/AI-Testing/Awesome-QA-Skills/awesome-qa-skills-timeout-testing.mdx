@@ -1,0 +1,111 @@
+---
+title: "Timeout Testing：把超时预算、取消、反馈和重试连接起来"
+description: "超时测试双语指南，围绕超时预算、取消传播、下游边界、用户反馈和重试交互准备有证据边界的分析。"
+date: 2026-12-20T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "超时测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+超时不只是一个数字。它会改变下游工作是否继续、用户是否看到可恢复状态，以及重试会不会重复操作。
+
+Timeout Testing Skill 分析超时预算、取消传播、下游边界、用户反馈和重试交互，同时把超时设计与已经完成的故障运行分开。
+
+本文关注的关键边界是调用方不再等待后，下游工作还会继续什么。
+
+## 超时测试 Skill 用来做什么
+
+当 API、任务、UI 流程或依赖链需要明确超时行为和安全验证时，使用这个 Skill。它不会注入故障，也不会访问生产系统。
+
+好的复核要写清每层预算、负责人、取消路径、下游影响、用户结果、重试规则、证据来源、停止条件和验证方式。
+
+当服务新增依赖、用户反馈请求卡住，或者各层超时和重试行为不一致时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [超时测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing/prompts/timeout-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 超时链 | 客户端、网关、服务、数据库、队列和供应商预算 | 预算缺失时保留 pending |
+| 取消行为 | 信号传播、清理、部分工作和持久化 | 不要自行推断取消 |
+| 用户反馈 | 错误状态、进度、重试入口和支持信号 | 预期与观察分开 |
+| 重试交互 | 幂等、次数、退避和副作用 | 连接到操作契约 |
+
+可以这样调用：
+
+~~~text
+请使用 timeout-testing Skill。\n\n任务：复核报表下载流程：浏览器 30 秒超时，但导出任务会继续，用户还能重试。\n输入材料：[超时预算、取消行为、任务状态模型、重试策略、日志和用户提示]\n范围：[staging 导出流程]\n限制：[不注入生产故障]\n\n覆盖预算、取消传播、下游边界、用户反馈、重试交互、证据状态和安全验证。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 预算图 | 每层超时及其关系 | 来源与缺口 |
+| 取消发现 | 什么停止、继续或持久化 | 证据状态 |
+| 用户与重试行为 | 用户状态和重复副作用风险 | 契约与证据 |
+| 验证动作 | 最小受控延迟或重放 | 停止条件 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：停止等待，但不要丢掉导出任务状态
+
+浏览器 30 秒后报超时，但任务继续运行，用户再次点击会创建第二个导出。这个 Skill 应区分调用方超时与下游取消，要求明确任务状态或幂等决策，并建议在 staging 延迟供应商响应验证。不能假设 UI 超时取消了服务端工作。
+
+分析可以准备超时验证并分类证据，不能在没有授权运行前证明取消、用户体验或重复副作用安全。
+
+## 先补基线输入，再期待更好的结果
+
+提供超时预算、各层负责人、取消和持久化规则、任务状态、重试/幂等契约、用户提示、环境和安全延迟机制。预算缺失时保持 pending。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 不考虑下游工作，就把所有层超时设成同一个值。
+2. 假设客户端超时会取消服务端或供应商工作。
+3. 没有检查幂等和任务状态，就对超时写操作重试。
+
+## 相关 Skill
+
+- [重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)：检查重复尝试和副作用。
+- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查超时与错误响应契约。
+- [熔断器测试](https://inaodeng.com/zh-cn/qaskills/circuit-breaker-testing/)：检查连续下游失败边界。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing -g
+~~~
+
+~~~text
+请使用 timeout-testing Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 超时更短对用户一定更好吗？
+
+不一定。它可能让界面更快响应，却留下继续运行的工作或不明确完成状态，预算和取消都需要证据。
+
+### 超时应该自动重试吗？
+
+不应该自动假设。要看操作安全、错误分类、幂等性和用户可见状态。
+
+
+
+## 参考
+
+- [超时测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing/prompts/timeout-testing.md)
+- [超时测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing)
+- [超时测试 详情页](https://inaodeng.com/zh-cn/qaskills/timeout-testing/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

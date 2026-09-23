@@ -1,0 +1,118 @@
+---
+title: "Decision Table Testing: Expose rule combinations before they become production exceptions"
+description: "Decision Table Testing field guide: model conditions, actions, impossible combinations, priorities, and expected outcomes."
+date: 2026-10-29T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Decision Table Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+When three rules decide one outcome, prose hides the combination that matters. A decision table makes the choice visible—and makes disagreements easier to find.
+
+Decision Table Testing converts business conditions and actions into explicit rule combinations, including impossible, conflicting, and priority-dependent cases.
+
+The Decision Table Testing Skill is useful when a team needs a structured review of conditions, actions, combinations, constraints, rule priority, and outcome. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Decision Table Testing.
+
+## Decision Table Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A useful table keeps business conditions separate from test data. It can tell you that two rules conflict before anyone argues about which example to automate.
+
+Use it when the team needs a repeatable review of conditions, actions, combinations, constraints, rule priority, and outcome—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Decision Table Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/decision-table-testing/prompts/decision-table-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/decision-table-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers conditions, actions, combinations, constraints, rule priority, and outcome. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Conditions | Business facts, values, unknowns, and source | Separate true, false, and not-applicable |
+| Actions | Discount, message, eligibility, and state effect | Define priority when actions conflict |
+| Constraints | Impossible or mutually exclusive rows | Record them instead of silently deleting them |
+
+Use a request like this:
+
+```text
+Use the decision-table-testing Skill.
+
+Task: test a shipping discount decision based on customer tier, cart value, destination, and active promotion
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Rule table | Condition combinations and action | Source and priority |
+| Coverage finding | Missing, duplicate, conflicting, or impossible row | Risk and owner |
+| Test case | Input state, expected action, and oracle | Executable next step |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful table keeps business conditions separate from test data. It can tell you that two rules conflict before anyone argues about which example to automate.
+
+## Run one focused pass
+
+Start with a bounded pass—test a shipping discount decision based on customer tier, cart value, destination, and active promotion. Create rows for premium and standard customers, carts above and below the threshold, domestic and international destinations, and promotion active or expired. Mark an international premium row with no promotion as a deliberate outcome, not a missing case.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because conditions, actions, combinations, constraints, rule priority, and outcome must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Mixing conditions and actions in one sentence.
+2. Deleting impossible rows without documenting the constraint.
+3. Ignoring rule priority when multiple rows match.
+
+## Related Skills
+
+- [Business Rule Extraction](https://inaodeng.com/en/qaskills/business-rule-extraction/)：finds conditions before table construction。
+- [Combinatorial Testing](https://inaodeng.com/en/qaskills/combinatorial-testing/)：reduces large condition spaces。
+- [Boundary Value Testing](https://inaodeng.com/en/qaskills/boundary-value-testing/)：selects values for threshold conditions。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/decision-table-testing -g
+```
+
+After installation, invoke it with the `decision-table-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Must every table row become a test?
+
+Every meaningful rule should be represented; impossible rows can remain as documented constraints.
+
+### What if a condition is unknown?
+
+Keep an unknown state or open question; do not force it into true or false.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Decision Table Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/decision-table-testing/prompts/decision-table-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/decision-table-testing/prompts/decision-table-testing.md)
+
+- Awesome QA Skills: Decision Table Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/decision-table-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/decision-table-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Decision Table Testing details:[https://inaodeng.com/en/qaskills/decision-table-testing/](https://inaodeng.com/en/qaskills/decision-table-testing/)

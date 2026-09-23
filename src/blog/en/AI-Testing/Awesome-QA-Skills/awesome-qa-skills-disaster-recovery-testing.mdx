@@ -1,0 +1,118 @@
+---
+title: "Disaster Recovery Testing: Connect RTO and RPO to a recovery path someone can verify"
+description: "Disaster Recovery Testing field guide: validate recovery objectives, backups, restore, failover, data integrity, and evidence."
+date: 2026-10-31T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Disaster Recovery Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A backup existing in storage is not the same as a service being recoverable. The useful evidence appears when a team restores the right data, starts the right dependencies, and checks what users can actually do.
+
+Disaster Recovery Testing evaluates whether a service can meet its recovery time and recovery point objectives with usable data, dependencies, ownership, and evidence.
+
+The Disaster Recovery Testing Skill is useful when a team needs a structured review of RTO, RPO, backup, restore, dependency order, failover, data integrity, and user acceptance. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Disaster Recovery Testing.
+
+## Disaster Recovery Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A strong disaster-recovery test measures the business path, not only process health. A green database does not prove that a customer can see an order, receive a refund, or reconcile a payment.
+
+Use it when the team needs a repeatable review of RTO, RPO, backup, restore, dependency order, failover, data integrity, and user acceptance—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Disaster Recovery Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/disaster-recovery-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers RTO, RPO, backup, restore, dependency order, failover, data integrity, and user acceptance. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Recovery objectives | RTO, RPO, service priority, and user-critical actions | Do not accept targets without measurement |
+| Recovery material | Backups, replicas, configuration, secrets, dependencies, and runbook | Verify ownership and access |
+| Integrity checks | Counts, payments, orders, events, and reconciliation queries | Define what “usable” means |
+
+Use a request like this:
+
+```text
+Use the disaster-recovery-testing Skill.
+
+Task: recover an order service after a regional database loss while preserving recent paid orders
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Recovery timeline | Detection, decision, restore, dependency start, and service ready | Observed timestamps |
+| Integrity result | Data loss, duplication, mismatch, or usable state | RPO evidence |
+| Gap and action | Runbook, backup, access, or ownership failure | Owner and next drill |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong disaster-recovery test measures the business path, not only process health. A green database does not prove that a customer can see an order, receive a refund, or reconcile a payment.
+
+## Run one focused pass
+
+Start with a bounded pass—recover an order service after a regional database loss while preserving recent paid orders. Restore the latest backup into an isolated region, replay the allowed event window, and verify paid orders, refund references, and idempotency records. Record the exact point where data falls outside the RPO instead of rounding it away.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because RTO, RPO, backup, restore, dependency order, failover, data integrity, and user acceptance must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Testing backup creation instead of restore.
+2. Ignoring secrets, queues, DNS, or external providers.
+3. Declaring recovery complete without business reconciliation.
+
+## Related Skills
+
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：focuses on returning a component to service。
+- [Failover Testing](https://inaodeng.com/en/qaskills/failover-testing/)：checks active path changes。
+- [Production Verification](https://inaodeng.com/en/qaskills/production-verification/)：checks real service recovery signals。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/disaster-recovery-testing -g
+```
+
+After installation, invoke it with the `disaster-recovery-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can a tabletop exercise prove RTO?
+
+It can expose decision and ownership gaps, but measured recovery time requires a controlled restore or failover.
+
+### What if some data is intentionally lost?
+
+Make the loss policy explicit and verify which user and financial records remain within the accepted boundary.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Disaster Recovery Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md)
+
+- Awesome QA Skills: Disaster Recovery Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/disaster-recovery-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/disaster-recovery-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Disaster Recovery Testing details:[https://inaodeng.com/en/qaskills/disaster-recovery-testing/](https://inaodeng.com/en/qaskills/disaster-recovery-testing/)

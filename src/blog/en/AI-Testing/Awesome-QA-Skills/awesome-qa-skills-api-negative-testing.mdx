@@ -1,0 +1,128 @@
+---
+title: "API Negative Testing: Turn invalid inputs and forbidden transitions into useful contracts"
+description: "API Negative Testing field guide: cover malformed input, boundary values, forbidden transitions, dependency failures, and safe errors."
+date: 2026-10-12T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","API Negative Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A negative test is not a random string thrown at an endpoint. It is a specific claim about what the API must reject, preserve, or explain.
+
+API Negative Testing designs failure cases from contract rules, boundaries, authorization, state transitions, and dependency behavior.
+
+The API Negative Testing Skill is useful when a team needs a structured review of invalid shape, boundary values, forbidden state, authorization, dependency failure, and safe response. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Negative Testing.
+
+## API Negative Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of invalid shape, boundary values, forbidden state, authorization, dependency failure, and safe response—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps invalid shape, boundary values, forbidden state, authorization, dependency failure, and safe response connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [API Negative Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-negative-testing/prompts/api-negative-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-negative-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers invalid shape, boundary values, forbidden state, authorization, dependency failure, and safe response. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Contract rules | Required fields, formats, limits, enum values, and state transitions | List rules before generating cases |
+| Invalid partitions | One invalid factor at a time, paired invalid factors, and malformed payloads | Keep the reason for rejection visible |
+| Safety evidence | Status, error body, persisted records, and downstream events | Reject without mutation must be proved |
+
+Use a request like this:
+
+```text
+
+Use the api-negative-testing Skill.
+
+Task: challenge a bulk-import API with malformed rows, oversized batches, duplicate records, and an invalid state transition
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Negative case | Invalid condition and expected rejection | Traceable rule |
+| Response judgment | Status, code, safe message, and retryability | Client action |
+| Mutation check | Records or events that must not change | State evidence |
+
+Do not write “passed” without a run record, query result, or source artifact. A good negative suite is partitioned, not theatrical. It finds the smallest input that violates one rule, then adds combinations only where the interaction itself creates risk.
+
+## Run one focused pass
+
+Start with a bounded pass—challenge a bulk-import API with malformed rows, oversized batches, duplicate records, and an invalid state transition. For an import row, test an unknown currency, a negative amount, a duplicate external ID, and a row that updates a closed account. Assert both the error contract and that no valid row was partially committed unless the API explicitly promises partial success.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Generating invalid data without mapping it to a rule.
+2. Asserting rejection but ignoring partial writes.
+3. Using only one malformed payload for every failure class.
+
+## Related Skills
+
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：deepens failure response assertions。
+- [Boundary Value Testing](https://inaodeng.com/en/qaskills/boundary-value-testing/)：systematizes limit selection。
+- [API Security Testing](https://inaodeng.com/en/qaskills/api-security-testing/)：covers forbidden access and leakage。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-negative-testing -g
+
+```
+
+After installation, invoke it with the `api-negative-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Should negative tests run against production?
+
+Use an isolated environment or approved safe data; the case design does not authorize destructive requests.
+
+
+
+### How many invalid combinations are enough?
+
+Enough to cover independent rules and high-risk interactions; prioritize by impact, not by combinatorial volume.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- API Negative Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-negative-testing/prompts/api-negative-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-negative-testing/prompts/api-negative-testing.md)
+
+- Awesome QA Skills: API Negative Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-negative-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-negative-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- API Negative Testing details:[https://inaodeng.com/en/qaskills/api-negative-testing/](https://inaodeng.com/en/qaskills/api-negative-testing/)

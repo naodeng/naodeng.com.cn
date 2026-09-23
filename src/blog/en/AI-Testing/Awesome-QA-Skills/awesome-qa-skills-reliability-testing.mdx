@@ -1,0 +1,111 @@
+---
+title: "Reliability Testing: Connect Failure Modes to Availability Evidence"
+description: "A bilingual guide to reliability-testing analysis covering availability objectives, failure modes, exposure windows, and evidence readiness."
+date: 2026-11-26T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Reliability Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Reliability is not a claim that a service “usually works.” It is a relationship between an availability objective, realistic failure modes, exposure windows, and evidence that can be checked.
+
+The Reliability Testing Skill prepares an evidence-bounded view of service reliability. It models failure modes and exposure without treating an architecture diagram or an incident-free week as proof.
+
+The result should tell the next engineer what failure to isolate and what evidence would change the reliability judgment.
+
+## Reliability Testing Skill: what it is for
+
+Use this Skill to review availability objectives, dependency failures, degraded modes, exposure windows, and validation evidence readiness. It does not inject faults or access production systems by itself.
+
+A good reliability review maps each important failure mode to expected behavior, affected exposure, evidence source, validation method, owner, and stop condition.
+
+Use it when a resilience exercise is planned, a dependency or traffic pattern changed, or an SLO exists without a clear validation path.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Reliability Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing/prompts/reliability-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Availability objective | SLO or business objective, service boundary, and measurement window | Keep unsupported targets pending |
+| Failure modes | Queue delay, provider outage, storage saturation, or dependency timeout | Avoid generic system-down labels |
+| Exposure window | Users, operations, regions, and duration affected | Mark unknown blast radius unassessed |
+| Evidence readiness | Metrics, logs, traces, alerts, runbooks, and safe test environment | Separate design and execution evidence |
+
+Use a request like this:
+
+~~~text
+Use the reliability-testing Skill.\n\nTask: Prepare a reliability review for a notification service depending on a queue and a third-party email provider.\nInputs: [SLO, dependency map, failure modes, traffic window, metrics, alerts, runbooks]\nScope: [staging exercise and production evidence review]\nConstraints: [no production fault injection, provider data masked]\n\nCover availability objectives, failure modes, exposure windows, and evidence readiness. State pending, blocked, or unassessed items and give the smallest isolated validation method.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Reliability objective | Expected availability or degraded behavior | Source and measurement window |
+| Failure-mode judgment | Expected behavior under one failure | Scenario and evidence state |
+| Exposure analysis | Who or what is affected and for how long | Blast radius and unknowns |
+| Evidence plan | Metric, trace, or exercise that reduces uncertainty | Owner and stop condition |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Review provider outage behavior without inventing availability
+
+The email provider contract says requests may time out, while the service design mentions retries but not queue backpressure or user-visible status. The Skill should flag the failure mode and exposure window as incomplete, then request retry, queue, and alert evidence. It should not infer an availability percentage from a successful staging smoke test.
+
+The review classifies objectives and readiness from supplied material. It cannot prove real availability, fault containment, or recovery behavior until authorized validation produces runtime evidence.
+
+## Improve the first result with better baseline input
+
+Provide the objective source, dependency and failure-mode map, exposure window, metric definitions, alert and runbook references, environment, and data constraints. Without an approved objective, write an evidence gap rather than inventing an SLO.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Treating uptime history as proof that unobserved dependency failures are handled.
+2. Describing a failure mode without user exposure, degraded behavior, or alert.
+3. Running broad fault injection before defining an isolated scenario and stop condition.
+
+## Related Skills
+
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：checks behavior after service or data restoration。
+- [Chaos Testing](https://inaodeng.com/en/qaskills/chaos-testing/)：designs controlled failure experiments。
+- [Observability Design Review](https://inaodeng.com/en/qaskills/observability-design-review/)：checks whether reliability evidence can be observed。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing -g
+~~~
+
+~~~text
+Use the reliability-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can the Skill assign an SLO?
+
+No. It exposes missing objectives, measurement windows, and validation paths. Service and business owners decide the target.
+
+### Is an incident-free period reliability evidence?
+
+It is one observation with limited coverage. Keep its window and failure exposure visible; it does not prove failures that did not occur.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Reliability Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing/prompts/reliability-testing.md)
+- [Reliability Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing)
+- [Reliability Testing details](https://inaodeng.com/en/qaskills/reliability-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

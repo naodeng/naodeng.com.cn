@@ -1,0 +1,128 @@
+---
+title: "Agent Failure Recovery Testing: Trace retries, fallbacks, and safe handoff after a failed action"
+description: "Agent Failure Recovery Testing field guide: make retries, fallbacks, state consistency, user notice, and recovery evidence reviewable."
+date: 2026-10-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Agent Failure Recovery Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An agent timing out during payment authorization is not a small inconvenience. It may have charged the card, failed to update the order, or told the user to try again while the first request is still alive.
+
+Agent Failure Recovery Testing classifies what failed, what the agent tried next, and whether the user and system reached a safe state. It keeps retry, fallback, escalation, state consistency, and user notice together instead of treating recovery as a final paragraph in a report.
+
+The Agent Failure Recovery Testing Skill is useful when a team needs a structured review of failure class, retry or fallback decision, state consistency, user notice, and recovery evidence. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Agent Failure Recovery Testing.
+
+## Agent Failure Recovery Testing Skill: what it is for
+
+
+Use it when the team needs a repeatable review of failure class, retry or fallback decision, state consistency, user notice, and recovery evidence—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+A good result keeps failure class, retry or fallback decision, state consistency, user notice, and recovery evidence connected to a source and a verification action. It does not turn a design checklist into a passing result.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Agent Failure Recovery Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers failure class, retry or fallback decision, state consistency, user notice, and recovery evidence. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Journey and boundary | Create order, authorize payment, confirm order, and recover from a timeout | Exclude settlement reconciliation unless it is in this pass |
+| State and timing | Order state, payment state, request ID, timeout window, and retry policy | Keep unknown timing as an open question |
+| Evidence and owner | Gateway response, idempotency record, audit log, user notification, and recovery owner | Stay in analysis mode when the write record is missing |
+
+Use a request like this:
+
+```text
+
+Use the agent-failure-recovery-testing Skill.
+
+Task: an order agent times out during payment authorization and must avoid duplicate charges while telling the user what actually happened
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Failure classification | timeout, duplicate risk, stale state, or unavailable dependency | Confirmed, assumption, or open |
+| Recovery decision | retry, poll, compensate, escalate, or stop | Decision basis and owner |
+| Evidence index | request IDs, state transitions, logs, and user-visible notice | Artifact path and validation action |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful first result separates what the agent knows from what the gateway proves. It gives the next person one safe verification action—usually a payment-status lookup keyed by the original request ID—before allowing another write.
+
+## Run one focused pass
+
+Start with a bounded pass—an order agent times out during payment authorization and must avoid duplicate charges while telling the user what actually happened. Use the original payment request ID to query the gateway before retrying. If the gateway says authorized and the order is still pending, the recovery result should recommend reconciliation or confirmation—not another charge. If the gateway has no record, the retry can proceed only with the original idempotency key and an explicit evidence trail.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+
+## Common traps
+
+1. Treating a timeout as proof that no write occurred.
+2. Testing the retry path without checking the original side effect.
+3. Writing a recovery recommendation without naming the person who can approve compensation.
+
+## Related Skills
+
+- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/)：checks the wider plan, memory, and goal behavior。
+- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/)：examines retry boundaries and duplicate execution。
+- [Production Verification](https://inaodeng.com/en/qaskills/production-verification/)：connects recovery decisions to live signals。
+
+
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing -g
+
+```
+
+After installation, invoke it with the `agent-failure-recovery-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can I start without gateway logs?
+
+Yes, but only with a constrained state model and a list of evidence needed to distinguish unknown from failed.
+
+
+
+### When is a retry unsafe?
+
+When the original write state is unknown and the operation can create money, inventory, notification, or permission side effects.
+
+
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Agent Failure Recovery Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md)
+
+- Awesome QA Skills: Agent Failure Recovery Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Agent Failure Recovery Testing details:[https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/)

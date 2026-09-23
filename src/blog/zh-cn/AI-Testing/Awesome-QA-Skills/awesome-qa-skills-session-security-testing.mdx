@@ -1,0 +1,111 @@
+---
+title: "Session-Security Testing：复核会话创建、撤销、过期和设备边界"
+description: "会话安全测试双语指南，围绕会话创建、固定、过期、撤销、并发和跨设备边界准备有证据边界的复核。"
+date: 2026-12-07T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "会话安全测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+会话安全经常在状态转换中失败：登录之后、改密之后、第二台设备出现时，或者会话应该过期却仍然保留权限。
+
+Session-Security Testing Skill 为会话创建、固定、过期、撤销、并发和跨设备边界准备有证据边界的场景，同时把设计声明与执行后的安全结果分开。
+
+本文关注的会话规则只有在生命周期和失效边界可观察时才真正有用。
+
+## 会话安全测试 Skill 用来做什么
+
+当你要在隔离环境使用合成账号复核会话行为时，使用这个 Skill。它识别安全问题和验证动作，不会登录生产、读取凭证或宣布系统安全。
+
+好的结果要写清会话状态、角色与设备、触发条件、预期 token 或权限变化、证据、负责人、关闭条件和安全验证方式。
+
+当认证改造、刷新 token 行为变化、退出或改密流程重做，或者跨设备策略不明确时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [会话安全测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing/prompts/session-security-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 会话模型 | 创建、刷新、过期、退出、改密和撤销规则 | 未文档化的转换保留问题 |
+| 角色与设备 | 用户角色、浏览器/设备类型、并发和租户范围 | 缺失边界要标出 |
+| Token 证据 | 脱敏声明、Cookie 标志、ID、时间戳和服务端记录 | 不要提供真实 token |
+| 验证环境 | 合成账号、隔离 staging、日志和清理方案 | 不登录生产 |
+
+可以这样调用：
+
+~~~text
+请使用 session-security-testing Skill。\n\n任务：复核改密是否撤销 Web 和移动端会话，同时保留一个批准的恢复设备。\n输入材料：[会话策略、token 元数据、改密流程、设备规则、staging 日志和合成账号]\n范围：[Web 与移动端 staging]\n限制：[不使用真实凭证、不访问生产]\n\n覆盖创建、固定、过期、撤销、并发和跨设备边界，没有依据的安全结论保持 pending。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 生命周期场景 | 会话状态、触发、角色和设备 | 来源与适用性 |
+| 安全关注 | 意外权限、固定、旧权限或跨设备泄露 | 证据状态 |
+| 预期边界 | 什么应过期、轮换、撤销或保留 | 策略与负责人 |
+| 验证动作 | 安全重放和所需证据 | 合成账号与清理 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：检查 Web 和移动端的改密撤销
+
+改密撤销了 Web Cookie，却让移动端 refresh token 继续可用。这个 Skill 应记录跨设备撤销缺口，保留已批准的恢复设备例外，并建议使用合成账号重放，同时记录 token 时间戳和服务端撤销证据。
+
+复核可以准备安全场景和证据检查，不能在没有授权运行前证明漏洞利用成功、不存在漏洞或发布安全。
+
+## 先补基线输入，再期待更好的结果
+
+提供会话生命周期、token 类型、Cookie 和存储策略、角色/设备矩阵、改密/退出规则、环境、合成账号和清理方案。Token 值必须脱敏。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 只在一个浏览器测试退出，漏掉 refresh token 或移动端会话。
+2. 只看 token 过期时间，不检查服务端撤销和资源授权。
+3. 用真实账号或线上 token 证明安全边界。
+
+## 相关 Skill
+
+- [认证测试](https://inaodeng.com/zh-cn/qaskills/authentication-testing/)：检查身份建立和登录流程。
+- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)：检查会话变化后的资源访问。
+- [敏感信息暴露审查](https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/)：复核 token 和日志暴露边界。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing -g
+~~~
+
+~~~text
+请使用 session-security-testing Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### Token 生命周期短就够安全吗？
+
+不够。过期、轮换、撤销、存储、并发和资源检查共同决定会话安全。
+
+### 可以把生产账号拿到 staging 复用吗？
+
+不可以。使用明确角色的合成账号并清理，不要跨环境搬运真实凭证。
+
+
+
+## 参考
+
+- [会话安全测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing/prompts/session-security-testing.md)
+- [会话安全测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing)
+- [会话安全测试 详情页](https://inaodeng.com/zh-cn/qaskills/session-security-testing/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

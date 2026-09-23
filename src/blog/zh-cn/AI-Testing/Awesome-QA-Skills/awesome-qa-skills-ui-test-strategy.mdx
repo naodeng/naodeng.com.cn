@@ -1,0 +1,111 @@
+---
+title: "UI Test Strategy：在自动化前映射流程、状态、平台和风险"
+description: "UI 测试策略双语指南，根据用户流程、界面状态、平台差异、可访问性和缺陷证据形成有边界的 UI 测试候选。"
+date: 2026-12-22T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "UI 测试策略"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+从页面数量开始做 UI 自动化，很快就会变贵。有效策略应在选择浏览器测试前连接用户流程、状态、平台、角色、可访问性和已知故障。
+
+UI Test Strategy Skill 根据用户流程、页面和组件清单、状态流、设计、平台矩阵、可访问性要求和缺陷证据形成 UTS-## 候选，不能执行测试或声称覆盖。
+
+本文关注的策略从用户结果和风险出发，再选择最小而有依据的 UI 证据。
+
+## UI 测试策略 Skill 用来做什么
+
+当你要为流程或发布定义可追踪的 UI 质量候选和边界时，使用这个 Skill。它让平台和状态取舍可见，不会直接变成完整测试策略或可执行集合。
+
+好的 UTS 发现要写清流程或状态、前置条件、风险、来源证据、平台适用性、优先级、负责人、关闭条件和验证动作。
+
+当团队需要决定哪些流程、状态、设备、浏览器、语言或可访问性路径优先关注时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [UI 测试策略 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-strategy/prompts/ui-test-strategy.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-strategy) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 流程与状态 | 核心流程、空/加载/错误/成功状态、角色和转换 | 缺失状态要可见 |
+| 平台矩阵 | 浏览器、设备、视口、语言、输入方式和无障碍需求 | 不要假设一个浏览器代表全部 |
+| 风险证据 | 缺陷、分析数据、业务重要性和变更面 | 事实与推断分开 |
+| 已有资产 | 设计、组件、测试、夹具和环境 | 存在不等于执行 |
+
+可以这样调用：
+
+~~~text
+请使用 ui-test-strategy Skill。\n\n任务：为旅行预订结账定义 UI 测试候选，覆盖桌面、移动 Web、键盘导航和支付错误状态。\n输入材料：[用户流程、状态图、平台矩阵、可访问性要求、设计和缺陷历史]\n范围：[搜索、乘客信息、支付和确认]\n限制：[一个 staging 环境、设备容量有限]\n\n输出 UTS-## 发现，包含对象、前置条件、问题、来源、平台适用性、证据状态、负责人、关闭条件和验证方式。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 流程候选 | 用户结果、状态和风险 | UTS 编号与来源 |
+| 平台边界 | 浏览器、设备、语言、输入和无障碍范围 | 适用性 |
+| 优先级理由 | 为什么需要深测或抽样 | 证据与不确定性 |
+| 验证动作 | 扩展前的最小 UI 检查 | 负责人与 NOT_RUN 状态 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：覆盖键盘和移动端的支付错误状态
+
+桌面快乐路径已经存在，但缺陷历史显示支付错误会卡住键盘用户，移动端还会丢失已填乘客信息。这个 Skill 应提升错误状态和恢复路径候选，连接平台证据，并把未执行工作保留为 NOT_RUN。
+
+结果是策略候选清单，不能证明 UI 行为、无障碍合规、覆盖或发布就绪。
+
+## 先补基线输入，再期待更好的结果
+
+提供流程、状态转换、平台和语言矩阵、无障碍预期、变更与缺陷证据、设计、已有测试、数据和环境容量。未知平台行为保持未评估。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 从页面数量开始，而不是从用户流程和风险开始。
+2. 只在一个桌面浏览器测试快乐路径。
+3. 把候选测试清单叫完整策略或已执行覆盖。
+
+## 相关 Skill
+
+- [UI 测试选择器评审](https://inaodeng.com/zh-cn/qaskills/ui-test-selector-review/)：在范围确定后让定位器稳定。
+- [UI 测试等待策略评审](https://inaodeng.com/zh-cn/qaskills/ui-test-wait-strategy-review/)：处理异步 UI 状态。
+- [视觉回归测试](https://inaodeng.com/zh-cn/qaskills/visual-regression-testing/)：补充基线和视觉变更边界。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-strategy -g
+~~~
+
+~~~text
+请使用 ui-test-strategy Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 会决定完整浏览器矩阵吗？
+
+它提出有证据的候选和取舍，平台覆盖仍取决于风险、容量和人工决定。
+
+### 页面清单能证明 UI 覆盖吗？
+
+不能。它只是输入材料，覆盖还需要可追踪意图和执行证据。
+
+
+
+## 参考
+
+- [UI 测试策略 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-strategy/prompts/ui-test-strategy.md)
+- [UI 测试策略 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-strategy)
+- [UI 测试策略 详情页](https://inaodeng.com/zh-cn/qaskills/ui-test-strategy/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

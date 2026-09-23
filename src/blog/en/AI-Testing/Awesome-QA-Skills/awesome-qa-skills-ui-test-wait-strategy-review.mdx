@@ -1,0 +1,111 @@
+---
+title: "UI Test Wait Strategy Review: Replace Sleeps with Observable Conditions"
+description: "A bilingual guide to reviewing asynchronous UI waits, polling conditions, timeout evidence, retries, and fixed sleeps."
+date: 2026-12-23T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "UI Test Wait Strategy Review"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A fixed sleep hides the question a UI test actually needs to answer: which observable state says the page is ready, and what should happen if it never arrives?
+
+The UI Test Wait Strategy Review Skill reviews waits from asynchronous states, network and rendering events, observable conditions, polling, timeout configuration, failure traces, retries, and fixed sleeps. It produces UWR-## findings.
+
+The wait should observe the product state that matters, not merely consume time.
+
+## UI Test Wait Strategy Review Skill: what it is for
+
+Use this Skill to identify brittle or misleading waits in UI automation without executing tests or treating a wait pattern as coverage or pass evidence.
+
+A good UWR finding names the asynchronous subject, expected condition, timeout, polling or event source, failure behavior, source evidence, owner, close condition, and validation.
+
+Use it when UI tests use fixed sleeps, timeouts are frequently changed, or failures do not reveal whether the page was actually ready.
+
+## Start with the source Skill
+
+The complete execution contract lives in [UI Test Wait Strategy Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-wait-strategy-review/prompts/ui-test-wait-strategy-review.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-wait-strategy-review) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Async behavior | Network, rendering, animation, polling, websocket, or background job state | Keep unknown readiness unassessed |
+| Test wait code | Sleep, locator wait, event, polling, timeout, retry, and assertion | Review the whole sequence |
+| Failure evidence | Trace, screenshot, network log, timing, and environment | Do not infer runtime from code alone |
+| Boundary | Expected user-visible state, stop condition, and owner | Keep Human timing choices visible |
+
+Use a request like this:
+
+~~~text
+Use the ui-test-wait-strategy-review Skill.\n\nTask: Review a search-result UI test that sleeps five seconds before asserting the result list.\nInputs: [test code, network trace, DOM states, timeout config, failure screenshots, browser environment]\nScope: [search loading, empty, error, and result states]\nConstraints: [do not execute or edit the test]\n\nProduce UWR-## findings with subject, expected condition, evidence, concern, impact, owner, close condition, and validation method.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Wait finding | Fixed sleep, weak condition, polling, retry, or timeout issue | UWR ID and source |
+| Observable condition | State that actually proves readiness | DOM, event, or API evidence |
+| Failure boundary | What happens when the condition never arrives | Timeout and diagnostic |
+| Validation action | Smallest replay or instrumentation check | NOT_RUN until executed |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Replace a five-second search sleep with a state check
+
+The test sleeps five seconds, but the search result list can be empty, error, or stale. The Skill should ask for a stable loading-to-result or error condition, preserve timeout and diagnostic needs, and avoid choosing an arbitrary shorter sleep as the fix.
+
+The review identifies wait-quality candidates. It cannot prove timing stability, absence of flakes, or UI coverage without execution evidence.
+
+## Improve the first result with better baseline input
+
+Provide the wait code, component states, network/rendering events, timeout and retry config, failure traces, browser scope, and expected user-visible condition. Keep missing event evidence pending.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Replacing one fixed sleep with another number.
+2. Waiting for an element to exist when it may still be hidden, stale, or loading.
+3. Retrying a timeout without retaining the first failure's diagnostic evidence.
+
+## Related Skills
+
+- [UI Test Selector Review](https://inaodeng.com/en/qaskills/ui-test-selector-review/)：helps identify the stable element or state。
+- [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/)：examines timeout budgets and cancellation。
+- [Test Code Review](https://inaodeng.com/en/qaskills/test-code-review/)：reviews assertion and fixture interactions。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-wait-strategy-review -g
+~~~
+
+~~~text
+Use the ui-test-wait-strategy-review Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Are explicit waits always better than sleeps?
+
+Only when the condition is meaningful and observable. A weak condition can be as misleading as a sleep.
+
+### Should a UI wait retry automatically?
+
+Not by default. Review whether retry hides a product defect, a selector issue, or a real transient state.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [UI Test Wait Strategy Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-wait-strategy-review/prompts/ui-test-wait-strategy-review.md)
+- [UI Test Wait Strategy Review Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ui-test-wait-strategy-review)
+- [UI Test Wait Strategy Review details](https://inaodeng.com/en/qaskills/ui-test-wait-strategy-review/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

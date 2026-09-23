@@ -1,0 +1,118 @@
+---
+title: "Property-Based Testing: Test invariants across many generated inputs"
+description: "Property-Based Testing field guide: define properties, generators, shrinking, domains, invariants, and reproducible failures."
+date: 2026-11-15T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Property-Based Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Example-based tests show that a few inputs work. Property-based tests ask whether a rule survives a much wider input space—and give you the smallest counterexample when it does not.
+
+Property-Based Testing defines invariants and generates many inputs to explore them, while preserving seeds and shrinking failures into useful cases.
+
+The Property-Based Testing Skill is useful when a team needs a structured review of property, generator, domain, seed, shrinking, invariant, and counterexample. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Property-Based Testing.
+
+## Property-Based Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A strong property test has a domain property, not merely a generic assertion like “the function does not crash.” The property should matter to the user or system state.
+
+Use it when the team needs a repeatable review of property, generator, domain, seed, shrinking, invariant, and counterexample—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Property-Based Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/property-based-testing/prompts/property-based-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/property-based-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers property, generator, domain, seed, shrinking, invariant, and counterexample. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Property | Invariant, relation, or safety rule | Write the oracle before the generator |
+| Generator domain | Valid, invalid, boundary, and dependent data | Constrain unrealistic values |
+| Failure evidence | Seed, shrunk case, versions, and intermediate values | Keep the minimal counterexample |
+
+Use a request like this:
+
+```text
+Use the property-based-testing Skill.
+
+Task: test a cart total calculation across item quantities, discounts, currencies, and rounding
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Property result | Invariant held, violated, or untestable | Run and seed |
+| Counterexample | Minimal input that breaks the property | Reproducible fixture |
+| Domain gap | Generator bias or missing meaningful class | Generator update |
+
+Do not write “passed” without a run record, query result, or source artifact. A strong property test has a domain property, not merely a generic assertion like “the function does not crash.” The property should matter to the user or system state.
+
+## Run one focused pass
+
+Start with a bounded pass—test a cart total calculation across item quantities, discounts, currencies, and rounding. Generate carts with quantities and decimal prices, then assert that adding an item cannot lower the total unless a documented promotion applies. Preserve the seed and shrink a failing cart to the smallest discount-and-rounding case.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because property, generator, domain, seed, shrinking, invariant, and counterexample must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Generating unrealistic data that hides real behavior.
+2. Using a property weaker than the business invariant.
+3. Losing the random seed or shrunk example after a failure.
+
+## Related Skills
+
+- [Metamorphic Testing](https://inaodeng.com/en/qaskills/metamorphic-testing/)：tests relations when exact outputs are hard。
+- [Boundary Value Testing](https://inaodeng.com/en/qaskills/boundary-value-testing/)：anchors generated domains at limits。
+- [Test Data Generation](https://inaodeng.com/en/qaskills/test-data-generation/)：provides controlled data strategies。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/property-based-testing -g
+```
+
+After installation, invoke it with the `property-based-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can property-based tests replace examples?
+
+They complement examples; representative examples still explain known rules and support debugging.
+
+### What if shrinking removes the meaningful context?
+
+Keep the shrunk counterexample and the original generated case when context affects the interpretation.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Property-Based Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/property-based-testing/prompts/property-based-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/property-based-testing/prompts/property-based-testing.md)
+
+- Awesome QA Skills: Property-Based Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/property-based-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/property-based-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Property-Based Testing details:[https://inaodeng.com/en/qaskills/property-based-testing/](https://inaodeng.com/en/qaskills/property-based-testing/)

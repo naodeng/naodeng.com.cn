@@ -1,0 +1,111 @@
+---
+title: "Test Suite Health Analysis: Diagnose Flakiness, Duplication, and Quarantine Debt"
+description: "A bilingual guide to analyzing test-suite health from run history, duration, flakiness, duplication, isolation, quarantine, maintenance, and defect evidence."
+date: 2026-12-17T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Test Suite Health Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A test suite can be large, green, and unhealthy. Flaky reruns, quarantined checks, duplicate intent, slow tails, and unclear ownership all reduce the trust of the signal.
+
+The Test Suite Health Analysis Skill reviews suite health from CI history, duration distributions, reruns, quarantine lists, duplicate tests, maintenance records, and defect evidence. It produces TSH-## governance candidates, not execution results.
+
+Health is a set of observable conditions, not a single green percentage.
+
+## Test Suite Health Analysis Skill: what it is for
+
+Use this Skill to understand whether a suite is trustworthy and maintainable enough for its intended feedback role. It does not execute tests, infer coverage from counts, or accept risk for a Human.
+
+A good TSH finding includes subject, preconditions, concern, source evidence, validation, impact, priority, owner, close condition, and evidence state.
+
+Use it when a suite is slow or flaky, quarantine keeps growing, duplicate tests are suspected, or CI health needs an evidence-based review.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Test Suite Health Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-suite-health-analysis/prompts/test-suite-health-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-suite-health-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Run history | Duration distribution, retries, failures, environment, and versions | Keep missing windows visible |
+| Suite inventory | Tests, ownership, quarantine, tags, and duplicate intent | Do not count files as coverage |
+| Maintenance and defects | Repair records, changed areas, escapes, and failure clusters | Separate correlation from cause |
+| Decision boundary | Feedback role, owner, stop condition, and next validation | Do not approve release |
+
+Use a request like this:
+
+~~~text
+Use the test-suite-health-analysis Skill.\n\nTask: Assess the checkout pre-merge suite after three weeks of rising reruns and a growing quarantine list.\nInputs: [CI history, duration data, quarantine records, test inventory, owners, defect links]\nScope: [pre-merge checkout suite]\nConstraints: [do not execute tests or call candidate count coverage]\n\nProduce TSH-## findings with source, evidence state, impact, owner, close condition, and smallest validation action.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Health finding | Flakiness, duration, duplication, isolation, or maintenance concern | TSH ID and evidence |
+| Impact | How the issue affects trust or feedback | Priority and boundary |
+| Validation action | Smallest check before changing the suite | Owner and method |
+| Residual state | What remains unassessed or NOT_RUN | No coverage claim |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Separate flaky reruns from real product failures
+
+Reruns increased after a browser upgrade, while product defects stayed stable and most failures cluster in one fixture. The Skill should identify an environment or isolation hypothesis, keep product-risk inference separate, and request a controlled replay. It should not delete the tests or call the suite healthy from one green rerun.
+
+The analysis describes supplied suite-health evidence. It cannot prove execution coverage, root cause, or release readiness.
+
+## Improve the first result with better baseline input
+
+Provide a fixed time window, run IDs, duration and retry data, quarantine history, suite and owner inventory, defect links, environment changes, and the feedback role the suite serves.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Using test count or green percentage as overall health.
+2. Treating quarantine as deletion without recording the protected risk.
+3. Calling a cluster a root cause without environment or reproduction evidence.
+
+## Related Skills
+
+- [Test Maintenance Cost Analysis](https://inaodeng.com/en/qaskills/test-maintenance-cost-analysis/)：measures repair and ownership cost。
+- [Test Runtime Optimization](https://inaodeng.com/en/qaskills/test-runtime-optimization/)：handles slow feedback with baselines。
+- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/)：relates suite signals to risk detection。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-suite-health-analysis -g
+~~~
+
+~~~text
+Use the test-suite-health-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Should quarantine always be removed?
+
+No. First record why it was quarantined, what risk it protects, who owns it, and what closes or escalates the quarantine.
+
+### Does a healthy suite mean full coverage?
+
+No. Health concerns signal trust and maintainability; coverage is a separate traceable question.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Test Suite Health Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-suite-health-analysis/prompts/test-suite-health-analysis.md)
+- [Test Suite Health Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-suite-health-analysis)
+- [Test Suite Health Analysis details](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

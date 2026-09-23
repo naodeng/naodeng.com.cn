@@ -1,0 +1,116 @@
+---
+title: "质量门禁设计：把发布决策写清楚，不假装每个信号都完整"
+description: "质量门禁设计实战指南：定义决策范围、证据状态、阈值、例外、负责人和失败动作。"
+date: 2026-11-18T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","质量门禁设计"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+“所有测试都必须通过”的门禁听起来严格，实际上几乎没有解释力。哪些测试、哪种证据、哪个环境，以及其中一项不可用时谁来决定？
+
+质量门禁设计用于建立有证据边界的合并或发布决策，明确范围、阈值、例外、负责人和失败动作。
+
+当团队需要围绕“决策范围、证据状态、阈值、例外、负责人、失败动作和过期”工作时，使用质量门禁设计 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦质量门禁设计。
+
+## 质量门禁设计 Skill 用来做什么
+
+好的门禁会区分“未运行”“失败”“阻塞”和“证据不足”。它通过展示不确定性变得更严格，而不是把所有未知都标成失败。
+
+它适合这些场景：团队需要重复检查决策范围、证据状态、阈值、例外、负责人、失败动作和过期；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [质量门禁设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-gate-design/prompts/quality-gate-design.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-gate-design) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束决策范围、证据状态、阈值、例外、负责人、失败动作和过期。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 决策 | 合并、部署、分阶段、扩大或停止 | 一个门禁回答一个决策 |
+| 证据 | 测试运行、环境、版本、产物和业务信号 | 不可用证据要显式保留 |
+| 例外策略 | 负责人、期限、补偿控制和风险接受 | 不能靠沉默形成永久例外 |
+
+可以这样调用：
+
+```text
+请使用 quality-gate-design Skill。
+
+任务：为一个包含单元、契约、浏览器和生产信号的结算改动设计分阶段发布门禁
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## 质量门禁设计 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 门禁契约 | 证据、阈值、状态和决策 | 版本化规则 |
+| 失败动作 | 阻塞、调查、重跑、接受或回滚 | 负责人和截止时间 |
+| 剩余风险 | 门禁之外仍然保留什么 | 显式接受 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的门禁会区分“未运行”“失败”“阻塞”和“证据不足”。它通过展示不确定性变得更严格，而不是把所有未知都标成失败。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：为一个包含单元、契约、浏览器和生产信号的结算改动设计分阶段发布门禁。部署前要求单元和契约证据，扩大流量前要求浏览器证据，全面发布前要求一段生产信号窗口。如果浏览器基础设施不可用，就阻塞扩大，或记录带期限的人工例外和补偿检查。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为决策范围、证据状态、阈值、例外、负责人、失败动作和过期必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 所有决策使用同一个阈值。
+2. 把缺失证据当成通过。
+3. 例外没有期限、负责人或补偿控制。
+
+## 相关 Skill
+
+- [质量仪表盘设计](https://inaodeng.com/zh-cn/qaskills/quality-dashboard-design/)：展示门禁决策信号。
+- [发布测试工作流](https://inaodeng.com/zh-cn/qaskills/release-testing-workflow/)：把门禁放进发布流程。
+- [质量风险分析](https://inaodeng.com/zh-cn/qaskills/quality-risk-analysis/)：把阈值接回风险。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-gate-design -g
+```
+
+安装后使用 `quality-gate-design` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 门禁可以包含业务验收吗？
+
+可以，但业务验收要作为独立证据来源，并有独立负责人。
+
+### 每个失败测试都要阻塞发布吗？
+
+只有当风险和决策范围足以阻塞时才需要，否则要明确调查或接受流程。
+
+## 参考
+
+- [质量门禁设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-gate-design/prompts/quality-gate-design.md)
+
+- [Awesome QA Skills：质量门禁设计 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-gate-design)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [质量门禁设计 详情页](https://inaodeng.com/zh-cn/qaskills/quality-gate-design/)

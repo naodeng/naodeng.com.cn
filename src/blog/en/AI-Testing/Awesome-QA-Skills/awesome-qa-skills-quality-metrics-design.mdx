@@ -1,0 +1,117 @@
+---
+title: "Quality Metrics Design: Define Trustworthy Measures for Release Decisions"
+description: "A bilingual guide to designing quality metrics with explicit numerators, denominators, sources, freshness rules, interpretation limits, and anti-gaming boundaries."
+date: 2026-11-20T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Quality Metrics Design"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A metric becomes dangerous when its numerator is clear but its denominator is not. A precise-looking dashboard can quietly change what the team counts from one release to the next.
+
+The Quality Metrics Design Skill creates evidence-bounded metric definitions before a team turns them into targets or gates. It connects a quality question to a calculation rule, data source, freshness expectation, and interpretation limit.
+
+The important output is a metric contract that another engineer can recalculate from the named sources.
+
+## Quality Metrics Design Skill: what it is for
+
+Use this Skill to design measures such as escaped-defect rate, test feedback time, flaky-test rate, or requirement rework rate. It makes a metric reviewable and resistant to accidental or intentional gaming; it does not select one number to represent quality.
+
+A good metric definition states the event, numerator, denominator, time window, source of truth, freshness, segmentation, exclusions, interpretation limits, and supported decisions.
+
+Use it when a team is proposing a new quality KPI, merging signals from several systems, or finding that two dashboards calculate the same label differently.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Quality Metrics Design prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+Put the material on the table before asking for a judgment. Gaps can remain, but their status must stay visible.
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Decision question | Decide whether checkout regressions are detected before release | Do not begin with a fashionable KPI |
+| Event definitions | What counts as a release, escaped defect, failed run, or resolved issue | List unresolved definitions as gaps |
+| Data sources | Issue tracker, CI events, deployment records, and production incidents | Mark lineage gaps unassessed |
+| Boundary | Users, review cadence, privacy limits, and anti-gaming concerns | Keep targets and release decisions separate |
+
+Use a request like this:
+
+~~~text
+Use the quality-metrics-design Skill.\n\nTask: Define an escaped-defect rate and a pre-merge test-feedback metric for the checkout service.\nInputs: [event schemas, release IDs, issue fields, CI timestamps, incident sources]\nScope: [services, teams, window, environments]\nConstraints: [late data, privacy, missing deployment links]\n\nSpecify numerator, denominator, source, freshness, exclusions, segmentation, interpretation limits, and validation. Separate facts, assumptions, recommendations, and Human decisions.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Metric contract | Calculation and inclusion rules | Versioned definition with examples |
+| Lineage and freshness | Where each event comes from and when it is trustworthy | Source, delay, and gap |
+| Interpretation boundary | What the metric can and cannot explain | No unsupported causality |
+| Anti-gaming review | How behavior or labels could improve the number without improving quality | Risk and counter-check |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Define escaped-defect rate without hiding exposure
+
+The team proposes “production bugs divided by test cases.” The Skill should reject that denominator as unrelated to user exposure and ask for a release or transaction basis. A better draft may count defects linked to a release over affected production transactions in the same window, with late linkage pending until source fields are checked.
+
+Metric design proves the definition is explicit and reviewable. It does not prove the data pipeline is complete, the metric predicts quality, or a target is fair for teams.
+
+## Improve the first result with better baseline input
+
+Provide the decision question, event dictionary, source systems, release and time-window rules, sample records, and one include and one exclude example. Without these, the denominator remains underspecified.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Using test count, ticket count, or story points as user exposure without stating the relationship.
+2. Mixing event time, ingestion time, and release time so late data silently rewrites history.
+3. Publishing a target before checking whether labels or reporting behavior can game it.
+
+## Related Skills
+
+- [Quality Dashboard Design](https://inaodeng.com/en/qaskills/quality-dashboard-design/)：turns metric contracts into reviewable views。
+- [Quality Productivity Metrics](https://inaodeng.com/en/qaskills/quality-productivity-metrics/)：separates delivery-flow signals from quality conclusions。
+- [Quality Gate Design](https://inaodeng.com/en/qaskills/quality-gate-design/)：defines how evidence can support a gate。
+
+## Install and invoke
+
+Install this Skill globally:
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design -g
+~~~
+
+Then invoke it by name with the project material:
+
+~~~text
+Use the quality-metrics-design Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Should every quality metric have a target?
+
+No. Establish definition, lineage, freshness, and interpretation first. A target is a separate Human decision and may be unsafe while the baseline is unstable.
+
+### What if sources disagree?
+
+Preserve both calculations, identify the event or scope difference, and mark the metric pending until an owner approves a canonical source or reconciliation.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Quality Metrics Design prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md)
+- [Quality Metrics Design Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design)
+- [Quality Metrics Design details](https://inaodeng.com/en/qaskills/quality-metrics-design/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

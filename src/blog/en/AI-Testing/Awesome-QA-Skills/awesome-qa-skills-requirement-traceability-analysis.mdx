@@ -1,0 +1,111 @@
+---
+title: "Requirement Traceability Analysis: Build a Bidirectional Evidence Trail"
+description: "A bilingual guide to mapping requirements, acceptance criteria, design, code, tests, defects, and validation evidence without confusing relationships with coverage status."
+date: 2026-12-01T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Requirement Traceability Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A test name that resembles a requirement is not traceability. A release-ready map must show what the requirement connects to, what evidence exists, and which tests or defects have no upstream owner.
+
+The Requirement Traceability Analysis Skill builds a bidirectional, auditable mapping across requirements, acceptance, design, code, tests, defects, and validation evidence. It keeps relationship types separate from coverage statuses.
+
+The value is in both directions: every important requirement has a path forward, and every important test or defect has a reason to exist.
+
+## Requirement Traceability Analysis Skill: what it is for
+
+Use this Skill for release review, change impact analysis, compliance mapping, or risk governance when orphan requirements, orphan tests, broken links, stale artifacts, or missing execution records may exist.
+
+A good result uses RT-## findings with stable IDs, source and version, linked artifact, relationship type, coverage status, evidence, gap action, owner, close condition, and validation method.
+
+Use it when requirements need downstream coverage checks and test, defect, or evidence assets also need upstream tracing.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Requirement Traceability Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-traceability-analysis/prompts/requirement-traceability-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-traceability-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Trace set | Requirements, acceptance criteria, design, code, tests, defects, and evidence | List missing artifact types |
+| Stable identity | IDs, versions, scope, environment, and applicability | Do not link by similar titles |
+| Relationship rules | Direct, derived, indirect, contradictory, or missing | Keep relationship separate from coverage |
+| Execution evidence | Run identity, time, environment, raw results, and defect records | Mark unexecuted when proof is absent |
+
+Use a request like this:
+
+~~~text
+Use the requirement-traceability-analysis Skill.\n\nTask: Build a bidirectional trace for the R25.1 checkout tax change from requirement through acceptance, design, code, tests, defects, and validation evidence.\nInputs: [artifact IDs, versions, links, run records, environments]\nScope: [tax calculation and payment totals]\nConstraints: [do not call file presence or report wording execution proof]\n\nProduce RT-## findings. Keep direct, derived, indirect, contradictory, and missing relationships separate from complete, partial, unverified, stale, unexecuted, and unassessed coverage.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Trace relationship | How two artifacts relate | Direct / Derived / Missing |
+| Coverage status | Whether the linked evidence is complete and current | Complete / Partial / Unexecuted |
+| Orphan finding | Requirement, test, defect, or evidence without a counterpart | Owner and gap action |
+| Validation method | What proves or closes the gap | Run identity and environment |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Find an orphan test before a tax release
+
+The tax requirement links to an acceptance criterion and code change, but the regression test has no stable requirement ID. A separate test targets a retired tax rule. The Skill should preserve both gaps, distinguish missing relationship from stale coverage, and request the smallest mapping or retirement decision. A test filename alone is not execution evidence.
+
+Traceability analysis proves the supplied mappings and evidence states. It does not prove tests passed, defects are fixed, or release is approved.
+
+## Improve the first result with better baseline input
+
+Provide stable IDs, versions, scope, artifact links, relationship vocabulary, execution records, and the intended coverage mode. Without stable identity, report name-based candidates as unassessed rather than manufacturing links.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Building only requirement-to-test mappings and missing orphan tests or unlinked defects.
+2. Treating a report summary, file name, or code presence as execution proof.
+3. Linking similar titles across versions or scopes without checking applicability.
+
+## Related Skills
+
+- [Requirement Quality Review](https://inaodeng.com/en/qaskills/requirement-quality-review/)：checks whether the source requirement is ready。
+- [Test Gap Analysis](https://inaodeng.com/en/qaskills/test-gap-analysis/)：examines missing test coverage from the traced risk。
+- [Risk-Based Testing](https://inaodeng.com/en/qaskills/risk-based-testing/)：uses traced risk to prioritize test depth。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-traceability-analysis -g
+~~~
+
+~~~text
+Use the requirement-traceability-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Is a complete matrix the same as complete coverage?
+
+No. A matrix can be structurally complete while runs are unexecuted, stale, or missing raw evidence.
+
+### Can the Skill create missing links automatically?
+
+It may propose candidate relationships, but unsupported links must remain unassessed until a Human confirms identity and scope.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Requirement Traceability Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-traceability-analysis/prompts/requirement-traceability-analysis.md)
+- [Requirement Traceability Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-traceability-analysis)
+- [Requirement Traceability Analysis details](https://inaodeng.com/en/qaskills/requirement-traceability-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

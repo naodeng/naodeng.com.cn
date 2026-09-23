@@ -1,0 +1,118 @@
+---
+title: "Boundary Value Testing: Make the edge of a rule explicit before the data crosses it"
+description: "Boundary Value Testing field guide: select lower, upper, adjacent, invalid, and transition values from explicit rules."
+date: 2026-10-21T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Boundary Value Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Most validation rules are not interesting in the middle. They become interesting at 0, 1, 99, 100, and the one value somebody forgot to define.
+
+Boundary Value Testing turns numeric, length, date, quantity, and state limits into deliberate test points tied to a rule and expected outcome.
+
+The Boundary Value Testing Skill is useful when a team needs a structured review of minimum, maximum, adjacent, invalid, inclusive or exclusive, and transition boundaries. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Boundary Value Testing.
+
+## Boundary Value Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A useful boundary design does not blindly generate five values for every field. It preserves the rule’s inclusivity, unit, and dependency, then adds combinations where two edges interact.
+
+Use it when the team needs a repeatable review of minimum, maximum, adjacent, invalid, inclusive or exclusive, and transition boundaries—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Boundary Value Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/boundary-value-testing/prompts/boundary-value-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/boundary-value-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers minimum, maximum, adjacent, invalid, inclusive or exclusive, and transition boundaries. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Rule source | Limit, unit, inclusivity, rounding, timezone, and exception | Resolve ambiguity before selecting values |
+| Data context | Original amount, dates, currency, status, and user role | Keep dependent boundaries together |
+| Expected outcome | Accept, reject, normalize, or require review | Define the oracle for each point |
+
+Use a request like this:
+
+```text
+Use the boundary-value-testing Skill.
+
+Task: design tests for a refund rule that allows requests within 30 days and caps the amount at the original payment
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Boundary set | At, just inside, just outside, and invalid points | Source rule |
+| Expected behavior | Decision, normalized value, and state effect | Oracle and evidence |
+| Gap | Undefined unit, timezone, rounding, or exception | Owner and clarification |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful boundary design does not blindly generate five values for every field. It preserves the rule’s inclusivity, unit, and dependency, then adds combinations where two edges interact.
+
+## Run one focused pass
+
+Start with a bounded pass—design tests for a refund rule that allows requests within 30 days and caps the amount at the original payment. For a 30-day refund window, test day 29 at 23:59, day 30 at the policy timezone, day 31, and a timestamp exactly at the payment date. For amount, test one cent below, equal, one cent above, and rounding across currencies.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because minimum, maximum, adjacent, invalid, inclusive or exclusive, and transition boundaries must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Forgetting timezone and inclusivity.
+2. Choosing boundaries without the business rule.
+3. Testing each field separately when the real risk is a boundary interaction.
+
+## Related Skills
+
+- [Equivalence Partitioning](https://inaodeng.com/en/qaskills/equivalence-partitioning/)：groups values before boundary selection。
+- [Decision Table Testing](https://inaodeng.com/en/qaskills/decision-table-testing/)：handles interacting conditions。
+- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/)：applies boundary values to API rejection。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/boundary-value-testing -g
+```
+
+After installation, invoke it with the `boundary-value-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Are boundary values only numeric?
+
+No. Dates, string lengths, quotas, states, retries, and permissions all have boundaries.
+
+### What if the limit is not documented?
+
+Mark the boundary unknown and ask the owner; do not choose the value that makes the test easiest.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Boundary Value Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/boundary-value-testing/prompts/boundary-value-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/boundary-value-testing/prompts/boundary-value-testing.md)
+
+- Awesome QA Skills: Boundary Value Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/boundary-value-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/boundary-value-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Boundary Value Testing details:[https://inaodeng.com/en/qaskills/boundary-value-testing/](https://inaodeng.com/en/qaskills/boundary-value-testing/)

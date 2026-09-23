@@ -1,0 +1,118 @@
+---
+title: "Combinatorial Testing: Cover interacting factors without multiplying every possibility"
+description: "Combinatorial Testing field guide: select factor levels, pair or t-way coverage, constraints, risks, and evidence."
+date: 2026-10-26T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Combinatorial Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A checkout flow can vary by payment method, currency, locale, device, and network. Testing every combination is expensive; testing none of the interactions is worse.
+
+Combinatorial Testing selects a small set of factor combinations that covers important interactions while preserving constraints and risk priorities.
+
+The Combinatorial Testing Skill is useful when a team needs a structured review of factors, levels, constraints, pair or t-way coverage, risk weighting, and explainable selection. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Combinatorial Testing.
+
+## Combinatorial Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A good combination design starts with the risk model and treats constraints as first-class input. It can explain why one rare payment and locale combination was kept while dozens of low-risk pairs were omitted.
+
+Use it when the team needs a repeatable review of factors, levels, constraints, pair or t-way coverage, risk weighting, and explainable selection—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Combinatorial Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/combinatorial-testing/prompts/combinatorial-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/combinatorial-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers factors, levels, constraints, pair or t-way coverage, risk weighting, and explainable selection. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Factor model | Factors, values, pair or t-way target, and business risk | Do not treat every value as equally important |
+| Constraints | Impossible or conditional combinations, account rules, and environment limits | Record constraints before generation |
+| Expected result | Coverage report, selected cases, and uncovered high-risk interactions | Make selection explainable |
+
+Use a request like this:
+
+```text
+Use the combinatorial-testing Skill.
+
+Task: design a checkout matrix across payment type, currency, locale, device, and network without testing impossible combinations
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Combination set | Selected cases and factor values | Constraint-aware |
+| Coverage claim | Pairs or t-way interactions covered | Scope and exceptions |
+| Risk gap | High-risk combination not represented | Owner and next case |
+
+Do not write “passed” without a run record, query result, or source artifact. A good combination design starts with the risk model and treats constraints as first-class input. It can explain why one rare payment and locale combination was kept while dozens of low-risk pairs were omitted.
+
+## Run one focused pass
+
+Start with a bounded pass—design a checkout matrix across payment type, currency, locale, device, and network without testing impossible combinations. Keep card, wallet, and bank transfer across two currencies and two network conditions, but exclude wallet payments in unsupported countries. Weight currency conversion and offline recovery pairs higher than cosmetic locale differences.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because factors, levels, constraints, pair or t-way coverage, risk weighting, and explainable selection must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Generating combinations before writing constraints.
+2. Reporting pair coverage without naming excluded pairs.
+3. Using the smallest suite without preserving high-risk interactions.
+
+## Related Skills
+
+- [Pairwise Testing](https://inaodeng.com/en/qaskills/pairwise-testing/)：provides focused two-factor coverage。
+- [Equivalence Partitioning](https://inaodeng.com/en/qaskills/equivalence-partitioning/)：reduces factor levels before combination。
+- [Decision Table Testing](https://inaodeng.com/en/qaskills/decision-table-testing/)：handles conditional combinations。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/combinatorial-testing -g
+```
+
+After installation, invoke it with the `combinatorial-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Is pairwise coverage always enough?
+
+No. Payment, security, and state interactions may require three or more factors; choose t-way coverage from risk.
+
+### Can impossible combinations stay in the matrix?
+
+They can be documented as constraints, but they should not consume executable test slots.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Combinatorial Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/combinatorial-testing/prompts/combinatorial-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/combinatorial-testing/prompts/combinatorial-testing.md)
+
+- Awesome QA Skills: Combinatorial Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/combinatorial-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/combinatorial-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Combinatorial Testing details:[https://inaodeng.com/en/qaskills/combinatorial-testing/](https://inaodeng.com/en/qaskills/combinatorial-testing/)

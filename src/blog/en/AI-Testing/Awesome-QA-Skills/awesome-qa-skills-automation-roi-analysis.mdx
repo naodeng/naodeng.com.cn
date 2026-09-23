@@ -1,0 +1,118 @@
+---
+title: "Automation ROI Analysis: Decide what is worth automating before the suite becomes expensive"
+description: "Automation ROI Analysis field guide: compare value, maintenance cost, risk reduction, execution frequency, and evidence for automation decisions."
+date: 2026-10-20T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Automation ROI Analysis"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Automating a test that runs once a quarter can be a poor investment. Automating a payment check that runs after every deploy can be equally poor if the test is too brittle to trust.
+
+Automation ROI Analysis helps teams compare expected risk reduction and feedback value with build, execution, diagnosis, data, and maintenance cost.
+
+The Automation ROI Analysis Skill is useful when a team needs a structured review of frequency, risk reduction, feedback speed, maintenance, diagnosis, data, and opportunity cost. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Automation ROI Analysis.
+
+## Automation ROI Analysis Skill: what it is for
+
+A practical standard for this Skill is simple: A good ROI analysis values diagnosis and trust. A fast test that fails for environment noise can cost more attention than the manual check it replaced.
+
+Use it when the team needs a repeatable review of frequency, risk reduction, feedback speed, maintenance, diagnosis, data, and opportunity cost—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Automation ROI Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis/prompts/automation-roi-analysis.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis) contains the entry point and supporting assets where they exist.
+
+The entry point centers frequency, risk reduction, feedback speed, maintenance, diagnosis, data, and opportunity cost. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Candidate behavior | Frequency, criticality, variation, failure history, and manual effort | Use observed data where possible |
+| Automation cost | Build, data, environment, diagnosis, maintenance, and ownership | Separate one-time from recurring cost |
+| Decision context | Release cadence, risk appetite, alternatives, and time horizon | Keep business assumptions explicit |
+
+Use a request like this:
+
+```text
+Use the automation-roi-analysis Skill.
+
+Task: decide whether to automate a quarterly tax-report workflow that changes often and requires specialist data
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| ROI model | Value, cost, horizon, and uncertainty | Assumptions visible |
+| Recommendation | Automate, simplify, sample, keep manual, or defer | Risk basis |
+| Review trigger | What change would invalidate the decision | Owner and date |
+
+Do not write “passed” without a run record, query result, or source artifact. A good ROI analysis values diagnosis and trust. A fast test that fails for environment noise can cost more attention than the manual check it replaced.
+
+## Run one focused pass
+
+Start with a bounded pass—decide whether to automate a quarterly tax-report workflow that changes often and requires specialist data. Estimate the tax workflow’s quarterly manual effort, defect impact, data preparation, specialist review, and maintenance over two years. A sensible result may automate calculation invariants and sample the full report manually instead of automating every unstable screen.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because frequency, risk reduction, feedback speed, maintenance, diagnosis, data, and opportunity cost must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Using saved execution minutes as the only benefit.
+2. Ignoring ownership and test diagnosis.
+3. Assuming automation is permanent after the first implementation.
+
+## Related Skills
+
+- [Automation Testing](https://inaodeng.com/en/qaskills/automation-testing/)：turns the decision into an executable strategy。
+- [Test Maintenance Cost Analysis](https://inaodeng.com/en/qaskills/test-maintenance-cost-analysis/)：deepens recurring maintenance cost。
+- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/)：checks whether feedback actually finds useful problems。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis -g
+```
+
+After installation, invoke it with the `automation-roi-analysis` Skill and attach the real project material.
+
+## Two practical questions
+
+### Do I need exact financial numbers?
+
+No. Start with ranges and explicit assumptions; false precision is less useful than an honest sensitivity check.
+
+### What if risk reduction cannot be measured?
+
+Use defect history, exposure, and decision impact as bounded proxies, and label the uncertainty.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Automation ROI Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis/prompts/automation-roi-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis/prompts/automation-roi-analysis.md)
+
+- Awesome QA Skills: Automation ROI Analysis source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Automation ROI Analysis details:[https://inaodeng.com/en/qaskills/automation-roi-analysis/](https://inaodeng.com/en/qaskills/automation-roi-analysis/)

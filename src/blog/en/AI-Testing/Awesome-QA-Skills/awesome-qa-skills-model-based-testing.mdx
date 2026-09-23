@@ -1,0 +1,118 @@
+---
+title: "Model-Based Testing: Turn states and transitions into coverage you can explain"
+description: "Model-Based Testing field guide: define states, events, guards, actions, paths, coverage, and model limitations."
+date: 2026-11-09T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Model-Based Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A state model is useful when the same button means different things before, during, and after a payment. It becomes dangerous when the model quietly replaces the product rules.
+
+Model-Based Testing represents system states, events, guards, and transitions so teams can generate and review paths against explicit behavior.
+
+The Model-Based Testing Skill is useful when a team needs a structured review of state, event, guard, transition, action, path coverage, invalid transition, and model drift. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Model-Based Testing.
+
+## Model-Based Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A good model keeps the business invariant visible at every transition. It explains why a refund is allowed, not just that the state machine can reach “refunded.”
+
+Use it when the team needs a repeatable review of state, event, guard, transition, action, path coverage, invalid transition, and model drift—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Model-Based Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/model-based-testing/prompts/model-based-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/model-based-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers state, event, guard, transition, action, path coverage, invalid transition, and model drift. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| State source | Requirements, events, invariants, and terminal states | Separate observed from assumed transitions |
+| Transition rules | Guards, actions, side effects, and invalid events | Name who owns ambiguous rules |
+| Coverage goal | State, transition, pair, path, and risk coverage | Do not call all paths complete by count |
+
+Use a request like this:
+
+```text
+Use the model-based-testing Skill.
+
+Task: model an order lifecycle from draft through payment, fulfilment, cancellation, and refund
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Model | States, events, guards, actions, and source | Versioned artifact |
+| Coverage | Selected paths and unrepresented risk | Basis and limitation |
+| Model gap | Missing state, invalid transition, or drift | Owner and update |
+
+Do not write “passed” without a run record, query result, or source artifact. A good model keeps the business invariant visible at every transition. It explains why a refund is allowed, not just that the state machine can reach “refunded.”
+
+## Run one focused pass
+
+Start with a bounded pass—model an order lifecycle from draft through payment, fulfilment, cancellation, and refund. Model a paid order that can be cancelled before fulfilment, but not after shipment. Add a compensation transition for payment reversal and mark “refund requested twice” as an invalid event with an explicit oracle.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because state, event, guard, transition, action, path coverage, invalid transition, and model drift must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Treating the model as the source of truth without checking requirements.
+2. Covering states but not guards and side effects.
+3. Leaving invalid transitions out because they are inconvenient to generate.
+
+## Related Skills
+
+- [State Transition Testing](https://inaodeng.com/en/qaskills/state-transition-testing/)：focuses on state rules and events。
+- [Decision Table Testing](https://inaodeng.com/en/qaskills/decision-table-testing/)：models guards and combinations。
+- [Requirements Analysis](https://inaodeng.com/en/qaskills/requirements-analysis/)：anchors the model in source material。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/model-based-testing -g
+```
+
+After installation, invoke it with the `model-based-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Does model-based testing require a formal tool?
+
+No. A clear, versioned model and traceable paths are useful before tool automation.
+
+### What if the model is incomplete?
+
+Keep the gap visible, generate only bounded paths, and assign the rule owner.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Model-Based Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/model-based-testing/prompts/model-based-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/model-based-testing/prompts/model-based-testing.md)
+
+- Awesome QA Skills: Model-Based Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/model-based-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/model-based-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Model-Based Testing details:[https://inaodeng.com/en/qaskills/model-based-testing/](https://inaodeng.com/en/qaskills/model-based-testing/)

@@ -1,0 +1,118 @@
+---
+title: "Edge Case Discovery: Find the awkward states a happy-path requirement leaves behind"
+description: "Edge Case Discovery field guide: explore unusual data, timing, identity, state, environment, and recovery conditions with evidence."
+date: 2026-11-01T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Edge Case Discovery"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+The edge case is often the moment the product meets reality: a browser tab restored from yesterday, a deleted account with a queued email, or a file uploaded one second before a policy changes.
+
+Edge Case Discovery systematically looks beyond the main flow for unusual combinations, timing, state, identity, data, environment, and recovery conditions.
+
+The Edge Case Discovery Skill is useful when a team needs a structured review of unusual data, timing, state, identity, environment, concurrency, and recovery. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Edge Case Discovery.
+
+## Edge Case Discovery Skill: what it is for
+
+A practical standard for this Skill is simple: A useful edge-case pass is curious but disciplined. It does not list every imaginable disaster; it ranks cases that can change a user outcome or expose a meaningful state transition.
+
+Use it when the team needs a repeatable review of unusual data, timing, state, identity, environment, concurrency, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Edge Case Discovery prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/edge-case-discovery/prompts/edge-case-discovery.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/edge-case-discovery) contains the entry point and supporting assets where they exist.
+
+The entry point centers unusual data, timing, state, identity, environment, concurrency, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Main journey | Normal steps, assumptions, actors, and success state | Write assumptions before challenging them |
+| Change dimensions | Data, timing, identity, state, environment, and concurrency | Vary one dimension, then interactions |
+| Evidence | Requirements, defects, logs, support reports, and observed behavior | Separate sourced risk from imagination |
+
+Use a request like this:
+
+```text
+Use the edge-case-discovery Skill.
+
+Task: discover edge cases around file upload when permissions, network, filename, and account status can change mid-flow
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Edge scenario | Trigger, state, affected actor, and expected question | Source or hypothesis |
+| Risk judgment | Impact, likelihood, and current evidence | Priority and status |
+| Probe | Smallest check that can confirm or reject the scenario | Owner and artifact |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful edge-case pass is curious but disciplined. It does not list every imaginable disaster; it ranks cases that can change a user outcome or expose a meaningful state transition.
+
+## Run one focused pass
+
+Start with a bounded pass—discover edge cases around file upload when permissions, network, filename, and account status can change mid-flow. Upload a file, revoke the user’s permission before processing finishes, then restore the network after the client retries. The scenario asks whether the file is stored, processed, exposed, or safely rejected—and what evidence proves it.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because unusual data, timing, state, identity, environment, concurrency, and recovery must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Listing weird inputs without a business consequence.
+2. Changing every dimension at once.
+3. Treating a plausible edge case as a confirmed defect.
+
+## Related Skills
+
+- [Boundary Value Testing](https://inaodeng.com/en/qaskills/boundary-value-testing/)：focuses on formal limits。
+- [Negative Scenario Discovery](https://inaodeng.com/en/qaskills/negative-scenario-discovery/)：focuses on rejection and failure paths。
+- [State Transition Testing](https://inaodeng.com/en/qaskills/state-transition-testing/)：maps edge states and transitions。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/edge-case-discovery -g
+```
+
+After installation, invoke it with the `edge-case-discovery` Skill and attach the real project material.
+
+## Two practical questions
+
+### How many edge cases should be found?
+
+Enough to cover high-impact assumptions and interactions; stop when new cases no longer change the risk picture.
+
+### Can the Skill replace exploratory testing?
+
+No. It creates a traceable discovery backlog and probes; human exploration still supplies observations.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Edge Case Discovery prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/edge-case-discovery/prompts/edge-case-discovery.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/edge-case-discovery/prompts/edge-case-discovery.md)
+
+- Awesome QA Skills: Edge Case Discovery source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/edge-case-discovery](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/edge-case-discovery)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Edge Case Discovery details:[https://inaodeng.com/en/qaskills/edge-case-discovery/](https://inaodeng.com/en/qaskills/edge-case-discovery/)

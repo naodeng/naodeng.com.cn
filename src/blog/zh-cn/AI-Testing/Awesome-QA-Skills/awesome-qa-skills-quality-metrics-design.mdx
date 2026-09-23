@@ -1,0 +1,117 @@
+---
+title: "Quality Metrics Design：为发布决策定义可信的质量指标"
+description: "质量指标设计双语实战指南，说明怎样写清分子、分母、数据源、新鲜度、解释边界和反刷数约束。"
+date: 2026-11-20T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "质量指标设计"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+一个指标最危险的时候，是分子写清楚了，分母却没有写清楚。看起来精确的仪表盘，可能在每次发布时悄悄改变统计口径。
+
+Quality Metrics Design Skill 用于在团队把指标变成目标或门禁之前，先把定义做成有证据边界的指标契约，把质量问题接到计算规则、数据源、新鲜度和解释限制上。
+
+本文关注的产物，是另一位工程师可以根据指定来源重新计算的指标契约。
+
+## 质量指标设计 Skill 用来做什么
+
+当你要设计线上逃逸缺陷率、测试反馈时长、flaky 测试率或需求返工率时，使用这个 Skill。重点是让指标可复算、可复核并抵抗刷数，而不是选一个数字代表全部质量。
+
+好的指标定义要写清事件、分子、分母、时间窗口、事实来源、新鲜度、分组、排除规则、解释边界，以及它能支持和不能支持的决策。
+
+当团队要新增质量 KPI、合并多个系统数据，或者发现两个仪表盘同名却算出不同结果时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [质量指标设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-metrics-design/prompts/quality-metrics-design.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-metrics-design) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+在请求判断前先列出已有材料。缺口可以保留，但状态必须可见。
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 决策问题 | 判断结账回归是否在发布前被发现 | 不要从流行 KPI 开始 |
+| 事件定义 | 什么算发布、线上缺陷、失败运行或问题关闭 | 未定义之处保留为缺口 |
+| 数据源 | 缺陷系统、CI 事件、部署记录和线上事故 | 数据链路缺失时标为未评估 |
+| 使用边界 | 使用人、复核周期、隐私限制和刷数风险 | 目标与发布决定分开 |
+
+可以这样调用：
+
+~~~text
+请使用 quality-metrics-design Skill。\n\n任务：为结账服务定义线上逃逸缺陷率和合并前测试反馈指标。\n输入材料：[事件 schema、发布标识、缺陷字段、CI 时间戳和事故来源]\n范围：[服务、团队、时间窗口和环境]\n限制：[迟到数据、隐私要求、缺少部署关联]\n\n写清分子、分母、来源、新鲜度、排除规则、分组、解释边界和验证方式，分开事实、假设、建议与人工决策。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 指标契约 | 计算方式和纳入规则 | 带版本的定义与例子 |
+| 数据链路与新鲜度 | 事件来自哪里、什么时候可信 | 来源、延迟和缺口 |
+| 解释边界 | 指标能解释什么、不能解释什么 | 不做未经支持的因果判断 |
+| 反刷数复核 | 如何改变行为或标签就能优化数字 | 风险与反向检查 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：定义线上逃逸缺陷率，不要藏住暴露量
+
+团队提出“线上缺陷数除以测试用例数”。这个 Skill 应指出分母与用户暴露量没有直接关系，并要求改用发布或生产交易作为基础。更好的初稿可以统计同一窗口内关联到发布的线上缺陷数除以受影响交易数，迟到关联在字段核对前保持 pending。
+
+指标设计可以证明定义明确、可复核；不能证明数据管道完整、指标一定能预测质量，也不能证明团队目标公平。
+
+## 先补基线输入，再期待更好的结果
+
+提供决策问题、事件字典、数据系统、发布和时间窗口规则、样例记录，以及一条纳入和一条排除样例。缺少这些内容时，分母仍然不完整。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把测试数、工单数或故事点当作用户暴露量，却不说明关系。
+2. 混用事件时间、写入时间和发布时间，让迟到数据悄悄改写历史。
+3. 还没有检查改标签或少报问题的可能性，就先发布指标目标。
+
+## 相关 Skill
+
+- [质量仪表盘设计](https://inaodeng.com/zh-cn/qaskills/quality-dashboard-design/)：把指标契约落到可复核视图。
+- [质量生产力指标](https://inaodeng.com/zh-cn/qaskills/quality-productivity-metrics/)：区分交付流程信号与质量结论。
+- [质量门禁设计](https://inaodeng.com/zh-cn/qaskills/quality-gate-design/)：定义证据怎样支持门禁。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-metrics-design -g
+~~~
+
+安装后使用下面的调用方式，并附上项目材料：
+
+~~~text
+请使用 quality-metrics-design Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 每个质量指标都需要目标吗？
+
+不需要。先确认定义、数据链路、新鲜度和解释边界。目标是另外一个人工决策，基线不稳定时设置目标可能不安全。
+
+### 如果数据源不一致怎么办？
+
+保留两种计算，找出事件或范围差异，让负责人确认权威来源或对账规则，在此之前标为 pending。
+
+
+
+## 参考
+
+- [质量指标设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-metrics-design/prompts/quality-metrics-design.md)
+- [质量指标设计 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-metrics-design)
+- [质量指标设计 详情页](https://inaodeng.com/zh-cn/qaskills/quality-metrics-design/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

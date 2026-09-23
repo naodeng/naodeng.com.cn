@@ -1,0 +1,118 @@
+---
+title: "LLM Hallucination Testing: Catch unsupported claims before they become trusted answers"
+description: "LLM Hallucination Testing field guide: test unsupported claims, citations, uncertainty, retrieval gaps, and safe abstention."
+date: 2026-11-06T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","LLM Hallucination Testing"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+The dangerous answer is often the one that sounds complete. A confident sentence with no supporting source can travel farther than an obvious refusal.
+
+LLM Hallucination Testing checks whether generated claims are supported by available evidence, whether citations point to the claim, and whether uncertainty is expressed when support is missing.
+
+The LLM Hallucination Testing Skill is useful when a team needs a structured review of claim support, citation alignment, retrieval coverage, uncertainty, abstention, and version. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with LLM Hallucination Testing.
+
+## LLM Hallucination Testing Skill: what it is for
+
+A practical standard for this Skill is simple: A useful hallucination test checks the claim at the level a user would act on it. A citation near the paragraph is not enough if it does not support the deadline, exception, or number being asserted.
+
+Use it when the team needs a repeatable review of claim support, citation alignment, retrieval coverage, uncertainty, abstention, and version—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [LLM Hallucination Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-hallucination-testing/prompts/llm-hallucination-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-hallucination-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers claim support, citation alignment, retrieval coverage, uncertainty, abstention, and version. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Knowledge source | Current handbook, version, sections, exclusions, and update date | Treat old documents as stale evidence |
+| Prompt set | Supported, unsupported, ambiguous, and adversarial questions | Include questions that sound answerable |
+| Claim oracle | Source span, citation, contradiction check, and abstention rule | Define support before judging prose |
+
+Use a request like this:
+
+```text
+Use the llm-hallucination-testing Skill.
+
+Task: test a company-policy assistant that must answer leave questions only from the current handbook
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Claim ledger | Claim, evidence span, citation, and support status | Supported, partial, or unsupported |
+| Hallucination finding | Invented rule, wrong number, stale source, or overconfident wording | Impact and run ID |
+| Control action | Retrieval, prompt, citation, abstention, or human review change | Owner and retest |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful hallucination test checks the claim at the level a user would act on it. A citation near the paragraph is not enough if it does not support the deadline, exception, or number being asserted.
+
+## Run one focused pass
+
+Start with a bounded pass—test a company-policy assistant that must answer leave questions only from the current handbook. Ask whether contractors receive paid parental leave when the handbook only covers full-time employees. The safe answer should identify the source boundary and ask for HR confirmation, not infer coverage from a similar benefit.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because claim support, citation alignment, retrieval coverage, uncertainty, abstention, and version must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Checking whether a citation exists instead of whether it supports the claim.
+2. Using only questions with obvious answers.
+3. Treating a fluent answer with caveats as evidence-backed automatically.
+
+## Related Skills
+
+- [LLM Consistency Testing](https://inaodeng.com/en/qaskills/llm-consistency-testing/)：checks whether supported facts stay stable。
+- [RAG Retrieval Testing](https://inaodeng.com/en/qaskills/rag-retrieval-testing/)：checks whether the right source is retrieved。
+- [AI Safety Testing](https://inaodeng.com/en/qaskills/ai-safety-testing/)：covers harm from unsupported answers。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-hallucination-testing -g
+```
+
+After installation, invoke it with the `llm-hallucination-testing` Skill and attach the real project material.
+
+## Two practical questions
+
+### Can hallucination testing use synthetic policies?
+
+Yes, when the policy has explicit versions, exclusions, and source spans that make support testable.
+
+### What if retrieval returns no source?
+
+The expected behavior should be a bounded abstention or clarification, not a plausible completion.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- LLM Hallucination Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-hallucination-testing/prompts/llm-hallucination-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-hallucination-testing/prompts/llm-hallucination-testing.md)
+
+- Awesome QA Skills: LLM Hallucination Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-hallucination-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-hallucination-testing)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- LLM Hallucination Testing details:[https://inaodeng.com/en/qaskills/llm-hallucination-testing/](https://inaodeng.com/en/qaskills/llm-hallucination-testing/)

@@ -1,0 +1,118 @@
+---
+title: "Quality Dashboard Design: Turn scattered signals into decisions people can act on"
+description: "Quality Dashboard Design field guide: define audience, decisions, metrics, dimensions, evidence, freshness, and action paths."
+date: 2026-11-16T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Quality Dashboard Design"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A dashboard with twenty metrics can still answer no useful question. The design starts with the decision someone needs to make, not with the chart library.
+
+Quality Dashboard Design structures quality signals around audiences, decisions, definitions, evidence, freshness, and next actions.
+
+The Quality Dashboard Design Skill is useful when a team needs a structured review of audience, decision, metric definition, dimension, freshness, evidence, threshold, and action. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Quality Dashboard Design.
+
+## Quality Dashboard Design Skill: what it is for
+
+A practical standard for this Skill is simple: A useful dashboard makes uncertainty visible. It shows whether a number is current, sampled, incomplete, or based on a different population than the decision assumes.
+
+Use it when the team needs a repeatable review of audience, decision, metric definition, dimension, freshness, evidence, threshold, and action—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Quality Dashboard Design prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design/prompts/quality-dashboard-design.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design) contains the entry point and supporting assets where they exist.
+
+The entry point centers audience, decision, metric definition, dimension, freshness, evidence, threshold, and action. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Decision | Release question, audience, time window, and owner | Reject metrics with no decision use |
+| Metric contract | Definition, source, denominator, freshness, and limitation | Keep numerator and denominator visible |
+| Action path | Threshold, drill-down, escalation, and evidence link | Every alert needs an owner |
+
+Use a request like this:
+
+```text
+Use the quality-dashboard-design Skill.
+
+Task: design a release dashboard that helps an engineering lead decide whether checkout is ready for a staged rollout
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Dashboard spec | Audience, decision, metric, source, and freshness | Versioned definition |
+| Interpretation | What the signal means and cannot mean | Evidence state |
+| Action map | Threshold, owner, and next verification | Decision-ready |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful dashboard makes uncertainty visible. It shows whether a number is current, sampled, incomplete, or based on a different population than the decision assumes.
+
+## Run one focused pass
+
+Start with a bounded pass—design a release dashboard that helps an engineering lead decide whether checkout is ready for a staged rollout. Pair checkout error rate with payment authorization success, order-state reconciliation, p95 latency, and sampled user complaints. Link each chart to the run, query, or incident evidence that explains a change.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because audience, decision, metric definition, dimension, freshness, evidence, threshold, and action must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Adding metrics because they are available.
+2. Mixing different windows or populations.
+3. Using color as a decision without a threshold or owner.
+
+## Related Skills
+
+- [Quality Metrics Design](https://inaodeng.com/en/qaskills/quality-metrics-design/)：defines metric meaning and boundaries。
+- [Quality Gate Design](https://inaodeng.com/en/qaskills/quality-gate-design/)：turns signals into decisions。
+- [Observability Design Review](https://inaodeng.com/en/qaskills/observability-design-review/)：checks whether source signals exist。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design -g
+```
+
+After installation, invoke it with the `quality-dashboard-design` Skill and attach the real project material.
+
+## Two practical questions
+
+### Should a dashboard show every test result?
+
+Show the signals needed for the decision and link to deeper evidence; a dashboard is not the evidence archive.
+
+### What if the metric is delayed?
+
+Display freshness and limit the decision or mark it pending until the data catches up.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Quality Dashboard Design prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design/prompts/quality-dashboard-design.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design/prompts/quality-dashboard-design.md)
+
+- Awesome QA Skills: Quality Dashboard Design source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Quality Dashboard Design details:[https://inaodeng.com/en/qaskills/quality-dashboard-design/](https://inaodeng.com/en/qaskills/quality-dashboard-design/)

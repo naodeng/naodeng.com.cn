@@ -1,0 +1,111 @@
+---
+title: "Requirement Conflict Detection: Separate Real Contradictions from Scope Differences"
+description: "A bilingual guide to detecting mutually exclusive requirement rules while preserving sources, conditions, applicability, and Human precedence decisions."
+date: 2026-11-28T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Requirement Conflict Detection"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Two documents can look contradictory and still be correct when one applies to a different tenant, version, region, or user state. Conflict detection must test the boundary before escalating the contradiction.
+
+The Requirement Conflict Detection Skill compares mutually exclusive rules without choosing precedence. It preserves both statements, conditions, evidence, and decision owner so a missing applicability boundary is not mistaken for a product conflict.
+
+The first question is not which document sounds stronger; it is whether both rules apply to the same thing.
+
+## Requirement Conflict Detection Skill: what it is for
+
+Use this Skill when requirements, policies, contracts, or acceptance artifacts may allow and prohibit the same behavior within one scope. It diagnoses conflict; it does not accept risk, invent a compromise, or decide which source wins.
+
+A good finding uses an RF identifier, preserves both statements and sources, verifies shared object and scope, identifies minimum evidence, and asks a Human a closeable precedence question.
+
+Use it when one artifact allows a behavior and another forbids it, or a change exposes different rules for the same role, state, field, or action.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Requirement Conflict Detection prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-conflict-detection/prompts/requirement-conflict-detection.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-conflict-detection) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Source pair | Requirement, policy, contract, design, or acceptance statements with versions | Do not summarize away either source |
+| Applicability | Actor, state, platform, tenant, region, time, and release scope | Treat missing scope as missing evidence |
+| Conflict candidate | Object, action, quantity, or constraint that appears mutually exclusive | Do not label a boundary difference conflict |
+| Decision owner | Role that can approve precedence or request a specification update | Do not choose precedence in analysis |
+
+Use a request like this:
+
+~~~text
+Use the requirement-conflict-detection Skill.\n\nTask: Determine whether a privacy policy's 30-day deletion rule conflicts with an analytics contract's 90-day retention rule for EU customer events.\nInputs: [policy versions, contract, tenant and region scope, data classification, effective dates]\nScope: [EU production data and customer events]\nConstraints: [no final legal interpretation, no data changes]\n\nPreserve both statements, check applicability first, classify conflict versus missing or stale evidence, and provide RF-## findings with a decision question, owner, close condition, and validation method.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Source pair | Both original statements and versions | Traceable evidence |
+| Applicability check | Whether actor, object, region, state, and time match | Shared scope or missing boundary |
+| Conflict status | Conflict, ambiguous, missing, stale, or unassessed | Do not silently downgrade |
+| Decision request | Question, owner, close condition, and validation | Human precedence boundary |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Test retention rules without choosing a legal winner
+
+The policy says EU customer events must be deleted after 30 days, while the analytics contract says events are retained for 90 days. The Skill should verify whether the contract covers the same event class and region, preserve both sources, and route precedence to privacy and product owners. If the contract is global and excludes EU data, the apparent conflict becomes a scope difference.
+
+The analysis proves how supplied rules relate under the supplied scope. It does not provide legal advice, approve retention, or change data.
+
+## Improve the first result with better baseline input
+
+Provide source text, versions, effective dates, data object definition, actor, tenant, region, platform, and state. If a boundary is missing, classify it missing or stale before calling it conflict.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Choosing the stricter or newer-sounding rule without checking scope and authority.
+2. Merging two rules into an unapproved compromise sentence.
+3. Calling a missing version or region boundary a conflict and sending teams to fix the wrong problem.
+
+## Related Skills
+
+- [Requirement Ambiguity Analysis](https://inaodeng.com/en/qaskills/requirement-ambiguity-analysis/)：separates unclear wording from mutually exclusive rules。
+- [Requirement Consistency Analysis](https://inaodeng.com/en/qaskills/requirement-consistency-analysis/)：compares artifacts before conflict routing。
+- [Security Requirement Review](https://inaodeng.com/en/qaskills/security-requirement-review/)：examines high-impact security constraints。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-conflict-detection -g
+~~~
+
+~~~text
+Use the requirement-conflict-detection Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Should the Skill decide which requirement wins?
+
+No. It preserves evidence and asks the accountable Human to decide precedence, risk acceptance, or specification change.
+
+### What if the sources use different versions?
+
+Check effective dates and applicability. Mark stale or unassessed when the comparison window is unknown; do not treat version drift as a current conflict automatically.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Requirement Conflict Detection prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-conflict-detection/prompts/requirement-conflict-detection.md)
+- [Requirement Conflict Detection Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-conflict-detection)
+- [Requirement Conflict Detection details](https://inaodeng.com/en/qaskills/requirement-conflict-detection/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

@@ -1,0 +1,111 @@
+---
+title: "Technical Design Quality Review：在第一行代码前发现实现风险"
+description: "技术设计质量复核双语指南，围绕边界、依赖、故障、数据、安全、性能、可观测性、兼容性、可维护性和验证就绪度复核设计。"
+date: 2026-12-09T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "技术设计质量复核"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+一张图可以完整到足以展示，却仍然漏掉生产中会失败的边界。技术设计复核应在这些遗漏变成代码前，把它们变成可回答的问题。
+
+Technical Design Quality Review Skill 在实现前复核 ADR、组件设计、数据流和非功能约束，产出 TD-## 发现和验证准备，但不会复核未提供的代码，也不会批准架构。
+
+本文关注的复核应暴露第一轮实现或验证必须明确的假设。
+
+## 技术设计质量复核 Skill 用来做什么
+
+当你要检查设计中的边界、依赖、故障模式、数据一致性、安全、性能、可观测性、兼容性、可维护性和验证就绪度时，使用这个 Skill。
+
+好的发现要写清设计主题、来源证据、影响、优先级、缺口动作、负责人、决策问题和验证方式。
+
+当架构说明、ADR、组件设计或技术提案需要在实现前复核，但重要细节仍不确定时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [技术设计质量复核 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 设计材料 | ADR、图、接口、数据流、约束和成功标准 | 列出未提供的设计区域 |
+| 版本与范围 | 修订、组件、环境、流量、数据和兼容边界 | 不要从名称推断 |
+| 风险主题 | 依赖、故障、安全、性能、可观测性和维护 | 分主题检查 |
+| 验证就绪度 | 测试想法、指标、夹具、负责人和安全环境 | 未经验证的声明保持开放 |
+
+可以这样调用：
+
+~~~text
+请使用 technical-design-quality-review Skill。\n\n任务：在实现前复核一个多租户发票导出服务的设计。\n输入材料：[ADR、数据流、API 契约、租户边界、存储方案、威胁说明和可观测性计划]\n范围：[导出任务、对象存储、客户访问]\n限制：[没有提供代码或生产探针]\n\n从边界、依赖、故障、数据、安全、性能、可观测性、兼容性、可维护性和验证就绪度输出 TD-## 发现，分开设计声明与运行时证据。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 设计发现 | 主题、来源、影响和优先级 | TD 编号与证据 |
+| 缺口动作 | 必须澄清或补充什么 | 负责人和决策问题 |
+| 验证准备 | 验证设计声明的最小检查 | 环境与证据 |
+| 人工边界 | 仍属于架构或风险决策的内容 | 不是批准 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：复核导出设计中的租户隔离
+
+设计把导出文件放到带租户前缀的路径，却没有说明下载授权如何检查 tenant ID。这个 Skill 应记录边界，把它连接到 API、存储和审计证据，并请求安全验证；不能从路径名称推断隔离，也不能批准设计。
+
+复核可以评估已有设计并准备验证，不能证明实现兼容性、安全、容量、延迟或发布就绪。
+
+## 先补基线输入，再期待更好的结果
+
+提供设计修订、范围、接口、依赖假设、数据分类、非功能目标、可观测性计划和验证环境。缺失的设计材料保持未评估。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 只检查图是否存在，不检查边界、故障处理和恢复。
+2. 把“支持高并发”或“有监控”当成验证标准。
+3. 把建议写成已批准架构或发布结论。
+
+## 相关 Skill
+
+- [安全需求复核](https://inaodeng.com/zh-cn/qaskills/security-requirement-review/)：检查安全目标是否可测试。
+- [可观测性设计复核](https://inaodeng.com/zh-cn/qaskills/observability-design-review/)：复核设计中的证据和信号。
+- [数据库设计质量复核](https://inaodeng.com/zh-cn/qaskills/database-design-quality-review/)：处理存储与一致性问题。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review -g
+~~~
+
+~~~text
+请使用 technical-design-quality-review Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 会复核代码吗？
+
+只有作为设计证据提供的代码才能被引用，不能声称复核了未提供的实现。
+
+### 设计复核干净就代表构建会通过吗？
+
+不代表。构建、兼容性、安全和性能仍需独立执行证据。
+
+
+
+## 参考
+
+- [技术设计质量复核 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md)
+- [技术设计质量复核 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review)
+- [技术设计质量复核 详情页](https://inaodeng.com/zh-cn/qaskills/technical-design-quality-review/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

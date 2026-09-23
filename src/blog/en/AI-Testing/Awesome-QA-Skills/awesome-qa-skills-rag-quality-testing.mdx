@@ -1,0 +1,111 @@
+---
+title: "RAG Quality Testing: Check Grounding, Relevance, and Safe Abstention"
+description: "A bilingual guide to evaluating RAG answers for grounding, relevance, completeness, citation support, abstention, and answer-level evidence."
+date: 2026-11-22T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "RAG Quality Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A fluent RAG answer can still be wrong, incomplete, or unsupported by the retrieved documents. Quality review starts by checking what the answer claims and what evidence actually supports it.
+
+The RAG Quality Testing Skill evaluates the answer layer of a retrieval-augmented system. It separates grounding, relevance, completeness, citation support, and abstention so a polished response does not hide a missing or contradictory source.
+
+The key question is whether the answer says only what the available evidence can support.
+
+## RAG Quality Testing Skill: what it is for
+
+Use this Skill to review an Agent, RAG, or LLM result against supplied context and expected behavior. It is evidence-bounded analysis, not a claim that a small set of examples proves model safety.
+
+A good review links each answer judgment to the question, retrieved context, cited source, expected answer or abstention rule, evidence state, and next validation action.
+
+Use it when an internal knowledge assistant answers policy, support, or operational questions and the team needs to know whether the answer is supported, not merely helpful-sounding.
+
+## Start with the source Skill
+
+The complete execution contract lives in [RAG Quality Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-quality-testing/prompts/rag-quality-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-quality-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Question set | Policy questions covering direct answers, missing evidence, and conflicting documents | Mark coverage gaps instead of inventing expected answers |
+| Retrieved context | Document IDs, versions, chunks, metadata, and citation spans | Keep grounding unassessed without actual context |
+| Expected behavior | Answer key, citation rule, completeness expectation, and abstention policy | Ask for the missing decision rule |
+| Runtime evidence | Prompt, model version, output, trace, and evaluator notes | Stay in static review without a run artifact |
+
+Use a request like this:
+
+~~~text
+Use the rag-quality-testing Skill.\n\nTask: Review an HR policy assistant's answers about parental leave, travel reimbursement, and an unsupported benefits question.\nInputs: [questions, retrieved chunks, document versions, model outputs, citations, expected behavior]\nScope: [policy corpus, model version, evaluation window]\nConstraints: [masked employee data, no production writes]\n\nAssess grounding, relevance, completeness, citation support, and abstention separately. Link findings to answer-level evidence and label unsupported conclusions pending or unassessed.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Grounding | Whether claims are entailed by the supplied context | Claim-to-source evidence |
+| Relevance and completeness | Whether the answer addresses the question without material omissions | Question and expected behavior |
+| Citation support | Whether citations support the exact claim and version | Span, source, freshness |
+| Abstention | Whether missing support triggers refusal or clarification | Policy and observed output |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Review a policy answer that sounds confident
+
+The assistant says “employees may carry over 10 days” and cites a handbook chunk that only covers annual-leave accrual. The Skill should flag the carry-over claim as unsupported, distinguish citation presence from citation support, and ask for the governing policy version. A benefit absent from the corpus should produce a pending or abstention finding, not an invented answer.
+
+This review classifies supplied outputs against supplied evidence. It cannot prove general model behavior, production safety, or a pass rate beyond the evaluated question set and version.
+
+## Improve the first result with better baseline input
+
+Provide paired question, retrieved context, answer, citation, and expected-behavior records. Include negative questions where the corpus is silent and conflict cases between document versions; otherwise abstention and freshness cannot be assessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Scoring citation presence as grounding without checking claim-level support.
+2. Treating a relevant paragraph as a complete answer when an exception or effective date is missing.
+3. Using a small set of successful answers to claim broad RAG reliability.
+
+## Related Skills
+
+- [RAG Retrieval Testing](https://inaodeng.com/en/qaskills/rag-retrieval-testing/)：checks whether the right evidence reached the answer layer。
+- [LLM Hallucination Testing](https://inaodeng.com/en/qaskills/llm-hallucination-testing/)：explores unsupported claims and invented details。
+- [AI Safety Testing](https://inaodeng.com/en/qaskills/ai-safety-testing/)：adds harm and escalation boundaries for high-impact outputs。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-quality-testing -g
+~~~
+
+~~~text
+Use the rag-quality-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can I review answers without an expected answer key?
+
+Yes, but mark completeness and correctness unassessed where no decision rule or authoritative source exists. Preserve a question for the domain owner.
+
+### Does a citation automatically make an answer grounded?
+
+No. Check claim entailment, source applicability, version, and whether the citation covers the whole claim.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [RAG Quality Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-quality-testing/prompts/rag-quality-testing.md)
+- [RAG Quality Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/rag-quality-testing)
+- [RAG Quality Testing details](https://inaodeng.com/en/qaskills/rag-quality-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

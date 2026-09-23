@@ -1,0 +1,111 @@
+---
+title: "Risk-Based Testing：把风险证据转成测试深度和范围"
+description: "基于风险的测试双语指南，将质量风险、故障模式和交付限制转成测试目标、方法、深度、优先级与范围取舍。"
+date: 2026-12-04T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "基于风险的测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+基于风险的测试不是给风险清单贴红色标签，而是说明为什么某个目标需要深测、另一个只抽样、第三个可以延期，以及延期何时必须扩展。
+
+Risk-Based Testing Skill 把风险证据、故障模式和限制转成 RBT-## 测试决策。它不是完整测试策略、回归选择器或发布批准。
+
+本文关注的产物要解释一项别人可以质疑、验证或改变的取舍。
+
+## 基于风险的测试 Skill 用来做什么
+
+当业务重要性、变更面、历史缺陷或故障模式需要在时间和容量受限时决定测试优先级、层级、方法、深度和范围取舍，使用这个 Skill。
+
+好的 RBT 决策会把风险来源、影响、可能性或不确定性、可探测性、测试目标、层级/方法、深度、优先级依据、所需证据、停止条件、扩展触发和残余风险连起来。
+
+当时间、环境或人员受限，团队必须让测试重点和延期边界可见时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [基于风险的测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/risk-based-testing/prompts/risk-based-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/risk-based-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 风险证据 | 业务重要性、变更面、历史缺陷、故障模式和不确定性 | 数据不足时使用定性不确定性 |
+| 交付限制 | 时间、环境、人员、测试数据和工具 | 限制要明确 |
+| 范围 | 流程、组件、版本和排除项 | 有限范围不能叫全覆盖 |
+| 决策边界 | 残余风险接受人、升级负责人和发布上下文 | RBT 不等于风险接受 |
+
+可以这样调用：
+
+~~~text
+请使用 risk-based-testing Skill。\n\n任务：在两天验证窗口内，为修改税费规则的结账发布排序测试。\n输入材料：[业务影响、变更组件、历史缺陷、故障模式、环境和数据限制]\n范围：[税费、支付总额、退款和未改动的商品目录流程]\n限制：[staging 数据有限、只有一个测试环境]\n\n输出 RBT-## 决策，包含目标、层级/方法、深度、理由、所需证据、停止条件、扩展触发和残余风险。不要声称全覆盖或批准发布。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 风险到目标 | 为什么某个风险产生测试目标 | 来源与不确定性 |
+| 优先级决策 | 什么深测、抽样或延期 | 有依据的理由 |
+| 深度与方法 | 层级、技术、环境和数据需求 | 所需证据 |
+| 取舍边界 | 停止、扩展、升级和残余风险 | 人工决定可见 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：在两天窗口内保护税费和退款
+
+税费规则变更影响支付总额和退款计算，商品浏览没有变化。这个 Skill 可以建议税费和退款做更深的 API 与端到端检查，商品目录只做较小 smoke 集；如果共享定价代码也变了，就触发范围扩展。不能把有限范围叫全覆盖。
+
+输出是测试优先级建议，不能证明风险已受控、测试已执行或发布已批准。
+
+## 先补基线输入，再期待更好的结果
+
+提供风险来源、故障模式、变更面、影响和不确定性、可用测试层级和环境、数据限制、排除项，以及接受残余风险的人工负责人。证据不足时用定性理由，不要自创精确分数。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 列出风险，却不解释它怎样改变测试优先级和深度。
+2. 影响或可能性未知时仍使用看起来精确的风险分数。
+3. 时间紧就默默删掉高风险区域，却没有扩展触发条件。
+
+## 相关 Skill
+
+- [测试范围分析](https://inaodeng.com/zh-cn/qaskills/test-scope-analysis/)：明确本次包含和排除的边界。
+- [回归优化](https://inaodeng.com/zh-cn/qaskills/regression-optimization/)：在保留风险的同时优化执行。
+- [质量门禁设计](https://inaodeng.com/zh-cn/qaskills/quality-gate-design/)：把证据和残余风险带入门禁讨论。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/risk-based-testing -g
+~~~
+
+~~~text
+请使用 risk-based-testing Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### RBT 会生成完整测试策略吗？
+
+不会。它生成可追溯的优先级和取舍；完整策略与回归选择仍是独立工作。
+
+### 延期风险由谁接受？
+
+由对应人工负责人或治理角色接受。Skill 记录残余风险和触发条件，但不替人接受。
+
+
+
+## 参考
+
+- [基于风险的测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/risk-based-testing/prompts/risk-based-testing.md)
+- [基于风险的测试 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/risk-based-testing)
+- [基于风险的测试 详情页](https://inaodeng.com/zh-cn/qaskills/risk-based-testing/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

@@ -1,0 +1,116 @@
+---
+title: "API 限流测试：验证达到限制后的公平性、重试和恢复"
+description: "API 限流测试实战指南：验证配额、时间窗口、身份、响应头、重试时机和安全恢复。"
+date: 2026-10-14T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","API 限流测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+限流只返回 429 不是完整契约。客户端还要知道该等多久、哪个身份被限制，以及重试会不会让情况更糟。
+
+API 限流测试用于验证限制是否作用于正确身份和资源，在时间窗口内保持可预期，暴露可执行的元数据，并能正常恢复。
+
+当团队需要围绕“配额身份、窗口边界、突发流量、响应元数据、重试时机和恢复”工作时，使用 API 限流测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 API 限流测试。
+
+## API 限流测试 Skill 用来做什么
+
+好的限流测试会一次只改变一个身份维度，并以服务端提供的时间提示为依据。它既检查被限制期间，也检查恢复后的第一次成功请求。
+
+它适合这些场景：团队需要重复检查配额身份、窗口边界、突发流量、响应元数据、重试时机和恢复；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+## 先回到源 Skill
+
+完整执行契约位于 [API 限流测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-rate-limit-testing/prompts/api-rate-limit-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-rate-limit-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束配额身份、窗口边界、突发流量、响应元数据、重试时机和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 限流契约 | 配额、窗口、突发允许量、身份键和响应头 | 未文档化的默认值要列为缺口 |
+| 流量计划 | 稳定请求、突发、并发身份和重试计划 | 区分客户端重试与直接负载 |
+| 恢复证据 | 429 响应、Retry-After、剩余数量和窗口后成功 | 保留时间假设 |
+
+可以这样调用：
+
+```text
+请使用 api-rate-limit-testing Skill。
+
+任务：测试一个同时存在用户级和租户级配额的报表导出 API，多个浏览器标签页收到 429 后会自动重试
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+```
+
+## API 限流测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 限流判断 | 哪个键被限制以及原因 | 用户、租户、令牌或资源 |
+| 客户端动作 | 等待、退避、切换队列或停止 | 响应头与策略依据 |
+| 公平性发现 | 身份饿死、突发泄漏或租户相互影响 | 证据与修复建议 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的限流测试会一次只改变一个身份维度，并以服务端提供的时间提示为依据。它既检查被限制期间，也检查恢复后的第一次成功请求。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：测试一个同时存在用户级和租户级配额的报表导出 API，多个浏览器标签页收到 429 后会自动重试。在一个标签页耗尽用户配额，让同租户的第二个用户继续请求，再按照 `Retry-After` 重试。结果要说明被限制的是用户、租户还是接口，以及自动重试是否在恢复窗口制造拥塞。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+
+这里补充信息会改变结果，因为配额身份、窗口边界、突发流量、响应元数据、重试时机和恢复必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 容易踩的坑
+
+1. 只测试一个身份。
+2. 忽略时钟偏差和重试响应头。
+3. 不检查未受影响用户和租户，就把 429 响应直接称为公平。
+
+## 相关 Skill
+
+- [API 负向测试](https://inaodeng.com/zh-cn/qaskills/api-negative-testing/)：覆盖限制与拒绝输入。
+- [重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)：检查退避与重试边界。
+- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：验证可执行的限流错误。
+
+## 安装与调用
+
+全局安装这个 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-rate-limit-testing -g
+```
+
+安装后使用 `api-rate-limit-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 限流测试必须使用真实配额吗？
+
+使用获批准的隔离配额或可控测试策略，不要耗尽共享生产容量。
+
+### 缺少 Retry-After 怎么办？
+
+记录契约缺口，不要把客户端自定义等待时间写成服务端行为。
+
+## 参考
+
+- [API 限流测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-rate-limit-testing/prompts/api-rate-limit-testing.md)
+
+- [Awesome QA Skills：API 限流测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-rate-limit-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [API 限流测试 详情页](https://inaodeng.com/zh-cn/qaskills/api-rate-limit-testing/)

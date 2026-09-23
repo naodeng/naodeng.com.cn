@@ -1,0 +1,111 @@
+---
+title: "Test Scope Analysis: Make Inclusion, Exclusion, and Expansion Boundaries Explicit"
+description: "A bilingual guide to defining test scope, depth, dependencies, stop conditions, expansion triggers, and residual risk before execution."
+date: 2026-12-16T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Test Scope Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A test scope is a decision about what the team will learn now and what it will leave uncertain. If exclusions and expansion triggers are hidden, a bounded check is easily mistaken for full coverage.
+
+The Test Scope Analysis Skill analyzes goals, product surface, changes, risks, constraints, assets, platforms, roles, data, and environments before testing. It produces TS-## boundaries, not execution results.
+
+The scope should make uncertainty visible instead of hiding it behind a short test list.
+
+## Test Scope Analysis Skill: what it is for
+
+Use this Skill to define explainable scope for an iteration, release, change, or risk review, including core journeys, direct and transitive impact, non-functional scope, compatibility, dependencies, and unassessed areas.
+
+A good TS-## entry states included and excluded objects, rationale, depth, dependencies, stop conditions, expansion triggers, residual risk, source, and owner.
+
+Use it when a release or test activity needs a bounded scope before anyone selects an executable set or reports coverage.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Test Scope Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-scope-analysis/prompts/test-scope-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-scope-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Goal and product surface | Release objective, journeys, components, platforms, roles, and data | Keep missing surface explicit |
+| Change and risk | Direct and transitive impact, failure modes, defects, and non-functional concerns | Do not rely only on changed filenames |
+| Constraints and assets | Time, environments, test data, existing tests, and dependencies | Record blockers |
+| Decision boundary | Owner, residual-risk accepter, stop and expansion rule | Do not claim full coverage |
+
+Use a request like this:
+
+~~~text
+Use the test-scope-analysis Skill.\n\nTask: Define test scope for a release that changes account deletion and notification preferences.\nInputs: [release brief, dependency map, user journeys, platform matrix, risks, defects, environments, data limits]\nScope: [web and mobile, self-service deletion, notification events]\nConstraints: [one staging environment and a fixed validation window]\n\nProduce TS-## inclusion, exclusion, depth, dependencies, stop conditions, expansion triggers, evidence, owner, and residual risk. Do not execute tests or claim full coverage.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Included scope | Object, journey, platform, role, data, and depth | Rationale and source |
+| Excluded scope | What is intentionally not assessed | Reason and risk |
+| Expansion trigger | Evidence that makes scope grow | Observable condition |
+| Residual risk | What remains unassessed or unexecuted | Owner and decision boundary |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Scope account deletion without hiding mobile risk
+
+The release brief changes deletion on web, but the same API serves mobile. The Skill should include the shared API and mobile confirmation behavior or record the exclusion with an expansion trigger tied to API changes or deletion defects. It should not call a web-only pass full coverage.
+
+Scope analysis explains boundaries and trade-offs. It cannot prove tests ran, coverage is complete, risk is zero, or release is approved.
+
+## Improve the first result with better baseline input
+
+Provide the goal, versions, product surface, direct and transitive changes, risks, constraints, platforms, roles, data, environments, existing assets, and residual-risk owner. Missing context stays unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Using changed-file names or scope tables as proof of coverage.
+2. Excluding transitive dependencies without a rationale or expansion trigger.
+3. Writing a full strategy or executable set when only scope analysis was requested.
+
+## Related Skills
+
+- [Risk-Based Testing](https://inaodeng.com/en/qaskills/risk-based-testing/)：uses risk to justify depth and trade-offs。
+- [Requirement Traceability Analysis](https://inaodeng.com/en/qaskills/requirement-traceability-analysis/)：connects scope to obligations and evidence。
+- [UI Test Strategy](https://inaodeng.com/en/qaskills/ui-test-strategy/)：deepens journey, state, and platform boundaries。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-scope-analysis -g
+~~~
+
+~~~text
+Use the test-scope-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Is exclusion the same as not important?
+
+No. It means not assessed in this activity; the reason, residual risk, and expansion trigger must remain visible.
+
+### Can this Skill choose the exact test IDs?
+
+No. It defines the boundary and depth rationale; executable selection is a separate activity.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Test Scope Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-scope-analysis/prompts/test-scope-analysis.md)
+- [Test Scope Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-scope-analysis)
+- [Test Scope Analysis details](https://inaodeng.com/en/qaskills/test-scope-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

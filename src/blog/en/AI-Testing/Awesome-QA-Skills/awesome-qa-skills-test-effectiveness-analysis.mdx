@@ -1,0 +1,111 @@
+---
+title: "Test Effectiveness Analysis: Connect Test Signals to Risk and Defects"
+description: "A bilingual guide to analyzing test signals, risk coverage, missed-detection limits, false signals, and validation plans without claiming unsupported effectiveness."
+date: 2026-12-12T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Test Effectiveness Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A large suite can run green and still miss the defect that matters. Test effectiveness asks what signal was produced, which risk it covers, what it cannot detect, and how to validate the gap.
+
+The Test Effectiveness Analysis Skill connects test signals with defects and risks, missed-detection limits, false signals, and validation plans. It turns a metric or result into an evidence-bounded improvement conversation.
+
+Effectiveness is a relationship between a signal and a risk, not a count of tests.
+
+## Test Effectiveness Analysis Skill: what it is for
+
+Use this Skill to review a test plan, result, or metric and understand whether the supplied evidence supports the intended risk. It does not replace risk acceptance or turn a pass rate into a product-quality claim.
+
+A good analysis names the test signal, risk coverage, missed-detection limit, false-signal concern, evidence state, validation method, owner, close condition, and residual risk.
+
+Use it when a team questions whether more tests improve detection, a defect escaped despite green results, or a flaky signal is distorting a quality decision.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Test Effectiveness Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-effectiveness-analysis/prompts/test-effectiveness-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-effectiveness-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Test signal | Suite result, mutation result, defect detection, alert, or metric definition | Keep signal meaning explicit |
+| Risk and defect evidence | Failure mode, escaped defect, affected journey, and expected behavior | Do not infer coverage from names |
+| Window and environment | Versions, test data, execution time, environment, and comparison cohort | Mark missing context |
+| Validation plan | Small experiment, evidence source, owner, and stop condition | Separate recommendation from execution |
+
+Use a request like this:
+
+~~~text
+Use the test-effectiveness-analysis Skill.\n\nTask: Analyze whether checkout contract tests detect the refund defects seen in the last two releases.\nInputs: [test results, defect records, risk list, changed scope, versions, environment]\nScope: [refund API and downstream ledger]\nConstraints: [no unsupported pass or causal claim]\n\nCover test signal, risk coverage, missed-detection limit, false signal, validation plan, evidence state, owner, and residual risk.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Signal judgment | What the test result actually indicates | Source and evidence state |
+| Risk coverage | Which failure mode is protected or not | Direct basis and limit |
+| Missed-detection or false signal | What green or red may fail to tell us | Uncertainty |
+| Validation plan | Smallest check that can change the conclusion | Owner and close condition |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Explain a green suite after a refund escape
+
+Contract tests verified the refund endpoint schema, but the escaped defect affected ledger posting after a successful response. The Skill should distinguish API contract signal from end-to-end risk coverage, identify the missed-detection limit, and propose one traceable ledger assertion or replay. It should not call the whole suite ineffective from one escape.
+
+The analysis relates supplied signals to supplied risks. It cannot prove causal effectiveness, zero missed defects, or release readiness without an appropriate validation window and evidence.
+
+## Improve the first result with better baseline input
+
+Provide risk and defect records, test intent, results with versions and environment, changed surface, false-failure data, and the decision the analysis will inform. Without a comparable window, keep causal claims unassessed.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Using pass rate or test count as an effectiveness score.
+2. Treating one escaped defect as proof that every related test has no value.
+3. Ignoring false positives that consume attention and hide the signal.
+
+## Related Skills
+
+- [Test Gap Analysis](https://inaodeng.com/en/qaskills/test-gap-analysis/)：turns missed obligations into explicit gaps。
+- [Risk-Based Testing](https://inaodeng.com/en/qaskills/risk-based-testing/)：connects risk evidence to test depth。
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：adds suite-level reliability and maintenance evidence。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-effectiveness-analysis -g
+~~~
+
+~~~text
+Use the test-effectiveness-analysis Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can effectiveness be calculated from one release?
+
+Usually not as a broad causal claim. Use the release as a bounded observation and state what comparison or validation is missing.
+
+### Does a mutation score prove real defect detection?
+
+No. It is one signal whose mutant design, mapping, and limitations need review.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Test Effectiveness Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-effectiveness-analysis/prompts/test-effectiveness-analysis.md)
+- [Test Effectiveness Analysis Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-effectiveness-analysis)
+- [Test Effectiveness Analysis details](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

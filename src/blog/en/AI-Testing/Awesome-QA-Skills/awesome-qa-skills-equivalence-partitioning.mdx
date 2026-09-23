@@ -1,0 +1,118 @@
+---
+title: "Equivalence Partitioning: Reduce input space without losing the rule that matters"
+description: "Equivalence Partitioning field guide: divide valid, invalid, empty, boundary, and conditional input classes with traceable representatives."
+date: 2026-11-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Equivalence Partitioning"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Testing every email address is not thorough; it is a way to run out of time. The useful question is which inputs share the same rule and which one breaks away.
+
+Equivalence Partitioning groups inputs expected to behave the same, then selects representatives that cover valid, invalid, empty, and conditional classes.
+
+The Equivalence Partitioning Skill is useful when a team needs a structured review of valid and invalid classes, empty values, type, format, business rule, and representative selection. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Equivalence Partitioning.
+
+## Equivalence Partitioning Skill: what it is for
+
+A practical standard for this Skill is simple: A good partition follows behavior, not syntax alone. Two strings may share a format but belong to different business classes when one is an active owner and the other is unknown.
+
+Use it when the team needs a repeatable review of valid and invalid classes, empty values, type, format, business rule, and representative selection—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Equivalence Partitioning prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning) contains the entry point and supporting assets where they exist.
+
+The entry point centers valid and invalid classes, empty values, type, format, business rule, and representative selection. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Input rules | Type, format, allowed values, optionality, and business conditions | Keep separate rules separate |
+| Behavior oracle | Expected result, error, empty set, or normalization | A class needs an observable outcome |
+| Dependencies | Fields whose valid class changes with another field | Record conditional partitions |
+
+Use a request like this:
+
+```text
+Use the equivalence-partitioning Skill.
+
+Task: design input classes for a search API that accepts date range, status, owner, and free-text filters
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Partition map | Class definition, representative, and source rule | Valid, invalid, or conditional |
+| Coverage choice | Values selected and values deliberately omitted | Reason |
+| Gap | Class with no oracle or ambiguous behavior | Clarification action |
+
+Do not write “passed” without a run record, query result, or source artifact. A good partition follows behavior, not syntax alone. Two strings may share a format but belong to different business classes when one is an active owner and the other is unknown.
+
+## Run one focused pass
+
+Start with a bounded pass—design input classes for a search API that accepts date range, status, owner, and free-text filters. For a date filter, create classes for omitted dates, valid same-day ranges, reversed ranges, future ranges, invalid time zones, and ranges beyond retention. Choose one representative for each, then add boundary values where the class changes.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because valid and invalid classes, empty values, type, format, business rule, and representative selection must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. Grouping by data type while ignoring business behavior.
+2. Choosing one valid example and calling the class covered.
+3. Missing conditional classes created by account or state.
+
+## Related Skills
+
+- [Boundary Value Testing](https://inaodeng.com/en/qaskills/boundary-value-testing/)：selects points where classes change。
+- [Combinatorial Testing](https://inaodeng.com/en/qaskills/combinatorial-testing/)：combines representative values。
+- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/)：applies invalid classes to API behavior。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning -g
+```
+
+After installation, invoke it with the `equivalence-partitioning` Skill and attach the real project material.
+
+## Two practical questions
+
+### Do partitions replace boundary tests?
+
+No. Partitions reduce the space; boundary testing chooses values where behavior changes.
+
+### What if two classes look identical?
+
+Keep one only when the source and observable behavior are identical; otherwise record the uncertainty.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Equivalence Partitioning prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md)
+
+- Awesome QA Skills: Equivalence Partitioning source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Equivalence Partitioning details:[https://inaodeng.com/en/qaskills/equivalence-partitioning/](https://inaodeng.com/en/qaskills/equivalence-partitioning/)

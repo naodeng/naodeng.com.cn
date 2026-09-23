@@ -1,0 +1,125 @@
+---
+title: "API 幂等性测试：证明重复写入不会制造重复业务副作用"
+description: "API 幂等性测试实战指南：测试重复请求、幂等键、并发、超时、重放窗口和结果保存。"
+date: 2026-10-11T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试","Agent Skills","API 幂等性测试"]
+categories: ["AI 测试","QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+重试很普通，重复退款、重复下单和重复通知不普通。幂等性测试检查的是业务副作用，而不只是第二次 HTTP 响应看起来是否熟悉。
+
+API 幂等性测试用于验证相同业务意图的重复或并发请求只产生一次安全副作用，并返回定义清楚的结果。
+
+当团队需要围绕“幂等键语义、重放、并发、超时恢复、结果持久化和冲突”工作时，使用 API 幂等性测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 API 幂等性测试。
+
+## API 幂等性测试 Skill 用来做什么
+
+
+它适合这些场景：团队需要重复检查幂等键语义、重放、并发、超时恢复、结果持久化和冲突；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+
+好的结果会把幂等键语义、重放、并发、超时恢复、结果持久化和冲突接回来源和验证动作。设计清单不能直接写成通过结论。
+
+## 先回到源 Skill
+
+完整执行契约位于 [API 幂等性测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-idempotency-testing) 中还包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束幂等键语义、重放、并发、超时恢复、结果持久化和冲突。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 操作契约 | 写入副作用、幂等键格式、重放窗口和冲突策略 | 不要从缓存设置推断重放窗口 |
+| 请求变体 | 同键同参数、同键改参数、无键和并发请求 | 记录完整请求体与请求头 |
+| 业务证据 | 订单 ID、支付尝试、事件记录和响应体 | 没有状态证据时，响应一致还不够 |
+
+可以这样调用：
+
+```text
+
+请使用 api-idempotency-testing Skill。
+
+任务：测试结算 POST 在客户端超时但服务端已经创建订单后的行为
+输入材料：[需求、版本、链接、日志、报告或数据路径]
+范围：[本次包含和排除的对象]
+未知项：[缺失的环境、账号、数据或权限]
+期望输出：[按风险排序的发现、证据状态和下一步动作]
+
+先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
+
+```
+
+## API 幂等性测试 要交付什么
+
+| 输出字段 | 它要回答什么 | 示例状态 |
+| --- | --- | --- |
+| 重放结果 | 同一个键是否返回原始结果 | 响应与持久化状态 |
+| 副作用数量 | 创建了多少订单、扣款、事件或通知 | 一次、零次或重复 |
+| 冲突发现 | 参数变化、键过期或并发归属冲突 | 策略与修复动作 |
+
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的幂等性测试会把请求追到存储和下游事件，并测试同一个键配上不同参数的情况。悄悄接受这种请求通常比明确拒绝更危险。
+
+## 在项目里跑一轮
+
+先从一个边界清楚的小回合开始：测试结算 POST 在客户端超时但服务端已经创建订单后的行为。使用 `cart-1842` 提交结算，让客户端超时后分别串行和并发重放两次。确认最终只有一个订单、一次支付尝试和一个确认事件，响应指向原订单。同一个键换一个购物车时，应返回冲突。
+
+交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+## 如何把初版做得更好
+
+如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从“看起来完整的清单”推进到可用评审。
+
+
+## 容易踩的坑
+
+1. 只检查响应重复，不检查副作用重复。
+2. 只测试串行重试。
+3. 让改变参数的请求悄悄继承旧幂等键。
+
+## 相关 Skill
+
+- [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/)：固定请求与响应契约。
+- [重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)：探索重试触发与边界。
+- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查冲突与处理中响应。
+
+
+
+## 安装与调用
+
+全局安装这个 Skill：
+```bash
+
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-idempotency-testing -g
+
+```
+
+安装后使用 `api-idempotency-testing` Skill，并附上真实项目材料。
+
+## 常见问题
+
+### 第一次响应丢失怎么办？
+
+重放应恢复原始业务结果或明确的处理中状态，不能再次制造副作用。
+
+
+
+### 按时间过期的幂等键就够了吗？
+
+只有契约定义过期后的行为，且证据证明业务风险可接受时才够。
+
+
+
+## 参考
+
+- [API 幂等性测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md)
+
+- [Awesome QA Skills：API 幂等性测试 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-idempotency-testing)
+
+- [Awesome QA Skills GitHub](https://github.com/naodeng/awesome-qa-skills)
+
+- [API 幂等性测试 详情页](https://inaodeng.com/zh-cn/qaskills/api-idempotency-testing/)

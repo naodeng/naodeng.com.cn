@@ -1,0 +1,111 @@
+---
+title: "Resilience Testing: Review Degradation, Isolation, and Residual Risk"
+description: "A bilingual guide to resilience-testing analysis covering degradation behavior, isolation boundaries, recovery capability, and residual risk."
+date: 2026-12-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Resilience Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Resilience is what remains useful when a dependency is slow, unavailable, or returning partial failure. It is not the same as a normal-path smoke test or a generic incident narrative.
+
+The Resilience Testing Skill prepares evidence-bounded analysis of degradation behavior, isolation boundaries, recovery capability, and residual risk. It keeps a planned experiment separate from an executed fault test.
+
+The useful output is a small, reversible validation that can change the resilience judgment.
+
+## Resilience Testing Skill: what it is for
+
+Use this Skill to review how a service should degrade when dependencies fail and whether recovery or containment evidence is ready. It does not inject faults or call production dependencies.
+
+A good result names the failure trigger, expected degraded behavior, isolation boundary, recovery capability, residual risk, owner, stop condition, and validation method.
+
+Use it when a team is preparing a controlled resilience exercise, reviewing a dependency design, or investigating an unclear fallback path.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Resilience Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing/prompts/resilience-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Resilience objective | User-visible behavior, service boundary, and acceptable degradation | Keep unapproved targets pending |
+| Failure scenario | Dependency timeout, partial outage, queue pressure, or resource exhaustion | Do not use a generic outage label |
+| Isolation design | Bulkhead, circuit, queue, fallback, and data-consistency boundaries | Mark undocumented boundaries unknown |
+| Recovery evidence | Runbook, metrics, alerts, restore steps, and safe environment | Separate design from execution |
+
+Use a request like this:
+
+~~~text
+Use the resilience-testing Skill.\n\nTask: Prepare a controlled review of the checkout service when the tax provider times out and the payment queue is delayed.\nInputs: [dependency map, fallback design, queue policy, alerts, runbook, validation environment]\nScope: [staging only, no production fault injection]\nConstraints: [masked data and explicit stop conditions]\n\nCover degradation, isolation, recovery capability, and residual risk. Keep unsupported thresholds and execution claims pending.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Degraded behavior | What users and operators should observe | Expected result and source |
+| Isolation boundary | What failure must not spread to | Boundary and evidence |
+| Recovery capability | How normal behavior returns | Runbook and validation |
+| Residual risk | What remains unknown or accepted | Owner and next action |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Review tax-provider timeout without turning fallback into proof
+
+The design says checkout uses a cached tax estimate when the provider times out, but does not say how stale estimates are reconciled before payment capture. The Skill should identify the consistency boundary, request a staging validation with a stop condition, and keep recovery behavior unassessed until evidence exists.
+
+The analysis prepares an isolated validation and classifies design evidence. It cannot prove fault containment, availability, or recovery until an authorized run produces evidence.
+
+## Improve the first result with better baseline input
+
+Provide failure modes, dependency and data-flow diagrams, fallback rules, owner roles, monitoring, runbook versions, safe environment, and stop conditions. If a boundary is missing, ask for it instead of importing a generic pattern.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Treating a fallback response as success without checking stale data and downstream consistency.
+2. Listing failure modes without saying what must be isolated or how recovery is recognized.
+3. Injecting a broad failure before defining a reversible scenario and escalation path.
+
+## Related Skills
+
+- [Reliability Testing](https://inaodeng.com/en/qaskills/reliability-testing/)：connects failure modes to availability evidence。
+- [Circuit Breaker Testing](https://inaodeng.com/en/qaskills/circuit-breaker-testing/)：focuses on open, half-open, and close behavior。
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：checks the restore path after a major failure。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing -g
+~~~
+
+~~~text
+Use the resilience-testing Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Can this Skill run a chaos experiment?
+
+No. It prepares the scenario and evidence plan. An authorized operator or test workflow must execute it.
+
+### Is a documented fallback enough?
+
+No. It is design evidence only. The fallback needs an isolated validation and an observable recovery result.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Resilience Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing/prompts/resilience-testing.md)
+- [Resilience Testing Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing)
+- [Resilience Testing details](https://inaodeng.com/en/qaskills/resilience-testing/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

@@ -1,0 +1,118 @@
+---
+title: "Error Handling Design Review: Make failure useful to users, operators, and the next system"
+description: "Error Handling Design Review field guide: review classification, user messaging, retries, fallback, logging, privacy, and recovery."
+date: 2026-11-03T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing","Agent Skills","Error Handling Design Review"]
+categories: ["AI Testing","QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An error message can be technically accurate and still leave the user with no safe next action. A stack trace can help an operator and expose a secret at the same time.
+
+Error Handling Design Review evaluates how a system classifies failures, communicates them, records them, retries them, and returns to a safe state.
+
+The Error Handling Design Review Skill is useful when a team needs a structured review of failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Error Handling Design Review.
+
+## Error Handling Design Review Skill: what it is for
+
+A practical standard for this Skill is simple: A useful review asks the same failure to make sense at three levels: the user sees a safe next step, the operator sees a diagnosable event, and the downstream client sees a stable contract.
+
+Use it when the team needs a repeatable review of failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+
+## Start with the source Skill
+
+The complete execution contract lives in the [Error Handling Design Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review) contains the entry point and supporting assets where they exist.
+
+The entry point centers failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Failure points | Validation, queue, worker, storage, download, and user state | Map each point to an owner |
+| Contract | User message, code, retry rule, log fields, and privacy boundary | Keep machine and human messages separate |
+| Recovery | Resume, restart, compensate, cancel, or support handoff | Define what the user can safely do |
+
+Use a request like this:
+
+```text
+Use the error-handling-design-review Skill.
+
+Task: review error handling for a report export that can fail validation, queueing, generation, storage, or download
+Inputs: [requirements, versions, links, logs, reports, or data paths]
+Scope: [included and excluded objects]
+Unknowns: [missing environment, accounts, data, or permissions]
+Expected output: [risk-ordered findings, evidence status, and next actions]
+
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+```
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Error judgment | Class, impact, user action, and retryability | Source and status |
+| Observability requirement | Log, metric, trace, or alert needed | Privacy-safe field set |
+| Recovery decision | Fallback, compensation, or escalation | Owner and close condition |
+
+Do not write “passed” without a run record, query result, or source artifact. A useful review asks the same failure to make sense at three levels: the user sees a safe next step, the operator sees a diagnosable event, and the downstream client sees a stable contract.
+
+## Run one focused pass
+
+Start with a bounded pass—review error handling for a report export that can fail validation, queueing, generation, storage, or download. For a storage failure after report generation, tell the user whether retrying is safe, log the report job ID and storage error class without file contents, and prevent the client from starting a second expensive generation unless the contract allows it.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+## Improve the first result
+
+If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+
+A richer input changes the answer here because failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery must be tied to evidence rather than inferred from a familiar pattern.
+
+## Common traps
+
+1. One generic error for unrelated failure classes.
+2. Logging sensitive payloads for diagnosis.
+3. Retrying before deciding whether the original operation committed.
+
+## Related Skills
+
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：checks machine-readable failure responses。
+- [Root Cause Analysis](https://inaodeng.com/en/qaskills/root-cause-analysis/)：follows failures after the design review。
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：verifies the designed recovery path。
+
+## Install and invoke
+
+Install the individual Skill. The series overview carries the longer installation explanation.
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review -g
+```
+
+After installation, invoke it with the `error-handling-design-review` Skill and attach the real project material.
+
+## Two practical questions
+
+### Should users see technical error codes?
+
+Expose a safe support reference when useful; keep internal details and secrets out of the message.
+
+### What if no fallback exists?
+
+Say so explicitly, define the stop or escalation action, and avoid pretending the error is recoverable.
+
+The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+
+## References
+
+- Error Handling Design Review prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)
+
+- Awesome QA Skills: Error Handling Design Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review)
+
+- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+
+- Error Handling Design Review details:[https://inaodeng.com/en/qaskills/error-handling-design-review/](https://inaodeng.com/en/qaskills/error-handling-design-review/)

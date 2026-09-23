@@ -1,0 +1,111 @@
+---
+title: "UI Test Selector Review：用稳定意图替换脆弱定位器"
+description: "UI 测试选择器评审双语指南，围绕稳定性、语义、可访问性、变更韧性和可维护性复核 UI 自动化定位器。"
+date: 2026-12-21T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "UI 测试选择器评审"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+选择器今天通过，明天可能因为布局 class 改了就失败。稳定的 UI 自动化应该来自用户意图和组件语义，而不是最容易复制的 CSS 路径。
+
+UI Test Selector Review Skill 根据 DOM 和组件代码、可访问名称、data-testid 约定、定位历史和失败证据复核选择器，产出 USR-## 发现，不执行测试也不声称覆盖。
+
+本文关注的选择器应该描述用户或可访问界面暴露的控件意图，并能抵抗无关结构变化。
+
+## UI 测试选择器评审 Skill 用来做什么
+
+当你要识别 UI 自动化中脆弱、歧义、不可访问或维护成本高的选择器时，使用这个 Skill。它保留来源证据、适用范围和最小验证动作。
+
+好的 USR 发现要写清 UI 对象、前置条件、选择器问题、来源证据、影响、优先级、负责人、关闭条件和验证方式。
+
+当 UI 测试在无害的标记变化后失败、选择器依赖样式类或位置，或者团队需要统一定位约定时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [UI 测试选择器评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selector-review/prompts/ui-test-selector-review.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selector-review) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| UI 来源 | DOM 快照、组件代码、可访问名称、角色和 data 属性 | 语义缺失要标出 |
+| 测试代码 | 定位器、动作、断言、页面状态和辅助函数 | 不要只从选择器推断意图 |
+| 变更证据 | diff、定位历史、失败截图和重跑 | 没有运行时证据就保持未验证 |
+| 边界 | 浏览器、语言、响应式模式和 Owner 约定 | 范围要保留 |
+
+可以这样调用：
+
+~~~text
+请使用 ui-test-selector-review Skill。\n\n任务：复核设计系统按钮重构后的结账 UI 选择器。\n输入材料：[组件代码、DOM 快照、可访问角色与名称、测试代码、失败截图和 diff]\n范围：[结账提交、优惠券和错误控件]\n限制：[不执行测试、不修改选择器]\n\n输出 USR-## 发现，包含对象、问题、来源、证据状态、影响、负责人、关闭条件和验证方式。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 选择器发现 | 定位器为何稳定、歧义或脆弱 | USR 编号与来源 |
+| 语义依据 | 角色、可访问名称、测试 ID 或无依据结构 | 适用性 |
+| 维护影响 | 标记变化或本地化如何影响它 | 优先级与证据 |
+| 验证动作 | 替换定位器前的最小检查 | 负责人与 NOT_RUN 边界 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：复核组件重构后的结账按钮
+
+测试按第三个 `.btn` 元素定位提交按钮，但组件已经暴露可访问名称和稳定测试 ID。这个 Skill 应指出位置和样式依赖，建议验证语义定位器，并保留尚未执行测试这一事实。
+
+复核可以从已有材料识别选择器质量候选，不能证明运行时稳定、覆盖完整或 UI 套件通过。
+
+## 先补基线输入，再期待更好的结果
+
+提供组件和 DOM 证据、可访问名称与角色、测试代码、定位约定、变更历史、失败产物、浏览器和语言范围。语义缺失时保持未评估。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 只因为选择器短或当前 DOM 能通过就选它。
+2. 使用可见文本，却不考虑本地化和重复名称。
+3. data-testid 看起来稳定，就把它当成测试有行为价值的证明。
+
+## 相关 Skill
+
+- [UI 测试策略](https://inaodeng.com/zh-cn/qaskills/ui-test-strategy/)：定义流程、状态、平台和风险。
+- [UI 测试等待策略评审](https://inaodeng.com/zh-cn/qaskills/ui-test-wait-strategy-review/)：检查定位控件后的等待。
+- [测试代码评审](https://inaodeng.com/zh-cn/qaskills/test-code-review/)：复核定位器周围的断言与隔离。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selector-review -g
+~~~
+
+~~~text
+请使用 ui-test-selector-review Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### data-testid 总是最好吗？
+
+不一定。唯一且有意设计的用户语义优先；当组件需要明确自动化契约时再使用测试 ID。
+
+### 这个 Skill 会修改测试代码吗？
+
+不会。它提供复核发现和验证动作，实现属于单独的变更。
+
+
+
+## 参考
+
+- [UI 测试选择器评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selector-review/prompts/ui-test-selector-review.md)
+- [UI 测试选择器评审 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ui-test-selector-review)
+- [UI 测试选择器评审 详情页](https://inaodeng.com/zh-cn/qaskills/ui-test-selector-review/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

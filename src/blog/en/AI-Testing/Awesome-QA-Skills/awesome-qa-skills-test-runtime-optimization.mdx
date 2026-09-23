@@ -1,0 +1,111 @@
+---
+title: "Test Runtime Optimization: Shorten Slow Feedback with a Trusted Baseline"
+description: "A bilingual guide to optimizing slow tests through profiling evidence, setup and teardown, parallelism, isolation, and comparable runtime baselines."
+date: 2026-12-15T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Test Runtime Optimization"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Making a test faster is easy when correctness is someone else’s problem. Safe runtime optimization starts with a baseline, a bottleneck, and evidence that parallelism or setup changes did not change what the test means.
+
+The Test Runtime Optimization Skill analyzes slow tests, profiling evidence, setup and teardown, parallelism, isolation, and baselines. It turns a speed proposal into a bounded experiment rather than a promise.
+
+Speed matters only if the optimized test still produces a comparable trustworthy signal.
+
+## Test Runtime Optimization Skill: what it is for
+
+Use this Skill when CI feedback is slow or a test area needs profiling before changing fixtures, workers, ordering, or environment setup.
+
+A good result identifies the slow signal, measured baseline, bottleneck hypothesis, isolation constraint, optimization, expected behavior, and validation evidence.
+
+Use it when a suite has a clear runtime problem and the team needs to decide whether to profile, change setup, parallelize, or isolate work.
+
+## Start with the source Skill
+
+The complete execution contract lives in [Test Runtime Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+## Begin with project facts
+
+| Material | What to provide | What to do when it is missing |
+| --- | --- | --- |
+| Runtime baseline | Duration distribution, percentile, environment, version, and cohort | Do not use one anecdotal run |
+| Profiling evidence | Slow test, setup/teardown, I/O, network, fixtures, and worker data | Keep hypotheses labeled |
+| Execution constraints | Order dependence, shared resources, parallel workers, and isolation | Do not assume safe parallelism |
+| Validation plan | Before/after runs, correctness checks, and rollback | Separate speed from pass evidence |
+
+Use a request like this:
+
+~~~text
+Use the test-runtime-optimization Skill.\n\nTask: Reduce pre-merge runtime for a catalog API suite whose setup creates a full database snapshot per test.\nInputs: [duration distribution, profiler output, fixture code, worker config, isolation constraints, run records]\nScope: [pre-merge API suite]\nConstraints: [preserve data isolation and assertions]\n\nCover slow tests, profiling evidence, setup/teardown, parallelism, isolation, baseline, and validation method.
+~~~
+
+## Make the result usable by the next person
+
+| Output field | Why it exists | Example status |
+| --- | --- | --- |
+| Bottleneck | Measured slow path and evidence | Baseline and profile |
+| Optimization option | Setup, teardown, parallel, or isolation change | Expected trade-off |
+| Trust boundary | What must remain equivalent | Data and behavior check |
+| Validation | Comparable before/after evidence | Owner and rollback |
+
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+
+## Focused example: Replace full snapshot setup without sharing state
+
+Profiling shows most runtime is snapshot creation, but tests also mutate shared reference data. The Skill should distinguish expensive setup from unsafe sharing, propose a smaller isolated fixture experiment, and require before/after correctness and duration evidence.
+
+The analysis prepares an optimization experiment. It cannot prove speedup, correctness, or preserved coverage without comparable runs.
+
+## Improve the first result with better baseline input
+
+Provide a duration distribution, version and environment, profiler data, setup/teardown code, worker settings, resource constraints, and correctness checks. Keep one-off speed observations bounded.
+
+A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Common traps
+
+1. Optimizing from the slowest single run rather than a comparable distribution.
+2. Parallelizing tests that share database, port, clock, or filesystem state.
+3. Removing setup or assertions and calling the shorter run equivalent.
+
+## Related Skills
+
+- [CI Test Optimization](https://inaodeng.com/en/qaskills/ci-test-optimization/)：connects runtime changes to pipeline feedback。
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：provides suite-level duration and flakiness context。
+- [Test Code Review](https://inaodeng.com/en/qaskills/test-code-review/)：reviews fixtures and assertions affected by optimization。
+
+## Install and invoke
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization -g
+~~~
+
+~~~text
+Use the test-runtime-optimization Skill.
+Include objective, scope, versions, evidence paths, constraints, and decision boundary.
+Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+~~~
+
+## Two practical questions
+
+### Is a shorter duration enough to declare success?
+
+No. Compare correctness, isolation, failure signal, and runtime over a defined cohort.
+
+### Can shared fixtures always improve runtime?
+
+No. Sharing may introduce order dependence or state leakage; the isolation boundary must be evidenced.
+
+The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+
+## References
+
+- [Test Runtime Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md)
+- [Test Runtime Optimization Skill source](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization)
+- [Test Runtime Optimization details](https://inaodeng.com/en/qaskills/test-runtime-optimization/)
+- [Awesome QA Skills on GitHub](https://github.com/naodeng/awesome-qa-skills)

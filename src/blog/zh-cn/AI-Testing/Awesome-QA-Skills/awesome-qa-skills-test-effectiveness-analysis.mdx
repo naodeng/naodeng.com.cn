@@ -1,0 +1,111 @@
+---
+title: "Test Effectiveness Analysis：把测试信号连接到风险和缺陷"
+description: "测试有效性分析双语指南，围绕测试信号、风险覆盖、漏检边界、错误信号和验证计划分析有效性，不输出无依据的通过结论。"
+date: 2026-12-12T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "测试有效性分析"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+测试套件很大、结果全绿，仍然可能漏掉最重要的缺陷。测试有效性要问：产生了什么信号，覆盖什么风险，无法发现什么，以及如何验证缺口。
+
+Test Effectiveness Analysis Skill 把测试信号与缺陷、风险、漏检限制、错误信号和验证计划连接起来，把指标或结果变成有证据边界的改进讨论。
+
+本文关注的是信号与风险的关系，而不是测试数量。
+
+## 测试有效性分析 Skill 用来做什么
+
+当你要复核测试计划、结果或指标是否真的支持目标风险时，使用这个 Skill。它不替代风险接受，也不会把通过率变成产品质量结论。
+
+好的分析需要写清测试信号、风险覆盖、漏检限制、错误信号、证据状态、验证方式、负责人、关闭条件和残余风险。
+
+当团队质疑增加测试是否真的提升发现能力、缺陷在全绿之后逃逸，或 flaky 信号正在影响质量决策时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [测试有效性分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-effectiveness-analysis/prompts/test-effectiveness-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-effectiveness-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 测试信号 | 套件结果、变异结果、缺陷发现、告警或指标定义 | 明确说明信号含义 |
+| 风险与缺陷证据 | 故障模式、逃逸缺陷、受影响流程和预期行为 | 不要从名称推断覆盖 |
+| 窗口与环境 | 版本、数据、执行时间、环境和对比队列 | 上下文缺失要标出 |
+| 验证计划 | 最小实验、证据来源、负责人和停止条件 | 建议与执行分开 |
+
+可以这样调用：
+
+~~~text
+请使用 test-effectiveness-analysis Skill。\n\n任务：分析结账契约测试是否发现了最近两个发布中的退款缺陷。\n输入材料：[测试结果、缺陷记录、风险清单、变更范围、版本和环境]\n范围：[退款 API 与下游账本]\n限制：[不做无依据的通过或因果结论]\n\n覆盖测试信号、风险覆盖、漏检限制、错误信号、验证计划、证据状态、负责人和残余风险。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 信号判断 | 测试结果实际说明什么 | 来源与证据状态 |
+| 风险覆盖 | 哪些故障模式被保护或没有被保护 | 依据与限制 |
+| 漏检或错误信号 | 全绿或全红可能隐藏什么 | 不确定性 |
+| 验证计划 | 能改变结论的最小检查 | 负责人和关闭条件 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：解释退款逃逸后的全绿套件
+
+契约测试验证了退款接口 schema，但逃逸缺陷发生在成功响应后的账本入账。这个 Skill 应区分 API 契约信号和端到端风险覆盖，指出漏检边界，并建议增加一条可追踪的账本断言或重放。不能因为一次逃逸就说整个套件无效。
+
+分析可以把已有信号与风险关联，不能在没有合适时间窗口和证据前证明因果有效性、零漏检或发布就绪。
+
+## 先补基线输入，再期待更好的结果
+
+提供风险和缺陷记录、测试意图、带版本和环境的结果、变更面、误报数据以及分析要支持的决定。没有可比窗口时，因果结论保持未评估。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把通过率或测试数量当作有效性分数。
+2. 一次逃逸就推断所有相关测试没有价值。
+3. 忽略误报，导致注意力被消耗并掩盖真正信号。
+
+## 相关 Skill
+
+- [测试缺口分析](https://inaodeng.com/zh-cn/qaskills/test-gap-analysis/)：把漏掉的义务变成明确缺口。
+- [基于风险的测试](https://inaodeng.com/zh-cn/qaskills/risk-based-testing/)：把风险证据连接到测试深度。
+- [测试套件健康度分析](https://inaodeng.com/zh-cn/qaskills/test-suite-health-analysis/)：补充套件可靠性和维护证据。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-effectiveness-analysis -g
+~~~
+
+~~~text
+请使用 test-effectiveness-analysis Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 一次发布能算出有效性吗？
+
+通常不能做广泛因果结论。可以把它作为受限观察，并写清缺少的对比或验证。
+
+### 变异分数能证明真实缺陷发现能力吗？
+
+不能。它只是一个信号，仍需复核变异设计、映射关系和限制。
+
+
+
+## 参考
+
+- [测试有效性分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-effectiveness-analysis/prompts/test-effectiveness-analysis.md)
+- [测试有效性分析 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-effectiveness-analysis)
+- [测试有效性分析 详情页](https://inaodeng.com/zh-cn/qaskills/test-effectiveness-analysis/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)

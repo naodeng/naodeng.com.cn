@@ -1,0 +1,111 @@
+---
+title: "Requirement Ambiguity Analysis：把模糊措辞变成可关闭的问题"
+description: "需求歧义分析双语指南，识别角色、范围、数量、条件、时间、状态和验收标准中的歧义，但不替业务选择解释。"
+date: 2026-11-27T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "需求歧义分析"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+“仪表盘应该让普通用户快速加载，并在必要时展示相关数据”听起来没问题，但一到设计和测试阶段，就必须回答快速、普通和加载分别指什么。
+
+Requirement Ambiguity Analysis Skill 在保留原文和来源的前提下诊断需求缺少什么，列出不同合理理解并指出缺失区分条件，不悄悄替业务选解释。
+
+本文关注的是如何让歧义变得可处理，但不假装知道产品负责人真正想表达什么。
+
+## 需求歧义分析 Skill 用来做什么
+
+当需求中的角色、对象、范围、数量、时间、状态或验收标准不清楚时，在设计或测试规划前使用这个 Skill。它负责诊断和生成问题，不负责编写业务规则。
+
+好的发现应使用 RA 编号，引用模糊原文，写出缺失区分条件、可能理解、影响，并把可关闭问题交给负责人。
+
+当故事里出现“快速”“及时”“正常”“适当”“必要时”等词，或者两个团队可能按同一句话实现出不同结果时，使用这个 Skill。
+
+## 先回到源 Skill
+
+完整执行规则在 [需求歧义分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-ambiguity-analysis/prompts/requirement-ambiguity-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-ambiguity-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+## 用一份项目材料开始
+
+| 材料 | 这次提供什么 | 缺失时的处理 |
+| --- | --- | --- |
+| 需求来源 | 原始故事、验收条件、版本和位置 | 有原文时不要只分析转述 |
+| 范围与角色 | 产品、角色、状态、平台、租户、区域和时间窗口 | 适用范围缺失时标出 |
+| 现有证据 | 样例、原型、契约、历史决策和关联材料 | 把证据与惯例分开 |
+| 决策边界 | 有权澄清规则的角色，哪些内容不能推断 | 把问题路由给负责人 |
+
+可以这样调用：
+
+~~~text
+请使用 requirement-ambiguity-analysis Skill。\n\n任务：分析“仪表盘应该让普通用户快速加载，并在必要时展示相关数据”。\n输入材料：[故事版本、产品范围、用户角色、原型、性能上下文和已有决策]\n范围：[Web 仪表盘、已登录用户、首次加载与刷新]\n限制：[不要替业务选择阈值]\n\n保留模糊短语、来源、缺失区分条件、可能理解、影响、负责人问题、关闭条件和验证方式。使用 RA-## 编号，区分歧义与冲突。
+~~~
+
+## 让下一位同事接手
+
+| 产物 | 要回答的问题 | 示例状态 |
+| --- | --- | --- |
+| 模糊陈述 | 原始措辞和来源位置 | 引用证据 |
+| 缺失区分条件 | 缺失的角色、阈值、状态、时间、范围或规则 | 明确缺口 |
+| 可能理解 | 不止一种合理实现含义 | 不要选其中一个 |
+| 可关闭问题 | 负责人可以回答的问题及验证方式 | 负责人、优先级和方法 |
+
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+
+## 聚焦例子：让“快速”可测试，但不要替负责人定义它
+
+对于“快速加载”，这个 Skill 可以追问指标是首屏内容、可交互时间还是完整数据加载，适用什么网络和设备，以及覆盖哪个用户群体。它不应该因为常见做法就直接选两秒。产物应该是决策问题和验证方法，而不是自创验收条件。
+
+结果能证明给定材料中的措辞存在多种合理理解，不能替产品决定业务规则、法律含义或最终验收阈值。
+
+## 先补基线输入，再期待更好的结果
+
+提供原始需求和来源、范围、角色、已知样例、关联设计或契约，以及有权澄清的人。输入不完整也可以开始，但必须提出三到五个高价值问题。
+
+交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 容易踩的坑
+
+1. 把模糊词替换成熟悉阈值，再把改写后的句子当成最终需求。
+2. 只有一份材料时就说存在冲突，而不是指出缺少区分条件。
+3. 列出歧义，却没有保留原文、负责人、关闭条件和验证方法。
+
+## 相关 Skill
+
+- [需求质量复核](https://inaodeng.com/zh-cn/qaskills/requirement-quality-review/)：在设计或测试前检查更广泛的需求就绪度。
+- [需求一致性分析](https://inaodeng.com/zh-cn/qaskills/requirement-consistency-analysis/)：比较多个材料中的术语和规则。
+- [需求冲突检测](https://inaodeng.com/zh-cn/qaskills/requirement-conflict-detection/)：处理明确互斥的陈述。
+
+## 安装与调用
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-ambiguity-analysis -g
+~~~
+
+~~~text
+请使用 requirement-ambiguity-analysis Skill。
+提供目标、范围、版本、证据路径、限制和决策边界。
+先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+~~~
+
+## 常见问题
+
+### 这个 Skill 可以直接重写需求吗？
+
+可以提出澄清问题或候选表述，但必须保留原始陈述，不能把未经批准的解释写成最终需求。
+
+### 只有一份需求文档也能分析吗？
+
+可以发现单份材料内部的歧义。冲突需要互斥证据，不能自行编出另一方。
+
+
+
+## 参考
+
+- [需求歧义分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-ambiguity-analysis/prompts/requirement-ambiguity-analysis.md)
+- [需求歧义分析 Skill 源文件](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-ambiguity-analysis)
+- [需求歧义分析 详情页](https://inaodeng.com/zh-cn/qaskills/requirement-ambiguity-analysis/)
+- [Awesome QA Skills 项目](https://github.com/naodeng/awesome-qa-skills)
