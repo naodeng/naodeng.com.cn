@@ -12,6 +12,13 @@ const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },
   { name: "dsh-qa", url: `/${locale}/dsh-qa/` },
 ];
+const pluginCommand = site.installModes.find((mode) => mode.id === "install-plugin")?.commands[0] ?? "npx @deepseek-ai/dsh plugin --profile web add dsh-qa";
+const standaloneCommand = site.installModes.find((mode) => mode.id === "install-standalone")?.commands[0] ?? "npm install -g dsh-qa";
+const copyLabels = locale === "zh-cn"
+  ? { copy: "复制命令", copied: "已复制", unavailable: "无法复制，请手动选择命令" }
+  : { copy: "Copy command", copied: "Copied", unavailable: "Copy unavailable; select the command manually" };
+const latestRelease = site.releases[0];
+const historicalReleases = site.releases.slice(1);
 ---
 
 <Layout title={site.meta.title} description={site.meta.description} breadcrumbs={breadcrumbs}>
@@ -21,14 +28,31 @@ const breadcrumbs = [
         <p class="eyebrow">{site.hero.eyebrow}</p>
         <h1 id="dsh-qa-title">{site.hero.title}</h1>
         <p class="hero-summary">{site.hero.summary}</p>
+        <a class="latest-release" href={site.hero.latestRelease.url} target="_blank" rel="noopener noreferrer" data-dsh-qa-latest-release>
+          <span>{locale === "zh-cn" ? "最新版本" : "Latest release"}</span>
+          <strong>{site.hero.latestRelease.version}</strong>
+          <time datetime={site.hero.latestRelease.publishedAt}>{site.hero.latestRelease.publishedAt}</time>
+          <span aria-hidden="true">↗</span>
+        </a>
         <div class="hero-actions">
           {site.hero.actions.map((action) => <a class:list={["hero-action", { primary: action.external }]} href={action.href} target={action.external ? "_blank" : undefined} rel={action.external ? "noopener noreferrer" : undefined} data-dsh-qa-action>{action.label}<span aria-hidden="true">{action.external ? "↗" : "↓"}</span></a>)}
         </div>
       </div>
-      <div class="hero-panel" aria-label={locale === "zh-cn" ? "质量交付状态" : "Quality delivery status"}>
-        <p>QUALITY / DELIVERY</p>
-        <strong>PASS · WARN · BLOCK</strong>
-        <span>{locale === "zh-cn" ? "证据先于结论，人工保留最终决策。" : "Evidence precedes conclusions; people retain the final decision."}</span>
+      <div class="hero-side">
+        <div class="hero-panel" aria-label={locale === "zh-cn" ? "质量交付状态" : "Quality delivery status"}>
+          <p>QUALITY / DELIVERY</p>
+          <strong>PASS · WARN · BLOCK</strong>
+          <span>{locale === "zh-cn" ? "证据先于结论，人工保留最终决策。" : "Evidence precedes conclusions; people retain the final decision."}</span>
+        </div>
+        <div class="command-card" data-dsh-command-card data-copy-state="idle" data-command={standaloneCommand}>
+          <div class="command-tabs" role="tablist" aria-label={locale === "zh-cn" ? "安装方式" : "Installation method"}>
+            <button type="button" role="tab" aria-selected="true" data-dsh-command-tab data-command={standaloneCommand}>{locale === "zh-cn" ? "独立安装" : "Standalone"}</button>
+            <button type="button" role="tab" aria-selected="false" data-dsh-command-tab data-command={pluginCommand}>{locale === "zh-cn" ? "Harness 插件" : "Harness plugin"}</button>
+          </div>
+          <div class="command-card-top"><span class="command-dots" aria-hidden="true"><i></i><i></i><i></i></span><button type="button" data-dsh-command-copy data-copied-label={copyLabels.copied} data-copy-error-label={copyLabels.unavailable}><span class="material-icons-sharp" aria-hidden="true">content_copy</span>{copyLabels.copy}</button></div>
+          <code data-dsh-command-value><span aria-hidden="true">$</span> {standaloneCommand}</code>
+          <span class="visually-hidden" aria-live="polite" data-dsh-command-feedback></span>
+        </div>
       </div>
     </section>
 
@@ -40,8 +64,19 @@ const breadcrumbs = [
       </div>
     </section>
 
+    <section class="section showcase" aria-labelledby="showcase-title">
+      <p class="section-kicker">02 / {site.labels.showcase}</p>
+      <h2 id="showcase-title">{site.labels.showcase}</h2>
+      <div class="showcase-grid">
+        {site.showcase.map((item, index) => <article class="showcase-card" data-dsh-qa-showcase>
+          <img src={item.image} width={item.width} height={item.height} alt={item.alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" fetchpriority={index === 0 ? "high" : "auto"} />
+          <div><h3>{item.title}</h3><p>{item.description}</p></div>
+        </article>)}
+      </div>
+    </section>
+
     <section class="section flow-section" aria-labelledby="flow-title">
-      <p class="section-kicker">02 / {site.labels.flow}</p>
+      <p class="section-kicker">03 / {site.labels.flow}</p>
       <h2 id="flow-title">{site.labels.flow}</h2>
       <ol class="flow-list">
         {site.deliveryFlow.map((stage, index) => <li data-dsh-qa-flow-stage><span class="flow-index">0{index + 1}</span><div><h3>{stage.title}</h3><p>{stage.description}</p></div><span class:list={["flow-status", stage.status.toLowerCase()]}>{stage.status}</span></li>)}
@@ -49,7 +84,7 @@ const breadcrumbs = [
     </section>
 
     <section class="section" aria-labelledby="install-title">
-      <p class="section-kicker">03 / {site.labels.install}</p>
+      <p class="section-kicker">04 / {site.labels.install}</p>
       <h2 id="install-title">{site.labels.install}</h2>
       <div class="install-grid">
         {site.installModes.map((mode) => <article class="install-card" id={mode.id} data-install-mode><h3>{mode.title}</h3><p>{mode.description}</p><span class="command-label">{site.labels.commandLabel}</span>{mode.commands.map((command) => <pre><code>{command}</code></pre>)}</article>)}
@@ -57,20 +92,65 @@ const breadcrumbs = [
     </section>
 
     <section class="section ecosystem" aria-labelledby="ecosystem-title">
-      <p class="section-kicker">04 / {site.labels.ecosystem}</p>
+      <p class="section-kicker">05 / {site.labels.ecosystem}</p>
       <h2 id="ecosystem-title">{site.labels.ecosystem}</h2>
       <div class="ecosystem-links">{site.ecosystemLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>{link.label}<span aria-hidden="true">→</span></a>)}</div>
     </section>
 
     <section class="section releases" data-release-notes aria-labelledby="releases-title">
-      <p class="section-kicker">05 / RELEASES</p>
+      <p class="section-kicker">06 / RELEASES</p>
       <h2 id="releases-title">{site.labels.releaseNotes}</h2>
-      <div class="release-list">
-        {site.releases.map((release, index) => <details data-release-note open={index === 0}><summary><span><strong>{release.version}</strong><time datetime={release.publishedAt}>{release.publishedAt}</time></span><span>{release.summary}</span></summary><div class="release-body"><ul>{release.changes.map((change) => <li>{change}</li>)}</ul><a href={release.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} <span aria-hidden="true">↗</span></a></div></details>)}
-      </div>
+      <article class="current-release" data-dsh-current-release>
+        <div class="current-release-heading"><span>{locale === "zh-cn" ? "当前版本" : "Current release"}</span><strong>{latestRelease.version}</strong><time datetime={latestRelease.publishedAt}>{latestRelease.publishedAt}</time></div>
+        <p>{latestRelease.summary}</p>
+        <div class="release-body"><ul>{latestRelease.changes.map((change) => <li>{change}</li>)}</ul><a href={latestRelease.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} <span aria-hidden="true">↗</span></a></div>
+      </article>
+      <details class="release-history" data-dsh-release-history>
+        <summary>{locale === "zh-cn" ? "查看历史版本" : "View release history"}<span aria-hidden="true">↓</span></summary>
+        <div class="release-list">
+          {historicalReleases.map((release) => <details data-release-note><summary><span><strong>{release.version}</strong><time datetime={release.publishedAt}>{release.publishedAt}</time></span><span>{release.summary}</span></summary><div class="release-body"><ul>{release.changes.map((change) => <li>{change}</li>)}</ul><a href={release.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} <span aria-hidden="true">↗</span></a></div></details>)}
+        </div>
+      </details>
     </section>
   </main>
 </Layout>
+
+<script>
+  const copyCommand = async (button: HTMLButtonElement) => {
+    const card = button.closest<HTMLElement>("[data-dsh-command-card]");
+    const feedback = card?.querySelector<HTMLElement>("[data-dsh-command-feedback]");
+    if (!card || !feedback) return;
+
+    try {
+      await navigator.clipboard.writeText(card.dataset.command || "");
+    } catch {
+      card.dataset.copyState = "failed";
+      feedback.textContent = button.dataset.copyErrorLabel || "Copy unavailable; select the command manually";
+      return;
+    }
+
+    card.dataset.copyState = "copied";
+    feedback.textContent = button.dataset.copiedLabel || "Copied";
+  };
+
+  document.querySelectorAll<HTMLButtonElement>("[data-dsh-command-copy]").forEach((button) => {
+    button.addEventListener("click", () => void copyCommand(button));
+  });
+
+  document.querySelectorAll<HTMLButtonElement>("[data-dsh-command-tab]").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const card = tab.closest<HTMLElement>("[data-dsh-command-card]");
+      const value = card?.querySelector<HTMLElement>("[data-dsh-command-value]");
+      if (!card || !value) return;
+      card.dataset.command = tab.dataset.command || "";
+      card.dataset.copyState = "idle";
+      value.lastChild!.textContent = ` ${card.dataset.command}`;
+      card.querySelectorAll<HTMLButtonElement>("[data-dsh-command-tab]").forEach((button) => {
+        button.setAttribute("aria-selected", String(button === tab));
+      });
+    });
+  });
+</script>
 
 <style>
   .dsh-qa-page { --dsh-surface: #07181d; --dsh-panel: #0b252c; --dsh-ink: #e5fffb; --dsh-muted: #a7c5c1; --dsh-line: rgba(107, 238, 215, .24); --dsh-accent: #6eeed7; --dsh-blue: #8bc7ff; max-width: 76rem; margin: 0 auto; padding: 2rem var(--sp-m) 6rem; color: var(--dsh-ink); }
@@ -81,9 +161,13 @@ const breadcrumbs = [
   .hero { grid-template-columns: minmax(0, 1fr) minmax(15rem, .55fr); padding: 2.5rem 0 3rem; border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); overflow: visible; }
   .hero::before { display: none; }.hero h1, .section h2 { color: var(--color-main); font-family: inherit; }.hero h1 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: .98; }.hero-summary { color: inherit; opacity: .78; }
   .eyebrow, .section-kicker, .command-label { color: var(--color-theme); }.hero-action { border-color: color-mix(in srgb, var(--color-theme) 24%, transparent); border-radius: var(--radius-sm); color: var(--color-main); }.hero-action.primary, .hero-action:hover, .hero-action:focus-visible { background: var(--color-theme); color: var(--color-base); }
-  .hero-panel { align-self: center; padding: 1.25rem; border-color: color-mix(in srgb, var(--color-theme) 22%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.hero-panel p, .hero-panel strong { color: var(--color-theme); }.hero-panel span { color: inherit; opacity: .72; }
+  .hero-side { align-self: center; display: grid; gap: .85rem; }.hero-panel { align-self: center; padding: 1.25rem; border-color: color-mix(in srgb, var(--color-theme) 22%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.hero-panel p, .hero-panel strong { color: var(--color-theme); }.hero-panel span { color: inherit; opacity: .72; }
+  .command-card { --command-card-bg: color-mix(in srgb, var(--color-base) 92%, var(--color-theme)); --command-card-text: var(--color-main); --command-card-line: color-mix(in srgb, var(--color-theme) 24%, transparent); --command-card-hover: color-mix(in srgb, var(--color-theme) 12%, var(--color-base)); --command-card-code: var(--color-main); --command-card-prompt: var(--color-theme); overflow: hidden; border: 1px solid var(--command-card-line); border-radius: var(--radius-lg); background: var(--command-card-bg); color: var(--command-card-text); box-shadow: var(--shadow-sm); }.command-tabs { display: flex; gap: .2rem; padding: .45rem .5rem 0; }.command-tabs button { padding: .4rem .55rem; border: 1px solid transparent; border-radius: var(--radius-sm) var(--radius-sm) 0 0; color: inherit; background: transparent; font: inherit; font-size: .74rem; font-weight: 800; cursor: pointer; }.command-tabs button[aria-selected="true"] { border-color: var(--command-card-line); border-bottom-color: var(--command-card-bg); background: var(--command-card-bg); color: var(--command-card-prompt); }.command-card-top { display: flex; justify-content: space-between; align-items: center; min-height: 2.8rem; padding: .5rem .7rem .5rem .85rem; border-bottom: 1px solid var(--command-card-line); }.command-dots { display: flex; gap: .36rem; }.command-dots i { width: .6rem; height: .6rem; border-radius: 50%; background: #f87171; }.command-dots i:nth-child(2) { background: #fbbf24; }.command-dots i:nth-child(3) { background: #4ade80; }.command-card button { display: inline-flex; align-items: center; gap: .35rem; padding: .35rem .45rem; border: 0; border-radius: var(--radius-sm); color: inherit; background: transparent; font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }.command-card button:hover, .command-card button:focus-visible { background: var(--command-card-hover); }.command-card button .material-icons-sharp { font-size: 1rem; }.command-card code { display: block; padding: 1rem .95rem 1.1rem; color: var(--command-card-code); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(.75rem, 1.5vw, .94rem); line-height: 1.45; white-space: nowrap; }.command-card code span { color: var(--command-card-prompt); }.command-card[data-copy-state="copied"] [data-dsh-command-copy] { color: #16803a; }.command-card[data-copy-state="failed"] [data-dsh-command-copy] { color: #b45309; }:global(:root[data-theme="dark"]) .command-card { --command-card-bg: color-mix(in srgb, #10213c 92%, var(--color-theme)); --command-card-text: #f8fafc; --command-card-line: color-mix(in srgb, white 15%, transparent); --command-card-hover: color-mix(in srgb, white 12%, transparent); --command-card-code: #f8fafc; --command-card-prompt: #60a5fa; }:global(:root[data-theme="dark"]) .command-card[data-copy-state="copied"] [data-dsh-command-copy] { color: #86efac; }:global(:root[data-theme="dark"]) .command-card[data-copy-state="failed"] [data-dsh-command-copy] { color: #fbbf24; }
+  .latest-release { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .45rem .65rem; margin-top: 1.4rem; padding: .55rem .75rem; border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent); border-radius: var(--radius-xl); color: var(--color-main); background: color-mix(in srgb, var(--color-base) 94%, var(--color-theme)); text-decoration: none; font-size: .84rem; }.latest-release span:first-child, .latest-release time { opacity: .7; }.latest-release strong { color: var(--color-theme); }.latest-release:hover, .latest-release:focus-visible { background: color-mix(in srgb, var(--color-theme) 14%, var(--color-base)); }
   .section { margin-top: 0; padding: 3.5rem 0 0; }.section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }.feature-grid, .install-grid { gap: 1rem; }.feature-card, .install-card { min-width: 0; padding: 1.15rem; border-color: color-mix(in srgb, var(--color-theme) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.feature-card .material-icons-sharp, .feature-card h3, .install-card h3, .flow-list h3 { color: var(--color-main); }.feature-card p, .install-card p, .flow-list p { color: inherit; opacity: .72; }
+  .showcase-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }.showcase-card { min-width: 0; overflow: hidden; border: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.showcase-card img { display: block; width: 100%; aspect-ratio: 1.8 / 1; object-fit: cover; object-position: top; border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent); }.showcase-card div { padding: 1rem 1.1rem 1.15rem; }.showcase-card h3 { margin: 0; color: var(--color-main); font-size: 1rem; }.showcase-card p { margin: .5rem 0 0; color: var(--color-main); opacity: .72; font-size: .9rem; line-height: 1.55; }
   .flow-list li { border-left: 3px solid color-mix(in srgb, var(--color-theme) 45%, transparent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: color-mix(in srgb, var(--color-base) 97%, var(--color-theme)); }.flow-index, .flow-status { color: var(--color-theme); }.flow-status.pass { color: #16803a; }.install-card pre { border-color: color-mix(in srgb, var(--color-theme) 20%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--color-base) 92%, var(--color-theme)); color: var(--color-main); }
   .ecosystem-links a, .release-body a { border-color: color-mix(in srgb, var(--color-theme) 18%, transparent); border-radius: var(--radius-sm); color: var(--color-main); }.ecosystem-links a:hover, .ecosystem-links a:focus-visible, .release-body a:hover, .release-body a:focus-visible { background: color-mix(in srgb, var(--color-theme) 12%, var(--color-base)); color: var(--color-main); }.release-list details { border-color: color-mix(in srgb, var(--color-theme) 18%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--color-base) 97%, var(--color-theme)); }.release-list summary, .release-body { color: var(--color-main); }.release-list time, .release-body { opacity: .76; }
-  @media (max-width: 720px) { .hero { grid-template-columns: 1fr; padding-top: 1.5rem; }.hero-panel { margin-top: 1.5rem; }.section { padding-top: 2.75rem; } }
+  .current-release { margin-top: 1.5rem; padding: 1.15rem; border: 1px solid color-mix(in srgb, var(--color-theme) 28%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 94%, var(--color-theme)); }.current-release-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: .45rem .7rem; }.current-release-heading span { color: var(--color-theme); font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }.current-release-heading strong { font-size: 1.2rem; }.current-release-heading time { font-size: .85rem; opacity: .7; }.current-release > p { margin: .75rem 0 0; color: var(--color-main); font-weight: 700; line-height: 1.5; }.current-release .release-body { padding: 0; }.release-history { margin-top: .8rem; border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--color-base) 98%, var(--color-theme)); }.release-history > summary { display: flex; justify-content: space-between; align-items: center; padding: .95rem 1rem; cursor: pointer; color: var(--color-main); font-weight: 800; }.release-history[open] > summary { border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); }.release-history > .release-list { margin: 0; padding: .6rem; }
+  @media (max-width: 720px) { .hero { grid-template-columns: 1fr; padding-top: 1.5rem; }.hero-side { margin-top: 1.5rem; }.section { padding-top: 2.75rem; }.showcase-grid { grid-template-columns: 1fr; } }
 </style>

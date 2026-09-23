@@ -12,6 +12,15 @@ export interface DshQaFeature {
   description: string;
 }
 
+export interface DshQaShowcaseItem {
+  image: string;
+  width: number;
+  height: number;
+  alt: string;
+  title: string;
+  description: string;
+}
+
 export interface DshQaFlowStage {
   title: string;
   description: string;
@@ -40,9 +49,10 @@ export type DshQaRelease = DshQaReleaseFact & DshQaReleaseContent;
 
 export interface DshQaSiteCopy {
   meta: { title: string; description: string };
-  hero: { eyebrow: string; title: string; summary: string; actions: DshQaLink[] };
+  hero: { eyebrow: string; title: string; summary: string; actions: DshQaLink[]; latestRelease: DshQaReleaseFact };
   labels: {
     features: string;
+    showcase: string;
     flow: string;
     install: string;
     ecosystem: string;
@@ -51,6 +61,7 @@ export interface DshQaSiteCopy {
     commandLabel: string;
   };
   features: DshQaFeature[];
+  showcase: DshQaShowcaseItem[];
   deliveryFlow: DshQaFlowStage[];
   installModes: DshQaInstallMode[];
   ecosystemLinks: DshQaLink[];
@@ -58,6 +69,7 @@ export interface DshQaSiteCopy {
 }
 
 export const DSH_QA_RELEASE_FACTS: DshQaReleaseFact[] = [
+  { version: "v0.5.2", publishedAt: "2026-09-23", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.2" },
   { version: "v0.5.1", publishedAt: "2026-09-22", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.1" },
   { version: "v0.5.0", publishedAt: "2026-09-21", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.0" },
   { version: "v0.4.1", publishedAt: "2026-09-15", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.4.1" },
@@ -92,13 +104,22 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
         { label: "Install DSH plugin", href: "#install-plugin" },
         { label: "Run standalone", href: "#install-standalone" },
       ],
+      latestRelease: DSH_QA_RELEASE_FACTS[0],
     },
-    labels: { features: "Capability map", flow: "Evidence-led delivery flow", install: "Install and run", ecosystem: "Explore the QA ecosystem", releaseNotes: "Release notes", releaseLink: "View GitHub Release", commandLabel: "Command" },
+    labels: { features: "Capability map", showcase: "QA Workbench in practice", flow: "Evidence-led delivery flow", install: "Install and run", ecosystem: "Explore the QA ecosystem", releaseNotes: "Release notes", releaseLink: "View GitHub Release", commandLabel: "Command" },
     features: [
       { icon: "account_tree", title: "Projects and iterations", description: "Organize projects, iterations, milestones, kanban work, calendars, and local QA materials in one workspace." },
       { icon: "smart_toy", title: "AI collaboration", description: "Use native DSH sessions to draft requirements, cases, defects, reports, and QA knowledge without a second model configuration." },
       { icon: "folder_lock", title: "Local-first evidence", description: "Keep operational QA data on your machine and preserve traceable source snapshots, plans, runs, and evidence packages." },
       { icon: "verified_user", title: "Quality control", description: "Review risks, controlled execution, evidence, regressions, and delivery gates with accountable human decisions." },
+    ],
+    showcase: [
+      { image: "/images/projects/dsh-qa/home.webp", width: 1200, height: 715, alt: "dsh-qa home dashboard", title: "Home dashboard", description: "See active projects, overdue work, schedules, and recent QA activity at a glance." },
+      { image: "/images/projects/dsh-qa/board.webp", width: 1200, height: 583, alt: "dsh-qa project board", title: "Project board", description: "Move projects through QA stages with a visual board that keeps risks and ownership visible." },
+      { image: "/images/projects/dsh-qa/project-detail.webp", width: 1200, height: 604, alt: "dsh-qa project detail", title: "Project detail", description: "Keep scope, stages, local files, team context, and the project timeline together." },
+      { image: "/images/projects/dsh-qa/calendar.webp", width: 1200, height: 583, alt: "dsh-qa work calendar", title: "Work calendar", description: "Plan reviews, releases, and milestones on a calendar that stays tied to QA work." },
+      { image: "/images/projects/dsh-qa/test-mode.webp", width: 1200, height: 583, alt: "dsh-qa test mode", title: "Test mode", description: "Work with native DSH sessions, project context, and installed capabilities in one testing surface." },
+      { image: "/images/projects/dsh-qa/skills.webp", width: 1200, height: 583, alt: "dsh-qa QA Skills catalog", title: "QA Skills", description: "Browse, install, and manage task-focused QA capabilities directly from the workbench." },
     ],
     deliveryFlow: [
       { title: "Scope", description: "Capture requirements, risks, source snapshots, and acceptance criteria.", status: "NEUTRAL" },
@@ -108,8 +129,8 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { title: "Gate", description: "PASS can proceed; WARN and BLOCK require review. Exceptions never turn BLOCK into PASS.", status: "PASS" },
     ],
     installModes: [
-      { id: "install-plugin", title: "Use inside DeepSeek Harness", description: "Install dsh-qa into the same DSH web profile you use, then restart the DSH Web UI so the plugin loads.", commands: ["npx @deepseek-ai/dsh plugin --profile web add dsh-qa", "npx @deepseek-ai/dsh web"] },
-      { id: "install-standalone", title: "Run as a local workbench", description: "Use standalone mode for local projects, boards, and calendars. Native DSH sessions, models, skills, and commands remain available through the plugin mode.", commands: ["npm install -g dsh-qa", "qabench"] },
+      { id: "install-plugin", title: "Use inside DeepSeek Harness", description: "Install dsh-qa into the same DSH web profile you use, then restart the DSH Web UI so the plugin loads.", commands: ["npx @deepseek-ai/dsh plugin --profile web add dsh-qa"] },
+      { id: "install-standalone", title: "Install the local workbench", description: "Install the standalone workbench for local projects, boards, and calendars. Native DSH sessions, models, skills, and commands remain available through the plugin mode.", commands: ["npm install -g dsh-qa"] },
     ],
     ecosystemLinks: [
       { label: "dsh-qa on GitHub", href: "https://github.com/naodeng/dsh-qa", external: true },
@@ -118,6 +139,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { label: "Compatibility postmortem", href: "/en/blog/ai-testing/dsh-qa-harness-api-compatibility-404/" },
     ],
     releases: releases([
+      { summary: "Added bilingual settings, installed-version visibility, and a release history inside the QA Workbench.", changes: ["Added a settings dialog with bilingual switching, installed and latest versions, compatible DSH version, GitHub repository, and project website links.", "Added the installed-version indicator beside the brand and paginated newest-first release history with localized summaries and GitHub detail links.", "Improved settings-button contrast on light backgrounds and removed unused theme and workspace-width presets.", "Verified 160 unit/API tests and 25 Chromium E2E tests passed."] },
       { summary: "Migrated the QA profile to Harness 0.1.7 bundles and stabilized embedded Workbench lifecycle handling.", changes: ["Migrated the qa preset to the Harness 0.1.7 declarative profile-bundle model and made quality-control an independent profile bundle.", "Fixed same-origin Workbench popout cleanup and remounted-iframe frame-readiness timing; updated Host Smoke to dsh-v0.1.7-alpha.1.", "Verified 159 unit/API tests, 23 standalone Chromium E2E tests, and 6 real qa-bundle Host Smoke cases. The independent quality-control bundle is statically verified; its separate runtime Host Smoke is outside this release evidence."] },
       { summary: "Moved the QA Workbench onto Harness's native Panel contract.", changes: ["Mounted the workbench through official sidebar.panellist and root-scoped keyed main slots, removing host DOM selectors, MutationObserver, and custom Panel activation.", "Preserved iframe, popout, Panel-close, and postMessage return flows with idempotent cleanup and lifecycle regression coverage.", "Restored project titles after host refresh and closed popouts when their Panel closes or unloads."] },
       { summary: "Hardened DeepSeek Harness compatibility and verified the embedded workbench host path.", changes: ["Locked the current client-request and session/follow WebSocket envelopes, standardized snapshot.records and cursor handling, and routed follow through the Remote mux.", "Added bounded error, close, timeout, and duplicate-frame handling for Session follow so host capability failures remain visible.", "Aligned the dsh-v0.1.6-alpha.1 QA preset workflow, persona prefix, skills/list envelope, and commands/execute submittedAttachments argument.", "Added an explicit opt-in Harness host smoke and verified the embedded Workbench client's refresh and reconnect path."] },
@@ -147,13 +169,22 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
         { label: "安装 DSH 插件", href: "#install-plugin" },
         { label: "独立运行", href: "#install-standalone" },
       ],
+      latestRelease: DSH_QA_RELEASE_FACTS[0],
     },
-    labels: { features: "能力地图", flow: "证据驱动的交付流程", install: "安装与运行", ecosystem: "探索 QA 生态", releaseNotes: "版本变更", releaseLink: "查看 GitHub Release", commandLabel: "命令" },
+    labels: { features: "能力地图", showcase: "QA 工作台一览", flow: "证据驱动的交付流程", install: "安装与运行", ecosystem: "探索 QA 生态", releaseNotes: "版本变更", releaseLink: "查看 GitHub Release", commandLabel: "命令" },
     features: [
       { icon: "account_tree", title: "项目与迭代", description: "在一个工作区中管理项目、迭代、里程碑、看板、日历与本地 QA 材料。" },
       { icon: "smart_toy", title: "AI 协作", description: "通过 DSH 原生会话整理需求、用例、缺陷、报告和测试知识，不维护第二套模型配置。" },
       { icon: "folder_lock", title: "本地优先证据", description: "将运行中的 QA 数据保存在本机，并保留可追溯的来源快照、计划、执行与证据包。" },
       { icon: "verified_user", title: "质量控制", description: "围绕风险、受控执行、证据、回归与交付门禁开展可追责的人工决策。" },
+    ],
+    showcase: [
+      { image: "/images/projects/dsh-qa/home.webp", width: 1200, height: 715, alt: "dsh-qa 测试首页", title: "测试首页", description: "一眼查看在办项目、超期事项、日程与最近 QA 动态。" },
+      { image: "/images/projects/dsh-qa/board.webp", width: 1200, height: 583, alt: "dsh-qa 项目看板", title: "项目看板", description: "用可视化看板推进 QA 阶段，让风险和负责人始终清晰可见。" },
+      { image: "/images/projects/dsh-qa/project-detail.webp", width: 1200, height: 604, alt: "dsh-qa 项目详情", title: "项目详情", description: "在同一处维护范围、阶段、本地文件、团队上下文和项目时间线。" },
+      { image: "/images/projects/dsh-qa/calendar.webp", width: 1200, height: 583, alt: "dsh-qa 工作日历", title: "工作日历", description: "将评审、发布和里程碑安排在与 QA 工作直接关联的日历中。" },
+      { image: "/images/projects/dsh-qa/test-mode.webp", width: 1200, height: 583, alt: "dsh-qa 测试模式", title: "测试模式", description: "在一个测试界面中使用原生 DSH 会话、项目上下文和已安装能力。" },
+      { image: "/images/projects/dsh-qa/skills.webp", width: 1200, height: 583, alt: "dsh-qa QA Skills 目录", title: "QA Skills", description: "直接从工作台浏览、安装和管理面向任务的 QA 能力。" },
     ],
     deliveryFlow: [
       { title: "范围", description: "登记需求、风险、来源快照与验收标准。", status: "NEUTRAL" },
@@ -163,8 +194,8 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { title: "门禁", description: "PASS 可以进入交付；WARN 与 BLOCK 必须评审。例外不能把 BLOCK 变为 PASS。", status: "PASS" },
     ],
     installModes: [
-      { id: "install-plugin", title: "在 DeepSeek Harness 中使用", description: "安装到当前使用的 DSH Web profile；插件变动后需重启 DSH Web UI 才会加载。", commands: ["npx @deepseek-ai/dsh plugin --profile web add dsh-qa", "npx @deepseek-ai/dsh web"] },
-      { id: "install-standalone", title: "作为本地工作台独立运行", description: "独立模式可管理本地项目、看板与日历；DSH 原生会话、模型、技能和命令仍需通过插件模式使用。", commands: ["npm install -g dsh-qa", "qabench"] },
+      { id: "install-plugin", title: "在 DeepSeek Harness 中使用", description: "安装到当前使用的 DSH Web profile；插件变动后需重启 DSH Web UI 才会加载。", commands: ["npx @deepseek-ai/dsh plugin --profile web add dsh-qa"] },
+      { id: "install-standalone", title: "安装本地工作台", description: "安装独立工作台以管理本地项目、看板与日历；DSH 原生会话、模型、技能和命令仍需通过插件模式使用。", commands: ["npm install -g dsh-qa"] },
     ],
     ecosystemLinks: [
       { label: "dsh-qa GitHub 仓库", href: "https://github.com/naodeng/dsh-qa", external: true },
@@ -173,6 +204,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { label: "兼容性复盘文章", href: "/zh-cn/blog/ai-testing/dsh-qa-harness-api-compatibility-404/" },
     ],
     releases: releases([
+      { summary: "新增双语设置、已安装版本展示与工作台内的版本历史。", changes: ["新增设置弹窗，包含双语切换、已安装与最新版本、兼容 DSH 版本、GitHub 仓库和项目官网链接。", "在品牌旁显示已安装版本与更新提示，并新增按最新优先分页的版本历史、随当前语言变化的摘要和 GitHub 详情入口。", "改善浅色背景下设置按钮的对比度，并移除未使用的主题与工作区宽度预设。", "验证通过 160 个单元/API 测试和 25 个 Chromium E2E 测试。"] },
       { summary: "将 QA profile 迁移到 Harness 0.1.7 bundle 模型，并稳定嵌入式 Workbench 生命周期。", changes: ["将 qa preset 迁移至 Harness 0.1.7 声明式 profile bundle 模型，并将 quality-control 改为独立 profile bundle。", "修复同源 Workbench popout 清理和重新挂载 iframe 的 frame readiness 时序，并将 Host Smoke 更新到 dsh-v0.1.7-alpha.1。", "验证通过 159 个单元/API 测试、23 个独立 Chromium E2E 和 6 个真实 qa bundle Host Smoke；独立 quality-control bundle 已静态验证，但其单独运行时 Host Smoke 不属于本次发布证据。"] },
       { summary: "将 QA 工作台迁移至 Harness 原生 Panel 契约。", changes: ["通过官方 sidebar.panellist 与 root 作用域 keyed main slot 挂载工作台，移除宿主 DOM selector、MutationObserver 和自定义 Panel 激活依赖。", "保留 iframe、弹窗、Panel 关闭和 postMessage 返回链路，并增加幂等清理与生命周期回归覆盖。", "宿主刷新后恢复项目标题；Panel 关闭或卸载时同步关闭弹窗。"] },
       { summary: "加固 DeepSeek Harness 兼容性，并完成嵌入式工作台宿主链路验证。", changes: ["固化当前 client-request 与 session/follow WebSocket 封装，统一读取 snapshot.records 与 cursor，并通过 Remote mux 处理 follow。", "补充 Session follow 的错误、关闭、超时与重复 frame 边界处理，避免宿主能力列表失败时静默显示为空。", "对齐 dsh-v0.1.6-alpha.1 的 QA preset workflow、persona prefix、skills/list 请求封装和 commands/execute 的 submittedAttachments 参数。", "新增显式 opt-in 的 Harness host smoke，并验证嵌入式 Workbench client 的刷新与重连路径。"] },
