@@ -69,6 +69,7 @@ export interface DshQaSiteCopy {
 }
 
 export const DSH_QA_RELEASE_FACTS: DshQaReleaseFact[] = [
+  { version: "v0.5.3", publishedAt: "2026-09-23", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.3" },
   { version: "v0.5.2", publishedAt: "2026-09-23", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.2" },
   { version: "v0.5.1", publishedAt: "2026-09-22", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.1" },
   { version: "v0.5.0", publishedAt: "2026-09-21", url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.0" },
@@ -139,6 +140,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { label: "Compatibility postmortem", href: "/en/blog/ai-testing/dsh-qa-harness-api-compatibility-404/" },
     ],
     releases: releases([
+      { summary: "Polished the Quiet Studio workbench, organized test assets, and preserved the page selected during initialization.", changes: ["Polished the workbench as the Quiet Studio visual system, improving information hierarchy and light-surface readability.", "Consolidated test configuration, test guidance, and result entry points under test/, while organizing project documentation and workflow diagrams.", "Preserved the page selected by the user while the application initialization request is in flight.", "Removed obsolete README showcase imagery and verified 162 unit/API tests, 32 Chromium E2E tests, and npm pack --dry-run."] },
       { summary: "Added bilingual settings, installed-version visibility, and a release history inside the QA Workbench.", changes: ["Added a settings dialog with bilingual switching, installed and latest versions, compatible DSH version, GitHub repository, and project website links.", "Added the installed-version indicator beside the brand and paginated newest-first release history with localized summaries and GitHub detail links.", "Improved settings-button contrast on light backgrounds and removed unused theme and workspace-width presets.", "Verified 160 unit/API tests and 25 Chromium E2E tests passed."] },
       { summary: "Migrated the QA profile to Harness 0.1.7 bundles and stabilized embedded Workbench lifecycle handling.", changes: ["Migrated the qa preset to the Harness 0.1.7 declarative profile-bundle model and made quality-control an independent profile bundle.", "Fixed same-origin Workbench popout cleanup and remounted-iframe frame-readiness timing; updated Host Smoke to dsh-v0.1.7-alpha.1.", "Verified 159 unit/API tests, 23 standalone Chromium E2E tests, and 6 real qa-bundle Host Smoke cases. The independent quality-control bundle is statically verified; its separate runtime Host Smoke is outside this release evidence."] },
       { summary: "Moved the QA Workbench onto Harness's native Panel contract.", changes: ["Mounted the workbench through official sidebar.panellist and root-scoped keyed main slots, removing host DOM selectors, MutationObserver, and custom Panel activation.", "Preserved iframe, popout, Panel-close, and postMessage return flows with idempotent cleanup and lifecycle regression coverage.", "Restored project titles after host refresh and closed popouts when their Panel closes or unloads."] },
@@ -204,6 +206,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
       { label: "兼容性复盘文章", href: "/zh-cn/blog/ai-testing/dsh-qa-harness-api-compatibility-404/" },
     ],
     releases: releases([
+      { summary: "完成 Quiet Studio 工作台视觉整理、测试资产归类，并保留初始化期间用户已选择的页面。", changes: ["完成 Quiet Studio「安静工作室」视觉整理，优化工作台的信息层级与浅色界面可读性。", "整理项目目录，将测试配置、测试说明和结果入口统一到 test/，并同步项目文档与流程图目录。", "修复应用初始化请求覆盖用户已选择页面的问题。", "移除 README 中过时的展示图片；验证通过 162 个单元/API 测试、32 个 Chromium E2E 测试和 npm pack --dry-run。"] },
       { summary: "新增双语设置、已安装版本展示与工作台内的版本历史。", changes: ["新增设置弹窗，包含双语切换、已安装与最新版本、兼容 DSH 版本、GitHub 仓库和项目官网链接。", "在品牌旁显示已安装版本与更新提示，并新增按最新优先分页的版本历史、随当前语言变化的摘要和 GitHub 详情入口。", "改善浅色背景下设置按钮的对比度，并移除未使用的主题与工作区宽度预设。", "验证通过 160 个单元/API 测试和 25 个 Chromium E2E 测试。"] },
       { summary: "将 QA profile 迁移到 Harness 0.1.7 bundle 模型，并稳定嵌入式 Workbench 生命周期。", changes: ["将 qa preset 迁移至 Harness 0.1.7 声明式 profile bundle 模型，并将 quality-control 改为独立 profile bundle。", "修复同源 Workbench popout 清理和重新挂载 iframe 的 frame readiness 时序，并将 Host Smoke 更新到 dsh-v0.1.7-alpha.1。", "验证通过 159 个单元/API 测试、23 个独立 Chromium E2E 和 6 个真实 qa bundle Host Smoke；独立 quality-control bundle 已静态验证，但其单独运行时 Host Smoke 不属于本次发布证据。"] },
       { summary: "将 QA 工作台迁移至 Harness 原生 Panel 契约。", changes: ["通过官方 sidebar.panellist 与 root 作用域 keyed main slot 挂载工作台，移除宿主 DOM selector、MutationObserver 和自定义 Panel 激活依赖。", "保留 iframe、弹窗、Panel 关闭和 postMessage 返回链路，并增加幂等清理与生命周期回归覆盖。", "宿主刷新后恢复项目标题；Panel 关闭或卸载时同步关闭弹窗。"] },

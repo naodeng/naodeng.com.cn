@@ -15,14 +15,14 @@ for (const locale of ["en", "zh-cn"] as const) {
     await expect(page.locator("[data-dsh-qa-showcase] img")).toHaveCount(6);
     await expect(page.locator("[data-dsh-qa-showcase] img").first()).toHaveAttribute("loading", "eager");
     expect(await page.locator("[data-dsh-qa-showcase] img").evaluateAll((images) => images.slice(1).every((image) => image.getAttribute("loading") === "lazy"))).toBe(true);
-    await expect(page.locator("[data-dsh-qa-latest-release]")).toContainText("v0.5.2");
-    await expect(page.locator("[data-dsh-qa-latest-release]")).toHaveAttribute("href", "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.2");
+    await expect(page.locator("[data-dsh-qa-latest-release]")).toContainText("v0.5.3");
+    await expect(page.locator("[data-dsh-qa-latest-release]")).toHaveAttribute("href", "https://github.com/naodeng/dsh-qa/releases/tag/v0.5.3");
     await expect(page.locator("[data-dsh-command-card]")).toContainText("npm install -g dsh-qa");
     await expect(page.locator("[data-dsh-command-copy]")).toBeVisible();
     await expect(page.locator("[data-install-mode]")).toHaveCount(2);
-    await expect(page.locator("[data-dsh-current-release]")).toContainText("v0.5.2");
+    await expect(page.locator("[data-dsh-current-release]")).toContainText("v0.5.3");
     await expect(page.locator("[data-dsh-release-history]")).not.toHaveAttribute("open", "");
-    await expect(page.locator("[data-release-note]")).toHaveCount(16);
+    await expect(page.locator("[data-release-note]")).toHaveCount(17);
   });
 
   test(`${locale} dsh-qa expands a release and exposes localized metadata`, async ({ page }) => {
