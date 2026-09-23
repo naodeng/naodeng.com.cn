@@ -1,0 +1,619 @@
+---
+title: "dsh-qa v0.5.3 更新：从 Harness 兼容到原生 QA 工作台"
+description: "回顾 dsh-qa 从 v0.4.1 到 v0.5.3 的演进：Harness 契约加固、原生 Panel、Profile Bundle、版本中心与 Quiet Studio 工作台。"
+date: 2026-09-23T00:00:00.000Z
+author: "nao.deng"
+cover: "./dsh-qa-ai-testing-workbench-cover.png"
+tags: ["AI 测试", "工程实践"]
+categories: ["AI", "测试工具"]
+series: ["AI 辅助测试"]
+
+---
+
+# dsh-qa v0.5.3 更新：从 Harness 兼容到原生 QA 工作台
+
+前一阶段，dsh-qa 先要解决一个很实际的问题：
+
+**如何让一个面向 QA 的扩展真正稳定地运行在 DeepSeek Harness 上。**
+
+项目从 QA preset 和测试工作台起步，先处理 Harness API 兼容，再补齐宿主集成边界。
+
+这几个版本的改动，基本都集中在这条边界上，内容也不再只是修复 API 或增加几个 QA 页面。
+
+从 v0.4.1 到 v0.5.3，dsh-qa 从运行在 Harness 旁边的 QA 工具，走到了更深的 Harness 集成，目标是一个真正融入宿主的 **QA Control Workbench**。
+
+项目地址：[https://github.com/naodeng/dsh-qa](https://github.com/naodeng/dsh-qa)
+
+如果还不了解 dsh-qa 的基础能力，可以先阅读[《质量工作台 dsh-qa：把 AI 测试工作台装进 DeepSeek Harness》](/zh-cn/blog/ai-testing/dsh-qa-ai-testing-workbench/)；如果想顺着一个测试项目看完整流程，可以继续阅读[《从需求分析到发布归档：一个测试项目如何用 dsh-qa 走完全流程》](/zh-cn/blog/ai-testing/dsh-qa-test-project-full-lifecycle/)。
+
+<img class="article-content-image" src="/images/dsh-qa-v1.webp" width="1600" height="979" loading="eager" fetchpriority="high" decoding="async" alt="dsh-qa 质量工作台展示项目首页、看板与测试流程" />
+
+## 这轮更新解决什么问题？
+
+在这轮更新前，dsh-qa 已经具备不少 QA 工作流能力，例如：
+
+* QA Persona
+* QA Skills
+* Test Dashboard
+* Project Kanban
+* Calendar
+* Quality Task
+* Controlled Execution
+* Evidence
+* Quality Gate
+* PASS / WARN / BLOCK
+
+这些能力真正运行在 Harness 内部后，新的问题也随之暴露出来。
+
+### 1. QA Workbench 能用，但还不够“原生”
+
+早期实现通过宿主 DOM、selector 和 MutationObserver 找到挂载点。
+
+它能运行，但边界不够稳：
+
+> dsh-qa 知道 Harness 的 UI 长什么样，而不是只依赖 Harness 对外提供的扩展契约。
+
+只要宿主 DOM 结构发生变化，插件就可能需要跟着修改。
+
+长期运行在 Harness 上的扩展，需要把边界放在宿主契约上。
+
+### 2. Harness API 本身仍然在演进
+
+Harness 接口还在变化。
+
+例如：
+
+~~~text
+client-request
+session/follow
+Remote mux
+skills/list
+commands/execute
+Persona schema
+QA preset workflow
+~~~
+
+这些契约会随着 Harness 一起调整。
+
+dsh-qa 需要记录的不只是“当前版本能跑”。
+
+还需要明确：
+
+* 当前适配哪个 Harness 版本；
+* 哪些调用属于正式契约；
+* 哪些兼容性经过真实宿主验证；
+* 升级之后怎样快速判断是否发生回归。
+
+### 3. 用户并不知道自己运行的是哪个版本
+
+发布频率提高后，问题变得直接：
+
+**当前安装的 dsh-qa 到底是什么版本？**
+
+以及：
+
+* 最新版本是什么？
+* 当前 Harness 是否兼容？
+* 最近几个版本改了什么？
+* 是否应该升级？
+
+过去要去 npm 或 GitHub 查这些信息。
+
+对已经有图形工作台的工具来说，这一步不该离开工作台。
+
+### 4. 工作台功能越来越多，但首屏信息开始过载
+
+能力多了，首屏也变得拥挤：
+
+**QA 打开工作台之后，到底应该先看哪里？**
+
+如果每个模块都具有同样的视觉权重，Dashboard 很容易变成“什么都有，但不知道先做什么”。
+
+这轮更新也重排了 Workbench 的信息层级。
+
+## v0.4.1：先把 Harness 契约稳定下来
+
+v0.4.1 的重点是 Harness API 兼容性加固，没有扩展可见功能。
+
+它固定了当前使用的：
+
+~~~text
+client-request
+session/follow
+snapshot.records
+cursor
+/api/remote.mux
+~~~
+
+并对齐：
+
+~~~text
+QA preset workflow
+Persona prefix
+skills/list
+commands/execute
+submittedAttachments
+~~~
+
+Harness Host Smoke 也进入了兼容性证据。
+
+mock 和本地接口测试只能说明插件自身行为，关键路径还要在真实 Harness Host 上跑。
+
+验证结果为：
+
+~~~text
+141 Unit / API tests
+22 Chromium E2E tests
+4 / 4 Harness Host Smoke
+GitHub Actions PASS
+~~~
+
+这些 Host Smoke 针对的是 dsh-v0.1.6-alpha.1，属于 v0.4.1 的历史兼容性基线。它证明了当时的 RPC、Session 和 Workbench 主路径，但不自动等同于后续 v0.5.0 的原生 Panel 生命周期已经完成验证。
+
+这为后面的 Panel 原生集成打下了基础。
+
+## v0.5.0：QA Workbench 正式进入 Harness 原生 Panel
+
+v0.5.0 让 QA Workbench 通过 Harness 官方扩展位置挂载。此前的集成需要理解 Harness 的页面结构：
+
+~~~text
+sidebar.panellist
+root-scoped keyed main slot
+~~~
+
+集成方式因此从：
+
+~~~text
+找到 Harness DOM
+        ↓
+监听页面变化
+        ↓
+插入自己的 UI
+~~~
+
+变成：
+
+~~~text
+Harness Extension Contract
+        ↓
+Panel Slot
+        ↓
+QA Workbench
+~~~
+
+挂载方式变了，项目边界也随之改变。
+
+### 为什么原生 Panel 很重要？
+
+理想的扩展边界是：
+
+~~~text
+dsh-qa
+   │
+   │ Plugin / Panel Contract
+   ▼
+DeepSeek Harness
+~~~
+
+而不是：
+
+~~~text
+dsh-qa
+   │
+   │ CSS Selector
+   │ DOM Structure
+   │ MutationObserver
+   ▼
+Harness UI Implementation
+~~~
+
+后者属于实现级耦合，前者属于契约级耦合。
+
+v0.5.0 移除了对以下能力的核心依赖：
+
+~~~text
+Host DOM Selector
+MutationObserver
+Custom Panel Activation
+~~~
+
+这些用户路径仍然保留：
+
+* iframe Workbench
+* Popout
+* Panel Close
+* postMessage
+* Project Restore
+* Host Refresh
+* Plugin Unload
+
+项目也补了 Panel 生命周期回归测试。
+
+对长期维护来说，这比增加一个 QA 功能更关键：它决定了 dsh-qa 能不能继续作为 Harness 上的独立 QA Extension 存在。
+
+这一版本通过了 152 个单元/API 测试和 23 个 Chromium E2E 测试。目标 dsh-v0.1.6-alpha.1 宿主完成 5 passed / 1 skipped；唯一跳过项是宿主组合没有第二个全局 Panel，插件卸载与恢复则在真实宿主上人工验证通过。
+
+## v0.5.1：跟进 Harness 0.1.7 的 Profile Bundle
+
+Harness 仍在快速变化。
+
+Panel 原生化完成后，dsh-qa 随即跟进新的 Harness Profile Bundle 模型。
+
+这一版本把下面这个 preset 迁移到 Harness 0.1.7 的 declarative profile bundle：
+
+~~~text
+qa
+~~~
+
+同时，下面这个 bundle：
+
+~~~text
+quality-control
+~~~
+
+被拆成独立 Profile Bundle。
+
+这样，不同类型的 QA 能力可以分开演进。
+
+未来可以形成这样的能力组合：
+
+~~~text
+qa
+├── QA Persona
+├── QA Skills
+└── QA Workbench
+~~~
+
+以及：
+
+~~~text
+quality-control
+├── Quality Task
+├── Controlled Execution
+├── Evidence
+└── Quality Gate
+~~~
+
+不必再把所有能力绑定在一个 preset 中。
+
+安装脚本也切换到 profile bundle 方式，支持显式指定 profile、DSH executable 和 dry-run 参数，不再写入旧的 preset 目录。
+
+同时继续处理：
+
+* Workbench popout cleanup
+* iframe remount
+* frame readiness
+* Harness 0.1.7 Host Smoke
+
+真实 Host Smoke 的目标更新为：
+
+~~~text
+dsh-v0.1.7-alpha.1
+~~~
+
+qa bundle 的真实 Host Smoke 最终为 6 passed。这个结果覆盖插件入口、Panel/Slot、Workbench、Session/RPC 和刷新恢复路径；quality-control 独立 bundle 的真实宿主运行仍未评估。
+
+本地验证还包括：兼容性聚焦测试 14/14、全量单元/API 测试 159/159，以及隔离端口上的完整 E2E——159 个单元/API 测试和 23 个 Chromium E2E 测试均通过。
+
+## v0.5.2：让版本信息进入工作台
+
+发布频率提高后，我不想让用户离开 Workbench 才知道自己正在运行什么。
+
+v0.5.2 因此增加了 Settings / Version 信息入口。
+
+Workbench 现在可以直接展示：
+
+~~~text
+Installed Version
+Latest Version
+Compatible DSH Version
+GitHub Repository
+Project Website
+~~~
+
+品牌区域会直接显示当前版本。如果存在更新，也可以给出对应提示。
+
+点击版本号之后，可以继续查看 Release History。
+
+### Release History 不只是一个版本号列表
+
+Release History 没有只列出：
+
+~~~text
+0.5.3
+0.5.2
+0.5.1
+~~~
+
+它承担的是一个轻量的“项目更新中心”。
+
+Release 信息会：
+
+* 按发布时间倒序；
+* 根据当前语言展示对应摘要；
+* 支持分页；
+* 提供进入 GitHub 查看完整 Release 的链接。
+
+中英文语言切换也放进了设置入口。
+
+对我来说，dsh-qa 已经不只是一个 Demo。
+
+如果 dsh-qa 要长期使用，那么：
+
+> 版本、兼容性和变更记录本身就是产品能力的一部分。
+
+v0.5.2 的验证结果是 160 个单元/API 测试和 25 个 Chromium E2E 测试通过。
+
+## v0.5.3：重新整理 QA Workbench
+
+v0.5.3 把重点放回了工作台本身。
+
+这一版本采用 **Quiet Studio / 安静工作室** 的视觉方向，目标很直接：降低 Workbench 的信息噪声。
+
+### 从 Dashboard 转向 Action-oriented Workbench
+
+工作台已经有不少信息：
+
+~~~text
+Projects
+Metrics
+Calendar
+Tasks
+AI Status
+DSH Chat
+Skills
+Quality Gate
+~~~
+
+这些信息的重要程度并不一样。
+
+QA 真正打开一个工作台的时候，更关心的问题通常是：
+
+~~~text
+现在发生了什么？
+        ↓
+有什么需要我处理？
+        ↓
+哪些项目存在风险？
+        ↓
+我要去哪里完成下一步？
+~~~
+
+QA 需要的是行动顺序，不是同时阅读十几个指标。
+
+Workbench 现在优先关注：
+
+* 信息层级；
+* 首屏行动路径；
+* 最近项目；
+* 关键风险；
+* 导航可达性；
+* Light Surface 的可读性。
+
+### 项目目录也重新做了一次整理
+
+另一个变化不显眼，却会直接影响维护：
+
+**项目目录开始正式区分运行代码、测试、产品文档和过程文档。**
+
+目录收敛为：
+
+~~~text
+lib/
+server/
+public/
+preset/
+scripts/
+test/
+docs/
+assets/
+~~~
+
+其中：
+
+~~~text
+test/
+~~~
+
+成为唯一测试工作区。
+
+测试配置、fixture、E2E、Unit Test 和测试结果入口统一到这里。
+
+而：
+
+~~~text
+docs/quality-workbench/
+~~~
+
+主要放产品需求、技术设计、路线和 Review。
+
+~~~text
+docs/superpowers/
+~~~
+
+则保留规格、实现计划和探索过程。
+
+短期看不到新功能。
+
+但项目继续增长后，目录边界本身就是维护成本的一部分。
+
+### 测试也在跟着增长
+
+v0.5.3 的验证范围继续扩大，当前包括：
+
+~~~text
+162 Unit / API tests
+32 Chromium E2E tests
+npm pack --dry-run PASS
+~~~
+
+测试范围也从：
+
+~~~text
+API
+~~~
+
+扩展到：
+
+~~~text
+API
+↓
+Harness Contract
+↓
+Workbench
+↓
+Panel Lifecycle
+↓
+Release Metadata
+↓
+Navigation
+↓
+UI Regression
+~~~
+
+dsh-qa 本身就是 QA 工具，所以我希望它遵守自己倡导的质量方法。
+
+行为变更通常先落测试，再改实现。
+
+## 现在的 dsh-qa 到底是什么？
+
+这几轮之后，项目定位更清楚了。
+
+它不是：
+
+~~~text
+另一个测试管理系统
+~~~
+
+也不是：
+
+~~~text
+给 Harness 加几个 QA Prompt
+~~~
+
+更接近：
+
+~~~text
+DeepSeek Harness
+        ↓
+QA Persona + Skills
+        ↓
+QA Workbench
+        ↓
+Quality Tasks
+        ↓
+Controlled Execution
+        ↓
+Evidence
+        ↓
+Quality Gate
+        ↓
+PASS / WARN / BLOCK
+~~~
+
+换句话说，它是一个建立在 Agent Runtime 上的：
+
+**QA Control Workbench。**
+
+它关注的不只是：
+
+> AI 能不能帮我生成测试。
+
+而是：
+
+> 当 AI 开始参与研发和测试之后，QA 怎样定义任务、约束执行、收集证据，并最终做出可解释的质量判断。
+
+Native QA Execution 仍属于后续路线，不能按已交付能力介绍。v0.5.3 完成的是工作台、Panel、版本信息和质量记录的基础整理。
+
+## 下一步：从 Control Workbench 走向 Action Desk
+
+项目现在具备：
+
+* QA 工作台；
+* Harness 原生 Panel 集成；
+* QA / Quality Control Profile；
+* 项目与任务；
+* Evidence；
+* Quality Gate；
+* Version Center。
+
+下一阶段的主线是 v0.6.0：**Native QA Execution & Action Desk**。它要处理一个很实际的问题：
+
+**QA 知道风险之后，怎样更快进入下一步行动？**
+
+Action Desk 不会再建立一套质量数据模型，而是把已有的执行、证据和门禁事实投影成可处理的行动入口。
+
+它不只告诉你：
+
+~~~text
+这里有 3 个风险
+~~~
+
+而是进一步帮助 QA 判断：
+
+~~~text
+应该打开哪个项目？
+应该启动哪个测试？
+应该回到哪个 DSH Session？
+需要查看什么 Evidence？
+应该重新执行还是进入 Review？
+~~~
+
+当前路线计划把 Execution Profile 接到 Harness Browser Use、Computer Use 或 MCP，把结果写回 TestRun / EvidenceBundle，再通过受控 Action Queue 暴露需要处理的执行状态。
+
+这部分仍是计划中的能力。计划中的实现不会允许任意工具调用，不会允许没有证据的 PASS，也不会由 AI 直接替代人工审批。
+
+再往后，我仍会探索：
+
+~~~text
+Quality Obligation
+Evidence Graph
+Adapters
+Policy
+Quality Intelligence
+Multi-Agent QA
+Autonomous QE
+~~~
+
+## 当前验证边界
+
+不同层次的结果不能压成一句“已经兼容”。当前状态是：
+
+| 范围 | 当前结果 |
+| --- | --- |
+| v0.4.1 Harness 0.1.6 基线 | 真实 Host Smoke 4/4；历史兼容性证据 |
+| v0.5.0 Native Panel | 宿主 5 passed / 1 skipped；卸载与恢复人工验证通过 |
+| v0.5.1 Harness 0.1.7 | qa bundle 真实 Host Smoke 6 passed |
+| v0.5.1 quality-control bundle | 真实宿主运行仍未评估 |
+| v0.5.3 本地验证 | 162 单元/API、32 Chromium E2E、npm pack dry-run 通过 |
+| npm、Git tag、GitHub Release | 各自属于独立交付事实，需要分别核对 |
+
+所以，dsh-qa 的文档会分别记录“代码做了什么”“本地测试跑了什么”和“真实宿主验证了什么”。它们相关，但不是同一件事。
+
+## 最后
+
+dsh-qa 仍在实验中。
+
+最近几轮更新把方向定得更清楚：
+
+我不打算把它做成一个庞大的传统测试平台。
+
+我希望它保持：
+
+~~~text
+Local-first
+Harness-native
+QA-oriented
+Evidence-driven
+Controllable
+~~~
+
+然后探索一个更具体的问题：
+
+> 当 Agent 成为研发过程中的一等参与者之后，QA 的工作台应该是什么样子？
+
+这个问题，也是 dsh-qa 接下来要继续探索的方向。
+
+项目地址：[https://github.com/naodeng/dsh-qa](https://github.com/naodeng/dsh-qa)
+
+完整版本说明：[dsh-qa v0.5.3 Release](https://github.com/naodeng/dsh-qa/releases/tag/v0.5.3)
