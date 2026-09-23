@@ -1,35 +1,34 @@
 ---
 title: "多角色质量汇总 Skill：不同角色意见冲突时，决策材料怎么写"
 description: "多角色质量汇总实战：保留分歧、明确证据和决策人，形成可执行结论。"
-date: 2026-09-25T09:00:00.000Z
-draft: true
+date: 2026-09-24T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI 测试", "Agent Skills", "多角色质量汇总"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-同一发布在产品、QA、研发和运维眼里可能是四种不同的风险图景。多角色质量汇总要保留这些差异，再把事实、影响和决策条件放到同一份材料里。
+同一个发布版本，在产品、QA、研发和运维眼里可能呈现出四种不同的风险图景。多角色质量汇总要保留这些差异，再把事实、影响和决策条件放到同一份材料里。
 
-多角色质量汇总 Skill 对齐不同视角、假设和未解决风险，让跨职能团队在分歧存在时共同决策。
+多角色质量汇总 Skill 把不同视角、假设和未解决风险放到一起，让跨职能团队即使存在分歧，也能基于同一份材料做决定。
 
-本文用同一个支付回调场景，把产品、QA、UX、技术和项目约束放在同一阶段里对齐。
+本文以支付回调为例，展示如何在同一研发阶段里对齐产品、QA、UX、技术和项目约束。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。目录结构和安装方式请先看[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)；本文聚焦多角色质量汇总，重点说明同阶段报告的来源、共识和分歧如何进入决策材料。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。目录结构和安装方式见[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)；本文聚焦多角色质量汇总，重点说明同阶段报告的来源、共识和分歧如何进入决策材料。
 
 ## 先看源 Skill
 
-主 Prompt 把工作拆到 输入合同、输入校验、分类规则、确定性合并规则、严重级别规则。这些标题只是导航，真正使用时还要回到项目材料。
+主 Prompt 把工作拆成“输入合同、输入校验、分类规则、确定性合并规则、严重级别规则”几个部分。这些标题只是导航，真正使用时还要回到项目材料。
 
-本文把研发阶段统一写成中文：需求分析（`requirements-analysis`）、测试策略（`test-strategy`）、测试策略评审（`test-strategy-review`）、代码评审（`code-review`）、测试用例编写（`test-case-writing`）、测试用例评审（`test-case-review`）、测试报告编写（`test-reporting`）和测试报告评审（`test-report-review`）。阅读时看中文名称，调用 Skill 时 `stage` 仍填写括号里的英文键名。
+本文统一使用中文名称表示研发阶段：需求分析（`requirements-analysis`）、测试策略（`test-strategy`）、测试策略评审（`test-strategy-review`）、代码评审（`code-review`）、测试用例编写（`test-case-writing`）、测试用例评审（`test-case-review`）、测试报告编写（`test-reporting`）和测试报告评审（`test-report-review`）。阅读时看中文名称，调用 Skill 时 `stage` 仍填写括号里的英文键名。
 
 多角色质量汇总不是把八个阶段混成一份大报告。一次汇总应该只接收同一个阶段的角色报告；如果同时收到需求分析和测试报告评审，应该先拆开，分别汇总。产品、QA、UX 和技术 Skill 负责产生各自视角的阶段报告，多角色质量汇总负责整理这些报告，不替它们重新做一遍专业判断。
 
-这个 Skill 没有单独示例目录，文章里的片段依据入口、主 Prompt 和评测约束整理。
+这个 Skill 没有单独示例目录，文中的片段根据入口、主 Prompt 和评测约束整理而成。
 
 ## 相关 Skill
 
-多角色质量汇总不替任何角色做专业判断，它负责把输入校验、冲突和责任边界写清楚。四个常用输入 Skill 是：
+多角色质量汇总不替任何角色做专业判断，只负责把输入校验、冲突和责任边界写清楚。下面前四项是常用的角色输入 Skill；项目交付视角提供项目约束，不属于质量角色报告：
 
 | Skill | 主要输入 | 汇总时要保留什么 |
 | --- | --- | --- |
@@ -41,7 +40,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 同一研发流程，汇总视角怎样接住不同输出
 
-前面的产品、QA、UX 和技术文章使用同一组研发阶段，但每个阶段的关注点不同。多角色质量汇总接收这些同阶段报告，做的是来源登记、事实分类、等价发现合并和冲突保留，不替任何角色补写一份“平均意见”。
+前面的产品、QA、UX 和技术文章使用同一组研发阶段，但每个阶段的关注点不同。多角色质量汇总接收这些同阶段报告，负责来源登记、事实分类、等价发现合并和冲突保留，不替任何角色补写一份“平均意见”。
 
 | 研发阶段 | 进入汇总的材料 | 汇总视角要交付什么 |
 | --- | --- | --- |
@@ -54,13 +53,13 @@ series: ["Awesome QA Skills 实战"]
 | 测试报告编写 | 命令结果、产品影响、运行信号、体验观察 | 统一运行身份和范围，保留 `verified`、`not_run`、`blocked` 等状态 |
 | 测试报告评审 | 各角色的结论、证据、项目要求和剩余风险 | 共同事实、分歧、决策选项、批准人和信息缺口 |
 
-这里的“交付”指汇总报告的交付，不等于发布批准。尤其在测试报告评审阶段，项目日期不能覆盖 QA 的未执行项，产品意见也不能覆盖技术报告里的高风险证据。
+这里的“交付”指汇总报告的交付，不等于发布批准。尤其在测试报告评审阶段，不能因为项目日期临近，就把 QA 的未执行项变成已完成；产品意见也不能覆盖技术报告里的高风险证据。
 
 六篇文章可以这样串起来：产品、QA、UX 和技术视角分别看清问题，多角色质量汇总把同一阶段的报告放在一起，项目交付视角跟踪范围、依赖、时间和责任。它们可以串联，但输出不能互相替代。
 
 ## 不同角色怎样提供可合并的材料
 
-合并产品、QA、UX 和技术视角，形成保留分歧的质量结论。
+合并产品、QA、UX 和技术视角时，要保留分歧，形成质量结论。
 
 | 角色 | 关注点 | 必须带上的证据 | 不能替对方做的决定 |
 | --- | --- | --- | --- |
@@ -85,7 +84,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 会员升级示例：从四份报告到一个可决策输出
 
-下面是一组假设材料，用来展示研发现场怎样串联六篇文章。它不是当前项目事实；真实调用时必须替换成项目自己的 `source_id`、版本、环境和证据链接。项目交付约束单独登记，不和角色报告混在同一张质量输入表里。
+下面是一组假设材料，用来展示研发现场如何串联六篇文章。它不是当前项目事实；真实调用时必须替换成项目自己的 `source_id`、版本、环境和证据链接。项目交付约束单独登记，不和角色报告混在同一张质量输入表里。
 
 | `source_id` | 来源类型 | 阶段 | 观察与证据 |
 | --- | --- | --- | --- |
@@ -100,7 +99,7 @@ series: ["Awesome QA Skills 实战"]
 | --- | --- | --- | --- |
 | `DELIVERY-42` | 项目约束（非质量报告） | `test-report-review` | 交付日历安排周五 18:00 评审，支付依赖方承诺周四 12:00 提供沙箱回调 |
 
-汇总结果应把材料拆成四层，而不是写成“多数角色认为可以发布”：
+汇总结果应把材料分成四层，而不是写成“多数角色认为可以发布”：
 
 | 汇总区 | 示例写法 | 来源 |
 | --- | --- | --- |
@@ -110,7 +109,7 @@ series: ["Awesome QA Skills 实战"]
 | 项目约束 | 周五有决策会，沙箱回调有外部承诺时间 | `DELIVERY-42` |
 | 分歧与待决策 | 待确认产品是否接受按期评审；QA 和技术材料提示应先补超时证据，批准人尚未提供 | `PROD-42`、`QA-42`、`TECH-42`、`DELIVERY-42` |
 
-可以把这个结果保存成下面的结构，后续接项目交付视角时不用重新整理来源：
+可以把这个结果保存成下面的结构，后续交给项目交付视角处理时不用重新整理来源：
 
 ```yaml
 stage: test-report-review
@@ -134,17 +133,17 @@ conflicts:
 decision_options:
   - option: 缩小范围后评审
     approver: pending
-    required_evidence: [超时回调结果, 回滚条件]
+    required_evidence: [超时回调结果，回滚条件]
 status: pending
 ```
 
-这个模板故意把 `static_observation` 和 `limited_observation` 留在原位置。汇总 Skill 可以整理它们，不能把它们升级成“已验证”或“发布通过”。
+这个模板有意保留 `static_observation` 和 `limited_observation`。汇总 Skill 可以整理它们，但不能把它们升级成“已验证”或“发布通过”。
 
 汇总摘要可以短，但阶段覆盖、质量事实、项目约束、共识、分歧、阻塞项、行动和来源登记不能省。汇总 Skill 不投票，也不凭空增加批准人或新事实。
 
 ## 一段可以直接改的调用词
 
-把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+把方括号中的占位内容替换成项目实际信息。材料越具体，Skill 越少猜。
 
 ```text
 请使用 multi-role-quality-synthesis Skill。
@@ -165,11 +164,11 @@ status: pending
 
 产品、QA、UX 和技术的结论发生冲突时，汇总不负责投票。它先把各方的事实、推断、影响和不可接受条件并排展示：产品担心转化，QA 缺少回归证据，UX 发现等待反馈不足，技术发现回滚窗口不足。它们都可能成立。
 
-最终输出需要一项可执行决定：继续发布并接受哪项风险，缩小范围后补什么证据，还是暂停等待哪个前置条件。每个选项标出决策人和截止时间，避免“综合来看可控”变成没人承担的结论。
+最终输出要落到一个可执行的决定上：继续发布并接受哪项风险，缩小范围后补什么证据，还是暂停等待哪个前置条件。每个选项标出决策人和截止时间，避免“综合来看可控”变成没人承担的结论。
 
 ## 这个 Skill 适合谁
 
-发布负责人可以用它主持跨职能评审；产品、QA、UX 和技术可以用同一格式交付自己的阶段报告，项目负责人可以另外提供交付约束。它适合意见相反、证据分散、需要明确批准人的质量决策材料。
+发布负责人可以用它主持跨职能评审；产品、QA、UX 和技术可以用同一格式交付自己的阶段报告，项目负责人可以另外提供交付约束。它适合意见分歧、证据分散、需要明确批准人的质量决策材料。
 
 ## 汇总结果交付前复核
 
@@ -199,7 +198,7 @@ actions: [负责人、截止时间和状态]
 confidence: high / medium / low
 ```
 
-如果某个角色没有报告，写成“该角色未提供材料”，不要用其他角色的观察代替。汇总只整理已有输入，不能补生成新的质量事实。
+如果某个角色没有报告，写成“该角色未提供材料”，不要用其他角色的观察代替。汇总只整理已有输入，不能补出新的质量事实。
 
 ## 安装与调用
 
@@ -229,10 +228,10 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 可以讨论，但必须列出未决风险、接受人和截止时间；没有这些信息就无法形成可审计的发布决定。
 
-准备同一阶段的角色报告后，跑一次多角色质量汇总，保留来源登记、输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+准备好同一阶段的角色报告后，就可以做一次多角色质量汇总，同时保留来源登记、输入、输出和复核意见。文中的片段只能帮你搭起结构，真正的项目证据仍要在项目中产生。
 
 ## 参考
-- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- Awesome QA Skills 系列总览:[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- Awesome QA Skills：多角色质量汇总 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/multi-role-quality-synthesis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/multi-role-quality-synthesis)
-- 多角色质量汇总 Skill 详情页:[https://inaodeng.com/zh-cn/qaskills/multi-role-quality-synthesis/](https://inaodeng.com/zh-cn/qaskills/multi-role-quality-synthesis/)
+- Awesome QA Skills 项目主页：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 系列总览：[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- Awesome QA Skills：多角色质量汇总 Skill 源文件：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/multi-role-quality-synthesis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/multi-role-quality-synthesis)
+- 多角色质量汇总 Skill 详情页：[https://inaodeng.com/zh-cn/qaskills/multi-role-quality-synthesis/](https://inaodeng.com/zh-cn/qaskills/multi-role-quality-synthesis/)

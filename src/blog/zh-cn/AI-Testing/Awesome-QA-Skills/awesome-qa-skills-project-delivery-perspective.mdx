@@ -1,35 +1,34 @@
 ---
 title: "项目交付视角 Skill：范围和依赖都在变，承诺还能不能兑现"
 description: "项目交付视角实战：用范围、依赖和里程碑风险判断能否按计划交付。"
-date: 2026-09-25T09:00:00.000Z
-draft: true
+date: 2026-09-24T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI 测试", "Agent Skills", "项目交付视角"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-交付判断要同时看范围、节奏、证据和后果。日期本身不能证明版本已经就绪，真正有用的是把承诺和前置条件放在同一张表里。
+判断能否交付，要同时看范围、节奏、证据和后果。日期本身不能证明版本已经就绪，真正有用的是把承诺和前置条件放在同一张表里。
 
 项目交付视角 Skill 把里程碑、前置条件和取舍放在一起，用就绪信号检查承诺是否还能兑现。
 
-本文用会员升级 v3 的排期做例子，看看依赖延期时，范围、验证窗口和责任人怎么一起调整。
+本文用会员升级 v3 的排期做例子，说明依赖延期时，范围、验证窗口和责任人如何一起调整。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。目录结构和安装方式请先看[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)；本文聚焦项目交付视角，重点说明范围、依赖和交付承诺如何落到可跟踪的行动。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。目录结构和安装方式见[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)；本文聚焦项目交付视角，重点说明范围、依赖和交付承诺如何落到可跟踪的行动。
 
 ## 先看源 Skill
 
-主 Prompt 把工作拆到 必需输入、交付工作、来源与质量边界、执行流程、职责与边界。这些标题只是导航，真正使用时还要回到项目材料。
+主 Prompt 把工作拆成“必需输入、交付工作、来源与质量边界、执行流程、职责与边界”几个部分。这些标题只是导航，真正使用时还要回到项目材料。
 
-本文把研发阶段统一写成中文：需求分析（`requirements-analysis`）、测试策略（`test-strategy`）、测试策略评审（`test-strategy-review`）、代码评审（`code-review`）、测试用例编写（`test-case-writing`）、测试用例评审（`test-case-review`）、测试报告编写（`test-reporting`）和测试报告评审（`test-report-review`）。阅读时看中文名称，调用 Skill 时 `stage` 仍填写括号里的英文键名。
+本文统一使用中文名称表示研发阶段：需求分析（`requirements-analysis`）、测试策略（`test-strategy`）、测试策略评审（`test-strategy-review`）、代码评审（`code-review`）、测试用例编写（`test-case-writing`）、测试用例评审（`test-case-review`）、测试报告编写（`test-reporting`）和测试报告评审（`test-report-review`）。阅读时看中文名称，调用 Skill 时 `stage` 仍填写括号里的英文键名。
 
-要特别注意支持边界：项目交付视角只支持测试策略、测试策略评审和测试报告评审。其他阶段可以为交付判断提供上下文，但不能直接用这个 Skill 生成项目交付结论。
+先说清楚支持边界：项目交付视角只支持测试策略、测试策略评审和测试报告评审。其他阶段可以为交付判断提供上下文，但不能直接用这个 Skill 生成项目交付结论。
 
-这个 Skill 没有单独示例目录，文章里的片段依据入口、主 Prompt 和评测约束整理。
+这个 Skill 没有单独示例目录，文中的片段根据入口、主 Prompt 和评测约束整理而成。
 
 ## 相关 Skill
 
-项目交付视角负责把承诺、依赖和责任人放进同一个决定里。变更发生后，可以按下面的顺序衔接：
+项目交付视角负责把承诺、依赖和责任人放在同一份交付判断中。发生变更后，可以按下面的顺序衔接：
 
 | Skill | 什么时候接上 | 它补什么 |
 | --- | --- | --- |
@@ -41,7 +40,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 同一研发流程，交付视角接住什么
 
-交付视角不是把八个阶段都重新评审一遍，而是在支持的三个阶段里整理范围、依赖、里程碑、责任人和行动状态。其他阶段的产物要先由对应角色 Skill 产生，再作为交付约束的输入。
+交付视角不是把八个阶段都重新评审一遍，而是只在支持的三个阶段里整理范围、依赖、里程碑、责任人和行动状态。其他阶段的产物要先由对应角色 Skill 产生，再作为交付约束的输入。
 
 | 研发阶段 | 交付视角的处理方式 | 应该交给谁或留下什么 |
 | --- | --- | --- |
@@ -58,7 +57,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 发布计划要把承诺和前置条件放在一起
 
-从排期、依赖与责任人角度整理版本进入发布评审所需的范围、验证和责任条件；这不是项目交付 Skill 单独做 Go/No-Go 决定。
+这里从排期、依赖和责任人出发，整理版本进入发布评审所需的范围、验证和责任条件；这不是项目交付 Skill 单独做 Go/No-Go 决定。
 
 | 交付条件 | 当前证据 | 失效后的动作 |
 | --- | --- | --- |
@@ -71,7 +70,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 会员升级 v3 的交付跟踪示例
 
-下面是假设项目输入。真实报告只有在材料明确提供日期、责任人和状态时，才能把这些字段写成事实；没有来源就标成缺口。
+下面的项目输入是假设的。真实报告只有在材料明确提供日期、责任人和状态时，才能把这些字段写成事实；没有来源就标成缺口。
 
 | 里程碑 | 已提供的前置条件 | Owner | 截止时间 | 条件失效后的动作 |
 | --- | --- | --- | --- | --- |
@@ -81,14 +80,14 @@ series: ["Awesome QA Skills 实战"]
 | 回滚演练 | 已安排候选版本的回滚和数据校验 | 发布负责人 | 周五 14:00—15:00 | 进入协同问题，等待授权负责人决定是否调整发布计划 |
 | QA 执行状态 | `QA-42` 记录超时回调尚未执行 | QA 负责人 | 周五 14:00 前 | 补测后更新质量事实，不改写成通过 |
 
-如果支付依赖周四没有交付，交付视角可以输出三种选项：继续等待并调整日期、缩小到已具备证据的链路，或者把候选版本拆成两次发布。它不能把模拟服务的结果写成真实依赖通过，也不能把尚未执行的回归标记为通过。
+如果支付依赖方周四没有交付，交付视角可以输出三种选项：继续等待并调整日期、缩小到已具备证据的链路，或者把候选版本拆成两次发布。它不能把模拟服务的结果写成真实依赖已通过，也不能把尚未执行的回归标记为通过。
 
 一个可交接的记录可以这样写：
 
 ```yaml
 stage: test-report-review
 milestone: 会员升级 v3 发布评审
-scope: [主链路, 权益发放, 支付回调]
+scope: [主链路，权益发放，支付回调]
 dependencies:
   - name: 支付沙箱回调
     source_id: DELIVERY-42
@@ -111,7 +110,7 @@ owner: 发布负责人
 
 ## 交付结论要写成可执行决定
 
-“按期发布”不是唯一选项。Skill 要把继续发布、缩小范围、延后或拆分发布的条件写清楚。
+“按期发布”不是唯一选项。Skill 需要把继续发布、缩小范围、延后或拆分发布的条件写清楚。
 
 | 选择 | 适用条件 | 必须留下的证据 |
 | --- | --- | --- |
@@ -119,13 +118,13 @@ owner: 发布负责人
 | 缩小范围 | 核心链路就绪，低风险功能仍缺证据 | 排除项、用户影响和补做日期 |
 | 延后发布 | 核心依赖或回滚条件未满足 | 阻塞原因、升级路径和新日期 |
 
-决定要标出批准人和最晚确认时间。Skill 整理条件和证据，不替项目负责人做承诺。
+每个决定都要标出批准人和最晚确认时间。Skill 整理条件和证据，不替项目负责人做承诺。
 
 交付摘要可以短，但项目约束、行动跟踪、保留质量事实、信息缺口和下一步交付行动必须保留。项目交付视角不产出质量或 Go/No-Go 结论。
 
 ## 一段可以直接改的调用词
 
-把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+把方括号中的占位内容替换成项目实际信息。材料越具体，Skill 越少猜。
 
 ```text
 请使用 project-delivery-perspective Skill。
@@ -214,10 +213,10 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 不能。它输出选项、条件和证据，发布决定仍由有权限的人确认。
 
-准备一份有日期、Owner 和依赖来源的计划，跑一次项目交付视角，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
+准备一份带日期、Owner 和依赖来源的计划，再做一次项目交付视角分析，并保留输入、输出和复核意见。文中的片段只能帮你搭起结构，真正的项目证据仍要在项目中产生。
 
 ## 参考
-- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- Awesome QA Skills 系列总览:[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- Awesome QA Skills：项目交付视角 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/project-delivery-perspective](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/project-delivery-perspective)
-- 项目交付视角 Skill 详情页:[https://inaodeng.com/zh-cn/qaskills/project-delivery-perspective/](https://inaodeng.com/zh-cn/qaskills/project-delivery-perspective/)
+- Awesome QA Skills 项目主页：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 系列总览：[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- Awesome QA Skills：项目交付视角 Skill 源文件：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/project-delivery-perspective](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/project-delivery-perspective)
+- 项目交付视角 Skill 详情页：[https://inaodeng.com/zh-cn/qaskills/project-delivery-perspective/](https://inaodeng.com/zh-cn/qaskills/project-delivery-perspective/)

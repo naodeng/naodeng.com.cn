@@ -1,33 +1,32 @@
 ---
 title: "技术质量视角 Skill：代码能跑只是起点，稳定性证据在哪里"
 description: "技术质量视角实战：从可观测性、依赖边界和恢复能力评估系统质量。"
-date: 2026-09-25T09:00:00.000Z
-draft: true
+date: 2026-09-23T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI 测试", "Agent Skills", "技术质量视角"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-技术质量要同时看代码结构、可用性、可维护性、故障恢复和依赖边界。评价需要连接工程特征与运行后果。
+技术质量要同时看代码结构、可用性、可维护性、故障恢复和依赖边界。评价时要把工程特征和运行后果连起来。
 
-技术质量视角 Skill 同时评估架构和运行信号，避免孤立代码指标掩盖系统脆弱性。
+技术质量视角 Skill 同时评估架构和运行信号，避免单独的代码指标掩盖系统脆弱性。
 
 本文从支付回调的超时、重试和 Trace 入手，把代码线索连接到运行后果。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。目录结构和安装方式请先看[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)；本文聚焦技术质量视角，重点说明运行后果、可观测性和恢复能力如何进入判断。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。目录结构和安装方式请先看[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)；本文聚焦技术质量视角，重点说明运行后果、可观测性和恢复能力如何成为判断依据。
 
 ## 先看源 Skill
 
-主 Prompt 把工作拆到 必需输入与门槛、技术评估、边界与输出、输入与执行流程、职责与边界。这些标题只是导航，真正使用时还要回到项目材料。
+主 Prompt 把工作拆成“必需输入与门槛”“技术评估”“边界与输出”“输入与执行流程”“职责与边界”几个部分。这些标题只是导航，真正使用时还要回到项目材料。
 
-本文把研发阶段统一写成中文：需求分析（`requirements-analysis`）、测试策略（`test-strategy`）、测试策略评审（`test-strategy-review`）、代码评审（`code-review`）、测试用例编写（`test-case-writing`）、测试用例评审（`test-case-review`）、测试报告编写（`test-reporting`）和测试报告评审（`test-report-review`）。阅读时看中文名称，调用 Skill 时 `stage` 仍填写括号里的英文键名。
+本文统一使用中文表示研发阶段：需求分析（`requirements-analysis`）、测试策略（`test-strategy`）、测试策略评审（`test-strategy-review`）、代码评审（`code-review`）、测试用例编写（`test-case-writing`）、测试用例评审（`test-case-review`）、测试报告编写（`test-reporting`）和测试报告评审（`test-report-review`）。阅读时看中文名称即可，调用 Skill 时 `stage` 仍填写括号里的英文键名。
 
-这个 Skill 没有单独示例目录，文章里的片段依据入口、主 Prompt 和评测约束整理。
+这个 Skill 没有单独的示例目录，文中的片段根据入口、主 Prompt 和评测约束整理。
 
 ## 相关 Skill
 
-技术质量视角把代码和配置连接到运行后果。需要深入定位或验证时，交给这些 Skill：
+技术质量视角把代码和配置连接到运行后果。需要进一步定位或验证时，可以衔接这些 Skill：
 
 | Skill | 什么时候接上 | 它补什么 |
 | --- | --- | --- |
@@ -52,11 +51,11 @@ series: ["Awesome QA Skills 实战"]
 | 测试报告编写 | 版本、时间窗口、负载、日志、指标、Trace 和退出码是否齐全 | 运行事实、静态观察、缺失证据和技术风险 |
 | 测试报告评审 | 结论是否把代码线索和运行信号对应起来，恢复是否真的验证 | 技术发现、影响、限制和下一步验证 |
 
-代码评审阶段有一个硬门槛：必须同时提供代码身份和可审查变更。只有一句“请看看这段代码”，不足以产生可追溯的技术发现。
+代码评审有一个硬门槛：必须同时提供代码身份和可审查变更。只有一句“请看看这段代码”，不足以产生可追溯的技术发现。
 
 ## 服务改动的技术证据要落到运行后果
 
-从架构、可观测性、故障恢复和回滚成本评审一次服务改动。
+评审服务改动时，要同时看架构、可观测性、故障恢复和回滚成本。
 
 | 技术问题 | 证据 | 运行后果 | 下一步 |
 | --- | --- | --- | --- |
@@ -65,11 +64,11 @@ series: ["Awesome QA Skills 实战"]
 | 数据迁移缺少回滚 | 迁移脚本和演练记录 | 版本回退可能卡住 | 补回滚脚本和恢复演练 |
 | 共享缓存没有失效指标 | 缓存配置和命中率曲线 | 脏数据会持续扩散 | 增加失效监控和清理动作 |
 
-技术质量结论要把代码特征连到可以观察和修复的运行后果。
+技术质量结论要把代码特征和可观察、可修复的运行后果对应起来。
 
 ## 会员升级支付回调的技术实践
 
-下面把同一个会员升级改动放进研发过程。它是示例，不代表当前系统已经出现这些问题；真实执行时要用实际版本、运行窗口和证据替换占位内容。
+下面以一次会员升级改动为例，按研发过程展开。这只是示例，不代表当前系统已经出现这些问题；真实执行时要用实际版本、运行窗口和证据替换占位内容。
 
 | 研发环节 | 技术问题 | 应留下的证据 | 交给下一环节什么 |
 | --- | --- | --- | --- |
@@ -107,7 +106,7 @@ action:
 status: pending
 ```
 
-这个结构能直接交给多角色质量汇总：技术材料保留在 `TECH-42`，QA 的执行状态保留在 `QA-42`，项目交付视角再根据行动 Owner 和截止时间跟踪，不会把不同职责混成一个结论。
+这个结构可以直接交给多角色质量汇总：技术材料保留在 `TECH-42`，QA 的执行状态保留在 `QA-42`，项目交付视角再根据行动 Owner 和截止时间跟踪，不会把不同职责混成一个结论。
 
 ## 运行信号怎样支持技术结论
 
@@ -121,11 +120,11 @@ status: pending
 
 每个结论都要列出来源、时间窗口和仍未验证的假设。Skill 帮团队整理证据，技术负责人负责接受风险或安排修复。
 
-技术摘要可以短，但技术事实、证据、发现、影响/严重性、缺失信息和行动必须保留。代码观察、运行证据和发布决定也要分开。
+技术摘要可以写得简短，但技术事实、证据、发现、影响/严重性、缺失信息和行动必须保留。代码观察、运行证据和发布决定也要分开。
 
 ## 一段可以直接改的调用词
 
-把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+把下面方括号中的内容替换成项目材料。材料越具体，Skill 越不需要猜测。
 
 ```text
 请使用 technical-quality-perspective Skill。
@@ -142,7 +141,7 @@ status: pending
 请按“摘要、事实、证据、技术发现、影响与严重性、缺失信息、问题、行动与下一步、信心等级”输出。检查架构、API、数据、兼容性、安全、性能、可观测性和可维护性，并明确区分静态观察与运行证据。缺少代码身份或可审查 diff 时，先标记阻塞；不要输出产品范围、测试通过或发布批准结论。
 ```
 
-先给出代码身份和 diff，再谈运行风险；缺少其中一项，评审先停在阻塞。
+先给出代码身份和 diff，再谈运行风险；缺少其中一项，评审就应停在阻塞状态。
 
 ## 技术视角要把代码特征连到运行后果
 
@@ -152,7 +151,7 @@ status: pending
 
 ## 这个 Skill 适合谁
 
-架构师可以用它复核依赖和恢复边界；开发可以把代码改动连接到日志、指标和回滚动作；QA 和运维可以据此补运行证据。它适合需要解释“为什么这段代码会影响稳定性”的评审。
+架构师可以用它复核依赖和恢复边界；开发可以把代码改动连接到日志、指标和回滚动作；QA 和运维可以据此补运行证据。它适合需要解释“为什么这段代码会影响稳定性”的评审场景。
 
 ## 技术判断交付前复核
 
@@ -213,16 +212,17 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 技术风险什么时候可以关闭？
 
-对应运行后果已经被验证，恢复动作演练过，且有负责人确认剩余风险时，才可以关闭。
+只有在对应运行后果已经验证、恢复动作完成演练，并且负责人确认剩余风险后，才可以关闭。
 
 ### 它会替我做架构决策吗？
 
-不会。它整理证据和选项，架构取舍仍需要团队结合成本、目标和责任边界决定。
+不会。它整理证据和选项，架构取舍仍由团队结合成本、目标和责任边界决定。
 
 拿真实 PR、diff 和运行证据跑一次技术质量视角，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
 
 ## 参考
-- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- Awesome QA Skills 系列总览:[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- Awesome QA Skills：技术质量视角 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/technical-quality-perspective](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/technical-quality-perspective)
-- 技术质量视角 Skill 详情页:[https://inaodeng.com/zh-cn/qaskills/technical-quality-perspective/](https://inaodeng.com/zh-cn/qaskills/technical-quality-perspective/)
+
+- Awesome QA Skills 项目主页：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 系列总览：[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
+- Awesome QA Skills：技术质量视角 Skill 源文件：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/technical-quality-perspective](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/technical-quality-perspective)
+- 技术质量视角 Skill 详情页：[https://inaodeng.com/zh-cn/qaskills/technical-quality-perspective/](https://inaodeng.com/zh-cn/qaskills/technical-quality-perspective/)
