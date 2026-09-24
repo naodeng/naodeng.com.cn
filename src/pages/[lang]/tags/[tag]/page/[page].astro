@@ -10,67 +10,59 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 import { paginateItems } from "@/utils/blogPagination";
 
-/** 标签链接统一使用编码；getStaticPaths 传原始值，让 Astro 负责路由编码与匹配。 */
-function tagToSlug(t: string) {
-  return t.includes("/") || t.includes(" ") ? encodeURIComponent(t) : t;
+function tagToSlug(tag: string) {
+  return tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag;
 }
+
 function slugToTag(slug: string) {
   return decodeURIComponent(slug);
 }
 
 export async function getStaticPaths() {
   const allPosts = filterPublishedBlogPosts(await getCollection("blog"));
-  const paths: { params: { lang: string; tag: string }; props: { posts: CollectionEntry<"blog">[]; redirectTo?: string } }[] = [];
+  const paths: {
+    params: { lang: string; tag: string; page: string };
+    props: { posts: CollectionEntry<"blog">[] };
+  }[] = [];
 
   for (const lang of Object.keys(LOCALES)) {
     const langPosts = allPosts.filter((post) => post.id.startsWith(`${lang}/`));
     const tags = [...new Set(langPosts.flatMap((post) => post.data.tags || []))];
-    
-    for (const tag of tags) {
-      const tagSegment = tag.includes("/") ? encodeURIComponent(tag) : tag;
-      paths.push({
-        params: { lang, tag: tagSegment },
-        props: { posts: langPosts.filter((post) => post.data.tags?.includes(tag)) },
-      });
-    }
-  }
 
-  // Preserve old cross-language tag URLs and move them to the owning locale.
-  for (const lang of Object.keys(LOCALES)) {
-    const otherLang = lang === "en" ? "zh-cn" : "en";
-    const existing: Set<string | undefined> = new Set(paths.filter((p) => p.params.lang === lang).map((p) => p.params.tag));
-    const otherPosts = allPosts.filter((post) => post.id.startsWith(`${otherLang}/`));
-    for (const tag of new Set(otherPosts.flatMap((post) => post.data.tags || []))) {
+    for (const tag of tags) {
+      const postsWithTag = langPosts.filter((post) => post.data.tags?.includes(tag));
+      const totalPages = Math.max(1, Math.ceil(postsWithTag.length / BLOG_POSTS_PER_PAGE));
       const tagSegment = tag.includes("/") ? encodeURIComponent(tag) : tag;
-      if (existing.has(tagSegment)) continue;
-      paths.push({
-        params: { lang, tag: tagSegment },
-        props: { posts: [], redirectTo: `/${otherLang}/tags/${encodeURIComponent(tag)}/` },
-      });
+
+      for (let page = 2; page <= totalPages; page += 1) {
+        paths.push({
+          params: { lang, tag: tagSegment, page: String(page) },
+          props: { posts: postsWithTag },
+        });
+      }
     }
   }
 
   return paths;
 }
 
-const { lang, tag: tagSlug } = Astro.params;
-const redirectTo = (Astro.props as { redirectTo?: string }).redirectTo;
-if (redirectTo) return Astro.redirect(redirectTo, 301);
+const { lang, tag: tagSlug, page } = Astro.params;
 const tag = tagSlug ? slugToTag(tagSlug) : "";
 const { posts } = Astro.props;
 const locale = lang as Lang;
 const t = useTranslations(locale);
-
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const paginated = paginateItems(sortedPosts, 1, BLOG_POSTS_PER_PAGE);
+const paginated = paginateItems(sortedPosts, Number(page) || 1, BLOG_POSTS_PER_PAGE);
 const title = `#${tag}`;
 const tagBasePath = `/tags/${tagToSlug(tag)}/`;
+const pageLabel = locale === "zh-cn" ? `第 ${paginated.currentPage} 页` : `Page ${paginated.currentPage}`;
 const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
 const tagsLabel = typeof NAV_TAGS === "string" ? NAV_TAGS : (NAV_TAGS[locale] ?? (locale === "zh-cn" ? "标签" : "Tags"));
 const breadcrumbs = [
   { name: homeName, url: `/${lang}/` },
   { name: tagsLabel, url: `/${lang}/tags/` },
   { name: `#${tag}`, url: `/${lang}/tags/${tagToSlug(tag)}/` },
+  { name: pageLabel, url: `/${lang}${tagBasePath}page/${paginated.currentPage}/` },
 ];
 ---
 

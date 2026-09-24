@@ -23,7 +23,7 @@ const ALLOWED_BY_PATH_EN = {
 
 const ALLOWED_BY_PATH_ZH = {
   "Performance-Testing": ["K6", "性能测试", "Gatling"],
-  "API-Automation-Testing": ["Postman", "Pytest", "RestAssured", "Supertest", "Bruno", "接口测试", "自动化测试", "数据驱动", "Allure", "CI/CD"],
+  "API-Automation-Testing": ["Postman", "Pytest", "RestAssured", "Supertest", "Bruno", "接口测试", "自动化测试", "数据驱动", "Allure", "CI-CD"],
   "Event": ["AI 测试", "30 天 AI 测试挑战", "自动化测试", "无障碍测试", "视觉测试", "最佳实践", "测试策略", "敏捷测试"],
   "AI-Testing": ["AI 测试", "接口测试", "自动化测试", "最佳实践"],
   "Others": ["软件测试", "最佳实践", "敏捷测试", "Cypress", "Playwright", "UI 测试", "自动化测试"],
@@ -74,7 +74,7 @@ const RULES_TITLE_DESC_ZH = [
   { keywords: ["playwright"], tag: "Playwright" },
   { keywords: ["ui测试", "界面测试", "e2e", "端到端"], tag: "UI 测试" },
   { keywords: ["自动化测试", "自动化"], tag: "自动化测试" },
-  { keywords: ["ci/cd", "持续集成", "github action"], tag: "CI/CD" },
+  { keywords: ["ci/cd", "持续集成", "github action"], tag: "CI-CD" },
   { keywords: ["敏捷测试", "敏捷"], tag: "敏捷测试" },
   { keywords: ["ai测试", "人工智能", "ai 测试"], tag: "AI 测试" },
   { keywords: ["30 天 ai", "30天ai", "30 天 ai 测试"], tag: "30 天 AI 测试挑战" },

@@ -16,7 +16,10 @@ function slugToSeries(slug: string) {
 
 export async function getStaticPaths() {
   const allPosts = filterPublishedBlogPosts(await getCollection("blog"));
-  const paths: { params: { lang: string; series: string }; props: { posts: CollectionEntry<"blog">[]; redirectTo?: string } }[] = [];
+  const paths: {
+    params: { lang: string; series: string; page: string };
+    props: { posts: CollectionEntry<"blog">[] };
+  }[] = [];
 
   for (const lang of Object.keys(LOCALES)) {
     const langPosts = allPosts.filter((post) => post.id.startsWith(`${lang}/`));
@@ -24,49 +27,37 @@ export async function getStaticPaths() {
 
     for (const series of seriesSet) {
       const postsInSeries = langPosts.filter((post) => post.data.series?.includes(series));
-      paths.push({
-        params: { lang, series },
-        props: { posts: postsInSeries },
-      });
-    }
-  }
+      const totalPages = Math.max(1, Math.ceil(postsInSeries.length / BLOG_POSTS_PER_PAGE));
 
-  // Preserve old cross-language URLs that were created before series were
-  // separated by locale. Redirect them to the language that owns the series.
-  for (const lang of Object.keys(LOCALES)) {
-    const otherLang = lang === "en" ? "zh-cn" : "en";
-    const existing = new Set(paths.filter((p) => p.params.lang === lang).map((p) => p.params.series));
-    const otherPosts = allPosts.filter((post) => post.id.startsWith(`${otherLang}/`));
-    for (const series of new Set(otherPosts.flatMap((post) => post.data.series || []))) {
-      if (existing.has(series)) continue;
-      paths.push({
-        params: { lang, series },
-        props: { posts: [], redirectTo: `/${otherLang}/series/${encodeURIComponent(series)}/` },
-      });
+      for (let page = 2; page <= totalPages; page += 1) {
+        paths.push({
+          params: { lang, series, page: String(page) },
+          props: { posts: postsInSeries },
+        });
+      }
     }
   }
 
   return paths;
 }
 
-const { lang, series: seriesSlug } = Astro.params;
-const redirectTo = (Astro.props as { redirectTo?: string }).redirectTo;
-if (redirectTo) return Astro.redirect(redirectTo, 301);
+const { lang, series: seriesSlug, page } = Astro.params;
 const seriesName = seriesSlug ? slugToSeries(seriesSlug) : "";
 const { posts } = Astro.props;
 const locale = lang as Lang;
 const t = useTranslations(locale);
-
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const paginated = paginateItems(sortedPosts, 1, BLOG_POSTS_PER_PAGE);
+const paginated = paginateItems(sortedPosts, Number(page) || 1, BLOG_POSTS_PER_PAGE);
 const title = seriesName;
 const seriesBasePath = `/series/${encodeURIComponent(seriesName)}/`;
+const pageLabel = locale === "zh-cn" ? `第 ${paginated.currentPage} 页` : `Page ${paginated.currentPage}`;
 const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
 const seriesLabel = typeof NAV_SERIES === "string" ? NAV_SERIES : (NAV_SERIES[locale] ?? (locale === "zh-cn" ? "系列" : "Series"));
 const breadcrumbs = [
   { name: homeName, url: `/${lang}/` },
   { name: seriesLabel, url: `/${lang}/series/` },
-  { name: seriesName, url: `/${lang}/series/${encodeURIComponent(seriesSlug ?? "")}/` },
+  { name: seriesName, url: `/${lang}/series/${encodeURIComponent(seriesName)}/` },
+  { name: pageLabel, url: `/${lang}${seriesBasePath}page/${paginated.currentPage}/` },
 ];
 ---
 

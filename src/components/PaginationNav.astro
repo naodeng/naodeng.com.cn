@@ -8,16 +8,17 @@ interface Props {
   currentPage: number;
   totalPages: number;
   locale: Lang;
+  basePath?: string;
 }
 
-const { currentPage, totalPages, locale } = Astro.props;
+const { currentPage, totalPages, locale, basePath = "/blog/" } = Astro.props;
 const t = useTranslations(locale);
 
-const blogBase = getRelativeLocaleUrl(locale, "/blog/");
-const firstUrl = blogBase;
-const prevUrl = currentPage === 2 ? blogBase : `${blogBase}page/${currentPage - 1}/`;
-const nextUrl = `${blogBase}page/${currentPage + 1}/`;
-const lastUrl = totalPages <= 1 ? blogBase : `${blogBase}page/${totalPages}/`;
+const baseUrl = getRelativeLocaleUrl(locale, basePath);
+const firstUrl = baseUrl;
+const prevUrl = currentPage === 2 ? baseUrl : `${baseUrl}page/${currentPage - 1}/`;
+const nextUrl = `${baseUrl}page/${currentPage + 1}/`;
+const lastUrl = totalPages <= 1 ? baseUrl : `${baseUrl}page/${totalPages}/`;
 
 const labelFirst = t(PAGINATION_FIRST);
 const labelLast = t(PAGINATION_LAST);
@@ -25,7 +26,7 @@ const labelGo = t(PAGINATION_GO);
 const labelJump = locale === "zh-cn" ? "输入页码跳转" : "Jump to page";
 ---
 
-<nav class="pagination-nav" aria-label={t({ en: "Pagination", "zh-cn": "分页" })} data-blog-base={blogBase} data-total-pages={totalPages}>
+<nav class="pagination-nav" aria-label={t({ en: "Pagination", "zh-cn": "分页" })} data-base-url={baseUrl} data-total-pages={totalPages}>
   <div class="pagination-inner">
     <!-- 首页 -->
     {currentPage > 1 ? (
@@ -106,16 +107,16 @@ const labelJump = locale === "zh-cn" ? "输入页码跳转" : "Jump to page";
     var form = document.querySelector("[data-pagination-jump]");
     if (!form) return;
     var nav = form.closest(".pagination-nav");
-    var blogBase = nav && nav.getAttribute("data-blog-base");
+    var baseUrl = nav && nav.getAttribute("data-base-url");
     var totalPages = nav && parseInt(nav.getAttribute("data-total-pages") || "1", 10);
     var input = form.querySelector(".pagination-input");
-    if (!blogBase || !input) return;
+    if (!baseUrl || !input) return;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var num = parseInt(input.value, 10);
       if (isNaN(num) || num < 1) num = 1;
       if (num > totalPages) num = totalPages;
-      var url = num === 1 ? blogBase : blogBase + "page/" + num + "/";
+      var url = num === 1 ? baseUrl : baseUrl + "page/" + num + "/";
       window.location.href = url;
     });
   })();

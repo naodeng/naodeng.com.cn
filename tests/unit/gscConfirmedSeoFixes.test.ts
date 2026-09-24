@@ -31,6 +31,7 @@ describe("GSC-confirmed SEO fixes", () => {
         "/zh-cn/blog/performance-testing/gatling-tool-tutorial-ci-cd-integration/",
         "/en/blog/performance-testing/gatling-tool-tutorial-ci-cd-integration/",
       ],
+      ["/zh-cn/tags/CI/CD/", "/zh-cn/tags/CI-CD/"],
     ];
 
     for (const [from, to] of mappings) {
@@ -39,11 +40,12 @@ describe("GSC-confirmed SEO fixes", () => {
   });
 
   it("generates final trailing-slash URLs for blog pagination", () => {
-    expect(pagination).toContain('const blogBase = getRelativeLocaleUrl(locale, "/blog/");');
-    expect(pagination).toContain("`${blogBase}page/${currentPage - 1}/`");
-    expect(pagination).toContain("`${blogBase}page/${currentPage + 1}/`");
-    expect(pagination).toContain("`${blogBase}page/${totalPages}/`");
-    expect(pagination).toContain('blogBase + "page/" + num + "/"');
+    expect(pagination).toContain('basePath?: string;');
+    expect(pagination).toContain("const baseUrl = getRelativeLocaleUrl(locale, basePath);");
+    expect(pagination).toContain("`${baseUrl}page/${currentPage - 1}/`");
+    expect(pagination).toContain("`${baseUrl}page/${currentPage + 1}/`");
+    expect(pagination).toContain("`${baseUrl}page/${totalPages}/`");
+    expect(pagination).toContain('baseUrl + "page/" + num + "/"');
   });
 
   it("links to the published test-flake article instead of a Markdown source file", () => {

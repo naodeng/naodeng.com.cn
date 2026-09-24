@@ -109,6 +109,38 @@ test.describe("页面可访问性（中英文）", () => {
     expect(res?.status()).toBe(200);
   });
 
+  test("zh-cn Awesome QA Skills 系列按博客规则分页", async ({ page }) => {
+    const seriesPath = "/zh-cn/series/Awesome%20QA%20Skills%20%E5%AE%9E%E6%88%98/";
+    const firstPage = await page.goto(seriesPath, { waitUntil: "domcontentloaded" });
+    expect(firstPage?.status()).toBe(200);
+    await expect(page.locator("main article.post-card")).toHaveCount(12);
+    await expect(page.locator("nav.pagination-nav")).toBeVisible();
+    await expect(page.locator("a.pagination-next")).toHaveAttribute("href", /\/page\/2\/$/);
+
+    const secondPage = await page.goto(`${seriesPath}page/2/`, { waitUntil: "domcontentloaded" });
+    expect(secondPage?.status()).toBe(200);
+    await expect(page.locator("main article.post-card")).toHaveCount(12);
+  });
+
+  test("zh-cn Agent Skills 标签按博客规则分页", async ({ page }) => {
+    const tagPath = "/zh-cn/tags/Agent%20Skills/";
+    const firstPage = await page.goto(tagPath, { waitUntil: "domcontentloaded" });
+    expect(firstPage?.status()).toBe(200);
+    await expect(page.locator("main article.post-card")).toHaveCount(12);
+    await expect(page.locator("nav.pagination-nav")).toBeVisible();
+    await expect(page.locator("a.pagination-next")).toHaveAttribute("href", /\/page\/2\/$/);
+
+    const secondPage = await page.goto(`${tagPath}page/2/`, { waitUntil: "domcontentloaded" });
+    expect(secondPage?.status()).toBe(200);
+    await expect(page.locator("main article.post-card")).toHaveCount(12);
+  });
+
+  test("zh-cn CI-CD 标签使用规范 URL", async ({ page }) => {
+    const canonical = await page.goto("/zh-cn/tags/CI-CD/", { waitUntil: "domcontentloaded" });
+    expect(canonical?.status()).toBe(200);
+    await expect(page.locator("main h1")).toContainText("#CI-CD");
+  });
+
   test("根路径 / 重定向到语言页", async ({ page }) => {
     const res = await page.goto("/", { waitUntil: "domcontentloaded" });
     expect(res?.status()).toBe(200);
