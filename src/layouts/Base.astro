@@ -10,6 +10,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, X_ACCOUNT } from "@/consts
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations, LOCALES, getLocalePaths, DEFAULT_LOCALE, type Lang } from "@/i18n";
 import { buildPageTitle, type PageTitleMode } from "@/utils/pageTitle";
+import { buildMetaDescription } from "@/utils/seoDescription.mjs";
 import "@/styles/global.css";
 
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -69,6 +70,11 @@ const {
 const locale = Astro.currentLocale as Lang;
 const localeTitle = buildPageTitle(title, t(SITE_TITLE), titleMode);
 const descriptionPath = Astro.url.pathname.toLowerCase();
+const pageNumber = descriptionPath.match(/\/page\/(\d+)\/?$/)?.[1];
+const pageContext = [
+  title?.trim(),
+  pageNumber ? (locale === "zh-cn" ? `第${pageNumber}页` : `Page ${pageNumber}`) : "",
+].filter(Boolean).join(" · ");
 const metaDescriptionSuffix = (() => {
   const isZh = locale === "zh-cn";
   if (descriptionPath.includes("/qaskills/")) {
@@ -100,14 +106,13 @@ const metaDescriptionSuffix = (() => {
     ? "本文介绍相关概念、适用场景、实践步骤、输入输出与常见注意事项，帮助读者在软件测试、质量保障和 AI 工程实践中查阅、理解并复用这些内容，也可作为相关质量决策的入门参考。"
     : "Find practical context, guidance, usage scenarios, and next steps for this software testing or engineering topic.";
 })();
-const rawDescription = (description || t(SITE_DESCRIPTION)).trim();
-/** Bing 建议避免过短描述；为已有短描述补充与页面类型匹配的上下文，再控制在 155 字内。 */
-const contextualDescription = rawDescription.length < 70
-  ? `${rawDescription} ${metaDescriptionSuffix}`.trim()
-  : rawDescription;
-/** 控制在 155 字内，避免搜索结果中被截断 */
-const localeDescription =
-  contextualDescription.length > 155 ? contextualDescription.slice(0, 152).trimEnd() + "…" : contextualDescription;
+/** Bing 建议避免过短或重复的默认描述；补充页面上下文，再控制在 155 字内。 */
+const localeDescription = buildMetaDescription({
+  description,
+  siteDescription: t(SITE_DESCRIPTION),
+  pageContext,
+  suffix: metaDescriptionSuffix,
+});
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
 const defaultOgImage = `${siteOrigin}/ogp.png`;
