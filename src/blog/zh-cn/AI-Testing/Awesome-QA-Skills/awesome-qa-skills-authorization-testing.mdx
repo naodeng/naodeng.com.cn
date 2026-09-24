@@ -1,35 +1,85 @@
 ---
-title: "授权测试：证明正确身份只能对正确资源执行正确动作"
+title: "授权测试 Skill：证明正确身份只能对正确资源执行正确动作"
 description: "授权测试实战指南：验证角色、资源所有权、租户边界、动作范围、拒绝和审计证据。"
 date: 2026-11-07T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI 测试","Agent Skills","授权测试"]
+tags: ["AI 测试", "QA Skills", "授权测试"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 认证告诉系统谁来了，授权决定这个人能不能导出这份报表、编辑这条记录，或者删除这个租户的数据。
+
+## 为什么需要这个 Skill
 
 授权测试把权限判断拆成身份、资源、动作、上下文和策略版本的组合来评估。
 
-当团队需要围绕“角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计”工作时，使用授权测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+## Skill 用来做什么
+
+当团队需要围绕“角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计”工作时，使用授权测试 Skill。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦授权测试。
-
-## 授权测试 Skill 用来做什么
 
 好的授权检查会先固定角色改变资源，再固定资源改变角色。这样水平越权和垂直越权不会被一个顺利角色的结果掩盖。
 
 它适合这些场景：团队需要重复检查角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行契约位于 [授权测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing/prompts/authorization-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing) 中包含入口文件以及实际存在的配套资料。
+授权测试 Skill 可以组织访问判断的材料、证据和下一步动作，但它不能替代：
 
-入口文件重点约束角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计。要保留它的决策边界，不要把静态设计写成执行结论。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 访问判断 | 带策略依据的允许、拒绝或 unresolved | 角色、资源、动作 |
+| 绕过发现 | 水平、垂直、租户或状态边界失败 | 可复现条件 |
+| 审计动作 | 需要的日志、告警或策略修复 | 负责人和关闭条件 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“访问判断”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕访问判断，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
@@ -51,7 +101,43 @@ series: ["Awesome QA Skills 实战"]
 先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
 ```
 
-## 授权测试 要交付什么
+### 分析（Analysis）
+
+先从一个边界清楚的小回合开始：检查项目经理能否编辑自己团队的预算，但不能修改其他部门已经批准的预测。对自己拥有的草稿、同事的草稿、已批准预测和已归档记录发送同一个编辑请求，再比较项目经理和财务管理员的判断、响应、状态变化和审计轨迹。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+### Finding
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“访问判断”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和访问判断的具体对象 |
+| 发现 | 访问判断的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 输出字段 | 它要回答什么 | 示例状态 |
 | --- | --- | --- |
@@ -61,29 +147,27 @@ series: ["Awesome QA Skills 实战"]
 
 没有运行记录、查询结果或原始产物时，不要写“已通过”。好的授权检查会先固定角色改变资源，再固定资源改变角色。这样水平越权和垂直越权不会被一个顺利角色的结果掩盖。
 
-## 在项目里跑一轮
+### 下一步路由
 
-先从一个边界清楚的小回合开始：检查项目经理能否编辑自己团队的预算，但不能修改其他部门已经批准的预测。对自己拥有的草稿、同事的草稿、已批准预测和已归档记录发送同一个编辑请求，再比较项目经理和财务管理员的判断、响应、状态变化和审计轨迹。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
-
-## 如何把初版做得更好
+## 怎样准备更好的输入
 
 如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
 
 这里补充信息会改变结果，因为角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 和其他 Skill 怎么配合
+
+- [身份认证测试](https://inaodeng.com/zh-cn/qaskills/authentication-testing/)：建立调用者身份。
+- [API 安全测试](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)：检查 API 边界授权。
+- [Agent 权限测试](https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/)：把权限检查应用到 Agent 动作。
 
 ## 容易踩的坑
 
 1. 只测角色，不测资源所有权。
 2. 把 UI 是否显示当成授权证明。
 3. 允许写入后不检查状态转移。
-
-## 相关 Skill
-
-- [身份认证测试](https://inaodeng.com/zh-cn/qaskills/authentication-testing/)：建立调用者身份。
-- [API 安全测试](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)：检查 API 边界授权。
-- [Agent 权限测试](https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/)：把权限检查应用到 Agent 动作。
 
 ## 安装与调用
 
@@ -95,7 +179,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 安装后使用 `authorization-testing` Skill，并附上真实项目材料。
 
-## 常见问题
+## FAQ
 
 ### 授权测试可以依赖前端吗？
 
@@ -106,6 +190,14 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 记录例外、负责人、过期或复核日期，以及证明它是有意设计的证据。
 
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行契约位于 [授权测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing/prompts/authorization-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束角色、对象所有权、租户隔离、动作范围、上下文、拒绝和审计。要保留它的决策边界，不要把静态设计写成执行结论。
+
+### 参考链接
 
 - 授权测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing/prompts/authorization-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing/prompts/authorization-testing.md)
 

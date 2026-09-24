@@ -1,6 +1,6 @@
 ---
-title: "Security Requirement Review：在构建前让安全目标具备可测试性"
-description: "安全需求复核双语指南，围绕安全目标、可测试性、追踪关系、验收条件和证据缺口展开，不声称安全通过。"
+title: "安全需求复核 Skill：把安全目标变成可测试需求"
+description: "使用安全需求复核 Skill，在实现前检查资产、角色、边界、控制、验收条件、追踪关系和证据缺口，不把静态审查写成安全通过。"
 date: 2026-10-02T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,76 +8,165 @@ tags: ["AI 测试", "QA Skills", "安全需求复核"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
+“系统必须安全”只是担忧，不是可测试需求。真正需要回答的是：保护什么资产？谁可以做什么？哪条边界需要阻断？怎样观察到控制生效？证据从哪里来？
 
-“系统必须安全”只是担忧，不是可测试需求。只有写清被保护资产、威胁边界、预期控制、验收条件和证据来源，安全工作才可复核。
+## 为什么需要这个 Skill
 
-Security Requirement Review Skill 在实现前复核安全目标及其可测试性，寻找追踪和验收缺口，同时把静态设计证据与漏洞不存在或安全通过分开。
+安全需求复核 Skill 在实现前把这些问题拆开，检查安全目标是否可测试、控制是否能追踪到验收条件，以及当前材料能支持多强的结论。它准备安全验证，不声称漏洞不存在，也不替团队批准发布。
 
-本文的目标不是把安全表述写得更强，而是让预期保护变得可观察。
+## Skill 用来做什么
 
-## 安全需求复核 Skill 用来做什么
+当你需要复核认证、授权、数据保护、审计、隐私或滥用防护需求时，使用这个 Skill。它适合处理宽泛的安全表述、威胁模型到验收条件的转换，以及“设计里有控制、但没有成功标准”的情况。
 
-当你要用脱敏材料复核认证、授权、数据保护、审计、隐私或滥用防护需求时，使用这个 Skill。它不会读取凭证、调用真实 API 或执行漏洞利用。
+它只使用用户提供的脱敏材料，不读取凭证、不登录系统、不调用真实 API、不执行漏洞利用。信息不完整时，它交付带边界的初版，把缺口、候选验证和 Human 决策分开。
 
-好的发现需要写清受保护资产、角色和边界、安全目标、验收条件、追踪关系、证据状态、负责人、关闭条件和安全验证方式。
+SRR-## 发现至少要回答：保护对象是谁？触发条件是什么？预期控制是什么？什么证据可以关闭它？谁负责确认？
 
-当安全需求过于宽泛、威胁模型结论要变成验收条件，或者设计有控制但没有可验证成功规则时，使用这个 Skill。
+## 它不做什么
 
-## 先回到源 Skill
+安全需求复核 Skill 不替代：
 
-完整执行规则在 [安全需求复核 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review/prompts/security-requirement-review.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review) 中还可能包含评测用例和补充材料。
+- 渗透测试、漏洞扫描或红队行动；
+- API 安全测试和真实系统执行；
+- 威胁建模的完整过程；
+- 安全架构批准或风险接受；
+- 发布安全判断和合规签字。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+它的职责是让安全目标变得可追踪、可观察、可验证，并明确剩余证据缺口。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
 
-| 材料 | 这次提供什么 | 缺失时的处理 |
+安全需求复核要检查保护目标是否已经具备验证条件；堆叠更多安全术语没有帮助。
+
+| 复核维度 | 重点问题 |
+| --- | --- |
+| 资产 | 要保护的是卡数据、身份、租户数据、操作记录，还是其他对象？ |
+| 角色与权限 | 哪些角色可以访问、导出、修改或删除？哪些明确不可以？ |
+| 信任边界 | 浏览器、API、后台任务、支持工具和第三方依赖的边界在哪里？ |
+| 安全目标 | 要防止未授权读取、篡改、泄露、滥用，还是不可追踪？ |
+| 控制 | 依赖认证、授权、脱敏、加密、限流、审计或其他控制？ |
+| 验收条件 | 触发什么动作时，预期结果和失败结果分别是什么？ |
+| 追踪关系 | Requirement → Control → Test / Evidence 是否连得上？ |
+| 证据时效 | 策略、架构、日志和扫描记录是否对应当前版本和环境？ |
+
+## 开始之前先审计输入
+
+安全审查最容易出错的地方，是把“看起来像安全控制”的材料当成事实。先做六类输入审计：
+
+| 状态 | 例子 | 应该怎么做 |
 | --- | --- | --- |
-| 安全目标 | 资产、威胁、角色、信任边界和预期控制 | 资产或角色不清时保留问题 |
-| 验收材料 | 需求、设计、策略、测试想法和追踪 ID | 标记缺失关系 |
-| 适用范围 | 角色、租户、区域、数据分类、平台和版本 | 未知范围不要比较 |
-| 证据计划 | 脱敏夹具、安全环境、日志和验证方式 | 不要使用真实密钥 |
+| known | 安全需求明确写出仅允许账单管理员导出 | 引用来源并继续分析 |
+| missing | 没有说明脱敏数据能否复制或下载 | 记录证据缺口 |
+| conflicting | 需求禁止导出，支持流程却允许导出 | 保留双方来源，要求裁决 |
+| stale | 仍引用旧版权限矩阵或旧扫描记录 | 降低结论强度，确认版本 |
+| out_of_scope | 本次没有授权登录生产系统 | 明确排除真实执行 |
+| assumptions | 暂时假设测试环境使用合成卡号 | 标记影响并要求验证 |
 
-可以这样调用：
+信息不足时，安全需求复核会继续工作，但只做受限分析。它不会为了给出完整答案而读取真实凭据或补造攻击结果。
 
-~~~text
-请使用 security-requirement-review Skill。\n\n任务：复核支持人员可以查看客户发票，但不能导出支付卡数据的需求。\n输入材料：[安全需求、角色矩阵、数据分类、UI/API 设计、审计策略和追踪关系]\n范围：[支持门户、已认证人员、staging]\n限制：[不使用真实客户数据或凭证]\n\n评估安全目标、可测试性、追踪关系、验收条件和证据缺口，分开假设与人工风险决策。
-~~~
+## 从问题到结构化 Finding
 
-## 让下一位同事接手
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
 
-| 产物 | 要回答的问题 | 示例状态 |
-| --- | --- | --- |
-| 安全目标 | 需要保护的资产或行为 | 来源与边界 |
-| 可测试性发现 | 需求能否被观察和检查 | 验收缺口 |
-| 追踪发现 | 设计、控制和验证是否关联 | ID 与状态 |
-| 证据动作 | 安全验证和关闭条件 | 负责人和环境 |
+结构化 Finding 至少要区分事实、证据支持的推断、建议和 Human 决策。它们对应不同的证据强度和责任边界。
 
-每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+## 一个完整案例
 
-## 聚焦例子：把卡数据保护变成可观察条件
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
 
-需求禁止导出卡数据，却没有说明脱敏值能否复制、API 能否下载，或审计日志是否会包含敏感字段。这个 Skill 应要求负责人明确数据分类、角色、渠道和每条路径的证据，不要自行发明规则或宣布门户安全。
+### 输入（Input）
 
-复核可以评估需求质量和证据缺口，不能证明不存在漏洞、抵抗利用、修复完成或发布安全。
+本案例使用本节给出的需求、设计、接口或其他项目材料，并保留版本、范围和缺失项。
 
-## 先补基线输入，再期待更好的结果
+### 分析（Analysis）
 
-提供准确安全需求、资产和威胁上下文、角色/数据矩阵、适用渠道、版本、设计链接、验收条件和安全验证环境。使用脱敏或合成数据。
+先对照检查矩阵和六类证据状态，再把问题整理成这个 Skill 的专属 Finding。
 
-交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+### Finding
+
+#### 一条 SRR-## 发现如何产生
+
+假设需求写着：
+
+> 门户禁止导出卡数据。
+
+材料没有说明脱敏值能否复制、API 是否存在下载路径、支持工具能否访问原始字段，也没有给审计日志定义敏感字段处理规则。
+
+##### SRR-02 — 卡数据保护缺少跨渠道验收条件
+
+- **对象 / 规则：** 卡数据导出与复制控制。
+- **来源：** 卡数据保护需求 v1.4；API 合同、支持工具权限矩阵和审计字段清单未提供。
+- **触发条件：** 门户用户、API 客户端或支持角色尝试查看、复制或导出卡数据。
+- **预期关注点：** UI 禁止导出是否覆盖直接 API、后台任务、支持工具和日志链路。
+- **状态：** missing
+- **影响 / 优先级：** P1。单一渠道的限制不能说明所有数据出口都受保护，也无法形成统一验收。
+- **责任角色：** 安全负责人、产品负责人、API 负责人。
+- **关闭条件：** 明确数据分类、角色权限、允许的脱敏形式、渠道边界和审计要求，并让需求、控制和验证场景互相追踪。
+- **候选验证：** 在隔离环境使用合成数据，分别验证门户、直接 API、支持工具和导出任务；保留预期响应、审计记录和停止条件。
+- **Human 决策：** 是否允许特定支持角色在受控流程中查看部分脱敏字段，以及例外如何授权。
+
+这条发现没有说“系统存在漏洞”。它说的是当前材料还不足以证明保护目标已经可测试——安全结论的强度必须跟证据一起走。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
+
+至少交付来源、证据状态、负责人、关闭条件和验证动作；路由结果仍需由负责人确认。
+
+### 下一步路由
+
+一个安全需求复核结果应该把静态审查和后续验证分开：
+
+1. 先确认资产、角色、渠道和适用版本。
+2. 再把控制连接到可观察的预期结果。
+3. 仅在获授权的隔离环境中提出最小验证。
+4. 为失败响应、敏感数据、审计记录和停止条件保留证据要求。
+5. 将风险接受、例外授权和发布判断交给 Human。
+
+SRR-## 可以进入安全需求、设计、测试和审计之间的追踪链，但它本身不是渗透测试报告。
+
+## 怎样准备更好的输入
+
+最小输入包括：
+
+- 安全目标、资产分类、角色/数据矩阵和信任边界；
+- 适用渠道、版本、环境、依赖和已知控制；
+- 验收条件、威胁上下文、设计链接和现有证据；
+- 授权的验证环境、合成数据和停止/升级条件；
+- 需要 Human 确认的风险接受或例外规则。
+
+输出至少包括：
+
+- 任务理解、范围内外和未授权动作；
+- 六类输入审计；
+- 安全需求、触发条件、预期结果和证据缺口；
+- 按优先级排序的 SRR-## 发现；
+- 候选验证、剩余风险和 Human 决策。
+
+只给一句“系统必须安全”，Skill 只能指出缺少资产、角色、控制和成功标准。把安全目标、权限矩阵和验收条件一起提供，结果才会进入可执行层。
+
+## 和其他 Skill 怎么配合
+
+- 威胁建模：https://inaodeng.com/zh-cn/qaskills/threat-modeling/
+- 敏感信息暴露审查：https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/
+- API 安全测试：https://inaodeng.com/zh-cn/qaskills/api-security-testing/
+- 授权测试：https://inaodeng.com/zh-cn/qaskills/authorization-testing/
 
 ## 容易踩的坑
 
-1. 把宽泛的安全形容词当成验收条件。
-2. 假设 UI 限制覆盖直接 API、导出、日志和支持工具。
-3. 设计文档里出现控制名称，就把它当成安全证明。
-
-## 相关 Skill
-
-- [威胁建模](https://inaodeng.com/zh-cn/qaskills/threat-modeling/)：提供资产、威胁和边界上下文。
-- [敏感信息暴露审查](https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/)：检查凭证与日志暴露。
-- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)：验证角色与资源访问边界。
+1. 把“使用加密”“需要审计”等控制名称当成验收条件。
+2. 只检查门户，不检查 API、后台任务、支持工具和日志出口。
+3. 只列攻击名，不说明资产、触发条件、预期结果和证据。
+4. 把候选验证写成已经执行，或把静态设计写成安全通过。
+5. 资料不足时为了完整性读取真实凭据或推断漏洞。
 
 ## 安装与调用
 
@@ -87,25 +176,48 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ~~~text
 请使用 security-requirement-review Skill。
-提供目标、范围、版本、证据路径、限制和决策边界。
-先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+
+任务：在实现前复核卡数据保护需求。
+输入材料：[安全需求、资产分类、角色矩阵、API 合同、审计字段、威胁上下文]
+范围：[门户查看、复制、API 下载和支持工具]
+限制：[只使用脱敏材料，不登录系统、不调用真实 API、不执行攻击]
+
+先审计 known、missing、conflicting、stale、out_of_scope、assumptions。按安全目标、可测试性、追踪关系、接受条件和证据缺口输出 SRR-##，并分开事实、推断、候选验证和 Human 决策。
 ~~~
 
-## 常见问题
+输入越接近真实项目，输出越接近可交接的安全工作项。输出不会给一个“安全分数”，而会给来源、状态、影响、责任角色、关闭条件和验证方法。
+
+## FAQ
 
 ### 这个 Skill 会做渗透测试吗？
 
-不会。它准备需求和证据复核，安全测试需要单独授权的方法和环境。
+不会。它准备安全需求、证据和候选验证；真正的安全测试需要单独授权的方法、环境和执行记录。
 
 ### 负责人无法给出阈值怎么办？
 
-把验收条件标为未评估，记录决策问题，不要用通用安全标准替代。
+把验收条件标为 missing 或 unassessed，提出可指派的决策问题。不要用通用安全标准替代项目自己的接受条件。
 
+### 静态复核没有发现缺口，能说安全了吗？
 
+不能。静态复核最多说明当前材料没有暴露新的需求缺口；漏洞、攻击抵抗力和发布安全仍需要独立证据。
 
 ## 参考
 
-- 安全需求复核 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review/prompts/security-requirement-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review/prompts/security-requirement-review.md)
-- 安全需求复核 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review)
-- 安全需求复核 详情页:[https://inaodeng.com/zh-cn/qaskills/security-requirement-review/](https://inaodeng.com/zh-cn/qaskills/security-requirement-review/)
-- Awesome QA Skills 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+### 源 Skill 与执行契约
+
+完整执行规则在安全需求复核 Prompt：
+
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review/prompts/security-requirement-review.md
+
+Skill 源目录同时包含 Skill 定义、Agent 适配和 Eval 资产：
+
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review
+
+静态安全需求、控制名称或 dry-run 只能说明材料和计划存在，不能升级为漏洞不存在、攻击失败、安全通过或发布批准。
+
+### 参考链接
+
+- 安全需求复核 Prompt：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review/prompts/security-requirement-review.md
+- 安全需求复核 Skill 源文件：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review
+- 安全需求复核详情页：[https://inaodeng.com/zh-cn/qaskills/security-requirement-review/](https://inaodeng.com/zh-cn/qaskills/security-requirement-review/)
+- Awesome QA Skills 项目：https://github.com/naodeng/awesome-qa-skills

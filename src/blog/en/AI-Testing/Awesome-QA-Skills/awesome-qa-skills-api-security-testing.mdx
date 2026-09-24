@@ -1,118 +1,220 @@
 ---
-title: "API Security Testing: Connect identities, resources, and failure evidence at the boundary"
+title: "API Security Testing Skill: Verify the Security Boundary from Identity to Object"
 description: "API Security Testing field guide: review authentication, authorization, input exposure, secrets, rate limits, and security evidence."
 date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI Testing","Agent Skills","API Security Testing"]
-categories: ["AI Testing","QA Skills"]
+tags: ["AI Testing", "QA Skills", "API Security Testing"]
+categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
+An API security check that stops at “the token was valid” has not checked whether the token could access this object, whether a batch endpoint bypasses the same rule, or whether a failure disclosed too much.
 
-An API security check that stops at “the token was valid” has not checked whether the token could access this resource or whether a failure disclosed too much.
+## Why this Skill is needed
 
-API Security Testing evaluates the boundary between caller identity, requested resource, input, response, and operational controls.
+The API Security Testing Skill reviews the boundary between caller identity, requested object, input, response, and operational controls. It prepares bounded AST-## scenarios and keeps unauthorized or destructive actions outside the workflow until they are explicitly approved.
 
-The API Security Testing Skill is useful when a team needs a structured review of authentication, authorization, object scope, injection surface, secrets exposure, rate limits, and audit evidence. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+## What the Skill does
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Security Testing.
+Use this Skill when a team needs to review authentication, authorization, object scope, input exposure, secrets, rate limits, error leakage, or audit evidence for an API.
 
-## API Security Testing Skill: what it is for
+A strong pass follows one object across the full request: who owns it, who may act on it, which alternate entry points exist, what a failure reveals, and which audit record proves the decision. A 403, an OpenAPI document, or a valid token alone is not comprehensive security evidence.
 
-A practical standard for this Skill is simple: A strong API security pass follows an object through the entire request. It asks who owns it, who may act on it, what is logged, and what an attacker learns when the request fails.
+## What it does not do
 
-Use it when the team needs a repeatable review of authentication, authorization, object scope, injection surface, secrets exposure, rate limits, and audit evidence—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+It does not replace:
 
-## Start with the source Skill
+- Penetration testing, red-team action, vulnerability scanning, or an authorized exploit.
+- An unauthorized call to a real API or a production probe.
+- Security requirement review, threat modeling, or permission design.
+- Risk acceptance, exception approval, or release-security judgment.
+- Complete runtime security assurance outside the supplied request boundary.
 
-The complete execution contract lives in the [API Security Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing) contains the entry point and supporting assets where they exist.
+## What it checks
 
-The entry point centers authentication, authorization, object scope, injection surface, secrets exposure, rate limits, and audit evidence. Keep its decision boundary visible and do not turn a static design into an execution claim.
+| Focus | Question | Handoff output |
+| --- | --- | --- |
+| Attack surface | Which path, query, body, header, upload, batch, or alternate endpoint accepts input? | Inventory and boundary |
+| Input boundary | What malformed, oversized, encoded, repeated, or unexpected input must be handled? | Safe scenario and oracle |
+| Identity | Who is the caller, tenant, role, and token subject? | Identity fixture and version |
+| Authorization | Can this caller perform this action on this object? | Allow or deny condition |
+| Error and response | What do status, body, timing, headers, URLs, and logs reveal on failure? | Leakage check and evidence |
+| Security contract | Can authentication, permission, data, error, rate, and audit rules trace to verification? | AST finding and close condition |
 
-## Begin with project facts
+The matrix turns a security label into a request that can be authorized, executed, and reviewed.
+
+## Audit inputs before you start
+
+| State | Meaning | Handling |
+| --- | --- | --- |
+| known | Directly supported by an API contract, policy, sample, or run record | Preserve source, version, and identity |
+| missing | Needed for the scenario but not supplied | Record the gap and stay in preparation |
+| conflicting | OpenAPI, permission matrix, and security requirement disagree | Preserve all sources and request a decision |
+| stale | Token shape, endpoint, policy, or environment is old | Mark freshness before using it |
+| out_of_scope | Production calls, real credentials, intrusive payloads, or destructive actions | Exclude unless separately authorized |
+| assumptions | Synthetic tenant, object, role, or isolated environment is assumed | State the assumption and stop condition |
+
+Input templates and request examples are not execution evidence. A safe analysis can continue, but it must say what still needs an authorized run.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+| Layer | How to write it | Example |
+| --- | --- | --- |
+| Fact | What the contract or request material directly shows | The endpoint accepts a token and job_id |
+| Evidence-backed Inference | What the missing binding could allow | Authentication may be implemented without object authorization |
+| Recommendation | The smallest safe next action | Define tenant binding, error semantics, audit fields, and a synthetic validation |
+| Human Decision | What requires authorization or risk choice | Owners approve environment, account scope, and leakage trade-off |
+
+Do not label a request sent, a 403 returned, or a template generated as a complete security pass.
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
 | Security model | Identity, role, tenant, resource ownership, and allowed operations | Keep policy ambiguity open |
-| Attack surface | Path, query, body, headers, file names, and error responses | Include malformed and overlong inputs |
-| Evidence | Allow and deny logs, redaction, rate-limit events, and test account matrix | Do not infer protection from middleware names |
+| Attack surface | Path, query, body, headers, file names, batch behavior, and error responses | Include malformed and overlong inputs |
+| Evidence | Allow and deny logs, redaction, rate-limit events, and account matrix | Do not infer protection from middleware names |
+| Authorization boundary | Isolated environment, synthetic data, account scope, and stop conditions | Do not use production as a shortcut |
 
 Use a request like this:
 
-```text
+~~~text
 Use the api-security-testing Skill.
 
-Task: review a document-download API shared by employees, contractors, and service accounts across tenants
-Inputs: [requirements, versions, links, logs, reports, or data paths]
+Task: Review a document-download API shared by employees, contractors, and service accounts across tenants.
+Inputs: [API contract, versions, permission matrix, redacted requests, logs, reports, or data paths]
 Scope: [included and excluded objects]
 Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
+Expected output: [AST-## findings, evidence status, safe validation, and next actions]
 
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-```
+Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without an authorized run record.
+~~~
 
-## Make the result usable by the next person
+### Analysis
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Security finding | Boundary violation, leakage, bypass, or missing control | Asset, actor, and evidence |
-| Exploit condition | Input, identity, state, and prerequisite | Reproducible setup |
-| Remediation | Policy, code, monitoring, or verification action | Owner and residual risk |
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
 
-Do not write “passed” without a run record, query result, or source artifact. A strong API security pass follows an object through the entire request. It asks who owns it, who may act on it, what is logged, and what an attacker learns when the request fails.
+### Finding
 
-## Run one focused pass
+#### Example finding: AST-02 exposes an object-authorization gap
 
-Start with a bounded pass—review a document-download API shared by employees, contractors, and service accounts across tenants. Request the same document as its owner, a same-tenant colleague, a cross-tenant user, and a service account with read-only scope. Compare response status, body, timing, audit event, and download URL—not just the 200 or 403.
+Suppose the contract contains:
 
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+~~~text
+GET /exports/{job_id}/download
+Authorization: Bearer <token>
+~~~
 
-## Improve the first result
+The materials do not explain how job_id is bound to the caller's tenant, whether a cross-tenant object returns 403 or 404, or whether the failure response reveals object existence. This is an illustrative preparation pattern, not an exploit result.
 
-If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+##### AST-02 — Download authorization and error leakage are underspecified
 
-A richer input changes the answer here because authentication, authorization, object scope, injection surface, secrets exposure, rate limits, and audit evidence must be tied to evidence rather than inferred from a familiar pattern.
+| Field | Example |
+| --- | --- |
+| Object and rule | GET /exports/{job_id}/download and tenant-owned export access |
+| Source | API Contract v3.2; token description supplied, object matrix and error contract missing |
+| Trigger | Tenant A requests Tenant B's job_id, a nonexistent job_id, and an expired job_id |
+| Expected concern | Authentication success must not bypass object authorization; failure should not overexpose existence or sensitive fields |
+| Evidence state | missing |
+| Impact and priority | API, gateway, audit, and client may implement different failure semantics; P1 |
+| Owner and decision | API, security, and tenant-authorization owners choose enforcement point and 403, 404, or uniform-error strategy |
+| Close condition | Authorization, error, audit, and sensitive-data rules are explicit in the contract |
+| Validation | In an authorized isolated environment use synthetic tenants and files; retain raw responses, audit records, version, time, and stop conditions |
+
+This finding does not claim a vulnerability exists. It says the current evidence cannot yet support a reviewable object-authorization test.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
+
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the route still needs an accountable owner.
+
+### Next-stage route
+
+1. Audit the API contract, permission matrix, and redacted request or response.
+2. Produce AST-## scenarios with preconditions, stimulus, expected result, evidence, and stop conditions.
+3. Have the accountable owner confirm environment, accounts, data, and authorization.
+4. Run in an isolated environment with minimum privilege and synthetic data.
+5. Record response, audit log, version, time, and residual risk separately from the preparation.
+
+The Skill prepares step 4. It does not perform step 4 by implication.
+
+## How to prepare better input
+
+Provide the API contract and version, endpoint scope, role and tenant matrix, object ownership, input fields, data classification, rate policy, audit fields, redacted samples, history, authorized environment, synthetic data, account scope, and stop conditions.
+
+A useful handoff keeps target, object, in/out scope, evidence states, AST finding, owner, close condition, expected result, and validation method together.
+
+## Working with other Skills
+
+- Security Requirement Review: https://inaodeng.com/en/qaskills/security-requirement-review/
+- Threat Modeling: https://inaodeng.com/en/qaskills/threat-modeling/
+- Authorization Testing: https://inaodeng.com/en/qaskills/authorization-testing/
+- Secrets Exposure Review: https://inaodeng.com/en/qaskills/secrets-exposure-review/
 
 ## Common traps
 
-1. Testing authentication without object authorization.
-2. Checking a sanitized body while leaving a secret in headers or URLs.
-3. Ignoring timing and error differences that reveal resource existence.
-
-## Related Skills
-
-- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：deepens permission decisions。
-- [Secrets Exposure Review](https://inaodeng.com/en/qaskills/secrets-exposure-review/)：checks secret leakage in payloads and logs。
-- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：examines safe failure responses。
+1. Treating a valid token as proof that the caller can access this object.
+2. Testing the UI while ignoring direct, batch, background, and download entry points.
+3. Treating 403 as proof that every object is safe, without checking 404 and error leakage.
+4. Listing attack names without trigger, expected result, evidence, and stop conditions.
+5. Using real credentials or production APIs to fill a missing material gap.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
-
-```bash
+~~~bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing -g
-```
+~~~
 
-After installation, invoke it with the `api-security-testing` Skill and attach the real project material.
+~~~text
+Use the api-security-testing Skill.
+Include objective, endpoint scope, versions, evidence paths, constraints, and authorization boundary.
+Audit inputs first. Return AST-## findings with trigger, expected result, evidence state, owner, stop condition, and safe validation method.
+~~~
 
-## Two practical questions
+## FAQ
 
-### Does a 403 prove the resource is protected?
+### Does a 403 prove that the resource is protected?
 
-No. Confirm no data, signed URL, metadata, or side effect was exposed.
+No. Confirm the identity, object ownership, version, alternate entry points, response body, timing, and audit record.
 
 ### Can the Skill perform an attack?
 
-It organizes bounded security checks; real intrusive actions require explicit authorization and safe environments.
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+No. It provides evidence-bounded analysis and validation preparation. Intrusive actions require explicit authorization, safe data, and a controlled environment.
 
 ## References
 
-- API Security Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md)
+### Source Skill and execution contract
 
-- Awesome QA Skills: API Security Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing)
+Read the execution contract in the API Security Testing prompt:
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md
 
-- API Security Testing details:[https://inaodeng.com/en/qaskills/api-security-testing/](https://inaodeng.com/en/qaskills/api-security-testing/)
+The source directory contains the Skill definition, prompt, agent adaptation, and evaluation assets:
+
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing
+
+The Skill does not log in with real credentials, read secrets, call production APIs, or perform destructive probing.
+
+### Reference links
+
+- API Security Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md
+- API Security Testing Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing
+- API Security Testing details: https://inaodeng.com/en/qaskills/api-security-testing/
+- Awesome QA Skills project: https://github.com/naodeng/awesome-qa-skills

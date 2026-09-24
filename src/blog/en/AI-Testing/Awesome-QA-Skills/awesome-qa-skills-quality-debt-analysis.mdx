@@ -1,35 +1,85 @@
 ---
-title: "Quality Debt Analysis: Prioritize the gaps that make future change more expensive"
+title: "Quality Debt Analysis Skill: Prioritize the gaps that make future change more expensive"
 description: "Quality Debt Analysis field guide: identify quality debt, impact, interest, evidence, ownership, and repayment options."
 date: 2026-10-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI Testing","Agent Skills","Quality Debt Analysis"]
+tags: ["AI Testing", "QA Skills", "Quality Debt Analysis"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Quality debt is not every imperfection. It is the gap that keeps charging the team—through slower feedback, repeated incidents, risky releases, or expensive diagnosis.
+
+## Why this Skill is needed
 
 Quality Debt Analysis identifies quality gaps, estimates their ongoing cost and risk, and turns them into owned repayment or containment actions.
 
-The Quality Debt Analysis Skill is useful when a team needs a structured review of gap, interest, impact, evidence, exposure, owner, containment, and repayment. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+## What the Skill does
+
+The Quality Debt Analysis Skill is useful when a team needs a structured review of gap, interest, impact, evidence, exposure, owner, containment, and repayment.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Quality Debt Analysis.
-
-## Quality Debt Analysis Skill: what it is for
 
 A practical standard for this Skill is simple: A useful debt analysis makes the interest visible. A flaky suite is not urgent because it is annoying; it is urgent when its reruns delay releases and its blind spots correlate with real defects.
 
 Use it when the team needs a repeatable review of gap, interest, impact, evidence, exposure, owner, containment, and repayment—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in the [Quality Debt Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis) contains the entry point and supporting assets where they exist.
+The Quality Debt Analysis Skill can organize material, evidence, and next actions for Debt record. It does not replace:
 
-The entry point centers gap, interest, impact, evidence, exposure, owner, containment, and repayment. Keep its decision boundary visible and do not turn a static design into an execution claim.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Debt record | Gap, evidence, impact, and ongoing cost | Confidence and age |
+| Priority | Repay, contain, monitor, accept, or retire | Decision basis |
+| Plan | Smallest action, owner, date, and closure evidence | Review trigger |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Debt record, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Debt record, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -51,7 +101,43 @@ Expected output: [risk-ordered findings, evidence status, and next actions]
 Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
 ```
 
-## Make the result usable by the next person
+### Analysis
+
+Start with a bounded pass—analyze a flaky checkout suite that delays every release and still misses a recurring payment-state defect. Compare four weeks of reruns, release delay, failure clusters, and escaped payment defects. A sensible plan may quarantine one test temporarily, add state evidence, and repay the root fixture problem before expanding coverage.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+### Finding
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Debt record meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Debt record |
+| Finding | The condition or result for Debt record is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -61,29 +147,27 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 Do not write “passed” without a run record, query result, or source artifact. A useful debt analysis makes the interest visible. A flaky suite is not urgent because it is annoying; it is urgent when its reruns delay releases and its blind spots correlate with real defects.
 
-## Run one focused pass
+### Next-stage route
 
-Start with a bounded pass—analyze a flaky checkout suite that delays every release and still misses a recurring payment-state defect. Compare four weeks of reruns, release delay, failure clusters, and escaped payment defects. A sensible plan may quarantine one test temporarily, add state evidence, and repay the root fixture problem before expanding coverage.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-## Improve the first result
+## How to prepare better input
 
 If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
 
 A richer input changes the answer here because gap, interest, impact, evidence, exposure, owner, containment, and repayment must be tied to evidence rather than inferred from a familiar pattern.
+
+## Working with other Skills
+
+- [Test Maintenance Cost Analysis](https://inaodeng.com/en/qaskills/test-maintenance-cost-analysis/):measures recurring test cost.
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/):checks suite reliability and value.
+- [Quality Risk Analysis](https://inaodeng.com/en/qaskills/quality-risk-analysis/):prioritizes debt by product risk.
 
 ## Common traps
 
 1. Calling every old test a debt item.
 2. Prioritizing by age alone.
 3. Removing a failing check without recording the risk it contained.
-
-## Related Skills
-
-- [Test Maintenance Cost Analysis](https://inaodeng.com/en/qaskills/test-maintenance-cost-analysis/)：measures recurring test cost。
-- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：checks suite reliability and value。
-- [Quality Risk Analysis](https://inaodeng.com/en/qaskills/quality-risk-analysis/)：prioritizes debt by product risk。
 
 ## Install and invoke
 
@@ -95,7 +179,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 After installation, invoke it with the `quality-debt-analysis` Skill and attach the real project material.
 
-## Two practical questions
+## FAQ
 
 ### Can debt be accepted?
 
@@ -108,6 +192,14 @@ Use the original evidence measure and show the behavior, cost, or risk changed.
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in the [Quality Debt Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis) contains the entry point and supporting assets where they exist.
+
+The entry point centers gap, interest, impact, evidence, exposure, owner, containment, and repayment. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+### Reference links
 
 - Quality Debt Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md)
 

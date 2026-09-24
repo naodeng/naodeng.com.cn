@@ -1,36 +1,85 @@
 ---
-title: "API Pagination Testing: Catch gaps, duplicates, and unstable ordering across changing data"
+title: "API Pagination Testing Skill: Catch gaps, duplicates, and unstable ordering across changing data"
 description: "API Pagination Testing field guide: validate page size, cursors, ordering, duplicates, gaps, mutations, and end-of-list behavior."
 date: 2026-11-10T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI Testing","Agent Skills","API Pagination Testing"]
+tags: ["AI Testing", "QA Skills", "API Pagination Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Pagination bugs rarely announce themselves on page one. They appear when a record is inserted between two requests and the consumer quietly skips an audit event.
+
+## Why this Skill is needed
 
 API Pagination Testing checks whether a consumer can traverse a changing collection without missing, duplicating, or reordering records beyond the contract.
 
-The API Pagination Testing Skill is useful when a team needs a structured review of page size, cursor or offset semantics, stable ordering, mutation, duplicates, gaps, and termination. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+## What the Skill does
+
+The API Pagination Testing Skill is useful when a team needs a structured review of page size, cursor or offset semantics, stable ordering, mutation, duplicates, gaps, and termination.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Pagination Testing.
 
-## API Pagination Testing Skill: what it is for
-
-
 Use it when the team needs a repeatable review of page size, cursor or offset semantics, stable ordering, mutation, duplicates, gaps, and termination—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
-A good result keeps page size, cursor or offset semantics, stable ordering, mutation, duplicates, gaps, and termination connected to a source and a verification action. It does not turn a design checklist into a passing result.
+A useful result keeps page size, cursor or offset semantics, stable ordering, mutation, duplicates, gaps, and termination connected to a source and a verification action. It does not turn a design checklist into a passing result.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in the [API Pagination Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-pagination-testing/prompts/api-pagination-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-pagination-testing) also contains the entry point and supporting assets where they exist.
+The API Pagination Testing Skill can organize material, evidence, and next actions for Traversal result. It does not replace:
 
-The entry point centers page size, cursor or offset semantics, stable ordering, mutation, duplicates, gaps, and termination. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Traversal result | Complete, duplicate-free, ordered record set | Observed IDs and expected IDs |
+| Pagination finding | Gap, duplicate, invalid cursor, unstable order, or wrong count | Page and mutation point |
+| Consumer action | Retry, snapshot, cursor change, or contract clarification | Owner and evidence |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Traversal result, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Traversal result, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -54,7 +103,43 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ```
 
-## Make the result usable by the next person
+### Analysis
+
+Start with a bounded pass—traverse an audit-log API while new events arrive and older events are archived. Read audit events with a page size of 50, insert two newer events after page one, then continue with the returned cursor. Compare the collected IDs with a timestamp-and-ID ordered fixture. A correct cursor may exclude new events from the current traversal, but it must not repeat or skip the original snapshot.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+### Finding
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Traversal result meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Traversal result |
+| Finding | The condition or result for Traversal result is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -64,30 +149,25 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 Do not write “passed” without a run record, query result, or source artifact. A useful pagination test treats the collection as a moving target when the API does. It records IDs rather than trusting total counts, and it makes the ordering key visible.
 
-## Run one focused pass
+### Next-stage route
 
-Start with a bounded pass—traverse an audit-log API while new events arrive and older events are archived. Read audit events with a page size of 50, insert two newer events after page one, then continue with the returned cursor. Compare the collected IDs with a timestamp-and-ID ordered fixture. A correct cursor may exclude new events from the current traversal, but it must not repeat or skip the original snapshot.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-## Improve the first result
+## How to prepare better input
 
 If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
 
+## Working with other Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/):anchors pagination fields in the contract.
+- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/):covers invalid cursors and limits.
+- [API Version Compatibility Testing](https://inaodeng.com/en/qaskills/api-version-compatibility-testing/):checks pagination changes across versions.
 
 ## Common traps
 
 1. Asserting only page length.
 2. Using a mutable total count as completeness proof.
 3. Testing a cursor without changing the collection between requests.
-
-## Related Skills
-
-- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：anchors pagination fields in the contract。
-- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/)：covers invalid cursors and limits。
-- [API Version Compatibility Testing](https://inaodeng.com/en/qaskills/api-version-compatibility-testing/)：checks pagination changes across versions。
-
-
 
 ## Install and invoke
 
@@ -101,7 +181,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 After installation, invoke it with the `api-pagination-testing` Skill and attach the real project material.
 
-## Two practical questions
+## FAQ
 
 ### Is offset pagination always wrong?
 
@@ -118,6 +198,14 @@ It should be explicit—end of collection, invalid cursor, or a transient read�
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in the [API Pagination Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-pagination-testing/prompts/api-pagination-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-pagination-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers page size, cursor or offset semantics, stable ordering, mutation, duplicates, gaps, and termination. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+### Reference links
 
 - API Pagination Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-pagination-testing/prompts/api-pagination-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-pagination-testing/prompts/api-pagination-testing.md)
 

@@ -1,5 +1,5 @@
 ---
-title: "Test Runtime Optimization: Shorten Slow Feedback with a Trusted Baseline"
+title: "Test Runtime Optimization Skill: Shorten Slow Feedback with a Trusted Baseline"
 description: "A bilingual guide to optimizing slow tests through profiling evidence, setup and teardown, parallelism, isolation, and comparable runtime baselines."
 date: 2026-11-05T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI Testing", "QA Skills", "Test Runtime Optimization"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Making a test faster is easy when correctness is someone else’s problem. Safe runtime optimization starts with a baseline, a bottleneck, and evidence that parallelism or setup changes did not change what the test means.
+
+## Why this Skill is needed
 
 The Test Runtime Optimization Skill analyzes slow tests, profiling evidence, setup and teardown, parallelism, isolation, and baselines. It turns a speed proposal into a bounded experiment rather than a promise.
 
-Speed matters only if the optimized test still produces a comparable trustworthy signal.
+## What the Skill does
 
-## Test Runtime Optimization Skill: what it is for
+Speed matters only if the optimized test still produces a comparable trustworthy signal.
 
 Use this Skill when CI feedback is slow or a test area needs profiling before changing fixtures, workers, ordering, or environment setup.
 
-A good result identifies the slow signal, measured baseline, bottleneck hypothesis, isolation constraint, optimization, expected behavior, and validation evidence.
+A useful result identifies the slow signal, measured baseline, bottleneck hypothesis, isolation constraint, optimization, expected behavior, and validation evidence.
 
 Use it when a suite has a clear runtime problem and the team needs to decide whether to profile, change setup, parallelize, or isolate work.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Test Runtime Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization) may also contain evaluation cases and supporting material.
+The Test Runtime Optimization Skill can organize material, evidence, and next actions for Bottleneck. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Bottleneck | Measured slow path and evidence | Baseline and profile |
+| Optimization option | Setup, teardown, parallel, or isolation change | Expected trade-off |
+| Trust boundary | What must remain equivalent | Data and behavior check |
+| Validation | Comparable before/after evidence | Owner and rollback |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Bottleneck, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Bottleneck, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the test-runtime-optimization Skill.\n\nTask: Reduce pre-merge runtime for a catalog API suite whose setup creates a full database snapshot per test.\nInputs: [duration distribution, profiler output, fixture code, worker config, isolation constraints, run records]\nScope: [pre-merge API suite]\nConstraints: [preserve data isolation and assertions]\n\nCover slow tests, profiling evidence, setup/teardown, parallelism, isolation, baseline, and validation method.
+Use the test-runtime-optimization Skill.
+
+Task: Reduce pre-merge runtime for a catalog API suite whose setup creates a full database snapshot per test.
+Inputs: [duration distribution, profiler output, fixture code, worker config, isolation constraints, run records]
+Scope: [pre-merge API suite]
+Constraints: [preserve data isolation and assertions]
+
+Cover slow tests, profiling evidence, setup/teardown, parallelism, isolation, baseline, and validation method.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Replace full snapshot setup without sharing state
+
+Profiling shows most runtime is snapshot creation, but tests also mutate shared reference data. The Skill should distinguish expensive setup from unsafe sharing, propose a smaller isolated fixture experiment, and require before/after correctness and duration evidence.
+
+The analysis prepares an optimization experiment. It cannot prove speedup, correctness, or preserved coverage without comparable runs.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Bottleneck meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Bottleneck |
+| Finding | The condition or result for Bottleneck is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Use the test-runtime-optimization Skill.\n\nTask: Reduce pre-merge runtime for a
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Replace full snapshot setup without sharing state
+### Next-stage route
 
-Profiling shows most runtime is snapshot creation, but tests also mutate shared reference data. The Skill should distinguish expensive setup from unsafe sharing, propose a smaller isolated fixture experiment, and require before/after correctness and duration evidence.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The analysis prepares an optimization experiment. It cannot prove speedup, correctness, or preserved coverage without comparable runs.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide a duration distribution, version and environment, profiler data, setup/teardown code, worker settings, resource constraints, and correctness checks. Keep one-off speed observations bounded.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [CI Test Optimization](https://inaodeng.com/en/qaskills/ci-test-optimization/):connects runtime changes to pipeline feedback.
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/):provides suite-level duration and flakiness context.
+- [Test Code Review](https://inaodeng.com/en/qaskills/test-code-review/):reviews fixtures and assertions affected by optimization.
 
 ## Common traps
 
 1. Optimizing from the slowest single run rather than a comparable distribution.
 2. Parallelizing tests that share database, port, clock, or filesystem state.
 3. Removing setup or assertions and calling the shorter run equivalent.
-
-## Related Skills
-
-- [CI Test Optimization](https://inaodeng.com/en/qaskills/ci-test-optimization/)：connects runtime changes to pipeline feedback。
-- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：provides suite-level duration and flakiness context。
-- [Test Code Review](https://inaodeng.com/en/qaskills/test-code-review/)：reviews fixtures and assertions affected by optimization。
 
 ## Install and invoke
 
@@ -91,7 +187,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Is a shorter duration enough to declare success?
 
@@ -104,6 +200,14 @@ No. Sharing may introduce order dependence or state leakage; the isolation bound
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Test Runtime Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Test Runtime Optimization prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md)
 - Test Runtime Optimization Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-runtime-optimization)

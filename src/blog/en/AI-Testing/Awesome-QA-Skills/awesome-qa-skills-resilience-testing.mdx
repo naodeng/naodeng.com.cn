@@ -1,5 +1,5 @@
 ---
-title: "Resilience Testing: Review Degradation, Isolation, and Residual Risk"
+title: "Resilience Testing Skill: Review Degradation, Isolation, and Residual Risk"
 description: "A bilingual guide to resilience-testing analysis covering degradation behavior, isolation boundaries, recovery capability, and residual risk."
 date: 2026-10-25T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI Testing", "QA Skills", "Resilience Testing"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Resilience is what remains useful when a dependency is slow, unavailable, or returning partial failure. It is not the same as a normal-path smoke test or a generic incident narrative.
+
+## Why this Skill is needed
 
 The Resilience Testing Skill prepares evidence-bounded analysis of degradation behavior, isolation boundaries, recovery capability, and residual risk. It keeps a planned experiment separate from an executed fault test.
 
-The useful output is a small, reversible validation that can change the resilience judgment.
+## What the Skill does
 
-## Resilience Testing Skill: what it is for
+The useful output is a small, reversible validation that can change the resilience judgment.
 
 Use this Skill to review how a service should degrade when dependencies fail and whether recovery or containment evidence is ready. It does not inject faults or call production dependencies.
 
-A good result names the failure trigger, expected degraded behavior, isolation boundary, recovery capability, residual risk, owner, stop condition, and validation method.
+A useful finding names the failure trigger, expected degraded behavior, isolation boundary, recovery capability, residual risk, owner, stop condition, and validation method.
 
 Use it when a team is preparing a controlled resilience exercise, reviewing a dependency design, or investigating an unclear fallback path.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Resilience Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing/prompts/resilience-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing) may also contain evaluation cases and supporting material.
+The Resilience Testing Skill can organize material, evidence, and next actions for Degraded behavior. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Degraded behavior | What users and operators should observe | Expected result and source |
+| Isolation boundary | What failure must not spread to | Boundary and evidence |
+| Recovery capability | How normal behavior returns | Runbook and validation |
+| Residual risk | What remains unknown or accepted | Owner and next action |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Degraded behavior, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Degraded behavior, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the resilience-testing Skill.\n\nTask: Prepare a controlled review of the checkout service when the tax provider times out and the payment queue is delayed.\nInputs: [dependency map, fallback design, queue policy, alerts, runbook, validation environment]\nScope: [staging only, no production fault injection]\nConstraints: [masked data and explicit stop conditions]\n\nCover degradation, isolation, recovery capability, and residual risk. Keep unsupported thresholds and execution claims pending.
+Use the resilience-testing Skill.
+
+Task: Prepare a controlled review of the checkout service when the tax provider times out and the payment queue is delayed.
+Inputs: [dependency map, fallback design, queue policy, alerts, runbook, validation environment]
+Scope: [staging only, no production fault injection]
+Constraints: [masked data and explicit stop conditions]
+
+Cover degradation, isolation, recovery capability, and residual risk. Keep unsupported thresholds and execution claims pending.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Review tax-provider timeout without turning fallback into proof
+
+The design says checkout uses a cached tax estimate when the provider times out, but does not say how stale estimates are reconciled before payment capture. The Skill should identify the consistency boundary, request a staging validation with a stop condition, and keep recovery behavior unassessed until evidence exists.
+
+The analysis prepares an isolated validation and classifies design evidence. It cannot prove fault containment, availability, or recovery until an authorized run produces evidence.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Degraded behavior meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Degraded behavior |
+| Finding | The condition or result for Degraded behavior is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Use the resilience-testing Skill.\n\nTask: Prepare a controlled review of the ch
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Review tax-provider timeout without turning fallback into proof
+### Next-stage route
 
-The design says checkout uses a cached tax estimate when the provider times out, but does not say how stale estimates are reconciled before payment capture. The Skill should identify the consistency boundary, request a staging validation with a stop condition, and keep recovery behavior unassessed until evidence exists.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The analysis prepares an isolated validation and classifies design evidence. It cannot prove fault containment, availability, or recovery until an authorized run produces evidence.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide failure modes, dependency and data-flow diagrams, fallback rules, owner roles, monitoring, runbook versions, safe environment, and stop conditions. If a boundary is missing, ask for it instead of importing a generic pattern.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Reliability Testing](https://inaodeng.com/en/qaskills/reliability-testing/):connects failure modes to availability evidence.
+- [Circuit Breaker Testing](https://inaodeng.com/en/qaskills/circuit-breaker-testing/):focuses on open, half-open, and close behavior.
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/):checks the restore path after a major failure.
 
 ## Common traps
 
 1. Treating a fallback response as success without checking stale data and downstream consistency.
 2. Listing failure modes without saying what must be isolated or how recovery is recognized.
 3. Injecting a broad failure before defining a reversible scenario and escalation path.
-
-## Related Skills
-
-- [Reliability Testing](https://inaodeng.com/en/qaskills/reliability-testing/)：connects failure modes to availability evidence。
-- [Circuit Breaker Testing](https://inaodeng.com/en/qaskills/circuit-breaker-testing/)：focuses on open, half-open, and close behavior。
-- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：checks the restore path after a major failure。
 
 ## Install and invoke
 
@@ -91,7 +187,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Can this Skill run a chaos experiment?
 
@@ -104,6 +200,14 @@ No. It is design evidence only. The fallback needs an isolated validation and an
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Resilience Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing/prompts/resilience-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Resilience Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing/prompts/resilience-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing/prompts/resilience-testing.md)
 - Resilience Testing Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing)

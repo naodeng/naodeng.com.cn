@@ -1,5 +1,5 @@
 ---
-title: "Test Data Requirement Analysis: Specify the Data a Test Can Safely Consume"
+title: "Test Data Requirement Analysis Skill: Specify the Data a Test Can Safely Consume"
 description: "A bilingual guide to analyzing test-data entities, fields, relationships, states, roles, privacy, source, lifecycle, setup, cleanup, and environment blockers."
 date: 2026-10-14T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI Testing", "QA Skills", "Test Data Requirement Analysis"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 A test cannot be reliable when its data needs are a guess. The missing piece may be a relationship, a state transition, a privacy rule, a cleanup plan, or an isolated source.
+
+## Why this Skill is needed
 
 The Test Data Requirement Analysis Skill defines data prerequisites before test design or generation. It produces TDR-## requirements and blockers without generating records, reading production data, or copying a dataset plan.
 
-The output tells test design what data must exist and why, without pretending that the data already exists.
+## What the Skill does
 
-## Test Data Requirement Analysis Skill: what it is for
+The output tells test design what data must exist and why, without pretending that the data already exists.
 
 Use this Skill to map the entities, fields, relationships, states, roles, sources, masking, lifecycle, setup, cleanup, and isolation required by a scenario.
 
@@ -23,13 +24,63 @@ A good TDR finding links a scenario to its data requirement, constraint, source,
 
 Use it when test design is blocked by unclear data prerequisites, a new workflow needs boundary and combination data, or privacy and cleanup requirements are not explicit.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Test Data Requirement Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-requirement-analysis/prompts/test-data-requirement-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-requirement-analysis) may also contain evaluation cases and supporting material.
+The Test Data Requirement Analysis Skill can organize material, evidence, and next actions for Data requirement. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Data requirement | Entity, field, relationship, state, role, and why needed | TDR ID and source |
+| Boundary condition | Valid, invalid, boundary, or combination need | Scenario link |
+| Privacy and lifecycle | Masking, retention, setup, cleanup, and isolation | Constraint and evidence |
+| Blocker | What prevents generation or execution | Owner and validation action |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Data requirement, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Data requirement, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the test-data-requirement-analysis Skill.\n\nTask: Define data requirements for testing subscription cancellation with active invoices, refund eligibility, multiple users, and a pending payment.\nInputs: [workflow, domain schema, role rules, privacy policy, environment notes, cleanup process]\nScope: [staging, synthetic billing data]\nConstraints: [do not generate records or read production data]\n\nProduce TDR-## requirements and blockers covering entities, fields, relationships, states, roles, sources, masking, setup, isolation, and cleanup.
+Use the test-data-requirement-analysis Skill.
+
+Task: Define data requirements for testing subscription cancellation with active invoices, refund eligibility, multiple users, and a pending payment.
+Inputs: [workflow, domain schema, role rules, privacy policy, environment notes, cleanup process]
+Scope: [staging, synthetic billing data]
+Constraints: [do not generate records or read production data]
+
+Produce TDR-## requirements and blockers covering entities, fields, relationships, states, roles, sources, masking, setup, isolation, and cleanup.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Prepare cancellation data without copying billing records
+
+The cancellation flow needs an active subscription, an unpaid invoice, a user with refund eligibility, and a second user without permission. The Skill should specify these relationships and cleanup rules, then mark data generation blocked if staging cannot create synthetic invoices. It should not request a production export.
+
+The output is a data-preparation requirement list. It does not prove records exist, are compliant, or passed a test.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Data requirement meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Data requirement |
+| Finding | The condition or result for Data requirement is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Use the test-data-requirement-analysis Skill.\n\nTask: Define data requirements 
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Prepare cancellation data without copying billing records
+### Next-stage route
 
-The cancellation flow needs an active subscription, an unpaid invoice, a user with refund eligibility, and a second user without permission. The Skill should specify these relationships and cleanup rules, then mark data generation blocked if staging cannot create synthetic invoices. It should not request a production export.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The output is a data-preparation requirement list. It does not prove records exist, are compliant, or passed a test.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide the workflow, domain schema, roles, states, privacy policy, source options, environment, seed approach, setup and cleanup ownership. When a field or relationship is unknown, record it as a blocker.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Requirement Quality Review](https://inaodeng.com/en/qaskills/requirement-quality-review/):clarifies upstream acceptance and scope.
+- [State Transition Testing](https://inaodeng.com/en/qaskills/state-transition-testing/):identifies state-dependent data needs.
+- [Test Data Generation](https://inaodeng.com/en/qaskills/test-data-generation/):is the downstream activity after requirements are clear.
 
 ## Common traps
 
 1. Listing values without explaining the relationship, state, or cleanup need.
 2. Treating schema presence as data availability or a masking statement as compliance evidence.
 3. Mixing prerequisite analysis with actual dataset generation.
-
-## Related Skills
-
-- [Requirement Quality Review](https://inaodeng.com/en/qaskills/requirement-quality-review/)：clarifies upstream acceptance and scope。
-- [State Transition Testing](https://inaodeng.com/en/qaskills/state-transition-testing/)：identifies state-dependent data needs。
-- [Test Data Generation](https://inaodeng.com/en/qaskills/test-data-generation/)：is the downstream activity after requirements are clear。
 
 ## Install and invoke
 
@@ -91,7 +187,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Can this Skill generate the records?
 
@@ -104,6 +200,14 @@ No. Masking, privacy approval, retention, isolation, and cleanup need their own 
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Test Data Requirement Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-requirement-analysis/prompts/test-data-requirement-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-requirement-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Test Data Requirement Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-requirement-analysis/prompts/test-data-requirement-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-requirement-analysis/prompts/test-data-requirement-analysis.md)
 - Test Data Requirement Analysis Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-requirement-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-data-requirement-analysis)

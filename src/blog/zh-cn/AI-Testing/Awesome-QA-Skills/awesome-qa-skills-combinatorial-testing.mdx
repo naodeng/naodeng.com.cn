@@ -1,35 +1,85 @@
 ---
-title: "组合测试设计：覆盖因素交互，而不是把所有可能性都堆出来"
+title: "组合测试设计 Skill：覆盖因素交互，而不是把所有可能性都堆出来"
 description: "组合测试设计实战指南：选择因素与取值、两两或多因素覆盖、约束、风险和证据。"
 date: 2026-10-22T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI 测试","Agent Skills","组合测试设计"]
+tags: ["AI 测试", "QA Skills", "组合测试设计"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 结算流程可能同时受到支付方式、币种、语言、设备和网络影响。把所有组合都测完很贵，但完全不测交互更危险。
+
+## 为什么需要这个 Skill
 
 组合测试设计用于在保留约束和风险优先级的前提下，用较小的组合集合覆盖重要因素交互。
 
-当团队需要围绕“因素、取值、约束、两两或多因素覆盖、风险加权和可解释选择”工作时，使用组合测试设计 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+## Skill 用来做什么
+
+当团队需要围绕“因素、取值、约束、两两或多因素覆盖、风险加权和可解释选择”工作时，使用组合测试设计 Skill。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦组合测试设计。
-
-## 组合测试设计 Skill 用来做什么
 
 好的组合设计从风险模型开始，并把约束当成一等输入。它能解释为什么保留某个罕见的支付方式与语言组合，却省略几十个低风险组合。
 
 它适合这些场景：团队需要重复检查因素、取值、约束、两两或多因素覆盖、风险加权和可解释选择；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行契约位于 [组合测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/combinatorial-testing/prompts/combinatorial-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/combinatorial-testing) 中包含入口文件以及实际存在的配套资料。
+组合测试设计 Skill 可以组织组合集合的材料、证据和下一步动作，但它不能替代：
 
-入口文件重点约束因素、取值、约束、两两或多因素覆盖、风险加权和可解释选择。要保留它的决策边界，不要把静态设计写成执行结论。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 组合集合 | 选中的用例与因素取值 | 符合约束 |
+| 覆盖结论 | 已覆盖的两两或多因素交互 | 范围与例外 |
+| 风险缺口 | 未被代表的高风险组合 | 负责人和下一条用例 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“组合集合”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕组合集合，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
@@ -51,7 +101,43 @@ series: ["Awesome QA Skills 实战"]
 先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
 ```
 
-## 组合测试设计 要交付什么
+### 分析（Analysis）
+
+先从一个边界清楚的小回合开始：为支付方式、币种、语言、设备和网络设计结算组合矩阵，同时排除不可能的组合。保留银行卡、钱包和银行转账在两种币种、两种网络条件下的组合，同时排除不支持钱包支付的国家。提高币种转换和离线恢复组合的权重，降低纯视觉语言差异的权重。
+
+交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+
+### Finding
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“组合集合”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和组合集合的具体对象 |
+| 发现 | 组合集合的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 输出字段 | 它要回答什么 | 示例状态 |
 | --- | --- | --- |
@@ -61,29 +147,27 @@ series: ["Awesome QA Skills 实战"]
 
 没有运行记录、查询结果或原始产物时，不要写“已通过”。好的组合设计从风险模型开始，并把约束当成一等输入。它能解释为什么保留某个罕见的支付方式与语言组合，却省略几十个低风险组合。
 
-## 在项目里跑一轮
+### 下一步路由
 
-先从一个边界清楚的小回合开始：为支付方式、币种、语言、设备和网络设计结算组合矩阵，同时排除不可能的组合。保留银行卡、钱包和银行转账在两种币种、两种网络条件下的组合，同时排除不支持钱包支付的国家。提高币种转换和离线恢复组合的权重，降低纯视觉语言差异的权重。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
-
-## 如何把初版做得更好
+## 怎样准备更好的输入
 
 如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
 
 这里补充信息会改变结果，因为因素、取值、约束、两两或多因素覆盖、风险加权和可解释选择必须接回证据，不能只靠熟悉的测试套路推断。
+
+## 和其他 Skill 怎么配合
+
+- [成对组合测试设计](https://inaodeng.com/zh-cn/qaskills/pairwise-testing/)：提供聚焦的两因素覆盖。
+- [等价类划分测试设计](https://inaodeng.com/zh-cn/qaskills/equivalence-partitioning/)：在组合前减少因素取值。
+- [决策表测试设计](https://inaodeng.com/zh-cn/qaskills/decision-table-testing/)：处理条件组合。
 
 ## 容易踩的坑
 
 1. 没有写约束就开始生成组合。
 2. 只报告两两覆盖，不说明排除的组合。
 3. 为了最小套件而丢掉高风险交互。
-
-## 相关 Skill
-
-- [成对组合测试设计](https://inaodeng.com/zh-cn/qaskills/pairwise-testing/)：提供聚焦的两因素覆盖。
-- [等价类划分测试设计](https://inaodeng.com/zh-cn/qaskills/equivalence-partitioning/)：在组合前减少因素取值。
-- [决策表测试设计](https://inaodeng.com/zh-cn/qaskills/decision-table-testing/)：处理条件组合。
 
 ## 安装与调用
 
@@ -95,7 +179,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 安装后使用 `combinatorial-testing` Skill，并附上真实项目材料。
 
-## 常见问题
+## FAQ
 
 ### 两两覆盖一定够吗？
 
@@ -106,6 +190,14 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 可以作为约束记录，但不应占用可执行测试位置。
 
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行契约位于 [组合测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/combinatorial-testing/prompts/combinatorial-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/combinatorial-testing) 中包含入口文件以及实际存在的配套资料。
+
+入口文件重点约束因素、取值、约束、两两或多因素覆盖、风险加权和可解释选择。要保留它的决策边界，不要把静态设计写成执行结论。
+
+### 参考链接
 
 - 组合测试设计 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/combinatorial-testing/prompts/combinatorial-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/combinatorial-testing/prompts/combinatorial-testing.md)
 

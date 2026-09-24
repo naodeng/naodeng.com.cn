@@ -1,5 +1,5 @@
 ---
-title: "Recovery Testing：验证恢复步骤、RPO/RTO 和人工接管"
+title: "恢复测试 Skill：验证恢复步骤、RPO/RTO 和人工接管"
 description: "恢复测试双语指南，围绕恢复点、恢复时间、恢复步骤、验证证据和人工接管准备可复核的验证。"
 date: 2026-10-24T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI 测试", "QA Skills", "恢复测试"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 有备份文件不等于恢复成功。真正需要回答的是：服务能否在约定窗口内恢复正确状态，以及自动化停下来时是否有人知道怎样确认结果。
+
+## 为什么需要这个 Skill
 
 Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证准备，同时区分静态设计、dry-run、计划步骤和已经完成的执行。
 
-本文的判断标准是：只有在还原状态被验证，并且下一位操作人员知道偏离时怎么办，才算真正完成。
+## Skill 用来做什么
 
-## 恢复测试 Skill 用来做什么
+本文的判断标准是：只有在还原状态被验证，并且下一位操作人员知道偏离时怎么办，才算真正完成。
 
 当你要检查服务或数据流的恢复点、恢复时间、恢复步骤、验证证据和人工接管边界时，使用这个 Skill。它不会自行注入故障，也不会直接访问生产依赖。
 
@@ -23,13 +24,63 @@ Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证
 
 当灾备演练即将开始、备份或拓扑发生变化，或者 runbook 声称具备恢复能力但没有近期验证记录时，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [恢复测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing) 中还可能包含评测用例和补充材料。
+恢复测试 Skill 可以组织恢复目标的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 恢复目标 | 场景允许损失和延迟到什么程度 | 目标来源或 pending |
+| 恢复路径 | 有序步骤、前置条件和预期观察 | runbook 与负责人 |
+| 验证证据 | 恢复后怎样检查数据和服务行为 | 查询、产物或缺失 |
+| 接管边界 | 什么时候自动化停止、必须由人工决定 | 停止条件与升级 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“恢复目标”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕恢复目标，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证
 可以这样调用：
 
 ~~~text
-请使用 recovery-testing Skill。\n\n任务：为订单服务遭遇数据库区域故障后的受控恢复验证做准备。\n输入材料：[RPO/RTO 目标、备份 ID、runbook、依赖、验证查询和负责人]\n范围：[staging 恢复、订单数据和队列重放]\n限制：[不注入生产故障、数据脱敏、演练限时]\n\n建模恢复点、恢复时间、步骤、验证证据和人工接管。没有依据的阈值和执行结论保持 pending。
+请使用 recovery-testing Skill。
+
+任务：为订单服务遭遇数据库区域故障后的受控恢复验证做准备。
+输入材料：[RPO/RTO 目标、备份 ID、runbook、依赖、验证查询和负责人]
+范围：[staging 恢复、订单数据和队列重放]
+限制：[不注入生产故障、数据脱敏、演练限时]
+
+建模恢复点、恢复时间、步骤、验证证据和人工接管。没有依据的阈值和执行结论保持 pending。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：验证订单恢复，不要直接宣布生产可恢复
+
+staging 演练可以还原数据库备份，但 runbook 没有说明备份之后写入的订单怎样对账，也没有说明队列如何重放。这个 Skill 应标记恢复点和重放验证不完整，提出最小证据请求，不要因为数据库进程启动就宣布服务可恢复。
+
+分析可以准备隔离验证并分类已有产物，不能在授权演练产生证据前证明恢复时间、数据正确性或生产就绪。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“恢复目标”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和恢复目标的具体对象 |
+| 发现 | 恢复目标的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：验证订单恢复，不要直接宣布生产可恢复
+### 下一步路由
 
-staging 演练可以还原数据库备份，但 runbook 没有说明备份之后写入的订单怎样对账，也没有说明队列如何重放。这个 Skill 应标记恢复点和重放验证不完整，提出最小证据请求，不要因为数据库进程启动就宣布服务可恢复。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-分析可以准备隔离验证并分类已有产物，不能在授权演练产生证据前证明恢复时间、数据正确性或生产就绪。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供目标来源、场景、备份和 runbook 版本、依赖清单、验证查询、环境和负责人。RPO/RTO 未经批准时保留 pending，不要自行套用标准阈值。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [灾难恢复测试](https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/)：把场景扩展到更大的灾备计划。
+- [故障转移测试](https://inaodeng.com/zh-cn/qaskills/failover-testing/)：检查流量和服务切换行为。
+- [韧性测试](https://inaodeng.com/zh-cn/qaskills/resilience-testing/)：检查依赖降级或失败时的行为。
 
 ## 容易踩的坑
 
 1. 把进程启动成功当成业务数据和下游队列一致。
 2. 只写恢复步骤，不写前置条件、预期观察、负责人或停止条件。
 3. 没有授权、隔离和回滚就直接对生产执行恢复计划。
-
-## 相关 Skill
-
-- [灾难恢复测试](https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/)：把场景扩展到更大的灾备计划。
-- [故障转移测试](https://inaodeng.com/zh-cn/qaskills/failover-testing/)：检查流量和服务切换行为。
-- [韧性测试](https://inaodeng.com/zh-cn/qaskills/resilience-testing/)：检查依赖降级或失败时的行为。
 
 ## 安装与调用
 
@@ -91,7 +187,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 这个 Skill 能替我们设定 RPO 或 RTO 吗？
 
@@ -101,9 +197,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 不算。应标记为 dry-run 证据，把已完成恢复的结论单独管理。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [恢复测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - 恢复测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md)
 - 恢复测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing)

@@ -1,5 +1,5 @@
 ---
-title: "Quality Maturity Assessment: Turn QA Practice Evidence into an Improvement Roadmap"
+title: "Quality Maturity Assessment Skill: Turn QA Practice Evidence into an Improvement Roadmap"
 description: "A bilingual field guide to assessing quality-practice maturity with rubric anchors, evidence states, improvement gaps, and Human decision boundaries."
 date: 2026-10-06T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI Testing", "QA Skills", "Quality Maturity Assessment"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 A maturity label is easy to write and hard to defend. “Advanced QA” means little if nobody can point to the evidence, the rubric anchor, or the gap that should close next.
+
+## Why this Skill is needed
 
 The Quality Maturity Assessment Skill turns plans, test reports, delivery signals, and production feedback into an evidence-bounded view of quality practice. It gives a team a credible baseline without pretending a static document proves runtime capability.
 
-The useful unit is not a maturity badge; it is a traceable gap that a team can validate and close.
+## What the Skill does
 
-## Quality Maturity Assessment Skill: what it is for
+The useful unit is not a maturity badge; it is a traceable gap that a team can validate and close.
 
 Use this Skill to review maturity dimensions such as requirement quality, test design, automation, delivery feedback, and operational learning. It separates facts, evidence-backed inferences, candidate improvements, and Human decisions instead of collapsing them into one unsupported score.
 
@@ -23,13 +24,63 @@ A good assessment names the dimension, rubric anchor, source, evidence state, ga
 
 Use it when a product group is comparing quality practices, preparing an improvement plan, or reviewing whether a reported maturity gain is supported by evidence.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Quality Maturity Assessment prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-maturity-assessment) may also contain evaluation cases and supporting material.
+The Quality Maturity Assessment Skill can organize material, evidence, and next actions for Dimension finding. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Dimension finding | What the evidence supports about one practice | Assessed / Unassessed / Pending |
+| Evidence map | Which source supports the finding and how fresh it is | Source, version, date, or missing |
+| Improvement gap | The smallest change that can move the practice forward | Owner, priority, close condition |
+| Decision boundary | What still needs Human confirmation | Explicitly not scored |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Dimension finding, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Dimension finding, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 Put the material on the table before asking for a judgment. Gaps can remain, but their status must stay visible.
 
@@ -43,10 +94,57 @@ Put the material on the table before asking for a judgment. Gaps can remain, but
 Use a request like this:
 
 ~~~text
-Use the quality-maturity-assessment Skill.\n\nTask: Compare the checkout team's quality practice for releases R24.8 and R24.9 across requirement review, test design, CI feedback, and production learning.\nInputs: [rubric, source links, CI reports, defect records, runbook paths]\nScope: [teams, releases, dimensions]\nConstraints: [time window, missing data, privacy limits]\n\nRetain source, evidence state, rubric anchor, priority, owner, close condition, and validation method. Do not produce a release approval or unsupported maturity score.
+Use the quality-maturity-assessment Skill.
+
+Task: Compare the checkout team's quality practice for releases R24.8 and R24.9 across requirement review, test design, CI feedback, and production learning.
+Inputs: [rubric, source links, CI reports, defect records, runbook paths]
+Scope: [teams, releases, dimensions]
+Constraints: [time window, missing data, privacy limits]
+
+Retain source, evidence state, rubric anchor, priority, owner, close condition, and validation method. Do not produce a release approval or unsupported maturity score.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Compare releases without overstating maturity
+
+A checkout team adds contract tests and reports fewer escaped defects in R24.9. The Skill should record that coverage is evidenced for the supplied API set, while production learning remains unassessed if the incident-review window is missing. The next action can be to attach one release review and its learning record; the conclusion stays pending until that evidence exists.
+
+The assessment proves the quality of the supplied evidence and the gap analysis. It does not prove every team follows the practice, that the next release is safe, or that a maturity label is the business decision.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Dimension finding meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Dimension finding |
+| Finding | The condition or result for Dimension finding is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -57,29 +155,27 @@ Use the quality-maturity-assessment Skill.\n\nTask: Compare the checkout team's 
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Compare releases without overstating maturity
+### Next-stage route
 
-A checkout team adds contract tests and reports fewer escaped defects in R24.9. The Skill should record that coverage is evidenced for the supplied API set, while production learning remains unassessed if the incident-review window is missing. The next action can be to attach one release review and its learning record; the conclusion stays pending until that evidence exists.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The assessment proves the quality of the supplied evidence and the gap analysis. It does not prove every team follows the practice, that the next release is safe, or that a maturity label is the business decision.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide the rubric, fixed time window, release or team identifiers, evidence inventory, and intended use. If the rubric is missing, ask for it; do not invent a scale.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Quality Metrics Design](https://inaodeng.com/en/qaskills/quality-metrics-design/):defines metric contracts that can support a maturity dimension.
+- [Quality Gate Design](https://inaodeng.com/en/qaskills/quality-gate-design/):turns high-risk gaps into explicit delivery gates.
+- [Quality Debt Analysis](https://inaodeng.com/en/qaskills/quality-debt-analysis/):helps prioritize unresolved quality-practice debt.
 
 ## Common traps
 
 1. Treating a tool or dashboard as proof that a practice is consistently used.
 2. Turning one improved metric into a causal maturity claim without a comparable window.
 3. Ranking every gap as urgent while leaving no owner, close condition, or validation method.
-
-## Related Skills
-
-- [Quality Metrics Design](https://inaodeng.com/en/qaskills/quality-metrics-design/)：defines metric contracts that can support a maturity dimension。
-- [Quality Gate Design](https://inaodeng.com/en/qaskills/quality-gate-design/)：turns high-risk gaps into explicit delivery gates。
-- [Quality Debt Analysis](https://inaodeng.com/en/qaskills/quality-debt-analysis/)：helps prioritize unresolved quality-practice debt。
 
 ## Install and invoke
 
@@ -97,7 +193,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Can an incomplete evidence set still be reviewed?
 
@@ -110,6 +206,14 @@ No. It orders findings by evidence and impact; the accountable Human decides ris
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Quality Maturity Assessment prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-maturity-assessment) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Quality Maturity Assessment prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md)
 - Quality Maturity Assessment Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-maturity-assessment](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-maturity-assessment)

@@ -1,116 +1,229 @@
 ---
-title: "API 安全测试：在接口边界把身份、资源和失败证据接起来"
-description: "API 安全测试实战指南：检查认证、授权、输入暴露、敏感信息、限流和安全证据。"
+title: "API 安全测试 Skill：从身份到资源，验证接口安全边界"
+description: "使用 API 安全测试 Skill，在受限和可授权的验证准备中检查接口攻击面、输入边界、身份权限、错误泄露和安全合同，产出 AST-## 发现。"
 date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI 测试","Agent Skills","API 安全测试"]
-categories: ["AI 测试","QA Skills"]
+tags: ["AI 测试", "QA Skills", "API 安全测试"]
+categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
+API 安全检查停在“Token 有效”还不够。Token 属于谁、能执行什么动作、能访问哪个资源，以及失败响应泄露了什么，都是接口边界的一部分。
 
-API 安全检查停在“Token 有效”还不够。它还要验证这个 Token 是否能访问当前资源，以及失败时是否泄露过多信息。
+## 为什么需要这个 Skill
 
-API 安全测试用于评估调用者身份、请求资源、输入、响应和运行控制之间的安全边界。
+API 安全测试 Skill 先用文档、权限矩阵、API 合同和脱敏证据建立受限分析，再把需要授权执行的验证写成 AST-## 发现。它不会登录系统、读取凭据或自动攻击真实 API——名字里有 Testing，边界里仍然有证据和授权。
 
-当团队需要围绕“认证、授权、对象范围、注入面、敏感信息暴露、限流和审计证据”工作时，使用 API 安全测试 Skill。它把模糊的测试请求变成有来源、有假设、有输出字段和下一步动作的受限分析。
+## Skill 用来做什么
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 API 安全测试。
+当团队需要复核 API 攻击面、输入边界、认证、授权、对象范围、错误泄露、限流和安全合同时，使用这个 Skill。它尤其适合下面这些场景：
 
-## API 安全测试 Skill 用来做什么
+- Token 能通过认证，但还没有确认它能否访问当前对象。
+- OpenAPI、权限矩阵和安全需求对同一接口说法不一致。
+- 团队需要把“检查越权”和“检查敏感信息泄露”变成有触发条件、预期结果和证据要求的场景。
+- 交接时必须说明哪些内容只是静态审查，哪些内容还没有授权执行。
 
-好的 API 安全检查会沿着一次请求追踪对象的完整边界：谁拥有它、谁可以操作、记录了什么，以及失败时攻击者能学到什么。
+API 安全复核会沿着一次请求追踪完整对象边界：调用者是谁、请求了什么、对象属于谁、失败时返回什么、系统记录了什么。它不把一次 403 或一份 OpenAPI 文档写成全面安全证明。
 
-它适合这些场景：团队需要重复检查认证、授权、对象范围、注入面、敏感信息暴露、限流和审计证据；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+## 它不做什么
 
-## 先回到源 Skill
+API 安全测试 Skill 不替代：
 
-完整执行契约位于 [API 安全测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing) 中包含入口文件以及实际存在的配套资料。
+- 渗透测试、红队行动和漏洞扫描；
+- 真实 API 的未授权调用或生产探测；
+- 安全需求复核、威胁建模和权限设计；
+- 风险接受、例外授权和发布安全判断；
+- 一次请求之外的完整运行时安全保证。
 
-入口文件重点约束认证、授权、对象范围、注入面、敏感信息暴露、限流和审计证据。要保留它的决策边界，不要把静态设计写成执行结论。
+它把安全测试准备成可以授权、执行和复核的工作，不把准备过程伪装成测试结果。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
 
-| 材料 | 这次提供什么 | 缺失时怎么处理 |
+API 安全测试的核心不是多列几个攻击名，而是把请求边界拆成可验证的安全问题。
+
+| 复核维度 | 重点问题 |
+| --- | --- |
+| 认证 | 调用者是谁？Token 的来源、租户和生命周期是什么？ |
+| 授权 | 这个角色能执行当前动作吗？ |
+| 对象授权 | 它能操作这个具体资源吗？资源是否属于另一个租户？ |
+| 输入边界 | 参数、路径、查询、上传和批量输入的攻击面在哪里？ |
+| 响应与错误 | 失败时是否泄露对象存在性、内部字段、堆栈或敏感数据？ |
+| 限流与滥用 | 重复、批量、异常频率和资源消耗如何处理？ |
+| 审计 | 安全相关动作是否有可定位、不过度泄露的记录？ |
+| 安全合同 | 认证、权限、错误、数据和版本要求能否追踪到验证证据？ |
+
+## 开始之前先审计输入
+
+API 安全分析不能把请求样例当成真实执行结果。先做输入审计：
+
+| 状态 | 例子 | 应该怎么做 |
 | --- | --- | --- |
-| 安全模型 | 身份、角色、租户、资源所有权和允许操作 | 策略模糊时保留为待确认 |
-| 攻击面 | 路径、查询、请求体、请求头、文件名和错误响应 | 包含格式错误和超长输入 |
-| 证据 | 允许与拒绝日志、脱敏、限流事件和测试账号矩阵 | 不要从中间件名字推断保护成立 |
+| known | API 合同明确要求导出接口校验租户身份 | 引用接口和版本 |
+| missing | 没有对象权限矩阵，也没有错误响应规范 | 记录证据缺口 |
+| conflicting | OpenAPI 允许 404，安全需求要求 403 | 保留两份来源并请求决策 |
+| stale | 请求样例仍使用旧版本 Token 或字段 | 标记时效风险 |
+| out_of_scope | 未授权登录、调用生产 API 或读取凭据 | 明确禁止真实执行 |
+| assumptions | 暂时假设测试环境使用合成租户和对象 | 写出影响并要求确认 |
 
-可以这样调用：
+信息缺失时，可以继续准备候选场景；不能把请求模板发出去以后就说攻击已经完成。
 
-```text
-请使用 api-security-testing Skill。
+## 从问题到结构化 Finding
 
-任务：评审一个供员工、外包人员和服务账号跨租户使用的文档下载 API
-输入材料：[需求、版本、链接、日志、报告或数据路径]
-范围：[本次包含和排除的对象]
-未知项：[缺失的环境、账号、数据或权限]
-期望输出：[按风险排序的发现、证据状态和下一步动作]
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
 
-先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
-```
+结构化 Finding 至少要区分事实、证据支持的推断、建议和 Human 决策。它们对应不同的证据强度和责任边界。
 
-## API 安全测试 要交付什么
+## 一个完整案例
 
-| 输出字段 | 它要回答什么 | 示例状态 |
-| --- | --- | --- |
-| 安全发现 | 边界违规、泄露、绕过或控制缺失 | 资产、角色与证据 |
-| 利用条件 | 输入、身份、状态和前置条件 | 可复现准备 |
-| 修复动作 | 策略、代码、监控或验证动作 | 负责人和剩余风险 |
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
 
-没有运行记录、查询结果或原始产物时，不要写“已通过”。好的 API 安全检查会沿着一次请求追踪对象的完整边界：谁拥有它、谁可以操作、记录了什么，以及失败时攻击者能学到什么。
+### 输入（Input）
 
-## 在项目里跑一轮
+本案例使用本节给出的需求、设计、接口或其他项目材料，并保留版本、范围和缺失项。
 
-先从一个边界清楚的小回合开始：评审一个供员工、外包人员和服务账号跨租户使用的文档下载 API。分别用资源所有者、同租户同事、跨租户用户和只读服务账号请求同一文档。比较响应状态、响应体、时间、审计事件和下载 URL，而不只看 200 或 403。
+### 分析（Analysis）
 
-交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
+先对照检查矩阵和六类证据状态，再把问题整理成这个 Skill 的专属 Finding。
 
-## 如何把初版做得更好
+### Finding
 
-如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
+#### 一条 AST-## 发现如何产生
 
-这里补充信息会改变结果，因为认证、授权、对象范围、注入面、敏感信息暴露、限流和审计证据必须接回证据，不能只靠熟悉的测试套路推断。
+假设接口合同提供：
+
+~~~text
+GET /exports/{job_id}/download
+Authorization: Bearer <token>
+~~~
+
+材料没有说明 job_id 与租户身份如何绑定，也没有说明跨租户资源返回 403 还是 404、失败响应是否允许泄露对象存在性。
+
+##### AST-02 — 下载接口缺少对象授权和错误泄露合同
+
+- **对象 / 规则：** GET /exports/{job_id}/download 的租户对象访问。
+- **来源：** API Contract v3.2；Token 说明存在，但对象权限矩阵和错误响应规范未提供。
+- **触发条件：** Tenant A 的合法身份请求 Tenant B 的 job_id，以及请求不存在或已过期的 job_id。
+- **预期关注点：** 认证成功不等于对象授权成功；跨租户、不存在和已过期资源是否有一致且不过度泄露的响应。
+- **状态：** missing
+- **影响 / 优先级：** P1。缺少合同会让 API、网关、审计和客户端对失败语义产生不同实现。
+- **责任角色：** API 负责人、安全负责人、租户权限负责人。
+- **关闭条件：** 明确对象授权位置、跨租户响应策略、审计字段和敏感错误信息边界，并更新 API 合同。
+- **验证方式：** 在授权的隔离环境使用合成租户和文件，验证合法对象、跨租户对象、不存在对象和过期对象；保留原始响应、审计记录和停止条件。
+- **Human 决策：** 选择 403、404 或统一错误策略时，需要评估安全、客户端兼容性和可观测性的取舍。
+
+这个发现没有声称接口已经存在漏洞。它说明当前材料不足以形成可复核的对象授权验证——这正是 API 安全测试应该先解决的问题。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
+
+至少交付来源、证据状态、负责人、关闭条件和验证动作；路由结果仍需由负责人确认。
+
+### 下一步路由
+
+一轮API 安全工作可以分成两段：
+
+1. 用 API 合同、权限矩阵和脱敏请求做静态输入审计。
+2. 产出 AST-## 场景，包括前置条件、刺激、预期结果、证据和停止条件。
+3. 由负责人确认环境、账号、数据和授权范围。
+4. 在隔离环境使用最小权限和合成数据执行。
+5. 单独记录实际响应、审计日志、版本、时间和剩余风险。
+
+Skill 可以准备第四步需要什么，但不会代替第四步。尤其不能因为请求返回 403，就自动推断所有对象和所有入口都受到保护。
+
+## 怎样准备更好的输入
+
+最小输入包括：
+
+- OpenAPI 或 API 合同、版本、接口范围和错误响应规范；
+- 认证方式、角色/租户/对象权限矩阵；
+- 输入字段、数据分类、限流策略、审计字段和依赖；
+- 脱敏请求/响应样例、历史问题和已有执行证据；
+- 授权的隔离环境、合成数据、账号范围和停止条件。
+
+输出至少包括：
+
+- 目标、对象、范围内外和未授权动作；
+- 六类输入审计；
+- API 攻击面和安全风险场景；
+- 按优先级排序的 AST-## 发现；
+- 候选验证、预期结果、证据要求、关闭条件和 Human 决策。
+
+只有接口名称时，Skill 可以提示需要什么材料；要得到有用的对象授权结果，至少提供对象关系、角色边界和错误合同。
+
+## 和其他 Skill 怎么配合
+
+- 安全需求复核：https://inaodeng.com/zh-cn/qaskills/security-requirement-review/
+- 威胁建模：https://inaodeng.com/zh-cn/qaskills/threat-modeling/
+- 授权测试：https://inaodeng.com/zh-cn/qaskills/authorization-testing/
+- 敏感信息暴露审查：https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/
 
 ## 容易踩的坑
 
-1. 只测认证，不测对象授权。
-2. 响应体脱敏了，却把敏感信息留在请求头或 URL。
-3. 忽略暴露资源存在性的时间和错误差异。
-
-## 相关 Skill
-
-- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)：检查权限判断。
-- [敏感信息暴露审查](https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/)：检查载荷和日志中的敏感信息泄露。
-- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查安全失败响应。
+1. 把 Token 有效写成“用户可以访问这个资源”。
+2. 只测试 UI，不检查直接 API、批量接口、后台任务和下载链接。
+3. 把 403 当成所有对象都安全，也不检查 404/错误响应是否泄露对象存在性。
+4. 只列 SQL 注入、越权等攻击名，不写触发条件、预期结果和证据。
+5. 使用真实凭据或生产接口来补全缺失材料。
 
 ## 安装与调用
 
-全局安装这个 Skill：
-
-```bash
+~~~bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing -g
-```
+~~~
 
-安装后使用 `api-security-testing` Skill，并附上真实项目材料。
+~~~text
+请使用 api-security-testing Skill。
 
-## 常见问题
+任务：在授权的隔离环境前，复核发票导出 API 的对象授权和错误泄露风险。
+输入材料：[OpenAPI v3.2、租户权限矩阵、Token 说明、错误响应规范、审计字段和脱敏请求]
+范围：[GET /exports/{job_id}/download]
+限制：[不读取凭据、不调用生产 API、不执行破坏性操作]
+
+先完成六类输入审计，再围绕认证、授权、对象范围、输入边界、错误泄露、限流和审计输出 AST-##。分开静态事实、证据推断、候选验证和 Human 决策。
+~~~
+
+输入是 API 合同、权限和脱敏证据；输出是带来源、状态、优先级、预期结果、关闭条件和验证方法的安全发现。真实执行需要单独授权和单独证据。
+
+## FAQ
 
 ### 返回 403 就能证明资源受保护吗？
 
-不能。还要确认没有泄露数据、签名 URL、元数据或副作用。
+不能。它只说明一次特定请求得到了 403。还要确认使用的身份、对象归属、版本、其他入口、错误响应和审计记录。
 
 ### 这个 Skill 会直接执行攻击吗？
 
-它组织有边界的安全检查；真实侵入动作需要明确授权和安全环境。
+不会。它只做证据受限的分析和验证准备，不登录系统、不读取凭据、不调用真实 API，也不执行破坏性操作。
+
+### 只有 OpenAPI 文档，能得到完整的 API 安全结论吗？
+
+不能。你可以得到静态合同和证据缺口分析，但对象权限、环境行为和运行时安全仍然是未验证状态。
 
 ## 参考
 
-- API 安全测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md)
+### 源 Skill 与执行契约
 
-- Awesome QA Skills：API 安全测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing)
+完整执行规则在 API 安全测试 Prompt：
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md
 
-- API 安全测试 详情页:[https://inaodeng.com/zh-cn/qaskills/api-security-testing/](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)
+Skill 源目录同时包含 Skill 定义、Agent 适配和 Eval 资产：
+
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing
+
+静态 API 合同、请求模板和 dry-run 只能保留计划或材料证据，不能升级为真实攻击、漏洞不存在或发布批准。
+
+### 参考链接
+
+- API 安全测试 Prompt：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md
+- API 安全测试 Skill 源文件：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing
+- API 安全测试详情页：[https://inaodeng.com/zh-cn/qaskills/api-security-testing/](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)
+- Awesome QA Skills 项目：https://github.com/naodeng/awesome-qa-skills

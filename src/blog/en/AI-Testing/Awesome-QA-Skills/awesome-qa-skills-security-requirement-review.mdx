@@ -1,5 +1,5 @@
 ---
-title: "Security Requirement Review: Make Protection Goals Testable Before Build"
+title: "Security Requirement Review Skill: Turn Protection Goals into Testable Requirements"
 description: "A bilingual guide to reviewing security objectives, testability, trace links, acceptance conditions, and evidence gaps without claiming a security pass."
 date: 2026-10-02T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI Testing", "QA Skills", "Security Requirement Review"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
+“The system must be secure” is a concern, not a testable requirement. A useful security review names the protected asset, actor, trust boundary, expected control, acceptance condition, and evidence source.
 
-“The system must be secure” is a concern, not a testable requirement. Security work becomes reviewable when the protected asset, threat boundary, expected control, acceptance condition, and evidence source are explicit.
+## Why this Skill is needed
 
-The Security Requirement Review Skill reviews security objectives and their testability before implementation. It finds trace and acceptance gaps while keeping static design evidence separate from vulnerability or security-pass claims.
+The Security Requirement Review Skill turns broad protection goals into reviewable security requirements before implementation. It exposes trace and acceptance gaps while keeping static design evidence separate from vulnerability, exploit, or security-pass claims.
 
-The goal is not to make a security statement sound stronger; it is to make the intended protection observable.
+## What the Skill does
 
-## Security Requirement Review Skill: what it is for
+Use this Skill for authentication, authorization, data protection, audit, privacy, and abuse-prevention requirements supplied as redacted or synthetic material. It does not read credentials, call real APIs, or perform an exploit.
 
-Use this Skill to review authentication, authorization, data protection, audit, privacy, or abuse-prevention requirements with redacted material. It does not read credentials, call real APIs, or perform an exploit.
+A good finding names the asset, actor and boundary, security objective, acceptance condition, trace link, evidence state, owner, close condition, and safe validation method.
 
-A good finding names the protected asset, actor and boundary, security objective, acceptance condition, trace link, evidence state, owner, close condition, and safe validation method.
+Use it when a security requirement is broad, a threat-model decision must become an acceptance condition, or a design names controls without defining how success will be observed.
 
-Use it when a security requirement is broad, a threat-model decision must become an acceptance condition, or a design has controls without a verifiable success rule.
+## What it does not do
 
-## Start with the source Skill
+It does not replace:
 
-The complete execution contract lives in [Security Requirement Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review/prompts/security-requirement-review.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review) may also contain evaluation cases and supporting material.
+- Penetration testing, red-team work, vulnerability scanning, or exploit validation.
+- Real secrets, production probing, or an intrusive security action.
+- Threat modeling, permission design, or implementation review.
+- Risk acceptance, exception approval, or release-security judgment.
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+It prepares a security requirement for safe validation. It does not prove that an implementation is secure.
 
-## Begin with project facts
+## What it checks
+
+| Focus | Question | Handoff output |
+| --- | --- | --- |
+| Security objective | What asset or behavior must be protected, from which threat? | Asset, actor, boundary, and source |
+| Testability | What observable condition distinguishes protection from failure? | Acceptance condition and safe oracle |
+| Traceability | Can the objective be followed into design, control, and validation? | Trace ID and missing link |
+| Applicability | Which role, tenant, region, platform, data class, and version apply? | Explicit scope and exclusions |
+| Evidence | What redacted fixture, log, metric, or review record can support the claim? | Evidence state and validation action |
+| Human decision | What risk, exception, or threshold requires an owner? | Decision question and accepter |
+
+Security vocabulary is not a substitute for a condition that someone can observe and verify.
+
+## Audit inputs before you start
+
+Classify the input before reviewing the protection goal:
+
+| State | Meaning | Handling |
+| --- | --- | --- |
+| known | Directly supported by the supplied requirement, policy, or design | Keep source and version with the claim |
+| missing | Needed to define the control or acceptance condition | Ask for the smallest safe artifact |
+| conflicting | Requirement, policy, and design disagree | Preserve the conflict and route a decision |
+| stale | The source or control applies to an old version or scope | Mark freshness and avoid current claims |
+| out_of_scope | Real credentials, production probing, or unrelated assets | Explicitly exclude it |
+| assumptions | A temporary scope or fixture assumption | State its effect and safe validation |
+
+When evidence is incomplete, return a bounded requirement review. Do not compensate with a generic security standard or an invented threshold.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+| Layer | How to write it | Example |
+| --- | --- | --- |
+| Fact | What the requirement, policy, or design directly states | The requirement prohibits exporting card data |
+| Evidence-backed Inference | What the missing channel rule could allow | UI, API, export, and logs may diverge |
+| Recommendation | The smallest action that makes the goal testable | Define data class, actor, channel, response, and log conditions |
+| Human Decision | A risk, exception, or threshold choice | Owners decide what masked viewing and audit retention mean |
+
+The Skill can organize the choice; it cannot authorize a security exception.
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,43 +92,78 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the security-requirement-review Skill.\n\nTask: Review a requirement that support agents may view customer invoices but must not export payment-card data.\nInputs: [security requirement, role matrix, data classification, UI/API design, audit policy, trace links]\nScope: [support portal, authenticated agents, staging]\nConstraints: [no real customer data or credentials]\n\nAssess objective, testability, trace links, acceptance conditions, and evidence gaps. Keep assumptions and Human risk decisions separate.
+Use the security-requirement-review Skill.
+
+Task: Review a requirement that support agents may view customer invoices but must not export payment-card data.
+Inputs: [security requirement, role matrix, data classification, UI/API design, audit policy, trace links]
+Scope: [support portal, authenticated agents, staging]
+Constraints: [no real customer data or credentials]
+
+Assess objective, testability, trace links, acceptance conditions, and evidence gaps. Keep assumptions and Human risk decisions separate.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Security objective | What asset or behavior must be protected | Source and boundary |
-| Testability finding | Whether the requirement can be observed and checked | Acceptance gap |
-| Trace finding | Whether design, control, and validation are linked | ID and status |
-| Evidence action | Safe validation and close condition | Owner and environment |
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
 
-Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+### Finding
 
-## Focused example: Turn card-data protection into an observable condition
+#### Example finding: SRR-02 turns protection into an observable condition
 
-The requirement prohibits exporting card data but does not say whether masked values may be copied, downloaded through an API, or included in audit logs. The Skill should ask the owner to define the data class, actors, channels, and evidence for each path, rather than inventing a security rule or claiming the portal is safe.
+The requirement prohibits exporting card data but does not say whether masked values may be copied, downloaded through an API, or included in audit logs. This is an illustrative review pattern, not a security test result.
 
-The review assesses requirement quality and evidence gaps. It cannot prove vulnerability absence, exploit resistance, remediation completion, or release security.
+##### SRR-02 — Card-data protection is not defined across channels
 
-## Improve the first result with better baseline input
+| Field | Example |
+| --- | --- |
+| Asset and boundary | Payment-card data viewed by support agents through the portal, API, export job, and audit path |
+| Security objective | Agents may view the minimum masked value but must not export raw card data |
+| Evidence state | missing; channel and data-class rules are incomplete |
+| Trace gap | The requirement is not linked to API response fields, export behavior, logging, and acceptance cases |
+| Impact and priority | Different channels may implement different protection; P1 |
+| Owner and decision | Security, privacy, support-product, and API owners confirm permitted view, copy, export, and log behavior |
+| Close condition | Each channel has one observable allow or deny condition and a source-backed trace link |
+| Validation | Use synthetic card data in an isolated environment; preserve responses, export files, logs, and policy version |
 
-Provide the exact security requirement, asset and threat context, role/data matrix, applicable channels, version, design links, acceptance conditions, and safe validation environment. Use redacted or synthetic data.
+The finding does not claim the portal is unsafe. It says the current material cannot yet support a consistent security validation.
 
-A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
+
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the route still needs an accountable owner.
+
+### Next-stage route
+
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+
+## How to prepare better input
+
+Provide the exact requirement, asset and threat context, role and data matrix, applicable channels, version, design links, acceptance conditions, and safe validation environment. Use redacted or synthetic data.
+
+A useful handoff keeps source versions, scope, evidence index, assumptions, Human decision boundary, owner, close condition, and validation action together.
+
+## Working with other Skills
+
+- Threat Modeling: https://inaodeng.com/en/qaskills/threat-modeling/
+- Secrets Exposure Review: https://inaodeng.com/en/qaskills/secrets-exposure-review/
+- Authorization Testing: https://inaodeng.com/en/qaskills/authorization-testing/
+- API Security Testing: https://inaodeng.com/en/qaskills/api-security-testing/
 
 ## Common traps
 
 1. Treating a broad security adjective as an acceptance condition.
 2. Assuming a UI restriction covers direct API, export, logs, and support tooling.
-3. Calling a control secure because the design document contains its name.
-
-## Related Skills
-
-- [Threat Modeling](https://inaodeng.com/en/qaskills/threat-modeling/)：supplies asset, threat, and boundary context。
-- [Secrets-Exposure Review](https://inaodeng.com/en/qaskills/secrets-exposure-review/)：reviews credential and log exposure。
-- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：validates role and resource access boundaries。
+3. Calling a control secure because its name appears in a design document.
+4. Using real credentials or production data to compensate for missing evidence.
 
 ## Install and invoke
 
@@ -88,24 +174,36 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 ~~~text
 Use the security-requirement-review Skill.
 Include objective, scope, versions, evidence paths, constraints, and decision boundary.
-Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
+Audit inputs first. Return findings with asset, boundary, acceptance condition, trace status, owner, close condition, and safe validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Can this Skill perform a penetration test?
 
-No. It prepares requirement and evidence review; security testing requires a separately authorized method and environment.
+No. It prepares requirement and evidence review. Security testing needs a separately authorized method and environment.
 
 ### What if the owner cannot define a threshold?
 
 Mark the acceptance condition unassessed, record the decision question, and do not replace it with a generic security standard.
 
-The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
-
 ## References
 
-- Security Requirement Review prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review/prompts/security-requirement-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review/prompts/security-requirement-review.md)
-- Security Requirement Review Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review)
-- Security Requirement Review details:[https://inaodeng.com/en/qaskills/security-requirement-review/](https://inaodeng.com/en/qaskills/security-requirement-review/)
-- Awesome QA Skills on GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+### Source Skill and execution contract
+
+Read the execution contract in the Security Requirement Review prompt:
+
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review/prompts/security-requirement-review.md
+
+The source directory contains the Skill definition, prompt, agent adaptation, and evaluation assets:
+
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review
+
+Static plans, file presence, and dry runs retain their evidence state. They do not become runtime proof, exploit resistance, or release approval.
+
+### Reference links
+
+- Security Requirement Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review/prompts/security-requirement-review.md
+- Security Requirement Review Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review
+- Security Requirement Review details: https://inaodeng.com/en/qaskills/security-requirement-review/
+- Awesome QA Skills project: https://github.com/naodeng/awesome-qa-skills

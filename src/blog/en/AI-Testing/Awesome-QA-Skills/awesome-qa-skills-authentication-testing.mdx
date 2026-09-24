@@ -1,35 +1,85 @@
 ---
-title: "Authentication Testing: Verify who the system thinks is calling it—and when that proof expires"
+title: "Authentication Testing Skill: Verify who the system thinks is calling it—and when that proof expires"
 description: "Authentication Testing field guide: review login, tokens, sessions, expiry, recovery, MFA, and identity evidence."
 date: 2026-11-09T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI Testing","Agent Skills","Authentication Testing"]
+tags: ["AI Testing", "QA Skills", "Authentication Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Authentication is the answer to “who are you?” That answer needs a lifetime, a recovery path, and evidence that it was not quietly replaced halfway through the request.
+
+## Why this Skill is needed
 
 Authentication Testing checks credential and identity flows across login, token issuance, renewal, expiry, logout, recovery, and multi-factor challenges.
 
-The Authentication Testing Skill is useful when a team needs a structured review of credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+## What the Skill does
+
+The Authentication Testing Skill is useful when a team needs a structured review of credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Authentication Testing.
-
-## Authentication Testing Skill: what it is for
 
 A practical standard for this Skill is simple: A good authentication test follows the identity across devices and time. It verifies that a link cannot be reused, a logged-out session cannot continue, and a recovery path does not become the weakest credential.
 
 Use it when the team needs a repeatable review of credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in the [Authentication Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing/prompts/authentication-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing) contains the entry point and supporting assets where they exist.
+The Authentication Testing Skill can organize material, evidence, and next actions for Identity judgment. It does not replace:
 
-The entry point centers credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events. Keep its decision boundary visible and do not turn a static design into an execution claim.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Identity judgment | What proves the caller identity at each step | Evidence and confidence |
+| Lifecycle finding | Replay, expiry, logout, recovery, or binding gap | Affected state |
+| Control action | MFA, revocation, notification, or policy change | Owner and validation |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Identity judgment, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Identity judgment, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -51,7 +101,43 @@ Expected output: [risk-ordered findings, evidence status, and next actions]
 Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
 ```
 
-## Make the result usable by the next person
+### Analysis
+
+Start with a bounded pass—verify a passwordless login flow that uses an email link, device session, and step-up MFA for payout changes. Use the email link on Device A, copy it to Device B, log out, then request a payout change. The result should distinguish link replay, session invalidation, and step-up MFA—not reduce every failure to “unauthorized.”
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+### Finding
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Identity judgment meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Identity judgment |
+| Finding | The condition or result for Identity judgment is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -61,29 +147,27 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 Do not write “passed” without a run record, query result, or source artifact. A good authentication test follows the identity across devices and time. It verifies that a link cannot be reused, a logged-out session cannot continue, and a recovery path does not become the weakest credential.
 
-## Run one focused pass
+### Next-stage route
 
-Start with a bounded pass—verify a passwordless login flow that uses an email link, device session, and step-up MFA for payout changes. Use the email link on Device A, copy it to Device B, log out, then request a payout change. The result should distinguish link replay, session invalidation, and step-up MFA—not reduce every failure to “unauthorized.”
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-## Improve the first result
+## How to prepare better input
 
 If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
 
 A richer input changes the answer here because credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events must be tied to evidence rather than inferred from a familiar pattern.
+
+## Working with other Skills
+
+- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/):checks what an authenticated identity may do.
+- [Session Security Testing](https://inaodeng.com/en/qaskills/session-security-testing/):examines session continuity and isolation.
+- [API Security Testing](https://inaodeng.com/en/qaskills/api-security-testing/):connects auth to API boundaries.
 
 ## Common traps
 
 1. Testing login but not logout or recovery.
 2. Checking token format without checking revocation.
 3. Allowing a password reset to bypass the same MFA policy as login.
-
-## Related Skills
-
-- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/)：checks what an authenticated identity may do。
-- [Session Security Testing](https://inaodeng.com/en/qaskills/session-security-testing/)：examines session continuity and isolation。
-- [API Security Testing](https://inaodeng.com/en/qaskills/api-security-testing/)：connects auth to API boundaries。
 
 ## Install and invoke
 
@@ -95,7 +179,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 After installation, invoke it with the `authentication-testing` Skill and attach the real project material.
 
-## Two practical questions
+## FAQ
 
 ### Can a test account use a real email?
 
@@ -108,6 +192,14 @@ Keep the case unresolved and ask the policy owner to define the boundary before 
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in the [Authentication Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing/prompts/authentication-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers credential proof, token lifecycle, session binding, expiry, recovery, MFA, and audit events. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+### Reference links
 
 - Authentication Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing/prompts/authentication-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing/prompts/authentication-testing.md)
 

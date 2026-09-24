@@ -1,35 +1,85 @@
 ---
-title: "API Version Compatibility Testing: Find the consumer break before the rollout does"
+title: "API Version Compatibility Testing Skill: Find the consumer break before the rollout does"
 description: "API Version Compatibility Testing field guide: compare versions, consumer assumptions, deprecations, migrations, and rollback evidence."
 date: 2026-11-09T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI Testing","Agent Skills","API Version Compatibility Testing"]
+tags: ["AI Testing", "QA Skills", "API Version Compatibility Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Changing an API version is not just adding `/v2`. It changes what clients assume about fields, errors, ordering, defaults, and the moment a migration becomes irreversible.
+
+## Why this Skill is needed
 
 API Version Compatibility Testing compares old and new contracts against real consumer behavior and identifies safe rollout, migration, and rollback boundaries.
 
-The API Version Compatibility Testing Skill is useful when a team needs a structured review of field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+## What the Skill does
+
+The API Version Compatibility Testing Skill is useful when a team needs a structured review of field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Version Compatibility Testing.
-
-## API Version Compatibility Testing Skill: what it is for
 
 A practical standard for this Skill is simple: A useful compatibility pass includes mixed-version traffic. The old client and new server need to coexist long enough for the test to expose defaults and failure paths that a clean v2 environment hides.
 
 Use it when the team needs a repeatable review of field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in the [API Version Compatibility Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing/prompts/api-version-compatibility-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing) contains the entry point and supporting assets where they exist.
+The API Version Compatibility Testing Skill can organize material, evidence, and next actions for Compatibility finding. It does not replace:
 
-The entry point centers field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback. Keep its decision boundary visible and do not turn a static design into an execution claim.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Compatibility finding | Breaking, conditionally compatible, or safe change | Consumer and version |
+| Migration step | Dual read, adapter, feature flag, or client release | Precondition and evidence |
+| Rollback boundary | What can be reversed and what data has already changed | Decision owner |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Compatibility finding, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Compatibility finding, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -51,7 +101,43 @@ Expected output: [risk-ordered findings, evidence status, and next actions]
 Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
 ```
 
-## Make the result usable by the next person
+### Analysis
+
+Start with a bounded pass—move a mobile checkout client from a v1 order response to a v2 response with nested pricing and new nullable fields. Run v1 and v2 mobile clients against the migration flag while a worker still consumes the old flat price field. Verify totals, null handling, error recovery, telemetry, and rollback after a partial client rollout.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+### Finding
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Compatibility finding meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Compatibility finding |
+| Finding | The condition or result for Compatibility finding is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -61,29 +147,27 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 Do not write “passed” without a run record, query result, or source artifact. A useful compatibility pass includes mixed-version traffic. The old client and new server need to coexist long enough for the test to expose defaults and failure paths that a clean v2 environment hides.
 
-## Run one focused pass
+### Next-stage route
 
-Start with a bounded pass—move a mobile checkout client from a v1 order response to a v2 response with nested pricing and new nullable fields. Run v1 and v2 mobile clients against the migration flag while a worker still consumes the old flat price field. Verify totals, null handling, error recovery, telemetry, and rollback after a partial client rollout.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-## Improve the first result
+## How to prepare better input
 
 If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
 
 A richer input changes the answer here because field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback must be tied to evidence rather than inferred from a familiar pattern.
+
+## Working with other Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/):checks consumer contract behavior.
+- [API Schema Validation](https://inaodeng.com/en/qaskills/api-schema-validation/):compares field-level shape changes.
+- [Change Impact Analysis](https://inaodeng.com/en/qaskills/change-impact-analysis/):maps version changes to affected surfaces.
 
 ## Common traps
 
 1. Comparing schemas without comparing consumer assumptions.
 2. Removing an old field before telemetry proves it is unused.
 3. Calling rollback safe after writes use only the new representation.
-
-## Related Skills
-
-- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：checks consumer contract behavior。
-- [API Schema Validation](https://inaodeng.com/en/qaskills/api-schema-validation/)：compares field-level shape changes。
-- [Change Impact Analysis](https://inaodeng.com/en/qaskills/change-impact-analysis/)：maps version changes to affected surfaces。
 
 ## Install and invoke
 
@@ -95,7 +179,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 After installation, invoke it with the `api-version-compatibility-testing` Skill and attach the real project material.
 
-## Two practical questions
+## FAQ
 
 ### Is a new optional field always compatible?
 
@@ -108,6 +192,14 @@ When a breaking finding lacks an owner, evidence, or a reversible rollout step.
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in the [API Version Compatibility Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing/prompts/api-version-compatibility-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing) contains the entry point and supporting assets where they exist.
+
+The entry point centers field evolution, error compatibility, defaults, deprecation, mixed-version traffic, migration, and rollback. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+### Reference links
 
 - API Version Compatibility Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing/prompts/api-version-compatibility-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-version-compatibility-testing/prompts/api-version-compatibility-testing.md)
 

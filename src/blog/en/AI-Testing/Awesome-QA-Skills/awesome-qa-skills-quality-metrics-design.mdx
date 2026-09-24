@@ -1,6 +1,6 @@
 ---
-title: "Quality Metrics Design: Define Trustworthy Measures for Release Decisions"
-description: "A bilingual guide to designing quality metrics with explicit numerators, denominators, sources, freshness rules, interpretation limits, and anti-gaming boundaries."
+title: "Quality Metrics Design Skill: Define Trustworthy Measures for Release Decisions"
+description: "A bilingual guide to designing quality metrics with explicit definitions, sources, freshness, interpretation limits, and anti-gaming checks."
 date: 2026-10-07T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,14 +8,15 @@ tags: ["AI Testing", "QA Skills", "Quality Metrics Design"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 A metric becomes dangerous when its numerator is clear but its denominator is not. A precise-looking dashboard can quietly change what the team counts from one release to the next.
+
+## Why this Skill is needed
 
 The Quality Metrics Design Skill creates evidence-bounded metric definitions before a team turns them into targets or gates. It connects a quality question to a calculation rule, data source, freshness expectation, and interpretation limit.
 
-The important output is a metric contract that another engineer can recalculate from the named sources.
+## What the Skill does
 
-## Quality Metrics Design Skill: what it is for
+The important output is a metric contract that another engineer can recalculate from the named sources.
 
 Use this Skill to design measures such as escaped-defect rate, test feedback time, flaky-test rate, or requirement rework rate. It makes a metric reviewable and resistant to accidental or intentional gaming; it does not select one number to represent quality.
 
@@ -23,13 +24,63 @@ A good metric definition states the event, numerator, denominator, time window, 
 
 Use it when a team is proposing a new quality KPI, merging signals from several systems, or finding that two dashboards calculate the same label differently.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Quality Metrics Design prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design) may also contain evaluation cases and supporting material.
+The Quality Metrics Design Skill can organize material, evidence, and next actions for Metric contract. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Metric contract | Calculation and inclusion rules | Versioned definition with examples |
+| Lineage and freshness | Where each event comes from and when it is trustworthy | Source, delay, and gap |
+| Interpretation boundary | What the metric can and cannot explain | No unsupported causality |
+| Anti-gaming review | How behavior or labels could improve the number without improving quality | Risk and counter-check |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Metric contract, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Metric contract, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 Put the material on the table before asking for a judgment. Gaps can remain, but their status must stay visible.
 
@@ -43,10 +94,57 @@ Put the material on the table before asking for a judgment. Gaps can remain, but
 Use a request like this:
 
 ~~~text
-Use the quality-metrics-design Skill.\n\nTask: Define an escaped-defect rate and a pre-merge test-feedback metric for the checkout service.\nInputs: [event schemas, release IDs, issue fields, CI timestamps, incident sources]\nScope: [services, teams, window, environments]\nConstraints: [late data, privacy, missing deployment links]\n\nSpecify numerator, denominator, source, freshness, exclusions, segmentation, interpretation limits, and validation. Separate facts, assumptions, recommendations, and Human decisions.
+Use the quality-metrics-design Skill.
+
+Task: Define an escaped-defect rate and a pre-merge test-feedback metric for the checkout service.
+Inputs: [event schemas, release IDs, issue fields, CI timestamps, incident sources]
+Scope: [services, teams, window, environments]
+Constraints: [late data, privacy, missing deployment links]
+
+Specify numerator, denominator, source, freshness, exclusions, segmentation, interpretation limits, and validation. Separate facts, assumptions, recommendations, and Human decisions.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Define escaped-defect rate without hiding exposure
+
+The team proposes “production bugs divided by test cases.” The Skill should reject that denominator as unrelated to user exposure and ask for a release or transaction basis. A better draft may count defects linked to a release over affected production transactions in the same window, with late linkage pending until source fields are checked.
+
+Metric design proves the definition is explicit and reviewable. It does not prove the data pipeline is complete, the metric predicts quality, or a target is fair for teams.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Metric contract meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Metric contract |
+| Finding | The condition or result for Metric contract is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -57,29 +155,27 @@ Use the quality-metrics-design Skill.\n\nTask: Define an escaped-defect rate and
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Define escaped-defect rate without hiding exposure
+### Next-stage route
 
-The team proposes “production bugs divided by test cases.” The Skill should reject that denominator as unrelated to user exposure and ask for a release or transaction basis. A better draft may count defects linked to a release over affected production transactions in the same window, with late linkage pending until source fields are checked.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-Metric design proves the definition is explicit and reviewable. It does not prove the data pipeline is complete, the metric predicts quality, or a target is fair for teams.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide the decision question, event dictionary, source systems, release and time-window rules, sample records, and one include and one exclude example. Without these, the denominator remains underspecified.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Quality Dashboard Design](https://inaodeng.com/en/qaskills/quality-dashboard-design/):turns metric contracts into reviewable views.
+- [Quality Productivity Metrics](https://inaodeng.com/en/qaskills/quality-productivity-metrics/):separates delivery-flow signals from quality conclusions.
+- [Quality Gate Design](https://inaodeng.com/en/qaskills/quality-gate-design/):defines how evidence can support a gate.
 
 ## Common traps
 
 1. Using test count, ticket count, or story points as user exposure without stating the relationship.
 2. Mixing event time, ingestion time, and release time so late data silently rewrites history.
 3. Publishing a target before checking whether labels or reporting behavior can game it.
-
-## Related Skills
-
-- [Quality Dashboard Design](https://inaodeng.com/en/qaskills/quality-dashboard-design/)：turns metric contracts into reviewable views。
-- [Quality Productivity Metrics](https://inaodeng.com/en/qaskills/quality-productivity-metrics/)：separates delivery-flow signals from quality conclusions。
-- [Quality Gate Design](https://inaodeng.com/en/qaskills/quality-gate-design/)：defines how evidence can support a gate。
 
 ## Install and invoke
 
@@ -97,7 +193,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Should every quality metric have a target?
 
@@ -110,6 +206,14 @@ Preserve both calculations, identify the event or scope difference, and mark the
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Quality Metrics Design prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Quality Metrics Design prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md)
 - Quality Metrics Design Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design)

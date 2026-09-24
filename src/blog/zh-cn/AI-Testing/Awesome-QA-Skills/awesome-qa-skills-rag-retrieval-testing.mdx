@@ -1,5 +1,5 @@
 ---
-title: "RAG Retrieval Testing：在错误到达回答前找出召回和排序缺口"
+title: "RAG 检索测试 Skill：在错误到达回答前找出召回和排序缺口"
 description: "RAG 检索测试双语指南，围绕查询变体、切块、元数据过滤、召回代理、排序、新鲜度和检索证据排查问题。"
 date: 2026-10-28T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI 测试", "QA Skills", "RAG 检索测试"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 RAG 回答错误时，故障可能在生成之前就发生了。相关段落也许根本没有进入上下文，或者旧政策把新政策排在了后面。
+
+## 为什么需要这个 Skill
 
 RAG Retrieval Testing Skill 单独检查检索层，让团队能够审视查询变体、切块、过滤器、召回代理、排序、新鲜度和后续证据，不要一看到错误就先责怪模型。
 
+## Skill 用来做什么
+
 本文实际要问的是：回答所需的证据是否可查找、符合范围、足够新，并且排在足够靠前的位置。
 
-## RAG 检索测试 Skill 用来做什么
-
-当知识助手漏掉已知文档、检索到错误租户或版本，或者返回大量低价值上下文时，使用这个 Skill。它关注检索证据，不会把好的 top-k 列表直接当成好的最终回答。
+当知识助手漏掉已知文档、检索到错误租户或版本，或者返回大量低价值上下文时，使用这个 Skill。它关注检索证据，不会把top-k 列表直接当成好的最终回答。
 
 好的检索复核需要把每个查询和相关文档预期、返回片段、元数据过滤、排序、新鲜度以及召回或精度代理的限制放在一起。
 
 当修改 embedding、切块大小、元数据过滤或重排逻辑前，以及报告检索回归后，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [RAG 检索测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-retrieval-testing/prompts/rag-retrieval-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-retrieval-testing) 中还可能包含评测用例和补充材料。
+RAG 检索测试 Skill 可以组织查询覆盖的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 查询覆盖 | 测试了哪些表述和语言变体 | 查询清单与缺口 |
+| 资格与召回代理 | 相关文档是否有机会进入结果集 | 金标准、过滤和代理限制 |
+| 排序与新鲜度 | 当前证据是否可发现并排在前面 | 排序、版本和索引时间 |
+| 下一步实验 | 最小的隔离改动或重放动作 | 预期观察与停止条件 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“查询覆盖”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕查询覆盖，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ RAG Retrieval Testing Skill 单独检查检索层，让团队能够审视查询�
 可以这样调用：
 
 ~~~text
-请使用 rag-retrieval-testing Skill。\n\n任务：调查政策助手为什么漏掉了欧盟员工适用的新差旅报销规则。\n输入材料：[查询变体、金标准文档、片段、元数据过滤、top-k 结果、排序分数、索引时间]\n范围：[欧盟租户、政策版本、staging 索引]\n限制：[不重建生产索引、数据脱敏]\n\n分别评估查询覆盖、切块、过滤、召回代理、排序和新鲜度，保留检索证据与回答级证据的区别。
+请使用 rag-retrieval-testing Skill。
+
+任务：调查政策助手为什么漏掉了欧盟员工适用的新差旅报销规则。
+输入材料：[查询变体、金标准文档、片段、元数据过滤、top-k 结果、排序分数、索引时间]
+范围：[欧盟租户、政策版本、staging 索引]
+限制：[不重建生产索引、数据脱敏]
+
+分别评估查询覆盖、切块、过滤、召回代理、排序和新鲜度，保留检索证据与回答级证据的区别。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：沿着过滤和排序追查漏掉的政策
+
+预期的欧盟政策确实存在，但检索器按 region=global 过滤，文档却带有 region=eu。宽泛查询还把旧的全球政策排在第一位。这个 Skill 应把元数据资格问题和排序问题分开，并建议在 staging 用区域变体重放，不要在没有检索证据前就说是生成器幻觉。
+
+检索复核可以说明给定查询集在指定索引中返回了什么，不能在没有真实运行和完整评估集时证明最终回答正确或生产行为稳定。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“查询覆盖”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和查询覆盖的具体对象 |
+| 发现 | 查询覆盖的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ RAG Retrieval Testing Skill 单独检查检索层，让团队能够审视查询�
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：沿着过滤和排序追查漏掉的政策
+### 下一步路由
 
-预期的欧盟政策确实存在，但检索器按 region=global 过滤，文档却带有 region=eu。宽泛查询还把旧的全球政策排在第一位。这个 Skill 应把元数据资格问题和排序问题分开，并建议在 staging 用区域变体重放，不要在没有检索证据前就说是生成器幻觉。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-检索复核可以说明给定查询集在指定索引中返回了什么，不能在没有真实运行和完整评估集时证明最终回答正确或生产行为稳定。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供金标准文档或相关性判断、查询变体、切块和元数据定义、top-k Trace、生效日期和索引时间。没有相关性参照时，可以报告观察，但召回结论必须标为未评估。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [RAG 质量测试](https://inaodeng.com/zh-cn/qaskills/rag-quality-testing/)：检查回答如何使用检索到的证据。
+- [LLM 一致性测试](https://inaodeng.com/zh-cn/qaskills/llm-consistency-testing/)：检查相同检索证据是否产生稳定回答。
+- [边界场景发现](https://inaodeng.com/zh-cn/qaskills/edge-case-discovery/)：补充范围、新鲜度和少见表述的检索样例。
 
 ## 容易踩的坑
 
 1. 没有先检查租户、版本或权限过滤，就急着更换 embedding。
 2. 金标准段落没有定义，或者查询集漏掉重要变体，却把 top-k 出现当成召回率。
 3. 把较高的检索分数当成最终回答一定会引用正确来源。
-
-## 相关 Skill
-
-- [RAG 质量测试](https://inaodeng.com/zh-cn/qaskills/rag-quality-testing/)：检查回答如何使用检索到的证据。
-- [LLM 一致性测试](https://inaodeng.com/zh-cn/qaskills/llm-consistency-testing/)：检查相同检索证据是否产生稳定回答。
-- [边界场景发现](https://inaodeng.com/zh-cn/qaskills/edge-case-discovery/)：补充范围、新鲜度和少见表述的检索样例。
 
 ## 安装与调用
 
@@ -91,7 +187,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 一定需要标注好的金标准集吗？
 
@@ -101,9 +197,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 按证据判断。必需段落缺失或不符合资格时先修检索；段落已存在但回答误用时，再转到回答层。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [RAG 检索测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-retrieval-testing/prompts/rag-retrieval-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-retrieval-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - RAG 检索测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-retrieval-testing/prompts/rag-retrieval-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-retrieval-testing/prompts/rag-retrieval-testing.md)
 - RAG 检索测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-retrieval-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-retrieval-testing)

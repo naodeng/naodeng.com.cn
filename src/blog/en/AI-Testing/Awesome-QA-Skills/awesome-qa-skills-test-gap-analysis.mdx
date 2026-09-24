@@ -1,5 +1,5 @@
 ---
-title: "Test Gap Analysis: Turn Unprotected Obligations into Actionable TG Findings"
+title: "Test Gap Analysis Skill: Turn Unprotected Obligations into Actionable TG Findings"
 description: "A bilingual guide to identifying missing or weak test obligations across requirements, risks, changes, defects, and test evidence without claiming coverage."
 date: 2026-10-15T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI Testing", "QA Skills", "Test Gap Analysis"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 “Coverage is insufficient” is not a useful handoff. A useful gap says which obligation lacks protection, what evidence is missing, who owns the next action, and how the gap can close.
+
+## Why this Skill is needed
 
 The Test Gap Analysis Skill compares test obligations with test assets in both directions. It produces TG-## gaps for missing mappings, orphan tests, unverified execution, stale evidence, uncovered risks, and low-value duplicates.
 
-The result turns a vague coverage concern into a closeable work item.
+## What the Skill does
 
-## Test Gap Analysis Skill: what it is for
+The result turns a vague coverage concern into a closeable work item.
 
 Use this Skill when requirements, risks, changes, defects, and tests need a bounded gap register. It is not a full traceability matrix, test-case authoring workflow, executable-set selector, or test execution.
 
@@ -23,13 +24,63 @@ A good gap includes obligation, source, gap type, evidence state, impact, priori
 
 Use it when a release or change review needs to know what is not sufficiently protected before anyone claims full coverage.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Test Gap Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis/prompts/test-gap-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis) may also contain evaluation cases and supporting material.
+The Test Gap Analysis Skill can organize material, evidence, and next actions for Obligation. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Obligation | What behavior or risk needs protection | Source and scope |
+| Gap type | Missing, orphan, stale, unverified, uncovered, or duplicate | Evidence state |
+| Close action | Test intent, mapping, rerun, or evidence request | Owner and condition |
+| Residual boundary | What remains unknown or deferred | Not a coverage claim |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Obligation, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Obligation, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the test-gap-analysis Skill.\n\nTask: Find gaps for a release that changes invoice export permissions and adds a retry path.\nInputs: [requirements, risk list, diff, defects, test inventory, run records]\nScope: [export authorization and retry side effects]\nConstraints: [do not execute tests or build a full traceability matrix]\n\nProduce TG-## findings with obligation, gap type, source, evidence, impact, priority, owner, close action, and validation method.
+Use the test-gap-analysis Skill.
+
+Task: Find gaps for a release that changes invoice export permissions and adds a retry path.
+Inputs: [requirements, risk list, diff, defects, test inventory, run records]
+Scope: [export authorization and retry side effects]
+Constraints: [do not execute tests or build a full traceability matrix]
+
+Produce TG-## findings with obligation, gap type, source, evidence, impact, priority, owner, close action, and validation method.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Find a missing authorization negative path
+
+The export requirement covers an admin download, but no obligation covers a support agent attempting the same download. The Skill should record an uncovered authorization obligation, ask for a test intent and role matrix, and keep execution unassessed until a run exists.
+
+A gap register identifies missing protection and evidence. It cannot claim full coverage, pass, release readiness, or risk acceptance.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Obligation meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Obligation |
+| Finding | The condition or result for Obligation is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Use the test-gap-analysis Skill.\n\nTask: Find gaps for a release that changes i
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Find a missing authorization negative path
+### Next-stage route
 
-The export requirement covers an admin download, but no obligation covers a support agent attempting the same download. The Skill should record an uncovered authorization obligation, ask for a test intent and role matrix, and keep execution unassessed until a run exists.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-A gap register identifies missing protection and evidence. It cannot claim full coverage, pass, release readiness, or risk acceptance.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide stable obligation IDs, scope, versions, test assets, defect history, execution records, and the intended decision. If only names are available, mark mapping candidates unverified.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Requirement Traceability Analysis](https://inaodeng.com/en/qaskills/requirement-traceability-analysis/):builds the broader bidirectional map.
+- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/):examines whether existing signals protect the risk.
+- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/):defines the boundary behind an obligation.
 
 ## Common traps
 
 1. Treating a test file as proof that a requirement is covered.
 2. Saying coverage is insufficient without naming the missing obligation.
 3. Marking every gap P0 or turning a suggested test into an execution result.
-
-## Related Skills
-
-- [Requirement Traceability Analysis](https://inaodeng.com/en/qaskills/requirement-traceability-analysis/)：builds the broader bidirectional map。
-- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/)：examines whether existing signals protect the risk。
-- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/)：defines the boundary behind an obligation。
 
 ## Install and invoke
 
@@ -91,7 +187,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Is this a test-case generator?
 
@@ -104,6 +200,14 @@ It can close an intent or mapping gap, not an execution-evidence gap.
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Test Gap Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis/prompts/test-gap-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Test Gap Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis/prompts/test-gap-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis/prompts/test-gap-analysis.md)
 - Test Gap Analysis Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-gap-analysis)

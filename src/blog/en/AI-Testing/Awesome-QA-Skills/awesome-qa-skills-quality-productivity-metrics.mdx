@@ -1,5 +1,5 @@
 ---
-title: "Quality Productivity Metrics: Measure QA Flow Without Rewarding Test Theater"
+title: "Quality Productivity Metrics Skill: Measure QA Flow Without Rewarding Test Theater"
 description: "A bilingual guide to designing quality and delivery productivity measures with valid denominators, attribution limits, gaming checks, and Human-use boundaries."
 date: 2026-10-07T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI Testing", "QA Skills", "Quality Productivity Metrics"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Counting test cases and closed tickets can make a busy team look productive while user risk grows. Productivity measurement needs to ask what useful quality signal moved, under which conditions, and with what trade-off.
+
+## Why this Skill is needed
 
 The Quality Productivity Metrics Skill reviews quality and delivery measures together. It distinguishes flow evidence from individual activity, exposes attribution limits, and designs checks that make gaming harder.
 
-The Skill asks whether a measure describes a system outcome or merely rewards visible activity.
+## What the Skill does
 
-## Quality Productivity Metrics Skill: what it is for
+The Skill asks whether a measure describes a system outcome or merely rewards visible activity.
 
 Use this Skill when comparing QA flow after a process or tooling change, designing an engineering scorecard, or reviewing whether a productivity claim has quality support. It does not rank people or turn activity counts into a release decision.
 
-A good result names the quality metric, delivery metric, denominator, attribution limit, gaming risk, evidence state, and Human decision outside the analysis.
+A useful finding names the quality metric, delivery metric, denominator, attribution limit, gaming risk, evidence state, and Human decision outside the analysis.
 
 Use it when a team wants to know whether faster execution, more automation, or shorter triage improved delivery without increasing escaped risk.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Quality Productivity Metrics prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics) may also contain evaluation cases and supporting material.
+The Quality Productivity Metrics Skill can organize material, evidence, and next actions for Quality signal. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Quality signal | Whether the change affected user risk or detection outcome | Evidence and source |
+| Delivery signal | Whether feedback became faster under a comparable cohort | Window and denominator |
+| Attribution limit | Other changes that could explain movement | Candidate confounders |
+| Use boundary | How the result may be used safely | Team learning, not ranking |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Quality signal, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Quality signal, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 Put the material on the table before asking for a judgment. Gaps can remain, but their status must stay visible.
 
@@ -43,10 +94,57 @@ Put the material on the table before asking for a judgment. Gaps can remain, but
 Use a request like this:
 
 ~~~text
-Use the quality-productivity-metrics Skill.\n\nTask: Evaluate whether CI parallelization improved QA productivity for checkout and catalog squads without increasing escaped risk.\nInputs: [before/after windows, run events, queue times, reruns, releases, defects, changed scope]\nScope: [two squads and named pipelines]\nConstraints: [missing incident linkage, different release volume, privacy limits]\n\nSeparate quality metrics, delivery metrics, denominators, attribution limits, gaming risks, and Human decisions. Do not convert activity counts into an employee score.
+Use the quality-productivity-metrics Skill.
+
+Task: Evaluate whether CI parallelization improved QA productivity for checkout and catalog squads without increasing escaped risk.
+Inputs: [before/after windows, run events, queue times, reruns, releases, defects, changed scope]
+Scope: [two squads and named pipelines]
+Constraints: [missing incident linkage, different release volume, privacy limits]
+
+Separate quality metrics, delivery metrics, denominators, attribution limits, gaming risks, and Human decisions. Do not convert activity counts into an employee score.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Evaluate faster CI without celebrating rerun volume
+
+After parallelization, median feedback time falls from 28 minutes to 12, but reruns double and escaped defects are not linked to releases. The Skill can report an evidenced flow improvement and an unassessed quality impact. It should ask for flaky-rerun causes and release linkage before calling the change a productivity success.
+
+The result can show what supplied cohorts and events support. It cannot prove individual effort, causal impact from one change, or that shorter feedback is valuable if it increases false confidence.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Quality signal meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Quality signal |
+| Finding | The condition or result for Quality signal is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -57,29 +155,27 @@ Use the quality-productivity-metrics Skill.\n\nTask: Evaluate whether CI paralle
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Evaluate faster CI without celebrating rerun volume
+### Next-stage route
 
-After parallelization, median feedback time falls from 28 minutes to 12, but reruns double and escaped defects are not linked to releases. The Skill can report an evidenced flow improvement and an unassessed quality impact. It should ask for flaky-rerun causes and release linkage before calling the change a productivity success.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The result can show what supplied cohorts and events support. It cannot prove individual effort, causal impact from one change, or that shorter feedback is valuable if it increases false confidence.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide comparable windows, pipeline and release IDs, event definitions, changed-scope information, and known confounders. State whether the output is for planning, team learning, or another governed decision.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Quality Metrics Design](https://inaodeng.com/en/qaskills/quality-metrics-design/):defines the event and calculation rules.
+- [Quality Dashboard Design](https://inaodeng.com/en/qaskills/quality-dashboard-design/):presents several signals with their evidence state.
+- [Automation ROI Analysis](https://inaodeng.com/en/qaskills/automation-roi-analysis/):examines cost and value when automation is the change.
 
 ## Common traps
 
 1. Using test count, commit count, or ticket closure as a stand-alone productivity score.
 2. Comparing teams with different risk, release volume, or denominator definitions.
 3. Calling a tooling change causal while ignoring flaky reruns, staffing changes, or scope reduction.
-
-## Related Skills
-
-- [Quality Metrics Design](https://inaodeng.com/en/qaskills/quality-metrics-design/)：defines the event and calculation rules。
-- [Quality Dashboard Design](https://inaodeng.com/en/qaskills/quality-dashboard-design/)：presents several signals with their evidence state。
-- [Automation ROI Analysis](https://inaodeng.com/en/qaskills/automation-roi-analysis/)：examines cost and value when automation is the change。
 
 ## Install and invoke
 
@@ -97,7 +193,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Can this Skill produce a team ranking?
 
@@ -110,6 +206,14 @@ Keep productivity and quality signals separate, mark the missing part unassessed
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Quality Productivity Metrics prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Quality Productivity Metrics prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md)
 - Quality Productivity Metrics Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics)

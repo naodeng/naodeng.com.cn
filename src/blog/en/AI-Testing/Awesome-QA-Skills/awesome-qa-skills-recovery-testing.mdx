@@ -1,5 +1,5 @@
 ---
-title: "Recovery Testing: Prove Restore Steps, RPO/RTO, and Human Takeover"
+title: "Recovery Testing Skill: Prove Restore Steps, RPO/RTO, and Human Takeover"
 description: "A bilingual guide to recovery-testing analysis covering recovery point, recovery time, restore steps, validation evidence, and human takeover."
 date: 2026-10-24T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI Testing", "QA Skills", "Recovery Testing"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 A backup file is not a recovery result. The useful question is whether the service can restore the right state within an agreed window, and whether someone can verify the result when automation stops.
+
+## Why this Skill is needed
 
 The Recovery Testing Skill turns recovery objectives and failure scenarios into reviewable validation preparation. It keeps planned steps, static design, dry runs, and completed execution separate.
 
-Recovery is complete only when the restored state is verified and the next operator knows what to do if the procedure diverges.
+## What the Skill does
 
-## Recovery Testing Skill: what it is for
+Recovery is complete only when the restored state is verified and the next operator knows what to do if the procedure diverges.
 
 Use this Skill to inspect recovery point, recovery time, restore steps, validation evidence, and Human takeover for a service or data flow. It does not inject faults or access production dependencies by itself.
 
@@ -23,13 +24,63 @@ A good recovery review names the trigger, expected recovery point and time, rest
 
 Use it when a disaster-recovery exercise is planned, a backup or topology changed, or a runbook claims readiness without a recent validation record.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Recovery Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing/prompts/recovery-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing) may also contain evaluation cases and supporting material.
+The Recovery Testing Skill can organize material, evidence, and next actions for Recovery objective. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Recovery objective | What loss and delay the scenario is expected to tolerate | Target, source, or pending |
+| Recovery path | Ordered steps, prerequisites, and expected observations | Runbook and owner |
+| Validation evidence | How data and service behavior will be checked | Query, artifact, or missing |
+| Takeover boundary | When automation stops and a Human must decide | Stop condition and escalation |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Recovery objective, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Recovery objective, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the recovery-testing Skill.\n\nTask: Prepare a controlled recovery validation for the order service after a database-region outage.\nInputs: [RPO/RTO objectives, backup IDs, runbook, dependencies, validation queries, owner roles]\nScope: [staging restore, order data, queue replay]\nConstraints: [no production fault injection, masked data, time-boxed exercise]\n\nModel recovery point, recovery time, steps, validation evidence, and Human takeover. Keep unsupported thresholds and execution claims pending.
+Use the recovery-testing Skill.
+
+Task: Prepare a controlled recovery validation for the order service after a database-region outage.
+Inputs: [RPO/RTO objectives, backup IDs, runbook, dependencies, validation queries, owner roles]
+Scope: [staging restore, order data, queue replay]
+Constraints: [no production fault injection, masked data, time-boxed exercise]
+
+Model recovery point, recovery time, steps, validation evidence, and Human takeover. Keep unsupported thresholds and execution claims pending.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Validate an order restore without declaring production ready
+
+A staging exercise restores a database backup, but the runbook does not say how to reconcile orders written after the backup or replay the queue. The Skill should mark recovery-point and replay validation incomplete, add the smallest evidence request, and avoid calling the service recoverable merely because the database process started.
+
+This analysis prepares an isolated validation and classifies artifacts. It cannot prove recovery time, data correctness, or production readiness until an authorized exercise produces evidence.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Recovery objective meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Recovery objective |
+| Finding | The condition or result for Recovery objective is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Use the recovery-testing Skill.\n\nTask: Prepare a controlled recovery validatio
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Validate an order restore without declaring production ready
+### Next-stage route
 
-A staging exercise restores a database backup, but the runbook does not say how to reconcile orders written after the backup or replay the queue. The Skill should mark recovery-point and replay validation incomplete, add the smallest evidence request, and avoid calling the service recoverable merely because the database process started.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-This analysis prepares an isolated validation and classifies artifacts. It cannot prove recovery time, data correctness, or production readiness until an authorized exercise produces evidence.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Supply the objective source, scenario, backup and runbook versions, dependency list, validation queries, environment, and owners. If RPO/RTO is not approved, leave it pending; do not invent a standard threshold.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Disaster Recovery Testing](https://inaodeng.com/en/qaskills/disaster-recovery-testing/):extends the scenario to broader disaster plans.
+- [Failover Testing](https://inaodeng.com/en/qaskills/failover-testing/):checks traffic and service switching behavior.
+- [Resilience Testing](https://inaodeng.com/en/qaskills/resilience-testing/):examines behavior while dependencies degrade or fail.
 
 ## Common traps
 
 1. Treating a successful process start as proof that business data and downstream queues are consistent.
 2. Writing restore steps without prerequisites, expected observations, owners, or a stop condition.
 3. Running a recovery plan against production without explicit authorization, isolation, and rollback.
-
-## Related Skills
-
-- [Disaster Recovery Testing](https://inaodeng.com/en/qaskills/disaster-recovery-testing/)：extends the scenario to broader disaster plans。
-- [Failover Testing](https://inaodeng.com/en/qaskills/failover-testing/)：checks traffic and service switching behavior。
-- [Resilience Testing](https://inaodeng.com/en/qaskills/resilience-testing/)：examines behavior while dependencies degrade or fail。
 
 ## Install and invoke
 
@@ -91,7 +187,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Can this Skill set an RPO or RTO?
 
@@ -104,6 +200,14 @@ No. Label it as dry-run evidence and keep completed recovery claims separate.
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Recovery Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing/prompts/recovery-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Recovery Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing/prompts/recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing/prompts/recovery-testing.md)
 - Recovery Testing Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing)

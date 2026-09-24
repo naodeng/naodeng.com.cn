@@ -1,5 +1,5 @@
 ---
-title: "Reliability Testing: Connect Failure Modes to Availability Evidence"
+title: "Reliability Testing Skill: Connect Failure Modes to Availability Evidence"
 description: "A bilingual guide to reliability-testing analysis covering availability objectives, failure modes, exposure windows, and evidence readiness."
 date: 2026-10-25T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI Testing", "QA Skills", "Reliability Testing"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Reliability is not a claim that a service “usually works.” It is a relationship between an availability objective, realistic failure modes, exposure windows, and evidence that can be checked.
+
+## Why this Skill is needed
 
 The Reliability Testing Skill prepares an evidence-bounded view of service reliability. It models failure modes and exposure without treating an architecture diagram or an incident-free week as proof.
 
-The result should tell the next engineer what failure to isolate and what evidence would change the reliability judgment.
+## What the Skill does
 
-## Reliability Testing Skill: what it is for
+The result should tell the next engineer what failure to isolate and what evidence would change the reliability judgment.
 
 Use this Skill to review availability objectives, dependency failures, degraded modes, exposure windows, and validation evidence readiness. It does not inject faults or access production systems by itself.
 
@@ -23,13 +24,63 @@ A good reliability review maps each important failure mode to expected behavior,
 
 Use it when a resilience exercise is planned, a dependency or traffic pattern changed, or an SLO exists without a clear validation path.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Reliability Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing/prompts/reliability-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing) may also contain evaluation cases and supporting material.
+The Reliability Testing Skill can organize material, evidence, and next actions for Reliability objective. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Reliability objective | Expected availability or degraded behavior | Source and measurement window |
+| Failure-mode judgment | Expected behavior under one failure | Scenario and evidence state |
+| Exposure analysis | Who or what is affected and for how long | Blast radius and unknowns |
+| Evidence plan | Metric, trace, or exercise that reduces uncertainty | Owner and stop condition |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Reliability objective, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Reliability objective, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the reliability-testing Skill.\n\nTask: Prepare a reliability review for a notification service depending on a queue and a third-party email provider.\nInputs: [SLO, dependency map, failure modes, traffic window, metrics, alerts, runbooks]\nScope: [staging exercise and production evidence review]\nConstraints: [no production fault injection, provider data masked]\n\nCover availability objectives, failure modes, exposure windows, and evidence readiness. State pending, blocked, or unassessed items and give the smallest isolated validation method.
+Use the reliability-testing Skill.
+
+Task: Prepare a reliability review for a notification service depending on a queue and a third-party email provider.
+Inputs: [SLO, dependency map, failure modes, traffic window, metrics, alerts, runbooks]
+Scope: [staging exercise and production evidence review]
+Constraints: [no production fault injection, provider data masked]
+
+Cover availability objectives, failure modes, exposure windows, and evidence readiness. State pending, blocked, or unassessed items and give the smallest isolated validation method.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Review provider outage behavior without inventing availability
+
+The email provider contract says requests may time out, while the service design mentions retries but not queue backpressure or user-visible status. The Skill should flag the failure mode and exposure window as incomplete, then request retry, queue, and alert evidence. It should not infer an availability percentage from a successful staging smoke test.
+
+The review classifies objectives and readiness from supplied material. It cannot prove real availability, fault containment, or recovery behavior until authorized validation produces runtime evidence.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Reliability objective meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Reliability objective |
+| Finding | The condition or result for Reliability objective is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Use the reliability-testing Skill.\n\nTask: Prepare a reliability review for a n
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Review provider outage behavior without inventing availability
+### Next-stage route
 
-The email provider contract says requests may time out, while the service design mentions retries but not queue backpressure or user-visible status. The Skill should flag the failure mode and exposure window as incomplete, then request retry, queue, and alert evidence. It should not infer an availability percentage from a successful staging smoke test.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The review classifies objectives and readiness from supplied material. It cannot prove real availability, fault containment, or recovery behavior until authorized validation produces runtime evidence.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide the objective source, dependency and failure-mode map, exposure window, metric definitions, alert and runbook references, environment, and data constraints. Without an approved objective, write an evidence gap rather than inventing an SLO.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/):checks behavior after service or data restoration.
+- [Chaos Testing](https://inaodeng.com/en/qaskills/chaos-testing/):designs controlled failure experiments.
+- [Observability Design Review](https://inaodeng.com/en/qaskills/observability-design-review/):checks whether reliability evidence can be observed.
 
 ## Common traps
 
 1. Treating uptime history as proof that unobserved dependency failures are handled.
 2. Describing a failure mode without user exposure, degraded behavior, or alert.
 3. Running broad fault injection before defining an isolated scenario and stop condition.
-
-## Related Skills
-
-- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/)：checks behavior after service or data restoration。
-- [Chaos Testing](https://inaodeng.com/en/qaskills/chaos-testing/)：designs controlled failure experiments。
-- [Observability Design Review](https://inaodeng.com/en/qaskills/observability-design-review/)：checks whether reliability evidence can be observed。
 
 ## Install and invoke
 
@@ -91,7 +187,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Can the Skill assign an SLO?
 
@@ -104,6 +200,14 @@ It is one observation with limited coverage. Keep its window and failure exposur
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Reliability Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing/prompts/reliability-testing.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Reliability Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing/prompts/reliability-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing/prompts/reliability-testing.md)
 - Reliability Testing Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing)

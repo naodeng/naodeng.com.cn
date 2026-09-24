@@ -1,5 +1,5 @@
 ---
-title: "Regression Optimization: Cut Feedback Time Without Dropping Risk"
+title: "Regression Optimization Skill: Cut Feedback Time Without Dropping Risk"
 description: "A bilingual guide to optimizing regression selection, ordering, parallelism, caching, and risk preservation with evidence-bounded trade-offs."
 date: 2026-11-04T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI Testing", "QA Skills", "Regression Optimization"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 A shorter regression run is not automatically a better regression run. Removing slow checks can improve feedback while quietly removing the only coverage for payment, permission, or migration risk.
+
+## Why this Skill is needed
 
 The Regression Optimization Skill reviews selection, ordering, parallelism, caching, and risk preservation as one trade-off. It helps a team make the fastest safe feedback loop that its evidence can support.
 
-Optimization succeeds only when feedback gets faster without making important risk invisible.
+## What the Skill does
 
-## Regression Optimization Skill: what it is for
+Optimization succeeds only when feedback gets faster without making important risk invisible.
 
 Use this Skill when a suite is too slow, CI capacity is expensive, or a team proposes skipping tests based on changed files or historical pass rates. It keeps the risk basis and validation plan visible.
 
@@ -23,13 +24,63 @@ A good proposal explains why a test is selected, when it runs, what risk it prot
 
 Use it when CI is being redesigned, a release train must accelerate, flaky tests are being removed, or an escape shows that selection missed a changed dependency.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Regression Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization/prompts/regression-optimization.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization) may also contain evaluation cases and supporting material.
+The Regression Optimization Skill can organize material, evidence, and next actions for Selection basis. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Selection basis | Why each selected or skipped group is in scope | Changed surface and risk link |
+| Execution plan | Order, parallel groups, isolation, and cache conditions | Repeatable pipeline rule |
+| Risk preservation | Critical coverage and full-run fallback | Explicit escape boundary |
+| Validation result | What the experiment observed | Duration, failures, evidence state |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Selection basis, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Selection basis, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the regression-optimization Skill.\n\nTask: Reduce pre-release feedback time for a checkout change touching tax calculation and shared pricing code.\nInputs: [diff, dependency graph, suite inventory, run history, durations, cache keys, critical journeys]\nScope: [pre-merge and release pipelines]\nConstraints: [two CI workers, no loss of payment and tax coverage]\n\nEvaluate selection, ordering, parallelism, caching, and risk preservation. Give an isolated validation experiment and keep unsupported speed or safety claims pending.
+Use the regression-optimization Skill.
+
+Task: Reduce pre-release feedback time for a checkout change touching tax calculation and shared pricing code.
+Inputs: [diff, dependency graph, suite inventory, run history, durations, cache keys, critical journeys]
+Scope: [pre-merge and release pipelines]
+Constraints: [two CI workers, no loss of payment and tax coverage]
+
+Evaluate selection, ordering, parallelism, caching, and risk preservation. Give an isolated validation experiment and keep unsupported speed or safety claims pending.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Speed up tax regression without hiding shared-code impact
+
+A file-based selector excludes payment tests because only pricing files changed. The Skill should question that boundary because shared pricing code feeds tax and payment totals, then propose a dependency-aware group with parallel execution. A cache is acceptable only when its key includes code, environment, data, and configuration that affect the result.
+
+The Skill can compare optimization rules with suite and risk evidence. It cannot claim escaped-risk reduction or safe cache reuse until a validation run produces evidence.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Selection basis meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Selection basis |
+| Finding | The condition or result for Selection basis is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Use the regression-optimization Skill.\n\nTask: Reduce pre-release feedback time
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Speed up tax regression without hiding shared-code impact
+### Next-stage route
 
-A file-based selector excludes payment tests because only pricing files changed. The Skill should question that boundary because shared pricing code feeds tax and payment totals, then propose a dependency-aware group with parallel execution. A cache is acceptable only when its key includes code, environment, data, and configuration that affect the result.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The Skill can compare optimization rules with suite and risk evidence. It cannot claim escaped-risk reduction or safe cache reuse until a validation run produces evidence.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide the change surface, dependency information, suite inventory, historical runs, current cache keys, critical journeys, and full-run fallback. If impact is uncertain, state it instead of narrowing scope by convention.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/):supplies duration, flakiness, ownership, and maintenance evidence.
+- [CI Test Optimization](https://inaodeng.com/en/qaskills/ci-test-optimization/):focuses on pipeline feedback and execution cost.
+- [Risk-Based Testing](https://inaodeng.com/en/qaskills/risk-based-testing/):provides the risk basis for preserving coverage.
 
 ## Common traps
 
 1. Selecting only tests whose files changed and missing shared libraries, schemas, or configuration effects.
 2. Measuring duration improvement while dropping a critical journey from the selected set.
 3. Reusing cached results across different code, environment, data, or feature-flag conditions.
-
-## Related Skills
-
-- [Test Suite Health Analysis](https://inaodeng.com/en/qaskills/test-suite-health-analysis/)：supplies duration, flakiness, ownership, and maintenance evidence。
-- [CI Test Optimization](https://inaodeng.com/en/qaskills/ci-test-optimization/)：focuses on pipeline feedback and execution cost。
-- [Risk-Based Testing](https://inaodeng.com/en/qaskills/risk-based-testing/)：provides the risk basis for preserving coverage。
 
 ## Install and invoke
 
@@ -91,7 +187,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Can historical pass rate justify skipping a test?
 
@@ -104,6 +200,14 @@ Define the boundary from risk: high-impact shared changes, selector uncertainty,
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Regression Optimization prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization/prompts/regression-optimization.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Regression Optimization prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization/prompts/regression-optimization.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization/prompts/regression-optimization.md)
 - Regression Optimization Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/regression-optimization)

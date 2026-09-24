@@ -1,5 +1,5 @@
 ---
-title: "Testing Bottleneck Analysis：把队列、交接和容量问题变成行动"
+title: "测试瓶颈分析 Skill：把队列、交接和容量问题变成行动"
 description: "测试瓶颈分析双语指南，围绕等待队列、依赖、容量、交接和约束证据分析测试流转，不自造根因或通过结论。"
 date: 2026-10-12T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI 测试", "QA Skills", "测试瓶颈分析"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 测试瓶颈不一定是慢测试，也可能是共享环境、评审队列、缺少数据、专业交接，或仪表盘没有记录的容量规则。
+
+## 为什么需要这个 Skill
 
 Testing Bottleneck Analysis Skill 检查等待队列、依赖、容量、交接和测试约束证据，把延迟抱怨变成有证据边界的改进路径。
 
-本文关注的产物应指出下一个可测量的约束，而不是只指出看起来最长的队列。
+## Skill 用来做什么
 
-## 测试瓶颈分析 Skill 用来做什么
+本文关注的产物应指出下一个可测量的约束，而不是只指出看起来最长的队列。
 
 当你要复核测试为什么等待、流程停在哪里，以及什么证据能区分需求、容量、依赖或交接约束时，使用这个 Skill。它不自造根因，也不批准流程变化。
 
-好的结果要写清队列、依赖、容量或交接信号、时间窗口、证据状态、优先级、负责人、关闭条件和最小验证。
+结果要写清队列、依赖、容量或交接信号、时间窗口、证据状态、优先级、负责人、关闭条件和最小验证。
 
 当测试工作反复等待环境、数据、评审、专家或 CI 容量，需要可决策诊断时，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [测试瓶颈分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis) 中还可能包含评测用例和补充材料。
+测试瓶颈分析 Skill 可以组织约束发现的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 约束发现 | 观察到的队列、依赖、容量或交接问题 | 来源与证据状态 |
+| 影响 | 延迟如何影响验证或风险 | 优先级与范围 |
+| 实验 | 区分假设的最小变化 | 预期观察 |
+| 决策边界 | 需要人工做容量或流程选择的内容 | 负责人和残余风险 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“约束发现”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕约束发现，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Testing Bottleneck Analysis Skill 检查等待队列、依赖、容量、交接�
 可以这样调用：
 
 ~~~text
-请使用 testing-bottleneck-analysis Skill。\n\n任务：诊断结账发布验证为什么要等待两天的共享 staging 环境和安全评审。\n输入材料：[队列时间戳、环境预约、评审交接、容量、阻塞原因和发布日历]\n范围：[最近四次发布]\n限制：[不自造根因、不承诺吞吐改善]\n\n分开等待队列、依赖、容量、交接和证据发现，给出优先级、负责人、关闭条件和可测量的下一步。
+请使用 testing-bottleneck-analysis Skill。
+
+任务：诊断结账发布验证为什么要等待两天的共享 staging 环境和安全评审。
+输入材料：[队列时间戳、环境预约、评审交接、容量、阻塞原因和发布日历]
+范围：[最近四次发布]
+限制：[不自造根因、不承诺吞吐改善]
+
+分开等待队列、依赖、容量、交接和证据发现，给出优先级、负责人、关闭条件和可测量的下一步。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：区分 staging 稀缺和安全评审交接
+
+发布确实在等 staging，但时间戳显示安全评审只有在手工环境交接后才开始。这个 Skill 应把环境容量和交接顺序作为两个假设，要求时间戳重放或并行预约实验，不要只因为队列长就归罪环境。
+
+分析可以分类流转证据并提出实验，不能在验证前证明根因、吞吐提升或发布就绪。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“约束发现”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和约束发现的具体对象 |
+| 发现 | 约束发现的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Testing Bottleneck Analysis Skill 检查等待队列、依赖、容量、交接�
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：区分 staging 稀缺和安全评审交接
+### 下一步路由
 
-发布确实在等 staging，但时间戳显示安全评审只有在手工环境交接后才开始。这个 Skill 应把环境容量和交接顺序作为两个假设，要求时间戳重放或并行预约实验，不要只因为队列长就归罪环境。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-分析可以分类流转证据并提出实验，不能在验证前证明根因、吞吐提升或发布就绪。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供固定发布窗口、队列和服务时间戳、阻塞原因、依赖图、容量排期、交接负责人和分析要支持的决定。时间戳缺失时保持未评估。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [测试运行时间优化](https://inaodeng.com/zh-cn/qaskills/test-runtime-optimization/)：在流程约束明确后处理慢执行。
+- [质量生产力指标](https://inaodeng.com/zh-cn/qaskills/quality-productivity-metrics/)：区分流程指标与质量结论。
+- [测试范围分析](https://inaodeng.com/zh-cn/qaskills/test-scope-analysis/)：显示哪些范围被阻塞或延期。
 
 ## 容易踩的坑
 
 1. 不检查下游等待或服务时间，就把最长队列叫瓶颈。
 2. 把利用率或抱怨当成容量饱和证明。
 3. 没有定义实验和成功证据就先改流程。
-
-## 相关 Skill
-
-- [测试运行时间优化](https://inaodeng.com/zh-cn/qaskills/test-runtime-optimization/)：在流程约束明确后处理慢执行。
-- [质量生产力指标](https://inaodeng.com/zh-cn/qaskills/quality-productivity-metrics/)：区分流程指标与质量结论。
-- [测试范围分析](https://inaodeng.com/zh-cn/qaskills/test-scope-analysis/)：显示哪些范围被阻塞或延期。
 
 ## 安装与调用
 
@@ -91,7 +187,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 这个 Skill 会自动建议增加人员吗？
 
@@ -101,9 +197,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 返回受限诊断，把因果发现标为未评估，并请求最小缺失事件时间戳。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [测试瓶颈分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - 测试瓶颈分析 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)
 - 测试瓶颈分析 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis)

@@ -1,5 +1,5 @@
 ---
-title: "Requirement Traceability Analysis：建立双向的需求证据链"
+title: "需求可追溯性分析 Skill：建立双向的需求证据链"
 description: "需求可追溯性分析双语指南，映射需求、验收、设计、代码、测试、缺陷和验证证据，并区分关系类型与覆盖状态。"
 date: 2026-10-04T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI 测试", "QA Skills", "需求可追溯性分析"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 测试名称和需求标题相似，不等于可追溯。可用于发布判断的映射，必须说明需求连接了什么、证据是否存在，以及哪些测试或缺陷没有上游依据。
+
+## 为什么需要这个 Skill
 
 Requirement Traceability Analysis Skill 建立从需求、验收、设计、代码到测试、缺陷和验证证据的双向可审计映射，并把关系类型与覆盖状态分开。
 
-本文关注的价值在于两个方向：重要需求有后续路径，重要测试和缺陷也有存在理由。
+## Skill 用来做什么
 
-## 需求可追溯性分析 Skill 用来做什么
+本文关注的价值在于两个方向：重要需求有后续路径，重要测试和缺陷也有存在理由。
 
 当你要做发布复核、变更影响分析、合规映射或风险治理，且可能存在孤儿需求、孤儿测试、断链、过期材料或缺少执行记录时，使用这个 Skill。
 
-好的结果使用 RT-## 发现，写清稳定 ID、来源和版本、关联产物、关系类型、覆盖状态、证据、缺口动作、负责人、关闭条件和验证方式。
+结果使用 RT-## 发现，写清稳定 ID、来源和版本、关联产物、关系类型、覆盖状态、证据、缺口动作、负责人、关闭条件和验证方式。
 
 当既要检查需求是否向下覆盖，也要反向追踪测试、缺陷和证据是否有上游依据时，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [需求可追溯性分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-traceability-analysis/prompts/requirement-traceability-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-traceability-analysis) 中还可能包含评测用例和补充材料。
+需求可追溯性分析 Skill 可以组织追踪关系的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 追踪关系 | 两个产物之间是什么关系 | Direct / Derived / Missing |
+| 覆盖状态 | 关联证据是否完整且最新 | Complete / Partial / Unexecuted |
+| 孤儿发现 | 没有对应产物的需求、测试、缺陷或证据 | 负责人和缺口动作 |
+| 验证方式 | 什么证据能证明或关闭缺口 | 运行标识与环境 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“追踪关系”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕追踪关系，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Requirement Traceability Analysis Skill 建立从需求、验收、设计、代�
 可以这样调用：
 
 ~~~text
-请使用 requirement-traceability-analysis Skill。\n\n任务：为 R25.1 结账税费变更建立从需求到验收、设计、代码、测试、缺陷和验证证据的双向追踪。\n输入材料：[产物 ID、版本、链接、运行记录和环境]\n范围：[税费计算与支付总额]\n限制：[不要把文件存在或报告措辞当成执行证明]\n\n输出 RT-## 发现。把 direct、derived、indirect、contradictory、missing 与 complete、partial、unverified、stale、unexecuted、unassessed 分开。
+请使用 requirement-traceability-analysis Skill。
+
+任务：为 R25.1 结账税费变更建立从需求到验收、设计、代码、测试、缺陷和验证证据的双向追踪。
+输入材料：[产物 ID、版本、链接、运行记录和环境]
+范围：[税费计算与支付总额]
+限制：[不要把文件存在或报告措辞当成执行证明]
+
+输出 RT-## 发现。把 direct、derived、indirect、contradictory、missing 与 complete、partial、unverified、stale、unexecuted、unassessed 分开。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：税费发布前先找出孤儿测试
+
+税费需求关联了验收条件和代码改动，但回归测试没有稳定需求 ID；另一个测试还在验证已经废弃的税率规则。这个 Skill 应保留两个缺口，区分缺少关系与覆盖过期，并请求最小映射或废弃决定。测试文件名本身不是执行证据。
+
+可追溯性分析可以证明已有映射和证据状态，不能证明测试通过、缺陷修复或发布批准。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“追踪关系”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和追踪关系的具体对象 |
+| 发现 | 追踪关系的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Requirement Traceability Analysis Skill 建立从需求、验收、设计、代�
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：税费发布前先找出孤儿测试
+### 下一步路由
 
-税费需求关联了验收条件和代码改动，但回归测试没有稳定需求 ID；另一个测试还在验证已经废弃的税率规则。这个 Skill 应保留两个缺口，区分缺少关系与覆盖过期，并请求最小映射或废弃决定。测试文件名本身不是执行证据。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-可追溯性分析可以证明已有映射和证据状态，不能证明测试通过、缺陷修复或发布批准。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供稳定 ID、版本、范围、产物链接、关系词汇、执行记录和目标覆盖模式。没有稳定身份时，把名称匹配候选标为未评估，不要强行建立链接。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [需求质量复核](https://inaodeng.com/zh-cn/qaskills/requirement-quality-review/)：检查源需求是否具备进入下一阶段的条件。
+- [测试缺口分析](https://inaodeng.com/zh-cn/qaskills/test-gap-analysis/)：根据已追踪风险检查缺失覆盖。
+- [基于风险的测试](https://inaodeng.com/zh-cn/qaskills/risk-based-testing/)：利用追踪到的风险排序测试深度。
 
 ## 容易踩的坑
 
 1. 只做需求到测试的矩阵，漏掉孤儿测试或没有上游的缺陷。
 2. 把报告摘要、文件名或代码存在当成执行证明。
 3. 没有检查适用范围，就跨版本或范围用相似标题关联。
-
-## 相关 Skill
-
-- [需求质量复核](https://inaodeng.com/zh-cn/qaskills/requirement-quality-review/)：检查源需求是否具备进入下一阶段的条件。
-- [测试缺口分析](https://inaodeng.com/zh-cn/qaskills/test-gap-analysis/)：根据已追踪风险检查缺失覆盖。
-- [基于风险的测试](https://inaodeng.com/zh-cn/qaskills/risk-based-testing/)：利用追踪到的风险排序测试深度。
 
 ## 安装与调用
 
@@ -91,7 +187,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 矩阵完整就等于覆盖完整吗？
 
@@ -101,9 +197,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 可以提出候选关系，但没有依据的链接必须保持未评估，等人工确认身份和范围。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [需求可追溯性分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-traceability-analysis/prompts/requirement-traceability-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-traceability-analysis) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - 需求可追溯性分析 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-traceability-analysis/prompts/requirement-traceability-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-traceability-analysis/prompts/requirement-traceability-analysis.md)
 - 需求可追溯性分析 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-traceability-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-traceability-analysis)

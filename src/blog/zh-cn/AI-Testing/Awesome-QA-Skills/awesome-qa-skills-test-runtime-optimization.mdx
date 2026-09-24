@@ -1,5 +1,5 @@
 ---
-title: "Test Runtime Optimization：用可信基线缩短慢反馈"
+title: "测试运行时间优化 Skill：用可信基线缩短慢反馈"
 description: "测试运行时间优化双语指南，围绕性能剖析、初始化与清理、并行、隔离和可比运行基线优化测试反馈。"
 date: 2026-11-05T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI 测试", "QA Skills", "测试运行时间优化"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 让测试变快很容易，前提是正确性由别人负责。安全的运行时间优化要先有基线、瓶颈，以及并行或初始化变化没有改变测试含义的证据。
+
+## 为什么需要这个 Skill
 
 Test Runtime Optimization Skill 分析慢测试、性能剖析、初始化与清理、并行、隔离和基线，把提速方案变成有边界的实验，而不是口头承诺。
 
-本文关注的速度只有在优化后的测试仍然产生可比较、可信信号时才有价值。
+## Skill 用来做什么
 
-## 测试运行时间优化 Skill 用来做什么
+本文关注的速度只有在优化后的测试仍然产生可比较、可信信号时才有价值。
 
 当 CI 反馈慢，或者需要在改夹具、Worker、顺序或环境初始化前做剖析时，使用这个 Skill。
 
-好的结果要识别慢信号、测量基线、瓶颈假设、隔离约束、优化方式、预期行为和验证证据。
+结果要识别慢信号、测量基线、瓶颈假设、隔离约束、优化方式、预期行为和验证证据。
 
 当套件存在明确运行时间问题，需要决定先剖析、改初始化、并行还是隔离时，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [测试运行时间优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization) 中还可能包含评测用例和补充材料。
+测试运行时间优化 Skill 可以组织瓶颈的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 瓶颈 | 测到的慢路径与证据 | 基线与剖析 |
+| 优化选项 | 初始化、清理、并行或隔离变化 | 预期取舍 |
+| 信任边界 | 必须保持等价的内容 | 数据与行为检查 |
+| 验证 | 可比的前后证据 | 负责人和回滚 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“瓶颈”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕瓶颈，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Test Runtime Optimization Skill 分析慢测试、性能剖析、初始化与清
 可以这样调用：
 
 ~~~text
-请使用 test-runtime-optimization Skill。\n\n任务：降低商品目录 API 套件的合并前运行时间；当前每个测试都会创建完整数据库快照。\n输入材料：[时长分布、剖析输出、夹具代码、Worker 配置、隔离限制和运行记录]\n范围：[合并前 API 套件]\n限制：[保留数据隔离与断言]\n\n覆盖慢测试、剖析证据、初始化/清理、并行、隔离、基线和验证方式。
+请使用 test-runtime-optimization Skill。
+
+任务：降低商品目录 API 套件的合并前运行时间；当前每个测试都会创建完整数据库快照。
+输入材料：[时长分布、剖析输出、夹具代码、Worker 配置、隔离限制和运行记录]
+范围：[合并前 API 套件]
+限制：[保留数据隔离与断言]
+
+覆盖慢测试、剖析证据、初始化/清理、并行、隔离、基线和验证方式。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：替换完整快照初始化，但不要共享状态
+
+剖析显示大部分时间耗在快照创建，但测试也会修改共享参考数据。这个 Skill 应区分昂贵初始化与不安全共享，建议做更小的隔离夹具实验，并要求同时提供正确性和时长的前后证据。
+
+分析可以准备优化实验，不能在没有可比运行前证明提速、正确性或覆盖保持。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“瓶颈”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和瓶颈的具体对象 |
+| 发现 | 瓶颈的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Test Runtime Optimization Skill 分析慢测试、性能剖析、初始化与清
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：替换完整快照初始化，但不要共享状态
+### 下一步路由
 
-剖析显示大部分时间耗在快照创建，但测试也会修改共享参考数据。这个 Skill 应区分昂贵初始化与不安全共享，建议做更小的隔离夹具实验，并要求同时提供正确性和时长的前后证据。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-分析可以准备优化实验，不能在没有可比运行前证明提速、正确性或覆盖保持。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供时长分布、版本和环境、剖析数据、初始化/清理代码、Worker 设置、资源限制和正确性检查。一次性的速度观察要限定范围。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [CI 测试优化](https://inaodeng.com/zh-cn/qaskills/ci-test-optimization/)：把运行时变化连接到流水线反馈。
+- [测试套件健康度分析](https://inaodeng.com/zh-cn/qaskills/test-suite-health-analysis/)：提供套件级时长和 flaky 上下文。
+- [测试代码评审](https://inaodeng.com/zh-cn/qaskills/test-code-review/)：复核优化影响的夹具和断言。
 
 ## 容易踩的坑
 
 1. 只根据最慢的一次运行，而不是可比的分布来优化。
 2. 并行运行共享数据库、端口、时钟或文件系统状态的测试。
 3. 删掉初始化或断言后，把更短的运行叫作等价。
-
-## 相关 Skill
-
-- [CI 测试优化](https://inaodeng.com/zh-cn/qaskills/ci-test-optimization/)：把运行时变化连接到流水线反馈。
-- [测试套件健康度分析](https://inaodeng.com/zh-cn/qaskills/test-suite-health-analysis/)：提供套件级时长和 flaky 上下文。
-- [测试代码评审](https://inaodeng.com/zh-cn/qaskills/test-code-review/)：复核优化影响的夹具和断言。
 
 ## 安装与调用
 
@@ -91,7 +187,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 时长变短就能宣布成功吗？
 
@@ -101,9 +197,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 不能。共享可能引入顺序依赖或状态泄漏，必须有隔离边界证据。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [测试运行时间优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - 测试运行时间优化 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md)
 - 测试运行时间优化 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization)

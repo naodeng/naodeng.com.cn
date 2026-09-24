@@ -1,5 +1,5 @@
 ---
-title: "RAG Quality Testing：检查回答是否有依据、相关且会安全拒答"
+title: "RAG 质量测试 Skill：检查回答是否有依据、相关且会安全拒答"
 description: "RAG 质量测试双语指南，围绕依据性、相关性、完整性、引用支撑、拒答和回答级证据检查 RAG 输出。"
 date: 2026-10-30T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI 测试", "QA Skills", "RAG 质量测试"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 RAG 回答可以很流畅，却仍然可能错误、不完整，或者没有检索文档支持。质量检查要先看回答声称了什么，再看实际证据支持了什么。
+
+## 为什么需要这个 Skill
 
 RAG Quality Testing Skill 检查检索增强系统的回答层，把依据性、相关性、完整性、引用支撑和拒答拆开判断，避免漂亮的回答掩盖来源缺失或文档冲突。
 
-本文要回答的核心问题是：回答是否只说了现有证据能够支撑的内容。
+## Skill 用来做什么
 
-## RAG 质量测试 Skill 用来做什么
+本文要回答的核心问题是：回答是否只说了现有证据能够支撑的内容。
 
 当你要根据给定上下文和预期行为复核 Agent、RAG 或 LLM 输出时，使用这个 Skill。它适合有证据边界的分析，不会因为少量样例就宣布模型安全。
 
@@ -23,13 +24,63 @@ RAG Quality Testing Skill 检查检索增强系统的回答层，把依据性、
 
 当内部知识助手回答政策、客服或运营问题，团队需要确认回答是否有依据，而不仅是听起来有帮助时，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [RAG 质量测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-quality-testing/prompts/rag-quality-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-quality-testing) 中还可能包含评测用例和补充材料。
+RAG 质量测试 Skill 可以组织依据性的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 依据性 | 回答陈述是否被给定上下文支持 | 陈述到来源的证据 |
+| 相关性与完整性 | 是否回答问题且没有重要遗漏 | 问题与预期行为 |
+| 引用支撑 | 引用是否指向具体陈述和适用版本 | 片段、来源与新鲜度 |
+| 拒答 | 缺少依据时是否拒绝或要求澄清 | 规则与实际输出 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“依据性”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕依据性，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ RAG Quality Testing Skill 检查检索增强系统的回答层，把依据性、
 可以这样调用：
 
 ~~~text
-请使用 rag-quality-testing Skill。\n\n任务：复核 HR 政策助手关于育儿假、差旅报销和语料库中不存在的福利问题的回答。\n输入材料：[问题、检索片段、文档版本、模型输出、引用和预期行为]\n范围：[政策语料库、模型版本和评估窗口]\n限制：[员工数据脱敏、不执行生产写操作]\n\n分别评估依据性、相关性、完整性、引用支撑和拒答。每条发现都关联回答级证据，无法支持的内容标记为 pending 或未评估。
+请使用 rag-quality-testing Skill。
+
+任务：复核 HR 政策助手关于育儿假、差旅报销和语料库中不存在的福利问题的回答。
+输入材料：[问题、检索片段、文档版本、模型输出、引用和预期行为]
+范围：[政策语料库、模型版本和评估窗口]
+限制：[员工数据脱敏、不执行生产写操作]
+
+分别评估依据性、相关性、完整性、引用支撑和拒答。每条发现都关联回答级证据，无法支持的内容标记为 pending 或未评估。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：复核一个听起来很自信的政策回答
+
+助手说“员工可以结转 10 天”，引用的手册片段却只说明年假累计规则。这个 Skill 应标记结转陈述没有依据，区分“有引用”和“引用支撑了陈述”，并要求确认有效政策版本。语料库不存在的福利问题，安全结果应是 pending 或拒答，而不是编一个答案。
+
+复核可以根据已有输出和证据进行分类，不能证明模型的一般行为、生产安全，也不能把当前问题集结果外推成广泛可靠性。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“依据性”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和依据性的具体对象 |
+| 发现 | 依据性的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ RAG Quality Testing Skill 检查检索增强系统的回答层，把依据性、
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：复核一个听起来很自信的政策回答
+### 下一步路由
 
-助手说“员工可以结转 10 天”，引用的手册片段却只说明年假累计规则。这个 Skill 应标记结转陈述没有依据，区分“有引用”和“引用支撑了陈述”，并要求确认有效政策版本。语料库不存在的福利问题，安全结果应是 pending 或拒答，而不是编一个答案。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-复核可以根据已有输出和证据进行分类，不能证明模型的一般行为、生产安全，也不能把当前问题集结果外推成广泛可靠性。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供问题、检索上下文、回答、引用和预期行为的成对记录。加入语料库沉默时的负向问题，以及两个文档版本冲突的样例，否则无法评估拒答和新鲜度。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [RAG 检索测试](https://inaodeng.com/zh-cn/qaskills/rag-retrieval-testing/)：检查正确证据是否到达回答层。
+- [LLM 幻觉测试](https://inaodeng.com/zh-cn/qaskills/llm-hallucination-testing/)：关注无依据陈述和虚构细节。
+- [AI 安全测试](https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/)：为高影响回答补充伤害与升级边界。
 
 ## 容易踩的坑
 
 1. 只看回答有引用，就把引用存在当成回答有依据。
 2. 看到相关段落就认为回答完整，忽略例外条件或生效日期。
 3. 用少量成功回答推断 RAG 整体可靠。
-
-## 相关 Skill
-
-- [RAG 检索测试](https://inaodeng.com/zh-cn/qaskills/rag-retrieval-testing/)：检查正确证据是否到达回答层。
-- [LLM 幻觉测试](https://inaodeng.com/zh-cn/qaskills/llm-hallucination-testing/)：关注无依据陈述和虚构细节。
-- [AI 安全测试](https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/)：为高影响回答补充伤害与升级边界。
 
 ## 安装与调用
 
@@ -91,7 +187,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 没有标准答案也能复核吗？
 
@@ -101,9 +197,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 不代表。还要检查陈述级支撑、来源适用范围、版本，以及引用是否覆盖完整陈述。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [RAG 质量测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-quality-testing/prompts/rag-quality-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-quality-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - RAG 质量测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-quality-testing/prompts/rag-quality-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-quality-testing/prompts/rag-quality-testing.md)
 - RAG 质量测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-quality-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/rag-quality-testing)

@@ -1,5 +1,5 @@
 ---
-title: "Quality Productivity Metrics：衡量 QA 流程，不奖励测试表演"
+title: "质量生产力指标 Skill：衡量 QA 流程，不奖励测试表演"
 description: "质量生产力指标双语指南，围绕有效分母、归因限制、刷数风险和人工使用边界设计质量与交付指标。"
 date: 2026-10-07T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI 测试", "QA Skills", "质量生产力指标"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 测试用例数和关闭工单数可以让忙碌的团队看起来很高产，但用户风险可能正在上升。生产力指标要先问：什么有价值的质量信号变了，条件是什么，代价又是什么？
+
+## 为什么需要这个 Skill
 
 Quality Productivity Metrics Skill 把质量指标与交付指标放在一起看，帮助团队区分流程证据和个人活动，暴露归因限制，并设计更难被刷数的复核方式。
 
-本文关注的不是团队做了多少可见动作，而是指标是否描述了系统结果。
+## Skill 用来做什么
 
-## 质量生产力指标 Skill 用来做什么
+本文关注指标是否描述系统结果，不把可见动作数量当成结论。
 
 当团队要评估流程或工具变化后的 QA 流程、设计工程记分卡，或者复核生产力结论是否有质量结果支撑时，使用这个 Skill。它不负责给个人排名，也不把活动数量直接变成发布决定。
 
-好的结果要写清质量指标、交付指标、分母、归因限制、刷数风险、证据状态，以及分析之外仍需人工决定的事项。
+结果要写清质量指标、交付指标、分母、归因限制、刷数风险、证据状态，以及分析之外仍需人工决定的事项。
 
 当团队想知道执行更快、自动化更多或分诊更短，是否改善交付且没有增加线上逃逸风险时，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [质量生产力指标 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics) 中还可能包含评测用例和补充材料。
+质量生产力指标 Skill 可以组织质量信号的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 质量信号 | 变化是否影响用户风险或缺陷发现 | 证据与来源 |
+| 交付信号 | 可比队列下反馈是否变快 | 窗口与分母 |
+| 归因限制 | 还可能解释变化的其他因素 | 候选混杂因素 |
+| 使用边界 | 结果怎样安全使用 | 团队学习，不是排名 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“质量信号”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕质量信号，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 在请求判断前先列出已有材料。缺口可以保留，但状态必须可见。
 
@@ -43,10 +94,57 @@ Quality Productivity Metrics Skill 把质量指标与交付指标放在一起看
 可以这样调用：
 
 ~~~text
-请使用 quality-productivity-metrics Skill。\n\n任务：评估 CI 并行化是否改善结账和商品目录团队的 QA 生产力，同时没有增加线上逃逸风险。\n输入材料：[前后窗口、运行事件、排队时间、重跑、发布、缺陷和变更范围]\n范围：[两个团队和指定流水线]\n限制：[缺少事故关联、发布量不同、隐私要求]\n\n分开质量指标、交付指标、分母、归因限制、刷数风险和人工决策。不要把活动数量变成员工分数。
+请使用 quality-productivity-metrics Skill。
+
+任务：评估 CI 并行化是否改善结账和商品目录团队的 QA 生产力，同时没有增加线上逃逸风险。
+输入材料：[前后窗口、运行事件、排队时间、重跑、发布、缺陷和变更范围]
+范围：[两个团队和指定流水线]
+限制：[缺少事故关联、发布量不同、隐私要求]
+
+分开质量指标、交付指标、分母、归因限制、刷数风险和人工决策。不要把活动数量变成员工分数。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：评估 CI 变快，不要庆祝重跑数量增加
+
+并行化后反馈中位数从 28 分钟降到 12 分钟，但重跑翻倍，线上缺陷也没有关联到发布。这个 Skill 可以报告流程速度改善已有证据，同时把质量影响标为未评估；下一步应检查 flaky 原因和发布关联，再判断改造价值。
+
+结果只能说明给定队列和事件支持了什么，不能证明个人努力、单一改造的因果影响，也不能证明更短反馈一定有价值。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“质量信号”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和质量信号的具体对象 |
+| 发现 | 质量信号的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -57,29 +155,27 @@ Quality Productivity Metrics Skill 把质量指标与交付指标放在一起看
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：评估 CI 变快，不要庆祝重跑数量增加
+### 下一步路由
 
-并行化后反馈中位数从 28 分钟降到 12 分钟，但重跑翻倍，线上缺陷也没有关联到发布。这个 Skill 可以报告流程速度改善已有证据，同时把质量影响标为未评估；下一步应检查 flaky 原因和发布关联，再判断改造价值。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-结果只能说明给定队列和事件支持了什么，不能证明个人努力、单一改造的因果影响，也不能证明更短反馈一定有价值。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供可比前后窗口、流水线和发布标识、事件定义、变更范围及混杂因素。说明结果用于计划、团队学习还是受治理的其他决策。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [质量指标设计](https://inaodeng.com/zh-cn/qaskills/quality-metrics-design/)：定义事件和计算规则。
+- [质量仪表盘设计](https://inaodeng.com/zh-cn/qaskills/quality-dashboard-design/)：展示多个带证据状态的信号。
+- [自动化 ROI 分析](https://inaodeng.com/zh-cn/qaskills/automation-roi-analysis/)：当变化是自动化时分析成本与价值。
 
 ## 容易踩的坑
 
 1. 把测试数、提交数或关闭工单数直接当作生产力分数。
 2. 比较风险、发布量或分母定义不同的团队。
 3. 忽略 flaky 重跑、人员变化和范围缩减，就把工具改造认定为因果原因。
-
-## 相关 Skill
-
-- [质量指标设计](https://inaodeng.com/zh-cn/qaskills/quality-metrics-design/)：定义事件和计算规则。
-- [质量仪表盘设计](https://inaodeng.com/zh-cn/qaskills/quality-dashboard-design/)：展示多个带证据状态的信号。
-- [自动化 ROI 分析](https://inaodeng.com/zh-cn/qaskills/automation-roi-analysis/)：当变化是自动化时分析成本与价值。
 
 ## 安装与调用
 
@@ -97,7 +193,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 这个 Skill 能输出团队排名吗？
 
@@ -107,9 +203,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 保留生产力和质量信号的区分，把缺失部分标为未评估，并给出最小的关联或抽样动作。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [质量生产力指标 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - 质量生产力指标 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md)
 - 质量生产力指标 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-productivity-metrics)

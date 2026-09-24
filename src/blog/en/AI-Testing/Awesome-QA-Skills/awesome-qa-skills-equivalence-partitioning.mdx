@@ -1,35 +1,85 @@
 ---
-title: "Equivalence Partitioning: Reduce input space without losing the rule that matters"
+title: "Equivalence Partitioning Skill: Reduce input space without losing the rule that matters"
 description: "Equivalence Partitioning field guide: divide valid, invalid, empty, boundary, and conditional input classes with traceable representatives."
 date: 2026-10-21T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI Testing","Agent Skills","Equivalence Partitioning"]
+tags: ["AI Testing", "QA Skills", "Equivalence Partitioning"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Testing every email address is not thorough; it is a way to run out of time. The useful question is which inputs share the same rule and which one breaks away.
+
+## Why this Skill is needed
 
 Equivalence Partitioning groups inputs expected to behave the same, then selects representatives that cover valid, invalid, empty, and conditional classes.
 
-The Equivalence Partitioning Skill is useful when a team needs a structured review of valid and invalid classes, empty values, type, format, business rule, and representative selection. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+## What the Skill does
+
+The Equivalence Partitioning Skill is useful when a team needs a structured review of valid and invalid classes, empty values, type, format, business rule, and representative selection.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Equivalence Partitioning.
-
-## Equivalence Partitioning Skill: what it is for
 
 A practical standard for this Skill is simple: A good partition follows behavior, not syntax alone. Two strings may share a format but belong to different business classes when one is an active owner and the other is unknown.
 
 Use it when the team needs a repeatable review of valid and invalid classes, empty values, type, format, business rule, and representative selection—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in the [Equivalence Partitioning prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning) contains the entry point and supporting assets where they exist.
+The Equivalence Partitioning Skill can organize material, evidence, and next actions for Partition map. It does not replace:
 
-The entry point centers valid and invalid classes, empty values, type, format, business rule, and representative selection. Keep its decision boundary visible and do not turn a static design into an execution claim.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Partition map | Class definition, representative, and source rule | Valid, invalid, or conditional |
+| Coverage choice | Values selected and values deliberately omitted | Reason |
+| Gap | Class with no oracle or ambiguous behavior | Clarification action |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Partition map, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Partition map, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -51,7 +101,43 @@ Expected output: [risk-ordered findings, evidence status, and next actions]
 Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
 ```
 
-## Make the result usable by the next person
+### Analysis
+
+Start with a bounded pass—design input classes for a search API that accepts date range, status, owner, and free-text filters. For a date filter, create classes for omitted dates, valid same-day ranges, reversed ranges, future ranges, invalid time zones, and ranges beyond retention. Choose one representative for each, then add boundary values where the class changes.
+
+The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+### Finding
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Partition map meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Partition map |
+| Finding | The condition or result for Partition map is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -61,29 +147,27 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 Do not write “passed” without a run record, query result, or source artifact. A good partition follows behavior, not syntax alone. Two strings may share a format but belong to different business classes when one is an active owner and the other is unknown.
 
-## Run one focused pass
+### Next-stage route
 
-Start with a bounded pass—design input classes for a search API that accepts date range, status, owner, and free-text filters. For a date filter, create classes for omitted dates, valid same-day ranges, reversed ranges, future ranges, invalid time zones, and ranges beyond retention. Choose one representative for each, then add boundary values where the class changes.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-## Improve the first result
+## How to prepare better input
 
 If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
 
 A richer input changes the answer here because valid and invalid classes, empty values, type, format, business rule, and representative selection must be tied to evidence rather than inferred from a familiar pattern.
+
+## Working with other Skills
+
+- [Boundary Value Testing](https://inaodeng.com/en/qaskills/boundary-value-testing/):selects points where classes change.
+- [Combinatorial Testing](https://inaodeng.com/en/qaskills/combinatorial-testing/):combines representative values.
+- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/):applies invalid classes to API behavior.
 
 ## Common traps
 
 1. Grouping by data type while ignoring business behavior.
 2. Choosing one valid example and calling the class covered.
 3. Missing conditional classes created by account or state.
-
-## Related Skills
-
-- [Boundary Value Testing](https://inaodeng.com/en/qaskills/boundary-value-testing/)：selects points where classes change。
-- [Combinatorial Testing](https://inaodeng.com/en/qaskills/combinatorial-testing/)：combines representative values。
-- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/)：applies invalid classes to API behavior。
 
 ## Install and invoke
 
@@ -95,7 +179,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 After installation, invoke it with the `equivalence-partitioning` Skill and attach the real project material.
 
-## Two practical questions
+## FAQ
 
 ### Do partitions replace boundary tests?
 
@@ -108,6 +192,14 @@ Keep one only when the source and observable behavior are identical; otherwise r
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in the [Equivalence Partitioning prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning) contains the entry point and supporting assets where they exist.
+
+The entry point centers valid and invalid classes, empty values, type, format, business rule, and representative selection. Keep its decision boundary visible and do not turn a static design into an execution claim.
+
+### Reference links
 
 - Equivalence Partitioning prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/equivalence-partitioning/prompts/equivalence-partitioning.md)
 

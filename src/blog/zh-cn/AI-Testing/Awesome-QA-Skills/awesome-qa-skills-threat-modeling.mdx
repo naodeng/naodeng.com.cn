@@ -1,5 +1,5 @@
 ---
-title: "Threat Modeling：把资产和信任边界变成可复核场景"
+title: "威胁建模 Skill：把资产和信任边界变成可复核场景"
 description: "威胁建模双语指南，围绕资产、信任边界、攻击面、威胁场景、缓解措施、假设和安全验证展开。"
 date: 2026-10-03T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI 测试", "QA Skills", "威胁建模"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 威胁建模最有价值的时机是攻击发生前，但前提是模型写清什么重要、信任在哪里变化。没有资产和边界的攻击名称清单只是安全表演。
+
+## 为什么需要这个 Skill
 
 Threat Modeling Skill 用有证据边界的方式整理资产、信任边界、攻击面、威胁场景、缓解措施和假设，准备安全验证，不登录、不调用真实 API，也不声称安全通过。
 
-本文关注的模型应说明攻击者可能在哪里跨越边界，以及什么证据会改变风险判断。
+## Skill 用来做什么
 
-## 威胁建模 Skill 用来做什么
+本文关注的模型应说明攻击者可能在哪里跨越边界，以及什么证据会改变风险判断。
 
 当新服务、数据流、集成或高影响变更需要让安全假设和缓解措施可复核时，使用这个 Skill。
 
@@ -23,13 +24,63 @@ Threat Modeling Skill 用有证据边界的方式整理资产、信任边界、�
 
 当系统跨越租户、网络、身份或数据边界，或者设计阶段需要先准备安全场景时，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [威胁建模 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling) 中还可能包含评测用例和补充材料。
+威胁建模 Skill 可以组织资产与边界的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 资产与边界 | 保护什么、信任在哪里变化 | 来源与适用性 |
+| 威胁场景 | 角色、路径、前置、影响和缓解 | 证据状态 |
+| 假设缺口 | 模型依赖但没有证明的内容 | 负责人问题 |
+| 验证动作 | 高风险场景的安全检查 | 隔离与停止条件 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“资产与边界”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕资产与边界，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Threat Modeling Skill 用有证据边界的方式整理资产、信任边界、�
 可以这样调用：
 
 ~~~text
-请使用 threat-modeling Skill。\n\n任务：为多租户发票导出服务建模威胁，服务会把文件发送到对象存储并由客户门户下载。\n输入材料：[数据流图、角色、存储策略、API 契约、租户规则和审计设计]\n范围：[创建导出、存储、下载和删除]\n限制：[数据脱敏、不使用真实凭证或 API 调用]\n\n覆盖资产、信任边界、攻击面、威胁场景、缓解措施、假设、证据状态、负责人、关闭条件和安全验证。
+请使用 threat-modeling Skill。
+
+任务：为多租户发票导出服务建模威胁，服务会把文件发送到对象存储并由客户门户下载。
+输入材料：[数据流图、角色、存储策略、API 契约、租户规则和审计设计]
+范围：[创建导出、存储、下载和删除]
+限制：[数据脱敏、不使用真实凭证或 API 调用]
+
+覆盖资产、信任边界、攻击面、威胁场景、缓解措施、假设、证据状态、负责人、关闭条件和安全验证。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：建模发票下载中的跨租户访问
+
+门户从浏览器接收 export ID，但设计没有说明 API 是否把导出所属租户与会话租户对比。这个 Skill 应建模跨租户访问场景，把它连接到授权控制和审计证据，并建议合成租户验证；不应对生产发起访问尝试。
+
+模型可以整理安全上下文和假设，不能证明漏洞、利用成功、缓解有效或发布安全。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“资产与边界”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和资产与边界的具体对象 |
+| 发现 | 资产与边界的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Threat Modeling Skill 用有证据边界的方式整理资产、信任边界、�
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：建模发票下载中的跨租户访问
+### 下一步路由
 
-门户从浏览器接收 export ID，但设计没有说明 API 是否把导出所属租户与会话租户对比。这个 Skill 应建模跨租户访问场景，把它连接到授权控制和审计证据，并建议合成租户验证；不应对生产发起访问尝试。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-模型可以整理安全上下文和假设，不能证明漏洞、利用成功、缓解有效或发布安全。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供最新数据流图、资产、角色矩阵、信任边界、版本、集成、缓解措施、负责人和安全验证环境。密钥和个人数据要脱敏。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [安全需求复核](https://inaodeng.com/zh-cn/qaskills/security-requirement-review/)：把保护目标变成可测试条件。
+- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)：在批准环境验证访问决定。
+- [敏感信息暴露审查](https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/)：检查凭证和日志暴露。
 
 ## 容易踩的坑
 
 1. 列出类似 STRIDE 的威胁，却不关联资产、边界和证据。
 2. 设计中出现控制名称，就假设控制已经存在。
 3. 为了让模型完整而读取凭证或探测生产。
-
-## 相关 Skill
-
-- [安全需求复核](https://inaodeng.com/zh-cn/qaskills/security-requirement-review/)：把保护目标变成可测试条件。
-- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)：在批准环境验证访问决定。
-- [敏感信息暴露审查](https://inaodeng.com/zh-cn/qaskills/secrets-exposure-review/)：检查凭证和日志暴露。
 
 ## 安装与调用
 
@@ -91,7 +187,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 威胁模型能直接发现漏洞吗？
 
@@ -101,9 +197,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 先输出受限模型，标记未知边界，并请求最小缺失数据流或负责人决定。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [威胁建模 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - 威胁建模 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)
 - 威胁建模 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling)

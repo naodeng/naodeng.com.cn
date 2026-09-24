@@ -1,5 +1,5 @@
 ---
-title: "Testing Bottleneck Analysis: Turn Queues, Handoffs, and Capacity into Actions"
+title: "Testing Bottleneck Analysis Skill: Turn Queues, Handoffs, and Capacity into Actions"
 description: "A bilingual guide to analyzing testing queues, dependencies, capacity, handoffs, and constraint evidence without inventing causes or pass claims."
 date: 2026-10-12T09:00:00.000Z
 draft: true
@@ -8,28 +8,79 @@ tags: ["AI Testing", "QA Skills", "Testing Bottleneck Analysis"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 A testing bottleneck is not always a slow test. It may be a shared environment, a review queue, missing data, a specialist handoff, or a capacity rule that no dashboard captures.
+
+## Why this Skill is needed
 
 The Testing Bottleneck Analysis Skill examines wait queues, dependencies, capacity, handoffs, and evidence for testing constraints. It converts a delay complaint into an evidence-bounded improvement path.
 
-The output should identify the next measurable constraint, not just the longest-looking queue.
+## What the Skill does
 
-## Testing Bottleneck Analysis Skill: what it is for
+The output should identify the next measurable constraint, not just the longest-looking queue.
 
 Use this Skill to review why testing work waits, where flow stops, and what evidence can distinguish demand, capacity, dependency, or handoff constraints. It does not invent root causes or approve a process change.
 
-A good result names the queue, dependency, capacity or handoff signal, time window, evidence state, priority, owner, close condition, and smallest validation.
+A useful finding names the queue, dependency, capacity or handoff signal, time window, evidence state, priority, owner, close condition, and smallest validation.
 
 Use it when test work is repeatedly waiting for environments, data, reviews, specialists, or CI capacity and the team needs a decision-ready diagnosis.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in [Testing Bottleneck Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis) may also contain evaluation cases and supporting material.
+The Testing Bottleneck Analysis Skill can organize material, evidence, and next actions for Constraint finding. It does not replace:
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Constraint finding | Observed queue, dependency, capacity, or handoff issue | Source and evidence state |
+| Impact | How delay affects validation or risk | Priority and scope |
+| Experiment | Smallest change that distinguishes hypotheses | Expected observation |
+| Decision boundary | What requires Human capacity or process choice | Owner and residual risk |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Constraint finding, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Constraint finding, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Static plans, file presence, and dry runs keep their evidence state. They do not
 Use a request like this:
 
 ~~~text
-Use the testing-bottleneck-analysis Skill.\n\nTask: Diagnose why checkout release validation waits two days for a shared staging environment and a security review.\nInputs: [queue timestamps, environment bookings, review handoffs, capacity, blocked reasons, release calendar]\nScope: [last four releases]\nConstraints: [do not invent root cause or promise throughput improvement]\n\nSeparate wait queue, dependency, capacity, handoff, and evidence findings. Give priority, owner, close condition, and a measurable next action.
+Use the testing-bottleneck-analysis Skill.
+
+Task: Diagnose why checkout release validation waits two days for a shared staging environment and a security review.
+Inputs: [queue timestamps, environment bookings, review handoffs, capacity, blocked reasons, release calendar]
+Scope: [last four releases]
+Constraints: [do not invent root cause or promise throughput improvement]
+
+Separate wait queue, dependency, capacity, handoff, and evidence findings. Give priority, owner, close condition, and a measurable next action.
 ~~~
 
-## Make the result usable by the next person
+### Analysis
+
+Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+
+### Finding
+
+#### Focused example: Separate staging scarcity from security-review handoff
+
+The release waits for staging, but timestamps show security review begins only after a manual environment handoff. The Skill should keep environment capacity and handoff sequencing as separate hypotheses, request a timestamped replay or parallel booking experiment, and avoid blaming the environment from queue length alone.
+
+The analysis classifies supplied flow evidence and proposes experiments. It cannot prove root cause, throughput gain, or release readiness without validation.
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Constraint finding meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Constraint finding |
+| Finding | The condition or result for Constraint finding is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Use the testing-bottleneck-analysis Skill.\n\nTask: Diagnose why checkout releas
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
-## Focused example: Separate staging scarcity from security-review handoff
+### Next-stage route
 
-The release waits for staging, but timestamps show security review begins only after a manual environment handoff. The Skill should keep environment capacity and handoff sequencing as separate hypotheses, request a timestamped replay or parallel booking experiment, and avoid blaming the environment from queue length alone.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The analysis classifies supplied flow evidence and proposes experiments. It cannot prove root cause, throughput gain, or release readiness without validation.
-
-## Improve the first result with better baseline input
+## How to prepare better input
 
 Provide a fixed release window, queue and service timestamps, blocked reasons, dependency map, capacity schedule, handoff ownership, and the decision the analysis supports. Missing timestamps remain unassessed.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
+
+## Working with other Skills
+
+- [Test Runtime Optimization](https://inaodeng.com/en/qaskills/test-runtime-optimization/):handles slow execution after flow constraints are known.
+- [Quality Productivity Metrics](https://inaodeng.com/en/qaskills/quality-productivity-metrics/):separates flow metrics from quality claims.
+- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/):shows which scope is blocked or deferred.
 
 ## Common traps
 
 1. Calling the longest queue the bottleneck without checking downstream wait or service time.
 2. Using utilization or complaints as proof of capacity saturation.
 3. Changing process before defining a small experiment and success evidence.
-
-## Related Skills
-
-- [Test Runtime Optimization](https://inaodeng.com/en/qaskills/test-runtime-optimization/)：handles slow execution after flow constraints are known。
-- [Quality Productivity Metrics](https://inaodeng.com/en/qaskills/quality-productivity-metrics/)：separates flow metrics from quality claims。
-- [Test Scope Analysis](https://inaodeng.com/en/qaskills/test-scope-analysis/)：shows which scope is blocked or deferred。
 
 ## Install and invoke
 
@@ -91,7 +187,7 @@ Include objective, scope, versions, evidence paths, constraints, and decision bo
 Audit inputs first, preserve evidence states, and finish with owner, close condition, and validation method.
 ~~~
 
-## Two practical questions
+## FAQ
 
 ### Does this Skill automatically recommend more people?
 
@@ -104,6 +200,14 @@ Return a bounded diagnosis, mark causal findings unassessed, and request the sma
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in [Testing Bottleneck Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis) may also contain evaluation cases and supporting material.
+
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+
+### Reference links
 
 - Testing Bottleneck Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)
 - Testing Bottleneck Analysis Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis)

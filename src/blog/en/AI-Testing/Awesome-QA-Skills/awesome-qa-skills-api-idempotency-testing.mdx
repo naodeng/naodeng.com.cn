@@ -1,36 +1,85 @@
 ---
-title: "API Idempotency Testing: Prove repeated writes do not create repeated business effects"
+title: "API Idempotency Testing Skill: Prove repeated writes do not create repeated business effects"
 description: "API Idempotency Testing field guide: test duplicate requests, keys, concurrency, timeouts, replay windows, and stored outcomes."
 date: 2026-11-12T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI Testing","Agent Skills","API Idempotency Testing"]
+tags: ["AI Testing", "QA Skills", "API Idempotency Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 Retries are ordinary. Duplicate refunds, orders, and notifications are not. Idempotency testing checks the business effect—not just whether the second HTTP response looks familiar.
+
+## Why this Skill is needed
 
 API Idempotency Testing verifies that repeated or concurrent requests with the same business intent produce one safe effect and a well-defined response.
 
-The API Idempotency Testing Skill is useful when a team needs a structured review of idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+## What the Skill does
+
+The API Idempotency Testing Skill is useful when a team needs a structured review of idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Idempotency Testing.
 
-## API Idempotency Testing Skill: what it is for
-
-
 Use it when the team needs a repeatable review of idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
-A good result keeps idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict connected to a source and a verification action. It does not turn a design checklist into a passing result.
+A useful result keeps idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict connected to a source and a verification action. It does not turn a design checklist into a passing result.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in the [API Idempotency Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing) also contains the entry point and supporting assets where they exist.
+The API Idempotency Testing Skill can organize material, evidence, and next actions for Replay result. It does not replace:
 
-The entry point centers idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Replay result | Whether the same key returns the original outcome | Response and stored state |
+| Side-effect count | Orders, charges, events, or notifications created | Exactly once, zero, or duplicate |
+| Conflict finding | Changed payload, expired key, or concurrent ownership | Policy and repair action |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Replay result, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Replay result, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -54,7 +103,43 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ```
 
-## Make the result usable by the next person
+### Analysis
+
+Start with a bounded pass—test a checkout POST when the client times out after the server has created the order. Submit checkout with key `cart-1842`, let the client time out, then replay it twice—once serially and once concurrently. Confirm one order, one payment attempt, one confirmation event, and a response that points to the original order. Reuse the key with a different cart and expect a conflict.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+### Finding
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Replay result meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Replay result |
+| Finding | The condition or result for Replay result is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -64,30 +149,25 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 Do not write “passed” without a run record, query result, or source artifact. A strong idempotency test follows the request into storage and downstream events. It also tests the uncomfortable case where the key is reused with a different payload—silently accepting it is usually worse than rejecting it.
 
-## Run one focused pass
+### Next-stage route
 
-Start with a bounded pass—test a checkout POST when the client times out after the server has created the order. Submit checkout with key `cart-1842`, let the client time out, then replay it twice—once serially and once concurrently. Confirm one order, one payment attempt, one confirmation event, and a response that points to the original order. Reuse the key with a different cart and expect a conflict.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-## Improve the first result
+## How to prepare better input
 
 If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
 
+## Working with other Skills
+
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/):anchors the request and response contract.
+- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/):explores retry triggers and boundaries.
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/):checks conflict and processing responses.
 
 ## Common traps
 
 1. Checking duplicate responses without checking duplicate effects.
 2. Testing only serial retries.
 3. Allowing a changed payload to inherit an old key silently.
-
-## Related Skills
-
-- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/)：anchors the request and response contract。
-- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/)：explores retry triggers and boundaries。
-- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/)：checks conflict and processing responses。
-
-
 
 ## Install and invoke
 
@@ -101,7 +181,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 After installation, invoke it with the `api-idempotency-testing` Skill and attach the real project material.
 
-## Two practical questions
+## FAQ
 
 ### What if the first response is lost?
 
@@ -118,6 +198,14 @@ Only if the contract defines what happens after expiry and evidence shows the bu
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in the [API Idempotency Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+### Reference links
 
 - API Idempotency Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md)
 

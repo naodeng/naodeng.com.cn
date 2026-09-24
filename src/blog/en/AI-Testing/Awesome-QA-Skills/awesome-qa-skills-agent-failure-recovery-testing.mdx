@@ -1,36 +1,85 @@
 ---
-title: "Agent Failure Recovery Testing: Trace retries, fallbacks, and safe handoff after a failed action"
+title: "Agent Failure Recovery Testing Skill: Trace retries, fallbacks, and safe handoff after a failed action"
 description: "Agent Failure Recovery Testing field guide: make retries, fallbacks, state consistency, user notice, and recovery evidence reviewable."
 date: 2026-11-02T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["AI Testing","Agent Skills","Agent Failure Recovery Testing"]
+tags: ["AI Testing", "QA Skills", "Agent Failure Recovery Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-
 An agent timing out during payment authorization is not a small inconvenience. It may have charged the card, failed to update the order, or told the user to try again while the first request is still alive.
+
+## Why this Skill is needed
 
 Agent Failure Recovery Testing classifies what failed, what the agent tried next, and whether the user and system reached a safe state. It keeps retry, fallback, escalation, state consistency, and user notice together instead of treating recovery as a final paragraph in a report.
 
-The Agent Failure Recovery Testing Skill is useful when a team needs a structured review of failure class, retry or fallback decision, state consistency, user notice, and recovery evidence. It turns a vague testing request into a bounded analysis with sources, assumptions, output fields, and a next action.
+## What the Skill does
+
+The Agent Failure Recovery Testing Skill is useful when a team needs a structured review of failure class, retry or fallback decision, state consistency, user notice, and recovery evidence.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Agent Failure Recovery Testing.
 
-## Agent Failure Recovery Testing Skill: what it is for
-
-
 Use it when the team needs a repeatable review of failure class, retry or fallback decision, state consistency, user notice, and recovery evidence—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
-A good result keeps failure class, retry or fallback decision, state consistency, user notice, and recovery evidence connected to a source and a verification action. It does not turn a design checklist into a passing result.
+A useful result keeps failure class, retry or fallback decision, state consistency, user notice, and recovery evidence connected to a source and a verification action. It does not turn a design checklist into a passing result.
 
-## Start with the source Skill
+## What it does not do
 
-The complete execution contract lives in the [Agent Failure Recovery Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing) also contains the entry point and supporting assets where they exist.
+The Agent Failure Recovery Testing Skill can organize material, evidence, and next actions for Failure classification. It does not replace:
 
-The entry point centers failure class, retry or fallback decision, state consistency, user notice, and recovery evidence. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+- Confirmation of rules, scope, and risk by the accountable domain owner.
+- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
+- Authorization for release, compliance, production actions, or residual-risk acceptance.
+- A Human decision when supplied sources conflict.
 
-## Begin with project facts
+## What it checks
+
+The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+
+| Focus | Question before analysis | Handoff output |
+| --- | --- | --- |
+| Failure classification | timeout, duplicate risk, stale state, or unavailable dependency | Confirmed, assumption, or open |
+| Recovery decision | retry, poll, compensate, escalate, or stop | Decision basis and owner |
+| Evidence index | request IDs, state transitions, logs, and user-visible notice | Artifact path and validation action |
+
+If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+
+## Audit inputs before you start
+
+Before analyzing Failure classification, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+
+| State | Meaning | How this Skill should handle it |
+| --- | --- | --- |
+| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
+| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
+| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
+| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
+| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
+| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+
+Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+
+## From problem to structured Finding
+
+Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+
+### Keep the decision layers separate
+
+For Failure classification, do not compress four different kinds of language into “recommended to pass”:
+
+| Layer | How to write it | Application here |
+| --- | --- | --- |
+| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
+| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
+| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+
+## A complete case
+
+This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+
+### Input
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
@@ -54,7 +103,43 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ```
 
-## Make the result usable by the next person
+### Analysis
+
+Start with a bounded pass—an order agent times out during payment authorization and must avoid duplicate charges while telling the user what actually happened. Use the original payment request ID to query the gateway before retrying. If the gateway says authorized and the order is still pending, the recovery result should recommend reconciliation or confirmation—not another charge. If the gateway has no record, the retry can proceed only with the original idempotency key and an explicit evidence trail.
+
+The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+
+### Finding
+
+#### Example finding: turn one problem into a handoff
+
+The field example below shows the recording pattern; it is not an execution result.
+
+If the supplied material cannot prove that Failure classification meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+
+| Field | Example wording |
+| --- | --- |
+| Source and scope | Record the requirement, version, environment, and the concrete object for Failure classification |
+| Finding | The condition or result for Failure classification is not yet traceable to evidence |
+| Evidence state | missing / assumptions; use conflicting when sources disagree |
+| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
+| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
+| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
+| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+
+The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+
+### Decision
+
+The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+
+### Validation
+
+Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+
+## How a Finding enters the next stage
+
+### Handoff output
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
@@ -64,30 +149,25 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 Do not write “passed” without a run record, query result, or source artifact. A useful first result separates what the agent knows from what the gateway proves. It gives the next person one safe verification action—usually a payment-status lookup keyed by the original request ID—before allowing another write.
 
-## Run one focused pass
+### Next-stage route
 
-Start with a bounded pass—an order agent times out during payment authorization and must avoid duplicate charges while telling the user what actually happened. Use the original payment request ID to query the gateway before retrying. If the gateway says authorized and the order is still pending, the recovery result should recommend reconciliation or confirmation—not another charge. If the gateway has no record, the retry can proceed only with the original idempotency key and an explicit evidence trail.
+At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
 
-The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-## Improve the first result
+## How to prepare better input
 
 If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
 
+## Working with other Skills
+
+- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/):checks the wider plan, memory, and goal behavior.
+- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/):examines retry boundaries and duplicate execution.
+- [Production Verification](https://inaodeng.com/en/qaskills/production-verification/):connects recovery decisions to live signals.
 
 ## Common traps
 
 1. Treating a timeout as proof that no write occurred.
 2. Testing the retry path without checking the original side effect.
 3. Writing a recovery recommendation without naming the person who can approve compensation.
-
-## Related Skills
-
-- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/)：checks the wider plan, memory, and goal behavior。
-- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/)：examines retry boundaries and duplicate execution。
-- [Production Verification](https://inaodeng.com/en/qaskills/production-verification/)：connects recovery decisions to live signals。
-
-
 
 ## Install and invoke
 
@@ -101,7 +181,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 After installation, invoke it with the `agent-failure-recovery-testing` Skill and attach the real project material.
 
-## Two practical questions
+## FAQ
 
 ### Can I start without gateway logs?
 
@@ -118,6 +198,14 @@ When the original write state is unknown and the operation can create money, inv
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 
 ## References
+
+### Source Skill and execution contract
+
+The complete execution contract lives in the [Agent Failure Recovery Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing) also contains the entry point and supporting assets where they exist.
+
+The entry point centers failure class, retry or fallback decision, state consistency, user notice, and recovery evidence. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
+
+### Reference links
 
 - Agent Failure Recovery Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md)
 

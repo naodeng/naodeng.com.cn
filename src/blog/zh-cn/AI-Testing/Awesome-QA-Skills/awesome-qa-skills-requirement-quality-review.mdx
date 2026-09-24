@@ -1,6 +1,6 @@
 ---
-title: "Requirement Quality Review：让需求具备设计和测试条件"
-description: "需求质量复核双语指南，在设计或测试前检查需求的完整性、清晰度、可验证性、可行性、范围和证据质量。"
+title: "需求质量复核 Skill：让需求具备设计和测试条件"
+description: "使用需求质量复核 Skill，在设计和测试前审计需求的完整性、清晰度、可验证性、可行性、范围和证据质量，并产出可追踪的 RQ-## 发现。"
 date: 2026-10-03T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,76 +8,169 @@ tags: ["AI 测试", "QA Skills", "需求质量复核"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
+“用户可以随时取消订阅。”这句话读起来很清楚——直到产品、计费和 QA 需要回答：什么时候生效？已经付款的订单怎么办？待开票订单怎么办？Web 和移动端是否一致？
 
-需求读起来通顺，不代表它可以测试。缺的往往不是更多句子，而是明确的角色、例外、约束、决策条件或事实来源。
+## 为什么需要这个 Skill
 
-Requirement Quality Review Skill 是设计和测试规划前的 QA 与交付质量门。它产出可追溯缺口，并把深入问题路由到歧义、一致性、冲突或可追溯性分析，但不会把文档复核写成发布批准。
+需求质量复核 Skill 的工作，就是在这些问题进入技术设计、测试排期或发布讨论之前，把它们变成有来源、有负责人、可以关闭和验证的质量发现。需求读起来顺，不代表它已经可以实现，更不代表它已经可以测试。
 
-本文的目标是让下一步工程工作可以开始，而不是把需求润色得更漂亮。
+## Skill 用来做什么
 
-## 需求质量复核 Skill 用来做什么
+需求质量复核 Skill 是需求质量的总览与专项路由入口。它检查需求、验收条件和变更说明是否完整、清楚、可验证、可实施，范围和证据是否足够支撑下一阶段工作。
 
-当你要复核需求、验收条件或变更说明的完整性、清晰度、可验证性、可行性、范围和证据质量时，使用这个 Skill。它是总览和路由入口，不是用例生成器，也不是数字打分器。
+它适合这些场景：
 
-好的复核会使用 RQ 发现，写清来源、证据状态、影响、优先级、负责人、可关闭问题、动作和验证方式。高优先级发现必须有决策边界。
+- 用户故事只有 happy path，异常、权限、恢复或边界规则没有写清楚。
+- 验收条件使用“及时”“正常”“必要时”等词，但没有可观察的判定标准。
+- 需求、设计和历史决策之间可能存在冲突，团队需要先知道冲突在哪里。
+- 需求需要进入技术设计、测试设计或排期，但当前材料还不足以安全开始。
 
-如果故事看起来完整，却可能漏掉异常路径、约束、角色或验收条件，应在技术设计、测试设计或排期前使用这个 Skill。
+它不是测试用例生成器、数字评分器或发布审批器。它会把问题路由到需求歧义、一致性、冲突或可追溯性专项分析，但不会自行安装或执行这些 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [需求质量复核 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review/prompts/requirement-quality-review.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review) 中还可能包含评测用例和补充材料。
+需求质量复核 Skill 不替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 测试用例设计和测试执行；
+- 产品负责人对业务规则的最终决定；
+- 技术设计评审和架构批准；
+- 风险接受、排期承诺或发布判断；
+- 需求专项 Skill 的深入分析。
 
-## 用一份项目材料开始
+它回答的是“这份需求是否已经具备进入下一步的条件，以及还缺什么”，不是“系统已经实现正确”。
 
-| 材料 | 这次提供什么 | 缺失时的处理 |
+## 它主要检查哪些内容
+
+不要只问“这段需求写得好不好”。把复核拆成六个维度，才容易发现真正会阻塞实现或测试的问题。
+
+| 维度 | 重点问题 | 常见缺口 |
 | --- | --- | --- |
-| 需求集合 | 故事、验收条件、变更说明、约束、版本和关联决策 | 标出缺失材料和过期版本 |
-| 质量维度 | 完整性、清晰度、可验证性、可行性、范围和证据质量 | 分维度评估 |
-| 交付上下文 | 依赖、平台、数据、灰度、支持和运维约束 | 未知上下文保留为未评估 |
-| 决策边界 | 能澄清、接受风险或批准范围变化的负责人 | 不要输出 Go 或 No-Go |
+| 完整性 | 目标、角色、主流程、异常、约束、依赖和验收是否覆盖 | 只有正常路径，没有失败、恢复或权限规则 |
+| 清晰度 | 术语、主体、动作、条件、数量、时间和状态是否只有一种合理理解 | “及时”“正常”“尽快”等词没有定义 |
+| 可验证性 | 是否有前置条件、可观察结果、通过/失败标准和证据来源 | 能读懂，却无法判断何时算通过 |
+| 可行性 | 技术、数据、环境、依赖和时间约束是否相容 | 依赖未确认，或者目标彼此冲突 |
+| 范围 | 角色、租户、版本、平台、地区、数据和 in/out-of-scope 是否明确 | Web、App、后台或不同版本的边界漂移 |
+| 证据质量 | 结论是否有来源、版本、时间、适用条件和验证方式 | 只有口头结论或一条没有来源的规则 |
 
-可以这样调用：
+## 开始之前先审计输入
 
-~~~text
-请使用 requirement-quality-review Skill。\n\n任务：在技术设计和测试规划前复核订阅取消需求。\n输入材料：[故事、验收条件、计费规则、平台范围、依赖说明和历史决策]\n范围：[Web 取消、有效订阅和退款资格]\n限制：[不编写测试用例、不批准发布]\n\n分别评估完整性、清晰度、可验证性、可行性、范围和证据质量。使用 RQ-## 发现，保留已知与缺失信息，按 Skill 名称路由专业工作，并为 P0/P1 项目提供负责人、决策问题、关闭条件和验证方法。
-~~~
+Requirement Quality Review 不应该看到一段需求就直接给评价。先做输入审计——这一步会决定后面的结论能说到什么程度。
 
-## 让下一位同事接手
-
-| 产物 | 要回答的问题 | 示例状态 |
+| 状态 | 含义 | 处理方式 |
 | --- | --- | --- |
-| 输入审计 | 已知、缺失、冲突、过期和假设材料 | 来源与证据状态 |
-| 质量发现 | 某个维度的缺口和影响 | RQ 编号与优先级 |
-| 路由或动作 | 负责人问题、专业 Skill 名称或最小下一步 | 可关闭动作 |
-| 验证边界 | 需求怎样变成可测试或可决策 | 方法与证据 |
+| known | 材料直接写明且能定位来源 | 可以作为复核事实 |
+| missing | 影响判断但没有提供 | 记录缺口，不自行补规则 |
+| conflicting | 不同材料明确不一致 | 保留双方来源，提出决策问题 |
+| stale | 版本、时间或适用对象可能过期 | 降低结论强度，要求确认时效 |
+| out_of_scope | 不属于本次复核范围 | 明确排除，不继续推断 |
+| assumptions | 为形成受限初版采用的最小假设 | 标记影响，并给出验证方式 |
 
-每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+信息不完整时，Skill 仍然可以交付一个受限初版；它会把缺口和 3–5 个高价值问题交给下一位负责人，而不是用产品常识填空。
 
-## 聚焦例子：先复核取消需求，再开始写测试
+## 从问题到结构化 Finding
 
-故事说用户可以随时取消，但没有说明生效时间、退款处理、待开票订单或移动端范围。这个 Skill 应分别记录完整性和可验证性发现，请计费负责人决定退款规则，把不清楚的词路由到歧义分析；不能直接假设退款行为并写测试用例。
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
 
-复核可以说明需求是否具备进入下一阶段的条件，以及缺少什么证据；不能批准发布、给出通用质量分数，也不能证明实现行为。
+结构化 Finding 至少要区分事实、证据支持的推断、建议和 Human 决策。它们对应不同的证据强度和责任边界。
 
-## 先补基线输入，再期待更好的结果
+## 一个完整案例
 
-提供完整需求集合、验收条件、版本、约束、依赖、已知决策和目标下一阶段。只有故事时，返回最小可用初稿，提出三到五个高价值问题，把没有依据的维度标为未评估。
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
 
-交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+### 输入（Input）
+
+本案例使用本节给出的需求、设计、接口或其他项目材料，并保留版本、范围和缺失项。
+
+### 分析（Analysis）
+
+先对照检查矩阵和六类证据状态，再把问题整理成这个 Skill 的专属 Finding。
+
+### Finding
+
+#### 一条 RQ-## 发现如何产生
+
+假设需求只有一句：
+
+> 用户可以随时取消订阅。
+
+输入材料没有说明取消生效时间、退款资格、待开票订单和移动端范围。一个可交接的发现应该长这样：
+
+##### RQ-03 — “随时取消”的生效条件未定义
+
+- **来源 / 证据：** 订阅需求 v2.1，正文第 3 段；退款规则和移动端范围未提供。
+- **状态：** ambiguous + missing
+- **影响：** 计费、前端提示、后台状态和测试判定可能产生不同实现。
+- **优先级：** P1——它会阻塞验收条件和测试范围。
+- **待决策问题：** 取消是立即生效、当前计费周期结束生效，还是按产品类型区分？已付款和待开票订单分别如何处理？
+- **建议责任角色：** 产品负责人、计费负责人。
+- **下一步动作：** 补充生效时点、退款/开票规则、平台范围和例外路径，并更新验收条件。
+- **关闭条件：** 需求与计费规则对同一组场景给出唯一、可观察的结果。
+- **验证方式：** 用有效订阅、已付款订单、待开票订单和 Web/App 四组场景检查验收条件；执行记录另行保存。
+
+这里的 RQ-03 不是一个好看的编号。它把一个模糊句子变成了可指派、可关闭的工作项，也让后续的需求歧义分析和需求可追溯性分析有了明确入口。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
+
+至少交付来源、证据状态、负责人、关闭条件和验证动作；路由结果仍需由负责人确认。
+
+### 下一步路由
+
+复核结束时，读者应该知道下一步做什么：
+
+| 结果 | 下一步 |
+| --- | --- |
+| 需求缺少区分条件 | 路由到 requirement-ambiguity-analysis |
+| 多份材料对同一行为不一致 | 路由到 requirement-conflict-detection |
+| 术语、字段或规则前后不一致 | 路由到 requirement-consistency-analysis |
+| 需求已经明确，但无法连到设计或测试证据 | 路由到 requirement-traceability-analysis |
+| 高优先级缺口没有负责人或关闭条件 | 先停在受限状态，不输出 Go/No-Go |
+
+路由只是建议，不是安装依赖，也不是“检查完成”的证明。每条发现都应该保留事实、证据支持的推断、建议和 Human 决策项。
+
+## 怎样准备更好的输入
+
+最小输入包括：
+
+- 目标、需求集合、验收条件和变更版本；
+- 角色、平台、租户、数据、依赖和环境范围；
+- 已知约束、历史决策和可引用的原始材料；
+- 本次要进入的下一阶段，以及不允许 Skill 做的事情；
+- 已有执行记录或验证证据——没有就明确写缺失。
+
+输出至少包括：
+
+- 输入审计和范围内外；
+- 六个质量维度的结果；
+- 按 P0→P3 排序的 RQ-## 发现；
+- 负责人、待决策问题、下一步动作、关闭条件和验证方式；
+- 专项路由、假设、未评估项和剩余风险。
+
+只提供一句故事时，仍可以让 Skill 先找出明显缺口；但它只能给出最小初版。想要更稳定的结果，就把验收条件、规则来源和版本一起交给它。
+
+## 和其他 Skill 怎么配合
+
+- 需求歧义分析：https://inaodeng.com/zh-cn/qaskills/requirement-ambiguity-analysis/
+- 需求一致性分析：https://inaodeng.com/zh-cn/qaskills/requirement-consistency-analysis/
+- 需求冲突检测：https://inaodeng.com/zh-cn/qaskills/requirement-conflict-detection/
+- 需求可追溯性分析：https://inaodeng.com/zh-cn/qaskills/requirement-traceability-analysis/
 
 ## 容易踩的坑
 
-1. 把语言通顺当成需求完整且可验证。
-2. 根据常见产品惯例补写缺失业务规则。
-3. 只凭一份文档输出通用数字分数或 Go/No-Go。
-
-## 相关 Skill
-
-- [需求歧义分析](https://inaodeng.com/zh-cn/qaskills/requirement-ambiguity-analysis/)：处理模糊措辞和缺失区分条件。
-- [需求可追溯性分析](https://inaodeng.com/zh-cn/qaskills/requirement-traceability-analysis/)：把需求结论连接到设计和测试证据。
-- [测试范围分析](https://inaodeng.com/zh-cn/qaskills/test-scope-analysis/)：利用澄清后的需求定义测试边界。
+1. 把“大家都能读懂”当成“每个人都会按同一种方式实现”。
+2. 用常见产品习惯补写退款、权限或异常规则。
+3. 只列问题，不给负责人、关闭条件和验证方式。
+4. 把专项路由、文档存在或静态检查写成测试执行证据。
+5. 需求缺材料时仍然输出确定的质量分或 Go/No-Go。
 
 ## 安装与调用
 
@@ -85,27 +178,52 @@ Requirement Quality Review Skill 是设计和测试规划前的 QA 与交付质�
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review -g
 ~~~
 
+输入目标、范围、材料、版本、环境、限制和已有证据：
+
 ~~~text
 请使用 requirement-quality-review Skill。
-提供目标、范围、版本、证据路径、限制和决策边界。
-先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
+
+任务：在技术设计和测试规划前复核订阅取消需求。
+输入材料：[故事、验收条件、计费规则、平台范围、依赖说明和历史决策]
+范围：[Web 取消、有效订阅和退款资格]
+限制：[不编写测试用例、不批准发布]
+
+先完成六类输入审计，再按完整性、清晰度、可验证性、可行性、范围和证据质量输出 RQ-## 发现。对 P0/P1 项目给出负责人、待决策问题、关闭条件和验证方式，并标出专项路由。
 ~~~
 
-## 常见问题
+输出是结构化的复核结果，而不是一张总分表。最重要的字段是来源、状态、影响、优先级、责任角色、动作、关闭条件和验证方法。
+
+## FAQ
 
 ### 这个 Skill 可以直接补写缺失验收条件吗？
 
-它可以指出必须决定什么，并提出问题或候选结构，但不能发明业务规则，也不能把未批准的条件写成最终版本。
+它可以指出必须决定什么，并给出候选问题或结构；但不能发明业务规则，也不能把未经负责人确认的条件写成最终版本。
+
+### 只有一份需求文档，也能开始吗？
+
+可以，但输出必须保留 missing 或 unassessed。补充验收条件、版本、规则来源和范围后，结果会更具体。
 
 ### 需求复核干净，就代表实现一定通过吗？
 
-不代表。它只说明下一步输入更清楚；运行时行为仍需要设计、实现和执行证据。
-
-
+不代表。它只说明当前材料更适合进入下一阶段；实现、兼容性和运行时行为仍需要独立的设计、测试和执行证据。
 
 ## 参考
 
-- 需求质量复核 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review/prompts/requirement-quality-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review/prompts/requirement-quality-review.md)
-- 需求质量复核 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review)
-- 需求质量复核 详情页:[https://inaodeng.com/zh-cn/qaskills/requirement-quality-review/](https://inaodeng.com/zh-cn/qaskills/requirement-quality-review/)
-- Awesome QA Skills 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+### 源 Skill 与执行契约
+
+完整执行规则在需求质量复核 Prompt：
+
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review/prompts/requirement-quality-review.md
+
+Skill 源目录同时包含 Skill 定义、Agent 适配和 Eval 资产：
+
+https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review
+
+静态材料、文件存在和 dry-run 只能保留原有证据状态，不能被写成测试执行、全部通过、Go/No-Go 或发布批准。
+
+### 参考链接
+
+- 需求质量复核 Prompt：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review/prompts/requirement-quality-review.md
+- 需求质量复核 Skill 源文件：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review
+- 需求质量复核详情页：[https://inaodeng.com/zh-cn/qaskills/requirement-quality-review/](https://inaodeng.com/zh-cn/qaskills/requirement-quality-review/)
+- Awesome QA Skills 项目：https://github.com/naodeng/awesome-qa-skills

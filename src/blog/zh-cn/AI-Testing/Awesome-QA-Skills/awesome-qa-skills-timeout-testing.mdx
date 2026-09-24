@@ -1,5 +1,5 @@
 ---
-title: "Timeout Testing：把超时预算、取消、反馈和重试连接起来"
+title: "超时测试 Skill：把超时预算、取消、反馈和重试连接起来"
 description: "超时测试双语指南，围绕超时预算、取消传播、下游边界、用户反馈和重试交互准备有证据边界的分析。"
 date: 2026-10-24T09:00:00.000Z
 draft: true
@@ -8,14 +8,15 @@ tags: ["AI 测试", "QA Skills", "超时测试"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-
 超时不只是一个数字。它会改变下游工作是否继续、用户是否看到可恢复状态，以及重试会不会重复操作。
+
+## 为什么需要这个 Skill
 
 Timeout Testing Skill 分析超时预算、取消传播、下游边界、用户反馈和重试交互，同时把超时设计与已经完成的故障运行分开。
 
-本文关注的关键边界是调用方不再等待后，下游工作还会继续什么。
+## Skill 用来做什么
 
-## 超时测试 Skill 用来做什么
+本文关注的关键边界是调用方不再等待后，下游工作还会继续什么。
 
 当 API、任务、UI 流程或依赖链需要明确超时行为和安全验证时，使用这个 Skill。它不会注入故障，也不会访问生产系统。
 
@@ -23,13 +24,63 @@ Timeout Testing Skill 分析超时预算、取消传播、下游边界、用户�
 
 当服务新增依赖、用户反馈请求卡住，或者各层超时和重试行为不一致时，使用这个 Skill。
 
-## 先回到源 Skill
+## 它不做什么
 
-完整执行规则在 [超时测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing/prompts/timeout-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing) 中还可能包含评测用例和补充材料。
+超时测试 Skill 可以组织预算图的材料、证据和下一步动作，但它不能替代：
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+- 业务或领域负责人对规则、范围和风险的确认。
+- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
+- 发布、合规、生产操作和残余风险接受等授权决定。
+- 在输入相互冲突时替团队选择一个未经确认的事实。
 
-## 用一份项目材料开始
+## 它主要检查哪些内容
+
+这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
+
+| 检查关注点 | 开始前要问 | 结果应留下什么 |
+| --- | --- | --- |
+| 预算图 | 每层超时及其关系 | 来源与缺口 |
+| 取消发现 | 什么停止、继续或持久化 | 证据状态 |
+| 用户与重试行为 | 用户状态和重复副作用风险 | 契约与证据 |
+| 验证动作 | 最小受控延迟或重放 | 停止条件 |
+
+如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
+
+## 开始之前先审计输入
+
+围绕“预算图”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+
+| 状态 | 含义 | 本 Skill 的处理方式 |
+| --- | --- | --- |
+| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
+| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
+| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
+| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
+| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
+| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
+
+至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
+
+## 从问题到结构化 Finding
+
+先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
+
+### 分层写法
+
+围绕预算图，不要把四种语气揉成一句“建议通过”：
+
+| 层次 | 写法 | 本文应用 |
+| --- | --- | --- |
+| Fact | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
+| Evidence-backed Inference | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
+| Recommendation | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
+| Human Decision | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
+
+## 一个完整案例
+
+本节按输入（Input）、分析（Analysis）、Finding、决策（Decision）和验证（Validation）展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+
+### 输入（Input）
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
@@ -41,10 +92,57 @@ Timeout Testing Skill 分析超时预算、取消传播、下游边界、用户�
 可以这样调用：
 
 ~~~text
-请使用 timeout-testing Skill。\n\n任务：复核报表下载流程：浏览器 30 秒超时，但导出任务会继续，用户还能重试。\n输入材料：[超时预算、取消行为、任务状态模型、重试策略、日志和用户提示]\n范围：[staging 导出流程]\n限制：[不注入生产故障]\n\n覆盖预算、取消传播、下游边界、用户反馈、重试交互、证据状态和安全验证。
+请使用 timeout-testing Skill。
+
+任务：复核报表下载流程：浏览器 30 秒超时，但导出任务会继续，用户还能重试。
+输入材料：[超时预算、取消行为、任务状态模型、重试策略、日志和用户提示]
+范围：[staging 导出流程]
+限制：[不注入生产故障]
+
+覆盖预算、取消传播、下游边界、用户反馈、重试交互、证据状态和安全验证。
 ~~~
 
-## 让下一位同事接手
+### 分析（Analysis）
+
+先根据输入、检查矩阵和证据状态整理判断，再进入 Finding；缺失材料保留为缺口。
+
+### Finding
+
+#### 聚焦例子：停止等待，但不要丢掉导出任务状态
+
+浏览器 30 秒后报超时，但任务继续运行，用户再次点击会创建第二个导出。这个 Skill 应区分调用方超时与下游取消，要求明确任务状态或幂等决策，并建议在 staging 延迟供应商响应验证。不能假设 UI 超时取消了服务端工作。
+
+分析可以准备超时验证并分类证据，不能在没有授权运行前证明取消、用户体验或重复副作用安全。
+
+#### 示例发现：把一次问题写成可交接动作
+
+下面的字段示例只展示记录方式，不代表真实环境已经执行。
+
+假设当前材料无法证明“预算图”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+
+| 字段 | 示例写法 |
+| --- | --- |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和预算图的具体对象 |
+| 发现 | 预算图的判断条件或结果仍缺少可追溯依据 |
+| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
+| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
+| Owner 与 Human 决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
+| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
+| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+
+这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+
+### 决策（Decision）
+
+责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+
+### 验证（Validation）
+
+关闭前按 Finding 中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+
+## Finding 怎么进入下一阶段
+
+### 交接产物
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
@@ -55,29 +153,27 @@ Timeout Testing Skill 分析超时预算、取消传播、下游边界、用户�
 
 每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
 
-## 聚焦例子：停止等待，但不要丢掉导出任务状态
+### 下一步路由
 
-浏览器 30 秒后报超时，但任务继续运行，用户再次点击会创建第二个导出。这个 Skill 应区分调用方超时与下游取消，要求明确任务状态或幂等决策，并建议在 staging 延迟供应商响应验证。不能假设 UI 超时取消了服务端工作。
+至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
 
-分析可以准备超时验证并分类证据，不能在没有授权运行前证明取消、用户体验或重复副作用安全。
-
-## 先补基线输入，再期待更好的结果
+## 怎样准备更好的输入
 
 提供超时预算、各层负责人、取消和持久化规则、任务状态、重试/幂等契约、用户提示、环境和安全延迟机制。预算缺失时保持 pending。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
+
+## 和其他 Skill 怎么配合
+
+- [重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)：检查重复尝试和副作用。
+- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查超时与错误响应契约。
+- [熔断器测试](https://inaodeng.com/zh-cn/qaskills/circuit-breaker-testing/)：检查连续下游失败边界。
 
 ## 容易踩的坑
 
 1. 不考虑下游工作，就把所有层超时设成同一个值。
 2. 假设客户端超时会取消服务端或供应商工作。
 3. 没有检查幂等和任务状态，就对超时写操作重试。
-
-## 相关 Skill
-
-- [重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)：检查重复尝试和副作用。
-- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查超时与错误响应契约。
-- [熔断器测试](https://inaodeng.com/zh-cn/qaskills/circuit-breaker-testing/)：检查连续下游失败边界。
 
 ## 安装与调用
 
@@ -91,7 +187,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 先审计输入，保留证据状态，最后给出负责人、关闭条件和验证方式。
 ~~~
 
-## 常见问题
+## FAQ
 
 ### 超时更短对用户一定更好吗？
 
@@ -101,9 +197,15 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 不应该自动假设。要看操作安全、错误分类、幂等性和用户可见状态。
 
-
-
 ## 参考
+
+### 源 Skill 与执行契约
+
+完整执行规则在 [超时测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing/prompts/timeout-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing) 中还可能包含评测用例和补充材料。
+
+静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+
+### 参考链接
 
 - 超时测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing/prompts/timeout-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing/prompts/timeout-testing.md)
 - 超时测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/timeout-testing)
