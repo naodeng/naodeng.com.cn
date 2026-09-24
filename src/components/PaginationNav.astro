@@ -13,11 +13,11 @@ interface Props {
 const { currentPage, totalPages, locale } = Astro.props;
 const t = useTranslations(locale);
 
-const blogBase = getRelativeLocaleUrl(locale, "/blog").replace(/\/$/, "");
+const blogBase = getRelativeLocaleUrl(locale, "/blog/");
 const firstUrl = blogBase;
-const prevUrl = currentPage === 2 ? blogBase : `${blogBase}/page/${currentPage - 1}`;
-const nextUrl = `${blogBase}/page/${currentPage + 1}`;
-const lastUrl = totalPages <= 1 ? blogBase : `${blogBase}/page/${totalPages}`;
+const prevUrl = currentPage === 2 ? blogBase : `${blogBase}page/${currentPage - 1}/`;
+const nextUrl = `${blogBase}page/${currentPage + 1}/`;
+const lastUrl = totalPages <= 1 ? blogBase : `${blogBase}page/${totalPages}/`;
 
 const labelFirst = t(PAGINATION_FIRST);
 const labelLast = t(PAGINATION_LAST);
@@ -115,7 +115,7 @@ const labelJump = locale === "zh-cn" ? "输入页码跳转" : "Jump to page";
       var num = parseInt(input.value, 10);
       if (isNaN(num) || num < 1) num = 1;
       if (num > totalPages) num = totalPages;
-      var url = num === 1 ? blogBase : blogBase + "/page/" + num;
+      var url = num === 1 ? blogBase : blogBase + "page/" + num + "/";
       window.location.href = url;
     });
   })();

@@ -1,5 +1,11 @@
 # Wiki 规范 URL 使用小写；旧文件名大小写地址需在文件解析前 301 到规范页
 /zh-cn/wiki/A-B-Testing/ /zh-cn/wiki/a-b-testing/ 301
+# GSC 2026-09-24 核验的旧 Wiki 与博客地址；目标页均已在线存在
+/zh-cn/wiki/B/bug /zh-cn/wiki/bug/ 301
+/zh-cn/wiki/S/selenium /zh-cn/wiki/selenium/ 301
+/zh-cn/wiki/wTiki/test-automation.md /zh-cn/wiki/test-automation/ 301
+/zh-cn/blog/performance-testing/gatling-tool-tutorial-advanced-usage/ /en/blog/performance-testing/gatling-tool-tutorial-advanced-usage/ 301
+/zh-cn/blog/performance-testing/gatling-tool-tutorial-ci-cd-integration/ /en/blog/performance-testing/gatling-tool-tutorial-ci-cd-integration/ 301
 # 英文博文仅存在中文版时，将 /en/ 请求 301 到 /zh-cn/ 同路径
 /en/blog/ui-automation-testing/ui-testing-best-practice-generic-testing-perks-tests-as-documentation/ /zh-cn/blog/ui-automation-testing/ui-testing-best-practice-generic-testing-perks-tests-as-documentation/ 301
 /en/blog/qa-glossary-wiki/qa-glossary-wiki-api-testing/ /zh-cn/blog/qa-glossary-wiki/qa-glossary-wiki-api-testing/ 301
