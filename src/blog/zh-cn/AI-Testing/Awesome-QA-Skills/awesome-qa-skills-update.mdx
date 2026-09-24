@@ -1,0 +1,655 @@
+---
+title: "Awesome QA Skills 更新：从 QA Skill 集合到可治理的 AI QA Skills 体系"
+description: "回顾 Awesome QA Skills 从 QA Skill 集合，到覆盖研发全过程、AI Native QA，再到 Skills CLI、Skill Eval、Router、Composition 和质量治理体系的持续演进。"
+date: 2026-09-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "QA Skills", "Awesome QA Skills"]
+categories: ["AI 测试"]
+series: ["Awesome QA Skills"]
+---
+
+之前介绍过一次我维护的开源项目 **Awesome QA Skills**。
+
+一开始，项目的想法很简单：
+
+> 把软件测试和 QA 工作中经常重复的方法、经验和工作流程，沉淀成可以被 AI Agent 直接使用的 Skill。
+
+项目地址：
+
+https://github.com/naodeng/awesome-qa-skills
+
+在线目录：
+
+https://inaodeng.com/qaskills/
+
+经过最近几个版本的迭代，项目的重点已经变了。
+
+最开始，我主要关注：
+
+> QA 日常工作里还有哪些事情适合沉淀成 Skill？
+
+所以早期先增加了大量和实际测试工作直接相关的能力：
+
+```text
+需求分析
+测试策略
+测试设计
+功能测试
+API 测试
+UI 自动化测试
+性能测试
+回归测试
+发布测试
+```
+
+但是随着 Skill 数量越来越多，问题开始发生变化。
+
+从最开始的：
+
+> 有没有这个 Skill？
+
+逐渐变成：
+
+> 这么多 Skill 应该怎么分类、怎么找到、怎么安装、怎么组合、怎么验证，以及怎么避免能力重复？
+
+再往后还有一个更加重要的问题：
+
+> Skill 本身的质量怎么保证？
+
+后面的几个版本，基本都在回答这些问题。
+
+# 从版本演进看项目发生了什么
+
+把 Awesome QA Skills 到目前为止的变化按版本排开，大致是：
+
+| 阶段 | 重点变化 |
+| --- | --- |
+| 早期版本 | QA 基础 Skill |
+| v1.1 | 需求与质量能力扩展 |
+| v1.2 | 研发全过程质量能力扩展 |
+| v1.3 | 可靠性（Reliability）、安全（Security）、质量工程（Quality Engineering）和 AI 原生 QA（AI Native QA） |
+| v1.4 | Skill 体系治理与能力收口 |
+| v1.5 | Skills CLI / Agent Skills 分发 |
+| v1.5.1 | Skill 评测质量闭环 |
+| v1.5.2 | Skill 路由与组合（Router + Composition） |
+| v1.6 | 匹配评审与证据边界治理（Match Review） |
+
+这条版本路线也反映出项目定位的变化：从 QA Prompt、QA Skill，逐渐发展到安装与分发、发现与路由、组合、评测、回归和治理。
+
+项目也从一个 **QA Skill 集合**，逐渐走向一套 **AI QA Skills 体系**。
+
+# 早期版本：先把 QA 方法变成 Skill
+
+一开始没急着设计复杂的治理体系，先想验证一个问题：
+
+> QA 的方法和经验，能不能从个人经验转化成 Agent 可以重复使用的能力？
+
+所以早期版本主要围绕日常测试工作建设 Skill，例如需求分析（`requirements-analysis`）、测试策略（`test-strategy`）、功能测试（`functional-testing`）、API 测试（`api-testing`）、性能测试（`performance-testing`）、回归测试（`regression-testing`）、Playwright UI 测试（`ui-test-playwright`）和发布测试工作流（`release-testing-workflow`）。
+
+对应的是从需求理解、风险识别、测试策略、测试设计，到执行和质量结论的一整套常见 QA 工作。
+
+这个阶段关注的不是 Skill 数量，而是能不能把 QA 方法结构化：让 Agent 理解什么时候使用、需要什么输入、应该执行什么步骤，以及最终输出什么。
+
+# v1.1：从“怎么测试”走向“需求本身有没有问题”
+
+基础测试能力逐渐补齐之后，如果 Skill 只回答“怎么测试”，实际上仍然只是传统测试工作的 AI 化。
+
+QA 在真实研发过程中还需要判断需求有没有遗漏、歧义和冲突，验收条件是否明确，需求是否可测试，变更会影响哪些范围，以及主要质量风险在哪里。
+
+所以这一阶段开始重点补充需求质量相关能力，例如：
+
+```text
+需求质量复核
+需求缺口分析
+需求歧义分析
+需求一致性分析
+需求冲突分析
+可测试性分析
+变更影响分析
+质量风险识别
+```
+
+Skill 开始从“帮助 QA 执行测试”向“帮助团队更早发现质量问题”扩展。
+
+# v1.2：从测试阶段扩展到研发全过程
+
+QA Skill 不应该只在开发完成、提测以后才有价值。
+
+因此项目逐渐覆盖需求、设计、开发、代码变更、测试、发布和生产等不同阶段的质量活动，包括代码评审（Code Review）、API 质量、UI 自动化测试、回归测试选择、性能测试、可测试性分析、变更影响分析和发布质量等。
+
+Awesome QA Skills 开始从“测试阶段的 Skill 集合”向“研发全过程的质量 Skill”扩展。
+
+# v1.3：继续扩展专业质量领域
+
+随着研发全过程的基础能力逐渐补齐，项目继续向可靠性（Reliability）、安全（Security）、质量工程（Quality Engineering）和 AI 原生 QA（AI Native QA）等方向扩展。
+
+可靠性相关能力开始覆盖稳定性、故障、恢复、生产验证、指标分析、链路追踪（Trace）分析、根因分析和事故分析；质量工程则继续关注测试工程、自动化、回归、质量效能和工程实践。
+
+另一个方向也变得重要：**AI 原生 QA（AI Native QA）**。
+
+# AI Native QA（AI 原生 QA）：不仅用 AI 做测试，也要测试 AI
+
+之前说 AI 测试，很多时候实际上指的是 `AI for QA`，例如让 AI 帮助分析需求、设计测试、生成测试用例、编写自动化测试、分析日志和辅助定位问题。
+
+但是随着 LLM、Agent 和各种 AI 功能越来越多，还有另一类问题：`Testing for AI`。
+
+项目逐渐增加 AI 功能测试（`ai-feature-testing`）、LLM 测试（`llm-testing`）、AI Agent 测试（`ai-agent-testing`）、提示词测试（`prompt-testing`）和提示词注入测试（`prompt-injection-testing`）。
+
+测试对象也开始从 Web、API、移动端、数据库、服务扩展到 LLM、Prompt、Agent、RAG、工具调用（Tool Calling）、AI 功能和 AI 安全边界。
+
+AI 系统存在概率性输出、上下文依赖、模型差异、工具调用（Tool Calling）等特征，传统 Web/API 测试方法仍然有价值，但已经无法覆盖所有问题。
+
+# v1.4：Skill 多了以后，开始治理
+
+随着 Skill 从几十个增加到一百多个，一个新的问题出现了：继续增加 Skill，还是最重要的事吗？
+
+如果没有治理，很容易出现能力高度重合、中英文不同步、工作流引用旧能力、Skill 修改后评测没有更新等问题。
+
+因此，这个阶段把重点从“增加 Skill”转向“管理 Skill”，逐渐建立 Skill 注册表（Skill Registry）、能力矩阵（Skill Matrix）、匹配登记表（Matching Register）、双语一致性契约（Bilingual Consistency Contract）、弃用契约（Deprecation Contract）、评测契约（Evaluation Contract）和治理路线图（Governance Roadmap）。
+
+项目没有为了重新分类而大规模移动已有 Skill 目录，而是采用“稳定物理目录 + 逻辑能力分类 + Registry（注册表）+ Matrix（能力矩阵）+ Metadata（元数据）+ Workflow（工作流）”的方式继续演进。
+
+对于已经有实际用户的开源项目来说，**兼容性本身也是质量的一部分。**
+
+# 现在项目已经有多大？
+
+目前 Awesome QA Skills 每种语言包含 **164 个 Skill**：
+
+```text
+10 个测试工作流
+149 个测试类型 Skill
+5 个 Skill 工程化能力
+```
+
+中英文两套目录合计 **328 个 Skill 目录**。
+
+更准确地说：164 个逻辑 Skill 分别提供 English 与 Chinese 两个本地化版本。
+
+中英文共用稳定的规范 Skill 名称（Canonical Skill Name），例如 `functional-testing`。语言差异主要存在于提示词（Prompt）、文档、示例、描述和用户交互。
+
+目前这些 Skill 从逻辑上大致分成四层：基础 QA 能力 → 质量工程能力 → 生产质量能力 → AI 原生 QA。
+
+此外还有横向的 Skill 工程化能力，负责 Skill 自身的质量工程。
+
+# 单个 Skill 之外，还需要工作流
+
+真实项目里的 QA 工作很少只需要一个 Skill。
+
+一次发布可能涉及需求理解、风险分析、测试策略、回归范围选择、测试执行、缺陷判断、发布验证和 Go / No-Go。
+
+所以项目除了单个测试 Skill，还保留了日常测试工作流（`daily-testing-workflow`）、迭代测试工作流（`sprint-testing-workflow`）和发布测试工作流（`release-testing-workflow`）。
+
+还提供产品质量视角（`product-quality-perspective`）、QA 质量视角（`qa-quality-perspective`）、技术质量视角（`technical-quality-perspective`）、用户体验质量视角（`ux-quality-perspective`）、项目交付质量视角（`project-delivery-perspective`）和多角色质量综合（`multi-role-quality-synthesis`）。
+
+工作流并不是重新实现已有 Skill，而是回答：一个真实研发场景里，多个 Skill 应该怎样配合？
+
+# v1.5：Skill 开始真正可安装
+
+从 `v1.5` 开始，项目完成了对 Skills CLI / Agent Skills 分发方式的兼容。
+
+例如：
+
+```bash
+npx skills add naodeng/awesome-qa-skills --skill functional-testing
+```
+
+指定安装到 Codex：
+
+```bash
+npx skills add naodeng/awesome-qa-skills --skill functional-testing -a codex
+```
+
+中文版可以显式指定中文目录：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+```
+
+使用方式也从手工配置转向由 Agent 直接发现和调用：
+
+| 使用方式 | 具体流程 |
+| --- | --- |
+| 原来的方式 | 找到 Skill → 复制目录 → 手工配置 |
+| 现在的方式 | 安装 Skill → Agent 发现 → 调用 Skill |
+
+`v1.5` 发布时完成：
+
+```text
+324 个 Skill 扫描
+135 个仓库测试通过
+Skills CLI 兼容性问题 = 0
+CLI 发现通过
+独立安装冒烟测试通过
+```
+
+# v1.5.1：Skill 自己也需要测试
+
+Skill 可以安装之后，接下来的问题是：安装成功，就代表 Skill 有效吗？
+
+当然不是。
+
+真实模型仍然可能没有正确发现 Skill、在错误场景触发、输出结果不符合预期、忽略关键约束，或者在修改之后出现回归。
+
+因此，从 `v1.5.1` 开始，项目建立 **Skill 评测质量闭环**，新增 Skill 质量评审（`skill-quality-review`）和 Skill 评测（`skill-evaluation`）。
+
+并形成：
+
+| 步骤 | 质量闭环 |
+| --- | --- |
+| 1 | Skill 变更 |
+| 2 | 静态检查 |
+| 3 | 结构检查 |
+| 4 | 评测 |
+| 5 | 证据 |
+| 6 | 回归 |
+| 7 | 评审 |
+
+到这个版本：
+
+```text
+328 个 Skill 扫描
+155 个仓库测试通过
+```
+
+同时开始为 `requirements-analysis`、`ui-test-playwright` 等 Skill 增加评测试点。
+
+# v1.5.2：Skill 太多以后，需要路由器
+
+当每种语言都有 164 个 Skill 后，如何选择合适的 Skill，开始成为一个现实问题。
+
+因此，`v1.5.2` 重点加强了 `discover-testing` 这个 Skill 路由器。
+
+用户可以直接描述任务目标，路由器再根据当前研发阶段、用户目标、风险类型和输入材料选择主要 Skill 和辅助 Skill。
+
+同时增加 `skill-composition.yaml`，作为 Skill 组合的结构化信息来源。目前先整理了五条路线：
+
+```text
+新功能质量准备
+API 交付
+变更与回归
+性能决策
+AI 功能验证
+```
+
+路由器目前仍保持轻量，主要负责发现、选择和组合建议，并没有直接变成复杂的多 Agent 编排系统。
+
+到 `v1.5.2`，验证结果进一步增加到：
+
+```text
+328 个 Skill 扫描
+177 个仓库测试通过
+```
+
+同时增加了路由器试点评测和离线 `skill.selection` trace 证据。
+
+# v1.6：不是每个新需求都应该新增 Skill
+
+到 `v1.6`，项目开始重点解决 Skill 越做越多、越做越重复的问题。
+
+项目也明确了一条治理原则：
+
+> **先匹配，后增强；先合并，后新增。**
+
+一个新的 Skill 候选进入项目之后，首先进行匹配评审（Match Review），可能得到：
+
+匹配已有能力（MATCH）、合并到已有 Skill（MERGE）、增强已有 Skill（ENHANCE），或新建 Skill（NEW）。
+
+例如，对容量规划（`capacity-planning`）、工作负载建模（`workload-modeling`）、需求变更影响分析（`requirement-change-impact-analysis`）和质量风险识别（`quality-risk-identification`）等候选能力进行项目上下文复核后，项目继续复用已有目标 Skill，而不是创建新的平行目录。
+
+项目也开始从“追求 Skill 数量”转向“追求 Skill 边界和质量”。
+
+`v1.6` 当前验证结果为：
+
+```text
+328 个 Skill 扫描
+190 个仓库测试通过
+328 / 328 Skill Eval 配置有效
+Skills CLI 兼容性通过
+双语治理视图通过
+```
+
+同时为 4 个目标 Skill 分别增加中英文项目上下文评测，共 8 个。
+
+但完整真实模型回放仍标记为 `INSUFFICIENT_EVIDENCE`，不能因为版本已经发布，就直接认为“全部验证通过”。
+
+# 现在如何保证一个 Skill 的质量？
+
+现在，仅仅满足 SKILL.md 存在、提示词（Prompt）写好了、示例存在、目录正确，远远不够。
+
+一个 Skill 的质量至少要回答这些问题：
+
+能力是否真的需要、边界是否清晰、结构是否完整、中英文是否一致、Agent 能否正确发现、是否在正确场景触发、输出是否遵守约束、评测是否覆盖关键行为、修改后是否发生回归，以及真实模型是否有足够证据。
+
+所以现在 Skill 质量已经不再只是提示词写得好不好，而是一整套 **Skill 质量闭环（Skill Quality Loop）**。
+
+## 第一道质量门：先判断这个 Skill 是否应该存在
+
+新增 Skill 的第一步不再是创建目录，而是先检查已有能力：搜索已有 Skill、比较使用场景、输入输出、能力边界和已有评测，然后进行匹配评审。
+
+最后再决定：
+
+匹配已有能力（MATCH）、合并到已有 Skill（MERGE）、增强已有 Skill（ENHANCE），或新建 Skill（NEW）。
+
+这是新增 Skill 的第一道质量门。
+
+## 第二道质量门：明确能力边界
+
+如果确认需要新增，还需要明确这个 Skill 解决什么问题、什么时候使用、什么时候不使用、需要什么输入、输出什么、不负责什么，以及和相邻 Skill 有什么区别。
+
+如果一个 Skill 无法清楚回答“为什么不能直接使用旁边那个 Skill？”，那么它的能力边界可能还没有设计清楚。
+
+## 第三道质量门：Skill 包必须自洽
+
+根据不同 Skill 的需要，可能包含：
+
+```text
+SKILL.md
+Prompt
+metadata
+agents/openai.yaml
+examples
+templates
+references
+Eval cases
+```
+
+并不是所有 Skill 都必须拥有完全相同的文件，但希望单独拿走一个 Skill 时，它仍然能够被理解和使用，尽量保持 Skill 独立性。
+
+## 第四道质量门：双语能力保持一致
+
+中英文不是两个完全独立的 Skill，而是一个逻辑 Skill 的中英文本地化版本。
+
+需要保持规范 Skill 名称（Canonical Skill Name）、能力边界、提示词核心逻辑、元数据、资源引用、评测结构和行为预期的一致。
+
+这并不意味着逐字翻译。更重要的是：
+
+> **语言可以不同，能力不能变成两个不同的 Skill。**
+
+## 第五道质量门：自动化静态检查
+
+Skill 实现完成之后，需要进入自动化质量检查，例如：
+
+```bash
+bash scripts/check_skills_quality.sh
+```
+
+检查 Skill 结构、元数据、规范名称、双语结构、资源引用、Skill 独立性、评测结构、治理视图和 Skills CLI 兼容性等内容。
+
+不过，静态检查通过，不等于 Skill 有效性通过（**Static PASS ≠ Skill Effectiveness PASS**）。
+
+静态检查只能证明静态检查所覆盖的内容通过，不能证明真实模型一定可以正确使用这个 Skill。
+
+## 第六道质量门：用评测（Eval）验证行为
+
+Skill 评测不只是验证文件是否存在，而是验证在给定任务下，Skill 应该表现出什么行为。
+
+例如检查应该识别什么、不应该输出什么、是否遵守边界、是否区分事实和假设、是否正确处理缺失证据，以及是否产生不受支持的结论。
+
+对于基于 LLM 的 Skill 来说，也不能简单要求“输入 A，必须逐字输出 B”。
+
+评测更适合验证关键行为、约束、边界、证据和禁止行为。
+
+也就是：**验证行为契约，而不是固定答案。**
+
+## 第七道质量门：失败变成回归用例
+
+如果一个 Skill 在评测或真实使用中发现问题，不应该只是修改提示词然后关闭问题。
+
+更理想的方式是：
+
+| 步骤 | 处理动作 |
+| --- | --- |
+| 1 | 发现问题 |
+| 2 | 保留失败证据 |
+| 3 | 分析原因 |
+| 4 | 修改 Skill |
+| 5 | 转换成回归用例（Regression Case） |
+| 6 | 重新评测 |
+
+从传统 QA 的角度看，本质上就是：
+
+> **把 Skill 的缺陷变成 Skill 的回归测试。**
+
+## 第八道质量门：严格区分证据
+
+项目会明确区分静态证据、结构证据、评测证据、运行时证据、真实模型证据和人工复核证据。
+
+例如，190 个仓库测试通过，只能说明这 190 个测试所覆盖的检查通过，不能说明 164 个 Skill 在所有模型上都表现正常。
+
+同样，328 / 328 个评测配置有效，只能证明 Eval 配置有效，不能说明 328 个 Skill 已经全部通过真实模型验证。
+
+所以项目会明确使用：
+
+```text
+PASS
+NOT_RUN
+NOT_SCORED
+BLOCKED
+UNASSESSED
+INSUFFICIENT_EVIDENCE
+```
+
+项目用这些状态描述真实情况。
+
+核心原则是：
+
+> **没有失败，不等于已经通过；没有证据，就不扩大结论。**
+
+# Skill 修改之后，也需要重新验证
+
+Skill 后续可能修改提示词、触发描述、元数据、输入约束、输出结构、示例、引用资料和评测，任何一项变化都可能影响 Agent 行为。
+
+所以修改后的流程也需要进入质量闭环：
+
+| 步骤 | 修改后的质量检查 |
+| --- | --- |
+| 1 | Skill 修改 |
+| 2 | 修改评审 |
+| 3 | 静态验证 |
+| 4 | 现有评测 |
+| 5 | 新增回归用例 |
+| 6 | 证据对比 |
+| 7 | 合并 |
+
+项目中的 `skill-change-verification` 用来回答这个问题：
+
+> Skill 改了以后，怎么证明没有把原来的能力改坏？
+
+# 以后新增一个 Skill，要经历什么？
+
+把上面的规则汇总起来，一个新的 Skill 大致会经历以下过程：
+
+| 阶段 | 关键步骤 |
+| --- | --- |
+| 提出与复用 | 提出新能力 → 搜索已有 Skill → Match Review |
+| 匹配决策 | MATCH / MERGE / ENHANCE / NEW |
+| 设计与实现 | 定义能力边界 → 定义输入 / 输出 / 非目标 → 实现中英文 Skill → Canonical Name 检查 |
+| 静态检查 | 静态质量检查 → Skills CLI 兼容检查 |
+| 评测与证据 | 设计并执行 Eval → 记录 Evidence |
+| 回归与治理 | 失败转 Regression Case → 同步 Registry / Matrix / Catalog |
+| 评审与发布 | Review → Release |
+
+发布以后，流程还没有结束：
+
+| 步骤 | 发布后的持续改进 |
+| --- | --- |
+| 1 | 真实使用 |
+| 2 | 发现问题 |
+| 3 | 收集证据 |
+| 4 | 回归用例（Regression Case） |
+| 5 | Skill 增强 |
+| 6 | 重新评测 |
+| 7 | 下一次发布 |
+
+最终形成：
+
+| 阶段 | 生命周期 |
+| --- | --- |
+| 1 | 设计 |
+| 2 | 实现 |
+| 3 | 验证 |
+| 4 | 评测 |
+| 5 | 发布 |
+| 6 | 观察 |
+| 7 | 改进 |
+| 8 | 下一轮 |
+
+这就是项目正在建立的 **Skill 质量闭环**。
+
+# 质量不是一个简单的分数
+
+后续可以继续探索 Skill 质量评分。
+
+但现阶段，我并不希望简单给每个 Skill 一个 `92 / 100`，然后说这个 Skill 质量很好。
+
+因为 Skill 质量至少包括：
+
+```text
+结构完整性
+能力边界
+触发准确性
+输出质量
+证据遵循
+双语一致性
+模型兼容性
+回归稳定性
+真实项目有效性
+```
+
+其中很多维度目前还没有足够的真实证据。
+
+所以相比一个看起来很精确的分数，我现在更倾向于明确什么已经验证、什么还没有验证、什么验证失败、什么被阻塞、什么证据不足，以及什么需要真实项目继续观察。
+
+# 从“写 Skill”逐渐走向“工程化维护 Skill”
+
+过去更多是在“写 Skill”。
+
+现在更像是在工程化维护 Skill：
+
+| 工程化阶段 | 包含内容 |
+| --- | --- |
+| 设计与实现 | Skill 设计、Skill 实现 |
+| 测试与评测 | Skill 测试、Skill 评测 |
+| 持续维护 | Skill 回归、Skill 治理 |
+
+如果 Agent Skills 最终成为 AI 工程中长期存在的能力载体，那么 Skill 本身也应该像代码、API、测试、配置和模型一样拥有自己的质量工程方法。
+
+这个项目也在用自己的实践验证这套方法。
+
+# 回头看这些版本
+
+| 阶段 | 主要变化 |
+| --- | --- |
+| 早期版本 | 把 QA 方法做成 Skill |
+| v1.1 | 把质量活动向需求阶段前移 |
+| v1.2 | 扩展到研发全过程 |
+| v1.3 | 扩展可靠性、安全、质量工程和 AI 原生 QA |
+| v1.4 | 建立 Skill 治理体系 |
+| v1.5 | 解决安装和分发 |
+| v1.5.1 | 解决 Skill 自身质量评测 |
+| v1.5.2 | 解决 Skill 发现和组合 |
+| v1.6 | 解决重复能力和证据边界 |
+| 现在 | 逐渐形成 Skill 质量闭环 |
+
+真正的变化并不是 Skill 数量增加了，而是：
+
+> **Skill 开始从仓库里的一组文件，逐渐变成一套有设计、测试、评测、回归和治理生命周期的 QA 能力。**
+
+# 现在 Awesome QA Skills 是什么？
+
+最开始我把它理解成 QA Prompt 集合，后来逐渐变成 QA Skill 集合。
+
+现在则更接近：
+
+| 演进阶段 | 当前能力 |
+| --- | --- |
+| 1 | QA 知识和方法 |
+| 2 | 可复用 Skill |
+| 3 | Skills CLI |
+| 4 | Skill 路由器 |
+| 5 | Skill 组合 |
+| 6 | Skill 评测 |
+| 7 | 回归 |
+| 8 | 匹配评审 |
+| 9 | 治理 |
+
+所以我现在更愿意把 Awesome QA Skills 定义为：
+
+**一套面向 AI Agent 的 QA Skills 体系。**
+
+它想解决的已经不只是“帮我生成几个测试用例”，而是尝试把 QA 在整个软件研发过程中积累的分析方法、测试方法、工作流程、风险判断、多角色质量视角、证据要求和决策边界，逐渐转化成 Agent 可以发现、安装、调用、组合、评测、回归和持续改进的能力。
+
+# 下一步
+
+后面还会继续增加新的 QA 能力。
+
+但 `164 → 200 → 300 → 500` 不会是项目最重要的衡量指标。
+
+相比 Skill 数量，我会更加关注下面这条从能力边界走向真实项目价值的质量链路：
+
+| 关注阶段 | 核心问题 |
+| --- | --- |
+| 能力边界 | Skill 边界是否清晰？ |
+| 发现能力 | 路由器（Router）能不能准确发现？ |
+| 安装能力 | 能不能稳定安装？ |
+| 组合能力 | 能不能正确组合？ |
+| 评测能力 | 评测（Eval）是否有效？ |
+| 回归能力 | 修改以后能不能回归？ |
+| 模型适配 | 不同模型表现如何？ |
+| 真实验证 | 真实项目是否有效？ |
+
+这条链路不是简单的功能清单：前面的边界、发现、安装和组合，决定了后面的评测与回归是否有意义；最终还要回到不同模型和真实项目中验证。
+
+后续还会继续探索：
+
+- Skill 路由准确性
+- 跨模型评测
+- Skill 组合
+- 使用证据
+- 真实项目验证
+- AI 原生 QA
+- Skill 治理
+- Skill 质量闭环
+
+最终希望 Awesome QA Skills 不只是一个越来越大的提示词仓库，而是一套 **可发现、可安装、可组合、可评测、可回归、可治理、可演进** 的 QA Agent Skills 体系。
+
+# 最后
+
+AI 给 QA 带来的变化，可能并不只是测试用例可以生成得更快。
+
+我现在更感兴趣的是另一个问题：
+
+> **QA 多年来积累的方法、经验和质量判断，能不能被结构化成 Agent 可以稳定复用的能力？**
+
+如果可以，那么接下来的问题就不只是怎么写一个好的提示词，而是要沿着一条完整的工程化链路继续追问：
+
+| 阶段 | 需要回答的问题 |
+| --- | --- |
+| 设计 | 怎么设计一个 Skill？ |
+| 证明 | 怎么证明它有效？ |
+| 诊断 | 怎么发现它的问题？ |
+| 治理 | 怎么避免能力重复？ |
+| 变更验证 | 怎么验证修改没有引入回归？ |
+| 模型适配 | 怎么让它适配不同模型？ |
+| 持续演进 | 怎么根据真实使用证据持续演进？ |
+
+也就是说，Skill 不只是“写出来”，还要能够证明有效、暴露问题、避免重复、验证修改，并根据真实证据持续演进。
+
+从早期版本到现在的 `v1.6`，Awesome QA Skills 基本就是围绕这些问题持续探索。
+
+最近最有意思的变化，就是这一点：
+
+> **Awesome QA Skills 不只是用 Skill 帮助 QA 做质量，也开始用 QA 的方法测试、评测和治理 Skill 自己。**
+
+项目地址：
+
+https://github.com/naodeng/awesome-qa-skills
+
+发布记录：
+
+https://github.com/naodeng/awesome-qa-skills/releases
+
+在线目录：
+
+https://inaodeng.com/qaskills/

@@ -1,0 +1,791 @@
+---
+title: "Awesome QA Skills Update: From a QA Skill Collection to a Governed AI QA Skills Ecosystem"
+description: "A look at how Awesome QA Skills has evolved from a QA Skill collection into a broader system covering the software delivery lifecycle, AI Native QA, Skills CLI distribution, Skill Eval, routing, composition, regression, and governance."
+date: 2026-09-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "QA Skills", "Awesome QA Skills"]
+categories: ["AI Testing"]
+series: ["Awesome QA Skills"]
+---
+
+I previously introduced **Awesome QA Skills**, an open-source project I maintain around AI-assisted software testing and quality engineering.
+
+The original idea was straightforward:
+
+> Turn recurring QA methods, experience, and workflows into reusable Skills that AI agents can invoke directly.
+
+Project:
+
+https://github.com/naodeng/awesome-qa-skills
+
+Online catalog:
+
+https://inaodeng.com/qaskills/
+
+After several recent releases, the project's focus has changed.
+
+At first, the main question was:
+
+> What parts of everyday QA work can be captured as Skills?
+
+That led to Skills around requirements analysis, test strategy, test design, functional testing, API testing, UI automation, performance testing, regression testing, and release testing.
+
+As the repository grew, however, the questions changed:
+
+> How should all these Skills be classified, discovered, installed, composed, evaluated, and maintained without creating overlapping capabilities?
+
+And eventually another question became equally important:
+
+> How do we assure the quality of the Skills themselves?
+
+Recent releases have largely been about answering these questions.
+
+# Looking at the project through its releases
+
+The evolution can be summarized roughly as:
+
+| Release | Main change |
+| --- | --- |
+| Early releases | Foundational QA Skills |
+| v1.1 | Requirements and quality capabilities |
+| v1.2 | Quality across the development lifecycle |
+| v1.3 | Reliability, Security, Quality Engineering, and AI Native QA |
+| v1.4 | Skill governance and capability consolidation |
+| v1.5 | Skills CLI / Agent Skills distribution |
+| v1.5.1 | Skill evaluation quality loop |
+| v1.5.2 | Skill Router and Composition |
+| v1.6 | Match Review and evidence-boundary governance |
+
+This release history also reflects a change in how I think about the project.
+
+It started with QA prompts and reusable QA Skills. It is now moving toward a system that also addresses distribution, discovery, routing, composition, evaluation, regression, and governance.
+
+In other words, it is evolving from a **QA Skill collection** into an **AI QA Skills ecosystem**.
+
+# Early releases: turning QA methods into Skills
+
+The early project did not start with a complicated governance model.
+
+The first question was simpler:
+
+> Can QA knowledge and experience be converted from personal practice into reusable capabilities that an agent can follow?
+
+Early Skills therefore focused on common QA activities such as:
+
+```text
+requirements-analysis
+test-strategy
+functional-testing
+api-testing
+performance-testing
+regression-testing
+ui-test-playwright
+release-testing-workflow
+```
+
+The important part was not the number of Skills. It was whether a QA method could be structured so that an agent could understand when to use it, what input it needed, what steps to follow, and what output to produce.
+
+Once that model proved useful, the repository began expanding more systematically.
+
+# v1.1: from "how do we test this?" to "is the requirement good enough?"
+
+If a Skill only answers how to test something, it is still mostly an AI-assisted version of traditional test execution.
+
+QA work also needs to ask whether requirements are incomplete, ambiguous, contradictory, testable, or affected by change.
+
+This phase therefore expanded into areas such as:
+
+```text
+Requirement quality review
+Requirement gap analysis
+Requirement ambiguity analysis
+Requirement consistency analysis
+Requirement conflict analysis
+Testability analysis
+Change impact analysis
+Quality risk identification
+```
+
+The role of Skills started moving from helping QA execute tests toward helping teams identify quality problems earlier.
+
+# v1.2: quality across the development lifecycle
+
+The next step was to move beyond the formal testing stage.
+
+QA Skills should not become useful only after development is complete and a feature is handed over for testing.
+
+The project therefore expanded across requirements, design, development, code changes, testing, release, and production, with capabilities around Code Review, API quality, UI automation, regression selection, performance testing, testability, change impact, and release quality.
+
+Awesome QA Skills was becoming less of a testing-stage collection and more of a quality capability layer across software delivery.
+
+# v1.3: Reliability, Security, Quality Engineering, and AI Native QA
+
+As the lifecycle coverage matured, the repository expanded further into Reliability, Security, Quality Engineering, and AI Native QA.
+
+Reliability-related capabilities began covering stability, failure, recovery, production verification, metrics, traces, root-cause analysis, and incident analysis.
+
+Quality Engineering continued to cover test engineering, automation, regression, engineering practices, and quality effectiveness.
+
+At the same time, **AI Native QA** became an increasingly important direction.
+
+# AI Native QA: using AI for QA and testing AI itself
+
+Much of what people call AI testing is actually:
+
+```text
+AI for QA
+```
+
+For example, using AI to analyze requirements, design tests, generate test cases, write automation, analyze logs, or assist with debugging.
+
+But as LLMs, agents, and AI-powered features become more common, there is another category:
+
+```text
+Testing for AI
+```
+
+The repository has therefore expanded into Skills such as:
+
+```text
+ai-feature-testing
+llm-testing
+ai-agent-testing
+prompt-testing
+prompt-injection-testing
+```
+
+The system under test is no longer limited to Web, API, Mobile, Database, or Services. It increasingly includes LLMs, prompts, agents, RAG, tool calling, AI features, and AI safety boundaries.
+
+Traditional testing techniques still matter, but probabilistic output, context sensitivity, model differences, and tool use introduce additional quality problems.
+
+# v1.4: when the repository grows, governance becomes necessary
+
+Once a repository grows from dozens of Skills to more than one hundred, adding more Skills is no longer the only problem.
+
+Without governance, it becomes easy to create overlapping Skills, allow English and Chinese versions to drift apart, leave workflows pointing at outdated capabilities, or modify Skills without updating their evaluations.
+
+The focus therefore started moving from simply adding Skills to managing them.
+
+Governance assets now include concepts such as:
+
+```text
+Skill Registry
+Skill Matrix
+Matching Register
+Bilingual Consistency Contract
+Deprecation Contract
+Evaluation Contract
+Governance Roadmap
+```
+
+The repository also deliberately avoids reorganizing all physical directories just to make the logical classification cleaner.
+
+Existing users may already rely on paths such as:
+
+```text
+skills/zh/testing-types/functional-testing
+```
+
+So the project uses stable physical paths together with logical capability categories, Registry, Matrix, metadata, and workflows.
+
+For an open-source project with existing users, **compatibility is itself a quality concern**.
+
+# How large is the project now?
+
+Awesome QA Skills currently contains **164 Skills per language**:
+
+```text
+10 testing workflows
+149 testing-type Skills
+5 Skill Engineering Skills
+```
+
+Across English and Chinese, that results in **328 Skill directories**.
+
+A better way to understand this is that the 164 logical Skills are localized into English and Chinese versions.
+
+The language variants share a stable Canonical Skill Name, such as `functional-testing`, while prompts, documentation, examples, descriptions, and interaction content can be localized.
+
+Logically, the capability system can be viewed as four layers: Core QA → Quality Engineering → Production Quality → AI Native QA.
+
+A horizontal **Skill Engineering** layer focuses on the quality of the Skills themselves.
+
+# Beyond individual Skills: workflows
+
+Real QA work rarely requires only one Skill.
+
+A release may involve requirement understanding, risk analysis, test strategy, regression selection, execution, defect assessment, release verification, and a Go / No-Go decision.
+
+The repository therefore also includes testing workflows such as:
+
+```text
+daily-testing-workflow
+sprint-testing-workflow
+release-testing-workflow
+```
+
+and multi-role quality perspectives such as:
+
+```text
+product-quality-perspective
+qa-quality-perspective
+technical-quality-perspective
+ux-quality-perspective
+project-delivery-perspective
+multi-role-quality-synthesis
+```
+
+A Workflow does not reimplement the underlying Skills. It helps answer a different question:
+
+> How should multiple Skills work together in a real delivery scenario?
+
+# v1.5: Skills become installable capabilities
+
+Starting with `v1.5`, the project added compatibility with Skills CLI / Agent Skills distribution.
+
+For example:
+
+```bash
+npx skills add naodeng/awesome-qa-skills --skill functional-testing
+```
+
+For Codex:
+
+```bash
+npx skills add naodeng/awesome-qa-skills --skill functional-testing -a codex
+```
+
+For the Chinese version:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+```
+
+The usage model begins to move from manual setup toward direct discovery and invocation by the agent:
+
+| Usage model | Flow |
+| --- | --- |
+| Earlier approach | Find Skill → Copy directory → Configure manually |
+| Current approach | Install Skill → Agent discovers it → Invoke Skill |
+
+The `v1.5` release reported:
+
+```text
+324 Skills scanned
+135 repository tests passed
+Skills CLI compatibility findings = 0
+CLI discovery passed
+Standalone installation smoke passed
+```
+
+This was an important shift from Skills being files in a repository toward independently distributable agent capabilities.
+
+# v1.5.1: the Skills themselves need testing
+
+Once Skills could be installed, another question followed:
+
+> Does successful installation mean the Skill actually works?
+
+No.
+
+A Skill can have valid files, prompts, metadata, and directory structure while a real model still fails to discover it, triggers it in the wrong situation, ignores constraints, produces poor output, or regresses after a change.
+
+`v1.5.1` therefore began establishing a **Skill Evaluation Quality Loop** and introduced:
+
+```text
+skill-quality-review
+skill-evaluation
+```
+
+The emerging loop looks like:
+
+| Step | Quality loop |
+| --- | --- |
+| 1 | Skill change |
+| 2 | Static validation |
+| 3 | Structural validation |
+| 4 | Eval |
+| 5 | Evidence |
+| 6 | Regression |
+| 7 | Review |
+
+By this release:
+
+```text
+328 Skills scanned
+155 repository tests passed
+```
+
+Evaluation pilots were also introduced for Skills such as `requirements-analysis` and `ui-test-playwright`.
+
+# v1.5.2: when there are many Skills, users need a Router
+
+With 164 Skills per language, discovery becomes a real usability problem.
+
+A release-regression task might involve `requirement-change-impact-analysis`, `regression-test-selection`, `quality-risk-identification`, and `release-testing-workflow`.
+
+Users should not need to understand the entire catalog before they can start.
+
+`v1.5.2` therefore strengthened:
+
+```text
+discover-testing
+```
+
+as a Skill Router.
+
+Users can describe the task directly. The Router can then consider the current development stage, goal, risk type, and available inputs to suggest a primary Skill and supporting Skills.
+
+The project also introduced `skill-composition.yaml` as structured composition data, initially covering five routes:
+
+```text
+New feature quality preparation
+API delivery
+Change and regression
+Performance decision
+AI feature validation
+```
+
+The Router remains intentionally lightweight. Its current purpose is discovery, selection, and composition guidance rather than becoming a complex multi-agent orchestration platform.
+
+By `v1.5.2`, the validation results had grown to:
+
+```text
+328 Skills scanned
+177 repository tests passed
+```
+
+and added Router Pilot Eval and offline `skill.selection` trace evidence.
+
+# v1.6: not every new requirement deserves a new Skill
+
+By `v1.6`, another long-term problem became more important:
+
+> How do we prevent the repository from growing through duplicate or nearly duplicate capabilities?
+
+The project now follows a clearer governance principle:
+
+> **Match before enhancement; merge before creating something new.**
+
+A proposed capability first goes through Match Review and can result in:
+
+```text
+MATCH
+MERGE
+ENHANCE
+NEW
+```
+
+Recent project-context reviews around:
+
+```text
+capacity-planning
+workload-modeling
+requirement-change-impact-analysis
+quality-risk-identification
+```
+
+continued to reuse existing target Skills rather than create parallel directories.
+
+The goal is shifting from maximizing Skill count to improving Skill boundaries and quality.
+
+Current `v1.6` validation includes:
+
+```text
+328 Skills scanned
+190 repository tests passed
+328 / 328 Skill Eval configurations valid
+Skills CLI compatibility passed
+Bilingual governance views passed
+```
+
+The release also includes eight project-context evaluations across four target Skills in both languages.
+
+However, full real-model replay remains marked as:
+
+```text
+INSUFFICIENT_EVIDENCE
+```
+
+rather than being presented as fully validated simply because the release exists.
+
+# How do we assure the quality of a Skill now?
+
+A Skill is no longer considered good simply because `SKILL.md` exists, the prompt is written, examples are present, and the directory is valid.
+
+Skill quality now involves a broader chain:
+
+It asks whether the capability is actually needed, whether its boundary is clear, whether the package is complete, whether English and Chinese are aligned, whether the agent can discover it correctly, whether it triggers in the right context, whether output respects constraints, whether Eval covers important behavior, whether changes introduce regressions, and whether there is sufficient real-model evidence.
+
+This is now the project's **Skill Quality Loop**.
+
+## Quality gate 1: decide whether the Skill should exist
+
+The first step in adding a Skill is no longer creating a directory.
+
+The project first searches existing Skills, compares use cases, inputs and outputs, capability boundaries, and available evaluation evidence, then performs Match Review.
+
+The result can be:
+
+```text
+MATCH
+MERGE
+ENHANCE
+NEW
+```
+
+Controlling capability duplication is therefore the first quality gate.
+
+## Quality gate 2: define the capability boundary
+
+If a new Skill is genuinely needed, it should clearly define what problem it solves, when it should and should not be used, what inputs it requires, what it produces, what is out of scope, and how it differs from adjacent Skills.
+
+If a Skill cannot explain why an adjacent Skill is insufficient, its boundary may not yet be clear enough.
+
+## Quality gate 3: keep the Skill package self-contained
+
+Depending on the Skill, its package may include:
+
+```text
+SKILL.md
+Prompt
+metadata
+agents/openai.yaml
+examples
+templates
+references
+Eval cases
+```
+
+Not every Skill needs the same files, but the goal is for an individual Skill to remain understandable and usable when considered on its own.
+
+## Quality gate 4: keep bilingual capabilities aligned
+
+English and Chinese are not treated as two unrelated Skills. They are localized forms of one logical capability.
+
+Canonical Skill Name, capability boundaries, core prompt logic, metadata, references, evaluation structure, and behavioral expectations should remain aligned.
+
+This does not mean literal translation.
+
+> **The language can differ; the capability should not become a different Skill.**
+
+## Quality gate 5: automated static validation
+
+Implemented Skills go through automated quality checks, for example:
+
+```bash
+bash scripts/check_skills_quality.sh
+```
+
+Checks can cover Skill structure, metadata, Canonical Name, bilingual structure, resource references, Skill independence, Eval schema, generated governance views, and Skills CLI compatibility.
+
+But an important boundary remains:
+
+**Static PASS ≠ Skill Effectiveness PASS.**
+
+Static validation proves only what the static checks actually cover.
+
+## Quality gate 6: evaluate behavior with Eval
+
+Skill Eval moves beyond checking whether files exist.
+
+It asks what behavior the Skill should demonstrate for a given task.
+
+Evaluations can check what the Skill should identify, what it should not produce, whether it respects scope, whether it distinguishes facts from assumptions, whether it handles missing evidence correctly, and whether it makes unsupported claims.
+
+For LLM-based Skills, the goal should not usually be:
+
+**Input A → Exact output B.**
+
+A better approach is to validate:
+
+Key behavior, constraints, boundaries, evidence handling, and forbidden behavior.
+
+In other words:
+
+> **Evaluate the behavioral contract, not a fixed answer.**
+
+## Quality gate 7: turn failures into regression cases
+
+When Eval or real usage finds a problem, the process should not stop after editing the prompt.
+
+A better loop is:
+
+| Step | Action |
+| --- | --- |
+| 1 | Find issue |
+| 2 | Preserve failure evidence |
+| 3 | Analyze cause |
+| 4 | Fix Skill |
+| 5 | Convert issue into a Regression Case |
+| 6 | Run Eval again |
+
+From a traditional QA perspective, this is familiar:
+
+> **Turn Skill defects into Skill regression tests.**
+
+## Quality gate 8: keep evidence boundaries explicit
+
+The project deliberately distinguishes static evidence, structural evidence, Eval evidence, runtime evidence, real-model evidence, and human-review evidence.
+
+For example:
+
+```text
+190 repository tests PASS
+```
+
+means that the checks covered by those tests passed.
+
+It does not mean all 164 logical Skills behave correctly across every model.
+
+Likewise:
+
+```text
+328 / 328 Eval configurations valid
+```
+
+means the Eval configurations are valid. It does not prove that every Skill has passed real-model validation.
+
+The project therefore uses explicit states such as:
+
+```text
+PASS
+NOT_RUN
+NOT_SCORED
+BLOCKED
+UNASSESSED
+INSUFFICIENT_EVIDENCE
+```
+
+The principle is simple:
+
+> **No observed failure does not equal proven success, and conclusions should not go beyond the available evidence.**
+
+# Skill changes need verification too
+
+Skills continue to evolve after release.
+
+Changes to prompts, trigger descriptions, metadata, input constraints, output structure, examples, references, or Eval can all affect agent behavior.
+
+Changes therefore need their own quality loop:
+
+| Step | Change-quality check |
+| --- | --- |
+| 1 | Skill Change |
+| 2 | Change Review |
+| 3 | Static Validation |
+| 4 | Existing Eval |
+| 5 | New Regression Case |
+| 6 | Evidence Comparison |
+| 7 | Merge |
+
+Capabilities such as `skill-change-verification` are intended to help answer:
+
+> How do we know a Skill change did not break existing behavior?
+
+# What should a new Skill go through?
+
+Putting the current rules together, a new Skill should roughly follow this lifecycle:
+
+| Phase | Key steps |
+| --- | --- |
+| Propose and reuse | Propose capability → Search existing Skills → Match Review |
+| Matching decision | MATCH / MERGE / ENHANCE / NEW |
+| Design and implement | Define capability boundary → Define input / output / non-goals → Implement English and Chinese versions → Canonical Name validation |
+| Static checks | Static quality checks → Skills CLI compatibility checks |
+| Evaluation and evidence | Design and run Eval → Record evidence |
+| Regression and governance | Convert failures into Regression Cases → Update Registry / Matrix / Catalog |
+| Review and release | Review → Release |
+
+Release is not the end:
+
+| Step | Post-release improvement |
+| --- | --- |
+| 1 | Real usage |
+| 2 | Find issue |
+| 3 | Collect evidence |
+| 4 | Regression Case |
+| 5 | Skill Enhancement |
+| 6 | Re-evaluate |
+| 7 | Next release |
+
+The broader lifecycle becomes:
+
+| Stage | Lifecycle |
+| --- | --- |
+| 1 | Design |
+| 2 | Implement |
+| 3 | Validate |
+| 4 | Evaluate |
+| 5 | Release |
+| 6 | Observe |
+| 7 | Improve |
+| 8 | Next cycle |
+
+That is the **Skill Quality Loop** the project is establishing.
+
+# Quality is not a single score
+
+The project may explore a Skill Quality Score in the future, but I do not currently want to assign every Skill a number such as `92 / 100` and call it high quality.
+
+Skill quality is multidimensional:
+
+```text
+Structural completeness
+Capability boundaries
+Trigger accuracy
+Output quality
+Evidence discipline
+Bilingual consistency
+Model compatibility
+Regression stability
+Real-project effectiveness
+```
+
+Many of these dimensions still need more real evidence.
+
+For now, I prefer making it explicit what has been validated, what has not been run, what failed, what is blocked, where evidence is insufficient, and what still needs real-project observation.
+
+For a QA project, that is more useful than a precise-looking score without sufficient evidence.
+
+# From writing Skills to engineering Skills
+
+One of the clearest changes in the project is that the work used to be mostly about **writing Skills**.
+
+It is increasingly about **engineering Skills**:
+
+| Engineering phase | Includes |
+| --- | --- |
+| Design and implementation | Skill Design, Skill Implementation |
+| Testing and evaluation | Skill Testing, Skill Evaluation |
+| Continuous maintenance | Skill Regression, Skill Governance |
+
+That is also why the project now has a horizontal **Skill Engineering** capability area.
+
+If Agent Skills become a durable capability layer in AI engineering, Skills themselves should have quality-engineering practices just like code, APIs, tests, configuration, and models.
+
+Awesome QA Skills is increasingly using itself as a testbed for those practices.
+
+# Looking back at the releases
+
+| Release | Main change |
+| --- | --- |
+| Early releases | Turn QA methods into Skills |
+| v1.1 | Move quality earlier into requirements |
+| v1.2 | Expand across the development lifecycle |
+| v1.3 | Expand into Reliability, Security, Quality Engineering, and AI Native QA |
+| v1.4 | Establish Skill governance |
+| v1.5 | Solve installation and distribution |
+| v1.5.1 | Evaluate Skill quality |
+| v1.5.2 | Improve Skill discovery and composition |
+| v1.6 | Control duplication and evidence boundaries |
+| Now | Build a broader Skill Quality Loop |
+
+The most important change is not simply that the number of Skills increased.
+
+It is that:
+
+> **A Skill is gradually becoming a QA capability with a lifecycle covering design, testing, evaluation, regression, and governance rather than just a group of files in a repository.**
+
+# What is Awesome QA Skills now?
+
+Initially, I thought of it as a QA Prompt collection.
+
+Later, it became a QA Skill collection.
+
+Today, it is closer to:
+
+| Evolution stage | Capability |
+| --- | --- |
+| 1 | QA knowledge and methods |
+| 2 | Reusable Skills |
+| 3 | Skills CLI |
+| 4 | Skill Router |
+| 5 | Skill Composition |
+| 6 | Skill Eval |
+| 7 | Regression |
+| 8 | Match Review |
+| 9 | Governance |
+
+I now think of Awesome QA Skills as:
+
+**a QA Skills ecosystem for AI agents.**
+
+The goal is no longer only to ask AI to generate a few test cases.
+
+It is to gradually turn QA analysis methods, testing techniques, workflows, risk judgment, multi-role quality perspectives, evidence requirements, and decision boundaries into capabilities that agents can discover, install, invoke, compose, evaluate, regress, and continuously improve.
+
+# What's next?
+
+The repository will continue to add and improve QA capabilities, but moving from `164 → 200 → 300 → 500` is not the most important success metric.
+
+I care more about the following quality chain, from capability boundaries to real-project value:
+
+| Focus | Core question |
+| --- | --- |
+| Capability boundary | Are Skill boundaries clear? |
+| Discovery | Can the Router discover the right Skill? |
+| Installation | Can the Skill be installed reliably? |
+| Composition | Can Skills be composed correctly? |
+| Evaluation | Is Eval meaningful? |
+| Regression | Can changes be regression-tested? |
+| Model compatibility | How does behavior vary across models? |
+| Real-world validation | Does the Skill work in real projects? |
+
+This is not just a feature checklist. Boundaries, discovery, installation, and composition determine whether later evaluation and regression evidence is meaningful; the final test is still behavior across models and in real projects.
+
+Areas for continued exploration include:
+
+- Skill Router accuracy
+- Cross-model Eval
+- Skill Composition
+- Usage Evidence
+- Real-project validation
+- AI Native QA
+- Skill Governance
+- Skill Quality Loop
+
+The goal is not to build an ever-growing prompt repository.
+
+The goal is to build a QA Agent Skills system that is **discoverable, installable, composable, evaluable, regression-testable, governable, and evolvable**.
+
+# Final thoughts
+
+The impact of AI on QA may not simply be that test cases can be generated faster.
+
+The question I find more interesting is:
+
+> **Can the methods, experience, and quality judgment accumulated by QA over many years be structured into capabilities that agents can reuse reliably?**
+
+If the answer is yes, the next questions go beyond how to write a good prompt. They form a complete engineering path:
+
+| Stage | Question to answer |
+| --- | --- |
+| Design | How should a Skill be designed? |
+| Proof | How do we prove it works? |
+| Diagnosis | How do we detect its failures? |
+| Governance | How do we avoid duplicate capabilities? |
+| Change verification | How do we verify changes do not regress behavior? |
+| Model compatibility | How do we make it work across models? |
+| Continuous evolution | How do we evolve it using real usage evidence? |
+
+In other words, a Skill is not merely written. It must be provable, diagnosable, non-duplicative, regression-safe, adaptable across models, and able to evolve from real evidence.
+
+From the early releases through `v1.6`, Awesome QA Skills has been exploring these questions.
+
+And that is probably the most interesting change in the project:
+
+> **Awesome QA Skills is not only using Skills to help QA improve software quality. It is also applying QA methods to test, evaluate, and govern the Skills themselves.**
+
+Project:
+
+https://github.com/naodeng/awesome-qa-skills
+
+Releases:
+
+https://github.com/naodeng/awesome-qa-skills/releases
+
+Online catalog:
+
+https://inaodeng.com/qaskills/
