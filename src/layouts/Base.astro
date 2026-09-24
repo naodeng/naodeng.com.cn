@@ -68,10 +68,46 @@ const {
 
 const locale = Astro.currentLocale as Lang;
 const localeTitle = buildPageTitle(title, t(SITE_TITLE), titleMode);
-const rawDescription = description || t(SITE_DESCRIPTION);
+const descriptionPath = Astro.url.pathname.toLowerCase();
+const metaDescriptionSuffix = (() => {
+  const isZh = locale === "zh-cn";
+  if (descriptionPath.includes("/qaskills/")) {
+    return isZh
+      ? "页面说明适用任务、输入输出、使用步骤与人工复核边界，帮助你在软件测试、质量保障和 AI 工程实践中判断是否适合当前工作并直接使用，也便于团队复用。"
+      : "Review the task, inputs, outputs, usage steps, and human-review boundaries before using this Skill in a QA workflow.";
+  }
+  if (descriptionPath.includes("/prompts/")) {
+    return isZh
+      ? "帮助你准备输入材料、生成结构化结果、检查风险并完成人工复核，适合需求分析、测试设计、质量评审和日常软件测试工作，也便于团队复用并保留质量边界。"
+      : "Prepare the right inputs, produce a structured result, and review the output with this Prompt for software quality work.";
+  }
+  if (descriptionPath.includes("/guild/")) {
+    return isZh
+      ? "内容覆盖工具使用、测试实践、自动化配置与常见注意事项，帮助你按步骤学习、验证和复用软件测试方法，并将结果接入日常质量工作，适合持续查阅。"
+      : "Follow practical guidance for tools, testing workflows, automation setup, and common pitfalls in real QA projects.";
+  }
+  if (descriptionPath.includes("/aiwiki/") || descriptionPath.includes("/wiki/")) {
+    return isZh
+      ? "本文介绍相关概念、适用场景、实践步骤、输入输出与常见注意事项，帮助读者在软件测试、质量保障和 AI 工程实践中查阅、理解并复用这些内容，也可作为工程决策参考。"
+      : "Learn the key concepts, use cases, practical guidance, and quality considerations for this software testing topic.";
+  }
+  if (descriptionPath.includes("/blog/")) {
+    return isZh
+      ? "结合软件测试、自动化与 AI 工程实践，提供可复用的背景、方法、示例和注意事项，帮助读者把文章中的知识转化为可执行的质量改进动作，也方便继续查阅相关主题。"
+      : "A practical article about software testing, automation, and AI engineering with reusable guidance, examples, and context.";
+  }
+  return isZh
+    ? "本文介绍相关概念、适用场景、实践步骤、输入输出与常见注意事项，帮助读者在软件测试、质量保障和 AI 工程实践中查阅、理解并复用这些内容，也可作为相关质量决策的入门参考。"
+    : "Find practical context, guidance, usage scenarios, and next steps for this software testing or engineering topic.";
+})();
+const rawDescription = (description || t(SITE_DESCRIPTION)).trim();
+/** Bing 建议避免过短描述；为已有短描述补充与页面类型匹配的上下文，再控制在 155 字内。 */
+const contextualDescription = rawDescription.length < 70
+  ? `${rawDescription} ${metaDescriptionSuffix}`.trim()
+  : rawDescription;
 /** 控制在 155 字内，避免搜索结果中被截断 */
 const localeDescription =
-  rawDescription.length > 155 ? rawDescription.slice(0, 152).trimEnd() + "…" : rawDescription;
+  contextualDescription.length > 155 ? contextualDescription.slice(0, 152).trimEnd() + "…" : contextualDescription;
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
 const defaultOgImage = `${siteOrigin}/ogp.png`;

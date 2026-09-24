@@ -1,5 +1,5 @@
 ---
-title: "Bruno API Automation Testing Tutorial: Building a Bruno API Automation Test project from 0 to 1"
+title: "Bruno API Testing: Build a Project from 0 to 1"
 description: "This blog post serves as a tutorial on Bruno API automation testing, guiding readers on constructing a Bruno API automation test project from scratch…"
 date: 2024-01-23T09:58:14.000Z
 author: "nao.deng"
@@ -93,14 +93,14 @@ npm install @usebruno/cli --save-dev
 
 - Run Bruno app to the homepage
 - Create a COLLECTION named Testcase, and choose the project folder created above as the directory for the COLLECTION.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bkIvUi.png)
+![Bruno collection setup in the Testcase project](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bkIvUi.png)
 
 #### Create a GET Request Test Case
 
 - Click the ADD REQUEST button under the Testcase COLLECTION to create a new GET request.
 - Enter the request name as GetDemo and the request URL as [https://jsonplaceholder.typicode.com/posts/1](https://jsonplaceholder.typicode.com/posts/1).
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XYeiXB.png)
+![Bruno GET request configuration for GetDemo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XYeiXB.png)
 
 ### Adding Test Assertions to the GET Request
 
@@ -108,10 +108,10 @@ npm install @usebruno/cli --save-dev
 
 - Click the Assert button under the GetDemo request to enter the test assertion editing page.
 - Enter Assertion 1: Response status code equals 200. Assertion 2: The title in the response body contains "provident."
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/z86CB2.png)
+![Bruno built-in assertions for a GET request](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/z86CB2.png)
 
 - Debugging Assertions: Click the Run button in the upper right corner to execute the assertions and check if the results meet expectations.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YkAbiG.png)
+![Bruno GET request assertion results](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YkAbiG.png)
 
 #### Writing Test Assertions Using JavaScript
 
@@ -129,16 +129,16 @@ test("res.body should be correct", function() {
 });
 ```
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ubyRwj.png)
+![Bruno JavaScript test assertions for a GET request](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ubyRwj.png)
 
 - Debugging Assertions: Click the Run button in the upper right corner to execute the assertions and check if the results meet expectations.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3pAMDd.png)
+![Bruno GET assertion results after running the test](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3pAMDd.png)
 
 ### Creating a New POST Request Test Case
 
 - Click the ADD REQUEST button under the Testcase COLLECTION to create a new POST request.
 - Enter the request name as PostDemo, and the request URL as [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts).
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3IP5B4.png)
+![Bruno POST request configuration for PostDemo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3IP5B4.png)
 
 - Click the Body button under the newly created PostDemo request to enter the request body editing page.
 - Select the body type as JSON and enter the request body content:
@@ -151,7 +151,7 @@ test("res.body should be correct", function() {
 }
 ```
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/psbGLD.png)
+![Bruno JSON request body for a POST request](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/psbGLD.png)
 
 #### Adding Test Assertions to the Post Request
 
@@ -159,10 +159,10 @@ test("res.body should be correct", function() {
 
 - Click the Assert button under the PostDemo request to enter the test assertion editing page.
 - Enter Assertion 1: Response status code equals 201. Assertion 2: The title in the response body equals "foo."
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oN8D5G.png)
+![Bruno built-in assertions for a POST request](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oN8D5G.png)
 
 - Debugging Assertions: Click the Run button in the upper right corner to execute the assertions and check if the results meet expectations.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HKb4fn.png)
+![Bruno POST assertion results after running the test](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HKb4fn.png)
 
 ##### Writing Test Assertions Using JavaScript for the Post Request
 
@@ -181,14 +181,14 @@ test("res.body should be correct", function() {
 ```
 
 - Debugging Assertions: Click the Run button in the upper right corner to execute the assertions and check if the results meet expectations.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/mkKIsE.png)
+![Bruno JavaScript test assertions for a POST request](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/mkKIsE.png)
 
 ### Running Two Test Cases Locally
 
 - Click the Run button under the Testcase COLLECTION to run all test cases.
 - Confirm if the results meet expectations.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/CvfPIn.png)
+![Bruno API test collection run results](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/CvfPIn.png)
 
 This concludes the writing and assertion of test cases for two interfaces.
 
@@ -203,7 +203,7 @@ By reviewing the results of the two test cases, we found that the request addres
 - Click the newly created dev environment variable configuration file to enter the environment variable configuration page.
 - Click the ADD VARIABLE button in the upper right corner to create a new environment variable. Enter the name as host and the value as `https://jsonplaceholder.typicode.com`. Click the SAVE button to save the environment variable.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YDKvOr.png)
+![Bruno environment variable configuration](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YDKvOr.png)
 
 ##### Using Environment Variables in Test Cases
 
@@ -217,7 +217,7 @@ By reviewing the results of the two test cases, we found that the request addres
 - Click the Environments button under the Testcase COLLECTION, select the dev environment variable.
 - Click the RUN button in the upper right corner to run all test cases. Confirm if the results meet expectations.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NfAX6z.png)
+![Bruno environment variable test run results](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NfAX6z.png)
 
 This concludes the configuration and debugging of environment variables.
 
@@ -247,17 +247,17 @@ Bruno-demo
 - In the Testcase folder under the project file, run the command `bru run --env dev` to run all test cases.
 - Confirm if the results meet expectations.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/iKnEYL.png)
+![Bruno CLI API test execution](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/iKnEYL.png)
 
 #### Generating JSON Format Reports
 
 - In the Testcase folder under the project file, create a Report folder to store the test report files.
 - In the Testcase folder, run the command `bru run --env dev --output Report/results.json` to run all test cases.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/MM85y5.png)
+![Bruno JSON test report output](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/MM85y5.png)
 
 - Confirm that the test report file is generated successfully.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/jnJHMQ.png)
+![Bruno generated JSON test report](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/jnJHMQ.png)
 
 At this point, the construction of the Bruno API automation testing project is complete.
 
@@ -269,4 +269,3 @@ For Bruno installation and basic usage, please refer to: [Introduction to using 
 
 - Bruno Official Documentation [https://docs.usebruno.com/](https://docs.usebruno.com/)
 - Introduction to using Bruno as a postman replacement [https://naodeng.com.cn/en/posts/api-automation-testing/introduction_of_bruno/](https://naodeng.com.cn/en/posts/api-automation-testing/introduction_of_bruno/)
-

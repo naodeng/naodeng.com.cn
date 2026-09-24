@@ -1,5 +1,5 @@
 ---
-title: "K6 Performance Testing Tutorial - Advanced Usage: HTML Report Output and CI/CD Integration"
+title: "K6: HTML Reports and CI/CD Integration"
 description: "Learn how to generate HTML reports from K6 performance tests and publish them in a GitHub Actions CI/CD pipeline for repeatable performance feedback."
 testType: performance-testing
 framework: k6
@@ -62,7 +62,7 @@ export function handleSummary(data) {
 - 4. Run the test script with k6 to generate an HTML report named summary.html in the project root directory
 
 - 5. Open the summary.html report to view the HTML report.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tty2Zs.png)
+![K6 HTML report generated with the HTML Report Exporter](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tty2Zs.png)
 
 For more information about the K6 HTML Report Exporter v2 plugin, please refer to the official documentation https://github.com/benc-uk/k6-reporter[https://github.com/benc-uk/k6-reporter]
 
@@ -97,7 +97,7 @@ jobs:
 
 - Commit code: Add the k6.yml file to the repository and commit.
 - View test report: In GitHub, navigate to your repository. Click the Actions tab at the top, then click the K6 Performance Test workflow on the left. You should see the workflow running, wait for execution to complete, and you can view the results.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NlOiHp.png)
+![GitHub Actions workflow running the K6 performance test](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NlOiHp.png)
 
 - We can also output HTML reports through GitHub Actions, let's adjust the k6.yml file
 
@@ -130,7 +130,7 @@ jobs:
 
 - Commit code: Add the k6.yml file to the repository and commit.
 - View test report: In GitHub, navigate to your repository. Click the Actions tab at the top, then click the K6 Performance Test workflow on the left. You should see the workflow running, wait for execution to complete, and you can view the results and test report attachments.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sFCarY.png)
+![GitHub Actions job with the uploaded K6 report](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sFCarY.png)
 
 ## Reference Documentation
 
@@ -141,5 +141,5 @@ jobs:
 ---
 Follow the WeChat official account "**软件测试同学**" for original QA technical articles.
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" alt="WeChat QR code for Software Testing Students" style="width: 100px;" />
 </div>

@@ -5,8 +5,20 @@ import { hasNoindexRobots } from "../src/utils/seoNoindex.mjs";
 
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, "dist");
+const MIN_META_DESCRIPTION_LENGTH = 70;
 const sitemapPath = path.join(DIST, "sitemap-0.xml");
 const failures = [];
+
+function walkHtmlFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  const files = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const file = path.join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...walkHtmlFiles(file));
+    else if (entry.isFile() && entry.name === "index.html") files.push(file);
+  }
+  return files;
+}
 
 if (!fs.existsSync(sitemapPath)) {
   failures.push("dist/sitemap-0.xml was not generated");
@@ -114,6 +126,35 @@ for (const locale of ["en", "zh-cn"]) {
   } else if (!fs.readFileSync(sitemapPage, "utf8").includes('content="noindex, follow"')) {
     failures.push(`${locale} human sitemap page is not noindex`);
   }
+}
+
+for (const file of walkHtmlFiles(DIST)) {
+  const html = fs.readFileSync(file, "utf8");
+  if (hasNoindexRobots(html)) continue;
+  const match = html.match(/<meta name="description" content="([^"]*)"/i);
+  const relative = `/${path.relative(DIST, file).replace(/\\/g, "/").replace(/\/index\.html$/, "")}`;
+  if (!match) {
+    failures.push(`indexable page has no meta description: ${relative}`);
+  } else if (match[1].trim().length < MIN_META_DESCRIPTION_LENGTH) {
+    failures.push(`indexable page has a short meta description: ${relative}`);
+  }
+}
+
+for (const relative of [
+  "en/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/index.html",
+  "en/guild/api-testing/bruno/building-project/index.html",
+  "en/guild/performance-testing/k6/ci-cd-integration/index.html",
+]) {
+  const file = path.join(DIST, relative);
+  if (!fs.existsSync(file)) {
+    failures.push(`missing Bing audit page: /${relative.replace(/\/index\.html$/, "")}`);
+    continue;
+  }
+  const html = fs.readFileSync(file, "utf8");
+  const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || "";
+  if (title.length > 70) failures.push(`Bing audit page has a long title: /${relative.replace(/\/index\.html$/, "")}`);
+  const missingAlt = [...html.matchAll(/<img\b[^>]*>/gi)].filter((match) => !/\balt\s*=\s*["'][^"']*["']/i.test(match[0]));
+  if (missingAlt.length > 0) failures.push(`Bing audit page has ${missingAlt.length} image(s) without alt: /${relative.replace(/\/index\.html$/, "")}`);
 }
 
 for (const file of fs.readdirSync(path.join(DIST, "en", "qaskills"), { withFileTypes: true })) {
