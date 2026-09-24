@@ -4,6 +4,7 @@ import { describe, expect, test } from "vitest";
 
 const baseCss = readFileSync(resolve(process.cwd(), "../src/styles/base.css"), "utf8");
 const layoutCss = readFileSync(resolve(process.cwd(), "../src/styles/layout.css"), "utf8");
+const astroConfig = readFileSync(resolve(process.cwd(), "../astro.config.mjs"), "utf8");
 const homePage = readFileSync(resolve(process.cwd(), "../src/pages/[lang]/index.astro"), "utf8");
 const footer = readFileSync(resolve(process.cwd(), "../src/components/Footer.astro"), "utf8");
 
@@ -30,6 +31,15 @@ describe("Astro Editorial theme tokens", () => {
   test("switches the interactive accent for dark mode", () => {
     const darkTheme = baseCss.match(/:root\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/)?.[1];
     expect(darkTheme).toContain("--color-theme: #78a9ff");
+  });
+
+  test("keeps Markdown code blocks aligned with the selected theme", () => {
+    expect(astroConfig).toContain('light: "github-light"');
+    expect(astroConfig).toContain('dark: "github-dark"');
+    expect(astroConfig).toContain("defaultColor: false");
+    expect(baseCss).toContain("pre.astro-code");
+    expect(baseCss).toContain("var(--shiki-light)");
+    expect(baseCss).toContain("var(--shiki-dark)");
   });
 
   test("keeps homepage and footer breakpoints on the editorial grid", () => {

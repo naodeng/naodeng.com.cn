@@ -69,6 +69,11 @@ export default defineConfig({
     remarkPlugins: [markdownPresentationRemark],
     rehypePlugins: [rehypeSlug],
     shikiConfig: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+      defaultColor: false,
       langAlias: {
         Javascript: "javascript",
         JavaScript: "javascript",

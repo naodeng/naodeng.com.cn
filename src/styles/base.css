@@ -137,6 +137,24 @@
   --shadow-glass-lg: 0 34px 90px rgba(0, 0, 0, 0.4);
 }
 
+/* Keep Astro/Shiki Markdown code blocks in sync with the site theme. */
+pre.astro-code {
+  background-color: var(--color-code-surface) !important;
+  color: var(--shiki-light) !important;
+}
+
+pre.astro-code span {
+  color: var(--shiki-light) !important;
+}
+
+:root[data-theme="dark"] pre.astro-code {
+  color: var(--shiki-dark) !important;
+}
+
+:root[data-theme="dark"] pre.astro-code span {
+  color: var(--shiki-dark) !important;
+}
+
 :root[data-density="compact"] {
   --control-height: 2.5rem;
   --control-padding-inline: 0.875rem;
