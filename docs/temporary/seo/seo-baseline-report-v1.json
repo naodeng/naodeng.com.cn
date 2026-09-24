@@ -1,15 +1,17 @@
 {
-  "scannedAt": "2026-08-31T03:46:06.214Z",
+  "scannedAt": "2026-09-24T06:52:54.155Z",
   "strict": false,
   "counts": {
     "wiki": 226,
     "aiwiki": 134,
-    "blog": 338,
+    "blog": 516,
     "missingTitle": 0,
     "missingDescription": 0,
-    "longDescription": 2,
+    "longDescription": 3,
     "duplicateTitle": 0,
     "brokenLinks": 0,
+    "malformedMarkdownLinks": 0,
+    "legacyRelativeLinks": 0,
     "relatedUnknown": 0,
     "relatedSelf": 0,
     "orphanWiki": 0,
@@ -21,10 +23,13 @@
     "missingDescription": [],
     "longDescription": [
       "src/content/wiki/clean-slate.md (191)",
-      "src/content/wiki/inspection.md (172)"
+      "src/content/wiki/inspection.md (172)",
+      "src/blog/en/AI-Testing/dsh-qa-harness-api-compatibility-404.mdx (229)"
     ],
     "duplicateTitle": [],
     "brokenLinks": [],
+    "malformedMarkdownLinks": [],
+    "legacyRelativeLinks": [],
     "relatedUnknown": [],
     "relatedSelf": [],
     "orphanWiki": [],
