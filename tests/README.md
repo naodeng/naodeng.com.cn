@@ -76,12 +76,12 @@ npm run test:e2e:report
 
 ## Unit Tests
 
-Unit tests use [Vitest](https://vitest.dev/) with [fast-check](https://fast-check.dev/) for property-based testing. They test pure utility functions in `src/utils/` without requiring a browser or server.
+Unit tests use [Vitest](https://vitest.dev/) with [fast-check](https://fast-check.dev/) for property-based testing. They primarily test pure utility functions in `src/utils/` without requiring a browser or server. Deterministic Node-side utilities, CLI contracts, and workflow/configuration contracts under `scripts/` may also be covered in this suite when they do not require a browser or running server.
 
 ### Writing Unit Tests
 
 1. Create a `*.test.ts` file in `tests/unit/`
-2. Import the utility from `../../src/utils/your-util`
+2. Import the utility from `../../src/utils/your-util`; for deterministic script or workflow contracts, import the relevant module from `../../scripts/`
 3. Use `describe` / `it` / `expect` from `vitest`
 4. Use `fc.assert(fc.property(...))` from `fast-check` for property-based tests
 

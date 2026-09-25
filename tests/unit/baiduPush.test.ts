@@ -1,5 +1,6 @@
 import { execFile } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
@@ -191,25 +192,33 @@ describe("Baidu URL push utilities", () => {
   });
 
   it("fails before network when the CLI has URLs but no token", async () => {
+    const tempDir = mkdtempSync(path.join(os.tmpdir(), "naodeng-baidu-summary-"));
+    const summaryPath = path.join(tempDir, "summary.md");
     let failure;
     try {
-      await execFileAsync(
-        "node",
-        [path.join(REPO_ROOT, "scripts/submit-baidu.mjs"), "https://inaodeng.com/example/"],
-        {
-          cwd: REPO_ROOT,
-          env: { ...process.env, BAIDU_PUSH_TOKEN: "" },
-          encoding: "utf8",
-        },
-      );
-    } catch (error) {
-      failure = error;
-    }
+      try {
+        await execFileAsync(
+          "node",
+          [path.join(REPO_ROOT, "scripts/submit-baidu.mjs"), "https://inaodeng.com/example/"],
+          {
+            cwd: REPO_ROOT,
+            env: { ...process.env, BAIDU_PUSH_TOKEN: "", GITHUB_STEP_SUMMARY: summaryPath },
+            encoding: "utf8",
+          },
+        );
+      } catch (error) {
+        failure = error;
+      }
 
-    expect(failure?.code).toBe(1);
-    const output = `${failure?.stdout ?? ""}${failure?.stderr ?? ""}`;
-    expect(output).toContain("BAIDU_PUSH_TOKEN");
-    expect(output).not.toContain("http://data.zz.baidu.com/urls?site=");
+      expect(failure?.code).toBe(1);
+      const output = `${failure?.stdout ?? ""}${failure?.stderr ?? ""}`;
+      expect(output).toContain("BAIDU_PUSH_TOKEN");
+      expect(output).not.toContain("http://data.zz.baidu.com/urls?site=");
+      expect(readFileSync(summaryPath, "utf8")).toContain("## Baidu URL Push");
+      expect(readFileSync(summaryPath, "utf8")).toContain("did not complete");
+    } finally {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
   });
 
   it("keeps Baidu notification after deploy, before IndexNow, and non-blocking", () => {

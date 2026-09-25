@@ -60,6 +60,7 @@ export function collectSubmissionUrls({ args, origin, root, sitemapDefault }) {
   return {
     sitemapPath,
     changedFiles,
+    candidateUrlCount: urls.size,
     validUrls: canonicalUrls([...urls], origin),
   };
 }

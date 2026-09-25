@@ -7,6 +7,7 @@ import {
   isBroadChange,
 } from "./indexnow-utils.mjs";
 import { collectSubmissionUrls, valueAfterFlag } from "./submission-utils.mjs";
+import { writeWorkflowSummary } from "./workflow-summary.mjs";
 
 const ROOT = process.cwd();
 const HOST = (process.env.INDEXNOW_HOST || "inaodeng.com").replace(/^https?:\/\//, "").replace(/\/$/, "");
@@ -24,12 +25,6 @@ async function verifyKey() {
   if (!response.ok || body !== key) {
     throw new Error(`IndexNow key verification failed at ${keyLocation} (HTTP ${response.status})`);
   }
-}
-
-function writeWorkflowSummary(markdown) {
-  const summaryPath = process.env.GITHUB_STEP_SUMMARY;
-  if (!summaryPath) return;
-  fs.appendFileSync(summaryPath, `${markdown.trim()}\n`);
 }
 
 async function submit(urls) {
@@ -80,14 +75,14 @@ async function submit(urls) {
 
 const args = process.argv.slice(2);
 const gitRange = valueAfterFlag(args, "--git-range");
-const { changedFiles, validUrls } = collectSubmissionUrls({
+const { changedFiles, candidateUrlCount, validUrls } = collectSubmissionUrls({
   args,
   origin: ORIGIN,
   root: ROOT,
   sitemapDefault,
 });
 if (gitRange && changedFiles.some(isBroadChange)) {
-  console.log(`Broad site change detected; using sitemap URLs (${validUrls.length})`);
+  console.log(`Broad site change detected; using sitemap URLs (${candidateUrlCount})`);
 }
 
 if (validUrls.length === 0) {

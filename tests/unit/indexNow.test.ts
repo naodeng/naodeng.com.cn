@@ -33,6 +33,7 @@ describe("IndexNow helpers", () => {
       "https://inaodeng.com/en/blog/a/",
       "https://inaodeng.com/en/blog/b/",
     ]);
+    expect(result.candidateUrlCount).toBe(2);
   });
 
   it("filters cross-origin, HTTP, query, and hash URLs from shared input", () => {

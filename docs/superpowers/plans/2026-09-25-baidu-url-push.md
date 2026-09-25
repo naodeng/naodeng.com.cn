@@ -38,7 +38,7 @@
 
 **Interfaces:**
 - Produces `valueAfterFlag(args, name)`, `readSitemap(file)`, `changedFilesForRange(range, root)`, and `collectSubmissionUrls({ args, origin, root, sitemapDefault })`.
-- `collectSubmissionUrls` returns `{ sitemapPath, changedFiles, validUrls }`, where `validUrls` is sorted, deduplicated, same-origin HTTPS URLs with no query/hash.
+- `collectSubmissionUrls` returns `{ sitemapPath, changedFiles, candidateUrlCount, validUrls }`, where `candidateUrlCount` preserves the pre-canonicalization URL-set count for existing logs and `validUrls` is sorted, deduplicated, same-origin HTTPS URLs with no query/hash.
 - Consumes the existing `canonicalUrls`, `isBroadChange`, and `urlsForSourceFile` exports from `scripts/indexnow-utils.mjs`.
 
 - [ ] **Step 1: Write the failing test**
@@ -94,7 +94,7 @@ git commit -m "refactor: share submission URL collection"
 
 **Interfaces:**
 - `buildBaiduPushRequest({ endpoint, site, token, urls })` returns `{ url, init }`, where `init.method` is `POST`, `init.headers["Content-Type"]` is `text/plain`, and `init.body` joins URLs with `\n`.
-- `classifyBaiduPushResponse(status, body)` returns `success`, `partial`, or `failure` with sanitized counts/messages and never includes the request URL.
+- `classifyBaiduPushResponse(status, body)` returns `success`, `partial`, or `failure` with sanitized counts/messages and never includes the response body or request URL.
 - `submitBaiduUrls(urls, { endpoint, site, token, fetchImpl, timeoutMs })` submits chunks of at most 2,000 URLs, attempts every chunk, and returns an aggregate result with `failedBatches`, `acceptedUrls`, `partialBatches`, and `remaining`.
 
 - [ ] **Step 1: Write failing tests for the request contract and response classification**
@@ -138,7 +138,7 @@ Expected: FAIL because the Baidu utility module does not exist.
 
 - [ ] **Step 3: Implement minimal request and response utilities**
 
-Use `URL` and `searchParams` for `site` and `token`. Treat only integer `success` and `remain` fields as valid feedback; normalize omitted rejection arrays to empty arrays; retain only counts in the classified result. Use `String(body).trim()` for non-JSON error text and do not include `request.url` in any error.
+Use `URL` and `searchParams` for `site` and `token`. Treat only integer `success` and `remain` fields as valid feedback; normalize omitted rejection arrays to empty arrays; retain only counts in the classified result. Do not include response bodies or `request.url` in classified errors, because either may contain a token-bearing URL; use fixed status/reason summaries instead.
 
 - [ ] **Step 4: Add the failing batch, timeout, and missing-token tests**
 
@@ -185,7 +185,7 @@ Expected: the focused Baidu tests and the complete existing unit suite pass with
 
 - [ ] **Step 8: Implement the CLI wrapper**
 
-Read `BAIDU_PUSH_SITE` with default `https://inaodeng.com`, require `BAIDU_PUSH_TOKEN` only when `validUrls` is non-empty, call `collectSubmissionUrls`, invoke `submitBaiduUrls`, print site and count summaries without printing the token-bearing URL, and append a `## Baidu URL Push` summary to `GITHUB_STEP_SUMMARY` when available. Support the existing positional URL, `--git-range`, and `--sitemap` arguments.
+Read `BAIDU_PUSH_SITE` with default `https://inaodeng.com`, require `BAIDU_PUSH_TOKEN` only when `validUrls` is non-empty, call `collectSubmissionUrls`, invoke `submitBaiduUrls`, print site and count summaries without printing the token-bearing URL, and append a `## Baidu URL Push` success, partial/failure, or early-error summary to `GITHUB_STEP_SUMMARY` when available. Support the existing positional URL, `--git-range`, and `--sitemap` arguments.
 
 - [ ] **Step 9: Add the npm entrypoint and commit**
 
