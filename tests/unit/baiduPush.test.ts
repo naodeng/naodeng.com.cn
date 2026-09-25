@@ -119,8 +119,59 @@ describe("Baidu URL push utilities", () => {
     });
 
     expect(result).toMatchObject({ failedBatches: 1, acceptedUrls: 0, partialBatches: 0 });
-    expect(result.messages.join(" ")).toContain("network down");
+    expect(result.messages.join(" ")).toContain("Baidu request failed");
     expect(result.messages.join(" ")).not.toContain("test-token");
+  });
+
+  it("does not copy token-bearing request URLs into failure messages", async () => {
+    const token = "test token/1";
+    const encodedToken = "test+token%2F1";
+    const result = await submitBaiduUrls(["https://inaodeng.com/a/"], {
+      endpoint: "http://data.zz.baidu.com/urls",
+      site: "https://inaodeng.com",
+      token,
+      fetchImpl: async (url: string) => {
+        throw new Error(`fetch failed for ${url}`);
+      },
+    });
+
+    const message = result.messages.join(" ");
+    expect(message).toBe("Baidu request failed");
+    expect(message).not.toContain(token);
+    expect(message).not.toContain(encodedToken);
+    expect(message).not.toContain("data.zz.baidu.com/urls?");
+  });
+
+  it("marks timed-out batches as failed and continues with the next batch", async () => {
+    const calls: Array<{ body: string }> = [];
+    const urls = Array.from({ length: 2001 }, (_, index) => `https://inaodeng.com/${index}/`);
+    const result = await submitBaiduUrls(urls, {
+      endpoint: "http://data.zz.baidu.com/urls",
+      site: "https://inaodeng.com",
+      token: "test-token",
+      timeoutMs: 10,
+      fetchImpl: async (_url: string, init: RequestInit) => {
+        calls.push({ body: String(init.body) });
+        if (calls.length === 1) {
+          const signal = init.signal;
+          await new Promise((_, reject) => {
+            const onAbort = () => reject(signal?.reason ?? new Error("aborted"));
+            if (signal?.aborted) onAbort();
+            else signal?.addEventListener("abort", onAbort, { once: true });
+          });
+        }
+        return new Response(JSON.stringify({ remain: 998, success: 1 }), { status: 200 });
+      },
+    });
+
+    expect(calls.map(({ body }) => body.split("\n").length)).toEqual([2000, 1]);
+    expect(result).toMatchObject({
+      failedBatches: 1,
+      acceptedUrls: 1,
+      partialBatches: 0,
+      remaining: 998,
+    });
+    expect(result.messages).toContain("Baidu request timed out");
   });
 
   it("rejects an empty token before making a request", async () => {

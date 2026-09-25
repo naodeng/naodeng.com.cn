@@ -68,9 +68,11 @@ export function classifyBaiduPushResponse(status, body) {
   };
 }
 
-function redactMessage(message, token) {
-  const text = String(message || "Baidu request failed");
-  return token ? text.replaceAll(token, "[REDACTED]") : text;
+function requestFailureMessage(error) {
+  const errorName = error instanceof Error ? error.name : "";
+  return errorName === "AbortError" || errorName === "TimeoutError"
+    ? "Baidu request timed out"
+    : "Baidu request failed";
 }
 
 export async function submitBaiduUrls(
@@ -105,7 +107,7 @@ export async function submitBaiduUrls(
       const result = classifyBaiduPushResponse(response.status, await response.text());
       if (result.kind === "failure") {
         failedBatches += 1;
-        messages.push(`HTTP ${result.status}: ${redactMessage(result.message, token)}`);
+        messages.push(`HTTP ${result.status}: Baidu response rejected`);
         continue;
       }
       acceptedUrls += result.success;
@@ -118,7 +120,7 @@ export async function submitBaiduUrls(
       }
     } catch (error) {
       failedBatches += 1;
-      messages.push(redactMessage(error instanceof Error ? error.message : error, token));
+      messages.push(requestFailureMessage(error));
     }
   }
 

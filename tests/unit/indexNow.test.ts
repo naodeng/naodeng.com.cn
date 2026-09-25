@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  isBroadChange,
   classifyIndexNowResponse,
   urlsForSourceFile,
 } from "../../scripts/indexnow-utils.mjs";
@@ -31,6 +33,43 @@ describe("IndexNow helpers", () => {
       "https://inaodeng.com/en/blog/a/",
       "https://inaodeng.com/en/blog/b/",
     ]);
+  });
+
+  it("filters cross-origin, HTTP, query, and hash URLs from shared input", () => {
+    const result = collectSubmissionUrls({
+      args: [
+        "https://inaodeng.com/valid/",
+        "http://inaodeng.com/http/",
+        "https://other.example/cross-origin/",
+        "https://inaodeng.com/query/?page=2",
+        "https://inaodeng.com/hash/#section",
+      ],
+      origin: "https://inaodeng.com",
+      root: REPO_ROOT,
+      sitemapDefault: path.join(REPO_ROOT, "dist/sitemap-0.xml"),
+    });
+
+    expect(result.validUrls).toEqual(["https://inaodeng.com/valid/"]);
+  });
+
+  it("identifies broad changes and reads sitemap URL entries", () => {
+    expect(isBroadChange("src/pages/index.astro")).toBe(true);
+    expect(isBroadChange("src/content/docs/en/installation.md")).toBe(false);
+
+    const tempDir = mkdtempSync(path.join(os.tmpdir(), "naodeng-sitemap-"));
+    const sitemapPath = path.join(tempDir, "sitemap.xml");
+    try {
+      writeFileSync(
+        sitemapPath,
+        "<urlset><url><loc>https://inaodeng.com/a/</loc></url><url><loc>https://inaodeng.com/b/</loc></url></urlset>",
+      );
+      expect(readSitemap(sitemapPath)).toEqual([
+        "https://inaodeng.com/a/",
+        "https://inaodeng.com/b/",
+      ]);
+    } finally {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
   });
 
   it("reports a missing sitemap with its path", () => {
