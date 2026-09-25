@@ -2,11 +2,6 @@ export const BAIDU_PUSH_ENDPOINT = "http://data.zz.baidu.com/urls";
 export const BAIDU_MAX_URLS_PER_REQUEST = 2_000;
 export const BAIDU_PUSH_TIMEOUT_MS = 15_000;
 
-function messageFromBody(body, fallback) {
-  const message = String(body || "").trim();
-  return message || fallback;
-}
-
 function validOptionalArray(value) {
   return value === undefined || Array.isArray(value);
 }
@@ -30,7 +25,7 @@ export function classifyBaiduPushResponse(status, body) {
     return {
       kind: "failure",
       status,
-      message: messageFromBody(body, `Baidu API returned HTTP ${status}`),
+      message: `Baidu API returned HTTP ${status}`,
     };
   }
 

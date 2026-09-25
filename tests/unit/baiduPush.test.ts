@@ -68,10 +68,10 @@ describe("Baidu URL push utilities", () => {
   });
 
   it("classifies non-2xx, malformed, and incomplete responses as failures", () => {
-    expect(classifyBaiduPushResponse(500, "upstream error")).toEqual({
+    expect(classifyBaiduPushResponse(500, "upstream error?token=test%2Btoken")).toEqual({
       kind: "failure",
       status: 500,
-      message: "upstream error",
+      message: "Baidu API returned HTTP 500",
     });
     expect(classifyBaiduPushResponse(200, "not json")).toEqual({
       kind: "failure",
