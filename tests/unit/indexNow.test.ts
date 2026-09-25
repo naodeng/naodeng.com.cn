@@ -6,11 +6,37 @@ import {
   classifyIndexNowResponse,
   urlsForSourceFile,
 } from "../../scripts/indexnow-utils.mjs";
+import {
+  collectSubmissionUrls,
+  readSitemap,
+} from "../../scripts/submission-utils.mjs";
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const deployWorkflow = readFileSync(path.join(REPO_ROOT, ".github/workflows/deploy-cloudflare.yml"), "utf8");
 
 describe("IndexNow helpers", () => {
+  it("collects sorted, deduplicated canonical URLs from explicit input", () => {
+    const result = collectSubmissionUrls({
+      args: [
+        "https://inaodeng.com/en/blog/b/",
+        "https://inaodeng.com/en/blog/a/",
+        "https://inaodeng.com/en/blog/b/",
+      ],
+      origin: "https://inaodeng.com",
+      root: REPO_ROOT,
+      sitemapDefault: path.join(REPO_ROOT, "dist/sitemap-0.xml"),
+    });
+
+    expect(result.validUrls).toEqual([
+      "https://inaodeng.com/en/blog/a/",
+      "https://inaodeng.com/en/blog/b/",
+    ]);
+  });
+
+  it("reports a missing sitemap with its path", () => {
+    expect(() => readSitemap(path.join(REPO_ROOT, "missing-sitemap.xml"))).toThrow("Sitemap not found");
+  });
+
   it("maps a Docs content change to its localized detail URL", () => {
     expect(
       urlsForSourceFile("src/content/docs/en/installation.md", {
