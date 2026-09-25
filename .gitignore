@@ -52,3 +52,8 @@ tests/e2e/playwright-report/
 tests/e2e/test-results/
 tests/test-results/
 tests/playwright-report/
+
+# Local agent tooling
+/.baoyu-skills/baoyu-translate/
+/.claude/
+/.impeccable/
