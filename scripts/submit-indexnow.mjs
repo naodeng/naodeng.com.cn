@@ -2,13 +2,12 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
 import {
-  canonicalUrls,
   classifyIndexNowResponse,
   isBroadChange,
-  urlsForSourceFile,
 } from "./indexnow-utils.mjs";
+import { collectSubmissionUrls, valueAfterFlag } from "./submission-utils.mjs";
+import { writeWorkflowSummary } from "./workflow-summary.mjs";
 
 const ROOT = process.cwd();
 const HOST = (process.env.INDEXNOW_HOST || "inaodeng.com").replace(/^https?:\/\//, "").replace(/\/$/, "");
@@ -20,38 +19,12 @@ const keyLocation = process.env.INDEXNOW_KEY_LOCATION || `${ORIGIN}/${path.basen
 const sitemapDefault = path.join(ROOT, "dist/sitemap-0.xml");
 const MAX_URLS_PER_REQUEST = 10_000;
 
-function valueAfterFlag(args, name) {
-  const inline = args.find((arg) => arg.startsWith(`${name}=`));
-  if (inline) return inline.slice(name.length + 1);
-  const index = args.indexOf(name);
-  return index >= 0 ? args[index + 1] : undefined;
-}
-
-function readSitemap(file) {
-  if (!fs.existsSync(file)) throw new Error(`Sitemap not found: ${file}`);
-  return [...fs.readFileSync(file, "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-}
-
-function changedFilesForRange(range) {
-  if (!range || range.includes("0000000000000000000000000000000000000000")) return [];
-  return execFileSync("git", ["diff", "--name-only", range], { cwd: ROOT, encoding: "utf8" })
-    .split(/\r?\n/)
-    .map((file) => file.trim())
-    .filter(Boolean);
-}
-
 async function verifyKey() {
   const response = await fetch(keyLocation);
   const body = (await response.text()).trim();
   if (!response.ok || body !== key) {
     throw new Error(`IndexNow key verification failed at ${keyLocation} (HTTP ${response.status})`);
   }
-}
-
-function writeWorkflowSummary(markdown) {
-  const summaryPath = process.env.GITHUB_STEP_SUMMARY;
-  if (!summaryPath) return;
-  fs.appendFileSync(summaryPath, `${markdown.trim()}\n`);
 }
 
 async function submit(urls) {
@@ -102,24 +75,16 @@ async function submit(urls) {
 
 const args = process.argv.slice(2);
 const gitRange = valueAfterFlag(args, "--git-range");
-const sitemapPath = path.resolve(ROOT, valueAfterFlag(args, "--sitemap") || path.relative(ROOT, sitemapDefault));
-const changedFiles = gitRange ? changedFilesForRange(gitRange) : [];
-const positionalUrls = args.filter((arg) => !arg.startsWith("--"));
-const urls = new Set(positionalUrls);
-
-if (gitRange) {
-  const useSitemap = changedFiles.some(isBroadChange);
-  if (useSitemap) {
-    for (const url of readSitemap(sitemapPath)) urls.add(url);
-    console.log(`Broad site change detected; using sitemap URLs (${urls.size})`);
-  } else {
-    for (const file of changedFiles) {
-      for (const url of urlsForSourceFile(file, { origin: ORIGIN, root: ROOT })) urls.add(url);
-    }
-  }
+const { changedFiles, candidateUrlCount, validUrls } = collectSubmissionUrls({
+  args,
+  origin: ORIGIN,
+  root: ROOT,
+  sitemapDefault,
+});
+if (gitRange && changedFiles.some(isBroadChange)) {
+  console.log(`Broad site change detected; using sitemap URLs (${candidateUrlCount})`);
 }
 
-const validUrls = canonicalUrls([...urls], ORIGIN);
 if (validUrls.length === 0) {
   console.log("No IndexNow URLs to submit for this change.");
 } else {

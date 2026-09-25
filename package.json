@@ -31,6 +31,7 @@
     "seo:check:strict": "node scripts/seo-static-check.mjs --strict",
     "seo:build:check": "node scripts/seo-build-check.mjs",
     "seo:indexnow": "node scripts/submit-indexnow.mjs",
+    "seo:baidu": "node scripts/submit-baidu.mjs",
     "qaskills:sync": "node scripts/sync-qaskills-from-repo.mjs",
     "prompts:sync": "node scripts/sync-prompts-from-repo.mjs",
     "prompts:format:check": "node scripts/prompts-markdown-check.mjs",

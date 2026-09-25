@@ -49,13 +49,25 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Workers
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: deploy
 
+      - name: Notify Baidu about changed URLs
+        if: ${{ steps.deploy.conclusion == 'success' }}
+        continue-on-error: true
+        env:
+          BAIDU_PUSH_SITE: https://inaodeng.com
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+        run: |
+          node scripts/submit-baidu.mjs \
+            --git-range="${{ github.event.before }}...${{ github.sha }}" \
+            --sitemap=dist/sitemap-0.xml
+
       - name: Notify IndexNow about changed URLs
-        if: ${{ success() }}
+        if: ${{ steps.deploy.conclusion == 'success' }}
         run: |
           node scripts/submit-indexnow.mjs \
             --git-range="${{ github.event.before }}...${{ github.sha }}" \
