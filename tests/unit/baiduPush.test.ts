@@ -1,4 +1,5 @@
 import { execFile } from "node:child_process";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
@@ -11,6 +12,7 @@ import {
 
 const execFileAsync = promisify(execFile);
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const deployWorkflow = readFileSync(path.join(REPO_ROOT, ".github/workflows/deploy-cloudflare.yml"), "utf8");
 
 describe("Baidu URL push utilities", () => {
   it("builds the Baidu plain-text request without changing URL order", () => {
@@ -157,5 +159,24 @@ describe("Baidu URL push utilities", () => {
     const output = `${failure?.stdout ?? ""}${failure?.stderr ?? ""}`;
     expect(output).toContain("BAIDU_PUSH_TOKEN");
     expect(output).not.toContain("http://data.zz.baidu.com/urls?site=");
+  });
+
+  it("keeps Baidu notification after deploy, before IndexNow, and non-blocking", () => {
+    const deployStart = deployWorkflow.indexOf("      - name: Deploy to Cloudflare Workers");
+    const baiduStart = deployWorkflow.indexOf("      - name: Notify Baidu");
+    const indexNowStart = deployWorkflow.indexOf("      - name: Notify IndexNow");
+    const baiduStep = deployWorkflow.slice(baiduStart, indexNowStart);
+    const indexNowStep = deployWorkflow.slice(indexNowStart);
+
+    expect(deployStart).toBeGreaterThanOrEqual(0);
+    expect(deployWorkflow.slice(deployStart, baiduStart)).toContain("id: deploy");
+    expect(baiduStart).toBeGreaterThan(deployStart);
+    expect(indexNowStart).toBeGreaterThan(baiduStart);
+    expect(baiduStep).toContain("if: ${{ steps.deploy.conclusion == 'success' }}");
+    expect(baiduStep).toContain("continue-on-error: true");
+    expect(baiduStep).toContain("BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}");
+    expect(baiduStep).toContain("BAIDU_PUSH_SITE: https://inaodeng.com");
+    expect(indexNowStep).toContain("if: ${{ steps.deploy.conclusion == 'success' }}");
+    expect(baiduStep).not.toMatch(/BAIDU_PUSH_TOKEN:\s*(?!\$\{\{\s*secrets\.BAIDU_PUSH_TOKEN\s*\}\})\S+/);
   });
 });
