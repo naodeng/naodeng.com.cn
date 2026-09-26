@@ -10,6 +10,7 @@
 - 准入密钥只从 `BAIDU_PUSH_TOKEN` 环境变量读取，不写入源码、示例配置的实际值、日志或提交信息。
 - 站点默认值为 `https://inaodeng.com`，可通过 `BAIDU_PUSH_SITE` 覆盖。
 - URL 选择复用现有 IndexNow 的变更范围与 sitemap 判断，抽到共享 helper，避免两套提交范围漂移。
+- 首次接入或需要补推时，提供显式的手动全量 sitemap 模式；普通 `push main` 不因代码/文档变更而重复消耗百度配额。
 - 请求使用百度 URL 推送接口 `http://data.zz.baidu.com/urls` 的 `text/plain` 换行格式；百度接口每批最多提交 2,000 条 URL。
 - 脚本本身对 HTTP 错误、网络/超时、非法 JSON、缺少必需反馈字段和部分失败返回非零退出码；GitHub Actions 步骤使用 `continue-on-error: true`，因此这些状态只产生可见告警，不会影响已经完成的 Cloudflare 部署。
 
@@ -19,7 +20,7 @@
 
 新增 `scripts/submit-baidu.mjs` 负责 CLI 参数、批量请求和摘要输出；新增 `scripts/baidu-push-utils.mjs` 负责请求构造、响应分类和批量提交，便于单元测试。新增共享的 `scripts/submission-utils.mjs`，由 IndexNow 与百度脚本共同负责 CLI 参数、git range、sitemap、去重和 canonical URL 收集；现有 IndexNow 只做必要的导入调整，不改变行为。
 
-脚本支持现有提交脚本的三类输入：位置参数 URL、`--git-range` 计算变更 URL，以及 `--sitemap` 作为大范围变更的回退来源。URL 收集沿用 `canonicalUrls` 的 HTTPS、同源、无 query/hash 约束；sitemap 不存在或无法读取时返回明确错误。没有可提交 URL 时直接退出，不要求读取密钥。
+脚本支持现有提交脚本的三类输入：位置参数 URL、`--git-range` 计算变更 URL，以及 `--sitemap` 作为大范围变更的回退来源；`--all` 显式读取 sitemap 中的全部 URL，用于手动补推。URL 收集沿用 `canonicalUrls` 的 HTTPS、同源、无 query/hash 约束；sitemap 不存在或无法读取时返回明确错误。没有可提交 URL 时直接退出，不要求读取密钥。
 
 每个最多 2,000 条 URL 的批次向 `http://data.zz.baidu.com/urls` 发送：
 
@@ -33,11 +34,12 @@
 
 ### Workflow behavior
 
-在 `.github/workflows/deploy-cloudflare.yml` 的 Cloudflare 部署之后、现有 IndexNow 步骤之前增加百度通知步骤，并为 Cloudflare 部署步骤增加 `id: deploy`：
+在 `.github/workflows/deploy-cloudflare.yml` 增加 `workflow_dispatch` 的 `submit_all_baidu` 布尔输入，并在 Cloudflare 部署之后、现有 IndexNow 步骤之前增加百度通知步骤；同时为 Cloudflare 部署步骤增加 `id: deploy`：
 
 - `BAIDU_PUSH_TOKEN` 来自 `${{ secrets.BAIDU_PUSH_TOKEN }}`；
 - `BAIDU_PUSH_SITE` 固定为 `https://inaodeng.com`；
-- 百度和 IndexNow 两个通知步骤都使用 `if: ${{ steps.deploy.conclusion == 'success' }}`，因此 IndexNow 失败不会阻止百度步骤，构建或部署失败也不会误推送；
+- 百度通知要求 `steps.deploy.conclusion == 'success'`，IndexNow 在 `push main` 中增加事件条件；因此构建或部署失败不会误推送，手动全量百度推送也不会触发 IndexNow；
+- `push main` 时百度使用 git range 推送变更 URL；手动运行且勾选 `submit_all_baidu` 时使用完整 sitemap；手动运行不勾选时跳过百度步骤，IndexNow 只在 `push main` 时运行；
 - 使用 `continue-on-error: true`，确保百度服务故障不会回滚或阻塞已完成的部署。
 - 该步骤仍会在同一 Job 中等待请求结束；“不阻塞部署”指不影响 Cloudflare 部署结果，不承诺工作流立即结束。
 
