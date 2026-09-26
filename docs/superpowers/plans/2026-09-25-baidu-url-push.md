@@ -14,6 +14,7 @@
 
 - 准入密钥只从 `BAIDU_PUSH_TOKEN` 环境变量读取，不写入源码、示例配置的实际值、日志或提交信息。
 - 站点默认值为 `https://inaodeng.com`，可通过 `BAIDU_PUSH_SITE` 覆盖。
+- `BAIDU_PUSH_SITE` 作为 canonical URL 来源保留完整 origin；发给百度的 query `site` 参数使用去掉协议和末尾斜杠的主机名格式。
 - 百度接口为 `http://data.zz.baidu.com/urls`，每批最多 2,000 条 URL，Header 为 `Content-Type: text/plain`。
 - 百度失败、网络异常、超时、缺密钥和部分失败必须返回非零脚本状态，但 GitHub Actions 百度步骤必须使用 `continue-on-error: true`。
 - Cloudflare 部署和 `push main` 上现有 IndexNow 的行为保持不变；手动部署只在显式勾选时执行百度全量推送，不执行 IndexNow。
@@ -95,7 +96,7 @@ git commit -m "refactor: share submission URL collection"
 
 **Interfaces:**
 - `buildBaiduPushRequest({ endpoint, site, token, urls })` returns `{ url, init }`, where `init.method` is `POST`, `init.headers["Content-Type"]` is `text/plain`, and `init.body` joins URLs with `\n`.
-- `classifyBaiduPushResponse(status, body)` returns `success`, `partial`, or `failure` with sanitized counts/messages and never includes the response body or request URL.
+- `classifyBaiduPushResponse(status, body)` returns `success`, `partial`, or `failure` with sanitized counts/messages and never includes the response body or request URL; known Baidu error reasons may be surfaced from an allowlist.
 - `submitBaiduUrls(urls, { endpoint, site, token, fetchImpl, timeoutMs })` submits chunks of at most 2,000 URLs, attempts every chunk, and returns an aggregate result with `failedBatches`, `acceptedUrls`, `partialBatches`, and `remaining`.
 
 - [ ] **Step 1: Write failing tests for the request contract and response classification**
@@ -112,7 +113,7 @@ it("builds the Baidu plain-text request without changing URL order", () => {
   });
 
   expect(request.url).toBe(
-    "http://data.zz.baidu.com/urls?site=https%3A%2F%2Finaodeng.com&token=test-token",
+    "http://data.zz.baidu.com/urls?site=inaodeng.com&token=test-token",
   );
   expect(request.init).toEqual({
     method: "POST",
@@ -139,7 +140,7 @@ Expected: FAIL because the Baidu utility module does not exist.
 
 - [ ] **Step 3: Implement minimal request and response utilities**
 
-Use `URL` and `searchParams` for `site` and `token`. Treat only integer `success` and `remain` fields as valid feedback; normalize omitted rejection arrays to empty arrays; retain only counts in the classified result. Do not include response bodies or `request.url` in classified errors, because either may contain a token-bearing URL; use fixed status/reason summaries instead.
+Use `URL` and `searchParams` for `site` and `token`, normalizing the configured origin to a host-only `site` query parameter. Treat only integer `success` and `remain` fields as valid feedback; normalize omitted rejection arrays to empty arrays; retain only counts in the classified result. Do not include response bodies or `request.url` in classified errors, because either may contain a token-bearing URL; use fixed status/reason summaries, with only known Baidu reasons from an allowlist.
 
 - [ ] **Step 4: Add the failing batch, timeout, and missing-token tests**
 

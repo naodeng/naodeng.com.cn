@@ -16,7 +16,7 @@ const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..
 const deployWorkflow = readFileSync(path.join(REPO_ROOT, ".github/workflows/deploy-cloudflare.yml"), "utf8");
 
 describe("Baidu URL push utilities", () => {
-  it("builds the Baidu plain-text request without changing URL order", () => {
+  it("builds the Baidu plain-text request with a host-only site parameter", () => {
     const request = buildBaiduPushRequest({
       endpoint: "http://data.zz.baidu.com/urls",
       site: "https://inaodeng.com",
@@ -25,7 +25,7 @@ describe("Baidu URL push utilities", () => {
     });
 
     expect(request.url).toBe(
-      "http://data.zz.baidu.com/urls?site=https%3A%2F%2Finaodeng.com&token=test-token",
+      "http://data.zz.baidu.com/urls?site=inaodeng.com&token=test-token",
     );
     expect(request.init).toEqual({
       method: "POST",
@@ -65,6 +65,16 @@ describe("Baidu URL push utilities", () => {
       remain: 99998,
       notSameSiteCount: 1,
       notValidCount: 0,
+    });
+  });
+
+  it("surfaces known Baidu 400 reasons without exposing the response body", () => {
+    expect(
+      classifyBaiduPushResponse(400, JSON.stringify({ error: 400, message: "site error" })),
+    ).toEqual({
+      kind: "failure",
+      status: 400,
+      message: "Baidu API returned HTTP 400: site error",
     });
   });
 

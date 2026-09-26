@@ -2,13 +2,45 @@ export const BAIDU_PUSH_ENDPOINT = "http://data.zz.baidu.com/urls";
 export const BAIDU_MAX_URLS_PER_REQUEST = 2_000;
 export const BAIDU_PUSH_TIMEOUT_MS = 15_000;
 
+const KNOWN_BAIDU_ERROR_MESSAGES = new Map([
+  ["site error", "site error"],
+  ["site init fail", "site init fail"],
+  ["empty content", "empty content"],
+  ["only 2000 urls are allowed once", "only 2000 urls are allowed once"],
+  ["over quota", "over quota"],
+  ["token is not valid", "token is not valid"],
+  ["not found", "not found"],
+  ["internal error, please try later", "internal error, please try later"],
+]);
+
 function validOptionalArray(value) {
   return value === undefined || Array.isArray(value);
 }
 
+function baiduSiteParameter(site) {
+  const value = String(site || "").trim();
+  if (!value) return value;
+  try {
+    const parsed = new URL(value.includes("://") ? value : `https://${value}`);
+    return parsed.host;
+  } catch {
+    return value.replace(/^https?:\/\//i, "").replace(/\/+$/, "");
+  }
+}
+
+function knownBaiduErrorMessage(body) {
+  try {
+    const payload = JSON.parse(body);
+    const message = typeof payload?.message === "string" ? payload.message.trim().toLowerCase() : "";
+    return KNOWN_BAIDU_ERROR_MESSAGES.get(message) || null;
+  } catch {
+    return null;
+  }
+}
+
 export function buildBaiduPushRequest({ endpoint, site, token, urls }) {
   const requestUrl = new URL(endpoint);
-  requestUrl.searchParams.set("site", site);
+  requestUrl.searchParams.set("site", baiduSiteParameter(site));
   requestUrl.searchParams.set("token", token);
   return {
     url: requestUrl.toString(),
@@ -22,10 +54,11 @@ export function buildBaiduPushRequest({ endpoint, site, token, urls }) {
 
 export function classifyBaiduPushResponse(status, body) {
   if (status < 200 || status >= 300) {
+    const reason = knownBaiduErrorMessage(body);
     return {
       kind: "failure",
       status,
-      message: `Baidu API returned HTTP ${status}`,
+      message: reason ? `Baidu API returned HTTP ${status}: ${reason}` : `Baidu API returned HTTP ${status}`,
     };
   }
 

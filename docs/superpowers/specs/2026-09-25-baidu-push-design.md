@@ -9,6 +9,7 @@
 - 百度推送是部署后的独立通知步骤，不参与 Astro 构建或 Cloudflare 部署步骤。
 - 准入密钥只从 `BAIDU_PUSH_TOKEN` 环境变量读取，不写入源码、示例配置的实际值、日志或提交信息。
 - 站点默认值为 `https://inaodeng.com`，可通过 `BAIDU_PUSH_SITE` 覆盖。
+- `BAIDU_PUSH_SITE` 作为 canonical URL 来源保留完整 origin；发给百度的 query `site` 参数使用去掉协议和末尾斜杠的主机名格式。
 - URL 选择复用现有 IndexNow 的变更范围与 sitemap 判断，抽到共享 helper，避免两套提交范围漂移。
 - 首次接入或需要补推时，提供显式的手动全量 sitemap 模式；普通 `push main` 不因代码/文档变更而重复消耗百度配额。
 - 请求使用百度 URL 推送接口 `http://data.zz.baidu.com/urls` 的 `text/plain` 换行格式；百度接口每批最多提交 2,000 条 URL。
@@ -24,7 +25,7 @@
 
 每个最多 2,000 条 URL 的批次向 `http://data.zz.baidu.com/urls` 发送：
 
-- 查询参数：`site` 和 `token`；
+- 查询参数：`site`（例如 `inaodeng.com`）和 `token`；
 - Header：`Content-Type: text/plain`；
 - Body：每行一个 canonical URL。
 
@@ -49,7 +50,7 @@
 
 ## Verification
 
-- 单元测试覆盖请求 query/header/body 构造、HTTPS 同源 canonical URL 过滤、200 成功反馈、部分失败反馈、非 2xx 响应、非法 JSON、缺字段、网络异常、15 秒超时、无 token、2,000/2,001 条批次边界，以及批次失败后继续提交。
+- 单元测试覆盖请求 query/header/body 构造、HTTPS 同源 canonical URL 过滤、200 成功反馈、部分失败反馈、已知 400 原因的安全提示、非 2xx 响应、非法 JSON、缺字段、网络异常、15 秒超时、无 token、2,000/2,001 条批次边界，以及批次失败后继续提交。
 - 运行受影响的 Vitest 文件和完整 `npm test`。
 - 运行 `npm run build`，确认 Astro 构建和现有 SEO 构建门禁不受影响。
 - 检查工作流 diff，确认百度步骤位于部署之后和 IndexNow 之前，使用 `steps.deploy.conclusion`、具有 `continue-on-error`，且仓库中没有出现用户提供的明文 token。
