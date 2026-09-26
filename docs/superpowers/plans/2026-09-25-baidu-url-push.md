@@ -4,7 +4,7 @@
 
 **Goal:** 在 Cloudflare 部署成功后，使用 GitHub Secret 将本次发布涉及的规范 URL 推送到百度搜索资源平台，同时保证百度推送失败不影响已完成的 Cloudflare 部署。
 
-**Architecture:** 把现有 IndexNow 的变更 URL、sitemap、去重和 canonical 处理抽到 `scripts/submission-utils.mjs`，让两个提交脚本共享同一 URL 范围。百度脚本使用独立的 `scripts/baidu-push-utils.mjs` 负责请求构造、2,000 条分批、响应分类和 15 秒超时；工作流把百度步骤放在部署后、IndexNow 前，并只依赖部署步骤的成功结论。
+**Architecture:** 把现有 IndexNow 的变更 URL、sitemap、去重和 canonical 处理抽到 `scripts/submission-utils.mjs`，让两个提交脚本共享同一 URL 范围。百度脚本使用独立的 `scripts/baidu-push-utils.mjs` 负责请求构造、2,000 条分批、响应分类和 15 秒超时；工作流把百度步骤放在部署后、IndexNow 前，并只依赖部署步骤的成功结论。首次接入或补推通过手动 `workflow_dispatch` 的 `submit_all_baidu` 输入显式读取完整 sitemap，普通 push 仍只提交变更 URL。
 
 **Tech Stack:** Node.js 22 ESM scripts, native `fetch`, Vitest 4, GitHub Actions, Astro build checks.
 
@@ -16,7 +16,7 @@
 - 站点默认值为 `https://inaodeng.com`，可通过 `BAIDU_PUSH_SITE` 覆盖。
 - 百度接口为 `http://data.zz.baidu.com/urls`，每批最多 2,000 条 URL，Header 为 `Content-Type: text/plain`。
 - 百度失败、网络异常、超时、缺密钥和部分失败必须返回非零脚本状态，但 GitHub Actions 百度步骤必须使用 `continue-on-error: true`。
-- Cloudflare 部署和现有 IndexNow 的行为保持不变；通知步骤使用 `steps.deploy.conclusion == 'success'`。
+- Cloudflare 部署和 `push main` 上现有 IndexNow 的行为保持不变；手动部署只在显式勾选时执行百度全量推送，不执行 IndexNow。
 - 使用 Node.js `>=22.12.0`、npm 10+，不新增依赖，不修改 `dist/`、`node_modules/` 或测试报告。
 
 ## Review Focus
@@ -26,6 +26,7 @@
 - 百度返回 200 但 `not_same_site` 或 `not_valid` 非空时必须报告部分失败，并继续其他批次。
 - 百度接口返回非法 JSON、缺少 `success`/`remain`、网络错误或 15 秒超时不能泄露 token。
 - 没有 URL 时不读取 token；有 URL 但没有 token 时脚本失败，工作流仍保持部署成功。
+- 全量 sitemap 推送必须由手动输入显式启用，不能因普通代码/文档部署自动触发。
 
 ---
 
@@ -185,7 +186,7 @@ Expected: the focused Baidu tests and the complete existing unit suite pass with
 
 - [ ] **Step 8: Implement the CLI wrapper**
 
-Read `BAIDU_PUSH_SITE` with default `https://inaodeng.com`, require `BAIDU_PUSH_TOKEN` only when `validUrls` is non-empty, call `collectSubmissionUrls`, invoke `submitBaiduUrls`, print site and count summaries without printing the token-bearing URL, and append a `## Baidu URL Push` success, partial/failure, or early-error summary to `GITHUB_STEP_SUMMARY` when available. Support the existing positional URL, `--git-range`, and `--sitemap` arguments.
+Read `BAIDU_PUSH_SITE` with default `https://inaodeng.com`, require `BAIDU_PUSH_TOKEN` only when `validUrls` is non-empty, call `collectSubmissionUrls`, invoke `submitBaiduUrls`, print site and count summaries without printing the token-bearing URL, and append a `## Baidu URL Push` success, partial/failure, or early-error summary to `GITHUB_STEP_SUMMARY` when available. Support the existing positional URL, `--git-range`, `--sitemap`, and explicit `--all` arguments.
 
 - [ ] **Step 9: Add the npm entrypoint and commit**
 
@@ -204,8 +205,9 @@ git commit -m "feat: add Baidu URL push client"
 - Test: `tests/unit/baiduPush.test.ts`
 
 **Interfaces:**
-- The workflow deploy step has `id: deploy`.
-- The Baidu step runs after deploy and before IndexNow with `if: ${{ steps.deploy.conclusion == 'success' }}`, `continue-on-error: true`, and environment variables `BAIDU_PUSH_SITE` and `BAIDU_PUSH_TOKEN`.
+- The workflow deploy step has `id: deploy` and exposes a manual `submit_all_baidu` boolean input.
+- The Baidu step runs after deploy and before IndexNow with a successful-deploy condition, `continue-on-error: true`, and environment variables `BAIDU_PUSH_SITE` and `BAIDU_PUSH_TOKEN`.
+- Push events submit the changed URL range; manual runs with `submit_all_baidu` enabled submit the generated sitemap with `--all`; manual runs do not invoke IndexNow.
 - `.env.example` documents names only; no real token is added.
 
 - [ ] **Step 1: Write the failing workflow contract test**
@@ -220,7 +222,7 @@ Expected: FAIL because the workflow has no Baidu step, no deploy id, and no envi
 
 - [ ] **Step 3: Implement the workflow and example configuration**
 
-Add `id: deploy` to the Cloudflare deployment action. Insert the Baidu step immediately after it with `if: ${{ steps.deploy.conclusion == 'success' }}`, `continue-on-error: true`, `BAIDU_PUSH_SITE: https://inaodeng.com`, and `BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}`. Change the existing IndexNow condition to the same deploy conclusion expression. Add commented `BAIDU_PUSH_SITE` and `BAIDU_PUSH_TOKEN` names to `.env.example` with a note that CI uses the repository Actions Secret.
+Add `workflow_dispatch.inputs.submit_all_baidu` as a required boolean defaulting to false. Add `id: deploy` to the Cloudflare deployment action. Insert the Baidu step immediately after it with a successful-deploy condition, `continue-on-error: true`, `BAIDU_PUSH_SITE: https://inaodeng.com`, and `BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}`. Use `--all --sitemap=dist/sitemap-0.xml` for an enabled manual run and the existing git range for push events. Restrict IndexNow to push events so a manual deployment does not pass an empty event range. Add commented `BAIDU_PUSH_SITE` and `BAIDU_PUSH_TOKEN` names to `.env.example` with a note that CI uses the repository Actions Secret.
 
 - [ ] **Step 4: Run focused workflow tests and inspect the diff**
 

@@ -42,15 +42,16 @@ function positionalArgs(args) {
 
 export function collectSubmissionUrls({ args, origin, root, sitemapDefault }) {
   const gitRange = valueAfterFlag(args, "--git-range");
+  const submitAll = args.includes("--all");
   const sitemapPath = path.resolve(root, valueAfterFlag(args, "--sitemap") || path.relative(root, sitemapDefault));
   const changedFiles = gitRange ? changedFilesForRange(gitRange, root) : [];
   const urls = new Set(positionalArgs(args));
 
-  if (gitRange) {
-    const useSitemap = changedFiles.some(isBroadChange);
+  if (gitRange || submitAll) {
+    const useSitemap = submitAll || changedFiles.some(isBroadChange);
     if (useSitemap) {
       for (const url of readSitemap(sitemapPath)) urls.add(url);
-    } else {
+    } else if (gitRange) {
       for (const file of changedFiles) {
         for (const url of urlsForSourceFile(file, { origin, root })) urls.add(url);
       }

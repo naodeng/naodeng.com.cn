@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      submit_all_baidu:
+        description: Submit all URLs from the generated sitemap to Baidu
+        required: true
+        default: false
+        type: boolean
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
@@ -55,19 +62,25 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: deploy
 
-      - name: Notify Baidu about changed URLs
-        if: ${{ steps.deploy.conclusion == 'success' }}
+      - name: Notify Baidu about URLs
+        if: ${{ steps.deploy.conclusion == 'success' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.submit_all_baidu)) }}
         continue-on-error: true
         env:
           BAIDU_PUSH_SITE: https://inaodeng.com
           BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
         run: |
-          node scripts/submit-baidu.mjs \
-            --git-range="${{ github.event.before }}...${{ github.sha }}" \
-            --sitemap=dist/sitemap-0.xml
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/submit-baidu.mjs \
+              --all \
+              --sitemap=dist/sitemap-0.xml
+          else
+            node scripts/submit-baidu.mjs \
+              --git-range="${{ github.event.before }}...${{ github.sha }}" \
+              --sitemap=dist/sitemap-0.xml
+          fi
 
       - name: Notify IndexNow about changed URLs
-        if: ${{ steps.deploy.conclusion == 'success' }}
+        if: ${{ steps.deploy.conclusion == 'success' && github.event_name == 'push' }}
         run: |
           node scripts/submit-indexnow.mjs \
             --git-range="${{ github.event.before }}...${{ github.sha }}" \

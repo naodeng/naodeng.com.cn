@@ -53,6 +53,30 @@ describe("IndexNow helpers", () => {
     expect(result.validUrls).toEqual(["https://inaodeng.com/valid/"]);
   });
 
+  it("loads all sitemap URLs when the explicit full-submit flag is provided", () => {
+    const tempDir = mkdtempSync(path.join(os.tmpdir(), "naodeng-full-submit-"));
+    const sitemapPath = path.join(tempDir, "sitemap.xml");
+    try {
+      writeFileSync(
+        sitemapPath,
+        "<urlset><url><loc>https://inaodeng.com/z/</loc></url><url><loc>https://inaodeng.com/a/</loc></url></urlset>",
+      );
+      const result = collectSubmissionUrls({
+        args: ["--all", `--sitemap=${sitemapPath}`],
+        origin: "https://inaodeng.com",
+        root: REPO_ROOT,
+        sitemapDefault: sitemapPath,
+      });
+
+      expect(result.validUrls).toEqual([
+        "https://inaodeng.com/a/",
+        "https://inaodeng.com/z/",
+      ]);
+    } finally {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it("identifies broad changes and reads sitemap URL entries", () => {
     expect(isBroadChange("src/pages/index.astro")).toBe(true);
     expect(isBroadChange("src/content/docs/en/installation.md")).toBe(false);

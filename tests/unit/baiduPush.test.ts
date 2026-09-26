@@ -232,11 +232,26 @@ describe("Baidu URL push utilities", () => {
     expect(deployWorkflow.slice(deployStart, baiduStart)).toContain("id: deploy");
     expect(baiduStart).toBeGreaterThan(deployStart);
     expect(indexNowStart).toBeGreaterThan(baiduStart);
-    expect(baiduStep).toContain("if: ${{ steps.deploy.conclusion == 'success' }}");
+    expect(baiduStep).toContain("if: ${{ steps.deploy.conclusion == 'success' &&");
     expect(baiduStep).toContain("continue-on-error: true");
     expect(baiduStep).toContain("BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}");
     expect(baiduStep).toContain("BAIDU_PUSH_SITE: https://inaodeng.com");
-    expect(indexNowStep).toContain("if: ${{ steps.deploy.conclusion == 'success' }}");
+    expect(indexNowStep).toContain("if: ${{ steps.deploy.conclusion == 'success' && github.event_name == 'push' }}");
     expect(baiduStep).not.toMatch(/BAIDU_PUSH_TOKEN:\s*(?!\$\{\{\s*secrets\.BAIDU_PUSH_TOKEN\s*\}\})\S+/);
+  });
+
+  it("provides an opt-in manual full-sitemap submission mode", () => {
+    const trigger = deployWorkflow.slice(deployWorkflow.indexOf("on:"), deployWorkflow.indexOf("env:"));
+    const baiduStart = deployWorkflow.indexOf("      - name: Notify Baidu");
+    const indexNowStart = deployWorkflow.indexOf("      - name: Notify IndexNow");
+    const baiduStep = deployWorkflow.slice(baiduStart, indexNowStart);
+    const indexNowStep = deployWorkflow.slice(indexNowStart);
+
+    expect(trigger).toContain("workflow_dispatch:");
+    expect(trigger).toContain("submit_all_baidu:");
+    expect(trigger).toContain("type: boolean");
+    expect(baiduStep).toContain("inputs.submit_all_baidu");
+    expect(baiduStep).toContain("--all");
+    expect(indexNowStep).toContain("github.event_name == 'push'");
   });
 });
