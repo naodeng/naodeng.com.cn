@@ -1,0 +1,408 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import ArticleShare from "@/components/ArticleShare.astro";
+import Giscus from "@/components/Giscus.astro";
+import TrackingEvents from "@/components/TrackingEvents.astro";
+import DocsLayout from "@/layouts/Docs.astro";
+import { NAV_HOME } from "@/consts";
+import type { Lang } from "@/i18n";
+import {
+  buildAiQaWeeklySidebar,
+  formatWeeklyDate,
+  formatWeeklyIssueLabel,
+  formatWeeklyPeriod,
+  isoDate,
+  sortAiQaWeeklyEntries,
+} from "@/data/aiQaWeekly";
+
+interface Props {
+  entry: CollectionEntry<"aiQaWeekly">;
+  allEntries: CollectionEntry<"aiQaWeekly">[];
+}
+
+const { entry, allEntries } = Astro.props;
+const locale = entry.data.lang as Lang;
+const isZh = locale === "zh-cn";
+const slug = entry.data.slug;
+const basePath = `/${locale}/ai-native-qa-weekly`;
+const weeklyTitle = "AI-Native QA Weekly";
+const pageTitle = entry.data.title;
+const metaDescription = entry.data.description;
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "Home";
+const localizedEntries = sortAiQaWeeklyEntries(allEntries.filter((item) => item.data.lang === locale));
+const sidebarSections = buildAiQaWeeklySidebar(localizedEntries, locale);
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: weeklyTitle, url: `${basePath}/` },
+  { name: formatWeeklyIssueLabel(entry, locale), url: `${basePath}/${slug}/` },
+];
+
+const { Content, headings: renderedHeadings = [] } = await render(entry);
+
+function parseHeadings(body: string): { depth: number; slug: string; text: string }[] {
+  return body
+    .split("\n")
+    .flatMap((line) => {
+      const match = line.match(/^(#{2,3})\s+(.+)$/);
+      if (!match) return [];
+      const text = match[2].trim();
+      const slug = text
+        .toLowerCase()
+        .replace(/[^\w\u4e00-\u9fff\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+      return [{ depth: match[1].length, slug, text }];
+    });
+}
+
+const body = typeof entry.body === "string" ? entry.body : "";
+const headings = renderedHeadings.length > 0 ? renderedHeadings : parseHeadings(body);
+const tocHeadings = headings.map((heading) => {
+  if (heading.depth !== 2) return heading;
+  const separatorIndex = heading.text.search(/[：:]/);
+  return separatorIndex > 0
+    ? { ...heading, text: heading.text.slice(0, separatorIndex).trim() }
+    : heading;
+});
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const canonicalUrl = `${siteOrigin}${basePath}/${slug}/`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: pageTitle,
+  description: metaDescription,
+  url: canonicalUrl,
+  datePublished: entry.data.publishedAt.toISOString(),
+  dateModified: entry.data.publishedAt.toISOString(),
+  inLanguage: isZh ? "zh-CN" : "en",
+  author: {
+    "@type": "Person",
+    name: "Nao Deng",
+    url: siteOrigin,
+  },
+  isPartOf: {
+    "@type": "CollectionPage",
+    name: weeklyTitle,
+    url: `${siteOrigin}${basePath}/`,
+  },
+};
+---
+
+<DocsLayout
+  title={pageTitle}
+  description={metaDescription}
+  breadcrumbs={breadcrumbs}
+  structuredData={[structuredData]}
+  sidebarSections={sidebarSections}
+  currentPath={slug}
+  basePath={basePath}
+  sidebarMenuLabel={isZh ? "周刊导航" : "Weekly navigation"}
+  headings={tocHeadings}
+  tocLabel={isZh ? "本期目录" : "This issue"}
+>
+  <div class="weekly-page">
+    <header class="weekly-toolbar" aria-label={isZh ? "周刊筛选" : "Weekly issue selector"}>
+      <div class="weekly-toolbar-copy">
+        <p class="weekly-eyebrow">AI-NATIVE QA WEEKLY</p>
+        <p class="weekly-toolbar-hint">
+          {isZh ? "按周期查阅 AI Native QA、Agent 测试与 LLM 质量动态。" : "Browse AI-Native QA, agent testing, and LLM quality updates by period."}
+        </p>
+      </div>
+      <label class="weekly-period-control" for={`weekly-period-${locale}`}>
+        <span>{isZh ? "选择周期" : "Select period"}</span>
+        <select id={`weekly-period-${locale}`} data-weekly-period>
+          {localizedEntries.map((issue) => (
+            <option value={`${basePath}/${issue.data.slug}/`} selected={issue.data.slug === slug}>
+              {formatWeeklyIssueLabel(issue, locale)}
+            </option>
+          ))}
+        </select>
+      </label>
+    </header>
+
+    <div class="weekly-issue-meta" aria-label={isZh ? "本期信息" : "Issue metadata"}>
+      <div class="weekly-meta-item">
+        <span class="weekly-meta-label">{isZh ? "发布日期" : "Published"}</span>
+        <time datetime={isoDate(entry.data.publishedAt)}>{formatWeeklyDate(entry.data.publishedAt, locale)}</time>
+      </div>
+      <div class="weekly-meta-item weekly-meta-item--wide">
+        <span class="weekly-meta-label">{isZh ? "覆盖周期" : "Coverage"}</span>
+        <span>{formatWeeklyPeriod(entry, locale)}</span>
+      </div>
+      <div class="weekly-meta-item">
+        <span class="weekly-meta-label">{isZh ? "条目" : "Items"}</span>
+        <strong>{entry.data.itemCount}</strong>
+      </div>
+    </div>
+
+    <article class="weekly-article">
+      <Content />
+    </article>
+  </div>
+
+  <ArticleShare title={pageTitle} url={canonicalUrl} locale={isZh ? "zh-cn" : "en"} />
+  <Giscus lang={isZh ? "zh-CN" : "en"} inputPosition="bottom" />
+</DocsLayout>
+
+<TrackingEvents mode="detail" locale={locale} channel="ai-qa-weekly" slug={slug} detailLinkSelector=".weekly-source-link" />
+
+<script>
+  const periodSelect = document.querySelector<HTMLSelectElement>("[data-weekly-period]");
+  periodSelect?.addEventListener("change", () => {
+    const nextPath = periodSelect.value;
+    if (nextPath && nextPath !== window.location.pathname) window.location.assign(nextPath);
+  });
+
+  const article = document.querySelector<HTMLElement>(".weekly-article");
+  article?.querySelectorAll<HTMLAnchorElement>('a[href^="http"]').forEach((link) => {
+    link.classList.add("weekly-source-link");
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+  });
+</script>
+
+<style>
+  :global(.docs-sidebar-wrap),
+  :global(.docs-sidebar),
+  :global(.docs-sidebar-inner) {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  :global(.docs-sidebar-inner) {
+    border-inline-start: none !important;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    box-shadow: none;
+  }
+
+  @media (min-width: 1100px) {
+    :global(.l-docs[data-has-toc="true"]) {
+      grid-template-columns: 220px minmax(0, 1fr) 232px;
+    }
+  }
+
+  :global(.docs-toc-wrap) {
+    min-inline-size: 0;
+  }
+
+  :global(.docs-toc-wrap .toc-sidebar--right) {
+    max-height: min(72vh, calc(100vh - 8rem));
+    scrollbar-color: var(--color-theme) transparent;
+    scrollbar-width: thin;
+  }
+
+  :global(.docs-toc-wrap .toc-sidebar--right::-webkit-scrollbar) {
+    display: block;
+    width: 6px;
+  }
+
+  :global(.docs-toc-wrap .toc-sidebar--right::-webkit-scrollbar-thumb) {
+    background: color-mix(in srgb, var(--color-theme) 58%, transparent);
+    border-radius: 999px;
+  }
+
+  :global(.docs-toc-wrap .toc-sidebar--right::-webkit-scrollbar-track) {
+    background: transparent;
+  }
+
+  :global(.docs-toc-wrap .toc-current),
+  :global(.docs-toc-wrap .toc-current [data-current-section]) {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  :global(.docs-toc-wrap .toc-link) {
+    font-size: 0.78rem;
+    line-height: 1.32;
+  }
+
+  :global(.docs-toc-wrap .toc-item) {
+    margin-block-end: 0.45rem;
+  }
+
+  .weekly-toolbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-m);
+    margin-block-end: var(--sp-m);
+    padding-block: 0 var(--sp-m);
+    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 18%, var(--color-border));
+  }
+
+  .weekly-toolbar-copy {
+    min-inline-size: 0;
+  }
+
+  .weekly-eyebrow {
+    margin: 0;
+    color: var(--color-theme);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .weekly-toolbar-hint {
+    margin: 0.45rem 0 0;
+    color: color-mix(in srgb, var(--color-main) 72%, transparent);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .weekly-period-control {
+    display: grid;
+    flex: 0 1 19rem;
+    gap: 0.4rem;
+    color: var(--color-main);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .weekly-period-control select {
+    min-block-size: 44px;
+    inline-size: 100%;
+    padding: 0.55rem 2.2rem 0.55rem 0.75rem;
+    color: var(--color-main);
+    font: inherit;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .weekly-period-control select:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+
+  .weekly-issue-meta {
+    display: grid;
+    grid-template-columns: minmax(9rem, 1fr) minmax(0, 2.4fr) minmax(4.5rem, 0.55fr);
+    gap: 0;
+    margin-block-end: var(--sp-l);
+    border-block: 1px solid var(--color-border);
+  }
+
+  .weekly-meta-item {
+    display: grid;
+    gap: 0.2rem;
+    min-inline-size: 0;
+    padding: 0.8rem var(--sp-s);
+    border-inline-end: 1px solid var(--color-border);
+  }
+
+  .weekly-meta-item:last-child {
+    border-inline-end: 0;
+  }
+
+  .weekly-meta-label {
+    color: color-mix(in srgb, var(--color-main) 58%, transparent);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .weekly-meta-item strong,
+  .weekly-meta-item time {
+    color: var(--color-main);
+    font-size: 1.05rem;
+  }
+
+  @media (min-width: 768px) {
+    .weekly-meta-item time {
+      white-space: nowrap;
+    }
+  }
+
+  .weekly-meta-item--wide > span:last-child {
+    line-height: 1.45;
+  }
+
+  .weekly-article {
+    max-inline-size: 78ch;
+    line-height: 1.8;
+  }
+
+  .weekly-article :global(h1) {
+    margin-block: 0 0.75rem;
+    padding-block-end: var(--sp-s);
+    border-block-end: 2px solid var(--color-theme);
+    font-size: clamp(1.8rem, 3.2vw, 2.45rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .weekly-article :global(h2) {
+    scroll-margin-block-start: 1rem;
+    margin-block: 2.4rem 0.8rem;
+    padding: 0.7rem 0.8rem 0.7rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, var(--color-border));
+    border-inline-start: 5px solid var(--color-theme);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-surface));
+    font-size: clamp(1.18rem, 2vw, 1.45rem);
+    line-height: 1.4;
+  }
+
+  .weekly-article :global(h2:first-of-type) {
+    margin-block-start: 2rem;
+  }
+
+  .weekly-article :global(p) {
+    margin-block: 0.8rem 0;
+  }
+
+  .weekly-article :global(h1 + p) {
+    color: color-mix(in srgb, var(--color-main) 76%, transparent);
+    font-size: 1.02rem;
+  }
+
+  .weekly-article :global(p strong) {
+    color: color-mix(in srgb, var(--color-main) 82%, var(--color-theme));
+  }
+
+  .weekly-article :global(a) {
+    color: var(--color-theme);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+  }
+
+  .weekly-article :global(a:hover) {
+    text-decoration-thickness: 2px;
+  }
+
+  @media (width < 768px) {
+    .weekly-toolbar {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .weekly-period-control {
+      flex-basis: auto;
+      inline-size: 100%;
+    }
+
+    .weekly-issue-meta {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .weekly-meta-item:not(:last-child) {
+      border-block-end: 1px solid var(--color-border);
+    }
+
+    .weekly-meta-item--wide {
+      grid-column: 1 / -1;
+      border-inline-end: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .weekly-period-control select {
+      scroll-behavior: auto;
+    }
+  }
+</style>

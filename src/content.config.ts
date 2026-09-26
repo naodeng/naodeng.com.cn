@@ -77,6 +77,28 @@ const aiwiki = defineCollection({
       tags: z.array(z.string()).optional(),
       related: z.array(z.string()).optional(),
       lastReviewedAt: z.string().optional(),
+  }),
+});
+
+// AI-Native QA Weekly：按语言和周次归档的双语周刊内容
+const aiQaWeekly = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/ai-qa-weekly",
+    generateId: ({ entry }) => entry.replace(/\.md$/, ""),
+  }),
+  schema: () =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      lang: z.enum(["en", "zh-cn"]),
+      slug: z.string(),
+      weekNumber: z.number().int().positive(),
+      publishedAt: z.coerce.date(),
+      periodStart: z.coerce.date(),
+      periodEnd: z.coerce.date(),
+      timeZone: z.string().default("Asia/Shanghai"),
+      itemCount: z.number().int().positive(),
     }),
 });
 
@@ -147,4 +169,4 @@ const workflows = defineCollection({
     }),
 });
 
-export const collections = { blog, docs, wiki, aiwiki, guild, prompts, workflows };
+export const collections = { blog, docs, wiki, aiwiki, aiQaWeekly, guild, prompts, workflows };

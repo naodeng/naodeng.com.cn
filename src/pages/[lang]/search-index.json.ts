@@ -118,6 +118,19 @@ export const GET: APIRoute = async ({ params }) => {
     };
   });
 
+  // AI-Native QA Weekly 条目
+  const allAiQaWeekly = await getCollection("aiQaWeekly");
+  const aiQaWeeklyIndex: SearchIndexItem[] = allAiQaWeekly
+    .filter((entry) => entry.data.lang === lang)
+    .map((entry) => ({
+      title: entry.data.title,
+      description: entry.data.description,
+      url: `/${lang}/ai-native-qa-weekly/${entry.data.slug}/`,
+      date: entry.data.publishedAt.toISOString(),
+      tags: ["AI-Native QA Weekly", `Week ${entry.data.weekNumber}`],
+      type: "weekly",
+    }));
+
   // 获取测试 Wiki 条目（当前仅中文）
   const wikiIndex: SearchIndexItem[] = [];
   if (lang === "zh-cn") {
@@ -138,7 +151,15 @@ export const GET: APIRoute = async ({ params }) => {
     );
   }
 
-  const fullIndex = [...blogIndex, ...guildIndex, ...promptsIndex, ...workflowsIndex, ...wikiIndex, ...aiWikiIndex];
+  const fullIndex = [
+    ...blogIndex,
+    ...guildIndex,
+    ...promptsIndex,
+    ...workflowsIndex,
+    ...wikiIndex,
+    ...aiWikiIndex,
+    ...aiQaWeeklyIndex,
+  ];
 
   return new Response(JSON.stringify(fullIndex), {
     headers: {

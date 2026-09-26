@@ -90,6 +90,7 @@ const t = useTranslations(locale);
       guild: "Guild",
       wiki: "Wiki",
       aiwiki: locale === "zh-cn" ? "AI 百科" : "AI Wiki",
+      weekly: locale === "zh-cn" ? "AI-Native QA 周刊" : "AI-Native QA Weekly",
       prompts: locale === "zh-cn" ? "提示词" : "Prompts",
       workflows: locale === "zh-cn" ? "工作流" : "Workflows",
     };
@@ -103,6 +104,8 @@ const t = useTranslations(locale);
             ? "wiki"
             : url && url.includes("/AIWiki/")
               ? "aiwiki"
+              : url && url.includes("/ai-native-qa-weekly/")
+                ? "weekly"
               : url && url.includes("/prompts/workflows/")
                 ? "workflows"
                 : url && url.includes("/prompts/")

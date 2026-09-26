@@ -108,6 +108,12 @@ export const NAV_AI_WIKI: Multilingual = {
   "zh-cn": "AI 百科",
 };
 
+/** 顶部导航：AI-Native QA Weekly 周刊 */
+export const NAV_AI_QA_WEEKLY: Multilingual = {
+  en: "AI-Native QA Weekly",
+  "zh-cn": "AI-Native QA 周刊",
+};
+
 /** 顶部导航：百科分组 */
 export const NAV_ENCYCLOPEDIA: Multilingual = {
   en: "Wiki",

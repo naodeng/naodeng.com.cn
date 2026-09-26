@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import { LOCALES, type Lang } from "@/i18n";
+import { sortAiQaWeeklyEntries } from "@/data/aiQaWeekly";
+
+export function getStaticPaths() {
+  return Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+}
+
+const locale = (Astro.params.lang ?? "en") as Lang;
+const entries = (await getCollection("aiQaWeekly")).filter((entry) => entry.data.lang === locale);
+const latest = sortAiQaWeeklyEntries(entries)[0];
+
+if (latest) {
+  return Astro.redirect(`/${locale}/ai-native-qa-weekly/${latest.data.slug}/`, 302);
+}
+
+return Astro.redirect(`/${locale}/`, 302);
+---

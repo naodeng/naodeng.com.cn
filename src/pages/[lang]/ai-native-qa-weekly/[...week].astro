@@ -1,0 +1,17 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import AiQaWeeklyPage from "@/components/AiQaWeeklyPage.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("aiQaWeekly");
+  return entries.map((entry) => ({
+    params: { lang: entry.data.lang, week: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<"aiQaWeekly"> };
+const allEntries = await getCollection("aiQaWeekly");
+---
+
+<AiQaWeeklyPage entry={entry} allEntries={allEntries} />
