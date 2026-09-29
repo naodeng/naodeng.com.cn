@@ -1,19 +1,29 @@
 ---
-name: "Nao's Blog: Astro Editorial"
-description: "双语技术知识库，内容优先、浅深双主题、克制表面"
+name: "Nao's Blog: Proofline"
+description: "Proofline — A QA-inspired editorial system built around evidence, signals, and clarity."
 colors:
-  theme: "#2563eb"
-  theme-dark: "#78a9ff"
-  canvas: "#f8fafc"
+  theme: "#176b75"
+  theme-dark: "#12ccd8"
+  theme-focus: "#0f5962"
+  theme-focus-dark: "#7de6ec"
+  canvas: "#faf9f6"
   surface: "#ffffff"
-  ink: "#172033"
-  secondary: "#526071"
-  border: "#dce2ea"
-  canvas-dark: "#111827"
-  surface-dark: "#18212f"
-  ink-dark: "#e6eaf0"
-  secondary-dark: "#aab4c3"
-  border-dark: "#2c394b"
+  surface-elevated: "#ffffff"
+  ink: "#202a30"
+  secondary: "#5c6b6d"
+  tertiary: "#738184"
+  border: "#dfe4e1"
+  border-strong: "#b9cfcb"
+  code-surface: "#f1f5f3"
+  canvas-dark: "#13191c"
+  surface-dark: "#1a2226"
+  surface-elevated-dark: "#202b2f"
+  ink-dark: "#e7eceb"
+  secondary-dark: "#a8b6b5"
+  tertiary-dark: "#819390"
+  border-dark: "#344247"
+  border-strong-dark: "#4d686c"
+  code-surface-dark: "#202b2f"
   wechat: "#07c160"
 typography:
   body:
@@ -46,24 +56,29 @@ components:
     rounded: "{rounded.md}"
 ---
 
-# Design System: Astro Editorial
+# Design System: Proofline
 
 ## Overview
 
-面向中英文软件开发者与测试者的技术知识库。沿用已批准的 Astro 编辑化方向：内容优先、低饱和中性表面、清楚的层级与克制的蓝色强调。本文是现行规范；旧 Zenix / Diffuse Glass 文档只作历史追溯。
+Proofline — A QA-inspired editorial system built around evidence, signals, and clarity. 面向中英文软件开发者与测试者的技术知识库；视觉参考 AIHOT 的编辑型情报站语言，但主题名称、设计事实和产品表达统一归属于 Proofline。本文是现行规范；旧 Zenix / Diffuse Glass 文档只作历史追溯。
 
-实现依据：`src/styles/base.css`、`src/styles/layout.css` 和组件样式。详细需求见 [主题方案](docs/superpowers/specs/2026-09-04-astro-editorial-theme-design.md)，验收状态见 [实施计划](docs/superpowers/plans/2026-09-04-astro-editorial-theme.md)。规范目标与尚存兼容实现必须分别说明。
+实现依据：`src/styles/base.css`、`src/styles/layout.css` 和组件样式。详细需求见 [Proofline 设计规格](docs/superpowers/specs/2026-09-29-aihot-editorial-signal-redesign-design.md)，实施步骤见 [Proofline 实施计划](docs/superpowers/plans/2026-09-29-aihot-editorial-signal-redesign.md)。规范目标与尚存兼容实现必须分别说明。
 
 ## Colors
 
-浅色：画布 #f8fafc、表面 #ffffff、正文 #172033、次级文字 #526071、边框 #dce2ea、强调 #2563eb。
-深色：画布 #111827、表面 #18212f、正文 #e6eaf0、次级文字 #aab4c3、边框 #2c394b、强调 #78a9ff。
+浅色：画布 #faf9f6、表面 #ffffff、正文 #202a30、次级文字 #5c6b6d、三级文字 #738184、边框 #dfe4e1、强化边框 #b9cfcb、代码表面 #f1f5f3、强调 #176b75、强调焦点 #0f5962。
+深色：画布 #13191c、表面 #1a2226、抬升表面 #202b2f、正文 #e7eceb、次级文字 #a8b6b5、三级文字 #819390、边框 #344247、强化边框 #4d686c、代码表面 #202b2f、强调 #12ccd8、强调焦点 #7de6ec。
 
-主题支持系统偏好与手动切换，持久化键为 `themePreference`。微信品牌绿 #07c160、错误与警告语义色是品牌蓝之外的特定用途例外，不能推广为普通卡片装饰。旧 `color-glass-*` 变量为兼容别名，不代表允许恢复玻璃主题。
+强调色是稀缺的信号色，只用于 CTA、链接交互、当前项、状态和少量指标/标记；正文标题、普通导航文字、默认表面和普通边框使用中性色，不把青绿色扩展成页面主色。
+
+主题支持系统偏好与手动切换，持久化键为 `themePreference`。语义变量至少包括 `--color-base`、`--color-canvas`、`--color-surface`、`--color-surface-elevated`、`--color-main`、`--color-text-secondary`、`--color-text-tertiary`、`--color-border`、`--color-border-strong`、`--color-theme`、`--color-theme-focus`、`--color-theme-soft`、`--color-theme-soft-hover` 和 `--color-code-surface`。主题支持 `prefers-color-scheme`，但不依赖主题切换来改变布局。
+
+微信品牌绿 #07c160、错误与警告语义色是青绿色主题之外的特定用途例外，不能推广为普通卡片装饰。旧 `color-glass-*`、`color-mist-secondary`、`gradient-theme`、`shadow-glass-*` 和 `shadow-product` 变量可以作为迁移期兼容别名保留；它们不得作为新页面默认表面、渐变、阴影或布局依据。实现和测试必须区分“别名仍存在”与“默认组件仍在消费”。
 
 ## Typography
 
-标题和正文均使用 Noto Sans / Noto Sans SC 回退栈，当前 CSS 不再使用 Sora 作为标题字体。
+标题和正文均使用 Noto Sans / Noto Sans SC 回退栈；Proofline 迁移目标不再使用 Sora 作为标题字体，Task 7 会清理产品页当前遗留的局部声明。
+代码使用 `ui-monospace, monospace`，只用于代码、命令和复制控件，不参与正文标题或导航。
 实际基础字号为 `--text-base: 1.0625rem`，基础行高 1.65；方案中的 16px 是原始目标，不能描述为当前实现。display token 为 2.5rem，具体 hero 可使用响应式字号。
 正文阅读列上限 768px，代码和表格在自身区域滚动，不扩大页面。
 
@@ -79,11 +94,11 @@ gutter 默认 24px，768px 起为 32px。首页 main 全宽，内部区块应用
 ## Elevation & Depth
 
 默认不透明表面、1px 中性边框、轻阴影。仅 sticky Header 和移动导航覆盖层允许轻微背景模糊。Footer 弹窗和语言标签使用实色。
-兼容阴影 token 保留，但不应将旧 glass/product shadow 作为新页面默认材质。
+`--shadow-sm` 可用于需要层次的表面；`--shadow-md`、`--shadow-lg` 和旧 glass/product shadow 只保留兼容性或经过明确说明的特殊场景，不应作为新页面默认材质。默认页面不得使用紫色 glow、玻璃雾面或 `backdrop-filter`。
 
 ## Shapes
 
-现有 token 为 8/12/18px 与 9999px。新普通按钮优先 8px，卡片优先 12px；药丸用于标签和过滤控件。旧组件尚有局部药丸/大圆角，不表示所有组件都已完成形状迁移。
+现有 token 为 8/12/18px 与 9999px。新普通按钮优先 8px，卡片优先 12px；药丸用于标签、状态和紧凑过滤控件。旧组件尚有局部药丸/大圆角，不表示所有组件都已完成形状迁移。
 
 ## Components
 
@@ -97,6 +112,6 @@ gutter 默认 24px，768px 起为 32px。首页 main 全宽，内部区块应用
 ## Do's and Don'ts
 
 - Do 使用语义 token，并同时验证浅深主题和双语页面。
-- Do 同步 DESIGN.md、.impeccable/design.json 和实施记录。
+- Do 同步 DESIGN.md、.impeccable/design.json、设计规格和实施计划。
 - Don't 恢复默认紫色渐变、色雾和大面积玻璃卡片。
 - Don't 用测试通过替代方案验收；历史记录保留事实，不补造测试证据。

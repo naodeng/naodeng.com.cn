@@ -26,6 +26,7 @@ const startLabel = locale === "zh-cn" ? "开始任务" : "Start task";
 
 // 入口类型 chip 文案：skill / prompt
 function kindLabel(kind: HomeTaskTarget["kind"]) {
+  if (locale === "zh-cn") return kind === "skill" ? "技能" : "提示词";
   return kind === "skill" ? "Skill" : "Prompt";
 }
 
@@ -37,12 +38,12 @@ const entries = HOME_TASK_ENTRIES[locale];
       id="home-task-title"
       watermark={locale === "zh-cn" ? "测试任务" : "QA TASKS"}
       title={locale === "zh-cn" ? "你现在要完成什么测试任务？" : "What QA task do you need to complete?"}
-      subtitle={locale === "zh-cn" ? "先选择要完成的测试任务，再进入对应的 Skill 或 Prompt 获取输入模板和执行方式。" : "Choose the QA task first, then open the matching Skill or Prompt for its input template and execution guide."}
+      subtitle={locale === "zh-cn" ? "先选择要完成的测试任务，再进入对应的技能或提示词，获取输入模板和执行方式。" : "Choose the QA task first, then open the matching Skill or Prompt for its input template and execution guide."}
     />
     <ul class="task-grid" role="list">
       {entries.map((entry) => {
         const icon = TASK_ICONS[entry.key] ?? "bolt";
-        const chip = entry.targets.length === 1 ? kindLabel(entry.targets[0].kind) : "Skill";
+        const chip = entry.targets.length === 1 ? kindLabel(entry.targets[0].kind) : kindLabel("skill");
         return entry.targets.length === 1 ? (
           <li class="task-card task-card--link" data-home-task={entry.key}>
             <a class="task-card__link" href={targetHref(entry.targets[0])}>

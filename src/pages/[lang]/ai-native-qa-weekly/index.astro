@@ -1,19 +1,217 @@
 ---
 import { getCollection } from "astro:content";
+import DocsLayout from "@/layouts/Docs.astro";
+import { NAV_HOME } from "@/consts";
 import { LOCALES, type Lang } from "@/i18n";
-import { sortAiQaWeeklyEntries } from "@/data/aiQaWeekly";
+import {
+  buildAiQaWeeklySidebar,
+  formatWeeklyDate,
+  formatWeeklyIssueLabel,
+  formatWeeklyPeriod,
+  sortAiQaWeeklyEntries,
+} from "@/data/aiQaWeekly";
 
 export function getStaticPaths() {
   return Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
 }
 
 const locale = (Astro.params.lang ?? "en") as Lang;
-const entries = (await getCollection("aiQaWeekly")).filter((entry) => entry.data.lang === locale);
-const latest = sortAiQaWeeklyEntries(entries)[0];
-
-if (latest) {
-  return Astro.redirect(`/${locale}/ai-native-qa-weekly/${latest.data.slug}/`, 302);
-}
-
-return Astro.redirect(`/${locale}/`, 302);
+const isZh = locale === "zh-cn";
+const basePath = `/${locale}/ai-native-qa-weekly`;
+const weeklyTitle = isZh ? "AI-Native QA 周刊" : "AI-Native QA Weekly";
+const description = isZh
+  ? "按周期查阅 AI Native QA、Agent 测试与 LLM 质量动态。"
+  : "Browse AI-Native QA, agent testing, and LLM quality updates by period.";
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "Home";
+const entries = sortAiQaWeeklyEntries(
+  (await getCollection("aiQaWeekly")).filter((entry) => entry.data.lang === locale),
+);
+const sidebarSections = buildAiQaWeeklySidebar(entries, locale);
+const breadcrumbs = [
+  { name: homeName, url: `/${locale}/` },
+  { name: weeklyTitle, url: `${basePath}/` },
+];
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: weeklyTitle,
+  description,
+  url: `${siteOrigin}${basePath}/`,
+  inLanguage: isZh ? "zh-CN" : "en",
+  numberOfItems: entries.length,
+};
 ---
+
+<DocsLayout
+  title={weeklyTitle}
+  description={description}
+  breadcrumbs={breadcrumbs}
+  structuredData={[structuredData]}
+  sidebarSections={sidebarSections}
+  currentPath=""
+  basePath={basePath}
+  sidebarMenuLabel={isZh ? "周刊导航" : "Weekly navigation"}
+>
+  <div class="weekly-index">
+    <header class="weekly-index-header">
+      <p class="weekly-eyebrow">AI-NATIVE QA WEEKLY</p>
+      <h1 class="weekly-index-title">{weeklyTitle}</h1>
+      <p class="weekly-index-description">{description}</p>
+    </header>
+
+    <section aria-labelledby="weekly-archive-title">
+      <div class="weekly-index-section-heading">
+        <h2 id="weekly-archive-title">{isZh ? "全部期数" : "All issues"}</h2>
+        <span>{entries.length} {isZh ? "期" : "issues"}</span>
+      </div>
+      <div class="weekly-index-list">
+        {entries.map((entry) => (
+          <a class="weekly-index-card" href={`${basePath}/${entry.data.slug}/`}>
+            <div class="weekly-index-card__topline">
+              <span class="weekly-index-card__issue">{formatWeeklyIssueLabel(entry, locale)}</span>
+              <time datetime={entry.data.publishedAt.toISOString()}>{formatWeeklyDate(entry.data.publishedAt, locale)}</time>
+            </div>
+            <h3>{entry.data.title}</h3>
+            <p>{entry.data.description}</p>
+            <div class="weekly-index-card__meta">
+              <span>{formatWeeklyPeriod(entry, locale)}</span>
+              <span>{entry.data.itemCount} {isZh ? "条目" : "items"}</span>
+              <span aria-hidden="true">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</DocsLayout>
+
+<style>
+  .weekly-index {
+    display: grid;
+    gap: var(--sp-l);
+  }
+
+  .weekly-index-header {
+    padding-block-end: var(--sp-m);
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .weekly-eyebrow {
+    margin: 0 0 var(--sp-xs);
+    color: var(--color-theme);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  .weekly-index-title {
+    margin: 0;
+  }
+
+  .weekly-index-description {
+    max-inline-size: 48rem;
+    margin: var(--sp-s) 0 0;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .weekly-index-section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-s);
+    margin-block-end: var(--sp-s);
+  }
+
+  .weekly-index-section-heading h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .weekly-index-section-heading span {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .weekly-index-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .weekly-index-card {
+    display: grid;
+    gap: 0.55rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: inherit;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .weekly-index-card:visited,
+  .weekly-index-card:hover,
+  .weekly-index-card:focus-visible {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+  }
+
+  .weekly-index-card :where(h3, p, span, time, div) {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+  }
+
+  .weekly-index-card:hover,
+  .weekly-index-card:focus-visible {
+    border-color: var(--color-border-strong);
+    background: var(--color-theme-soft);
+    transform: translateY(-1px);
+  }
+
+  .weekly-index-card__topline,
+  .weekly-index-card__meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .weekly-index-card__issue {
+    color: var(--color-theme);
+    font-size: var(--text-sm);
+    font-weight: 800;
+  }
+
+  .weekly-index-card time,
+  .weekly-index-card__meta {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .weekly-index-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .weekly-index-card p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .weekly-index-card__meta span:last-child {
+    color: var(--color-theme);
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  @media (max-width: 560px) {
+    .weekly-index-card__meta {
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+  }
+</style>

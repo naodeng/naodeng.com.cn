@@ -8,9 +8,9 @@ interface Props { locale: Lang }
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const topicLinks = locale === "zh-cn" ? [
-  { label: "QA Skills", meta: "完整测试任务的可复用能力包", href: getRelativeLocaleUrl(locale, "/qaskills") },
-  { label: "Prompts", meta: "可复制、可调整的测试输入模板", href: getRelativeLocaleUrl(locale, "/prompts") },
-  { label: "AI Wiki", meta: "AI 测试与智能体知识库", href: getRelativeLocaleUrl(locale, "/AIWiki") },
+  { label: "QA 技能", meta: "完整测试任务的可复用能力包", href: getRelativeLocaleUrl(locale, "/qaskills") },
+  { label: "提示词", meta: "可复制、可调整的测试输入模板", href: getRelativeLocaleUrl(locale, "/prompts") },
+  { label: "AI 百科", meta: "AI 测试与智能体知识库", href: getRelativeLocaleUrl(locale, "/AIWiki") },
 ] : [
   { label: "QA Skills", meta: "Reusable packages for complete QA tasks", href: getRelativeLocaleUrl(locale, "/qaskills") },
   { label: "Prompts", meta: "Copy-ready inputs for testing work", href: getRelativeLocaleUrl(locale, "/prompts") },
@@ -71,14 +71,7 @@ const topicLinks = locale === "zh-cn" ? [
   }
 
   .home-hero--a::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: .55;
-    background:
-      radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--color-theme) 13%, transparent), transparent 28%),
-      linear-gradient(90deg, transparent 0 72%, color-mix(in srgb, var(--color-theme) 5%, transparent) 72% 72.1%, transparent 72.1%);
+    display: none;
   }
 
   .hero-a__shell {
@@ -158,7 +151,7 @@ const topicLinks = locale === "zh-cn" ? [
   .glass-hero .pill-cta--primary {
     border: 1px solid var(--color-theme);
     background: var(--color-theme);
-    color: #fff;
+    color: var(--color-theme-on-dark);
   }
 
   .glass-hero .pill-cta--ghost {
@@ -287,6 +280,31 @@ const topicLinks = locale === "zh-cn" ? [
     .glass-hero .pill-cta:hover,
     .glass-hero .pill-cta:focus-visible {
       transform: none;
+    }
+  }
+
+  /* Proofline hero: rely on a rule and signal rail, not a decorative gradient. */
+  .glass-hero {
+    background: var(--color-base);
+  }
+  .hero-a__copy {
+    border-inline-start: 1px solid color-mix(in srgb, var(--color-theme) 46%, var(--color-border));
+    padding-inline-start: clamp(1rem, 2vw, 1.5rem);
+  }
+  .glass-hero .pill-cta--primary {
+    color: var(--color-theme-on-dark);
+    box-shadow: var(--shadow-sm);
+  }
+  .glass-hero .pill-cta:hover,
+  .glass-hero .pill-cta:focus-visible {
+    transform: translateY(-1px);
+  }
+  @media (max-width: 680px) {
+    .hero-a__copy {
+      border-inline-start: 0;
+      border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 46%, var(--color-border));
+      padding-inline-start: 0;
+      padding-block-start: 1rem;
     }
   }
 </style>

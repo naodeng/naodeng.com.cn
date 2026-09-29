@@ -17,6 +17,16 @@ test.describe("zenix homepage exploration", () => {
       await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(
         lang === "zh-cn" ? 4 : 3,
       );
+      await expect(page.locator(`.home-product-link[href='/${lang}/dsh-qa/']`)).toBeVisible();
+      await expect(page.locator(`.home-product-link[href='/${lang}/ai-test-auditor/']`)).toBeVisible();
+      if (lang === "zh-cn") {
+        await expect(page.locator("#home-product-links-title")).toHaveText("产品官网");
+        await expect(page.locator(".home-product-link strong").nth(0)).toHaveText("DSH-QA");
+        await expect(page.locator(".home-product-link strong").nth(1)).toHaveText("AI test audit");
+        await expect(page.getByText("Product sites", { exact: true })).toHaveCount(0);
+        await expect(page.getByText("Explore the products behind the work", { exact: true })).toHaveCount(0);
+        await expect(page.locator(".task-card__chip").filter({ hasText: "技能" }).first()).toBeVisible();
+      }
       await expect(page.locator(".home-post-list > li")).toHaveCount(4);
       await expect(page.locator(".home-grid").first()).toBeVisible();
       // 五段式收敛后，旧独立长区块不再存在
@@ -138,6 +148,16 @@ test.describe("home information architecture", () => {
     // 区块标题归位 DESIGN.md 阶梯：headline = 1.3 × 根字号
     const titleRatio = parseFloat(layout.titleSize) / parseFloat(layout.rootSize);
     expect(titleRatio).toBeCloseTo(1.3, 1);
+  });
+
+  test("Proofline home hero uses a signal rail without decorative gradient or blur", async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/en/`);
+    const styles = await page.locator(".home-hero").evaluate((element) => {
+      const cs = getComputedStyle(element);
+      return { backgroundImage: cs.backgroundImage, backdropFilter: cs.backdropFilter };
+    });
+    expect(styles.backgroundImage).toBe("none");
+    expect(styles.backdropFilter).toBe("none");
   });
 
   test("task navigator uses a compact two-column desktop list and one mobile column", async ({ page, baseURL }) => {

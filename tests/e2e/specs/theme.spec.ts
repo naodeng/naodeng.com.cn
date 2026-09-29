@@ -94,4 +94,19 @@ test.describe("主题切换", () => {
     const themeOnBlog = await htmlElement.getAttribute("data-theme") || await htmlElement.getAttribute("class");
     expect(themeOnBlog).toBe(themeOnHome);
   });
+
+  test("Proofline theme-color follows the resolved light and dark surface", async ({ page, baseURL }) => {
+    await page.emulateMedia({ colorScheme: "light" });
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
+    await page.evaluate(() => localStorage.removeItem("themePreference"));
+    await page.reload({ waitUntil: "domcontentloaded" });
+
+    const themeColor = page.locator('meta[name="theme-color"]');
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await expect(themeColor).toHaveAttribute("content", "#faf9f6");
+
+    await page.evaluate(() => window.setThemePreference?.("dark"));
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect(themeColor).toHaveAttribute("content", "#13191c");
+  });
 });

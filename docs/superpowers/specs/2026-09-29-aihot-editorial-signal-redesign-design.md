@@ -1,14 +1,16 @@
-# AIHOT Editorial Signal 全站主题改造设计
+# Proofline 全站主题改造设计
+
+> **Proofline — A QA-inspired editorial system built around evidence, signals, and clarity.**
 
 ## 状态
 
-用户已确认采用 AIHOT 风格，并要求 dsh-qa、AI Test Auditor、Guild 与内容页面使用同一套主题。本文档用于实现前评审；Docs 旧模板明确不纳入本次改造。
+用户已确认主题名称为 Proofline，视觉参考 AIHOT 风格，并要求 dsh-qa、AI Test Auditor、Guild 与内容页面使用同一套主题。本文档用于实现前评审；Docs 旧模板明确不纳入本次改造。
 
 ## 目标
 
-将现有 Astro 双语内容站从“蓝紫色、玻璃卡片、页面局部风格叠加”收敛为统一的 Editorial Signal 设计系统：
+将现有 Astro 双语内容站从“蓝紫色、玻璃卡片、页面局部风格叠加”收敛为统一的 Proofline 设计系统：
 
-- 视觉方向参考 AIHOT 的编辑型 AI 情报站，而不是复制其页面或内容；
+- Proofline 的视觉方向参考 AIHOT 的编辑型 AI 情报站，而不是复制其页面或内容；
 - 所有页面族共享同一套浅色/深色主题、字体、间距、边框、控件和交互状态；
 - 解决前一轮 review 中确认的 Wiki/AI Wiki 重复信息架构、英文移动端布局、页面留白、卡片同质化和主题 token 不一致问题；
 - 保留所有现有路由、双语路径、内容链接、SEO 入口和产品功能；
@@ -40,7 +42,24 @@
 - 路由、域名、部署配置和现有外部链接的无理由变更；
 - 新增 UI 框架、设计系统依赖、图标库或运行时依赖；
 - 通过虚构内容填充 Bruno TODO；
-- 将所有页面强制改成 AIHOT 的固定左侧导航结构。
+- 将所有页面强制改成 AIHOT 参考站的固定左侧导航结构。
+
+### 页面覆盖矩阵
+
+本矩阵是实现范围的闭合清单；实现计划中的任务必须明确修改或验证每一行，不能把页面留给“收尾扫描”自行发现。
+
+| 页面/能力族 | 关键源码 | 计划任务 | 验收入口 |
+| --- | --- | --- | --- |
+| 全局主题与共享交互 | `src/styles/base.css`、`src/styles/layout.css`、`src/layouts/Base.astro`、`src/components/{Header,Footer,PageHeadline,TableOfContents,PaginationNav,SearchModal}.astro` | Task 1–2 | `theme.spec.ts`、`header.spec.ts`、`footer.spec.ts`、`interaction.spec.ts`、`search.spec.ts` |
+| 首页与集合页 | `src/pages/[lang]/index.astro`、`archive`、`projects`、`resources.astro`、`series`、`tags`、`about.astro` | Task 3 | `home.spec.ts`、`editorial-review.spec.ts`、`responsive.spec.ts` |
+| 法律、工具与错误页 | `privacy.astro`、`copyright.astro`、`sponsor.astro`、`sitemap.astro`、`src/pages/{404,en/404,zh-cn/404}.astro` | Task 3 | 新增 `site-pages.spec.ts` |
+| Wiki 与 AI Wiki | `src/pages/[lang]/wiki`、`src/pages/[lang]/AIWiki`、`src/layouts/Docs.astro`、`src/components/DocsSidebar.astro` | Task 4 | Wiki、搜索、相关术语和响应式测试 |
+| Blog、Prompts、QA Skills、Weekly | `src/pages/[lang]/blog`、`prompts`、`qaskills`、`ai-native-qa-weekly` | Task 5 | `blog-editorial.spec.ts`、`prompts.spec.ts`、`qaskills.spec.ts`、新增 `weekly.spec.ts` |
+| Guild | `src/components/guild`、`src/pages/[lang]/guild` | Task 6 | `guild.spec.ts` 与响应式测试 |
+| dsh-qa、AI Test Auditor | `src/pages/[lang]/dsh-qa`、`src/pages/[lang]/ai-test-auditor` | Task 7 | `dsh-qa.spec.ts`、新增 `ai-test-auditor.spec.ts` |
+| 内容状态与特殊路由 | Bruno 双语内容、`links.astro`、`qaskills/detail-prototype.astro`、英文 Wiki redirect | Task 8 | `links.spec.ts`、新增 `wiki-redirect.spec.ts`、Prototype 隔离单元测试 |
+
+`src/content/docs/` 只允许被验证为未修改；Docs layout 的表面迁移归 Task 4，但不改变其中的旧模板内容。
 
 ## 主题系统
 
@@ -48,15 +67,21 @@
 
 | 语义角色 | 浅色 | 深色 |
 | --- | --- | --- |
-| 页面背景 | `#faf9f6` | `#13191c` |
-| 内容表面 | `#ffffff` | `#1a2226` |
-| 主文字 | `#202a30` | `#e7eceb` |
-| 次级文字 | 暖灰蓝绿 | 灰绿低对比 |
-| 普通边框 | `#dfe4e1` | 深灰绿细线 |
-| 强调色 | `#176b75` | `#12ccd8` |
-| 代码表面 | 与背景同色系的深浅层 | 与背景同色系的深浅层 |
+| 页面背景 / `--color-base` / `--color-canvas` | `#faf9f6` | `#13191c` |
+| 内容表面 / `--color-surface` | `#ffffff` | `#1a2226` |
+| 抬升表面 / `--color-surface-elevated` | `#ffffff` | `#202b2f` |
+| 主文字 / `--color-main` | `#202a30` | `#e7eceb` |
+| 次级文字 / `--color-text-secondary` | `#5c6b6d` | `#a8b6b5` |
+| 三级文字 / `--color-text-tertiary` | `#738184` | `#819390` |
+| 普通边框 / `--color-border` | `#dfe4e1` | `#344247` |
+| 强化边框 / `--color-border-strong` | `#b9cfcb` | `#4d686c` |
+| 强调色 / `--color-theme` | `#176b75` | `#12ccd8` |
+| 焦点强调 / `--color-theme-focus` | `#0f5962` | `#7de6ec` |
+| 代码表面 / `--color-code-surface` | `#f1f5f3` | `#202b2f` |
 
-实现时使用语义变量，如 `--color-base`、`--color-surface`、`--color-main`、`--color-text-secondary`、`--color-border`、`--color-theme` 和 `--color-code-surface`。组件不得继续直接引入新的蓝紫色或独立产品主色。
+实现时使用上述语义变量。`--color-theme` 是稀缺的信号色，只用于 CTA、链接交互、当前项、状态和少量指标/标记；正文标题、普通导航文字、默认表面和普通边框使用中性色，不把强调色扩展成页面主色。`--color-theme-on-dark` 浅色取 `#ffffff`、深色取 `#13191c`；`--color-theme-soft` 与 `--color-theme-soft-hover` 分别使用以下固定公式：浅色为 `color-mix(in srgb, #176b75 10%, #ffffff)` / `color-mix(in srgb, #176b75 16%, #ffffff)`，深色为 `color-mix(in srgb, #12ccd8 10%, #13191c)` / `color-mix(in srgb, #12ccd8 16%, #13191c)`。组件不得继续直接引入新的蓝紫色或独立产品主色。
+
+旧 `color-glass-*`、`color-mist-secondary`、`gradient-theme`、`shadow-glass-*` 和 `shadow-product` 可以作为迁移期兼容别名保留，但不计入新主题的默认材质。测试要断言新组件不消费这些别名，而不是要求它们立即从变量表中消失。
 
 ### 表面与形状
 
@@ -106,13 +131,13 @@
 
 ### 首页与内容入口
 
-首页采用 Editorial Signal 结构：简洁主标题、强调线、站点用途说明、任务入口、内容统计和探索分区。保留现有 CTA 与链接，不引入 AIHOT 的新闻内容。
+首页采用 Proofline 结构：简洁主标题、强调线、站点用途说明、任务入口、内容统计和探索分区。保留现有 CTA 与链接，不引入 AIHOT 的新闻内容。
 
 ### Blog 与长文
 
 - 精选文章改成可伸缩的 editorial lead，英文长标题不得被窄列挤压；
 - 普通文章减少卡片阴影，使用细边框、元信息行和清晰的阅读入口；
-- 文章正文、代码块、表格、相关链接和 TOC 使用同一套表面与颜色 token；
+- 文章正文、标题、代码块、表格、相关链接和 TOC 使用同一套表面与颜色 token；正文标题保持中性，强调色只出现在链接、当前项、状态和操作反馈；
 - 保留文章 URL、分享、评论、标签和双语结构。
 
 ### Wiki 与 AI Wiki
@@ -134,7 +159,7 @@
 
 ### Guild
 
-Guild 完整迁移到同一 Editorial Signal 主题：
+Guild 完整迁移到同一 Proofline 主题：
 
 - 保留测试类型、框架、文章层级和现有链接；
 - 删除独立蓝紫/玻璃/高圆角视觉；
@@ -157,7 +182,7 @@ Guild 完整迁移到同一 Editorial Signal 主题：
 
 - Weekly 周期选择器在英文下应完整显示，长 TOC 在窄屏应可折叠或限制宽度；
 - About 使用更紧凑的介绍和统计层级；
-- Links 隐藏多个空占位，改为真实链接或单一提交入口；
+- Links 隐藏所有空占位，只保留现有真实友链和已有邮件联系说明作为提交入口；不新增路由或外部目标；
 - 404 保留自动返回功能前先确保用户可以读完错误信息，并提供清晰的手动返回入口。
 
 ## 内容与路由治理
@@ -180,6 +205,8 @@ Guild 完整迁移到同一 Editorial Signal 主题：
 - 不出现在普通内容导航、站点地图或推荐入口；
 - 最终方向确定后，再单独决定删除或归档，不在本次主题改造中强行删除。
 
+实现时用 `tests/unit/qaskillsPrototypeIsolation.test.ts` 检查以下现有入口源码不包含 `/qaskills/detail-prototype`：`src/components/Header.astro`、`src/components/Footer.astro`、`src/pages/[lang]/sitemap.astro`、`src/utils/seoUrls.ts`、`src/components/qaskills/RecommendedQASkills.astro`、`src/pages/[lang]/qaskills/index.astro`、`src/components/home/HomeGlassHero.astro`、`src/components/home/HomeCapabilityGuide.astro` 和 `src/components/home/HomeTaskNavigator.astro`。页面自身继续检查 `noindex,nofollow` 与 Prototype 标识。
+
 ### 英文 Wiki 外部重定向
 
 检查 `/en/wiki/acceptance-testing/` 的外部重定向是否仍为产品意图：
@@ -187,6 +214,8 @@ Guild 完整迁移到同一 Editorial Signal 主题：
 - 若没有英文本地内容，保留目标并补充明确的链接语义；
 - 不因为视觉改造擅自替换外部目标；
 - 若未来有对应英文内容，再单独迁移并验证旧链接。
+
+由于当前项目保持静态 Astro 输出且部署配置不在本轮范围，当前验收目标固定为 `/en/wiki/acceptance-testing/` 生成 200 的静态 redirect artifact，并包含指向 `https://ray.run/wiki#acceptance-testing` 的 meta refresh 与 canonical；由 `tests/e2e/specs/wiki-redirect.spec.ts` 直接验证。若未来要求真实 HTTP 3xx，应另开部署/托管配置任务。
 
 ## 技术边界
 
@@ -210,6 +239,8 @@ Guild 完整迁移到同一 Editorial Signal 主题：
 - `cd tests && npm run test:unit`
 - `cd tests && npm run test:e2e`
 
+页面族专项验收还必须包含：`cd tests && npm run test:e2e -- specs/site-pages.spec.ts specs/weekly.spec.ts specs/wiki-redirect.spec.ts`，以及 Prototype 隔离单元测试。若某个页面没有独立现成 spec，必须创建对应的专项 spec，不能只依赖全站链接扫描。
+
 ### 视觉与交互检查
 
 至少在 375px、390px、768px、1024px、1440px 下验证：
@@ -223,7 +254,7 @@ Guild 完整迁移到同一 Editorial Signal 主题：
 
 ### 接受标准
 
-1. 所有纳入范围的页面共享同一套 AIHOT Editorial Signal 主题，且 dsh-qa、AI Test Auditor、Guild 不再是视觉例外。
+1. 所有纳入范围的页面共享同一套 Proofline 主题，且 dsh-qa、AI Test Auditor、Guild 不再是视觉例外。
 2. 中文和英文主要路由可访问，现有链接目标没有被无意改变。
 3. Wiki/AI Wiki 重复导航明显减少，移动端仍能快速定位术语。
 4. 英文 Prompts、Blog、Weekly 的已确认响应式问题消失。

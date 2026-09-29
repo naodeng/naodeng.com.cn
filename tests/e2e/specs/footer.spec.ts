@@ -10,6 +10,18 @@ test("Chinese footer exposes the official-account QR code and RSS without overfl
 
 test("English footer keeps navigation and social destinations visible", async ({ page, baseURL }) => {
   await page.goto(`${baseURL || ""}/en/`, { waitUntil: "domcontentloaded" });
-  await expect(page.locator("footer [data-footer-group]")).toHaveCount(4);
+  await expect(page.locator("footer [data-footer-group]")).toHaveCount(5);
+  await expect(page.locator("footer a[href='/en/dsh-qa/']")).toBeVisible();
+  await expect(page.locator("footer a[href='/en/ai-test-auditor/']")).toBeVisible();
   await expect(page.locator("footer a[href='https://github.com/naodeng']")).toBeVisible();
+});
+
+test("Proofline footer uses a flat surface without gradients or blur", async ({ page, baseURL }) => {
+  await page.goto(`${baseURL || ""}/en/`, { waitUntil: "domcontentloaded" });
+  const styles = await page.locator("footer.l-footer").evaluate((el) => {
+    const cs = getComputedStyle(el);
+    return { backgroundImage: cs.backgroundImage, backdropFilter: cs.backdropFilter };
+  });
+  expect(styles.backgroundImage).toBe("none");
+  expect(styles.backdropFilter).toBe("none");
 });

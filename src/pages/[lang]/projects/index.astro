@@ -24,7 +24,7 @@ export const getStaticPaths = () =>
 ---
 
 <Layout {title} description={description} breadcrumbs={breadcrumbs}>
-  <PageHeadline {title} />
+  <PageHeadline {title} compact />
 
   <div class="project-container">
     <div class="project-grid">
@@ -74,10 +74,10 @@ export const getStaticPaths = () =>
     padding: var(--sp-m);
     border-radius: var(--radius-lg);
     background: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
-    border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    border: 1px solid var(--color-border);
     text-decoration: none;
     color: inherit;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
 
@@ -97,7 +97,7 @@ export const getStaticPaths = () =>
   .project-name {
     margin: 0;
     font-size: 1.35rem;
-    color: var(--color-theme);
+    color: var(--color-main);
     font-weight: 800;
     line-height: 1.2;
   }
@@ -127,7 +127,7 @@ export const getStaticPaths = () =>
   .external-icon {
     color: var(--color-theme);
     opacity: 0.4;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   .project-card:hover .external-icon {
@@ -146,10 +146,10 @@ export const getStaticPaths = () =>
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.2rem 0.6rem;
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-    color: var(--color-theme);
+    background: var(--color-surface-muted);
+    color: var(--color-text-secondary);
     border-radius: var(--radius-sm);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 10%, transparent);
+    border: 1px solid var(--color-border);
   }
 
   .project-desc {
@@ -164,7 +164,7 @@ export const getStaticPaths = () =>
     display: flex;
     align-items: center;
     padding-block-start: 1rem;
-    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 10%, transparent);
+    border-block-start: 1px solid var(--color-border);
   }
 
   .view-link {

@@ -27,7 +27,7 @@ export const getStaticPaths = () =>
 ---
 
 <Layout {title}>
-  <PageHeadline {title} />
+  <PageHeadline {title} compact />
 
   <section class="sponsor-section">
     <h2 class="section-title">{t(SPONSOR_WHY_TITLE)}</h2>
@@ -90,16 +90,12 @@ export const getStaticPaths = () =>
   .sponsor-section {
     margin-block-start: var(--sp-l);
     padding-block-start: var(--sp-m);
-    border-block-start: 1px solid color-mix(
-      in srgb,
-      var(--color-theme) 20%,
-      transparent
-    );
+    border-block-start: 1px solid var(--color-border);
   }
   .section-title {
     font-size: 1.35rem;
     letter-spacing: 0.05em;
-    color: var(--color-theme);
+    color: var(--color-main);
     margin-block-end: var(--sp-m);
   }
   .prose :global(ul) {
@@ -121,7 +117,8 @@ export const getStaticPaths = () =>
   .method-card {
     padding: var(--sp-m);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-theme) 6%, transparent);
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -130,7 +127,7 @@ export const getStaticPaths = () =>
   }
   .method-card h3 {
     font-size: 1.1rem;
-    color: var(--color-theme);
+    color: var(--color-main);
   }
   .method-card p {
     font-size: 0.9rem;
@@ -160,6 +157,6 @@ export const getStaticPaths = () =>
     text-align: center;
     font-size: 1.2rem;
     margin-block: var(--sp-m);
-    color: var(--color-theme);
+    color: var(--color-main);
   }
 </style>

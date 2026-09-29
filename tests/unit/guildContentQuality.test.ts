@@ -97,4 +97,16 @@ describe("new Guild guide quality", () => {
     expect(english).toMatch(/allowed-origins/);
     expect(chinese).toMatch(/allowed-origins/);
   });
+
+  it("does not publish empty Bruno TODO headings in either language", () => {
+    const directory = resolve(repoRoot, "src/content/guild");
+    for (const locale of ["en", "zh-cn"] as const) {
+      const source = readFileSync(
+        resolve(directory, locale, "api-testing", "bruno", "introduction.md"),
+        "utf8",
+      );
+      expect(source).not.toMatch(/TODO/i);
+      expect(source).not.toMatch(/^#{2,4}.*(?:test report|more usage|测试报告|更多用法).*$/im);
+    }
+  });
 });

@@ -28,9 +28,18 @@ const breadcrumbs = [
 
 const allEntries = await getCollection("aiwiki");
 const entries = allEntries.filter((e) => (e.data.lang ? e.data.lang === locale : aiwikiIdToLang(e.id) === locale));
-const sidebarSections = buildAiWikiSidebar(entries, locale);
-const letterSections = sidebarSections.filter((s) => s.title);
+const fullSidebarSections = buildAiWikiSidebar(entries, locale);
+const letterSections = fullSidebarSections.filter((s) => s.title);
 const basePath = `/${locale}/AIWiki`;
+const sidebarSections = [
+  {
+    items: [{ label: locale === "zh-cn" ? "概述" : "Overview", href: "" }],
+  },
+  {
+    title: locale === "zh-cn" ? "词条" : "Entries",
+    items: letterSections.flatMap((section) => section.items),
+  },
+];
 const totalCount = entries.length;
 const letterGroupCount = letterSections.length;
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
@@ -72,7 +81,8 @@ const itemListSchema = {
   currentPath=""
   basePath={basePath}
   sidebarMenuLabel={locale === "zh-cn" ? "本页导航" : "On this page"}
-  sidebarSearchPlaceholder={locale === "zh-cn" ? "检索词条..." : "Search terms..."}
+  sidebarSearchPlaceholder={locale === "zh-cn" ? "检索词条…" : "Search terms…"}
+  sidebarSearchTargetId="aiwiki-search"
 >
   <header class="wiki-hero">
     <h1 class="wiki-hero-title">{title}</h1>
@@ -155,7 +165,7 @@ const itemListSchema = {
 
   :global(.docs-sidebar-inner) {
     border-inline-start: none !important;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    border: 1px solid var(--color-border) !important;
     border-radius: var(--radius-md) !important;
     overflow: hidden;
     box-shadow: none;
@@ -236,7 +246,7 @@ const itemListSchema = {
   }
   .wiki-letter-index-link:hover,
   .wiki-letter-index-link:focus-visible {
-    color: #fff;
+    color: var(--color-theme-on-dark);
     background: var(--color-theme);
     border-color: var(--color-theme);
   }
@@ -244,7 +254,7 @@ const itemListSchema = {
     margin-block-end: var(--sp-l);
     padding: var(--sp-m);
     padding-inline-start: var(--sp-m);
-    border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 28%, transparent);
+    border-inline-start: 1px solid var(--color-border-strong);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     background: color-mix(in srgb, var(--color-main) 4%, var(--color-base));
     scroll-margin-block-start: 1.5rem;
@@ -287,7 +297,7 @@ const itemListSchema = {
   .wiki-back-top {
     margin: var(--sp-l) 0 0;
     padding-block-start: var(--sp-m);
-    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    border-block-start: 1px solid var(--color-border);
     text-align: center;
   }
   .wiki-back-top-link {

@@ -62,6 +62,19 @@ const exploreCards = HOME_EXPLORE_CARDS[locale].map((card) => ({
         }[card.key] ?? "",
 }));
 
+const productLinks = [
+  {
+    href: getRelativeLocaleUrl(locale, "/dsh-qa"),
+    title: "DSH-QA",
+    desc: locale === "zh-cn" ? "面向 AI 测试的质量工作台" : "A quality workbench for AI testing",
+  },
+  {
+    href: getRelativeLocaleUrl(locale, "/ai-test-auditor"),
+    title: "AI test audit",
+    desc: locale === "zh-cn" ? "用证据审计 AI 测试结果" : "Audit AI testing results with evidence",
+  },
+];
+
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
     params: { lang },
@@ -165,10 +178,12 @@ const homePageSchema = {
 
 
     <HomeExploreHub
+      locale={locale}
       title={t(HOME_EXPLORE_TITLE)}
       subtitle={t(HOME_EXPLORE_SUBTITLE)}
       moreLabel={t(HOME_EXPLORE_MORE)}
       cards={exploreCards}
+      productLinks={productLinks}
     />
   </div>
 </Layout>
@@ -248,14 +263,14 @@ const homePageSchema = {
     justify-content: center;
     min-height: 44px;
     padding: 11px 22px;
-    border-radius: 9999px;
+    border-radius: var(--radius-sm);
     font-size: 17px;
     text-decoration: none;
   }
 
   .pill-cta--primary {
     background: var(--color-theme);
-    color: #fff;
+    color: var(--color-theme-on-dark);
   }
 
   .pill-cta--ghost {
@@ -332,7 +347,7 @@ const homePageSchema = {
     width: 92px;
     height: 5px;
     margin: 22px auto 0;
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     background: var(--color-theme);
   }
 
@@ -351,17 +366,17 @@ const homePageSchema = {
   .pill-cta {
     min-height: 48px;
     padding: 12px 22px;
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
     font-weight: 800;
-    box-shadow: var(--shadow-sm);
+    box-shadow: none;
   }
 
   .pill-cta--primary {
     background: var(--color-theme);
-    color: white;
+    color: var(--color-theme-on-dark);
     border: 0;
-    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.2);
+    box-shadow: none;
   }
 
   .pill-cta--ghost {
@@ -524,5 +539,19 @@ const homePageSchema = {
   :global(html[data-theme="dark"]) .home-band:nth-of-type(even)::before { background: color-mix(in srgb, var(--color-surface) 72%, transparent); }
   :global(html[data-theme="dark"]) .home-post-item { background: transparent; border-color: var(--color-border); }
   :global(html[data-theme="dark"]) .home-post-list > li:first-child .home-post-item { background: var(--color-theme-soft); }
+
+  /* Proofline home surfaces stay quiet and measurable. */
+  :global(.home-band:nth-of-type(even))::before { background: var(--color-surface-muted); }
+  :global(.home-band),
+  :global(.home-band--white),
+  :global(.home-band--muted) { background-color: transparent; }
+  .home-post-item {
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+  }
+  .home-post-item:hover,
+  .home-post-item:focus-visible {
+    background: var(--color-theme-soft);
+    transform: translateX(2px);
+  }
 
 </style>

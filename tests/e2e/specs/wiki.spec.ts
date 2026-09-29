@@ -22,7 +22,26 @@ test.describe("百科（Wiki）", () => {
 
   test("zh-cn 百科首页：按字母浏览区可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
-    await expect(page.getByRole("heading", { name: "按字母浏览" })).toBeVisible();
+    await expect(page.locator(".wiki-by-letter-main-title")).toBeVisible();
+  });
+
+  test("zh-cn 百科首页：侧栏直接提供词条名称，完整索引留在主区", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("#docs-sidebar-search-input")).toBeVisible();
+    expect(await page.locator(".docs-sidebar-link").count()).toBeGreaterThan(20);
+    await expect(page.locator(".docs-sidebar-link[href='/zh-cn/wiki/acceptance-testing/']")).toBeVisible();
+    await expect(page.locator(".docs-sidebar-link[href='/zh-cn/wiki/#letter-A']")).toHaveCount(0);
+    expect(await page.locator(".wiki-letter-link").count()).toBeGreaterThan(20);
+    await expect(page.locator("#wiki-search")).toBeVisible();
+  });
+
+  test("zh-cn AI Wiki 首页：侧栏直接提供词条名称，完整索引留在主区", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/AIWiki/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("#docs-sidebar-search-input")).toBeVisible();
+    expect(await page.locator(".docs-sidebar-link").count()).toBeGreaterThan(20);
+    await expect(page.locator(".docs-sidebar-link[href='/zh-cn/AIWiki/ai-agent/']")).toBeVisible();
+    await expect(page.locator(".docs-sidebar-link[href='/zh-cn/AIWiki/#letter-A']")).toHaveCount(0);
+    await expect(page.locator("#aiwiki-search")).toBeVisible();
   });
 
   test("en 百科首页：标题与 ray.run 外链可见", async ({ page, baseURL }) => {
@@ -52,9 +71,15 @@ test.describe("百科（Wiki）", () => {
     await expect(page).toHaveURL(/\/zh-cn\/wiki\/?$/);
   });
 
-  test("zh-cn 从百科首页点击侧栏词条进入词条页", async ({ page, baseURL }) => {
+  test("zh-cn 百科侧栏检索会同步主区检索", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
-    const entryLink = page.locator(".docs-sidebar a[href*='/zh-cn/wiki/acceptance-testing']").first();
+    await page.locator("#docs-sidebar-search-input").fill("acceptance");
+    await expect(page.locator("#wiki-search")).toHaveValue("acceptance");
+  });
+
+  test("zh-cn 从百科首页点击主区词条进入词条页", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/wiki/", { waitUntil: "domcontentloaded" });
+    const entryLink = page.locator(".wiki-letter-link[href*='/zh-cn/wiki/acceptance-testing']").first();
     await expect(entryLink).toBeVisible({ timeout: 10000 });
     await entryLink.click();
     await expect(page).toHaveURL(/\/zh-cn\/wiki\/acceptance-testing\/?/);
@@ -66,6 +91,20 @@ test.describe("百科（Wiki）", () => {
     const activeLink = page.locator(".docs-sidebar-link--active").first();
     await expect(activeLink).toBeVisible();
     await expect(activeLink).toHaveAttribute("aria-current", "page");
+  });
+
+  test("zh-cn 百科词条页侧栏直接显示词条名称，不显示字母导航", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/wiki/accessibility-testing/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator(".docs-sidebar-link[href='/zh-cn/wiki/accessibility-testing/']")).toBeVisible();
+    await expect(page.locator(".docs-sidebar-link[href='/zh-cn/wiki/#letter-A']")).toHaveCount(0);
+    await expect(page.locator(".docs-sidebar-link--active")).toHaveText(/无障碍测试/);
+  });
+
+  test("zh-cn AI Wiki 词条页侧栏直接显示词条名称，不显示字母导航", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/AIWiki/ai-agent/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator(".docs-sidebar-link[href='/zh-cn/AIWiki/ai-agent/']")).toBeVisible();
+    await expect(page.locator(".docs-sidebar-link[href='/zh-cn/AIWiki/#letter-A']")).toHaveCount(0);
+    await expect(page.locator(".docs-sidebar-link--active")).toBeVisible();
   });
 
   test("zh-cn 百科页：头部、主体、底部可见", async ({ page, baseURL }) => {

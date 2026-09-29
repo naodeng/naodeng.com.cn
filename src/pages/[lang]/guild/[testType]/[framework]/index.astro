@@ -290,9 +290,9 @@ const itemListSchema = {
 
   /* ── Hero header ── */
   .fw-hero {
-    background: color-mix(in srgb, var(--color-theme) 5%, var(--color-surface));
+    background: var(--color-surface);
     border: 0;
-    border-inline-start: 4px solid var(--color-theme);
+    border-inline-start: 1px solid var(--color-border-strong);
     border-radius: 0;
     padding: 1.75rem;
     display: flex;
@@ -352,9 +352,9 @@ const itemListSchema = {
   }
 
   .fw-badge--type {
-    color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+    color: var(--color-text-secondary);
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
   }
 
   .fw-badge--diff {
@@ -450,7 +450,7 @@ const itemListSchema = {
 
   .fw-link--start {
     background: var(--color-theme);
-    color: #fff;
+    color: var(--color-theme-on-dark);
     border: 1px solid var(--color-theme);
     font-size: 0.9rem;
   }
@@ -556,12 +556,12 @@ const itemListSchema = {
   .lp-pill--active {
     background: var(--color-theme);
     border-color: var(--color-theme);
-    color: #fff;
+    color: var(--color-theme-on-dark);
   }
 
   .lp-pill--active:hover {
     opacity: 0.9;
-    color: #fff;
+    color: var(--color-theme-on-dark);
   }
 
   .stage-section {
@@ -573,12 +573,12 @@ const itemListSchema = {
   .stage-title {
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--color-theme);
+    color: var(--color-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin: 0;
     padding-left: 0.75rem;
-    border-left: 3px solid var(--color-theme);
+    border-left: 1px solid var(--color-border);
   }
 
   .articles-grid {

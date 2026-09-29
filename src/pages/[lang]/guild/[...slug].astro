@@ -424,11 +424,11 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     padding: 0.6em 1.2em;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #fff !important;
+    color: var(--color-theme-on-dark) !important;
     background: var(--color-theme);
     border-radius: var(--radius-sm);
     text-decoration: none !important;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
 
   .guild-link:hover {
@@ -445,16 +445,16 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   .guild-related-terms {
     margin: 1.25rem 0 1rem;
     padding: 0.9rem 1rem;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 30%, transparent);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    background: var(--color-surface-muted);
     max-inline-size: 68ch;
   }
   .guild-related-terms h2 {
     margin: 0 0 0.75rem;
     font-size: 1rem;
     line-height: 1.2;
-    color: var(--color-theme);
+    color: var(--color-main);
   }
   .guild-related-terms-pills {
     display: flex;
@@ -466,12 +466,12 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     align-items: center;
     padding: 0.32rem 0.62rem;
     border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 45%, transparent);
-    color: var(--color-theme);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
     text-decoration: none !important;
     font-size: 0.86rem;
     font-weight: 600;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
   .guild-related-terms-pill:hover {
     color: var(--color-base) !important;
@@ -485,7 +485,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
 
   .guild-content :global(h2) {
     font-size: 1.5rem;
-    border-inline-start: 4px solid var(--color-theme);
+    border-inline-start: 1px solid var(--color-border-strong);
     padding-inline-start: var(--sp-s);
     margin-block: 2em 0.5em;
   }

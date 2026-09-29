@@ -36,7 +36,7 @@ export const getStaticPaths = () =>
 ---
 
 <Layout {title} description={description} breadcrumbs={breadcrumbs}>
-  <PageHeadline {title}>
+  <PageHeadline {title} compact>
     <p class="aggregate-meta">
       {seriesList.length} {locale === "zh-cn" ? "个系列" : "series"}
     </p>
@@ -94,7 +94,7 @@ export const getStaticPaths = () =>
     color: var(--color-main);
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.25s ease;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
   }
 
   .aggregate-item:hover {

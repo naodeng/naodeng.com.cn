@@ -47,7 +47,7 @@ test.describe("Prompt library discovery and review flow", () => {
     await page.goto(`${baseURL}/en/prompts/all/`, { waitUntil: "domcontentloaded" });
     await page.evaluate(() => document.documentElement.dataset.theme = "dark");
     const explorerPlaceholder = await page.locator("#prompt-explorer-search").evaluate((input) => getComputedStyle(input, "::placeholder").color);
-    expect(explorerPlaceholder).toBe("rgb(132, 144, 161)");
+    expect(explorerPlaceholder).toBe("rgb(129, 147, 144)");
   });
 
   test("header controls keep one size and one visible state on desktop and mobile", async ({ page, baseURL }) => {
