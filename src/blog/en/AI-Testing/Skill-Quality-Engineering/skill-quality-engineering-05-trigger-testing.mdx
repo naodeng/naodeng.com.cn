@@ -1,0 +1,173 @@
+---
+title: "Skill Trigger Testing: Can the Agent Select the Right Skill?"
+description: "Test Skill routing from discovery to trigger and neighboring capability selection with positive, negative, boundary, and paraphrase cases."
+date: 2026-11-17T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+An installed Skill does not mean the agent will use it for the right task.
+
+The agent may fail to discover it, find several candidates and choose the wrong one, or trigger it for a neighboring task. To the user, the symptom is one answer that feels off. To Skill engineering, these are different Discovery, Trigger, and Selection problems.
+
+## Discovery is not Trigger
+
+Discovery asks whether the agent has a chance to see the Skill. Trigger asks whether the current task should select it.
+
+| Question | Example | Evidence |
+| --- | --- | --- |
+| Discovery | Is the installed package visible by name and description? | Installation result, available Skill list |
+| Trigger | Does “design functional tests” invoke `functional-testing`? | Positive case |
+| Negative Trigger | Does “fix a Playwright locator” avoid it? | Negative case |
+| Boundary Selection | Does “review whether a requirement is testable” route to `testability-analysis`? | Boundary and contrastive case |
+
+The successful install command covers only the first row.
+
+## `description` is part of the routing contract
+
+The `name` identifies a Skill. The `description` tells the agent when it applies:
+
+```yaml
+name: functional-testing
+description: Use this skill when you need to design functional test plans or cases for business flows, UI, data, and integrations; triggers include functional testing and functional test cases.
+```
+
+It names the task, common language, and broad boundary without trying to put every implementation detail into the routing hint. If the description only says “helps with testing,” the agent has little basis for separating `functional-testing`, `testability-analysis`, `test-case-writing`, and `test-strategy`.
+
+A description change may affect Discovery, Trigger, and Selection. It needs a regression scope of its own, not only a formatting check.
+
+## Four basic Trigger case types
+
+### Positive
+
+A representative task that should trigger the Skill:
+
+```text
+Design functional tests for an e-commerce checkout, including successful payment, failed payment, roles, and data boundaries.
+```
+
+The expected selection is `functional-testing`, with coverage for scope, positive, negative, boundary, role, data, and integration concerns.
+
+### Negative
+
+A neighboring task that should not trigger it:
+
+```text
+Fix this Playwright locator so it does not fail when the button text changes.
+```
+
+That is closer to UI selector review or automation debugging than functional test design. A Negative Case does not mean the agent should do nothing; it means the agent should not route the task incorrectly to this Skill.
+
+### Boundary
+
+Boundary tasks expose ambiguity between neighboring capabilities:
+
+```text
+Before writing test cases, review whether this requirement is observable, controllable, isolated, and reproducible.
+```
+
+That task fits `testability-analysis` better. If the agent still invokes `functional-testing` and immediately writes cases, the routing boundary is not clear enough.
+
+### Paraphrase
+
+Users will not repeat the exact words in a description:
+
+```text
+Help me work out how to verify this checkout journey across normal, failure, and edge states.
+```
+
+Paraphrase cases test capability recognition rather than keyword matching.
+
+## Contrast `functional-testing` with `testability-analysis`
+
+Running a Positive Case for each Skill is not enough. The difficult tasks are the ones where both Skills understand the word “testing.”
+
+| Task | Preferred Skill | Failure to avoid |
+| --- | --- | --- |
+| Design functional scenarios for checkout | `functional-testing` | Give only abstract principles and no executable scenarios |
+| Review observability, controllability, isolation, and reproducibility | `testability-analysis` | Write cases before deciding testability |
+| Requirements lack roles and exception rules | Depends on the goal | Turn missing rules into facts |
+| Review whether test design covers risk | Requirement or test-review Skill | Treat a routing problem as a case-count problem |
+
+This is Contrastive Skill Evaluation. It tests the relationship between choices, not whether one isolated output looks reasonable.
+
+## When to use Trigger Precision and Recall
+
+With enough cases, teams can observe:
+
+- Trigger Precision: how many tasks that triggered the Skill really belonged to it;
+- Trigger Recall: how many tasks that should have triggered it actually did;
+- False Activation Rate: how often it triggered when it should not;
+- Missed Activation Rate: how often it failed to trigger when it should.
+
+A small Pilot does not need a pile of impressive numbers. Stable Positive, Negative, Boundary, and representative paraphrase cases usually expose more useful problems first.
+
+## Designing a useful Trigger Eval
+
+Do not write only a Skill name. Include the real task, domain object, neighboring capability, and expected route. Each case can record:
+
+```yaml
+id: functional-testing-boundary-001
+skill: functional-testing
+type: boundary
+task:
+  input: Review whether this checkout requirement is testable before designing cases.
+expected:
+  preferred_skill:
+    - testability-analysis
+  unexpected_skill:
+    - functional-testing
+```
+
+If there is no `skill.selection` evidence, do not call Trigger PASS just because the final prose looks useful. Selection is observable behavior too.
+
+## Debug a Trigger failure before rewriting the description
+
+Take a concrete failure: the user asks, “I need to understand whether this checkout page is testable,” and the Agent selects `functional-testing` instead of `testability-analysis`. Record what was visible, which phrases were present, and whether the two descriptions overlap before changing the `description`. Otherwise the rewrite can hide the cause.
+
+A small diagnostic matrix is enough:
+
+- run the request with the target Skill installed alone;
+- run it with the adjacent Skills available;
+- try a paraphrase that keeps the same intent;
+- add a negative request that should clearly belong elsewhere.
+
+For each run, record the selected Skill, whether that selection was expected, and any available reason or trace. If the target fails when installed alone, investigate discovery or package loading. If it works alone but fails when adjacent Skills are present, investigate routing overlap. If only one paraphrase fails, the boundary in the `description` may be too narrow. The user experiences all three as “the wrong Skill ran.” The repairs are different.
+
+This debugging keeps the Eval honest. A failed selection is evidence about a specific request set and available Skill set. It does not show that the Skill never triggers.
+
+## Installation and invocation
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill testability-analysis
+```
+
+Ask the agent to make the routing boundary explicit:
+
+```text
+First decide whether this task should use functional-testing or testability-analysis.
+Explain the selection and why the other Skill is not the preferred route.
+Then execute the preferred Skill.
+```
+
+## Two practical questions
+
+### Does a longer description make Trigger more accurate?
+
+Not automatically. A long description can add noise or blur neighboring capabilities. It should be specific about the task and boundary; execution detail belongs in the entry file and references.
+
+### Should every mis-trigger be fixed by changing the description?
+
+Start with evidence. The cause may be an unclear description, overlapping Skills, an installation scope problem, incomplete context, or a runtime loading issue. Changing one sentence may not fix the root cause.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [`testability-analysis` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testability-analysis)
+- [`testability-analysis` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testability-analysis)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

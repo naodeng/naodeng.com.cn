@@ -1,0 +1,190 @@
+---
+title: "Skill Benchmarking: Is the Skill Actually Better Than the Baseline?"
+description: "Use a controlled with-Skill versus without-Skill comparison to determine whether an Agent Skill creates real uplift instead of treating one PASS as effectiveness evidence."
+date: 2026-11-20T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+A Skill completing a task does not prove that it created additional value.
+
+A model may already produce a plausible test plan without the Skill. If we run only the with-Skill variant and see a complete answer, it is easy to write “the Skill made it better.” A benchmark separates the two questions: could the model do it already, or did the Skill make it better?
+
+## Eval PASS is not Added Value
+
+An Eval asks whether one Case behaved as expected. A Benchmark asks what changed between not using the Skill and using it under the same task, model, agent, and environment.
+
+```text
+Same Task
+Same Model
+Same Agent
+Same Environment
+
+Without Skill
+vs
+With Skill
+```
+
+If the model, prompt, tools, and context all change at once, attribution becomes difficult. The output may be better—or the model may simply be stronger.
+
+## A `functional-testing` baseline example
+
+Task: design functional tests for an e-commerce checkout and coupon flow.
+
+The Without Skill result may already cover successful payment and one invalid-coupon case. The With Skill result may additionally identify roles, data conditions, boundary rules, integration points, and undefined payment-failure behavior.
+
+Compare critical behavior, not word count:
+
+| Metric | What to inspect |
+| --- | --- |
+| Task Success | Did the result complete the intended task? |
+| Critical Behavior Coverage | Did it cover the business and risk behaviors that mattered? |
+| Finding Recall | How many known issues or gaps did it identify? |
+| Unsupported Claim Rate | Did it invent facts, fields, or root causes? |
+| Completeness | Did it preserve important inputs, scenarios, and constraints? |
+| Token / Latency / Tool Calls | What did the added quality cost? |
+
+A longer result is not automatically more valuable. If the extra detail is unsupported, it may be negative uplift.
+
+## The basic Benchmark Case
+
+```yaml
+id: functional-testing-benchmark-001
+skill: functional-testing
+type: benchmark
+variants:
+  - without_skill
+  - with_skill
+controls:
+  same_task: true
+  same_model: true
+  same_agent: true
+  same_environment: true
+metrics:
+  - task_success
+  - critical_coverage
+  - unsupported_claims
+  - tokens
+  - latency
+```
+
+The structure does not require every metric to be numeric. It requires the comparison and metric definitions to be explicit. Otherwise the team is comparing impressions.
+
+## Look for Negative Uplift
+
+A Skill can make some outcomes worse: more tokens, higher latency, or a tendency to over-analyze and invent rules.
+
+Do not show only the cases where the Skill wins. Record:
+
+- quality improvement;
+- cost increase;
+- no meaningful change;
+- quality decline or cost that is not worth the result.
+
+You can describe uplift conceptually:
+
+```text
+Skill Uplift = Outcome(with_skill) - Outcome(without_skill)
+```
+
+Do not rush to compress every dimension into one score. Quality, cost, stability, and coverage may involve real tradeoffs.
+
+## The baseline needs design too
+
+A weak baseline makes a Skill look unusually good. At minimum, document:
+
+1. who or what runs it;
+2. which prompt and default context are available;
+3. whether references and tools are allowed;
+4. the input and output format;
+5. how success is judged;
+6. whether runs are repeated and how variance is handled.
+
+If the baseline asks the model to answer freely while the Skill variant gets complete project material, the comparison is not controlled.
+
+## Repeated runs and interpretation
+
+LLM output is non-deterministic. An important benchmark can record:
+
+```text
+n
+Pass Rate
+pass@k
+Mean / Median
+Variance
+Confidence Interval
+```
+
+Small samples should not support overly precise claims. Three runs can expose an obvious instability, but not a complicated statistical conclusion.
+
+## Benchmark, Regression, and Quality Claim
+
+These are often mixed together:
+
+| Work | Comparison | What it answers |
+| --- | --- | --- |
+| Benchmark | Without Skill / With Skill | Did the Skill create uplift? |
+| Regression | Previous / Current Version | Did a change break established behavior? |
+| Quality Claim | Evidence set / claim | What can the current evidence support? |
+
+A passing benchmark does not prove that the new version has no regression. A passing regression suite does not prove that the Skill beats its baseline.
+
+## Put the result in a Quality Profile
+
+A useful report says more than “Benchmark PASS”:
+
+```text
+Skill: functional-testing
+Benchmark Status: PARTIAL
+Evidence Level: E3 Runtime
+Controls: same task/model/agent/environment
+Observed: critical coverage improved in selected cases
+Cost: token and latency increase observed
+Limitations: sample size small; no cross-agent comparison
+Next Step: expand representative cases before a broad claim
+```
+
+That can be valuable evidence without becoming a claim that every task will improve.
+
+## What a Benchmark result can support
+
+Benchmark results support narrow claims. Keep the task, model, environment, and evaluation rules stable when comparing Without Skill and With Skill. If one side gets a different prompt, more context, or a more forgiving Judge, the result describes the experiment—not the Skill.
+
+Ask a narrower question than “did the Skill work?” The With Skill condition may find more critical risks while using more Tokens. That supports a claim about risk coverage under the tested conditions. It does not prove lower cost, better latency, or general superiority. Record the dimensions separately and let the Quality Profile show the tradeoff.
+
+Track baseline drift separately. If the baseline prompt, task set, or evaluator changes, old results may no longer be comparable. Keep the baseline version with the result and rerun a small anchor set before calling a large change an uplift or regression.
+
+## Installation and invocation
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+Ask explicitly for a controlled comparison:
+
+```text
+Use the functional-testing Skill and design a benchmark for the same checkout requirement.
+Define the runtime conditions for both Without Skill and With Skill.
+Metrics: critical risk coverage, unsupported claims, task success, tokens, and latency.
+Do not change the model, environment, or task and then attribute the difference to the Skill.
+```
+
+## Two practical questions
+
+### If Without Skill already reaches 100% coverage, is the Skill useless?
+
+Maybe—or the Eval is too easy. Check whether high-risk behavior is missing, the metrics measure only format, or the Skill adds value through efficiency, maintainability, or consistency.
+
+### Should a poor benchmark result trigger an immediate Skill rewrite?
+
+First separate Skill Defect, Eval Defect, Infrastructure Defect, and Unknown. Treating an unfair baseline as a Skill problem sends the optimization in the wrong direction.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [`functional-testing` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

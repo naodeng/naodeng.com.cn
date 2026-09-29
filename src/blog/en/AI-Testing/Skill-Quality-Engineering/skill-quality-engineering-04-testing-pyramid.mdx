@@ -1,0 +1,153 @@
+---
+title: "The Skill Testing Pyramid: How Much Testing Is Enough?"
+description: "Use L1 through L4 test depth and E1 through E4 evidence levels to choose how far an Agent Skill should be tested."
+date: 2026-11-16T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+“Does every Skill need cross-model, cross-agent, benchmark, and real-project validation?”
+
+No.
+
+If every Skill is placed into the full `Skill × Language × Agent × Model × Environment × Case` Cartesian product, evaluation quickly becomes another maintenance problem. The useful question is narrower: what is the risk, what quality claim do we want to make, and what evidence is sufficient for that claim?
+
+## Test depth is not automatically better when it is higher
+
+SQEM describes four levels of Skill test depth:
+
+| Level | Name | Main question |
+| --- | --- | --- |
+| L1 | Valid | Are structure, static checks, and package integrity valid? |
+| L2 | Verified | Are critical positive, negative, boundary, and behavior contracts verified? |
+| L3 | Evaluated | Do repeated runs, benchmarks, regressions, and representative runtime evidence support the expected value? |
+| L4 | Proven | Is there cross-environment, real-project, historical-failure, and longitudinal evidence? |
+
+L4 means stronger evidence maturity, not perfection. A low-risk formatting Skill does not need L4 for credibility. A Skill that changes state or influences a release decision is risky if it stops at L1.
+
+## Test levels and evidence levels are different
+
+Test level describes how deeply you checked. Evidence level describes the strongest source of evidence:
+
+| Evidence | Source | Examples |
+| --- | --- | --- |
+| E1 Static | Static and structural checks | Lint, schema, metadata, reference integrity |
+| E2 Eval | Evaluation | Deterministic assertions, behavior evals, regression |
+| E3 Runtime | Real agent execution | Benchmark, cross-model, cross-agent runs |
+| E4 Real-world | Long-term project use | User feedback, real failures, historical trends |
+
+L3 does not automatically mean E3. If the runs happen only in an offline Eval Runner, E2 may still be the strongest evidence. More test cases do not magically upgrade the evidence level.
+
+## Use risk to select Evals
+
+SQEM suggests looking at reasoning complexity, trigger ambiguity, side effects, tool dependency, impact, model sensitivity, and failure detectability.
+
+| Dimension | Low | Medium | High |
+| --- | --- | --- | --- |
+| Reasoning Complexity | Simple formatting | Multi-step analysis | Complex judgment or tradeoffs |
+| Trigger Ambiguity | Unique description | Some overlap | Several neighboring Skills compete |
+| Side Effects | None | Creates artifacts | Changes state or external systems |
+| Impact | Low | Medium | Release, security, or user-data impact |
+| Failure Detectability | Obvious | Moderate | Looks correct while being wrong |
+
+The risk profile is not meant to become another single score. It chooses Required Eval Types, Target Test Level, Compatibility Scope, and Runtime Depth.
+
+## Two Skills, two different depths
+
+### A simple formatting Skill
+
+If a Skill only converts Markdown into a fixed JSON shape, has no tools or external side effects, and has a distinctive trigger, L1 plus a small behavior suite may be enough. Check the schema, fields, forbidden output, and a few boundary inputs.
+
+### `skill-change-verification`
+
+This Skill selects the smallest sufficient checks for a change and states exactly what the evidence supports. It involves change classification, static checks, evaluation, runtime checks, human review, and residual risk. If it treats `skill-up validate` as runtime semantic validation, the report can mislead every later decision.
+
+It therefore needs at least L2: Positive, Negative, Behavior, and Regression. If the project wants to claim support across agents or reliable use in real repositories, add L3 runtime and compatibility sampling. Long-term project evidence may eventually move it toward L4.
+
+## The evaluation pyramid
+
+You can think about cost and realism as a pyramid:
+
+```text
+                 Real-world
+                     ^
+              Compatibility
+                     ^
+                 Benchmark
+                     ^
+              Agent Runtime
+                     ^
+             Behavioral Eval
+                     ^
+          Deterministic Checks
+                     ^
+             Static Validation
+```
+
+The lower layers are usually faster, more stable, and better suited to pull requests. The higher layers are closer to real use, but more expensive and more exposed to model and environment variance.
+
+Start with deterministic checks, then spend limited runtime budget on the risks that actually need it. Higher is not always better.
+
+## A practical selection sequence
+
+I usually choose depth in this order:
+
+1. State the intended claim: valid package, correct behavior, effective, compatible, or proven in production-like use.
+2. Profile the risks: how ambiguous is the trigger, how visible is failure, and can the Skill change state?
+3. Give every maintained Skill L1 coverage.
+4. Add an L2 Core Eval Suite for Skills used in the project.
+5. Add L3 benchmarks, repeated runs, and compatibility only when the risk or claim needs them.
+6. Turn real failures, feedback, and historical regressions into the long-term evidence behind L4.
+
+## Why the Pilot starts with five Skills
+
+The Awesome QA Skills Pilot selects five different risk profiles: `functional-testing`, `testability-analysis`, `performance-testing`, `skill-evaluation-design`, and `skill-change-verification`. Together they cover general QA, analysis, domain-specific, and Skill engineering work.
+
+The Pilot does not force every Skill through the same process. It tests whether SQEM can be applied consistently across different Skills. The framework itself is being tested too—which matters.
+
+## Prioritize when the budget is limited
+
+Eval budgets have limits. Start with the risk that would be most expensive to miss. A formatting-only Skill can usually begin with L1 and a small behavior check. A Skill that edits files, calls tools, or influences a release decision deserves earlier L2 coverage and a clear failure path.
+
+When several Skills have similar risk, use change frequency and uncertainty to set the order. A frequently edited Skill accumulates regression risk. A Skill with an ambiguous Trigger or a large model-sensitive surface needs more representative cases. The Pilot then follows a reasoned order instead of whoever volunteered first.
+
+Write down what was deferred. “L3 not run” is acceptable when the Skill is low risk and the claim is limited. It becomes a problem when the team later writes a cross-model or production claim without changing the evidence level. The pyramid helps control the budget and keeps the claim inside the tested boundary.
+
+## Installation and invocation
+
+Install the Skill being evaluated:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill skill-change-verification
+```
+
+Make the change type and intended claim explicit:
+
+```text
+Use the skill-change-verification Skill.
+
+Change: the Skill description and one workflow constraint changed
+Goal: select the smallest sufficient verification
+Requirement: separate static, evaluation, runtime, and human evidence; list omitted checks and reasons
+Do not turn a full test run into proof of runtime compatibility.
+```
+
+## Two practical questions
+
+### Can L1 be a release gate?
+
+Only for low-risk cases where structural and package integrity are the main concern. SQEM’s suggested Release Gate also includes critical regression, updated evidence, and declared gaps.
+
+### Are repeated runs always better than one run?
+
+They help reveal non-determinism, but small samples should not be dressed up as precise statistics. Record `n`, pass rate, and variance, and make sure the task and environment are comparable.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-change-verification` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification)
+- [`skill-change-verification` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

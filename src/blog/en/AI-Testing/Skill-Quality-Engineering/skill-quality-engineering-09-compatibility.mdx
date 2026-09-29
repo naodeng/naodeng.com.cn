@@ -1,0 +1,163 @@
+---
+title: "Agent Skill Compatibility: Agents, Models, Tools, and Environments"
+description: "Bring Agent Host, Model, Tools, Environment, and Language into compatibility evidence, and separate specification compatibility from runtime compatibility."
+date: 2026-11-21T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+“The Skill follows the Agent Skills Specification, so it should work in every agent.”
+
+That sounds reasonable. It is not enough evidence.
+
+The Specification describes how a package should be organized. Runtime Compatibility also depends on the actual Agent Host, model, tools, environment, and language variant. A Skill can be structurally valid and work in Codex while another agent fails to discover the entry point, skips a reference, or changes a critical behavior.
+
+## Compatibility is not one boolean
+
+SQEM separates several dimensions:
+
+| Dimension | What to observe |
+| --- | --- |
+| Agent Host | How the agent discovers, loads, and invokes the Skill |
+| Model | Reasoning, context handling, and instruction-following differences |
+| Tools | Tool names, parameters, permissions, and failure responses |
+| Environment | Filesystem, network, credentials, runtime, and repository state |
+| Language | Capability, boundary, behavior, and output-language parity |
+
+If only one dimension is tested, do not describe the result as full compatibility.
+
+## Specification Compatibility != Runtime Compatibility
+
+Static compatibility can check directory structure, metadata, entry files, references, and installation conventions.
+
+Runtime compatibility asks additional questions:
+
+- Can the agent discover the canonical Skill name?
+- Is the description used correctly for routing?
+- Are progressive-disclosure rules followed?
+- Do tools and file operations match the current environment?
+- Does the behavior contract still hold?
+- Are incomplete inputs and failures still kept inside the boundary?
+
+Those questions need real runtime evidence or a harness close enough to real use to be meaningful.
+
+## Use a Compatibility Case to bound the claim
+
+```yaml
+id: functional-testing-compatibility-001
+skill: functional-testing
+type: compatibility
+matrix:
+  agents:
+    - codex
+    - claude-code
+  models:
+    - configured-model-a
+    - configured-model-b
+behavior:
+  must:
+    - preserve_core_behavior_contract
+```
+
+The case does not mean that every combination has already run. It defines the matrix and the behavior to preserve. The result must list executed combinations; the rest stay `NOT_RUN` or `INSUFFICIENT_EVIDENCE`.
+
+## Why not test the full Cartesian product?
+
+With 4 agents, 6 models, 3 tool sets, 2 environments, and 2 languages, the theoretical combination count is:
+
+```text
+4 × 6 × 3 × 2 × 2 = 288
+```
+
+Different inputs and Skill versions multiply it further. Full enumeration is expensive and does not necessarily target the actual risk.
+
+Representative sampling is usually better:
+
+1. Cover the primary agent and model the project actually supports.
+2. Select combinations with known model sensitivity or tool dependency.
+3. Add runs for high-impact, hard-to-detect failures.
+4. Turn real differences and failures into Compatibility or Regression Cases.
+5. Make every unexecuted combination explicit.
+
+## The Pilot’s compatibility tradeoff
+
+The Awesome QA Skills Pilot defines representative targets rather than a universal promise:
+
+| Skill | Codex | Claude Code | Other selected Agent |
+| --- | --- | --- | --- |
+| `functional-testing` | Required | Recommended | Optional |
+| `testability-analysis` | Required | Recommended | Optional |
+| `performance-testing` | Required | Optional | Optional |
+| `skill-evaluation-design` | Required | Recommended | Optional |
+| `skill-change-verification` | Required | Recommended | Optional |
+
+Actual execution depends on available runtimes. The table is a test priority, not completed runtime evidence.
+
+## Bilingual compatibility is more than translation
+
+English and Chinese variants should preserve:
+
+- Capability Parity: they solve the same class of task;
+- Trigger Parity: representative tasks are recognized similarly;
+- Behavior Parity: `MUST`, `SHOULD`, and `MUST NOT` intent matches;
+- Boundary Parity: non-goals and neighboring boundaries match;
+- Output Language: the response follows the user’s language.
+
+The full Eval Suite does not need to be duplicated mechanically. Start with representative bilingual cases and check actual capability and behavior parity.
+
+## Tools and environment are common hidden variables
+
+The same Skill may encounter:
+
+- different filesystem paths and repository layouts;
+- a tool with incompatible parameters;
+- unavailable network or credentials;
+- an agent that cannot perform writes;
+- different versions of the input material;
+- different default language or context windows.
+
+Do not immediately label every such result a Skill FAIL. Separate Skill Defect, Infrastructure Defect, and Unknown, and record the blocking condition. When the environment provides no evidence, `BLOCKED` may be the most accurate state.
+
+## Debug compatibility failures one variable at a time
+
+Isolate the variable when a case passes in Codex but fails in Claude Code. Hold the Skill version and task constant, then change one dimension at a time: Agent host, model, tool availability, environment, and output language. Each matrix row should include the exact configuration, loaded references, observed output, and failure trace.
+
+If the case fails only when a tool is unavailable, investigate the tool contract. If it fails across hosts with the same model, investigate the host integration. If the output changes only with the language, inspect localized instructions and reference paths. Keep the compatibility claim attached to the variable that was actually tested.
+
+One failed row does not prove universal incompatibility. It may justify PARTIAL or BLOCKED for the tested combination, followed by a focused repair or another representative case. Leave that boundary visible in the matrix instead of collapsing every failure into “the Skill is incompatible.”
+
+## Installation and invocation
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+Run the same representative task in each target runtime:
+
+```text
+Use the functional-testing Skill.
+Task: design functional tests for the checkout coupon flow.
+Keep the input, expected behavior contract, and evidence fields the same across runtimes.
+Record Agent Host, Model, Tools, Environment, output language, trigger evidence, and blocked checks.
+Do not infer compatibility for combinations that were not executed.
+```
+
+## Two practical questions
+
+### If it passes in one agent, can I claim cross-agent compatibility?
+
+No. You can say that it passed in that agent, model, and environment. A cross-agent claim needs corresponding runtime evidence.
+
+### If both language variants produce an answer, is that bilingual compatibility?
+
+No. Compare capability, trigger, behavior contract, and boundary as well as output language. Language presence alone does not prove equivalent capability.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [`functional-testing` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

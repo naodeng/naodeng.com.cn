@@ -1,0 +1,156 @@
+---
+title: "Skill Regression Testing: Proving Changes Did Not Break Existing Behavior"
+description: "Track the impact of description, instruction, reference, model, and runtime changes, then use the smallest sufficient regression evidence to catch silent Skill failures."
+date: 2026-11-22T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+A Skill regression does not always look like “the model suddenly cannot use it.” More often, a small change shifts a boundary: a description changes and the agent stops triggering; a new instruction causes unsupported detail; a reference path changes and a critical rule is not loaded; a model upgrade makes previously stable behavior drift.
+
+That is why “the file parses and static checks pass” is not regression evidence.
+
+## Start with the change type
+
+Different changes affect different runtime links:
+
+| Change | Potential impact | Minimum focus |
+| --- | --- | --- |
+| `description` | Discovery, Trigger, Selection | Positive, Negative, Boundary |
+| `SKILL.md` workflow | Behavior, Output, Trajectory | Behavior, Regression, runtime when needed |
+| References | Knowledge, citations, boundaries | Related cases, reference integrity |
+| Scripts or templates | Artifacts, Side Effects | Script, artifact, side-effect checks |
+| Eval expectation | Evidence interpretation and confidence | Eval validity, judge calibration |
+| Model or Agent | Trigger and output stability | Repeated runs, compatibility |
+
+The change scope determines the regression scope. A full static run does not prove that the behavior that changed was covered.
+
+## Failure-to-Regression
+
+SQEM suggests turning confirmed real failures into reproducible regression cases:
+
+```text
+Observed Failure
+-> Capture Evidence
+-> Reproduce
+-> Classify
+-> Root Cause
+-> Fix
+-> Regression Case
+-> Existing Suite
+-> Release Evidence
+```
+
+The important part is not that a failure happened once. Its cause must be understood. A failure may belong to the Skill, Eval, infrastructure, or an unknown condition; adding it to the regression suite too early saves the wrong thing.
+
+## Use `skill-change-verification` to select the minimum
+
+`skill-change-verification` selects the smallest sufficient checks for a change and states what the evidence supports. It classifies content, metadata/directory, scripts, Evals, and runtime impact, then records commands, results, omitted checks, and residual risk.
+
+Imagine that only the `functional-testing` description changed and one trigger phrase was added. A reasonable minimum check would cover:
+
+1. structural and metadata validity;
+2. existing Positive cases still triggering;
+3. Negative and Boundary cases not gaining false activations;
+4. `BLOCKED` when `skill.selection` trace evidence is unavailable, rather than guessing;
+5. claims limited to the agents and models actually run.
+
+There is no need to rerun every expensive benchmark for one description change. There is also no basis for saying “no impact” from the diff alone.
+
+## PR, Release, and Scheduled checks
+
+Change verification can be layered by cost and cadence.
+
+### Pull Request
+
+```text
+Static Validation
+Critical Eval
+Changed-Skill Eval
+Regression Smoke
+```
+
+### Release
+
+```text
+Full Relevant Eval
+Regression Suite
+Selected Benchmark
+Selected Compatibility
+Evidence Report
+```
+
+### Scheduled
+
+```text
+Cross-model
+Cross-agent
+Extended Benchmark
+Longitudinal Regression
+```
+
+This keeps cheap, deterministic feedback in the pull request and reserves expensive, variable evidence for release or scheduled work.
+
+## What a regression report should contain
+
+A reviewable report at least states:
+
+- the changed version and impact scope;
+- which Cases ran;
+- the Agent, Model, Tools, and Environment;
+- the status and evidence level behind each conclusion;
+- which checks did not run and why;
+- whether the result indicates Skill, Eval, Infrastructure, or Unknown;
+- which new Regression Case was added after the fix.
+
+“All checks passed” is not a complete report. It does not tell the next maintainer what the checks actually covered.
+
+## Regression and Benchmark are different
+
+Regression compares Previous Version and Current Version: did the change break established behavior? Benchmark compares Without Skill and With Skill: did the Skill create uplift?
+
+A version can pass regression while having no effectiveness evidence. A benchmark can show uplift while a later description change misses a boundary case.
+
+Keep the results separate and the conversation gets much easier.
+
+## How to write one regression case completely
+
+Turn a real failure into a case another run can reproduce. Keep six pieces together: the observed symptom, the changed surface, the confirmed root cause, the smallest input that exposes it, the expected stable behavior, and the artifact that proves the result.
+
+If a `description` change causes a Skill to stop triggering for a common request, save the request and adjacent negative requests, record the old and new selection behavior, and explain why the boundary changed. Keep the regression case on the smallest relevant surface. A messy failure does not need to become a full Benchmark.
+
+Give the case a maintenance rule. When the intended behavior changes, update the expectation and the reason together. When the implementation changes but the behavior should stay stable, keep the case and rerun it. Without ownership, a regression suite turns into a museum of old assumptions.
+
+## Installation and invocation
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill skill-change-verification
+```
+
+```text
+Use the skill-change-verification Skill.
+Change: the functional-testing description changed and one trigger phrase was added.
+Select the smallest sufficient static, trigger, boundary, and regression checks.
+Record commands, results, omitted checks, evidence levels, and residual risk.
+If skill.selection evidence is missing, mark BLOCKED; do not infer trigger success or failure.
+```
+
+## Two practical questions
+
+### Does a reference-only change need regression?
+
+Yes. Reference content can change judgment, boundaries, and output. Assess whether it affects critical behavior, then select related cases instead of mechanically rerunning everything.
+
+### If every regression passes, can I say there is no risk?
+
+No. Regression covers selected historical and representative behavior. Models, environments, omitted cases, and new inputs can still create gaps.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-change-verification` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification)
+- [`skill-change-verification` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

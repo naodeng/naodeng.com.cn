@@ -1,0 +1,162 @@
+---
+title: "Agent Skill 到底是什么：从 Specification 到 Runtime"
+description: "把 Agent Skill 拆成 SKILL.md、metadata、引用资源和 Runtime 链路，说明为什么 Skill 不等于一份入口文档。"
+date: 2026-11-14T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+很多人第一次接触 Agent Skill 时，会把它理解成一份写得更长的 Prompt。这个理解能帮你快速上手，也会在项目变大后带来麻烦。
+
+一个可用的 Skill 不是只有 `SKILL.md`。它还包含元数据、引用资料、脚本、模板、评测用例和它所处的安装、发现与执行环境。入口文档只是 Agent 进入能力包的第一扇门。
+
+## `SKILL.md` 是入口，不是全部能力
+
+以 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 的 `functional-testing` 为例，入口文件说明了名称、触发场景、执行原则、按需加载规则和交付前检查。完整工作还需要读取主 Prompt，必要时加载输出格式、示例、参考资料或脚本。
+
+一个 Skill 包大致是这样：
+
+```text
+functional-testing/
+├── SKILL.md
+├── README.md
+├── prompts/
+│   └── functional-testing.md
+├── output-formats.md
+├── quick-start.md
+├── tutorial.md
+├── examples/
+├── references/
+├── scripts/
+└── evals/
+```
+
+具体目录会随 Skill 变化。不是每个包都需要所有文件，但每个引用都应该有清楚的用途和加载条件。目录里放了很多资料，不等于 Agent 就会自动使用它们。
+
+## 规范、Skill 包和运行时
+
+这三个概念最好分开：
+
+| 概念 | 主要问题 | 典型证据 |
+| --- | --- | --- |
+| 规范 | 这个 Skill 在结构和元数据上是否合法？ | Schema、Lint、目录约定 |
+| Skill 包 | 入口、资源、脚本和评测是否完整、可独立使用？ | 引用完整性、依赖检查、双语对齐 |
+| 运行时 | Agent 是否发现、加载、遵循并执行了它？ | 运行轨迹、输出、产物和失败记录 |
+
+所以 `SKILL.md` 通过解析，只能支持规范层的结论。它不能替代运行时证据。
+
+## 渐进式披露：为什么资料不能全部塞进入口文件
+
+Skill 通常需要面对两个相互拉扯的要求：入口要足够清楚，完整资料又不能全部挤在第一次加载里。渐进式披露就是在这两者之间做工程取舍：先让 Agent 了解何时使用和必须遵守的约束，再按当前任务加载真正需要的资料。
+
+`functional-testing` 的入口文件把“必须阅读主 Prompt”“需要表格或 JSON 时读取输出格式”“需要示例时读取对应样例”写成按需加载规则。这些规则本身也是行为的一部分，应该被测试。
+
+如果把所有内容都压进 `SKILL.md`，入口会变得难以维护；如果只写一句“请做功能测试”，Agent 又没有足够的边界和覆盖清单。两种极端都不理想。
+
+## 从发现走到运行时
+
+一个 Skill 进入真实任务，通常经过这条链：
+
+```text
+Install
+-> Available
+-> Discovered
+-> Matched
+-> Triggered
+-> Load Entry
+-> Load Relevant References
+-> Follow Constraints
+-> Produce Output
+-> Capture Evidence
+```
+
+每一段都可能有自己的缺陷。安装命令成功，说明包能被分发；Agent 列表里出现名称，说明它可被发现；真正的任务还要继续验证选择和执行。
+
+这也是为什么 Skill 评测里需要区分正向、负向和边界用例：
+
+- 正向验证代表性任务能被正确匹配。
+- 负向验证无关任务不会因为描述相似而误触发。
+- 边界验证相邻能力之间是否有可执行的分界。
+
+## 一个包完整，不代表一个结果正确
+
+假设 `functional-testing` 的所有文件都存在，引用路径也没有断。Agent 仍然可能出现这些情况：
+
+- 只读入口，漏掉主 Prompt 的最低覆盖清单；
+- 读取了格式模板，却没有检查输入里的角色和数据条件；
+- 输出了测试场景，但把未确认的接口行为写成事实；
+- 发现需求实际需要可测试性评审，却继续输出功能测试用例；
+- 生成了 Markdown，却没有留下可追溯的假设和信息缺口。
+
+这些是 Q4 行为质量的问题，不是 Q1 规范的问题。分类准确，后续才知道该补什么证据。
+
+## 从 Q1 和 Q3 开始检查包
+
+在 SQEM 中，Q1 关注规范质量，Q3 关注包质量。一个实际的检查顺序可以是：
+
+1. 核对规范的 `name`、`description` 和目录身份。
+2. 检查入口文件和被引用的资源是否存在。
+3. 确认依赖、脚本和模板的加载条件写清楚。
+4. 确认包可以在目标安装方式下独立使用。
+5. 对中英文版本做能力、边界和行为意图的对齐检查。
+6. 记录检查覆盖了什么，没有覆盖什么。
+
+最后一项很容易被忘掉。即使所有静态检查通过，也应该保留证据等级，而不是直接写成“Skill 已验证”。
+
+## 从目录走到结果
+
+跟着一条规则，从目录一路走到结果。比如有一条规则：“每个高风险需求都必须有可观察的验收标准。”先在 `SKILL.md` 或参考资料里找到它，再找到要求 Agent 执行它的步骤，最后检查输出和这次判断留下的证据。
+
+这类走查会暴露一个常见缺口：规则存在，参考文件也存在，包还通过了静态检查——但没有步骤告诉 Agent 什么时候读取它，也没有要求输出如何体现这条规则。目录完整，工作流却没有闭合。
+
+评审时给每条规则标三个状态：存在、可达、已观察。“存在”表示文件或规则确实在包里；“可达”表示目标运行时能在对应任务下发现并加载它；“已观察”表示某次运行已经看到这条规则影响了行为。只有最后一个状态能支持运行时结论。三个状态分开记录，评审多花几分钟，结论会清楚很多。
+
+## 安装与调用
+
+英文包：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+中文包：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+```
+
+调用时可以明确要求它按需加载主 Prompt 和必要资源：
+
+```text
+请使用 functional-testing Skill。
+请先根据当前任务读取它要求的主 Prompt 和必要参考资料。
+输入：结账页优惠券需求、角色权限、优惠券规则、支付依赖。
+输出：按风险排序的功能测试场景，区分事实、假设和信息缺口。
+不要把静态检查或文档内容写成已经执行的测试证据。
+```
+
+## 怎样算是比较好的 Skill 包
+
+一个好的包不一定文件最多，但应该让下一位使用者能回答：入口在哪里，什么时候加载哪份资料，哪些资源是可选的，缺少哪些输入时结果必须保留不确定性，如何验证修改没有破坏旧行为。
+
+如果读者需要翻遍整个目录才能找到这些答案，包的独立性和可维护性就已经开始下降了。
+
+## 两个实际问题
+
+### 是否应该把所有规则都写进 `SKILL.md`？
+
+不应该。入口文件保留身份、触发条件、核心约束和按需加载规则；长参考资料、格式说明、案例和脚本按任务加载。关键不是“短”，而是边界清楚。
+
+### 只验证文件存在，够不够？
+
+不够。文件存在属于静态或包完整性证据。它不能说明 Agent 使用了正确资源，也不能说明最终行为符合契约。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [`functional-testing` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

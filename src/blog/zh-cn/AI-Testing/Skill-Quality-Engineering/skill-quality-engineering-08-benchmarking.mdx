@@ -1,0 +1,190 @@
+---
+title: "Skill Benchmark：这个 Skill 真的比不用 Skill 更好吗"
+description: "用受控的 With Skill 与 Without Skill 对比，判断 Agent Skill 是否带来真实增量，而不是把一次 PASS 当成有效性证明。"
+date: 2026-11-20T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+一个 Skill 能完成任务，不代表它带来了增量价值。
+
+模型本来就可能直接生成一份看起来不错的测试方案。如果只运行使用 Skill 的版本，然后看到结果完整，就会把“能做”误写成“因为 Skill 做得更好”。Benchmark 要把这两个问题分开：模型本来会做，还是 Skill 让它做得更好。
+
+## Eval PASS 不等于增量价值
+
+Eval 主要回答：这个用例的行为是否符合预期。Benchmark 进一步问：同一个任务、同一个模型、同一个 Agent、同一个环境下，不使用 Skill 和使用 Skill 的结果有什么差异？
+
+```text
+Same Task
+Same Model
+Same Agent
+Same Environment
+
+Without Skill
+vs
+With Skill
+```
+
+如果同时更换了模型、Prompt、工具和上下文，最后出现的差异就很难归因给 Skill。结果也许更好，也许只是换了一个更强的模型。
+
+## 用 `functional-testing` 做一个基线例子
+
+任务：为电商结账和优惠券流程设计功能测试。
+
+不使用 Skill 的输出可能已经覆盖正常支付和一个无效优惠券场景。使用 Skill 后，可能额外识别出角色权限、数据条件、边界规则、集成点，以及输入里未定义的支付失败路径。
+
+这里要比较的不是字数，而是关键行为覆盖：
+
+| 指标 | 要看什么 |
+| --- | --- |
+| 任务成功 | 是否完成了任务目标 |
+| 关键行为覆盖 | 是否覆盖关键业务和风险行为 |
+| 问题发现召回率 | 已知问题或缺口被识别了多少 |
+| 无依据声明率 | 是否补造了事实、字段或根因 |
+| 完整性 | 重要输入、场景和限制是否被保留 |
+| Token / 延迟 / 工具调用 | 增量质量带来了多少成本 |
+
+一个更长的输出不一定更有价值；如果新增内容全是没有证据的细节，可能反而是负向增量。
+
+## Benchmark 用例的基本结构
+
+```yaml
+id: functional-testing-benchmark-001
+skill: functional-testing
+type: benchmark
+variants:
+  - without_skill
+  - with_skill
+controls:
+  same_task: true
+  same_model: true
+  same_agent: true
+  same_environment: true
+metrics:
+  - task_success
+  - critical_coverage
+  - unsupported_claims
+  - tokens
+  - latency
+```
+
+这个结构没有要求所有指标都必须量化，但要求比较条件和指标定义说清楚。否则团队只能比较两段印象。
+
+## 关注负向增量
+
+Skill 可能让某些结果变差：输出更长、Token 更高、延迟更慢，还可能诱导模型过度分析或补造更多规则。
+
+因此 Benchmark 不应该只展示 Skill 赢的用例。至少要记录：
+
+- 质量提升；
+- 成本增加；
+- 没有明显变化；
+- 质量下降或成本不值得。
+
+可以把增量写成概念模型：
+
+```text
+Skill Uplift = Outcome(with_skill) - Outcome(without_skill)
+```
+
+但不要急着把所有维度压成一个分数。质量、成本、稳定性和覆盖之间往往存在真实取舍。
+
+## Baseline 也需要设计
+
+一个糟糕的 Baseline 会让 Skill 看起来异常优秀。Baseline 至少要说明：
+
+1. 由谁或什么系统执行；
+2. 使用什么 Prompt 或默认上下文；
+3. 是否允许参考资料和工具；
+4. 输入和输出格式是什么；
+5. 评估者如何判断成功；
+6. 是否执行多次以及如何处理波动。
+
+如果 Baseline 只让模型随便回答，使用 Skill 的版本又提供了完整项目材料，这样的比较就不受控。
+
+## 多次运行和结果解释
+
+LLM 输出存在非确定性。重要 Benchmark 可以记录：
+
+```text
+n
+Pass Rate
+pass@k
+Mean / Median
+Variance
+Confidence Interval
+```
+
+样本不足时不要写出过度精确的结论。三次运行能帮助发现明显不稳定，但不能支撑复杂统计声明。
+
+## Benchmark、回归和质量声明
+
+三者经常被混在一起：
+
+| 工作 | 比较对象 | 能回答什么 |
+| --- | --- | --- |
+| Benchmark | 不使用 Skill / 使用 Skill | Skill 是否带来增量 |
+| 回归 | 旧版本 / 当前版本 | 变更是否破坏旧行为 |
+| 质量声明 | 证据集 / 声明 | 当前证据能支持什么说法 |
+
+Benchmark 通过，不代表新版本没有回归；回归通过，也不代表 Skill 比 Baseline 更有效。
+
+## 把结果写进质量画像
+
+一个有用的报告不只写“Benchmark PASS”，还要说明：
+
+```text
+Skill: functional-testing
+Benchmark Status: PARTIAL
+Evidence Level: E3 Runtime
+Controls: same task/model/agent/environment
+Observed: critical coverage improved in selected cases
+Cost: token and latency increase observed
+Limitations: sample size small; no cross-agent comparison
+Next Step: expand representative cases before broad claim
+```
+
+这类结果可能很有价值，但仍然不等于“所有任务都更好”。
+
+## 一次 Benchmark 结果能支持什么
+
+Benchmark 只有在关键变量保持稳定时，才能支持对应声明。比较不使用 Skill 和使用 Skill 时，尽量保持任务、模型、环境和评估规则一致。如果一边换了提示词、增加了上下文，或者使用了更宽松的评判器，结果描述的就是这次实验，而不只是 Skill 的作用。
+
+问题要问得更具体。比如使用 Skill 的条件发现了更多关键风险，但消耗了更多 Token，这可以支持“在当前条件下提升风险覆盖”的结论，却不能自动证明成本更低、延迟更短或整体更好。把各个指标分开记录，再让质量画像呈现取舍。
+
+Baseline 漂移也要单独记录。如果基线提示词、任务集合或评估者发生变化，旧结果可能已经不能直接比较。把基线版本和结果放在一起；在解释大幅增量或回归之前，先用一组固定的锚点用例重新跑一遍。
+
+## 安装与调用
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+调用时明确要做对照实验：
+
+```text
+请使用 functional-testing Skill，并为同一份结账需求设计一组 Benchmark。
+请分别定义 Without Skill 和 With Skill 的运行条件。
+指标：核心风险覆盖、未支持声明、任务成功、Token、Latency。
+不要更换模型、环境或任务后再把差异归因给 Skill。
+```
+
+## 两个实际问题
+
+### 如果不使用 Skill 已经 100% 覆盖，Skill 还有价值吗？
+
+可能没有，也可能 Eval 太简单。需要检查是否遗漏了高风险行为、是否指标只能测格式，以及 Skill 是否在效率、可维护性或一致性上提供了其他价值。
+
+### Benchmark 结果不好，是不是应该立刻改 Skill？
+
+先区分 Skill 缺陷、评测缺陷、基础设施缺陷和未知原因。把一个不公平的 Baseline 当成 Skill 问题，会让优化方向直接跑偏。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [`functional-testing` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

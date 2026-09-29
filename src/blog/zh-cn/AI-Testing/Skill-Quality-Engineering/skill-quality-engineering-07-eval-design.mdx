@@ -1,0 +1,192 @@
+---
+title: "Skill Eval Design：从 Success Criteria 到 Evidence"
+description: "把 Skill 的成功标准拆成可执行 Eval Case，选择合适的 Judge，并保留足够的运行元数据、轨迹、产物和限制。"
+date: 2026-11-19T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+“这个 Skill 应该能帮我把测试做得更好。”这是一个方向，不是一条 Eval。
+
+要让它变成可执行评测，需要继续追问：什么任务算代表性任务？什么行为必须发生？哪些输出可以程序化检查？什么时候需要评判器？没有这些细节，Eval 就只剩下一段漂亮的说明文档。
+
+## 从成功标准开始，但不要停在口号
+
+以 `functional-testing` 为例，成功标准不能只写“输出高质量测试用例”。可以拆成：
+
+- 能识别任务范围和核心业务流程；
+- 覆盖正向、异常和边界场景；
+- 关注角色权限、数据条件和集成点；
+- 区分确认事实、当前假设和信息缺口；
+- 按风险或业务影响排序；
+- 不补造用户没有提供的接口、字段和根因。
+
+这些描述已经接近行为契约，但还需要绑定到输入、预期触发、产物和评估方法。
+
+## 一个评测用例应该包含什么
+
+Skill 评测契约建议使用这样的概念结构：
+
+```yaml
+id: functional-testing-positive-001
+skill: functional-testing
+type: positive
+task:
+  input: Design functional tests for an e-commerce checkout.
+context:
+  files: []
+  environment: {}
+expected:
+  trigger: true
+behavior:
+  must: []
+  should: []
+  must_not: []
+artifacts:
+  required: []
+  forbidden: []
+evaluation:
+  methods: []
+evidence:
+  capture:
+    - output
+    - trajectory
+    - artifacts
+```
+
+不是每个用例都需要填满所有字段。关键是让用例能回答：输入是什么、希望观察什么、哪些行为禁止发生、证据从哪里来。
+
+## 先选用例类型
+
+核心用例通常包括：
+
+| 类型 | 目的 |
+| --- | --- |
+| 正向 | 代表性任务应该触发并完成关键行为 |
+| 负向 | 无关任务不应该误触发 |
+| 边界 | 相邻能力之间的分界是否稳定 |
+| 行为 | 输出是否满足可观察行为契约 |
+| 回归 | 真实失败修复后是否保持修复 |
+
+按需增加改写、对抗、Benchmark、兼容性、轨迹和副作用用例。用例类型不是标签装饰，它决定需要观察什么。
+
+## 评估维度不要一锅端
+
+评测 `skill-evaluation` 的建议是先识别有意义的证据维度：结果、过程、风格/质量和效率，然后只选与目标有关的部分。
+
+| 维度 | 适合的问题 |
+| --- | --- |
+| 结果 | 最终结果是否完成关键任务 |
+| 过程 | 是否读取正确资源、调用正确工具、遵循必要步骤 |
+| 风格/质量 | 事实边界、风险优先级和可执行性是否符合要求 |
+| 效率 | Token、延迟、工具调用是否在可接受范围 |
+
+一个纯格式转换 Skill 不需要复杂的过程评判器；一个必须读取版本文件、生成审计报告的 Skill，过程就不能被忽略。
+
+## 确定性优先，评判器后置
+
+可以用下面的顺序选择评估方法：
+
+1. 确定性检查：文件、字段、退出码、Schema 和禁止产物。
+2. 基于规则：必需章节、风险类别、状态词和禁止模式。
+3. 脚本 / 领域评估器：可以执行的领域判断。
+4. Agent 评判器：只有语义质量确实无法用规则判断时才使用。
+5. 人工复核：高影响、歧义、评判器校准和真实项目价值。
+
+评判标准必须写清楚。`这个输出好吗？` 不是有效标准；`是否区分了文档事实与模型假设` 才是可复核问题。
+
+## 记录证据，而不是只记录 PASS
+
+一次 Eval 至少应该能够回到：
+
+```text
+Input
+Skill Version
+Agent
+Model
+Environment
+Output
+Trajectory
+Tool Calls
+Artifacts
+Token Usage
+Latency
+Judge Result
+Failure Reason
+```
+
+不是每次都要保存所有字段，但对复现和诊断有价值的内容不能丢。缺少 `skill.selection` 追踪记录时，不要把“没有观察到触发”写成 Negative；正确状态是 `BLOCKED`。
+
+## 评测失败到底是谁的问题
+
+报告时至少区分四类：
+
+| 分类 | 含义 |
+| --- | --- |
+| Skill 缺陷 | Skill 行为违反了已经定义的契约 |
+| 评测缺陷 | 用例、预期或评判器本身无法有效区分目标行为 |
+| 基础设施缺陷 | 运行时、工具、凭据或环境导致结果不可用 |
+| 未知原因 | 现有证据不足以判断根因 |
+
+只有确认真实失败和根因后，才适合把它加入回归用例。否则回归套件只是在固化误判。
+
+## Benchmark 和回归不要混在一起
+
+Benchmark 问的是“有 Skill 和没有 Skill 的差异”；回归问的是“旧版本和新版本是否改变了既有行为”。它们的控制变量不同，结论也不同。
+
+```text
+Benchmark: without Skill vs with Skill
+Regression: previous version vs current version
+```
+
+把两者混成一个“评测通过”，会让团队既看不见增量价值，也看不见版本回归。
+
+## 用 `skill-evaluation` 组织一次评测
+
+该 Skill 的最小执行路径是：读取契约、已有 `evals/`、历史失败和变更范围，设计实际用例，按确定性优先选择评判器，记录运行元数据、轨迹、产物和限制，最后再判断评测有效性。
+
+调用示例：
+
+```text
+请使用 skill-evaluation Skill。
+目标：为 functional-testing 设计一组核心 Eval。
+范围：触发、功能覆盖、事实与假设边界。
+要求：包含 Positive、Negative、Boundary、Behavior；区分 Skill Defect、Eval Defect、Infrastructure Defect 和 Unknown。
+不要把 skill-up validate 或一次人工运行写成 Runtime 语义证明。
+```
+
+## 让一次评测可以复核
+
+让另一个人不需要猜测就能重建一次运行，评测用例才容易复核。把输入、Skill 版本、运行时配置、可观察的预期行为、评估者、原始输出和追踪记录放在一起。项目不同，字段清单可以不同，但这些信息之间的关系应该始终看得见。
+
+评估者出现分歧时，这一点尤其重要。假设确定性断言发现必需产物缺失，而评判器因为解释看起来很完整给出了 PASS。不要把两个结果平均成一个更好看的数字。保留分歧，重新检查行为契约，再判断是断言、评判标准还是 Skill 行为出了问题。分歧本身就是评测设计留下的证据。
+
+还要把坏用例和坏 Skill 分开。如果预期行为根本无法从输出或追踪记录中观察到，用例可能无效；如果预期清楚，Skill 又在多次运行中持续违反它，问题才在 Skill 的行为。这个区分可以避免团队为了让检查变绿而削弱一个本来可靠的失败用例。
+
+## 安装与调用
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-evaluation
+```
+
+先准备被评测 Skill 的行为契约、代表性输入和可观察证据，再让 `skill-evaluation` 组织评测用例和评测记录。安装本身只解决 Skill 可用，不会自动产生运行时语义证据。
+
+## 两个实际问题
+
+### 评测用例写得越多越好吗？
+
+不一定。先覆盖真正的能力和风险，再扩展改写、对抗和兼容性。低价值重复用例只会增加维护成本。
+
+### 一次 Eval PASS 能不能支持发布结论？
+
+通常不能。它最多支持某个用例在某个环境中的状态。发布声明还需要关键回归、证据更新和已知限制。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-evaluation` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-evaluation)
+- [`skill-evaluation` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-evaluation)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

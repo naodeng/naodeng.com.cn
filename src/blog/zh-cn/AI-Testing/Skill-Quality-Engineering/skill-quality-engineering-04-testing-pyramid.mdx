@@ -1,0 +1,153 @@
+---
+title: "Skill Testing Pyramid：一个 Skill 到底需要测到什么程度"
+description: "用 L1 到 L4 的测试深度和 E1 到 E4 的证据等级，按风险决定 Agent Skill 需要做到什么程度的验证。"
+date: 2026-11-16T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+“是不是每个 Skill 都要做跨模型、跨 Agent、Benchmark 和真实项目验证？”
+
+不需要。
+
+如果把所有 Skill 都放进 `Skill × Language × Agent × Model × Environment × Case` 的全排列里，评测很快会变成另一种维护负担。真正需要解决的问题是：这个 Skill 的风险是什么，团队准备做什么质量声明，哪一层证据足以支持这个声明？
+
+## 测试深度不是越高越好
+
+SQEM 把 Skill 的测试深度分成四个等级：
+
+| 等级 | 名称 | 主要回答的问题 |
+| --- | --- | --- |
+| L1 | 合法 | 包结构、静态检查和完整性检查是否通过？ |
+| L2 | 已验证 | 关键正向、负向、边界和行为契约是否被验证？ |
+| L3 | 已评估 | 多次运行、Benchmark、回归和代表性运行时是否支持预期价值？ |
+| L4 | 已证明 | 是否有跨环境、真实项目、历史失败和长期证据？ |
+
+L4 代表证据成熟度更高，不代表 Skill 完美。一个低风险的格式化 Skill 没有必要为了看起来“高级”而硬做 L4；一个会修改状态、影响发布决定的 Skill，停在 L1 就很危险。
+
+## 证据等级和测试等级不是一回事
+
+测试等级表示“做了多深的检查”，证据等级表示“最强证据来自哪里”：
+
+| 证据 | 来源 | 例子 |
+| --- | --- | --- |
+| E1 静态 | 静态和结构 | Lint、Schema、元数据、引用完整性 |
+| E2 评测 | 评测 | 确定性断言、行为评测、回归 |
+| E3 运行时 | 真实 Agent 运行 | Benchmark、跨模型、跨 Agent |
+| E4 真实项目 | 真实项目长期使用 | 用户反馈、真实失败、历史趋势 |
+
+L3 不一定天然拥有 E3。如果只在离线评测运行器里运行，最强证据可能仍然是 E2。把测试数量写多，不会自动升级证据等级。
+
+## 用风险决定需要哪些评测
+
+SQEM 建议从七个维度看风险：推理复杂度、触发歧义、副作用、工具依赖、影响范围、模型敏感性和失败可探测性。
+
+| 维度 | 低 | 中 | 高 |
+| --- | --- | --- | --- |
+| 推理复杂度 | 简单格式转换 | 多步骤分析 | 复杂判断或取舍 |
+| 触发歧义 | 名称独特 | 与部分 Skill 重叠 | 多个相邻 Skill 竞争 |
+| 副作用 | 无 | 生成产物 | 修改状态或外部系统 |
+| 影响范围 | 低 | 中 | 影响发布、安全或用户数据 |
+| 失败可探测性 | 明显 | 一般 | 结果看起来正常但实际错误 |
+
+风险画像不是为了算出一个总分。它用来决定所需评测类型、目标测试等级、兼容性范围和运行时深度。
+
+## 两个 Skill，两个测试深度
+
+### 简单的格式化 Skill
+
+如果 Skill 只把 Markdown 转成固定字段 JSON，没有工具调用，没有外部副作用，且触发描述很独特，那么 L1 加少量行为评测可能已经足够。重点是 Schema、字段、禁止输出和一两个边界输入。
+
+### `skill-change-verification`
+
+这个 Skill 的职责是根据变更范围选择最小但足够的验证，并准确说明证据能支持什么结论。它本身涉及变更分类、静态检查、评测、运行时、人工审查和残余风险。如果它把 `skill-up validate` 错当成运行时语义验证，报告就会直接误导后续决策。
+
+对它来说，至少需要 L2：正向、负向、行为和回归评测。若要宣称它适配多个 Agent 或能帮助真实仓库稳定交付，再增加 L3 的运行时和兼容性抽样；真实项目历史证据积累后，才有机会接近 L4。
+
+## 评测金字塔
+
+可以把成本和真实度理解成一座金字塔：
+
+```text
+                 Real-world
+                     ^
+              Compatibility
+                     ^
+                 Benchmark
+                     ^
+              Agent Runtime
+                     ^
+             Behavioral Eval
+                     ^
+          Deterministic Checks
+                     ^
+             Static Validation
+```
+
+越往下，通常越快、越稳定、越适合拉取请求；越往上，通常越接近真实使用，也越贵、越容易受到运行环境和模型波动影响。
+
+所以顺序应该是先把可确定判断做完，再把有限预算放到真正高风险的上层证据。测试等级越高，不等于结果就越好。
+
+## 一个可执行的选择流程
+
+我通常按下面的顺序决定深度：
+
+1. 先写清楚准备声明什么：包合法、行为正确、有效、兼容，还是生产验证过？
+2. 再盘点风险：触发是否容易混淆，输出失败是否明显，是否会修改状态？
+3. 为所有维护中的 Skill 做 L1。
+4. 为正式使用的 Skill 增加 L2 核心评测套件。
+5. 只有当质量声明或风险需要时，增加 L3 Benchmark、多次运行和兼容性检查。
+6. 把真实失败、用户反馈和历史回归沉淀为 L4 的长期证据。
+
+## Pilot 为什么先选五个 Skill
+
+Awesome QA Skills 的 Pilot 选择了五类不同风险：`functional-testing`、`testability-analysis`、`performance-testing`、`skill-evaluation-design` 和 `skill-change-verification`。它们分别覆盖通用 QA、分析、专业领域和 Skill 工程化场景。
+
+Pilot 不要求所有 Skill 都做同样的事情，而是验证 SQEM 是否能被不同类型的 Skill 一致使用。框架自己也在被测试——这点很重要。
+
+## 预算有限时怎么排优先级
+
+评测预算有上限，先处理最不能漏掉的风险。一个只负责把本地 Markdown 整理成固定格式的 Skill，通常可以从 L1 和少量行为检查开始；会修改文件、调用工具或影响发布决定的 Skill，则应该更早具备 L2 评测和清楚的失败路径。
+
+几个 Skill 的风险接近时，用变更频率和不确定性决定先后。经常修改的 Skill 更容易积累回归风险；触发描述含糊，或者对模型差异很敏感的 Skill，则需要更多代表性用例。这样试点顺序有据可查，不会变成谁先报名谁先做。
+
+把延期项写进选择记录。“L3 尚未执行”在低风险且质量声明受限时可以接受；如果后面没有补充证据，却开始写跨模型或生产可用的结论，问题就出现了。测试金字塔帮助控制预算，也提醒团队把声明留在已经测试过的边界内。
+
+## 安装与调用
+
+安装用于评测的 Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-change-verification
+```
+
+调用时把变更类型和想支持的声明写出来：
+
+```text
+请使用 skill-change-verification Skill。
+
+变更：修改了 Skill 的 description 和一条工作流约束
+目标：选择最小但足够的验证
+要求：区分静态、评测、运行时和人工证据，列出未执行项目及原因
+不要把全量测试通过写成运行时兼容性证明。
+```
+
+## 两个实际问题
+
+### L1 能不能作为发布门禁？
+
+只能对结构和包完整性要求不高的低风险场景这样做。SQEM 的建议发布门禁还应包括关键回归、证据更新和已知缺口声明。
+
+### 多次运行是不是一定比一次运行好？
+
+多次运行能帮助观察非确定性，但样本很少时不要制造虚假的统计精度。记录 `n`、通过率、方差等指标，也要说明任务和环境是否真的可比。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-change-verification` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
+- [`skill-change-verification` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

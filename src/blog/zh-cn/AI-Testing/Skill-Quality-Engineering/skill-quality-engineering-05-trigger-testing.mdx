@@ -1,0 +1,173 @@
+---
+title: "Skill Trigger Testing：为什么 Agent 有时找不到正确的 Skill"
+description: "从 Discovery、Trigger 到相邻能力对比，说明如何用 Positive、Negative、Boundary 和 Paraphrase Case 验证 Skill 路由。"
+date: 2026-11-17T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+Skill 已经安装，不代表 Agent 会在正确的任务里使用它。
+
+它可能完全没有发现某个 Skill，也可能发现了多个候选却选错了，还可能在一个相邻任务里误触发。对使用者来说，最后看到的只是一个不太对的答案；对 Skill 工程来说，这属于发现、触发或选择的不同问题。
+
+## 发现不等于触发
+
+发现回答的是：Agent 有没有机会看到这个 Skill。触发回答的是：当前任务是否应该选择它。
+
+| 问题 | 例子 | 证据 |
+| --- | --- | --- |
+| 发现 | 包已安装，名称和描述出现在可用列表里吗？ | 安装结果、可用 Skill 清单 |
+| 触发 | 用户说“设计功能测试”时会触发 `functional-testing` 吗？ | 正向用例 |
+| 负向触发 | 用户说“修复 Playwright locator”时会避免触发它吗？ | 负向用例 |
+| 边界选择 | “评审需求是否可测”会路由到 `testability-analysis` 吗？ | 边界、对比用例 |
+
+安装命令成功只能覆盖第一行。
+
+## `description` 是路由契约的一部分
+
+Skill 的 `name` 负责身份，`description` 负责告诉 Agent 什么时候使用它。好的描述需要同时表达能力和边界：
+
+```yaml
+name: functional-testing
+description: Use this skill when you need to design functional test plans or cases for business flows, UI, data, and integrations; triggers include functional testing and functional test cases.
+```
+
+它没有把所有实现细节塞进 description，但说明了任务对象、常见表达和大致边界。如果描述只有“帮助你做测试”，Agent 很难在 `functional-testing`、`testability-analysis`、`test-case-writing` 和 `test-strategy` 之间做稳定区分。
+
+description 改动看起来很小，实际可能影响发现、触发和选择。因此它应该拥有自己的回归范围，而不是只跑一次格式检查。
+
+## 四类基础触发用例
+
+### 正向用例
+
+应该触发的代表性任务：
+
+```text
+为一个电商结账流程设计功能测试，覆盖正常支付、失败支付、权限和数据边界。
+```
+
+期待选择 `functional-testing`，并至少遵守范围、正向、异常、边界、角色、数据和集成覆盖要求。
+
+### 负向用例
+
+不应该触发的相邻任务：
+
+```text
+请修复这条 Playwright locator，让它不再因为按钮文本变化而失败。
+```
+
+这更接近 UI 测试选择器评审或自动化调试，而不是功能测试设计。负向用例不要求 Agent 什么都不做，而是要求它不要错误地把任务路由到当前 Skill。
+
+### 边界用例
+
+边界任务最有价值，因为它们能暴露相邻能力之间的模糊地带：
+
+```text
+在开始写测试用例之前，评审这份需求是否具备可观察、可控制、可隔离和可复现的条件。
+```
+
+这个任务更适合 `testability-analysis`。如果 Agent 仍然调用 `functional-testing` 并直接生成测试用例，说明路由边界还不够清楚。
+
+### 改写用例
+
+用户不会每次都使用 description 里的原词。可以改写成：
+
+```text
+帮我判断这个购物流程在正常、失败和边界状态下应该怎样验证。
+```
+
+改写用例检查的是能力识别，而不是关键词命中。
+
+## 对比 `functional-testing` 和 `testability-analysis`
+
+只分别跑两个 Skill 的正向用例还不够。真正容易出错的是两者都能理解“测试”这个词的任务。
+
+| 任务 | 首选 Skill | 不希望发生的结果 |
+| --- | --- | --- |
+| 设计结账流程的功能场景 | `functional-testing` | 只做抽象原则解释，不给可执行场景 |
+| 评审需求是否可观察、可控制、可复现 | `testability-analysis` | 直接写测试用例，跳过测试性判断 |
+| 需求缺少角色和异常规则 | 视目标而定 | 把缺失规则补造成事实 |
+| 评审测试设计是否覆盖风险 | 需求或测试评审 Skill | 把路由问题当成用例数量问题 |
+
+这类对比评测关注的是 Skill 之间的选择关系，而不是某个 Skill 单独输出得像不像样。
+
+## 什么时候可以谈触发精确率和召回率
+
+当用例数量足够，团队可以观察：
+
+- 触发精确率：触发当前 Skill 的任务里，有多少真的应该由它处理；
+- 触发召回率：应该由它处理的任务里，有多少成功触发；
+- 误触发率：不该触发时误触发的比例；
+- 漏触发率：该触发时漏掉的比例。
+
+小规模试点先保证正向、负向、边界和代表性改写能够稳定复现问题，再谈这些指标。
+
+## 怎样设计一组好用的触发评测
+
+输入不要只写技能名称。至少带上真实任务目标、领域对象、相邻能力和预期路由。每个用例记录：
+
+```yaml
+id: functional-testing-boundary-001
+skill: functional-testing
+type: boundary
+task:
+  input: Review whether this checkout requirement is testable before designing cases.
+expected:
+  preferred_skill:
+    - testability-analysis
+  unexpected_skill:
+    - functional-testing
+```
+
+如果没有 `skill.selection` 证据，就不能把“最终答案看起来还行”当成触发 PASS。选择本身是需要观察的行为。
+
+## 先排查触发失败，再重写 description
+
+遇到触发失败，先把场景固定下来。假设用户说：“我想确认这个结账页面是否具备可测试性”，结果 Agent 选中了 `functional-testing`，而不是 `testability-analysis`。先记录当时有哪些 Skill 可见、请求里出现了哪些表达，以及两个 description 是否存在重叠，再改写 `description`。否则，改写后的结果可能看起来变好了，原因却没有留下来。
+
+一个小型诊断矩阵通常就够用：
+
+- 只安装目标 Skill，再运行同一个请求；
+- 同时提供相邻 Skill，再运行一次；
+- 保持意图不变，换一种说法；
+- 增加一个明显应该归到其他 Skill 的负向请求。
+
+每次运行都记录选中的 Skill、这个选择是否符合预期，以及能够取得的原因或追踪记录。如果目标 Skill 单独安装时也失败，优先检查发现或包加载；如果单独运行没问题，和相邻 Skill 一起才失败，优先检查路由重叠；如果只有某一种改写失败，可能是 `description` 的边界写得太窄。三个问题的修复位置完全不同，用户感受到的却都只是“跑错了 Skill”。
+
+这样的排查能让评测保持诚实。一次选择失败，只能说明特定请求集合和特定可见 Skill 集合下的行为，不能直接推导出这个 Skill“从来不会触发”。
+
+## 安装与调用
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill testability-analysis
+```
+
+调用时可以让 Agent 先说明选择理由：
+
+```text
+请先判断当前任务应该使用 functional-testing 还是 testability-analysis。
+说明选择依据和不选择另一个 Skill 的边界。
+然后再执行首选 Skill。
+```
+
+## 两个实际问题
+
+### description 写得越长，触发就越准吗？
+
+不一定。过长的 description 会增加噪声，也可能把相邻能力混在一起。它需要足够具体地表达任务和边界，剩下的执行细节放进入口和参考资料。
+
+### 误触发了，是不是只改 description？
+
+先看证据。可能是 description 不清楚，也可能是相邻 Skill 重叠、安装范围不对、上下文不完整或 Agent 运行时没有加载预期目录。只改描述，未必能修根因。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [`testability-analysis` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testability-analysis)
+- [`testability-analysis` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testability-analysis)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

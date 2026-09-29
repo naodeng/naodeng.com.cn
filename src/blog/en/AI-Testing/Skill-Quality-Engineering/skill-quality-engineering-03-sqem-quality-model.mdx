@@ -1,0 +1,177 @@
+---
+title: "Defining Agent Skill Quality: The SQEM Model"
+description: "Use SQEM’s seven quality domains and eight principles to connect Agent Skill quality claims to evidence without hiding everything behind one score."
+date: 2026-11-15T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+“This prompt is well written” is not a quality model.
+
+It may mean that the prose is clear and the intent is easy to understand. An Agent Skill still has to deal with triggering, behavior, baselines, compatibility, regression, and evidence. Compressing all of those into one score from 0 to 100 looks convenient—and erases the differences that matter.
+
+SQEM (Skill Quality Evaluation Model) defines four things: what to evaluate, how deeply to evaluate it, which evidence to retain, and what each evidence set can support.
+
+## State the quality claim first
+
+Skill quality is not a permanent property detached from context. A more accurate statement is:
+
+```text
+Skill Quality at Version V under Evidence Set E
+```
+
+The conclusion may need to change after the Skill, model, tool, or environment changes. For `functional-testing`, a structural check can prove that the package is valid. It cannot prove that the Skill works across every model or creates more value than not using it.
+
+SQEM’s most important rule is simple:
+
+```text
+Quality Claim <= Available Evidence
+```
+
+If the evidence is only E1 Static, do not turn it into an E3 Runtime or E4 Real-world claim. It is an annoying boundary—also a reliable one.
+
+## Eight core principles
+
+SQEM uses eight principles to constrain evaluation:
+
+| Principle | Meaning |
+| --- | --- |
+| Evidence over intuition | Prefer observable evidence to “I tried it once and it seemed fine” |
+| Behavior over wording | Check observable behavior rather than fixed phrasing |
+| Risk-based over exhaustive | Select depth by risk instead of running meaningless Cartesian products |
+| Deterministic before probabilistic | Start with the lowest-cost, most stable evaluator |
+| Regression from real failures | Turn real Skill failures into regression cases |
+| Baseline before effectiveness claims | Establish a baseline before claiming uplift |
+| Compatibility must be demonstrated | Compatibility requires actual runtime evidence |
+| Claims must not exceed evidence | A claim cannot outrun its evidence boundary |
+
+These principles also explain why SQEM does not start with an LLM Judge. File existence, JSON validity, and required fields are better handled deterministically. Add rule checks, domain evaluators, Agent Judges, or human review when semantic judgment is actually needed.
+
+## The seven quality domains
+
+| Domain | Core question | Typical evidence |
+| --- | --- | --- |
+| Q1 Specification Quality | Are specification, metadata, directory identity, and references valid? | Schema, lint, static validation |
+| Q2 Design Quality | Are purpose, boundaries, inputs, outputs, and neighboring capabilities clear? | Match Review, Design Review |
+| Q3 Package Quality | Is the package complete, independent, progressively loadable, and localized consistently? | Integrity, dependency, localization checks |
+| Q4 Behavioral Quality | Can the agent discover, select, execute, and recover according to the contract? | Positive, negative, boundary, behavior evals |
+| Q5 Effectiveness Quality | Does the Skill create measurable uplift over a reasonable baseline? | With/without Skill benchmark |
+| Q6 Compatibility Quality | Do declared agents, models, tools, and environments have runtime evidence? | Runtime matrix, compatibility sampling |
+| Q7 Evidence & Evolution Quality | Are evidence, versions, regressions, and claims traceable over time? | Quality Profile, regression, evidence report |
+
+The seven domains are not seven scores that must all be maxed out. They are seven angles that prevent the review from stopping at syntax.
+
+## Why there is no universal 0–100 score
+
+A Skill may have strong evidence for Q1 through Q4 while Q5 has no benchmark, Q6 has only one runtime, and Q7 has no historical regression suite. A score such as “86” does not tell a user what to trust.
+
+A Quality Profile is more useful:
+
+```text
+Skill Quality Profile
+────────────────────────────────────
+
+Skill: functional-testing
+Target Test Level: L3 Evaluated
+Current Test Level: L2 Verified
+
+Q1 Specification       PASS
+Q2 Design              PASS
+Q3 Package             PASS
+Q4 Behavior            PASS
+Q5 Effectiveness       NOT_RUN
+Q6 Compatibility       PARTIAL
+Q7 Evidence/Evolution  PASS
+
+Evidence Level: E2 Eval
+
+Known Gaps:
+- With/without Skill benchmark not executed
+- Cross-model evidence is incomplete
+- Real-project evidence is limited
+
+Next Validation:
+- Run a controlled benchmark
+- Add representative runtime compatibility
+```
+
+This is an example structure, not a runtime claim about the current repository. A real Quality Profile must come from actual evidence.
+
+## Bringing the profile into team workflow
+
+Quality domains are useful at three decision points.
+
+### Before adding a Skill
+
+Run a Match Review. Can an existing capability cover the request? Should the change be `MATCH`, `MERGE`, `ENHANCE`, or genuinely `NEW`? This limits overlap before it becomes maintenance debt.
+
+### Before merging a change
+
+At minimum, check specification, static validation, change-relevant Evals, and existing regressions. A `description` change primarily affects Discovery / Trigger; a workflow-instruction change primarily affects Behavior / Output.
+
+### Before release or a broad quality claim
+
+Check critical regressions, update the evidence, and declare known gaps. “Supports Codex” needs Codex Runtime Evidence. “Improves test design quality” needs comparative Benchmark Evidence.
+
+## A constrained-input example
+
+Imagine that you only have the entry file and one manual output for a Skill. You can record something like this:
+
+| Area | Current conclusion |
+| --- | --- |
+| Q1 | `PASS` if structural validation completed |
+| Q2 | Needs purpose, boundaries, and neighboring Skills reviewed |
+| Q4 | One output is an observation about one case, not stability evidence |
+| Q5 | `NOT_RUN`, because there is no baseline comparison |
+| Q6 | `INSUFFICIENT_EVIDENCE`, because no runtime matrix exists |
+| Q7 | Record only the current version and evidence set |
+
+That is more honest than marking everything `PASS`, and it gives the next validation step somewhere to start.
+
+## Turn a Quality Profile into a decision
+
+Use a Quality Profile to decide what happens next. Imagine a new Skill with PASS on specification and package checks, PARTIAL on behavior, NOT_RUN on effectiveness, and INSUFFICIENT_EVIDENCE on compatibility. That profile supports a limited pilot with explicit runtime checks. It does not support a sentence saying that the Skill is ready for every Agent.
+
+The same rule applies to a small change. If only the `description` changes, run a focused Trigger Eval and a short regression check. If the workflow or a reference file changes, expand the evidence. The profile routes verification effort. It tells the team where to spend the next hour.
+
+Give every incomplete domain a next action, an owner, and a condition for closing the gap. “Compatibility: PARTIAL” is a status. “Run the representative Codex and Claude Code cases, attach the traces, and review the differences” is a plan. The plan moves the Skill forward.
+
+## Installation and invocation
+
+SQEM is an evaluation framework; it does not replace the task Skill being evaluated. Install a QA Skill first:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+Then invoke it with explicit task and quality requirements:
+
+```text
+Use the functional-testing Skill.
+Return:
+1. scope and confirmed facts;
+2. working assumptions and information gaps;
+3. positive, negative, boundary, role, data, and integration scenarios;
+4. risk priority and verifiable evidence for each scenario.
+Do not mark an unexecuted test as PASS.
+```
+
+## Two practical questions
+
+### Can a Quality Profile replace the final quality decision?
+
+No. It organizes evidence, status, known gaps, and next validation. Scope tradeoffs, risk acceptance, and release decisions still belong to the responsible humans.
+
+### Must all seven domains be completed every time?
+
+Not at the same depth. Every maintained Skill should know which domains have evidence and which do not. The higher the risk, the less acceptable it is to hide the gaps.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)
+- [`functional-testing` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [`functional-testing` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)

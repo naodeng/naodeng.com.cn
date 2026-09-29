@@ -1,0 +1,188 @@
+---
+title: "Skill Quality Loop：用 QA 的方法持续治理 Agent Skills"
+description: "把 Match、Design、Validate、Evaluate、Benchmark、Release、Observe、Regress 和 Improve 连接成可持续的 Skill 质量闭环。"
+date: 2026-11-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+先回答一个问题：怎么知道一个 Agent Skill 的质量到底好不好？
+
+一次成功对话或一张写着 92 分的表格，都回答不了这个问题。关键是一条能够持续运行的质量闭环：每次新增、修改、运行和失败，都能回到合适的证据和下一步。
+
+## 从一次评测变成一条循环
+
+Skill Quality Engineering 的完整模型可以写成：
+
+```text
+Match
+-> Design
+-> Implement
+-> Validate
+-> Evaluate
+-> Benchmark
+-> Release
+-> Observe
+-> Regress
+-> Improve
+-> 下一轮
+```
+
+每一步解决的问题不同：
+
+| 阶段 | 要回答的问题 | 典型产物 |
+| --- | --- | --- |
+| 匹配 | 现有能力能覆盖吗？需要合并、增强还是新增？ | 匹配评审、能力边界 |
+| 设计 | Skill 的目的、输入、输出、非目标和失败边界是什么？ | 规范、行为契约 |
+| 实施 | 入口、引用、脚本、模板和评测是否落地？ | Skill 包 |
+| 验证 | 结构、元数据、依赖和引用是否合法？ | 静态验证 |
+| 评估 | 关键行为在代表性用例上成立吗？ | 评测结果、轨迹、产物 |
+| 基准评测 | 相比 Baseline 有增量价值吗？ | 使用/不使用 Skill 的对照证据 |
+| 发布 | 关键回归和已知缺口是否满足发布门禁？ | 证据报告、质量画像 |
+| 观察 | 真实运行中出现了什么失败和差异？ | 运行时记录、反馈 |
+| 回归 | 失败是否已经变成可重复的回归？ | 回归套件 |
+| 改进 | 哪个环节需要改，改完要重新证明什么？ | 变更范围、下一轮验证 |
+
+这条链把 Skill 当成需要持续维护的工程能力。说到底，提示词也会长出版本、依赖和回归债务——谁让它开始被真正使用了。
+
+## Awesome QA Skills 的 Pilot 怎么落地
+
+Pilot 不是为了证明 SQEM v1.0 天生正确，而是检验框架是否易懂、可执行、成本可接受，并且能发现静态检查看不到的真实缺陷。
+
+它选择了五个类型不同的 Pilot Skill：
+
+```text
+functional-testing
+testability-analysis
+performance-testing
+skill-evaluation-design
+skill-change-verification
+```
+
+这些 Skill 覆盖通用 QA、分析、专业领域和 Skill 工程化。把不同类型放在一起，才能看出 SQEM 是否真的能跨能力复用。
+
+## Pilot 的九个阶段
+
+### 1. 盘点
+
+收集规范名称、双语版本、目录结构、引用、脚本、已有评测、已知问题和相邻 Skill。没有这张清单，后面的“覆盖完整”没有对象。
+
+### 2. 风险画像
+
+评估推理复杂度、触发歧义、副作用、工具依赖、影响、模型敏感性和失败可探测性，并用低、中、高表达。
+
+### 3. Q1–Q3 验证
+
+执行规范、设计、包和本地化一致性检查，先把结构和能力边界说清楚。
+
+### 4. 行为契约
+
+为每个 Pilot Skill 定义关键的 `MUST`、`SHOULD` 和 `MUST NOT`，不要把输出格式细节误当成能力。
+
+### 5. 核心评测套件
+
+从 2–3 个正向、2 个负向、适用时的 2 个边界、2 个行为和已有回归开始。这是指导值，不是机械配额。
+
+### 6. 运行时评测
+
+至少选择一个真实支持的 Agent 运行时，记录触发、输出、必要的轨迹、产物、失败记录和运行时元数据。
+
+### 7. Benchmark
+
+优先对 `functional-testing`、`testability-analysis` 和 `skill-evaluation-design` 做不使用 Skill / 使用 Skill 对比，判断是否真的带来可行动增量。
+
+### 8. 兼容性抽样
+
+采用代表性 Agent、模型和环境，不做无止境全排列。真正运行过的组合才写进兼容性结论。
+
+### 9. 双语一致性
+
+比较中英文的能力、触发、行为、边界和输出语言。重点是能力和行为一致，不是字面完全相同。
+
+## Pilot 要记录什么
+
+质量发现包括规范缺陷、包缺陷、触发缺陷、边界缺陷、行为缺陷、回归缺陷和兼容性差异。
+
+工程成本也要被记录：
+
+- 评测编写和维护时间；
+- 运行时、Token 和 CI 成本；
+- 失败分诊时间；
+- 兼容性和双语维护带来的额外工作。
+
+框架本身还需要回答：是否发现了静态检查发现不了的问题，是否改善了 Skill 边界，是否提高了回归信心，是否产生了有价值的 Benchmark 证据，以及维护成本是否已经过高。
+
+## Pilot 什么时候算完成
+
+退出条件不是“所有用例都绿了”。更有用的条件是：
+
+1. 五个 Pilot Skill 可以一致应用 SQEM。
+2. Skill 作者能够理解七个质量域。
+3. 核心评测的维护成本可接受。
+4. 行为评测能发现静态检查看不到的信息。
+5. Benchmark 能产出可行动证据。
+6. 兼容性可以用抽样控制成本。
+7. 双语验证不需要机械地复制全部套件。
+8. 回归用例能追溯到真实失败。
+9. 运行时成本可以被测量。
+10. SQEM v1.1 能识别并删除冗余复杂度。
+
+可能的后续决策包括 `ADOPT`、`ADOPT_WITH_CHANGES`、`LIMITED_ADOPTION` 和 `REWORK`。Pilot 也可能暴露框架需要修改的地方——这正是它要产生的结果。
+
+## 从一个 Skill 开始跑闭环
+
+不需要等整套治理体系完成。可以从一个真实变更开始：
+
+```text
+1. 说明变更和目标质量声明
+2. 做 Match 与 Risk Profile
+3. 跑静态和包完整性检查
+4. 选择最小 Positive / Negative / Boundary / Behavior Eval
+5. 记录环境、状态和证据等级
+6. 需要时做 Benchmark 或 Compatibility Sampling
+7. 把确认的真实失败加入 Regression
+8. 更新 Quality Profile 和下一步
+```
+
+这条路径已经足够把“感觉应该没问题”变成“我们知道哪些部分已验证，哪些部分还没有”。
+
+## 给闭环安排负责人
+
+质量闭环最容易断在交接处。有人执行了评测，有人读了输出，却没有人负责接下来的决定。每一轮都要记录负责人、输入或 Skill 变更、实际执行的检查、产生的证据、最终决定和下一步动作。
+
+一开始不要铺得太大：选一个 Skill、一个目标运行时、一套核心评测和一个固定的评审节奏。每轮结束后，把结果归类为包问题、触发问题、行为问题、兼容性问题或证据缺口。分类会决定下一步由谁处理；“还需要改进”这种记录做不到这一点。
+
+闭环有价值，是因为下一次运行可以复用上一轮产物，并且说清楚这次改了什么。它不需要等所有状态都变成 PASS 才能继续。一个带有负责人和关闭条件的 NOT_RUN，比一张没有下一步动作的漂亮看板更可执行。
+
+## 安装与调用
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-evaluation
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-change-verification
+```
+
+```text
+请使用 skill-evaluation 和 skill-change-verification Skill。
+目标：为这次 Skill 变更建立一个最小质量闭环。
+请先说明变更影响、风险和质量声明，再选择静态、行为、回归、Benchmark 或兼容性检查。
+记录 PASS、PARTIAL、NOT_RUN、BLOCKED、INSUFFICIENT_EVIDENCE，以及每个状态对应的证据。
+完成后列出残余风险和下一轮验证。
+```
+
+## 最后回到最初的问题
+
+一个成熟的 Agent Skill 不一定拥有最多文件、最多评测或最高分。它应该清楚自己的能力边界，能在关键任务中表现出可观察行为，失败后留下证据，修改后重新验证，也不把没有运行过的部分包装成已证明。
+
+Awesome QA Skills 的价值也不只在于提供一组 QA Skill。它正在尝试把 QA 工程方法用于 Skill 自身：先匹配，再设计；先验证，再声明；用真实失败推动回归；用长期证据决定下一步。
+
+说到底，Skill Quality Engineering 最终治理的不是一份提示词，而是一条可以被团队信任、修复和继续演进的能力链。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-evaluation` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-evaluation)
+- [`skill-change-verification` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

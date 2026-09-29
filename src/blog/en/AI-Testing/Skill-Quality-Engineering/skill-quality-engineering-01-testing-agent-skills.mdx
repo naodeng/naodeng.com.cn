@@ -1,0 +1,217 @@
+---
+title: "Testing Agent Skills: Why “It Works” Does Not Mean “It’s Good”"
+description: "Why a valid SKILL.md, a successful invocation, and plausible output are still insufficient evidence of Agent Skill quality."
+date: 2026-11-13T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+An `SKILL.md` can be installed. An agent can invoke it in a conversation. The final answer can even look convincing. At that point, teams often say the Skill is ready.
+
+That conclusion comes too early.
+
+The hard failures usually appear before and after the answer: did the agent discover the Skill, select the right one, load the progressive-disclosure resources, follow the constraints, cover the high-risk paths, and keep assumptions separate from facts? The prose may be smooth while the evidence is empty.
+
+Skill Quality Engineering addresses this chain. It treats an Agent Skill as a capability that has to be observed at runtime, so quality cannot stop at the prompt itself.
+
+This article uses [`functional-testing`](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing) from [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) as the running example, then introduces the SQEM (Skill Quality Evaluation Model) used throughout this series.
+
+## From Prompt to Skill
+
+A prompt usually solves an instruction problem for one task. A Skill also has to solve discovery, loading, execution, and handoff. A reusable Skill needs to say when it applies, what input it needs, which workflow it follows, what usable output looks like, and where it should stop when information is missing.
+
+So Skill quality cannot be reduced to whether the text is well written. Put the package through the whole chain instead:
+
+| Stage | Question | Possible evidence |
+| --- | --- | --- |
+| Specification | Is the package and its metadata valid? | Schema, lint, structural checks |
+| Discovery | Can the agent find the Skill? | Installation result, available Skill list |
+| Trigger | Does it trigger when it should and stay quiet when it should not? | Positive, negative, and boundary cases |
+| Execution | Did the agent follow the workflow and constraints? | Output, trajectory, referenced resources |
+| Outcome | Did the result cover the risk that mattered? | Behavior contract, domain checks, human review |
+| Evolution | Did a change introduce a regression, and is the evidence current? | Regression cases, version history, Quality Profile |
+
+## Why Skills are harder to test
+
+A conventional function usually has a reasonably defined input and output. A Skill is also affected by the agent, model, tools, environment, context, and runtime state. A useful approximation is:
+
+```text
+Skill Outcome = f(
+  Skill Package,
+  User Task,
+  Agent Host,
+  Model,
+  Tools,
+  Environment,
+  Context,
+  Runtime State
+)
+```
+
+The same Skill may recognize its boundary correctly in one model and start inventing business rules in another. The same task may produce an executable test plan with complete documentation and a polished guess when the input is only one vague sentence.
+
+That is the point: one successful run proves that one run succeeded. It does not prove that neighboring tasks, incomplete inputs, or other runtime environments are reliable.
+
+## The full Skill Runtime Chain
+
+SQEM models the observable chain like this:
+
+```text
+Available
+-> Discovered
+-> Matched
+-> Triggered
+-> Loaded
+-> Followed
+-> Executed
+-> Output Produced
+```
+
+Any broken link can affect the result.
+
+For example, `functional-testing` can cover positive, negative, boundary, role and permission, data, and integration concerns. But if the user is actually asking whether a requirement is testable, the agent should select `testability-analysis`. Excellent Skill instructions do not repair a routing failure.
+
+## What `functional-testing` shows us
+
+Imagine that the team provides only this requirement:
+
+```text
+Users can apply a coupon on the checkout page, and invalid coupons should produce a message.
+```
+
+That is enough for a bounded first pass. It is not enough to claim complete coverage. A good `functional-testing` result should separate at least four things:
+
+- Confirmed facts: there is a checkout page, coupons exist, and invalid coupons require feedback.
+- Working assumptions: the material does not say whether validation happens before order submission or inside a payment service.
+- Information gaps: roles, eligible products, expiration rules, reuse, network failures, and third-party payment behavior are unspecified.
+- Current output: positive and invalid-input scenarios can be drafted, but undefined rules must remain undefined.
+
+If the output invents endpoint fields, error codes, or payment states, it may sound professional while crossing the evidence boundary. That is why language quality alone is a weak quality signal.
+
+## Common failure modes
+
+| Failure | Surface symptom | Actual problem |
+| --- | --- | --- |
+| Missed Trigger | The agent never invokes the Skill | Description, discoverability, or context matching is weak |
+| Wrong Selection | A neighboring Skill is invoked | The capability boundary has not been tested |
+| Partial Loading | Only the entry file is read | Progressive disclosure was not followed |
+| Plausible Output | The result is complete and well formatted | High-risk behavior is missing, or assumptions became facts |
+| Unsupported Claim | The result says “verified” or “ready to release” | The claim exceeds the supplied evidence |
+| Silent Regression | Static checks still pass after a change | Runtime behavior changed without a regression signal |
+
+Static validation will not catch all of these. They require different levels of Eval and runtime evidence.
+
+## Why Static PASS is insufficient
+
+Static validation is valuable. It checks that files exist, frontmatter is valid, and references resolve. That establishes structural health—the necessary floor for later checks.
+
+It does not directly prove that:
+
+- the agent will trigger the Skill for the right task;
+- the agent will avoid it for neighboring tasks;
+- the output follows `MUST`, `SHOULD`, and `MUST NOT` behavior;
+- the result covers the business risk that matters;
+- the Skill is better than not using it;
+- the Skill is compatible with another agent, model, or environment.
+
+SQEM therefore keeps these statements separate:
+
+```text
+Specification PASS != Behavior PASS
+One Eval PASS != Skill Quality PASS
+```
+
+## Moving from “it runs” to systematic Evals
+
+A small but useful Skill Eval Suite usually begins with:
+
+1. Positive: a representative task should trigger the Skill and complete the critical behavior.
+2. Negative: an unrelated task should not trigger it.
+3. Boundary: a task close to a neighboring Skill should route to the intended capability.
+4. Behavior: verify observable behavior instead of reproducing exact wording.
+5. Regression: preserve real failures and prove that fixes remain fixed.
+
+If the process affects correctness, capture tool calls, file operations, retries, and generated artifacts as well. Effectiveness and compatibility claims require Benchmark and Runtime Compatibility Evidence rather than a confident sentence.
+
+## The seven SQEM questions
+
+SQEM separates quality into seven domains:
+
+| Domain | Focus |
+| --- | --- |
+| Q1 Specification | Whether specification, metadata, structure, and references are valid |
+| Q2 Design | Whether purpose, boundaries, inputs, outputs, and neighboring capabilities are clear |
+| Q3 Package | Whether the package is complete, independent, progressively loadable, and localized consistently |
+| Q4 Behavior | Whether discovery, triggering, selection, execution, output, and failure handling follow the contract |
+| Q5 Effectiveness | Whether the Skill creates measurable uplift over a baseline |
+| Q6 Compatibility | Whether declared agents, models, tools, and environments have runtime evidence |
+| Q7 Evidence & Evolution | Whether evidence, versions, regressions, and quality claims remain traceable |
+
+The table is not there to make the process ceremonial. It is a reminder that a Skill may pass Q1 while having no evidence for Q5 or Q6.
+
+## A minimum verification record for one Skill
+
+Start with a request such as “Design a risk-based test approach for a payment flow.” That gives the team something to observe. The phrase “this Skill is good” gives them nothing to verify. The record answers five questions:
+
+- Which Skills were visible, and which one was selected?
+- What did the Agent load from the package?
+- What behavior was expected?
+- Which artifacts were produced?
+- Which conclusion is supported by the observation?
+
+Keep the record small at first. Save the selection event, resolved Skill version, loaded reference paths, final output, and any tool-call or failure trace. That is enough to reconstruct what happened. A polished answer alone proves very little about selection or workflow execution.
+
+Use a negative case next. Ask for a task that belongs to `testability-analysis` rather than `functional-testing`, then check whether the Agent avoids the wrong Skill. If it selects both, investigate routing overlap. If it selects the right Skill but ignores the required reference, inspect package loading or workflow design. The symptom looks similar. The repair is different.
+
+The first artifact worth saving is the trace. It separates discovery, selection, execution, and outcome, giving later Evals something concrete to compare.
+
+## Installation and invocation
+
+Install the English `functional-testing` Skill with Skills CLI:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+The Chinese variant can be installed explicitly:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+```
+
+Give the agent project context instead of only naming a test type:
+
+```text
+Use the functional-testing Skill.
+
+Goal: design functional tests for the checkout coupon flow
+Scope: valid use, invalid coupons, and validation before payment
+Environment: test environment, Web client
+Available material: requirement, coupon rules, payment API notes
+Constraint: do not invent unconfirmed error codes or business rules
+
+Separate confirmed facts, working assumptions, and information gaps.
+Prioritize the scenarios by risk and make the result executable.
+```
+
+Successful installation proves the distribution path is working. Trigger behavior and contract adherence still need separate evidence.
+
+## Two practical questions
+
+### Can a Skill be used with incomplete input?
+
+Yes, as a bounded first pass. The output should mark assumptions, information gaps, and unsupported conclusions. Statuses such as `UNASSESSED`, `NOT_RUN`, and `BLOCKED` exist so unknowns do not get painted green.
+
+### Does every Skill need every model and every agent tested?
+
+No. Test depth should follow risk and the claim being made. A simple formatting Skill may stop at static and behavior checks. A high-impact, model-sensitive, or state-changing Skill may need deeper runtime, benchmark, or compatibility evidence.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [`functional-testing` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

@@ -1,0 +1,177 @@
+---
+title: "如何定义 Skill Quality：建立 SQEM 质量模型"
+description: "用 SQEM 的七个质量域和八条核心原则，建立不依赖单一分数、能够连接证据和质量声明的 Agent Skill 质量模型。"
+date: 2026-11-15T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+“这个 Prompt 写得不错”不是一个质量模型。
+
+这只说明读者觉得文字顺、结构清楚、意图大概能理解。Agent Skill 还要面对触发、行为、基线、兼容性、回归和证据追踪。把这些问题压缩成一个 0 到 100 的数字，看起来简单，实际会把最重要的差异抹掉。
+
+SQEM（Skill Quality Evaluation Model）把重点放在四个问题上：评估什么、评估到什么深度、保留什么证据，以及这些证据支持什么声明。
+
+## 先把质量声明说清楚
+
+一个 Skill 的质量不是脱离上下文的永久属性。更准确的表达是：
+
+```text
+Skill Quality at Version V under Evidence Set E
+```
+
+同一个 Skill 在版本变化、模型变化、工具变化或环境变化后，质量结论都可能需要重新检查。对于 `functional-testing`，一次文档结构检查可以证明包合法；它不能直接证明“已经兼容所有模型”或“比不用 Skill 更有效”。
+
+SQEM 最核心的规则只有一句：
+
+```text
+Quality Claim <= Available Evidence
+```
+
+如果证据只到 E1（静态），就不要写成 E3（运行时）或 E4（真实项目）的结论。这个边界有点烦——但它比漂亮的过度承诺可靠。
+
+## 八条核心原则
+
+SQEM 用八条原则约束评测方式：
+
+| 原则 | 具体含义 |
+| --- | --- |
+| 证据优先于直觉 | 证据优先于“我刚才试了一下，感觉可以” |
+| 行为优先于措辞 | 看可观察行为，不要求固定措辞 |
+| 按风险选择而非穷举 | 按风险选择深度，不做无意义的全排列 |
+| 先确定性后概率性 | 先用最低成本、最稳定的判断方式 |
+| 从真实失败沉淀回归 | 把真实失败沉淀成回归用例 |
+| 先有基线再声明有效性 | 先有 Baseline，再声称增量价值 |
+| 兼容性必须通过验证 | 兼容性需要真实运行证据 |
+| 声明不能超过证据 | 质量声明不能超过证据边界 |
+
+这些原则也解释了为什么 SQEM 不鼓励一上来就用 LLM 评判器。文件是否存在、JSON 是否合法、必需字段是否齐全，先用确定性检查解决。需要语义判断时，再增加规则评估、领域脚本、Agent 评判器或人工复核。
+
+## 七个质量域
+
+| 质量域 | 核心问题 | 典型证据 |
+| --- | --- | --- |
+| Q1 规范质量 | 规范、元数据、目录和引用是否合法？ | Schema、Lint、静态验证 |
+| Q2 设计质量 | 目的、边界、输入输出和相邻能力是否清楚？ | 匹配评审、设计评审 |
+| Q3 包质量 | 包是否完整、独立、可渐进加载、双语一致？ | 完整性、依赖、双语一致性检查 |
+| Q4 行为质量 | Agent 能否正确发现、选择、执行并处理失败？ | 正向、负向、边界和行为评测 |
+| Q5 有效性质量 | 相比合理 Baseline，Skill 是否带来改善？ | 有 Skill / 无 Skill 对照 Benchmark |
+| Q6 兼容性质量 | 声明兼容的 Agent、模型、工具和环境是否真实验证？ | 运行时矩阵、兼容性抽样 |
+| Q7 证据与演进质量 | 质量证据、版本变化和回归是否可追溯？ | 质量画像、回归、证据报告 |
+
+七个域不是七个必须打满的分数。它们是七个避免漏项的观察角度。
+
+## 为什么不做统一的 0–100 分
+
+一个 Skill 可能在 Q1、Q2、Q3、Q4 上有充分证据，但 Q5 尚未做 Benchmark，Q6 只在一个 Agent 上运行过，Q7 的历史回归也还不完整。此时给出“86 分”并不能告诉使用者该相信什么。
+
+质量画像更有用：
+
+```text
+Skill Quality Profile
+────────────────────────────────────
+
+Skill: functional-testing
+Target Test Level: L3 Evaluated
+Current Test Level: L2 Verified
+
+Q1 Specification       PASS
+Q2 Design              PASS
+Q3 Package             PASS
+Q4 Behavior            PASS
+Q5 Effectiveness       NOT_RUN
+Q6 Compatibility       PARTIAL
+Q7 Evidence/Evolution  PASS
+
+Evidence Level: E2 Eval
+
+Known Gaps:
+- 尚未执行 with/without Skill Benchmark
+- Cross-model 证据不完整
+- Real-project Evidence 有限
+
+Next Validation:
+- 执行受控 Benchmark
+- 增加代表性 Runtime Compatibility
+```
+
+这里的状态是一个示例结构，不是对当前仓库执行结果的宣称。真正的质量画像必须来自实际证据。
+
+## 质量画像怎么进入团队流程
+
+可以把质量域用在三个决策点：
+
+### 新增 Skill 前
+
+先做匹配评审：现有能力能否覆盖？是应该 `MATCH`、`MERGE`、`ENHANCE`，还是确实需要 `NEW`？这一步能减少能力重叠。
+
+### 合并变更前
+
+至少检查规范、静态验证、变更相关评测和已有回归。`description` 变更重点看发现 / 触发，工作流指令变更重点看行为 / 输出。
+
+### 发布或做质量声明前
+
+检查关键回归、证据是否更新、已知缺口是否公开。想说“支持 Codex”，需要 Codex 运行时证据；想说“改善测试设计质量”，需要比较性 Benchmark 证据。
+
+## 一个受限输入的例子
+
+假设你要评估一个 Skill，只拿到入口文件和一次人工输出。此时可以记录：
+
+| 项目 | 当前结论 |
+| --- | --- |
+| Q1 | 如果静态检查通过，可以记为 PASS |
+| Q2 | 需要阅读目的、边界和相邻 Skill 后再判断 |
+| Q4 | 一次输出最多是单个用例的观察结果 |
+| Q5 | `NOT_RUN`，没有 Baseline 对比 |
+| Q6 | `INSUFFICIENT_EVIDENCE`，没有运行矩阵 |
+| Q7 | 只能记录当前版本和当前证据集 |
+
+这比把所有项目填成 PASS 更诚实，也更方便下一轮补验证。
+
+## 把质量画像变成一个决定
+
+质量画像要能决定团队下一步做什么。假设一个新 Skill 已经通过规范和包检查，行为质量是 PARTIAL，有效性还是 NOT_RUN，兼容性则是 INSUFFICIENT_EVIDENCE。此时安排一个范围明确的 Pilot，并补做运行时检查；不要直接写成“这个 Skill 已经适用于所有 Agent”。
+
+小范围变更也按同一规则处理。只改 `description` 时，做一次聚焦的触发评测和一轮短回归；改了工作流或参考资料，就扩大证据范围。质量画像是一张验证投入的路由表——它告诉团队下一小时应该花在哪里。
+
+每个尚未完成的质量域都要有下一步动作、负责人和关闭缺口的条件。“兼容性：PARTIAL”只是状态；“运行 Codex 和 Claude Code 的代表性用例，附上追踪记录，再评审差异”才是计划。计划会推动 Skill 继续向前。
+
+## 安装与调用
+
+SQEM 是评测框架，不替代具体任务 Skill。可以先安装一个被评估的 QA Skill：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+再用明确的任务和质量要求调用：
+
+```text
+请使用 functional-testing Skill。
+请输出：
+1. 任务范围与已确认事实；
+2. 当前假设与信息缺口；
+3. 正向、异常、边界、角色、数据和集成场景；
+4. 每项场景的风险优先级和可验证证据。
+不要将未运行的测试标为 PASS。
+```
+
+## 两个实际问题
+
+### 质量画像能不能替代最终质量决定？
+
+不能。它整理证据、状态、已知缺口和下一步验证；范围取舍、风险接受和发布决定仍然需要对应负责人确认。
+
+### 七个质量域是不是每次都要全部做完？
+
+不一定每次都执行同样深度，但每个维护中的 Skill 都应该知道自己在哪些域有证据、哪些域没有。风险越高，缺口越不能隐藏。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)
+- [`functional-testing` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [`functional-testing` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)

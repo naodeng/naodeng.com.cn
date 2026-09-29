@@ -1,0 +1,189 @@
+---
+title: "Skill Evidence：PASS 之前先问证据是什么"
+description: "区分 Static、Eval、Runtime 和 Real-world Evidence，正确使用 PASS、PARTIAL、NOT_RUN、BLOCKED 与 INSUFFICIENT_EVIDENCE。"
+date: 2026-11-23T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+“所有 Eval 配置合法，所以所有 Skill 都验证过了。”
+
+“Agent 能生成结果，所以这个 Skill 已经在生产中证明有效。”
+
+这两句话的问题是证据跨级了，不是语法。PASS 只对某个检查、某个用例、某个环境和某个证据范围负责。
+
+## 四个证据等级
+
+SQEM 把证据分成四层：
+
+| 等级 | 名称 | 能支持的典型结论 |
+| --- | --- | --- |
+| E1 | 静态 | 结构、Schema、元数据、引用和静态规则通过 |
+| E2 | 评测 | 某些行为契约、规则、评判器或回归用例得到观察 |
+| E3 | 运行时 | 在真实 Agent Harness、Benchmark、模型或 Agent 组合中运行过 |
+| E4 | 真实项目 | 有真实项目使用、真实失败、用户反馈和长期记录 |
+
+E1 很重要，但只证明工程结构。E2 可以说明特定用例的行为。E3 说明实际运行时里观察过。E4 才开始接近长期实践证据。它们不是质量等级，也不能互相自动替换。
+
+## PASS 到底证明什么
+
+一条结果应该写成带范围的陈述：
+
+```text
+在 Version V、Agent A、Model M、Environment E 下，Case C 的 behavior check = PASS。
+```
+
+而不是：
+
+```text
+Skill PASS，所以它可靠、兼容、有效。
+```
+
+后一句把多个未执行的结论偷渡进来了。
+
+## 状态模型
+
+评测契约允许使用这些状态：
+
+| 状态 | 含义 |
+| --- | --- |
+| PASS | 当前检查在当前范围内满足预期 |
+| FAIL | 有证据表明预期没有满足 |
+| PARTIAL | 只有部分要求或部分环境得到支持 |
+| NOT_RUN | 尚未执行 |
+| BLOCKED | 因环境、工具、凭据或事件缺失无法完成 |
+| INSUFFICIENT_EVIDENCE | 已有观察，但不足以支持目标结论 |
+
+“没有观察到失败”不等于 PASS。没有运行也不等于 Negative。缺少 `skill.selection` 追踪记录时，正确状态是 `BLOCKED`，不是“没有触发”。
+
+## 一个常见的证据跨级
+
+假设仓库检查了：
+
+- `SKILL.md` 存在；
+- frontmatter 合法；
+- Eval YAML 可以解析；
+- 引用文件路径存在。
+
+这些结果可以支持：
+
+```text
+Specification / Package checks = PASS
+Evidence Level = E1 Static
+```
+
+它们不能直接支持：
+
+- Agent 一定会正确触发；
+- 模型一定会遵守行为契约；
+- 使用 Skill 比不使用 Skill 更好；
+- 另一个 Agent 或模型也兼容；
+- 真实项目长期使用没有问题。
+
+这些声明分别需要 E2、E3 或 E4 的对应证据。
+
+## 质量声明门禁
+
+质量声明应该与证据一一对应：
+
+| 声明 | 需要的证据 |
+| --- | --- |
+| “支持 Codex” | Codex 运行时证据 |
+| “改善测试设计质量” | 对比基准证据 |
+| “跨模型可用” | 跨模型证据 |
+| “已在生产中证明” | 真实项目证据 |
+| “所有引用均有效” | 静态引用验证 |
+
+这不意味着每个 Skill 都必须拥有所有证据，而是要求团队说清楚自己现在能声称什么。
+
+## 质量画像的正确用法
+
+可以用一张质量画像汇总当前状态：
+
+```text
+Skill: functional-testing
+Version: x.y.z
+Target Test Level: L3 Evaluated
+Current Test Level: L2 Verified
+
+Q1 Specification       PASS
+Q2 Design              PASS
+Q3 Package             PASS
+Q4 Behavior            PASS
+Q5 Effectiveness       NOT_RUN
+Q6 Compatibility       PARTIAL
+Q7 Evidence/Evolution  PASS
+
+Evidence Level: E2 Eval
+Known Gaps:
+- Benchmark not executed
+- Cross-model evidence incomplete
+- Real-project evidence limited
+```
+
+这张表没有把 Skill 压成一个总分，也没有假装未知项已经被验证。它让下一步行动变得具体。
+
+## `skill-change-verification` 的价值在这里
+
+变更验证 Skill 不只是列检查命令。它要求准确说明证据支持什么、哪些没有执行、还有哪些残余风险。
+
+例如 `skill-up validate` 通过，可以作为静态或结构证据；它不是运行时语义验证。一次 CLI 冒烟检查可以说明安装路径走通；它不是跨模型兼容性。一次人工输出看起来不错，可以作为观察记录；它不是 Benchmark 或真实项目证据。
+
+报告标题可能掩盖这些边界，所以状态和证据等级应该直接写出来。
+
+## 输入不完整时的诚实输出
+
+现实任务经常缺少环境、凭据、版本或选择事件。此时报告可以这样写：
+
+```text
+Trigger: BLOCKED
+Reason: skill.selection trace unavailable
+Behavior: NOT_RUN
+Reason: runtime target not provided
+Static Package: PASS
+Evidence Level: E1 Static
+Quality Claim: limited to package validity
+```
+
+这份报告看起来没有那么“绿”，但它不会把未知变成事实。后续拿到环境后，也知道应该从哪里继续。
+
+## 把一句质量声明拆成证据
+
+团队如果在运行检查前就写清楚什么算证据，质量声明会容易处理很多。“支持 Codex”需要明确目标宿主、Skill 版本、代表性请求、实际观察到的选择和行为，以及保留下来的追踪记录；“改善测试设计质量”需要和明确的 Baseline 做比较；“已经在生产中证明”则需要真实项目观察，并且上下文足够解释当时发生了什么。
+
+用一张简单的声明映射表记录五项：声明内容、所需证据等级、当前状态、已知缺口和下一步动作。它不需要把每个状态都填成 PASS，作用是阻止一次静态包检查悄悄升级成运行时或生产结论。
+
+这样也更容易维护文档。证据过期、依赖变化或某个运行时不再可用时，把受影响的声明调整为 PARTIAL、NOT_RUN 或 BLOCKED 即可，不用重写整篇说明。这些限制也应该写进产物。
+
+## 安装与调用
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill skill-change-verification
+```
+
+```text
+Use the skill-change-verification Skill.
+For every check, record status, evidence level, runtime metadata, limitations, and the exact claim it supports.
+Separate static validation, trigger evidence, behavior evidence, benchmark evidence, compatibility evidence, and real-project evidence.
+Keep unavailable checks as NOT_RUN, BLOCKED, or INSUFFICIENT_EVIDENCE.
+```
+
+## 两个实际问题
+
+### `PASS` 越多，质量画像就越好吗？
+
+不一定。关键是 PASS 是否覆盖了与目标声明相关的风险。一个只有静态 PASS 的质量画像，可能比一个诚实标出 Benchmark `NOT_RUN` 的质量画像更不完整。
+
+### `PARTIAL` 会不会显得项目质量很差？
+
+它只说明证据范围有限。清楚的 `PARTIAL` 比无依据的“全面通过”更方便决策，也更容易安排下一步验证。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-change-verification` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
+- [`skill-change-verification` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

@@ -1,0 +1,179 @@
+---
+title: "Skill Behavior Testing: Evaluate Contracts, Not Exact Answers"
+description: "Define observable Agent Skill behavior with MUST, SHOULD, and MUST NOT, then evaluate outcomes, trajectories, artifacts, and side effects instead of fixed wording."
+date: 2026-11-18T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+LLM output rarely repeats the same text reliably. Even with the same input, paragraph order, wording, and example details can change.
+
+An Exact Match Eval therefore creates two bad outcomes: a correct answer with different wording fails, while a matching format that omits critical behavior passes. Neither result tells a team much.
+
+Skill Behavior Testing focuses on a behavior contract: what must happen, what should happen, and what must never happen.
+
+## Replace fixed answers with observable behavior
+
+This requirement is difficult to evaluate consistently:
+
+```yaml
+must:
+  - provide_a_good_answer
+```
+
+“Good” has no operational boundary. A more useful contract is:
+
+```yaml
+behavior:
+  must:
+    - identify_requirement_gaps
+    - distinguish_fact_from_assumption
+    - identify_missing_evidence
+  should:
+    - prioritize_high_risk_gaps
+  must_not:
+    - invent_business_rules
+    - make_unsupported_claims
+    - give_release_approval
+```
+
+These items can be checked against output fields, findings, statuses, and next actions instead of a specific sentence.
+
+## `MUST`, `SHOULD`, and `MUST NOT`
+
+### MUST
+
+The behavior is required. For a requirement review, the Skill must separate direct source facts, evidence-backed inferences, recommendations, and human decisions.
+
+### SHOULD
+
+The behavior is valuable but may depend on the input. High-priority findings should be ranked by delivery, quality, or testability impact, for example.
+
+### MUST NOT
+
+The behavior would break the boundary. The Skill must not invent business rules, infer Go / No-Go from one requirement, or present static checks as execution results.
+
+The three levels let an Eval express quality without turning every sentence into a brittle format rule.
+
+## `requirement-quality-review` as a behavior case
+
+`requirement-quality-review` reviews requirement completeness, clarity, verifiability, feasibility, scope, and evidence quality from a QA and delivery perspective. It produces traceable gaps and next actions. It does not generate test cases, approve releases, or assign numeric scores.
+
+A representative Behavior Case can say:
+
+```yaml
+id: requirement-quality-behavior-001
+skill: requirement-quality-review
+type: behavior
+behavior:
+  must:
+    - identify_requirement_gaps
+    - separate_fact_from_assumption
+    - identify_missing_evidence
+    - retain_source_and_validation_method
+  should:
+    - prioritize_findings
+  must_not:
+    - invent_business_rules
+    - provide_unsupported_release_approval
+    - output_a_universal_quality_score
+```
+
+The Eval does not require identical phrasing. It requires high-priority findings to be traceable, assignable, and closable, and it requires unsupported areas to remain `UNASSESSED`.
+
+## Outcome, Trajectory, Artifacts, and Side Effects
+
+Different Skills need different observation targets:
+
+| Observation | What it can check |
+| --- | --- |
+| Outcome | Whether the final output covers critical behavior |
+| Trajectory | Whether tools, references, files, and retries followed the safe path |
+| Artifacts | Whether required reports exist and forbidden artifacts do not |
+| Side Effects | Whether only allowed state was changed |
+
+Most analysis Skills can begin with Outcome evaluation. Add Trajectory when the process affects correctness—for example, when a specific version file must be read or an audit record must be retained. A Skill that writes files, creates tickets, or changes external state also needs explicit Allowed and Forbidden Side Effects.
+
+## Contracts under incomplete input
+
+A good Skill does not pretend that incomplete material supports a complete conclusion. It delivers a bounded first pass and exposes information gaps, assumptions, and open questions.
+
+If the input contains one acceptance criterion, `requirement-quality-review` can identify missing actors, exception paths, or decision conditions. It cannot add common business rules as if they came from the requirement. The corresponding Eval should check that the Skill:
+
+- marks missing information;
+- does not turn assumptions into source facts;
+- provides a closeable validation method;
+- keeps unsupported areas `UNASSESSED`.
+
+## Choosing an evaluation method
+
+SQEM recommends starting with the most reliable method that can answer the question:
+
+1. Deterministic Assertion: file existence, required fields, valid status values.
+2. Rule-based evaluation: `RQ-##` IDs, source and validation fields, forbidden patterns.
+3. Script / Domain Evaluator: domain-specific coverage and structure.
+4. Agent / LLM Judge: semantic judgment with an explicit rubric.
+5. Human Review: high-impact ambiguity, judge calibration, and real-project usefulness.
+
+Do not ask a Judge, “Is this answer good?” Ask, “Does the output distinguish facts in the supplied requirement from assumptions introduced by the model?” That can be reviewed.
+
+## A minimal Behavior Eval
+
+```yaml
+id: requirement-quality-negative-001
+skill: requirement-quality-review
+type: negative
+task:
+  input: Approve this release based only on the requirement summary.
+expected:
+  trigger: false
+behavior:
+  must_not:
+    - provide_release_approval
+```
+
+This case tests both routing and boundary behavior. Even a polished answer should fail if it treats a requirement summary as release evidence.
+
+## What to record when behavior is incomplete
+
+An incomplete request is where a behavior contract earns its keep. Suppose a requirement describes a payment flow but says nothing about retries, privacy, or what counts as an accepted failure. The Skill should expose the missing decisions, ask focused questions, and keep the uncertainty visible. It should not invent a business rule and present a confident Go/No-Go decision.
+
+Keep four observations separate in the Eval record. Outcome describes what the user received. Trajectory describes whether the Agent asked for clarification, loaded the right reference, or skipped a required step. Artifacts include the requirement review, questions, and decision record. Side effects capture file changes, tool calls, or external actions. A polished final answer can hide the other three.
+
+Score partial behavior item by item. A Skill may satisfy every MUST requirement while missing a SHOULD recommendation. It may also produce the right output while taking an unauthorized side effect. Separate observations keep a “mostly good” impression from hiding the part that matters most.
+
+## Installation and invocation
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill requirement-quality-review
+```
+
+Provide the material and its evidence state:
+
+```text
+Use the requirement-quality-review Skill.
+Goal: review whether this payment requirement is ready for test design.
+Input: requirement, acceptance criteria, known constraints, and current evidence.
+Return RQ-## findings with source, status, impact, priority, owner role, close condition, and validation method.
+Do not assign a score or approve a release. Keep missing information UNASSESSED.
+```
+
+## Two practical questions
+
+### Should a behavior contract be as detailed as possible?
+
+No. Constrain the behaviors that define the capability. If you specify paragraph order, sentence length, and fixed wording, the Eval starts measuring formatting instead of quality.
+
+### Does every required heading mean PASS?
+
+No. Headings are structural evidence. The content still needs to preserve factual boundaries, traceable findings, and verifiable next actions. Structural and behavioral PASS should remain separate.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`requirement-quality-review` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/requirement-quality-review)
+- [`requirement-quality-review` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirement-quality-review)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

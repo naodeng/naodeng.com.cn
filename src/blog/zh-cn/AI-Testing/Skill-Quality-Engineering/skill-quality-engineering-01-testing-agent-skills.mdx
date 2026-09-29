@@ -1,0 +1,216 @@
+---
+title: "Skill 也需要测试：为什么能用不代表质量 OK"
+description: "从 SKILL.md 合法、Agent 能触发到真实运行结果，说明为什么 Agent Skill 需要完整的质量工程和证据边界。"
+date: 2026-11-13T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+一个 `SKILL.md` 能被安装，Agent 能在对话里调用它，最后还给出一段看起来不错的结果。到这里，很多团队就会说：这个 Skill 已经可以用了。
+
+这个结论下得太早。
+
+Skill 的质量问题往往藏在调用之前和输出之后：Agent 有没有发现它，是否选对了它，是否读了按需加载的资源，是否遵守了约束，结果有没有覆盖高风险路径，结论是不是把假设说成了事实。文字看起来顺，质量证据却可能是空的。
+
+Skill Quality Engineering 处理的就是这条链。它把 Agent Skill 当作需要在运行中观察的能力单元，质量判断也不能停在 Prompt 本身。
+
+本文以 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 的 `functional-testing` 为例，先把问题讲清楚，再引出后续文章会使用的 SQEM（Skill Quality Evaluation Model）。
+
+## 从 Prompt 到 Skill
+
+Prompt 通常解决一次任务里的指令问题。Skill 还要解决发现、加载、执行和交接问题。一个可复用的 Skill 至少需要说明这些内容：什么时候使用，需要什么输入，应该遵循什么流程，输出怎样才算可执行，以及信息缺失时应该停在哪里。
+
+所以，Skill 的质量不能只看“这段文字写得好不好”。更实际的检查方式是把它放进完整链路里：
+
+| 阶段 | 要问的问题 | 可能的证据 |
+| --- | --- | --- |
+| 规范 | 包结构和元数据合法吗？ | Schema、Lint、结构检查 |
+| 发现 | Agent 能发现这个 Skill 吗？ | 安装结果、可用 Skill 列表 |
+| 触发 | 该用时会触发，不该用时不会误触发吗？ | 正向、负向、边界用例 |
+| 执行 | Agent 是否遵循了流程和约束？ | 输出、工具轨迹、引用资源 |
+| 结果 | 结果是否覆盖任务真正关心的风险？ | 行为契约、领域检查、人工复核 |
+| 演进 | 修改后有没有回归，证据是否仍然有效？ | 回归、版本记录、质量画像 |
+
+## Skill 为什么更难测试
+
+传统函数通常有相对明确的输入和输出。Skill 的结果还受到 Agent、模型、工具、环境、上下文和运行状态影响。可以把它粗略表示为：
+
+```text
+Skill Outcome = f(
+  Skill Package,
+  User Task,
+  Agent Host,
+  Model,
+  Tools,
+  Environment,
+  Context,
+  Runtime State
+)
+```
+
+同一个 Skill，在一个模型里能正确识别边界，换一个模型后可能开始补造业务规则；同一个任务，在文档齐全时能得到可执行测试方案，换成一句模糊需求后可能输出一份看似完整的猜测。
+
+问题就在这里：一次成功运行只能说明这一次运行成功了。它不能自动证明所有相邻能力、所有输入状态和所有运行环境都可靠。
+
+## 一条完整的 Skill 运行时链路
+
+SQEM 关注的行为链可以写成：
+
+```text
+Available
+-> Discovered
+-> Matched
+-> Triggered
+-> Loaded
+-> Followed
+-> Executed
+-> Output Produced
+```
+
+任何一段断掉，最终结果都可能有问题。
+
+例如，`functional-testing` 本身可以正确覆盖正向、异常、边界、角色权限、数据条件和集成点，但如果用户的问题实际上是在评审需求是否具备可测试条件，Agent 更应该选择 `testability-analysis`。Skill 内容再好，路由错了，结果仍然会偏。
+
+## 用 `functional-testing` 看一个真实问题
+
+假设团队给出的输入只有一句话：
+
+```text
+用户可以在结账页使用优惠券，优惠券无效时需要提示用户。
+```
+
+这足以开始一次受限分析，但不足以证明已经有完整测试范围。一个较好的 `functional-testing` 结果应该至少把这些内容分开：
+
+- 已确认事实：存在结账页、存在优惠券、存在无效优惠券提示要求。
+- 当前假设：优惠券是在提交订单前校验，还是在支付接口侧校验，材料没有说明。
+- 信息缺口：角色权限、优惠券适用商品、过期规则、重复使用、网络失败和第三方支付交互都没有定义。
+- 当前产出：可以先给出核心正向和无效输入场景，但不能把未定义规则写成已确认行为。
+
+如果输出直接补出接口字段、错误码和支付状态，它可能读起来很专业，实际上已经越过证据边界。这个例子也说明了为什么 Skill 的“质量”不能只靠语言流畅度判断。
+
+## 常见失败模式
+
+| 失败类型 | 表面现象 | 真正的问题 |
+| --- | --- | --- |
+| 漏触发 | Agent 没有调用应该使用的 Skill | description、可发现性或上下文匹配不足 |
+| 选择错误 | 调用了相邻 Skill | 能力边界没有通过边界评测验证 |
+| 部分加载 | 只读了入口文件 | 按需加载资源没有被遵循 |
+| 表面合理的输出 | 结果完整、格式漂亮 | 漏掉关键风险，或把假设写成事实 |
+| 无依据声明 | 直接说“已验证”“可以发布” | 输出超出了输入和证据能支持的范围 |
+| 静默回归 | 改了 description 或流程后仍然通过静态检查 | 运行时行为和旧版本已经变化 |
+
+这类问题不会都出现在 `SKILL.md` 的语法检查里。它们需要不同层级的评测和运行时证据。
+
+## 静态 PASS 为什么不够
+
+静态检查很有价值——文件存在、frontmatter 合法、引用路径有效，先把这些基础问题挡住，后面的测试才有意义。但它只能支持有限结论：这个包在结构上有效。
+
+它不能直接证明：
+
+- Agent 会在正确任务中触发它；
+- Agent 不会在相邻任务中误触发它；
+- 输出遵守了 `MUST`、`SHOULD` 和 `MUST NOT`；
+- 结果覆盖了业务真正关心的风险；
+- Skill 比不用 Skill 更好；
+- Skill 已经兼容另一个 Agent、模型或环境。
+
+SQEM 因此明确区分：
+
+```text
+Specification PASS != Behavior PASS
+一次 Eval PASS != Skill Quality PASS
+```
+
+## 从“能跑”走向系统化评测
+
+一个最小但有用的 Skill 评测套件通常从这些用例开始：
+
+1. 正向：代表性任务应该触发，并完成关键行为。
+2. 负向：无关任务不应该误触发。
+3. 边界：和相邻 Skill 接近的任务要路由到正确能力。
+4. 行为：检查可观察行为，不要求逐字复现答案。
+5. 回归：把真实失败保留下来，验证修复没有再次失效。
+
+如果过程本身会影响正确性，再记录工具调用、文件操作、重试和生成产物。若要宣称有效性或兼容性，还需要 Benchmark 和运行时兼容性证据。
+
+## SQEM 先看哪七件事
+
+SQEM 把质量拆成七个质量域：
+
+| 质量域 | 关注点 |
+| --- | --- |
+| Q1 规范 | 规范、元数据、结构和引用是否合法 |
+| Q2 设计 | 目的、边界、输入输出和相邻能力是否清晰 |
+| Q3 包 | 包是否完整、独立、可渐进加载、双语一致 |
+| Q4 行为 | 发现、触发、选择、执行、输出和失败处理是否符合契约 |
+| Q5 有效性 | 相比 Baseline 是否产生增量价值 |
+| Q6 兼容性 | 声明兼容的 Agent、模型、工具和环境是否有证据 |
+| Q7 证据与演进 | 证据、版本、回归和质量声明是否可追溯 |
+
+这张表的作用是提醒我们：一个“看起来能用”的 Skill，可能只在 Q1 上通过了。
+
+## 一个 Skill 的最小验证记录
+
+先给验证记录一个具体请求，比如“请为支付流程设计一套基于风险的测试方案”。这样团队才有对象可以观察。“这个 Skill 不错”没有可验证的内容。记录要回答五个问题：
+
+- 当时有哪些 Skill 可见，最后选中了哪一个？
+- Agent 从包里加载了什么？
+- 预期行为是什么？
+- 产生了哪些产物？
+- 观察结果到底支持哪一个结论？
+
+先把记录做小。保存选择事件、解析到的 Skill 版本、实际加载的参考资料路径、最终输出，以及工具调用或失败追踪，通常就能还原发生了什么。追踪里只有一段看起来不错的答案，仍然不能证明 Skill 被正确选中，也不能证明它的工作流影响了结果。
+
+接着加一个负向用例。给出一个应该归到 `testability-analysis`、不该归到 `functional-testing` 的请求，观察 Agent 是否避开错误 Skill。如果两个都选中了，检查路由重叠；如果选对了 Skill，却没有加载必需的参考资料，检查包加载或工作流设计。同一个表面症状，修复位置可能完全不同。
+
+值得先保存的是追踪记录。它能区分发现、选择、执行和结果，也给后面的评测留下具体的比较对象。
+
+## 安装与调用
+
+以中文版 `functional-testing` 为例，可以使用 Skills CLI 安装：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+```
+
+英文版本：
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+调用时提供真实项目上下文，而不是只给一个测试类型名：
+
+```text
+请使用 functional-testing Skill。
+
+目标：为结账页优惠券流程设计功能测试
+范围：正常使用、无效优惠券和支付前校验
+环境：测试环境，Web 端
+已有材料：需求说明、优惠券规则、支付接口文档
+限制：不要补造未确认的错误码或业务规则
+
+请区分已确认事实、当前假设和信息缺口，并按风险给出可执行场景。
+```
+
+安装成功只证明分发链路可用。是否正确触发、是否遵守行为契约，还要单独验证。
+
+## 两个实际问题
+
+### 输入不完整时，Skill 还能用吗？
+
+可以先交付受限初版，但输出必须标出假设、信息缺口和不能成立的结论。SQEM 使用 `UNASSESSED`、`NOT_RUN`、`BLOCKED` 等状态，就是为了避免把未知内容涂成绿色。
+
+### 是否每个 Skill 都要做全模型、全 Agent 测试？
+
+不需要。测试深度应该由风险和质量声明决定。简单的格式化 Skill 可能停在静态和行为检查；高影响、强模型敏感或有副作用的 Skill，才需要更深的运行时、Benchmark 或兼容性验证。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [`functional-testing` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

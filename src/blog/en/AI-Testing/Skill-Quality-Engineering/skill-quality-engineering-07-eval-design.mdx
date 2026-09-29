@@ -1,0 +1,192 @@
+---
+title: "Designing Skill Evals: From Success Criteria to Evidence"
+description: "Turn Skill success criteria into executable Eval Cases, choose an appropriate judge, and retain the run metadata, traces, artifacts, and limitations that make results useful."
+date: 2026-11-19T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+“This Skill should help me test better.” That is direction, not an Eval.
+
+To make it executable, keep asking: what is a representative task, what behavior must occur, which output can be checked programmatically, and when is a judge necessary? Without those details, an Eval becomes another polished piece of documentation.
+
+## Start with success criteria, then make them observable
+
+For `functional-testing`, “produce high-quality test cases” is too vague. Break it into behaviors:
+
+- identify scope and core business flows;
+- cover positive, negative, and boundary scenarios;
+- account for roles, permissions, data conditions, and integrations;
+- separate confirmed facts, working assumptions, and information gaps;
+- prioritize by risk or business impact;
+- do not invent endpoints, fields, or root causes that the user did not provide.
+
+Those statements are close to a behavior contract, but still need to be bound to inputs, expected triggering, artifacts, and evaluation methods.
+
+## What an Eval Case can contain
+
+The Skill Eval Contract recommends a portable conceptual structure:
+
+```yaml
+id: functional-testing-positive-001
+skill: functional-testing
+type: positive
+task:
+  input: Design functional tests for an e-commerce checkout.
+context:
+  files: []
+  environment: {}
+expected:
+  trigger: true
+behavior:
+  must: []
+  should: []
+  must_not: []
+artifacts:
+  required: []
+  forbidden: []
+evaluation:
+  methods: []
+evidence:
+  capture:
+    - output
+    - trajectory
+    - artifacts
+```
+
+Not every Case needs every field. It should be possible to answer what the input was, what behavior mattered, what was forbidden, and where the evidence came from.
+
+## Choose the Case type first
+
+Core cases usually include:
+
+| Type | Purpose |
+| --- | --- |
+| Positive | A representative task should trigger and complete critical behavior |
+| Negative | An unrelated task should not trigger it |
+| Boundary | The distinction from a neighboring capability should hold |
+| Behavior | The output should satisfy observable behavior contracts |
+| Regression | A confirmed real failure should stay fixed |
+
+Add Paraphrase, Adversarial, Benchmark, Compatibility, Trajectory, or Side-effect cases when the risk or claim requires them. The case type determines what you need to observe.
+
+## Do not evaluate every dimension by default
+
+The `skill-evaluation` Skill recommends identifying meaningful evidence dimensions first: Outcome, Process, Style/Quality, and Efficiency. Select only the dimensions relevant to the question.
+
+| Dimension | Useful question |
+| --- | --- |
+| Outcome | Did the final result complete the critical task? |
+| Process | Did the agent read the right resources, use the right tools, and follow required steps? |
+| Style/Quality | Did it preserve factual boundaries, risk priority, and executability? |
+| Efficiency | Were tokens, latency, and tool calls acceptable? |
+
+A pure formatting Skill may not need a complex process judge. A Skill that must read a version file and generate an audit report cannot ignore process.
+
+## Deterministic first, judge later
+
+Choose the lowest-cost evaluator that can answer the question:
+
+1. Deterministic: files, fields, exit codes, schemas, forbidden artifacts.
+2. Rule-based: required sections, risk categories, status vocabulary, forbidden patterns.
+3. Script / Domain Evaluator: executable domain judgments.
+4. Agent Judge: only when semantic quality cannot be checked reliably by rules.
+5. Human Review: high-impact ambiguity, judge calibration, and real-project value.
+
+Judge criteria must be explicit. “Is this output good?” is not a useful rubric. “Does the output distinguish supplied facts from model-introduced assumptions?” can be reviewed.
+
+## Capture evidence, not just PASS
+
+An Eval should be traceable back to something like:
+
+```text
+Input
+Skill Version
+Agent
+Model
+Environment
+Output
+Trajectory
+Tool Calls
+Artifacts
+Token Usage
+Latency
+Judge Result
+Failure Reason
+```
+
+Not every run needs every field. It does need the evidence required for reproduction and diagnosis. If `skill.selection` trace evidence is missing, do not write “not triggered” as a negative result; the correct state is `BLOCKED`.
+
+## Who owns an Eval failure?
+
+At minimum, separate these categories:
+
+| Category | Meaning |
+| --- | --- |
+| Skill Defect | Skill behavior violated an established contract |
+| Eval Defect | The case, expectation, or judge could not distinguish the target behavior |
+| Infrastructure Defect | Runtime, tools, credentials, or environment made the result unusable |
+| Unknown | Available evidence cannot identify the root cause |
+
+Only after a real failure and its root cause are confirmed should it become a Regression Case. Otherwise the regression suite merely preserves a misdiagnosis.
+
+## Keep Benchmark and Regression separate
+
+A Benchmark asks whether using the Skill changes the result. A Regression asks whether a version change altered established behavior.
+
+```text
+Benchmark: without Skill vs with Skill
+Regression: previous version vs current version
+```
+
+They have different controls and different conclusions. One generic “Eval PASS” hides both added value and version regression.
+
+## Use `skill-evaluation` to organize the run
+
+The Skill’s minimal workflow is to read the contract, existing `evals/`, historical failures, and the current change scope; design realistic cases; select judges with a deterministic preference; record run metadata, traces, artifacts, and limitations; then assess Eval validity.
+
+For example:
+
+```text
+Use the skill-evaluation Skill.
+Goal: design a core Eval suite for functional-testing.
+Scope: trigger, functional coverage, and fact-versus-assumption boundaries.
+Requirement: include Positive, Negative, Boundary, and Behavior cases; separate Skill Defect, Eval Defect, Infrastructure Defect, and Unknown.
+Do not treat skill-up validate or one manual run as runtime semantic proof.
+```
+
+## Make an Eval run reproducible
+
+Make the Eval run reconstructable. Keep the input, Skill version, runtime configuration, expected observable behavior, evaluator, raw output, and trace together. The exact list will vary by project, but the relationship between these pieces should stay visible.
+
+Disagreement between evaluators is where this record pays off. Suppose a deterministic assertion says that a required artifact is missing while a Judge gives the output a PASS because the explanation looks convincing. Do not average the results into a nicer number. Preserve the disagreement, inspect the contract, and decide whether the assertion, the Judge rubric, or the Skill behavior is wrong. The disagreement is evidence about the Eval design.
+
+Separate a bad case from a bad Skill. If the expected behavior cannot be observed from the output or trace, the case may be invalid. If the expectation is clear and the Skill repeatedly violates it, the Skill has a behavior problem. That distinction keeps the team from “fixing” a reliable failure by weakening the test.
+
+## Installation and invocation
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill skill-evaluation
+```
+
+Prepare the target Skill's behavior contract, representative inputs, and observable evidence before asking `skill-evaluation` to organize Eval Cases and run records. Installation only makes the Skill available; it does not create runtime semantic evidence by itself.
+
+## Two practical questions
+
+### Is more Eval Cases always better?
+
+No. Cover the actual capability and risk first, then add paraphrase, adversarial, or compatibility coverage when it earns its maintenance cost. Low-value duplicates are just more files to keep green.
+
+### Can one Eval PASS support a release claim?
+
+Usually not. It supports the state of one Case in one environment. A release claim also needs critical regressions, updated evidence, and declared limitations.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-evaluation` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-evaluation)
+- [`skill-evaluation` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-evaluation)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

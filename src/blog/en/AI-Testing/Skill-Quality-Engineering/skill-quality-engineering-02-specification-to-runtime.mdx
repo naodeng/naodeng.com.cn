@@ -1,0 +1,162 @@
+---
+title: "What Is an Agent Skill? From Specification to Runtime"
+description: "Break an Agent Skill into SKILL.md, metadata, references, progressive disclosure, and the runtime chain that turns a package into behavior."
+date: 2026-11-14T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+When people first encounter Agent Skills, they often describe one as a longer prompt. That is a useful starting point—and it becomes an expensive simplification once the project grows.
+
+An installable Skill is more than `SKILL.md`. It can include metadata, references, scripts, templates, examples, evaluation cases, and the distribution and runtime environment around them. The entry file is the first door into the capability package.
+
+## `SKILL.md` is the entry point, not the whole capability
+
+Take [`functional-testing`](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing) from [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills). Its entry file defines the identity, trigger conditions, workflow principles, progressive-disclosure rules, and pre-delivery checklist. The complete workflow may still require the main prompt, output-format guidance, examples, references, or scripts.
+
+A Skill package usually looks something like this:
+
+```text
+functional-testing/
+├── SKILL.md
+├── README.md
+├── prompts/
+│   └── functional-testing.md
+├── output-formats.md
+├── quick-start.md
+├── tutorial.md
+├── examples/
+├── references/
+├── scripts/
+└── evals/
+```
+
+The exact layout varies by Skill. A package does not need every directory, but every reference should have a clear purpose and loading condition. A directory full of resources does not mean that an agent will automatically use them.
+
+## Specification, Package, and Runtime
+
+Keep these concepts separate:
+
+| Concept | Main question | Typical evidence |
+| --- | --- | --- |
+| Specification | Is the Skill structurally and semantically valid as a package? | Schema, lint, repository conventions |
+| Package | Are its entry point, resources, scripts, and evals complete and independently usable? | Reference integrity, dependency checks, localization parity |
+| Runtime | Did the agent discover, load, follow, and execute it? | Trajectory, output, artifacts, failure records |
+
+When `SKILL.md` parses successfully, you have evidence for Specification. You do not yet have Runtime evidence.
+
+## Progressive disclosure: why the entry file should not contain everything
+
+A Skill has two competing needs: the entry point must be clear, but all supporting material should not be loaded into every task. Progressive disclosure is the engineering compromise. The agent learns when the Skill applies and which constraints always matter first, then loads the resources that the current task actually needs.
+
+The `functional-testing` entry file says to read the main prompt, load output-format guidance for structured formats, and use matching examples or references when required. Those rules are themselves behavior and should be evaluated.
+
+Put everything into `SKILL.md` and the entry point becomes difficult to maintain. Put one sentence there—“please do functional testing”—and the agent has no useful boundary or coverage contract. Neither extreme is a serious package design.
+
+## From discovery to runtime
+
+A Skill typically travels through this chain in a real task:
+
+```text
+Install
+-> Available
+-> Discovered
+-> Matched
+-> Triggered
+-> Load Entry
+-> Load Relevant References
+-> Follow Constraints
+-> Produce Output
+-> Capture Evidence
+```
+
+Each step can fail independently. A successful install proves that distribution works. An available name proves that the package can be found. The task still needs selection and execution evidence.
+
+That is why Skill evaluation needs Positive, Negative, and Boundary cases:
+
+- Positive checks that representative work matches the intended Skill.
+- Negative checks that unrelated work does not trigger it by accident.
+- Boundary checks that neighboring capabilities have an executable distinction.
+
+## A complete package can still produce a wrong result
+
+Imagine that every `functional-testing` file exists and every reference path resolves. The agent can still:
+
+- read only the entry file and miss the main prompt's minimum coverage;
+- load a formatting template without checking roles or data conditions;
+- write unconfirmed API behavior as if it were a fact;
+- continue drafting functional tests when the real task is a testability review;
+- produce Markdown without preserving assumptions and information gaps.
+
+Those are Q4 Behavioral Quality problems, not Q1 Specification problems. Classification matters because it tells you which evidence to add next.
+
+## Start with Q1 and Q3
+
+SQEM uses Q1 for Specification Quality and Q3 for Package Quality. A practical first pass is:
+
+1. Check the canonical `name`, `description`, and directory identity.
+2. Verify that the entry file and referenced resources exist.
+3. Make loading conditions for dependencies, scripts, and templates explicit.
+4. Confirm that the package works through the intended installation path.
+5. Compare English and Chinese capability, boundaries, and behavior intent.
+6. Record what the check covered and what it did not.
+
+That final step is easy to skip. Even when every static check passes, preserve the evidence level instead of writing “the Skill has been validated.”
+
+## Walk from the directory to the result
+
+Follow one instruction from the directory to the result. Take a rule such as “every high-risk requirement must have an observable acceptance criterion.” Locate it in `SKILL.md` or a reference file, find the step that asks the Agent to apply it, then inspect the output and the evidence recorded for the decision.
+
+This exposes a common gap: the rule exists, the reference file is present, and the package passes static checks—but no step tells the Agent when to read it or how to expose the result. The directory is complete. The workflow is not.
+
+Use three labels in the review: present, reachable, and observed. “Present” means the file or rule exists. “Reachable” means the runtime can discover and load it for the target task. “Observed” means a run shows the rule affecting behavior. Only the last label supports a runtime claim. The separation adds a few minutes to the review and keeps the conclusion honest.
+
+## Installation and invocation
+
+Install the English package:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+Install the Chinese package explicitly:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+```
+
+The invocation can make the loading expectation explicit:
+
+```text
+Use the functional-testing Skill.
+First load the main prompt and any references required by this task.
+Input: checkout coupon requirements, roles, coupon rules, and payment dependencies.
+Output: risk-prioritized functional scenarios with facts, assumptions, and information gaps separated.
+Do not present static checks or documentation as executed test evidence.
+```
+
+## What makes a package good?
+
+A good package does not need the most files. It should let the next person answer: where is the entry point, when should each resource load, which assets are optional, what uncertainty must remain visible when input is missing, and how will a change be checked against prior behavior?
+
+If a user has to search the whole directory to answer those questions, package independence and maintainability are already slipping.
+
+## Two practical questions
+
+### Should every rule live in `SKILL.md`?
+
+No. Keep identity, trigger conditions, core constraints, and loading rules in the entry file. Load long references, format guidance, examples, and scripts when the task needs them. The goal is clear boundaries, not a small file for its own sake.
+
+### Is checking that files exist enough?
+
+No. File existence is static or package-integrity evidence. It does not prove that the agent used the right resource or that the final behavior followed the contract.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [`functional-testing` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

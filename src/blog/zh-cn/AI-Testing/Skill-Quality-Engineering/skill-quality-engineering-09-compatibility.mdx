@@ -1,0 +1,163 @@
+---
+title: "Skill Compatibility：换一个 Agent 或模型还能工作吗"
+description: "把 Agent Host、Model、Tools、Environment 和 Language 纳入兼容性证据，说明为什么 Specification Compatibility 不等于 Runtime Compatibility。"
+date: 2026-11-21T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+“这个 Skill 符合 Agent Skills Specification，所以它应该能在所有 Agent 里工作。”
+
+这句话听起来合理，证据却不够。
+
+规范说明包应该怎样组织。运行时兼容性还要看实际 Agent 宿主、模型、工具、环境和语言版本。一个 Skill 可以结构合法、在 Codex 里运行正常，换到另一个 Agent 后却找不到入口、跳过引用，或者改变关键输出行为。
+
+## 兼容性不是一个布尔值
+
+SQEM 把兼容性拆成几个维度：
+
+| 维度 | 要观察什么 |
+| --- | --- |
+| Agent 宿主 | Agent 如何发现、加载和调用 Skill |
+| 模型 | 推理能力、上下文处理和指令遵循差异 |
+| 工具 | 工具名称、参数、权限和失败返回是否一致 |
+| 环境 | 文件系统、网络、凭据、运行时和仓库状态 |
+| 语言 | 中文/英文版本的能力、边界、行为和输出语言 |
+
+如果只验证了一个维度，就不要把结论写成完整兼容性。
+
+## 规范兼容性 != 运行时兼容性
+
+静态兼容性通常可以检查：目录结构、元数据、入口文件、引用资源和安装命令是否符合约定。
+
+运行时兼容性还要回答：
+
+- Agent 能否发现规范的 Skill 名称？
+- description 是否被正确用于路由？
+- 按需加载规则是否被执行？
+- 工具和文件操作是否符合当前环境？
+- 输出行为契约是否仍然成立？
+- 失败和缺失输入是否仍然保留边界？
+
+这些都需要真实运行或足够接近真实运行的证据。
+
+## 用兼容性用例固定声明边界
+
+```yaml
+id: functional-testing-compatibility-001
+skill: functional-testing
+type: compatibility
+matrix:
+  agents:
+    - codex
+    - claude-code
+  models:
+    - configured-model-a
+    - configured-model-b
+behavior:
+  must:
+    - preserve_core_behavior_contract
+```
+
+这个用例不代表所有 Agent 和模型已经执行过。它只是把要验证的矩阵和核心行为写出来。结果报告必须列出真正跑过的组合，其他组合保持 `NOT_RUN` 或 `INSUFFICIENT_EVIDENCE`。
+
+## 为什么不做全排列
+
+假设有 4 个 Agent、6 个模型、3 种工具集、2 个环境和 2 种语言，理论组合就是：
+
+```text
+4 × 6 × 3 × 2 × 2 = 288
+```
+
+再加上不同输入和版本，数量会继续增长。全排列既昂贵，也不一定更接近真实风险。
+
+更合理的方式是代表性抽样：
+
+1. 先覆盖项目真正支持的主 Agent 和模型。
+2. 选择已知模型敏感或工具依赖明显的组合。
+3. 对高影响、低可探测失败增加运行样本。
+4. 把真实失败和差异沉淀成兼容性或回归用例。
+5. 对没有执行的组合明确写出证据缺口。
+
+## Pilot 的兼容性取舍
+
+Awesome QA Skills 的 Pilot 给出了代表性目标，而不是全量承诺：
+
+| Skill | Codex | Claude Code | 其他代表 Agent |
+| --- | --- | --- | --- |
+| `functional-testing` | 必需 | 推荐 | 可选 |
+| `testability-analysis` | 必需 | 推荐 | 可选 |
+| `performance-testing` | 必需 | 可选 | 可选 |
+| `skill-evaluation-design` | 必需 | 推荐 | 可选 |
+| `skill-change-verification` | 必需 | 推荐 | 可选 |
+
+实际执行仍取决于可用运行时。表格表达的是测试优先级，不是已经完成的运行证据。
+
+## 双语兼容性不只是翻译
+
+中英文版本应保持：
+
+- 能力一致性：能做同一类事情；
+- 触发一致性：代表性任务能被同样识别；
+- 行为一致性：MUST、SHOULD、MUST NOT 意图一致；
+- 边界一致性：不适用范围和相邻能力边界一致；
+- 输出语言：按用户语言输出。
+
+不需要机械地复制完整评测套件。可以先选择代表性双语用例，关注能力和行为是否真正对齐。
+
+## 工具和环境经常是隐藏变量
+
+同一个 Skill 在不同环境中可能面对：
+
+- 文件路径和仓库布局不同；
+- 某个工具存在但参数不兼容；
+- 网络或凭据不可用；
+- Agent 不允许执行写操作；
+- 输入材料版本不同；
+- 默认语言和上下文窗口不同。
+
+这些情况不能简单标成 Skill FAIL。先区分 Skill 缺陷、基础设施缺陷和未知原因，并记录阻塞原因。环境没提供证据时，最准确的状态可能是 `BLOCKED`。
+
+## 一次只改一个变量，排查兼容性失败
+
+如果一个用例在 Codex 中通过，却在 Claude Code 中失败，不要立刻把原因归到模型上。先固定 Skill 版本和任务，再一次只改变一个维度：Agent 宿主、模型、工具可用性、运行环境和输出语言。矩阵中的每一行都要记录具体配置、加载过的参考资料、观察到的输出和失败追踪。
+
+对应地，只有工具不可用时才失败，就先检查工具契约；同一个模型换宿主就失败，就先检查宿主集成；只有语言变化时输出不同，就检查本地化指令和参考资料路径。兼容性声明要绑定到已经测试过的变量。
+
+一行失败也不能证明“完全不兼容”。它最多支持对当前组合标记 PARTIAL 或 BLOCKED，然后安排针对性的修复或增加一个代表性用例。矩阵要把这个边界留下来，不能把所有失败压成一句“这个 Skill 不兼容”。
+
+## 安装与调用
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill functional-testing
+```
+
+在目标运行时中执行相同代表性任务：
+
+```text
+Use the functional-testing Skill.
+Task: design functional tests for the checkout coupon flow.
+Keep the same input, expected behavior contract, and evidence fields across runtimes.
+Record Agent Host, Model, Tools, Environment, output language, trigger evidence, and any blocked checks.
+Do not infer compatibility for combinations that were not executed.
+```
+
+## 两个实际问题
+
+### 在一个 Agent 上通过，能不能写“跨 Agent 兼容”？
+
+不能。最多写“在该 Agent、该模型、该环境下观察到通过”。跨 Agent 声明需要对应运行时证据。
+
+### 中文和英文都输出了结果，就算双语兼容了吗？
+
+不算。还要比较能力、触发、行为契约和边界。只看语言输出，不足以证明能力等价。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`functional-testing` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- [`functional-testing` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/functional-testing)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

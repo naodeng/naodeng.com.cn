@@ -1,0 +1,189 @@
+---
+title: "Skill Evidence: What Does PASS Actually Prove?"
+description: "Separate static, evaluation, runtime, and real-world evidence, and use PASS, PARTIAL, NOT_RUN, BLOCKED, and INSUFFICIENT_EVIDENCE without overclaiming."
+date: 2026-11-23T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+“All Eval configurations are valid, so all Skills have been validated.”
+
+“The agent generated a result, so this Skill is proven in production.”
+
+The problem is the evidence boundary, not the grammar. PASS belongs to a particular check, Case, environment, and evidence boundary.
+
+## Four evidence levels
+
+SQEM describes four levels:
+
+| Level | Name | Typical conclusion it supports |
+| --- | --- | --- |
+| E1 | Static | Structure, schema, metadata, references, and static rules passed |
+| E2 | Eval | Specific behavior contracts, rules, judges, or regression cases were observed |
+| E3 | Runtime | The Skill ran in an agent harness, benchmark, model, or agent combination |
+| E4 | Real-world | Project use, real failures, user feedback, and long-term records exist |
+
+E1 is important, but it proves engineering structure. E2 observes particular Cases. E3 says the behavior was seen in a real runtime. E4 approaches long-term practice evidence. None is an automatic substitute for another.
+
+## What PASS actually proves
+
+A result should be stated with its scope:
+
+```text
+In Version V, Agent A, Model M, and Environment E, Case C behavior check = PASS.
+```
+
+Not this:
+
+```text
+Skill PASS, therefore it is reliable, compatible, and effective.
+```
+
+The second sentence quietly imports several unexecuted conclusions.
+
+## The status model
+
+The Eval Contract allows these states:
+
+| Status | Meaning |
+| --- | --- |
+| PASS | The current check met its expectation within its scope |
+| FAIL | Evidence shows that the expectation was not met |
+| PARTIAL | Only part of the requirement or environment is supported |
+| NOT_RUN | The check has not been executed |
+| BLOCKED | Missing environment, tool, credential, or event prevented completion |
+| INSUFFICIENT_EVIDENCE | An observation exists but cannot support the target claim |
+
+No observed failure is not the same as PASS. A check that did not run is not a negative result. When `skill.selection` trace evidence is missing, `BLOCKED` is correct—not “not triggered.”
+
+## A common evidence jump
+
+Imagine that a repository checks:
+
+- `SKILL.md` exists;
+- frontmatter is valid;
+- Eval YAML parses;
+- referenced files exist.
+
+Those results can support:
+
+```text
+Specification / Package checks = PASS
+Evidence Level = E1 Static
+```
+
+They do not directly support:
+
+- the agent will trigger the Skill correctly;
+- the model will follow the behavior contract;
+- With Skill is better than Without Skill;
+- another agent or model is compatible;
+- long-term project use is safe.
+
+Those claims need corresponding E2, E3, or E4 evidence.
+
+## The Quality Claim Gate
+
+Quality claims should map to evidence:
+
+| Claim | Required evidence |
+| --- | --- |
+| “Supports Codex” | Codex Runtime Evidence |
+| “Improves test design quality” | Comparative Benchmark Evidence |
+| “Works across models” | Cross-model Evidence |
+| “Production proven” | Real-world Evidence |
+| “All references are valid” | Static Reference Validation |
+
+This does not mean every Skill needs every evidence type. It means the team should be explicit about what it can claim now.
+
+## Use a Quality Profile correctly
+
+A profile can summarize the current state:
+
+```text
+Skill: functional-testing
+Version: x.y.z
+Target Test Level: L3 Evaluated
+Current Test Level: L2 Verified
+
+Q1 Specification       PASS
+Q2 Design              PASS
+Q3 Package             PASS
+Q4 Behavior            PASS
+Q5 Effectiveness       NOT_RUN
+Q6 Compatibility       PARTIAL
+Q7 Evidence/Evolution  PASS
+
+Evidence Level: E2 Eval
+Known Gaps:
+- Benchmark not executed
+- Cross-model evidence incomplete
+- Real-project evidence limited
+```
+
+It does not compress the Skill into one score or pretend that unknown areas were validated. It makes the next action concrete.
+
+## Why `skill-change-verification` matters here
+
+Change verification is not only a list of commands. It states exactly what evidence supports, what did not run, and what residual risk remains.
+
+For example, a passing `skill-up validate` can be structural evidence; it is not runtime semantic validation. A CLI smoke test can show that installation works; it is not cross-model compatibility. One manual output can be an observation; it is not a benchmark or real-world evidence.
+
+These boundaries are easy to hide in a report title, so status and Evidence Level should be written directly into the result.
+
+## Honest output under incomplete input
+
+Real tasks often lack an environment, credentials, version, or selection event. A report can say:
+
+```text
+Trigger: BLOCKED
+Reason: skill.selection trace unavailable
+Behavior: NOT_RUN
+Reason: runtime target not provided
+Static Package: PASS
+Evidence Level: E1 Static
+Quality Claim: limited to package validity
+```
+
+It is less green. It is also not turning unknowns into facts. Once the runtime is available, the next validation step is obvious.
+
+## Decompose one quality claim into evidence
+
+Write down the claim and its required evidence before running the check. “Supports Codex” needs a target host, a Skill version, representative requests, observed selection and behavior, and a retained trace. “Improves test design quality” needs a comparison against a defined baseline. “Production proven” needs real-project observations with enough context to explain what happened.
+
+Use a five-field claim map: claim, required evidence level, current status, known gap, and next action. It does not need every status to be PASS. Its job is to stop a static package check from silently becoming a runtime or production statement.
+
+The map also keeps documentation maintainable. When evidence expires, a dependency changes, or a runtime is no longer available, move the affected claim to PARTIAL, NOT_RUN, or BLOCKED without rewriting the whole story. The limitation belongs in the artifact.
+
+## Installation and invocation
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill skill-change-verification
+```
+
+```text
+Use the skill-change-verification Skill.
+For every check, record status, evidence level, runtime metadata, limitations, and the exact claim it supports.
+Separate static validation, trigger evidence, behavior evidence, benchmark evidence, compatibility evidence, and real-project evidence.
+Keep unavailable checks as NOT_RUN, BLOCKED, or INSUFFICIENT_EVIDENCE.
+```
+
+## Two practical questions
+
+### Does more PASS always make the Quality Profile better?
+
+Not automatically. The question is whether the PASS results cover the risks behind the intended claim. A profile with only static PASS may be less complete than one that honestly marks its benchmark `NOT_RUN`.
+
+### Does `PARTIAL` make the project look bad?
+
+It says the evidence scope is limited. A clear `PARTIAL` is more useful for decisions and next validation than an unsupported “fully passed.”
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-change-verification` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification)
+- [`skill-change-verification` Chinese Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)

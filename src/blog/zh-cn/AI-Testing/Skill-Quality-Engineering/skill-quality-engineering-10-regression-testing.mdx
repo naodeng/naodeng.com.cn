@@ -1,0 +1,156 @@
+---
+title: "Skill Regression：Skill 改了以后怎么证明没有改坏"
+description: "把 description、指令、引用、模型和真实失败纳入变更影响分析，用最小但足够的回归证据证明 Skill 没有被悄悄改坏。"
+date: 2026-11-22T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量工程"]
+categories: ["AI 测试", "质量工程"]
+series: ["Skill 质量工程"]
+---
+
+Skill 的回归不一定表现为“模型突然完全不会了”。更常见的是一个小改动改变了边界：description 变了，Agent 不再触发；主 Prompt 增加了一个要求，输出开始补造细节；引用文件换了路径，关键规则没有被加载；模型升级后，原本稳定的行为开始漂移。
+
+所以“文件能解析、静态检查通过”不能代替回归验证。
+
+## 先按变更类型看影响
+
+不同变化影响的运行时环节不同：
+
+| 变更 | 可能影响 | 最小关注点 |
+| --- | --- | --- |
+| `description` | 发现、触发、选择 | 正向、负向、边界 |
+| `SKILL.md` 工作流 | 行为、输出、轨迹 | 行为、回归、必要时运行时 |
+| 参考资料 | 知识、引用和边界 | 相关用例、引用完整性 |
+| 脚本或模板 | 产物、副作用 | 脚本、产物、副作用 |
+| 评测预期 | 证据解释和回归可信度 | 评测有效性、评判器校准 |
+| 模型或 Agent | 触发和输出稳定性 | 多次运行、兼容性 |
+
+变更范围决定回归范围。跑了全量静态检查，不代表覆盖了真正变化的行为。
+
+## 从失败沉淀为回归
+
+SQEM 建议把真实失败沉淀成可重复的回归用例：
+
+```text
+Observed Failure
+-> Capture Evidence
+-> Reproduce
+-> Classify
+-> Root Cause
+-> Fix
+-> Regression Case
+-> Existing Suite
+-> Release Evidence
+```
+
+这里的关键不是“失败出现过”，而是已经确认它是什么问题。没有根因的失败，可能来自 Skill、评测、基础设施或未知条件；直接加入回归套件只会把噪声保存下来。
+
+## 用 `skill-change-verification` 选择最小验证
+
+`skill-change-verification` 的职责就是根据变更范围选择最小但足够的检查，并准确说明证据能支持什么结论。它要求把变更分为内容、元数据/目录、脚本、评测和运行时影响，然后记录命令、结果、未执行项和残余风险。
+
+一个实际变更可能是：只修改了 `functional-testing` 的 description，新增一个触发短语。合理的最小验证应关注：
+
+1. 结构和元数据仍然合法；
+2. 原有正向用例仍能触发；
+3. 负向和边界用例没有新增误触发；
+4. 如果缺少 `skill.selection` 追踪记录，状态写成 `BLOCKED`，不猜测；
+5. 输出结论只覆盖真正运行过的 Agent 和模型。
+
+没有必要因为改了一行 description 就重跑所有高成本 Benchmark，但也不能只看 `git diff` 就说“没有影响”。
+
+## PR、发布和定期检查
+
+变更验证可以按时间和成本分层：
+
+### 拉取请求
+
+```text
+Static Validation
+Critical Eval
+Changed-Skill Eval
+Regression Smoke
+```
+
+### 发布
+
+```text
+Full Relevant Eval
+Regression Suite
+Selected Benchmark
+Selected Compatibility
+Evidence Report
+```
+
+### 定期检查
+
+```text
+Cross-model
+Cross-agent
+Extended Benchmark
+Longitudinal Regression
+```
+
+这样做是为了把低成本、确定性的反馈留在 PR，把更贵、更容易波动的证据放到发布或定期任务中。
+
+## 回归报告应该写什么
+
+一个可复核的报告至少说明：
+
+- 变更版本和影响范围；
+- 执行了哪些用例；
+- 使用的 Agent、模型、工具和环境；
+- 每条结论的状态和证据等级；
+- 哪些检查没有执行，以及为什么；
+- 是否发现 Skill、评测、基础设施或未知原因问题；
+- 修复后新增了哪条回归用例。
+
+“全量检查通过”不是完整报告。它没有告诉下一位维护者全量检查到底覆盖了什么。
+
+## 回归和 Benchmark 不是同一件事
+
+回归比较旧版本和当前版本，问的是“有没有改坏既有行为”。Benchmark 比较不使用 Skill 和使用 Skill，问的是“有没有增量价值”。
+
+同一个版本可以回归通过，但 Benchmark 仍然没有证明有效；也可以 Benchmark 体现增量，但某次 description 修改漏掉了边界用例。
+
+把两个结果分开记录，讨论会简单很多。
+
+## 怎样把一条回归用例写完整
+
+一条真实失败记录，只有整理成别人可以重新运行的用例后，才有价值。至少把六件事放在一起：观察到的症状、发生变化的范围、已经确认的根因、能够暴露问题的最小输入、预期保持稳定的行为，以及证明结果的产物。
+
+比如修改 `description` 后，一个常见请求不再触发目标 Skill，就保存这个请求和相邻的负向请求，记录旧版本与当前版本的选择结果，并说明边界为什么发生了变化。回归用例只覆盖最相关的表面，不要因为原始失败很麻烦，就悄悄把它扩成一次完整 Benchmark。
+
+用例还需要维护规则。如果预期行为发生变化，就同时更新预期和变更原因；如果只是实现发生变化，但行为应该保持稳定，就保留用例并重新运行。没有负责人维护的回归套件，最后会变成堆满旧假设的博物馆。
+
+## 安装与调用
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-change-verification
+```
+
+```text
+请使用 skill-change-verification Skill。
+变更范围：修改 functional-testing 的 description，增加一个中文触发短语。
+请选择最小但足够的静态、Trigger、Boundary 和 Regression 检查。
+记录已执行命令、结果、未执行项目、证据等级和残余风险。
+没有 skill.selection 证据时标记 BLOCKED，不要推断触发成功或失败。
+```
+
+## 两个实际问题
+
+### 只改参考资料，也需要回归吗？
+
+需要。引用内容可能改变判断、边界和输出。先评估引用是否会影响核心行为，再选择相关用例，不必机械地跑所有项目。
+
+### 回归全部 PASS，就能写“没有任何风险”吗？
+
+不能。回归只覆盖已选择的历史和代表性行为。环境、模型、未执行用例和新输入仍然可能存在缺口。
+
+## 参考
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-change-verification` 中文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
+- [`skill-change-verification` 英文 Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification)
+- [Awesome QA Skills 在线目录](https://inaodeng.com/zh-cn/qaskills/)

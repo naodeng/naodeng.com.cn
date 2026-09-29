@@ -1,0 +1,188 @@
+---
+title: "The Skill Quality Loop: Applying QA Engineering to Agent Skills"
+description: "Connect Match, Design, Validate, Evaluate, Benchmark, Release, Observe, Regress, and Improve into a sustainable quality loop for Agent Skills."
+date: 2026-11-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+We started with a simple question: how do we know whether an Agent Skill is actually good?
+
+One successful conversation or a table with a score of 92 cannot answer it. The useful answer comes from a quality loop that can keep running. Every addition, change, run, and failure should lead back to the right evidence and the next action.
+
+## From one evaluation to a loop
+
+The complete Skill Quality Engineering model looks like this:
+
+```text
+Match
+-> Design
+-> Implement
+-> Validate
+-> Evaluate
+-> Benchmark
+-> Release
+-> Observe
+-> Regress
+-> Improve
+-> next cycle
+```
+
+Each step answers a different question:
+
+| Stage | Question | Typical artifact |
+| --- | --- | --- |
+| Match | Can an existing capability cover this? Should we merge, enhance, or add? | Match Review, capability boundary |
+| Design | What are the purpose, inputs, outputs, non-goals, and failure boundaries? | Specification, behavior contract |
+| Implement | Are entry files, references, scripts, templates, and Evals present? | Skill Package |
+| Validate | Are structure, metadata, dependencies, and references valid? | Static Validation |
+| Evaluate | Do critical behaviors hold for representative Cases? | Eval results, traces, artifacts |
+| Benchmark | Is there uplift over a baseline? | With/without Skill evidence |
+| Release | Do critical regressions and known gaps meet the gate? | Evidence Report, Quality Profile |
+| Observe | What failures and differences appear in real use? | Runtime notes, feedback |
+| Regress | Has each confirmed failure become reproducible? | Regression Suite |
+| Improve | What should change, and what must be re-proven? | Change scope, next validation |
+
+The loop treats a Skill as an engineering capability that needs maintenance. Prompts grow versions, dependencies, and regression debt once people rely on them. That part is less glamorous, but here we are.
+
+## How the Awesome QA Skills Pilot applies it
+
+The Pilot does not assume that SQEM v1.0 is correct. It tests whether the framework is understandable, executable, affordable, and capable of finding defects that static checks cannot see.
+
+It selects five different Pilot Skills:
+
+```text
+functional-testing
+testability-analysis
+performance-testing
+skill-evaluation-design
+skill-change-verification
+```
+
+Together they cover general QA, analysis, specialist domain work, and Skill engineering. Different capability types are necessary if the framework is supposed to be reusable.
+
+## The nine Pilot stages
+
+### 1. Inventory
+
+Collect the canonical name, language variants, directory structure, references, scripts, existing Evals, known issues, and neighboring Skills. Without that inventory, “complete coverage” has no object.
+
+### 2. Risk Profile
+
+Assess reasoning complexity, trigger ambiguity, side effects, tool dependency, impact, model sensitivity, and failure detectability using Low, Medium, and High.
+
+### 3. Q1–Q3 Validation
+
+Run Specification, Design, Package, and Localization Consistency checks before making behavior claims.
+
+### 4. Behavior Contract
+
+Define the real `MUST`, `SHOULD`, and `MUST NOT` behaviors for each Pilot Skill. Do not confuse output-format preferences with capability.
+
+### 5. Core Eval Suite
+
+Start with 2–3 Positive, 2 Negative, 2 Boundary when applicable, 2 Behavior, and existing Regression Cases. This is a guide, not a mechanical quota.
+
+### 6. Runtime Evaluation
+
+Run representative Evals in at least one supported Agent Runtime, recording Trigger, Output, necessary Trajectory, Artifacts, Failures, and Runtime Metadata.
+
+### 7. Benchmark
+
+Prioritize Without Skill / With Skill comparisons for `functional-testing`, `testability-analysis`, and `skill-evaluation-design` to see whether the framework produces actionable uplift evidence.
+
+### 8. Compatibility Sampling
+
+Use representative agents, models, and environments instead of unlimited enumeration. Only executed combinations belong in a compatibility claim.
+
+### 9. Bilingual Parity
+
+Compare Capability, Trigger, Behavior, Boundary, and Output Language between English and Chinese. The goal is behavioral parity, not identical sentences.
+
+## What the Pilot should measure
+
+Quality findings include Specification Defects, Package Defects, Trigger Defects, Boundary Defects, Behavior Defects, Regression Defects, and Compatibility Differences.
+
+Engineering cost matters too:
+
+- Eval authoring and maintenance time;
+- runtime, token, and CI cost;
+- failure triage time;
+- the additional work created by compatibility and bilingual maintenance.
+
+The framework itself should answer whether it found problems static checks missed, improved Skill boundaries, increased regression confidence, produced useful benchmark evidence, and created too much maintenance cost.
+
+## When is the Pilot done?
+
+The exit criteria are not “every Case is green.” More useful criteria are:
+
+1. All five Pilot Skills can apply SQEM consistently.
+2. Skill authors understand the seven quality domains.
+3. Core Eval maintenance cost is acceptable.
+4. Behavioral evaluation finds information static checks miss.
+5. Benchmarks produce actionable evidence.
+6. Compatibility can be controlled through sampling.
+7. Bilingual validation does not require duplicating the entire suite mechanically.
+8. Regression Cases trace back to real failures.
+9. Runtime cost can be measured.
+10. SQEM v1.1 can identify and remove unnecessary complexity.
+
+Possible decisions include `ADOPT`, `ADOPT_WITH_CHANGES`, `LIMITED_ADOPTION`, and `REWORK`. The framework may need to change—that is one of the outcomes the Pilot is supposed to produce.
+
+## Start the loop with one Skill
+
+You do not need to wait for a complete governance system. Start with one real change:
+
+```text
+1. State the change and intended quality claim
+2. Run Match and Risk Profile
+3. Run static and package-integrity checks
+4. Select minimum Positive / Negative / Boundary / Behavior Evals
+5. Record runtime, status, and evidence level
+6. Add Benchmark or Compatibility Sampling when justified
+7. Turn confirmed real failures into Regression
+8. Update the Quality Profile and next step
+```
+
+That is enough to turn “it should be fine” into “we know what was checked and what remains unverified.”
+
+## Give the loop an owner
+
+Give each cycle an owner. A quality loop fails at the handoff when someone runs an Eval, someone else reads the output, and nobody owns the decision that follows. Record the owner, input or Skill change, checks that ran, evidence produced, decision, and next action.
+
+Start small: one Skill, one target runtime, one core suite, and one review cadence. After each cycle, classify the result as a package issue, Trigger issue, behavior issue, compatibility issue, or evidence gap. That category determines who acts next. “Needs improvement” does not.
+
+The loop has value when the next run can reuse the previous artifacts and explain what changed. It can continue with a clear NOT_RUN, an owner, and a closing condition. That is more operational than a perfect-looking dashboard with no next step.
+
+## Installation and invocation
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill skill-evaluation
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill skill-change-verification
+```
+
+```text
+Use the skill-evaluation and skill-change-verification Skills.
+Goal: build a minimum quality loop for this Skill change.
+First state the change impact, risks, and intended quality claim, then select static, behavior, regression, benchmark, or compatibility checks.
+Record PASS, PARTIAL, NOT_RUN, BLOCKED, and INSUFFICIENT_EVIDENCE with the evidence behind each state.
+Finish with residual risk and the next validation cycle.
+```
+
+## Return to the original question
+
+A mature Agent Skill does not need the most files, the most Evals, or the highest score. It needs clear boundaries, observable behavior on important tasks, evidence after failure, re-validation after change, and the discipline to avoid presenting unexecuted work as proven.
+
+Awesome QA Skills is therefore more than a collection of QA Skills. It is also an experiment in applying QA engineering to the Skills themselves: match before adding, validate before claiming, turn real failures into regressions, and use longitudinal evidence to choose the next step.
+
+In the end, Skill Quality Engineering is not governing one prompt. It is governing a capability chain that a team can trust, repair, and keep evolving.
+
+## References
+
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [`skill-evaluation` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-evaluation)
+- [`skill-change-verification` English Skill](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification)
+- [Awesome QA Skills catalog](https://inaodeng.com/qaskills/)
