@@ -187,6 +187,7 @@ test.describe("Prompt library discovery and review flow", () => {
     test(`${lang} keeps the task-first homepage bilingual`, async ({ page, baseURL }) => {
       await page.setViewportSize({ width: 1440, height: 900 });
       await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
+      await page.evaluate(async () => { await document.fonts.ready; });
 
       const expectedTitle = lang === "zh-cn" ? "先说你要完成什么" : "Start with the task";
       await expect(page.locator("main h1")).toContainText(expectedTitle);
