@@ -442,13 +442,13 @@
 
 - [ ] **Step 1: 写内容状态和路由契约测试**
 
-  增加单元断言：Bruno 双语页面不含 `---TODO` 标题；Links 页面只渲染真实友链和现有邮件联系入口，不渲染 `href="#"` 占位；Prototype 保持 `noindex,nofollow` 且不进入 `Header.astro`、`Footer.astro`、`src/pages/[lang]/sitemap.astro`、`src/utils/seoUrls.ts`、`src/components/qaskills/RecommendedQASkills.astro`、`src/pages/[lang]/qaskills/index.astro`、`src/components/home/HomeGlassHero.astro`、`src/components/home/HomeCapabilityGuide.astro` 或 `src/components/home/HomeTaskNavigator.astro`；`wiki-redirect.spec.ts` 直接请求 `/en/wiki/acceptance-testing/`，断言 3xx 和 `Location: https://ray.run/wiki#acceptance-testing`。
+  增加单元断言：Bruno 双语页面不含 `---TODO` 标题；Links 页面只渲染真实友链和现有邮件联系入口，不渲染 `href="#"` 占位；Prototype 保持 `noindex,nofollow` 且不进入 `Header.astro`、`Footer.astro`、`src/pages/[lang]/sitemap.astro`、`src/utils/seoUrls.ts`、`src/components/qaskills/RecommendedQASkills.astro`、`src/pages/[lang]/qaskills/index.astro`、`src/components/home/HomeGlassHero.astro`、`src/components/home/HomeCapabilityGuide.astro` 或 `src/components/home/HomeTaskNavigator.astro`；`wiki-redirect.spec.ts` 直接请求 `/en/wiki/acceptance-testing/`，在静态托管约束下断言 200 redirect artifact、meta refresh 和 canonical 均指向 `https://ray.run/wiki#acceptance-testing`。
 
 - [ ] **Step 2: 运行测试确认当前未完成状态**
 
   Run: `cd tests && npm run test:unit -- guildContentQuality.test.ts qaskillsPrototypeIsolation.test.ts && npm run test:e2e -- specs/links.spec.ts specs/seo.spec.ts specs/wiki-redirect.spec.ts`
 
-  Expected: Bruno/Links 的已知 TODO 与空占位提供可定位失败；Prototype 隔离如果当前已满足可以直接通过，不能为了制造失败而放宽或反转断言；外部 redirect 测试应明确报告当前 3xx/Location 状态；现有内容质量测试不因路径错误失败。
+  Expected: Bruno/Links 的已知 TODO 与空占位提供可定位失败；Prototype 隔离如果当前已满足可以直接通过，不能为了制造失败而放宽或反转断言；外部 redirect 测试应明确报告静态 200 artifact 的 meta refresh/canonical 目标；现有内容质量测试不因路径错误失败。
 
 - [ ] **Step 3: 收口 Bruno TODO**
 
@@ -535,5 +535,5 @@
 - Spec P1：页面覆盖矩阵补齐了法律/工具/错误页、SearchModal、Weekly 和专项测试映射。
 - Spec P1：色板、次级文字、边框、代码表面、focus 和 theme-soft 派生公式全部明确。
 - Spec P1：Links 行为固定为隐藏空占位，沿用现有邮件联系入口，不新增目标。
-- Spec P1：Prototype 隔离增加具体入口源码清单与 `qaskillsPrototypeIsolation.test.ts`；英文 Wiki redirect 增加固定目标和直接 3xx 测试。
+- Spec P1：Prototype 隔离增加具体入口源码清单与 `qaskillsPrototypeIsolation.test.ts`；英文 Wiki redirect 增加固定目标和静态 200 artifact 测试。
 - Spec P2：英文 Wiki redirect 不再依赖同源链接扫描，使用独立 `wiki-redirect.spec.ts`。

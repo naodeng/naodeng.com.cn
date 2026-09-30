@@ -9,7 +9,6 @@ import type { Lang } from "@/i18n";
 import {
   aiwikiIdToLang,
   aiwikiIdToSlug,
-  buildAiWikiSidebar,
   getAiWikiDisplayTitle,
   slugToTitleEn,
 } from "@/data/aiwiki";
@@ -51,18 +50,21 @@ const breadcrumbs = [
 const allEntries = await getCollection("aiwiki");
 const entries = allEntries.filter((e) => (e.data.lang ? e.data.lang === locale : aiwikiIdToLang(e.id) === locale));
 const basePath = `/${locale}/AIWiki`;
-const fullSidebarSections = buildAiWikiSidebar(entries, locale);
-const wikiItems = fullSidebarSections
-  .filter((section) => section.title)
-  .flatMap((section) => section.items);
+const relatedTitleMap = new Map(entries.map((e) => [e.data.slug ?? aiwikiIdToSlug(e.id), getAiWikiDisplayTitle(e, locale)]));
+const relatedItems = [...new Set(entry.data.related ?? [])]
+  .filter((term) => term !== slugParam)
+  .slice(0, 5)
+  .map((slug) => ({ slug, label: relatedTitleMap.get(slug) ?? slug }));
 const sidebarSections = [
   { items: [{ label: locale === "zh-cn" ? "返回百科首页" : "Back to index", href: "" }] },
   {
-    title: locale === "zh-cn" ? "词条" : "Entries",
-    items: wikiItems,
+    title: locale === "zh-cn" ? "当前词条" : "Current entry",
+    items: [{ label: pageTitle, href: slugParam }],
   },
+  ...(relatedItems.length > 0
+    ? [{ title: locale === "zh-cn" ? "相关词条" : "Related terms", items: relatedItems.map((item) => ({ label: item.label, href: item.slug })) }]
+    : []),
 ];
-const relatedTitleMap = new Map(entries.map((e) => [e.data.slug ?? aiwikiIdToSlug(e.id), getAiWikiDisplayTitle(e, locale)]));
 
 const { Content, headings: renderedHeadings = [] } = await render(entry);
 
@@ -112,18 +114,21 @@ const structuredData = {
   currentPath={slugParam}
   basePath={basePath}
   sidebarMenuLabel={locale === "zh-cn" ? "本页导航" : "On this page"}
+  sidebarSearchPlaceholder={locale === "zh-cn" ? "检索词条…" : "Search terms…"}
+  sidebarSearchAction={`${basePath}/`}
+  sidebarSearchLabel={locale === "zh-cn" ? "检索词条" : "Search terms"}
   headings={headings}
   tocLabel={locale === "zh-cn" ? "本页目录" : "On this page"}
 >
   <article class="aiwiki-article" data-locale={locale}>
     <Content />
 
-    {entry.data.related && entry.data.related.length > 0 && (
+    {relatedItems.length > 0 && (
       <section class="aiwiki-related" aria-labelledby="aiwiki-related-heading">
         <h2 id="aiwiki-related-heading">{locale === "zh-cn" ? "相关词条" : "Related terms"}</h2>
         <div class="aiwiki-related-pills">
-          {entry.data.related.map((term: string) => (
-            <a href={`${basePath}/${term}/`} class="aiwiki-related-pill">{relatedTitleMap.get(term) ?? term}</a>
+          {relatedItems.map((item) => (
+            <a href={`${basePath}/${item.slug}/`} class="aiwiki-related-pill">{item.label}</a>
           ))}
         </div>
       </section>

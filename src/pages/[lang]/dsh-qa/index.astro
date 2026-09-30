@@ -98,7 +98,7 @@ const historicalReleases = site.releases.slice(1);
     </section>
 
     <section class="section releases" data-release-notes aria-labelledby="releases-title">
-      <p class="section-kicker">06 / RELEASES</p>
+      <p class="section-kicker">06 / {locale === "zh-cn" ? "版本变更" : "RELEASES"}</p>
       <h2 id="releases-title">{site.labels.releaseNotes}</h2>
       <article class="current-release" data-dsh-current-release>
         <div class="current-release-heading"><span>{locale === "zh-cn" ? "当前版本" : "Current release"}</span><strong>{latestRelease.version}</strong><time datetime={latestRelease.publishedAt}>{latestRelease.publishedAt}</time></div>
@@ -216,7 +216,7 @@ const historicalReleases = site.releases.slice(1);
   .command-card button { display: inline-flex; align-items: center; gap: .35rem; padding: .35rem .45rem; border: 0; border-radius: var(--radius-sm); color: inherit; background: transparent; font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }
   .command-card button:hover, .command-card button:focus-visible { background: var(--command-card-hover); }
   .command-card button .material-icons-sharp { font-size: 1rem; }
-  .command-card code { display: block; padding: 1rem .95rem 1.1rem; color: var(--command-card-code); font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; font-size: clamp(.75rem, 1.5vw, .94rem); line-height: 1.45; white-space: nowrap; }
+  .command-card code { display: block; padding: 1rem .95rem 1.1rem; color: var(--command-card-code); font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; font-size: clamp(.75rem, 1.5vw, .94rem); line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
   .command-card code span { color: var(--command-card-prompt); }
   .command-card[data-copy-state="copied"] [data-dsh-command-copy] { color: var(--color-theme); }
   .command-card[data-copy-state="failed"] [data-dsh-command-copy] { color: var(--color-warn); }

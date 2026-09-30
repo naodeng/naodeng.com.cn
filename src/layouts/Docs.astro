@@ -30,6 +30,10 @@ interface Props {
   sidebarSearchPlaceholder?: string;
   /** 将侧栏检索词同步到主内容区的搜索框（可选） */
   sidebarSearchTargetId?: string;
+  /** 详情页侧栏搜索的提交目标（可选） */
+  sidebarSearchAction?: string;
+  /** 侧栏搜索框的无障碍标签 */
+  sidebarSearchLabel?: string;
   /** 本页标题锚点，用于右侧「本页目录」；无则只显示左右两栏 */
   headings?: { depth: number; slug: string; text: string }[];
   /** 右侧 TOC 标题：本页目录 / On this page */
@@ -48,6 +52,8 @@ const {
   sidebarMenuLabel,
   sidebarSearchPlaceholder,
   sidebarSearchTargetId,
+  sidebarSearchAction,
+  sidebarSearchLabel,
   headings = [],
   tocLabel,
 } = Astro.props;
@@ -77,6 +83,8 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
         menuLabel={menuLabel}
         searchPlaceholder={sidebarSearchPlaceholder}
         searchTargetId={sidebarSearchTargetId}
+        searchAction={sidebarSearchAction}
+        searchLabel={sidebarSearchLabel}
       />
     </aside>
     <div class="docs-content">

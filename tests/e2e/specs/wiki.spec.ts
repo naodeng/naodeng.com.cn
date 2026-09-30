@@ -100,11 +100,35 @@ test.describe("百科（Wiki）", () => {
     await expect(page.locator(".docs-sidebar-link--active")).toHaveText(/无障碍测试/);
   });
 
+  test("zh-cn 百科详情页侧栏保留搜索并避免复制完整词条目录", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/wiki/accessibility-testing/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("#docs-sidebar-search-input")).toBeVisible();
+    await expect(page.locator(".docs-sidebar-search-form")).toHaveAttribute("action", "/zh-cn/wiki/");
+    expect(await page.locator(".docs-sidebar-link").count()).toBeLessThanOrEqual(8);
+
+    await page.locator("#docs-sidebar-search-input").fill("manual");
+    await page.locator("#docs-sidebar-search-input").press("Enter");
+    await expect(page).toHaveURL(/\/zh-cn\/wiki\/\?q=manual$/);
+    await expect(page.locator("#wiki-search")).toHaveValue("manual");
+  });
+
   test("zh-cn AI Wiki 词条页侧栏直接显示词条名称，不显示字母导航", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/AIWiki/ai-agent/", { waitUntil: "domcontentloaded" });
     await expect(page.locator(".docs-sidebar-link[href='/zh-cn/AIWiki/ai-agent/']")).toBeVisible();
     await expect(page.locator(".docs-sidebar-link[href='/zh-cn/AIWiki/#letter-A']")).toHaveCount(0);
     await expect(page.locator(".docs-sidebar-link--active")).toBeVisible();
+  });
+
+  test("zh-cn AI Wiki 详情页侧栏保留搜索并避免复制完整词条目录", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/AIWiki/ai-agent/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("#docs-sidebar-search-input")).toBeVisible();
+    await expect(page.locator(".docs-sidebar-search-form")).toHaveAttribute("action", "/zh-cn/AIWiki/");
+    expect(await page.locator(".docs-sidebar-link").count()).toBeLessThanOrEqual(8);
+
+    await page.locator("#docs-sidebar-search-input").fill("agent");
+    await page.locator("#docs-sidebar-search-input").press("Enter");
+    await expect(page).toHaveURL(/\/zh-cn\/AIWiki\/\?q=agent$/);
+    await expect(page.locator("#aiwiki-search")).toHaveValue("agent");
   });
 
   test("zh-cn 百科页：头部、主体、底部可见", async ({ page, baseURL }) => {

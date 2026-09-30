@@ -25,3 +25,14 @@ test("Proofline footer uses a flat surface without gradients or blur", async ({ 
   expect(styles.backgroundImage).toBe("none");
   expect(styles.backdropFilter).toBe("none");
 });
+
+test("Chinese footer keeps the DeepSeek learning link on one readable line", async ({ page, baseURL }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(`${baseURL || ""}/zh-cn/`, { waitUntil: "domcontentloaded" });
+  const link = page.locator("footer a").filter({ hasText: "DeepSeek 学习计划" });
+  const metrics = await link.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return { height: element.getBoundingClientRect().height, lineHeight: Number.parseFloat(style.lineHeight) };
+  });
+  expect(metrics.height).toBeLessThanOrEqual(metrics.lineHeight * 1.25);
+});

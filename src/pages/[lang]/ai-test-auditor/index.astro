@@ -14,7 +14,7 @@ const breadcrumbs = [{ name: locale === "zh-cn" ? "首页" : "Home", url: `/${lo
     <section class="section"><p class="kicker">02 / {site.labels.rules}</p><h2>{site.labels.rules}</h2><div class="rules">{site.rules.map((r) => <article><strong class:list={['status', r.status.toLowerCase()]}>{r.status}</strong><div><h3>{r.title}</h3><p>{r.description}</p></div></article>)}</div></section>
     <section class="section"><p class="kicker">03 / {site.labels.install}</p><h2>{site.labels.install}</h2><div class="grid">{site.installModes.map((m) => <article id={m.id}><h3>{m.title}</h3><p>{m.description}</p><small class="command">{site.labels.commandLabel}</small>{m.commands.map((c) => <pre><code>{c}</code></pre>)}</article>)}</div></section>
     <section class="section"><p class="kicker">04 / {site.labels.ecosystem}</p><h2>{site.labels.ecosystem}</h2><div class="links">{site.ecosystemLinks.map((l) => <a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener noreferrer' : undefined}>{l.label}<span>→</span></a>)}</div></section>
-    <section class="section"><p class="kicker">05 / RELEASES</p><h2>{site.labels.releaseNotes}</h2><div class="releases">{site.releases.map((r) => <details><summary><span><strong>{r.version}</strong><time>{r.publishedAt}</time></span><span>{r.summary}</span></summary><div><ul>{r.changes.map((c) => <li>{c}</li>)}</ul><a href={r.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} ↗</a></div></details>)}</div></section>
+    <section class="section"><p class="kicker">05 / {locale === "zh-cn" ? "版本变更" : "RELEASES"}</p><h2>{site.labels.releaseNotes}</h2><div class="releases">{site.releases.map((r) => <details><summary><span><strong>{r.version}</strong><time>{r.publishedAt}</time></span><span>{r.summary}</span></summary><div><ul>{r.changes.map((c) => <li>{c}</li>)}</ul><a href={r.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} ↗</a></div></details>)}</div></section>
   </main>
 </Layout>
 <style>
@@ -102,6 +102,8 @@ const breadcrumbs = [{ name: locale === "zh-cn" ? "首页" : "Home", url: `/${lo
   .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.7rem; margin-top: 1.5rem; }
   .releases { display: grid; gap: 0.6rem; margin-top: 1.5rem; }
   .releases summary { display: flex; justify-content: space-between; gap: 1rem; cursor: pointer; }
+  .releases summary:focus,
+  .releases summary:focus-visible { outline: 2px solid var(--color-theme-focus); outline-offset: 2px; }
   .releases summary span { display: grid; gap: 0.25rem; min-width: 0; }
   .releases time { font-size: 0.8rem; }
   .releases details > div { padding-top: 1rem; }

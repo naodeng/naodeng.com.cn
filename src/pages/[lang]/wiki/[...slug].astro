@@ -9,7 +9,7 @@ import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
 import { NAV_HOME } from "@/consts";
-import { slugToTitleEn, getTitleZhFromBody, getTitleZh, buildWikiSidebar, wikiIdToSlug } from "@/data/wiki";
+import { slugToTitleEn, getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
@@ -80,17 +80,6 @@ const breadcrumbs = [
 
 const entries = await getCollection("wiki");
 const basePath = `/${locale}/wiki`;
-const fullSidebarSections = buildWikiSidebar(entries);
-const wikiItems = fullSidebarSections
-  .filter((section) => section.title)
-  .flatMap((section) => section.items);
-const sidebarSections = [
-  { items: [{ label: "返回百科首页", href: "" }] },
-  {
-    title: "词条",
-    items: wikiItems,
-  },
-];
 const slugCaseMap = new Map(entries.map((e) => {
   const slug = wikiIdToSlug(e.id);
   return [slug.toLowerCase(), slug];
@@ -111,6 +100,16 @@ const relatedItems = relatedSlugs.map((s) => {
     labelZh: labelMap.get(canonical) ?? canonical,
   };
 });
+const sidebarSections = [
+  { items: [{ label: "返回百科首页", href: "" }] },
+  {
+    title: "当前词条",
+    items: [{ label: pageTitle, href: slugParam }],
+  },
+  ...(relatedItems.length > 0
+    ? [{ title: "相关词条", items: relatedItems.map((item) => ({ label: item.labelZh, href: item.slug })) }]
+    : []),
+];
 
 const { Content, headings: renderedHeadings = [] } = await render(entry);
 
@@ -156,6 +155,9 @@ const definedTermSchema = {
   currentPath={slugParam}
   basePath={basePath}
   sidebarMenuLabel="本页导航"
+  sidebarSearchPlaceholder="检索词条…"
+  sidebarSearchAction={`${basePath}/`}
+  sidebarSearchLabel="检索词条"
   headings={headings}
   tocLabel="本页目录"
 >

@@ -41,4 +41,19 @@ for (const locale of ["en", "zh-cn"] as const) {
     }));
     expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1);
   });
+
+  test(`${locale} AI Test Auditor release summaries expose the site focus ring`, async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/${locale}/ai-test-auditor/`, { waitUntil: "domcontentloaded" });
+    const summary = page.locator(".releases summary").first();
+    await summary.focus();
+    await expect(summary).toHaveCSS("outline-style", "solid");
+    await expect(summary).toHaveCSS("outline-width", "2px");
+  });
+
+  if (locale === "zh-cn") {
+    test("中文 AI Test Auditor 将版本区标题本地化", async ({ page, baseURL }) => {
+      await page.goto(`${baseURL || ""}/zh-cn/ai-test-auditor/`, { waitUntil: "domcontentloaded" });
+      await expect(page.locator(".kicker").last()).toHaveText("05 / 版本变更");
+    });
+  }
 }

@@ -465,7 +465,7 @@ const footerGroups = [
   /* 底部次级导航 */
   .footer-nav {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
     justify-content: stretch;
     gap: 0.65rem 1rem;
     width: min(960px, 100%);
@@ -713,7 +713,7 @@ const footerGroups = [
   }
   @media (max-width: 1100px) and (min-width: 761px) {
     .footer-nav {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
     }
   }
 </style>

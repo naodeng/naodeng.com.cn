@@ -363,5 +363,8 @@ const itemListSchema = {
         }
       });
     });
+    const initialSearch = new URLSearchParams(window.location.search).get('q')?.trim() ?? '';
+    if (initialSearch) searchInput.value = initialSearch;
+    if (searchInput.value) searchInput.dispatchEvent(new Event('input'));
   }
 </script>

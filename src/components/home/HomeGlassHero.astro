@@ -287,10 +287,6 @@ const topicLinks = locale === "zh-cn" ? [
   .glass-hero {
     background: var(--color-base);
   }
-  .hero-a__copy {
-    border-inline-start: 1px solid color-mix(in srgb, var(--color-theme) 46%, var(--color-border));
-    padding-inline-start: clamp(1rem, 2vw, 1.5rem);
-  }
   .glass-hero .pill-cta--primary {
     color: var(--color-theme-on-dark);
     box-shadow: var(--shadow-sm);
@@ -298,13 +294,5 @@ const topicLinks = locale === "zh-cn" ? [
   .glass-hero .pill-cta:hover,
   .glass-hero .pill-cta:focus-visible {
     transform: translateY(-1px);
-  }
-  @media (max-width: 680px) {
-    .hero-a__copy {
-      border-inline-start: 0;
-      border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 46%, var(--color-border));
-      padding-inline-start: 0;
-      padding-block-start: 1rem;
-    }
   }
 </style>

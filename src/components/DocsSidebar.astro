@@ -17,6 +17,10 @@ interface Props {
   searchPlaceholder?: string;
   /** 将侧栏检索词同步到主内容区的搜索框（可选） */
   searchTargetId?: string;
+  /** 详情页搜索提交目标；不传时只同步当前页的搜索目标 */
+  searchAction?: string;
+  /** 搜索框的无障碍标签 */
+  searchLabel?: string;
 }
 
 const {
@@ -26,6 +30,8 @@ const {
   menuLabel = "On this page",
   searchPlaceholder,
   searchTargetId,
+  searchAction,
+  searchLabel = searchPlaceholder ?? "Search terms",
 } = Astro.props;
 
 const normalize = (p: string) => p.replace(/\/$/, "") || "";
@@ -47,9 +53,24 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
 
 <aside class="docs-sidebar" aria-label="Documentation navigation">
   <div class="docs-sidebar-inner">
-    {searchPlaceholder && (
+    {searchPlaceholder && searchAction && (
+      <form class="docs-sidebar-search docs-sidebar-search-form" action={searchAction} method="get">
+        <label for="docs-sidebar-search-input" class="visually-hidden">{searchLabel}</label>
+        <input
+          type="search"
+          id="docs-sidebar-search-input"
+          class="docs-sidebar-search-input"
+          name="q"
+          placeholder={searchPlaceholder}
+          data-search-target={searchTargetId}
+          autocomplete="off"
+          aria-label={searchLabel}
+        />
+      </form>
+    )}
+    {searchPlaceholder && !searchAction && (
       <div class="docs-sidebar-search">
-        <label for="docs-sidebar-search-input" class="visually-hidden">检索词条</label>
+        <label for="docs-sidebar-search-input" class="visually-hidden">{searchLabel}</label>
         <input
           type="search"
           id="docs-sidebar-search-input"
@@ -57,7 +78,7 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
           placeholder={searchPlaceholder}
           data-search-target={searchTargetId}
           autocomplete="off"
-          aria-label="检索词条"
+          aria-label={searchLabel}
         />
       </div>
     )}
