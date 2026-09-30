@@ -32,6 +32,7 @@ describe("Astro Editorial theme tokens", () => {
     expect(baseCss).toContain("--color-border: #dfe4e1");
     expect(baseCss).toContain("--color-border-strong: #b9cfcb");
     expect(baseCss).toContain("--color-code-surface: #f1f5f3");
+    expect(baseCss).toContain("--color-success-text: #16803a");
     expect(baseCss).toContain("--color-theme: #176b75");
     expect(baseCss).toContain("--color-theme-focus: #0f5962");
     expect(baseCss).toContain("--color-theme-on-dark: #ffffff");
@@ -52,6 +53,7 @@ describe("Astro Editorial theme tokens", () => {
     expect(darkTheme).toContain("--color-border: #344247");
     expect(darkTheme).toContain("--color-border-strong: #4d686c");
     expect(darkTheme).toContain("--color-code-surface: #202b2f");
+    expect(darkTheme).toContain("--color-success-text: #76c893");
     expect(darkTheme).toContain("--color-theme-focus: #7de6ec");
     expect(darkTheme).toContain("--color-theme-on-dark: #13191c");
     expect(darkTheme).toContain("--color-theme-soft: color-mix(in srgb, var(--color-theme) 10%, #13191c)");

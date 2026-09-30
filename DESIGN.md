@@ -15,6 +15,7 @@ colors:
   border: "#dfe4e1"
   border-strong: "#b9cfcb"
   code-surface: "#f1f5f3"
+  success-text: "#16803a"
   canvas-dark: "#13191c"
   surface-dark: "#1a2226"
   surface-elevated-dark: "#202b2f"
@@ -24,6 +25,7 @@ colors:
   border-dark: "#344247"
   border-strong-dark: "#4d686c"
   code-surface-dark: "#202b2f"
+  success-text-dark: "#76c893"
   wechat: "#07c160"
 typography:
   body:
@@ -66,12 +68,12 @@ Proofline — A QA-inspired editorial system built around evidence, signals, and
 
 ## Colors
 
-浅色：画布 #faf9f6、表面 #ffffff、正文 #202a30、次级文字 #5c6b6d、三级文字 #738184、边框 #dfe4e1、强化边框 #b9cfcb、代码表面 #f1f5f3、强调 #176b75、强调焦点 #0f5962。
-深色：画布 #13191c、表面 #1a2226、抬升表面 #202b2f、正文 #e7eceb、次级文字 #a8b6b5、三级文字 #819390、边框 #344247、强化边框 #4d686c、代码表面 #202b2f、强调 #12ccd8、强调焦点 #7de6ec。
+浅色：画布 #faf9f6、表面 #ffffff、正文 #202a30、次级文字 #5c6b6d、三级文字 #738184、边框 #dfe4e1、强化边框 #b9cfcb、代码表面 #f1f5f3、强调 #176b75、强调焦点 #0f5962、成功状态文字 #16803a。
+深色：画布 #13191c、表面 #1a2226、抬升表面 #202b2f、正文 #e7eceb、次级文字 #a8b6b5、三级文字 #819390、边框 #344247、强化边框 #4d686c、代码表面 #202b2f、强调 #12ccd8、强调焦点 #7de6ec、成功状态文字 #76c893。
 
 强调色是稀缺的信号色，只用于 CTA、链接交互、当前项、状态和少量指标/标记；正文标题、普通导航文字、默认表面和普通边框使用中性色，不把青绿色扩展成页面主色。
 
-主题支持系统偏好与手动切换，持久化键为 `themePreference`。语义变量至少包括 `--color-base`、`--color-canvas`、`--color-surface`、`--color-surface-elevated`、`--color-main`、`--color-text-secondary`、`--color-text-tertiary`、`--color-border`、`--color-border-strong`、`--color-theme`、`--color-theme-focus`、`--color-theme-soft`、`--color-theme-soft-hover` 和 `--color-code-surface`。主题支持 `prefers-color-scheme`，但不依赖主题切换来改变布局。
+主题支持系统偏好与手动切换，持久化键为 `themePreference`。语义变量至少包括 `--color-base`、`--color-canvas`、`--color-surface`、`--color-surface-elevated`、`--color-main`、`--color-text-secondary`、`--color-text-tertiary`、`--color-border`、`--color-border-strong`、`--color-theme`、`--color-theme-focus`、`--color-theme-soft`、`--color-theme-soft-hover`、`--color-code-surface` 和 `--color-success-text`。成功状态只使用成功语义色，并须在明暗主题分别满足 WCAG AA 文本对比度；主题切换不改变布局。
 
 微信品牌绿 #07c160、错误与警告语义色是青绿色主题之外的特定用途例外，不能推广为普通卡片装饰。旧 `color-glass-*`、`color-mist-secondary`、`gradient-theme`、`shadow-glass-*` 和 `shadow-product` 变量可以作为迁移期兼容别名保留；它们不得作为新页面默认表面、渐变、阴影或布局依据。实现和测试必须区分“别名仍存在”与“默认组件仍在消费”。
 

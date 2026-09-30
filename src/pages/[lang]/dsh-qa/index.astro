@@ -57,7 +57,6 @@ const historicalReleases = site.releases.slice(1);
     </section>
 
     <section class="section" aria-labelledby="features-title">
-      <p class="section-kicker">01 / {site.labels.features}</p>
       <h2 id="features-title">{site.labels.features}</h2>
       <div class="feature-grid">
         {site.features.map((feature) => <article class="feature-card" data-dsh-qa-feature><span class="material-icons-sharp" aria-hidden="true">{feature.icon}</span><h3>{feature.title}</h3><p>{feature.description}</p></article>)}
@@ -65,7 +64,6 @@ const historicalReleases = site.releases.slice(1);
     </section>
 
     <section class="section showcase" aria-labelledby="showcase-title">
-      <p class="section-kicker">02 / {site.labels.showcase}</p>
       <h2 id="showcase-title">{site.labels.showcase}</h2>
       <div class="showcase-grid">
         {site.showcase.map((item, index) => <article class="showcase-card" data-dsh-qa-showcase>
@@ -76,7 +74,6 @@ const historicalReleases = site.releases.slice(1);
     </section>
 
     <section class="section flow-section" aria-labelledby="flow-title">
-      <p class="section-kicker">03 / {site.labels.flow}</p>
       <h2 id="flow-title">{site.labels.flow}</h2>
       <ol class="flow-list">
         {site.deliveryFlow.map((stage, index) => <li data-dsh-qa-flow-stage><span class="flow-index">0{index + 1}</span><div><h3>{stage.title}</h3><p>{stage.description}</p></div><span class:list={["flow-status", stage.status.toLowerCase()]}>{stage.status}</span></li>)}
@@ -84,7 +81,6 @@ const historicalReleases = site.releases.slice(1);
     </section>
 
     <section class="section" aria-labelledby="install-title">
-      <p class="section-kicker">04 / {site.labels.install}</p>
       <h2 id="install-title">{site.labels.install}</h2>
       <div class="install-grid">
         {site.installModes.map((mode) => <article class="install-card" id={mode.id} data-install-mode><h3>{mode.title}</h3><p>{mode.description}</p><span class="command-label">{site.labels.commandLabel}</span>{mode.commands.map((command) => <pre><code>{command}</code></pre>)}</article>)}
@@ -92,13 +88,11 @@ const historicalReleases = site.releases.slice(1);
     </section>
 
     <section class="section ecosystem" aria-labelledby="ecosystem-title">
-      <p class="section-kicker">05 / {site.labels.ecosystem}</p>
       <h2 id="ecosystem-title">{site.labels.ecosystem}</h2>
       <div class="ecosystem-links">{site.ecosystemLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>{link.label}<span aria-hidden="true">→</span></a>)}</div>
     </section>
 
     <section class="section releases" data-release-notes aria-labelledby="releases-title">
-      <p class="section-kicker">06 / {locale === "zh-cn" ? "版本变更" : "RELEASES"}</p>
       <h2 id="releases-title">{site.labels.releaseNotes}</h2>
       <article class="current-release" data-dsh-current-release>
         <div class="current-release-heading"><span>{locale === "zh-cn" ? "当前版本" : "Current release"}</span><strong>{latestRelease.version}</strong><time datetime={latestRelease.publishedAt}>{latestRelease.publishedAt}</time></div>
@@ -158,7 +152,7 @@ const historicalReleases = site.releases.slice(1);
   .hero { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(16rem, .75fr); gap: 2rem; padding: clamp(1.5rem, 5vw, 4.5rem); position: relative; overflow: hidden; }
   .hero::before { content: none; }
   .hero-copy, .hero-panel { position: relative; }
-  .eyebrow, .section-kicker { margin: 0 0 .8rem; color: var(--dsh-accent); font-size: .75rem; font-weight: 800; letter-spacing: .14em; }
+  .eyebrow { margin: 0 0 .8rem; color: var(--dsh-accent); font-size: .75rem; font-weight: 800; letter-spacing: .14em; }
   .hero h1, .section h2 { margin: 0; color: var(--dsh-ink); font-family: inherit; }
   .hero h1 { font-size: clamp(2.7rem, 7vw, 5.8rem); line-height: .94; }
   .hero-summary { max-width: 42rem; margin: 1.35rem 0 0; color: var(--dsh-muted); font-size: 1.1rem; line-height: 1.7; }
@@ -202,7 +196,7 @@ const historicalReleases = site.releases.slice(1);
   .hero, .section { border: 0; background: transparent; box-shadow: none; }
   .hero { grid-template-columns: minmax(0, 1fr) minmax(15rem, .55fr); padding: 2.5rem 0 3rem; border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); overflow: visible; }
   .hero::before { display: none; }.hero h1, .section h2 { color: var(--color-main); font-family: inherit; }.hero h1 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: .98; }.hero-summary { color: inherit; opacity: .78; }
-  .eyebrow, .section-kicker, .command-label { color: var(--color-theme); }.hero-action { border-color: color-mix(in srgb, var(--color-theme) 24%, transparent); border-radius: var(--radius-sm); color: var(--color-main); }.hero-action.primary, .hero-action:hover, .hero-action:focus-visible { background: var(--color-theme); color: var(--color-theme-on-dark); }
+  .eyebrow, .command-label { color: var(--color-theme); }.hero-action { border-color: color-mix(in srgb, var(--color-theme) 24%, transparent); border-radius: var(--radius-sm); color: var(--color-main); }.hero-action.primary, .hero-action:hover, .hero-action:focus-visible { background: var(--color-theme); color: var(--color-theme-on-dark); }
   .hero-side { align-self: center; display: grid; gap: .85rem; }.hero-panel { align-self: center; padding: 1.25rem; border-color: color-mix(in srgb, var(--color-theme) 22%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.hero-panel p, .hero-panel strong { color: var(--color-theme); }.hero-panel span { color: inherit; opacity: .72; }
   .command-card { --command-card-bg: var(--color-code-surface); --command-card-text: var(--color-main); --command-card-line: var(--color-border); --command-card-hover: var(--color-theme-soft); --command-card-code: var(--color-main); --command-card-prompt: var(--color-theme); overflow: hidden; border: 1px solid var(--command-card-line); border-radius: var(--radius-lg); background: var(--command-card-bg); color: var(--command-card-text); box-shadow: none; }
   .command-tabs { display: flex; gap: .2rem; padding: .45rem .5rem 0; }
@@ -223,7 +217,7 @@ const historicalReleases = site.releases.slice(1);
   .latest-release { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .45rem .65rem; margin-top: 1.4rem; padding: .55rem .75rem; border: 1px solid color-mix(in srgb, var(--color-theme) 24%, transparent); border-radius: var(--radius-xl); color: var(--color-main); background: color-mix(in srgb, var(--color-base) 94%, var(--color-theme)); text-decoration: none; font-size: .84rem; }.latest-release span:first-child, .latest-release time { opacity: .7; }.latest-release strong { color: var(--color-theme); }.latest-release:hover, .latest-release:focus-visible { background: color-mix(in srgb, var(--color-theme) 14%, var(--color-base)); }
   .section { margin-top: 0; padding: 3.5rem 0 0; }.section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }.feature-grid, .install-grid { gap: 1rem; }.feature-card, .install-card { min-width: 0; padding: 1.15rem; border-color: color-mix(in srgb, var(--color-theme) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.feature-card .material-icons-sharp, .feature-card h3, .install-card h3, .flow-list h3 { color: var(--color-main); }.feature-card p, .install-card p, .flow-list p { color: inherit; opacity: .72; }
   .showcase-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }.showcase-card { min-width: 0; overflow: hidden; border: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); }.showcase-card img { display: block; width: 100%; aspect-ratio: 1.8 / 1; object-fit: cover; object-position: top; border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent); }.showcase-card div { padding: 1rem 1.1rem 1.15rem; }.showcase-card h3 { margin: 0; color: var(--color-main); font-size: 1rem; }.showcase-card p { margin: .5rem 0 0; color: var(--color-main); opacity: .72; font-size: .9rem; line-height: 1.55; }
-  .flow-list li { border-left: 1px solid var(--color-border-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--color-surface); }.flow-index, .flow-status { color: var(--color-theme); }.flow-status.pass { color: #16803a; }.install-card pre { border-color: var(--color-border); border-radius: var(--radius-sm); background: var(--color-code-surface); color: var(--color-main); }
+  .flow-list li { border-left: 1px solid var(--color-border-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--color-surface); }.flow-index, .flow-status { color: var(--color-theme); }.flow-status.pass { color: var(--color-success-text); }.install-card pre { border-color: var(--color-border); border-radius: var(--radius-sm); background: var(--color-code-surface); color: var(--color-main); }
   .ecosystem-links a, .release-body a { border-color: color-mix(in srgb, var(--color-theme) 18%, transparent); border-radius: var(--radius-sm); color: var(--color-main); }.ecosystem-links a:hover, .ecosystem-links a:focus-visible, .release-body a:hover, .release-body a:focus-visible { background: color-mix(in srgb, var(--color-theme) 12%, var(--color-base)); color: var(--color-main); }.release-list details { border-color: color-mix(in srgb, var(--color-theme) 18%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--color-base) 97%, var(--color-theme)); }.release-list summary, .release-body { color: var(--color-main); }.release-list time, .release-body { opacity: .76; }
   .current-release { margin-top: 1.5rem; padding: 1.15rem; border: 1px solid color-mix(in srgb, var(--color-theme) 28%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 94%, var(--color-theme)); }.current-release-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: .45rem .7rem; }.current-release-heading span { color: var(--color-theme); font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }.current-release-heading strong { font-size: 1.2rem; }.current-release-heading time { font-size: .85rem; opacity: .7; }.current-release > p { margin: .75rem 0 0; color: var(--color-main); font-weight: 700; line-height: 1.5; }.current-release .release-body { padding: 0; }.release-history { margin-top: .8rem; border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--color-base) 98%, var(--color-theme)); }.release-history > summary { display: flex; justify-content: space-between; align-items: center; padding: .95rem 1rem; cursor: pointer; color: var(--color-main); font-weight: 800; }.release-history[open] > summary { border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); }.release-history > .release-list { margin: 0; padding: .6rem; }
   @media (max-width: 720px) { .hero { grid-template-columns: 1fr; padding-top: 1.5rem; }.hero-side { margin-top: 1.5rem; }.section { padding-top: 2.75rem; }.showcase-grid { grid-template-columns: 1fr; } }

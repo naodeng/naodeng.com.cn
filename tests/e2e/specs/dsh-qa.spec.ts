@@ -80,6 +80,13 @@ for (const locale of ["en", "zh-cn"] as const) {
     expect(darkBackground).not.toBe(lightBackground);
   });
 
+  test(`${locale} dsh-qa sections use headings without repeated numbered eyebrows`, async ({ page }) => {
+    await page.goto(`/${locale}/dsh-qa/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".section-kicker")).toHaveCount(0);
+    await expect(page.locator(".dsh-qa-page .section h2")).toHaveCount(6);
+  });
+
   test(`${locale} project and resource cards keep dsh-qa in the same locale`, async ({ page }) => {
     await page.goto(`/${locale}/projects/`, { waitUntil: "domcontentloaded" });
     const projectCard = page.locator(`a[href="/${locale}/dsh-qa/"]`).first();
@@ -109,7 +116,7 @@ for (const locale of ["en", "zh-cn"] as const) {
   if (locale === "zh-cn") {
     test("中文 dsh-qa 将版本区标题本地化", async ({ page }) => {
       await page.goto("/zh-cn/dsh-qa/", { waitUntil: "domcontentloaded" });
-      await expect(page.locator("[data-release-notes] .section-kicker")).toHaveText("06 / 版本变更");
+      await expect(page.locator("[data-release-notes] h2")).toHaveText("版本变更");
       await expect(page.locator(".hero-summary")).not.toContainText("—");
     });
   }

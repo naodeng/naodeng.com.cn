@@ -16,6 +16,7 @@
   --color-surface: #ffffff;
   --color-border: #dfe4e1;
   --color-code-surface: #f1f5f3;
+  --color-success-text: #16803a;
   --color-caution: #b42318;
 
   --color-warn: #9a6700;
@@ -117,6 +118,7 @@
   --color-surface: #1a2226;
   --color-border: #344247;
   --color-code-surface: #202b2f;
+  --color-success-text: #76c893;
   --color-text-primary: #e7eceb;
   --color-text-secondary: #a8b6b5;
   --color-text-tertiary: #819390;

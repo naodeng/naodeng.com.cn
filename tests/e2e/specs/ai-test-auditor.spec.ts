@@ -31,6 +31,13 @@ for (const locale of ["en", "zh-cn"] as const) {
     expect(darkSurface).not.toBe(surface);
   });
 
+  test(`${locale} AI Test Auditor sections use headings without repeated numbered eyebrows`, async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/${locale}/ai-test-auditor/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".auditor-page .section > .kicker")).toHaveCount(0);
+    await expect(page.locator(".auditor-page .section > h2")).toHaveCount(5);
+  });
+
   test(`${locale} AI Test Auditor has no narrow-screen overflow`, async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(`${baseURL || ""}/${locale}/ai-test-auditor/`, { waitUntil: "domcontentloaded" });
@@ -53,7 +60,7 @@ for (const locale of ["en", "zh-cn"] as const) {
   if (locale === "zh-cn") {
     test("中文 AI Test Auditor 将版本区标题本地化", async ({ page, baseURL }) => {
       await page.goto(`${baseURL || ""}/zh-cn/ai-test-auditor/`, { waitUntil: "domcontentloaded" });
-      await expect(page.locator(".kicker").last()).toHaveText("05 / 版本变更");
+      await expect(page.locator(".auditor-page .section").last().locator("h2")).toHaveText("版本变更");
     });
   }
 }
