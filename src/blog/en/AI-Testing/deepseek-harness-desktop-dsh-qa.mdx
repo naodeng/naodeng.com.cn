@@ -1,360 +1,321 @@
 ---
-title: "DeepSeek Harness Official Desktop Preview Is Available — dsh-qa Now Supports It"
-description: "The official DeepSeek Harness Desktop Preview is now available for Windows and macOS, and dsh-qa supports it through the official Plugin entry point as a local QA Workbench."
+title: "DeepSeek Harness Official Desktop Preview Is Now Available — dsh-qa v0.7.2 Supports It"
+description: "The DeepSeek Harness desktop preview is now official. dsh-qa v0.7.2 supports dsh-v0.2.0-rc.2 Host Smoke and restores historical DSH conversation handling."
 date: 2026-09-26T09:00:00.000Z
+updated: 2026-09-30T18:00:00.000Z
 author: "nao.deng"
 tags: ["AI in Testing", "DeepSeek Harness", "dsh-qa"]
 categories: ["AI Testing"]
 series: ["dsh-qa"]
 ---
 
-# DeepSeek Harness Official Desktop Preview Is Available — dsh-qa Now Supports It
+# DeepSeek Harness Official Desktop Preview Is Now Available — dsh-qa v0.7.2 Supports It
 
-DeepSeek Harness finally has an official desktop client.
+DeepSeek Harness now has an official desktop preview available from the DeepSeek Harness product page.
 
-The official DeepSeek Harness repository recently introduced its Desktop application, and preview builds are now available for Windows and macOS.
+DeepSeek Harness product page:https://www.deepseek.com/harness/
 
-At the same time, dsh-qa has completed compatibility support for the official DeepSeek Harness Desktop.
+![DeepSeek Harness Desktop screenshot](https://images.naodeng.com.cn/2026/dsh-desktop.png)
 
-Previously, a typical workflow involved starting the Harness Web UI from the CLI and then opening dsh-qa.
+At the same time, dsh-qa has released v0.7.2. The release supports Host Smoke against dsh-v0.2.0-rc.2 and fixes the discovery, preservation, ordering, and rendering of historical DSH conversations.
 
-Now there is a more direct path:
+The update matters in two practical places:
 
-| 1. Install | 2. Sign in | 3. Install the Plugin | 4. Open the Workbench | 5. Start work |
-| --- | --- | --- | --- | --- |
-| DeepSeek Harness Desktop | DeepSeek Harness | dsh-qa Plugin | QA Workbench | Testing and quality work |
-
-For QA engineers who want to use DeepSeek Harness without starting from the CLI every time, the Desktop Preview is worth paying attention to.
-
-There is one important qualification:
-
-> **DeepSeek Harness Desktop is currently a Preview / RC release, not a stable production release.**
-
-For now, it is better suited for evaluation, compatibility testing, and feedback than for immediately migrating every stable workflow.
-
-## What Is DeepSeek Harness Desktop?
-
-DeepSeek Harness Desktop is not a separate reimplementation of Harness.
-
-The current official implementation adds an Electron Desktop Shell around the existing dsh Web application.
-
-When Desktop starts, it launches the Harness Host locally and loads the Harness application inside the desktop client.
-
-A simplified architecture looks like this:
-
-| Core | Local host | Web application | Desktop entry point |
-| --- | --- | --- | --- |
-| DeepSeek Harness Core | Harness Host | Harness Web Application | DeepSeek Harness Desktop |
-
-The existing Harness capabilities remain at the core:
-
-- Session
-- Models / Providers
-- Plugins
-- Skills
-- Commands
-- Tools
-- Agent
-
-Desktop mainly provides a native desktop entry point and desktop-specific integration.
-
-The current implementation includes:
-
-- Native Windows and macOS clients
-- Local Host startup
-- Native folder selection
-- Plugin management
-- Windows system-tray integration
-- Native application menus on macOS
-- Desktop shortcuts
-- DevTools
-- Application updates
-- Background-task and exit protection
-- Built-in pnpm
-
-Most users do not need to understand all of these implementation details first.
-
-The most visible change is simple:
-
-**DeepSeek Harness can now be downloaded, installed, and opened as an official desktop application.**
-
-## Why I Prefer the Official Desktop Client
-
-Before the official Desktop application became available, the community already had several useful third-party DeepSeek Harness Desktop and GUI projects.
-
-Some of them provide a good desktop experience and have helped move the DeepSeek Harness ecosystem forward.
-
-Now that an official client exists, I will prioritize the official version for regular use and compatibility validation.
-
-DeepSeek Harness is more than a simple AI chat client. Depending on how it is configured, it may interact with:
-
-| Local files | Model credentials | Sessions and extensions | Tool calls | Local execution |
-| --- | --- | --- | --- | --- |
-| Local project files | Model / Provider credentials | Sessions; Plugins / Skills | Tool calls | Local commands and task execution |
-
-The desktop client therefore occupies a relatively sensitive position.
-
-The advantage of the official client is not that third-party clients are inherently unsafe.
-
-Its source, maintainer, compatibility relationship, installer source, update chain, and Harness Host integration are simply easier to verify.
-
-The official Desktop also follows the same core Session, Plugin, Skill, and Host mechanisms as Harness itself.
-
-When Harness APIs, Host behavior, or Plugin mechanisms change, the official Desktop is usually the most direct compatibility target.
-
-Third-party clients are still worth evaluating. I would assess each one individually based on:
-
-| Source and maintenance | Distribution and updates | Permissions and credentials | Execution and compatibility |
-| --- | --- | --- | --- |
-| Whether the source is available; whether maintenance is active | Where installers are published; whether the update mechanism is trustworthy | Which system permissions are required; how credentials are stored | Whether local commands are executed; whether the current Harness version is supported |
-
-For a tool that can access local projects and execution environments, I prefer to validate the official Desktop first.
-
-That is also why dsh-qa prioritized compatibility with the official DeepSeek Harness Desktop.
-
-## Desktop Is Still a Preview
-
-Being official does not mean that the current release is already stable.
-
-DeepSeek Harness Desktop is still a Preview / RC release.
-
-At this stage, it is better suited for:
-
-- Trying the official DeepSeek Harness Desktop early
-- Validating Plugins in Desktop
-- Validating Skills and Sessions
-- Trying dsh-qa and other Harness Plugins
-- Testing existing Harness workflows under Desktop
-- Finding issues and sending feedback
-
-Future preview releases may still change:
-
-- Desktop UI / UX
-- Plugin installation and loading
-- Harness Host APIs
-- Version compatibility
-- Configuration
-- Local data structures
-- Windows / macOS platform behavior
-- Preview-specific bugs
-
-My current approach is therefore:
-
-| Focus | Current choice |
+| Desktop entry | dsh-qa update |
 | --- | --- |
-| Trust and distribution | Prefer official Desktop |
-| New features | Evaluate with Desktop |
-| Stability | Continue validating |
-| Important workflows | Keep Web / CLI available |
-| Third-party clients | Evaluate individually based on source, permissions, and maintenance |
+| Download and open Harness from the official website | Use the latest QA Workbench with the current Harness host |
+| Sign in and choose a model mode | Keep historical DSH conversations visible across sessions |
+| Add dsh-qa through the Plugin entry | Validate the QA profile against a real Harness Host |
 
-If you already have a stable DeepSeek Harness Web / CLI workflow, there is no need to migrate everything immediately just because the Desktop Preview is available.
+If you previously used Harness through the CLI or another local workflow, the official client lowers the entry barrier. The first question changes from “How do I start the Web UI?” to “Which model mode and Plugin do I want to use?”
 
-Try it first, then decide whether to move over gradually.
+One qualification matters:
 
-## Official Downloads
+> **DeepSeek Harness Desktop is a Preview release. It is suitable for evaluation and compatibility work, but it should not automatically replace every stable workflow.**
 
-The official downloads currently include Windows x64 and macOS Apple Silicon / arm64 builds.
+## DeepSeek Harness now has an official desktop client
 
-The current preview version is **DeepSeek Harness 0.1.7-rc.1**.
+DeepSeek Harness has evolved as an Agent runtime and development framework. For many users, the original path still involved a CLI, configuration files, a local runtime, and a browser window.
 
-### Windows x64
+The official client turns that into a few clear steps: download and install the client, sign in to a DeepSeek account, open Harness, then choose a model and use Plugins, Skills, and Agents.
 
-Download for Windows x64: [https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-0.1.7-rc.1.20260924.1-win-x64.exe](https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-0.1.7-rc.1.20260924.1-win-x64.exe)
+The product page is now the main public entry point:
 
-### macOS Apple Silicon / arm64
+DeepSeek Harness product page:https://www.deepseek.com/harness/
 
-Download for macOS Apple Silicon / arm64: [https://download.deepseek.com/dsh-desk/bin/mac-arm64/deepseek-harness-0.1.7-rc.1.20260924.1-mac-arm64.dmg](https://download.deepseek.com/dsh-desk/bin/mac-arm64/deepseek-harness-0.1.7-rc.1.20260924.1-mac-arm64.dmg)
+The official desktop implementation wraps the existing Harness capabilities. The architecture has four visible layers:
 
-Official Desktop implementation documentation: [https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.md](https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.md)
+| Core | Local host | Web application | Desktop entry |
+| --- | --- | --- | --- |
+| DeepSeek Harness | Harness Host | Harness Web application | DeepSeek Harness Desktop |
 
-Because this is still a Preview / RC release, future versions and installer locations may change. Follow the latest updates in the official DeepSeek Harness repository as well.
+The core capabilities remain Sessions, Models and Providers, Plugins, Skills, Commands, Tools, and Agents.
 
-## dsh-qa Now Supports DeepSeek Harness Desktop
+The desktop layer adds a native entry point around them. It also includes local Host startup, native folder selection, Plugin management, Windows system-tray integration, macOS application menus, desktop shortcuts, DevTools, application updates, background-task protection, exit protection, and built-in pnpm.
 
-With the official Desktop Preview available, dsh-qa has completed the corresponding compatibility work.
+You do not need to start with those implementation details. The visible change is simpler: Harness can now be downloaded, installed, and opened as an official desktop application.
+
+## Official models and custom models
+
+DeepSeek Harness currently supports two usage modes:
+
+| Mode | Requirement | Responsibility boundary |
+| --- | --- | --- |
+| Official model | Sign in to a DeepSeek account | Use the official model service configured by DeepSeek |
+| Custom model | Configure the model provider and API details | Harness provides the local interface, supporting tools, and communication layer; the configured provider supplies the model service |
+
+The official terms cited for this update say that custom-model mode does not require a DeepSeek account. This distinction matters when planning Plugin, Agent, and multi-model workflows: signing in is required for the official model path, but it is not a universal requirement for every Harness configuration.
+
+## A current ¥6 account-credit promotion
+
+The client currently displays an activity prompt saying that a newly installed client can provide **¥6 in promotional credit after the user signs in**.
+
+The prompt also states:
+
+> **The promotional credit is valid for one week.**
+
+I did not find a matching statement in the official public text that was crawlable while preparing this update. So I am treating the ¥6 and one-week period as a current client activity prompt supplied for this article, not as a permanent product term.
+
+If you install the client, check the balance and expiration date inside the client or on the official website. The eligibility, amount, and validity period may change with the campaign.
+
+For a first experiment with Harness, Plugins, or a small Agent workflow, the credit may be useful. It is still worth checking the actual activity page before relying on it.
+
+## The official client is still a Preview
+
+An official installer tells us where the client comes from. It does not prove that every part of the product is stable.
+
+DeepSeek Harness Desktop is still in a Preview and ongoing-testing stage. The official terms cited for this update describe Harness and related Agent technologies as early-stage technology, so the client should not be treated as universally production-ready.
+
+A reasonable adoption path is to start with personal experimentation, move to a small QA or Agent workflow, validate Plugin compatibility, and then expand gradually into real projects.
+
+Plugin permissions, automated Agent actions, external tool calls, and local file access still deserve clear human-control boundaries.
+
+If an existing Web or CLI workflow is stable, keep it available while evaluating the desktop preview. There is no prize for migrating everything on the first day.
+
+## Official download entry and documentation
+
+The current public download entry is the official Harness page:
+
+DeepSeek Harness product page:https://www.deepseek.com/harness/
+
+The official desktop implementation documentation is available in the Harness repository:
+
+DeepSeek Harness Desktop documentation:https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.md
+
+Versioned installer URLs can change as the Preview moves forward. Using the official product page as the starting point is less fragile than copying an old binary URL into a long-lived setup guide.
+
+## dsh-qa v0.7.2 supports the latest Harness host
 
 dsh-qa is a local QA Workbench built on top of DeepSeek Harness.
 
-Repository: [https://github.com/naodeng/dsh-qa](https://github.com/naodeng/dsh-qa).
+Repository:
 
-The current dsh-qa version is **v0.6.3**, compatibility-validated against **DeepSeek Harness dsh-v0.1.7-rc.1**.
+dsh-qa GitHub repository:https://github.com/naodeng/dsh-qa
 
-The relationship can be summarized as:
+The current release is `dsh-qa v0.7.2`, and the compatibility target is `DeepSeek Harness dsh-v0.2.0-rc.2`.
 
-| Desktop entry point | Harness capabilities | Plugin | Workbench |
+![dsh-qa QA Workbench screenshot](https://images.naodeng.com.cn/2026/dsh-qa-1.1.png)
+
+The boundary is:
+
+| Desktop entry | Harness capabilities | Plugin | Workbench |
 | --- | --- | --- | --- |
-| DeepSeek Harness Desktop | Sessions; Models / Providers; Skills; Commands; Tools | Plugins → dsh-qa | QA Workbench |
+| DeepSeek Harness Desktop | Sessions; Models and Providers; Skills; Commands; Tools | dsh-qa | QA Workbench |
 
-Desktop provides the Harness desktop runtime.
+The desktop client supplies the Harness runtime and the Plugin entry point. dsh-qa supplies the QA and software-quality workflow.
 
-dsh-qa continues to provide the QA and software-quality workflow.
+## Install dsh-qa from the official client
 
-## Install dsh-qa in Desktop
+Install it in six steps:
 
-One immediate benefit of Desktop is that installing dsh-qa becomes much easier.
+1. Open the official Harness client and sign in.
+2. Open **Plugins**.
+3. Choose **Add Plugin**.
+4. Enter dsh-qa GitHub repository:https://github.com/naodeng/dsh-qa.
+5. Confirm the installation.
+6. Open **QA Workbench** after the Plugin finishes installing.
 
-After opening and signing in to DeepSeek Harness Desktop:
+For new users, this GUI entry point is easier to follow than starting with Harness CLI commands. It also makes the boundary visible: Harness owns the runtime and Plugin loading; dsh-qa owns the QA Workbench.
 
-1. Click Plugins (插件).
-2. Click Add Plugin (添加插件).
-3. Enter the dsh-qa GitHub repository: [https://github.com/naodeng/dsh-qa](https://github.com/naodeng/dsh-qa).
+## What dsh-qa provides
 
-4. Click Confirm (确认).
-5. Wait for the installation to complete.
-6. Open QA Workbench (质量工作台).
+The desktop client does not change the role of dsh-qa. It remains a local QA Workbench for turning quality work into connected records and decisions.
 
-The entire process becomes:
+Its current scope falls into three groups:
 
-| Enter Desktop | Add the Plugin | Specify the repository | Confirm installation | Open the Workbench |
-| --- | --- | --- | --- | --- |
-| Sign in | Plugins → Add Plugin | dsh-qa GitHub repository | Confirm | QA Workbench |
+- Planning and assets: test project and iteration management, requirements, test cases, and test milestones.
+- Execution and collaboration: defects, risks, QA Skills, AI-assisted testing, Native QA Execution, Action Desk, and test evidence.
+- Analysis and delivery: test reports, QA Kanban, test calendar, failure analysis, regression analysis, quality gates, and release and delivery decisions.
 
-For new dsh-qa users, I now recommend this GUI-based Plugin entry point.
-
-You do not need to understand Harness CLI first or remember the Plugin management commands before opening the Workbench.
-
-## What Can dsh-qa Do?
-
-The role of dsh-qa does not change because Desktop is available.
-
-It remains:
-
-> **A local QA Workbench built on top of DeepSeek Harness.**
-
-It currently covers:
-
-- Test project and iteration management
-- Requirements
-- Test cases
-- Defects
-- Risks
-- Test milestones
-- Test reports
-- QA Kanban
-- Test calendar
-- QA Skills
-- AI-assisted testing
-- Native QA Execution
-- Action Desk
-- Test evidence
-- Failure analysis
-- Regression analysis
-- Quality gates
-- Release and delivery decisions
-
-The workflow is gradually forming a complete quality chain:
+The workflow can be summarized as:
 
 | Requirements and planning | Execution and evidence | Analysis and decision |
 | --- | --- | --- |
-| Requirement / Source → Quality Task → Test Plan | Controlled Execution → Evidence → Failure Analysis | Regression → Quality Gate → PASS / WARN / BLOCK |
+| Requirement or source → Quality Task → Test Plan | Controlled Execution → Evidence → Failure Analysis | Regression → Quality Gate → PASS / WARN / BLOCK |
 
-AI can assist with requirements analysis, test design, execution analysis, and evidence organization.
+AI can assist with requirements analysis, test design, execution analysis, and evidence organization. A generated suggestion or a passing command does not remove the need for a human quality decision.
 
-It does not simply replace human quality decisions.
+## The important v0.7.2 fix: historical DSH conversations
 
-## One AI Runtime, One QA Workbench
+The most visible v0.7.2 fix is the restoration of historical DSH conversation handling. In some earlier cases, a project could contain historical DSH conversations, then lose the older conversations from view after a Session rebind or a new Session was created.
 
-This boundary is worth stating separately.
+That is a real problem for QA work. Testing rarely ends in one conversation. A project may move through requirements analysis, test design, issue discussion, regression, and release review.
 
-dsh-qa does not maintain a second AI Runtime. The following capabilities remain managed by DeepSeek Harness:
+Those steps can cross multiple Sessions. If earlier conversations disappear after a rebind or a new Session, the project context becomes fragmented.
 
-**Model, API Key, Provider, Session, Skill, Command, and Tool.**
+The release restores conversation discovery, history preservation, conversation ordering, archived-conversation compatibility, and correct rendering.
 
-All of these capabilities remain managed by DeepSeek Harness.
+Within the same Project Workspace, historical conversations should remain visible after rebinding the DSH Session or creating a new Session. The release notes call out the restoration of discovery, preservation, ordering, and rendering, including archived-history behavior.
 
-Each test project binds directly to a native Harness Session and uses the corresponding QA testing mode.
+In a QA Workbench, this UI repair also preserves project context.
 
-The responsibility boundary remains clear:
+## Why conversation history matters in a QA Workbench
 
-| DeepSeek Harness / AI Runtime | dsh-qa / QA Workbench |
+dsh-qa increasingly connects projects, tasks, DSH conversations, executions, evidence, and decisions.
+
+If a conversation is only temporary chat, losing an old Session is inconvenient. Once it contains requirements analysis, test discussions, Skill execution, risk assessments, Agent tool calls, and quality conclusions, the history becomes part of the project context.
+
+That context also helps explain how evidence was produced. The conversation is not automatically proof of product quality, but it can preserve the reasoning and decisions around the evidence.
+
+The fix therefore keeps more than old messages visible; it keeps the project context connected.
+
+## Other v0.7.2 updates
+
+The release also includes:
+
+- Host Smoke support for dsh-v0.2.0-rc.2
+- Updated installation and update documentation for the official macOS client
+- Harness CLI installation commands that no longer pin a fixed version and instead use the current npm version
+- Updated built-in version metadata
+- Improved desktop Settings copy
+- A fix for long project names being truncated in the Calendar Agenda
+
+Together, they reduce friction around the official desktop environment and make the Plugin feel less like a separate path bolted onto Harness.
+
+## How the release was verified
+
+The v0.7.2 release reports:
+
+| Verification type | Count |
+| --- | ---: |
+| Unit / API tests | 265 |
+| Chromium E2E tests | 41 |
+| Harness Host Smoke tests | 6 |
+
+The release also records:
+
+~~~
+node --check public/app.js
+npm pack --dry-run
+git diff --check
+~~~
+
+The most relevant integration signal is that the `qa` Host Smoke run against `dsh-v0.2.0-rc.2` had 6 passing checks.
+
+This is stronger evidence than checking only a local mock or reading an API description. It is still bounded evidence: these checks cover the release paths listed above, not every operating system, model provider, Plugin, or production project.
+
+That distinction matters for a QA-oriented project. The release can report what ran, while users still need to validate their own workflow and environment.
+
+## Why start with the official client?
+
+Before the official desktop client appeared, the community already had several useful third-party Harness desktop projects. Some provide a good user experience and helped move the ecosystem forward.
+
+Now that an official client exists, I would start there for regular use and compatibility validation.
+
+DeepSeek Harness can interact with more than a chat window:
+
+| Local files | Model credentials | Sessions and extensions | Tool calls | Local execution |
+| --- | --- | --- | --- | --- |
+| Project files | Model and Provider credentials | Sessions; Plugins and Skills | Tool invocation | Local commands and tasks |
+
+Third-party clients still need individual assessment. The official client has a clearer relationship to the upstream project, its installer source, its update path, and the Harness Host it is expected to run.
+
+I would still evaluate third-party clients individually:
+
+| Source and maintenance | Distribution and updates | Permissions and credentials | Execution and compatibility |
+| --- | --- | --- | --- |
+| Is the source available? Is maintenance active? | Where are installers published? How do updates work? | Which permissions are required? How are credentials stored? | Are local commands executed? Which Harness versions are supported? |
+
+For software that can reach local projects and execution environments, those questions deserve an answer before adoption.
+
+## One AI runtime, one QA Workbench
+
+dsh-qa does not maintain a second AI runtime.
+
+DeepSeek Harness continues to manage models, API keys, Providers, Sessions, Skills, Commands, and Tools.
+
+Each test project binds to a native Harness Session and uses the corresponding QA mode.
+
+The responsibility boundary is:
+
+| DeepSeek Harness / AI runtime | dsh-qa / QA Workbench |
 | --- | --- |
 | Models; Sessions; Agents; Skills; Commands; Tools; Plugins | Requirements; Risks; Tests; Executions; Evidence; Defects; Reports; Quality Gates |
 
-Desktop does not change this architecture.
+The desktop client keeps that architecture and makes the first step easier.
 
-It simply makes the Harness + dsh-qa entry point more natural.
+## Local-first remains the foundation
 
-## Why Desktop Matters for dsh-qa
-
-The biggest impact of Desktop on dsh-qa is not simply support for another runtime platform.
-
-It lowers the entry barrier for DeepSeek Harness.
-
-The previous and current entry points can be compared directly:
-
-| Previous: Web / CLI | Current: Desktop |
-| --- | --- |
-| Install Node.js → Use CLI → Start Harness Web → Open browser → Manage Plugin → Open dsh-qa | Download Desktop → Install → Sign in → Add dsh-qa → Open QA Workbench |
-
-CLI is not a problem for developers.
-
-But if Harness-based AI-native QA workflows are also meant for QA engineers, test managers, R&D teams, product teams, project managers, and quality owners, a GUI Desktop client is a more natural entry point.
-
-That matters especially because dsh-qa itself is a GUI-based QA Workbench.
-
-## Local-first Remains the Foundation
-
-Desktop support does not change one of the principles dsh-qa has kept from the beginning: **Local-first**.
+The desktop entry does not change the local-first direction of dsh-qa.
 
 Test projects, testing materials, and structured quality data remain local by default.
 
-DeepSeek Harness provides the AI Runtime.
-
-dsh-qa provides the QA Runtime and QA Workbench.
-
-The model can be summarized as:
+The combined model is:
 
 | DeepSeek Harness | dsh-qa | Combined result |
 | --- | --- | --- |
-| AI Runtime | QA Workbench | AI Native QA Workspace |
+| AI runtime | QA Workbench | AI-native QA workspace |
 
-This makes it possible to use Harness models, Agents, Skills, and Tools without rebuilding a separate test project management system just to use AI.
+This lets teams use Harness models, Agents, Skills, and Tools without building a separate test-project system just to make AI useful.
 
-## From Web to Desktop
+## From Web and CLI to Desktop
 
-Looking back, the evolution of dsh-qa can be described by sequence number:
+The recent evolution of dsh-qa has been:
 
-| 1 | 2 | 3 | 4 |
-| --- | --- | --- | --- |
-| Standalone QA Workbench | DeepSeek Harness Plugin | Harness Session + QA Preset | Quality Control Workbench |
-| 5 | 6 | 7 |  |
-| Native QA Execution | Action Desk | DeepSeek Harness Desktop |  |
+| Stage | Capability |
+| --- | --- |
+| 1 | Standalone QA Workbench |
+| 2 | DeepSeek Harness Plugin |
+| 3 | Harness Session and QA preset |
+| 4 | Quality Control Workbench |
+| 5 | Native QA Execution |
+| 6 | Action Desk |
+| 7 | DeepSeek Harness Desktop entry |
 
-Desktop is not the destination for dsh-qa.
+Desktop is an easier entry point for the capabilities that already exist. It does not replace the quality workflow underneath.
 
-It is a more accessible entry point for the capabilities that have already been built.
-
-The next stage will continue to focus on:
+The next part of the work still follows the same chain:
 
 | Requirements and risks | Testing and execution | Evidence and decision |
 | --- | --- | --- |
 | Requirement → Risk | Test → Execution | Evidence → Decision |
 
-dsh-qa will continue improving the QA and software-quality loop around this chain.
+dsh-qa will continue tracking changes in the Harness Desktop, Host, and Plugin mechanisms and validating compatibility with future Harness versions.
 
-It will also continue tracking changes in DeepSeek Harness Desktop, Host, and Plugin mechanisms, and validating compatibility with future Harness versions.
+## The practical path
 
-If you already use DeepSeek Harness and dsh-qa, the official Desktop Preview is worth trying.
+The official DeepSeek Harness desktop preview makes installation straightforward and gives dsh-qa a more direct Plugin entry point.
 
-For important projects, keep the existing Web / CLI workflow available as a fallback while Desktop remains in Preview.
+The current path is straightforward: download and install from the official page, sign in or configure a custom model, add the dsh-qa Plugin, and open the QA Workbench.
 
----
+If the current client activity is still active, a newly signed-in user may see ¥6 in promotional credit that expires after one week. Check the client for the current terms; that activity detail was not present in the official public text I could crawl for this update.
+
+At the same time, dsh-qa v0.7.2 supports the latest Harness host target described here and restores historical DSH conversation discovery, ordering, preservation, and rendering.
+
+For important projects, keep the existing Web or CLI workflow available while the desktop client remains in Preview.
 
 ## Links
 
 ### DeepSeek Harness
 
-- DeepSeek Harness repository: [https://github.com/deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)
+- DeepSeek Harness official product page:https://www.deepseek.com/harness/
+- DeepSeek Harness repository:https://github.com/deepseek-ai/deepseek-harness
 
 ### DeepSeek Harness Desktop
 
-- DeepSeek Harness Desktop documentation: [https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.md](https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.md)
+- Desktop implementation documentation:https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.md
 
 ### dsh-qa
 
-- dsh-qa repository: [https://github.com/naodeng/dsh-qa](https://github.com/naodeng/dsh-qa)
-
-### dsh-qa Website
-
-- dsh-qa website: [https://inaodeng.com/dsh-qa/](https://inaodeng.com/dsh-qa/)
+- dsh-qa GitHub repository:https://github.com/naodeng/dsh-qa
+- dsh-qa website:https://inaodeng.com/dsh-qa/
