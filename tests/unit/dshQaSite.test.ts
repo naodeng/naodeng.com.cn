@@ -7,9 +7,9 @@ describe("dsh-qa site data", () => {
 
     expect(site.hero.title.toLowerCase()).toContain("dsh-qa");
     expect(site.hero.latestRelease).toEqual({
-      version: "v0.7.1",
-      publishedAt: "2026-09-28",
-      url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.7.1",
+      version: "v0.7.2",
+      publishedAt: "2026-09-30",
+      url: "https://github.com/naodeng/dsh-qa/releases/tag/v0.7.2",
     });
     expect(site.hero.actions).toHaveLength(3);
     expect(site.features).toHaveLength(4);
@@ -33,6 +33,7 @@ describe("dsh-qa site data", () => {
 
   it.each(["en", "zh-cn"] as const)("keeps verified release facts in newest-first order for %s", (lang) => {
     expect(DSH_QA_SITE[lang].releases.map((release) => [release.version, release.publishedAt, release.url])).toEqual([
+      ["v0.7.2", "2026-09-30", "https://github.com/naodeng/dsh-qa/releases/tag/v0.7.2"],
       ["v0.7.1", "2026-09-28", "https://github.com/naodeng/dsh-qa/releases/tag/v0.7.1"],
       ["v0.7.0", "2026-09-28", "https://github.com/naodeng/dsh-qa/releases/tag/v0.7.0"],
       ["v0.6.3", "2026-09-25", "https://github.com/naodeng/dsh-qa/releases/tag/v0.6.3"],
