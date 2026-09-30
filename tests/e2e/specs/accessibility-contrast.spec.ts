@@ -4,6 +4,7 @@ type ContrastSample = {
   name: string;
   path: string;
   selectors: string[];
+  theme?: "light" | "dark";
 };
 
 const samples: ContrastSample[] = [
@@ -32,12 +33,33 @@ const samples: ContrastSample[] = [
     path: "/zh-cn/blog/ai-testing/introduction_of_awesome_qa_prompt/",
     selectors: [".prose p", ".prose li", ".article-meta", ".blog-related-terms-pill"],
   },
+  {
+    name: "dsh-qa-light",
+    path: "/zh-cn/dsh-qa/",
+    selectors: [".flow-status.pass"],
+    theme: "light",
+  },
+  {
+    name: "dsh-qa-dark",
+    path: "/zh-cn/dsh-qa/",
+    selectors: [".flow-status.pass"],
+    theme: "dark",
+  },
+  {
+    name: "ai-test-auditor-dark",
+    path: "/zh-cn/ai-test-auditor/",
+    selectors: [".status.fake", ".status.weak"],
+    theme: "dark",
+  },
 ];
 
 test.describe("可访问性对比度审计（WCAG AA 抽样）", () => {
   for (const sample of samples) {
     test(`${sample.name} 关键文本对比度满足 WCAG AA`, async ({ page }) => {
       await page.goto(sample.path, { waitUntil: "domcontentloaded" });
+      if (sample.theme) {
+        await page.evaluate((theme) => { document.documentElement.dataset.theme = theme; }, sample.theme);
+      }
 
       for (const selector of sample.selectors) {
         const result = await page.evaluate((sel) => {

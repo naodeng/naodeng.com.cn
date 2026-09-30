@@ -14,7 +14,7 @@ test.describe("响应式布局", () => {
   ];
 
   for (const locale of ["zh-cn", "en"] as const) {
-    for (const route of ["", "qaskills/", "prompts/", "AIWiki/agent-evals/"] as const) {
+    for (const route of ["", "qaskills/", "prompts/", "prompts/all/", "AIWiki/agent-evals/", "ai-native-qa-weekly/2026/week-39/"] as const) {
       test(`${locale}/${route || "home"} 在 390px 下无横向溢出`, async ({ page, baseURL }) => {
         await page.setViewportSize(MOBILE_VIEWPORT);
         await page.goto(`${baseURL || ""}/${locale}/${route}`, { waitUntil: "domcontentloaded" });
@@ -35,6 +35,19 @@ test.describe("响应式布局", () => {
         client: document.documentElement.clientWidth,
       }));
       expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+    });
+
+    test(`${locale}/prompts/all 英文长标题与返回链接在 390px 下可读`, async ({ page, baseURL }) => {
+      await page.setViewportSize(MOBILE_VIEWPORT);
+      await page.goto(`${baseURL || ""}/${locale}/prompts/all/`, { waitUntil: "domcontentloaded" });
+      const header = page.locator(".explorer-header");
+      await expect(header.locator("h1")).toBeVisible();
+      await expect(header.locator(".explorer-back")).toBeVisible();
+      const dimensions = await page.evaluate(() => ({
+        scrollWidth: document.documentElement.scrollWidth,
+        clientWidth: document.documentElement.clientWidth,
+      }));
+      expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth + 1);
     });
   }
 

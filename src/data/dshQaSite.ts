@@ -106,7 +106,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
     hero: {
       eyebrow: "LOCAL-FIRST QUALITY DELIVERY",
       title: "dsh-qa · QA Workbench",
-      summary: "Bring projects, test work, evidence, and delivery decisions into one local workspace—while keeping DeepSeek Harness sessions native.",
+      summary: "Bring projects, test work, evidence, and delivery decisions into one local workspace while keeping DeepSeek Harness sessions native.",
       actions: [
         { label: "View on GitHub", href: "https://github.com/naodeng/dsh-qa", external: true },
         { label: "Install DSH plugin", href: "#install-plugin" },

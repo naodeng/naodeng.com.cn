@@ -22,15 +22,49 @@ describe("Astro Editorial theme tokens", () => {
     expect(baseCss).toContain("--color-canvas:");
     expect(baseCss).toContain("--color-surface-elevated:");
     expect(baseCss).toContain("--color-code-surface:");
-    expect(baseCss).toContain("--color-canvas: #f8fafc");
-    expect(baseCss).toContain("--color-border: #dce2ea");
+    expect(baseCss).toContain("--color-base: #faf9f6");
+    expect(baseCss).toContain("--color-canvas: #faf9f6");
+    expect(baseCss).toContain("--color-surface: #ffffff");
+    expect(baseCss).toContain("--color-surface-elevated: #ffffff");
+    expect(baseCss).toContain("--color-main: #202a30");
+    expect(baseCss).toContain("--color-text-secondary: #5c6b6d");
+    expect(baseCss).toContain("--color-text-tertiary: #738184");
+    expect(baseCss).toContain("--color-border: #dfe4e1");
+    expect(baseCss).toContain("--color-border-strong: #b9cfcb");
+    expect(baseCss).toContain("--color-code-surface: #f1f5f3");
+    expect(baseCss).toContain("--color-success-text: #16803a");
+    expect(baseCss).toContain("--color-theme: #176b75");
+    expect(baseCss).toContain("--color-theme-focus: #0f5962");
+    expect(baseCss).toContain("--color-theme-on-dark: #ffffff");
     expect(baseCss).not.toContain("--color-mist-primary:");
     expect(baseCss).not.toContain("--gradient-hero:");
   });
 
   test("switches the interactive accent for dark mode", () => {
     const darkTheme = baseCss.match(/:root\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/)?.[1];
-    expect(darkTheme).toContain("--color-theme: #78a9ff");
+    expect(darkTheme).toContain("--color-theme: #12ccd8");
+    expect(darkTheme).toContain("--color-base: #13191c");
+    expect(darkTheme).toContain("--color-canvas: #13191c");
+    expect(darkTheme).toContain("--color-surface: #1a2226");
+    expect(darkTheme).toContain("--color-surface-elevated: #202b2f");
+    expect(darkTheme).toContain("--color-main: #e7eceb");
+    expect(darkTheme).toContain("--color-text-secondary: #a8b6b5");
+    expect(darkTheme).toContain("--color-text-tertiary: #819390");
+    expect(darkTheme).toContain("--color-border: #344247");
+    expect(darkTheme).toContain("--color-border-strong: #4d686c");
+    expect(darkTheme).toContain("--color-code-surface: #202b2f");
+    expect(darkTheme).toContain("--color-success-text: #76c893");
+    expect(darkTheme).toContain("--color-theme-focus: #7de6ec");
+    expect(darkTheme).toContain("--color-theme-on-dark: #13191c");
+    expect(darkTheme).toContain("--color-theme-soft: color-mix(in srgb, var(--color-theme) 10%, #13191c)");
+    expect(darkTheme).toContain("--color-theme-soft-hover: color-mix(in srgb, var(--color-theme) 16%, #13191c)");
+  });
+
+  test("defines Proofline motion and reading affordances", () => {
+    expect(baseCss).toContain("--transition-base: color");
+    expect(baseCss).not.toContain("--transition-base: all");
+    expect(baseCss).toContain("font-variant-numeric: tabular-nums");
+    expect(baseCss).toContain("text-wrap: balance");
   });
 
   test("keeps Markdown code blocks aligned with the selected theme", () => {

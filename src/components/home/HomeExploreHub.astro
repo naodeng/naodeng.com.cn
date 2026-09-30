@@ -1,12 +1,16 @@
 ---
+import type { Lang } from "@/i18n";
 import HomeSectionHeading from "@/components/home/HomeSectionHeading.astro";
 interface Props {
+  locale: Lang;
   title: string;
   subtitle: string;
   moreLabel: string;
   cards: Array<{ key: string; href: string; title: string; desc: string; icon: string; meta?: string }>;
+  productLinks?: Array<{ href: string; title: string; desc: string }>;
 }
-const { title, subtitle, moreLabel, cards } = Astro.props;
+const { locale, title, subtitle, moreLabel, cards, productLinks = [] } = Astro.props;
+const isZh = locale === "zh-cn";
 
 ---
 <section class="home-band home-band--white home-explore-hub" aria-labelledby="home-explore-title">
@@ -34,6 +38,25 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
         </li>
       ))}
     </ul>
+    {productLinks.length > 0 && (
+      <section class="home-product-links" aria-labelledby="home-product-links-title">
+        <div class="home-product-links__heading">
+          <h3 id="home-product-links-title">{isZh ? "产品官网" : "Product sites"}</h3>
+          <span>{isZh ? "继续了解我们的 QA 工具" : "Explore the products behind the work"}</span>
+        </div>
+        <div class="home-product-links__list">
+          {productLinks.map((link) => (
+            <a class="home-product-link" href={link.href}>
+              <span>
+                <strong>{link.title}</strong>
+                <small>{link.desc}</small>
+              </span>
+              <span aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
   </div>
 </section>
 <style>
@@ -41,19 +64,16 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     list-style: none;
     margin: 28px 0 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
     text-align: start;
   }
 
   .home-grid > li {
     position: relative;
-    width: min(68%, 720px);
-  }
-
-  .home-grid > li:nth-child(even) {
-    align-self: flex-end;
+    width: auto;
+    align-self: stretch;
   }
 
   .home-card {
@@ -64,24 +84,26 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     gap: 0;
     min-height: 0;
     height: 100%;
-    padding: 22px 4px;
-    border: 0;
-    border-bottom: 1px solid var(--color-border);
-    border-radius: 0;
-    background: transparent;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
     color: inherit;
     text-decoration: none;
     transition:
-      transform 220ms ease,
-      color 220ms ease;
+      border-color var(--transition-fast),
+      background-color var(--transition-fast),
+      transform var(--transition-fast);
   }
 
 
-  .home-band--white .home-card { background: transparent; }
+  .home-band--white .home-card { background: var(--color-surface); }
 
   .home-card:hover,
   .home-card:focus-visible {
-    transform: translateX(4px);
+    border-color: var(--color-theme);
+    background: var(--color-theme-soft);
+    transform: translateY(-1px);
   }
 
   .home-card__icon {
@@ -92,8 +114,8 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     height: 44px;
     margin-bottom: 14px;
     border-radius: var(--radius-md);
-    background: var(--color-theme-soft);
-    color: var(--color-theme);
+    background: var(--color-surface-muted);
+    color: var(--color-text-secondary);
     font-size: 22px;
   }
 
@@ -118,8 +140,8 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     flex: none;
     padding: 0.3rem 0.7rem;
     border-radius: var(--radius-xl);
-    background: var(--color-theme-soft);
-    color: var(--color-theme);
+    background: var(--color-surface-muted);
+    color: var(--color-text-secondary);
     font-size: 0.75rem;
     font-weight: 700;
     white-space: nowrap;
@@ -141,7 +163,7 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     position: absolute;
     inset: 50% 1.1rem auto auto;
     transform: translateY(-50%);
-    color: var(--color-theme);
+    color: var(--color-text-tertiary);
     font-family: "Material Icons Sharp";
     font-style: normal;
     font-weight: normal;
@@ -159,10 +181,9 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
   }
 
   @media (width < 900px) {
-    .home-grid { margin-top: 20px; gap: 0; }
+    .home-grid { margin-top: 20px; gap: 0.75rem; }
     .home-grid > li { width: 100%; }
-    .home-grid > li:nth-child(even) { align-self: stretch; }
-    .home-card { padding: 17px 2px; }
+    .home-card { padding: 1.1rem; }
     .home-card__signal { font-size: 3.4rem; opacity: 0.09; }
   }
 
@@ -170,6 +191,99 @@ const { title, subtitle, moreLabel, cards } = Astro.props;
     .home-card:hover,
     .home-card:focus-visible {
       transform: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .home-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .home-card {
+      padding: 1rem;
+    }
+  }
+
+  .home-product-links {
+    margin-block-start: var(--sp-l);
+    padding-block-start: var(--sp-m);
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .home-product-links__heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-s);
+    margin-block-end: var(--sp-s);
+  }
+
+  .home-product-links__heading h3 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .home-product-links__heading span {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .home-product-links__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .home-product-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .home-product-link:hover,
+  .home-product-link:focus-visible {
+    border-color: var(--color-border-strong);
+    background: var(--color-theme-soft);
+    transform: translateY(-1px);
+  }
+
+  .home-product-link strong,
+  .home-product-link small {
+    display: block;
+  }
+
+  .home-product-link strong {
+    color: var(--color-main);
+  }
+
+  .home-product-link small {
+    margin-block-start: 0.25rem;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .home-product-link > span:last-child {
+    color: var(--color-theme);
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  @media (max-width: 640px) {
+    .home-product-links__list {
+      grid-template-columns: 1fr;
+    }
+    .home-product-links__heading {
+      display: block;
+    }
+    .home-product-links__heading span {
+      display: block;
+      margin-block-start: 0.25rem;
     }
   }
 </style>

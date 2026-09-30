@@ -200,6 +200,16 @@ test.describe("Header 导航", () => {
     expect(styles.borderBottomColor).not.toBe("rgba(0, 0, 0, 0)");
   });
 
+  test("Proofline header uses a solid editorial surface without blur", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
+    const styles = await page.locator("header.l-header").evaluate((el) => {
+      const cs = getComputedStyle(el);
+      return { backgroundImage: cs.backgroundImage, backdropFilter: cs.backdropFilter };
+    });
+    expect(styles.backgroundImage).toBe("none");
+    expect(styles.backdropFilter).toBe("none");
+  });
+
   test("响应式：移动端 header 为品牌 + 搜索 + 汉堡", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });

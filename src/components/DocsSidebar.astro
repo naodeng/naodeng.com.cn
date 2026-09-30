@@ -15,15 +15,37 @@ interface Props {
   menuLabel?: string;
   /** 检索框占位文案，传入则显示侧栏顶部搜索框（检索词条） */
   searchPlaceholder?: string;
+  /** 将侧栏检索词同步到主内容区的搜索框（可选） */
+  searchTargetId?: string;
+  /** 详情页搜索提交目标；不传时只同步当前页的搜索目标 */
+  searchAction?: string;
+  /** 搜索框的无障碍标签 */
+  searchLabel?: string;
 }
 
-const { sections, currentPath, basePath, menuLabel = "On this page", searchPlaceholder } = Astro.props;
+const {
+  sections,
+  currentPath,
+  basePath,
+  menuLabel = "On this page",
+  searchPlaceholder,
+  searchTargetId,
+  searchAction,
+  searchLabel = searchPlaceholder ?? "Search terms",
+} = Astro.props;
 
 const normalize = (p: string) => p.replace(/\/$/, "") || "";
 const current = normalize(currentPath);
 
 const href = (itemHref: string) => {
-  const seg = itemHref ? `/${itemHref}` : "";
+  const trimmed = itemHref.trim();
+  if (trimmed.startsWith("/") || trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    return trimmed;
+  }
+  if (trimmed.startsWith("#")) {
+    return `${basePath}/${trimmed}`;
+  }
+  const seg = trimmed ? `/${trimmed}` : "";
   return `${basePath}${seg}`.replace(/\/+/g, "/") + "/";
 };
 const isActive = (itemHref: string) => normalize(itemHref) === current;
@@ -31,16 +53,32 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
 
 <aside class="docs-sidebar" aria-label="Documentation navigation">
   <div class="docs-sidebar-inner">
-    {searchPlaceholder && (
+    {searchPlaceholder && searchAction && (
+      <form class="docs-sidebar-search docs-sidebar-search-form" action={searchAction} method="get">
+        <label for="docs-sidebar-search-input" class="visually-hidden">{searchLabel}</label>
+        <input
+          type="search"
+          id="docs-sidebar-search-input"
+          class="docs-sidebar-search-input"
+          name="q"
+          placeholder={searchPlaceholder}
+          data-search-target={searchTargetId}
+          autocomplete="off"
+          aria-label={searchLabel}
+        />
+      </form>
+    )}
+    {searchPlaceholder && !searchAction && (
       <div class="docs-sidebar-search">
-        <label for="docs-sidebar-search-input" class="visually-hidden">检索词条</label>
+        <label for="docs-sidebar-search-input" class="visually-hidden">{searchLabel}</label>
         <input
           type="search"
           id="docs-sidebar-search-input"
           class="docs-sidebar-search-input"
           placeholder={searchPlaceholder}
+          data-search-target={searchTargetId}
           autocomplete="off"
-          aria-label="检索词条"
+          aria-label={searchLabel}
         />
       </div>
     )}
@@ -127,15 +165,15 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     width: 6px;
   }
   .docs-sidebar-nav::-webkit-scrollbar-track {
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    background: var(--color-surface-muted);
     border-radius: 3px;
   }
   .docs-sidebar-nav::-webkit-scrollbar-thumb {
-    background: color-mix(in srgb, var(--color-theme) 35%, transparent);
+    background: var(--color-border-strong);
     border-radius: 3px;
   }
   .docs-sidebar-nav::-webkit-scrollbar-thumb:hover {
-    background: color-mix(in srgb, var(--color-theme) 50%, transparent);
+    background: var(--color-theme);
   }
   .docs-sidebar-section {
     margin-block-end: var(--sp-m);
@@ -151,7 +189,7 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     color: color-mix(in srgb, var(--color-main) 50%, transparent);
     margin: 0 0 var(--sp-s);
     padding-block-end: 0.35rem;
-    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
+    border-block-end: 1px solid var(--color-border);
   }
   .docs-sidebar-search {
     padding: var(--sp-s) var(--sp-m);
@@ -163,8 +201,8 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     font-size: 0.9rem;
     font-family: inherit;
     color: var(--color-main);
-    background: color-mix(in srgb, var(--color-main) 12%, var(--color-base));
-    border: 1px solid color-mix(in srgb, var(--color-theme) 25%, transparent);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border-strong);
     border-radius: var(--radius-sm);
     outline: none;
   }
@@ -249,6 +287,12 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     if (searchInput) {
       searchInput.addEventListener("input", () => {
         const q = (searchInput as HTMLInputElement).value.trim().toLowerCase();
+        const targetId = searchInput.getAttribute("data-search-target");
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (target instanceof HTMLInputElement && target !== searchInput) {
+          target.value = (searchInput as HTMLInputElement).value;
+          target.dispatchEvent(new Event("input", { bubbles: true }));
+        }
         const sections = document.querySelectorAll(".docs-sidebar-section[data-section]");
         sections.forEach((section) => {
           const links = section.querySelectorAll<HTMLAnchorElement>(".docs-sidebar-link[data-search]");

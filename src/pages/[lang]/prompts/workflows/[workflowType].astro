@@ -303,7 +303,7 @@ const howToSchema = {
   .workflow-content :global(h1) { font-size: 1.5rem; font-weight: 700; margin-block: 1.5em 0.5em; }
   .workflow-content :global(h2) {
     font-size: 1.25rem; font-weight: 700;
-    border-inline-start: 4px solid var(--color-theme);
+    border-inline-start: 1px solid var(--color-border-strong);
     padding-inline-start: 0.75rem;
     margin-block: 2em 0.5em;
   }
@@ -317,15 +317,15 @@ const howToSchema = {
   .workflow-content :global(ul), .workflow-content :global(ol) { padding-inline-start: 1.5em; margin-block: 0.5em 0; }
   .workflow-content :global(li) { margin-block: 0.25em 0; }
   .workflow-content :global(:not(pre) > code) {
-    font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
-    font-size: 0.9em; color: var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+    font-family: ui-monospace, monospace;
+    font-size: 0.9em; color: var(--color-main);
+    background: var(--color-code-surface);
     padding: 0.15em 0.4em; border-radius: var(--radius-sm);
   }
   .workflow-content :global(pre) {
     direction: ltr; padding: 1em 1.25em; border-radius: var(--radius-sm);
-    border: 1px solid color-mix(in srgb, var(--color-main) 12%, transparent);
-    border-inline-start: 3px solid var(--color-theme);
+    border: 1px solid var(--color-border);
+    border-inline-start: 1px solid var(--color-border-strong);
     overflow-x: auto; margin-block: 1em 0;
   }
   .workflow-content :global(blockquote) {
@@ -333,7 +333,7 @@ const howToSchema = {
     color: color-mix(in srgb, var(--color-main) 75%, transparent);
     background: color-mix(in srgb, var(--color-main) 5%, transparent);
     padding: 0.75em 1em;
-    border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 40%, transparent);
+    border-inline-start: 1px solid var(--color-border-strong);
     margin-block: 1em 0;
   }
   .workflow-content :global(table) {
@@ -346,7 +346,7 @@ const howToSchema = {
     text-align: start;
   }
   .workflow-content :global(th) {
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent); font-weight: 600;
+    background: var(--color-surface-muted); font-weight: 600;
   }
   .workflow-content :global(a) { color: var(--color-theme); text-decoration: underline; }
 

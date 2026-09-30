@@ -9,7 +9,7 @@ import DocsLayout from "@/layouts/Docs.astro";
 import Giscus from "@/components/Giscus.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
 import { NAV_HOME } from "@/consts";
-import { slugToTitleEn, getTitleZhFromBody, getTitleZh, buildWikiSidebar, wikiIdToSlug } from "@/data/wiki";
+import { slugToTitleEn, getTitleZhFromBody, getTitleZh, wikiIdToSlug } from "@/data/wiki";
 import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
@@ -79,7 +79,6 @@ const breadcrumbs = [
 ];
 
 const entries = await getCollection("wiki");
-const sidebarSections = buildWikiSidebar(entries);
 const basePath = `/${locale}/wiki`;
 const slugCaseMap = new Map(entries.map((e) => {
   const slug = wikiIdToSlug(e.id);
@@ -101,6 +100,16 @@ const relatedItems = relatedSlugs.map((s) => {
     labelZh: labelMap.get(canonical) ?? canonical,
   };
 });
+const sidebarSections = [
+  { items: [{ label: "返回百科首页", href: "" }] },
+  {
+    title: "当前词条",
+    items: [{ label: pageTitle, href: slugParam }],
+  },
+  ...(relatedItems.length > 0
+    ? [{ title: "相关词条", items: relatedItems.map((item) => ({ label: item.labelZh, href: item.slug })) }]
+    : []),
+];
 
 const { Content, headings: renderedHeadings = [] } = await render(entry);
 
@@ -146,6 +155,9 @@ const definedTermSchema = {
   currentPath={slugParam}
   basePath={basePath}
   sidebarMenuLabel="本页导航"
+  sidebarSearchPlaceholder="检索词条…"
+  sidebarSearchAction={`${basePath}/`}
+  sidebarSearchLabel="检索词条"
   headings={headings}
   tocLabel="本页目录"
 >
@@ -187,7 +199,7 @@ const definedTermSchema = {
 
   :global(.docs-sidebar-inner) {
     border-inline-start: none !important;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    border: 1px solid var(--color-border) !important;
     border-radius: var(--radius-md) !important;
     overflow: hidden;
     box-shadow: none;
@@ -201,15 +213,15 @@ const definedTermSchema = {
   .wiki-article :global(h1) {
     font-size: var(--text-xl);
     padding-block-end: var(--sp-s);
-    border-block-end: 2px solid var(--color-theme);
+    border-block-end: 1px solid var(--color-border);
     margin-block-end: var(--sp-m);
   }
 
   .wiki-article :global(h2) {
     font-size: clamp(1.45rem, 2.4vw, 1.75rem);
     font-weight: 700;
-    border-inline-start: 5px solid var(--color-theme);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+    border-inline-start: 1px solid var(--color-border-strong);
+    background: transparent;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     padding: 0.25em 0.6em 0.25em var(--sp-s);
     margin-block: 2.2em 0.7em;
@@ -218,7 +230,7 @@ const definedTermSchema = {
   .wiki-article :global(h3) {
     font-size: clamp(1.2rem, 2vw, 1.35rem);
     font-weight: 650;
-    border-inline-start: 2px solid color-mix(in srgb, var(--color-theme) 35%, var(--color-border));
+    border-inline-start: 1px solid var(--color-border);
     padding-inline-start: 0.6em;
     margin-block: 1.6em 0.5em;
   }
@@ -255,7 +267,7 @@ const definedTermSchema = {
     font-size: var(--text-lg);
     font-weight: 600;
     margin-block-end: var(--sp-s);
-    /* override the h2 accent border from above */
+    /* Keep the related-terms heading plain rather than inheriting article heading treatment. */
     background: none;
     border-radius: 0;
     border-inline-start: none;
@@ -272,9 +284,9 @@ const definedTermSchema = {
   .wiki-related-pill {
     display: inline-block;
     padding: 0.3em 0.75em;
-    border: 1px solid var(--color-theme);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    color: var(--color-theme);
+    color: var(--color-text-secondary);
     text-decoration: none;
     font-size: var(--text-sm);
     transition: background-color 0.2s, color 0.2s;
@@ -282,6 +294,6 @@ const definedTermSchema = {
 
   .wiki-related-pill:hover {
     background-color: var(--color-theme);
-    color: #fff;
+    color: var(--color-theme-on-dark);
   }
 </style>

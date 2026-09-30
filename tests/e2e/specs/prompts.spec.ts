@@ -47,7 +47,7 @@ test.describe("Prompt library discovery and review flow", () => {
     await page.goto(`${baseURL}/en/prompts/all/`, { waitUntil: "domcontentloaded" });
     await page.evaluate(() => document.documentElement.dataset.theme = "dark");
     const explorerPlaceholder = await page.locator("#prompt-explorer-search").evaluate((input) => getComputedStyle(input, "::placeholder").color);
-    expect(explorerPlaceholder).toBe("rgb(132, 144, 161)");
+    expect(explorerPlaceholder).toBe("rgb(129, 147, 144)");
   });
 
   test("header controls keep one size and one visible state on desktop and mobile", async ({ page, baseURL }) => {
@@ -93,8 +93,10 @@ test.describe("Prompt library discovery and review flow", () => {
       expect(iconState).toEqual({ light: true, dark: false, menu: true, close: false });
 
       await page.locator("[data-theme-toggle]").click();
-      await expect.poll(() => page.locator(".theme-toggle__dark").evaluate((icon) => getComputedStyle(icon).display)).not.toBe("none");
-      await expect.poll(() => page.locator(".theme-toggle__light").evaluate((icon) => getComputedStyle(icon).display)).toBe("none");
+      await expect(page.locator("[data-theme-panel]")).toBeVisible();
+      await expect(page.locator("[data-theme-toggle]")).toHaveAttribute("aria-expanded", "true");
+      await expect(page.locator('[data-theme-option="system"]')).toHaveAttribute("aria-pressed", "true");
+      await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
       if (viewport.width < 834) {
         await page.locator("[data-nav-toggle]").click();
@@ -187,6 +189,7 @@ test.describe("Prompt library discovery and review flow", () => {
     test(`${lang} keeps the task-first homepage bilingual`, async ({ page, baseURL }) => {
       await page.setViewportSize({ width: 1440, height: 900 });
       await page.goto(`${baseURL}/${lang}/prompts/`, { waitUntil: "domcontentloaded" });
+      await page.evaluate(async () => { await document.fonts.ready; });
 
       const expectedTitle = lang === "zh-cn" ? "先说你要完成什么" : "Start with the task";
       await expect(page.locator("main h1")).toContainText(expectedTitle);

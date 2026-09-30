@@ -342,6 +342,6 @@ const itemListSchema = {
   .explorer-empty { margin: 1rem 0; padding: 2rem; border: 1px dashed var(--color-border); border-radius: var(--radius-md); color: color-mix(in srgb, var(--color-main) 65%, transparent); text-align: center; }
   @media (max-width: 1050px) { .explorer-search-row { grid-template-columns: 1fr; } .explorer-search-actions { justify-content: flex-start; } }
   @media (max-width: 850px) { .explorer-results { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 640px) { .prompt-explorer { padding-inline: 0; } .explorer-header { gap: 1.4rem; padding-bottom: 2.25rem; } .explorer-back { margin-top: 0; } .explorer-filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .explorer-results { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .prompt-explorer { padding-inline: 0; } .explorer-header { grid-template-columns: 1fr; gap: 1.4rem; padding-bottom: 2.25rem; } .explorer-back { margin-top: 0; justify-self: start; } .explorer-filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .explorer-results { grid-template-columns: 1fr; } }
   @media (max-width: 390px) { .explorer-filter-grid { grid-template-columns: 1fr; } }
 </style>

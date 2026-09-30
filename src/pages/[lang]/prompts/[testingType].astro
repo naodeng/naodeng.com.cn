@@ -377,17 +377,17 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-content :global(h1:first-child) { display: none; }
   .prompt-content :global(blockquote:first-of-type) { display: none; }
   .prompt-content :global(h1) { margin-block: 1.2em 0.5em; font-size: 1.55rem; }
-  .prompt-content :global(h2) { margin-block: 2em 0.55em; padding-inline-start: 0.75rem; border-inline-start: 3px solid var(--color-theme); font-size: 1.25rem; }
+  .prompt-content :global(h2) { margin-block: 2em 0.55em; padding-inline-start: 0.75rem; border-inline-start: 1px solid var(--color-border-strong); font-size: 1.25rem; }
   .prompt-content :global(h3) { margin-block: 1.5em 0.45em; font-size: 1.08rem; }
   .prompt-content :global(p) { margin-block: 0.8em 0; }
   .prompt-content :global(ul), .prompt-content :global(ol) { margin-block: 0.55em 0; padding-inline-start: 1.5em; }
   .prompt-content :global(li) { margin-block: 0.25em 0; }
-  .prompt-content :global(:not(pre) > code) { padding: 0.15em 0.4em; border-radius: var(--radius-sm); background: var(--color-theme-soft); color: var(--color-theme); font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace; font-size: 0.9em; }
-  .prompt-content :global(pre) { overflow-x: auto; margin-block: 1em 0; padding: 1em 1.25em; border-left: 3px solid var(--color-theme); border-radius: var(--radius-sm); background: var(--color-surface-muted); direction: ltr; }
-  .prompt-content :global(blockquote) { margin-block: 1em 0; padding: 0.75em 1em; border-left: 3px solid color-mix(in srgb, var(--color-theme) 40%, transparent); background: var(--color-surface-muted); color: color-mix(in srgb, var(--color-main) 70%, transparent); }
+  .prompt-content :global(:not(pre) > code) { padding: 0.15em 0.4em; border-radius: var(--radius-sm); background: var(--color-code-surface); color: var(--color-main); font-family: ui-monospace, monospace; font-size: 0.9em; }
+  .prompt-content :global(pre) { overflow-x: auto; margin-block: 1em 0; padding: 1em 1.25em; border: 1px solid var(--color-border); border-left: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); background: var(--color-code-surface); direction: ltr; }
+  .prompt-content :global(blockquote) { margin-block: 1em 0; padding: 0.75em 1em; border-left: 1px solid var(--color-border-strong); background: var(--color-surface-muted); color: color-mix(in srgb, var(--color-main) 70%, transparent); }
   .prompt-content :global(table) { display: block; width: 100%; overflow-x: auto; margin-block: 1em 0; border-collapse: collapse; font-size: 0.9rem; }
   .prompt-content :global(th), .prompt-content :global(td) { padding: 0.5em 0.75em; border: 1px solid var(--color-border); text-align: start; }
-  .prompt-content :global(th) { background: var(--color-theme-soft); }
+  .prompt-content :global(th) { background: var(--color-surface-muted); }
   .prompt-content :global(a) { color: var(--color-theme); text-decoration: underline; }
 
   .prompt-workflow-next, .prompt-related-prompts { margin-top: 3rem; padding-top: 0; }

@@ -60,6 +60,15 @@ for (const locale of ["en", "zh-cn"] as const) {
     await expect(page.locator("[data-install-mode]").nth(1)).not.toContainText("qabench");
   });
 
+  test(`${locale} dsh-qa keeps the mobile Hero command readable`, async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 844 });
+    await page.goto(`/${locale}/dsh-qa/`, { waitUntil: "domcontentloaded" });
+
+    const command = page.locator("[data-dsh-command-value]");
+    await expect(command).toHaveCSS("white-space", "pre-wrap");
+    await expect(command).toHaveCSS("overflow-wrap", "anywhere");
+  });
+
   test(`${locale} dsh-qa adapts the Harness command card to the site theme`, async ({ page }) => {
     await page.goto(`/${locale}/dsh-qa/`, { waitUntil: "domcontentloaded" });
 
@@ -69,6 +78,13 @@ for (const locale of ["en", "zh-cn"] as const) {
     const darkBackground = await commandCard.evaluate((node) => getComputedStyle(node).backgroundColor);
 
     expect(darkBackground).not.toBe(lightBackground);
+  });
+
+  test(`${locale} dsh-qa sections use headings without repeated numbered eyebrows`, async ({ page }) => {
+    await page.goto(`/${locale}/dsh-qa/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".section-kicker")).toHaveCount(0);
+    await expect(page.locator(".dsh-qa-page .section h2")).toHaveCount(6);
   });
 
   test(`${locale} project and resource cards keep dsh-qa in the same locale`, async ({ page }) => {
@@ -96,4 +112,36 @@ for (const locale of ["en", "zh-cn"] as const) {
     expect(await page.evaluate(() => getComputedStyle(document.querySelector(".dsh-qa-page")!).color)).toBe(await page.evaluate(() => getComputedStyle(document.body).color));
     await expect(page.locator(".hero")).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
   });
+
+  if (locale === "zh-cn") {
+    test("中文 dsh-qa 将版本区标题本地化", async ({ page }) => {
+      await page.goto("/zh-cn/dsh-qa/", { waitUntil: "domcontentloaded" });
+      await expect(page.locator("[data-release-notes] h2")).toHaveText("版本变更");
+      await expect(page.locator(".hero-summary")).not.toContainText("—");
+    });
+
+    test("中文 dsh-qa 主标题不会把词语拆到两行", async ({ page }) => {
+      const heading = page.locator("#dsh-qa-title");
+
+      for (const width of [1440, 1024, 390]) {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto("/zh-cn/dsh-qa/", { waitUntil: "domcontentloaded" });
+        await page.evaluate(() => document.fonts.ready);
+
+        const lineCount = await heading.evaluate((node) => {
+          const title = node.textContent ?? "";
+          const offset = title.indexOf("质量");
+          const textNode = node.firstChild;
+          if (offset < 0 || textNode?.nodeType !== Node.TEXT_NODE) return 0;
+
+          const range = document.createRange();
+          range.setStart(textNode, offset);
+          range.setEnd(textNode, offset + 2);
+          return range.getClientRects().length;
+        });
+
+        expect(lineCount, `the word 质量 should stay together at ${width}px`).toBe(1);
+      }
+    });
+  }
 }

@@ -12,10 +12,10 @@ const CAPABILITY_ICONS: Record<string, string> = {
 };
 
 const items = locale === "zh-cn" ? [
-  { key:"skills", title:"QA Skills", desc:"面向完整测试任务的可复用能力包，包含步骤、输入要求与输出结构。", path:"/qaskills/", recommendations:[
+  { key:"skills", title:"QA 技能", desc:"面向完整测试任务的可复用能力包，包含步骤、输入要求与输出结构。", path:"/qaskills/", recommendations:[
     ["需求分析", "/qaskills/requirements-analysis/"], ["测试用例评审", "/qaskills/test-case-reviewer/"], ["测试用例编写", "/qaskills/test-case-writing/"], ["代码评审", "/qaskills/code-review/"]
   ] },
-  { key:"prompts", title:"Prompts", desc:"面向单次生成和分析任务的提示词，可快速复制、调整并人工复核。", path:"/prompts/", recommendations:[
+  { key:"prompts", title:"提示词", desc:"面向单次生成和分析任务的提示词，可快速复制、调整并人工复核。", path:"/prompts/", recommendations:[
     ["需求分析", "/prompts/requirements-analysis/"], ["测试用例评审", "/prompts/test-case-reviewer/"], ["测试用例编写", "/prompts/test-case-writing/"], ["代码评审", "/prompts/security-testing/"]
   ] },
   { key:"knowledge", title:"知识与实践", desc:"通过博客、测试百科和 AI 百科理解方法、概念与真实实践。", path:"/blog/", recommendations:[
@@ -40,7 +40,7 @@ const items = locale === "zh-cn" ? [
       id="home-capability-title"
       watermark={locale === "zh-cn" ? "核心能力" : "CORE CAPABILITIES"}
       title={locale === "zh-cn" ? "三类核心能力" : "Three core capabilities"}
-      subtitle={locale === "zh-cn" ? "如果已经知道需要哪类资源，可以按 QA Skills、Prompts 或知识实践直接浏览。" : "If you already know the resource type, browse directly by QA Skills, Prompts, or practical knowledge."}
+      subtitle={locale === "zh-cn" ? "如果已经知道需要哪类资源，可以按 QA 技能、提示词或知识实践直接浏览。" : "If you already know the resource type, browse directly by QA Skills, Prompts, or practical knowledge."}
     />
     <ul class="capability-list" role="list">
       {items.map((item) => (

@@ -199,7 +199,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content={robots} />
     <meta name="author" content={articleAuthor || "Nao Deng"} />
-    <meta name="theme-color" content="#f8fafc" data-theme-color />
+    <meta name="theme-color" content="#faf9f6" data-theme-color />
     <link rel="canonical" href={canonicalUrl} />
     {prevUrl && <link rel="prev" href={prevUrl} />}
     {nextUrl && <link rel="next" href={nextUrl} />}
@@ -256,11 +256,11 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
       rel="preload"
       as="style"
       fetchpriority="high"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&display=swap"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&display=swap"
       media="print"
       onload={`this.media='all'`}
     />
@@ -297,6 +297,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
           : selected;
         document.documentElement.dataset.theme = resolved;
         document.documentElement.dataset.themePreference = selected;
+        document.querySelector("[data-theme-color]")?.setAttribute("content", resolved === "dark" ? "#13191c" : "#faf9f6");
       })();
     </script>
     <Analytics />
@@ -407,7 +408,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
           const resolvedTheme = resolve(next);
           document.documentElement.dataset.theme = resolvedTheme;
           document.documentElement.dataset.themePreference = next;
-          document.querySelector("[data-theme-color]")?.setAttribute("content", resolvedTheme === "dark" ? "#0b1020" : "#f8fafc");
+          document.querySelector("[data-theme-color]")?.setAttribute("content", resolvedTheme === "dark" ? "#13191c" : "#faf9f6");
           window.dispatchEvent(new CustomEvent("themechange", { detail: { preference: next, resolvedTheme } }));
         };
         const media = window.matchMedia("(prefers-color-scheme: dark)");

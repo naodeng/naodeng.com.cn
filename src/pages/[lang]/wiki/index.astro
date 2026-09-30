@@ -18,7 +18,6 @@ export async function getStaticPaths() {
 
 const locale = (Astro.params.lang ?? "en") as Lang;
 const isEn = locale === "en";
-
 const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "首页";
 const title = isEn ? "QA Wiki" : "测试百科";
 const description = isEn
@@ -31,10 +30,17 @@ const breadcrumbs = [
 ];
 
 const entries = await getCollection("wiki");
-const sidebarSections = isEn ? [] : buildWikiSidebar(entries);
+const fullSidebarSections = isEn ? [] : buildWikiSidebar(entries);
 const basePath = `/${locale}/wiki`;
 /** 按字母分组的区块（不含「概述」），用于概述页按字母展示全部词条 */
-const letterSections = sidebarSections.filter((s) => s.title);
+const letterSections = fullSidebarSections.filter((s) => s.title);
+const sidebarSections = [
+  { items: [{ label: "概述", href: "" }] },
+  {
+    title: "词条",
+    items: letterSections.flatMap((section) => section.items),
+  },
+];
 const totalCount = entries.length;
 const letterGroupCount = letterSections.length;
 
@@ -75,7 +81,8 @@ const definedTermSetSchema = !isEn ? {
     currentPath=""
     basePath={basePath}
     sidebarMenuLabel="本页导航"
-    sidebarSearchPlaceholder="检索词条..."
+    sidebarSearchPlaceholder="检索词条…"
+    sidebarSearchTargetId="wiki-search"
     structuredData={definedTermSetSchema ? [definedTermSetSchema] : undefined}
   >
     <header class="wiki-hero">
@@ -145,7 +152,7 @@ const definedTermSetSchema = !isEn ? {
 
   :global(.docs-sidebar-inner) {
     border-inline-start: none !important;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    border: 1px solid var(--color-border) !important;
     border-radius: var(--radius-md) !important;
     overflow: hidden;
     box-shadow: none;
@@ -252,7 +259,7 @@ const definedTermSetSchema = !isEn ? {
   }
   .wiki-letter-index-link:hover,
   .wiki-letter-index-link:focus-visible {
-    color: #fff;
+    color: var(--color-theme-on-dark);
     background: var(--color-theme);
     border-color: var(--color-theme);
   }
@@ -262,7 +269,7 @@ const definedTermSetSchema = !isEn ? {
     margin-block-end: var(--sp-l);
     padding: var(--sp-m);
     padding-inline-start: var(--sp-m);
-    border-inline-start: 3px solid color-mix(in srgb, var(--color-theme) 28%, transparent);
+    border-inline-start: 1px solid var(--color-border-strong);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     background: color-mix(in srgb, var(--color-main) 4%, var(--color-base));
     scroll-margin-block-start: 1.5rem;
@@ -315,7 +322,7 @@ const definedTermSetSchema = !isEn ? {
   .wiki-back-top {
     margin: var(--sp-l) 0 0;
     padding-block-start: var(--sp-m);
-    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
+    border-block-start: 1px solid var(--color-border);
     text-align: center;
   }
   .wiki-back-top-link {
@@ -386,5 +393,8 @@ const definedTermSetSchema = !isEn ? {
         if (pill) pill.hidden = !hasVisible;
       });
     });
+    const initialSearch = new URLSearchParams(window.location.search).get('q')?.trim() ?? '';
+    if (initialSearch) searchInput.value = initialSearch;
+    if (searchInput.value) searchInput.dispatchEvent(new Event('input'));
   }
 </script>

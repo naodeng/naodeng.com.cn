@@ -416,16 +416,16 @@ const searchExamples = lang === "zh-cn"
   .compact-heading h2 { max-width: none; }
 
   .prompt-task-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem 1rem; }
-  .prompt-task-card { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 0.8rem; min-height: 0; padding: 1.1rem 1.15rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; transition: border-color 0.15s, background-color 0.15s; }
+  .prompt-task-card { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.8rem; min-width: 0; min-height: 0; padding: 1.1rem 1.15rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; transition: border-color 0.15s, background-color 0.15s; }
   .prompt-task-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); background: var(--color-theme-soft); }
-  .prompt-task-card-content { display: grid; align-content: start; gap: 0.45rem; }
+  .prompt-task-card-content { display: grid; min-width: 0; align-content: start; gap: 0.45rem; }
   .prompt-task-card-content strong { font-size: 1rem; }
   .prompt-task-card-content span { color: var(--prompt-ink-soft); font-size: 0.86rem; line-height: 1.5; }
   .prompt-task-card-content small { color: var(--color-theme); font-size: 0.75rem; font-weight: 700; }
   .prompt-arrow { align-self: start; color: var(--color-theme); font-size: 1rem; }
 
   .prompt-area-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1rem; }
-  .prompt-area-card { display: grid; align-content: start; gap: 0.55rem; min-height: 0; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
+  .prompt-area-card { display: grid; min-width: 0; align-content: start; gap: 0.55rem; min-height: 0; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
   .prompt-area-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); background: var(--color-theme-soft); }
   .prompt-area-count { display: flex; align-items: baseline; gap: 0.35rem; color: var(--color-theme); }
   .prompt-area-count strong { font-size: 1.35rem; letter-spacing: -0.04em; }
@@ -435,7 +435,7 @@ const searchExamples = lang === "zh-cn"
   .prompt-area-link { display: inline-flex; gap: 0.4rem; align-items: center; margin-top: auto; color: var(--color-theme); font-size: 0.8rem; font-weight: 800; }
 
   .prompt-featured-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
-  .prompt-featured-card { display: flex; flex-direction: column; padding: 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
+  .prompt-featured-card { display: flex; flex-direction: column; min-width: 0; padding: 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
   .prompt-featured-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); }
   .prompt-card-meta { display: flex; justify-content: space-between; gap: 0.5rem; color: var(--color-theme); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; }
   .prompt-featured-card h3 { margin: 1rem 0 0.55rem; font-size: 1.08rem; line-height: 1.25; }
@@ -448,19 +448,19 @@ const searchExamples = lang === "zh-cn"
   .prompt-outline-link { margin-top: 1.5rem; }
 
   .prompt-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; list-style: none; margin: 0; padding: 0; }
-  .prompt-steps li { display: grid; gap: 0.7rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+  .prompt-steps li { display: grid; min-width: 0; gap: 0.7rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
   .prompt-step-number { color: var(--color-theme); font-size: 1.5rem; font-weight: 800; }
   .prompt-steps h3 { margin: 0; font-size: 1rem; }
   .prompt-steps p { margin: 0.45rem 0 0; color: var(--prompt-ink-soft); font-size: 0.84rem; line-height: 1.55; }
 
   .prompt-comparison { border-block: 1px solid var(--color-border); }
   .prompt-comparison-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .prompt-comparison-row span { padding: 1rem 1.1rem; color: var(--prompt-ink-soft); line-height: 1.6; }
+  .prompt-comparison-row span { min-width: 0; padding: 1rem 1.1rem; color: var(--prompt-ink-soft); line-height: 1.6; }
   .prompt-comparison-row span + span { border-left: 1px solid var(--color-border); }
   .prompt-comparison-head span { color: var(--color-main); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 
   .prompt-workflow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1rem; }
-  .prompt-workflow-card { position: relative; display: grid; gap: 0.6rem; min-height: 0; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
+  .prompt-workflow-card { position: relative; display: grid; min-width: 0; gap: 0.6rem; min-height: 0; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
   .prompt-workflow-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); background: var(--color-theme-soft); }
   .prompt-workflow-type { color: var(--color-theme); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
   .prompt-workflow-card strong { padding-right: 1rem; font-size: 1.1rem; }
@@ -478,14 +478,14 @@ const searchExamples = lang === "zh-cn"
 
   @media (max-width: 720px) {
     .prompt-home { padding-inline: 0; }
-    .prompt-hero { grid-template-columns: 1fr; gap: 2rem; }
+    .prompt-hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
     .prompt-hero h1 { max-width: 18ch; }
     .prompt-hero-aside { max-width: 520px; }
-    .prompt-section-heading { grid-template-columns: 1fr; gap: 0.8rem; }
+    .prompt-section-heading { grid-template-columns: minmax(0, 1fr); gap: 0.8rem; }
     .prompt-section-heading h2 { max-width: 20ch; }
-    .prompt-task-grid, .prompt-featured-grid, .prompt-workflow-grid { grid-template-columns: 1fr; }
+    .prompt-task-grid, .prompt-featured-grid, .prompt-workflow-grid { grid-template-columns: minmax(0, 1fr); }
     .prompt-area-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .prompt-steps { grid-template-columns: 1fr; gap: 1.1rem; }
+    .prompt-steps { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; }
     .prompt-steps li, .prompt-steps li:nth-child(4) { padding: 1rem 1rem 1rem 2.2rem; }
     .prompt-steps li { position: relative; }
     .prompt-step-number { position: absolute; left: 0; top: -0.25rem; }
@@ -495,8 +495,8 @@ const searchExamples = lang === "zh-cn"
     .prompt-search-control { display: flex; padding: 0.35rem; }
     .prompt-search-control button { flex: 0 0 auto; min-height: 40px; width: auto; padding-inline: 0.85rem; white-space: nowrap; }
     .prompt-search-icon { padding-inline: 0.45rem; }
-    .prompt-area-grid { grid-template-columns: 1fr; }
-    .prompt-comparison-row { grid-template-columns: 1fr; }
+    .prompt-area-grid { grid-template-columns: minmax(0, 1fr); }
+    .prompt-comparison-row { grid-template-columns: minmax(0, 1fr); }
     .prompt-comparison-row span + span { border-top: 1px solid var(--color-border); border-left: 0; }
     .prompt-comparison-head { display: none; }
     .prompt-comparison-row span { padding: 0.9rem 0; }

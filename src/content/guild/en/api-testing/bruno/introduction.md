@@ -349,10 +349,6 @@ jobs:
 ![cli-demo1](https://github.com/dengnao-tw/Bruno-API-Test-Starter/raw/main/readme_pictures/cli-demo1.png)
 > The code for this project can be pulled for reference:[https://github.com/dengnao-tw/Bruno-API-Test-Starter](https://github.com/dengnao-tw/Bruno-API-Test-Starter)
 
-#### Test report---TODO
-
-### bruno More usage---TODO
-
 ### Postman script migration
 
 #### API Request Collection Migration

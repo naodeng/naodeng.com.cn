@@ -394,7 +394,7 @@ export const HOME_HERO_TITLE: Multilingual = {
 
 export const HOME_HERO_SUBTITLE: Multilingual = {
   en: "Start from the work at hand, then use reusable QA Skills, Prompts, workflows, and practical guides to move it forward.",
-  "zh-cn": "从手头的测试任务开始，再用可复用的 QA Skills、Prompts、工作流和实践指南推动下一步。",
+  "zh-cn": "从手头的测试任务开始，再用可复用的 QA 技能、提示词、工作流和实践指南推动下一步。",
 };
 
 export const HOME_CTA_TASK: Multilingual = {
@@ -404,7 +404,7 @@ export const HOME_CTA_TASK: Multilingual = {
 
 export const HOME_CTA_SKILLS: Multilingual = {
   en: "Browse QA Skills",
-  "zh-cn": "浏览 QA Skills",
+  "zh-cn": "浏览 QA 技能",
 };
 
 export const HOME_EXPLORE_TITLE: Multilingual = {
@@ -444,21 +444,21 @@ export const HOME_EXPLORE_CARDS: Record<
     {
       key: "aiwiki",
       path: "/AIWiki",
-      title: "AI Wiki",
+      title: "AI 百科",
       desc: "AI 测试与智能体工程的知识沉淀，紧跟技术演进持续更新。",
       icon: "smart_toy",
     },
     {
       key: "guild",
       path: "/guild/",
-      title: "Guild",
+      title: "自动化测试指南",
       desc: "测试流程与质量策略的框架化指南，可直接落地到项目。",
       icon: "groups",
     },
     {
       key: "projects",
       path: "/projects/",
-      title: "Projects",
+      title: "项目",
       desc: "开源项目与作品集，代码与文档一并公开。",
       icon: "code",
     },

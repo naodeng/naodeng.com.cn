@@ -88,6 +88,22 @@ test.describe("Guild 概览页", () => {
     await expect(page.locator(".guild-hero__title")).toBeVisible();
     await expect(page.locator(".tts").first()).toBeVisible();
   });
+
+  test("Guild 概览页使用 Proofline 实色表面", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/guild/", { waitUntil: "domcontentloaded" });
+
+    const surfaces = await page.locator(".guild-hero, .filter-card, .fw-card").evaluateAll((nodes) =>
+      nodes.map((node) => {
+        const style = getComputedStyle(node);
+        return { backgroundImage: style.backgroundImage, backdropFilter: style.backdropFilter };
+      }),
+    );
+    expect(surfaces.length).toBeGreaterThan(0);
+    expect(surfaces.every((surface) => surface.backgroundImage === "none")).toBe(true);
+    expect(surfaces.every((surface) => surface.backdropFilter === "none")).toBe(true);
+    const cardTransition = await page.locator(".fw-card").first().evaluate((node) => getComputedStyle(node).transitionProperty);
+    expect(cardTransition).not.toBe("all");
+  });
 });
 
 // ─────────────────────────────────────────────

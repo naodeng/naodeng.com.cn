@@ -25,7 +25,7 @@ const locale = entry.data.lang as Lang;
 const isZh = locale === "zh-cn";
 const slug = entry.data.slug;
 const basePath = `/${locale}/ai-native-qa-weekly`;
-const weeklyTitle = "AI-Native QA Weekly";
+const weeklyTitle = isZh ? "AI-Native QA 周刊" : "AI-Native QA Weekly";
 const pageTitle = entry.data.title;
 const metaDescription = entry.data.description;
 const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "Home";
@@ -233,6 +233,10 @@ const structuredData = {
     border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 18%, var(--color-border));
   }
 
+  .weekly-page {
+    min-inline-size: 0;
+  }
+
   .weekly-toolbar-copy {
     min-inline-size: 0;
   }
@@ -323,14 +327,15 @@ const structuredData = {
   }
 
   .weekly-article {
-    max-inline-size: 78ch;
+    max-inline-size: var(--reading-max);
+    min-inline-size: 0;
     line-height: 1.8;
   }
 
   .weekly-article :global(h1) {
     margin-block: 0 0.75rem;
     padding-block-end: var(--sp-s);
-    border-block-end: 2px solid var(--color-theme);
+    border-block-end: 1px solid var(--color-border);
     font-size: clamp(1.8rem, 3.2vw, 2.45rem);
     line-height: 1.2;
     letter-spacing: -0.025em;
@@ -340,10 +345,10 @@ const structuredData = {
     scroll-margin-block-start: 1rem;
     margin-block: 2.4rem 0.8rem;
     padding: 0.7rem 0.8rem 0.7rem 1rem;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, var(--color-border));
-    border-inline-start: 5px solid var(--color-theme);
+    border: 1px solid var(--color-border);
+    border-inline-start: 1px solid var(--color-border-strong);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-surface));
+    background: var(--color-surface-muted);
     font-size: clamp(1.18rem, 2vw, 1.45rem);
     line-height: 1.4;
   }
@@ -375,6 +380,20 @@ const structuredData = {
     text-decoration-thickness: 2px;
   }
 
+  .weekly-article :global(pre),
+  .weekly-article :global(table) {
+    max-inline-size: 100%;
+    overflow-x: auto;
+  }
+
+  .weekly-article :global(blockquote) {
+    margin-inline: 0;
+    padding: 0.75rem 1rem;
+    border-inline-start: 1px solid var(--color-border-strong);
+    background: var(--color-surface-muted);
+    color: var(--color-text-secondary);
+  }
+
   @media (width < 768px) {
     .weekly-toolbar {
       align-items: stretch;
@@ -384,6 +403,10 @@ const structuredData = {
     .weekly-period-control {
       flex-basis: auto;
       inline-size: 100%;
+    }
+
+    .weekly-toolbar-hint {
+      max-inline-size: 32ch;
     }
 
     .weekly-issue-meta {
@@ -397,6 +420,10 @@ const structuredData = {
     .weekly-meta-item--wide {
       grid-column: 1 / -1;
       border-inline-end: 0;
+    }
+
+    .weekly-article {
+      inline-size: 100%;
     }
   }
 

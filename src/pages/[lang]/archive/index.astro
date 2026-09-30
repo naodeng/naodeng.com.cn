@@ -41,7 +41,7 @@ export const getStaticPaths = () =>
 ---
 
 <Layout {title} description={description} breadcrumbs={breadcrumbs}>
-  <PageHeadline {title} />
+  <PageHeadline {title} compact />
 
   <div class="archive-list">
     {years.map((year) => (
@@ -82,7 +82,7 @@ export const getStaticPaths = () =>
   .year-title {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--color-theme);
+    color: var(--color-main);
     margin-block-end: var(--sp-m);
     padding-inline-start: var(--sp-s);
   }

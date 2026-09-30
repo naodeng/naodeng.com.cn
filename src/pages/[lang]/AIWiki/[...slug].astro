@@ -9,7 +9,6 @@ import type { Lang } from "@/i18n";
 import {
   aiwikiIdToLang,
   aiwikiIdToSlug,
-  buildAiWikiSidebar,
   getAiWikiDisplayTitle,
   slugToTitleEn,
 } from "@/data/aiwiki";
@@ -50,9 +49,22 @@ const breadcrumbs = [
 
 const allEntries = await getCollection("aiwiki");
 const entries = allEntries.filter((e) => (e.data.lang ? e.data.lang === locale : aiwikiIdToLang(e.id) === locale));
-const sidebarSections = buildAiWikiSidebar(entries, locale);
 const basePath = `/${locale}/AIWiki`;
 const relatedTitleMap = new Map(entries.map((e) => [e.data.slug ?? aiwikiIdToSlug(e.id), getAiWikiDisplayTitle(e, locale)]));
+const relatedItems = [...new Set(entry.data.related ?? [])]
+  .filter((term) => term !== slugParam)
+  .slice(0, 5)
+  .map((slug) => ({ slug, label: relatedTitleMap.get(slug) ?? slug }));
+const sidebarSections = [
+  { items: [{ label: locale === "zh-cn" ? "返回百科首页" : "Back to index", href: "" }] },
+  {
+    title: locale === "zh-cn" ? "当前词条" : "Current entry",
+    items: [{ label: pageTitle, href: slugParam }],
+  },
+  ...(relatedItems.length > 0
+    ? [{ title: locale === "zh-cn" ? "相关词条" : "Related terms", items: relatedItems.map((item) => ({ label: item.label, href: item.slug })) }]
+    : []),
+];
 
 const { Content, headings: renderedHeadings = [] } = await render(entry);
 
@@ -102,19 +114,21 @@ const structuredData = {
   currentPath={slugParam}
   basePath={basePath}
   sidebarMenuLabel={locale === "zh-cn" ? "本页导航" : "On this page"}
-  sidebarSearchPlaceholder={locale === "zh-cn" ? "检索词条..." : "Search terms..."}
+  sidebarSearchPlaceholder={locale === "zh-cn" ? "检索词条…" : "Search terms…"}
+  sidebarSearchAction={`${basePath}/`}
+  sidebarSearchLabel={locale === "zh-cn" ? "检索词条" : "Search terms"}
   headings={headings}
   tocLabel={locale === "zh-cn" ? "本页目录" : "On this page"}
 >
   <article class="aiwiki-article" data-locale={locale}>
     <Content />
 
-    {entry.data.related && entry.data.related.length > 0 && (
+    {relatedItems.length > 0 && (
       <section class="aiwiki-related" aria-labelledby="aiwiki-related-heading">
         <h2 id="aiwiki-related-heading">{locale === "zh-cn" ? "相关词条" : "Related terms"}</h2>
         <div class="aiwiki-related-pills">
-          {entry.data.related.map((term: string) => (
-            <a href={`${basePath}/${term}/`} class="aiwiki-related-pill">{relatedTitleMap.get(term) ?? term}</a>
+          {relatedItems.map((item) => (
+            <a href={`${basePath}/${item.slug}/`} class="aiwiki-related-pill">{item.label}</a>
           ))}
         </div>
       </section>
@@ -168,7 +182,7 @@ const structuredData = {
 
   :global(.docs-sidebar-inner) {
     border-inline-start: none !important;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
+    border: 1px solid var(--color-border) !important;
     border-radius: var(--radius-md) !important;
     overflow: hidden;
     box-shadow: none;
@@ -197,9 +211,9 @@ const structuredData = {
     display: inline-block;
     padding: 0.3em 0.75em;
     border-radius: 999px;
-    border: 1px solid var(--color-theme);
+    border: 1px solid var(--color-border);
     text-decoration: none;
-    color: var(--color-theme);
+    color: var(--color-text-secondary);
   }
   .aiwiki-related-pill:hover {
     background: color-mix(in srgb, var(--color-theme) 12%, transparent);

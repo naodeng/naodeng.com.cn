@@ -51,6 +51,17 @@ test.describe("各页面链接跳转正确", () => {
   const mainPages = getMainPageUrls("");
   const extraPages = getExtraPageUrls();
 
+  for (const locale of ["en", "zh-cn"] as const) {
+    test(`${locale} links 页面只展示真实入口`, async ({ page, baseURL }) => {
+      await page.goto(`${baseURL || ""}/${locale}/links/`, { waitUntil: "domcontentloaded" });
+
+      await expect(page.locator(".link-card")).toHaveCount(1);
+      await expect(page.locator('a[href="#"]')).toHaveCount(0);
+      await expect(page.locator('main a[href="mailto:dengnao@gmail.com"]')).toBeVisible();
+      await expect(page.locator(".link-card").first()).toHaveAttribute("href", "https://guangzhengli.com/");
+    });
+  }
+
   for (const { locale, path, name } of mainPages) {
     test(`${locale} ${name} 页内所有同站链接可正常跳转`, async ({ page, baseURL }) => {
       const url = (baseURL || "").replace(/\/$/, "") + path;

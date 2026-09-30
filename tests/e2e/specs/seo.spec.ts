@@ -31,6 +31,11 @@ test.describe("SEO 元数据", () => {
 
   const mainPages = getMainPageUrls("");
 
+  test("QA Skills prototype is explicitly excluded from indexing", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/qaskills/detail-prototype/?variant=a", { waitUntil: "domcontentloaded" });
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, nofollow/);
+  });
+
   for (const { locale, path, name } of mainPages.slice(0, 4)) {
     test(`${locale} ${name} 页：title 标签存在且非空`, async ({ page, baseURL }) => {
       const url = (baseURL || "").replace(/\/$/, "") + path;

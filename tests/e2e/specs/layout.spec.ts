@@ -52,11 +52,14 @@ test.describe("主页面样式与布局正常展示", () => {
   test("zh-cn 页脚按内容类型分组", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
-    await expect(page.locator("footer [data-footer-group]")).toHaveCount(4);
+    await expect(page.locator("footer [data-footer-group]")).toHaveCount(5);
     await expect(page.locator("footer [data-footer-group='explore']")).toContainText("探索");
     await expect(page.locator("footer [data-footer-group='knowledge']")).toContainText("知识库");
     await expect(page.locator("footer [data-footer-group='tools']")).toContainText("工具与学习");
     await expect(page.locator("footer [data-footer-group='site']")).toContainText("站点");
+    await expect(page.locator("footer [data-footer-group='products']")).toContainText("产品官网");
+    await expect(page.locator("footer [data-footer-group='products'] a[href='/zh-cn/dsh-qa/']")).toHaveText("DSH-QA");
+    await expect(page.locator("footer [data-footer-group='products'] a[href='/zh-cn/ai-test-auditor/']")).toHaveText("AI test audit");
     await expect(page.locator("footer .footer-nav a[href*='/zh-cn/qaskills']").first()).toBeVisible();
   });
 

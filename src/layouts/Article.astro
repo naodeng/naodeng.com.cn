@@ -71,7 +71,7 @@ const {
     h2 {
       margin-block: 3em 0;
       padding-block-end: 0.2em;
-      border-inline-start: 4px solid var(--color-theme);
+      border-inline-start: 2px solid var(--color-border-strong);
       padding-inline-start: var(--sp-s, 1rem);
       line-height: 1.4;
       font-size: 1.5rem;
@@ -107,9 +107,9 @@ const {
 
     /* 2.8: 行内代码 */
     :not(pre) code {
-      font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
-      color: var(--color-theme);
-      background: color-mix(in srgb, var(--color-theme) 10%, transparent);
+      font-family: ui-monospace, monospace;
+      color: var(--color-main);
+      background: var(--color-code-surface);
       padding: 0.15em 0.4em;
       border-radius: var(--radius-sm, 4px);
       font-size: 0.9em;
@@ -150,7 +150,7 @@ const {
       padding: 1em 1.25em;
       border-radius: var(--radius-md, 8px);
       border: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
-      border-inline-start: 3px solid var(--color-theme);
+      border-inline-start: 1px solid var(--color-border-strong);
       overflow-x: auto;
     }
   }
@@ -173,7 +173,7 @@ const {
     color: rgba(255,255,255,0.7);
     cursor: pointer;
     font-size: 0.75rem;
-    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+    font-family: ui-monospace, monospace;
     padding: 0.2em 0.6em;
     opacity: 0;
     transition: opacity 0.15s, color 0.15s, background 0.15s;

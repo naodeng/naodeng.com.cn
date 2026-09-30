@@ -188,7 +188,7 @@ const itemListSchema = {
   .post-date {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--color-theme);
+    color: var(--color-text-secondary);
     opacity: 0.8;
     margin-block-end: 0.5rem;
     display: block;
@@ -237,16 +237,16 @@ const itemListSchema = {
   .tag-link {
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--color-theme);
+    color: var(--color-text-secondary);
     text-decoration: none;
     padding: 0.2rem 0.5rem;
     border-radius: var(--radius-sm);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-    transition: all 0.2s ease;
+    background: var(--color-surface-muted);
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   .tag-link:hover {
     background: var(--color-theme);
-    color: white;
+    color: var(--color-theme-on-dark);
   }
 </style>
