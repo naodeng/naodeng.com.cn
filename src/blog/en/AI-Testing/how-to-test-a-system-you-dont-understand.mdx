@@ -1,0 +1,333 @@
+---
+title: "How Can You Test a System You Don't Understand?"
+description: "What should a tester do when asked to test an unfamiliar system? Inspired by Kim Muncey's MoTaverse talk, this post explores curiosity, information gaps, risk analysis, human feedback, and responsible use of AI."
+date: 2026-10-01T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["Software Testing", "AI in Testing", "Testing Methods"]
+categories: ["Software Testing"]
+---
+
+A lot of testing work starts before you understand the system.
+
+An urgent ticket lands in your queue. The description is short, the person who knows the area is busy, and you have not had time to read the code, the API, or the history of related defects. Then someone asks:
+
+> Can you help test this today?
+
+That is the question Kim Muncey explored in a Ministry of Testing session: how do you start testing when you do not yet understand the system?
+
+Kim’s own path makes the topic practical. They moved from customer service through the Northcoders coding bootcamp into quality assurance. When they encounter an unfamiliar system, they do not treat “I do not understand this” as a reason to stop. They treat it as a set of questions that can be reduced one by one.
+
+For a tester, the work still comes down to information gaps, risk decisions, and feedback loops.
+
+## You do not need to understand the entire system before you start
+
+Testers often set an unnecessarily high starting point for themselves: understand the architecture, business process, data model, and historical context before testing anything.
+
+Real projects rarely provide that luxury. Systems change, documentation has gaps, and requirements are not always complete. Even someone who has owned a product area for years does not have every piece of context before every change.
+
+The starting point can be much smaller. For the current task, you usually need to answer four questions first:
+
+- What is the user trying to do?
+- What changed this time?
+- Which behaviours may be affected?
+- What result would show that the feature works or fails?
+
+You can fill in the rest as you test. Testing also helps you build that knowledge.
+
+Kim described noticing that more experienced testers did not necessarily know more about an unfamiliar system at the start. They were simply more comfortable starting with questions:
+
+- What problem does this feature solve?
+- What are the inputs and outputs?
+- Why was this change made?
+- Which states can change?
+- What should happen when it fails?
+- Which systems or data does it depend on?
+- What else could this change affect?
+
+They did not need to know the answer before starting. They knew which questions to ask and where to look for the answer. Knowing where to start is a testing skill in its own right.
+
+## Change “I don’t understand” into “I don’t understand this yet”
+
+“I don’t understand” sounds like a conclusion. “I don’t understand this yet” turns it into a working state and points towards the next action:
+
+- What information is missing?
+- Who is most likely to know it?
+- What observation or experiment could verify it?
+
+The phrase turns vague discomfort into a problem that can be handled. It does not ask testers to pretend to be confident; it asks them to describe the gap.
+
+Testing an unfamiliar system can move through a few actions: ask questions, collect information, build a temporary model from the evidence, find gaps in that model, test important assumptions, and revise the model with the result.
+
+The goal is clear. Before testing begins, learn enough to identify risk and make the next testing decision. You do not need to finish learning the whole system first.
+
+## Read the ticket for what it does not say
+
+Another point from the talk maps closely to everyday testing:
+
+> Do not only read what the ticket says. Look for what it does not say.
+
+A User Story may look well structured, and the Acceptance Criteria may look complete. Much of that information still describes a single successful path:
+
+The user takes the correct action, the system receives valid input, the dependency is healthy, the state is valid, and the expected result is returned.
+
+That is the happy path. The tester’s next question should be:
+
+> What happens when the happy path does not happen?
+
+Start with questions such as:
+
+- What if the input is empty or invalid?
+- What if the request is submitted twice?
+- What if the user lacks permission?
+- What if a dependency times out or returns an error?
+- What if the network disappears halfway through?
+- What if the data state is inconsistent?
+- What happens to the changes already made if the operation fails halfway through?
+- Is retrying safe, or can it create a duplicate order, payment, or another side effect?
+
+For example, a ticket that says “allow users to edit a delivery address” still leaves many questions. Can an address be changed after an order has shipped? What should the order, invoice, and delivery information show? If two screens edit the address at the same time, which result should win? Does the data remain consistent after a save and a refresh? Can the user retry when the address service is unavailable?
+
+These questions expose risks the requirement has not made explicit. What is missing from the ticket becomes useful testing input.
+
+## Missing information tells you where to go next
+
+When information is missing, pause before judging the requirement. The gap can also tell you who to talk to next.
+
+| Missing information | Who can usually clarify it |
+| --- | --- |
+| Business rules and user goals | Product, BA, or a domain expert |
+| Implementation details and historical reasons | Developer |
+| API behaviour and error contracts | API or backend owner |
+| Previous behaviour and regression impact | An experienced QA or developer |
+| Production behaviour and real examples | Support, Ops, logs, or monitoring |
+
+Testing an unfamiliar system does not require sitting alone and guessing. Find the unknown, classify it, find the person who owns the information, validate your understanding, and update the testing model.
+
+A person’s explanation is not automatically a fact either. Different roles may give different answers, and old documentation may not match the current implementation. The tester still needs to turn verbal explanations into observable, reproducible evidence.
+
+Knowing who to ask, and how to make the question specific, is part of testing expertise.
+
+## Build a Minimum Testable Model
+
+I would describe this process as building a Minimum Testable Model.
+
+It answers the questions required for the current test without requiring you to understand every module on the first day:
+
+| Question | Why it helps |
+| --- | --- |
+| What problem does it solve? | Clarifies the purpose of the feature |
+| Who uses it, and in what situation? | Identifies the user and entry point |
+| What are the main inputs and outputs? | Defines data and observable results |
+| What are the important business rules? | Defines what counts as correct or incorrect |
+| Which states can change? | Identifies the states to check before and after |
+| Which systems, APIs, or data does it depend on? | Exposes external failure paths |
+| What happens when something fails? | Defines error handling and recovery |
+| Where could a failure cause the most harm? | Sets risk priority |
+
+Once enough of these questions have answers, you can design a focused first round and revise it as you learn more.
+
+The first round does not need to cover every branch. Start with a normal path, then change one important condition: use another role, try boundary data, submit twice, interrupt the network, or make a dependency fail.
+
+Each experiment should answer a question. The result changes your understanding of the system and may expose a new unknown. Understanding and testing move forward together—you do not need to finish one before starting the other.
+
+## AI can help, but it cannot understand the system for you
+
+Kim’s use of AI has one important prerequisite: you need enough foundational knowledge to judge whether its output makes sense.
+
+Kim described their experience at Northcoders, where relying directly on AI was discouraged during the early part of the learning process. The reason is straightforward. If you do not yet understand:
+
+- why the code works;
+- what the syntax means;
+- what the underlying concept is;
+- what a correct result looks like;
+
+then a polished AI answer is difficult to evaluate. You cannot easily tell the difference between correct and looks correct.
+
+The same problem applies to testing. AI can explain code, organise material, and generate examples, but it does not know the team’s unwritten conventions or how important a seemingly ordinary field is in production. You need enough fundamentals to check its assumptions and conclusions.
+
+## One of the biggest AI risks: you don't know what you don't know
+
+Suppose you know almost nothing about a system and immediately ask:
+
+> Generate a complete set of test cases for this feature.
+
+AI may happily return thirty, fifty, or even one hundred cases. The structure may be complete, the categories may be clear, and the result may look like a formal test plan.
+
+But there is a more important question:
+
+> How do you know it did not miss the one scenario that matters most?
+
+Without domain knowledge or sufficient business context, it becomes difficult to detect:
+
+- incorrect assumptions;
+- missing risks;
+- invented business rules;
+- wrong priorities;
+- edge cases that look reasonable but have little value.
+
+That is the risk of not knowing what you do not know. The more complete the output looks, the easier it is to forget to inspect its premises.
+
+For unfamiliar systems, I prefer using AI to assist understanding, improve questions, challenge assumptions, and review coverage. The tester should still make the testing decisions.
+
+## A useful AI pattern: pressure-test your test plan
+
+Kim shared a practical use case.
+
+When working with an unfamiliar feature, they might ask:
+
+> I do not know this risk area very well. Is my current test plan actually sufficient?
+
+They do not ask AI to create the entire plan from scratch. They first do their own analysis, then give ChatGPT the feature overview and the existing test plan and ask it to challenge the plan.
+
+The review can check:
+
+- Which core business risks are missing?
+- Which failure paths are uncovered?
+- Which cases may be outside the current scope?
+- Which tests depend on unverified assumptions?
+- Which obvious scenarios have been ignored out of habit?
+
+AI is acting as a reviewer and challenger here. It supplies another perspective, risk reminders, counterexamples, and boundary conditions. The tester still decides whether each suggestion applies to the current system.
+
+This lets AI participate in the thinking while keeping scope, evidence, and quality decisions with the tester.
+
+## From “AI, write this for me” to “AI, challenge my thinking”
+
+Giving the requirement to AI and asking AI to challenge your analysis are two different ways to work.
+
+In the first, the requirement goes directly to AI and a test plan comes back. In the second, the tester reads the requirement, analyses the risks, writes a first plan, asks AI to find omissions, and then decides whether the plan should change.
+
+The second approach is better suited to an unfamiliar system because the final decision remains with the tester. AI can contribute another perspective, risk reminders, counterexamples, boundary conditions, and coverage checks. It should not turn an unverified business rule into a test requirement.
+
+A useful habit is to write down why you chose each test before asking AI what you may have missed. That makes it easier to distinguish added evidence from invented context.
+
+## AI can also test whether you actually learned something
+
+Kim described another learning experiment. It was not about software testing, but it tested whether they had actually learned a subject.
+
+They selected two subjects they knew nothing about. They studied one through a podcast and the other through an article for the same amount of time, taking notes as they went. They then gave the material and specific assessment criteria to Claude and asked it to generate questions that tested their understanding.
+
+They discovered that reading the article did not always mean actively processing the information. They had been expecting knowledge to be absorbed “by osmosis.” That discovery later changed how they approached reading and reviewing code.
+
+AI was being used to verify whether they had actually learned the subject.
+
+From a QA perspective, the pattern is familiar: learning needs verification. Reading a requirement, looking at the code, or listening to an explanation does not prove that you can identify the risks.
+
+After reading an unfamiliar module, ask AI to question your own explanation. Tell it to cover the normal flow, failure handling, data states, and permission boundaries. A summary alone cannot check whether you understand the material; if you cannot answer the questions, you may have seen it without forming an understanding useful for testing.
+
+## Good AI usage starts with specific context
+
+The Q&A added a simple rule:
+
+> Be specific.
+
+You do not necessarily need sophisticated Prompt Engineering. Often, making the task, scope, and constraints explicit produces much better results.
+
+Instead of:
+
+> Review my test plan.
+
+try:
+
+> Here is the feature context, the change scope, the known dependencies, and my current test plan. Review it for missing core business risks, uncovered failure paths, cases that appear outside the current scope, and tests based on unverified assumptions. Do not invent business rules that are absent from the material. If evidence is missing, mark it as Unknown and state who can confirm it or what experiment could verify it.
+
+Specific context also makes human review easier. For every suggestion, you can ask which known fact supports it, which assumption it depends on, and what evidence could confirm it.
+
+Ambiguous input produces less controllable output. Testing works the same way.
+
+## AI does not replace the human feedback loop
+
+The crochet example made the same point.
+
+Kim learned crochet from someone who could watch how their hands were positioned, how the yarn moved, where the mistake happened, why it happened, and how to correct the next step immediately.
+
+That observe, feedback, correct, observe-again loop is still difficult for AI to replace completely.
+
+The same is true for junior testers. AI can explain Boundary Value Analysis, Exploratory Testing, Risk-Based Testing, or API Testing. A lot of real testing judgement develops through repeated practice:
+
+1. Try something.
+2. Get it reviewed.
+3. Discover where your judgement was wrong.
+4. Understand why.
+5. Improve next time.
+
+Product people can explain the outcome users actually care about. Developers can explain technical constraints and historical reasons. Domain experts can point out rules missing from the documentation. Real users may reveal that a workflow the team considers reasonable does not work in practice.
+
+Asking a person for help does not show a lack of testing skill. Finding the right person with a concrete question is part of good testing.
+
+AI can accelerate learning. It should not remove the feedback loop that produces judgment.
+
+## If I had to test a system I knew nothing about tomorrow
+
+Combining the ideas from the talk, I would start in this order:
+
+1. Identify exactly what changed.
+2. Separate confirmed facts from my own assumptions.
+3. Mark everything that is still unknown.
+4. Identify one basic happy path.
+5. Explore failure paths around input, permissions, dependencies, network behaviour, and state.
+6. Map inputs, outputs, state changes, and external dependencies.
+7. Identify the risks that could cause the greatest business impact.
+8. Find the right information owner for each gap.
+9. Build the first Minimum Testable Model for the task.
+10. Design and run tests that each answer a clear question.
+11. Ask AI to challenge the plan and find omissions or unverified assumptions.
+12. Review every AI suggestion yourself instead of treating generated text as a conclusion.
+13. Update your understanding with the results and decide what to test next.
+
+One point matters especially:
+
+> Unknown is not failure. It is an information gap that has not been closed yet.
+
+Writing it down is safer than filling it with an unverified answer.
+
+## A note for testers starting their careers in the AI era
+
+People entering software testing today have access to far more tools than before: ChatGPT, Claude, Copilot, agents, Skills, MCP, and whatever arrives next.
+
+AI can quickly generate test cases, automation code, SQL, API scripts, and test reports. There is still a large difference between being able to generate something and understanding why it is correct.
+
+If we repeatedly skip questions such as:
+
+- Why should this be tested?
+- Why is this a risk?
+- Why is this result wrong?
+- Why does this test provide value?
+
+we may produce a lot of output without developing much testing judgement.
+
+I prefer to think of AI as a capability amplifier. It cannot replace fundamentals. The stronger your existing judgment is, the more effectively AI can amplify it. If you cannot evaluate the result at all, AI may simply help you produce professional-looking mistakes faster.
+
+Not knowing the answer when you first meet a system is normal. The dangerous part is silently filling the gaps with assumptions because you are afraid to show that you are unfamiliar.
+
+Keep “I think this is true” separate from “the system has demonstrated this.” Ask more specific questions and record test results so that someone else can reproduce them. With every observation, conversation, and experiment, an unfamiliar system becomes a set of behaviours that people can discuss.
+
+## Final thoughts
+
+The talk asks a question about a particular testing situation:
+
+> How can you test a system that you don't understand?
+
+My answer is a way of working: stay curious, acknowledge the unknown, ask questions, find the people who have the information, build a Minimum Testable Model, identify risks, design tests, and use tools and feedback to challenge your judgment.
+
+A tester does not need every answer before starting. What matters more is knowing what you do not know and knowing how to turn that unknown into the next question that can be verified.
+
+AI can organise information, identify gaps, generate counterexamples, challenge a test plan, and verify understanding. The tester still needs to decide:
+
+- Is this suggestion reasonable?
+- Is this risk real?
+- Is this scenario worth testing?
+- Does the available evidence support this conclusion?
+
+So the next time an unfamiliar testing task arrives, try replacing:
+
+> I do not understand this.
+
+with:
+
+> I do not understand this yet. What information am I missing?
+
+That is often where the testing really begins.
+
+Source: Ministry of Testing session:https://www.ministryoftesting.com/media-sessions/how-can-you-test-a-system-that-you-don-t-understand
