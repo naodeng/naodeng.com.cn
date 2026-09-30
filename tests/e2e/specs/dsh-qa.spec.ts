@@ -119,5 +119,29 @@ for (const locale of ["en", "zh-cn"] as const) {
       await expect(page.locator("[data-release-notes] h2")).toHaveText("版本变更");
       await expect(page.locator(".hero-summary")).not.toContainText("—");
     });
+
+    test("中文 dsh-qa 主标题不会把词语拆到两行", async ({ page }) => {
+      const heading = page.locator("#dsh-qa-title");
+
+      for (const width of [1440, 1024, 390]) {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto("/zh-cn/dsh-qa/", { waitUntil: "domcontentloaded" });
+        await page.evaluate(() => document.fonts.ready);
+
+        const lineCount = await heading.evaluate((node) => {
+          const title = node.textContent ?? "";
+          const offset = title.indexOf("质量");
+          const textNode = node.firstChild;
+          if (offset < 0 || textNode?.nodeType !== Node.TEXT_NODE) return 0;
+
+          const range = document.createRange();
+          range.setStart(textNode, offset);
+          range.setEnd(textNode, offset + 2);
+          return range.getClientRects().length;
+        });
+
+        expect(lineCount, `the word 质量 should stay together at ${width}px`).toBe(1);
+      }
+    });
   }
 }

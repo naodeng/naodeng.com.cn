@@ -93,8 +93,10 @@ test.describe("Prompt library discovery and review flow", () => {
       expect(iconState).toEqual({ light: true, dark: false, menu: true, close: false });
 
       await page.locator("[data-theme-toggle]").click();
-      await expect.poll(() => page.locator(".theme-toggle__dark").evaluate((icon) => getComputedStyle(icon).display)).not.toBe("none");
-      await expect.poll(() => page.locator(".theme-toggle__light").evaluate((icon) => getComputedStyle(icon).display)).toBe("none");
+      await expect(page.locator("[data-theme-panel]")).toBeVisible();
+      await expect(page.locator("[data-theme-toggle]")).toHaveAttribute("aria-expanded", "true");
+      await expect(page.locator('[data-theme-option="system"]')).toHaveAttribute("aria-pressed", "true");
+      await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
       if (viewport.width < 834) {
         await page.locator("[data-nav-toggle]").click();

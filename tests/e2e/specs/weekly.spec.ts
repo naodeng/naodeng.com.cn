@@ -29,6 +29,20 @@ for (const locale of ["en", "zh-cn"] as const) {
     expect(textDecorations.every(({ textDecorationLine }) => textDecorationLine === "none"), JSON.stringify(textDecorations)).toBe(true);
   });
 
+  test(`${locale} weekly issue titles use the neutral heading color in both themes`, async ({ page, baseURL }) => {
+    await page.goto(`${baseURL || ""}/${locale}/ai-native-qa-weekly/`, { waitUntil: "domcontentloaded" });
+
+    for (const theme of ["light", "dark"] as const) {
+      await page.locator("html").evaluate((html, value) => { html.dataset.theme = value; }, theme);
+      const colors = await page.locator(".weekly-index-card").first().evaluate((card) => ({
+        issueTitle: getComputedStyle(card.querySelector("h3")!).color,
+        pageTitle: getComputedStyle(document.querySelector(".weekly-index-title")!).color,
+      }));
+
+      expect(colors.issueTitle, `${theme} weekly card titles should match the neutral page heading`).toBe(colors.pageTitle);
+    }
+  });
+
   test(`${locale} weekly selector changes issue without losing the reading layout`, async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(`${baseURL || ""}/${locale}/ai-native-qa-weekly/2026/week-39/`, { waitUntil: "domcontentloaded" });

@@ -45,6 +45,12 @@ const samples: ContrastSample[] = [
     selectors: [".flow-status.pass"],
     theme: "dark",
   },
+  {
+    name: "ai-test-auditor-dark",
+    path: "/zh-cn/ai-test-auditor/",
+    selectors: [".status.fake", ".status.weak"],
+    theme: "dark",
+  },
 ];
 
 test.describe("可访问性对比度审计（WCAG AA 抽样）", () => {

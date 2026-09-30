@@ -24,6 +24,29 @@ test.describe("QA Skills", () => {
     expect(catalogLabels.every((label) => !label.includes("—"))).toBe(true);
   });
 
+  test("directory metadata stays neutral while active filters keep the accent signal", async ({ page }) => {
+    await page.goto("/zh-cn/qaskills/");
+
+    for (const theme of ["light", "dark"] as const) {
+      await page.locator("html").evaluate((html, value) => { html.dataset.theme = value; }, theme);
+      const colors = await page.evaluate(() => {
+        const secondary = getComputedStyle(document.querySelector(".results-count")!).color;
+        const metadata = [
+          ".featured-number",
+          ".filter-sidebar-count",
+          ".featured-arrow",
+          ".usage-note li > span",
+          ".lifecycle-stage-num",
+        ].map((selector) => getComputedStyle(document.querySelector(selector)!).color);
+        const activeFilter = getComputedStyle(document.querySelector(".filter-option.is-active")!).color;
+        return { secondary, metadata, activeFilter };
+      });
+
+      expect(colors.metadata, `${theme} catalog metadata should use a neutral color`).toEqual(colors.metadata.map(() => colors.secondary));
+      expect(colors.activeFilter, `${theme} active filter should remain visibly distinct`).not.toBe(colors.secondary);
+    }
+  });
+
   test("direct-link cards rely on the card surface instead of a redundant arrow", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/");
 

@@ -78,8 +78,10 @@
 | 强调色 / `--color-theme` | `#176b75` | `#12ccd8` |
 | 焦点强调 / `--color-theme-focus` | `#0f5962` | `#7de6ec` |
 | 代码表面 / `--color-code-surface` | `#f1f5f3` | `#202b2f` |
+| 错误状态 / `--color-caution` | `#b42318` | `#ff9388` |
+| 警告状态 / `--color-warn` | `#9a6700` | `#e8c27a` |
 
-实现时使用上述语义变量。`--color-theme` 是稀缺的信号色，只用于 CTA、链接交互、当前项、状态和少量指标/标记；正文标题、普通导航文字、默认表面和普通边框使用中性色，不把强调色扩展成页面主色。`--color-theme-on-dark` 浅色取 `#ffffff`、深色取 `#13191c`；`--color-theme-soft` 与 `--color-theme-soft-hover` 分别使用以下固定公式：浅色为 `color-mix(in srgb, #176b75 10%, #ffffff)` / `color-mix(in srgb, #176b75 16%, #ffffff)`，深色为 `color-mix(in srgb, #12ccd8 10%, #13191c)` / `color-mix(in srgb, #12ccd8 16%, #13191c)`。组件不得继续直接引入新的蓝紫色或独立产品主色。
+实现时使用上述语义变量。`--color-theme` 是稀缺的信号色，只用于 CTA、链接交互、当前项、状态和少量指标/标记；正文标题、普通导航文字、默认表面和普通边框使用中性色，不把强调色扩展成页面主色。成功、错误与警告文本都必须在浅色和深色表面上达到 WCAG AA 对比度；错误与警告使用各自语义色，不复用强调色。`--color-theme-on-dark` 浅色取 `#ffffff`、深色取 `#13191c`；`--color-theme-soft` 与 `--color-theme-soft-hover` 分别使用以下固定公式：浅色为 `color-mix(in srgb, #176b75 10%, #ffffff)` / `color-mix(in srgb, #176b75 16%, #ffffff)`，深色为 `color-mix(in srgb, #12ccd8 10%, #13191c)` / `color-mix(in srgb, #12ccd8 16%, #13191c)`。组件不得继续直接引入新的蓝紫色或独立产品主色。
 
 旧 `color-glass-*`、`color-mist-secondary`、`gradient-theme`、`shadow-glass-*` 和 `shadow-product` 可以作为迁移期兼容别名保留，但不计入新主题的默认材质。测试要断言新组件不消费这些别名，而不是要求它们立即从变量表中消失。
 
