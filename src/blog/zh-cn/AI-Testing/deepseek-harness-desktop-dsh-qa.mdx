@@ -1,317 +1,390 @@
 ---
-title: "DeepSeek Harness 官方桌面端预览版上线，dsh-qa v0.7.2 已完成适配"
-description: "DeepSeek Harness 官方桌面端预览版现已可以从官网下载安装；dsh-qa v0.7.2 已支持 dsh-v0.2.0-rc.2 宿主冒烟测试，并修复历史 DSH 对话的发现、排序、保留和展示问题。"
+title: "DeepSeek Harness 官方桌面端预览版上线，dsh-qa 已完成适配"
+description: "DeepSeek Harness 官方桌面端预览版现已提供 Windows 和 macOS 下载，dsh-qa 也已完成适配，可以直接通过官方桌面端的插件入口安装并使用本地质量工作台（QA Workbench）。"
 date: 2026-09-26T09:00:00.000Z
-updated: 2026-09-30T18:00:00.000Z
 author: "nao.deng"
 tags: ["AI 测试", "DeepSeek Harness", "dsh-qa"]
 categories: ["AI 测试"]
 series: ["dsh-qa"]
 ---
 
-# DeepSeek Harness 官方桌面端预览版上线，dsh-qa v0.7.2 已完成适配
+# DeepSeek Harness 官方桌面端预览版上线，dsh-qa 已完成适配
 
-DeepSeek Harness 现在有了官方桌面端预览版，可以从 DeepSeek Harness 官方产品页下载安装。
+DeepSeek Harness 终于有官方桌面端了。
 
-DeepSeek Harness 官方产品页:https://www.deepseek.com/harness/
+最近，DeepSeek Harness 官方仓库加入了桌面应用，并提供了 Windows 和 macOS 桌面预览版下载。
 
-![DeepSeekHarness 桌面端截图](https://images.naodeng.com.cn/2026/dsh-desktop.png "DeepSeekHarness桌面端截图")
+与此同时，dsh-qa 也已经完成了对 DeepSeek Harness 官方桌面端的适配。
 
-与此同时，dsh-qa 发布了 v0.7.2。这个版本支持针对 dsh-v0.2.0-rc.2 的宿主冒烟测试，也修复了历史 DSH 对话的发现、保留、排序和展示问题。
+这意味着，以前需要通过命令行启动 Harness 网页界面，再进入 dsh-qa 的使用方式，现在多了一个更直接的入口：
 
-这次更新有两个变化：
+| 1. 安装 | 2. 登录 | 3. 安装插件 | 4. 打开工作台 | 5. 开始工作 |
+| --- | --- | --- | --- | --- |
+| DeepSeek Harness Desktop | DeepSeek Harness | dsh-qa 插件 | 质量工作台（QA Workbench） | 测试与质量工作 |
 
-| 桌面端入口 | dsh-qa 更新 |
-| --- | --- |
-| 从官网下载安装并打开 Harness | 在当前 Harness 宿主上使用最新质量工作台 |
-| 登录账号，选择模型使用方式 | 跨会话保留历史 DSH 对话 |
-| 通过插件入口添加 dsh-qa | 对 qa 配置进行真实 Harness 宿主验证 |
+对于希望使用 DeepSeek Harness、但不想每次都从命令行（CLI）开始的 QA 来说，这次桌面预览版（Desktop Preview）值得关注。
 
-如果你之前主要通过命令行或其他本地方式使用 Harness，官方客户端会让第一次上手简单一些。上手时面对的问题，也从“怎样启动网页端”变成了“使用哪种模型方式、需要添加哪个插件”。
+不过先说明一个前提：
 
-先把一个前提说清楚：
+> **目前 DeepSeek Harness Desktop 仍然属于预览版 / 候选版本（Preview / RC）阶段，并不是正式稳定版本。**
 
-> **DeepSeek Harness 桌面端目前仍然是预览版，适合体验和兼容性验证，不能自动替代已有的稳定工作流。**
+所以现阶段更适合体验、验证和反馈，不建议立刻把已有的稳定工作流全部迁移过去。
 
-## DeepSeek Harness 现在有了官方桌面端
+## DeepSeek Harness Desktop 是什么？
 
-DeepSeek Harness 一直作为智能体运行时和开发框架演进。对很多用户来说，原来的使用路径通常包括命令行、配置文件、本地运行环境和浏览器窗口。
+DeepSeek Harness Desktop 并不是重新实现了一套 Harness。
 
-官方客户端把这条路径缩短为几个清晰步骤：下载并安装客户端，登录 DeepSeek 账号，打开 Harness，然后选择模型并使用插件、技能和智能体。
+从官方目前的实现来看，它是在现有 dsh 网页应用之外增加的一层 Electron 桌面外壳（Desktop Shell）。
 
-官方产品页现在是公开下载入口：
+桌面端启动后，会在本地启动 Harness 宿主（Host），再将 Harness 应用加载到桌面客户端中。
 
-DeepSeek Harness 官方产品页:https://www.deepseek.com/harness/
-
-官方桌面端在现有 Harness 能力之上增加桌面入口，结构可以分成四层：
+它的加载链路可以概括为：
 
 | 核心 | 本地宿主 | 网页应用 | 桌面入口 |
 | --- | --- | --- | --- |
-| DeepSeek Harness | Harness 宿主 | Harness 网页应用 | DeepSeek Harness 桌面端 |
+| DeepSeek Harness 核心层 | Harness 宿主 | Harness 网页应用 | DeepSeek Harness 桌面端 |
 
-原有核心能力仍然包括会话、模型和服务提供商、插件、技能、命令、工具和智能体。
+Harness 原来的核心能力仍然保留，包括：
 
-桌面层提供原生入口。当前实现还包括本地宿主启动、原生文件夹选择、插件管理、Windows 系统托盘、macOS 应用菜单、桌面快捷键、开发者工具、应用更新、后台任务保护、退出保护和内置 pnpm。
+- 会话（Session）
+- 模型 / 服务提供商（Models / Providers）
+- 插件（Plugins）
+- 技能（Skills）
+- 命令（Commands）
+- 工具（Tools）
+- 智能体（Agent）
 
-普通用户不需要先理解这些实现细节。用户最先看到的变化是：Harness 现在可以作为官方桌面应用直接下载安装和打开。
+桌面端主要解决的是 Harness 的桌面使用入口和原生桌面体验。
 
-## 官方模型和自定义模型
+目前官方实现中已经包含不少桌面端能力，例如：
 
-DeepSeek Harness 主要支持两种使用方式：
+- Windows / macOS 原生客户端
+- 本地宿主（Host）启动
+- 原生文件夹选择
+- 插件管理
+- Windows 系统托盘
+- macOS 原生应用菜单
+- 桌面快捷键
+- 开发者工具（DevTools）
+- 应用更新
+- 后台任务与退出保护
+- 桌面端内置 pnpm
 
-| 模式 | 使用条件 | 服务边界 |
-| --- | --- | --- |
-| 官方模型 | 登录 DeepSeek 账号 | 使用 DeepSeek 配置的官方模型服务 |
-| 自定义模型 | 自行配置模型服务提供商和接口信息 | Harness 提供本地界面、配套工具和通信层，模型服务由用户配置的提供方负责 |
+对普通用户来说，不一定需要先了解这些底层实现。
 
-官方条款说明，自定义模型模式不要求注册或登录 DeepSeek 账号。这个区别会影响后续的插件、智能体和多模型工作流设计：官方模型路径需要登录账号，但登录并不是所有 Harness 配置都必须满足的条件。
+最直观的变化其实只有一个：
 
-## 现在下载客户端还有 6 元赠金活动
+**DeepSeek Harness 开始真正拥有了一个可以直接下载安装和打开的官方桌面入口。**
 
-当前官方客户端下载且安装登录后显示的活动提示是：新安装客户端并登录账号后，可以获得 **6 元赠金**。
+## 为什么我更关注官方桌面端？
 
-活动还写明：
+在官方桌面端出现之前，社区里已经有一些不错的第三方 DeepSeek Harness 桌面端 / 图形界面项目。
 
-> **这笔赠金有效期只有一周。**
+其中一些项目提供了很好的桌面体验，也推动了整个 DeepSeek Harness 生态的发展。
 
-我准备这次更新时，没能在可抓取的官网公开文本里找到对应说明。因此，本文把 6 元和一周有效期表述为当前客户端活动提示，而不是长期有效的产品条款。
+不过现在官方桌面端已经出现，如果是日常使用，我会优先关注和验证官方版本。
 
-如果现在安装客户端，建议在客户端或官网实际查看账户余额和到期时间。活动的领取条件、金额和有效期都可能随活动调整。
+一个很重要的原因是，DeepSeek Harness 并不只是普通的 AI 对话客户端。
 
-如果只是想先体验 Harness、插件或一个小型智能体流程，这笔赠金可能足够支持初步尝试。但在使用前，还是要以当时实际展示的活动页面为准。
+实际使用过程中，它可能会接触：
 
-## 官方客户端目前仍然是预览版
+| 本地文件 | 模型凭据 | 会话与扩展 | 工具调用 | 本地执行 |
+| --- | --- | --- | --- | --- |
+| 本地项目文件 | 模型 / 服务提供商凭据（Provider） | 会话；插件 / 技能 | 工具调用 | 本地命令与任务执行 |
 
-官方安装包只能说明来源更明确，不能说明产品的每个部分都已经稳定。
+因此，桌面端本身处在一个相对敏感的位置。
 
-DeepSeek Harness 桌面端目前仍处于预览和持续测试阶段。官方条款把 Harness 及相关智能体技术描述为仍处于较早期阶段，因此不能把当前客户端理解成适用于所有生产场景的成熟版本。
+官方桌面端的优势并不是第三方客户端一定不安全，而是它的以下信息相对更容易确认：
 
-更稳妥的使用路径是先做个人体验，再进行小范围 QA 或智能体工作流，随后验证插件兼容性，最后逐步进入真实项目。
+- 来源
+- 维护主体
+- 版本兼容关系
+- 安装包来源
+- 更新链路
+- Harness Host 集成方式
 
-插件权限、智能体自动执行、外部工具调用和本地文件访问，都应该保留清晰的人工作业边界。
+同时，官方桌面端与 Harness 自身的会话、插件、技能、宿主（Session、Plugin、Skill、Host）等核心机制保持同一套体系。
 
-如果现有网页端或命令行工作流已经稳定运行，可以在体验桌面预览版的同时保留它。没有必要第一天就全部迁移。
+后续 Harness 接口（API）、宿主（Host）或插件（Plugin）机制发生变化时，官方桌面端通常也是最直接的适配对象。
 
-## 官方下载入口和文档
+当然，这并不意味着第三方桌面端就不值得使用。
 
-当前公开下载入口是官方 Harness 产品页：
+对于第三方项目，我觉得更合理的判断方式还是具体检查：
 
-DeepSeek Harness 官方产品页:https://www.deepseek.com/harness/
-
-官方桌面端实现文档位于 Harness 仓库：
-
-DeepSeek Harness 桌面端文档:https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.zh.md
-
-预览版持续更新时，带版本号的安装包地址可能发生变化。从官方产品页开始查找安装说明，比长期保留一个旧的二进制文件地址更稳妥。
-
-## dsh-qa v0.7.2 已支持最新 Harness 宿主
-
-dsh-qa 是一个建立在 DeepSeek Harness 之上的本地质量工作台。
-
-项目地址：
-
-dsh-qa GitHub 仓库:https://github.com/naodeng/dsh-qa
-
-当前版本为 `dsh-qa v0.7.2`，兼容验证目标为 `DeepSeek Harness dsh-v0.2.0-rc.2`。
-
-![dsh-qa 质量工作台截图](https://images.naodeng.com.cn/2026/dsh-qa-1.1.png "dsh-qa 质量工作台截图")
-
-两者的分工如下：
-
-| 桌面端入口 | Harness 能力 | 插件 | 工作台 |
+| 源码与维护 | 安装与更新 | 权限与凭据 | 执行与兼容性 |
 | --- | --- | --- | --- |
-| DeepSeek Harness 桌面端 | 会话；模型和服务提供商；技能；命令；工具 | dsh-qa | 质量工作台 |
+| 是否开源；维护是否活跃 | 安装包从哪里发布；更新机制是否可信 | 需要哪些系统权限；凭据如何保存 | 是否执行本地命令；与 Harness 当前版本是否兼容 |
 
-桌面端提供 Harness 运行时和插件入口，dsh-qa 负责 QA 和研发质量工作流。
+对于 Harness 这种能够访问本地项目和执行环境的工具，我个人会把官方桌面端作为优先验证和使用的入口。
 
-## 通过官方客户端安装 dsh-qa
+这也是为什么 dsh-qa 这次优先完成了对官方桌面端的兼容适配。
 
-安装可以按下面六步进行：
+## DeepSeek Harness Desktop 目前仍是预览版
 
-1. 打开官方 Harness 客户端并登录。
-2. 进入“插件”页面。
-3. 选择“添加插件”。
-4. 输入 dsh-qa GitHub 仓库:https://github.com/naodeng/dsh-qa。
-5. 确认安装。
-6. 插件安装完成后，打开“质量工作台”。
+虽然是官方客户端，但这里还有一个非常重要的前提：
 
-对于第一次接触 dsh-qa 的用户，这个图形界面入口比直接从命令行开始更容易照着操作。职责边界也更清楚：Harness 负责运行时和插件加载，dsh-qa 负责质量工作台。
+> **官方并不等于当前已经是稳定版本。**
 
-## dsh-qa 目前提供什么
+目前提供下载的 DeepSeek Harness Desktop 仍然属于预览版 / 候选版本（Preview / RC）阶段。
 
-桌面端的出现没有改变 dsh-qa 的定位。它仍然是一个本地质量工作台，用来把质量工作串成一组相互关联的记录和决策。
+当前更适合：
 
-目前覆盖的内容可以分为三类：
+- 提前体验 DeepSeek Harness 官方桌面端
+- 验证桌面端插件
+- 验证技能和会话
+- 体验 dsh-qa 等 Harness 插件
+- 测试已有 Harness 工作流在桌面端下的兼容性
+- 发现问题并向项目反馈
 
-- 规划与资产：测试项目和迭代管理、需求、测试用例、测试里程碑。
-- 执行与协作：缺陷、风险、QA 技能、AI 辅助测试、原生 QA 执行、行动台和测试证据。
-- 分析与交付：测试报告、QA 看板、测试日历、失败分析、回归分析、质量门禁，以及发布和交付判断。
+预览版本在后续更新中仍然可能涉及：
 
-工作链路是：
+- 桌面端界面与交互（UI / UX）调整
+- 插件安装与加载机制调整
+- Harness 宿主接口变化
+- 版本兼容性变化
+- 配置方式变化
+- 本地数据结构调整
+- Windows / macOS 平台行为差异
+- 预览版本自身缺陷
+
+所以现阶段我的使用策略会比较简单：
+
+| 关注点 | 当前选择 |
+| --- | --- |
+| 来源与信任链 | 优先官方桌面端 |
+| 新功能体验 | 桌面端 |
+| 稳定性 | 持续验证 |
+| 重要项目 | 保留 Web / CLI |
+| 第三方桌面端 | 根据源码、权限和维护情况单独评估 |
+
+如果已经有一套稳定运行的 DeepSeek Harness 网页端 / 命令行（Web / CLI）工作流，目前没有必要为了桌面预览版立即全部迁移。
+
+先体验，再决定是否逐步切换，会更加稳妥。
+
+## DeepSeek Harness Desktop 官方下载
+
+目前官方已经提供 Windows x64 和 macOS Apple Silicon / arm64 版本。
+
+当前预览版本为 **DeepSeek Harness 0.1.7-rc.1**。
+
+### Windows x64
+
+官方下载（Windows x64）：[https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-0.1.7-rc.1.20260924.1-win-x64.exe](https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-0.1.7-rc.1.20260924.1-win-x64.exe)
+
+### macOS Apple Silicon / arm64
+
+官方下载（macOS Apple Silicon / arm64）：[https://download.deepseek.com/dsh-desk/bin/mac-arm64/deepseek-harness-0.1.7-rc.1.20260924.1-mac-arm64.dmg](https://download.deepseek.com/dsh-desk/bin/mac-arm64/deepseek-harness-0.1.7-rc.1.20260924.1-mac-arm64.dmg)
+
+桌面端官方实现文档：[https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.zh.md](https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.zh.md)
+
+由于目前还是预览版 / 候选版本，后续版本和安装包地址可能发生变化，建议同时关注 DeepSeek Harness 官方仓库的最新更新。
+
+## dsh-qa 已适配 DeepSeek Harness Desktop
+
+随着官方桌面预览版发布，dsh-qa 也已经完成了相应的兼容适配。
+
+dsh-qa 是一个运行在 DeepSeek Harness 中的本地 QA 质量工作台（QA Workbench）。
+
+项目地址：[https://github.com/naodeng/dsh-qa](https://github.com/naodeng/dsh-qa)。
+
+当前 dsh-qa 版本为 **v0.6.3**，已经针对 **DeepSeek Harness dsh-v0.1.7-rc.1** 完成宿主兼容性验证（Host）。
+
+所以现在整个关系可以概括为：
+
+| 桌面入口 | Harness 能力 | 插件 | 工作台 |
+| --- | --- | --- | --- |
+| DeepSeek Harness Desktop | 会话；模型 / 服务提供商；技能；命令；工具 | 插件 → dsh-qa | 质量工作台（QA Workbench） |
+
+桌面端负责提供 Harness 的桌面运行环境。
+
+dsh-qa 则继续负责 QA 和研发质量工作流。
+
+## 在桌面端安装 dsh-qa
+
+桌面端带来的一个很直接的变化，就是 dsh-qa 的安装变简单了。
+
+以前比较熟悉 Harness CLI 的用户，可以通过命令行管理插件。
+
+现在使用官方桌面端，可以直接通过图形界面完成。
+
+### 第一步：打开并登录 DeepSeek Harness Desktop
+
+下载安装桌面端后，打开 DeepSeek Harness 并完成登录。
+
+### 第二步：进入插件页面
+
+点击页面上的 **插件 / Plugins**。
+
+### 第三步：添加插件
+
+点击 **添加插件 / Add Plugin**。
+
+### 第四步：输入 dsh-qa GitHub 地址
+
+输入 dsh-qa GitHub 地址：[https://github.com/naodeng/dsh-qa](https://github.com/naodeng/dsh-qa)。
+
+然后点击确认 / Confirm。
+
+等待安装完成即可。
+
+### 第五步：打开 QA Workbench
+
+安装成功后，就可以在 DeepSeek Harness 中打开 dsh-qa 提供的 **质量工作台 / QA Workbench**。
+
+整个安装流程可以简化为：
+
+| 进入桌面端 | 添加插件 | 指定仓库 | 确认安装 | 打开工作台 |
+| --- | --- | --- | --- | --- |
+| 登录 | Plugins → Add Plugin | dsh-qa GitHub 地址 | Confirm | 质量工作台（QA Workbench） |
+
+对于第一次接触 dsh-qa 的用户，我现在更推荐通过桌面端的图形界面插件入口安装。
+
+不需要先理解 Harness CLI，也不需要先记住插件管理命令。
+
+## dsh-qa 在桌面端里能做什么？
+
+dsh-qa 的定位并没有因为桌面端出现而发生变化。
+
+它依然是：
+
+> **一个建立在 DeepSeek Harness 上的本地 QA 质量工作台（QA Workbench）。**
+
+目前已经覆盖：
+
+- 测试项目与迭代管理
+- 需求管理
+- 测试用例
+- 缺陷管理
+- 风险管理
+- 测试里程碑
+- 测试报告
+- QA 看板（Kanban）
+- 测试日历
+- QA 技能（Skill）
+- AI 辅助测试
+- 原生 QA 执行（Native QA Execution）
+- 行动台（Action Desk）
+- 测试证据
+- 失败分析
+- 回归分析
+- 质量门禁
+- 发布与交付判断
+
+当前 dsh-qa 正在逐步形成一条完整的质量链路：
 
 | 需求与规划 | 执行与取证 | 分析与决策 |
 | --- | --- | --- |
-| 需求或来源 → 质量任务 → 测试计划 | 受控执行 → 证据 → 失败分析 | 回归 → 质量门禁 → PASS / WARN / BLOCK |
+| 需求 / 来源（Requirement / Source）→ 质量任务（Quality Task）→ 测试计划（Test Plan） | 受控执行（Controlled Execution）→ 证据（Evidence）→ 失败分析（Failure Analysis） | 回归（Regression）→ 质量门禁（Quality Gate）→ PASS / WARN / BLOCK |
 
-AI 可以参与需求分析、测试设计、执行分析和证据整理。即使 AI 生成了一份建议，或者某条命令执行通过，也不能替代人工质量判断。
+AI 可以参与需求分析、测试设计、执行分析和证据整理，但不会简单地替代人工质量决策。
 
-## v0.7.2 的重点修复：历史 DSH 对话
+## dsh-qa 不会再维护一套 AI 运行时
 
-v0.7.2 最容易感知的修复是历史 DSH 对话处理恢复正常。之前在某些情况下，项目先包含历史 DSH 对话，用户重新绑定会话或创建新会话后，旧对话可能无法继续正常显示。
+这里还需要把职责边界单独说清楚。
 
-这对 QA 工作的影响很直接。测试很少在一次对话里结束，一个项目通常会经历需求分析、测试设计、问题讨论、回归和发布评审等阶段。
+dsh-qa 不会自己再维护第二套 AI 运行时（AI Runtime）。以下能力继续交给 DeepSeek Harness 管理：
 
-这些步骤可能跨越多个会话。如果重新绑定或创建新会话后旧对话消失，项目上下文就会被切断。
+**模型、API 密钥、服务提供商、会话、技能、命令、工具（Model、API Key、Provider、Session、Skill、Command、Tool）。**
 
-v0.7.2 依次恢复了历史对话发现、历史记录保留、对话排序、已归档对话兼容和正确渲染。
+这些能力继续交给 DeepSeek Harness 统一管理。
 
-在同一个项目工作区中，重新绑定 DSH 会话或创建新会话后，历史对话应该继续可见。版本说明列出了四项恢复：历史对话发现、保留、排序和渲染，也包括已归档历史记录的展示。
+每个测试项目直接绑定 Harness 原生会话（Session），并使用对应的 QA 测试模式。
 
-放在质量工作台里，这次界面修复也保住了项目上下文。
-
-## 为什么质量工作台需要历史对话
-
-dsh-qa 正在把项目、任务、DSH 对话、执行、证据和决策连接起来。
-
-如果对话只是临时聊天，旧会话消失主要是使用上的不便。一旦对话开始承载需求分析、测试讨论、技能执行、风险判断、智能体工具调用和质量结论，历史记录就会成为项目上下文的一部分。
-
-它也有助于解释证据是怎样产生的。对话本身不会自动变成产品质量证明，但它可以保留证据周围的推理和决策过程。
-
-## v0.7.2 的其他更新
-
-这个版本还包括：
-
-- 支持针对 dsh-v0.2.0-rc.2 的宿主冒烟测试
-- 更新官方 macOS 客户端的安装和更新文档
-- Harness 命令行安装命令不再固定某个版本，默认使用当前 npm 版本
-- 更新内置版本信息
-- 优化桌面端设置页面文案
-- 修复日历日程中较长项目名被截断的问题
-
-这些更新一起减少了官方桌面环境下的使用摩擦，也让 dsh-qa 和 Harness 的插件链路更连贯。
-
-## 这次版本如何验证
-
-版本说明记录的验证结果如下：
-
-| 验证类型 | 数量 |
-| --- | ---: |
-| 单元测试和接口测试 | 265 个 |
-| Chromium 端到端测试 | 41 个 |
-| Harness 宿主冒烟测试 | 6 个 |
-
-同时还记录了以下检查：
-
-~~~
-node --check public/app.js
-npm pack --dry-run
-git diff --check
-~~~
-
-更接近真实宿主的集成信号是：`dsh-v0.2.0-rc.2` 的 qa 宿主冒烟测试共 6 项，全部通过。
-
-这些验证比单独检查本地模拟环境或阅读 API 说明更接近真实 Harness 宿主。不过证据范围仍然有限：这些检查覆盖的是上面列出的版本发布路径，并不自动代表所有操作系统、模型服务商、插件和生产项目都已经验证。
-
-对 QA 项目来说，这个边界需要保留。版本可以准确记录跑过什么，使用者仍然需要验证自己的工作流和环境。
-
-## 为什么优先从官方客户端开始
-
-官方桌面端出现以前，社区里已经有一些好用的第三方 Harness 桌面项目。其中一些提供了不错的使用体验，也推动了生态发展。
-
-现在官方客户端已经上线，如果目标是日常使用和兼容性验证，我会先从官方版本开始。
-
-DeepSeek Harness 能接触的不只是聊天窗口：
-
-| 本地文件 | 模型凭据 | 会话和扩展 | 工具调用 | 本地执行 |
-| --- | --- | --- | --- | --- |
-| 项目文件 | 模型和服务提供商凭据 | 会话；插件和技能 | 工具调用 | 本地命令和任务 |
-
-第三方客户端仍然可以逐个评估：
-
-| 源码和维护 | 发布和更新 | 权限和凭据 | 执行和兼容性 |
-| --- | --- | --- | --- |
-| 是否公开源码，维护是否活跃 | 安装包从哪里发布，怎样更新 | 需要哪些权限，凭据如何保存 | 是否执行本地命令，支持哪些 Harness 版本 |
-
-能够访问本地项目和执行环境的软件，在使用之前应该把这些问题弄清楚。
-
-## 一套 AI 运行时，一个质量工作台
-
-dsh-qa 不会再维护第二套 AI 运行时。
-
-以下能力继续由 DeepSeek Harness 管理：模型、API 密钥、服务提供商、会话、技能、命令和工具。
-
-每个测试项目都会绑定 Harness 原生会话，并使用对应的 QA 模式。
-
-职责边界如下：
+所以职责边界比较清晰：
 
 | DeepSeek Harness / AI 运行时 | dsh-qa / 质量工作台 |
 | --- | --- |
 | 模型；会话；智能体；技能；命令；工具；插件 | 需求；风险；测试；执行；证据；缺陷；报告；质量门禁 |
 
-桌面端保留了这套架构，也让第一步更容易。
+桌面端的出现没有改变这个架构。
 
-## 本地优先仍然是基础方向
+它只是让 Harness + dsh-qa 的使用入口变得更加自然。
 
-桌面端入口没有改变 dsh-qa 一直采用的本地优先方向。
+## 桌面端对 dsh-qa 最大的意义
 
-测试项目、测试材料和结构化质量数据默认保留在本地。
+我觉得这次桌面端对 dsh-qa 的最大意义，不是多支持了一个运行平台，而是进一步降低了 DeepSeek Harness 的使用门槛。
 
-两者的组合关系是：
+之前和现在的入口变化可以直接对比：
+
+| 过去：网页端 / 命令行 | 现在：桌面端 |
+| --- | --- |
+| 安装 Node.js → 使用命令行 → 启动 Harness 网页端 → 打开浏览器 → 管理插件 → 进入 dsh-qa | 下载桌面端 → 安装 → 登录 → 添加 dsh-qa → 打开质量工作台 |
+
+对于开发者来说，CLI 并不是问题。
+
+但是如果希望以下角色都能够参与 AI 原生 QA 工作流，图形界面桌面端会是一个更加自然的入口：
+
+- QA
+- 测试经理
+- 研发
+- 产品
+- 项目经理
+- 质量负责人
+
+尤其是 dsh-qa 本身就是一个图形化的 QA 工作台。
+
+## Local-first 依然不变
+
+桌面端支持也没有改变 dsh-qa 一直坚持的一个方向：**Local-first**。
+
+测试项目、测试材料以及结构化质量数据优先保留在本地。
+
+DeepSeek Harness 提供 AI 运行时。
+
+dsh-qa 提供 QA 运行时和 QA 工作台。
+
+两者的关系可以概括为：
 
 | DeepSeek Harness | dsh-qa | 组合结果 |
 | --- | --- | --- |
-| AI 运行时 | 质量工作台 | AI 原生质量工作空间 |
+| AI 运行时 | QA 工作台 | AI 原生 QA 工作空间（AI Native QA Workspace） |
 
-这样既可以使用 Harness 的模型、智能体、技能和工具，也不需要为了使用 AI 重新搭建一套测试项目管理系统。
+这样既可以利用 Harness 的模型、智能体、技能和工具能力（Model / Agent / Skill / Tool），也不需要为了使用 AI 重新构建一套测试项目管理体系。
 
-## 从网页端和命令行到桌面端
+## 从网页端到桌面端
 
-回头看 dsh-qa 最近的演进：
+回头看 dsh-qa 最近的演进，可以按编号理解：
 
-| 阶段 | 能力 |
-| --- | --- |
-| 1 | 独立质量工作台 |
-| 2 | DeepSeek Harness 插件 |
-| 3 | Harness 会话和 QA 预设 |
-| 4 | 质量控制工作台 |
-| 5 | 原生 QA 执行 |
-| 6 | 行动台 |
-| 7 | DeepSeek Harness 桌面端入口 |
+| 1 | 2 | 3 | 4 |
+| --- | --- | --- | --- |
+| 独立 QA 工作台（Standalone QA Workbench） | DeepSeek Harness 插件（DeepSeek Harness Plugin） | Harness 会话 + QA 预设（Harness Session + QA Preset） | 质量控制工作台（Quality Control Workbench） |
+| 5 | 6 | 7 |  |
+| 原生 QA 执行（Native QA Execution） | 行动台（Action Desk） | DeepSeek Harness 桌面端 |  |
 
-桌面端改变了入口，底层的质量工作流仍然沿着原来的链路运行。
+桌面端不是 dsh-qa 的终点。
 
-后续工作依然围绕这条路径展开：
+它更像是让前面的这些能力拥有了一个更容易使用的入口。
 
-| 需求和风险 | 测试和执行 | 证据和决策 |
+后续 dsh-qa 依然会围绕以下链路：
+
+| 需求与风险 | 测试与执行 | 证据与决策 |
 | --- | --- | --- |
-| 需求 → 风险 | 测试 → 执行 | 证据 → 决策 |
+| 需求（Requirement）→ 风险（Risk） | 测试（Test）→ 执行（Execution） | 证据（Evidence）→ 决策（Decision） |
 
-dsh-qa 会继续跟进 Harness 桌面端、宿主和插件机制的变化，并针对后续 Harness 版本持续进行兼容性验证。
+继续完善整个 QA 和研发质量闭环。
 
-## 实际使用路径
+同时也会继续跟进 DeepSeek Harness 桌面端、宿主（Host）和插件（Plugin）机制的变化，对后续 Harness 版本持续进行兼容性验证。
 
-DeepSeek Harness 官方桌面端预览版让安装入口更清楚，也让 dsh-qa 有了更直接的插件入口。
+现阶段，如果你已经在使用 DeepSeek Harness 和 dsh-qa，可以先下载安装桌面预览版体验一下。
 
-实际使用路径可以概括为：从官方页面下载安装，登录账号或配置自定义模型，添加 dsh-qa 插件，最后打开质量工作台。
+如果是重要项目，则建议暂时保留现有网页端 / 命令行工作方式作为备用。
 
-如果当前客户端活动仍然有效，新登录用户可能会看到 6 元赠金，但有效期只有一周。具体规则请以客户端当时的实际展示为准。
-
-与此同时，dsh-qa v0.7.2 已经支持上文所说的 Harness 宿主目标，并恢复了历史 DSH 对话的发现、排序、保留和展示。
-
-在桌面端仍处于预览阶段时，重要项目可以继续保留原有网页端或命令行工作流作为备用。
+---
 
 ## 相关链接
 
 ### DeepSeek Harness
 
-- DeepSeek Harness 官方产品页:https://www.deepseek.com/harness/
-- DeepSeek Harness 官方仓库:https://github.com/deepseek-ai/deepseek-harness
+- DeepSeek Harness 官方仓库：[https://github.com/deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)
 
-### DeepSeek Harness 桌面端
+### DeepSeek Harness 桌面端中文文档
 
-- 桌面端实现文档:https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.zh.md
+- 桌面端中文文档：[https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.zh.md](https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/desktop/README.zh.md)
 
 ### dsh-qa
 
-- dsh-qa GitHub 仓库:https://github.com/naodeng/dsh-qa
-- dsh-qa 官网:https://inaodeng.com/dsh-qa/
+- dsh-qa GitHub 仓库：[https://github.com/naodeng/dsh-qa](https://github.com/naodeng/dsh-qa)
+
+### dsh-qa 官网
+
+- dsh-qa 官网：[https://inaodeng.com/dsh-qa/](https://inaodeng.com/dsh-qa/)
