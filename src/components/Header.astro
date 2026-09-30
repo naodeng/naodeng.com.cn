@@ -423,18 +423,55 @@ const mobilePriorityItems = [
       <button type="button" class="btn-icon" aria-label={t(NAV_SEARCH)} data-search-open>
         <span class="material-icons-sharp" aria-hidden="true">search</span>
       </button>
-      <button
-        type="button"
-        class="btn-icon theme-toggle"
-        aria-label={locale === "zh-cn" ? "切换主题" : "Change theme"}
-        title={locale === "zh-cn" ? "切换主题" : "Change theme"}
-        data-theme-toggle
-        data-label-light={locale === "zh-cn" ? "切换到浅色主题" : "Switch to light theme"}
-        data-label-dark={locale === "zh-cn" ? "切换到深色主题" : "Switch to dark theme"}
-      >
-        <span class="material-icons-sharp theme-toggle__light" aria-hidden="true">light_mode</span>
-        <span class="material-icons-sharp theme-toggle__dark" aria-hidden="true">dark_mode</span>
-      </button>
+      <div class="theme-control" data-theme-control>
+        <button
+          type="button"
+          class="btn-icon theme-toggle"
+          aria-label={locale === "zh-cn" ? "主题设置" : "Theme settings"}
+          title={locale === "zh-cn" ? "主题设置" : "Theme settings"}
+          aria-expanded="false"
+          aria-controls={`theme-options-${locale}`}
+          data-theme-toggle
+        >
+          <span class="material-icons-sharp theme-toggle__light" aria-hidden="true">light_mode</span>
+          <span class="material-icons-sharp theme-toggle__dark" aria-hidden="true">dark_mode</span>
+        </button>
+        <div class="theme-panel" id={`theme-options-${locale}`} hidden data-theme-panel>
+          <p class="theme-options__heading">{locale === "zh-cn" ? "显示主题" : "Appearance"}</p>
+          <div class="theme-options" role="group" aria-label={locale === "zh-cn" ? "显示主题" : "Appearance"}>
+            <button type="button" class="theme-option" data-theme-option="system" aria-pressed="false">
+              <span class="theme-option__icon material-icons-sharp" aria-hidden="true">brightness_auto</span>
+              <span class="theme-option__copy">
+                <span class="theme-option__label">{locale === "zh-cn" ? "跟随系统" : "Follow system"}</span>
+                <span class="theme-option__description">
+                  {locale === "zh-cn" ? "根据设备的浅色或深色设置自动切换" : "Match your device's appearance setting"}
+                </span>
+              </span>
+              <span class="theme-option__selected material-icons-sharp" aria-hidden="true">check</span>
+            </button>
+            <button type="button" class="theme-option" data-theme-option="light" aria-pressed="false">
+              <span class="theme-option__icon material-icons-sharp" aria-hidden="true">light_mode</span>
+              <span class="theme-option__copy">
+                <span class="theme-option__label">{locale === "zh-cn" ? "浅色" : "Light"}</span>
+                <span class="theme-option__description">
+                  {locale === "zh-cn" ? "始终使用浅色主题" : "Always use the light theme"}
+                </span>
+              </span>
+              <span class="theme-option__selected material-icons-sharp" aria-hidden="true">check</span>
+            </button>
+            <button type="button" class="theme-option" data-theme-option="dark" aria-pressed="false">
+              <span class="theme-option__icon material-icons-sharp" aria-hidden="true">dark_mode</span>
+              <span class="theme-option__copy">
+                <span class="theme-option__label">{locale === "zh-cn" ? "深色" : "Dark"}</span>
+                <span class="theme-option__description">
+                  {locale === "zh-cn" ? "始终使用深色主题" : "Always use the dark theme"}
+                </span>
+              </span>
+              <span class="theme-option__selected material-icons-sharp" aria-hidden="true">check</span>
+            </button>
+          </div>
+        </div>
+      </div>
       <button
         type="button"
         class="btn-icon nav-toggle"
@@ -631,29 +668,70 @@ const mobilePriorityItems = [
   document.addEventListener("astro:after-swap", initHeaderNav);
 
   const initThemeToggle = () => {
-    document.querySelectorAll("[data-theme-toggle]").forEach((node) => {
-      if (!(node instanceof HTMLButtonElement) || node.dataset.bound) return;
-      node.dataset.bound = "1";
+    document.querySelectorAll<HTMLElement>("[data-theme-control]").forEach((root) => {
+      const toggle = root.querySelector("[data-theme-toggle]");
+      const panel = root.querySelector("[data-theme-panel]");
+      const options = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-theme-option]"));
+      if (!(toggle instanceof HTMLButtonElement) || !(panel instanceof HTMLElement) || root.dataset.bound) return;
+      root.dataset.bound = "1";
 
-      const syncLabel = () => {
-        const current = document.documentElement.dataset.theme || "light";
-        const label = (current === "dark" ? node.dataset.labelLight : node.dataset.labelDark) || "Change theme";
-        node.setAttribute("aria-label", label);
-        node.setAttribute("title", label);
+      const syncPreference = () => {
+        const current = document.documentElement.dataset.themePreference || "system";
+        options.forEach((option) => {
+          option.setAttribute("aria-pressed", String(option.dataset.themeOption === current));
+        });
       };
 
-      node.addEventListener("click", () => {
-        const current = document.documentElement.dataset.theme || "light";
-        const next = current === "dark" ? "light" : "dark";
-        (window as Window & { setThemePreference?: (preference: string) => void }).setThemePreference?.(next);
-        syncLabel();
+      const close = (restoreFocus = false) => {
+        panel.hidden = true;
+        toggle.setAttribute("aria-expanded", "false");
+        if (restoreFocus) toggle.focus();
+      };
+
+      const open = () => {
+        syncPreference();
+        panel.hidden = false;
+        toggle.setAttribute("aria-expanded", "true");
+        options.find((option) => option.getAttribute("aria-pressed") === "true")?.focus({ preventScroll: true });
+      };
+
+      toggle.addEventListener("click", () => {
+        if (panel.hidden) open();
+        else close();
       });
-      window.addEventListener("themechange", syncLabel);
-      syncLabel();
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          (window as Window & { setThemePreference?: (preference: string) => void }).setThemePreference?.(option.dataset.themeOption || "system");
+          close(true);
+        });
+      });
+
+      root.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || panel.hidden) return;
+        event.preventDefault();
+        close(true);
+      });
+
+      window.addEventListener("themechange", syncPreference);
+      syncPreference();
     });
   };
   initThemeToggle();
   document.addEventListener("astro:after-swap", initThemeToggle);
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    document.querySelectorAll<HTMLElement>("[data-theme-control]").forEach((root) => {
+      if (root.contains(target)) return;
+      const toggle = root.querySelector("[data-theme-toggle]");
+      const panel = root.querySelector("[data-theme-panel]");
+      if (!(toggle instanceof HTMLButtonElement) || !(panel instanceof HTMLElement) || panel.hidden) return;
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
 </script>
 
 <style>
@@ -901,7 +979,8 @@ const mobilePriorityItems = [
   :global(html[data-theme="dark"]) .nav-tool :global(.locale-trigger),
   :global(html[data-theme="dark"]) .btn-icon { background: var(--color-glass-medium); border-color: var(--color-glass-border); }
   :global(html[data-theme="dark"]) .nav-submenu,
-  :global(html[data-theme="dark"]) .nav-tool :global(.locale-panel) { background: var(--color-glass-solid); border-color: var(--color-glass-border); }
+  :global(html[data-theme="dark"]) .nav-tool :global(.locale-panel),
+  :global(html[data-theme="dark"]) .theme-panel { background: var(--color-glass-solid); border-color: var(--color-glass-border); }
   :global(html[data-theme="dark"]) .site-nav > ul > li > a:hover,
   :global(html[data-theme="dark"]) .site-nav > ul > li > a.active,
   :global(html[data-theme="dark"]) .nav-group-trigger:hover,
@@ -1434,12 +1513,126 @@ const mobilePriorityItems = [
   }
 
   .nav-submenu,
-  .nav-tool :global(.locale-panel) {
+  .nav-tool :global(.locale-panel),
+  .theme-panel {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     background: var(--color-surface-elevated);
     box-shadow: var(--shadow-md);
     backdrop-filter: none;
+  }
+
+  .theme-control {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  .theme-panel {
+    position: absolute;
+    z-index: 80;
+    inset-block-start: calc(100% + 0.5rem);
+    inset-inline-end: 0;
+    width: min(15rem, calc(100vw - 1.5rem));
+    padding: 0.75rem;
+    color: var(--color-main);
+  }
+
+  .theme-panel[hidden] {
+    display: none;
+  }
+
+  .theme-options__heading {
+    margin: 0 0 0.45rem;
+    padding-inline: 0.45rem;
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+
+  .theme-options {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .theme-option {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr) 1rem;
+    align-items: center;
+    gap: 0.6rem;
+    inline-size: 100%;
+    min-block-size: 3.5rem;
+    padding: 0.45rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--color-main);
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+    transition: background-color 0.16s ease, border-color 0.16s ease;
+  }
+
+  .theme-option:hover,
+  .theme-option:focus-visible {
+    background: color-mix(in srgb, var(--color-theme) 8%, var(--color-surface));
+  }
+
+  .theme-option:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 1px;
+  }
+
+  .theme-option[aria-pressed="true"] {
+    border-color: color-mix(in srgb, var(--color-theme) 18%, var(--color-border));
+    background: color-mix(in srgb, var(--color-theme) 7%, var(--color-surface));
+  }
+
+  .theme-option__icon {
+    display: grid;
+    place-items: center;
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-size: 1.2rem;
+  }
+
+  .theme-option[aria-pressed="true"] .theme-option__icon,
+  .theme-option:hover .theme-option__icon {
+    background: color-mix(in srgb, var(--color-theme) 10%, var(--color-surface));
+    color: var(--color-theme);
+  }
+
+  .theme-option__copy {
+    display: grid;
+    min-inline-size: 0;
+    gap: 0.12rem;
+  }
+
+  .theme-option__label {
+    font-size: var(--text-sm);
+    font-weight: 650;
+    line-height: 1.35;
+  }
+
+  .theme-option__description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .theme-option__selected {
+    color: var(--color-theme);
+    font-size: 1rem;
+    opacity: 0;
+  }
+
+  .theme-option[aria-pressed="true"] .theme-option__selected {
+    opacity: 1;
   }
 
   .nav-submenu a,
@@ -1495,7 +1688,8 @@ const mobilePriorityItems = [
   .nav-tool :global(.locale-trigger:hover),
   .nav-tool :global(.locale-trigger:focus-visible),
   .btn-icon:hover,
-  .btn-icon:focus-visible {
+  .btn-icon:focus-visible,
+  .theme-toggle[aria-expanded="true"] {
     color: var(--color-theme);
     background: color-mix(in srgb, var(--color-theme) 8%, transparent);
     border-color: color-mix(in srgb, var(--color-theme) 18%, transparent);
