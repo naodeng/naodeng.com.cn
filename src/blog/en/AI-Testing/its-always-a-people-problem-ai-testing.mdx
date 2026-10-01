@@ -1,0 +1,373 @@
+---
+title: "It's Always a People Problem: The Reality Behind AI in Testing"
+description: "AI can write code, analyse data, and generate documentation, but the hardest parts of testing still involve understanding requirements, discovering risks, validating outcomes, and changing how teams work. Reflections on Lewis Prescott's MoTaverse talk and what it means for the future of QA."
+date: 2026-10-01T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Software Testing", "QA"]
+categories: ["AI Testing"]
+---
+
+I recently watched a Lewis Prescott session from MoT Manchester / MoTaverse:
+
+**It's always a people problem — The reality behind AI in testing**
+
+Lewis Prescott is a QA Lead at Hippo Digital, a participant in the Ministry of Testing community, and one of the organisers of MoT London. The session took place on 23 September 2026, and its title sounds a little like a complaint:
+
+> no matter how fast it looks, it's always a people problem
+
+Lewis was careful to clarify that this does not mean “people are the problem.” His point is more practical: many issues that look technical eventually require the right people to sit together and have the conversation that needs to happen.
+
+That is exactly what AI testing tends to hide. AI can now write code, analyse data, generate documentation, execute tasks, and take part in broad workflows. So the question becomes:
+
+> If AI can do all of that, what is left for QA?
+
+The answer is concrete. AI can take over a large amount of repetitive labour, while the most judgment-heavy parts of testing still belong to people: understanding requirements, discovering risks, interpreting results, validating evidence, and helping teams change how they work.
+
+## Testing was never simply about executing more tests
+
+Let’s return to the problem testing is meant to solve.
+
+Lewis repeatedly came back to two goals:
+
+| Goal | Questions it needs to answer |
+| --- | --- |
+| Build the right thing | What does the user actually need? What problem does the requirement solve? Did we misunderstand it? |
+| Build the thing right | Does the system behave as intended? Are failure paths, performance, contracts, and data states reliable? |
+
+The second goal is easier to see because it can become code, test cases, checks, and reports. The first requires more discussion. What the user is trying to accomplish, which constraints matter, and which risks are unacceptable do not disappear because someone generated more test code.
+
+AI can help us analyse requirements, organise context, draft tests, and run many checks. It cannot decide what the team should build. If the goal is unclear, AI will simply implement the unclear goal faster—speed is not the same thing as direction.
+
+## HUMAN across the SDLC
+
+Lewis uses the word HUMAN to connect the stages of the software development life cycle. The acronym came from a physiotherapist friend, with whom he was working on an app to help people manage problems such as back pain. The word fits the AI-testing discussion because it brings attention back to people and context.
+
+| Letter | Meaning | What it means for testing and delivery |
+| --- | --- | --- |
+| H | Hearing the story | Hear the story behind the requirement and understand the user, business, and context |
+| U | Understanding the whole thing | Understand the problem and the system; AI is already across the workflow, but people still validate success |
+| M | Mapping the problem | Define the boundaries and separate what AI can and cannot do well |
+| A | Action | Turn the discussion into action, such as acceptance criteria and ATDD |
+| N | Navigating the journey | Guide collaboration and help different roles make decisions together |
+
+Treat it as a reminder that testing does not happen only during test execution.
+
+Understanding a requirement is testing. Discussing risk is testing. Deciding what a data result means is testing. Coaching a new teammate, onboarding, mentoring, building shared language, and helping a team improve its process are also part of the work.
+
+AI can enter these activities, but it cannot replace the relationships and responsibility inside them. Who knows the business rule, who owns the release decision, and who understands the user impact are still questions for people.
+
+## AI is good at the work we do not want to do by hand
+
+Lewis’s view of AI is direct: it is best at work that is boring, repetitive, time-consuming, and not especially attractive to do manually.
+
+The obvious examples are writing code, analysing data, and generating documentation. In QA, that can extend to generating test data, drafting automation scripts, organising logs, summarising defects, drafting test cases, structuring requirements, producing reports, and analysing execution results.
+
+AI is already getting better at these tasks. It will keep improving.
+
+That means QA value should not depend on a fragile assumption that AI will always be bad at writing automation code. If that assumption fails, the job’s value fails with it. That is not a sensible design.
+
+The more useful question is:
+
+> If AI can already do this work well, where should QA spend the time?
+
+QA should put that time back into testing: understanding requirements, finding risks, and validating results. It should not go into the next collection of scripts simply because the calendar has space for them.
+
+## Give the time saved by AI back to testing
+
+Many QA practitioners have wanted testing to reach further into the development process. Review requirements early, analyse risk during design, discuss testability before implementation, inspect real data around release, and bring Product, Development, and QA into Three Amigos conversations.
+
+In practice, the answer is often simple:
+
+> We do not have time.
+
+Time disappears into writing scripts, maintaining scripts, preparing data, writing reports, repeating checks, and filling documentation gaps. “Shift left” then remains a slogan—not because the team does not understand the idea, but because a long regression run is waiting for attention.
+
+AI is reducing the cost of that repetitive work. The time can go back into activities that require more judgment:
+
+1. Clarify the requirement and the user outcome.
+2. Run risk discussions with Product, Development, Architecture, and Operations.
+3. Challenge important assumptions before code exists.
+4. Design experiments and observe system and user behaviour.
+5. Analyse production data and decide whether an anomaly affects the business.
+6. Keep the test strategy, acceptance criteria, and release evidence aligned.
+
+AI does not necessarily make testing smaller. It may make real testing larger—if the team gives the saved time back to testing instead of using all of it to generate more code.
+
+## Risk Storming is not about generating one hundred risks
+
+Lewis spent time on Risk Storming.
+
+Picture a specific situation: Development, QA, Product, Architecture, Operations, or Security sit together around the system architecture, a business flow, and a new feature design. On a whiteboard or in Miro, they ask:
+
+- How could this fail?
+- What happens if a dependency is unavailable?
+- Could a user interact with it in a way we did not expect?
+- Could data become inconsistent across systems?
+- Does the change introduce a new security risk?
+- What happens if traffic suddenly increases?
+- Which users, teams, or downstream systems could be affected?
+
+The result then feeds into the test strategy, test plan, exploratory testing, automation scope, and the context given to AI.
+
+Different roles see different risks:
+
+| Role | Risks they may notice first |
+| --- | --- |
+| Developer | Implementation, dependency, state, and maintenance risks |
+| Product | User goals, business rules, and priority risks |
+| QA | Behaviour, boundaries, regression, and testability risks |
+| Operations | Production stability, capacity, and recovery risks |
+| Security | Permissions, attack surface, and data exposure risks |
+
+The valuable part is not who can generate one hundred risks fastest. It is whether the team can explain:
+
+> Why do we believe these risks matter?
+
+AI can help organise the risk list. It should not be the only source of the risk judgment. The team’s discussion is the context that makes the later testing strategy useful.
+
+## AI can analyse data; people still need to understand what it means
+
+AI is good at reading data, classifying it, aggregating it, finding patterns, and writing summaries. The difficult part often starts with the next question:
+
+> So what?
+
+Suppose monitoring shows that P95 response time increased by 200 milliseconds. That is a fact, but it is not yet a quality conclusion. We still need to ask:
+
+- Will users notice the change?
+- Which business path is affected?
+- Why did the increase happen?
+- Is it a one-time fluctuation or a worsening trend?
+- Which users are affected?
+- Is the result acceptable?
+- Should the release be blocked, or should the team keep observing?
+
+Data interpretation can be separated into five levels:
+
+| Level | What happens |
+| --- | --- |
+| Data | Read metrics, logs, test results, and user behaviour |
+| Information | Classify and aggregate the results to find patterns |
+| Context | Interpret the result against the version, business path, user, and environment |
+| Meaning | Decide whether the anomaly represents a real risk and who it affects |
+| Decision | Choose whether to keep testing, fix, observe, or release |
+
+AI can participate throughout the process. As the work gets closer to meaning and decision, human responsibility matters more. A release decision is not a summary button, and quality is not the colour of the last row in a metrics table.
+
+## The hardest part is changing the team
+
+Lewis repeated one line:
+
+> The team process is the hard part.
+
+Shift Left, API Contract Testing, ATDD, BDD, Three Amigos, and Risk-Based Testing share the same hard part. The technical implementation may be quick to set up. Whether the team is willing to change its way of working is the real problem.
+
+Will Development participate during requirements? Will the product role discuss boundaries with the team? Will people agree to define acceptance tests first? Who owns the constraints? When a test fails, does the team fix the problem or just find a way to make the report green?
+
+A common old workflow is to pass a requirement to Development, pass the completed work to QA, and discover ambiguity and risk at the end. A more useful approach brings Product, Development, and QA into the early discussion, defines Acceptance Criteria, and then decides how to implement and validate the behaviour.
+
+The hard question is usually not:
+
+> How do we install the BDD framework?
+
+It is:
+
+> How do we get everyone to change the way they already work?
+
+AI can provide tools and suggestions. It cannot do the persuasion, negotiation, or responsibility assignment for the team.
+
+## “AI will own the entire quality lifecycle” is too simple
+
+A common marketing claim says that AI will own the entire Quality Lifecycle.
+
+Lewis criticised a similar claim from a cross-browser automation testing vendor. Its customers are quality practitioners, yet it used “AI will own the entire quality lifecycle” to market to them. That promise is far removed from how real development work happens.
+
+It sounds complete, but it compresses quality into an overly tidy story: give AI the requirement, let it generate the implementation, let it validate itself, and publish the result.
+
+Real software quality contains ambiguity, trade-offs, risk, context, priorities, communication, and decisions. AI can assist with these things, but at least for now it is difficult to say that AI owns the quality lifecycle when nobody verifies whether the output is actually right.
+
+Lewis also accepts that AI is everywhere and that teams need to accept its presence. The question is not whether AI is used. The question is whether human validation remains at the important decision points:
+
+1. People provide the goal, context, and constraints.
+2. AI assists with implementation, analysis, and execution.
+3. People validate the output, evidence, and risks.
+4. The team makes a decision from that validation.
+
+Human in the Loop is not a ceremonial approval layer. It keeps responsibility with the people who understand the goal, the impact, and the consequences.
+
+## Could BDD make a comeback?
+
+Lewis predicts that BDD could make a significant comeback.
+
+Many teams lost interest in BDD over the last few years. The reasons are familiar: Gherkin became formalism, scenarios multiplied, maintenance costs grew, business people did not really participate, and QA ended up writing every Given, When, and Then alone.
+
+The fundamental value of BDD was never Cucumber or the syntax itself. It is the use of language that both business and technical people can understand to clarify requirements, behaviour, and acceptance.
+
+That makes BDD a useful fit for AI. People can define the behaviour and boundaries first; AI can then generate implementation, test data, and repetitive checks from those constraints. The clearer the language, the easier it is for AI to receive a goal that can be validated. BDD’s plain language also lowers the barrier for people whose main job is not programming to take part in the discussion.
+
+## If AI writes the code, why not define the behaviour first?
+
+Many AI Coding workflows start by asking AI to write the code and then asking it to add tests. Lewis suggests that the order may be backwards.
+
+If implementation is going to be generated by AI, the team can do this first:
+
+1. Product, Development, and QA discuss the behaviour the user needs.
+2. Write Acceptance Criteria that define success and failure.
+3. Turn important behaviour into Acceptance Tests or BDD scenarios.
+4. Ask AI to generate the implementation and supporting tests from those constraints.
+5. Run the tests and inspect the failure.
+6. Ask AI to revise the implementation, then have a person check whether the revision is reasonable.
+7. Refactor after the tests pass and retain enough evidence to explain the result.
+
+That brings us back to Red, Green, Refactor and to the shared direction of ATDD, BDD, and TDD: define behaviour first, then implement it.
+
+The stronger AI Coding becomes, the more important Test First may become. The faster generation is, the faster a wrong direction can spread.
+
+## Testing may move from validating code to constraining generation
+
+Following this idea, QA may move earlier in the work.
+
+Testers need to help define:
+
+- What counts as a correct result.
+- What counts as a failure.
+- Which behaviours must be verified.
+- Which risks are unacceptable.
+- Which evidence is sufficient to support a release.
+
+These are the Quality Constraints given to AI.
+
+QA value is therefore not limited to finding bugs after the code is written. Earlier work matters just as much: understand the requirement, identify risk, design the validation, inspect AI output, build quality evidence, and help the team put the constraints into its normal process.
+
+## QA may become more like Quality Architecture
+
+During the Q&A, Lewis suggested that engineers may become more like architects as AI takes on more concrete implementation. Engineers may spend more time shaping the architecture and BDD layer, then validating what AI generates. Human work then shifts towards defining the problem, designing the system, setting constraints, reviewing, validating results, and making decisions.
+
+QA may see a similar change:
+
+| A more common focus in the past | A focus likely to increase |
+| --- | --- |
+| Write and maintain large amounts of automation | Design effective validation |
+| Execute tests and organise results | Decide whether AI output is actually correct |
+| Discover problems late | Identify risk during requirements |
+| Own a separate testing scope | Help the whole team create quality constraints |
+
+This does not mean Java, C#, Python, Playwright, Selenium, and API Testing suddenly stop mattering. They remain tools for understanding implementation and validating results. The change is that tool fluency is no longer the same thing as testing ability.
+
+The more important questions are:
+
+- Can you understand the requirement?
+- Can you identify the important risks?
+- Can you design a useful experiment?
+- Can you tell whether an AI-generated test actually verifies behaviour?
+- Can you explain the evidence behind a conclusion?
+- Can you help the team adopt a better way of working?
+
+## Evaluating AI output may become a foundational QA skill
+
+Job descriptions may continue to mention C#, scripting, automation, and API Testing. The underlying ability employers want may increasingly be the ability to evaluate AI output.
+
+AI can generate test code, test cases, test strategies, SQL, mocks, performance scripts, and reports. QA does not necessarily need to write every one of these from scratch, but QA must be able to ask:
+
+| AI output | Questions QA needs to ask |
+| --- | --- |
+| Test code | What does it actually verify? Are the assertions sufficient? |
+| Test cases | Do they cover important risks, or only restate the requirement? |
+| Mocks or test data | Are they hiding a problem with a real dependency? |
+| Performance scripts | Does the load model represent real user behaviour? |
+| Test reports | Is there evidence, or was execution mistaken for verification? |
+
+That is closer to future QA work than memorising how to write a Selenium script. Coding remains useful. Understanding code, finding problems, asking questions, and judging results matter more.
+
+## An interview may test code interpretation instead of code writing
+
+Lewis shared a Hippo interview practice: candidates are given code, but they are not asked to write code on the spot. They are asked to explain what the code does.
+
+Candidates may even use AI. The real job already includes AI, so pretending that tools do not exist may test the ability to recall syntax without tools rather than the ability to work in the real environment.
+
+The interview is trying to observe whether a candidate can:
+
+- Understand the code.
+- Point out suspicious behaviour.
+- Ask useful questions.
+- Decide whether a result is reasonable.
+- Use AI in an appropriate way.
+
+Lewis also noted that interviewers can usually tell when a candidate is using AI. That detail is a useful reminder: there is no need to pretend otherwise. What matters is whether you validate its output.
+
+## The work AI may find hardest to replace is being with people
+
+During the Q&A, Lewis was asked what work AI would be least able to replace and what work he enjoyed most.
+
+His answer was being with people: sitting in the same room, drinking coffee, talking about one thing, and letting that conversation produce another question. Someone says, “Wait, that makes me think of another risk,” and a risk that nobody had noticed appears.
+
+This process is difficult to measure with efficiency metrics. It has no stable input-output format, and a half-hour conversation will not produce an actionable result every time. Still, important information often appears through exactly this kind of interaction.
+
+That is why Three Amigos, Risk Storming, pairing, Mentoring, and design discussions still matter in the age of AI. Face-to-face discussion is not always fast, but it often exposes a risk that nobody owned, asked about, or wrote into the requirement.
+
+Lewis also enjoys hiring and interviews because they let him meet new people and help nervous candidates relax enough to have an open conversation. Hiring also involves responsibility and legal boundaries, so hiring decisions cannot simply be handed to AI. That sort of work is difficult for a system focused only on throughput to replace completely.
+
+## People and ideas worth following
+
+The session also mentioned several people and practices connected with testing and quality:
+
+- **Dave Farley**: Lewis used his ideas when discussing why ATDD and BDD may become important again, along with continuous delivery and Test First.
+- **Dan Ashby**: He has shown how AI can touch every part of software delivery. Lewis used that idea to say that testing once met the objection “we do not have time”; if AI gives time back, testing can finally reach across the process.
+- **Baron**: A frequent contributor to Ministry of Testing and TestBash discussions, including material related to risk.
+- **Three Amigos**: The collaboration format Lewis has advocated throughout his career, bringing Product, Development, and QA together to discuss how to solve a problem.
+
+These names are not a task list. They point to the same idea: quality should not appear only at the final stage.
+
+## If I were doing QA in an AI-heavy team tomorrow
+
+If I turn the talk into everyday work, I would start with these actions:
+
+1. Confirm the user problem and the result that counts as success.
+2. Bring Product, Development, QA, and the people who hold the business context into the same conversation.
+3. Map system boundaries, dependencies, and affected users.
+4. Run a Risk Storming session and record what different roles see.
+5. Turn important risks into Acceptance Criteria, Acceptance Tests, or BDD scenarios.
+6. Let AI generate code, test data, automation scripts, and report drafts.
+7. Check each output to confirm that it covers the goal and the important risks.
+8. Analyse execution and production data, and explain what an anomaly means for users and the business.
+9. Before release, check the conclusion, risks, and evidence—not just whether the tests passed.
+10. Keep improving the team process so that the next useful discussion happens earlier.
+
+This approach keeps AI in the workflow. It gives AI clearer context and lets people spend time on judgment that AI cannot replace.
+
+## A note for people starting their QA careers
+
+If you are entering QA, do not compete with AI over typing speed. AI will probably write test code, generate data, and organise reports faster than any person. That part is settled.
+
+Build the more durable skills: understand systems, analyse requirements, identify risk, design experiments, judge evidence, interpret results, and work with different roles to solve problems.
+
+Lewis’s advice to job seekers is useful too: if you meet 60% of the requirements, apply. He applies at around 60%, while his wife waits until she is closer to 90%. Neither number is a universal job-search rule. The point is that fear often grows out of imagining the unknown.
+
+You do not need to wait until you are completely ready to use AI, and you do not need to pretend that you do not use it. You need to know why you asked AI to do something and how you will confirm that it did it correctly.
+
+## Final thoughts
+
+The session is titled:
+
+> **It's always a people problem.**
+
+Technology still matters. Software needs code, data, automation, models, and tools. The faster AI develops, the easier it becomes to forget that software is still built by people for people.
+
+Requirements come from people. People perceive risk. People set priorities. Teams are made of people. Users ultimately live with the impact of quality decisions.
+
+AI can enter the whole SDLC: requirements, design, development, testing, release, and production. That is fine. We still need to answer:
+
+- Are we building the right thing?
+- Does it solve the user’s problem?
+- What are the biggest risks?
+- Can we trust the AI output?
+- Do we have enough evidence?
+- Should we release now?
+
+Those questions do not disappear as models become more capable.
+
+QA may write less automation code by hand in the future. AI or agents may generate many test scripts, test data, reports, and execution tasks. The core of testing can still be understanding problems, discovering risks, asking useful questions, validating results, and helping a group of people make better quality decisions together.
+
+From that perspective, AI may take over much of the labour involved in testing without taking over testing itself.
+
+Source: Ministry of Testing session:https://www.ministryoftesting.com/media-sessions/it-s-always-a-people-problem-the-reality-behind-ai-in-testing
