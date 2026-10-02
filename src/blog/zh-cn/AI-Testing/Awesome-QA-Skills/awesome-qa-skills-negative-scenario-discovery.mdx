@@ -1,32 +1,31 @@
 ---
-title: "负向场景发现 Skill：找出顺利流程刻意绕开的失败路径"
-description: "负向场景发现实战指南：识别拒绝、中断、误用、非法状态、依赖和恢复场景。"
+title: "异常场景发现 Skill：找出顺利流程刻意绕开的失败路径"
+description: "异常场景发现实战指南：识别拒绝、中断、误用、非法状态、依赖和恢复场景。"
 date: 2026-10-02T09:00:00.000Z
-draft: true
 author: "nao.deng"
-tags: ["AI 测试", "QA Skills", "负向场景发现"]
+tags: ["AI 测试", "QA Skills", "异常场景发现"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-顺利流程说明产品可以工作，负向场景说明现实不配合时产品会做什么。
+正常流程说明产品可以工作，异常场景说明现实不配合时产品会做什么。
 
 ## 为什么需要这个 Skill
 
-负向场景发现用于从用户流程、规则、依赖、状态和已知风险中建立可追溯的失败与误用场景集合。
+异常场景发现用于从用户流程、规则、依赖、状态和已知风险中建立可追溯的失败与误用场景集合。
 
 ## Skill 用来做什么
 
-当团队需要围绕“拒绝、中断、误用、非法状态、依赖故障和恢复”工作时，使用负向场景发现 Skill。
+当团队需要围绕“拒绝、中断、误用、非法状态、依赖故障和恢复”工作时，使用异常场景发现 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦负向场景发现。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦异常场景发现。
 
-好的负向场景发现会描述安全行为，而不只是坏输入。“邀请被拒绝”还不完整，除非同时说明项目、用户通知和审计轨迹。
+好的异常场景发现会描述安全行为，而不只是坏输入。“邀请被拒绝”还不完整，除非同时说明项目、用户通知和审计轨迹。
 
 它适合这些场景：团队需要重复检查拒绝、中断、误用、非法状态、依赖故障和恢复；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
 ## 它不做什么
 
-负向场景发现 Skill 可以组织负向场景的材料、证据和下一步动作，但它不能替代：
+异常场景发现 Skill 可以组织异常场景的材料、证据和下一步动作，但它不能替代：
 
 - 业务或领域负责人对规则、范围和风险的确认。
 - 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
@@ -39,7 +38,7 @@ series: ["Awesome QA Skills 实战"]
 
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
-| 负向场景 | 触发、前置条件、预期安全行为和证据 | 来源或假设 |
+| 异常场景 | 触发、前置条件、预期安全行为和证据 | 来源或假设 |
 | 风险优先级 | 影响、可能性和可发现性 | P0 到 unassessed |
 | 探针 | 最小测试或澄清问题 | 负责人和下一步 |
 
@@ -47,7 +46,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 开始之前先审计输入
 
-围绕“负向场景”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+围绕“异常场景”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
 
 | 状态 | 含义 | 本 Skill 的处理方式 |
 | --- | --- | --- |
@@ -66,7 +65,7 @@ series: ["Awesome QA Skills 实战"]
 
 ### 分层写法
 
-围绕负向场景，不要把四种语气揉成一句“建议通过”：
+围绕异常场景，不要把四种语气揉成一句“建议通过”：
 
 | 层次 | 写法 | 本文应用 |
 | --- | --- | --- |
@@ -92,7 +91,7 @@ series: ["Awesome QA Skills 实战"]
 ```text
 请使用 negative-scenario-discovery Skill。
 
-任务：发现邀请协作者加入项目时的角色、过期和重复邀请负向路径
+任务：发现邀请协作者加入项目时的角色、过期和重复邀请异常路径
 输入材料：[需求、版本、链接、日志、报告或数据路径]
 范围：[本次包含和排除的对象]
 未知项：[缺失的环境、账号、数据或权限]
@@ -103,7 +102,7 @@ series: ["Awesome QA Skills 实战"]
 
 ### 分析
 
-先从一个边界清楚的小回合开始：发现邀请协作者加入项目时的角色、过期和重复邀请负向路径。使用过期邀请、重复邀请、已删除用户和邀请者无权授予的角色。检查是否没有创建成员关系、旧邀请仍可审计，以及用户能否得到清晰的下一步。
+先从一个边界清楚的小回合开始：发现邀请协作者加入项目时的角色、过期和重复邀请异常路径。使用过期邀请、重复邀请、已删除用户和邀请者无权授予的角色。检查是否没有创建成员关系、旧邀请仍可审计，以及用户能否得到清晰的下一步。
 
 交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
 
@@ -113,12 +112,12 @@ series: ["Awesome QA Skills 实战"]
 
 下面的字段示例只展示记录方式，不代表真实环境已经执行。
 
-假设当前材料无法证明“负向场景”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+假设当前材料无法证明“异常场景”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
 
 | 字段 | 示例写法 |
 | --- | --- |
-| 来源与范围 | 记录本轮使用的需求、版本、环境和负向场景的具体对象 |
-| 发现 | 负向场景的判断条件或结果仍缺少可追溯依据 |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和异常场景的具体对象 |
+| 发现 | 异常场景的判断条件或结果仍缺少可追溯依据 |
 | 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
 | 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
 | 负责人和人工决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
@@ -141,11 +140,11 @@ series: ["Awesome QA Skills 实战"]
 
 | 输出字段 | 它要回答什么 | 示例状态 |
 | --- | --- | --- |
-| 负向场景 | 触发、前置条件、预期安全行为和证据 | 来源或假设 |
+| 异常场景 | 触发、前置条件、预期安全行为和证据 | 来源或假设 |
 | 风险优先级 | 影响、可能性和可发现性 | P0 到 unassessed |
 | 探针 | 最小测试或澄清问题 | 负责人和下一步 |
 
-没有运行记录、查询结果或原始产物时，不要写“已通过”。好的负向场景发现会描述安全行为，而不只是坏输入。“邀请被拒绝”还不完整，除非同时说明项目、用户通知和审计轨迹。
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的异常场景发现会描述安全行为，而不只是坏输入。“邀请被拒绝”还不完整，除非同时说明项目、用户通知和审计轨迹。
 
 ### 下一步路由
 
@@ -160,7 +159,7 @@ series: ["Awesome QA Skills 实战"]
 ## 和其他 Skill 怎么配合
 
 - [边界场景发现](https://inaodeng.com/zh-cn/qaskills/edge-case-discovery/)：扩展异常条件。
-- [API 负向测试](https://inaodeng.com/zh-cn/qaskills/api-negative-testing/)：把负向场景转成 API 用例。
+- [API 异常测试](https://inaodeng.com/zh-cn/qaskills/api-negative-testing/)：把异常场景转成 API 用例。
 - [恢复测试](https://inaodeng.com/zh-cn/qaskills/recovery-testing/)：检查拒绝或失败后的行为。
 
 ## 容易踩的坑
@@ -181,28 +180,28 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 常见问题
 
-### 这个 Skill 可以自行发明负向场景吗？
+### 这个 Skill 可以自行发明异常场景吗？
 
 可以提出假设，但每个假设都必须标注，并在成为缺陷前接到验证动作。
 
 ### 顺利流程本身不完整怎么办？
 
-先记录流程缺口；不知道被挑战的状态，就无法判断负向覆盖。
+先记录流程缺口；不知道被挑战的状态，就无法判断异常覆盖。
 
 ## 参考
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [负向场景发现 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery) 中包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [异常场景发现 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery) 中包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束拒绝、中断、误用、非法状态、依赖故障和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 负向场景发现 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md)
+- 异常场景发现 提示词：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery/prompts/negative-scenario-discovery.md)
 
-- Awesome QA Skills：负向场景发现 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery)
+- Awesome QA Skills：异常场景发现 源文件：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/negative-scenario-discovery)
 
 - Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- 负向场景发现 详情页:[https://inaodeng.com/zh-cn/qaskills/negative-scenario-discovery/](https://inaodeng.com/zh-cn/qaskills/negative-scenario-discovery/)
+- 异常场景发现 详情页：[https://inaodeng.com/zh-cn/qaskills/negative-scenario-discovery/](https://inaodeng.com/zh-cn/qaskills/negative-scenario-discovery/)

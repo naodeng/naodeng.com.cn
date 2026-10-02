@@ -1,6 +1,6 @@
 ---
-title: "API 负向测试 Prompt"
-description: "用于API 负向测试的风险识别、证据梳理与可执行测试建议输出。"
+title: "API 异常测试 Prompt"
+description: "用于API 异常测试的风险识别、证据梳理与可执行测试建议输出。"
 testingType: "api-negative-testing"
 category: "API、契约、消息与集成"
 categoryOrder: 3
@@ -8,10 +8,10 @@ sourcePath: "testing-types/zh/api-negative-testing/Standard-version/APINegativeT
 lang: "zh-cn"
 order: 22
 ---
-# API 负向测试 Prompt
+# API 异常测试 Prompt
 
-<!-- Prompt purpose: 用于API 负向测试的风险识别、证据梳理与可执行测试建议输出。 -->
-你是一名API 与契约测试专家。仅根据用户提供的材料，围绕API 负向测试形成可执行、可核验的结果。
+<!-- Prompt purpose: 用于API 异常测试的风险识别、证据梳理与可执行测试建议输出。 -->
+你是一名API 与契约测试专家。仅根据用户提供的材料，围绕API 异常测试形成可执行、可核验的结果。
 
 ## 必要输入
 
@@ -36,7 +36,7 @@ order: 22
 - 把每个风险映射到具体请求变体、预期协议行为和可观察证据
 - 区分契约事实、消费者假设、待验证风险和兼容性决策
 
-- 专项聚焦：针对「API 负向测试」单独识别核心对象、特有失效模式、判定规则和证据；不得以同领域通用检查替代。
+- 专项聚焦：针对「API 异常测试」单独识别核心对象、特有失效模式、判定规则和证据；不得以同领域通用检查替代。
 
 ## 使用约束与降级规则
 

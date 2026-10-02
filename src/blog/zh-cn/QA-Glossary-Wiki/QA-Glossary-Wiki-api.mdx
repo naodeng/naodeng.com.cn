@@ -275,7 +275,7 @@ API 网关可以处理**横切关注点**，如：
 
 2. **设置测试环境**：配置进行 API 测试所需的参数、[数据库](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/D/database.md)和服务器。
 
-3. **编写[测试用例](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md)**：创建覆盖 API 各个方面的[测试用例](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md)，包括正向、负向、边界和安全测试。
+3. **编写[测试用例](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md)**：创建覆盖 API 各个方面的[测试用例](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/T/test-case.md)，包括正向、异常、边界和安全测试。
 
 4. **选择合适的工具**：选择符合您需求并与您的 CI/CD 流水线集成的[API 测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/api-testing.md)工具。
 
@@ -542,7 +542,7 @@ API 文档在[API 测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/
 
 测试人员依赖文档以确保 API 遵循其**规范**。没有准确的文档，测试人员无法有效地执行**合同测试**，验证 API 是否符合服务之间的协定标准。
 
-此外，文档通常详细说明**错误代码**和**消息**，这对于**[负向测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/N/negative-testing.md)**至关重要。了解 API 在各种故障场景下的行为对于确保错误处理强大且在使用应用程序中出现问题时平滑降级至关重要。
+此外，文档通常详细说明**错误代码**和**消息**，这对于**[异常测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/N/negative-testing.md)**至关重要。了解 API 在各种故障场景下的行为对于确保错误处理强大且在使用应用程序中出现问题时平滑降级至关重要。
 
 在[自动化测试](https://github.com/naodeng/QA-Glossary-Wiki/blob/main/Sections/A/automated-testing.md)中，文档可以用于生成在隔离环境中测试的**存根**和**模拟**API 响应。支持**OpenAPI**或其他 API 规范格式的工具可以自动生成这些测试工件，从而简化测试开发流程。
 

@@ -8,7 +8,7 @@ Author: naodeng
 - hasEvals: true
 - syncedAt: 2026-09-15
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-negative-testing/SKILL.md
-- description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 负向测试 and API negative testing.
+- description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 异常测试 and API negative testing.
 
 ## When to Use
 
@@ -43,7 +43,7 @@ Do not use it to execute tests, invent contract or behavior, replace a complete 
 ```markdown
 ---
 name: api-negative-testing
-description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 负向测试 and API negative testing.
+description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 异常测试 and API negative testing.
 ---
 
 # API Negative Testing
