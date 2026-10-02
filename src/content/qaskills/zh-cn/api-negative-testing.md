@@ -1,4 +1,4 @@
-# API 负向测试
+# API 异常测试
 
 作者：naodeng
 
@@ -8,11 +8,11 @@
 - hasEvals: true
 - syncedAt: 2026-09-15
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-negative-testing/SKILL.md
-- description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 负向测试 and API negative testing.
+- description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 异常测试 and API negative testing.
 
 ## 何时使用
 
-- 需要从 API 契约、认证授权约束、参数规则、错误码、限流规则、历史缺陷和原始响应 中提取 API 负向测试 候选。
+- 需要从 API 契约、认证授权约束、参数规则、错误码、限流规则、历史缺陷和原始响应 中提取 API 异常测试 候选。
 - 需要解释选择理由、适用约束、证据缺口和最小验证动作。
 - 材料不完整但仍要交付受限初版，并明确 blocked 或 unassessed 边界。
 
@@ -50,16 +50,16 @@
 ```markdown
 ---
 name: api-negative-testing
-description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 负向测试 and API negative testing.
+description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 异常测试 and API negative testing.
 ---
 
-# API 负向测试
+# API 异常测试
 
 从契约、约束和错误证据中设计非法输入、拒绝和降级候选，输出 ANT-## 发现。它只整理可追溯的 API 质量候选，不执行测试，也不把设计清单写成覆盖、通过或发布证据。
 
 ## 何时使用
 
-- 需要从 API 契约、认证授权约束、参数规则、错误码、限流规则、历史缺陷和原始响应 中提取 API 负向测试 候选。
+- 需要从 API 契约、认证授权约束、参数规则、错误码、限流规则、历史缺陷和原始响应 中提取 API 异常测试 候选。
 - 需要解释选择理由、适用约束、证据缺口和最小验证动作。
 - 材料不完整但仍要交付受限初版，并明确 blocked 或 unassessed 边界。
 

@@ -19,7 +19,7 @@
 1. 明确文件范围、语言配对和是否允许修改。
 2. 区分当前事实、契约、历史记录、推理过程和审查对话。
 3. 删除纯过程性内容；把有价值的事实改写成当前状态表述。
-4. 保留负向保证、测量边界、正式引用、归档记录和 fixture fidelity。
+4. 保留异常保证、测量边界、正式引用、归档记录和 fixture fidelity。
 
 ## 核心约束
 
@@ -48,7 +48,7 @@ description: Use this skill when auditing or trimming process residue from Skill
 1. 明确文件范围、语言配对和是否允许修改。
 2. 区分当前事实、契约、历史记录、推理过程和审查对话。
 3. 删除纯过程性内容；把有价值的事实改写成当前状态表述。
-4. 保留负向保证、测量边界、正式引用、归档记录和 fixture fidelity。
+4. 保留异常保证、测量边界、正式引用、归档记录和 fixture fidelity。
 
 ## 核心约束
 
