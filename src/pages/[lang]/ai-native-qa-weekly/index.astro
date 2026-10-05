@@ -52,10 +52,10 @@ const structuredData = {
   currentPath=""
   basePath={basePath}
   sidebarMenuLabel={isZh ? "周刊导航" : "Weekly navigation"}
+  contentMode="index"
 >
   <div class="weekly-index">
     <header class="weekly-index-header">
-      <p class="weekly-eyebrow">AI-NATIVE QA WEEKLY</p>
       <h1 class="weekly-index-title">{weeklyTitle}</h1>
       <p class="weekly-index-description">{description}</p>
     </header>
@@ -66,10 +66,10 @@ const structuredData = {
         <span>{entries.length} {isZh ? "期" : "issues"}</span>
       </div>
       <div class="weekly-index-list">
-        {entries.map((entry) => (
-          <a class="weekly-index-card" href={`${basePath}/${entry.data.slug}/`}>
+        {entries.map((entry, index) => (
+          <a class:list={["weekly-index-card", index === 0 && "weekly-index-card--latest"]} href={`${basePath}/${entry.data.slug}/`}>
             <div class="weekly-index-card__topline">
-              <span class="weekly-index-card__issue">{formatWeeklyIssueLabel(entry, locale)}</span>
+              <span class="weekly-index-card__issue">{formatWeeklyIssueLabel(entry, locale)}{index === 0 && <span class="weekly-index-card__latest">{isZh ? "最新一期" : "Latest issue"}</span>}</span>
               <time datetime={entry.data.publishedAt.toISOString()}>{formatWeeklyDate(entry.data.publishedAt, locale)}</time>
             </div>
             <h3>{entry.data.title}</h3>
@@ -89,28 +89,24 @@ const structuredData = {
 <style>
   .weekly-index {
     display: grid;
-    gap: var(--sp-l);
+    gap: 2rem;
   }
 
   .weekly-index-header {
-    padding-block-end: var(--sp-m);
+    padding-block: 0.25rem 1.5rem;
     border-block-end: 1px solid var(--color-border);
   }
 
-  .weekly-eyebrow {
-    margin: 0 0 var(--sp-xs);
-    color: var(--color-theme);
-    font-size: var(--text-xs);
-    font-weight: 800;
-    letter-spacing: 0.14em;
-  }
-
-  .weekly-index-title {
+  .weekly-index-header .weekly-index-title {
     margin: 0;
+    font-size: clamp(2rem, 3vw, 2.65rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
   }
 
   .weekly-index-description {
-    max-inline-size: 48rem;
+    max-inline-size: 64ch;
     margin: var(--sp-s) 0 0;
     color: var(--color-text-secondary);
     line-height: 1.7;
@@ -177,6 +173,7 @@ const structuredData = {
     align-items: baseline;
     justify-content: space-between;
     gap: 0.75rem;
+    flex-wrap: wrap;
   }
 
   .weekly-index-card__issue {
@@ -195,13 +192,24 @@ const structuredData = {
     margin: 0;
     color: var(--color-main);
     font-size: 1.2rem;
+    max-inline-size: 48ch;
   }
 
   .weekly-index-card p {
     margin: 0;
     color: var(--color-text-secondary);
     line-height: 1.6;
+    max-inline-size: 65ch;
   }
+
+  .weekly-index-card--latest {
+    padding: clamp(1.2rem, 2.5vw, 2rem);
+    background: var(--color-surface);
+    gap: 0.85rem;
+  }
+  .weekly-index-card--latest h3 { font-size: clamp(1.3rem, 2vw, 1.65rem); line-height: 1.4; }
+  .weekly-index-card__latest { margin-inline-start: 0.75rem; color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+  .weekly-index-card time { font-variant-numeric: tabular-nums; }
 
   .weekly-index-card__meta span:last-child {
     color: var(--color-theme);

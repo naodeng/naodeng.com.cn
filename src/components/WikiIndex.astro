@@ -1,0 +1,152 @@
+---
+import type { DocsNavSection } from "@/data/docsNav";
+
+interface Props {
+  title: string;
+  description?: string;
+  totalCount: number;
+  letterSections: DocsNavSection[];
+  basePath: string;
+  searchId: string;
+  groupLabel?: string;
+}
+
+const { title, description, totalCount, letterSections, basePath, searchId, groupLabel } = Astro.props;
+const isZh = Astro.currentLocale === "zh-cn";
+---
+
+<div class="wiki-index" data-wiki-index>
+  <header class="wiki-hero">
+    <div class="wiki-hero-copy">
+      <h1 class="wiki-hero-title">{title}</h1>
+      {description && <p class="wiki-intro">{description}</p>}
+    </div>
+    <div class="wiki-stats-banner" aria-label={isZh ? "词条统计" : "Glossary statistics"}>
+      <span class="wiki-stat"><span class="wiki-stat-number">{totalCount}</span><span class="wiki-stat-label">{isZh ? "个词条" : "entries"}</span></span>
+      <span class="wiki-stat-divider" aria-hidden="true">·</span>
+      <span class="wiki-stat"><span class="wiki-stat-number">{letterSections.length}</span><span class="wiki-stat-label">{groupLabel ?? (isZh ? "个分组" : "groups")}</span></span>
+    </div>
+  </header>
+
+  <section class="wiki-by-letter" aria-labelledby="wiki-by-letter-heading">
+    <div class="wiki-browse-header">
+      <h2 id="wiki-by-letter-heading" class="wiki-by-letter-main-title">{isZh ? "按字母浏览" : "Browse by letter"}</h2>
+      <div class="wiki-search-bar">
+        <input id={searchId} type="search" placeholder={isZh ? "搜索词条…" : "Search terms…"} class="wiki-search-input" aria-label={isZh ? "搜索词条" : "Search terms"} autocomplete="off" />
+      </div>
+    </div>
+
+    <nav class="wiki-letter-index" aria-label={isZh ? "按字母快速跳转" : "Jump to a letter"}>
+      {letterSections.map((section) => (
+        <a href={`#letter-${section.title}`} class="wiki-letter-index-link" data-letter={section.title}>{section.title}</a>
+      ))}
+    </nav>
+
+    <div class="wiki-search-empty" id={`${searchId}-empty`} hidden>
+      <p role="status">{isZh ? "没有找到匹配的词条。试试其他关键词，或清除搜索继续浏览。" : "No matching terms. Try another keyword, or clear the search to browse all entries."}</p>
+      <button type="button" id={`${searchId}-reset`}>{isZh ? "清除搜索" : "Clear search"}</button>
+    </div>
+
+    {letterSections.map((section) => (
+      <article class="wiki-letter-group" id={`letter-${section.title}`} data-letter-group={section.title}>
+        <h3 class="wiki-letter-title">{section.title}</h3>
+        <ul class="wiki-letter-list">
+          {section.items.map((item) => (
+            <li><a href={`${basePath}/${item.href}/`} class="wiki-letter-link" data-search={`${item.label} ${item.href}`}>{item.label}</a></li>
+          ))}
+        </ul>
+      </article>
+    ))}
+
+    <p class="wiki-back-top"><a href="#wiki-by-letter-heading" class="wiki-back-top-link">{isZh ? "↑ 返回顶部" : "↑ Back to top"}</a></p>
+  </section>
+</div>
+
+<style>
+  :global(.docs-sidebar-wrap), :global(.docs-sidebar) { border-radius: var(--radius-md); overflow: hidden; }
+  :global(.docs-sidebar-inner) { border: 1px solid var(--color-border) !important; border-radius: var(--radius-md) !important; overflow: hidden; box-shadow: none; }
+  .wiki-index [hidden] { display: none !important; }
+  .wiki-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 1.5rem; padding-block: 0.25rem 2rem; }
+  .wiki-hero .wiki-hero-title { margin: 0; font-size: clamp(2rem, 3vw, 2.65rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; }
+  .wiki-hero .wiki-intro { max-inline-size: 64ch; margin: 0.85rem 0 0; color: var(--color-text-secondary); font-size: 1rem; line-height: 1.75; }
+  .wiki-stats-banner { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.75rem; padding-block-start: 0.65rem; }
+  .wiki-stat { display: flex; align-items: baseline; gap: 0.35rem; white-space: nowrap; }
+  .wiki-stat-number { font-size: 1.25rem; font-weight: 800; color: var(--color-theme); font-variant-numeric: tabular-nums; }
+  .wiki-stat-label, .wiki-stat-divider { color: var(--color-text-secondary); font-size: 0.8125rem; }
+  .wiki-browse-header { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; margin-block-end: 1rem; }
+  .wiki-browse-header .wiki-by-letter-main-title { margin: 0; padding: 0; border: 0; font-size: 1.2rem; font-weight: 700; }
+  .wiki-search-bar { flex: 0 1 22rem; min-inline-size: 0; }
+  .wiki-search-input { inline-size: 100%; min-block-size: 48px; padding: 0.65rem 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-main); font: inherit; }
+  .wiki-search-input::placeholder { color: var(--color-text-tertiary); opacity: 1; }
+  .wiki-search-input:focus { border-color: var(--color-theme); }
+  .wiki-letter-index { position: sticky; top: var(--sticky-offset); z-index: 5; display: flex; flex-wrap: wrap; gap: 0.25rem; margin-block-end: 1rem; padding-block: 0.75rem; border-block: 1px solid var(--color-border); background: var(--color-base); scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent; }
+  .wiki-letter-index .wiki-letter-index-link { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; min-block-size: 44px; min-inline-size: 44px; padding: 0.35rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-text-secondary); font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast); }
+  .wiki-letter-index .wiki-letter-index-link:hover, .wiki-letter-index .wiki-letter-index-link:focus-visible { color: var(--color-theme-on-dark); background: var(--color-theme); border-color: var(--color-theme); }
+  .wiki-letter-group { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 1.5rem; padding-block: 1.5rem; border-block-end: 1px solid var(--color-border); scroll-margin-block-start: calc(var(--sticky-offset) + var(--letter-index-height, 4.5rem) + 1rem); }
+  .wiki-letter-group .wiki-letter-title { margin: 0; padding-block: 0.65rem; color: var(--color-main); font-size: 1.35rem; font-weight: 800; line-height: 1.5; }
+  .wiki-letter-group .wiki-letter-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
+  .wiki-letter-list li { margin: 0; min-inline-size: 0; }
+  .wiki-letter-list .wiki-letter-link { display: block; min-block-size: 44px; padding: 0.65rem 0.5rem; border-radius: var(--radius-sm); color: var(--color-main); font-size: 0.95rem; line-height: 1.6; text-decoration: none; overflow-wrap: anywhere; transition: color var(--transition-fast), background-color var(--transition-fast); }
+  .wiki-letter-list .wiki-letter-link:hover, .wiki-letter-list .wiki-letter-link:focus-visible { color: var(--color-theme); background: var(--color-theme-soft); }
+  .wiki-search-empty { margin-block: 1.5rem; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text-secondary); }
+  .wiki-search-empty p { margin: 0; }
+  .wiki-search-empty button { min-block-size: 44px; margin-block-start: 0.75rem; padding: 0.5rem 0.85rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); color: var(--color-theme); background: var(--color-surface); font: inherit; font-weight: 600; }
+  .wiki-search-empty button:hover { background: var(--color-theme-soft); }
+  .wiki-by-letter .wiki-back-top { margin: 2rem 0 0; text-align: end; }
+  .wiki-back-top .wiki-back-top-link { color: var(--color-text-secondary); font-size: 0.875rem; text-decoration: none; }
+  .wiki-back-top .wiki-back-top-link:hover { color: var(--color-theme); text-decoration: underline; }
+  @media (max-width: 1100px) { .wiki-hero { grid-template-columns: 1fr; gap: 0.75rem; } .wiki-stats-banner { padding: 0; } }
+  @media (max-width: 600px) {
+    .wiki-browse-header { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+    .wiki-search-bar { flex-basis: auto; }
+    .wiki-letter-index { flex-wrap: nowrap; overflow-x: auto; }
+    .wiki-letter-group { grid-template-columns: 1.5rem minmax(0, 1fr); gap: 0.75rem; padding-block: 1rem; }
+    .wiki-hero { padding-block-end: 1.5rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-wiki-index]").forEach((root) => {
+    const searchInput = root.querySelector<HTMLInputElement>(".wiki-search-input");
+    const emptyState = root.querySelector<HTMLElement>(".wiki-search-empty");
+    const letterIndex = root.querySelector<HTMLElement>(".wiki-letter-index");
+    if (!searchInput || !emptyState || !letterIndex) return;
+    const groups = Array.from(root.querySelectorAll<HTMLElement>(".wiki-letter-group"));
+    const letters = Array.from(letterIndex.querySelectorAll<HTMLAnchorElement>(".wiki-letter-index-link"));
+
+    const updateSearch = () => {
+      const query = searchInput.value.trim().toLowerCase();
+      root.querySelectorAll<HTMLAnchorElement>(".wiki-letter-link").forEach((link) => {
+        const item = link.closest("li");
+        if (item) item.hidden = !!query && !(link.dataset.search ?? "").toLowerCase().includes(query);
+      });
+      groups.forEach((group) => {
+        group.hidden = !Array.from(group.querySelectorAll<HTMLLIElement>("li")).some((item) => !item.hidden);
+        const letter = letters.find((link) => link.dataset.letter === group.dataset.letterGroup);
+        if (letter) letter.hidden = group.hidden;
+      });
+      const hasResults = groups.some((group) => !group.hidden);
+      emptyState.hidden = hasResults;
+      letterIndex.hidden = !hasResults;
+    };
+
+    searchInput.addEventListener("input", updateSearch);
+    emptyState.querySelector("button")?.addEventListener("click", () => {
+      const sidebarInput = document.querySelector<HTMLInputElement>(".docs-sidebar-search-input");
+      if (sidebarInput?.dataset.searchTarget === searchInput.id) {
+        sidebarInput.value = "";
+        sidebarInput.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+      searchInput.value = "";
+      updateSearch();
+      searchInput.focus();
+    });
+
+    const updateIndexHeight = () => root.style.setProperty("--letter-index-height", `${letterIndex.getBoundingClientRect().height}px`);
+    updateIndexHeight();
+    if (typeof ResizeObserver !== "undefined") new ResizeObserver(updateIndexHeight).observe(letterIndex);
+    const initialSearch = new URLSearchParams(location.search).get("q")?.trim();
+    if (initialSearch) searchInput.value = initialSearch;
+    updateSearch();
+  });
+</script>

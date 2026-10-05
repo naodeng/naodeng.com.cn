@@ -38,6 +38,8 @@ interface Props {
   headings?: { depth: number; slug: string; text: string }[];
   /** 右侧 TOC 标题：本页目录 / On this page */
   tocLabel?: string;
+  /** 目录首页使用完整主列；正文页默认保留阅读宽度。 */
+  contentMode?: "reading" | "index";
 }
 
 const {
@@ -56,6 +58,7 @@ const {
   sidebarSearchLabel,
   headings = [],
   tocLabel,
+  contentMode = "reading",
 } = Astro.props;
 const locale = Astro.currentLocale as Lang;
 const menuLabel = sidebarMenuLabel ?? (locale === "zh-cn" ? "本页导航" : "On this page");
@@ -74,7 +77,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   {breadcrumbs && breadcrumbs.length > 0 && (
     <Breadcrumb items={breadcrumbs} />
   )}
-  <div class="l-docs" data-has-toc={hasToc}>
+  <div class="l-docs" data-has-toc={hasToc} data-content-mode={contentMode}>
     <aside class="docs-sidebar-wrap">
       <DocsSidebar
         sections={sidebarSections}
@@ -99,6 +102,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
 </Base>
 
 <style>
+  :global(.l-main:has(.l-docs[data-content-mode="index"])) {
+    margin-block-start: clamp(1.25rem, 3vw, 2rem);
+  }
   .l-docs {
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
@@ -130,6 +136,14 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   }
   .l-docs[data-has-toc="true"] .docs-content {
     max-inline-size: none;
+  }
+  .l-docs[data-content-mode="index"] .docs-content {
+    inline-size: 100%;
+    max-inline-size: none;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
   }
   .docs-toc-wrap {
     position: sticky;
@@ -210,6 +224,17 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     }
   }
   @media (width < 900px) {
+    .l-docs[data-content-mode="index"] :global(.docs-sidebar-toggle) {
+      display: flex;
+    }
+    .l-docs[data-content-mode="index"] :global(.docs-sidebar-nav) {
+      display: none;
+      padding-block-start: 0;
+      max-height: min(calc(100dvh - 12rem), 70dvh);
+    }
+    .l-docs[data-content-mode="index"] :global(.docs-sidebar-inner.is-open .docs-sidebar-nav) {
+      display: block;
+    }
     .l-docs {
       grid-template-columns: 1fr;
       gap: var(--sp-m);
