@@ -1,0 +1,435 @@
+---
+title: "Signal vs Noise in AI-Era Testing: Don't Just Use AI to Go Faster"
+description: "Will AI replace testers? Reflections on Rahul Parwal's discussion of AI noise, context engineering, evaluations, testing metrics, tool selection, and the judgment that matters in an AI-era QA career."
+date: 2026-10-06T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Software Testing", "QA"]
+categories: ["AI Testing"]
+---
+
+I recently read a Katalon Quality People interview with Rahul Parwal:
+
+**Rahul Parwal on Filtering the Noise in Testing's AI Moment**
+
+Rahul Parwal is a Test Specialist at ifm engineering. He has spent years testing industrial automation, IoT, and industrial protocols, and he leads the Ministry of Testing AI Chapter.
+
+The interview covers AI, testing skills, Agentic Engineering, Context Engineering, Evals, testing metrics, Exploratory Testing, tool selection, the testing community, and career development.
+
+Compress all of that into one question and I think it becomes:
+
+> **What should testers actually pay attention to in the AI era?**
+
+Information is no longer scarce. Every day brings another tool, framework, agent, prompt, and “best practice.” The scarce capability is recognising which signals are useful.
+
+That is the thread I took from Rahul’s interview. Testers need to filter more than a particular tool. They need to filter the noise around the tool—and amplify judgment instead of output volume.
+
+## Testing has a noise problem
+
+There is now more information about AI and testing than anyone can realistically follow. Every day brings a new AI testing tool, a new agent, a new framework, a new automation approach, and another claim that AI will change everything.
+
+One of the loudest messages is:
+
+> **AI will take your job.**
+
+Rahul describes that as one of the loudest and most damaging sources of noise. Whether the prediction is right is only part of the issue; the more immediate question is what fear does to a tester’s behaviour.
+
+Fear pushes people into survival mode. They chase the latest tool, then the latest framework, then another AI skill, worry that they are still behind, and chase the next thing. Eventually they know about many things but lose sight of the more useful question:
+
+> **What problem am I actually trying to solve?**
+
+That is the danger of noise. It can keep you busy without moving you closer to the problem.
+
+## The underlying signal: AI expands what testers can work on
+
+If we temporarily stop asking whether AI will replace QA and look at what is actually happening, another pattern becomes clearer:
+
+> **AI is expanding the range of problems testers are able to attempt and solve.**
+
+Rahul’s own work is a good example. He now researches Agentic AI, explores how to bring it into product development, builds Agentic Systems, and works with AI Evaluation and Context Engineering. A few years ago, those responsibilities might not naturally have been assigned to a tester.
+
+The important part is that nobody created a formal role first and then handed him the work. He found a problem, realised he could explore it, started working on it, built capability, and expanded his role.
+
+That connects to one of Rahul’s key ideas: High Agency. It means asking:
+
+> **What useful problem can I solve now?**
+
+instead of waiting for someone to tell you what to learn next.
+
+## Three habits for filtering noise
+
+Rahul identifies three characteristics:
+
+| Habit | What it looks like at work |
+| --- | --- |
+| High Agency | Find useful problems and act without waiting for permission or a perfect assignment |
+| Clear Thinking | Ask what a tool solves before asking whether everyone is using it |
+| High Disagreeability | Challenge assumptions and ask for evidence and context |
+
+High Disagreeability does not mean disagreeing for the sake of it. It means being willing to challenge best practices, industry trends, vendor marketing, and popular opinions with a simple question:
+
+> **Why? What is the evidence? Does it apply in my context?**
+
+None of these habits depends on a specific tool. That also makes them harder to obsolete when the tools change. They do not look like AI skills, but they may be some of the most useful habits in an AI-heavy workplace.
+
+## Coding is no longer the only gate
+
+Rahul makes an argument that is easy to debate but worth taking seriously: coding should not remain the most important differentiator for testers.
+
+Testers still need to understand code. The change is that AI is reducing the cost between an idea and an implementation.
+
+For years, testers could have genuinely useful ideas:
+
+- build a tool that solves a real problem;
+- automate a repetitive workflow;
+- analyse a data set;
+- create a testing platform.
+
+Then they stalled because they knew the wrong language, did not know the framework, lacked frontend experience, did not know how to write the plugin, or could not see how to assemble the system. That was the Implementation Gap.
+
+AI is shrinking that gap quickly. As implementation becomes cheaper, scarcity moves back toward:
+
+> **Idea + Judgment + Execution**
+
+Find something worth doing, decide whether it is valuable, and make it real.
+
+## Your Selenium and Playwright experience still matters
+
+None of this means the years spent learning Selenium, Cypress, Playwright, API automation, or programming languages were wasted. The most valuable thing those years taught you was not just how to write an API call, create a selector, or structure a Page Object.
+
+They taught you how systems fail:
+
+- asynchrony;
+- state;
+- data;
+- environments and dependencies;
+- timing and networks;
+- flaky tests;
+- weak assertions;
+- poor testability.
+
+AI generating Playwright code does not erase that knowledge. What may lose value is treating “I can write automation scripts” as the long-term differentiator by itself. Coding remains useful. Understanding how systems break and how to verify the result is closer to the core of testing.
+
+## The QA skill stack needs another layer
+
+Rahul points toward a set of capabilities:
+
+- Agentic Engineering;
+- Context Engineering;
+- Evals;
+- Rubrics;
+- Guardrails;
+- System Design.
+
+The terms have obvious AI associations, but the questions underneath are familiar to QA.
+
+Context Engineering asks how to give AI the right, complete, and maintainable context. That resembles questions testers have always asked: Are the requirements complete? Is the test data correct? Is the environment consistent? Do we understand the dependencies?
+
+Evals ask how to determine whether AI output is good enough. In QA terms: What is expected? What is the pass criterion? Can the result be repeatedly validated? How do we run regression? How do we detect degradation?
+
+Guardrails ask which boundaries the system must not cross. That connects naturally to Negative Testing, Security Testing, Boundary Testing, and Risk Control.
+
+AI does not necessarily require QA to become a different profession. It may require us to apply familiar quality thinking to systems with nondeterministic output.
+
+## Treat AI like a fast junior tester without direction
+
+Rahul offers a useful mental model: AI is like a very fast and enthusiastic junior tester without its own direction.
+
+It can generate one hundred test cases, write twenty automation scripts, analyse large logs, and organise thousands of lines of documentation very quickly. It does not inherently know what matters most in the project.
+
+That is why Rahul flips the familiar Human in the Loop into AI in the Loop. The useful framing is to put AI inside a quality workflow whose direction remains human-owned.
+
+People provide the goal, context, and constraints. AI assists with implementation, analysis, and execution. People validate the output, evidence, and risks. The team makes a decision from that validation. This keeps responsibility from disappearing behind speed.
+
+## Do not let corrections die in the chat
+
+A common AI workflow looks like this:
+
+1. AI produces a wrong answer.
+2. A person explains the mistake.
+3. AI corrects the answer.
+4. It looks right this time.
+5. The chat is closed.
+
+Then the same mistake appears in the next session.
+
+Rahul puts it plainly: the correction dies when the Session ends. That is not a mature engineering feedback loop.
+
+A stronger approach pushes the failure into the system. Find the mistake, understand the failure pattern, persist the knowledge in Context, and create an Eval so future output can be checked automatically.
+
+The goal changes from:
+
+> **I can detect this mistake.**
+
+to:
+
+> **The system can now detect this class of mistake.**
+
+That is a very QA way of thinking. Personal experience becomes much more valuable when it becomes a repeatable quality mechanism.
+
+## Beyond Prompt Engineering toward Context Engineering
+
+Prompt Engineering is often where people begin with AI. That is useful, but production engineering requires more than writing a better prompt.
+
+We also need to ask:
+
+- What does the model know?
+- What does it not know?
+- Where does the context come from?
+- Which information is factual, and which comes from past experience?
+- Which rules must always be present?
+- When should context be updated?
+- Who owns it?
+
+Prompt Engineering is closer to asking, “How should I phrase this question now?” Context Engineering asks, “How do I build a system where AI consistently has the information required to perform the task?”
+
+For AI Native QA, the second question will matter more and more. One good prompt does not mean the system will keep working from the right context.
+
+## Evals turn experience into automatic checks
+
+Imagine AI repeatedly generates tests like this:
+
+1. Call the API.
+2. Receive HTTP 200.
+3. Mark the test as PASS.
+
+The test does not validate the business outcome, data changes, side effects, or state transitions. It is a Fake Test: complete-looking, but thin where it matters.
+
+An experienced tester can catch the pattern manually the first time. A stronger approach is to define the pattern, create an Eval, and automatically check future generated output.
+
+That turns individual experience into a repeatable quality mechanism. From a QA perspective, it may be more valuable than learning the tenth AI testing tool.
+
+## Mechanical amplifier or cognitive amplifier?
+
+Rahul offers an excellent question:
+
+> **Are you using AI as a Mechanical Amplifier or a Cognitive Amplifier?**
+
+| Mode | What it amplifies | The question to ask |
+| --- | --- | --- |
+| Mechanical Amplifier | More code, test cases, documentation, and automation delivered faster | Did I only do the same work faster? |
+| Cognitive Amplifier | Previously invisible risks, difficult data analysis, challenged assumptions, and harder problems | Did I think more deeply or solve something I could not solve before? |
+
+Many teams report the first effect as if it were the second. Faster output does not automatically mean better judgment.
+
+## Faster does not automatically mean better
+
+Suppose a tester used to write ten test cases per day and AI now enables one hundred. The productivity dashboard reports 10x. It looks impressive.
+
+The better questions are:
+
+- Did we find more important risks?
+- Did production problems decrease?
+- Did coverage become more valuable?
+- Are our Quality Gates more trustworthy?
+- Did Testability improve?
+
+If the answers are no, then ten times more output is not ten times more quality. It may simply be ten times more noise.
+
+## Test case addiction turns quality into a count
+
+Rahul uses a memorable analogy:
+
+> **Counting test cases is like counting cookies. The number goes up. Nobody tasted anything.**
+
+If the KPI is Test Case Count, teams quickly learn how to optimise it. One valuable test becomes five thin cases. The metric improves, but quality does not.
+
+Worse, maintenance cost, review cost, and execution cost rise while time for exploration falls. This is a classic metric distortion problem: the team improves what is measured without improving the result it actually needs.
+
+## Fixed test cases only find what you already thought of
+
+Rahul has another line worth keeping:
+
+> **A fixed case can only find what you already thought of.**
+
+A fixed Test Case starts with a risk someone has already imagined, turns it into a check, and executes it. Exploratory Testing allows the tester to observe the system, notice something unexpected, form a new hypothesis, explore further, and discover something nobody knew to check.
+
+A mature testing system should therefore not assume:
+
+> **More Test Cases = More Quality**
+
+The better question is:
+
+> **Are we becoming more effective at discovering important risks?**
+
+## What should testing measure?
+
+There are stronger signals than Test Case Count.
+
+First, are production problems decreasing release by release? That is a direct quality signal.
+
+Second, can testers explain what they explored and what worries them? Compare:
+
+> I executed 128 test cases.
+
+with:
+
+> I focused on payment failure, duplicate submission, and state recovery. My main concern is data consistency after third-party callback failures.
+
+The second statement contains much more useful quality information.
+
+Third, what are customers actually saying? Jerry Weinberg’s familiar framing still applies:
+
+> **Quality is value to some person.**
+
+Quality has to create value for someone who matters. It does not exist to make a dashboard look impressive.
+
+When AI enters a testing workflow, I would rather ask whether risks we previously missed are now visible, whether problems previously found in production are caught earlier, whether Quality Gates are stricter and more trustworthy, whether Testability improved, and whether the team can solve problems it could not solve before.
+
+If the same team with the same AI can identify a Previously Missed Risk, that is real capability growth.
+
+## Do not evaluate AI testing tools only through demos
+
+There are more AI Testing Tools every month, and their demos usually look excellent. Of course they do. A demo is designed to show the good parts.
+
+Rahul compares choosing a tool to buying a car. The showroom car is clean, well lit, presented by a friendly salesperson, and comfortable during the demo. The real question is:
+
+> **What happens during your actual commute?**
+
+I would ask three questions during a demo:
+
+1. **Show me where it breaks.** Do not only ask what it can do. Ask what it is genuinely bad at.
+2. **Hand me the keyboard, on my data.** Move from the vendor’s prepared project to my project, my data, my requirements, and my code.
+3. **What does it cost at scale, and what does it cost to walk away?** Ask about scale, migration, Vendor Lock-in, data after exit, and whether existing assets can be reused.
+
+The third question is often more important than the purchase price. A mature product should understand its boundaries and explain the cost of leaving it.
+
+## A good tool should not be afraid to explain its weaknesses
+
+Rahul is an Ambassador for several testing tools, but he does not define that role as promoting vendors. He sees an Ambassador as a Gateway between a tool and its community.
+
+The relationship should move in both directions:
+
+| Direction | What should travel |
+| --- | --- |
+| Vendor to Community | Capabilities, use cases, and known limitations |
+| Community to Vendor | Real feedback, real problems, real usage patterns, and real limitations |
+
+A healthy relationship should allow an Ambassador to say, “This release is not very good,” without ending the relationship. Letting the community express dissatisfaction is another way to filter marketing noise.
+
+## A Failure Resume filters another kind of noise
+
+Rahul has published a Failure Resume containing a failed live demo, rejected EuroSTAR proposals, and other unsuccessful attempts.
+
+When we look at someone else’s career, we usually see Awards, Conference talks, Community Leadership, and Successful Projects. That creates a misleading signal:
+
+> **They have always been successful.**
+
+The actual process is usually closer to trying, failing, adjusting, trying again, failing again, continuing, and eventually succeeding.
+
+Showing only the final success hides the process. Publishing failure is not about creating drama. It reminds people that work and capability usually come from several iterations.
+
+## “I’ll start when I’m ready” may never happen
+
+The same loop appears when testers learn AI:
+
+- after I learn Prompt Engineering;
+- after I learn Python;
+- after I understand Agents;
+- after I learn MCP;
+- after I truly understand LLMs.
+
+Then I will start.
+
+AI will always have another concept waiting.
+
+A High Agency approach is different: start with a real problem, learn what you need, build something that can receive feedback, and keep iterating.
+
+“Fully ready” may be a state that never arrives. Starting will often tell you what you actually need to learn.
+
+## Community gives you an identity that travels
+
+Rahul has a line I particularly like:
+
+> **A job gives you a title inside one company. Community gave me an identity that travels.**
+
+A job may give you a title such as Senior QA, QA Lead, or Test Specialist. Part of that title belongs to the organisation. What travels with you is your writing, talks, projects, open-source contributions, case studies, ideas, and work.
+
+That is Proof of Work.
+
+## Proof of Work may matter more than titles
+
+AI can already help almost anyone produce a Resume, Cover Letter, Portfolio Description, or Technical Article quickly. The cost of polished claims is falling.
+
+The more useful questions become:
+
+- What did you actually build?
+- Where is the code?
+- Where is the project?
+- Where are the articles and examples?
+- Where is your reasoning?
+- Can somebody verify the work?
+
+In other words:
+
+> **Claim is giving way to Evidence.**
+
+That is a very QA-like shift. Testers do not accept a conclusion as evidence just because the conclusion is well written. Professional capability will increasingly need a work record that can be inspected.
+
+## Productizing yourself is not the same as personal marketing
+
+Rahul makes a direct prediction about the next five years: the vulnerable tester is not necessarily the person who lacks one particular tool. It is the person who is not Productizing Yourself.
+
+I interpret that as turning capability into something other people can discover, understand, and verify.
+
+It could be a GitHub Project, Blog, Technical Note, Open-source Contribution, Talk, Case Study, Demo, or Research. The point is not to become an influencer. The point is to make this chain real:
+
+> **Capability → Work → Evidence → Discoverability**
+
+The difference is concrete: one can be inspected, while the other is only a claim without context.
+
+## What will actually be scarce for QA?
+
+If AI continues to reduce implementation costs, writing code, writing test scripts, generating test data, organising documentation, and producing reports will become cheaper.
+
+The scarcer capabilities may be:
+
+1. Finding the right problem.
+2. Identifying meaningful risks.
+3. Providing the right context.
+4. Designing strong evaluation criteria.
+5. Recognising incorrect output.
+6. Building repeatable quality mechanisms.
+7. Turning ideas into working systems.
+
+Or, more compactly:
+
+> **Idea + Judgment + Context + Evaluation + Execution**
+
+That may be a more useful frame than continuing to ask whether QA still needs coding skills.
+
+## Final thoughts
+
+Rahul’s interview appears to cover many subjects: AI, Coding, Agents, Evals, Metrics, Test Cases, Exploratory Testing, Tools, Community, and Career.
+
+But there is one thread connecting all of them:
+
+> **Learn to separate Signal from Noise.**
+
+“AI will take your job” may be Noise. The Signal may be that AI is expanding the range of problems testers can solve.
+
+“AI generated one hundred test cases today” may be Noise. The Signal is whether we discovered risks we previously missed.
+
+“AI made the team 10x more productive” may be Noise. The Signal is whether our testing became sharper.
+
+“This AI Testing Tool has an amazing demo” may be Noise. The Signal is whether it still works with my system, my data, and my scale.
+
+“I am not ready yet” may also be Noise. The Signal is whether there is a real problem I can start solving today.
+
+That is why I like Rahul’s distinction:
+
+> **Mechanical Amplifier or Cognitive Amplifier?**
+
+AI can certainly help us do things faster. For testers, the more valuable goal is to use AI to think more deeply, discover risks we could not previously see, and solve problems we could not previously solve.
+
+If all we get is more code, more test cases, more documentation, and more dashboard numbers, we may simply be using AI to generate noise faster.
+
+The stronger signal is:
+
+> **Can the same team, with AI in the loop, now make quality judgments it could not make before?**
+
+If the answer is yes, AI is beginning to genuinely change testing.
+
+Reference:
+
+Quality People: Rahul Parwal on Filtering the Noise in Testing's AI Moment:https://katalon.com/resources-center/blog/quality-people-rahul-parwal-filtering-ai-noise
