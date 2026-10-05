@@ -126,6 +126,11 @@ const itemListSchema = {
       ))}
     </nav>
 
+    <div class="wiki-search-empty" id="aiwiki-search-empty" hidden>
+      <p role="status">{locale === "zh-cn" ? "没有找到匹配的词条。试试其他关键词，或清除搜索继续浏览。" : "No matching terms. Try another keyword, or clear the search to browse all entries."}</p>
+      <button type="button" id="aiwiki-search-reset">{locale === "zh-cn" ? "清除搜索" : "Clear search"}</button>
+    </div>
+
     {letterSections.map((section) => (
       <article
         class="wiki-letter-group"
@@ -153,6 +158,28 @@ const itemListSchema = {
 </DocsLayout>
 
 <style>
+  .wiki-by-letter [hidden] { display: none !important; }
+  .wiki-search-empty {
+    margin-block: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-muted);
+    color: var(--color-text-secondary);
+  }
+  .wiki-search-empty p { margin: 0; }
+  .wiki-search-empty button {
+    min-height: 44px;
+    margin-top: 0.75rem;
+    padding: 0.5rem 0.85rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--color-theme);
+    background: var(--color-surface);
+    font-weight: 600;
+  }
+  .wiki-search-empty button:hover { background: var(--color-theme-soft); }
+
   :global(.docs-sidebar-wrap) {
     border-radius: var(--radius-md);
     overflow: hidden;
@@ -324,13 +351,20 @@ const itemListSchema = {
 
 <script>
   const searchInput = document.getElementById('aiwiki-search');
+  const emptyState = document.getElementById('aiwiki-search-empty');
   if (searchInput instanceof HTMLInputElement) {
+    document.getElementById('aiwiki-search-reset')?.addEventListener('click', () => {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.focus();
+    });
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.trim().toLowerCase();
       const groups = document.querySelectorAll<HTMLElement>('.wiki-letter-group');
       const pills = document.querySelectorAll<HTMLAnchorElement>('.wiki-letter-index-link');
 
       if (!query) {
+        if (emptyState) emptyState.hidden = true;
         document.querySelectorAll<HTMLElement>('.wiki-letter-list li').forEach((li) => {
           li.hidden = false;
         });
@@ -362,6 +396,7 @@ const itemListSchema = {
           pill.hidden = !hasVisible;
         }
       });
+      if (emptyState) emptyState.hidden = Array.from(groups).some((group) => !group.hidden);
     });
     const initialSearch = new URLSearchParams(window.location.search).get('q')?.trim() ?? '';
     if (initialSearch) searchInput.value = initialSearch;

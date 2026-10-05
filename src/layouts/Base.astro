@@ -399,6 +399,20 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <script is:inline>
       (() => {
         const key = "themePreference";
+        const root = document.documentElement;
+        let themeFrame = 0;
+        // Apply foreground and surface colors together; hover feedback resumes after the paint.
+        new MutationObserver(() => {
+          root.dataset.themeSwitching = "";
+          cancelAnimationFrame(themeFrame);
+          void root.offsetWidth;
+          themeFrame = requestAnimationFrame(() => {
+            themeFrame = requestAnimationFrame(() => {
+              delete root.dataset.themeSwitching;
+              themeFrame = 0;
+            });
+          });
+        }).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
         const resolve = (preference) => preference === "system"
           ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
           : preference;

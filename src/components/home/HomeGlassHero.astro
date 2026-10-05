@@ -81,9 +81,9 @@ const topicLinks = locale === "zh-cn" ? [
     align-items: center;
     gap: clamp(2.25rem, 5vw, 5.5rem);
     width: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter))));
-    min-height: clamp(300px, 31vw, 390px);
+    min-height: clamp(340px, 33vw, 450px);
     margin-inline: auto;
-    padding-block: clamp(2.75rem, 5vw, 4.25rem);
+    padding-block: clamp(3rem, 6vw, 5rem);
   }
 
   .hero-a__copy {
@@ -104,7 +104,7 @@ const topicLinks = locale === "zh-cn" ? [
     font-family: var(--font-heading);
     font-weight: 800;
     line-height: 1.02;
-    letter-spacing: -.04em;
+    letter-spacing: -.03em;
     text-wrap: balance;
   }
 
@@ -121,11 +121,12 @@ const topicLinks = locale === "zh-cn" ? [
   }
 
   .glass-hero__summary {
-    max-width: 43rem;
+    max-width: 38rem;
     margin: 1.35rem 0 0;
     color: var(--color-text-secondary);
     font-size: clamp(1rem, 1.5vw, 1.15rem);
     line-height: 1.65;
+    text-wrap: balance;
   }
 
   .glass-hero__actions {
@@ -142,10 +143,10 @@ const topicLinks = locale === "zh-cn" ? [
     gap: .6rem;
     min-height: 2.8rem;
     padding: .72rem 1.1rem;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     font: 800 .82rem/1.2 var(--font-sans);
     text-decoration: none;
-    transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
   }
 
   .glass-hero .pill-cta--primary {
@@ -162,15 +163,31 @@ const topicLinks = locale === "zh-cn" ? [
 
   .glass-hero .pill-cta:hover,
   .glass-hero .pill-cta:focus-visible {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 
   .hero-topic-map {
+    position: relative;
     align-self: center;
     justify-self: end;
     width: min(100%, 26rem);
-    padding: .35rem 0 .35rem 1.25rem;
-    border-inline-start: 1px solid color-mix(in srgb, var(--color-theme) 38%, var(--color-border));
+    padding: .5rem 0 .5rem 1.75rem;
+  }
+
+  .hero-topic-map::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 1px;
+    background: var(--color-border-strong);
+    transform-origin: top;
+    animation: proofline-rail 700ms var(--ease-out);
+  }
+
+  @keyframes proofline-rail {
+    from { transform: scaleY(.2); }
+    to { transform: scaleY(1); }
   }
 
   .hero-topic-map__label {
@@ -195,14 +212,21 @@ const topicLinks = locale === "zh-cn" ? [
     grid-template-columns: 1.8rem minmax(0, 1fr) auto;
     align-items: center;
     gap: .65rem;
-    padding: .62rem 0;
+    padding: .85rem .4rem .85rem 0;
     color: inherit;
     text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast);
   }
 
   .hero-topic-map a:hover strong,
   .hero-topic-map a:focus-visible strong {
     color: var(--color-theme);
+  }
+
+  .hero-topic-map a:hover,
+  .hero-topic-map a:focus-visible {
+    background: var(--color-theme-soft);
   }
 
   .hero-topic-map__number {
@@ -219,17 +243,28 @@ const topicLinks = locale === "zh-cn" ? [
   .hero-topic-map__copy strong {
     color: var(--color-main);
     font-size: .9rem;
+    transition: color var(--transition-fast);
   }
 
   .hero-topic-map__copy small {
     color: var(--color-text-secondary);
-    font-size: .75rem;
-    line-height: 1.4;
+    font-size: .8rem;
+    line-height: 1.55;
   }
 
   .hero-topic-map__arrow {
     color: var(--color-theme);
     font-size: 1rem;
+    transition: transform var(--transition-fast);
+  }
+
+  .hero-topic-map a:hover .hero-topic-map__arrow,
+  .hero-topic-map a:focus-visible .hero-topic-map__arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .glass-hero .pill-cta:active {
+    transform: translateY(1px);
   }
 
   @media (max-width: 900px) {
@@ -253,26 +288,37 @@ const topicLinks = locale === "zh-cn" ? [
       display: block;
       width: min(100% - (2 * var(--layout-gutter)), var(--layout-max));
       min-height: 0;
-      padding-block: 3rem 2.75rem;
+      padding-block: 2.75rem 2.5rem;
     }
 
     .home-hero--a h1,
     .home-hero--en h1 {
       max-width: 14ch;
       font-size: clamp(2.5rem, 11vw, 3.6rem);
+      line-height: 1.12;
+    }
+
+    .home-hero--en h1 {
+      max-width: 16ch;
+      font-size: clamp(2.2rem, 9.5vw, 3.2rem);
     }
 
     .hero-topic-map {
       width: 100%;
       max-width: none;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       padding: 1.2rem 0 0;
       border-inline-start: 0;
       border-top: 1px solid color-mix(in srgb, var(--color-theme) 38%, var(--color-border));
     }
+
+    .hero-topic-map::before { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .hero-topic-map::before { animation: none; }
+    .hero-topic-map a:hover .hero-topic-map__arrow,
+    .hero-topic-map a:focus-visible .hero-topic-map__arrow { transform: none; }
     .glass-hero .pill-cta {
       transition: none;
     }
@@ -290,9 +336,5 @@ const topicLinks = locale === "zh-cn" ? [
   .glass-hero .pill-cta--primary {
     color: var(--color-theme-on-dark);
     box-shadow: var(--shadow-sm);
-  }
-  .glass-hero .pill-cta:hover,
-  .glass-hero .pill-cta:focus-visible {
-    transform: translateY(-1px);
   }
 </style>

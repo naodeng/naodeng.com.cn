@@ -101,12 +101,12 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
 <style>
   .l-docs {
     display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: var(--sp-l);
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
     align-items: start;
     max-inline-size: var(--layout-max);
     margin-inline: auto;
-    padding-inline: var(--sp-m);
+    padding-inline: 0;
   }
   .l-docs[data-has-toc="true"] {
     grid-template-columns: 220px minmax(0, 1fr) 200px;
@@ -114,14 +114,14 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   }
   .docs-sidebar-wrap {
     position: sticky;
-    top: var(--sp-m);
-    min-inline-size: 220px;
+    top: var(--sticky-offset);
+    min-inline-size: 0;
     overflow: visible;
   }
   .docs-content {
     min-inline-size: 0;
     max-inline-size: var(--reading-max);
-    padding: clamp(1.25rem, 3vw, 2.5rem);
+    padding: clamp(1.1rem, 2.5vw, 2rem);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: var(--color-surface-elevated);
@@ -133,7 +133,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   }
   .docs-toc-wrap {
     position: sticky;
-    top: var(--sp-m);
+    top: var(--sticky-offset);
     align-self: start;
     display: flex;
     flex-direction: column;
@@ -144,6 +144,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     font-weight: 700;
     margin-block-end: var(--sp-m);
     letter-spacing: -0.02em;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .docs-content :global(h2) {
     font-size: 1.35rem;
@@ -159,7 +162,8 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   }
   .docs-content :global(p) {
     margin-block: 0.85em 0;
-    line-height: 1.7;
+    line-height: 1.8;
+    text-wrap: pretty;
   }
   .docs-content :global(ul),
   .docs-content :global(ol) {
@@ -205,7 +209,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
       display: none;
     }
   }
-  @media (width < 768px) {
+  @media (width < 900px) {
     .l-docs {
       grid-template-columns: 1fr;
       gap: var(--sp-m);

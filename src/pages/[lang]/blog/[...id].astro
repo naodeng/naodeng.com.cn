@@ -296,11 +296,11 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     }
     .article-sidebar-inner {
       position: sticky;
-      top: var(--sp-m, 1rem);
+      top: var(--sticky-offset);
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      max-height: calc(100vh - var(--sp-m, 1rem) * 2);
+      max-height: calc(100dvh - var(--sticky-offset) - 1rem);
       overflow-y: auto;
       padding-inline-end: 0.25rem;
       scrollbar-width: none;
@@ -437,14 +437,16 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
 
   /* Markdown / 正文内容样式 */
   .prose {
+    max-inline-size: 72ch;
+    margin-inline: auto;
     font-size: 1rem;
-    line-height: 1.75;
+    line-height: 1.8;
     color: var(--color-main);
   }
   .prose :global(h2) {
-    font-size: 1.4rem;
+    font-size: clamp(1.35rem, 2vw, 1.6rem);
     font-weight: 700;
-    margin-block: 1.5em 0.5em;
+    margin-block: 2em 0.6em;
     padding-block-end: 0.3em;
     border-block-end: 1px solid var(--color-border);
     color: var(--color-main);
@@ -466,6 +468,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   }
   .prose :global(p) {
     margin-block: 0.85em 0;
+    text-wrap: pretty;
   }
   .prose :global(ul),
   .prose :global(ol) {

@@ -416,7 +416,7 @@ const itemListSchema = {
 
   .fw-stat__label {
     font-size: 0.75rem;
-    color: color-mix(in srgb, var(--color-main) 55%, transparent);
+    color: var(--color-text-secondary);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -620,7 +620,7 @@ const itemListSchema = {
   .article-description {
     font-size: 0.8rem;
     line-height: 1.5;
-    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+    color: var(--color-text-secondary);
     margin: 0;
     flex-grow: 1;
     display: -webkit-box;
@@ -644,7 +644,7 @@ const itemListSchema = {
     align-items: center;
     gap: 0.35em;
     font-size: 0.75rem;
-    color: color-mix(in srgb, var(--color-main) 55%, transparent);
+    color: var(--color-text-secondary);
   }
 
   .article-difficulty {
@@ -654,9 +654,9 @@ const itemListSchema = {
     font-size: 0.75rem;
   }
 
-  .article-difficulty[data-difficulty="beginner"]    { background: rgba(16,185,129,.12); color: #10b981; }
-  .article-difficulty[data-difficulty="intermediate"] { background: rgba(245,158,11,.12); color: #f59e0b; }
-  .article-difficulty[data-difficulty="advanced"]    { background: rgba(239,68,68,.12);  color: #ef4444; }
+  .article-difficulty[data-difficulty="beginner"]    { background: color-mix(in srgb, var(--color-success-text) 6%, var(--color-surface)); color: var(--color-success-text); }
+  .article-difficulty[data-difficulty="intermediate"] { background: color-mix(in srgb, var(--color-warn) 6%, var(--color-surface)); color: var(--color-warn); }
+  .article-difficulty[data-difficulty="advanced"]    { background: color-mix(in srgb, var(--color-caution) 6%, var(--color-surface)); color: var(--color-caution); }
 
   @media (max-width: 600px) {
     .fw-hero { padding: 1.25rem; }

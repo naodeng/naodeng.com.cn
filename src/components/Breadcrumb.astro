@@ -51,14 +51,14 @@ const { items } = Astro.props;
     align-items: center;
     gap: 0;
     font-size: 0.8rem;
-    color: color-mix(in srgb, var(--color-main) 50%, transparent);
+    color: var(--color-text-secondary);
   }
   .breadcrumb-item {
     display: inline-flex;
     align-items: center;
   }
   .breadcrumb-link {
-    color: color-mix(in srgb, var(--color-main) 55%, transparent);
+    color: var(--color-text-secondary);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -73,7 +73,7 @@ const { items } = Astro.props;
   }
   .breadcrumb-sep {
     margin-inline: 0.5rem;
-    color: color-mix(in srgb, var(--color-main) 30%, transparent);
+    color: var(--color-text-secondary);
     user-select: none;
     font-weight: 300;
   }

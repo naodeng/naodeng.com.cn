@@ -1,11 +1,11 @@
 :root {
-  overflow-x: clip;
   color-scheme: light;
   --layout-max: 1280px;
   --layout-gutter: 24px;
   --reading-max: 768px;
   --sidebar-layout-max: 1280px;
   --header-height: 80px;
+  --sticky-offset: calc(var(--header-height) + 1rem);
   --color-theme: #176b75;
   --color-theme-focus: #0f5962;
   --color-theme-on-dark: #ffffff;
@@ -22,7 +22,7 @@
   --color-warn: #9a6700;
   --color-text-primary: var(--color-main);
   --color-text-secondary: #5c6b6d;
-  --color-text-tertiary: #738184;
+  --color-text-tertiary: #627275;
   --color-surface-muted: #f1f5f3;
   --color-surface-elevated: #ffffff;
   --color-border-strong: #b9cfcb;
@@ -81,7 +81,8 @@
   --spacing-section: 80px;
 
   --transition-base: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast: 160ms ease;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 180ms var(--ease-out);
 
   --control-height: 2.875rem;
   --control-padding-inline: 1rem;
@@ -153,7 +154,7 @@ pre.astro-code {
 }
 
 pre.astro-code span {
-  color: var(--shiki-light) !important;
+  color: color-mix(in srgb, var(--shiki-light) 70%, var(--color-main)) !important;
 }
 
 :root[data-theme="dark"] pre.astro-code {
@@ -161,7 +162,7 @@ pre.astro-code span {
 }
 
 :root[data-theme="dark"] pre.astro-code span {
-  color: var(--shiki-dark) !important;
+  color: color-mix(in srgb, var(--shiki-dark) 70%, var(--color-main)) !important;
 }
 
 :root[data-density="compact"] {
@@ -175,6 +176,13 @@ pre.astro-code span {
 }
 
 /* Disable decorative animations for users who prefer reduced motion */
+:root[data-theme-switching],
+:root[data-theme-switching] *,
+:root[data-theme-switching] *::before,
+:root[data-theme-switching] *::after {
+  transition: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -188,6 +196,29 @@ pre.astro-code span {
 
 body {
   font-family: var(--font-sans);
+}
+
+@media (width < 1100px) {
+  :root { --header-height: 60px; }
+}
+
+::selection {
+  color: var(--color-theme-on-dark);
+  background: var(--color-theme);
+}
+
+:where(input, textarea) {
+  caret-color: var(--color-theme);
+}
+
+:where(pre, .article-table-scroll, .docs-sidebar-nav, .lifecycle-track) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+:target,
+:where(h1, h2, h3, h4, section)[id] {
+  scroll-margin-block-start: var(--sticky-offset);
 }
 
 h1,
@@ -216,6 +247,15 @@ p {
 p a {
   color: var(--color-theme);
   text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  text-decoration-skip-ink: auto;
+}
+
+:where(.prose, .docs-content, article) :not(pre) > code {
+  overflow-wrap: anywhere;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 a,
@@ -242,6 +282,12 @@ select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--color-theme);
   outline-offset: 2px;
+}
+
+summary:focus-visible {
+  outline: 2px solid var(--color-theme);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
 button,
@@ -277,7 +323,7 @@ textarea {
 }
 
 :where(.cta-button:active) {
-  transform: scale(0.95);
+  transform: translateY(1px);
 }
 
 :where(.tag-pill, .tag-link, .tag, .blog-related-terms-pill, .aiwiki-related-pill, .guild-related-terms-pill) {
@@ -319,6 +365,7 @@ textarea {
 
 :where(.wiki-search-input::placeholder, .docs-sidebar-search-input::placeholder, .search-input::placeholder) {
   color: var(--color-text-tertiary);
+  opacity: 1;
 }
 
 :where(.wiki-search-input:focus, .docs-sidebar-search-input:focus, .search-input:focus) {

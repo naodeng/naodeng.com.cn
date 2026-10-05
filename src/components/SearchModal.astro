@@ -30,6 +30,10 @@ const t = useTranslations(locale);
     aria-label={locale === "zh-cn" ? "搜索结果" : "Search results"}
   ></div>
   <p class="search-empty" id="search-empty" hidden>{t(SEARCH_NO_RESULTS)}</p>
+  <div class="search-status" id="search-status" hidden>
+    <p role="status" id="search-status-text"></p>
+    <button type="button" id="search-retry" hidden>{locale === "zh-cn" ? "重新加载" : "Try again"}</button>
+  </div>
 </dialog>
 
 <script is:inline>
@@ -40,10 +44,14 @@ const t = useTranslations(locale);
   const emptyEl = document.getElementById("search-empty");
   const backdrop = document.querySelector(".search-backdrop[data-close]");
   const hintEl = document.querySelector("[data-hint]");
+  const statusEl = document.getElementById("search-status");
+  const statusText = document.getElementById("search-status-text");
+  const retryButton = document.getElementById("search-retry");
 
   let index = [];
   let locale = "en";
   let activeIndex = -1;
+  let indexRequest = null;
 
   function getLocale() {
     const el = document.documentElement.getAttribute("data-locale");
@@ -52,11 +60,21 @@ const t = useTranslations(locale);
 
   async function loadIndex() {
     if (index.length > 0) return index;
+    if (indexRequest) return indexRequest;
     locale = getLocale();
-    const res = await fetch(`/${locale}/search-index.json`);
-    if (!res.ok) return [];
-    index = await res.json();
-    return index;
+    indexRequest = (async () => {
+      const res = await fetch(`/${locale}/search-index.json`);
+      if (!res.ok) throw new Error("Search index unavailable");
+      const data = await res.json();
+      if (!Array.isArray(data)) throw new Error("Invalid search index");
+      index = data;
+      return index;
+    })();
+    try {
+      return await indexRequest;
+    } finally {
+      indexRequest = null;
+    }
   }
 
   function escapeHtml(s) {
@@ -323,17 +341,36 @@ const t = useTranslations(locale);
     renderItems(items, hasQuery);
   }
 
-  function openSearch() {
-    locale = getLocale();
-    loadIndex().then(() => {
-      dialog.showModal();
-      input.value = "";
-      input.focus();
-      renderItems(getStarterItems(), false);
-      emptyEl.hidden = true;
-      if (hintEl) hintEl.style.display = "block";
-    });
+  async function prepareSearch() {
+    resultsEl.hidden = true;
+    emptyEl.hidden = true;
+    statusEl.hidden = false;
+    retryButton.hidden = true;
+    statusText.textContent = locale === "zh-cn" ? "正在加载搜索…" : "Loading search…";
+    input.setAttribute("aria-busy", "true");
+    try {
+      await loadIndex();
+      statusEl.hidden = true;
+      if (dialog.open) onInput();
+    } catch {
+      statusText.textContent = locale === "zh-cn" ? "搜索暂时无法加载，请重试。" : "Search could not load. Please try again.";
+      retryButton.hidden = false;
+    } finally {
+      input.removeAttribute("aria-busy");
+    }
   }
+
+  function openSearch() {
+    if (dialog.open) return;
+    locale = getLocale();
+    dialog.showModal();
+    input.value = "";
+    input.focus();
+    if (hintEl) hintEl.style.display = "block";
+    prepareSearch();
+  }
+
+  retryButton.addEventListener("click", prepareSearch);
 
   function closeSearch() {
     dialog.close();
@@ -470,7 +507,8 @@ const t = useTranslations(locale);
   }
 
   .search-input::placeholder {
-    opacity: 0.7;
+    color: var(--color-text-tertiary);
+    opacity: 1;
   }
 
   .search-input:focus {
@@ -489,7 +527,7 @@ const t = useTranslations(locale);
 
   .search-hint {
     font-size: 0.85rem;
-    opacity: 0.6;
+    color: var(--color-text-secondary);
   }
 
   .search-results {
@@ -504,8 +542,8 @@ const t = useTranslations(locale);
     background: var(--color-surface-muted);
     border-radius: var(--radius-md);
     padding: 0.6rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent);
+    box-shadow: none;
+    border: 1px solid var(--color-border);
   }
 
   .search-results[hidden] {
@@ -617,10 +655,37 @@ const t = useTranslations(locale);
     opacity: 0.8;
   }
 
+  .search-status {
+    position: relative;
+    z-index: 1;
+    max-inline-size: clamp(560px, 72vw, 860px);
+    margin: 1rem auto 0;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    text-align: center;
+  }
+  .search-status[hidden], #search-retry[hidden] { display: none; }
+  .search-status p { margin: 0; }
+  #search-retry {
+    min-height: 44px;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--color-theme);
+    background: var(--color-theme-soft);
+    font-weight: 600;
+  }
+  #search-retry:hover { background: var(--color-theme-soft-hover); }
+
   @media (max-width: 700px) {
     .search-box,
     .search-results,
-    .search-empty {
+    .search-empty,
+    .search-status {
       max-inline-size: 100%;
     }
     .search-input {

@@ -8,14 +8,14 @@ const site = AI_TEST_AUDITOR_SITE[locale];
 const breadcrumbs = [{ name: locale === "zh-cn" ? "首页" : "Home", url: `/${locale}/` }, { name: "AI Test Auditor", url: `/${locale}/ai-test-auditor/` }];
 ---
 <Layout title={site.meta.title} description={site.meta.description} breadcrumbs={breadcrumbs}>
-  <main class="auditor-page" data-ai-test-auditor-page>
+  <div class="auditor-page" data-ai-test-auditor-page>
     <section class="hero"><div><p class="eyebrow">{site.hero.eyebrow}</p><h1>{site.hero.title}</h1><p class="summary">{site.hero.summary}</p><div class="actions">{site.hero.actions.map((a) => <a class:list={['action', { primary: a.external }]} href={a.href} target={a.external ? '_blank' : undefined} rel={a.external ? 'noopener noreferrer' : undefined}>{a.label}<span>{a.external ? '↗' : '↓'}</span></a>)}</div></div><aside class="panel"><small>AI TEST / AUDIT</small><strong>FAKE · WEAK</strong><span>{locale === 'zh-cn' ? '证据先于信任，边界清晰才能做出更好的质量判断。' : 'Evidence before trust. Clear boundaries make better quality decisions.'}</span></aside></section>
     <section class="section"><h2>{site.labels.features}</h2><div class="grid">{site.features.map((f) => <article><span class="material-icons-sharp icon">{f.icon}</span><h3>{f.title}</h3><p>{f.description}</p></article>)}</div></section>
     <section class="section"><h2>{site.labels.rules}</h2><div class="rules">{site.rules.map((r) => <article><strong class:list={['status', r.status.toLowerCase()]}>{r.status}</strong><div><h3>{r.title}</h3><p>{r.description}</p></div></article>)}</div></section>
     <section class="section"><h2>{site.labels.install}</h2><div class="grid">{site.installModes.map((m) => <article id={m.id}><h3>{m.title}</h3><p>{m.description}</p><small class="command">{site.labels.commandLabel}</small>{m.commands.map((c) => <pre><code>{c}</code></pre>)}</article>)}</div></section>
     <section class="section"><h2>{site.labels.ecosystem}</h2><div class="links">{site.ecosystemLinks.map((l) => <a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener noreferrer' : undefined}>{l.label}<span>→</span></a>)}</div></section>
     <section class="section"><h2>{site.labels.releaseNotes}</h2><div class="releases">{site.releases.map((r) => <details><summary><span><strong>{r.version}</strong><time>{r.publishedAt}</time></span><span>{r.summary}</span></summary><div><ul>{r.changes.map((c) => <li>{c}</li>)}</ul><a href={r.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} ↗</a></div></details>)}</div></section>
-  </main>
+  </div>
 </Layout>
 <style>
   .auditor-page {

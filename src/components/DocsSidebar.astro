@@ -186,7 +186,7 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--color-main) 50%, transparent);
+    color: var(--color-text-secondary);
     margin: 0 0 var(--sp-s);
     padding-block-end: 0.35rem;
     border-block-end: 1px solid var(--color-border);
@@ -207,7 +207,8 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     outline: none;
   }
   .docs-sidebar-search-input::placeholder {
-    color: color-mix(in srgb, var(--color-main) 55%, transparent);
+    color: var(--color-text-tertiary);
+    opacity: 1;
   }
   .docs-sidebar-search-input:focus {
     border-color: var(--color-theme);

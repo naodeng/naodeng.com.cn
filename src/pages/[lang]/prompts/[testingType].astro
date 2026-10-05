@@ -186,7 +186,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
       </div>
     </aside>
 
-    <main class="prompt-detail-main">
+    <div class="prompt-detail-main">
       <header class="prompt-detail-header" id="prompt-usage-tip">
         <div class="prompt-detail-kicker">
           <span>{currentPrompt.areaLabel}</span><span aria-hidden="true">/</span><span>{currentPrompt.taskLabel}</span>
@@ -291,7 +291,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
       )}
 
       <Giscus lang={lang === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" loading="lazy" />
-    </main>
+    </div>
 
     {tocHeadings.length > 0 && (
       <aside class="prompt-detail-toc" id="prompts-toc-wrap">
@@ -332,22 +332,22 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
 </script>
 
 <style>
-  .prompt-detail-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--sp-l); max-width: var(--layout-max); margin: 0 auto; padding: 0 var(--sp-m) 5rem; align-items: start; }
+  .prompt-detail-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); max-width: var(--layout-max); margin: 0 auto; padding: 0 0 5rem; align-items: start; }
   .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 220px minmax(0, 1fr) 200px; }
-  .prompt-detail-sidebar, .prompt-detail-toc { position: sticky; top: var(--sp-m); align-self: start; }
+  .prompt-detail-sidebar, .prompt-detail-toc { position: sticky; top: var(--sticky-offset); align-self: start; }
   .prompt-detail-sidebar-inner { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
   .prompt-sidebar-toggle { display: none; width: 100%; justify-content: space-between; padding: 0.85rem 1rem; border: 0; background: transparent; color: var(--color-main); font: inherit; font-weight: 800; text-align: start; cursor: pointer; }
   .prompt-sidebar-toggle .material-icons-sharp { font-size: 1.1rem; }
-  .prompt-sidebar-nav { max-height: calc(100vh - 2rem); overflow-y: auto; padding: 1rem; }
+  .prompt-sidebar-nav { max-height: calc(100dvh - var(--sticky-offset) - 1rem); overflow-y: auto; padding: 1rem; }
   .prompt-sidebar-home, .prompt-sidebar-all { display: inline-flex; gap: 0.35rem; align-items: center; color: var(--color-theme); font-size: 0.78rem; font-weight: 800; text-decoration: none; line-height: 1.45; }
   .prompt-sidebar-home .material-icons-sharp { font-size: 0.95rem; }
   .prompt-sidebar-home:hover, .prompt-sidebar-all:hover { text-decoration: underline; }
   .prompt-sidebar-all { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--color-border); }
-  .prompt-sidebar-label { margin: 1rem 0 0.5rem; color: color-mix(in srgb, var(--color-main) 55%, transparent); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .prompt-sidebar-label { margin: 1rem 0 0.5rem; color: var(--color-text-secondary); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
   .prompt-sidebar-nav ul { display: grid; gap: 0.15rem; list-style: none; margin: 0; padding: 0; }
   .prompt-sidebar-nav li a { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.48rem 0.55rem; border-radius: var(--radius-sm); color: color-mix(in srgb, var(--color-main) 70%, transparent); font-size: 0.8rem; line-height: 1.35; text-decoration: none; }
   .prompt-sidebar-nav li a:hover, .prompt-sidebar-nav li a.is-current { background: var(--color-theme-soft); color: var(--color-theme); }
-  .prompt-sidebar-nav li small { flex: 0 0 auto; opacity: 0.7; }
+  .prompt-sidebar-nav li small { flex: 0 0 auto; opacity: 1; }
   .prompt-detail-main { min-width: 0; }
   .prompt-detail-header { padding: 0 0 2rem; }
   .prompt-detail-kicker { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; color: var(--color-theme); font-size: 0.76rem; font-weight: 800; }
@@ -366,7 +366,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-contract-block ul { display: grid; gap: 0.45rem; margin: 0.7rem 0 0; padding-inline-start: 1.1rem; color: color-mix(in srgb, var(--color-main) 75%, transparent); font-size: 0.83rem; line-height: 1.45; }
 
   .prompt-variants { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; margin: 1.5rem 0; padding-block: 0.2rem; }
-  .prompt-variants-label { color: color-mix(in srgb, var(--color-main) 58%, transparent); font-size: 0.75rem; font-weight: 800; }
+  .prompt-variants-label { color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 800; }
   .prompt-variants > div { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .prompt-variants a:hover, .prompt-variants a.is-current { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-theme); }
 
@@ -393,22 +393,22 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-workflow-next, .prompt-related-prompts { margin-top: 3rem; padding-top: 0; }
   .prompt-related-heading { display: block; margin-bottom: 1rem; }
   .prompt-related-heading h2 { margin: 0; font-size: 1.45rem; }
-  .prompt-related-heading p { max-width: 52ch; margin: 0.45rem 0 0; color: color-mix(in srgb, var(--color-main) 62%, transparent); font-size: 0.85rem; line-height: 1.55; }
+  .prompt-related-heading p { max-width: 52ch; margin: 0.45rem 0 0; color: var(--color-text-secondary); font-size: 0.85rem; line-height: 1.55; }
   .prompt-workflow-next ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; list-style: none; margin: 0; padding: 0; }
   .prompt-workflow-next li { min-width: 0; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
   .prompt-workflow-next li.is-current { border-color: var(--color-theme); background: var(--color-theme-soft); }
   .prompt-workflow-next li > span { color: var(--color-theme); font-size: 0.7rem; font-weight: 800; }
   .prompt-workflow-next li a { display: grid; gap: 0.3rem; margin-top: 0.55rem; color: var(--color-main); text-decoration: none; }
   .prompt-workflow-next li a:hover strong { color: var(--color-theme); }
-  .prompt-workflow-next li small { color: color-mix(in srgb, var(--color-main) 58%, transparent); line-height: 1.45; }
+  .prompt-workflow-next li small { color: var(--color-text-secondary); line-height: 1.45; }
   .prompt-related-prompts-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
   .prompt-related-prompt { display: flex; min-height: 80px; justify-content: space-between; gap: 0.7rem; align-items: center; padding: 0.8rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-main); text-decoration: none; }
   .prompt-related-prompt:hover { border-color: var(--color-theme); background: var(--color-theme-soft); }
   .prompt-related-prompt span:first-child { display: grid; gap: 0.3rem; }
   .prompt-related-prompt strong { font-size: 0.82rem; line-height: 1.35; }
-  .prompt-related-prompt small { color: color-mix(in srgb, var(--color-main) 58%, transparent); font-size: 0.7rem; }
+  .prompt-related-prompt small { color: var(--color-text-secondary); font-size: 0.7rem; }
   .prompt-related-prompt-arrow { color: var(--color-theme); }
-  .prompt-detail-toc :global(.toc-sidebar--right) { position: static; max-height: calc(100vh - 2rem); }
+  .prompt-detail-toc :global(.toc-sidebar--right) { position: static; max-height: calc(100dvh - var(--sticky-offset) - 1rem); }
   .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
   @media (max-width: 1100px) { .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 220px minmax(0, 1fr); } .prompt-detail-toc { display: none; } }

@@ -155,6 +155,23 @@ const {
     }
   }
 
+  :global(.article-table-scroll) {
+    max-inline-size: 100%;
+    overflow-x: auto;
+    margin-block: 1em 0;
+    border-radius: var(--radius-sm);
+  }
+  :global(.article-table-scroll > table) { margin-block: 0 !important; }
+  :global(.article-table-scroll:focus-visible) {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 3px;
+  }
+  @media (max-width: 640px) {
+    :global(.article-table-scroll[data-wide="true"] > table) {
+      min-inline-size: 36rem;
+    }
+  }
+
   /* 代码块 copy 按钮：悬浮在右上角 */
   :global(.code-block-wrapper) {
     position: relative;
@@ -162,20 +179,23 @@ const {
   }
   :global(.code-block-wrapper) pre {
     margin-block: 0 !important;
+    padding-block-start: 3.5rem;
   }
   :global(.code-copy-btn) {
     position: absolute;
     top: 0.5em;
     right: 0.5em;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-strong);
     border-radius: var(--radius-sm);
-    color: rgba(255,255,255,0.7);
+    color: var(--color-text-secondary);
     cursor: pointer;
     font-size: 0.75rem;
     font-family: ui-monospace, monospace;
     padding: 0.2em 0.6em;
-    opacity: 0;
+    min-height: 44px;
+    min-width: 44px;
+    opacity: 1;
     transition: opacity 0.15s, color 0.15s, background 0.15s;
     z-index: 2;
     line-height: 1.6;
@@ -185,8 +205,8 @@ const {
     opacity: 1;
   }
   :global(.code-copy-btn:hover) {
-    background: rgba(255,255,255,0.22);
-    color: #fff;
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
     opacity: 1;
   }
   :global(.code-copy-btn:focus-visible) {
@@ -199,6 +219,7 @@ const {
     border-color: var(--color-theme);
     opacity: 1;
   }
+  :global(.code-copy-btn.copy-failed) { color: var(--color-caution); }
 
   /* 9.3: 窄视口正文字体与行高 */
   @media (max-width: 480px) {
@@ -212,14 +233,14 @@ const {
 
 <script>
   (function () {
-    if (typeof navigator === "undefined" || typeof navigator.clipboard === "undefined") return;
-
     const pageLang = document.documentElement.lang.toLowerCase();
     const isZhCn = pageLang === "zh-cn" || pageLang.startsWith("zh");
     const copyLabel = isZhCn ? "复制" : "Copy";
     const copiedLabel = isZhCn ? "已复制" : "Copied!";
+    const failedLabel = isZhCn ? "复制失败，请重试" : "Copy failed. Try again";
 
     function enhanceCodeBlocks() {
+      if (typeof navigator.clipboard === "undefined") return;
       document.querySelectorAll<HTMLPreElement>("article pre").forEach((pre) => {
         if (pre.parentElement?.classList.contains("code-block-wrapper")) return;
         const code = pre.querySelector("code");
@@ -235,6 +256,7 @@ const {
         copyBtn.setAttribute("aria-label", copyLabel);
 
         copyBtn.addEventListener("click", () => {
+          copyBtn.classList.remove("copy-failed");
           navigator.clipboard.writeText(code.textContent ?? "").then(() => {
             copyBtn.textContent = copiedLabel;
             copyBtn.setAttribute("aria-label", copiedLabel);
@@ -244,7 +266,11 @@ const {
               copyBtn.setAttribute("aria-label", copyLabel);
               copyBtn.classList.remove("copied");
             }, 2000);
-          }).catch(() => {});
+          }).catch(() => {
+            copyBtn.textContent = failedLabel;
+            copyBtn.setAttribute("aria-label", failedLabel);
+            copyBtn.classList.add("copy-failed");
+          });
         });
 
         pre.parentNode!.insertBefore(wrapper, pre);
@@ -253,10 +279,41 @@ const {
       });
     }
 
+    function enhanceTables() {
+      document.querySelectorAll<HTMLTableElement>("article table").forEach((table) => {
+        if (table.parentElement?.classList.contains("article-table-scroll")) return;
+        const wrapper = document.createElement("div");
+        wrapper.className = "article-table-scroll";
+        const columns = Math.max(...Array.from(table.rows, (row) =>
+          Array.from(row.cells).reduce((count, cell) => count + cell.colSpan, 0)), 0);
+        wrapper.dataset.wide = String(columns >= 3);
+        table.before(wrapper);
+        wrapper.appendChild(table);
+        const updateAccess = () => {
+          const scrollable = wrapper.scrollWidth > wrapper.clientWidth + 1;
+          wrapper.tabIndex = scrollable ? 0 : -1;
+          if (scrollable) {
+            wrapper.setAttribute("role", "region");
+            wrapper.setAttribute("aria-label", isZhCn ? "表格，可横向滚动" : "Table, scroll horizontally");
+          } else {
+            wrapper.removeAttribute("role");
+            wrapper.removeAttribute("aria-label");
+          }
+        };
+        updateAccess();
+        if (typeof ResizeObserver !== "undefined") {
+          const observer = new ResizeObserver(updateAccess);
+          observer.observe(wrapper);
+          observer.observe(table);
+        }
+      });
+    }
+
+    const enhanceArticle = () => { enhanceCodeBlocks(); enhanceTables(); };
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", enhanceCodeBlocks);
+      document.addEventListener("DOMContentLoaded", enhanceArticle);
     } else {
-      enhanceCodeBlocks();
+      enhanceArticle();
     }
   })();
 </script>

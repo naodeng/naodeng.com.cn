@@ -90,7 +90,7 @@ const itemListSchema = {
   <div class="tt-page">
     <!-- Header -->
     <header class="tt-header">
-      <span class="tt-header__icon" aria-hidden="true">{testTypeConfig.icon}</span>
+      <span class="tt-header__icon material-icons-sharp" aria-hidden="true">{testTypeConfig.icon}</span>
       <div>
         <h1 class="tt-header__title">{testTypeConfig.title}</h1>
         <p class="tt-header__desc">{testTypeConfig.description}</p>
@@ -113,7 +113,7 @@ const itemListSchema = {
               {fw.icon ? (
                 <img src={fw.icon} alt={fw.name} class="fw-card__icon" width="32" height="32" loading="lazy" />
               ) : (
-                <span class="fw-card__icon-fb" aria-hidden="true">{testTypeConfig.icon}</span>
+                <span class="fw-card__icon-fb material-icons-sharp" aria-hidden="true">{testTypeConfig.icon}</span>
               )}
               <span class="fw-card__lang">{fw.language}</span>
             </div>
@@ -138,15 +138,16 @@ const itemListSchema = {
   .tt-page {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--sp-m) var(--sp-xl);
+    padding: 0 0 var(--sp-xl);
   }
 
   .tt-header {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
     align-items: flex-start;
     gap: 1rem;
     margin: 1.5rem 0 2rem;
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
     background: var(--color-surface);
     border: 0;
     border-inline-start: 1px solid var(--color-border-strong);
@@ -156,7 +157,8 @@ const itemListSchema = {
   .tt-header__icon {
     font-size: 2.5rem;
     line-height: 1;
-    flex-shrink: 0;
+    inline-size: 1em;
+    block-size: 1em;
   }
 
   .tt-header__title {
@@ -176,7 +178,7 @@ const itemListSchema = {
   .tt-section-title {
     font-size: 1rem;
     font-weight: 700;
-    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+    color: var(--color-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin: 0 0 1rem;
@@ -225,6 +227,7 @@ const itemListSchema = {
 
   .fw-card__top {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
@@ -244,13 +247,14 @@ const itemListSchema = {
   }
 
   .fw-card__lang {
+    max-inline-size: 100%;
     font-size: 0.75rem;
     font-weight: 600;
-    color: color-mix(in srgb, var(--color-main) 50%, transparent);
+    color: var(--color-text-secondary);
     background: color-mix(in srgb, var(--color-main) 8%, transparent);
     padding: 0.15em 0.5em;
     border-radius: var(--radius-sm);
-    white-space: nowrap;
+    overflow-wrap: anywhere;
   }
 
   .fw-card__name {
@@ -262,7 +266,7 @@ const itemListSchema = {
 
   .fw-card__desc {
     font-size: 0.82rem;
-    color: color-mix(in srgb, var(--color-main) 55%, transparent);
+    color: var(--color-text-secondary);
     line-height: 1.5;
     margin: 0;
     flex: 1;
@@ -281,7 +285,7 @@ const itemListSchema = {
 
   .fw-card__count {
     font-size: 0.75rem;
-    color: color-mix(in srgb, var(--color-main) 45%, transparent);
+    color: var(--color-text-secondary);
   }
 
   .fw-card__arrow {
@@ -298,7 +302,7 @@ const itemListSchema = {
 
   @media (max-width: 480px) {
     .tt-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

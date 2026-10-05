@@ -11,7 +11,7 @@ colors:
   surface-elevated: "#ffffff"
   ink: "#202a30"
   secondary: "#5c6b6d"
-  tertiary: "#738184"
+  tertiary: "#627275"
   border: "#dfe4e1"
   border-strong: "#b9cfcb"
   code-surface: "#f1f5f3"
@@ -38,9 +38,9 @@ typography:
     fontSize: "2.5rem"
     fontWeight: 800
 rounded:
-  sm: "8px"
-  md: "12px"
-  lg: "18px"
+  sm: "6px"
+  md: "10px"
+  lg: "14px"
   pill: "9999px"
 spacing:
   xs: "8px"
@@ -68,10 +68,11 @@ Proofline — A QA-inspired editorial system built around evidence, signals, and
 
 ## Colors
 
-浅色：画布 #faf9f6、表面 #ffffff、正文 #202a30、次级文字 #5c6b6d、三级文字 #738184、边框 #dfe4e1、强化边框 #b9cfcb、代码表面 #f1f5f3、强调 #176b75、强调焦点 #0f5962、成功状态文字 #16803a、错误状态文字 #b42318、警告状态文字 #9a6700。
+浅色：画布 #faf9f6、表面 #ffffff、正文 #202a30、次级文字 #5c6b6d、三级文字 #627275、边框 #dfe4e1、强化边框 #b9cfcb、代码表面 #f1f5f3、强调 #176b75、强调焦点 #0f5962、成功状态文字 #16803a、错误状态文字 #b42318、警告状态文字 #9a6700。
 深色：画布 #13191c、表面 #1a2226、抬升表面 #202b2f、正文 #e7eceb、次级文字 #a8b6b5、三级文字 #819390、边框 #344247、强化边框 #4d686c、代码表面 #202b2f、强调 #12ccd8、强调焦点 #7de6ec、成功状态文字 #76c893、错误状态文字 #ff9388、警告状态文字 #e8c27a。
 
 强调色是稀缺的信号色，只用于 CTA、链接交互、当前项、状态和少量指标/标记；正文标题、普通导航文字、默认表面和普通边框使用中性色，不把青绿色扩展成页面主色。
+面包屑、日期、目录说明与学习路径标签使用语义文字颜色，不叠加文字透明度；状态标签使用随主题切换的语义状态色。代码高亮在明暗主题下都与正文色轻度混合，提升小字号语法词的可读性。
 
 主题支持系统偏好与手动切换，持久化键为 `themePreference`。语义变量至少包括 `--color-base`、`--color-canvas`、`--color-surface`、`--color-surface-elevated`、`--color-main`、`--color-text-secondary`、`--color-text-tertiary`、`--color-border`、`--color-border-strong`、`--color-theme`、`--color-theme-focus`、`--color-theme-soft`、`--color-theme-soft-hover`、`--color-code-surface`、`--color-success-text`、`--color-caution` 和 `--color-warn`。成功、错误与警告状态只使用各自语义色，并须在明暗主题分别满足 WCAG AA 文本对比度；主题切换不改变布局。
 
@@ -83,6 +84,9 @@ Proofline — A QA-inspired editorial system built around evidence, signals, and
 代码使用 `ui-monospace, monospace`，只用于代码、命令和复制控件，不参与正文标题或导航。
 实际基础字号为 `--text-base: 1.0625rem`，基础行高 1.65；方案中的 16px 是原始目标，不能描述为当前实现。display token 为 2.5rem，具体 hero 可使用响应式字号。
 正文阅读列上限 768px，代码和表格在自身区域滚动，不扩大页面。
+较长的行内代码允许在窄屏自然折行，保持完整文本与页面宽度；代码块仍在自身区域横向滚动。
+长文的多列表格在手机保留可读列宽，只在表格区域横向滚动；可滚动时提供键盘焦点和双语辅助说明。
+博客正文进一步限制为 72ch，行高 1.8；首页区块标题使用响应式字号，保持主标题、区块标题、卡片标题的清楚层级。
 
 ## Layout
 
@@ -90,7 +94,8 @@ Proofline — A QA-inspired editorial system built around evidence, signals, and
 容器宽度为 `min(var(--layout-max), calc(100% - 2 * var(--layout-gutter)))`。
 gutter 默认 24px，768px 起为 32px。首页 main 全宽，内部区块应用一次容器约束，避免重复缩窄。
 
-桌面 Header 最小高度 80px，834px 以下为 60px 折叠导航；480px 以下顶栏公众号入口隐藏，页脚二维码仍可访问。Footer 在 760px 以下堆叠，导航为两列。
+桌面 Header 最小高度 80px，1100px 以下为 60px 折叠导航，避免品牌与导航互相挤压；480px 以下顶栏公众号入口隐藏，页脚二维码仍可访问。Footer 在 760px 以下堆叠，导航为两列。
+吸顶目录和侧栏统一使用 `--sticky-offset`（Header 高度加 1rem）；Docs 在 900px 以下堆叠，正文与主容器不重复叠加外边距。
 检查中文与英文在 375/390、768、1024、1440、1920px 的布局；不得以全页面裁切掩盖内容溢出。
 
 ## Elevation & Depth
@@ -100,7 +105,7 @@ gutter 默认 24px，768px 起为 32px。首页 main 全宽，内部区块应用
 
 ## Shapes
 
-现有 token 为 8/12/18px 与 9999px。新普通按钮优先 8px，卡片优先 12px；药丸用于标签、状态和紧凑过滤控件。旧组件尚有局部药丸/大圆角，不表示所有组件都已完成形状迁移。
+现有 CSS token 为 6/10/14px 与 9999px，本轮保留实际圆角风格；药丸用于标签、状态和紧凑过滤控件。旧组件尚有局部药丸/大圆角，不表示所有组件都已完成形状迁移。
 
 ## Components
 
@@ -108,6 +113,9 @@ gutter 默认 24px，768px 起为 32px。首页 main 全宽，内部区块应用
 - Footer：中文左侧二维码与 RSS，右侧导航；社交与法律信息各占独立整行。英文无中文公众号块。
 - 主按钮：实色强调底；次按钮：中性或轻强调表面。键盘焦点清晰，不依赖颜色传达状态。
 - 卡片：正文和内容入口清晰；hover 上浮最多 2px，颜色/边框承担主要反馈。尊重 reduced-motion。
+- 动效：共享反馈使用 180ms 的指数式 ease-out；首页引导线仅在首次呈现时伸展，内容默认可见。阅读和目录进度通过 transform 更新，减少布局重算。
+- 主题切换：文字与背景同步更新，避免短暂低对比度；完成绘制后恢复悬停与按压的过渡反馈。
+- 浏览器细节：选区、输入光标、代码与导航区域滚动条使用语义配色；辅助文字和 placeholder 保持可读对比度。
 - QA Skills：正文列上限 768px，侧栏保留；窄屏使用现有堆叠行为。
 - 链接：视觉修订不能改动既有 href、博客路径、内容、SEO 或部署配置。
 

@@ -280,7 +280,7 @@ const homePageSchema = {
   }
 
   .pill-cta:active {
-    transform: scale(0.95);
+    transform: translateY(1px);
   }
 
   @media (width < 900px) {
@@ -293,13 +293,12 @@ const homePageSchema = {
     }
   }
 
-  /* Zenix-inspired product surface for the bilingual knowledge platform. */
+  /* Proofline: restrained bands with a clear editorial rhythm. */
   .home-page { background: var(--color-base); }
 
   :global(.home-band) {
     position: relative;
-    padding-block: 88px;
-    overflow: hidden;
+    padding-block: clamp(3.25rem, 6vw, 5rem);
   }
 
   :global(.home-band--white),
@@ -393,9 +392,10 @@ const homePageSchema = {
 
   :global(.home-band__title) {
     font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: clamp(1.55rem, 2.4vw, 2.1rem);
     font-weight: 800;
-    letter-spacing: 0;
+    letter-spacing: -.015em;
+    line-height: 1.25;
     color: var(--color-main);
   }
 
@@ -452,6 +452,7 @@ const homePageSchema = {
     color: var(--color-text-secondary);
     font-size: 0.75rem;
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
   }
 
   .home-post-item__body {
@@ -470,8 +471,8 @@ const homePageSchema = {
 
   .home-post-item__desc {
     margin: 4px 0 0;
-    font-size: 14px;
-    line-height: 1.45;
+    font-size: .875rem;
+    line-height: 1.65;
     color: var(--color-text-secondary);
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -484,6 +485,17 @@ const homePageSchema = {
     align-self: flex-end;
     color: var(--color-theme);
     font-weight: 800;
+    transition: transform var(--transition-fast);
+  }
+
+  .home-post-item:hover .home-post-item__arrow,
+  .home-post-item:focus-visible .home-post-item__arrow {
+    transform: translateX(2px);
+  }
+
+  .home-post-item:hover .home-post-item__title,
+  .home-post-item:focus-visible .home-post-item__title {
+    color: var(--color-theme);
   }
 
   @media (width < 960px) and (width >= 640px) {
@@ -522,16 +534,7 @@ const homePageSchema = {
     }
 
     :global(.home-band__title) {
-      font-size: 1.3rem;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .pill-cta:hover,
-    .pill-cta:focus-visible,
-    .home-post-item:hover,
-    .home-post-item:focus-visible {
-      transform: none;
+      font-size: clamp(1.45rem, 4vw, 1.85rem);
     }
   }
 
@@ -553,5 +556,12 @@ const homePageSchema = {
     background: var(--color-theme-soft);
     transform: translateX(2px);
   }
-
+  @media (prefers-reduced-motion: reduce) {
+    .pill-cta:hover,
+    .pill-cta:focus-visible,
+    .home-post-item:hover,
+    .home-post-item:focus-visible { transform: none; }
+    .home-post-item:hover .home-post-item__arrow,
+    .home-post-item:focus-visible .home-post-item__arrow { transform: none; }
+  }
 </style>

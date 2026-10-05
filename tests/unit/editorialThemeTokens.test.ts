@@ -28,7 +28,7 @@ describe("Astro Editorial theme tokens", () => {
     expect(baseCss).toContain("--color-surface-elevated: #ffffff");
     expect(baseCss).toContain("--color-main: #202a30");
     expect(baseCss).toContain("--color-text-secondary: #5c6b6d");
-    expect(baseCss).toContain("--color-text-tertiary: #738184");
+    expect(baseCss).toContain("--color-text-tertiary: #627275");
     expect(baseCss).toContain("--color-border: #dfe4e1");
     expect(baseCss).toContain("--color-border-strong: #b9cfcb");
     expect(baseCss).toContain("--color-code-surface: #f1f5f3");

@@ -82,9 +82,9 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
   /* 右侧：流式布局，在正文右侧 */
   .toc-sidebar--right {
     position: sticky;
-    top: var(--sp-m, 1rem);
+    top: var(--sticky-offset);
     align-self: start;
-    max-height: min(60vh, calc(100vh - 8rem));
+    max-height: min(72vh, calc(100dvh - var(--sticky-offset) - 2rem));
     overflow-y: auto;
   }
 
@@ -138,7 +138,7 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
     line-height: 1.3;
     padding: 0.24rem 0.36rem;
     border-radius: var(--radius-sm);
-    opacity: 0.9;
+    opacity: 1;
     word-break: break-word;
   }
   .toc-sidebar--below .toc-link:hover {
@@ -177,8 +177,7 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
     margin: -0.25rem 0 0.7rem;
     font-size: 0.75rem;
     line-height: 1.35;
-    color: var(--color-main);
-    opacity: 0.7;
+    color: var(--color-text-secondary);
   }
 
   .toc-current [data-current-section] {
@@ -197,11 +196,13 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 
   .toc-progress-bar {
     display: block;
-    width: calc(var(--toc-progress, 0) * 1%);
+    width: 100%;
     height: 100%;
     border-radius: inherit;
     background: var(--color-theme);
-    transition: width 0.18s ease;
+    transform-origin: left;
+    transform: scaleX(calc(var(--toc-progress, 0) / 100));
+    transition: transform var(--transition-fast);
   }
 
   .toc-list {
@@ -239,9 +240,9 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
     display: block;
     font-size: 0.8125rem;
     line-height: 1.4;
-    color: var(--color-main);
+    color: var(--color-text-secondary);
     text-decoration: none;
-    opacity: 0.85;
+    opacity: 1;
     transition: opacity 0.2s ease, color 0.2s ease;
     border-block-end: 1px solid transparent;
   }
@@ -405,9 +406,10 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
     toc.style.position = "fixed";
     const titleHeader = document.querySelector(".article-title-header, #article-title-header");
     const titleTop = titleHeader ? titleHeader.getBoundingClientRect().top : articleRect.top;
+    const headerBottom = document.querySelector(".l-header")?.getBoundingClientRect().bottom ?? 0;
     const topPx = articleInView
-      ? Math.max(16, titleTop)
-      : 16;
+      ? Math.max(headerBottom + 16, titleTop)
+      : headerBottom + 16;
     toc.style.top = topPx + "px";
 
     let bottomPx: number;
@@ -443,7 +445,7 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 
   function initTocScrollSpy() {
     const toc = document.querySelector(".toc-sidebar") as HTMLElement | null;
-    const main = document.querySelector(".article-main");
+    const main = document.querySelector(".article-main, .docs-content, .prompt-detail-main");
     if (!toc || !main) return;
     const contentScope = (main.querySelector(".prose") as HTMLElement | null) || (main as HTMLElement);
 
@@ -463,8 +465,8 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 
     const setActive = (id: string | null) => {
       const activeHref = id ? `#${id}` : null;
-      const activeLink =
-        activeHref ? Array.from(links).find((a) => a.getAttribute("href") === activeHref) ?? null : null;
+      const matchingLinks = Array.from(links).filter((a) => a.getAttribute("href") === activeHref);
+      const activeLink = matchingLinks.find((a) => a.getClientRects().length > 0) ?? matchingLinks[0] ?? null;
       links.forEach((a) => {
         const isActive = a.getAttribute("href") === activeHref;
         a.setAttribute("aria-current", isActive ? "true" : "false");
@@ -474,8 +476,8 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
         toc.querySelectorAll<HTMLElement>("[data-current-section]").forEach((el) => {
           el.textContent = activeLink.textContent?.trim() || "";
         });
-        const index = Math.max(0, Array.from(links).indexOf(activeLink));
-        const progress = links.length <= 1 ? 100 : Math.round((index / (links.length - 1)) * 100);
+        const index = Math.max(0, headings.findIndex((heading) => heading.id === id));
+        const progress = headings.length <= 1 ? 100 : Math.round((index / (headings.length - 1)) * 100);
         toc.style.setProperty("--toc-progress", String(progress));
       }
       // Keep active link visible in its nearest scroll container.

@@ -1153,6 +1153,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   /* Directory demo: an editorial catalogue with search-first discovery. */
   .qaskills-page {
     max-width: 1240px;
+    grid-template-columns: minmax(0, 1fr);
     margin: 0 auto;
     padding: clamp(2rem, 4vw, 4.5rem) clamp(1rem, 3vw, 2.5rem) 5rem;
     gap: 1.25rem;
@@ -1196,8 +1197,8 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     max-width: 14ch;
     color: var(--color-main);
     font-size: clamp(2.25rem, 6vw, 4.75rem);
-    letter-spacing: -0.06em;
-    line-height: 0.98;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
   }
   .hero-sub {
     margin: 0.8rem 0 0;
@@ -1249,7 +1250,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     border: 1px solid var(--color-border) !important;
     border-radius: var(--radius-md);
     background: color-mix(in srgb, var(--color-surface) 94%, transparent) !important;
-    box-shadow: 0 10px 25px color-mix(in srgb, var(--color-main) 7%, transparent) !important;
+    box-shadow: none !important;
     backdrop-filter: none;
   }
   .toolbar-main { align-items: center; }
@@ -1342,7 +1343,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .shortcut-list strong,
   .shortcut-list small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .shortcut-list strong { color: var(--color-main); font-size: 0.82rem; }
-  .shortcut-list small { margin-top: 0.12rem; color: var(--color-text-tertiary); font-size: 0.7rem; }
+  .shortcut-list small { margin-top: 0.12rem; color: var(--color-text-secondary); font-size: 0.7rem; }
 
   .featured-strip {
     display: grid;
@@ -1393,7 +1394,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .featured-link strong,
   .featured-link small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .featured-link strong { color: var(--color-main); font-size: 0.78rem; }
-  .featured-link small { margin-top: 0.12rem; color: var(--color-text-tertiary); font-size: 0.68rem; }
+  .featured-link small { margin-top: 0.12rem; color: var(--color-text-secondary); font-size: 0.68rem; }
   .featured-arrow { color: var(--color-text-secondary); font-size: 0.8rem; }
 
   .directory-section { padding-top: 0.5rem; }
@@ -1523,7 +1524,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .lifecycle-skill { display: flex; align-items: center; justify-content: space-between; gap: 0.3rem; padding: 0.34rem 0.42rem; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-surface); color: var(--color-main); font-size: 0.7rem; font-weight: 700; line-height: 1.3; text-decoration: none; }
   .lifecycle-skill:hover { border-color: var(--color-theme); color: var(--color-theme); }
   .lifecycle-skill--plus { border-style: dashed; background: transparent; }
-  .lifecycle-plus-tag { flex: 0 0 auto; color: var(--color-text-tertiary); font-size: 0.62rem; font-weight: 900; }
+  .lifecycle-plus-tag { flex: 0 0 auto; color: var(--color-text-secondary); font-size: 0.62rem; font-weight: 900; }
   .lifecycle-arrow { align-self: center; flex: 0 0 auto; color: var(--color-text-tertiary); font-weight: 800; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
@@ -1571,7 +1572,8 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
 
   /* Final refinement: one clear search path, one consistent control system. */
   :global(.l-main:has(.qaskills-page)) { margin-block-start: 0; }
-  .qaskills-page { padding-top: clamp(1rem, 2vw, 1.75rem); }
+  .qaskills-page { padding-top: clamp(1rem, 2vw, 1.75rem); padding-inline: 0; }
+  .qaskills-page > * { min-width: 0; }
   .directory-hero { padding-top: clamp(0.65rem, 1.25vw, 1.1rem); }
   .directory-hero-topline .eyebrow { letter-spacing: 0.12em; }
   .hero-intro { max-width: 58ch; }
@@ -1745,7 +1747,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     .lifecycle-arrow { align-self: center; padding: 0.1rem 0; transform: rotate(90deg); }
   }
   @media (max-width: 640px) {
-    .qaskills-page { padding: 1.5rem 1rem 3.5rem; }
+    .qaskills-page { padding: 1.5rem 0 3.5rem; }
     .directory-hero-topline { display: grid; gap: 0.35rem; }
     .directory-hero-main { margin-top: 0.9rem; }
     .directory-hero h1 { max-width: 13ch; }

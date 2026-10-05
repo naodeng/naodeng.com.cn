@@ -138,16 +138,18 @@ test.describe("home information architecture", () => {
         left: Math.round(rect.left),
         right: Math.round(window.innerWidth - rect.right),
         titleSize: title ? getComputedStyle(title).fontSize : "",
-        rootSize: getComputedStyle(document.documentElement).fontSize,
+        cardTitleSize: getComputedStyle(element.querySelector(".task-card h3")!).fontSize,
+        heroTitleSize: getComputedStyle(document.querySelector(".home-hero h1")!).fontSize,
       };
     });
 
     // Astro editorial layout: 1440px viewport uses the 1280px desktop content cap.
     expect(layout.width).toBe(1280);
     expect(Math.abs(layout.left - layout.right)).toBeLessThanOrEqual(2);
-    // 区块标题归位 DESIGN.md 阶梯：headline = 1.3 × 根字号
-    const titleRatio = parseFloat(layout.titleSize) / parseFloat(layout.rootSize);
-    expect(titleRatio).toBeCloseTo(1.3, 1);
+    // Section headings sit clearly between the hero and the task-card titles.
+    const sectionSize = parseFloat(layout.titleSize);
+    expect(sectionSize).toBeGreaterThan(parseFloat(layout.cardTitleSize) * 1.5);
+    expect(parseFloat(layout.heroTitleSize)).toBeGreaterThan(sectionSize * 1.5);
   });
 
   test("Proofline home hero uses a signal rail without decorative gradient or blur", async ({ page, baseURL }) => {

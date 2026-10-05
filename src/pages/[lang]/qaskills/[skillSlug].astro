@@ -200,7 +200,7 @@ const tocHeadings = [
     <nav class="detail-nav" id="skill-elevator" aria-label={text.onThisPage}><p class="elevator-title">{text.onThisPage}</p><ul class="elevator-list">{tocHeadings.map((item) => <li><a class="elevator-link" href={`#${item.slug}`} data-elevator-target={item.slug}>{item.text}</a></li>)}</ul></nav>
 
     <div class="detail-layout">
-      <main class="detail-main">
+      <div class="detail-main">
         <div class="console-grid">
           <section class="console-panel console-panel--wide" id="section-problem">
             <div class="console-panel-head"><h2>{text.problem}</h2></div>
@@ -233,7 +233,7 @@ const tocHeadings = [
         <section class="console-panel console-panel--wide console-panel--quick" id="quick-start" tabindex="-1"><div class="console-panel-head"><h2>{text.quickStart}</h2></div><div class="quick-install-block" id="install-section"><div class="quick-install-top"><span>{text.install} / {text.shell}</span><button type="button" data-copy={npxInstallCommand}>{text.copy}</button></div><pre><code id="npx-install-code">{npxInstallCommandDisplay}</code></pre></div><div class="quick-start-tabs" role="tablist" aria-label={text.quickStart}><button type="button" id="quick-tab-prompt" role="tab" aria-selected="true" aria-controls="quick-prompt" data-doc-tab="prompt">{text.promptTab}</button><button type="button" id="quick-tab-skill" role="tab" aria-selected="false" aria-controls="quick-skill-md" data-doc-tab="skill">{text.skillMdTab}</button></div><div class="quick-doc-card"><div class="quick-doc-top"><span data-doc-title>{skill.slug}.prompt</span><button type="button" data-doc-copy>{text.copy}</button></div><div id="quick-prompt" class="quick-doc-panel" data-doc-panel="prompt" role="tabpanel" aria-labelledby="quick-tab-prompt" tabindex="0"><pre><code>{text.prompt}</code></pre></div><div id="quick-skill-md" class="quick-doc-panel" data-doc-panel="skill" role="tabpanel" aria-labelledby="quick-tab-skill" tabindex="0" hidden><div class="raw-wrap">{skill.rawSkillMarkdown ? <pre class="skill-raw"><code id="raw-skill-code">{skill.rawSkillMarkdown}</code></pre> : <p class="console-empty">{text.rawMissing}</p>}</div></div></div></section>
 
         <section class="console-panel console-panel--wide" id="section-related-skills"><div class="console-panel-head"><h2>{text.related}</h2></div>{detail.workflow.length > 1 && <div class="related-workflow" id="section-workflow"><div class="related-subhead"><span>{text.workflow}</span><small>{text.workflowHint}</small></div><ol class="workflow-track">{detail.workflow.map((slug, index) => { const item = skillMap.get(slug); const label = item ? (lang === "zh-cn" ? (item.chineseName || item.title) : item.title) : slug; return <li class:list={[slug === skill.slug && "is-current"]}>{item ? <a href={getRelativeLocaleUrl(lang, `/qaskills/${slug}/`)}>{label}</a> : <span>{label}</span>}{index < detail.workflow.length - 1 && <b aria-hidden="true">→</b>}</li>; })}</ol></div>}{relatedPreviewCards.length ? <div class="related-preview-grid">{relatedPreviewCards.map(({ item, kind }) => <a class="relation-card" href={getRelativeLocaleUrl(lang, `/qaskills/${item.slug}/`)}><span class="relation-card-kind">{kind}</span><b>{item.name}</b><small>{relationDescription(item, kind)}</small></a>)}</div> : <p class="relation-empty">{text.noMatch}</p>}</section>
-      </main>
+      </div>
 
     </div>
 
@@ -369,7 +369,7 @@ const tocHeadings = [
   .preview-row + .preview-row { border-top: 1px solid var(--color-border); }
   .preview-row--head { background: color-mix(in srgb, var(--color-theme) 8%, var(--color-surface-muted)); }
   .priority { font-weight: 900; }
-  .priority--p0 { color: #d14c4c; }
+  .priority--p0 { color: var(--color-caution); }
   .priority--p1 { color: var(--color-theme); }
   .example-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
   .example-step { min-width: 0; padding: 0.9rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface-muted); }

@@ -53,6 +53,19 @@ const samples: ContrastSample[] = [
   },
 ];
 
+for (const locale of ["en", "zh-cn"]) {
+  for (const theme of ["light", "dark"] as const) {
+    samples.push(
+      { name: `${locale}-footer-${theme}`, path: `/${locale}/`, selectors: [".built-with", ".capability-recommendations__label"], theme },
+      { name: `${locale}-blog-metadata-${theme}`, path: `/${locale}/blog/`, selectors: [".post-date", ".post-reading-time"], theme },
+      { name: `${locale}-guild-category-${theme}`, path: `/${locale}/guild/ui-testing/`, selectors: [".breadcrumb-link", ".tt-section-title", ".fw-card__lang", ".fw-card__desc", ".fw-card__count"], theme },
+      { name: `${locale}-guild-framework-${theme}`, path: `/${locale}/guild/ui-testing/playwright/`, selectors: [".fw-stat__label", ".article-description", ".article-difficulty"], theme },
+      { name: `${locale}-guild-article-${theme}`, path: `/${locale}/guild/ui-testing/playwright/getting-started/`, selectors: [".difficulty-badge"], theme },
+      { name: `${locale}-prompt-metadata-${theme}`, path: `/${locale}/prompts/test-case-writing/`, selectors: [".prompt-sidebar-label", ".prompt-sidebar-nav li small", ".prompt-variants-label", ".prompt-related-prompt small"], theme },
+    );
+  }
+}
+
 test.describe("可访问性对比度审计（WCAG AA 抽样）", () => {
   for (const sample of samples) {
     test(`${sample.name} 关键文本对比度满足 WCAG AA`, async ({ page }) => {
@@ -121,14 +134,17 @@ test.describe("可访问性对比度审计（WCAG AA 抽样）", () => {
 
           const effectiveBackground = (el: Element): RGBA => {
             let bg: RGBA = { r: 255, g: 255, b: 255, a: 1 };
+            const ancestors: Element[] = [];
             let node: Element | null = el;
             while (node) {
-              const color = parseColor(window.getComputedStyle(node).backgroundColor);
+              ancestors.unshift(node);
+              node = node.parentElement;
+            }
+            for (const ancestor of ancestors) {
+              const color = parseColor(window.getComputedStyle(ancestor).backgroundColor);
               if (color && color.a > 0) {
                 bg = blend(color, bg);
-                if (bg.a >= 0.999) break;
               }
-              node = node.parentElement;
             }
             return bg;
           };
@@ -145,7 +161,14 @@ test.describe("可访问性对比度审计（WCAG AA 抽样）", () => {
           }
 
           const bg = effectiveBackground(target);
-          const ratio = contrastRatio({ ...fg, a: 1 }, { ...bg, a: 1 });
+          let opacity = 1;
+          let ancestor: Element | null = target;
+          while (ancestor) {
+            opacity *= Number.parseFloat(window.getComputedStyle(ancestor).opacity);
+            ancestor = ancestor.parentElement;
+          }
+          const ink = blend({ ...fg, a: fg.a * opacity }, bg);
+          const ratio = contrastRatio(ink, bg);
           const fontSize = Number.parseFloat(style.fontSize);
           const fontWeight = Number.parseInt(style.fontWeight, 10) || 400;
           const isLargeText = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);

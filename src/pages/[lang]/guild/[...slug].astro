@@ -397,17 +397,17 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   }
 
   .difficulty-badge--beginner {
-    background: color-mix(in srgb, var(--color-theme) 15%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, var(--color-surface));
     color: var(--color-theme);
   }
 
   .difficulty-badge--intermediate {
-    background: color-mix(in srgb, var(--color-theme) 15%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 8%, var(--color-surface));
     color: var(--color-theme);
   }
 
   .difficulty-badge--advanced {
-    background: color-mix(in srgb, var(--color-warn) 15%, transparent);
+    background: color-mix(in srgb, var(--color-warn) 5%, var(--color-surface));
     color: var(--color-warn);
   }
 
@@ -565,7 +565,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: color-mix(in srgb, var(--color-main) 60%, transparent);
+    color: var(--color-text-secondary);
   }
 
   .guild-pagination-title {
