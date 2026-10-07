@@ -1,32 +1,31 @@
 ---
-title: "性质测试设计 Skill：用大量生成输入验证业务不变量"
-description: "性质测试设计实战指南：定义性质、生成器、缩减、输入域、不变量和可复现失败。"
-date: 2026-10-06T09:00:00.000Z
-draft: true
+title: "属性测试设计 Skill：从示例验证走向业务不变量验证"
+description: "属性测试设计实战指南：定义属性、生成器、缩减、输入域、不变量和可复现失败。"
+date: 2026-10-07T09:00:00.000Z
 author: "nao.deng"
-tags: ["AI 测试", "QA Skills", "性质测试设计"]
+tags: ["AI 测试", "QA Skills", "属性测试设计"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-示例测试说明几个输入可以工作，性质测试则追问规则能否在更大的输入空间里成立，并在失败时给出更小的反例。
+示例测试说明几个输入可以工作，属性测试则追问规则能否在更大的输入空间里成立，并在失败时给出更小的反例。
 
 ## 为什么需要这个 Skill
 
-性质测试设计用于定义不变量并生成大量输入探索它们，同时保留随机种子并把失败缩减成有用反例。
+属性测试设计用于定义不变量并生成大量输入探索它们，同时保留随机种子并把失败缩减成有用反例。
 
 ## Skill 用来做什么
 
-当团队需要围绕“性质、生成器、输入域、种子、缩减、不变量和反例”工作时，使用性质测试设计 Skill。
+当团队需要围绕“属性、生成器、输入域、种子、缩减、不变量和反例”工作时，使用属性测试设计 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦性质测试设计。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦属性测试设计。
 
-好的性质测试有业务或系统输入域性质，而不只是“函数没有崩溃”这种通用断言。这个性质必须对用户或系统状态有意义。
+好的属性测试有业务或系统输入域属性，而不只是“函数没有崩溃”这种通用断言。这个属性必须对用户或系统状态有意义。
 
-它适合这些场景：团队需要重复检查性质、生成器、输入域、种子、缩减、不变量和反例；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+它适合这些场景：团队需要重复检查属性、生成器、输入域、种子、缩减、不变量和反例；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
 ## 它不做什么
 
-性质测试设计 Skill 可以组织性质结果的材料、证据和下一步动作，但它不能替代：
+属性测试设计 Skill 可以组织属性结果的材料、证据和下一步动作，但它不能替代：
 
 - 业务或领域负责人对规则、范围和风险的确认。
 - 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
@@ -39,15 +38,15 @@ series: ["Awesome QA Skills 实战"]
 
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
-| 性质结果 | 不变量成立、违反或不可测试 | 运行与种子 |
-| 反例 | 破坏性质的最小输入 | 可复现 fixture |
+| 属性结果 | 不变量成立、违反或不可测试 | 运行与种子 |
+| 反例 | 破坏属性的最小输入 | 可复现 fixture |
 | 输入域缺口 | 生成器偏差或遗漏重要类别 | 生成器更新 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
 
 ## 开始之前先审计输入
 
-围绕“性质结果”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+围绕“属性结果”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
 
 | 状态 | 含义 | 本 Skill 的处理方式 |
 | --- | --- | --- |
@@ -66,7 +65,7 @@ series: ["Awesome QA Skills 实战"]
 
 ### 分层写法
 
-围绕性质结果，不要把四种语气揉成一句“建议通过”：
+围绕属性结果，不要把四种语气揉成一句“建议通过”：
 
 | 层次 | 写法 | 本文应用 |
 | --- | --- | --- |
@@ -83,7 +82,7 @@ series: ["Awesome QA Skills 实战"]
 
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
-| 性质 | 不变量、关系或安全规则 | 先写预言机再写生成器 |
+| 属性 | 不变量、关系或安全规则 | 先写预言机再写生成器 |
 | 生成域 | 有效、无效、边界和依赖数据 | 约束不现实的取值 |
 | 失败证据 | 种子、缩减用例、版本和中间值 | 保留最小反例 |
 
@@ -113,12 +112,12 @@ series: ["Awesome QA Skills 实战"]
 
 下面的字段示例只展示记录方式，不代表真实环境已经执行。
 
-假设当前材料无法证明“性质结果”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+假设当前材料无法证明“属性结果”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
 
 | 字段 | 示例写法 |
 | --- | --- |
-| 来源与范围 | 记录本轮使用的需求、版本、环境和性质结果的具体对象 |
-| 发现 | 性质结果的判断条件或结果仍缺少可追溯依据 |
+| 来源与范围 | 记录本轮使用的需求、版本、环境和属性结果的具体对象 |
+| 发现 | 属性结果的判断条件或结果仍缺少可追溯依据 |
 | 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
 | 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
 | 负责人和人工决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
@@ -141,11 +140,11 @@ series: ["Awesome QA Skills 实战"]
 
 | 输出字段 | 它要回答什么 | 示例状态 |
 | --- | --- | --- |
-| 性质结果 | 不变量成立、违反或不可测试 | 运行与种子 |
-| 反例 | 破坏性质的最小输入 | 可复现 fixture |
+| 属性结果 | 不变量成立、违反或不可测试 | 运行与种子 |
+| 反例 | 破坏属性的最小输入 | 可复现 fixture |
 | 输入域缺口 | 生成器偏差或遗漏重要类别 | 生成器更新 |
 
-没有运行记录、查询结果或原始产物时，不要写“已通过”。好的性质测试有业务或系统输入域性质，而不只是“函数没有崩溃”这种通用断言。这个性质必须对用户或系统状态有意义。
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的属性测试有业务或系统输入域属性，而不只是“函数没有崩溃”这种通用断言。这个属性必须对用户或系统状态有意义。
 
 ### 下一步路由
 
@@ -155,7 +154,7 @@ series: ["Awesome QA Skills 实战"]
 
 如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
 
-这里补充信息会改变结果，因为性质、生成器、输入域、种子、缩减、不变量和反例必须接回证据，不能只靠熟悉的测试套路推断。
+这里补充信息会改变结果，因为属性、生成器、输入域、种子、缩减、不变量和反例必须接回证据，不能只靠熟悉的测试套路推断。
 
 ## 和其他 Skill 怎么配合
 
@@ -166,7 +165,7 @@ series: ["Awesome QA Skills 实战"]
 ## 容易踩的坑
 
 1. 生成不现实的数据，掩盖真实行为。
-2. 使用比业务不变量更弱的性质。
+2. 使用比业务不变量更弱的属性。
 3. 失败后丢失随机种子或缩减示例。
 
 ## 安装与调用
@@ -181,7 +180,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 常见问题
 
-### 性质测试可以替代示例测试吗？
+### 属性测试可以替代示例测试吗？
 
 不能完全替代。示例仍然解释已知规则并帮助调试。
 
@@ -193,16 +192,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [性质测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing/prompts/property-based-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing) 中包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [属性测试设计 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing/prompts/property-based-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing) 中包含入口文件以及实际存在的配套资料。
 
-入口文件重点约束性质、生成器、输入域、种子、缩减、不变量和反例。要保留它的决策边界，不要把静态设计写成执行结论。
+入口文件重点约束属性、生成器、输入域、种子、缩减、不变量和反例。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 性质测试设计 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing/prompts/property-based-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing/prompts/property-based-testing.md)
+- 属性测试设计 提示词：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing/prompts/property-based-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing/prompts/property-based-testing.md)
 
-- Awesome QA Skills：性质测试设计 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing)
+- Awesome QA Skills：属性测试设计 源文件：[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/property-based-testing)
 
 - Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- 性质测试设计 详情页:[https://inaodeng.com/zh-cn/qaskills/property-based-testing/](https://inaodeng.com/zh-cn/qaskills/property-based-testing/)
+- 属性测试设计 详情页：[https://inaodeng.com/zh-cn/qaskills/property-based-testing/](https://inaodeng.com/zh-cn/qaskills/property-based-testing/)
