@@ -67,7 +67,6 @@ E2E 在 `tests/` 内运行，默认会先构建并预览站点；也可设置 `P
 | 内容 | 位置 | 语言约定 |
 | --- | --- | --- |
 | Blog | `src/blog/{en,zh-cn}/` | 双语，MDX |
-| Docs | `src/content/docs/{en,zh-cn}/` | 双语 |
 | Wiki（测试百科） | `src/content/wiki/` | 主要为中文，对应 `/zh-cn/wiki/` |
 | AI Wiki | `src/content/aiwiki/{en,zh-cn}/` | 双语 |
 | Guild | `src/content/guild/{en,zh-cn}/` | 双语 |

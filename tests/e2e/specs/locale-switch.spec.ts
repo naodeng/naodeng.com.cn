@@ -57,27 +57,16 @@ test.describe("语言切换", () => {
     }
   });
 
-  test("从 en 文档页切换到 zh-cn 保持在文档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/en/docs/why-astro/", { waitUntil: "domcontentloaded" });
-    const zhLink = page.locator('a[href*="/zh-cn/docs"]').first();
-    
-    if (await zhLink.isVisible()) {
-      await zhLink.click();
-      await expect(page).toHaveURL(/\/zh-cn\/docs\/why-astro\/?/);
-      await expect(page.locator(".docs-sidebar")).toBeVisible();
-    }
-  });
-
-  test("从 zh-cn 文档页切换到 en 保持在文档页", async ({ page, baseURL }) => {
-    await page.goto((baseURL || "") + "/zh-cn/docs/why-astro/", { waitUntil: "domcontentloaded" });
-    const enLink = page.locator('a[href*="/en/docs"]').first();
-    
-    if (await enLink.isVisible()) {
-      await enLink.click();
-      await expect(page).toHaveURL(/\/en\/docs\/why-astro\/?/);
-      await expect(page.locator(".docs-sidebar")).toBeVisible();
-    }
-  });
+  for (const [from, to] of [["en", "zh-cn"], ["zh-cn", "en"]]) {
+    test(`从 ${from} AI 百科切换到 ${to} 保持在同一词条`, async ({ page }) => {
+      await page.goto(`/${from}/AIWiki/ai-agent/`, { waitUntil: "domcontentloaded" });
+      const link = page.locator("footer .lang-toggle");
+      await expect(link).toHaveAttribute("href", `/${to}/AIWiki/ai-agent/`);
+      await link.click();
+      await expect(page).toHaveURL(new RegExp(`/${to}/AIWiki/ai-agent/?$`));
+      await expect(page.locator(".docs-content h1")).toBeVisible();
+    });
+  }
 
   test("语言切换后页面内容语言正确", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });

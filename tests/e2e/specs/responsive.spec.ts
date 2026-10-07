@@ -173,39 +173,22 @@ test.describe("响应式布局", () => {
     expect(count).toBeGreaterThan(0);
   });
 
-  test("en 文档页侧栏在移动端可切换", async ({ page, baseURL }) => {
-    await page.setViewportSize(MOBILE_VIEWPORT);
-    await page.goto((baseURL || "") + "/en/docs/why-astro/", { waitUntil: "domcontentloaded" });
-    
-    const sidebarToggle = page.locator('button[aria-label*="sidebar" i], button[aria-label*="menu" i], [class*="sidebar-toggle"]').first();
-    
-    if (await sidebarToggle.isVisible()) {
-      await sidebarToggle.click();
-      await page.waitForTimeout(500);
-      
-      const sidebar = page.locator(".docs-sidebar").first();
-      if (await sidebar.isVisible({ timeout: 2000 })) {
-        await expect(sidebar).toBeVisible();
-      }
-    }
-  });
-
-  test("zh-cn 文档页侧栏在移动端可切换", async ({ page, baseURL }) => {
-    await page.setViewportSize(MOBILE_VIEWPORT);
-    await page.goto((baseURL || "") + "/zh-cn/docs/why-astro/", { waitUntil: "domcontentloaded" });
-    
-    const sidebarToggle = page.locator('button[aria-label*="侧边栏"], button[aria-label*="菜单"], [class*="sidebar-toggle"]').first();
-    
-    if (await sidebarToggle.isVisible()) {
-      await sidebarToggle.click();
-      await page.waitForTimeout(500);
-      
-      const sidebar = page.locator(".docs-sidebar").first();
-      if (await sidebar.isVisible({ timeout: 2000 })) {
-        await expect(sidebar).toBeVisible();
-      }
-    }
-  });
+  for (const locale of ["en", "zh-cn"]) {
+    test(`${locale} AI 百科侧栏在移动端可切换`, async ({ page }) => {
+      await page.setViewportSize(MOBILE_VIEWPORT);
+      await page.goto(`/${locale}/AIWiki/ai-agent/`, { waitUntil: "domcontentloaded" });
+      const toggle = page.locator(".docs-sidebar-toggle");
+      const nav = page.locator(".docs-sidebar-nav");
+      await expect(toggle).toBeVisible();
+      await expect(nav).toBeHidden();
+      await toggle.click();
+      await expect(toggle).toHaveAttribute("aria-expanded", "true");
+      await expect(nav).toBeVisible();
+      await toggle.click();
+      await expect(toggle).toHaveAttribute("aria-expanded", "false");
+      await expect(nav).toBeHidden();
+    });
+  }
 
   test("平板视口下内容布局合理", async ({ page, baseURL }) => {
     await page.setViewportSize(TABLET_VIEWPORT);

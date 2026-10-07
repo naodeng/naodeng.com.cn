@@ -24,8 +24,8 @@ export const EXTRA_PATHS = [
   "/links",
 ] as const;
 
-/** 文档子页路径（相对 /docs 的 slug，与 src/content/docs 对应） */
-export const DOCS_SLUGS = ["why-astro", "installation", "project-structure", "configuration", "routing"] as const;
+/** 已移除的 Astro 示例页；保留路径用于验证 404 和无残留入口。 */
+export const RETIRED_DOCS_SLUGS = ["why-astro", "installation", "project-structure", "configuration", "routing"] as const;
 
 /** 百科词条 slug（与 src/content/wiki 对应，仅 zh-cn 有详情页） */
 export const WIKI_SLUGS = [
@@ -36,11 +36,11 @@ export const WIKI_SLUGS = [
   "end-to-end-testing",
 ] as const;
 
-/** 文档子页带 locale 的路径 */
-export function getDocsPageUrls(): { locale: string; path: string; name: string }[] {
+/** 已移除示例页的历史路径。 */
+export function getRetiredDocsPageUrls(): { locale: string; path: string; name: string }[] {
   const out: { locale: string; path: string; name: string }[] = [];
   for (const locale of LOCALES) {
-    for (const slug of DOCS_SLUGS) {
+    for (const slug of RETIRED_DOCS_SLUGS) {
       out.push({ locale, path: `/${locale}/docs/${slug}/`, name: `docs-${slug}` });
     }
   }

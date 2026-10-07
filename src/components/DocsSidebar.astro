@@ -9,7 +9,7 @@ interface Props {
   sections: DocsNavSection[];
   /** 当前页路径（相对 docs 根），如 "" 或 "getting-started" */
   currentPath: string;
-  /** 文档根路径（含 locale），如 "/en/docs" 或 "/zh-cn/wiki" */
+  /** 内容根路径（含 locale），如 "/en/AIWiki" 或 "/zh-cn/wiki" */
   basePath: string;
   /** 移动端折叠按钮文案 */
   menuLabel?: string;
@@ -51,7 +51,7 @@ const href = (itemHref: string) => {
 const isActive = (itemHref: string) => normalize(itemHref) === current;
 ---
 
-<aside class="docs-sidebar" aria-label="Documentation navigation">
+<aside class="docs-sidebar" aria-label={menuLabel}>
   <div class="docs-sidebar-inner">
     {searchPlaceholder && searchAction && (
       <form class="docs-sidebar-search docs-sidebar-search-form" action={searchAction} method="get">
@@ -132,6 +132,7 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
   .docs-sidebar-toggle {
     display: none;
     width: 100%;
+    min-block-size: 44px;
     list-style: none;
     padding: var(--sp-s) var(--sp-m);
     font-weight: 600;
@@ -144,10 +145,15 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     font-size: inherit;
     font-family: inherit;
     text-align: start;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+  .docs-sidebar-toggle:hover,
+  .docs-sidebar-toggle:focus-visible {
+    background: var(--color-theme-soft);
   }
   .docs-sidebar-toggle-icon {
     margin-inline-start: auto;
-    transition: transform 0.2s ease;
+    transition: transform var(--transition-fast);
   }
   .docs-sidebar-inner.is-open .docs-sidebar-toggle-icon {
     transform: rotate(180deg);
@@ -257,17 +263,22 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     background: color-mix(in srgb, var(--color-theme) 16%, transparent);
   }
 
-  @media (width < 768px) {
+  @media (width < 900px) {
     .docs-sidebar-toggle {
       display: flex;
     }
     .docs-sidebar-nav {
       padding-block-start: 0;
       display: none;
-      max-height: min(calc(100vh - 12rem), 70vh);
+      max-height: min(calc(100dvh - 12rem), 70dvh);
     }
     .docs-sidebar-inner.is-open .docs-sidebar-nav {
       display: block;
+    }
+    .docs-sidebar-link {
+      display: flex;
+      align-items: center;
+      min-block-size: 44px;
     }
   }
 </style>

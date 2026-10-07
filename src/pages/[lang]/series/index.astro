@@ -49,7 +49,7 @@ export const getStaticPaths = () =>
           <li>
             <a href={`/${locale}/series/${encodeURIComponent(name)}/`} class="aggregate-item">
               <span class="aggregate-name">{name}</span>
-              <span class="aggregate-count">{count} {locale === "zh-cn" ? "篇" : "posts"}</span>
+              <span class="aggregate-count">{count} {locale === "zh-cn" ? "篇" : count === 1 ? "post" : "posts"}</span>
             </a>
           </li>
         ))}
@@ -109,8 +109,7 @@ export const getStaticPaths = () =>
 
   .aggregate-count {
     font-size: 0.875rem;
-    color: var(--color-theme);
-    opacity: 0.9;
+    color: var(--color-text-secondary);
   }
 
   .aggregate-empty {

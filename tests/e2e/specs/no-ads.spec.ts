@@ -14,7 +14,7 @@ const routes = [
   "/en/",
   "/zh-cn/",
   "/en/blog/",
-  "/zh-cn/docs/installation/",
+  "/zh-cn/AIWiki/ai-agent/",
   "/zh-cn/wiki/",
   "/zh-cn/AIWiki/",
   "/zh-cn/guild/",

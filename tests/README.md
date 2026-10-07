@@ -134,7 +134,7 @@ test('page loads correctly', async ({ page }) => {
 | Spec | What It Tests |
 |---|---|
 | `code-block.spec.ts` | Code block rendering, copy button behavior |
-| `docs.spec.ts` | Docs pages load, sidebar navigation |
+| `docs.spec.ts` | Retired demo routes return 404; live content keeps shared sidebar navigation |
 | `guild.spec.ts` | Guild homepage, framework cards, filter pills |
 | `interaction.spec.ts` | Tag clicks, search modal, interactive elements |
 | `layout.spec.ts` | Header, footer, overall page structure |

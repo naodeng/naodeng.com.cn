@@ -132,7 +132,7 @@ test('页面正常加载', async ({ page }) => {
 | 测试文件 | 测试内容 |
 |---|---|
 | `code-block.spec.ts` | 代码块渲染、复制按钮行为 |
-| `docs.spec.ts` | 文档页加载、侧边栏导航 |
+| `docs.spec.ts` | 已移除的示例页返回 404；现有内容保留共享侧栏导航 |
 | `guild.spec.ts` | Guild 首页、框架卡片、筛选标签 |
 | `interaction.spec.ts` | 标签点击、搜索弹窗、交互元素 |
 | `layout.spec.ts` | 页头、页脚、整体页面结构 |

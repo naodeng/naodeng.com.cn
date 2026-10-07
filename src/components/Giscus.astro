@@ -17,7 +17,7 @@ const GISCUS_DEFAULTS = {
 interface Props {
   /** 界面语言，与 giscus 支持的语言代码一致，如 zh-CN、en */
   lang?: string;
-  /** 主题：light | dark | preferred_color_scheme */
+  /** preferred_color_scheme 跟随站点解析后的主题；也可指定 light、dark 或自定义主题 */
   theme?: string;
   /** 评论框位置：top | bottom */
   inputPosition?: "top" | "bottom";
@@ -63,6 +63,34 @@ const enabled = Boolean(repo && repoId && category && categoryId);
       crossorigin="anonymous"
       async
     />
+    {theme === "preferred_color_scheme" && (
+      <script is:inline>
+        (() => {
+          const section = document.currentScript?.closest(".giscus-section");
+          const client = section?.querySelector('script[src="https://giscus.app/client.js"]');
+          if (!section || !client) return;
+
+          const syncTheme = () => {
+            const theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+            client.setAttribute("data-theme", theme);
+            section.querySelector("iframe.giscus-frame")?.contentWindow?.postMessage(
+              { giscus: { setConfig: { theme } } },
+              "https://giscus.app",
+            );
+          };
+
+          syncTheme();
+          // Lazy frames can load after a theme change; send the current theme when ready.
+          section.addEventListener("load", (event) => {
+            if (event.target instanceof HTMLIFrameElement) syncTheme();
+          }, true);
+          new MutationObserver(syncTheme).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["data-theme"],
+          });
+        })();
+      </script>
+    )}
   </section>
 )}
 

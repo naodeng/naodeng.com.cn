@@ -31,12 +31,6 @@ export function urlsForSourceFile(file, { origin, root }) {
     return urls;
   }
 
-  match = normalized.match(/^src\/content\/docs\/(en|zh-cn)\/(.+)\.md$/i);
-  if (match) {
-    const [, lang, rest] = match;
-    return [`${origin}/${lang}/docs/${rest.toLowerCase()}/`];
-  }
-
   match = normalized.match(/^src\/content\/(qaskills|aiwiki)\/(en|zh-cn)\/(.+)\.md$/i);
   if (match) {
     const [, collection, lang, rest] = match;

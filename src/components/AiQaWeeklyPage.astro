@@ -104,7 +104,6 @@ const structuredData = {
   <div class="weekly-page">
     <header class="weekly-toolbar" aria-label={isZh ? "周刊筛选" : "Weekly issue selector"}>
       <div class="weekly-toolbar-copy">
-        <p class="weekly-eyebrow">AI-NATIVE QA WEEKLY</p>
         <p class="weekly-toolbar-hint">
           {isZh ? "按周期查阅 AI Native QA、Agent 测试与 LLM 质量动态。" : "Browse AI-Native QA, agent testing, and LLM quality updates by period."}
         </p>
@@ -163,17 +162,15 @@ const structuredData = {
 </script>
 
 <style>
+  :global(.l-main:has(.weekly-page)) {
+    margin-block-start: clamp(1.25rem, 2.5vw, 2rem);
+  }
+
   :global(.docs-sidebar-wrap),
   :global(.docs-sidebar),
   :global(.docs-sidebar-inner) {
     border-radius: var(--radius-md);
     overflow: hidden;
-  }
-
-  :global(.docs-sidebar-inner) {
-    border-inline-start: none !important;
-    border: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent) !important;
-    box-shadow: none;
   }
 
   @media (min-width: 1100px) {
@@ -227,10 +224,8 @@ const structuredData = {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: var(--sp-m);
-    margin-block-end: var(--sp-m);
-    padding-block: 0 var(--sp-m);
-    border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 18%, var(--color-border));
+    gap: 1.25rem;
+    margin-block-end: 1rem;
   }
 
   .weekly-page {
@@ -241,19 +236,11 @@ const structuredData = {
     min-inline-size: 0;
   }
 
-  .weekly-eyebrow {
+  .weekly-toolbar-copy .weekly-toolbar-hint {
     margin: 0;
-    color: var(--color-theme);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-  }
-
-  .weekly-toolbar-hint {
-    margin: 0.45rem 0 0;
-    color: color-mix(in srgb, var(--color-main) 72%, transparent);
+    color: var(--color-text-secondary);
     font-size: 0.92rem;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .weekly-period-control {
@@ -286,7 +273,7 @@ const structuredData = {
     display: grid;
     grid-template-columns: minmax(9rem, 1fr) minmax(0, 2.4fr) minmax(4.5rem, 0.55fr);
     gap: 0;
-    margin-block-end: var(--sp-l);
+    margin-block-end: 1.25rem;
     border-block: 1px solid var(--color-border);
   }
 
@@ -394,10 +381,14 @@ const structuredData = {
     color: var(--color-text-secondary);
   }
 
-  @media (width < 768px) {
+  @media (width < 900px) {
     .weekly-toolbar {
       align-items: stretch;
       flex-direction: column;
+    }
+
+    .weekly-toolbar-copy {
+      display: none;
     }
 
     .weekly-period-control {
@@ -405,21 +396,30 @@ const structuredData = {
       inline-size: 100%;
     }
 
-    .weekly-toolbar-hint {
-      max-inline-size: 32ch;
-    }
-
     .weekly-issue-meta {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 1.25rem;
+      padding-block: 0.65rem;
     }
 
-    .weekly-meta-item:not(:last-child) {
-      border-block-end: 1px solid var(--color-border);
+    .weekly-meta-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0;
+      border: 0;
     }
 
     .weekly-meta-item--wide {
-      grid-column: 1 / -1;
-      border-inline-end: 0;
+      order: 1;
+      flex-basis: 100%;
+    }
+
+    .weekly-meta-item--wide > span:last-child {
+      flex: 1;
+      min-inline-size: 0;
     }
 
     .weekly-article {

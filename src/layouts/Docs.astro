@@ -224,17 +224,6 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     }
   }
   @media (width < 900px) {
-    .l-docs[data-content-mode="index"] :global(.docs-sidebar-toggle) {
-      display: flex;
-    }
-    .l-docs[data-content-mode="index"] :global(.docs-sidebar-nav) {
-      display: none;
-      padding-block-start: 0;
-      max-height: min(calc(100dvh - 12rem), 70dvh);
-    }
-    .l-docs[data-content-mode="index"] :global(.docs-sidebar-inner.is-open .docs-sidebar-nav) {
-      display: block;
-    }
     .l-docs {
       grid-template-columns: 1fr;
       gap: var(--sp-m);

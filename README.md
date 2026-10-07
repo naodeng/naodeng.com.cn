@@ -69,6 +69,10 @@ Welcome to my blog! This blog is dedicated to sharing my thoughts and ideas on v
 - `docs/`：长期文档（requirements/design/tasks/architecture/standards）
 - `docs/temporary/`：临时探索与脚本输出
 
+已移除 `/en/docs/*` 与 `/zh-cn/docs/*` 的 Astro 模板示例页；`src/layouts/Docs.astro` 仍为百科、Guild 和周刊提供共享阅读布局。仓库根目录的 `docs/` 是维护文档，不是公开页面。
+
+The Astro demo pages under `/en/docs/*` and `/zh-cn/docs/*` have been retired. `src/layouts/Docs.astro` remains the shared layout for the encyclopedias, Guild, and weekly digest. The root `docs/` directory contains repository documentation.
+
 ## 🛠️ 环境要求 | Requirements
 
 - Node.js `22.12.0` 或更高版本

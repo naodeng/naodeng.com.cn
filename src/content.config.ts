@@ -20,20 +20,6 @@ const blog = defineCollection({
     }),
 });
 
-// 文档 collection：用于 /docs 下的 Markdown/MDX，按语言分目录 en/、zh-cn/
-const docs = defineCollection({
-  loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/docs" }),
-  schema: () =>
-    z.object({
-      title: z.string(),
-      description: z.string().optional(),
-      /** 侧栏分组名（如 "Start"、"Guides"），用于生成导航 */
-      section: z.string().optional(),
-      /** 同组内排序，数字越小越靠前 */
-      order: z.number().optional(),
-    }),
-});
-
 // 测试百科（仅中文）：词条 Markdown，用于 /zh-cn/wiki/
 // 推荐 frontmatter：title（中文 (English)）、description（一句话摘要，SEO）、section（首字母）、order（同组排序）
 const wiki = defineCollection({
@@ -169,4 +155,4 @@ const workflows = defineCollection({
     }),
 });
 
-export const collections = { blog, docs, wiki, aiwiki, aiQaWeekly, guild, prompts, workflows };
+export const collections = { blog, wiki, aiwiki, aiQaWeekly, guild, prompts, workflows };

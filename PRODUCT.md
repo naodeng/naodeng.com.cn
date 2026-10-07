@@ -20,7 +20,7 @@ web
 
 ## Positioning
 
-与普通个人博客不同，它用成体系的多内容支柱（Blog、Docs、Wiki、AI Wiki、Guild、Prompts、Workflows、QA Skills）承载知识，双语（en / zh-cn）对等覆盖。相邻产品难以复制的机制是：长期稳定维护的双语、结构化、可校验的内容工程（含自动化测试、SEO / 完整性检查、内容生成脚本）。
+与普通个人博客不同，它用成体系的多内容支柱（Blog、Wiki、AI Wiki、Guild、Prompts、Workflows、QA Skills）承载知识，双语（en / zh-cn）对等覆盖。相邻产品难以复制的机制是：长期稳定维护的双语、结构化、可校验的内容工程（含自动化测试、SEO / 完整性检查、内容生成脚本）。
 
 ## Operating Context
 
@@ -33,7 +33,7 @@ web
 
 ## Capabilities and Constraints
 
-- 内容支柱（用户确认的必保约束）：Blog / Docs / Wiki（测试百科）/ AI Wiki / Guild / Prompts / Workflows / QA Skills 都要保持可达。
+- 内容支柱：Blog / Wiki（测试百科）/ AI Wiki / Guild / Prompts / Workflows / QA Skills 都要保持可达。按本轮用户的清理意图，未使用的 `/[lang]/docs/*` Astro 示例页移除；百科、Guild 与周刊使用的共享 Docs 阅读布局继续保留。
 - 双语：en 与 zh-cn 路径、内容、导航保持一致。
 - 许可：PolyForm Noncommercial License 1.0.0（非商业使用免费，商业使用需单独授权）。
 - 技术约束：Node.js ≥ 22.12、npm 10+、包管理用 npm（不换 pnpm / yarn）。

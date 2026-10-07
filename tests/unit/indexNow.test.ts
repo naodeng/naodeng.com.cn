@@ -79,7 +79,7 @@ describe("IndexNow helpers", () => {
 
   it("identifies broad changes and reads sitemap URL entries", () => {
     expect(isBroadChange("src/pages/index.astro")).toBe(true);
-    expect(isBroadChange("src/content/docs/en/installation.md")).toBe(false);
+    expect(isBroadChange("src/content/wiki/acceptance-testing.md")).toBe(false);
 
     const tempDir = mkdtempSync(path.join(os.tmpdir(), "naodeng-sitemap-"));
     const sitemapPath = path.join(tempDir, "sitemap.xml");
@@ -101,12 +101,12 @@ describe("IndexNow helpers", () => {
     expect(() => readSitemap(path.join(REPO_ROOT, "missing-sitemap.xml"))).toThrow("Sitemap not found");
   });
 
-  it("maps a Docs content change to its localized detail URL", () => {
+  it("does not submit retired Docs demo URLs", () => {
     expect(
       urlsForSourceFile("src/content/docs/en/installation.md", {
         origin: "https://inaodeng.com",
       }),
-    ).toEqual(["https://inaodeng.com/en/docs/installation/"]);
+    ).toEqual([]);
   });
 
   it("classifies Bing site verification as a pending external state", () => {

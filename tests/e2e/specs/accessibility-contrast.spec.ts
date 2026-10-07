@@ -56,6 +56,8 @@ const samples: ContrastSample[] = [
 for (const locale of ["en", "zh-cn"]) {
   for (const theme of ["light", "dark"] as const) {
     samples.push(
+      { name: `${locale}-archive-dates-${theme}`, path: `/${locale}/archive/`, selectors: [".date"], theme },
+      { name: `${locale}-series-counts-${theme}`, path: `/${locale}/series/`, selectors: [".aggregate-count"], theme },
       { name: `${locale}-footer-${theme}`, path: `/${locale}/`, selectors: [".built-with", ".capability-recommendations__label"], theme },
       { name: `${locale}-blog-metadata-${theme}`, path: `/${locale}/blog/`, selectors: [".post-date", ".post-reading-time"], theme },
       { name: `${locale}-guild-category-${theme}`, path: `/${locale}/guild/ui-testing/`, selectors: [".breadcrumb-link", ".tt-section-title", ".fw-card__lang", ".fw-card__desc", ".fw-card__count"], theme },

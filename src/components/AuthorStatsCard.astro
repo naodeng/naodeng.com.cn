@@ -1,6 +1,6 @@
 ---
 /**
- * 博文侧栏：作者信息 + 站点统计（文章/分类/标签/字数）
+ * 博文末尾：作者信息 + 站点统计（文章/分类/标签/字数）
  */
 interface Props {
   avatarUrl: string;
@@ -37,163 +37,203 @@ function formatWords(n: number): string {
 ---
 
 <aside class="author-stats-card" aria-label={authorName}>
-  <a href={authorLink} class="author-avatar-link">
-    <img src={avatarUrl} alt={authorName} class="author-avatar" width="80" height="80" />
-  </a>
-  <h3 class="author-name">{authorName}</h3>
-  <p class="author-slogan">{slogan}</p>
-  {social && Object.values(social).some(Boolean) && (
-    <div class="author-social">
-      {social.github && (
-        <a href={social.github} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-          </svg>
-        </a>
-      )}
-      {social.medium && (
-        <a href={social.medium} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Medium">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-          </svg>
-        </a>
-      )}
-      {social.x && (
-        <a href={social.x} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-        </a>
-      )}
-      {social.weibo && (
-        <a href={social.weibo} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="微博">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zm5.44-13.922c-.375-.107-.632-.179-.436-.645.426-1.071.469-1.993.008-2.653-.855-1.228-3.199-1.161-5.882-.014 0 0-.842.368-.626-.299.414-1.336.351-2.454-.295-3.101-1.455-1.455-5.323.056-8.636 3.368C.222 5.705 0 8.124 0 10.083c0 5.815 7.455 9.354 14.745 9.354 9.571 0 15.94-5.567 15.94-9.983 0-2.669-2.25-4.191-4.147-4.191-.786 0-1.258.179-1.258.179s.35-1.44-.742-1.041zm-1.551 9.199c-.395 1.016-1.458 1.748-2.668 1.748-1.21 0-2.273-.732-2.668-1.748-.395-1.016.148-2.148 1.358-2.148.396 0 .791.148 1.11.395.319-.247.714-.395 1.11-.395 1.21 0 1.753 1.132 1.358 2.148z"/>
-          </svg>
-        </a>
-      )}
-      {social.rss && (
-        <a href={social.rss} class="social-btn social-btn--rss" rel="noopener noreferrer" aria-label="RSS">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
-          </svg>
-        </a>
-      )}
+  <div class="author-profile">
+    <a href={authorLink} class="author-avatar-link">
+      <img src={avatarUrl} alt={authorName} class="author-avatar" width="56" height="56" loading="lazy" decoding="async" />
+    </a>
+    <div class="author-identity">
+      <h3 class="author-name"><a href={authorLink}>{authorName}</a></h3>
+      <p class="author-slogan">{slogan}</p>
     </div>
-  )}
-  <hr class="author-divider" />
-  <div class="author-stats">
-    <div class="stat-item">
-      <span class="stat-label">{labels.articles}</span>
-      <span class="stat-value">{stats.articles}</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">{labels.categories}</span>
-      <span class="stat-value">{stats.categories}</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">{labels.tags}</span>
-      <span class="stat-value">{stats.tags}</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">{labels.words}</span>
-      <span class="stat-value">{formatWords(stats.words)}</span>
-    </div>
+    {social && Object.values(social).some(Boolean) && (
+      <div class="author-social">
+        {social.github && (
+          <a href={social.github} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+            </svg>
+          </a>
+        )}
+        {social.medium && (
+          <a href={social.medium} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+            </svg>
+          </a>
+        )}
+        {social.x && (
+          <a href={social.x} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        )}
+        {social.weibo && (
+          <a href={social.weibo} class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="微博">
+            {/* Remix Icon weibo-fill; Copyright (c) 2017-2026 Remix Design. https://github.com/Remix-Design/RemixIcon/blob/master/License */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M4.27799 8.59201C7.05085 5.8217 10.282 4.55876 11.4966 5.77587C12.0338 6.31312 12.0848 7.23996 11.741 8.34757C11.5628 8.9052 12.2655 8.5971 12.2655 8.5971C14.5062 7.66008 16.4618 7.60407 17.1747 8.62511C17.5541 9.16746 17.5184 9.93133 17.1671 10.8149C17.0041 11.2223 17.2154 11.2859 17.5261 11.3776C18.789 11.7697 20.1945 12.7144 20.1945 14.3822C20.1945 17.1448 16.2148 20.6205 10.2311 20.6205C5.66569 20.6205 1.00098 18.4078 1.00098 14.7692C1.00098 12.8671 2.20535 10.6672 4.27799 8.59201ZM16.4108 14.3338C16.174 11.9429 13.0294 10.2954 9.38829 10.657C5.74717 11.016 2.9845 13.2465 3.2213 15.6375C3.4581 18.0309 6.60271 19.6758 10.2438 19.3168C13.885 18.9552 16.6451 16.7247 16.4108 14.3338ZM6.16221 14.4382C6.91589 12.9104 8.87395 12.0473 10.6079 12.4979C12.4005 12.9614 13.3146 14.6521 12.5838 16.2969C11.8403 17.98 9.70148 18.8763 7.88856 18.2906C6.13674 17.7254 5.39579 15.9965 6.16221 14.4382ZM8.8765 15.0162C8.31378 14.7794 7.58556 15.0238 7.23672 15.5687C6.88279 16.1162 7.0483 16.7705 7.60847 17.0252C8.17628 17.2823 8.93252 17.0379 9.2839 16.4752C9.63019 15.9074 9.44686 15.2581 8.8765 15.0162ZM10.2642 14.4382C10.0478 14.3542 9.77787 14.456 9.65056 14.6699C9.52834 14.8838 9.59709 15.1282 9.81352 15.2173C10.0325 15.309 10.3151 15.2046 10.4424 14.9856C10.5647 14.7666 10.4857 14.5197 10.2642 14.4382ZM15.9576 2.92408C17.9258 2.50649 20.0545 3.12017 21.5008 4.71918C22.947 6.31822 23.3341 8.50034 22.7204 10.4228C22.5796 10.8639 22.1036 11.1075 21.6612 10.9626C21.2181 10.8174 20.9762 10.3438 21.1188 9.90078C21.5568 8.54108 21.2806 6.98652 20.2531 5.84971C19.2244 4.71154 17.712 4.27613 16.3115 4.57404C15.8558 4.67099 15.41 4.37994 15.3109 3.92475C15.2115 3.46897 15.5018 3.02078 15.9576 2.92408ZM16.584 5.84971C17.5414 5.64601 18.5802 5.94392 19.283 6.72307C19.9858 7.50222 20.1742 8.56655 19.8737 9.49847C19.7511 9.87865 19.3409 10.089 18.9596 9.96443C18.5777 9.83967 18.3714 9.43227 18.4962 9.04779C18.6464 8.59201 18.5522 8.07258 18.2085 7.69064C17.8622 7.31125 17.3555 7.16611 16.887 7.26542C16.4949 7.35199 16.1104 7.09991 16.0263 6.71034C15.9423 6.31822 16.1917 5.93316 16.584 5.84971Z"/>
+            </svg>
+          </a>
+        )}
+        {social.rss && (
+          <a href={social.rss} class="social-btn social-btn--rss" rel="noopener noreferrer" aria-label="RSS">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+            </svg>
+          </a>
+        )}
+      </div>
+    )}
   </div>
+  <dl class="author-stats">
+    <div class="stat-item">
+      <dt class="stat-label">{labels.articles}</dt>
+      <dd class="stat-value">{stats.articles}</dd>
+    </div>
+    <div class="stat-item">
+      <dt class="stat-label">{labels.categories}</dt>
+      <dd class="stat-value">{stats.categories}</dd>
+    </div>
+    <div class="stat-item">
+      <dt class="stat-label">{labels.tags}</dt>
+      <dd class="stat-value">{stats.tags}</dd>
+    </div>
+    <div class="stat-item">
+      <dt class="stat-label">{labels.words}</dt>
+      <dd class="stat-value">{formatWords(stats.words)}</dd>
+    </div>
+  </dl>
 </aside>
 
 <style>
   .author-stats-card {
-    padding: calc(var(--sp-m) * 0.75);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--color-base) 98%, var(--color-main));
-    border: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
-    text-align: center;
+    container-type: inline-size;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-muted);
+    display: grid;
+    gap: 1rem;
+    text-align: start;
+  }
+  .author-profile {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem 1rem;
+    align-items: center;
   }
   .author-avatar-link {
     display: block;
-    margin-block-end: 0.5rem;
+    border-radius: 50%;
   }
   .author-avatar {
-    width: 68px;
-    height: 68px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
     margin-inline: auto;
   }
-  .author-name {
-    margin: 0 0 0.2em 0;
+  .author-identity {
+    min-inline-size: 0;
+  }
+  .author-stats-card .author-name {
+    margin: 0;
+    padding: 0;
+    border: 0;
     font-size: 1.05rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: 700;
     color: var(--color-main);
   }
+  .author-name a {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  .author-name a:hover {
+    color: var(--color-theme);
+  }
+  .author-avatar-link:focus-visible,
+  .author-name a:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 4px;
+  }
   .author-slogan {
-    margin: 0;
-    font-size: 0.8rem;
-    font-style: italic;
-    color: color-mix(in srgb, var(--color-main) 75%, transparent);
-    line-height: 1.3;
+    margin: 0.25rem 0 0;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
   }
   .author-social {
     display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-block-start: 0.6rem;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+    gap: 0.25rem;
   }
   .social-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid color-mix(in srgb, var(--color-main) 20%, transparent);
-    color: color-mix(in srgb, var(--color-main) 65%, transparent);
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
     text-decoration: none;
-    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
   }
   .social-btn:hover {
     color: var(--color-theme);
-    border-color: var(--color-theme);
-    background-color: color-mix(in srgb, var(--color-theme) 8%, transparent);
-  }
-  .social-btn--rss:hover {
-    color: #f26522;
-    border-color: #f26522;
-    background-color: color-mix(in srgb, #f26522 10%, transparent);
+    background-color: var(--color-theme-soft);
   }
   .social-btn:focus-visible {
     outline: 2px solid var(--color-theme);
     outline-offset: 2px;
   }
-  .author-divider {
-    margin: 0.75rem 0;
-    border: none;
-    border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
-  }
   .author-stats {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.55rem 0.8rem;
-    text-align: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem 1rem;
+    margin: 0;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--color-border);
+    text-align: start;
   }
   .stat-item {
     display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.5rem;
   }
   .stat-label {
-    font-size: 0.75rem;
+    order: 1;
+    font-size: 0.8125rem;
     color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
   }
   .stat-value {
+    margin: 0;
     font-size: 1rem;
     font-weight: 700;
     color: var(--color-main);
+    font-variant-numeric: tabular-nums;
+  }
+  @container (min-width: 38rem) {
+    .author-profile {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+    .author-social {
+      grid-column: auto;
+    }
+  }
+  @container (max-width: 26rem) {
+    .author-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 480px) {
+    .author-stats-card {
+      padding: 1.25rem;
+    }
   }
 </style>

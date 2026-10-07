@@ -8,14 +8,14 @@ interface Props {
   headings: { depth: number; slug: string; text: string }[];
   /** 标题文案：目录 / Table of Contents */
   label?: string;
-  /** 左侧固定（不占流）、右侧流式、或标题下方块级 */
-  placement?: "left" | "right" | "below";
+  /** 左侧固定、右侧流式、标题下方，或博客的响应式目录 */
+  placement?: "left" | "right" | "below" | "article";
 }
 
 const { headings, label = "目录", placement = "right" } = Astro.props;
 
 // 7.1: 目录层级控制：
-// - left / below: 展示 h2+h3（博文详情页侧栏需要更细粒度）
+// - left / below / article: 展示 h2+h3
 // - right: 仅展示 h2（控制长度）
 const tocItems = headings.filter((h) =>
   placement === "right" ? h.depth === 2 : h.depth === 2 || h.depth === 3
@@ -150,6 +150,31 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
   .toc-sidebar--below .toc-current,
   .toc-sidebar--below .toc-progress {
     display: none;
+  }
+
+  .toc-sidebar--article {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+  .toc-sidebar--article .toc-nav {
+    padding: 1rem;
+  }
+  .toc-sidebar--article .toc-title {
+    padding: 0;
+    border: 0;
+    color: var(--color-text-secondary);
+    opacity: 1;
+  }
+  .toc-sidebar--article .toc-link {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    border-radius: var(--radius-sm);
+  }
+  .toc-sidebar--article .toc-link:hover,
+  .toc-sidebar--article .toc-link[aria-current="true"] {
+    background: var(--color-theme-soft);
   }
 
   .toc-nav {
@@ -363,6 +388,41 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
     margin-block-start: 0.5rem;
   }
 
+  @media (max-width: 1099px) {
+    .toc-sidebar--article .toc-title,
+    .toc-sidebar--article .toc-current,
+    .toc-sidebar--article .toc-progress,
+    .toc-sidebar--article .toc-list--desktop {
+      display: none;
+    }
+    .toc-sidebar--article .toc-details-mobile {
+      display: block;
+    }
+    .toc-sidebar--article .toc-nav {
+      padding: 0.4rem 0.75rem;
+    }
+    .toc-sidebar--article .toc-summary {
+      min-block-size: 44px;
+      color: var(--color-main);
+      opacity: 1;
+    }
+    .toc-sidebar--article .toc-summary-current {
+      color: var(--color-text-secondary);
+      opacity: 1;
+    }
+    .toc-sidebar--article .toc-list--mobile {
+      max-block-size: min(60dvh, 24rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border-strong) transparent;
+    }
+    .toc-sidebar--article .toc-link {
+      display: flex;
+      align-items: center;
+      min-block-size: 44px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .toc-link {
       transition: none;
@@ -450,6 +510,12 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
     const contentScope = (main.querySelector(".prose") as HTMLElement | null) || (main as HTMLElement);
 
     const links = toc.querySelectorAll<HTMLElement>(".toc-link");
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        const details = link.closest("details");
+        if (details) details.open = false;
+      });
+    });
     const headingTargets = new Set(
       Array.from(links)
         .map((a) => (a.getAttribute("href") || "").replace(/^#/, ""))
