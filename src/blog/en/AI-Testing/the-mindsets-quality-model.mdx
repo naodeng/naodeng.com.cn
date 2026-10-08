@@ -1,0 +1,287 @@
+---
+title: "The Mindsets Quality Model: 12 Perspectives for Finding Blind Spots in AI-Assisted Testing"
+description: "Explore Ady Stokes' 12 testing mindsets, a four-round saved-cart exercise, and ways to use AI coaching, evidence, and evaluations to uncover quality risks."
+date: 2026-10-08T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Software Testing", "Testing Mindsets"]
+categories: ["AI Testing"]
+---
+
+Give AI a requirement and it can quickly produce a test plan: happy paths, failure paths, boundary conditions, data, and even automation scripts. A polished document can make the analysis feel complete.
+
+But has it considered the problems that nobody wrote into the requirement?
+
+Ady Stokes addresses that question in *The Mindsets Quality Model*, published by Ministry of Testing on October 5, 2026. His model describes several ways testers think and offers an exercise for switching perspectives to uncover risks our usual approach might miss.
+
+The earlier articles in this series explored unfamiliar systems, people's role in quality collaboration, and filtering AI noise. This one adds a practical question: once we are willing to think carefully, how do we examine a problem from more angles?
+
+The shopping-cart example turns the model into concrete questions; the four-round exercise helps us practise switching perspectives. The example concerns are hypotheses that need rules and test results before we can confirm them.
+
+## AI accelerates output; quality still needs considered thinking
+
+Ady states his position directly:
+
+> AI can accelerate output, but only humans can actually think. And thinking is where quality begins.
+
+He argues that AI is good at recognising patterns, processing large amounts of data, and producing plausible requirements, user stories, and test cases. Before accepting those outputs, someone still needs to interpret intent, recognise ambiguity, consider consequences, and decide what deserves attention.
+
+The article is explicit about AI's limitations: it does not personally experience confusion, frustration, or delight with software; it lacks human memories, culture, and expectations; and it does not judge situations and consequences as people do. Incomplete information can lead to invented material that fills the gap.
+
+These are the author's arguments about human thinking. I read them as a reminder for quality work: **a fluent answer needs evidence before we treat it as proof of sufficient understanding.** People can disagree about what counts as AI thinking. Unknown requirements, responsibility for decisions, and verification still need to be addressed.
+
+For example, a plan with 50 test cases might cover saving, restoring, deleting, and error messages without asking whether customers interpret “saved” as “stock reserved.” It might also miss the question of whether saved-item behaviour is used for tracking people did not expect.
+
+AI can assist with those investigations. Reliability depends on context, the method of analysis, and verification. Some preliminary work might move from hours to minutes, but that is a possible change in a workflow, not a measured productivity result in this article. Output speed and the discovery of important risks need separate assessment.
+
+Ady's broader argument is that thinking, feeling, and reasoning deserve more investment as automation and AI become common. His idea of “outthinking AI” can be made practical: notice an unexplained assumption, ask about an overlooked user situation, or require more evidence before deciding.
+
+## Default thinking shapes what we notice first
+
+“Testing mindset” often sounds like one shared characteristic. A tester reads a requirement and asks about invalid input, API timeouts, duplicate submissions, or inconsistent states. These are useful questions, but they cover only part of the thinking involved.
+
+Ady proposes multiple mindsets. Some people start with risk, others with evidence, user experience, system relationships, or deliberate misuse. Each approach has strengths and blind spots.
+
+He calls our instinctive starting point “default thinking”: a tendency shaped by experience, role, and context that can change with the task.
+
+Consider a shopping-cart feature that lets customers save items for later:
+
+| Usual perspective | First question |
+| --- | --- |
+| Functional behaviour | Can a saved item be restored correctly? |
+| Performance and capacity | What happens when many customers save items at the same time? |
+| Security | Could changing request parameters expose someone else's saved items? |
+| User experience | Can people distinguish the active cart from items saved for later? |
+
+All four questions are reasonable. Recognising our first response makes it easier to notice which other perspectives remain unexplored.
+
+An API automation engineer may immediately think about validation, response codes, data integrity, and error handling. They may be slower to ask whether customers understand the feature, whether the outcome is fair, whether the business process makes sense, or whether other teams inherit extra operational work.
+
+Repeatedly investigating one kind of problem develops experience. Keep that experience, then deliberately change viewpoint to look for concerns you would not previously have considered.
+
+## Four categories and twelve perspectives
+
+The original article describes mindsets as lenses of focus. A lens makes some concerns easier to see while leaving others outside the frame. Understanding its limits and combining suitable lenses produces a more rounded analysis.
+
+| Category | Mindsets | Main purpose |
+| --- | --- | --- |
+| Visionary and open | Blue-sky, Creative, Exploratory, Inclusive | Imagine possibilities that familiar analysis and AI output may not cover |
+| Analytical and grounded | Scientific, Sceptical, Critical, Risk-based | Validate facts and theories; inspect evidence, assumptions, and priorities |
+| Philosophical and connected | Ethical, Holistic, Collaborative | Understand relationships, impact, consequences, and shared decisions |
+| Dark and aggressive | Malevolent | Explore failure modes, intrusion, and intentional damage |
+
+The model offers perspectives for analysis, not a new set of testing techniques or personality labels. Existing testing methods and domain knowledge still matter. Choose a few perspectives that fit the task and start practising; you do not have to master all twelve first.
+
+The role names below come from the original model. The shopping-cart questions show how each perspective can inform a requirements review.
+
+### Visionary and open: possibilities beyond the requirement
+
+**Blue-sky thinking belongs to the innovator.** Set immediate implementation constraints aside and consider the potential. Could someone save an item on a phone and resume shopping on a computer? The question may reveal a cross-device requirement, or the team may defer it because of scope. Naming the possibility makes that discussion possible.
+
+**Creative thinking belongs to the visionary.** Turn potential into alternative solutions and uses. If a saved product becomes unavailable, could the experience offer replacements? Might customers use the saved list as a wish list or comparison tool? Those uses can need different feedback and rules.
+
+**Exploratory thinking belongs to the investigator.** Learn through interaction, observation, and changing hypotheses. What unexpected state appears after repeated saves, restores, quantity edits, and account changes? An observation can redirect the next experiment; testing also teaches us about the system.
+
+**Inclusive thinking belongs to the ally.** Consider people and interactions beyond our own. Can a screen reader communicate that an item moved into the saved list? Can someone using only a keyboard find it and continue? “I can do it” covers only our own way of using the product.
+
+Together, these perspectives reveal behaviours users may need even when the requirement does not mention them. They also surface design assumptions.
+
+### Analytical and grounded: conclusions with support
+
+**Scientific thinking belongs to the realist.** Form a hypothesis and use experiments, evidence, and logic to support or disprove it. If saving items supposedly has no effect on checkout performance, under what load should we measure it? Which metrics matter, and what result would contradict the claim?
+
+**Sceptical thinking belongs to the analyst.** Question statements that sound settled. If items are saved “permanently,” what does that mean after a cleared session, a device change, a long absence, or account closure? Clarifying the word is useful before accepting it as a rule.
+
+**Critical thinking belongs to the evaluator.** Examine the reasoning, evidence, strengths, weaknesses, and possible biases in a solution. Why create a separate saved-item data model? Could the cart model be extended? What complexity does each option introduce? Testers can help the team examine a design by asking these questions.
+
+**Risk-based thinking belongs to the strategist.** Consider likelihood, impact, and mitigation before deciding the order of investigation. Price changes, unavailable stock, and incorrect checkout totals can affect transactions differently. Priorities, monitoring, and recovery should connect to those risks.
+
+These perspectives turn a suspicion into something the team can discuss: the assumption, its supporting evidence, and the next way to check it.
+
+### Philosophical and connected: consequences beyond the feature
+
+**Ethical thinking belongs to the moralist.** Examine values, fairness, privacy, transparency, responsibility, and possible harm. Could saved-item behaviour be used for tracking or profiling that customers did not expect? Do they understand the purpose and have a choice? A functioning feature does not settle those questions.
+
+**Holistic thinking belongs to the connector.** Put the saved list back into its wider system: stock, coupons, pricing, recommendations, and orders. When an item leaves the active cart, do the checkout total, cache, and persistent data agree? A correct display still leaves related states to investigate.
+
+**Collaborative thinking belongs to the partner.** Reach out to people whose knowledge builds a shared understanding. Do product, development, testing, and operations interpret “save for later” in the same way? Who knows the price-change policy, handles support complaints, or maintains the data? Discussion brings in information one person cannot supply and helps the team decide together.
+
+These perspectives fit requirements reviews, design discussions, and cross-team quality analysis. They help the team understand consequences beyond the immediate function.
+
+### Dark and aggressive: deliberate misuse
+
+**Malevolent thinking belongs to the saboteur.** Temporarily consider someone who intends to manipulate, exploit, or damage the system, and look for weak edges.
+
+Could repeated saves exhaust resources? Could someone access another customer's list, bypass stock or price validation, or leave inconsistent data through malformed requests?
+
+These questions identify possible abuse paths. Deeper security investigation needs suitable expertise and authorisation; an ordinary requirements review can record the paths worth investigating.
+
+## A four-round drill: identify, understand, expand, and reflect
+
+The original article provides a mindset-switching drill. Identify your default thinking, understand its origins, try other perspectives, then reflect. Allow time to think rather than rushing to finish all four rounds.
+
+The exercise uses a retail website's “Save for Later” feature. Each item in the active cart has a button. Selecting it removes the item from the current checkout total and moves it to a persistent saved list below the cart. The customer can later move it back to the active cart.
+
+Two user needs underpin the feature: reduce the current order total while keeping an item for a future purchase, and restore it easily when ready to buy. What “persistent” covers is still a question worth clarifying.
+
+You can substitute a requirement from your workplace. The feature matters less than recording how you start thinking and what changes after switching perspective.
+
+### Round one: record your first response
+
+For the practical exercise, write your answers before comparing them with the model. If you have already read this article, step away from the list and record your independent first response.
+
+1. What would you test first?
+2. What concerns you most?
+3. What would you ask, and what information would you need before testing?
+
+Then identify your primary default mindset, a secondary mindset, and perspectives you rarely or never use. If two perspectives seem equally primary, record both. Primary and secondary mindsets can come from the same category.
+
+This round builds awareness of your habits. It does not require the most comprehensive test list.
+
+### Round two: understand why those questions appeared first
+
+Review your notes and ask where your first response came from.
+
+Why did you notice those behaviours? Do you routinely ask designers or developers the same questions? Why those concerns? Do the defects you expect come from experience, or from assumptions you have not checked?
+
+Someone who dealt with a pricing incident may start with prices. Someone responsible for APIs may start with data. Both experiences are useful. Explaining the origin helps you assess whether the current concern has evidence and whether habit has focused your attention in one direction.
+
+### Round three: apply three unfamiliar perspectives
+
+Select three mindsets you rarely use. Choose deliberately or at random, and try perspectives you would not naturally gravitate towards—even ones that feel uncomfortable. That unfamiliar feeling deserves attention; it does not make the attempt a failure.
+
+Use each perspective separately to review the same feature. Record observations and possible bugs as different things. A person who usually focuses on functional and API checks could try Inclusive, Ethical, and Holistic thinking.
+
+| New perspective | Observation or question | Possible issue to investigate |
+| --- | --- | --- |
+| Inclusive | Can a screen reader detect that an item moved? | The update provides no perceivable status feedback |
+| Ethical | Does the customer know saved behaviour is used for analysis? | Data use differs from expectations without necessary explanation or choice |
+| Holistic | How do saved prices relate to current checkout prices? | Restoration uses stale prices, or saved items remain in the current total |
+
+These notes do not prove defects. They create hypotheses that need business rules, implementation information, and testing.
+
+### Round four: make the learning reusable
+
+Consider which perspective felt natural, which felt uncomfortable, and why. How did the switch feel? Was anything surprising? Which concern would you otherwise have missed, or taken much longer to consider?
+
+Choose perspectives to reuse in your next review and record their triggers. A change involving data use can prompt an ethical review; a feature spanning several systems can prompt a holistic one.
+
+Repeated practice can build a personal thinking toolkit. The original article also encourages personal mindmaps, additions to the model, and use of a digital worksheet. Adapt the toolkit to your role and domain, keeping the approaches that help you ask, analyse, and decide.
+
+## Stage one: AI facilitates while the person thinks
+
+The original article includes an AI facilitation prompt. Its constraints prevent early answers: ask one question at a time, wait for the person's response, withhold the twelve mindsets until the selection step, and avoid suggesting tests, risks, or observations during the drill. It also excludes praise and repeated summaries.
+
+That serves a different purpose from asking AI to generate a plan through twelve perspectives. Facilitation helps someone practise asking questions; generation supplies candidate analysis. To examine default thinking, we first need to see our own response.
+
+Here is an adapted prompt you can use with an AI assistant.
+
+```text
+Guide me through the four-round exercise in The Mindsets Quality Model.
+Use this feature: an item moves from the active shopping cart into a persistent
+saved-for-later list, leaves the current checkout total, and can later be restored.
+If I provide another feature, use that instead.
+
+Complete these rounds in order: identify defaults, understand defaults,
+try three unfamiliar perspectives, and reflect.
+Ask one question at a time and wait for my answer before continuing.
+Do not reveal the twelve mindsets before I finish the initial independent
+questions and reach the mindset-selection step in round one.
+During the exercise, do not suggest tests, risks, bugs, or observations for me.
+If I ask you to answer for me, return to a question that helps me think.
+Keep replies brief. Do not praise me or repeatedly summarise my answers.
+Keep English replies within 80 words and Chinese replies within 160 characters.
+
+Only after all four rounds may you add up to five candidate observations
+I did not reach. Label them as AI additions, not bugs I have already found.
+Start with the first question in round one.
+```
+
+The original English prompt caps replies at 80 words. This adaptation adds a character limit for Chinese while retaining one-question pacing and contributions only at the end. If AI gives answers too soon, restate the rules; following the facilitation process also needs checking.
+
+## Stage two: AI adds analysis and states the evidence needed
+
+After independent thinking and reflection, I suggest inviting AI to contribute candidate concerns.
+
+For example, ask it to use Scientific, Sceptical, Risk-based, Inclusive, Holistic, and Malevolent thinking. Select perspectives according to the feature rather than mechanically applying all twelve every time.
+
+```text
+Here are the requirement, confirmed business rules, and my independent notes.
+Add analysis using Scientific, Sceptical, Risk-based, Inclusive,
+Holistic, and Malevolent perspectives.
+
+For each candidate concern, explain:
+1. The underlying assumption and whether it is confirmed.
+2. The users, business activities, or systems it could affect.
+3. The evidence needed and information currently missing.
+4. A possible next verification step.
+
+Separate known facts, candidate risks, and open questions.
+Do not describe a hypothesis as a confirmed defect.
+Combine duplicate concerns. Ask about missing context rather than inventing rules.
+Finally, list the perspectives you added that my original notes did not cover.
+```
+
+“Restoring an item may use an outdated price” still needs investigation. Does saving retain a price snapshot or a product reference? Does restoration reprice the item? Once the policy is known, we can design checks across a price change and decide whether the behaviour is defective.
+
+I prefer to think independently, invite AI to challenge and extend the analysis, then revise conclusions through evidence. That uses its speed while keeping responsibility for verification clear.
+
+## Carrying the perspectives into AI-native QA
+
+The model can also inform a reusable quality-analysis method. The following workflow is a design suggestion that needs validation in real projects.
+
+1. **Understand the requirement.** Record goals, users, flows, rules, constraints, and missing information.
+2. **Select perspectives.** Choose suitable mindsets for the feature and explain the selection.
+3. **Form hypotheses and risks.** Retain observations from each perspective while separating facts, assumptions, and open questions.
+4. **Define the evidence.** Turn important concerns into verifiable requirements, acceptance criteria, exploratory work, or test tasks.
+5. **Learn from outcomes.** Compare the analysis with actual defects and missed risks, then adjust the next selection of perspectives.
+
+Skills, Agents, and Evals could support this approach: a Skill describes the steps, an Agent organises context and work, and Evals check whether the output refers to rules, mistakes speculation for defects, or offers actionable verification.
+
+Encoding a perspective in a Skill structures the process; it does not establish human experience or judgment in an AI system. Mentioning all twelve mindsets does not establish comprehensive analysis either. Evaluations need to inspect the actual concerns, and consequential business decisions still need evidence and appropriate human involvement.
+
+For example, “check price consistency” leaves the next action unclear. Stating the policy, affected states, evidence needed, and verification steps gives the team something it can investigate.
+
+## Coverage also needs a review of perspectives
+
+Functional coverage, code coverage, and requirements coverage each serve a purpose. A team can check every written requirement while overlooking differences between users, system relationships, ethical consequences, or deliberate misuse.
+
+For a complex requirements review, add a question:
+
+> Which perspectives have we considered, and which remain undiscussed?
+
+This can reveal blind spots. It cannot replace formal coverage metrics or justify a percentage such as “eight of twelve mindsets means two-thirds coverage.” The count says nothing about the importance of risks and does not establish that verification occurred.
+
+AI can reduce some of the work involved in creating test cases, developing scripts, and organising information. Testers still decide what deserves testing, which risks matter most, what evidence supports a conclusion, and what needs further investigation. Execution remains important; judgment shapes its direction.
+
+Immediately accepting a complete AI plan for every requirement may save time in the short term. Over time, it could also weaken the habit of asking independent questions, forming hypotheses, and checking judgments. That is a collaboration risk to consider, not a long-term effect measured in this article.
+
+Improvements in quality need to be assessed through real concerns and verification results, not just the speed of producing a test plan.
+
+## Build a toolkit for your own thinking
+
+Ady describes quality professionals as thought workers: people paid to understand problems, question assumptions, analyse risks, and make judgments. Investing in how we think is an investment in the quality of the work.
+
+Three actions follow from the article:
+
+1. Identify your default thinking and understand its strengths and blind spots.
+2. Deliberately switch perspectives to investigate hidden risks, assumptions, alternative interpretations, and less obvious clues.
+3. Build a personal thinking toolkit for everyday exploration, analysis, and decisions.
+
+At the next review, record your first response, choose three unfamiliar perspectives, and retain the observations and evidence needed. AI can facilitate the exercise, add candidate concerns, and challenge assumptions. The final judgment still needs verification.
+
+Finding a concern you previously overlooked, and explaining how to check it, gives you something worth keeping from the switch.
+
+## References and further reading
+
+This article draws on Ady Stokes' original article and accompanying learning notes. The expanded cart examples, second-stage AI collaboration, and workflow involving Skills, Agents, and Evals are practical suggestions developed here.
+
+Original author: Ady Stokes. Platform: Ministry of Testing. Original publication date: October 5, 2026.
+
+The Mindsets Quality Model:[https://www.ministryoftesting.com/insights/the-mindsets-quality-model/](https://www.ministryoftesting.com/insights/the-mindsets-quality-model/)
+
+How to Test a System You Don't Understand:[https://inaodeng.com/en/blog/ai-testing/how-to-test-a-system-you-dont-understand/](https://inaodeng.com/en/blog/ai-testing/how-to-test-a-system-you-dont-understand/)
+
+It's Always a People Problem—AI Testing:[https://inaodeng.com/en/blog/ai-testing/its-always-a-people-problem-ai-testing/](https://inaodeng.com/en/blog/ai-testing/its-always-a-people-problem-ai-testing/)
+
+Signal vs Noise in AI-Era Testing:[https://inaodeng.com/en/blog/ai-testing/signal-vs-noise-ai-testing/](https://inaodeng.com/en/blog/ai-testing/signal-vs-noise-ai-testing/)
