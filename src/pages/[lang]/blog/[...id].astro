@@ -11,12 +11,7 @@ import type { Lang } from "@/i18n";
 import { wikiIdToSlug, getTitleZhFromBody, getTitleZh, slugToTitleEn } from "@/data/wiki";
 import { aiwikiIdToSlug, aiwikiIdToLang, getAiWikiDisplayTitle } from "@/data/aiwiki";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
-
-/** 根据正文字符数估算阅读时长（约 1000 字/分钟，至少 1 分钟） */
-function readingTimeMinutes(rawBody: string): number {
-  const text = rawBody.replace(/\s+/g, " ").trim();
-  return Math.max(1, Math.ceil(text.length / 1000));
-}
+import { blogReadingTime } from "@/utils/readingTime";
 
 export async function getStaticPaths() {
   const posts = filterPublishedBlogPosts(await getCollection("blog"));
@@ -73,7 +68,7 @@ const blogPostingSchema = {
 };
 
 const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
-const readMinutes = readingTimeMinutes(rawBody);
+const readMinutes = blogReadingTime(rawBody);
 const readingTimeLabel = typeof READING_TIME_LABEL === "string" ? READING_TIME_LABEL : (READING_TIME_LABEL[locale] ?? (locale === "zh-cn" ? "分钟阅读" : "min read"));
 const breadcrumbs = [
   { name: homeName, url: `/${lang}/` },
@@ -491,6 +486,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   /* Markdown / 正文内容样式 */
   .prose {
     max-inline-size: 100%;
+    overflow-wrap: anywhere;
     margin-inline: 0;
     font-size: 1rem;
     line-height: 1.8;

@@ -87,7 +87,9 @@ export const getStaticPaths = () =>
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--sp-m) var(--sp-l);
+    gap: 1rem;
+    min-block-size: 64px;
+    padding: 0.9rem 1.25rem;
     border-radius: var(--radius-md);
     background: color-mix(in srgb, var(--color-base) 95%, var(--color-main));
     border: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
@@ -105,9 +107,13 @@ export const getStaticPaths = () =>
 
   .aggregate-name {
     color: var(--color-main);
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
   }
 
   .aggregate-count {
+    flex-shrink: 0;
+    white-space: nowrap;
     font-size: 0.875rem;
     color: var(--color-text-secondary);
   }

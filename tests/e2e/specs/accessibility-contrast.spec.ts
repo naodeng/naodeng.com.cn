@@ -5,6 +5,7 @@ type ContrastSample = {
   path: string;
   selectors: string[];
   theme?: "light" | "dark";
+  copyState?: "copied" | "failed";
 };
 
 const samples: ContrastSample[] = [
@@ -55,6 +56,15 @@ const samples: ContrastSample[] = [
 
 for (const locale of ["en", "zh-cn"]) {
   for (const theme of ["light", "dark"] as const) {
+    for (const copyState of ["copied", "failed"] as const) {
+      samples.push({
+        name: `${locale}-share-${copyState}-${theme}`,
+        path: `/${locale}/blog/ai-testing/introduction_of_awesome_qa_prompt/`,
+        selectors: [".article-share-copy", "#article-share-copy-feedback"],
+        theme,
+        copyState,
+      });
+    }
     samples.push(
       { name: `${locale}-archive-dates-${theme}`, path: `/${locale}/archive/`, selectors: [".date"], theme },
       { name: `${locale}-series-counts-${theme}`, path: `/${locale}/series/`, selectors: [".aggregate-count"], theme },
@@ -71,9 +81,28 @@ for (const locale of ["en", "zh-cn"]) {
 test.describe("可访问性对比度审计（WCAG AA 抽样）", () => {
   for (const sample of samples) {
     test(`${sample.name} 关键文本对比度满足 WCAG AA`, async ({ page }) => {
+      if (sample.theme) {
+        await page.addInitScript(selected => localStorage.setItem("themePreference", selected), sample.theme);
+      }
+      if (sample.copyState) {
+        await page.emulateMedia({ reducedMotion: "reduce" });
+        await page.addInitScript(state => {
+          Object.defineProperty(navigator, "clipboard", {
+            configurable: true,
+            value: {
+              writeText: () => state === "copied" ? Promise.resolve() : Promise.reject(new Error("Clipboard denied")),
+            },
+          });
+        }, sample.copyState);
+      }
       await page.goto(sample.path, { waitUntil: "domcontentloaded" });
       if (sample.theme) {
-        await page.evaluate((theme) => { document.documentElement.dataset.theme = theme; }, sample.theme);
+        await expect(page.locator("html")).toHaveAttribute("data-theme", sample.theme);
+      }
+      if (sample.copyState) {
+        await page.locator(".article-share-copy").click();
+        await expect(page.locator(".article-share-copy")).toHaveAttribute("data-state", sample.copyState);
+        await expect(page.locator("#article-share-copy-feedback")).toBeVisible();
       }
 
       for (const selector of sample.selectors) {

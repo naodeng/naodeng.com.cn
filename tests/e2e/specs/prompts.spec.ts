@@ -1,5 +1,51 @@
 import { expect, test } from "@playwright/test";
 
+test("中文提示词标题保持完整词语换行", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto("/zh-cn/prompts/test-case-writing/", { waitUntil: "domcontentloaded" });
+  await page.evaluate(() => document.fonts.ready);
+  const positions = await page.locator(".prompt-detail-header h1").evaluate(heading => {
+    const text = heading.firstChild!;
+    const glyphTop = (index: number) => {
+      const range = document.createRange();
+      range.setStart(text, index);
+      range.setEnd(text, index + 1);
+      return range.getBoundingClientRect().top;
+    };
+    return { first: glyphTop(0), last: glyphTop(5) };
+  });
+  expect(Math.abs(positions.first - positions.last)).toBeLessThan(1);
+});
+
+for (const locale of ["en", "zh-cn"]) {
+  for (const slug of ["test-case-writing", "workflows/daily"]) {
+    test(`${locale} ${slug} keeps a keyboard-accessible reading directory on mobile`, async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(`/${locale}/prompts/${slug}/`, { waitUntil: "domcontentloaded" });
+      const toc = page.locator(".toc-details-mobile");
+      await expect(toc).toBeVisible();
+      const navigation = page.locator(".prompt-detail-sidebar, .workflow-sidebar-left");
+      expect((await toc.boundingBox())!.y).toBeGreaterThanOrEqual((await navigation.boundingBox())!.y + (await navigation.boundingBox())!.height);
+      await expect(toc).not.toHaveAttribute("open");
+      await toc.locator("summary").focus();
+      await page.keyboard.press("Enter");
+      const link = toc.locator("a").nth(1);
+      const href = await link.getAttribute("href");
+      await link.focus();
+      await page.keyboard.press("Enter");
+      await expect(page).toHaveURL((url) => decodeURIComponent(url.hash) === href);
+      await expect.poll(() => page.evaluate((fragment) => {
+        const target = document.getElementById(decodeURIComponent(fragment!.slice(1)));
+        const header = document.querySelector(".l-header")?.getBoundingClientRect().bottom ?? 0;
+        return (target?.getBoundingClientRect().top ?? -1) - header;
+      }, href)).toBeGreaterThanOrEqual(-1);
+      const sizes = await page.evaluate(() => ({ width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth }));
+      expect(sizes.scroll).toBeLessThanOrEqual(sizes.width + 1);
+    });
+  }
+}
+
 test.describe("Prompt library discovery and review flow", () => {
   test("homepage starts with tasks and keeps the directory as a secondary action", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });

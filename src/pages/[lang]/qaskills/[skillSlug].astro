@@ -171,7 +171,7 @@ const tocHeadings = [
       <div class="console-hero-main">
         <div class="console-hero-copy">
           <p class="console-kicker">{text.skillDetail}</p>
-          <h1 aria-label={displayName}>{heroTitleLines.map((line) => <span class="console-hero-title-line">{line}</span>)}</h1>
+          <h1 aria-label={displayName}>{heroTitleLines.map((line) => <span class="console-hero-title-line">{line.split(/(?<=\/)/).map((part, index) => <Fragment>{index > 0 && <wbr />}{part}</Fragment>)}</span>)}</h1>
           {secondaryName && <p class="console-hero-alias">{secondaryName}</p>}
           <p class="console-hero-intro">{heroIntro}</p>
           <div class="console-actions">
@@ -301,15 +301,18 @@ const tocHeadings = [
   .console-tag-row { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0.35rem; }
   .tag { display: inline-flex; align-items: center; padding: 0.18rem 0.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: transparent; color: var(--color-text-secondary); font-size: 0.68rem; font-weight: 800; }
   .console-hero-title-line { display: block; }
-  .console-hero h1 { max-width: 100%; margin: 0; color: var(--color-main); font-size: clamp(2.35rem, 4.5vw, 3.8rem); line-height: 1.04; letter-spacing: -0.04em; text-wrap: balance; }
+  .console-hero h1 { max-width: 100%; margin: 0; color: var(--color-main); font-size: clamp(2.35rem, 4.5vw, 3.8rem); line-height: 1.04; letter-spacing: -0.04em; text-wrap: balance; word-break: normal; overflow-wrap: anywhere; }
   .console-hero-alias { margin: -0.35rem 0 0; color: var(--color-theme); font-size: clamp(0.95rem, 2vw, 1.35rem); font-weight: 700; letter-spacing: -0.02em; }
   .console-hero-intro { max-width: 62ch; margin: 0; color: var(--color-text-secondary); line-height: 1.65; }
   .console-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; margin-top: 0.2rem; }
-  .console-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 40px; padding: 0.5rem 0.85rem; border: 1px solid transparent; border-radius: var(--radius-xl); font: inherit; font-size: 0.82rem; font-weight: 800; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: var(--transition-fast); }
+  .console-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 44px; padding: 0.5rem 0.85rem; border: 1px solid transparent; border-radius: var(--radius-xl); font: inherit; font-size: 0.82rem; font-weight: 800; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: var(--transition-fast); }
   .console-button--primary { border-color: var(--color-theme); background: var(--color-theme); color: var(--color-base); box-shadow: 0 6px 16px color-mix(in srgb, var(--color-theme) 25%, transparent); }
   .console-button--primary:hover, .console-button--primary:focus-visible { border-color: var(--color-theme); background: var(--color-theme); color: var(--color-base); transform: translateY(-1px); }
   .console-source-link { color: var(--color-theme); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
   .console-source-link:hover { color: var(--color-theme); }
+  .console-source-link { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 0.35rem; }
+  .quick-install-top button, .quick-doc-top button { min-height: 44px; min-width: 44px; }
+  .console-hero-command pre { white-space: pre-wrap; overflow-wrap: anywhere; }
   .console-hero-command { justify-self: stretch; width: 100%; max-width: 420px; padding: 1.1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-muted); }
   .console-hero-command-meta { display: grid; gap: 0.55rem; margin-bottom: 0.9rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--color-border); }
   .console-hero-command-meta-label { color: var(--color-text-tertiary); font-size: 0.64rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -334,6 +337,7 @@ const tocHeadings = [
   .elevator-list { display: flex; flex: 1 1 auto; flex-wrap: wrap; gap: 0.35rem; min-width: 0; margin: 0; padding: 0; list-style: none; }
   .elevator-link { display: block; padding: 0.28rem 0.55rem; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-text-secondary); font-size: 0.74rem; font-weight: 700; line-height: 1.35; text-decoration: none; }
   .elevator-link:hover, .elevator-link.is-active { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-theme); }
+  .elevator-link { display: flex; align-items: center; min-height: 44px; }
   .console-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; background: var(--color-border); }
   .console-panel { grid-column: 1 / -1; min-width: 0; padding: clamp(1rem, 2.5vw, 1.55rem); background: var(--color-surface); scroll-margin-top: calc(var(--header-height) + 1rem); }
   .console-panel-head { margin-bottom: 0.8rem; }
@@ -383,7 +387,7 @@ const tocHeadings = [
   .how-it-works { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.25rem; margin: 0; padding: 0; list-style: none; }
   .how-it-works li { display: grid; align-content: start; gap: 0.55rem; min-width: 0; padding: 0.75rem 0.55rem; border: 1px solid var(--color-border); background: var(--color-surface-muted); }
   .how-it-works b { color: var(--color-theme); font-size: 0.68rem; }
-  .how-it-works span { color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 700; line-height: 1.35; }
+  .how-it-works span { min-inline-size: 0; overflow-wrap: anywhere; color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 700; line-height: 1.35; }
   .workflow-track { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
   .workflow-track li { display: inline-flex; align-items: center; gap: 0.35rem; min-width: 0; }
   .workflow-track a, .workflow-track li > span { display: inline-flex; padding: 0.5rem 0.65rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface-muted); color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 750; text-decoration: none; }
@@ -421,6 +425,10 @@ const tocHeadings = [
   :global(.qaskill-detail .prose ul), :global(.qaskill-detail .prose ol) { margin: 0.65rem 0; padding-inline-start: 1.35rem; }
   :global(.qaskill-detail .prose li + li) { margin-top: 0.4rem; }
   .console-empty { margin: 0; color: var(--color-text-tertiary); line-height: 1.6; }
+  @media (prefers-reduced-motion: reduce) {
+    .console-panel.is-highlighted { animation: none; }
+    .console-button--primary:hover, .console-button--primary:focus-visible { transform: none; }
+  }
   @media (max-width: 900px) {
     .console-hero-main { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
     .console-hero-side { align-items: stretch; }

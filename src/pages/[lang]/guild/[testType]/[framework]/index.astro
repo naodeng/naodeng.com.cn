@@ -159,7 +159,7 @@ const itemListSchema = {
           </div>
           <div class="fw-stat-sep"></div>
           <div class="fw-stat">
-            <span class="fw-stat__value">{frameworkConfig.language}</span>
+            <span class="fw-stat__value fw-stat__value--language">{frameworkConfig.language}</span>
             <span class="fw-stat__label">{locale === "zh-cn" ? "编程语言" : "Language"}</span>
           </div>
           <div class="fw-stat-sep"></div>
@@ -361,9 +361,9 @@ const itemListSchema = {
     border: 1px solid transparent;
   }
 
-  .fw-badge--beginner  { background: rgba(16,185,129,.12); color: #10b981; border-color: rgba(16,185,129,.2); }
-  .fw-badge--intermediate { background: rgba(245,158,11,.12); color: #f59e0b; border-color: rgba(245,158,11,.2); }
-  .fw-badge--advanced  { background: rgba(239,68,68,.12);  color: #ef4444; border-color: rgba(239,68,68,.2); }
+  .fw-badge--beginner,
+  .fw-badge--intermediate,
+  .fw-badge--advanced { background: var(--color-surface); color: var(--color-text-secondary); border-color: var(--color-border); }
 
   .fw-hero__title {
     font-size: clamp(1.5rem, 3vw, 2.25rem);
@@ -398,12 +398,16 @@ const itemListSchema = {
     align-items: center;
     gap: 1.25rem;
     flex-wrap: wrap;
+    min-inline-size: 0;
+    max-inline-size: 100%;
   }
 
   .fw-stat {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
+    min-inline-size: 0;
+    max-inline-size: 100%;
   }
 
   .fw-stat__value {
@@ -420,6 +424,14 @@ const itemListSchema = {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  .fw-stat__value--language {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    color: var(--color-main);
   }
 
   .fw-stat-sep {

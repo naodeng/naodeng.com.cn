@@ -75,4 +75,26 @@ for (const locale of ["en", "zh-cn"] as const) {
     await expect(page.locator(".docs-toc-wrap .toc-sidebar--right")).toBeVisible();
     expect(await page.locator(".docs-toc-wrap .toc-link").count()).toBeGreaterThan(0);
   });
+
+  test(`${locale} long active chapter names stay inside the desktop TOC`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`/${locale}/ai-native-qa-weekly/2026/week-40/`, { waitUntil: "domcontentloaded" });
+    const links = page.locator(".toc-list--desktop .toc-link");
+    for (const index of [2, 5, 8]) {
+      const link = links.nth(index);
+      const title = (await link.innerText()).trim();
+      await link.focus();
+      await page.keyboard.press("Enter");
+      await expect(page.locator(".toc-current [data-current-section]")).toHaveText(title);
+      const bounds = await page.evaluate(() => ({
+        viewport: document.documentElement.clientWidth,
+        pageWidth: document.documentElement.scrollWidth,
+        sidebarRight: document.querySelector(".toc-sidebar--right")!.getBoundingClientRect().right,
+        columnRight: document.querySelector(".docs-toc-wrap")!.getBoundingClientRect().right,
+      }));
+      expect(bounds.pageWidth).toBeLessThanOrEqual(bounds.viewport + 1);
+      expect(bounds.sidebarRight).toBeLessThanOrEqual(bounds.columnRight + 1);
+    }
+  });
 }

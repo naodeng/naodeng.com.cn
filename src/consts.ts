@@ -548,10 +548,10 @@ export const HOME_WIKI_SECTION_TITLE = "软件测试百科";
 export const HOME_WIKI_INTRO =
   "本站整理软件测试与质量领域常用术语与概念，涵盖功能测试、自动化测试、性能测试、安全测试、敏捷测试等方向，每条词条配有中英文名称与简要说明，方便测试与开发同学快速查阅、统一理解。下方随机展示部分词条，点击可进入对应百科页面查看详情。";
 
-// 博客首页标题区介绍文案（约 200 字）
+// 博客首页的简短导读；完整介绍保留在页面 SEO 描述中。
 export const BLOG_INTRO: Multilingual = {
-  en: "Articles on software testing, quality analysis, and test engineering: automation testing, API testing, performance testing, UI testing, and AI-assisted testing. Series like \"30 Days of AI in Testing Challenge\" and \"UI Testing Best Practices\" share hands-on experience and tooling. Written for testers and developers who care about quality.",
-  "zh-cn": "记录软件测试、质量分析与测试工程相关的实践与思考，涵盖自动化测试、接口测试、性能测试、UI 测试以及 AI 辅助测试等方向。本站包含「30 Days of AI in Testing Challenge」「UI 测试最佳实践」等系列，分享工具选型、测试策略与实战经验；文章以中英双语更新，主题涉及测试设计、自动化框架、持续集成与 AI 在测试中的应用，面向关心质量的测试与开发同学。欢迎通过系列与标签浏览专题内容。",
+  en: "Notes from testing practice: test design, automation, quality analysis, and AI-assisted testing. Browse series and tags to follow a topic, or start with the latest articles.",
+  "zh-cn": "记录测试设计、自动化、质量分析与 AI 测试中的实践和思考。通过系列与标签阅读专题，或从最新文章开始。",
 };
 
 // 博客页：系列 / Top 标签

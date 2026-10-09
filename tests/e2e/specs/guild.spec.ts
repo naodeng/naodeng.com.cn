@@ -1,5 +1,38 @@
 import { test, expect } from "@playwright/test";
 
+for (const locale of ["en", "zh-cn"]) {
+  test(`${locale} framework languages stay readable on small screens`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`/${locale}/guild/ui-testing/playwright/`, { waitUntil: "domcontentloaded" });
+    const value = page.locator(".fw-stat__value").nth(1);
+    await expect(value).toContainText("JavaScript/TypeScript/Python/Java");
+    const sizes = await value.evaluate((el) => ({ width: el.clientWidth, content: el.scrollWidth }));
+    expect(sizes.content).toBeLessThanOrEqual(sizes.width + 1);
+  });
+
+  test(`${locale} directory article counts match the framework's localized articles`, async ({ page }) => {
+    const frameworkPath = `/${locale}/guild/ui-testing/playwright/`;
+    await page.goto(frameworkPath, { waitUntil: "domcontentloaded" });
+    const count = Number((await page.locator(".fw-stat__value").first().innerText()).trim());
+    expect(count).toBeGreaterThan(0);
+    for (const path of [`/${locale}/guild/`, `/${locale}/guild/ui-testing/`]) {
+      await page.goto(path, { waitUntil: "domcontentloaded" });
+      const text = await page.locator(`.fw-card[href="${frameworkPath}"] .fw-card__count`).innerText();
+      expect(Number(text.match(/\d+/)?.[0])).toBe(count);
+    }
+  });
+
+  test(`${locale} selected learning filter is exposed to assistive technology`, async ({ page }) => {
+    await page.goto(`/${locale}/guild/`, { waitUntil: "domcontentloaded" });
+    const filter = page.locator('.filter-pill[data-filter="ui-testing"]');
+    await filter.click();
+    await expect(filter).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator('.filter-pill[data-filter="all"]')).toHaveAttribute("aria-pressed", "false");
+    await expect(page.locator('[data-testtype="ui-testing"]')).toBeVisible();
+    await expect(page.locator('[data-testtype="api-testing"]')).toBeHidden();
+  });
+}
+
 // ─────────────────────────────────────────────
 // Guild 概览页
 // ─────────────────────────────────────────────

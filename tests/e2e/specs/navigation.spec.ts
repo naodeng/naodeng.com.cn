@@ -1,5 +1,30 @@
 import { test, expect } from "@playwright/test";
 
+test.describe("语言切换使用有效的本地化地址", () => {
+  for (const [source, target, lang, equivalent] of [
+    ["/en/blog/performance-testing/gatling-tool-tutorial1/", "/zh-cn/blog/performance-testing/gatling-tool-intro1/", "zh-cn", true],
+    ["/zh-cn/blog/performance-testing/gatling-tool-intro1/", "/en/blog/performance-testing/gatling-tool-tutorial1/", "en", true],
+    ["/zh-cn/blog/others/80-20-rule/", "/en/blog/", "en", false],
+    ["/en/series/Awesome%20QA%20Skills%20Field%20Guides/page/8/", "/zh-cn/series/", "zh-cn", false],
+    ["/zh-cn/tags/AI%20%E6%B5%8B%E8%AF%95/page/10/", "/en/tags/", "en", false],
+    ["/zh-cn/guild/api-testing/pytest/getting-started/", "/en/guild/api-testing/pytest/", "en", false],
+  ] as const) {
+    test(`${source} 切换到 ${lang} 的可访问页面`, async ({ page }) => {
+      await page.goto(source, { waitUntil: "domcontentloaded" });
+      const option = page.locator(`header [data-locale-option][data-lang="${lang}"]`);
+      await expect(option).toHaveAttribute("href", target);
+      await expect(page.locator(`footer a[href="${target}"]`)).toBeVisible();
+      const alternate = page.locator(`head link[hreflang="${lang === "zh-cn" ? "zh-CN" : "en-US"}"]`);
+      if (equivalent) await expect(alternate).toHaveAttribute("href", `https://inaodeng.com${target}`);
+      else await expect(alternate).toHaveCount(0);
+      await page.locator("header [data-locale-trigger]").click();
+      await option.click();
+      await expect(page).toHaveURL(url => decodeURIComponent(url.pathname) === decodeURIComponent(target));
+      await expect(page.locator("main h1").first()).toBeVisible();
+    });
+  }
+});
+
 test.describe("导航与首页内容", () => {
   test("en 首页：Hero、探索中心与最新文章可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });

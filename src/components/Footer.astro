@@ -24,7 +24,7 @@ import {
 } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
-const paths = getLocalePaths(Astro.url);
+const paths = await getLocalePaths(Astro.url);
 const localizedHomePath = getRelativeLocaleUrl(locale, "/");
 const isZhHome =
   locale === "zh-cn" &&

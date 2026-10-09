@@ -50,6 +50,35 @@ test.describe("Docs 共享阅读布局与示例页面移除", () => {
     "/zh-cn/wiki/accessibility-testing/",
   ];
 
+  for (const path of ["/en/AIWiki/model-context-protocol-mcp/", "/zh-cn/wiki/automated-testing/", "/zh-cn/ai-native-qa-weekly/2026/week-40/"]) {
+    test(`${path} 窄屏目录可用键盘展开并跳到无遮挡的章节`, async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      for (const width of [390, 1024]) {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path, { waitUntil: "domcontentloaded" });
+        const summary = page.locator(".docs-toc-wrap .toc-summary");
+        await expect(summary).toBeVisible();
+        expect((await summary.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+        const tocBottom = (await page.locator(".docs-toc-wrap").boundingBox())!.y + (await page.locator(".docs-toc-wrap").boundingBox())!.height;
+        expect(tocBottom).toBeLessThan((await page.locator(".docs-content").boundingBox())!.y);
+        await summary.focus();
+        await page.keyboard.press("Enter");
+        const link = page.locator(".docs-toc-wrap .toc-list--mobile .toc-link").nth(1);
+        const href = (await link.getAttribute("href"))!;
+        await link.focus();
+        await page.keyboard.press("Enter");
+        await expect(page.locator(".docs-toc-wrap details")).not.toHaveAttribute("open", "");
+        const position = () => page.evaluate(id => ({
+          headingTop: document.getElementById(id)!.getBoundingClientRect().top,
+          headerBottom: document.querySelector(".l-header")!.getBoundingClientRect().bottom,
+        }), decodeURIComponent(href.slice(1)));
+        await expect.poll(async () => { const bounds = await position(); return bounds.headingTop - bounds.headerBottom; }).toBeGreaterThanOrEqual(8);
+        const targetSelector = await page.evaluate(id => `#${CSS.escape(id)}`, decodeURIComponent(href.slice(1)));
+        await expect(page.locator(targetSelector)).toBeInViewport();
+      }
+    });
+  }
+
   for (const path of readingRoutes) {
     for (const width of [768, 899]) {
       test(`${path} 在 ${width}px 首屏可阅读，侧栏支持键盘与触控`, async ({ page }) => {

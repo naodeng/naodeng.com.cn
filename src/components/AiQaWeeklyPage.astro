@@ -329,7 +329,7 @@ const structuredData = {
   }
 
   .weekly-article :global(h2) {
-    scroll-margin-block-start: 1rem;
+    scroll-margin-block-start: calc(var(--sticky-offset) + .5rem);
     margin-block: 2.4rem 0.8rem;
     padding: 0.7rem 0.8rem 0.7rem 1rem;
     border: 1px solid var(--color-border);

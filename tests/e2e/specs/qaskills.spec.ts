@@ -1,5 +1,55 @@
 import { test, expect } from "@playwright/test";
 
+for (const locale of ["en", "zh-cn"]) {
+  for (const slug of ["negative-scenario-discovery", "manual-testing"]) {
+    test(`${locale}/${slug} 步骤中的长路径不撑宽手机页面`, async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto(`/${locale}/qaskills/${slug}/`, { waitUntil: "domcontentloaded" });
+      await page.setViewportSize({ width: 390, height: 900 });
+      await page.evaluate(() => document.fonts.ready);
+      expect(await page.locator(".how-it-works li").count()).toBeGreaterThan(0);
+      await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+      if (locale === "en" && slug === "manual-testing") {
+        const lines = await page.locator(".console-hero h1").evaluate((heading) => {
+          const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+          let node: Node | null;
+          while ((node = walker.nextNode())) {
+            const start = node.textContent!.indexOf("Exploratory");
+            if (start < 0) continue;
+            return Array.from("Exploratory", (_, index) => {
+              const range = document.createRange();
+              range.setStart(node!, start + index);
+              range.setEnd(node!, start + index + 1);
+              return Math.round(range.getBoundingClientRect().top);
+            });
+          }
+          return [];
+        });
+        expect(lines).toHaveLength("Exploratory".length);
+        expect(new Set(lines).size).toBe(1);
+      }
+    });
+  }
+}
+
+for (const locale of ["en", "zh-cn"]) {
+  test(`${locale} skill installation controls are reachable on mobile`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`/${locale}/qaskills/requirements-analysis/`, { waitUntil: "domcontentloaded" });
+    for (const selector of [".console-button", ".console-source-link", ".elevator-link", ".quick-install-top button", ".quick-doc-top button"]) {
+      const controls = page.locator(selector);
+      expect(await controls.count()).toBeGreaterThan(0);
+      for (const control of await controls.all()) {
+        expect((await control.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+      }
+    }
+    const command = page.locator(".console-hero-command pre");
+    const sizes = await command.evaluate((el) => ({ width: el.clientWidth, content: el.scrollWidth }));
+    expect(sizes.content).toBeLessThanOrEqual(sizes.width + 1);
+  });
+}
+
 test.describe("QA Skills", () => {
   test("index presents a compact directory with visible results and direct-link cards", async ({ page }) => {
     await page.goto("/zh-cn/qaskills/");

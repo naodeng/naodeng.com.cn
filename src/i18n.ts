@@ -1,5 +1,9 @@
 import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./locales";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { getCollection } from "astro:content";
+import { BLOG_POSTS_PER_PAGE } from "./consts";
+import { filterPublishedBlogPosts } from "./utils/blogPublication";
+import { createBlogLocaleResolver } from "./utils/blogLocalePaths";
 
 /**
  * User-defined locales list
@@ -43,13 +47,33 @@ export function useTranslations(lang: Lang) {
 /**
  * Helper to get corresponding path list for all locales
  */
-export function getLocalePaths(url: URL): LocalePath[] {
-  return Object.keys(LOCALES).map((lang) => ({
-    lang: lang as Lang,
-    path: getRelativeLocaleUrl(lang, url.pathname.replace(/^\/[a-zA-Z-]+/, "")),
-  }));
+let blogResolver: Promise<ReturnType<typeof createBlogLocaleResolver>> | undefined;
+let guildArticles: Promise<Set<string>> | undefined;
+export async function getLocalePaths(url: URL): Promise<LocalePath[]> {
+  const needsBlogResolver = /^\/(en|zh-cn)\/(blog|tags|series)(?:\/|$)/.test(url.pathname);
+  if (needsBlogResolver && (!blogResolver || import.meta.env.DEV)) {
+    blogResolver = getCollection("blog").then(posts =>
+      createBlogLocaleResolver(filterPublishedBlogPosts(posts), BLOG_POSTS_PER_PAGE));
+  }
+  const guildSlug = url.pathname.match(/^\/(?:en|zh-cn)\/guild\/([^/]+\/[^/]+\/[^/]+)\/?$/)?.[1];
+  if (guildSlug && (!guildArticles || import.meta.env.DEV)) {
+    guildArticles = getCollection("guild").then(entries => new Set(entries.map(entry => entry.id)));
+  }
+  const resolve = needsBlogResolver ? await blogResolver : undefined;
+  const availableGuildArticles = guildSlug ? await guildArticles : undefined;
+  return Object.keys(LOCALES).map((lang) => {
+    let resolved = resolve?.(url.pathname, lang);
+    if (guildSlug && !availableGuildArticles?.has(`${lang}/${guildSlug}`)) {
+      resolved = { path: `/${lang}/guild/${guildSlug.split("/").slice(0, 2).join("/")}/`, isEquivalent: false };
+    }
+    return {
+      lang: lang as Lang,
+      path: resolved?.path ?? getRelativeLocaleUrl(lang, url.pathname.replace(/^\/[a-zA-Z-]+/, "")),
+      isEquivalent: resolved?.isEquivalent ?? true,
+    };
+  });
 }
-type LocalePath = { lang: Lang; path: string };
+type LocalePath = { lang: Lang; path: string; isEquivalent: boolean };
 
 /**
  * Helper to get locale params for Astro's getStaticPaths

@@ -9,6 +9,7 @@ import { LEARNING_SITES } from "@/consts";
 import { getQASkillsGrouped } from "@/utils/qaskills";
 import { aiwikiIdToLang, aiwikiIdToSlug, getAiWikiDisplayTitle } from "@/data/aiwiki";
 import { wikiIdToSlug } from "@/data/wiki";
+import { guildIdToSlug } from "@/data/guild";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 
 export const getStaticPaths = () => Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
@@ -33,8 +34,8 @@ const getPromptDescription = (title: string, description: string) => {
 };
 const prompts = (await getCollection("prompts")).filter((item) => item.data.lang === locale).sort((a, b) => a.data.order - b.data.order).map((item) => ({ title: item.data.title, description: getPromptDescription(item.data.title, item.data.description), href: getRelativeLocaleUrl(locale, `/prompts/${item.data.testingType}/`), tags: [item.data.testingType] }));
 const aiwiki = (await getCollection("aiwiki")).filter((item) => (item.data.lang || aiwikiIdToLang(item.id)) === locale).map((item) => ({ title: getAiWikiDisplayTitle(item, locale), description: item.data.summary || item.data.description || "", href: getRelativeLocaleUrl(locale, `/AIWiki/${item.data.slug || aiwikiIdToSlug(item.id)}/`), tags: item.data.topic ? [item.data.topic] : [] }));
-const wiki = isZh ? (await getCollection("wiki")).map((item) => ({ title: item.data.title || item.id, description: item.data.description || "", href: getRelativeLocaleUrl(locale, `/wiki/${wikiIdToSlug(item.id)}/`), tags: item.data.section ? [item.data.section] : [] })) : [];
-const guides = (await getCollection("guild")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => a.data.order - b.data.order).map((item) => ({ title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/guild/${item.data.testType}/${item.data.framework}/`), tags: [item.data.framework, item.data.stage] }));
+const wiki = isZh ? (await getCollection("wiki")).map((item) => ({ title: item.data.title || item.id, description: item.data.description || "", href: getRelativeLocaleUrl(locale, `/wiki/${wikiIdToSlug(item.id)}/`), tags: item.data.section ? [item.data.section] : [] })) : [{ title: "Software Testing Wiki", description: text.descriptions.wiki, href: getRelativeLocaleUrl(locale, "/wiki/"), tags: [] }];
+const guides = (await getCollection("guild")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => a.data.order - b.data.order).map((item) => ({ title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/guild/${guildIdToSlug(item.id)}/`), tags: [item.data.framework, item.data.stage] }));
 const projects = PROJECTS_LIST.map((item) => ({ title: item.name[locale] || item.name.en || "Project", description: item.description[locale] || item.description.en || "", href: getProjectHref(locale, item), tags: (item.techStack[locale] || item.techStack.en || "").split(/[、,，]/).slice(0, 3) }));
 const posts = filterPublishedBlogPosts(await getCollection("blog")).filter((item) => item.id.split("/")[0] === locale).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).map((item) => { const [, ...parts] = item.id.split("/"); return { title: item.data.title, description: item.data.description, href: getRelativeLocaleUrl(locale, `/blog/${parts.join("/").toLowerCase()}/`), tags: item.data.tags || [] }; });
 const plans = LEARNING_SITES.map((item) => ({ title: item.label[locale as "en" | "zh-cn"], description: text.descriptions.plans, href: item.url, tags: [isZh ? "30 天" : "30 days", isZh ? "学习计划" : "learning plan"] }));
@@ -49,32 +50,34 @@ const breadcrumbs = [{ name: isZh ? "首页" : "Home", url: getRelativeLocaleUrl
 <Base title={text.title} description={text.description} breadcrumbs={breadcrumbs}>
   <div class="resource-page">
     <header class="resource-hero"><p class="eyebrow">{isZh ? "NAODENG / QA" : "NAODENG / QA"}</p><h1>{text.title}</h1><p>{text.intro}</p><nav class="resource-index" aria-label={isZh ? "资源分类" : "Resource categories"}>{sections.map((section) => <a href={`#${section.key}`}>{text.sections[section.key as keyof typeof text.sections]}</a>)}</nav></header>
-    {sections.map((section) => <section class="resource-section" id={section.key} aria-labelledby={`${section.key}-title`}><div class="section-heading"><div><p class="section-kicker">{String(section.data.length).padStart(2, "0")} {text.items}</p><h2 id={`${section.key}-title`}>{text.sections[section.key as keyof typeof text.sections]}</h2><p>{text.descriptions[section.key as keyof typeof text.descriptions]}</p></div>{section.href.startsWith("#") ? null : <a class="view-all" href={getRelativeLocaleUrl(locale, section.href)}>{text.viewAll} <span aria-hidden="true">→</span></a>}</div><div class="resource-grid">{section.data.slice(0, RESOURCE_PREVIEW_LIMIT).map((item) => <a class="resource-card" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}><div class="card-top"><span class="card-mark" aria-hidden="true">✦</span><span class="card-arrow" aria-hidden="true">↗</span></div><h3>{item.title}</h3><p>{item.description}</p>{item.tags.length > 0 && <div class="card-tags">{item.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}</div>}<span class="card-link">{text.open}</span></a>)}</div></section>)}
+    {sections.map((section) => <section class="resource-section" id={section.key} aria-labelledby={`${section.key}-title`}><div class="section-heading"><div><p class="section-kicker">{String(section.data.length).padStart(2, "0")} {text.items}</p><h2 id={`${section.key}-title`}>{text.sections[section.key as keyof typeof text.sections]}</h2><p>{text.descriptions[section.key as keyof typeof text.descriptions]}</p></div>{section.href.startsWith("#") ? null : <a class="view-all" href={getRelativeLocaleUrl(locale, section.href)}>{text.viewAll} <span aria-hidden="true">→</span></a>}</div><div class="resource-grid">{section.data.slice(0, RESOURCE_PREVIEW_LIMIT).map((item) => <a class="resource-card" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}><div class="card-top"><span class="card-arrow material-icons-sharp" aria-hidden="true">{item.href.startsWith("http") ? "open_in_new" : "arrow_forward"}</span></div><h3>{item.title}</h3><p>{item.description}</p>{item.tags.length > 0 && <div class="card-tags">{item.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}</div>}<span class="card-link">{text.open}</span></a>)}</div></section>)}
   </div>
 </Base>
 
 <style>
-  .resource-page { max-width: 72rem; margin: 0 auto; padding: 2rem var(--sp-m) 5rem; }
-  .resource-hero { padding: 2.5rem 0 3rem; border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); }
+  .resource-page { max-width: var(--layout-max); margin: 0 auto; padding: 0 0 5rem; }
+  .resource-hero { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--color-border); }
   .eyebrow, .section-kicker { margin: 0 0 .65rem; color: var(--color-theme); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-  .resource-hero h1 { margin: 0; font-size: clamp(2.4rem, 6vw, 5rem); line-height: .98; color: var(--color-main); }
-  .resource-hero > p:not(.eyebrow) { max-width: 42rem; margin: 1.25rem 0 0; font-size: 1.08rem; line-height: 1.7; opacity: .78; }
+  .resource-hero h1 { margin: 0; font-size: clamp(2.4rem, 6vw, 5rem); line-height: 1.15; color: var(--color-main); }
+  .resource-hero > p:not(.eyebrow) { max-width: 42rem; margin: 1.25rem 0 0; font-size: 1.08rem; line-height: 1.7; color: var(--color-text-secondary); }
   .resource-index { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
-  .resource-index a, .card-tags span { padding: .38rem .7rem; border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent); border-radius: 999px; color: var(--color-main); text-decoration: none; font-size: .82rem; }
+  .resource-index a, .card-tags span { padding: .38rem .7rem; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-main); text-decoration: none; font-size: .82rem; }
+  .resource-index a { display: inline-flex; align-items: center; min-height: 44px; transition: color var(--transition-fast), background-color var(--transition-fast); }
   .resource-index a:hover, .resource-index a:focus-visible { background: var(--color-theme); color: var(--color-base); }
-  .resource-section { padding: 3.5rem 0 0; scroll-margin-top: 5rem; }
+  .resource-section { padding: 3.5rem 0 0; scroll-margin-top: calc(var(--sticky-offset) + .5rem); }
   .section-heading { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-bottom: 1.25rem; }
   .section-heading h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--color-main); }
-  .section-heading p:not(.section-kicker) { max-width: 42rem; margin: .55rem 0 0; line-height: 1.55; opacity: .7; }
-  .view-all { flex: 0 0 auto; color: var(--color-theme); font-weight: 700; text-decoration: none; }
+  .section-heading p:not(.section-kicker) { max-width: 42rem; margin: .55rem 0 0; line-height: 1.55; color: var(--color-text-secondary); }
+  .view-all { display: inline-flex; align-items: center; min-height: 44px; flex: 0 0 auto; color: var(--color-theme); font-weight: 700; text-decoration: none; }
   .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem; }
-  .resource-card { display: flex; min-height: 14rem; flex-direction: column; padding: 1.15rem; border: 1px solid color-mix(in srgb, var(--color-theme) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-base) 96%, var(--color-theme)); color: inherit; text-decoration: none; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-  .resource-card:hover { transform: translateY(-2px); border-color: var(--color-theme); box-shadow: 0 12px 30px color-mix(in srgb, var(--color-theme) 13%, transparent); }
-  .card-top { display: flex; justify-content: space-between; color: var(--color-theme); }
-  .card-mark { font-size: 1.2rem; }.card-arrow { opacity: .6; }
+  .resource-card { display: flex; min-height: 14rem; flex-direction: column; padding: 1.15rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: inherit; text-decoration: none; transition: background-color var(--transition-fast), border-color var(--transition-fast); }
+  .resource-card:hover { border-color: var(--color-theme); background: var(--color-theme-soft); }
+  .card-top { display: flex; justify-content: flex-end; color: var(--color-text-secondary); }
+  .card-arrow { font-size: 1.15rem; }
   .resource-card h3 { margin: 1.2rem 0 .55rem; font-size: 1.05rem; line-height: 1.35; color: var(--color-main); }
-  .resource-card p { flex: 1; margin: 0 0 1rem; font-size: .88rem; line-height: 1.55; opacity: .72; }
-  .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }.card-tags span { padding: .2rem .5rem; font-size: .7rem; opacity: .75; }
+  .resource-card p { flex: 1; margin: 0 0 1rem; font-size: .88rem; line-height: 1.55; color: var(--color-text-secondary); }
+  .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }.card-tags span { padding: .2rem .5rem; font-size: .7rem; color: var(--color-text-secondary); }
   .card-link { color: var(--color-theme); font-size: .8rem; font-weight: 800; }
+  @media (prefers-reduced-motion: reduce) { .resource-card, .resource-index a { transition: none; } }
   @media (max-width: 640px) { .resource-page { padding-top: 1rem; }.resource-hero { padding-top: 1.5rem; }.section-heading { align-items: start; flex-direction: column; gap: .7rem; }.resource-grid { grid-template-columns: 1fr; } }
 </style>

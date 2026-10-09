@@ -3,9 +3,12 @@
  * Guild 页面头部组件
  */
 import { getGuildConfig } from '../../config/guild.config';
+import { getCollection } from 'astro:content';
+import { filterGuildEntries } from '@/data/guild';
+import type { Lang } from '@/i18n';
 
 interface Props {
-  locale: string;
+  locale: Lang;
 }
 
 const { locale } = Astro.props;
@@ -18,13 +21,13 @@ const content = {
     badge: '测试自动化指南',
     title: '让自动化测试成为你的超能力',
     description: '系统化的学习路径，从入门到进阶，涵盖接口测试、UI 测试和性能测试。选择你感兴趣的框架，开始你的自动化测试之旅。',
-    stats: { testTypes: '测试类型', frameworks: '测试框架', learningPaths: '学习路径' },
+    stats: { testTypes: '测试类型', frameworks: '测试框架', articles: '指南文章' },
   },
   'en': {
     badge: 'Test Automation Guild',
     title: 'Make Test Automation Your Superpower',
     description: 'Systematic learning paths from beginner to advanced, covering API testing, UI testing, and performance testing. Choose your framework and start your journey.',
-    stats: { testTypes: 'Test Types', frameworks: 'Frameworks', learningPaths: 'Learning Paths' },
+    stats: { testTypes: 'Test Types', frameworks: 'Frameworks', articles: 'Guide Articles' },
   },
 };
 
@@ -32,6 +35,7 @@ const text = content[locale as keyof typeof content] ?? content['en'];
 
 const totalFrameworks = guildConfig.testTypes.reduce((sum, type) => sum + type.frameworks.length, 0);
 const totalTestTypes = guildConfig.testTypes.length;
+const totalArticles = filterGuildEntries(await getCollection('guild'), locale).length;
 ---
 
 <div class="guild-hero">
@@ -55,8 +59,8 @@ const totalTestTypes = guildConfig.testTypes.length;
       </div>
       <div class="stat-sep" aria-hidden="true"></div>
       <div class="stat-item" role="listitem">
-        <span class="stat-item__value">60+</span>
-        <span class="stat-item__label">{text.stats.learningPaths}</span>
+        <span class="stat-item__value">{totalArticles}</span>
+        <span class="stat-item__label">{text.stats.articles}</span>
       </div>
     </div>
   </div>

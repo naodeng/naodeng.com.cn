@@ -63,11 +63,11 @@ const definedTermSetSchema = !isEn ? {
 
 {isEn ? (
   <Base title={title} description={description} keywords={keywords} breadcrumbs={breadcrumbs} robots="noindex, follow">
-    <div class="l-content wiki-index">
+    <div class="wiki-index">
       <h1>{title}</h1>
       <p class="wiki-intro">Software testing terms &amp; definitions. For the full QA Wiki, visit:</p>
       <p class="wiki-external">
-        <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer">ray.run/wiki</a>
+        <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer">ray.run/wiki <span class="material-icons-sharp" aria-hidden="true">open_in_new</span></a>
       </p>
     </div>
   </Base>
@@ -99,7 +99,9 @@ const definedTermSetSchema = !isEn ? {
 )}
 
 <style>
+  .wiki-index h1 { margin: 0 0 .85rem; font-size: clamp(2rem, 3vw, 2.65rem); line-height: 1.2; }
   .wiki-intro { margin: 0 0 var(--sp-s); font-size: 1.05rem; line-height: 1.65; color: var(--color-text-secondary); }
   .wiki-external { margin-block-start: var(--sp-m); }
-  .wiki-external a { font-weight: 600; color: var(--color-theme); }
+  .wiki-external a { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; font-weight: 600; color: var(--color-theme); }
+  .wiki-external .material-icons-sharp { font-size: 1rem; }
 </style>

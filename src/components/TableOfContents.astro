@@ -70,6 +70,7 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 
 <style>
   .toc-sidebar {
+    min-inline-size: 0;
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
     scrollbar-width: none;
@@ -81,6 +82,8 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 
   /* 右侧：流式布局，在正文右侧 */
   .toc-sidebar--right {
+    inline-size: 100%;
+    max-inline-size: 100%;
     position: sticky;
     top: var(--sticky-offset);
     align-self: start;
@@ -198,6 +201,8 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 
   .toc-current {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-inline-size: 0;
     gap: 0.15rem;
     margin: -0.25rem 0 0.7rem;
     font-size: 0.75rem;
@@ -206,6 +211,7 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
   }
 
   .toc-current [data-current-section] {
+    min-inline-size: 0;
     font-weight: 600;
     color: var(--color-theme);
     opacity: 1;
@@ -267,6 +273,7 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
     line-height: 1.4;
     color: var(--color-text-secondary);
     text-decoration: none;
+    overflow-wrap: anywhere;
     opacity: 1;
     transition: opacity 0.2s ease, color 0.2s ease;
     border-block-end: 1px solid transparent;
@@ -320,13 +327,6 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
       display: block;
     }
 
-    .toc-sidebar--right {
-      position: static;
-      max-height: none;
-      margin-block-start: var(--sp-l);
-      border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 15%, transparent);
-      padding-block-start: var(--sp-m);
-    }
     .toc-sidebar--left {
       position: static;
       transform: none;
@@ -389,34 +389,35 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
   }
 
   @media (max-width: 1099px) {
-    .toc-sidebar--article .toc-title,
-    .toc-sidebar--article .toc-current,
-    .toc-sidebar--article .toc-progress,
-    .toc-sidebar--article .toc-list--desktop {
+    .toc-sidebar--right { position: static; max-height: none; margin: 0; overflow: visible; }
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-title,
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-current,
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-progress,
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-list--desktop {
       display: none;
     }
-    .toc-sidebar--article .toc-details-mobile {
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-details-mobile {
       display: block;
     }
-    .toc-sidebar--article .toc-nav {
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-nav {
       padding: 0.4rem 0.75rem;
     }
-    .toc-sidebar--article .toc-summary {
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-summary {
       min-block-size: 44px;
       color: var(--color-main);
       opacity: 1;
     }
-    .toc-sidebar--article .toc-summary-current {
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-summary-current {
       color: var(--color-text-secondary);
       opacity: 1;
     }
-    .toc-sidebar--article .toc-list--mobile {
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-list--mobile {
       max-block-size: min(60dvh, 24rem);
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: var(--color-border-strong) transparent;
     }
-    .toc-sidebar--article .toc-link {
+    :is(.toc-sidebar--article, .toc-sidebar--right) .toc-link {
       display: flex;
       align-items: center;
       min-block-size: 44px;

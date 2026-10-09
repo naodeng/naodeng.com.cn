@@ -186,6 +186,12 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
       </div>
     </aside>
 
+    {tocHeadings.length > 0 && (
+      <aside class="prompt-detail-toc" id="prompts-toc-wrap">
+        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
+      </aside>
+    )}
+
     <div class="prompt-detail-main">
       <header class="prompt-detail-header" id="prompt-usage-tip">
         <div class="prompt-detail-kicker">
@@ -293,11 +299,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
       <Giscus lang={lang === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" loading="lazy" />
     </div>
 
-    {tocHeadings.length > 0 && (
-      <aside class="prompt-detail-toc" id="prompts-toc-wrap">
-        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
-      </aside>
-    )}
+
   </div>
 </Base>
 
@@ -335,6 +337,9 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-detail-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); max-width: var(--layout-max); margin: 0 auto; padding: 0 0 5rem; align-items: start; }
   .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 220px minmax(0, 1fr) 200px; }
   .prompt-detail-sidebar, .prompt-detail-toc { position: sticky; top: var(--sticky-offset); align-self: start; }
+  .prompt-detail-sidebar { grid-column: 1; grid-row: 1; }
+  .prompt-detail-toc { grid-column: 3; grid-row: 1; min-width: 0; }
+  .prompt-detail-main { grid-column: 2; grid-row: 1; }
   .prompt-detail-sidebar-inner { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
   .prompt-sidebar-toggle { display: none; width: 100%; justify-content: space-between; padding: 0.85rem 1rem; border: 0; background: transparent; color: var(--color-main); font: inherit; font-weight: 800; text-align: start; cursor: pointer; }
   .prompt-sidebar-toggle .material-icons-sharp { font-size: 1.1rem; }
@@ -351,13 +356,13 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-detail-main { min-width: 0; }
   .prompt-detail-header { padding: 0 0 2rem; }
   .prompt-detail-kicker { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; color: var(--color-theme); font-size: 0.76rem; font-weight: 800; }
-  .prompt-detail-header h1 { max-width: 22ch; margin: 0.75rem 0 0; font-size: clamp(2.1rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -0.055em; }
+  .prompt-detail-header h1 { max-width: 22ch; margin: 0.75rem 0 0; font-size: clamp(2.1rem, 5vw, 4.2rem); line-height: 1.2; letter-spacing: -0.055em; word-break: keep-all; overflow-wrap: anywhere; }
   .prompt-detail-desc { max-width: 70ch; margin: 1rem 0 0; color: color-mix(in srgb, var(--color-main) 68%, transparent); font-size: 1rem; line-height: 1.7; }
   .prompt-detail-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
   .prompt-detail-badges span, .prompt-variants a { padding: 0.3rem 0.6rem; border: 1px solid var(--color-border); border-radius: 999px; color: color-mix(in srgb, var(--color-main) 72%, transparent); font-size: 0.72rem; font-weight: 800; text-decoration: none; }
   .prompt-detail-badges span:first-child { border-color: color-mix(in srgb, var(--color-theme) 30%, var(--color-border)); background: var(--color-theme-soft); color: var(--color-theme); }
   .prompt-detail-actions { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.5rem; }
-  .prompt-copy-btn, .prompt-source-link { display: inline-flex; min-height: 42px; align-items: center; gap: 0.45rem; padding: 0 0.8rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-main); font: inherit; font-size: 0.82rem; font-weight: 800; text-decoration: none; cursor: pointer; }
+  .prompt-copy-btn, .prompt-source-link { display: inline-flex; min-height: 44px; align-items: center; gap: 0.45rem; padding: 0 0.8rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-main); font: inherit; font-size: 0.82rem; font-weight: 800; text-decoration: none; cursor: pointer; }
   .prompt-copy-btn:hover, .prompt-source-link:hover, .prompt-copy-btn.is-copied { border-color: var(--color-theme); color: var(--color-theme); }
   .prompt-at-a-glance { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin: 1.5rem 0 0; }
   .prompt-contract-block { min-width: 0; padding: 1.15rem 1rem 1.25rem; border-radius: var(--radius-sm); background: var(--color-surface-muted); }
@@ -369,6 +374,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-variants-label { color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 800; }
   .prompt-variants > div { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .prompt-variants a:hover, .prompt-variants a.is-current { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-theme); }
+  .prompt-variants a { display: inline-flex; align-items: center; min-height: 44px; }
 
   .prompt-body-panel { margin-top: 3rem; }
   .prompt-body-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: end; padding-bottom: 0.5rem; }
@@ -411,10 +417,19 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-detail-toc :global(.toc-sidebar--right) { position: static; max-height: calc(100dvh - var(--sticky-offset) - 1rem); }
   .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-  @media (max-width: 1100px) { .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 220px minmax(0, 1fr); } .prompt-detail-toc { display: none; } }
+  @media (max-width: 1099px) {
+    .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 220px minmax(0, 1fr); }
+    .prompt-detail-toc { grid-column: 2; grid-row: 1; position: static; }
+    .prompt-detail-layout[data-has-toc="true"] .prompt-detail-main { grid-row: 2; }
+    .prompt-detail-layout[data-has-toc="true"] .prompt-detail-sidebar { grid-row: 1 / span 2; }
+  }
   @media (max-width: 760px) {
-    .prompt-detail-layout, .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 1fr; padding-inline: 1rem; }
-    .prompt-detail-sidebar { position: static; }
+    .prompt-detail-layout, .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 1fr; padding-inline: 0; }
+    .prompt-detail-layout .prompt-detail-sidebar { position: static; grid-column: 1; grid-row: 1; }
+    .prompt-detail-layout[data-has-toc="true"] .prompt-detail-sidebar { grid-row: 1; }
+    .prompt-detail-toc { grid-column: 1; grid-row: 2; }
+    .prompt-detail-main { grid-column: 1; grid-row: 2; }
+    .prompt-detail-layout[data-has-toc="true"] .prompt-detail-main { grid-row: 3; }
     .prompt-sidebar-toggle { display: flex; }
     .prompt-sidebar-nav { display: none; max-height: none; }
     .prompt-detail-sidebar-inner.is-open .prompt-sidebar-nav { display: block; }

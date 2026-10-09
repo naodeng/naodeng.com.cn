@@ -20,6 +20,27 @@ test("blog list and detail share the site container and retain existing links", 
 for (const locale of ["en", "zh-cn"]) {
   const article = `/${locale}/blog/ai-testing/ai-test-auditor-static-evidence-for-ai-generated-tests/`;
 
+  for (const path of [`/${locale}/blog/`, `/${locale}/blog/page/2/`]) {
+    test(`${path}: previews retain one reading column and match article reading time`, async ({ page }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(path, { waitUntil: "domcontentloaded" });
+      const preview = page.locator(".post-card").first();
+      const readLabel = (await preview.locator(".post-reading-time").innerText()).trim();
+      const href = await preview.locator(".post-link").getAttribute("href");
+      for (const width of [390, 600, 1440]) {
+        await page.setViewportSize({ width, height: 900 });
+        const layout = await page.locator(".post-grid").evaluate(element => ({
+          columns: getComputedStyle(element).gridTemplateColumns.split(" ").length,
+          overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+        }));
+        expect(layout.columns).toBe(1);
+        expect(layout.overflow).toBe(false);
+      }
+      await page.goto(href!, { waitUntil: "domcontentloaded" });
+      await expect(page.locator(".article-meta")).toContainText(readLabel);
+    });
+  }
+
   test(`${locale}: article title and prose share a reading column with font fallbacks`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.route("https://fonts.googleapis.com/**", route => route.abort());

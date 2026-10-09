@@ -113,6 +113,12 @@ const howToSchema = {
     </aside>
 
     <!-- Main content -->
+    {tocHeadings.length > 0 && (
+      <aside class="workflow-toc-wrap" id="workflow-toc-wrap">
+        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
+      </aside>
+    )}
+
     <div class="workflow-main">
       <header class="workflow-detail-header">
         <h1>{entry.data.title}</h1>
@@ -137,11 +143,7 @@ const howToSchema = {
     </div>
 
     <!-- Right TOC sidebar -->
-    {tocHeadings.length > 0 && (
-      <aside class="workflow-toc-wrap" id="workflow-toc-wrap">
-        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
-      </aside>
-    )}
+
   </div>
 </Base>
 
@@ -162,11 +164,11 @@ const howToSchema = {
   .workflow-layout {
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
-    gap: var(--sp-l);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
     align-items: start;
     max-inline-size: var(--layout-max);
     margin-inline: auto;
-    padding-inline: var(--sp-m);
+    padding-inline: 0;
     padding-block: 0 5rem;
   }
   .workflow-layout[data-has-toc="true"] {
@@ -177,8 +179,10 @@ const howToSchema = {
   /* ── Left sidebar ── */
   .workflow-sidebar-left {
     position: sticky;
-    top: var(--sp-m);
+    top: var(--sticky-offset);
     align-self: start;
+    grid-column: 1;
+    grid-row: 1;
   }
   .workflow-sidebar-inner {
     border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
@@ -233,7 +237,9 @@ const howToSchema = {
     margin: 0;
   }
   .workflow-sidebar-link {
-    display: block;
+    display: flex;
+    align-items: center;
+    min-block-size: 44px;
     padding: 0.35em 0.6em;
     margin-block: 0.1em 0;
     font-size: 0.875rem;
@@ -262,7 +268,9 @@ const howToSchema = {
     border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 12%, transparent);
   }
   .workflow-sidebar-back {
-    display: block;
+    display: flex;
+    align-items: center;
+    min-block-size: 44px;
     padding: 0.35em 0.6em;
     font-size: 0.8rem;
     font-weight: 500;
@@ -278,6 +286,8 @@ const howToSchema = {
   /* ── Main content ── */
   .workflow-main {
     min-inline-size: 0;
+    grid-column: 2;
+    grid-row: 1;
   }
   .workflow-detail-header {
     margin-block-end: var(--sp-l);
@@ -353,7 +363,10 @@ const howToSchema = {
   /* ── Right TOC ── */
   .workflow-toc-wrap {
     position: sticky;
-    top: var(--sp-m);
+    top: var(--sticky-offset);
+    min-inline-size: 0;
+    grid-column: 3;
+    grid-row: 1;
     align-self: start;
     display: flex;
     flex-direction: column;
@@ -363,17 +376,23 @@ const howToSchema = {
   /* ── Responsive ── */
   @media (width < 1100px) {
     .workflow-layout[data-has-toc="true"] {
-      grid-template-columns: 220px 1fr;
+      grid-template-columns: 220px minmax(0, 1fr);
     }
-    .workflow-toc-wrap { display: none; }
+    .workflow-toc-wrap { grid-column: 2; grid-row: 1; position: static; }
+    .workflow-layout[data-has-toc="true"] .workflow-main { grid-row: 2; }
+    .workflow-layout[data-has-toc="true"] .workflow-sidebar-left { grid-row: 1 / span 2; }
   }
   @media (width < 768px) {
     .workflow-layout,
     .workflow-layout[data-has-toc="true"] {
       grid-template-columns: 1fr;
-      padding-inline: var(--sp-s);
+      padding-inline: 0;
     }
-    .workflow-sidebar-left { position: static; }
+    .workflow-layout .workflow-sidebar-left { position: static; grid-column: 1; grid-row: 1; }
+    .workflow-layout[data-has-toc="true"] .workflow-sidebar-left { grid-row: 1; }
+    .workflow-toc-wrap { grid-column: 1; grid-row: 2; }
+    .workflow-main { grid-column: 1; grid-row: 2; }
+    .workflow-layout[data-has-toc="true"] .workflow-main { grid-row: 3; }
     .workflow-sidebar-toggle { display: flex; }
     .workflow-sidebar-nav {
       display: none;

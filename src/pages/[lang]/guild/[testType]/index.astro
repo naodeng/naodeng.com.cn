@@ -9,6 +9,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import { NAV_HOME, NAV_GUILD } from "@/consts";
 import { getGuildConfig } from "@/config/guild.config";
 import type { Lang } from "@/i18n";
+import { filterGuildEntries } from "@/data/guild";
 
 export async function getStaticPaths() {
   const locales = ["zh-cn", "en"];
@@ -38,9 +39,7 @@ if (!testTypeConfig) {
 const allEntries = await getCollection("guild");
 const articleCountMap: Record<string, number> = {};
 for (const fw of testTypeConfig.frameworks) {
-  articleCountMap[fw.id] = allEntries.filter(
-    (e) => e.data.framework === fw.id && e.data.testType === testType
-  ).length;
+  articleCountMap[fw.id] = filterGuildEntries(allEntries, locale, testType, fw.id).length;
 }
 
 const isZh = locale === "zh-cn";
@@ -149,9 +148,8 @@ const itemListSchema = {
     margin: 1.5rem 0 2rem;
     padding: clamp(1rem, 3vw, 1.5rem);
     background: var(--color-surface);
-    border: 0;
-    border-inline-start: 1px solid var(--color-border-strong);
-    border-radius: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
   }
 
   .tt-header__icon {
@@ -205,24 +203,10 @@ const itemListSchema = {
     transition: var(--transition-base);
   }
 
-  .fw-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--color-theme);
-    opacity: 0;
-    transition: var(--transition-base);
-  }
-
   .fw-card:hover {
     border-color: color-mix(in srgb, var(--color-theme) 55%, var(--color-border));
     background: color-mix(in srgb, var(--color-theme) 5%, var(--color-surface));
     transform: none;
-  }
-
-  .fw-card:hover::before {
-    opacity: 1;
   }
 
   .fw-card__top {

@@ -4,10 +4,12 @@
  */
 import { getCollection } from 'astro:content';
 import type { TestType } from '../../config/guild.config';
+import { filterGuildEntries } from '@/data/guild';
+import type { Lang } from '@/i18n';
 
 interface Props {
   testType: TestType;
-  locale: string;
+  locale: Lang;
 }
 
 const { testType, locale } = Astro.props;
@@ -15,9 +17,7 @@ const { testType, locale } = Astro.props;
 const allGuildEntries = await getCollection('guild');
 const articleCountMap: Record<string, number> = {};
 for (const framework of testType.frameworks) {
-  articleCountMap[framework.id] = allGuildEntries.filter(
-    (e) => e.data.framework === framework.id && e.data.testType === testType.id
-  ).length;
+  articleCountMap[framework.id] = filterGuildEntries(allGuildEntries, locale, testType.id, framework.id).length;
 }
 
 const isZh = locale === 'zh-cn';
@@ -127,6 +127,7 @@ const isZh = locale === 'zh-cn';
 
   .tts__viewall {
     display: inline-flex;
+    min-block-size: 44px;
     align-items: center;
     gap: 0.3rem;
     font-size: 0.78rem;
@@ -146,7 +147,7 @@ const isZh = locale === 'zh-cn';
     background: var(--color-theme);
     color: var(--color-base);
     border-color: var(--color-theme);
-    transform: translateX(2px);
+    transform: none;
   }
 
   /* ── Framework card grid ── */
@@ -174,25 +175,10 @@ const isZh = locale === 'zh-cn';
     backdrop-filter: none;
   }
 
-  /* colored top accent */
-  .fw-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--color-theme);
-    opacity: 0;
-    transition: var(--transition-base);
-  }
-
   .fw-card:hover {
     border-color: var(--color-theme);
     transform: none;
     background: color-mix(in srgb, var(--color-theme) 5%, var(--color-surface));
-  }
-
-  .fw-card:hover::before {
-    opacity: 1;
   }
 
   .fw-card__top {
@@ -278,7 +264,8 @@ const isZh = locale === 'zh-cn';
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .fw-card {
+    .fw-card,
+    .tts__viewall {
       transition: none;
       transform: none !important;
     }

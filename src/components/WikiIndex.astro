@@ -115,6 +115,11 @@ const isZh = Astro.currentLocale === "zh-cn";
     const letters = Array.from(letterIndex.querySelectorAll<HTMLAnchorElement>(".wiki-letter-index-link"));
 
     const updateSearch = () => {
+      const sidebarInput = document.querySelector<HTMLInputElement>(".docs-sidebar-search-input");
+      if (sidebarInput?.dataset.searchTarget === searchInput.id && sidebarInput.value !== searchInput.value) {
+        sidebarInput.value = searchInput.value;
+        sidebarInput.dispatchEvent(new Event("input", { bubbles: true }));
+      }
       const query = searchInput.value.trim().toLowerCase();
       root.querySelectorAll<HTMLAnchorElement>(".wiki-letter-link").forEach((link) => {
         const item = link.closest("li");

@@ -60,6 +60,11 @@ export const getStaticPaths = () =>
         <li><a href={getRelativeLocaleUrl(locale, "/sponsor")}>{t(NAV_SPONSOR)}</a></li>
         <li><a href={getRelativeLocaleUrl(locale, "/wiki")}>{locale === "zh-cn" ? "测试百科" : "QA Wiki"}</a></li>
         <li><a href={getRelativeLocaleUrl(locale, "/ai-native-qa-weekly")}>{locale === "zh-cn" ? "AI-Native QA 周刊" : "AI-Native QA Weekly"}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/AIWiki/")}>{locale === "zh-cn" ? "AI 百科" : "AI Wiki"}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/guild/")}>{locale === "zh-cn" ? "自动化测试指南" : "Test Automation Guild"}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/qaskills/")}>{locale === "zh-cn" ? "软件测试技能库" : "QA Skill Library"}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/prompts/")}>{locale === "zh-cn" ? "软件测试提示词库" : "QA Prompt Library"}</a></li>
+        <li><a href={getRelativeLocaleUrl(locale, "/resources/")}>{locale === "zh-cn" ? "资源导航" : "Resource Hub"}</a></li>
       </ul>
     </section>
 
@@ -70,8 +75,9 @@ export const getStaticPaths = () =>
         <li><a href={getRelativeLocaleUrl(locale, "/wiki")}>{locale === "zh-cn" ? "百科首页" : "Wiki Home"}</a></li>
         {visibleWikiEntries.map((entry) => {
           const slug = wikiIdToSlug(entry.id);
-          const label =
-            getTitleZhFromBody(entry.body) || getTitleZh(entry.data?.title ?? "") || slugToTitleEn(slug);
+          const label = locale === "zh-cn"
+            ? getTitleZhFromBody(entry.body) || getTitleZh(entry.data?.title ?? "") || slugToTitleEn(slug)
+            : slugToTitleEn(slug);
           return (
             <li>
               <a href={getRelativeLocaleUrl(locale, `/wiki/${slug}`)}>{label}</a>
@@ -159,6 +165,7 @@ export const getStaticPaths = () =>
     padding: 0;
     margin: 0;
   }
+  .link-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 0.25rem 1.5rem; }
 
   .link-list li,
   .post-list li {
@@ -173,6 +180,10 @@ export const getStaticPaths = () =>
 
   .link-list a,
   .post-list a {
+    display: flex;
+    align-items: center;
+    min-block-size: 44px;
+    overflow-wrap: anywhere;
     color: var(--color-main);
     text-decoration: none;
   }
@@ -195,7 +206,9 @@ export const getStaticPaths = () =>
   }
 
   .tag-pill {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
     padding: 0.25rem 0.75rem;
     border-radius: var(--radius-xl);
     background: color-mix(in srgb, var(--color-theme) 10%, transparent);
@@ -216,6 +229,9 @@ export const getStaticPaths = () =>
   }
 
   .xml-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
     color: var(--color-theme);
     text-decoration: none;
     font-weight: 600;

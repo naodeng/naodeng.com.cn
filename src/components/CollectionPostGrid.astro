@@ -1,22 +1,24 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import type { Lang } from "@/i18n";
+import { blogReadingTime } from "@/utils/readingTime";
 
 interface Props {
   posts: CollectionEntry<"blog">[];
   locale: Lang;
   showAllTags?: boolean;
   activeTag?: string;
+  variant?: "grid" | "list";
 }
 
-const { posts, locale, showAllTags = false, activeTag } = Astro.props;
+const { posts, locale, showAllTags = false, activeTag, variant = "grid" } = Astro.props;
 
 function tagToSlug(tag: string) {
   return tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag;
 }
 ---
 
-<div class="post-grid">
+<div class:list={["post-grid", variant === "list" && "post-grid--list"]}>
   {
     posts.map((post) => {
       const [, ...id] = post.id.split("/");
@@ -26,24 +28,28 @@ function tagToSlug(tag: string) {
         { year: "numeric", month: "short", day: "numeric" }
       );
       const visibleTags = showAllTags ? post.data.tags : post.data.tags?.slice(0, 3);
+      const readMinutes = blogReadingTime(post.body);
 
       return (
         <article class="post-card">
           <a href={postUrl} class="post-link">
             <div class="post-content">
-              <time class="post-date">{dateStr}</time>
+              <time class="post-date" datetime={post.data.date.toISOString()}>{dateStr}</time>
               <h2 class="post-title">{post.data.title}</h2>
               {post.data.description && <p class="post-desc">{post.data.description}</p>}
             </div>
           </a>
 
-          {visibleTags && (
-            <div class="post-tags">
+          {(visibleTags || variant === "list") && (
+            <div class="post-footer">
+              {variant === "list" && <span class="post-reading-time">{readMinutes} {locale === "zh-cn" ? "分钟阅读" : "min read"}</span>}
+              {visibleTags && <div class="post-tags">
               {visibleTags.map((tag) => (
                 <a href={`/${locale}/tags/${tagToSlug(tag)}/`} class={`tag-link ${activeTag === tag ? "active" : ""}`}>
                   #{tag}
                 </a>
               ))}
+              </div>}
             </div>
           )}
         </article>
@@ -56,7 +62,7 @@ function tagToSlug(tag: string) {
   .post-grid {
     display: grid;
     gap: var(--sp-m);
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
   }
 
   .post-card {
@@ -69,10 +75,12 @@ function tagToSlug(tag: string) {
     transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .post-card:hover {
-    transform: translateY(-2px);
+  .post-card:hover,
+  .post-card:focus-within {
+    transform: none;
     border-color: var(--color-theme);
-    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.1);
+    background: var(--color-theme-soft);
+    box-shadow: none;
   }
 
   .post-link {
@@ -105,21 +113,27 @@ function tagToSlug(tag: string) {
   .post-desc {
     font-size: 0.9rem;
     line-height: 1.5;
-    opacity: 0.7;
+    color: var(--color-text-secondary);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .post-tags {
+  .post-footer {
     padding: 0 var(--sp-m) var(--sp-m);
+  }
+
+  .post-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
   .tag-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--color-text-secondary);
@@ -134,5 +148,77 @@ function tagToSlug(tag: string) {
   .tag-link.active {
     background: var(--color-theme);
     color: var(--color-theme-on-dark);
+  }
+
+  .post-grid--list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .post-grid--list .post-card {
+    border: 0;
+    border-block-end: 1px solid var(--color-border);
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+    transition: background-color var(--transition-fast);
+  }
+
+  .post-grid--list .post-card:hover,
+  .post-grid--list .post-card:focus-within {
+    transform: none;
+    box-shadow: none;
+    background: color-mix(in srgb, var(--color-theme) 4%, transparent);
+  }
+
+  .post-grid--list .post-content {
+    padding: 1.5rem 1.25rem 0.65rem;
+  }
+
+  .post-grid--list .post-title {
+    margin: 0 0 0.65rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .post-grid--list .post-desc {
+    margin: 0;
+    color: var(--color-text-secondary);
+    opacity: 1;
+    line-height: 1.65;
+  }
+
+  .post-grid--list .post-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .post-reading-time {
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+  }
+
+  .post-grid--list .tag-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 0.65rem;
+    border: 1px solid var(--color-border);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  @media (max-width: 600px) {
+    .post-grid--list .post-content { padding-inline: 0.25rem; }
+    .post-grid--list .post-footer { padding-inline: 0.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .post-card,
+    .tag-link { transition: none; }
   }
 </style>

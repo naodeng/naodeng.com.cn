@@ -90,14 +90,14 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
         searchLabel={sidebarSearchLabel}
       />
     </aside>
-    <div class="docs-content">
-      <slot />
-    </div>
     {hasToc && (
       <aside class="docs-toc-wrap">
         <TableOfContents headings={headings} label={rightTocLabel} placement="right" />
       </aside>
     )}
+    <div class="docs-content">
+      <slot />
+    </div>
   </div>
 </Base>
 
@@ -136,6 +136,8 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   }
   .l-docs[data-has-toc="true"] .docs-content {
     max-inline-size: none;
+    grid-column: 2;
+    grid-row: 1;
   }
   .l-docs[data-content-mode="index"] .docs-content {
     inline-size: 100%;
@@ -146,6 +148,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     background: transparent;
   }
   .docs-toc-wrap {
+    grid-column: 3;
+    grid-row: 1;
+    min-inline-size: 0;
     position: sticky;
     top: var(--sticky-offset);
     align-self: start;
@@ -156,6 +161,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   .docs-content :global(h1) {
     font-size: 2rem;
     font-weight: 700;
+    line-height: 1.3;
     margin-block-end: var(--sp-m);
     letter-spacing: -0.02em;
     word-break: keep-all;
@@ -163,6 +169,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     text-wrap: balance;
   }
   .docs-content :global(h2) {
+    scroll-margin-block-start: calc(var(--sticky-offset) + .5rem);
     font-size: 1.35rem;
     font-weight: 600;
     margin-block: var(--sp-l) var(--sp-s);
@@ -170,6 +177,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     border-block-end: 1px solid var(--color-border);
   }
   .docs-content :global(h3) {
+    scroll-margin-block-start: calc(var(--sticky-offset) + .5rem);
     font-size: 1.15rem;
     font-weight: 600;
     margin-block: var(--sp-m) var(--sp-s);
@@ -220,22 +228,41 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
       grid-template-columns: 220px 1fr;
     }
     .docs-toc-wrap {
-      display: none;
+      grid-column: 2;
+      grid-row: 1;
+      position: static;
+      display: block;
     }
+    .l-docs[data-has-toc="true"] .docs-sidebar-wrap { grid-row: 1 / span 2; }
+    .l-docs[data-has-toc="true"] .docs-content { grid-row: 2; }
+
   }
   @media (width < 900px) {
+    .l-docs[data-content-mode="index"] :global(.docs-sidebar-search) {
+      display: none;
+    }
     .l-docs {
       grid-template-columns: 1fr;
-      gap: var(--sp-m);
+      gap: var(--sp-s);
     }
     .l-docs[data-has-toc="true"] {
       grid-template-columns: 1fr;
     }
+    .l-docs[data-has-toc="true"] .docs-sidebar-wrap { grid-column: 1; grid-row: 1; }
+    .l-docs[data-has-toc="true"] .docs-toc-wrap { grid-column: 1; grid-row: 2; }
+    .l-docs[data-has-toc="true"] .docs-content { grid-column: 1; grid-row: 3; }
     .docs-sidebar-wrap {
       position: static;
     }
     .docs-content {
       max-inline-size: none;
     }
+  }
+  @media (600px <= width < 900px) {
+    .l-docs[data-has-toc="true"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .l-docs[data-has-toc="true"] .docs-toc-wrap { grid-column: 2; grid-row: 1; }
+    .l-docs[data-has-toc="true"] .docs-content { grid-column: 1 / -1; grid-row: 2; }
   }
 </style>

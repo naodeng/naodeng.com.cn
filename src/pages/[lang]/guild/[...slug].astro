@@ -363,29 +363,30 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   .guild-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-m);
-    padding: var(--sp-m);
-    margin-block-end: var(--sp-l);
-    background: color-mix(in srgb, var(--color-theme) 8%, transparent);
-    border-radius: var(--radius-sm);
-    border: 1px solid color-mix(in srgb, var(--color-theme) 20%, transparent);
+    gap: 0.6rem 1.25rem;
+    padding-block: 1rem;
+    margin-block-end: 1.25rem;
+    border-block: 1px solid var(--color-border);
   }
 
   .guild-meta-item {
-    display: flex;
+    display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.5em;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+    min-inline-size: 0;
   }
 
   .guild-meta-label {
-    font-weight: 600;
-    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    font-weight: 500;
+    color: var(--color-text-secondary);
   }
 
   .guild-meta-value {
-    color: var(--color-theme);
+    color: var(--color-main);
     font-weight: 500;
+    overflow-wrap: anywhere;
   }
 
   /* 13.2: Difficulty badge */
@@ -413,33 +414,36 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
 
   .guild-links {
     display: flex;
-    gap: var(--sp-m);
-    margin-block-end: var(--sp-l);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-block-end: 1.5rem;
   }
 
   .guild-link {
     display: inline-flex;
+    min-block-size: 44px;
     align-items: center;
     gap: 0.5em;
     padding: 0.6em 1.2em;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--color-theme-on-dark) !important;
-    background: var(--color-theme);
+    color: var(--color-theme) !important;
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     text-decoration: none !important;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
   }
 
   .guild-link:hover {
-    background: color-mix(in srgb, var(--color-theme) 85%, var(--color-main));
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-theme) 30%, transparent);
+    background: color-mix(in srgb, var(--color-theme) 6%, var(--color-surface));
+    border-color: var(--color-theme);
   }
 
   /* 13.3: Prose area */
   .guild-content {
     max-inline-size: 68ch;
+    overflow-wrap: anywhere;
     line-height: 1.8;
   }
   .guild-related-terms {

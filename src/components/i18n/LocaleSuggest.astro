@@ -1,6 +1,7 @@
 ---
-import { LOCALES, type Lang } from "@/i18n";
+import { LOCALES, getLocalePaths, type Lang } from "@/i18n";
 const currentLocale = Astro.currentLocale as Lang;
+const localePaths = Object.fromEntries((await getLocalePaths(Astro.url)).map(({ lang, path }) => [lang, path]));
 ---
 
 <div id="js-languageSuggest">
@@ -13,16 +14,14 @@ const currentLocale = Astro.currentLocale as Lang;
   </button>
 </div>
 
-<script is:inline define:vars={{ currentLocale, LOCALES }}>
+<script is:inline define:vars={{ currentLocale, LOCALES, localePaths }}>
   const browserLang = navigator.language.toLowerCase();
   const suggest = document.getElementById("js-languageSuggest");
 
   const showSuggest = (lang) => {
-    const pathnames = location.pathname.split("/");
     const link = document.getElementById("js-link");
     const linkText = document.getElementById("js-linkText");
-    pathnames[1] = lang;
-    link.href = pathnames.join("/");
+    link.href = localePaths[lang];
     linkText.innerText = currentLocale === "zh-cn" && lang === "en"
       ? "切换至英文"
       : currentLocale === "en" && lang === "zh-cn"

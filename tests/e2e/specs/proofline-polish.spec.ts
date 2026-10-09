@@ -1,5 +1,43 @@
 import { expect, test } from "@playwright/test";
 
+for (const slug of ["junit-testing", "ui-testing", "mobile-app-testing", "localization-testing"]) {
+  test(`wiki/${slug} 正文中的连续方法名不撑宽手机页面`, async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`/zh-cn/wiki/${slug}/`, { waitUntil: "domcontentloaded" });
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator(".wiki-article")).toBeVisible();
+    for (const width of [390, 375]) {
+      await page.setViewportSize({ width, height: 900 });
+      await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+    }
+  });
+}
+
+for (const lang of ["en", "zh-cn"]) {
+  for (const path of [
+    `/blog/performance-testing/${lang === "en" ? "gatling-tool-tutorial" : "gatling-tool-intro"}-advanced-usage/`,
+    "/guild/performance-testing/gatling/advanced-usage/",
+    "/guild/performance-testing/k6/http-request-and-checks/",
+  ]) {
+    test(`${lang}${path} 长方法名可换行且代码独立滚动`, async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto(`/${lang}${path}`, { waitUntil: "domcontentloaded" });
+      await page.setViewportSize({ width: 390, height: 900 });
+      await page.evaluate(() => document.fonts.ready);
+      await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+      const code = await page.evaluate(() => {
+        const block = Array.from(document.querySelectorAll("article pre")).find(pre => pre.scrollWidth > pre.clientWidth);
+        if (!block) return null;
+        block.scrollLeft = 48;
+        return { overflow: getComputedStyle(block).overflowX, scrollLeft: block.scrollLeft };
+      });
+      expect(code).not.toBeNull();
+      expect(code!.overflow).toBe("auto");
+      expect(code!.scrollLeft).toBeGreaterThan(0);
+    });
+  }
+}
+
 for (const locale of ["en", "zh-cn"]) {
   test(`${locale}: reduced motion keeps the homepage still`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });

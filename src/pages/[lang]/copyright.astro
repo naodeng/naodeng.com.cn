@@ -29,7 +29,7 @@ export const getStaticPaths = () =>
 <Layout {title}>
   <PageHeadline {title} compact />
 
-  <section class="copyright-section l-content">
+  <section class="copyright-section">
     <p class="intro">{locale === "zh-cn" ? introZh : introEn}</p>
 
     <h2>{locale === "zh-cn" ? "许可协议概要" : "License Summary"}</h2>
@@ -66,7 +66,8 @@ export const getStaticPaths = () =>
   .copyright-section {
     max-inline-size: 55rem; /* 880px，与博文详情页一致 */
     margin-inline: auto;
-    padding-inline: var(--sp-m);
+    padding-inline: 0;
+    padding-block-start: 1.5rem;
     padding-block-end: var(--sp-l);
   }
   .intro {

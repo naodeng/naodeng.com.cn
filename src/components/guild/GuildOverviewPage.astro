@@ -74,10 +74,10 @@ const learningPathListSchema = {
         {isZh ? "学习路径" : "Learning Paths"}
       </div>
       <div class="filter-bar" role="group" aria-label={isZh ? "按测试类型筛选" : "Filter by test type"}>
-        <button class="filter-pill filter-pill--active" data-filter="all">{isZh ? "全部" : "All"}</button>
+        <button type="button" class="filter-pill filter-pill--active" data-filter="all" aria-pressed="true">{isZh ? "全部" : "All"}</button>
         {
           visibleTestTypes.map((t) => (
-            <button class="filter-pill" data-filter={t.id}>
+            <button type="button" class="filter-pill" data-filter={t.id} aria-pressed="false">
               {t.icon && <span class="material-icons-sharp" aria-hidden="true">{t.icon}</span>}
               {t.title}
             </button>
@@ -100,8 +100,12 @@ const learningPathListSchema = {
   pills.forEach((pill) => {
     pill.addEventListener('click', () => {
       const filter = pill.dataset.filter;
-      pills.forEach((p) => p.classList.remove('filter-pill--active'));
+      pills.forEach((p) => {
+        p.classList.remove('filter-pill--active');
+        p.setAttribute('aria-pressed', 'false');
+      });
       pill.classList.add('filter-pill--active');
+      pill.setAttribute('aria-pressed', 'true');
       sections.forEach((s) => {
         s.hidden = !(filter === 'all' || s.dataset.testtype === filter);
       });

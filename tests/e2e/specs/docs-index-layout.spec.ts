@@ -59,6 +59,22 @@ for (const { route, query } of [
     await expect(page.locator(".docs-sidebar-link:visible")).toHaveCount(total + 1);
   });
 
+  test(`${route} mobile offers one search and keeps the navigation query synchronized`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(route);
+    const search = page.locator(".wiki-search-input");
+    const sidebar = page.locator("#docs-sidebar-search-input");
+    await expect(sidebar).toBeHidden();
+    await expect(search).toBeVisible();
+    await search.fill(query);
+    await expect(sidebar).toHaveValue(query);
+    await search.fill("zz-no-matching-proofline-term");
+    await expect(page.locator(".wiki-search-empty")).toBeVisible();
+    await page.locator(".wiki-search-empty button").click();
+    await expect(search).toBeFocused();
+    await expect(sidebar).toHaveValue("");
+  });
+
   test(`${route} letter jumps stay visible below the sticky index`, async ({ page }) => {
     for (const width of [375, 1440]) {
       await page.setViewportSize({ width, height: 900 });

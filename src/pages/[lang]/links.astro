@@ -27,7 +27,7 @@ export const getStaticPaths = () =>
 <Layout {title}>
   <PageHeadline {title} compact />
 
-  <section class="links-section l-content">
+  <section class="links-section">
     <div class="links-grid">
       {friendLinks.map((link) => (
           <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
@@ -52,7 +52,7 @@ export const getStaticPaths = () =>
     max-inline-size: 55rem; /* 880px，与博文详情页一致 */
     margin-inline: auto;
     margin-block-start: var(--sp-l);
-    padding-inline: var(--sp-m);
+    padding-inline: 0;
     padding-block-end: var(--sp-l);
   }
   .links-grid {
@@ -115,6 +115,9 @@ export const getStaticPaths = () =>
     line-height: 1.55;
   }
   .email-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
     color: var(--color-theme);
     font-weight: 600;
     text-decoration: none;

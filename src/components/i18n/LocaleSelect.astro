@@ -9,7 +9,7 @@ const currentLocale = Astro.currentLocale || "en";
 const targetLocaleLabel = currentLocale === "zh-cn" ? "EN" : "中";
 const triggerLabel = currentLocale === "zh-cn" ? "切换语言，当前中文" : "Switch language, currently English";
 
-const localePaths = getLocalePaths(Astro.url);
+const localePaths = await getLocalePaths(Astro.url);
 const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-zA-Z-]+/, "") || "/";
 const sectionRoots = [
   "/blog",
