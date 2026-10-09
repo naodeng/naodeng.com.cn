@@ -12,6 +12,7 @@ import { wikiIdToSlug, getTitleZhFromBody, getTitleZh, slugToTitleEn } from "@/d
 import { aiwikiIdToSlug, aiwikiIdToLang, getAiWikiDisplayTitle } from "@/data/aiwiki";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 import { blogReadingTime } from "@/utils/readingTime";
+import { serializeJsonLd } from "@/utils/seoHtml.mjs";
 
 export async function getStaticPaths() {
   const posts = filterPublishedBlogPosts(await getCollection("blog"));
@@ -160,7 +161,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   breadcrumbs={breadcrumbs}
   contentWide
 >
-  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} is:inline />
+  <script type="application/ld+json" set:html={serializeJsonLd(blogPostingSchema)} is:inline />
   <div class:list={["article-with-toc", { "article-with-toc--plain": !hasToc }]}>
     <header class="article-title-header" id="article-title-header">
       <h1>{title}</h1>

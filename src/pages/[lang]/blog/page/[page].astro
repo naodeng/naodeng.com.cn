@@ -6,8 +6,9 @@ import PageHeadline from "@/components/PageHeadline.astro";
 import PaginationNav from "@/components/PaginationNav.astro";
 import CollectionPostGrid from "@/components/CollectionPostGrid.astro";
 import "@/styles/blog-index.css";
-import { BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, NAV_HOME } from "@/consts";
+import { BLOG_INDEX_TITLE, BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, NAV_HOME } from "@/consts";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
+import { serializeJsonLd } from "@/utils/seoHtml.mjs";
 
 export async function getStaticPaths() {
   const allPosts = filterPublishedBlogPosts(await getCollection("blog"));
@@ -44,7 +45,7 @@ const posts = allPosts.slice(start, start + BLOG_POSTS_PER_PAGE);
 
 const title = t({ en: "Blog", "zh-cn": "博客" });
 const pageLabel = locale === "zh-cn" ? `第 ${currentPage} 页` : `Page ${currentPage}`;
-const description = t(BLOG_INDEX_DESCRIPTION);
+const description = `${pageLabel} · ${t(BLOG_INDEX_DESCRIPTION)}`;
 const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (locale === "zh-cn" ? "首页" : "Home");
 const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },
@@ -71,8 +72,8 @@ const itemListSchema = {
 };
 ---
 
-<Layout {title} description={description} breadcrumbs={breadcrumbs} prevUrl={prevUrl} nextUrl={nextUrl}>
-  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} is:inline />
+<Layout title={`${t(BLOG_INDEX_TITLE)} · ${pageLabel}`} description={description} breadcrumbs={breadcrumbs} prevUrl={prevUrl} nextUrl={nextUrl}>
+  <script type="application/ld+json" set:html={serializeJsonLd(itemListSchema)} is:inline />
   <section class="blog-headline-wrap">
     <PageHeadline {title} compact><p class="headline-intro">{pageLabel}</p></PageHeadline>
   </section>

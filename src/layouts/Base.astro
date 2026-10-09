@@ -11,6 +11,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations, LOCALES, getLocalePaths, DEFAULT_LOCALE, type Lang } from "@/i18n";
 import { buildPageTitle, type PageTitleMode } from "@/utils/pageTitle";
 import { buildMetaDescription } from "@/utils/seoDescription.mjs";
+import { serializeJsonLd } from "@/utils/seoHtml.mjs";
 import "@/styles/global.css";
 
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -132,30 +133,24 @@ const personSameAs = [
 const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteOrigin}/#website`,
   name: t(SITE_TITLE),
-  description: localeDescription,
+  description: t(SITE_DESCRIPTION),
   url: siteOrigin,
-  inLanguage: [locale === "zh-cn" ? "zh-CN" : "en"],
+  inLanguage: Object.values(LOCALES).map(config => config.lang),
   publisher: {
     "@type": "Organization",
     name: t(SITE_TITLE),
     url: siteOrigin,
     logo: { "@type": "ImageObject", url: `${siteOrigin}/ogp.png`, width: 1200, height: 630 },
   },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${siteOrigin}/${locale}/?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${siteOrigin}/#person`,
   name: "Nao Deng",
-  url: siteOrigin,
+  url: `${siteOrigin}/${DEFAULT_LOCALE}/about/`,
   sameAs: personSameAs,
 };
 const breadcrumbSchema =
@@ -163,6 +158,7 @@ const breadcrumbSchema =
     ? {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumbs`,
         itemListElement: breadcrumbs.map((item, i) => ({
           "@type": "ListItem",
           position: i + 1,
@@ -171,6 +167,17 @@ const breadcrumbSchema =
         })),
       }
     : null;
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${canonicalUrl}#webpage`,
+  url: canonicalUrl,
+  name: localeTitle,
+  description: localeDescription,
+  inLanguage: LOCALES[locale].lang || locale,
+  isPartOf: { "@id": webSiteSchema["@id"] },
+  ...(breadcrumbSchema ? { breadcrumb: { "@id": breadcrumbSchema["@id"] } } : {}),
+};
 
 const counterscaleTrackerUrl =
   (import.meta.env.PUBLIC_COUNTERSCALE_TRACKER_URL as string | undefined)?.trim() ||
@@ -275,13 +282,14 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
       onload={`this.media='all'`}
     />
 
-    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} is:inline />
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} is:inline />
+    <script type="application/ld+json" set:html={serializeJsonLd(webSiteSchema)} is:inline />
+    <script type="application/ld+json" set:html={serializeJsonLd(personSchema)} is:inline />
+    <script type="application/ld+json" set:html={serializeJsonLd(webPageSchema)} is:inline />
     {breadcrumbSchema && (
-      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+      <script type="application/ld+json" set:html={serializeJsonLd(breadcrumbSchema)} is:inline />
     )}
     {extraStructuredData?.map((schema) => (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+      <script type="application/ld+json" set:html={serializeJsonLd(schema)} is:inline />
     ))}
     <LocaleHtmlHead />
     <script is:inline>

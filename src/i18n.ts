@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import { BLOG_POSTS_PER_PAGE } from "./consts";
 import { filterPublishedBlogPosts } from "./utils/blogPublication";
 import { createBlogLocaleResolver } from "./utils/blogLocalePaths";
+import { resolveWikiLocalePath } from "./utils/seoUrls";
 
 /**
  * User-defined locales list
@@ -62,7 +63,7 @@ export async function getLocalePaths(url: URL): Promise<LocalePath[]> {
   const resolve = needsBlogResolver ? await blogResolver : undefined;
   const availableGuildArticles = guildSlug ? await guildArticles : undefined;
   return Object.keys(LOCALES).map((lang) => {
-    let resolved = resolve?.(url.pathname, lang);
+    let resolved = resolveWikiLocalePath(url.pathname, lang) ?? resolve?.(url.pathname, lang);
     if (guildSlug && !availableGuildArticles?.has(`${lang}/${guildSlug}`)) {
       resolved = { path: `/${lang}/guild/${guildSlug.split("/").slice(0, 2).join("/")}/`, isEquivalent: false };
     }

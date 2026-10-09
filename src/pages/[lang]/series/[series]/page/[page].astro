@@ -61,7 +61,7 @@ const breadcrumbs = [
 ];
 ---
 
-<Layout {title}>
+<Layout title={`${title} · ${pageLabel}`}>
   <Breadcrumb items={breadcrumbs} />
   <PageHeadline {title} compact>
     <p class="series-meta">{paginated.totalItems} {t({ en: "posts in this series", "zh-cn": "篇系列文章" })}</p>

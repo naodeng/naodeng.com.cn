@@ -6,6 +6,7 @@ import rehypeSlug from "rehype-slug";
 import { defineConfig } from "astro/config";
 import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/locales";
 import { hasNoindexRobots, shouldIncludeInSitemap } from "./src/utils/seoUrls";
+import { readHtmlSeoMetadata } from "./src/utils/seoHtml.mjs";
 import markdownPresentationRemark from "./src/utils/markdownPresentationRemark.mjs";
 
 const sanitizeRollupFileName = (fileName) =>
@@ -50,7 +51,8 @@ function stripNoindexSitemapItem(item) {
   const pagePath = generatedPagePath(item.url);
   if (!pagePath) return item;
   const html = fs.readFileSync(pagePath, "utf8");
-  return hasNoindexRobots(html) ? undefined : item;
+  if (hasNoindexRobots(html)) return undefined;
+  return { ...item, links: readHtmlSeoMetadata(html).alternates };
 }
 
 // https://astro.build/config

@@ -7,8 +7,9 @@ import PageHeadline from "@/components/PageHeadline.astro";
 import PaginationNav from "@/components/PaginationNav.astro";
 import CollectionPostGrid from "@/components/CollectionPostGrid.astro";
 import "@/styles/blog-index.css";
-import { BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, BLOG_INTRO, NAV_HOME, NAV_SERIES, NAV_TAGS, NAV_ARCHIVE } from "@/consts";
+import { BLOG_INDEX_TITLE, BLOG_INDEX_DESCRIPTION, BLOG_POSTS_PER_PAGE, BLOG_INTRO, NAV_HOME, NAV_SERIES, NAV_TAGS, NAV_ARCHIVE } from "@/consts";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
+import { serializeJsonLd } from "@/utils/seoHtml.mjs";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -57,8 +58,8 @@ export const getStaticPaths = () =>
   }));
 ---
 
-<Layout {title} description={description} breadcrumbs={breadcrumbs} nextUrl={nextUrl}>
-  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} is:inline />
+<Layout title={t(BLOG_INDEX_TITLE)} description={description} breadcrumbs={breadcrumbs} nextUrl={nextUrl}>
+  <script type="application/ld+json" set:html={serializeJsonLd(itemListSchema)} is:inline />
   <section class="blog-headline-wrap">
     <PageHeadline {title} compact>
       <p class="headline-intro">{t(BLOG_INTRO)}</p>

@@ -385,20 +385,28 @@ const internalLinkMd = `# Internal Link Optimization Report
 3. 统一 related 字段只使用 canonical slug（避免大小写和历史命名混用）。
 `;
 
-const structuredMd = `# Structured Data Check Report
+const structuredMd = `# 结构化数据检查入口
 
-## Template Mapping Check
+## 本命令的验证边界
 
-- Base layout: WebSite + Person + BreadcrumbList
-- Blog detail: BlogPosting
-- Wiki detail: DefinedTerm
-- AIWiki detail: DefinedTerm
+seo:check 只扫描内容源码，未运行 HTML 构建或 JSON-LD 校验。
+下面是模板说明，不能作为结构化数据通过的证明。
 
-## Risks Found
+## 模板对应关系
 
-1. 当前自动检查主要覆盖“存在”，缺少字段语义正确性校验。
-2. 建议在 E2E 增加 JSON-LD 字段断言（@type、url、name、description）。
-3. 建议新增 schema 静态脚本，对关键模板页做 JSON parse + required field 校验。
+- Base 布局：WebSite + WebPage + Person；有面包屑时输出 BreadcrumbList。
+- 博客详情：BlogPosting。
+- 测试百科和 AI 百科详情：DefinedTerm。
+- QA Skills 详情：TechArticle。
+- 自动化指南和周刊详情：Article。
+- 内容目录：CollectionPage 或 ItemList；提示词和工作流保留已有 HowTo。
+
+## 如何实际验证
+
+1. 运行 npm run build；构建后会自动执行 seo:build:check。
+2. 构建检查校验 JSON-LD 是否可解析、WebPage 与页面标题摘要是否一致、文章 URL 和日期以及面包屑字段。
+3. 中英文桌面和移动端的浏览器断言见 tests/e2e/specs/seo-integrity.spec.ts。
+4. 上线后使用 Google Rich Results Test 核查适用的富媒体结果；本地通过不代表已收录或会展示富媒体结果。
 `;
 
 const weeklyMd = `# Weekly SEO Report Template

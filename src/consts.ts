@@ -9,8 +9,8 @@ export const SITE_TITLE: string | Multilingual = {
 };
 
 export const SITE_DESCRIPTION: string | Multilingual = {
-  en: "naodeng, inaodeng.com, personal blog, software testing, performance testing, API testing, automation testing, agile testing.",
-  "zh-cn": "naodeng，inaodeng.com，个人博客，软件测试，性能测试，接口测试，自动化测试，敏捷测试。",
+  en: "Practical software testing and AI testing resources by Nao Deng: automation guides, QA Skills, reusable prompts, workflows, and testing and AI glossaries.",
+  "zh-cn": "软件测试同学 naodeng 的实践笔记与学习资源，涵盖软件测试、AI 测试、接口与性能自动化、QA Skills、测试提示词和质量工作流，结合测试百科、AI 百科与周刊，帮助测试工程师查阅概念、学习工具并复用实践方法。",
 };
 
 /** SEO 关键词（meta keywords） */
@@ -564,32 +564,36 @@ export const BLOG_TOP_TAGS_TITLE: Multilingual = {
   "zh-cn": "热门标签 Top 20",
 };
 
-/** SEO：列表页 meta description（简短，便于搜索结果展示） */
+/** SEO：博客列表页标题与摘要。分页需要额外包含页码。 */
+export const BLOG_INDEX_TITLE: Multilingual = {
+  en: "Software Testing & AI Testing Blog",
+  "zh-cn": "软件测试与 AI 测试博客",
+};
 export const BLOG_INDEX_DESCRIPTION: Multilingual = {
-  en: "Browse all blog posts on software testing, API testing, automation, and QA. Series and tutorials by Nao Deng.",
-  "zh-cn": "浏览本站全部博文：软件测试、接口测试、自动化与 QA 相关系列与教程。",
+  en: "Software testing and AI testing articles by Nao Deng: test design, automation, quality analysis, tool tutorials, and practical QA workflows.",
+  "zh-cn": "阅读 naodeng 的软件测试与 AI 测试实践文章，涵盖测试设计、接口测试、UI 自动化、性能测试和质量分析。通过系列、标签与工具教程查找相关方法、工程示例和实践经验。",
 };
 export const TAGS_INDEX_DESCRIPTION: Multilingual = {
-  en: "Browse blog posts by tag. Software testing, automation, API testing, and more.",
-  "zh-cn": "按标签浏览博文：软件测试、自动化、接口测试等。",
+  en: "Find software testing and AI testing articles by topic, tool, or method. Browse tags for test design, API testing, automation, performance, and QA.",
+  "zh-cn": "按主题、工具和测试方法查找 naodeng 的博文。通过标签浏览软件测试、AI 测试、接口测试、UI 自动化、性能测试与质量分析相关内容，查找同一主题的文章和工程实践。",
 };
 export const ARCHIVE_PAGE_DESCRIPTION: Multilingual = {
-  en: "Blog archive: all posts listed by year.",
-  "zh-cn": "博文归档：按年份查看全部文章。",
+  en: "Browse Nao Deng's software testing and AI testing articles by year. Find published tutorials, automation notes, QA practices, and earlier technical posts.",
+  "zh-cn": "按年份浏览 naodeng 已发布的软件测试与 AI 测试文章，查找接口测试、自动化、性能测试和质量实践的历史记录。可从归档进入完整文章，再通过系列与标签继续阅读相关主题。",
 };
 export const SERIES_INDEX_DESCRIPTION: Multilingual = {
-  en: "Blog series and topic collections. Browse by series.",
-  "zh-cn": "博文系列与专题集合，按系列浏览。",
+  en: "Follow Nao Deng's software testing and AI testing series. Read related articles together, from automation tool tutorials to test design and QA practices.",
+  "zh-cn": "按系列阅读 naodeng 的软件测试与 AI 测试专题，集中查找工具入门、自动化实践、测试设计和质量分析相关文章。每个系列提供已发布文章的阅读入口，便于连续学习和回顾相关实践。",
 };
 
 /** SEO：关于页、项目页 meta description */
 export const ABOUT_PAGE_DESCRIPTION: Multilingual = {
-  en: "About Nao Deng. Software testing, QA, automation. Contact and featured projects.",
-  "zh-cn": "关于 naodeng。软件测试、QA、自动化。联系方式与精选项目。",
+  en: "Learn about Nao Deng's software testing and quality analysis work, open source QA projects, technical writing, and ways to get in touch.",
+  "zh-cn": "了解软件测试同学 naodeng 的测试与质量分析工作、技术写作、开源项目和使用工具，查找软件测试、自动化与 AI 测试资源的作者背景，也可通过本页获取联系方式与交流入口。",
 };
 export const PROJECTS_PAGE_DESCRIPTION: Multilingual = {
-  en: "Featured projects: API testing, performance testing, UI automation, and QA tools.",
-  "zh-cn": "精选项目：接口测试、性能测试、UI 自动化与 QA 工具。",
+  en: "Explore Nao Deng's open source QA projects, prompt libraries, and automation examples. Find repositories for API testing, UI testing, and performance testing.",
+  "zh-cn": "浏览 naodeng 的开源 QA 项目、测试提示词库和自动化示例，查找接口测试、UI 测试、性能测试及 AI 辅助测试相关仓库。通过项目介绍和源码链接了解用途，再选择适合当前任务的资源。",
 };
 
 // 博客分页
@@ -766,8 +770,8 @@ export const PROMPTS_PAGE_TITLE: Multilingual = {
 
 /** 提示词列表页 SEO 描述 */
 export const PROMPTS_PAGE_DESCRIPTION: Multilingual = {
-  en: "A curated QA prompt library for software testing, covering 15 testing types and 6 prompt frameworks in English and Chinese.",
-  "zh-cn": "面向 QA 与软件测试的提示词库，涵盖 15 种测试类型和 6 种提示词框架，支持中英双语。",
+  en: "Reusable software testing prompts for requirements analysis, test strategy, test cases, automation, and release reviews. Browse by task in English or Chinese.",
+  "zh-cn": "按任务查找可复用的软件测试提示词，覆盖需求分析、测试策略、用例设计、接口与 UI 自动化、性能测试和发布评审。每个提示词说明输入、输出和使用步骤，支持中英双语与人工复核。",
 };
 
 /** 工作流程区块标题 */
@@ -810,8 +814,8 @@ export const PROMPTS_FLOW_TITLE: Multilingual = {
 
 /** 首页 SEO 描述 */
 export const HOME_PAGE_DESCRIPTION: Multilingual = {
-  en: "Nao Deng's personal blog on software testing, QA, and test automation. Covering API testing, performance testing, UI automation, AI-assisted testing, and more.",
-  "zh-cn": "naodeng 的个人博客，专注软件测试、质量保证与测试自动化。涵盖接口测试、性能测试、UI 自动化、AI 辅助测试等方向，中英双语更新。",
+  en: "Explore Nao Deng's software testing and AI testing resources: QA Skills, prompts, automation guides, testing glossaries, practical articles, and QA workflows.",
+  "zh-cn": "从软件测试同学 naodeng 的实践文章、QA Skills、测试提示词和质量工作流开始，学习软件测试、AI 测试、接口与性能自动化。通过测试百科、AI 百科、工具指南和周刊继续查阅相关知识。",
 };
 
 /** 首页 SEO 关键词 */
@@ -834,8 +838,8 @@ export const WIKI_PAGE_KEYWORDS: Multilingual = {
 
 /** Guild 页 SEO 描述 */
 export const GUILD_PAGE_DESCRIPTION: Multilingual = {
-  en: "Test Automation Guild: structured learning paths for test automation, from beginner to advanced. Covers API testing (REST Assured, SuperTest, pytest), UI testing (Playwright, Cypress), and performance testing (k6, Gatling).",
-  "zh-cn": "测试自动化指南: 系统化的测试自动化学习路径，从入门到进阶。涵盖接口测试（REST Assured、SuperTest、pytest）、UI 测试（Playwright、Cypress）和性能测试（k6、Gatling）等框架教程。",
+  en: "Learn API, UI, and performance test automation with Playwright, Cypress, REST Assured, pytest, k6, and Gatling guides, examples, and CI workflows.",
+  "zh-cn": "沿学习路径掌握接口、UI 与性能测试自动化。查阅 Playwright、Cypress、REST Assured、pytest、k6 和 Gatling 的入门、进阶、工程示例及持续集成指南。",
 };
 
 /** Guild 页 SEO 关键词 */

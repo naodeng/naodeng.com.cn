@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { hasNoindexRobots } from "../src/utils/seoNoindex.mjs";
+import { checkSeoIntegrity } from "./seo-integrity-utils.mjs";
 
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, "dist");
@@ -168,6 +169,9 @@ for (const file of fs.readdirSync(path.join(DIST, "en", "qaskills"), { withFileT
   }
 }
 
+const integrity = checkSeoIntegrity(DIST);
+failures.push(...integrity.failures);
+
 if (failures.length > 0) {
   console.error("SEO build check failed");
   for (const failure of failures) console.error(`- ${failure}`);
@@ -175,3 +179,4 @@ if (failures.length > 0) {
 }
 
 console.log("SEO build check passed");
+console.log(`SEO coverage: ${JSON.stringify(integrity.counts)}`);

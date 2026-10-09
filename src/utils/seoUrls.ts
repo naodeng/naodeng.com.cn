@@ -1,5 +1,14 @@
 export { hasNoindexRobots } from "./seoNoindex.mjs";
 
+/** The English Wiki is a legacy redirect, not a translation of the Chinese Wiki. */
+export function resolveWikiLocalePath(pathname: string, targetLang: string): { path: string; isEquivalent: boolean } | null {
+  if (!/^\/(en|zh-cn)\/wiki(?:\/|$)/.test(pathname)) return null;
+  if (pathname.startsWith("/zh-cn/wiki") && targetLang === "zh-cn") {
+    return { path: pathname, isEquivalent: shouldIncludeInSitemap(pathname) };
+  }
+  return { path: `/${targetLang}/wiki/`, isEquivalent: false };
+}
+
 /**
  * Return the stable URL slug used by the Chinese Wiki.
  * Source filenames are historical input; published URLs are lowercase.
