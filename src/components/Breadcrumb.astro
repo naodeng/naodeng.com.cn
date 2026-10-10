@@ -57,6 +57,9 @@ const { items } = Astro.props;
     display: inline-flex;
     align-items: center;
   }
+  .breadcrumb-item:last-child {
+    min-inline-size: 0;
+  }
   .breadcrumb-link {
     color: var(--color-text-secondary);
     text-decoration: none;
@@ -79,10 +82,8 @@ const { items } = Astro.props;
   }
   .breadcrumb-current {
     color: color-mix(in srgb, var(--color-main) 75%, transparent);
-    max-width: 40ch;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    max-inline-size: min(100%, 72ch);
+    overflow-wrap: anywhere;
     display: inline-block;
   }
 </style>
