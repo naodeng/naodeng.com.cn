@@ -430,12 +430,7 @@ const tocHeadings = [
       grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
       justify-content: center;
       gap: clamp(2rem, 3vw, 3rem);
-      max-width: var(--layout-max);
-    }
-  }
-  @media (min-width: 1760px) {
-    .console-hero-main {
-      grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+      max-width: min(100%, 1640px);
     }
   }
   @media (prefers-reduced-motion: reduce) {

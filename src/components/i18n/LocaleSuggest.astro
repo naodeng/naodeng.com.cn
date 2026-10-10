@@ -57,11 +57,15 @@ const localePaths = Object.fromEntries((await getLocalePaths(Astro.url)).map(({ 
     display: none;
     position: relative;
     text-align: center;
-    background: var(--color-main);
-    color: var(--color-base);
+    background: var(--color-surface-muted);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
   }
   #js-link {
     line-height: 44px;
+    color: var(--color-theme);
+    font-weight: 700;
+    text-decoration: none;
   }
   #js-close {
     position: absolute;
@@ -70,5 +74,10 @@ const localePaths = Object.fromEntries((await getLocalePaths(Astro.url)).map(({ 
     width: 44px;
     aspect-ratio: 1;
     opacity: 0.5;
+  }
+  #js-close:hover,
+  #js-close:focus-visible {
+    opacity: 1;
+    color: var(--color-theme);
   }
 </style>

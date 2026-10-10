@@ -294,7 +294,7 @@
 
 **Interfaces:**
 - Consumes: Task 1–4 的 token、PageHeadline、Docs layout、CollectionPostGrid 和现有 prompt/skill 数据。
-- Produces: Blog 使用 768px 阅读宽度，Prompts/QA Skills 保留任务型筛选与详情结构，英文窄屏标题不被辅助链接挤压。
+- Produces: Blog 保持可读正文行宽，1600px 及以上视口的带目录文章采用最多 2160px 页面容器、最多 1200px 正文段落；Prompts/QA Skills 保留任务型筛选与详情结构，英文窄屏标题不被辅助链接挤压。
 
 - [ ] **Step 1: 增加英文长标题和移动断点的回归断言**
 
