@@ -352,7 +352,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
       margin-inline: auto;
     }
     .article-with-toc:not(.article-with-toc--plain) .article-main .prose > :global(:is(p, h2, h3, h4, h5, h6, ul, ol, blockquote):not(:has(img, video, iframe, picture, table, pre))) {
-      max-inline-size: min(100%, 1200px);
+      max-inline-size: min(100%, 1024px);
       margin-inline: 0 auto;
     }
     .article-main .prose {
@@ -466,7 +466,8 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   .tag {
     display: inline-flex;
     align-items: center;
-    min-height: 34px;
+    min-inline-size: 44px;
+    min-height: 44px;
     background-color: var(--color-surface-muted);
     color: var(--color-text-secondary);
     border: 1px solid transparent;
