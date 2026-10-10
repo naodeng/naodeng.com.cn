@@ -12,7 +12,7 @@ categories: ["AI 测试"]
 
 AI 测试需要支持另一种决策：判断剩余风险是否可以接受。任何测试都无法证明所有输入下风险都不存在，因此策略要做的是收集足够可信的证据。The Quality Duck 将这项工作拆成五个相互连接的转变：输入、验证、安全、基线和可观测性。
 
-> 来源：The Quality Duck 于 2026 年 10 月 7 日发布的《How to Build a Strategy for Testing AI》。下文的四周试点和发布检查表属于 QA 工程实践延伸，不是原文规定的框架。
+> 来源：The Quality Duck 于 2026 年 10 月 7 日发布的《How to build a strategy for testing AI》。下文的四周试点和发布检查表属于 QA 工程实践延伸，不是原文规定的框架。
 
 ## 一、输入转变：覆盖测试人员没有想到的提问
 
@@ -47,7 +47,7 @@ AI 测试需要支持另一种决策：判断剩余风险是否可以接受。�
 
 基准数据和自动评估器能扩大检查规模，却不能替团队承担发布后果。法律、医疗、财务、安全及其他高影响场景，都需要明确的人工监督策略。
 
-一个可行的起点是：评审所有被自动评估器标记的问题；抽查它判定为正常的对话；抽查自动评估没有覆盖的流量；并对确定性规则标出的案例定向复核，例如异常冗长的对话。抽样比例应随证据和风险调整。模型、提示词、检索、工具或功能发生变化后提高抽查强度；只有积累了足够证据，才考虑降低。
+一个可行的起点是：复核自动评估器标出的所有问题；抽查它判定为正常的对话；抽查自动评估没有覆盖的流量；并对确定性规则标出的案例定向复核，例如异常冗长的对话。抽样比例应随证据和风险调整。模型、提示词、检索、工具或功能发生变化后提高抽查强度；只有积累了足够证据，才考虑降低。
 
 评审界面最好把请求、回答、检索证据、评估理由和对话历史放在一起。提供统一指南与示例，抽样检查不同评审者的判断是否一致，并轮换短时评审，减少疲劳。人工评审不只是“通过”或“拒绝”：他们还要判断回答是否有用、是否符合业务立场，发现评分标准没有覆盖的新问题，校准自动评估器，并把确认过的失败补进回归集。还要明确谁可以接受剩余风险、谁能阻止发布。
 
@@ -86,7 +86,7 @@ OpenTelemetry 的生成式 AI 语义约定，以及 Langfuse、LangSmith、Arize
 
 ## 建议的落地顺序
 
-原文建议先建立追踪能力，再用约 50–100 条经领域专家审核的真实案例建立小型基线。随后增加一到两个范围明确的评估器，并用人工标注校准；写清基于风险的人工复核策略；再根据已发现的覆盖缺口引入合成用户画像；最后在指标可信后增加发布门槛和线上评估。面向客户且涉及高风险内容的助手应更早引入人工复核；内部低风险摘要工具可以从轻量方案开始。
+原文建议先建立追踪能力，再用约 50–100 条由领域熟悉者审核的真实案例建立小型基线。随后增加一到两个范围明确的评估器，并用人工标注校准；写清基于风险的人工复核策略；再根据已发现的覆盖缺口引入合成用户画像；最后在指标可信后增加发布门槛和线上评估。面向客户且涉及高风险内容的助手应更早引入人工复核；内部低风险摘要工具可以从轻量方案开始。
 
 如果团队还不知道怎样评估对话，先生成成千上万条数据只会增加数量，无法证明覆盖有所改善。
 
@@ -145,7 +145,7 @@ OpenTelemetry 的生成式 AI 语义约定，以及 Langfuse、LangSmith、Arize
 
 ## 参考资料
 
-- The Quality Duck，《How to Build a Strategy for Testing AI》：https://www.thequalityduck.co.uk/how-to-build-a-strategy-for-testing-ai/
+- The Quality Duck，《How to build a strategy for testing AI》：https://www.thequalityduck.co.uk/how-to-build-a-strategy-for-testing-ai/
 - Ministry of Testing 配套演讲：https://www.ministryoftesting.com/media-sessions/testing-the-untestable-building-a-strategy-for-testing-ai
 - Larry Smith，《Shift-Left Testing》（网页存档）：https://web.archive.org/web/20200621040103/https://www.drdobbs.com/shift-left-testing/184404768
 - Dan Ashby，《Continuous Testing in DevOps》：https://danashby.co.uk/2016/10/19/continuous-testing-in-devops/

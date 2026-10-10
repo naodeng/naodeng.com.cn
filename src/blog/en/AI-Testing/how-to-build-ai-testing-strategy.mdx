@@ -12,7 +12,7 @@ Generative AI weakens three assumptions that traditional test automation often r
 
 Testing now supports a different decision: whether the remaining risk is acceptable. No test can prove that risk is absent for every input, so the strategy gathers trustworthy evidence for that call. The Quality Duck organizes the work into five connected shifts: input, verification, safety, baseline, and observability.
 
-> Source: The Quality Duck, “How to Build a Strategy for Testing AI,” published October 7, 2026. The four-week pilot and release checklist below are practical QA extensions, not a prescribed framework from the source.
+> Source: The Quality Duck, “How to build a strategy for testing AI,” published October 7, 2026. The four-week pilot and release checklist below are practical QA extensions, not a prescribed framework from the source.
 
 ## 1. Input shift: exercise more than the prompts we imagined
 
@@ -47,7 +47,7 @@ Human calibration is the part teams often skip. Have domain experts label a samp
 
 Benchmarks and judges increase scale, but neither owns the consequences of a release. Legal, medical, financial, safety-related, and other high-impact outputs need an explicit human-oversight policy.
 
-A sensible starting point is to review every conversation a judge flags, randomly sample conversations it accepts, sample traffic that automated evaluation did not cover, and target cases raised by deterministic signals—an unusually long conversation, for example. Review rates should respond to evidence and risk. Increase sampling after a model, prompt, retrieval, tool, or feature change; lower it only when the evidence supports doing so.
+A sensible starting point is to review every issue a judge flags, randomly sample conversations it accepts, sample traffic that automated evaluation did not cover, and target cases raised by deterministic signals—an unusually long conversation, for example. Review rates should respond to evidence and risk. Increase sampling after a model, prompt, retrieval, tool, or feature change; lower it only when the evidence supports doing so.
 
 Reviewers need the request, response, retrieved evidence, judge reasoning, and conversation history together. Give them examples and shared guidance, check agreement between reviewers, and rotate short review sessions to limit fatigue. Their work is broader than approving or rejecting: they assess usefulness and business fit, find failure modes the rubric did not anticipate, calibrate judges, and turn confirmed failures into regression cases. Name the person or role that can accept residual risk or block release.
 
@@ -86,7 +86,7 @@ The original article places the five shifts within existing approaches. Personas
 
 ## A practical starting order
 
-The source suggests building visibility first, then a small baseline of roughly 50–100 expert-reviewed real cases. Add one or two narrowly scoped judges and calibrate them against human labels. Write a risk-based human-review policy, use synthetic personas to address gaps the first evaluations expose, and add release gates and online evaluation when the measures are trustworthy. Bring human review forward for a high-risk customer-facing assistant; a lower-risk internal summarizer may start lighter.
+The source suggests building visibility first, then a small baseline of roughly 50–100 real cases reviewed by someone familiar with the domain. Add one or two narrowly scoped judges and calibrate them against human labels. Write a risk-based human-review policy, use synthetic personas to address gaps the first evaluations expose, and add release gates and online evaluation when the measures are trustworthy. Bring human review forward for a high-risk customer-facing assistant; a lower-risk internal summarizer may start lighter.
 
 Generating thousands of conversations before the team can judge their quality creates volume without evidence that coverage improved.
 
@@ -145,7 +145,7 @@ One green checkmark cannot prove that a generative AI product is safe or correct
 
 ## References
 
-- The Quality Duck, “How to Build a Strategy for Testing AI”: https://www.thequalityduck.co.uk/how-to-build-a-strategy-for-testing-ai/
+- The Quality Duck, “How to build a strategy for testing AI”: https://www.thequalityduck.co.uk/how-to-build-a-strategy-for-testing-ai/
 - Companion talk, Ministry of Testing: https://www.ministryoftesting.com/media-sessions/testing-the-untestable-building-a-strategy-for-testing-ai
 - Shift-Left Testing, Larry Smith (archived): https://web.archive.org/web/20200621040103/https://www.drdobbs.com/shift-left-testing/184404768
 - Continuous Testing in DevOps, Dan Ashby: https://danashby.co.uk/2016/10/19/continuous-testing-in-devops/
