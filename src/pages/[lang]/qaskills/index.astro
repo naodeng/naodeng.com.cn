@@ -1152,7 +1152,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
 
   /* Directory demo: an editorial catalogue with search-first discovery. */
   .qaskills-page {
-    max-width: 1240px;
+    max-width: min(var(--layout-max), 1920px);
     grid-template-columns: minmax(0, 1fr);
     margin: 0 auto;
     padding: clamp(2rem, 4vw, 4.5rem) clamp(1rem, 3vw, 2.5rem) 5rem;

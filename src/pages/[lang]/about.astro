@@ -248,6 +248,8 @@ export const getStaticPaths = () =>
   /* ── Prose ── */
   .about-me-grid {
     display: grid;
+    max-inline-size: min(var(--layout-max), 80rem);
+    margin-inline: auto;
     grid-template-columns: minmax(13rem, 0.72fr) minmax(0, 1.28fr);
     gap: var(--sp-s);
   }

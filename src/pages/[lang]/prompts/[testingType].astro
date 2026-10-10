@@ -334,7 +334,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
 </script>
 
 <style>
-  .prompt-detail-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); max-width: var(--layout-max); margin: 0 auto; padding: 0 0 5rem; align-items: start; }
+  .prompt-detail-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); max-width: min(var(--layout-max), 1840px); margin: 0 auto; padding: 0 0 5rem; align-items: start; }
   .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 220px minmax(0, 1fr) 200px; }
   .prompt-detail-sidebar, .prompt-detail-toc { position: sticky; top: var(--sticky-offset); align-self: start; }
   .prompt-detail-sidebar { grid-column: 1; grid-row: 1; }
@@ -387,7 +387,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-content :global(h3) { margin-block: 1.5em 0.45em; font-size: 1.08rem; }
   .prompt-content :global(p) { margin-block: 0.8em 0; }
   .prompt-content :global(ul), .prompt-content :global(ol) { margin-block: 0.55em 0; padding-inline-start: 1.5em; }
-  .prompt-content :global(li) { margin-block: 0.25em 0; }
+  .prompt-content :global(li) { margin-block: 0.25em 0; overflow-wrap: anywhere; }
   .prompt-content :global(:not(pre) > code) { padding: 0.15em 0.4em; border-radius: var(--radius-sm); background: var(--color-code-surface); color: var(--color-main); font-family: ui-monospace, monospace; font-size: 0.9em; }
   .prompt-content :global(pre) { overflow-x: auto; margin-block: 1em 0; padding: 1em 1.25em; border: 1px solid var(--color-border); border-left: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); background: var(--color-code-surface); direction: ltr; }
   .prompt-content :global(blockquote) { margin-block: 1em 0; padding: 0.75em 1em; border-left: 1px solid var(--color-border-strong); background: var(--color-surface-muted); color: color-mix(in srgb, var(--color-main) 70%, transparent); }
@@ -416,6 +416,11 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-related-prompt-arrow { color: var(--color-theme); }
   .prompt-detail-toc :global(.toc-sidebar--right) { position: static; max-height: calc(100dvh - var(--sticky-offset) - 1rem); }
   .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+  @media (min-width: 1600px) {
+    .prompt-detail-layout { grid-template-columns: minmax(240px, 260px) minmax(0, 1fr); }
+    .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: minmax(240px, 260px) minmax(0, 1fr) minmax(220px, 260px); }
+  }
 
   @media (max-width: 1099px) {
     .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 220px minmax(0, 1fr); }

@@ -211,6 +211,12 @@ const definedTermSchema = {
     overflow-wrap: anywhere;
   }
 
+  @media (width >= 1600px) {
+    .wiki-article {
+      max-inline-size: 92ch;
+    }
+  }
+
   .wiki-article :global(h1) {
     font-size: clamp(1.75rem, 3vw, 2rem);
     line-height: 1.3;

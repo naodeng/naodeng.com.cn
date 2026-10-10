@@ -10,7 +10,9 @@ for (const lang of ["en", "zh-cn"]) {
     expect(href).toBeTruthy();
     await page.goto(href!);
     await expect(page.locator(".detail-main")).toBeVisible();
-    expect(await page.locator(".detail-main").evaluate(el => el.getBoundingClientRect().width)).toBeLessThanOrEqual(1280);
+    const layoutCap = await page.locator(".qaskill-detail").evaluate(el => Number.parseFloat(getComputedStyle(el).maxInlineSize));
+    const detailWidth = await page.locator(".detail-main").evaluate(el => el.getBoundingClientRect().width);
+    expect(detailWidth).toBeLessThanOrEqual(layoutCap + 1);
     await page.goto(`/${lang}/`);
     await expect(page.locator("footer .lang-label")).toHaveCSS("background-image", "none");
     const trigger = page.locator("footer .wechat-follow-trigger");

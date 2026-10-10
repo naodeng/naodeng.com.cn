@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
@@ -58,6 +59,7 @@ function stripNoindexSitemapItem(item) {
 // https://astro.build/config
 export default defineConfig({
   site: "https://inaodeng.com",
+  compressHTML: true,
   vite: {
     build: {
       rollupOptions: {
@@ -68,8 +70,10 @@ export default defineConfig({
     },
   },
   markdown: {
-    remarkPlugins: [markdownPresentationRemark],
-    rehypePlugins: [rehypeSlug],
+    processor: unified({
+      remarkPlugins: [markdownPresentationRemark],
+      rehypePlugins: [rehypeSlug],
+    }),
     shikiConfig: {
       themes: {
         light: "github-light",

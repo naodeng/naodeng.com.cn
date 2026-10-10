@@ -282,9 +282,10 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     padding-inline: 0;
   }
   .article-with-toc {
-    --blog-reading-max: calc(var(--layout-max) - 19rem);
+    --blog-reading-max: min(1440px, calc(var(--layout-max) - 19rem));
     display: grid;
     max-inline-size: var(--blog-reading-max);
+    margin-inline: auto;
     grid-template-columns: 1fr;
     grid-template-areas: "heading" "toc" "body";
     gap: 1.5rem;
@@ -292,7 +293,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   }
   @media (min-width: 1100px) {
     .article-with-toc {
-      max-inline-size: none;
+      max-inline-size: min(var(--layout-max), 1440px);
       grid-template-columns: minmax(0, 1fr) 16rem;
       grid-template-areas: "heading toc" "body toc";
       column-gap: 3rem;
@@ -314,6 +315,23 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     max-inline-size: var(--blog-reading-max);
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "heading" "body";
+  }
+  @media (min-width: 1600px) {
+    .article-with-toc,
+    .article-with-toc--plain {
+      max-inline-size: min(var(--layout-max), 1840px);
+    }
+    .article-with-toc--plain .article-main .prose {
+      max-inline-size: min(100%, 1440px);
+      margin-inline: auto;
+    }
+    .article-with-toc:not(.article-with-toc--plain) .article-main .prose > :global(:is(p, h2, h3, h4, h5, h6, ul, ol, blockquote):not(:has(img, video, iframe, picture, table, pre))) {
+      max-inline-size: min(100%, 1024px);
+      margin-inline: auto;
+    }
+    .article-main .prose {
+      font-size: clamp(1rem, calc(0.75rem + 0.25vw), 1.125rem);
+    }
   }
   .article-body {
     grid-area: body;

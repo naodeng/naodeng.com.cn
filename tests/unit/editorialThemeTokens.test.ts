@@ -9,8 +9,8 @@ const homePage = readFileSync(resolve(process.cwd(), "../src/pages/[lang]/index.
 const footer = readFileSync(resolve(process.cwd(), "../src/components/Footer.astro"), "utf8");
 
 describe("Astro Editorial theme tokens", () => {
-  test("defines official-site-derived layout measurements", () => {
-    expect(baseCss).toContain("--layout-max: 1280px");
+  test("defines responsive layout measurements", () => {
+    expect(baseCss).toContain("--layout-max: clamp(1280px, 82vw, 2560px)");
     expect(baseCss).toContain("--layout-gutter: 24px");
     expect(baseCss).toContain("--reading-max: 768px");
     expect(baseCss).toContain("--header-height: 80px");
