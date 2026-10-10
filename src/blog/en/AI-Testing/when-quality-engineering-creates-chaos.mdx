@@ -1,0 +1,176 @@
+---
+title: "When Quality Engineering Creates Chaos: Why QE Transformation Requires System Change"
+description: "A practical reading of Barry Ehigiator’s workshop: the seven traps of QE transformation, the CREATE framework, leadership, and a team readiness check."
+date: 2026-10-12T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["Quality Engineering", "QA", "Quality Culture"]
+categories: ["AI Testing"]
+---
+
+An organisation announces a move from testing to Quality Engineering (QE). Testers get new titles, developers are asked to test more, automation investment grows, and dashboards multiply. Months later, ownership may be less clear, automation harder to maintain, and the same problems still unresolved.
+
+Barry Ehigiator explored that gap in a workshop at Ministry of Testing’s Leading with Quality 2026 event. His central argument is that QE rarely struggles because teams lack skill or commitment; it struggles when organisations underestimate the system change required. Sustainable QE therefore means redesigning the conditions around the work, not only changing roles and practices. The first sections below follow the workshop recap; the AI-native QA application and four-week experiment are explicitly marked as additional practice.
+
+## Recognise: compare the promise with what teams experience
+
+QE transformations commonly promise shared quality ownership, purposeful automation, faster feedback, fewer late surprises, better collaboration, delivery confidence, and improved customer outcomes. Those are reasonable goals. They do not arrive automatically with a new title or tool.
+
+The workshop began by asking people about their own experience: Is the organisation exploring, adopting, or scaling QE? What outcomes did they expect? What is working, and what has surprised or frustrated them? The discussion also surfaced a practical source of confusion: people may use Quality Engineering, Quality Assurance, quality control, and quality management as if they mean the same thing.
+
+| Promise | What may happen instead | Question to ask |
+| --- | --- | --- |
+| Shared ownership | Accountability becomes vague | Who decides whether a risk is acceptable? |
+| Smarter automation | Fragile suites and maintenance debt grow | Which material risk does this automation reduce? |
+| Better collaboration | Meetings increase without shared expectations | What does “good enough” mean to each role? |
+| Continuous improvement | The same issues keep returning | Who owns the action and checks its effect? |
+
+Recognition matters, but a symptom does not explain its cause. Flaky tests may point to unstable interfaces, weak testability, conflicting priorities, or no time for maintenance—not simply a tester’s skill gap.
+
+## Diagnose: look beneath individual behaviour
+
+The workshop used a fictional company, Proquains Ltd. Testers were renamed Quality Engineers, developers were encouraged to share testing, automation investment increased, and quality metrics multiplied. Decision rights, workflows, incentives, and improvement capacity did not change with them.
+
+The activity asked participants to identify what looked positive, what warning signs they could see, what system conditions produced those signs, and what the company could change. Those symptoms included Quality Engineers arriving after important decisions, functions holding different definitions of quality, no clear owner for release risk, automation rising without greater delivery confidence, recurring problems behind regularly reported metrics, deprioritized improvement work, and responsibility expanding without matching authority, capacity, or influence. Over time, teams may become sceptical about whether QE is helping.
+
+Ask three questions of your own transformation: **What is the most important risk? What symptoms can we observe? Which system condition is producing them?** The third question shifts the conversation away from blaming an individual or function.
+
+### Seven traps in a QE transformation
+
+**1. Renaming roles without redesigning the system.** A Quality Engineer title does not change when requirements are clarified, when testers join product decisions, or who accepts risk.
+
+**2. Automating without purpose.** Automation is useful when it reduces meaningful risk, speeds up useful feedback, or improves a decision. Otherwise it can create brittle pipelines, maintenance work, and false confidence.
+
+**3. Collaborating without a shared vision.** Product, engineering, design, operations, quality, and customers may value different outcomes. More meetings do not resolve those differences unless the trade-offs are made explicit.
+
+**4. Measuring without learning.** Defect counts, coverage, execution totals, and pipeline statistics are signals, not explanations. Turning them into individual targets can reward gaming instead of improvement.
+
+**5. Sharing responsibility without empowerment.** Ownership needs information, access, early involvement, clear decision rights, time to address risk, influence over trade-offs, and leadership support. Without those conditions, “everyone owns quality” can leave nobody able to act.
+
+**6. Promoting improvement without prioritising it.** Teams may know their tests are fragile or environments unstable, yet have no owner, capacity, or priority to fix them. Improvement without prioritisation stays an aspiration.
+
+**7. Agreeing on principles without an executable strategy.** A team may endorse shift-left, shared ownership, and automation but lack a common way to apply them. Practices then fragment across groups.
+
+## From a quality function to a quality system
+
+| Quality function view | Quality system view |
+| --- | --- |
+| One department is expected to guard quality | Multiple disciplines shape quality outcomes |
+| Defect totals are the main signal | Evidence and feedback support learning |
+| Quality is checked near the end | Confidence is built throughout delivery |
+| Specialists alone validate quality | Teams align around a vision and manage risk together |
+
+Specialist testers remain essential. Test design, exploratory testing, risk analysis, strategy, and feedback interpretation require expert capabilities. Quality work also needs to run beyond a single downstream gate and through the delivery system.
+
+The guiding question changes from “Who owns quality?” to “How does quality emerge from the way we work together?”
+
+## CREATE: design the conditions QE needs
+
+CREATE is the workshop’s six-part change framework. Its elements work together and address the traps above.
+
+### C — Create a shared quality vision
+
+Bring product, engineering, operations, design, quality, and relevant stakeholders together. Agree on the customer outcomes that matter, unacceptable failures, evidence needed for release decisions, and how trade-offs will be made. A useful vision changes decisions; it is more than a slide.
+
+### R — Redesign the system
+
+Review workflows, incentives, decision rights, team interactions, release cadence and practices, and feedback loops. If a team is rewarded only for feature throughput while QA absorbs every quality problem, the structure does not support shared ownership.
+
+### E — Enable empowerment
+
+Clarify who can escalate or stop a high-risk release, challenge acceptance criteria, request testability improvements, and allocate time to technical debt. Pair those rights with access, influence, protected capacity, capability development, and visible leadership support. Empowerment is not universal authority; it means pairing accountability with the practical ability to act.
+
+### A — Align practices with risk and value
+
+Before adding a tool, automation suite, AI skill, or process, ask which problem it solves, which risk it reduces, which decision it supports, what value it creates, and how the team will know it works.
+
+### T — Track meaningful metrics
+
+Use metrics to start a learning conversation. Read escaped defects alongside severity, customer impact, change volume, and root cause. Read automation coverage alongside risk coverage, false positives, feedback time, and maintenance cost. Data becomes useful when it changes what the team understands or does next; a metric should inform judgement, not replace it.
+
+### E — Enable continuous improvement
+
+Protect capacity, assign owners, make progress visible, check outcomes, and share what the team learned. A retrospective should lead to a change in an agreement, tool, decision path, or constraint—not only a closed action ticket. Verify whether the change improved the result, then adjust if it did not.
+
+Together, these six elements answer the seventh trap: a QE vision without an executable strategy.
+
+## Leadership creates the conditions
+
+Leaders shape what teams optimise for: speed alone or resilience too; silence or psychologically safe, transparent risk reporting; constant delivery pressure or protected time for improvement. They also influence how decision rights are distributed and whether people can raise weaknesses without penalty. Sustainable QE cannot depend on practitioners compensating indefinitely for structural obstacles.
+
+Ask whether someone who identifies a critical risk has a clear escalation path. Ask whether repeated cross-team failures can trigger a system change, rather than another reminder to “communicate better.”
+
+## A readiness check for your team
+
+Rate each item **Yes / Mixed / No** and record evidence. Do not use the result as an individual performance score. For each Mixed or No, note the symptom, underlying system constraint, people needed, action owner, and the smallest meaningful step to take within two weeks. Then complete this sentence to name the main constraint: **“The most important thing our organisation needs to change before further QE adoption is…”**
+
+**C — Shared quality vision**
+- [ ] Do functions share a definition of quality and customer outcomes?
+- [ ] Are release-risk acceptance criteria explicit?
+
+**R — System design**
+- [ ] Do workflows enable early feedback?
+- [ ] Do incentives reward quality as well as delivery volume?
+
+**E — Empowerment**
+- [ ] Does each important risk have a clear decision owner?
+- [ ] Do teams have the environment, data, information, and access they need?
+
+**A — Risk and value**
+- [ ] Is automation tied to meaningful risks?
+- [ ] Do new tools have a value hypothesis and stop criteria?
+
+**T — Useful measures**
+- [ ] Do metrics lead to specific decisions?
+- [ ] Are outcomes and maintenance costs both visible?
+
+**E — Improvement**
+- [ ] Is capacity for improvement protected?
+- [ ] Does each improvement have an owner and a way to verify its effect?
+
+Start with the most important constraint, not the highest score. Use this short action record to make the two-week follow-up concrete:
+
+- Observed symptom:
+- Underlying system condition:
+- Stakeholders to involve:
+- Smallest meaningful action and owner:
+- Evidence of success:
+- Review date:
+
+## An application to AI-native QA
+
+*This section is an independent practical extension, not a claim from Barry’s workshop recap.*
+
+AI-native QA encounters the same system traps. A team may install skills, agents, and MCP integrations without shared quality criteria, reproducible evaluations, permission boundaries, or human approval gates. “AI productivity” can then mean more artifacts, harder-to-trace mistakes, and higher maintenance cost.
+
+Pilot one valuable workflow—requirement review or test-case generation, for example. Define its input and output contracts, prohibited behaviour, human review points, and a benchmark based on real historical cases. Measure grounded findings, unsupported claims, reviewer time, and remediation cost. Scale only when the evidence supports it.
+
+Counting generated tests is not enough. Check whether they execute, cover real risks, create false confidence, and shorten the time from finding a risk to making a decision.
+
+## A four-week experiment
+
+This plan is another practical extension, intended to help a team test one change rather than declare a transformation complete.
+
+| Week | Focus | Deliverable |
+| --- | --- | --- |
+| 1 | Interview stakeholders and map promise–reality gaps | Symptoms and a draft quality vision |
+| 2 | Diagnose with the seven traps and CREATE | One or two prioritised system constraints |
+| 3 | Pilot a workflow, authority, or capacity change | Working agreement, decision path, and owner |
+| 4 | Review evidence and adapt | Outcome review, next experiment, and stop criteria |
+
+Four weeks can establish a measurable learning loop. Organisation-wide QE transformation takes longer and depends on whether the organisation acts on what the experiment reveals.
+
+## Three actions to take back to the team
+
+1. **Diagnose the system conditions.** Examine collaboration, decisions, risk management, improvement priorities, and the behaviour encouraged by the surrounding system.
+2. **Connect QE practices to customer and organisational goals.** Testing, automation, observability, and other practices should support outcomes that matter to users and the organisation.
+3. **Manage QE as intentional change.** Clarify ownership and decision rights, protect improvement capacity, build feedback loops, and turn learning into action. An announcement alone will not create new behaviour.
+
+## Conclusion
+
+Sustainable Quality Engineering is designed through shared outcomes, decision rights, operating practices, feedback, and continuous improvement. The useful question is not “How do we rename testers as QEs?” It is: **What must change in our system for QE to succeed?**
+
+## References
+
+- Barry Ehigiator, “When Quality Engineering Creates Chaos: Lessons from my Workshop at Leading with Quality 2026”: https://proquains.com/when-quality-engineering-creates-chaos-lessons-from-my-workshop-at-leading-with-quality-2026/
+- Ministry of Testing, “LWQ 2026 — Resetting the Quality Engineering conversation”: https://www.ministryoftesting.com/moments/lwq-2026-resetting-the-quality-engineering-conversation

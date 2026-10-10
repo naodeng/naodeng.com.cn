@@ -1,0 +1,130 @@
+---
+title: "How to Test a Chatbot: Five Quality Dimensions and a Practical QA Checklist"
+description: "A bookstore chatbot example for testing boundaries, security, accuracy, style, and truthfulness, with an automation and regression approach."
+date: 2026-10-12T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Chatbot Testing", "Quality Engineering"]
+categories: ["AI Testing"]
+---
+
+A calculator asked for 1 + 1 should return 2. A chatbot may answer “2,” “1 + 1 = 2,” add an explanation, or even offer to create a calculator skill. The arithmetic may be right while that extra offer is irrelevant to the request. Testing a chatbot therefore needs more than exact-string comparisons—but it still needs clear expectations.
+
+Kristin Jackvony’s bookstore example is a useful starting point. The assistant can find and recommend books, check editions, and answer questions about price and stock. It should not treat every question a customer can type as part of its job.
+
+> Reading source: Kristin Jackvony, “How to Test a ChatBot,” Think Like a Tester, published October 2, 2026. The automation model, metrics, regression structure, and consolidated checklist below are engineering extensions, not claims attributed to the author.
+
+## 1. Test the boundaries: what should the chatbot not do?
+
+Negative testing matters as much as the happy path. A bookstore assistant can search for books and recommend children’s literature. Dating advice, medical diagnosis, and a pasta carbonara recipe fall outside that role.
+
+If a customer asks, “I’ve had a cough for two weeks. Should I see a doctor?”, the bot should not impersonate a clinician. It should follow the product’s agreed refusal or redirection policy—perhaps offering to search for health-related books. The exact boundary is a product decision: some bookstores may allow casual conversation, so rejecting every non-shopping question is not a universal rule.
+
+Test multi-turn conversations too. A request can start in scope and drift into a prohibited task; the system should not lose its boundary just because the conversation is long.
+
+## 2. Test security: natural language does not grant access
+
+Ask what an ordinary customer can retrieve from an administrator-only report. Log in as user A and ask for user B’s orders, address, or account details. Also test whether the assistant exposes system instructions, credentials, or sensitive internal information.
+
+Verify that identity reaches the relevant service and that authorisation is enforced by the server or tool—not merely by the model’s wording. A polite refusal does not replace access control. If sensitive information is actually disclosed, report it as a security defect immediately.
+
+## 3. Test accuracy: verify facts, not a memorised sentence
+
+Start with realistic questions and establish authoritative answers for each. Jackvony’s bookstore examples include whether the store carries *Atlas Shrugged*, which Michael Crichton books it sells, the price of a paperback *Goodnight Moon*, whether an *Alice in Wonderland* edition has its original illustrations, books about the French Revolution, and the availability of *Harry Potter* box sets.
+
+The database is usually a better source of truth than a tester’s memory. A seeded test database makes the expected answer especially clear. If SKU BOXSET-001 has 42 available sets, “We have 42 in stock” and “There are currently 42 available” can both pass.
+
+The source suggests checking keywords and critical numbers rather than requiring one exact sentence. That is a useful first step, but it can still produce false passes: “We used to have 42, but we’re sold out” contains the number 42 while giving the wrong current stock status. Verify the **product, attribute, value, and time context together**. Check edition, units, currency, tax treatment, and data freshness where they affect the answer. Accept paraphrases; reject contradictions.
+
+## 4. Test style: a factually correct answer can still miss the task
+
+A customer asking whether an edition has John Tenniel’s original illustrations probably does not need a long history of the illustrator. The answer may be accurate and still be a poor response for a purchase question.
+
+Agree on the expected tone and response length, when the bot may recommend more books, how it should handle customer corrections, and what it should do with rude language. Test these expectations against realistic requests; a universal word-count cap is a blunt substitute for product policy.
+
+## 5. Test truthfulness: an unknown is not an invitation to guess
+
+A chatbot may invent a title, author, price, or stock count to appear helpful. Include nonexistent books and authors, ambiguous editions, missing records, stale inventory, and unavailable data sources. Decide with the product team how much evidence the bot needs before stating a fact.
+
+Accuracy asks whether an answer matches the facts. Truthfulness also asks whether the assistant admits uncertainty when the evidence is missing and avoids inventing facts or citations. Confident guesses are especially risky for dynamic information such as inventory and orders.
+
+## Map the five dimensions to test cases
+
+| Dimension | Example | What to verify |
+| --- | --- | --- |
+| Boundaries | Request a medical diagnosis | No diagnosis; response follows the agreed policy |
+| Security | User A asks for user B’s order | No cross-account disclosure; backend denies access |
+| Accuracy | Ask for a particular edition’s price and stock | Correct product, facts, units, and time context |
+| Style | Ask whether a book is available | Concise, relevant answer; no unnecessary digression |
+| Truthfulness | Ask about a nonexistent book | No invented author or stock; uncertainty is clear |
+
+One scenario can exercise several dimensions. A user asking for another customer’s reservation is simultaneously a security, boundary, and truthfulness test.
+
+## An automation-friendly assertion model
+
+This is an engineering extension. Combine four layers instead of asking one text matcher to decide everything:
+
+1. **Deterministic checks** for authorisation, status codes, product identifiers, price, stock, tool arguments, and database facts.
+2. **Semantic checks** that accept different wording when the facts and intent agree.
+3. **Policy checks** for refusals, uncertainty, role boundaries, and recommendation rules.
+4. **Human review** for ambiguity, style calibration, and high-risk failures.
+
+An illustrative check might look like this:
+
+```python
+response = chatbot.ask("How many Harry Potter box sets are available?", user="customer_a")
+assert response.status == "ok"
+assert response.facts["sku"] == "BOXSET-001"
+assert response.facts["available_quantity"] == 42
+assert response.facts["stock_status"] == "in_stock"
+assert not response.contains_other_users_data
+```
+
+The `response.facts` object is an assumed application or evaluation output, not a standard chatbot SDK interface. If the product returns only text, the fact-extraction and verification step needs its own validation; an unreliable parser can create a second source of false results.
+
+## Build a repeatable regression set and measure useful outcomes
+
+For each case, keep a case identifier, user identity, prompt, conversation history, database snapshot, expected facts, prohibited behaviour, allowed wording variations, evaluation method, and risk level. Maintain separate coverage for facts, access control, out-of-scope requests, style, unknown questions, and multi-turn behaviour. Repeat nondeterministic cases and compare the results rather than trusting one run.
+
+Run the relevant suites after changes to the model, prompt, retrieval index, tool, or data. Security cases need strict release gates; subjective style scores need calibration against human labels.
+
+Track factual correctness, unauthorized disclosures, fabricated answers to unknown questions, boundary compliance, style compliance, and agreement between automated judges and reviewers. Preserve the request, retrieved or tool evidence, response, model and prompt versions, and evaluator result so failures can be reproduced. A keyword check can be wrong; an LLM judge can be wrong too. Use deterministic evidence first, semantic assessment where wording varies, and human review for high-risk ambiguity. A single blended pass rate hides those differences.
+
+## Practical chatbot testing checklist
+
+**Scope and boundaries**
+- [ ] Core tasks work: book search, recommendations, and product information.
+- [ ] Out-of-scope requests follow the agreed refusal or redirection policy.
+- [ ] Multi-turn conversations remain within the product’s role.
+
+**Security**
+- [ ] Regular customers cannot retrieve administrator data.
+- [ ] User A cannot access user B’s account, order, or address.
+- [ ] Server-side tools enforce authorisation independently of model phrasing.
+- [ ] System instructions, credentials, and sensitive internal data are not disclosed.
+
+**Accuracy**
+- [ ] Product, edition, ISBN, price, and stock match authoritative records.
+- [ ] Paraphrases pass when the facts agree; contradictory facts fail.
+- [ ] A correct number inside an incorrect statement does not pass.
+- [ ] Units and the current time state are checked for changing data.
+
+**Style and truthfulness**
+- [ ] Length, tone, and recommendations follow product expectations.
+- [ ] Replies are relevant and handle customer corrections appropriately.
+- [ ] Unknown titles, authors, and unavailable data are not invented.
+- [ ] Uncertainty and source limitations are stated; citations are not fabricated.
+
+**Regression and observability**
+- [ ] Critical cases use controlled data and traceable expectations.
+- [ ] Model, prompt, tool, and data versions are recorded.
+- [ ] Variable cases are sampled repeatedly.
+- [ ] High-risk failures retain evidence and receive human review.
+
+## Conclusion
+
+Variable wording still leaves clear behaviour to test. The five dimensions—boundaries, security, accuracy, style, and truthfulness—give the team concrete expectations. Combine factual verification, authorisation tests, policy checks, repeatable evaluations, and human review to allow natural variation while protecting quality.
+
+## Further reading
+
+- Kristin Jackvony, “How to Test a ChatBot,” Think Like a Tester: https://thinkingtester.com/how-to-test-a-chatbot/
