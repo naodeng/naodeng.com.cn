@@ -10,9 +10,11 @@ categories: ["AI Testing"]
 
 An AI coding agent can connect to a ticket, inspect a design, write test cases, create automation, run it, and prepare a pull request. That sounds efficient—until the agent fills gaps with invented requirements or produces dozens of weak scenarios.
 
-In the Ministry of Testing session *Everyday AI coding: skills & plugins in a tester’s workflow*, Principal Software Engineer in Testing Maneesh Maddala argues for a more disciplined approach: give the agent small, well-defined responsibilities; provide tools deliberately; and keep humans at the approval points that matter. The session took place on July 31, 2026. The following turns its examples into a workflow teams can inspect and adapt.
+The session page places these capabilities in familiar testing work: handling bug reports and test data, exploring a new feature, and reading logs.
 
-## A Skill is a trail map, not magic
+In the Ministry of Testing session *Everyday AI coding: skills & plugins in a tester’s workflow*, Principal Software Engineer in Testing Maneesh Maddala argues for a more disciplined approach: give the agent small, well-defined responsibilities; provide tools deliberately; and keep humans at the approval points that matter. Rahul Parwal hosted the session for the Ministry of Testing AI Chapter. It took place on July 31, 2026. The following turns its examples into a workflow teams can inspect and adapt.
+
+## A Skill gives the agent a reusable route
 
 A reusable Skill is closer to a trail map than a guarantee. It gives an agent instructions, context, and a repeatable method for a task. It can improve consistency, but it cannot guarantee that the agent will follow every rule or correctly understand missing information.
 
@@ -24,41 +26,49 @@ The talk uses a kitchen analogy to make the different pieces easier to understan
 
 | Concept | Kitchen analogy | Practical role |
 | --- | --- | --- |
-| Slash command | A shortcut to a named task | Starts a known action on request |
-| Skill | A recipe or working method | Supplies task-specific instructions and context |
-| Plugin | A kitchen extension | Packages or exposes capabilities in a host environment |
+| Slash command | A recipe card you choose | Explicitly starts a named action |
+| Skill | A cook trained in a working method | Supplies task-specific instructions and context, and may be selected when the task matches its description |
+| Plugin | The kitchen, with its equipment and supplies | Bundles or exposes Skills and tools in a host environment |
 | MCP server | A connection to an outside supplier | Gives a model access to external data or actions through a defined interface |
-| Agent | A cook carrying out work | Uses instructions and tools to complete a task |
+| Agent | The head chef coordinating the work | Plans, uses tools, handles failures, and stops when its completion conditions are met |
 
 Skills do not replace MCP. A Skill can describe how to use a connected system; MCP can provide the connection itself. Whether the workflow needs MCP depends on whether it must retrieve external data or perform an action.
 
+The speaker also used a tool analogy: a Skill is a tool for one focused job, while a plugin is a toolbox that can bundle several capabilities, scripts, and hooks. A slash command was compared to an explicit function call, while a Skill was compared to a library loaded when relevant—for example, a date-related task bringing in a library such as moment.js. These are teaching analogies, not a description of every host's implementation. In the session, grill-me was presented as a single Skill; Superpowers was described as a plugin containing 14 Skills, scripts, and supporting material. Those counts and packaging details describe the demonstration, not a permanent specification.
+
 ## Why one giant prompt failed
 
-The session describes an early end-to-end prompt spanning Asana requirements, Jira, Figma, TestRail, Playwright, and pull-request review. The agent produced roughly 50–60 scenarios, but many were weak or fabricated. It also invented locators despite having browser access.
+The session describes an early end-to-end prompt spanning Asana requirements, Jira tickets, Figma designs, TestRail, Playwright, and pull-request review. MCP connected the prompt to the requirements and test-management systems. The plan was to read everything, propose scenarios, wait for approval, then create test cases and Playwright page objects and specs. The agent produced roughly 50–60 scenarios, but many were weak or fabricated. It also invented locators despite having browser access.
 
-The problem was not simply prompt length. The task combined too many decisions, systems, permissions, and output types without enough project context or checks. A large scenario count was mistaken for coverage. In practice, more generated cases can mean more noise to review.
+The problem was not simply prompt length. The task combined too many decisions, systems, permissions, and output types without enough project context or checks. The team had no guardrails or evaluations for the generated scenarios, and quality weakened as the conversation accumulated context. A large scenario count was mistaken for coverage. In practice, more generated cases can mean more noise to review.
 
 ## Split the workflow into focused responsibilities
 
-Give each Skill a narrow job and a clear handoff. A planner can read requirements and propose scenarios, while remaining unable to write test cases or code. A scenario writer can create cases after approval. A coding Skill can implement page objects and tests. A test runner can execute and report. A reviewer can prepare a pull request, but should stop before merge unless the owner has explicitly authorized more.
+Give each Skill a narrow job and a clear handoff. A planner can read requirements and propose scenarios, while remaining unable to write test cases or code. A scenario writer can create cases after approval. A coding Skill can implement page objects and tests. A test runner can execute and report. A reviewer can prepare a pull request, but should stop before merge unless the owner has explicitly authorized more. The team arrived at these boundaries through trial and error; a connected tool or a longer prompt was not enough on its own.
 
-Set limits based on task complexity. The talk gives examples such as roughly 3–5 scenarios for a small change and 10–12 for a larger one. These numbers are starting points from the demonstration, not universal caps. Every scenario still needs a reason to exist.
+Set limits based on task complexity. The supplied notes record two sets of examples: 8–10 or 10–15 scenarios while discussing Skill design, and roughly 3–5 for a small change or 10–12 for a larger one in the Planner workflow. They appear to describe different points in the process, so they should not be collapsed into one universal cap. Every scenario still needs a reason to exist.
+
+Shared team conventions matter too. Prefer Playwright's semantic locators—such as `getByRole` and `getByLabel`—and fall back to CSS selectors or classes only when needed. Keep page objects focused on user intent and actions; put assertions in the test. These rules make generated code easier to inspect and less dependent on brittle page details.
+
+The team also wanted Skills to encode naming conventions, retry behavior, and a clear definition of done. Standard rules reduce the drift that happens when each engineer explains the same workflow differently.
 
 ## A five-stage workflow with human approval
 
 | Stage | Agent responsibility | Human decision or handoff |
 | --- | --- | --- |
-| Plan | Read requirements and propose a bounded scenario list in scenarios.md | Review scope and approve scenarios |
+| Plan | Read requirements and propose a bounded scenario list in `scenarios.md` | Review scope and approve scenarios |
 | Test management | Map approved scenarios to existing TestRail cases and propose additions or updates | Approve managed test-case changes |
 | Implementation | Create or update page objects and automated tests | Review code and confirm repository conventions |
 | Execution | Run the approved suite and summarize failures with evidence | Decide whether failures are product, test, data, or environment issues |
 | Review | Prepare a pull request with changes, results, and known limitations | Engineer reviews and merges |
 
-The table is a suggested decomposition of the session’s workflow, not a guarantee that every integration behaves this way. Make each transition explicit: which artifact is produced, who reviews it, and what must be true before the next step begins.
+The handoff can be read as Planner → TestRail → Coder → Tester → Reviewer. The table is a suggested decomposition of the session’s workflow, not a guarantee that every integration behaves this way. Make each transition explicit: which artifact is produced, who reviews it, and what must be true before the next step begins.
 
-For example, a scenario record might include its source requirement, user intent, preconditions, expected behavior, risk, and open questions. A concise structured format is easier to validate than free-form prose. Do not let an agent write to TestRail, edit repository files, or open a pull request until the appropriate approval has been given.
+Each stage should have a contract and a predictable output file. The team used Markdown because it is easy for both people and agents to read and helps keep context focused and token use down. The Planner, for example, must produce `scenarios.md`. A scenario record might include its source requirement, user intent, preconditions, expected behavior, risk, and open questions. The TestRail stage checks existing sections and cases before proposing a mapping, update, or addition. Do not let an agent write to TestRail, edit repository files, or open a pull request until the appropriate approval has been given.
 
-Autonomous loops need their own boundaries: a retry limit, timeout, spending budget, failure classification, and success condition. “Keep trying until green” is not a safe completion rule.
+The human approves the proposed scenarios before they move into TestRail. Later, the Reviewer can create a pull request and stop. A person reviews and merges it. This keeps approval next to the action it authorizes, rather than treating one early “yes” as permission for every later step.
+
+Autonomous loops need their own boundaries: a retry limit, timeout, spending budget, failure classification, and success condition. With usage-based pricing, an unbounded loop can keep consuming tokens and money. “Keep trying until green” is not a safe completion rule.
 
 ## Why human review remains essential
 
@@ -70,9 +80,9 @@ Approvals should be explicit and scoped. A person who approves scenario intent h
 
 ## What the SauceDemo comparison showed
 
-The live demonstration used SauceDemo to create around eight to ten checks covering login, cart, and checkout. Without enough instruction, the agent did not clarify project assumptions and generated tests with avoidable gaps.
+The live demonstration used the same prompt in two empty SauceDemo repositories to create around eight to ten checks covering login, cart, and checkout. Without the Skill, the agent moved directly into a basic implementation: it used `page.locator()` instead of semantic locators, chose Chromium without asking about Firefox or Safari, and skipped questions about CI/CD, linting, and Prettier.
 
-Adding the grill-me Skill changed the conversation: the agent asked about TypeScript, npm, linting, GitHub Actions, authentication, test types, browser coverage, and repository conventions before proposing fixtures, page objects, and tests. The useful lesson is the value of clarification before implementation. This was a demonstration, not a controlled benchmark proving that one Skill always produces better tests.
+Adding the grill-me Skill changed the conversation. It asked about TypeScript, npm, linting, GitHub Actions, authentication, test types (functional, visual regression, accessibility, or API), browser coverage, and repository conventions before proposing a plan. The approved example included GitHub Actions YAML, Husky pre-commit hooks, fixtures, page objects, and tests across three browsers. The useful lesson is the value of clarification before implementation. This was a demonstration, not a controlled benchmark proving that one Skill always produces better tests.
 
 ## A toolkit is a set of candidates, not an endorsement
 
@@ -80,18 +90,28 @@ The session linked to several public resources. Their inclusion here records wha
 
 | Resource | Role described in the session notes | Review before use |
 | --- | --- | --- |
-| Superpowers: https://github.com/obra/superpowers | Brainstorming, planning, and development workflows | Check the current version, supported agent hosts, and workflow fit |
-| grill-me: https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me | Clarifies constraints through questions | Avoid turning useful clarification into unnecessary interrogation |
-| Ponytail: https://github.com/DietrichGebert/ponytail | Looks for potentially unused code and favors avoiding unnecessary implementation | Verify references and behavior before deleting anything |
-| Graphify: https://github.com/Graphify-Labs/graphify | Builds a queryable map of repository relationships | Check graph freshness and whether important dependencies are missing |
-| find-skills: https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md | Helps discover Skills from natural-language requests | Verify the source, requested permissions, and quality |
-| claude-mem: https://github.com/thedotmack/claude-mem | Stores context across agent sessions | Review data retention, sensitive information, and memory accuracy |
+| Superpowers: https://github.com/obra/superpowers | The session used its brainstorming Skill to shape a plan, then a coding Skill to implement it; the plan can be saved as `plan.md` | Check the current version, supported agent hosts, and workflow fit |
+| grill-me: https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me | Asks clarifying questions before work such as writing an automation script, including what files and constraints matter | Avoid turning useful clarification into unnecessary interrogation |
+| Ponytail: https://github.com/DietrichGebert/ponytail | Applies the YAGNI (“You Aren't Gonna Need It”) mindset and flags potentially unused code | Verify references and behavior before deleting anything |
+| Graphify: https://github.com/Graphify-Labs/graphify | Maps repository relationships so an agent can focus on relevant and dependent files instead of rereading everything | Check graph freshness and whether important dependencies are missing |
+| find-skills: https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md | Finds Skills from a plain-language description, using Vercel's Skill directory | Verify the source, requested permissions, and quality |
+| claude-mem: https://github.com/thedotmack/claude-mem | Keeps project decisions in a `memory.md` across Claude sessions, including why a choice was made, so the reasoning can be found months later | Review data retention, sensitive information, and memory accuracy |
 | skills.sh: https://www.skills.sh/ | Skill discovery directory | Treat listed Skills as unverified until reviewed |
 | skills.md: https://skills.md/ | A Skill-related directory or service linked by the session | Check what the current page offers and whether it fits the target agent |
 | free-qa-skills: https://github.com/Quality-Max/free-qa-skills | Reusable QA Skills for coding agents | Inspect each Skill’s instructions, permissions, and tests |
 | CodeBurn: https://github.com/getagentseal/codeburn | Additional project linked from the official session resource list; the notes do not describe its role | Review the repository, data collected, and storage before adoption |
 
 The official session resource list also links to CodeBurn, which is not described in the supplied study notes. The skills.md destination is similarly worth checking at the time of use because its current landing page may not match an older description.
+
+The speaker recommended checking existing options before building a new Skill: the notes point to skills.sh and skills.md, and to find-skills for describing a need in plain language. A directory listing is a starting point, not a quality or security review.
+
+## Building a Skill the team can reuse
+
+A Skill can include more than `SKILL.md`: supporting references, scripts, and assets can hold detail that does not belong in the main instructions. The session's example front matter contained a `name` and `description`; the description should say what the Skill does and when it should be selected. Keep the entry point short and move long references into supporting files. The speaker cited under 100 lines as a guideline, while noting that some teams accept up to 500; neither number replaces testing whether a Skill is clear and maintainable.
+
+The notes estimate that loading Skill front matter at the start of a conversation takes around 100–120 tokens in total, after which the agent can select a matching Skill from its description. That estimate depends on the host and configuration. The speaker compared it with a one-million-token context window; this was an illustration from the session, not a guarantee about every model or setup. Teams should measure their own environment.
+
+The first draft still needs testing. Try a Skill on real tasks, keep examples where it fails, tighten its boundaries, and add evaluations. The speaker said the team began adding evaluations that year, starting with a few golden rules before checking output structure, tool selection, and approval boundaries. A team's own Skill can be especially useful because its authors know the workflow, guardrails, and evaluation criteria behind every instruction.
 
 ## Guardrails and Evals answer different questions
 
@@ -120,18 +140,18 @@ expected:
 
 In one team example, a Jira story that took about eight hours from analysis through pull request took 2–2.5 hours with a semi-autonomous workflow. That is approximately 69%–75% less elapsed time for that example. It is not a general productivity guarantee.
 
-The speaker also said Skills can use more tokens: about twice as many in the demo and two to three times as many in some scenarios. Measure end-to-end elapsed time, review effort, useful-scenario rate, code rework, flaky-test rate, incorrect external writes, and model cost together. Faster generation is not automatically lower total cost.
+The speaker also said Skills can use more tokens: about twice as many in the demo and two to three times as many in some scenarios. The notes mention `/compact` and `/clear` as ways to manage a long conversation. Measure end-to-end elapsed time, review effort, useful-scenario rate, code rework, flaky-test rate, incorrect external writes, and model cost together. Faster generation is not automatically lower total cost.
 
 The speaker noted that production defects had declined over the preceding six months but did not attribute the decline solely to AI. Team maturity and risk-management changes may also have contributed. That distinction is important when describing impact.
 
 ## From personal prompts to organizational capability
 
-The session describes four stages of organizational maturity:
+The speaker said the company had not settled on a single organization-wide ROI measure. For an individual workflow, the time comparison above gave management a concrete starting point. The session also describes a four-stage AI maturity model:
 
 1. Individuals use AI as a chatbot.
 2. A team creates reusable Skills for its work.
 3. Teams share Skills and combine them into cross-team agent workflows.
-4. An organization provides a central registry and managed access.
+4. An organization provides a central Skill registry and managed access across entry points such as IDEs and Claude Desktop.
 
 As adoption grows, a Skill needs an owner, version, input and output contract, permission boundary, evaluation set, changelog, and deprecation path. Sharing a file is not the same as governing a capability. The same Skill may behave differently across IDEs, models, and agents, so test its host-specific triggers and tool access rather than assuming portability.
 
@@ -141,23 +161,29 @@ As adoption grows, a Skill needs an owner, version, input and output contract, p
 
 **Why not make the whole workflow autonomous?** Because stopping conditions, retries, budget controls, and failure recovery need to be reliable first. Connecting several Skills does not automatically create a safe autonomous system.
 
-**Will AI replace testers?** The session’s answer was no. People still need to set objectives, review reasoning, identify risks, maintain standards, and use saved time for higher-value quality work.
+**Will AI replace testers?** The session’s answer was no. People still need to write the instructions, decide which risks matter, review reasoning, and maintain standards. The speaker described using saved time to build quality systems or tools for other teams, including marketing technology, design, Google Analytics, and SEO.
 
 **What if Claude is too expensive?** Teams can evaluate Copilot or another model after enterprise security review, then rerun the same behavioral and quality evaluations. A replaceable model is not automatically an equivalent one.
 
+The speaker also mentioned trying open models from the GLM family and Kimi K2, subject to company security review. The supplied notes list GLM 4.5/4.6 and separately record an uncertain spoken reference to “GLM 5.2”; because the version notes conflict, none of those GLM version numbers should be treated as verified.
+
 **How should teams demonstrate value?** Start with a bounded story-level time comparison, then include quality, cost, and reuse. Do not attribute a production-defect trend to AI without evidence.
+
+Let AI take on repetitive work such as drafting test cases. When generated code is hard to follow, ask the agent to explain it or show a simpler version; the workflow can also be a way to learn unfamiliar syntax.
 
 ## Make Skills testable assets
 
-The strongest transferable lesson is not a specific plugin. It is the engineering discipline behind the workflow: narrow responsibilities, explicit contracts, limited tools, human approvals, and regression evaluation against real failures.
+The transferable lesson is the engineering discipline behind the workflow: narrow responsibilities, explicit contracts, limited tools, human approvals, and regression evaluation against real failures.
 
 A team can maintain a small quality scorecard for each Skill: does it trigger at the right time, respect its tool boundary, avoid inventing tests, satisfy its output contract, behave consistently across supported models, and stop safely when something is missing? That turns a useful prompt into a maintainable engineering asset.
 
-Skills save teams from repeatedly explaining how work should be done, but they do not replace engineering judgment. A useful AI coding workflow is not the one that generates the most code. It is the one that reduces repeated coordination while producing results people can verify, trace, and review.
+For a low-overhead start, choose one recurring task from bug reports, test data, feature exploration, or log reading—the everyday examples named on the session page. Try a draft-only or read-only Skill for a week, define what it may produce and where it must stop, then compare review effort and rework with the current process before expanding it. This is an editorial pilot suggestion, not a prescribed step-by-step method from the speaker.
+
+Skills reduce how often a team has to explain its working methods; people still provide the engineering judgment. A useful AI coding workflow reduces repeated coordination and produces results people can verify, trace, and review. Code volume alone does not show whether the workflow helped. As Maddala’s closing points put it: Skills should help people guide AI instead of repeatedly explaining the same work, and AI is worth using only when it solves a real problem. If an adequate solution already exists, reuse it before building another one.
 
 ## References
 
 - Original session:https://www.ministryoftesting.com/media-sessions/everyday-ai-coding-skills-plugins-in-a-tester-s-workflow
 - The ten resources listed above are linked to their original project or directory pages. Confirm current compatibility and safety before installing or granting access.
 
-*Prepared from the supplied bilingual study notes and the session’s public resource list. The workflow tables and evaluation example are editorial structure, not a claim that the speaker prescribed an identical implementation.*
+*Prepared from the supplied bilingual study notes and the session’s public page and resource list. The workflow tables and evaluation example are editorial structure, not a claim that the speaker prescribed an identical implementation.*

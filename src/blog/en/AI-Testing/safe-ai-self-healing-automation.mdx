@@ -8,9 +8,9 @@ tags: ["AI Testing", "UI Automation", "Quality Engineering"]
 categories: ["AI Testing"]
 ---
 
-UI automation creates value when it gives teams dependable feedback about product quality. Yet teams can spend a surprising amount of time repairing selectors after an ordinary interface change. A renamed button, a modified attribute, or a changed hierarchy can break many tests even when the intended business behavior has not changed.
+UI automation creates value when it gives teams dependable feedback about product quality. Yet ordinary interface changes can consume a surprising amount of time in locator maintenance: a renamed button, a modified attribute, or a changed hierarchy can break many tests even when the intended business behavior has not changed. Pandit has seen teams spend more time debugging test failures than investigating product issues. That shift is subtle, but it can erode trust in automation and change the value it delivers.
 
-In Pranav Pandit’s Ministry of Testing article *When AI maintains your tests: Designing safe self-healing automation*, published on August 4, 2026, the key architectural choice is clear: **AI should be a controlled fallback after a locator fails, not the primary test execution engine.** The article below brings together the supplied study notes and the source article. Code is illustrative, not a verified reproduction of the author’s implementation; additional engineering recommendations are labeled separately.
+Pranav Pandit, a Staff Quality Engineer with more than 15 years of experience in mobile and web automation, published *When AI maintains your tests: Designing safe self-healing automation* in Ministry of Testing on August 4, 2026. Its central design choice is clear: **AI should be a controlled fallback after a locator fails, not the primary test execution engine.** This article brings together the supplied study notes and the source article. Code is illustrative, not a verified reproduction of the author’s implementation; additional engineering recommendations are labeled separately.
 
 ## Locator maintenance is a hidden cost
 
@@ -133,7 +133,7 @@ The supplied notes describe a button renamed from “Continue” to “Next,” 
 
 The central challenge was not simply finding an element. It was confirming that the element belonged to the business step under test. The team focused on context and constraints rather than only trying a more capable model.
 
-There is another quality risk: if a label change violates a requirement or accessibility agreement, healing the selector must not silently normalize that product regression. Whether recovery is acceptable depends on what the test is meant to protect.
+There is another quality risk: if a label change violates a requirement or accessibility agreement, healing the locator must not silently normalize that product regression. Whether recovery is acceptable depends on what the test is meant to protect.
 
 ## Limitations worth keeping visible
 
@@ -154,7 +154,7 @@ The recommendations below extend the article; they are not claims about features
 
 **Check postconditions.** After clicking “Next” in checkout, assert that the expected next stage appears. Structural validation answers whether the element can be operated; business assertions answer whether the right action happened.
 
-**Build a regression evaluation set.** Include renamed labels, duplicate controls, dialogs, reordered hierarchies, expired cache entries, cross-screen matches, and genuine product defects. Rerun the cases when prompts, pruning logic, or model versions change.
+**Build a regression evaluation set.** Include renamed labels, duplicate controls, dialogs, reordered hierarchies, expired cache entries, cross-screen matches, and genuine product defects. Version the prompt and record the model and pruning configuration used for each run; rerun the cases whenever any of them changes. This makes regressions traceable instead of relying on memory of the last successful result.
 
 **Fail closed when evidence is weak.** Preserve the original failure and diagnostics when the candidate is ambiguous. Apply stricter policies to payments, deletion, permission changes, and other high-impact actions.
 
@@ -175,7 +175,7 @@ The source article also leaves useful questions for a team discussion:
 
 Self-healing is not about keeping every test green. It is about reducing avoidable maintenance **without weakening the suite’s ability to expose real product failures**. Deterministic automation keeps execution predictable; AI proposes a constrained recovery; validation determines whether it is safe; and traceable evidence keeps engineers in control.
 
-An automation system that repairs a selector but quietly clicks the wrong control is not more reliable. It is a harder-to-detect quality risk.
+An automation system that repairs a locator but quietly clicks the wrong control is not more reliable. It is a harder-to-detect quality risk.
 
 ## References
 
