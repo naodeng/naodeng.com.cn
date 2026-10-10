@@ -333,8 +333,12 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   }
   @media (min-width: 1600px) {
     .article-with-toc:not(.article-with-toc--plain) {
-      max-inline-size: min(var(--layout-max), 2160px);
-      margin-inline: 0;
+      max-inline-size: min(var(--layout-max), 1408px);
+      margin-inline: auto;
+    }
+    :global(.l-main:has(.article-with-toc) .breadcrumb) {
+      max-inline-size: min(var(--layout-max), 1408px);
+      margin-inline: auto;
     }
     .article-with-toc--plain {
       max-inline-size: var(--layout-max);
