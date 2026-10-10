@@ -64,12 +64,12 @@ export const getStaticPaths = () =>
 
       <div class="method-card qr-card">
         <h3>{locale === 'zh-cn' ? '微信支付' : 'WeChat Pay'}</h3>
-        <img src="/images/wechat-qr-code.png" alt="WeChat Pay QR Code" loading="lazy" />
+        <img src="/images/wechat-qr-code.png" alt="WeChat Pay QR Code" width="828" height="1124" loading="lazy" decoding="async" />
       </div>
 
       <div class="method-card qr-card">
         <h3>{locale === 'zh-cn' ? '支付宝' : 'Alipay'}</h3>
-        <img src="/images/alipay-qr-code.png" alt="Alipay QR Code" loading="lazy" />
+        <img src="/images/alipay-qr-code.png" alt="Alipay QR Code" width="1200" height="1800" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>

@@ -644,7 +644,7 @@ export const ABOUT_ME_BODY: Multilingual = {
 - I regularly write articles on [Nao's Blog](https://inaodeng.com)
 - How to reach me: **dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
-- Support me by [supporting this blog](https://inaodeng.com/sponsor)`,
+- Support me by [supporting this blog](https://inaodeng.com/en/sponsor)`,
   "zh-cn": `你好，我是 naodeng。
 
 - 围绕 [awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)、[dsh-qa](https://github.com/naodeng/dsh-qa)、[awesome-qa-prompt](https://github.com/naodeng/awesome-qa-prompt) 和 [naodeng.com.cn](https://github.com/naodeng/naodeng.com.cn)，持续建设双语 QA 资源、AI 测试工具和学习站点
@@ -652,7 +652,7 @@ export const ABOUT_ME_BODY: Multilingual = {
 - 定期在本站 [软件测试同学](https://inaodeng.com) 发布技术文章
 - 联系方式：**dengnao@gmail.com**
 - Twitter: [**@inaodeng**](https://twitter.com/inaodeng)
-- 支持我 [成为支持者](https://inaodeng.com/sponsor)`,
+- 支持我 [成为支持者](https://inaodeng.com/zh-cn/sponsor)`,
 };
 export const ABOUT_TECH_TITLE: Multilingual = {
   en: "Tech Stack",

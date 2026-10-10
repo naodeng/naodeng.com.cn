@@ -8,6 +8,10 @@ categories: ["AI 测试"]
 series: ["dsh-qa"]
 ---
 
+import { Image } from "astro:assets";
+import desktopScreenshot from "@/assets/blog/dsh-qa-v072/dsh-desktop.png";
+import workbenchScreenshot from "@/assets/blog/dsh-qa-v072/dsh-qa-1.1.png";
+
 # dsh-qa v0.7.2 更新：适配官方 Harness 桌面端，修复历史对话
 
 dsh-qa 发布了 v0.7.2。这个版本支持针对 dsh-v0.2.0-rc.2 的宿主冒烟测试，并修复历史 DSH 对话的发现、保留、排序和展示问题。
@@ -16,7 +20,9 @@ DeepSeek Harness 官方桌面端预览版也已提供公开下载入口，可以
 
 DeepSeek Harness 官方产品页:https://www.deepseek.com/harness/
 
-![DeepSeekHarness 桌面端截图](https://images.naodeng.com.cn/2026/dsh-desktop.png "DeepSeekHarness桌面端截图")
+<p>
+  <Image src={desktopScreenshot} alt="DeepSeekHarness 桌面端截图" title="DeepSeekHarness桌面端截图" width={1920} widths={[640, 960, 1920]} sizes="(min-width: 1100px) 960px, 100vw" format="webp" quality={85} loading="eager" fetchpriority="high" decoding="async" />
+</p>
 
 官方桌面端提供安装入口，dsh-qa 继续负责质量工作流。两边的变化可以放在一起看：
 
@@ -109,7 +115,9 @@ dsh-qa GitHub 仓库:https://github.com/naodeng/dsh-qa
 
 当前版本为 `dsh-qa v0.7.2`，兼容验证目标为 `DeepSeek Harness dsh-v0.2.0-rc.2`。
 
-![dsh-qa 质量工作台截图](https://images.naodeng.com.cn/2026/dsh-qa-1.1.png "dsh-qa 质量工作台截图")
+<p>
+  <Image src={workbenchScreenshot} alt="dsh-qa 质量工作台截图" title="dsh-qa 质量工作台截图" width={1920} widths={[640, 960, 1920]} sizes="(min-width: 1100px) 960px, 100vw" format="webp" quality={85} loading="lazy" decoding="async" />
+</p>
 
 两者的分工如下：
 
@@ -299,4 +307,4 @@ dsh-qa v0.7.2 支持针对 `dsh-v0.2.0-rc.2` 的宿主冒烟测试，也修复�
 
 - dsh-qa GitHub 仓库:https://github.com/naodeng/dsh-qa
 - dsh-qa v0.7.2 发布说明:https://github.com/naodeng/dsh-qa/releases/tag/v0.7.2
-- dsh-qa 官网:https://inaodeng.com/dsh-qa/
+- dsh-qa 官网:https://inaodeng.com/zh-cn/dsh-qa/

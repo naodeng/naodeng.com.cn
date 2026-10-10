@@ -8,6 +8,10 @@ categories: ["AI Testing"]
 series: ["dsh-qa"]
 ---
 
+import { Image } from "astro:assets";
+import desktopScreenshot from "@/assets/blog/dsh-qa-v072/dsh-desktop.png";
+import workbenchScreenshot from "@/assets/blog/dsh-qa-v072/dsh-qa-1.1.png";
+
 # dsh-qa v0.7.2: DeepSeek Harness Desktop Support and Conversation History Fixes
 
 dsh-qa v0.7.2 is out. It supports Host Smoke against dsh-v0.2.0-rc.2 and fixes the discovery, preservation, ordering, and rendering of historical DSH conversations.
@@ -16,7 +20,9 @@ The official DeepSeek Harness desktop preview is also available to download from
 
 DeepSeek Harness product page:https://www.deepseek.com/harness/
 
-![DeepSeek Harness Desktop screenshot](https://images.naodeng.com.cn/2026/dsh-desktop.png)
+<p>
+  <Image src={desktopScreenshot} alt="DeepSeek Harness Desktop screenshot" width={1920} widths={[640, 960, 1920]} sizes="(min-width: 1100px) 960px, 100vw" format="webp" quality={85} loading="eager" fetchpriority="high" decoding="async" />
+</p>
 
 Desktop provides the installation entry point; dsh-qa continues to provide the QA workflow. Here is what changes on each side:
 
@@ -113,7 +119,9 @@ dsh-qa GitHub repository:https://github.com/naodeng/dsh-qa
 
 The current release is `dsh-qa v0.7.2`, and the compatibility target is `DeepSeek Harness dsh-v0.2.0-rc.2`.
 
-![dsh-qa QA Workbench screenshot](https://images.naodeng.com.cn/2026/dsh-qa-1.1.png)
+<p>
+  <Image src={workbenchScreenshot} alt="dsh-qa QA Workbench screenshot" width={1920} widths={[640, 960, 1920]} sizes="(min-width: 1100px) 960px, 100vw" format="webp" quality={85} loading="lazy" decoding="async" />
+</p>
 
 The boundary is:
 
@@ -309,4 +317,4 @@ For important projects, keep the existing Web or CLI workflow available while th
 
 - dsh-qa GitHub repository:https://github.com/naodeng/dsh-qa
 - dsh-qa v0.7.2 release notes:https://github.com/naodeng/dsh-qa/releases/tag/v0.7.2
-- dsh-qa website:https://inaodeng.com/dsh-qa/
+- dsh-qa website:https://inaodeng.com/en/dsh-qa/
