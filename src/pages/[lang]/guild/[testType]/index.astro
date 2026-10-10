@@ -184,7 +184,7 @@ const itemListSchema = {
 
   .tt-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
   }
 
@@ -284,9 +284,84 @@ const itemListSchema = {
     transform: translateX(3px);
   }
 
+  .fw-card:focus-visible .fw-card__arrow {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+
   @media (max-width: 480px) {
     .tt-grid {
       grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (width >= 1600px) {
+    .tt-grid .fw-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(6rem, auto);
+      grid-template-rows: auto auto 1fr;
+      align-content: start;
+      column-gap: 1.25rem;
+      min-block-size: 9rem;
+    }
+
+    .tt-grid .fw-card__top {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+
+    .tt-grid .fw-card__name {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .tt-grid .fw-card__desc {
+      grid-column: 1;
+      grid-row: 3;
+      max-inline-size: 60ch;
+      align-self: start;
+    }
+
+    .tt-grid .fw-card__footer {
+      grid-column: 2;
+      grid-row: 2 / 4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      align-self: stretch;
+      justify-content: space-between;
+      margin-block-start: 0;
+      padding-inline-start: 1rem;
+      border-inline-start: 1px solid var(--color-border);
+    }
+
+    .tt-grid .fw-card__count {
+      padding: 0.3em 0.6em;
+      border-radius: var(--radius-pill, 999px);
+      background: color-mix(in srgb, var(--color-theme) 8%, transparent);
+      color: var(--color-theme);
+      font-weight: 700;
+    }
+
+    .tt-grid .fw-card__arrow {
+      opacity: 0.55;
+    }
+
+    .tt-grid .fw-card:hover .fw-card__arrow,
+    .tt-grid .fw-card:focus-visible .fw-card__arrow {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tt-grid .fw-card,
+    .tt-grid .fw-card__arrow {
+      transition: none;
+    }
+
+    .tt-grid .fw-card:hover .fw-card__arrow,
+    .tt-grid .fw-card:focus-visible .fw-card__arrow {
+      transform: none;
     }
   }
 </style>
