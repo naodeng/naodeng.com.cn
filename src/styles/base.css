@@ -1,6 +1,6 @@
 :root {
   color-scheme: light;
-  --layout-max: clamp(1280px, 82vw, 2560px);
+  --layout-max: clamp(1280px, 92vw, 4096px);
   --layout-gutter: 24px;
   --reading-max: 768px;
   --sidebar-layout-max: var(--layout-max);

@@ -483,6 +483,13 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     border-color: var(--color-theme);
   }
 
+  @media (width >= 1600px) {
+    .guild-content,
+    .guild-related-terms {
+      max-inline-size: min(100%, 80rem);
+    }
+  }
+
   .guild-content :global(h1) {
     margin-block-end: var(--sp-m);
   }

@@ -139,6 +139,13 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     grid-column: 2;
     grid-row: 1;
   }
+  .l-docs[data-has-toc="true"] .docs-content :global(p),
+  .l-docs[data-has-toc="true"] .docs-content :global(ul),
+  .l-docs[data-has-toc="true"] .docs-content :global(ol),
+  .l-docs[data-has-toc="true"] .docs-content :global(blockquote) {
+    max-inline-size: min(100%, 80rem);
+    margin-inline: auto;
+  }
   .l-docs[data-content-mode="index"] .docs-content {
     inline-size: 100%;
     max-inline-size: none;
@@ -268,20 +275,20 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
 
   @media (width >= 1600px) {
     .l-docs:not([data-has-toc="true"]) {
-      max-inline-size: min(var(--layout-max), 1480px);
+      max-inline-size: var(--layout-max);
       grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
       gap: clamp(2rem, 2vw, 2.5rem);
     }
     .l-docs[data-content-mode="index"] {
-      max-inline-size: min(var(--layout-max), 1920px);
+      max-inline-size: var(--layout-max);
     }
     .l-docs[data-has-toc="true"] {
-      max-inline-size: min(var(--layout-max), 1840px);
-      grid-template-columns: minmax(240px, .95fr) minmax(0, 3fr) minmax(220px, .85fr);
+      max-inline-size: var(--layout-max);
+      grid-template-columns: minmax(260px, 320px) minmax(0, 1fr) minmax(220px, 300px);
       gap: clamp(1.75rem, 2vw, 2.5rem);
     }
     .l-docs:not([data-has-toc="true"]):not([data-content-mode="index"]) .docs-content {
-      max-inline-size: 960px;
+      max-inline-size: min(var(--layout-max), 1360px);
       justify-self: center;
     }
   }

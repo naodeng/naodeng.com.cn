@@ -334,7 +334,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
 </script>
 
 <style>
-  .prompt-detail-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); max-width: min(var(--layout-max), 1840px); margin: 0 auto; padding: 0 0 5rem; align-items: start; }
+  .prompt-detail-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); max-width: var(--layout-max); margin: 0 auto; padding: 0 0 5rem; align-items: start; }
   .prompt-detail-layout[data-has-toc="true"] { grid-template-columns: 220px minmax(0, 1fr) 200px; }
   .prompt-detail-sidebar, .prompt-detail-toc { position: sticky; top: var(--sticky-offset); align-self: start; }
   .prompt-detail-sidebar { grid-column: 1; grid-row: 1; }
