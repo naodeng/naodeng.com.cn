@@ -143,8 +143,8 @@ test.describe("home information architecture", () => {
       };
     });
 
-    // Astro editorial layout: 1440px viewport uses the 1280px desktop content cap.
-    expect(layout.width).toBe(1280);
+    // Astro editorial layout: 92vw at a 1440px viewport rounds to 1325px.
+    expect(layout.width).toBe(1325);
     expect(Math.abs(layout.left - layout.right)).toBeLessThanOrEqual(2);
     // Section headings sit clearly between the hero and the task-card titles.
     const sectionSize = parseFloat(layout.titleSize);
