@@ -70,6 +70,9 @@ export const getStaticPaths = () =>
     padding-block-start: 1.5rem;
     padding-block-end: var(--sp-l);
   }
+  @media (width >= 1600px) {
+    .copyright-section { max-inline-size: min(72rem, var(--layout-max)); }
+  }
   .intro {
     font-size: 1.05rem;
     line-height: 1.6;

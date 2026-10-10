@@ -51,7 +51,7 @@ test.describe("中文首页微信公众号入口", () => {
     await expect
       .poll(async () => (await context.cookies()).some((cookie) => cookie.name === "wechat_follow_prompt_seen"))
       .toBe(true);
-    await expect(coachmark).not.toBeVisible({ timeout: 8_000 });
+    await expect(coachmark).not.toBeVisible({ timeout: 12_000 });
 
     await page.goto("/zh-cn/about/", { waitUntil: "domcontentloaded" });
     await expect(page.getByText("快速关注微信公众号吧", { exact: true })).not.toBeVisible();

@@ -192,7 +192,7 @@ const historicalReleases = site.releases.slice(1);
   @media (prefers-reduced-motion: no-preference) { .hero-action, .ecosystem-links a, .release-body a { transition: background-color .2s ease, color .2s ease, border-color .2s ease; } }
   @media (max-width: 720px) { .hero, .feature-grid, .install-grid { grid-template-columns: 1fr; }.hero-panel { align-self: auto; }.flow-list li { grid-template-columns: 2.2rem 1fr; }.flow-status { grid-column: 2; justify-self: start; }.release-list summary { display: grid; }.dsh-qa-page { padding-inline: 1rem; } }
   /* Keep the project content inside the site's editorial visual system. */
-  .dsh-qa-page { max-width: 72rem; padding: 2rem var(--sp-m) 5rem; color: var(--color-main); }
+  .dsh-qa-page { max-width: min(var(--layout-max), 1920px); padding: 2rem var(--sp-m) 5rem; color: var(--color-main); }
   .hero, .section { border: 0; background: transparent; box-shadow: none; }
   .hero { grid-template-columns: minmax(0, 1fr) minmax(15rem, .55fr); padding: 2.5rem 0 3rem; border-bottom: 1px solid color-mix(in srgb, var(--color-theme) 18%, transparent); overflow: visible; }
   .hero::before { display: none; }.hero h1, .section h2 { color: var(--color-main); font-family: inherit; }.hero h1 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: .98; word-break: keep-all; }.hero-summary { color: inherit; opacity: .78; }
@@ -257,5 +257,8 @@ const historicalReleases = site.releases.slice(1);
   @media (max-width: 720px) {
     .dsh-qa-page .release-list summary,
     .dsh-qa-page .current-release-heading { align-items: flex-start; }
+  }
+  @media (min-width: 1600px) {
+    .feature-grid, .install-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
   }
 </style>

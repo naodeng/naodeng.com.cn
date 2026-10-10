@@ -194,6 +194,11 @@ const items = locale === "zh-cn" ? [
     .capability-list > li:last-child { grid-column: 1 / -1; }
   }
 
+  @media (min-width: 1600px) {
+    .capability-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .capability-list > li:last-child { grid-column: auto; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .capability-item { transition: none; }
     .capability-item:hover,

@@ -72,7 +72,7 @@ export const getStaticPaths = () =>
 
   .aggregate-container {
     margin-block-start: var(--sp-l);
-    max-inline-size: 55rem; /* 880px，与博文详情页一致 */
+    max-inline-size: min(var(--layout-max), 1920px);
     margin-inline: auto;
   }
 

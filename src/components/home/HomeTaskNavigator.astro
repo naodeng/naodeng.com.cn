@@ -216,4 +216,10 @@ const entries = HOME_TASK_ENTRIES[locale];
     .task-card__head{margin-top:.7rem;}
     .task-card__desc{margin:.35rem 0 .7rem;}
   }
+  @media (min-width: 1600px) {
+    .task-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (min-width: 2200px) {
+    .task-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
 </style>

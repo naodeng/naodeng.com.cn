@@ -217,6 +217,13 @@ function tagToSlug(tag: string) {
     .post-grid--list .post-footer { padding-inline: 0.25rem; }
   }
 
+  @media (min-width: 1600px) {
+    .post-grid--list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2rem;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .post-card,
     .tag-link { transition: none; }

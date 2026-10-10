@@ -15,38 +15,40 @@ const localePaths = Object.fromEntries((await getLocalePaths(Astro.url)).map(({ 
 </div>
 
 <script is:inline define:vars={{ currentLocale, LOCALES, localePaths }}>
-  const browserLang = navigator.language.toLowerCase();
-  const suggest = document.getElementById("js-languageSuggest");
+  (() => {
+    const browserLang = navigator.language.toLowerCase();
+    const suggest = document.getElementById("js-languageSuggest");
 
-  const showSuggest = (lang) => {
-    const link = document.getElementById("js-link");
-    const linkText = document.getElementById("js-linkText");
-    link.href = localePaths[lang];
-    linkText.innerText = currentLocale === "zh-cn" && lang === "en"
-      ? "切换至英文"
-      : currentLocale === "en" && lang === "zh-cn"
-        ? "Switch to Chinese"
-        : LOCALES[lang].label;
-    suggest.style.display = "block";
-  };
+    const showSuggest = (lang) => {
+      const link = document.getElementById("js-link");
+      const linkText = document.getElementById("js-linkText");
+      link.href = localePaths[lang];
+      linkText.innerText = currentLocale === "zh-cn" && lang === "en"
+        ? "切换至英文"
+        : currentLocale === "en" && lang === "zh-cn"
+          ? "Switch to Chinese"
+          : LOCALES[lang].label;
+      suggest.style.display = "block";
+    };
 
-  if (
-    currentLocale === browserLang ||
-    currentLocale === browserLang.split("-")[0] ||
-    localStorage.languageSuggestDenied ||
-    localStorage.selectedLang
-  ) {
-    return;
-  } else if (Object.keys(LOCALES).includes(browserLang)) {
-    showSuggest(browserLang);
-  } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
-    showSuggest(browserLang.split("-")[0]);
-  }
+    if (
+      currentLocale === browserLang ||
+      currentLocale === browserLang.split("-")[0] ||
+      localStorage.languageSuggestDenied ||
+      localStorage.selectedLang
+    ) {
+      return;
+    } else if (Object.keys(LOCALES).includes(browserLang)) {
+      showSuggest(browserLang);
+    } else if (Object.keys(LOCALES).includes(browserLang.split("-")[0])) {
+      showSuggest(browserLang.split("-")[0]);
+    }
 
-  document.getElementById("js-close").addEventListener("click", () => {
-    suggest.style.display = "none";
-    localStorage.languageSuggestDenied = true;
-  });
+    document.getElementById("js-close").addEventListener("click", () => {
+      suggest.style.display = "none";
+      localStorage.languageSuggestDenied = true;
+    });
+  })();
 </script>
 
 <style>

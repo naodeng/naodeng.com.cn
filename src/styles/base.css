@@ -1,9 +1,9 @@
 :root {
   color-scheme: light;
-  --layout-max: 1280px;
+  --layout-max: clamp(1280px, 82vw, 2560px);
   --layout-gutter: 24px;
   --reading-max: 768px;
-  --sidebar-layout-max: 1280px;
+  --sidebar-layout-max: var(--layout-max);
   --header-height: 80px;
   --sticky-offset: calc(var(--header-height) + 1rem);
   --color-theme: #176b75;

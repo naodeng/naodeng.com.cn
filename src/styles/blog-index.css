@@ -1,4 +1,6 @@
 .blog-container {
+  max-inline-size: min(var(--layout-max), 1920px);
+  margin-inline: auto;
   margin-block-start: clamp(2rem, 4vw, 3rem);
 }
 

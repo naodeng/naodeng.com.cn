@@ -125,4 +125,29 @@ export const getStaticPaths = () =>
   .email-link:hover {
     text-decoration: underline;
   }
+  @media (width >= 1600px) {
+    .links-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      align-items: start;
+      gap: clamp(1.5rem, 2vw, 2.5rem);
+      max-inline-size: min(88rem, var(--layout-max));
+    }
+    .links-grid {
+      grid-template-columns: minmax(0, 1fr);
+      margin-block-end: 0;
+    }
+    .link-card {
+      width: 100%;
+      max-inline-size: 34rem;
+      min-block-size: 10rem;
+    }
+    .exchange-note {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-block-size: 10rem;
+      text-align: start;
+    }
+  }
 </style>

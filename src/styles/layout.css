@@ -7,7 +7,7 @@
   padding-block-end: 4rem;
 }
 
-/* 主页面内容区采用 Astro 风格的 1280px 最大宽度 */
+/* 全站内容区随宽屏增长，同时保留统一的页面边距。 */
 .l-main.l-content {
   max-inline-size: var(--layout-max);
 }
@@ -26,7 +26,7 @@
 }
 
 @media (min-width: 768px) {
-  :root { --layout-gutter: 32px; }
+  :root { --layout-gutter: clamp(32px, 2vw, 48px); }
 }
 
 .l-footer {
