@@ -159,6 +159,43 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   relatedTerms.push(item);
   if (relatedTerms.length >= 5) break;
 }
+
+const localePosts = allPosts
+  .filter((item) => item.id.split("/")[0] === locale)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const normalizedSet = (values: string[] = []) => new Set(values.map(norm).filter(Boolean));
+const currentTags = normalizedSet(post.data.tags ?? []);
+const currentCategories = normalizedSet(post.data.categories ?? []);
+const currentSeries = normalizedSet(post.data.series ?? []);
+const countMatches = (left: Set<string>, right: Set<string>) =>
+  [...left].filter((value) => right.has(value)).length;
+const relatedPosts = localePosts
+  .filter((item) => item.id !== post.id)
+  .map((item) => {
+    const score =
+      countMatches(currentTags, normalizedSet(item.data.tags ?? [])) * 3 +
+      countMatches(currentCategories, normalizedSet(item.data.categories ?? [])) * 4 +
+      countMatches(currentSeries, normalizedSet(item.data.series ?? [])) * 5;
+    return { item, score };
+  })
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score || b.item.data.date.valueOf() - a.item.data.date.valueOf())
+  .slice(0, 4)
+  .map(({ item }) => item);
+const relatedPostIds = new Set(relatedPosts.map((item) => item.id));
+const recentPosts = localePosts
+  .filter((item) => item.id !== post.id && !relatedPostIds.has(item.id))
+  .slice(0, 4);
+const blogPostHref = (item: (typeof allPosts)[number]) => {
+  const [, ...parts] = item.id.split("/");
+  return `/${locale}/blog/${parts.join("/").toLowerCase()}/`;
+};
+const sidebarDate = (date: Date) =>
+  date.toLocaleDateString(locale === "zh-cn" ? "zh-CN" : "en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 ---
 
 <Layout
@@ -281,6 +318,47 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
         />
       </div>
     </div>
+
+    {(relatedPosts.length > 0 || recentPosts.length > 0) && (
+      <aside class="article-discovery" aria-label={locale === "zh-cn" ? "文章发现" : "Article discovery"}>
+        <div class="article-discovery-inner">
+          {relatedPosts.length > 0 && (
+            <section class="article-discovery-section" aria-labelledby="related-articles-heading">
+              <h2 id="related-articles-heading">{locale === "zh-cn" ? "相关文章" : "Related articles"}</h2>
+              <nav aria-labelledby="related-articles-heading">
+                <ul class="article-discovery-list">
+                  {relatedPosts.map((item) => (
+                    <li>
+                      <a class="article-discovery-link" href={blogPostHref(item)}>
+                        <span>{item.data.title}</span>
+                        <time datetime={item.data.date.toISOString()}>{sidebarDate(item.data.date)}</time>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </section>
+          )}
+          {recentPosts.length > 0 && (
+            <section class="article-discovery-section" aria-labelledby="recent-articles-heading">
+              <h2 id="recent-articles-heading">{locale === "zh-cn" ? "最近博文" : "Recent articles"}</h2>
+              <nav aria-labelledby="recent-articles-heading">
+                <ul class="article-discovery-list">
+                  {recentPosts.map((item) => (
+                    <li>
+                      <a class="article-discovery-link" href={blogPostHref(item)}>
+                        <span>{item.data.title}</span>
+                        <time datetime={item.data.date.toISOString()}>{sidebarDate(item.data.date)}</time>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </section>
+          )}
+        </div>
+      </aside>
+    )}
   </div>
 </Layout>
 <TrackingEvents mode="detail" locale={locale} channel="blog" slug={String(id ?? "")} detailLinkSelector=".blog-related-terms-pill" />
@@ -302,7 +380,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     max-inline-size: var(--blog-reading-max);
     margin-inline: auto;
     grid-template-columns: 1fr;
-    grid-template-areas: "heading" "toc" "body";
+    grid-template-areas: "heading" "toc" "body" "discover";
     gap: 1.5rem;
     align-items: start;
   }
@@ -310,7 +388,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     .article-with-toc {
       max-inline-size: min(var(--layout-max), 1440px);
       grid-template-columns: minmax(0, 1fr) 16rem;
-      grid-template-areas: "heading toc" "body toc";
+      grid-template-areas: "heading toc" "body toc" "discover toc";
       column-gap: 3rem;
     }
     .article-sidebar {
@@ -329,19 +407,22 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   .article-with-toc--plain {
     max-inline-size: var(--blog-reading-max);
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "heading" "body";
+    grid-template-areas: "heading" "body" "discover";
   }
   @media (min-width: 1600px) {
     .article-with-toc:not(.article-with-toc--plain) {
-      max-inline-size: min(var(--layout-max), 1408px);
+      max-inline-size: min(var(--layout-max), 2160px);
       margin-inline: auto;
     }
     :global(.l-main:has(.article-with-toc) .breadcrumb) {
-      max-inline-size: min(var(--layout-max), 1408px);
+      max-inline-size: min(var(--layout-max), 2160px);
       margin-inline: auto;
     }
     .article-with-toc--plain {
-      max-inline-size: var(--layout-max);
+      max-inline-size: min(var(--layout-max), 2160px);
+      grid-template-columns: minmax(15rem, 17rem) minmax(0, 1fr);
+      grid-template-areas: "discover heading" "discover body";
+      column-gap: clamp(2rem, 2vw, 2.5rem);
     }
     .article-with-toc:not(.article-with-toc--plain) .article-title-header {
       inline-size: min(100%, 1600px);
@@ -349,14 +430,14 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     }
     .article-with-toc--plain .article-title-header {
       inline-size: min(100%, 1440px);
-      margin-inline: auto;
+      margin-inline: 0;
     }
     .article-with-toc--plain .article-main .prose {
       max-inline-size: min(100%, 1440px);
-      margin-inline: auto;
+      margin-inline: 0;
     }
     .article-with-toc:not(.article-with-toc--plain) .article-main .prose > :global(:is(p, h2, h3, h4, h5, h6, ul, ol, blockquote):not(:has(img, video, iframe, picture, table, pre))) {
-      max-inline-size: min(100%, 1024px);
+      max-inline-size: min(100%, 1200px);
       margin-inline: 0 auto;
     }
     .article-main .prose {
@@ -364,6 +445,32 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     }
     .article-main .prose :global(h2) {
       font-size: clamp(1.6rem, 1.2vw, 1.9rem);
+    }
+  }
+  @media (min-width: 1600px) {
+    .article-with-toc:not(.article-with-toc--plain) {
+      grid-template-columns: minmax(0, 1fr) minmax(19rem, 22rem);
+      grid-template-areas: "heading toc" "body toc" "discover toc";
+      column-gap: clamp(2rem, 2vw, 2.5rem);
+    }
+    .article-sidebar :global(.toc-nav) {
+      padding: 1.1rem;
+    }
+  }
+  @media (min-width: 1800px) {
+    .article-with-toc:not(.article-with-toc--plain) {
+      grid-template-columns: minmax(15rem, 17rem) minmax(0, 1fr) minmax(19rem, 21rem);
+      grid-template-areas: "discover heading toc" "discover body toc";
+      column-gap: clamp(1.5rem, 1.5vw, 2rem);
+    }
+    .article-discovery-inner {
+      position: sticky;
+      top: var(--sticky-offset);
+      max-block-size: calc(100dvh - var(--sticky-offset) - 1rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border-strong) transparent;
+      scrollbar-gutter: stable;
     }
   }
   .article-body {
@@ -377,8 +484,72 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     grid-area: toc;
     min-width: 0;
   }
+  .article-discovery {
+    grid-area: discover;
+    min-width: 0;
+  }
   .article-sidebar-inner {
     min-width: 0;
+  }
+  .article-discovery-inner {
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-muted);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  }
+  .article-discovery-section + .article-discovery-section {
+    margin-block-start: 1.1rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--color-border);
+  }
+  .article-discovery-section h2 {
+    margin: 0 0 0.65rem;
+    color: var(--color-theme);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .article-discovery-list {
+    display: grid;
+    gap: 0.3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .article-discovery-link {
+    display: grid;
+    gap: 0.25rem;
+    min-block-size: 44px;
+    padding: 0.55rem 0.6rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  }
+  .article-discovery-link span {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .article-discovery-link time {
+    color: var(--color-text-tertiary);
+    font-size: var(--text-xs);
+    font-weight: 500;
+  }
+  .article-discovery-link:hover {
+    transform: translateX(2px);
+    background: var(--color-theme-soft);
+    color: var(--color-theme);
+  }
+  .article-discovery-link:focus-visible {
+    outline: 2px solid var(--color-theme-focus);
+    outline-offset: 2px;
   }
   @media (min-width: 1100px) {
     .article-sidebar :global(.toc-nav) {

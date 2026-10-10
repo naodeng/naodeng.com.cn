@@ -86,10 +86,54 @@ for (const locale of ["en", "zh-cn"]) {
       };
     });
     expect(layout.mainWidth).toBeGreaterThan(1024);
-    expect(layout.paragraphWidth).toBeLessThanOrEqual(1024);
+    expect(layout.paragraphWidth).toBeLessThanOrEqual(1200);
     expect(layout.proseWidth).toBeGreaterThan(layout.paragraphWidth);
     expect(layout.tableWidth).toBeCloseTo(layout.proseWidth, 0);
     expect(layout.overflow).toBe(false);
+  });
+
+  test(`${locale}: 5K article layout adds related and recent reading links without overflow`, async ({ page }) => {
+    await page.setViewportSize({ width: 2560, height: 1440 });
+    await page.goto(article, { waitUntil: "domcontentloaded" });
+
+    const discovery = page.getByRole("complementary", {
+      name: locale === "zh-cn" ? "文章发现" : "Article discovery",
+    });
+    await expect(discovery).toBeVisible();
+    await expect(discovery.getByRole("heading", { name: locale === "zh-cn" ? "相关文章" : "Related articles" })).toBeVisible();
+    await expect(discovery.getByRole("heading", { name: locale === "zh-cn" ? "最近博文" : "Recent articles" })).toBeVisible();
+
+    const wideLayout = await page.evaluate(() => {
+      const discovery = document.querySelector(".article-discovery")!.getBoundingClientRect();
+      const body = document.querySelector(".article-body")!.getBoundingClientRect();
+      const toc = document.querySelector(".article-sidebar")!.getBoundingClientRect();
+      const paragraph = document.querySelector(".article-main .prose > p")!.getBoundingClientRect();
+      return {
+        discoveryWidth: discovery.width,
+        discoveryRight: discovery.right,
+        bodyLeft: body.left,
+        bodyWidth: body.width,
+        bodyRight: body.right,
+        tocLeft: toc.left,
+        tocWidth: toc.width,
+        paragraphWidth: paragraph.width,
+        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+      };
+    });
+    expect(wideLayout.discoveryWidth).toBeGreaterThanOrEqual(240);
+    expect(wideLayout.discoveryRight + 24).toBeLessThanOrEqual(wideLayout.bodyLeft);
+    expect(wideLayout.bodyWidth).toBeGreaterThan(1200);
+    expect(wideLayout.bodyRight + 24).toBeLessThanOrEqual(wideLayout.tocLeft);
+    expect(wideLayout.tocWidth).toBeGreaterThanOrEqual(300);
+    expect(wideLayout.paragraphWidth).toBeLessThanOrEqual(1200);
+    expect(wideLayout.overflow).toBe(false);
+    expect(await discovery.getByRole("link").count()).toBeGreaterThanOrEqual(4);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    const mobileOverflow = await page.evaluate(() =>
+      document.documentElement.scrollWidth > document.documentElement.clientWidth + 1
+    );
+    expect(mobileOverflow).toBe(false);
   });
 
   test(`${locale}: tablet reading preserves width and puts the collapsed TOC before prose`, async ({ page }) => {
@@ -142,6 +186,33 @@ for (const locale of ["en", "zh-cn"]) {
     expect(Math.abs(layout.title - layout.prose)).toBeLessThanOrEqual(1);
     expect(layout.width).toBeGreaterThanOrEqual(900);
     expect(layout.width).toBeLessThanOrEqual(1024);
+
+    await page.setViewportSize({ width: 2560, height: 1440 });
+    const discovery = page.getByRole("complementary", {
+      name: locale === "zh-cn" ? "文章发现" : "Article discovery",
+    });
+    await expect(discovery.getByRole("heading", { name: locale === "zh-cn" ? "最近博文" : "Recent articles" })).toBeVisible();
+    const wideLayout = await page.evaluate(() => {
+      const discovery = document.querySelector(".article-discovery")!.getBoundingClientRect();
+      const body = document.querySelector(".article-body")!.getBoundingClientRect();
+      const title = document.querySelector(".article-title-header")!.getBoundingClientRect();
+      const prose = document.querySelector(".prose")!.getBoundingClientRect();
+      return {
+        discoveryWidth: discovery.width,
+        discoveryRight: discovery.right,
+        bodyLeft: body.left,
+        bodyWidth: body.width,
+        titleLeft: title.left,
+        proseLeft: prose.left,
+        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+      };
+    });
+    expect(wideLayout.discoveryWidth).toBeGreaterThanOrEqual(240);
+    expect(wideLayout.discoveryRight + 24).toBeLessThanOrEqual(wideLayout.bodyLeft);
+    expect(wideLayout.bodyWidth).toBeGreaterThan(1200);
+    expect(Math.abs(wideLayout.titleLeft - wideLayout.bodyLeft)).toBeLessThanOrEqual(1);
+    expect(Math.abs(wideLayout.proseLeft - wideLayout.bodyLeft)).toBeLessThanOrEqual(1);
+    expect(wideLayout.overflow).toBe(false);
   });
 
   test(`${locale}: article credits fit every layout and link to the local license page`, async ({ page }) => {
