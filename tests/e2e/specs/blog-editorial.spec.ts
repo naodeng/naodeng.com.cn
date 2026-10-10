@@ -69,6 +69,29 @@ for (const locale of ["en", "zh-cn"]) {
     await expect(page.locator(".article-body .author-stats-card")).toHaveCount(1);
   });
 
+  test(`${locale}: wide TOC articles keep text readable while tables use the full column`, async ({ page }) => {
+    await page.setViewportSize({ width: 2560, height: 1440 });
+    await page.goto(article, { waitUntil: "domcontentloaded" });
+    const layout = await page.evaluate(() => {
+      const main = document.querySelector(".article-main")!;
+      const prose = document.querySelector(".prose")!;
+      const paragraph = prose.querySelector(":scope > p")!;
+      const table = prose.querySelector("table")!;
+      return {
+        mainWidth: main.getBoundingClientRect().width,
+        proseWidth: prose.getBoundingClientRect().width,
+        paragraphWidth: paragraph.getBoundingClientRect().width,
+        tableWidth: table.getBoundingClientRect().width,
+        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+      };
+    });
+    expect(layout.mainWidth).toBeGreaterThan(1024);
+    expect(layout.paragraphWidth).toBeLessThanOrEqual(1024);
+    expect(layout.proseWidth).toBeGreaterThan(layout.paragraphWidth);
+    expect(layout.tableWidth).toBeCloseTo(layout.proseWidth, 0);
+    expect(layout.overflow).toBe(false);
+  });
+
   test(`${locale}: tablet reading preserves width and puts the collapsed TOC before prose`, async ({ page }) => {
     await page.setViewportSize({ width: 1024, height: 900 });
     await page.goto(article, { waitUntil: "domcontentloaded" });

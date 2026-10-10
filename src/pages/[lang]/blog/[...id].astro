@@ -325,6 +325,10 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
       max-inline-size: min(100%, 1440px);
       margin-inline: auto;
     }
+    .article-with-toc:not(.article-with-toc--plain) .article-main .prose > :global(:is(p, h2, h3, h4, h5, h6, ul, ol, blockquote):not(:has(img, video, iframe, picture, table, pre))) {
+      max-inline-size: min(100%, 1024px);
+      margin-inline: auto;
+    }
     .article-main .prose {
       font-size: clamp(1rem, calc(0.75rem + 0.25vw), 1.125rem);
     }
