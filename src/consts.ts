@@ -96,7 +96,7 @@ export const NAV_DOCS: Multilingual = {
   "zh-cn": "文档",
 };
 
-/** 顶部导航：百科（中文站内）/ QA wiki（英文跳转 ray.run） */
+/** 顶部导航：中英文均指向本站 QA Wiki。 */
 export const NAV_QA_WIKI: Multilingual = {
   en: "QA wiki",
   "zh-cn": "软件测试百科",

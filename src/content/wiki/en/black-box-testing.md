@@ -1,0 +1,517 @@
+---
+title: "Black Box Testing"
+description: "Black box testing assesses software without considering its internal workings."
+section: "B"
+related:
+  - "grey-box-testing"
+  - "glass-box-testing"
+  - "manual-testing"
+  - "white-box-testing"
+  - "automated-testing"
+order: 0
+---
+# Black Box Testing
+
+<!-- TOC START -->
+
+- [Black Box Testing](#black-box-testing)
+  - [Related Terms:](#related-terms)
+    - [See also:](#see-also)
+  - [Questions about Black Box Testing?](#questions-about-black-box-testing)
+    - [Basics and Importance](#basics-and-importance)
+      - [What is Black Box Testing?](#what-is-black-box-testing)
+      - [Why is Black Box Testing important?](#why-is-black-box-testing-important)
+      - [What are the main objectives of Black Box Testing?](#what-are-the-main-objectives-of-black-box-testing)
+      - [What are the advantages and disadvantages of Black Box Testing?](#what-are-the-advantages-and-disadvantages-of-black-box-testing)
+      - [How does Black Box Testing differ from White Box Testing?](#how-does-black-box-testing-differ-from-white-box-testing)
+    - [Techniques](#techniques)
+      - [What are the different Black Box Testing techniques?](#what-are-the-different-black-box-testing-techniques)
+      - [What is Equivalence Partitioning in Black Box Testing?](#what-is-equivalence-partitioning-in-black-box-testing)
+      - [What is Boundary Value Analysis in Black Box Testing?](#what-is-boundary-value-analysis-in-black-box-testing)
+      - [What is Decision Table Testing in Black Box Testing?](#what-is-decision-table-testing-in-black-box-testing)
+      - [What is State Transition Testing in Black Box Testing?](#what-is-state-transition-testing-in-black-box-testing)
+      - [What is Use Case Testing in Black Box Testing?](#what-is-use-case-testing-in-black-box-testing)
+    - [Process and Implementation](#process-and-implementation)
+      - [What are the steps involved in Black Box Testing?](#what-are-the-steps-involved-in-black-box-testing)
+      - [How is Black Box Testing performed?](#how-is-black-box-testing-performed)
+      - [What are the criteria for selecting a Black Box Testing technique?](#what-are-the-criteria-for-selecting-a-black-box-testing-technique)
+      - [What tools are used in Black Box Testing?](#what-tools-are-used-in-black-box-testing)
+      - [How to write effective test cases in Black Box Testing?](#how-to-write-effective-test-cases-in-black-box-testing)
+    - [Real World Applications](#real-world-applications)
+      - [What are some real-world examples of Black Box Testing?](#what-are-some-real-world-examples-of-black-box-testing)
+      - [How is Black Box Testing used in Agile development?](#how-is-black-box-testing-used-in-agile-development)
+      - [How is Black Box Testing used in software development life cycle (SDLC)?](#how-is-black-box-testing-used-in-software-development-life-cycle-sdlc)
+      - [How is Black Box Testing used in end-to-end (E2E) testing?](#how-is-black-box-testing-used-in-end-to-end-e2e-testing)
+<!-- TOC END -->
+
+Black box testing assesses software without considering its internal workings. Typically focused on functional or acceptance testing, it can be done by anyone, regardless of their familiarity with the codebase.
+
+## Related Terms:
+
+- [White Box Testing](/en/wiki/white-box-testing/)
+- [Grey Box Testing](/en/wiki/grey-box-testing/)
+- [Glass Box Testing](/en/wiki/glass-box-testing/)
+
+### See also:
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Black-box_testing)
+## Questions about Black Box Testing?
+
+### Basics and Importance
+
+#### What is Black Box Testing?
+
+  Black Box Testing is a method of [software testing](/en/wiki/software-testing/) that evaluates the functionality of an application without peering into its internal structures or workings. This technique focuses on the input and output of software applications and is used to ensure that the software meets specified requirements and behaves as expected in various scenarios.
+  Testers create [test cases](/en/wiki/test-case/) from the external perspective of the software, often derived from the description of the software's intended functionality, including:
+
+  - **User requirements**
+  - **Specifications**
+  - **Technical designs**
+  The tester selects inputs to exercise paths through the code and determine appropriate outputs without knowing how the software processes input or what code is being executed. Black Box Testing is applicable to virtually all levels of [software testing](/en/wiki/software-testing/): unit, integration, system, and acceptance.
+  It is particularly useful for:
+
+  - **Validation against user requirements**
+  - **Behavioral testing**
+  - **Performance evaluation**
+  Since the focus is on the external behavior of the software, Black Box Testing can be used by testers who do not have knowledge of the programming languages or the internal structure of the system being tested.
+  In practice, Black Box Testing involves:
+
+  1. Understanding the software's functionality and user interactions.
+  2. Designing test cases that cover all possible inputs and usage scenarios.
+  3. Executing tests and comparing actual outcomes with expected results.
+  4. Reporting any discrepancies as defects for the development team to address.
+  This approach is integral to identifying discrepancies in software behavior and ensuring that the product is robust, reliable, and meets user expectations.
+
+  - **User requirements**
+  - **Specifications**
+  - **Technical designs**
+  - **Validation against user requirements**
+  - **Behavioral testing**
+  - **Performance evaluation**
+
+#### Why is Black Box Testing important?
+
+  Black Box Testing is crucial because it evaluates a system's functionality without the need to understand its internal workings. This approach mirrors end-user interactions, ensuring the software is validated from an external perspective. It helps to **identify discrepancies** between the system's actual behavior and its specified requirements, focusing on what the software does rather than how it does it.
+  By treating the software as a "black box," testers can craft [test cases](/en/wiki/test-case/) that examine the system's **response to inputs**, **behavior under various conditions**, and **output generation**. This ensures that the system meets user expectations and requirements, which is essential for user satisfaction and software acceptance.
+  Moreover, Black Box Testing is independent of the system's implementation, making it adaptable to a wide range of applications and beneficial for testing systems with **frequent changes** in design or implementation. It also allows for the involvement of non-technical stakeholders, such as business analysts or end-users, who can provide valuable insights into the system's [functional requirements](/en/wiki/functional-requirements/).
+  In essence, Black Box Testing is a key component of a comprehensive testing strategy, providing a vital counterbalance to [White Box Testing](/en/wiki/white-box-testing/) by focusing on user-facing aspects of the software, which ultimately determines the success and acceptance of the application in the real world.
+
+#### What are the main objectives of Black Box Testing?
+
+  The main objectives of **Black Box Testing** are to:
+
+  - **Validate [Functional Requirements](/en/wiki/functional-requirements/)** : Ensure the software meets the specified functional requirements and behaviors as expected by the end user, without considering internal code structure.
+  - **Identify Defects** : Detect errors, bugs, and defects in the software by testing various inputs and observing the outputs.
+  - **Improve Quality** : Enhance the overall quality of the product by finding and allowing the correction of issues before release.
+  - **Verify External Interfaces** : Check the software's interfaces with other systems and components to ensure they interact correctly.
+  - **Assess User Experience** : Evaluate the system from the user's perspective to confirm that it is user-friendly and meets usability standards.
+  - **Ensure Compliance** : Make sure the software adheres to industry standards, regulations, and any contractual agreements.
+  - **Reduce Risks** : Mitigate the risk of system failures in production by identifying issues early in the testing process.
+  - **Support Maintenance** : Facilitate the maintenance of the software by ensuring that changes or enhancements haven't adversely affected existing functionality.
+  These objectives are pursued through a variety of techniques and approaches, all of which focus on testing the software from the outside, without knowledge of the internal workings of the application.
+
+
+#### What are the advantages and disadvantages of Black Box Testing?
+
+  Advantages of Black Box Testing:
+
+  - **User Perspective** : Tests are conducted from the user's point of view, ensuring the software meets user requirements and expectations.
+  - **No Need for Code Knowledge** : Testers don't require programming knowledge, allowing non-technical testers to execute tests.
+  - **Unbiased Testing** : Testers are not influenced by internal code structure, leading to an objective assessment of functionality.
+  - **Parallel Development** : Testing can be done in parallel with development since it doesn't rely on the internal code structure.
+  - **Comprehensive Coverage** : Encourages testing of all functional requirements without the constraints of code structure.
+  Disadvantages of Black Box Testing:
+
+  - **Limited Coverage** : Only a subset of possible inputs can be tested, potentially missing out on certain defects.
+  - **Inefficient for Algorithm Testing** : Not suitable for testing complex algorithms as the internal workings are not examined.
+  - **Potential Redundancy** : Without knowledge of the internal code, tests may be repetitive or unnecessary.
+  - **Missed Cases** : Some paths or internal states may not be tested if the test cases are not comprehensive enough.
+  - **Dependency on Specifications** : Heavily reliant on accurate and detailed specifications; any ambiguity can lead to inadequate testing.
+
+#### How does Black Box Testing differ from White Box Testing?
+
+  Black Box Testing and [White Box Testing](/en/wiki/white-box-testing/) are distinct approaches to [software testing](/en/wiki/software-testing/). **Black Box Testing** focuses on examining software functionality without knowledge of internal code structure, implementation details, or internal paths. Testers validate inputs and outputs, ensuring the software behaves as expected.
+  In contrast, **[White Box Testing](/en/wiki/white-box-testing/)** (also known as Clear Box Testing, [Glass Box Testing](/en/wiki/glass-box-testing/), Transparent Box Testing, or Code-Based Testing) requires a deep understanding of the code. Testers need access to the source code to design [test cases](/en/wiki/test-case/), which allows them to examine program structure, logic, and flow. This approach enables them to identify potential security vulnerabilities, ensure logical paths are tested, and look for specific code behaviors.
+  While Black Box Testing treats the software as a closed system, [White Box Testing](/en/wiki/white-box-testing/) adopts an open perspective, scrutinizing the internal workings. Black Box Testing is often performed by QA professionals who may not be programmers, whereas [White Box Testing](/en/wiki/white-box-testing/) is typically carried out by developers or testers with programming skills.
+  The choice between Black Box and [White Box Testing](/en/wiki/white-box-testing/) depends on the testing objectives, available resources, and project requirements. Black Box Testing is suitable for validating overall software functionality and user experience, while [White Box Testing](/en/wiki/white-box-testing/) is ideal for optimizing code structure, improving design, and ensuring thorough path coverage.
+
+### Techniques
+
+#### What are the different Black Box Testing techniques?
+
+  Black Box Testing techniques extend beyond the commonly discussed methods. Here are additional techniques that automation engineers might employ:
+
+  - **[Error Guessing](/en/wiki/error-guessing/)**: This technique relies on the tester's experience to guess the problematic areas of the application. Testers create [test cases](/en/wiki/test-case/) based on intuition and past knowledge of similar applications.
+  - **Comparison Testing**: Also known as competitive analysis, this involves comparing the strengths and weaknesses of the software against similar applications to identify potential areas for improvement.
+  - **Combinatorial Testing**: This method tests all possible combinations of inputs and preconditions. It's useful when multiple parameters can affect the outcome, and you want to ensure coverage of all permutations.
+  - **[Exploratory Testing](/en/wiki/exploratory-testing/)**: Although less structured, [exploratory testing](/en/wiki/exploratory-testing/) involves simultaneous learning, test design, and execution. It's an investigative approach where the tester actively controls the design of the tests as they are performed.
+  - **Syntax Testing**: This is used when input values are selected based on the specific syntax of the input. It's particularly useful for systems that require structured inputs like compilers or data transformation programs.
+  - **[Fuzz Testing](/en/wiki/fuzz-testing/)**: An automated [software testing](/en/wiki/software-testing/) technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, or failing built-in code assertions.
+  Each technique offers a different lens through which to examine the software, providing a comprehensive testing strategy when used in conjunction. Automation engineers can leverage these techniques to create robust [test suites](/en/wiki/test-suite/) that effectively validate software behavior without knowledge of the internal workings.
+
+
+#### What is Equivalence Partitioning in Black Box Testing?
+
+  [Equivalence Partitioning](/en/wiki/equivalence-partitioning/) is a **black box testing** technique that divides input data of a software application into partitions of equivalent data from which [test cases](/en/wiki/test-case/) can be derived. By doing this, it is assumed that all the values from one partition will be treated in the same way by the system. This method reduces the total number of [test cases](/en/wiki/test-case/) that need to be developed while still ensuring adequate [test coverage](/en/wiki/test-coverage/).
+  In [Equivalence Partitioning](/en/wiki/equivalence-partitioning/), inputs to the software or system are categorized into groups that are expected to exhibit similar behavior, so testing a single value from each group is considered representative of the whole partition. For example, if an input accepts a range of values from 1 to 50, the range could be divided into partitions such as 1-10, 11-20, etc., and tests could be designed for each partition.
+  The main goal is to identify **faults** related to the input data. If a [bug](/en/wiki/bug/) is present, it should affect all the members of that partition. This technique can be applied to all levels of testing: unit, integration, system, and acceptance.
+  Here's a simple example in pseudocode to illustrate how you might define equivalence partitions:
+
+  ```
+  IF input >= 1 AND input <= 10 THEN
+    // Test cases for partition 1
+  ELSIF input > 10 AND input <= 20 THEN
+    // Test cases for partition 2
+  ELSIF input > 20 AND input <= 30 THEN
+    // Test cases for partition 3
+  // ... and so on
+  ENDIF
+  ```
+  Using [Equivalence Partitioning](/en/wiki/equivalence-partitioning/), testers can maximize [test coverage](/en/wiki/test-coverage/) while minimizing the number of [test cases](/en/wiki/test-case/), leading to more efficient testing.
+
+#### What is Boundary Value Analysis in Black Box Testing?
+
+  Boundary Value Analysis (BVA) is a **black box testing** technique that focuses on the values at the edges of equivalence partitions. It's based on the principle that errors tend to occur at the boundaries of input ranges. BVA involves creating [test cases](/en/wiki/test-case/) for the values which are at the **limits** of these partitions.
+  For a given range with a lower bound `L` and upper bound `U`, BVA suggests designing [test cases](/en/wiki/test-case/) for the values `L`, `L+1`, `U`, and `U-1`. Additionally, if applicable, values just outside the boundaries, `L-1` and `U+1`, are also tested.
+  Consider an input field that accepts an integer value between 1 and 100. Using BVA, you would test the boundary values: `0`, `1`, `2`, `99`, `100`, and `101`.
+  BVA is often combined with **[Equivalence Partitioning](/en/wiki/equivalence-partitioning/)** (EP) as they complement each other. While EP helps in identifying which sets of values to test (equivalence classes), BVA helps in pinpointing the specific boundary values within those sets.
+  This technique is particularly useful when testing:
+
+  - Range-based inputs
+  - Array and list boundaries
+  - Conditions with boundary-related logic
+  It's a cost-effective method since it reduces the number of [test cases](/en/wiki/test-case/), while still having a high likelihood of uncovering defects at the most error-prone areas. [Test automation](/en/wiki/test-automation/) engineers can leverage BVA by incorporating these boundary values into their automated [test suites](/en/wiki/test-suite/) to ensure thorough coverage of potential edge cases.
+
+  - Range-based inputs
+  - Array and list boundaries
+  - Conditions with boundary-related logic
+
+#### What is Decision Table Testing in Black Box Testing?
+
+  [Decision Table Testing](/en/wiki/decision-table-testing/) is a **systematic** black box testing technique used to test complex business logic that can be applied to various inputs and conditions. It involves creating a table, often referred to as a **cause-effect table**, where each column represents a unique combination of inputs, and each row corresponds to the decisions or actions that should be taken based on those inputs.
+  In this approach, you identify **conditions** (causes) and **actions** (effects) to construct the decision table. Conditions are input states or variables, while actions are the outcomes or system behaviors. The decision table helps ensure that different combinations of inputs have been considered, making it particularly useful for testing systems with numerous interdependent variables or when dealing with logical conditions that might otherwise be overlooked.
+  Here's a simplified example of a decision table structure:
+
+  ```
+  | Conditions | C1 | C2 | C3 | C4 |
+  |------------|----|----|----|----|
+  | Input 1    | Y  | Y  | N  | N  |
+  | Input 2    | Y  | N  | Y  | N  |
+  |------------|----|----|----|----|
+  | Actions    | A1 | A2 | A3 | A4 |
+  |------------|----|----|----|----|
+  ```
+  In this table, `Y` and `N` represent different states of the inputs, and `A1` to `A4` represent the actions to be taken for each combination of input states.
+  To apply [Decision Table Testing](/en/wiki/decision-table-testing/), you would:
+
+  1. Identify all relevant conditions and actions.
+  2. Create a comprehensive decision table with all possible combinations of conditions.
+  3. Determine the expected action for each combination.
+  4. Design test cases to validate that the system behaves as expected for each combination.
+  This technique is particularly effective for **[functional testing](/en/wiki/functional-testing/)** and ensuring coverage of all possible scenarios, which can significantly enhance the [test suite](/en/wiki/test-suite/)'s robustness.
+
+
+#### What is State Transition Testing in Black Box Testing?
+
+  [State Transition Testing](/en/wiki/state-transition-testing/) is a **black box testing** technique used when a system is defined by a finite number of states and the transitions between these states are governed by the rules of the system. It is particularly useful for systems where an output is dependent not just on the current input but also on the history of inputs, such as transactional systems, protocols, or stateful applications.
+  In this approach, testers design [test cases](/en/wiki/test-case/) to validate that transitions between states occur as expected, and that the system behaves correctly in each state. This involves:
+
+  - Identifying all the
+    **states**
+    the software can be in.
+
+  - Understanding the
+    **transitions**
+    between these states triggered by events or conditions.
+
+  - Defining the
+    **inputs or events**
+    that cause the transitions.
+
+  - Determining the
+    **expected outputs**
+    or actions that result from the transitions.
+  Testers create a **state transition diagram** or table to visualize and understand the various states and transitions. This aids in systematically covering all possible paths.
+  Here's a simple example of a state transition table for a login process:
+
+  ```
+  | Current State | Input         | Next State | Output           |
+  |---------------|---------------|------------|------------------|
+  | Logged Out    | Valid Login   | Logged In  | Access Granted   |
+  | Logged Out    | Invalid Login | Logged Out | Error Message    |
+  | Logged In     | Logout        | Logged Out | Logout Successful|
+  ```
+  [State Transition Testing](/en/wiki/state-transition-testing/) ensures that the software correctly handles sequence-dependent behaviors, and it's particularly effective for uncovering defects related to state changes that might not be exposed through other black box techniques.
+
+  - Identifying all the
+    **states**
+    the software can be in.
+
+  - Understanding the
+    **transitions**
+
+#### What is Use Case Testing in Black Box Testing?
+
+  [Use Case Testing](/en/wiki/use-case-testing/) is a **black box testing** technique that involves creating [test cases](/en/wiki/test-case/) based on **[use cases](/en/wiki/use-case/)**. A [use case](/en/wiki/use-case/) describes how a system interacts with external entities (like users or other systems) to achieve a specific goal. In this approach, testers focus on **user scenarios** and **[functional requirements](/en/wiki/functional-requirements/)** to validate that the system behaves as expected.
+  Testers develop [test cases](/en/wiki/test-case/) that cover the complete flow of a [use case](/en/wiki/use-case/), including **main flows** (standard operation) and **alternative flows** (error conditions and other branches). This ensures that all the paths that a user might take through the application are tested. [Use Case Testing](/en/wiki/use-case-testing/) is particularly useful for identifying **integration** and **system-level issues** that might not be apparent in unit or component testing.
+  Here's a simplified example of a [use case](/en/wiki/use-case/) for an e-commerce application:
+
+  ```
+  Use Case: Purchase Product
+  1. User selects a product.
+  2. User adds the product to the shopping cart.
+  3. User proceeds to checkout.
+  4. User enters payment information.
+  5. System processes payment.
+  6. System confirms the order and sends an email to the user.
+  ```
+  Based on this [use case](/en/wiki/use-case/), [test cases](/en/wiki/test-case/) would be created to cover each step, including scenarios where the user enters invalid payment information or the system fails to process the payment.
+  [Use Case Testing](/en/wiki/use-case-testing/) is effective because it is **user-centric**, ensuring that the system meets the needs and expectations of end-users. It is also a way to **validate business processes** and ensure that the system supports them correctly.
+
+### Process and Implementation
+
+#### What are the steps involved in Black Box Testing?
+
+  The steps involved in **Black Box Testing** are as follows:
+
+  1. **Understand Requirements** : Review software requirements and specifications to understand expected behavior.
+  2. **Define Test Objectives** : Establish what you intend to verify, such as functionality, usability, or performance.
+  3. **Test Planning** : Determine the scope, resources, timelines, and methodologies to be used.
+  4. **Design [Test Cases](/en/wiki/test-case/)** : Create test cases that cover all possible inputs, outputs, and user interactions.
+    - Use techniques like
+      *Boundary Value Analysis*
+      ,
+      *Equivalence Partitioning*
+      ,
+      *Decision Table Testing*
+      , etc.
+
+     - Use techniques like
+       *Boundary Value Analysis*
+       ,
+       *Equivalence Partitioning*
+       ,
+       *Decision Table Testing*
+       , etc.
+
+  5. **Prepare [Test Environment](/en/wiki/test-environment/)** : Set up the testing environment to mimic production settings.
+  6. **[Test Execution](/en/wiki/test-execution/)** : Run the designed test cases on the software.
+    - Document outcomes and compare them with expected results.
+    - Document outcomes and compare them with expected results.
+  7. **Defect Reporting** : Log any discrepancies found as defects for the development team to address.
+  8. **[Retesting](/en/wiki/retesting/)** : Once defects are fixed, retest the software to ensure the fixes work as intended.
+  9. **[Regression Testing](/en/wiki/regression-testing/)** : Check that new changes haven't adversely affected existing functionality.
+  10. **Test Closure** : Compile test results, assess coverage, and evaluate the quality of the testing process.
+  Throughout these steps, maintain clear and concise documentation for transparency and future reference. Use automation tools where applicable to enhance efficiency and repeatability.
+
+
+#### How is Black Box Testing performed?
+
+  Black Box Testing is performed through the following steps:
+
+  1. **Understand requirements and specifications**
+    of the software to determine what the system is supposed to do.
+
+  2. **Develop [test cases](/en/wiki/test-case/)**
+    that cover all the functionalities mentioned in the specifications. These test cases should focus on inputs and expected outputs without considering the internal code structure.
+
+  3. **Select Black Box Testing techniques**
+    such as Equivalence Partitioning, Boundary Value Analysis, Decision Table Testing, State Transition Testing, or Use Case Testing to create effective test scenarios.
+
+  4. **Prepare [test data](/en/wiki/test-data/)**
+    for the test cases, ensuring a mix of positive and negative test scenarios.
+
+  5. **Execute [test cases](/en/wiki/test-case/)**
+    by providing the inputs and comparing the actual outputs against the expected results.
+
+  6. **Record the results**
+    of the test cases and log any discrepancies as defects.
+
+  7. **Retest**
+    once defects have been fixed, to confirm that the issue has been resolved and that no new issues have been introduced.
+
+  8. **Report**
+    on the testing process, including coverage, defect findings, and an assessment of the software quality.
+  During execution, [automated testing](/en/wiki/automated-testing/) tools can be used to input [test data](/en/wiki/test-data/), record results, and compare outcomes. Tools vary from simple record-and-playback tools to more sophisticated testing frameworks that can be integrated into Continuous Integration/Continuous Deployment (CI/CD) pipelines.
+
+  ```
+  // Example of a simple automated black box test case in TypeScript
+  describe('Login Functionality', () => {
+    it('should allow a user to log in with valid credentials', () => {
+      const input = { username: 'user1', password: 'pass123' };
+      const expectedOutput = { success: true, message: 'Login successful' };
+      const actualOutput = loginFunction(input);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+  });
+  ```
+  This approach ensures that the system is tested from the user's perspective, validating the software's functionality and usability.
+
+
+#### What are the criteria for selecting a Black Box Testing technique?
+
+  Selecting a **Black Box Testing** technique depends on several criteria:
+
+  - **Application Type**: Consider the type of application under test. For instance, web applications might benefit more from techniques like **[State Transition Testing](/en/wiki/state-transition-testing/)**, while financial applications may require rigorous **Boundary Value Analysis**.
+  - **Testing Goals**: Align the technique with the specific goals of the test. If the goal is to validate business processes, **[Use Case Testing](/en/wiki/use-case-testing/)** might be the best choice.
+  - **Complexity of the Software**: For complex systems, a combination of techniques like **[Equivalence Partitioning](/en/wiki/equivalence-partitioning/)** and **Boundary Value Analysis** can be effective.
+  - **Risk Assessment**: High-risk areas might need more thorough testing with techniques that cover a wide range of inputs and user behaviors, such as **[Decision Table Testing](/en/wiki/decision-table-testing/)**.
+  - **Resource Availability**: Consider the time and manpower available. Some techniques require more preparation and execution time than others.
+  - **Documentation**: The availability and quality of documentation can influence the choice. For example, **[Decision Table Testing](/en/wiki/decision-table-testing/)** requires detailed specifications.
+  - **Customer Requirements**: Sometimes the choice is driven by specific customer or regulatory requirements for testing.
+  - **Previous Defects**: Analyze defects from previous releases to determine which areas are prone to errors and select a technique that focuses on those areas.
+  - **[Test Coverage](/en/wiki/test-coverage/)**: Ensure that the chosen technique provides the required [test coverage](/en/wiki/test-coverage/) for the application’s functionality.
+  - **Tool Support**: Availability of tools that support the technique can also be a deciding factor, as it can improve efficiency and effectiveness.
+  In summary, the selection should be a strategic decision based on the application characteristics, testing goals, and available resources, aiming to maximize [test coverage](/en/wiki/test-coverage/) and defect detection.
+
+
+#### What tools are used in Black Box Testing?
+
+  Black Box Testing tools facilitate the testing process without requiring knowledge of the internal code structure. These tools focus on input and output validation. Here are some commonly used tools:
+
+  - **[Selenium](/en/wiki/selenium/)** : An open-source tool for automating web browsers. It supports multiple languages and frameworks.
+
+    ```
+    WebDriver driver = new ChromeDriver();
+    driver.get("http://www.example.com");
+    WebElement element = driver.findElement(By.id("element_id"));
+    element.sendKeys("test input");
+    driver.quit();
+    ```
+
+  - **Appium** : Extends Selenium's framework to mobile applications, both Android and iOS.
+
+    ```
+    DesiredCapabilities caps = new DesiredCapabilities();
+    caps.setCapability("platformName", "iOS");
+    caps.setCapability("deviceName", "iPhone Simulator");
+    caps.setCapability("app", "/path/to/app.zip");
+    AppiumDriver driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+    ```
+
+  - **QTP/UFT (Unified [Functional Testing](/en/wiki/functional-testing/))**: A commercial tool from Micro Focus for functional and [regression testing](/en/wiki/regression-testing/) with a visual interface.
+  - **TestComplete**: Another commercial tool that supports desktop, mobile, and web applications.
+  - **SoapUI**: Primarily used for [API testing](/en/wiki/api-testing/), it allows testers to execute automated functional, regression, compliance, and load tests on different Web [APIs](/en/wiki/api-testing/).
+  - **[JMeter](/en/wiki/jmeter/)**: An Apache project used for [performance testing](/en/wiki/performance-testing/), it can also be configured for [functional testing](/en/wiki/functional-testing/) of web applications.
+  - **[Postman](/en/wiki/postman/)**: A tool for [API testing](/en/wiki/api-testing/), which allows users to build and execute automated tests through a user-friendly interface.
+  - **Robot Framework**: A keyword-driven [test automation](/en/wiki/test-automation/) framework for [acceptance testing](/en/wiki/acceptance-testing/) and acceptance [test-driven development](/en/wiki/test-driven-development/) (ATDD).
+  Each tool offers unique features and integrations, allowing testers to select the most appropriate one based on the application under test and the specific requirements of the testing process.
+
+  - **[Selenium](/en/wiki/selenium/)** : An open-source tool for automating web browsers. It supports multiple languages and frameworks.
+  - **Appium** : Extends Selenium's framework to mobile applications, both Android and iOS.
+
+#### How to write effective test cases in Black Box Testing?
+
+  Writing effective [test cases](/en/wiki/test-case/) in Black Box Testing involves focusing on the external behavior of the software rather than its internal structure. Here are key strategies:
+
+  - **Understand user requirements**
+    thoroughly to ensure test cases align with what the software is intended to do.
+
+  - **Identify [test scenarios](/en/wiki/test-scenario/)**
+    that cover all functional aspects of the application, including edge cases.
+
+  - Use
+    **Boundary Value Analysis**
+    and
+    **[Equivalence Partitioning](/en/wiki/equivalence-partitioning/)**
+    to minimize test cases while maximizing coverage.
+
+  - Incorporate
+    **[Decision Table Testing](/en/wiki/decision-table-testing/)**
+    for complex business rules to ensure all possible combinations are tested.
+
+  - Apply
+    **[State Transition Testing](/en/wiki/state-transition-testing/)**
+    for applications with a finite number of states or modes.
+
+  - Leverage
+    **[Use Case Testing](/en/wiki/use-case-testing/)**
+    to simulate real-world usage and user interactions with the system.
+
+  - **Prioritize [test cases](/en/wiki/test-case/)**
+    based on risk and criticality to focus on the most important areas first.
+
+  - Ensure test cases are
+    **independent**
+    and can be executed in any sequence without dependencies.
+
+  - Write
+    **clear and concise**
+    test steps with expected outcomes for each step to avoid ambiguity.
+
+  - **Review and refine**
+    test cases regularly to adapt to changes in user requirements and to incorporate feedback from previous test cycles.
+
+  - Use
+    **automation tools**
+    where appropriate to increase efficiency and repeatability of test cases.
+  Remember, the goal is to validate that the software meets user expectations and behaves correctly in all scenarios, without considering the internal workings of the application.
+
+  - **Understand user requirements**
+
+### Real World Applications
+
+#### What are some real-world examples of Black Box Testing?
+
+  Real-world examples of **Black Box Testing** include:
+
+  - **User Interface (UI) Testing**: Validating the UI elements of a web application like buttons, forms, and navigation without knowing the internal code structure.
+  - **[Functional Testing](/en/wiki/functional-testing/)**: Testing a payment gateway's functionality in an e-commerce app by executing transactions without knowledge of the underlying service logic.
+  - **[System Testing](/en/wiki/system-testing/)**: Verifying the complete and integrated software product, such as a mobile app, to ensure it meets specified requirements.
+  - **[Acceptance Testing](/en/wiki/acceptance-testing/)**: Conducting tests on a Customer Relationship Management (CRM) system to determine if it fulfills business needs and user expectations.
+  - **[Regression Testing](/en/wiki/regression-testing/)**: After updates to a streaming service platform, ensuring that existing functionalities, like video playback and user authentication, still work as intended.
+  - **[Exploratory Testing](/en/wiki/exploratory-testing/)**: Manually testing a new feature in a project management tool through exploration and experimentation to uncover unexpected behaviors.
+  - **Ad-hoc Testing**: Randomly testing a GPS navigation app without any specific [test cases](/en/wiki/test-case/) to find potential defects.
+  - **[Compatibility Testing](/en/wiki/compatibility-testing/)**: Checking if a productivity software operates consistently across different operating systems, browsers, and devices.
+  - **[Performance Testing](/en/wiki/performance-testing/)**: Measuring the response time and throughput of an [API](/en/wiki/api-testing/) under various load conditions without examining the internal workings.
+  Each of these examples demonstrates the application of **Black Box Testing** in assessing the external functionality of a software component or system, without delving into the internal code structure or implementation details.
+
+
+#### How is Black Box Testing used in Agile development?
+
+  In **[Agile development](/en/wiki/agile-development/)**, Black Box Testing is integrated into various stages of the iterative process. Testers, often working in parallel with developers, create [test cases](/en/wiki/test-case/) based on user stories and acceptance criteria without knowledge of the internal workings of the item being tested. This approach aligns with Agile principles by focusing on user perspective and product functionality.
+  During each sprint, Black Box Testing is employed to validate new features and regression test existing functionality. Agile teams may use **automated Black Box Testing** to quickly execute a suite of tests for each build, ensuring that continuous integration and delivery pipelines provide immediate feedback on the health of the application.
+  Testers collaborate closely with developers and product owners in Agile teams, allowing for rapid adjustments to [test plans](/en/wiki/test-plan/) as requirements evolve. This collaboration is crucial for maintaining the pace of Agile sprints and for ensuring that testing is always aligned with current user expectations.
+  **[Exploratory testing](/en/wiki/exploratory-testing/)**, a technique often used in Agile, is a form of Black Box Testing where testers actively explore the software without predefined [test cases](/en/wiki/test-case/), which enhances the discovery of issues that structured testing might miss.
+  In summary, Black Box Testing in Agile is about:
+
+  - Testing from the user's perspective
+  - Aligning tests with user stories and acceptance criteria
+  - Integrating testing into the continuous delivery pipeline
+  - Adapting to changes quickly through close team collaboration
+  - Employing exploratory testing to uncover unexpected issues
+  By using Black Box Testing, Agile teams ensure that the software consistently meets user needs and that any potential defects are identified and resolved swiftly, maintaining the pace and quality of Agile software development.
+
+
+#### How is Black Box Testing used in software development life cycle (SDLC)?
+
+  Black Box Testing is integrated into the **[Software Development Life Cycle](/en/wiki/software-development-life-cycle/) (SDLC)** at various stages to ensure that the application functions as expected from the user's perspective. During the **requirements gathering phase**, black box testing helps in understanding user requirements and designing tests that reflect user scenarios.
+  In the **design phase**, testers prepare [test plans](/en/wiki/test-plan/) and cases based on the requirements without considering internal code structure. As the **development phase** progresses, black box testing is applied to validate the developed features against the requirements. This is often done through **[manual testing](/en/wiki/manual-testing/)** or **automated [UI testing](/en/wiki/ui-testing/)**.
+  During the **testing phase**, black box methods like **boundary value analysis**, **[equivalence partitioning](/en/wiki/equivalence-partitioning/)**, and **[decision table testing](/en/wiki/decision-table-testing/)** are used to ensure comprehensive coverage of the application's functionality. These techniques help in identifying defects that might not be apparent through code [inspection](/en/wiki/inspection/) or [white box testing](/en/wiki/white-box-testing/) methods.
+  In **staging or pre-production environments**, black box testing is crucial for **[system testing](/en/wiki/system-testing/)** and **[user acceptance testing](/en/wiki/user-acceptance-testing/) (UAT)**, ensuring that the software meets business needs and is ready for deployment.
+  Finally, after the **deployment phase**, black box testing continues in the form of **[regression testing](/en/wiki/regression-testing/)** to verify that new changes haven't adversely affected existing functionality. It's also used for **[maintenance testing](/en/wiki/maintenance-testing/)** when updates or patches are released.
+  Throughout the SDLC, black box testing provides a user-centric approach to [quality assurance](/en/wiki/quality-assurance/), complementing [white box testing](/en/wiki/white-box-testing/) and ensuring that the software is validated from both inside out and outside in.
+
+#### How is Black Box Testing used in end-to-end (E2E) testing?
+
+  In **end-to-end (E2E) testing**, **Black Box Testing** is applied to validate the integrated system against requirements. Testers, unaware of the internal workings of the application, simulate user behavior to ensure all interconnected components function together as expected.
+  E2E testing involves:
+
+  - **Simulating real user scenarios** : Testers create tests that mimic user actions from start to finish, covering typical user flows.
+  - **Testing the application in a production-like environment** : This includes interactions with databases, network communications, external services, and other applications.
+  - **Validating functional and non-[functional requirements](/en/wiki/functional-requirements/)** : While ensuring that features work as intended, testers also check performance, usability, and reliability.
+  Testers use **automation tools** like [Selenium](/en/wiki/selenium/), [Cypress](/en/wiki/cypress/), or Playwright to script these scenarios, which are then run to verify the application's behavior. This approach helps in identifying issues that unit or integration tests might miss.
+  **Example**:
+
+  ```
+  describe('User Registration and Login Process', () => {
+    it('should register a new user', () => {
+      // Steps to simulate user registration
+    });
+    it('should login with the new user', () => {
+      // Steps to simulate user login
+    });
+    // Additional tests for subsequent user actions
+  });
+  ```
+  By focusing on the user's perspective, Black Box E2E testing ensures the software meets business requirements and provides a quality experience for the end user.

@@ -46,11 +46,12 @@ order: 0
   - [Environment Details](#environment-details)
   - [Action Items](#action-items)
 <!-- TOC END -->
+
 依赖性测试在软件测试指检查不同软件模块或组件之间的交互和依赖关系以确保它们正确交互的过程。此类测试的重点是识别当一个组件依赖另一个组件正常运行时可能出现的问题。
 
 ## 相关术语
 
-- [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)
+- [集成测试](/zh-cn/wiki/integration-testing/)
 
 ## 关于依赖性测试的问题？
 
@@ -58,41 +59,41 @@ order: 0
 
 #### 软件测试中的依赖测试是什么？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 是[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的一项策略，重点是验证依赖于外部因素或其他模块的软件组件的正常运行。它确保应用程序的不同部分与任何第三方服务或库之间的交互按预期工作。此类测试可以揭示系统某一部分的更改可能对另一部分产生不利影响的问题，从而可能导致故障或意外行为。
-  实际上，[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 涉及创建专门针对组件之间的连接和数据交换的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。测试人员模拟各种场景来检查依赖模块是否对更改做出正确反应，包括依赖项的更新、配置修改或故障状态。
-  为了有效地执行[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)，测试人员经常使用**模拟**和**存根**来复制外部系统或模块的行为。这样可以隔离被测组件，并确保测试不会受到外部不一致或不可用性的影响。
-  **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** 是应用 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 的常见阶段，因为它自然涉及组合各个软件模块并将它们作为一个组进行测试。当各个单元具有需要验证的依赖关系时，[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 也可以是 **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/)** 的一部分。
-  通过关注互连和交互，[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 有助于维护系统稳定性并防止集成问题，特别是在组件紧密耦合或严重依赖外部服务的复杂系统中。
+[依赖测试](/zh-cn/wiki/dependency-testing/) 是[软件测试](/zh-cn/wiki/software-testing/) 中的一项策略，重点是验证依赖于外部因素或其他模块的软件组件的正常运行。它确保应用程序的不同部分与任何第三方服务或库之间的交互按预期工作。此类测试可以揭示系统某一部分的更改可能对另一部分产生不利影响的问题，从而可能导致故障或意外行为。
+  实际上，[依赖测试](/zh-cn/wiki/dependency-testing/) 涉及创建专门针对组件之间的连接和数据交换的[测试用例](/zh-cn/wiki/test-case/)。测试人员模拟各种场景来检查依赖模块是否对更改做出正确反应，包括依赖项的更新、配置修改或故障状态。
+  为了有效地执行[依赖测试](/zh-cn/wiki/dependency-testing/)，测试人员经常使用**模拟**和**存根**来复制外部系统或模块的行为。这样可以隔离被测组件，并确保测试不会受到外部不一致或不可用性的影响。
+  **[集成测试](/zh-cn/wiki/integration-testing/)** 是应用 [依赖测试](/zh-cn/wiki/dependency-testing/) 的常见阶段，因为它自然涉及组合各个软件模块并将它们作为一个组进行测试。当各个单元具有需要验证的依赖关系时，[依赖测试](/zh-cn/wiki/dependency-testing/) 也可以是 **[单元测试](/zh-cn/wiki/unit-testing/)** 的一部分。
+  通过关注互连和交互，[依赖测试](/zh-cn/wiki/dependency-testing/) 有助于维护系统稳定性并防止集成问题，特别是在组件紧密耦合或严重依赖外部服务的复杂系统中。
 
 #### 为什么依赖性测试在软件开发中很重要？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 在软件开发中至关重要，因为它确保相互依赖的组件按预期一起运行。通过验证模块之间的交互和数据流，[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 有助于及早识别集成问题，从而降低生产中出现缺陷的风险。它还验证系统某一部分的更改不会对其他部分产生不利影响，从而保持软件的稳定性和可靠性。
-  **依赖关系分析**通过绘制组件之间的关系和层次结构发挥着关键作用，指导创建有效的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。 **静态**和**动态分析**等技术分别用于检查未执行的代码和监视运行时的系统行为。
-  将 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 纳入**软件开发生命周期 (SDLC)**，尤其是**CI/CD 管道**中，可确保组件交互的持续验证，从而促进稳健的集成过程。自动化工具可以简化此过程，从而实现频繁且一致的测试。
+[依赖测试](/zh-cn/wiki/dependency-testing/) 在软件开发中至关重要，因为它确保相互依赖的组件按预期一起运行。通过验证模块之间的交互和数据流，[依赖测试](/zh-cn/wiki/dependency-testing/) 有助于及早识别集成问题，从而降低生产中出现缺陷的风险。它还验证系统某一部分的更改不会对其他部分产生不利影响，从而保持软件的稳定性和可靠性。
+  **依赖关系分析**通过绘制组件之间的关系和层次结构发挥着关键作用，指导创建有效的[测试用例](/zh-cn/wiki/test-case/)。 **静态**和**动态分析**等技术分别用于检查未执行的代码和监视运行时的系统行为。
+  将 [依赖测试](/zh-cn/wiki/dependency-testing/) 纳入**软件开发生命周期 (SDLC)**，尤其是**CI/CD 管道**中，可确保组件交互的持续验证，从而促进稳健的集成过程。自动化工具可以简化此过程，从而实现频繁且一致的测试。
   然而，复杂的依赖关系和不断发展的代码库等挑战需要战略规划来缓解。最佳实践包括维护更新的依赖关系图、确定测试关键路径的优先级以及确保测试结果的清晰传达。
-  为了衡量有效性，可以跟踪缺陷密度和平均解决时间 (MTTR) 等指标。避免常见错误，例如忽略间接依赖性或低估测试范围。优化性能涉及定期重构[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)并尽可能利用并行执行。
+  为了衡量有效性，可以跟踪缺陷密度和平均解决时间 (MTTR) 等指标。避免常见错误，例如忽略间接依赖性或低估测试范围。优化性能涉及定期重构[测试套件](/zh-cn/wiki/test-suite/)并尽可能利用并行执行。
   最后，应简明地记录结果，突出关键问题及其影响，以促进快速决策和补救工作。
 
 #### 依赖性测试的主要好处是什么？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 的主要优点包括：
+[依赖测试](/zh-cn/wiki/dependency-testing/) 的主要优点包括：
 
 - **早期发现问题**：通过测试不同软件模块之间的交互，您可以在开发周期的早期识别并解决集成问题。
 - **提高可靠性**：确保依赖项一起正确工作可以增强软件的整体可靠性。
 - **简化调试**：当测试失败时，如果您了解所涉及的依赖关系，则可以更轻松地查明问题。
-- **增强的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：依赖性测试不仅验证单个单元，还验证它们的连接，从而扩展了覆盖范围。
+- **增强的[测试覆盖率](/zh-cn/wiki/test-coverage/)**：依赖性测试不仅验证单个单元，还验证它们的连接，从而扩展了覆盖范围。
 - **风险缓解**：通过验证一个模块中的更改不会对其他模块产生不利影响，您可以降低引入新缺陷的风险。
 - **简化维护**：通过清楚地了解依赖关系，维护和更新软件变得更加简单。
 - **更好的设计**：依赖性测试可以鼓励更好的软件设计，因为开发人员必须考虑组件如何交互。
 - **自动化兼容性**：依赖性测试可以自动化，从而实现更快、更频繁的测试周期。
-- **对重构的信心**：知道依赖项经过测试可以让开发人员有信心重构代码，改进其结构和性能，而不必担心破坏功能。 通过关注软件组件之间的交互，[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 在提供强大且可靠的软件产品方面发挥着至关重要的作用。
+- **对重构的信心**：知道依赖项经过测试可以让开发人员有信心重构代码，改进其结构和性能，而不必担心破坏功能。 通过关注软件组件之间的交互，[依赖测试](/zh-cn/wiki/dependency-testing/) 在提供强大且可靠的软件产品方面发挥着至关重要的作用。
 
 #### 依赖性测试如何提高软件质量？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 通过确保系统某一部分的更改不会对其他相关组件产生不利影响来增强[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。它验证模块之间交互和数据流的可靠性，从而实现稳健的集成并减少运行时错误。通过及早发现问题，可以降低生产中出现缺陷的风险，而修复这些缺陷可能成本高昂且耗时。
-  自动化 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 简化了流程，作为 CI/CD 管道的一部分实现频繁且一致的检查。这种自动化可以通过编写脚本或使用分析和测试依赖关系的专用工具来实现。例如：
+[依赖测试](/zh-cn/wiki/dependency-testing/) 通过确保系统某一部分的更改不会对其他相关组件产生不利影响来增强[软件质量](/zh-cn/wiki/software-quality/)。它验证模块之间交互和数据流的可靠性，从而实现稳健的集成并减少运行时错误。通过及早发现问题，可以降低生产中出现缺陷的风险，而修复这些缺陷可能成本高昂且耗时。
+  自动化 [依赖测试](/zh-cn/wiki/dependency-testing/) 简化了流程，作为 CI/CD 管道的一部分实现频繁且一致的检查。这种自动化可以通过编写脚本或使用分析和测试依赖关系的专用工具来实现。例如：
 
-```
+  ```
   describe('Dependency Test Suite', () => {
     test('Module A should correctly pass data to Module B', () => {
       // Setup Module A and B with necessary mocks
@@ -100,13 +101,13 @@ order: 0
       // Assert that Module B receives the correct data
     });
   });
-```
+  ```
 **最佳实践**包括维护更新的依赖关系图、使用模拟对象进行隔离测试以及将测试集成到构建过程中以获得即时反馈。有效性是通过升级或重构过程中集成缺陷的减少以及系统的稳定性来衡量的。
   为了避免常见的陷阱，请确保依赖性测试不会与实现细节过度耦合，否则可能会导致测试脆弱。应清楚地报告结果，突出显示任何故障及其对其他系统组件的影响，以便于快速修复。
 
 #### 如果不进行依赖性测试，有哪些潜在风险？
 
-跳过 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 可能会导致多种**风险**：
+跳过 [依赖测试](/zh-cn/wiki/dependency-testing/) 可能会导致多种**风险**：
 
 - **未检测到的故障**：依赖关系可能会失败，从而导致级联效应，直到开发周期后期或生产中才被注意到。
 - **集成问题**：相互依赖的系统或组件可能无法按预期协同工作，从而导致集成缺陷。
@@ -116,22 +117,22 @@ order: 0
 - **发布延迟**：不可预见的依赖项问题通常会导致发布计划的延迟，因为它们需要最后一刻的修复。
 - **可靠性受损**：软件的整体可靠性受到损害，因为未经测试的依赖关系可能会带来不稳定。
 - **安全漏洞**：依赖关系，尤其是来自第三方的依赖关系，可能会引入未经适当测试而无法检查的安全风险。
-- **技术债务**：随着时间的推移，缺乏依赖测试可能会导致技术债务，使系统更加脆弱且更难以维护。 为了减轻这些风险，请确保[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 是您的[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/) 的组成部分。使用自动化定期检查问题并维护包含依赖性检查的强大 CI/CD 管道。
+- **技术债务**：随着时间的推移，缺乏依赖测试可能会导致技术债务，使系统更加脆弱且更难以维护。 为了减轻这些风险，请确保[依赖测试](/zh-cn/wiki/dependency-testing/) 是您的[测试策略](/zh-cn/wiki/test-strategy/) 的组成部分。使用自动化定期检查问题并维护包含依赖性检查的强大 CI/CD 管道。
 
 ### 技术和类型
 
 #### 依赖性测试中使用了哪些不同的技术？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 中使用的不同技术包括：
+[依赖测试](/zh-cn/wiki/dependency-testing/) 中使用的不同技术包括：
 
 - **路径分析**：评估代码的执行路径以识别组件之间的依赖关系。
 - **控制流分析**：分析语句、指令或函数调用的执行顺序以发现依赖关系。
 - **数据流分析**：检查数据如何通过软件传递和转换以检测数据依赖性。
-- **[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)** ：重点关注集成组件之间的交互点，以测试数据流和控制流。
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：组合各个软件模块并将它们作为一个组进行测试，这可以揭示依赖关系和交互。
-- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：更改后，确保没有引入新的依赖项，并且现有依赖项仍然按预期工作。
+- **[接口测试](/zh-cn/wiki/interface-testing/)** ：重点关注集成组件之间的交互点，以测试数据流和控制流。
+- **[集成测试](/zh-cn/wiki/integration-testing/)** ：组合各个软件模块并将它们作为一个组进行测试，这可以揭示依赖关系和交互。
+- **[回归测试](/zh-cn/wiki/regression-testing/)** ：更改后，确保没有引入新的依赖项，并且现有依赖项仍然按预期工作。
 
-```
+  ```
   // Example of a simple path analysis in pseudocode
   if (conditionA) {
     call ModuleX();
@@ -139,53 +140,48 @@ order: 0
     call ModuleY();
   }
   // Path analysis would identify a dependency on conditionA for the execution of ModuleX or ModuleY
-```
+  ```
 
-- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) with Mocks/Stubs** ：隔离一段代码并用模拟或存根替换其依赖项以独立测试其行为。
-- **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** ：对完整的集成系统进行测试，以评估系统是否符合其指定的要求。
-- **静态代码分析**：使用工具检查代码而不执行代码以查找可能导致问题的依赖项。 每种技术都解决依赖关系的不同方面，并且可以结合使用以提供全面的[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 策略。
+- **[单元测试](/zh-cn/wiki/unit-testing/) with Mocks/Stubs** ：隔离一段代码并用模拟或存根替换其依赖项以独立测试其行为。
+- **[系统测试](/zh-cn/wiki/system-testing/)** ：对完整的集成系统进行测试，以评估系统是否符合其指定的要求。
+- **静态代码分析**：使用工具检查代码而不执行代码以查找可能导致问题的依赖项。 每种技术都解决依赖关系的不同方面，并且可以结合使用以提供全面的[依赖测试](/zh-cn/wiki/dependency-testing/) 策略。
 
 - **路径分析**：评估代码的执行路径以识别组件之间的依赖关系。
-- **控制流分析**：分析语句、指令或函数调用的执行顺序以发现依赖关系。
-- **数据流分析**：检查数据如何通过软件传递和转换以检测数据依赖性。
-- **[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)** ：重点关注集成组件之间的交互点，以测试数据流和控制流。
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)** ：组合各个软件模块并将它们作为一个组进行测试，这可以揭示依赖关系和交互。
-- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** ：更改后，确保没有引入新的依赖项，并且现有依赖项仍然按预期工作。
-- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) with Mocks/Stubs** ：隔离一段代码并用模拟或存根替换其依赖项以独立测试其行为。
-- **[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)** ：对完整的集成系统进行测试，以评估系统是否符合其指定的要求。
+- **[单元测试](/zh-cn/wiki/unit-testing/) with Mocks/Stubs** ：隔离一段代码并用模拟或存根替换其依赖项以独立测试其行为。
+- **[系统测试](/zh-cn/wiki/system-testing/)** ：对完整的集成系统进行测试，以评估系统是否符合其指定的要求。
 - **静态代码分析**：使用工具检查代码而不执行代码以查找可能导致问题的依赖项。
 
 #### 依赖性测试有哪些类型？
 
-根据依赖关系的性质和测试范围，[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 可以分为几种类型：
+根据依赖关系的性质和测试范围，[依赖测试](/zh-cn/wiki/dependency-testing/) 可以分为几种类型：
 
-- **[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)**：专注于验证相互依赖的不同软件模块或系统之间的交互。
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：涉及测试应用程序的组合部分，以确定它们是否可以正确地协同工作，通常针对组件之间的接口。
-- **模块[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：评估依赖于应用程序中其他模块的特定模块的可靠性和功能。
-- **系统[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：确保整个系统的依赖项（包括外部系统和服务）按预期运行。
-- **服务[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：针对外部服务的依赖关系，例如Web服务、[API](https://inaodeng.com/zh-cn/wiki/api/)或第三方服务。
-- **数据[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：检查共享数据资源的组件或系统之间的数据流是否正确以及完整性。
-- **运行时[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：涉及测试仅在应用程序运行时才明显的依赖项，例如动态库加载或环境变量。
-- **构建[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：验证构建过程是否正确合并了所有必要的组件和依赖项，确保成功编译和部署。 每种类型的[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 都解决软件依赖性的特定方面，选择适当的类型对于彻底验证软件在处理互连组件方面的可靠性和稳健性至关重要。
+- **[接口测试](/zh-cn/wiki/interface-testing/)**：专注于验证相互依赖的不同软件模块或系统之间的交互。
+- **[集成测试](/zh-cn/wiki/integration-testing/)**：涉及测试应用程序的组合部分，以确定它们是否可以正确地协同工作，通常针对组件之间的接口。
+- **模块[依赖测试](/zh-cn/wiki/dependency-testing/)**：评估依赖于应用程序中其他模块的特定模块的可靠性和功能。
+- **系统[依赖测试](/zh-cn/wiki/dependency-testing/)**：确保整个系统的依赖项（包括外部系统和服务）按预期运行。
+- **服务[依赖测试](/zh-cn/wiki/dependency-testing/)**：针对外部服务的依赖关系，例如Web服务、[API](/zh-cn/wiki/api/)或第三方服务。
+- **数据[依赖测试](/zh-cn/wiki/dependency-testing/)**：检查共享数据资源的组件或系统之间的数据流是否正确以及完整性。
+- **运行时[依赖测试](/zh-cn/wiki/dependency-testing/)**：涉及测试仅在应用程序运行时才明显的依赖项，例如动态库加载或环境变量。
+- **构建[依赖测试](/zh-cn/wiki/dependency-testing/)**：验证构建过程是否正确合并了所有必要的组件和依赖项，确保成功编译和部署。 每种类型的[依赖测试](/zh-cn/wiki/dependency-testing/) 都解决软件依赖性的特定方面，选择适当的类型对于彻底验证软件在处理互连组件方面的可靠性和稳健性至关重要。
 
-- **[接口测试](https://inaodeng.com/zh-cn/wiki/interface-testing/)**：重点验证相互依赖的不同软件模块或系统之间的交互。
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：涉及测试应用程序的组合部分，以确定它们是否正确地协同工作，通常针对组件之间的接口。
-- **模块[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：评估依赖于应用程序中其他模块的特定模块的可靠性和功能。
-- **系统[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：确保整个系统的依赖项（包括外部系统和服务）按预期运行。
-- **服务[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：针对外部服务的依赖关系，例如Web服务、[API](https://inaodeng.com/zh-cn/wiki/api/)或第三方服务。
-- **数据[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：检查共享数据资源的组件或系统之间的正确数据流和完整性。
-- **运行时[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：涉及测试仅在应用程序运行时才明显的依赖项，例如动态库加载或环境变量。
-- **构建[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**：验证构建过程是否正确合并了所有必要的组件和依赖项，确保成功编译和部署。
+- **[接口测试](/zh-cn/wiki/interface-testing/)**：重点验证相互依赖的不同软件模块或系统之间的交互。
+- **[集成测试](/zh-cn/wiki/integration-testing/)**：涉及测试应用程序的组合部分，以确定它们是否正确地协同工作，通常针对组件之间的接口。
+- **模块[依赖测试](/zh-cn/wiki/dependency-testing/)**：评估依赖于应用程序中其他模块的特定模块的可靠性和功能。
+- **系统[依赖测试](/zh-cn/wiki/dependency-testing/)**：确保整个系统的依赖项（包括外部系统和服务）按预期运行。
+- **服务[依赖测试](/zh-cn/wiki/dependency-testing/)**：针对外部服务的依赖关系，例如Web服务、[API](/zh-cn/wiki/api/)或第三方服务。
+- **数据[依赖测试](/zh-cn/wiki/dependency-testing/)**：检查共享数据资源的组件或系统之间的正确数据流和完整性。
+- **运行时[依赖测试](/zh-cn/wiki/dependency-testing/)**：涉及测试仅在应用程序运行时才明显的依赖项，例如动态库加载或环境变量。
+- **构建[依赖测试](/zh-cn/wiki/dependency-testing/)**：验证构建过程是否正确合并了所有必要的组件和依赖项，确保成功编译和部署。
 
 #### 静态依赖测试与动态依赖测试有何不同？
 
-静态[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)涉及分析代码库及其组件而不执行程序。它侧重于代码的结构，检查模块、类或函数如何互连。此类测试可以识别诸如循环依赖项、缺失或未使用的依赖项以及潜在违反设计原则等问题。
-  另一方面，动态[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)需要运行软件来实时观察组件之间的交互。它捕获系统在执行期间的行为，这可以揭示静态分析可能遗漏的运行时依赖关系。这包括仅在某些条件或配置下存在的依赖关系，例如涉及动态链接或运行时数据驱动交互的依赖关系。
-  总之，**静态[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**是关于分析代码的结构，而**动态[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)**是关于观察代码在执行过程中的行为。两种方法相辅相成，可以提供软件依赖性的全面视图。
+静态[依赖测试](/zh-cn/wiki/dependency-testing/)涉及分析代码库及其组件而不执行程序。它侧重于代码的结构，检查模块、类或函数如何互连。此类测试可以识别诸如循环依赖项、缺失或未使用的依赖项以及潜在违反设计原则等问题。
+  另一方面，动态[依赖测试](/zh-cn/wiki/dependency-testing/)需要运行软件来实时观察组件之间的交互。它捕获系统在执行期间的行为，这可以揭示静态分析可能遗漏的运行时依赖关系。这包括仅在某些条件或配置下存在的依赖关系，例如涉及动态链接或运行时数据驱动交互的依赖关系。
+  总之，**静态[依赖测试](/zh-cn/wiki/dependency-testing/)**是关于分析代码的结构，而**动态[依赖测试](/zh-cn/wiki/dependency-testing/)**是关于观察代码在执行过程中的行为。两种方法相辅相成，可以提供软件依赖性的全面视图。
 
 #### 什么是直接依赖测试和间接依赖测试？
 
-Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专注于组件或模块之间的**直接连接**。它验证一个组件的更改是否正确影响其直接链接的对应组件。例如，如果模块 A 调用模块 B，则直接 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 可确保模块 A 功能或接口中的任何更改都能正确地与模块 B 集成。
+Direct [依赖测试](/zh-cn/wiki/dependency-testing/) 专注于组件或模块之间的**直接连接**。它验证一个组件的更改是否正确影响其直接链接的对应组件。例如，如果模块 A 调用模块 B，则直接 [依赖测试](/zh-cn/wiki/dependency-testing/) 可确保模块 A 功能或接口中的任何更改都能正确地与模块 B 集成。
 
 ```
   // Direct Dependency Test Example
@@ -194,7 +190,7 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
     expect(result).toBe(expectedOutcome);
   });
 ```
-另一方面，间接[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 检查**次要或传递关系**。它评估更改对不直接连接但可能通过依赖链影响的模块的影响。这确保了系统某一部分的修改不会无意中破坏看似不相关的区域的功能。
+另一方面，间接[依赖测试](/zh-cn/wiki/dependency-testing/) 检查**次要或传递关系**。它评估更改对不直接连接但可能通过依赖链影响的模块的影响。这确保了系统某一部分的修改不会无意中破坏看似不相关的区域的功能。
 
 ```
   // Indirect Dependency Test Example
@@ -207,20 +203,20 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
 
 #### 依赖性分析在依赖性测试中的作用是什么？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 中的依赖性分析是识别和检查软件应用程序中各种组件、模块或服务之间的关系和交互的过程。它涉及映射依赖关系，以了解系统某一部分的变化如何影响其他部分。
+[依赖测试](/zh-cn/wiki/dependency-testing/) 中的依赖性分析是识别和检查软件应用程序中各种组件、模块或服务之间的关系和交互的过程。它涉及映射依赖关系，以了解系统某一部分的变化如何影响其他部分。
   **依赖性分析的关键作用**包括：
 
 - **识别执行顺序**：它根据组件的相互依赖性确定测试组件的顺序。
 - **突出潜在的集成问题**：通过了解组件如何相互依赖，测试人员可以预测和测试集成问题。
-- **优化[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：依赖性分析有助于将测试工作集中在对系统影响最大的最关键路径和组件上。
-- **促进[影响分析](https://inaodeng.com/zh-cn/wiki/impact-analysis/)** ：当对代码库进行更改时，依赖性分析有助于评估影响范围，确保所有受影响的区域都经过测试。
+- **优化[测试覆盖率](/zh-cn/wiki/test-coverage/)**：依赖性分析有助于将测试工作集中在对系统影响最大的最关键路径和组件上。
+- **促进[影响分析](/zh-cn/wiki/impact-analysis/)** ：当对代码库进行更改时，依赖性分析有助于评估影响范围，确保所有受影响的区域都经过测试。
 - **支持风险管理**：通过揭示依赖关系的复杂性，测试人员可以识别需要更彻底测试的高风险区域。 在实践中，依赖性分析可以手动执行，也可以借助生成依赖性图或矩阵的工具来执行。这些视觉辅助工具使您更容易理解复杂的依赖关系网络并相应地规划有效的测试策略。
 
 ### 实施和工具
 
 #### 在软件开发过程中如何实施依赖性测试？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 在软件开发过程中通过一系列战略步骤实施：
+[依赖测试](/zh-cn/wiki/dependency-testing/) 在软件开发过程中通过一系列战略步骤实施：
 
 1. **识别依赖关系**：查明所有外部和内部依赖关系，包括软件依赖的库、框架、模块和服务。
 2. **映射依赖关系**：创建依赖关系及其关系的可视化或结构化表示，以了解它们的连接性和影响。
@@ -228,122 +224,74 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
 4. **编写依赖项测试**：开发专门针对已识别依赖项的自动化测试。这些测试应该验证依赖项的存在和正确运行。
 5. **集成到构建过程**：使用自动化工具将依赖项测试合并到构建过程中。这可确保定期检查依赖关系。
 6. **监视更改**：使用版本控制和包管理工具来跟踪依赖项的更改。自动警报可以通知开发人员更新或问题。
-7. **执行测试**：作为常规测试周期的一部分运行依赖项测试，包括单元、集成和[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 阶段。
+7. **执行测试**：作为常规测试周期的一部分运行依赖项测试，包括单元、集成和[系统测试](/zh-cn/wiki/system-testing/) 阶段。
 8. **分析结果**：查看测试结果以检测由依赖性问题引起的任何故障。快速反馈循环有助于迅速解决问题。
 9. **根据需要重构**：根据测试结果和分析更新或替换依赖项，以维护软件完整性和性能。
-10. **文件**：记录依赖项[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、结果以及为解决问题而采取的任何操作。该文档有助于将来的测试和维护。 通过遵循这些步骤，[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 成为开发生命周期不可或缺的一部分，确保软件组件无缝、可靠地交互。
+10. **文件**：记录依赖项[测试用例](/zh-cn/wiki/test-case/)、结果以及为解决问题而采取的任何操作。该文档有助于将来的测试和维护。 通过遵循这些步骤，[依赖测试](/zh-cn/wiki/dependency-testing/) 成为开发生命周期不可或缺的一部分，确保软件组件无缝、可靠地交互。
 
-1. **识别依赖关系**：查明所有外部和内部依赖关系，包括软件依赖的库、框架、模块和服务。
-2. **映射依赖关系**：创建依赖关系及其关系的可视化或结构化表示，以了解它们的连接性和影响。
-3. **确定依赖关系的优先级**：根据每个依赖关系对系统的影响确定其重要性。应首先测试高风险依赖项。
-4. **编写依赖项测试**：开发专门针对已识别依赖项的自动化测试。这些测试应该验证依赖项的存在和正确运行。
-5. **集成到构建过程**：使用自动化工具将依赖项测试合并到构建过程中。这可确保定期检查依赖关系。
-6. **监视更改**：使用版本控制和包管理工具来跟踪依赖项的更改。自动警报可以通知开发人员更新或问题。
-7. **执行测试**：作为常规测试周期的一部分运行依赖项测试，包括单元、集成和[系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/) 阶段。
-8. **分析结果**：查看测试结果以检测由依赖性问题引起的任何故障。快速反馈循环有助于迅速解决问题。
-9. **根据需要重构**：根据测试结果和分析更新或替换依赖项，以维护软件完整性和性能。
-10. **文件**：记录依赖性[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、结果以及为解决问题而采取的任何操作。该文档有助于将来的测试和维护。
+10. **文件**：记录依赖性[测试用例](/zh-cn/wiki/test-case/)、结果以及为解决问题而采取的任何操作。该文档有助于将来的测试和维护。
 
 #### 依赖测试常用的工具有哪些？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 的常用工具包括：
+[依赖测试](/zh-cn/wiki/dependency-testing/) 的常用工具包括：
 
 - **Maven** 和 **Gradle**：构建管理项目依赖项的自动化工具，并可用于测试依赖项冲突或问题。
 
-```
+  ```
     <dependency>
       <groupId>com.example</groupId>
       <artifactId>example-project</artifactId>
       <version>1.0.0</version>
     </dependency>
-```
+  ```
 
 - **NPM** 和 **Yarn**：JavaScript 的包管理器，包括审核和更新依赖项的命令，有助于识别和解决问题。
 
-```
+  ```
     npm audit
-```
+  ```
 
 - **Bundler**：Ruby 的依赖管理器，通过跟踪和安装所需的确切 gem 和版本，为 Ruby 项目提供一致的环境。
 
-```
+  ```
     bundle install
-```
+  ```
 
 - **NuGet**：.NET 的包管理器，可用于管理.NET 项目中的依赖项并确保兼容性。
 
-```
+  ```
     <PackageReference Include="Example.Library" Version="1.2.3" />
-```
+  ```
 
 - **Pipenv** 和 **Poetry**：Python 工具，可帮助管理包依赖项并提供清晰的依赖项解析过程。
 
-```
+  ```
     pipenv install
-```
+  ```
 
 - **Owasp Dependency-Check**：一种开源工具，可识别项目依赖性并检查是否存在任何已知的、公开披露的漏洞。
 
-```
+  ```
     dependency-check --project "MyApp" --scan "./path/to/project"
-```
-这些工具是自动化 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 不可或缺的一部分，可确保依赖项是最新的、兼容的且安全的。它们可以集成到 CI/CD 管道中，以自动化依赖性验证过程，作为构建和部署过程的一部分。
+  ```
+这些工具是自动化 [依赖测试](/zh-cn/wiki/dependency-testing/) 不可或缺的一部分，可确保依赖项是最新的、兼容的且安全的。它们可以集成到 CI/CD 管道中，以自动化依赖性验证过程，作为构建和部署过程的一部分。
 
-- **Maven** 和 **Gradle**：构建管理项目依赖项的自动化工具，并可用于测试依赖项冲突或问题。
-
-```
-    <dependency>
-      <groupId>com.example</groupId>
-      <artifactId>example-project</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-```
-
-- **NPM** 和 **Yarn**：JavaScript 的包管理器，包括审核和更新依赖项的命令，有助于识别和解决问题。
-
-```
-    npm audit
-```
-
-- **Bundler**：Ruby 的依赖管理器，通过跟踪和安装所需的确切 gem 和版本，为 Ruby 项目提供一致的环境。
-
-```
-    bundle install
-```
-
-- **NuGet**：.NET 的包管理器，可用于管理.NET 项目中的依赖项并确保兼容性。
-
-```
-    <PackageReference Include="Example.Library" Version="1.2.3" />
-```
-
-- **Pipenv** 和 **Poetry**：Python 工具，可帮助管理包依赖项并提供清晰的依赖项解析过程。
-
-```
-    pipenv install
-```
-
-- **Owasp Dependency-Check**：一种开源工具，可识别项目依赖性并检查是否存在任何已知的、公开披露的漏洞。
-
-```
-    dependency-check --project "MyApp" --scan "./path/to/project"
-```
 
 #### 如何在依赖性测试中使用自动化？
 
-自动化可以通过**自动识别和测试软件应用程序的不同组件或模块之间的连接**来简化[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)。通过使用脚本或工具，您可以**模拟一个组件的行为**，以验证对另一组件的影响，确保一个区域的更改不会对系统的其余部分产生不利影响。
-  要自动化 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)，您可以：
+自动化可以通过**自动识别和测试软件应用程序的不同组件或模块之间的连接**来简化[依赖测试](/zh-cn/wiki/dependency-testing/)。通过使用脚本或工具，您可以**模拟一个组件的行为**，以验证对另一组件的影响，确保一个区域的更改不会对系统的其余部分产生不利影响。
+  要自动化 [依赖测试](/zh-cn/wiki/dependency-testing/)，您可以：
 
-- **创建[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**专注于组件之间的交互，使用模拟对象或服务虚拟化来模仿依赖模块的行为。
+- **创建[测试套件](/zh-cn/wiki/test-suite/)**专注于组件之间的交互，使用模拟对象或服务虚拟化来模仿依赖模块的行为。
 
 - **利用依赖关系映射工具**可视化并理解应用程序不同部分之间的关系，然后可以将其作为自动化测试的目标。
 
-- **实施观察者或触发器**在 CI/CD 管道中，当代码库的某些部分检测到更改时，它会自动运行依赖项测试。 例如，在 [node.js](https://inaodeng.com/zh-cn/wiki/node-js/) 项目中，您可以使用 `npm-check` 等工具来验证包依赖项：
+- **实施观察者或触发器**在 CI/CD 管道中，当代码库的某些部分检测到更改时，它会自动运行依赖项测试。 例如，在 [node.js](/zh-cn/wiki/node-js/) 项目中，您可以使用 `npm-check` 等工具来验证包依赖项：
 
-```
+  ```
   npm install -g npm-check
   npm-check
-```
+  ```
 或者，您可以使用 **Mocha** 等框架编写自动化测试来检查函数是否正确调用依赖项：
 
 ```
@@ -357,9 +305,9 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
     assert.equal(callCount, 1);
   });
 ```
-通过自动化这些过程，您可以确保对依赖项进行**一致且可重复的测试**，与 [手动测试](https://inaodeng.com/zh-cn/wiki/manual-testing/) 相比，这可以节省时间并减少错误。自动化还有助于**及早发现集成问题**，从而更快地解决问题并保持软件的稳定性。
+通过自动化这些过程，您可以确保对依赖项进行**一致且可重复的测试**，与 [手动测试](/zh-cn/wiki/manual-testing/) 相比，这可以节省时间并减少错误。自动化还有助于**及早发现集成问题**，从而更快地解决问题并保持软件的稳定性。
 
-- **创建[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**专注于组件之间的交互，使用模拟对象或服务虚拟化来模仿依赖模块的行为。
+- **创建[测试套件](/zh-cn/wiki/test-suite/)**专注于组件之间的交互，使用模拟对象或服务虚拟化来模仿依赖模块的行为。
 
 - **利用依赖关系映射工具**可视化并理解应用程序不同部分之间的关系，然后可以将其作为自动化测试的目标。
 
@@ -367,7 +315,7 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
 
 #### 实施依赖性测试有哪些挑战以及如何克服这些挑战？
 
-实现 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 面临多项挑战，例如**复杂的依赖链**、**环境差异**和**[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**。为了克服这些：
+实现 [依赖测试](/zh-cn/wiki/dependency-testing/) 面临多项挑战，例如**复杂的依赖链**、**环境差异**和**[片状测试](/zh-cn/wiki/flaky-test/)**。为了克服这些：
 
 - **重构代码**降低复杂性，使依赖关系更易于管理和测试。
 
@@ -387,7 +335,7 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
 
 - **文档依赖关系**在测试用例中清楚地了解上下文和交互。
 
-- 使用 **依赖关系扫描工具**自动检测和更新依赖关系。 通过利用战略实践和工具应对这些挑战，[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 变得更加可靠和有效。
+- 使用 **依赖关系扫描工具**自动检测和更新依赖关系。 通过利用战略实践和工具应对这些挑战，[依赖测试](/zh-cn/wiki/dependency-testing/) 变得更加可靠和有效。
 
 - **重构代码**降低复杂性，使依赖关系更易于管理和测试。
 
@@ -411,68 +359,43 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
 
 #### 如何将依赖项测试集成到持续集成/持续部署 (CI/CD) 管道中？
 
-将 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 集成到 **CI/CD 管道** 可确保代码和依赖项中的更改不会引入回归或冲突。这是一个简洁的指南：
+将 [依赖测试](/zh-cn/wiki/dependency-testing/) 集成到 **CI/CD 管道** 可确保代码和依赖项中的更改不会引入回归或冲突。这是一个简洁的指南：
 
 1. **自动依赖项扫描**：使用 `OWASP Dependency-Check` 或 `Snyk` 等工具在推送新提交时自动扫描易受攻击的依赖项。
 
-```
+  ```
     steps:
 - name: Dependency Check
       run: dependency-check --project "MyProject" --scan "./src"
-```
+  ```
 
 2. **单元和集成测试**：编写涵盖代码和依赖项之间交互的测试。在 CI 管道中运行这些测试。
 
-```
+  ```
     steps:
 - name: Run Tests
       run: npm test
-```
+  ```
 
 3. **模拟外部服务**：使用模拟工具模拟外部依赖关系，确保您的测试一致运行，而不需要实际的外部服务。
 4. **版本固定**：锁定依赖版本以避免意外更新破坏您的构建。使用 `npm ci` 或 `bundler` 等工具安装确切的版本。
 
-```
+  ```
     steps:
 - name: Install Dependencies
       run: npm ci
-```
+  ```
 
 5. **定期更新依赖项**：安排自动化作业来更新依赖项并针对更新运行测试以尽早发现问题。
 6. **监控更新**：实施依赖性监控，以便在新版本或安全补丁可用时发出警报。
 7. **门合并**：如果依赖项检查或测试失败，则使用分支保护规则来防止合并。
-8. **工件扫描**：在部署之前扫描构建的工件是否存在依赖性问题。 通过将这些实践嵌入到 CI/CD 管道中，您可以确保 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 是一个连续且自动化的过程，从而降低生产中出现依赖关系相关问题的风险。
-
-1. **自动依赖项扫描**：使用 `OWASP Dependency-Check` 或 `Snyk` 等工具在推送新提交时自动扫描易受攻击的依赖项。
-
-```
-    steps:
-- name: Dependency Check
-      run: dependency-check --project "MyProject" --scan "./src"
-```
-
-2. **单元和集成测试**：编写涵盖代码和依赖项之间交互的测试。在 CI 管道中运行这些测试。
-
-```
-    steps:
-- name: Run Tests
-      run: npm test
-```
-
-3. **模拟外部服务**：使用模拟工具模拟外部依赖关系，确保您的测试一致运行，而不需要实际的外部服务。
-4. **版本固定**：锁定依赖版本以避免意外更新破坏您的构建。使用 `npm ci` 或 `bundler` 等工具安装确切的版本。
-
-```
-    steps:
-- name: Install Dependencies
-      run: npm ci
-```
+8. **工件扫描**：在部署之前扫描构建的工件是否存在依赖性问题。 通过将这些实践嵌入到 CI/CD 管道中，您可以确保 [依赖测试](/zh-cn/wiki/dependency-testing/) 是一个连续且自动化的过程，从而降低生产中出现依赖关系相关问题的风险。
 
 ### 最佳实践
 
 #### 依赖性测试的最佳实践是什么？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 中的最佳实践包括：
+[依赖测试](/zh-cn/wiki/dependency-testing/) 中的最佳实践包括：
 
 - **识别关键依赖关系**在开发周期的早期，以确保它们经过彻底的测试。
 
@@ -488,13 +411,13 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
 
 - **定期更新和维护**测试用例以反映依赖关系的变化。
 
-- **将 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 集成到 CI/CD 管道中**尽早且经常发现问题。
+- **将 [依赖测试](/zh-cn/wiki/dependency-testing/) 集成到 CI/CD 管道中**尽早且经常发现问题。
 
 - **监控**查找可能影响您的系统的依赖项的更新或更改，并根据需要重新测试。
 
 - **记录**明确依赖性测试的结果，包括发现的任何问题以及解决这些问题所采取的步骤。
 
-```
+  ```
   // Example of isolating a dependency using a mocking framework in TypeScript
   import { myFunction } from './myModule';
   import * as dependency from './dependencyModule';
@@ -503,31 +426,11 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
     dependency.dependentFunction = jest.fn().mockReturnValue('mocked value');
     expect(myFunction()).toEqual('expected value based on mocked dependency');
   });
-```
+  ```
 
 - **审查和分析测试结果**了解依赖关系对系统的影响并改进未来的测试。
 
 - **沟通调查结果**与开发团队有效合作，确保依赖性问题得到及时解决。
-
-- **识别关键依赖关系**在开发周期的早期，以确保它们经过彻底的测试。
-
-- **创建依赖关系图**可视化并理解组件之间的关系。
-
-- **隔离依赖关系**在可能的情况下，使用模拟或存根等技术来单独测试组件。
-
-- **版本控制**所有依赖项以避免冲突并确保测试的可重复性。
-
-- **自动化依赖性检查**在测试开始之前验证所有必需的依赖项是否存在并正确配置。
-
-- **确定测试的优先级**基于依赖关系的重要性和影响，重点关注那些最有可能导致故障的依赖关系。
-
-- **定期更新和维护**测试用例以反映依赖关系的变化。
-
-- **将 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 集成到 CI/CD 管道中**尽早且经常发现问题。
-
-- **监控**查找可能影响您的系统的依赖项的更新或更改，并根据需要重新测试。
-
-- **记录**明确依赖性测试的结果，包括发现的任何问题以及解决这些问题所采取的步骤。
 
 - **审查和分析测试结果**了解依赖关系对系统的影响并改进未来的测试。
 
@@ -535,32 +438,27 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
 
 #### 如何衡量依赖性测试的有效性？
 
-衡量[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)的有效性可以通过几个指标和指标来实现：
+衡量[依赖测试](/zh-cn/wiki/dependency-testing/)的有效性可以通过几个指标和指标来实现：
 
 - **缺陷检测率 (DDR)**：根据整个软件测试生命周期中发现的缺陷总数，计算依赖性测试期间发现的缺陷数量。依赖性测试中的 DDR 越高表明有效性越高。
 
-```
+  ```
   DDR = (Defects Detected in Dependency Testing / Total Defects Detected) * 100
-```
+  ```
 
-- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：使用[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 工具确保所有涉及依赖项的路径都经过测试。高覆盖率表明对依赖项进行了彻底的测试。
+- **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：使用[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具确保所有涉及依赖项的路径都经过测试。高覆盖率表明对依赖项进行了彻底的测试。
 - **构建成功率**：跟踪对依赖项进行更改时的成功构建率。高成功率意味着依赖性问题正在被发现并得到解决。
 - **平均检测时间 (MTTD)**：测量更改后检测与依赖项相关的缺陷所需的平均时间。较短的 MTTD 表明对依赖性进行有效的监控和测试。
-- **平均恢复时间 (MTTR)**：评估修复与依赖性相关的缺陷所需的平均时间。更快的恢复表明 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 进程有效。
-- **发布后缺陷**：监控发布后报告的与依赖项相关的缺陷数量。较少的发布后缺陷可以反映所执行的[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 的有效性。
-- **来自开发和运营团队的反馈**：关于集成和部署简易性的定性反馈也可以作为有效 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 的指标。 通过跟踪这些指标，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以深入了解他们[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 工作的有效性，并做出明智的决策来改进他们的测试策略。
+- **平均恢复时间 (MTTR)**：评估修复与依赖性相关的缺陷所需的平均时间。更快的恢复表明 [依赖测试](/zh-cn/wiki/dependency-testing/) 进程有效。
+- **发布后缺陷**：监控发布后报告的与依赖项相关的缺陷数量。较少的发布后缺陷可以反映所执行的[依赖测试](/zh-cn/wiki/dependency-testing/) 的有效性。
+- **来自开发和运营团队的反馈**：关于集成和部署简易性的定性反馈也可以作为有效 [依赖测试](/zh-cn/wiki/dependency-testing/) 的指标。 通过跟踪这些指标，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以深入了解他们[依赖测试](/zh-cn/wiki/dependency-testing/) 工作的有效性，并做出明智的决策来改进他们的测试策略。
 
 - **缺陷检测率 (DDR)**：根据整个软件测试生命周期中发现的缺陷总数，计算依赖性测试期间发现的缺陷数量。依赖性测试中的 DDR 越高表明有效性越高。
-- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)**：使用[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 工具确保所有涉及依赖项的路径都经过测试。高覆盖率表明对依赖项进行了彻底的测试。
-- **构建成功率**：跟踪对依赖项进行更改时的成功构建率。高成功率意味着依赖性问题正在被发现并得到解决。
-- **平均检测时间 (MTTD)**：测量更改后检测与依赖项相关的缺陷所需的平均时间。较短的 MTTD 表明对依赖性进行有效的监控和测试。
-- **平均恢复时间 (MTTR)**：评估修复与依赖性相关的缺陷所需的平均时间。更快的恢复表明 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 进程有效。
-- **发布后缺陷**：监控发布后报告的与依赖项相关的缺陷数量。较少的发布后缺陷可以反映所执行的[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 的有效性。
-- **来自开发和运营团队的反馈**：关于集成和部署简易性的定性反馈也可以作为有效 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 的指标。
+- **来自开发和运营团队的反馈**：关于集成和部署简易性的定性反馈也可以作为有效 [依赖测试](/zh-cn/wiki/dependency-testing/) 的指标。
 
 #### 依赖性测试中需要避免哪些常见错误？
 
-[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 中要避免的常见错误包括：
+[依赖测试](/zh-cn/wiki/dependency-testing/) 中要避免的常见错误包括：
 
 - **忽略传递依赖项**：确保不仅测试直接依赖项，还测试传递（间接）依赖项，因为它们也会影响系统的行为。
 - **版本控制不足**：始终指定并测试依赖项的确切版本，以避免未考虑的更新或更改出现问题。
@@ -571,39 +469,33 @@ Direct [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 专�
 - **缺乏全面的错误处理**：测试系统如何处理来自依赖项的错误，包括超时、数据不正确和服务不可用。
 - **跳过文档**：记录系统内的依赖关系及其交互，以方便理解和维护。
 - **更新后忘记测试**：更新依赖项后，重新运行测试以确保没有引入新问题。
-- **低估资源使用情况**：通过适当的依赖项监控系统的资源使用情况，以避免性能瓶颈。 通过避免这些陷阱，您可以确保更加稳健和可靠的 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 流程。
+- **低估资源使用情况**：通过适当的依赖项监控系统的资源使用情况，以避免性能瓶颈。 通过避免这些陷阱，您可以确保更加稳健和可靠的 [依赖测试](/zh-cn/wiki/dependency-testing/) 流程。
 
 #### 如何优化依赖性测试以获得更好的性能？
 
-要优化 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 以获得更好的性能，请考虑以下策略：
+要优化 [依赖测试](/zh-cn/wiki/dependency-testing/) 以获得更好的性能，请考虑以下策略：
 
-- **优先考虑关键路径**：重点关注对应用程序核心功能至关重要的依赖项。使用 [基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/) 来识别这些路径并确定其优先级。
-- **模拟外部服务**：利用外部服务的模拟或存根来减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)时间并提高稳定性。
-- **并行测试**：尽可能并行运行依赖性测试，以减少总体 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 时间。
-- **[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)**：仅测试受最近更改影响的组件，而不是重新测试整个系统。
+- **优先考虑关键路径**：重点关注对应用程序核心功能至关重要的依赖项。使用 [基于风险的测试](/zh-cn/wiki/risk-based-testing/) 来识别这些路径并确定其优先级。
+- **模拟外部服务**：利用外部服务的模拟或存根来减少[测试执行](/zh-cn/wiki/test-execution/)时间并提高稳定性。
+- **并行测试**：尽可能并行运行依赖性测试，以减少总体 [测试执行](/zh-cn/wiki/test-execution/) 时间。
+- **[增量测试](/zh-cn/wiki/incremental-testing/)**：仅测试受最近更改影响的组件，而不是重新测试整个系统。
 - **缓存结果**：缓存很少更改的依赖项的测试结果，以避免不必要的重新测试。
-- **选择性测试**：使用选择性[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 技术仅运行受代码更改影响的测试。
-- **优化[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：确保[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 有效设置和拆除，并在适当的情况下重复使用[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。
+- **选择性测试**：使用选择性[回归测试](/zh-cn/wiki/regression-testing/) 技术仅运行受代码更改影响的测试。
+- **优化[测试数据](/zh-cn/wiki/test-data/) 管理**：确保[测试数据](/zh-cn/wiki/test-data/) 有效设置和拆除，并在适当的情况下重复使用[测试数据](/zh-cn/wiki/test-data/)。
 - **持续监控**：实现监控系统来检测依赖项的变化，自动触发有针对性的测试。
-- **[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 优化**：定期审查和重构[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 以删除冗余或过时的测试。
+- **[测试套件](/zh-cn/wiki/test-suite/) 优化**：定期审查和重构[测试套件](/zh-cn/wiki/test-suite/) 以删除冗余或过时的测试。
 - **利用服务虚拟化**：模拟服务行为来测试与依赖项的交互，而无需实际服务可用。
-- **在有意义的地方实现自动化**：自动化依赖组件的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸，以简化测试过程。 通过应用这些策略，您可以减少 [依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/) 所需的时间和资源，同时保持或提高其有效性。
+- **在有意义的地方实现自动化**：自动化依赖组件的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸，以简化测试过程。 通过应用这些策略，您可以减少 [依赖测试](/zh-cn/wiki/dependency-testing/) 所需的时间和资源，同时保持或提高其有效性。
 
-- **优先考虑关键路径**：重点关注对应用程序核心功能至关重要的依赖项。使用 [基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/) 来识别这些路径并确定其优先级。
-- **模拟外部服务**：利用外部服务的模拟或存根来减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)时间并提高稳定性。
-- **并行测试**：尽可能并行运行依赖性测试，以减少总体 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 时间。
-- **[增量测试](https://inaodeng.com/zh-cn/wiki/incremental-testing/)**：仅测试受最近更改影响的组件，而不是重新测试整个系统。
-- **缓存结果**：缓存很少更改的依赖项的测试结果，以避免不必要的重新测试。
-- **选择性测试**：使用选择性[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/) 技术仅运行受代码更改影响的测试。
-- **优化[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**：确保[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 有效设置和拆除，并在适当的情况下重用[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)。
+- **优化[测试数据](/zh-cn/wiki/test-data/) 管理**：确保[测试数据](/zh-cn/wiki/test-data/) 有效设置和拆除，并在适当的情况下重用[测试数据](/zh-cn/wiki/test-data/)。
 - **持续监控**：实现监控系统来检测依赖项的变化，自动触发有针对性的测试。
-- **[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 优化**：定期审查和重构[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 以删除冗余或过时的测试。
+- **[测试套件](/zh-cn/wiki/test-suite/) 优化**：定期审查和重构[测试套件](/zh-cn/wiki/test-suite/) 以删除冗余或过时的测试。
 - **利用服务虚拟化**：模拟服务行为来测试与依赖项的交互，而无需实际服务可用。
-- **在有意义的地方实现自动化**：自动化依赖组件的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸，以简化测试过程。
+- **在有意义的地方实现自动化**：自动化依赖组件的 [环境搭建](/zh-cn/wiki/setup/) 和拆卸，以简化测试过程。
 
 #### 依赖性测试的结果应该如何记录和传达？
 
-记录和传达[依赖测试](https://inaodeng.com/zh-cn/wiki/dependency-testing/)的结果应该清晰且可操作。请遵循以下准则：
+记录和传达[依赖测试](/zh-cn/wiki/dependency-testing/)的结果应该清晰且可操作。请遵循以下准则：
 
 - **总结结果**：提供测试结果的高级概述，突出显示任何关键故障或问题。
 - **详细说明具体问题**：对于每个已识别的问题，包括：

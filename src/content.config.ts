@@ -20,26 +20,29 @@ const blog = defineCollection({
     }),
 });
 
-// 测试百科（仅中文）：词条 Markdown，用于 /zh-cn/wiki/
-// 推荐 frontmatter：title（中文 (English)）、description（一句话摘要，SEO）、section（首字母）、order（同组排序）
+// 测试百科：中英文词条独立加载，保持既有中文 collection ID 与 URL。
+const wikiSchema = () =>
+  z.object({
+    /** 页面标题，用于 SEO 与侧栏 */
+    title: z.string().optional(),
+    /** 页面描述，用于 SEO */
+    description: z.string().optional(),
+    /** 侧栏分组首字母（A–Z/#） */
+    section: z.string().optional(),
+    /** 同组内排序，数字越小越靠前 */
+    order: z.number().optional(),
+    /** 关联词条 slug 列表，用于 Related Terms pill 列表 */
+    related: z.array(z.string()).optional(),
+  });
+
 const wiki = defineCollection({
-  loader: glob({
-    pattern: "**/*.md",
-    base: "./src/content/wiki",
-  }),
-  schema: () =>
-    z.object({
-      /** 页面标题，建议格式：中文 (English)，用于 SEO 与侧栏 */
-      title: z.string().optional(),
-      /** 页面描述，建议 1–2 句话、约 155 字内，用于 SEO */
-      description: z.string().optional(),
-      /** 侧栏分组首字母（A–Z/#），与 buildWikiSidebar 按字母分组一致 */
-      section: z.string().optional(),
-      /** 同组内排序，数字越小越靠前 */
-      order: z.number().optional(),
-      /** 关联词条 slug 列表，用于渲染 Related Terms pill 列表 */
-      related: z.array(z.string()).optional(),
-    }),
+  loader: glob({ pattern: "*.md", base: "./src/content/wiki" }),
+  schema: wikiSchema,
+});
+
+const wikiEn = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/wiki/en" }),
+  schema: wikiSchema,
 });
 
 // AI Wiki（中英文）：词条 Markdown，用于 /[lang]/AIWiki/
@@ -155,4 +158,4 @@ const workflows = defineCollection({
     }),
 });
 
-export const collections = { blog, wiki, aiwiki, aiQaWeekly, guild, prompts, workflows };
+export const collections = { blog, wiki, wikiEn, aiwiki, aiQaWeekly, guild, prompts, workflows };

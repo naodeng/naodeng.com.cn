@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { marked } from "marked";
 
 let GithubSlugger;
 try {
@@ -96,20 +97,10 @@ function collectLinks(body) {
 }
 
 function collectHeadings(body) {
-  const out = [];
-  const lines = body.split(/\r?\n/);
-  let inFence = false;
-  for (const line of lines) {
-    if (/^\s*```/.test(line)) {
-      inFence = !inFence;
-      continue;
-    }
-    if (inFence) continue;
-    const m = line.match(/^(#{1,4})\s+(.+?)\s*$/);
-    if (!m) continue;
-    out.push({ level: m[1].length, text: m[2].trim() });
-  }
-  return out;
+  return marked.lexer(body)
+    .filter((token) => token.type === "heading" && token.depth >= 1 && token.depth <= 4)
+    .map((token) => ({ level: token.depth, text: token.text.trim() }))
+    .filter((heading) => heading.text);
 }
 
 function slugify(text) {
@@ -144,7 +135,11 @@ function extractTocAnchors(body) {
 const wikiFiles = walk(WIKI_DIR, [".md"]);
 const aiwikiFiles = walk(AIWIKI_DIR, [".md"]);
 
-const wikiSlugs = new Set(wikiFiles.map((f) => path.basename(f, ".md").toLowerCase()));
+const wikiSlugs = { en: new Set(), "zh-cn": new Set() };
+for (const file of wikiFiles) {
+  const lang = repoPath(file).includes("/wiki/en/") ? "en" : "zh-cn";
+  wikiSlugs[lang].add(path.basename(file, ".md").toLowerCase());
+}
 const aiwikiSlugs = { en: new Set(), "zh-cn": new Set() };
 const aiwikiMeta = [];
 
@@ -167,12 +162,13 @@ function pushIssue(type, file, detail, severity = "error") {
 }
 
 // 1) wiki checks
-const wikiTitleMap = new Map();
+const wikiTitleMap = { en: new Map(), "zh-cn": new Map() };
 for (const file of wikiFiles) {
   const raw = fs.readFileSync(file, "utf8");
   const { data, body } = parseFrontmatter(raw);
   const rel = repoPath(file);
   const slug = path.basename(file, ".md");
+  const wikiLang = rel.includes("/wiki/en/") ? "en" : "zh-cn";
 
   if (!data.title) pushIssue("missing_title", file, "frontmatter 缺少 title");
   if (!data.description) pushIssue("missing_description", file, "frontmatter 缺少 description", "warn");
@@ -181,9 +177,9 @@ for (const file of wikiFiles) {
   }
 
   if (data.title) {
-    const arr = wikiTitleMap.get(data.title) || [];
+    const arr = wikiTitleMap[wikiLang].get(data.title) || [];
     arr.push(rel);
-    wikiTitleMap.set(data.title, arr);
+    wikiTitleMap[wikiLang].set(data.title, arr);
   }
 
   const headings = collectHeadings(body);
@@ -207,8 +203,8 @@ for (const file of wikiFiles) {
 
   for (const link of collectLinks(body)) {
     if (/^https?:\/\//i.test(link) || link.startsWith("#") || link.startsWith("mailto:")) continue;
-    const wikiMatch = link.match(/^\/(?:zh-cn|en)\/wiki\/([^/#?]+)\/?$/i);
-    if (wikiMatch && !wikiSlugs.has(wikiMatch[1].toLowerCase())) {
+    const wikiMatch = link.match(/^\/(zh-cn|en)\/wiki\/([^/#?]+)\/?$/i);
+    if (wikiMatch && !wikiSlugs[wikiMatch[1].toLowerCase()]?.has(wikiMatch[2].toLowerCase())) {
       pushIssue("broken_wiki_link", file, `无效 wiki 链接: ${link}`);
     }
     const aiMatch = link.match(/^\/(zh-cn|en)\/AIWiki\/([^/#?]+)\/?$/);
@@ -229,7 +225,7 @@ for (const file of wikiFiles) {
         pushIssue("related_self_ref", file, `related 包含自身: ${ref}`, "warn");
         continue;
       }
-      if (!wikiSlugs.has(ref.toLowerCase())) pushIssue("related_unknown_slug", file, `related 指向不存在词条: ${ref}`);
+      if (!wikiSlugs[wikiLang].has(ref.toLowerCase())) pushIssue("related_unknown_slug", file, `related 指向当前语言不存在词条: ${ref}`);
     }
   }
 }
@@ -282,8 +278,8 @@ for (const meta of aiwikiMeta) {
 
   for (const link of collectLinks(body)) {
     if (/^https?:\/\//i.test(link) || link.startsWith("#") || link.startsWith("mailto:")) continue;
-    const wikiMatch = link.match(/^\/(?:zh-cn|en)\/wiki\/([^/#?]+)\/?$/i);
-    if (wikiMatch && !wikiSlugs.has(wikiMatch[1].toLowerCase())) {
+    const wikiMatch = link.match(/^\/(zh-cn|en)\/wiki\/([^/#?]+)\/?$/i);
+    if (wikiMatch && !wikiSlugs[wikiMatch[1].toLowerCase()]?.has(wikiMatch[2].toLowerCase())) {
       pushIssue("broken_wiki_link", file, `无效 wiki 链接: ${link}`);
     }
     const aiMatch = link.match(/^\/(zh-cn|en)\/AIWiki\/([^/#?]+)\/?$/);
@@ -297,14 +293,26 @@ for (const meta of aiwikiMeta) {
   }
 }
 
-for (const [title, files] of wikiTitleMap.entries()) {
-  if (files.length > 1) {
-    issues.push({
-      type: "duplicate_wiki_title",
-      file: files[0],
-      detail: `重复 title: "${title}" -> ${files.join(", ")}`,
-      severity: "warn",
-    });
+for (const lang of ["en", "zh-cn"]) {
+  for (const [title, files] of wikiTitleMap[lang].entries()) {
+    if (files.length > 1) {
+      issues.push({
+        type: "duplicate_wiki_title",
+        file: files[0],
+        detail: `(${lang}) 重复 title: "${title}" -> ${files.join(", ")}`,
+        severity: "warn",
+      });
+    }
+  }
+}
+for (const slug of wikiSlugs["zh-cn"]) {
+  if (!wikiSlugs.en.has(slug)) {
+    issues.push({ type: "wiki_locale_missing_translation", file: `src/content/wiki/${slug}.md`, detail: `缺少英文配对词条: ${slug}`, severity: "error" });
+  }
+}
+for (const slug of wikiSlugs.en) {
+  if (!wikiSlugs["zh-cn"].has(slug)) {
+    issues.push({ type: "wiki_locale_missing_translation", file: `src/content/wiki/en/${slug}.md`, detail: `缺少中文配对词条: ${slug}`, severity: "error" });
   }
 }
 
@@ -335,6 +343,8 @@ const summary = {
   scannedAt: new Date().toISOString(),
   totals: {
     wikiFiles: wikiFiles.length,
+    wikiEnFiles: wikiSlugs.en.size,
+    wikiZhCnFiles: wikiSlugs["zh-cn"].size,
     aiwikiFiles: aiwikiFiles.length,
     totalIssues: issues.length,
     errorCount: issues.filter((x) => x.severity === "error").length,
@@ -350,7 +360,7 @@ const topIssues = issues.slice(0, 80).map((x) => `- [${x.severity}] ${x.type} | 
 const md = `# Wiki/AIWiki Integrity Report
 
 - Scanned at: ${summary.scannedAt}
-- wiki files: ${summary.totals.wikiFiles}
+- wiki files: ${summary.totals.wikiFiles} (${summary.totals.wikiEnFiles} en, ${summary.totals.wikiZhCnFiles} zh-cn)
 - aiwiki files: ${summary.totals.aiwikiFiles}
 - total issues: ${summary.totals.totalIssues}
 - errors: ${summary.totals.errorCount}

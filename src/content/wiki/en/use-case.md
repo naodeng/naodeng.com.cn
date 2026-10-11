@@ -1,0 +1,392 @@
+---
+title: "Use Case"
+description: "A description detailing how a user interacts with a system. It forms a foundation for system development and tests."
+section: "U"
+related:
+  - "use-case-testing"
+  - "test-case"
+  - "test-case-management"
+  - "automated-testing"
+  - "validation-testing"
+  - "user-acceptance-testing"
+order: 0
+---
+# Use Case
+
+<!-- TOC START -->
+
+- [Use Case](#use-case)
+  - [Related Terms:](#related-terms)
+  - [Questions about Use Case?](#questions-about-use-case)
+    - [Basics and Importance](#basics-and-importance)
+      - [What is a use case in software testing?](#what-is-a-use-case-in-software-testing)
+      - [Why are use cases important in software development?](#why-are-use-cases-important-in-software-development)
+      - [What are the key components of a use case?](#what-are-the-key-components-of-a-use-case)
+      - [How does a use case help in understanding the system functionality?](#how-does-a-use-case-help-in-understanding-the-system-functionality)
+      - [What is the difference between a use case and a test case?](#what-is-the-difference-between-a-use-case-and-a-test-case)
+    - [Use Case Diagrams](#use-case-diagrams)
+      - [What is a use case diagram?](#what-is-a-use-case-diagram)
+      - [What are the elements of a use case diagram?](#what-are-the-elements-of-a-use-case-diagram)
+      - [How do you create a use case diagram?](#how-do-you-create-a-use-case-diagram)
+      - [What is the role of actors in a use case diagram?](#what-is-the-role-of-actors-in-a-use-case-diagram)
+      - [How does a use case diagram aid in system design?](#how-does-a-use-case-diagram-aid-in-system-design)
+    - [Use Case Scenarios](#use-case-scenarios)
+      - [What is a use case scenario?](#what-is-a-use-case-scenario)
+      - [How is a use case scenario different from a use case?](#how-is-a-use-case-scenario-different-from-a-use-case)
+      - [How do you write a use case scenario?](#how-do-you-write-a-use-case-scenario)
+      - [What is the role of a use case scenario in software testing?](#what-is-the-role-of-a-use-case-scenario-in-software-testing)
+      - [How can use case scenarios help in identifying potential issues in a system?](#how-can-use-case-scenarios-help-in-identifying-potential-issues-in-a-system)
+    - [Advanced Concepts](#advanced-concepts)
+      - [What is a use case suite?](#what-is-a-use-case-suite)
+      - [What is the difference between a use case and a user story?](#what-is-the-difference-between-a-use-case-and-a-user-story)
+      - [What is the role of use cases in Agile development?](#what-is-the-role-of-use-cases-in-agile-development)
+      - [How can use cases be used in non-functional testing?](#how-can-use-cases-be-used-in-non-functional-testing)
+      - [What are some common mistakes to avoid when writing use cases?](#what-are-some-common-mistakes-to-avoid-when-writing-use-cases)
+<!-- TOC END -->
+
+A description detailing how a user interacts with a system. It forms a foundation for system development and tests.
+
+## Related Terms:
+
+- [Use Case Testing](/en/wiki/use-case-testing/)
+
+## Questions about Use Case?
+
+### Basics and Importance
+
+#### What is a use case in software testing?
+
+  In [software testing](/en/wiki/software-testing/), a **use case** is a description of a particular use of the system by an actor (user or other system). It outlines the sequence of interactions between the actor and the system necessary to achieve a specific goal. Use cases are instrumental in [functional testing](/en/wiki/functional-testing/) as they define the requirements the system must fulfill from an end-user perspective.
+  A use case typically includes the **main success scenario**—the standard flow of events—and may also describe **alternative flows** and **exceptional flows**, covering different usage scenarios and error conditions. This comprehensive coverage ensures that tests derived from use cases can validate that the system behaves correctly under various conditions.
+  Use cases are not just about the [happy path](/en/wiki/happy-path/); they also encapsulate **preconditions** that must be met before the scenario begins and **[postconditions](/en/wiki/postcondition/)** that should be true after the scenario completes. This helps in setting up [test environments](/en/wiki/test-environment/) and assessing the outcomes of [test executions](/en/wiki/test-execution/).
+  In [test automation](/en/wiki/test-automation/), use cases guide the creation of automated [test scripts](/en/wiki/test-script/). These scripts simulate the actions and inputs of the actors to verify the system's responses. By automating use cases, testers can efficiently repeat these scenarios for [regression testing](/en/wiki/regression-testing/), ensuring that new changes do not break existing functionality.
+  While use cases focus on user interactions, they can also inform [non-functional testing](/en/wiki/non-functional-testing/) by highlighting performance and usability considerations. For example, a use case describing a high-volume transaction scenario can lead to performance tests that simulate heavy load conditions.
+
+#### Why are use cases important in software development?
+
+  Use cases are crucial in software development as they provide a **structured way to capture [functional requirements](/en/wiki/functional-requirements/)**. They describe how users interact with the system, offering a clear picture of the expected behavior and outcomes. This helps in **defining the scope** of the system and ensures that all stakeholder expectations are considered.
+  In the context of [test automation](/en/wiki/test-automation/), use cases serve as a foundation for creating **comprehensive [test plans](/en/wiki/test-plan/)**. They help in identifying the key paths to test and ensure that the system behaves as intended when used by real users. By focusing on user interactions, use cases enable testers to prioritize and design tests that cover **critical functionalities**.
+  Moreover, use cases facilitate **communication** among team members by providing a common language that is easy to understand. This is especially important in **cross-functional teams** where members may have different areas of expertise. Use cases help bridge the gap between technical and non-technical stakeholders, ensuring everyone has a shared understanding of what the system is supposed to do.
+  In summary, use cases are important because they:
+
+  - Define system scope and functionality.
+  - Aid in creating effective test plans for automation.
+  - Prioritize testing based on user interactions.
+  - Enhance communication and understanding across teams.
+  By focusing on user interactions and outcomes, use cases contribute to the development of robust, user-centric software systems and the creation of effective automated tests.
+
+
+#### What are the key components of a use case?
+
+  Key components of a use case include:
+
+  - **Title** : A clear, descriptive name that encapsulates the use case's purpose.
+  - **Primary Actor** : The main entity initiating the use case, typically a user role or external system.
+  - **Stakeholders and Interests** : A list of other entities with vested interests in the use case outcome.
+  - **Preconditions** : Conditions that must be true before the use case can be initiated.
+  - **[Postconditions](/en/wiki/postcondition/)** : Conditions that must be true after the use case has been completed successfully.
+  - **Main Success Scenario** : A step-by-step narrative describing the standard flow of events to achieve the goal.
+  - **Extensions** : Alternate flows that may occur, including exceptions and error conditions.
+  - **Special Requirements** : Any non-functional requirements or constraints that are relevant, such as performance criteria or regulatory compliance.
+  - **Frequency of Use** : An indication of how often the use case is likely to be initiated.
+  - **Miscellaneous** : Any other relevant information, such as data variations or relevant business rules.
+  These components ensure that use cases are comprehensive and provide a clear understanding of the interactions between actors and the system. They serve as a foundation for creating [test cases](/en/wiki/test-case/) and scenarios that validate the intended behavior of the system.
+
+
+#### How does a use case help in understanding the system functionality?
+
+  Use cases facilitate a **deeper understanding** of system functionality by providing a **structured description** of how users interact with the system to achieve a specific goal. They offer a **narrative** that guides testers through a series of steps, revealing the **expected behavior** of the system under various conditions. This narrative helps testers to **envision** the user's perspective and **validate** that the system supports all intended use cases, ensuring that **[functional requirements](/en/wiki/functional-requirements/)** are met.
+  By outlining the **interactions** between the user (actor) and the system, use cases help to **identify** the **critical paths** that require thorough testing. They also **highlight** dependencies and **interactions** between different parts of the system, which can be crucial for designing **integration tests**.
+  In [test automation](/en/wiki/test-automation/), use cases are instrumental in **defining the scope** of automated tests. They can be directly translated into **automated [test scripts](/en/wiki/test-script/)** that simulate the user's actions, providing a **clear criterion** for passing or failing a test. This alignment between use cases and automated tests ensures that the automation efforts are **focused** and **relevant** to the user's needs.
+  Moreover, use cases can be used to **detect gaps** in the [test coverage](/en/wiki/test-coverage/) by comparing the automated tests against the full range of use cases. This comparison can reveal **untested paths** or **scenarios**, prompting the creation of additional automated tests to cover these areas.
+  In summary, use cases are a **vital tool** for understanding system functionality and ensuring that [test automation](/en/wiki/test-automation/) efforts are **aligned** with user requirements and system behavior.
+
+#### What is the difference between a use case and a test case?
+
+  A **use case** is a high-level description of a system's functionality from an end-user perspective. It outlines the interactions between actors (users or other systems) and the system to achieve a goal. Use cases focus on the **intent** and **purpose** of the system behavior without detailing the specific steps to accomplish it.
+  In contrast, a **[test case](/en/wiki/test-case/)** is a set of conditions and variables under which a tester will determine whether a system under test satisfies requirements or works correctly. [Test cases](/en/wiki/test-case/) are more granular and include detailed inputs, execution steps, and [expected results](/en/wiki/expected-result/). They are designed to verify the implementation of the software, ensuring it meets the specified requirements.
+  While use cases are about **what** the system should do, [test cases](/en/wiki/test-case/) are about **how** to validate that the system does what it is supposed to do. [Test cases](/en/wiki/test-case/) are derived from use cases and other specifications, such as [functional requirements](/en/wiki/functional-requirements/). They are essential for systematic testing and often include both positive and negative scenarios to ensure comprehensive coverage.
+  In summary, use cases describe **desired system interactions** and serve as a foundation for creating [test cases](/en/wiki/test-case/), which are the **practical steps** to verify those interactions. [Test automation](/en/wiki/test-automation/) engineers use use cases to understand the scope and context of the system's functionality and then develop [test cases](/en/wiki/test-case/) to automate the [verification](/en/wiki/verification/) of that functionality.
+
+### Use Case Diagrams
+
+#### What is a use case diagram?
+
+  A **use case diagram** is a visual representation of the interactions between **external actors** and the **system** under development. It maps out the various ways that users (actors) can interact with the system to achieve a goal, highlighting the system's functionality from an outside perspective.
+  In the context of [test automation](/en/wiki/test-automation/), a use case diagram serves as a high-level guide for identifying [test scenarios](/en/wiki/test-scenario/). It includes **actors** (users or other systems), **use cases** (goals the actors want to achieve), and **associations** (lines that connect actors to use cases they are involved in). Optionally, it may also depict **system boundaries** (to delineate the scope of the system), and **include** or **extend** relationships (to show shared or conditional steps between use cases).
+  By visualizing the interactions and relationships, the diagram helps in ensuring that all functional paths are considered during [test case](/en/wiki/test-case/) creation. It can also reveal complexities and dependencies that might affect testing strategies.
+  Here's a simple example of a use case diagram syntax:
+
+  ```
+  @startuml
+  left to right direction
+  actor Customer
+  actor Bank
+  rectangle BankingSystem {
+    Customer -- (Withdraw Money)
+    Customer -- (Deposit Money)
+    (Transfer Funds) .> (Withdraw Money) : extends
+    Bank -- (Create Account)
+  }
+  @enduml
+  ```
+  This UML (Unified Modeling Language) snippet would generate a diagram showing a customer interacting with a banking system to withdraw and deposit money, and a bank actor that can create accounts. The "Transfer Funds" use case extends the "Withdraw Money" use case, indicating that transferring funds includes the steps of withdrawing money.
+
+#### What are the elements of a use case diagram?
+
+  Elements of a use case diagram include:
+
+  - **Actors** : Represent external entities interacting with the system, such as users or other systems.
+  - **Use Cases** : Ellipses that describe the interactions between actors and the system to achieve a goal.
+  - **System Boundary** : A rectangle that frames the use cases, defining the scope of the system.
+  - **Associations** : Lines connecting actors to use cases, indicating participation in the interaction.
+  - **Include** : A directed arrow with a dotted line, showing that one use case includes the functionality of another.
+  - **Extend** : A directed arrow with a dotted line, indicating that a use case extends another under certain conditions.
+  - **Generalization** : A solid line with a hollow arrowhead, illustrating inheritance between actors or use cases.
+  Use case diagrams are visual representations that specify the relationships and interactions between actors and use cases within a system. They serve as a tool for discussing and managing system requirements.
+
+
+#### How do you create a use case diagram?
+
+  Creating a **use case diagram** involves the following steps:
+
+  1. **Identify the system boundary**: Define what is inside and outside the system, often represented by a rectangle.
+  2. **Determine the actors**: List all the external entities that interact with the system. Actors can be users or other systems.
+  3. **Find use cases**: Enumerate all the functionalities the system should perform for each actor.
+  4. **Connect actors to use cases**: Draw lines between actors and their respective use cases to show interactions.
+  5. **Include relationships**: Use include, extend, or generalization relationships where necessary to show the dependency between use cases.
+  6. **Review and validate**: Ensure the diagram accurately represents all user interactions and system functionalities.
+  Here's a simple example in Markdown using a textual description:
+
+  ```
+  # Use Case Diagram Example
+  ## System Boundary
+  Rectangle: Online Shopping System
+  ## Actors
+  - Customer
+  - Payment Gateway
+  ## Use Cases
+  - Browse Items
+  - Add Item to Cart
+  - Checkout
+  - Make Payment
+  ## Connections
+  - Customer -> Browse Items
+  - Customer -> Add Item to Cart
+  - Customer -> Checkout
+  - Checkout -> Make Payment
+  - Make Payment -> Payment Gateway
+  ## Relationships
+  - Checkout -> Make Payment (include)
+  ```
+  Remember to keep the diagram **simple** and **focused** on user interactions. Avoid cluttering with too many details that can be reserved for more detailed use case scenarios or other diagrams.
+
+
+#### What is the role of actors in a use case diagram?
+
+  In a use case diagram, **actors** represent the roles that interact with the system, including users and other systems. They are external entities that initiate a use case by requesting the system to perform a function. Actors help to define the boundaries of the system and clarify who or what will interact with it. They are not part of the system itself but are essential for specifying the context and requirements of the system. In [test automation](/en/wiki/test-automation/), understanding actors is crucial for identifying the different perspectives from which the system should be tested, ensuring that all user interactions are accounted for in [test cases](/en/wiki/test-case/).
+
+#### How does a use case diagram aid in system design?
+
+  A use case diagram aids in system design by providing a **visual representation** of the system's functionality from the user's perspective. It helps in identifying the **interactions** between various actors and the system, ensuring that all user interactions are accounted for in the design. This visual tool highlights the **scope of the system**, clarifying which features are included and which are outside the system boundary.
+  By mapping out the use cases, designers can spot **redundancies** and **dependencies** between different parts of the system, which can lead to a more **modular** and **scalable** architecture. It also facilitates **communication** among stakeholders, as the diagram is easily understandable by both technical and non-technical team members, bridging the gap between user requirements and system developers.
+  In the context of [test automation](/en/wiki/test-automation/), the diagram serves as a foundation for creating **[test plans](/en/wiki/test-plan/)** and **[test scripts](/en/wiki/test-script/)** that align with user interactions. It ensures that [test cases](/en/wiki/test-case/) cover all the functionalities represented by the use cases, leading to comprehensive [test coverage](/en/wiki/test-coverage/). Additionally, it can be used to **prioritize [test cases](/en/wiki/test-case/)** based on the frequency and criticality of the use case in real-world scenarios, optimizing the testing effort.
+  Overall, a use case diagram is a strategic tool in system design that contributes to a user-centric approach, ensuring that the final product aligns with user needs and expectations while facilitating a structured and efficient testing process.
+
+### Use Case Scenarios
+
+#### What is a use case scenario?
+
+  A **use case scenario** is a detailed narrative that describes the interaction between a user (or "actor") and a system to achieve a specific goal. It outlines a sequence of steps that the actor takes to complete a task, including any system responses. Unlike a broader use case, which may encompass multiple scenarios, a use case scenario focuses on a single flow of events.
+  Use case scenarios are instrumental in **[test automation](/en/wiki/test-automation/)** as they provide a basis for creating [test scripts](/en/wiki/test-script/). They help in visualizing the end-to-end functionality of a feature, which can be translated into automated [test cases](/en/wiki/test-case/). These scenarios ensure that the automated tests cover the real-world usage of the application.
+  Here's an example of a use case scenario in a markdown format:
+
+  ```
+  **Title:** Withdraw Cash from ATM
+  **Primary Actor:** Bank Customer
+  **Preconditions:**
+  - The ATM is operational.
+  - The customer has a valid bank card and PIN.
+  **Main Flow:**
+  1. Customer inserts their bank card.
+  2. System prompts for the PIN.
+  3. Customer enters the PIN.
+  4. System validates the PIN and displays transaction options.
+  5. Customer selects 'Withdraw Cash'.
+  6. System prompts for the amount.
+  7. Customer enters the amount.
+  8. System dispenses cash and prints a receipt.
+  9. Customer takes the cash and receipt.
+  10. System ejects the bank card.
+  11. Customer takes the card.
+  **Postconditions:**
+  - Customer has received the correct amount of cash.
+  - The customer's account balance is updated.
+  - The ATM is ready for the next transaction.
+  ```
+  In [test automation](/en/wiki/test-automation/), such scenarios are critical for defining the scope of [test cases](/en/wiki/test-case/) and ensuring that the automated tests reflect user interactions accurately. They also help in identifying edge cases and potential system issues before they affect end-users.
+
+#### How is a use case scenario different from a use case?
+
+  A **use case** outlines a system's [functional requirements](/en/wiki/functional-requirements/) by describing the interaction between **actors** (users or other systems) and the system itself to achieve a goal. It is a high-level description that remains relatively abstract, focusing on the intent and the end result of the interaction.
+  In contrast, a **use case scenario** is a specific narrative or flow of events that illustrates a single path through the use case. It provides a detailed, step-by-step account of the actor's actions and the system's responses. Use case scenarios are concrete examples that show how the requirements are fulfilled in practice.
+  While a use case might state that a user can process a transaction, a use case scenario would detail the steps of processing that transaction, such as logging in, entering transaction details, submitting the transaction for processing, and receiving a confirmation.
+  Use case scenarios are particularly useful in [test automation](/en/wiki/test-automation/) because they translate the abstract requirements of a use case into tangible [test scripts](/en/wiki/test-script/). Each scenario can serve as a basis for a [test case](/en/wiki/test-case/), ensuring that the system behaves as expected in specific situations.
+  Here's an example to illustrate the difference:
+  **Use Case**: User manages their profile.
+  **Use Case Scenario**:
+
+  1. User logs in to the system.
+  2. User navigates to the profile management page.
+  3. User updates their email address.
+  4. User saves changes.
+  5. System confirms the update.
+  The scenario provides a clear sequence for [test automation](/en/wiki/test-automation/), while the use case defines the broader capability.
+
+  1. User logs in to the system.
+  2. User navigates to the profile management page.
+  3. User updates their email address.
+  4. User saves changes.
+  5. System confirms the update.
+
+#### How do you write a use case scenario?
+
+  Writing a use case scenario involves detailing the steps that a user or system will take to achieve a specific goal within the application. Here's a concise guide:
+
+  1. **Identify the Actor**: Determine who is interacting with the system (e.g., user, external system).
+  2. **Define the Goal**: Clearly state the objective the actor is trying to accomplish.
+  3. **Set the Preconditions**: List any conditions that must be true before the scenario can be initiated.
+  4. **Enumerate the Main Flow**: Outline the primary sequence of steps the actor takes to achieve the goal. Use simple, numbered sentences for clarity.
+  5. **Describe Alternative Flows**: Capture any variations from the main flow, handling different choices or exceptions.
+  6. **Specify [Postconditions](/en/wiki/postcondition/)**: Describe the state of the system after the use case has been completed, ensuring the goal has been met.
+  7. **Include Success Criteria**: Define what will make the use case successful from the actor's perspective.
+  Here's a simplified example for a login use case scenario:
+
+  ```
+  Actor: User
+  Goal: Successfully log into the system
+  Preconditions:
+  - User is registered.
+  - Login page is accessible.
+  Main Flow:
+  1. User navigates to the login page.
+  2. User enters username and password.
+  3. User clicks the login button.
+  4. System validates credentials.
+  5. User is redirected to the homepage.
+  Alternative Flows:
+  A. Invalid credentials:
+     1. System displays an error message.
+     2. User can attempt to re-enter credentials.
+  Postconditions:
+  - User is logged in and has access to the system.
+  Success Criteria:
+  - User gains access to the homepage within 5 seconds after clicking the login button.
+  ```
+  Remember to keep scenarios **realistic** and **focused** on user interactions, avoiding technical jargon to ensure clarity for stakeholders.
+
+
+#### What is the role of a use case scenario in software testing?
+
+  In [software testing](/en/wiki/software-testing/), a **use case scenario** plays a crucial role in guiding the creation of **[test scripts](/en/wiki/test-script/)** and **[test cases](/en/wiki/test-case/)**. It provides a detailed sequence of steps that represent a specific interaction between an actor (usually a user) and the system, to achieve a goal. This detailed narrative includes the **preconditions**, **triggers**, and **[postconditions](/en/wiki/postcondition/)**, offering a clear path for testers to follow.
+  Use case scenarios are instrumental in **[functional testing](/en/wiki/functional-testing/)** as they ensure that all [functional requirements](/en/wiki/functional-requirements/) are verified through real-world simulations. They help in uncovering **functional defects** and **workflow issues** that might not be evident through isolated unit tests. By encompassing various possible paths, including **alternative flows** and **exception paths**, use case scenarios enable testers to perform thorough **boundary value** and **[negative testing](/en/wiki/negative-testing/)**.
+  Moreover, they serve as a basis for **automated regression tests**, ensuring that new changes do not break existing functionalities. Testers can automate the scenarios to quickly verify the system's behavior after each [iteration](/en/wiki/iteration/) or deployment.
+  In **[performance testing](/en/wiki/performance-testing/)**, scenarios help in modeling user behavior under load and stress conditions. They can be used to script actions for virtual users to simulate real-world usage patterns, thereby identifying performance bottlenecks.
+  Lastly, use case scenarios contribute to **[user acceptance testing](/en/wiki/user-acceptance-testing/) (UAT)** by representing the user's perspective, which is critical for ensuring the system meets business requirements and user expectations before going live.
+
+#### How can use case scenarios help in identifying potential issues in a system?
+
+  Use case scenarios can be instrumental in identifying potential issues by simulating real-world usage of the system. They provide a **narrative** that describes how users interact with the system to achieve a goal. This narrative helps to uncover:
+
+  - **Edge Cases**: Scenarios can highlight less obvious paths or interactions that users might take, which are often overlooked but can cause unexpected behavior.
+  - **Integration Points**: They expose how the system interacts with external systems or modules, pinpointing potential integration issues.
+  - **User Experience Issues**: By walking through the steps a user takes, scenarios can reveal cumbersome or unintuitive workflows that could lead to user errors.
+  - **Security Vulnerabilities**: They can help identify security-related scenarios, such as access control issues or data privacy concerns, by outlining how different types of users interact with the system.
+  - **Performance Bottlenecks**: Scenarios that involve complex interactions or high data loads can help identify performance issues under realistic conditions.
+  - **Requirement Gaps**: By detailing specific actions and outcomes, use case scenarios can expose missing requirements or misunderstandings about the intended functionality.
+  - **Regression Effects**: When system changes are made, scenarios help ensure that existing functionality remains unaffected, revealing potential regression issues.
+  Incorporating use case scenarios into [test automation](/en/wiki/test-automation/) strategies ensures that tests are user-centric and focused on real-world application, leading to a more robust and reliable system.
+
+
+### Advanced Concepts
+
+#### What is a use case suite?
+
+  A **use case suite** is a collection of related use cases grouped to manage and execute them as a whole during software [test automation](/en/wiki/test-automation/). It serves as an organized set of scenarios that cover a particular feature, functionality, or system aspect. Each use case within the suite represents a different path or variation of the system under test, ensuring comprehensive coverage.
+  In [test automation](/en/wiki/test-automation/), a use case suite is often implemented as a set of automated [test scripts](/en/wiki/test-script/) that are executed together. This suite can be tailored to validate a specific set of requirements or to simulate a particular user journey. By running a use case suite, [test automation](/en/wiki/test-automation/) engineers can verify that the system behaves as expected across multiple scenarios and conditions.
+  Here's an example of how a use case suite might be represented in code:
+
+  ```
+  describe('Login Use Case Suite', () => {
+    it('should allow a user with valid credentials to log in', () => {
+      // Test code for valid login
+    });
+    it('should reject a user with invalid credentials', () => {
+      // Test code for invalid login
+    });
+    it('should lock the account after multiple failed login attempts', () => {
+      // Test code for account lock
+    });
+    // Additional use case scenarios...
+  });
+  ```
+  In this example, the `describe` block defines the suite, and each `it` block represents an individual use case scenario within that suite. By grouping related scenarios, engineers can more easily manage and maintain their [test automation](/en/wiki/test-automation/) efforts.
+
+#### What is the difference between a use case and a user story?
+
+  A **use case** is a detailed description of how a user interacts with a system to achieve a specific goal, often capturing the system's behavior under various conditions. It includes the main success scenario along with alternative paths and exceptions, focusing on the interaction between the user (actor) and the system.
+  In contrast, a **user story** is a short, simple description of a feature told from the perspective of the person who desires the new capability, usually a user or customer of the system. User stories are typically written in an informal, natural language and follow a simple template: "As a [type of user], I want [an action] so that [a benefit/a value]." They are a tool used in [Agile development](/en/wiki/agile-development/) to capture product functionality from the end-user's point of view.
+  While use cases provide a structured and detailed method of capturing the [functional requirements](/en/wiki/functional-requirements/) and scenarios of system use, user stories offer a quick, conversational approach that captures the essence of the user's need. User stories are more about the 'what' and 'why', while use cases delve into the 'how'. User stories are often accompanied by acceptance criteria, which are a set of conditions that must be met for the story to be considered complete.
+  In [test automation](/en/wiki/test-automation/), user stories can guide the creation of [test scenarios](/en/wiki/test-scenario/) that focus on the expected outcomes and benefits for the user, whereas use cases can inform more comprehensive testing, including alternative flows and exception handling.
+
+#### What is the role of use cases in Agile development?
+
+  In [Agile development](/en/wiki/agile-development/), use cases play a crucial role in **bridging the gap** between user needs and the iterative implementation of software features. They serve as a **blueprint** for creating user stories, which are the primary units of work within Agile methodologies.
+  Use cases provide a **high-level overview** of system interactions from the user's perspective, ensuring that the development team and stakeholders have a shared understanding of the system's functionality. This shared understanding helps in **prioritizing** features and planning [iterations](/en/wiki/iteration/) or sprints.
+  During backlog refinement and sprint planning, use cases are often **decomposed** into smaller, more manageable user stories that fit into an [iteration](/en/wiki/iteration/). These user stories are then used to create **acceptance criteria**, which guide [test automation](/en/wiki/test-automation/) efforts by defining the conditions that the software must meet to be considered complete.
+  Moreover, use cases help in **identifying [test scenarios](/en/wiki/test-scenario/)** for both functional and non-[functional requirements](/en/wiki/functional-requirements/), ensuring comprehensive [test coverage](/en/wiki/test-coverage/). They also aid in **[regression testing](/en/wiki/regression-testing/)** by highlighting the critical paths and interactions that should remain stable across [iterations](/en/wiki/iteration/).
+  In summary, use cases in [Agile development](/en/wiki/agile-development/) are instrumental in:
+
+  - Guiding the creation of user stories and acceptance criteria.
+  - Ensuring a common understanding of system functionality.
+  - Prioritizing development work.
+  - Identifying test scenarios for comprehensive coverage.
+  - Supporting regression testing by outlining critical system interactions.
+
+#### How can use cases be used in non-functional testing?
+
+  Use cases can be instrumental in [non-functional testing](/en/wiki/non-functional-testing/) by providing a **contextual framework** for evaluating system attributes like performance, security, and usability. Although use cases are traditionally associated with [functional requirements](/en/wiki/functional-requirements/), they can also outline scenarios where non-functional qualities are critical.
+  For instance, a use case describing a high-traffic scenario can be used to derive performance tests, ensuring the system can handle the specified load. Similarly, use cases involving user authentication can lead to security tests focused on authorization and data protection.
+  In [usability testing](/en/wiki/usability-testing/), use cases help to understand the user interactions and can be used to assess the system's ease of use and accessibility. By simulating the actions and experiences outlined in a use case, testers can evaluate how well the system supports users in achieving their goals.
+  To leverage use cases in [non-functional testing](/en/wiki/non-functional-testing/):
+
+  - **Identify critical use cases**
+    that have significant non-functional implications.
+
+  - **Translate these use cases**
+    into specific non-functional requirements.
+
+  - **Design tests**
+    that challenge the system's non-functional aspects as described by the use cases.
+
+  - **Execute tests**
+    to validate the system's performance, security, usability, etc., against the expectations set by the use cases.
+  By doing so, you ensure that [non-functional testing](/en/wiki/non-functional-testing/) is grounded in realistic and relevant user scenarios, providing a comprehensive assessment of the system's overall quality.
+
+  - **Identify critical use cases**
+
+#### What are some common mistakes to avoid when writing use cases?
+
+  When writing use cases, avoid these common mistakes:
+
+  - **Overlooking User Perspective**: Always focus on the user's point of view. Use cases that are too system-centric can miss user interactions and expectations.
+  - **Being Too Generic or Too Detailed**: Striking a balance is key. Overly generic use cases lack actionable information, while too much detail can overwhelm and confuse.
+  - **Ignoring Alternative Flows**: Don't just focus on the [happy path](/en/wiki/happy-path/). Consider alternative and exception flows to ensure comprehensive coverage.
+  - **Mixing Functionalities**: Each use case should represent a single functionality or goal. Combining multiple goals can lead to confusion and testability issues.
+  - **Neglecting Non-[Functional Requirements](/en/wiki/functional-requirements/)**: While use cases primarily focus on [functional requirements](/en/wiki/functional-requirements/), it's important to consider performance, usability, and security aspects that may impact the scenario.
+  - **Failing to Update**: As the system evolves, so should the use cases. Outdated use cases lead to irrelevant or incorrect testing.
+  - **Lack of Clear Scope**: Define the boundaries of what the use case will and will not cover to prevent scope creep and ensure focused testing.
+  - **Poorly Defined Actors**: Clearly identify the actors involved and their roles. Ambiguity here can lead to incomplete testing.
+  - **Inconsistent Terminology**: Use consistent language and terms throughout the use cases to avoid confusion.
+  - **Skipping Validation**: Validate use cases with stakeholders to ensure accuracy and completeness.
+  Remember, well-crafted use cases are a foundation for effective [test automation](/en/wiki/test-automation/), providing clear and actionable scenarios for testing teams.

@@ -377,7 +377,7 @@ export const HOME_EXPLORE_SUBTITLE: Multilingual = {
 };
 ```
 
-Hero 主 CTA 链到博客列表（`/blog`）；次 CTA：中文链 `/wiki`，英文链 AI Wiki 或既有 wiki 策略（与 Header 外链规则一致：英文 QA Wiki 若仍外链 ray.run，则次 CTA 用 `/AIWiki`）。
+Hero 主 CTA 链到博客列表（`/blog`）；次 CTA：中文与英文均链到本站对应语言的 `/wiki` 页面。
 
 - [x] **Step 2: Commit**
 

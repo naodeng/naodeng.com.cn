@@ -16,7 +16,7 @@ order: 0
 <!-- TOC START -->
 
 - [应用程序编程接口 ｜ API](#应用程序编程接口--api)
-- [关于 API 的问题](#关于-api-的问题)
+  - [关于 API 的问题](#关于-api-的问题)
   - [基础知识和重要性](#基础知识和重要性)
     - [什么是 API 以及它如何工作？](#什么是-api-以及它如何工作)
     - [为什么 API 在软件开发中很重要？](#为什么-api-在软件开发中很重要)
@@ -53,14 +53,14 @@ order: 0
 
 相关术语：
 
-- [API Testing  API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)
-- [Microservices Testing  微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/)
+- [API Testing  API 测试](/zh-cn/wiki/api-testing/)
+- [Microservices Testing  微服务测试](/zh-cn/wiki/microservices-testing/)
 
 也可以看看：
 
 [维基百科](https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%8E%A5%E5%8F%A3)
 
-# 关于 API 的问题
+## 关于 API 的问题
 
 ## 基础知识和重要性
 
@@ -91,7 +91,7 @@ fetch('https://api.example.com/data', {
 
 在软件开发中，APIs 对于**促进不同软件组件或系统之间的通信**至关重要。它们充当**合同**，规定软件元素如何互动，确保对一个部分的更改不会破坏其他地方的功能。这种**解耦**使得**模块化**成为可能，更容易设计、开发和维护应用程序。
 
-APIs 促进了**可重用性**，允许开发人员利用现有功能而不必重新发明轮子。它们还实现了**可扩展性**，因为服务可以独立扩展以满足需求。在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)的背景下，APIs 在**[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**中起到了关键作用，确保应用程序的不同部分按预期一起工作。
+APIs 促进了**可重用性**，允许开发人员利用现有功能而不必重新发明轮子。它们还实现了**可扩展性**，因为服务可以独立扩展以满足需求。在[测试自动化](/zh-cn/wiki/test-automation/)的背景下，APIs 在**[集成测试](/zh-cn/wiki/integration-testing/)**中起到了关键作用，确保应用程序的不同部分按预期一起工作。
 
 此外，APIs 在**持续集成/持续部署（CI/CD）**流水线中至关重要，允许自动化工具与正在开发的软件进行交互，从而加速发布过程。它们还提供了一种进行**监控和健康检查**的手段，这对于维护实时系统的可靠性至关重要。
 
@@ -115,7 +115,7 @@ APIs 有各种形式，每种都有不同的用途。以下是不同类型的 AP
 
 - **WebSocket**：在单个 TCP 连接上提供全双工通信通道，实现客户端和服务器之间的实时数据传输。
 
-每种 API 都有其自己的实施和测试标准和最佳实践。了解每种类型的特性对于有效的[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)至关重要。
+每种 API 都有其自己的实施和测试标准和最佳实践。了解每种类型的特性对于有效的[测试自动化](/zh-cn/wiki/test-automation/)至关重要。
 
 ### Web API 和库 API 有什么区别？
 
@@ -157,10 +157,10 @@ APIs 有各种形式，每种都有不同的用途。以下是不同类型的 AP
 - **文档**：保持文档更新，并提供清晰、简洁的示例。使用 Swagger 或 API Blueprint 等工具。
 - **反馈循环**：鼓励并促使 API 使用者提供反馈，以不断改进 API。
 
-```JavaScript
-// Example of a RESTful endpoint for retrieving a user
-GET /api/v1/users/{id}
-```
+  ```JavaScript
+  // Example of a RESTful endpoint for retrieving a user
+  GET /api/v1/users/{id}
+  ```
 
 记住，目标是创建一个易于理解、与之集成并随时间推移易于维护的 API。
 
@@ -184,7 +184,7 @@ GET /api/v1/users/{id}
 
 选择与你的 API 需求和使用者期望相一致的版本控制策略。通过**变更日志**清晰地传达变更，并确保文档随着 API 一起更新。
 
-对于[向后兼容性](https://inaodeng.com/zh-cn/wiki/backward-compatibility/)，考虑同时支持多个版本或提供**弃用政策**，以便给使用者迁移的时间。
+对于[向后兼容性](/zh-cn/wiki/backward-compatibility/)，考虑同时支持多个版本或提供**弃用政策**，以便给使用者迁移的时间。
 
 以下是使用 URI 版本控制的 API 端点的示例：
 
@@ -209,11 +209,11 @@ API 优先设计是一种在实施核心应用程序之前优先开发**APIs**�
 
 通过采用 API 优先设计，组织可以加速其**上线**策略，因为前端和后端团队可以并行工作。它还为开发人员、测试人员和业务利益相关者提供了一个更加**协作的环境**，使其能够在开发周期的早期对 API 的目的和功能达成一致。
 
-在**[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)**的背景下，API 优先设计简化了自动化测试的创建，提供了稳定且有文档的接口。这使得测试自动化工程师能够编写更不容易破碎、更专注于验证业务逻辑而不是处理 UI 变化或其他前端问题的测试。
+在**[测试自动化](/zh-cn/wiki/test-automation/)**的背景下，API 优先设计简化了自动化测试的创建，提供了稳定且有文档的接口。这使得测试自动化工程师能够编写更不容易破碎、更专注于验证业务逻辑而不是处理 UI 变化或其他前端问题的测试。
 
 ### 开发 API 时需要考虑哪些关键因素？
 
-在开发 API 时，**一致性**对于[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)和可用性至关重要。确保端点之间的命名惯例、请求/响应格式和行为保持一致。
+在开发 API 时，**一致性**对于[可维护性](/zh-cn/wiki/maintainability/)和可用性至关重要。确保端点之间的命名惯例、请求/响应格式和行为保持一致。
 
 **性能**必须进行优化；设计高效的数据检索，并考虑实施缓存、分页和压缩以减少延迟。
 
@@ -221,7 +221,7 @@ API 优先设计是一种在实施核心应用程序之前优先开发**APIs**�
 
 **错误处理**应该健壮，提供有意义的 HTTP 状态码和错误消息，使客户端能够理解和解决问题。
 
-**版本控制**对于[向后兼容性](https://inaodeng.com/zh-cn/wiki/backward-compatibility/)至关重要；使用清晰的策略，例如基于 URI 路径或标头的版本控制，以管理更改而不干扰客户端。
+**版本控制**对于[向后兼容性](/zh-cn/wiki/backward-compatibility/)至关重要；使用清晰的策略，例如基于 URI 路径或标头的版本控制，以管理更改而不干扰客户端。
 
 **安全性**是至关重要的；实施身份验证、授权、输入验证和速率限制，以防范常见的漏洞。
 
@@ -247,7 +247,7 @@ API 网关可以处理**横切关注点**，如：
 - **缓存**：存储频繁访问的数据副本，以提高响应时间并减少后端负载。
 - **请求形状和协议转换**：根据需要修改请求并在不同的 Web 协议之间进行转换。
 
-对于[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)工程师来说，API 网关引入了有关**[测试策略](https://inaodeng.com/zh-cn/wiki/test-strategy/)**的额外考虑因素。测试应该考虑到网关的行为，包括它如何路由流量和应用策略。自动化测试可能需要模拟网关的操作或绕过它，直接测试各个微服务。
+对于[测试自动化](/zh-cn/wiki/test-automation/)工程师来说，API 网关引入了有关**[测试策略](/zh-cn/wiki/test-strategy/)**的额外考虑因素。测试应该考虑到网关的行为，包括它如何路由流量和应用策略。自动化测试可能需要模拟网关的操作或绕过它，直接测试各个微服务。
 
 总之，API 网关在微服务架构中扮演着管理 API 调用流的关键角色，提供了一个集中点，用于共享在维护可扩展、安全和高效系统方面至关重要的通用功能。
 
@@ -255,69 +255,69 @@ API 网关可以处理**横切关注点**，如：
 
 ### 什么是 API 测试以及为什么它很重要？
 
-[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)是一种[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/)类型，涉及验证和验证应用程序编程接口 (APIs) 及其与其他软件组件的交互。这对确保 APIs 按预期方式运行，高效处理负载并正确响应边缘情况和意外输入是**至关重要**的。
+[API 测试](/zh-cn/wiki/api-testing/)是一种[软件测试](/zh-cn/wiki/software-testing/)类型，涉及验证和验证应用程序编程接口 (APIs) 及其与其他软件组件的交互。这对确保 APIs 按预期方式运行，高效处理负载并正确响应边缘情况和意外输入是**至关重要**的。
 
-[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)的重要性在于它专注于软件架构的**业务逻辑层**。与评估前端界面的[UI 测试](https://inaodeng.com/zh-cn/wiki/ui-testing/)不同，[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)处理处理数据和交易的代码，这通常比 UI 更稳定。这种稳定性使得在软件开发生命周期的早期进行测试开发和执行成为可能，从而实现**更快的反馈**和**更快的[迭代](https://inaodeng.com/zh-cn/wiki/iteration/)**。
+[API 测试](/zh-cn/wiki/api-testing/)的重要性在于它专注于软件架构的**业务逻辑层**。与评估前端界面的[UI 测试](/zh-cn/wiki/ui-testing/)不同，[API 测试](/zh-cn/wiki/api-testing/)处理处理数据和交易的代码，这通常比 UI 更稳定。这种稳定性使得在软件开发生命周期的早期进行测试开发和执行成为可能，从而实现**更快的反馈**和**更快的[迭代](/zh-cn/wiki/iteration/)**。
 
-[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)对于以下方面至关重要：
+[API 测试](/zh-cn/wiki/api-testing/)对于以下方面至关重要：
 
 - 验证通过 APIs 暴露的软件的**核心功能**。
 - 确保**数据一致性**、**响应时间**和**错误处理**符合所需的标准。
 - 检测安全漏洞和访问控制问题。
 - 在不同条件下（包括负载和压力测试）评估性能。
-- 通过检查不同软件组件之间的交互促进**[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**。
+- 通过检查不同软件组件之间的交互促进**[集成测试](/zh-cn/wiki/integration-testing/)**。
 
-鉴于微服务和分布式架构的崛起，[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)变得更加重要，因为系统越
+鉴于微服务和分布式架构的崛起，[API 测试](/zh-cn/wiki/api-testing/)变得更加重要，因为系统越
 
 来越多地依赖多个 APIs 协同工作。自动化 API 测试是一种最佳实践，支持持续测试和集成，这是敏捷和 DevOps 方法论的基石。
 
 ### API 测试有哪些不同类型？
 
-不同类型的[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)侧重于 API 的功能、可靠性、性能和安全性的各个方面。以下是主要类型：
+不同类型的[API 测试](/zh-cn/wiki/api-testing/)侧重于 API 的功能、可靠性、性能和安全性的各个方面。以下是主要类型：
 
-- **[功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/)**: 验证 API 是否按预期行为，涵盖单个功能和端到端场景。
-- **[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)**: 评估高流量下的性能，确保 API 能够处理预期的负载。
-- **[压力测试](https://inaodeng.com/zh-cn/wiki/stress-testing/)**: 通过超过正常运行能力来确定 API 的破坏点。
-- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)**: 识别漏洞，确保数据加密和安全，并验证认证和授权机制的健壮性。
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**: 检查 API 与其他服务和数据库的交互，确保无缝集成。
-- **[兼容性测试](https://inaodeng.com/zh-cn/wiki/compatibility-testing/)**: 确保 API 在不同设备、操作系统和网络环境中正常工作。
-- **[可靠性测试](https://inaodeng.com/zh-cn/wiki/reliability-testing/)**: 验证 API 是否可以持续连接并保持稳定性能。
-- **[互操作性测试](https://inaodeng.com/zh-cn/wiki/interoperability-testing/)**: 确认 API 是否遵循与其他 API 交互的标准和协议。
-- **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**: 在对 API 进行更改后执行，确保新代码不会对现有功能产生不利影响。
-- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**: 在不同条件下测量 API 的响应速度和稳定性。
-- **[API 监控](https://inaodeng.com/zh-cn/wiki/api-testing/)**: 持续检查生产中的 API，以确保正常运行、响应时间和正确行为。
+- **[功能测试](/zh-cn/wiki/functional-testing/)**: 验证 API 是否按预期行为，涵盖单个功能和端到端场景。
+- **[负载测试](/zh-cn/wiki/load-testing/)**: 评估高流量下的性能，确保 API 能够处理预期的负载。
+- **[压力测试](/zh-cn/wiki/stress-testing/)**: 通过超过正常运行能力来确定 API 的破坏点。
+- **[安全测试](/zh-cn/wiki/security-testing/)**: 识别漏洞，确保数据加密和安全，并验证认证和授权机制的健壮性。
+- **[集成测试](/zh-cn/wiki/integration-testing/)**: 检查 API 与其他服务和数据库的交互，确保无缝集成。
+- **[兼容性测试](/zh-cn/wiki/compatibility-testing/)**: 确保 API 在不同设备、操作系统和网络环境中正常工作。
+- **[可靠性测试](/zh-cn/wiki/reliability-testing/)**: 验证 API 是否可以持续连接并保持稳定性能。
+- **[互操作性测试](/zh-cn/wiki/interoperability-testing/)**: 确认 API 是否遵循与其他 API 交互的标准和协议。
+- **[回归测试](/zh-cn/wiki/regression-testing/)**: 在对 API 进行更改后执行，确保新代码不会对现有功能产生不利影响。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**: 在不同条件下测量 API 的响应速度和稳定性。
+- **[API 监控](/zh-cn/wiki/api-testing/)**: 持续检查生产中的 API，以确保正常运行、响应时间和正确行为。
 
 每种测试类型对于确保 API 的可靠性、安全性、良好性能和与其他系统组件的平滑集成都至关重要。
 
 ### API 测试常用的工具有哪些？
 
-常用的[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)工具包括：
+常用的[API 测试](/zh-cn/wiki/api-testing/)工具包括：
 
-- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**: 用于 API 开发和测试的热门工具，提供用户友好的界面和各种功能，用于发送请求、分析响应和自动化测试。
+- **[Postman](/zh-cn/wiki/postman/)**: 用于 API 开发和测试的热门工具，提供用户友好的界面和各种功能，用于发送请求、分析响应和自动化测试。
 - **SoapUI**: 专为 SOAP 和 REST API 测试而设计的开源工具，提供全面的测试功能，包括功能测试、回归测试和负载测试。
-- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)**: 主要是性能测试工具，也可用于 API 测试，特别是压力测试和负载测试。
+- **[JMeter](/zh-cn/wiki/jmeter/)**: 主要是性能测试工具，也可用于 API 测试，特别是压力测试和负载测试。
 - **Rest-Assured**: 用于简化 RESTful API 测试的 Java DSL，与现有的基于 Java 的测试框架无缝集成。
 - **Insomnia**: 强大的 REST 客户端，具有 API 探索和调试功能，以及基本的自动化测试功能。
 - **Katalon Studio**: 一体化的自动化解决方案，支持 API 和 UI 测试，提供用户友好的界面用于创建自动化测试。
 - **Paw**: 专为 Mac 设计的 API 测试和描述工具，具有完整功能的开发环境。
 - **Karate DSL**: 一个开源工具，将 API 测试自动化、模拟、性能测试甚至 UI 自动化集成到一个统一的框架中。
-- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)**: 主要用于端到端测试 Web 应用程序，但也可通过在测试中直接发送 HTTP 请求进行 API 测试。
+- **[Cypress](/zh-cn/wiki/cypress/)**: 主要用于端到端测试 Web 应用程序，但也可通过在测试中直接发送 HTTP 请求进行 API 测试。
 
-这些工具提供各种功能，如[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)、请求链接、环境变量和与 CI/CD 管道的集成，以简化和增强[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)过程。
+这些工具提供各种功能，如[测试自动化](/zh-cn/wiki/test-automation/)、请求链接、环境变量和与 CI/CD 管道的集成，以简化和增强[API 测试](/zh-cn/wiki/api-testing/)过程。
 
 ### API 测试的关键步骤是什么？
 
-[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)涉及多个关键步骤，以确保应用程序编程接口的功能性、可靠性、安全性和性能。以下是这些基本步骤：
+[API 测试](/zh-cn/wiki/api-testing/)涉及多个关键步骤，以确保应用程序编程接口的功能性、可靠性、安全性和性能。以下是这些基本步骤：
 
 1. **理解 API 需求**：深入了解 API 的预期功能、输入、输出和错误代码。
 
-2. **设置测试环境**：配置进行 API 测试所需的参数、[数据库](https://inaodeng.com/zh-cn/wiki/database/)和服务器。
+2. **设置测试环境**：配置进行 API 测试所需的参数、[数据库](/zh-cn/wiki/database/)和服务器。
 
-3. **编写[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：创建覆盖 API 各个方面的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，包括正向、异常、边界和安全测试。
+3. **编写[测试用例](/zh-cn/wiki/test-case/)**：创建覆盖 API 各个方面的[测试用例](/zh-cn/wiki/test-case/)，包括正向、异常、边界和安全测试。
 
-4. **选择合适的工具**：选择符合您需求并与您的 CI/CD 流水线集成的[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)工具。
+4. **选择合适的工具**：选择符合您需求并与您的 CI/CD 流水线集成的[API 测试](/zh-cn/wiki/api-testing/)工具。
 
-5. **执行[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：运行测试，验证 API 是否符合定义的需求。这包括对以下方面进行测试：
+5. **执行[测试用例](/zh-cn/wiki/test-case/)**：运行测试，验证 API 是否符合定义的需求。这包括对以下方面进行测试：
 
    - 功能性
    - 可靠性
@@ -328,38 +328,38 @@ API 网关可以处理**横切关注点**，如：
 
 7. **验证数据完整性**：验证在创建、读取、更新或删除资源时，API 是否保持数据一致性和完整性。
 
-8. **使用自动化脚本**：实施自动化的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)以使测试过程高效且可重复。
+8. **使用自动化脚本**：实施自动化的[测试脚本](/zh-cn/wiki/test-script/)以使测试过程高效且可重复。
 
 9. **监控性能**：在各种负载条件下评估 API 的响应时间和吞吐量。
 
 10. **分析和报告**：评估测试结果，记录发现，并报告任何缺陷或性能问题。
 
-11. **审查和重构**：持续审查[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)和脚本，以寻求改进和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
+11. **审查和重构**：持续审查[测试用例](/zh-cn/wiki/test-case/)和脚本，以寻求改进和[可维护性](/zh-cn/wiki/maintainability/)。
 
-通过遵循这些步骤，您可以确保对[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)进行全面覆盖，实现强大可靠的 API 集成。
+通过遵循这些步骤，您可以确保对[API 测试](/zh-cn/wiki/api-testing/)进行全面覆盖，实现强大可靠的 API 集成。
 
 ### 如何自动化 API 测试？
 
-要实现[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)的自动化，按照以下步骤操作：
+要实现[API 测试](/zh-cn/wiki/api-testing/)的自动化，按照以下步骤操作：
 
-- **定义[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：明确各种 API 请求的预期结果，包括成功和错误的情景。
+- **定义[测试用例](/zh-cn/wiki/test-case/)**：明确各种 API 请求的预期结果，包括成功和错误的情景。
 
-- **选择测试工具**：选择支持 API 自动化的工具，如[Postman](https://inaodeng.com/zh-cn/wiki/postman/)、RestAssured 或 SoapUI。
+- **选择测试工具**：选择支持 API 自动化的工具，如[Postman](/zh-cn/wiki/postman/)、RestAssured 或 SoapUI。
 
 - **设置测试环境**：配置测试环境，包括必要的标头、身份验证令牌和其他前提条件。
 
-- **编写[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**：创建脚本进行 API 调用并验证响应。根据工具的不同，可以使用 JavaScript、Python 或 Java 等编程语言。
+- **编写[测试脚本](/zh-cn/wiki/test-script/)**：创建脚本进行 API 调用并验证响应。根据工具的不同，可以使用 JavaScript、Python 或 Java 等编程语言。
 
-```JavaScript
-// Example using JavaScript with a testing framework like Mocha
-describe('GET /users', () => {
-  it('should return a list of users', async () => {
-    const response = await request(app).get('/users');
-    expect(response.status).to.equal(200);
-    expect(response.body).to.be.an('array');
+  ```JavaScript
+  // Example using JavaScript with a testing framework like Mocha
+  describe('GET /users', () => {
+    it('should return a list of users', async () => {
+      const response = await request(app).get('/users');
+      expect(response.status).to.equal(200);
+      expect(response.body).to.be.an('array');
+    });
   });
-});
-```
+  ```
 
 - **为测试参数化**：使用变量作为输入，轻松测试不同的场景。
 
@@ -367,7 +367,7 @@ describe('GET /users', () => {
 
 - **与 CI/CD 集成**：在 CI/CD 流水线中自动执行测试，实现持续测试。
 
-- **分析测试结果**：查看[测试报告](https://inaodeng.com/zh-cn/wiki/test-report/)，识别任何失败或性能问题。
+- **分析测试结果**：查看[测试报告](/zh-cn/wiki/test-report/)，识别任何失败或性能问题。
 
 - **维护测试**：定期更新测试以反映 API 中的更改。
 
@@ -379,7 +379,7 @@ describe('GET /users', () => {
 
 与 APIs 相关的一些常见安全风险包括：
 
-- **注入攻击**：将恶意代码或命令注入到 API 中，以利用漏洞获取未经授权的访问或数据。例如[SQL](https://inaodeng.com/zh-cn/wiki/sql/)注入、命令注入和跨站脚本（XSS）攻击。
+- **注入攻击**：将恶意代码或命令注入到 API 中，以利用漏洞获取未经授权的访问或数据。例如[SQL](/zh-cn/wiki/sql/)注入、命令注入和跨站脚本（XSS）攻击。
 
 - **身份验证失效**：身份验证机制存在缺陷，可能允许攻击者冒充合法用户或完全绕过身份验证。
 
@@ -387,7 +387,7 @@ describe('GET /users', () => {
 
 - **访问控制问题**：访问控制的不正确实施可能导致未经授权访问 API 功能或数据，即访问控制失效。
 
-- **安全配置错误**：默认配置、不完整的[设置](https://inaodeng.com/zh-cn/wiki/setup/)或配置不当的 HTTP 头可能使 APIs 容易受到攻击。
+- **安全配置错误**：默认配置、不完整的[设置](/zh-cn/wiki/setup/)或配置不当的 HTTP 头可能使 APIs 容易受到攻击。
 
 - **大规模赋值**：未经适当过滤的接受 JSON 或 XML 输入的 APIs 可能允许攻击者修改其不应访问的对象属性。
 
@@ -399,7 +399,7 @@ describe('GET /users', () => {
 
 - **缺乏速率限制和节流**：没有速率限制，APIs 容易受到暴力攻击和拒绝服务（DoS）攻击。
 
-减轻这些风险涉及实施强大的身份验证和授权、在传输和静态状态下对数据进行加密、验证和清理输入、使用安全的编码实践以及保持所有组件更新。定期进行安全审计和[渗透测试](https://inaodeng.com/zh-cn/wiki/penetration-testing/)对于维护 API 安全也至关重要。
+减轻这些风险涉及实施强大的身份验证和授权、在传输和静态状态下对数据进行加密、验证和清理输入、使用安全的编码实践以及保持所有组件更新。定期进行安全审计和[渗透测试](/zh-cn/wiki/penetration-testing/)对于维护 API 安全也至关重要。
 
 ### 如何保护 API 的安全？
 
@@ -427,7 +427,7 @@ describe('GET /users', () => {
 
 - **补丁管理**：定期更新软件，修补 API 平台和依赖项中已知的漏洞。
 
-- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)**：在自动化测试套件中包含安全测试。进行静态分析、动态分析和渗透测试。
+- **[安全测试](/zh-cn/wiki/security-testing/)**：在自动化测试套件中包含安全测试。进行静态分析、动态分析和渗透测试。
 
 通过实施这些实践，您可以为 API 打造一个强大的安全防线。
 
@@ -485,13 +485,13 @@ SSL/TLS通过在客户端和服务器之间建立加密链接，在**API 安全*
 - **认证**：使用 SSL/TLS 证书对服务器进行认证，确保客户端与合法服务器进行通信。
 - **完整性**：执行数据完整性检查，以检测对传输数据的任何更改。
 
-在进行[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)时，验证 SSL/TLS 是否得到正确实施变得非常重要：
+在进行[API 测试](/zh-cn/wiki/api-testing/)时，验证 SSL/TLS 是否得到正确实施变得非常重要：
 
 - **证书验证**：确保 API 服务器提供由受信任的证书颁发机构（CA）颁发的有效证书。
 - **协议版本**：确认 API 是否支持协议的安全版本（例如 TLS 1.2、TLS 1.3），并禁用不推荐使用的版本（例如 SSL 3.0、TLS 1.0）。
 - **密码套件**：检查 API 是否配置为使用提供强大加密的强密码套件。
 
-将 SSL/TLS 检查纳入到自动化的[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)中，有助于保持安全姿态并符合最佳实践，使其成为[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)过程中不可或缺的一环。
+将 SSL/TLS 检查纳入到自动化的[API 测试](/zh-cn/wiki/api-testing/)中，有助于保持安全姿态并符合最佳实践，使其成为[API 测试](/zh-cn/wiki/api-testing/)过程中不可或缺的一环。
 
 ## API 文档
 
@@ -507,9 +507,9 @@ API 文档有几个至关重要的原因：
 - **入职**：新团队成员可以迅速上手，确保连续性和生产力。
 - **社区**：对于开源或公共 API，它可以培养一个开发者社区，他们可以为 API 的生态系统做出贡献。
 
-在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)领域，文档有以下应用：
+在[测试自动化](/zh-cn/wiki/test-automation/)领域，文档有以下应用：
 
-- **生成[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**：自动化工具可以利用文档生成不同场景的测试用例。
+- **生成[测试用例](/zh-cn/wiki/test-case/)**：自动化工具可以利用文档生成不同场景的测试用例。
 - **模拟服务**：可以创建模拟服务，模拟 API 响应进行测试。
 - **验证响应**：确保 API 的输出与文档中预期的响应相匹配。
 
@@ -525,11 +525,11 @@ API 文档有几个至关重要的原因：
 - **参数**：详细说明请求参数，包括名称、数据类型、是否为强制或可选，以及适用的默认值。
 - **请求示例**：每个端点的示例请求，最好用多种语言或工具（如`curl`、`JavaScript`、`Python`）编写。
 
-```Shell
-curl -X POST https://api.example.com/v1/resource \
--H "Authorization: Bearer {token}" \
--d '{ "param1": "value1", "param2": "value2" }'
-```
+  ```Shell
+  curl -X POST https://api.example.com/v1/resource \
+  -H "Authorization: Bearer {token}" \
+  -d '{ "param1": "value1", "param2": "value2" }'
+  ```
 
 - **响应示例**：每个端点的示例响应，包括状态代码、标头和主体内容。
 - **错误代码**：列出可能的错误代码、它们的含义以及可能的解决方案或故障排除提示。
@@ -543,16 +543,16 @@ curl -X POST https://api.example.com/v1/resource \
 
 使用旨在简化流程的各种工具，可以更高效地创建 API 文档。以下是一些广泛使用的选项：
 
-- **[Swagger](https://inaodeng.com/zh-cn/wiki/swagger/)/OpenAPI**：提供规范和一套工具，用于生成、可视化和与 API 文档交互。[Swagger](https://inaodeng.com/zh-cn/wiki/swagger/) UI 提供了一个基于 Web 的界面，供用户探索 API，而[Swagger](https://inaodeng.com/zh-cn/wiki/swagger/) Editor 允许编辑 OpenAPI 规范。
+- **[Swagger](/zh-cn/wiki/swagger/)/OpenAPI**：提供规范和一套工具，用于生成、可视化和与 API 文档交互。[Swagger](/zh-cn/wiki/swagger/) UI 提供了一个基于 Web 的界面，供用户探索 API，而[Swagger](/zh-cn/wiki/swagger/) Editor 允许编辑 OpenAPI 规范。
 
-```JavaScript
-paths:
-  /users:
-    get:
-      summary: "List all users"
-```
+  ```JavaScript
+  paths:
+    /users:
+      get:
+        summary: "List all users"
+  ```
 
-- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**：主要是一个用于[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)的平台，[Postman](https://inaodeng.com/zh-cn/wiki/postman/)还包括用于文档化 APIs 的功能。它可以生成和托管交互式文档，并允许直接从文档页面调用 API。
+- **[Postman](/zh-cn/wiki/postman/)**：主要是一个用于[API 测试](/zh-cn/wiki/api-testing/)的平台，[Postman](/zh-cn/wiki/postman/)还包括用于文档化 APIs 的功能。它可以生成和托管交互式文档，并允许直接从文档页面调用 API。
 
 - **Apiary**：使用 API Blueprint，这是一种基于 Markdown 的文档格式。Apiary 提供一个模拟服务器和其他工具，用于在文档旁边设计和原型化 APIs。
 
@@ -568,22 +568,22 @@ paths:
 
 在对 API 进行更改时，应**立即更新**文档。这样可以确保文档准确地反映了 API 的当前状态，对于那些依赖文档进行集成和测试的开发人员来说，这是至关重要的。更新内容应该包括新的端点、对现有端点的更改、不再建议使用的操作以及对请求或响应结构的任何修改。
 
-对于持续交付的环境，考虑将文档过程纳入 CI/CD 流水线。这可以通过使用能够直接从代码或 API 规范生成文档的工具（如 OpenAPI/[Swagger](https://inaodeng.com/zh-cn/wiki/swagger/)）来实现。这样，文档将在每次代码发布时自动生成和发布，确保其保持最新状态。
+对于持续交付的环境，考虑将文档过程纳入 CI/CD 流水线。这可以通过使用能够直接从代码或 API 规范生成文档的工具（如 OpenAPI/[Swagger](/zh-cn/wiki/swagger/)）来实现。这样，文档将在每次代码发布时自动生成和发布，确保其保持最新状态。
 
 除了自动更新之外，还应定期进行**手动审查**，以确保文档清晰、准确且完整。这可以作为敏捷团队冲刺审查的一部分，也可以按计划定期进行，例如每季度一次。
 
-请记住，过时或不正确的文档可能导致在开发和测试中浪费时间，并有可能引起团队之间的误解。因此，保持 API 文档的实时性不仅是良好实践，也是维护软件开发和[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)过程的必要条件。
+请记住，过时或不正确的文档可能导致在开发和测试中浪费时间，并有可能引起团队之间的误解。因此，保持 API 文档的实时性不仅是良好实践，也是维护软件开发和[测试自动化](/zh-cn/wiki/test-automation/)过程的必要条件。
 
 ### API 文档在 API 测试中的作用是什么？
 
-API 文档在[API 测试](https://inaodeng.com/zh-cn/wiki/api-testing/)中至关重要，就像一张**路线图**，帮助我们了解 API 的功能、期望行为和集成方式。文档详细介绍了**端点**、**方法**、**参数**以及**请求/响应结构**，测试人员依此创建有实际意义的[test cases](https://inaodeng.com/zh-cn/wiki/test-case/)。优秀的文档还包括对请求和响应的**示例**，使得验证 API 是否符合其合同变得更加轻松。
+API 文档在[API 测试](/zh-cn/wiki/api-testing/)中至关重要，就像一张**路线图**，帮助我们了解 API 的功能、期望行为和集成方式。文档详细介绍了**端点**、**方法**、**参数**以及**请求/响应结构**，测试人员依此创建有实际意义的[test cases](/zh-cn/wiki/test-case/)。优秀的文档还包括对请求和响应的**示例**，使得验证 API 是否符合其合同变得更加轻松。
 
 测试人员依赖文档以确保 API 遵循其**规范**。没有准确的文档，测试人员无法有效地执行**合同测试**，验证 API 是否符合服务之间的协定标准。
 
-此外，文档通常详细说明**错误代码**和**消息**，这对于**[异常测试](https://inaodeng.com/zh-cn/wiki/negative-testing/)**至关重要。了解 API 在各种故障场景下的行为对于确保错误处理强大且在使用应用程序中出现问题时平滑降级至关重要。
+此外，文档通常详细说明**错误代码**和**消息**，这对于**[异常测试](/zh-cn/wiki/negative-testing/)**至关重要。了解 API 在各种故障场景下的行为对于确保错误处理强大且在使用应用程序中出现问题时平滑降级至关重要。
 
-在[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)中，文档可以用于生成在隔离环境中测试的**存根**和**模拟**API 响应。支持**OpenAPI**或其他 API 规范格式的工具可以自动生成这些测试工件，从而简化测试开发流程。
+在[自动化测试](/zh-cn/wiki/automated-testing/)中，文档可以用于生成在隔离环境中测试的**存根**和**模拟**API 响应。支持**OpenAPI**或其他 API 规范格式的工具可以自动生成这些测试工件，从而简化测试开发流程。
 
-最后，及时更新的文档对于维护和扩展[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)尤为重要，特别是在 APIs 发生变化时。
+最后，及时更新的文档对于维护和扩展[测试套件](/zh-cn/wiki/test-suite/)尤为重要，特别是在 APIs 发生变化时。
 
 它使测试人员能够快速识别变更并调整其测试，确保 API 在更新后仍然能够按预期运行。

@@ -16,7 +16,7 @@ order: 0
 
 - [Chai.js](#chaijs)
   - [相关术语](#相关术语)
-    - [另请参阅](#另请参阅)
+  - [# 另请参阅：](#-另请参阅)
   - [关于 Chai.js 有疑问吗？](#关于-chaijs-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Chai.js 是什么？](#chaijs-是什么)
@@ -51,23 +51,22 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 
 ## 相关术语
 
-- [断言库](https://inaodeng.com/zh-cn/wiki/chai-js/)
-- [Jest](https://inaodeng.com/zh-cn/wiki/jest/)
-- [Jasmine](https://inaodeng.com/zh-cn/wiki/jasmine/)
+- [断言库](/zh-cn/wiki/chai-js/)
+- [Jest](/zh-cn/wiki/jest/)
+- [Jasmine](/zh-cn/wiki/jasmine/)
 
-### 另请参阅
+## # 另请参阅：
 
-- [官网](https://www.chaijs.com/)
-
+- [Official Website](https://www.chaijs.com/)
 ## 关于 Chai.js 有疑问吗？
 
 ### 基础知识和重要性
 
 #### Chai.js 是什么？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 是一个**行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** / **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** 断言库，适用于 [Node.js](https://inaodeng.com/zh-cn/wiki/node-js/) 和浏览器，可以与任何 JavaScript 测试框架完美搭配。它为开发人员提供了一组丰富的、可读且富有表现力的断言。
+[Chai.js](/zh-cn/wiki/chai-js/) 是一个**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** / **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** 断言库，适用于 [Node.js](/zh-cn/wiki/node-js/) 和浏览器，可以与任何 JavaScript 测试框架完美搭配。它为开发人员提供了一组丰富的、可读且富有表现力的断言。
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 提供三种不同风格的断言：**should**、**expect** 和 **assert**。每种样式都有自己的语法，允许开发人员选择最适合他们的偏好或项目需求的样式。
+[Chai.js](/zh-cn/wiki/chai-js/) 提供三种不同风格的断言：**should**、**expect** 和 **assert**。每种样式都有自己的语法，允许开发人员选择最适合他们的偏好或项目需求的样式。
 
 ```js
   // Should style
@@ -78,80 +77,80 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   assert.exists(foo);
 ```
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 断言可以处理各种测试条件，包括但不限于属性值、深度相等检查和引发的异常。它还支持使用回调和承诺来测试异步操作。
+[Chai.js](/zh-cn/wiki/chai-js/) 断言可以处理各种测试条件，包括但不限于属性值、深度相等检查和引发的异常。它还支持使用回调和承诺来测试异步操作。
 
-该库可通过插件进行扩展，可以添加新的断言和测试条件以满足特定的测试要求。这种可扩展性使[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/)能够适应各种[use cases](https://inaodeng.com/zh-cn/wiki/use-case/)并与其他工具和库集成。
+该库可通过插件进行扩展，可以添加新的断言和测试条件以满足特定的测试要求。这种可扩展性使[Chai.js](/zh-cn/wiki/chai-js/)能够适应各种[use cases](/zh-cn/wiki/use-case/)并与其他工具和库集成。
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 通常与其他测试工具（例如 Mocha、[Jest](https://inaodeng.com/zh-cn/wiki/jest/) 或 Karma）结合使用，提供完整的测试解决方案。它通过 npm 安装，可以轻松集成到任何 JavaScript 项目中，使其成为希望增强测试能力的开发人员的便捷选择。
+[Chai.js](/zh-cn/wiki/chai-js/) 通常与其他测试工具（例如 Mocha、[Jest](/zh-cn/wiki/jest/) 或 Karma）结合使用，提供完整的测试解决方案。它通过 npm 安装，可以轻松集成到任何 JavaScript 项目中，使其成为希望增强测试能力的开发人员的便捷选择。
 
 #### 为什么在测试中使用 Chai.js？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 用于测试主要是因为其在编写断言时的**灵活性**和**可读性**。它允许开发人员编写富有表现力且易于维护的测试。通过提供**行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** 和 **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** 断言样式，它可以满足不同的偏好，并且可以轻松与 Mocha 或 [Jest](https://inaodeng.com/zh-cn/wiki/jest/) 等各种测试框架集成。
+[Chai.js](/zh-cn/wiki/chai-js/) 用于测试主要是因为其在编写断言时的**灵活性**和**可读性**。它允许开发人员编写富有表现力且易于维护的测试。通过提供**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 和 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** 断言样式，它可以满足不同的偏好，并且可以轻松与 Mocha 或 [Jest](/zh-cn/wiki/jest/) 等各种测试框架集成。
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 的使用增强了**调试体验**，因为它提供了信息丰富的错误消息，其中详细说明了断言失败时的预期与 [actual result](https://inaodeng.com/zh-cn/wiki/actual-result/) 的情况。此功能显着减少了确定测试失败原因所花费的时间。
+[Chai.js](/zh-cn/wiki/chai-js/) 的使用增强了**调试体验**，因为它提供了信息丰富的错误消息，其中详细说明了断言失败时的预期与 [actual result](/zh-cn/wiki/actual-result/) 的情况。此功能显着减少了确定测试失败原因所花费的时间。
 
-此外，[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 支持**可链接断言**，这使得能够以可读的方式组合复杂的条件。这种链接模仿自然语言，使新开发人员或非技术利益相关者更容易理解测试。
+此外，[Chai.js](/zh-cn/wiki/chai-js/) 支持**可链接断言**，这使得能够以可读的方式组合复杂的条件。这种链接模仿自然语言，使新开发人员或非技术利益相关者更容易理解测试。
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 通过插件的可扩展性允许定制和扩展其核心功能。这意味着团队可以使库适应他们的特定测试需求，而无需等待核心包提供这些功能。
+[Chai.js](/zh-cn/wiki/chai-js/) 通过插件的可扩展性允许定制和扩展其核心功能。这意味着团队可以使库适应他们的特定测试需求，而无需等待核心包提供这些功能。
 
-总之，选择 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 是因为它的**表达语法**、**有用的错误消息**、**与其他工具的兼容性**和**可扩展性**，所有这些都有助于提供更高效、更愉快的测试体验。
+总之，选择 [Chai.js](/zh-cn/wiki/chai-js/) 是因为它的**表达语法**、**有用的错误消息**、**与其他工具的兼容性**和**可扩展性**，所有这些都有助于提供更高效、更愉快的测试体验。
 
 #### Chai.js 的主要功能是什么？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 提供了一系列**关键功能**，使其成为[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的多功能且强大的断言库：
+[Chai.js](/zh-cn/wiki/chai-js/) 提供了一系列**关键功能**，使其成为[测试自动化](/zh-cn/wiki/test-automation/) 的多功能且强大的断言库：
 
-- **[BDD](https://inaodeng.com/zh-cn/wiki/bdd/)/TDD 断言样式**：Chai 提供两种主要的断言样式：**行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))** 使用 `expect` 或 `should`，以及 **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** 使用 `assert`。这使得开发人员可以选择最适合他们的测试理念的风格，或者在他们的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 中混合搭配。
+- **[BDD](/zh-cn/wiki/bdd/)/TDD 断言样式**：Chai 提供两种主要的断言样式：**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 使用 `expect` 或 `should`，以及 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** 使用 `assert`。这使得开发人员可以选择最适合他们的测试理念的风格，或者在他们的[测试套件](/zh-cn/wiki/test-suite/) 中混合搭配。
 - **可链接语言**：可以使用自然语言结构将断言链接在一起以形成可读的语句。这提高了测试的可读性并使编写断言更加直观。
 - **类型检查**：Chai 包含用于类型检查的断言，例如 `expect(value).to.be.a('string')`，它通过确保值属于预期类型来增强测试的稳健性。
-- **属性测试**：它允许轻松检查对象属性，这对于测试 [API](https://inaodeng.com/zh-cn/wiki/api/) 响应和复杂的数据结构非常有用。
+- **属性测试**：它允许轻松检查对象属性，这对于测试 [API](/zh-cn/wiki/api/) 响应和复杂的数据结构非常有用。
 - **相等和比较**：Chai 提供了一套全面的相等和比较断言，包括深度相等检查和大于/小于关系的断言。
 - **错误处理**：包含错误处理断言，允许开发人员断言某些函数在特定条件下抛出预期错误。
-- **插件架构**：Chai 通过插件的可扩展性意味着它可以适应各种 [use cases](https://inaodeng.com/zh-cn/wiki/use-case/) 并与其他库和工具集成。
+- **插件架构**：Chai 通过插件的可扩展性意味着它可以适应各种 [use cases](/zh-cn/wiki/use-case/) 并与其他库和工具集成。
 - **异步支持**：它内置了对测试异步代码的支持，包括 Promise，这对于现代 JavaScript 开发至关重要。
 - **自定义消息**：开发人员可以为断言提供自定义错误消息，这可以使调试失败的测试更容易、信息更丰富。
-- **跨平台**：[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 可在 [Node.js](https://inaodeng.com/zh-cn/wiki/node-js/) 和浏览器环境中工作，使其适用于各种 JavaScript 项目。
+- **跨平台**：[Chai.js](/zh-cn/wiki/chai-js/) 可在 [Node.js](/zh-cn/wiki/node-js/) 和浏览器环境中工作，使其适用于各种 JavaScript 项目。
 
 #### Chai.js 与其他 JavaScript 测试库相比如何？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 因其**灵活的断言样式**而在 JavaScript 测试领域脱颖而出：[BDD](https://inaodeng.com/zh-cn/wiki/bdd/)（期望/应该）和 TDD（断言）。这种适应性允许开发人员选择最适合他们的偏好或现有代码库的样式。
+[Chai.js](/zh-cn/wiki/chai-js/) 因其**灵活的断言样式**而在 JavaScript 测试领域脱颖而出：[BDD](/zh-cn/wiki/bdd/)（期望/应该）和 TDD（断言）。这种适应性允许开发人员选择最适合他们的偏好或现有代码库的样式。
 
-与**[Jest](https://inaodeng.com/zh-cn/wiki/jest/)**（提供自己的断言的成熟测试框架）相比，Chai 更像是一个断言库，可以与 Mocha 或 [Jasmine](https://inaodeng.com/zh-cn/wiki/jasmine/) 等任何测试框架配合使用。 [Jest](https://inaodeng.com/zh-cn/wiki/jest/) 的断言是内置的，不能脱离框架，而 Chai 的断言是独立的，可以通过插件扩展。
+与**[Jest](/zh-cn/wiki/jest/)**（提供自己的断言的成熟测试框架）相比，Chai 更像是一个断言库，可以与 Mocha 或 [Jasmine](/zh-cn/wiki/jasmine/) 等任何测试框架配合使用。 [Jest](/zh-cn/wiki/jest/) 的断言是内置的，不能脱离框架，而 Chai 的断言是独立的，可以通过插件扩展。
 
-**[Jasmine](https://inaodeng.com/zh-cn/wiki/jasmine/)** 带有自己的断言库，因此将 Chai 与 [Jasmine](https://inaodeng.com/zh-cn/wiki/jasmine/) 一起使用是出于偏好原因而不是必要。Chai 可能因其更丰富的插件生态系统或 [Jasmine](https://inaodeng.com/zh-cn/wiki/jasmine/) 中未找到的特定断言风格而被选中。
+**[Jasmine](/zh-cn/wiki/jasmine/)** 带有自己的断言库，因此将 Chai 与 [Jasmine](/zh-cn/wiki/jasmine/) 一起使用是出于偏好原因而不是必要。Chai 可能因其更丰富的插件生态系统或 [Jasmine](/zh-cn/wiki/jasmine/) 中未找到的特定断言风格而被选中。
 
-**Mocha** 没有附带断言库，这使得 Chai 成为 Mocha 用户的热门选择。Mocha 的测试运行能力和 Chai 的断言相结合，提供了强大而灵活的测试[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)。
+**Mocha** 没有附带断言库，这使得 Chai 成为 Mocha 用户的热门选择。Mocha 的测试运行能力和 Chai 的断言相结合，提供了强大而灵活的测试[环境搭建](/zh-cn/wiki/setup/)。
 
 **Sinon** 经常与 Chai 一起用于间谍、模拟和存根。虽然 Sinon 有一些断言，但主要集中在这三个领域，而 Chai 用于更一般的断言。 `sinon-chai` 插件允许将 Sinon 的功能与 Chai 的断言语法无缝集成。
 
-综上所述，[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/)的主要比较点是其**灵活的语法**和**通过插件的扩展性**，使其能够与各种测试框架很好地集成，并补充像 Sinon 这样的库来满足全面的测试需求。
+综上所述，[Chai.js](/zh-cn/wiki/chai-js/)的主要比较点是其**灵活的语法**和**通过插件的扩展性**，使其能够与各种测试框架很好地集成，并补充像 Sinon 这样的库来满足全面的测试需求。
 
 #### 使用 Chai.js 进行测试有哪些优势？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 为 [测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 提供了多项优势：
+[Chai.js](/zh-cn/wiki/chai-js/) 为 [测试自动化](/zh-cn/wiki/test-automation/) 提供了多项优势：
 
-- **流畅且可读的语法**：Chai 的可链接语言结构使测试更易于阅读和编写。其 [BDD](https://inaodeng.com/zh-cn/wiki/bdd/)/TDD 风格断言为 [test cases](https://inaodeng.com/zh-cn/wiki/test-case/) 提供了清晰的语言。
+- **流畅且可读的语法**：Chai 的可链接语言结构使测试更易于阅读和编写。其 [BDD](/zh-cn/wiki/bdd/)/TDD 风格断言为 [test cases](/zh-cn/wiki/test-case/) 提供了清晰的语言。
 - **灵活性**：通过 `expect`、`should` 和 `assert` 等接口，Chai 可以适应不同的测试风格和偏好。
 - **可扩展性**：可以创建自定义插件或使用现有插件来扩展 Chai 的功能，从而允许根据特定需求定制更专业的断言。
-- **兼容性**：与 Mocha、[Jest](https://inaodeng.com/zh-cn/wiki/jest/) 和 Karma 等各种测试框架无缝协作，使其适用于不同环境。
+- **兼容性**：与 Mocha、[Jest](/zh-cn/wiki/jest/) 和 Karma 等各种测试框架无缝协作，使其适用于不同环境。
 - **丰富的断言库**：提供各种开箱即用的断言，减少了为测试编写复杂逻辑的需要。
-- **跨平台**：可在[Node.js](https://inaodeng.com/zh-cn/wiki/node-js/)和浏览器环境中使用，确保跨平台测试的一致性。
+- **跨平台**：可在[Node.js](/zh-cn/wiki/node-js/)和浏览器环境中使用，确保跨平台测试的一致性。
 - **社区支持**：大型社区和生态系统意味着更好的支持、持续改进以及丰富的故障排除资源。
 - **错误处理**：提供详细的错误消息，其中可以包括堆栈跟踪，使调试更容易。
 - **异步支持**：内置支持使用 Promises 和 async/await 模式测试异步代码。
 
-通过利用这些优势，[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 增强了[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的效率、可读性和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)，从而有助于实现更加稳健和可靠的自动化流程。
+通过利用这些优势，[Chai.js](/zh-cn/wiki/chai-js/) 增强了[测试套件](/zh-cn/wiki/test-suite/) 的效率、可读性和[可维护性](/zh-cn/wiki/maintainability/)，从而有助于实现更加稳健和可靠的自动化流程。
 
 ### 安装和设置
 
 #### 如何安装 Chai.js？
 
-要安装 **[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/)**，请确保已安装 **[Node.js](https://inaodeng.com/zh-cn/wiki/node-js/)** 和 **npm**（节点包管理器）。打开终端或命令提示符并导航到您的项目目录。运行以下命令：
+要安装 **[Chai.js](/zh-cn/wiki/chai-js/)**，请确保已安装 **[Node.js](/zh-cn/wiki/node-js/)** 和 **npm**（节点包管理器）。打开终端或命令提示符并导航到您的项目目录。运行以下命令：
 
 ```shell
   npm install chai --save-dev
 ```
 
-此命令将 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 作为开发依赖项安装，并将其添加到 `package.json` 文件中。安装完成后，您可以使用以下命令将 Chai 导入到测试文件中：
+此命令将 [Chai.js](/zh-cn/wiki/chai-js/) 作为开发依赖项安装，并将其添加到 `package.json` 文件中。安装完成后，您可以使用以下命令将 Chai 导入到测试文件中：
 
 对于 CommonJS 模块：
 
@@ -165,64 +164,64 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
   import chai from 'chai';
 ```
 
-然后，您可以使用 Chai 的 `expect`、`should` 或 `assert` 接口来编写测试。如果您还没有安装，请记住还要安装[测试运行器](https://inaodeng.com/zh-cn/wiki/test-runner/)，如 **Mocha** 或 **[Jest](https://inaodeng.com/zh-cn/wiki/jest/)**，因为 Chai 是一个断言库，本身不提供测试框架。
+然后，您可以使用 Chai 的 `expect`、`should` 或 `assert` 接口来编写测试。如果您还没有安装，请记住还要安装[测试运行器](/zh-cn/wiki/test-runner/)，如 **Mocha** 或 **[Jest](/zh-cn/wiki/jest/)**，因为 Chai 是一个断言库，本身不提供测试框架。
 
 #### 使用 Chai.js 有哪些先决条件？
 
-要使用 **[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/)**，请确保满足以下先决条件：
+要使用 **[Chai.js](/zh-cn/wiki/chai-js/)**，请确保满足以下先决条件：
 
-- **[Node.js](https://inaodeng.com/zh-cn/wiki/node-js/)** ：Chai 是一个 Node.js 库，因此您需要在系统上安装 Node.js。该版本应与您计划使用的 Chai 版本兼容。
+- **[Node.js](/zh-cn/wiki/node-js/)** ：Chai 是一个 Node.js 库，因此您需要在系统上安装 Node.js。该版本应与您计划使用的 Chai 版本兼容。
 - **NPM 或 Yarn** ：这些是处理 Chai 及其依赖项的安装的包管理器。他们还管理特定于项目的包。
-- **[测试运行器](https://inaodeng.com/zh-cn/wiki/test-runner/)** ：Chai 是一个断言库，不包含测试运行程序。您需要像 Mocha、Jest 或 Karma 这样的测试运行程序来执行您的测试。
-- **项目[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)** ：您的项目应该使用 `package.json` 文件（如果您使用的是 NPM 或 Yarn）。该文件跟踪与您的项目相关的依赖项和脚本。
+- **[测试运行器](/zh-cn/wiki/test-runner/)** ：Chai 是一个断言库，不包含测试运行程序。您需要像 Mocha、Jest 或 Karma 这样的测试运行程序来执行您的测试。
+- **项目[环境搭建](/zh-cn/wiki/setup/)** ：您的项目应该使用 `package.json` 文件（如果您使用的是 NPM 或 Yarn）。该文件跟踪与您的项目相关的依赖项和脚本。
 - **JavaScript 知识**：由于 Chai 是一个 JavaScript 库，因此对 JavaScript（包括 ES6 功能）的良好理解至关重要。
 - **理解测试概念**：熟悉单元测试、测试驱动开发 (TDD) 和行为驱动开发 (BDD) 是有益的，因为 Chai 支持这些测试方法。
 
 #### 如何为项目设置 Chai.js？
 
-要为您的项目设置 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/)，请按照以下步骤操作：
+要为您的项目设置 [Chai.js](/zh-cn/wiki/chai-js/)，请按照以下步骤操作：
 
 1. **使用 npm 或 YARN 安装 Chai**（如果尚未安装）：或
 
-```shell
+  ```shell
     npm install chai --save-dev
-```
+  ```
 
-```shell
+  ```shell
     yarn add chai --dev
-```
+  ```
 
 2. **在测试文件中导入 Chai**：
 
-```js
+  ```js
     const chai = require('chai');
-```
+  ```
 
 3. **选择并设置断言样式**。Chai 提供`should`、`expect` 和`assert` 样式。例如，要使用`expect`，您可以编写：
 
-```js
+  ```js
     const expect = chai.expect;
-```
+  ```
 
 4. **使用所选的断言样式编写测试**。这是使用 `expect` 的简单测试示例：
 
-```js
+  ```js
     expect(2 + 2).to.equal(4);
-```
+  ```
 
-5. **使用您选择的[测试运行器](https://inaodeng.com/zh-cn/wiki/test-runner/)（例如，Mocha、[Jest](https://inaodeng.com/zh-cn/wiki/jest/)）运行测试**。
+5. **使用您选择的[测试运行器](/zh-cn/wiki/test-runner/)（例如，Mocha、[Jest](/zh-cn/wiki/jest/)）运行测试**。
 6. 或者，如果需要，**使用其他设置配置 Chai**，例如使用插件或向断言添加自定义消息。
-7. **将 Chai 与其他工具集成**，例如 [测试运行器](https://inaodeng.com/zh-cn/wiki/test-runner/) 或测试环境所需的模拟库。
+7. **将 Chai 与其他工具集成**，例如 [测试运行器](/zh-cn/wiki/test-runner/) 或测试环境所需的模拟库。
 
-请记住**检查项目的依赖项**以确保它们与您正在使用的 Chai 版本兼容。保持 Chai 和所有插件更新，以受益于最新功能和[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复。
+请记住**检查项目的依赖项**以确保它们与您正在使用的 Chai 版本兼容。保持 Chai 和所有插件更新，以受益于最新功能和[bug](/zh-cn/wiki/bug/) 修复。
 
 #### 如何将 Chai.js 导入 JavaScript 文件？
 
-要将 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 导入 JavaScript 文件，首先确保您的项目中安装了 Chai。如果尚未安装，您可以使用 npm 等包管理器以及命令 `npm install chai` 添加它。
+要将 [Chai.js](/zh-cn/wiki/chai-js/) 导入 JavaScript 文件，首先确保您的项目中安装了 Chai。如果尚未安装，您可以使用 npm 等包管理器以及命令 `npm install chai` 添加它。
 
-安装 Chai 后，您可以使用 CommonJS 或 ES6 模块语法将其导入 JavaScript 文件，具体取决于您的环境和项目 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)。
+安装 Chai 后，您可以使用 CommonJS 或 ES6 模块语法将其导入 JavaScript 文件，具体取决于您的环境和项目 [环境搭建](/zh-cn/wiki/setup/)。
 
-对于 **CommonJS**（通常在 [Node.js](https://inaodeng.com/zh-cn/wiki/node-js/) 环境中使用），请使用 `require` 函数：
+对于 **CommonJS**（通常在 [Node.js](/zh-cn/wiki/node-js/) 环境中使用），请使用 `require` 函数：
 
 ```js
   const chai = require('chai');
@@ -257,7 +256,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 
 #### Chai.js 中的断言是什么？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 中的 **断言** 是计算测试中的表达式或值的语句。它检查该表达式或值是否满足某些条件，如果不满足，则断言将失败，从而导致测试失败。断言是[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 的核心组件，因为它们验证被测代码的行为。
+[Chai.js](/zh-cn/wiki/chai-js/) 中的 **断言** 是计算测试中的表达式或值的语句。它检查该表达式或值是否满足某些条件，如果不满足，则断言将失败，从而导致测试失败。断言是[测试套件](/zh-cn/wiki/test-suite/) 的核心组件，因为它们验证被测代码的行为。
 
 Chai 提供了多种断言样式，但无论哪种样式，断言通常都包含三个部分：
 
@@ -282,11 +281,11 @@ Chai 断言可以链接起来执行更复杂的检查：
 
 这里，`.include(2)` 检查数组是否包含数字 2，`.have.lengthOf(3)` 检查数组的长度是否为 3。`.and` 链用于组合同一主题的多个断言。
 
-断言对于验证代码是否按预期运行至关重要，并且是使用 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 编写有效且可靠的测试的基本部分。
+断言对于验证代码是否按预期运行至关重要，并且是使用 [Chai.js](/zh-cn/wiki/chai-js/) 编写有效且可靠的测试的基本部分。
 
 #### 如何在 Chai.js 中编写基本断言？
 
-要在 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 中编写基本断言，您可以使用其任何接口：`expect`、`should` 或 `assert`。以下是使用 `expect` 接口的示例：
+要在 [Chai.js](/zh-cn/wiki/chai-js/) 中编写基本断言，您可以使用其任何接口：`expect`、`should` 或 `assert`。以下是使用 `expect` 接口的示例：
 
 ```js
   const expect = require('chai').expect;
@@ -299,7 +298,7 @@ Chai 断言可以链接起来执行更复杂的检查：
   });
 ```
 
-在此示例中，`expect` 函数用于对`[1, 2, 3].indexOf(4)` 的结果进行断言。 `.to.equal(-1)` 链是实际的断言，表明[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 应该是`-1`。
+在此示例中，`expect` 函数用于对`[1, 2, 3].indexOf(4)` 的结果进行断言。 `.to.equal(-1)` 链是实际的断言，表明[预期结果](/zh-cn/wiki/expected-result/) 应该是`-1`。
 
 对于 `should` 接口，语法会略有不同：
 
@@ -331,9 +330,9 @@ Chai 断言可以链接起来执行更复杂的检查：
 
 #### Chai.js 中有哪些不同类型的断言可用？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 提供三种断言样式：**should**、**expect** 和 **assert**。每种风格都提供了多种断言来测试不同的条件：
+[Chai.js](/zh-cn/wiki/chai-js/) 提供三种断言样式：**should**、**expect** 和 **assert**。每种风格都提供了多种断言来测试不同的条件：
 
-这些[BDD](https://inaodeng.com/zh-cn/wiki/bdd/)（行为驱动开发）样式在功能上相似，但在语法上有所不同。它们提供了一种可链接的语言来构造断言。
+这些[BDD](/zh-cn/wiki/bdd/)（行为驱动开发）样式在功能上相似，但在语法上有所不同。它们提供了一种可链接的语言来构造断言。
 
 - **.equal(value)** ：断言严格相等（ `===` ）。
 - **.eql(value)** ：断言深度相等。
@@ -356,7 +355,7 @@ Chai 断言可以链接起来执行更复杂的检查：
 - **.exist** ：断言非空且非未定义。
 - **.empty** ：断言空数组、字符串或对象。
 
-TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/)) 风格使用更传统的断言方法，无需可链接语言。
+TDD ([测试驱动开发](/zh-cn/wiki/test-driven-development/)) 风格使用更传统的断言方法，无需可链接语言。
 
 - **assert.equal(actual, Expected)** : 断言松散相等 ( `==` ）。
 - **assert.strictEqual(actual, Expected)** : 断言严格相等 ( `===` ）。
@@ -388,7 +387,7 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 
 #### 如何断言 Chai.js 中的函数抛出错误？
 
-要断言函数在 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 中引发错误，您可以使用 `expect` 或 `should` 接口中的 `throw` 或 `throws` 方法。以下是使用这两个界面执行此操作的方法：
+要断言函数在 [Chai.js](/zh-cn/wiki/chai-js/) 中引发错误，您可以使用 `expect` 或 `should` 接口中的 `throw` 或 `throws` 方法。以下是使用这两个界面执行此操作的方法：
 
 **使用`expect`接口：**
 
@@ -428,7 +427,7 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 
 #### 如何在 Chai.js 中断言深度平等？
 
-要断言[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 中的深度相等，请使用`.deep` 链，后跟`.equal` 或`.eql` 断言。这将在考虑所有嵌套属性的情况下，在目标和预期对象之间执行深度比较。
+要断言[Chai.js](/zh-cn/wiki/chai-js/) 中的深度相等，请使用`.deep` 链，后跟`.equal` 或`.eql` 断言。这将在考虑所有嵌套属性的情况下，在目标和预期对象之间执行深度比较。
 
 以下是使用 `expect` 接口的示例：
 
@@ -460,9 +459,9 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 
 #### Chai.js 插件是什么？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 插件扩展了 Chai 断言库的功能，允许根据特定测试需求定制更专业或更复杂的断言。它们与 Chai 现有的[API](https://inaodeng.com/zh-cn/wiki/api/) 无缝集成，通过附加方法和属性丰富了它。
+[Chai.js](/zh-cn/wiki/chai-js/) 插件扩展了 Chai 断言库的功能，允许根据特定测试需求定制更专业或更复杂的断言。它们与 Chai 现有的[API](/zh-cn/wiki/api/) 无缝集成，通过附加方法和属性丰富了它。
 
-要使用 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 插件，您通常在 Chai 之后需要它，然后使用 `use` 方法将其添加到您的 Chai [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 中：
+要使用 [Chai.js](/zh-cn/wiki/chai-js/) 插件，您通常在 Chai 之后需要它，然后使用 `use` 方法将其添加到您的 Chai [环境搭建](/zh-cn/wiki/setup/) 中：
 
 ```js
   const chai = require('chai');
@@ -477,7 +476,7 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 - `chai-dom` ：为 DOM 元素提供断言，在浏览器或基于 DOM 的测试中很有用。
 - `sinon-chai` ：为 Sinon.js 间谍、存根和模拟提供断言，集成两个库。
 
-创建**自定义 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 插件**涉及定义导出函数的模块。此函数应接受 Chai 实例，并应使用 Chai 的 [API](https://inaodeng.com/zh-cn/wiki/api/) 添加新方法或属性：
+创建**自定义 [Chai.js](/zh-cn/wiki/chai-js/) 插件**涉及定义导出函数的模块。此函数应接受 Chai 实例，并应使用 Chai 的 [API](/zh-cn/wiki/api/) 添加新方法或属性：
 
 ```js
   module.exports = function (chai, utils) {
@@ -488,40 +487,40 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
   };
 ```
 
-插件对于使 Chai 适应新框架、库或特定项目要求特别有用，使其成为[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师武器库中的强大工具。
+插件对于使 Chai 适应新框架、库或特定项目要求特别有用，使其成为[测试自动化](/zh-cn/wiki/test-automation/) 工程师武器库中的强大工具。
 
 #### 如何使用 Chai.js 插件？
 
-要使用 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 插件，请按照以下步骤操作：
+要使用 [Chai.js](/zh-cn/wiki/chai-js/) 插件，请按照以下步骤操作：
 
 1. **通过 npm 或 yarn 安装**插件，例如：
 
-```shell
+  ```shell
     npm install chai-http
-```
+  ```
 
 2. **导入**测试文件中的插件：
 
-```js
+  ```js
     const chai = require('chai');
     const chaiHttp = require('chai-http');
-```
+  ```
 
 3. **使用** `chai` 对象上的 `use` 方法来添加插件：
 
-```js
+  ```js
     chai.use(chaiHttp);
-```
+  ```
 
 4. 添加插件后，您可以在测试中**利用其方法**。例如，使用 `chai-http` 您可以发出 HTTP 请求：
 
-```js
+  ```js
     chai.request('http://example.com')
         .get('/')
         .end((err, res) => {
             expect(res).to.have.status(200);
         });
-```
+  ```
 
 请记住**阅读插件的文档**以获取具体的使用说明，因为每个插件可能会引入独特的方法或语法。
 
@@ -529,101 +528,101 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 
 1. **安装**插件：
 
-```shell
+  ```shell
     npm install chai-as-promised
-```
+  ```
 
 2. **导入**并**使用**插件：
 
-```js
+  ```js
     const chai = require('chai');
     const chaiAsPromised = require('chai-as-promised');
     chai.use(chaiAsPromised);
-```
+  ```
 
 3. **为 Promise 编写断言**：
 
-```js
+  ```js
     const expect = chai.expect;
     const promise = returnsAPromise(); // some function that returns a promise
     // Now you can use Chai as Promised for assertions
     expect(promise).to.eventually.equal('expected value');
-```
+  ```
 
 通过执行这些步骤，您可以扩展 Chai 的功能并根据项目的需求定制测试套件。
 #### 有哪些流行的 Chai.js 插件以及它们的作用是什么？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 拥有丰富的插件生态系统，可扩展其核心功能。以下是一些受欢迎的：
+[Chai.js](/zh-cn/wiki/chai-js/) 拥有丰富的插件生态系统，可扩展其核心功能。以下是一些受欢迎的：
 
 - **chai-as-promised** ：简化 Promise 的使用。它允许您以更具表现力的方式处理异步操作的断言。
 
-```js
+  ```js
     expect(promise).to.eventually.equal('foo');
-```
+  ```
 
 - **chai-http** ：对于 HTTP 集成测试很有用。它允许您向 HTTP 服务器发送请求并断言响应。
 
-```js
+  ```js
     chai.request(app).get('/').end((err, res) => {
       expect(res).to.have.status(200);
     });
-```
+  ```
 
 - **sinon-chai** ：为 Sinon.js spies、stubs 和 mocks 提供一组断言，使得使用测试替身更容易。
 
-```js
+  ```js
     expect(spy).to.have.been.calledOnce;
-```
+  ```
 
 - **chai-dom** ：使用 DOM 操作断言扩展 Chai，使其成为基于浏览器的测试的不错选择。
 
-```js
+  ```js
     expect(element).to.have.text('hello');
-```
+  ```
 
 - **chai-enzyme**：专为使用 Enzyme 进行 React.js 测试而定制。它为组件属性、状态和渲染添加了特定于酶的断言。
 
-```js
+  ```js
     expect(wrapper).to.have.className('foo');
-```
+  ```
 
 - **chai-jquery** ：将 Chai 与 jQuery 集成，为 jQuery 对象（例如 CSS、属性和事件）提供断言。
 
-```js
+  ```js
     expect($el).to.have.css('display', 'none');
-```
+  ```
 
 - **chai-subset** ：允许您断言一个对象是否是另一个对象的一部分，对于测试 API 响应很有用。
 
-```js
+  ```js
     expect(result).to.containSubset({ name: 'foo' });
-```
+  ```
 
 - **dirty-chai** ：提供一种将 Chai 断言用作函数而不是属性的方法，这对于 linting 目的很有帮助。
 
-```js
+  ```js
     expect(foo).to.be.a.function();
-```
+  ```
 
 每个插件都旨在满足特定的测试需求和场景，增强 Chai 断言的表现力和力量。
 
 #### 如何创建自己的 Chai.js 插件？
 
-创建您自己的 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 插件涉及使用新的断言或行为来扩展 Chai。请按照下列步骤操作：
+创建您自己的 [Chai.js](/zh-cn/wiki/chai-js/) 插件涉及使用新的断言或行为来扩展 Chai。请按照下列步骤操作：
 
 1. **使用 `npm init` 为您的插件初始化一个新项目**，并将 Chai 安装为对等依赖项。
 2. **为您的插件创建一个主文件**，例如`chai-myplugin.js`。
 3. **通过导出 Chai 将用来安装插件的函数来定义您的插件**：
 
-```js
+  ```js
   module.exports = function(chai, utils) {
     // Plugin code goes here
   };
-```
+  ```
 
 4. **添加方法或属性**到 Chai 家 `Assertion` 对象。使用 `utils.addMethod` 对于新的断言方法或 `utils.addProperty` 对于新属性：
 
-```js
+  ```js
   utils.addMethod(chai.Assertion.prototype, 'myAssertion', function (expected) {
     var actual = this._obj;
     // Assertion logic here
@@ -635,9 +634,9 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
       actual
     );
   });
-```
+  ```
 
-5. **彻底测试您的插件**。使用 Mocha 或其他测试框架创建 [test cases](https://inaodeng.com/zh-cn/wiki/test-case/) 以确保您的断言按预期工作。
+5. **彻底测试您的插件**。使用 Mocha 或其他测试框架创建 [test cases](/zh-cn/wiki/test-case/) 以确保您的断言按预期工作。
 6. **记录您的插件**。清楚地解释如何安装和使用您的插件，包括断言的示例。
 7. **将您的插件**发布到 npm 以供其他人使用。在发布之前，使用有关您的插件的详细信息更新 `package.json` 文件。
 
@@ -656,9 +655,9 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 
 #### 如何将 Chai.js 与异步代码结合使用？
 
-将 [Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 与异步代码一起使用通常涉及使用 Promise 或 async/await 语法。Chai 提供了 `chai-as-promised` 插件来无缝处理 Promise 断言。
+将 [Chai.js](/zh-cn/wiki/chai-js/) 与异步代码一起使用通常涉及使用 Promise 或 async/await 语法。Chai 提供了 `chai-as-promised` 插件来无缝处理 Promise 断言。
 
-首先，确保 `chai-as-promised` 已安装并添加到您的 Chai [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 中：
+首先，确保 `chai-as-promised` 已安装并添加到您的 Chai [环境搭建](/zh-cn/wiki/setup/) 中：
 
 ```js
   const chai = require('chai');
@@ -667,7 +666,7 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
   const expect = chai.expect;
 ```
 
-在处理 Promise 时，您可以将带有断言的 Promise 返回给 [测试运行器](https://inaodeng.com/zh-cn/wiki/test-runner/)，它将等待 Promise 解析或拒绝：
+在处理 Promise 时，您可以将带有断言的 Promise 返回给 [测试运行器](/zh-cn/wiki/test-runner/)，它将等待 Promise 解析或拒绝：
 
 ```js
   it('should eventually have a value of 42', function() {
@@ -699,7 +698,7 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 
 #### 如何将 Chai.js 与 Promises 结合使用？
 
-将 **[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/)** 与 Promise 一起使用涉及利用 **chai-as-promised** 插件，该插件扩展了 Chai 以实现流畅的 Promise 断言。
+将 **[Chai.js](/zh-cn/wiki/chai-js/)** 与 Promise 一起使用涉及利用 **chai-as-promised** 插件，该插件扩展了 Chai 以实现流畅的 Promise 断言。
 
 首先，确保安装 **chai-as-promised** 并将其与 Chai 集成：
 
@@ -726,7 +725,7 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
   expect(asyncFunction()).to.eventually.equal('expected value').and.notify(done);
 ```
 
-请记住从 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 返回 Promise 或使用 `done` 回调来确保测试等待 Promise 解析：
+请记住从 [测试用例](/zh-cn/wiki/test-case/) 返回 Promise 或使用 `done` 回调来确保测试等待 Promise 解析：
 
 ```js
   it('should resolve to the expected value', function() {
@@ -738,11 +737,11 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
   });
 ```
 
-**chai-as-promised** 支持在 `eventually` 之后链接附加断言，并与 **mocha** 和其他处理返回 Promise 的 [测试运行器](https://inaodeng.com/zh-cn/wiki/test-runner/) 无缝集成。
+**chai-as-promised** 支持在 `eventually` 之后链接附加断言，并与 **mocha** 和其他处理返回 Promise 的 [测试运行器](/zh-cn/wiki/test-runner/) 无缝集成。
 
 #### Chai.js 的.should 接口是什么以及它是如何工作的？
 
-[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/) 的 `.should` 接口是 [BDD](https://inaodeng.com/zh-cn/wiki/bdd/)（行为驱动开发）样式断言，它使用 `should` 属性扩展每个对象以启动断言链。该界面允许更具可读性和表现力的测试。
+[Chai.js](/zh-cn/wiki/chai-js/) 的 `.should` 接口是 [BDD](/zh-cn/wiki/bdd/)（行为驱动开发）样式断言，它使用 `should` 属性扩展每个对象以启动断言链。该界面允许更具可读性和表现力的测试。
 
 要使用`.should` 接口，首先需要执行`chai.should()` 对`Object.prototype` 进行必要的修改。这是一个例子：
 
@@ -756,7 +755,7 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 
 .should` 接口的工作原理是向 `Object.prototype` 添加一个 getter，返回 `Should` 断言对象。然后可以使用该对象将进一步的断言链接到正在测试的值。请务必注意，使用 `.should` 会修改 `Object.prototype`，如果您的应用程序依赖于对象的枚举属性，这可能会导致意外行为。
 
-使用`.should` 的断言在失败时抛出`AssertionError`，然后[test runner](https://inaodeng.com/zh-cn/wiki/test-runner/) 可以捕获该断言以报告失败。 `.should` 接口支持与 Chai 的 `expect` 和 `assert` 接口相同的所有断言，提供丰富的断言集，如 `.equal`、`.deep.equal`、`.have.property` 等。
+使用`.should` 的断言在失败时抛出`AssertionError`，然后[test runner](/zh-cn/wiki/test-runner/) 可以捕获该断言以报告失败。 `.should` 接口支持与 Chai 的 `expect` 和 `assert` 接口相同的所有断言，提供丰富的断言集，如 `.equal`、`.deep.equal`、`.have.property` 等。
 
 使用 `.should` 时，您还可以利用 Chai 的可链接语言来增强测试的可读性：
 
@@ -768,7 +767,7 @@ TDD ([测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-developmen
 
 #### 如何自定义 Chai.js 的断言错误消息？
 
-自定义[Chai.js](https://inaodeng.com/zh-cn/wiki/chai-js/)断言错误消息可以增强测试结果的可读性和清晰度。要自定义错误消息，请使用 Chai 提供的 `.message` 可链接方法。此方法允许您指定断言失败时将显示的自定义消息。
+自定义[Chai.js](/zh-cn/wiki/chai-js/)断言错误消息可以增强测试结果的可读性和清晰度。要自定义错误消息，请使用 Chai 提供的 `.message` 可链接方法。此方法允许您指定断言失败时将显示的自定义消息。
 
 以下是使用 `expect` 接口的示例：
 

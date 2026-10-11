@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- Keep `/en/wiki/` as the existing external `ray.run/wiki` redirect surface and exclude it from the XML sitemap.
+- Serve `/en/wiki/` and English Wiki detail paths with local content, self-canonical URLs, and XML sitemap entries.
 - Keep only canonical `/zh-cn/wiki/<lowercase-slug>/` detail URLs indexable and discoverable in the XML sitemap.
 - Do not invent redirects for retired content without a clear equivalent; use 404/410 and remove internal references instead.
 - Do not modify the two pre-existing untracked `qcov-quality-evidence-gap-engine.mdx` files.

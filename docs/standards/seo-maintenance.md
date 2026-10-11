@@ -22,7 +22,7 @@ npx playwright test e2e/specs/seo.spec.ts e2e/specs/seo-integrity.spec.ts
 
 - 每个可收录页面的 canonical 指向自己的 HTTPS 正式地址，分页保留各自地址、标题和摘要。
 - hreflang 只连接实际存在、可收录且互相返回的等价内容。没有对译时，语言切换可以回到栏目入口，但该入口不能伪装成对译。
-- 中文测试百科只声明中文版本；英文 Wiki 是历史跳转入口。原型、空列表和兼容旧地址继续按现有 noindex 规则处理。
+- 中文与英文测试百科分别使用本站对应语言的内容与 URL；英文首页和词条页应可索引、使用本站 canonical，并进入 XML sitemap。原型、空列表和兼容旧地址继续按现有 noindex 规则处理。
 - XML sitemap 的语言链接从 HTML 读取，包含同一组真实版本与默认入口，避免再次按文件名猜测译文地址。
 - 页面结构化数据使用真实标题、摘要、语言和 canonical。站点介绍保持稳定，文章发布时间与修改时间来自内容，不用构建时间冒充更新日期。
 - 保留 BlogPosting、Article、TechArticle、DefinedTerm 和内容目录的实际含义。没有真实问答、评价或业务数据时，不添加相应标记。
@@ -37,7 +37,7 @@ npx playwright test e2e/specs/seo.spec.ts e2e/specs/seo-integrity.spec.ts
 | --- | --- | --- | --- |
 | `/[lang]/` | 软件测试资源、AI 测试实践 | software testing resources, AI testing | 让读者能进入文章、工具指南、百科、Skills 与提示词 |
 | `/[lang]/blog/` | 测试设计、AI 辅助测试、质量分析 | test design, AI assisted testing, quality analysis | 补真实问题、输入输出、工程示例与适用边界 |
-| `/zh-cn/wiki/` | 软件测试术语、测试用例、测试方法 | 英文词条只作中文内容的术语对照 | 定义清楚，方法可比较，词条之间的链接确有关系 |
+| `/zh-cn/wiki/`、`/en/wiki/` | 软件测试术语、测试用例、测试方法 | QA glossary, test cases, testing methods | 双语词条分别提供完整内容，定义清楚，方法可比较，词条之间的链接确有关系 |
 | `/[lang]/AIWiki/` | AI 智能体、模型评估、AI 工程概念 | AI agents, agent evals, AI engineering glossary | 解释术语、典型场景及与测试工作的联系 |
 | `/[lang]/guild/` | 接口自动化、UI 自动化、性能测试教程 | API testing tutorial, test automation, performance testing | 保留可复现示例、配置步骤、常见错误与持续集成路径 |
 | `/[lang]/qaskills/` | QA Skills、智能体测试技能、需求分析技能 | QA skills, testing agent skills, requirements analysis | 写清输入、交付物、调用方式和人工复核点 |

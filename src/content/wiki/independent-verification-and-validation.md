@@ -44,11 +44,12 @@ order: 0
       - [如何衡量和提高 IV&V 的有效性？](#如何衡量和提高-ivv-的有效性)
       - [有哪些工具和技术可以支持 IV&V 流程？](#有哪些工具和技术可以支持-ivv-流程)
 <!-- TOC END -->
+
 独立验证和确认 (IV&V) 是指外部组织或团队独立于开发人员和开发过程评估软件产品的正确性和质量的专门过程。主要目标是确保系统满足其指定的要求并按预期运行。
 
 ## 相关术语
 
-- [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)
+- [质量保证](/zh-cn/wiki/quality-assurance/)
 
 ## 关于独立验证和确认的问题？
 
@@ -56,9 +57,9 @@ order: 0
 
 #### 独立验证和确认 (IV&V) 的定义是什么？
 
-[独立验证和验证](https://inaodeng.com/zh-cn/wiki/independent-verification-and-validation/) (IV&V) 是指由独立于开发团队的第三方进行的过程，以确保软件系统满足其指定的要求和预期的功能。 IV&V 的**独立**性质意味着评估人员不参与系统的设计、开发或操作，从而可以进行公正的评估。
-  **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** 涉及检查产品是否正确构建，是否符合设计规范和标准。另一方面，**验证**可确保构建正确的产品，满足其预期用途并满足用户需求。
-  IV&V 活动可以包括审查设计文档、检查代码、分析测试结果以及进行 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 审计。这些活动集成在整个软件开发生命周期 (SDLC) 中，以持续保证产品质量和符合要求。
+[独立验证和验证](/zh-cn/wiki/independent-verification-and-validation/) (IV&V) 是指由独立于开发团队的第三方进行的过程，以确保软件系统满足其指定的要求和预期的功能。 IV&V 的**独立**性质意味着评估人员不参与系统的设计、开发或操作，从而可以进行公正的评估。
+  **[验证 ](/zh-cn/wiki/verification/)** 涉及检查产品是否正确构建，是否符合设计规范和标准。另一方面，**验证**可确保构建正确的产品，满足其预期用途并满足用户需求。
+  IV&V 活动可以包括审查设计文档、检查代码、分析测试结果以及进行 [测试用例](/zh-cn/wiki/test-case/) 审计。这些活动集成在整个软件开发生命周期 (SDLC) 中，以持续保证产品质量和符合要求。
   IV&V 专家的作用是客观评估软件开发的产品和流程。他们与项目团队一起工作，但保持独立性以提供公正的见解。他们的职责包括识别潜在风险、确保遵守最佳实践以及促进持续改进工作。
   IV&V 专家必须深入了解软件工程原理、测试方法以及与正在评估的软件相关的特定领域知识。他们通过主动发现问题并提出缓解策略建议，在风险管理中发挥着至关重要的作用。
 
@@ -71,30 +72,30 @@ IV&V 在软件开发中对于**确保客观性**和**公正的质量评估**至�
 
 #### 验证和确认有什么区别？
 
-[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证是[软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 中的两个不同过程。
-  **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** 是检查软件是否满足指定要求的过程。这是为了确保产品正确构建并遵守设计和规格。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 通常通过审查、[检查s](https://inaodeng.com/zh-cn/wiki/inspection/) 和静态分析方法进行。
+[验证 ](/zh-cn/wiki/verification/) 和验证是[软件测试](/zh-cn/wiki/software-testing/) 中的两个不同过程。
+  **[验证 ](/zh-cn/wiki/verification/)** 是检查软件是否满足指定要求的过程。这是为了确保产品正确构建并遵守设计和规格。 [验证 ](/zh-cn/wiki/verification/) 通常通过审查、[检查s](/zh-cn/wiki/inspection/) 和静态分析方法进行。
 
-```
+  ```
   // Example of verification: Static code analysis to ensure coding standards
-```
-另一方面，**验证**是评估软件以确保其满足用户的需求和期望。这是测试实际产品的过程，涉及 [动态测试](https://inaodeng.com/zh-cn/wiki/dynamic-testing/) 和其他形式的评估，以确认产品提供预期的功能。
+  ```
+另一方面，**验证**是评估软件以确保其满足用户的需求和期望。这是测试实际产品的过程，涉及 [动态测试](/zh-cn/wiki/dynamic-testing/) 和其他形式的评估，以确认产品提供预期的功能。
 
 ```
   // Example of validation: Executing test cases to confirm user requirements are met
 ```
-本质上，[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 回答了这个问题：“我们构建的产品正确吗？”而验证则回答“我们正在构建正确的产品吗？”两者对于交付高质量的软件产品都至关重要，但它们侧重于 [质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 的不同方面。 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 更多的是关于符合要求，而验证是关于为用户提供价值。
+本质上，[验证 ](/zh-cn/wiki/verification/) 回答了这个问题：“我们构建的产品正确吗？”而验证则回答“我们正在构建正确的产品吗？”两者对于交付高质量的软件产品都至关重要，但它们侧重于 [质量保证](/zh-cn/wiki/quality-assurance/) 的不同方面。 [验证 ](/zh-cn/wiki/verification/) 更多的是关于符合要求，而验证是关于为用户提供价值。
 
 #### IV&V 如何提高软件产品的质量？
 
-IV&V 通过提供独立于开发团队的产品和流程的**客观评估**来增强[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/)。这种外部视角有助于识别内部团队可能因熟悉偏见而忽视的缺陷和不合格之处。 IV&V 专家应用**严格的标准**和**方法**来评估产品和相关文档，确保软件满足其要求和规范。
-  通过关注[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)（我们构建的产品正确吗？）和验证（我们构建的产品正确吗？），IV&V 支持交付高质量的产品，该产品不仅按预期运行，而且满足用户的需求和期望。该过程鼓励**及早发现**和**解决问题**，这可以显着减少部署后修复所需的成本和时间。
+IV&V 通过提供独立于开发团队的产品和流程的**客观评估**来增强[软件质量](/zh-cn/wiki/software-quality/)。这种外部视角有助于识别内部团队可能因熟悉偏见而忽视的缺陷和不合格之处。 IV&V 专家应用**严格的标准**和**方法**来评估产品和相关文档，确保软件满足其要求和规范。
+  通过关注[验证 ](/zh-cn/wiki/verification/)（我们构建的产品正确吗？）和验证（我们构建的产品正确吗？），IV&V 支持交付高质量的产品，该产品不仅按预期运行，而且满足用户的需求和期望。该过程鼓励**及早发现**和**解决问题**，这可以显着减少部署后修复所需的成本和时间。
   将 IV&V 发现和建议纳入开发周期可以实现产品和流程的**持续改进**。这种迭代改进有助于保持与质量标准和法规遵从性的一致性，这对于质量要求严格的行业尤其重要。
   此外，IV&V 通过在开发生命周期的早期识别潜在风险，有助于**风险管理**，使团队能够主动实施缓解策略。 IV&V 的独立性确保了风险评估的公正性和全面性。
-  总体而言，IV&V 对[软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的贡献植根于其提供公正见解、促进早期问题识别以及促进遵守质量和监管标准的能力，最终形成更可靠、更强大的软件产品。
+  总体而言，IV&V 对[软件质量](/zh-cn/wiki/software-quality/) 的贡献植根于其提供公正见解、促进早期问题识别以及促进遵守质量和监管标准的能力，最终形成更可靠、更强大的软件产品。
 
 #### 在项目中实施 IV&V 的主要好处是什么？
 
-实施 **[独立验证和验证](https://inaodeng.com/zh-cn/wiki/independent-verification-and-validation/) (IV&V)** 提供了几个主要好处：
+实施 **[独立验证和验证](/zh-cn/wiki/independent-verification-and-validation/) (IV&V)** 提供了几个主要好处：
 
 - **客观评估**：IV&V 提供对软件质量的公正评估，因为团队独立于开发过程。
 - **早期缺陷检测**：IV&V 有助于在生命周期的早期识别缺陷和问题，从而减少修复它们的成本和时间。
@@ -120,7 +121,7 @@ IV&V 过程涉及的典型步骤是：
 6. **问题报告**：记录调查结果并向项目团队报告问题、差异和不符合项以供解决。
 7. **进度跟踪**：监控报告问题的解决情况，并根据既定计划跟踪 IV&V 活动的进度。
 8. **风险评估**：评估与已识别问题相关的潜在风险及其对项目的影响。
-9. **最终报告**：编写最终 IV&V 报告，总结所执行的活动、发现的问题以及 [软件质量](https://inaodeng.com/zh-cn/wiki/software-quality/) 的总体评估。
+9. **最终报告**：编写最终 IV&V 报告，总结所执行的活动、发现的问题以及 [软件质量](/zh-cn/wiki/software-quality/) 的总体评估。
 10. **建议**：根据 IV&V 结果提供改进软件开发流程的建议。 在整个这些步骤中，IV&V 团队保持与开发团队的**独立性**，以确保评估的客观性和公正性。 IV&V 过程是迭代的，可以与项目的关键里程碑保持一致，以提供及时的反馈。
 
 #### IV&V 中常用哪些技术？
@@ -129,28 +130,28 @@ IV&V 过程涉及的典型步骤是：
 
 - **静态分析**：自动化工具分析代码的潜在缺陷而不执行它。这可以包括 linting、代码度量和复杂性分析。
 
-```
+  ```
     // Example of a static analysis tool command
     eslint --fix ./path/to/codebase
-```
+  ```
 
 - **动态分析**：通常使用自动化工具在软件运行时对其进行测试，以查找执行期间发生的问题，例如内存泄漏或性能瓶颈。
 - **形式方法**：应用数学规范和证明来验证软件满足其要求。
-- **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：在代码之前编写测试以确保每个组件按预期运行。
+- **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：在代码之前编写测试以确保每个组件按预期运行。
 - **同行评审**：让其他工程师评审代码、设计和文档以发现错误。
 - **可追溯性分析**：确保在设计、实施和测试中考虑到每项要求。
 - **配置审核**：检查软件版本是否包含所有正确版本的组件。
-- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 分析**：测量测试执行代码库的程度，旨在实现高覆盖率，以确保测试更多潜在路径。
-- **自动化[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)**：自动运行一套测试以确保新的更改不会破坏现有功能。
-- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：评估系统在负载下的性能，其中包括压力、可扩展性和[耐力测试](https://inaodeng.com/zh-cn/wiki/endurance-testing/)。
-- **[可用性测试](https://inaodeng.com/zh-cn/wiki/usability-testing/)**：评估最终用户使用系统及其组件的能力。 这些技术有助于确保软件满足其要求、正常运行并提供高质量的用户体验。
+- **[测试覆盖率](/zh-cn/wiki/test-coverage/) 分析**：测量测试执行代码库的程度，旨在实现高覆盖率，以确保测试更多潜在路径。
+- **自动化[回归测试](/zh-cn/wiki/regression-testing/)**：自动运行一套测试以确保新的更改不会破坏现有功能。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：评估系统在负载下的性能，其中包括压力、可扩展性和[耐力测试](/zh-cn/wiki/endurance-testing/)。
+- **[可用性测试](/zh-cn/wiki/usability-testing/)**：评估最终用户使用系统及其组件的能力。 这些技术有助于确保软件满足其要求、正常运行并提供高质量的用户体验。
 
 - **静态分析**：自动化工具分析代码的潜在缺陷而不执行它。这可以包括 linting、代码度量和复杂性分析。
 
-```
+  ```
     // Example of a static analysis tool command
     eslint --fix ./path/to/codebase
-```
+  ```
 
 #### IV&V 流程如何与整个软件开发生命周期集成？
 
@@ -175,7 +176,7 @@ IV&V 通过在各个阶段充当独立审计职能，与软件开发生命周期
 - **反馈循环**：实施反馈循环，以确保 IV&V 期间发现的问题得到解决，并且流程本身随着时间的推移得到完善。
 - **持续学习**：随时了解最新的方法、工具和技术，以改进 IV&V 流程。
 
-```
+  ```
   // Example of a feedback loop implementation in TypeScript
   function reportIssue(issue: Issue, callback: (resolution: Resolution) => void): void {
     // Report the issue to the development team
@@ -189,7 +190,7 @@ IV&V 通过在各个阶段充当独立审计职能，与软件开发生命周期
     // ...
     // Adjust IV&V processes based on the resolution feedback
   });
-```
+  ```
 
 #### 如何确定项目的 IV&V 范围？
 
@@ -210,8 +211,8 @@ IV&V 通过在各个阶段充当独立审计职能，与软件开发生命周期
 
 #### 谁通常在项目中执行 IV&V？
 
-[独立验证和验证](https://inaodeng.com/zh-cn/wiki/independent-verification-and-validation/) (IV&V) 通常由独立于项目团队的**外部实体**或第三方组织执行。这些实体不参与软件的开发，并且是公正的，确保评估过程的客观性。
-  在某些情况下，组织内专门的内部 IV&V 团队（但不是项目团队的一部分）也可以执行 IV&V 活动。该团队应独立于软件开发团队运作，以维护 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证过程的完整性。
+[独立验证和验证](/zh-cn/wiki/independent-verification-and-validation/) (IV&V) 通常由独立于项目团队的**外部实体**或第三方组织执行。这些实体不参与软件的开发，并且是公正的，确保评估过程的客观性。
+  在某些情况下，组织内专门的内部 IV&V 团队（但不是项目团队的一部分）也可以执行 IV&V 活动。该团队应独立于软件开发团队运作，以维护 [验证 ](/zh-cn/wiki/verification/) 和验证过程的完整性。
   **政府机构**，特别是在国防和航空航天领域，通常拥有自己的 IV&V 团队或专门从事 IV&V 服务的外部合同公司。对于安全性和合规性至关重要的关键系统，监管机构还可能要求经过认证的 IV&V 提供商参与。
   IV&V 专家负责此过程。他们对与项目相关的领域、方法和标准有深入的了解。他们的作用是确保软件满足所有指定的要求、按预期运行，并识别可能损害系统性能或安全的潜在问题。
   总之，IV&V 由不属于软件开发生命周期的专业人员执行，以保持公正性并提供对软件产品的客观评估。
@@ -222,40 +223,30 @@ IV&V 通过在各个阶段充当独立审计职能，与软件开发生命周期
 
 - **规划 IV&V 活动**：与项目范围和目标保持一致，定义 IV&V 策略并安排任务。
 - **审查文档**：检查需求、设计文档和用户手册的完整性和准确性。
-- **开发[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)** ：创建独立于开发团队测试用例的测试场景，以确保公正的测试。
+- **开发[测试用例](/zh-cn/wiki/test-case/)** ：创建独立于开发团队测试用例的测试场景，以确保公正的测试。
 - **执行测试**：运行测试以验证软件是否满足其要求并在各种条件下按预期运行。
 - **报告结果**：记录缺陷、不合格项和改进领域，并将这些内容传达给开发团队和利益相关者。
 - **确保合规性**：检查软件是否符合相关标准、法规和最佳实践。
 - **与团队合作**：与开发、质量保证和项目管理团队合作，确保问题得到理解和解决。
 - **持续学习**：及时了解最新的测试方法、工具和技术，以改进 IV&V 实践。
 - **风险评估**：识别整个软件生命周期中的潜在风险并提出缓解策略。
-- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)** ：通过确保将 IV&V 结果纳入开发过程，为软件的整体质量做出贡献。 IV&V 专家必须具备强大的分析能力、对细节的关注以及与各利益相关者有效沟通的能力。他们还应该熟练使用 IV&V 工具和技术来促进他们的工作。
+- **[质量保证](/zh-cn/wiki/quality-assurance/)** ：通过确保将 IV&V 结果纳入开发过程，为软件的整体质量做出贡献。 IV&V 专家必须具备强大的分析能力、对细节的关注以及与各利益相关者有效沟通的能力。他们还应该熟练使用 IV&V 工具和技术来促进他们的工作。
 
 #### IV&V 专家如何与项目中的其他角色互动？
 
-**IV&V 专家**与各种项目角色互动，以保持客观性并提供公正的[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/)。他们与以下机构合作：
+**IV&V 专家**与各种项目角色互动，以保持客观性并提供公正的[质量保证](/zh-cn/wiki/quality-assurance/)。他们与以下机构合作：
 
 - **项目经理**使 IV&V 活动与项目进度保持一致，并传达可能影响项目时间表或资源的调查结果。
 
 - **开发团队**了解系统架构、设计和实现，确保验证和确认活动的相关性和全面性。
 
-- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 团队**将 IV&V 工作与标准 QA 实践区分开来，避免重复并确保 QA 和 IV&V 都能提供独特的价值。
+- **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 团队**将 IV&V 工作与标准 QA 实践区分开来，避免重复并确保 QA 和 IV&V 都能提供独特的价值。
 
 - **业务分析师**确保需求是可验证的，并且验证工作符合业务需求和用户期望。
 
 - **风险经理**识别软件开发过程中的潜在风险，并根据这些风险确定 IV&V 活动的优先级。
 
 - **利益相关者**报告 IV&V 结果，提供有关产品质量和开发过程有效性的见解。 专家使用会议、报告和仪表板等各种沟通渠道来确保透明度并促进已识别问题的解决。他们的互动遵循独立原则，旨在提供客观评估，而不直接影响项目进程。
-
-- **项目经理**使 IV&V 活动与项目进度保持一致，并传达可能影响项目时间表或资源的调查结果。
-
-- **开发团队**了解系统架构、设计和实现，确保验证和确认活动的相关性和全面性。
-
-- **[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) (QA) 团队**将 IV&V 工作与标准 QA 实践区分开来，避免重复并确保 QA 和 IV&V 都能提供独特的价值。
-
-- **业务分析师**确保需求是可验证的，并且验证工作符合业务需求和用户期望。
-
-- **风险经理**识别软件开发过程中的潜在风险，并根据这些风险确定 IV&V 活动的优先级。
 
 - **利益相关者**报告 IV&V 结果，提供有关产品质量和开发过程有效性的见解。
 
@@ -264,7 +255,7 @@ IV&V 通过在各个阶段充当独立审计职能，与软件开发生命周期
 **IV&V 专家**需要综合技术、分析和软技能：
 
 - **技术专长**：精通软件工程原理、编程语言以及对系统架构的理解。熟悉项目的技术堆栈至关重要。
-- **测试技能**：深入了解测试方法，包括单元、集成、系统和[验收测试](https://inaodeng.com/zh-cn/wiki/acceptance-testing/)。能够设计和执行[测试计划](https://inaodeng.com/zh-cn/wiki/test-plan/)、[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 和[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。
+- **测试技能**：深入了解测试方法，包括单元、集成、系统和[验收测试](/zh-cn/wiki/acceptance-testing/)。能够设计和执行[测试计划](/zh-cn/wiki/test-plan/)、[测试用例](/zh-cn/wiki/test-case/) 和[测试脚本](/zh-cn/wiki/test-script/)。
 - **分析能力**：强大的解决问题能力，能够发现缺陷和不一致之处。必须能够理解复杂的系统及其相互作用。
 - **注重细节**：敏锐的观察能力，能够仔细审查可交付成果并识别可能不明显的问题。
 - **沟通技巧**：能够清楚地阐明调查结果并向利益相关者提供建设性反馈。必须能够撰写清晰简洁的报告。
@@ -272,15 +263,15 @@ IV&V 通过在各个阶段充当独立审计职能，与软件开发生命周期
 - **标准知识**：熟悉行业标准和最佳实践，例如 IEEE 1012，它为 IV&V 活动提供指南。
 - **风险管理**：能够评估风险并确定风险优先级，为项目的风险管理工作做出贡献。
 - **工具熟练程度**：具有支持静态和动态分析、需求管理和问题跟踪的 IV&V 工具和技术的经验。
-- **持续学习**：致力于了解 [软件测试](https://inaodeng.com/zh-cn/wiki/software-testing/) 和 IV&V 实践的最新趋势和发展。
+- **持续学习**：致力于了解 [软件测试](/zh-cn/wiki/software-testing/) 和 IV&V 实践的最新趋势和发展。
 - **协作**：虽然独立，但必须与其他项目团队成员有效合作，平衡独立性与协作解决问题的需要。
 
 #### IV&V 专家如何为项目的风险管理做出贡献？
 
-**IV&V 专家**通过对软件及其开发过程进行客观评估，在**风险管理**中发挥着关键作用。它们有助于及早识别潜在风险，并在其成为代价高昂的问题之前将其减轻。通过进行彻底的 **[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** 和 **验证** 活动，专家可确保产品和流程均符合要求、标准和程序。
+**IV&V 专家**通过对软件及其开发过程进行客观评估，在**风险管理**中发挥着关键作用。它们有助于及早识别潜在风险，并在其成为代价高昂的问题之前将其减轻。通过进行彻底的 **[验证 ](/zh-cn/wiki/verification/)** 和 **验证** 活动，专家可确保产品和流程均符合要求、标准和程序。
   通过**及早发现**缺陷和不合格项，IV&V 专家有助于防止风险升级，从而影响项目时间表和预算。他们提供了对**现有风险管理策略的有效性**的见解并提出了改进建议。他们的独立地位使他们能够突出项目团队因熟悉或偏见而可能忽视的风险。
   专家的**反馈**对于**持续改进**至关重要，使项目团队能够主动调整计划和流程。他们还通过向利益相关者记录和报告调查结果来促进**风险沟通**，确保与风险相关的决策是知情且基于证据的。
-  通过采用 **[基于风险的测试](https://inaodeng.com/zh-cn/wiki/risk-based-testing/) 策略**，IV&V 专家专注于软件最关键的领域，使测试工作与对项目成功的潜在影响保持一致。这种有针对性的方法最大限度地提高了测试活动在风险管理方面的价值。
+  通过采用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/) 策略**，IV&V 专家专注于软件最关键的领域，使测试工作与对项目成功的潜在影响保持一致。这种有针对性的方法最大限度地提高了测试活动在风险管理方面的价值。
   总之，IV&V 专家通过提供**独立审查**、**早期风险识别**、**客观反馈**和专注于风险缓解的**战略测试**来增强风险管理。
 
 ### 挑战和解决方案
@@ -318,7 +309,7 @@ IV&V 可以帮助在项目早期检测各种问题，包括：
 - **需求不一致**：IV&V 可以发现需求中的差异和模糊之处，如果不及时解决，可能会导致代价高昂的返工。
 - **集成问题**：接口规范的早期分析可以揭示不同系统组件之间或与外部系统之间的集成挑战。
 - **不符合标准**：IV&V 确保项目遵守相关行业标准，这可以防止出现法律和运营问题。
-- **[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** 不足：通过评估测试计划和策略，IV&V 可以识别测试覆盖范围中的差距，这些差距可能导致关键功能未经测试。
+- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** 不足：通过评估测试计划和策略，IV&V 可以识别测试覆盖范围中的差距，这些差距可能导致关键功能未经测试。
 - **安全漏洞**：IV&V 进行的安全审核可以在漏洞被利用之前发现它们。
 - **性能瓶颈**：性能分析可以检测可能影响用户体验的潜在可扩展性问题。
 - **数据完整性问题**：IV&V 可以验证数据流和存储过程，以确保准确捕获、存储和检索数据。
@@ -330,41 +321,24 @@ IV&V 可以帮助在项目早期检测各种问题，包括：
 
 - **缺陷检测效率**：计算IV&V发现的缺陷与整个项目生命周期发现的缺陷总数的比率。比率越高表示检测越有效。
 
-```
+  ```
     Defect Detection Efficiency = (Defects found by IV&V / Total defects) * 100
-```
+  ```
 
 - **需求覆盖率**：确保所有需求均经过验证和确认。跟踪 IV&V 活动涵盖的需求百分比。
 
-```
+  ```
     Requirements Coverage = (Requirements covered by IV&V / Total requirements) * 100
-```
+  ```
 
-- **风险降低**：通过比较 IV&V 干预前后的 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和问题频率，评估 IV&V 对减少高风险区域的影响。 提高 IV&V 有效性可以通过以下方式实现：
+- **风险降低**：通过比较 IV&V 干预前后的 [严重性](/zh-cn/wiki/severity/) 和问题频率，评估 IV&V 对减少高风险区域的影响。 提高 IV&V 有效性可以通过以下方式实现：
 
 - **持续反馈**：实施反馈循环，定期将 IV&V 发现结果传达给开发团队以便及时采取行动。
 - **定制方法**：定制 IV&V 策略以适应项目的特定背景和风险。
 - **工具集成**：使用自动化工具简化 IV&V 流程并提供实时见解。
 - **培训和专业知识**：确保 IV&V 专家受过良好培训并了解最新实践和技术。
 - **流程改进**：根据经验教训和行业最佳实践定期审查和完善 IV&V 流程。
-- **缺陷检测效率**：计算IV&V发现的缺陷与整个项目生命周期发现的缺陷总数的比率。比率越高表示检测越有效。
-
-```
-    Defect Detection Efficiency = (Defects found by IV&V / Total defects) * 100
-```
-
-- **需求覆盖率**：确保所有需求均经过验证和确认。跟踪 IV&V 活动涵盖的需求百分比。
-
-```
-    Requirements Coverage = (Requirements covered by IV&V / Total requirements) * 100
-```
-
-- **风险降低**：通过比较 IV&V 干预前后的 [严重性](https://inaodeng.com/zh-cn/wiki/severity/) 和问题频率，评估 IV&V 对减少高风险区域的影响。
-- **持续反馈**：实施反馈循环，定期将 IV&V 发现结果传达给开发团队以便及时采取行动。
-- **定制方法**：定制 IV&V 策略以适应项目的特定背景和风险。
-- **工具集成**：使用自动化工具简化 IV&V 流程并提供实时见解。
-- **培训和专业知识**：确保 IV&V 专家受过良好培训并了解最新实践和技术。
-- **流程改进**：根据经验教训和行业最佳实践定期审查和完善 IV&V 流程。
+- **风险降低**：通过比较 IV&V 干预前后的 [严重性](/zh-cn/wiki/severity/) 和问题频率，评估 IV&V 对减少高风险区域的影响。
 
 #### 有哪些工具和技术可以支持 IV&V 流程？
 
@@ -372,24 +346,14 @@ IV&V 可以帮助在项目早期检测各种问题，包括：
 
 - **静态分析工具**：SonarQube、Coverity 和 Fortify 等工具扫描代码而不执行代码，识别潜在的安全漏洞和编码标准违规。
 - **动态分析工具**：其中包括内存调试器和性能分析器，例如 Valgrind 和 Intel VTune，有助于检测运行时问题。
-- **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、Appium 和 TestComplete 支持自动化 [功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/)，确保软件按预期运行。
+- **[测试自动化](/zh-cn/wiki/test-automation/) 框架**：[selenium](/zh-cn/wiki/selenium/)、Appium 和 TestComplete 支持自动化 [功能测试](/zh-cn/wiki/functional-testing/)，确保软件按预期运行。
 - **持续集成/持续部署 (CI/CD) 工具**：Jenkins、GitLab CI 和 CircleCI 促进自动化构建、测试和部署，允许频繁验证软件更改。
-- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 框架**：JUnit、[NUnit](https://inaodeng.com/zh-cn/wiki/nunit/) 和 TestNG 支持单元级别的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发，这对于早期缺陷检测至关重要。
+- **[单元测试](/zh-cn/wiki/unit-testing/) 框架**：JUnit、[NUnit](/zh-cn/wiki/nunit/) 和 TestNG 支持单元级别的 [测试用例](/zh-cn/wiki/test-case/) 开发，这对于早期缺陷检测至关重要。
 - **模拟框架**：Mockito、Moq 和 EasyMock 允许模拟系统组件，从而实现软件单元的隔离测试。
-- **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 工具**：Istanbul、JaCoCo 和 Clover 测量测试期间源代码的执行程度，突出显示可能需要额外测试的区域。
-- **问题跟踪系统**：[jira](https://inaodeng.com/zh-cn/wiki/jira/)、Bugzilla 和 Redmine 帮助管理和跟踪缺陷和任务，支持记录和解决问题的 IV&V 流程。
-- **[需求管理工具](https://inaodeng.com/zh-cn/wiki/requirements-management-tool/)**：DOORS、Jama Connect 和 Axure 确保 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证活动符合记录的要求和规范。
-- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 工具**：OWASP ZAP、Burp Suite 和 Nessus 有助于识别应用程序中的安全弱点和漏洞。
-- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 工具**：LoadRunner、[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/) 和 Gadling 帮助验证软件在各种负载条件下的性能。 有效地利用这些工具可以增强 IV&V 流程，提供更强大、更可靠的软件产品。
+- **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**：Istanbul、JaCoCo 和 Clover 测量测试期间源代码的执行程度，突出显示可能需要额外测试的区域。
+- **问题跟踪系统**：[jira](/zh-cn/wiki/jira/)、Bugzilla 和 Redmine 帮助管理和跟踪缺陷和任务，支持记录和解决问题的 IV&V 流程。
+- **[需求管理工具](/zh-cn/wiki/requirements-management-tool/)**：DOORS、Jama Connect 和 Axure 确保 [验证 ](/zh-cn/wiki/verification/) 和验证活动符合记录的要求和规范。
+- **[安全测试](/zh-cn/wiki/security-testing/) 工具**：OWASP ZAP、Burp Suite 和 Nessus 有助于识别应用程序中的安全弱点和漏洞。
+- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：LoadRunner、[JMeter](/zh-cn/wiki/jmeter/) 和 Gadling 帮助验证软件在各种负载条件下的性能。 有效地利用这些工具可以增强 IV&V 流程，提供更强大、更可靠的软件产品。
 
-- **静态分析工具**：SonarQube、Coverity 和 Fortify 等工具扫描代码而不执行代码，识别潜在的安全漏洞和编码标准违规。
-- **动态分析工具**：其中包括内存调试器和性能分析器，例如 Valgrind 和 Intel VTune，有助于检测运行时问题。
-- **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 框架**：[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)、Appium 和 TestComplete 支持自动化 [功能测试](https://inaodeng.com/zh-cn/wiki/functional-testing/)，确保软件按预期运行。
-- **持续集成/持续部署 (CI/CD) 工具**：Jenkins、GitLab CI 和 CircleCI 促进自动化构建、测试和部署，允许频繁验证软件更改。
-- **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 框架**：JUnit、[NUnit](https://inaodeng.com/zh-cn/wiki/nunit/) 和 TestNG 支持单元级别的 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 开发，这对于早期缺陷检测至关重要。
-- **模拟框架**：Mockito、Moq 和 EasyMock 允许模拟系统组件，从而实现软件单元的隔离测试。
-- **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 工具**：Istanbul、JaCoCo 和 Clover 测量测试期间源代码的执行程度，突出显示可能需要额外测试的区域。
-- **问题跟踪系统**：[jira](https://inaodeng.com/zh-cn/wiki/jira/)、Bugzilla 和 Redmine 帮助管理和跟踪缺陷和任务，支持记录和解决问题的 IV&V 流程。
-- **[需求管理工具](https://inaodeng.com/zh-cn/wiki/requirements-management-tool/)**：DOORS、Jama Connect 和 Axure 确保 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 和验证活动符合记录的要求和规范。
-- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/) 工具**：OWASP ZAP、Burp Suite 和 Nessus 有助于识别应用程序中的安全弱点和漏洞。
-- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/) 工具**：LoadRunner、[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/) 和 Gatling 帮助验证软件在各种负载条件下的性能。
+- **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：LoadRunner、[JMeter](/zh-cn/wiki/jmeter/) 和 Gatling 帮助验证软件在各种负载条件下的性能。

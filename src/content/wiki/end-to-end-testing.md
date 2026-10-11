@@ -47,7 +47,7 @@ order: 0
 
 ## 相关术语
 
-- [系统测试](https://inaodeng.com/zh-cn/wiki/system-testing/)
+- [系统测试](/zh-cn/wiki/system-testing/)
 
 ## 有关端到端测试的问题吗？
 
@@ -55,7 +55,7 @@ order: 0
 
 #### 什么是端到端测试？
 
-[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)（E2E 测试）是一种用于从头到尾验证整个软件应用程序的方法。它确保应用程序在类似生产的环境中按预期运行，模拟真实的用户场景。此类测试涵盖应用程序与硬件、网络、外部依赖项、[数据库](https://inaodeng.com/zh-cn/wiki/database/) 和其他应用程序的交互。
+[端到端测试](/zh-cn/wiki/end-to-end-testing/)（E2E 测试）是一种用于从头到尾验证整个软件应用程序的方法。它确保应用程序在类似生产的环境中按预期运行，模拟真实的用户场景。此类测试涵盖应用程序与硬件、网络、外部依赖项、[数据库](/zh-cn/wiki/database/) 和其他应用程序的交互。
   E2E 测试通常在**单元**和**集成测试**之后执行。它们被设计为全面的，涵盖从开始到结束的用户流程，包括所有中间步骤。例如，在 Web 应用程序中，E2E 测试可能涉及：
 
 1. 启动浏览器。
@@ -65,7 +65,7 @@ order: 0
 5. 验证每一步的结果。
 6. 注销。
 
-```
+  ```
   // Pseudocode for an E2E test scenario
   describe('User purchase flow', () => {
     it('completes a purchase successfully', () => {
@@ -76,36 +76,36 @@ order: 0
       verifyPurchaseConfirmation();
     });
   });
-```
-E2E 测试对于识别集成组件之间交互过程中发生的问题至关重要，并且是 SDLC 中**持续测试**策略的重要组成部分。它通常涉及**自动化[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)**来模拟用户行为，可以在各种环境和设备上运行，以确保应用程序的功能和性能满足要求。
+  ```
+E2E 测试对于识别集成组件之间交互过程中发生的问题至关重要，并且是 SDLC 中**持续测试**策略的重要组成部分。它通常涉及**自动化[测试脚本](/zh-cn/wiki/test-script/)**来模拟用户行为，可以在各种环境和设备上运行，以确保应用程序的功能和性能满足要求。
 
 #### 为什么端到端测试很重要？
 
-[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 至关重要，因为它在**类似生产的环境**中验证应用程序的**集成组件**。它确保整个系统满足**业务需求**并从头到尾正确运行，模仿真实用户场景和交互。此类测试可以发现单元或集成测试中可能不可见的问题，例如整个系统中的**网络通信**、**[数据库](https://inaodeng.com/zh-cn/wiki/database/) 交互**、**外部依赖关系**和**状态管理**。
-  此外，它还有助于识别代码库中更改的**回归**和**副作用**，确保新功能或[bug](https://inaodeng.com/zh-cn/wiki/bug/)修复不会对现有功能产生不利影响。 [端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 还验证被测应用程序的**安全性**和**性能**，这对于维护用户信任和满意度至关重要。
-  通过模拟实际用户行为，测试人员可以确保应用程序在最终用户手中按预期运行，这是任何软件产品的最终目标。这就是为什么尽管需要付出努力和资源，[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 仍然是**[质量保证](https://inaodeng.com/zh-cn/wiki/quality-assurance/) 流程**不可或缺的一部分。
+[端到端测试](/zh-cn/wiki/end-to-end-testing/) 至关重要，因为它在**类似生产的环境**中验证应用程序的**集成组件**。它确保整个系统满足**业务需求**并从头到尾正确运行，模仿真实用户场景和交互。此类测试可以发现单元或集成测试中可能不可见的问题，例如整个系统中的**网络通信**、**[数据库](/zh-cn/wiki/database/) 交互**、**外部依赖关系**和**状态管理**。
+  此外，它还有助于识别代码库中更改的**回归**和**副作用**，确保新功能或[bug](/zh-cn/wiki/bug/)修复不会对现有功能产生不利影响。 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 还验证被测应用程序的**安全性**和**性能**，这对于维护用户信任和满意度至关重要。
+  通过模拟实际用户行为，测试人员可以确保应用程序在最终用户手中按预期运行，这是任何软件产品的最终目标。这就是为什么尽管需要付出努力和资源，[端到端测试](/zh-cn/wiki/end-to-end-testing/) 仍然是**[质量保证](/zh-cn/wiki/quality-assurance/) 流程**不可或缺的一部分。
 
 #### 单元测试、集成测试和端到端测试之间有什么区别？
 
-[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 专注于验证应用程序的最小部分，通常是单个函数或方法。它与系统的其他部分隔离，确保每个组件都能独立正常工作。
-  [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 检查不同单元或服务之间的交互，确保它们按预期协同工作。这可能涉及测试[API](https://inaodeng.com/zh-cn/wiki/api/)、[数据库](https://inaodeng.com/zh-cn/wiki/database/) 交互或其他服务集成。
-  [端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 从头到尾验证整个应用程序的工作流程，就像真正的用户正在与系统交互一样。它涵盖应用程序的所有层，包括网络、[数据库](https://inaodeng.com/zh-cn/wiki/database/) 和用户界面。
-  **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/):**
+[单元测试](/zh-cn/wiki/unit-testing/) 专注于验证应用程序的最小部分，通常是单个函数或方法。它与系统的其他部分隔离，确保每个组件都能独立正常工作。
+  [集成测试](/zh-cn/wiki/integration-testing/) 检查不同单元或服务之间的交互，确保它们按预期协同工作。这可能涉及测试[API](/zh-cn/wiki/api/)、[数据库](/zh-cn/wiki/database/) 交互或其他服务集成。
+  [端到端测试](/zh-cn/wiki/end-to-end-testing/) 从头到尾验证整个应用程序的工作流程，就像真正的用户正在与系统交互一样。它涵盖应用程序的所有层，包括网络、[数据库](/zh-cn/wiki/database/) 和用户界面。
+  **[单元测试](/zh-cn/wiki/unit-testing/):**
 
 - 隔离
 - 测试单个函数或类
 - 快速执行
-- 通常由开发人员编写 **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/):**
+- 通常由开发人员编写 **[集成测试](/zh-cn/wiki/integration-testing/):**
 
 - 组合单元/模块
 - 测试交互和界面
 - 可能比单元测试慢
-- 可能涉及测试替身（存根、模拟） **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/):**
+- 可能涉及测试替身（存根、模拟） **[端到端测试](/zh-cn/wiki/end-to-end-testing/):**
 
 - 测试完整的应用程序流程
 - 模拟真实的用户场景
 - 通常更慢且更复杂
-- 由于依赖外部系统，可能会很脆弱每个测试级别在 **[测试金字塔](https://inaodeng.com/zh-cn/wiki/test-pyramid/)** 中都有其位置，单元测试位于底部，集成测试位于中间，端到端测试位于顶部，这表明您应该有比端到端测试更多的单元测试。它们共同确保各个组件和集成系统正常运行，从而形成强大且可靠的软件产品。
+- 由于依赖外部系统，可能会很脆弱每个测试级别在 **[测试金字塔](/zh-cn/wiki/test-pyramid/)** 中都有其位置，单元测试位于底部，集成测试位于中间，端到端测试位于顶部，这表明您应该有比端到端测试更多的单元测试。它们共同确保各个组件和集成系统正常运行，从而形成强大且可靠的软件产品。
 
 - 隔离
 - 测试单个函数或类
@@ -122,7 +122,7 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 
 #### 端到端测试的主要好处是什么？
 
-[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 提供了几个主要优点：
+[端到端测试](/zh-cn/wiki/end-to-end-testing/) 提供了几个主要优点：
 
 - **确认集成系统功能**：验证所有组件集成后系统是否按预期运行。
 - **检测现实问题**：发现最终用户在类似生产环境中与应用程序交互时出现的问题。
@@ -130,76 +130,76 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 - **验证业务流程**：确认业务流程从头到尾正确执行，包括与外部系统和接口的交互。
 - **降低生产缺陷的风险**：通过模拟真实的用户场景，有助于在问题进入生产之前发现问题，从而保护最终用户体验。
 - **提高对版本的信心**：提供更高级别的保证，确保应用程序满足其要求并准备好部署。
-- **促进非[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)** 的测试：允许在模拟实时条件的负载下评估系统性能、可靠性和可扩展性。 这些优势有助于提供符合用户期望和业务需求的高质量产品，最终提高客户满意度并降低维护成本。
+- **促进非[功能需求](/zh-cn/wiki/functional-requirements/)** 的测试：允许在模拟实时条件的负载下评估系统性能、可靠性和可扩展性。 这些优势有助于提供符合用户期望和业务需求的高质量产品，最终提高客户满意度并降低维护成本。
 
 #### 端到端测试如何融入软件开发生命周期 (SDLC)？
 
-[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 在测试阶段的**后期**集成到 SDLC 中，通常是在**单元**和**集成测试**验证了各个组件及其交互之后。它是在一个紧密**模拟生产**的环境中进行的，确保整个应用程序在现实场景下按预期运行。
-  在**需求收集**和**设计**阶段，[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/) 被识别和规划。这确保了测试涵盖所有用户流程以及与外部系统的交互。
-  在**开发阶段**，开发人员和测试人员协作以确保应用程序的设计考虑到可测试性，这对于有效[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 至关重要。当功能完成后，它们可以合并到自动化的端到端[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)中。
+[端到端测试](/zh-cn/wiki/end-to-end-testing/) 在测试阶段的**后期**集成到 SDLC 中，通常是在**单元**和**集成测试**验证了各个组件及其交互之后。它是在一个紧密**模拟生产**的环境中进行的，确保整个应用程序在现实场景下按预期运行。
+  在**需求收集**和**设计**阶段，[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的[测试场景](/zh-cn/wiki/test-scenario/) 被识别和规划。这确保了测试涵盖所有用户流程以及与外部系统的交互。
+  在**开发阶段**，开发人员和测试人员协作以确保应用程序的设计考虑到可测试性，这对于有效[端到端测试](/zh-cn/wiki/end-to-end-testing/) 至关重要。当功能完成后，它们可以合并到自动化的端到端[测试套件](/zh-cn/wiki/test-suite/)中。
   在**持续集成/持续部署 (CI/CD) 管道**中，端到端测试通常在成功部署到临时环境后运行。这确保了在软件投入生产之前发现任何问题。
-  在**维护阶段**，端到端测试有助于验证新功能、[bug](https://inaodeng.com/zh-cn/wiki/bug/) 修复或更新不会破坏现有功能。它们对于 **[回归测试](https://inaodeng.com/zh-cn/wiki/regression-testing/)** 至关重要，可确保软件随着时间的推移保持稳定。
-  [端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 在 SDLC 中的放置具有战略意义，作为最后的 [验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 步骤，以确保软件满足业务需求并在发布前提供优质的用户体验。
+  在**维护阶段**，端到端测试有助于验证新功能、[bug](/zh-cn/wiki/bug/) 修复或更新不会破坏现有功能。它们对于 **[回归测试](/zh-cn/wiki/regression-testing/)** 至关重要，可确保软件随着时间的推移保持稳定。
+  [端到端测试](/zh-cn/wiki/end-to-end-testing/) 在 SDLC 中的放置具有战略意义，作为最后的 [验证 ](/zh-cn/wiki/verification/) 步骤，以确保软件满足业务需求并在发布前提供优质的用户体验。
 
 ### 技术和策略
 
 #### 端到端测试中常用的技术有哪些？
 
-[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 中的常用技术包括：
+[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中的常用技术包括：
 
 - **数据驱动测试**：自动测试以使用不同的输入数据集运行，以根据各种数据组合验证应用程序。
-- **关键字驱动测试**：为各种类型的操作和输入定义关键字，可用于编写具有更高抽象级别的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。
-- **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)**：将应用程序的页面或部分表示为具有与页面功能对应的方法的类，从而改进[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
-- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**：用自然语言编写描述应用程序行为的测试，通常使用 Cucumber 等工具。
-- **记录和回放**：记录用户与应用程序的交互并回放以执行测试。这通常用于初始 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 生成。
+- **关键字驱动测试**：为各种类型的操作和输入定义关键字，可用于编写具有更高抽象级别的[测试脚本](/zh-cn/wiki/test-script/)。
+- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：将应用程序的页面或部分表示为具有与页面功能对应的方法的类，从而改进[可维护性](/zh-cn/wiki/maintainability/)。
+- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：用自然语言编写描述应用程序行为的测试，通常使用 Cucumber 等工具。
+- **记录和回放**：记录用户与应用程序的交互并回放以执行测试。这通常用于初始 [测试脚本](/zh-cn/wiki/test-script/) 生成。
 - **并行执行**：在不同的浏览器和环境中同时运行测试以减少执行时间。
 - **持续集成 (CI)**：将端到端测试集成到 CI 管道中，以确保每次代码提交时都运行测试。
 - **服务虚拟化**：模拟在早期测试阶段可能不可用或用于测试成本太高的服务依赖关系。
-- **[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)**：捕获 UI 元素的屏幕截图并随时间进行比较，以检测意外的更改。
-- **[跨浏览器测试](https://inaodeng.com/zh-cn/wiki/cross-browser-testing/)**：确保应用程序在不同的 Web 浏览器中按预期工作。
+- **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**：捕获 UI 元素的屏幕截图并随时间进行比较，以检测意外的更改。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：确保应用程序在不同的 Web 浏览器中按预期工作。
 - **移动测试**：在各种移动设备和操作系统上测试应用程序以确保兼容性。
-- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：测量负载下应用程序的响应能力、可靠性和可扩展性。
-- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)**：通过模拟攻击和探测弱点来识别应用程序中的漏洞。 每种技术都针对应用程序的特定方面，并有助于确保全面的[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)流程。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：测量负载下应用程序的响应能力、可靠性和可扩展性。
+- **[安全测试](/zh-cn/wiki/security-testing/)**：通过模拟攻击和探测弱点来识别应用程序中的漏洞。 每种技术都针对应用程序的特定方面，并有助于确保全面的[端到端测试](/zh-cn/wiki/end-to-end-testing/)流程。
 
 - **数据驱动测试**：自动测试以使用不同的输入数据集运行，以根据各种数据组合验证应用程序。
-- **关键字驱动测试**：为各种类型的操作和输入定义关键字，可用于编写具有更高抽象级别的[测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/)。
-- **[页面对象模型](https://inaodeng.com/zh-cn/wiki/page-object-model/) (POM)**：将应用程序的页面或部分表示为具有与页面功能对应的方法的类，从而改进[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)。
-- **行为驱动开发 ([BDD](https://inaodeng.com/zh-cn/wiki/bdd/))**：用自然语言编写描述应用程序行为的测试，通常使用 Cucumber 等工具。
-- **记录和回放**：记录用户与应用程序的交互并回放以执行测试。这通常用于初始 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 生成。
+- **关键字驱动测试**：为各种类型的操作和输入定义关键字，可用于编写具有更高抽象级别的[测试脚本](/zh-cn/wiki/test-script/)。
+- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：将应用程序的页面或部分表示为具有与页面功能对应的方法的类，从而改进[可维护性](/zh-cn/wiki/maintainability/)。
+- **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：用自然语言编写描述应用程序行为的测试，通常使用 Cucumber 等工具。
+- **记录和回放**：记录用户与应用程序的交互并回放以执行测试。这通常用于初始 [测试脚本](/zh-cn/wiki/test-script/) 生成。
 - **并行执行**：在不同的浏览器和环境中同时运行测试以减少执行时间。
 - **持续集成 (CI)**：将端到端测试集成到 CI 管道中，以确保每次代码提交时都运行测试。
 - **服务虚拟化**：模拟在早期测试阶段可能不可用或用于测试成本太高的服务依赖关系。
-- **[视觉回归测试](https://inaodeng.com/zh-cn/wiki/visual-regression-testing/)**：捕获 UI 元素的屏幕截图并随着时间的推移进行比较，以检测意外的更改。
-- **[跨浏览器测试](https://inaodeng.com/zh-cn/wiki/cross-browser-testing/)**：确保应用程序在不同的 Web 浏览器中按预期工作。
+- **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**：捕获 UI 元素的屏幕截图并随着时间的推移进行比较，以检测意外的更改。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：确保应用程序在不同的 Web 浏览器中按预期工作。
 - **移动测试**：在各种移动设备和操作系统上测试应用程序以确保兼容性。
-- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：测量负载下应用程序的响应能力、可靠性和可扩展性。
-- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)**：通过模拟攻击和探测弱点来识别应用程序中的漏洞。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：测量负载下应用程序的响应能力、可靠性和可扩展性。
+- **[安全测试](/zh-cn/wiki/security-testing/)**：通过模拟攻击和探测弱点来识别应用程序中的漏洞。
 
 #### 与端到端测试相关的“测试金字塔”是什么？
 
-**[测试金字塔](https://inaodeng.com/zh-cn/wiki/test-pyramid/)** 是 Mike Cohn 提出的一个概念，它说明了软件项目中不同类型的自动化测试的理想分布。它强调拥有大量的**单元测试**，少量的**集成测试**，甚至更少的**端到端测试**。
-  对于[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)，金字塔充当平衡[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的指南。虽然端到端测试模拟真实的用户场景并验证整个系统，但由于其复杂性和执行时间，它们位于金字塔的顶部。金字塔表明，过度依赖端到端测试可能会导致脆弱的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，维护起来缓慢且昂贵。
-  相反，金字塔提倡在[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)中采用**自下而上的方法**：
+**[测试金字塔](/zh-cn/wiki/test-pyramid/)** 是 Mike Cohn 提出的一个概念，它说明了软件项目中不同类型的自动化测试的理想分布。它强调拥有大量的**单元测试**，少量的**集成测试**，甚至更少的**端到端测试**。
+  对于[端到端测试](/zh-cn/wiki/end-to-end-testing/)，金字塔充当平衡[测试覆盖率](/zh-cn/wiki/test-coverage/) 的指南。虽然端到端测试模拟真实的用户场景并验证整个系统，但由于其复杂性和执行时间，它们位于金字塔的顶部。金字塔表明，过度依赖端到端测试可能会导致脆弱的[测试套件](/zh-cn/wiki/test-suite/)，维护起来缓慢且昂贵。
+  相反，金字塔提倡在[测试自动化](/zh-cn/wiki/test-automation/)中采用**自下而上的方法**：
 
 - **单元测试**：覆盖单个函数或类的快速、独立的测试。
 - **集成测试**：涵盖组件或系统之间交互的测试。
-- **端到端测试**：覆盖整个用户流程的综合测试。 通过遵循[测试金字塔](https://inaodeng.com/zh-cn/wiki/test-pyramid/)，工程师可以确保在较低级别捕获大多数问题，在较低级别上运行测试更快、更便宜。这种方法最大限度地减少了所需的端到端测试的数量，这有助于维持更快、更可靠的[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)。在实践中，这意味着端到端测试应重点关注关键的用户旅程，并辅以较低级别的测试以进行更精细的验证。
+- **端到端测试**：覆盖整个用户流程的综合测试。 通过遵循[测试金字塔](/zh-cn/wiki/test-pyramid/)，工程师可以确保在较低级别捕获大多数问题，在较低级别上运行测试更快、更便宜。这种方法最大限度地减少了所需的端到端测试的数量，这有助于维持更快、更可靠的[测试套件](/zh-cn/wiki/test-suite/)。在实践中，这意味着端到端测试应重点关注关键的用户旅程，并辅以较低级别的测试以进行更精细的验证。
 
 #### 如何确定端到端测试中要测试的内容？
 
-确定在**端到端测试**中测试的内容涉及识别反映实际使用情况的关键用户流和业务流程。专注于您的应用程序提供的**核心功能**，确保它们从开始到结束无缝工作。首先规划出涵盖典型场景的**用户旅程**，包括**[快乐之路](https://inaodeng.com/zh-cn/wiki/happy-path/)**（标准[用例](https://inaodeng.com/zh-cn/wiki/use-case/)）和**边缘情况**（不太常见或意外的[用例](https://inaodeng.com/zh-cn/wiki/use-case/)）。
+确定在**端到端测试**中测试的内容涉及识别反映实际使用情况的关键用户流和业务流程。专注于您的应用程序提供的**核心功能**，确保它们从开始到结束无缝工作。首先规划出涵盖典型场景的**用户旅程**，包括**[快乐之路](/zh-cn/wiki/happy-path/)**（标准[用例](/zh-cn/wiki/use-case/)）和**边缘情况**（不太常见或意外的[用例](/zh-cn/wiki/use-case/)）。
   根据**风险和影响**确定测试的优先级。高风险领域，例如支付处理或用户身份验证，应始终进行彻底测试。使用**可追溯性矩阵**来确保覆盖所有要求。与利益相关者（包括产品所有者和业务分析师）合作，了解系统最重要的方面。
-  结合**用户反馈**和**分析**来识别常用功能和常见问题。该数据可以指导[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)的优先级。另外，请考虑可能规定某些测试为强制性的**监管和合规性要求**。
-  利用单元中**现有的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**和[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)来通知端到端场景，确保全面覆盖，无冗余。请记住在端到端测试中包含**非[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)**，例如性能和安全性。
-  最后，维护一个随您的应用程序一起发展的**动态[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**。定期审查和更新测试，以反映系统的变化和新出现的用户行为。尽可能实现自动化，但也包括 [探索性测试](https://inaodeng.com/zh-cn/wiki/exploratory-testing/) 以捕获不可预见的问题。
+  结合**用户反馈**和**分析**来识别常用功能和常见问题。该数据可以指导[测试场景](/zh-cn/wiki/test-scenario/)的优先级。另外，请考虑可能规定某些测试为强制性的**监管和合规性要求**。
+  利用单元中**现有的[测试用例](/zh-cn/wiki/test-case/)**和[集成测试](/zh-cn/wiki/integration-testing/)来通知端到端场景，确保全面覆盖，无冗余。请记住在端到端测试中包含**非[功能需求](/zh-cn/wiki/functional-requirements/)**，例如性能和安全性。
+  最后，维护一个随您的应用程序一起发展的**动态[测试套件](/zh-cn/wiki/test-suite/)**。定期审查和更新测试，以反映系统的变化和新出现的用户行为。尽可能实现自动化，但也包括 [探索性测试](/zh-cn/wiki/exploratory-testing/) 以捕获不可预见的问题。
 
 #### 可以使用哪些策略来提高端到端测试的效率？
 
-为了提高[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)的效率：
+为了提高[端到端测试](/zh-cn/wiki/end-to-end-testing/)的效率：
 
-- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于业务影响和关键用户旅程，以确保首先覆盖高价值领域。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于业务影响和关键用户旅程，以确保首先覆盖高价值领域。
 
-- 实施 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)**尽可能加快执行速度并减少手动工作量。
+- 实施 **[测试自动化](/zh-cn/wiki/test-automation/)**尽可能加快执行速度并减少手动工作量。
 
 - 使用 **并行测试**同时运行多个测试，减少总体测试执行时间。
 
@@ -211,17 +211,17 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 
 - **监控和分析测试结果**定期确定测试覆盖率和效率方面需要改进的模式和领域。
 
-- 维持一个 **干净[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**通过在每次测试运行后重置它来避免与状态相关的问题并确保一致性。
+- 维持一个 **干净[测试环境](/zh-cn/wiki/test-environment/)**通过在每次测试运行后重置它来避免与状态相关的问题并确保一致性。
 
 - 利用 **服务虚拟化**模拟外部系统和依赖关系，允许测试无需等待第三方组件即可运行。
 
 - **重构测试**定期删除过时的场景并提高测试套件的可维护性和性能。
 
-- **利用分析和人工智能**根据历史数据预测潜在故障并优化测试套件。 通过应用这些策略，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以简化[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 流程，减少执行时间，并提高正在测试的软件的整体质量和可靠性。
+- **利用分析和人工智能**根据历史数据预测潜在故障并优化测试套件。 通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以简化[端到端测试](/zh-cn/wiki/end-to-end-testing/) 流程，减少执行时间，并提高正在测试的软件的整体质量和可靠性。
 
-- **优先考虑[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**基于业务影响和关键用户旅程，以确保首先覆盖高价值领域。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于业务影响和关键用户旅程，以确保首先覆盖高价值领域。
 
-- 实施 **[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/)**尽可能加快执行速度并减少手动工作量。
+- 实施 **[测试自动化](/zh-cn/wiki/test-automation/)**尽可能加快执行速度并减少手动工作量。
 
 - 使用 **并行测试**同时运行多个测试，减少总体测试执行时间。
 
@@ -233,7 +233,7 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 
 - **监控和分析测试结果**定期确定测试覆盖率和效率方面需要改进的模式和领域。
 
-- 维持一个 **干净[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**通过在每次测试运行后重置它来避免与状态相关的问题并确保一致性。
+- 维持一个 **干净[测试环境](/zh-cn/wiki/test-environment/)**通过在每次测试运行后重置它来避免与状态相关的问题并确保一致性。
 
 - 利用 **服务虚拟化**模拟外部系统和依赖关系，允许测试无需等待第三方组件即可运行。
 
@@ -243,7 +243,7 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 
 #### 模拟服务器在端到端测试中的作用是什么？
 
-模拟服务器通过模拟与软件系统交互的外部服务和[API](https://inaodeng.com/zh-cn/wiki/api/) 的行为，在[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 中发挥着至关重要的作用。它们允许您：
+模拟服务器通过模拟与软件系统交互的外部服务和[API](/zh-cn/wiki/api/) 的行为，在[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中发挥着至关重要的作用。它们允许您：
 
 - **隔离**测试系统，确保端到端测试重点关注应用程序的功能，而不是与外部服务的集成。
 
@@ -253,9 +253,9 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 
 - **降低成本**和 **提高速度**通过避免实际服务调用的需要，这种调用可能既昂贵又缓慢，特别是在处理具有速率限制或使用费的第三方 API 时。
 
-- **增强安全性**通过不在测试环境中暴露敏感凭据，因为可以使用模拟服务器而无需访问生产服务。 通过使用模拟服务器，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以确保端到端测试验证应用程序与外部服务之间的正确交互，而不会受到这些服务的不可预测性或不可用性的影响。 [测试脚本](https://inaodeng.com/zh-cn/wiki/test-script/) 中模拟服务器的用法示例：
+- **增强安全性**通过不在测试环境中暴露敏感凭据，因为可以使用模拟服务器而无需访问生产服务。 通过使用模拟服务器，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保端到端测试验证应用程序与外部服务之间的正确交互，而不会受到这些服务的不可预测性或不可用性的影响。 [测试脚本](/zh-cn/wiki/test-script/) 中模拟服务器的用法示例：
 
-```
+  ```
   // Set up the mock server with expected responses
   mockServer.get('/api/users').reply(200, {
     users: [{ id: 1, name: 'John Doe' }]
@@ -264,8 +264,8 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
   test('User data is displayed correctly', async () => {
     // ... test implementation ...
   });
-```
-总之，模拟服务器是创建稳定且受控的测试环境的强大工具，可实现更可靠、高效和全面的[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)。
+  ```
+总之，模拟服务器是创建稳定且受控的测试环境的强大工具，可实现更可靠、高效和全面的[端到端测试](/zh-cn/wiki/end-to-end-testing/)。
 
 - **隔离**测试系统，确保端到端测试重点关注应用程序的功能，而不是与外部服务的集成。
 
@@ -281,10 +281,10 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 
 #### 端到端测试常用哪些工具？
 
-[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 的常用工具包括：
+[端到端测试](/zh-cn/wiki/end-to-end-testing/) 的常用工具包括：
 
-- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：基于 JavaScript 的工具，使您能够编写在浏览器中运行的测试。
-- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** ：一种广泛使用的自动化 Web 浏览器工具，支持多种语言和浏览器。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：基于 JavaScript 的工具，使您能够编写在浏览器中运行的测试。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：一种广泛使用的自动化 Web 浏览器工具，支持多种语言和浏览器。
 - **TestCafe** ：一个用于自动化端到端 Web 测试的 Node.js 工具，不需要 WebDriver。
 - **Puppeteer** ：一个 Node 库，提供高级 API 来通过 DevTools 协议控制 Chrome 或 Chromium。
 - **Playwright** ：与 Puppeteer 类似，但为 Chromium、Firefox 和 WebKit 上的测试提供跨浏览器支持。
@@ -295,8 +295,8 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 - **CodeceptJS**：一种现代的端到端测试框架，具有特殊的语法，允许编写易于阅读和维护的测试。
 - **Robot Framework**：用于验收测试和验收测试驱动开发（ATDD）的通用测试自动化框架。 每个工具都有自己的一组功能，可能更适合某些场景或技术堆栈。选择符合您的应用程序要求和团队专业知识的工具非常重要。
 
-- **[Cypress](https://inaodeng.com/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的工具，使您能够编写在浏览器中运行的测试。
-- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/)** ：一种广泛使用的自动化 Web 浏览器工具，支持多种语言和浏览器。
+- **[Cypress](/zh-cn/wiki/cypress/)** ：一个基于 JavaScript 的工具，使您能够编写在浏览器中运行的测试。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** ：一种广泛使用的自动化 Web 浏览器工具，支持多种语言和浏览器。
 - **TestCafe** ：一个用于自动化端到端 Web 测试的 Node.js 工具，不需要 WebDriver。
 - **Puppeteer** ：一个 Node 库，提供高级 API 来通过 DevTools 协议控制 Chrome 或 Chromium。
 - **Playwright** ：与 Puppeteer 类似，但为 Chromium、Firefox 和 WebKit 上的测试提供跨浏览器支持。
@@ -309,32 +309,32 @@ E2E 测试对于识别集成组件之间交互过程中发生的问题至关重�
 
 #### Selenium 如何帮助端到端测试？
 
-[selenium](https://inaodeng.com/zh-cn/wiki/selenium/) 是一个用于自动化 Web 浏览器的强大工具，使其非常适合**端到端 (E2E) 测试**。它模拟用户与 Web 应用程序的交互，允许您从整体上验证系统的组件。
-  通过[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)，您可以：
+[selenium](/zh-cn/wiki/selenium/) 是一个用于自动化 Web 浏览器的强大工具，使其非常适合**端到端 (E2E) 测试**。它模拟用户与 Web 应用程序的交互，允许您从整体上验证系统的组件。
+  通过[selenium](/zh-cn/wiki/selenium/)，您可以：
 
 - **自动化浏览器**：Selenium WebDriver 与页面元素和浏览器操作（如单击、输入和导航）交互，模仿真实的用户行为。
-- **[跨浏览器测试](https://inaodeng.com/zh-cn/wiki/cross-browser-testing/)** ：跨多个浏览器和版本测试您的应用程序，确保一致的行为和兼容性。
+- **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)** ：跨多个浏览器和版本测试您的应用程序，确保一致的行为和兼容性。
 - **与测试框架集成**：与 JUnit 或 TestNG 等框架结合来构建 E2E 测试、管理测试套件并生成报告。
 - **并行运行测试**：通过使用 Selenium Grid 同时执行多个测试来加快测试过程。
-- **支持持续集成（CI）**：与 Jenkins 等 CI 工具集成，自动触发部署管道中的 E2E 测试。 Java 中的简单 [selenium](https://inaodeng.com/zh-cn/wiki/selenium/) [WebDriver](https://inaodeng.com/zh-cn/wiki/webdriver/) 测试示例：
+- **支持持续集成（CI）**：与 Jenkins 等 CI 工具集成，自动触发部署管道中的 E2E 测试。 Java 中的简单 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 测试示例：
 
-```
+  ```
   WebDriver driver = new ChromeDriver();
   driver.get("http://example.com");
   WebElement element = driver.findElement(By.id("some-id"));
   element.click();
   Assert.assertEquals("Expected Title", driver.getTitle());
   driver.quit();
-```
-[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)的灵活性以及对各种编程语言、浏览器和操作系统的兼容性使其成为端到端测试不可或缺的工具，从用户的角度确保最终产品符合质量标准。
+  ```
+[selenium](/zh-cn/wiki/selenium/)的灵活性以及对各种编程语言、浏览器和操作系统的兼容性使其成为端到端测试不可或缺的工具，从用户的角度确保最终产品符合质量标准。
 
 #### Docker 在端到端测试中的作用是什么？
 
-Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 提供**一致且隔离的环境**，在[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 中发挥着重要作用。它允许您将应用程序及其依赖项打包到可以在安装 Docker 的任何位置运行的容器中。这确保了测试在不同的开发阶段在相同的环境中运行，这有助于减少“它可以在我的机器上运行”问题。
-  使用 Docker，您可以在本地计算机或 CI/CD 管道中轻松**模拟类似生产的环境**。这对于端到端测试至关重要，端到端测试旨在验证整个系统，包括与 [数据库](https://inaodeng.com/zh-cn/wiki/database/)、[API](https://inaodeng.com/zh-cn/wiki/api/) 和其他服务的交互。
-  此外，Docker 可用于**启动测试所需的辅助服务**，例如模拟服务器或[数据库](https://inaodeng.com/zh-cn/wiki/database/)，而不需要复杂的配置。这通常使用 `docker-compose` 来完成，它允许您定义和运行多容器 Docker 应用程序。
+Docker 通过为[测试执行](/zh-cn/wiki/test-execution/) 提供**一致且隔离的环境**，在[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中发挥着重要作用。它允许您将应用程序及其依赖项打包到可以在安装 Docker 的任何位置运行的容器中。这确保了测试在不同的开发阶段在相同的环境中运行，这有助于减少“它可以在我的机器上运行”问题。
+  使用 Docker，您可以在本地计算机或 CI/CD 管道中轻松**模拟类似生产的环境**。这对于端到端测试至关重要，端到端测试旨在验证整个系统，包括与 [数据库](/zh-cn/wiki/database/)、[API](/zh-cn/wiki/api/) 和其他服务的交互。
+  此外，Docker 可用于**启动测试所需的辅助服务**，例如模拟服务器或[数据库](/zh-cn/wiki/database/)，而不需要复杂的配置。这通常使用 `docker-compose` 来完成，它允许您定义和运行多容器 Docker 应用程序。
 
-```
+  ```
   version: '3'
   services:
     web:
@@ -345,22 +345,22 @@ Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 
       image: postgres
       environment:
         POSTGRES_PASSWORD: example
-```
-通过将 Docker 集成到您的 [端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 策略中，您可以实现**可扩展性和并行性**，同时运行多个容器化 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，从而减少开发人员的反馈循环。
+  ```
+通过将 Docker 集成到您的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 策略中，您可以实现**可扩展性和并行性**，同时运行多个容器化 [测试套件](/zh-cn/wiki/test-suite/)，从而减少开发人员的反馈循环。
   最后，Docker 通过允许您对容器映像进行版本控制来确保**测试可重复性**，因此您可以随时在需要时恢复到之前的状态，从而更轻松地追踪可能发生回归的时间和位置。
 
 #### 使用 Protractor 等工具进行端到端测试时有哪些好的做法？
 
-使用 Protractor for [端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 等工具时，请考虑以下最佳实践：
+使用 Protractor for [端到端测试](/zh-cn/wiki/end-to-end-testing/) 等工具时，请考虑以下最佳实践：
 
 - **保持测试独立**：每个测试都应该设置自己的状态并随后进行清理，以避免可能导致不稳定的依赖关系。
 - **使用页面对象**：在页面对象中抽象 UI 的详细信息，使测试更具可读性和可维护性。
-```
-类登录页面 {
-  // 此处为页面对象代码
-  }
+  ```
+  类登录页面 {
+    // 此处为页面对象代码
+    }
 
-```
+  ```
 
 - **优先保证稳定性**：在与元素交互之前，等待元素可见或可用，以减少测试不稳定（flaky）问题。
 - **避免硬编码等待**：使用 Protractor 内置的等待函数，而不是使用 `sleep()`，以便与页面加载和异步操作进行同步。
@@ -378,20 +378,20 @@ Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 
 
 #### 云服务如何用于端到端测试？
 
-云服务可以通过提供可扩展的按需环境和资源来显着增强端到端（E2E）测试。 **基础设施即服务 (IaaS)** 平台（例如 AWS EC2 或 Google Compute Engine）允许您动态创建和处置 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。您可以复制类似生产的设置，而无需维护物理服务器的开销。
+云服务可以通过提供可扩展的按需环境和资源来显着增强端到端（E2E）测试。 **基础设施即服务 (IaaS)** 平台（例如 AWS EC2 或 Google Compute Engine）允许您动态创建和处置 [测试环境](/zh-cn/wiki/test-environment/)。您可以复制类似生产的设置，而无需维护物理服务器的开销。
   **平台即服务 (PaaS)** 产品（例如 Heroku 或 AWS Elastic Beanstalk）可实现应用程序的自动部署和扩展，这对于在密切模仿生产环境的设置中进行端到端测试至关重要。
-  将 **容器化** 与 AWS ECS 或 Google Kubernetes Engine 等服务结合使用，可以促进跨不同环境的一致部署，确保测试针对统一的 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 运行。
-  **存储和 [数据库](https://inaodeng.com/zh-cn/wiki/database/) 服务**（例如 Amazon S3、Google Cloud Storage、AWS RDS）提供了一种以受控方式测试类似生产数据集的方法，从而允许进行更全面的 E2E 测试。
-  **功能即服务 (FaaS)** 平台（例如 AWS Lambda）可用于模拟后端服务或创建按需触发的测试工具，从而降低 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 的成本和复杂性。
+  将 **容器化** 与 AWS ECS 或 Google Kubernetes Engine 等服务结合使用，可以促进跨不同环境的一致部署，确保测试针对统一的 [环境搭建](/zh-cn/wiki/setup/) 运行。
+  **存储和 [数据库](/zh-cn/wiki/database/) 服务**（例如 Amazon S3、Google Cloud Storage、AWS RDS）提供了一种以受控方式测试类似生产数据集的方法，从而允许进行更全面的 E2E 测试。
+  **功能即服务 (FaaS)** 平台（例如 AWS Lambda）可用于模拟后端服务或创建按需触发的测试工具，从而降低 [测试执行](/zh-cn/wiki/test-execution/) 的成本和复杂性。
   基于云的**持续集成和持续部署 (CI/CD)** 管道（例如 Jenkins、GitLab CI、GitHub Actions）将 E2E 测试无缝集成到 SDLC 中，从而实现频繁的自动化测试运行。
   最后，云中的**监控和日志服务**（例如 Datadog、Splunk）提供对 E2E 测试的实时洞察，有助于快速识别和解决问题。
-  通过利用云服务，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以在端到端测试中实现**可扩展性、灵活性和效率**，从而实现更快的发布和更高质量的软件。
+  通过利用云服务，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以在端到端测试中实现**可扩展性、灵活性和效率**，从而实现更快的发布和更高质量的软件。
 
 ### 挑战和解决方案
 
 #### 端到端测试中常见的挑战有哪些？
 
-[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 经常面临几个挑战：
+[端到端测试](/zh-cn/wiki/end-to-end-testing/) 经常面临几个挑战：
 
 - **复杂性**：E2E 测试模拟真实的用户场景，设置和执行可能很复杂。
 - **不稳定**：由于计时问题、外部依赖性或网络不稳定，测试可能会不一致地通过或失败。
@@ -402,11 +402,11 @@ Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 
 - **数据管理**：管理测试数据并确保每次测试都处于正确状态可能具有挑战性。
 - **调试**：由于涉及的组件数量较多，确定故障的根本原因可能很困难。
 - **成本**：端到端测试所需的工具、环境和基础设施可能很昂贵。
-- **跨浏览器/设备测试**：确保不同浏览器和设备之间的行为一致会增加复杂性。 为了应对这些挑战，团队经常实施**持续集成**和**持续部署**（CI/CD）实践，使用**服务虚拟化**来模拟外部依赖关系，并采用**并行执行**来减少运行时间。此外，保持**明确的测试范围**和拥有**强大的[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)管理策略**对于有效的端到端测试至关重要。
+- **跨浏览器/设备测试**：确保不同浏览器和设备之间的行为一致会增加复杂性。 为了应对这些挑战，团队经常实施**持续集成**和**持续部署**（CI/CD）实践，使用**服务虚拟化**来模拟外部依赖关系，并采用**并行执行**来减少运行时间。此外，保持**明确的测试范围**和拥有**强大的[测试数据](/zh-cn/wiki/test-data/)管理策略**对于有效的端到端测试至关重要。
 
 #### 在端到端测试中如何处理片状测试？
 
-端到端 (E2E) 测试中的 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 可能会成为可靠自动化的重大障碍。处理[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)：
+端到端 (E2E) 测试中的 [片状测试](/zh-cn/wiki/flaky-test/) 可能会成为可靠自动化的重大障碍。处理[片状测试](/zh-cn/wiki/flaky-test/)：
 
 - **隔离和识别**片状的原因。这可能是由于网络问题、动态内容或计时问题造成的。
 
@@ -418,15 +418,15 @@ Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 
 
 - **定期审查和重构**测试以使他们及时了解应用程序的更改。
 
-- **隔离运行[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**以确定它们是否受到测试顺序或数据污染的影响。
+- **隔离运行[片状测试](/zh-cn/wiki/flaky-test/)**以确定它们是否受到测试顺序或数据污染的影响。
 
-- **创建 [片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/) 隔离区**以防止他们在您进行修复时阻塞您的构建管道。
+- **创建 [片状测试](/zh-cn/wiki/flaky-test/) 隔离区**以防止他们在您进行修复时阻塞您的构建管道。
 
 - **监控和跟踪**发现模式并优先修复的脆弱性。
 
 - **避免测试外部依赖项**直接；尽可能模拟或存根这些。
 
-- **确保一致[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**以减少测试运行之间的可变性。 通过主动解决不稳定问题，您可以保持 E2E 测试套件的完整性，并确保它仍然是 SDLC 中的可靠资产。
+- **确保一致[测试环境](/zh-cn/wiki/test-environment/)**以减少测试运行之间的可变性。 通过主动解决不稳定问题，您可以保持 E2E 测试套件的完整性，并确保它仍然是 SDLC 中的可靠资产。
 
 - **隔离和识别**片状的原因。这可能是由于网络问题、动态内容或计时问题造成的。
 
@@ -438,15 +438,15 @@ Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 
 
 - **定期审查和重构**测试以使他们及时了解应用程序的更改。
 
-- **隔离运行[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)**以确定它们是否受到测试顺序或数据污染的影响。
+- **隔离运行[片状测试](/zh-cn/wiki/flaky-test/)**以确定它们是否受到测试顺序或数据污染的影响。
 
-- **创建[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)隔离区**以防止他们在您进行修复时阻塞您的构建管道。
+- **创建[片状测试](/zh-cn/wiki/flaky-test/)隔离区**以防止他们在您进行修复时阻塞您的构建管道。
 
 - **监控和跟踪**发现模式并优先修复的脆弱性。
 
 - **避免测试外部依赖项**直接；尽可能模拟或存根这些。
 
-- **确保一致[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)**以减少测试运行之间的可变性。
+- **确保一致[测试环境](/zh-cn/wiki/test-environment/)**以减少测试运行之间的可变性。
 
 #### 如何确保您的端到端测试可靠且稳健？
 
@@ -458,31 +458,31 @@ Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 
 - **隔离测试**：确保测试不相互依赖。每个测试都应该设置其所需的状态并随后进行清理。
 - **模拟外部服务**：测试与外部服务的交互时，使用模拟或存根来模拟响应，减少对外部因素的依赖。
 - **在类似生产的环境中进行测试**：在密切模仿生产的环境中运行测试，以尽早发现特定于环境的问题。
-- **监控和分析故障**：实施监控以快速识别测试故障，并对其进行分析以确定它们是由于测试问题还是真正的[bugs](https://inaodeng.com/zh-cn/wiki/bug/)。
-- **版本控制[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)**：将[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)视为代码 - 对其进行版本控制以跟踪更改并确保测试运行之间的一致性。
+- **监控和分析故障**：实施监控以快速识别测试故障，并对其进行分析以确定它们是由于测试问题还是真正的[bugs](/zh-cn/wiki/bug/)。
+- **版本控制[测试数据](/zh-cn/wiki/test-data/)**：将[测试数据](/zh-cn/wiki/test-data/)视为代码 - 对其进行版本控制以跟踪更改并确保测试运行之间的一致性。
 - **并行执行**：尽可能并行运行测试，以加快执行速度，同时确保它们不会相互干扰。
 - **持续集成**：将测试集成到 CI 管道中以定期运行它们并尽早发现问题。
-- **定期审查和重构测试**：定期审查测试以删除过时的测试并重构[片状测试](https://inaodeng.com/zh-cn/wiki/flaky-test/)以提高稳定性。 通过遵循这些实践，您可以增强端到端测试的可靠性和稳健性，从而获得更加稳定和值得信赖的自动化套件。
+- **定期审查和重构测试**：定期审查测试以删除过时的测试并重构[片状测试](/zh-cn/wiki/flaky-test/)以提高稳定性。 通过遵循这些实践，您可以增强端到端测试的可靠性和稳健性，从而获得更加稳定和值得信赖的自动化套件。
 
 #### 克服不同环境中测试挑战的策略是什么？
 
 为了克服在不同环境中进行测试的挑战，请考虑以下策略：
 
 - **环境奇偶校验**：通过使用 Terraform 或 Ansible 等基础设施即代码工具来努力实现跨环境的一致性。这确保了配置是受版本控制的，并且可以在开发、登台和生产环境中复制。
-- **容器化**：利用容器和 Docker 等工具来封装应用程序依赖项。这允许跨环境保持一致的行为，并简化 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸过程。
-- **服务虚拟化**：当外部服务或 [API](https://inaodeng.com/zh-cn/wiki/api/) 并非在所有环境中可用时，请使用服务虚拟化来模仿它们的行为。这允许测试在不依赖于外部因素的情况下运行。
+- **容器化**：利用容器和 Docker 等工具来封装应用程序依赖项。这允许跨环境保持一致的行为，并简化 [环境搭建](/zh-cn/wiki/setup/) 和拆卸过程。
+- **服务虚拟化**：当外部服务或 [API](/zh-cn/wiki/api/) 并非在所有环境中可用时，请使用服务虚拟化来模仿它们的行为。这允许测试在不依赖于外部因素的情况下运行。
 - **功能切换**：实现功能切换以在不同环境中启用或禁用功能。这允许在类似生产的环境中进行测试，而不会将未完成的功能暴露给最终用户。
-- **数据管理**：使用工具或脚本来管理和播种[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，确保测试拥有在任何环境中运行所需的数据。这可以包括匿名化生产数据以在较低环境中使用。
+- **数据管理**：使用工具或脚本来管理和播种[测试数据](/zh-cn/wiki/test-data/)，确保测试拥有在任何环境中运行所需的数据。这可以包括匿名化生产数据以在较低环境中使用。
 - **监控和日志记录**：实施强大的监控和日志记录，以快速识别和解决特定于环境的问题。
 - **配置管理**：外部化配置并使用环境变量或配置文件来管理特定于环境的设置。
 - **持续集成 (CI)**：尽早并经常进行集成，在部署到生产之前使用 CI 管道在受控环境中测试更改。
-- **自动化部署**：自动化部署流程以减少人为错误并确保跨环境的应用程序部署一致。 通过采用这些策略，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以减轻与环境差异相关的风险，并确保更可靠和一致的测试结果。
+- **自动化部署**：自动化部署流程以减少人为错误并确保跨环境的应用程序部署一致。 通过采用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以减轻与环境差异相关的风险，并确保更可靠和一致的测试结果。
 
 - **环境奇偶校验**：通过使用 Terraform 或 Ansible 等基础设施即代码工具来努力实现跨环境的一致性。这确保了配置是受版本控制的，并且可以在开发、登台和生产环境中复制。
-- **容器化**：利用容器和 Docker 等工具来封装应用程序依赖项。这允许跨环境保持一致的行为，并简化 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸过程。
-- **服务虚拟化**：当外部服务或[API](https://inaodeng.com/zh-cn/wiki/api/) 并非在所有环境中可用时，请使用服务虚拟化来模仿它们的行为。这允许测试在不依赖于外部因素的情况下运行。
+- **容器化**：利用容器和 Docker 等工具来封装应用程序依赖项。这允许跨环境保持一致的行为，并简化 [环境搭建](/zh-cn/wiki/setup/) 和拆卸过程。
+- **服务虚拟化**：当外部服务或[API](/zh-cn/wiki/api/) 并非在所有环境中可用时，请使用服务虚拟化来模仿它们的行为。这允许测试在不依赖于外部因素的情况下运行。
 - **功能切换**：实现功能切换以在不同环境中启用或禁用功能。这允许在类似生产的环境中进行测试，而不会将未完成的功能暴露给最终用户。
-- **数据管理**：使用工具或脚本来管理和播种[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)，确保测试拥有在任何环境中运行所需的数据。这可以包括匿名化生产数据以在较低环境中使用。
+- **数据管理**：使用工具或脚本来管理和播种[测试数据](/zh-cn/wiki/test-data/)，确保测试拥有在任何环境中运行所需的数据。这可以包括匿名化生产数据以在较低环境中使用。
 - **监控和日志记录**：实施强大的监控和日志记录，以快速识别和解决特定于环境的问题。
 - **配置管理**：外部化配置并使用环境变量或配置文件来管理特定于环境的设置。
 - **持续集成 (CI)**：尽早并经常进行集成，在部署到生产之前使用 CI 管道在受控环境中测试更改。
@@ -490,10 +490,10 @@ Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 
 
 #### 如何管理端到端测试中的数据依赖性？
 
-管理[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 中的数据依赖性涉及确保测试能够访问必要的数据状态以准确执行[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)。以下是一些策略：
+管理[端到端测试](/zh-cn/wiki/end-to-end-testing/) 中的数据依赖性涉及确保测试能够访问必要的数据状态以准确执行[测试场景](/zh-cn/wiki/test-scenario/)。以下是一些策略：
 
-- **使用[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)管理工具**：实现可以根据需要创建、管理和销毁测试数据的工具。
-- **数据[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 脚本**：编写脚本以在测试之前和之后设置和拆除数据。这确保了测试的一致起始状态。
+- **使用[测试数据](/zh-cn/wiki/test-data/)管理工具**：实现可以根据需要创建、管理和销毁测试数据的工具。
+- **数据[环境搭建](/zh-cn/wiki/setup/) 脚本**：编写脚本以在测试之前和之后设置和拆除数据。这确保了测试的一致起始状态。
 
 设置测试数据（）；
   runEndToEndTests();
@@ -502,14 +502,14 @@ Docker 通过为[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/) 
 - **Service Virtualization**: Simulate services that provide data, allowing tests to run independently of real data sources.
 - **Database Sandboxing**: Create isolated database instances for testing to avoid conflicts with other tests or environments.
 - **Data Factories**: Use data factory patterns to generate required data on-the-fly.
-```ts
+  ```ts
   const user = UserDataFactory.create();
-```
-- **版本控制[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)** ：将测试数据与测试脚本一起存储在版本控制中，以保持数据测试脚本的一致性。
+  ```
+- **版本控制[测试数据](/zh-cn/wiki/test-data/)** ：将测试数据与测试脚本一起存储在版本控制中，以保持数据测试脚本的一致性。
 - **数据刷新机制**：实施定期从已知状态或生产快照刷新数据的机制。
 - **环境管理**：确保每个测试环境都有自己的一组数据，减少交叉污染的风险。
-- **[API](https://inaodeng.com/zh-cn/wiki/api/) 数据操作端点**：公开专门用于测试数据操作的 API，允许测试准备自己的数据状态。
+- **[API](/zh-cn/wiki/api/) 数据操作端点**：公开专门用于测试数据操作的 API，允许测试准备自己的数据状态。
 - **解耦测试**：将测试设计为独立的，最大限度地减少可能导致级联测试失败的依赖链。 通过仔细管理数据依赖性，您可以提高端到端测试的可靠性和稳定性，使其更可预测且更易于维护。
 
-- **使用[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/)管理工具**：实施可以根据需要创建、管理和销毁测试数据的工具。
-- **数据[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 脚本**：编写脚本以在测试之前和之后设置和拆除数据。这确保了测试的一致起始状态。
+- **使用[测试数据](/zh-cn/wiki/test-data/)管理工具**：实施可以根据需要创建、管理和销毁测试数据的工具。
+- **数据[环境搭建](/zh-cn/wiki/setup/) 脚本**：编写脚本以在测试之前和之后设置和拆除数据。这确保了测试的一致起始状态。

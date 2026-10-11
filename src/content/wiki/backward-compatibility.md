@@ -17,7 +17,7 @@ order: 0
 <!-- TOC START -->
 
 - [向后兼容性 ｜ Backward Compatibility](#向后兼容性--backward-compatibility)
-- [关于向后兼容性的问题](#关于向后兼容性的问题)
+  - [关于向后兼容性的问题](#关于向后兼容性的问题)
   - [基础知识和重要性](#基础知识和重要性)
     - [软件中的向后兼容性是什么？](#软件中的向后兼容性是什么)
     - [为什么软件开发中向后兼容性很重要？](#为什么软件开发中向后兼容性很重要)
@@ -40,7 +40,7 @@ order: 0
 
 在软件测试的背景下，向后兼容性指的是软件应用程序或系统能够有效地与自身早期版本一起工作，或正确地与旧的输入数据格式、配置或硬件接口。本质上，当一个软件产品具有向后兼容性时，它确保使用旧版本的用户在与新版本迭代交互时不会遇到意外的问题或故障。在软件升级或发布期间测试向后兼容性是至关重要的，以确保引入的更改不会对现有用户产生负面影响或破坏已建立的功能。这种做法优先考虑用户体验，确保软件代际之间的无缝过渡和交互。
 
-# 关于向后兼容性的问题
+## 关于向后兼容性的问题
 
 ## 基础知识和重要性
 
@@ -58,14 +58,14 @@ order: 0
 - 使用虚拟机或容器在不同环境和版本中进行测试。
 - 将向后兼容性检查纳入 CI/CD 流程中。
 
-```JavaScript
-// 在自动化测试中进行简单向后兼容性检查的示例
-function testBackwardCompatibility(newVersionFunction) {
-  const oldVersionResult = oldVersionFunction(input);
-  const newVersionResult = newVersionFunction(input);
-  assert.equal(newVersionResult, oldVersionResult, 'The function is not backward compatible');
-}
-```
+  ```JavaScript
+  // 在自动化测试中进行简单向后兼容性检查的示例
+  function testBackwardCompatibility(newVersionFunction) {
+    const oldVersionResult = oldVersionFunction(input);
+    const newVersionResult = newVersionFunction(input);
+    assert.equal(newVersionResult, oldVersionResult, 'The function is not backward compatible');
+  }
+  ```
 
 保持向后兼容性是在创新和稳定性之间进行微妙平衡，需要仔细规划和测试，以确保进步不会破坏现有用户的工作流程。
 

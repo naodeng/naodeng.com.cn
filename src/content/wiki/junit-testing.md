@@ -51,10 +51,10 @@ JUnit 是一个 Java 测试框架，使开发人员能够制作和运行自动�
 
 #### 什么是 JUnit 测试？
 
-JUnit 是一个针对 Java 的 **[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 框架**，旨在通过提供注释和断言来创建 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 来简化测试过程。它是开发人员独立于应用程序的其余部分**验证软件的每个单元**的重要工具。
-  基本的 JUnit [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 是使用 `@Test` 注释来构造的，以指示测试方法。这是一个例子：
+JUnit 是一个针对 Java 的 **[单元测试](/zh-cn/wiki/unit-testing/) 框架**，旨在通过提供注释和断言来创建 [测试用例](/zh-cn/wiki/test-case/) 来简化测试过程。它是开发人员独立于应用程序的其余部分**验证软件的每个单元**的重要工具。
+  基本的 JUnit [测试用例](/zh-cn/wiki/test-case/) 是使用 `@Test` 注释来构造的，以指示测试方法。这是一个例子：
 
-```
+  ```
   import static org.junit.Assert.*;
   import org.junit.Test;
   public class ExampleTest {
@@ -65,8 +65,8 @@ JUnit 是一个针对 Java 的 **[单元测试](https://inaodeng.com/zh-cn/wiki/
           assertEquals("Values should be equal", expected, actual);
       }
   }
-```
-为了处理[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)和清理操作，JUnit分别提供了`@Before`和`@After`注释，它们分别对应于`setup()`和`teardown()`方法。这些在每个测试方法之前和之后执行。
+  ```
+为了处理[环境搭建](/zh-cn/wiki/setup/)和清理操作，JUnit分别提供了`@Before`和`@After`注释，它们分别对应于`setup()`和`teardown()`方法。这些在每个测试方法之前和之后执行。
 
 ```
   import org.junit.After;
@@ -83,47 +83,47 @@ JUnit 是一个针对 Java 的 **[单元测试](https://inaodeng.com/zh-cn/wiki/
       }
   }
 ```
-JUnit 还支持使用`@Test` 注释的`expected` 属性和`assertThrows` 方法进行**异常测试**。此外，**参数化测试**允许使用不同的输入运行相同的测试，并且**[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**启用多个测试类的分组。
+JUnit 还支持使用`@Test` 注释的`expected` 属性和`assertThrows` 方法进行**异常测试**。此外，**参数化测试**允许使用不同的输入运行相同的测试，并且**[测试套件](/zh-cn/wiki/test-suite/)**启用多个测试类的分组。
   要从命令行运行测试，请使用 Maven 或 Gradle 等构建工具，或 JUnit 控制台启动器。模拟框架（例如 Mockito）与 JUnit 集成以模拟对象和行为以进行隔离测试。
-  **[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)** 工具（例如 JaCoCo）可以与 JUnit 一起使用来测量测试所执行的代码范围，从而确保彻底的测试。
+  **[代码覆盖率](/zh-cn/wiki/code-coverage/)** 工具（例如 JaCoCo）可以与 JUnit 一起使用来测量测试所执行的代码范围，从而确保彻底的测试。
 
 #### 为什么 JUnit 测试在软件开发中很重要？
 
-[JUnit 测试](https://inaodeng.com/zh-cn/wiki/junit-testing/) 在软件开发中至关重要，原因如下：
+[JUnit 测试](/zh-cn/wiki/junit-testing/) 在软件开发中至关重要，原因如下：
 
 - **确保回归安全**：自动化 JUnit 测试可快速识别代码更改后的意外副作用或功能回归，从而保障软件的稳定性。
 - **促进持续集成**：JUnit 测试是 CI/CD 管道不可或缺的一部分，允许自动构建和测试，从而加快反馈和发布周期。
-- **促进[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)**：JUnit有利于TDD实践，在实际代码之前编写测试，确保开发专注于满足需求和改进设计。
+- **促进[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：JUnit有利于TDD实践，在实际代码之前编写测试，确保开发专注于满足需求和改进设计。
 - **文档**：JUnit 测试充当实时文档，提供对系统预期行为的见解，使开发人员更容易理解和维护代码库。
 - **重构信心**：通过一套全面的 JUnit 测试，开发人员可以充满信心地重构代码，因为他们知道测试将捕获与预期行为的任何差异。
 - **调试辅助**：当测试失败时，它们会查明问题的根源，从而减少调试所花费的时间。
-- **质量指标**：JUnit 测试有助于各种质量指标，例如 [代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)，可用于评估和提高软件的质量。
-- **开发人员生产力**：使用 JUnit 自动执行重复测试任务使开发人员能够专注于软件开发中更复杂和更具创造性的方面。 总之，[JUnit 测试](https://inaodeng.com/zh-cn/wiki/junit-testing/) 是现代软件开发中不可或缺的一部分，它提供了一个安全网，可以快速可靠地交付高质量的软件。
+- **质量指标**：JUnit 测试有助于各种质量指标，例如 [代码覆盖率](/zh-cn/wiki/code-coverage/)，可用于评估和提高软件的质量。
+- **开发人员生产力**：使用 JUnit 自动执行重复测试任务使开发人员能够专注于软件开发中更复杂和更具创造性的方面。 总之，[JUnit 测试](/zh-cn/wiki/junit-testing/) 是现代软件开发中不可或缺的一部分，它提供了一个安全网，可以快速可靠地交付高质量的软件。
 
 #### JUnit 测试的主要特性是什么？
 
 JUnit 的主要功能包括：
 
 - **基于注释的测试配置**：`@Test`、`@Before`、`@After`、`@BeforeClass` 和 `@AfterClass` 等注释提供了一种清晰简洁的方法来设置测试及其环境。
-- **[测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/)**：启用测试的执行并提供有关测试结果的反馈。 JUnit 运行器可以与各种构建工具和 IDE 集成。
-- **夹具**：用 `@Before` 和 `@After` 注释的方法有助于通过在每次测试之前和之后运行代码来创建一致的 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。
-- **[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**：使用`@RunWith` 和`@Suite` 注释将多个测试类分组在一起。
+- **[测试运行者](/zh-cn/wiki/test-runner/)**：启用测试的执行并提供有关测试结果的反馈。 JUnit 运行器可以与各种构建工具和 IDE 集成。
+- **夹具**：用 `@Before` 和 `@After` 注释的方法有助于通过在每次测试之前和之后运行代码来创建一致的 [测试环境](/zh-cn/wiki/test-environment/)。
+- **[测试套件](/zh-cn/wiki/test-suite/)**：使用`@RunWith` 和`@Suite` 注释将多个测试类分组在一起。
 - **参数化测试**：允许使用 `@Parameterized` 运行程序使用不同的参数集运行相同的测试。
-- **假设**：使用`Assume` 方法根据某些条件提供条件[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
+- **假设**：使用`Assume` 方法根据某些条件提供条件[测试执行](/zh-cn/wiki/test-execution/)。
 - **规则**：提供一种灵活的方式来向测试方法或测试类添加行为，例如处理临时文件夹或预期异常。
 - **Hamcrest 匹配器**：提供匹配器对象库以获得更易读的断言。
 - **超时**：指定测试运行的时间限制，确保测试不会无限期挂起。
 - **类别**：使用 `@Category` 将测试分为“快”、“慢”或“集成”等组。
 - **测试发现**：根据命名约定和注释自动检测并运行测试。
 - **IDE 集成**：与流行的 IDE 无缝集成以运行和调试测试。
-- **插件和扩展**：支持通过第三方库和自定义运行程序扩展功能。 JUnit 的设计和功能促进了 [单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 的结构化且可维护的方法，使其成为 Java 开发人员的基石工具。
+- **插件和扩展**：支持通过第三方库和自定义运行程序扩展功能。 JUnit 的设计和功能促进了 [单元测试](/zh-cn/wiki/unit-testing/) 的结构化且可维护的方法，使其成为 Java 开发人员的基石工具。
 
 - **基于注释的测试配置**：`@Test`、`@Before`、`@After`、`@BeforeClass` 和 `@AfterClass` 等注释提供了一种清晰简洁的方法来设置测试及其环境。
-- **[测试运行者](https://inaodeng.com/zh-cn/wiki/test-runner/)**：启用测试的执行并提供有关测试结果的反馈。 JUnit 运行器可以与各种构建工具和 IDE 集成。
-- **夹具**：用 `@Before` 和 `@After` 注释的方法有助于通过在每次测试之前和之后运行代码来创建一致的 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。
-- **[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)**：使用`@RunWith` 和`@Suite` 注释将多个测试类分组在一起。
+- **[测试运行者](/zh-cn/wiki/test-runner/)**：启用测试的执行并提供有关测试结果的反馈。 JUnit 运行器可以与各种构建工具和 IDE 集成。
+- **夹具**：用 `@Before` 和 `@After` 注释的方法有助于通过在每次测试之前和之后运行代码来创建一致的 [测试环境](/zh-cn/wiki/test-environment/)。
+- **[测试套件](/zh-cn/wiki/test-suite/)**：使用`@RunWith` 和`@Suite` 注释将多个测试类分组在一起。
 - **参数化测试**：允许使用 `@Parameterized` 运行器运行具有不同参数集的相同测试。
-- **假设**：使用 `Assume` 方法根据某些条件提供条件 [测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。
+- **假设**：使用 `Assume` 方法根据某些条件提供条件 [测试执行](/zh-cn/wiki/test-execution/)。
 - **规则**：提供一种灵活的方式来向测试方法或测试类添加行为，例如处理临时文件夹或预期异常。
 - **Hamcrest 匹配器**：提供匹配器对象库以获得更易读的断言。
 - **超时**：指定测试运行的时间限制，确保测试不会无限期挂起。
@@ -134,68 +134,68 @@ JUnit 的主要功能包括：
 
 #### JUnit 测试如何提高代码质量？
 
-[JUnit 测试](https://inaodeng.com/zh-cn/wiki/junit-testing/) 通过强制执行**严格的方法**来编写和维护代码，从而提高代码质量。它鼓励开发人员编写**可测试、模块化**和**可维护**代码，因为测试需要能够独立运行并且不依赖于外部系统。这通常会带来**更好的软件设计**并遵守**SOLID原则**。
-  **[测试驱动开发](https://inaodeng.com/zh-cn/wiki/test-driven-development/) (TDD)** 的实践通常由 JUnit 支持，可确保编写代码时考虑到测试，这通常会导致更少的 [bugs](https://inaodeng.com/zh-cn/wiki/bug/)。首先编写测试有助于在实现之前理解需求，这可以产生更**健壮和可靠的**代码。
+[JUnit 测试](/zh-cn/wiki/junit-testing/) 通过强制执行**严格的方法**来编写和维护代码，从而提高代码质量。它鼓励开发人员编写**可测试、模块化**和**可维护**代码，因为测试需要能够独立运行并且不依赖于外部系统。这通常会带来**更好的软件设计**并遵守**SOLID原则**。
+  **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** 的实践通常由 JUnit 支持，可确保编写代码时考虑到测试，这通常会导致更少的 [bugs](/zh-cn/wiki/bug/)。首先编写测试有助于在实现之前理解需求，这可以产生更**健壮和可靠的**代码。
   JUnit 测试充当代码预期行为的**文档**，使其他人更容易理解功能并让开发人员充满信心地**重构**。当代码更改时，JUnit 测试可以快速指示更改是否**破坏了现有功能**，从而允许**立即纠正**。
-  [自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/) 与 JUnit 还促进了**持续集成**和**持续交付**实践，其中测试在代码签入时自动运行，确保新的更改不会引入回归。
+  [自动化测试](/zh-cn/wiki/automated-testing/) 与 JUnit 还促进了**持续集成**和**持续交付**实践，其中测试在代码签入时自动运行，确保新的更改不会引入回归。
   最后，JUnit 测试可以集成到**构建工具**和**IDE**中，在开发过程中提供即时反馈，并减少调试和修复错误所花费的时间，这有助于提高开发周期的效率和提高整体代码质量。
 
 #### 断言在 JUnit 测试中的作用是什么？
 
-JUnit 中的断言在验证 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的预期结果方面发挥着关键作用。它们用于**断言**某个条件为真。如果条件为 false，则测试失败，表明代码未按预期运行。
-  以下是 JUnit [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 中断言的基本示例：
+JUnit 中的断言在验证 [测试用例](/zh-cn/wiki/test-case/) 的预期结果方面发挥着关键作用。它们用于**断言**某个条件为真。如果条件为 false，则测试失败，表明代码未按预期运行。
+  以下是 JUnit [测试用例](/zh-cn/wiki/test-case/) 中断言的基本示例：
 
-```
+  ```
   assertEquals("Expected text", actualText);
-```
+  ```
 在此行中，`assertEquals` 检查`actualText` 是否与字符串`"Expected text"` 匹配。如果没有，测试将会失败。
-  断言通过将代码执行的[实际结果](https://inaodeng.com/zh-cn/wiki/actual-result/) 与[预期结果](https://inaodeng.com/zh-cn/wiki/expected-result/) 进行比较，有助于查明缺陷。它们充当[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 的**核心检查点**，提供了一种自动化[验证 ](https://inaodeng.com/zh-cn/wiki/verification/) 流程的方法。如果没有断言，[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 将无法确认被测代码的正确性，从而导致测试无效。
-  JUnit 提供了多种断言方法，例如 `assertTrue`、`assertNull`、`assertThrows` 等，每种断言方法都是针对特定场景而设计的。这些方法增强了测试的可读性和[可维护性](https://inaodeng.com/zh-cn/wiki/maintainability/)，使自动化工程师能够编写简洁且富有表现力的[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)。
+  断言通过将代码执行的[实际结果](/zh-cn/wiki/actual-result/) 与[预期结果](/zh-cn/wiki/expected-result/) 进行比较，有助于查明缺陷。它们充当[测试自动化](/zh-cn/wiki/test-automation/) 的**核心检查点**，提供了一种自动化[验证 ](/zh-cn/wiki/verification/) 流程的方法。如果没有断言，[测试用例](/zh-cn/wiki/test-case/) 将无法确认被测代码的正确性，从而导致测试无效。
+  JUnit 提供了多种断言方法，例如 `assertTrue`、`assertNull`、`assertThrows` 等，每种断言方法都是针对特定场景而设计的。这些方法增强了测试的可读性和[可维护性](/zh-cn/wiki/maintainability/)，使自动化工程师能够编写简洁且富有表现力的[测试用例](/zh-cn/wiki/test-case/)。
   有效使用断言是确保测试稳健并为代码功能提供有意义的反馈的关键。它们对于持续集成过程至关重要，其中自动化测试必须可靠地检测新更改引入的任何回归或问题。
 
 ### JUnit 测试用例
 
 #### 如何编写基本的 JUnit 测试用例？
 
-要编写基本的 JUnit [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，请按照以下步骤操作：
+要编写基本的 JUnit [测试用例](/zh-cn/wiki/test-case/)，请按照以下步骤操作：
 
 1. **导入**必要的 JUnit 包：
 
-```
+  ```
   import static org.junit.Assert.*;
   import org.junit.Test;
-```
+  ```
 
 1. **定义一个类**包含您的测试方法。该类不需要扩展任何特定的类或实现 JUnit 4 及更高版本的接口。
 
-```
+  ```
   public class ExampleTests {
       // Test methods will go here
   }
-```
+  ```
 
 1. **注释**你的测试方法 `@Test` 。每个方法代表一个测试用例。
 
-```
+  ```
   @Test
   public void testSomething() {
       // Your test code here
   }
-```
+  ```
 
 1. **编写测试逻辑**在你的测试方法中。使用断言来验证预期结果。
 
-```
+  ```
   @Test
   public void testAddition() {
       int sum = 1 + 1;
       assertEquals("Addition result should be 2", 2, sum);
   }
-```
+  ```
 
-1. **运行测试**使用 IDE 的内置 JUnit 测试运行程序或通过命令行。 以下是基本 JUnit [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 的完整示例：
+1. **运行测试**使用 IDE 的内置 JUnit 测试运行程序或通过命令行。 以下是基本 JUnit [测试用例](/zh-cn/wiki/test-case/) 的完整示例：
 
-```
+  ```
   import static org.junit.Assert.*;
   import org.junit.Test;
   public class CalculatorTests {
@@ -206,7 +206,7 @@ JUnit 中的断言在验证 [测试用例](https://inaodeng.com/zh-cn/wiki/test-
           assertEquals("2 + 3 should equal 5", 5, result);
       }
   }
-```
+  ```
 请记住**保持测试独立**并**每个测试专注于一项特定功能**。使用有意义的测试方法名称来传达测试的意图。
 
 1. **导入**必要的 JUnit 包：
@@ -238,33 +238,33 @@ JUnit 通过 `org.junit.Assert` 类提供一组断言方法来验证测试条件
 
 #### 如何在 JUnit 中使用 setup() 和teardown() 方法？
 
-在 JUnit 中，`setup()` 和 `teardown()` 方法分别用于在每个 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 之前和之后准备和清理 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)。这些方法在 JUnit 5 中使用 `@BeforeEach` 和 `@AfterEach` 进行注释（以前在 JUnit 4 中使用 `@Before` 和 `@After`）。
+在 JUnit 中，`setup()` 和 `teardown()` 方法分别用于在每个 [测试用例](/zh-cn/wiki/test-case/) 之前和之后准备和清理 [测试环境](/zh-cn/wiki/test-environment/)。这些方法在 JUnit 5 中使用 `@BeforeEach` 和 `@AfterEach` 进行注释（以前在 JUnit 4 中使用 `@Before` 和 `@After`）。
   **`@BeforeEach`**（或`@Before`）：
-  此方法在每个[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)之前运行，确保为每个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)提供新的上下文。它非常适合初始化常见对象或配置已知状态。
+  此方法在每个[测试执行](/zh-cn/wiki/test-execution/)之前运行，确保为每个[测试用例](/zh-cn/wiki/test-case/)提供新的上下文。它非常适合初始化常见对象或配置已知状态。
 
-```
+  ```
   @BeforeEach
   public void setup() {
       // Initialization code here
   }
-```
+  ```
 **`@AfterEach`**（或`@After`）：
   此方法在每次测试后执行，使其适合释放资源或重置静态数据等清理活动。
 
-```
+  ```
   @AfterEach
   public void teardown() {
       // Cleanup code here
   }
-```
-使用`setup()` 和`teardown()` 方法可确保测试相互隔离且不会相互干扰，这对于获得准确可靠的测试结果至关重要。它们有助于维护可预测的测试状态，并可以减少 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) 之间的代码重复。
+  ```
+使用`setup()` 和`teardown()` 方法可确保测试相互隔离且不会相互干扰，这对于获得准确可靠的测试结果至关重要。它们有助于维护可预测的测试状态，并可以减少 [测试用例](/zh-cn/wiki/test-case/) 之间的代码重复。
 
 #### JUnit 中 @Test 注解的用途是什么？
 
-JUnit 中的`@Test` 注释用于**指示**某个方法是**[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)**。当 JUnit 运行时，它**搜索**带有 `@Test` 注释的方法，并将它们作为单独的测试**执行**。此注释对于将测试方法与辅助方法或[测试类](https://inaodeng.com/zh-cn/wiki/test-class/) 中的[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)/teardown 方法进行**分离**至关重要。
+JUnit 中的`@Test` 注释用于**指示**某个方法是**[测试用例](/zh-cn/wiki/test-case/)**。当 JUnit 运行时，它**搜索**带有 `@Test` 注释的方法，并将它们作为单独的测试**执行**。此注释对于将测试方法与辅助方法或[测试类](/zh-cn/wiki/test-class/) 中的[环境搭建](/zh-cn/wiki/setup/)/teardown 方法进行**分离**至关重要。
   下面是使用 `@Test` 注释的 JUnit 测试方法的简单示例：
 
-```
+  ```
   import org.junit.Test;
   import static org.junit.Assert.*;
   public class ExampleTest {
@@ -273,9 +273,9 @@ JUnit 中的`@Test` 注释用于**指示**某个方法是**[测试用例](https:
           assertEquals(4, 2 + 2);
       }
   }
-```
-在此示例中，`testAddition` 方法将被 JUnit **识别**并作为 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/) **运行**，因为它使用 `@Test` 进行注释。如果没有此注释，JUnit 将不知道要运行哪些方法作为测试。
-  此外，`@Test` 注释可以与**可选参数**一起使用，例如 `expected` 来**测试预期的异常**，或者 `timeout` 来**失败**（如果测试时间超过指定的毫秒数）。这提供了一种通过附加行为规范来处理更复杂的 [测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)** 的方法。
+  ```
+在此示例中，`testAddition` 方法将被 JUnit **识别**并作为 [测试用例](/zh-cn/wiki/test-case/) **运行**，因为它使用 `@Test` 进行注释。如果没有此注释，JUnit 将不知道要运行哪些方法作为测试。
+  此外，`@Test` 注释可以与**可选参数**一起使用，例如 `expected` 来**测试预期的异常**，或者 `timeout` 来**失败**（如果测试时间超过指定的毫秒数）。这提供了一种通过附加行为规范来处理更复杂的 [测试场景](/zh-cn/wiki/test-scenario/)** 的方法。
 
 #### 如何在 JUnit 中测试异常？
 
@@ -295,29 +295,29 @@ JUnit 中的`@Test` 注释用于**指示**某个方法是**[测试用例](https:
 在此示例中，当尝试使用 `Integer.parseInt()` 解析非数字字符串时，`NumberFormatException.class` 是预期的异常。 lambda 表达式包含预期引发异常的代码。 `assertThrows` 方法返回异常，允许对异常消息或其他属性进行进一步断言。
   对于 JUnit 4，将 `@Test` 注释与 `expected` 属性结合使用：
 
-```
+  ```
   @Test(expected = NumberFormatException.class)
   public void whenExceptionThrown_thenExpectationSatisfied() {
       Integer.parseInt("One");
   }
-```
+  ```
 此方法直接在 `@Test` 注释中指定预期的异常，但不允许对异常进行其他断言。使用`assertThrows` 获得更大的灵活性和详细的异常测试。
 
 ### 高级概念
 
 #### JUnit 中的参数化测试是什么？
 
-JUnit 中的 [参数化测试](https://inaodeng.com/zh-cn/wiki/parameterized-testing/) 允许您使用不同的输入多次运行相同的测试。当您想要使用各种数据集测试函数而不编写多个[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)时，此技术非常有用。
+JUnit 中的 [参数化测试](/zh-cn/wiki/parameterized-testing/) 允许您使用不同的输入多次运行相同的测试。当您想要使用各种数据集测试函数而不编写多个[测试用例](/zh-cn/wiki/test-case/)时，此技术非常有用。
   JUnit 5 引入了 `@ParameterizedTest` 注释来表示参数化测试。要提供不同的值，您可以使用各种源，例如`@ValueSource`、`@EnumSource`、`@MethodSource` 或`@CsvSource`。这些注释放置在测试方法上方，并为参数化测试的每次调用提供参数。
   以下是使用 `@ValueSource` 将不同整数传递给测试方法的示例：
 
-```
+  ```
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3})
   void testWithDifferentValues(int argument) {
       assertTrue(argument > 0);
   }
-```
+  ```
 对于更复杂的场景，`@MethodSource` 可用于引用返回参数流的方法：
 
 ```
@@ -330,20 +330,20 @@ JUnit 中的 [参数化测试](https://inaodeng.com/zh-cn/wiki/parameterized-tes
       return Stream.of("apple", "banana", "cherry");
   }
 ```
-参数化测试有助于**减少代码重复**，并且可以通过将数据集与测试逻辑清楚地分开来更轻松地**识别边缘情况**。在处理应在一系列输入中表现一致的函数时，它们是实现彻底[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 的重要工具。
+参数化测试有助于**减少代码重复**，并且可以通过将数据集与测试逻辑清楚地分开来更轻松地**识别边缘情况**。在处理应在一系列输入中表现一致的函数时，它们是实现彻底[测试覆盖率](/zh-cn/wiki/test-coverage/) 的重要工具。
 
 #### 如何使用 JUnit 进行集成测试？
 
-JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件之间的交互，从而有效地用于[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。要使用 JUnit 进行集成测试：
+JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件之间的交互，从而有效地用于[集成测试](/zh-cn/wiki/integration-testing/)。要使用 JUnit 进行集成测试：
 
-1. **组合各个单元**：创建[测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)，将多个工作单元组合在一起以验证它们的正确交互。这可以包括测试 [数据库](https://inaodeng.com/zh-cn/wiki/database/) 交互、网络调用或模块之间的集成。
-2. **使用`@Before`和`@After`注释**：利用这些注释来设置和拆除集成测试所需的前提条件和[后置条件](https://inaodeng.com/zh-cn/wiki/postcondition/)，例如启动服务器或建立[数据库](https://inaodeng.com/zh-cn/wiki/database/)连接。
-3. **模拟外部依赖**：如果集成测试涉及到外部服务，可以使用Mockito等模拟框架来模拟这些服务。这隔离了[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)并确保测试不依赖于外部因素。
-4. **测试事务行为**：测试[数据库](https://inaodeng.com/zh-cn/wiki/database/) 交互时，使用`@Transactional` 确保测试在测试后可回滚的事务中运行，从而保持[数据库](https://inaodeng.com/zh-cn/wiki/database/) 完整性。
+1. **组合各个单元**：创建[测试用例](/zh-cn/wiki/test-case/)，将多个工作单元组合在一起以验证它们的正确交互。这可以包括测试 [数据库](/zh-cn/wiki/database/) 交互、网络调用或模块之间的集成。
+2. **使用`@Before`和`@After`注释**：利用这些注释来设置和拆除集成测试所需的前提条件和[后置条件](/zh-cn/wiki/postcondition/)，例如启动服务器或建立[数据库](/zh-cn/wiki/database/)连接。
+3. **模拟外部依赖**：如果集成测试涉及到外部服务，可以使用Mockito等模拟框架来模拟这些服务。这隔离了[测试环境](/zh-cn/wiki/test-environment/)并确保测试不依赖于外部因素。
+4. **测试事务行为**：测试[数据库](/zh-cn/wiki/database/) 交互时，使用`@Transactional` 确保测试在测试后可回滚的事务中运行，从而保持[数据库](/zh-cn/wiki/database/) 完整性。
 5. **利用 Spring 的测试支持**：如果使用 Spring，请利用 Spring Test Context Framework，该框架提供 `@SpringBootTest` 等注释来加载应用程序上下文并测试 Spring 组件的集成。
 6. **使用构建工具运行**：使用 Maven 或 Gradle 等工具将 JUnit 测试集成到构建过程中，以自动运行集成测试作为持续集成管道的一部分。
 
-```
+  ```
   @SpringBootTest
   public class UserIntegrationTest {
       @Autowired
@@ -355,15 +355,15 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
           assertNotNull(userService.findUser(user.getId()));
       }
   }
-```
-通过遵循这些实践，您可以使用 JUnit 执行全面的[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)，确保应用程序的组合部分按预期协同工作。
+  ```
+通过遵循这些实践，您可以使用 JUnit 执行全面的[集成测试](/zh-cn/wiki/integration-testing/)，确保应用程序的组合部分按预期协同工作。
 
 #### JUnit 中测试套件的概念是什么？
 
-在 JUnit 中，**[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)** 是 [测试用例](https://inaodeng.com/zh-cn/wiki/test-case/)、[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 或两者的集合，捆绑在一起以聚合形式运行测试。 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 促进相关测试的组织和执行，从而更容易管理和理解测试工作的范围。
-  要定义[测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/)，请使用`@RunWith` 和`@Suite` 注释。 `@Suite` 注释允许您指定属于套件一部分的类。这是一个简单的例子：
+在 JUnit 中，**[测试套件](/zh-cn/wiki/test-suite/)** 是 [测试用例](/zh-cn/wiki/test-case/)、[测试套件](/zh-cn/wiki/test-suite/) 或两者的集合，捆绑在一起以聚合形式运行测试。 [测试套件](/zh-cn/wiki/test-suite/) 促进相关测试的组织和执行，从而更容易管理和理解测试工作的范围。
+  要定义[测试套件](/zh-cn/wiki/test-suite/)，请使用`@RunWith` 和`@Suite` 注释。 `@Suite` 注释允许您指定属于套件一部分的类。这是一个简单的例子：
 
-```
+  ```
   import org.junit.runner.RunWith;
   import org.junit.runners.Suite;
   @RunWith(Suite.class)
@@ -374,9 +374,9 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
   public class ExampleTestSuite {
       // This class remains empty, it is used only as a holder for the above annotations
   }
-```
-运行 [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 会执行指定类中的所有测试。当您想要对测试进行逻辑分组时，例如按功能或层（例如，单元测试、集成测试等），此方法特别有用。它还允许轻松地在构建过程中包含或排除测试。
-  [测试套件](https://inaodeng.com/zh-cn/wiki/test-suite/) 还可以嵌套其他套件，从而实现可以反映项目架构或功能区域的分层结构。这种分层组织有助于管理复杂的[测试场景](https://inaodeng.com/zh-cn/wiki/test-scenario/)，并可用于运行特定的测试子集，例如冒烟测试或回归测试，具体取决于开发周期的需要。
+  ```
+运行 [测试套件](/zh-cn/wiki/test-suite/) 会执行指定类中的所有测试。当您想要对测试进行逻辑分组时，例如按功能或层（例如，单元测试、集成测试等），此方法特别有用。它还允许轻松地在构建过程中包含或排除测试。
+  [测试套件](/zh-cn/wiki/test-suite/) 还可以嵌套其他套件，从而实现可以反映项目架构或功能区域的分层结构。这种分层组织有助于管理复杂的[测试场景](/zh-cn/wiki/test-scenario/)，并可用于运行特定的测试子集，例如冒烟测试或回归测试，具体取决于开发周期的需要。
 
 #### 如何从命令行运行 JUnit 测试？
 
@@ -384,34 +384,32 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
 
 1. **使用`javac` 编译您的测试类**。如果您的源文件位于`src` 目录中并且测试文件位于`test` 目录中，则可以使用如下命令： 将 `junit-4.12.jar` 替换为您正在使用的 JUnit 版本，并根据需要调整源目录和测试目录的路径。
 
-```
+  ```
     javac -cp .:junit-4.12.jar:test test/YourTestClass.java
-```
+  ```
 
-2. **使用`java` 命令和`org.junit.runner.JUnitCore` 运行程序运行测试**。将您的测试类作为参数传递： 再次，将 `junit-4.12.jar` 替换为您的 JUnit jar 文件，将 `YourTestClass` 替换为您的 [测试类](https://inaodeng.com/zh-cn/wiki/test-class/) 的名称。
+2. **使用`java` 命令和`org.junit.runner.JUnitCore` 运行程序运行测试**。将您的测试类作为参数传递： 再次，将 `junit-4.12.jar` 替换为您的 JUnit jar 文件，将 `YourTestClass` 替换为您的 [测试类](/zh-cn/wiki/test-class/) 的名称。
 
-```
+  ```
     java -cp .:junit-4.12.jar:test org.junit.runner.JUnitCore YourTestClass
-```
+  ```
 如果您有多个测试类，则可以通过列出每个测试类并用空格分隔来运行所有测试类。
   对于 **JUnit 5**，由于引入了 Jupiter 引擎，命令略有不同。您需要在类路径中包含`junit-platform-console-standalone.jar`：
 
-```
+  ```
   java -jar junit-platform-console-standalone-1.6.2.jar --class-path test --scan-class-path
-```
+  ```
 将 `junit-platform-console-standalone-1.6.2.jar` 替换为您拥有的版本，并根据需要调整类路径参数。这将自动扫描指定类路径中的测试。
 
 1. **使用`javac`编译您的测试类**。如果您的源文件位于`src` 目录中并且测试文件位于`test` 目录中，则可以使用如下命令： 将 `junit-4.12.jar` 替换为您正在使用的 JUnit 版本，并根据需要调整源目录和测试目录的路径。
 
-```
+  ```
     javac -cp .:junit-4.12.jar:test test/YourTestClass.java
-```
+  ```
 
-2. **使用`java` 命令和`org.junit.runner.JUnitCore` 运行程序运行测试**。将您的测试类作为参数传递： 再次，将 `junit-4.12.jar` 替换为您的 JUnit jar 文件，将 `YourTestClass` 替换为您的 [测试类](https://inaodeng.com/zh-cn/wiki/test-class/) 的名称。
-
-```
+  ```
     java -cp .:junit-4.12.jar:test org.junit.runner.JUnitCore YourTestClass
-```
+  ```
 
 #### 什么是模拟以及它在 JUnit 中如何使用？
 
@@ -428,7 +426,7 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
 
 5. **编写测试**验证被测类在与模拟对象交互时的行为是否符合预期。 这是一个使用 Mockito 的简单示例：
 
-```
+  ```
   import static org.mockito.Mockito.*;
   import org.junit.jupiter.api.Test;
   import org.mockito.Mock;
@@ -449,7 +447,7 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
           assertEquals("Mocked Response", result);
       }
   }
-```
+  ```
 模拟对于以下情况特别有用：
 
 - **隔离测试**：确保单元测试仅关注被测类。
@@ -474,19 +472,19 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
 
 - **写出清晰且具有描述性的测试方法名称**：使用传达测试目的的命名约定，例如 `shouldReturnTrueWhenConditionMet()`。
 - **保持测试集中**：每个测试方法测试一个方面。避免多个彼此无关的断言。
-- **使用 Arrange-Act-Assert 模式**：将测试代码结构化为以下部分：[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) (arrange)、被测方法的调用 (act) 和断言 (assert)。
+- **使用 Arrange-Act-Assert 模式**：将测试代码结构化为以下部分：[环境搭建](/zh-cn/wiki/setup/) (arrange)、被测方法的调用 (act) 和断言 (assert)。
 - **最小化测试依赖性**：每个测试应独立运行，而不依赖于其他测试或特定顺序。
-- **模拟外部依赖项**：使用 Mockito 等模拟框架来隔离工作单元并避免与[数据库](https://inaodeng.com/zh-cn/wiki/database/)、网络或其他服务交互。
+- **模拟外部依赖项**：使用 Mockito 等模拟框架来隔离工作单元并避免与[数据库](/zh-cn/wiki/database/)、网络或其他服务交互。
 - **确保可重复性**：无论运行环境如何，测试都应产生相同的结果。
 - **利用参数化测试**：当使用不同的输入测试相同的代码时，使用参数化测试以避免代码重复。
 - **清理资源**：如果您的测试分配文件或网络连接等资源，请在测试运行后释放它们，最好使用 `@After` 或 `@AfterEach` 方法。
-- **避免测试中的逻辑**：保持测试简单；任何逻辑都可能将 [bugs](https://inaodeng.com/zh-cn/wiki/bug/) 引入测试本身。
+- **避免测试中的逻辑**：保持测试简单；任何逻辑都可能将 [bugs](/zh-cn/wiki/bug/) 引入测试本身。
 - **有效使用断言**：优先使用特定断言（`assertEquals`、`assertNotNull`）而不是通用断言（`assertTrue`）以获得更好的错误消息。
 - **记录不明显的测试逻辑**：如果测试包含一些不平凡的内容，请添加注释来解释为什么有必要。
 - **将测试代码作为生产代码进行审查**：应用相同的代码审查标准来测试代码以保持质量。
 - **重构测试**：保持测试干净并随着代码库的发展重构它们。 下面是一个结构良好的 JUnit 测试方法的示例：
 
-```
+  ```
   @Test
   public void shouldReturnTrueWhenConditionMet() {
       // Arrange
@@ -497,7 +495,7 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
       // Assert
       assertTrue(result);
   }
-```
+  ```
 
 #### 如何确保 JUnit 测试有效？
 
@@ -523,15 +521,15 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
 
 - **查看测试代码**就像生产代码一样进行代码审查，以发现潜在问题并提高测试质量。
 
-- **测量[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)**但目标是进行有意义的测试，而不是达到任意的覆盖率数字。覆盖范围只是一个指导方针，而不是目标本身。
+- **测量[代码覆盖率](/zh-cn/wiki/code-coverage/)**但目标是进行有意义的测试，而不是达到任意的覆盖率数字。覆盖范围只是一个指导方针，而不是目标本身。
 
-```
+  ```
   @Test
   public void givenEmptyList_whenIsEmpty_thenTrue() {
       List<Object> list = new ArrayList<>();
       assertTrue(list.isEmpty());
   }
-```
+  ```
 请记住，我们的目标是编写可维护、可理解且值得信赖的测试，从而让人们对软件的正确性充满信心。
 
 - **设计行为测试** ，而不是实施。专注于代码应该做什么而不是如何做，从而允许在不破坏测试的情况下进行重构。
@@ -554,7 +552,7 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
 
 - **查看测试代码**就像生产代码一样进行代码审查，以发现潜在问题并提高测试质量。
 
-- **测量[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)**但目标是进行有意义的测试，而不是达到任意的覆盖率数字。覆盖范围只是一个指导方针，而不是目标本身。
+- **测量[代码覆盖率](/zh-cn/wiki/code-coverage/)**但目标是进行有意义的测试，而不是达到任意的覆盖率数字。覆盖范围只是一个指导方针，而不是目标本身。
 
 #### 编写 JUnit 测试时要避免哪些常见错误？
 
@@ -582,38 +580,38 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
 
 要提高 JUnit 测试的性能，请考虑以下策略：
 
-- **最小化 I/O 操作**：访问文件、[数据库](https://inaodeng.com/zh-cn/wiki/database/) 或网络可能会减慢测试速度。尽可能使用模拟或存根来模拟 I/O 操作。
-- **使用内存中[数据库](https://inaodeng.com/zh-cn/wiki/database/)**：对于[数据库](https://inaodeng.com/zh-cn/wiki/database/)相关测试，与传统[数据库](https://inaodeng.com/zh-cn/wiki/database/)相比，内存中[数据库](https://inaodeng.com/zh-cn/wiki/database/)（如H2）可以显着减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)时间。
-- **并行执行**：JUnit 5 支持并行[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。启用此功能可以同时运行测试，从而减少总体执行时间。
+- **最小化 I/O 操作**：访问文件、[数据库](/zh-cn/wiki/database/) 或网络可能会减慢测试速度。尽可能使用模拟或存根来模拟 I/O 操作。
+- **使用内存中[数据库](/zh-cn/wiki/database/)**：对于[数据库](/zh-cn/wiki/database/)相关测试，与传统[数据库](/zh-cn/wiki/database/)相比，内存中[数据库](/zh-cn/wiki/database/)（如H2）可以显着减少[测试执行](/zh-cn/wiki/test-execution/)时间。
+- **并行执行**：JUnit 5 支持并行[测试执行](/zh-cn/wiki/test-execution/)。启用此功能可以同时运行测试，从而减少总体执行时间。
 - **选择性测试**：在处理代码库的特定区域时，使用 JUnit 的过滤选项仅运行测试的子集。
-- **避免不必要的[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)/teardown**：保持`@BeforeEach`/`@AfterEach`方法精简。仅在给定测试上下文需要时才执行 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸。
+- **避免不必要的[环境搭建](/zh-cn/wiki/setup/)/teardown**：保持`@BeforeEach`/`@AfterEach`方法精简。仅在给定测试上下文需要时才执行 [环境搭建](/zh-cn/wiki/setup/) 和拆卸。
 - **分析测试**：使用分析工具来识别和优化缓慢的测试。解决性能瓶颈，例如低效算法或过多的对象创建。
 - **测试优先级**：确定优先级并更频繁地运行关键测试。不太重要或稳定的测试可以较少运行。
-- **使用@TestInstance(Lifecycle.PER_CLASS)**：通过使用`@TestInstance(Lifecycle.PER_CLASS)` 在同一类中的测试之间共享[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 来减少测试实例创建开销。
-- **利用测试夹具**：尽可能在测试中重复使用测试夹具，以减少 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 时间。
+- **使用@TestInstance(Lifecycle.PER_CLASS)**：通过使用`@TestInstance(Lifecycle.PER_CLASS)` 在同一类中的测试之间共享[环境搭建](/zh-cn/wiki/setup/) 来减少测试实例创建开销。
+- **利用测试夹具**：尽可能在测试中重复使用测试夹具，以减少 [环境搭建](/zh-cn/wiki/setup/) 时间。
 - **异步测试**：为了测试异步代码，请使用 JUnit 对测试 future 的支持并承诺避免线程休眠。
 - **保持测试集中**：编写小型的、集中的测试，仅测试代码的一个方面。这使得测试运行得更快，并有助于更快地识别问题。 通过应用这些技术，您可以使 JUnit 测试更加高效并减少开发人员的反馈循环。
 
-- **最小化 I/O 操作**：访问文件、[数据库](https://inaodeng.com/zh-cn/wiki/database/) 或网络可能会减慢测试速度。尽可能使用模拟或存根来模拟 I/O 操作。
-- **使用内存中[数据库](https://inaodeng.com/zh-cn/wiki/database/)**：对于与[数据库](https://inaodeng.com/zh-cn/wiki/database/)相关的测试，与传统[数据库](https://inaodeng.com/zh-cn/wiki/database/)相比，像H2这样的内存中[数据库](https://inaodeng.com/zh-cn/wiki/database/)可以显着减少[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)时间。
-- **并行执行**：JUnit 5 支持并行[测试执行](https://inaodeng.com/zh-cn/wiki/test-execution/)。启用此功能可以同时运行测试，从而减少总体执行时间。
+- **最小化 I/O 操作**：访问文件、[数据库](/zh-cn/wiki/database/) 或网络可能会减慢测试速度。尽可能使用模拟或存根来模拟 I/O 操作。
+- **使用内存中[数据库](/zh-cn/wiki/database/)**：对于与[数据库](/zh-cn/wiki/database/)相关的测试，与传统[数据库](/zh-cn/wiki/database/)相比，像H2这样的内存中[数据库](/zh-cn/wiki/database/)可以显着减少[测试执行](/zh-cn/wiki/test-execution/)时间。
+- **并行执行**：JUnit 5 支持并行[测试执行](/zh-cn/wiki/test-execution/)。启用此功能可以同时运行测试，从而减少总体执行时间。
 - **选择性测试**：在处理代码库的特定区域时，使用 JUnit 的过滤选项仅运行测试的子集。
-- **避免不必要的[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)/teardown**：保持`@BeforeEach`/`@AfterEach`方法精简。仅在给定测试上下文需要时才执行 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 和拆卸。
+- **避免不必要的[环境搭建](/zh-cn/wiki/setup/)/teardown**：保持`@BeforeEach`/`@AfterEach`方法精简。仅在给定测试上下文需要时才执行 [环境搭建](/zh-cn/wiki/setup/) 和拆卸。
 - **分析测试**：使用分析工具来识别和优化缓慢的测试。解决性能瓶颈，例如低效算法或过多的对象创建。
 - **测试优先级**：确定优先级并更频繁地运行关键测试。不太重要或稳定的测试可以较少运行。
-- **使用@TestInstance(Lifecycle.PER_CLASS)**：通过使用`@TestInstance(Lifecycle.PER_CLASS)` 在同一类中的测试之间共享[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 来减少测试实例创建开销。
-- **利用测试夹具**：尽可能在测试中重复使用测试夹具，以减少 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/) 时间。
+- **使用@TestInstance(Lifecycle.PER_CLASS)**：通过使用`@TestInstance(Lifecycle.PER_CLASS)` 在同一类中的测试之间共享[环境搭建](/zh-cn/wiki/setup/) 来减少测试实例创建开销。
+- **利用测试夹具**：尽可能在测试中重复使用测试夹具，以减少 [环境搭建](/zh-cn/wiki/setup/) 时间。
 - **异步测试**：为了测试异步代码，请使用 JUnit 对测试 future 的支持并承诺避免线程休眠。
 - **保持测试集中**：编写小型的、集中的测试，仅测试代码的一个方面。这使得测试运行得更快，并有助于更快地识别问题。
 
 #### 代码覆盖率在 JUnit 测试中的作用是什么？如何衡量它？
 
-[代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/) 是一种指标，用于通过确定测试运行期间执行的代码的百分比来评估测试的有效性。在[JUnit 测试](https://inaodeng.com/zh-cn/wiki/junit-testing/)中，它有助于识别代码库中未经测试的部分，确保测试是全面的。
-  要在 JUnit 中测量 [代码覆盖率](https://inaodeng.com/zh-cn/wiki/code-coverage/)，您可以使用 **JaCoCo**、**Cobertura** 或 **Clover** 等工具。这些工具与构建过程集成，并提供有关各种覆盖标准的报告，例如行、分支和指令覆盖率。
+[代码覆盖率](/zh-cn/wiki/code-coverage/) 是一种指标，用于通过确定测试运行期间执行的代码的百分比来评估测试的有效性。在[JUnit 测试](/zh-cn/wiki/junit-testing/)中，它有助于识别代码库中未经测试的部分，确保测试是全面的。
+  要在 JUnit 中测量 [代码覆盖率](/zh-cn/wiki/code-coverage/)，您可以使用 **JaCoCo**、**Cobertura** 或 **Clover** 等工具。这些工具与构建过程集成，并提供有关各种覆盖标准的报告，例如行、分支和指令覆盖率。
   例如，使用 **JaCoCo**，您可以在 Maven 或 Gradle 构建文件中配置它。运行 JUnit 测试后，JaCoCo 会生成一份报告，可以在 Web 浏览器中查看该报告或将其集成到持续集成系统中。
-  这是 Maven `pom.xml` 文件中的基本 [环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)：
+  这是 Maven `pom.xml` 文件中的基本 [环境搭建](/zh-cn/wiki/setup/)：
 
-```
+  ```
   <plugin>
       <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>
@@ -633,6 +631,6 @@ JUnit 可以通过利用其灵活性来测试应用程序的不同层和组件�
           </execution>
       </executions>
   </plugin>
-```
+  ```
 使用 `mvn test` 运行测试后，您可以在 `target/site/jacoco/` 中找到覆盖率报告。
-  **解读报告**至关重要；高覆盖率可以表明[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/) 良好，但不能保证不存在[bugs](https://inaodeng.com/zh-cn/wiki/bug/) 或所有边缘情况都经过测试。相反，覆盖率低的区域可能表明需要进行额外的测试。重要的是要以有意义的覆盖范围来测试应用程序的行为，而不是追求任意的百分比。
+  **解读报告**至关重要；高覆盖率可以表明[测试覆盖率](/zh-cn/wiki/test-coverage/) 良好，但不能保证不存在[bugs](/zh-cn/wiki/bug/) 或所有边缘情况都经过测试。相反，覆盖率低的区域可能表明需要进行额外的测试。重要的是要以有意义的覆盖范围来测试应用程序的行为，而不是追求任意的百分比。

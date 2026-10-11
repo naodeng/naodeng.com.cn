@@ -613,7 +613,7 @@ const footerGroups = [
     title: locale === "zh-cn" ? "内容" : "Content",
     links: [
       { href: getRelativeLocaleUrl(locale, "/blog"), label: locale === "zh-cn" ? "博客" : "Blog" },
-      { href: locale === "zh-cn" ? getRelativeLocaleUrl(locale, "/wiki") : "https://ray.run/wiki", label: typeof FOOTER_NAV_QA_WIKI === "string" ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale], external: locale !== "zh-cn" },
+      { href: getRelativeLocaleUrl(locale, "/wiki"), label: typeof FOOTER_NAV_QA_WIKI === "string" ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale] },
       { href: getRelativeLocaleUrl(locale, "/AIWiki"), label: typeof FOOTER_NAV_AI_WIKI === "string" ? FOOTER_NAV_AI_WIKI : FOOTER_NAV_AI_WIKI[locale] },
       { href: getRelativeLocaleUrl(locale, "/guild"), label: typeof FOOTER_NAV_GUILD === "string" ? FOOTER_NAV_GUILD : FOOTER_NAV_GUILD[locale] },
       { href: getRelativeLocaleUrl(locale, "/prompts"), label: typeof FOOTER_NAV_PROMPTS === "string" ? FOOTER_NAV_PROMPTS : FOOTER_NAV_PROMPTS[locale] },

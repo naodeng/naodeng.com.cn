@@ -1,12 +1,12 @@
 export { hasNoindexRobots } from "./seoNoindex.mjs";
 
-/** The English Wiki is a legacy redirect, not a translation of the Chinese Wiki. */
+/** Resolve the matching Wiki page for the other locale. */
 export function resolveWikiLocalePath(pathname: string, targetLang: string): { path: string; isEquivalent: boolean } | null {
-  if (!/^\/(en|zh-cn)\/wiki(?:\/|$)/.test(pathname)) return null;
-  if (pathname.startsWith("/zh-cn/wiki") && targetLang === "zh-cn") {
-    return { path: pathname, isEquivalent: shouldIncludeInSitemap(pathname) };
-  }
-  return { path: `/${targetLang}/wiki/`, isEquivalent: false };
+  const match = pathname.match(/^\/(en|zh-cn)\/wiki(\/.*)?$/);
+  if (!match || (targetLang !== "en" && targetLang !== "zh-cn")) return null;
+  const suffix = match[2] ?? "/";
+  const path = `/${targetLang}/wiki${suffix}`;
+  return { path, isEquivalent: shouldIncludeInSitemap(path) };
 }
 
 /**
@@ -45,12 +45,10 @@ export function shouldIncludeInSitemap(page: string): boolean {
     : normalizedPath;
   if (normalizedPath === "/") return false;
   if (NON_INDEXABLE_SITEMAP_PATHS.has(pathWithoutTrailingSlash)) return false;
-  if (normalizedPath.startsWith("/en/wiki/")) return false;
+  const wikiMatch = normalizedPath.match(/^\/(en|zh-cn)\/wiki(?:\/(.*))?$/);
+  if (!wikiMatch) return true;
 
-  const zhWikiPrefix = "/zh-cn/wiki/";
-  if (!normalizedPath.startsWith(zhWikiPrefix)) return true;
-
-  const rest = normalizedPath.slice(zhWikiPrefix.length).replace(/\/$/, "");
+  const rest = (wikiMatch[2] ?? "").replace(/\/$/, "");
   if (!rest) return true;
 
   const segments = rest.split("/");

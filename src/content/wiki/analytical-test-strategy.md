@@ -17,11 +17,11 @@ order: 0
 <!-- TOC START -->
 
 - [分析式测试策略 ｜ Analytical Test Strategy](#分析式测试策略--analytical-test-strategy)
-- [关于分析性测试策略的问题](#关于分析性测试策略的问题)
+  - [关于分析性测试策略的问题](#关于分析性测试策略的问题)
   - [基础知识和重要性](#基础知识和重要性)
     - [什么是分析型测试策略？](#什么是分析型测试策略)
     - [为何分析型测试策略在软件测试中至关重要？](#为何分析型测试策略在软件测试中至关重要)
-    - [分析型测试策略的关键组成部分包括：](#分析型测试策略的关键组成部分包括)
+      - [分析型测试策略的关键组成部分有哪些？](#分析型测试策略的关键组成部分有哪些)
   - [执行](#执行)
     - [如何实施分析测试策略？](#如何实施分析测试策略)
     - [创建分析测试策略涉及哪些步骤？](#创建分析测试策略涉及哪些步骤)
@@ -38,7 +38,7 @@ order: 0
 
 分析性测试策略涉及在执行测试之前分析测试基础。这种策略有助于在早期发现潜在问题，确保测试过程更加有效。
 
-# 关于分析性测试策略的问题
+## 关于分析性测试策略的问题
 
 ## 基础知识和重要性
 
@@ -70,7 +70,7 @@ order: 0
 
 总的来说，分析型测试策略对于以成本效益的方式及时交付高质量软件是必不可少的。它能够促进明智的决策制定，优化资源配置，并在测试过程中培养持续改进的文化成为可能。
 
-### 分析型测试策略的关键组成部分包括：
+#### 分析型测试策略的关键组成部分有哪些？
 
 - **风险分析**：识别可能影响质量的潜在风险，并根据此分析优先安排测试。
 - **测试覆盖率**：明确需要测试的内容，包括功能、代码路径和用户场景，以确保全面测试。
@@ -158,21 +158,21 @@ order: 0
 - **数据分析和可视化工具**：Grafana 或 Tableau 帮助可视化测试数据，以获得更好的洞察力。
 - **人工智能和机器学习工具**：如 Testim.io 或 mabl 等工具使用 AI 来改善测试的创建、执行和维护。
 
-```Typescript
-// Example of integrating a tool within an automation script
-const { Builder, By, Key, until } = require('selenium-webdriver');
+  ```Typescript
+  // Example of integrating a tool within an automation script
+  const { Builder, By, Key, until } = require('selenium-webdriver');
 
-(async function example() {
-    let driver = await new Builder().forBrowser('firefox').build();
-    try {
-        await driver.get('http://www.example.com');
-        await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
-        await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
-    } finally {
-        await driver.quit();
-    }
-})();
-```
+  (async function example() {
+      let driver = await new Builder().forBrowser('firefox').build();
+      try {
+          await driver.get('http://www.example.com');
+          await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
+          await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
+      } finally {
+          await driver.quit();
+      }
+  })();
+  ```
 
 这些工具通过提供数据驱动的洞察、自动化重复任务和在测试生命周期中实现持续反馈，支持分析型方法。例如，通过集成一个工具到自动化脚本中，如使用 Selenium 在 Firefox 浏览器中自动执行一系列动作，从打开网页到输入搜索关键字并等待页面标题变更，这样的脚本可以有效地自动化测试流程，提高测试效率和准确性。
 

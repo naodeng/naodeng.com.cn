@@ -34,7 +34,7 @@
 - Wiki、AI Wiki、Guild、Prompts、QA Skills、AI Native QA Weekly；
 - dsh-qa、AI Test Auditor；
 - 404、搜索、移动导航、主题切换、列表筛选、TOC 和主要空状态；
-- 前一轮 review 发现的 Bruno TODO、Links 空占位、Prototype 路由治理和英文 Wiki 外部重定向审查。
+- 前一轮 review 发现的 Bruno TODO、Links 空占位、Prototype 路由治理和英文 Wiki 本地内容审查。
 
 ### 明确不纳入
 
@@ -57,7 +57,7 @@
 | Blog、Prompts、QA Skills、Weekly | `src/pages/[lang]/blog`、`prompts`、`qaskills`、`ai-native-qa-weekly` | Task 5 | `blog-editorial.spec.ts`、`prompts.spec.ts`、`qaskills.spec.ts`、新增 `weekly.spec.ts` |
 | Guild | `src/components/guild`、`src/pages/[lang]/guild` | Task 6 | `guild.spec.ts` 与响应式测试 |
 | dsh-qa、AI Test Auditor | `src/pages/[lang]/dsh-qa`、`src/pages/[lang]/ai-test-auditor` | Task 7 | `dsh-qa.spec.ts`、新增 `ai-test-auditor.spec.ts` |
-| 内容状态与特殊路由 | Bruno 双语内容、`links.astro`、`qaskills/detail-prototype.astro`、英文 Wiki redirect | Task 8 | `links.spec.ts`、新增 `wiki-redirect.spec.ts`、Prototype 隔离单元测试 |
+| 内容状态与特殊路由 | Bruno 双语内容、`links.astro`、`qaskills/detail-prototype.astro`、英文 Wiki 本地内容 | Task 8 | `links.spec.ts`、新增 `wiki-local-content.spec.ts`、Prototype 隔离单元测试 |
 
 `src/content/docs/` 只允许被验证为未修改；Docs layout 的表面迁移归 Task 4，但不改变其中的旧模板内容。
 
@@ -210,15 +210,15 @@ Guild 完整迁移到同一 Proofline 主题：
 
 实现时用 `tests/unit/qaskillsPrototypeIsolation.test.ts` 检查以下现有入口源码不包含 `/qaskills/detail-prototype`：`src/components/Header.astro`、`src/components/Footer.astro`、`src/pages/[lang]/sitemap.astro`、`src/utils/seoUrls.ts`、`src/components/qaskills/RecommendedQASkills.astro`、`src/pages/[lang]/qaskills/index.astro`、`src/components/home/HomeGlassHero.astro`、`src/components/home/HomeCapabilityGuide.astro` 和 `src/components/home/HomeTaskNavigator.astro`。页面自身继续检查 `noindex,nofollow` 与 Prototype 标识。
 
-### 英文 Wiki 外部重定向
+### 英文 Wiki 本地内容
 
-检查 `/en/wiki/acceptance-testing/` 的外部重定向是否仍为产品意图：
+检查 `/en/wiki/acceptance-testing/` 是否直接呈现本站英文词条：
 
-- 若没有英文本地内容，保留目标并补充明确的链接语义；
-- 不因为视觉改造擅自替换外部目标；
-- 若未来有对应英文内容，再单独迁移并验证旧链接。
+- 页面返回 200，并包含完整英文正文；
+- 使用本站 canonical 和英文页面语言；
+- 首页、导航、搜索、相关推荐与语言切换均指向本站对应内容。
 
-由于当前项目保持静态 Astro 输出且部署配置不在本轮范围，当前验收目标固定为 `/en/wiki/acceptance-testing/` 生成 200 的静态 redirect artifact，并包含指向 `https://ray.run/wiki#acceptance-testing` 的 meta refresh 与 canonical；由 `tests/e2e/specs/wiki-redirect.spec.ts` 直接验证。若未来要求真实 HTTP 3xx，应另开部署/托管配置任务。
+验收由 `tests/e2e/specs/wiki-local-content.spec.ts` 验证正文、状态码和 canonical。
 
 ## 技术边界
 
@@ -242,7 +242,7 @@ Guild 完整迁移到同一 Proofline 主题：
 - `cd tests && npm run test:unit`
 - `cd tests && npm run test:e2e`
 
-页面族专项验收还必须包含：`cd tests && npm run test:e2e -- specs/site-pages.spec.ts specs/weekly.spec.ts specs/wiki-redirect.spec.ts`，以及 Prototype 隔离单元测试。若某个页面没有独立现成 spec，必须创建对应的专项 spec，不能只依赖全站链接扫描。
+页面族专项验收还必须包含：`cd tests && npm run test:e2e -- specs/site-pages.spec.ts specs/weekly.spec.ts specs/wiki-local-content.spec.ts`，以及 Prototype 隔离单元测试。若某个页面没有独立现成 spec，必须创建对应的专项 spec，不能只依赖全站链接扫描。
 
 ### 视觉与交互检查
 

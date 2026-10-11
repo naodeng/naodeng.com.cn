@@ -52,14 +52,14 @@ describe("Wiki source links", () => {
     expect(relatedData).not.toContain('"A-B-Testing"');
   });
 
-  it("uses the correct external source path for the API testing reference", () => {
+  it("uses a local Wiki route for the API testing article's glossary references", () => {
     const source = readFileSync(
       path.join(REPO_ROOT, "src/blog/zh-cn/QA-Glossary-Wiki/QA-Glossary-Wiki-api.mdx"),
       "utf8",
     );
 
-    expect(source).not.toContain("Sections/wTiki/test-automation.md");
-    expect(source).toContain("Sections/T/test-automation.md");
+    expect(source).toContain("[测试自动化](/zh-cn/wiki/test-automation/)");
+    expect(source).not.toContain("blob/main/Sections/T/test-automation.md");
   });
 
   it("keeps the static SEO checker sensitive to these link regressions", () => {
@@ -67,10 +67,12 @@ describe("Wiki source links", () => {
     expect(seoChecker).toContain("legacyRelativeLinks");
   });
 
-  it("normalizes Wiki filename slugs in integrity and related-data generators", () => {
-    expect(integrityChecker).toContain('path.basename(f, ".md").toLowerCase()');
-    expect(integrityChecker).toContain("wikiSlugs.has(wikiMatch[1].toLowerCase())");
-    expect(integrityChecker).toContain("wikiSlugs.has(ref.toLowerCase())");
+  it("normalizes locale-specific Wiki slugs in integrity and related-data generators", () => {
+    expect(integrityChecker).toContain('path.basename(file, ".md").toLowerCase()');
+    expect(integrityChecker).toContain(
+      "wikiSlugs[wikiMatch[1].toLowerCase()]?.has(wikiMatch[2].toLowerCase())",
+    );
+    expect(integrityChecker).toContain("wikiSlugs[wikiLang].has(ref.toLowerCase())");
     expect(relatedGenerator).toContain("file.replace(/\\.md$/, '').toLowerCase()");
     expect(relatedGenerator).toContain("parseFrontmatterRelated(markdown).map((ref) => ref.toLowerCase())");
   });
