@@ -17,7 +17,7 @@ order: 0
 <!-- TOC START -->
 
 - [背靠背测试 ｜ Back-to-Back Testing](#背靠背测试--back-to-back-testing)
-- [关于背靠背测试的问题](#关于背靠背测试的问题)
+  - [关于背靠背测试的问题](#关于背靠背测试的问题)
   - [基础知识和重要性](#基础知识和重要性)
     - [什么是背靠背测试？](#什么是背靠背测试)
     - [为什么背靠背测试在软件开发中很重要？](#为什么背靠背测试在软件开发中很重要)
@@ -40,7 +40,7 @@ order: 0
 
 也可理解为并行对比测试，是指将两个或者更多具有相似功能的组件或系统并行运行，通过比较它们的运行结果来检测它们之间是否存在输出差异的一种测试方法。这种方法广泛应用于软件开发和硬件设计中，目的是确保不同组件在执行相同任务时能够产生一致的结果，从而验证它们的功能相似性和兼容性。
 
-# 关于背靠背测试的问题
+## 关于背靠背测试的问题
 
 ## 基础知识和重要性
 
@@ -135,15 +135,15 @@ order: 0
 
 - 记录结果并更新测试套件以反映对系统行为的任何新理解。
 
-```JavaScript
-// Example pseudocode for a simple back-to-back test automation script
-function runBackToBackTest(testCase) {
-  const resultOldVersion = executeTest(testCase, oldVersionComponent);
-  const resultNewVersion = executeTest(testCase, newVersionComponent);
-  const comparison = compareResults(resultOldVersion, resultNewVersion);
-  reportDiscrepancies(comparison);
-}
-```
+  ```JavaScript
+  // Example pseudocode for a simple back-to-back test automation script
+  function runBackToBackTest(testCase) {
+    const resultOldVersion = executeTest(testCase, oldVersionComponent);
+    const resultNewVersion = executeTest(testCase, newVersionComponent);
+    const comparison = compareResults(resultOldVersion, resultNewVersion);
+    reportDiscrepancies(comparison);
+  }
+  ```
 
 请记住将背靠背测试流程集成到 CI/CD 管道中，以确保持续验证作为 DevOps 实践的一部分。
 
@@ -153,9 +153,9 @@ function runBackToBackTest(testCase) {
 
 - 数据比较：自动化脚本比较来自不同系统版本或组件的输出数据，以识别差异。
 
-```JavaScript
-assert.deepEqual(systemAOutput, systemBOutput, "Outputs should be identical");
-```
+  ```JavaScript
+  assert.deepEqual(systemAOutput, systemBOutput, "Outputs should be identical");
+  ```
 
 - 接口契约测试：确保系统或组件之间的接口遵守预定义的契约或规范。
 
@@ -190,17 +190,17 @@ assert.deepEqual(systemAOutput, systemBOutput, "Outputs should be identical");
 - 差异工具：诸如 diff 或 Beyond Compare 之类的通用工具可用于手动比较两个版本的输出或作为自动测试套件的一部分。
 - 自定义脚本：通常，背靠背测试需要自定义自动化脚本，可以用 Python、Perl 或 Shell 等语言编写这些脚本来比较输出。
 
-```JavaScript
-# Example of a Python script snippet for back-to-back testing
-import subprocess
+  ```JavaScript
+  # Example of a Python script snippet for back-to-back testing
+  import subprocess
 
-# Run two versions of the program
-output_v1 = subprocess.run(['program_v1', 'input_data'], capture_output=True)
-output_v2 = subprocess.run(['program_v2', 'input_data'], capture_output=True)
+  # Run two versions of the program
+  output_v1 = subprocess.run(['program_v1', 'input_data'], capture_output=True)
+  output_v2 = subprocess.run(['program_v2', 'input_data'], capture_output=True)
 
-# Compare outputs
-assert output_v1.stdout == output_v2.stdout, "Back-to-back test failed"
-```
+  # Compare outputs
+  assert output_v1.stdout == output_v2.stdout, "Back-to-back test failed"
+  ```
 
 选择正确的工具取决于项目的具体要求，例如编程语言、系统环境和所需的自动化水平。
 
@@ -267,11 +267,11 @@ assert output_v1.stdout == output_v2.stdout, "Back-to-back test failed"
 
 - 尽可能实现自动化：使用脚本自动执行重复性任务，减少人为错误并节省时间。
 
-```JavaScript
-automateTestCases(backToBackConfig) {
-  // Automation code
-}
-```
+  ```JavaScript
+  automateTestCases(backToBackConfig) {
+    // Automation code
+  }
+  ```
 
 - 测试工件的版本控制：在版本控制的存储库中维护测试用例、数据和预期结果，以跟踪更改并确保一致性。
 
@@ -348,9 +348,9 @@ automateTestCases(backToBackConfig) {
 
 - 自动化比较过程：使用可以自动比较被测系统输出的工具，以节省时间并减少人为错误。
 
-```JavaScript
-assert.deepEqual(system1Output, system2Output);
-```
+  ```JavaScript
+  assert.deepEqual(system1Output, system2Output);
+  ```
 
 - 关注关键测试用例：优先考虑覆盖应用程序最重要和最容易出现风险的区域的测试用例。
 

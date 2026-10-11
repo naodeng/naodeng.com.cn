@@ -29,38 +29,67 @@ function createBuildFixture() {
     mkdirSync(path.dirname(file), { recursive: true });
     writeFileSync(file, content);
   };
-  const languageLinks = '<link rel="alternate" hreflang="en-US" href="https://inaodeng.com/en/">' +
-    '<link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/">' +
-    '<link rel="alternate" hreflang="x-default" href="https://inaodeng.com/en/">';
-  const page = (pathname: string, links: string) => {
-    const url = `https://inaodeng.com${pathname}`;
-    const schema = { "@context": "https://schema.org", "@type": "WebPage", "@id": `${url}#webpage`, url, name: "Testing resources", description: "Software testing resources with practical guidance for test design and automation workflows.", inLanguage: pathname.startsWith("/zh-cn/") ? "zh-CN" : "en-US", isPartOf: { "@id": "https://inaodeng.com/#website" } };
-    return `<html lang="${schema.inLanguage}"><head><title>${schema.name}</title><meta name="description" content="${schema.description}"><meta name="robots" content="index, follow"><link rel="canonical" href="${url}">${links}<script type="application/ld+json">${JSON.stringify(schema)}</script></head><body><h1>Testing resources</h1></body></html>`;
+  const writeSource = (relative: string, content: string) => {
+    const file = path.join(root, "src", "content", "wiki", relative);
+    mkdirSync(path.dirname(file), { recursive: true });
+    writeFileSync(file, content);
   };
-  write("en/index.html", page("/en/", languageLinks));
-  write("zh-cn/index.html", page("/zh-cn/", languageLinks));
-  const wikiLinks = '<link rel="alternate" hreflang="zh-CN" href="https://inaodeng.com/zh-cn/wiki/a-b-testing/"><link rel="alternate" hreflang="x-default" href="https://inaodeng.com/zh-cn/wiki/a-b-testing/">';
-  write("zh-cn/wiki/a-b-testing/index.html", page("/zh-cn/wiki/a-b-testing/", wikiLinks));
-  const redirect = '<html><head><meta name="robots" content="noindex, follow"></head><body>https://ray.run/wiki</body></html>';
-  write("en/private/index.html", redirect);
-  for (const slug of ["software-testing", "decision-table-testing", "test-case"]) write(`en/wiki/${slug}/index.html`, redirect);
-  for (const relative of ["en/wiki/index.html", "en/sitemap/index.html", "zh-cn/sitemap/index.html", "en/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/index.html", "en/guild/api-testing/bruno/building-project/index.html", "en/guild/performance-testing/k6/ci-cd-integration/index.html"]) write(relative, redirect);
+  const page = (pathname: string, links: string, content = "Testing resources") => {
+    const url = `https://inaodeng.com${pathname}`;
+    const isChinese = pathname.startsWith("/zh-cn/");
+    const language = isChinese ? "zh-CN" : "en-US";
+    const webPage = { "@context": "https://schema.org", "@type": "WebPage", "@id": `${url}#webpage`, url, name: content, description: "Software testing resources with practical guidance for test design and automation workflows.", inLanguage: language, isPartOf: { "@id": "https://inaodeng.com/#website" } };
+    const term = pathname.startsWith("/en/wiki/") && pathname !== "/en/wiki/"
+      ? { "@context": "https://schema.org", "@type": "DefinedTerm", name: "A/B Testing", inDefinedTermSet: { "@type": "DefinedTermSet", name: "QA Wiki", url: "https://inaodeng.com/en/wiki/" } }
+      : null;
+    const termSet = pathname === "/en/wiki/"
+      ? { "@context": "https://schema.org", "@type": "DefinedTermSet", name: "QA Wiki", url }
+      : null;
+    const schemas = [webPage, term, termSet].filter(Boolean).map(schema => `<script type="application/ld+json">${JSON.stringify(schema)}</script>`).join("");
+    const linksHtml = links.includes("<link rel=") ? links : links.split("|").filter(Boolean).map(href => `<link rel="alternate" hreflang="${href.includes("/zh-cn/") ? "zh-CN" : href.includes("x-default") ? "x-default" : "en-US"}" href="${href.replace(/^x-default:/, "")}">`).join("");
+    const canonical = `<link rel="canonical" href="${url}">`;
+    return `<html lang="${language}"><head><title>${content}</title><meta name="description" content="Software testing resources with practical guidance for test design and automation workflows."><meta name="robots" content="index, follow">${canonical}${linksHtml}${schemas}</head><body><main><h1>${content}</h1>${pathname === "/en/wiki/" ? '<a class="wiki-letter-link" href="/en/wiki/a-b-testing/">A/B Testing</a>' : ""}</main></body></html>`;
+  };
+  const enWikiUrl = "https://inaodeng.com/en/wiki/a-b-testing/";
+  const zhWikiUrl = "https://inaodeng.com/zh-cn/wiki/a-b-testing/";
+  const enIndexUrl = "https://inaodeng.com/en/wiki/";
+  const zhIndexUrl = "https://inaodeng.com/zh-cn/wiki/";
+  const enWikiLinks = `${enWikiUrl}|${zhWikiUrl}|x-default:${enWikiUrl}`;
+  const zhWikiLinks = `${enWikiUrl}|${zhWikiUrl}|x-default:${enWikiUrl}`;
+  const enIndexLinks = `${enIndexUrl}|${zhIndexUrl}|x-default:${enIndexUrl}`;
+  const zhIndexLinks = `${enIndexUrl}|${zhIndexUrl}|x-default:${enIndexUrl}`;
+  const homeLinks = "https://inaodeng.com/en/|https://inaodeng.com/zh-cn/|x-default:https://inaodeng.com/en/";
+  write("en/index.html", page("/en/", homeLinks));
+  write("zh-cn/index.html", page("/zh-cn/", homeLinks));
+  write("en/wiki/index.html", page("/en/wiki/", enIndexLinks, "QA Wiki"));
+  write("zh-cn/wiki/index.html", page("/zh-cn/wiki/", zhIndexLinks, "测试百科"));
+  write("en/wiki/a-b-testing/index.html", page("/en/wiki/a-b-testing/", enWikiLinks, "A/B Testing"));
+  write("zh-cn/wiki/a-b-testing/index.html", page("/zh-cn/wiki/a-b-testing/", zhWikiLinks, "A/B 测试"));
+  writeSource("a-b-testing.md", "---\ntitle: A/B 测试\n---\n");
+  writeSource("en/a-b-testing.md", "---\ntitle: A/B Testing\n---\n");
+  const noindex = '<html><head><meta name="robots" content="noindex, follow"></head><body>private</body></html>';
+  write("en/private/index.html", noindex);
+  for (const relative of ["en/sitemap/index.html", "zh-cn/sitemap/index.html", "en/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/index.html", "en/guild/api-testing/bruno/building-project/index.html", "en/guild/performance-testing/k6/ci-cd-integration/index.html"]) write(relative, noindex);
   write("_redirects", "/zh-cn/wiki/A-B-Testing/ /zh-cn/wiki/a-b-testing/ 301\n");
   write("index.xml", "legacy RSS redirect");
   mkdirSync(path.join(root, "dist/en/qaskills"), { recursive: true });
   write("sitemap-index.xml", '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://inaodeng.com/sitemap-0.xml</loc></sitemap></sitemapindex>');
-  const xmlLinks = languageLinks.replaceAll("<link ", "<xhtml:link ").replaceAll(">", "/>");
-  const xmlWikiLinks = wikiLinks.replaceAll("<link ", "<xhtml:link ").replaceAll(">", "/>");
-  write("sitemap-0.xml", `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://inaodeng.com/en/</loc>${xmlLinks}</url><url><loc>https://inaodeng.com/zh-cn/</loc>${xmlLinks}</url><url><loc>https://inaodeng.com/zh-cn/wiki/a-b-testing/</loc>${xmlWikiLinks}</url></urlset>`);
+  const xml = (loc: string, links: string) => `<url><loc>${loc}</loc>${links.split("|").filter(Boolean).map(href => {
+    const isDefault = href.startsWith("x-default:");
+    const value = href.replace(/^x-default:/, "");
+    const lang = isDefault ? "x-default" : value.includes("/zh-cn/") ? "zh-CN" : "en-US";
+    return `<xhtml:link rel="alternate" hreflang="${lang}" href="${value}"/>`;
+  }).join("")}</url>`;
+  const wikiXml = xml(enWikiUrl, enWikiLinks) + xml(zhWikiUrl, zhWikiLinks) + xml(enIndexUrl, enIndexLinks) + xml(zhIndexUrl, zhIndexLinks);
+  write("sitemap-0.xml", `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${xml("https://inaodeng.com/en/", homeLinks)}${xml("https://inaodeng.com/zh-cn/", homeLinks)}${wikiXml}</urlset>`);
   return { root, write, page, read: (relative: string) => readFileSync(path.join(root, "dist", relative), "utf8") };
 }
-
 function runGate(root: string) {
   return spawnSync(process.execPath, [path.join(REPO_ROOT, "scripts/seo-build-check.mjs")], { cwd: root, encoding: "utf8" });
 }
 
 describe("SEO checks the rendered pages", () => {
-  it("accepts a valid bilingual sitemap and a Chinese-only Wiki", () => {
+  it("accepts a valid bilingual sitemap and matching local Wiki pages", () => {
     const fixture = createBuildFixture();
     const result = runGate(fixture.root);
     expect(result.status, result.stderr).toBe(0);
@@ -101,7 +130,7 @@ describe("SEO checks the rendered pages", () => {
   it("checks child sitemaps beyond sitemap-0.xml", () => {
     const fixture = createBuildFixture();
     fixture.write("sitemap-index.xml", fixture.read("sitemap-index.xml").replace("</sitemapindex>", "<sitemap><loc>https://inaodeng.com/sitemap-1.xml</loc></sitemap></sitemapindex>"));
-    fixture.write("sitemap-1.xml", '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://inaodeng.com/en/wiki/software-testing/</loc></url></urlset>');
+    fixture.write("sitemap-1.xml", '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://inaodeng.com/en/private/</loc></url></urlset>');
     const result = runGate(fixture.root);
     expect(result.status).toBe(1);
     expect(result.stderr).toMatch(/noindex/i);

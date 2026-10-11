@@ -1,12 +1,7 @@
 ---
-/**
- * 测试百科首页（docs 布局：左侧导航 + 主内容）
- * - 中文：Docs 布局，侧栏为词条列表（中文名），主区为概述
- * - 英文：简单页 + 跳转 ray.run/wiki
- */
+/** 本站双语测试百科首页：词条目录、搜索与字母导航。 */
 import { getCollection } from "astro:content";
 import { LOCALES } from "@/i18n";
-import Base from "@/layouts/Base.astro";
 import DocsLayout from "@/layouts/Docs.astro";
 import WikiIndex from "@/components/WikiIndex.astro";
 import { buildWikiSidebar } from "@/data/wiki";
@@ -19,89 +14,72 @@ export async function getStaticPaths() {
 
 const locale = (Astro.params.lang ?? "en") as Lang;
 const isEn = locale === "en";
-const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? "首页";
+const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (isEn ? "Home" : "首页");
 const title = isEn ? "QA Wiki" : "测试百科";
-const description = isEn
-  ? WIKI_PAGE_DESCRIPTION["en"]
-  : WIKI_PAGE_DESCRIPTION["zh-cn"];
-const keywords = isEn ? WIKI_PAGE_KEYWORDS["en"] : WIKI_PAGE_KEYWORDS["zh-cn"];
+const description = WIKI_PAGE_DESCRIPTION[locale];
+const keywords = WIKI_PAGE_KEYWORDS[locale];
 const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },
   { name: title, url: `/${locale}/wiki/` },
 ];
-
-const entries = await getCollection("wiki");
-const fullSidebarSections = isEn ? [] : buildWikiSidebar(entries);
-const basePath = `/${locale}/wiki`;
-/** 按字母分组的区块（不含「概述」），用于概述页按字母展示全部词条 */
-const letterSections = fullSidebarSections.filter((s) => s.title);
+const entries = isEn ? await getCollection("wikiEn") : await getCollection("wiki");
+const fullSidebarSections = buildWikiSidebar(entries, locale);
+const letterSections = fullSidebarSections.filter((section) => section.title);
 const sidebarSections = [
-  { items: [{ label: "概述", href: "" }] },
-  {
-    title: "词条",
-    items: letterSections.flatMap((section) => section.items),
-  },
+  { items: [{ label: isEn ? "Overview" : "概述", href: "" }] },
+  { title: isEn ? "Terms" : "词条", items: letterSections.flatMap((section) => section.items) },
 ];
-const totalCount = entries.length;
-
-const siteOrigin = "https://inaodeng.com";
-// DefinedTermSet JSON-LD for zh-cn wiki (en redirects to ray.run)
-const definedTermSetSchema = !isEn ? {
+const basePath = `/${locale}/wiki`;
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
+const definedTermSetSchema = {
   "@context": "https://schema.org",
   "@type": "DefinedTermSet",
-  name: "软件测试百科",
-  description: WIKI_PAGE_DESCRIPTION["zh-cn"],
-  url: `${siteOrigin}/zh-cn/wiki/`,
-  inLanguage: "zh-CN",
+  name: isEn ? "QA Wiki" : "软件测试百科",
+  description,
+  url: `${siteOrigin}/${locale}/wiki/`,
+  inLanguage: LOCALES[locale].lang || locale,
   publisher: {
     "@type": "Organization",
-    name: "软件测试同学",
+    name: "Nao Deng",
     url: siteOrigin,
   },
-} : null;
+};
 ---
 
-{isEn ? (
-  <Base title={title} description={description} keywords={keywords} breadcrumbs={breadcrumbs} robots="noindex, follow">
-    <div class="wiki-index">
-      <h1>{title}</h1>
-      <p class="wiki-intro">Software testing terms &amp; definitions. For the full QA Wiki, visit:</p>
-      <p class="wiki-external">
-        <a href="https://ray.run/wiki" target="_blank" rel="noopener noreferrer">ray.run/wiki <span class="material-icons-sharp" aria-hidden="true">open_in_new</span></a>
-      </p>
-    </div>
-  </Base>
-) : (
-  <DocsLayout
-    contentMode="index"
+<DocsLayout
+  contentMode="index"
+  title={title}
+  description={description}
+  keywords={keywords}
+  breadcrumbs={breadcrumbs}
+  sidebarSections={sidebarSections}
+  currentPath=""
+  basePath={basePath}
+  sidebarMenuLabel={isEn ? "Wiki navigation" : "本页导航"}
+  sidebarSearchPlaceholder={isEn ? "Search terms…" : "检索词条…"}
+  sidebarSearchTargetId="wiki-search"
+  structuredData={[definedTermSetSchema]}
+>
+  <WikiIndex
     title={title}
     description={description}
-    keywords={keywords}
-    breadcrumbs={breadcrumbs}
-    sidebarSections={sidebarSections}
-    currentPath=""
+    totalCount={entries.length}
+    letterSections={letterSections}
     basePath={basePath}
-    sidebarMenuLabel="本页导航"
-    sidebarSearchPlaceholder="检索词条…"
-    sidebarSearchTargetId="wiki-search"
-    structuredData={definedTermSetSchema ? [definedTermSetSchema] : undefined}
-  >
-    <WikiIndex
-      title={title}
-      description={description}
-      totalCount={totalCount}
-      letterSections={letterSections}
-      basePath={basePath}
-      searchId="wiki-search"
-      groupLabel="个字母组"
-    />
-  </DocsLayout>
-)}
+    searchId="wiki-search"
+    groupLabel={isEn ? "letter groups" : "个字母组"}
+  />
+  {isEn && (
+    <p class="wiki-license">
+      This glossary is adapted from the
+      <a href="https://github.com/naodeng/QA-Glossary-Wiki">QA Glossary Wiki source collection</a>.
+      It is maintained by Nao Deng and licensed under
+      <a href="https://polyformproject.org/licenses/noncommercial/1.0.0" rel="license">PolyForm Noncommercial 1.0.0</a>.
+      See the <a href="/en/copyright/">copyright and licensing page</a> for details.
+    </p>
+  )}
+</DocsLayout>
 
 <style>
-  .wiki-index h1 { margin: 0 0 .85rem; font-size: clamp(2rem, 3vw, 2.65rem); line-height: 1.2; }
-  .wiki-intro { margin: 0 0 var(--sp-s); font-size: 1.05rem; line-height: 1.65; color: var(--color-text-secondary); }
-  .wiki-external { margin-block-start: var(--sp-m); }
-  .wiki-external a { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; font-weight: 600; color: var(--color-theme); }
-  .wiki-external .material-icons-sharp { font-size: 1rem; }
+  .wiki-license { margin: 1.5rem 0 0; color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.7; }
 </style>

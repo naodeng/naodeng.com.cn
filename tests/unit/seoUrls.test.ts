@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { canonicalWikiSlug, hasNoindexRobots, shouldIncludeInSitemap } from "../../src/utils/seoUrls";
+import { canonicalWikiSlug, hasNoindexRobots, resolveWikiLocalePath, shouldIncludeInSitemap } from "../../src/utils/seoUrls";
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const astroConfig = readFileSync(path.join(REPO_ROOT, "astro.config.mjs"), "utf8");
@@ -34,7 +34,8 @@ describe("SEO URL policy", () => {
 
   it.each([
     ["https://inaodeng.com/", false],
-    ["https://inaodeng.com/en/wiki/inspection/", false],
+    ["https://inaodeng.com/en/wiki/inspection/", true],
+    ["https://inaodeng.com/en/wiki/wiki/inspection/", false],
     ["https://inaodeng.com/zh-cn/wiki/wiki/inspection/", false],
     ["https://inaodeng.com/zh-cn/wiki/inspection.md/", false],
     ["https://inaodeng.com/zh-cn/wiki/A-B-Testing/", false],
@@ -60,10 +61,26 @@ describe("SEO URL policy", () => {
     expect(seoBuildChecker).toContain("pathVariants.push(decodeURIComponent(parsed.pathname))");
   });
 
+  it("maps equivalent Wiki pages between locales", () => {
+    expect(resolveWikiLocalePath("/en/wiki/acceptance-testing/", "zh-cn")).toEqual({
+      path: "/zh-cn/wiki/acceptance-testing/",
+      isEquivalent: true,
+    });
+    expect(resolveWikiLocalePath("/zh-cn/wiki/back-end-testing/", "en")).toEqual({
+      path: "/en/wiki/back-end-testing/",
+      isEquivalent: true,
+    });
+    expect(resolveWikiLocalePath("/en/wiki/", "zh-cn")).toEqual({
+      path: "/zh-cn/wiki/",
+      isEquivalent: true,
+    });
+    expect(resolveWikiLocalePath("/en/blog/post/", "zh-cn")).toBeNull();
+  });
+
   it("normalizes Wiki IDs and redirects case-only aliases", () => {
     expect(wikiData).toContain('import { canonicalWikiSlug } from "@/utils/seoUrls"');
     expect(wikiData).toContain("return canonicalWikiSlug(");
-    expect(wikiRoute).toContain("return Astro.redirect(`/${locale}/wiki/${legacyCanonical}/`, 301)");
+    expect(wikiRoute).toContain("Astro.redirect(`/zh-cn/wiki/${legacyCanonical}/`, 301)");
     expect(redirects).toContain("/zh-cn/wiki/A-B-Testing/ /zh-cn/wiki/a-b-testing/ 301");
     expect(wikiRoute).not.toContain("const fileNames = fs.readdirSync(wikiDir)");
     expect(seoBuildChecker).toContain("const redirectsPath = path.join(DIST, \"_redirects\")");

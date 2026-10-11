@@ -259,7 +259,8 @@ test.describe("SEO 元数据", () => {
       if (childResp.ok()) sitemapText = await childResp.text();
     }
 
-    expect(sitemapText).not.toContain("/en/wiki/");
+    expect(sitemapText).toContain("<loc>https://inaodeng.com/en/wiki/</loc>");
+    expect(sitemapText).toContain("<loc>https://inaodeng.com/en/wiki/a-b-testing/</loc>");
     expect(sitemapText).not.toMatch(/\/zh-cn\/wiki\/wiki\//i);
     expect(sitemapText).not.toMatch(/\/zh-cn\/wiki\/[^<]+\.md\//i);
     expect(sitemapText).not.toMatch(/<loc>https:\/\/inaodeng\.com\/zh-cn\/wiki\/[^<]*[A-Z][^<]*<\/loc>/);

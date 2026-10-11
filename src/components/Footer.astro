@@ -65,9 +65,7 @@ const footerGroups = [
     key: "knowledge",
     title: locale === "zh-cn" ? "知识库" : "Knowledge",
     links: [
-      locale === 'zh-cn'
-        ? { href: getRelativeLocaleUrl(locale, "/wiki"), label: typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale] }
-        : { href: "https://ray.run/wiki", label: typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale], external: true },
+      { href: getRelativeLocaleUrl(locale, "/wiki"), label: typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale] },
       { href: getRelativeLocaleUrl(locale, "/AIWiki"), label: typeof FOOTER_NAV_AI_WIKI === 'string' ? FOOTER_NAV_AI_WIKI : FOOTER_NAV_AI_WIKI[locale] },
       { href: getRelativeLocaleUrl(locale, "/guild"), label: typeof FOOTER_NAV_GUILD === 'string' ? FOOTER_NAV_GUILD : FOOTER_NAV_GUILD[locale] },
     ],

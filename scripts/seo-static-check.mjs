@@ -82,7 +82,10 @@ const wikiFiles = walk(path.join(ROOT, "src/content/wiki"), [".md"]);
 const aiwikiFiles = walk(path.join(ROOT, "src/content/aiwiki"), [".md"]);
 const blogFiles = walk(path.join(ROOT, "src/blog"), [".mdx"]);
 
-const wikiSlugs = new Set(wikiFiles.map((file) => slugifyFile(file).toLowerCase()));
+const wikiSlugs = {
+  en: new Set(wikiFiles.filter((file) => toRepoPath(file).startsWith("src/content/wiki/en/")).map((file) => slugifyFile(file).toLowerCase())),
+  "zh-cn": new Set(wikiFiles.filter((file) => !toRepoPath(file).startsWith("src/content/wiki/en/")).map((file) => slugifyFile(file).toLowerCase())),
+};
 const aiwikiByLang = { en: new Set(), "zh-cn": new Set() };
 const pendingAIRelated = [];
 const pendingAILinks = [];
@@ -131,6 +134,7 @@ for (const file of wikiFiles) {
   const slug = slugifyFile(file);
   const canonicalSlug = slug.toLowerCase();
   const rel = toRepoPath(file);
+  const lang = rel.startsWith("src/content/wiki/en/") ? "en" : "zh-cn";
   const title = data.title || "";
   const description = data.description || "";
   if (!title) issues.missingTitle.push(rel);
@@ -138,9 +142,9 @@ for (const file of wikiFiles) {
   if (description && String(description).length > 155) {
     issues.longDescription.push(`${rel} (${String(description).length})`);
   }
-  addTitle(title, rel, "zh-cn");
-  termLexicon["zh-cn"].add(String(slug).toLowerCase());
-  termLexicon["zh-cn"].add(String(title).toLowerCase());
+  addTitle(title, rel, lang);
+  termLexicon[lang].add(String(slug).toLowerCase());
+  termLexicon[lang].add(String(title).toLowerCase());
 
   if (body.includes("[[")) issues.malformedMarkdownLinks.push(rel);
   for (const match of body.matchAll(/\]\(\s*((?:\.\.\/[A-Z]\/|\/sections\/)[^)]+)/g)) {
@@ -156,11 +160,12 @@ for (const file of wikiFiles) {
       issues.relatedSelf.push(`${toRepoPath(file)} -> ${norm}`);
       continue;
     }
-    if (!wikiSlugs.has(canonicalRelated)) {
+    if (!wikiSlugs[lang].has(canonicalRelated)) {
       issues.relatedUnknown.push(`${toRepoPath(file)} -> ${norm}`);
       continue;
     }
-    relatedIncomingWiki.set(canonicalRelated, (relatedIncomingWiki.get(canonicalRelated) ?? 0) + 1);
+    const relatedKey = `${lang}:${canonicalRelated}`;
+    relatedIncomingWiki.set(relatedKey, (relatedIncomingWiki.get(relatedKey) ?? 0) + 1);
   }
 
   for (const link of collectMarkdownLinks(body)) {
@@ -177,8 +182,9 @@ for (const file of wikiFiles) {
     if (!mWiki) continue;
     const linkedSlug = decodeURIComponent(mWiki[2]).replace(/\/$/, "");
     const normalizedLinkedSlug = linkedSlug.toLowerCase();
-    const isChineseWiki = mWiki[1].toLowerCase() === "zh-cn";
-    if (!wikiSlugs.has(normalizedLinkedSlug) || (isChineseWiki && (linkedSlug !== normalizedLinkedSlug || /\.md$/i.test(linkedSlug)))) {
+    const targetLang = mWiki[1].toLowerCase();
+    const isLegacyChinesePath = targetLang === "zh-cn" && (linkedSlug !== normalizedLinkedSlug || /\.md$/i.test(linkedSlug));
+    if (targetLang !== lang || !wikiSlugs[targetLang]?.has(normalizedLinkedSlug) || isLegacyChinesePath) {
       issues.brokenLinks.push(`${rel} -> ${link}`);
     }
   }
@@ -285,8 +291,10 @@ for (const [langAndTitle, files] of titleMap.entries()) {
   }
 }
 
-for (const slug of wikiSlugs) {
-  if ((relatedIncomingWiki.get(slug) ?? 0) === 0) issues.orphanWiki.push(slug);
+for (const lang of ["en", "zh-cn"]) {
+  for (const slug of wikiSlugs[lang]) {
+    if ((relatedIncomingWiki.get(`${lang}:${slug}`) ?? 0) === 0) issues.orphanWiki.push(`${lang}/${slug}`);
+  }
 }
 for (const lang of ["en", "zh-cn"]) {
   for (const slug of aiwikiByLang[lang]) {

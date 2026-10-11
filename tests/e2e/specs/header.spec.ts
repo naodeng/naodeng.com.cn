@@ -84,13 +84,13 @@ test.describe("Header 导航", () => {
     await expect(encyclopediaTrigger).toHaveClass(/active/);
   });
 
-  test("en 首页：QA Library 菜单下 QA wiki 链接指向 ray.run（外链）", async ({ page, baseURL }) => {
+  test("en 首页：QA Library 菜单下 QA Wiki 链接指向本站", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await page.locator("[data-nav-group='qa-content'] summary").click();
     const wikiLink = page.locator("header nav a[data-nav-item='qa-wiki']");
     await expect(wikiLink).toBeVisible();
-    await expect(wikiLink).toHaveAttribute("target", "_blank");
-    await expect(wikiLink).toHaveAttribute("rel", "noopener noreferrer");
+    await expect(wikiLink).toHaveAttribute("href", "/en/wiki/");
+    await expect(wikiLink).not.toHaveAttribute("target", "_blank");
   });
 
   test("zh-cn 首页：QA 与 AI 菜单展示可抓取的内容说明和规模", async ({ page, baseURL }) => {

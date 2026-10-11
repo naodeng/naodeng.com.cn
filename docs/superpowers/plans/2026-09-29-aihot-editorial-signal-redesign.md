@@ -35,7 +35,7 @@
 - **英文长文与窄屏布局**：标题、返回链接、周期选择器和双栏 Hero 在 375/390px 不得被挤压、截断或产生横向溢出。由 Task 4、Task 5 和 Task 9 的响应式测试覆盖。
 - **导航与信息架构重复**：Wiki/AI Wiki 侧栏不得再次完整复制主区域术语列表，所有术语仍须可搜索、可点击、可回到当前项。由 Task 4 的 Wiki E2E 与链接测试覆盖。
 - **产品页行为回归**：dsh-qa 的命令切换/复制/版本展开，Guild 的筛选/学习路径，AI Test Auditor 的安装与 release 展开必须在主题迁移后保持原行为。由 Task 6、Task 7 的现有 E2E 覆盖。
-- **未完成状态与路由治理**：Links 空位、Bruno TODO、Prototype 路由和英文 Wiki 外部重定向必须被明确处理，不能把空内容或外部跳转伪装成正常页面。由 Task 8 的单元/链接/路由测试覆盖。
+- **未完成状态与路由治理**：Links 空位、Bruno TODO、Prototype 路由和英文 Wiki 本地内容必须被明确处理，不能把空内容伪装成正常页面。由 Task 8 的单元/链接/路由测试覆盖。
 
 ---
 
@@ -434,21 +434,21 @@
 - Create: `tests/unit/qaskillsPrototypeIsolation.test.ts`
 - Modify: `tests/e2e/specs/links.spec.ts`
 - Modify: `tests/e2e/specs/seo.spec.ts`
-- Create: `tests/e2e/specs/wiki-redirect.spec.ts`
+- Create: `tests/e2e/specs/wiki-local-content.spec.ts`
 
 **Interfaces:**
 - Consumes: 现有双语内容、Prototype noindex 标记、链接 inventory 和 SEO assertions。
-- Produces: 不再显示多个虚位以待卡片；Bruno TODO 不再暴露为未完成标题；Prototype 明确隔离；英文 Wiki 外部重定向意图有测试/文档边界。
+- Produces: 不再显示多个虚位以待卡片；Bruno TODO 不再暴露为未完成标题；Prototype 明确隔离；英文 Wiki 本地内容与路由有专项测试。
 
 - [ ] **Step 1: 写内容状态和路由契约测试**
 
-  增加单元断言：Bruno 双语页面不含 `---TODO` 标题；Links 页面只渲染真实友链和现有邮件联系入口，不渲染 `href="#"` 占位；Prototype 保持 `noindex,nofollow` 且不进入 `Header.astro`、`Footer.astro`、`src/pages/[lang]/sitemap.astro`、`src/utils/seoUrls.ts`、`src/components/qaskills/RecommendedQASkills.astro`、`src/pages/[lang]/qaskills/index.astro`、`src/components/home/HomeGlassHero.astro`、`src/components/home/HomeCapabilityGuide.astro` 或 `src/components/home/HomeTaskNavigator.astro`；`wiki-redirect.spec.ts` 直接请求 `/en/wiki/acceptance-testing/`，在静态托管约束下断言 200 redirect artifact、meta refresh 和 canonical 均指向 `https://ray.run/wiki#acceptance-testing`。
+  增加单元断言：Bruno 双语页面不含 `---TODO` 标题；Links 页面只渲染真实友链和现有邮件联系入口，不渲染 `href="#"` 占位；Prototype 保持 `noindex,nofollow` 且不进入 `Header.astro`、`Footer.astro`、`src/pages/[lang]/sitemap.astro`、`src/utils/seoUrls.ts`、`src/components/qaskills/RecommendedQASkills.astro`、`src/pages/[lang]/qaskills/index.astro`、`src/components/home/HomeGlassHero.astro`、`src/components/home/HomeCapabilityGuide.astro` 或 `src/components/home/HomeTaskNavigator.astro`；`wiki-local-content.spec.ts` 直接请求 `/en/wiki/acceptance-testing/` 并断言本站词条正文、200 状态和本站 canonical。
 
 - [ ] **Step 2: 运行测试确认当前未完成状态**
 
-  Run: `cd tests && npm run test:unit -- guildContentQuality.test.ts qaskillsPrototypeIsolation.test.ts && npm run test:e2e -- specs/links.spec.ts specs/seo.spec.ts specs/wiki-redirect.spec.ts`
+  Run: `cd tests && npm run test:unit -- guildContentQuality.test.ts qaskillsPrototypeIsolation.test.ts && npm run test:e2e -- specs/links.spec.ts specs/seo.spec.ts specs/wiki-local-content.spec.ts`
 
-  Expected: Bruno/Links 的已知 TODO 与空占位提供可定位失败；Prototype 隔离如果当前已满足可以直接通过，不能为了制造失败而放宽或反转断言；外部 redirect 测试应明确报告静态 200 artifact 的 meta refresh/canonical 目标；现有内容质量测试不因路径错误失败。
+  Expected: Bruno/Links 的已知 TODO 与空占位提供可定位失败；Prototype 隔离如果当前已满足可以直接通过，不能为了制造失败而放宽或反转断言；英文 Wiki 测试确认页面正文、200 状态和本站 canonical；现有内容质量测试不因路径错误失败。
 
 - [ ] **Step 3: 收口 Bruno TODO**
 
@@ -458,20 +458,20 @@
 
   Links 页面删除 `friendLinks` 中的空占位数据，只保留现有真实友链；页面已有的邮件说明和 `mailto:dengnao@gmail.com` 作为唯一提交入口，不新增 CTA、路由或外部目标。Prototype 保留标识和 noindex，确认不进入导航、HTML 站点地图、XML sitemap 或推荐数据；不在本任务删除路由。
 
-- [ ] **Step 5: 固化英文 Wiki 外部跳转边界**
+- [ ] **Step 5: 验证英文 Wiki 本地内容**
 
-  检查并测试 `/en/wiki/acceptance-testing/` 的目标；当前没有本地英文内容，保留 `https://ray.run/wiki#acceptance-testing` 外部目标并确保页面/redirect 语义可理解，不凭主题改造替换 URL。
+  检查并测试 `/en/wiki/acceptance-testing/` 的本站英文词条正文、页面语言、200 状态和 canonical。
 
 - [ ] **Step 6: 验证内容/路由治理**
 
-  Run: `cd tests && npm run test:unit -- guildContentQuality.test.ts qaskillsPrototypeIsolation.test.ts && npm run test:e2e -- specs/links.spec.ts specs/seo.spec.ts specs/wiki-redirect.spec.ts`
+  Run: `cd tests && npm run test:unit -- guildContentQuality.test.ts qaskillsPrototypeIsolation.test.ts && npm run test:e2e -- specs/links.spec.ts specs/seo.spec.ts specs/wiki-local-content.spec.ts`
 
-  Expected: 未完成状态不再出现在正常页面，Prototype/外部重定向边界清晰，现有链接检查通过。
+  Expected: 未完成状态不再出现在正常页面，Prototype 隔离和英文 Wiki 本地页面行为清晰，现有链接检查通过。
 
 - [ ] **Step 7: Commit**
 
   ```bash
-  git add -- src/content/guild/en/api-testing/bruno/introduction.md src/content/guild/zh-cn/api-testing/bruno/introduction.md src/blog/en/API-Automation-Testing/Introduction_of_bruno.mdx src/blog/zh-cn/API-Automation-Testing/Introduction_of_bruno.mdx 'src/pages/[lang]/links.astro' 'src/pages/[lang]/qaskills/detail-prototype.astro' tests/unit/guildContentQuality.test.ts tests/unit/qaskillsPrototypeIsolation.test.ts tests/e2e/specs/links.spec.ts tests/e2e/specs/seo.spec.ts tests/e2e/specs/wiki-redirect.spec.ts
+  git add -- src/content/guild/en/api-testing/bruno/introduction.md src/content/guild/zh-cn/api-testing/bruno/introduction.md src/blog/en/API-Automation-Testing/Introduction_of_bruno.mdx src/blog/zh-cn/API-Automation-Testing/Introduction_of_bruno.mdx 'src/pages/[lang]/links.astro' 'src/pages/[lang]/qaskills/detail-prototype.astro' tests/unit/guildContentQuality.test.ts tests/unit/qaskillsPrototypeIsolation.test.ts tests/e2e/specs/links.spec.ts tests/e2e/specs/seo.spec.ts tests/e2e/specs/wiki-local-content.spec.ts
   git commit -m "content: close incomplete page states"
   ```
 
@@ -520,8 +520,8 @@
 
 ## Self-review 记录
 
-- **Spec coverage:** 主题 token 在 Task 1；共享 chrome 和 PageHeadline 在 Task 2；首页与通用页面在 Task 3；Wiki/AI Wiki 在 Task 4；Blog/Prompts/QA Skills 和英文移动端在 Task 5；Guild 在 Task 6；dsh-qa/AI Test Auditor 在 Task 7；Bruno/Links/Prototype/外部重定向在 Task 8；全站验证在 Task 9。Docs 排除项在每个涉及 Docs 的任务中明确保留。
-- **Review remediation:** 已将 `DESIGN.md` 与本地忽略的 `.impeccable/design.json` 纳入 Task 1 同步；颜色、派生 token 和 legacy alias policy 与规格对齐；Privacy/Copyright/Sponsor/Sitemap、三种 404、SearchModal、Weekly 首页/详情均有明确任务与专项验收；Links 固定为隐藏空占位并保留现有邮件入口；Prototype 隔离和英文 Wiki 外部重定向均绑定到具体源码与测试文件。
+- **Spec coverage:** 主题 token 在 Task 1；共享 chrome 和 PageHeadline 在 Task 2；首页与通用页面在 Task 3；Wiki/AI Wiki 在 Task 4；Blog/Prompts/QA Skills 和英文移动端在 Task 5；Guild 在 Task 6；dsh-qa/AI Test Auditor 在 Task 7；Bruno/Links/Prototype/英文 Wiki 本地内容在 Task 8；全站验证在 Task 9。Docs 排除项在每个涉及 Docs 的任务中明确保留。
+- **Review remediation:** 已将 `DESIGN.md` 与本地忽略的 `.impeccable/design.json` 纳入 Task 1 同步；颜色、派生 token 和 legacy alias policy 与规格对齐；Privacy/Copyright/Sponsor/Sitemap、三种 404、SearchModal、Weekly 首页/详情均有明确任务与专项验收；Links 固定为隐藏空占位并保留现有邮件入口；Prototype 隔离和英文 Wiki 本地内容均绑定到具体源码与测试文件。
 - **Step scan:** 每个任务按契约测试、失败验证、实现、通过验证、提交拆分；没有要求实现者自行决定未定义的接口或凭空添加内容。
 - **Type consistency:** 任务间只通过 CSS semantic token、现有 Astro props/data attributes、现有页面数据对象和既有测试 selector 连接；没有新增跨任务的未定义函数接口。
 - **Review Focus:** 五类高风险输入已分别绑定 Task 1、Task 4/5/9、Task 4、Task 6/7、Task 8 的测试。
@@ -535,5 +535,5 @@
 - Spec P1：页面覆盖矩阵补齐了法律/工具/错误页、SearchModal、Weekly 和专项测试映射。
 - Spec P1：色板、次级文字、边框、代码表面、focus 和 theme-soft 派生公式全部明确。
 - Spec P1：Links 行为固定为隐藏空占位，沿用现有邮件联系入口，不新增目标。
-- Spec P1：Prototype 隔离增加具体入口源码清单与 `qaskillsPrototypeIsolation.test.ts`；英文 Wiki redirect 增加固定目标和静态 200 artifact 测试。
-- Spec P2：英文 Wiki redirect 不再依赖同源链接扫描，使用独立 `wiki-redirect.spec.ts`。
+- Spec P1：Prototype 隔离增加具体入口源码清单与 `qaskillsPrototypeIsolation.test.ts`；英文 Wiki 本地内容增加词条正文、状态码和 canonical 测试。
+- Spec P2：英文 Wiki 本地内容由独立 `wiki-local-content.spec.ts` 验证正文、状态码与 canonical。

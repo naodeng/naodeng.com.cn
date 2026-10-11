@@ -50,7 +50,8 @@ export function wikiIdToSlug(id: string): string {
 
 /** 根据 wiki 词条列表生成侧栏（按英文首字母分组、组内按英文排序，展示中文名称），用于 Docs 布局 */
 export function buildWikiSidebar(
-  entries: { id: string; body?: string; data?: { title?: string } }[]
+  entries: { id: string; body?: string; data?: { title?: string } }[],
+  locale: string = "zh-cn",
 ): DocsNavSection[] {
   const slugFromId = wikiIdToSlug;
   const sorted = [...entries].sort((a, b) => {
@@ -59,17 +60,18 @@ export function buildWikiSidebar(
     return slugToTitleEn(slugA).localeCompare(slugToTitleEn(slugB), "en");
   });
   const overview: DocsNavSection = {
-    items: [{ label: "概述", href: "" }],
+    items: [{ label: locale === "en" ? "Overview" : "概述", href: "" }],
   };
   const byLetter = new Map<string, { label: string; href: string }[]>();
   for (const e of sorted) {
     const slug = slugFromId(e.id);
     const letter = firstLetterEn(slug);
     const list = byLetter.get(letter) ?? [];
-    const labelZh =
-      getTitleZhFromBody(e.body) || getTitleZh(e.data?.title ?? "") || slugToTitleEn(slug);
+    const label = locale === "en"
+      ? (e.data?.title?.trim() || slugToTitleEn(slug))
+      : (getTitleZhFromBody(e.body) || getTitleZh(e.data?.title ?? "") || slugToTitleEn(slug));
     list.push({
-      label: labelZh,
+      label,
       href: slug,
     });
     byLetter.set(letter, list);

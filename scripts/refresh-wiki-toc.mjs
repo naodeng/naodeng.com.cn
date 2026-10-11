@@ -12,6 +12,7 @@
  */
 import fs from "fs";
 import path from "path";
+import { marked } from "marked";
 
 let GithubSlugger;
 try {
@@ -36,26 +37,10 @@ function parseFrontmatter(content) {
 }
 
 function collectHeadings(body) {
-  const lines = body.split(/\r?\n/);
-  const headings = [];
-  let inFence = false;
-
-  for (const line of lines) {
-    if (/^\s*```/.test(line)) {
-      inFence = !inFence;
-      continue;
-    }
-    if (inFence) continue;
-
-    const m = line.match(/^(#{1,4})\s+(.+?)\s*$/);
-    if (!m) continue;
-    const level = m[1].length;
-    const text = m[2].trim();
-    if (!text) continue;
-    headings.push({ level, text });
-  }
-
-  return headings;
+  return marked.lexer(body)
+    .filter((token) => token.type === "heading" && token.depth >= 1 && token.depth <= 4)
+    .map((token) => ({ level: token.depth, text: token.text.trim() }))
+    .filter((heading) => heading.text);
 }
 
 function toAnchor(headings) {
@@ -81,14 +66,23 @@ function refreshOneFile(filePath) {
   const body = parsed.body;
   const startIdx = body.indexOf(TOC_START);
   const endIdx = body.indexOf(TOC_END);
-  if (startIdx === -1 || endIdx === -1 || endIdx < startIdx) return false;
 
   const headings = toAnchor(collectHeadings(body));
   const tocLines = buildTocLines(headings);
 
-  const before = body.slice(0, startIdx + TOC_START.length);
-  const after = body.slice(endIdx);
-  const nextBody = `${before}\n\n${tocLines.join("\n")}\n${after}`;
+  let nextBody;
+  if (startIdx === -1 || endIdx === -1 || endIdx < startIdx) {
+    const title = body.match(/^#\s+.+(?:\r?\n|$)/m);
+    if (!title) return false;
+    const insertAt = title.index + title[0].length;
+    const before = body.slice(0, insertAt).replace(/\s*$/, "");
+    const after = body.slice(insertAt).replace(/^\s*/, "");
+    nextBody = `${before}\n\n${TOC_START}\n\n${tocLines.join("\n")}\n${TOC_END}\n\n${after}`;
+  } else {
+    const before = body.slice(0, startIdx + TOC_START.length);
+    const after = body.slice(endIdx);
+    nextBody = `${before}\n\n${tocLines.join("\n")}\n${after}`;
+  }
   const next = `${parsed.frontmatter}${nextBody.replace(/\s*$/, "")}\n`;
 
   if (next === raw) return false;
@@ -96,8 +90,18 @@ function refreshOneFile(filePath) {
   return true;
 }
 
+function listMarkdownFiles(dir, relative = "") {
+  const files = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const nextRelative = path.join(relative, entry.name);
+    if (entry.isDirectory()) files.push(...listMarkdownFiles(path.join(dir, entry.name), nextRelative));
+    else if (entry.isFile() && entry.name.endsWith(".md")) files.push(nextRelative);
+  }
+  return files;
+}
+
 function main() {
-  const files = fs.readdirSync(WIKI_DIR).filter((f) => f.endsWith(".md")).sort();
+  const files = listMarkdownFiles(WIKI_DIR).sort();
   let updated = 0;
   for (const file of files) {
     const full = path.join(WIKI_DIR, file);

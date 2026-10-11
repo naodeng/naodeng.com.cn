@@ -79,7 +79,7 @@ const navGroups: NavGroup[] = [
     items: [
       {
         key: "qa-wiki",
-        href: locale === "zh-cn" ? getRelativeLocaleUrl(locale, "/wiki") : "https://ray.run/wiki",
+        href: getRelativeLocaleUrl(locale, "/wiki"),
         label: t(NAV_QA_WIKI),
         icon: "menu_book",
         active: isWikiSection(),
@@ -88,7 +88,6 @@ const navGroups: NavGroup[] = [
             ? "查询软件测试、质量分析和测试自动化术语。"
             : "Look up software testing, QA, and test automation terminology.",
         meta: locale === "zh-cn" ? "200+ 个词条" : "200+ terms",
-        external: locale !== "zh-cn",
       },
       {
         key: "guild",

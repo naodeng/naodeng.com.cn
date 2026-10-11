@@ -27,7 +27,7 @@ export const EXTRA_PATHS = [
 /** 已移除的 Astro 示例页；保留路径用于验证 404 和无残留入口。 */
 export const RETIRED_DOCS_SLUGS = ["why-astro", "installation", "project-structure", "configuration", "routing"] as const;
 
-/** 百科词条 slug（与 src/content/wiki 对应，仅 zh-cn 有详情页） */
+/** 两种语言都发布的 Wiki 词条 slug（与中英文内容目录对应） */
 export const WIKI_SLUGS = [
   "acceptance-testing",
   "manual-testing",
@@ -47,14 +47,16 @@ export function getRetiredDocsPageUrls(): { locale: string; path: string; name: 
   return out;
 }
 
-/** 百科页（首页 + 词条）：zh-cn 有完整内容，en 仅首页且会跳转 ray.run */
+/** 双语 Wiki 首页和代表性词条页。 */
 export function getWikiPageUrls(): { locale: string; path: string; name: string }[] {
   const out: { locale: string; path: string; name: string }[] = [];
   for (const locale of LOCALES) {
     out.push({ locale, path: `/${locale}/wiki/`, name: "wiki-index" });
   }
-  for (const slug of WIKI_SLUGS) {
-    out.push({ locale: "zh-cn", path: `/zh-cn/wiki/${slug}/`, name: `wiki-${slug}` });
+  for (const locale of LOCALES) {
+    for (const slug of WIKI_SLUGS) {
+      out.push({ locale, path: `/${locale}/wiki/${slug}/`, name: `wiki-${slug}` });
+    }
   }
   return out;
 }

@@ -8,6 +8,7 @@ const ROOT = process.cwd();
 const DIST = path.join(ROOT, "dist");
 const MIN_META_DESCRIPTION_LENGTH = 70;
 const sitemapPath = path.join(DIST, "sitemap-0.xml");
+const WIKI_DIR = path.join(ROOT, "src", "content", "wiki");
 const failures = [];
 
 function walkHtmlFiles(dir) {
@@ -21,6 +22,41 @@ function walkHtmlFiles(dir) {
   return files;
 }
 
+function markdownSlugs(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
+    .map((entry) => entry.name.slice(0, -3).toLowerCase())
+    .sort();
+}
+
+function readCanonical(html) {
+  return html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1] ?? null;
+}
+
+function readAlternates(html) {
+  return [...html.matchAll(/<link\b[^>]*rel="alternate"[^>]*>/gi)].map((match) => {
+    const tag = match[0];
+    return {
+      lang: tag.match(/\bhreflang="([^"]+)"/i)?.[1] ?? "",
+      href: tag.match(/\bhref="([^"]+)"/i)?.[1] ?? "",
+    };
+  });
+}
+
+function readJsonLd(html) {
+  const schemas = [];
+  for (const match of html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi)) {
+    try {
+      schemas.push(JSON.parse(match[1]));
+    } catch {
+      failures.push("Wiki page contains malformed JSON-LD");
+    }
+  }
+  return schemas;
+}
+
+let sitemapUrls = [];
 if (!fs.existsSync(sitemapPath)) {
   failures.push("dist/sitemap-0.xml was not generated");
 } else {
@@ -28,10 +64,7 @@ if (!fs.existsSync(sitemapPath)) {
   if (sitemap.includes("<loc>https://inaodeng.com/</loc>")) {
     failures.push("noindex root redirect is present in sitemap-0.xml");
   }
-  if (sitemap.includes("https://inaodeng.com/en/wiki/")) {
-    failures.push("legacy English Wiki redirect URLs are present in sitemap-0.xml");
-  }
-  const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   const noindexSitemapUrls = sitemapUrls.filter((url) => {
     let parsed;
     try {
@@ -53,32 +86,36 @@ if (!fs.existsSync(sitemapPath)) {
         relativePath,
         pathname.endsWith("/") ? "index.html" : "",
       );
-      if (!pagePath.startsWith(`${DIST}${path.sep}`) || !fs.existsSync(pagePath)) {
-        continue;
-      }
-      const html = fs.readFileSync(pagePath, "utf8");
-      if (hasNoindexRobots(html)) return true;
+      if (!pagePath.startsWith(`${DIST}${path.sep}`) || !fs.existsSync(pagePath)) continue;
+      if (hasNoindexRobots(fs.readFileSync(pagePath, "utf8"))) return true;
     }
     return false;
   });
-  if (noindexSitemapUrls.length > 0) {
-    failures.push(`sitemap contains ${noindexSitemapUrls.length} noindex page(s)`);
+  if (noindexSitemapUrls.length > 0) failures.push(`sitemap contains ${noindexSitemapUrls.length} noindex page(s)`);
+  if (sitemapUrls.some((url) => /\/(?:en|zh-cn)\/wiki\/wiki\//i.test(url))) {
+    failures.push("legacy nested Wiki URLs are present in sitemap-0.xml");
   }
-  if (sitemapUrls.some((url) => /\/zh-cn\/wiki\/wiki\//i.test(url))) {
-    failures.push("legacy nested Chinese Wiki URLs are present in sitemap-0.xml");
+  if (sitemapUrls.some((url) => /\/(?:en|zh-cn)\/wiki\/[^/]+\.md\/?$/i.test(url))) {
+    failures.push("legacy Wiki .md URLs are present in sitemap-0.xml");
   }
-  if (sitemapUrls.some((url) => /\/zh-cn\/wiki\/[^/]+\.md\/?$/i.test(url))) {
-    failures.push("legacy Chinese Wiki .md URLs are present in sitemap-0.xml");
-  }
-  if (sitemapUrls.some((url) => /^https:\/\/inaodeng\.com\/zh-cn\/wiki\/[^/]*[A-Z][^/]*\/$/.test(url))) {
-    failures.push("uppercase Chinese Wiki detail URLs are present in sitemap-0.xml");
+  if (sitemapUrls.some((url) => /^https:\/\/inaodeng\.com\/(?:en|zh-cn)\/wiki\/[^/]*[A-Z][^/]*\/$/.test(url))) {
+    failures.push("uppercase Wiki detail URLs are present in sitemap-0.xml");
   }
 }
 
-const canonicalABTesting = path.join(DIST, "zh-cn", "wiki", "a-b-testing", "index.html");
-if (!fs.existsSync(canonicalABTesting)) {
-  failures.push("missing canonical Chinese Wiki page: /zh-cn/wiki/a-b-testing/");
+const zhWikiSlugs = markdownSlugs(WIKI_DIR);
+const enWikiSlugs = markdownSlugs(path.join(WIKI_DIR, "en"));
+const zhSlugSet = new Set(zhWikiSlugs);
+const enSlugSet = new Set(enWikiSlugs);
+if (zhWikiSlugs.length !== enWikiSlugs.length) {
+  failures.push(`Wiki content count mismatch: got ${zhWikiSlugs.length} zh-cn and ${enWikiSlugs.length} en pages`);
 }
+if (zhWikiSlugs.some((slug) => !enSlugSet.has(slug)) || enWikiSlugs.some((slug) => !zhSlugSet.has(slug))) {
+  failures.push("English and Chinese Wiki slug sets do not match");
+}
+
+const canonicalABTesting = path.join(DIST, "zh-cn", "wiki", "a-b-testing", "index.html");
+if (!fs.existsSync(canonicalABTesting)) failures.push("missing canonical Chinese Wiki page: /zh-cn/wiki/a-b-testing/");
 
 const redirectsPath = path.join(DIST, "_redirects");
 if (!fs.existsSync(redirectsPath)) {
@@ -90,29 +127,50 @@ if (!fs.existsSync(redirectsPath)) {
   }
 }
 
-for (const slug of ["software-testing", "decision-table-testing", "test-case"]) {
-  const file = path.join(DIST, "en", "wiki", slug, "index.html");
+function checkWikiPage(locale, slug) {
+  const pathname = `/${locale}/wiki/${slug}/`;
+  const file = path.join(DIST, locale, "wiki", slug, "index.html");
   if (!fs.existsSync(file)) {
-    failures.push(`missing generated English Wiki redirect: /en/wiki/${slug}/`);
-    continue;
+    failures.push(`missing generated Wiki page: ${pathname}`);
+    return;
   }
   const html = fs.readFileSync(file, "utf8");
-  if (!html.includes("https://ray.run/wiki")) {
-    failures.push(`English Wiki route does not redirect to ray.run: /en/wiki/${slug}/`);
+  if (hasNoindexRobots(html)) failures.push(`Wiki page is marked noindex: ${pathname}`);
+  if (readCanonical(html) !== `https://inaodeng.com${pathname}`) failures.push(`Wiki page has a non-self canonical: ${pathname}`);
+  const alternates = readAlternates(html);
+  const expectedEn = `https://inaodeng.com/en/wiki/${slug}/`;
+  const expectedZh = `https://inaodeng.com/zh-cn/wiki/${slug}/`;
+  if (!alternates.some((item) => item.href === expectedEn)) failures.push(`Wiki page is missing its English language alternate: ${pathname}`);
+  if (!alternates.some((item) => item.href === expectedZh)) failures.push(`Wiki page is missing its Chinese language alternate: ${pathname}`);
+  if (!sitemapUrls.includes(`https://inaodeng.com${pathname}`)) failures.push(`Wiki page is missing from the sitemap: ${pathname}`);
+  if (locale === "en") {
+    const schemas = readJsonLd(html);
+    const term = schemas.find((schema) => schema?.["@type"] === "DefinedTerm");
+    if (!term?.name || term.inDefinedTermSet?.name !== "QA Wiki") {
+      failures.push(`English DefinedTerm JSON-LD is missing English Wiki names: ${pathname}`);
+    }
   }
 }
+
+for (const slug of zhWikiSlugs) checkWikiPage("zh-cn", slug);
+for (const slug of enWikiSlugs) checkWikiPage("en", slug);
 
 const englishWikiIndex = path.join(DIST, "en", "wiki", "index.html");
 if (!fs.existsSync(englishWikiIndex)) {
   failures.push("missing generated English Wiki index: /en/wiki/");
 } else {
-  const englishWikiIndexHtml = fs.readFileSync(englishWikiIndex, "utf8");
-  if (!englishWikiIndexHtml.includes('content="noindex, follow"')) {
-    failures.push("English Wiki index is not noindex");
-  }
-  if (!englishWikiIndexHtml.includes("https://ray.run/wiki")) {
-    failures.push("English Wiki index is missing the ray.run/wiki link");
-  }
+  const html = fs.readFileSync(englishWikiIndex, "utf8");
+  const indexUrl = "https://inaodeng.com/en/wiki/";
+  if (hasNoindexRobots(html)) failures.push("English Wiki index is marked noindex");
+  if (readCanonical(html) !== indexUrl) failures.push("English Wiki index does not use its own canonical");
+  const alternates = readAlternates(html);
+  if (!alternates.some((item) => item.href === indexUrl)) failures.push("English Wiki index is missing its English language alternate");
+  if (!alternates.some((item) => item.href === "https://inaodeng.com/zh-cn/wiki/")) failures.push("English Wiki index is missing its Chinese language alternate");
+  if (!sitemapUrls.includes(indexUrl)) failures.push("English Wiki index is missing from the sitemap");
+  const schema = readJsonLd(html).find((item) => item?.["@type"] === "DefinedTermSet");
+  if (!schema || schema.name !== "QA Wiki") failures.push("English Wiki index has incorrect DefinedTermSet JSON-LD");
+  const visibleLinks = html.match(/class="wiki-letter-link"/g) ?? [];
+  if (visibleLinks.length !== enWikiSlugs.length) failures.push(`English Wiki index should list ${enWikiSlugs.length} terms; found ${visibleLinks.length}`);
 }
 
 const legacyRss = path.join(DIST, "index.xml");

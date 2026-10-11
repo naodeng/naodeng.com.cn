@@ -44,10 +44,20 @@ test.describe("百科（Wiki）", () => {
     await expect(page.locator("#aiwiki-search")).toBeVisible();
   });
 
-  test("en 百科首页：标题与 ray.run 外链可见", async ({ page, baseURL }) => {
+  test("en Wiki 首页：英文词条索引、搜索与本站许可入口可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/wiki/", { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: "QA Wiki", level: 1 }).first()).toBeVisible();
-    await expect(page.getByRole("link", { name: "ray.run/wiki" }).first()).toBeVisible();
+    await expect(page.locator(".wiki-letter-link").first()).toBeVisible();
+    await expect(page.locator(".wiki-letter-link[href='/en/wiki/acceptance-testing/']")).toContainText("Acceptance Testing");
+    await expect(page.locator("#wiki-search")).toBeVisible();
+    await expect(page.getByRole("link", { name: /copyright and licensing page/i })).toHaveAttribute("href", "/en/copyright/");
+  });
+
+  test("en Wiki 首页搜索会按英文词条过滤", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/en/wiki/", { waitUntil: "domcontentloaded" });
+    await page.locator("#wiki-search").fill("acceptance testing");
+    await expect(page.locator(".wiki-letter-link[href='/en/wiki/acceptance-testing/']")).toBeVisible();
+    await expect(page.locator(".wiki-letter-link[href='/en/wiki/manual-testing/']")).toBeHidden();
   });
 
   test("zh-cn 百科词条页 acceptance-testing：侧栏、正文、h1 可见", async ({ page, baseURL }) => {

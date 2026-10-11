@@ -1,17 +1,13 @@
 /**
- * Wiki markdown style check (non-structural)
+ * Check Wiki-specific Markdown issues.
  *
- * Checks:
- * 1) Space before English punctuation after Chinese char, e.g. "中文 ,"
- * 2) Indented code fences outside list context
- * 3) Inconsistent fenced code indent width inside list context (per file)
- *
- * Usage:
- *   node scripts/wiki-markdown-style-check.mjs
- *   node scripts/wiki-markdown-style-check.mjs --json
+ * Checks punctuation spacing outside code fences and catches Markdown blocks
+ * that the Markdown parser rendered as indented code. Fenced-code indentation
+ * is left to the CommonMark parser because valid indentation varies inside lists.
  */
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
+import { marked } from "marked";
 
 const WIKI_DIR = path.join(process.cwd(), "src", "content", "wiki");
 const JSON_OUT = process.argv.includes("--json");
@@ -20,130 +16,123 @@ const STRICT = process.argv.includes("--strict");
 function parseBody(content) {
   if (!content.startsWith("---\n")) return null;
   const end = content.indexOf("\n---\n", 4);
-  if (end === -1) return null;
-  return content.slice(end + 5);
+  return end < 0 ? null : content.slice(end + 5);
 }
 
-function getPrevNonEmpty(lines, i) {
-  for (let p = i - 1; p >= 0; p -= 1) {
-    if (lines[p].trim() !== "") return lines[p];
+function listMarkdownFiles(dir, relative = "") {
+  const files = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const nextRelative = path.join(relative, entry.name);
+    if (entry.isDirectory()) files.push(...listMarkdownFiles(path.join(dir, entry.name), nextRelative));
+    else if (entry.isFile() && entry.name.endsWith(".md")) files.push(nextRelative);
   }
-  return "";
+  return files;
 }
 
-function isLikelyListContext(prevLine) {
-  return /^\s*(?:[-*]|\d+\.)\s+/.test(prevLine) || /^\s{2,}\S/.test(prevLine);
+function isMarkdownFragmentRenderedAsCode(text) {
+  const lines = text.split(/\r?\n/);
+  if (lines.some((line) => /^\s*(?:`{3,}|~{3,})\s*$/.test(line))) return true;
+  if (lines.some((line) => /^ {0,3}#{1,6}\s+\S/.test(line))) return true;
+  const listItems = lines.filter((line) => /^ {0,3}(?:[-+*]\s+|\d+[.)]\s+)/.test(line));
+  return listItems.length > 1;
 }
 
-function main() {
-  const files = fs.readdirSync(WIKI_DIR).filter((f) => f.endsWith(".md")).sort();
+function collectIndentedMarkdown(tokens, body, file, result) {
+  const visited = new Set();
+  let searchFrom = 0;
 
-  const result = {
-    files: files.length,
-    issues: {
-      cnSpaceBeforePunct: 0,
-      indentedFenceOutsideList: 0,
-      inconsistentListFenceIndent: 0,
-    },
-    samples: {
-      cnSpaceBeforePunct: [],
-      indentedFenceOutsideList: [],
-      inconsistentListFenceIndent: [],
-    },
-  };
+  function visit(tokenList) {
+    for (const token of tokenList ?? []) {
+      if (!token || typeof token !== "object" || visited.has(token)) continue;
+      visited.add(token);
 
-  for (const file of files) {
-    const full = path.join(WIKI_DIR, file);
-    const raw = fs.readFileSync(full, "utf-8");
-    const body = parseBody(raw);
-    if (body == null) continue;
-
-    const lines = body.split(/\r?\n/);
-    const listFenceIndents = new Set();
-    let inFence = false;
-
-    for (let i = 0; i < lines.length; i += 1) {
-      const line = lines[i];
-
-      if (!inFence) {
-        // Space before punctuation in mixed-language text, e.g.:
-        // "中文 ," / "SpecFlow ："
-        const punctRegex = /([\u4e00-\u9fffA-Za-z0-9\]\)])\s+([,.;:!?，。！？；：])/g;
-        let match;
-        while ((match = punctRegex.exec(line)) !== null) {
-          const punct = match[2];
-          const afterPunct = line[match.index + match[0].length] || "";
-          // Keep ".NET/.com/1.23" style tokens.
-          if (punct === "." && /[A-Za-z0-9]/.test(afterPunct)) continue;
-
-          result.issues.cnSpaceBeforePunct += 1;
-          if (result.samples.cnSpaceBeforePunct.length < 30) {
-            result.samples.cnSpaceBeforePunct.push({
-              file,
-              line: i + 1,
-              text: line.trim().slice(0, 160),
-            });
-          }
-        }
-      }
-
-      const fenceMatch = line.match(/^(\s*)```/);
-      if (!fenceMatch) continue;
-
-      const indent = fenceMatch[1].length;
-      const prev = getPrevNonEmpty(lines, i);
-      const inListContext = isLikelyListContext(prev);
-
-      if (indent > 0 && !inListContext) {
-        result.issues.indentedFenceOutsideList += 1;
-        if (result.samples.indentedFenceOutsideList.length < 30) {
-          result.samples.indentedFenceOutsideList.push({
+      if (token.type === "code" && token.codeBlockStyle === "indented" && isMarkdownFragmentRenderedAsCode(token.text ?? "")) {
+        const position = token.raw ? body.indexOf(token.raw, searchFrom) : -1;
+        if (position >= 0) searchFrom = position + token.raw.length;
+        const line = position < 0 ? null : body.slice(0, position).split("\n").length;
+        result.issues.markdownRenderedAsIndentedCode += 1;
+        if (result.samples.markdownRenderedAsIndentedCode.length < 30) {
+          result.samples.markdownRenderedAsIndentedCode.push({
             file,
-            line: i + 1,
-            indent,
-            text: line.trim(),
+            ...(line === null ? {} : { line }),
+            text: (token.text ?? "").trim().slice(0, 160),
           });
         }
       }
 
-      if (indent > 0 && inListContext) listFenceIndents.add(indent);
-      inFence = !inFence;
-    }
-
-    if (listFenceIndents.size > 1) {
-      result.issues.inconsistentListFenceIndent += 1;
-      if (result.samples.inconsistentListFenceIndent.length < 30) {
-        result.samples.inconsistentListFenceIndent.push({
-          file,
-          indents: [...listFenceIndents].sort((a, b) => a - b),
-        });
+      if (Array.isArray(token.tokens)) visit(token.tokens);
+      if (Array.isArray(token.items)) {
+        for (const item of token.items) visit(item?.tokens ?? []);
       }
     }
   }
 
-  const totalIssues =
-    result.issues.cnSpaceBeforePunct +
-    result.issues.indentedFenceOutsideList +
-    result.issues.inconsistentListFenceIndent;
+  visit(tokens);
+}
 
+function scanPunctuation(body, file, result) {
+  const lines = body.split(/\r?\n/);
+  let fence = null;
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    const marker = line.match(/^\s*(`{3,}|~{3,})(.*)$/);
+
+    if (fence) {
+      const closing = line.match(/^\s*(`+|~+)\s*$/);
+      if (closing && closing[1][0] === fence.character && closing[1].length >= fence.length) fence = null;
+      continue;
+    }
+
+    if (marker && !(marker[1][0] === "`" && marker[2].includes("`"))) {
+      fence = { character: marker[1][0], length: marker[1].length };
+      continue;
+    }
+
+    const punctuation = /([\u4e00-\u9fffA-Za-z0-9\]\)])\s+([,.;:!?，。！？；：])/g;
+    let match;
+    while ((match = punctuation.exec(line)) !== null) {
+      const following = line[punctuation.lastIndex] ?? "";
+      if (match[2] === "." && /[A-Za-z0-9]/.test(following)) continue;
+      result.issues.cnSpaceBeforePunct += 1;
+      if (result.samples.cnSpaceBeforePunct.length < 30) {
+        result.samples.cnSpaceBeforePunct.push({ file, line: index + 1, text: line.trim().slice(0, 160) });
+      }
+    }
+  }
+}
+
+function main() {
+  const files = listMarkdownFiles(WIKI_DIR).sort();
+  const result = {
+    files: files.length,
+    issues: { cnSpaceBeforePunct: 0, markdownRenderedAsIndentedCode: 0 },
+    samples: { cnSpaceBeforePunct: [], markdownRenderedAsIndentedCode: [] },
+  };
+
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(WIKI_DIR, file), "utf8");
+    const body = parseBody(raw);
+    if (body === null) continue;
+    scanPunctuation(body, file, result);
+    collectIndentedMarkdown(marked.lexer(body), body, file, result);
+  }
+
+  const totalIssues = Object.values(result.issues).reduce((total, count) => total + count, 0);
   if (JSON_OUT) {
     console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("Wiki style check summary");
     console.log(`Files scanned: ${result.files}`);
     console.log(`- cnSpaceBeforePunct: ${result.issues.cnSpaceBeforePunct}`);
-    console.log(`- indentedFenceOutsideList: ${result.issues.indentedFenceOutsideList}`);
-    console.log(`- inconsistentListFenceIndent(files): ${result.issues.inconsistentListFenceIndent}`);
+    console.log(`- markdownRenderedAsIndentedCode: ${result.issues.markdownRenderedAsIndentedCode}`);
     if (totalIssues > 0) {
       console.log("\nSample issues:");
-      result.samples.cnSpaceBeforePunct.slice(0, 10).forEach((x) =>
-        console.log(`- [punct] ${x.file}:${x.line} ${x.text}`)
+      result.samples.cnSpaceBeforePunct.slice(0, 10).forEach((item) =>
+        console.log(`- [punct] ${item.file}:${item.line} ${item.text}`)
       );
-      result.samples.indentedFenceOutsideList.slice(0, 10).forEach((x) =>
-        console.log(`- [fence] ${x.file}:${x.line} indent=${x.indent}`)
-      );
-      result.samples.inconsistentListFenceIndent.slice(0, 10).forEach((x) =>
-        console.log(`- [indent-set] ${x.file} -> ${x.indents.join(",")}`)
+      result.samples.markdownRenderedAsIndentedCode.slice(0, 10).forEach((item) =>
+        console.log(`- [markdown-as-code] ${item.file}${item.line ? `:${item.line}` : ""} ${item.text.replace(/\n/g, " ")}`)
       );
     }
   }

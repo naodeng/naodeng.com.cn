@@ -2,22 +2,21 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Reduce the documented 404 coverage caused by legacy English Wiki URLs while keeping redirect and noindex pages out of the sitemap, and add a build-time guard for this class of SEO regression.
+**Goal:** Resolve missing English Wiki content by generating local English detail pages and add a build-time guard for page and sitemap coverage.
 
-**Architecture:** Reuse the existing localized Wiki route. Generate legacy English Wiki paths from the existing Wiki collection and return the route's intended external redirect. Keep the Astro sitemap filter as the indexation boundary, then validate the generated static output with a small zero-dependency Node script.
+**Architecture:** Reuse the localized Wiki route and pair each English detail page with its Chinese counterpart. Include indexable English detail pages in the Astro sitemap, then validate generated pages and sitemap entries with a small zero-dependency Node script.
 
 **Tech Stack:** Astro 6, TypeScript/Astro components, Node.js ESM, npm scripts.
 
 ---
 
-### Task 1: Generate the intended English Wiki redirects
+### Task 1: Generate local English Wiki pages
 
 **Files:**
 - Modify: `src/pages/[lang]/wiki/[...slug].astro`
 
-- [ ] Add English redirect paths for every Wiki entry alongside the existing Chinese content paths.
-- [ ] Preserve the existing `Astro.redirect("https://ray.run/wiki#<slug>")` behavior for English paths.
-- [ ] Keep the sitemap filter excluding `/en/wiki/` redirect pages.
+- [ ] Generate a local English detail page for each English Wiki entry alongside the existing Chinese content pages.
+- [ ] Validate that each English page has a self-canonical URL and appears in the XML sitemap.
 
 ### Task 2: Add generated SEO output validation
 
@@ -25,8 +24,8 @@
 - Create: `scripts/seo-build-check.mjs`
 - Modify: `package.json`
 
-- [ ] Validate that `dist/sitemap-0.xml` exists and does not contain the noindex root URL or `/en/wiki/` redirect URLs.
-- [ ] Validate that representative generated English Wiki URLs exist and contain the intended redirect target.
+- [ ] Validate that the generated sitemap contains English Wiki index and detail URLs while excluding noindex pages.
+- [ ] Validate that representative English Wiki pages contain local article content, language metadata, and a self-canonical URL.
 - [ ] Exit non-zero with actionable diagnostics when these invariants fail.
 
 ### Task 3: Verify the remediation

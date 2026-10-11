@@ -36,6 +36,7 @@ order: 0
       - [微服务测试中如何保证数据一致性？](#微服务测试中如何保证数据一致性)
       - [如何处理微服务测试中的服务依赖关系？](#如何处理微服务测试中的服务依赖关系)
 <!-- TOC END -->
+
 微服务测试评估每个单独的微服务的功能，确保它们作为一个统一的应用程序紧密结合，并且能够适应单独的故障。
 
 ## 有关微服务测试的问题吗？
@@ -44,19 +45,19 @@ order: 0
 
 #### 什么是微服务测试？
 
-[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 涉及验证分布式系统中单独的、可独立部署的服务。每个服务都封装了特定的业务功能并通过网络进行通信，因此需要一种测试方法来确保各个服务及其交互的正确性。
-  **隔离测试**至关重要，重点关注受控环境中的单个微服务。这包括用于内部逻辑的[单元测试](https://inaodeng.com/zh-cn/wiki/unit-testing/) 和带有[数据库](https://inaodeng.com/zh-cn/wiki/database/) 或其他基础设施组件的[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)。
+[微服务测试](/zh-cn/wiki/microservices-testing/) 涉及验证分布式系统中单独的、可独立部署的服务。每个服务都封装了特定的业务功能并通过网络进行通信，因此需要一种测试方法来确保各个服务及其交互的正确性。
+  **隔离测试**至关重要，重点关注受控环境中的单个微服务。这包括用于内部逻辑的[单元测试](/zh-cn/wiki/unit-testing/) 和带有[数据库](/zh-cn/wiki/database/) 或其他基础设施组件的[集成测试](/zh-cn/wiki/integration-testing/)。
   **消费者驱动的合约测试**对于验证服务之间的交互至关重要。它确保对服务的任何更改都不会破坏与消费者建立的合同。
-  **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)** 验证整个系统，确保所有服务按预期协同工作。然而，由于其复杂性和资源密集型性质，它的执行频率通常较低。
+  **[端到端测试](/zh-cn/wiki/end-to-end-testing/)** 验证整个系统，确保所有服务按预期协同工作。然而，由于其复杂性和资源密集型性质，它的执行频率通常较低。
   **服务虚拟化**用于模拟服务行为，允许测试服务交互，而无需激活或开发所有服务。
   **Docker** 容器通常用于创建一致、隔离的环境来测试服务，而 **CI/CD 管道** 自动化测试过程，提供有关系统运行状况的快速反馈。
-  常用的工具包括用于单元测试的 **JUnit**、**TestNG**、**RestAssured**、**Mockito** 和 **WireMock**，以及用于合约测试的 [集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/) 和 **Pact** 或 **Spring Cloud Contract**。
+  常用的工具包括用于单元测试的 **JUnit**、**TestNG**、**RestAssured**、**Mockito** 和 **WireMock**，以及用于合约测试的 [集成测试](/zh-cn/wiki/integration-testing/) 和 **Pact** 或 **Spring Cloud Contract**。
   为了确保数据一致性，应用了事务测试或使用外部服务的测试替身等技术。处理服务依赖关系涉及存根或模拟这些服务以专注于被测试的服务。
-  挑战包括处理服务相互依赖性、维护[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)，以及确保跨服务及其交互有足够的[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)。
+  挑战包括处理服务相互依赖性、维护[测试环境](/zh-cn/wiki/test-environment/)，以及确保跨服务及其交互有足够的[测试覆盖率](/zh-cn/wiki/test-coverage/)。
 
 #### 为什么测试在微服务架构中很重要？
 
-由于其分布式特性，测试在**微服务架构**中至关重要。每个微服务都是一个独立的单元，必须在更大的生态系统中正常运行。服务的**隔离**意味着其中一个服务的故障可能会导致整个系统产生级联效应。测试可确保每项服务满足其**功能**和**非[功能需求](https://inaodeng.com/zh-cn/wiki/functional-requirements/)**，保持整体**系统完整性**和**可靠性**。
+由于其分布式特性，测试在**微服务架构**中至关重要。每个微服务都是一个独立的单元，必须在更大的生态系统中正常运行。服务的**隔离**意味着其中一个服务的故障可能会导致整个系统产生级联效应。测试可确保每项服务满足其**功能**和**非[功能需求](/zh-cn/wiki/functional-requirements/)**，保持整体**系统完整性**和**可靠性**。
   在微服务中，服务通常通过网络进行通信，这引入了**延迟**和**容错**作为关键问题。测试验证服务可以正常处理网络问题。微服务的**自主性**还意味着它们可以独立开发、部署和扩展。测试验证这些操作不会中断服务本身或其消费者。
   此外，微服务通常是使用不同的**语言**和**框架**开发的。测试对于确保这些异构服务无缝交互至关重要。它还有助于验证服务之间的**安全**协议，因为如果没有适当的保护，微服务架构可能更容易受到攻击。
   最后，测试为**持续交付**流程提供了信心。由于微服务经常更新，自动化测试必须保证新的更改不会破坏现有功能。这对于在不牺牲质量的情况下维持**快节奏的交付周期**至关重要。
@@ -66,13 +67,13 @@ order: 0
 
 整体测试通常涉及**单个、统一的代码库**，其中组件紧密耦合并作为一个整体进行测试。这通常意味着：
 
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**很简单，因为所有组件都在同一环境中。
+- **[集成测试](/zh-cn/wiki/integration-testing/)**很简单，因为所有组件都在同一环境中。
 
-- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)**无需过多担心网络调用或远程服务故障即可完成。
+- **[端到端测试](/zh-cn/wiki/end-to-end-testing/)**无需过多担心网络调用或远程服务故障即可完成。
 
-- **测试[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**更简单，只需配置一个环境。
+- **测试[环境搭建](/zh-cn/wiki/setup/)**更简单，只需配置一个环境。
 
-- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**是集中的，降低了维护跨服务一致性的复杂性。 相比之下，[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 处理的是**分布式系统**，其中服务是松散耦合的，并且可以独立开发、部署和扩展。这导致：
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**是集中的，降低了维护跨服务一致性的复杂性。 相比之下，[微服务测试](/zh-cn/wiki/microservices-testing/) 处理的是**分布式系统**，其中服务是松散耦合的，并且可以独立开发、部署和扩展。这导致：
 
 - **复杂性增加**在设置测试环境时，因为每个服务可能有自己的依赖项和配置。
 
@@ -84,15 +85,15 @@ order: 0
 
 - **合同测试**对于确保维持服务之间商定的合同变得至关重要。
 
-- **CI/CD 管道**在自动化测试过程中发挥着重要作用，因为它们可以实现单个服务的持续测试和部署。 总体而言，[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 需要更细粒度的方法，重点关注单个服务功能、服务间通信以及在独立部署服务的情况下维护稳定的系统。
+- **CI/CD 管道**在自动化测试过程中发挥着重要作用，因为它们可以实现单个服务的持续测试和部署。 总体而言，[微服务测试](/zh-cn/wiki/microservices-testing/) 需要更细粒度的方法，重点关注单个服务功能、服务间通信以及在独立部署服务的情况下维护稳定的系统。
 
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**很简单，因为所有组件都在同一环境中。
+- **[集成测试](/zh-cn/wiki/integration-testing/)**很简单，因为所有组件都在同一环境中。
 
-- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)**无需过多担心网络调用或远程服务故障即可完成。
+- **[端到端测试](/zh-cn/wiki/end-to-end-testing/)**无需过多担心网络调用或远程服务故障即可完成。
 
-- **测试[环境搭建](https://inaodeng.com/zh-cn/wiki/setup/)**更简单，只需配置一个环境。
+- **测试[环境搭建](/zh-cn/wiki/setup/)**更简单，只需配置一个环境。
 
-- **[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 管理**是集中的，降低了维护跨服务一致性的复杂性。
+- **[测试数据](/zh-cn/wiki/test-data/) 管理**是集中的，降低了维护跨服务一致性的复杂性。
 
 - **复杂性增加**在设置测试环境时，因为每个服务可能有自己的依赖项和配置。
 
@@ -113,28 +114,21 @@ order: 0
 测试微服务的不同策略侧重于验证单个服务、它们的交互以及整体系统行为：
 
 - **组件测试**：隔离单个微服务以测试其功能，通过使用存根或模拟忽略其依赖项。
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：验证微服务之间或与外部系统的交互，确保[API](https://inaodeng.com/zh-cn/wiki/api/) 和通信协议按预期工作。
+- **[集成测试](/zh-cn/wiki/integration-testing/)**：验证微服务之间或与外部系统的交互，确保[API](/zh-cn/wiki/api/) 和通信协议按预期工作。
 - **合同测试**：确保维护服务之间的通信合同，通常使用 Pact 等工具。
-- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)**：验证整个系统的工作流程，从用户界面到所有微服务再到数据存储，确保系统满足定义的要求。
+- **[端到端测试](/zh-cn/wiki/end-to-end-testing/)**：验证整个系统的工作流程，从用户界面到所有微服务再到数据存储，确保系统满足定义的要求。
 - **消费者驱动的合同测试**：涉及从消费者的角度创建合同，以确保服务满足他们的期望。
-- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：评估系统在负载下的行为，检查响应时间、吞吐量和资源利用率。
+- **[性能测试](/zh-cn/wiki/performance-testing/)**：评估系统在负载下的行为，检查响应时间、吞吐量和资源利用率。
 - **混沌测试**：将故障引入系统以测试其弹性和回退机制的有效性。
-- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)**：识别微服务及其通信通道中的漏洞。
+- **[安全测试](/zh-cn/wiki/security-testing/)**：识别微服务及其通信通道中的漏洞。
 - **可观察性测试**：确保系统的日志记录、监控和警报机制能够有效诊断问题。 每种策略对于确保微服务架构的健壮可靠都起着至关重要的作用，并且它们通常结合使用以实现全面覆盖。
 
-- **组件测试**：隔离单个微服务以测试其功能，通过使用存根或模拟忽略其依赖项。
-- **[集成测试](https://inaodeng.com/zh-cn/wiki/integration-testing/)**：验证微服务之间或与外部系统的交互，确保[API](https://inaodeng.com/zh-cn/wiki/api/) 和通信协议按预期工作。
-- **合同测试**：确保维护服务之间的通信合同，通常使用 Pact 等工具。
-- **[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/)**：验证整个系统的工作流程，从用户界面到所有微服务再到数据存储，确保系统满足定义的要求。
-- **消费者驱动的合同测试**：涉及从消费者的角度创建合同，以确保服务满足他们的期望。
-- **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)**：评估系统在负载下的行为，检查响应时间、吞吐量和资源利用率。
-- **混沌测试**：将故障引入系统以测试其弹性和回退机制的有效性。
-- **[安全测试](https://inaodeng.com/zh-cn/wiki/security-testing/)**：识别微服务及其通信通道内的漏洞。
+- **[安全测试](/zh-cn/wiki/security-testing/)**：识别微服务及其通信通道内的漏洞。
 - **可观察性测试**：确保系统的日志记录、监控和警报机制能够有效诊断问题。
 
 #### 契约测试在微服务中如何工作？
 
-契约测试是微服务中使用的一种技术，用于确保不同服务之间的交互按预期工作。它的重点是验证**[API](https://inaodeng.com/zh-cn/wiki/api/) 合同**（服务消费者和服务提供者的期望）是否得到满足。
+契约测试是微服务中使用的一种技术，用于确保不同服务之间的交互按预期工作。它的重点是验证**[API](/zh-cn/wiki/api/) 合同**（服务消费者和服务提供者的期望）是否得到满足。
   它的工作原理如下：
 
 1. **定义合约**：每个服务的团队编写一个合约，定义其服务 API 的预期请求和响应。
@@ -144,7 +138,7 @@ order: 0
 5. **验证兼容性**：如果两组测试均通过，则认为服务是兼容的。
 6. **自动化**：合同测试集成到 CI/CD 管道中以自动验证更改。 合同测试有助于及早检测集成问题，减少端到端测试的需求，并实现更快、更可靠的部署。当服务由不同团队开发或服务频繁更新时，它特别有用。 在 JavaScript 中使用 Pact 进行合约测试的示例：
 
-```
+  ```
   const { Pact } = require('@pact-foundation/pact');
   const { like } = Pact.Matchers;
   describe('Consumer', () => {
@@ -163,12 +157,12 @@ order: 0
       // Execute consumer test logic to validate the contract
     });
   });
-```
+  ```
 此测试设置对 `/data` 的 `GET` 请求的期望，并验证提供程序是否使用 `200` 状态和与指定格式匹配的正文进行响应。
 
 #### 服务虚拟化在微服务测试中的作用是什么？
 
-服务虚拟化通过模拟分布式系统中某些组件的行为，在 **[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/)** 中发挥着关键作用。这允许测试人员：
+服务虚拟化通过模拟分布式系统中某些组件的行为，在 **[微服务测试](/zh-cn/wiki/microservices-testing/)** 中发挥着关键作用。这允许测试人员：
 
 - **隔离**测试中的微服务，确保测试不会受到依赖服务的不稳定或不可用的影响。
 
@@ -178,21 +172,13 @@ order: 0
 
 - **加速**通过消除等待实际依赖服务可用和可操作的需要来简化测试过程，特别是当这些服务同时开发或维护时。
 
-- **降低成本**与设置和维护全面测试环境相关，因为虚拟化服务需要更少的资源。 通过使用服务虚拟化，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以实现更高水平的**[测试覆盖率](https://inaodeng.com/zh-cn/wiki/test-coverage/)** 和对微服务功能的**信心**，即使在难以用实际服务复制的复杂场景中也是如此。它是确保微服务能够在分布式系统中可靠地通信和运行的一项重要技术，无论其依赖项的状态或可用性如何。
-
-- **隔离**测试中的微服务，确保测试不会受到依赖服务的不稳定或不可用的影响。
-
-- **模拟**依赖服务的各种状态，这些状态在真实环境中可能难以实现，例如服务停机、响应缓慢或特定的数据条件。
-
-- **测试**受控环境中的微服务，可以操纵依赖服务的行为来验证微服务的弹性和错误处理。
-
-- **加速**通过消除等待实际依赖服务可用和可操作的需要来简化测试过程，特别是当这些服务同时开发或维护时。
+- **降低成本**与设置和维护全面测试环境相关，因为虚拟化服务需要更少的资源。 通过使用服务虚拟化，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以实现更高水平的**[测试覆盖率](/zh-cn/wiki/test-coverage/)** 和对微服务功能的**信心**，即使在难以用实际服务复制的复杂场景中也是如此。它是确保微服务能够在分布式系统中可靠地通信和运行的一项重要技术，无论其依赖项的状态或可用性如何。
 
 - **降低成本**与设置和维护全面测试环境相关，因为虚拟化服务需要更少的资源。
 
 #### 微服务架构中端到端测试的目的是什么？
 
-微服务架构中的[端到端测试](https://inaodeng.com/zh-cn/wiki/end-to-end-testing/) 可确保整个应用程序（从前端到后端）作为一个内聚单元正确运行。它验证所有服务的集成工作流程和数据完整性，模拟真实的用户场景。这种类型的测试至关重要，因为它：
+微服务架构中的[端到端测试](/zh-cn/wiki/end-to-end-testing/) 可确保整个应用程序（从前端到后端）作为一个内聚单元正确运行。它验证所有服务的集成工作流程和数据完整性，模拟真实的用户场景。这种类型的测试至关重要，因为它：
 
 - **验证用户体验**：确保系统满足业务需求和用户期望。
 - **检测系统范围的问题**：识别微服务之间交互产生的问题，这些问题可能无法单独捕获。
@@ -204,34 +190,31 @@ order: 0
 
 #### 微服务测试常用哪些工具？
 
-[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 的常用工具包括：
+[微服务测试](/zh-cn/wiki/microservices-testing/) 的常用工具包括：
 
-- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**和 **Insomnia** ：用于 API 测试，允许对微服务端点进行手动和自动请求。
+- **[Postman](/zh-cn/wiki/postman/)**和 **Insomnia** ：用于 API 测试，允许对微服务端点进行手动和自动请求。
 
-- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)** ：用于性能测试，模拟微服务上的各种负载场景。
+- **[JMeter](/zh-cn/wiki/jmeter/)** ：用于性能测试，模拟微服务上的各种负载场景。
 - **WireMock**和 **Mountebank** ：用于服务虚拟化，在测试期间模拟外部服务。
 
 - **RestAssured** ：用于测试 Java 中的 RESTful API，提供特定于域的语言。
 - **Pact** ：用于合约测试，确保服务使用者和提供者之间的兼容性。
 - **Cucumber** ：对于行为驱动开发（BDD），用自然语言定义测试。
-- **[selenium](https://inaodeng.com/zh-cn/wiki/selenium/)** ：用于与微服务交互的 Web 应用程序的端到端测试。
+- **[selenium](/zh-cn/wiki/selenium/)** ：用于与微服务交互的 Web 应用程序的端到端测试。
 - **TestContainers** ：用于在集成测试期间在 Docker 容器中创建数据库或服务的一次性实例。
 - **Kubernetes**：与测试框架一起使用时，它可以编排复杂的测试环境。
 - **加特林**：用于高级性能和负载测试，支持复杂场景。
 - **Newman** ：Postman 的命令行配套工具，允许 Postman 测试在 CI/CD 管道中运行。
-- **耶格**和 **Zipkin**：用于分布式跟踪，帮助监控跨微服务的事务并对其进行故障排除。 这些工具集成到开发和部署管道的各个阶段，有助于微服务的持续测试和交付。它们是根据测试策略的特定需求来选择的，例如[API](https://inaodeng.com/zh-cn/wiki/api/)验证、[负载测试](https://inaodeng.com/zh-cn/wiki/load-testing/)、服务虚拟化或端到端[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)。
+- **耶格**和 **Zipkin**：用于分布式跟踪，帮助监控跨微服务的事务并对其进行故障排除。 这些工具集成到开发和部署管道的各个阶段，有助于微服务的持续测试和交付。它们是根据测试策略的特定需求来选择的，例如[API](/zh-cn/wiki/api/)验证、[负载测试](/zh-cn/wiki/load-testing/)、服务虚拟化或端到端[验证 ](/zh-cn/wiki/verification/)。
 
-- **[Postman](https://inaodeng.com/zh-cn/wiki/postman/)**和 **Insomnia** ：用于 API 测试，允许对微服务端点进行手动和自动请求。
-
-- **[JMeter](https://inaodeng.com/zh-cn/wiki/jmeter/)** ：用于性能测试，模拟微服务上的各种负载场景。
-- **WireMock**和 **Mountebank** ：用于服务虚拟化，在测试期间模拟外部服务。
+- **[Postman](/zh-cn/wiki/postman/)**和 **Insomnia** ：用于 API 测试，允许对微服务端点进行手动和自动请求。
 
     和
     **Zipkin**：用于分布式跟踪，帮助监控跨微服务的事务并对其进行故障排除。
 
 #### Docker 如何用于微服务测试？
 
-Docker 通过创建模仿生产系统的**隔离环境**来简化[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/)。它允许您将微服务及其依赖项打包到容器中，该容器可以在不同环境中一致运行。以下是 Docker 的使用方法：
+Docker 通过创建模仿生产系统的**隔离环境**来简化[微服务测试](/zh-cn/wiki/microservices-testing/)。它允许您将微服务及其依赖项打包到容器中，该容器可以在不同环境中一致运行。以下是 Docker 的使用方法：
 
 - **隔离**：每个微服务都可以在其容器内进行隔离测试，减少来自其他服务的干扰。
 - **一致性**：Docker 确保微服务以相同的方式运行，无论部署在哪里，这对于可靠的测试至关重要。
@@ -240,30 +223,30 @@ Docker 通过创建模仿生产系统的**隔离环境**来简化[微服务测�
 - **数据卷管理**：Docker 卷可用于在测试期间管理和保存数据，这对于有状态服务至关重要。
 - **CI/CD 集成**：Docker 容器可以轻松集成到 CI/CD 管道中，从而实现每个构建和部署的自动化测试。 以下是使用 Docker Compose 运行测试的示例：
 
-```
-  version: '3'
-  services:
-    web:
-      build: .
-      ports:
-- "5000:5000"
-      depends_on:
-- db
-    db:
-      image: postgres
-      environment:
-        POSTGRES_DB: mydb
-        POSTGRES_USER: user
-        POSTGRES_PASSWORD: password
-```
-此 `docker-compose.yml` 文件定义了一个依赖于 PostgreSQL [数据库](https://inaodeng.com/zh-cn/wiki/database/) 的 Web 服务。您可以运行 `docker-compose up` 来启动服务并针对此环境执行测试。
+  ```
+    version: '3'
+    services:
+      web:
+        build: .
+        ports:
+  - "5000:5000"
+        depends_on:
+  - db
+      db:
+        image: postgres
+        environment:
+          POSTGRES_DB: mydb
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+  ```
+此 `docker-compose.yml` 文件定义了一个依赖于 PostgreSQL [数据库](/zh-cn/wiki/database/) 的 Web 服务。您可以运行 `docker-compose up` 来启动服务并针对此环境执行测试。
 
 #### CI/CD 管道在微服务测试中的作用是什么？
 
-CI/CD 管道通过实现**持续集成**和**持续交付**，在[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 中发挥着至关重要的作用。这些管道自动化了构建、测试和部署微服务的过程，确保有效、可靠地验证和发布更改。
+CI/CD 管道通过实现**持续集成**和**持续交付**，在[微服务测试](/zh-cn/wiki/microservices-testing/) 中发挥着至关重要的作用。这些管道自动化了构建、测试和部署微服务的过程，确保有效、可靠地验证和发布更改。
   在微服务的背景下，CI/CD 管道有助于：
 
-- **[自动化测试](https://inaodeng.com/zh-cn/wiki/automated-testing/)** ：代码提交后，管道会自动运行一套测试，包括单元、集成和 API 测试，以验证微服务的功能和交互。
+- **[自动化测试](/zh-cn/wiki/automated-testing/)** ：代码提交后，管道会自动运行一套测试，包括单元、集成和 API 测试，以验证微服务的功能和交互。
 - **快速反馈**：开发人员会立即收到有关其更改的反馈，从而可以快速识别和解决问题。
 - **部署自动化**：管道可以将微服务部署到各种环境，支持在密切模仿生产的条件下进行测试。
 - **版本控制**：它们管理微服务的版本，确保更改的兼容性和可追溯性。
@@ -275,35 +258,35 @@ CI/CD 管道通过实现**持续集成**和**持续交付**，在[微服务测�
 
 #### 微服务测试中常见的挑战有哪些？
 
-由于架构的分布式特性，[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 提出了独特的挑战。 **服务隔离**很困难，因为每个服务都有自己的依赖关系，这可能导致复杂的交互网络。在没有完整上下文的情况下进行隔离测试可能会错过只有在集成所有服务时才会出现的问题。
+由于架构的分布式特性，[微服务测试](/zh-cn/wiki/microservices-testing/) 提出了独特的挑战。 **服务隔离**很困难，因为每个服务都有自己的依赖关系，这可能导致复杂的交互网络。在没有完整上下文的情况下进行隔离测试可能会错过只有在集成所有服务时才会出现的问题。
   **网络复杂性**随着服务数量的增加而增加，使得预测和测试所有可能的通信路径和故障变得更加困难。网络延迟和容错能力成为测试的关键方面。
-  **数据管理**是另一个挑战。由于每个微服务都可能管理自己的[数据库](https://inaodeng.com/zh-cn/wiki/database/)，因此在测试期间确保跨服务的数据一致性和完整性需要仔细的规划和工具。
+  **数据管理**是另一个挑战。由于每个微服务都可能管理自己的[数据库](/zh-cn/wiki/database/)，因此在测试期间确保跨服务的数据一致性和完整性需要仔细的规划和工具。
   服务的**版本控制**可能会导致兼容性问题。确保测试对于服务的多个版本都有效并且它们可以处理版本更新至关重要。
   **可观察性**在微服务环境中至关重要但具有挑战性。了解系统状态和诊断故障需要全面的日志记录、监视和跟踪功能。
-  **[性能测试](https://inaodeng.com/zh-cn/wiki/performance-testing/)** 必须考虑服务间通信的开销以及服务交互中潜在的瓶颈，这可能很难准确地模拟和测量。
-  最后，**[测试数据](https://inaodeng.com/zh-cn/wiki/test-data/) 配置**和**环境管理**变得更加复杂。创建高度模仿生产的真实 [测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/) 可能会占用大量资源且耗时。
+  **[性能测试](/zh-cn/wiki/performance-testing/)** 必须考虑服务间通信的开销以及服务交互中潜在的瓶颈，这可能很难准确地模拟和测量。
+  最后，**[测试数据](/zh-cn/wiki/test-data/) 配置**和**环境管理**变得更加复杂。创建高度模仿生产的真实 [测试环境](/zh-cn/wiki/test-environment/) 可能会占用大量资源且耗时。
   应对这些挑战通常需要结合先进的工具、仔细的测试设计和强大的 CI/CD 管道，以确保微服务得到彻底、高效的测试。
 
 #### 微服务测试中如何保证数据一致性？
 
-确保[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 中的数据一致性涉及多种实践：
+确保[微服务测试](/zh-cn/wiki/microservices-testing/) 中的数据一致性涉及多种实践：
 
-- **隔离[测试环境](https://inaodeng.com/zh-cn/wiki/test-environment/)** ：使用专用环境进行测试，以避免数据交叉污染。
+- **隔离[测试环境](/zh-cn/wiki/test-environment/)** ：使用专用环境进行测试，以避免数据交叉污染。
 - **模拟外部服务**：对未测试的服务实施模拟或存根以维护数据控制。
 - **使用测试替身**：对与数据库或外部服务交互的组件应用测试替身，以确保数据可预测且一致。
-- **[数据库](https://inaodeng.com/zh-cn/wiki/database/) 沙箱**：为每个测试或测试套件创建隔离的数据库实例或模式，以防止数据冲突。
+- **[数据库](/zh-cn/wiki/database/) 沙箱**：为每个测试或测试套件创建隔离的数据库实例或模式，以防止数据冲突。
 - **事务测试**：将测试包装在事务中，在测试执行后回滚更改，保持干净的状态。
 - **数据版本控制**：对测试数据实施版本控制，以恢复到已知状态并跟踪更改。
 - **数据播种**：在测试执行之前自动加载已知数据集的过程，以确保一致的起点。
-- **状态[验证 ](https://inaodeng.com/zh-cn/wiki/verification/)** ：包括断言以在测试执行后验证系统和数据的状态。 通过坚持这些实践，[测试自动化](https://inaodeng.com/zh-cn/wiki/test-automation/) 工程师可以实现可靠且一致的数据状态，这对于准确的[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 至关重要。
+- **状态[验证 ](/zh-cn/wiki/verification/)** ：包括断言以在测试执行后验证系统和数据的状态。 通过坚持这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以实现可靠且一致的数据状态，这对于准确的[微服务测试](/zh-cn/wiki/microservices-testing/) 至关重要。
 
 #### 如何处理微服务测试中的服务依赖关系？
 
-处理[微服务测试](https://inaodeng.com/zh-cn/wiki/microservices-testing/) 中的服务依赖关系涉及将被测服务与其依赖关系隔离，以确保测试的可靠性和速度。以下是一些策略：
+处理[微服务测试](/zh-cn/wiki/microservices-testing/) 中的服务依赖关系涉及将被测服务与其依赖关系隔离，以确保测试的可靠性和速度。以下是一些策略：
 
 - **存根和模拟**：创建模仿真实服务行为的依赖服务的轻量级实现。这可以使用诸如用于 JavaScript 的 Sinon.js 或用于.NET 的 Moq 等库在代码中完成。
 
-```
+  ```
     // Example of stubbing with Sinon.js
     const sinon = require('sinon');
     const myService = {
@@ -312,22 +295,9 @@ CI/CD 管道通过实现**持续集成**和**持续交付**，在[微服务测�
       }
     };
     const stub = sinon.stub(myService, 'dependencyMethod').returns('mocked value');
-```
+  ```
 
 - **服务虚拟化**：使用 WireMock 或 Mountebank 等工具通过比简单代码模拟更真实的网络级交互来模拟服务依赖关系。
 - **消费者驱动的合同测试**：实施合同测试以验证与依赖项的交互是否满足商定的合同。像 Pact 这样的工具可以用于此目的。
 - **测试替身**：利用测试替身（测试期间代替真实对象的对象）来模拟实际依赖项的行为。
 - **回退机制**：在应用程序代码中实现回退机制，例如断路器或默认响应，以处理测试期间不可用或故障的依赖项。 通过应用这些策略，您可以有效地管理服务依赖性，从而获得更稳定和可预测的测试结果。
-
-- **存根和模拟**：创建模仿真实服务行为的依赖服务的轻量级实现。这可以使用诸如用于 JavaScript 的 Sinon.js 或用于.NET 的 Moq 等库在代码中完成。
-
-```
-    // Example of stubbing with Sinon.js
-    const sinon = require('sinon');
-    const myService = {
-      dependencyMethod: function() {
-        // Original implementation
-      }
-    };
-    const stub = sinon.stub(myService, 'dependencyMethod').returns('mocked value');
-```

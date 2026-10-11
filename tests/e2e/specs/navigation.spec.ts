@@ -109,12 +109,15 @@ test.describe("导航与首页内容", () => {
     await expect(page.locator(".guild-hero__title")).toBeVisible();
   });
 
-  test("en 首页「QA Library > QA wiki」链接指向外站 ray.run", async ({ page, baseURL }) => {
+  test("en 从首页点击「QA Library > QA Wiki」进入本站词条索引", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await page.locator("header nav [data-nav-group='qa-content'] summary").click();
     const wikiLink = page.locator("header nav a[data-nav-item='qa-wiki']").first();
     await expect(wikiLink).toBeVisible();
-    await expect(wikiLink).toHaveAttribute("target", "_blank");
+    await expect(wikiLink).toHaveAttribute("href", "/en/wiki/");
+    await wikiLink.click();
+    await expect(page).toHaveURL(/\/en\/wiki\/?$/);
+    await expect(page.getByRole("heading", { name: "QA Wiki", level: 1 })).toBeVisible();
   });
 
   test("zh-cn 从首页点击「AI测试 > 软件测试提示词库」进入提示词库", async ({ page, baseURL }) => {
