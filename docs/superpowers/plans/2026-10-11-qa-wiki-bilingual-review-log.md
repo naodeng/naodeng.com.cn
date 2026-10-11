@@ -257,3 +257,5 @@
 - 复核修复候选树：452 篇 Wiki 的 frontmatter/TOC 标记有效，英文与中文各 226 篇配对；Markdown AST 未发现意外缩进代码块或多余 H1。
 
 - PR #128 双轴复审发现 `seo-integrity.spec.ts` 删除了与 Wiki 路由无关的分页元数据断言和 12 个站点区块的桌面/移动端 WebPage JSON-LD 断言；已恢复这 54 项既有 E2E 覆盖并保留 Wiki 专项断言。恢复后该 spec 的 56 项检查全部通过。
+
+- PR #128 第二轮复审发现英文 JSON-LD `DefinedTerm.name` 仅校验非空，可能与可见 H1 错配；构建检查现逐页解析并对比名称，E2E 也断言该一致性。对当前 226 个生成英文词条核对结果为 0 项错配。全站构建输出 3365 页且 SEO build check 通过；Wiki、导航和 SEO 相关 E2E 共 147/147 通过。

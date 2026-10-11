@@ -13,7 +13,7 @@ test("English Wiki detail is indexable and points to the matching local translat
   const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll(nodes =>
     nodes.map(node => JSON.parse(node.textContent || "null")));
   const term = schemas.find(schema => schema?.["@type"] === "DefinedTerm");
-  expect(term?.name).toBeTruthy();
+  expect(term?.name).toBe(await page.locator("main h1").first().innerText());
   expect(term?.inDefinedTermSet?.name).toBe("QA Wiki");
 
   const sitemap = await page.request.get("/sitemap-0.xml");

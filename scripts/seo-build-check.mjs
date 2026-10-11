@@ -44,6 +44,26 @@ function readAlternates(html) {
   });
 }
 
+function readPageHeading(html) {
+  const rawHeading = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
+  if (!rawHeading) return null;
+  return rawHeading
+    .replace(/<[^>]*>/g, "")
+    .replace(/&(#x[\da-f]+|#\d+|amp|lt|gt|quot|apos|nbsp);/gi, (entity, value) => {
+      if (value.startsWith("#")) {
+        const codePoint = value[1]?.toLowerCase() === "x"
+          ? Number.parseInt(value.slice(2), 16)
+          : Number.parseInt(value.slice(1), 10);
+        return Number.isInteger(codePoint) && codePoint >= 0 && codePoint <= 0x10ffff
+          ? String.fromCodePoint(codePoint)
+          : entity;
+      }
+      return ({ amp: "&", lt: "<", gt: ">", quot: "\"", apos: "'", nbsp: " " })[value.toLowerCase()] ?? entity;
+    })
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function readJsonLd(html) {
   const schemas = [];
   for (const match of html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi)) {
@@ -146,8 +166,12 @@ function checkWikiPage(locale, slug) {
   if (locale === "en") {
     const schemas = readJsonLd(html);
     const term = schemas.find((schema) => schema?.["@type"] === "DefinedTerm");
+    const pageHeading = readPageHeading(html);
     if (!term?.name || term.inDefinedTermSet?.name !== "QA Wiki") {
       failures.push(`English DefinedTerm JSON-LD is missing English Wiki names: ${pathname}`);
+    }
+    if (!pageHeading || term?.name !== pageHeading) {
+      failures.push(`English DefinedTerm name does not match the page heading: ${pathname}`);
     }
   }
 }
