@@ -585,6 +585,8 @@ const sidebarDate = (date: Date) =>
   .article-summary {
     max-inline-size: min(100%, 64em);
     margin-block-start: 1rem;
+    padding-inline-start: 0.9rem;
+    border-inline-start: 2px solid color-mix(in srgb, var(--color-theme) 42%, var(--color-border));
     color: var(--color-text-secondary);
     font-size: clamp(var(--text-base), calc(var(--text-base) + 0.35vw), var(--text-lg));
     font-weight: 500;
@@ -683,6 +685,7 @@ const sidebarDate = (date: Date) =>
     }
     .article-summary {
       margin-block-start: 0.8rem;
+      padding-inline-start: 0.75rem;
       font-size: var(--text-base);
       line-height: 1.65;
     }
