@@ -146,6 +146,15 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     max-inline-size: min(100%, 80rem);
     margin-inline: auto;
   }
+  @media (min-width: 1600px) {
+    .l-docs[data-has-toc="true"] .docs-content :global(p),
+    .l-docs[data-has-toc="true"] .docs-content :global(ul),
+    .l-docs[data-has-toc="true"] .docs-content :global(ol),
+    .l-docs[data-has-toc="true"] .docs-content :global(blockquote) {
+      max-inline-size: 100%;
+      margin-inline: 0;
+    }
+  }
   .l-docs[data-content-mode="index"] .docs-content {
     inline-size: 100%;
     max-inline-size: none;
@@ -288,8 +297,8 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
       gap: clamp(1.75rem, 2vw, 2.5rem);
     }
     .l-docs:not([data-has-toc="true"]):not([data-content-mode="index"]) .docs-content {
-      max-inline-size: min(var(--layout-max), 1360px);
-      justify-self: center;
+      max-inline-size: none;
+      justify-self: stretch;
     }
   }
 </style>
