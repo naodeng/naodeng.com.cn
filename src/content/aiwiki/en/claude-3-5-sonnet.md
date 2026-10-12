@@ -3,7 +3,7 @@ title: "Claude 3.5 Sonnet"
 titleZh: "Claude 3.5 Sonnet"
 slug: "claude-3-5-sonnet"
 lang: "en"
-summary: "A flagship model in the Claude 3.5 generation; newer Claude 4.x generations are available, so model selection should follow Anthropic’s latest model docs."
+summary: "An Anthropic model released in 2024. Anthropic retired its Claude 3.5 Sonnet API on October 28, 2025."
 topic: "ai-vibe-coding"
 aliases:
   - "Sonnet 3.5"
@@ -14,123 +14,84 @@ related:
   - "claude"
   - "vibe-coding"
   - "ai-pair-programming"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Claude 3.5 Sonnet
 
-> One-line definition: Anthropic's flagship mid-tier model that revolutionized AI coding through its exceptional reasoning, "Artifacts" UI, and high-speed execution.
+> One-line definition: An Anthropic model released in 2024 and retired from the Claude API in 2025.
 
 ## Quick Take
 
-- Problem it solves: Track model generations and fit-for-purpose usage.
-- When to use: Use for architecture decisions and capability comparison.
-- Boundary: Avoid absolute claims like “universally strongest.”
+- **In brief:** Claude 3.5 Sonnet is a retired Anthropic model name.
+- **Useful for:** Reading older evaluations or planning an API migration.
+- **Main limit:** Anthropic retired it from its API on October 28, 2025.
 
 ## Overview
 
-`Claude 3.5 Sonnet` matters less as a buzzword and more as an engineering control point for reliability, interpretability, and collaboration in AI-enabled development.
+Claude 3.5 Sonnet was part of Anthropic’s 2024 model generation. It remains relevant when teams read older benchmark results or maintain software that names this model.
 
 ## Core Definition
 
-### Formal Definition
-
-Claude 3.5 Sonnet is part of Anthropic's Claude 3.5 model family. It features a 200k context window and is specifically optimized for advanced reasoning, creative writing, and high-accuracy code generation. It outperforms many larger "Ultra" models in benchmark tests like HumanEval.
-
-### Plain-Language Explanation
-
-Think of it as a foundational control point in AI engineering: it reduces randomness, improves reuse, and turns team know-how into repeatable practice.
+Claude 3.5 Sonnet was a general-purpose model in Anthropic’s Claude 3.5 family. Anthropic promoted it for tasks that included coding, writing, and visual input. Its former capabilities do not describe current Claude models.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: Released by Anthropic in June 2024 as the first model of the 3.5 family, aiming to provide "Intelligence beyond Opus at the speed of Sonnet."
-- **Main focus**: Improving "Instruction Following" and visual reasoning (reading charts, UI screenshots).
-
-### Evolution
-
-- **Claude 2**: Focus on safety and large context (but slower).
-- **Claude 3 (Opus/Sonnet/Haiku)**: Solid reasoning but Opus was slow and expensive.
-- **Claude 3.5 Sonnet**: A generational leap that made Opus obsolete for most engineering tasks due to its superior reasoning and near-instant response time.
+Anthropic announced Claude 3.5 Sonnet in June 2024. The provider later replaced it with newer model generations. The Claude API retirement date was October 28, 2025.
 
 ## How It Works
 
-1. **Constitutional AI**: Trained with a "Constitution" (a set of rules) that allows it to self-correct and avoid harmful biases without being "preachy."
-2. **Artifacts Engine**: Designed to generate modular code blocks that can be rendered directly in a side-by-side UI for instant previewing.
-3. **Advanced Coding Logic**: Specifically fine-tuned on diverse programming paradigms, making it proficient in everything from COBOL to modern Rust.
+Like other language models, Claude 3.5 Sonnet processed an input context and generated an output. The application controlled the prompt, tools, and files that it supplied. The model did not independently verify that its code or explanation was correct.
 
 ## Applications in Software Development and Testing
 
-- **Complex Feature Implementation**: "Build a real-time dashboard with WebSockets," and it generates the full frontend/backend logic with minimal errors.
-- **Visual Debugging**: You can upload a screenshot of a broken UI, and Claude can often identify the CSS or layout bug just by looking at the image.
-- **PR Explainer**: Summarizing thousands of lines of code changes into a readable, logic-driven pull request description.
+- **Historical evaluation:** Re-run archived tests against saved outputs or an available approved replica. Label the environment and model version.
+- **Migration review:** Find code that refers to the old model ID. Compare a supported replacement with a representative evaluation set.
+- **Benchmark interpretation:** Read the original task, date, and scoring method before comparing published results.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Exceptional Reasoning**: Often produces cleaner, more idiomatic code than other models.
-- **Low Hallucination Rate**: More likely to admit "I don't know" or ask for clarification than to guess.
-- **Speed**: Provides "Pro-level" intelligence at "Mini-model" speeds.
-
-### Limitations and Risks
-
-- **Usage Limits**: High-demand models often have strict message quotas on the Claude.ai web interface (less of an issue via API).
-- **Web Search**: While it can use tools, its native internet browsing isn't always as seamless as GPT or Gemini.
-- **Niche Syntax**: Occasionally struggles with very obscure or brand-new library syntax that hasn't made it into its training cutoff.
+At release, Claude 3.5 Sonnet was a notable step in Anthropic’s model line. Historical reports can help explain earlier tool choices. The Claude API no longer serves this model. Results from it do not predict the behavior of a newer model.
 
 ## Comparison with Similar Terms
 
-| Dimension | Claude 3.5 Sonnet | GPT-4o | Gemini 1.5 Pro |
-| :--- | :--- | :--- | :--- |
-| **Logic Vibe** | **Precise & Engineering-focused** | Creative & Versatile | Vast Context & Integrated |
-| **Context Window** | 200k | 128k | **2 Million** |
-| **Killer Feature** | **Artifacts UI** | Multi-modal Voice | Deep Google Ecosystem |
+| Term | Meaning |
+|---|---|
+| Claude 3.5 Sonnet | A retired model from Anthropic’s 2024 generation |
+| Claude model family | Anthropic’s changing set of models |
+| Model version | A specific model identifier with its own behavior and lifecycle |
 
 ## Best Practices
 
-- **Use the Artifacts UI**: When using the web version, let Claude render your React components or HTML pages live for instant feedback.
-- **Give Multi-step Instructions**: Don't be afraid to give Claude 10 steps at once; it's better at keeping track of "Step 9" than most models.
-- **Ask for "Thought Tokens"**: Ask it to "Think out loud before writing code" to ensure it maps out the logic correctly.
+- Treat the model name as a historical identifier.
+- Check Anthropic’s lifecycle page before you migrate an API integration.
+- Preserve the model ID, prompt, and evaluation date in historical test records.
+- Run a new evaluation before you adopt a replacement model.
 
 ## Common Pitfalls
 
-- **Ignoring the 3.5 Upgrades**: Assuming it behaves like the older Claude 3; 3.5 is significantly more proactive and less restrictive.
-- **Underestimating Vision**: Forgetting that you can simply "show" it the error screen instead of describing it in text.
+Do not copy old context limits, benchmark scores, or API examples into a new integration. They can describe a retired model or an older endpoint.
 
 ## FAQ
 
-### Q1: Should beginners master this immediately?
+### Can a team call Claude 3.5 Sonnet through the Anthropic API?
 
-A: Learn the core purpose first, then adopt it gradually in real workflows.
+No. Anthropic lists the model as retired on October 28, 2025. Requests to a retired model fail.
 
-### Q2: How do teams know adoption is working?
+### Why keep this term in the encyclopedia?
 
-A: Check for more stable delivery, less rework, and smoother collaboration.
-
-## Related Resources
-
-### Related Terms
-
-- [claude](https://inaodeng.com/en/AIWiki/claude/)
-- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
-- [ai-pair-programming](https://inaodeng.com/en/AIWiki/ai-pair-programming/)
+The name still appears in old code, reports, and benchmark discussions. The entry explains that history and marks the API boundary.
 
 ## Related Resources
 
 ### Related Terms
 
-- [claude](https://inaodeng.com/en/AIWiki/claude/)
-- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
-- [ai-pair-programming](https://inaodeng.com/en/AIWiki/ai-pair-programming/)
+- [Claude](/en/AIWiki/claude/)
+- [AI pair programming](/en/AIWiki/ai-pair-programming/)
+- [Model optionality](/en/AIWiki/model-optionality/)
 
-### Term Metadata
+### References
 
-- Aliases: Sonnet 3.5
-- Tags: AI Vibe Coding, Wiki
-
-## References
-
-- [Anthropic release: Claude 3.5 Sonnet](https://www.anthropic.com/news/claude-3-5-sonnet)
-- [Anthropic Models Overview (latest)](https://platform.claude.com/docs/en/about-claude/models/overview)
+- [Anthropic: Claude 3.5 Sonnet announcement](https://www.anthropic.com/news/claude-3-5-sonnet)
+- [Anthropic: Model deprecations](https://docs.anthropic.com/en/docs/about-claude/model-deprecations)
+- [Anthropic: Models overview](https://platform.claude.com/docs/en/models/overview)

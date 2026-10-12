@@ -16,113 +16,61 @@ related:
   - "verification-artifacts"
   - "agent-evals"
   - "trace-grading"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Artifact Feedback Loop (产物反馈闭环)
-
-> One-line definition: A closed-loop mechanism where artifact-level review signals are fed into the next agent run for iterative quality improvement.
+# Artifact Feedback Loop
 
 ## Quick Take
 
-- Problem it solves: Prevent repeated mistakes by turning feedback into executable input.
-- When to use: Use it for iterative code/test/doc workflows with measurable quality goals.
-- Boundary: Not effective if feedback is vague or disconnected from concrete artifacts.
+- **In brief:** An artifact feedback loop uses review of a task output to guide a later revision.
+- **Useful for:** Improving a draft, code change, or test report through explicit feedback.
+- **Main limit:** Feedback does not guarantee that later versions improve.
 
 ## Overview
 
-`Artifact Feedback Loop` turns AI delivery from one-shot generation into iterative engineering. Instead of saying “try again,” teams provide concrete feedback on artifacts (diffs, reports, screenshots), and the next run is guided by those signals.
+An assistant creates a test plan. A reviewer points out a missing boundary case. The assistant revises the plan, and the reviewer checks the change against the requirement.
 
 ## Core Definition
 
-### Formal Definition
-
-Artifact Feedback Loop is a feedback architecture where produced artifacts are reviewed, scored, and transformed into structured signals that influence subsequent planning and execution.
-
-### Plain-Language Explanation
-
-Think of it as review comments with memory and execution power: feedback is not just read, it changes the next attempt.
+An artifact feedback loop is a workflow that connects an output, feedback about that output, and a later revision. The artifact may be code, a report, a screenshot, or another saved result. The loop can be human-led, automated, or mixed.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: one-shot AI output often needed repeated human corrections.
-- Focus: shorten the path from “issue found” to “issue fixed with evidence.”
-
-### Evolution
-
-- Prompt-only correction: feedback was implicit and easy to forget.
-- File-level correction: better, but still coarse-grained.
-- Artifact-level feedback: precise, traceable, and measurable iteration.
+Review-and-revise cycles are common in software work. AI systems can shorten the time between a draft and a revision, but the loop still depends on useful feedback and a check of the revised output.
 
 ## How It Works
 
-1. Produce artifacts: agent outputs plans, code diffs, logs, reports.
-2. Review artifacts: human or grader marks quality issues.
-3. Convert feedback: comments become structured constraints/tasks.
-4. Re-run with feedback: next execution uses previous review signals.
+1. Produce an artifact for a defined task.
+2. Compare it with requirements or a review rubric.
+3. Record specific gaps or corrections.
+4. Revise the artifact.
+5. Recheck the changed output and stop when the acceptance criteria are met.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- Regression evaluations across model/policy variants.
-- CI quality gates with scoring thresholds.
-- Failure diagnosis via trace and artifact replay.
-
-### Practical Example
-
-```text
-Goal: improve AI patch success rate
-Steps: 1) define graders 2) collect traces 3) replay artifacts and score
-Outcome: better root-cause visibility and faster policy iteration
-```
+Use review comments on a code diff to ask for a targeted change. Re-run relevant tests after the revision. Keep the original requirement and review notes so the loop does not optimize for style alone.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Accelerates convergence by making feedback actionable.
-- Improves auditability with review-evidence trails.
-- Supports measurable quality improvement across iterations.
-
-### Limitations and Risks
-
-- Low-quality feedback can mislead subsequent runs.
-- Over-frequent feedback interrupts flow and causes fatigue.
-- Missing artifact versioning weakens traceability.
+A clear loop can make corrections traceable and reduce repeated explanation. Vague feedback can send the work in the wrong direction. Repeated revisions may also introduce new defects.
 
 ## Comparison with Similar Terms
 
-| Dimension | Artifact Feedback Loop | Verification Artifacts | Agent Evals |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Iterative improvement through feedback reuse | Preserve evidence of execution outcomes | Quantitatively assess output quality |
-| Lifecycle Stage | Cross-iteration optimization | Validation and audit checkpoint | Evaluation and decision phase |
-| Automation Level | Medium to high | Medium | Medium to high |
-| Human Involvement | Medium (review signal quality matters) | Medium (evidence review) | Medium (metric design and thresholding) |
+An artifact is the saved output being reviewed. A feedback loop is the process that uses review to guide another version. Trace grading scores recorded actions; it may supply feedback but does not itself define how to revise the artifact.
 
 ## Best Practices
 
-- Keep feedback specific: point to exact artifact evidence.
-- Separate “blocking” vs “non-blocking” feedback categories.
-- Version artifacts and feedback to support replay and audit.
+Give feedback that names the requirement, the observed gap, and the expected change. Keep revisions small enough to inspect. Re-run checks that cover the changed behavior.
 
 ## Common Pitfalls
 
-- Giving abstract feedback without evidence.
-- Optimizing for score only, ignoring process quality.
-- Failing to preserve artifact lineage across iterations.
+Do not assume that more revision rounds mean better quality. Do not accept an output only because it satisfies one review comment. Check all acceptance criteria again.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does an artifact feedback loop improve an AI model automatically?
 
-A: Start lightweight. Use it once workflows become iterative and quality-sensitive.
-
-### Q2: How do teams prove it is working?
-
-A: Track fix success rate, repeated-defect rate, and iteration-to-resolution time.
+No. It can revise one artifact during a task. Model training requires a separate process and data policy.
 
 ## Related Resources
 

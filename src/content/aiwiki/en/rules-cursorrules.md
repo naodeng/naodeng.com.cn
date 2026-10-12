@@ -3,7 +3,7 @@ title: "Rules / .cursorrules"
 titleZh: "规则 / .cursorrules"
 slug: "rules-cursorrules"
 lang: "en"
-summary: "Project- or user-level instruction files that steer agent behavior, coding style, and constraints."
+summary: "Cursor project rules provide prompt-level guidance. New project rules use .cursor/rules; .cursorrules is a legacy format."
 topic: "ai-vibe-coding"
 aliases:
   - "Cursor rules"
@@ -15,109 +15,100 @@ related:
   - "skill"
   - "ai-agent"
   - "prompt-driven-development"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Rules / .cursorrules
 
-> One-line definition: Project- or user-level instruction files that steer agent behavior, coding style, and constraints, ensuring AI stays "on-track" with your team's unique requirements.
+> One-line definition: Cursor project rules provide prompt-level guidance. New project rules use .cursor/rules; .cursorrules is a legacy format.
 
 ## Quick Take
 
-- Problem it solves: Define execution capability and governance boundaries for AI agents.
-- When to use: Use for tool invocation, policy control, and multi-step task execution.
-- Boundary: Risk increases without permission and audit controls.
+- **In brief:** Cursor rules provide project guidance in the editor's supported rule format.
+- **Useful for:** Sharing coding and testing conventions with Cursor across a project.
+- **Main limit:** Rules guide model responses; `.cursorrules` is a legacy format.
 
 ## Overview
 
-`Rules / .cursorrules` matters less as a buzzword and more as an engineering control point for reliability, interpretability, and collaboration in AI-enabled development.
+Cursor project rules give its Agent reusable guidance for a codebase. Current project rules live in .cursor/rules. The older .cursorrules file is a legacy format that Cursor documentation recommends migrating.
 
 ## Core Definition
 
-### Formal Definition
+A Cursor rule is prompt-level guidance for the Agent. Project rules are stored as rule files under .cursor/rules and can apply to a project, selected files, or a manually invoked task. User and team rules are other options.
 
-Rules are markdown-based configuration files (typically named `.cursorrules`) that provide high-level context, technical constraints, and behavioral instructions to an AI agent. They are automatically injected into the model's prompt to maintain consistency across every interaction within a project.
-
-### Plain-Language Explanation
-
-Think of it as a foundational control point in AI engineering: it reduces randomness, improves reuse, and turns team know-how into repeatable practice.
+The legacy .cursorrules file is not the current project-rule format. Rules guide model behavior; they do not enforce operating-system or application permissions.
 
 ## Background and Evolution
 
-### Origin
+Teams use project rules to provide coding conventions and task guidance without repeating them in every request. Cursor's current documentation describes project, user, and team rules, along with AGENTS.md support.
 
-- **Context**: As developers moved from "one-off" questions to "project-wide" engineering, there was a need for a persistent memory that didn't consume the entire context window.
-- **Main focus**: Eliminating "Prompt Fatigue"—the need to repeat the same instructions over and over.
-
-### Evolution
-
-- **Implicit Rules**: AI relies on its general training (can be hit or miss).
-- **System Prompts**: Global rules that apply to every project (hard to customize).
-- **Project Rules (.cursorrules)**: Granular, file-based instructions that allow different rules for a frontend React app versus a backend Go service.
+Cursor marks .cursorrules as a legacy format and documents migration to .cursor/rules. Rule types and behavior can change, so consult current product documentation.
 
 ## How It Works
 
-1. **Automatic Injection**: When you open a folder in Cursor, it looks for a `.cursorrules` file in the root.
-2. **Context Enrichment**: Every time you use "Cmd+K" or Composer, the contents of the rules file are added to the hidden system prompt.
-3. **Behavior Steering**: The AI prioritizes the instructions in your rules over its general training (e.g., if you say "Use tabs," it will use tabs even if it usually prefers spaces).
+1. A developer writes guidance in a supported rule file.
+2. Cursor applies the rule according to its type, scope, or activation setting.
+3. The applicable text becomes context for the Agent.
+4. The model may follow that guidance when it generates a response or takes an action.
+
+Rule application depends on the current product and rule configuration. The application still needs separate permission checks and validation.
 
 ## Applications in Software Development and Testing
 
-- **Architecture Enforcement**: "Always use the Atomic Design pattern for components."
-- **Language Governance**: "Only use modern ES6+ syntax; avoid using `var` at all costs."
-- **Testing Standards**: "For every new function, generate a corresponding `.spec.ts` file in the `__tests__` directory."
+- **Coding conventions:** State naming, formatting, and architecture preferences.
+- **Test expectations:** Ask the Agent to consider tests when it changes code.
+- **Scoped guidance:** Apply different instructions to selected folders or file types.
+- **Reusable procedures:** Link a workflow to a project template or checklist.
+
+Use linters, tests, and permission controls to enforce requirements that must not be skipped.
 
 ## Strengths and Limitations
 
 ### Strengths
 
-- **Consistency**: ensures all AI-generated code looks like it was written by the same (human) team member.
-- **Low Maintenance**: Update the rule once, and it applies to the entire project instantly.
-- **Zero Prompt Cost**: Since it's handled by the IDE, you don't have to copy-paste it into every chat session.
+- Teams can version project guidance with the codebase.
+- Scoped rules can keep instructions relevant to selected files.
+- Reusable guidance can reduce repeated setup text.
 
 ### Limitations and Risks
 
-- **Rule Conflict**: If rules are too complex or contradictory, the AI may become "confused" or ignore them.
-- **Context Bloat**: Extremely long rule files can consume significant portions of the "Context Window," leaving less room for your actual code.
-- **Inflexibility**: Rules that are *too* strict may prevent the AI from suggesting creative or better solutions.
+- Rules use context and do not guarantee compliance.
+- Long or conflicting rules can reduce clarity.
+- Rules can become outdated when the codebase changes.
+- Rules do not replace tests, linters, or access controls.
 
 ## Comparison with Similar Terms
 
-| Dimension | .cursorrules | Global System Prompt | Project README |
-| :--- | :--- | :--- | :--- |
-| **Scope** | **Current Project/Folder** | All Projects | Information only |
-| **Enforcement** | **Automatic & Persistent** | Automatic but Generic | Manual (AI must be told to read it) |
-| **Primary Goal** | **Coding Style & Behavior** | General Persona | Project Documentation |
+| Mechanism | Role |
+|---|---|
+| Cursor rule | Prompt-level guidance for Cursor Agent |
+| AGENTS.md | A portable instruction file supported by some coding agents |
+| Permission policy | Enforces which actions a tool or application may perform |
+| Linter or test | Checks code against executable rules or expected behavior |
+
+A rule can describe a requirement. A separate control must enforce it.
 
 ## Best Practices
 
-- **Keep it Atomic**: Break rules into clear, bulleted sections (e.g., `# Naming`, `# Testing`, `# UI`).
-- **Use "Always/Never"**: Use strong imperative language to minimize AI ambiguity.
-- **Vibe but Verify**: Periodically check if your rules are still relevant as the project tech stack evolves.
+- Use .cursor/rules for new Cursor project rules.
+- Migrate legacy .cursorrules content using current Cursor guidance.
+- Write short instructions with one requirement per sentence.
+- Scope rules to the files or tasks where they apply.
+- Test critical requirements with linters, tests, or permission checks.
 
 ## Common Pitfalls
 
-- **The "Wall of Text"**: Writing a 5,000-word essay that the AI will likely ignore or partially forget.
-- **Outdated Rules**: Keeping a rule to "user React 16" after you've upgraded to React 18 will lead to the AI generating broken code.
+Do not use rules as a security boundary. The model may miss or misapply an instruction. Keep legacy files under review and migrate them according to current Cursor documentation.
 
 ## FAQ
 
-### Q1: Should beginners master this immediately?
+### Should a new Cursor project use .cursorrules?
 
-A: Learn the core purpose first, then adopt it gradually in real workflows.
+Cursor documents .cursorrules as a legacy format. Use .cursor/rules for new project rules and follow the current migration guidance.
 
-### Q2: How do teams know adoption is working?
+### Can a rule prevent an Agent from running a forbidden command?
 
-A: Check for more stable delivery, less rework, and smoother collaboration.
-
-## Related Resources
-
-### Related Terms
-
-- [rule](https://inaodeng.com/en/AIWiki/rule/)
-- [skill](https://inaodeng.com/en/AIWiki/skill/)
-- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
-- [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
+A prompt rule alone cannot enforce that boundary. Configure the product's permissions or an external policy, then verify the result.
 
 ## Related Resources
 
@@ -128,12 +119,5 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 - [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
 - [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
 
-### Term Metadata
-
-- Aliases: Cursor rules
-- Tags: AI Vibe Coding, Wiki
-
-## References
-
-- [Cursor docs: Rules](https://docs.cursor.com/context/rules)
-- [Cursor docs (EN path)](https://docs.cursor.com/en/context/rules)
+### References
+- [Cursor Docs: Rules](https://cursor.com/docs/rules)

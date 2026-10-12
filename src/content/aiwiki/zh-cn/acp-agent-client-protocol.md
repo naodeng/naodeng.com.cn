@@ -16,112 +16,73 @@ related:
   - "remote-control"
   - "permission-policies-allowed-command-list"
   - "subagents"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# ACP（Agent Client Protocol）（Agent Client Protocol）
-
-> 一句话定义：一种标准化的通信协议，用于在 AI 智能体（Agent）运行时与 IDE 或其他客户端工具之间进行状态同步、能力协作与命令下发。
+# Agent Client Protocol（ACP）
 
 ## 科普速读
 
-- 解决问题：给 AI 立规矩，保证安全、合规和一致性。
-- 适用场景：用于企业落地、团队协作和权限控制。
-- 使用边界：不适合只追求速度、忽视治理的流程。
+- **它是什么：** ACP 规定编码 Agent 与代码编辑器或客户端如何交换请求和事件。
+- **适合什么场景：** 通过共享协议连接兼容的编辑器和 Agent。
+- **主要边界：** 协议不定义所有产品功能，也不会授予工具权限。
 
 ## 概览
 
-`ACP（Agent Client Protocol）` 常被误解为“高级功能”，但它本质上是为了解决工程交付中的基础问题：结果不稳定、流程不可复用、问题难以追踪。从科普视角看，它的价值在于把 AI 从“会回答”推进到“可落地”。
+编辑器可以通过 ACP 启动 Agent 会话、发送编码请求，并接收进度或结果。编辑器和 Agent 仍需分别决定支持哪些工具与能力。
 
 ## 核心定义
 
-### 标准定义
-
-ACP 是一种基于 JSON-RPC 或类似结构的异步通信模型。它定义了一套标准的 Schema，使得不同的智能体后端（Runtimes）可以无缝集成到各种开发者客户端中。核心议题包括：能力协商（Capability Negotiation）、流式状态同步（Streaming State Sync）以及确定性的资源锁定。
-
-### 通俗解释
-
-如果把 AI 工作流比作流水线，`ACP（Agent Client Protocol）` 就是其中负责“减少出错、提高可复用性”的关键工位。它不是为了炫技，而是为了让团队在真实项目里更稳地交付结果。
+Agent Client Protocol（ACP，Agent 客户端协议）用于编码 Agent 与 Agent 客户端（例如代码编辑器）之间的通信。协议消息采用 JSON-RPC 2.0，并定义初始化、会话管理、提示请求和更新等操作。
 
 ## 背景与发展
 
-### 起源
-
-- **提出背景**：早期的 AI 插件是“点对点”硬编码的，换一个编辑器就得重写一套逻辑，且无法支持复杂的长时（Long-running）智能体任务。
-- **关注重点**：如何实现 Agent 的“跨平台运行”以及在高并发操作下的数据一致性。
-
-### 演进
-
-- **1.0 阶段（命令分发）**：AI 发送一段文本，人手动复制并执行。
-- **2.0 阶段（API 钩子）**：IDE 提供简单的 API 给插件使用。
-- **3.0 阶段（ACP 时代）**：Agent 成为独立实体，通过标准化的协议反向控制客户端功能，实现了真正的“人机接管（Handoff）”。
+ACP 用于连接编码 Agent 与多个兼容客户端。它是一项有版本文档的公开协议。不同客户端和 Agent 的支持范围可能不同。
 
 ## 工作机制（How It Works）
 
-1. **握手与能力协商**：Agent 与客户端建立连接时，先沟通“我会做什么”以及“你能提供什么工具”。
-2. **请求-响应循环 (Request-Response)**：Agent 下发 `fs.read` 指令，客户端返回文件 Base64 或文本。
-3. **事件驱动流 (Event Stream)**：客户端将用户正在编辑的行为（如光标移动）作为事件流推送给 Agent。
-4. **权限守门 (Gatekeeping)**：ACP 协议层集成权限校验，确保 Agent 的每一个高危动作都符合安全策略。
+1. 客户端和 Agent 初始化，并交换支持的能力。
+2. 客户端创建或选择会话。
+3. 客户端发送提示词或会话操作。
+4. Agent 返回响应，也可能发送进度更新或请求客户端提供信息。
+5. 客户端展示结果，并按自身规则处理权限和界面交互。
+
+具体方法和行为取决于协议版本及实现。
 
 ## 在软件测试与开发中的应用
 
-- **多 Agent 协同工作流**：一个负责写代码的 Agent 和一个负责跑测试的 Agent 共享同一个 ACP 通道。
-- **远程调试与热插拔**：开发者可以在云端运行 Agent，通过 ACP 连接到本地的 IDE 界面。
-- **自动化评测收集**：测试 Agent 通过协议层自动捕捉 IDE 中的异常报错并回传分析。
+编辑器可以连接兼容 ACP 的编码 Agent，而不必使用某个供应商专属的聊天界面。团队可以测试连接初始化、会话延续、工具批准、取消和错误处理。
 
 ## 优势与局限
 
-### 优势
-
-- **解耦性能**：Agent 后端和 UI 前端可以独立升级，互不影响。
-- **多端一致性**：同样的智能体逻辑，接入 VS Code、Cursor 或 Web 版 IDE 时体验一致。
-- **可审计性**：所有通信包均可记录、回放，方便进行 Bug 溯源。
-
-### 局限与风险
-
-- **通信延迟**：如果协议解析过慢，在高频交互场景下会导致“手感”卡顿。
-- **安全边界挑战**：协议如果被滥用，Agent 可能会在用户不知情的情况下操作敏感文件。
-- **版本不匹配**：当客户端更新了协议但 Agent 尚未适配时，可能导致部分核心功能失效。
+共享协议可以减少针对单个客户端编写的集成代码，但不保证不同实现支持相同的可选能力。协议也不负责定义 Agent 的质量、安全性或授权策略。
 
 ## 与相近术语对比
 
-| 维度 | ACP (Agent Client Protocol) | MCP (Model Context Protocol) | LSP (Language Server Protocol) |
-| :--- | :--- | :--- | :--- |
-| **关注点** | **动作与运行时协作** | **上下文与资源接入** | 静态语法与类型分析 |
-| **通信方** | Agent <-> IDE | Model <-> External Data | Editor <-> Tooling |
-| **典型动作** | 执行命令、管理状态 | 读取文档、查询 DB | 跳转定义、自动补全 |
+ACP 连接编码 Agent 和客户端。MCP 连接 AI 应用与外部工具和数据源。A2A 支持 Agent 之间通信。这些协议解决的连接问题不同。
 
 ## 实施建议（Best Practices）
 
-- **定义粒度适中的 Schema**：既要覆盖足够的工具能力，又要避免协议层过于臃肿。
-- **启用心跳检查 (Heartbeat)**：对于长时任务，必须确保 ACP 连接的稳定性，否则 Agent 会“失控”。
-- **分层权限管理**：在协议层实现针对特定命令的“自动通过”与“必须点击确认”。
+确认协议版本和能力协商结果。测试支持与不支持的方法。用户批准和操作系统权限应由客户端或执行环境控制。
 
 ## 常见误区（Pitfalls）
 
-- **混淆 ACP 与普通 API**：API 是被动调用的，而 ACP 通常支持 Agent 主动发起的“双向通信”。
-- **忽略错误处理**：当 Agent 下发了一个客户端不支持的命令时，如果没有优雅的回滚逻辑，会导致整个 Vibe 崩塌。
+不要认为 ACP 连接本身就授予文件或 Shell 访问权。不要假设所有客户端都支持全部方法。应确认实现如何处理错误、取消和用户批准。
 
 ## FAQ
 
-### Q1: 新手是否需要马上使用它？
+### ACP 会决定 Agent 可以执行哪些操作吗？
 
-A: 取决于任务复杂度。简单任务可先不用；一旦涉及团队协作、自动化或上线风险，就建议尽早引入。
-
-### Q2: 如何避免“用了很多机制但效果一般”？
-
-A: 先设清晰目标与指标，再逐步引入机制；每次只调整一个变量，避免同时改太多。
+不会。ACP 规定通信方式。客户端、Agent 和执行环境分别管理自己的权限。
 
 ## 相关资源
 
-### 相关词词条
+### 相关词条
 
-- [cross-surface-operation](https://inaodeng.com/zh-cn/AIWiki/cross-surface-operation/)
-- [remote-control](https://inaodeng.com/zh-cn/AIWiki/remote-control/)
-- [permission-policies-allowed-command-list](https://inaodeng.com/zh-cn/AIWiki/permission-policies-allowed-command-list/)
-- [subagents](https://inaodeng.com/zh-cn/AIWiki/subagents/)
+- [跨界面操作](/zh-cn/AIWiki/cross-surface-operation/)
+- [远程控制](/zh-cn/AIWiki/remote-control/)
+- [权限策略](/zh-cn/AIWiki/permission-policies-allowed-command-list/)
+- [子 Agent](/zh-cn/AIWiki/subagents/)
 
 ### 外部参考
 
-- [Cursor Protocol Overview](https://cursor.com/cn/docs)
-- [Agentic Interoperability Standards](https://docs.qoder.com/)
+- [Agent Client Protocol：协议概览](https://github.com/agentclientprotocol/agent-client-protocol/blob/main/docs/protocol/v1/overview.mdx)

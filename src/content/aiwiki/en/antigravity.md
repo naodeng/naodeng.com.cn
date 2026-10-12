@@ -3,7 +3,7 @@ title: "Antigravity"
 titleZh: "Antigravity（反重力）"
 slug: "antigravity"
 lang: "en"
-summary: "An agent-first development platform concept announced by Google in public preview (2025); product behavior and availability may continue to evolve."
+summary: "Google Antigravity is an agent-first development platform. Its current features and availability can change."
 topic: "ai-vibe-coding"
 aliases:
   - "Google Antigravity"
@@ -14,116 +14,111 @@ related:
   - "agentic-workflow"
   - "ai-agent"
   - "vibe-coding"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Antigravity
 
-> One-line definition: An advanced, "Agent-First" development platform and AI assistant designed to transcend traditional coding boundaries by orchestrating multi-step, complex engineering workflows across the filesystem, terminal, and browser.
+> One-line definition: Google Antigravity is an agent-first development platform for coding workflows.
 
 ## Quick Take
 
-- Problem it solves: Track frontier platform concepts and practices.
-- When to use: Use for technology radar and pilot experiments.
-- Boundary: Product shape may evolve quickly; re-verify regularly.
+- **In brief:** Antigravity is Google's agent-first development platform.
+- **Useful for:** Understanding its current coding and agent workflow features.
+- **Main limit:** Product features and access can change; check current documentation.
 
 ## Overview
 
-`Antigravity` matters less as a buzzword and more as an engineering control point for reliability, interpretability, and collaboration in AI-enabled development.
+Google Antigravity is an agent-first development platform. Google describes workflows that use agents across an editor, terminal, and browser. The exact features and availability can change, so check current documentation.
 
 ## Core Definition
 
-### Formal Definition
+Antigravity is a Google development platform for working with coding agents. Its announced workflow includes an editor view and a manager surface for coordinating agent work. Agents can use tools to inspect code, make changes, and report results.
 
-Antigravity is an "Agentic Computing" framework and set of tools developed to provide a seamless interface between human intent and machine execution. It utilizes a sophisticated "MCP" (Model Context Protocol) infrastructure, allowing agents to access specialized "Skills," manage complex "Task States," and provide "Walkthroughs" and "Implementation Plans" that ensure transparent and steerable AI-human collaboration.
-
-### Plain-Language Explanation
-
-Think of it as a foundational control point in AI engineering: it reduces randomness, improves reuse, and turns team know-how into repeatable practice.
+The platform is not a new AI architecture or protocol. It combines models, tools, and product workflows. Each part has its own limits and permissions.
 
 ## Background and Evolution
 
-### Origin
+Google announced Antigravity in November 2025 as an agent-first development platform. In 2026, Google announced further Antigravity capabilities. This page describes the product category, not a fixed feature list.
 
-- **Context**: Born from the need for a more powerful, transparent, and structured way to handle complex AI-driven code changes that affect many files simultaneously.
-- **Main focus**: Transparency (knowing *why* the AI did something) and Autonomy (letting the AI do more with less "babysitting").
-
-### Evolution
-
-- **Chatbots**: You talk, they talk.
-- **Copilots**: They suggest, you type.
-- **Antigravity (Current)**: You plan together, the agent executes, you verify. It’s the move from "AI as a feature" to "AI as the platform."
+Product names, model access, and availability can change. Consult Google's current release notes before choosing it for a project.
 
 ## How It Works
 
-1. **Structured Tasking**: Every request is broken down into a visible `task.md` checklist, ensuring the developer and the agent are always in sync.
-2. **Implementation Planning**: Before changing code, the agent proposes an "Architecture Plan" for human review, preventing costly "wrong turns."
-3. **Multi-Step Execution**: The agent iteratively edits files, runs terminal commands, and checks browser previews in a unified loop.
-4. **Verification Walkthroughs**: After the task is done, the agent provides a detailed summary of what was changed and how it was tested.
+1. A developer gives an agent a task and relevant context.
+2. The agent can use the tools enabled by the platform.
+3. Depending on the task, it can inspect or edit code and interact with a terminal or browser.
+4. The platform can present plans, screenshots, or other artifacts for review.
+5. The developer checks the diff, evidence, and test results.
+
+The platform's available tools and review steps depend on current settings. An artifact does not prove that a change works.
 
 ## Applications in Software Development and Testing
 
-- **Full-Feature Implementation**: "Build me a login page with OAuth support and unit tests." Antigravity plans the routes, schemas, and UI elements in one go.
-- **Autonomous Debugging**: "Fix the memory leak in the production build." The agent researches the logs, reproduces the bug in a test environment, and applies the fix.
-- **System-Wide Refactoring": "Change our state management from Redux to Zustand." Antigravity manages the complex dependency changes across 50+ files.
+- **Feature work:** Ask an agent to implement a bounded change and show the diff.
+- **Browser checks:** Ask it to open a local page and report visible behavior.
+- **Bug investigation:** Provide a failure report and ask for evidence-based hypotheses.
+- **Test support:** Ask it to propose or run tests in an approved environment.
+
+Review code and confirm test results before merging or deploying.
 
 ## Strengths and Limitations
 
 ### Strengths
 
-- **High Transparency**: You can see exactly what the agent is thinking and doing at every second via the task view.
-- **Error Resilience**: If a command fails, the agent doesn't just give up; it reads the error and tries a different approach (Self-Healing).
-- **Professional Workflow**: It enforces engineering best practices (Plans, Tasks, Verification) by default.
+- Agents can combine code search, editing, and tool use in one workflow.
+- Artifacts can make some intermediate results easier to inspect.
+- A developer can delegate bounded work and review the output.
 
 ### Limitations and Risks
 
-- **Steep Learning Curve**: Developers must learn how to "Command an Agent" rather than just "Write Code."
-- **Token Usage**: Orchestrating complex tasks requires sending more context to the model, which can be more expensive than simple chat.
-- **State Complexity**: In extremely large monorepos, keeping the "Agent's Map" perfectly accurate requires careful context management.
+- Agents can misunderstand a task or use incomplete context.
+- Tool actions can change files or access external systems.
+- Long tasks can consume more time and model usage.
+- Product capabilities and availability can change.
 
 ## Comparison with Similar Terms
 
-| Dimension | Antigravity | Standard AI Chat | Classic IDEs |
-| :--- | :--- | :--- | :--- |
-| **Philosophy** | **Agent-First Flow** | Chat-First Flow | Tool-First Flow |
-| **Action Level** | Autonomous Orchestration | Manual Selection | Manual Typing |
-| **Output Type** | **Validated Features** | Code Snippets | File Content |
+| Term | Main distinction |
+|---|---|
+| Antigravity | A specific Google development product |
+| AI coding editor | A broader category of editors with AI assistance |
+| Agentic workflow | A general pattern where an agent plans, acts, and checks results |
+
+A product can implement an agentic workflow, but the terms are not interchangeable.
 
 ## Best Practices
 
-- **Review the Plan**: Never skip the "Implementation Plan" review; it’s your chance to set the "Vibe" before the work begins.
-- **Modular Tasks**: Break big requests into smaller, manageable "Task Items" for better success rates.
-- **Provide Rich Context**: The better the documentation and code comments you provide, the faster Antigravity can navigate your project.
+- Give the agent one bounded task with observable completion criteria.
+- Review its plan and tool permissions before higher-impact work.
+- Use a separate branch or workspace for changes when available.
+- Inspect every changed file and run the relevant tests yourself.
+- Check current product settings and data terms before connecting a private repository.
 
 ## Common Pitfalls
 
-- **Passive Oversights**: Treating the agent like a "magic box" and not reviewing its work.
-- **Vague Objectives**: Giving a goal like "Make it better" instead of "Optimize the database query in `UserStore.ts` for speed."
+Do not treat a plan, screenshot, or successful command as proof of correctness. Check the changed code and confirm the result in the target environment.
 
 ## FAQ
 
-### Q1: Should beginners master this immediately?
+### Does Antigravity use one fixed model for every task?
 
-A: Learn the core purpose first, then adopt it gradually in real workflows.
+Do not infer the selected model from the product name. Model options depend on current product settings and availability.
 
-### Q2: How do teams know adoption is working?
+### Can its artifacts replace code review and testing?
 
-A: Check for more stable delivery, less rework, and smoother collaboration.
+No. Artifacts can help people inspect work, but they do not replace diff review or tests.
 
 ## Related Resources
 
 ### Related Terms
 
-- [agentic-workflow](https://inaodeng.com/en/AIWiki/agentic-workflow/)
-- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
-- [vibe-coding](https://inaodeng.com/en/AIWiki/vibe-coding/)
+- [Agentic workflow](/en/AIWiki/agentic-workflow/)
+- [AI agents](/en/AIWiki/ai-agent/)
+- [Vibe coding](/en/AIWiki/vibe-coding/)
 
-### Term Metadata
+### References
 
-- Aliases: Google Antigravity
-- Tags: AI Vibe Coding, Wiki
-
-## References
-
-- [The Verge coverage](https://www.theverge.com/news/822833/google-antigravity-ide-coding-agent-gemini-3-pro)
-- [Google Developers Blog announcement](https://developers.googleblog.com/en/build-with-google-antigravity-our-new-agentic-development-platform/)
+- [Google Developers Blog: Antigravity launch](https://developers.googleblog.com/en/build-with-google-antigravity-our-new-agentic-development-platform/)
+- [Google Developers Blog: Google I/O 2026 developer announcements](https://developers.googleblog.com/en/all-the-news-from-the-google-io-2026-developer-keynote/)
+- [Google Antigravity documentation](https://antigravity.google/docs/get-started)

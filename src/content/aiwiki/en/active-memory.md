@@ -3,7 +3,7 @@ title: "Active Memory"
 titleZh: "主动记忆"
 slug: "active-memory"
 lang: "en"
-summary: "Memory explicitly captured or updated by user/agent to guide future actions."
+summary: "Guidance that a person or system explicitly saves for use in later tasks."
 topic: "ai-vibe-coding"
 aliases:
   - "Active Memory"
@@ -16,101 +16,98 @@ related:
   - "memory-scope"
   - "conversation-state"
   - "rules-and-memories"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Active Memory
 
-> One-line definition: Critical information explicitly written, updated, or "pinned" by a user or agent to serve as the highest-priority guideline for subsequent task execution.
+> One-line definition: Guidance that a person or system explicitly saves for use in later tasks. It can guide a model, but it does not enforce permissions or guarantee that the model will follow it.
 
 ## Quick Take
 
-- Problem it solves: Keep the right context and avoid context pollution.
-- When to use: Use it in long sessions and multi-task workflows.
-- Boundary: Not ideal for strict stateless-response requirements.
+- **In brief:** Active memory keeps selected instructions available across tasks.
+- **Useful for:** Carrying stable project constraints into later work.
+- **Main limit:** Old or conflicting items can mislead the model.
 
 ## Overview
 
-`Active Memory` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+Active memory is information that a person or system deliberately saves for later use. Examples include a project rule, a preference, or a short summary of an earlier decision.
 
 ## Core Definition
 
 ### Formal Definition
 
-Active Memory is an explicitly managed knowledge storage mechanism that allows users or high-level agents to store specific facts, constraints, or preferences into a persistent layer via commands. It acts as the "Strong Context" during the AI's runtime, occupying high Attention Weight during the reasoning process.
-
-### Plain-Language Explanation
-
-Think of `Active Memory` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Active memory is explicit context that a system can include in later model requests. It can be written in a file, a project setting, or another product-specific store. The model receives it as input; it is not a permission control and may not be included in every request.
 
 ## Background and Evolution
 
-### Origin
+### Background
 
-- **Context**: In long conversations, AI often suffers from "Attention Drift," where late-stage outputs violate constraints agreed upon earlier.
-- **Focus**: Ensuring core constraints are not buried under mountains of chat history.
+Users need a way to carry stable facts and instructions across conversations. Explicit notes make that context easier to inspect and edit than information inferred automatically.
 
-### Evolution
+### Development
 
-- **Stage 1.0 (System Prompt)**: Writing rules in the system prompt—but modification costs were high, and it led to token overflow.
-- **Stage 2.0 (Pinned Messages)**: Similar to pinned messages in chat apps, but lacked structure for engineering.
-- **Stage 3.0 (Managed Active Memory)**: Persistent as independent files or database entries, supporting CRUD operations and Scope partitioning.
+Products support different forms of saved instructions, such as project files, user preferences, or workspace settings. Their scope and loading rules vary.
 
 ## How It Works
 
-1. **Explicit Writing**: Users use commands like `/remember` or directly modify memory items in configuration files.
-2. **Forced Injection**: Before every prompt is sent, the system automatically retrieves relevant Active Memory items and injects them at the top of the prompt.
-3. **Conflict Resolution**: When Active Memory conflicts with the model's native knowledge, Active Memory has "Override Authority."
-4. **Manual Pruning**: To prevent memory obsolescence, users must periodically audit and delete entries that no longer apply.
+1. A person or system writes a preference, rule, or summary.
+2. The product stores it in a file or setting.
+3. A later workflow may load it into the model context.
+4. The model uses the text as guidance when generating a response.
+
+Loading order and scope depend on the product. The model can still miss or misinterpret a saved instruction.
 
 ## Applications in Software Development and Testing
 
-- **Version Locking**: Memory like "Force Spring Boot 2.7, forbid 3.0" prevents the AI from recommending incompatible syntax.
-- **Coding Aesthetic Consistency**: Memory such as "I prefer functional programming; minimize the use of Classes."
-- **Bug Scenario Retention**: Storing previously fixed bug scenarios in Active Memory so the AI can automatically provide regression tips when writing new features.
+- **Repository conventions**: Record naming rules, test commands, and architecture constraints.
+- **Review guidance**: Keep a checklist for recurring code reviews.
+- **Handoff notes**: Save a concise summary of decisions that another session needs.
 
 ## Strengths and Limitations
 
 ### Strengths
 
-- **High Reliability**: Core constraints are never "forgotten" due to long sessions.
-- **Intent Alignment**: Significantly reduces the AI's guessing cost through explicit instruction.
-- **Cross-platform Portability**: Active Memory can be distributed as independent files (e.g., a subset of `.cursorrules`) across project codebases.
+- **Visible content**: A user can inspect and edit explicit instructions.
+- **Repeatable context**: A product can provide the same saved guidance in more than one session.
 
 ### Limitations and Risks
 
-- **Cognitive Load**: Too many Active Memory items consume the Context Window, potentially reducing the AI's ability to "see" code.
-- **Staleness Risk**: If a project upgrades but the memory isn't updated, the AI will follow obsolete instructions, producing "Compliant Junk."
-- **Manual Overhead**: Requires human maintenance—it doesn't "auto-learn" like Automatic Memory.
+- **Loading varies**: A product may not load a file in every workflow.
+- **Conflict**: Old instructions can conflict with current requirements.
+- **No enforcement**: Prompt-level guidance does not block a command or validate a change.
 
 ## Comparison with Similar Terms
 
-| Dimension | Active Memory | Automatic Memory | Static Rules |
-| :--- | :--- | :--- | :--- |
-| **Trigger Source**| **User/Agent explicit tag** | System-extracted from interaction | Predefined in plugins/frameworks |
-| **Duration** | Long-term until manual deletion| Decays by frequency/importance | Permanently fixed |
-| **Flexibility** | High, anytime adjustments | Extremely high, dynamic | Low, requires config/code change |
+| Term | How information is saved | Main role |
+| :--- | :--- | :--- |
+| Active memory | Written or deliberately pinned | Reusable, inspectable guidance |
+| Automatic memory | Selected by a product from past interactions | Reuse context with less manual entry |
+| Conversation state | Stored history or state for a continuing session | Continue an interaction |
+| Prompt caching | Reuses request data at the service level | Reduce repeated processing when supported |
 
 ## Best Practices
 
-- **Keep it Atomic**: Each memory item should describe one core fact (e.g., capture naming conventions only, don't mix with deployment settings).
-- **Periodic Audits**: Review your Active Memory library once a week to clear out stale instructions.
-- **Use Markdown Structures**: Using `#` headers and `-` lists in memory helps the model understand weightings.
+- Keep rules short, specific, and easy to verify.
+- Store project rules in version control when the team needs to share them.
+- Review instructions after project changes.
+- Use tests and permission controls to enforce requirements that must not be skipped.
 
 ## Common Pitfalls
 
-- **Treating Memory as a Log**: Don't save every chat sentence; only save things that need to be "repeatedly followed."
-- **Ignoring Conflict Detection**: If two memory items contradict each other, the AI may enter a "Deadlock" of nonsense.
+- **Assuming every request includes the memory**: Check the product’s loading scope.
+- **Treating instructions as access controls**: Use technical permissions to restrict actions.
+- **Leaving stale rules in place**: Remove or update guidance that no longer applies.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Can active memory guarantee that an agent follows a rule?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
+No. It can provide guidance as model context. Use tests, permissions, and review for requirements that need enforcement.
 
-### Q2: How do teams avoid overengineering with too many mechanisms?
+### Where should a team store project rules?
 
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+Use a version-controlled file or another shared source that the team can inspect. Confirm that the AI product loads that source in the relevant workflow.
 
 ## Related Resources
 

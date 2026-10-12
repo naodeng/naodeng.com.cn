@@ -16,113 +16,60 @@ related:
   - "hooks"
   - "function-calling"
   - "conversation-state"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Slash Commands (斜杠命令)
-
-> One-line definition: Command-style shortcuts in chat/IDE interfaces for invoking predefined actions.
+# Slash Commands
 
 ## Quick Take
 
-- Problem it solves: Make AI outputs predictable and machine-consumable.
-- When to use: Use it when downstream systems need stable formats.
-- Boundary: Not ideal for fully open-ended creative tasks.
+- **In brief:** A slash command is a typed shortcut that starts a defined instruction or action.
+- **Useful for:** Invoking a repeatable task from a chat or development interface.
+- **Main limit:** Available commands and effects depend on the host product.
 
 ## Overview
 
-`Slash Commands` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A user may enter `/review` to start a code review prompt. One product may expand it into instructions; another may run a tool or not support the command.
 
 ## Core Definition
 
-### Formal Definition
-
-Command-style shortcuts in chat/IDE interfaces for invoking predefined actions.
-
-### Plain-Language Explanation
-
-Think of `Slash Commands` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+A slash command is an interface pattern that uses a slash-prefixed name to invoke a command, prompt, or action. It is not a universal AI standard.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+Slash commands were used in chat and developer tools as shortcuts for actions. AI products may map them to prompts, workflows, or tools. Syntax and behavior vary.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. The user types a supported slash-prefixed name.
+2. The host matches it to a configured command or action.
+3. The host runs the action or supplies the associated instruction.
+4. The user reviews the output and any effects.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- API orchestration where AI output feeds automation directly.
-- Test generation with fixed schemas for assertions.
-- Standardized actions triggered via commands/hooks.
-
-### Practical Example
-
-```text
-Goal: generate machine-consumable test steps
-Steps: 1) define JSON schema 2) call function 3) validate via hooks
-Outcome: lower parse errors and better CI automation reuse
-```
+A slash command can start a focused test review, summarize a diff, or generate release notes. Keep its expected inputs and output clear.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Overly strict schemas can reduce model flexibility.
-- Over-permissive function access increases misuse risk.
-- Hook failures can break pipelines without fallback paths.
+Commands can make common tasks easier to start. A command may be unavailable, change after an update, or invoke a broader action than the name suggests.
 
 ## Comparison with Similar Terms
 
-| Dimension | Slash Commands | Custom Commands | Hooks |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Slash Commands` capability boundaries | Leans toward `Custom Commands` capabilities | Leans toward `Hooks` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+A slash command describes how a user invokes an action. A custom command is a reusable command definition. A hook runs after a host event. A skill packages instructions and resources for a task.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Check the command list and product documentation. State the expected input. Review any files or systems changed by the action. Do not expose sensitive data in command arguments.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not assume a command is available in every product. Do not treat invocation as approval for high-impact actions. Check what the command actually runs.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does a slash command always run a tool?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. It may expand to instructions, start an action, or be unsupported, depending on the host.
 
 ## Related Resources
 

@@ -16,113 +16,61 @@ related:
   - "active-memory"
   - "automatic-memory"
   - "memory-scope"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Rules and Memories (规则与记忆)
-
-> One-line definition: A governance pattern combining persistent rules with memory to align model behavior over time.
+# Rules and Memories
 
 ## Quick Take
 
-- Problem it solves: Set guardrails for safety, compliance, and consistency.
-- When to use: Use it for enterprise rollout and permission control.
-- Boundary: Not suitable for speed-only workflows with no governance.
+- **In brief:** Rules give instructions; memories store information for possible later use.
+- **Useful for:** Separating expected behavior from facts or preferences a system may reuse.
+- **Main limit:** Loading, scope, and persistence depend on the product.
 
 ## Overview
 
-`Rules and Memories` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A rule may say to run a specific test command before proposing a code change. A memory may store that command or a project preference. The system must still retrieve and apply the information correctly.
 
 ## Core Definition
 
-### Formal Definition
-
-A governance pattern combining persistent rules with memory to align model behavior over time.
-
-### Plain-Language Explanation
-
-Think of `Rules and Memories` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+A rule is an instruction about how a task should be handled. A memory is stored information that may be supplied in a later interaction. Products differ in how they create, retrieve, and update both.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+AI applications added instructions and saved context to support repeated work. Teams need to know which information is an active requirement and which is a stored fact that may be outdated.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. The application stores a rule or memory in a product-defined format.
+2. It applies or retrieves the item when its conditions match.
+3. The model receives the information as context.
+4. The model uses it while responding or taking an action.
+5. The user checks for conflicts and stale information.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- Enterprise governance with command/tool allowlists.
-- Compliance controls for retention and data egress.
-- Protocol-level interoperability across runtimes/clients.
-
-### Practical Example
-
-```text
-Goal: meet enterprise security and compliance baselines
-Steps: 1) define permission policies 2) enable privacy mode 3) integrate tools via protocol layer
-Outcome: controlled risk surface and standardized integration
-```
+A rule can require tests before a patch is proposed. A memory can record the repository's test command. If the command changes, update the memory and check that the rule still reflects team policy.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Loose policies broaden attack surface.
-- Overly strict policies hurt developer velocity.
-- Protocol-version drift can break compatibility.
+Rules can make expectations explicit. Memories can reduce repeated explanations. Either can be missed, stale, or inconsistent with a newer instruction. Neither is a permission control unless the host separately enforces it.
 
 ## Comparison with Similar Terms
 
-| Dimension | Rules and Memories | Rule Types | Active Memory |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Rules and Memories` capability boundaries | Leans toward `Rule Types` capabilities | Leans toward `Active Memory` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+Rules guide behavior. Memories store reusable context. Conversation state supports an active session. Permission policies decide whether an action is allowed.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Keep requirements in rules and changeable facts in a source that can be updated. Limit scope. Remove stale entries. Resolve conflicting instructions explicitly and review the active context before important actions.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not treat a memory as a current requirement. Do not assume a saved instruction is always loaded. Do not use rules or memories to grant access to files or tools.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Can a memory replace a rule?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+Not reliably. A memory stores information, while a rule states an instruction. Use the product's documented mechanisms for each.
 
 ## Related Resources
 

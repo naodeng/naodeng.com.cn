@@ -16,112 +16,73 @@ related:
   - "remote-control"
   - "permission-policies-allowed-command-list"
   - "subagents"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# ACP (Agent Client Protocol)
-
-> One-line definition: A standardized communication protocol used for state synchronization, capability collaboration, and command dispatching between an AI Agent runtime and its IDE or other client tools.
+# Agent Client Protocol (ACP)
 
 ## Quick Take
 
-- Problem it solves: Set guardrails for safety, compliance, and consistency.
-- When to use: Use it for enterprise rollout and permission control.
-- Boundary: Not suitable for speed-only workflows with no governance.
+- **In brief:** ACP defines how a coding agent and a code editor or client exchange requests and events.
+- **Useful for:** Connecting compatible editors and agents through a shared protocol.
+- **Main limit:** The protocol does not define every product feature or grant tool permissions.
 
 ## Overview
 
-`ACP (Agent Client Protocol)` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+An editor can use ACP to start an agent session, send a coding request, and receive progress or results. The editor and agent still decide which tools and capabilities they support.
 
 ## Core Definition
 
-### Formal Definition
-
-ACP is an asynchronous communication model based on JSON-RPC or similar structures. It defines a set of standard Schemas, allowing different Agent runtimes to integrate seamlessly with various developer clients. Key topics include Capability Negotiation, Streaming State Synchronization, and deterministic Resource Locking.
-
-### Plain-Language Explanation
-
-Think of `ACP (Agent Client Protocol)` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+The Agent Client Protocol (ACP) is a protocol for communication between coding agents and agent clients, such as code editors. Its protocol messages use JSON-RPC 2.0. The protocol defines operations such as initialization, session handling, prompts, and updates.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: Early AI plugins were "point-to-point" hardcoded, requiring a total rewrite for every new editor and failing to support complex, long-running Agent tasks.
-- **Focus**: Achieving "Cross-platform portability" for Agents and ensuring data consistency under high-concurrency operations.
-
-### Evolution
-
-- **Stage 1.0 (Command Dispatch)**: AI sends a block of text; a human manually copies and executes it.
-- **Stage 2.0 (API Hooks)**: IDEs provide simple APIs for plugins to use.
-- **Stage 3.0 (ACP Era)**: The Agent becomes an independent entity, reversely controlling client functions through a standardized protocol, enabling true "Human-Agent Handoff."
+ACP addresses the need to connect coding agents to more than one compatible client. It is a published protocol with versioned documentation. Support can differ between clients and agents.
 
 ## How It Works
 
-1. **Handshake & Capability Negotiation**: When the Agent connects to the client, they first communicate "what I can do" and "what tools you can provide."
-2. **Request-Response Loop**: The Agent issues an `fs.read` command; the client returns the file content (Base64 or text).
-3. **Event-Driven Stream**: The client pushes user behaviors (e.g., cursor movement) as an event stream to the Agent.
-4. **Gatekeeping**: The ACP protocol layer integrates permission validation, ensuring every high-risk action taken by the Agent complies with security policies.
+1. The client and agent initialize and exchange supported capabilities.
+2. The client opens or selects a session.
+3. The client sends a prompt or session operation.
+4. The agent returns responses and may send progress updates or request client input.
+5. The client displays results and applies its own permission and user-interface rules.
+
+Exact methods and behavior depend on the protocol version and implementation.
 
 ## Applications in Software Development and Testing
 
-- **Multi-Agent Collaborative Workflow**: An Agent responsible for writing code and an Agent responsible for running tests share the same ACP channel.
-- **Remote Debugging & Hot-plugging**: Developers can run an Agent in the cloud and connect it to a local IDE interface via ACP.
-- **Automated Evaluation Collection**: Test Agents automatically capture exceptions/errors in the IDE via the protocol layer and send them back for analysis.
+An editor can connect to an ACP-compatible coding agent without using a vendor-specific chat interface. A team can test connection setup, session continuity, tool approvals, cancellation, and error handling.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Decoupled Performance**: The Agent backend and UI frontend can upgrade independently without mutual interference.
-- **Cross-Platform Consistency**: The same Agent logic provides a consistent experience across VS Code, Cursor, or Web-based IDEs.
-- **Auditability**: All communication packets can be logged and replayed, facilitating bug root-cause analysis.
-
-### Limitations and Risks
-
-- **Communication Latency**: If protocol parsing is too slow, it can lead to a "laggy" feeling during high-frequency interaction.
-- **Security Boundary Challenges**: If the protocol is abused, an Agent might manipulate sensitive files without the user's knowledge.
-- **Version Mismatch**: When the client updates the protocol but the Agent has not yet adapted, core functions may fail.
+A shared protocol can reduce client-specific integration work. It does not ensure that two implementations support the same optional capabilities. It also does not define the agent's quality, safety, or authorization policy.
 
 ## Comparison with Similar Terms
 
-| Dimension | ACP (Agent Client Protocol) | MCP (Model Context Protocol) | LSP (Language Server Protocol) |
-| :--- | :--- | :--- | :--- |
-| **Focus** | **Action & Runtime Collaboration** | **Context & Resource Access** | Static Syntax & Type Analysis |
-| **Communicators**| Agent <-> IDE | Model <-> External Data | Editor <-> Tooling |
-| **Typical Actions**| Commands, State Mgmt | Read Docs, Query DB | Go to Definition, Autocomplete|
+ACP connects a coding agent with a client. MCP connects an AI application with external tools and data sources. A2A supports communication between agents. These protocols address different connections.
 
 ## Best Practices
 
-- **Define Granular Schemas**: Cover enough tool capabilities while keeping the protocol layer lean.
-- **Enable Heartbeat Checks**: For long-running tasks, ensure ACP connection stability to prevent the Agent from "going rogue."
-- **Tiered Permission Management**: Implement "Auto-approve" vs. "Manual Confirm" at the protocol layer for specific commands.
+Check the protocol version and capability negotiation. Test supported and unsupported methods. Keep user approvals and operating-system permissions in the client or execution environment.
 
 ## Common Pitfalls
 
-- **Confusing ACP with Standard APIs**: APIs are passively called, whereas ACP typically supports "Bidirectional Communication" initiated by the Agent.
-- **Ignoring Error Handling**: If an Agent issues a command not supported by the client, the entire "Vibe" will collapse without graceful rollback logic.
+Do not infer that an ACP connection grants file or shell access. Do not assume all clients support every method. Confirm how the implementation handles errors, cancellation, and user approval.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does ACP decide which actions an agent may perform?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. ACP defines communication. The client, agent, and execution environment enforce their own permissions.
 
 ## Related Resources
 
 ### Related Terms
 
-- [cross-surface-operation](https://inaodeng.com/en/AIWiki/cross-surface-operation/)
-- [remote-control](https://inaodeng.com/en/AIWiki/remote-control/)
-- [permission-policies-allowed-command-list](https://inaodeng.com/en/AIWiki/permission-policies-allowed-command-list/)
-- [subagents](https://inaodeng.com/en/AIWiki/subagents/)
+- [Cross-surface operation](/en/AIWiki/cross-surface-operation/)
+- [Remote control](/en/AIWiki/remote-control/)
+- [Permission policies](/en/AIWiki/permission-policies-allowed-command-list/)
+- [Subagents](/en/AIWiki/subagents/)
 
 ### External References
 
-- [Cursor Protocol Overview](https://cursor.com/docs)
-- [Agentic Interoperability Standards](https://docs.qoder.com/)
+- [Agent Client Protocol: Protocol overview](https://github.com/agentclientprotocol/agent-client-protocol/blob/main/docs/protocol/v1/overview.mdx)

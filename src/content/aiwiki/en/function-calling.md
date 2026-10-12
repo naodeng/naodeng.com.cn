@@ -16,113 +16,61 @@ related:
   - "hooks"
   - "permission-policies-allowed-command-list"
   - "custom-commands"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Function Calling (函数调用)
-
-> One-line definition: Allow a model to select and call tools/functions with typed arguments in a controlled workflow.
+# Function Calling
 
 ## Quick Take
 
-- Problem it solves: Make AI outputs predictable and machine-consumable.
-- When to use: Use it when downstream systems need stable formats.
-- Boundary: Not ideal for fully open-ended creative tasks.
+- **In brief:** Function calling lets a model request a tool by returning structured arguments.
+- **Useful for:** Connecting an AI response to an application API or test tool.
+- **Main limit:** The application must validate the request and control execution.
 
 ## Overview
 
-`Function Calling` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A model may request a test runner to execute a named test. The application checks the arguments and permissions, runs the test, and returns the result. The model does not run the function by itself.
 
 ## Core Definition
 
-### Formal Definition
-
-Allow a model to select and call tools/functions with typed arguments in a controlled workflow.
-
-### Plain-Language Explanation
-
-Think of `Function Calling` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Function calling lets a model select a declared function and return arguments in a defined format. The host application decides whether to execute the request and what result to return.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+Chat systems first returned text for a person to act on. Function-calling interfaces let applications connect model output to defined operations. Names and formats differ among APIs.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. The application provides function names and parameter schemas.
+2. The model returns a normal response or a structured function request.
+3. The application validates the request and checks access rules.
+4. If approved, the application executes the function and returns its result.
+5. The model may use that result in a later response.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- API orchestration where AI output feeds automation directly.
-- Test generation with fixed schemas for assertions.
-- Standardized actions triggered via commands/hooks.
-
-### Practical Example
-
-```text
-Goal: generate machine-consumable test steps
-Steps: 1) define JSON schema 2) call function 3) validate via hooks
-Outcome: lower parse errors and better CI automation reuse
-```
+An assistant can request a read-only query for failed test names. The application can validate the project and filters before calling the test service. A separate review step can approve actions that change files or systems.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Overly strict schemas can reduce model flexibility.
-- Over-permissive function access increases misuse risk.
-- Hook failures can break pipelines without fallback paths.
+Structured requests can make tool integration easier to parse and monitor. The model may still request an unsuitable function or invalid values. A valid schema does not prove authorization or make an operation safe.
 
 ## Comparison with Similar Terms
 
-| Dimension | Function Calling | Structured Outputs | Hooks |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Function Calling` capability boundaries | Leans toward `Structured Outputs` capabilities | Leans toward `Hooks` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+Function calling requests an action. Structured outputs constrain response shape but do not necessarily invoke a tool. MCP defines a protocol for connecting clients and tools. The application remains responsible for permissions and execution.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Expose only functions needed for the task. Validate every argument in application code. Apply least privilege, log the operation, and request human approval for high-impact actions.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not execute every model request automatically. Do not use a schema as access control. Handle invalid arguments, timeouts, and tool errors.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does function calling mean the model directly runs code?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. The model returns a request. The host application validates it and decides whether to execute it.
 
 ## Related Resources
 

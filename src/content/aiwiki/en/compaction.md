@@ -16,102 +16,61 @@ related:
   - "conversation-state"
   - "memory-scope"
   - "automatic-memory"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Compaction
-
-> One-line definition: The semantic extraction, deduplication, and summarization of long session histories to significantly reduce token consumption and enhance the AI's long-term attention on key decisions.
+# Context Compaction
 
 ## Quick Take
 
-- Problem it solves: Keep the right context and avoid context pollution.
-- When to use: Use it in long sessions and multi-task workflows.
-- Boundary: Not ideal for strict stateless-response requirements.
+- **In brief:** Compaction shortens or summarizes conversation context when it approaches a limit.
+- **Useful for:** Continuing a long interaction with selected earlier information.
+- **Main limit:** A summary can omit details needed later.
 
 ## Overview
 
-`Compaction` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A long debugging session may exceed the context limit. An application may summarize earlier messages and keep recent messages so the task can continue.
 
 ## Core Definition
 
-### Formal Definition
-
-Compaction is a context management technique. It transforms raw session logs into highly condensed knowledge representations via predefined strategies (such as sliding windows, importance scoring, or semantic clustering). This compacted content is then injected into subsequent requests as a "recap."
-
-### Plain-Language Explanation
-
-Think of `Compaction` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Context compaction is the process of reducing the context supplied to a model. A system may remove, summarize, or replace older content. Products use different methods and triggers.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: While the Context Window of Large Language Models is increasing, the latency and financial cost of processing long texts remain high.
-- **Focus**: How to make the AI "forget" the fluff without losing critical engineering decisions.
-
-### Evolution
-
-- **Stage 1.0 (Simple Truncation)**: Directly discarding the earliest messages. The downside is "amnesia," where the AI forgets the original goal.
-- **Stage 2.0 (Rolling Summaries)**: Automatically generating a short summary every 10 turns.
-- **Stage 3.0 (Semantic Knowledge Distillation)**: Systems can now identify that "user decided to switch to Axios" is an unlosable fact, while "failed repair attempts" are compressible interim steps.
+Compaction is one way to manage limited context in long conversations and agent runs. It does not increase the model's context limit, and it is not the same as saving durable memory.
 
 ## How It Works
 
-1. **Triggering**: Automatically starts when the session length reaches a threshold (e.g., 70% of the Context Window).
-2. **Scoring**: A lightweight model scores each turn. Code changes, architectural decisions, and explicit user instructions get high scores; small talk and repetitive error logs get low scores.
-3. **Clustering**: Merges repeated discussions of the same bug into a single record: "Confirmed as dependency conflict and resolved after 5 attempts."
-4. **Rewriting**: Re-formats fragmented dialogue into structured Markdown lists.
-5. **Injection**: Places the "Concentrated Juice" (summary) at the top of the Prompt, while moved detailed history remains archived.
+1. The system detects that the context needs reduction.
+2. It selects older content for removal or summarization.
+3. It keeps or creates a shorter representation.
+4. It sends the reduced context with later requests.
+5. The user checks whether important decisions or constraints remain.
 
 ## Applications in Software Development and Testing
 
-- **Long-term Bug Tracking**: Even after processing 10 new features, the AI still remembers a performance issue from 5 hours ago because it was compacted into core memory.
-- **Refactoring Navigation**: Record the original motivation for a large refactor to prevent the AI from generating hallucinations due to context loss later on.
-- **Reducing Token Costs**: Compaction can shrink a 100k-token session down to 2k tokens, drastically lowering API invocation fees.
+Before compaction, record the current code revision, failed checks, decisions, and open questions. After compaction, confirm these details before continuing a change.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Focused Attention**: AI is no longer distracted by lengthy error logs and can see the current goal more clearly.
-- **Cost Efficiency**: Significantly reduces token costs per turn.
-- **Project Continuity**: Supports saving compacted memory as a "project snapshot" for instant restoration later.
-
-### Limitations and Risks
-
-- **Information Loss**: Overly aggressive compaction might drop trivial but critical details (like a specific variable name).
-- **Recursive Bias**: If an AI summarizes its own chat, it may create "self-reinforcing" hallucinations, drifting from facts.
-- **Computational Overhead**: The compression process itself consumes tokens and compute power.
+Compaction can let a task continue without sending the full history every time. It can lose precise wording, command output, or edge cases. Restored content may also mix current facts with outdated summaries.
 
 ## Comparison with Similar Terms
 
-| Dimension | Compaction | Prompt Caching | RAG (Vector Search) |
-| :--- | :--- | :--- | :--- |
-| **Core Goal** | **Extracting essence** | Reusing hash prefixes | Searching massive external knowledge |
-| **Object** | Active session history | Static/Semi-static text| Large document/code base |
-| **AI Impact** | Improves reasoning focus | Affects speed and cost | Provides background context |
+Compaction reduces active context. A context window is the model's input limit. Memory stores selected information for possible later use. Prompt caching reuses repeated input for efficiency; it does not summarize history.
 
 ## Best Practices
 
-- **Preserve Key Code Snippets**: Do not delete the final adopted code structures during compaction.
-- **Layered Compaction**: Keep the last 10 turns raw and perform deep compaction only on history older than that.
-- **Reversibility**: Provide an entry point to "view original history" to allow traceability if disputes arise after compaction.
+Preserve exact requirements, decisions, and identifiers that later steps need. Keep a source of truth outside the summary. Review the compacted state before high-impact actions.
 
 ## Common Pitfalls
 
-- **Blindly Compacting Errors**: Sometimes stack traces in error logs are vital for solving subsequent issues and shouldn't be fully merged.
-- **Low-frequency Compaction**: Waiting until the token limit is reached before compacting may cause the AI to start hallucinating.
+Do not treat compaction as lossless. Do not assume omitted details remain available to the model. Recheck files and test output instead of trusting an old summary.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does compaction make the model's context window larger?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. It reduces or summarizes the context sent to the model. The model's context limit stays the same.
 
 ## Related Resources
 
