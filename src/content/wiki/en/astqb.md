@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [ASTQB](#astqb)
-    - [See also:](#see-also)
   - [Questions about ASTQB?](#questions-about-astqb)
     - [Basics and Importance](#basics-and-importance)
       - [What does ASTQB stand for?](#what-does-astqb-stand-for)
@@ -49,7 +48,7 @@ Related Terms:
 
 - American Software Testing Qualifications Board
 
-### See also:
+See also:
 
 - [Official Website](https://astqb.org/)
 ## Questions about ASTQB?

@@ -39,7 +39,7 @@ test("English Wiki table of contents follows the Chinese section hierarchy", asy
 });
 
 test("paired Wiki See also labels stay outside headings and tables of contents", async ({ page }) => {
-  for (const slug of ["browserstack", "chai-js", "jest", "jira", "postman"]) {
+  for (const slug of ["astqb", "browserstack", "chai-js", "jest", "jira", "postman"]) {
     for (const { locale, label } of [
       { locale: "en", label: "See also:" },
       { locale: "zh-cn", label: "另请参阅：" },
