@@ -16,7 +16,6 @@ order: 0
 
 - [Chai.js](#chaijs)
   - [相关术语](#相关术语)
-  - [# 另请参阅：](#-另请参阅)
   - [关于 Chai.js 有疑问吗？](#关于-chaijs-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Chai.js 是什么？](#chaijs-是什么)
@@ -55,7 +54,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 - [Jest](/zh-cn/wiki/jest/)
 - [Jasmine](/zh-cn/wiki/jasmine/)
 
-## # 另请参阅：
+另请参阅：
 
 - [Official Website](https://www.chaijs.com/)
 ## 关于 Chai.js 有疑问吗？

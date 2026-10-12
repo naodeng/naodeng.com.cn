@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [美国软件测试认证委员会 ｜ ASTQB](#美国软件测试认证委员会--astqb)
-    - [另请参阅：](#另请参阅)
   - [关于 ASTQB 美国软件测试资格委员会的问题](#关于-astqb-美国软件测试资格委员会的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [ASTQB 代表什么？](#astqb-代表什么)
@@ -54,7 +53,7 @@ order: 0
 
 - [官方网站](https://astqb.org/)
 
-### 另请参阅：
+另请参阅：
 
 - [Official Website](https://astqb.org/)
 

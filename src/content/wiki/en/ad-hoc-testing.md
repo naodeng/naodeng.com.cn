@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Ad Hoc Testing](#ad-hoc-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Ad Hoc Testing?](#questions-about-ad-hoc-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Ad Hoc testing in software testing?](#what-is-ad-hoc-testing-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 Ad hoc testing is an informal, spontaneous approach to software testing. Its main objective is to identify vulnerabilities or issues as quickly as possible. This method is unstructured, conducted without detailed planning or documentation.
 
-## Related Terms:
+Related Terms:
 
 - [Exploratory Testing](/en/wiki/exploratory-testing/)
 

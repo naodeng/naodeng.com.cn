@@ -16,7 +16,6 @@ order: 0
 
 - [Chai.js](#chaijs)
   - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Chai.js?](#questions-about-chaijs)
     - [Basics and Importance](#basics-and-importance)
       - [What is Chai.js?](#what-is-chaijs)
@@ -33,8 +32,6 @@ order: 0
       - [What is an assertion in Chai.js?](#what-is-an-assertion-in-chaijs)
       - [How do you write a basic assertion in Chai.js?](#how-do-you-write-a-basic-assertion-in-chaijs)
       - [What are the different types of assertions available in Chai.js?](#what-are-the-different-types-of-assertions-available-in-chaijs)
-    - [Should & Expect](#should--expect)
-    - [Assert](#assert)
       - [How do you assert that a function throws an error in Chai.js?](#how-do-you-assert-that-a-function-throws-an-error-in-chaijs)
       - [How do you assert deep equality in Chai.js?](#how-do-you-assert-deep-equality-in-chaijs)
     - [Plugins](#plugins)
@@ -57,7 +54,7 @@ Chai.js, often simply referred to as Chai, is a BDD /TDD (Behavior-Driven Develo
 - [Jest](/en/wiki/jest/)
 - [Jasmine](/en/wiki/jasmine/)
 
-### See also:
+See also:
 
 - [Official Website](https://www.chaijs.com/)
 ## Questions about Chai.js?
@@ -322,7 +319,9 @@ Chai.js, often simply referred to as Chai, is a BDD /TDD (Behavior-Driven Develo
 #### What are the different types of assertions available in Chai.js?
 
   Chai.js offers three assertion styles: **should**, **expect**, and **assert**. Each style provides a variety of assertions to test different conditions:
-  ### Should & Expect
+
+  **Should & Expect**
+
   These [BDD](/en/wiki/bdd/) (Behavior-Driven Development) styles are similar in functionality but differ in syntax. They provide a chainable language to construct assertions.
 
   - **.equal(value)** : Asserts strict equality (
@@ -363,7 +362,9 @@ Chai.js, often simply referred to as Chai, is a BDD /TDD (Behavior-Driven Develo
 
   - **.exist** : Asserts non-null and non-undefined.
   - **.empty** : Asserts empty array, string, or object.
-  ### Assert
+
+  **Assert**
+
   The TDD ([Test-Driven Development](/en/wiki/test-driven-development/)) style uses a more traditional assertion approach without chainable language.
 
   - **assert.equal(actual, expected)** : Asserts loose equality (

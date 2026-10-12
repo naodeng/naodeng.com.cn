@@ -16,7 +16,6 @@ order: 0
 
 - [Jira](#jira)
   - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Jira?](#questions-about-jira)
     - [Basics and Importance](#basics-and-importance)
       - [What is Jira and what is it used for?](#what-is-jira-and-what-is-it-used-for)
@@ -48,7 +47,7 @@ Jira is a popular software developed by Atlassian, primarily used for bug tracki
 - [Change Requests](/en/wiki/change-requests/)
 - [Incident Management](/en/wiki/incident-management/)
 
-### See also:
+See also:
 
 - [Official Website](https://www.atlassian.com/software/jira)
 - [Wikipedia](https://en.wikipedia.org/wiki/Jira_(software))

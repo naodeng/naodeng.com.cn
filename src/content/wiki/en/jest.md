@@ -16,7 +16,6 @@ order: 0
 
 - [Jest](#jest)
   - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Jest?](#questions-about-jest)
     - [Basics and Importance](#basics-and-importance)
       - [What is Jest and what is it used for?](#what-is-jest-and-what-is-it-used-for)
@@ -51,7 +50,7 @@ Jest is a JavaScript unit testing framework by Meta. It's primarily used for wri
 - [Jasmine](/en/wiki/jasmine/)
 - [Chai.js](/en/wiki/chai-js/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://jestjs.io/)
 ## Questions about Jest?

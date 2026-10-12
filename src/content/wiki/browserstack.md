@@ -17,7 +17,6 @@ order: 0
 
 - [Browserstack ｜ Browserstack](#browserstack--browserstack)
   - [相关术语](#相关术语)
-  - [# 另请参阅：](#-另请参阅)
   - [关于 BrowserStack 有疑问吗？](#关于-browserstack-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是 BrowserStack？](#什么是-browserstack)
@@ -52,7 +51,7 @@ browserstack 是一个基于云的 Web 和移动测试平台，允许开发人�
 
 - [Cross-Browser Testing tool](/zh-cn/wiki/cross-browser-testing/)
 
-## # 另请参阅：
+另请参阅：
 
 - [Official Website](https://www.browserstack.com/)
 - [Wikipedia](https://en.wikipedia.org/wiki/BrowserStack)

@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [ASTQB](#astqb)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about ASTQB?](#questions-about-astqb)
     - [Basics and Importance](#basics-and-importance)
       - [What does ASTQB stand for?](#what-does-astqb-stand-for)
@@ -46,11 +44,11 @@ order: 0
 
 The American Software Testing Qualifications Board (ASTQB) is the U.S. national board for the International Software Testing Qualifications Board (ISTQB). It's responsible for the " ISTQB Certified Tester" program in the U.S. The ASTQB provides and manages certifications, accredits trainers, and approves training materials for software testing professionals. Earning an ISTQB certification through ASTQB ensures that an individual meets internationally recognized standards in software testing. Additionally, ASTQB promotes the value and importance of software testing as a profession within the U.S. software development and IT industries.
 
-## Related Terms:
+Related Terms:
 
 - American Software Testing Qualifications Board
 
-### See also:
+See also:
 
 - [Official Website](https://astqb.org/)
 ## Questions about ASTQB?
