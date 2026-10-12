@@ -41,7 +41,7 @@ AI 安全测试 Skill 可以组织安全发现的材料、证据和下一步动�
 | --- | --- | --- |
 | 安全发现 | 风险类别、触发条件、输出行为和受影响用户 | 严重级别与证据状态 |
 | 响应判断 | 拒答、限定、转向或回答 | 说明安全与否的依据 |
-| 控制动作 | 策略、Prompt、分类器、人工评审或监控改动 | 负责人和验证计划 |
+| 控制动作 | 策略、提示词、分类器、人工评审或监控改动 | 负责人和验证计划 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
 
@@ -84,7 +84,7 @@ AI 安全测试 Skill 可以组织安全发现的材料、证据和下一步动�
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
 | 安全策略 | 禁止建议、脆弱用户规则、隐私要求和升级负责人 | 不要用模型常识补齐策略缺口 |
-| Prompt 集合 | 直接、间接、对抗和模糊请求 | 包含不应被重复的上下文 |
+| 提示词集合 | 直接、间接、对抗和模糊请求 | 包含不应被重复的上下文 |
 | 证据 | 模型版本、策略版本、响应、分类器结果和评审决定 | 没有版本的响应样例证据很弱 |
 
 可以这样调用：
@@ -145,7 +145,7 @@ AI 安全测试 Skill 可以组织安全发现的材料、证据和下一步动�
 | --- | --- | --- |
 | 安全发现 | 风险类别、触发条件、输出行为和受影响用户 | 严重级别与证据状态 |
 | 响应判断 | 拒答、限定、转向或回答 | 说明安全与否的依据 |
-| 控制动作 | 策略、Prompt、分类器、人工评审或监控改动 | 负责人和验证计划 |
+| 控制动作 | 策略、提示词、分类器、人工评审或监控改动 | 负责人和验证计划 |
 
 没有运行记录、查询结果或原始产物时，不要写“已通过”。好的安全检查不会因为回复“拒绝了”就直接打勾。它还要看助手是否避免有害细节、解释安全边界，并给出合适的下一步，同时不冒充有资质的决策者。
 
@@ -196,16 +196,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [AI 安全测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing/prompts/ai-safety-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing) 中还包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [AI 安全测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing/prompts/ai-safety-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing) 中还包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束伤害类别、拒答行为、隐私边界、滥用途径、升级机制和监控。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
 
 ### 参考链接
 
-- AI 安全测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing/prompts/ai-safety-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing/prompts/ai-safety-testing.md)
+- AI 安全测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing/prompts/ai-safety-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing/prompts/ai-safety-testing.md)
 
-- Awesome QA Skills：AI 安全测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing)
+- Awesome QA Skills：AI 安全测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-safety-testing)
 
 - Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- AI 安全测试 详情页:[https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/](https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/)
+- AI 安全测试详情页:[https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/](https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/)

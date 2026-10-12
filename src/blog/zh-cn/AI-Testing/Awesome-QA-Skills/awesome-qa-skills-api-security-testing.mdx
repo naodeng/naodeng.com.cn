@@ -8,17 +8,17 @@ tags: ["AI 测试", "QA Skills", "API 安全测试"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-API 安全检查停在“Token 有效”还不够。Token 属于谁、能执行什么动作、能访问哪个资源，以及失败响应泄露了什么，都是接口边界的一部分。
+API 安全检查停在“令牌有效”还不够。令牌属于谁、能执行什么动作、能访问哪个资源，以及失败响应泄露了什么，都是接口边界的一部分。
 
 ## 为什么需要这个 Skill
 
-API 安全测试 Skill 先用文档、权限矩阵、API 合同和脱敏证据建立受限分析，再把需要授权执行的验证写成 AST-## 发现。它不会登录系统、读取凭据或自动攻击真实 API——名字里有 Testing，边界里仍然有证据和授权。
+API 安全测试 Skill 先用文档、权限矩阵、API 合同和脱敏证据建立受限分析，再把需要授权执行的验证写成 AST-## 发现。它不会登录系统、读取凭据或自动攻击真实 API；即使名称包含“测试”，也仍受证据和授权边界约束。
 
 ## Skill 用来做什么
 
 当团队需要复核 API 攻击面、输入边界、认证、授权、对象范围、错误泄露、限流和安全合同时，使用这个 Skill。它尤其适合下面这些场景：
 
-- Token 能通过认证，但还没有确认它能否访问当前对象。
+- 令牌能通过认证，但还没有确认它能否访问当前对象。
 - OpenAPI、权限矩阵和安全需求对同一接口说法不一致。
 - 团队需要把“检查越权”和“检查敏感信息泄露”变成有触发条件、预期结果和证据要求的场景。
 - 交接时必须说明哪些内容只是静态审查，哪些内容还没有授权执行。
@@ -43,7 +43,7 @@ API 安全测试的核心不是多列几个攻击名，而是把请求边界拆�
 
 | 复核维度 | 重点问题 |
 | --- | --- |
-| 认证 | 调用者是谁？Token 的来源、租户和生命周期是什么？ |
+| 认证 | 调用者是谁？令牌的来源、租户和生命周期是什么？ |
 | 授权 | 这个角色能执行当前动作吗？ |
 | 对象授权 | 它能操作这个具体资源吗？资源是否属于另一个租户？ |
 | 输入边界 | 参数、路径、查询、上传和批量输入的攻击面在哪里？ |
@@ -61,7 +61,7 @@ API 安全分析不能把请求样例当成真实执行结果。先做输入审�
 | known | API 合同明确要求导出接口校验租户身份 | 引用接口和版本 |
 | missing | 没有对象权限矩阵，也没有错误响应规范 | 记录证据缺口 |
 | conflicting | OpenAPI 允许 404，安全需求要求 403 | 保留两份来源并请求决策 |
-| stale | 请求样例仍使用旧版本 Token 或字段 | 标记时效风险 |
+| stale | 请求样例仍使用旧版本令牌或字段 | 标记时效风险 |
 | out_of_scope | 未授权登录、调用生产 API 或读取凭据 | 明确禁止真实执行 |
 | assumptions | 暂时假设测试环境使用合成租户和对象 | 写出影响并要求确认 |
 
@@ -75,7 +75,7 @@ API 安全分析不能把请求样例当成真实执行结果。先做输入审�
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
@@ -101,8 +101,8 @@ Authorization: Bearer <token>
 ##### AST-02 — 下载接口缺少对象授权和错误泄露合同
 
 - **对象 / 规则：** GET /exports/{job_id}/download 的租户对象访问。
-- **来源：** API Contract v3.2；Token 说明存在，但对象权限矩阵和错误响应规范未提供。
-- **触发条件：** Tenant A 的合法身份请求 Tenant B 的 job_id，以及请求不存在或已过期的 job_id。
+- **来源：** API 合同 v3.2；令牌说明存在，但对象权限矩阵和错误响应规范未提供。
+- **触发条件：** 租户 A 的合法身份请求租户 B 的 job_id，以及请求不存在或已过期的 job_id。
 - **预期关注点：** 认证成功不等于对象授权成功；跨租户、不存在和已过期资源是否有一致且不过度泄露的响应。
 - **状态：** missing
 - **影响 / 优先级：** P1。缺少合同会让 API、网关、审计和客户端对失败语义产生不同实现。
@@ -168,7 +168,7 @@ Skill 可以准备第四步需要什么，但不会代替第四步。尤其不�
 
 ## 容易踩的坑
 
-1. 把 Token 有效写成“用户可以访问这个资源”。
+1. 把令牌有效写成“用户可以访问这个资源”。
 2. 只测试 UI，不检查直接 API、批量接口、后台任务和下载链接。
 3. 把 403 当成所有对象都安全，也不检查 404/错误响应是否泄露对象存在性。
 4. 只列 SQL 注入、越权等攻击名，不写触发条件、预期结果和证据。
@@ -211,19 +211,19 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行规则在 API 安全测试 Prompt：
+完整执行规则见 API 安全测试提示词：
 
 https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md
 
-Skill 源目录同时包含 Skill 定义、Agent 适配和 Eval 资产：
+Skill 源目录同时包含 Skill 定义、智能体适配和评测资产：
 
 https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing
 
-静态 API 合同、请求模板和 dry-run 只能保留计划或材料证据，不能升级为真实攻击、漏洞不存在或发布批准。
+静态 API 合同、请求模板和空跑只能保留计划或材料证据，不能升级为真实攻击、漏洞不存在或发布批准。
 
 ### 参考链接
 
-- API 安全测试 Prompt：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md
+- API 安全测试提示词：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md
 - API 安全测试 Skill 源文件：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing
 - API 安全测试详情页：[https://inaodeng.com/zh-cn/qaskills/api-security-testing/](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)
 - Awesome QA Skills 项目：https://github.com/naodeng/awesome-qa-skills

@@ -12,7 +12,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残余风险，并把计划中的实验与已经执行的故障测试分开。
+韧性测试 Skill 分析降级行为、隔离边界、恢复能力和残余风险，并把计划中的实验与已经执行的故障测试分开。
 
 ## Skill 用来做什么
 
@@ -22,7 +22,7 @@ Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残�
 
 结果要写清故障触发、预期降级、隔离边界、恢复能力、残余风险、负责人、停止条件和验证方式。
 
-当准备受控韧性演练、复核依赖设计，或者调查 fallback 路径不清楚时，使用这个 Skill。
+当准备受控韧性演练、复核依赖设计，或者调查回退路径不清楚时，使用这个 Skill。
 
 ## 它不做什么
 
@@ -41,7 +41,7 @@ Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残�
 | --- | --- | --- |
 | 降级行为 | 用户和操作人员应该观察到什么 | 预期结果与来源 |
 | 隔离边界 | 故障不能传播到哪里 | 边界与证据 |
-| 恢复能力 | 正常行为如何回来 | runbook 与验证 |
+| 恢复能力 | 正常行为如何回来 | 运行手册与验证 |
 | 残余风险 | 仍未知或已接受的内容 | 负责人和下一步 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
@@ -78,7 +78,7 @@ Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残�
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
@@ -86,8 +86,8 @@ Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残�
 | --- | --- | --- |
 | 韧性目标 | 用户可见行为、服务边界和可接受降级 | 未批准目标保持 pending |
 | 故障场景 | 依赖超时、部分中断、队列压力或资源耗尽 | 不要只写系统故障 |
-| 隔离设计 | 舱壁、熔断、队列、fallback 和数据一致性边界 | 未文档化边界标为未知 |
-| 恢复证据 | runbook、指标、告警、恢复步骤和安全环境 | 设计与执行分开 |
+| 隔离设计 | 舱壁、熔断、队列、回退路径和数据一致性边界 | 未文档化边界标为未知 |
+| 恢复证据 | 运行手册、指标、告警、恢复步骤和安全环境 | 设计与执行分开 |
 
 可以这样调用：
 
@@ -108,9 +108,9 @@ Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残�
 
 ### 发现
 
-#### 聚焦例子：复核税费超时，不要把 fallback 当成证明
+#### 聚焦例子：复核税费超时，不要把回退路径当成证明
 
-设计说税费供应商超时时结账使用缓存估算，但没有说明支付捕获前如何对账过期估算。这个 Skill 应指出一致性边界，要求带停止条件的 staging 验证，在证据出现前保持恢复行为未评估。
+设计说税费供应商超时时结账使用缓存估算，但没有说明支付捕获前如何对账过期估算。这个 Skill 应指出一致性边界，要求带停止条件的预发布环境验证，在证据出现前保持恢复行为未评估。
 
 分析可以准备隔离验证并分类设计证据，不能在授权运行产生证据前证明故障隔离、可用性或恢复能力。
 
@@ -148,10 +148,10 @@ Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残�
 | --- | --- | --- |
 | 降级行为 | 用户和操作人员应该观察到什么 | 预期结果与来源 |
 | 隔离边界 | 故障不能传播到哪里 | 边界与证据 |
-| 恢复能力 | 正常行为如何回来 | runbook 与验证 |
+| 恢复能力 | 正常行为如何回来 | 运行手册与验证 |
 | 残余风险 | 仍未知或已接受的内容 | 负责人和下一步 |
 
-每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时保留 `pending`、`blocked`、未评估或 `NOT_SCORED`，不要用肯定语气填补证据空白。
 
 ### 下一步路由
 
@@ -159,7 +159,7 @@ Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残�
 
 ## 怎样准备更好的输入
 
-提供故障模式、依赖和数据流图、fallback 规则、负责人、监控、runbook 版本、安全环境和停止条件。边界缺失时先请求边界，不要套用通用模式。
+提供故障模式、依赖和数据流图、回退路径规则、负责人、监控、运行手册版本、安全环境和停止条件。边界缺失时先请求边界，不要套用通用模式。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
 
@@ -171,7 +171,7 @@ Resilience Testing Skill 分析降级行为、隔离边界、恢复能力和残�
 
 ## 容易踩的坑
 
-1. 只看到 fallback 返回成功，却不检查旧数据和下游一致性。
+1. 只看到回退路径返回成功，却不检查旧数据和下游一致性。
 2. 列出故障模式，却不说明要隔离什么、如何判断恢复。
 3. 没有定义可回退场景和升级路径，就先注入大范围故障。
 
@@ -193,7 +193,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 不会。它准备场景和证据计划，实际执行需要授权的操作者或测试流程。
 
-### 写好 fallback 就够了吗？
+### 写好回退路径就够了吗？
 
 不够。它只是设计证据，还需要隔离验证和可观察的恢复结果。
 
@@ -201,13 +201,13 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行规则在 [韧性测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing/prompts/resilience-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing) 中还可能包含评测用例和补充材料。
+完整执行规则在 [韧性测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing/prompts/resilience-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing) 中还可能包含评测用例和补充材料。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+静态计划、文件存在和空跑保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
 ### 参考链接
 
-- 韧性测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing/prompts/resilience-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing/prompts/resilience-testing.md)
+- 韧性测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing/prompts/resilience-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing/prompts/resilience-testing.md)
 - 韧性测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing)
-- 韧性测试 详情页:[https://inaodeng.com/zh-cn/qaskills/resilience-testing/](https://inaodeng.com/zh-cn/qaskills/resilience-testing/)
+- 韧性测试详情页:[https://inaodeng.com/zh-cn/qaskills/resilience-testing/](https://inaodeng.com/zh-cn/qaskills/resilience-testing/)
 - Awesome QA Skills 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

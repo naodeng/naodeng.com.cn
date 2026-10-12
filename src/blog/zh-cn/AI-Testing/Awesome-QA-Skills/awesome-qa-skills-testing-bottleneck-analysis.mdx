@@ -12,7 +12,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Testing Bottleneck 分析 Skill 检查等待队列、依赖、容量、交接和测试约束证据，把延迟抱怨变成有证据边界的改进路径。
+测试瓶颈分析 Skill 检查等待队列、依赖、容量、交接和测试约束证据，把延迟抱怨变成有证据边界的改进路径。
 
 ## Skill 用来做什么
 
@@ -78,7 +78,7 @@ Testing Bottleneck 分析 Skill 检查等待队列、依赖、容量、交接和
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
@@ -86,7 +86,7 @@ Testing Bottleneck 分析 Skill 检查等待队列、依赖、容量、交接和
 | --- | --- | --- |
 | 流转证据 | 到达、等待、服务、交接、排队和完成时间戳 | 缺时间戳要明确 |
 | 依赖 | 环境、数据、审批、服务和专家约束 | 观察到的依赖与假设分开 |
-| 容量 | Worker、环境、评审槽位、窗口和利用率 | 不要从抱怨推断饱和 |
+| 容量 | 工作进程、环境、评审槽位、窗口和利用率 | 不要从抱怨推断饱和 |
 | 决策边界 | 负责人、实验、停止条件和变更权限 | 取舍由人工决定 |
 
 可以这样调用：
@@ -108,9 +108,9 @@ Testing Bottleneck 分析 Skill 检查等待队列、依赖、容量、交接和
 
 ### 发现
 
-#### 聚焦例子：区分 staging 稀缺和安全评审交接
+#### 聚焦例子：区分预发布环境稀缺和安全评审交接
 
-发布确实在等 staging，但时间戳显示安全评审只有在手工环境交接后才开始。这个 Skill 应把环境容量和交接顺序作为两个假设，要求时间戳重放或并行预约实验，不要只因为队列长就归罪环境。
+发布确实在等预发布环境，但时间戳显示安全评审只有在手工环境交接后才开始。这个 Skill 应把环境容量和交接顺序作为两个假设，要求时间戳重放或并行预约实验，不要只因为队列长就归罪环境。
 
 分析可以分类流转证据并提出实验，不能在验证前证明根因、吞吐提升或发布就绪。
 
@@ -151,7 +151,7 @@ Testing Bottleneck 分析 Skill 检查等待队列、依赖、容量、交接和
 | 实验 | 区分假设的最小变化 | 预期观察 |
 | 决策边界 | 需要人工做容量或流程选择的内容 | 负责人和残余风险 |
 
-每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时保留 `pending`、`blocked`、未评估或 `NOT_SCORED`，不要用肯定语气填补证据空白。
 
 ### 下一步路由
 
@@ -201,13 +201,13 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行规则在 [测试瓶颈分析 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis) 中还可能包含评测用例和补充材料。
+完整执行规则在 [测试瓶颈分析提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis) 中还可能包含评测用例和补充材料。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+静态计划、文件存在和空跑保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
 ### 参考链接
 
-- 测试瓶颈分析 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)
+- 测试瓶颈分析提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md)
 - 测试瓶颈分析 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/testing-bottleneck-analysis)
 - 测试瓶颈分析 详情页:[https://inaodeng.com/zh-cn/qaskills/testing-bottleneck-analysis/](https://inaodeng.com/zh-cn/qaskills/testing-bottleneck-analysis/)
 - Awesome QA Skills 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

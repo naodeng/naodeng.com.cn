@@ -1,6 +1,6 @@
 ---
 title: "身份认证测试 Skill：验证系统认定谁在调用，以及认证何时失效"
-description: "身份认证测试实战指南：检查登录、Token、会话、过期、恢复、多因素认证和身份证据。"
+description: "身份认证测试实战指南：检查登录、令牌、会话、过期、恢复、多因素认证和身份证据。"
 date: 2026-10-31T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -12,17 +12,17 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-身份认证测试用于检查登录、Token 签发、续期、过期、退出、恢复和多因素挑战中的凭据与身份流程。
+身份认证测试用于检查登录、令牌签发、续期、过期、退出、恢复和多因素挑战中的凭据与身份流程。
 
 ## Skill 用来做什么
 
-当团队需要围绕“凭据证明、Token 生命周期、会话绑定、过期、恢复、MFA 和审计事件”工作时，使用身份认证测试 Skill。
+当团队需要围绕“凭据证明、令牌生命周期、会话绑定、过期、恢复、MFA 和审计事件”工作时，使用身份认证测试 Skill。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦身份认证测试。
 
 好的认证测试会沿着身份跨设备、跨时间追踪。它验证链接不能重放、退出后的会话不能继续使用，恢复路径也不会变成最弱凭据。
 
-它适合这些场景：团队需要重复检查凭据证明、Token 生命周期、会话绑定、过期、恢复、MFA 和审计事件；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+它适合这些场景：团队需要重复检查凭据证明、令牌生命周期、会话绑定、过期、恢复、MFA 和审计事件；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
 ## 它不做什么
 
@@ -84,8 +84,8 @@ series: ["Awesome QA Skills 实战"]
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
 | 身份流程 | 注册、登录、链接过期、会话签发、退出和恢复 | 写清每个身份与设备状态 |
-| 安全策略 | MFA 触发、Token 生命周期、重放规则和恢复负责人 | 不要从 UI 文案推断策略 |
-| 证据 | Token 声明、会话记录、审计日志和用户通知 | 只有成功页面不够 |
+| 安全策略 | MFA 触发、令牌生命周期、重放规则和恢复负责人 | 不要从 UI 文案推断策略 |
+| 证据 | 令牌声明、会话记录、审计日志和用户通知 | 只有成功页面不够 |
 
 可以这样调用：
 
@@ -155,7 +155,7 @@ series: ["Awesome QA Skills 实战"]
 
 如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
 
-这里补充信息会改变结果，因为凭据证明、Token 生命周期、会话绑定、过期、恢复、MFA 和审计事件必须接回证据，不能只靠熟悉的测试套路推断。
+这里补充信息会改变结果，因为凭据证明、令牌生命周期、会话绑定、过期、恢复、MFA 和审计事件必须接回证据，不能只靠熟悉的测试套路推断。
 
 ## 和其他 Skill 怎么配合
 
@@ -166,7 +166,7 @@ series: ["Awesome QA Skills 实战"]
 ## 容易踩的坑
 
 1. 只测登录，不测退出和恢复。
-2. 检查 Token 格式，却不检查撤销。
+2. 检查令牌格式，却不检查撤销。
 3. 密码重置绕过登录时同样的 MFA 策略。
 
 ## 安装与调用
@@ -193,16 +193,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [身份认证测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing) 中包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [身份认证测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing) 中包含入口文件以及实际存在的配套资料。
 
-入口文件重点约束凭据证明、Token 生命周期、会话绑定、过期、恢复、MFA 和审计事件。要保留它的决策边界，不要把静态设计写成执行结论。
+入口文件重点约束凭据证明、令牌生命周期、会话绑定、过期、恢复、MFA 和审计事件。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 身份认证测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md)
+- 身份认证测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md)
 
-- Awesome QA Skills：身份认证测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing)
+- Awesome QA Skills：身份认证测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing)
 
 - Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- 身份认证测试 详情页:[https://inaodeng.com/zh-cn/qaskills/authentication-testing/](https://inaodeng.com/zh-cn/qaskills/authentication-testing/)
+- 身份认证测试详情页:[https://inaodeng.com/zh-cn/qaskills/authentication-testing/](https://inaodeng.com/zh-cn/qaskills/authentication-testing/)

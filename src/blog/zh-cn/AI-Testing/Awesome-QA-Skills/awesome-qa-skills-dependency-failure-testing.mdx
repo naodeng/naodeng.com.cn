@@ -77,7 +77,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
@@ -85,7 +85,7 @@ series: ["Awesome QA Skills 实战"]
 | --- | --- | --- |
 | 依赖契约 | 超时、错误、一致性、重试和回退规则 | 区分提供方行为与客户端假设 |
 | 业务状态 | 订单、预留、支付和补偿状态 | 追踪部分写入 |
-| 证据 | 请求 ID、提供方 Trace、本地状态、重试次数和用户消息 | 写入状态未知时必须显式处理 |
+| 证据 | 请求 ID、提供方链路追踪记录、本地状态、重试次数和用户消息 | 写入状态未知时必须显式处理 |
 
 可以这样调用：
 
@@ -181,9 +181,9 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 常见问题
 
-### Mock 可以证明依赖恢复吗？
+### 模拟对象可以证明依赖恢复吗？
 
-Mock 可以执行客户端分支，但恢复结论需要可观察状态以及提供方或模拟证据。
+模拟对象可以执行客户端分支，但恢复结论需要可观察状态以及提供方或模拟证据。
 
 ### 提供方契约不完整怎么办？
 
@@ -193,16 +193,16 @@ Mock 可以执行客户端分支，但恢复结论需要可观察状态以及提
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [依赖故障测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing) 中包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [依赖故障测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing) 中包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束超时、慢响应、错误、过期数据、部分写入、重试、回退和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 依赖故障测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md)
+- 依赖故障测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md)
 
-- Awesome QA Skills：依赖故障测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing)
+- Awesome QA Skills：依赖故障测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing)
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- 依赖故障测试 详情页:[https://inaodeng.com/zh-cn/qaskills/dependency-failure-testing/](https://inaodeng.com/zh-cn/qaskills/dependency-failure-testing/)
+- 依赖故障测试详情页:[https://inaodeng.com/zh-cn/qaskills/dependency-failure-testing/](https://inaodeng.com/zh-cn/qaskills/dependency-failure-testing/)

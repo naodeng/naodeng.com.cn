@@ -1,6 +1,6 @@
 ---
-title: "Agent 权限测试 Skill：逐个边界验证工具访问、身份和拒绝行为"
-description: "Agent 权限测试实战指南：检查身份、最小权限、工具授权、拒绝处理和审计证据。"
+title: "智能体权限测试 Skill：逐个边界验证工具访问、身份和拒绝行为"
+description: "智能体权限测试实战指南：检查身份、最小权限、工具授权、拒绝处理和审计证据。"
 date: 2026-10-26T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,17 +8,17 @@ tags: ["AI 测试", "QA Skills", "Agent 权限测试"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-Agent 完全按照用户要求执行，也可能是错的——如果用户本来就没有权限查看那份文档。
+智能体完全按照用户要求执行，也可能是错的——如果用户本来就没有权限查看那份文档。
 
 ## 为什么需要这个 Skill
 
-Agent 权限测试用于验证 Agent 在读取数据或调用工具前，是否同时判断身份、角色、租户、资源和动作。
+智能体权限测试用于验证智能体在读取数据或调用工具前，是否同时判断身份、角色、租户、资源和动作。
 
 ## Skill 用来做什么
 
-当团队需要围绕“身份绑定、最小权限、资源范围、拒绝行为和可审计性”工作时，使用 Agent 权限测试 Skill。
+当团队需要围绕“身份绑定、最小权限、资源范围、拒绝行为和可审计性”工作时，使用智能体权限测试 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 Agent 权限测试。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦智能体权限测试。
 
 它适合这些场景：团队需要重复检查身份绑定、最小权限、资源范围、拒绝行为和可审计性；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
@@ -26,7 +26,7 @@ Agent 权限测试用于验证 Agent 在读取数据或调用工具前，是否�
 
 ## 它不做什么
 
-Agent 权限测试 Skill 可以组织授权判断的材料、证据和下一步动作，但它不能替代：
+智能体权限测试 Skill 可以组织授权判断的材料、证据和下一步动作，但它不能替代：
 
 - 业务或领域负责人对规则、范围和风险的确认。
 - 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
@@ -40,7 +40,7 @@ Agent 权限测试 Skill 可以组织授权判断的材料、证据和下一步�
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
 | 授权判断 | 身份、资源、动作、策略和结果 | allowed、denied 或 unresolved |
-| Agent 行为 | 是否停止、解释或尝试更低权限路径 | 不能出现越权绕过 |
+| 智能体行为 | 是否停止、解释或尝试更低权限路径 | 不能出现越权绕过 |
 | 审计要求 | 必须记录和保留什么 | 负责人和保留边界 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
@@ -84,7 +84,7 @@ Agent 权限测试 Skill 可以组织授权判断的材料、证据和下一步�
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
 | 身份矩阵 | 用户、角色、租户、资源和允许动作 | 策略含糊时指定负责人 |
-| Agent 表面 | Prompt、工具 Schema、授权中间件和回退路径 | 不要把 Prompt 当作权限系统 |
+| 智能体表面 | 提示词、工具参数定义、授权中间件和回退路径 | 不要把提示词当作权限系统 |
 | 证据 | 允许与拒绝日志、资源 ID、策略版本和用户可见响应 | 只有礼貌拒绝而没有审计记录仍不完整 |
 
 可以这样调用：
@@ -144,7 +144,7 @@ Agent 权限测试 Skill 可以组织授权判断的材料、证据和下一步�
 | 输出字段 | 它要回答什么 | 示例状态 |
 | --- | --- | --- |
 | 授权判断 | 身份、资源、动作、策略和结果 | allowed、denied 或 unresolved |
-| Agent 行为 | 是否停止、解释或尝试更低权限路径 | 不能出现越权绕过 |
+| 智能体行为 | 是否停止、解释或尝试更低权限路径 | 不能出现越权绕过 |
 | 审计要求 | 必须记录和保留什么 | 负责人和保留边界 |
 
 没有运行记录、查询结果或原始产物时，不要写“已通过”。好的权限测试会独立改变身份和资源，并检查拒绝后的下一步——安全拒绝、澄清还是升级，而不只看 HTTP 状态码。
@@ -160,7 +160,7 @@ Agent 权限测试 Skill 可以组织授权判断的材料、证据和下一步�
 ## 和其他 Skill 怎么配合
 
 - [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)：覆盖产品层授权判断。
-- [Agent 工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：检查授权后的工具契约与副作用。
+- [智能体工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：检查授权后的工具契约与副作用。
 - [会话安全测试](https://inaodeng.com/zh-cn/qaskills/session-security-testing/)：检查跨会话的身份连续性。
 
 ## 容易踩的坑
@@ -196,16 +196,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [Agent 权限测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing/prompts/agent-permission-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing) 中还包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [智能体权限测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing/prompts/agent-permission-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing) 中还包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束身份绑定、最小权限、资源范围、拒绝行为和可审计性。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
 
 ### 参考链接
 
-- Agent 权限测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing/prompts/agent-permission-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing/prompts/agent-permission-testing.md)
+- 智能体权限测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing/prompts/agent-permission-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing/prompts/agent-permission-testing.md)
 
-- Awesome QA Skills：Agent 权限测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing)
+- Awesome QA Skills：智能体权限测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing)
 
 - Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- Agent 权限测试 详情页:[https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/](https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/)
+- 智能体权限测试详情页:[https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/](https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/)

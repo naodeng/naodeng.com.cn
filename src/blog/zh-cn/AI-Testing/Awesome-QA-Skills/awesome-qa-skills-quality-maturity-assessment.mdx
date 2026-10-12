@@ -12,7 +12,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Quality Maturity Assessment Skill 把计划、测试报告、交付信号和线上反馈整理成有证据边界的质量实践视图，让团队得到可信基线，而不是把静态文档当成运行能力证明。
+质量成熟度评估 Skill 把计划、测试报告、交付信号和线上反馈整理成有证据边界的质量实践视图，让团队得到可信基线，而不是把静态文档当成运行能力证明。
 
 ## Skill 用来做什么
 
@@ -78,7 +78,7 @@ Quality Maturity Assessment Skill 把计划、测试报告、交付信号和线�
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
@@ -88,7 +88,7 @@ Quality Maturity Assessment Skill 把计划、测试报告、交付信号和线�
 | --- | --- | --- |
 | 目标与范围 | 比较两个发布和四个成熟度维度的结账质量实践 | 明确排除的维度 |
 | 版本与时间窗口 | 发布标识、环境、复核周期和评分规则版本 | 比较窗口不完整时标记边界或过期 |
-| 证据 | 需求复核、CI 结果、逃逸缺陷、runbook 和线上反馈 | 把事实与假设分开 |
+| 证据 | 需求复核、CI 结果、逃逸缺陷、运行手册和线上反馈 | 把事实与假设分开 |
 | 决策边界 | 改进负责人、风险接受人和本次不能替代的决定 | 发布批准留给人工负责人 |
 
 可以这样调用：
@@ -153,7 +153,7 @@ Quality Maturity Assessment Skill 把计划、测试报告、交付信号和线�
 | 改进缺口 | 推动实践前进的最小变化 | 负责人、优先级和关闭条件 |
 | 决策边界 | 仍需人工确认的事项 | 明确不打分 |
 
-每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时保留 `pending`、`blocked`、未评估或 `NOT_SCORED`，不要用肯定语气填补证据空白。
 
 ### 下一步路由
 
@@ -207,13 +207,13 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行规则在 [质量成熟度评估 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment) 中还可能包含评测用例和补充材料。
+完整执行规则在 [质量成熟度评估提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment) 中还可能包含评测用例和补充材料。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+静态计划、文件存在和空跑保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
 ### 参考链接
 
-- 质量成熟度评估 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md)
+- 质量成熟度评估提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment/prompts/quality-maturity-assessment.md)
 - 质量成熟度评估 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-maturity-assessment)
 - 质量成熟度评估 详情页:[https://inaodeng.com/zh-cn/qaskills/quality-maturity-assessment/](https://inaodeng.com/zh-cn/qaskills/quality-maturity-assessment/)
 - Awesome QA Skills 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

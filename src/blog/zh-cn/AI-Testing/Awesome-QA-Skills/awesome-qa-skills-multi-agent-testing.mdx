@@ -1,6 +1,6 @@
 ---
-title: "多 Agent 协作测试 Skill：检查 Agent 角色之间的交接、权限和分歧"
-description: "多 Agent 协作测试实战指南：检查角色边界、交接、共享状态、冲突、工具权限和证据。"
+title: "多智能体协作测试 Skill：检查智能体角色之间的交接、权限和分歧"
+description: "多智能体协作测试实战指南：检查角色边界、交接、共享状态、冲突、工具权限和证据。"
 date: 2026-10-28T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,25 +8,25 @@ tags: ["AI 测试", "QA Skills", "多 Agent 协作测试"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-增加一个 Agent 不会自动增加智能，只会增加一个可能丢上下文、混淆权限，或者让自信错误被批准的地方。
+增加一个智能体不会自动增加智能，只会增加一个可能丢上下文、混淆权限，或者让自信错误被批准的地方。
 
 ## 为什么需要这个 Skill
 
-多 Agent 协作测试用于评估协作 Agent 之间的角色契约、交接、共享状态、分歧、工具权限和端到端责任。
+多智能体协作测试用于评估协作智能体之间的角色契约、交接、共享状态、分歧、工具权限和端到端责任。
 
 ## Skill 用来做什么
 
-当团队需要围绕“角色契约、交接载荷、共享状态、分歧、权限、工具范围和最终决策”工作时，使用多 Agent 协作测试 Skill。
+当团队需要围绕“角色契约、交接载荷、共享状态、分歧、权限、工具范围和最终决策”工作时，使用多智能体协作测试 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦多 Agent 协作测试。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦多智能体协作测试。
 
-好的多 Agent 测试会沿着一个说法跨角色追踪。它检查评审者能否看到来源、写作者是否保留不确定性，以及最终 Agent 是否真的有权做出它展示的决定。
+好的多智能体测试会沿着一个说法跨角色追踪。它检查评审者能否看到来源、写作者是否保留不确定性，以及最终智能体是否真的有权做出它展示的决定。
 
 它适合这些场景：团队需要重复检查角色契约、交接载荷、共享状态、分歧、权限、工具范围和最终决策；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
 ## 它不做什么
 
-多 Agent 协作测试 Skill 可以组织角色发现的材料、证据和下一步动作，但它不能替代：
+多智能体协作测试 Skill 可以组织角色发现的材料、证据和下一步动作，但它不能替代：
 
 - 业务或领域负责人对规则、范围和风险的确认。
 - 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
@@ -39,7 +39,7 @@ series: ["Awesome QA Skills 实战"]
 
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
-| 角色发现 | 边界、权限或责任缺失 | Agent 与证据 |
+| 角色发现 | 边界、权限或责任缺失 | 智能体与证据 |
 | 交接发现 | 上下文丢失、状态过期或载荷模糊 | 输入与输出 ID |
 | 系统决策 | 接受、修改、停止或升级 | 人工负责人和证据 |
 
@@ -83,8 +83,8 @@ series: ["Awesome QA Skills 实战"]
 
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
-| 角色设计 | Agent 目的、输入、输出、权限和停止条件 | 不要用角色名称代替契约 |
-| 交接状态 | 来源、说法、未决项、版本和评审决定 | 记录每个 Agent 实际收到什么 |
+| 角色设计 | 智能体目的、输入、输出、权限和停止条件 | 不要用角色名称代替契约 |
+| 交接状态 | 来源、说法、未决项、版本和评审决定 | 记录每个智能体实际收到什么 |
 | 失败策略 | 冲突、来源缺失、工具拒绝、超时和人工升级 | 定义最终验收负责人 |
 
 可以这样调用：
@@ -103,7 +103,7 @@ series: ["Awesome QA Skills 实战"]
 
 ### 分析
 
-先从一个边界清楚的小回合开始：测试由规划、来源核验、写作和评审 Agent 组成的研究流水线。让来源核验 Agent 拿到旧政策，规划 Agent 拿到新需求。写作者输出单一自信规则前，评审 Agent 应先暴露冲突。证据中保留交接载荷和每个 Agent 的工具权限。
+先从一个边界清楚的小回合开始：测试由规划、来源核验、写作和评审智能体组成的研究流水线。让来源核验智能体拿到旧政策，规划智能体拿到新需求。写作者输出单一自信规则前，评审智能体应先暴露冲突。证据中保留交接载荷和每个智能体的工具权限。
 
 交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
 
@@ -141,11 +141,11 @@ series: ["Awesome QA Skills 实战"]
 
 | 输出字段 | 它要回答什么 | 示例状态 |
 | --- | --- | --- |
-| 角色发现 | 边界、权限或责任缺失 | Agent 与证据 |
+| 角色发现 | 边界、权限或责任缺失 | 智能体与证据 |
 | 交接发现 | 上下文丢失、状态过期或载荷模糊 | 输入与输出 ID |
 | 系统决策 | 接受、修改、停止或升级 | 人工负责人和证据 |
 
-没有运行记录、查询结果或原始产物时，不要写“已通过”。好的多 Agent 测试会沿着一个说法跨角色追踪。它检查评审者能否看到来源、写作者是否保留不确定性，以及最终 Agent 是否真的有权做出它展示的决定。
+没有运行记录、查询结果或原始产物时，不要写“已通过”。好的多智能体测试会沿着一个说法跨角色追踪。它检查评审者能否看到来源、写作者是否保留不确定性，以及最终智能体是否真的有权做出它展示的决定。
 
 ### 下一步路由
 
@@ -159,15 +159,15 @@ series: ["Awesome QA Skills 实战"]
 
 ## 和其他 Skill 怎么配合
 
-- [AI Agent 测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：覆盖 Agent 行为与目标。
-- [Agent 工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：检查各角色使用的工具。
+- [AI 智能体测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：覆盖智能体行为与目标。
+- [智能体工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：检查各角色使用的工具。
 - [多角色质量综合](https://inaodeng.com/zh-cn/qaskills/multi-role-quality-synthesis/)：把多角色输出接到决策。
 
 ## 容易踩的坑
 
-1. 只单独测试每个 Agent。
-2. 让最终 Agent 静默解决来源冲突。
-3. 所有角色共享一个过宽的工具 Token。
+1. 只单独测试每个智能体。
+2. 让最终智能体静默解决来源冲突。
+3. 所有角色共享一个过宽的工具令牌。
 
 ## 安装与调用
 
@@ -185,7 +185,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 人工可以接受最终决策，但关键来源冲突和副作用需要更早暴露。
 
-### Agent 本来就允许分歧怎么办？
+### 智能体本来就允许分歧怎么办？
 
 先定义分歧载荷、裁决规则和升级负责人，再把它称为协作。
 
@@ -193,16 +193,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [多 Agent 协作测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing/prompts/multi-agent-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing) 中包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [多智能体协作测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing/prompts/multi-agent-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing) 中包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束角色契约、交接载荷、共享状态、分歧、权限、工具范围和最终决策。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 多 Agent 协作测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing/prompts/multi-agent-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing/prompts/multi-agent-testing.md)
+- 多智能体协作测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing/prompts/multi-agent-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing/prompts/multi-agent-testing.md)
 
-- Awesome QA Skills：多 Agent 协作测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing)
+- Awesome QA Skills：多智能体协作测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing)
 
 - Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- 多 Agent 协作测试 详情页:[https://inaodeng.com/zh-cn/qaskills/multi-agent-testing/](https://inaodeng.com/zh-cn/qaskills/multi-agent-testing/)
+- 多智能体协作测试详情页:[https://inaodeng.com/zh-cn/qaskills/multi-agent-testing/](https://inaodeng.com/zh-cn/qaskills/multi-agent-testing/)

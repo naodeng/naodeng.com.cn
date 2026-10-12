@@ -46,7 +46,7 @@ SRR-## 发现至少要回答：保护对象是谁？触发条件是什么？预�
 | 安全目标 | 要防止未授权读取、篡改、泄露、滥用，还是不可追踪？ |
 | 控制 | 依赖认证、授权、脱敏、加密、限流、审计或其他控制？ |
 | 验收条件 | 触发什么动作时，预期结果和失败结果分别是什么？ |
-| 追踪关系 | Requirement → Control → Test / Evidence 是否连得上？ |
+| 追踪关系 | 需求 → 控制措施 → 测试 / 证据是否连得上？ |
 | 证据时效 | 策略、架构、日志和扫描记录是否对应当前版本和环境？ |
 
 ## 开始之前先审计输入
@@ -205,19 +205,19 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行规则在安全需求复核 Prompt：
+完整执行规则在安全需求复核提示词：
 
 https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review/prompts/security-requirement-review.md
 
-Skill 源目录同时包含 Skill 定义、Agent 适配和 Eval 资产：
+Skill 源目录同时包含 Skill 定义、智能体适配和评测资产：
 
 https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review
 
-静态安全需求、控制名称或 dry-run 只能说明材料和计划存在，不能升级为漏洞不存在、攻击失败、安全通过或发布批准。
+静态安全需求、控制名称或模拟运行只能说明材料和计划存在，不能升级为漏洞不存在、攻击失败、安全通过或发布批准。
 
 ### 参考链接
 
-- 安全需求复核 Prompt：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review/prompts/security-requirement-review.md
+- 安全需求复核提示词：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review/prompts/security-requirement-review.md
 - 安全需求复核 Skill 源文件：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/security-requirement-review
 - 安全需求复核详情页：[https://inaodeng.com/zh-cn/qaskills/security-requirement-review/](https://inaodeng.com/zh-cn/qaskills/security-requirement-review/)
 - Awesome QA Skills 项目：https://github.com/naodeng/awesome-qa-skills

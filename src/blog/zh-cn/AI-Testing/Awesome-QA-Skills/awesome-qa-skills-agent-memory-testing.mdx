@@ -1,6 +1,6 @@
 ---
-title: "Agent 记忆测试 Skill：让记住的事实有范围、有时效，也能安全复用"
-description: "Agent 记忆测试实战指南：检查记忆的范围、检索、过期、删除、同意和跨会话证据。"
+title: "智能体记忆测试 Skill：让记住的事实有范围、有时效，也能安全复用"
+description: "智能体记忆测试实战指南：检查记忆的范围、检索、过期、删除、同意和跨会话证据。"
 date: 2026-10-26T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -12,13 +12,13 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Agent 记忆测试用于检查哪些信息可以存储、谁可以检索、过期事实如何替换，以及删除和同意边界能否跨会话成立。
+智能体记忆测试用于检查哪些信息可以存储、谁可以检索、过期事实如何替换，以及删除和同意边界能否跨会话成立。
 
 ## Skill 用来做什么
 
-当团队需要围绕“记忆范围、检索授权、时效、删除、同意和跨会话泄露”工作时，使用 Agent 记忆测试 Skill。
+当团队需要围绕“记忆范围、检索授权、时效、删除、同意和跨会话泄露”工作时，使用智能体记忆测试 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 Agent 记忆测试。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦智能体记忆测试。
 
 它适合这些场景：团队需要重复检查记忆范围、检索授权、时效、删除、同意和跨会话泄露；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
@@ -26,7 +26,7 @@ Agent 记忆测试用于检查哪些信息可以存储、谁可以检索、过�
 
 ## 它不做什么
 
-Agent 记忆测试 Skill 可以组织记忆清单的材料、证据和下一步动作，但它不能替代：
+智能体记忆测试 Skill 可以组织记忆清单的材料、证据和下一步动作，但它不能替代：
 
 - 业务或领域负责人对规则、范围和风险的确认。
 - 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
@@ -159,7 +159,7 @@ Agent 记忆测试 Skill 可以组织记忆清单的材料、证据和下一步�
 
 ## 和其他 Skill 怎么配合
 
-- [Agent 权限测试](https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/)：检查谁可以取回记忆事实。
+- [智能体权限测试](https://inaodeng.com/zh-cn/qaskills/agent-permission-testing/)：检查谁可以取回记忆事实。
 - [AI 安全测试](https://inaodeng.com/zh-cn/qaskills/ai-safety-testing/)：覆盖隐私与有害复用边界。
 - [会话安全测试](https://inaodeng.com/zh-cn/qaskills/session-security-testing/)：检查跨会话身份隔离。
 
@@ -196,16 +196,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [Agent 记忆测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing/prompts/agent-memory-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing) 中还包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [智能体记忆测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing/prompts/agent-memory-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing) 中还包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束记忆范围、检索授权、时效、删除、同意和跨会话泄露。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
 
 ### 参考链接
 
-- Agent 记忆测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing/prompts/agent-memory-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing/prompts/agent-memory-testing.md)
+- 智能体记忆测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing/prompts/agent-memory-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing/prompts/agent-memory-testing.md)
 
-- Awesome QA Skills：Agent 记忆测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing)
+- Awesome QA Skills：智能体记忆测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing)
 
 - Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- Agent 记忆测试 详情页:[https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/](https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/)
+- 智能体记忆测试详情页:[https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/](https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/)

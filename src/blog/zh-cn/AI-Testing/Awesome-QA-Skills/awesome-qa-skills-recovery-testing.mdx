@@ -12,7 +12,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证准备，同时区分静态设计、dry-run、计划步骤和已经完成的执行。
+恢复测试 Skill 把恢复目标和故障场景整理成可复核的验证准备，同时区分静态设计、空跑、计划步骤和已经完成的执行。
 
 ## Skill 用来做什么
 
@@ -22,7 +22,7 @@ Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证
 
 好的恢复复核需要写清触发条件、预期恢复点和时间、恢复顺序、验证证据、负责人、停止条件和接管路径。
 
-当灾备演练即将开始、备份或拓扑发生变化，或者 runbook 声称具备恢复能力但没有近期验证记录时，使用这个 Skill。
+当灾备演练即将开始、备份或拓扑发生变化，或者运行手册声称具备恢复能力但没有近期验证记录时，使用这个 Skill。
 
 ## 它不做什么
 
@@ -40,7 +40,7 @@ Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
 | 恢复目标 | 场景允许损失和延迟到什么程度 | 目标来源或 pending |
-| 恢复路径 | 有序步骤、前置条件和预期观察 | runbook 与负责人 |
+| 恢复路径 | 有序步骤、前置条件和预期观察 | 运行手册与负责人 |
 | 验证证据 | 恢复后怎样检查数据和服务行为 | 查询、产物或缺失 |
 | 接管边界 | 什么时候自动化停止、必须由人工决定 | 停止条件与升级 |
 
@@ -78,7 +78,7 @@ Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
@@ -86,7 +86,7 @@ Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证
 | --- | --- | --- |
 | 恢复目标 | 服务、数据范围、RPO/RTO 目标和可接受损失或延迟 | 目标缺失时保留 pending |
 | 故障模式 | 区域丢失、数据库损坏、队列堆积或依赖不可用 | 不要用泛化事故描述代替 |
-| 恢复材料 | 备份版本、runbook、依赖、凭证和环境 | 前置条件缺失时标记步骤 blocked |
+| 恢复材料 | 备份版本、运行手册、依赖、凭证和环境 | 前置条件缺失时标记步骤 blocked |
 | 验证与接管 | 恢复后的正确性检查、负责人、停止条件和人工升级 | 计划与执行证据分开 |
 
 可以这样调用：
@@ -110,7 +110,7 @@ Recovery Testing Skill 把恢复目标和故障场景整理成可复核的验证
 
 #### 聚焦例子：验证订单恢复，不要直接宣布生产可恢复
 
-staging 演练可以还原数据库备份，但 runbook 没有说明备份之后写入的订单怎样对账，也没有说明队列如何重放。这个 Skill 应标记恢复点和重放验证不完整，提出最小证据请求，不要因为数据库进程启动就宣布服务可恢复。
+预发布环境演练可以还原数据库备份，但运行手册没有说明备份之后写入的订单怎样对账，也没有说明队列如何重放。这个 Skill 应标记恢复点和重放验证不完整，提出最小证据请求，不要因为数据库进程启动就宣布服务可恢复。
 
 分析可以准备隔离验证并分类已有产物，不能在授权演练产生证据前证明恢复时间、数据正确性或生产就绪。
 
@@ -147,11 +147,11 @@ staging 演练可以还原数据库备份，但 runbook 没有说明备份之后
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
 | 恢复目标 | 场景允许损失和延迟到什么程度 | 目标来源或 pending |
-| 恢复路径 | 有序步骤、前置条件和预期观察 | runbook 与负责人 |
+| 恢复路径 | 有序步骤、前置条件和预期观察 | 运行手册与负责人 |
 | 验证证据 | 恢复后怎样检查数据和服务行为 | 查询、产物或缺失 |
 | 接管边界 | 什么时候自动化停止、必须由人工决定 | 停止条件与升级 |
 
-每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时保留 `pending`、`blocked`、未评估或 `NOT_SCORED`，不要用肯定语气填补证据空白。
 
 ### 下一步路由
 
@@ -159,7 +159,7 @@ staging 演练可以还原数据库备份，但 runbook 没有说明备份之后
 
 ## 怎样准备更好的输入
 
-提供目标来源、场景、备份和 runbook 版本、依赖清单、验证查询、环境和负责人。RPO/RTO 未经批准时保留 pending，不要自行套用标准阈值。
+提供目标来源、场景、备份和运行手册版本、依赖清单、验证查询、环境和负责人。RPO/RTO 未经批准时保留 pending，不要自行套用标准阈值。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
 
@@ -193,21 +193,21 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 不能。它可以指出目标缺失以及所需证据，但目标属于业务和服务负责人的决定。
 
-### dry-run 算恢复证明吗？
+### 空跑算恢复证明吗？
 
-不算。应标记为 dry-run 证据，把已完成恢复的结论单独管理。
+不算。应标记为空跑证据，把已完成恢复的结论单独管理。
 
 ## 参考
 
 ### 源 Skill 与执行契约
 
-完整执行规则在 [恢复测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing) 中还可能包含评测用例和补充材料。
+完整执行规则在 [恢复测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing) 中还可能包含评测用例和补充材料。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+静态计划、文件存在和空跑保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
 ### 参考链接
 
-- 恢复测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md)
+- 恢复测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing/prompts/recovery-testing.md)
 - 恢复测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing)
-- 恢复测试 详情页:[https://inaodeng.com/zh-cn/qaskills/recovery-testing/](https://inaodeng.com/zh-cn/qaskills/recovery-testing/)
+- 恢复测试详情页:[https://inaodeng.com/zh-cn/qaskills/recovery-testing/](https://inaodeng.com/zh-cn/qaskills/recovery-testing/)
 - Awesome QA Skills 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

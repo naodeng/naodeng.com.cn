@@ -12,7 +12,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Regression Optimization Skill 把选择、排序、并行、缓存和风险保留作为一组取舍来复核，帮助团队在证据允许的范围内得到更快且安全的反馈回路。
+回归优化 Skill 把选择、排序、并行、缓存和风险保留作为一组取舍来复核，帮助团队在证据允许的范围内得到更快且安全的反馈回路。
 
 ## Skill 用来做什么
 
@@ -84,9 +84,9 @@ Regression Optimization Skill 把选择、排序、并行、缓存和风险保�
 
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
-| 变更面 | 受影响的提交、依赖、schema、配置和 feature flag | 影响未知时保留更宽范围 |
+| 变更面 | 受影响的提交、依赖、接口结构、配置和功能开关 | 影响未知时保留更宽范围 |
 | 套件证据 | 历史运行、时长、失败、flaky、负责人和覆盖理由 | 不要只根据通过率推断安全 |
-| 执行设计 | 选择规则、排序、Worker、缓存键、环境和隔离 | 未经验证的缓存复用标为 pending |
+| 执行设计 | 选择规则、排序、工作进程、缓存键、环境和隔离 | 未经验证的缓存复用标为 pending |
 | 风险边界 | 关键流程、发布限制和全量回退条件 | 风险接受由负责人决定 |
 
 可以这样调用：
@@ -171,9 +171,9 @@ Regression Optimization Skill 把选择、排序、并行、缓存和风险保�
 
 ## 容易踩的坑
 
-1. 只选择变更文件对应的测试，漏掉共享库、schema 或配置影响。
+1. 只选择变更文件对应的测试，漏掉共享库、接口结构或配置的影响。
 2. 只测到时长变短，却没有记录关键流程是否移出选择集。
-3. 在代码、环境、数据或 feature flag 不同的情况下复用缓存结果。
+3. 在代码、环境、数据或功能开关不同的情况下复用缓存结果。
 
 ## 安装与调用
 
@@ -203,7 +203,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 完整执行规则在 [回归优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/regression-optimization/prompts/regression-optimization.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/regression-optimization) 中还可能包含评测用例和补充材料。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+静态计划、文件存在和试运行仍保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
 ### 参考链接
 
