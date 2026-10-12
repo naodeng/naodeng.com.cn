@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Alpha Testing](#alpha-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Alpha Testing?](#questions-about-alpha-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is alpha testing?](#what-is-alpha-testing)
@@ -41,7 +40,7 @@ order: 0
 
 Alpha testing aims to identify bugs before the product reaches the end-users. Conducted late in the development process but before beta testing, it helps ensure that the product is free from major issues.
 
-## Related Terms:
+Related Terms:
 
 - [Beta Testing](/en/wiki/beta-testing/)
 

@@ -16,7 +16,6 @@ order: 0
 
 - [BrowserStack](#browserstack)
   - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about BrowserStack?](#questions-about-browserstack)
     - [Basics and Importance](#basics-and-importance)
       - [What is BrowserStack?](#what-is-browserstack)
@@ -51,7 +50,7 @@ BrowserStack is a cloud-based web and mobile testing platform that allows develo
 
 - [Cross-Browser Testing tool](/en/wiki/cross-browser-testing/)
 
-### See also:
+See also:
 
 - [Official Website](https://www.browserstack.com/)
 - [Wikipedia](https://en.wikipedia.org/wiki/BrowserStack)

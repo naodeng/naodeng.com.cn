@@ -23,6 +23,42 @@ test("English Wiki term is served from a local page with a matching Chinese tran
   expect(term?.inDefinedTermSet?.name).toBe("QA Wiki");
 });
 
+test("English Wiki table of contents follows the Chinese section hierarchy", async ({ page }) => {
+  await page.goto("/en/wiki/acceptance-test-driven-development/", { waitUntil: "domcontentloaded" });
+
+  const tocLinks = page.locator(".toc-list--desktop .toc-link");
+  await expect(tocLinks).toHaveText([
+    "Questions about Acceptance Test Driven Development?",
+    "Basics and Importance",
+    "Process and Techniques",
+    "Tools and Technologies",
+    "Challenges and Solutions",
+  ]);
+  await expect(page.getByRole("heading", { name: "Related Terms:", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "See also:", exact: true })).toHaveCount(0);
+});
+
+test("paired Wiki See also labels stay outside headings and tables of contents", async ({ page }) => {
+  for (const slug of ["browserstack", "chai-js", "jest", "jira", "postman"]) {
+    for (const { locale, label } of [
+      { locale: "en", label: "See also:" },
+      { locale: "zh-cn", label: "另请参阅：" },
+    ]) {
+      await page.goto(`/${locale}/wiki/${slug}/`, { waitUntil: "domcontentloaded" });
+      await expect(page.getByRole("heading", { name: label, exact: true })).toHaveCount(0);
+      await expect(page.locator(".toc-link").filter({ hasText: label })).toHaveCount(0);
+    }
+  }
+});
+
+test("English Wiki answer labels do not become article headings", async ({ page }) => {
+  await page.goto("/en/wiki/chai-js/", { waitUntil: "domcontentloaded" });
+  for (const label of ["Should & Expect", "Assert"]) {
+    await expect(page.getByRole("heading", { name: label, exact: true })).toHaveCount(0);
+    await expect(page.getByText(label, { exact: true })).toHaveCount(1);
+  }
+});
+
 test("English Wiki language switch opens the matching Chinese term", async ({ page }) => {
   await page.goto("/en/wiki/acceptance-testing/", { waitUntil: "domcontentloaded" });
   await page.locator("[data-locale-trigger]").first().click();

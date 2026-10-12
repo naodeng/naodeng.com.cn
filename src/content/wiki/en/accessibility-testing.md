@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Accessibility Testing](#accessibility-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Accessibility Testing?](#questions-about-accessibility-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is accessibility testing?](#what-is-accessibility-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Accessibility testing ensures mobile and web applications are usable by everyone, including individuals with disabilities such as visual or hearing impairments, and other physical or cognitive challenges.
 
-## Related Terms:
+Related Terms:
 
 - [Usability Testing](/en/wiki/usability-testing/)
 

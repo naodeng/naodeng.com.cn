@@ -16,7 +16,6 @@ order: 0
 
 - [Postman](#postman)
   - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Postman?](#questions-about-postman)
     - [Basics and Importance](#basics-and-importance)
       - [What is Postman and what is it used for?](#what-is-postman-and-what-is-it-used-for)
@@ -49,7 +48,7 @@ Postman is a widely-used software tool that facilitates API (Application Program
 - [API testing tool](/en/wiki/api-testing/)
 - [Swagger](/en/wiki/swagger/)
 
-### See also:
+See also:
 
 - [Official Website](https://www.postman.com/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Postman_(software))

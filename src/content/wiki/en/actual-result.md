@@ -17,31 +17,31 @@ order: 0
 
 - [Actual Result](#actual-result)
   - [Questions about Actual Result?](#questions-about-actual-result)
-    - [Basics and Importance](#basics-and-importance)
-      - [What is the definition of 'Actual Result' in software testing?](#what-is-the-definition-of-actual-result-in-software-testing)
-      - [Why is determining the 'Actual Result' important in e2e testing?](#why-is-determining-the-actual-result-important-in-e2e-testing)
-      - [How does the 'Actual Result' contribute to the overall testing process?](#how-does-the-actual-result-contribute-to-the-overall-testing-process)
-    - [Comparison and Contrast](#comparison-and-contrast)
-      - [What is the difference between 'Expected Result' and 'Actual Result'?](#what-is-the-difference-between-expected-result-and-actual-result)
-      - [How does the 'Actual Result' relate to the 'Test Case'?](#how-does-the-actual-result-relate-to-the-test-case)
-      - [In what scenarios might the 'Actual Result' differ from the 'Expected Result'?](#in-what-scenarios-might-the-actual-result-differ-from-the-expected-result)
-    - [Practical Application](#practical-application)
-      - [How is the 'Actual Result' documented during the testing process?](#how-is-the-actual-result-documented-during-the-testing-process)
-      - [What are some common tools or methods used to capture the 'Actual Result'?](#what-are-some-common-tools-or-methods-used-to-capture-the-actual-result)
-      - [How can the 'Actual Result' be used to identify and diagnose software bugs or issues?](#how-can-the-actual-result-be-used-to-identify-and-diagnose-software-bugs-or-issues)
-    - [Advanced Concepts](#advanced-concepts)
-      - [How does the 'Actual Result' factor into regression testing?](#how-does-the-actual-result-factor-into-regression-testing)
-      - [What role does the 'Actual Result' play in automated testing?](#what-role-does-the-actual-result-play-in-automated-testing)
-      - [How can 'Actual Result' discrepancies contribute to software optimization and improvement?](#how-can-actual-result-discrepancies-contribute-to-software-optimization-and-improvement)
+  - [Basics and Importance](#basics-and-importance)
+    - [What is the definition of 'Actual Result' in software testing?](#what-is-the-definition-of-actual-result-in-software-testing)
+    - [Why is determining the 'Actual Result' important in e2e testing?](#why-is-determining-the-actual-result-important-in-e2e-testing)
+    - [How does the 'Actual Result' contribute to the overall testing process?](#how-does-the-actual-result-contribute-to-the-overall-testing-process)
+  - [Comparison and Contrast](#comparison-and-contrast)
+    - [What is the difference between 'Expected Result' and 'Actual Result'?](#what-is-the-difference-between-expected-result-and-actual-result)
+    - [How does the 'Actual Result' relate to the 'Test Case'?](#how-does-the-actual-result-relate-to-the-test-case)
+    - [In what scenarios might the 'Actual Result' differ from the 'Expected Result'?](#in-what-scenarios-might-the-actual-result-differ-from-the-expected-result)
+  - [Practical Application](#practical-application)
+    - [How is the 'Actual Result' documented during the testing process?](#how-is-the-actual-result-documented-during-the-testing-process)
+    - [What are some common tools or methods used to capture the 'Actual Result'?](#what-are-some-common-tools-or-methods-used-to-capture-the-actual-result)
+    - [How can the 'Actual Result' be used to identify and diagnose software bugs or issues?](#how-can-the-actual-result-be-used-to-identify-and-diagnose-software-bugs-or-issues)
+  - [Advanced Concepts](#advanced-concepts)
+    - [How does the 'Actual Result' factor into regression testing?](#how-does-the-actual-result-factor-into-regression-testing)
+    - [What role does the 'Actual Result' play in automated testing?](#what-role-does-the-actual-result-play-in-automated-testing)
+    - [How can 'Actual Result' discrepancies contribute to software optimization and improvement?](#how-can-actual-result-discrepancies-contribute-to-software-optimization-and-improvement)
 <!-- TOC END -->
 
 (aka outcome) The actual result is the outcome obtained after a test is conducted. During the testing phase, the actual result is documented alongside the test case. After all tests, it's compared with the expected outcome, noting any discrepancies.
 
 ## Questions about Actual Result?
 
-### Basics and Importance
+## Basics and Importance
 
-#### What is the definition of 'Actual Result' in software testing?
+### What is the definition of 'Actual Result' in software testing?
 
   In [software testing](/en/wiki/software-testing/), the **Actual Result** is the behavior that is observed when a test is executed. It is the output, response, or state of the application after the test steps have been performed. This result is then compared against the **[Expected Result](/en/wiki/expected-result/)** to determine if the test has passed or failed. Actual Results are critical for identifying discrepancies that may indicate defects or areas for improvement in the software.
 
@@ -52,7 +52,7 @@ order: 0
   ```
   Actual Results are typically recorded within [test management](/en/wiki/test-management/) tools or directly in the code of automated tests. They serve as evidence of the [test execution](/en/wiki/test-execution/) and are essential for traceability and accountability in the testing process. When Actual Results deviate from [Expected Results](/en/wiki/expected-result/), they trigger investigations that can lead to [bug](/en/wiki/bug/) fixes and enhancements, ensuring the software meets its requirements and functions as intended.
 
-#### Why is determining the 'Actual Result' important in e2e testing?
+### Why is determining the 'Actual Result' important in e2e testing?
 
   Determining the **Actual Result** in end-to-end (e2e) testing is crucial for validating the **integrity of the entire application flow**. It ensures that each integrated component functions as expected when operated in sequence, from start to finish. By comparing the Actual Result with the [Expected Result](/en/wiki/expected-result/), testers can confirm whether the system behaves as designed under various conditions, including **user interactions, data processing, and connectivity**.
   In e2e testing, the Actual Result is the **outcome of the [test execution](/en/wiki/test-execution/)**. It provides a **concrete basis** for assessing the system's compliance with business requirements and user needs. When discrepancies arise, they highlight **potential issues** that could impact the user experience or system reliability, prompting further investigation and refinement.
@@ -66,7 +66,7 @@ order: 0
   ```
   By focusing on the Actual Result, [test automation](/en/wiki/test-automation/) engineers can **directly influence** the software's development cycle, ensuring that each release meets the quality standards necessary for a successful product.
 
-#### How does the 'Actual Result' contribute to the overall testing process?
+### How does the 'Actual Result' contribute to the overall testing process?
 
   The **Actual Result** is pivotal in the testing process as it serves as a direct indicator of the system's current behavior under test conditions. By comparing the Actual Result with the [Expected Result](/en/wiki/expected-result/), testers can immediately discern whether a [test case](/en/wiki/test-case/) has passed or failed. This comparison is essential for validating the software's functionality and ensuring that it meets the specified requirements.
   In [automated testing](/en/wiki/automated-testing/), the Actual Result is often captured and logged by the [test scripts](/en/wiki/test-script/), which then automatically compare it to the [Expected Result](/en/wiki/expected-result/). This facilitates a rapid feedback loop, allowing for quick identification of failures and enabling continuous integration and delivery pipelines to proceed or halt based on test outcomes.
@@ -88,9 +88,9 @@ order: 0
 
   - **Verifying**
 
-### Comparison and Contrast
+## Comparison and Contrast
 
-#### What is the difference between 'Expected Result' and 'Actual Result'?
+### What is the difference between 'Expected Result' and 'Actual Result'?
 
   In software [test automation](/en/wiki/test-automation/), **[Expected Result](/en/wiki/expected-result/)** is the predefined outcome of a [test case](/en/wiki/test-case/), based on the requirements or design specifications. It represents the behavior that the system should exhibit under certain conditions.
   **Actual Result**, on the other hand, is the behavior that the system actually exhibits when the [test case](/en/wiki/test-case/) is executed. It is the real-time outcome obtained from the system under test.
@@ -102,7 +102,7 @@ order: 0
   ```
   Discrepancies between these results trigger further investigation to understand the root cause and to rectify any issues, ensuring that the software meets its quality standards.
 
-#### How does the 'Actual Result' relate to the 'Test Case'?
+### How does the 'Actual Result' relate to the 'Test Case'?
 
   In the context of a **[Test Case](/en/wiki/test-case/)**, the **Actual Result** is the outcome observed when the test is executed. It is directly compared against the **[Expected Result](/en/wiki/expected-result/)** to determine if the test has passed or failed. This comparison is crucial for validating the behavior of the software under test.
   For automated tests, the **Actual Result** is typically captured by the [test script](/en/wiki/test-script/) itself. For instance, in a [Selenium](/en/wiki/selenium/)-based test, the script might include assertions like:
@@ -114,7 +114,7 @@ order: 0
   The **Actual Result** is essential for pinpointing the exact step where a failure occurs within a **[Test Case](/en/wiki/test-case/)**. In complex scenarios, it helps in isolating the defect to a specific module or functionality. Moreover, when a test fails, the **Actual Result** can provide insights into the nature of the [bug](/en/wiki/bug/), which aids in debugging and fixing the issue.
   In continuous integration environments, the **Actual Result** is often logged and made part of the [test reports](/en/wiki/test-report/). This information is valuable for stakeholders to understand the current state of the software and for developers to address any issues before the software is released.
 
-#### In what scenarios might the 'Actual Result' differ from the 'Expected Result'?
+### In what scenarios might the 'Actual Result' differ from the 'Expected Result'?
 
   **Actual Result** may differ from **[Expected Result](/en/wiki/expected-result/)** due to various reasons:
 
@@ -131,9 +131,9 @@ order: 0
   Identifying the cause of the discrepancy is crucial for resolving issues and improving the [software quality](/en/wiki/software-quality/).
 
 
-### Practical Application
+## Practical Application
 
-#### How is the 'Actual Result' documented during the testing process?
+### How is the 'Actual Result' documented during the testing process?
 
   Documenting the **Actual Result** during the testing process typically involves a clear and concise description of the system's behavior after [test execution](/en/wiki/test-execution/). It's recorded in a [test management](/en/wiki/test-management/) tool or a [test case](/en/wiki/test-case/) document, often alongside the corresponding **[Test Case](/en/wiki/test-case/)** and **[Expected Result](/en/wiki/expected-result/)** for easy comparison.
   Here's a general approach:
@@ -162,7 +162,7 @@ order: 0
      ```
   Ensure that the **Actual Result** is detailed enough to enable developers to understand the issue without ambiguity, facilitating quicker resolution and [retesting](/en/wiki/retesting/).
 
-#### What are some common tools or methods used to capture the 'Actual Result'?
+### What are some common tools or methods used to capture the 'Actual Result'?
 
   Capturing the **Actual Result** in [test automation](/en/wiki/test-automation/) typically involves several tools and methods:
 
@@ -184,7 +184,7 @@ order: 0
   Each method is chosen based on the **context** of what needs to be captured and the **type** of test being executed.
 
 
-#### How can the 'Actual Result' be used to identify and diagnose software bugs or issues?
+### How can the 'Actual Result' be used to identify and diagnose software bugs or issues?
 
   The **Actual Result** serves as a critical diagnostic tool in identifying and troubleshooting software [bugs](/en/wiki/bug/). When a [test case](/en/wiki/test-case/) execution yields an Actual Result that deviates from the [Expected Result](/en/wiki/expected-result/), this discrepancy flags a potential defect in the software.
   To diagnose issues, engineers analyze the Actual Result in the context of the [test environment](/en/wiki/test-environment/) and input data. They may look for patterns or inconsistencies in the results across different [test cases](/en/wiki/test-case/) or conditions. For instance, if a feature works as expected under one set of inputs but not another, this could indicate a boundary case issue or a data handling [bug](/en/wiki/bug/).
@@ -193,9 +193,9 @@ order: 0
   [Automated testing](/en/wiki/automated-testing/) frameworks often provide features to capture and report detailed Actual Results, including screenshots or video recordings of the [test execution](/en/wiki/test-execution/), which can be invaluable for diagnosing UI issues.
   By methodically analyzing the Actual Result, engineers can formulate hypotheses about the source of the [bug](/en/wiki/bug/), which can then be tested and verified, leading to a more efficient [bug](/en/wiki/bug/)-fixing process.
 
-### Advanced Concepts
+## Advanced Concepts
 
-#### How does the 'Actual Result' factor into regression testing?
+### How does the 'Actual Result' factor into regression testing?
 
   In [regression testing](/en/wiki/regression-testing/), the **Actual Result** is crucial for verifying that recent code changes have not adversely affected existing functionality. It serves as the outcome of a [test case](/en/wiki/test-case/) after the software has been modified. By comparing the **Actual Result** with the **[Expected Result](/en/wiki/expected-result/)**, testers can determine whether a regression error has occurred.
   For automated regression tests, the **Actual Result** is typically captured by the [test scripts](/en/wiki/test-script/) and compared against the **[Expected Result](/en/wiki/expected-result/)** programmatically. Discrepancies trigger test failures, alerting engineers to potential regressions. This comparison is often done through assertions in the test code:
@@ -207,7 +207,7 @@ order: 0
   In continuous integration environments, the **Actual Result** is part of the feedback loop, informing development teams about the stability of their application after each code commit. This immediate feedback is essential for maintaining [software quality](/en/wiki/software-quality/) and accelerating the development cycle.
   Automated regression tests with clear **Actual Results** enable quick identification of the specific functionality that has regressed, streamlining the debugging process and ensuring that software releases meet quality standards.
 
-#### What role does the 'Actual Result' play in automated testing?
+### What role does the 'Actual Result' play in automated testing?
 
   In [automated testing](/en/wiki/automated-testing/), the **Actual Result** serves as a critical data point for validating software behavior against expected outcomes. It is the output produced by the [test script](/en/wiki/test-script/) when it is executed. This result is then automatically compared to the **[Expected Result](/en/wiki/expected-result/)** to determine if the test has passed or failed.
 
@@ -221,7 +221,7 @@ order: 0
   In continuous integration and deployment (CI/CD) pipelines, the **Actual Result** can trigger workflows such as notifications, rollbacks, or additional [test suites](/en/wiki/test-suite/), depending on the success or failure of the [test cases](/en/wiki/test-case/).
   Overall, the **Actual Result** is a cornerstone of [test automation](/en/wiki/test-automation/), enabling efficient and accurate validation of software functionality, and driving [quality assurance](/en/wiki/quality-assurance/) processes in a systematic and scalable manner.
 
-#### How can 'Actual Result' discrepancies contribute to software optimization and improvement?
+### How can 'Actual Result' discrepancies contribute to software optimization and improvement?
 
   Discrepancies between **Actual Results** and **[Expected Results](/en/wiki/expected-result/)** are critical for software optimization and improvement. When the actual outcome of a [test case](/en/wiki/test-case/) deviates from what was anticipated, it signals a potential flaw or area for enhancement. These discrepancies can lead to:
 

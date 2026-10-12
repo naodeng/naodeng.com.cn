@@ -17,7 +17,6 @@ order: 0
 
 - [Jest ｜ Jest](#jest--jest)
   - [相关术语](#相关术语)
-  - [# 另请参阅：](#-另请参阅)
   - [关于 Jest 有疑问吗？](#关于-jest-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Jest 是什么以及它的用途是什么？](#jest-是什么以及它的用途是什么)
@@ -52,7 +51,7 @@ order: 0
 - [jasmine](/zh-cn/wiki/jasmine/)
 - [Chai.js](/zh-cn/wiki/chai-js/)
 
-## # 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://jestjs.io/)
 ## 关于 Jest 有疑问吗？

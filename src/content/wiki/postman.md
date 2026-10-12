@@ -17,7 +17,6 @@ order: 0
 
 - [Postman ｜ Postman](#postman--postman)
   - [相关术语：](#相关术语)
-  - [# 另请参阅：](#-另请参阅)
   - [关于Postman 有疑问吗？](#关于postman-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Postman 是什么以及它的用途是什么？](#postman-是什么以及它的用途是什么)
@@ -48,7 +47,7 @@ order: 0
 - [API 测试](/zh-cn/wiki/api-testing/)
 - [Swagger](/zh-cn/wiki/swagger/)
 
-## # 另请参阅：
+另请参阅：
 
 - [Official Website](https://www.postman.com/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Postman_(software))

@@ -17,7 +17,6 @@ order: 0
 
 - [Jira ｜ Jira](#jira--jira)
   - [相关术语](#相关术语)
-  - [# 另请参阅：](#-另请参阅)
   - [关于jira的问题吗？](#关于jira的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Jira 是什么以及它的用途是什么？](#jira-是什么以及它的用途是什么)
@@ -49,7 +48,7 @@ jira 是Atlassian开发的一款流行软件，主要用于漏洞跟踪、问题
 - [变更请求](/zh-cn/wiki/change-requests/)
 - [事件管理](/zh-cn/wiki/incident-management/)
 
-## # 另请参阅：
+另请参阅：
 
 - [Official Website](https://www.atlassian.com/software/jira)
 - [Wikipedia](https://en.wikipedia.org/wiki/Jira_(software))
