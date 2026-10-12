@@ -16,125 +16,74 @@ related:
   - "memory-scope"
   - "rules-and-memories"
   - "remote-control"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Privacy Mode (隐私模式)
-
-> One-line definition: A runtime mode that limits data retention, sharing, or external transmission paths.
+# Privacy Mode
 
 ## Quick Take
 
-- Problem it solves: Set guardrails for safety, compliance, and consistency.
-- When to use: Use it for enterprise rollout and permission control.
-- Boundary: Not suitable for speed-only workflows with no governance.
+- **In brief:** Privacy mode is a product setting that changes some data-handling behavior.
+- **Useful for:** Reviewing how a service processes project data.
+- **Main limit:** The name alone does not explain retention, training, or access rules.
 
 ## Overview
 
-`Privacy Mode` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+An AI coding tool may offer a privacy setting. Before sending private source code, a team needs to know what the setting changes and which data paths it covers.
 
 ## Core Definition
 
-### Formal Definition
-
-A runtime mode that limits data retention, sharing, or external transmission paths.
-
-### Plain-Language Explanation
-
-Think of `Privacy Mode` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Privacy mode is a vendor-defined setting or operating mode that limits or changes selected data handling. There is no shared technical definition. Its effect depends on the product, account plan, and current terms.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+AI services added privacy controls as users began sending code, documents, and other sensitive information to hosted systems. Products use different names and controls, so teams must check current documentation and agreements.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+A product may change one or more of these behaviors:
+
+1. Whether prompts or outputs are retained.
+2. Whether submitted data can be used for model improvement.
+3. Which staff or service providers can access data.
+4. How telemetry, logs, and connected tools handle data.
+
+A setting may not cover every integration or local cache.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- Enterprise governance with command/tool allowlists.
-- Compliance controls for retention and data egress.
-- Protocol-level interoperability across runtimes/clients.
-
-### Practical Example
-
-```text
-Goal: meet enterprise security and compliance baselines
-Steps: 1) define permission policies 2) enable privacy mode 3) integrate tools via protocol layer
-Outcome: controlled risk surface and standardized integration
-```
+Before using an AI assistant with a private repository, review the exact settings and terms. Test with non-sensitive material, inspect connected services, and confirm that team policy permits the data flow.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Loose policies broaden attack surface.
-- Overly strict policies hurt developer velocity.
-- Protocol-version drift can break compatibility.
+A documented privacy setting can provide useful controls. It does not replace access control, data minimization, retention policy, or contract review. Local processing also does not guarantee privacy.
 
 ## Comparison with Similar Terms
 
-| Dimension | Privacy Mode | Permission Policies / Allowed Command List | Memory Scope |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Privacy Mode` capability boundaries | Leans toward `Permission Policies / Allowed Command List` capabilities | Leans toward `Memory Scope` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+Privacy mode changes selected data-handling behavior. Permission policies control which actions or resources can be accessed. Memory scope defines where saved context applies. These controls address different risks.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Read the current vendor documentation and contract. Record which data, services, and integrations are covered. Disable unnecessary collection, restrict access, and review changes when the product or plan changes.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not assume privacy mode means zero retention or no training use. Check the terms for plugins, telemetry, and third-party tools.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does privacy mode mean the provider stores no data?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+Not necessarily. The setting may cover selected data or services. Check the product's current terms and documentation.
 
 ## Related Resources
 
 ### Related Terms
 
-- [permission-policies-allowed-command-list](https://inaodeng.com/en/AIWiki/permission-policies-allowed-command-list/)
-- [memory-scope](https://inaodeng.com/en/AIWiki/memory-scope/)
-- [rules-and-memories](https://inaodeng.com/en/AIWiki/rules-and-memories/)
-- [remote-control](https://inaodeng.com/en/AIWiki/remote-control/)
+- [Permission policies and allowed command lists](/en/AIWiki/permission-policies-allowed-command-list/)
+- [Memory scope](/en/AIWiki/memory-scope/)
+- [Rules and memories](/en/AIWiki/rules-and-memories/)
 
 ### External References
 
-- [Cursor Docs](https://cursor.com/cn/docs)
-- [Cursor Rules Docs](https://docs.cursor.com/context/rules)
-- [Qoder Docs](https://docs.qoder.com/)
+- [Cursor: Privacy and data handling](https://cursor.com/docs/account/privacy)
+- [Cursor: Privacy and data governance](https://cursor.com/docs/enterprise/privacy-and-data-governance)

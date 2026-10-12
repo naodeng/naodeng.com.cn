@@ -3,7 +3,7 @@ title: "Asynchronous Agent Execution"
 titleZh: "异步智能体执行"
 slug: "asynchronous-agent-execution"
 lang: "en"
-summary: "A collaboration mode that decouples AI instruction issuance from task execution, allowing developers to continue other operations while the AI performs ta…"
+summary: "Running an agent task without waiting for each step in the active conversation."
 topic: "ai-vibe-coding"
 aliases:
   - "Asynchronous Agent Execution"
@@ -15,98 +15,61 @@ related:
   - "background-agents"
   - "batch-processing"
   - "hooks"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
 # Asynchronous Agent Execution
-
-> One-line definition: A "fire-and-forget" collaboration mode—you hand over a task to the AI and don't have to wait in front of the screen for it to output line by line; instead, you can immediately go do something else until the AI "taps you on the shoulder" to remind you it's done.
 
 ## Quick Take
 
-- Problem it solves: Decompose and parallelize complex work at scale.
-- When to use: Use it for multi-step, multi-role, cross-tool execution.
-- Boundary: Not suitable for high-risk workflows without review gates.
+- **In brief:** Asynchronous agent execution lets a client start work and receive its result later.
+- **Useful for:** Tasks that may take longer than one request or interaction.
+- **Main limit:** Job status, cancellation, and persistence depend on the system.
 
 ## Overview
 
-`Asynchronous Agent Execution` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A client starts a repository analysis and receives a job identifier. It can continue other work, then check for the result when the job finishes.
 
 ## Core Definition
 
-### Formal Definition
-
-Asynchronous Agent Execution refers to a processing pattern in an Agentic Workflow where the sender (human or Master Agent) issues task instructions without blocking the current execution flow, gaining results at a later time via job IDs, callback hooks, or long polling.
-
-### Plain-Language Explanation
-
-Think of `Asynchronous Agent Execution` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Asynchronous agent execution separates starting a task from receiving its final result. The system may return a job or session handle and report progress through polling, notifications, or another documented mechanism.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: As tasks involving AI become more profound (from changing a word to refactoring a project), execution time stretches from "seconds" to "minutes," making production interruptions caused by synchronous waiting unacceptable.
-- **Focus**: Real-time tracking of task status, non-blocking UI design, and automated merging of asynchronous results.
-
-### Evolution
-
-- **Synchronous Blocking (Sync)**: Clicking "Generate" leaves the entire IDE or dialog in a loading state, making it unusable.
-- **Pseudo-Asynchrony (Background Streaming)**: Text flows out slowly; while you can see it, you're still afraid to touch the code for fear of interrupting the AI.
-- **Full Asynchronous Execution (Async)**: Tasks are pushed to a queue; users can freely switch branches, modify other files, or even close the project, while AI execution state is fully preserved and notified precisely upon completion.
+Long-running tasks can exceed the time a client keeps a request open. Asynchronous patterns let the client continue without waiting on one connection. They do not guarantee that a task survives a restart or can be resumed.
 
 ## How It Works
 
-1. **Task Submission**: The user issues a complex command; the system immediately returns a `Job ID` and restores UI interactivity.
-2. **Ctx Isolation**: A shadow workspace is created for the task, ensuring asynchronous code changes don't immediately pollute the current code in the editor.
-3. **Status Tracking**:
-    - **Active Mode**: The frontend constantly asks, "Is Job 123 done yet?"
-    - **Passive Mode**: The Agent triggers an event via terminal bell, system popup, or MCP protocol upon completion.
-4. **Reconciliation**: After execution, the AI presents a Diff to the user; the user can confirm with one click to merge the asynchronously generated results back into the main stream.
+1. The client submits a task.
+2. The service accepts it and returns an identifier or status.
+3. The client checks status or receives an update.
+4. The service returns a result or error when available.
+5. The client handles cancellation, timeout, and retry according to the service contract.
 
 ## Applications in Software Development and Testing
 
-- **Parallel Test Runs**: Simultaneously launching three asynchronous tasks to run scripts on Chrome, Firefox, and mobile.
-- **Background Code Analysis/Scanning**: While you write new code, an async Agent is scanning the code you just wrote for security vulnerabilities in the background.
-- **Time-consuming Resource Compilation**: Letting AI handle image compression or large library re-compilation while the developer continues writing logic in the editor.
+A test service can run a large suite while a developer reviews another change. The interface should show which revision was tested and whether the job completed, failed, or was cancelled.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Full Productivity Release**: Eliminates idle time spent "waiting for AI to think."
-- **Supports Massive Concurrency**: Five complex tasks can be issued to different agents at the same time.
-- **Smooth Interaction**: The IDE remains responsive, never stuttering due to heavy AI computations.
-
-### Limitations and Risks
-
-- **Merge Conflict Risk**: If you significantly modify the same files while an asynchronous AI is running, the final merge process can be painful.
-- **Cognitive Context Switching**: Getting a notification that an old task is finished while you're focused on a new one might interrupt your flow.
-- **Debugging Difficulty**: When an async task fails, it’s often hard to reproduce the exact environmental state from the moment it was executing.
+The client can remain responsive while longer work runs. Asynchronous execution adds status handling, duplicate-request risks, and delayed failures. Persistence and retry behavior vary by service.
 
 ## Comparison with Similar Terms
 
-| Dimension | Asynchronous Execution | Background Agent | Batch Processing |
-| :--- | :--- | :--- | :--- |
-| **Interaction** | **Still part of the current dev flow** | Might detach from current session | Usually no interaction/non-real-time |
-| **Feedback** | Active notification (popup/bell) | Static logs/Dashboard | Callback file |
-| **Primary Goal** | **Eliminating UI blocking** | Maintaining long-term residence | Lowering cost/increasing throughput |
+Synchronous execution keeps a request open for its result. Asynchronous execution returns control before the result is ready. A background agent describes where or how work runs; it may use asynchronous execution but is not the same concept.
 
 ## Best Practices
 
-- **Provide Clear Progress Indicators**: Show "1 background task running" in the status bar so users know what's happening.
-- **Enable Silent Merging**: For tasks that don't change source code (like generating docs), allow the AI to save directly after async completion.
-- **Notification Thresholds**: Tasks taking less than 10 seconds don't need popups; those over 1 minute must have prominent alerts.
+Track the job identifier, task input, and code revision. Define timeout and cancellation behavior. Make retries safe against duplicate side effects. Show users the current status and final result.
+
+## Common Pitfalls
+
+Do not assume a job persists after disconnection. Do not interpret a missing update as success. Check the result and the revision that produced it.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Can an asynchronous job always be resumed after a client disconnects?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. Resume and persistence behavior depend on the service. Check its contract and test disconnection cases.
 
 ## Related Resources
 

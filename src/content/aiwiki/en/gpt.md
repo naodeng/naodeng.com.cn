@@ -3,7 +3,7 @@ title: "GPT (Generative Pre-trained Transformer)"
 titleZh: "GPT（生成式预训练 Transformer）"
 slug: "gpt"
 lang: "en"
-summary: "A model family based on transformer pretraining and instruction tuning, widely used for coding and reasoning tasks."
+summary: "OpenAI’s family of generative AI models. The name covers model versions with different capabilities and interfaces."
 topic: "ai-vibe-coding"
 aliases:
   - "GPT"
@@ -14,115 +14,83 @@ related:
   - "codex"
   - "o1-o3"
   - "large-language-models-llms"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
-# GPT (Generative Pre-trained Transformer)
+# GPT
 
-> One-line definition: A class of autoregressive language models developed by OpenAI that uses the Transformer architecture to generate human-like text, serving as the "intelligence engine" for applications like ChatGPT.
+> One-line definition: OpenAI’s family name for generative pretrained transformer models.
 
 ## Quick Take
 
-- Problem it solves: Track model generations and fit-for-purpose usage.
-- When to use: Use for architecture decisions and capability comparison.
-- Boundary: Avoid absolute claims like “universally strongest.”
+- **In brief:** GPT refers to a changing family of OpenAI models.
+- **Useful for:** Text, code, or multimodal tasks supported by the selected model.
+- **Main limit:** A family name does not identify a specific model or API feature.
 
 ## Overview
 
-`GPT (Generative Pre-trained Transformer)` matters less as a buzzword and more as an engineering control point for reliability, interpretability, and collaboration in AI-enabled development.
+A developer might ask a GPT model to turn a requirement into test cases, then compare the cases with the acceptance criteria. The result is a draft for review.
 
 ## Core Definition
 
-### Formal Definition
-
-GPT is a Decoder-only Transformer model based on the "Pre-trained and Fine-tuned" paradigm. It uses **"Next Token Prediction"** to estimate the most likely following word or character in a sequence, allowing it to build coherent and logically sound responses over long contexts.
-
-### Plain-Language Explanation
-
-Think of it as a foundational control point in AI engineering: it reduces randomness, improves reuse, and turns team know-how into repeatable practice.
+GPT stands for “Generative Pre-trained Transformer.” OpenAI uses GPT in the names of models with different training, inputs, and capabilities. The exact features depend on the model version and interface.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: Introduced by OpenAI in 2018, building upon Google's research into the Transformer architecture ("Attention is All You Need").
-- **Main focus**: Proving that increasing model scale (parameters and data) leads to "Emergent Abilities" in reasoning and logic.
-
-### Evolution
-
-- **GPT-1/2**: Proved that language models could perform tasks without specific training (Zero-shot).
-- **GPT-3**: The "175 Billion Parameter" breakthrough that made high-level conversational AI a reality.
-- **GPT-4**: Introduced sophisticated reasoning, multi-modality (images + text), and the ability to follow complex technical instructions.
+The GPT name became widely known through successive OpenAI model releases. The model family now includes different variants and task-specific offerings. Historical descriptions of one generation do not define the full family.
 
 ## How It Works
 
-1. **Tokenization**: Breaking input text into small numerical pieces (Tokens) the computer can understand.
-2. **Attention Mechanism**: Focusing on the most relevant parts of the input to determine context (e.g., in "The bank of the river," the word "river" tells the model "bank") isn't a financial institution.
-3. **Probabilistic Output**: Calculating the probability of all possible next words and selecting the most appropriate one based on "Temperature" settings.
+At a high level, a GPT model processes an input context and predicts output tokens. Some models also process other input types or use tools through an application. The application controls which model, instructions, data, and tools are available.
 
 ## Applications in Software Development and Testing
 
-- **Natural Language to Code**: Converting vague requirements into boilerplate or complex algorithms.
-- **Automated Code Review**: Explaining why a specific block of code might be vulnerable or inefficient.
-- **Test Data Generation**: Creating realistic, non-sensitive datasets for functional and performance testing.
+- **Requirement analysis:** Ask for candidate test conditions, then check them against acceptance criteria.
+- **Code assistance:** Request an explanation or a small proposed change. Review the diff and run relevant tests.
+- **Failure triage:** Ask the model to group likely causes from a log. Confirm them with traces and source code.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Universal Knowledge**: Capable of discussing any topic from quantum physics to JavaScript frameworks.
-- **Creativity**: Excellent at brainstorming, drafting content, and role-playing.
-- **Logical Reasoning**: Can follow "Chain of Thought" steps to solve complex multi-part problems.
-
-### Limitations and Risks
-
-- **Hallucination**: Can confidently state completely false information if it doesn't have a clear answer.
-- **Knowledge Cut-off**: Models are trained on data up to a specific date and cannot "know" events that happened afterward without external tools (like RAG).
-- **Inconsistency**: The same prompt can yield slightly different results (Stochasticity), which can be problematic for deterministic production code.
+GPT models are available through products and developer interfaces for several kinds of tasks. Capabilities and terms vary by model. A fluent answer can still be wrong, and the model cannot see private or current data unless the application supplies it.
 
 ## Comparison with Similar Terms
 
-| Dimension | GPT | Claude | Gemini |
-| :--- | :--- | :--- | :--- |
-| **Developer** | OpenAI | Anthropic | Google |
-| **Typical Vibe** | **Concise, Practical, Sharp** | Nuanced, Safe, Helpful | Integrated, Multi-modal |
-| **Native Tooling** | GPTs / Actions | Artifacts / MCP | Google Workspace Integration |
+| Term | What it means |
+|---|---|
+| GPT model | A model in OpenAI’s GPT family |
+| ChatGPT | An OpenAI product that uses models and can add product features |
+| OpenAI API | A developer interface for supported models and tools |
 
 ## Best Practices
 
-- **Role Prompting**: Start with "You are a Senior Principal Engineer" to set a high-quality baseline.
-- **Provide Context**: Feed the model relevant snippets or documentation to minimize hallucinations.
-- **Iterative Refinement**: If the first result isn't perfect, "vibe" it by giving specific corrective feedback.
+- Select a specific model for a defined task.
+- Keep model IDs and API settings with evaluation results.
+- Use a representative test set to compare quality, latency, and cost.
+- Review generated code and test cases before use.
 
 ## Common Pitfalls
 
-- **Blind Trust**: Never copy-paste GPT-generated code into production without manual review or automated testing.
-- **Prompt Vagueness**: Giving a one-word instruction is likely to yield a generic, low-value response.
+Do not assume all GPT models have the same inputs, context limits, tool support, or lifecycle. Check the model documentation for the exact interface you use.
 
 ## FAQ
 
-### Q1: Should beginners master this immediately?
+### Does GPT mean ChatGPT?
 
-A: Learn the core purpose first, then adopt it gradually in real workflows.
+No. GPT is a model-family name. ChatGPT is a product that can provide access to models and other features.
 
-### Q2: How do teams know adoption is working?
+### Does GPT understand code execution state automatically?
 
-A: Check for more stable delivery, less rework, and smoother collaboration.
+No. The application must run code or tests and return the resulting evidence.
 
 ## Related Resources
 
 ### Related Terms
 
-- [codex](https://inaodeng.com/en/AIWiki/codex/)
-- [o1-o3](https://inaodeng.com/en/AIWiki/o1-o3/)
-- [large-language-models-llms](https://inaodeng.com/en/AIWiki/large-language-models-llms/)
+- [Claude](/en/AIWiki/claude/)
+- [OpenAI o1 and o3 models](/en/AIWiki/o1-o3/)
+- [Large language models](/en/AIWiki/large-language-models-llms/)
 
-### Term Metadata
+### References
 
-- Aliases: GPT
-- Tags: AI Vibe Coding, Wiki
-
-## References
-
-- [OpenAI GPT-4 Technical Report](https://arxiv.org/abs/2303.08774)
-- [OpenAI API docs](https://platform.openai.com/docs/overview)
+- [OpenAI: Models](https://platform.openai.com/docs/engines/chat-gpt)
+- [OpenAI: GPT-4 technical report](https://arxiv.org/abs/2303.08774)

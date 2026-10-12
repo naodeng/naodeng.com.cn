@@ -16,113 +16,61 @@ related:
   - "function-calling"
   - "custom-commands"
   - "permission-policies-allowed-command-list"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Hooks (钩子机制)
-
-> One-line definition: Register lifecycle callbacks around agent/tool events to enforce policy and automation steps.
+# Hooks
 
 ## Quick Take
 
-- Problem it solves: Make AI outputs predictable and machine-consumable.
-- When to use: Use it when downstream systems need stable formats.
-- Boundary: Not ideal for fully open-ended creative tasks.
+- **In brief:** A hook is code or a callback that runs when a host reports a configured event.
+- **Useful for:** Adding checks, logs, or follow-up actions to supported workflows.
+- **Main limit:** A hook covers only event paths connected to it by the host.
 
 ## Overview
 
-`Hooks` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A development tool can run a hook before a supported shell command. The hook may check or record the command. It cannot control another path unless that path also invokes the hook.
 
 ## Core Definition
 
-### Formal Definition
-
-Register lifecycle callbacks around agent/tool events to enforce policy and automation steps.
-
-### Plain-Language Explanation
-
-Think of `Hooks` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+A hook is an extension that runs in response to a host-defined event. The host controls how it is registered, what data it receives, and how its result affects the workflow.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+Hooks extend defined lifecycle points in editors, build systems, and other applications. Some AI coding tools use them around sessions, prompts, or tool calls. Their behavior depends on the host.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. The host emits a documented event.
+2. The registered hook receives event data.
+3. The hook performs a bounded task, such as a check or log entry.
+4. The host handles the result under its documented rules.
+5. The team reviews failures and confirms which paths invoke the hook.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- API orchestration where AI output feeds automation directly.
-- Test generation with fixed schemas for assertions.
-- Standardized actions triggered via commands/hooks.
-
-### Practical Example
-
-```text
-Goal: generate machine-consumable test steps
-Steps: 1) define JSON schema 2) call function 3) validate via hooks
-Outcome: lower parse errors and better CI automation reuse
-```
+A hook can run a formatter after a supported file change or check a command before execution. Use separate permissions and controls for actions that do not pass through the hook.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Overly strict schemas can reduce model flexibility.
-- Over-permissive function access increases misuse risk.
-- Hook failures can break pipelines without fallback paths.
+Hooks can automate repeated checks at selected workflow points. They add another component to maintain. Poor error handling can block work or allow a check to pass without running.
 
 ## Comparison with Similar Terms
 
-| Dimension | Hooks | Hook Events | Function Calling |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Hooks` capability boundaries | Leans toward `Hook Events` capabilities | Leans toward `Function Calling` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+A hook runs in response to an event. A hook event is the trigger point. A custom command starts a named task on request. Function calling asks an application to execute a tool selected by a model.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Keep each hook focused. Document its inputs and failure behavior. Test event order, duplicate events, timeouts, and errors. Review permissions separately from hook logic.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not assume a hook is a complete security boundary. Do not ignore hook failures or rely on a hook when another path can bypass it.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Can hooks enforce a policy?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+They can check actions that pass through supported events. Use host permissions or other controls for paths the hook does not cover.
 
 ## Related Resources
 

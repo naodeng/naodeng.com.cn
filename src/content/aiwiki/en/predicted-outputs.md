@@ -15,106 +15,72 @@ related:
   - "structured-outputs"
   - "flex-processing"
   - "prompt-caching"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
 # Predicted Outputs
-
-> One-line definition: When a developer already has most of the target code (e.g., during refactoring), providing this content as a "reference answer" to the AI allows it to focus solely on generating "diffs," achieving near-instantaneous response speeds.
 
 ## Quick Take
 
-- Problem it solves: Make AI outputs predictable and machine-consumable.
-- When to use: Use it when downstream systems need stable formats.
-- Boundary: Not ideal for fully open-ended creative tasks.
+- **In brief:** A predicted output supplies text that an API expects a model to reuse in its response.
+- **Useful for:** Regenerating a file when much of the output should stay unchanged.
+- **Main limit:** It helps only when the prediction matches the desired output and the API supports it.
 
 ## Overview
 
-`Predicted Outputs` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+When refactoring a file, a developer may expect most lines to remain the same. A supported API can accept the current file as a prediction and generate the revised result.
 
 ## Core Definition
 
-### Formal Definition
-
-Predicted Outputs (also an application of Speculative Decoding) is an inference acceleration technique. When most of the expected output is known (e.g., refactoring, documentation updates, translations), providing a `prediction` field to the model allows it to verify and quickly skip tokens that match the prediction, only consuming compute to generate mismatched or new parts.
-
-### Plain-Language Explanation
-
-Think of `Predicted Outputs` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Predicted outputs are an API feature that provides expected output text to guide generation. The model can reuse matching content and focus on changes. Availability, supported models, billing, and parameter limits depend on the API.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: The generation speed of Large Language Models (LLMs) has been a massive bottleneck for developer experience, especially during large-scale code refactoring where wait times can be extreme.
-- **Focus**: Leveraging existing context to reduce unnecessary auto-regressive computation.
-
-### Evolution
-
-- **Stage 1.0 (Streaming)**: Using streaming to let users see text early, easing anxiety but not changing total time.
-- **Stage 2.0 (Speculative Sampling)**: Using a smaller model to predict the larger model's output, increasing overall parallelism.
-- **Stage 3.0 (Predicted Outputs/Prediction API)**: Developers actively provide an "expected draft," achieving leapfrog acceleration directly at the inference layer.
+This technique addresses latency in tasks where much of the desired output is already known, such as small edits to a document or code file. It is a provider feature, not a general name for every decoding optimization.
 
 ## How It Works
 
-1. **Providing the Draft**: The developer (or IDE) passes the current unmodified code as a `prediction` parameter to the model.
-2. **Parallel Verification**: Instead of generating tokens one by one, the model attempts to batch-verify if the "draft content" fits the logic of the current prompt.
-3. **Fast Skipping**: As long as verification passes (i.e., no changes are needed in this part of the new code), the model skips deep calculation and outputs the fragment directly.
-4. **Focusing on Diffs**: Once a logic mismatch is found (i.e., an area needing change), the model immediately switches back to high-precision generation mode, returning to fast prediction after the modification is complete.
+1. The application provides the prompt and expected output text.
+2. A supported API compares generation with the prediction.
+3. Matching content may be accepted more quickly.
+4. The API returns the generated result and usage details.
+5. The application checks the result and any rejected prediction tokens.
 
 ## Applications in Software Development and Testing
 
-- **Large-scale Refactoring**: When renaming a class or changing a function signature, most logic remains unchanged. Predicted Outputs can finish updating thousands of lines of code in a flash.
-- **Technical Documentation Sync**: When code changes slightly, documentation needs tiny tweaks as well. AI compares the old doc and updates key parameters at lightning speed.
-- **Unit Test Completion**: Filling new test cases into an existing template. AI skips the boilerplate template and only fills in the changing `Input/Output`.
+A code editor can send the current file as a prediction when asking for a small refactor. The developer checks the full returned file and runs tests. Measure latency and token usage for the actual workload.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Ultra-low Interaction Latency**: Response speeds can increase 2x to 5x in certain refactoring scenarios.
-- **Token Cost Savings** (depending on vendor policy): Some providers charge less for tokens that "pass prediction."
-- **Maintaining Continuity**: Since it uses original code as a draft, AI-generated code is more likely to stay consistent with the existing style.
-
-### Limitations and Risks
-
-- **Limited to "Known" Scenarios**: If you're writing entirely new code, Predicted Outputs provides no acceleration as there is no draft to use.
-- **Draft Quality Impact**: If the provided draft is significantly different from the target code, the model will frequently need to "correct" it, reducing the acceleration effect—or even making it slower than normal generation.
+Predictions can reduce latency when most output remains unchanged. Incorrect predictions can be rejected and may still affect usage charges. The feature may not support tools or every model.
 
 ## Comparison with Similar Terms
 
-| Dimension | Predicted Outputs | Structured Outputs | Prompt Caching |
-| :--- | :--- | :--- | :--- |
-| **Acceleration Target** | **Generation Phase** | Constraint Logic | **Prefill Phase** (Input) |
-| **Core Mechanism** | Skipping known tokens | Forcing Schema compliance | Caching redundant context |
-| **Use Case** | Refactoring, Doc updates | JSON gen, Data extraction | High-frequency codebases |
+Predicted outputs provide likely response content. Speculative decoding is a model inference technique that uses draft tokens. Prompt caching reuses repeated input. The mechanisms and API support differ.
 
 ## Best Practices
 
-- **Automatic IDE Mounting**: When issuing an Edit command, automatically mount the current editor selection as Prediction content.
-- **Control Variance Scope**: The more the expected change, the worse the prediction. Use this for local, logically clear modifications.
-- **Dynamic Fallback**: If the model finds the prediction hit rate consistently below 10%, it should automatically disable prediction mode to save resources.
+Use predictions only when most of the expected output is known. Check the current API documentation for supported models and parameters. Measure quality, latency, and usage before adopting the feature.
+
+## Common Pitfalls
+
+Do not assume that a prediction forces the model to copy text. Do not apply fixed speedup or cost claims to every request. Check rejected-token usage and the final output.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Are predicted outputs the same as prompt caching?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. Predicted outputs guide response generation with expected output text. Prompt caching reuses repeated input context.
 
 ## Related Resources
 
 ### Related Terms
 
-- [structured-outputs](https://inaodeng.com/en/AIWiki/structured-outputs/)
-- [flex-processing](https://inaodeng.com/en/AIWiki/flex-processing/)
-- [prompt-caching](https://inaodeng.com/en/AIWiki/prompt-caching/)
-- [context-window-management](https://inaodeng.com/en/AIWiki/context-window-management/)
+- [Structured outputs](/en/AIWiki/structured-outputs/)
+- [Flex processing](/en/AIWiki/flex-processing/)
+- [Prompt caching](/en/AIWiki/prompt-caching/)
+- [Context window management](/en/AIWiki/context-window-management/)
 
 ### External References
 
-- [OpenAI: Predicted Outputs Guide](https://platform.openai.com/docs/guides/predicted-outputs)
-- [Anthropic: Prompt Caching and Optimization](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
+- [OpenAI: Predicted Outputs guide](https://developers.openai.com/api/docs/guides/predicted-outputs)
+- [OpenAI: Prompt caching guide](https://developers.openai.com/api/docs/guides/prompt-caching)

@@ -19,102 +19,61 @@ related:
   - "cursor"
   - "gemini"
   - "zero-shot-coding"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Vibe Coding (氛围编程)
-
-> One-line definition: A development style driven by natural language intent and rapid iterative feedback from AI, prioritized over rigid technical documentation or predefined architectures.
+# Vibe Coding
 
 ## Quick Take
 
-- Problem it solves: Turn “can code” into reliable delivery.
-- When to use: Use for workflow design, testing collaboration, and quality governance.
-- Boundary: Do not use without review and validation gates.
+- **In brief:** Vibe coding is an informal style of building software through natural-language requests and repeated AI-assisted changes.
+- **Useful for:** Exploring ideas or making prototypes that a person can review.
+- **Main limit:** Rapid changes can hide defects, security issues, and maintenance costs.
 
 ## Overview
 
-`Vibe Coding` matters less as a buzzword and more as an engineering control point for reliability, interpretability, and collaboration in AI-enabled development.
+A developer asks an AI tool to draft a simple settings page, runs it, and gives feedback on what is missing. The developer still checks the code and behavior before using the result.
 
 ## Core Definition
 
-### Formal Definition
-
-Vibe Coding refers to a software construction process where human "intuition" and "intent" are the primary drivers. It leverages Large Language Models' (LLMs) capabilities for fuzzy matching and logical reasoning to achieve rapid, "small-step" iterations via natural language.
-
-### Plain-Language Explanation
-
-Think of it as a foundational control point in AI engineering: it reduces randomness, improves reuse, and turns team know-how into repeatable practice.
+Vibe coding is an informal term for directing AI-assisted code generation through high-level intent and iteration. It does not define a formal development process. The amount of planning, code review, and testing varies.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: The emergence of models like Claude 3.5 Sonnet and tools like Cursor transformed AI from a snippet completer to a project-aware collaborator.
-- **Main concern**: Breaking the long chain of "Requirements -> Architecture -> Coding -> Testing" to enable "What you think is what you get."
-
-### Evolution
-
-- **Early Phase (Autocomplete)**: AI as a co-pilot, finishing the second half of your line of code.
-- **Middle Phase (Chat)**: You prompt ChatGPT, it spits out code, and you manually copy-paste it.
-- **Recent Phase (Vibe)**: AI gains "Indexing" and "Agent" capabilities, directly operating on your entire repository while you drive development through "pointing" and "feeling."
+The term is used for a range of AI-assisted coding practices, from generating a small prototype to making changes through an agentic editor. It is not a fixed stage in software development, and it does not mean that architecture or testing is unnecessary.
 
 ## How It Works
 
-1. **Seed the Vibe**: Describe your feature in natural language, even if vague (e.g., "Make a premium-looking login page").
-2. **Model Renders**: AI generates runnable code based on the project context and your intent.
-3. **Vibe Check**: The developer runs the code and observes the effect. Error checking happens at the functional and experiential level rather than just the syntax level.
-4. **Refine**: Provide feedback via natural language ("Make the blue deeper," "Add a click animation"), and the AI automatically refactors the code.
+1. Describe the desired behavior and constraints.
+2. Ask an AI tool to draft or change code.
+3. Run the result and observe what happens.
+4. Give specific feedback or revise the code directly.
+5. Review the final diff and run relevant tests.
 
 ## Applications in Software Development and Testing
 
-- **Rapid Prototyping (MVP)**: Ideal for the 0-to-1 stage to validate ideas and build demos in minutes.
-- **Exploratory Programming**: Using the "Vibe" to let AI write a demo when you're unfamiliar with a new tech stack.
-- **UI/UX Driven Development**: Highly suited for frontend work where "feel" and interaction are paramount.
+Use this approach to explore a UI idea, generate a prototype, or try a small implementation. Use stricter design review and testing for production code or high-impact behavior.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Extreme Efficiency**: Skips the friction of syntax errors and documentation lookups.
-- **Low Barrier to Entry**: Empowers those with great product sense but limited coding skills to create software.
-- **Flow State**: Keeps developers focused on "creation" rather than "implementation anxiety."
-
-### Limitations and Risks
-
-- **Black Box Quality**: If code isn't audited, hidden security risks or performance bottlenecks may occur.
-- **Maintenance Debt**: Without coding standards, projects can turn into "spaghetti code" only the AI understands.
-- **Model Dependency**: Heavily reliant on LLM "intelligence"; if the model peters out, the Vibe is lost.
+Natural-language input can make a first draft easier to create. Repeated changes can also leave inconsistent code or untested assumptions. The result depends on prompt quality, project context, tools, and review.
 
 ## Comparison with Similar Terms
 
-| Dimension | Vibe Coding | Agentic Workflow | Prompt-Driven Development (PDD) |
-| :--- | :--- | :--- | :--- |
-| **Driving Core** | **Human Intuition & Taste** | Predefined Planning & Logic | Precise Instruction Sets |
-| **Interaction** | **Extremely High (Dialogue)** | Low to Medium (Automated) | Medium (Single/Multi-turn) |
-| **Best For** | Frontend, MVP, Creative | Complex Logic, Auth, Backend | Modular Dev, Algorithms |
-| **Error Handling** | Constant Human Steering | Self-healing Mechanisms | Dependency on Prompt Accuracy |
+AI pair programming keeps a developer involved in each decision. Vibe coding describes an informal, intent-led style. An agentic workflow may delegate several actions to an agent. These terms can overlap.
 
 ## Best Practices
 
-- **Use AI-Native Tools**: Leverage IDEs like Cursor or Windsurf that understand the global project context.
-- **Keep it Incremental**: Don't give overly complex instructions at once; "vibe" one small feature at a time.
-- **Maintain a "Safety Net"**: Critical logic still requires unit tests and human code audits.
+Keep changes small. State expected behavior and constraints. Inspect the code diff and run tests. Ask for explanations when you cannot verify an implementation.
 
 ## Common Pitfalls
 
-- **"Vibe" is not Chaos**: While you aren't writing code, your product logic must still be crystal clear.
-- **Abandoning Fundamentals**: Beginners who ignore syntax will find it hard to debug when the AI hits a logical loop.
+Do not treat a visual preview as proof that a feature works. Do not skip security, accessibility, or maintenance review because the prototype looks right.
 
 ## FAQ
 
-### Q1: Should beginners master this immediately?
+### Does vibe coding mean developers do not need to read code?
 
-A: Learn the core purpose first, then adopt it gradually in real workflows.
-
-### Q2: How do teams know adoption is working?
-
-A: Check for more stable delivery, less rework, and smoother collaboration.
+No. Developers still need to review and verify code that they plan to use.
 
 ## Related Resources
 
@@ -124,12 +83,6 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 - [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
 - [ai-pair-programming](https://inaodeng.com/en/AIWiki/ai-pair-programming/)
 
-### Term Metadata
-
-- Aliases: Intent-first coding
-- Tags: AI Vibe Coding, Wiki
-
-## References
-
+### References
 - [Wikipedia: Vibe coding](https://en.wikipedia.org/wiki/Vibe_coding)
 - [IBM: What is Vibe Coding?](https://www.ibm.com/think/topics/vibe-coding)

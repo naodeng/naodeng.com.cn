@@ -16,113 +16,61 @@ related:
   - "permission-policies-allowed-command-list"
   - "privacy-mode"
   - "custom-commands"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Rule Types (规则类型)
-
-> One-line definition: Classification of rules by scope and trigger strategy, such as always-on, conditional, and manual.
+# Rule Types
 
 ## Quick Take
 
-- Problem it solves: Set guardrails for safety, compliance, and consistency.
-- When to use: Use it for enterprise rollout and permission control.
-- Boundary: Not suitable for speed-only workflows with no governance.
+- **In brief:** Rule types classify instructions by their scope or activation method.
+- **Useful for:** Organizing instructions used by an AI coding tool.
+- **Main limit:** Rule categories and behavior vary by product.
 
 ## Overview
 
-`Rule Types` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A repository may need a rule that always applies, a rule for one folder, and a checklist that a user invokes for a specific task. A product may support some or none of these forms.
 
 ## Core Definition
 
-### Formal Definition
-
-Classification of rules by scope and trigger strategy, such as always-on, conditional, and manual.
-
-### Plain-Language Explanation
-
-Think of `Rule Types` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Rule types are categories used to describe how an instruction is stored, scoped, or activated. Common distinctions include always-on rules, path-specific rules, and manually invoked rules. This is a practical grouping, not a universal standard.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+As AI tools added project instructions, users needed ways to organize rules for different tasks and files. Products use their own formats, precedence rules, and loading behavior.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. Choose the scope or trigger for an instruction.
+2. Store it in the format supported by the product.
+3. The host loads it when its scope or trigger matches.
+4. The model receives the instruction as context.
+5. The user checks that it was applied as intended.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- Enterprise governance with command/tool allowlists.
-- Compliance controls for retention and data egress.
-- Protocol-level interoperability across runtimes/clients.
-
-### Practical Example
-
-```text
-Goal: meet enterprise security and compliance baselines
-Steps: 1) define permission policies 2) enable privacy mode 3) integrate tools via protocol layer
-Outcome: controlled risk surface and standardized integration
-```
+Keep general repository conventions in a broad rule. Put framework-specific details near the relevant files when supported. Use a manually invoked checklist for a focused release review.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Loose policies broaden attack surface.
-- Overly strict policies hurt developer velocity.
-- Protocol-version drift can break compatibility.
+Categories can make instructions easier to find and maintain. Overlapping rules can conflict, and a host may not load a file that users expect it to read.
 
 ## Comparison with Similar Terms
 
-| Dimension | Rule Types | Rules and Memories | Permission Policies / Allowed Command List |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Rule Types` capability boundaries | Leans toward `Rules and Memories` capabilities | Leans toward `Permission Policies / Allowed Command List` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+A rule is an instruction. Rule type describes its scope or activation. Memory stores information for possible reuse. A permission policy controls allowed actions rather than response guidance.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Use the smallest scope that fits the instruction. Avoid duplicate rules. Document precedence and activation behavior. Test with a task that should trigger each rule.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not assume that category names work the same across tools. Do not use a writing rule as a security control. Remove or update instructions that no longer match the project.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Is there a standard list of AI rule types?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. Products define their own formats and behavior. Always-on, scoped, and manually invoked are useful descriptive categories.
 
 ## Related Resources
 

@@ -16,103 +16,63 @@ related:
   - "trace-grading"
   - "verification-artifacts"
   - "artifact-feedback-loop"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Agent Evals
-
-> One-sentence definition: The systematic performance scoring of AI Agents in specific tasks—covering success rates, safety, instruction following, and reasoning paths—using automated scripts or specialized models.
+# Agent Evaluations
 
 ## Quick Take
 
-- Problem it solves: Turn “feels good” into measurable quality.
-- When to use: Use it for regression, acceptance, and policy comparison.
-- Boundary: Not suitable when judging from a single run only.
+- **In brief:** Agent evaluations test whether an agent meets defined task and safety criteria.
+- **Useful for:** Comparing versions and finding failures in tool-using workflows.
+- **Main limit:** Results depend on the test cases, environment, and graders.
 
 ## Overview
 
-`Agent Evals` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A coding agent may be asked to fix a bug in a small repository. An evaluation checks whether the patch meets requirements, passes relevant tests, and stays within allowed actions.
 
 ## Core Definition
 
-### Standard Definition
-
-Agent Evals is a measurement framework that typically consists of **Datasets**, **Rubrics**, and **Evaluators (Graders)**. It involves replaying tasks in controlled environments, collecting model outputs, and comparing them against "Ground Truth" or predefined behavioral guidelines.
-
-### Metaphor: The "Mock Exam"
-
-Think of Evals as a **"Mock Exam"** for AI. We prepare a test paper (Dataset) with various challenging problems, let the AI solve them, and then ask a more senior "Teacher" (Grader) to score it. The result isn't just a measure of "intelligence" but a validation of "reliability" in real-world scenarios.
+Agent evaluation is the structured assessment of an agent's observable behavior and task results. It can include final outputs, tool calls, policy compliance, and resource use. It does not require access to private model reasoning.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: Minor tweaks in a Prompt can cause massive fluctuations in AI performance. Relying solely on "Vibe Checks" is no longer sufficient for engineering-grade Agents.
-- **Shift in Focus**: Moving from "How good does the response look?" to "Was the problem actually solved?"
-
-### Evolution
-
-- **Phase 1.0 (Pattern Matching)**: Checking for specific keywords or if the generated code compiles.
-- **Phase 2.0 (LLM-as-a-Judge)**: Using advanced models (e.g., GPT-4) as judges to score responses from junior models.
-- **Phase 3.0 (Full Trace Evaluation)**: Assessing the entire reasoning path (Trace) rather than just the final output.
+Traditional software tests often check deterministic inputs and outputs. Agent evaluations also need to account for changing model responses, tool use, and task completion. Teams combine automated checks with human review when criteria require judgment.
 
 ## How It Works
 
-1. **Build Test Suites**: Collect typical, edge-case, and historical failure cases (e.g., a scenario that leads to an infinite recursion loop).
-2. **Run Inference**: Execute the Agent within a controlled sandbox environment for these cases.
-3. **Expert Regression (Ground Truth Comparison)**:
-   - For coding tasks: Run the code and check if it passes unit tests.
-   - For open-ended tasks: Perform semantic comparison between the Agent's response and a "Golden Answer."
-4. **Grading**: Utilize **Graders** to generate quantitative metrics (e.g., Pass@1, Success Rate, Reasoning Accuracy).
+1. Define representative tasks and constraints.
+2. Run the agent in a controlled, recorded environment.
+3. Check outputs and observable actions against a rubric.
+4. Repeat runs when variability matters.
+5. Review failures and compare results across versions.
+
+A grader can be a test script, a person, or a model. Each type has different error risks.
 
 ## Applications in Software Development and Testing
 
-- **Continuous Integration (CI) Acceptance**: Automatically run Evals after every Prompt modification to prevent regressions (the AI getting "dumber" on old problems).
-- **Cost-Performance Analysis**: Evaluate the time and token consumption for the same task across different models to find the most cost-effective configuration.
-- **Security Regression**: Script evaluation to see if an Agent can be induced to perform unauthorized actions (e.g., reading `/etc/passwd`), verifying that safety boundaries remain intact.
+Evaluate bug fixes, test generation, repository questions, and tool permissions. Keep task inputs, code revisions, environment settings, and grader versions so the comparison can be reproduced.
 
-## Pros & Cons
+## Strengths and Limitations
 
-### Pros
+Evaluations can reveal regressions and compare trade-offs across versions. A small test set may miss real tasks. Model-based graders may disagree with people or favor certain answer styles. Passing an evaluation does not prove production reliability.
 
-- **Quantitative Decisions**: Drive development with data rather than guessing which Prompt is better.
-- **Rapid Iteration**: Feedback loops are shortened from "days" to "minutes."
-- **Detecting Marginal Effects**: Capture tiny performance regressions that are invisible to the naked eye.
+## Comparison with Similar Terms
 
-### Cons & Risks
-
-- **Judge Bias**: If an LLM is the judge, it may inherit hallucinations or biases from the judge model itself.
-- **Dataset Staling**: If the model "memorizes" the test cases (Data Contamination), the evaluation loses its value.
-- **Sandbox Infrastructure Cost**: Providing a realistic execution environment (e.g., cloud containers) requires significant infrastructure.
-
-## Comparison with Related Terms
-
-| Dimension | Agent Evals | Traditional Unit Testing | Intent/Sentiment Recognition |
-| :--- | :--- | :--- | :--- |
-| **Nature** | **Probabilistic/Fuzzy** | Deterministic (Boolean) | Semantic Classification |
-| **Primary Tool** | **Graders (Model Judge)** | Assert Statements | Classifier |
-| **Complexity** | Extremely High (Trace-aware) | Low | Medium |
+Agent evaluation covers a set of tasks and criteria. A grader applies one or more criteria to a result. Unit tests check defined program behavior. Trace grading checks recorded steps in an agent run.
 
 ## Best Practices
 
-- **Start Small**: 10 high-quality, core test cases are more useful than 1,000 low-quality ones.
-- **Dual Grading**: Use both LLM grading and code assertions (Assert) for critical cases.
-- **Visualize Traces**: Don't just look at the score; you must be able to see exactly where the Agent "went off the rails."
+Use realistic tasks and clear pass criteria. Include negative and edge cases. Keep evaluation data separate from training data. Calibrate model graders against human review and inspect failures.
 
-## Pitfalls
+## Common Pitfalls
 
-- **Over-reliance on a Single Metric**: Focusing only on "Success Rate" might miss critical security vulnerabilities.
-- **Ignoring the Cost Factor**: If an Agent consumes 100k tokens to fix a simple bug, that solution is a commercial failure.
+Do not rely on one score or one run. Do not compare versions with different tools or environments without recording the difference. Do not treat a model grader as ground truth.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Can agent evaluations prove an agent is safe?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. They provide evidence for the tested tasks and conditions. Other tasks and environments can expose different failures.
 
 ## Related Resources
 
