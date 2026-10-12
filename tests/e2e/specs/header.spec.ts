@@ -94,6 +94,11 @@ test.describe("Header 导航", () => {
   });
 
   test("zh-cn 首页：QA 与 AI 菜单展示可抓取的内容说明和规模", async ({ page, baseURL }) => {
+    await page.goto((baseURL || "") + "/zh-cn/AIWiki/", { waitUntil: "domcontentloaded" });
+    const aiWikiTermCount = Number(await page.locator(".wiki-stat-number").first().innerText());
+    expect(aiWikiTermCount).toBeGreaterThan(0);
+    const aiWikiCountLabel = `${Math.floor(aiWikiTermCount / 10) * 10}+`;
+
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
 
     const qaMenu = page.locator("header nav [data-nav-group='qa-content']");
@@ -107,7 +112,7 @@ test.describe("Header 导航", () => {
     const aiMenu = page.locator("header nav [data-nav-group='ai-testing']");
     await aiMenu.locator("summary").click();
     await expect(aiMenu.locator(".nav-submenu-intro")).toContainText("AI");
-    await expect(aiMenu.locator("a[data-nav-item='ai-wiki'] .nav-submenu-meta")).toContainText("60+");
+    await expect(aiMenu.locator("a[data-nav-item='ai-wiki'] .nav-submenu-meta")).toContainText(aiWikiCountLabel);
     await expect(aiMenu.locator("a[data-nav-item='qa-prompts'] .nav-submenu-meta")).toContainText("200+");
     await expect(aiMenu.locator("a[data-nav-item='qa-skills'] .nav-submenu-meta")).toContainText("100+");
   });
