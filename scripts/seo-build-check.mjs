@@ -142,8 +142,24 @@ if (!fs.existsSync(redirectsPath)) {
   failures.push("missing generated _redirects file");
 } else {
   const redirects = fs.readFileSync(redirectsPath, "utf8");
-  if (!redirects.split(/\r?\n/).some((line) => line.trim() === "/zh-cn/wiki/A-B-Testing/ /zh-cn/wiki/a-b-testing/ 301")) {
-    failures.push("missing lowercase redirect for /zh-cn/wiki/A-B-Testing/");
+  if (redirects.split(/\r?\n/).some((line) => /^\/(?:en|zh-cn)\/wiki\//.test(line.trim()))) {
+    failures.push("legacy Wiki redirects must not be published");
+  }
+}
+
+for (const locale of ["en", "zh-cn"]) {
+  const wikiBuildDir = path.join(DIST, locale, "wiki");
+  if (fs.existsSync(wikiBuildDir)) {
+    const entries = fs.readdirSync(wikiBuildDir, { withFileTypes: true });
+    if (entries.some((entry) => entry.isDirectory() && entry.name === "wiki")) {
+      failures.push(`legacy nested Wiki routes must not be generated: /${locale}/wiki/wiki/`);
+    }
+    if (entries.some((entry) => entry.isDirectory() && entry.name.toLowerCase().endsWith(".md"))) {
+      failures.push(`legacy Markdown filename Wiki routes must not be generated for ${locale}`);
+    }
+    if (entries.some((entry) => entry.isDirectory() && entry.name !== entry.name.toLowerCase())) {
+      failures.push(`noncanonical uppercase Wiki routes must not be generated for ${locale}`);
+    }
   }
 }
 

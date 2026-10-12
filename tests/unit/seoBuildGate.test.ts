@@ -70,7 +70,7 @@ function createBuildFixture() {
   const noindex = '<html><head><meta name="robots" content="noindex, follow"></head><body>private</body></html>';
   write("en/private/index.html", noindex);
   for (const relative of ["en/sitemap/index.html", "zh-cn/sitemap/index.html", "en/blog/api-automation-testing/bruno-tutorial-building-your-own-project-from-0-to-1/index.html", "en/guild/api-testing/bruno/building-project/index.html", "en/guild/performance-testing/k6/ci-cd-integration/index.html"]) write(relative, noindex);
-  write("_redirects", "/zh-cn/wiki/A-B-Testing/ /zh-cn/wiki/a-b-testing/ 301\n");
+  write("_redirects", "/example/ /target/ 301\n");
   write("index.xml", "legacy RSS redirect");
   mkdirSync(path.join(root, "dist/en/qaskills"), { recursive: true });
   write("sitemap-index.xml", '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://inaodeng.com/sitemap-0.xml</loc></sitemap></sitemapindex>');

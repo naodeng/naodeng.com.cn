@@ -11,7 +11,7 @@ import type { Lang } from "@/i18n";
 
 export async function getStaticPaths() {
   const [zhEntries, enEntries] = await Promise.all([getCollection("wiki"), getCollection("wikiEn")]);
-  const paths: { params: { lang: string; slug: string }; props: { entry: CollectionEntry<"wiki"> | CollectionEntry<"wikiEn">; legacyCanonical?: string } }[] = [];
+  const paths: { params: { lang: string; slug: string }; props: { entry: CollectionEntry<"wiki"> | CollectionEntry<"wikiEn"> } }[] = [];
   paths.push(...zhEntries.map((entry) => {
     const slug = wikiIdToSlug(entry.id);
     return { params: { lang: "zh-cn", slug }, props: { entry } };
@@ -21,21 +21,13 @@ export async function getStaticPaths() {
     return { params: { lang: "en", slug }, props: { entry } };
   }));
 
-  // Preserve known Chinese aliases as local canonical redirects.
-  for (const entry of zhEntries) {
-    const canonical = wikiIdToSlug(entry.id);
-    for (const legacySlug of [`wiki/${canonical}`, `wiki/${canonical}.md`, `${canonical}.md`]) {
-      paths.push({ params: { lang: "zh-cn", slug: legacySlug }, props: { entry, legacyCanonical: canonical } });
-    }
-  }
   return paths;
 }
 
 const locale = (Astro.params.lang ?? "zh-cn") as Lang;
 const isEn = locale === "en";
 const slugParam = (Astro.params.slug ?? "") as string;
-const { entry, legacyCanonical } = Astro.props as { entry: CollectionEntry<"wiki"> | CollectionEntry<"wikiEn">; legacyCanonical?: string };
-if (legacyCanonical) return Astro.redirect(`/zh-cn/wiki/${legacyCanonical}/`, 301);
+const { entry } = Astro.props as { entry: CollectionEntry<"wiki"> | CollectionEntry<"wikiEn"> };
 
 const homeName = (typeof NAV_HOME === "string" ? NAV_HOME : NAV_HOME[locale]) ?? (isEn ? "Home" : "首页");
 const wikiTitle = isEn ? "QA Wiki" : "测试百科";

@@ -18,11 +18,8 @@ const combinatorialArticle = readFileSync(
 );
 
 describe("GSC-confirmed SEO fixes", () => {
-  it("keeps exact redirects for verified legacy 404 URLs", () => {
+  it("keeps exact redirects for verified non-Wiki legacy URLs", () => {
     const mappings = [
-      ["/zh-cn/wiki/B/bug", "/zh-cn/wiki/bug/"],
-      ["/zh-cn/wiki/S/selenium", "/zh-cn/wiki/selenium/"],
-      ["/zh-cn/wiki/wTiki/test-automation.md", "/zh-cn/wiki/test-automation/"],
       [
         "/zh-cn/blog/performance-testing/gatling-tool-tutorial-advanced-usage/",
         "/en/blog/performance-testing/gatling-tool-tutorial-advanced-usage/",

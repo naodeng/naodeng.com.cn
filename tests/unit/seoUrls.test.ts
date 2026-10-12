@@ -77,11 +77,12 @@ describe("SEO URL policy", () => {
     expect(resolveWikiLocalePath("/en/blog/post/", "zh-cn")).toBeNull();
   });
 
-  it("normalizes Wiki IDs and redirects case-only aliases", () => {
+  it("normalizes Wiki IDs without generating legacy routes", () => {
     expect(wikiData).toContain('import { canonicalWikiSlug } from "@/utils/seoUrls"');
     expect(wikiData).toContain("return canonicalWikiSlug(");
-    expect(wikiRoute).toContain("Astro.redirect(`/zh-cn/wiki/${legacyCanonical}/`, 301)");
-    expect(redirects).toContain("/zh-cn/wiki/A-B-Testing/ /zh-cn/wiki/a-b-testing/ 301");
+    expect(wikiRoute).not.toContain("legacyCanonical");
+    expect(wikiRoute).not.toContain("legacySlug");
+    expect(redirects).not.toMatch(/^\/zh-cn\/wiki\//m);
     expect(wikiRoute).not.toContain("const fileNames = fs.readdirSync(wikiDir)");
     expect(seoBuildChecker).toContain("const redirectsPath = path.join(DIST, \"_redirects\")");
   });
