@@ -212,8 +212,6 @@ Reviewers are experts who evaluate code to detect bugs, enhance quality, and gui
     to prioritize testing efforts based on potential impact.
   Reviewers should also be adept at working in **agile environments**, adapting to rapid changes, and maintaining a high level of detail orientation to ensure comprehensive e2e [test coverage](/en/wiki/test-coverage/).
 
-  - **Professional experience**
-
 #### How does a reviewer's technical knowledge contribute to the e2e testing process?
 
   A reviewer's **technical knowledge** is pivotal in **e2e testing** as it directly influences the **quality** and **effectiveness** of the [test scenarios](/en/wiki/test-scenario/). With a deep understanding of the system architecture and technology stack, a reviewer can:
@@ -261,7 +259,6 @@ Reviewers are experts who evaluate code to detect bugs, enhance quality, and gui
   In essence, a reviewer's technical acumen is instrumental in crafting **robust**, **scalable**, and **efficient** e2e tests that align with the application's complexity and technological demands.
 
 
-  - **Refine automated tests**
 ### Process and Techniques
 
 #### What is the process a reviewer follows in e2e testing?
@@ -370,8 +367,6 @@ Reviewers are experts who evaluate code to detect bugs, enhance quality, and gui
   - **[Security Testing](/en/wiki/security-testing/) Tools**
     like OWASP ZAP or Fortify, to ensure that security testing is part of the review process.
   These tools help reviewers to efficiently manage code quality, collaborate with team members, track issues, and ensure that the software meets the required standards before it is released.
-
-  - **Version Control Systems**
 
 #### How does a reviewer use technology to improve the e2e testing process?
 

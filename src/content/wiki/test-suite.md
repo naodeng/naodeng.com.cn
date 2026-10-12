@@ -38,6 +38,8 @@ order: 0
     - [最佳实践](#最佳实践)
       - [创建测试套件的最佳实践有哪些？](#创建测试套件的最佳实践有哪些)
       - [如何优化测试套件以提高效率？](#如何优化测试套件以提高效率)
+      - [创建测试套件时要避免哪些常见错误？](#创建测试套件时要避免哪些常见错误)
+      - [如何使测试套件更易于维护？](#如何使测试套件更易于维护)
       - [管理大型或复杂测试套件有哪些策略？](#管理大型或复杂测试套件有哪些策略)
 <!-- TOC END -->
 
@@ -56,7 +58,7 @@ order: 0
 
 #### 为什么测试套件在软件测试中很重要？
 
-**[测试套件](/zh-cn/wiki/test-suite/)** 至关重要，因为它充当 [测试用例](/zh-cn/wiki/test-case/) 的 **存储库**，确保应用程序的所有功能和非功能方面都得到验证。它提供了一种**结构化方法**来进行测试，从而实现系统覆盖并轻松识别[测试覆盖率](/zh-cn/wiki/test-coverage/) 中的差距。通过对相关测试进行分组，它有利于**[回归测试](/zh-cn/wiki/regression-testing/)**和**维护**，允许快速重新执行测试以响应应用程序或环境的变化。
+**[测试套件](/zh-cn/wiki/test-suite/)** 至关重要，因为它充当 [测试用例](/zh-cn/wiki/test-case/) 的 **存储库**，确保应用程序的所有功能和非功能方面都得到验证。它提供了一种**结构化方法**来进行测试，从而实现系统覆盖并轻松识别[测试覆盖率](/zh-cn/wiki/test-coverage/) 中的差距。通过对相关测试进行分组，它有利于 **[回归测试](/zh-cn/wiki/regression-testing/)** 和**维护**，允许快速重新执行测试以响应应用程序或环境的变化。
   [测试套件](/zh-cn/wiki/test-suite/) 还支持**并行执行**，这对于减少持续集成环境中的测试周期时间至关重要。它们实现了**可追溯性**，将需求与特定测试联系起来，这对于理解 [测试覆盖率](/zh-cn/wiki/test-coverage/) 和审计目的至关重要。
   当测试失败时，[测试套件](/zh-cn/wiki/test-suite/) 充当**上下文提供者**，帮助查明应用程序特定区域内的问题。这种有针对性的洞察可以加快调试过程并有助于风险评估。
   此外，[测试套件](/zh-cn/wiki/test-suite/) 的结果有助于**决策**，为利益相关者提供应用程序质量和发布准备情况的清晰画面。它们还构成了软件开发生命周期中**持续改进**的基础，突出了需要关注的领域并指导未来的测试工作。
@@ -64,26 +66,29 @@ order: 0
 
 #### 测试套件的关键组件是什么？
 
-**[测试套件](/zh-cn/wiki/test-suite/)** 的关键组件包括：
+**[测试套件](/zh-cn/wiki/test-suite/)**通常由以下部分组成：
 
-- **[测试用例](/zh-cn/wiki/test-case/)** ：验证特定功能或要求的单独测试单元。
-- **[测试脚本](/zh-cn/wiki/test-script/)** ：执行测试用例的自动化序列，通常用脚本或编程语言编写。
+- **[测试用例](/zh-cn/wiki/test-case/)**：验证特定功能或要求的单独测试。
+- **[测试脚本](/zh-cn/wiki/test-script/)**：执行测试用例的一组自动化步骤。
 
-// TypeScript 中的示例[测试脚本](/zh-cn/wiki/test-script/)
-  描述('登录功能', () => {
-  it('应该使用有效凭据对用户进行身份验证', () => {
-  //这里测试代码
+  ```typescript
+  describe('Login', () => {
+    it('authenticates with valid credentials', () => {
+      // Add assertions for the expected behavior.
+    });
   });
+  ```
 
-- **Setup and Teardown Procedures**: Code that prepares the environment before tests run and cleans up afterward.
-- **Test Data**: Sets of inputs, files, and databases necessary to execute test cases.
-- **Assertions**: Statements that check if the software behaves as expected.
-- **Dependencies**: Libraries, frameworks, or tools required for running the test scripts.
-- **Configuration Files**: Define parameters, environment variables, and settings for test execution.
-- **Test Execution Engine**: The platform or service that runs the test scripts, such as a Continuous Integration server.
-- **Result Reports**: Summaries of test outcomes, often including pass/fail status, logs, and error messages.
-- **Version Control**: Systems to track changes in test scripts and related artifacts.
-Each component plays a crucial role in ensuring the **Test Suite** is comprehensive, maintainable, and effective at catching regressions and validating new features. Proper organization and documentation of these components are essential for the smooth operation of the test automation process.
+- **准备和清理过程**：在测试运行前准备环境，并在结束后清理。
+- **[测试数据](/zh-cn/wiki/test-data/)**：运行测试所需的输入、文件和数据库记录。
+- **断言**：检查软件行为是否符合预期的语句。
+- **依赖项**：运行测试脚本所需的库、框架和工具。
+- **配置文件**：定义测试运行的参数、环境变量和设置。
+- **测试执行引擎**：运行测试脚本的平台或服务，例如 CI 服务器。
+- **结果报告**：汇总通过/失败状态、日志和错误信息。
+- **版本控制**：跟踪测试脚本及相关文件的变更。
+
+妥善组织和记录这些组件，可以让测试套件更全面、易维护，并能有效发现回归和验证新功能。
 
 #### 测试套件如何提高软件产品的整体质量？
 
@@ -102,8 +107,6 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 - 测试套件更多的是关于 **实际执行**测试。它包括特定的测试用例以及步骤、预期结果和测试脚本（如果涉及自动化）。
 
 - 测试计划是关于 **战略和规划**的测试过程。它涵盖了需要测试的内容、如何测试、谁将进行测试、何时进行测试以及需要哪些资源。 本质上，[测试计划](/zh-cn/wiki/test-plan/) 是测试阶段的蓝图，提供测试方法的高级视图，而[测试套件](/zh-cn/wiki/test-suite/) 是[测试计划](/zh-cn/wiki/test-plan/) 的组件，重点关注要运行的实际测试。 [测试套件](/zh-cn/wiki/test-suite/) 通常源自[测试计划](/zh-cn/wiki/test-plan/)，用于以连贯且结构化的方式组织和执行测试。
-
-- 测试套件更多的是关于 **实际执行**测试。它包括特定的测试用例以及步骤、预期结果和测试脚本（如果涉及自动化）。
 
 - 测试计划是关于 **战略和规划**的测试过程。它涵盖了需要测试的内容、如何测试、谁将进行测试、何时进行测试以及需要哪些资源。
 
@@ -146,8 +149,6 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 通过执行这些步骤，您可以创建一个结构化且高效的[测试套件](/zh-cn/wiki/test-suite/)，该[测试套件](/zh-cn/wiki/test-suite/) 有助于增强[软件测试](/zh-cn/wiki/software-testing/) 进程的稳健性。
 
 6. **自动化[测试执行](/zh-cn/wiki/test-execution/)**：编写脚本或使用[测试自动化](/zh-cn/wiki/test-automation/) 框架来自动执行[测试用例](/zh-cn/wiki/test-case/)。确保自动化处理测试依赖性和执行流程。
-7. **与 CI/CD 集成**：（可选）将 [测试套件](/zh-cn/wiki/test-suite/) 与 CI/CD 管道集成以实现连续测试。
-8. **文档**：清楚地记录[测试套件](/zh-cn/wiki/test-suite/)，包括其范围、它包含的测试以及任何特殊的执行指令。
 9. **审查和完善**：定期审查[测试套件](/zh-cn/wiki/test-suite/) 的相关性和有效性，并随着软件的发展进行更新。
 
 #### 创建测试套件时应考虑哪些因素？
@@ -238,10 +239,6 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 8. **报告**：通常通过 [测试管理](/zh-cn/wiki/test-management/) 工具或作为持续集成管道的一部分与团队共享结果。
 9. **根据反馈采取行动**：利用从[测试套件](/zh-cn/wiki/test-suite/) 执行中获得的见解，就修复[bugs](/zh-cn/wiki/bug/)、改进[测试用例](/zh-cn/wiki/test-case/) 或更新软件做出明智的决策。 请记住配置 [测试运行者](/zh-cn/wiki/test-runner/) 来处理超时、重试和清理操作，以保持稳健的执行过程。
 
-  ```
-    test-runner --suite "path/to/test-suite"
-  ```
-
 #### 如果测试套件中的测试失败会发生什么？
 
 当 **[测试套件](/zh-cn/wiki/test-suite/)** 中的测试失败时，[测试自动化](/zh-cn/wiki/test-automation/) 框架通常会记录失败以及相关详细信息，例如错误消息、堆栈跟踪，如果框架支持的话，可能还包括屏幕截图。套件中的其余测试通常会继续执行，具体取决于[测试运行者](/zh-cn/wiki/test-runner/) 的配置。
@@ -268,16 +265,6 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
   });
   ```
 应及时响应测试失败，以维护持续集成/持续部署 (CI/CD) 管道的完整性，并确保 [软件质量](/zh-cn/wiki/software-quality/) 得到维护。
-
-- **调试**进行测试以了解故障原因。
-
-- **报告**利益相关者无法通过集成工具或手动沟通。
-
-- **重试**如果怀疑不稳定，则测试失败，这可以在某些框架中自动化。
-
-- **隔离**失败的测试独立于套件运行，以便在修复过程中获得更快的反馈。
-
-- **更新**如果失败是由于应用程序中的更改尚未反映在测试代码中而导致的，则进行测试。
 
 - **创建**如果失败是由于应用程序中的实际缺陷造成的，则提供错误报告。
 
@@ -321,12 +308,11 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 
 10. **改进[测试套件](/zh-cn/wiki/test-suite/)**：根据结果，改进[测试套件](/zh-cn/wiki/test-suite/)以获得更好的覆盖范围、效率或[可维护性](/zh-cn/wiki/maintainability/)。
 11. **更新文档**：反映对相关文档中的 [测试套件](/zh-cn/wiki/test-suite/) 所做的任何更改。
-12. **计划后续步骤**：确定是否需要额外的测试周期或者软件是否已为下一阶段做好准备。
 
 #### 测试套件的结果如何用于改进软件产品？
 
-[测试套件](/zh-cn/wiki/test-suite/) 的结果为增强软件产品提供了可行的见解。通过分析**通过/失败率**、**回归**趋势和**覆盖率指标**，团队可以查明代码库中需要关注的区域。 **失败的测试**突出显示缺陷和缺乏稳健性的区域，提示立即**[bug](/zh-cn/wiki/bug/)修复**并通知**代码审查**。
-  测试结果中的**性能趋势**可以表明需要优化，而**[片状测试](/zh-cn/wiki/flaky-test/)**可能表明不稳定的功能或[测试环境](/zh-cn/wiki/test-environment/)，从而指导测试可靠性的改进。 **覆盖率报告**确保新代码符合质量标准，并且测试随着产品的发展而更新。
+[测试套件](/zh-cn/wiki/test-suite/) 的结果为增强软件产品提供了可行的见解。通过分析**通过/失败率**、**回归**趋势和**覆盖率指标**，团队可以查明代码库中需要关注的区域。 **失败的测试**突出显示缺陷和缺乏稳健性的区域，提示立即 **[bug](/zh-cn/wiki/bug/)修复**并通知**代码审查**。
+  测试结果中的**性能趋势**可以表明需要优化，而 **[片状测试](/zh-cn/wiki/flaky-test/)** 可能表明不稳定的功能或[测试环境](/zh-cn/wiki/test-environment/)，从而指导测试可靠性的改进。 **覆盖率报告**确保新代码符合质量标准，并且测试随着产品的发展而更新。
   结合**持续集成**（CI）实践可以实现实时反馈，其中测试结果直接影响开发工作流程。自动**警报**和**仪表板**让团队随时了解情况，培养质量和责任文化。
   为了有效地利用测试结果，请将它们与**问题跟踪系统**集成以简化[缺陷管理](/zh-cn/wiki/defect-management/)。使用**历史数据**来评估随时间变化的影响，指导维护和开发中的战略决策。
   最终，测试结果不仅仅是一个检查点，而且是软件改进的**持续反馈机制**，通过明智的决策和主动的问题解决来推动质量增强的循环。
@@ -337,7 +323,7 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 
 创建[测试套件](/zh-cn/wiki/test-suite/) 的最佳实践包括：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险、使用频率和功能重要性，以确保首先覆盖高价值区域。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于风险、使用频率和功能重要性，以确保首先覆盖高价值区域。
 
 - **分组相关测试**以增强可读性和可维护性。逻辑分组可以基于功能、用户故事或模块。
 
@@ -351,7 +337,7 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 
 - **可重用性设计**通过创建具有可在多个测试用例中重用的共享步骤或功能的模块化测试。
 
-- **包括正面和负面[测试用例](/zh-cn/wiki/test-case/)**验证系统在预期和意外情况下是否正确处理输入。
+- **包括正面和负面[测试用例](/zh-cn/wiki/test-case/)** 验证系统在预期和意外情况下是否正确处理输入。
 
 - **自动化最稳定和最不稳定的功能**以最大限度地减少维护费用。
 
@@ -365,54 +351,61 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
 
 #### 如何优化测试套件以提高效率？
 
-要优化 **[测试套件](/zh-cn/wiki/test-suite/)** 的效率，请考虑以下策略：
+要优化 **[测试套件](/zh-cn/wiki/test-suite/)** 的效率，可以采用以下策略：
 
-- **确定测试优先级**：按[priority](/zh-cn/wiki/priority/) 安排测试，首先运行关键测试。使用 [基于风险的测试](/zh-cn/wiki/risk-based-testing/) 重点关注影响最大的领域。
-- **并行执行**：跨不同环境和机器同时运行测试以减少执行时间。
+- **确定测试优先级**：按优先级安排测试，先运行关键测试，并使用基于风险的测试聚焦高影响领域。
+- **并行执行**：在不同环境和机器上同时运行测试，以缩短执行时间。
 
   ```javascript
-  // Example: Running tests in parallel with a testing framework
+  // 使用测试框架并行运行测试的示例
   describe.parallel('My Test Suite', () => {
     test('Test 1', async () => { /* ... */ });
     test('Test 2', async () => { /* ... */ });
   });
   ```
+- **测试选择**：使用智能选择或影响分析，只运行受近期代码变更影响的测试。
+- **测试数据管理**：通过数据池和缓存减少数据搭建与清理所需的时间。
+- **异步操作**：尽可能使用非阻塞操作，减少测试执行期间的等待。
+- **优化搭建和清理**：保持环境搭建与拆卸流程精简。
+- **代码质量**：保持测试代码清晰、结构良好且没有冗余。
+- **持续集成**：将测试套件接入 CI/CD 管道，及早发现问题并缩短反馈周期。
+- **监控和分析**：定期分析测试结果，识别不稳定测试和性能瓶颈。
+- **定期维护**：移除过时测试，持续审查和重构测试套件。
 
-- **测试选择**：实施智能测试选择或测试 [影响分析](/zh-cn/wiki/impact-analysis/) 以仅运行受最近代码更改影响的测试。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：使用数据池和数据缓存策略来最大限度地减少数据[环境搭建](/zh-cn/wiki/setup/) 和拆卸时间。
-- **异步操作**：如果可能，请使用非阻塞操作以避免 [测试执行](/zh-cn/wiki/test-execution/) 期间的空闲时间。
-- **优化[环境搭建](/zh-cn/wiki/setup/) 和拆卸**：保持[环境搭建](/zh-cn/wiki/setup/) 和拆卸操作精简，以防止不必要的延迟。
-- **代码质量**：确保测试代码干净、结构良好且无冗余，以促进更快的执行和更轻松的维护。
-- **持续集成**：将 [测试套件](/zh-cn/wiki/test-suite/) 集成到 CI/CD 管道中，以便尽早发现问题并减少反馈时间。
-- **监控和分析**：定期分析[测试套件](/zh-cn/wiki/test-suite/) 以识别并消除性能瓶颈。
-- **定期维护**：定期审查和重构[测试套件](/zh-cn/wiki/test-suite/)以删除过时的测试并确保相关性和效率。 通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以显着提高[测试套件](/zh-cn/wiki/test-suite/) 的效率，从而实现更快的反馈周期和更可靠的软件交付。
+应用这些策略可以提高测试套件的效率，加快反馈并提升软件交付的可靠性。
 
-  #### 创建测试套件时要避免哪些常见错误？
+#### 创建测试套件时要避免哪些常见错误？
 
-  避免**冗余**至关重要；重复的测试浪费资源，并可能导致对覆盖范围的错误信心。确保每个[测试用例](/zh-cn/wiki/test-case/)都有**独特的目的**并避免与其他测试重叠。
-    **过于复杂**测试是一个常见的陷阱。保持测试**简单**并**集中**于一项功能，以方便维护和理解。由于与[软件质量](/zh-cn/wiki/software-quality/)无关的原因，复杂的测试会增加失败的风险。
-    忽视 **[负面测试](/zh-cn/wiki/negative-testing/)** 可能会导致潜在问题未被发现。包括确保系统正常处理不正确的输入或意外的用户行为的测试。
-    **硬编码**测试中的数据可能会导致脆弱的测试，当数据更改时测试会失败。使用**数据驱动**方法将测试逻辑与数据分离，从而增强灵活性和可重用性。
-    未能对测试进行**优先级排序可能会导致重要功能的测试不足。根据应用程序的风险和业务影响确定测试的优先级。
-    忽略 **[片状测试](/zh-cn/wiki/flaky-test/)**（间歇性地通过和失败）可能会削弱对 [测试套件](/zh-cn/wiki/test-suite/) 的信任。及时解决不稳定问题，以保持对测试结果的信心。
-    **测试后不清理**会导致污染状态，影响后续测试。实施适当的拆卸程序，以确保每个测试在干净的环境中运行。
-    最后，忽视**[测试套件](/zh-cn/wiki/test-suite/) 可扩展性**可能会导致性能瓶颈。设计套件以适应测试数量和被测应用程序复杂性方面的增长。
+避免**冗余**至关重要；重复测试会浪费资源，还可能让人误以为覆盖充分。确保每个[测试用例](/zh-cn/wiki/test-case/)都有独特目的，并避免与其他测试重叠。
 
-  #### 如何使测试套件更易于维护？
+测试过于复杂也是常见陷阱。让测试保持**简单**并聚焦单一功能，以便维护和理解。复杂测试可能因与[软件质量](/zh-cn/wiki/software-quality/)无关的原因失败。
 
-  要增强[测试套件](/zh-cn/wiki/test-suite/) 的[可维护性](/zh-cn/wiki/maintainability/)，请考虑以下做法：
+忽略 **[负向测试](/zh-cn/wiki/negative-testing/)** 可能导致潜在问题未被发现。应验证系统能否妥善处理错误输入和意外用户行为。
 
-  - **模块化测试**：将测试分解为更小的、可重用的模块或功能。这提高了可重用性并使更新更容易。
+在测试中**硬编码数据**会使测试变得脆弱，数据变更时容易失败。采用**数据驱动**方式将测试逻辑与数据分离，提升灵活性和复用性。
 
-  ```
+不对测试进行**优先级排序**可能导致重要功能测试不足。应根据应用风险和业务影响确定优先级。
+
+忽略 **[不稳定测试](/zh-cn/wiki/flaky-test/)** 会削弱团队对测试套件的信任。应及时处理不稳定问题，维持对测试结果的信心。
+
+测试后不清理会污染状态并影响后续测试。应实施适当的清理步骤，让每项测试都在干净环境中运行。
+
+最后，忽略测试套件的**可扩展性**可能造成性能瓶颈。设计套件时应考虑测试数量增长和被测应用复杂度增加。
+
+#### 如何使测试套件更易于维护？
+
+要提升[测试套件](/zh-cn/wiki/test-suite/)的[可维护性](/zh-cn/wiki/maintainability/)，可以采用以下做法：
+
+- **模块化测试**：将测试拆分为较小、可复用的模块或函数，方便复用和更新。
+
+  ```javascript
   function login(username, password) {
-    // Code to perform login
+    // 在此执行登录操作
   }
   ```
+- **使用[页面对象模型](/zh-cn/wiki/page-object-model/)（POM）**：在页面对象中封装 UI 结构和行为，减少重复，并简化 UI 变更后的维护。
 
-  - **使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：将UI结构和行为封装在页面对象中。当 UI 更改时，这可以减少重复并简化维护。
-
-  ```
+  ```javascript
   class LoginPage {
     constructor() {
       this.usernameField = '#username';
@@ -420,17 +413,19 @@ Each component plays a crucial role in ensuring the **Test Suite** is comprehens
       this.submitButton = '#submit';
     }
     login(username, password) {
-      // Code to input username, password and click submit
+      // 在此输入用户名和密码并点击提交
     }
   }
-
   ```
-- **实施数据驱动的测试**：从脚本外部化[测试数据](/zh-cn/wiki/test-data/)。使用 CSV、JSON 或 [数据库](/zh-cn/wiki/database/) 等数据源轻松更新 [测试数据](/zh-cn/wiki/test-data/)，而无需更改测试代码。
-- **采用版本控制**：使用 Git 等工具来跟踪更改、促进协作并在必要时恢复到以前的状态。
-- **定期重构测试**：重构测试以改进结构、消除冗余并保持代码库干净。
-- **记录代码和决策**：注释代码并记录为什么采取某些方法来帮助将来的理解。
-- **自动化[测试套件](/zh-cn/wiki/test-suite/)执行**：与CI/CD管道集成以实现自动[测试执行](/zh-cn/wiki/test-execution/)，确保测试保持相关性并持续验证。
-- **监控测试结果并采取行动**：使用仪表板和报告工具来监控一段时间内的测试结果并及时解决不稳定或其他问题。 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保他们的[测试套件](/zh-cn/wiki/test-suite/) 在整个软件生命周期中保持稳健、适应性强且易于管理。
+- **采用数据驱动测试**：将[测试数据](/zh-cn/wiki/test-data/)从脚本中分离，使用 CSV、JSON 或[数据库](/zh-cn/wiki/database/)等数据源更新数据，而无需修改测试代码。
+- **使用版本控制**：使用 Git 跟踪变更、协作，并在需要时恢复到先前版本。
+- **定期重构测试**：改善结构、消除冗余并保持代码库整洁。
+- **记录代码和决策**：为代码添加注释，记录采用特定方法的原因。
+- **自动执行测试套件**：接入 CI/CD 管道，持续验证测试的相关性和结果。
+- **监控并处理测试结果**：借助仪表板和报告跟踪结果，及时处理不稳定测试或其他问题。
+
+遵循这些实践可以让测试套件在软件生命周期内保持稳健、灵活且易于管理。
+
 #### 管理大型或复杂测试套件有哪些策略？
 
 要有效管理大型或复杂的[测试套件](/zh-cn/wiki/test-suite/)，请考虑以下策略：

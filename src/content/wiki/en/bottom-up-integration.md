@@ -290,12 +290,6 @@ Bottom-up integration testing starts by testing lower-level modules first, then 
   - **End-to-end tests**: Once the system is fully integrated from the bottom up, conduct end-to-end tests to validate the complete system functionality.
   By following these strategies, you can ensure that each component is robust on its own and behaves correctly when integrated, leading to a reliable and maintainable system.
 
-  - **Start with unit tests** : Write comprehensive unit tests for the lowest-level modules. Use a unit testing framework appropriate for the language and environment you're working in.
-  - **Mock dependencies** : Since higher-level modules are not integrated yet, use
-    **mocks**
-    or
-    **stubs**
-    to simulate the behavior of dependent modules.
 
 ### Advanced Concepts
 
@@ -378,8 +372,3 @@ Bottom-up integration testing starts by testing lower-level modules first, then 
 
   - **Strengthened foundation**
     for the application, leading to fewer system-wide issues.
-
-  - **Early detection**
-    of defects at the unit level.
-
-  - **Incremental [test coverage](/en/wiki/test-coverage/)**

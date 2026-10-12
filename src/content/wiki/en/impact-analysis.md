@@ -293,8 +293,6 @@ Impact Analysis, in the context of software testing, refers to the process of id
     by ensuring that the most significant and probable impacts are tested first, which helps in early detection of critical issues.
   By integrating impact analysis into the test prioritization process, [test automation](/en/wiki/test-automation/) engineers can create a more efficient and effective testing strategy that aligns with the current state of the software and the changes that have been made. This approach ensures that the most relevant and potentially affected areas are tested, which is crucial for maintaining [software quality](/en/wiki/software-quality/) and reliability in a fast-paced development environment.
 
-  - **Focus testing efforts**
-
 #### What is the role of impact analysis in continuous integration and continuous deployment?
 
   In **Continuous Integration (CI)** and **Continuous Deployment (CD)**, impact analysis plays a crucial role in identifying the potential consequences of new code changes on the existing system. It helps in determining which parts of the system may be affected by the proposed changes, ensuring that the CI/CD pipeline runs efficiently.

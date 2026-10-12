@@ -260,7 +260,6 @@ Sanity testing, a subset of regression testing, ensures that code modifications 
      ```
   Ensure that the automated sanity tests are **self-contained** and **independent** to avoid cascading failures. Regularly **review and refine** the suite to discard obsolete tests and add new ones for recent features. By automating sanity testing, you can achieve faster feedback loops and more efficient use of testing resources.
 
-  1. **Identify critical paths**
 #### What are some best practices for effective sanity testing?
 
   To ensure effective sanity testing, follow these best practices:
@@ -296,8 +295,6 @@ Sanity testing, a subset of regression testing, ensures that code modifications 
     your sanity test suite regularly to reflect changes in the application and to remove obsolete or redundant tests.
   By adhering to these practices, you can maximize the efficiency and effectiveness of your sanity testing efforts, ensuring that the software is stable and ready for further testing or release.
 
-  - **Prioritize critical paths**
-
 #### Can sanity tests be reused or are they typically unique for each software version?
 
   Sanity tests can often be **reused** across different software versions, especially when the changes between versions are incremental and do not significantly affect the areas of functionality that the sanity tests cover. These tests are designed to quickly evaluate whether the core functionalities are working as expected after minor changes or [bug](/en/wiki/bug/) fixes.
@@ -327,7 +324,7 @@ Sanity testing, a subset of regression testing, ensures that code modifications 
     - Payment gateway integration
     - New user registration
   - **Failures**:
-    - Payment gateway integration: Timeout error when processing payments. Steps to reproduce: [Link to test case]. Screenshot: ![Error Screenshot](url).
+    - Payment gateway integration: Timeout error when processing payments. Steps to reproduce: [Link to test case]. Screenshot: not attached.
   - **Environment**: Windows 10, Software v2.3.1, Test Environment B
   - **Test Data Used**: Test Credit Card #1234
   - **Impact**: Payment processing critical for release. Failure blocks release.

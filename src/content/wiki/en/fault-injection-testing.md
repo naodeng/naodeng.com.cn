@@ -88,7 +88,6 @@ Introducing faults deliberately to test the system's robustness.
   - **Insights into System Behavior** : It provides a deeper understanding of how the system behaves under stress, which can inform future development and testing efforts.
   By integrating Fault Injection Testing into the testing process, [test automation](/en/wiki/test-automation/) engineers can ensure that software systems are not only functionally correct but also robust and dependable in the face of real-world challenges.
 
-
 #### How does Fault Injection Testing improve the quality of software?
 
   Fault Injection Testing (FIT) enhances [software quality](/en/wiki/software-quality/) by **proactively identifying potential weaknesses** before they manifest in a production environment. By simulating faults, FIT allows engineers to verify the **robustness** and **error-handling capabilities** of a system under adverse conditions. This approach ensures that the software can gracefully handle unexpected scenarios, leading to the development of more **resilient** and **reliable** applications.
@@ -113,7 +112,6 @@ Introducing faults deliberately to test the system's robustness.
   - **Electrical Fault Injection**: Applies to hardware testing, where electrical signals are manipulated to induce hardware faults and test software's response to hardware malfunctions.
   Each type targets specific aspects of a system, allowing testers to thoroughly evaluate fault tolerance and error handling capabilities.
 
-
 #### What is the difference between compile-time and runtime Fault Injection Testing?
 
   Compile-time fault injection involves introducing faults into the system at the **source code** or **binary level** before the application is run. This method requires modifying the codebase or binary to insert potential defects that can mimic the behavior of real faults. It's typically used to validate the code's ability to handle errors that could be introduced during compilation or due to faulty libraries or dependencies.
@@ -126,13 +124,6 @@ Introducing faults deliberately to test the system's robustness.
   - **Runtime fault injection**
     is about inducing faults during the execution of the application.
   Both methods are crucial for uncovering different classes of vulnerabilities and ensuring that the software can gracefully handle errors, whether they are introduced during the build process or occur dynamically during its lifecycle.
-
-  - **Compile-time fault injection**
-    is about embedding faults before execution.
-
-  - **Runtime fault injection**
-    is about inducing faults during the execution of the application.
-
 #### What is the difference between hardware and software Fault Injection Testing?
 
   Hardware Fault Injection Testing involves physically manipulating hardware components to induce faults, such as cutting power supply, introducing electromagnetic interference, or physically altering circuitry. This approach tests the system's resilience to hardware failures and its ability to handle unexpected hardware-related errors.
@@ -148,7 +139,6 @@ Introducing faults deliberately to test the system's robustness.
     ; easier to automate and can be integrated into the CI/CD pipeline.
   While hardware fault injection is essential for testing embedded systems and critical hardware-dependent applications, software fault injection is more common in day-to-day software development, allowing for early detection of issues and improving software robustness. Both methods are complementary and, when used together, provide a comprehensive assessment of a system's fault tolerance capabilities.
 
-
 #### What techniques are commonly used in Fault Injection Testing?
 
   Common techniques in **Fault Injection Testing** include:
@@ -163,7 +153,6 @@ Introducing faults deliberately to test the system's robustness.
   - **State Manipulation**: Altering the state of the application or its environment to create conditions that can lead to failures.
   - **Dependency Failure Simulation**: Mimicking failures in dependent services or components to ensure the main application handles these gracefully.
   These techniques help uncover potential issues that might not be found through conventional testing methods, ensuring that the software can handle unexpected scenarios and maintain functionality under adverse conditions.
-
 
 ### Implementation and Tools
 
@@ -215,27 +204,18 @@ Introducing faults deliberately to test the system's robustness.
   - **FInject** : A Linux system call fault injection tool.
   These tools enable engineers to simulate a range of failure scenarios, from server crashes and network delays to application-level faults. They can be integrated into CI/CD pipelines for [automated testing](/en/wiki/automated-testing/), ensuring that fault tolerance mechanisms are continuously validated.
 
-
 #### How can Fault Injection Testing be automated?
 
-Automating fault injection involves scripting failures and checking that the system handles them safely:
+Automate fault-injection tests with explicit limits and recovery expectations:
 
-1. Identify test cases based on system criticality and likely failure points.
-2. Select a fault-injection tool that supports the target environment.
-3. Write a script that triggers a controlled fault. For example:
-
-```python
-import requests
-
-def trigger_fault():
-    url = "http://chaosmonkey-service/fault"
-    payload = {"type": "latency", "duration": "5m", "target": "service-a"}
-    response = requests.post(url, json=payload, timeout=10)
-    return response.status_code
-```
-
-4. Add fault-injection tests to the CI/CD test schedule.
-5. Monitor the system response and log enough data to analyze the result.
+1. Identify critical failure points and define the system behavior expected when each fault occurs.
+2. Choose a tool that supports the target system and the fault types being tested.
+3. Write scripts that trigger faults through the tool's supported API or command-line interface.
+4. Run the tests in a controlled environment. Limit the target, duration, and blast radius, and define how to stop or recover the experiment.
+5. Add suitable scenarios to a scheduled or gated CI/CD stage only when the environment is isolated and safe for automated runs.
+6. Capture system metrics, logs, and recovery time during each experiment.
+7. Compare the results with the expected behavior, then report failures and recurring resilience gaps.
+8. Review scenarios as the system changes and remove experiments that are no longer appropriate.
 
 #### What are the steps to perform Fault Injection Testing using a specific tool?
 
@@ -263,7 +243,6 @@ def trigger_fault():
   10. **Document your findings** and any code or configuration changes made in response to the tests.
   Remember to clean up the environment and remove any fault injection configurations after testing to prevent them from affecting subsequent tests or production systems.
 
-
 ### Challenges and Solutions
 
 #### What are the common challenges faced during Fault Injection Testing?
@@ -281,7 +260,6 @@ def trigger_fault():
   - **Balancing realism and safety** : Injecting faults that are realistic while ensuring that the system is not exposed to unnecessary risk is a delicate balance.
   - **Integration with CI/CD** : Automating Fault Injection Testing within continuous integration and deployment pipelines can be complex.
   Addressing these challenges often involves careful planning, expert knowledge, and the use of sophisticated tools and techniques.
-
 
 #### How to overcome the challenges in Fault Injection Testing?
 
@@ -301,7 +279,6 @@ def trigger_fault():
   12. **Learn from Failures**: Analyze failures to improve both the system under test and the testing process itself.
   By addressing these areas, you can mitigate the challenges associated with fault injection testing and enhance the resilience of your software.
 
-
 #### What are the best practices to follow while performing Fault Injection Testing?
 
   Best practices for Fault Injection Testing:
@@ -318,7 +295,6 @@ def trigger_fault():
   - **Collaborate with developers**: Work closely with the development team to understand the system architecture and to incorporate feedback from fault injection testing into the development process.
   - **Stay ethical**: If testing third-party components or services, ensure compliance with legal and ethical standards to avoid unauthorized tampering or causing harm.
   By adhering to these practices, you can enhance the reliability and robustness of your software through effective fault injection testing.
-
 
 #### How to ensure the effectiveness of Fault Injection Testing?
 

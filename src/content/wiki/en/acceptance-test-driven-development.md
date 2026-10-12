@@ -95,7 +95,6 @@ See also:
   - **Streamlined development** : Clear acceptance criteria guide development efforts, preventing feature creep and over-engineering.
   Implementing ATDD can lead to a more efficient, collaborative, and quality-focused development lifecycle, ultimately delivering software that better satisfies user needs and withstands the test of time.
 
-
 ### How does ATDD contribute to the quality of a software product?
 
   ATDD enhances [software quality](/en/wiki/software-quality/) by ensuring that **[functional requirements](/en/wiki/functional-requirements/)** are precisely met and that the product behaves as the stakeholders expect. By focusing on customer requirements from the outset, ATDD promotes the creation of **clear and executable specifications**. These specifications guide development and testing, reducing the likelihood of defects due to misunderstandings or incomplete requirements.
@@ -189,7 +188,6 @@ See also:
   - **Version Control for Test Artifacts**: Storing acceptance tests in version control systems alongside the codebase to maintain synchronization between [test cases](/en/wiki/test-case/) and application code.
   These techniques help in defining clear acceptance criteria, fostering collaboration among team members, and ensuring that the software meets the business requirements before it is considered complete.
 
-
 ### How is ATDD integrated into the software development lifecycle?
 
   ATDD is integrated into the software development lifecycle (SDLC) by aligning development activities with specified acceptance criteria from the outset. In the **initial phase**, stakeholders collaborate to define and understand the requirements, which are then translated into acceptance tests. These tests represent the **behavior** the software must exhibit to be considered complete.
@@ -221,7 +219,6 @@ See also:
   - **JBehave** : A framework for behavior-driven development (BDD) in Java, it uses stories written in natural language to drive development.
   - **Serenity [BDD](/en/wiki/bdd/)** : Enhances other BDD tools like Cucumber and JBehave by providing advanced reporting and living documentation features.
   These tools support the ATDD process by enabling the definition of acceptance criteria in a language that is understandable by all stakeholders. They facilitate the automation of acceptance tests and help ensure that software features meet the predefined criteria before they are considered complete. [Test automation](/en/wiki/test-automation/) engineers use these tools to write, manage, and execute acceptance tests, often integrating them into continuous integration pipelines for continuous feedback. Proficiency in programming, understanding of the application domain, and familiarity with the chosen tool's syntax and best practices are essential to use these tools effectively.
-
 
 ### How do these tools support the ATDD process?
 
@@ -266,7 +263,6 @@ See also:
     ```
 
   - **Performance and [Security Testing](/en/wiki/security-testing/)** : Awareness of performance bottlenecks and security vulnerabilities to incorporate relevant tests into the automation suite.
-  - **Performance and [Security Testing](/en/wiki/security-testing/)** : Awareness of performance bottlenecks and security vulnerabilities to incorporate relevant tests into the automation suite.
 
 ### What is the role of automation in ATDD?
 
@@ -300,7 +296,6 @@ See also:
   ```
   Automation in ATDD is not just about testing; it's about **building the right product** by continuously validating the software against the business needs throughout the development lifecycle.
 
-
 ### How can ATDD be implemented in agile development environments?
 
   Implementing ATDD in agile environments involves collaboration between developers, testers, and business stakeholders to define acceptance criteria before development begins. Use **user stories** to capture requirements and define **acceptance tests** that reflect the behavior expected by the stakeholders.
@@ -328,7 +323,6 @@ See also:
   - **Skillset** : Team members may need training to effectively participate in ATDD, including writing acceptance tests and automating them.
   Overcoming these challenges often involves improving communication, investing in training, refining processes, and selecting appropriate tools that align with the team's needs and the technology stack.
 
-
 ### How can these challenges be overcome?
 
   Overcoming challenges in ATDD requires a strategic approach:
@@ -345,7 +339,6 @@ See also:
   - **Metrics**: Use metrics to track progress and identify areas for improvement, but avoid metrics that incentivize the wrong behaviors.
   - **Risk Management**: Prioritize tests based on risk and business value to ensure critical features are thoroughly tested.
   By addressing these areas, teams can enhance their ATDD practices and overcome common challenges.
-
 
 ### What are some best practices for implementing ATDD?
 

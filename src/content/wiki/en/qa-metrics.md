@@ -79,14 +79,6 @@ QA metrics are tools that developers use to enhance their product quality by ref
   - Regularly reviewing and adjusting metrics.
   - Using metrics to foster collaboration rather than competition.
   - Combining quantitative data with qualitative insights for a balanced view.
-  1. Defining goals and objectives.
-  2. Selecting relevant metrics.
-  3. Collecting data during the testing process.
-  4. Analyzing the data to derive actionable insights.
-  - Ensure metrics align with business goals.
-  - Avoid relying on a single metric for a complete picture.
-  - Interpret metrics within the context of the project.
-
 #### Why are QA Metrics important in software testing?
 
   QA Metrics are crucial in [software testing](/en/wiki/software-testing/) as they provide **quantitative data** that reflects the **efficiency and effectiveness** of the testing process. They enable teams to:

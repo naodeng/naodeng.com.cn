@@ -1,6 +1,6 @@
 ---
 title: "A/B 测试 ｜ A/B Testing"
-description: "A/B 测试 (A/B Testing),也称为分割测试 (Split Testing),是一种将网页或应用程序的两个版本相互比较以确定哪个版本表现更好的方法。它涉及向用户随机展示两个变体 (A 和 B),并使用统计分析来确定哪个版本在实现预定义目标 (如提高点击率、转化率或任何其他关键绩效指标) 方面更有…"
+description: "A/B 测试 (A/B Testing),也称为分割测试 (Split Testing),是一种将网页或应用程序的两个版本相互比较以确定哪个版本表现更好的方法。"
 section: "A"
 related:
   - keyword-driven-testing
@@ -195,6 +195,15 @@ function assignGroup(user) {
 #### A/B 测试常用的工具有哪些？
 
 常见的 A/B 测试工具包括 AB Tasty、Optimizely 和 VWO。Google 将这三家列为 Google Analytics 的第三方 A/B 测试集成服务商。Google Optimize 和 Optimize 360 已于 2023 年 9 月 30 日停止提供，详见 [Google Analytics 官方说明](https://support.google.com/analytics/answer/12979939)。
+
+其他工具包括：
+
+- **Unbounce**：主要用于构建落地页，也支持 A/B 测试。
+- **Adobe Target**：提供个性化和 A/B 测试能力，常用于企业场景。
+- **Convert**：提供 A/B、多变量和分流 URL 测试，并强调隐私与合规。
+- **Kameleoon**：支持 Web 和移动应用的 A/B 测试与个性化。
+
+不同工具的功能和集成方式各异。选择时应考虑测试复杂度、流量规模、与现有工具的集成需求以及分析能力。
 
 #### 如何确定 A/B 测试的样本大小？
 

@@ -389,8 +389,6 @@ Shift-left Testing integrates testing early in the software development process.
     to keep them relevant and aligned with the evolving codebase.
   By following these practices, teams can effectively shift testing to the left, catching issues earlier and improving the overall quality of the software.
 
-  - **Embedding testing expertise**
-
 ### Shift-Left vs Shift-Right Testing
 
 #### What is the difference between shift-left and shift-right testing?
@@ -451,10 +449,6 @@ Shift-left Testing integrates testing early in the software development process.
     are critical to the business.
   In practice, a **balanced approach** that combines both shift-left and shift-right strategies often yields the best results, ensuring comprehensive coverage throughout the SDLC.
 
-  - **Early feedback**
-
-  - The primary concern is the
-
 #### What are the advantages and disadvantages of shift-left testing compared to shift-right testing?
 
   **Advantages of Shift-Left Testing:**
@@ -507,13 +501,6 @@ Shift-left Testing integrates testing early in the software development process.
   - **Delayed Feedback Loop:**
     The feedback loop is longer, potentially delaying the resolution of issues and the release of the software.
 
-  - **Early [Bug](/en/wiki/bug/) Detection:**
-
-  - **Increased Initial Effort:**
-
-  - **Real-world Exposure:**
-
-  - **Later [Bug](/en/wiki/bug/) Detection:**
 #### How can shift-left and shift-right testing be combined in a testing strategy?
 
   Combining **shift-left** and **shift-right** testing strategies creates a comprehensive approach that ensures quality throughout the software development lifecycle (SDLC). To integrate both, start by embedding testing early in the development process (shift-left) and continue testing post-release (shift-right).

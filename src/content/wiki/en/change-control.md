@@ -134,17 +134,8 @@ Change Control, in the context of software testing, refers to a formal process u
   Once submitted, the change request is reviewed by the **Change Control Board (CCB)** or a designated authority for evaluation and approval. The CCB may request additional information or clarification to assess the change's implications on the project scope, timeline, and resources.
   In the context of [test automation](/en/wiki/test-automation/), [change requests](/en/wiki/change-requests/) can lead to updates in [test scripts](/en/wiki/test-script/), [test data](/en/wiki/test-data/), and automation frameworks to accommodate the new or modified requirements. It's crucial for [test automation](/en/wiki/test-automation/) engineers to track these changes meticulously to ensure the continuity and effectiveness of automated tests.
 
-  - A clear
-    **description**
-    of the change
 
-  - The
-    **reason**
-    for the change
 
-  - The
-    **impact**
-    on the current system
 
   - The
     **urgency**
@@ -348,8 +339,6 @@ Change Control, in the context of software testing, refers to a formal process u
   ```
   This script triggers automated regression tests whenever code is pushed to the repository, helping to ensure that changes do not break existing functionality.
   By integrating automation into change control, [test automation](/en/wiki/test-automation/) engineers can reduce manual overhead, speed up the change management process, and enhance the reliability of software releases.
-
-  - **Automating the tracking**
 
 #### What are the best practices for documenting changes in a change control system?
 

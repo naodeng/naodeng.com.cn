@@ -365,9 +365,6 @@ Extreme Programming (XP) is an agile software development method. Unlike Scrum w
   - **Resistance to Change:**
     Established organizations may find it difficult to adopt XP due to its departure from traditional methods.
 
-  - **Enhanced Flexibility:**
-
-  - **Intensive Involvement:**
 #### In what type of projects is Extreme Programming most effective?
 
   Extreme Programming (XP) is most effective in **projects that require flexibility**, rapid development cycles, and where requirements are expected to change frequently. It is particularly well-suited for:
@@ -387,8 +384,6 @@ Extreme Programming (XP) is an agile software development method. Unlike Scrum w
   - **Software with a need for frequent releases**
     , allowing the team to get immediate feedback and make adjustments quickly.
   XP thrives in environments that support a **high level of communication** and where the team can work in a **co-located manner**. It is less effective for projects that have a fixed scope, where the architecture is complex and requires significant upfront design, or where the team is distributed across different locations.
-
-  - **Small to medium-sized teams**
 
 #### How to evaluate the success of an Extreme Programming project?
 

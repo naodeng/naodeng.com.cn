@@ -82,7 +82,6 @@ order: 0
   - **Automation**: Both testing methods can be automated; however, Glass Box Testing automation involves [unit testing](/en/wiki/unit-testing/) frameworks and code analysis tools, while [Black Box Testing](/en/wiki/black-box-testing/) automation utilizes functional and [UI testing](/en/wiki/ui-testing/) tools.
   In summary, Glass Box Testing is code-centric, requiring internal knowledge for thorough examination, while [Black Box Testing](/en/wiki/black-box-testing/) is user-centric, focusing on external behavior without delving into code internals.
 
-
 #### What are the advantages and disadvantages of Glass Box Testing?
 
   **Advantages of Glass Box Testing:**
@@ -100,7 +99,6 @@ order: 0
   - **Maintenance** : Test cases need frequent updates with every change in the code, leading to high maintenance.
   - **Overemphasis on Code** : May lead to neglecting the user experience and functional requirements as the focus is on the internal workings of the software.
   In summary, Glass Box Testing offers a deep dive into the code structure, enhancing code quality and security, but it can be resource-intensive and may overlook user-centric aspects of the software.
-
 
 ### Techniques and Methods
 
@@ -127,9 +125,6 @@ order: 0
   - **[Control Flow Testing](/en/wiki/control-flow-testing/)** : Examines the execution order of statements, conditions, loops, and branches to ensure the control flow is logical and error-free.
   These techniques are often combined to achieve a comprehensive testing strategy, ensuring the internal workings of the software are thoroughly validated.
 
-  - **[Data Flow Testing](/en/wiki/data-flow-testing/)** : Analyzes the flow of data and ensures variables are properly initialized before use and that the values are valid throughout the program.
-  - **[Control Flow Testing](/en/wiki/control-flow-testing/)** : Examines the execution order of statements, conditions, loops, and branches to ensure the control flow is logical and error-free.
-
 #### How is path testing conducted in Glass Box Testing?
 
   [Path testing](/en/wiki/path-testing/) in **Glass Box Testing** is a methodical approach to ensure that all possible paths through a program's control flow are executed at least once. This technique is crucial for uncovering hidden [bugs](/en/wiki/bug/) that might not be detected through higher-level testing strategies.
@@ -142,7 +137,6 @@ order: 0
   5. **Analyze results**: Examine the outcomes of each [test case](/en/wiki/test-case/) for expected behavior. Any deviation may indicate a defect in the code.
   6. **Iterate**: If new code is added or changes are made, re-evaluate the CFG and repeat the process to ensure all new paths are tested.
   By rigorously applying [path testing](/en/wiki/path-testing/), you can significantly enhance the reliability of the software by catching errors that occur in rarely used execution paths.
-
 
 #### What is the role of condition testing in Glass Box Testing?
 
@@ -188,32 +182,6 @@ order: 0
   This approach helps in detecting errors in the logic that might not be apparent through other testing methods. It's crucial for complex conditions with multiple boolean operands, where the likelihood of missing an erroneous path is higher.
   Condition testing complements other Glass Box techniques by providing a focused strategy to scrutinize the decision-making logic of the application, leading to more robust and error-free code.
 
-  - Identify all conditional statements in the source code.
-  - Create test cases that cover both the true and false outcomes of these conditions.
-  1. Set
-    `user.isAuthenticated`
-    to
-    `true`
-    and
-    `user.hasAccess`
-    to
-    `true`
-    to test the
-    `grantAccess()`
-    path.
-
-  2. Set
-    `user.isAuthenticated`
-    to
-    `false`
-    and/or
-    `user.hasAccess`
-    to
-    `false`
-    to test the
-    `denyAccess()`
-    path.
-
 #### How is loop testing performed in Glass Box Testing?
 
   Loop testing in **Glass Box Testing** focuses on validating the mechanics of loop constructs within the code. To perform loop testing, follow these steps:
@@ -228,13 +196,6 @@ order: 0
     operations.
 
   3. Create test cases that cover different aspects of the loop:
-    - **Simple Loop** : Execute the loop once (if possible).
-    - **Zero [Iterations](/en/wiki/iteration/)** : Ensure the loop can exit without running if the loop condition is not met initially.
-    - **One [Iteration](/en/wiki/iteration/)** : Confirm the loop can handle the case where it only needs to run once.
-    - **Two [Iterations](/en/wiki/iteration/)** : Check the loop's behavior with two passes, to test the increment/decrement logic.
-    - **Multiple [Iterations](/en/wiki/iteration/)** : Validate the loop with many iterations, including just below and just above any boundary conditions.
-    - **Corner Cases** : Test the loop with boundary values and any values that might cause errors, such as maximum or minimum possible values.
-    - **Loop with Nested Loops** : If the loop contains other loops, test the combinations of iterations in the main and nested loops.
     - **Simple Loop** : Execute the loop once (if possible).
     - **Zero [Iterations](/en/wiki/iteration/)** : Ensure the loop can exit without running if the loop condition is not met initially.
     - **One [Iteration](/en/wiki/iteration/)** : Confirm the loop can handle the case where it only needs to run once.
@@ -262,7 +223,6 @@ order: 0
   });
   ```
   By systematically testing loops, you can ensure their correctness under various conditions, contributing to the reliability of the software.
-
 
 ### Implementation
 
@@ -345,7 +305,6 @@ order: 0
     can be configured to run Glass Box Tests automatically as part of the build process.
   These tools are integral to automating and executing Glass Box Tests, ensuring that the internal workings of the application are thoroughly examined. They help in identifying issues at the code level, including logic errors, poor coding practices, and areas of the code that are prone to errors or are not compliant with coding standards.
 
-
 #### How can Glass Box Testing be automated?
 
   Automating Glass Box Testing, also known as [White Box Testing](/en/wiki/white-box-testing/), involves scripting tests that have an understanding of the internal workings of the application. To automate this process, follow these steps:
@@ -381,8 +340,6 @@ order: 0
     and code coverage reports to identify gaps in testing. Refine your tests to cover these areas.
   By automating Glass Box Testing, you ensure that as much of the code as possible is tested regularly, which helps in identifying [bugs](/en/wiki/bug/) early in the development cycle. Remember to maintain and update your tests as the code evolves to ensure continued effectiveness.
 
-  1. **Identify [test cases](/en/wiki/test-case/)**
-
 #### What are some best practices for Glass Box Testing?
 
   Best practices for **Glass Box Testing** include:
@@ -399,7 +356,6 @@ order: 0
   - **Integrate with CI/CD** : Incorporate Glass Box Testing into your Continuous Integration/Continuous Deployment pipeline for immediate feedback on code changes.
   - **Collaborate with developers** : Work closely with developers to understand the intent behind code changes and to ensure that tests are aligned with development goals.
   By following these practices, you can enhance the effectiveness of your Glass Box Testing efforts and contribute to the overall quality of the software product.
-
 
 ### Real-world Applications
 
@@ -448,7 +404,6 @@ order: 0
      ```
   In each case, understanding and testing the internal logic is crucial for the system's reliability and performance.
 
-
 #### How is Glass Box Testing used in Agile development?
 
   In [Agile development](/en/wiki/agile-development/), **Glass Box Testing** (also known as [White Box Testing](/en/wiki/white-box-testing/)) is integrated into the iterative process to ensure continuous feedback and improvement of the code base. Agile teams use Glass Box Testing to:
@@ -495,7 +450,6 @@ order: 0
   - **Tool Limitations** : Existing tools may not be able to handle the complexity or scale of the application effectively, leading to incomplete analysis or missed defects.
   - **Integration** : Testing individual units or modules in isolation might not reveal issues that arise when the components interact in the larger system.
   To mitigate these challenges, prioritize critical paths for testing, use [code coverage](/en/wiki/code-coverage/) tools to identify untested areas, and employ continuous integration to automate and streamline the testing process. Additionally, consider using a combination of Glass Box and [Black Box Testing](/en/wiki/black-box-testing/) to ensure both internal structures and external functionalities are thoroughly tested.
-
 
 #### How can Glass Box Testing be used to improve code quality?
 

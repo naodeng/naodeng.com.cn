@@ -278,8 +278,6 @@ Interoperability Testing is a type of software testing that evaluates the capabi
   ```
   In summary, automation tools enhance the efficiency, accuracy, and scope of Interoperability Testing, enabling engineers to focus on more complex tasks and deliver reliable software faster.
 
-  - **Automate repetitive tasks**
-
 #### What are the latest technologies impacting Interoperability Testing?
 
   The latest technologies impacting **Interoperability Testing** include:

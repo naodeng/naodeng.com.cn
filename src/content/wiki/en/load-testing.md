@@ -208,8 +208,6 @@ Load Testing evaluates how a system, software, or application behaves under mult
   ```
   Effective scripting requires **proficiency** in the specific language or tools used for load testing and an understanding of the application's **workflow** and **user interactions**.
 
-  - **Customize [test cases](/en/wiki/test-case/)**
-
 ### Process and Execution
 
 #### What are the steps involved in the load testing process?

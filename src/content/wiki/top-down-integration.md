@@ -1,6 +1,6 @@
 ---
 title: "自顶向下集成 ｜ Top-Down Integration"
-description: "自顶向下集成 (Top-Down Integration) 是一种集成测试方法，测试活动从软件模块层次结构的顶级开始，逐步向底层推进。它首先测试高层模块，使用 桩模块 (stubs) 来模拟尚未开发或集成的底层模块的行为。主要目的是早期验证主要功能，检测高层设计缺陷。适用场景包括项目具有清晰的层次结构…"
+description: "自顶向下集成 (Top-Down Integration) 是一种集成测试方法，测试活动从软件模块层次结构的顶级开始，逐步向底层推进。它首先测试高层模块，使用 桩模块 (stubs) 来模拟尚未开发或集成的底层模块的行为。主要目的是早期验证主要功能，检测高层设计缺陷。"
 section: "T"
 related:
   - incremental-testing
@@ -57,9 +57,6 @@ order: 0
 4. 随着较低层模块的开发，将相应的存根替换为实际模块。
 5. 测试集成的模块并重复该过程，直到所有模块都集成并测试完毕。 当软件项目具有清晰的自上而下的层次结构并且关键功能的早期验证很重要时，[自上而下的集成](/zh-cn/wiki/top-down-integration/) 特别有用。它可以尽早演示软件的功能，并可以促进用户或利益相关者的早期反馈。然而，它对于单独测试较低级别的组件可能不那么有效，这可能导致将这些组件中的某些缺陷的发现推迟到集成过程的后期阶段。
 
-1. 确定要测试的顶层模块。
-2. 创建 **存根**用于由顶级模块调用的较低级别模块。
-
 #### 为什么自上而下的集成在软件开发中很重要？
 
 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 在软件开发中至关重要，因为它有助于及早发现高级设计问题和接口缺陷。通过从顶层模块到较低层的集成和测试，开发人员可以在更详细的细节到位之前验证主要功能和关键路径。这种方法支持将**存根**开发为较低级别模块的占位符，使团队能够专注于核心应用程序逻辑，而无需等待所有组件完成。
@@ -95,13 +92,11 @@ order: 0
 - **[增量测试](/zh-cn/wiki/incremental-testing/)**：在集成每个新模块时对其进行测试，验证与之前集成的组件的交互。
 - **持续反馈**：监控测试结果和系统行为的机制，以提供对集成问题的即时洞察。 通过关注这些组件，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以有效地实施[自上而下的集成](/zh-cn/wiki/top-down-integration/)，确保更高级别的功能指导集成过程，并确保系统架构在开发周期的早期得到验证。
 
-- **存根**：尚未开发或集成的较低级别模块或组件的模拟实现。存根提供对函数调用的预定义响应，允许测试更高级别的模块。
-- **驱动程序模块**：控制测试环境、调用更高级别模块并提供测试数据的专用程序或脚本。驱动程序模拟与被测模块交互的系统部分。
 - **持续反馈**：监控测试结果和系统行为的机制，以提供对集成问题的即时洞察。
 
 #### 自上而下的集成如何促进整个软件开发过程？
 
-[自上而下的集成](/zh-cn/wiki/top-down-integration/) 通过促进应用程序主控制和高级功能的早期**原型演示**和**[功能测试](/zh-cn/wiki/functional-testing/)** 为**软件开发过程**做出贡献。这种方法可以**及早检测系统架构和关键路径中的缺陷**，在开发周期的早期修复这些缺陷可以更具成本效益。
+[自上而下的集成](/zh-cn/wiki/top-down-integration/) 通过促进应用程序主控制和高级功能的早期**原型演示**和 **[功能测试](/zh-cn/wiki/functional-testing/)** 为**软件开发过程**做出贡献。这种方法可以**及早检测系统架构和关键路径中的缺陷**，在开发周期的早期修复这些缺陷可以更具成本效益。
   通过自上而下的集成和测试，开发人员和测试人员可以在较低级别的组件完全开发之前专注于**用户体验和主要功能**。这有助于与利益相关者一起**验证设计决策**和**要求**，因为可以演示部分完整的系统。
   此外，[自上而下的集成](/zh-cn/wiki/top-down-integration/) 支持**增量开发**。由于使用**存根**代替较低级别的模块来测试高级模块，因此开发可以以**模块化的方式**进行，从而允许团队在系统的不同部分上并行工作。
   在 **[测试自动化](/zh-cn/wiki/test-automation/)** 的上下文中，[自上而下的集成](/zh-cn/wiki/top-down-integration/) 允许在流程的早期创建 **测试工具** 和 **模拟**，这些可以在整个开发生命周期中使用。这确保了自动化测试与应用程序代码一起开发，从而促进 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)** 方法。
@@ -111,7 +106,7 @@ order: 0
 
 #### 自上而下的集成涉及哪些步骤？
 
-**[自上而下的集成](/zh-cn/wiki/top-down-integration/)**测试涉及的步骤如下：
+**[自上而下的集成](/zh-cn/wiki/top-down-integration/)** 测试涉及的步骤如下：
 
 1. **识别顶层模块**：从主控制模块或层次结构的顶部开始，因为它协调应用程序的流程。
 2. **存根创建**：为顶层模块调用的子模块开发存根，这是临时的、简化的实现。这些存根模拟较低级别模块的行为。
@@ -119,7 +114,7 @@ order: 0
 4. **渐进集成**：从层次结构中最高级别的子模块开始，逐渐用实际的子模块替换存根。集成新模块后，重新测试系统以确保其与实际组件配合使用。
 5. **[回归测试](/zh-cn/wiki/regression-testing/)**：每次集成后执行回归测试，以确保新代码不会对现有功能产生不利影响。
 6. **迭代**：迭代地继续此过程，沿着层次结构向下移动并逐级集成模块，用实际模块替换存根，并在每个步骤进行测试。
-7. **最终测试**：集成所有模块后，进行最后一轮彻底测试以验证整个系统。 在整个过程中，使用**自动化[测试脚本](/zh-cn/wiki/test-script/)**来验证模块交互和功能，确保可重复性和效率。请记住保留每个步骤的清晰**文档**，以便可追溯和将来参考。
+7. **最终测试**：集成所有模块后，进行最后一轮彻底测试以验证整个系统。 在整个过程中，使用**自动化[测试脚本](/zh-cn/wiki/test-script/)** 来验证模块交互和功能，确保可重复性和效率。请记住保留每个步骤的清晰**文档**，以便可追溯和将来参考。
 
 #### 自顶向下集成中常用哪些技术？
 
@@ -148,21 +143,6 @@ order: 0
 - **模拟**：创建模仿真实对象行为的对象，以将测试隔离到层次结构的顶层。
 - **[测试工具](/zh-cn/wiki/test-harness/)** ：软件和测试数据的集合，配置为通过在不同条件下运行程序单元来测试程序单元。 这些技术有助于维持自上而下构建和测试软件的**受控和系统**方法，确保在开发周期的早期测试更高级别的功能。它们还有助于及早发现缺陷和集成问题，这些问题的解决比开发过程后期发现的问题更具成本效益。
 
-- **存根**：模块的临时实现。存根模拟较低级别模块的行为，直到开发出实际模块。
-
-  ```
-    function lowerLevelModuleStub() {
-      return "Expected result from lower-level module";
-    }
-  ```
-
-  ```
-    function driverForModuleToTest(module) {
-      const testData = "Input for module";
-      console.log(module(testData));
-    }
-  ```
-
 #### 自上而下的集成与自下而上的集成有何不同？
 
 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 和[自下而上的集成](/zh-cn/wiki/bottom-up-integration/) 是[软件测试](/zh-cn/wiki/software-testing/) 的两种相反的方法。
@@ -178,28 +158,25 @@ order: 0
 - **存根开发**：为较低级别的模块创建存根可能非常耗时，并且可能需要随着模块的发展进行更新。
 - **集成复杂性**：随着集成的模块越来越多，复杂性也会增加，可能会导致集成问题。
 - **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：如果没有完全开发的较低级别模块，确保顶级模块的足够测试覆盖率可能很困难。
-- **早期设计缺陷**：在集成较低级别的模块之前，高级设计问题可能并不明显。 缓解策略：
-
-- **增量存根增强**：随着模块开发一起发展存根，以保持测试相关性并减少返工。
-
-// 示例：增量增强存根函数
-  函数 moduleStub(initialData) {
-  // 初始存根实现
-  返回增强数据；
-  }
-
-- **Automated regression testing**: Implement automated tests to quickly identify integration issues as new modules are added.
-- **Mocking frameworks**: Utilize frameworks to create sophisticated mocks that can simulate lower-level module behavior more accurately.
-- **Continuous integration**: Integrate changes frequently to minimize the complexity of integrating multiple modules at once.
-- **Early prototyping**: Develop prototypes to identify high-level design flaws before full-scale integration.
-- **Collaboration tools**: Use tools that facilitate communication and collaboration between teams to address integration challenges promptly.
-By applying these strategies, test automation engineers can address the challenges of top-down integration, ensuring a smoother and more efficient integration process.
-
-- **存根开发**：为较低级别的模块创建存根可能非常耗时，并且可能需要随着模块的发展进行更新。
-- **集成复杂性**：随着集成的模块越来越多，复杂性也会增加，可能会导致集成问题。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：如果没有完全开发的底层模块，确保顶层模块有足够的测试覆盖率可能会很困难。
 - **早期设计缺陷**：在集成较低级别的模块之前，高级设计问题可能并不明显。
+
+可以采用以下策略缓解这些挑战：
+
 - **增量存根增强**：随着模块开发一起发展存根，以保持测试相关性并减少返工。
+
+  ```javascript
+  function createModuleStub(initialData = {}) {
+    return { ...initialData, status: "ready" };
+  }
+  ```
+
+- **自动化回归测试**：每加入一个模块就运行自动化测试，以便尽早发现集成问题。
+- **使用模拟框架**：借助模拟框架更准确地模拟低层模块行为。
+- **持续集成**：频繁集成变更，减少一次性整合多个模块造成的复杂度。
+- **提前制作原型**：在全面集成前开发原型，以发现高层设计缺陷。
+- **使用协作工具**：帮助团队及时沟通并共同处理集成问题。
+
+落实这些策略有助于让自上而下的集成更加顺畅、高效。
 
 ### 工具和应用程序
 
@@ -223,26 +200,31 @@ By applying these strategies, test automation engineers can address the challeng
 
 #### 自上而下的集成如何应用于持续集成/持续交付（CI/CD）环境？
 
-在**CI/CD 环境**中，可以通过从顶层模块开始逐步集成和测试系统组件来应用[自上而下的集成](/zh-cn/wiki/top-down-integration/)。这种方法符合 CI/CD 的“持续测试”理念，其中新代码提交会触发自动构建和测试。
-  要在 CI/CD 中实施 [自上而下的集成](/zh-cn/wiki/top-down-integration/)：
+在 CI/CD 环境中，[自上而下的集成](/zh-cn/wiki/top-down-integration/)从顶层模块开始，逐步集成和测试系统组件。提交新代码后，管道可以自动构建并运行集成测试。
 
-1. **定义集成顺序**：优先考虑为较低级别组件提供框架的顶级模块。
-2. **自动化存根和驱动程序**：为尚未开发的子组件创建模拟对象或存根，以便继续进行顶层测试。
-3. **配置 CI 管道** ：设置 CI 管道，以便在将更改提交到顶级模块时自动触发集成测试。
-4. **通过反馈进行迭代**：使用测试结果不断完善和进一步集成，随着更多组件准备就绪，向下移动层次结构。
+实施时可以：
 
+1. **定义集成顺序**：先集成依赖关系明确、代表主要功能的顶层模块。
+2. **自动化存根**：为尚未开发的子组件提供模拟实现。
+3. **配置 CI 管道**：在顶层模块变更后自动运行集成测试。
+4. **根据反馈逐步扩展测试**：随着更多组件就绪，用实际模块替换存根并扩展测试范围。
+
+例如，GitLab CI 可以先构建存根，再执行集成测试：
+
+```yaml
 stages:
-- build
-- test
-- deploy
+  - build
+  - test
+  - deploy
+
 top_down_integration_test:
   stage: test
   script:
-- build_stubs_for_lower_modules
-- run_integration_tests
-**持续反馈**至关重要，测试结果可为后续开发和集成工作提供信息。随着较低级别的模块完成，它们将替换存根，并且集成测试将扩展以涵盖这些新组件。
-  **并行开发**可以在处理不同模块的团队中进行，但协调对于确保 CI/CD 管道反映集成的当前状态并相应更新测试至关重要。
-  通过在 CI/CD 中应用[自上而下的集成](/zh-cn/wiki/top-down-integration/)，团队可以始终维护软件的**功能版本**，从而促进**及早发现问题**并更顺利地实现完全集成的系统。
+    - ./build-stubs-for-lower-modules.sh
+    - ./run-integration-tests.sh
+```
+
+持续反馈可以指导后续开发。随着低层模块完成，它们会替代存根，集成测试也会覆盖这些组件。
 
 #### 自上而下集成的实际示例有哪些？
 
@@ -256,12 +238,12 @@ top_down_integration_test:
 
 #### 自上而下的集成如何与其他测试方法结合使用？
 
-[自上而下的集成](/zh-cn/wiki/top-down-integration/)可以与其他测试方法有效结合，创建全面的测试策略。通过集成**[单元测试](/zh-cn/wiki/unit-testing/)**，您可以确保各个模块在以自上而下的方式进行测试之前正常工作。这种组合允许及早检测单元级别的缺陷，然后验证这些单元在整个系统架构中的集成。
+[自上而下的集成](/zh-cn/wiki/top-down-integration/)可以与其他测试方法有效结合，创建全面的测试策略。通过集成 **[单元测试](/zh-cn/wiki/unit-testing/)**，您可以确保各个模块在以自上而下的方式进行测试之前正常工作。这种组合允许及早检测单元级别的缺陷，然后验证这些单元在整个系统架构中的集成。
   在 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 之后合并 **[系统测试](/zh-cn/wiki/system-testing/)** 可确保系统满足指定的要求并整体按预期运行。此步骤至关重要，因为它在模拟生产环境中验证系统的功能、性能和安全性。
   **[验收测试](/zh-cn/wiki/acceptance-testing/)** 可以遵循，其中测试系统的可接受性。它确保系统与其他系统的集成和交互满足最终用户的要求和业务目标。
   在 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 中使用**模拟和存根**对于模拟尚未集成或开发的较低级别模块的行为至关重要。这允许测试顶层的集成，而无需等待整个系统完成。
   在**CI/CD 管道**中，[自上而下的集成](/zh-cn/wiki/top-down-integration/) 可以在合并新代码时自动运行集成测试，从而确保系统完整性的持续[验证 ](/zh-cn/wiki/verification/)。
-  最后，在集成新模块时应定期执行**[回归测试](/zh-cn/wiki/regression-testing/)**，以确保新更改不会对现有功能产生不利影响。
+  最后，在集成新模块时应定期执行 **[回归测试](/zh-cn/wiki/regression-testing/)**，以确保新更改不会对现有功能产生不利影响。
   通过将 [自上而下的集成](/zh-cn/wiki/top-down-integration/) 与这些方法相结合，您可以实现稳健、系统的测试方法，从而增强早期缺陷检测、系统可靠性和[软件质量](/zh-cn/wiki/software-quality/)。
 
 ### 高级概念
@@ -290,9 +272,6 @@ top_down_integration_test:
   }
   ```
 
-- **记录集成步骤**：保持集成过程的文档处于最新状态，以帮助进行故障排除和未来的集成。
-- **审查和调整**：定期审查整合流程并根据经验教训调整策略。
-- **从清晰的计划开始**：根据依赖性和重要性定义模块集成的顺序。
 - **记录集成步骤**：保持集成过程的文档处于最新状态，以帮助进行故障排除和未来的集成。
 - **审查和调整**：定期审查整合流程并根据经验教训调整策略。
 

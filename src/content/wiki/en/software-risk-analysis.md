@@ -165,11 +165,6 @@ Software risk analysis inspects code violations that could compromise software s
   In [test automation](/en/wiki/test-automation/), the risk matrix can guide the testing efforts by highlighting areas of the application that are more prone to failures and could cause significant damage if not tested thoroughly. It ensures that [test cases](/en/wiki/test-case/) are written and automated to cover scenarios that could lead to these high-risk issues.
   By focusing on the most critical risks, [test automation](/en/wiki/test-automation/) engineers can optimize their testing strategy, ensuring that the most significant and likely risks are mitigated, which in turn enhances the reliability and quality of the software product.
 
-  1. **Identify**
-    potential risks.
-
-  2. **Assign**
-
 #### What is the role of risk identification in software risk analysis?
 
   Risk identification in software risk analysis is the process of pinpointing potential problems that could jeopardize the success of a software project. It's a proactive step to **anticipate and document** potential risks before they manifest into actual issues during development or after deployment.
@@ -192,29 +187,12 @@ Software risk analysis inspects code violations that could compromise software s
     **aligned with business priorities**
     .
   By identifying risks early, [test automation](/en/wiki/test-automation/) engineers can create more robust and efficient [test suites](/en/wiki/test-suite/) that safeguard the software against the most critical issues.
-
-  - **Prioritizing**
-    test cases.
-
-  - **Optimizing resource allocation**
-    in test automation.
-
-  - Developing a
-    **[risk-based testing](/en/wiki/risk-based-testing/) strategy**
-    .
-
-  - Ensuring that testing efforts are
-    **aligned with business priorities**
-    .
-
 #### How is risk assessment conducted in software risk analysis?
 
   Risk assessment in software risk analysis is typically a multi-step process:
 
   1. **Identify potential risks**: This involves brainstorming sessions, expert interviews, and analysis of historical data to list possible risks that could affect the project.
   2. **Evaluate risks**: Each identified risk is evaluated based on two factors:
-    - **Probability** : The likelihood of the risk occurring.
-    - **Impact** : The potential damage or effect on the project if the risk materializes.
     - **Probability** : The likelihood of the risk occurring.
     - **Impact** : The potential damage or effect on the project if the risk materializes.
   3. **Rank risks**: Risks are then ranked by combining their probability and impact, often using a qualitative scale (e.g., High, Medium, Low) or a quantitative one (e.g., scores).

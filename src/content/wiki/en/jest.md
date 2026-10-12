@@ -78,13 +78,7 @@ See also:
   Developers appreciate Jest's **integrated coverage reports**, which are generated without additional [setup](/en/wiki/setup/), providing immediate insight into [test coverage](/en/wiki/test-coverage/). The framework's **powerful mocking library** simplifies the testing of code with complex dependencies.
   Jest's **parallel [test execution](/en/wiki/test-execution/)** optimizes performance by running tests concurrently, reducing the time required to run extensive [test suites](/en/wiki/test-suite/). Its **consistent environment** across test runs, thanks to a custom resolver and the use of JSDom for DOM [API](/en/wiki/api-testing/) emulation, ensures test reliability.
   The community around Jest is active, contributing to a rich ecosystem of **plugins** and **extensions** that enhance its functionality. Regular updates and improvements by the maintainers keep Jest at the forefront of testing technologies.
-
-  ```
-  test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
-  });
-  ```
-  The above example demonstrates Jest's straightforward syntax, making tests readable and maintainable. Jest's popularity is a testament to its ability to balance **flexibility**, **features**, and **developer experience**, making it a go-to choice for JavaScript testing.
+  These strengths and its active ecosystem balance **flexibility**, **features**, and **developer experience**, making Jest a common choice for JavaScript testing.
 
 #### How does Jest compare to other testing frameworks?
 
@@ -152,15 +146,7 @@ See also:
   ```
   This ease of [setup](/en/wiki/setup/) and sensible defaults are what make Jest a **zero-configuration** testing platform for many developers.
 
-  - Files with
-    `.js`
-    suffix in
-    `__tests__`
-    folders.
 
-  - Files with
-    `.test.js`
-    suffix.
 
   - Files with
     `.spec.js`
@@ -260,7 +246,6 @@ See also:
   ```
   Finally, familiarity with Jest's [API](/en/wiki/api-testing/) and lifecycle methods will help in structuring tests effectively.
 
-
 #### How do you set up a basic Jest testing environment?
 
   To set up a basic Jest testing environment, follow these steps:
@@ -307,7 +292,6 @@ See also:
      ```
   Jest will execute the tests and provide a summary of the results. Adjust your tests and code based on the feedback from the test runs.
 
-
 #### How do you configure Jest for a project?
 
   To configure Jest for a project, create a `jest.config.js` file at the root of your project or define a `jest` key in your `package.json`. Here's a basic example of what a `jest.config.js` file might look like:
@@ -352,7 +336,6 @@ See also:
   }
   ```
   Remember to install any additional Jest plugins or presets you need for your project. Adjust the configuration options to match the specific needs of your project, such as custom global variables, module path aliases, or different environments for testing.
-
 
 ### Writing and Running Tests
 
@@ -431,11 +414,7 @@ Run `npx jest --help` to see additional CLI options.
     - `toEqual(value)`
       checks value equality, useful for objects and arrays.
 
-    - `toBe(value)`
-      checks strict equality (===).
 
-    - `toEqual(value)`
-      checks value equality, useful for objects and arrays.
 
   - **Truthiness**:
 
@@ -466,26 +445,10 @@ Run `npx jest --help` to see additional CLI options.
     - `toBeFalsy()`
       checks that a value is falsy.
 
-    - `toBeNull()`
-      checks that a value is
-      `null`
-      .
 
-    - `toBeUndefined()`
-      checks that a value is
-      `undefined`
-      .
 
-    - `toBeDefined()`
-      checks that a value is not
-      `undefined`
-      .
 
-    - `toBeTruthy()`
-      checks that a value is truthy.
 
-    - `toBeFalsy()`
-      checks that a value is falsy.
 
   - **Numbers**:
 
@@ -506,17 +469,9 @@ Run `npx jest --help` to see additional CLI options.
     - `toBeLessThanOrEqual(number)`
       checks that a value is less than or equal to a number.
 
-    - `toBeGreaterThan(number)`
-      checks that a value is greater than a number.
 
-    - `toBeGreaterThanOrEqual(number)`
-      checks that a value is greater than or equal to a number.
 
-    - `toBeLessThan(number)`
-      checks that a value is less than a number.
 
-    - `toBeLessThanOrEqual(number)`
-      checks that a value is less than or equal to a number.
 
   - **Strings**:
 
@@ -527,8 +482,6 @@ Run `npx jest --help` to see additional CLI options.
     - `toMatch(regexpOrString)`
       checks that a string matches a regular expression or string.
 
-    - `toMatch(regexpOrString)`
-      checks that a string matches a regular expression or string.
 
   - **Arrays**:
 
@@ -539,8 +492,6 @@ Run `npx jest --help` to see additional CLI options.
     - `toContain(item)`
       checks that an array contains a specific item.
 
-    - `toContain(item)`
-      checks that an array contains a specific item.
 
   - **Exceptions**:
 
@@ -548,13 +499,8 @@ Run `npx jest --help` to see additional CLI options.
     expect(() => { throw new Error('Error!'); }).toThrow('Error!');
     ```
 
-    - `toThrow(error?
-      )`
-      checks that a function throws an error when called.
+    `toThrow(error)` checks that a function throws an error when called.
 
-    - `toThrow(error?
-      )`
-      checks that a function throws an error when called.
 
   - **Objects**:
 
@@ -562,24 +508,13 @@ Run `npx jest --help` to see additional CLI options.
     expect({ a: { b: 1 } }).toHaveProperty('a.b', 1);
     ```
 
-    - `toHaveProperty(keyPath, value?
-      )`
-      checks that an object has a property at the specified key path, optionally checking the value.
+    - `toHaveProperty(keyPath, value?)`: checks that an object has a property at the specified key path, optionally checking the value.
 
-    - `toHaveProperty(keyPath, value?
-      )`
-      checks that an object has a property at the specified key path, optionally checking the value.
   These assertions help ensure that the code behaves as expected, and they are a crucial part of writing comprehensive [test suites](/en/wiki/test-suite/) with Jest.
 
   - **Equality**:
 
-    ```
-    expect(5).toBe(5);
-    expect({ a: 1 }).toEqual({ a: 1 });
-    ```
 
-    - `toBe(value)`
-      checks strict equality (===).
 
     - `toEqual(value)`
 
@@ -707,14 +642,6 @@ Run `npx jest --help` to see additional CLI options.
     ```
   These methods allow for comprehensive testing of asynchronous operations, ensuring that tests only complete when all async actions have been accounted for.
 
-  - **Promises** : If the code returns a promise, return it from the test, and Jest will wait for it to resolve or reject.
-  - **Async/Await** : For modern async code, use
-    `async`
-    functions and
-    `await`
-    the asynchronous operation. Jest will wait for the
-    `async`
-    function to resolve before completing the test.
 
 #### How can you use Jest for snapshot testing?
 
@@ -755,8 +682,6 @@ Run `npx jest --help` to see additional CLI options.
   ```
   Remember, snapshots should be committed alongside code changes. Review snapshots during code reviews to **catch unintended changes**. Use snapshot testing judiciously, as over-reliance can lead to large snapshot files and reduced test sensitivity to meaningful changes.
 
-  1. **Write a test**
-    that renders your component or calls your function.
 
   2. Use
     `expect`

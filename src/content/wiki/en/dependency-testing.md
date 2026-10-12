@@ -296,8 +296,6 @@ Dependency Testing in software testing refers to the process of examining the in
   ```
   By automating these processes, you ensure **consistent and repeatable testing** of dependencies, which can save time and reduce errors compared to [manual testing](/en/wiki/manual-testing/). Automation also facilitates **early detection of integration issues**, allowing for quicker resolution and maintaining the stability of the software.
 
-  - **Create [test suites](/en/wiki/test-suite/)**
-
 #### What are the challenges in implementing dependency testing and how can they be overcome?
 
   Implementing dependency testing presents several challenges, such as **complex dependency chains**, **environmental differences**, and **[flaky tests](/en/wiki/flaky-test/)**. To overcome these:
@@ -487,10 +485,6 @@ Dependency Testing in software testing refers to the process of examining the in
 
   - **Summarize the outcomes** : Provide a high-level overview of the test results, highlighting any critical failures or concerns.
   - **Detail specific issues** : For each identified issue, include:
-    - The nature of the dependency failure
-    - The affected components or systems
-    - Steps to reproduce the issue
-    - Potential impact on the software
     - The nature of the dependency failure
     - The affected components or systems
     - Steps to reproduce the issue

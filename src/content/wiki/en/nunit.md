@@ -91,7 +91,6 @@ NUnit is an open-source unit testing framework for C# derived from JUnit. It fac
   - **Integration with Various IDEs and CI Tools**: Works seamlessly with popular development environments and continuous integration servers, enhancing the development workflow.
   These features collectively enable [test automation](/en/wiki/test-automation/) engineers to write, organize, and execute tests efficiently, making NUnit a versatile choice for many testing scenarios.
 
-
 #### How does NUnit compare to other testing frameworks?
 
   NUnit is a popular testing framework within the .NET ecosystem, often compared to other frameworks like **MSTest** and **xUnit**.
@@ -144,7 +143,6 @@ NUnit is an open-source unit testing framework for C# derived from JUnit. It fac
   Again, replace `3.x.x` with the specific version you want to install.
   Ensure that your project's target framework is compatible with the version of NUnit you are installing. After installation, you can start writing your tests using the NUnit framework. Remember to also install the `NUnit3TestAdapter` if you want to run tests within Visual Studio's Test Explorer.
 
-
 #### What are the system requirements for NUnit?
 
   NUnit's system requirements vary depending on the version you're using. For **NUnit 3**, the requirements are as follows:
@@ -164,7 +162,6 @@ NUnit is an open-source unit testing framework for C# derived from JUnit. It fac
   </ItemGroup>
   ```
   Replace `3.x.x` with the specific version of NUnit you wish to use, and `x.x.x` with the versions of the test SDK and test adapter that are compatible with your development environment.
-
 
 #### How do you set up NUnit for a new project?
 
@@ -203,7 +200,6 @@ NUnit is an open-source unit testing framework for C# derived from JUnit. It fac
      ```
   Ensure that your project targets a compatible framework version for NUnit. If you encounter issues, verify that the NUnit and test adapter versions are compatible with your project's target framework.
 
-
 #### What are the common issues faced during NUnit installation and how can they be resolved?
 
   Common issues during NUnit installation and their resolutions include:
@@ -234,7 +230,6 @@ NUnit is an open-source unit testing framework for C# derived from JUnit. It fac
   - **Firewall or Antivirus Interference**: Sometimes, firewall or antivirus settings can prevent NUnit from installing correctly. Temporarily disable these or add an exception for NUnit.
   - **Corrupted Installation Files**: If the installation files are corrupted, re-download the NUnit package or use a different source.
   If issues persist, consult the NUnit documentation or community forums for specific error messages or troubleshooting steps.
-
 
 ### Usage and Implementation
 
@@ -279,7 +274,6 @@ NUnit is an open-source unit testing framework for C# derived from JUnit. It fac
 
   4. **Run the test** using NUnit's [test runner](/en/wiki/test-runner/) or an integrated development environment (IDE) that supports NUnit. The [test runner](/en/wiki/test-runner/) will execute the test method and report the outcome.
   Remember to **keep tests isolated** and **independent** from each other. Each test should focus on a single behavior or scenario. Use `[SetUp]` and `[TearDown]` methods if you need to perform common [setup](/en/wiki/setup/) or cleanup tasks for each test.
-
 
 #### What are the different types of assertions in NUnit?
 
@@ -357,7 +351,6 @@ NUnit is an open-source unit testing framework for C# derived from JUnit. It fac
     Assert.That(() => { /* code */ }, Throws.TypeOf<ExceptionType>());
     ```
   These assertions help in validating the behavior of the code under test, ensuring that the software behaves as expected.
-
 
 #### How do you group tests in NUnit?
 
@@ -605,10 +598,6 @@ NUnit is an open-source unit testing framework for C# derived from JUnit. It fac
   - Share setup and cleanup code across multiple tests, reducing redundancy.
   - Apply a common context to a set of tests, which is especially useful in data-driven testing.
   **TestFixture** can also take parameters, allowing for the same set of tests to be run with different inputs, facilitating [parameterized testing](/en/wiki/parameterized-testing/). This is particularly useful when you want to test the same logic under various conditions.
-
-  - Group tests logically.
-  - Share setup and cleanup code across multiple tests, reducing redundancy.
-  - Apply a common context to a set of tests, which is especially useful in data-driven testing.
 
 #### How can you integrate NUnit with other tools like Selenium for e2e testing?
 

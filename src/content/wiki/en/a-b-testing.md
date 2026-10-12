@@ -182,7 +182,6 @@ order: 0
   1. **Adjust for practical considerations** : Consider the traffic you have available and the duration of the test. If the calculated sample size is too large, you may need to increase the MDE or decrease the power to obtain a feasible sample size.
   Remember, the larger the sample size, the more precise your results will be, but it will also take longer and cost more to obtain those results. It's about finding the right balance for your specific context.
 
-  1. **Adjust for practical considerations** : Consider the traffic you have available and the duration of the test. If the calculated sample size is too large, you may need to increase the MDE or decrease the power to obtain a feasible sample size.
 
 #### What are control and variant in A/B testing?
 

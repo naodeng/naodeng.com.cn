@@ -347,8 +347,6 @@ Mutation testing evaluates the quality of software tests. It involves creating s
   Mutation testing thus acts as a feedback mechanism, guiding engineers to **focus on areas that need more thorough testing**. This leads to a more effective and comprehensive [test suite](/en/wiki/test-suite/), which in turn increases the likelihood of catching [bugs](/en/wiki/bug/) before the software is released. It also helps in maintaining a high-quality [test suite](/en/wiki/test-suite/) over time as the codebase evolves.
   By continuously applying mutation testing, teams can ensure their [test suites](/en/wiki/test-suite/) are not just extensive, but also targeted and efficient, leading to **improved [software quality](/en/wiki/software-quality/)** and **reliability**.
 
-  - **Identify specific conditions**
-
 #### What is the role of mutation testing in test case generation?
 
   Mutation testing plays a crucial role in **[test case](/en/wiki/test-case/) generation** by providing a method to evaluate and enhance the quality of the [test cases](/en/wiki/test-case/). By introducing small changes to the code, known as **mutants**, it challenges the existing [test suite](/en/wiki/test-suite/) to detect these modifications. If a [test case](/en/wiki/test-case/) fails due to a mutant, it indicates that the [test case](/en/wiki/test-case/) is effective in catching deviations from the original code behavior.

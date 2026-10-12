@@ -92,7 +92,6 @@ An incident report chronicles observed anomalies, capturing details like summary
   - **History** : Log of all actions taken, including dates and individuals involved.
   These components ensure a comprehensive record, facilitating effective [incident management](/en/wiki/incident-management/) and contributing to continuous improvement in [software quality](/en/wiki/software-quality/).
 
-
 #### How does an incident report contribute to the overall quality of a software product?
 
   Incident reports are vital for **continuous quality improvement** in software products. They provide a **detailed account** of anomalies found during testing, which helps developers understand and **address issues** effectively. By documenting the incident's nature, impact, and steps to reproduce, these reports enable a **targeted response** to defects, ensuring that they are not only fixed but also **analyzed for root causes**.
@@ -111,9 +110,6 @@ An incident report chronicles observed anomalies, capturing details like summary
   - **Incident Report** : A document describing any event that deviates from expected behavior, not limited to software bugs.
   - **[Bug](/en/wiki/bug/) Report** : A document that specifically describes a software defect, detailing the problem within the application's code or design.
   Both types of reports are essential for maintaining and improving [software quality](/en/wiki/software-quality/), but they serve different purposes in the context of identifying and resolving issues.
-
-  - **Incident Report** : A document describing any event that deviates from expected behavior, not limited to software bugs.
-  - **[Bug](/en/wiki/bug/) Report** : A document that specifically describes a software defect, detailing the problem within the application's code or design.
 
 ### Creating an Incident Report
 
@@ -144,9 +140,6 @@ An incident report chronicles observed anomalies, capturing details like summary
   2. **Capture**
     relevant data:
 
-     - Screenshots
-     - Logs
-     - System state
      - Screenshots
      - Logs
      - System state
@@ -186,18 +179,7 @@ An incident report chronicles observed anomalies, capturing details like summary
   ```
   Ensure the report is actionable, with enough detail for the development team to understand and address the issue.
 
-  1. **Identify**
-    the incident during test execution.
 
-  2. **Capture**
-    relevant data:
-
-     - Screenshots
-     - Logs
-     - System state
-     - Screenshots
-     - Logs
-     - System state
   3. **Reproduce**
 
 #### How should an incident report be structured?
@@ -281,12 +263,6 @@ An incident report chronicles observed anomalies, capturing details like summary
     ```
   Choose a tool that integrates well with your existing workflow and provides the features necessary for effective incident tracking and communication.
 
-  - **[Jira](/en/wiki/jira/)** : A popular project management tool that includes issue tracking. It allows for detailed incident reporting and can be customized with fields specific to your project's needs.
-  - **Bugzilla** : An open-source issue tracking system that provides a straightforward platform for reporting incidents, tracking their progress, and managing their resolution.
-  - **MantisBT** : Another open-source bug tracking tool that is web-based and offers features for reporting incidents, including email notifications and customizable fields.
-  - **Microsoft Excel or Google Sheets** : For a more manual approach, spreadsheets can be used to log incidents, allowing for custom columns and data manipulation.
-  - **Trello** : A visual collaboration tool that can be adapted for incident reporting by creating cards for each incident and moving them through a workflow.
-  - **Asana** : A project management tool that can be used for tracking incidents by creating tasks, assigning them to team members, and setting due dates.
 
 #### What are some best practices for writing an incident report?
 
@@ -303,7 +279,6 @@ An incident report chronicles observed anomalies, capturing details like summary
   - **Follow-Up** : Be prepared to provide additional information or clarification as needed during the resolution process.
   - **Confidentiality** : Ensure sensitive information is handled appropriately, following your organization's security policies.
   Remember, the goal is to communicate effectively to facilitate a swift and appropriate response to the incident.
-
 
 ### Using Incident Reports
 
@@ -330,9 +305,6 @@ An incident report chronicles observed anomalies, capturing details like summary
   - **Operations Team** : If the incident has implications for deployment or ongoing operations.
   In Agile and DevOps environments, the entire cross-functional team, including **DevOps engineers** and **stakeholders**, may be involved in the incident report to foster collaboration and quick resolution.
   It's important to distribute the incident report through the appropriate **communication channels** such as email, issue tracking systems, or project management tools to ensure that it reaches all relevant parties promptly.
-
-  - **Customer Support** : To inform them of known issues that may affect users.
-  - **Operations Team** : If the incident has implications for deployment or ongoing operations.
 
 #### How can incident reports be used to improve future testing efforts?
 
@@ -372,8 +344,6 @@ An incident report chronicles observed anomalies, capturing details like summary
   ```
   Effective incident reports **build trust** and **encourage proactive engagement** from stakeholders, ensuring that everyone is aligned on the path to delivering a high-quality software product.
 
-  - **Summarize the incident**
-
 #### What is the role of an incident report in incident management?
 
   In [incident management](/en/wiki/incident-management/), an **incident report** serves as a formal record of an event that deviates from expected behavior within a software system. It plays a crucial role in:
@@ -402,8 +372,6 @@ An incident report chronicles observed anomalies, capturing details like summary
     by informing development teams about potential areas of the software that may require additional attention or redesign.
   The report typically includes details such as the incident description, steps to reproduce, expected versus [actual results](/en/wiki/actual-result/), and [severity](/en/wiki/severity/) level. This information is critical for developers to understand the context and for project managers to make informed decisions. In Agile and DevOps environments, incident reports feed into **iterative processes** and **continuous feedback loops**, helping teams to rapidly address issues and improve the software in subsequent releases. They are also reviewed during **sprint retrospectives** to refine testing strategies and prevent similar incidents in the future.
 
-  - **Tracking and documenting**
-
 ### Incident Report in Agile and DevOps
 
 #### How are incident reports handled in Agile methodologies?
@@ -428,7 +396,6 @@ An incident report chronicles observed anomalies, capturing details like summary
   7. **Documentation** : A post-mortem analysis is conducted, and findings are documented for future reference.
   8. **Feedback Loop** : Insights from the incident are fed back into the development pipeline to prevent similar issues, often resulting in new tests or monitoring checks.
   Throughout this process, **automation** plays a key role in speeding up response times and reducing human error. Continuous improvement is a core principle, with each incident serving as a learning opportunity to refine testing, monitoring, and deployment practices. Incident reports in DevOps are not just reactive measures but proactive tools for enhancing system reliability and resilience.
-
 
 #### How do incident reports fit into continuous integration and continuous deployment (CI/CD)?
 

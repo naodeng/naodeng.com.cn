@@ -1,6 +1,6 @@
 ---
 title: "测试桩/测试执行环境 ｜ Test Harness"
-description: "测试桩/测试执行环境 (Test Harness) 在软件测试中是指配置好的软件和 测试数据 (test data) 的集合，用于通过在各种条件下运行程序单元并监控其行为和输出来对其进行测试。它充当 自动化测试 (automated testing) 的受核环境…"
+description: "测试桩/测试执行环境 (Test Harness) 在软件测试中是指配置好的软件和 测试数据 (test data) 的集合，用于通过在各种条件下运行程序单元并监控其行为和输出来对其进行测试。"
 section: "T"
 related:
   - automated-testing
@@ -53,10 +53,10 @@ order: 0
 
 #### 软件测试中的测试工具是什么？
 
-[软件测试](/zh-cn/wiki/software-testing/) 中的**[测试工具](/zh-cn/wiki/test-harness/)** 是软件和[测试数据](/zh-cn/wiki/test-data/) 的集合，配置为通过在不同条件下运行程序单元并监视其行为和输出来测试程序单元。它充当[自动化测试](/zh-cn/wiki/automated-testing/) 的受控环境，在其中执行[测试用例](/zh-cn/wiki/test-case/) 并观察结果，无需手动干预。
-  测试工具通常包括**[测试执行](/zh-cn/wiki/test-execution/) 引擎**、**结果报告工具**以及**[环境搭建](/zh-cn/wiki/setup/) 和拆卸机制**，以创建用于运行和评估测试结果的综合环境。它们旨在自动化测试过程，允许以一致且可重复的方式执行大量[测试用例](/zh-cn/wiki/test-case/)。
+[软件测试](/zh-cn/wiki/software-testing/) 中的 **[测试工具](/zh-cn/wiki/test-harness/)** 是软件和[测试数据](/zh-cn/wiki/test-data/) 的集合，配置为通过在不同条件下运行程序单元并监视其行为和输出来测试程序单元。它充当[自动化测试](/zh-cn/wiki/automated-testing/) 的受控环境，在其中执行[测试用例](/zh-cn/wiki/test-case/) 并观察结果，无需手动干预。
+  测试工具通常包括 **[测试执行](/zh-cn/wiki/test-execution/) 引擎**、**结果报告工具**以及 **[环境搭建](/zh-cn/wiki/setup/) 和拆卸机制**，以创建用于运行和评估测试结果的综合环境。它们旨在自动化测试过程，允许以一致且可重复的方式执行大量[测试用例](/zh-cn/wiki/test-case/)。
   在实践中，[测试工具](/zh-cn/wiki/test-harness/) 可能涉及**模拟对象**、**存根**和**驱动程序**来模拟与正在测试的单元交互的组件。这种隔离有助于识别与测试对象直接相关的问题。 [测试工具](/zh-cn/wiki/test-harness/) 还捕获并记录[测试执行](/zh-cn/wiki/test-execution/) 详细信息，这对于调试和提高软件质量至关重要。
-  为了实现[测试工具](/zh-cn/wiki/test-harness/)，工程师通常编写**[测试脚本](/zh-cn/wiki/test-script/)**或**使用测试框架**，该框架可以处理[测试用例](/zh-cn/wiki/test-case/)、[测试环境](/zh-cn/wiki/test-environment/)的[环境搭建](/zh-cn/wiki/setup/)的编排，以及预期与[实际结果](/zh-cn/wiki/actual-result/)的比较。 [测试工具](/zh-cn/wiki/test-harness/) 提供的自动化对于持续集成和交付实践至关重要，因为它可以通过代码库中引入的每个更改来快速反馈系统的运行状况。
+  为了实现[测试工具](/zh-cn/wiki/test-harness/)，工程师通常编写 **[测试脚本](/zh-cn/wiki/test-script/)** 或**使用测试框架**，该框架可以处理[测试用例](/zh-cn/wiki/test-case/)、[测试环境](/zh-cn/wiki/test-environment/)的[环境搭建](/zh-cn/wiki/setup/)的编排，以及预期与[实际结果](/zh-cn/wiki/actual-result/)的比较。 [测试工具](/zh-cn/wiki/test-harness/) 提供的自动化对于持续集成和交付实践至关重要，因为它可以通过代码库中引入的每个更改来快速反馈系统的运行状况。
 
 #### 为什么测试工具在软件测试中很重要？
 
@@ -87,7 +87,7 @@ order: 0
 #### 测试工具如何提高软件测试的效率？
 
 **[测试工具](/zh-cn/wiki/test-harness/)** 通过自动执行[测试用例](/zh-cn/wiki/test-case/) 来简化[软件测试](/zh-cn/wiki/software-testing/)，从而显着减少人工干预并加快反馈循环。它支持并行执行测试，这可以节省大量时间，特别是对于大型 [测试套件](/zh-cn/wiki/test-suite/) 或跨各种环境和配置运行测试时。
-  通过抽象[测试执行](/zh-cn/wiki/test-execution/) 和环境[环境搭建](/zh-cn/wiki/setup/)，[测试工具](/zh-cn/wiki/test-harness/) 允许**一致的测试运行**。这种一致性对于可靠的结果至关重要，因为它可以最大限度地减少环境因素和人为错误的影响。它还允许在代码提交时自动触发测试，从而通过在开发周期的早期发现问题来进一步提高效率，从而促进**持续集成（CI）**实践。
+  通过抽象[测试执行](/zh-cn/wiki/test-execution/) 和环境[环境搭建](/zh-cn/wiki/setup/)，[测试工具](/zh-cn/wiki/test-harness/) 允许**一致的测试运行**。这种一致性对于可靠的结果至关重要，因为它可以最大限度地减少环境因素和人为错误的影响。它还允许在代码提交时自动触发测试，从而通过在开发周期的早期发现问题来进一步提高效率，从而促进**持续集成（CI）** 实践。
   此外，[测试工具](/zh-cn/wiki/test-harness/) 通常包括**记录和报告**机制，提供有关测试结果的即时且详细的反馈。此功能有助于快速识别和解决故障，从而提高软件的整体质量。
   本质上，[测试工具](/zh-cn/wiki/test-harness/) 通过以下方式提高效率：
 
@@ -101,14 +101,6 @@ order: 0
 
 - **提供快速反馈**通过日志和报告，加速问题解决。 通过利用[测试工具](/zh-cn/wiki/test-harness/)，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以专注于设计有效的测试，而不是管理[测试执行](/zh-cn/wiki/test-execution/) 的复杂性，从而实现更加简化和高效的测试流程。
 
-- **自动化重复任务** ，为更复杂的测试场景腾出时间。
-
-- **启用并行测试** ，减少运行测试套件所需的时间。
-
-- **确保一致性**在测试执行中，可以得到更可靠的结果。
-
-- **与 CI/CD 管道集成** ，促进缺陷的早期发现。
-
 - **提供快速反馈**通过日志和报告，加速问题解决。
 
 ### 类型和用途
@@ -120,15 +112,17 @@ order: 0
 - **自定义测试工具**：根据特定应用要求量身定制，通常是内部构建的。
 - **[单元测试框架](/zh-cn/wiki/unit-test-framework/)** ：专为单元测试而设计，示例包括用于 Java 的 JUnit、用于.NET 的 NUnit 和用于 Python 的单元测试。
 
-@测试
-  公共无效测试方法（）{
-  // 单元测试代码在这里
+  ```java
+  @Test
+  public void testMethod() {
+    // Add unit test assertions here.
   }
+  ```
 
-- **Web Test Harnesses**: Focus on web application testing, such as Selenium or WebDriver.
-- **Mobile Test Harnesses**: Specialized for mobile app testing, like Appium or Espresso.
-- **Performance Test Harnesses**: Used for load and stress testing; JMeter and LoadRunner are popular choices.
-- **API Test Harnesses**: Target API testing, with tools like Postman and RestAssured.
+- **Web 测试工具架**：面向 Web 应用测试，例如 Selenium 或 WebDriver。
+- **移动测试工具架**：专用于移动应用测试，例如 Appium 或 Espresso。
+- **性能测试工具架**：用于负载和压力测试，常见工具包括 JMeter 和 LoadRunner。
+- **API 测试工具架**：面向 API 测试，例如 Postman 和 REST Assured。
   ```json
   {
     "method": "GET",
@@ -197,17 +191,17 @@ order: 0
 
 - **JUnit**和 **测试NG**适用于 Java 应用程序，它提供注释和断言来创建测试用例和套件，并且可以与 Maven 和 Gradle 等构建工具集成。
 
-- **[NUnit](/zh-cn/wiki/nunit/)**用于.NET应用程序，类似于JUnit，但专为.NET框架设计，支持并行执行和参数化测试。
+- **[NUnit](/zh-cn/wiki/nunit/)** 用于.NET应用程序，类似于JUnit，但专为.NET框架设计，支持并行执行和参数化测试。
 
 - **pytest** Python 以其简单的语法和处理复杂测试场景的能力而闻名，具有丰富的插件架构。
 
 - **R规格**对于 Ruby，这是一个行为驱动开发 (BDD) 框架，允许表达测试描述。
 
-- **摩卡**和 **[Jest](/zh-cn/wiki/jest/)**对于 JavaScript，Mocha 提供灵活性，Jest 提供带有内置模拟和断言的零配置方法。
+- **摩卡**和 **[Jest](/zh-cn/wiki/jest/)** 对于 JavaScript，Mocha 提供灵活性，Jest 提供带有内置模拟和断言的零配置方法。
 
 - **谷歌测试**对于 C++ 应用程序，提供一组丰富的断言和用户定义的测试。
 
-- **[Cypress](/zh-cn/wiki/cypress/)**和 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**用于端到端 Web 应用程序测试，Cypress 提供了一种更现代的一体化解决方案，而 Selenium 则成为浏览器自动化的行业标准。
+- **[Cypress](/zh-cn/wiki/cypress/)** 和 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 用于端到端 Web 应用程序测试，Cypress 提供了一种更现代的一体化解决方案，而 Selenium 则成为浏览器自动化的行业标准。
 
 - **阿皮姆**用于移动应用程序测试，通过类似 Selenium 的 API 支持 iOS 和 Android 平台。
 
@@ -250,11 +244,11 @@ order: 0
 - **资源管理**：有效管理依赖关系和外部资源。
 - **并行执行**：支持并发测试执行以减少运行时间。
 - **灵活性**：允许不同的测试类型和环境。
-- **可扩展性**：设计能够添加新功能，而无需进行大量返工。 请记住**测试[测试工具](/zh-cn/wiki/test-harness/)**本身以确保可靠性，并随着测试需求的发展定期进行**审查和更新**。
+- **可扩展性**：设计能够添加新功能，而无需进行大量返工。 请记住**测试[测试工具](/zh-cn/wiki/test-harness/)** 本身以确保可靠性，并随着测试需求的发展定期进行**审查和更新**。
 
 #### 如何针对不同的测试场景定制测试工具？
 
-为不同的测试场景定制**[测试工具](/zh-cn/wiki/test-harness/)**需要根据[测试环境](/zh-cn/wiki/test-environment/)和被测应用程序的特定要求进行定制。以下是实现这一目标的方法：
+为不同的测试场景定制 **[测试工具](/zh-cn/wiki/test-harness/)** 需要根据[测试环境](/zh-cn/wiki/test-environment/)和被测应用程序的特定要求进行定制。以下是实现这一目标的方法：
 
 - **参数化**：使用配置文件或环境变量来设置可以轻松更改的参数，而无需更改代码。这允许灵活地测试不同的场景。
 
@@ -308,9 +302,7 @@ order: 0
 - **资源限制**：有限的计算资源可能会阻碍[测试执行](/zh-cn/wiki/test-execution/)。优化资源使用并考虑**基于云的解决方案**以获得额外容量。
 - **专业知识**：团队可能缺乏某些领域的知识。投资**培训**和**知识共享**以积累专业知识。 克服这些挑战需要结合**良好的设计实践**、**适当的工具**和**持续的维护**工作。
 
-- **集成**：与其他工具和技术集成可能会导致兼容性问题。采用**开放标准**和**[API](/zh-cn/wiki/api/)**以获得更好的互操作性。
-- **不稳定**：测试可能会不一致地通过或失败。通过确保测试的**幂等性**并调查不稳定的根本原因（例如计时问题或外部依赖性）来解决。
-- **资源限制**：有限的计算资源可能会阻碍[测试执行](/zh-cn/wiki/test-execution/)。优化资源使用并考虑**基于云的解决方案**以获得额外容量。
+- **集成**：与其他工具和技术集成可能会导致兼容性问题。采用**开放标准**和 **[API](/zh-cn/wiki/api/)** 以获得更好的互操作性。
 - **专业知识**：团队可能缺乏某些领域的知识。投资**培训**和**知识共享**以积累专业知识。
 
 ### 工具和技术
@@ -321,19 +313,19 @@ order: 0
 
 - **JUnit**和 **测试NG**对于 Java 应用程序，提供注释和断言来创建测试用例和套件。
 
-- **[NUnit](/zh-cn/wiki/nunit/)**和 **x单位**对于.NET 框架，为.NET 生态系统提供与 JUnit 类似的功能。
+- **[NUnit](/zh-cn/wiki/nunit/)** 和 **x单位**对于.NET 框架，为.NET 生态系统提供与 JUnit 类似的功能。
 
 - **pytest** Python 以其简单的语法和处理复杂测试场景的能力而闻名。
 
 - **R规格**和 **黄瓜**对于 Ruby，其中 RSpec 用于单元测试，Cucumber 用于行为驱动开发 (BDD)。
 
-- **摩卡** , **[Jest](/zh-cn/wiki/jest/)** , 和 **[jasmine](/zh-cn/wiki/jasmine/)**对于 JavaScript，Mocha 和 Jasmine 在断言库中非常灵活，而 Jest 提供了零配置测试平台。
+- **摩卡** , **[Jest](/zh-cn/wiki/jest/)** , 和 **[jasmine](/zh-cn/wiki/jasmine/)** 对于 JavaScript，Mocha 和 Jasmine 在断言库中非常灵活，而 Jest 提供了零配置测试平台。
 
 - **谷歌测试**对于 C++ 应用程序，提供一组丰富的断言和用户定义的测试。
 
 - **Robot Framework**用于验收测试，这是关键字驱动的且易于扩展。
 
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**用于 Web 应用程序测试，可在测试工具中使用它来控制浏览器并模拟用户操作。 与构建工具和持续集成 (CI) 系统（例如 **Jenkins**、**Travis CI** 和 **CircleCI**）集成通常可以自动执行 [测试工具](/zh-cn/wiki/test-harness/) 作为开发管道的一部分。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 用于 Web 应用程序测试，可在测试工具中使用它来控制浏览器并模拟用户操作。 与构建工具和持续集成 (CI) 系统（例如 **Jenkins**、**Travis CI** 和 **CircleCI**）集成通常可以自动执行 [测试工具](/zh-cn/wiki/test-harness/) 作为开发管道的一部分。
 
   ```
   // Example of a simple test case in JUnit:
@@ -348,11 +340,11 @@ order: 0
   ```
 选择正确的工具通常取决于编程语言、应用程序类型和特定的测试需求。
 
-- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**用于 Web 应用程序测试，可在测试工具中使用它来控制浏览器并模拟用户操作。
+- **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 用于 Web 应用程序测试，可在测试工具中使用它来控制浏览器并模拟用户操作。
 
 #### 不同的测试工具如何比较？
 
-比较不同的**[测试工具](/zh-cn/wiki/test-harness/)**工具涉及评估它们的**功能**、**可用性**、**集成功能**和**对各种测试类型的支持**。 **JUnit** 和 **TestNG** 等工具对于 Java 中的 [单元测试](/zh-cn/wiki/unit-testing/) 很受欢迎，它们提供注释和断言来简化 [测试用例](/zh-cn/wiki/test-case/) 开发。 **JUnit** 更加简约，而 **TestNG** 提供了额外的功能，例如测试的分组、排序和参数化。
+比较不同的 **[测试工具](/zh-cn/wiki/test-harness/)** 工具涉及评估它们的**功能**、**可用性**、**集成功能**和**对各种测试类型的支持**。 **JUnit** 和 **TestNG** 等工具对于 Java 中的 [单元测试](/zh-cn/wiki/unit-testing/) 很受欢迎，它们提供注释和断言来简化 [测试用例](/zh-cn/wiki/test-case/) 开发。 **JUnit** 更加简约，而 **TestNG** 提供了额外的功能，例如测试的分组、排序和参数化。
   对于 UI 自动化，**[selenium](/zh-cn/wiki/selenium/)** 被广泛使用，允许 [跨浏览器测试](/zh-cn/wiki/cross-browser-testing/) 具有丰富的 [API](/zh-cn/wiki/api/) 集。它与 **WebDriverIO** 和 **Protractor** 等框架很好地集成，这些框架提供了额外的语法糖并支持 [node.js](/zh-cn/wiki/node-js/) 和 Angular 等特定技术。
   **Cucumber** 以其 [gherkin](/zh-cn/wiki/gherkin/) 语言在行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 方面脱颖而出，使非技术利益相关者能够为 [测试场景](/zh-cn/wiki/test-scenario/) 做出贡献。它可以与其他线束集成来执行这些场景。
   **PyTest** 是一个强大的 Python 工具，以其简单的语法和从简单的单元测试扩展到复杂的 [功能测试](/zh-cn/wiki/functional-testing/) 的能力而闻名。它支持夹具和插件以实现可扩展性。
@@ -394,9 +386,5 @@ order: 0
 - **插件**：许多测试工具支持扩展其功能的插件。插件可用于与版本控制系统（例如 Git）集成，以提取最新代码进行测试，或部署 [测试环境](/zh-cn/wiki/test-environment/)。
 - **中间件**：在某些情况下，中间件可以充当 [测试工具](/zh-cn/wiki/test-harness/) 和其他工具之间的桥梁，特别是当直接集成不可用时。中间件可以侦听来自[测试工具](/zh-cn/wiki/test-harness/) 的事件并触发其他工具中的操作。
 - **命令行界面 (CLI)**：使用 CLI 从构建脚本或部署管道中执行测试，允许 [测试工具](/zh-cn/wiki/test-harness/) 成为更大的自动化策略的一部分。
-- **SD​​K**：某些工具提供的软件开发套件 (SDK) 可用于编写自定义集成，使[测试工具](/zh-cn/wiki/test-harness/) 能够与专有或不太常见的系统进行交互。
+- **SDK**：某些工具提供的软件开发套件 (SDK) 可用于编写自定义集成，使[测试工具](/zh-cn/wiki/test-harness/) 能够与专有或不太常见的系统进行交互。
 - **Webhooks**：配置 Webhooks 以在 [测试工具](/zh-cn/wiki/test-harness/) 中发生某些事件（例如测试运行完成）时通知其他工具或服务。 通过与其他工具集成，[测试工具](/zh-cn/wiki/test-harness/) 可以成为综合[测试自动化](/zh-cn/wiki/test-automation/) 生态系统的核心组件，促进工具之间更好的通信、简化流程并提高整体测试效率。
-
-- **[API](/zh-cn/wiki/api/)** ：使用应用程序编程接口 (API) 将测试工具与问题跟踪器（例如 JIRA）、持续集成系统（例如 Jenkins）和测试管理软件（例如 TestRail）等工具连接起来。这允许自动结果报告和测试用例同步。
-- **SD​​K**：某些工具提供的软件开发套件 (SDK) 可用于编写自定义集成，使 [测试工具](/zh-cn/wiki/test-harness/) 能够与专有或不太常见的系统进行交互。
-- **Webhooks**：配置 Webhooks 以在 [测试工具](/zh-cn/wiki/test-harness/) 中发生某些事件（例如测试运行完成）时通知其他工具或服务。

@@ -1,6 +1,6 @@
 ---
 title: "Web 测试自动化工具 ｜ Web Test Automation Tools"
-description: "Web 测试自动化工具 是一种自动化 Web 应用程序测试过程的软件应用程序。它模拟用户与 Web 浏览器的交互，检查错误、兼容性和性能问题。这些工具通常提供录制操作、创建 测试脚本 并通过代码脚本或 GUI 界面重放它们的方法。例如…"
+description: "Web 测试自动化工具 是一种自动化 Web 应用程序测试过程的软件应用程序。它模拟用户与 Web 浏览器的交互，检查错误、兼容性和性能问题。这些工具通常提供录制操作、创建 测试脚本 并通过代码脚本或 GUI 界面重放它们的方法。"
 section: "W"
 related:
   - test-automation
@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Web 测试自动化工具 ｜ Web Test Automation Tools](#web-测试自动化工具--web-test-automation-tools)
-  - [相关术语：](#相关术语)
   - [关于 Web 测试自动化工具 (Web Test Automation Tools) 的问题？](#关于-web-测试自动化工具-web-test-automation-tools-的问题)
     - [基础与重要性](#基础与重要性)
       - [什么是 Web 测试自动化工具？](#什么是-web-测试自动化工具)
@@ -44,7 +43,7 @@ order: 0
       - [如何将 Web 测试自动化工具用于安全测试？](#如何将-web-测试自动化工具用于安全测试)
 <!-- TOC END -->
 
-## 相关术语：
+相关术语：
 
 - [质量保证 (Quality Assurance)](/zh-cn/wiki/quality-assurance/)
 - [敏捷开发 (Agile Development)](/zh-cn/wiki/agile-development/)

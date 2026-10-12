@@ -227,7 +227,6 @@ Analytical test strategies involve analyzing the test basis before executing the
     to take advantage of the strengths of each approach, ensuring comprehensive coverage.
   Remember, a robust Analytical Test Strategy is not static; it evolves with the project and requires ongoing attention and refinement.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 ### How can an Analytical Test Strategy be optimized for efficiency?
 

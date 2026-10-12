@@ -85,7 +85,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   - **Performance Benchmarking** : Establishes performance benchmarks which can be used for future reference and comparison.
   By focusing on these benefits, FAT serves as a crucial step in the delivery of high-quality software products, ensuring they are ready for the next stage, which is often Site [Acceptance Testing](/en/wiki/acceptance-testing/) (SAT) or deployment to the production environment.
 
-
 #### How does FAT contribute to the overall quality of a software product?
 
   FAT enhances [software quality](/en/wiki/software-quality/) by ensuring that the application behaves as expected in a controlled environment before deployment. By simulating real-world usage, FAT identifies discrepancies between the system's designed functionality and its actual performance. This process helps in **verifying the reliability and robustness** of the software, contributing to a more stable product release.
@@ -110,7 +109,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   9. **Final Acceptance** : Upon successful completion of all test cases and resolution of defects, the system is ready for final acceptance by the client.
   10. **Sign-off** : Obtain formal approval from the client or end-user, indicating that the system meets their requirements.
   Throughout the FAT process, communication with stakeholders is crucial to ensure transparency and that expectations are managed effectively. Additionally, leveraging automation can streamline the execution of repetitive [test cases](/en/wiki/test-case/), saving time and reducing human error.
-
 
 #### What techniques are commonly used in FAT?
 
@@ -160,7 +158,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   9. **Backup Plan**: Have a backup and recovery plan in place in case the environment experiences issues that require a rollback to a previous state.
   By following these steps, [test automation](/en/wiki/test-automation/) engineers can ensure a robust and reliable [test environment](/en/wiki/test-environment/) for conducting FAT.
 
-
 #### What is the role of test cases in FAT?
 
   [Test cases](/en/wiki/test-case/) in **Factory [Acceptance Testing](/en/wiki/acceptance-testing/) (FAT)** serve as the definitive criteria for verifying and validating that the software meets its specified requirements before it is shipped to the customer. They are the structured sequence of actions and expected outcomes that are designed to test a particular function or feature of the software.
@@ -173,7 +170,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   - **Traceability** : Test cases link back to specific requirements, ensuring that all requirements have been tested and met.
   - **Documentation** : They serve as a record of what was tested, how it was tested, and the results of those tests, which is essential for future reference and compliance.
   By meticulously crafting and executing [test cases](/en/wiki/test-case/) during FAT, [test automation](/en/wiki/test-automation/) engineers can assure stakeholders that the software is ready for deployment and use in its intended environment.
-
 
 #### How are defects identified and managed during FAT?
 
@@ -198,8 +194,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   Defect resolution during FAT is a collaborative process, requiring coordination between testers, developers, project managers, and sometimes the client. The goal is to resolve all critical and high-[priority](/en/wiki/priority/) defects before the software is shipped for on-site installation or released to the market.
   Defects that are not resolved in FAT may be deferred to a later release based on their impact and urgency, with the agreement of the stakeholders. This decision is documented and managed through a **[change control](/en/wiki/change-control/) process**.
 
-  - **Reviewing**
-    the defect to confirm its validity.
 
   - **Assigning**
 
@@ -221,7 +215,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   - **External Vendors** : If third-party solutions are integrated, vendor participation may be necessary to verify compatibility and functionality.
   - **End-Users or Client Representatives** : Provide feedback on usability and functionality, ensuring the software meets their needs.
   Each stakeholder plays a critical role in the success of FAT by providing their unique perspective and expertise, contributing to a well-rounded and thorough testing process.
-
 
 #### What are the roles and responsibilities of a test engineer during FAT?
 
@@ -257,7 +250,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   - **Providing feedback**
     on the quality of the product and any potential risks to its performance in the field.
   Throughout FAT, the test engineer must maintain a **critical eye** and a **detail-oriented approach**, balancing the need for thorough testing with the practical constraints of timelines and resources.
-
 
 #### How does the project manager contribute to FAT?
 
@@ -310,7 +302,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   - **Decision Making** : Authorizing the software for shipment or requesting further modifications based on test outcomes.
   The end-user's perspective is critical as they bring a practical understanding of the environment and conditions in which the software will operate. Their approval is often the final step before the software is considered ready for delivery and subsequent **Site [Acceptance Testing](/en/wiki/acceptance-testing/) (SAT)**.
 
-
 ### Challenges and Best Practices
 
 #### What are some common challenges encountered during FAT?
@@ -328,7 +319,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   - **Documentation**: Maintaining clear and detailed documentation throughout FAT is essential but can be time-consuming and often overlooked.
   - **Defect Resolution**: Identifying defects is one aspect; timely resolution and [retesting](/en/wiki/retesting/) can be a bottleneck if not managed efficiently.
   To address these challenges, teams often employ strategies such as early involvement of stakeholders, rigorous test planning, and continuous communication to ensure a smooth and successful FAT process.
-
 
 #### What are some best practices to overcome these challenges?
 
@@ -365,8 +355,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
     post-FAT to improve the process for subsequent projects.
   By implementing these strategies, you can enhance the effectiveness of FAT and contribute to the delivery of a high-quality software product.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How can automation be leveraged in FAT?
 
   Automation can significantly enhance the efficiency of Factory [Acceptance Testing](/en/wiki/acceptance-testing/) (FAT) by streamlining repetitive and time-consuming tasks. Automated scripts can be developed to **simulate real-world operations** and verify that the software performs as expected in the customer's environment.
@@ -393,7 +381,6 @@ Factory Acceptance Testing (FAT) confirms that newly manufactured equipment oper
   });
   ```
   Remember to validate the automated tests against the **FAT acceptance criteria** to ensure they are aligned with the client's requirements. By integrating automation into FAT, test engineers can focus on more complex scenarios and [exploratory testing](/en/wiki/exploratory-testing/), while automated tests handle the routine checks.
-
 
 #### What are some best practices for documenting the results of FAT?
 

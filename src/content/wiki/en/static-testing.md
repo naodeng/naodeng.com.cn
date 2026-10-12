@@ -337,10 +337,6 @@ Static Testing involves early-cycle assessment of software artifacts like requir
   - **Rework Percentage** : The amount of code that requires rework after static testing. Lower percentages suggest higher initial code quality.
   Regularly track these metrics to evaluate and refine your static testing process, ensuring it remains effective and aligned with project goals.
 
-  - **Defect Density** : Calculate the number of defects found per lines of code (LOC) or per module. A lower defect density after static testing indicates higher code quality.
-  - **Defect Detection Rate** : The percentage of defects found during static testing compared to the total number of defects found throughout the project lifecycle. A higher rate suggests static testing is effective in early defect identification.
-  - **Rework Percentage** : The amount of code that requires rework after static testing. Lower percentages suggest higher initial code quality.
-
 ### Best Practices
 
 #### What are the best practices for static testing?

@@ -101,7 +101,6 @@ A database is an organized collection of structured information or data, typical
   ```
   Understanding and efficiently utilizing databases is crucial for [test automation](/en/wiki/test-automation/) engineers to ensure robust and reliable [test suites](/en/wiki/test-suite/).
 
-
 #### Why are databases important in software development?
 
   Databases are crucial in software development for **storing**, **retrieving**, and **managing** data efficiently. They serve as the backbone for applications, ensuring data is accessible and consistent. In [test automation](/en/wiki/test-automation/), databases play a pivotal role in:
@@ -113,7 +112,6 @@ A database is an organized collection of structured information or data, typical
   - **[Performance Testing](/en/wiki/performance-testing/)**: Databases are often the subject of load and stress tests to ensure they can handle concurrent operations and large volumes of data, which is critical for application performance.
   - **Continuous Integration/Continuous Deployment (CI/CD)**: Automated tests, integrated with CI/CD pipelines, interact with databases to ensure code changes do not break existing functionality.
   Understanding and effectively utilizing databases within [test automation](/en/wiki/test-automation/) frameworks is essential for creating robust, reliable, and maintainable [test suites](/en/wiki/test-suite/).
-
 
 #### What are the different types of databases?
 
@@ -153,7 +151,6 @@ A database is an organized collection of structured information or data, typical
     "age": 25
   }
   ```
-
 
 #### What are the advantages and disadvantages of using a database?
 
@@ -199,16 +196,12 @@ A database is an organized collection of structured information or data, typical
   - **Graph DBMS**: Designed for data that can be represented as a graph, with nodes and edges. Neo4j and Amazon Neptune are examples.
   Each type has its own [use cases](/en/wiki/use-case/) and is chosen based on the specific requirements of the application, such as data complexity, scalability needs, and performance considerations.
 
-
 #### What are some examples of popular DBMS software?
 
   Popular DBMS software includes:
 
   - **Oracle Database** : A multi-model database management system known for its feature-rich, enterprise-focused solutions.
   - **MySQL** : An open-source relational database that's widely used for web applications and supports a large variety of programming languages.
-
-
-
 
     ```sql
     SELECT * FROM users WHERE age > 20;
@@ -224,8 +217,6 @@ A database is an organized collection of structured information or data, typical
   - **Amazon DynamoDB**: A fully managed NoSQL database service that supports key-value and document data structures, provided by Amazon Web Services (AWS).
   Each of these DBMSs offers unique features and capabilities, catering to different use cases and performance requirements in software development and test automation environments.
 
-
-
 #### What is the role of a DBMS in managing a database?
 
   A **DBMS** (Database Management System) serves as the intermediary between users and databases, providing essential functions to store, retrieve, and manage data efficiently. It ensures **data integrity** and **security**, while also enabling **concurrency control** to handle multiple users accessing the database simultaneously. DBMSs offer **backup and recovery** mechanisms to protect data against loss or corruption.
@@ -238,7 +229,6 @@ A database is an organized collection of structured information or data, typical
   DBMSs support **transaction management**, allowing [test scripts](/en/wiki/test-script/) to execute database transactions that can be committed or rolled back, ensuring tests do not leave the database in an inconsistent state.
   For example, in a [test automation](/en/wiki/test-automation/) script, you might interact with a DBMS as follows:
 
-
   BEGIN TRANSACTION;
   -- Insert test data
   INSERT INTO products (name, price) VALUES ('Test Product', 9.99);
@@ -248,7 +238,6 @@ A database is an organized collection of structured information or data, typical
   ROLLBACK TRANSACTION;
 
   By leveraging a DBMS, [test automation](/en/wiki/test-automation/) can achieve more reliable, repeatable, and maintainable testing processes.
-
 
 #### What is the difference between a DBMS and a database?
 
@@ -263,7 +252,6 @@ A database is an organized collection of structured information or data, typical
     **DBMS**
     , on the other hand, is a tool to insert, update, delete, and retrieve data from a database. It ensures the data can be managed efficiently and allows for various administrative operations, including backup and recovery, security, and access control.
   Databases and DBMSs are tightly linked, yet they serve distinct purposes within the realm of data storage and management. The DBMS provides an interface between the database and its end users or other applications, ensuring that data is consistently organized and remains easily accessible.
-
 
   // Example in a software test automation context:
   // Using a DBMS to verify data integrity after a test case execution.
@@ -292,11 +280,9 @@ A database is an organized collection of structured information or data, typical
   For [test automation](/en/wiki/test-automation/) engineers, understanding [SQL](/en/wiki/sql/) is essential when tests involve verifying data within a database, ensuring data integrity, or setting up [test data](/en/wiki/test-data/). Automated tests often execute [SQL](/en/wiki/sql/) commands to prepare the database state before tests or to validate outcomes after tests are run.
   Here's an example of a simple [SQL](/en/wiki/sql/) query to retrieve data:
 
-
   SELECT * FROM users WHERE last_name = 'Smith';
 
   This query selects all records from the `users` table where the `last_name` column matches the value 'Smith'. Understanding and utilizing [SQL](/en/wiki/sql/) effectively can greatly enhance the testing process, particularly in data-driven testing scenarios.
-
 
 #### What is NoSQL and how does it differ from SQL?
 
@@ -309,7 +295,6 @@ A database is an organized collection of structured information or data, typical
   - **Query Language**: [SQL](/en/wiki/sql/) databases use the Structured Query Language ([SQL](/en/wiki/sql/)) for defining and manipulating data, which is powerful for complex queries. NoSQL databases typically use a variety of query methods that are often less standardized and may vary by system.
   **Example of NoSQL database usage**:
 
-
   // MongoDB document insertion example
   db.collection('users').insertOne({
     username: 'testuser',
@@ -318,7 +303,6 @@ A database is an organized collection of structured information or data, typical
   });
 
   In [test automation](/en/wiki/test-automation/), understanding the differences between NoSQL and [SQL](/en/wiki/sql/) is crucial when testing applications that interact with different types of databases, ensuring that tests are designed to handle the specific characteristics and behaviors of the database being used.
-
 
 #### What are some common SQL commands used in database management?
 
@@ -413,7 +397,6 @@ A database is an organized collection of structured information or data, typical
   - **Elasticsearch** : A search engine based on the Lucene library, providing a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents.
   These databases are designed to handle various data types and workloads that do not fit well into the traditional relational model. They often provide features such as horizontal scaling, flexible schema design, and the ability to handle large volumes of unstructured data.
 
-
 #### When would you use SQL over NoSQL and vice versa?
 
   Use **[SQL](/en/wiki/sql/)** databases when:
@@ -461,9 +444,6 @@ A database is an organized collection of structured information or data, typical
     and the cloud. NoSQL databases are designed to be distributed and are generally more flexible in terms of where the data is stored.
   In [test automation](/en/wiki/test-automation/), choose the database type that aligns with the application's requirements and the nature of the tests you need to perform.
 
-  - You require
-    **strong ACID compliance**
-    for transactions.
 
   - Your data is
     **structured**
@@ -487,7 +467,6 @@ A database is an organized collection of structured information or data, typical
   - **Security** : Facilitates the implementation of security measures by clearly defining access paths and data relationships.
   In [test automation](/en/wiki/test-automation/), a robust database design is crucial for managing [test data](/en/wiki/test-data/), results, and configurations, directly impacting the efficiency and reliability of testing processes.
 
-
 #### What is normalization in a database?
 
   Normalization in a database is the process of organizing data to minimize redundancy and improve data integrity. It involves decomposing tables into smaller, well-structured tables without losing information. The goal is to ensure that each table represents one entity type and that relationships between entities are properly defined.
@@ -504,8 +483,6 @@ A database is an organized collection of structured information or data, typical
   - **Saving storage space** : By eliminating redundant data.
   - **Improving query performance** : Smaller, well-indexed tables can be queried faster.
   However, over-normalization can lead to excessive table joins, which might degrade performance. Balancing normalization with practical query requirements is essential for efficient database design.
-
-
 
 #### What are the different normal forms in a database?
 
@@ -533,8 +510,6 @@ A database is an organized collection of structured information or data, typical
     Proposed for future databases, dealing with temporal data by isolating semantically related multiple values.
   Each subsequent normal form requires compliance with the previous one, and while higher normal forms reduce redundancy, they can also increase complexity and may not be necessary for all databases.
 
-  - **First Normal Form (1NF):**
-
 #### What is the purpose of normalization in a database?
 
   Normalization in databases is a process aimed at **organizing data** to reduce redundancy and improve data integrity. The primary purposes of normalization are:
@@ -545,7 +520,6 @@ A database is an organized collection of structured information or data, typical
   - **Optimize query performance** : Although highly normalized databases can sometimes require more complex queries, they can also lead to more efficient searches by narrowing down the data in a specific table, thus reducing the amount of data that needs to be sifted through.
   Normalization typically involves dividing a database into two or more tables and defining relationships between the tables. The process follows a set of rules called **normal forms** (1NF, 2NF, 3NF, etc.), each designed to address specific types of redundancy and dependency issues.
   For [test automation](/en/wiki/test-automation/) engineers, understanding normalization is crucial when designing tests that interact with relational databases, as it affects how data is retrieved and manipulated during [test execution](/en/wiki/test-execution/).
-
 
 #### What are some common challenges in database design and how can they be addressed?
 
@@ -560,7 +534,6 @@ A database is an organized collection of structured information or data, typical
   - **Maintenance**: Over time, databases require maintenance to perform optimally. Implement regular backup and recovery procedures, and use database monitoring tools to preemptively address issues.
   - **Migration**: Upgrading or moving to a new DBMS can be complex. Plan migrations carefully, test extensively, and consider using database migration tools.
   Addressing these challenges requires a combination of good design practices, appropriate use of technology, and ongoing management and monitoring. [Test automation](/en/wiki/test-automation/) engineers should be aware of these challenges to ensure that their testing strategies are robust and account for potential database issues.
-
 
 ### Database Security
 
@@ -590,7 +563,6 @@ A database is an organized collection of structured information or data, typical
   - **Man-in-the-Middle (MitM) Attacks** : Attackers intercept and alter communication between two parties to gain unauthorized access to data.
   To mitigate these threats, employ strategies such as regular patching, strict access controls, continuous monitoring, and encryption. Additionally, educating staff on security best practices is crucial.
 
-
 #### What are some best practices for ensuring database security?
 
   To ensure **database security** in [test automation](/en/wiki/test-automation/), follow these best practices:
@@ -607,7 +579,6 @@ A database is an organized collection of structured information or data, typical
   - **Regular Security Assessments**: Conduct periodic security assessments and vulnerability scans to identify and mitigate potential risks.
   - **Incident Response Plan**: Develop and maintain an incident response plan to quickly address security breaches and minimize impact.
   By integrating these practices into your [test automation](/en/wiki/test-automation/) strategy, you can help protect databases from unauthorized access, misuse, and breaches.
-
 
 #### What is SQL injection and how can it be prevented?
 
@@ -633,7 +604,6 @@ A database is an organized collection of structured information or data, typical
   - **Regular Audits:** Conduct regular code reviews and security audits to identify and rectify potential injection vulnerabilities.
   By implementing these practices, [test automation](/en/wiki/test-automation/) engineers can significantly reduce the risk of [SQL](/en/wiki/sql/) injection attacks in their applications.
 
-
 #### What is the role of encryption in database security?
 
   Encryption plays a **crucial role** in database security by transforming data into a **secure format** that can only be read by authorized parties. It uses algorithms to convert plain text into an unreadable format, known as **ciphertext**, which protects sensitive information from unauthorized access, theft, or exposure.
@@ -646,7 +616,6 @@ A database is an organized collection of structured information or data, typical
   - **Transparent Data Encryption (TDE)** : Automatically encrypts data before it is written to disk and decrypts when read by an authorized user.
   - **Column-level encryption** : Encrypts specific columns within a table, allowing for fine-grained control over which data is encrypted.
   For [test automation](/en/wiki/test-automation/) engineers, it's important to ensure that encryption does not interfere with testing processes. Automated tests may need to account for encryption and decryption steps, and [test data](/en/wiki/test-data/) may need to be encrypted to align with production security standards.
-
 
   ```javascript
   // Example: Encrypting test data before insertion

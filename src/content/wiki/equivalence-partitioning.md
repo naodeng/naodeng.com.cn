@@ -1,6 +1,6 @@
 ---
 title: "等价类划分 ｜ Equivalence Partitioning"
-description: "关于等价类划分的问题？"
+description: "等价类划分将输入数据划分为预期行为相同的类别，从而减少测试用例数量，同时保持有效覆盖。"
 section: "E"
 related:
   - boundary-testing
@@ -47,10 +47,10 @@ order: 0
 
 #### 软件测试中的等价划分是什么？
 
-[等价划分](/zh-cn/wiki/equivalence-partitioning/) 是一种**[黑盒测试](/zh-cn/wiki/black-box-testing/)** 方法，它将软件单元的输入数据划分为等效数据的分区，从中可以导出[测试用例](/zh-cn/wiki/test-case/)。在此技术中，[测试用例](/zh-cn/wiki/test-case/) 被设计为至少覆盖每个分区一次。此方法假设系统将以类似方式处理一个分区中的所有值。如果某个条件对于分区中的一种场景成立，则假定该条件对于该分区中的所有其他场景都成立。
+[等价划分](/zh-cn/wiki/equivalence-partitioning/) 是一种 **[黑盒测试](/zh-cn/wiki/black-box-testing/)** 方法，它将软件单元的输入数据划分为等效数据的分区，从中可以导出[测试用例](/zh-cn/wiki/test-case/)。在此技术中，[测试用例](/zh-cn/wiki/test-case/) 被设计为至少覆盖每个分区一次。此方法假设系统将以类似方式处理一个分区中的所有值。如果某个条件对于分区中的一种场景成立，则假定该条件对于该分区中的所有其他场景都成立。
   要应用[等价划分](/zh-cn/wiki/equivalence-partitioning/)，您首先要识别影响测试对象执行的输入数据。然后，将此数据划分为等价分区或集合，其中程序对于分区的每个成员的行为应相同。通常，您将为每个分区创建一个[测试用例](/zh-cn/wiki/test-case/)。
   例如，如果输入接受 1 到 10 之间的值范围，您将创建三个分区：一个用于低于该范围的值，一个用于该范围内的值，一个用于高于该范围的值。然后，您可以从每个分区中选择一个代表值进行测试。
-  [等价划分](/zh-cn/wiki/equivalence-partitioning/) 通常与**边界值分析**一起使用，其中 [测试用例](/zh-cn/wiki/test-case/) 旨在包含分区边界处的值。它还与其他测试技术相结合，例如**[决策表测试](/zh-cn/wiki/decision-table-testing/)**或**[状态转换测试](/zh-cn/wiki/state-transition-testing/)**，以确保测试空间的全面覆盖。
+  [等价划分](/zh-cn/wiki/equivalence-partitioning/) 通常与**边界值分析**一起使用，其中 [测试用例](/zh-cn/wiki/test-case/) 旨在包含分区边界处的值。它还与其他测试技术相结合，例如 **[决策表测试](/zh-cn/wiki/decision-table-testing/)** 或 **[状态转换测试](/zh-cn/wiki/state-transition-testing/)**，以确保测试空间的全面覆盖。
 
   ```
   // Example of a simple equivalence partitioning test case in TypeScript
@@ -92,12 +92,12 @@ order: 0
 
 #### 等价划分如何提高测试效率？
 
-[等价划分](/zh-cn/wiki/equivalence-partitioning/) 允许测试人员从每个分区或等价类中**识别代表值**，从而简化测试过程。测试人员可以选择代表较大组的几个值，而不是测试每个可能的输入（这通常是不切实际或不可能的）。这种方法显着减少了所需的 [测试用例](/zh-cn/wiki/test-case/)** 数量，而不会影响覆盖范围，因为假设每个值都会从被测系统中引发类似的响应。
+[等价划分](/zh-cn/wiki/equivalence-partitioning/) 允许测试人员从每个分区或等价类中**识别代表值**，从而简化测试过程。测试人员可以选择代表较大组的几个值，而不是测试每个可能的输入（这通常是不切实际或不可能的）。这种方法显着减少了所需的 [测试用例](/zh-cn/wiki/test-case/) 数量，而不会影响覆盖范围，因为假设每个值都会从被测系统中引发类似的响应。
   通过关注这些代表性值，测试人员可以更有效地分配资源，将时间投入到应用程序中更复杂或高风险的领域。 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 还有助于**识别特定输入范围内的缺陷**，从而更容易查明和解决潜在问题。
-  在实践中，该技术可以与**自动化[测试脚本](/zh-cn/wiki/test-script/)**相结合，以进一步提高效率。测试人员可以为每个分区编写一个脚本，并使用不同的输入值运行它，确保以最少的手动干预覆盖各种场景。
+  在实践中，该技术可以与**自动化[测试脚本](/zh-cn/wiki/test-script/)** 相结合，以进一步提高效率。测试人员可以为每个分区编写一个脚本，并使用不同的输入值运行它，确保以最少的手动干预覆盖各种场景。
   总体而言，[等价划分](/zh-cn/wiki/equivalence-partitioning/) 通过以下方式提高测试效率：
 
-- **最小化[测试用例](/zh-cn/wiki/test-case/)**的数量同时保持覆盖范围。
+- **最小化[测试用例](/zh-cn/wiki/test-case/)** 的数量同时保持覆盖范围。
 
 - **节省时间和资源**通过避免多余的测试。
 
@@ -107,13 +107,7 @@ order: 0
 
 - **促进自动化** ，允许快速重新测试和回归测试。 通过将[等价划分](/zh-cn/wiki/equivalence-partitioning/)集成到他们的测试策略中，自动化工程师可以用更少的测试实现彻底的覆盖，从而实现更加简化和更具成本效益的测试过程。
 
-- **Minimizing the number of [测试用例](/zh-cn/wiki/test-case/)**同时保持覆盖范围。
-
-- **节省时间和资源**通过避免多余的测试。
-
-- **简化测试设计**和维护。
-
-- **增强缺陷检测**在特定的输入范围内。
+- **Minimizing the number of [测试用例](/zh-cn/wiki/test-case/)** 同时保持覆盖范围。
 
 - **促进自动化** ，允许快速重新测试和回归测试。
 
@@ -148,41 +142,25 @@ order: 0
   ```
 请记住**将** [等价划分](/zh-cn/wiki/equivalence-partitioning/) 与其他技术（例如边界值分析）结合起来，以获得更彻底的测试策略。 **尽可能实现自动化**以简化流程，并随着应用程序的发展**审查**分区决策。保持[测试用例](/zh-cn/wiki/test-case/) **可维护**和**可重用**，以最大限度地发挥[等价划分](/zh-cn/wiki/equivalence-partitioning/) 的优势。
 
-1. **识别**可测试的函数及其输入数据。
-
 #### 等价划分涉及哪些步骤？
 
 [等价划分](/zh-cn/wiki/equivalence-partitioning/)涉及的步骤如下：
 
 1. **识别可测试的功能**在接受一系列输入的应用程序内。
 
-2. **除法**这些输入到组或分区中，其中组的每个成员都应被函数同等对待。
+2. **将这些输入划分**为组或分区，其中组的每个成员都应被函数同等对待。
 
 3. **定义边界**对于每个分区，确保它们是互斥的并且集体详尽的。
 
 4. **选择[测试用例](/zh-cn/wiki/test-case/)** — 每个分区中的一个，通常是代表该组的值。
 
-5. **Design and write [测试脚本](/zh-cn/wiki/test-script/)**针对被测功能或系统执行这些测试用例。
+5. **Design and write [测试脚本](/zh-cn/wiki/test-script/)** 针对被测功能或系统执行这些测试用例。
 
 6. **运行测试**和 **记录结果** ，验证每个分区的代表值的输出是否符合预期。
 
 7. **分析故障**细化分区或识别代码中的缺陷。
 
-8. **重复**如果在测试阶段发现新分区的过程。 This technique is often combined with **boundary value analysis** to select [测试用例](/zh-cn/wiki/test-case/) at the edges of each partition.确保每个分区至少使用一个输入进行测试，以最大限度地提高覆盖范围，同时最大限度地减少 [测试用例](/zh-cn/wiki/test-case/) 的数量，这一点至关重要。
-
-1. **识别可测试的功能**在接受一系列输入的应用程序内。
-
-2. **除法**这些输入到组或分区中，其中组的每个成员都应被函数同等对待。
-
-3. **定义边界**对于每个分区，确保它们是互斥的并且集体详尽的。
-
-4. **选择[测试用例](/zh-cn/wiki/test-case/)** — 每个分区中的一个，通常是代表该组的值。
-
-5. **设计并编写[测试脚本](/zh-cn/wiki/test-script/)**针对被测功能或系统执行这些测试用例。
-
-6. **运行测试**和 **记录结果** ，验证每个分区的代表值的输出是否符合预期。
-
-7. **分析故障**细化分区或识别代码中的缺陷。
+8. **发现新分区时重复上述步骤。** 等价划分常与边界值分析结合，在各分区边界附近选择[测试用例](/zh-cn/wiki/test-case/)。应确保每个分区至少有一个代表值被测试，以提高覆盖率，同时控制测试用例数量。
 
 8. **重复**如果在测试阶段发现新分区的过程。
 
@@ -191,40 +169,28 @@ order: 0
 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 的示例通常涉及将输入数据划分为有效和无效分区，从中可以导出[测试用例](/zh-cn/wiki/test-case/)。以下是一些场景：
 
 1. **输入字段验证**：对于接受 1 到 100 之间年龄的文本字段：
-- 有效分区： `25` （范围内）
+   - 有效分区：`25`（范围内）。
+   - 无效分区：`-5`（低于范围）和 `150`（高于范围）。
+2. **用户角色权限**：对于具有“管理员”“用户”和“访客”角色的系统：
+   - 有效分区：使用“管理员”进行测试，以确保授予预期权限。
+   - 无效分区：使用“访客”进行测试，以确保访问受到限制。
+3. **文件上传功能**：接受 1 MB 到 5 MB 之间的文件：
+   - 有效分区：`3 MB`（范围内）。
+   - 无效分区：`500 KB`（低于范围）和 `10 MB`（高于范围）。
+4. **日期输入**：仅处理当年日期的系统：
+   - 有效分区：当年 7 月 15 日。
+   - 无效分区：下一年 1 月 1 日和上一年 12 月 31 日。
+5. **折扣代码申请**：折扣代码适用于金额超过 50 美元的订单：
+   - 有效分区：`$60` 订单（符合折扣条件）。
+   - 无效分区：`$40` 订单（低于门槛）和 `$0` 订单（没有购买金额）。
+6. **搜索功能**：接受 1 至 50 个字母数字字符的搜索功能：
+   - 有效分区：`Alpha123`（范围内）。
+   - 无效分区：空字符串和 51 个字符的字符串（例如 `Alpha123...`）。
 
-- 无效分区： `-5` （低于范围）， `150` （高于范围）
-2. **用户角色权限**：对于具有“管理员”、“用户”和“访客”角色的系统：
-- 有效分区：使用“管理员”进行测试以确保授予所有权限。
-- 无效分区：使用“Guest”进行测试以确保访问受到限制。
-- 有效分区：使用“管理员”进行测试以确保授予所有权限。
-- 无效分区：使用“Guest”进行测试以确保访问受到限制。
-3. **文件上传功能**：接受1MB到5MB之间的文件：
-- 有效分区： `3MB` 文件（在范围内）
-
-- 无效分区： `500KB` 文件（低于范围）， `10MB` 文件（超出范围）
-4. **日期输入**：对于处理当年日期的系统：
-- 有效分区： `July 15, current year`
-
-- 无效分区： `January 1, next year` , `December 31, previous year`
-5. **折扣代码申请**：对于适用于 50 美元以上订单的折扣代码：
-- 有效分区： `$60` 订单（有折扣资格）
-
-- 无效分区： `$40` 订单（不符合条件）， `$0` 订单（不购买）
-6. **搜索功能**：对于接受 1-50 个字母数字字符的搜索功能：
-- 有效分区： `Alpha123` （范围内）
-
-- 无效分区： （空字符串）， `Alpha123...` （51 个字符）通过使用每个分区的代表性值进行测试，您可以确保覆盖范围而无需进行冗余测试。
-
-1. **输入字段验证**：对于接受 1 到 100 之间年龄的文本字段：
-- 有效分区： `25` （范围内）
-
-- 无效分区： `-5` （低于范围）， `150` （高于范围） `3MB` 文件（在范围内）
-
-- 无效分区： （空字符串）， `Alpha123...` （51 个字符）
+使用每个分区的代表值进行测试，可以确保覆盖范围，同时避免冗余测试。
 #### 等价划分如何与其他测试技术结合使用？
 
-[等价划分](/zh-cn/wiki/equivalence-partitioning/)可以与**边界值分析（BVA）**有效结合，以增强[测试覆盖率](/zh-cn/wiki/test-coverage/)。虽然[等价划分](/zh-cn/wiki/equivalence-partitioning/) 将输入数据划分为派生[测试用例](/zh-cn/wiki/test-case/) 的分区，但BVA 关注这些分区的边缘。通过集成两者，您可以确保典型值和边缘情况都得到测试，从而实现更稳健的测试。
+[等价划分](/zh-cn/wiki/equivalence-partitioning/)可以与**边界值分析（BVA）** 有效结合，以增强[测试覆盖率](/zh-cn/wiki/test-coverage/)。虽然[等价划分](/zh-cn/wiki/equivalence-partitioning/) 将输入数据划分为派生[测试用例](/zh-cn/wiki/test-case/) 的分区，但BVA 关注这些分区的边缘。通过集成两者，您可以确保典型值和边缘情况都得到测试，从而实现更稳健的测试。
   将 **[决策表测试](/zh-cn/wiki/decision-table-testing/)** 与 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 结合起来也可能是有益的。决策表代表复杂的业务逻辑，可以针对不同的输入组合进行测试。 [等价划分](/zh-cn/wiki/equivalence-partitioning/)可用于从这些组合中选择代表性输入，确保对逻辑进行全面评估，而无需冗余测试。
   **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** 是另一种补充 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 的技术。它涉及测试不同的系统状态和转换。 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 可以帮助识别有效和无效的状态转换，然后可用于创建状态转换测试。
   对于 **[集成测试](/zh-cn/wiki/integration-testing/)**，[等价划分](/zh-cn/wiki/equivalence-partitioning/) 可用于创建 [测试用例](/zh-cn/wiki/test-case/) 以进行模块交互。通过识别集成输入和输出的分区，您可以确保针对典型和非典型数据集测试模块之间的交互。
@@ -245,8 +211,6 @@ order: 0
 - **需求变化**：不断变化的需求可能会使现有分区失效，从而需要频繁审查和更新[测试用例](/zh-cn/wiki/test-case/)。
 - **与其他测试方法集成**：将[等价划分](/zh-cn/wiki/equivalence-partitioning/) 与其他测试技术（如边界值分析）有效结合，需要仔细规划以避免重复工作。 为了克服这些挑战，随着应用程序及其需求的发展，**定期审查和更新**等价类。使用支持[等价划分](/zh-cn/wiki/equivalence-partitioning/)的**工具和框架**来管理复杂的输入域。确保团队成员之间**清晰的沟通**，以保持对分区的共同理解。最后，**将[等价划分](/zh-cn/wiki/equivalence-partitioning/) 与其他测试策略仔细集成**，以最大限度地提高[测试覆盖率](/zh-cn/wiki/test-coverage/) 和效率。
 
-- **与其他测试方法集成**：将 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 与其他测试技术（如边界值分析）有效结合，需要仔细规划以避免重复工作。
-
 #### 如何克服这些挑战？
 
 克服[等价划分](/zh-cn/wiki/equivalence-partitioning/) 中的挑战需要结合**战略规划**、**工具熟练程度**和**分析技能**。方法如下：
@@ -266,9 +230,6 @@ order: 0
 - **利用领域知识**：应用领域专业知识来识别可能不会立即明显的微妙等价类。
 - **教育团队**：确保整个团队了解[等价划分](/zh-cn/wiki/equivalence-partitioning/) 对于培养以质量为中心的方法的重要性。
 - **使用版本控制**：在版本控制系统中维护[测试用例](/zh-cn/wiki/test-case/) 和等效类，以跟踪更改并高效协作。 通过集中解决这些挑战，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以提高[等价划分](/zh-cn/wiki/equivalence-partitioning/) 的有效性并提供更可靠的软件。
-
-- **尽可能自动化**：使用测试自动化工具处理重复性任务，确保一致性并节省时间。自动化还可以帮助管理大量的等价类和测试用例。
-- **使用版本控制**：在版本控制系统中维护[测试用例](/zh-cn/wiki/test-case/) 和等效类以跟踪更改并高效协作。
 
 #### 有效实施等价划分的最佳实践有哪些？
 
@@ -303,8 +264,6 @@ order: 0
   ```
 通过关注这些实践，您可以确保 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 在您的 [测试自动化](/zh-cn/wiki/test-automation/) 工作中高效且有效地应用。
 
-- **记录你的方法**供将来参考和新团队成员使用。这有助于保持一致性和知识共享。
-
 #### 如何使用等价划分来处理软件测试中的边缘情况？
 
 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 通过对系统应同等对待的输入进行分组来简化[测试用例](/zh-cn/wiki/test-case/) 设计。为了处理边缘情况，可以通过考虑这些分区的边界来扩展该技术。虽然 [等价划分](/zh-cn/wiki/equivalence-partitioning/) 假设系统将同等地处理分区中的所有值，但边缘情况通常发生在这些分区的极端处。
@@ -312,15 +271,9 @@ order: 0
 
 - **确定边界条件**对于每个等价分区。这些是分区最末端的值，例如最大和最小可能值。
 
-- **创建额外的[测试用例](/zh-cn/wiki/test-case/)**专门针对这些边界条件。这是边界值分析 (BVA) 补充等价分区的地方，重点关注每个分区边缘的值。
+- **创建额外的[测试用例](/zh-cn/wiki/test-case/)** 专门针对这些边界条件。这是边界值分析 (BVA) 补充等价分区的地方，重点关注每个分区边缘的值。
 
-- **考虑相差一的错误** ，这在边缘很常见。测试边界内部和外部的值以捕获这些错误。 For example, if an input field accepts ages from 1 to 100, [等价划分](/zh-cn/wiki/equivalence-partitioning/) might suggest a valid partition (1-100) and two invalid partitions (less than 1, more than 100).要处理边缘情况，请测试边界：1 和 100 表示有效分区，0 和 101 表示无效分区。 By combining [等价划分](/zh-cn/wiki/equivalence-partitioning/) with careful attention to boundary conditions, testers can ensure that edge cases are not overlooked, leading to more robust and reliable software.
-
-- **确定边界条件**对于每个等价分区。这些是分区最末端的值，例如最大和最小可能值。
-
-- **Create additional [测试用例](/zh-cn/wiki/test-case/)**专门针对这些边界条件。这是边界值分析 (BVA) 补充等价分区的地方，重点关注每个分区边缘的值。
-
-- **考虑相差一的错误** ，这在边缘很常见。测试边界内部和外部的值以捕获这些错误。
+  **例如**，如果输入字段接受 1 到 100 岁，等价划分可将 1–100 作为有效分区，将小于 1 和大于 100 的值作为无效分区。为覆盖边缘情况，应测试 1 和 100 这两个有效边界值，以及 0 和 101 这两个无效边界值。结合等价划分和边界条件检查，可以避免遗漏边缘情况，并提高软件的稳健性和可靠性。
 
 ### 高级概念
 
@@ -367,7 +320,7 @@ order: 0
 
 #### 等价划分和边界值分析之间有什么关系？
 
-[等价划分](/zh-cn/wiki/equivalence-partitioning/) (EP) and Boundary Value Analysis (BVA) are complementary testing techniques used to design [测试用例](/zh-cn/wiki/test-case/). EP divides input data of a software module into partitions of equivalent data from which [测试用例](/zh-cn/wiki/test-case/) can be derived.相比之下，BVA 侧重于这些分区边缘的值。
-  EP 和 BVA 之间的关系是 **BVA 通常应用于 EP 标识的等价分区**的边界。 EP 确保每个分区至少由一个 [测试用例](/zh-cn/wiki/test-case/) 表示，而 BVA 确保这些分区的边界经过彻底测试。这是因为**错误更有可能发生在输入范围的边缘**而不是中间。
+[等价划分](/zh-cn/wiki/equivalence-partitioning/)（EP）和边界值分析（BVA）是互补的[测试用例](/zh-cn/wiki/test-case/)设计技术。EP 将软件模块的输入数据划分为等价类，据此选择测试用例；BVA 则重点检查这些等价类边缘的值。
+  BVA 通常用于测试 EP 所识别等价类的边界。EP 确保每个等价类至少由一个[测试用例](/zh-cn/wiki/test-case/)覆盖，BVA 则确保边界得到充分测试，因为错误更容易出现在输入范围的边缘。
   通过结合 EP 和 BVA，测试人员可以创建一组更强大的[测试用例](/zh-cn/wiki/test-case/)，涵盖代表性值和可能导致缺陷的边缘情况。使用 EP，测试人员可以确定要测试的内容，而使用 BVA，他们可以准确地确定应重点关注输入范围极端值的位置。
-  实际上，在识别等效分区后，测试人员通常会从每个分区的**中间选择 [测试用例](/zh-cn/wiki/test-case/)（使用 EP），然后用 [测试用例](/zh-cn/wiki/test-case/) 对其进行补充，以测试每个分区的**上限和下限**（使用 BVA）。这种双重方法有助于通过最少的[测试用例](/zh-cn/wiki/test-case/) 集实现全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)，从而确保测试过程的效率和有效性。
+  实际上，在识别等效分区后，测试人员通常会从每个分区的**中间选择 [测试用例](/zh-cn/wiki/test-case/)（使用 EP），然后用 [测试用例](/zh-cn/wiki/test-case/) 对其进行补充，以测试每个分区的**上限和下限（使用 BVA）。这种双重方法有助于通过最少的[测试用例](/zh-cn/wiki/test-case/) 集实现全面的[测试覆盖率](/zh-cn/wiki/test-coverage/)，从而确保测试过程的效率和有效性。

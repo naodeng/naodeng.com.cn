@@ -1,6 +1,6 @@
 ---
 title: "测试执行工具 ｜ Test Execution Tool"
-description: "测试执行工具 (Test Execution Tool) 能够自动执行针对软件应用程序预先编写的 测试用例 (test cases)。与 手动测试 (manual testing) 不同（在手动测试中，测试人员需要逐步执行测试），此类工具承担了重复性任务，自动运行测试并在无需人工干预的情况下报告结果…"
+description: "测试执行工具 (Test Execution Tool) 能够自动执行针对软件应用程序预先编写的 测试用例 (test cases)。"
 section: "T"
 related:
   - automated-testing
@@ -222,7 +222,7 @@ order: 0
 
 #### 被测试的软件类型如何影响测试执行工具的选择？
 
-由于**技术堆栈**、**应用程序架构**和**测试要求**等因素，正在测试的软件类型会显着影响**[测试执行工具](/zh-cn/wiki/test-execution-tool/)**的选择。
+由于**技术堆栈**、**应用程序架构**和**测试要求**等因素，正在测试的软件类型会显着影响 **[测试执行工具](/zh-cn/wiki/test-execution-tool/)** 的选择。
 
 - **网络应用程序**可能需要支持的工具 **DOM 操作**和 **浏览器自动化** ，例如 Selenium 或 Cypress。
 
@@ -230,7 +230,7 @@ order: 0
 
 - **桌面应用程序**可能需要具有强大功能的工具 **UI自动化功能**可以与桌面元素交互，例如 WinAppDriver 或 Sikuli。
 
-- **[API](/zh-cn/wiki/api/)**或 **服务**需要可以发送请求并验证响应的工具，例如 Postman 或 RestAssured。
+- **[API](/zh-cn/wiki/api/)** 或 **服务**需要可以发送请求并验证响应的工具，例如 Postman 或 RestAssured。
 
 - **微服务**或 **分布式系统**可能会受益于可以跨服务编排复杂测试场景的工具，例如 Pact 或 Karate。 此外，软件开发中使用的**编程语言**和**框架**也会影响工具的选择。与开发人员的语言和框架保持一致的工具可以带来更好的协作和更轻松的维护。 最后，**性能和 [负载测试](/zh-cn/wiki/load-testing/)** 要求可能会导致选择 [JMeter](/zh-cn/wiki/jmeter/) 或 Gattle 等工具，这些工具旨在模拟高流量并分析性能指标。 选择符合这些方面的工具可确保测试高效、有效，并与软件的技术环境良好集成。
 
@@ -272,7 +272,7 @@ order: 0
 
 - **组织测试**分成逻辑组或套件，以便更好地管理并了解测试范围。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险、使用频率和重要性，以确保首先执行重要的测试。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于风险、使用频率和重要性，以确保首先执行重要的测试。
 
 - 利用 **标签或标签**过滤和执行特定测试，帮助进行有针对性的回归或冒烟测试。
 
@@ -280,7 +280,7 @@ order: 0
 
 - **自动测试[环境搭建](/zh-cn/wiki/setup/) 和拆卸**保持一致的环境并减少人工干预。
 
-- **并行化[测试执行](/zh-cn/wiki/test-execution/)**尽可能减少运行时间，尤其是在 CI/CD 管道中。
+- **并行化[测试执行](/zh-cn/wiki/test-execution/)** 尽可能减少运行时间，尤其是在 CI/CD 管道中。
 
 - 使用 **版本控制**用于测试脚本跟踪更改、协作并在需要时恢复到稳定版本。
 
@@ -308,8 +308,6 @@ order: 0
   ```
 定期**审查和更新** [测试自动化](/zh-cn/wiki/test-automation/) 套件，以与不断发展的应用程序保持一致并丢弃过时的测试。
 
-- **组织测试**分成逻辑组或套件，以便更好地管理并了解测试范围。
-
 #### 测试执行工具如何集成到持续集成/持续部署 (CI/CD) 管道中？
 
 将 **[测试执行工具](/zh-cn/wiki/test-execution-tool/)** 集成到 **CI/CD 管道** 涉及几个步骤：
@@ -324,21 +322,21 @@ order: 0
 8. **工件存储**：存储屏幕截图或错误日志等测试工件以供运行后分析。
 9. **清理**：执行后拆除环境并释放资源以保持效率。 集成 [测试执行工具](/zh-cn/wiki/test-execution-tool/) 的管道脚本片段示例：
 
-test:
-  stage: test
-  script:
-- echo "Running automated tests..."
-- run_tests.sh # This script invokes the Test Execution Tool artifacts: paths:
-- logs/
-- screenshots/ only:
-- main
+  ```yaml
+  test:
+    stage: test
+    script:
+      - echo "Running automated tests..."
+      - ./run_tests.sh
+    artifacts:
+      when: always
+      paths:
+        - logs/
+        - screenshots/
+    only:
+      - main
+  ```
 确保 [测试执行工具](/zh-cn/wiki/test-execution-tool/) 配置为与 CI/CD 系统无缝协作，利用 [API](/zh-cn/wiki/api/) 和命令行界面实现平稳操作。
-
-5. **环境[环境搭建](/zh-cn/wiki/setup/)**：使用基础设施即代码工具（例如，Docker、Kubernetes）来启动[测试环境](/zh-cn/wiki/test-environment/)以及[测试执行](/zh-cn/wiki/test-execution/)所需的依赖项。
-6. **执行和报告**：使用[测试执行工具](/zh-cn/wiki/test-execution-tool/) 运行测试，捕获结果和日志。配置该工具以 CI/CD 工具可以使用的格式输出结果以进行报告和通知。
-7. **失败和反馈**：如果测试未通过，则将管道设置为失败，向开发人员提供即时反馈。与通信工具（例如 Slack、电子邮件）集成以发出警报。
-8. **工件存储**：存储屏幕截图或错误日志等测试工件以供运行后分析。
-9. **清理**：执行后拆除环境并释放资源以保持效率。
 
 ### 挑战和解决方案
 
@@ -363,11 +361,11 @@ test:
 
 - **[可维护性](/zh-cn/wiki/maintainability/)**：保持[测试脚本](/zh-cn/wiki/test-script/) **干燥**（不要重复）和模块化。使用 **[页面对象模型](/zh-cn/wiki/page-object-model/)** 或类似的设计模式将测试逻辑与特定于页面的代码分开。
 - **不稳定**：实施**可靠的定位器**和**等待策略**来处理动态内容。对间歇性故障使用**重试**，但要调查根本原因。
-- **可扩展性**：利用**基于云的服务**或**网格[setups](/zh-cn/wiki/setup/)**并行运行测试。优化[测试套件](/zh-cn/wiki/test-suite/)以减少执行时间。
+- **可扩展性**：利用**基于云的服务**或**网格[setups](/zh-cn/wiki/setup/)** 并行运行测试。优化[测试套件](/zh-cn/wiki/test-suite/)以减少执行时间。
 - **集成**：确保该工具与其他系统良好集成。使用 **[API](/zh-cn/wiki/api/)** 和 **webhooks** 连接 CI/CD 管道和报告工具。
 - **复杂性**：通过将复杂的测试分解为更小的、可管理的测试来简化。使用**抽象层**来处理测试中的复杂性。
 - **环境一致性**：使用**容器化**（例如，Docker）来维护一致的测试环境。实现**基础设施即代码**，以实现简单的环境[环境搭建](/zh-cn/wiki/setup/)。
-- **数据管理**：采用**[测试数据](/zh-cn/wiki/test-data/) 管理**策略。使用数据工厂或池来生成和管理[测试数据](/zh-cn/wiki/test-data/)。
+- **数据管理**：采用 **[测试数据](/zh-cn/wiki/test-data/) 管理**策略。使用数据工厂或池来生成和管理[测试数据](/zh-cn/wiki/test-data/)。
 - **版本控制**：将测试代码保存在 **版本控制** 系统（如 Git）中。有效管理分支，使测试代码与应用程序代码保持一致。
 - **文档**：清晰地记录[测试用例](/zh-cn/wiki/test-case/)和框架。使用内联注释并维护 [环境搭建](/zh-cn/wiki/setup/) 和使用说明的 **README**。
 - **技能差距**：提供**培训**和**知识共享**课程。鼓励团队成员随时了解最新的测试趋势和工具。
@@ -387,10 +385,13 @@ test:
 - **隔离测试**：单独运行失败的测试以确定问题是特定于测试的还是系统性的。
 - **版本控制**：确认正在使用正确版本的[测试脚本](/zh-cn/wiki/test-script/)。版本不匹配可能会导致意外结果。
 
-// 使用代码片段对脚本或命令进行故障排除
-  console.log('调试输出');
+使用代码片段检查脚本或命令时，可以将调试输出直接打印到控制台：
 
-- **Parallel execution**: If tests are flaky during parallel execution, they may have hidden dependencies. Run them sequentially to identify conflicts.
-- **Driver compatibility**: For UI tests, ensure browser drivers are compatible with the browser versions being tested.
-- **Plugin conflicts**: Disable plugins or extensions that may interfere with the test tool's operation.
-- **Contact support**: If issues persist, reach out to the tool's support team or user community for assistance.
+  ```javascript
+  console.log('调试输出');
+  ```
+
+- **并行执行**：如果测试在并行运行时不稳定，可能存在隐藏依赖。可改为顺序运行，以定位冲突。
+- **驱动兼容性**：对于 UI 测试，请确认浏览器驱动与被测浏览器版本兼容。
+- **插件冲突**：禁用可能干扰测试工具运行的插件或扩展。
+- **联系支持渠道**：如果问题仍未解决，请向工具支持团队或用户社区寻求帮助。

@@ -151,7 +151,6 @@ Selenium IDE enhances your testing environment with tools for logging in, item s
 
   - **Ease of Use:**
 
-  - **Limited to Browser Testing:**
 ### Installation and Setup
 
 #### How do you install Selenium IDE?
@@ -172,9 +171,6 @@ Selenium IDE enhances your testing environment with tools for logging in, item s
        [Chrome Web Store](https://chrome.google.com/webstore/category/extensions)
        .
 
-     - For Firefox, go to the
-       [Firefox Add-ons](https://addons.mozilla.org/)
-       .
 
   3. In the search bar, type **"Selenium IDE"** and press Enter.
   4. Locate the official Selenium IDE extension from the search results. Ensure it's the correct one by checking the developer's name or the number of users and reviews.
@@ -213,24 +209,6 @@ Selenium IDE enhances your testing environment with tools for logging in, item s
   2. Search for "Selenium IDE".
   3. Click "Add to Chrome" or "Add to Firefox" to install the extension.
   Ensure your browser is up to date to avoid compatibility issues. No additional drivers or server [setups](/en/wiki/setup/) are required for the IDE itself, as it runs directly within the browser. However, if you plan to use [Selenium](/en/wiki/selenium/) [WebDriver](/en/wiki/webdriver/) for more complex tests, you'll need to meet the [WebDriver](/en/wiki/webdriver/)'s specific system requirements.
-
-  - **Google Chrome**
-    or
-    **Mozilla Firefox**
-    browser installed.
-
-  - For Chrome,
-    **version 55 and above**
-    .
-
-  - For Firefox,
-    **version 54 and above**
-    .
-
-  1. Navigate to the Chrome Web Store or Firefox Browser Add-ons page.
-  2. Search for "Selenium IDE".
-  3. Click "Add to Chrome" or "Add to Firefox" to install the extension.
-
 #### How do you set up Selenium IDE for the first time?
 
   To set up Selenium IDE for the first time, follow these steps:
@@ -240,9 +218,6 @@ Selenium IDE enhances your testing environment with tools for logging in, item s
   3. **Set up Project**: When you launch Selenium IDE for the first time, you'll be prompted to create a new project. Enter a **project name** and click 'OK'.
   4. **Configure Base URL**: Set the **Base URL** to the web application you want to test. This will be the starting point for your tests.
   5. **Adjust Settings**: Access the settings by clicking on the gear icon. Here, you can configure various options like:
-    - **[Test Execution](/en/wiki/test-execution/) Delay** : Set the delay between commands.
-    - **Default Timeout** : Adjust how long Selenium IDE waits for elements.
-    - **Clipboard Options** : Manage how locators are copied to the clipboard.
     - **[Test Execution](/en/wiki/test-execution/) Delay** : Set the delay between commands.
     - **Default Timeout** : Adjust how long Selenium IDE waits for elements.
     - **Clipboard Options** : Manage how locators are copied to the clipboard.
@@ -262,25 +237,16 @@ Selenium IDE enhances your testing environment with tools for logging in, item s
      - For
        **Firefox** : Go to the Firefox Add-ons page and search for Selenium IDE. Click "Add to Firefox" to install.
 
-     - For
-       **Chrome** : Visit the Chrome Web Store and search for Selenium IDE. Click "Add to Chrome" to install.
-
   2. **Verify installation**:
-    - After installation, you should see the Selenium IDE icon in your browser's toolbar.
     - After installation, you should see the Selenium IDE icon in your browser's toolbar.
   3. **Configure browser-specific settings** (if necessary):
     - **Chrome** : By default, Selenium IDE should be ready to use. However, check the extension settings by right-clicking the icon and selecting "Options" to ensure it's configured to your preferences.
     - **Firefox** : Similar to Chrome, check the add-on options by clicking the menu button, selecting "Add-ons," finding Selenium IDE, and choosing "Options."
-    - **Chrome** : By default, Selenium IDE should be ready to use. However, check the extension settings by right-clicking the icon and selecting "Options" to ensure it's configured to your preferences.
-    - **Firefox** : Similar to Chrome, check the add-on options by clicking the menu button, selecting "Add-ons," finding Selenium IDE, and choosing "Options."
   4. **Set up [WebDriver](/en/wiki/webdriver/)** (for [cross-browser testing](/en/wiki/cross-browser-testing/)):
-    - While Selenium IDE is primarily for Chrome and Firefox, you can run tests in other browsers using WebDriver. Download the corresponding WebDriver for your target browser (e.g., geckodriver for Firefox, chromedriver for Chrome) and ensure it's in your system's PATH.
     - While Selenium IDE is primarily for Chrome and Firefox, you can run tests in other browsers using WebDriver. Download the corresponding WebDriver for your target browser (e.g., geckodriver for Firefox, chromedriver for Chrome) and ensure it's in your system's PATH.
   5. **Configure [WebDriver](/en/wiki/webdriver/) in Selenium IDE**:
     - Open Selenium IDE, go to the project settings, and specify the path to the WebDriver executable if it's not in the PATH environment variable.
-    - Open Selenium IDE, go to the project settings, and specify the path to the WebDriver executable if it's not in the PATH environment variable.
   6. **Test the configuration**:
-    - Create a simple test case and execute it to ensure Selenium IDE interacts correctly with the browser.
     - Create a simple test case and execute it to ensure Selenium IDE interacts correctly with the browser.
   Remember, Selenium IDE is primarily a record-and-playback tool for Chrome and Firefox. For comprehensive [cross-browser testing](/en/wiki/cross-browser-testing/), consider using [Selenium](/en/wiki/selenium/) [WebDriver](/en/wiki/webdriver/) with a programming language and a testing framework.
 
@@ -441,20 +407,7 @@ Selenium IDE enhances your testing environment with tools for logging in, item s
     ```
   By combining these strategies, you can create robust tests in Selenium IDE that can handle dynamic elements effectively.
 
-  - **CSS Selectors** : Use CSS selectors that target elements based on their structural characteristics rather than attributes that may change. For example, use a parent-child relationship or nth-child selectors.
-  - **Wait Commands** : Use
-    `waitForElementPresent`
-    or
-    `waitForElementVisible`
-    commands to wait for an element to be present or visible on the page before interacting with it.
 
-  - **JavaScript** : When locators fail, use JavaScript to find elements. Execute a script that returns the dynamic element.
-  - **Variables** : Store dynamic values in variables during the test to reuse them for locating elements later.
-  - **Patterns** : Use pattern matching with
-    `glob:`
-    or
-    `regex:`
-    to match parts of the attributes.
 
 #### How do you import and export test cases in Selenium IDE?
 
@@ -489,15 +442,6 @@ Selenium IDE enhances your testing environment with tools for logging in, item s
     **Save**
     .
   Selenium IDE allows exporting [test cases](/en/wiki/test-case/) to various programming languages and testing frameworks, enabling integration with other tools and version control systems. Remember that exporting to a specific language/framework will generate code that may require additional editing to run successfully outside of Selenium IDE.
-
-  3. Navigate to the location of your
-    `.side`
-    project file.
-
-  4. Select the file and click
-    **Open**
-    .
-
 ### Advanced Concepts
 
 #### What is Selenese and how is it used in Selenium IDE?
@@ -614,8 +558,6 @@ Selenium IDE enhances your testing environment with tools for logging in, item s
   selenium.type("id=titleField", title);
   ```
   By embedding JavaScript directly into [test cases](/en/wiki/test-case/) or by referencing external JavaScript files, engineers can significantly enhance the capabilities of Selenium IDE, making it a more powerful and flexible tool for [automated testing](/en/wiki/automated-testing/).
-
-  - **Manipulate web page elements**
 
 #### How do you integrate Selenium IDE with other testing tools?
 

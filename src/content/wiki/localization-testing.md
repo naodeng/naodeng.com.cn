@@ -1,6 +1,6 @@
 ---
 title: "本地化测试 ｜ Localization Testing"
-description: "本地化测试 (Localization Testing) 是确保软件产品适配特定地区、语言和文化的测试过程。它不仅仅是翻译验证，还包括验证软件是否符合当地的文化习俗、法律规定、技术标准和用户偏好。 主要侧重点："
+description: "本地化测试 (Localization Testing) 是确保软件产品适配特定地区、语言和文化的测试过程。它不仅仅是翻译验证，还包括验证软件是否符合当地的文化习俗、法律规定、技术标准和用户偏好。"
 section: "L"
 related:
   - internationalization-testing
@@ -75,7 +75,7 @@ order: 0
 [本地化测试](/zh-cn/wiki/localization-testing/) 对于确保软件产品**适当地适应**特定目标市场、考虑语言、文化规范和其他区域细节至关重要。它有助于识别**特定于区域设置的问题**，例如内容截断、不正确的日期和时间格式、货币问题等，否则可能会导致**误解**或**用户沮丧**。
   通过执行[本地化测试](/zh-cn/wiki/localization-testing/)，您可以确保产品**满足本地用户的期望**，这对于**全球市场的成功**至关重要。它不仅涉及翻译[验证 ](/zh-cn/wiki/verification/)，还涉及检查**文化适当性**、**法律要求**和**当地标准合规性**。
   忽视[本地化测试](/zh-cn/wiki/localization-testing/)可能会导致**用户疏远**、**品牌损害**以及潜在的**法律后果**。对于旨在**跨国存在**的产品来说，这是质量保证流程中的关键步骤。
-  为了确保彻底性，结合**自动化和[手动测试](/zh-cn/wiki/manual-testing/)工作**，使用**[本地化测试](/zh-cn/wiki/localization-testing/)工具**，并让**母语人士**参与语言和文化见解。自动化对于重复性任务特别有用，例如跨不同区域检查 UI 元素，但 [手动测试](/zh-cn/wiki/manual-testing/) 对于理解文化相关性的**细微差别**至关重要。
+  为了确保彻底性，结合**自动化和[手动测试](/zh-cn/wiki/manual-testing/)工作**，使用 **[本地化测试](/zh-cn/wiki/localization-testing/)工具**，并让**母语人士**参与语言和文化见解。自动化对于重复性任务特别有用，例如跨不同区域检查 UI 元素，但 [手动测试](/zh-cn/wiki/manual-testing/) 对于理解文化相关性的**细微差别**至关重要。
   对于从右向左阅读的语言，需要特别注意**UI布局**、**文本对齐**和**输入字段方向性**。通过使用**模拟器**、**众包测试**和**特定于脚本的测试工具**可以缓解**对母语人士的访问受限**或**复杂的脚本处理**等挑战。
   纳入最佳实践，例如**本地化团队的早期参与**、**持续本地化**以及翻译记忆库的**定期更新**。成功的[本地化测试](/zh-cn/wiki/localization-testing/)通常涉及**协作方法**，利用本地用户的**反馈循环**来迭代地完善产品。
 
@@ -158,24 +158,28 @@ order: 0
 
 #### 如何确保本地化测试的彻底性？
 
-为了确保 [本地化测试](/zh-cn/wiki/localization-testing/) 的彻底性，请考虑以下策略：
+为了确保[本地化测试](/zh-cn/wiki/localization-testing/)覆盖充分，可以采用以下策略：
 
-- **开发全面的[测试计划](/zh-cn/wiki/test-plan/)**，其中包括所有区域设置和特定于语言的场景。这不仅应涵盖文本翻译，还应涵盖文化差异、法律要求以及日期、货币和计量单位的特定地区格式。
-- **利用自动化**执行重复性任务，例如切换区域设置和捕获屏幕截图以进行视觉比较。使用参数化测试有效地覆盖多种语言。
-- **将 [本地化测试](/zh-cn/wiki/localization-testing/) 集成到您的 CI/CD 管道**以尽早且经常发现问题。作为常规测试过程的一部分，自动化测试应该针对本地化构建运行。
+- **制定全面的[测试计划](/zh-cn/wiki/test-plan/)**，涵盖所有目标区域设置、语言场景、文化差异、法律要求，以及日期、货币和计量单位等地区格式。
+- **自动化重复任务**，例如切换区域设置和捕获屏幕截图；通过参数化测试覆盖多种语言。
+- **将本地化测试纳入 CI/CD 流程**，让本地化构建在开发过程中持续接受测试。
 
-// 伪代码中的参数化测试示例
-  测试.each（语言环境=> {
-  setLocale(区域设置);
-  Expect(page.title).toBe(localizedTitleFor(locale));
-  });
+例如，可用参数化测试逐一检查不同语言环境下的页面标题：
 
-- **Utilize pseudo-localization** to detect layout issues and ensure that your application can handle longer text strings that often occur in translation.
-- **Engage native speakers** for exploratory testing to uncover subtle language or cultural issues that automated tests may miss.
-- **Review and update test cases regularly** to reflect changes in the application and the addition of new locales.
-- **Monitor and analyze user feedback** from each locale to identify and address issues that were not caught during testing.
-- **Collaborate with translators and localization experts** to understand the context and ensure that translations are accurate and appropriate.
-By combining these strategies, you can achieve a high level of thoroughness in your localization testing efforts, ensuring a quality experience for all users, regardless of their language or region.
+```typescript
+test.each(locales)((locale) => {
+  setLocale(locale);
+  expect(page.title()).toBe(localizedTitleFor(locale));
+});
+```
+
+- **使用伪本地化**发现布局问题，并确认界面能够容纳翻译后可能变长的文本。
+- **邀请母语人士参与探索性测试**，发现自动化可能遗漏的语言和文化问题。
+- **定期审查和更新测试用例**，以反映应用变更和新增语言环境。
+- **收集并分析各地区用户反馈**，发现测试阶段未捕获的问题。
+- **与译者和本地化专家协作**，理解上下文并确保译文准确、恰当。
+
+结合这些策略，可以更全面地验证不同语言和地区下的产品体验。
 
 #### 本地化测试常用哪些工具？
 
@@ -216,7 +220,6 @@ By combining these strategies, you can achieve a high level of thoroughness in y
 - **性能**：本地化版本可能有不同的性能特征，需要有针对性的测试。
 - **第三方服务集成**：确保地图或天气等服务已本地化并正常运行。 应对这些挑战需要结合**技术解决方案**、**文化理解**和**严格的测试**，以确保跨不同地区的无缝用户体验。
 
-- **性能**：本地化版本可能有不同的性能特征，需要有针对性的测试。
 - **第三方服务集成**：确保地图或天气等服务已本地化并正常运行。
 
 #### 如何减轻或克服这些挑战？
@@ -244,7 +247,6 @@ By combining these strategies, you can achieve a high level of thoroughness in y
 - **保持更新**：及时了解语言变化和区域趋势，以确保您的测试保持相关性。
 - **文档**：维护本地化要求和[测试用例](/zh-cn/wiki/test-case/)的清晰文档，以确保清晰度和可重复性。 通过采用这些策略，您可以降低本地化问题的风险，并确保为所有目标市场提供高质量的用户体验。
 
-- **尽可能自动化**：使用自动化框架处理重复性任务，确保一致性并节省时间。例如，跨不同区域设置自动验证 UI 元素。
 - **文档**：维护本地化要求和[测试用例](/zh-cn/wiki/test-case/)的清晰文档，以确保清晰度和可重复性。
 
 #### 本地化测试的最佳实践有哪些？
@@ -270,9 +272,6 @@ By combining these strategies, you can achieve a high level of thoroughness in y
   By following these practices, you can enhance the quality of your localized software and provide a better experience for users across different regions and cultures.
 ```
 
-- **吸引母语人士**：确保母语人士审查应用程序，以捕捉自动化工具可能遗漏的细微差别。
-- **使用伪本地化**：使用伪本地化文本测试应用程序，以识别文本扩展、字符编码和布局的潜在问题。
-
 #### 自动化如何应用于本地化测试？
 
 [本地化测试](/zh-cn/wiki/localization-testing/) 中的自动化可以显着简化跨不同语言和地区验证软件功能的过程。自动化测试可以设计为**验证 UI 元素**，例如按钮、菜单和对话框，确保文本正确显示，没有重叠或截断，并且针对目标受众进行了正确本地化。
@@ -280,7 +279,7 @@ By combining these strategies, you can achieve a high level of thoroughness in y
   自动化脚本还可以用于动态地在不同的**区域设置**之间切换，从而使测试能够在一次运行中涵盖多种语言配置。这对于验证日期、时间和数字格式以及可能因区域设置而异的排序算法特别有用。
   **伪本地化**可以自动化，以确保软件可以处理不同长度的翻译字符串，并且对于非标准字符仍然有效。该技术涉及用更改后的版本替换原始文本，其中包括扩展字符和符号以模仿不同的语言。
   对于 **从右到左 (RTL)** 语言，自动化可以验证布局方向性和文本对齐方式，确保 UI 正确适应 RTL 脚本。
-  为了处理[本地化测试](/zh-cn/wiki/localization-testing/)的复杂性，自动化工程师经常将**[本地化测试](/zh-cn/wiki/localization-testing/)工具**与其自动化框架集成。这些工具可以自动检测缺失的翻译、占位符的错误使用以及其他常见的本地化问题。
+  为了处理[本地化测试](/zh-cn/wiki/localization-testing/)的复杂性，自动化工程师经常将 **[本地化测试](/zh-cn/wiki/localization-testing/)工具**与其自动化框架集成。这些工具可以自动检测缺失的翻译、占位符的错误使用以及其他常见的本地化问题。
   通过自动执行重复且耗时的任务，[测试自动化](/zh-cn/wiki/test-automation/) 使团队能够专注于更复杂的本地化挑战，最终确保为国际用户提供更高质量的产品。
 
 #### 您如何处理从右向左阅读的语言（如阿拉伯语和希伯来语）的本地化测试？
@@ -398,9 +397,5 @@ By combining these strategies, you can achieve a high level of thoroughness in y
   ```
 对于每个受支持的区域设置，您可以使用适当的参数调用`testLocalization`。这可确保应用程序按照不同地区的用户的预期运行。
   请记住，**自动化**是有效覆盖多种区域设置和语言组合的关键。然而，至关重要的是用 **[手动测试](/zh-cn/wiki/manual-testing/)** 来补充自动化检查，以捕获自动化测试可能遗漏的上下文和文化适当性的细微差别。
-
-- **用户界面元素**正确翻译并适合其分配的空间。
-
-- **输入字段**接受并处理特定于区域设置的数据格式。
 
 - **功能**在不同的区域设置中保持一致。

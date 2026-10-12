@@ -285,8 +285,6 @@ Non-functional testing evaluates software's non-functional attributes, such as u
     to understand system architecture and design tests that are comprehensive and targeted.
   By adhering to these practices, you can maximize the effectiveness of non-functional testing tools and contribute to the delivery of high-quality software.
 
-  - **Select tools that integrate**
-
 ### Implementation and Management
 
 #### When should non-functional testing be performed in the software development lifecycle?

@@ -64,7 +64,7 @@ order: 0
 
 #### 批量测试与其他类型的软件测试有何不同？
 
-[音量测试](/zh-cn/wiki/volume-testing/) 与其他类型的[软件测试](/zh-cn/wiki/software-testing/) 不同，它特别关注系统处理大量数据的能力。与**[功能测试](/zh-cn/wiki/functional-testing/)**（验证功能的正确性）或**[性能测试](/zh-cn/wiki/performance-testing/)**（通常测量各种负载条件下的响应时间）不同，[音量测试](/zh-cn/wiki/volume-testing/) 检查系统在处理大量数据时的行为和性能。
+[音量测试](/zh-cn/wiki/volume-testing/) 与其他类型的[软件测试](/zh-cn/wiki/software-testing/) 不同，它特别关注系统处理大量数据的能力。与 **[功能测试](/zh-cn/wiki/functional-testing/)**（验证功能的正确性）或 **[性能测试](/zh-cn/wiki/performance-testing/)**（通常测量各种负载条件下的响应时间）不同，[音量测试](/zh-cn/wiki/volume-testing/) 检查系统在处理大量数据时的行为和性能。
   这种类型的测试是独特的，因为它模拟了现实场景，其中 [数据库](/zh-cn/wiki/database/) 或数据处理应用程序可能会收到比平时更多的数据，从而可能发现与数据处理、内存管理和磁盘空间利用率相关的问题，而这些问题在其他测试类型中可能并不明显。
   **[压力测试](/zh-cn/wiki/stress-testing/)** 通过增加负载直到系统故障来评估系统限制，[音量测试](/zh-cn/wiki/volume-testing/) 不一定会破坏系统，而是确保在预期的高容量条件下的稳定性和一致的性能。
   [音量测试](/zh-cn/wiki/volume-testing/) 需要仔细规划以确定适当的数据量，这在其他测试类型中并不总是如此。它还通常涉及使用能够生成和管理大型数据集的专用工具。
@@ -118,12 +118,6 @@ order: 0
 11. **重新测试**：重复测试以验证更改是否提高了性能并且系统可以处理预期的量。
 12. **报告**：总结测试过程、结果以及给利益相关者的建议。 在这些步骤中，可以利用自动化来简化 [测试数据](/zh-cn/wiki/test-data/) 的创建、[测试用例](/zh-cn/wiki/test-case/) 的执行以及结果的收集。脚本或专用工具可用于模拟大量数据并分析系统在压力下的性能。
 
-1. **定义测试目标**：根据系统要求和预期数据量建立具体目标。
-2. **创建[测试计划](/zh-cn/wiki/test-plan/)**：概述成功的策略、资源、时间表和指标。
-3. **开发[测试用例](/zh-cn/wiki/test-case/)**：设计模拟系统内不同数据量的场景。
-4. **准备[测试环境](/zh-cn/wiki/test-environment/)** ：设置模仿生产设置的硬件、软件和网络配置。
-5. **生成[测试数据](/zh-cn/wiki/test-data/)** ：使用脚本或工具创建大型数据集进行测试。
-6. **执行测试**：运行测试用例，监视系统行为并记录性能指标。
 12. **报告**：总结测试过程、结果以及给利益相关者的建议。
 
 #### 体积测试中常用哪些技术？
@@ -155,17 +149,6 @@ order: 0
   }
   ```
 使用这些技术来模拟现实场景并确保软件能够有效地处理预期的数据量。根据被测系统的具体要求调整复杂性和规模。
-
-- **数据填充**：生成大量数据的脚本或工具。
-- **[数据库](/zh-cn/wiki/database/) 克隆**：复制现有数据库以增加数据量。
-- **数据缩放**：逐渐增加数据量以观察系统行为。
-- **自动化[测试执行](/zh-cn/wiki/test-execution/)**：自动运行测试以模拟大量数据处理。
-- **监控和日志记录**：在测试期间跟踪系统性能和错误。
-- **资源操作**：调整服务器内存、CPU 和磁盘空间以处理数据负载。
-- **批量处理**：测试系统批量处理数据的能力。
-- **[压力测试](/zh-cn/wiki/stress-testing/) 集成**：将容量测试与压力测试相结合，以评估高容量和高压力条件下的性能。
-- **性能计数器**：使用软件工具监控系统资源，如内存、CPU 和 I/O 使用情况。
-- **阈值测试**：设置数据量限制以识别突破点。
 
 #### 如何确定容量测试中使用的数据量？
 
@@ -214,13 +197,6 @@ order: 0
   考虑多次测试运行结果的**一致性**。不一致的行为可能表明存在间歇性问题，需要进一步调查。
   最后，记录您的发现和改进的**建议**。这可能包括**优化查询**、**增加硬件资源**或**重构代码**。与开发团队分享这些见解，以指导后续[迭代](/zh-cn/wiki/iteration/) 和增强功能。
 
-- Examine key metrics: response times, throughput, resource utilization.
-- Use visualizations to identify performance trends and bottlenecks.
-- Compare results against benchmarks or SLAs.
-- Analyze logs for errors and ensure data integrity.
-- Look for consistency in test results.
-- Document findings and provide actionable recommendations.
-
 ### 挑战和解决方案
 
 #### 批量测试期间面临哪些常见挑战？
@@ -260,15 +236,6 @@ order: 0
 
 - **自动化[测试环境](/zh-cn/wiki/test-environment/) 的[环境搭建](/zh-cn/wiki/setup/)** 以有效地处理大量数据。使用脚本根据需要配置和取消配置资源。
 
-  ```
-    # Example script to setup test environment
-    setup_environment() {
-      provision_resources
-      load_test_data --volume large
-      start_services
-    }
-  ```
-
 #### 如何保证体积测试的准确性？
 
 为了确保 [音量测试](/zh-cn/wiki/volume-testing/) 的准确性，请遵循以下关键策略：
@@ -285,7 +252,6 @@ order: 0
 - **记录测试过程中所做的所有发现和调整**。这确保了透明度并有助于[音量测试](/zh-cn/wiki/volume-testing/)实践的持续改进。 通过遵循这些策略，您可以提高[音量测试](/zh-cn/wiki/volume-testing/) 的准确性，并确保您的软件能够有效处理预期的数据量。
 
 - **设计逼真的[测试场景](/zh-cn/wiki/test-scenario/)**，紧密模仿生产工作负载。使用历史数据和预测分析来告知这些场景。
-- **自动化数据生成**以创建必要的数据量。利用可以生成具有各种真实特征的大型数据集的脚本或工具。
 - **在[测试执行](/zh-cn/wiki/test-execution/)期间实施强大的监控**。实时跟踪系统性能、资源利用率和错误率，以便及时发现问题。
 - **记录测试过程中所做的所有发现和调整**。这确保了透明度并有助于持续改进[音量测试](/zh-cn/wiki/volume-testing/)实践。
 

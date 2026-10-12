@@ -131,7 +131,7 @@ order: 0
   在**持续集成 (CI)** 管道的上下文中，[测试运行者](/zh-cn/wiki/test-runner/) 充当**网关**，用于在合并到主代码库之前验证代码更改。它可以配置为在代码提交时自动运行，确保新的更改不会破坏现有功能。
   [测试运行者](/zh-cn/wiki/test-runner/) 在**测试报告**中也发挥着至关重要的作用，它汇总各个[测试执行](/zh-cn/wiki/test-execution/) 的结果并以**可读的格式**呈现它们。这可以快速识别失败的测试并有助于**调试**工作。
   在处理**并行执行**时，[测试运行者](/zh-cn/wiki/test-runner/) 管理跨不同环境或机器的测试分布，优化**速度**和**资源利用率**。
-  通常通过[测试运行者](/zh-cn/wiki/test-runner/) 促进与其他工具（例如**[代码覆盖率](/zh-cn/wiki/code-coverage/) 分析仪**或**缺陷跟踪系统**）的集成，从而在测试生态系统中实现无缝工作流程。
+  通常通过[测试运行者](/zh-cn/wiki/test-runner/) 促进与其他工具（例如 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 分析仪**或**缺陷跟踪系统**）的集成，从而在测试生态系统中实现无缝工作流程。
   总之，[测试运行者](/zh-cn/wiki/test-runner/) 是将测试框架的各个元素联系在一起的组件，确保测试高效且有效地执行，同时为开发团队提供有价值的反馈。
 
 ### 类型和示例
@@ -203,60 +203,6 @@ order: 0
   ```
 每个运行程序都有自己的语法和功能，适合项目的语言和测试需求。
 
-  ```
-    @RunWith(JUnit4.class)
-    public class MyTests { ... }
-  ```
-
-- **TestNG**：另一个基于 Java 的 [测试运行者](/zh-cn/wiki/test-runner/)，提供更高级的功能，如注释、参数化和测试分组。
-
-  ```
-    @Test
-    public void myTestMethod() { ... }
-  ```
-
-  ```
-    def test_example():
-        assert True
-  ```
-
-  ```
-    describe('My suite', () => {
-      it('does something', () => {
-        // Test code here
-      });
-    });
-  ```
-
-  ```
-    [TestFixture]
-    public class MyTests
-    {
-        [Test]
-        public void TestMethod() { ... }
-    }
-  ```
-
-- **Karma**：为 Angular 和其他 Web 应用程序设计的[测试运行者](/zh-cn/wiki/test-runner/)，可用于在多个真实浏览器中执行测试。
-
-  ```
-    describe('MyComponent', () => {
-      it('should do something', () => {
-        // Test code here
-      });
-    });
-  ```
-
-- **RSpec**：Ruby 的行为驱动开发 ([BDD](/zh-cn/wiki/bdd/)) 框架，提供用于指定测试的人类可读语法。
-
-  ```
-    describe 'My feature' do
-      it 'works correctly' do
-        expect(true).to eq(true)
-      end
-    end
-  ```
-
 #### 各种类型的测试运行程序之间有什么区别？
 
 [测试运行者](/zh-cn/wiki/test-runner/) 在**范围**、**语言支持**、**集成功能**和**报告功能**方面有所不同。
@@ -288,106 +234,20 @@ order: 0
 - **可扩展性**：寻找允许自定义和扩展的[测试运行者](/zh-cn/wiki/test-runner/)，以满足您独特的测试要求。
 - **维护和更新**：选择积极维护和更新的[测试运行者](/zh-cn/wiki/test-runner/)，以跟上新技术和实践的步伐。 评估这些标准后，您可以列出一些[测试运行者](/zh-cn/wiki/test-runner/)。在做出最终决定之前，为每个项目创建一个概念验证通常会很有帮助，以了解它们与您的项目的契合程度。
 
-- **项目要求**：评估项目的具体需求。是否需要并行执行、详细报告或与某些工具集成？
-- **环境兼容性**：确保[测试运行者](/zh-cn/wiki/test-runner/) 支持您的测试将运行的环境，例如不同的操作系统、浏览器或设备。
-- **编程语言**：选择与您正在使用的编程语言和测试框架兼容的[测试运行者](/zh-cn/wiki/test-runner/)。
-- **社区和支持**：考虑社区规模和支持的可用性。更大的社区通常意味着更多的插件和集成，以及更好的故障排除帮助。
-- **性能**：评估[测试运行者](/zh-cn/wiki/test-runner/) 的性能，特别是当您有较大的[测试套件](/zh-cn/wiki/test-suite/) 或需要快速反馈周期时。
-- **易于使用**：[测试运行者](/zh-cn/wiki/test-runner/) 具有直观的界面和简单的配置，可以节省时间并缩短学习曲线。
-- **持续集成 (CI) 兼容性**：如果您使用 CI/CD 管道，请选择与 CI 工具顺利集成的 [测试运行者](/zh-cn/wiki/test-runner/)。
-- **成本**：如果您正在考虑商业[测试运行者](/zh-cn/wiki/test-runner/)，请考虑成本。开源选项可能就足够了并且更具成本效益。
-- **可扩展性**：确保[测试运行者](/zh-cn/wiki/test-runner/) 可以随着您的项目的复杂性和规模的增长而扩展。
-- **可扩展性**：寻找允许自定义和扩展的[测试运行者](/zh-cn/wiki/test-runner/)，以满足您独特的测试要求。
 - **维护和更新**：选择积极维护和更新的[测试运行者](/zh-cn/wiki/test-runner/)，以跟上新技术和实践的步伐。
 
 #### 您能否简要概述一下如何使用流行的测试运行程序？
 
-要使用流行的 [测试运行者](/zh-cn/wiki/test-runner/)（例如 Java 的 **JUnit**），请按照以下步骤操作：
+使用 JUnit 执行 Java 测试时，可以按以下步骤操作：
 
-1. **设置**：
-- 确保您有 **Java**和 **JUnit**安装。
+1. 将 Java 开发工具包和 JUnit 添加到项目依赖中。
+2. 创建测试类，并使用 **@Test** 标记测试方法。
+3. 项目需要时，将相关测试类组织到测试套件中。
+4. 在 IDE 中运行测试，或使用项目已配置的 Maven、Gradle 任务。
+5. 查看测试结果和错误堆栈，排查失败原因。
+6. 配置 CI 管道自动运行测试并报告失败。
 
-- 将 JUnit 库包含在项目的构建路径中。
-2. **编写测试**：
-
-  ```
-    import org.junit.Test;
-    import static org.junit.Assert.*;
-    public class ExampleTest {
-        @Test
-        public void testMethod() {
-            assertEquals("Expected result", "Actual result");
-        }
-    }
-  ```
-
-- 为您的测试创建一个新的 Java 类。
-- 使用注释，例如 `@Test` 来表示测试方法。
-
-- 为您的测试创建一个新的 Java 类。
-- 使用注释，例如 `@Test` 来表示测试方法。
-
-3. **组织测试**：
-
-  ```
-    import org.junit.runner.RunWith;
-    import org.junit.runners.Suite;
-    @RunWith(Suite.class)
-    @Suite.SuiteClasses({ExampleTest.class})
-    public class ExampleTestSuite {}
-  ```
-
-- 使用以下方法将相关测试分组到测试套件中 `@RunWith` 和 `@Suite` 。
-4. **执行测试**：
-- 从 IDE 运行测试或使用构建工具，例如 **马文**或 **摇篮** 。
-
-- 对于命令行，编译测试并运行 `java org.junit.runner.JUnitCore ExampleTestSuite` 。
-5. **审查结果**：
-- 检查控制台输出以获取测试结果。
-- 分析堆栈跟踪是否失败以识别问题。
-- 检查控制台输出以获取测试结果。
-- 分析堆栈跟踪是否失败以识别问题。
-6. **与 CI/CD 集成**：
-- 配置您的 **持续集成**系统自动运行测试。
-
-- 配置您的 **持续集成**系统自动运行测试。 请记住保持测试**隔离**、**可重复**，并专注于代码的某一方面。利用 **mocks** 和 **stubs** 来实现外部依赖。定期**重构**测试并使其与应用程序代码保持同步。
-
-1. **设置**：
-- 确保您有 **Java**和 **JUnit**安装。
-
-- 将 JUnit 库包含在项目的构建路径中。
-2. **编写测试**：
-
-  ```
-    import org.junit.Test;
-    import static org.junit.Assert.*;
-    public class ExampleTest {
-        @Test
-        public void testMethod() {
-            assertEquals("Expected result", "Actual result");
-        }
-    }
-  ```
-
-- 为您的测试创建一个新的 Java 类。
-- 使用注释，例如 `@Test` 来表示测试方法。
-
-- 为您的测试创建一个新的 Java 类。
-- 使用注释，例如 `@Test` 来表示测试方法。
-
-3. **组织测试**：
-
-  ```
-    import org.junit.runner.RunWith;
-    import org.junit.runners.Suite;
-    @RunWith(Suite.class)
-    @Suite.SuiteClasses({ExampleTest.class})
-    public class ExampleTestSuite {}
-  ```
-
-- 对于命令行，编译测试并运行 `java org.junit.runner.JUnitCore ExampleTestSuite` 。 **持续集成**系统自动运行测试。
-
-- 配置您的 **持续集成**系统自动运行测试。
+尽量保持测试彼此独立，并随项目变化及时更新测试。
 
 ### 集成和兼容性
 
@@ -417,16 +277,6 @@ order: 0
 8. **本地运行测试**：通过在本地运行测试来测试集成，以确保所有内容都配置正确。
 9. **文档**：更新项目的文档以包含有关如何运行新[测试运行者](/zh-cn/wiki/test-runner/) 的说明。
 10. **培训**：如有必要，请为您的团队提供培训或资源，以使他们熟悉新的[测试运行者](/zh-cn/wiki/test-runner/)。 请记住提交配置文件和版本控制更改，以保持跨开发环境的一致性。
-
-  ```
-    npm install <test-runner-name>
-  ```
-
-  ```
-- run:
-        name: Run Tests
-        command: <test-runner-command>
-  ```
 
 #### 选择测试运行程序时有哪些兼容性注意事项？
 
@@ -460,11 +310,11 @@ order: 0
 
 #### 测试运行程序可以跨不同的编程语言使用吗？
 
-[测试运行者](/zh-cn/wiki/test-runner/) 通常是根据特定的编程语言和测试框架来设计的。然而，**通用或跨语言[测试运行者](/zh-cn/wiki/test-runner/)**确实存在。这些运行器通常可以利用通用接口或协议来执行用多种编程语言编写的测试。
+[测试运行者](/zh-cn/wiki/test-runner/) 通常是根据特定的编程语言和测试框架来设计的。然而，**通用或跨语言[测试运行者](/zh-cn/wiki/test-runner/)** 确实存在。这些运行器通常可以利用通用接口或协议来执行用多种编程语言编写的测试。
   例如，如果必要的插件或任务可用，**Apache Ant** 可以运行基于 Java 的测试以及用其他语言编写的测试。同样，**Maven** 可以配置为使用适当的插件来处理不同的语言。
   另一种方法是使用像 **Docker** 这样的容器化工具来封装测试及其环境，允许[测试运行者](/zh-cn/wiki/test-runner/) 执行测试而不管语言如何，只要容器具有运行测试所需的一切。
   **CI/CD 工具**（例如 **Jenkins** 或 **GitLab CI/CD**）也可以充当跨语言 [测试运行者](/zh-cn/wiki/test-runner/)，通过 shell 命令或管道配置编排各种语言的 [测试脚本](/zh-cn/wiki/test-script/) 的执行。
-  在考虑跨语言[测试运行者](/zh-cn/wiki/test-runner/)时，请确保它支持您正在使用的语言和框架。另外，请考虑 [环境搭建](/zh-cn/wiki/setup/)** 和 **维护** 的复杂性，因为这些运行程序可能需要额外的配置才能有效处理多种语言。
+  在考虑跨语言[测试运行者](/zh-cn/wiki/test-runner/)时，请确保它支持您正在使用的语言和框架。另外，请考虑 [环境搭建](/zh-cn/wiki/setup/)**和**维护 的复杂性，因为这些运行程序可能需要额外的配置才能有效处理多种语言。
   总之，虽然大多数 [测试运行者](/zh-cn/wiki/test-runner/) 是特定于语言的，但跨语言 [测试运行者](/zh-cn/wiki/test-runner/) 是可用的，并且在使用多语言代码库时可能是一个可行的选择。
 
 ### 高级概念
@@ -523,14 +373,6 @@ order: 0
 3. **为项目做出贡献**：如果缺少所需的功能，请考虑为[测试运行者](/zh-cn/wiki/test-runner/) 的代码库做出贡献或使用您的自定义维护分支。 请记住**记录**您的自定义并确保其他团队成员可以维护它们。保持自定义**模块化**和**可重用**，以方便更新和迁移。
 
 1. **确定定制点**：查看[测试运行者](/zh-cn/wiki/test-runner/) 的文档以了解可以定制哪些方面，例如报告格式、测试选择和环境[环境搭建](/zh-cn/wiki/setup/)。
-2. **配置文件**：利用[测试运行者](/zh-cn/wiki/test-runner/)的配置文件来设置参数和选项。例如：
-1. **钩子和回调**：实现[测试运行者](/zh-cn/wiki/test-runner/)提供的钩子以在测试生命周期的不同阶段执行自定义代码，例如`beforeAll`、`afterEach`或`afterTest`。
-2. **自定义报告器**：如果您需要以不同方式格式化测试结果或与其他系统集成，请创建或扩展报告器。
-3. **插件和扩展**：使用或开发可以扩展[测试运行者](/zh-cn/wiki/test-runner/)功能的插件，例如添加新断言或与第三方服务集成。
-4. **[API](/zh-cn/wiki/api/) 集成**：利用[测试运行者](/zh-cn/wiki/test-runner/) 的[API](/zh-cn/wiki/api/) 进行更深入的集成，例如动态生成测试或控制[测试执行](/zh-cn/wiki/test-execution/) 流程。
-5. **环境变量**：使用环境变量来更改[测试运行者](/zh-cn/wiki/test-runner/) 的行为，而无需更改代码。例如：
-1. **命令行选项**：传递命令行参数以覆盖默认配置或为特定运行指定自定义行为。
-2. **编程使用**：如果支持，请在脚本中以编程方式使用[测试运行者](/zh-cn/wiki/test-runner/)，以更好地控制其行为。
 3. **为项目做出贡献**：如果缺少所需的功能，请考虑为[测试运行者](/zh-cn/wiki/test-runner/) 的代码库做出贡献或使用您的自定义维护分支。
 
 #### 使用测试运行程序时有哪些最佳实践？

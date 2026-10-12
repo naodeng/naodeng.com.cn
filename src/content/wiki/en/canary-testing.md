@@ -84,7 +84,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   - **Targeted Testing** : Specific user groups can be targeted, which is particularly useful for testing features relevant to certain demographics or user behaviors.
   By leveraging these benefits, organizations can enhance their release management process, ensuring that new features and updates are delivered with high quality and minimal disruption to end-users.
 
-
 #### How does Canary Testing differ from other types of testing?
 
   Canary testing differs from other types of testing by its **incremental approach** to rolling out changes. Unlike **[A/B testing](/en/wiki/a-b-testing/)**, which compares two versions simultaneously to a split audience, canary testing introduces a new version to a small subset of users before a full deployment. This contrasts with **[integration testing](/en/wiki/integration-testing/)** or **[system testing](/en/wiki/system-testing/)**, where the focus is on checking the interoperability of components or the system as a whole, often in a [test environment](/en/wiki/test-environment/).
@@ -113,7 +112,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   7. **Finalize the release** - Once the new version is deemed stable and no significant issues are found, complete the rollout to all users.
   Throughout the process, **automation** is key. Automated deployment pipelines, feature flag systems, and monitoring tools are essential for a smooth and efficient canary release. Scripts or configuration management tools can manage the complexity of deploying to a subset of users and handling the potential rollback or progression to a full release.
 
-
 #### What are the steps involved in a typical Canary Testing process?
 
   The typical steps in a Canary Testing process are as follows:
@@ -125,7 +123,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   5. **Expand or rollback** - If the canary release is stable and meets performance goals, gradually roll out to more users. If issues arise, rollback the changes to minimize impact.
   6. **Iterate** - Use insights from the canary phase to improve the software. Repeat the process with adjustments as needed until the release is ready for a full rollout.
   Throughout these steps, automation plays a critical role in deploying the canary release, monitoring its performance, and managing the rollout or rollback processes. Tools like feature flags, automated deployment pipelines, and monitoring systems are essential for a smooth and efficient canary testing process.
-
 
 #### What are the prerequisites for implementing Canary Testing?
 
@@ -165,7 +162,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   - **Argo Rollouts** : A Kubernetes controller and CRD which provides advanced deployment capabilities such as canary and blue-green deployments.
   These tools often integrate with **monitoring and observability platforms** like **Prometheus**, **Datadog**, **New Relic**, and **Splunk**, which are crucial for analyzing the performance and health of the canary release to make informed decisions about its success or failure.
 
-
 #### How do you determine the success of a Canary Test?
 
   Determining the success of a Canary Test involves evaluating several key metrics and indicators that reflect the stability and performance of the new feature or service in the production environment. Success criteria should be predefined and could include:
@@ -176,7 +172,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   - **Business Metrics** : Critical business metrics, such as conversion rates or user engagement, should not be negatively impacted.
   - **Monitoring and Alerts** : No critical alerts should be triggered, and monitoring systems should report normal activity.
   To evaluate these criteria, you can use tools that track application performance, user behavior, and system health. If the canary release meets or exceeds the predefined success thresholds without causing disruptions or degradations, it can be considered successful. Conversely, if the canary fails to meet these criteria, it should be rolled back and the issues addressed before attempting another release. Automating the evaluation process through continuous monitoring and automated rollback mechanisms can help ensure a swift response to any detected problems.
-
 
 ### Challenges and Solutions
 
@@ -195,7 +190,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   - **Data Consistency**: Handling data produced or modified by the canary version to ensure it's compatible with the stable version.
   - **Version Synchronization**: Keeping the canary version in sync with the production version to prevent discrepancies that could affect the test results.
   By addressing these challenges with careful planning and the right tools, teams can effectively leverage canary testing to improve [software quality](/en/wiki/software-quality/) and reliability.
-
 
 #### How can these challenges be mitigated?
 
@@ -258,7 +252,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
     ```
   By addressing these areas, you can reduce risks associated with canary testing and ensure smoother, more reliable releases.
 
-
 #### What are some best practices for Canary Testing?
 
   Best practices for Canary Testing include:
@@ -274,7 +267,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   - **Feedback Loop** : Establish a feedback loop to quickly address any issues found during canary testing.
   - **Documentation** : Document the canary testing process, including the deployment plan, monitoring strategy, and rollback procedures.
   By adhering to these best practices, [test automation](/en/wiki/test-automation/) engineers can effectively use canary testing to minimize risks associated with deploying new features and ensure a smooth user experience.
-
 
 #### How can Canary Testing be automated?
 
@@ -318,7 +310,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   4. **Gaming**: Online gaming companies can introduce new game features, patches, or updates to a subset of players. They monitor the stability of the game and the servers, as well as the reception of the new content, before making it available to all players.
   5. **Mobile Applications**: When a new version of a mobile app is ready, developers may choose to release it to a small group of users or a specific region to test its performance on different devices and under various network conditions.
   In each case, the goal is to validate the update in a production-like environment with real users, while minimizing the risk of widespread issues.
-
 
 ### Advanced Concepts
 
@@ -393,10 +384,6 @@ Canary Testing is a technique used to detect issues by gradually releasing chang
   - Monitoring tools to track and compare the performance of the canary.
   - Automated rollback capabilities for quick recovery.
   Commonly, canary testing is automated within CI/CD pipelines, leveraging tools like feature flags, service mesh infrastructure, or cloud provider services to control traffic flow and automate rollbacks. Integrating canary testing into CI/CD and DevOps practices ensures continuous delivery with a safety net, aligning with the principles of incremental change and rapid feedback.
-
-  - A deployment system that supports traffic splitting.
-  - Monitoring tools to track and compare the performance of the canary.
-  - Automated rollback capabilities for quick recovery.
 
 #### How does Canary Testing work in a cloud environment?
 

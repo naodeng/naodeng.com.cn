@@ -133,8 +133,6 @@ Retesting involves running tests on modified software to verify that changes hav
     , by delivering a product that meets requirements and functions correctly.
   Retesting is a focused validation activity that complements other testing efforts by providing a **narrow scope** with a **high level of certainty** in the areas it covers. It is a critical step in the [quality assurance](/en/wiki/quality-assurance/) process, contributing to the overall integrity and robustness of the software product.
 
-  - **Confirm the effectiveness**
-
 #### What are the potential consequences of not conducting retesting?
 
   Not conducting retesting can lead to several negative outcomes:
@@ -251,7 +249,6 @@ Retesting involves running tests on modified software to verify that changes hav
     ```
   Automated retesting ensures **consistency** and **efficiency**, especially when dealing with frequent code changes. It also allows for **rapid feedback** to developers, which is critical in agile and DevOps environments.
 
-  - **Select [test cases](/en/wiki/test-case/)**
 #### What are the benefits and challenges of automating retesting?
 
   Automating retesting offers several **benefits**:

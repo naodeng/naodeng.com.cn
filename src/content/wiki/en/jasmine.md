@@ -184,16 +184,8 @@ Jasmine is an open-source testing framework for JavaScript. It is designed to be
      ```
   This [setup](/en/wiki/setup/) allows you to write and run Jasmine tests for your JavaScript code. Remember to create your test files in the `spec` directory with a naming convention like `*.spec.js` to be recognized by Jasmine.
 
-  2. Install Jasmine by running:
-  1. Initialize Jasmine in your project, which creates a spec directory and configuration file (
-    `jasmine.json`
-    ) for your tests:
 
-  1. To run Jasmine tests, add a test script to your
-    `package.json`
-    file:
 
-  1. Now, you can run your Jasmine tests using:
 
 #### What are the prerequisites for installing Jasmine?
 
@@ -493,9 +485,6 @@ Jasmine is an open-source testing framework for JavaScript. It is designed to be
   ```
   Custom matchers can be reused across different specs by including them in a `beforeEach` at the top level of your [test suite](/en/wiki/test-suite/) or in a separate file that is included in your test [setup](/en/wiki/setup/).
 
-  1. Use
-    `jasmine.addMatchers`
-    to add a new matcher.
 
   2. Inside
     `jasmine.addMatchers`
@@ -631,8 +620,6 @@ Jasmine is an open-source testing framework for JavaScript. It is designed to be
     into your test, replacing the real implementation with the mock.
   Remember, mocks created with spies in Jasmine are temporary and will be removed after each test, ensuring test isolation. Use `beforeEach` to set up mocks for each test if needed.
 
-  1. **Set up return values or implementations**
-    for the spy object's methods if needed.
 
   1. **Integrate the mock**
     into your test, replacing the real implementation with the mock.

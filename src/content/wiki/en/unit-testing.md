@@ -76,7 +76,6 @@ The practice of testing individual software units or components to validate thei
   });
   ```
 
-
 #### Why is unit testing important?
 
   Unit testing is crucial because it ensures that individual components of the software work as intended in isolation. By testing these components separately, developers can:
@@ -103,8 +102,6 @@ The practice of testing individual software units or components to validate thei
     , as thorough unit testing can exercise all paths and conditions in the code.
   Unit tests are typically written and run by developers, often using a continuous integration system to ensure ongoing code health. When a unit test fails, it indicates that something in the codebase has changed in a way that was not expected or accounted for, prompting an immediate investigation and fix. This immediate feedback loop is essential for maintaining a robust codebase, especially in agile and fast-paced development environments.
 
-  - **Detect and fix [bugs](/en/wiki/bug/) early**
-
 #### What are the benefits of unit testing?
 
   Unit testing offers several benefits that enhance the quality and [maintainability](/en/wiki/maintainability/) of software:
@@ -120,7 +117,6 @@ The practice of testing individual software units or components to validate thei
   - **Cost Reduction** : Reduces the cost of fixing bugs by catching them early in the development cycle, where they are generally cheaper to fix.
   By integrating unit testing into the development workflow, teams can achieve a more reliable, maintainable, and robust codebase, ultimately leading to a more successful software project.
 
-
 #### What is the difference between unit testing and other types of testing?
 
   Unit testing is the practice of testing the smallest testable parts of an application, typically functions or methods, in isolation from the rest of the system. Other types of testing, such as [integration testing](/en/wiki/integration-testing/), [system testing](/en/wiki/system-testing/), and [acceptance testing](/en/wiki/acceptance-testing/), differ in scope and focus:
@@ -129,7 +125,6 @@ The practice of testing individual software units or components to validate thei
   - **[System testing](/en/wiki/system-testing/)** considers the entire system's behavior and is aimed at verifying that the full, integrated software product meets the specified requirements. It's a higher level of testing that encompasses the complete, integrated software to evaluate the system's compliance with its specified requirements.
   - **[Acceptance testing](/en/wiki/acceptance-testing/)** is performed to determine whether the system is ready for release. It's typically done by the end-user or client to validate the functionality and performance against the business requirements. Acceptance tests are user-oriented and focus on whether the system does what the users need it to do.
   Unit testing is distinct in its focus on the smallest parts of the software, while the other types of testing address more comprehensive aspects of the system, from how components work together to how the system performs in real-world scenarios. Understanding these differences helps [test automation](/en/wiki/test-automation/) engineers design and execute tests at the appropriate level to ensure a robust and reliable software product.
-
 
 #### How does unit testing fit into the software development lifecycle?
 
@@ -158,7 +153,6 @@ The practice of testing individual software units or components to validate thei
   - **[Error Guessing](/en/wiki/error-guessing/)**: Relies on the tester's experience to guess the most probable areas of errors in the unit and to write tests specifically for those error-prone areas.
   Each technique can be used independently or in combination to ensure comprehensive coverage and robustness of unit tests.
 
-
 #### What is test-driven development?
 
   [Test-Driven Development](/en/wiki/test-driven-development/) (TDD) is a **software development process** that relies on the repetition of a very short development cycle. Developers first write an **automated [test case](/en/wiki/test-case/)** that defines a desired improvement or new function, then produce the **minimum amount of code** to pass that test, and finally **refactor** the new code to acceptable standards.
@@ -179,7 +173,6 @@ The practice of testing individual software units or components to validate thei
   });
   ```
   In the above example, the test for the `add` function is written before the function itself is implemented. After the function is created and the test passes, the code can be refactored to improve its structure or efficiency with the test ensuring the function's behavior remains correct.
-
 
 #### What is behavior-driven development?
 
@@ -202,7 +195,6 @@ The practice of testing individual software units or components to validate thei
   ```
   [BDD](/en/wiki/bdd/) tools like Cucumber, SpecFlow, or Behat parse these specifications and execute them as tests. The results inform whether the software behaves as expected. [BDD](/en/wiki/bdd/) helps ensure that all stakeholders have a shared understanding of the requirements and that the software meets those requirements. It bridges the gap between technical and non-technical team members, fostering better communication and collaboration.
 
-
 #### How do you write a good unit test?
 
   Writing a good unit test involves adhering to several key principles:
@@ -224,7 +216,6 @@ The practice of testing individual software units or components to validate thei
   });
   ```
   Remember to regularly **refactor** tests and keep them **up-to-date** with code changes. When a test fails, **analyze** the failure before correcting the code or the test, ensuring that the test continues to serve its purpose of validating correctness.
-
 
 #### What is the role of mock objects in unit testing?
 
@@ -284,7 +275,6 @@ The practice of testing individual software units or components to validate thei
   - **Google Test** : For C++ developers, it's cross-platform and supports advanced features like mock objects.
   Each tool offers unique features, such as **[code coverage](/en/wiki/code-coverage/) analysis**, **test discovery**, and **integration with development environments**. Selecting the right tool often depends on the specific needs of the project and the preferences of the development team.
 
-
 #### How do you choose the right unit testing tool?
 
   Choosing the right unit testing tool involves evaluating several factors to ensure it aligns with your project's needs:
@@ -299,7 +289,6 @@ The practice of testing individual software units or components to validate thei
   - **Extensibility** : The ability to add custom functionality or integrate with other tools can be crucial for complex projects.
   - **Maintenance** : Consider the tool's update frequency and the ease of updating tests when the codebase changes.
   Evaluate tools based on these criteria and consider conducting a trial on a small scale before fully committing to ensure it meets your project's specific requirements.
-
 
 #### What are the features of a good unit testing tool?
 
@@ -321,7 +310,6 @@ The practice of testing individual software units or components to validate thei
   - **Extensibility** : Ability to extend the tool with plugins or additional frameworks as needed.
   - **Licensing and Cost** : Consideration of licensing terms and costs associated with the tool.
   Selecting a unit testing tool with these features will contribute to a robust and efficient [test automation](/en/wiki/test-automation/) strategy.
-
 
 #### How do you use a unit testing tool?
 
@@ -354,7 +342,6 @@ The practice of testing individual software units or components to validate thei
   8. **Monitor [code coverage](/en/wiki/code-coverage/)**: Use the tool's [code coverage](/en/wiki/code-coverage/) feature to ensure that your tests are covering a significant portion of your codebase.
   Remember to isolate the unit of work, mock dependencies using mock objects or frameworks, and keep your tests independent and repeatable. Regularly review and refactor tests to keep them effective and maintainable.
 
-
 ### Best Practices
 
 #### What are the best practices for unit testing?
@@ -374,7 +361,6 @@ The practice of testing individual software units or components to validate thei
   - **Handle expected exceptions**: If a unit is supposed to throw an exception under certain conditions, write a test to assert that the exception is thrown.
   - **Use mock objects judiciously**: Mock dependencies to isolate the unit under test, but don't overuse mocks as they can hide problems and create tightly coupled tests.
   Remember, the goal of unit testing is to create a reliable and maintainable [test suite](/en/wiki/test-suite/) that provides confidence in the behavior of your units.
-
 
 #### How often should you run unit tests?
 
@@ -404,14 +390,6 @@ The practice of testing individual software units or components to validate thei
   3. Refactor the code (and run tests again).
   By integrating unit tests into the development workflow and leveraging automation, you ensure that they serve their purpose of providing fast and reliable feedback on the health of the codebase.
 
-  - **Catch regressions**
-    immediately.
-
-  - **Validate code changes**
-
-  1. Write a failing unit test (red).
-  2. Write the minimal code to pass the test (green).
-  3. Refactor the code (and run tests again).
 
 #### How do you maintain unit tests?
 
@@ -451,8 +429,6 @@ The practice of testing individual software units or components to validate thei
     to cover a range of inputs with a single test case, making them easier to extend and maintain.
   By following these guidelines, you can keep your unit tests robust, relevant, and valuable over the lifespan of your software project.
 
-  - **Refactor tests**
-
 #### What should you do when a unit test fails?
 
   When a unit test fails, **immediately investigate** the cause. Follow these steps:
@@ -490,5 +466,3 @@ The practice of testing individual software units or components to validate thei
   11. **Document the issue**
     and resolution if it's a recurring problem or could benefit the team.
   Remember, a failing unit test is a valuable signal that there's a problem in the code that needs attention. Treat it as an opportunity to improve the codebase and prevent future issues.
-
-  1. **Review the [test case](/en/wiki/test-case/)**

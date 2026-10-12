@@ -101,8 +101,6 @@ Challenges the system by subjecting it to large amounts of data.
     with specified performance criteria and service level agreements (SLAs) that may dictate system behavior under high-volume conditions.
   By achieving these objectives, volume testing helps to ensure that the software will perform reliably and efficiently in production, even as data volume grows over time.
 
-  - **Validate system behavior**
-
 #### What is the role of volume testing in ensuring software performance?
 
   Volume testing plays a crucial role in **assessing software performance** under varying data volumes. It ensures that the application can handle expected and unexpected increases in data load without performance degradation or system failure. This type of testing is particularly important for applications that are expected to scale and manage large volumes of data over time.

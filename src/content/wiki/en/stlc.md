@@ -316,8 +316,6 @@ The STLC (Software Testing Life Cycle) outlines the sequential tasks and stages 
     , since the model encourages regular reviews, which can be particularly useful in test automation for adjusting test scripts according to end-user needs.
   By incorporating the Spiral Model into STLC, [test automation](/en/wiki/test-automation/) engineers can ensure a more **flexible** and **responsive** testing process, capable of handling complex and evolving software projects. This model underscores the importance of **continuous evaluation** and **adaptation** in the realm of [test automation](/en/wiki/test-automation/), ensuring that the testing strategy evolves alongside the software it aims to validate.
 
-  - **Early identification of risks**
-
 #### How does the Waterfall Model impact the STLC?
 
   The Waterfall Model, with its sequential and non-iterative approach, imposes a **linear progression** through the phases of the STLC. In this model, testing activities are **strictly ordered**, typically not commencing until after the completion of the development phase. This can lead to a **delay in feedback** for issues found during testing, as any defects discovered are only addressed after the entire system is developed.

@@ -81,7 +81,6 @@ Generative drafts for test design, allowing for iterative test development. Thes
   - **Assumptions and Dependencies** : Notes any prerequisites or conditions assumed to be in place for testing to proceed.
   These components ensure a comprehensive and structured approach to testing, facilitating clear communication, effective planning, and quality outcomes.
 
-
 #### How does a Test Specification contribute to the overall quality of a software product?
 
   A Test Specification acts as a **blueprint** for ensuring that all testing activities align with the project's objectives and requirements. By detailing the scope, approach, resources, and schedule of intended test activities, it guides testers in executing tests that are comprehensive and systematic. This contributes to the overall quality of a software product by:
@@ -140,7 +139,6 @@ Generative drafts for test design, allowing for iterative test development. Thes
   - **Maintenance Strategy** : Plan for the ongoing maintenance of the test specification to accommodate changes in the software and testing landscape.
   Remember, the goal is to create a living document that guides the testing process and adapts to the project's evolving needs.
 
-
 #### Who is typically responsible for creating a Test Specification?
 
   Creating a **Test Specification** typically falls under the responsibility of a **test designer** or **test analyst**. These roles are often filled by individuals with a deep understanding of testing methodologies and the software development lifecycle. In some organizations, a **software developer** or **[quality assurance](/en/wiki/quality-assurance/) (QA) engineer** may also contribute to the test specification, particularly in teams that embrace agile methodologies where roles can be more fluid and collaborative.
@@ -175,7 +173,6 @@ Generative drafts for test design, allowing for iterative test development. Thes
   7. **Test Summary Report**: Generate a summary report that provides an overview of the testing activities, coverage, defect statistics, and overall assessment of the [software quality](/en/wiki/software-quality/).
   Throughout the process, maintain clear communication with the development team and stakeholders to ensure that the Test Specification is being followed and any issues are promptly addressed.
 
-
 ### Types and Techniques
 
 #### What are the different types of Test Specifications?
@@ -191,7 +188,6 @@ Generative drafts for test design, allowing for iterative test development. Thes
   - **Test [Incident Report](/en/wiki/incident-report/)** : Documents any event during testing that requires investigation.
   - **Test Summary Report** : Summarizes the results, conclusions, and recommendations from the testing activities.
   Each specification serves a distinct purpose and collectively ensures comprehensive coverage and traceability throughout the testing lifecycle.
-
 
 #### What techniques can be used to create an effective Test Specification?
 
@@ -231,8 +227,6 @@ Generative drafts for test design, allowing for iterative test development. Thes
     pipelines to ensure they are executed regularly and provide immediate feedback.
   By applying these techniques, [test automation](/en/wiki/test-automation/) engineers can enhance the effectiveness and efficiency of their Test Specifications, leading to more reliable and maintainable automated tests.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How does the type of software or application being tested affect the Test Specification?
 
   The type of software or application being tested directly influences the **Test Specification** as it dictates the **scope**, **complexity**, and **context** of testing. For instance, a web application may require extensive [cross-browser testing](/en/wiki/cross-browser-testing/), while a mobile app might focus on different operating system versions and device compatibility.
@@ -268,12 +262,7 @@ Generative drafts for test design, allowing for iterative test development. Thes
     (e.g., cross-browser, cross-platform testing)
   While functional tests validate what the software does, non-functional tests assess how well the software performs under various conditions and constraints. Both specifications are crucial for comprehensive testing, but they require different approaches and metrics for evaluation. Non-functional tests often involve specialized tools and techniques to simulate load, stress, or security attacks, which are not typically used in [functional testing](/en/wiki/functional-testing/).
 
-  - Test cases for user interactions
-  - Business process flows
-  - Data handling
   - API calls and responses
-  - **Performance**
-    (e.g., response times, throughput)
 
   - **Usability**
 

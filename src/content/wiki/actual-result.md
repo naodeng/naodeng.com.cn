@@ -1,6 +1,6 @@
 ---
 title: "实际结果 ｜ Actual Result"
-description: "关于实际结果的问题？"
+description: "实际结果是执行测试用例后观察到的系统行为或输出，需要与预期结果比较以判断测试是否通过。"
 section: "A"
 related:
   - test-case
@@ -36,7 +36,6 @@ order: 0
     - [“实际结果”差异如何有助于软件优化和改进？](#实际结果差异如何有助于软件优化和改进)
 <!-- TOC END -->
 
-
 >实际结果（又称为测试结果）
 
 实际结果是在进行测试后获得的结果。在测试阶段，实际结果会与测试用例一起记录。在所有测试结束后，它将与预期结果进行比较，注意任何差异。
@@ -47,7 +46,7 @@ order: 0
 
 ### 在软件测试中“实际结果”的定义是什么？
 
-在[软件测试](/zh-cn/wiki/software-testing/)中，**实际结果**指的是执行测试时观察到的系统行为。它是测试步骤执行后应用程序的输出、响应或状态。然后，将这个结果与**[预期结果](/zh-cn/wiki/expected-result/)**进行比较，以确定测试是通过还是失败。实际结果对于发现可能存在缺陷或需要改进的地方至关重要。
+在[软件测试](/zh-cn/wiki/software-testing/)中，**实际结果**指的是执行测试时观察到的系统行为。它是测试步骤执行后应用程序的输出、响应或状态。然后，将这个结果与 **[预期结果](/zh-cn/wiki/expected-result/)** 进行比较，以确定测试是通过还是失败。实际结果对于发现可能存在缺陷或需要改进的地方至关重要。
 
 实际结果通常记录在[测试管理](/zh-cn/wiki/test-management/)工具中或直接在自动化测试代码中。它们作为测试执行的证据，对于测试过程中的可追溯性和责任制非常重要。当实际结果与[预期结果](/zh-cn/wiki/expected-result/)不一致时，会引发调查，可能导致[缺陷](/zh-cn/wiki/bug/)修复和功能增强，以确保软件符合其要求并能够按照预期运行。
 
@@ -84,7 +83,7 @@ order: 0
 
 ### “预期结果”和“实际结果”有什么区别？
 
-在软件[测试自动化](/zh-cn/wiki/test-automation/)中，**[预期结果](/zh-cn/wiki/expected-result/)**是基于需求或设计规范的[测试用例](/zh-cn/wiki/test-case/)的预定义结果。它代表了系统在特定条件下应该表现出的行为。
+在软件[测试自动化](/zh-cn/wiki/test-automation/)中，**[预期结果](/zh-cn/wiki/expected-result/)** 是基于需求或设计规范的[测试用例](/zh-cn/wiki/test-case/)的预定义结果。它代表了系统在特定条件下应该表现出的行为。
 
 另一方面，**实际结果**是系统在执行[测试用例](/zh-cn/wiki/test-case/)时实际表现出的行为。它是从被测试系统中获得的实时结果。
 
@@ -94,7 +93,7 @@ order: 0
 
 ### “实际结果”与“测试用例”有何关系？
 
-在**[测试用例](/zh-cn/wiki/test-case/)**的情境下，**实际结果**是测试执行时所观察到的结果。它直接与**[预期结果](/zh-cn/wiki/expected-result/)**进行比较，以确定测试是否通过或失败。这种比较对于验证被测试软件的行为至关重要。
+在 **[测试用例](/zh-cn/wiki/test-case/)** 的情境下，**实际结果**是测试执行时所观察到的结果。它直接与 **[预期结果](/zh-cn/wiki/expected-result/)** 进行比较，以确定测试是否通过或失败。这种比较对于验证被测试软件的行为至关重要。
 
 对于自动化测试，**实际结果**通常由[测试脚本](/zh-cn/wiki/test-script/)本身捕获。例如，在基于[Selenium](/zh-cn/wiki/selenium/)的测试中，脚本可能包含如下断言：
 
@@ -104,13 +103,13 @@ assert.equal(element.getText(), "Expected Text");
 
 这里，`element.getText()`是与预期文本进行比较的**实际结果**。如果它们匹配，测试通过；否则，测试失败。
 
-**实际结果**对于准确定位**[测试用例](/zh-cn/wiki/test-case/)**中故障发生的确切步骤至关重要。在复杂的场景中，它有助于将缺陷隔离到特定的模块或功能。此外，当测试失败时，**实际结果**可以深入了解[缺陷](/zh-cn/wiki/bug/)的性质，有助于调试和解决问题。
+**实际结果**对于准确定位 **[测试用例](/zh-cn/wiki/test-case/)** 中故障发生的确切步骤至关重要。在复杂的场景中，它有助于将缺陷隔离到特定的模块或功能。此外，当测试失败时，**实际结果**可以深入了解[缺陷](/zh-cn/wiki/bug/)的性质，有助于调试和解决问题。
 
 在持续集成环境中，**实际结果**通常被记录并作为[测试报告](/zh-cn/wiki/test-report/)的一部分。这对于利益相关者了解软件的当前状态以及开发人员在发布软件之前解决任何问题非常有价值。
 
 ### 在什么情况下“实际结果”可能与“预期结果”不同？
 
-**实际结果**与**[预期结果](/zh-cn/wiki/expected-result/)**之间可能存在差异的原因有很多：
+**实际结果**与 **[预期结果](/zh-cn/wiki/expected-result/)** 之间可能存在差异的原因有很多：
 
 - **代码缺陷**：应用代码中的错误可能导致意外行为。
 - **环境问题**：测试环境的差异，如配置、数据库或网络条件的不同。
@@ -129,7 +128,7 @@ assert.equal(element.getText(), "Expected Text");
 
 ### 测试过程中如何记录“实际结果”？
 
-在测试过程中记录**实际结果**通常包括对测试执行后系统行为的清晰而简明的描述。它记录在[测试管理](/zh-cn/wiki/test-management/)工具或[测试用例](/zh-cn/wiki/test-case/)文档中，通常与相应的**[测试用例](/zh-cn/wiki/test-case/)**和**[预期结果](/zh-cn/wiki/expected-result/)**一起，以便进行轻松比较。
+在测试过程中记录**实际结果**通常包括对测试执行后系统行为的清晰而简明的描述。它记录在[测试管理](/zh-cn/wiki/test-management/)工具或[测试用例](/zh-cn/wiki/test-case/)文档中，通常与相应的 **[测试用例](/zh-cn/wiki/test-case/)** 和 **[预期结果](/zh-cn/wiki/expected-result/)** 一起，以便进行轻松比较。
 
 以下是一般的方法：
 
@@ -148,7 +147,7 @@ assert.equal(element.getText(), "Expected Text");
 
 在[测试自动化](/zh-cn/wiki/test-automation/)中捕获**实际结果**通常涉及多种工具和方法：
 
-- **自动化[测试脚本](/zh-cn/wiki/test-script/)**：在诸如**[Selenium](/zh-cn/wiki/selenium/)**、**[Cypress](/zh-cn/wiki/cypress/)**或**Appium**等框架中编写的脚本在[测试执行](/zh-cn/wiki/test-execution/)期间自动捕获输出。例如：
+- **自动化[测试脚本](/zh-cn/wiki/test-script/)**：在诸如 **[Selenium](/zh-cn/wiki/selenium/)**、**[Cypress](/zh-cn/wiki/cypress/)** 或**Appium**等框架中编写的脚本在[测试执行](/zh-cn/wiki/test-execution/)期间自动捕获输出。例如：
 
   ```javascript
   // 示例：使用 Selenium 进行文本验证
@@ -157,13 +156,13 @@ assert.equal(element.getText(), "Expected Text");
 
 - **日志记录**：通常，自动化测试被设计为记录结果和错误。诸如 Java 的**Log4j**或[Node.js](/zh-cn/wiki/node-js/)的**Winston**之类的工具可用于记录实际结果。
 
-- **截图**：诸如**[Selenium](/zh-cn/wiki/selenium/)**之类的工具可以在执行测试步骤时捕获应用程序状态的截图，这对于 UI 测试很有用。
+- **截图**：诸如 **[Selenium](/zh-cn/wiki/selenium/)** 之类的工具可以在执行测试步骤时捕获应用程序状态的截图，这对于 UI 测试很有用。
 
 - **视频录制**：一些测试框架，如**TestCafe**或云服务如**Sauce Labs**，提供视频录制功能以捕获[测试执行](/zh-cn/wiki/test-execution/)。
 
-- **[API](/zh-cn/wiki/api/)响应**：对于[API 测试](/zh-cn/wiki/api-testing/)，诸如**[Postman](/zh-cn/wiki/postman/)**或**RestAssured**之类的工具捕获 HTTP 响应数据，这代表了实际结果。
+- **[API](/zh-cn/wiki/api/)响应**：对于[API 测试](/zh-cn/wiki/api-testing/)，诸如 **[Postman](/zh-cn/wiki/postman/)** 或**RestAssured**之类的工具捕获 HTTP 响应数据，这代表了实际结果。
 
-- **性能数据**：诸如**[JMeter](/zh-cn/wiki/jmeter/)**或**Gatling**之类的工具捕获时间和吞吐量数据作为实际结果进行[性能测试](/zh-cn/wiki/performance-testing/)。
+- **性能数据**：诸如 **[JMeter](/zh-cn/wiki/jmeter/)** 或**Gatling**之类的工具捕获时间和吞吐量数据作为实际结果进行[性能测试](/zh-cn/wiki/performance-testing/)。
 
 - **[测试报告](/zh-cn/wiki/test-report/)**：诸如**JUnit**、**TestNG**或**Mocha**之类的框架生成包含实际结果的报告。这些报告可以进一步与**Jenkins**或**GitLab CI**等 CI/CD 工具集成，以进行全面的报告。
 
@@ -197,15 +196,15 @@ assert.equal(element.getText(), "Expected Text");
 
 ### “实际结果”如何影响回归测试？
 
-在[回归测试](/zh-cn/wiki/regression-testing/)中，**实际结果**对于验证最近的代码更改是否对现有功能产生不良影响至关重要。它是在软件被修改后[测试用例](/zh-cn/wiki/test-case/)的结果。通过将**实际结果**与**[期望结果](/zh-cn/wiki/expected-result/)**进行比较，测试人员可以确定是否发生了回归错误。
+在[回归测试](/zh-cn/wiki/regression-testing/)中，**实际结果**对于验证最近的代码更改是否对现有功能产生不良影响至关重要。它是在软件被修改后[测试用例](/zh-cn/wiki/test-case/)的结果。通过将**实际结果**与 **[期望结果](/zh-cn/wiki/expected-result/)** 进行比较，测试人员可以确定是否发生了回归错误。
 
-对于自动化回归测试，**实际结果**通常由[测试脚本](/zh-cn/wiki/test-script/)捕获，并与**[期望结果](/zh-cn/wiki/expected-result/)**进行程序化比较。差异会触发测试失败，提醒工程师可能存在回归。这种比较通常通过测试代码中的断言完成。
+对于自动化回归测试，**实际结果**通常由[测试脚本](/zh-cn/wiki/test-script/)捕获，并与 **[期望结果](/zh-cn/wiki/expected-result/)** 进行程序化比较。差异会触发测试失败，提醒工程师可能存在回归。这种比较通常通过测试代码中的断言完成。
 
 ```typescript
 assert.equal(actualResult, expectedResult, 'The actual result does not match the expected result.');
 ```
 
-当**实际结果**与**[期望结果](/zh-cn/wiki/expected-result/)**匹配时，表明应用程序的行为与其先前状态保持一致。相反，不匹配可能表示最近的更改引入了一个缺陷，需要进一步调查和潜在的代码修复。
+当**实际结果**与 **[期望结果](/zh-cn/wiki/expected-result/)** 匹配时，表明应用程序的行为与其先前状态保持一致。相反，不匹配可能表示最近的更改引入了一个缺陷，需要进一步调查和潜在的代码修复。
 
 在持续集成环境中，**实际结果**是反馈循环的一部分，通知开发团队关于每次代码提交后其应用程序稳定性的情况。这种即时反馈对于保持[软件质量](/zh-cn/wiki/software-quality/)和加速开发周期至关重要。
 
@@ -213,7 +212,7 @@ assert.equal(actualResult, expectedResult, 'The actual result does not match the
 
 ### “实际结果”在自动化测试中扮演什么角色？
 
-在[自动化测试](/zh-cn/wiki/automated-testing/)中，**实际结果**作为验证软件行为是否符合预期结果的关键数据点起着重要作用。这是由[测试脚本](/zh-cn/wiki/test-script/)执行时产生的输出。然后，此结果会自动与**[期望结果](/zh-cn/wiki/expected-result/)**进行比较，以确定测试是否通过或失败。
+在[自动化测试](/zh-cn/wiki/automated-testing/)中，**实际结果**作为验证软件行为是否符合预期结果的关键数据点起着重要作用。这是由[测试脚本](/zh-cn/wiki/test-script/)执行时产生的输出。然后，此结果会自动与 **[期望结果](/zh-cn/wiki/expected-result/)** 进行比较，以确定测试是否通过或失败。
 
 ```typescript
 // 捕获自动化测试中的实际结果的示例
@@ -231,7 +230,7 @@ assert.equal(actualResult, expectedResult, '测试失败：实际结果与期望
 
 ### “实际结果”差异如何有助于软件优化和改进？
 
-**实际结果**与**[期望结果](/zh-cn/wiki/expected-result/)**之间的差异对于软件的优化和改进至关重要。当[测试用例](/zh-cn/wiki/test-case/)的实际结果偏离预期时，这表明存在潜在的缺陷或需要改进的领域。这些差异可能导致：
+**实际结果**与 **[期望结果](/zh-cn/wiki/expected-result/)** 之间的差异对于软件的优化和改进至关重要。当[测试用例](/zh-cn/wiki/test-case/)的实际结果偏离预期时，这表明存在潜在的缺陷或需要改进的领域。这些差异可能导致：
 
 - **需求的完善**：不一致性可能揭示需求理解不足或存在漏洞，促使更清晰和精确的规范。
 - **代码优化**：在测试中暴露的性能问题或意外行为可以引导开发人员优化算法和重构代码。

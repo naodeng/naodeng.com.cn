@@ -86,7 +86,7 @@ order: 0
 
 #### 健全性测试在敏捷方法中的作用是什么？
 
-在敏捷方法中， **[健全性测试](/zh-cn/wiki/sanity-testing/)** 用作重点检查，以确保特定功能或 [bug](/zh-cn/wiki/bug/) 修复在微小更改或新版本中按预期工作。这是一种快速、狭窄的回​​归测试，用于验证代码更改没有破坏现有功能。 [健全性测试](/zh-cn/wiki/sanity-testing/) 通常在**冒烟测试**之后和更广泛的[回归测试](/zh-cn/wiki/regression-testing/) 或[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT) 之前完成。
+在敏捷方法中， **[健全性测试](/zh-cn/wiki/sanity-testing/)** 用作重点检查，以确保特定功能或 [bug](/zh-cn/wiki/bug/) 修复在微小更改或新版本中按预期工作。这是一种快速、狭窄的回归测试，用于验证代码更改没有破坏现有功能。 [健全性测试](/zh-cn/wiki/sanity-testing/) 通常在**冒烟测试**之后和更广泛的[回归测试](/zh-cn/wiki/regression-testing/) 或[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT) 之前完成。
   敏捷团队经常在持续集成和部署 (CI/CD) 期间使用健全性测试来验证最近的提交没有引入任何重大问题。这在敏捷的迭代开发周期中至关重要，因为变化频繁且快速。
   由于敏捷强调**用户满意度**和**工作软件**，[健全性测试](/zh-cn/wiki/sanity-testing/) 通过快速确认最新的更改没有损害用户体验或核心功能来符合这些原则。它有助于为下一个 [迭代](/zh-cn/wiki/iteration/) 开发保持稳定的产品。
   健全性测试通常是**手动**，但可以自动化以提高效率。它们通常源自与最近变化最相关的回归测试子集。虽然它们可以重复使用，但应定期对其进行审查和更新，以与不断发展的软件保持一致。
@@ -222,7 +222,7 @@ order: 0
 
 1. **识别关键路径**是稳定的并且不太可能经常改变。这些应该是您理智套件的重点。
 
-2. **创建自动化[测试脚本](/zh-cn/wiki/test-script/)**对于这些关键功能，使用首选的测试自动化工具。
+2. **创建自动化[测试脚本](/zh-cn/wiki/test-script/)** 对于这些关键功能，使用首选的测试自动化工具。
 
 3. **与 CI/CD 管道集成**在构建后或部署到临时环境后触发健全套件。
 
@@ -261,15 +261,13 @@ order: 0
 
 - **验证修复**和新功能快速确认它们按预期工作，而不会引入新问题。
 
-- **隔离[测试环境](/zh-cn/wiki/test-environment/)**确保健全性测试不受外部因素影响并提供可靠的结果。
+- **隔离[测试环境](/zh-cn/wiki/test-environment/)** 确保健全性测试不受外部因素影响并提供可靠的结果。
 
 - **记录结果**简而言之，重点关注通过/失败状态和需要立即关注的关键观察结果。
 
 - **有效沟通**与开发团队一起快速解决健全性测试期间发现的任何问题。
 
 - **审查和更新**定期检查您的健全性测试套件，以反映应用程序中的更改并删除过时或冗余的测试。 通过遵循这些实践，您可以最大限度地提高 [健全性测试](/zh-cn/wiki/sanity-testing/) 工作的效率和效果，确保软件稳定并准备好进行进一步测试或发布。
-
-- **优先考虑关键路径**重点关注最近发生变化的最重要的特性和功能。
 
 - **审查和更新**定期检查您的健全性测试套件，以反映应用程序中的更改并删除过时或冗余的测试。
 
@@ -294,24 +292,14 @@ order: 0
 - **状态影响**：评估任何故障对整个系统的影响。
 - **建议**：提供立即建议或采取的行动，例如提交错误报告或停止发布。 使用 Markdown 进行格式化：
 
-- **Outcome**: Passed/Failed
-- **Functionalities Tested**:
-- Login process
-- Payment gateway integration
-- New user registration
-- **Failures**:
-- Payment gateway integration: Timeout error when processing payments. Steps to reproduce: [Link to test case]. Screenshot: ![Error Screenshot](url).
-- **Environment**: Windows 10, Software v2.3.1, Test Environment B
-- **Test Data Used**: Test Credit Card #1234
-- **Impact**: Payment processing critical for release. Failure blocks release.
-- **Recommendations**: Bug reported (ID #98765), suggest rollback to previous stable version.
+- **结果**：失败。
+- **已测试功能**：
+  - 登录流程。
+  - 支付网关集成。
+  - 新用户注册。
+- **失败项**：支付网关处理付款时发生超时。重现步骤：提交付款请求并等待网关响应。
+- **环境**：Windows 10，软件版本 2.3.1，测试环境 B。
+- **测试数据**：测试信用卡（尾号 1234）。
+- **影响**：支付是发布关键功能；问题未修复前应阻止发布。
+- **建议**：已报告缺陷（ID #98765），建议回滚到上一个稳定版本。
 确保文档是**最新的**并且所有相关团队成员**均可访问**。
-
-- **总结结果**：以明确的声明开始，表明健全性测试是通过还是失败。
-- **列出测试的功能**：提供已检查的特定功能的要点列表。
-- **详细失败**：对于任何失败的测试，请包括问题的简要描述、重现步骤以及任何相关的屏幕截图或错误消息。
-- **参考 [测试用例](/zh-cn/wiki/test-case/)** ：链接到用于健全性测试的详细测试用例或脚本（如果适用）。
-- **包括环境详细信息**：记下测试环境、软件版本和配置。
-- **记录[测试数据](/zh-cn/wiki/test-data/)**：提及使用的任何特定数据集，这对于重现问题至关重要。
-- **状态影响**：评估任何故障对整个系统的影响。
-- **建议**：提供立即建议或采取的行动，例如提交错误报告或停止发布。

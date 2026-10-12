@@ -124,8 +124,6 @@ Evaluation of a web application's user interface to identify glitches and ensure
     ensures that the application is usable by people with disabilities, often focusing on UI elements but also considering other factors.
   Each type of testing serves a distinct purpose and may use different tools and techniques. While UI testing is critical for ensuring a positive user experience, it is just one part of a comprehensive testing strategy that includes various other tests to ensure [software quality](/en/wiki/software-quality/) and reliability.
 
-  - **[Unit testing](/en/wiki/unit-testing/)**
-
 ### Tools and Techniques
 
 #### What tools are commonly used for UI testing?
@@ -213,15 +211,11 @@ Evaluation of a web application's user interface to identify glitches and ensure
   - **Collaborate with developers** to ensure UI components are testable, with proper IDs and attributes that facilitate automation.
   By following these practices, you can create robust, maintainable, and efficient UI tests that contribute to the overall quality of the software product.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How can I use Selenium for UI testing?
 
   To use [Selenium](/en/wiki/selenium/) for UI testing, follow these steps:
 
   1. **Set up your environment**:
-    - Install a Selenium WebDriver for your preferred browser (e.g., ChromeDriver for Chrome).
-    - Choose a programming language (e.g., Java, Python) and set up the corresponding Selenium client library.
     - Install a Selenium WebDriver for your preferred browser (e.g., ChromeDriver for Chrome).
     - Choose a programming language (e.g., Java, Python) and set up the corresponding Selenium client library.
   2. **Instantiate a [WebDriver](/en/wiki/webdriver/)**:
@@ -265,8 +259,6 @@ Evaluation of a web application's user interface to identify glitches and ensure
   For **[cross-browser testing](/en/wiki/cross-browser-testing/)**, instantiate different [WebDriver](/en/wiki/webdriver/) instances for each browser and run your tests against them.
   **Exception handling** is crucial to deal with unexpected scenarios and make your tests robust.
   Finally, integrate your tests with build tools (like Maven or Gradle) and CI/CD pipelines to automate the execution of your UI tests as part of your development process.
-
-  1. **Set up your environment**:
 
 ### Challenges and Solutions
 
@@ -435,9 +427,6 @@ Evaluation of a web application's user interface to identify glitches and ensure
     **results**
     to identify any unintended changes.
   Visual validation is a powerful addition to UI testing, catching issues that might be missed by functional tests alone. However, it requires careful management of baseline images and an understanding of when to update them as the application's UI evolves.
-
-  1. Define the
-    **baseline**
 
 #### How can I integrate UI testing into a continuous integration/continuous delivery (CI/CD) pipeline?
 

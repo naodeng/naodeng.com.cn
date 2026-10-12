@@ -1,6 +1,6 @@
 ---
 title: "Xpath Query ｜ Xpath Query"
-description: "XPath 查询（XPath Query）是一种功能强大的语言，设计用于从 XML 文档中选择节点。它在查询 HTML 结构方面同样有效，尤其是在像 Selenium 这样的 Web 自动化 框架中使用时。XPath 以其精确执行复杂查询的能力而著称，使测试人员能够精确地定位网页 DOM 中的元素…"
+description: "XPath 查询（XPath Query）是一种功能强大的语言，设计用于从 XML 文档中选择节点。它在查询 HTML 结构方面同样有效，尤其是在像 Selenium 这样的 Web 自动化 框架中使用时。"
 section: "X"
 related:
   - webdriver
@@ -68,7 +68,7 @@ order: 0
   //input[contains(@name, 'user')]
   ```
 XPath 能够使用各种轴（例如 `ancestor`、`descendant`、`following` 和 `preceding`）导航 DOM，为测试人员提供了一个通用工具包，可以根据 Web 元素在 DOM 树中的位置与它们进行交互。当元素缺乏唯一标识符或 DOM 结构是动态时，这特别有用。
-  在[测试自动化](/zh-cn/wiki/test-automation/) 中，XPath 查询通常在脚本中使用来与 Web 元素交互，例如单击按钮或提取文本。 XPath 的精确性使其对​​于断言元素或其状态的存在非常有价值，这对于验证 Web 应用程序的功能至关重要。
+  在[测试自动化](/zh-cn/wiki/test-automation/) 中，XPath 查询通常在脚本中使用来与 Web 元素交互，例如单击按钮或提取文本。 XPath 的精确性使其对于断言元素或其状态的存在非常有价值，这对于验证 Web 应用程序的功能至关重要。
   虽然 XPath 是 [网络自动化](/zh-cn/wiki/web-automation/) 的基石，但它需要精心设计，以避免可能因 UI 更改而破坏的脆弱选择器。测试人员必须平衡特异性和灵活性，通常选择能够承受 DOM 结构中微小变化的相对 XPath 表达式。有效使用 XPath 可以显着增强自动化 [测试套件](/zh-cn/wiki/test-suite/) 的稳健性和 [可维护性](/zh-cn/wiki/maintainability/)。
 
 #### 为什么 XPath 查询在软件自动化中很重要？
@@ -119,22 +119,6 @@ XPath 能够使用各种轴（例如 `ancestor`、`descendant`、`following` 和
 
 - `/@href` 选择 `href` 的属性 `a` 元素。
 
-- **根节点** ：查询的起点，表示为 `/` 。
-
-- **轴说明符** ：定义节点之间的树关系，如 `child::` , `ancestor::` , 或 `following-sibling::` 。
-
-- `//` 从文档中的任意位置选择节点。
-
-- `div` 指定元素类型。
-
-- `[@class='example']` 是一个谓词过滤 `div` 类属性为“example”的元素。
-
-- `//a` 选择全部 `a` 的后代元素 `div` 。
-
-- `[text()='Click Here']` 是另一个谓词，这次选择 `a` 带有文本“单击此处”的元素。
-
-- `/@href` 选择 `href` 的属性 `a` 元素。
-
 #### XPath 查询在 e2e 测试中的作用是什么？
 
 在端到端 (e2e) 测试中，**[XPath 查询](/zh-cn/wiki/xpath-query/)** 在定位 Web 元素并与之交互方面发挥着至关重要的作用。它使测试人员能够精确定位网页的文档对象模型 (DOM) 中的特定元素，这对于模拟用户交互（例如单击按钮、输入文本以及验证元素的存在或属性）至关重要。
@@ -151,9 +135,9 @@ XPath 能够使用各种轴（例如 `ancestor`、`descendant`、`following` 和
 
 #### XPath 查询与其他查询语言有何不同？
 
-[XPath 查询](/zh-cn/wiki/xpath-query/) 与其他查询语言的不同之处主要在于它对 XML 和 HTML 结构的**特异性。与 [SQL](/zh-cn/wiki/sql/)（设计用于查询关系 [数据库](/zh-cn/wiki/database/)）或 CSS 选择器（用于在 HTML 中设置样式和选择元素）不同，XPath 允许根据各种条件（包括节点的层次结构、属性和 XML 文档中的内容）**选择节点**。
+[XPath 查询](/zh-cn/wiki/xpath-query/) 与其他查询语言的不同之处主要在于它对 XML 和 HTML 结构的**特异性。与 [SQL](/zh-cn/wiki/sql/)（设计用于查询关系 [数据库](/zh-cn/wiki/database/)）或 CSS 选择器（用于在 HTML 中设置样式和选择元素）不同，XPath 允许根据各种条件（包括节点的层次结构、属性和 XML 文档中的内容）** 选择节点。
   XPath 以其**丰富的函数**和**轴**而脱颖而出，允许复杂的遍历和选择，而这在其他语言中并不那么简单。例如，虽然 CSS 选择器可用于导航 HTML 文档，但它们缺乏在文档层次结构中向上遍历或基于文本内容选择节点的能力，而 XPath 可以轻松做到这两点。
-  此外，XPath 使用**谓词**的能力提供了比 CSS 选择器中通常提供的更精细的选择控制级别。这使得它对于需要精确提取数据的场景特别强大，例如在需要针对特定​​元素的[测试自动化](/zh-cn/wiki/test-automation/)中。
+  此外，XPath 使用**谓词**的能力提供了比 CSS 选择器中通常提供的更精细的选择控制级别。这使得它对于需要精确提取数据的场景特别强大，例如在需要针对特定元素的[测试自动化](/zh-cn/wiki/test-automation/)中。
   与用于 JSON 对象的 JSONPath 不同，XPath 是针对 XML 的结构化特性而设计的，不能直接应用于 JSON。但是，两者都具有相似的路径表达式概念来导航元素。
   总体而言，XPath 的独特功能使其成为需要在 XML 和 HTML 文档中**精确导航和选择**的场景中不可或缺的工具，特别是在软件[测试自动化](/zh-cn/wiki/test-automation/) 的上下文中。
 
@@ -205,7 +189,6 @@ XPath 能够使用各种轴（例如 `ancestor`、`descendant`、`following` 和
     ../sibling
   ```
 这些元素可以组合起来形成复杂的查询，从而精确定位 XML 结构中所需的节点。请记住使用简洁的表达式并利用特定的路径和谓词来实现高效的查询。
-
 
 #### 如何构建 XPath 查询来选择节点？
 
@@ -307,12 +290,6 @@ XPath 函数是可在 XPath 表达式中使用的操作，用于在节点或节�
 `not()` 函数反转`@checked` 谓词的布尔结果。
   正确使用函数可以大大提高 [测试自动化](/zh-cn/wiki/test-automation/) 脚本中 XPath 查询的精度和效率。
 
-- **节点集函数**：在节点集上操作，例如， `count()` , `position()` 。
-
-- **字符串函数**：操作字符串，例如， `concat()` , `contains()` , `substring()` 。
-
-- **布尔函数**：处理逻辑运算，例如， `not()` , `true()` , `false()` 。
-
 - **数字函数**：执行数字运算，例如， `sum()` , `floor()` , `round()` 。
 
 ### 应用与使用
@@ -364,17 +341,6 @@ XPath 函数是可在 XPath 表达式中使用的操作，用于在节点或节�
 ```
 通过执行这些步骤，您可以有效地利用 [selenium](/zh-cn/wiki/selenium/) 中的 XPath 来定位和操作 Web 元素，以满足您的自动化测试需求。
 
-1. **导入**测试脚本中必要的 Selenium WebDriver 类：
-
-1. **实例化** WebDriver 并导航到所需的 URL：
-
-1. **定位元素**使用 `driver.findElement()` 方法结合 `By.xpath()`：
-
-1. **互动**使用找到的元素，例如，通过单击按钮或检索其文本：
-
-1. **链** XPath 函数和谓词可在处理复杂的 HTML 结构时优化您的选择。
-2. 测试完成后**关闭**浏览器：
-
 #### XPath 查询在软件自动化中有哪些常见用例？
 
 [XPath 查询](/zh-cn/wiki/xpath-query/) 通常用于软件[测试自动化](/zh-cn/wiki/test-automation/)，用于以下[用例](/zh-cn/wiki/use-case/)：
@@ -422,14 +388,6 @@ XPath 函数是可在 XPath 表达式中使用的操作，用于在节点或节�
   driver.findElement(By.xpath("//input[@type='checkbox' and not(@disabled)]"));
   ```
 这些[用例](/zh-cn/wiki/use-case/) 展示了 XPath 在解决软件[测试自动化](/zh-cn/wiki/test-automation/) 中遇到的各种场景方面的多功能性。
-
-- **定位元素**：自动化程序使用 XPath 来查明网页或 XML 文档中需要交互或验证的特定元素。例如，单击按钮、选中复选框或验证节点是否存在。
-- **动态元素识别**：当元素具有动态 ID 或类时，XPath 可以使用部分匹配或其他属性来定位这些元素。
-- **复杂 DOM 遍历**：XPath 擅长通过使用轴和谓词遍历父节点、子节点或同级节点来导航复杂的文档对象模型 (DOM)。
-- **处理 Web 表**：XPath 查询可以迭代 Web 表的行和列以提取数据或与数据交互。
-- **自定义搜索**：XPath 的功能允许自定义搜索，例如选择具有特定文本、属性值或遵循特定模式的元素。
-- **XML 数据提取**：在非 Web 上下文中，XPath 用于从 XML 文件中提取信息，这对于配置、数据驱动测试或验证 API 响应非常有用。
-- **条件元素选择**：XPath 在谓词中使用条件的能力使测试人员能够根据复杂的标准选择元素。
 
 #### 如何使用 XPath 查询来导航 XML 文档？
 
@@ -497,7 +455,7 @@ XPath 查询可能会给 [测试自动化](/zh-cn/wiki/test-automation/) 带来�
 
 2. **构造XPath表达式**在 DOM 中唯一定位该元素。
 
-3. **执行[XPath 查询](/zh-cn/wiki/xpath-query/)**使用支持 XPath 的工具或库，例如 Python 中的 Selenium 或 lxml。 例如，要从具有特定 `id` 的段落中提取文本，您可以使用：
+3. **执行[XPath 查询](/zh-cn/wiki/xpath-query/)** 使用支持 XPath 的工具或库，例如 Python 中的 Selenium 或 lxml。 例如，要从具有特定 `id` 的段落中提取文本，您可以使用：
 
   ```
   //p[@id='unique-paragraph-id']/text()
@@ -515,11 +473,7 @@ XPath 查询可能会给 [测试自动化](/zh-cn/wiki/test-automation/) 带来�
 ```
 **记住**要确保您的 XPath 查询精确且高效，以避免性能问题并明确定位元素。使用相对路径和谓词来缩小选择范围并避免过于复杂的表达式，因为表达式可能脆弱且难以维护。
 
-1. **识别HTML元素**包含所需的数据。
-
-2. **构造XPath表达式**在 DOM 中唯一定位该元素。
-
-3. **执行[XPath 查询](/zh-cn/wiki/xpath-query/)**使用支持 XPath 的工具或库，例如 Python 中的 Selenium 或 lxml。
+3. **执行[XPath 查询](/zh-cn/wiki/xpath-query/)** 使用支持 XPath 的工具或库，例如 Python 中的 Selenium 或 lxml。
 
 ### 高级概念
 
@@ -582,7 +536,6 @@ XPath 提供了多种高级功能，可用于在 XML 和 HTML 文档中执行复
   ```
 这些函数增强了直接在 XPath 查询中执行文本操作、字符串比较和数学计算的能力，使其成为[测试自动化](/zh-cn/wiki/test-automation/) 工程师的强大工具。
 
-
 #### XPath 查询如何与 XML 中的命名空间一起使用？
 
 在处理使用命名空间的 XML 文档时，必须调整 XPath 查询以正确引用这些命名空间内的元素。为此，您必须注册命名空间并在编写 XPath 表达式时使用前缀。
@@ -613,10 +566,6 @@ XPath 提供了多种高级功能，可用于在 XML 和 HTML 文档中执行复
   ```
 请记住，前缀的选择是任意的，不必与 XML 文档中使用的前缀相匹配；它只需要在您的 [XPath 查询](/zh-cn/wiki/xpath-query/) 和命名空间注册中保持一致。
 
-1. **注册命名空间**：在执行[XPath 查询](/zh-cn/wiki/xpath-query/)之前，使用XML解析库提供的[API](/zh-cn/wiki/api/)以前缀注册命名空间。例如，在 Java 的 XPath [API](/zh-cn/wiki/api/) 中，您可以使用 `NamespaceContext` 将前缀映射到名称空间 URI。
-2. **在 [XPath 查询](/zh-cn/wiki/xpath-query/) 中使用前缀**：注册后，请在 XPath 表达式中使用前缀来引用命名空间中的元素。
-1. **编写 XPath 表达式** ：注册命名空间后，您现在可以使用前缀编写 XPath 表达式。
-
 #### 什么是 XPath 注入以及如何防止它？
 
 XPath 注入是一种攻击形式，针对从用户提供的输入构建 XPath 查询的 Web 应用程序。攻击者操纵这些查询以获得对数据的未经授权的访问或绕过身份验证。
@@ -635,12 +584,6 @@ XPath 注入是一种攻击形式，针对从用户提供的输入构建 XPath �
 - **最小权限**：将 XML 数据访问权限限制为应用程序功能所需的最低限度。
 - **安全库**：利用提供安全方法的库来创建 XPath 查询。
 - **错误处理**：实现安全的错误处理，即使检测到 XPath 注入尝试，也不会暴露敏感信息。 通过结合这些策略，您可以显着降低软件 [测试自动化](/zh-cn/wiki/test-automation/) 中 XPath 注入漏洞的风险。
-
-  ```
-    // Example using a safe parameterized API
-    XPathExpression expr = xpath.compile("/users/user[@name=$username]");
-    expr.setParameter("username", userInput);
-  ```
 
 #### 编写高效 XPath 查询的最佳实践有哪些？
 

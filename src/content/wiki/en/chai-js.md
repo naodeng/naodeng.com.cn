@@ -560,11 +560,6 @@ See also:
      ```
   By following these steps, you can extend Chai's functionality and tailor your testing suite to your project's needs.
 
-  1. **Install** the plugin:
-
-     ```
-     npm install chai-as-promised
-     ```
 
 #### What are some popular Chai.js plugins and what do they do?
 

@@ -181,10 +181,6 @@ Ensures web applications function correctly across various web browsers.
   - **LambdaTest**: A cloud-based cross-browser testing platform that allows access to various browser and OS combinations.
   These tools help automate the process of testing web applications across different browsers, ensuring compatibility and functionality.
 
-  - **[Selenium](/en/wiki/selenium/) [WebDriver](/en/wiki/webdriver/)** : An open-source automation tool that supports multiple browsers and operating systems. It can be integrated with various programming languages like Java, C#, and Python.
-  - **WebDriverIO** : A Node.js-based automation framework that wraps around Selenium and provides additional functionality and syntax.
-  - **TestCafe** : A Node.js tool that allows testing in multiple browsers and platforms without Selenium. It uses a proxy to inject scripts into the webpage.
-  - **[Cypress](/en/wiki/cypress/)** : A JavaScript-based end-to-end testing framework that runs in the browser, providing a more consistent testing environment.
 
 #### How to choose the right tool for cross-browser testing?
 
@@ -401,8 +397,6 @@ Ensures web applications function correctly across various web browsers.
   ```
   Additionally, tools like **Galaxy S9** or **iPad Pro** presets can be used to emulate devices in browsers like Chrome DevTools for more precise testing.
   [Responsive design](/en/wiki/responsive-design/) considerations require a more comprehensive set of tests and often lead to an increase in the number of [test scenarios](/en/wiki/test-scenario/). This can be managed by prioritizing critical viewports and functionalities based on analytics data indicating the most commonly used devices and resolutions among the target audience.
-
-  - **Resize the browser window**
 
 #### How to integrate cross-browser testing in the CI/CD pipeline?
 

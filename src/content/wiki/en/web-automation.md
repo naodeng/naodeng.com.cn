@@ -251,168 +251,21 @@ Programmatic operation of websites through test scripts and tools, replacing man
 
 #### What is the process of setting up a web automation test?
 
-  Setting up a web automation test involves several key steps:
+Setting up a web automation test generally involves these steps:
 
-  1. **Choose a testing framework** that integrates with your preferred web automation tool, like Mocha, [Jest](/en/wiki/jest/), or [Jasmine](/en/wiki/jasmine/).
-  2. **Set up the environment**:
-    - Install the necessary
-      **web driver**
-      for the browser you're testing on.
+1. **Choose compatible tools.** Select a browser automation tool and a test framework that fit the application and team, such as Mocha or Jest.
+2. **Prepare the environment.** Install the tool's required language packages and browser dependencies. Configure a WebDriver when the chosen tool requires one.
+3. **Configure the [test runner](/en/wiki/test-runner/).** Define [test suites](/en/wiki/test-suite/) and [test cases](/en/wiki/test-case/), and set the application URL, timeouts, and retries.
+4. **Write [test scripts](/en/wiki/test-script/).** Use stable selectors and assertions to check expected behavior. A [Page Object Model](/en/wiki/page-object-model/) can help organize scripts when it suits the project.
+5. **Manage [test data](/en/wiki/test-data/).** Keep reusable inputs in external files such as JSON or CSV, and use data-driven tests when multiple input sets are needed.
+6. **Start a browser session.** Open a browser instance and navigate to the application under test.
+7. **Interact with page elements.** Locate elements with CSS selectors or XPath, then perform actions such as clicking buttons and entering text.
+8. **Synchronize with the page.** Use condition-based waits for dynamic content instead of relying on fixed delays.
+9. **Run the tests.** Execute them from the command line or a CI/CD pipeline. Use parallel execution when the tool supports it and the tests are isolated.
+10. **Review the results.** Inspect logs and screenshots for failures, and use a reporting tool to make results easier to review.
+11. **Maintain the tests.** Refactor and update scripts as the application and its requirements change.
 
-     - Ensure the
-       **language bindings**
-       (e.g., Java, Python, JavaScript) are in place for the selected tool.
-
-     - Install the necessary
-       **web driver**
-       for the browser you're testing on.
-
-  3. **Configure the [test runner](/en/wiki/test-runner/)**:
-    - Define
-      **[test suites](/en/wiki/test-suite/)**
-      and
-      **[test cases](/en/wiki/test-case/)**
-      .
-
-     - Set
-       **test parameters**
-       , such as timeouts and retries.
-
-     - Define
-       **[test suites](/en/wiki/test-suite/)**
-       and
-       **[test cases](/en/wiki/test-case/)**
-       .
-
-     - Set
-       **test parameters**
-       , such as timeouts and retries.
-
-  4. **Write [test scripts](/en/wiki/test-script/)**:
-    - Use
-      **[Page Object Model](/en/wiki/page-object-model/) (POM)**
-      for maintainability.
-
-     - Implement
-       **assertions**
-       to check for expected outcomes.
-
-     - Use
-       **[Page Object Model](/en/wiki/page-object-model/) (POM)**
-       for maintainability.
-
-     - Implement
-       **assertions**
-       to check for expected outcomes.
-
-  5. **Manage [test data](/en/wiki/test-data/)**:
-    - Use
-      **external data sources**
-      (e.g., JSON, CSV) for input data.
-
-     - Implement
-       **data-driven testing**
-       if necessary.
-
-     - Use
-       **external data sources**
-       (e.g., JSON, CSV) for input data.
-
-     - Implement
-       **data-driven testing**
-       if necessary.
-
-  6. **Handle browser sessions**:
-    - Start a new browser instance.
-    - Navigate to the
-      **target URL**
-      .
-
-     - Start a new browser instance.
-     - Navigate to the
-       **target URL**
-       .
-
-  7. **Interact with web elements**:
-    - Locate elements using
-      **selectors**
-      (e.g., CSS, XPath).
-
-     - Perform actions like click, input text, and fetch data.
-     - Locate elements using
-       **selectors**
-       (e.g., CSS, XPath).
-
-     - Perform actions like click, input text, and fetch data.
-  8. **Implement synchronization**:
-    - Use
-      **explicit waits**
-      to handle dynamic content.
-
-     - Use
-       **explicit waits**
-       to handle dynamic content.
-
-  9. **Run tests**:
-    - Execute tests through the command line or a CI/CD pipeline.
-    - Use
-      **parallel execution**
-      for faster feedback.
-
-     - Execute tests through the command line or a CI/CD pipeline.
-     - Use
-       **parallel execution**
-       for faster feedback.
-
-  10. **Analyze test results**:
-    - Review
-      **logs**
-      and
-      **screenshots**
-      for failures.
-
-      - Integrate with a
-        **reporting tool**
-        for better visibility.
-
-      - Review
-        **logs**
-        and
-        **screenshots**
-        for failures.
-
-      - Integrate with a
-        **reporting tool**
-        for better visibility.
-
-  11. **Maintain tests**:
-    - Regularly
-      **refactor**
-      and
-      **update tests**
-      as the application evolves.
-
-      - Regularly
-        **refactor**
-        and
-        **update tests**
-        as the application evolves.
-
-        ```
-        // Example of a simple test script using Selenium WebDriver in JavaScript
-        const { Builder, By, Key, until } = require('selenium-webdriver');
-        (async function example() {
-                let driver = await new Builder().forBrowser('firefox').build();
-                try {
-                        await driver.get('http://www.example.com');
-                        await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
-                        await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
-                } finally {
-                        await driver.quit();
-                }
-        })();
-        ```
-  Remember to **review and adapt** your [setup](/en/wiki/setup/) as tools and best practices evolve.
+Review the setup as tools and project needs evolve.
 
 #### What are some common techniques used in web automation?
 
@@ -544,47 +397,19 @@ Programmatic operation of websites through test scripts and tools, replacing man
   ```
   Remember to **wait for elements** to be present or visible before interacting with them, using explicit waits if necessary, to handle dynamic content. Also, consider **error handling** to manage unexpected behavior or failures gracefully. Lastly, **clean up** after your tests by closing the browser and any other resources used.
 
-  1. **Identify the elements**
-
 ### Advanced Concepts
 
 #### How can you handle CAPTCHA or two-factor authentication in web automation?
 
-  Handling **CAPTCHA** or **two-factor authentication (2FA)** in web automation can be challenging due to their purpose of distinguishing human users from bots. Here are some strategies:
+CAPTCHA and two-factor authentication (2FA) protect accounts. Use dedicated test configuration and accounts to test these flows safely:
 
-  1. **CAPTCHA Bypass Options**:
-    - **[Test Environment](/en/wiki/test-environment/)** : Work with the development team to disable CAPTCHA in the test environment.
-    - **[API](/en/wiki/api-testing/) Key** : Some CAPTCHA providers offer testing API keys that always return a predictable response.
-    - **Whitelisting** : Whitelist the IP addresses of your automation servers to bypass CAPTCHA.
-    - **[Test Environment](/en/wiki/test-environment/)** : Work with the development team to disable CAPTCHA in the test environment.
-    - **[API](/en/wiki/api-testing/) Key** : Some CAPTCHA providers offer testing API keys that always return a predictable response.
-    - **Whitelisting** : Whitelist the IP addresses of your automation servers to bypass CAPTCHA.
-  2. **2FA Bypass Options**:
-    - **Static Codes** : Use static backup codes provided for testing purposes.
-    - **Automation of 2FA** : Automate the retrieval of 2FA codes from email or SMS using APIs or email/SMS automation tools.
-    - **Time-based One-Time Password (TOTP)** : Use libraries like
-      `pyotp`
-      in Python to generate TOTP codes if the secret key is available.
+1. **Use a test CAPTCHA flow.** In an isolated test environment, use provider test keys or a team-approved allowlist limited to that environment.
+2. **Use dedicated 2FA accounts.** Store test-only secrets securely; for time-based one-time passwords (TOTP), a library such as **pyotp** can generate codes from a controlled test secret.
+3. **Use email or SMS sandboxes.** Connect a test inbox, SMS sandbox, or controlled API instead of using real users' verification codes.
+4. **Pause for authorized manual input when needed.** Do not capture or store real users' credentials or verification codes.
+5. **Confirm the security policy.** Coordinate permitted methods with the development and security teams, and protect test credentials.
 
-     - **Static Codes** : Use static backup codes provided for testing purposes.
-     - **Automation of 2FA** : Automate the retrieval of 2FA codes from email or SMS using APIs or email/SMS automation tools.
-     - **Time-based One-Time Password (TOTP)** : Use libraries like
-       `pyotp`
-       in Python to generate TOTP codes if the secret key is available.
-
-  3. **External Services**:
-    - **CAPTCHA Solving Services** : Use third-party services that solve CAPTCHA for a fee. This approach should be used judiciously and ethically.
-    - **CAPTCHA Solving Services** : Use third-party services that solve CAPTCHA for a fee. This approach should be used judiciously and ethically.
-  4. **Manual Intervention**:
-    - **Manual Input** : Pause the automation and allow a human to manually solve CAPTCHA or enter 2FA codes.
-    - **Manual Input** : Pause the automation and allow a human to manually solve CAPTCHA or enter 2FA codes.
-  5. **Coordination with Security Policies**:
-    - **Policy Exceptions** : Coordinate with security teams to create policy exceptions for automation purposes.
-    - **Policy Exceptions** : Coordinate with security teams to create policy exceptions for automation purposes.
-  Remember, bypassing security features like CAPTCHA and 2FA should be done in a manner that respects user security and privacy, and only in environments where it's legally and ethically acceptable. Always prioritize secure and responsible testing practices.
-
-  1. **CAPTCHA Bypass Options**:
-
+Do not automate CAPTCHA or 2FA bypasses on production accounts, and never commit test secrets or access credentials to the repository.
 #### What is headless browser automation and why is it useful?
 
   Headless browser automation refers to the practice of running browser-driven tests without the graphical user interface (GUI). This is achieved by using a headless browser, which is a web browser without a visible window on screen. Headless browsers can perform all the tasks that a regular browser can, such as rendering HTML, executing JavaScript, and handling user events, but they do so in the background.
@@ -660,8 +485,6 @@ Programmatic operation of websites through test scripts and tools, replacing man
   </ThreadGroup>
   ```
   This XML snippet configures [JMeter](/en/wiki/jmeter/) to simulate 50 users over a ramp-up period of 10 seconds. Combine this with web driver scripts to perform specific actions on the web application under test.
-
-  1. **Identify key scenarios**
 
 #### What is the role of AI in web automation?
 

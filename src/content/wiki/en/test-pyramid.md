@@ -117,9 +117,6 @@ A framework that assists developers in evaluating the mix of tests in an automat
     ```
   Each level serves a specific purpose and provides feedback at different granularities, from detailed unit level to comprehensive system-wide testing.
 
-  - **Unit Tests** : The base and largest section of the pyramid, focusing on testing individual components or functions in isolation. These tests are quick to run and should be numerous, covering the majority of the test suite.
-  - **Integration Tests** : The middle layer, which tests the interactions between integrated units or services. These are fewer than unit tests and ensure that different parts of the application work together as expected.
-  - **End-to-End Tests (E2E)** : The top and smallest section, which tests the flow of an application from start to finish. These simulate real user scenarios and are the most comprehensive but also the most time-consuming and brittle.
 
 #### How does the Test Pyramid help in maintaining the balance between different types of testing?
 
@@ -389,11 +386,3 @@ A framework that assists developers in evaluating the mix of tests in an automat
 
   - **Cost-Benefit Analysis:**
     Justifying the investment in automation with tangible returns on efficiency and reliability.
-
-  - **Maintaining Isolation:**
-
-  - **Environment Configuration:**
-
-  - **Flakiness:**
-
-  - **[Test Coverage](/en/wiki/test-coverage/):**

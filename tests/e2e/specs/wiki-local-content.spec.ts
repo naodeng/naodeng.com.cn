@@ -51,6 +51,25 @@ test("paired Wiki See also labels stay outside headings and tables of contents",
   }
 });
 
+test("Wiki examples stay in code blocks and repaired question headings render at the right level", async ({ page }) => {
+  await page.goto("/en/wiki/inspection/", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Inspection Report", exact: true })).toHaveCount(0);
+  await expect(page.locator(".docs-content pre").filter({ hasText: "## Inspection Report" })).toHaveCount(1);
+
+  await page.goto("/zh-cn/wiki/dependency-testing/", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "依赖测试结果摘要", exact: true })).toHaveCount(0);
+  await expect(page.locator(".docs-content pre").filter({ hasText: "## 依赖测试结果摘要" })).toHaveCount(1);
+
+  await page.goto("/zh-cn/wiki/test-suite/", { waitUntil: "domcontentloaded" });
+  for (const heading of ["创建测试套件时要避免哪些常见错误？", "如何使测试套件更易于维护？"]) {
+    await expect(page.locator(".docs-content article h4").filter({ hasText: heading })).toHaveCount(1);
+  }
+
+  await page.goto("/zh-cn/wiki/web-test-automation-tools/", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "相关术语：", exact: true })).toHaveCount(0);
+  await expect(page.locator(".toc-list--desktop .toc-link").filter({ hasText: "相关术语" })).toHaveCount(0);
+});
+
 test("English Wiki answer labels do not become article headings", async ({ page }) => {
   await page.goto("/en/wiki/chai-js/", { waitUntil: "domcontentloaded" });
   for (const label of ["Should & Expect", "Assert"]) {

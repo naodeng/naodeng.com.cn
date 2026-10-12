@@ -1,6 +1,6 @@
 ---
 title: "前端测试 ｜ Front End Testing"
-description: "前端测试是验证 Web 应用程序或网站的视觉和交互方面的过程。它专注于用户界面 (UI) 和用户体验 (UX)，确保应用在不同浏览器和设备上的表现符合预期。这包括测试布局、设计元素、响应能力和客户端逻辑。前端测试通常使用 JavaScript 编写，并利用 Jest、Cypress 等框架模拟用户操作…"
+description: "前端测试是验证 Web 应用程序或网站的视觉和交互方面的过程。它专注于用户界面 (UI) 和用户体验 (UX)，确保应用在不同浏览器和设备上的表现符合预期。这包括测试布局、设计元素、响应能力和客户端逻辑。"
 section: "F"
 related:
   - accessibility-testing
@@ -153,7 +153,7 @@ order: 0
 
 ```
   // Example of an integration test for a React component
-  import { render, fireEvent, waitFor } from '@testing-library/react';
+  import { render, screen, fireEvent, waitFor } from '@testing-library/react';
   import App from './App';
   import { server, rest } from './testServer';
   test('loads and displays greeting', async () => {
@@ -170,7 +170,7 @@ order: 0
 将[selenium](/zh-cn/wiki/selenium/) 用于[前端测试](/zh-cn/wiki/front-end-testing/) 涉及几个步骤：
 
 1. **设置您的环境**，为您选择的浏览器下载必要的 [WebDriver](/zh-cn/wiki/webdriver/) 并将 [selenium](/zh-cn/wiki/selenium/) 依赖项包含在您的项目中。
-2. **在测试代码中实例化一个[WebDriver](/zh-cn/wiki/webdriver/)**对象来控制浏览器。例如，对于 Chrome：
+2. **在测试代码中实例化一个[WebDriver](/zh-cn/wiki/webdriver/)** 对象来控制浏览器。例如，对于 Chrome：
 
   ```
     WebDriver driver = new ChromeDriver();
@@ -208,43 +208,6 @@ order: 0
     driver.quit();
   ```
 请记住使用 JUnit 或 TestNG 等测试框架构建测试，以便更好地管理和报告。通过将页面信息封装在 [测试脚本](/zh-cn/wiki/test-script/) 之外，实现可维护代码的 [页面对象模型](/zh-cn/wiki/page-object-model/) (POM)。使用显式等待来处理动态内容和异步操作。
-
-1. **设置您的环境**，为您选择的浏览器下载必要的 [WebDriver](/zh-cn/wiki/webdriver/) 并将 [selenium](/zh-cn/wiki/selenium/) 依赖项包含在您的项目中。
-2. **在测试代码中实例化一个[WebDriver](/zh-cn/wiki/webdriver/)** 对象来控制浏览器。例如，对于 Chrome：
-
-  ```
-    WebDriver driver = new ChromeDriver();
-  ```
-
-3. **导航到要使用 `get` 方法测试的网页**：
-
-  ```
-    driver.get("https://www.example.com");
-  ```
-
-  ```
-    WebElement element = driver.findElement(By.id("element_id"));
-  ```
-
-5. **对元素执行操作**，例如单击按钮或在字段中输入文本：
-
-  ```
-    element.click();
-    element.sendKeys("Test input");
-  ```
-
-6. **断言结果** 以验证应用程序的行为是否符合预期。可以对文本、元素状态或其他属性进行断言：
-
-  ```
-    assertEquals("Expected Text", element.getText());
-  ```
-
-7. **通过处理 cookie、向后或向前导航以及在必要时控制窗口或选项卡来管理浏览器会话**。
-8. **测试完成后关闭浏览器**以释放资源：
-
-  ```
-    driver.quit();
-  ```
 
 #### Jest 在前端测试中的作用是什么？
 
@@ -291,15 +254,15 @@ order: 0
 
 - **优先测试**基于用户流和业务关键功能。重点关注最常用且影响最大的路径。
 
-- **保持干净[测试环境](/zh-cn/wiki/test-environment/)**具有专用测试数据。这可以防止测试相互影响并确保一致性。
+- **保持干净[测试环境](/zh-cn/wiki/test-environment/)** 具有专用测试数据。这可以防止测试相互影响并确保一致性。
 
-- **使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**为页面元素创建一个抽象层，这使得代码更易于维护和可读。
+- **使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)** 为页面元素创建一个抽象层，这使得代码更易于维护和可读。
 
 - **实施[响应式设计](/zh-cn/wiki/responsive-design/)测试**验证应用程序是否正确适应不同的屏幕尺寸和方向。
 
 - **自动化回归测试**在代码更改后快速捕获现有功能中的新错误。
 
-- **写得清晰、描述性[测试用例](/zh-cn/wiki/test-case/)**和断言，以便更容易理解测试目的和失败。
+- **写得清晰、描述性[测试用例](/zh-cn/wiki/test-case/)** 和断言，以便更容易理解测试目的和失败。
 
 - **利用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)工具**自动检测功能测试可能无法发现的 UI 差异。
 
@@ -315,30 +278,6 @@ order: 0
 
 - **将测试集成到 CI/CD 管道中**用于持续反馈和早期错误检测。 通过遵循这些实践，您将创建一个强大且可靠的 [前端测试](/zh-cn/wiki/front-end-testing/) 套件，支持高质量软件的交付。
 
-- **优先测试**基于用户流和业务关键功能。重点关注最常用且影响最大的路径。
-
-- **保持干净[测试环境](/zh-cn/wiki/test-environment/)**具有专用测试数据。这可以防止测试相互影响并确保一致性。
-
-- **使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**为页面元素创建一个抽象层，这使得代码更易于维护和可读。
-
-- **实施[响应式设计](/zh-cn/wiki/responsive-design/)测试**验证应用程序是否正确适应不同的屏幕尺寸和方向。
-
-- **自动化回归测试**在代码更改后快速捕获现有功能中的新错误。
-
-- **写得清晰、描述性[测试用例](/zh-cn/wiki/test-case/)**和断言，以便更容易理解测试目的和失败。
-
-- **利用[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)工具**自动检测功能测试可能无法发现的 UI 差异。
-
-- **纳入可访问性检查**进行测试，以确保残疾人可以使用该应用程序。
-
-- **模拟外部依赖项**例如 API 或数据库来隔离前端并独立测试。
-
-- **并行运行测试**减少执行时间并提供更快的反馈。
-
-- **保持测试独立**以避免级联故障并允许以任何顺序运行测试。
-
-- **持续审查和重构测试**消除片状现象并提高可靠性。
-
 - **将测试集成到 CI/CD 管道中**用于持续反馈和早期错误检测。
 
 #### 如何确保前端测试的全面覆盖？
@@ -347,13 +286,13 @@ order: 0
 
 - **定义明确的测试目标**基于需求和用户故事，专注于关键功能。
 
-- 使用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**确定覆盖应用程序最关键和高风险区域的测试用例的优先级。
+- 使用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** 确定覆盖应用程序最关键和高风险区域的测试用例的优先级。
 
 - 实施 **[测试用例](/zh-cn/wiki/test-case/)设计技巧**例如边界值分析、等价划分和用于彻底输入验证的决策表测试。
 
-- 雇用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**像 Cucumber 这样的框架来创建反映用户行为和场景的测试。
+- 雇用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 像 Cucumber 这样的框架来创建反映用户行为和场景的测试。
 
-- 合并 **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**自动检测 UI 差异和布局问题的工具。
+- 合并 **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)** 自动检测 UI 差异和布局问题的工具。
 
 - 杠杆 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**识别代码库中未经测试的部分，并通过编写额外的测试来增加覆盖范围。
 
@@ -361,31 +300,13 @@ order: 0
 
 - 利用 **[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 工具**确保应用程序可供残疾人使用，并遵守 WCAG 等标准。
 
-- 整合 **[性能测试](/zh-cn/wiki/performance-testing/)**验证前端在各种条件下的响应能力和速度。
+- 整合 **[性能测试](/zh-cn/wiki/performance-testing/)** 验证前端在各种条件下的响应能力和速度。
 
-- **查看并更新[测试用例](/zh-cn/wiki/test-case/)**定期适应新功能、用户行为的变化以及不断变化的业务需求。
+- **查看并更新[测试用例](/zh-cn/wiki/test-case/)** 定期适应新功能、用户行为的变化以及不断变化的业务需求。
 
 - 培养一个 **品质文化**开发人员、设计人员和测试人员密切合作，在开发周期的早期发现并解决潜在问题。 通过将这些策略与强大的 [测试自动化](/zh-cn/wiki/test-automation/) 框架相结合，您可以实现符合应用程序质量目标和用户期望的全面覆盖。
 
-- **定义明确的测试目标**基于需求和用户故事，专注于关键功能。
-
-- 使用 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**确定覆盖应用程序最关键和高风险区域的测试用例的优先级。
-
-- 实施 **[测试用例](/zh-cn/wiki/test-case/)设计技巧**例如边界值分析、等价划分和用于彻底输入验证的决策表测试。
-
-- 雇用 **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**像 Cucumber 这样的框架来创建反映用户行为和场景的测试。
-
-- 合并 **[视觉回归测试](/zh-cn/wiki/visual-regression-testing/)**自动检测 UI 差异和布局问题的工具。
-
-- 杠杆 **[代码覆盖率](/zh-cn/wiki/code-coverage/) 工具**识别代码库中未经测试的部分，并通过编写额外的测试来增加覆盖范围。
-
-- **跨多个浏览器和设备进行测试**使用 BrowserStack 或 Sauce Labs 等基于云的平台来确保兼容性和响应能力。
-
-- 利用 **[辅助功能测试](/zh-cn/wiki/accessibility-testing/) 工具**确保应用程序可供残疾人使用，并遵守 WCAG 等标准。
-
-- 整合 **[性能测试](/zh-cn/wiki/performance-testing/)**验证前端在各种条件下的响应能力和速度。
-
-- **审查和更新[测试用例](/zh-cn/wiki/test-case/)**定期适应新功能、用户行为的变化以及不断变化的业务需求。
+- **审查和更新[测试用例](/zh-cn/wiki/test-case/)** 定期适应新功能、用户行为的变化以及不断变化的业务需求。
 
 - 培养一个 **品质文化**开发人员、设计人员和测试人员密切合作，在开发周期的早期发现并解决潜在问题。
 
@@ -464,23 +385,6 @@ order: 0
 - **优先级**：并非所有浏览器和设备都是平等的。根据您的用户分析确定优先级，重点关注最常用的配置。
 - **持续集成 (CI)**：将您的测试集成到 CI 管道中，以确保它们定期运行，尽早且经常发现问题。 请记住保持您的[测试用例](/zh-cn/wiki/test-case/) **模块化**和**可重用**，以便轻松调整以适应不同的环境，并始终验证您的自动化工具是否与最新的浏览器和设备更新兼容。
 
-  ```
-    // Example using Selenium WebDriver to initiate a browser instance
-    WebDriver driver = new ChromeDriver();
-    driver.get("http://www.yourwebsite.com");
-    // Your test code here
-    driver.quit();
-  ```
-
-  ```
-    // Example of a media query in CSS
-    @media only screen and (max-width: 600px) {
-      body {
-        background-color: lightblue;
-      }
-    }
-  ```
-
 ### 高级概念
 
 #### 前端测试中的端到端测试是什么？
@@ -502,10 +406,10 @@ order: 0
 
 #### 自动化在前端测试中的作用是什么？
 
-自动化在[前端测试](/zh-cn/wiki/front-end-testing/)中发挥着**关键作用**，通过启用重复和广泛的[测试用例](/zh-cn/wiki/test-case/)**执行来确保用户界面按预期工作。它显着**减少了手动工作量**，使测试工程师能够专注于更复杂的[测试场景](/zh-cn/wiki/test-scenario/) 和[探索性测试](/zh-cn/wiki/exploratory-testing/)。
+自动化在[前端测试](/zh-cn/wiki/front-end-testing/)中发挥着**关键作用**，通过启用重复和广泛的[测试用例](/zh-cn/wiki/test-case/)**执行来确保用户界面按预期工作。它显着**减少了手动工作量，使测试工程师能够专注于更复杂的[测试场景](/zh-cn/wiki/test-scenario/) 和[探索性测试](/zh-cn/wiki/exploratory-testing/)。
   自动化前端测试可以在**多个浏览器和设备上同时运行**，确保应用程序在各种条件下进行测试，无需人工干预。这对于验证**跨浏览器和跨设备兼容性**至关重要。
   此外，自动化通过提供有关代码更改影响的快速反馈来支持**持续集成 (CI) 和持续交付 (CD)** 管道。每次提交都可以触发自动化测试，使团队能够在开发周期的早期检测并修复问题。
-  自动化还允许在前端实现**[非功能测试](/zh-cn/wiki/non-functional-testing/)**，例如性能和[负载测试](/zh-cn/wiki/load-testing/)，这对于手动执行来说是困难且耗时的。
+  自动化还允许在前端实现 **[非功能测试](/zh-cn/wiki/non-functional-testing/)**，例如性能和[负载测试](/zh-cn/wiki/load-testing/)，这对于手动执行来说是困难且耗时的。
   此外，自动化测试可以设计为捕获测试会话的**屏幕截图或视频**，这对于调试和理解导致失败的操作顺序非常宝贵。
   以下是使用 JavaScript 在 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具中进行简单自动化测试的示例：
 
@@ -548,19 +452,12 @@ order: 0
 - **自定义预期条件**：创建自定义预期条件，封装等待动态内容的复杂逻辑。
 - **事件侦听器**：在测试代码中附加事件侦听器，以等待指示动态内容已加载的特定事件。 请记住，保持测试对微小更改具有**弹性**，并**关注**动态内容的行为而不是实现细节。
 
-  ```
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("dynamicElement")));
-  ```
-
-  ```
-    JavascriptExecutor js = (JavascriptExecutor) driver;
-    String content = (String) js.executeScript("return document.getElementById('dynamicContent').innerText;");
-  ```
-
 #### A/B 测试在前端测试中的作用是什么？
 
-[A/B testing](/zh-cn/wiki/a-b-testing/) 也称为对比测试，是 [前端测试](/zh-cn/wiki/front-end-testing/) 中的一种方法，用于比较网页或应用程序的两个版本，以确定哪个版本在用户参与度、转化率或其他预定义指标方面表现更好。它通过提供有关用户偏好和行为的经验数据，在优化用户体验和界面方面发挥着至关重要的作用。
-  在 [测试自动化](/zh-cn/wiki/test-automation/) 的上下文中，[A/B testing](/zh-cn/wiki/a-b-testing/) 通常不是自动化的，因为它处理用户行为和转化指标而不是代码正确性。然而，自动化测试可以确保版本 A 和 B 在暴露给用户之前功能健全。这可确保性能指标中的任何差异都是由于 UI/UX 中的更改引起的，而不是底层[bugs](/zh-cn/wiki/bug/)。
-  在[A/B testing](/zh-cn/wiki/a-b-testing/)期间，流量分为两个变体，并收集有关用户如何与每个版本交互的数据。然后分析这些数据，以确定哪种变体可以针对预期目标带来更好的性能。结果决定是否将测试变体的更改实施到主应用程序中。
-  对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，了解[A/B testing](/zh-cn/wiki/a-b-testing/) 的角色对于与 UX 设计师和产品经理协调以确保正在测试的前端更改不会引入功能回归非常重要。他们可能还需要调整或配置自动化测试，以适应 A/B [测试场景](/zh-cn/wiki/test-scenario/) 中测试的变化。
+[A/B 测试](/zh-cn/wiki/a-b-testing/)也称为对比测试，是[前端测试](/zh-cn/wiki/front-end-testing/)中的一种方法，用于比较网页或应用的两个版本，判断哪个版本在用户参与度、转化率或其他预设指标上表现更好。它通过提供用户偏好和行为的数据，帮助优化用户体验和界面。
+
+在[测试自动化](/zh-cn/wiki/test-automation/)中，A/B 测试通常不用于验证代码正确性，因为它关注的是用户行为和转化指标。不过，自动化测试可以在版本 A 和 B 面向用户之前验证其功能，以确认指标差异来自界面或体验变更，而不是底层[缺陷](/zh-cn/wiki/bug/)。
+
+开展[A/B 测试](/zh-cn/wiki/a-b-testing/)时，流量会分配给两个版本，并收集用户与各版本交互的数据。分析结果后，可以判断哪个版本更符合预期目标，并决定是否将其变更应用到主应用中。
+
+对[测试自动化](/zh-cn/wiki/test-automation/)工程师来说，了解 A/B 测试有助于与用户体验设计师和产品经理协作，确认前端变更不会引入功能回归。他们还可能需要调整自动化测试，以覆盖 A/B [测试场景](/zh-cn/wiki/test-scenario/)中的差异。

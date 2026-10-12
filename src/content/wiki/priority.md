@@ -44,7 +44,7 @@ order: 0
       - [优先级对整体自动化策略有何影响？](#优先级对整体自动化策略有何影响)
 <!-- TOC END -->
 
-＃ 优先事项优先事项表示基于用户需求的问题的顺序或重要性，而严重程度表明其对系统的影响。关于的决定优先事项和严重程度可能因角色和流程而异。
+优先级表示测试用例的执行顺序或问题处理的紧迫程度，通常根据业务重要性和风险决定。严重性描述问题对系统的影响。不同角色和流程可能采用不同的优先级与严重性评估方式。
 
 ## 相关术语
 
@@ -94,7 +94,7 @@ order: 0
 
 #### 优先级如何影响测试过程？
 
-[Priority](/zh-cn/wiki/priority/) 通过指导**[测试自动化](/zh-cn/wiki/test-automation/) 工程师**分配资源和工作来影响测试过程。 High-[priority](/zh-cn/wiki/priority/) [测试用例](/zh-cn/wiki/test-case/) 通常首先自动执行，以确保关键功能在开发周期的早期得到验证。这种方法有助于更快地识别和解决最具影响力的问题，从而显着降低发布计划延迟的风险。
+[Priority](/zh-cn/wiki/priority/) 通过指导 **[测试自动化](/zh-cn/wiki/test-automation/) 工程师**分配资源和工作来影响测试过程。 High-[priority](/zh-cn/wiki/priority/) [测试用例](/zh-cn/wiki/test-case/) 通常首先自动执行，以确保关键功能在开发周期的早期得到验证。这种方法有助于更快地识别和解决最具影响力的问题，从而显着降低发布计划延迟的风险。
   在自动化[测试脚本](/zh-cn/wiki/test-script/) 的维护中，[priority](/zh-cn/wiki/priority/) 规定哪些测试要以最高的紧迫性保持最新。随着功能和要求的发展，高[priority](/zh-cn/wiki/priority/) [测试用例](/zh-cn/wiki/test-case/)可能需要更频繁的更新以反映应用程序中的更改。这确保了自动化套件在捕捉最重要领域的回归方面保持相关性和有效性。
   此外，[priority](/zh-cn/wiki/priority/) 通过影响自动化套件中包含哪些测试的决策来影响整体自动化策略。涵盖高[priority](/zh-cn/wiki/priority/) 功能或路径的测试通常是自动化的，以提供有关其稳定性的持续反馈。这一战略重点有助于优化 [测试自动化](/zh-cn/wiki/test-automation/) 工作的投资回报。
   在[测试执行](/zh-cn/wiki/test-execution/) 期间，[priority](/zh-cn/wiki/priority/) 确定测试运行的顺序。具有较高[priority](/zh-cn/wiki/priority/) 的自动化测试先于其他测试执行，以快速提供有关关键系统组件的反馈。这在**持续集成 (CI)** 环境中尤其重要，在这种环境中，快速反馈对于保持高速开发至关重要。
@@ -113,7 +113,7 @@ order: 0
 
 #### 如何确定错误的优先级？
 
-确定[测试自动化](/zh-cn/wiki/test-automation/) 中[bug](/zh-cn/wiki/bug/) 的**[priority](/zh-cn/wiki/priority/) 级别**涉及评估其**对测试工作流程**的影响**和**自动化目标**。考虑以下因素：
+确定[测试自动化](/zh-cn/wiki/test-automation/) 中[bug](/zh-cn/wiki/bug/) 的 **[priority](/zh-cn/wiki/priority/) 级别**涉及评估其**对测试工作流程**的影响**和**自动化目标。考虑以下因素：
 
 - **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：应优先考虑阻碍关键测试路径或显着降低测试覆盖率的错误。
 - **频率**：自动化运行中经常遇到的错误，会影响大量测试用例或场景。
@@ -134,12 +134,6 @@ order: 0
 
 - **损害用户体验**影响产品的声誉和销售。 在自动化环境中，这些[bugs](/zh-cn/wiki/bug/)可能需要立即更改[测试脚本](/zh-cn/wiki/test-script/)，并且可能需要**修补程序**或**补丁**。自动化测试可能需要**重新确定优先级**或**更新**以反映修复的紧迫性。此外，高[priority](/zh-cn/wiki/priority/) [bugs](/zh-cn/wiki/bug/) 可以导致**重新评估自动化策略**，确保在未来的开发周期中尽早检测到类似的问题。 在敏捷环境中，高 [priority](/zh-cn/wiki/priority/) [bugs](/zh-cn/wiki/bug/) 通常会导致积压工作的**重新优先级**，并可能影响冲刺目标。他们可能需要**跨职能协作**来快速有效地解决问题。 总体而言，高[priority](/zh-cn/wiki/priority/) [bugs](/zh-cn/wiki/bug/) 需要**立即关注**和**资源**来减轻其影响，确保软件产品满足发布所需的质量标准。
 
-- **阻止关键功能** ，阻止用户完成基本任务。
-
-- **导致数据丢失**或腐败，导致对产品的不信任。
-
-- **违反合规性**标准，可能会导致法律后果。
-
 - **损害用户体验**影响产品的声誉和销售。
 
 #### 高优先级和低优先级测试用例有什么区别？
@@ -150,19 +144,25 @@ order: 0
 
 #### 优先级如何影响测试用例的执行顺序？
 
-在[测试自动化](/zh-cn/wiki/test-automation/)中，**[priority](/zh-cn/wiki/priority/)级别**直接影响[测试用例](/zh-cn/wiki/test-case/)的**执行顺序**。高[priority](/zh-cn/wiki/priority/) 测试在低[priority](/zh-cn/wiki/priority/) 测试之前执行，以确保首先验证关键功能。这种优先级可确保在时间或资源有限的情况下，测试应用程序最重要的方面，从而支持及早发现主要问题。
-  [测试用例](/zh-cn/wiki/test-case/) 通常组织在 **[测试套件](/zh-cn/wiki/test-suite/)** 中，并具有关联的 [priority](/zh-cn/wiki/priority/) 级别。自动化框架或工具可以配置为根据[priority](/zh-cn/wiki/priority/)来选择和运行测试。例如，在持续集成 (CI) 管道中，您可能有：
+在[测试自动化](/zh-cn/wiki/test-automation/)中，[测试用例](/zh-cn/wiki/test-case/)的优先级决定执行顺序。优先执行高风险、影响大的测试，可以在时间或资源有限时先验证关键功能。
 
-stages:
-- name: critical_tests tests:
-- test_login
-- test_payment
-- name: important_tests tests:
-- test_profile_edit
-- test_search_functionality
-在这种情况下，`critical_tests` 在`important_tests` 之前运行，因为它们的[priority](/zh-cn/wiki/priority/) 更高。这确保了最重要的功能（例如登录和支付）首先得到验证。
-  可以根据各种因素（例如最近的代码更改、缺陷趋势或即将发布的版本）动态调整[测试用例](/zh-cn/wiki/test-case/) 的[priority](/zh-cn/wiki/priority/)。这种动态调整有助于将测试工作集中在更容易出现问题或在任何给定时间对业务更关键的领域。
-  总之，**[priority](/zh-cn/wiki/priority/) 级别**规定了执行自动化测试的**顺序**，确保在测试周期的早期执行最关键的测试，这对于及时识别和解决重大缺陷特别有利。
+团队可以在[测试套件](/zh-cn/wiki/test-suite/)或 CI 配置中对测试进行分组。例如：
+
+```yaml
+test_suites:
+  critical_tests:
+    priority: high
+    tests:
+      - test_login
+      - test_payment
+  important_tests:
+    priority: normal
+    tests:
+      - test_profile_edit
+      - test_search_functionality
+```
+
+此配置表示登录和支付测试优先执行，个人资料和搜索功能随后执行。团队也可以根据近期代码变更、缺陷趋势或发布计划动态调整测试优先级。
 
 ### 敏捷测试的优先事项
 
@@ -186,7 +186,7 @@ stages:
 在敏捷中，**产品负责人 (PO)** 在确定产品待办事项的**优先级**方面至关重要，这直接影响[测试自动化](/zh-cn/wiki/test-automation/) 工作的重点。 PO 平衡了客户价值、业务优先级和技术考虑因素，以对功能和 [bug](/zh-cn/wiki/bug/) 修复进行排名。该排名告诉团队应用程序的哪些方面最关键并且应该首先进行测试。
   在冲刺计划期间，PO 的优先级有助于确定冲刺中包含哪些用户故事，从而确定需要自动化或执行哪些[测试用例](/zh-cn/wiki/test-case/) 来验证这些故事。 PO 对业务需求的洞察确保自动化测试符合当前业务目标并提供最大价值。
   在整个冲刺过程中，PO 可能会根据利益相关者的反馈或市场变化调整优先级。此类调整可能会导致测试重点的转移，要求[测试自动化](/zh-cn/wiki/test-automation/)工程师灵活地调整他们的[测试套件](/zh-cn/wiki/test-suite/)。
-  PO 的优先级也会影响自动化 [测试脚本](/zh-cn/wiki/test-script/)** 的**维护。高[priority](/zh-cn/wiki/priority/) 区域可能需要更频繁地更新[测试脚本](/zh-cn/wiki/test-script/)，以确保它们保持有效和相关。相反，[priority](/zh-cn/wiki/priority/) 较低的区域可能需要较少的维护。
+  PO 的优先级也会影响自动化 [测试脚本](/zh-cn/wiki/test-script/)**的**维护。高[priority](/zh-cn/wiki/priority/) 区域可能需要更频繁地更新[测试脚本](/zh-cn/wiki/test-script/)，以确保它们保持有效和相关。相反，[priority](/zh-cn/wiki/priority/) 较低的区域可能需要较少的维护。
   最终，PO 关于[priority](/zh-cn/wiki/priority/) 的决定将塑造[测试自动化](/zh-cn/wiki/test-automation/) 战略，确保团队的工作与从业务角度提供最重要的功能和修复保持一致。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师依靠本指南来优化他们的工作并为交付高质量的产品做出贡献。
 
 #### 优先级如何帮助敏捷的冲刺计划？
@@ -202,7 +202,7 @@ stages:
 #### 敏捷中冲刺期间如何调整优先级？
 
 在敏捷冲刺期间，[priority](/zh-cn/wiki/priority/) 调整是一个动态过程，可以响应不断变化的项目需求和利益相关者的反馈。这对于确保团队在任何特定时间专注于最有价值和最有影响力的工作至关重要。
-  **调整[priority](/zh-cn/wiki/priority/)**通常需要**产品所有者**、**[Scrum](/zh-cn/wiki/scrum/) master**和**开发团队**之间的协作。产品负责人扮演着关键角色，因为他们有责任了解客户和业务需求并将其转化为积压项目。
+  **调整[priority](/zh-cn/wiki/priority/)** 通常需要**产品所有者**、**[Scrum](/zh-cn/wiki/scrum/) master**和**开发团队**之间的协作。产品负责人扮演着关键角色，因为他们有责任了解客户和业务需求并将其转化为积压项目。
   当新信息出现时，例如市场状况的变化、利益相关者的反馈或发现关键的[bug](/zh-cn/wiki/bug/)，产品所有者可能需要**重新确定**积压项目的优先级。这可能导致：
 
 - **重新排序**待办事项中的用户故事或错误以反映其新的优先级。
@@ -216,16 +216,6 @@ stages:
 - **更新**现有的自动化测试以满足变化的需求。
 
 - **推迟**低优先级测试的自动化有利于紧急测试需求。 最终，冲刺期间的 [priority](/zh-cn/wiki/priority/) 调整是为了保持敏捷性并确保团队的努力与对什么能带来最高价值的最新理解保持一致。
-
-- **重新排序**待办事项中的用户故事或错误以反映其新的优先级。
-
-- **添加**已变得紧迫、可能取代计划工作的新任务。
-
-- **删除**或 **推迟**那些变得不那么重要的任务。
-
-- **转移焦点**自动测试新的高优先级功能。
-
-- **更新**现有的自动化测试以满足变化的需求。
 
 - **推迟**低优先级测试的自动化有利于紧急测试需求。
 
@@ -292,6 +282,6 @@ stages:
 #### 优先级对整体自动化策略有何影响？
 
 [Priority](/zh-cn/wiki/priority/) 通过指导应用程序最关键领域的**资源分配**和**工作**来影响整体自动化策略。 High-[priority](/zh-cn/wiki/priority/) [测试用例](/zh-cn/wiki/test-case/) 首先实现自动化，以确保关键功能在开发周期的早期稳定可靠。这种方法通过专注于保护最有价值的功能免受回归问题影响的测试来最大化自动化的投资回报率。
-  在持续集成环境中，[priority](/zh-cn/wiki/priority/) 确定[测试执行](/zh-cn/wiki/test-execution/)** 的**序列。 [priority](/zh-cn/wiki/priority/) 较高的测试会在构建过程中更频繁或更早地运行，以提供有关关键系统方面的快速反馈。这有助于快速识别和解决高影响缺陷，保持产品的高质量。
+  在持续集成环境中，[priority](/zh-cn/wiki/priority/) 确定[测试执行](/zh-cn/wiki/test-execution/)**的**序列。 [priority](/zh-cn/wiki/priority/) 较高的测试会在构建过程中更频繁或更早地运行，以提供有关关键系统方面的快速反馈。这有助于快速识别和解决高影响缺陷，保持产品的高质量。
   此外，[priority](/zh-cn/wiki/priority/) 影响自动化测试的**维护**。 High-[priority](/zh-cn/wiki/priority/) 测试与不断变化的需求保持同步，以确保其有效性和准确性。较低的 [priority](/zh-cn/wiki/priority/) 测试可能会更新得不那么频繁，甚至如果它们不再提供重要价值，就会被弃用。
   最后，[priority](/zh-cn/wiki/priority/) 影响自动化策略中的**风险管理**。通过专注于高[priority](/zh-cn/wiki/priority/) 区域，团队可以首先减轻最重大的风险，确保应用程序最关键的部分经过彻底测试且可靠。这一战略重点有助于在时间和预算的限制内提供优质的产品。

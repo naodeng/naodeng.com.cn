@@ -353,8 +353,6 @@ Functional testing checks if a software application's functions align with its r
     alongside automated tests to uncover unexpected issues.
   By following these practices, you can ensure a thorough and efficient functional testing process that contributes to the delivery of a high-quality software product.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How can functional testing be improved?
 
   Improving functional testing can be achieved through several strategies:
@@ -396,8 +394,6 @@ Functional testing checks if a software application's functions align with its r
   - **Monitor and analyze**
     test results to identify patterns and recurring issues, using this insight to improve test scenarios.
   By focusing on these areas, functional testing can become more effective, providing faster feedback and ensuring a higher quality product.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### What are the common mistakes in functional testing?
 

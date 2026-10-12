@@ -78,7 +78,7 @@ order: 0
 
 #### 为什么结对测试在软件开发中很重要？
 
-[配对测试](/zh-cn/wiki/pair-testing/) 在软件开发中对于促进**协作**和**知识共享**至关重要。通过结对工作，测试人员和开发人员可以结合他们的专业知识来识别可能被个人忽视的问题。这种合作通常会导致**微妙的[bugs](/zh-cn/wiki/bug/)**和**边缘情况**的发现，因为两组眼睛比一组更好。
+[配对测试](/zh-cn/wiki/pair-testing/) 在软件开发中对于促进**协作**和**知识共享**至关重要。通过结对工作，测试人员和开发人员可以结合他们的专业知识来识别可能被个人忽视的问题。这种合作通常会导致**微妙的[bugs](/zh-cn/wiki/bug/)** 和**边缘情况**的发现，因为两组眼睛比一组更好。
   这种做法鼓励**持续沟通**，这对于尽早澄清要求和期望至关重要。它还有助于建立对被测系统的**共同理解**，这对于当前和未来的测试工作都是有益的。
   [配对测试](/zh-cn/wiki/pair-testing/) 在测试人员互相学习的过程中促进**技能发展**，从而形成一支技术更加熟练、多才多艺的团队。它还支持**指导文化**，经验不足的测试人员可以快速从经验丰富的同事那里获取知识。
   在**团队动力**方面，[配对测试](/zh-cn/wiki/pair-testing/)可以加强团队联系并提高士气。它打破了孤岛并鼓励质量的**集体所有权**，这是敏捷原则的基石。
@@ -131,11 +131,6 @@ order: 0
 9. **轮换配对**：定期更改配对组合，以传播知识并促进整个团队的协作。
 10. **整合反馈**：利用[配对测试](/zh-cn/wiki/pair-testing/) 的见解来完善测试策略并改进[测试覆盖率](/zh-cn/wiki/test-coverage/)。 通过执行这些步骤，您可以将 [配对测试](/zh-cn/wiki/pair-testing/) 无缝集成到您的开发工作流程中，利用团队的集体专业知识来提高测试质量和效率。
 
-1. **选择任务**：选择将从协作努力中受益的特定测试任务，例如[探索性测试](/zh-cn/wiki/exploratory-testing/)、[测试用例](/zh-cn/wiki/test-case/) 设计或解决问题的复杂性[bugs](/zh-cn/wiki/bug/)。
-8. **回顾和反思**：在会议结束时，回顾结果并讨论哪些方面效果良好，哪些方面可以为未来的 [配对测试](/zh-cn/wiki/pair-testing/) 会议改进。
-9. **轮换配对**：定期更改配对组合，以传播知识并促进整个团队的协作。
-10. **整合反馈**：利用[配对测试](/zh-cn/wiki/pair-testing/) 的见解来完善测试策略并改进[测试覆盖率](/zh-cn/wiki/test-coverage/)。
-
 #### 有哪些有效的配对测试技术？
 
 有效的[配对测试](/zh-cn/wiki/pair-testing/)技术通常涉及动态和协作的方法。以下是一些策略：
@@ -143,26 +138,24 @@ order: 0
 - **角色切换**：定期在操作软件的驱动程序和审查和指导流程的导航员之间切换角色。这可以让测试人员保持参与并促进对 [测试场景](/zh-cn/wiki/test-scenario/) 的更深入理解。
 - **Ping Pong**：轮流谁编写测试以及谁使代码通过测试。这在 [测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD) 环境中特别有效。
 
-// TDD 中简单的乒乓方法示例：
-  // A 编写了一个失败的测试
-  it('应该计算两个数字的和', () => {
-  期望(sum(1, 2)).toEqual(3);
+  ```javascript
+  // A 编写失败的测试，B 实现代码使测试通过。
+  it('adds two numbers', () => {
+    expect(sum(1, 2)).toBe(3);
   });
-  // B 实现功能以通过测试
-  函数求和（a，b）{
-  返回a+b；
+
+  function sum(a, b) {
+    return a + b;
   }
-  // 然后 B 编写下一个失败的测试，A 实现该功能
+  ```
 
-- **Silent Observation**: One person tests silently while the other observes without interrupting. After a set period, discuss findings. This can lead to insights that might be missed in a more interactive approach.
-- **Touring**: Navigate the application as if on a tour, exploring different features and functions systematically. This can help uncover unexpected behavior in less frequently used areas of the software.
-- **Scenario Testing**: Create real-world user scenarios and act them out. This helps ensure the software is tested in a way that reflects actual use cases.
-- **Note-Taking**: Document findings and ideas as you test. This can be useful for future reference and ensures that insights are not lost.
-- **Debriefing Sessions**: After each pair testing session, hold a brief meeting to discuss what was learned, what could be improved, and to plan next steps.
-Remember, the key to effective pair testing is communication and collaboration. Regularly reflect on your techniques and adapt them to suit your specific context and challenges.
+- **静默观察**：一人进行测试，另一人不打断地观察；一段时间后再一起讨论发现。这种方式可能帮助团队注意到互动测试中容易忽略的问题。
+- **漫游探索**：像参观一样系统地浏览应用的不同功能，有助于发现低频功能中的意外行为。
+- **场景测试**：设计并演练贴近现实的用户场景，让测试反映实际用例。
+- **记录笔记**：在测试过程中记录发现和想法，便于以后查阅，避免重要信息丢失。
+- **复盘讨论**：每次配对测试后简短复盘，讨论收获、改进点和后续安排。
 
-- **角色切换**：定期在操作软件的驱动程序和审查和指导流程的导航员之间切换角色。这可以让测试人员保持参与并促进对[测试场景](/zh-cn/wiki/test-scenario/) 的更深入理解。
-- **Ping Pong**：轮流谁编写测试以及谁使代码通过测试。这在 [测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD) 环境中特别有效。
+有效的配对测试依赖沟通与协作。团队应定期回顾并调整方法，以适应具体情境和挑战。
 
 #### 如何选择合适的配对进行测试？
 
@@ -177,13 +170,6 @@ Remember, the key to effective pair testing is communication and collaboration. 
 - **可用性**：协调时间表以确保两个测试人员都能不间断地投入时间进行配对会话。
 - **反馈**：课程结束后，收集反馈以完善配对过程并改进未来的配对。 请记住，目标是创建一个协同团队，可以有效地协作以提高[测试覆盖率](/zh-cn/wiki/test-coverage/) 和质量。
 
-- **互补技能**：将具有互补技术技能的个人配对。例如，一名测试人员可能精通自动化框架，而另一名测试人员则擅长[探索性测试](/zh-cn/wiki/exploratory-testing/)。
-- **多元化视角**：追求经验和思维方式的多元化。全新的视角可以发现经验丰富的眼睛可能忽视的问题。
-- **沟通技巧**：确保两名测试人员都具有良好的沟通技巧。有效的[配对测试](/zh-cn/wiki/pair-testing/) 依赖于持续的对话。
-- **相互尊重**：测试人员应该尊重彼此的意见和技能。这营造了一个高效和协作的环境。
-- **角色轮换**：在驱动程序（编写测试）和导航员（审核并提供反馈）之间轮换角色，以确保平衡的参与和学习。
-- **项目相关性**：根据项目的具体需求进行匹配。有些对可能在 [用户界面测试](/zh-cn/wiki/ui-testing/) 上效果更好，而另一些对 [API 测试](/zh-cn/wiki/api-testing/) 则效果更好。
-- **可用性**：协调时间表以确保两个测试人员都能不间断地投入时间进行配对会话。
 - **反馈**：课程结束后，收集反馈以完善配对过程并改进未来的配对。
 
 #### 结对测试中的角色是什么？
@@ -193,7 +179,6 @@ Remember, the key to effective pair testing is communication and collaboration. 
 - **驱动程序**：该角色涉及测试活动的实际操作。驱动程序是编写 [测试用例](/zh-cn/wiki/test-case/) 并执行测试、直接与被测软件交互的人。他们负责测试过程的机制，例如输入数据、浏览应用程序以及记录[测试执行](/zh-cn/wiki/test-execution/) 的结果。
 - **观察者/导航者**：观察者，也称为导航者，承担更具战略意义的角色。他们审查和分析测试过程，提前思考，考虑[测试场景](/zh-cn/wiki/test-scenario/)，并观察缺陷。导航员还会记录调查结果，并可能向驾驶员提出替代方法或方案。这一角色对于保持对测试策略的更广泛视野并确保两人专注于目标至关重要。 在整个测试过程中，两个角色都非常活跃并参与其中，持续的沟通是关键。可以定期切换角色，以保持会话动态并充分利用每个测试人员的优势。 [配对测试](/zh-cn/wiki/pair-testing/) 依靠这些角色之间的协同作用来增强测试过程并发现单个测试人员可能错过的问题。
 
-- **驱动程序**：该角色涉及测试活动的实际操作。驱动程序是编写 [测试用例](/zh-cn/wiki/test-case/) 并执行测试、直接与被测软件交互的人。他们负责测试过程的机制，例如输入数据、浏览应用程序以及记录[测试执行](/zh-cn/wiki/test-execution/) 的结果。
 - **观察者/导航者**：观察者，也称为导航者，承担更具战略意义的角色。他们审查和分析测试过程，提前思考，考虑[测试场景](/zh-cn/wiki/test-scenario/)，并观察缺陷。导航员还会记录调查结果，并可能向驾驶员提出替代方法或方案。这一角色对于保持对测试策略的更广泛视野并确保两人专注于目标至关重要。
 
 #### 结对测试如何集成到敏捷或 Scrum 方法中？
@@ -261,8 +246,6 @@ Remember, the key to effective pair testing is communication and collaboration. 
 
 - **定义角色** （驾驶员和领航员）在会议开始之前确保工作流程顺利进行。
 
-
-
   ```markdown
       **Example Role Definition:**
   - *Driver*: Writes the test code
@@ -293,13 +276,8 @@ Remember, the key to effective pair testing is communication and collaboration. 
 
 - **知识转移**：评估两人之间知识共享的有效性，这可以通过测试后讨论或调查来衡量。
 - **团队士气**：观察团队动力和士气的变化，因为有效的结对测试可以提高协作和工作满意度。
-- **创新**：注意结对测试协作环境中出现的任何创新测试方法或问题解决技术。 要收集这些见解，请使用**问题跟踪系统**等工具来监控缺陷率，并使用**[测试管理](/zh-cn/wiki/test-management/)工具**来跟踪覆盖范围和周期时间。进行**回顾**或**反馈会议**以获取有关团队互动和创新的定性数据。 请记住，目标是确定 [配对测试](/zh-cn/wiki/pair-testing/) 是否有助于提高测试过程的效率和效果，从而产生更高质量的软件。根据这些测量结果定期审查和调整您的方法，以不断改进[配对测试](/zh-cn/wiki/pair-testing/)实践。
+- **创新**：注意结对测试协作环境中出现的任何创新测试方法或问题解决技术。 要收集这些见解，请使用**问题跟踪系统**等工具来监控缺陷率，并使用 **[测试管理](/zh-cn/wiki/test-management/)工具**来跟踪覆盖范围和周期时间。进行**回顾**或**反馈会议**以获取有关团队互动和创新的定性数据。 请记住，目标是确定 [配对测试](/zh-cn/wiki/pair-testing/) 是否有助于提高测试过程的效率和效果，从而产生更高质量的软件。根据这些测量结果定期审查和调整您的方法，以不断改进[配对测试](/zh-cn/wiki/pair-testing/)实践。
 
-- **缺陷检测率 (DDR)**：将配对测试过程中发现的缺陷数量与个人发现的缺陷数量进行比较。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：评估配对测试是否可以更全面地覆盖被测应用程序。
-- **周期时间**：监控从测试开始到解决缺陷所需的时间，注意由于配对测试而减少的时间。
-- **知识转移**：评估两人之间知识共享的有效性，这可以通过测试后讨论或调查来衡量。
-- **团队士气**：观察团队动力和士气的变化，因为有效的结对测试可以提高协作和工作满意度。
 - **创新**：注意结对测试协作环境中出现的任何创新测试方法或问题解决技术。
 
 #### 有哪些工具可用于促进配对测试？

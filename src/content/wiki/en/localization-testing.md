@@ -222,9 +222,6 @@ Localization testing ensures a software product resonates culturally with users 
   - **Third-party services integration** : Ensuring that services like maps or weather are localized and function correctly.
   Addressing these challenges requires a combination of **technical solutions**, **cultural understanding**, and **rigorous testing** to ensure a seamless user experience across different locales.
 
-  - **Performance** : Localized versions may have different performance characteristics, requiring targeted testing.
-  - **Third-party services integration** : Ensuring that services like maps or weather are localized and function correctly.
-
 #### How can these challenges be mitigated or overcome?
 
   Mitigating challenges in localization testing involves strategic planning and efficient use of resources. Here are some approaches:

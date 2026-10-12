@@ -1,6 +1,6 @@
 ---
 title: "逆向测试/负面测试 ｜ Negative Testing"
-description: "逆向测试 (Negative Testing)，也称为错误路径测试或系统失效测试，是指验证软件在输入无效、非预期或随机数据时的行为。这种测试刻意引入错误数据或条件，以确保应用程序能优雅地处理它们，而不会崩溃或产生错误结果。逆向测试用例旨在断言应用程序能处理并拒绝坏输入，显示适当的错误消息…"
+description: "逆向测试 (Negative Testing)，也称为错误路径测试或系统失效测试，是指验证软件在输入无效、非预期或随机数据时的行为。这种测试刻意引入错误数据或条件，以确保应用程序能优雅地处理它们，而不会崩溃或产生错误结果。"
 section: "N"
 related:
   - test-case
@@ -83,11 +83,6 @@ order: 0
 - 确保软件在不利条件下安全稳定。
 - 示例：输入不正确的用户凭据、提供不支持的上传文件格式。 虽然积极的测试确认该软件做了它应该做的事情，但[负面测试](/zh-cn/wiki/negative-testing/)确保它不会做它不应该做的事情。两者对于全面的测试策略都是必不可少的，通过积极的测试来展示功能并[负面测试](/zh-cn/wiki/negative-testing/) 防范潜在的故障和安全问题。
 
-- 使用有效输入验证预期行为。
-- 确保软件满足功能要求。
-- 示例：输入正确的用户凭据，提供有效的文件格式进行上传。
-- 验证无效输入的错误处理。
-- 确保软件在不利条件下安全稳定。
 - 示例：输入不正确的用户凭据、提供不支持的上传文件格式。
 
 #### 负面测试如何影响软件的整体质量？
@@ -176,14 +171,6 @@ order: 0
   ```
 自动化负面测试可确保它们不会因时间限制或手动执行的单调而被忽视。它还通过不断挑战软件的错误处理和验证机制来帮助保持高标准的质量。
 
-- **执行重复测试**无需人工干预即可处理各种无效输入，节省时间并减少人为错误。
-
-- **增加覆盖范围**通过以编程方式生成各种负面场景来处理边缘情况。
-
-- **与 CI/CD 管道集成**确保定期进行负面测试，及时发现回归情况。
-
-- **利用数据驱动测试**框架将来自外部来源（例如 CSV 文件或数据库）的各种负面输入输入到测试中。
-
 - **模拟复杂的用户行为**这可能会导致意外的系统状态，而这些状态很难手动复制。
 
 ### 挑战和解决方案
@@ -198,32 +185,28 @@ order: 0
 - **[测试环境](/zh-cn/wiki/test-environment/) 配置**：负面测试可能需要专门的环境来模拟网络中断或硬件故障等故障。
 - **平衡覆盖范围与努力**：实现彻底覆盖而不在边缘情况上花费过多精力是一项持续的斗争。
 - **解释结果**：理解失败的阴性测试是否是缺陷的迹象或预期结果可能是不明确的。
-- **维护测试**：随着系统的发展，维护和更新负面测试以保持相关性可能非常耗时。 为了克服这些挑战，请重点关注**[基于风险的测试](/zh-cn/wiki/risk-based-testing/)**来确定场景的优先级，对[测试数据](/zh-cn/wiki/test-data/)使用**数据驱动的方法**，并确保预期结果的**清晰记录**。在自动化框架中实施**强大的错误处理**来管理意外的应用程序行为。定期**审查和完善**负面测试以与应用程序更改保持一致。
+- **维护测试**：随着系统的发展，维护和更新负面测试以保持相关性可能非常耗时。 为了克服这些挑战，请重点关注 **[基于风险的测试](/zh-cn/wiki/risk-based-testing/)** 来确定场景的优先级，对[测试数据](/zh-cn/wiki/test-data/)使用**数据驱动的方法**，并确保预期结果的**清晰记录**。在自动化框架中实施**强大的错误处理**来管理意外的应用程序行为。定期**审查和完善**负面测试以与应用程序更改保持一致。
 
 #### 如何克服这些挑战？
 
-克服[负面测试](/zh-cn/wiki/negative-testing/) 中的挑战需要结合**战略规划**、**工具选择**和**流程改进**。以下是一些方法：
+克服[负面测试](/zh-cn/wiki/negative-testing/)中的挑战，需要结合规划、工具选择和流程改进：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。使用基于风险的测试来重点关注如果失败可能会造成最严重损害的场景。
+- **按风险确定[测试用例](/zh-cn/wiki/test-case/)优先级**，重点覆盖失败后影响最大的场景。
+- **明智地自动化**：选择能处理意外输入和结果的工具，并将负面测试接入 CI/CD 流程，尽早发现问题。
 
-- **明智地自动化** 。选择可以处理意外输入和结果的强大自动化工具。将负面测试集成到持续集成/持续部署 (CI/CD) 管道中，以便及早发现问题。
-
-// 自动化脚本中的否定 [测试用例](/zh-cn/wiki/test-case/) 示例
-  it('应该优雅地处理无效输入', () => {
-  const invalidInput = '无效数据';
-  Expect(() => myFunction(invalidInput)).toThrowError();
+  ```typescript
+  it('handles invalid input gracefully', () => {
+    expect(() => myFunction('invalid data')).toThrow();
   });
+  ```
 
-- **Enhance test data management**. Use data-driven testing to feed a variety of negative test data into your tests. Consider tools that can generate test data dynamically.
-- **Improve reporting and analysis**. Ensure your test reports clearly distinguish between positive and negative test results and provide actionable insights.
-- **Collaborate with developers** to understand system boundaries and create more effective negative tests.
-- **Educate your team** on the importance of negative testing. Encourage a culture where testers and developers proactively think about edge cases and failure modes.
-- **Review and refine** your negative testing approach regularly. Learn from defects that slip through and adjust your strategy accordingly.
-By addressing these areas, you can enhance the effectiveness of negative testing within your test automation efforts, leading to more resilient and reliable software.
+- **改进测试数据管理**：采用数据驱动方法，并按需生成不同类型的无效输入。
+- **完善报告和分析**：清楚区分测试结果，并提供可采取行动的线索。
+- **与开发人员协作**：共同理解系统边界并设计有效的负面测试。
+- **培训团队**：让团队成员了解负面测试的价值，并主动考虑边缘情况和故障模式。
+- **定期审查和改进方法**：从漏出的缺陷中总结经验，调整测试策略。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。使用基于风险的测试来重点关注如果失败可能会造成最严重损害的场景。
-
-- **明智地自动化** 。选择可以处理意外输入和结果的强大自动化工具。将负面测试集成到持续集成/持续部署 (CI/CD) 管道中，以便及早发现问题。
+通过这些做法，可以提升负面测试的效果，增强软件的韧性和可靠性。
 
 #### 阴性测试期间常见的错误有哪些？
 
@@ -244,21 +227,21 @@ By addressing these areas, you can enhance the effectiveness of negative testing
 
 为了确保 **[负面测试](/zh-cn/wiki/negative-testing/)** 既有效又高效，请遵循以下准则：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。重点关注最有可能发生或如果处理不当将导致重大问题的场景。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于风险和影响。重点关注最有可能发生或如果处理不当将导致重大问题的场景。
 
 - **杠杆边界值分析**测试更容易发生错误的输入范围的边缘。
 
-- **使用[等价划分](/zh-cn/wiki/equivalence-partitioning/)**为了减少测试用例的数量，对软件应同等对待的输入进行分组。
+- **使用[等价划分](/zh-cn/wiki/equivalence-partitioning/)** 为了减少测试用例的数量，对软件应同等对待的输入进行分组。
 
 - **自动化重复测试**以节省时间并确保一致性。自动化对于代码更改时的回归测试特别有用。
 
-- **实施[错误猜测](/zh-cn/wiki/error-guessing/)**根据经验和直觉探索不太明显的故障点。
+- **实施[错误猜测](/zh-cn/wiki/error-guessing/)** 根据经验和直觉探索不太明显的故障点。
 
 - **利用数据驱动测试**有效地运行具有不同输入值的负测试用例的多种排列。
 
 - **审查和分析缺陷**从过去的项目中识别常见的故障模式并将其合并到您的测试套件中。
 
-- **监控[代码覆盖率](/zh-cn/wiki/code-coverage/)**确保负面测试用例正在执行代码库的所有相关部分。
+- **监控[代码覆盖率](/zh-cn/wiki/code-coverage/)** 确保负面测试用例正在执行代码库的所有相关部分。
 
 - **与开发人员合作**了解系统行为并设计更有洞察力的负面测试。
 
@@ -319,11 +302,5 @@ By addressing these areas, you can enhance the effectiveness of negative testing
 - **保持稳定** ，避免可能导致用户烦恼和潜在数据丢失的崩溃或冻结。
 
 - **确保安全** ，通过检查不正确的输入不会打开可被利用的漏洞，从而保证用户数据的安全。 将负面[测试用例](/zh-cn/wiki/test-case/)纳入您的自动化套件中，可确保每次构建时都对这些用户体验方面进行一致检查，从而尽早发现回归。自动化[负面测试](/zh-cn/wiki/negative-testing/) 可以比[手动测试](/zh-cn/wiki/manual-testing/) 更快更彻底地模拟各种错误的用户行为，从而形成更强大且用户友好的应用程序。 请记住，虽然[负面测试](/zh-cn/wiki/negative-testing/) 提高了软件的防御能力，但它应该补充而不是取代积极测试和其他[质量保证](/zh-cn/wiki/quality-assurance/) 实践，以提供对应用程序用户体验的全面评估。
-
-- **提供有意义的错误消息** ，引导用户无挫折地纠正自己的行为。
-
-- **防止数据损坏**通过拒绝不良输入，从而维护用户数据的完整性。
-
-- **保持稳定** ，避免可能导致用户烦恼和潜在数据丢失的崩溃或冻结。
 
 - **确保安全** ，通过检查不正确的输入不会打开可被利用的漏洞，从而保证用户数据的安全。

@@ -217,7 +217,6 @@ See also:
   By adopting an [API](/en/wiki/api-testing/)-first design, organizations can accelerate their **go-to-market** strategies, as front-end and back-end teams can work in parallel. It also facilitates a more **collaborative environment** for developers, testers, and business stakeholders to align on the [API](/en/wiki/api-testing/)'s purpose and functionality early in the development cycle.
   In the context of **[test automation](/en/wiki/test-automation/)**, [API](/en/wiki/api-testing/)-first design simplifies the creation of automated tests by providing stable and well-documented endpoints. This allows [test automation](/en/wiki/test-automation/) engineers to write tests that are less brittle and more focused on validating business logic rather than dealing with UI changes or other front-end concerns.
 
-  - **Consistent and reusable**
 
 ### What are the key considerations when developing an API?
 

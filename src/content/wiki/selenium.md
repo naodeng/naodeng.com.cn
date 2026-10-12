@@ -1,6 +1,6 @@
 ---
 title: "Selenium ｜ Selenium"
-description: "Selenium 是一个开源的自动化测试框架，主要用于在不同的浏览器和平台上验证 Web 应用程序。它包含一套工具，支持使用多种编程语言（包括 Java, C#, Python, Ruby 和 JavaScript）开发测试自动化脚本。Selenium 的核心是 WebDriver API…"
+description: "Selenium 是一个开源的自动化测试框架，主要用于在不同的浏览器和平台上验证 Web 应用程序。它包含一套工具，支持使用多种编程语言（包括 Java, C#, Python, Ruby 和 JavaScript）开发测试自动化脚本。"
 section: "S"
 related:
   - webdriver
@@ -63,7 +63,7 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 
 [selenium](/zh-cn/wiki/selenium/) 是一个开源**自动化测试框架**，主要用于跨不同浏览器和平台验证 Web 应用程序。它由一套工具组成，支持使用各种编程语言（包括 Java、C#、Python、Ruby 和 JavaScript）开发 [测试自动化](/zh-cn/wiki/test-automation/) 脚本。
   [selenium](/zh-cn/wiki/selenium/) 的核心是 **[WebDriver](/zh-cn/wiki/webdriver/) [API](/zh-cn/wiki/api/)**，它提供了一个独立于平台的接口来控制浏览器。 [WebDriver](/zh-cn/wiki/webdriver/) 通过特定于浏览器的驱动程序与页面元素交互，必须为要自动化的浏览器安装和配置该驱动程序。
-  [selenium](/zh-cn/wiki/selenium/) 支持各种操作系统，如 Windows、Mac 和 Linux，并与 **持续集成 (CI)** 工具（如 Jenkins）集成，促进 [自动化测试](/zh-cn/wiki/automated-testing/) 的开发流程。它还提供**[selenium](/zh-cn/wiki/selenium/) 网格**，允许跨多个环境分布式[测试执行](/zh-cn/wiki/test-execution/)。
+  [selenium](/zh-cn/wiki/selenium/) 支持各种操作系统，如 Windows、Mac 和 Linux，并与 **持续集成 (CI)** 工具（如 Jenkins）集成，促进 [自动化测试](/zh-cn/wiki/automated-testing/) 的开发流程。它还提供 **[selenium](/zh-cn/wiki/selenium/) 网格**，允许跨多个环境分布式[测试执行](/zh-cn/wiki/test-execution/)。
   测试人员使用 [selenium](/zh-cn/wiki/selenium/) 模拟用户与 Web 元素的交互，例如单击按钮、输入文本和浏览页面。它提供了各种与元素交互的定位器策略，例如 ID、类名、CSS 选择器和 XPath 表达式。
   下面是 Java 中的基本 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) [测试用例](/zh-cn/wiki/test-case/) 的示例：
 
@@ -89,7 +89,7 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 #### 为什么 Selenium 在软件测试中很重要？
 
 [selenium](/zh-cn/wiki/selenium/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它的**开源性质**和**灵活性**。它支持跨不同**浏览器**和**平台**的自动化，使其成为[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)不可或缺的一部分。它能够与各种**框架**和**编程语言**集成，允许团队用他们最熟悉的语言编写测试，从而提高测试开发效率。
-  而且[selenium](/zh-cn/wiki/selenium/)的**[WebDriver](/zh-cn/wiki/webdriver/)** [API](/zh-cn/wiki/api/)通过直接调用浏览器提供了更加真实的浏览体验，这对于**[端到端测试](/zh-cn/wiki/end-to-end-testing/)**来说是必不可少的。这确保测试尽可能模仿用户交互，从而获得更可靠的测试结果。
+  而且[selenium](/zh-cn/wiki/selenium/)的 **[WebDriver](/zh-cn/wiki/webdriver/)** [API](/zh-cn/wiki/api/)通过直接调用浏览器提供了更加真实的浏览体验，这对于 **[端到端测试](/zh-cn/wiki/end-to-end-testing/)** 来说是必不可少的。这确保测试尽可能模仿用户交互，从而获得更可靠的测试结果。
   **[selenium](/zh-cn/wiki/selenium/) Grid** 组件通过同时启用跨多台计算机和浏览器的**并行测试**，显着缩短了[测试执行](/zh-cn/wiki/test-execution/) 时间。这对于具有广泛[测试套件](/zh-cn/wiki/test-suite/)的大型项目尤其重要，因为它有助于实现更快的反馈周期。
   [selenium](/zh-cn/wiki/selenium/) 广泛的社区支持和持续更新有助于构建丰富的插件和集成生态系统。这允许无缝 CI/CD 管道集成，促进**持续测试**和部署实践。
   从本质上讲，[selenium](/zh-cn/wiki/selenium/) 的重要性在于它能够为 Web 应用程序测试提供全面且通用的工具集，这对于在快节奏的开发环境中维护[软件质量](/zh-cn/wiki/software-quality/) 至关重要。
@@ -133,22 +133,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 - **浏览器控制**：对浏览器操作的有限控制，例如最小化、最大化或处理通知。
 - **测试开发**：由于需要编码，与某些商业工具相比，测试开发速度较慢。
 - **高级操作**：文件上传、下载或验证码处理等复杂操作可能具有挑战性。
-- **开源**：免费使用，从而降低成本。
-- **语言支持**：适用于 Java、C#、Python、Ruby 等，允许灵活选择语言。
-- **跨浏览器兼容性**：支持 Chrome、Firefox、IE 等，确保测试跨多个浏览器工作。
-- **操作系统支持**：与 Windows、macOS 和 Linux 兼容。
-- **社区**：大型社区提供广泛的支持和插件。
-- **集成**：轻松与 Jenkins、Maven 和 Docker 等工具集成，以实现 CI/CD 管道。
-- **[selenium](/zh-cn/wiki/selenium/) Grid**：启用并行测试执行以减少时间。
-- **[WebDriver](/zh-cn/wiki/webdriver/)** ：直接与浏览器通信以获得更真实的测试场景。
-- **无内置报告**：需要与第三方工具集成以获取测试报告。
-- **移动测试**：本身不支持移动应用程序；需要Appium或其他工具。
-- **学习曲线**：对于初学者来说可能很陡峭，特别是对于设置和配置环境而言。
-- **动态内容**：难以处理元素频繁变化的高度动态网页。
-- **没有官方支持**：作为开源，它缺乏专门的专业支持。
-- **浏览器控制**：对浏览器操作的有限控制，例如最小化、最大化或处理通知。
-- **测试开发**：由于需要编码，与某些商业工具相比，测试开发速度较慢。
-- **高级操作**：文件上传、下载或验证码处理等复杂操作可能具有挑战性。
 
 ### 使用selenium
 
@@ -177,16 +161,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 
 1. **验证安装**：编写一个简单的[测试脚本](/zh-cn/wiki/test-script/)来打开浏览器并导航到网页以验证[环境搭建](/zh-cn/wiki/setup/)。
 2. **运行测试**：使用 IDE 或命令行执行测试，以确保一切正常工作。
-1. **安装 Java**：[selenium](/zh-cn/wiki/selenium/) 需要 Java。从 Oracle 网站下载并安装 Java 开发工具包 (JDK)。
-2. **设置Java环境变量**：配置`JAVA_HOME`环境变量指向JDK安装目录。更新系统`PATH` 以包含 JDK `bin` 目录。
-3. **下载[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：转到[selenium](/zh-cn/wiki/selenium/)官方网站并下载适合您首选浏览器的[WebDriver](/zh-cn/wiki/webdriver/)（例如，ChromeDriver适用于Chrome，GeckoDriver适用于Firefox）。
-4. **设置 [WebDriver](/zh-cn/wiki/webdriver/) 环境变量**：将 [WebDriver](/zh-cn/wiki/webdriver/) 可执行文件的路径设置为环境变量（例如，`CHROME_DRIVER` 或 `GECKO_DRIVER`），或直接在测试代码中设置。
-5. **选择测试框架**：选择与 [selenium](/zh-cn/wiki/selenium/) 兼容的测试框架，例如 JUnit 或 TestNG for Java，或者如果不使用 Java，则选择其他特定于语言的框架。
-6. **安装浏览器**：确保浏览器版本与下载的 [WebDriver](/zh-cn/wiki/webdriver/) 版本兼容。
-7. **安装 IDE**：安装集成开发环境 (IDE)，例如 Eclipse、IntelliJ IDEA 或 Visual Studio Code，用于编写 [测试脚本](/zh-cn/wiki/test-script/)。
-8. **添加 [selenium](/zh-cn/wiki/selenium/) 依赖项**：如果使用 Maven 或 Gradle，请将 [selenium](/zh-cn/wiki/selenium/) 依赖项添加到 `pom.xml` 或 `build.gradle` 文件。对于Maven：
-1. **验证安装**：编写一个简单的[测试脚本](/zh-cn/wiki/test-script/)来打开浏览器并导航到网页以验证[环境搭建](/zh-cn/wiki/setup/)。
-2. **运行测试**：使用 IDE 或命令行执行测试，以确保一切正常工作。
 
 #### 使用 Selenium 的先决条件是什么？
 
@@ -212,7 +186,7 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 
 要在 [selenium](/zh-cn/wiki/selenium/) 中编写基本的 [测试用例](/zh-cn/wiki/test-case/)，请按照下列步骤操作：
 
-1. **初始化[WebDriver](/zh-cn/wiki/webdriver/)**特定于您要测试的浏览器的实例。例如，对于 Chrome：
+1. **初始化[WebDriver](/zh-cn/wiki/webdriver/)** 特定于您要测试的浏览器的实例。例如，对于 Chrome：
 
   ```
   WebDriver driver = new ChromeDriver();
@@ -262,23 +236,11 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 ```
 确保您的 [测试环境](/zh-cn/wiki/test-environment/) 设置了您正在测试的浏览器所需的**驱动程序和依赖项**。保持[测试用例](/zh-cn/wiki/test-case/) **集中和简洁**，并在必要时使用**显式等待**来处理需要时间加载的元素。
 
-1. **初始化[WebDriver](/zh-cn/wiki/webdriver/)**特定于您要测试的浏览器的实例。例如，对于 Chrome：
-
-1. **导航**到被测试的网页使用 `get` 方法：
-
-1. **找到网络元素**您想使用定位器进行交互，例如 `id` , `name` , `xpath` 等：
-
-1. **执行操作**在网络元素上，例如单击按钮或在字段中输入文本：
-
-1. **断言预期结果**验证应用程序在操作后是否按预期运行：
-
-1. **关闭浏览器**测试完成后：
-
 #### 如何使用 Selenium 运行测试用例？
 
 要使用[selenium](/zh-cn/wiki/selenium/) 运行[测试用例](/zh-cn/wiki/test-case/)，请执行以下步骤：
 
-1. **初始化[WebDriver](/zh-cn/wiki/webdriver/)**特定于您要测试的浏览器的实例。例如，对于 Chrome：
+1. **初始化[WebDriver](/zh-cn/wiki/webdriver/)** 特定于您要测试的浏览器的实例。例如，对于 Chrome：
 
   ```
   WebDriver driver = new ChromeDriver();
@@ -339,18 +301,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
   ```
 使用您首选的 IDE 或命令行工具运行[测试用例](/zh-cn/wiki/test-case/)，确保项目中包含必要的依赖项。
 
-1. **初始化[WebDriver](/zh-cn/wiki/webdriver/)**特定于您要测试的浏览器的实例。例如，对于 Chrome：
-
-1. **导航**到被测试的网页使用 `get` 方法：
-
-1. **定位网页元素**使用任何受支持的定位器，例如 `id` , `name` , `xpath` 等：
-
-1. **执行操作**在网络元素上，例如单击按钮或在字段中输入文本：
-
-1. **断言结果**验证应用程序的行为是否符合预期：
-
-1. **关闭浏览器**测试完成后以确保没有进程处于挂起状态：
-
 #### 在 Selenium 中定位元素有哪些不同的方法？
 
 在 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 中，可以使用各种策略来定位元素：
@@ -404,54 +354,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
   ```
 每种方法都有其[用例](/zh-cn/wiki/use-case/)，并且可以根据元素的独特性、可靠性和易用性进行选择。 **CSS 选择器** 和 **XPath** 对于定位嵌套元素或没有唯一标识符的元素特别通用。选择最稳定、最高效的定位器策略对于最大限度地减少维护并提高测试稳定性至关重要。
 
-- **ID** ：通过唯一标识符查找元素。
-
-  ```
-    driver.findElement(By.id("element-id"));
-  ```
-
-- **名称**：通过元素的值来定位元素 `name` 属性。
-
-  ```
-    driver.findElement(By.name("element-name"));
-  ```
-
-- **类名称**：用于选择具有特定类的元素。
-
-  ```
-    driver.findElement(By.className("class-name"));
-  ```
-
-- **标签名称**：当您想要捕获特定类型的所有元素时很有用，例如 `<input>` 。
-
-  ```
-    driver.findElements(By.tagName("tag-name"));
-  ```
-
-- **链接文本**：使用确切的文本定位锚元素。
-
-  ```
-    driver.findElement(By.linkText("link text"));
-  ```
-
-- **部分链接文本**：与链接文本类似，但匹配部分文本。
-
-  ```
-    driver.findElement(By.partialLinkText("part of link text"));
-  ```
-
-- **CSS 选择器**：允许使用 CSS 语法进行复杂查询。
-
-  ```
-    driver.findElement(By.cssSelector("css-selector"));
-  ```
-
-- **XPath** ：使用 XML 路径表达式的强大定位器，适合在 DOM 中的元素和属性中导航。
-
-  ```
-    driver.findElement(By.xpath("//tag[@attribute='value']"));
-  ```
-
 ### 高级概念
 
 #### 什么是 Selenium Grid 以及它是如何工作的？
@@ -480,9 +382,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 ```
 [selenium](/zh-cn/wiki/selenium/) 网格对于**跨浏览器**和**跨平台**测试以及[测试执行](/zh-cn/wiki/test-execution/) 时间是关键因素的场景特别有用。它是在 DevOps 实践中实现**持续测试**和**集成**的重要工具。
 
-1. 启动集线器：
-1. 向 hub 注册节点：
-
 #### 什么是 Selenium WebDriver？它与 Selenium RC 有什么不同？
 
 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 是一个用于 Web 应用程序测试的自动化工具，是 [selenium](/zh-cn/wiki/selenium/) 套件的一部分。它直接与网络浏览器通信，并利用其本机兼容性来实现自动化。与 **[selenium](/zh-cn/wiki/selenium/) 远程控制 (RC)** 不同，[WebDriver](/zh-cn/wiki/webdriver/) 不需要单独的服务器即可与 Web 浏览器交互。
@@ -495,18 +394,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 - 无需单独的服务器
 - 更好的性能和速度
 - 与网页元素的交互更加准确和真实
-- 与浏览器直接通信
-- 无需单独的服务器
-- 更好的性能和速度
-- 与网页元素的交互更加准确和真实
-- **[selenium](/zh-cn/wiki/selenium/) RC**：
-- 需要服务器来协调命令
-- 将 JavaScript 代码注入浏览器
-- 由于服务器通信的开销而速度较慢
-- 不太真实的用户交互模拟
-- 需要服务器来协调命令
-- 将 JavaScript 代码注入浏览器
-- 由于服务器通信的开销而速度较慢
 - 不太真实的用户交互模拟总而言之，[WebDriver](/zh-cn/wiki/webdriver/)通过在操作系统级别与浏览器交互，提供了更高效、更真实的测试体验，这就是为什么它已成为基于[selenium](/zh-cn/wiki/selenium/)的[测试自动化](/zh-cn/wiki/test-automation/)的标准。
 
 #### 如何在 Selenium 中处理警报和弹出窗口？
@@ -599,38 +486,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
   ```
 请记住处理任何潜在的**异常**，例如`NoSuchWindowException`，并确保关闭任何新窗口以防止资源泄漏。另外，请考虑**多个新窗口**的可能性，并相应地调整逻辑来处理它们。
 
-1. **在打开新窗口之前识别主窗口句柄**，以便稍后可以切换回它：
-
-  ```
-    String mainWindowHandle = driver.getWindowHandle();
-  ```
-
-2. **执行打开新窗口的操作**，例如单击按钮或链接。
-3. **获取[WebDriver](/zh-cn/wiki/webdriver/)当前打开的所有窗口句柄**：
-
-  ```
-    Set<String> allWindowHandles = driver.getWindowHandles();
-  ```
-
-4. **通过遍历句柄并选择非主窗口的句柄来切换到新窗口**：
-
-  ```
-    for (String windowHandle : allWindowHandles) {
-        if(!mainWindowHandle.equalsIgnoreCase(windowHandle)){
-            driver.switchTo().window(windowHandle);
-            break;
-        }
-    }
-  ```
-
-5. **根据需要与新窗口中的元素交互**。
-6. **如果需要，关闭新窗口**，然后切换回主窗口：
-
-  ```
-    driver.close(); // Closes the new window
-    driver.switchTo().window(mainWindowHandle); // Switch back to main window
-  ```
-
 #### 如何处理 Selenium 中的下拉菜单？
 
 处理 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 中的下拉菜单可以使用 `Select` 类来实现，该类提供了与选择标记元素交互的方法。
@@ -667,14 +522,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 - **检索选定的选项**：使用 `getAllSelectedOptions` 获取所有选定的选项或 `getFirstSelectedOption` 获取第一个选定的选项。
 
 - **检查是否允许多项选择** ：使用 `isMultiple` 确定下拉列表是否支持多项选择。 请记住从`org.openqa.selenium.support.ui` 导入`Select` 类。
-
-- **按可见文本选择**：使用 `selectByVisibleText` 方法通过显示的文本选择选项。
-
-- **按值选择**：使用 `selectByValue` 方法通过其选择一个选项 `value` 属性。
-
-- **按索引选择**：使用 `selectByIndex` 方法通过索引选择选项，索引从 0 开始。
-
-- **检索选定的选项**：使用 `getAllSelectedOptions` 获取所有选定的选项或 `getFirstSelectedOption` 获取第一个选定的选项。
 
 - **检查是否允许多项选择** ：使用 `isMultiple` 确定下拉列表是否支持多项选择。
 
@@ -748,67 +595,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 - **持续集成**：将 [selenium](/zh-cn/wiki/selenium/) 测试集成到 CI/CD 管道中，以确保它们定期运行并及时报告结果。
 - **[可维护性](/zh-cn/wiki/maintainability/)**：使用[页面对象模型](/zh-cn/wiki/page-object-model/) (POM) 为UI 元素创建抽象层。这促进了代码重用并减少了维护。
 
-  ```
-    public class LoginPage {
-        private WebDriver driver;
-        private By usernameLocator = By.id("username");
-        public LoginPage(WebDriver driver) {
-            this.driver = driver;
-        }
-        public void enterUsername(String username) {
-            driver.findElement(usernameLocator).sendKeys(username);
-        }
-    }
-  ```
-
-- **可读性**：写出清晰、描述性的测试名称和注释。将断言与有意义的消息一起使用。
-
-  ```
-    @Test
-    public void loginWithValidCredentials_ShouldRedirectToDashboard() {
-        // Test steps...
-        Assert.assertTrue(isDashboardPageLoaded(), "Dashboard didn't load after valid login.");
-    }
-  ```
-
-- **稳健性**：实施显式等待来处理动态内容和 AJAX 调用，减少不稳定。
-
-  ```
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("dynamicElement")));
-  ```
-
-- **可扩展性**：使用数据驱动测试使用不同的数据集运行相同的测试。
-
-  ```
-    @DataProvider(name = "loginData")
-    public Object[][] loginData() {
-        return new Object[][] {{"user1", "pass1"}, {"user2", "pass2"}};
-    }
-    @Test(dataProvider = "loginData")
-    public void testLogin(String username, String password) {
-        // Test steps using username and password...
-    }
-  ```
-
-- **效率**：对测试进行分组并使用并行执行来最小化[测试套件](/zh-cn/wiki/test-suite/)运行时间。
-
-  ```
-    <suite name="Parallel test suite" parallel="tests" thread-count="2">
-        <test name="ChromeTest">
-            <parameter name="browser" value="chrome"/>
-            <!-- Classes -->
-        </test>
-        <test name="FirefoxTest">
-            <parameter name="browser" value="firefox"/>
-            <!-- Classes -->
-        </test>
-    </suite>
-  ```
-
-- **版本控制**：将测试存储在版本控制系统中，并遵循分支策略来跟踪更改和协作。
-- **持续集成**：将 [selenium](/zh-cn/wiki/selenium/) 测试集成到 CI/CD 管道中，以确保它们定期运行并及时报告结果。
-
 #### 如何优化 Selenium 测试以获得更好的性能？
 
 要优化 [selenium](/zh-cn/wiki/selenium/) 测试以获得更好的性能，请考虑以下策略：
@@ -843,15 +629,6 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
 - **资源管理**：使用后关闭浏览器实例、数据连接和文件等资源以释放内存。
 - **监控和分析测试**：使用分析工具识别 [测试执行](/zh-cn/wiki/test-execution/) 中的瓶颈并进行相应优化。 实施这些策略可以带来更快、更高效的 [selenium](/zh-cn/wiki/selenium/) [测试套件](/zh-cn/wiki/test-suite/)，减少反馈时间和资源消耗。
 
-- **有效使用等待**：对需要时间加载的元素实施显式等待，而不是使用线程睡眠或隐式等待，以减少不必要的等待时间。
-- **在无头模式下运行测试**：在无头模式下运行浏览器可以显着提高测试执行速度，因为它不需要渲染 UI。
-- **并行执行**：利用[selenium](/zh-cn/wiki/selenium/) Grid或支持并行执行的测试框架同时运行多个测试。
-- **优化[测试数据](/zh-cn/wiki/test-data/)**：谨慎使用数据驱动测试，并确保数据集最少且相关，以减少执行时间。
-- **最小化操作的使用**：`click()`、`sendKeys()` 等操作可能会很慢。在适当的情况下使用 JavaScript 执行以实现更快的交互。
-- **选择性[测试执行](/zh-cn/wiki/test-execution/)**：仅运行与最近更改相关的测试。使用标记对测试进行分类并根据需要执行子集。
-- **重用浏览器会话**：在可能的情况下，重用浏览器会话进行多个测试，以避免启动和停止浏览器的开销。
-- **测试代码优化**：定期重构测试代码，去除冗余，确保方法简洁高效。
-- **资源管理**：使用后关闭浏览器实例、数据连接和文件等资源以释放内存。
 - **监控和分析测试**：使用分析工具识别 [测试执行](/zh-cn/wiki/test-execution/) 中的瓶颈并进行相应优化。
 
 #### Selenium 中如何处理异常？
@@ -872,7 +649,7 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("some-id")));
 ```
-**自定义预期条件：**为更复杂的场景创建自定义条件。
+**自定义预期条件：** 为更复杂的场景创建自定义条件。
 
 ```
   public static ExpectedCondition<Boolean> textToBePresentInElement(final By locator, final String text) {
@@ -955,32 +732,15 @@ selenium 是浏览器自动化工具的开源软件套件，主要用于在 Web 
   ```
 **与其他工具集成：**
 
-- **测试NG：**用于高级测试配置和并行执行。在测试代​​码中包含 TestNG 注释并配置 Surefire 插件以运行 TestNG 套件。
+- **测试NG：** 用于高级测试配置和并行执行。在测试代码中包含 TestNG 注释并配置 Surefire 插件以运行 TestNG 套件。
 
-- **黄瓜：**对于 BDD，在 Maven 中添加 Cucumber 依赖项和插件，并创建功能文件和步骤定义。
+- **黄瓜：** 对于 BDD，在 Maven 中添加 Cucumber 依赖项和插件，并创建功能文件和步骤定义。
 
-- **Docker：**将您的 Selenium 测试容器化以实现一致的执行环境。将 Docker 镜像用于 Selenium Grid 和浏览器。 **持续集成流程：**
+- **Docker：** 将您的 Selenium 测试容器化以实现一致的执行环境。将 Docker 镜像用于 Selenium Grid 和浏览器。 **持续集成流程：**
 
 1. 将代码推送到版本控制系统（例如 Git）。
 2. Jenkins 检测更改，触发构建。
 3. Maven 编译代码并运行 Selenium 测试。
 4. 测试结果返回给Jenkins。 自动化此流程可确保[测试执行](/zh-cn/wiki/test-execution/) 的一致性以及对代码更改的即时反馈。
 
-1. 安装 **Jenkins [selenium](/zh-cn/wiki/selenium/) 插件** 。
-
-2. 通过在 Jenkins 中添加构建步骤来配置您的项目以调用 Selenium 测试。
-3. 使用 **执行shell**或 **调用顶级 Maven 目标**用于触发测试。
-
-4. 构建后，存档测试报告以供分析。
-1. 添加 Selenium 依赖项 `pom.xml` 。
-
-2. 配置 **Surefire 插件**用于测试执行。
-
-3. 使用Maven配置文件来管理不同的测试配置。
-4. 使用运行测试 `mvn` 命令。
-
-- **测试NG：**用于高级测试配置和并行执行。在测试代​​码中包含 TestNG 注释并配置 Surefire 插件以运行 TestNG 套件。
-
-- **黄瓜：**对于 BDD，在 Maven 中添加 Cucumber 依赖项和插件，并创建功能文件和步骤定义。
-
-- **Docker：**将您的 Selenium 测试容器化以实现一致的执行环境。将 Docker 镜像用于 Selenium Grid 和浏览器。
+- **Docker：** 将您的 Selenium 测试容器化以实现一致的执行环境。将 Docker 镜像用于 Selenium Grid 和浏览器。

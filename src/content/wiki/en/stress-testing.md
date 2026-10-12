@@ -78,14 +78,6 @@ Stress testing (Intrusive Testing) gauges the stability and resilience of a syst
     where possible to enable regular and consistent testing cycles.
   Stress testing should be performed **regularly** and especially before major releases or when significant changes are made to the system. Best practices include **clearly defining success criteria, maintaining realistic conditions,** and **documenting results** for future reference. Avoid common mistakes such as **testing with inadequate tools, ignoring warning signs** from the system, and **not following up** on issues discovered.
 
-  - **Identify critical scenarios**
-
-  - **Cover a variety of stress scenarios**
-    including peak loads and sustained stress periods.
-
-  - **Automate tests**
-    where possible to enable regular and consistent testing cycles.
-
 #### Why is stress testing important in software development?
 
   Stress testing is crucial in software development for **validating stability** and **ensuring reliability** under extreme conditions. It pushes the system beyond its normal operational capacity, often to a breaking point, to identify critical issues that may not surface under standard testing scenarios. This type of testing is essential for **anticipating and mitigating performance bottlenecks** before software deployment, which can lead to **downtime or degradation** in a live environment.
@@ -122,7 +114,6 @@ Stress testing (Intrusive Testing) gauges the stability and resilience of a syst
   10. **Report**: Summarize the testing process, results, and recommendations in a clear, concise report for the development team and other stakeholders.
   By following these steps, you can uncover potential issues under extreme conditions and ensure your system is robust enough to handle unexpected spikes in demand.
 
-
 #### What techniques are commonly used in stress testing?
 
   Common techniques in stress testing include:
@@ -136,7 +127,6 @@ Stress testing (Intrusive Testing) gauges the stability and resilience of a syst
   - **Security Stress Testing**: Deliberately introducing security threats alongside stress conditions to evaluate both performance and security posture under duress.
   - **Failure Testing**: Forcing components within the system to fail (e.g., shutting down servers or disconnecting network interfaces) to assess fault tolerance and recovery procedures.
   These techniques are often combined to simulate real-world scenarios and uncover issues that might not be evident under normal operating conditions. [Test automation](/en/wiki/test-automation/) engineers should tailor stress testing approaches to the specific characteristics and requirements of the software being tested.
-
 
 #### How do you determine the stress limits for a particular software?
 
@@ -173,7 +163,6 @@ Stress testing (Intrusive Testing) gauges the stability and resilience of a syst
     to refine the understanding of the system's behavior under progressively higher loads.
   By pushing the system beyond its expected limits, you can map out its stress profile and identify the points at which performance is no longer acceptable. This information is crucial for making informed decisions about scaling, optimization, and ensuring the system's resilience under unexpected conditions.
 
-
 #### What tools are commonly used for stress testing?
 
   Common tools for stress testing include:
@@ -187,7 +176,6 @@ Stress testing (Intrusive Testing) gauges the stability and resilience of a syst
   - **NeoLoad** : A load and stress testing tool designed to ensure the performance of your web and mobile applications.
   - **WebLOAD** : A tool that offers powerful scripting capabilities, extensive reporting, and supports a wide range of web technologies.
   These tools help automate the process of applying high traffic or data volumes to a system to evaluate its performance under extreme conditions. They provide metrics and insights that help identify bottlenecks and ensure software reliability.
-
 
 ### Scenarios and Results
 
@@ -204,7 +192,6 @@ Stress testing (Intrusive Testing) gauges the stability and resilience of a syst
   - **Compliance and SLA assurance** : For applications that must meet specific regulatory standards or service level agreements, stress testing verifies compliance under peak loads.
   - **Release validation** : Prior to major releases or updates, stress testing can confirm that new features or changes do not adversely affect the application's ability to handle stress.
   In each of these scenarios, stress testing provides insights into how a system behaves under extreme conditions, allowing teams to make informed decisions about capacity planning, resource allocation, and system reliability.
-
 
 #### How do you interpret the results of a stress test?
 
@@ -321,8 +308,6 @@ Stress testing (Intrusive Testing) gauges the stability and resilience of a syst
   ```
   Adjust frequency based on **risk assessment** and **resource availability**. High-risk applications may require more frequent stress testing, while low-risk ones may suffice with less. Always re-evaluate after any significant event or change that could affect performance.
 
-  - **Before major releases**
-
 #### How can you ensure that your stress testing is comprehensive and effective?
 
   To ensure comprehensive and effective stress testing:
@@ -363,8 +348,6 @@ Stress testing (Intrusive Testing) gauges the stability and resilience of a syst
   });
   ```
   Remember to **validate fixes and enhancements** made in response to stress test failures by re-running the tests. This ensures that changes have the intended effect and do not introduce new issues.
-
-  - **Define clear objectives**
 
 #### What are some common mistakes to avoid in stress testing?
 

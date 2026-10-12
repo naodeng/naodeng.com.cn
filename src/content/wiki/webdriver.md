@@ -78,7 +78,7 @@ order: 0
 
 #### 为什么 WebDriver 在自动化测试中很重要？
 
-[WebDriver](/zh-cn/wiki/webdriver/) 在自动化测试中至关重要，因为它充当**标准化接口**来控制 Web 浏览器并模拟用户交互。它允许以**独立于任何特定浏览器**的方式编写测试，从而启用**[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)策略**。 [WebDriver](/zh-cn/wiki/webdriver/) 的重要性在于它能够在**低级别**与网络元素进行交互，这非常模仿真实的用户操作。
+[WebDriver](/zh-cn/wiki/webdriver/) 在自动化测试中至关重要，因为它充当**标准化接口**来控制 Web 浏览器并模拟用户交互。它允许以**独立于任何特定浏览器**的方式编写测试，从而启用 **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)策略**。 [WebDriver](/zh-cn/wiki/webdriver/) 的重要性在于它能够在**低级别**与网络元素进行交互，这非常模仿真实的用户操作。
   通过为浏览器自动化提供**通用平台**，[WebDriver](/zh-cn/wiki/webdriver/) 促进了**可靠**、**可重复**和**可维护** [测试脚本](/zh-cn/wiki/test-script/) 的开发。它支持多种编程语言，允许团队利用现有的编码技能并与各种测试框架集成。
   [WebDriver](/zh-cn/wiki/webdriver/) 与浏览器[API](/zh-cn/wiki/api/) 的**直接通信** 确保测试**快速**且**高效**地执行，而无需像[selenium](/zh-cn/wiki/selenium/) RC 等旧工具那样产生中间服务器的开销。这种直接交互还意味着[WebDriver](/zh-cn/wiki/webdriver/)可以更有效地处理复杂的基于AJAX的UI元素和动态内容，从而获得更**准确的测试结果**。
   此外，[WebDriver](/zh-cn/wiki/webdriver/) 支持**高级用户交互**，例如拖放和复杂的鼠标移动，允许复杂的用户场景的自动化。它管理浏览器会话、cookie 和对话框的能力进一步扩展了其在创建涵盖广泛用户行为的全面[测试套件](/zh-cn/wiki/test-suite/) 方面的实用性。
@@ -114,7 +114,7 @@ order: 0
 4. **浏览器驱动程序**：浏览器驱动程序接收HTTP请求并将其翻译成浏览器可以理解的一系列动作。
 5. **操作**：浏览器执行请求的操作，例如导航到 URL、单击元素或输入文本。
 6. **响应**：执行操作后，浏览器驱动程序将 HTTP 响应发送回 [WebDriver](/zh-cn/wiki/webdriver/) 客户端。此响应包含命令执行的结果，例如成功状态、元素属性或任何错误。
-7. **结果处理**：[WebDriver](/zh-cn/wiki/webdriver/) 客户端处理响应并将结果返回给[测试脚本](/zh-cn/wiki/test-script/)，然后[测试脚本](/zh-cn/wiki/test-script/) 可以继续执行进一步的操作或断言。 在整个交互过程中，[WebDriver](/zh-cn/wiki/webdriver/) 使用**[WebDriver](/zh-cn/wiki/webdriver/) 协议**，这是一种自动化 Web 浏览器交互的标准。该协议确保命令和响应在不同的浏览器和驱动程序中保持一致，从而允许使用相同的脚本[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)。
+7. **结果处理**：[WebDriver](/zh-cn/wiki/webdriver/) 客户端处理响应并将结果返回给[测试脚本](/zh-cn/wiki/test-script/)，然后[测试脚本](/zh-cn/wiki/test-script/) 可以继续执行进一步的操作或断言。 在整个交互过程中，[WebDriver](/zh-cn/wiki/webdriver/) 使用 **[WebDriver](/zh-cn/wiki/webdriver/) 协议**，这是一种自动化 Web 浏览器交互的标准。该协议确保命令和响应在不同的浏览器和驱动程序中保持一致，从而允许使用相同的脚本[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)。
 
 #### Selenium RC 和 WebDriver 有什么区别？
 
@@ -123,11 +123,6 @@ order: 0
   另一方面，**[WebDriver](/zh-cn/wiki/webdriver/)** 是一种更现代、更先进的工具。它使用浏览器对自动化的本机支持直接与浏览器通信，无需中间服务器。 [WebDriver](/zh-cn/wiki/webdriver/) 提供了与 Web 元素更真实的交互，因为它不依赖 JavaScript 来实现自动化。这种直接控制可以更好地模拟用户操作，并且可以更有效地处理复杂的基于 AJAX 的 Web 元素。
   主要区别是：
 
-- **直接浏览器控制**：WebDriver 直接与浏览器交互，而 Selenium RC 通过服务器进行交互。
-- **速度**：WebDriver 由于与浏览器直接通信，通常速度更快。
-- **[API](/zh-cn/wiki/api/)设计** ：WebDriver的API更加简洁和面向对象，使其更易于使用和维护。
-- **浏览器支持**：WebDriver 对现代浏览器及其功能有更好的支持。
-- **JavaScript 依赖性** ：Selenium RC 依赖 JavaScript 实现自动化，这可能是一个限制，而 WebDriver 没有这种依赖性。
 - **直接浏览器控制**：WebDriver 直接与浏览器交互，而 Selenium RC 通过服务器进行交互。
 - **速度**：WebDriver 由于与浏览器直接通信，通常速度更快。
 - **[API](/zh-cn/wiki/api/)设计** ：WebDriver的API更加简洁和面向对象，使其更易于使用和维护。
@@ -163,10 +158,6 @@ order: 0
 确保将 `"path/to/chromedriver"` 和 `"path/to/geckodriver"` 替换为 ChromeDriver 和 GeckoDriver 可执行文件的实际路径。
   **注意**：运行脚本之前，请确保驱动程序可执行文件已下载并在指定路径中可用。 `get()` 方法用于在启动浏览器后导航到所需的 URL。
   执行脚本后，[WebDriver](/zh-cn/wiki/webdriver/) 将启动指定的浏览器并加载给定的 URL。请记住在测试操作完成后使用 `driver.quit()` **关闭**浏览器，以确保没有浏览器实例仍在运行。
-
-1. **导入**测试脚本中必要的 WebDriver 类。
-
-2. **实例化**所需浏览器的驱动程序（例如 ChromeDriver、FirefoxDriver）。
 
 3. 使用驱动对象 **打开浏览器窗口** 。
 
@@ -362,54 +353,6 @@ order: 0
   ```
 选择正确的定位器取决于具体场景和元素的属性。 **ID** 和 **Name** 通常因其简单性和性能而受到青睐，但 **CSS Selector** 和 **XPath** 为复杂或动态元素提供了更大的灵活性。使用可靠且不太可能更改的定位器对于确保稳定的自动化脚本至关重要。
 
-- **ID** ：通过其唯一 ID 查找元素。
-
-  ```
-    driver.findElement(By.id("element-id"));
-  ```
-
-- **名称**：通过以下方式定位元素 `name` 属性。
-
-  ```
-    driver.findElement(By.name("element-name"));
-  ```
-
-- **类名称**：对于具有特定类属性的元素。
-
-  ```
-    driver.findElement(By.className("class-name"));
-  ```
-
-- **标签名称**：通过标签名称识别元素。
-
-  ```
-    driver.findElement(By.tagName("tag-name"));
-  ```
-
-- **链接文本**：用于通过确切的文本定位链接。
-
-  ```
-    driver.findElement(By.linkText("link text"));
-  ```
-
-- **部分链接文本**：与链接文本类似，但匹配部分链接文本。
-
-  ```
-    driver.findElement(By.partialLinkText("part-of-link-text"));
-  ```
-
-- **CSS 选择器**：允许使用 CSS 选择器进行复杂查询。
-
-  ```
-    driver.findElement(By.cssSelector("css-selector"));
-  ```
-
-- **XPath** ：使用 XML 路径表达式的强大定位器。
-
-  ```
-    driver.findElement(By.xpath("//tag[@attribute='value']"));
-  ```
-
 #### 如何使用 WebDriver 定位元素？
 
 要使用 [WebDriver](/zh-cn/wiki/webdriver/) 定位元素，您可以利用各种定位器策略。每个策略都针对网页上 HTML 元素的不同属性或方面。以下是常用的方法：
@@ -463,15 +406,6 @@ order: 0
   ```
 请记住在找不到元素时处理潜在的异常，例如`NoSuchElementException`。此外，请考虑定位器策略的性能和[可维护性](/zh-cn/wiki/maintainability/)，因为与 ID 或 CSS 选择器等其他方法相比，XPath 等某些方法可能更慢且更脆弱。
 
-- **By.id** ：通过元素的唯一 ID 查找元素。
-- **By.name** ：通过 NAME 属性定位元素。
-- **By.className** ：通过元素的类属性来定位元素。
-- **By.tagName** ：按标签名称查找元素。
-- **By.cssSelector** ：使用 CSS 选择器来定位元素，允许复杂的查询。
-- **By.xpath** ：使用 XPath 表达式在 DOM 中的元素和属性中导航。
-- **By.linkText** ：通过链接元素显示的确切文本查找链接元素。
-- **By.partialLinkText** ：定位包含指定文本的链接元素。
-
 #### findElement() 和 findElements() 方法有什么区别？
 
 在 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 中，`findElement()` 和 `findElements()` 都是用于定位网页上的元素的方法，但它们的返回类型和行为有所不同：
@@ -495,10 +429,6 @@ order: 0
 
 - **[用例](/zh-cn/wiki/use-case/)** ：使用 `findElement()` 当您需要与单个元素交互时；使用 `findElements()` 当您需要与共享同一定位器的多个元素进行交互时。 根据您希望使用一个还是多个元素以及您希望如何处理未找到元素的情况来选择方法。
 
-- **返回类型**： `findElement()` 返回单个 `WebElement` ; `findElements()` 返回一个 `List<WebElement>` 。
-
-- **异常处理**： `findElement()` 如果没有找到元素则抛出异常； `findElements()` 返回一个空列表。
-
 - **[用例](/zh-cn/wiki/use-case/)** ：使用 `findElement()` 当您需要与单个元素交互时；使用 `findElements()` 当您需要与共享同一定位器的多个元素进行交互时。
 
 #### 如何使用 WebDriver 处理动态元素？
@@ -511,7 +441,7 @@ order: 0
   WebElement element = driver.findElement(By.xpath("//tag[contains(@attribute, 'value')]"));
   ```
 **2.具有子字符串匹配的 CSS 选择器：**
-  与 XPath 类似，CSS 选择器可以使用 `^`、`$` 或 `*` 基于属性值的子字符串来匹配元素。
+  与 XPath 类似，CSS 选择器可以按属性值的一部分匹配元素：`^` 匹配前缀，`$` 匹配后缀，`*` 匹配任意位置的子字符串。
 
   ```
   WebElement element = driver.findElement(By.cssSelector("tag[attribute*='value']"));
@@ -589,20 +519,6 @@ order: 0
   ```
 如果下拉列表不存在或找不到指定的选项，请记住**处理异常**，例如`NoSuchElementException`。
 
-1. **识别下拉元素**使用任何 WebDriver 定位器，例如 `By.id` , `By.name` , `By.xpath` 等
-
-1. **创建`Select`类的实例**通过将下拉元素传递给其构造函数。
-
-1. **选择一个选项**从下拉菜单中。您可以按索引、值或可见文本进行选择。
-
-- **按索引** （从零开始）：
-
-- **按价值**：
-- **通过可见文本**：
-1. **取消选择选项**如果它是一个多选下拉菜单。取消选择选项也有类似的方法：
-
-1. **检索所选选项**使用 `getOptions()` , `getAllSelectedOptions()` , 或 `getFirstSelectedOption()` 如果需要的话。
-
 ### 等待命令
 
 #### WebDriver 中的等待命令有哪些不同类型？
@@ -642,37 +558,6 @@ order: 0
     Thread.sleep(1000); // Sleep for 1 second
   ```
 建议使用显式且流畅的等待而不是隐式等待，以获得更好的测试稳定性并避免不必要的延迟。除非绝对必要，否则应避免睡觉。
-
-  ```
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-  ```
-
-- **显式等待**：在继续执行之前等待特定条件发生。它比隐式等待更灵活，因为它允许您指定条件。
-
-  ```
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("elementId")));
-  ```
-
-- **流畅等待**：与显式等待类似，但有更多选项。您可以定义等待条件的最长时间以及检查条件的频率。您还可以在等待时忽略特定类型的异常。
-
-  ```
-    Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-        .withTimeout(Duration.ofSeconds(30))
-        .pollingEvery(Duration.ofSeconds(5))
-        .ignoring(NoSuchElementException.class);
-    WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
-       public WebElement apply(WebDriver driver) {
-         return driver.findElement(By.id("foo"));
-       }
-     });
-  ```
-
-- **睡眠**：简单的暂停，将执行暂停指定的时间。通常不鼓励这样做，因为它可能导致不必要的等待，并且可能使测试运行的时间超过所需的时间。
-
-  ```
-    Thread.sleep(1000); // Sleep for 1 second
-  ```
 
 #### 隐式等待和显式等待有什么区别？
 
@@ -777,7 +662,7 @@ order: 0
   Thread.sleep(5000); // Pauses execution for 5 seconds
   ```
 此方法接受一个以毫秒为单位的参数，并在该持续时间内停止整个[测试执行](/zh-cn/wiki/test-execution/)。使用 `sleep()` 通常被认为是一种**糟糕的做法**，因为它引入了**硬编码等待**，使测试不太可靠并增加了执行时间。 `sleep()` 的主要问题是它没有考虑应用程序是否准备好继续，从而导致不必要的等待或如果等待时间不足则可能导致不稳定。
-  建议使用**[WebDriver](/zh-cn/wiki/webdriver/) 的等待机制**，例如**隐式等待**、**显式等待**或**流畅等待**，而不是`sleep()`。这些等待是动态的，一旦满足必要的条件（例如元素的存在或可见性），测试就可以继续进行，从而使测试更加高效和稳健。
+  建议使用 **[WebDriver](/zh-cn/wiki/webdriver/) 的等待机制**，例如**隐式等待**、**显式等待**或**流畅等待**，而不是`sleep()`。这些等待是动态的，一旦满足必要的条件（例如元素的存在或可见性），测试就可以继续进行，从而使测试更加高效和稳健。
 
 ### 高级 WebDriver 概念
 
@@ -817,38 +702,6 @@ order: 0
     driver.switchTo().window(originalWindow); // Switch back to the original window
   ```
 请记住处理任何潜在的异常，例如 `NoSuchWindowException`，并确保您的 [测试脚本](/zh-cn/wiki/test-script/) 考虑到窗口或选项卡可能无法按预期打开的可能性。
-
-1. **在打开新窗口或选项卡之前识别当前窗口句柄**，以便您可以在需要时返回到它。
-
-  ```
-    String originalWindow = driver.getWindowHandle();
-  ```
-
-2. **执行打开新窗口或选项卡的操作**，例如单击在新窗口中打开的链接。
-3. **获取[WebDriver](/zh-cn/wiki/webdriver/)实例当前打开的所有窗口句柄**。
-
-  ```
-    Set<String> allWindows = driver.getWindowHandles();
-  ```
-
-4. **通过迭代 `allWindows` 集并使用 `switchTo().window()` 方法和新窗口句柄来切换到新窗口或选项卡**。
-
-  ```
-    for (String windowHandle : allWindows) {
-        if (!originalWindow.contentEquals(windowHandle)) {
-            driver.switchTo().window(windowHandle);
-            break;
-        }
-    }
-  ```
-
-5. **根据测试需要在新窗口或选项卡中与内容交互**。
-6. **如有必要，关闭新窗口或选项卡**，然后切换回原始窗口。
-
-  ```
-    driver.close(); // Closes the new window or tab
-    driver.switchTo().window(originalWindow); // Switch back to the original window
-  ```
 
 #### 如何使用 WebDriver 执行鼠标和键盘操作？
 
@@ -931,10 +784,6 @@ order: 0
 - 使用 `driver.switchTo().frame()` 切换到 iframe。
 
 - 与 iframe 交互后，返回主页 `driver.switchTo().defaultContent()` 。 请记住，如果一个 iframe 嵌套在另一个 iframe 中，则必须按顺序切换到每个 iframe，直到达到所需的级别。完成后始终切换回父框架或主要内容。
-
-- 使用识别 iframe **指数** , **姓名** , **身份证号码** , 或 **网络元素** 。
-
-- 使用 `driver.switchTo().frame()` 切换到 iframe。
 
 - 与 iframe 交互后，返回主页 `driver.switchTo().defaultContent()` 。
 

@@ -113,7 +113,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   - **Comments**: None
   ```
 
-
 #### How does a Test Case contribute to the overall quality of a software product?
 
   Test Cases are pivotal in ensuring the **quality** of a software product. They act as the **blueprint** for testing, detailing the conditions under which a test should be executed and the expected outcome. By meticulously verifying each aspect of the software's functionality through these cases, testers can identify discrepancies between the actual and [expected results](/en/wiki/expected-result/), which are indicative of defects or [bugs](/en/wiki/bug/).
@@ -133,10 +132,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   - Test Case 2: Verify login with invalid credentials.
   - Test Case 3: Verify login with blank username and password fields.
   In essence, [Test Scenarios](/en/wiki/test-scenario/) are less detailed and cover a wider range of application behavior, while Test Cases are detailed instructions designed to validate a specific function of the software.
-
-  - Test Case 1: Verify login with valid credentials.
-  - Test Case 2: Verify login with invalid credentials.
-  - Test Case 3: Verify login with blank username and password fields.
 
 ### Creation and Execution
 
@@ -158,7 +153,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   12. **Review and Refine**: Regularly review and update the Test Case to ensure it remains effective and relevant.
   Remember to maintain clarity and conciseness in each step to facilitate understanding and execution by other team members.
 
-
 #### What is the role of a Test Case in the execution of a test?
 
   In [test execution](/en/wiki/test-execution/), a **Test Case** acts as the fundamental unit of the testing process. It serves as a specific set of conditions under which a tester will determine whether a particular aspect of the application is working as expected. Each Test Case is executed individually and in isolation to ensure that it verifies the functionality it is intended to test.
@@ -170,7 +164,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   - **Blocked** : The Test Case cannot be executed due to external factors, such as dependencies on other Test Cases or unresolved bugs.
   - **Skipped** : The Test Case is intentionally not executed, possibly due to it being out of scope for a particular test run.
   The results from Test Case execution are crucial for identifying defects, verifying fixes, and ensuring that the software meets its requirements. By meticulously documenting the outcomes, testers provide valuable feedback to the development team, which is essential for maintaining [software quality](/en/wiki/software-quality/) and guiding future development efforts.
-
 
 #### How do you execute a Test Case?
 
@@ -203,7 +196,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   7. **Clean up**: Reset the [test environment](/en/wiki/test-environment/) to a clean state if necessary, ready for the next [test execution](/en/wiki/test-execution/).
   Remember to validate the test case against the latest version of the application under test to ensure accuracy and relevance of the test results.
 
-
 #### What tools can be used to create and manage Test Cases?
 
   To create and manage test cases, various tools are available that cater to different needs and preferences. Here's a list of some popular tools:
@@ -218,7 +210,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   - **TestCaseLab** : A simple test case management tool designed for QA engineers to create and manage test cases efficiently.
   - **SpiraTest** : Offers integrated test case management with requirements and defect tracking, supporting both manual and automated testing.
   These tools often include features such as **version control**, **[test execution](/en/wiki/test-execution/) history**, **traceability**, and **reporting capabilities** to help streamline the [test case management](/en/wiki/test-case-management/) process. When choosing a tool, consider factors like integration capabilities, ease of use, and specific features that align with your team's workflow and objectives.
-
 
 #### How do you determine the success or failure of a Test Case?
 
@@ -278,7 +269,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   - **[API](/en/wiki/api-testing/) Test Cases**: Verify the logic of the build architecture within the application by testing the [APIs](/en/wiki/api-testing/) and their interactions.
   - **UI Test Cases**: Focus on the graphical interface and how the user interacts with it, ensuring elements are visible, actions are possible, and the UI responds correctly.
   Each type of test case plays a crucial role in ensuring comprehensive [test coverage](/en/wiki/test-coverage/) and the delivery of a quality software product.
-
 
 #### Can you provide an example of a good Test Case?
 
@@ -359,10 +349,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   ```
   In this example, the test case is designed to confirm that a user with valid credentials can log in successfully. The success of the test case is determined by the assertion at the end, which checks if the user is logged in. If the assertion passes, the test case is considered successful; if it fails, the test case has uncovered a defect.
 
-  1. Identify the function to test.
-  2. Define the test input or conditions.
-  3. Determine the expected outcome.
-
 #### What is a non-functional Test Case?
 
   A **non-functional Test Case** focuses on the aspects of a software system that define **how** the system operates, rather than **what** the system does. These test cases are concerned with the system's behavior under certain constraints and include attributes such as performance, security, usability, reliability, and scalability.
@@ -404,7 +390,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   - **Balance Positive and Negative Tests**: Ensure a mix of positive (expected behavior) and negative (handling of invalid or unexpected inputs) test cases.
   By adhering to these practices, test cases will be robust, maintainable, and valuable in ensuring the quality of the software product.
 
-
 #### How can you ensure that a Test Case covers all possible scenarios?
 
   Ensuring a Test Case covers all possible scenarios involves a combination of techniques:
@@ -421,7 +406,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   - **Peer Reviews** : Have other engineers review test cases to identify missing scenarios.
   - **Automated Test Generation Tools** : Utilize tools that can generate test cases based on models or specifications.
   Remember, it's not always feasible or practical to test every possible scenario due to time and resource constraints. Focus on the most critical paths and use risk assessment to guide the [test coverage](/en/wiki/test-coverage/). Regularly revisit and update test cases to adapt to changes in the software and emerging understanding of its use.
-
 
 #### What are common mistakes to avoid when creating a Test Case?
 
@@ -465,7 +449,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
   }
   ```
   **Consistency** and **adaptability** are key; Test Cases should evolve alongside the software they are designed to test.
-
 
 #### How can you improve the reusability of Test Cases?
 
@@ -524,12 +507,6 @@ A test case is a detailed specification of test inputs, conditions, procedures, 
     ```
 
   - **Adopt version control best practices**: Organize [test scripts](/en/wiki/test-script/) in a version control system with clear naming conventions and directory structures to facilitate sharing and reusing test cases.
-  - **Document reusable components**: Ensure that all reusable modules, functions, and page objects are well-documented, making it easier for others to understand and use them.
   By following these practices, [test automation](/en/wiki/test-automation/) engineers can create a suite of flexible, maintainable, and reusable test cases, leading to more efficient testing processes.
 
-  - **Modularize tests** : Break down test cases into smaller, reusable modules or functions that can be combined in different ways to create new test cases.
-  - **Use data-driven tests** : Externalize test data from the test scripts. This allows the same test case to be executed with different data sets without modifying the code.
-  - **Implement [Page Object Model](/en/wiki/page-object-model/) (POM)** : Encapsulate UI structure and behaviors within page objects. This reduces duplication and makes maintenance easier when UI changes.
-  - **Parameterize tests** : Use parameters to generalize test cases, making them applicable to different situations.
-  - **Adopt version control best practices**: Organize [test scripts](/en/wiki/test-script/) in a version control system with clear naming conventions and directory structures to facilitate sharing and reusing test cases.
   - **Document reusable components**: Ensure that all reusable modules, functions, and page objects are well-documented, making it easier for others to understand and use them.

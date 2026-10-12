@@ -1,6 +1,6 @@
 ---
-title: "Node Js ｜ Node Js"
-description: "Node.js 是一个开源、跨平台的运行时环境，允许在服务器端运行 JavaScript。它基于 Chrome 的 V8 JavaScript 引擎构建，使开发者能够使用 JavaScript 编写命令行工具和服务器端脚本，从而在页面发送到浏览器之前生成动态网页内容。Node.js 的重要性："
+title: "Node.js ｜ Node.js"
+description: "Node.js 是一个开源、跨平台的运行时环境，允许在服务器端运行 JavaScript。它基于 Chrome 的 V8 JavaScript 引擎构建，使开发者能够使用 JavaScript 编写命令行工具和服务器端脚本，从而在页面发送到浏览器之前生成动态网页内容。"
 section: "N"
 related:
   - web-test-automation-tools
@@ -12,11 +12,11 @@ related:
 order: 0
 ---
 
-# Node Js ｜ Node Js
+# Node.js ｜ Node.js
 
 <!-- TOC START -->
 
-- [Node Js ｜ Node Js](#node-js--node-js)
+- [Node.js ｜ Node.js](#nodejs--nodejs)
   - [相关术语](#相关术语)
     - [另请参阅：](#另请参阅)
   - [关于 Node.js 有疑问吗？](#关于-nodejs-有疑问吗)
@@ -28,11 +28,6 @@ order: 0
       - [Node.js 中的事件驱动编程是什么？](#nodejs-中的事件驱动编程是什么)
     - [使用 Node.js](#使用-nodejs)
       - [如何在系统上安装 Node.js？](#如何在系统上安装-nodejs)
-    - [对于 Windows 和 macOS：](#对于-windows-和-macos)
-    - [对于基于 Ubuntu 的发行版：](#对于基于-ubuntu-的发行版)
-    - [对于 CentOS、Fedora 和基于 Red Hat 的发行版：](#对于-centosfedora-和基于-red-hat-的发行版)
-    - [对于 Arch Linux：](#对于-arch-linux)
-    - [验证：](#验证)
       - [如何更新 Node.js？](#如何更新-nodejs)
       - [如何调试 Node.js 应用程序？](#如何调试-nodejs-应用程序)
       - [什么是 NPM 以及它在 Node.js 中如何使用？](#什么是-npm-以及它在-nodejs-中如何使用)
@@ -55,11 +50,11 @@ order: 0
       - [Node.js 中的 cluster 模块是什么以及它为什么有用？](#nodejs-中的-cluster-模块是什么以及它为什么有用)
       - [Node.js 如何处理子进程？](#nodejs-如何处理子进程)
 <!-- TOC END -->
-Node.js 是一个开源、跨平台的 JavaScript 运行时环境，允许开发人员在服务器端执行 JavaScript 代码。传统上，JavaScript 主要用于 Web 浏览器中的客户端脚本编写。 Node.js 然而，JavaScript 可以用于在浏览器之外构建可扩展的网络应用程序。基于 Chrome 的 V8 JavaScript 引擎构建， Node.js 旨在构建快速高效的 Web 应用程序，尤其是 I/O 密集型应用程序。
+Node.js 是一个开源、跨平台的 JavaScript 运行时环境，可让开发者在服务器端运行 JavaScript。它基于 Chrome 的 V8 引擎构建，使 JavaScript 能够在浏览器之外用于构建可扩展的网络应用，尤其适合 I/O 密集型应用。
 
 ## 相关术语
 
-- [JavaScript runtime](/zh-cn/wiki/node-js/)
+- JavaScript 运行时
 - [Jest](/zh-cn/wiki/jest/)
 - [jasmine](/zh-cn/wiki/jasmine/)
 
@@ -83,11 +78,6 @@ Node.js 是一个开源、跨平台的 JavaScript 运行时环境，允许开发
 - **微服务架构**：它非常适合构建微服务，微服务是构建可扩展系统的流行架构风格，包括可能需要与各种服务和工具集成的[测试自动化](/zh-cn/wiki/test-automation/)框架。
 - **跨平台**：[node.js](/zh-cn/wiki/node-js/) 应用程序无需修改即可在各种操作系统上运行，使其成为需要与平台无关的[测试自动化](/zh-cn/wiki/test-automation/) 工具的理想选择。
 - **社区和支持**：它拥有一个庞大而活跃的社区，这意味着丰富的资源、支持和对技术的不断改进，这对于维护和更新[测试自动化](/zh-cn/wiki/test-automation/)框架是有利的。
-- **统一语言**：[node.js](/zh-cn/wiki/node-js/)使用JavaScript，这意味着客户端和服务器端可以使用相同的语言。这简化了开发，并可以提高团队之间的效率和理解。
-- **异步I/O**：它异步处理I/O操作，这可以带来更好的性能和可扩展性，特别是对于需要大量I/O操作的应用程序，例如可能需要同时处理多个任务的[测试自动化](/zh-cn/wiki/test-automation/)系统。
-- **NPM 生态系统**：[node.js](/zh-cn/wiki/node-js/) 附带 npm（节点包管理器），这是一个庞大的库和工具存储库，这对 [测试自动化](/zh-cn/wiki/test-automation/) 非常有利，提供了丰富的模块来扩展功能并减少开发时间。
-- **微服务架构**：它非常适合构建微服务，微服务是构建可扩展系统的流行架构风格，包括可能需要与各种服务和工具集成的[测试自动化](/zh-cn/wiki/test-automation/)框架。
-- **跨平台**：[node.js](/zh-cn/wiki/node-js/) 应用程序无需修改即可在各种操作系统上运行，使其成为需要与平台无关的[测试自动化](/zh-cn/wiki/test-automation/) 工具的理想选择。
 - **社区和支持**：拥有庞大且活跃的社区，这意味着丰富的资源、支持以及对技术的不断改进，这对于维护和更新[测试自动化](/zh-cn/wiki/test-automation/)框架是有利的。
 
 #### Node.js 和 JavaScript 之间有什么区别？
@@ -118,7 +108,7 @@ JavaScript 是一种**编程语言**，作为文档对象模型 (DOM) 的一部�
   **libuv 库** 支持 [node.js](/zh-cn/wiki/node-js/)，提供一组跨平台的 I/O 原语。 [node.js](/zh-cn/wiki/node-js/) 构建于 **V8 JavaScript 运行时**，它以其速度和性能而闻名。
   **流**是数据的集合 - 例如数组或字符串，您可以异步读取或写入。 [node.js](/zh-cn/wiki/node-js/) 使用流来处理块中的数据，这对于处理大量数据（例如文件或网络通信）非常有效。
   [node.js](/zh-cn/wiki/node-js/) 拥有一个称为 npm 的**软件包生态系统**，它是世界上最大的开源库生态系统。它允许轻松共享和重用代码。
-  **REPL（读取-评估-打印循环）**是用于测试 [node.js](/zh-cn/wiki/node-js/)/JavaScript 代码的工具。它是一个处理 [node.js](/zh-cn/wiki/node-js/) 表达式的交互式 shell。该环境允许快速原型设计和调试。
+  **REPL（读取-评估-打印循环）** 是用于测试 [node.js](/zh-cn/wiki/node-js/)/JavaScript 代码的工具。它是一个处理 [node.js](/zh-cn/wiki/node-js/) 表达式的交互式 shell。该环境允许快速原型设计和调试。
   [node.js](/zh-cn/wiki/node-js/) 支持数据的**缓冲区和缓存**，这是数据从一个地方传输到另一个地方的临时保存点。这提高了 I/O 操作的性能。
   最后，[node.js](/zh-cn/wiki/node-js/) 具有用于服务器端和客户端脚本的**统一[API](/zh-cn/wiki/api/)**。这意味着两者通常使用相同的模式和方法，这可以简化同构应用程序的开发过程。
 
@@ -133,7 +123,7 @@ JavaScript 是一种**编程语言**，作为文档对象模型 (DOM) 的一部�
   const cluster = require('cluster');
   const http = require('http');
   const numCPUs = require('os').cpus().length;
-  if (cluster.isMaster) {
+  if (cluster.isPrimary) {
     for (let i = 0; i < numCPUs; i++) {
       cluster.fork();
     }
@@ -144,7 +134,7 @@ JavaScript 是一种**编程语言**，作为文档对象模型 (DOM) 的一部�
     }).listen(8000);
   }
   ```
-在此代码中，`cluster.isMaster` 检查确定当前进程是否为主进程，然后创建工作进程。每个工作进程都会创建一个监听同一端口的 HTTP 服务器。
+在此代码中，`cluster.isPrimary` 检查当前进程是否为主进程；如果是，就创建工作进程。每个工作进程都会创建一个监听同一端口的 HTTP 服务器。
 
 #### Node.js 中的事件驱动编程是什么？
 
@@ -168,50 +158,14 @@ JavaScript 是一种**编程语言**，作为文档对象模型 (DOM) 的一部�
 
 #### 如何在系统上安装 Node.js？
 
-要在您的系统上安装 **[node.js](/zh-cn/wiki/node-js/)**，请按照以下特定于平台的说明进行操作：
-  ### 对于 Windows 和 macOS：
+请从 [Node.js 官方下载页面](https://nodejs.org/en/download/)为你的操作系统选择安装程序或安装方式。页面会列出当前的 **LTS** 和 **Current** 版本，并提供对应平台的选项。除非项目要求其他版本线，大多数项目通常选择 LTS 版本。
 
-1. 访问 Node.js 官方网站： [nodejs.org](https://nodejs.org/)。
+安装后，检查 Node.js 和 npm 是否可用：
 
-2. 单击 **长期支持** （长期支持）或 **当前**版本下载按钮，根据您的要求。
-
-3. 运行下载的安装程序并按照提示完成安装。
-  ### 对于基于 Ubuntu 的发行版：
-  打开终端并运行以下命令：
-
-  ```
-  curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-  sudo apt-get install -y nodejs
-  ```
-将 `14.x` 替换为您要安装的版本。
-  ### 对于 CentOS、Fedora 和基于 Red Hat 的发行版：
-  在终端中执行这些命令：
-
-  ```
-  curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
-  sudo yum install nodejs
-  ```
-再次将 `14.x` 替换为所需的版本。
-  ### 对于 Arch Linux：
-  使用包管理器`pacman`来安装[node.js](/zh-cn/wiki/node-js/)：
-
-  ```
-  sudo pacman -S nodejs npm
-  ```
-### 验证：
-  安装完成后，通过检查[node.js](/zh-cn/wiki/node-js/)和npm的版本来验证安装：
-
-  ```
-  node -v
-  npm -v
-  ```
-这将输出 [node.js](/zh-cn/wiki/node-js/) 和 npm 的已安装版本，确认安装成功。
-
-1. 访问 Node.js 官方网站： [nodejs.org](https://nodejs.org/)。
-
-2. 单击 **长期支持** （长期支持）或 **当前**版本下载按钮，根据您的要求。
-
-3. 运行下载的安装程序并按照提示完成安装。
+```sh
+node --version
+npm --version
+```
 
 #### 如何更新 Node.js？
 
@@ -229,7 +183,6 @@ JavaScript 是一种**编程语言**，作为文档对象模型 (DOM) 的一部�
 
 5. 验证更新 `node -v` 。 **使用 n:**
 
-1. 打开您的终端。
 2. 安装 `n` 全球范围内与 `npm install -g n` 。
 
 3. 将 Node.js 更新到最新版本 `n latest` 。
@@ -240,7 +193,7 @@ JavaScript 是一种**编程语言**，作为文档对象模型 (DOM) 的一部�
 
 2. 下载最新版本的 Windows Installer。
 3. 运行安装程序并按照提示更新 Node.js。
-4. 重新启动终端并使用以下命令验证更新 `node -v` 。 **使用npm（跨平台）：**如果您安装了 npm，则可以在 Windows 上使用 `npm` 包 `npm-windows-upgrade` 或在基于 Unix 的系统上使用 `npm` 本身将 [node.js](/zh-cn/wiki/node-js/) 更新到最新稳定版本：
+4. 重新启动终端并使用以下命令验证更新 `node -v` 。 **使用npm（跨平台）：** 如果您安装了 npm，则可以在 Windows 上使用 `npm` 包 `npm-windows-upgrade` 或在基于 Unix 的系统上使用 `npm` 本身将 [node.js](/zh-cn/wiki/node-js/) 更新到最新稳定版本：
 
   ```
   npm install -g npm-windows-upgrade
@@ -255,33 +208,10 @@ JavaScript 是一种**编程语言**，作为文档对象模型 (DOM) 的一部�
 ```
 更新后，始终确保您的全局 npm 包和本地项目依赖项与新的 [node.js](/zh-cn/wiki/node-js/) 版本兼容。
 
-1. 打开您的终端。
-2. 跑步 `nvm ls` 列出已安装的版本。
-
-3. 更新到最新版本 `nvm install node` 。
-
-4.使用切换到新版本
-    `nvm use node`
-    。
-
-5. 验证更新 `node -v` 。
-
-1. 打开您的终端。
-2. 安装 `n` 全球范围内与 `npm install -g n` 。
-
-3. 将 Node.js 更新到最新版本 `n latest` 。
-
-4. 验证更新 `node -v` 。
-
-1. 前往 [Node.js website](https://nodejs.org/)。
-
-    `node -v`
-    。
-
 #### 如何调试 Node.js 应用程序？
 
 可以使用多种方法调试 [node.js](/zh-cn/wiki/node-js/) 应用程序：
-  **内置调试器**：[node.js](/zh-cn/wiki/node-js/) 附带一个内置 CLI 调试器，可以通过运行 `node inspect yourScript.js` 来启动。您可以设置断点、单步调试代码以及​​检查变量。
+  **内置调试器**：[node.js](/zh-cn/wiki/node-js/) 附带一个内置 CLI 调试器，可以通过运行 `node inspect yourScript.js` 来启动。您可以设置断点、单步调试代码以及检查变量。
   **Chrome DevTools**：通过使用 `--inspect` 标志（例如 `node --inspect yourScript.js`）启动 [node.js](/zh-cn/wiki/node-js/) 应用程序，您可以连接到 Chrome DevTools 以获得更直观的调试体验。
 
   ```
@@ -416,14 +346,6 @@ NPM 确保所有开发人员和 CI/CD 管道使用相同的包版本，这要归
 
 1. **调用方法**或访问您从模块导出的属性。 请记住，[node.js](/zh-cn/wiki/node-js/) 使用 CommonJS 模块系统，每个文件都被视为一个单独的模块。通过使用`require()` 和`module.exports`，您可以创建模块化、可维护且可重用的代码，这在[测试自动化](/zh-cn/wiki/test-automation/) 中特别有用，可用于构建[测试用例](/zh-cn/wiki/test-case/) 和实用函数。
 
-1. **创建一个新文件**与一个 `.js` 扩展名，例如 `calculator.js` 。
-
-2. **编写模块代码**在此文件内。定义您想要供其他文件使用的函数、对象或任何其他变量。
-
-1. 使用 `module.exports` 到 **导出模块的功能**你想要暴露的。这可以是函数、对象、类等。
-
-1. **需要模块**使用 `require()` 函数与模块文件的路径。
-
 1. **调用方法**或访问您从模块导出的属性。
 
 #### Node.js 中有哪些内置模块？
@@ -521,96 +443,6 @@ NPM 确保所有开发人员和 CI/CD 管道使用相同的包版本，这要归
   ```
 这些模块是 [node.js](/zh-cn/wiki/node-js/) 的组成部分，并且可以通过 `require` 函数包含在您的应用程序中。它们提供了轻松构建复杂应用程序所需的工具。
 
-- **fs** ：提供文件系统操作，例如读取和写入文件。
-
-  ```
-    const fs = require('fs');
-  ```
-
-- **http** ：允许创建 HTTP 服务器和客户端。
-
-  ```
-    const http = require('http');
-  ```
-
-- **https** ：类似于 `http` 但对于 HTTPS。
-
-  ```
-    const https = require('https');
-  ```
-
-- **path** ：提供用于处理和转换文件路径的实用程序。
-
-  ```
-    const path = require('path');
-  ```
-
-- **os** ：提供与操作系统相关的基本实用功能。
-
-  ```
-    const os = require('os');
-  ```
-
-- **util** ：包含用于调试和弃用处理的实用程序函数。
-
-  ```
-    const util = require('util');
-  ```
-
-- **events** ：提供EventEmitter类来处理事件。
-
-  ```
-    const EventEmitter = require('events');
-  ```
-
-- **stream**：允许处理流数据，例如以块的形式读取和写入文件。
-
-  ```
-    const stream = require('stream');
-  ```
-
-- **child_process** ：启用运行子进程来执行其他程序。
-
-  ```
-    const { exec } = require('child_process');
-  ```
-
-- **url** ：提供 URL 解析和解析的实用程序。
-
-  ```
-    const url = require('url');
-  ```
-
-- **querystring** ：解析和格式化 URL 查询字符串。
-
-  ```
-    const querystring = require('querystring');
-  ```
-
-- **crypto** ：提供加密功能，包括一组 OpenSSL 散列、HMAC、密码、解密、签名和验证功能的包装器。
-
-  ```
-    const crypto = require('crypto');
-  ```
-
-- **buffer** ：使用 Buffer 类直接处理二进制数据。
-
-  ```
-    const Buffer = require('buffer').Buffer;
-  ```
-
-- **dns** ：提供执行名称解析的功能。
-
-  ```
-    const dns = require('dns');
-  ```
-
-- **net** ：提供异步网络包装器，用于创建基于流的 TCP 或 IPC 服务器和客户端。
-
-  ```
-    const net = require('net');
-  ```
-
 #### Node.js 中 module.exports 的用途是什么？
 
 在[node.js](/zh-cn/wiki/node-js/)中，`module.exports`是当前模块在另一个模块中`require`d时返回的对象。本质上，它定义了模块中的**可导出实体**，例如函数、对象或原语，使它们可供其他模块访问。
@@ -679,24 +511,6 @@ NPM 确保所有开发人员和 CI/CD 管道使用相同的包版本，这要归
 
 5. **根据模块的文档调用其函数或类，在代码中使用该模块**。 请记住**将 `package.json` 和 `package-lock.json` 或 `yarn.lock`** 文件提交到版本控制系统，以确保其他开发人员可以安装相同的依赖项。但是，`node_modules` 目录通常添加到`.gitignore` 中，因为它可以使用`npm install` 或`yarn install` 轻松重建。
 
-    此行导入 `express` 模块，您现在可以在应用程序中使用该模块。
-
-    ```
-    const express = require('express');
-    ```
-
-4. **如果仅需要用于开发目的（例如，测试框架），请使用 `--save-dev` 标志将模块保存为开发依赖项**： 或对于纱线：
-
-  ```
-    npm install <module-name> --save-dev
-  ```
-
-  ```
-    yarn add <module-name> --dev
-  ```
-
-5. **根据模块的文档调用其函数或类，在代码中使用该模块**。
-
 ### Node.js 和数据库
 
 #### 如何将 Node.js 应用程序连接到数据库？
@@ -750,53 +564,6 @@ NPM 确保所有开发人员和 CI/CD 管道使用相同的包版本，这要归
     connection.end();
   ```
 对于其他 [数据库](/zh-cn/wiki/database/)（如 PostgreSQL 或 MongoDB），您可以使用它们各自的驱动程序（`pg` 用于 PostgreSQL，`mongodb` 用于 MongoDB 等）并遵循类似的过程。如果使用像 Sequelize 这样的 ORM，该过程将涉及定义模型并使用 ORM 的方法与 [数据库](/zh-cn/wiki/database/) 进行交互。始终优雅地处理错误并确保正确关闭连接以避免资源泄漏。
-
-1. **使用 npm 安装 [数据库](/zh-cn/wiki/database/) 驱动程序**。对于 MySQL，您将运行：
-
-  ```
-    npm install mysql
-  ```
-
-2. **在您的 [node.js](/zh-cn/wiki/node-js/) 应用程序中导入驱动程序**：
-
-  ```
-    const mysql = require('mysql');
-  ```
-
-3. **使用必要的凭据创建到 [数据库](/zh-cn/wiki/database/) 的连接**：
-
-  ```
-    const connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'your_username',
-      password: 'your_password',
-      database: 'your_database_name'
-    });
-  ```
-
-4. **打开连接**并处理任何错误：
-
-  ```
-    connection.connect(error => {
-      if (error) throw error;
-      console.log('Connected to the database.');
-    });
-  ```
-
-5. **使用连接执行[数据库](/zh-cn/wiki/database/)操作**，例如查询：
-
-  ```
-    connection.query('SELECT * FROM your_table', (error, results, fields) => {
-      if (error) throw error;
-      // Process results here
-    });
-  ```
-
-6. **完成后关闭连接**：
-
-  ```
-    connection.end();
-  ```
 
 #### 如何在 Node.js 中执行 CRUD 操作？
 
@@ -881,40 +648,6 @@ ORM 代表**对象关系映射**，这是一种编程技术，用于在面向对
   ```
 使用 ORM 可以帮助简化[数据库](/zh-cn/wiki/database/) 交互、减少[SQL](/zh-cn/wiki/sql/) 样板文件并改进代码[可维护性](/zh-cn/wiki/maintainability/)。然而，了解 ORM 可能带来的潜在性能开销和复杂性非常重要，尤其是对于复杂查询。
 
-1. **安装 ORM 包** ：选择一个 ORM（例如 Sequelize、TypeORM 或 Bookshelf），然后使用 npm 安装它。
-
-  ```
-    npm install sequelize
-  ```
-
-2. **使用 [数据库](/zh-cn/wiki/database/) 详细信息配置 ORM** ：通过提供凭据和其他配置详细信息来设置与数据库的连接。
-
-  ```
-    const Sequelize = require('sequelize');
-    const sequelize = new Sequelize('database', 'username', 'password', {
-      host: 'localhost',
-      dialect: 'mysql'
-    });
-  ```
-
-3. **定义模型**：创建代表数据库中表的模型，将对象属性映射到表列。
-
-  ```
-    const User = sequelize.define('user', {
-      username: Sequelize.STRING,
-      birthday: Sequelize.DATE
-    });
-  ```
-
-4. **执行CRUD操作**：使用ORM方法创建、读取、更新和删除数据库中的记录。
-
-  ```
-    User.create({
-      username: 'johndoe',
-      birthday: new Date(1980, 6, 20)
-    });
-  ```
-
 #### 如何处理 Node.js 中的数据库错误？
 
 处理[node.js](/zh-cn/wiki/node-js/) 中的[数据库](/zh-cn/wiki/database/) 错误通常涉及实现错误处理机制，以捕获并响应[数据库](/zh-cn/wiki/database/) 操作期间可能出现的问题。这是一个简洁的指南：
@@ -995,13 +728,6 @@ ORM 代表**对象关系映射**，这是一种编程技术，用于在面向对
   // Output order may vary depending on the performance of the process
   ```
 了解事件循环对于优化 [node.js](/zh-cn/wiki/node-js/) 应用程序和避免 CPU 密集型任务阻塞循环等性能问题至关重要。
-
-1. **定时器**：检查 `setTimeout()` 和 `setInterval()` 回调。
-
-    `setImmediate()`
-    此处调用回调。
-
-6. **关闭回调** ：句柄 `close` 事件，例如套接字关闭。
 
 #### 什么是回调地狱以及如何在 Node.js 中避免它？
 
@@ -1159,9 +885,3 @@ ORM 代表**对象关系映射**，这是一种编程技术，用于在面向对
   child.send({ hello: 'world' });
   ```
 子进程对于执行 CPU 密集型操作非常有用，而不会阻塞 [node.js](/zh-cn/wiki/node-js/) 事件循环，从而保持应用程序的响应能力。
-
-- **exec** ：用于在 shell 中运行命令并缓冲输出。适合小尺寸数据，因为它将输出缓冲在内存中。
-- **execFile** ：类似于 `exec` 但默认情况下不会生成 shell。调用可执行文件更加高效。
-
-- **spawn** ：使用给定命令启动新进程。它流式传输数据输入/输出，使其适合大数据量。
-- **叉子**：一个特殊情况 `spawn` 创建 V8 引擎的新实例。它用于在单独的进程中运行 Node.js 模块并启用进程间通信 (IPC)。

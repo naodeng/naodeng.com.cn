@@ -1,6 +1,6 @@
 ---
 title: "Jasmine ｜ Jasmine"
-description: "Jasmine 是一个用于测试 JavaScript 代码的行为驱动开发 (BDD) 框架。它不依赖于浏览器、DOM 或任何 JavaScript 框架，适用于测试任何 JavaScript 应用。其语法设计简洁易读，旨在通过 `describe`（套件）和 `it`（规格/测试用例）实现层次化的测试结构…"
+description: "Jasmine 是一个用于测试 JavaScript 代码的行为驱动开发 (BDD) 框架。它不依赖于浏览器、DOM 或任何 JavaScript 框架，适用于测试任何 JavaScript 应用。"
 section: "J"
 related:
   - test-automation
@@ -116,9 +116,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   `toMatch`
   ，等等。
 
-- **简洁明了的语法**：提供一个简单的界面来描述测试、设置条件和检查结果。
-- **异步支持**：处理异步代码 `done` 回调或承诺使用 `async` / `await` 。
-
 #### Jasmine 与其他测试框架相比如何？
 
 [jasmine](/zh-cn/wiki/jasmine/) 因其**行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))** 风格而脱颖而出，但与其他测试框架相比，有几个区别需要考虑：
@@ -130,10 +127,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 - **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具，与[jasmine](/zh-cn/wiki/jasmine/) 不同的是，它在浏览器中运行，这可以让您更轻松地在现实场景中测试 Web 应用程序。 [Cypress](/zh-cn/wiki/cypress/)还提供了丰富的互动[测试运行者](/zh-cn/wiki/test-runner/)。
 - **Protractor**：专门针对 Angular 应用程序的端到端测试框架。它使用 [jasmine](/zh-cn/wiki/jasmine/) 作为语法，但现在不太受欢迎，因为 Angular 团队推荐 [Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 用于新项目。 [jasmine](/zh-cn/wiki/jasmine/) 的简单性和独立性使其成为那些喜欢一体化解决方案而不需要额外库的开发人员的不错选择。但是，对于更复杂的需求或特定的集成，其他框架可能更合适。
 
-- **Mocha**：另一个流行的 JavaScript 测试框架，它很灵活，需要像 Chai 这样的断言库来进行断言。 Mocha 经常与 Chai 和 Sinon 搭配用于间谍、存根和模拟。然而，[jasmine](/zh-cn/wiki/jasmine/) 具有开箱即用的这些功能。
-- **[Jest](/zh-cn/wiki/jest/)**：[Jest](/zh-cn/wiki/jest/) 由 Facebook 开发，通常用于 React 应用程序。它的灵感来自[jasmine](/zh-cn/wiki/jasmine/)，但包括快照测试、内置覆盖率报告和更强大的模拟库等附加功能。 [Jest](/zh-cn/wiki/jest/) 并行运行测试，这可以导致更快的[测试执行](/zh-cn/wiki/test-execution/)。
-- **QUnit**：QUnit 是 [单元测试](/zh-cn/wiki/unit-testing/) 的强大框架，特别适合测试 jQuery 项目。与 [jasmine](/zh-cn/wiki/jasmine/) 的 [BDD](/zh-cn/wiki/bdd/) 风格相比，它的方法更为传统。
-- **Karma**：本身不是一个测试框架，而是一个可以与 [jasmine](/zh-cn/wiki/jasmine/)、Mocha 或 QUnit 配合使用的 [测试运行者](/zh-cn/wiki/test-runner/)。 Karma 通常用于在真实浏览器和设备上运行测试。
 - **[Cypress](/zh-cn/wiki/cypress/)**：[端到端测试](/zh-cn/wiki/end-to-end-testing/) 工具与[jasmine](/zh-cn/wiki/jasmine/) 不同，它在浏览器中运行，可以更轻松地在现实场景中测试 Web 应用程序。 [Cypress](/zh-cn/wiki/cypress/) 还提供了丰富的交互式[测试运行者](/zh-cn/wiki/test-runner/)。
 - **Protractor**：专门针对 Angular 应用程序的端到端测试框架。它使用 [jasmine](/zh-cn/wiki/jasmine/) 作为语法，但现在不太受欢迎，因为 Angular 团队推荐 [Cypress](/zh-cn/wiki/cypress/) 或 [Jest](/zh-cn/wiki/jest/) 用于新项目。
 
@@ -180,18 +173,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   npm test
   ```
 此 [环境搭建](/zh-cn/wiki/setup/) 允许您为 JavaScript 代码编写和运行 [jasmine](/zh-cn/wiki/jasmine/) 测试。请记住在 `spec` 目录中创建测试文件，并使用 `*.spec.js` 等命名约定，以便 [jasmine](/zh-cn/wiki/jasmine/) 识别。
-
-1. 打开终端或命令提示符。
-2. 导航到要设置 Jasmine 的项目目录。
-3. 运行以下命令来初始化新的 npm 包（如果尚未初始化）：
-1. 按照提示创建 `package.json` 文件，或者如果您想跳过提示，请使用 `npm init -y` 对于默认设置。
-
-2. 通过运行以下命令安装 Jasmine：
-1. 在项目中初始化 Jasmine，这会创建一个spec目录和配置文件（ `jasmine.json` ）用于您的测试：
-
-1. 要运行 Jasmine 测试，请将测试脚本添加到您的 `package.json` 文件：
-
-1. 现在，您可以使用以下命令运行 Jasmine 测试：
 
 #### 安装 Jasmine 有哪些先决条件？
 
@@ -251,7 +232,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 
 要在 [jasmine](/zh-cn/wiki/jasmine/) 中编写基本测试，您将使用 `describe` 和 `it` 函数分别定义 [测试套件](/zh-cn/wiki/test-suite/) 和规范（测试）。这是分步指南：
 
-1. **定义[测试套件](/zh-cn/wiki/test-suite/)**使用 `describe` 。第一个参数是描述套件的字符串，第二个参数是包含一个或多个规范的函数。
+1. **定义[测试套件](/zh-cn/wiki/test-suite/)** 使用 `describe` 。第一个参数是描述套件的字符串，第二个参数是包含一个或多个规范的函数。
 
   ```
   describe('My Test Suite', () => {
@@ -278,11 +259,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 
 1. **运行测试**使用 Jasmine 命令行工具或将 Jasmine 包含在 HTML 文件中并在浏览器中打开它。 请记住构建测试以反映代码的行为而不是其实现细节。这使您的测试对代码库中的更改更具弹性。此外，让您的规范集中于单一行为，以便在测试失败时更容易识别问题。
 
-1. **定义一个[测试套件](/zh-cn/wiki/test-suite/)**使用 `describe` 。第一个参数是描述套件的字符串，第二个参数是包含一个或多个规范的函数。
-
-1. **创建规范**套房内使用 `it` 。喜欢 `describe` , `it` 接受一个描述规范的字符串和一个实现测试的函数。
-
-1. **断言期望**在规范内使用 `expect` 与匹配器函数结合以对值进行断言。
+1. **定义一个[测试套件](/zh-cn/wiki/test-suite/)** 使用 `describe` 。第一个参数是描述套件的字符串，第二个参数是包含一个或多个规范的函数。
 
 1. **运行测试**使用 Jasmine 命令行工具或将 Jasmine 包含在 HTML 文件中并在浏览器中打开它。
 
@@ -353,10 +330,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   });
   ```
 在此示例中，`beforeEach` 在每个 `it` 之前运行，并在每个规范之前将 `num` 变量设置为 5。每个`it` 都包含一个期望，这是实际的测试断言。
-
-- **嵌套**： `describe` 块可以相互嵌套以创建子套件，以更精细地组织规范。
-
-- **范围**：在 a 中声明的变量 `describe` 任何人都可以访问 `it` 或 `beforeEach` / `afterEach` 在那间套房内。
 
 - **执行** ：当 Jasmine 运行时，它会执行 `describe` 块按照定义的顺序排列，并且在每个套件中， `it` 块按照定义的顺序运行。
 
@@ -457,12 +430,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
 ```
 通过将自定义匹配器包含在 [测试套件](/zh-cn/wiki/test-suite/) 顶层的 `beforeEach` 中或包含在测试 [环境搭建](/zh-cn/wiki/setup/) 中的单独文件中，可以在不同规范中重复使用自定义匹配器。
 
-1. 使用 `jasmine.addMatchers` 添加一个新的匹配器。
-
-2. 内部 `jasmine.addMatchers` ，定义一个对象，其中键是自定义匹配器的名称。
-
-3. 每个匹配器都是一个工厂函数，返回一个带有 `compare` 功能。
-
 4. 的 `compare` 函数应该返回一个带有 `pass` 属性，它是一个布尔值，指示是否满足期望，以及一个可选的 `message` 自定义失败消息的属性。
 
 #### Jasmine 中有哪些不同类型的断言？
@@ -534,7 +501,7 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
     // Fake implementation
   });
 ```
-测试完成后，可以检查spy是否被正确调用：
+测试完成后，可以检查py是否被正确调用：
 
 ```
   expect(mySpy).toHaveBeenCalled();
@@ -577,10 +544,6 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   ```
 
 1. **集成模拟**进入您的测试，用模拟替换真实的实现。 请记住，在 [jasmine](/zh-cn/wiki/jasmine/) 中使用间谍创建的模拟是临时的，将在每次测试后删除，以确保测试隔离。如果需要，使用 `beforeEach` 为每个测试设置模拟。
-
-1. **创建一个间谍**对于你想要模拟的函数 `spyOn` 。这将函数替换为可以跟踪调用、参数和设置返回值的间谍。
-
-1. **设置返回值或实现**如果需要的话，获取间谍对象的方法。
 
 1. **集成模拟**进入您的测试，用模拟替换真实的实现。
 
@@ -710,6 +673,3 @@ jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的
   ```
 
 - **避免测试实现细节**：关注公共 [API](/zh-cn/wiki/api/) 和预期结果，而不是功能或组件的内部工作原理。
-- **保持测试快速**：缓慢的测试可能会阻碍开发过程。优化测试以快速运行并避免不必要的复杂性。
-- **逻辑地构建测试**：使用嵌套的 `describe` 块对相关测试进行分组，以创建可读且可维护的测试层次结构。
-- **定期重构测试**：随着代码库的发展，重新访问和重构测试以确保它们保持有效并且不会变得不稳定或无关紧要。

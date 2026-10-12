@@ -1,6 +1,6 @@
 ---
 title: "Web 自动化 ｜ Web Automation"
-description: "Web 自动化 (Web Automation) 指的是使用软件模拟用户与 Web 浏览器和 Web 应用程序交互的过程。它涉及执行执行诸如单击按钮、在表单中输入数据、浏览网站和提取信息等任务的脚本。这通常是为了测试 Web 应用程序的功能和性能，以确保它们在不同的浏览器和设备上按预期工作…"
+description: "Web 自动化 (Web Automation) 指的是使用软件模拟用户与 Web 浏览器和 Web 应用程序交互的过程。它涉及执行执行诸如单击按钮、在表单中输入数据、浏览网站和提取信息等任务的脚本。"
 section: "W"
 related:
   - web-testing
@@ -163,10 +163,7 @@ order: 0
 - **CodeceptJS**：一个现代的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，具有 [BDD](/zh-cn/wiki/bdd/) 风格的语法，它包装了 WebDriverIO 或 Protractor。
 - **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，用于自动化端到端[网页测试](/zh-cn/wiki/web-testing/)。它不需要[WebDriver](/zh-cn/wiki/webdriver/)或任何其他测试软件。 每个工具都有其独特的功能，可能更适合特定的场景或偏好。根据项目的需求评估它们非常重要。
 
-- **Playwright**：一个 Node 库，可通过单个 [API](/zh-cn/wiki/api/) 实现 Chromium、Firefox 和 WebKit 的自动化。它使跨浏览器 [网络自动化](/zh-cn/wiki/web-automation/) 成为常​​绿、强大、可靠且快速的。
-- **Appium**：一种开源工具，用于在 iOS 和 Android 平台上自动化本机、移动 Web 和混合应用程序。
-- **Nightwatch.js**：使用 W3C [WebDriver](/zh-cn/wiki/webdriver/) [API](/zh-cn/wiki/api/)，为基于浏览器的应用程序和网站提供 [node.js](/zh-cn/wiki/node-js/) 驱动的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 解决方案。
-- **CodeceptJS**：一个现代的 [端到端测试](/zh-cn/wiki/end-to-end-testing/) 框架，具有 [BDD](/zh-cn/wiki/bdd/) 风格的语法，它包装了 WebDriverIO 或 Protractor。
+- **Playwright**：一个 Node 库，可通过单个 [API](/zh-cn/wiki/api/) 实现 Chromium、Firefox 和 WebKit 的自动化。它使跨浏览器 [网络自动化](/zh-cn/wiki/web-automation/) 成为常绿、强大、可靠且快速的。
 - **TestCafe**：一个[node.js](/zh-cn/wiki/node-js/) 工具，用于自动化端到端[网页测试](/zh-cn/wiki/web-testing/)。它不需要[WebDriver](/zh-cn/wiki/webdriver/)或任何其他测试软件。
 
 #### Selenium 是什么以及它如何在 Web 自动化中使用？
@@ -200,7 +197,7 @@ order: 0
 - **事件处理**：它可以触发并响应点击、表单提交和键盘输入等事件，从而实现真实的用户场景模拟。
 - **异步操作**：借助 Promise 和 async/await 等功能，JavaScript 可以处理异步操作，例如等待页面加载或 AJAX 请求，这在现代 Web 应用程序中很常见。
 - **浏览器控制**：使用 JavaScript 的自动化框架可以以编程方式控制浏览器会话、在页面之间导航以及管理 cookie 或本地存储。
-- **与[API](/zh-cn/wiki/api/)**集成：JavaScript可以轻松地与各种API集成，从而可以扩展自动化功能或与外部服务交互。 **Puppeteer** 和 **[Cypress](/zh-cn/wiki/cypress/)** 等框架基于 JavaScript 构建，并提供丰富的 [API](/zh-cn/wiki/api/) 集，以在 [node.js](/zh-cn/wiki/node-js/) 环境中自动化 Chrome 和其他浏览器。下面是一个简单的 Puppeteer 脚本示例：
+- **与[API](/zh-cn/wiki/api/)** 集成：JavaScript可以轻松地与各种API集成，从而可以扩展自动化功能或与外部服务交互。 **Puppeteer** 和 **[Cypress](/zh-cn/wiki/cypress/)** 等框架基于 JavaScript 构建，并提供丰富的 [API](/zh-cn/wiki/api/) 集，以在 [node.js](/zh-cn/wiki/node-js/) 环境中自动化 Chrome 和其他浏览器。下面是一个简单的 Puppeteer 脚本示例：
 
   ```
   const puppeteer = require('puppeteer');
@@ -253,89 +250,21 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 
 #### 设置 Web 自动化测试的过程是怎样的？
 
-设置 [网络自动化](/zh-cn/wiki/web-automation/) 测试涉及几个关键步骤：
+设置 Web 自动化测试通常包括以下步骤：
 
-1. **选择与您首选的 [网络自动化](/zh-cn/wiki/web-automation/) 工具集成的测试框架**，例如 Mocha、[Jest](/zh-cn/wiki/jest/) 或 [jasmine](/zh-cn/wiki/jasmine/)。
-2. **搭建环境**：
-- 安装必要的 **WebDriver**对于您正在测试的浏览器。
+1. **选择兼容的工具。** 根据应用和团队的需要，选择浏览器自动化工具及其适配的测试框架，例如 Mocha 或 Jest。
+2. **准备环境。** 安装工具所需的语言包和浏览器依赖；如果所选工具需要 WebDriver，也要完成相应配置。
+3. **配置[测试运行者](/zh-cn/wiki/test-runner/)。** 定义[测试套件](/zh-cn/wiki/test-suite/)和[测试用例](/zh-cn/wiki/test-case/)，并设置被测应用的 URL、超时和重试参数。
+4. **编写[测试脚本](/zh-cn/wiki/test-script/)。** 使用稳定的定位器和断言检查预期行为。项目适用时，可用[页面对象模型](/zh-cn/wiki/page-object-model/)组织脚本。
+5. **管理[测试数据](/zh-cn/wiki/test-data/)。** 将可复用输入放在 JSON 或 CSV 等外部文件中；需要覆盖多组输入时，可采用数据驱动测试。
+6. **启动浏览器会话。** 打开浏览器实例并访问被测应用。
+7. **与页面元素交互。** 使用 CSS 选择器或 XPath 定位元素，再执行点击按钮、输入文本等操作。
+8. **处理页面同步。** 对动态内容使用基于条件的等待，避免依赖固定延时。
+9. **运行测试。** 通过命令行或 CI/CD 管道执行测试。只有在工具支持且测试相互隔离时，才启用并行执行。
+10. **查看测试结果。** 检查失败用例的日志和截图，并使用报告工具提高结果的可读性。
+11. **维护测试。** 随着应用及其需求变化，重构并更新测试脚本。
 
-- 确保 **语言绑定** （例如，Java、Python、JavaScript）适用于所选工具。
-3. **配置[测试运行者](/zh-cn/wiki/test-runner/)**：
-- 定义 **[测试套件](/zh-cn/wiki/test-suite/)**和 **[测试用例](/zh-cn/wiki/test-case/)** 。
-
-- 设置 **测试参数** ，例如超时和重试。
-4. **写[测试脚本](/zh-cn/wiki/test-script/)**：
-- 使用 **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**为了可维护性。
-
-- 实施 **断言**检查预期结果。
-5. **管理[测试数据](/zh-cn/wiki/test-data/)**：
-- 使用 **外部数据源** （例如，JSON、CSV）用于输入数据。
-
-- 实施 **数据驱动测试**如果需要的话。
-6. **处理浏览器会话**：
-- 启动一个新的浏览器实例。
-- 导航至 **目标网址** 。
-
-- 启动一个新的浏览器实例。
-- 导航至 **目标网址** 。
-
-7. **与网页元素交互**：
-- 使用定位元素 **选择器** （例如 CSS、XPath）。
-
-- 执行单击、输入文本和获取数据等操作。
-- 使用定位元素 **选择器** （例如 CSS、XPath）。
-
-- 执行单击、输入文本和获取数据等操作。
-8. **实现同步**：
-- 使用 **显式等待**处理动态内容。
-
-- 使用 **显式等待**处理动态内容。
-
-9. **运行测试**：
-- 通过命令行或 CI/CD 管道执行测试。
-- 使用 **并行执行**以获得更快的反馈。
-
-- 通过命令行或 CI/CD 管道执行测试。
-- 使用 **并行执行**以获得更快的反馈。
-
-10. **分析测试结果**：
-- 回顾 **日志**和 **截图**对于失败。
-
-- 与集成 **报告工具**为了更好的可见性。
-11. **维护测试**：
-- 定期 **重构**和 **更新测试**随着应用程序的发展。
-  ```
-  // Example of a simple test script using Selenium WebDriver in JavaScript
-  const { Builder, By, Key, until } = require('selenium-webdriver');
-  (async function example() {
-      let driver = await new Builder().forBrowser('firefox').build();
-      try {
-          await driver.get('http://www.example.com');
-          await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
-          await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
-      } finally {
-          await driver.quit();
-      }
-  })();
-  ```
-请记住随着工具和最佳实践的发展，**审查并调整**您的[环境搭建](/zh-cn/wiki/setup/)。
-
-- 启动一个新的浏览器实例。
-- 导航至 **目标网址** 。
-
-7. **与网页元素交互**：
-- 使用定位元素 **选择器** （例如 CSS、XPath）。
-
-- 执行单击、输入文本和获取数据等操作。
-- 使用定位元素 **选择器** （例如 CSS、XPath）。
-
-- 使用 **显式等待**处理动态内容。
-
-- 通过命令行或 CI/CD 管道执行测试。
-- 使用 **并行执行**以获得更快的反馈。
-
-10. **分析测试结果**：
-- 回顾 **日志**和 **截图**对于失败。
+工具和项目需求变化时，应重新检查并调整测试环境。
 
 #### Web 自动化中有哪些常用技术？
 
@@ -353,9 +282,6 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**：确保 Web 应用程序可供残疾人使用，符合 WCAG 等标准。
 - **移动[网页测试](/zh-cn/wiki/web-testing/)**：在移动设备或模拟器/仿真器上测试 Web 应用程序，以确保移动平台上的功能和可用性。
 - **[API 测试](/zh-cn/wiki/api-testing/)**：验证应用程序 [API](/zh-cn/wiki/api/) 层的功能、可靠性、性能和安全性，该层通常是 Web 应用程序的关键组件。
-- **[负载测试](/zh-cn/wiki/load-testing/)**：模拟大量用户来测试应用程序在预期负载和峰值负载条件下的性能。
-- **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)**：确保 Web 应用程序可供残疾人使用，符合 WCAG 等标准。
-- **移动[网页测试](/zh-cn/wiki/web-testing/)**：在移动设备或模拟器/仿真器上测试 Web 应用程序，以确保移动平台上的功能和可用性。
 
 #### 如何处理 Web 自动化中的动态内容？
 
@@ -385,14 +311,6 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 - **正则表达式**：使用正则表达式处理动态文本内容。它们可以匹配字符串中的模式，从而允许您验证或提取数据。
 - **[API](/zh-cn/wiki/api/) 调用**：有时，通过 [API](/zh-cn/wiki/api/) 调用直接与后端交互可能比处理 UI 更改更可靠。 请记住**避免测试和 UI 之间的紧密耦合**。目标是**定位策略**能够适应变化和**抽象复杂性**，以使您的自动化脚本不那么脆弱。
 
-- **CSS 选择器和 XPath** ：使用灵活的定位器，可以根据部分属性值或模式匹配元素。例如，XPath 的功能如下 `contains()` 可以帮助定位具有动态 ID 的元素。
-
-- **等待命令**：实现显式等待以处理 AJAX 调用或 JavaScript 执行后出现的元素。 Selenium 等工具提供 `WebDriverWait` 等待某些条件。
-
-- **JavaScript执行**：执行JavaScript以与标准API方法难以处理的元素进行交互。
-- **[页面对象模型](/zh-cn/wiki/page-object-model/) (POM)**：使用 POM 设计您的测试来封装与动态元素的交互，使您的测试更加可维护和灵活。
-- **数据驱动测试**：从[测试脚本](/zh-cn/wiki/test-script/) 外部化[测试数据](/zh-cn/wiki/test-data/)。使用 CSV 文件或 [数据库](/zh-cn/wiki/database/) 等数据源将动态值输入到您的测试中。
-- **正则表达式**：使用正则表达式处理动态文本内容。它们可以匹配字符串中的模式，从而允许您验证或提取数据。
 - **[API](/zh-cn/wiki/api/) 调用**：有时，通过 [API](/zh-cn/wiki/api/) 调用直接与后端交互可能比处理 UI 更改更可靠。
 
 #### 编写自动化脚本的最佳实践是什么？
@@ -468,12 +386,13 @@ Puppeteer 和[WebDriver](/zh-cn/wiki/webdriver/) 通过提供[API](/zh-cn/wiki/a
 
 #### 如何在 Web 自动化中处理 CAPTCHA 或双因素身份验证？
 
-CAPTCHA 和双因素身份验证 (2FA) 用于保护账户。自动化测试应使用专门的测试配置和测试账户，而不是尝试绕过真实用户的安全控制：
+CAPTCHA 和双因素身份验证 (2FA) 用于保护账户。测试这些流程时，应使用专门的测试配置和测试账户：
 
-1. **处理 CAPTCHA**：在隔离的测试环境中按团队策略关闭 CAPTCHA，或使用 CAPTCHA 服务商提供的测试密钥和测试流程。
-2. **处理 2FA**：使用专用测试账户和受控的测试密钥；如果采用基于时间的一次性密码 (TOTP)，可以使用 `pyotp` 等库生成验证码。
-3. **处理邮件或短信验证码**：接入测试邮箱、短信沙箱或受控 API，并避免使用真实用户的验证码。
-4. **协调安全策略**：与开发和安全团队确认允许的测试方式，并保护测试凭据。
+1. **使用 CAPTCHA 测试流程。** 在隔离的测试环境中使用服务商提供的测试密钥，或使用团队批准且仅限该环境的允许名单。
+2. **使用专用的 2FA 测试账户。** 安全保存仅用于测试的密钥；如果使用基于时间的一次性密码 (TOTP)，可通过 **pyotp** 等库和受控的测试密钥生成验证码。
+3. **使用邮件或短信沙箱。** 接入测试邮箱、短信沙箱或受控 API，不要使用真实用户的验证码。
+4. **必要时暂停测试并由授权人员手动输入。** 不要采集或保存真实用户的凭据和验证码。
+5. **确认安全策略。** 与开发和安全团队确认允许的测试方法，并妥善保护测试凭据。
 
 不要在生产账户上自动绕过 CAPTCHA 或 2FA，也不要将测试密钥或访问凭据提交到代码仓库。
 
@@ -500,10 +419,6 @@ CAPTCHA 和双因素身份验证 (2FA) 用于保护账户。自动化测试应�
   ```
 在此代码片段中，Puppeteer 启动无头浏览器，导航到 URL，然后在执行自动化任务后关闭浏览器。这种方法对于[测试自动化](/zh-cn/wiki/test-automation/) 来说是精简且高效的，特别是在开发或 CI/CD 环境中。
 
-- **速度**：没有渲染 UI 的开销，无头浏览器运行速度更快，使测试执行更高效。
-- **资源效率**：它们消耗更少的内存和CPU，这在并行运行多个测试时特别有益。
-- **持续集成 (CI) 兼容性**：无头浏览器非常适合 CI 管道，因为它们可以在没有显示环境的服务器上运行。
-- **跨平台**：它们可以在各种操作系统上运行，而无需担心 GUI 差异。
 - **屏幕捕获和 DOM [检查](/zh-cn/wiki/inspection/)** ：尽管缺乏 GUI，无头浏览器可以捕获屏幕截图并提供 DOM 访问以进行调试。
 
 #### 如何确保您的 Web 自动化测试可靠且稳健？
@@ -530,7 +445,7 @@ CAPTCHA 和双因素身份验证 (2FA) 用于保护账户。自动化测试应�
 
 1. **确定关键场景**对于测试，重点关注用户在使用应用程序时可能采取的关键路径。
 
-2. **创建自动化[测试脚本](/zh-cn/wiki/test-script/)**复制这些用户操作。这些脚本应设计为同时运行以模拟多个用户。
+2. **创建自动化[测试脚本](/zh-cn/wiki/test-script/)** 复制这些用户操作。这些脚本应设计为同时运行以模拟多个用户。
 
 3. **使用[性能测试](/zh-cn/wiki/performance-testing/)工具**像 JMeter 或 LoadRunner，它们可以与 Web 自动化框架集成来生成和管理负载。
 

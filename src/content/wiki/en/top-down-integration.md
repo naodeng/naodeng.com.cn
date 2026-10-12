@@ -95,8 +95,6 @@ A testing method starting with high-level modules, progressing to lower-level on
   - **Continuous Feedback**: Mechanisms for monitoring test results and system behavior to provide immediate insight into integration issues.
   By focusing on these components, [test automation](/en/wiki/test-automation/) engineers can effectively implement top-down integration, ensuring that higher-level functionality guides the integration process and that the system's architecture is validated early in the development cycle.
 
-  - **Stubs** : Simulated implementations of lower-level modules or components that are not yet developed or integrated. Stubs provide predefined responses to function calls, allowing higher-level modules to be tested.
-  - **Driver Modules** : Specialized programs or scripts that control the test environment, invoke higher-level modules, and provide test data. Drivers simulate parts of the system that interact with the module under test.
 
 #### How does top-down integration contribute to the overall software development process?
 
@@ -277,8 +275,6 @@ A testing method starting with high-level modules, progressing to lower-level on
     }
     ```
 
-  - **Document integration steps** : Keep documentation of the integration process up-to-date to aid in troubleshooting and future integrations.
-  - **Review and adapt** : Regularly review the integration process and adapt strategies based on lessons learned.
   - **Document integration steps** : Keep documentation of the integration process up-to-date to aid in troubleshooting and future integrations.
   - **Review and adapt** : Regularly review the integration process and adapt strategies based on lessons learned.
 

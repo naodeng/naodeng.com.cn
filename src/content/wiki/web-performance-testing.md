@@ -1,6 +1,6 @@
 ---
 title: "Web 性能测试 ｜ Web Performance Testing"
-description: "Web 性能测试 评估 Web 应用程序在特定条件下的行为，重点关注 速度、可扩展性、稳定性 和 资源使用 等方面。确保 Web 应用程序在流量激增或其他压力源下提供一致的体验至关重要。自动化 在此过程中起着至关重要的作用，它允许模拟难以手动复制的各种场景。自动化测试可以安排并定期运行…"
+description: "Web 性能测试 评估 Web 应用程序在特定条件下的行为，重点关注 速度、可扩展性、稳定性 和 资源使用 等方面。确保 Web 应用程序在流量激增或其他压力源下提供一致的体验至关重要。自动化 在此过程中起着至关重要的作用，它允许模拟难以手动复制的各种场景。"
 section: "W"
 related:
   - web-testing
@@ -74,7 +74,7 @@ order: 0
 
 - **[测试环境](/zh-cn/wiki/test-environment/)**：尽可能模仿生产设置，以确保结果准确。这包括硬件、软件、网络配置和[数据库](/zh-cn/wiki/database/) 服务器。
 - **用户模拟**：创建虚拟用户和脚本来模拟现实世界的用户行为，以测试系统在典型或峰值负载条件下的性能。
-- **性能@@PR​​OTECTED_34@@**：基于[用例](/zh-cn/wiki/use-case/)定义特定场景，以测量响应时间、吞吐率和资源利用率水平。
+- **性能测试用例**：基于[用例](/zh-cn/wiki/use-case/)定义特定场景，以测量响应时间、吞吐率和资源利用率水平。
 - **监控工具**：利用工具监控CPU、内存、磁盘I/O和网络I/O等系统资源，以识别瓶颈。
 - **数据准备**：确保相关且足够的[测试数据](/zh-cn/wiki/test-data/) 可用于模拟现实场景。
 - **性能指标**：收集响应时间、吞吐量、错误率和并发用户等指标来评估性能。
@@ -84,10 +84,6 @@ order: 0
 - **可扩展性评估**：评估系统如何随着负载的增加而扩展，这可能涉及纵向扩展或横向扩展。
 - **持续集成**：将 [性能测试](/zh-cn/wiki/performance-testing/) 集成到 CI/CD 管道中，以尽早捕获性能回归。 请记住，要专注于复制真实的用户行为、监控系统资源和分析结果，以持续优化 Web 性能。
 
-- **[测试环境](/zh-cn/wiki/test-environment/)**：尽可能模仿生产设置，以确保结果准确。这包括硬件、软件、网络配置和[数据库](/zh-cn/wiki/database/) 服务器。
-- **用户模拟**：创建虚拟用户和脚本来模拟现实世界的用户行为，以测试系统在典型或峰值负载条件下的性能。
-- **性能@@PR​​OTECTED_41@@**：基于[用例](/zh-cn/wiki/use-case/)定义特定场景，以测量响应时间、吞吐率和资源利用率水平。
-- **监控工具**：利用工具监控CPU、内存、磁盘I/O和网络I/O等系统资源，以识别瓶颈。
 - **数据准备**：确保相关且足够的[测试数据](/zh-cn/wiki/test-data/)可用于模拟现实场景。
 - **持续集成**：将 [性能测试](/zh-cn/wiki/performance-testing/) 集成到 CI/CD 管道中，以尽早捕获性能回归。
 
@@ -131,15 +127,13 @@ order: 0
 - **BlazeMeter**：基于云的 [性能测试](/zh-cn/wiki/performance-testing/) 服务，使您能够在 Apache [JMeter](/zh-cn/wiki/jmeter/) 和其他开源工具中模拟 Web 应用程序、[API](/zh-cn/wiki/api/) 和移动应用程序的任何用户场景。
 - **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：虽然主要是用于 Web 应用程序的自动化工具，但它可以与其他工具结合使用来记录各种 Web 元素的计时以进行性能分析。 每个工具都提供独特的功能，并且可能更适合特定的测试场景。选择正确的工具通常取决于项目的具体要求，例如技术堆栈、用户场景的复杂性和可用预算。
 
-- **Apache [JMeter](/zh-cn/wiki/jmeter/)**：一个开源 Java 应用程序，旨在加载测试功能行为和测量性能。它可以使用并发线程模拟多个用户，为 Web 应用程序创建重负载，并分析性能指标。
-- **LoadRunner**：Micro Focus 中广泛使用的 [性能测试](/zh-cn/wiki/performance-testing/) 工具，可模拟数千个用户对应用程序施加负载并测量不同负载条件下的性能。
 - **WebLOAD**：一个强大的[性能测试](/zh-cn/wiki/performance-testing/) 工具，可以模拟数十万个虚拟用户来识别 Web 应用程序中的性能瓶颈。
 - **Gattle**：基于 Scala、Akka 和 Netty 的开源[负载测试](/zh-cn/wiki/load-testing/) 框架，重点关注高性能和随时呈现的 HTML 报告。
 - **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：虽然主要是用于 Web 应用程序的自动化工具，但它可以与其他工具结合使用来记录各种 Web 元素的计时以进行性能分析。
 
 #### 负载测试和压力测试有什么区别？
 
-[负载测试](/zh-cn/wiki/load-testing/) 和[压力测试](/zh-cn/wiki/stress-testing/) 都是[性能测试](/zh-cn/wiki/performance-testing/) 的子集，每个子​​集都有不同的目标。
+[负载测试](/zh-cn/wiki/load-testing/) 和[压力测试](/zh-cn/wiki/stress-testing/) 都是[性能测试](/zh-cn/wiki/performance-testing/) 的子集，每个子集都有不同的目标。
   **[负载测试](/zh-cn/wiki/load-testing/)** 模拟任何软件、应用程序或网站上的真实负载，以评估系统在预期条件下的行为方式。它的目的是在软件应用程序上线之前识别性能瓶颈。 [负载测试](/zh-cn/wiki/load-testing/) 确保应用程序可以处理预期流量而不会降低性能。
   另一方面，**[压力测试](/zh-cn/wiki/stress-testing/)** 通过将负载增加到超出预期最大值来评估系统的限制。此类测试旨在识别系统的断点。目标是确定系统如何发生故障并确保它从此类情况中正常恢复。 [压力测试](/zh-cn/wiki/stress-testing/) 对于理解系统的故障转移机制和确保停机期间的数据完整性至关重要。
   总之，[负载测试](/zh-cn/wiki/load-testing/) 检查系统在正常条件下的性能，而[压力测试](/zh-cn/wiki/stress-testing/) 确定其在极端压力下的行为。两者对于确保系统稳健、可靠并能够处理典型和意外工作负载都至关重要。
@@ -225,10 +219,6 @@ order: 0
 2. 分析数据以确定正常条件下的平均响应时间、吞吐量和资源利用率。
 3. 将这些指标记录下来作为您的绩效基准。 当对网站进行更改时，重新运行测试以捕获新的性能数据并将其与基线进行比较。如果指标超出可接受的范围，请在部署之前调查并解决根本原因。 请记住，基线应该是**动态的**；定期更新它们以反映网站不断变化的状态并适应用户行为的变化或流量负载的增加。这可确保基线对于持续的绩效评估保持相关性和有用性。
 
-- **监控趋势**随着时间的推移来预测未来的性能问题。
-
-- **设定绩效目标**并确保网站符合或超过这些标准。
-
 - **验证更改**通过比较部署前和部署后的指标来评估代码修改的影响。
 
 #### 如何使用网络性能测试结果来提高网站的性能？
@@ -263,40 +253,33 @@ order: 0
 - **持续集成/持续部署 (CI/CD) 集成**：将 [性能测试](/zh-cn/wiki/performance-testing/) 集成到 CI/CD 管道中至关重要，但由于需要快速反馈循环和自动分析，因此可能具有挑战性。
 - **成本**：[性能测试](/zh-cn/wiki/performance-testing/)，尤其是在规模上，可能会在工具、基础设施和人力资源方面产生大量成本。
 - **资源瓶颈**：确定瓶颈的根本原因，无论是在应用程序代码、[数据库](/zh-cn/wiki/database/) 还是基础设施中，都需要深入分析。
-- **[测试数据](/zh-cn/wiki/test-data/) 管理**：生成反映生产使用模式的现实且可扩展的[测试数据](/zh-cn/wiki/test-data/) 通常是一个重大障碍。
-- **持续集成/持续部署 (CI/CD) 集成**：将 [性能测试](/zh-cn/wiki/performance-testing/) 集成到 CI/CD 管道中至关重要，但由于需要快速反馈循环和自动分析，因此可能具有挑战性。
-- **成本**：[性能测试](/zh-cn/wiki/performance-testing/)，尤其是在规模上，可能会在工具、基础设施和人力资源方面产生大量成本。
 
 #### 如何克服这些挑战？
 
 克服[网页性能测试](/zh-cn/wiki/web-performance-testing/)中的挑战通常涉及战略规划、工具优化和持续学习的结合。以下是一些策略：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于用户流量和业务影响。关注用户最有可能采取的关键路径。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于用户流量和业务影响。关注用户最有可能采取的关键路径。
 
 - **模拟现实世界的条件**通过混合使用浏览器、设备和网络速度。这可确保您的测试能够代表实际的用户体验。
 
 - **利用基于云的服务**根据需要扩展您的测试环境，而无需对硬件进行大量投资。
 
-// 示例：在基于云的环境中运行测试
-  cloudTestService.runPerformanceTest({
-  testSuite: '关键用户旅程',
-  规模：“大”，
-  区域：“us-east-1”
+  ```javascript
+  await cloudTestService.runPerformanceTest({
+    testSuite: "critical-user-journey",
+    scale: "large",
+    region: "us-east-1",
   });
+  ```
 
-- **Automate the setup and teardown** of test environments to ensure consistency and save time.
-- **Integrate performance testing into CI/CD pipelines** to catch issues early and often. This also helps in maintaining performance benchmarks as part of the regular development process.
-- **Use APM (Application Performance Management) tools** to monitor applications in production and feed insights back into the testing process.
-- **Optimize test data management** to ensure tests are running with realistic data sets, which can be anonymized if necessary.
-- **Collaborate with developers** to ensure they understand the importance of performance considerations and to foster a performance-minded culture.
-- **Stay updated with the latest testing tools and methodologies** to take advantage of advancements in performance testing and analysis.
-By implementing these strategies, test automation engineers can effectively address the challenges in web performance testing and ensure that applications meet the desired performance standards.
+- **自动化环境的创建和清理**：保持环境一致并节省时间。
+- **将性能测试接入 CI/CD 管道**：尽早发现问题，并在日常开发流程中持续维护性能基线。
+- **使用应用性能管理（APM）工具**：监控生产应用，并将观察结果反馈到测试中。
+- **优化测试数据管理**：使用贴近现实的数据集；必要时对数据进行匿名化。
+- **与开发人员协作**：共同重视性能，并在开发过程中持续考虑性能影响。
+- **跟进工具和方法的变化**：及时了解性能测试领域的新工具和新方法。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于用户流量和业务影响。关注用户最有可能采取的关键路径。
-
-- **模拟现实世界的条件**通过混合使用浏览器、设备和网络速度。这可确保您的测试能够代表实际的用户体验。
-
-- **利用基于云的服务**根据需要扩展您的测试环境，而无需对硬件进行大量投资。
+这些策略有助于处理网页性能测试中的挑战，并验证应用是否满足预期的性能标准。
 
 #### Web 性能测试有哪些最佳实践？
 
@@ -324,5 +307,5 @@ By implementing these strategies, test automation engineers can effectively addr
   在开发的早期阶段实施**基于阈值的性能检查**，例如在单元和[集成测试](/zh-cn/wiki/integration-testing/)期间。这确保了各个组件在集成到更大的系统之前满足性能标准。
   在部署到生产之前，将 **[性能测试](/zh-cn/wiki/performance-testing/) 合并到 QA 环境**中。这应该尽可能地模拟生产环境，以识别任何潜在的性能瓶颈。
   利用**功能标志**动态启用或禁用性能密集型功能，从而允许在类似生产的环境中进行受控测试，而不会影响所有用户。
-  定期审查和调整性能@@PR​​OTECTED_10@@ 和阈值，以适应不断变化的用户期望和系统要求。使用**反馈循环**尽早并经常通知开发人员性能问题。
+  定期审查和调整性能指标 和阈值，以适应不断变化的用户期望和系统要求。使用**反馈循环**尽早并经常通知开发人员性能问题。
   最后，确保在生产中实施性能监控，以根据实际使用模式持续验证性能，从而实现主动优化并快速解决部署后出现的任何问题。

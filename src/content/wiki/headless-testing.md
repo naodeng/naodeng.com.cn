@@ -101,8 +101,6 @@ order: 0
 - 编写强大的选择器和逻辑来处理动态内容，因为视觉反馈无法用于故障排除。 通过将[无头测试](/zh-cn/wiki/headless-testing/)集成到开发工作流程中，工程师可以实现更快的反馈循环、更有效的资源利用，并最终实现更可靠和可维护的[测试套件](/zh-cn/wiki/test-suite/)。
 
 - **持续集成**：它无缝地融入 CI/CD 管道，支持频繁、自动化测试的 DevOps 实践。
-- 确保测试的运行不依赖视觉提示。
-- 在 Puppeteer 或 Selenium 等工具中使用无头模式，通常通过简单的配置更改即可启用。
 - 编写强大的选择器和逻辑来处理动态内容，因为视觉反馈无法用于故障排除。
 
 #### 无头测试和传统浏览器测试之间的主要区别是什么？
@@ -146,10 +144,6 @@ order: 0
   ```
 总之，[无头测试](/zh-cn/wiki/headless-testing/) 提供了速度和效率，但可能无法完全代表用户体验，需要混合使用无头和传统浏览器测试来实现全面覆盖。
 
-- **更快的执行**：没有 GUI 的开销，测试运行得更快。
-- **资源效率**：消耗更少的资源，允许在同一台机器上并行执行。
-- **持续集成友好**：轻松集成到 CI/CD 管道中以实现自动反馈。
-- **跨平台**：可以在没有图形环境的服务器上运行，扩大测试基础设施选项。
 - **后台任务自动化**：非常适合 API 测试、性能测试和其他非以 UI 为中心的测试。
 ### 工具和技术
 
@@ -214,7 +208,7 @@ order: 0
     await browser.close();
   })();
   ```
-对于**[selenium](/zh-cn/wiki/selenium/)**，当将其用于[无头测试](/zh-cn/wiki/headless-testing/)时，您将浏览器驱动程序配置为在无头模式下运行。以下是如何在 Python 中使用 [selenium](/zh-cn/wiki/selenium/) 设置无头 Chrome 驱动程序：
+对于 **[selenium](/zh-cn/wiki/selenium/)**，当将其用于[无头测试](/zh-cn/wiki/headless-testing/)时，您将浏览器驱动程序配置为在无头模式下运行。以下是如何在 Python 中使用 [selenium](/zh-cn/wiki/selenium/) 设置无头 Chrome 驱动程序：
 
 ```
   from selenium import webdriver
@@ -285,13 +279,8 @@ JavaScript 在 [无头测试](/zh-cn/wiki/headless-testing/) 中发挥着**核�
   ```
 
 9. **与 Jenkins、Travis CI 或 GitHub Actions 等 CI/CD 工具集成**，以自动执行无头测试。
-10. **监控和审查测试结果**以解决问题并改进[测试覆盖率](/zh-cn/wiki/test-coverage/)。 请记住**使您的依赖项保持最新**并**定期检查您的[测试策略](/zh-cn/wiki/test-strategy/)**以适应新的测试要求。
+10. **监控和审查测试结果**以解决问题并改进[测试覆盖率](/zh-cn/wiki/test-coverage/)。 请记住**使您的依赖项保持最新**并**定期检查您的[测试策略](/zh-cn/wiki/test-strategy/)** 以适应新的测试要求。
 
-  ```
-    npm test
-  ```
-
-9. **与 Jenkins、Travis CI 或 GitHub Actions 等 CI/CD 工具集成**，以自动执行无头测试。
 10. **监控和审查测试结果**以解决问题并改进[测试覆盖率](/zh-cn/wiki/test-coverage/)。
 
 ### 实际应用
@@ -345,7 +334,7 @@ JavaScript 在 [无头测试](/zh-cn/wiki/headless-testing/) 中发挥着**核�
     await browser.close();
   })();
   ```
-对于经验丰富的[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，将[无头测试](/zh-cn/wiki/headless-testing/) 集成到您的工作流程中可以带来**更快的[测试执行](/zh-cn/wiki/test-execution/) 时间**和**更高效的资源利用**，使其成为开发和持续集成环境中的宝贵技术。请记住监控和​​分析测试结果，以确保[无头测试](/zh-cn/wiki/headless-testing/) 提供预期的好处，而不影响[测试覆盖率](/zh-cn/wiki/test-coverage/) 或准确性。
+对于经验丰富的[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，将[无头测试](/zh-cn/wiki/headless-testing/) 集成到您的工作流程中可以带来**更快的[测试执行](/zh-cn/wiki/test-execution/) 时间**和**更高效的资源利用**，使其成为开发和持续集成环境中的宝贵技术。请记住监控和分析测试结果，以确保[无头测试](/zh-cn/wiki/headless-testing/) 提供预期的好处，而不影响[测试覆盖率](/zh-cn/wiki/test-coverage/) 或准确性。
 
 #### 无头测试中有哪些常见挑战以及如何克服它们？
 
@@ -367,7 +356,7 @@ JavaScript 在 [无头测试](/zh-cn/wiki/headless-testing/) 中发挥着**核�
 
 #### 您能否提供一些无头测试的实际应用示例？
 
-[无头测试](/zh-cn/wiki/headless-testing/) 的实际应用多种多样，从 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的**自动屏幕截图**到不需要渲染的**抓取 Web 数据**。开发人员经常使用 [无头测试](/zh-cn/wiki/headless-testing/) 来实现 **[API 测试](/zh-cn/wiki/api-testing/)**，其中浏览器界面不会增加任何价值。它也用于**[性能测试](/zh-cn/wiki/performance-testing/)**，因为无头浏览器消耗更少的资源，允许更多的测试并行运行，而无需 GUI 的开销。
+[无头测试](/zh-cn/wiki/headless-testing/) 的实际应用多种多样，从 [视觉回归测试](/zh-cn/wiki/visual-regression-testing/) 的**自动屏幕截图**到不需要渲染的**抓取 Web 数据**。开发人员经常使用 [无头测试](/zh-cn/wiki/headless-testing/) 来实现 **[API 测试](/zh-cn/wiki/api-testing/)**，其中浏览器界面不会增加任何价值。它也用于 **[性能测试](/zh-cn/wiki/performance-testing/)**，因为无头浏览器消耗更少的资源，允许更多的测试并行运行，而无需 GUI 的开销。
   在**持续集成系统**中，[无头测试](/zh-cn/wiki/headless-testing/)对于快速有效地验证代码更改至关重要。例如，当开发人员推送新代码时，无头测试可以自动运行，立即提供有关更改影响的反馈。
   另一个应用程序位于单页应用程序 (SPA) 的 **[端到端测试](/zh-cn/wiki/end-to-end-testing/)** 中。由于 SPA 严重依赖 JavaScript，因此无头浏览器可以像用户一样执行脚本并与应用程序交互，而无需图形用户界面。
   此外，[无头测试](/zh-cn/wiki/headless-testing/) 对于在非交互式环境中**测试浏览器兼容性**很有帮助。自动化脚本可以验证 Web 应用程序在不同浏览器引擎上是否正常工作，无需人工干预。

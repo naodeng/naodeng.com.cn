@@ -146,7 +146,6 @@ Related Terms:
   - **Automating [test cases](/en/wiki/test-case/)**
     to facilitate continuous testing in CI/CD pipelines.
 
-  - **Verifying interactions**
 ## API Testing Types
 
 ### What are the different types of API Testing?

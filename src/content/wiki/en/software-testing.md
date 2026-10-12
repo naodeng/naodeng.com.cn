@@ -90,7 +90,6 @@ Software testing confirms that a software product or application functions corre
   - **[Regression Testing](/en/wiki/regression-testing/)**: Performed after changes (like enhancements, patches, or configuration changes) to the software to ensure that existing functionality remains unaffected. This is where [test automation](/en/wiki/test-automation/) is particularly beneficial to repeatedly run a set of [test cases](/en/wiki/test-case/).
   Each level builds upon the previous one, ensuring that issues are caught and resolved as early as possible in the development process. [Test automation](/en/wiki/test-automation/) can be applied at all these levels to improve efficiency and reliability.
 
-
 #### What is the role of a software tester?
 
   The role of a **software tester** involves designing, developing, and executing [test cases](/en/wiki/test-case/) to verify software functionality against requirements. Testers ensure that the software behaves as expected under various conditions by conducting different types of tests, such as unit, integration, system, and [acceptance testing](/en/wiki/acceptance-testing/). They are responsible for identifying defects, reporting them to the development team, and verifying fixes once implemented.
@@ -178,7 +177,6 @@ Software testing confirms that a software product or application functions corre
   - **Better Resource Allocation** : Automation frees up QA engineers to focus on more complex testing tasks that require human judgment.
   These benefits contribute to a more robust, efficient, and reliable software development process, ultimately leading to a higher quality product.
 
-
 #### What are some popular tools for automated testing?
 
   Popular tools for [automated testing](/en/wiki/automated-testing/) include:
@@ -200,7 +198,6 @@ Software testing confirms that a software product or application functions corre
   - **[JMeter](/en/wiki/jmeter/)** : An open-source tool designed for load testing and measuring performance.
   Each tool has its own strengths and is chosen based on the specific requirements of the project, such as the type of application under test, the programming languages involved, and the preferred testing methodologies.
 
-
 #### What is the difference between Selenium and QTP?
 
   [Selenium](/en/wiki/selenium/) and QTP (QuickTest Professional), now known as UFT (Unified [Functional Testing](/en/wiki/functional-testing/)), are both automation tools used for testing web applications, but they differ in several aspects:
@@ -214,7 +211,6 @@ Software testing confirms that a software product or application functions corre
   - **IDE Support**: [Selenium](/en/wiki/selenium/) has an IDE plugin for browsers for record-and-playback features, while UFT comes with a full-fledged IDE.
   - **Mobile Testing**: [Selenium](/en/wiki/selenium/) can be extended to mobile testing with Appium. UFT has a sister tool, UFT Mobile, for mobile testing.
   In summary, the choice between [Selenium](/en/wiki/selenium/) and UFT may depend on factors like budget, language preference, browser support, and the need for a robust commercial support structure.
-
 
 #### What is the role of Jenkins in testing?
 
@@ -255,7 +251,6 @@ Software testing confirms that a software product or application functions corre
   ```
   In essence, Jenkins enhances the testing process by automating it, thus ensuring that [software quality](/en/wiki/software-quality/) is assessed continuously and issues are detected and addressed promptly.
 
-
 ### Test Management
 
 #### What is a test case?
@@ -287,7 +282,6 @@ Software testing confirms that a software product or application functions corre
   ```
   Well-designed [test cases](/en/wiki/test-case/) are crucial for effective [test coverage](/en/wiki/test-coverage/) and ensuring that the software meets its requirements.
 
-
 #### What is a test plan?
 
   A **[test plan](/en/wiki/test-plan/)** is a formal document detailing the strategy, resources, scope, and schedule of intended test activities. It defines the objectives and milestones of the testing phase within a project and serves as a blueprint for action. A [test plan](/en/wiki/test-plan/) typically includes:
@@ -302,7 +296,6 @@ Software testing confirms that a software product or application functions corre
   - **Entry and exit criteria** : Conditions that must be met to start and conclude testing phases.
   - **Deliverables** : Artifacts to be produced, such as test cases, reports, and defect logs.
   It's a guide that aligns the test team's work with the project's objectives and ensures that critical aspects of the software are verified systematically. A well-crafted [test plan](/en/wiki/test-plan/) is essential for efficient [test management](/en/wiki/test-management/) and serves as a reference point throughout the testing process.
-
 
 #### What is a test suite?
 
@@ -335,7 +328,6 @@ Software testing confirms that a software product or application functions corre
   - **Closure** : Officially closing the defect once it is verified and meets the acceptance criteria.
   Throughout this process, communication and collaboration among team members are crucial. [Defect management](/en/wiki/defect-management/) tools facilitate this by providing a centralized platform for tracking and managing defects. These tools often integrate with other software development and testing tools, enabling a seamless workflow from defect discovery to resolution.
   In the context of [test automation](/en/wiki/test-automation/), [defect management](/en/wiki/defect-management/) ensures that automated tests remain effective in catching regressions and that any new defects introduced by code changes are promptly addressed, maintaining the software's overall quality and reliability.
-
 
 #### What is the role of a test manager?
 
@@ -405,7 +397,6 @@ Software testing confirms that a software product or application functions corre
   ```
   [Performance testing](/en/wiki/performance-testing/) is crucial for validating that the software will perform well under its expected workload and beyond, ensuring a positive user experience and system reliability.
 
-
 #### What is load testing?
 
   [Load testing](/en/wiki/load-testing/) is a type of **[non-functional testing](/en/wiki/non-functional-testing/)** that evaluates how a system performs under an anticipated load over a given period. The primary goal is to identify performance bottlenecks before the software application goes live.
@@ -427,9 +418,6 @@ Software testing confirms that a software product or application functions corre
   Automated tools are often used to simulate the high stress conditions, and the results are analyzed to identify any potential bottlenecks or weaknesses in the system. This information is crucial for developers to optimize the system's performance and stability before it goes live.
   In summary, [stress testing](/en/wiki/stress-testing/) is about pushing a system to its limits to ensure it can withstand extreme conditions and to discover potential points of failure that could compromise its performance and reliability.
 
-  - **CPU usage**
-  - **Memory consumption**
-  - **Disk I/O**
   - **Network traffic**
 
 #### What is usability testing?
@@ -444,7 +432,6 @@ Software testing confirms that a software product or application functions corre
   - **Task completion time** : How long it takes for users to complete tasks.
   - **User satisfaction** : How users feel about their interactions with the product.
   [Usability testing](/en/wiki/usability-testing/) can be conducted at various stages of development, from early prototypes to the final product, allowing for iterative improvements. It is an essential component of user-centered design and helps ensure that the software will meet the intended users' needs and expectations.
-
 
 #### What is security testing?
 

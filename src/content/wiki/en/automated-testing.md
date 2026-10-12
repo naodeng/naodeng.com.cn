@@ -142,7 +142,6 @@ See also:
   - **[Use Cases](/en/wiki/use-case/)** : Manual testing is often more suitable for exploratory, usability, and ad-hoc testing. Automated testing is ideal for regression, load, and performance testing, among others.
   In practice, a balanced approach that leverages the strengths of both methods is often the most effective strategy.
 
-
 ## Tools and Techniques
 
 ### What are some common tools used for automated testing?
@@ -220,16 +219,7 @@ See also:
     ```
   These tools offer various capabilities for different testing needs, from unit and [integration testing](/en/wiki/integration-testing/) to end-to-end and [API testing](/en/wiki/api-testing/).
 
-  - **[Selenium](/en/wiki/selenium/)** : An open-source framework for web application testing across various browsers and platforms. It supports multiple programming languages like Java, C#, and Python.
-  - **Appium** : An open-source tool for automating mobile applications on iOS and Android platforms. It uses the WebDriver protocol.
-  - **JUnit**
-    and
-    **TestNG** : Frameworks for unit testing in Java, providing annotations and assertions to help structure and run tests.
 
-  - **[Cypress](/en/wiki/cypress/)** : A JavaScript-based end-to-end testing framework that runs in the browser, enabling fast, easy, and reliable testing for anything that runs in a browser.
-  - **Robot Framework** : A keyword-driven test automation framework for acceptance testing and acceptance test-driven development (ATDD).
-  - **[Postman](/en/wiki/postman/)** : A tool for API testing, allowing users to send HTTP requests and analyze responses, create automated tests, and integrate with CI/CD pipelines.
-  - **Cucumber** : Supports behavior-driven development (BDD), allowing the specification of application behavior in plain language.
 
 ### What are the differences between these tools?
 
@@ -285,13 +275,6 @@ See also:
     ```
   Each tool has its strengths, and the choice often depends on the application under test, the preferred programming language, and the specific requirements of the testing process.
 
-  - **[Selenium](/en/wiki/selenium/)** : An open-source tool for web application testing across different browsers and platforms. It supports multiple programming languages and integrates with various frameworks.
-  - **QTP/UFT (Unified [Functional Testing](/en/wiki/functional-testing/))** : A commercial tool from Micro Focus for functional and regression testing with a focus on desktop and web applications. It uses VBScript and is known for its record-and-playback feature.
-  - **TestComplete** : Another commercial tool that supports desktop, mobile, and web applications. It offers both script-based and keyword-driven testing and supports various scripting languages.
-  - **[Cypress](/en/wiki/cypress/)** : A JavaScript-based end-to-end testing framework designed for modern web applications. It runs tests in the same run-loop as the application, providing real-time feedback and faster test execution.
-  - **[Jest](/en/wiki/jest/)** : A JavaScript testing framework with a focus on simplicity, supporting unit and integration tests. It works well with React and other modern JavaScript libraries.
-  - **Appium** : An open-source tool for automated testing of mobile applications. It supports native, hybrid, and mobile web apps and works with any testing framework.
-  - **Robot Framework** : A keyword-driven test automation framework that uses tabular test data syntax. It's easy to learn for those not familiar with programming and integrates with Selenium for web testing.
 
 ### How do you choose the right tool for a specific testing task?
 
@@ -308,7 +291,6 @@ See also:
   - **Performance** : The tool should execute tests quickly and efficiently to keep pace with rapid development cycles.
   - **Reliability** : Choose tools with a proven track record of stability to avoid flaky tests and inconsistent results.
   By weighing these factors against the specific needs of your testing task, you can select a tool that enhances your testing efficiency and effectiveness. Remember to periodically reassess your choice as both your requirements and the tools themselves evolve.
-
 
 ### What are some common techniques used in automated testing?
 
@@ -329,7 +311,6 @@ See also:
   - **Load and [Performance Testing](/en/wiki/performance-testing/)**: Simulates user load on software to check performance and scalability under different conditions.
   - **[Security Testing](/en/wiki/security-testing/)**: Automated scripts that probe the application for vulnerabilities, ensuring that the software is protected against potential attacks.
   These techniques can be combined and tailored to fit specific project requirements, ensuring a robust and efficient automated testing process.
-
 
 ### How can automated testing tools be integrated into a CI/CD pipeline?
 
@@ -392,7 +373,6 @@ See also:
   ```
   Ensure that the pipeline is designed to **stop deployment** if tests fail, maintaining the quality of the release. Regularly **review and update** [test cases](/en/wiki/test-case/) and scripts to adapt to changes in the application.
 
-  1. **Select appropriate tools**
 
 ## Test Cases and Scripts
 
@@ -412,7 +392,6 @@ See also:
   10. **Version Control**: Store [test cases](/en/wiki/test-case/) and scripts in a version control system to track changes and collaborate with team members.
   11. **Integrate with CI/CD**: Automate [test case](/en/wiki/test-case/) execution as part of the CI/CD pipeline to ensure continuous validation of the AUT with each build or release.
   By following these steps, [test automation](/en/wiki/test-automation/) engineers can create robust, reliable, and effective automated [test cases](/en/wiki/test-case/) that contribute to the overall quality of the software product.
-
 
 ### What is a test script in the context of automated testing?
 
@@ -443,10 +422,6 @@ See also:
   - **Reliable** : They produce consistent results and handle exceptions gracefully.
   Scripts are often organized into [test suites](/en/wiki/test-suite/) for better manageability and can be run individually or as part of a larger test run. They are crucial for continuous integration and delivery pipelines, allowing for frequent and automated validation of software builds.
 
-  - **Reusable** : Functions like
-    `goToLoginPage()`
-    can be used in multiple test cases.
-
 
 ### How do you ensure that your test cases cover all possible scenarios?
 
@@ -463,7 +438,6 @@ See also:
   - **Model-Based Testing** : Generate test cases from system models that represent desired behavior.
   - **[Code Coverage](/en/wiki/code-coverage/) Analysis** : Use tools to measure the extent of code executed by tests, aiming for high coverage metrics like statement, branch, and path coverage.
   Incorporate these strategies into your test design process to create a comprehensive [test suite](/en/wiki/test-suite/). Regularly review and update [test cases](/en/wiki/test-case/) to adapt to changes in the application and its usage patterns.
-
 
 ### What are some best practices for writing test scripts?
 
@@ -506,7 +480,6 @@ See also:
   - **Prioritization** : Prioritize maintenance tasks based on the criticality of tests, focusing on high-impact areas of the application.
   - **Deprecation Strategy** : Have a clear strategy for deprecating and removing obsolete tests to avoid clutter and confusion.
   By applying these strategies, [test automation](/en/wiki/test-automation/) engineers can ensure that their [test suites](/en/wiki/test-suite/) remain robust, relevant, and reliable over time, providing ongoing value in the software development lifecycle.
-
 
 ## Types of Automated Testing
 
@@ -560,7 +533,6 @@ See also:
   - **[Compatibility Testing](/en/wiki/compatibility-testing/)** : Confirming the software works across different devices, browsers, and operating systems.
   Automated [system testing](/en/wiki/system-testing/) can significantly **reduce the time** required to perform repetitive but necessary checks, allowing for more frequent and thorough testing cycles. It is particularly useful for **[regression testing](/en/wiki/regression-testing/)** to ensure new changes haven't adversely affected existing functionality. However, it may not fully replace [manual testing](/en/wiki/manual-testing/), especially for exploratory, usability, and ad-hoc testing scenarios.
 
-
 ### What is regression testing?
 
   [Regression testing](/en/wiki/regression-testing/) is the process of verifying that previously developed and tested software still performs correctly after changes such as enhancements, patches, or configuration changes. It ensures that new code changes have not adversely affected existing functionality. In the context of **automated testing**, regression tests are typically executed as part of a [test suite](/en/wiki/test-suite/) that is run frequently, often during a CI/CD pipeline, to provide quick feedback on the impact of code modifications.
@@ -605,7 +577,6 @@ See also:
   - **Design influence** : Writing tests first can drive better software design and architecture.
   - **Refactoring confidence** : Automated tests allow developers to refactor code with assurance that existing functionality remains intact.
   TDD complements other automated testing strategies by ensuring that tests are considered from the very beginning of the development process, rather than as an afterthought. It encourages a discipline of testing that can lead to higher quality software and fits well within Agile and Continuous Integration/Continuous Deployment (CI/CD) workflows.
-
 
 ### What is behavior-driven development (BDD) and how does it relate to automated testing?
 

@@ -79,7 +79,6 @@ Tests the complete functionality of an application process from start to finish.
      ```
   E2E testing is critical for identifying issues that occur during the interaction between integrated components and is an essential part of the **continuous testing** strategy within the SDLC. It often involves **automated [test scripts](/en/wiki/test-script/)** to simulate user behavior, which can be run on various environments and devices to ensure the application's functionality and performance meet the requirements.
 
-  1. Launching the browser.
 #### Why is End-to-End Testing important?
 
   End-to-End Testing is crucial because it validates the **integrated components** of an application in a **production-like environment**. It ensures that the entire system meets the **business requirements** and functions correctly from start to finish, mimicking real-user scenarios and interactions. This type of testing uncovers issues that may not be visible in unit or integration tests, such as problems with **network communication**, **[database](/en/wiki/database/) interactions**, **external dependencies**, and **state management** across the system.
@@ -111,19 +110,6 @@ Tests the complete functionality of an application process from start to finish.
   - Can be brittle due to dependencies on external systems
   Each testing level has its place in the **[Test Pyramid](/en/wiki/test-pyramid/)**, with unit tests at the base, integration tests in the middle, and end-to-end tests at the top, indicating that you should have many more unit tests than end-to-end tests. Together, they ensure that both the individual components and the integrated system function correctly, leading to a robust and reliable software product.
 
-  - Isolated
-  - Tests individual functions or classes
-  - Quick to execute
-  - Often written by developers
-  - Combines units/modules
-  - Tests interactions and interfaces
-  - Can be slower than unit tests
-  - May involve test doubles (stubs, mocks)
-  - Tests the complete application flow
-  - Simulates real user scenarios
-  - Typically slower and more complex
-  - Can be brittle due to dependencies on external systems
-
 #### What are the key benefits of End-to-End Testing?
 
   End-to-End Testing provides several key benefits:
@@ -136,7 +122,6 @@ Tests the complete functionality of an application process from start to finish.
   - **Improves confidence in releases** : Provides a higher level of assurance that the application meets its requirements and is ready for deployment.
   - **Facilitates testing of non-[functional requirements](/en/wiki/functional-requirements/)** : Allows for the assessment of system performance, reliability, and scalability under a load that mimics live conditions.
   These benefits contribute to delivering a high-quality product that aligns with user expectations and business needs, ultimately leading to customer satisfaction and reduced maintenance costs.
-
 
 #### How does End-to-End Testing fit into the Software Development Life Cycle (SDLC)?
 
@@ -168,7 +153,6 @@ Tests the complete functionality of an application process from start to finish.
   - **[Security Testing](/en/wiki/security-testing/)**: Identify vulnerabilities within the application by simulating attacks and probing for weaknesses.
   Each technique targets specific aspects of the application and helps ensure a comprehensive end-to-end testing process.
 
-
 #### What is the 'Test Pyramid' in relation to End-to-End Testing?
 
   The **[Test Pyramid](/en/wiki/test-pyramid/)** is a concept introduced by Mike Cohn that illustrates the ideal distribution of different types of automated tests in a software project. It emphasizes having a large base of **unit tests**, a smaller number of **integration tests**, and even fewer **end-to-end tests**.
@@ -179,7 +163,6 @@ Tests the complete functionality of an application process from start to finish.
   - **Integration Tests** : Tests that cover interactions between components or systems.
   - **End-to-End Tests** : Comprehensive tests that cover entire user flows.
   By following the [Test Pyramid](/en/wiki/test-pyramid/), engineers ensure that most issues are caught at the lower levels, where tests are quicker and cheaper to run. This approach minimizes the number of end-to-end tests needed, which helps maintain a faster and more reliable [test suite](/en/wiki/test-suite/). In practice, this means that end-to-end tests should focus on critical user journeys and be complemented by lower-level tests for more granular validation.
-
 
 #### How do you determine what to test in an End-to-End Test?
 
@@ -234,8 +217,6 @@ Tests the complete functionality of an application process from start to finish.
   - **Leverage analytics and AI**
     to predict potential failures and optimize test suites based on historical data.
   By applying these strategies, [test automation](/en/wiki/test-automation/) engineers can streamline End-to-End Testing processes, reduce execution time, and improve the overall quality and reliability of the software being tested.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### What is the role of mock servers in End-to-End Testing?
 
@@ -293,7 +274,6 @@ Tests the complete functionality of an application process from start to finish.
   - **Robot Framework** : A generic test automation framework for acceptance testing and acceptance test-driven development (ATDD).
   Each tool has its own set of features and may be more suitable for certain scenarios or tech stacks. It's important to choose a tool that aligns with your application's requirements and your team's expertise.
 
-
 #### How does Selenium aid in End-to-End Testing?
 
   [Selenium](/en/wiki/selenium/) is a powerful tool for automating web browsers, making it highly suitable for **End-to-End (E2E) Testing**. It simulates user interactions with a web application, allowing you to verify the system's components as a whole.
@@ -315,7 +295,6 @@ Tests the complete functionality of an application process from start to finish.
   driver.quit();
   ```
   [Selenium](/en/wiki/selenium/)'s flexibility and compatibility with various programming languages, browsers, and operating systems make it an indispensable tool for E2E testing, ensuring that the final product meets quality standards from the user's perspective.
-
 
 #### What is the role of Docker in End-to-End Testing?
 
@@ -345,9 +324,6 @@ Tests the complete functionality of an application process from start to finish.
   - **Keep tests independent** : Each test should set up its own state and clean up afterward to avoid dependencies that can cause flakiness.
   - **Use Page Objects** : Abstract the details of the UI in Page Objects to make tests more readable and maintainable.
 
-
-
-
     ```text
     class LoginPage {
     // Page Object code here
@@ -365,8 +341,6 @@ Tests the complete functionality of an application process from start to finish.
   - **Version control tests**: Store test code in version control systems to track changes and collaborate effectively.
   - **Continuous Integration (CI)**: Integrate tests into a CI pipeline to catch issues early and deploy with confidence.
   By adhering to these practices, you'll create a robust and maintainable end-to-end test suite with Protractor.
-
-
 
 #### How can cloud services be used in End-to-End Testing?
 
@@ -396,7 +370,6 @@ Tests the complete functionality of an application process from start to finish.
   - **Cost** : The tools, environments, and infrastructure needed for E2E testing can be expensive.
   - **Cross-Browser/Device Testing** : Ensuring consistent behavior across different browsers and devices adds to the complexity.
   To address these challenges, teams often implement **Continuous Integration** and **Continuous Deployment** (CI/CD) practices, use **service virtualization** to simulate external dependencies, and adopt **parallel execution** to reduce run times. Additionally, maintaining a **clear test scope** and having a **robust [test data](/en/wiki/test-data/) management strategy** are crucial for effective E2E testing.
-
 
 #### How can flaky tests be handled in End-to-End Testing?
 
@@ -452,7 +425,6 @@ Tests the complete functionality of an application process from start to finish.
   - **Regularly Review and Refactor Tests**: Periodically review tests to remove outdated ones and refactor [flaky tests](/en/wiki/flaky-test/) to improve stability.
   By following these practices, you can enhance the reliability and robustness of your End-to-End Tests, leading to a more stable and trustworthy automation suite.
 
-
 #### What are the strategies to overcome the challenges of testing in different environments?
 
   To overcome challenges of testing in different environments, consider the following strategies:
@@ -468,16 +440,12 @@ Tests the complete functionality of an application process from start to finish.
   - **Automated deployment**: Automate deployment processes to reduce human error and ensure consistent application deployment across environments.
   By adopting these strategies, [test automation](/en/wiki/test-automation/) engineers can mitigate the risks associated with environment discrepancies and ensure more reliable and consistent test outcomes.
 
-
 #### How can you manage data dependencies in End-to-End Testing?
 
   Managing data dependencies in End-to-End Testing involves ensuring that tests have access to the necessary data states to execute [test scenarios](/en/wiki/test-scenario/) accurately. Here are some strategies:
 
   - **Use [Test Data](/en/wiki/test-data/) Management Tools** : Implement tools that can create, manage, and destroy test data as needed.
   - **Data [Setup](/en/wiki/setup/) Scripts** : Write scripts to set up and tear down data before and after tests. This ensures a consistent starting state for tests.
-
-
-
 
     ```text
     setUpTestData();
@@ -491,7 +459,6 @@ Tests the complete functionality of an application process from start to finish.
     ```ts
     const user = UserDataFactory.create();
     ```
-
 
   - **Version-Controlled [Test Data](/en/wiki/test-data/)** : Store test data in version control, alongside test scripts, to maintain data-test script coherency.
   - **Data Refresh Mechanisms** : Implement mechanisms to refresh data from a known state or production snapshot at regular intervals.

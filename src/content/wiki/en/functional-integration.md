@@ -184,8 +184,6 @@ Functional Integration relates products and services to an ecosystem to attract 
     to adapt to changes in the system and remove obsolete or redundant tests.
   By following these practices, you can ensure that functional integration testing is efficient, effective, and contributes to the overall quality and reliability of the software product.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How do you manage dependencies in functional integration testing?
 
   Managing dependencies in functional integration testing involves ensuring that all the necessary components of the application are available and interact correctly to support the [test scenarios](/en/wiki/test-scenario/). Here are some strategies:
@@ -369,5 +367,3 @@ Functional Integration relates products and services to an ecosystem to attract 
   **Continuous Integration (CI) pipelines** are configured to trigger these tests automatically upon code commits, ensuring immediate feedback on the integration status of the services.
   **Observability tools** are integrated to monitor the services and provide insights into the system's behavior, which is critical for diagnosing issues that may arise during testing.
   In summary, functional integration testing in microservices ensures that independently developed services work together seamlessly, maintaining system integrity and reliability.
-
-  - **[API testing](/en/wiki/api-testing/) tools**

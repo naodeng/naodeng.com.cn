@@ -85,9 +85,6 @@ Evaluates software by focusing on the boundary or edge values of the input domai
   ```
   While boundary testing is not exhaustive, it is an effective strategy for pinpointing defects related to edge conditions, which are often overlooked during general testing but can lead to significant software failures.
 
-  - Identifying the
-    **limits**
-    of input ranges.
 
   - Creating test cases for
     **exact boundary values**
@@ -146,8 +143,6 @@ Evaluates software by focusing on the boundary or edge values of the input domai
   - **[Security testing](/en/wiki/security-testing/)**
     looks for vulnerabilities and security holes, which may include boundary testing but with a focus on exploiting potential security risks.
   Boundary testing is a technique applied within these broader testing types when the [test cases](/en/wiki/test-case/) specifically aim to explore the behavior of the software at the edge of input ranges. It complements other testing types by ensuring that edge cases are not overlooked, which can be critical for the robustness of the software.
-
-  - **[Unit testing](/en/wiki/unit-testing/)**
 
 ### Techniques and Approaches
 
@@ -297,10 +292,6 @@ Evaluates software by focusing on the boundary or edge values of the input domai
      ```
   These examples demonstrate how boundary testing targets the edges of input ranges and functionality to uncover potential defects that might not be found through other testing methods.
 
-  1. **Input Fields** : Testing an input field that accepts ages between 1 and 100. Boundary testing would check inputs of 0, 1, 100, and 101 to ensure proper validation and error handling.
-  1. **File Uploads** : A file upload feature that restricts file size to a maximum of 5MB. Test cases would include files that are exactly 5MB, slightly below (4.99MB), and slightly above (5.01MB).
-  1. **Pagination** : Testing a pagination feature where each page shows 10 items. Boundary testing would involve checking the first page, last page, and scenarios where there are fewer than 10 items on the last page.
-  1. **Discount Codes** : A discount code that is valid for the first 100 users. Boundary testing would check the 100th, 101st, and 1st user to ensure the code applies correctly and expires as expected.
 
 #### How is boundary testing applied in web application testing?
 
@@ -334,8 +325,6 @@ Evaluates software by focusing on the boundary or edge values of the input domai
   ```
 
   Automation tools like [Selenium](/en/wiki/selenium/) or Playwright interact with the web application's UI, while [API testing](/en/wiki/api-testing/) tools like [Postman](/en/wiki/postman/) or REST-assured test the boundaries at the service layer. It's crucial to validate not only the client-side validation but also server-side handling of boundary conditions to ensure robustness against unexpected inputs.
-
-  - **Maximum and minimum values**
 
 #### How is boundary testing used in mobile application testing?
 
@@ -414,13 +403,6 @@ Evaluates software by focusing on the boundary or edge values of the input domai
     and refine tests as needed to maintain effectiveness.
   By automating boundary testing, you ensure consistent execution of these critical tests, which helps in identifying defects that might occur at the extreme ends of input ranges.
 
-  1. **Identify boundary conditions**
-  1. **Utilize data-driven testing**
-    techniques to feed boundary values into the test scripts from an external data source like CSV files or databases.
-
-  2. **Review test results**
-    and refine tests as needed to maintain effectiveness.
-
 ### Challenges and Limitations
 
 #### What are the challenges in implementing boundary testing?
@@ -451,8 +433,6 @@ Evaluates software by focusing on the boundary or edge values of the input domai
   - **Performance issues**
     may arise when executing a large number of boundary tests, especially in continuous integration environments where quick feedback is essential.
   To overcome these challenges, engineers must employ strategic test design, use tools for automated [test data](/en/wiki/test-data/) generation, maintain clear documentation, and continuously refine the boundary [test suite](/en/wiki/test-suite/) in response to system changes.
-
-  - **Identifying exact boundaries**
 
 #### What are the limitations of boundary testing?
 

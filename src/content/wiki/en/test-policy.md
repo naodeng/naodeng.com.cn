@@ -79,7 +79,6 @@ A document set by senior management, outlining the principles and approaches the
   - **Continuous Improvement** : Encourages regular evaluation and enhancement of the testing process.
   These components ensure that the Test Policy provides a comprehensive framework to guide and standardize testing efforts within an organization.
 
-
 #### How does a Test Policy differ from a Test Strategy?
 
   A **Test Policy** is a high-level document that outlines the fundamental principles and approach to testing within an organization. It sets the standard for testing activities and provides a framework for consistency across projects. In contrast, a **[Test Strategy](/en/wiki/test-strategy/)** is a detailed, project-specific document that describes how testing will be conducted for a particular project or release. It includes methodologies, tools, schedules, and resource allocations tailored to the project's needs.
@@ -121,7 +120,6 @@ A document set by senior management, outlining the principles and approaches the
   - **Documentation** : Maintain clear and accessible documentation for reference and onboarding purposes.
   Remember, a **Test Policy** is a living document that should evolve with your organization's needs and the ever-changing landscape of software development and testing.
 
-
 #### How is a Test Policy implemented within a software development team?
 
   Implementing a **Test Policy** within a software development team involves several practical steps:
@@ -137,7 +135,6 @@ A document set by senior management, outlining the principles and approaches the
   9. **Automate**: Where possible, automate enforcement of policy rules using tools that can integrate with your development and testing environments.
   10. **Document**: Keep a record of all policy-related activities, changes, and decisions to maintain transparency and facilitate future audits.
   By following these steps, a **Test Policy** becomes a living document that guides and improves the testing process within the team.
-
 
 #### What are the steps involved in creating a Test Policy?
 
@@ -155,7 +152,6 @@ A document set by senior management, outlining the principles and approaches the
   10. **Monitor and Enforce** : Implement monitoring mechanisms to ensure compliance and take corrective actions when necessary.
   11. **Review and Update** : Regularly review the policy to keep it current with technological and organizational changes.
   Remember, the policy should be **concise**, **accessible**, and **actionable** to ensure it is effective and adhered to by all relevant parties.
-
 
 #### How often should a Test Policy be updated or revised?
 
@@ -191,18 +187,6 @@ A document set by senior management, outlining the principles and approaches the
   - **Roles and responsibilities**
     for those involved in the review and update process.
   Remember, the goal of the Test Policy is to provide a stable yet adaptable framework that guides the testing efforts to align with the organization's objectives and adapt to the ever-changing software development landscape.
-
-
-  - A
-    **timeline**
-    for regular reviews.
-
-  - **Criteria**
-    for triggering an out-of-cycle review.
-
-  - **Roles and responsibilities**
-    for those involved in the review and update process.
-
 ### Best Practices
 
 #### What are some best practices for creating an effective Test Policy?
@@ -221,7 +205,6 @@ A document set by senior management, outlining the principles and approaches the
   - **Foster transparency** : Make the policy easily accessible and promote open communication about testing practices and outcomes.
   - **Support training and knowledge sharing** : Encourage ongoing learning and dissemination of best practices within the team.
   Remember, the Test Policy is a living document that should evolve with your organization's maturity and the ever-changing landscape of software development and testing.
-
 
 #### How can a Test Policy be used to improve the quality of software testing?
 
@@ -245,7 +228,6 @@ A document set by senior management, outlining the principles and approaches the
   - **Forgetting about maintenance and updates** : Establish a regular review cycle to keep the policy up-to-date with technological and organizational changes.
   - **Skipping measurement and improvement processes** : Include how the effectiveness of the policy will be measured and the process for making continuous improvements.
   By avoiding these pitfalls, you can create a Test Policy that is effective, clear, and facilitates high-quality software [test automation](/en/wiki/test-automation/).
-
 
 #### How can a Test Policy help in managing risks during software testing?
 

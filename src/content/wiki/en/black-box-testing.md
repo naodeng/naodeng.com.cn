@@ -82,13 +82,6 @@ Black box testing assesses software without considering its internal workings. T
   4. Reporting any discrepancies as defects for the development team to address.
   This approach is integral to identifying discrepancies in software behavior and ensuring that the product is robust, reliable, and meets user expectations.
 
-  - **User requirements**
-  - **Specifications**
-  - **Technical designs**
-  - **Validation against user requirements**
-  - **Behavioral testing**
-  - **Performance evaluation**
-
 #### Why is Black Box Testing important?
 
   Black Box Testing is crucial because it evaluates a system's functionality without the need to understand its internal workings. This approach mirrors end-user interactions, ensuring the software is validated from an external perspective. It helps to **identify discrepancies** between the system's actual behavior and its specified requirements, focusing on what the software does rather than how it does it.
@@ -109,7 +102,6 @@ Black box testing assesses software without considering its internal workings. T
   - **Reduce Risks** : Mitigate the risk of system failures in production by identifying issues early in the testing process.
   - **Support Maintenance** : Facilitate the maintenance of the software by ensuring that changes or enhancements haven't adversely affected existing functionality.
   These objectives are pursued through a variety of techniques and approaches, all of which focus on testing the software from the outside, without knowledge of the internal workings of the application.
-
 
 #### What are the advantages and disadvantages of Black Box Testing?
 
@@ -149,7 +141,6 @@ Black box testing assesses software without considering its internal workings. T
   - **[Fuzz Testing](/en/wiki/fuzz-testing/)**: An automated [software testing](/en/wiki/software-testing/) technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, or failing built-in code assertions.
   Each technique offers a different lens through which to examine the software, providing a comprehensive testing strategy when used in conjunction. Automation engineers can leverage these techniques to create robust [test suites](/en/wiki/test-suite/) that effectively validate software behavior without knowledge of the internal workings.
 
-
 #### What is Equivalence Partitioning in Black Box Testing?
 
   [Equivalence Partitioning](/en/wiki/equivalence-partitioning/) is a **black box testing** technique that divides input data of a software application into partitions of equivalent data from which [test cases](/en/wiki/test-case/) can be derived. By doing this, it is assumed that all the values from one partition will be treated in the same way by the system. This method reduces the total number of [test cases](/en/wiki/test-case/) that need to be developed while still ensuring adequate [test coverage](/en/wiki/test-coverage/).
@@ -182,10 +173,6 @@ Black box testing assesses software without considering its internal workings. T
   - Conditions with boundary-related logic
   It's a cost-effective method since it reduces the number of [test cases](/en/wiki/test-case/), while still having a high likelihood of uncovering defects at the most error-prone areas. [Test automation](/en/wiki/test-automation/) engineers can leverage BVA by incorporating these boundary values into their automated [test suites](/en/wiki/test-suite/) to ensure thorough coverage of potential edge cases.
 
-  - Range-based inputs
-  - Array and list boundaries
-  - Conditions with boundary-related logic
-
 #### What is Decision Table Testing in Black Box Testing?
 
   [Decision Table Testing](/en/wiki/decision-table-testing/) is a **systematic** black box testing technique used to test complex business logic that can be applied to various inputs and conditions. It involves creating a table, often referred to as a **cause-effect table**, where each column represents a unique combination of inputs, and each row corresponds to the decisions or actions that should be taken based on those inputs.
@@ -209,7 +196,6 @@ Black box testing assesses software without considering its internal workings. T
   3. Determine the expected action for each combination.
   4. Design test cases to validate that the system behaves as expected for each combination.
   This technique is particularly effective for **[functional testing](/en/wiki/functional-testing/)** and ensuring coverage of all possible scenarios, which can significantly enhance the [test suite](/en/wiki/test-suite/)'s robustness.
-
 
 #### What is State Transition Testing in Black Box Testing?
 
@@ -243,9 +229,6 @@ Black box testing assesses software without considering its internal workings. T
   ```
   [State Transition Testing](/en/wiki/state-transition-testing/) ensures that the software correctly handles sequence-dependent behaviors, and it's particularly effective for uncovering defects related to state changes that might not be exposed through other black box techniques.
 
-  - Identifying all the
-    **states**
-    the software can be in.
 
   - Understanding the
     **transitions**
@@ -297,13 +280,11 @@ Black box testing assesses software without considering its internal workings. T
   5. **Prepare [Test Environment](/en/wiki/test-environment/)** : Set up the testing environment to mimic production settings.
   6. **[Test Execution](/en/wiki/test-execution/)** : Run the designed test cases on the software.
     - Document outcomes and compare them with expected results.
-    - Document outcomes and compare them with expected results.
   7. **Defect Reporting** : Log any discrepancies found as defects for the development team to address.
   8. **[Retesting](/en/wiki/retesting/)** : Once defects are fixed, retest the software to ensure the fixes work as intended.
   9. **[Regression Testing](/en/wiki/regression-testing/)** : Check that new changes haven't adversely affected existing functionality.
   10. **Test Closure** : Compile test results, assess coverage, and evaluate the quality of the testing process.
   Throughout these steps, maintain clear and concise documentation for transparency and future reference. Use automation tools where applicable to enhance efficiency and repeatability.
-
 
 #### How is Black Box Testing performed?
 
@@ -347,7 +328,6 @@ Black box testing assesses software without considering its internal workings. T
   ```
   This approach ensures that the system is tested from the user's perspective, validating the software's functionality and usability.
 
-
 #### What are the criteria for selecting a Black Box Testing technique?
 
   Selecting a **Black Box Testing** technique depends on several criteria:
@@ -363,7 +343,6 @@ Black box testing assesses software without considering its internal workings. T
   - **[Test Coverage](/en/wiki/test-coverage/)**: Ensure that the chosen technique provides the required [test coverage](/en/wiki/test-coverage/) for the application’s functionality.
   - **Tool Support**: Availability of tools that support the technique can also be a deciding factor, as it can improve efficiency and effectiveness.
   In summary, the selection should be a strategic decision based on the application characteristics, testing goals, and available resources, aiming to maximize [test coverage](/en/wiki/test-coverage/) and defect detection.
-
 
 #### What tools are used in Black Box Testing?
 
@@ -397,8 +376,6 @@ Black box testing assesses software without considering its internal workings. T
   - **Robot Framework**: A keyword-driven [test automation](/en/wiki/test-automation/) framework for [acceptance testing](/en/wiki/acceptance-testing/) and acceptance [test-driven development](/en/wiki/test-driven-development/) (ATDD).
   Each tool offers unique features and integrations, allowing testers to select the most appropriate one based on the application under test and the specific requirements of the testing process.
 
-  - **[Selenium](/en/wiki/selenium/)** : An open-source tool for automating web browsers. It supports multiple languages and frameworks.
-  - **Appium** : Extends Selenium's framework to mobile applications, both Android and iOS.
 
 #### How to write effective test cases in Black Box Testing?
 
@@ -447,8 +424,6 @@ Black box testing assesses software without considering its internal workings. T
     where appropriate to increase efficiency and repeatability of test cases.
   Remember, the goal is to validate that the software meets user expectations and behaves correctly in all scenarios, without considering the internal workings of the application.
 
-  - **Understand user requirements**
-
 ### Real World Applications
 
 #### What are some real-world examples of Black Box Testing?
@@ -466,7 +441,6 @@ Black box testing assesses software without considering its internal workings. T
   - **[Performance Testing](/en/wiki/performance-testing/)**: Measuring the response time and throughput of an [API](/en/wiki/api-testing/) under various load conditions without examining the internal workings.
   Each of these examples demonstrates the application of **Black Box Testing** in assessing the external functionality of a software component or system, without delving into the internal code structure or implementation details.
 
-
 #### How is Black Box Testing used in Agile development?
 
   In **[Agile development](/en/wiki/agile-development/)**, Black Box Testing is integrated into various stages of the iterative process. Testers, often working in parallel with developers, create [test cases](/en/wiki/test-case/) based on user stories and acceptance criteria without knowledge of the internal workings of the item being tested. This approach aligns with Agile principles by focusing on user perspective and product functionality.
@@ -481,7 +455,6 @@ Black box testing assesses software without considering its internal workings. T
   - Adapting to changes quickly through close team collaboration
   - Employing exploratory testing to uncover unexpected issues
   By using Black Box Testing, Agile teams ensure that the software consistently meets user needs and that any potential defects are identified and resolved swiftly, maintaining the pace and quality of Agile software development.
-
 
 #### How is Black Box Testing used in software development life cycle (SDLC)?
 

@@ -82,7 +82,6 @@ A systematic set of tasks and activities aimed at ensuring a software applicatio
   - **Maintenance** : Updating test cases and automation scripts to reflect changes in the software or the environment.
   Each stage is critical for ensuring that the automated tests are effective, efficient, and provide valuable feedback on the software's quality. The process is iterative, with feedback loops allowing for continuous improvement of both the tests and the software being tested.
 
-
 #### How does the test process ensure the quality of the software?
 
   The test process ensures [software quality](/en/wiki/software-quality/) by **systematically identifying and eliminating defects** before release. It involves **verifying** that the software meets specified requirements and **validating** that it fulfills user needs. Quality is assured through:
@@ -96,7 +95,6 @@ A systematic set of tasks and activities aimed at ensuring a software applicatio
   - **[Usability testing](/en/wiki/usability-testing/)** : Ensuring the software is user-friendly and meets customer expectations.
   Automated tests are executed using tools like [Selenium](/en/wiki/selenium/), JUnit, or TestNG, and results are analyzed to identify defects. [Bugs](/en/wiki/bug/) are then **tracked** and **fixed**, with tests rerun to confirm the resolution. This cycle continues until the software meets the **quality threshold** for release.
   The process also includes **reviewing and refining** [test cases](/en/wiki/test-case/) to improve effectiveness and efficiency. By documenting results and learnings, teams build a knowledge base that informs future testing, leading to **continuous improvement** in [quality assurance](/en/wiki/quality-assurance/) practices.
-
 
 ### Test Planning
 
@@ -147,9 +145,6 @@ A systematic set of tasks and activities aimed at ensuring a software applicatio
   - **Risk Analysis** : Identify potential risks and mitigation strategies.
   - **[Test Data](/en/wiki/test-data/)** : Describe the data sets needed for testing.
   - **Test Criteria** :
-    - *Entrance Criteria* : Conditions that must be met before testing begins.
-    - *Exit Criteria* : Conditions that must be met to conclude testing.
-    - *Pass/Fail Criteria* : Define what constitutes a successful or failed test.
     - *Entrance Criteria* : Conditions that must be met before testing begins.
     - *Exit Criteria* : Conditions that must be met to conclude testing.
     - *Pass/Fail Criteria* : Define what constitutes a successful or failed test.
@@ -294,20 +289,10 @@ A systematic set of tasks and activities aimed at ensuring a software applicatio
   ```
   Upon completion, **results analysis** is crucial to determine the next steps. This includes reviewing passed/failed tests, investigating failures, and logging defects for the development team to address. Effective [test execution](/en/wiki/test-execution/) ensures that issues are caught early and that the software meets the expected quality standards before release.
 
-  - **Setting up**
-    the test environment.
 
-  - **Running**
-    the test scripts.
 
-  - **Monitoring**
-    test progress and system behavior.
 
-  - **Logging**
-    the outcome of test cases.
 
-  - **Capturing**
-    screenshots or videos for evidence when necessary.
 
   - **Collecting**
     test data and metrics for analysis.
@@ -373,7 +358,6 @@ A systematic set of tasks and activities aimed at ensuring a software applicatio
   - **SoapUI** : A tool for testing SOAP and REST web services.
   These tools are often integrated with continuous integration/continuous deployment (CI/CD) pipelines using tools like **Jenkins**, **TeamCity**, or **GitLab CI** to automate the execution of tests as part of the software delivery process. Additionally, [test management](/en/wiki/test-management/) tools such as **TestRail**, **Zephyr**, or **qTest** may be used to manage [test cases](/en/wiki/test-case/) and report on [test execution](/en/wiki/test-execution/) results.
 
-
 ### Test Closure
 
 #### What is the role of test closure in the test process?
@@ -419,7 +403,6 @@ A systematic set of tasks and activities aimed at ensuring a software applicatio
   - **Formal closure** : Obtain stakeholder sign-off to officially close the testing phase.
   These activities ensure accountability, provide valuable insights for future projects, and contribute to the continuous improvement of the test process.
 
-
 #### Why is it important to document the results and learnings from the test process?
 
   Documenting the results and learnings from the test process is crucial for several reasons:
@@ -433,7 +416,6 @@ A systematic set of tasks and activities aimed at ensuring a software applicatio
   - **Defect Analysis** : Detailed records of defects found and their resolution help in understanding defect trends and improving the quality of the software.
   - **Stakeholder Communication** : Documentation can be used to communicate with stakeholders, including management, clients, and other teams, providing transparency into the testing process and outcomes.
   In summary, thorough documentation is a cornerstone of a mature test process, enabling teams to deliver high-quality software consistently and efficiently.
-
 
 #### How does test closure contribute to future test processes?
 

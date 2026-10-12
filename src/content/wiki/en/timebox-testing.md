@@ -60,11 +60,6 @@ Conducting tests within a predefined time frame.
   - Reviewing results immediately after the session
   Timebox Testing is adaptable and can be scaled according to project needs. It's particularly beneficial in fast-paced environments where quick feedback is essential. By focusing on the most important tests and respecting the time constraints, Timebox Testing can significantly enhance the quality of software products.
 
-  - Prioritizing test cases
-  - Keeping documentation lean
-  - Using automated tests where possible
-  - Reviewing results immediately after the session
-
 #### Why is Timebox Testing important in software testing?
 
   Timebox Testing is important in [software testing](/en/wiki/software-testing/) because it helps **manage time and resources efficiently**, ensuring that testing is focused and productive within a predefined period. This approach aligns with the **agile principle** of time-bound [iterations](/en/wiki/iteration/), enabling teams to **prioritize tasks**, **limit scope creep**, and **maintain a consistent pace** of development and testing.
@@ -163,8 +158,6 @@ Conducting tests within a predefined time frame.
   - **Version Control Systems**
     (like Git) combined with feature flags can help manage code changes and ensure that only the intended features are tested within the timebox.
   These tools, when used in conjunction, can streamline the **Timebox Testing** process, ensuring that testing is focused, time-bound, and aligned with the objectives of the testing session. Automation and integration tools are particularly valuable, as they can maximize [test coverage](/en/wiki/test-coverage/) within the limited time available.
-
-  - **[Test Management](/en/wiki/test-management/) Tools**
 
 #### How do you determine the time limit for a Timebox Testing session?
 
@@ -265,8 +258,6 @@ Conducting tests within a predefined time frame.
   - **Communicate effectively**
     with stakeholders about the outcomes of Timebox Testing, ensuring transparency and setting realistic expectations for issue resolution.
   By adhering to these practices, you can ensure that Timebox Testing is efficient, effective, and contributes positively to the overall quality of the software product.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 ### Real-world Applications
 

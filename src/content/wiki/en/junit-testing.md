@@ -205,13 +205,7 @@ JUnit is a Java testing framework enabling developers to craft and run automated
   ```
   Remember to **keep your tests independent** and **focused on one specific functionality** per test. Use meaningful test method names to convey the intent of the test.
 
-  1. **Import**
-    the necessary JUnit packages:
 
-  1. **Annotate**
-    your test methods with
-    `@Test`
-    . Each method represents a test case.
 
   1. **Run the test**
     using your IDE's built-in JUnit test runner or from the command line.
@@ -450,8 +444,6 @@ JUnit is a Java testing framework enabling developers to craft and run automated
   - **Simulating complex scenarios** : Such as exceptions, timeouts, or rare events.
   - **Speeding up tests** : By avoiding slow operations like network or database calls.
   - **Verifying interactions** : Checking if the class under test uses its dependencies correctly.
-  1. **Add the mocking framework**
-    to your project dependencies.
 
   2. **Create mock objects**
 
@@ -537,7 +529,6 @@ JUnit is a Java testing framework enabling developers to craft and run automated
     ```
   Remember, the goal is to write tests that are maintainable, understandable, and trustworthy, providing confidence in the software's correctness.
 
-  - **Design tests for behavior**
 #### What are common mistakes to avoid when writing JUnit tests?
 
   When writing JUnit tests, avoid these common mistakes to ensure your tests are reliable and maintainable:

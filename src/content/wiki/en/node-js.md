@@ -27,11 +27,6 @@ order: 0
       - [What is the event-driven programming in Node.js?](#what-is-the-event-driven-programming-in-nodejs)
     - [Working with Node.js](#working-with-nodejs)
       - [How do you install Node.js on your system?](#how-do-you-install-nodejs-on-your-system)
-    - [For Windows and macOS:](#for-windows-and-macos)
-    - [For Ubuntu-based distributions:](#for-ubuntu-based-distributions)
-    - [For CentOS, Fedora, and Red Hat-based distributions:](#for-centos-fedora-and-red-hat-based-distributions)
-    - [For Arch Linux:](#for-arch-linux)
-    - [Verification:](#verification)
       - [How do you update Node.js?](#how-do-you-update-nodejs)
       - [How can you debug a Node.js application?](#how-can-you-debug-a-nodejs-application)
       - [What is NPM and how is it used in Node.js?](#what-is-npm-and-how-is-it-used-in-nodejs)
@@ -126,7 +121,7 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
   const cluster = require('cluster');
   const http = require('http');
   const numCPUs = require('os').cpus().length;
-  if (cluster.isMaster) {
+  if (cluster.isPrimary) {
     for (let i = 0; i < numCPUs; i++) {
       cluster.fork();
     }
@@ -137,7 +132,7 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
     }).listen(8000);
   }
   ```
-  In this code, the `cluster.isMaster` check determines if the current process is the master process, which then forks worker processes. Each worker creates an HTTP server listening on the same port.
+  In this code, the `cluster.isPrimary` check determines whether the current process is the primary process. If it is, the process forks workers, each of which creates an HTTP server listening on the same port.
 
 #### What is the event-driven programming in Node.js?
 
@@ -161,50 +156,14 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
 
 #### How do you install Node.js on your system?
 
-  To install **Node.js** on your system, follow these platform-specific instructions:
-  ### For Windows and macOS:
+Use the [official Node.js download page](https://nodejs.org/en/download/) to choose an installer or installation method for your operating system. The page lists the current **LTS** and **Current** releases and provides platform-specific options. An LTS release is the usual choice for most projects unless the project requires another release line.
 
-  1. Visit the official Node.js website at
-    [nodejs.org](https://nodejs.org/)
-    .
+After installation, verify that Node.js and npm are available:
 
-  2. Click on the
-    **LTS**
-    (Long Term Support) or
-    **Current**
-    version download button, as per your requirement.
-
-  3. Run the downloaded installer and follow the prompts to complete the installation.
-  ### For Ubuntu-based distributions:
-  Open your terminal and run the following commands:
-
-  ```
-  curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-  sudo apt-get install -y nodejs
-  ```
-  Replace `14.x` with the version you wish to install.
-  ### For CentOS, Fedora, and Red Hat-based distributions:
-  Execute these commands in your terminal:
-
-  ```
-  curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
-  sudo yum install nodejs
-  ```
-  Again, replace `14.x` with the desired version.
-  ### For Arch Linux:
-  Use the package manager `pacman` to install Node.js:
-
-  ```
-  sudo pacman -S nodejs npm
-  ```
-  ### Verification:
-  After installation, verify the installation by checking the version of Node.js and npm:
-
-  ```
-  node -v
-  npm -v
-  ```
-  This will output the installed versions of Node.js and npm, confirming a successful installation.
+```sh
+node --version
+npm --version
+```
 
 #### How do you update Node.js?
 
@@ -229,7 +188,6 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
     .
   **Using n:**
 
-  1. Open your terminal.
   2. Install
     `n`
     globally with
@@ -270,41 +228,15 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
   ```
   Always ensure your global npm packages and local project dependencies are compatible with the new Node.js version after updating.
 
-  1. Open your terminal.
-  2. Run
-    `nvm ls`
-    to list installed versions.
 
-  3. Update to the latest version with
-    `nvm install node`
-    .
-
-  4. Switch to the new version using
-    `nvm use node`
-    .
 
   5. Verify the update with
     `node -v`
     .
 
-  1. Open your terminal.
-  2. Install
-    `n`
-    globally with
-    `npm install -g n`
-    .
 
-  3. Update Node.js to the latest version with
-    `n latest`
-    .
 
-  4. Verify the update with
-    `node -v`
-    .
 
-  1. Go to the
-    [Node.js website](https://nodejs.org/)
-    .
 
 #### How can you debug a Node.js application?
 
@@ -460,12 +392,6 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
     or access the properties you've exported from the module.
   Remember, Node.js uses the CommonJS module system, and each file is treated as a separate module. By using `require()` and `module.exports`, you can create modular, maintainable, and reusable code, which is particularly useful in [test automation](/en/wiki/test-automation/) for structuring your [test cases](/en/wiki/test-case/) and utility functions.
 
-  1. **Create a new file**
-    with a
-    `.js`
-    extension, for example,
-    `calculator.js`
-    .
 
   1. Use
     `module.exports`
@@ -473,10 +399,6 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
     **export the module's functionalities**
     that you want to expose. This can be a function, object, class, etc.
 
-  1. **Require the module**
-    using
-    `require()`
-    function with the path to the module file.
 
   1. **Call the methods**
     or access the properties you've exported from the module.
@@ -877,11 +799,6 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
   ```
   Understanding the event loop is crucial for optimizing Node.js applications and avoiding performance issues like blocking the loop with CPU-intensive tasks.
 
-  1. **Timers** : Checks for
-    `setTimeout()`
-    and
-    `setInterval()`
-    callbacks.
 
 #### What is callback hell and how can you avoid it in Node.js?
 
@@ -961,10 +878,6 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
   }
   ```
   `async/await` makes the asynchronous code look and behave a little more like synchronous code, which can make it easier to understand and maintain.
-
-  - **Pending** : Initial state, neither fulfilled nor rejected.
-  - **Fulfilled** : The operation completed successfully.
-  - **Rejected** : The operation failed.
 
 #### What is the cluster module in Node.js and why is it useful?
 
@@ -1049,13 +962,3 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
     child.send({ hello: 'world' });
     ```
   Child processes are useful for performing CPU-intensive operations without blocking the Node.js event loop, thus maintaining the application's responsiveness.
-
-  - **exec** : Used for running a command in a shell and buffering the output. Suitable for small-sized data as it buffers the output in memory.
-  - **execFile** : Similar to
-    `exec`
-    but does not spawn a shell by default. It's more efficient for calling executable files.
-
-  - **spawn** : Launches a new process with a given command. It streams data in/out, making it suitable for large data volumes.
-  - **fork** : A special case of
-    `spawn`
-    that creates a new instance of the V8 engine. It's used for running Node.js modules in separate processes and enables inter-process communication (IPC).

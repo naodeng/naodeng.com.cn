@@ -414,14 +414,6 @@ An open-source framework for browser automation, enabling automated tests for we
     ```
   Remember to handle potential exceptions, such as `NoSuchElementException`, when an element cannot be found. Additionally, consider the performance and [maintainability](/en/wiki/maintainability/) of your locator strategy, as some methods like XPath can be slower and more brittle compared to others like ID or CSS selectors.
 
-  - **By.id** : Finds an element by its unique ID.
-  - **By.name** : Locates elements by the NAME attribute.
-  - **By.className** : Targets elements by their class attribute.
-  - **By.tagName** : Finds elements by their tag name.
-  - **By.cssSelector** : Uses CSS selectors for locating elements, allowing for complex queries.
-  - **By.xpath** : Employs XPath expressions to navigate through elements and attributes in the DOM.
-  - **By.linkText** : Finds a link element by the exact text it displays.
-  - **By.partialLinkText** : Locates link elements that contain the specified text.
 
 #### What is the difference between findElement() and findElements() methods?
 
@@ -488,7 +480,7 @@ An open-source framework for browser automation, enabling automated tests for we
   WebElement element = driver.findElement(By.xpath("//tag[contains(@attribute, 'value')]"));
   ```
   **2. CSS Selectors with Substring Matches:**
-  Similar to XPath, CSS selectors can match elements based on substrings of attribute values using `^`, `$`, or `*`.
+  Like XPath, CSS selectors can match part of an attribute value: `^` matches a prefix, `$` matches a suffix, and `*` matches a substring anywhere in the value.
 
   ```
   WebElement element = driver.findElement(By.cssSelector("tag[attribute*='value']"));
@@ -584,16 +576,8 @@ An open-source framework for browser automation, enabling automated tests for we
      ```
   Remember to **handle exceptions** such as `NoSuchElementException` if the dropdown does not exist or the specified option is not found.
 
-  1. **Select an option**
-    from the dropdown. You can select by index, value, or visible text.
 
-  - **By index**
-    (zero-based):
 
-  - **By value** :
-  - **By visible text** :
-  1. **Deselect options**
-    if it's a multi-select dropdown. Similar methods exist for deselecting options:
 
 ### Wait Commands
 
@@ -874,15 +858,6 @@ An open-source framework for browser automation, enabling automated tests for we
     `driver.switchTo().defaultContent()`
     .
   Remember that if an iframe is nested within another iframe, you must switch to each iframe in sequence until you reach the desired level. Always switch back to the parent frame or main content when done.
-
-  - Use
-    `driver.switchTo().frame()`
-    to switch to the iframe.
-
-  - After interacting with the iframe, return to the main page with
-    `driver.switchTo().defaultContent()`
-    .
-
 #### How can you take screenshots using WebDriver?
 
   Taking screenshots with WebDriver is straightforward. Use the `TakesScreenshot` interface provided by [Selenium](/en/wiki/selenium/) WebDriver. Here's a concise example in Java:

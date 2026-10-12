@@ -65,7 +65,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   Security testing should be thorough and cover all possible security risks, including the less obvious ones. It is an essential part of the software development process, ensuring that the system is robust against various security threats.
   Automated tools play a significant role in security testing, helping to identify and address security issues more efficiently. However, [manual testing](/en/wiki/manual-testing/) is also crucial, as some security vulnerabilities may only be discovered through meticulous human analysis. Security testing should be an ongoing process, with regular tests conducted to ensure continuous security in the face of evolving threats.
 
-
 #### Why is security testing important?
 
   Security testing is crucial because it proactively identifies and helps fix vulnerabilities within software, protecting against potential threats such as data breaches, unauthorized access, and other forms of cyberattacks. It ensures that sensitive data remains confidential, maintains the integrity of the software, and upholds availability, contributing to the overall trustworthiness of the system. By simulating various attack scenarios, security testing uncovers real-world risks, allowing developers to fortify the software against attacks that could lead to costly damages, both financially and reputationally.
@@ -98,8 +97,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
     among users and stakeholders by demonstrating commitment to security best practices.
   These objectives are achieved through various methods such as vulnerability scanning, [penetration testing](/en/wiki/penetration-testing/), risk assessments, and employing automated tools for continuous security evaluation. Regular testing and adherence to best practices ensure that security measures are effective and up to date.
 
-  - **Identify vulnerabilities**
-
 #### How does security testing fit into the Software Development Life Cycle (SDLC)?
 
   Security testing is integral to the **[Software Development Life Cycle](/en/wiki/software-development-life-cycle/) (SDLC)**, ensuring that security is baked into the product from the start rather than being an afterthought. It aligns with the **shift-left** approach, where testing is performed earlier in the development process.
@@ -124,7 +121,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   - **Compromised User Safety** : In cases where physical safety relies on software (e.g., in automotive or healthcare systems), security flaws can pose real-world dangers.
   Neglecting security testing is a risk that can lead to **catastrophic outcomes** for businesses and individuals alike. It is essential to integrate security testing into the SDLC to mitigate these risks effectively.
 
-
 ### Types of Security Testing
 
 #### What are the different types of security testing?
@@ -140,7 +136,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   - **Mobile Security Testing**: Addresses security concerns specific to mobile applications, including insecure data storage, weak server-side controls, and insufficient transport layer protection.
   - **Cloud Security Testing**: Assesses the security of cloud-based services and infrastructure, including misconfigurations, access control issues, and compliance with cloud security standards.
   Each type of security testing targets different aspects of software security and may employ a variety of tools and techniques to uncover potential vulnerabilities.
-
 
 #### What is the difference between vulnerability scanning and security scanning?
 
@@ -182,7 +177,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   - **Expertise** : Requires a high level of expertise from the tester, who must be knowledgeable about the latest attack techniques and able to think creatively like an attacker.
   [Penetration testing](/en/wiki/penetration-testing/) is essential for uncovering security issues that might not be detected by automated tools or standard vulnerability assessments. It provides a more realistic understanding of security posture and the potential for data breaches or other security incidents.
 
-
 #### What is intrusion detection testing?
 
   Intrusion Detection Testing is a **security testing** method focused on monitoring and analyzing system events to detect unauthorized access or breaches. It involves simulating attacks to evaluate the effectiveness of **Intrusion Detection Systems (IDS)** which are designed to identify and potentially stop attackers before they can exploit vulnerabilities.
@@ -194,7 +188,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   This type of testing is crucial for maintaining the integrity of a system's security posture. It helps to ensure that the IDS is configured correctly and is capable of protecting the system against current and emerging threats.
   Automated tools are often used to streamline the testing process, allowing for the simulation of numerous and varied attack patterns. Tools such as **Snort**, **Suricata**, or **OSSEC** can be leveraged to automate intrusion detection testing.
   Intrusion Detection Testing is a subset of security testing that complements other methods like **[penetration testing](/en/wiki/penetration-testing/)** and **vulnerability scanning**, providing a more defensive approach to security by actively seeking out signs of an attack in progress, rather than just identifying potential entry points.
-
 
 #### Can you explain what is meant by security auditing?
 
@@ -288,7 +281,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
     analyze network traffic and scan for open ports respectively.
   These tools are often integrated into CI/CD pipelines for continuous security assessment.
 
-
 #### What is the role of automated tools in security testing?
 
   Automated tools in security testing serve to **streamline** and **enhance** the efficiency of identifying potential vulnerabilities within software applications. They are crucial for conducting repetitive and systematic checks that would be time-consuming and error-prone if done manually. These tools can **scan codebases** for known vulnerabilities, **automate penetration tests**, and simulate attacks on systems to assess their resilience.
@@ -314,7 +306,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   10. **Review and Update**: Regularly revisit the risk assessment to account for new threats, vulnerabilities, and changes in the business context.
   By conducting a thorough risk assessment, security testing can be more targeted and effective, ensuring that the most critical issues are addressed to protect the system and its data.
 
-
 #### What techniques are used to perform security testing?
 
   Security testing employs various techniques to identify and mitigate risks. **Static Application Security Testing (SAST)** analyzes source code for vulnerabilities without executing it. **Dynamic Application Security Testing (DAST)** tests the application during runtime, simulating attacks on a running system. **Interactive Application Security Testing (IAST)** combines SAST and DAST by testing applications from within using instrumentation.
@@ -335,9 +326,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   Fuzzing is integrated into the security testing process using tools like `AFL`, `Peach Fuzzer`, or `Boofuzz`. These tools automate the creation and execution of [test cases](/en/wiki/test-case/), making it easier to uncover issues that might not be found through [manual testing](/en/wiki/manual-testing/).
   To maximize effectiveness, fuzzing should be combined with other security testing methods, such as code reviews and [penetration testing](/en/wiki/penetration-testing/), and integrated into the CI/CD pipeline for continuous security assurance.
 
-  1. **Black-box fuzzing** : No knowledge of the program's internal workings is required. Testers feed random data into the system and observe the output.
-  2. **White-box fuzzing** : Involves understanding the program's source code to create more sophisticated test cases that target specific parts of the software.
-
 ### Challenges and Best Practices
 
 #### What are some challenges faced in security testing?
@@ -356,7 +344,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   - **Tool Limitations** : No single tool can catch all issues, necessitating a combination of tools and manual testing, which can be complex to manage.
   Addressing these challenges requires a strategic approach, continuous learning, and investment in the right tools and skills.
 
-
 #### What are some best practices for effective security testing?
 
   To ensure effective security testing, follow these best practices:
@@ -374,7 +361,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   - **Stay Compliant** : Ensure that your security testing meets relevant regulatory and compliance requirements.
   - **Document and Track** : Keep detailed records of security tests, findings, and remediation actions to monitor progress and inform future tests.
   By following these practices, you can build a robust security testing strategy that helps protect your software from threats and vulnerabilities.
-
 
 #### How can security testing be integrated into a continuous integration/continuous deployment (CI/CD) pipeline?
 
@@ -443,14 +429,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   1. **Automated Response** : Implement automated responses to security findings, such as breaking the build, notifying the team, or creating an issue in the tracking system.
   By embedding these automated security checks into the CI/CD pipeline, you ensure continuous security assessment and reduce the risk of deploying insecure software.
 
-  1. **Static Application Security Testing (SAST)** : Integrate SAST tools to analyze source code for potential security issues. This should be done at the code commit stage.
-  1. **Dynamic Application Security Testing (DAST)** : Automate DAST tools to test running applications for runtime vulnerabilities. Trigger DAST after the application is deployed to a test environment.
-  1. **Dependency Scanning** : Use tools to check for vulnerabilities in third-party libraries and dependencies. This can be part of the build process.
-  1. **Container Scanning** : If using containers, scan images for vulnerabilities before they are pushed to the registry.
-  1. **Secrets Detection** : Prevent secrets from being exposed by scanning code repositories for credentials and other sensitive data.
-  1. **Compliance as Code** : Define and enforce security policies as code to ensure compliance with security standards.
-  1. **Automated Response** : Implement automated responses to security findings, such as breaking the build, notifying the team, or creating an issue in the tracking system.
-
 #### How often should security testing be performed?
 
   Security testing should be performed **regularly** and **throughout** the SDLC. The frequency depends on several factors:
@@ -470,7 +448,6 @@ Security Testing aims to reveal potential vulnerabilities in a software system w
   ```
   **Continuous Security Testing** is ideal, where automated scans and tests are triggered by code commits or on a daily/weekly basis. This aligns with **DevSecOps** practices, integrating security as a part of the development and operations process.
   In summary, the frequency of security testing is not one-size-fits-all; it should be tailored to the software's development practices, risk profile, and regulatory landscape. Regular and automated security testing is crucial for maintaining a robust security posture.
-
 
 #### What is the role of a security tester in a software development team?
 

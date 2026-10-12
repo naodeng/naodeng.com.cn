@@ -190,7 +190,7 @@ browserstack 是一个基于云的 Web 和移动测试平台，允许开发人�
 
 该脚本连接到[browserstack](/zh-cn/wiki/browserstack/)，然后启动指定的环境。该测试的运行就像在本地执行一样，但它实际上是在 [browserstack](/zh-cn/wiki/browserstack/) 服务器上运行。这允许跨不同环境进行**并行测试**，从而显着加快测试过程。
 
-[browserstack](/zh-cn/wiki/browserstack/) 的基础设施旨在处理测试环境的**[环境搭建](/zh-cn/wiki/setup/)、维护**和**拆卸**，这简化了测试工作流程，让您能够专注于编写和执行测试。测试完成后，[browserstack](/zh-cn/wiki/browserstack/) 会提供**详细日志**、**屏幕截图**和**视频录制**来帮助调试任何问题。
+[browserstack](/zh-cn/wiki/browserstack/) 的基础设施旨在处理测试环境的 **[环境搭建](/zh-cn/wiki/setup/)、维护**和**拆卸**，这简化了测试工作流程，让您能够专注于编写和执行测试。测试完成后，[browserstack](/zh-cn/wiki/browserstack/) 会提供**详细日志**、**屏幕截图**和**视频录制**来帮助调试任何问题。
 
 #### 如何设置并开始使用 BrowserStack？
 
@@ -212,14 +212,6 @@ browserstack 是一个基于云的 Web 和移动测试平台，允许开发人�
 5. **使用您首选的[测试运行者](/zh-cn/wiki/test-runner/) 运行您的[测试脚本](/zh-cn/wiki/test-script/)**。您的测试现在将在[browserstack](/zh-cn/wiki/browserstack/) 的远程浏览器/设备上执行。
 6. 通过[browserstack](/zh-cn/wiki/browserstack/) Automate 仪表板实时监控您的测试，您可以在其中查看测试进度、视频记录、日志和屏幕截图。
 7. **分析测试结果**并使用[browserstack](/zh-cn/wiki/browserstack/) 提供的详细报告调试问题。请记住保护您的[browserstack](/zh-cn/wiki/browserstack/) 访问凭据，并且不要公开共享它们。为了持续集成，请使用环境变量来存储您的[browserstack](/zh-cn/wiki/browserstack/) 用户名和访问密钥。与 Jenkins 等 CI 工具集成时，添加 [browserstack](/zh-cn/wiki/browserstack/) 插件或使用提供的 [API](/zh-cn/wiki/api/) 来触发测试作为构建过程的一部分。
-
-  ```javascript
-    const capabilities = {
-      'browserName' : 'Chrome',
-      'browserstack.user' : 'YOUR_USERNAME',
-      'browserstack.key' : 'YOUR_ACCESS_KEY'
-    }
-  ```
 
 #### 在 BrowserStack 上执行测试的步骤是什么？
 
@@ -285,7 +277,7 @@ browserstack 是一个基于云的 Web 和移动测试平台，允许开发人�
 #### BrowserStack 如何处理不同的浏览器和操作系统？
 
 [browserstack](/zh-cn/wiki/browserstack/) 通过维护真实设备和浏览器版本的**大量库存**来管理各种浏览器和操作系统。启动测试时，[browserstack](/zh-cn/wiki/browserstack/) **分配**符合指定条件（例如浏览器版本、操作系统和屏幕分辨率）的虚拟机或真实设备。
-  
+
 对于浏览器，[browserstack](/zh-cn/wiki/browserstack/) 支持 **Chrome**、**Firefox**、**Safari**、**Internet Explorer** 和 **Edge** 等多种版本。它还提供各种版本的移动浏览器，以便在不同设备上进行测试。
 
 操作系统方面，包括**Windows**、**macOS**、**iOS**、**Android**平台，覆盖多个版本，保证不同环境下的兼容性。
@@ -425,18 +417,14 @@ browserstack 是一个基于云的 Web 和移动测试平台，允许开发人�
 当然，**[browserstack](/zh-cn/wiki/browserstack/)** 可以与 **[selenium](/zh-cn/wiki/selenium/)** 一起使用来运行自动化浏览器测试。要将[selenium](/zh-cn/wiki/selenium/) 与[browserstack](/zh-cn/wiki/browserstack/) 集成，请执行以下步骤：
 
 1. **设置您的环境**：
-- 确保您有 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**为您首选的编程语言安装。
+- 确保您有 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 为您首选的编程语言安装。
 
-- 安装必要的特定于语言的绑定。
-- 确保您有 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**为您首选的编程语言安装。
 - 安装必要的特定于语言的绑定。
 2. **配置您的[测试脚本](/zh-cn/wiki/test-script/)**：
 - 从 Selenium 导入 WebDriver 和 `DesiredCapabilities` 模块。
 
 - 定义您的 BrowserStack 凭据和所需的功能，包括您要测试的浏览器、浏览器版本和操作系统。
-- 从 Selenium 导入 WebDriver 和 `DesiredCapabilities` 模块。
 
-- 定义您的 BrowserStack 凭据和所需的功能，包括您要测试的浏览器、浏览器版本和操作系统。
 3. **初始化远程[WebDriver](/zh-cn/wiki/webdriver/)**：
 - 将 WebDriver 指向 BrowserStack 远程 URL，包括您的访问凭据。
 4. **写下您的[测试用例](/zh-cn/wiki/test-case/)**：
@@ -468,11 +456,6 @@ browserstack 是一个基于云的 Web 和移动测试平台，允许开发人�
   ```
 
 将`your_browserstack_username` 和`your_browserstack_accesskey` 替换为您的[browserstack](/zh-cn/wiki/browserstack/) 凭据。调整功能以满足您的测试要求。
-
-- 安装必要的特定于语言的绑定。
-- 确保您有 **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**为您首选的编程语言安装。
-- 定义您的 BrowserStack 凭据和所需的功能，包括您要测试的浏览器、浏览器版本和操作系统。
-- 从 Selenium 导入 WebDriver 和 `DesiredCapabilities` 模块。
 
 #### BrowserStack 如何与 Jenkins 集成？
 
@@ -512,7 +495,7 @@ browserstack 是一个基于云的 Web 和移动测试平台，允许开发人�
 
 #### 还有哪些其他工具和框架可以与 BrowserStack 一起使用？
 
-[browserstack](/zh-cn/wiki/browserstack/)可以与各种**[测试自动化](/zh-cn/wiki/test-automation/)工具和框架**集成，以增强测试能力。以下是一些值得注意的：
+[browserstack](/zh-cn/wiki/browserstack/)可以与各种 **[测试自动化](/zh-cn/wiki/test-automation/)工具和框架**集成，以增强测试能力。以下是一些值得注意的：
 
 - **Appium**：对于移动应用程序测试，您可以使用 Appium 和 [browserstack](/zh-cn/wiki/browserstack/) 在各种真实设备上运行自动化测试。
 

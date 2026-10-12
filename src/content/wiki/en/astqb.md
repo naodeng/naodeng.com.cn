@@ -87,7 +87,6 @@ See also:
   - **Potential for higher salary** : Certified professionals often have the leverage to negotiate higher salaries due to their validated skills.
   Remember, while certification can open doors and provide benefits, it's the application of the knowledge gained that truly enhances your career as a [test automation](/en/wiki/test-automation/) engineer.
 
-
 #### How is ASTQB different from ISTQB?
 
   ASTQB, or the American [Software Testing](/en/wiki/software-testing/) Qualifications Board, is the United States board for the International [Software Testing](/en/wiki/software-testing/) Qualifications Board ([ISTQB](/en/wiki/istqb/)). While both ASTQB and [ISTQB](/en/wiki/istqb/) offer similar certification programs for software testers, the key difference lies in their geographical focus and regional influence.
@@ -123,7 +122,6 @@ See also:
     is needed to register and sit for the exam.
   Before registering for the exam, ensure you have reviewed the **specific guidelines** for the ASTQB certification level you are aiming for, as some advanced or specialist certifications may have additional requirements.
 
-
 #### What is the process to get ASTQB certified?
 
   To get **ASTQB certified**, follow these steps:
@@ -151,7 +149,6 @@ See also:
     from the ASTQB website. You'll also be listed on the ASTQB Successful Candidate Register.
   Remember to **review the specific guidelines** for the certification level you are attempting, as there may be additional or varying steps. Keep your knowledge current, as the field of [software testing](/en/wiki/software-testing/) is always evolving, and **consider recertification** or advancing to higher levels of certification to maintain and enhance your professional standing.
 
-  1. **Choose the certification**
 
 #### How long does it take to prepare for the ASTQB certification?
 
@@ -178,19 +175,8 @@ See also:
   It's essential to allocate time for **revisiting difficult topics** and **mock exams** to build confidence and timing. Since you're experienced [test automation](/en/wiki/test-automation/) engineers, you might find some areas require less preparation, allowing you to concentrate on unfamiliar or challenging subjects.
   Remember, the goal is not just to pass the exam but to ensure a deep understanding of the concepts for practical application in your work.
 
-  - Reviewing the
-    **ASTQB syllabus**
-    thoroughly.
 
-  - Reading recommended
-    **books and materials**
-    .
 
-  - Completing
-    **online courses**
-    or attending
-    **workshops**
-    .
 
   - Regularly taking
     **practice exams**
@@ -228,7 +214,6 @@ See also:
   - **Peer Study Groups** : Join or form a study group to share knowledge and tackle difficult subjects collaboratively.
   Remember to allocate regular study time and simulate exam conditions with timed practice tests to enhance your preparation.
 
-
 #### How should I prepare for the ASTQB certification exam?
 
   To effectively prepare for the ASTQB certification exam, follow these steps:
@@ -241,7 +226,6 @@ See also:
   6. **Create a Study Plan**: Allocate regular study times and set goals. A structured plan helps maintain focus and covers all topics systematically.
   7. **Rest and Relax**: Ensure you are well-rested before the exam. Adequate rest can improve concentration and recall during the test.
   Remember, the ASTQB certification is a professional credential that validates your expertise. A thorough preparation will not only help you pass the exam but also enhance your practical skills in software [test automation](/en/wiki/test-automation/).
-
 
 #### Are there any practice tests available for ASTQB?
 
@@ -268,7 +252,6 @@ See also:
   - **Integration of automation into the CI/CD pipeline**
   Candidates are expected to demonstrate their knowledge of **best practices** in [test automation](/en/wiki/test-automation/) and their ability to solve problems that may arise during the automation process. The exam requires a blend of theoretical knowledge and practical skills to ensure that certified individuals can effectively contribute to the [test automation](/en/wiki/test-automation/) efforts of their organizations.
 
-
 #### What is the passing score for the ASTQB certification exam?
 
   The passing score for the **ASTQB certification exam** is typically **65%**, which means candidates must correctly answer at least 65% of the questions to pass. However, it's important to verify the specific passing criteria for the particular exam you are taking, as it may vary slightly depending on the level and module of the certification.
@@ -288,7 +271,6 @@ See also:
   - **Agile Tester** : Works within agile development teams, often with a focus on automation and continuous integration.
   These roles may vary by company and industry, but ASTQB certification can significantly enhance your credibility and marketability for these positions. It demonstrates a commitment to the field and a standardized level of knowledge that employers value.
 
-
 #### How does ASTQB certification enhance my career prospects?
 
   ASTQB certification can significantly boost your career by **validating your expertise** and demonstrating a **commitment to the profession**. As an experienced [test automation](/en/wiki/test-automation/) engineer, possessing ASTQB certification can:
@@ -303,7 +285,6 @@ See also:
   - **Expand professional network** : Being part of the ASTQB community connects you with other certified professionals, opening up networking opportunities.
   - **Provide a professional edge** : In a crowded field, certification can be the deciding factor that sets you apart from other candidates.
   By achieving ASTQB certification, you're not only proving your capability to employers but also ensuring that your skills remain relevant and up-to-date in a rapidly evolving industry.
-
 
 #### How often do I need to renew my ASTQB certification?
 

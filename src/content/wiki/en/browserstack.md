@@ -143,7 +143,6 @@ See also:
   - **[Integration Testing](/en/wiki/integration-testing/)**: Combine BrowserStack with CI/CD pipelines to run tests as part of the development process.
   These tests can be executed using popular frameworks and tools such as [Selenium](/en/wiki/selenium/), Appium, [Cypress](/en/wiki/cypress/), and others, which are supported by BrowserStack for seamless integration into existing [test suites](/en/wiki/test-suite/).
 
-
 ### Functionality and Usage
 
 #### How does BrowserStack work?
@@ -197,7 +196,6 @@ See also:
   6. **Monitor your tests** in real-time through the BrowserStack Automate dashboard, where you can view test progress, video recordings, logs, and screenshots.
   7. **Analyze test results** and debug issues using the detailed reports provided by BrowserStack.
   Remember to secure your BrowserStack access credentials and do not share them publicly. For continuous integration, use environment variables to store your BrowserStack username and access key. When integrating with CI tools like Jenkins, add the BrowserStack plugin or use the provided [API](/en/wiki/api-testing/) to trigger tests as part of your build process.
-
 
 #### What are the steps to perform a test on BrowserStack?
 
@@ -355,27 +353,16 @@ Use test builds and accounts, and do not commit BrowserStack access keys to the 
       installed for your preferred programming language.
 
      - Install necessary language-specific bindings.
-     - Ensure you have
-       **[Selenium](/en/wiki/selenium/) [WebDriver](/en/wiki/webdriver/)**
-       installed for your preferred programming language.
-
-     - Install necessary language-specific bindings.
   2. **Configure your [test script](/en/wiki/test-script/)**:
     - Import the WebDriver from Selenium and the
       `DesiredCapabilities`
       module.
 
      - Define your BrowserStack credentials and desired capabilities, including the browser, browser version, and operating system you want to test on.
-     - Import the WebDriver from Selenium and the
-       `DesiredCapabilities`
-       module.
 
-     - Define your BrowserStack credentials and desired capabilities, including the browser, browser version, and operating system you want to test on.
   3. **Initialize the remote [WebDriver](/en/wiki/webdriver/)**:
     - Point the WebDriver to the BrowserStack remote URL, including your access credentials.
-    - Point the WebDriver to the BrowserStack remote URL, including your access credentials.
   4. **Write your [test cases](/en/wiki/test-case/)**:
-    - Use the same Selenium commands you would use for local browser testing.
     - Use the same Selenium commands you would use for local browser testing.
   Here's a basic example in Java:
 
@@ -404,10 +391,6 @@ Use test builds and accounts, and do not commit BrowserStack access keys to the 
   }
   ```
   Replace `your_browserstack_username` and `your_browserstack_accesskey` with your BrowserStack credentials. Adjust the capabilities to match your testing requirements.
-
-  1. **Set up your environment**:
-    - Ensure you have
-      **[Selenium](/en/wiki/selenium/) [WebDriver](/en/wiki/webdriver/)**
 
 #### How does BrowserStack integrate with Jenkins?
 
@@ -455,10 +438,6 @@ Use test builds and accounts, and do not commit BrowserStack access keys to the 
   ```
   The plugin also provides **environment variables** for BrowserStack credentials, which can be used in your [test scripts](/en/wiki/test-script/). After the tests are executed, results and video recordings are available on the BrowserStack Automate dashboard. Jenkins will also display the results, making it easy to track test success and failures directly from the CI pipeline.
 
-  1. Install the
-    **BrowserStack Jenkins Plugin**
-    from the Jenkins plugin manager.
-
 
 #### What other tools and frameworks can be used with BrowserStack?
 
@@ -484,7 +463,6 @@ Use test builds and accounts, and do not commit BrowserStack access keys to the 
   - **TeamCity**: Integrate with TeamCity to automatically trigger BrowserStack tests with your builds.
   - **Visual Studio Team Services**: Connect your VSTS pipeline with BrowserStack to run automated tests as part of your release process.
   These integrations help leverage BrowserStack's device and browser coverage, making it a versatile choice for comprehensive [automated testing](/en/wiki/automated-testing/).
-
 
 ### Advanced Features
 
@@ -517,7 +495,6 @@ Use test builds and accounts, and do not commit BrowserStack access keys to the 
   ```
   These features are designed to enhance testing efficiency, accuracy, and coverage, ensuring that applications perform optimally across all user touchpoints.
 
-
 #### How does the 'Live Testing' feature work in BrowserStack?
 
   The **Live Testing** feature in BrowserStack allows you to interactively test your website or application on different browsers and devices without the need for setting up an actual [test environment](/en/wiki/test-environment/). It provides a real-time browser session on the platform's cloud infrastructure, enabling you to manually navigate and test the functionality of your web application as if you were using a local device or browser.
@@ -546,7 +523,6 @@ Use test builds and accounts, and do not commit BrowserStack access keys to the 
   During the session, you can interact with the website or application, test layouts, functionality, and debug issues in real-time. You can also switch between different browsers and devices quickly to test cross-browser compatibility.
   Live Testing also offers tools for debugging, such as **console logs**, **network logs**, and the ability to take **screenshots** or **video recordings** of the session. These features help in identifying and documenting issues that may arise during the testing process.
   Remember, Live Testing is for [manual testing](/en/wiki/manual-testing/). For [automated testing](/en/wiki/automated-testing/), you would use BrowserStack's Automate feature or other [automated testing](/en/wiki/automated-testing/) integrations.
-
 
 #### What is 'Automate Pro' in BrowserStack?
 
@@ -578,13 +554,7 @@ Use test builds and accounts, and do not commit BrowserStack access keys to the 
        `.apk`
        file.
 
-     - For iOS, upload an
-       `.ipa`
-       file.
 
-     - For Android, upload an
-       `.apk`
-       file.
 
   4. Once uploaded, select the
     **desired device**
@@ -610,34 +580,8 @@ Use test builds and accounts, and do not commit BrowserStack access keys to the 
   For **[automated testing](/en/wiki/automated-testing/)** of your app, switch to the **Automate** section in BrowserStack and follow the relevant steps for your chosen framework, such as Appium or Espresso.
   Remember, App Live is for **manual interactive testing**. For automated tests, use BrowserStack's **Automate** or **Automate Pro** features.
 
-  1. **Sign in**
-    to your BrowserStack account.
 
-  2. Navigate to the
-    **App Live**
-    section.
 
-  3. **Upload**
-    your mobile app binary:
-
-     - For iOS, upload an
-       `.ipa`
-       file.
-
-     - For Android, upload an
-       `.apk`
-       file.
-
-     - For iOS, upload an
-       `.ipa`
-       file.
-
-     - For Android, upload an
-       `.apk`
-       file.
-
-  4. Once uploaded, select the
-    **desired device**
 
 #### What is the 'Screenshots' feature in BrowserStack?
 

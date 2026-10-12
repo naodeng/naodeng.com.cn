@@ -87,13 +87,7 @@ Backward Compatibility, in the context of software testing, refers to the abilit
   - Use
     **versioned [APIs](/en/wiki/api-testing/)**
 
-  - Running a
-    **suite of regression tests**
-    against new versions.
 
-  - Incorporating
-    **backward compatibility checks**
-    into the CI/CD pipeline.
 
 ### Why is backward compatibility important in software development?
 

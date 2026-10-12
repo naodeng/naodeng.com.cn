@@ -1,6 +1,6 @@
 ---
 title: "并发测试 ｜ Concurrency Testing"
-description: "并发测试 (Concurrency testing) 是一种验证系统在多个进程或线程同时访问共享资源时的稳定性和可靠性的方法。它旨在发现由于进程同时执行而产生的问题，如数据损坏 (data corruption)、死锁 (deadlocks)、竞态条件 (race conditions) 和优先级冲突 (p…"
+description: "并发测试 (Concurrency testing) 是一种验证系统在多个进程或线程同时访问共享资源时的稳定性和可靠性的方法。"
 section: "C"
 related:
   - web-test-automation-tools
@@ -159,7 +159,7 @@ order: 0
 5. **确定测试的预期结果**，包括系统在并发负载下的行为以及共享资源的最终状态。
 6. **如果需要协调并发用户或进程的操作，请使用同步机制**，确保它们按所需的顺序发生。
 7. **使用支持并发的合适自动化工具（例如 [JMeter](/zh-cn/wiki/jmeter/) 或自定义脚本）实现 [测试用例](/zh-cn/wiki/test-case/)**。
-8. **执行[测试用例](/zh-cn/wiki/test-case/)**并监视系统是否有任何意外行为、错误或性能下降。
+8. **执行[测试用例](/zh-cn/wiki/test-case/)** 并监视系统是否有任何意外行为、错误或性能下降。
 9. **记录结果**并分析它们以识别任何与并发相关的问题。
 10. 根据调查结果，**迭代和完善**[测试用例](/zh-cn/wiki/test-case/)，根据需要调整并发级别和交互的复杂性。
 
@@ -219,7 +219,7 @@ order: 0
 - **Artillery**：一个现代、强大且易于使用的负载测试工具包，可以测试并发性并通过 WebSocket 和 HTTP/2 支持处理复杂的场景。
 - **并发套件**：提供大量并发原语、安全内存回收机制以及无锁和无锁数据结构，旨在帮助设计和实现高性能并发系统。
 - **MultiMechanize**：用于性能和负载测试的开源框架，允许您运行并发 Python 脚本来生成负载。
-- **Taurus** ：用于持续测试的自动化友好框架，可以运行 JMeter 和 Gadling 测试等，并提供用于编写​​测试的抽象层。
+- **Taurus** ：用于持续测试的自动化友好框架，可以运行 JMeter 和 Gadling 测试等，并提供用于编写测试的抽象层。
 
 这些工具有助于自动化模拟多个用户或进程的过程，并可以识别死锁、竞争条件和吞吐量问题等问题。他们通常提供详细的报告和分析来帮助诊断与并发相关的问题。
 
@@ -239,13 +239,13 @@ order: 0
 - **资源管理**：在测试期间有效利用系统资源，以防止由于工具开销而导致结果偏差。
 - **错误检测**：识别并记录特定于并发的问题，例如死锁、竞争条件和线程安全违规。
 - **可重用性**：促进跨不同测试和环境的测试脚本和场景的重用。
-- **支持和社​​区**：提供强大的支持选项，并拥有一个活跃的社区，用于故障排除和分享最佳实践。
+- **支持和社区**：提供强大的支持选项，并拥有一个活跃的社区，用于故障排除和分享最佳实践。
 
 选择符合您的特定测试要求并无缝集成到您现有的 [测试自动化](/zh-cn/wiki/test-automation/) 生态系统的工具。
 
 #### 如何使用 JMeter 进行并发测试？
 
-将**[JMeter](/zh-cn/wiki/jmeter/)** 用于[并发测试](/zh-cn/wiki/concurrency-testing/) 涉及模拟多个用户或线程同时与软件应用程序交互。这是分步指南：
+将 **[JMeter](/zh-cn/wiki/jmeter/)** 用于[并发测试](/zh-cn/wiki/concurrency-testing/) 涉及模拟多个用户或线程同时与软件应用程序交互。这是分步指南：
 
 1. **安装[JMeter](/zh-cn/wiki/jmeter/)**：从 Apache 网站下载并将其安装在您的系统上。
 2. **创建[测试计划](/zh-cn/wiki/test-plan/)**：打开[JMeter](/zh-cn/wiki/jmeter/)并创建一个新的[测试计划](/zh-cn/wiki/test-plan/)。
@@ -274,7 +274,7 @@ order: 0
   </ThreadGroup>
   ```
 
-请记住**保存您的[测试计划](/zh-cn/wiki/test-plan/)**并**查看[JMeter](/zh-cn/wiki/jmeter/)的文档**以了解特定配置和高级功能。
+请记住**保存您的[测试计划](/zh-cn/wiki/test-plan/)** 并**查看[JMeter](/zh-cn/wiki/jmeter/)的文档**以了解特定配置和高级功能。
 
 #### Selenium 在并发测试中的作用是什么？
 
@@ -293,9 +293,9 @@ order: 0
 
 在此代码片段中，`threadPoolSize` 指示要使用的线程数，而 `invocationCount` 指定将调用该方法的次数。 `timeOut` 确保挂起测试不会无限期地阻止[测试套件](/zh-cn/wiki/test-suite/)。
 
-但是，需要注意的是，[selenium](/zh-cn/wiki/selenium/) 本身并不管理并发方面。它依赖**外部库**或**[测试运行者](/zh-cn/wiki/test-runner/)**来处理线程和执行顺序的复杂性。当将[selenium](/zh-cn/wiki/selenium/) 用于[并发测试](/zh-cn/wiki/concurrency-testing/) 时，请确保[测试环境](/zh-cn/wiki/test-environment/) 具有鲁棒性，并且可以处理并行执行，而不会因资源争用或计时问题而导致[误报](/zh-cn/wiki/false-positive/)。
+但是，需要注意的是，[selenium](/zh-cn/wiki/selenium/) 本身并不管理并发方面。它依赖**外部库**或 **[测试运行者](/zh-cn/wiki/test-runner/)** 来处理线程和执行顺序的复杂性。当将[selenium](/zh-cn/wiki/selenium/) 用于[并发测试](/zh-cn/wiki/concurrency-testing/) 时，请确保[测试环境](/zh-cn/wiki/test-environment/) 具有鲁棒性，并且可以处理并行执行，而不会因资源争用或计时问题而导致[误报](/zh-cn/wiki/false-positive/)。
 
-对于更复杂的[并发测试](/zh-cn/wiki/concurrency-testing/)，特别是在[API](/zh-cn/wiki/api/)或服务级别，更常用的工具是**[JMeter](/zh-cn/wiki/jmeter/)**或**Gadling**，因为它们是专门为负载和[性能测试](/zh-cn/wiki/performance-testing/)（包括并发场景）而设计的。
+对于更复杂的[并发测试](/zh-cn/wiki/concurrency-testing/)，特别是在[API](/zh-cn/wiki/api/)或服务级别，更常用的工具是 **[JMeter](/zh-cn/wiki/jmeter/)** 或**Gadling**，因为它们是专门为负载和[性能测试](/zh-cn/wiki/performance-testing/)（包括并发场景）而设计的。
 
 #### 基于云的工具如何帮助进行并发测试？
 
@@ -328,7 +328,7 @@ order: 0
 
 #### 如何克服并发测试中的挑战？
 
-为了克服[并发测试](/zh-cn/wiki/concurrency-testing/)中的挑战，请重点关注**战略规划**和**强大的工具**。首先**优先考虑反映实际用户交互和系统负载的[测试场景](/zh-cn/wiki/test-scenario/)**。利用**模块化测试设计**创建可重用组件，从而随着系​​统的发展实现高效更新。
+为了克服[并发测试](/zh-cn/wiki/concurrency-testing/)中的挑战，请重点关注**战略规划**和**强大的工具**。首先**优先考虑反映实际用户交互和系统负载的[测试场景](/zh-cn/wiki/test-scenario/)**。利用**模块化测试设计**创建可重用组件，从而随着系统的发展实现高效更新。
 
 实施**自动化测试编排**来管理并发测试的执行，确保它们以受控和可预测的方式运行。利用**监控和日志记录**来捕获有关被测系统行为的详细信息，帮助识别和诊断并发问题。
 
@@ -385,7 +385,7 @@ order: 0
 - **锁顺序**：建立必须获取锁的全局顺序，以防止循环等待条件。
 - **Lock Timeout** ：在尝试获取锁时实现超时，允许系统在发生死锁时恢复。
 - **死锁检测**：使用算法动态检测死锁，然后采取纠正措施，例如中止和重新启动受影响的进程。
-- **资源分配图**：分析这些图，通过确保不会发生循环依赖来预先避免死锁。 
+- **资源分配图**：分析这些图，通过确保不会发生循环依赖来预先避免死锁。
 
 **竞争条件**：
 
@@ -394,4 +394,4 @@ order: 0
 - **线程安全库**：采用设计为在并发环境中安全的库。
 - **不可变对象**：设计对象一旦创建就无法修改，从而从本质上避免竞争条件。
 
-在这两种情况下，彻底的**代码审查**和**静态分析工具**可以帮助及早发现潜在的问题。此外，专注于并发问题的**[自动化测试](/zh-cn/wiki/automated-testing/)**（例如使用模拟竞争条件或死锁的工具）对于防止这些问题影响到生产来说是非常宝贵的。
+在这两种情况下，彻底的**代码审查**和**静态分析工具**可以帮助及早发现潜在的问题。此外，专注于并发问题的 **[自动化测试](/zh-cn/wiki/automated-testing/)**（例如使用模拟竞争条件或死锁的工具）对于防止这些问题影响到生产来说是非常宝贵的。

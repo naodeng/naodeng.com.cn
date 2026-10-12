@@ -127,13 +127,6 @@ Reliability Testing assesses a software's capacity to function under specific co
     ```
   Each method targets different aspects of reliability and helps uncover unique issues that could compromise the software's dependability.
 
-  - **Fault Injection** : Intentionally adding errors to the system to observe its response and recovery mechanisms. This can be done through software tools or hardware manipulation.
-  - **Recovery Testing** : Ensuring the software can recover from failures and return to its normal operational state without data loss or corruption.
-  - **[Stress Testing](/en/wiki/stress-testing/)** : Pushing the software to its limits by increasing load or input rate to ensure it can handle high stress without failure.
-  - **Soak Testing** : Running the system under a significant load for an extended period to identify issues that may arise with prolonged operation.
-  - **[Performance Testing](/en/wiki/performance-testing/)** : Evaluating the system's performance under various conditions to ensure it meets the required reliability standards.
-  - **[Chaos Engineering](/en/wiki/chaos-engineering/)** : Introducing random system disturbances to understand its behavior in unpredictable scenarios and improve its resilience.
-  - **Comparative Testing** : Comparing the reliability of different software versions or similar products to assess their relative robustness.
 
 #### How is reliability growth testing performed?
 
@@ -228,14 +221,6 @@ Reliability Testing assesses a software's capacity to function under specific co
 
   - **Software Reliability Models** : Predictive models like the Goel-Okumoto model, Jelinski-Moranda model, or the Keiller-Littlewood model are used to estimate future reliability based on historical failure data.
   These metrics and models provide quantitative data to assess and predict software reliability, aiding in the identification of areas for improvement.
-
-  - **Mean Time Between Failures ([MTBF](/en/wiki/mtbf/))** : Calculated by dividing the total operational time by the number of failures. It provides an average time between system breakdowns.
-  - **Mean Time To Failure (MTTF)** : Similar to MTBF but used for non-repairable systems. It indicates the average time to the first failure.
-  - **Mean Time To Repair (MTTR)** : Measures the average time required to repair a failed component or system.
-  - **Failure Rate** : The frequency with which an engineered system or component fails, expressed in failures per unit of time.
-  - **Reliability Function** : Estimates the probability that a system will not fail up to a certain time. It's often represented by an exponential decay function.
-  - **Availability** : The proportion of time a system is in a functioning condition. It's the ratio of MTBF to the sum of MTBF and MTTR.
-  - **Software Reliability Models** : Predictive models like the Goel-Okumoto model, Jelinski-Moranda model, or the Keiller-Littlewood model are used to estimate future reliability based on historical failure data.
 
 ### Implementation and Process
 

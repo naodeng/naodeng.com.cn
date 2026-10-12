@@ -93,9 +93,6 @@ Maintainability measures how easily a system can be updated or modified. This at
 
   - **Quickly adapt tests**
 
-  - Write
-    **clear, descriptive test names**
-    and comments.
 
   - Use
     **modular design patterns**
@@ -125,7 +122,6 @@ Maintainability measures how easily a system can be updated or modified. This at
   - **Team Skills**: The skill level of the team affects how well they can maintain the automation suite. Continuous learning and training are important.
   By focusing on these factors, [test automation](/en/wiki/test-automation/) engineers can create a robust and maintainable [test automation](/en/wiki/test-automation/) suite that stands the test of time.
 
-
 ### Practices and Techniques
 
 #### What are the best practices to improve maintainability?
@@ -146,7 +142,6 @@ Maintainability measures how easily a system can be updated or modified. This at
   - **Invest in Training**: Keep the team's skills up-to-date with the latest [test automation](/en/wiki/test-automation/) practices and tools.
   By incorporating these practices, [test automation](/en/wiki/test-automation/) maintainability can be significantly improved, leading to more robust and reliable testing processes.
 
-
 #### How does code refactoring improve maintainability?
 
   Code refactoring plays a crucial role in improving the maintainability of [test automation](/en/wiki/test-automation/) code by streamlining and clarifying the structure, making it easier to understand, modify, and extend. By applying refactoring techniques, you eliminate redundant code, which reduces complexity and the potential for errors. This process often involves:
@@ -159,7 +154,6 @@ Maintainability measures how easily a system can be updated or modified. This at
   Refactored code is typically **less coupled** and has **higher cohesion**, meaning changes in one part of the system have minimal impact on others, thus reducing the risk of introducing defects during maintenance. It also facilitates the addition of new features without the need to overhaul existing code.
   Moreover, refactoring can lead to more **robust and reliable automated tests** by ensuring that the test code remains clear and concise, which is essential for quick troubleshooting and fixing when tests fail.
   In summary, regular refactoring is a proactive approach to maintaining the health of your [test automation](/en/wiki/test-automation/) codebase, ensuring it remains **flexible, understandable, and easy to work with** over time.
-
 
 #### What techniques can be used to measure maintainability?
 
@@ -186,7 +180,6 @@ Maintainability measures how easily a system can be updated or modified. This at
   - **Defect Rates**: Monitor the number of defects related to [test scripts](/en/wiki/test-script/). A high defect rate can signal maintainability problems.
   - **[Test Execution](/en/wiki/test-execution/) Feedback**: Analyze feedback from test runs. Flaky or frequently failing tests can point to underlying maintainability issues.
   By applying these techniques, you can quantitatively and qualitatively assess the maintainability of your [test automation](/en/wiki/test-automation/) codebase, leading to more reliable and efficient testing processes.
-
 
 ### Maintainability and Testing
 
@@ -251,7 +244,6 @@ Maintainability measures how easily a system can be updated or modified. This at
   - **Regular Code Reviews**: Conduct peer reviews of [test scripts](/en/wiki/test-script/) to catch maintainability issues early.
   By implementing these strategies, [test scripts](/en/wiki/test-script/) become more robust, easier to understand, and quicker to adapt to changes in the application under test.
 
-
 ### Challenges and Solutions
 
 #### What are the common challenges in maintaining software automation scripts?
@@ -275,7 +267,6 @@ Maintainability measures how easily a system can be updated or modified. This at
   - **Use [Page Object Model](/en/wiki/page-object-model/)** : Encapsulate UI changes to simplify maintenance.
   - **Regularly Review and Refactor** : Keep the test suite lean and relevant.
   By proactively addressing these challenges, teams can sustain a robust and reliable automation suite.
-
 
 #### How can maintainability issues impact the overall software development process?
 
@@ -312,13 +303,6 @@ Maintainability measures how easily a system can be updated or modified. This at
   - **Implement automated tools**
     to analyze and track code quality over time.
   By prioritizing maintainability, teams can ensure that their [test automation](/en/wiki/test-automation/) remains a valuable asset rather than a hindrance in the software development lifecycle.
-
-  - **Increased technical debt**
-
-  - **Regularly review and refactor**
-    test code.
-
-  - **Adopt coding standards**
 
 #### What solutions can be implemented to overcome maintainability issues?
 

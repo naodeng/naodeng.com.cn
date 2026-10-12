@@ -182,8 +182,6 @@ A performance indicator or KPI is a metric testers use to measure the efficacy a
   ```
   This code captures the start and end times of the [API](/en/wiki/api-testing/) call, calculates the response time, and logs it for later analysis.
 
-  1. **Define the specific metrics**
-
 #### What tools are commonly used to measure Performance Indicators?
 
   Common tools for measuring Performance Indicators in [test automation](/en/wiki/test-automation/) include:

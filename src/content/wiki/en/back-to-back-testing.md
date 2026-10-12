@@ -73,7 +73,6 @@ Back-to-back testing compares the results of two or more similar-functioning com
     with original specifications when refactoring or rewriting components, which is particularly important in safety-critical systems.
   In essence, Back-to-Back Testing serves as a **safety net** that helps maintain [software quality](/en/wiki/software-quality/) and user trust during the software evolution process. It is a strategic approach to confirm that enhancements or optimizations do not introduce unintended side-effects, thereby supporting a stable and reliable software development lifecycle.
 
-  - **Detect regression errors**
 
 ### How does Back-to-Back Testing differ from other types of testing?
 

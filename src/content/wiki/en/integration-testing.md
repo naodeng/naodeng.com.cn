@@ -59,12 +59,8 @@ Performed after unit testing, integration testing identifies defects when integr
     - **Top-Down** : Higher-level modules are tested first and lower-level modules are tested step by step after that.
     - **Bottom-Up** : The opposite of top-down, lower-level modules are tested first.
     - **Sandwich/Hybrid** : A combination of both top-down and bottom-up approaches.
-    - **Top-Down** : Higher-level modules are tested first and lower-level modules are tested step by step after that.
-    - **Bottom-Up** : The opposite of top-down, lower-level modules are tested first.
-    - **Sandwich/Hybrid** : A combination of both top-down and bottom-up approaches.
   Integration testing can reveal problems related to the interface between modules, such as data format issues, improper use of interfaces, or unexpected interactions. It's essential for ensuring that the integrated system meets the specified requirements and functions correctly.
   Automated tools can be utilized to perform integration tests, which can be particularly beneficial in continuous integration environments where changes are integrated and tested frequently. These tools can help streamline the testing process, making it more efficient and reliable.
-
 
 #### Why is integration testing important in the software development lifecycle?
 
@@ -86,7 +82,6 @@ Performed after unit testing, integration testing identifies defects when integr
   - **Failure Diagnosis** : Failures in unit tests are easier to diagnose; integration test failures can be harder to trace to a specific component.
   - **Execution Speed** : Unit tests are faster to execute; integration tests take longer due to their broader scope.
   Understanding these differences helps [test automation](/en/wiki/test-automation/) engineers design and execute their tests more effectively, ensuring that both individual components and their interactions are functioning correctly within the software system.
-
 
 #### How does integration testing fit into the Agile methodology?
 
@@ -128,8 +123,6 @@ Performed after unit testing, integration testing identifies defects when integr
     to stakeholders, offering insights into the readiness of the system for further testing stages or production release.
   Testers play a critical role in ensuring that the integrated system operates seamlessly and meets both functional and non-[functional requirements](/en/wiki/functional-requirements/).
 
-  - **Designing [test cases](/en/wiki/test-case/)**
-
 ### Techniques and Types
 
 #### What are the different types of integration testing?
@@ -144,7 +137,6 @@ Performed after unit testing, integration testing identifies defects when integr
   - **Interface Integration Testing**: Concentrates on the points of connection between components, ensuring that interfaces work as expected.
   - **Hybrid Integration Testing**: Combines top-down and bottom-up approaches, often used to leverage the strengths of both methods.
   Each type addresses specific integration concerns and may be chosen based on the project's requirements, architecture, and available resources. Integration testing is critical for verifying that different parts of the software work together and can uncover issues that unit tests might miss, such as problems with interfaces, data flow, and system-wide behaviors.
-
 
 #### What is the difference between top-down and bottom-up integration testing?
 
@@ -203,14 +195,10 @@ Performed after unit testing, integration testing identifies defects when integr
     - **Top-Down** : Testing takes place from top to bottom, following the control flow or architectural structure. Stubs may be used to simulate lower modules not yet integrated.
     - **Bottom-Up** : Integration happens from the bottom of the control flow upwards. Drivers are used to simulate higher modules not yet integrated.
     - **Functional Incremental** : Modules are integrated and tested based on their functionality or feature, not necessarily following the top-down or bottom-up approach.
-    - **Top-Down** : Testing takes place from top to bottom, following the control flow or architectural structure. Stubs may be used to simulate lower modules not yet integrated.
-    - **Bottom-Up** : Integration happens from the bottom of the control flow upwards. Drivers are used to simulate higher modules not yet integrated.
-    - **Functional Incremental** : Modules are integrated and tested based on their functionality or feature, not necessarily following the top-down or bottom-up approach.
   - **Continuous Integration**: A practice in which developers frequently integrate their code into a shared repository, with automated builds and tests running to ensure that new changes do not break the system.
   - **Selective Integration**: Combines the big bang and incremental approaches by integrating and testing a set of modules that are logically related.
   - **System Integration**: Involves testing the integration between different systems that are part of the larger system environment, often including third-party systems and interfaces.
   Each technique has its own set of advantages and challenges, and the choice often depends on the project's context, size, complexity, and criticality.
-
 
 ### Tools and Practices
 
@@ -229,7 +217,6 @@ Performed after unit testing, integration testing identifies defects when integr
   - **GitLab CI/CD**: Provides continuous integration services and can be configured to run integration tests automatically as part of the CI/CD pipeline.
   - **Travis CI**: A hosted continuous integration service used to build and test software projects hosted on GitHub and Bitbucket.
   These tools can be integrated into various stages of the development pipeline to ensure that components work together as expected, and they often support automated [test execution](/en/wiki/test-execution/), which is crucial for Agile and continuous delivery practices.
-
 
 #### How is integration testing performed in continuous integration environments?
 
@@ -260,7 +247,6 @@ Performed after unit testing, integration testing identifies defects when integr
   ```
   Automating integration tests in CI ensures that issues are detected early, reducing the risk of integration problems and facilitating a smoother release process.
 
-
 #### What are some best practices for effective integration testing?
 
   To ensure effective integration testing, follow these best practices:
@@ -275,7 +261,6 @@ Performed after unit testing, integration testing identifies defects when integr
   - **Iterate and evolve** : As the system grows, continuously review and update integration tests to cover new scenarios and components.
   - **Communicate with the team** : Share test results and insights with developers and stakeholders to foster collaboration and quick resolution of issues.
   By adhering to these practices, you'll enhance the reliability of your integration testing process and contribute to the overall quality of the software product.
-
 
 #### How can automated tools be used in integration testing?
 
@@ -326,8 +311,6 @@ Performed after unit testing, integration testing identifies defects when integr
   ```
   By automating integration testing, teams can detect integration issues early, reduce manual effort, and accelerate the delivery of reliable software.
 
-  - **Execute [test suites](/en/wiki/test-suite/)**
-
 #### What are some challenges in integration testing and how can they be overcome?
 
   Integration testing can present several challenges:
@@ -372,7 +355,6 @@ Performed after unit testing, integration testing identifies defects when integr
   - **[Chaos engineering](/en/wiki/chaos-engineering/)** : Introduce faults to test resilience and error handling between services.
   - **[Performance testing](/en/wiki/performance-testing/)** : Check if the system meets performance criteria under load.
   Integration testing in microservices requires a strategic approach to handle the complexity of multiple, loosely coupled services. It's crucial for detecting problems that arise from service integration and ensuring a seamless user experience.
-
 
 #### How does integration testing work in a distributed system?
 

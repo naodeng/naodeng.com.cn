@@ -164,7 +164,6 @@ Agile software development is an iterative method where requirements and solutio
     to manage expectations and report on product progress.
   For [test automation](/en/wiki/test-automation/) engineers, the Product Owner is a key resource for understanding the business context of the features being automated and for clarifying any ambiguities in requirements. The PO's prioritization of the backlog also influences the [test automation](/en/wiki/test-automation/) strategy, as tests should align with the most critical and high-[priority](/en/wiki/priority/) features.
 
-  - **Articulating product vision**
 
 ### Agile Practices
 

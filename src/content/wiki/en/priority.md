@@ -149,8 +149,6 @@ Priority denotes the order or significance of an issue based on user needs, whil
   In Agile environments, high priority [bugs](/en/wiki/bug/) often lead to **reprioritization** of the backlog and can affect sprint goals. They may require **cross-functional collaboration** to address quickly and effectively.
   Overall, high priority [bugs](/en/wiki/bug/) demand **immediate attention** and **resources** to mitigate their impact, ensuring that the software product meets the necessary quality standards for release.
 
-  - **Block critical functionality**
-
 #### What is the difference between high and low priority test cases?
 
   High priority [test cases](/en/wiki/test-case/) are those that must be executed first due to their importance to the application's core functionality, business needs, or because they address critical [bugs](/en/wiki/bug/) that could severely impact the user experience or system stability. These [test cases](/en/wiki/test-case/) often cover scenarios that are essential for the application's operation and are typically associated with high-risk areas or features that are frequently used by end-users.

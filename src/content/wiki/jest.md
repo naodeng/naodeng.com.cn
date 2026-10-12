@@ -1,6 +1,6 @@
 ---
 title: "Jest ｜ Jest"
-description: "Jest 是由 Facebook 开发的 JavaScript 测试框架，旨在确保任何 JavaScript 代码库的正确性。它广泛应用于前端（React, Vue, Angular）和后端（Node.js）项目…"
+description: "Jest 是由 Facebook 开发的 JavaScript 测试框架，旨在确保任何 JavaScript 代码库的正确性。"
 section: "J"
 related:
   - test-automation
@@ -79,13 +79,7 @@ order: 0
   开发人员欣赏[Jest](/zh-cn/wiki/jest/) 的**集成覆盖率报告**，该报告无需额外的[环境搭建](/zh-cn/wiki/setup/) 即可生成，可立即洞察[测试覆盖率](/zh-cn/wiki/test-coverage/)。该框架的**强大的模拟库**简化了具有复杂依赖项的代码的测试。
   [Jest](/zh-cn/wiki/jest/) 的**并行[测试执行](/zh-cn/wiki/test-execution/)** 通过同时运行测试来优化性能，减少运行大量[测试套件](/zh-cn/wiki/test-suite/) 所需的时间。得益于自定义解析器和使用 JSDom 进行 DOM [API](/zh-cn/wiki/api/) 模拟，其跨测试运行的**一致的环境**确保了测试的可靠性。
   [Jest](/zh-cn/wiki/jest/) 周围的社区非常活跃，为增强其功能的 **插件** 和 **扩展** 的丰富生态系统做出了贡献。维护人员的定期更新和改进使 [Jest](/zh-cn/wiki/jest/) 保持在测试技术的最前沿。
-
-  ```
-  test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
-  });
-  ```
-上面的示例演示了 [Jest](/zh-cn/wiki/jest/) 的简单语法，使测试具有可读性和可维护性。 [Jest](/zh-cn/wiki/jest/) 的受欢迎程度证明了其平衡**灵活性**、**功能**和**开发人员体验**的能力，使其成为 JavaScript 测试的首选。
+这些能力以及其活跃的生态系统，使 [Jest](/zh-cn/wiki/jest/) 能够平衡**灵活性**、**功能**和**开发人员体验**，成为 JavaScript 测试的常见选择。
 
 #### Jest 与其他测试框架相比如何？
 
@@ -141,12 +135,6 @@ order: 0
   npx jest
 ```
 [环境搭建](/zh-cn/wiki/setup/) 的易用性和合理的默认设置使得 [Jest](/zh-cn/wiki/jest/) 成为许多开发人员的**零配置**测试平台。
-
-- 文件与 `.js` 后缀在 `__tests__` 文件夹。
-
-- 文件与 `.test.js` 后缀。
-
-- 文件与 `.spec.js` 后缀。
 
 ### 安装和设置
 
@@ -284,22 +272,6 @@ order: 0
     yarn test
   ```
 [Jest](/zh-cn/wiki/jest/) 将执行测试并提供结果摘要。根据测试运行的反馈调整您的测试和代码。
-
-```
-    test('adds 1 + 2 to equal 3', () => {
-      expect(1 + 2).toBe(3);
-    });
-```
-
-7. **通过执行 [测试脚本](/zh-cn/wiki/test-script/) 来运行测试**： 或
-
-  ```
-    npm test
-  ```
-
-  ```
-    yarn test
-  ```
 
 #### 如何为项目配置 Jest？
 
@@ -457,15 +429,11 @@ order: 0
 
 - `toMatch(regexpOrString)` 检查字符串是否与正则表达式或字符串匹配。
 
-- `toMatch(regexpOrString)` 检查字符串是否与正则表达式或字符串匹配。
-
 - **数组**：
 
   ```
     expect(['Alice', 'Bob', 'Eve']).toContain('Bob');
   ```
-
-- `toContain(item)` 检查数组是否包含特定项目。
 
 - `toContain(item)` 检查数组是否包含特定项目。
 
@@ -475,13 +443,7 @@ order: 0
     expect(() => { throw new Error('Error!'); }).toThrow('Error!');
   ```
 
--`toThrow（错误？
-      )`
-      检查函数在调用时是否抛出错误。
-
--`toThrow（错误？
-      )`
-      检查函数在调用时是否抛出错误。
+- `toThrow(error)` 检查函数在调用时是否抛出错误。
 
 - **对象**：
 
@@ -492,17 +454,6 @@ order: 0
 - `toHaveProperty(keyPath, 值? )` 检查对象在指定的键路径处是否具有属性，可以选择检查该值。
 
 - `toHaveProperty(keyPath, 值? )` 检查对象在指定的键路径处是否具有属性，可以选择检查该值。 这些断言有助于确保代码的行为符合预期，并且它们是使用 [Jest](/zh-cn/wiki/jest/) 编写全面的 [测试套件](/zh-cn/wiki/test-suite/) 的关键部分。
-
-- **平等**：
-
-  ```
-    expect(5).toBe(5);
-    expect({ a: 1 }).toEqual({ a: 1 });
-  ```
-
-- `toBe(value)` 检查严格相等 (===)。
-
-- `toHaveProperty(keyPath, 值? )` 检查对象在指定的键路径处是否具有属性，可以选择检查该值。
 
 #### 在 Jest 中如何对测试进行分组？
 
@@ -610,11 +561,6 @@ order: 0
   ```
 这些方法允许对异步操作进行全面测试，确保仅在考虑了所有异步操作后才能完成测试。
 
-- **回调**：为了测试较旧的回调样式代码，Jest 提供了 `done` 测试函数中的参数。致电 `done()` 当异步操作完成时，向 Jest 发出测试已完成的信号。
-
-- **Promises** ：如果代码返回一个 Promise，则从测试中返回它，Jest 将等待它解析或拒绝。
-- **Async/Await** ：对于现代异步代码，请使用 `async` 功能和 `await` 异步操作。杰斯特将等待 `async` 在完成测试之前要解决的函数。
-
 #### 如何使用 Jest 进行快照测试？
 
 [Jest](/zh-cn/wiki/jest/) 的快照测试功能允许您**测试代码输出的“形状”**。这对于 UI 组件特别有用，可确保对组件的更改不会导致意外结果。
@@ -646,13 +592,11 @@ order: 0
 ```
 请记住，快照应与代码更改一起提交。在代码审查期间审查快照以**捕获意外更改**。明智地使用快照测试，因为过度依赖可能会导致快照文件过大，并降低测试对有意义的更改的敏感性。
 
-1. **编写测试**呈现您的组件或调用您的函数。
-
 2. 使用 `expect` 连同 `toMatchSnapshot()` 匹配器到 **断言输出与保存的快照匹配** 。
 
 #### Jest 中“描述”功能的作用是什么？
 
-在[Jest](/zh-cn/wiki/jest/) 中，`describe` 函数用于**将相关测试组合在一起**。它通过**封装多个测试特定功能或组件的[测试用例](/zh-cn/wiki/test-case/)**来组织[测试套件](/zh-cn/wiki/test-suite/)。这对于可读性和维护特别有用，因为它允许开发人员一目了然地看到哪些测试是相关的，并运行与他们正在处理的代码区域相关的测试子集。
+在[Jest](/zh-cn/wiki/jest/) 中，`describe` 函数用于**将相关测试组合在一起**。它通过**封装多个测试特定功能或组件的[测试用例](/zh-cn/wiki/test-case/)** 来组织[测试套件](/zh-cn/wiki/test-suite/)。这对于可读性和维护特别有用，因为它允许开发人员一目了然地看到哪些测试是相关的，并运行与他们正在处理的代码区域相关的测试子集。
   `describe` 块可以包含任意数量的`test` 或`it` 块，并且还可以**嵌套**在其他`describe` 块中，以进一步分层构建测试。每个`describe` 块还可以有自己的`beforeEach`、`afterEach`、`beforeAll` 和`afterAll` 生命周期方法，这些方法仅适用于该`describe` 块内的测试。
   以下是在 [Jest](/zh-cn/wiki/jest/) 中使用 `describe` 的基本示例：
 

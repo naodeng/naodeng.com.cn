@@ -113,7 +113,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   - **Correlation** : JMeter can handle dynamic server responses, such as session IDs, through the use of regular expression extractors and other post-processors.
   These features make JMeter a versatile and powerful tool for [performance testing](/en/wiki/performance-testing/) across different applications and services.
 
-
 #### How does JMeter differ from other performance testing tools?
 
   JMeter differs from other [performance testing](/en/wiki/performance-testing/) tools primarily in its **open-source nature** and **extensibility**. Unlike many commercial tools, JMeter can be extended with custom plugins and is supported by a large community that contributes to its development. It's designed to cover various testing needs from **[load testing](/en/wiki/load-testing/)**, **[stress testing](/en/wiki/stress-testing/)**, to **[functional testing](/en/wiki/functional-testing/)**.
@@ -164,7 +163,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
      ```
   JMeter should now start, and you can begin creating your [test plans](/en/wiki/test-plan/).
 
-
 #### What are the system requirements for JMeter?
 
   JMeter is a Java-based application, so it requires a working Java Runtime Environment (JRE) or Java Development Kit (JDK). As of my knowledge cutoff in early 2023, the system requirements for running JMeter are:
@@ -190,88 +188,21 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   ```
   Replace `512m` with the desired heap size. For distributed testing, ensure that all nodes in the cluster meet these requirements and are properly networked.
 
-
 #### How do I set up JMeter for the first time?
 
-  To set up JMeter for the first time after installation:
+To set up JMeter after installation:
 
-  1. **Launch JMeter**: Double-click the `jmeter.bat` (Windows) or `jmeter` (Unix) file in the `bin` directory of your JMeter installation folder.
-  2. **Create a [Test Plan](/en/wiki/test-plan/)**:
-    - In the JMeter GUI, right-click on the
-      **[Test Plan](/en/wiki/test-plan/)**
-      node.
+1. **Launch JMeter** by opening `jmeter.bat` on Windows or `jmeter` on Unix from the installation's `bin` directory.
+2. **Create a [Test Plan](/en/wiki/test-plan/)**, then right-click it and choose **Add > Threads (Users) > Thread Group**.
+3. **Configure the Thread Group** by specifying the number of threads (users), ramp-up period, and loop count.
+4. **Add a sampler** by right-clicking the Thread Group and choosing **Add > Sampler**, such as **HTTP Request**.
+5. **Configure the sampler** with the request details, such as server name, port number, and path.
+6. **Add listeners** by choosing **Add > Listener** and selecting result views such as **View Results Tree** or **Summary Report**.
+7. **Save the [Test Plan](/en/wiki/test-plan/)** with a `.jmx` extension using **File > Save As**.
+8. **Run the plan** by clicking **Start** or choosing **Run > Start**.
+9. **Monitor results** in the configured listeners during or after the run.
 
-     - Select
-       **Add > Threads (Users) > Thread Group**
-       to add a new thread group.
-
-     - In the JMeter GUI, right-click on the
-       **[Test Plan](/en/wiki/test-plan/)**
-       node.
-
-     - Select
-       **Add > Threads (Users) > Thread Group**
-       to add a new thread group.
-
-  3. **Configure Thread Group**:
-    - Specify the number of threads (users), ramp-up period, and loop count.
-    - Specify the number of threads (users), ramp-up period, and loop count.
-  4. **Add Samplers**:
-    - Right-click on the Thread Group.
-    - Select
-      **Add > Sampler**
-      and choose the type of request you want to test (e.g., HTTP Request).
-
-     - Right-click on the Thread Group.
-     - Select
-       **Add > Sampler**
-       and choose the type of request you want to test (e.g., HTTP Request).
-
-  5. **Configure Samplers**:
-    - Enter the details of the request, such as the server name, port number, and path.
-    - Enter the details of the request, such as the server name, port number, and path.
-  6. **Add Listeners**:
-    - Right-click on the Thread Group.
-    - Select
-      **Add > Listener**
-      to add listeners for result analysis (e.g., View Results Tree, Summary Report).
-
-     - Right-click on the Thread Group.
-     - Select
-       **Add > Listener**
-       to add listeners for result analysis (e.g., View Results Tree, Summary Report).
-
-  7. **Save [Test Plan](/en/wiki/test-plan/)**:
-    - Go to
-      **File > Save As**
-      and save your test plan with a
-      `.jmx`
-      extension.
-
-     - Go to
-       **File > Save As**
-       and save your test plan with a
-       `.jmx`
-       extension.
-
-  8. **Run [Test Plan](/en/wiki/test-plan/)**:
-    - Click the
-      **Start**
-      button (green play arrow) or select
-      **Run > Start**
-      to execute your test plan.
-
-     - Click the
-       **Start**
-       button (green play arrow) or select
-       **Run > Start**
-       to execute your test plan.
-
-  9. **Monitor Results**:
-    - View the results in the configured listeners during or after the test run.
-    - View the results in the configured listeners during or after the test run.
-  Remember to save your work frequently and close all unnecessary applications to ensure JMeter has sufficient resources. Adjust JMeter heap size in the `jmeter.bat` or `jmeter.sh` file if you encounter memory issues.
-
+Save your work frequently. Close unnecessary applications to leave JMeter enough resources, and adjust its heap size in `jmeter.bat` or `jmeter.sh` if you encounter memory issues.
 
 #### How can I configure JMeter for optimal performance?
 
@@ -299,7 +230,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   - **Monitor the resource usage** of the machine running JMeter to ensure it is not the bottleneck.
   By following these steps, you can ensure JMeter is configured for optimal performance during [test execution](/en/wiki/test-execution/).
 
-
 #### What are the steps to upgrade JMeter to a newer version?
 
   To upgrade JMeter to a newer version, follow these steps:
@@ -314,7 +244,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   8. **Review the release notes** for the new version to understand new features and changes that might affect your [test plans](/en/wiki/test-plan/).
   9. **Delete the old JMeter version** once you have verified that the new version meets all your requirements and all [test plans](/en/wiki/test-plan/) are functioning correctly.
   Remember to always check for compatibility issues between versions, especially when using third-party plugins or when there are major changes in JMeter.
-
 
 ### Working with JMeter
 
@@ -390,10 +319,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   ```
   Remember to tailor your [test plan](/en/wiki/test-plan/) to the specific requirements of your [test scenario](/en/wiki/test-scenario/), including any necessary assertions, cookies, headers, or other elements.
 
-  1. **Open JMeter**
-    and select
-    `File > New`
-    to start a new test plan.
 
   2. **Add a Thread Group**
 
@@ -413,7 +338,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   - **WorkBench**: Temporary workspace for elements not yet added to the [test plan](/en/wiki/test-plan/).
   Each element serves a distinct purpose, and when combined, they create a comprehensive [test scenario](/en/wiki/test-scenario/). [Test plans](/en/wiki/test-plan/) can be saved as `.jmx` files for reuse and version control.
 
-
 #### How can I use JMeter for load testing?
 
   To use JMeter for [load testing](/en/wiki/load-testing/), follow these steps:
@@ -429,7 +353,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   9. **Tweak and Repeat**: Based on the analysis, modify the [test plan](/en/wiki/test-plan/) as needed to simulate different scenarios or to identify performance bottlenecks.
   Remember to save your [test plan](/en/wiki/test-plan/) and results for future reference or [regression testing](/en/wiki/regression-testing/).
 
-
 #### How can I use JMeter for stress testing?
 
   To use JMeter for [stress testing](/en/wiki/stress-testing/), follow these steps:
@@ -444,7 +367,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   8. **Analyze Results**: After the test, analyze the results using JMeter Listeners and external monitoring tools to identify bottlenecks and thresholds.
   9. **Fine-Tune and Repeat**: Based on the analysis, fine-tune the application or infrastructure and repeat the stress test to validate improvements.
   Remember to monitor server resources (CPU, memory, disk I/O, network) during the stress test to identify infrastructure limitations. Use JMeter in a controlled environment to avoid impacting real users.
-
 
 #### What are the steps to record a test in JMeter?
 
@@ -498,10 +420,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
     it as needed for your test plan.
   Remember to **clear your browser cache** before recording to ensure that all requests are captured, and **disable browser-specific features** that may not be captured by the proxy, such as prefetching.
 
-  1. **Open JMeter**
-    and select
-    **[Test Plan](/en/wiki/test-plan/)**
-    on the left panel.
 
   2. **Right-click**
     on the Test Plan and go to
@@ -531,7 +449,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   9. **Correlate Metrics**: Cross-reference different metrics to understand the relationship between response times, throughput, and error rates.
   10. **Compare Results**: Compare results from different test runs to identify performance improvements or regressions.
   For experienced engineers, analyzing JMeter results is about identifying bottlenecks, understanding system behavior under load, and making informed decisions to improve application performance.
-
 
 ### Advanced Topics
 
@@ -563,7 +480,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   7. **Monitor the test** in real-time or wait for it to complete. Collect and analyze the results from the master machine, which will aggregate the data from all slave nodes.
   Remember to synchronize the test start time across all nodes if needed and ensure all machines have synchronized clocks for accurate results.
 
-
 #### What are the best practices for scripting in JMeter?
 
   When scripting in JMeter, adhere to the following best practices to ensure efficient and maintainable tests:
@@ -582,7 +498,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   - **Regular Expressions**: Use regular expressions judiciously to extract data from responses, but be aware of their performance impact.
   - **Optimize Thread Groups**: Configure thread groups according to your test requirements, avoiding overloading the system under test or the JMeter host.
   By following these practices, you'll create robust, scalable, and maintainable JMeter scripts that can effectively simulate user behavior and measure the performance of your application.
-
 
 #### How can I integrate JMeter with other testing tools?
 
@@ -638,7 +553,6 @@ JMeter, officially known as Apache JMeter, is an open-source software applicatio
   - **Mobile Application Testing**: JMeter is not designed for mobile application testing. Use third-party libraries or services that extend JMeter's capabilities to mobile, or use specialized mobile testing tools.
   - **Limited Protocol Support**: JMeter primarily supports HTTP/HTTPS protocols. For testing other protocols, you may need to find plugins or use other tools better suited for those protocols.
   By understanding these limitations and leveraging integrations, plugins, and best practices, you can effectively use JMeter for comprehensive [performance testing](/en/wiki/performance-testing/).
-
 
 #### How can I use JMeter for performance testing of web services?
 

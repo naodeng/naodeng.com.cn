@@ -337,5 +337,3 @@ order: 0
   Additionally, consider **continuous penetration testing** or **[bug](/en/wiki/bug/) bounty programs** for a proactive approach to security, allowing for ongoing identification and remediation of vulnerabilities.
   Remember to balance the frequency of penetration tests with the organization's ability to **respond and remediate** the findings. Conducting tests too frequently without addressing identified issues can be counterproductive.
   In summary, while annual testing is a baseline, adjust the frequency based on your organization's specific context and risk profile.
-
-  - **After significant changes**

@@ -267,16 +267,7 @@ Operational testing ensures a product or service meets its operational requireme
     ```
   These tools help automate the operational testing process, ensuring that the software performs well under expected operational conditions.
 
-  - **Nagios** : An open-source tool that monitors systems, networks, and infrastructure. Offers alerting services for servers, switches, applications, and services.
-  - **Grafana** : Provides a dashboard for analytics and monitoring. It can be connected to multiple data sources like Prometheus and Elasticsearch.
-  - **Prometheus** : An open-source monitoring system with a dimensional data model, flexible query language, and alerting functionality.
-  - **ELK Stack**
-    (Elasticsearch, Logstash, Kibana): Used for searching, analyzing, and visualizing log data in real-time.
 
-  - **New Relic** : A cloud-based observability platform that helps track and optimize the performance of your applications.
-  - **Datadog** : A monitoring service for cloud-scale applications, providing monitoring of servers, databases, tools, and services through a SaaS-based data analytics platform.
-  - **[Selenium](/en/wiki/selenium/)** : For automating web browsers. Useful for end-to-end operational testing scenarios.
-  - **[JMeter](/en/wiki/jmeter/)** : An open-source load testing tool. Although primarily used for performance testing, it can also be used to simulate a heavy load on a network or server to test its strength or to analyze overall performance under different load types.
 
 #### What are some best practices for conducting effective operational testing?
 

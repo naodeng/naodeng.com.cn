@@ -70,8 +70,6 @@ Failover Testing is a specific type of testing that evaluates a system's ability
   Automation can streamline this process by using scripts or automation tools to simulate failures and collect results. Challenges may include ensuring the [test environment](/en/wiki/test-environment/) mirrors production, managing complex system interactions, and interpreting results. Mitigating these challenges involves thorough planning, using robust automation tools, and incorporating best practices like regular testing and clear documentation.
   Validation of failover tests involves checking system logs, performance metrics, and user experience to ensure the system meets predefined failover criteria. Tools for failover testing range from custom scripts to specialized software that can automate and simulate various failure scenarios. Cloud technologies and virtualization offer scalable and flexible environments for realistic and isolated failover testing.
 
-  1. **Identify critical components**
-
 #### Why is failover testing important?
 
   Failover testing is crucial because it ensures that a system can **continue to operate** in the event of a component or system failure. This type of testing validates the **redundancy** mechanisms and confirms that the system can handle unexpected disruptions without significant impact on performance or data integrity. By simulating failures, failover testing helps identify potential weaknesses in the failover process, allowing teams to address issues before they occur in a production environment.
@@ -156,8 +154,6 @@ Failover Testing is a specific type of testing that evaluates a system's ability
     the failover test plan regularly to ensure it remains effective as the system evolves.
   Throughout the process, use **automation tools** to simulate failures and collect data. This approach ensures consistency and efficiency, allowing for frequent and thorough testing. After the test, validate the results to confirm that the system meets the required reliability standards.
 
-  1. **Identify critical components**
-
 #### What techniques are commonly used in failover testing?
 
   Failover testing techniques often involve the following strategies:
@@ -226,8 +222,6 @@ Failover Testing is a specific type of testing that evaluates a system's ability
   11. **Update the failover plan**
     based on the test outcomes to refine the process for future incidents.
   Remember to keep the test scope focused, avoid peak hours to minimize impact, and follow up with a thorough review to integrate lessons learned into the failover strategy.
-
-  1. **Identify the primary system**
 
 #### How can automation be incorporated into failover testing?
 
@@ -414,9 +408,6 @@ Failover Testing is a specific type of testing that evaluates a system's ability
   - **Monitoring and Alerting Tools**: **Nagios**, **Datadog**, and **Prometheus** can be integrated into automation scripts to verify system health and alert on failover events.
   By leveraging these solutions, [test automation](/en/wiki/test-automation/) engineers can create robust, repeatable failover tests that closely mimic real-world scenarios and provide valuable insights into system resilience.
 
-  - **Cloud Services**: **AWS**, **Azure**, and **GCP** offer native tools like **AWS Fault Injection Simulator** and **Azure Chaos Studio** to automate failover testing in the cloud.
-  - **Monitoring and Alerting Tools**: **Nagios**, **Datadog**, and **Prometheus** can be integrated into automation scripts to verify system health and alert on failover events.
-
 ### Tools and Technologies
 
 #### What tools are commonly used for failover testing?
@@ -483,11 +474,6 @@ Failover Testing is a specific type of testing that evaluates a system's ability
     **Hyper-V**
     allow for testing failover scenarios in virtualized environments.
   These tools help automate and simulate various failover conditions, ensuring that the system can handle unexpected failures and switch over to backup systems without significant downtime or data loss. When selecting a tool, consider compatibility with your stack, ease of integration, and the ability to simulate real-world scenarios.
-
-  - **Load Balancers** : Tools like
-    **F5 BIG-IP**
-    and
-    **HAProxy**
 
 #### How do these tools aid in the failover testing process?
 

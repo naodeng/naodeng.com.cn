@@ -288,8 +288,6 @@ System testing verifies interactions between software components in an integrate
     the test codebase to reduce flakiness and improve reliability.
   By focusing on these strategies, system testing can become more effective, providing valuable insights into the quality and readiness of the software for production.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### What are some common mistakes to avoid in system testing?
 
   Common mistakes to avoid in system testing include:

@@ -287,8 +287,6 @@ Swagger, now often referred to as OpenAPI, is a set of tools and specifications 
   3. **Test your [APIs](/en/wiki/api-testing/)** directly from Swagger UI, which provides a visual interface for sending requests and viewing responses.
   Remember to **restrict Swagger access** in production environments, as it exposes your [API](/en/wiki/api-testing/)'s structure. Use profiles or conditional configuration to enable Swagger only in development or testing environments.
 
-  1. **Create a configuration class**
-    to enable Swagger2 and set up the Docket bean:
 
 #### How to generate API documentation using Swagger?
 
@@ -375,9 +373,6 @@ Swagger, now often referred to as OpenAPI, is a set of tools and specifications 
     by writing custom plugins or using existing ones. Plugins can modify or add UI components, intercept and modify requests, and more.
   Remember to **test your custom UI** thoroughly to ensure that it still accurately represents the [API](/en/wiki/api-testing/) and that all interactive features work as expected.
 
-  1. **Extend the functionality**
-    by writing custom plugins or using existing ones. Plugins can modify or add UI components, intercept and modify requests, and more.
-
 #### How to use Swagger for testing APIs?
 
   Using Swagger for testing [APIs](/en/wiki/api-testing/) involves leveraging the Swagger UI and Swagger Inspector tools. Swagger UI provides an interactive interface to send requests to the [API](/en/wiki/api-testing/) and view responses.
@@ -440,19 +435,11 @@ Swagger, now often referred to as OpenAPI, is a set of tools and specifications 
      ```
   Remember to **validate** not only the response data but also **error handling** and **edge cases** to ensure comprehensive [API](/en/wiki/api-testing/) coverage.
 
-  1. **Navigate**
-    to the Swagger UI for your API.
 
-  2. **Expand**
-    the endpoint you want to test.
 
   3. **Fill in**
 
-  1. **Access**
-    Swagger Inspector.
 
-  2. **Input**
-    the API endpoint you wish to test.
 
   3. **Customize**
 
@@ -542,24 +529,7 @@ Swagger, now often referred to as OpenAPI, is a set of tools and specifications 
      ```
   By following these steps, you can effectively define your [API](/en/wiki/api-testing/) endpoints in Swagger, creating a clear and executable [API](/en/wiki/api-testing/) contract.
 
-  1. **Start with the `paths` object** : This is where you'll list the available paths (URIs) in your API.
-  1. **Define operations** : Under each path, specify the HTTP methods (e.g.,
-    `get`
-    ,
-    `post`
-    ,
-    `put`
-    ,
-    `delete`
-    ) and provide details for each operation.
 
-  1. **Include parameters** : For operations that require input, define parameters such as path variables, query parameters, or headers.
-  1. **Describe responses** : For each operation, describe the possible responses, including the status code, description, and data structure.
-  1. **Reference schemas** : Use
-    `$ref`
-    to reference schemas defined in the
-    `components/schemas`
-    section to avoid repetition and keep your API definition DRY.
 
 ### Advanced Concepts
 

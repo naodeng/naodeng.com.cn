@@ -87,12 +87,6 @@ Utilizes mock objects to mimic real objects in tests.
   Integrate mock tests into CI/CD by including them in the [test suite](/en/wiki/test-suite/) that runs on each build or deployment.
   In TDD, mock testing is used to test-drive the design of interfaces and interactions before implementing the actual components.
 
-  1. **Design the mock**
-
-  - Clear separation of test cases.
-  - Precise expectation configuration to avoid false positives/negatives.
-  - Cleanup and reset of mock states between tests.
-
 #### Why is mock testing important in software development?
 
   Mock testing is crucial in software development for isolating the system under test, ensuring that tests are not affected by external dependencies or stateful components. By using mock objects, developers can simulate the behavior of complex, real-world systems, which may be unavailable or difficult to configure for testing purposes. This isolation helps in pinpointing defects within the unit of code being tested, leading to more reliable and maintainable code.
@@ -187,10 +181,6 @@ Utilizes mock objects to mimic real objects in tests.
   2. **Integrate mock tests**
     into the automated test suite to run as part of the regular build process, ensuring they contribute to CI/CD feedback loops.
   By following these steps, mock testing becomes a seamless part of the development cycle, allowing for early detection of issues and continuous validation of system behavior in isolation from external dependencies.
-
-  1. **Identify dependencies**
-  1. **Inject mock objects**
-  1. **Refactor tests**
 
 #### What are the steps involved in creating a mock object?
 
@@ -339,8 +329,6 @@ Utilizes mock objects to mimic real objects in tests.
     expect(mockService.fetchData).toHaveBeenCalledTimes(1);
     ```
 
-  - **Balancing mock fidelity** : Ensure mocks are accurate enough to faithfully represent the real component without unnecessary complexity.
-  - **Automating mock updates** : Use tools that can auto-generate and update mocks based on the actual component interfaces.
   - **Balancing mock fidelity** : Ensure mocks are accurate enough to faithfully represent the real component without unnecessary complexity.
   - **Automating mock updates** : Use tools that can auto-generate and update mocks based on the actual component interfaces.
 
@@ -531,25 +519,6 @@ Utilizes mock objects to mimic real objects in tests.
   - Using
     **contract testing**
     to validate that mocks and actual services agree on the expected interactions.
-
-  1. Identify the
-    **external dependencies**
-    of the microservice.
-
-  2. Create
-    **mock objects**
-    or
-    **stubs**
-  - **Testing error handling**
-
-  - Ensuring mocks
-    **accurately reflect**
-    the behavior of real dependencies.
-
-  - Keeping mock configurations
-    **up-to-date**
-    with service contracts.
-
 #### What is the concept of 'stubbing' in mock testing?
 
   Stubbing is a technique used in **mock testing** to replace parts of the system under test with **simplified implementations** that return predetermined responses. It's a form of **test double** that stands in for real functionality that is either not implemented or would be impractical to use during testing due to side effects, slowness, or non-determinism.
@@ -603,8 +572,6 @@ Utilizes mock objects to mimic real objects in tests.
   ```
   In this code, `mockService` simulates a service call with a specified delay, and `performanceTest` measures the time taken to complete the call. By adjusting the delay, you can test how your system handles different response times.
   Using mocks in [performance testing](/en/wiki/performance-testing/) is a **cost-effective** and **flexible** approach to identify bottlenecks and optimize the performance of the system under test.
-
-  - **Control the [test environment](/en/wiki/test-environment/)**
 
 #### What is the difference between a mock and a spy in testing?
 

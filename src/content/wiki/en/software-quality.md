@@ -410,8 +410,6 @@ Software quality reflects a software's capability to meet user requirements as d
     a rigorous change management process to ensure that any modifications do not introduce new defects.
   By focusing on process improvement, SQA helps in identifying potential issues early, reducing the cost of fixing defects post-development. It ensures that quality is built into the product from the ground up, rather than being inspected in after the fact. This proactive stance on quality helps in delivering a more reliable and robust software product, ultimately reducing the risk of failure and enhancing customer satisfaction.
 
-  - **Establishing processes**
-
 #### What are the best practices in software quality assurance?
 
   Best practices in software quality assurance (QA) are essential for delivering reliable and high-performing software. Here are some key practices:

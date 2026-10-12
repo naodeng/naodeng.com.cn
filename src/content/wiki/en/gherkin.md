@@ -121,15 +121,6 @@ Gherkin is a domain-specific language used primarily for behavior-driven develop
     ```
   These components work together to create an executable specification that can be understood by stakeholders and automated by tools like Cucumber.
 
-  - **Feature** : Represents a single functionality or aspect of the system being tested. It provides a high-level description and acts as a container for related scenarios.
-  - **Background** : Specifies steps that are common to all scenarios in the feature file. It's used to set up the initial context.
-  - **Scenario** : Defines a single test case or example that verifies the behavior of the system. It consists of a sequence of steps.
-  - **Scenario Outline** : Allows for running the same scenario multiple times with different data sets, using placeholders and an Examples table.
-  - **Steps** : Define the actions (Given, When, Then) and assertions to be performed. They are the basic building blocks of scenarios and scenario outlines.
-  - **Tags** : Used to organize features and scenarios, making it easier to filter and run selective tests.
-  - **Comments** : Lines starting with
-    `#`
-    are ignored and can be used to add additional information or annotations.
 
 #### How does Gherkin improve communication between technical and non-technical stakeholders?
 
@@ -516,17 +507,6 @@ Gherkin is a domain-specific language used primarily for behavior-driven develop
   - **Modularize step definitions**
     to create reusable code that can be used across different scenarios. This helps to manage complexity by allowing you to compose scenarios from these modular steps.
   Remember, the goal is to keep Gherkin scenarios clear and understandable, even when they represent complex [test cases](/en/wiki/test-case/).
-
-  - **Decompose complex scenarios** into smaller, more manageable ones if possible. This can help to keep each scenario focused on a single behavior or outcome.
-  - Use **Scenario Outlines** to handle scenarios that need to be run with different sets of data. This keeps the scenario DRY (Don't Repeat Yourself) and avoids duplicating steps.
-  - **Abstract common steps**
-    using the
-    `Background`
-    keyword for steps that are repeated across multiple scenarios within the same feature.
-
-  - **Modularize step definitions**
-    to create reusable code that can be used across different scenarios. This helps to manage complexity by allowing you to compose scenarios from these modular steps.
-
 #### What are the limitations of Gherkin in test automation?
 
   Gherkin's human-readable format is both a strength and a limitation. It excels in describing behavior but can struggle with **low-level technical details**. Complex logic or data manipulations are hard to express clearly, leading to verbose or ambiguous scenarios.

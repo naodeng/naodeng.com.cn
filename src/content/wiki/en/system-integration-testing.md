@@ -115,11 +115,7 @@ System integration testing is a technique to evaluate the entirety of a software
       to simulate higher-level modules not yet integrated.
 
     - **Functional Incremental Integration** : Integration and testing are based on the functionality or functionality groups, which might not adhere strictly to top-down or bottom-up approaches.
-    - **[Top-Down Integration](/en/wiki/top-down-integration/)** : Integration testing starts from the top-level modules and progresses down the hierarchy, using
-      **stubs**
-      for lower-level modules not yet integrated.
 
-    - **Functional Incremental Integration** : Integration and testing are based on the functionality or functionality groups, which might not adhere strictly to top-down or bottom-up approaches.
   - **Continuous Integration**: Code changes are automatically tested and merged frequently, ensuring that integration issues are detected and addressed early.
   - **Subsystem Integration**: Large systems are divided into subsystems, which are integrated and tested separately before integrating into the main system.
   - **Critical Module Integration**: Focuses on integrating and testing critical or high-risk modules first, before the rest of the system.
@@ -170,14 +166,6 @@ System integration testing is a technique to evaluate the entirety of a software
     - Data models and database interactions.
   Testing begins in the **middle layer**, ensuring that the core of the application's functionality is working correctly before the other layers are integrated. Once the middle is stable, testers work their way **outwards** to the top and bottom layers, using stubs and drivers as placeholders for the not-yet-integrated components.
   This approach is particularly useful when the middle layer is ready for testing before the top and bottom layers. It allows for early detection of defects in the central part of the system, which can be critical to the application's overall functionality. Sandwich testing can be more complex to set up and manage due to the simultaneous involvement of both top-down and bottom-up processes, but it can provide a more comprehensive integration coverage in certain scenarios.
-
-  1. **Top layer**
-    - User interface and associated components.
-  2. **Middle layer**
-    - Business logic and related functionalities.
-  3. **Bottom layer**
-    - Data models and database interactions.
-
 #### What is the role of stubs and drivers in System Integration Testing?
 
   Stubs and drivers are essential components in **System Integration Testing (SIT)**, particularly when employing **incremental [integration testing](/en/wiki/integration-testing/)** strategies such as top-down or bottom-up approaches.

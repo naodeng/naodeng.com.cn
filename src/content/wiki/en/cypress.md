@@ -138,7 +138,7 @@ order: 0
 
 #### How to install Cypress?
 
-  To install Cypress, ensure you have **[Node.js](/en/wiki/node-js/)** (version 12 or above) and **npm** (version 6 or above) installed on your system. Open your terminal or command prompt and follow these steps:
+  Before installing, check the [official installation guide and system requirements](https://docs.cypress.io/app/get-started/install-cypress) for the operating system, Node.js version, and package manager supported by your Cypress release.
 
   1. Navigate to your project directory:
 
@@ -165,7 +165,7 @@ order: 0
      ```
 
      ```
-     yarn run cypress open
+     yarn cypress open
      ```
   This will open the Cypress [Test Runner](/en/wiki/test-runner/) and create a `cypress` folder in your project directory, which contains the default configuration and sample tests.
   For continuous integration systems or to run Cypress tests headlessly, use the `cypress run` command:
@@ -195,41 +195,11 @@ order: 0
 
 #### What are the system requirements for Cypress?
 
-  Cypress is compatible with **Windows, macOS, and Linux** operating systems. The specific system requirements include:
+Cypress requirements vary by release. The current [official system requirements](https://docs.cypress.io/app/get-started/install-cypress#System-requirements) list Node.js 22.x, 24.x, and 26.x or newer. Supported operating systems, architectures, and package manager versions are version-specific, so check the guide before installing or upgrading.
 
-  - **[Node.js](/en/wiki/node-js/)** : Version 12 or above.
-  - **npm**
-    (usually comes with Node.js) or
-    **Yarn**
-    for package management.
+The current guide lists npm 10.1.0 or newer, Yarn Classic 1.22.22 or newer, Yarn Modern 4.x or newer, pnpm 8.x or newer, and Bun 1.2.22 or newer. Cypress supports the latest three major versions of Chrome, Edge, and Firefox; WebKit support is experimental. The bundled Electron browser is deprecated, so use an installed supported browser for new projects.
 
-  - A
-    **supported browser**
-    installed on your machine. Cypress supports:
-
-    - Chrome (including Canary and Chromium)
-    - Firefox (including Developer Edition)
-    - Edge
-    - Electron (bundled with Cypress)
-    - Brave
-    - Chrome (including Canary and Chromium)
-    - Firefox (including Developer Edition)
-    - Edge
-    - Electron (bundled with Cypress)
-    - Brave
-  - For
-    **CI/CD pipelines**
-    , ensure the build agent meets the OS and Node.js requirements.
-
-  - **Memory and CPU** : Sufficient resources to run the Electron browser, especially when running multiple tests in parallel. At least 2GB of RAM is recommended.
-  - **Screen resolution** : A minimum screen resolution of 1280x720 is recommended for viewing the Cypress Test Runner.
-  Ensure your system has **write permissions** to the directory where Cypress is installed and runs tests.
-  For **Linux users**, you may need to install additional dependencies if they are not already present on your system. Cypress provides a command that can be run to install these dependencies:
-
-  ```
-  sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-  ```
-  **Note**: Cypress is a desktop application that is installed on your computer, so it requires the above prerequisites to be met for the installation and execution of tests.
+Linux system dependencies vary by distribution and release. Follow the official guide for the matching package list instead of copying a command intended for a different Linux version.
 
 #### How to set up a project in Cypress?
 
@@ -254,73 +224,30 @@ order: 0
      npm install cypress --save-dev
      ```
 
-  4. **Open Cypress** for the first time to scaffold the default directory structure and files by executing:
-    This command generates a `cypress` folder containing example tests and a `cypress.json` file for configuration.
+  4. **Open Cypress** for the first time to launch the Launchpad:
+    It guides you through choosing a testing type and browser, then generates a `cypress.config.js` or `cypress.config.ts` file and the files for that testing type.
 
      ```
      npx cypress open
      ```
 
-  5. **Configure your tests** by editing the `cypress.json` file. Set up any required environment variables or base URLs.
+  5. **Configure your tests** in the generated Cypress configuration file, including any base URL or environment-specific settings.
 
-     ```
-     {
-         "baseUrl": "http://yourapp.com",
-         "env": {
-             "login_url": "/login",
-             "products_url": "/products"
-         }
-     }
-     ```
-
-  6. **Organize your test files** within the `cypress/integration` directory. You may create subdirectories to group related tests.
-  7. **Write your tests** using the `describe` and `it` functions provided by Cypress, and save them with a `.spec.js` or `.spec.ts` extension.
+  6. **Organize your test files** in the spec directory generated for the selected testing type.
+  7. **Write your tests** using the `describe` and `it` functions, and use the spec-file pattern shown in the generated project.
   8. **Run your tests** either using `npx cypress open` to open the Cypress [Test Runner](/en/wiki/test-runner/) or `npx cypress run` to execute tests in headless mode.
   Remember to **add the `node_modules` directory to your `.gitignore` file** to avoid committing dependencies to version control. Also, consider setting up scripts in your `package.json` for common Cypress commands.
 
 #### How to configure Cypress for a specific environment?
 
-  To configure Cypress for a specific environment, you'll need to set environment variables and potentially adjust your `cypress.json` configuration file. Here's a succinct guide:
+Use `cypress.config.js` or `cypress.config.ts` for current Cypress configuration. See the [official configuration guide](https://docs.cypress.io/app/references/configuration) and [environment variables guide](https://docs.cypress.io/app/guides/environment-variables) for details.
 
-  1. **Environment Variables**: Define environment-specific variables using the `env` key in your `cypress.json` file or by passing them via the command line.
-    Alternatively, use the command line to override:
+- Put public, non-sensitive values under `expose` and read them with `Cypress.expose('apiVersion')`.
+- Keep API keys, passwords, and tokens in CI secrets or operating-system environment variables. Read only the needed value with `cy.env(['apiKey'])`; do not commit secrets.
+- Override configuration for one run with `--config`, or select a separate file such as `cypress.staging.config.js` with `--config-file`.
+- For dynamic Node-side settings, use `setupNodeEvents(on, config)` under the relevant `e2e` or `component` configuration and return the updated config.
 
-     ```
-     {
-         "env": {
-             "apiUrl": "https://api.staging.example.com"
-         }
-     }
-     ```
-
-     ```
-     npx cypress run --env apiUrl=https://api.staging.example.com
-     ```
-
-  2. **Configuration Files**: For more complex [setups](/en/wiki/setup/), consider having separate configuration files for each environment, like `cypress.staging.json` and `cypress.production.json`. Use the `--config-file` flag to specify the configuration file when running tests.
-
-     ```
-     npx cypress run --config-file cypress.staging.json
-     ```
-
-  3. **Dynamic Configuration**: In your `plugins/index.js` file, you can programmatically alter the configuration based on environment variables or other conditions.
-
-     ```
-     module.exports = (on, config) => {
-         if (process.env.NODE_ENV === 'staging') {
-             config.baseUrl = 'https://staging.example.com';
-             // Modify other config settings as needed
-         }
-         return config;
-     };
-     ```
-
-  4. **Cypress.env()**: Access environment variables in your tests using `Cypress.env('variableName')`.
-
-     ```
-     const apiUrl = Cypress.env('apiUrl');
-     ```
-  Remember to **never commit sensitive data** to version control. Use environment variables or a secrets management solution for sensitive data.
+`Cypress.env()` was removed in Cypress 16.0. Use `cy.env()` for sensitive values and `Cypress.expose()` for public configuration instead.
 
 ### Writing and Running Tests
 
@@ -328,7 +255,7 @@ order: 0
 
   To write a basic test in Cypress, follow these steps:
 
-  1. **Create a new test file** in your Cypress integration folder, typically with a `.spec.js` extension, for example, `login.spec.js`.
+  1. **Create a test file** in the E2E spec directory generated for your project. The current default spec pattern uses `.cy.js` or `.cy.ts`, for example, `login.cy.js`.
   2. **Start by requiring Cypress** at the top of your test file:
 
      ```
@@ -384,12 +311,6 @@ order: 0
     .
   Remember to **keep tests isolated** and **independent** for reliability. Use `beforeEach` or `before` hooks if you need to set up state before each test or once before all tests in the suite, respectively.
 
-  1. **Create a new test file** in your Cypress integration folder, typically with a `.spec.js` extension, for example, `login.spec.js`.
-  2. **Start by requiring Cypress** at the top of your test file:
-  1. **Describe your [test suite](/en/wiki/test-suite/)**
-    using the
-    `describe`
-    function, providing a title and a callback function to contain your tests:
 
   1. **Run your test**
     using the Cypress Test Runner or via the command line with
@@ -490,7 +411,7 @@ order: 0
   To run a specific test file, append the `--spec` flag followed by the path to the test file:
 
   ```
-  npx cypress run --spec "cypress/integration/example.spec.js"
+  npx cypress run --spec "cypress/e2e/example.cy.js"
   ```
   To run tests with additional configuration options, use the `--config` flag:
 
@@ -499,14 +420,6 @@ order: 0
   ```
   This command will run tests without recording a video.
   For parallel [test execution](/en/wiki/test-execution/) and load balancing across multiple machines or CI containers, use the Cypress Dashboard service, which requires additional [setup](/en/wiki/setup/) and configuration.
-
-  1. Open your terminal or command prompt.
-  2. Navigate to your project directory where Cypress is installed.
-  3. Execute the following command to open the Cypress Test Runner:
-  1. The Cypress Test Runner GUI will launch, displaying a list of your test files.
-  2. Click on the test file you want to run. Cypress will execute the tests in that file and display the results in real-time.
-  1. Use the following command in your terminal:
-  1. This will run all test files in the default headless browser (Electron).
 
 #### How to use assertions in Cypress?
 
@@ -657,14 +570,6 @@ order: 0
      ```
   Remember to keep your fixture data up-to-date and relevant to the tests you are performing. This will ensure your tests remain reliable and maintainable.
 
-  1. **Use fixture data in tests** : Once the fixture is loaded, you can use the data in your test logic, such as filling out forms or comparing against expected values.
-  1. **Shortcut for loading fixtures** : You can also pass the fixture file directly to commands like
-    `cy.get()`
-    or
-    `cy.route()`
-    using the
-    `@`
-    prefix.
 
 ### Advanced Concepts
 
@@ -866,46 +771,18 @@ order: 0
       ```
       cy.get('iframe').its('contentDocument.body').should('not.be.empty').then(cy.wrap).find('selector').click()
       ```
-  Remember that for cross-origin iframes, you'll need to set `"chromeWebSecurity": false` in your `cypress.json` configuration file to bypass these restrictions. However, this is not recommended for security reasons and should only be used when absolutely necessary.
+  For navigation between different origins, use `cy.origin()` and follow the [Cypress cross-origin testing guide](https://docs.cypress.io/app/guides/cross-origin-testing). `chromeWebSecurity: false` is a Chromium browser option that weakens browser security restrictions; it is not a general-purpose cross-origin iframe workaround. Set it in `cypress.config.js` only when you understand the impact and have a specific need.
   If you're dealing with multiple nested iframes, you'll need to repeat the process for each level of iframe nesting, ensuring that you target the correct iframe at each level.
   Keep in mind that Cypress best practices recommend avoiding iframes when possible, as they add complexity to your tests. If you have control over the application, consider alternatives to iframes that are more test-friendly.
 
-  1. **Target the iframe**
-    - Use
-    `cy.get()`
-    to grab the iframe element.
 
 #### How to use plugins in Cypress?
 
-  Using plugins in Cypress enhances its capabilities by extending its core functionality. To use a plugin, follow these steps:
+  Cypress extensions are usually installed as project dependencies. Before adding one, check that it is maintained and supports your Cypress version.
 
-  1. **Install the plugin** via npm. For example, to install the `cypress-file-upload` plugin, run:
+  Browser-side commands or support code belong in the support file generated for the selected testing type. Node-side extensions, such as tasks and preprocessors, are registered with `setupNodeEvents(on, config)` under `e2e` or `component` in `cypress.config.js`.
 
-     ```
-     npm install --save-dev cypress-file-upload
-     ```
-
-  2. **Include the plugin** in your project's `cypress/plugins/index.js` file. This is where you modify or extend the internal behavior of Cypress. For instance:
-
-     ```
-     module.exports = (on, config) => {
-         // your plugin code here
-     }
-     ```
-
-  3. **Import and use the plugin** in your test files as needed. For example, with `cypress-file-upload`, you would add the following to your test file:
-
-     ```
-     import 'cypress-file-upload';
-     ```
-
-  4. **Utilize the plugin's features** in your tests. For the `cypress-file-upload` plugin, you can now use the `.attachFile()` command:
-
-     ```
-     cy.get('input[type="file"]').attachFile('file.json');
-     ```
-  Remember to **check the plugin's documentation** for specific usage instructions and compatibility with your version of Cypress. Some plugins may require additional configuration or initialization steps.
-  Plugins can provide a variety of functionalities, such as custom commands, improved reporting, or integration with other tools. Always **ensure that the plugin is actively maintained** and well-suited for your needs before adding it to your project.
+  The `cypress/plugins/index.js` convention belongs to Cypress 9 and earlier. Cypress 10 and later use the configuration file and `setupNodeEvents` instead. See the [official plugin guide](https://docs.cypress.io/app/plugins/plugins-guide) and [configuration guide](https://docs.cypress.io/app/references/configuration).
 
 ### Best Practices and Troubleshooting
 
@@ -970,11 +847,6 @@ order: 0
     ```
   Remember to **review and refactor tests regularly** to adapt to application changes and improve [test suite](/en/wiki/test-suite/) reliability and performance.
 
-  - **Organize tests logically**
-    using
-    `describe`
-    and
-    `context`
 #### How to debug tests in Cypress?
 
   Debugging tests in Cypress can be approached systematically:
@@ -999,14 +871,14 @@ order: 0
 
   7. **Network Requests**: Inspect network requests in the [Test Runner](/en/wiki/test-runner/)'s Command Log to ensure [API](/en/wiki/api-testing/) calls are being made as expected and with the correct data.
   8. **Error Messages**: Read error messages carefully. Cypress provides descriptive error messages that can guide you to the source of the problem.
-  9. **Cypress Logs**: Enable verbose logging by setting `Cypress.config('log', true)` to get more detailed information about the [test execution](/en/wiki/test-execution/).
+  9. **Cypress Logs**: Review Cypress's Command Log while a test runs. Use `cy.log()` when you need to add custom diagnostic messages about the [test execution](/en/wiki/test-execution/).
   10. **Retry-ability**: Understand that Cypress commands automatically retry until they succeed or time out. If a test is failing because an assertion is running before the application is ready, consider adding waits or assertions for intermediate states.
   By combining these tools and techniques, you can effectively debug your Cypress tests and resolve issues more quickly.
 
 #### How to handle common errors in Cypress?
 
   Handling common errors in Cypress involves understanding the error messages and applying appropriate fixes or workarounds. Here are some strategies:
-  **Timeout Errors**: Increase default timeout settings using `cy.wait()` or globally in `cypress.json` if elements take longer to load.
+  **Timeout Errors**: Prefer retryable assertions or a timeout on the specific command. If the project consistently needs a longer default, adjust `defaultCommandTimeout` in `cypress.config.js`. Avoid replacing a condition check with a fixed-duration `cy.wait()`.
 
   ```
   cy.get('.some-element', { timeout: 10000 }) // waits for 10 seconds
@@ -1016,17 +888,18 @@ order: 0
   ```
   cy.get('.some-element').should('be.visible').click()
   ```
-  **Cross-Origin Errors**: Configure `chromeWebSecurity` to `false` in `cypress.json` if you need to bypass the same-origin policy.
+  **Cross-Origin Errors**: Use `cy.origin()` for cross-origin navigation. Only consider setting `chromeWebSecurity: false` in `cypress.config.js` for a specific Chromium-only case after reviewing the security impact.
 
   ```
-  {
-    "chromeWebSecurity": false
-  }
+  const { defineConfig } = require('cypress')
+  module.exports = defineConfig({
+    chromeWebSecurity: false,
+  })
   ```
-  **[Flaky Tests](/en/wiki/flaky-test/)**: Address flakiness by using `.retry()` for assertions or commands that might fail due to timing issues.
+  **[Flaky Tests](/en/wiki/flaky-test/)**: Cypress commands and assertions retry automatically until they pass or time out. Wait for a meaningful application state, and use Cypress test retry configuration when rerunning failed tests is appropriate.
 
   ```
-  cy.get('.some-element').should('exist').retry()
+  cy.get('.some-element').should('exist')
   ```
   **Assertion Failures**: Review the expected conditions and ensure the assertions match the actual application state. Use explicit assertions like `.should('have.text', 'expected text')`.
 

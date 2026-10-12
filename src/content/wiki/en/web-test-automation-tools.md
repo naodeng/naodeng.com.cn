@@ -379,10 +379,6 @@ Tools aiding in product quality assurance. They support continuous integration, 
   - **Documentation**: Keep documentation up-to-date to ensure team members understand [test suite](/en/wiki/test-suite/) changes and maintenance procedures.
   By adhering to these practices, [test automation](/en/wiki/test-automation/) engineers can efficiently maintain and update [test scripts](/en/wiki/test-script/), ensuring the reliability and effectiveness of the [test automation](/en/wiki/test-automation/) suite.
 
-  - **Version Control** : Use tools like Git to track changes, collaborate with team members, and revert to previous versions if necessary. Commit scripts regularly with meaningful messages.
-  - **Modular Design** : Write reusable code by creating functions for common tasks. This simplifies updates as changes in one place can propagate throughout all affected tests.
-  - **[Page Object Model](/en/wiki/page-object-model/) (POM)** : Abstract page details into objects. When UI changes, update the corresponding page object without altering the test logic.
-  - **Data-Driven Tests** : Externalize test data from scripts. Update data files instead of test code for different test scenarios.
 
 #### What is the role of a test automation engineer in managing web test automation tools?
 

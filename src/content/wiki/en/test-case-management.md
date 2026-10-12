@@ -330,8 +330,6 @@ Test Case Management, in the realm of software testing, refers to the process of
     to ensure that the context of the test case is clear to anyone executing or reviewing it.
   By adhering to these practices, [test automation](/en/wiki/test-automation/) engineers can enhance the efficiency and reliability of the testing process, leading to higher quality software and more predictable release cycles.
 
-  - **Organize [test cases](/en/wiki/test-case/)**
-
 #### How do you prioritize test cases?
 
   Prioritizing [test cases](/en/wiki/test-case/) is essential to optimize testing efforts and focus on the most critical aspects first. Here's a concise guide:

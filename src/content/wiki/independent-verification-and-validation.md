@@ -1,6 +1,6 @@
 ---
 title: "独立确认与验证 ｜ Independent Verification And Validation"
-description: "独立确认与验证 (IV&V) 是由独立于开发团队的第三方进行的质量保证过程。其核心在于“独立性”，这意味着评估者不参与系统的设计、开发或运维，从而保证评估的客观公正。 * 确认 (Verification - 验证)：确保“把产品做对”（Are we building the product right?）…"
+description: "独立确认与验证 (IV&V) 是由独立于开发团队的第三方进行的质量保证过程。其核心在于“独立性”，这意味着评估者不参与系统的设计、开发或运维，从而保证评估的客观公正。 * 确认 (Verification - 验证)：确保“把产品做对”（Are we building the product right?"
 section: "I"
 related:
   - quality-management
@@ -73,7 +73,7 @@ IV&V 在软件开发中对于**确保客观性**和**公正的质量评估**至�
 #### 验证和确认有什么区别？
 
 [验证 ](/zh-cn/wiki/verification/) 和验证是[软件测试](/zh-cn/wiki/software-testing/) 中的两个不同过程。
-  **[验证 ](/zh-cn/wiki/verification/)** 是检查软件是否满足指定要求的过程。这是为了确保产品正确构建并遵守设计和规格。 [验证 ](/zh-cn/wiki/verification/) 通常通过审查、[检查s](/zh-cn/wiki/inspection/) 和静态分析方法进行。
+  **[验证 ](/zh-cn/wiki/verification/)** 是检查软件是否满足指定要求的过程。这是为了确保产品正确构建并遵守设计和规格。 [验证 ](/zh-cn/wiki/verification/) 通常通过审查、[检查](/zh-cn/wiki/inspection/) 和静态分析方法进行。
 
   ```
   // Example of verification: Static code analysis to ensure coding standards
@@ -145,13 +145,6 @@ IV&V 过程涉及的典型步骤是：
 - **自动化[回归测试](/zh-cn/wiki/regression-testing/)**：自动运行一套测试以确保新的更改不会破坏现有功能。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：评估系统在负载下的性能，其中包括压力、可扩展性和[耐力测试](/zh-cn/wiki/endurance-testing/)。
 - **[可用性测试](/zh-cn/wiki/usability-testing/)**：评估最终用户使用系统及其组件的能力。 这些技术有助于确保软件满足其要求、正常运行并提供高质量的用户体验。
-
-- **静态分析**：自动化工具分析代码的潜在缺陷而不执行它。这可以包括 linting、代码度量和复杂性分析。
-
-  ```
-    // Example of a static analysis tool command
-    eslint --fix ./path/to/codebase
-  ```
 
 #### IV&V 流程如何与整个软件开发生命周期集成？
 

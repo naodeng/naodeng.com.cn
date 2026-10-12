@@ -77,7 +77,6 @@ Severity gauges a defect's impact on an application's system. Defects with major
   - **Minor**: These are trivial issues that do not need immediate attention and have the least impact on the functionality of the application.
   Each organization may have its own set of severity levels or definitions, but the above categories are commonly used in the industry. Severity levels guide the order in which [bugs](/en/wiki/bug/) are addressed and help manage the testing and development efforts effectively.
 
-
 #### How is the severity level of a bug determined?
 
   The severity level of a [bug](/en/wiki/bug/) is determined by assessing its **impact on the system's functionality**, **user experience**, and **business operations**. To evaluate severity, consider the following factors:
@@ -96,7 +95,6 @@ Severity gauges a defect's impact on an application's system. Defects with major
   - **Workaround Availability** : Can users bypass the issue through alternative means, or is the bug blocking critical functionality without a workaround?
   - **Legal and Compliance** : Does the bug cause non-compliance with regulatory requirements or contractual obligations?
   After considering these factors, a [bug](/en/wiki/bug/) is typically classified into categories such as **Critical**, **High**, **Medium**, or **Low** severity. The classification is often a collaborative decision involving testers, developers, and product managers, ensuring a balanced perspective on the [bug](/en/wiki/bug/)'s impact. This assessment guides prioritization and resolution efforts, ensuring that the most detrimental issues are addressed promptly.
-
 
 #### What is the impact of high severity bugs on the software?
 
@@ -129,7 +127,6 @@ Severity gauges a defect's impact on an application's system. Defects with major
   Overall, high severity [bugs](/en/wiki/bug/) demand a swift and thorough response to maintain [software quality](/en/wiki/software-quality/) and project timelines.
 
   - **Block**
-
 
 ### Severity and Bug Life Cycle
 
@@ -245,8 +242,3 @@ Severity gauges a defect's impact on an application's system. Defects with major
   - Prioritizes bugs in the report.
   - Generates quality metrics and trends.
   By effectively utilizing severity in test reporting, teams can ensure that critical issues are highlighted and addressed, maintaining focus on delivering high-quality software.
-
-  - Communicates the impact of defects.
-  - Triggers alerts for immediate action.
-  - Prioritizes bugs in the report.
-  - Generates quality metrics and trends.

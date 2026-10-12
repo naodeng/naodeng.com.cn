@@ -102,7 +102,6 @@ Beta testing is the final testing phase before product release, where a near-com
     by using feedback to refine user guides, FAQs, and support services in preparation for the product launch.
   Beta testing serves as a final checkpoint to ensure that the software is ready for general availability, providing a safety net to catch any remaining defects and to fine-tune the user experience based on real feedback.
 
-  - **Validate real-world usage**
 
 #### How does beta testing contribute to the quality of a software product?
 

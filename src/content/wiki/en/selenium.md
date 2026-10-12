@@ -162,8 +162,6 @@ Selenium is an open-source software suite of browser automation tools primarily 
 
   1. **Verify Installation**: Write a simple [test script](/en/wiki/test-script/) to open a browser and navigate to a webpage to verify the [setup](/en/wiki/setup/).
   2. **Run Your Test**: Execute the test using your IDE or command line to ensure everything is working correctly.
-  1. **Verify Installation**: Write a simple [test script](/en/wiki/test-script/) to open a browser and navigate to a webpage to verify the [setup](/en/wiki/setup/).
-  2. **Run Your Test**: Execute the test using your IDE or command line to ensure everything is working correctly.
 
 #### What are the prerequisites for using Selenium?
 
@@ -253,13 +251,7 @@ Selenium is an open-source software suite of browser automation tools primarily 
   ```
   Ensure that your [test environment](/en/wiki/test-environment/) is set up with the required **drivers and dependencies** for the browser you are testing. Keep your [test cases](/en/wiki/test-case/) **focused and concise**, and use **explicit waits** if necessary to handle elements that take time to load.
 
-  1. **Navigate**
-    to the web page under test using the
-    `get`
-    method:
 
-  1. **Close the browser**
-    once the test is complete:
 
 #### How to run a test case using Selenium?
 
@@ -340,16 +332,8 @@ Selenium is an open-source software suite of browser automation tools primarily 
   ```
   Run the [test case](/en/wiki/test-case/) using your preferred IDE or command-line tool, ensuring that the necessary dependencies are included in your project.
 
-  1. **Navigate**
-    to the web page under test using the
-    `get`
-    method:
 
-  1. **Assert outcomes**
-    to verify that the application behaves as expected:
 
-  1. **Close the browser**
-    once the test is complete to ensure no processes are left hanging:
 
 #### What are the different ways to locate elements in Selenium?
 
@@ -436,8 +420,6 @@ Selenium is an open-source software suite of browser automation tools primarily 
   ```
   Selenium Grid is particularly useful for **cross-browser** and **cross-platform** testing, as well as for scenarios where [test execution](/en/wiki/test-execution/) time is a critical factor. It's an essential tool for achieving **continuous testing** and **integration** in DevOps practices.
 
-  1. Start the hub:
-  1. Register a node to the hub:
 
 #### What is Selenium WebDriver and how is it different from Selenium RC?
 
@@ -451,25 +433,12 @@ Selenium is an open-source software suite of browser automation tools primarily 
     - No need for a separate server
     - Better performance and speed
     - More accurate and realistic interaction with web elements
-    - Direct communication with browser
-    - No need for a separate server
-    - Better performance and speed
-    - More accurate and realistic interaction with web elements
   - **Selenium RC**:
     - Requires a server to mediate commands
     - Injects JavaScript code into the browser
     - Slower due to the overhead of server communication
     - Less realistic user interaction simulation
-    - Requires a server to mediate commands
-    - Injects JavaScript code into the browser
-    - Slower due to the overhead of server communication
-    - Less realistic user interaction simulation
   In summary, [WebDriver](/en/wiki/webdriver/) provides a more efficient and realistic testing experience by interacting with browsers at the OS level, which is why it has become the standard for Selenium-based [test automation](/en/wiki/test-automation/).
-
-  - **[WebDriver](/en/wiki/webdriver/)**:
-    - Direct communication with browser
-    - No need for a separate server
-    - Better performance and speed
 
 #### How to handle alerts and pop-ups in Selenium?
 
@@ -723,8 +692,6 @@ Selenium is an open-source software suite of browser automation tools primarily 
   - **Monitor and Profile Tests**: Use profiling tools to identify bottlenecks in [test execution](/en/wiki/test-execution/) and optimize accordingly.
   Implementing these strategies can lead to faster and more efficient Selenium [test suites](/en/wiki/test-suite/), reducing feedback time and resource consumption.
 
-  - **Use Waits Efficiently** : Implement explicit waits for elements that take time to load, rather than using thread sleep or implicit waits, to reduce unnecessary waiting time.
-  - **Run Tests in Headless Mode** : Running browsers in headless mode can significantly improve test execution speed as it doesn't need to render UI.
 
 #### How to handle exceptions in Selenium?
 
@@ -857,8 +824,5 @@ Selenium is an open-source software suite of browser automation tools primarily 
   4. Test results are reported back to Jenkins.
   Automating this flow ensures consistent [test execution](/en/wiki/test-execution/) and immediate feedback on code changes.
 
-  1. Install the
-    **Jenkins Selenium Plugin**
-    .
 
   - **TestNG:**

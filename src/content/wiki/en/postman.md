@@ -238,9 +238,6 @@ See also:
   The response will appear in the lower section of the Postman interface. You can view the status code, response time, size, and the body of the response. If you need to make further adjustments, you can modify the request as needed and resend it.
   For [automated testing](/en/wiki/automated-testing/), you can write **tests** in the 'Tests' tab using JavaScript and utilize Postman's built-in test snippets for common assertions. After sending the request, the test results will be displayed in the 'Test Results' tab.
 
-  1. Open Postman and select the
-    **workspace**
-    where you want to work.
 
 #### How do you save responses in Postman?
 

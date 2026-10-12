@@ -103,7 +103,6 @@ Scrum is an iterative and incremental Agile framework that facilitates collabora
   - **Motivation** : The self-organizing nature of Scrum teams empowers members, leading to increased engagement and job satisfaction.
   By integrating Scrum into [test automation](/en/wiki/test-automation/), teams can achieve higher quality software, with more efficient workflows and better adaptability to change.
 
-
 ### Scrum Roles
 
 #### What are the different roles in a Scrum team?
@@ -122,7 +121,6 @@ Scrum is an iterative and incremental Agile framework that facilitates collabora
     . This includes software test automation engineers, developers, and any other professionals needed to create the product.
   The Development Team is self-organizing, meaning they decide how to best accomplish their work rather than being directed by others outside the team. They are also cross-functional, with all the skills necessary to create a product Increment. [Test automation](/en/wiki/test-automation/) engineers within the team contribute by designing, writing, and maintaining automated tests to ensure quality at every stage of development.
   **Scrum Teams** are designed to optimize flexibility, creativity, and productivity. They deliver products iteratively and incrementally, maximizing opportunities for feedback and adjustment. The team collaborates closely, often in daily stand-up meetings, to discuss progress and tackle obstacles.
-
 
 #### What are the responsibilities of a Scrum Master?
 
@@ -170,7 +168,6 @@ Scrum is an iterative and incremental Agile framework that facilitates collabora
   - **Decision Making** : Making critical decisions regarding what features and functionality are included in the next Sprint and are responsible for accepting or rejecting work results.
   The PO's role is pivotal in ensuring that the development team delivers the most valuable features first and adapts to changing market conditions or stakeholder needs. They must have a deep understanding of the product and the market, as well as strong communication skills to effectively bridge the gap between stakeholders and the development team.
 
-
 #### How does a Scrum team work without a project manager?
 
   In Scrum, the absence of a traditional project manager role is intentional. The team is **self-organizing** and **cross-functional**, with responsibilities distributed among the Scrum Master, Product Owner, and Development Team.
@@ -205,17 +202,8 @@ Scrum is an iterative and incremental Agile framework that facilitates collabora
     **Definition of Done**
     .
 
-  - For the Product Backlog, it's the
-    **Product Goal**
-    .
 
-  - For the Sprint Backlog, it's the
-    **Sprint Goal**
-    .
 
-  - For the Increment, it's the
-    **Definition of Done**
-    .
 
 #### What is a Product Backlog in Scrum?
 
@@ -260,22 +248,17 @@ Scrum is an iterative and incremental Agile framework that facilitates collabora
   - **Sprint Retrospective** : Occurs after the Sprint Review and before the next Sprint Planning. The team inspects itself and creates a plan for improvements to be enacted during the next Sprint.
   These events are critical for enabling the empirical nature of Scrum, providing regular opportunities to inspect and adapt both the product and the process.
 
-
 #### What happens in a Sprint Planning meeting?
 
   In a **Sprint Planning meeting**, the **Scrum Team** collaborates to define the work for the upcoming **Sprint**. The **Product Owner** presents the top items on the **Product Backlog** to the team, clarifying details and priorities. The team then selects items they can complete during the new Sprint, considering their capacity and the Sprint's duration.
   The meeting has two key parts:
 
-  1. **What can be done?
-    ** - The team forecasts the functionality that will be developed during the Sprint. They turn selected Product Backlog items into an actionable plan for the Sprint, often breaking them down into tasks.
+  1. **What can be done?** The team forecasts the functionality that will be developed during the Sprint. They turn selected Product Backlog items into an actionable plan for the Sprint, often breaking them down into tasks.
 
-  2. **How will the chosen work get done?
-    ** - The team discusses the approach for executing the work, creating a **Sprint Backlog** that includes all tasks necessary to meet the Sprint Goal.
+  2. **How will the chosen work get done?** The team discusses the approach for executing the work, creating a **Sprint Backlog** that includes all tasks necessary to meet the Sprint Goal.
   The **Sprint Goal** is also established, which is a concise statement of the intended outcome of the Sprint, providing guidance to the team on why it is building the Increment.
   **Collaboration** is key, with the entire team contributing to the planning process to ensure a shared understanding of the tasks and how to tackle them. The **Scrum Master** facilitates the meeting, ensuring that it is productive and stays within the time-box, typically a few hours for a two-week Sprint.
   By the end of the Sprint Planning, the team should have a clear plan and confidence in their ability to deliver the Sprint Goal.
-
-  1. **What can be done?
 
 #### What is the purpose of the Daily Scrum?
 
@@ -287,7 +270,6 @@ Scrum is an iterative and incremental Agile framework that facilitates collabora
   3. Do I see any impediment that prevents me or the team from meeting our Sprint Goal?
   The purpose is **not** to solve problems, but to raise them. Issues identified are typically taken offline and often dealt with by the relevant subgroup immediately after the Daily Scrum.
   For [test automation](/en/wiki/test-automation/) engineers, the Daily Scrum provides an opportunity to align on testing strategies, share progress on automated test development, discuss any [flaky tests](/en/wiki/flaky-test/) or issues with [test environments](/en/wiki/test-environment/), and adapt plans based on the latest code changes or feedback. It's a critical practice for maintaining the pace and quality of [automated testing](/en/wiki/automated-testing/) within the agile process.
-
 
 #### What is a Sprint Review and a Sprint Retrospective?
 
@@ -325,7 +307,6 @@ Scrum is an iterative and incremental Agile framework that facilitates collabora
   - **Neglecting Technical Debt**: Accumulating technical debt can slow down progress. Allocate time for refactoring and address technical debt regularly.
   - **Ineffective Retrospectives**: Without actionable outcomes, retrospectives are pointless. Focus on tangible improvements and follow through on commitments.
   To address these challenges, **continuous learning** and **adaptation** are key. Encourage an open feedback culture and regularly review processes to ensure Scrum is being effectively implemented.
-
 
 #### How can Scrum be scaled for large projects?
 

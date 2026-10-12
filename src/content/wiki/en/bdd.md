@@ -181,11 +181,7 @@ BDD (Behavior-Driven Development) is an agile software development approach that
   ```
   This scenario can be directly translated into automated tests, ensuring that the software behaves as expected. The **Given-When-Then** format also facilitates communication between technical and non-technical team members, bridging the gap between business requirements and technical implementation.
 
-  - **Given**
-    sets up the initial context or preconditions.
 
-  - **When**
-    describes the action or event that triggers the behavior.
 
   - **Then**
     outlines the expected outcome or result.
@@ -296,9 +292,6 @@ BDD (Behavior-Driven Development) is an agile software development approach that
     between the requirements (user stories) and the automated tests, which helps in maintaining and evolving test suites alongside the application.
   BDD scenarios effectively become a **detailed specification** of the user story, which is both executable and serves as documentation. This tight integration supports Agile principles by fostering collaboration, enabling quick feedback loops, and ensuring that the software incrementally evolves with a focus on delivering the most valuable features first.
 
-  - Development is
-    **guided by the user's needs**
-    and the expected system behavior.
 
   - There is a
     **direct traceability**

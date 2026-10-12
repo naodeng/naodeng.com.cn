@@ -69,7 +69,7 @@ order: 0
 - **用户要求**
 - **规格**
 - **技术设计**
-  
+
 测试人员选择输入来练习代码中的路径并确定适当的输出，而无需知道软件如何处理输入或正在执行什么代码。 [黑盒测试](/zh-cn/wiki/black-box-testing/)几乎适用于[软件测试](/zh-cn/wiki/software-testing/)的所有级别：单元、集成、系统和验收。它特别适用于：
 
 - **根据用户要求进行验证**
@@ -115,7 +115,7 @@ order: 0
 - **无偏见测试**：测试人员不受内部代码结构的影响，从而对功能进行客观评估。
 - **并行开发**：测试可以与开发并行完成，因为它不依赖于内部代码结构。
 - **全面覆盖**：鼓励在不受代码结构限制的情况下测试所有功能需求。
-  
+
 [黑盒测试](/zh-cn/wiki/black-box-testing/) 的缺点：
 
 - **有限覆盖**：只能测试可能输入的子集，可能会遗漏某些缺陷。
@@ -150,8 +150,8 @@ Black Box 和[白盒测试](/zh-cn/wiki/white-box-testing/) 之间的选择取�
 
 #### 黑盒测试中的等价划分是什么？
 
-[等价划分](/zh-cn/wiki/equivalence-partitioning/) 是一种**[黑盒测试](/zh-cn/wiki/black-box-testing/)** 技术，它将软件应用程序的输入数据划分为等效数据的分区，从中可以导出[测试用例](/zh-cn/wiki/test-case/)。通过这样做，假设系统将以相同的方式处理来自一个分区的所有值。此方法减少了需要开发的[测试用例](/zh-cn/wiki/test-case/) 总数，同时仍确保足够的[测试覆盖率](/zh-cn/wiki/test-coverage/)。
-  
+[等价划分](/zh-cn/wiki/equivalence-partitioning/) 是一种 **[黑盒测试](/zh-cn/wiki/black-box-testing/)** 技术，它将软件应用程序的输入数据划分为等效数据的分区，从中可以导出[测试用例](/zh-cn/wiki/test-case/)。通过这样做，假设系统将以相同的方式处理来自一个分区的所有值。此方法减少了需要开发的[测试用例](/zh-cn/wiki/test-case/) 总数，同时仍确保足够的[测试覆盖率](/zh-cn/wiki/test-coverage/)。
+
 在[等价划分](/zh-cn/wiki/equivalence-partitioning/) 中，软件或系统的输入被分为预期表现出类似行为的组，因此测试每个组中的单个值被认为代表整个分区。例如，如果输入接受从 1 到 50 的值范围，则可以将该范围划分为 1-10、11-20 等分区，并且可以为每个分区设计测试。
 
 主要目标是识别与输入数据相关的**错误**。如果存在 [bug](/zh-cn/wiki/bug/)，它应该会影响该分区的所有成员。该技术可以应用于所有级别的测试：单元、集成、系统和验收。
@@ -181,7 +181,7 @@ Black Box 和[白盒测试](/zh-cn/wiki/white-box-testing/) 之间的选择取�
 
 BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结合使用，因为它们相辅相成。EP 有助于确定要测试
 哪些值集（等价类），而 BVA 有助于查明这些集中的特定边界值。
-  
+
 该技术在测试时特别有用：
 
 - 基于范围的输入
@@ -213,7 +213,7 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 1. 确定所有相关条件和行动。
 2. 创建包含所有可能的条件组合的综合决策表。
 3. 确定每个组合的预期操作。
-4. 设计测试用例以验证系统对于每种组合的行为是否符合预期。该技术对于**[功能测试](/zh-cn/wiki/functional-testing/)**特别有效，并确保覆盖所有可能的场景，这可以显着增强[测试套件](/zh-cn/wiki/test-suite/)的鲁棒性。
+4. 设计测试用例以验证系统对于每种组合的行为是否符合预期。该技术对于 **[功能测试](/zh-cn/wiki/functional-testing/)** 特别有效，并确保覆盖所有可能的场景，这可以显着增强[测试套件](/zh-cn/wiki/test-suite/)的鲁棒性。
 
 #### 黑盒测试中的状态转换测试是什么？
 
@@ -241,7 +241,7 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 
 #### 黑盒测试中的用例测试是什么？
 
-[用例测试](/zh-cn/wiki/use-case-testing/) 是一种 **[黑盒测试](/zh-cn/wiki/black-box-testing/)** 技术，涉及基于 **[用例](/zh-cn/wiki/use-case/)** 创建 [测试用例](/zh-cn/wiki/test-case/)。 [用例](/zh-cn/wiki/use-case/) 描述系统如何与外部实体（如用户或其他系统）交互以实现特定目标。在这种方法中，测试人员专注于**用户场景**和**[功能需求](/zh-cn/wiki/functional-requirements/)**来验证系统的行为是否符合预期。
+[用例测试](/zh-cn/wiki/use-case-testing/) 是一种 **[黑盒测试](/zh-cn/wiki/black-box-testing/)** 技术，涉及基于 **[用例](/zh-cn/wiki/use-case/)** 创建 [测试用例](/zh-cn/wiki/test-case/)。 [用例](/zh-cn/wiki/use-case/) 描述系统如何与外部实体（如用户或其他系统）交互以实现特定目标。在这种方法中，测试人员专注于**用户场景**和 **[功能需求](/zh-cn/wiki/functional-requirements/)** 来验证系统的行为是否符合预期。
 
 测试人员开发[测试用例](/zh-cn/wiki/test-case/)，涵盖[用例](/zh-cn/wiki/use-case/)的完整流程，包括**主要流程**（标准操作）和**替代流程**（错误条件和其他分支）。这可确保测试用户可能通过应用程序采用的所有路径。 [用例测试](/zh-cn/wiki/use-case-testing/) 对于识别在单元或组件测试中可能不明显的**集成**和**系统级问题**特别有用。
 
@@ -265,7 +265,7 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 
 #### 黑盒测试涉及哪些步骤？
 
-**[黑盒测试](/zh-cn/wiki/black-box-testing/)**涉及的步骤如下：
+**[黑盒测试](/zh-cn/wiki/black-box-testing/)** 涉及的步骤如下：
 
 1. **了解需求**：查看软件需求和规范以了解预期行为。
 2. **定义测试目标**：确定您想要验证的内容，例如功能、可用性或性能。
@@ -284,13 +284,13 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 
 1. **了解要求和规格**软件的功能来确定系统应该做什么。
 
-2. **开发[测试用例](/zh-cn/wiki/test-case/)**涵盖规范中提到的所有功能。这些测试用例应该关注输入和预期输出，而不考虑内部代码结构。
+2. **开发[测试用例](/zh-cn/wiki/test-case/)** 涵盖规范中提到的所有功能。这些测试用例应该关注输入和预期输出，而不考虑内部代码结构。
 
 3. **选择[黑盒测试](/zh-cn/wiki/black-box-testing/)技术**例如等价划分、边界值分析、决策表测试、状态转换测试或用例测试来创建有效的测试场景。
 
-4. **准备[测试数据](/zh-cn/wiki/test-data/)**对于测试用例，确保混合使用正面和负面测试场景。
+4. **准备[测试数据](/zh-cn/wiki/test-data/)** 对于测试用例，确保混合使用正面和负面测试场景。
 
-5. **执行[测试用例](/zh-cn/wiki/test-case/)**通过提供输入并将实际输出与预期结果进行比较。
+5. **执行[测试用例](/zh-cn/wiki/test-case/)** 通过提供输入并将实际输出与预期结果进行比较。
 
 6. **记录结果**测试用例并将任何差异记录为缺陷。
 
@@ -319,7 +319,7 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 - **应用程序类型**：考虑被测应用程序的类型。例如，Web 应用程序可能会从 **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** 等技术中受益更多，而金融应用程序可能需要严格的**边界值分析**。
 - **测试目标**：使技术与测试的具体目标保持一致。如果目标是验证业务流程，**[用例测试](/zh-cn/wiki/use-case-testing/)** 可能是最佳选择。
 - **软件的复杂性**：对于复杂的系统，**[等价划分](/zh-cn/wiki/equivalence-partitioning/)** 和 **边界值分析** 等技术的组合可能是有效的。
-- **风险评估**：高风险区域可能需要使用涵盖广泛输入和用户行为的技术进行更彻底的测试，例如**[决策表测试](/zh-cn/wiki/decision-table-testing/)**。
+- **风险评估**：高风险区域可能需要使用涵盖广泛输入和用户行为的技术进行更彻底的测试，例如 **[决策表测试](/zh-cn/wiki/decision-table-testing/)**。
 - **资源可用性**：考虑可用的时间和人力。有些技术比其他技术需要更多的准备和执行时间。
 - **文档**：文档的可用性和质量会影响选择。例如，**[决策表测试](/zh-cn/wiki/decision-table-testing/)** 需要详细规范。
 - **客户要求**：有时，选择是由特定客户或监管机构的测试要求驱动的。
@@ -364,17 +364,17 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 
 - **了解用户需求**彻底确保测试用例与软件的预期功能一致。
 
-- **识别[测试场景](/zh-cn/wiki/test-scenario/)**涵盖应用程序的所有功能方面，包括边缘情况。
+- **识别[测试场景](/zh-cn/wiki/test-scenario/)** 涵盖应用程序的所有功能方面，包括边缘情况。
 
-- 使用 **边界值分析**和 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)**最大限度地减少测试用例，同时最大限度地扩大覆盖范围。
+- 使用 **边界值分析**和 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** 最大限度地减少测试用例，同时最大限度地扩大覆盖范围。
 
-- 合并 **[决策表测试](/zh-cn/wiki/decision-table-testing/)**用于复杂的业务规则，以确保测试所有可能的组合。
+- 合并 **[决策表测试](/zh-cn/wiki/decision-table-testing/)** 用于复杂的业务规则，以确保测试所有可能的组合。
 
-- 申请 **[状态转换测试](/zh-cn/wiki/state-transition-testing/)**适用于具有有限数量的状态或模式的应用。
+- 申请 **[状态转换测试](/zh-cn/wiki/state-transition-testing/)** 适用于具有有限数量的状态或模式的应用。
 
-- 杠杆 **[用例测试](/zh-cn/wiki/use-case-testing/)**模拟真实世界的使用情况以及用户与系统的交互。
+- 杠杆 **[用例测试](/zh-cn/wiki/use-case-testing/)** 模拟真实世界的使用情况以及用户与系统的交互。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和重要性，首先关注最重要的领域。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于风险和重要性，首先关注最重要的领域。
 
 - 确保测试用例 **独立**并且可以按任意顺序执行，无需依赖。
 
@@ -404,7 +404,7 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 
 在 **[敏捷开发](/zh-cn/wiki/agile-development/)** 中，[黑盒测试](/zh-cn/wiki/black-box-testing/) 被集成到迭代过程的各个阶段。测试人员通常与开发人员并行工作，根据用户故事和验收标准创建[测试用例](/zh-cn/wiki/test-case/)，而不了解被测试项目的内部工作原理。这种方法通过关注用户视角和产品功能来符合敏捷原则。
 
-在每个冲刺期间，[黑盒测试](/zh-cn/wiki/black-box-testing/) 用于验证新功能并回归测试现有功能。敏捷团队可以使用**自动化[黑盒测试](/zh-cn/wiki/black-box-testing/)**为每个构建快速执行一套测试，确保持续集成和交付管道提供有关应用程序运行状况的即时反馈。
+在每个冲刺期间，[黑盒测试](/zh-cn/wiki/black-box-testing/) 用于验证新功能并回归测试现有功能。敏捷团队可以使用**自动化[黑盒测试](/zh-cn/wiki/black-box-testing/)** 为每个构建快速执行一套测试，确保持续集成和交付管道提供有关应用程序运行状况的即时反馈。
 
 测试人员与敏捷团队中的开发人员和产品所有者密切合作，以便随着需求的发展快速调整[测试计划](/zh-cn/wiki/test-plan/)。这种协作对于保持敏捷冲刺的节奏并确保测试始终符合当前用户的期望至关重要。
 
@@ -420,15 +420,15 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 
 #### 黑盒测试如何用于软件开发生命周期（SDLC）？
 
-[黑盒测试](/zh-cn/wiki/black-box-testing/) 在各个阶段集成到**[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 中，以确保应用程序按照用户的角度预期运行。在**需求收集阶段**，[黑盒测试](/zh-cn/wiki/black-box-testing/) 有助于了解用户需求并设计反映用户场景的测试。
+[黑盒测试](/zh-cn/wiki/black-box-testing/) 在各个阶段集成到 **[软件开发生命周期](/zh-cn/wiki/software-development-life-cycle/) (SDLC)** 中，以确保应用程序按照用户的角度预期运行。在**需求收集阶段**，[黑盒测试](/zh-cn/wiki/black-box-testing/) 有助于了解用户需求并设计反映用户场景的测试。
 
 在**设计阶段**，测试人员根据需求准备[测试计划](/zh-cn/wiki/test-plan/)和案例，而不考虑内部代码结构。随着**开发阶段**的进展，[黑盒测试](/zh-cn/wiki/black-box-testing/) 用于根据要求验证开发的功能。这通常通过 **[手动测试](/zh-cn/wiki/manual-testing/)** 或 **自动 [用户界面测试](/zh-cn/wiki/ui-testing/)** 完成。
 
-在**测试阶段**，使用**边界值分析**、**[等价划分](/zh-cn/wiki/equivalence-partitioning/)**和**[决策表测试](/zh-cn/wiki/decision-table-testing/)**等黑盒方法来确保全面覆盖应用程序的功能。这些技术有助于识别通过代码 [检查](/zh-cn/wiki/inspection/) 或 [白盒测试](/zh-cn/wiki/white-box-testing/) 方法可能不明显的缺陷。
+在**测试阶段**，使用**边界值分析**、**[等价划分](/zh-cn/wiki/equivalence-partitioning/)** 和 **[决策表测试](/zh-cn/wiki/decision-table-testing/)** 等黑盒方法来确保全面覆盖应用程序的功能。这些技术有助于识别通过代码 [检查](/zh-cn/wiki/inspection/) 或 [白盒测试](/zh-cn/wiki/white-box-testing/) 方法可能不明显的缺陷。
 
 在**暂存或预生产环境**中，[黑盒测试](/zh-cn/wiki/black-box-testing/) 对于 **[系统测试](/zh-cn/wiki/system-testing/)** 和 **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)** 至关重要，确保软件满足业务需求并准备好部署。
 
-最后，在**部署阶段**之后，[黑盒测试](/zh-cn/wiki/black-box-testing/) 以**[回归测试](/zh-cn/wiki/regression-testing/)** 的形式继续，以验证新更改不会对现有功能产生不利影响。当更新或补丁发布时，它也用于**[维护测试](/zh-cn/wiki/maintenance-testing/)**。
+最后，在**部署阶段**之后，[黑盒测试](/zh-cn/wiki/black-box-testing/) 以 **[回归测试](/zh-cn/wiki/regression-testing/)** 的形式继续，以验证新更改不会对现有功能产生不利影响。当更新或补丁发布时，它也用于 **[维护测试](/zh-cn/wiki/maintenance-testing/)**。
 
 在整个 SDLC 中，[黑盒测试](/zh-cn/wiki/black-box-testing/) 为 [质量保证](/zh-cn/wiki/quality-assurance/) 提供了一种以用户为中心的方法，补充了[白盒测试](/zh-cn/wiki/white-box-testing/) 并确保软件从内到外和从外到内得到验证。
 
@@ -439,7 +439,7 @@ BVA 通常与 **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** (EP) 结
 
 - **模拟真实用户场景**：测试人员创建从头到尾模仿用户操作的测试，涵盖典型的用户流程。
 - **在类似生产的环境中测试应用程序**：这包括与数据库、网络通信、外部服务和其他应用程序的交互。
-- **验证功能性和非[功能需求](/zh-cn/wiki/functional-requirements/)** ：在确保功能按预期工作的同时，测试人员还检查性能、可用​​性和可靠性。测试人员使用 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 Playwright 等自动化工具来编写这些场景的脚本，然后运行这些工具来验证应用程序的行为。这种方法有助于识别单元或集成测试可能遗漏的问题。 **例子**：
+- **验证功能性和非[功能需求](/zh-cn/wiki/functional-requirements/)** ：在确保功能按预期工作的同时，测试人员还检查性能、可用性和可靠性。测试人员使用 [selenium](/zh-cn/wiki/selenium/)、[Cypress](/zh-cn/wiki/cypress/) 或 Playwright 等自动化工具来编写这些场景的脚本，然后运行这些工具来验证应用程序的行为。这种方法有助于识别单元或集成测试可能遗漏的问题。 **例子**：
 
   ```
   describe('User Registration and Login Process', () => {

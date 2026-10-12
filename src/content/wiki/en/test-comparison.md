@@ -395,20 +395,11 @@ Test comparison refers to the process of contrasting data from previously execut
     **analytics**
     to visualize and interpret comparison results.
 
-  - Ensuring
-    **consistent environments**
-    for test execution.
 
   - Using
     **data mocking**
 
-  - Automating the
-    **comparison process**
-    as much as possible.
 
-  - Regularly
-    **reviewing and updating**
-    test cases and comparison criteria.
 
 #### How can these challenges be addressed?
 

@@ -113,7 +113,6 @@ A qualitative research method providing insights into user interactions with sof
   - **Parallel Design** : Have different designers create the same feature independently and then compare the usability of each design.
   These techniques can be mixed and matched depending on the goals of the usability study and the resources available. It's crucial to select the right combination to gain meaningful insights that can drive design improvements.
 
-
 #### How do you choose the right usability testing method for a particular project?
 
   Choosing the right usability testing method depends on several factors:
@@ -126,7 +125,6 @@ A qualitative research method providing insights into user interactions with sof
   - **Complexity of Tasks**: For complex tasks, a **lab setting** where you can guide and observe participants might be necessary. Simpler tasks can be assessed through **online platforms**.
   - **Feedback Specificity**: If you need detailed feedback on specific features, **usability walkthroughs** with experts might be ideal. For broader usability insights, **surveys** and **field studies** can be employed.
   In summary, align the testing method with your project's specific needs, considering the goals, user demographics, development stage, resources, data requirements, task complexity, and the level of feedback detail you are seeking.
-
 
 #### What is the difference between moderated and unmoderated usability testing?
 
@@ -144,13 +142,6 @@ A qualitative research method providing insights into user interactions with sof
   - Quick turnaround and lower budget scenarios
   Choose **moderated** when the depth of understanding is crucial, and **unmoderated** for breadth and statistical significance.
 
-  - Detailed insights into user behavior
-  - Exploring new or complex features
-  - Situations where immediate probing is necessary
-  - Gathering quantitative data from a larger audience
-  - Simple tasks or usability questions
-  - Quick turnaround and lower budget scenarios
-
 #### What is 'Think Aloud' method in usability testing?
 
   The **Think Aloud** method is a qualitative usability testing technique where participants verbalize their thoughts, feelings, and opinions while interacting with a product. In this method, users are instructed to speak their thought processes out loud as they perform tasks. This running commentary provides insights into their cognitive processes, including decision-making, learning, and problem-solving.
@@ -162,7 +153,6 @@ A qualitative research method providing insights into user interactions with sof
   - Record sessions for later analysis, noting where users encounter difficulties or exhibit confusion.
   - Avoid interrupting the user's flow unless they fall silent or go off-task.
   The insights gained from the **Think Aloud** method can be invaluable for improving the user interface and overall user experience, as it provides a window into the user's mind that other testing methods may not capture. However, it's important to note that this method can slow down task completion and may not be suitable for all types of usability tests.
-
 
 #### What is heuristic evaluation in usability testing?
 
@@ -205,7 +195,6 @@ A qualitative research method providing insights into user interactions with sof
   9. **Iterate Design**: Use the insights gained to refine the product. Implement changes and plan for follow-up tests to verify improvements.
   Remember, the goal is to enhance the product's usability, so focus on actionable insights that can drive design decisions.
 
-
 #### How do you select participants for usability testing?
 
   Selecting participants for usability testing involves identifying and recruiting individuals who represent your target user base. Aim for a diverse group that reflects various demographics, experience levels, and behaviors of your actual users.
@@ -238,17 +227,6 @@ A qualitative research method providing insights into user interactions with sof
   - Offer compensation, such as money, gift cards, or free access to your product.
   Remember, the goal is to create a realistic representation of your user base to gather actionable feedback that will improve your product's usability.
 
-  - Use
-    **surveys**
-    or
-    **interviews**
-    to filter candidates based on your criteria.
-
-  - Ensure a
-    **non-disclosure agreement (NDA)**
-    is in place if sensitive information is involved.
-
-  - Offer compensation, such as money, gift cards, or free access to your product.
 
 #### What are the common mistakes to avoid while conducting usability testing?
 
@@ -280,7 +258,6 @@ A qualitative research method providing insights into user interactions with sof
   8. **Track Changes** : After implementing changes, measure the impact on usability to validate that the modifications improved the user experience.
   Remember to focus on actionable insights that can directly improve the product. Avoid getting lost in data that doesn't translate to tangible enhancements.
 
-
 ### Real-world Applications
 
 #### Can you provide examples of usability testing in real-world applications?
@@ -293,7 +270,6 @@ A qualitative research method providing insights into user interactions with sof
   4. **Banking application**: A bank may perform usability testing to ensure customers can easily navigate their online banking portal. They might focus on the security process, ensuring it's robust without being overly complicated, causing user frustration.
   5. **Gaming**: Game developers often use usability testing to observe if players can navigate the game interface without confusion, understand the game mechanics quickly, and if the difficulty progression feels natural.
   In each case, the goal is to refine the user interface and experience to reduce friction and enhance satisfaction, leading to higher retention rates and better overall performance of the application.
-
 
 #### How does usability testing vary across different platforms like web, mobile, and desktop applications?
 
@@ -320,8 +296,6 @@ A qualitative research method providing insights into user interactions with sof
     by feeding usability insights back into the development cycle, influencing future iterations.
   Agile teams may use a mix of **automated and [manual testing](/en/wiki/manual-testing/)** methods to streamline usability testing. Automation can be employed for repetitive tasks, such as setting up testing environments, while [manual testing](/en/wiki/manual-testing/) remains essential for observing and interpreting user interactions.
   Ultimately, usability testing in Agile helps to **minimize rework**, **reduce development costs**, and **enhance product quality** by keeping the user at the center of the development process. It's a critical practice for delivering a product that not only functions correctly but also provides an intuitive and satisfying user experience.
-
-  - **Validate design decisions**
 
 #### How can usability testing be automated?
 

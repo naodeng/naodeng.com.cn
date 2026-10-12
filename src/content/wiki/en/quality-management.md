@@ -88,7 +88,6 @@ Quality management ensures that an organization's products or services consisten
   - **Relationship Management**: An organization and its external providers are interdependent, and a mutually beneficial relationship enhances the ability of both to create value.
   In the context of software [test automation](/en/wiki/test-automation/), these principles guide the creation of [automated testing](/en/wiki/automated-testing/) strategies that are customer-centric, led by informed decisions, and involve continuous improvement to align with the dynamic nature of software development. Automation engineers should integrate these principles into their practices to ensure that the [automated testing](/en/wiki/automated-testing/) processes contribute effectively to the overall Quality Management objectives.
 
-
 #### How does Quality Management impact the end user?
 
   Quality Management (QM) directly impacts the end user by ensuring that the software product meets their **expectations** and **requirements**. Effective QM results in a **higher quality product**, which translates to fewer defects and a more **reliable user experience**. End users benefit from:
@@ -100,7 +99,6 @@ Quality management ensures that an organization's products or services consisten
   - **Consistent experience** : Standardized QM practices help in maintaining consistency across different versions of the software.
   - **Reduced costs** : High-quality software reduces the need for support and maintenance, indirectly benefiting the user by ensuring the product remains cost-effective.
   In summary, QM is a critical factor in delivering a product that not only meets the [functional requirements](/en/wiki/functional-requirements/) but also provides a positive experience for the end user, leading to **loyalty** and **long-term engagement**.
-
 
 #### What is the relationship between Quality Management and customer satisfaction?
 
@@ -142,7 +140,6 @@ Quality management ensures that an organization's products or services consisten
   - **ISO/IEC 27001**: An information security management system (ISMS) standard published by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC).
   These systems provide a structured framework for ensuring product quality, improving customer satisfaction, and enhancing operational efficiency.
 
-
 #### What are the benefits of implementing a QMS in a software development project?
 
   Implementing a **Quality Management System (QMS)** in a software development project offers several benefits that streamline processes and enhance product quality:
@@ -156,7 +153,6 @@ Quality management ensures that an organization's products or services consisten
   - **Competitive Advantage** : Certification under recognized QMS standards can provide a competitive edge, demonstrating commitment to quality to customers and stakeholders.
   - **Customer Focus** : By aligning processes with customer requirements, a QMS ensures that the final product meets or exceeds customer expectations, leading to higher satisfaction and loyalty.
   In the context of [test automation](/en/wiki/test-automation/), a QMS integrates testing into the lifecycle, ensuring that automated tests are designed and executed according to quality objectives, contributing to the overall reliability and robustness of the software product.
-
 
 #### How can a QMS be evaluated for effectiveness?
 
@@ -172,7 +168,6 @@ Quality management ensures that an organization's products or services consisten
   - **Benchmarking** : Compare QMS performance against industry standards or competitors to identify areas for enhancement.
   - **Certification and Compliance** : Verify that the QMS maintains compliance with relevant quality standards and retains certifications.
   Regularly evaluating these aspects ensures the QMS remains dynamic, responsive to change, and focused on delivering high-quality software.
-
 
 ### Quality Assurance and Quality Control
 
@@ -201,7 +196,6 @@ Quality management ensures that an organization's products or services consisten
   - **[Performance testing](/en/wiki/performance-testing/)** : Verifying that the software meets performance criteria.
   By integrating QC measures, organizations can detect defects early, prevent them from recurring, and ensure the product aligns with customer expectations and regulatory standards. This **feedback loop** is essential for continuous improvement in QM processes, leading to higher quality products and increased customer satisfaction. QC is a critical component of a comprehensive QM strategy, providing tangible data that helps in making informed decisions about quality improvements.
 
-
 #### What are some techniques used in Quality Assurance?
 
   In [Quality Assurance](/en/wiki/quality-assurance/) (QA), various techniques are employed to ensure that software meets specified requirements and standards. These techniques include:
@@ -221,17 +215,12 @@ Quality management ensures that an organization's products or services consisten
   - **Continuous Integration (CI)**: Automatically testing and building the software whenever a change is made to the source code repository.
   These techniques are integral to maintaining high-quality software and are often used in combination to provide a comprehensive QA strategy.
 
-
 #### What are some techniques used in Quality Control?
 
   Quality Control (QC) in software [test automation](/en/wiki/test-automation/) involves various techniques to ensure that the product meets the specified requirements. Here are some techniques used in QC:
 
   - **[Inspection](/en/wiki/inspection/)**: Manual reviewing of code, design, and documentation to identify defects.
   - **Testing**: Execution of the software to validate functionality, performance, and compliance with requirements. This includes:
-    - **[Unit Testing](/en/wiki/unit-testing/)** : Testing individual components for correctness.
-    - **[Integration Testing](/en/wiki/integration-testing/)** : Ensuring that combined components or systems work together.
-    - **[System Testing](/en/wiki/system-testing/)** : Validating the complete and integrated software product.
-    - **[Acceptance Testing](/en/wiki/acceptance-testing/)** : Verifying the software meets business requirements.
     - **[Unit Testing](/en/wiki/unit-testing/)** : Testing individual components for correctness.
     - **[Integration Testing](/en/wiki/integration-testing/)** : Ensuring that combined components or systems work together.
     - **[System Testing](/en/wiki/system-testing/)** : Validating the complete and integrated software product.
@@ -243,7 +232,6 @@ Quality management ensures that an organization's products or services consisten
   - **Static Analysis Tools**: Analyzing code without executing it to find potential issues.
   - **Metrics and Measurement**: Collecting data on the quality and effectiveness of the testing process to guide improvements.
   These techniques are integral to maintaining high standards in [software quality](/en/wiki/software-quality/) and reliability, and they support the broader Quality Management goals of defect prevention, process improvement, and customer satisfaction.
-
 
 ### Quality Management and Testing
 
@@ -270,7 +258,6 @@ Quality management ensures that an organization's products or services consisten
   9. **Metrics and KPIs**: Define and track key [performance indicators](/en/wiki/performance-indicator/) (KPIs) to measure the effectiveness of testing efforts and make data-driven decisions to improve QM.
   By integrating these elements into your testing strategy, you can create a robust framework that supports and enhances the overall Quality Management of the software development lifecycle.
 
-
 #### What types of testing are most relevant to Quality Management?
 
   In the context of Quality Management (QM), the most relevant types of testing for [test automation](/en/wiki/test-automation/) include:
@@ -284,7 +271,6 @@ Quality management ensures that an organization's products or services consisten
   - **[Usability Testing](/en/wiki/usability-testing/)**: Although often manual, some aspects can be automated, such as checking for compliance with usability standards and guidelines.
   - **[Acceptance Testing](/en/wiki/acceptance-testing/)**: Automated tests that validate the end-to-end business flow. These tests are often aligned with user stories and are critical for verifying that the system meets business requirements.
   [Automated testing](/en/wiki/automated-testing/) in these areas supports QM by providing consistent, repeatable, and efficient methods for ensuring [software quality](/en/wiki/software-quality/), which is essential for delivering reliable and high-quality products to customers.
-
 
 #### How can testing results be used to improve Quality Management processes?
 
@@ -337,7 +323,6 @@ Quality management ensures that an organization's products or services consisten
   - **ISO/IEC 15504 (SPICE - Software Process Improvement and Capability Determination)** : A framework for the assessment of software processes. It provides a standard for assessing the capability of software development processes.
   These standards provide a **benchmark** for organizations to measure the quality of their processes and products, offering guidance on achieving and maintaining high levels of quality to meet customer requirements and improve overall performance.
 
-
 #### How do these standards support Quality Management?
 
   Standards in [test automation](/en/wiki/test-automation/) provide a **framework** for consistent and repeatable testing processes, which are integral to Quality Management (QM). They ensure that automated tests are designed, executed, and maintained in a way that supports the **objectives of QM** by:
@@ -357,8 +342,6 @@ Quality management ensures that an organization's products or services consisten
   - **Supporting traceability**
     from requirements to testing artifacts, which helps in ensuring that all quality requirements are verified and validated.
   By adhering to these standards, organizations can ensure that their [test automation](/en/wiki/test-automation/) efforts are aligned with their QM objectives, leading to software that meets or exceeds customer expectations in terms of quality, reliability, and performance.
-
-  - **Defining best practices**
 
 #### What is the process for a software development project to become certified under a Quality Management standard?
 
@@ -392,7 +375,6 @@ Quality management ensures that an organization's products or services consisten
   - **Benchmarking** : Provides a benchmark for measuring performance and setting objectives.
   - **Employee Engagement** : Clarifies roles and responsibilities, leading to increased employee engagement and morale.
   By integrating these standards into [test automation](/en/wiki/test-automation/) strategies, teams can ensure that testing is aligned with broader quality objectives, leading to more reliable and maintainable automated tests.
-
 
 #### How can adherence to a Quality Management standard be measured?
 

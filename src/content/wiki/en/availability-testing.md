@@ -280,7 +280,6 @@ Availability Testing, in the context of software testing, refers to evaluating a
     regularly to reflect changes in the system architecture, usage patterns, and business requirements.
   By adhering to these practices, [test automation](/en/wiki/test-automation/) engineers can help ensure that systems are reliable and available when users need them, contributing to a positive user experience and maintaining business continuity.
 
-  - **Define clear objectives**
 
 #### How do you handle failures during Availability Testing?
 

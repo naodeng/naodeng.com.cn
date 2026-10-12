@@ -28,7 +28,6 @@ order: 0
       - [Who are the participants in an inspection process?](#who-are-the-participants-in-an-inspection-process)
       - [What is the role of an inspector in software testing?](#what-is-the-role-of-an-inspector-in-software-testing)
       - [How is the inspection report prepared?](#how-is-the-inspection-report-prepared)
-  - [Inspection Report](#inspection-report)
       - [What are the common challenges faced during the inspection process?](#what-are-the-common-challenges-faced-during-the-inspection-process)
     - [Inspection Techniques](#inspection-techniques)
       - [What are the different inspection techniques used in software testing?](#what-are-the-different-inspection-techniques-used-in-software-testing)
@@ -102,7 +101,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **Process Improvement**: Analyze the inspection data to identify trends and areas for process enhancement.
   Throughout the inspection process, **communication** and **collaboration** are crucial. Tools and automation can streamline various steps, such as scheduling, defect tracking, and reporting, but the human element remains vital for effective inspections.
 
-
 ### Inspection Process
 
 #### What are the steps involved in the inspection process?
@@ -117,7 +115,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   6. **Follow-Up**: The moderator or a designated inspector verifies that all issues have been properly addressed and resolved. If necessary, a second inspection is scheduled.
   7. **Report**: Document the outcomes of the inspection, including the defects found, the changes made, and any observations about the process. This report informs stakeholders and guides future inspections.
   Throughout these steps, effective communication, meticulous record-keeping, and adherence to the defined process are crucial for a successful inspection.
-
 
 #### Who are the participants in an inspection process?
 
@@ -147,7 +144,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **[Quality Assurance](/en/wiki/quality-assurance/) (QA) Representatives** : Ensure that the inspection adheres to organizational standards and quality requirements.
   Each participant brings a unique perspective, contributing to a comprehensive evaluation of the work product. The collaboration among these roles is crucial for identifying defects and improving the overall quality of the software product.
 
-
 #### What is the role of an inspector in software testing?
 
   In [software testing](/en/wiki/software-testing/), an **inspector** is a role typically responsible for meticulously examining software artifacts, such as requirements, design documents, code, and [test cases](/en/wiki/test-case/), to identify defects before they propagate to later stages of development. Unlike [dynamic testing](/en/wiki/dynamic-testing/), where the software is executed, inspectors perform static analysis to ensure the artifact's quality without running the program.
@@ -167,32 +163,40 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **Conclusions** : Assessment of the document's quality and readiness for the next phase, and any recommendations for process improvement.
   The report is concise, focusing on actionable insights. It is shared with all inspection participants and other relevant stakeholders to ensure transparency and follow-up on corrective actions.
 
+**Example inspection report:**
 
-  ## Inspection Report
-  **Project:** XYZ
-  **Document:** Test Plan
-  **Date:** 2023-04-01
-  **Participants:** A. Tester, B. Developer, C. Analyst
-  **Summary:**
-  The test plan document meets the majority of the acceptance criteria, with some exceptions noted below.
-  **Findings:**
-  1. Critical: Missing test cases for feature Y.
-  2. Major: Inconsistent naming conventions in section 2.3.
-  3. Minor: Several typos in the prerequisites section.
-  **Statistics:**
-  - Defects Found: 15
-  - Inspection Rate: 5 defects/page
-  - Preparation Time: 2 hours
-  - Inspection Time: 1 hour
-  **Action Items:**
-  - [ ] A. Tester to add missing test cases by 2023-04-05.
-  - [ ] B. Developer to standardize naming conventions by 2023-04-07.
-  - [ ] C. Analyst to correct typos by 2023-04-03.
-  **Conclusions:**
-  The document is of high quality but requires minor revisions before proceeding. The inspection process has highlighted areas for improvement in document preparation guidelines.
+```markdown
+## Inspection Report
 
-  The report serves as a formal record of the inspection and guides the subsequent revision and [quality assurance](/en/wiki/quality-assurance/) activities.
+**Project:** XYZ
+**Document:** Test Plan
+**Date:** 2023-04-01
+**Participants:** A. Tester, B. Developer, C. Analyst
 
+**Summary:**
+The test plan document meets most acceptance criteria, with the exceptions below.
+
+**Findings:**
+1. Critical: Missing test cases for feature Y.
+2. Major: Inconsistent naming conventions in section 2.3.
+3. Minor: Several typos in the prerequisites section.
+
+**Statistics:**
+- Defects found: 15
+- Inspection rate: 5 defects/page
+- Preparation time: 2 hours
+- Inspection time: 1 hour
+
+**Action items:**
+- [ ] A. Tester to add missing test cases by 2023-04-05.
+- [ ] B. Developer to standardize naming conventions by 2023-04-07.
+- [ ] C. Analyst to correct typos by 2023-04-03.
+
+**Conclusion:**
+The document is of high quality but needs minor revisions before proceeding. The inspection also identified improvements for the document-preparation guidelines.
+```
+
+The report serves as a formal record of the inspection and guides subsequent revisions and [quality assurance](/en/wiki/quality-assurance/) activities.
 
 #### What are the common challenges faced during the inspection process?
 
@@ -210,7 +214,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **Cultural Differences** : In diverse teams, cultural differences can affect communication and understanding during inspections.
   Addressing these challenges requires careful planning, clear communication, and a commitment to continuous improvement in the inspection process.
 
-
 ### Inspection Techniques
 
 #### What are the different inspection techniques used in software testing?
@@ -226,7 +229,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **Technical Review**: A group discussion about the software product's technical aspects, including its design, code, and [test cases](/en/wiki/test-case/), to identify any potential issues.
   Each technique has its own strengths and is chosen based on the specific goals of the inspection, such as depth of review, available resources, and the nature of the software being inspected.
 
-
 #### How do you choose the right inspection technique for a particular testing scenario?
 
   Choosing the right inspection technique for a particular testing scenario involves evaluating several factors to ensure the most effective and efficient approach. Here's a concise guide:
@@ -240,7 +242,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **Previous Defect Data** : Analyze historical defect data to determine which areas are prone to errors and might benefit from more rigorous inspections.
   - **Feedback Loop** : Choose techniques that allow for quick feedback to developers, especially in agile environments where rapid iteration is key.
   Incorporate these considerations into your decision-making process to select the most appropriate inspection technique for your specific testing scenario. Remember, the goal is to effectively identify and resolve defects to enhance the quality of the software product.
-
 
 #### What is the difference between walkthroughs, inspections, and reviews?
 
@@ -352,24 +353,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **Limited Understanding:**
     Cannot catch logical errors that require human insight.
 
-  - **Collaborative Learning:**
-
-  - **Time-Consuming:**
-
-  - **Real-Time Feedback:**
-    Instant review and correction of code.
-
-  - **Knowledge Transfer:**
-    Continuous exchange of skills and techniques.
-
-  - **Reduced Blockers:**
-    Immediate assistance to overcome obstacles.
-
-  - **Resource Intensive:**
-
-  - **Consistency:**
-
-  - **[False Positives](/en/wiki/false-positive/):**
 ### Inspection Tools
 
 #### What tools are commonly used in the inspection process?
@@ -384,7 +367,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **[Quality Management](/en/wiki/quality-management/) Tools**: **TestRail**, **qTest**, and **Zephyr** provide features to manage [test cases](/en/wiki/test-case/), plan inspections, and track defects found during the inspection process.
   - **Collaboration Tools**: **Slack**, **Microsoft Teams**, and **Asana** can be used to communicate and coordinate during the inspection process, ensuring that all participants are aligned.
   These tools help automate various aspects of the inspection process, from code analysis to collaborative reviews, thereby enhancing efficiency and consistency. When selecting tools, consider factors such as integration capabilities with existing systems, ease of use, and the specific needs of the inspection process.
-
 
 #### How do inspection tools help in improving the efficiency of the process?
 
@@ -411,7 +393,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **Reporting** : Effective reporting features are essential for tracking defects and maintaining code quality over time.
   Choose a tool that strikes the right balance between these factors to enhance your inspection process and maintain high code quality.
 
-
 #### How can automation be integrated into the inspection process?
 
   Integrating automation into the inspection process can streamline and enhance the effectiveness of software quality assurance. Automation can be applied in several ways:
@@ -424,7 +405,6 @@ Inspection, sometimes referred to as a Fagan inspection, is a peer review proces
   - **Automated [Test Execution](/en/wiki/test-execution/)**: Incorporate automated unit, integration, and system tests to validate the code before the manual inspection process.
   - **Automated Documentation**: Tools can generate documentation from the codebase and test results, providing inspectors with up-to-date information.
   Implementing these automation strategies requires careful planning and tool selection to complement the human aspects of the inspection process. Automation should not replace human judgment but rather augment it, allowing inspectors to focus on more complex and nuanced aspects of [software quality](/en/wiki/software-quality/).
-
 
 #### What are some examples of inspection tools used in e2e testing?
 

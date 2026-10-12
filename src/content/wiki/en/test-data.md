@@ -138,8 +138,6 @@ Test data is the input provided to systems or software for testing purposes. Var
   In [automated testing](/en/wiki/automated-testing/) environments, TDM becomes even more crucial as it ensures that automated tests have the necessary data at the right time, thus avoiding test failures due to data issues. It also helps in maintaining the consistency of test data across different automated [test suites](/en/wiki/test-suite/) and parallel testing scenarios.
   By integrating TDM strategies with automation frameworks, teams can achieve higher test accuracy, faster execution times, and ultimately, a more robust and reliable software product.
 
-  - **Streamlined test cycles**
-
 #### Why is test data management crucial in software testing?
 
   Test data management (TDM) is crucial in [software testing](/en/wiki/software-testing/) as it directly influences **[test coverage](/en/wiki/test-coverage/)**, **data privacy compliance**, and the **reliability** of test results. Effective TDM ensures that a diverse set of data is available to cover various [test scenarios](/en/wiki/test-scenario/), including edge cases and data-driven tests. This diversity helps in uncovering defects that might be missed with a limited dataset.
@@ -360,21 +358,6 @@ Test data is the input provided to systems or software for testing purposes. Var
   Dynamic data masking and synthetic data generation features help maintain **compliance** with data privacy regulations by ensuring sensitive information is protected, while still providing realistic and varied data for comprehensive testing.
   Moreover, these tools often provide analytics and reporting capabilities, giving insights into data usage patterns and identifying potential data-related issues before they impact the testing process.
   In summary, test data management tools enhance automation testing by providing:
-
-  - **Automated**
-    data provisioning and cleanup
-
-  - **Version control**
-    for test data sets
-
-  - **Data integrity**
-    and isolation
-
-  - **Compliance**
-    with data privacy regulations
-
-  - **Analytics**
-    for improved data governance
 
   - **Automated**
     data provisioning and cleanup

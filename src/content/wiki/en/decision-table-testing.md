@@ -194,8 +194,6 @@ Decision Table Testing is a black-box software testing technique used to determi
     the automated tests as part of the continuous integration pipeline to ensure that changes do not break existing functionality.
   By following these steps, [test automation](/en/wiki/test-automation/) engineers can efficiently convert decision tables into automated tests, ensuring that complex business rules are consistently validated with each software [iteration](/en/wiki/iteration/).
 
-  1. **Identify**
-    the decision table to be automated.
 
   2. **Extract**
   1. **Parameterize**

@@ -1,6 +1,6 @@
 ---
 title: "可靠性测试 ｜ Reliability Testing"
-description: "可靠性测试是软件测试的一个子集，专注于验证应用程序在特定条件下、定义时间段内执行其预期功能的能力。其目标是发现可能影响软件可靠性的问题，如设计、功能和性能方面的缺陷。可靠性测试的关键方面包括："
+description: "可靠性测试是软件测试的一个子集，专注于验证应用程序在特定条件下、定义时间段内执行其预期功能的能力。其目标是发现可能影响软件可靠性的问题，如设计、功能和性能方面的缺陷。"
 section: "R"
 related:
   - mtbf
@@ -51,7 +51,7 @@ order: 0
 - **容错**：评估软件在出现故障时维持运行的能力。
 - **恢复测试**：确保软件可以从崩溃中恢复并恢复运行而不会丢失数据。
 - **数据完整性**：检查正常操作期间的数据损坏问题。
-- **一致性**：验证任务的重复执行是否会产生相同的结果。 [可靠性测试](/zh-cn/wiki/reliability-testing/) 通常涉及**压力和[负载测试](/zh-cn/wiki/load-testing/)** 将软件推向极限并评估其在极端条件下的行为。它还包括修复或更新后的**[回归测试](/zh-cn/wiki/regression-testing/)**，以确保软件随着时间的推移保持可靠。 为了确定产品是否已通过[可靠性测试](/zh-cn/wiki/reliability-testing/)，使用预定义的标准，例如**平均故障间隔时间 ([平均无故障时间](/zh-cn/wiki/mtbf/))** 和 **平均故障时间 (MTTF)**。这些指标有助于量化可靠性并预测软件的运行寿命。 [可靠性测试](/zh-cn/wiki/reliability-testing/) 通常集成到**持续集成/持续部署 (CI/CD)** 管道中，以确保在整个开发生命周期中进行持续评估。自动化工程师使用 **[JMeter](/zh-cn/wiki/jmeter/)、LoadRunner 或自定义脚本** 等工具来模拟负载和监控软件行为。 最佳实践包括**[增量测试](/zh-cn/wiki/incremental-testing/)**，从小负载开始并逐渐增加，以及**监视系统资源**以识别潜在的瓶颈或内存泄漏。克服[可靠性测试](/zh-cn/wiki/reliability-testing/)中的挑战需要透彻理解系统架构、现实的[测试环境](/zh-cn/wiki/test-environment/)以及全面的监控和日志记录策略。
+- **一致性**：验证任务的重复执行是否会产生相同的结果。 [可靠性测试](/zh-cn/wiki/reliability-testing/) 通常涉及**压力和[负载测试](/zh-cn/wiki/load-testing/)** 将软件推向极限并评估其在极端条件下的行为。它还包括修复或更新后的 **[回归测试](/zh-cn/wiki/regression-testing/)**，以确保软件随着时间的推移保持可靠。 为了确定产品是否已通过[可靠性测试](/zh-cn/wiki/reliability-testing/)，使用预定义的标准，例如**平均故障间隔时间 ([平均无故障时间](/zh-cn/wiki/mtbf/))** 和 **平均故障时间 (MTTF)**。这些指标有助于量化可靠性并预测软件的运行寿命。 [可靠性测试](/zh-cn/wiki/reliability-testing/) 通常集成到**持续集成/持续部署 (CI/CD)** 管道中，以确保在整个开发生命周期中进行持续评估。自动化工程师使用 **[JMeter](/zh-cn/wiki/jmeter/)、LoadRunner 或自定义脚本** 等工具来模拟负载和监控软件行为。 最佳实践包括 **[增量测试](/zh-cn/wiki/incremental-testing/)**，从小负载开始并逐渐增加，以及**监视系统资源**以识别潜在的瓶颈或内存泄漏。克服[可靠性测试](/zh-cn/wiki/reliability-testing/)中的挑战需要透彻理解系统架构、现实的[测试环境](/zh-cn/wiki/test-environment/)以及全面的监控和日志记录策略。
 
 #### 为什么可靠性测试在软件开发中很重要？
 
@@ -123,13 +123,7 @@ order: 0
   ```
 每种方法都针对可靠性的不同方面，并有助于发现可能损害软件可靠性的独特问题。
 
-- **故障注入**：故意向系统添加错误以观察其响应和恢复机制。这可以通过软件工具或硬件操作来完成。
-- **恢复测试**：确保软件可以从故障中恢复并返回到正常运行状态，而不会丢失或损坏数据。
-- **[压力测试](/zh-cn/wiki/stress-testing/)** ：通过增加负载或输入速率将软件推向极限，以确保它能够处理高压力而不会出现故障。
-- **浸泡测试**：在高负载下长时间运行系统，以识别长时间运行可能出现的问题。
-- **[性能测试](/zh-cn/wiki/performance-testing/)** ：评估系统在各种条件下的性能，以确保其满足所需的可靠性标准。
 - **[混沌工程](/zh-cn/wiki/chaos-engineering/)** ：引入随机系统扰动，以了解其在不可预测场景中的行为并提高其弹性。
-- **比较测试**：比较不同软件版本或类似产品的可靠性，以评估其相对稳健性。
 
 #### 可靠性增长测试是如何进行的？
 
@@ -156,7 +150,6 @@ order: 0
 利用**自动化框架**和**可靠性建模工具**来简化此过程。目标是随着时间的推移系统地减少故障的数量和[严重性](/zh-cn/wiki/severity/)，从而形成更加强大和可靠的软件产品。
 
 7. **[迭代](/zh-cn/wiki/iteration/)**：重复该循环，改进每个[迭代](/zh-cn/wiki/iteration/) 的测试流程和软件，以促进持续的可靠性改进。
-8. **监控**：持续监控可靠性指标，以确保性能一致并识别任何回归。
 
 #### 负载测试在评估软件可靠性方面的作用是什么？
 
@@ -225,12 +218,6 @@ order: 0
 
 - **软件可靠性模型**：Goel-Okumoto 模型、Jelinski-Moranda 模型或 Keiller-Littlewood 模型等预测模型用于根据历史故障数据估计未来的可靠性。 这些指标和模型提供定量数据来评估和预测软件可靠性，帮助识别需要改进的领域。
 
-- **平均故障间隔时间 ([平均无故障时间](/zh-cn/wiki/mtbf/))** ：通过将总运行时间除以故障数量来计算。它提供了系统故障之间的平均时间。
-- **平均无故障时间 (MTTF)** ：与 MTBF 类似，但用于不可修复的系统。它表示距第一次故障的平均时间。
-- **平均修复时间 (MTTR)**：测量修复故障组件或系统所需的平均时间。
-- **故障率**：工程系统或组件发生故障的频率，以单位时间的故障数表示。
-- **可靠性函数**：估计系统在特定时间内不会发生故障的概率。它通常由指数衰减函数表示。
-- **可用性**：系统处于正常运行状态的时间比例。它是 MTBF 与 MTBF 和 MTTR 之和的比率。
 - **软件可靠性模型**：Goel-Okumoto 模型、Jelinski-Moranda 模型或 Keiller-Littlewood 模型等预测模型用于根据历史故障数据估计未来的可靠性。
 
 ### 实施和流程
@@ -264,7 +251,7 @@ order: 0
 
 - **[JMeter](/zh-cn/wiki/jmeter/)**：一款专为性能和[负载测试](/zh-cn/wiki/load-testing/) 而设计的开源工具，也可通过模拟重负载并观察软件随时间的变化而用于[可靠性测试](/zh-cn/wiki/reliability-testing/)。
 - **LoadRunner**：[性能测试](/zh-cn/wiki/performance-testing/)广泛使用的工具，LoadRunner 可以同时模拟数千个用户，测试压力条件下的可靠性。
-- **Gattle**：基于 Scala、Akka、Netty 的高性能@@PR​​OTECTED_22@@框架，Gattle 可用于测试 Web 应用程序的可靠性。
+- **Gattle**：基于 Scala、Akka、Netty 的高性能测试框架，Gattle 可用于测试 Web 应用程序的可靠性。
 - **Chaos Monkey**：Chaos Monkey 是 Netflix Simian Army 的一部分，它会随机终止生产中的实例，以确保工程师实施其服务以适应实例故障。
 - **Gremlin**：一个故障即服务平台，允许您模拟各种类型的中断并观察您的系统如何承受它们，从而测试其可靠性。
 - **可靠性测试系统（RTS）**：一套工具，可用于模拟不同的系统条件和故障，以评估复杂软件系统的可靠性。
@@ -272,8 +259,6 @@ order: 0
 - **APM 工具**：**New Relic**、**Dynatrace** 或 **AppDynamics** 等应用程序性能管理工具可以监控应用程序性能和稳定性，从而深入了解软件在实际条件下的可靠性。 这些工具有助于自动化向系统施加压力、监控其性能以及识别可能导致可靠性问题的弱点的过程。
 
 - **[JMeter](/zh-cn/wiki/jmeter/)**：一款专为性能和[负载测试](/zh-cn/wiki/load-testing/) 而设计的开源工具，它也可以通过模拟重负载并观察软件随时间的变化而用于[可靠性测试](/zh-cn/wiki/reliability-testing/)。
-- **LoadRunner**：[性能测试](/zh-cn/wiki/performance-testing/)广泛使用的工具，LoadRunner 可以同时模拟数千个用户，测试压力条件下的可靠性。
-- **Gattle**：基于 Scala、Akka、Netty 的高性能@@PR​​OTECTED_27@@框架，Gattle 可用于测试 Web 应用程序的可靠性。
 - **APM 工具**：**New Relic**、**Dynatrace** 或 **AppDynamics** 等应用程序性能管理工具可以监控应用程序性能和稳定性，从而深入了解软件在实际条件下的可靠性。
 
 #### 如何确定软件产品是否通过了可靠性测试？
@@ -326,38 +311,30 @@ order: 0
 - **保持更新**：及时了解最新的测试工具和方法。适应和集成新技术以增强测试能力。
 - **审查和修订**：定期审查[测试计划](/zh-cn/wiki/test-plan/) 和案例，以确保它们与软件不断发展的功能和要求保持一致。 通过实施这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以提高[可靠性测试](/zh-cn/wiki/reliability-testing/) 的有效性，并为交付强大的软件产品做出贡献。
 
-- **尽可能自动化**：实施自动化框架来处理重复且耗时的测试。这提高了效率和一致性。
-
-  ```
-    describe('Reliability Tests', () => {
-      it('should handle expected load', () => {
-        // Automation code for load testing
-      });
-    });
-  ```
-
 #### 进行有效可靠性测试的最佳实践有哪些？
 
 要进行有效的[可靠性测试](/zh-cn/wiki/reliability-testing/)，请考虑以下最佳实践：
 
 - **定义明确的可靠性目标**基于用户期望和系统要求。这些应该是可量化的并与业务目标保持一致。
 
-- **制定全面的[测试计划](/zh-cn/wiki/test-plan/)**其中包括各种场景，涵盖常见条件和边缘情况。应定期审查和更新该计划。
+- **制定全面的[测试计划](/zh-cn/wiki/test-plan/)** 其中包括各种场景，涵盖常见条件和边缘情况。应定期审查和更新该计划。
 
 - **尽可能自动化**以确保一致性和可重复性。使用脚本来模拟现实世界的使用模式和压力条件。
 
 - **监控系统行为**使用日志记录和性能跟踪工具进行测试。寻找潜在可靠性问题的指标，例如内存泄漏或响应时间缓慢。
 
-// TypeScript 中的监控片段示例
-  从“perf_hooks”导入{性能}；
-  const start = Performance.now();
-  // ...这里是您的测试代码...
-  const end = Performance.now();
-  console.log(`Test duration: ${end - start} milliseconds`);
+  ```ts
+  import { performance } from "node:perf_hooks";
 
-- **Incorporate fault injection techniques** to evaluate how the system handles unexpected failures. This can include network outages, corrupted data inputs, or hardware malfunctions.
-- **Use version control** for test scripts to track changes and understand the impact of modifications on reliability.
-- **Prioritize issues based on severity and likelihood of occurrence**. Focus on resolving high-impact defects that could significantly affect reliability.
-- **Conduct root cause analysis** for any failures to prevent recurrence. Implement fixes and regression test to ensure the issue is resolved.
-- **Iterate and refine testing** based on feedback and newly discovered information. Continuous improvement is key to maintaining and enhancing reliability.
-- **Document test results and insights** to inform future testing efforts and provide evidence of reliability for stakeholders.
+  const start = performance.now();
+  // Run the reliability test here.
+  const end = performance.now();
+  console.log("Test duration: " + (end - start) + " milliseconds");
+  ```
+
+- **加入故障注入**：评估系统如何处理意外故障，例如网络中断、输入数据损坏或硬件异常。
+- **对测试脚本进行版本控制**：跟踪变更，并了解修改对可靠性的影响。
+- **按严重性和发生可能性排序问题**：优先解决可能显著影响可靠性的高影响缺陷。
+- **开展根因分析**：调查每次故障以防止再次发生；实施修复后运行回归测试，确认问题已解决。
+- **迭代并完善测试**：根据反馈和新发现持续调整测试，以维护和提升可靠性。
+- **记录测试结果和见解**：为后续测试提供依据，并向利益相关者证明可靠性。

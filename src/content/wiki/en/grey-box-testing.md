@@ -71,8 +71,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   Automated tests are designed to target specific areas where knowledge of the code and the user experience intersect. For example, a tester might write a script to send specially crafted requests to an [API](/en/wiki/api-testing/) endpoint to test for [SQL](/en/wiki/sql/) injection vulnerabilities, combining knowledge of the application's data handling with testing techniques from a user's perspective.
   To evaluate effectiveness, testers analyze [test coverage](/en/wiki/test-coverage/), defect detection rate, and the ability to identify security and performance issues. Grey Box Testing is particularly effective in scenarios where complete knowledge of the system is not necessary, but a purely black box approach is insufficient to ensure thorough testing.
 
-  - **[API testing](/en/wiki/api-testing/) tools**
-
 #### Why is Grey Box Testing important in software testing?
 
   Grey Box Testing is crucial in [software testing](/en/wiki/software-testing/) as it bridges the gap between **[Black Box Testing](/en/wiki/black-box-testing/)** and **[White Box Testing](/en/wiki/white-box-testing/)** by utilizing a partial understanding of the internal workings of the system. This approach enables testers to design more effective [test scenarios](/en/wiki/test-scenario/) that combine both high-level system behaviors and lower-level operations.
@@ -97,7 +95,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   - **Reduces redundancy** : Helps in reducing test redundancy by focusing on areas that are not covered by black box or white box testing alone.
   By striking a balance between internal and external views of the software, grey box testing provides a comprehensive approach that can lead to more robust and secure applications.
 
-
 #### How does Grey Box Testing differ from Black Box and White Box Testing?
 
   Grey Box Testing combines elements of both **[Black Box Testing](/en/wiki/black-box-testing/)** and **[White Box Testing](/en/wiki/white-box-testing/)**. In [Black Box Testing](/en/wiki/black-box-testing/), testers evaluate the software without any knowledge of the internal workings, focusing solely on input and output. [White Box Testing](/en/wiki/white-box-testing/), on the other hand, requires a deep understanding of the code, as testers need to have access to the source code and are aware of the software's architecture and implementation.
@@ -119,7 +116,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   - **State-based Testing** : Examining the behavior of the application in different states and transitions between states.
   These techniques leverage partial knowledge of the internal workings of the system, combining elements of both black box and [white box testing](/en/wiki/white-box-testing/) to achieve a more comprehensive [test coverage](/en/wiki/test-coverage/). Testers use these methods to focus on areas that are not typically covered by purely black or [white box testing](/en/wiki/white-box-testing/) approaches, such as user interactions, system states, and the effect of external factors on the system's behavior.
 
-
 #### What tools are often used in Grey Box Testing?
 
   In **Grey Box Testing**, tools that offer both high-level application interaction and some degree of internal visibility are often utilized. Common tools include:
@@ -133,7 +129,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   - **AppScan** : IBM's tool for security testing that can be used for Grey Box Testing to identify security exposures.
   - **OWASP ZAP** : An open-source tool for finding vulnerabilities in web applications during Grey Box Testing.
   These tools enable testers to perform actions like monitoring network traffic, analyzing application logs, and manipulating input data to observe system behavior, which are essential for Grey Box Testing. Testers often script or use existing test frameworks to automate these tools, integrating them into the testing workflow.
-
 
 #### How can Grey Box Testing be automated?
 
@@ -156,9 +151,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   2. **Analyze test results** to ensure that both the external behavior and internal structures are functioning as expected. Use logging and reporting features of your [test automation](/en/wiki/test-automation/) framework to capture and review results.
   By combining knowledge of the internal workings with automated external tests, Grey Box Testing can be effectively automated to provide a comprehensive assessment of the software's quality.
 
-  1. **Integrate the scripts into your [test suite](/en/wiki/test-suite/)** and configure them to run automatically, either on demand or triggered by specific events such as code commits or builds.
-  2. **Analyze test results** to ensure that both the external behavior and internal structures are functioning as expected. Use logging and reporting features of your [test automation](/en/wiki/test-automation/) framework to capture and review results.
-
 #### What are the challenges in automating Grey Box Testing?
 
   Automating Grey Box Testing presents several challenges:
@@ -171,7 +163,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   - **Test maintenance**: As with any [automated testing](/en/wiki/automated-testing/), maintaining [test scripts](/en/wiki/test-script/) as the application evolves can be time-consuming. Grey box tests may require updates to adapt to changes in both the user interface and the underlying architecture.
   - **[Performance testing](/en/wiki/performance-testing/)**: Grey box testing often includes [performance testing](/en/wiki/performance-testing/), which can be complex to automate due to the need to simulate realistic user behavior and system loads.
   Addressing these challenges requires careful planning, a deep understanding of the system under test, and the selection of appropriate tools and techniques to ensure that grey box testing is both effective and efficient.
-
 
 ### Implementation and Process
 
@@ -191,7 +182,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   10. **Iterate**: Refine [test cases](/en/wiki/test-case/) based on findings and retest as necessary.
   Throughout the process, maintain a balance between not knowing the system's full internals (as in [Black Box Testing](/en/wiki/black-box-testing/)) and having some insight into its workings (as in [White Box Testing](/en/wiki/white-box-testing/)).
 
-
 #### How do you design test cases for Grey Box Testing?
 
   Designing [test cases](/en/wiki/test-case/) for Grey Box Testing involves a combination of Black Box and [White Box Testing](/en/wiki/white-box-testing/) approaches. Here's a concise guide:
@@ -209,7 +199,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   11. **Prioritize critical paths**: Focus on the most important functionalities and user journeys.
   12. **Monitor performance**: Include tests that measure response times and system behavior under load.
   Remember to iterate and refine [test cases](/en/wiki/test-case/) as you gain more insights into the system's behavior and as new features are added.
-
 
 #### What is the role of a tester in Grey Box Testing?
 
@@ -269,7 +258,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   - **Feedback Loop** : Implement a feedback loop with developers and stakeholders to ensure that tests are providing value and to refine the testing approach based on insights gained.
   By focusing on these areas, you can obtain a comprehensive view of the effectiveness of your Grey Box Testing efforts.
 
-
 ### Real World Applications
 
 #### Can you provide examples of real-world applications of Grey Box Testing?
@@ -282,7 +270,6 @@ Grey box testing involves testing an application with partial knowledge of its i
   4. **[Performance Testing](/en/wiki/performance-testing/)**: Grey box testing is applied to monitor system behavior under load. Testers might use knowledge of the system architecture to identify bottlenecks or memory leaks.
   5. **[Database](/en/wiki/database/) Testing**: Testers use grey box approaches to validate data integrity and consistency. They might have knowledge of the [database](/en/wiki/database/) schema to write more targeted [SQL](/en/wiki/sql/) queries for testing.
   By combining the external and internal perspectives, grey box testing provides a balanced approach that can uncover issues that might be missed by purely black or [white box testing](/en/wiki/white-box-testing/) methods.
-
 
 #### How is Grey Box Testing applied in agile development?
 
@@ -322,12 +309,10 @@ Grey box testing involves testing an application with partial knowledge of its i
   - **Ambiguity in Results** : Without full insight into the system, it can be difficult to interpret some test results or to distinguish between expected and unexpected behavior.
   In practice, these issues necessitate a careful balance between the knowledge of the system's internals and the external behavior, requiring testers to be adept at navigating the middle ground between black box and [white box testing](/en/wiki/white-box-testing/) methodologies.
 
-
 #### How can Grey Box Testing be integrated into a CI/CD pipeline?
 
   Integrating Grey Box Testing into a CI/CD pipeline involves a combination of automated and manual steps to ensure thorough coverage and efficient testing. Here's a succinct guide:
 
-  1. **Identify [test cases](/en/wiki/test-case/)**
     that cover both functional and internal structures, focusing on areas where White and Black Box tests overlap.
 
   2. **Automate**

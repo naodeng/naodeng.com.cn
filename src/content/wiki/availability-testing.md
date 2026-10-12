@@ -1,6 +1,6 @@
 ---
 title: "可用性测试 ｜ Availability Testing"
-description: "基础知识和重要性"
+description: "可用性测试评估系统的运行时间和可访问性，确认应用或系统能否按预期持续向用户提供服务。"
 section: "A"
 related:
   - failover-testing

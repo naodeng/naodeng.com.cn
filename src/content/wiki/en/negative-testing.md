@@ -183,8 +183,6 @@ Negative testing verifies an application's ability to handle incorrect input, co
   ```
   Automating negative tests ensures they are not overlooked due to time constraints or the monotony of manual execution. It also helps maintain a high standard of quality by consistently challenging the software's error handling and validation mechanisms.
 
-  - **Execute repetitive tests**
-
 ### Challenges and Solutions
 
 #### What are some challenges faced during negative testing?
@@ -230,8 +228,6 @@ Negative testing verifies an application's ability to handle incorrect input, co
   - **Review and refine** your negative testing approach regularly. Learn from defects that slip through and adjust your strategy accordingly.
   By addressing these areas, you can enhance the effectiveness of negative testing within your test automation efforts, leading to more resilient and reliable software.
 
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### What are some common mistakes made during negative testing?
 
@@ -284,8 +280,6 @@ Negative testing verifies an application's ability to handle incorrect input, co
   - **Regularly review and refine**
     your negative test cases to adapt to new features and changes in the software.
   By focusing on these key areas, you can streamline your negative testing efforts and bolster the robustness of your software.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 ### Real-world Applications
 

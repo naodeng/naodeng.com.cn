@@ -302,9 +302,6 @@ Evaluation of a web application's speed, responsiveness, and stability under var
   - **Stay updated with the latest testing tools and methodologies** to take advantage of advancements in performance testing and analysis.
   By implementing these strategies, test automation engineers can effectively address the challenges in web performance testing and ensure that applications meet the desired performance standards.
 
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### What are some best practices in web performance testing?
 
   Best practices in web performance testing include:

@@ -64,8 +64,6 @@ A clean slate refers to the practice of resetting a system, application, or envi
   Challenges often arise from persistent state data, [flaky tests](/en/wiki/flaky-test/), or external dependencies. Address these by implementing robust teardown procedures, using transactional tests where [database](/en/wiki/database/) states are rolled back post-test, and mocking/stubbing external services.
   In practice, maintaining a Clean Slate can be difficult in complex systems. For example, distributed systems with multiple interacting components may require coordinated resets. In such cases, a combination of container orchestration, service virtualization, and careful test design is essential to ensure test reliability.
 
-  1. **Reset [databases](/en/wiki/database/)**
-
 #### Why is a 'Clean Slate' important in end-to-end testing?
 
   A 'Clean Slate' is crucial in [end-to-end testing](/en/wiki/end-to-end-testing/) to ensure that each test run is **isolated** and **independent** from any previous runs. This isolation helps to prevent **[flaky tests](/en/wiki/flaky-test/)** and **inconsistent results** that can arise from leftover data, configurations, or system states. Without a clean slate, tests may pass or fail due to reasons unrelated to the current code changes, leading to **misleading feedback** and potentially allowing [bugs](/en/wiki/bug/) to slip through.
@@ -88,11 +86,6 @@ A clean slate refers to the practice of resetting a system, application, or envi
     after themselves by deleting any data they create.
   In cases where achieving a clean slate is particularly challenging, such as with complex stateful systems, consider **versioning the [test data](/en/wiki/test-data/)** or using **feature flags** to control the system's state. Always review and **refactor tests** regularly to enhance their independence and robustness.
 
-  - Using
-    **mocks**
-    or
-    **stubs**
-    for external services.
 
   - Ensuring that tests
     **clean up**
@@ -117,7 +110,6 @@ A clean slate refers to the practice of resetting a system, application, or envi
   - **Performance Issues** : Leftover data or processes can consume system resources, potentially slowing down the test execution or the system under test.
   - **Data Leakage** : Sensitive data from one test could inadvertently be exposed to another, causing security concerns.
   To mitigate these risks, it's crucial to implement strategies that ensure a clean slate, such as using transactional rollbacks, [database](/en/wiki/database/) seeding, virtualization, or containerization to reset the environment before each test run.
-
 
 ### Implementation
 
@@ -175,7 +167,6 @@ A clean slate refers to the practice of resetting a system, application, or envi
   - **Regularly refresh [test data](/en/wiki/test-data/)**: Schedule periodic refreshes of [test data](/en/wiki/test-data/) to a baseline to prevent drift.
   Implementing these strategies will help maintain a **Clean Slate** and contribute to consistent, reliable test results.
 
-
 #### What are the steps to set up a 'Clean Slate' in an automated testing environment?
 
   To set up a 'Clean Slate' in an [automated testing](/en/wiki/automated-testing/) environment, follow these steps:
@@ -229,16 +220,12 @@ A clean slate refers to the practice of resetting a system, application, or envi
      ```
   By automating these steps, you ensure a consistent and repeatable 'Clean Slate' for each test run, minimizing the risk of test contamination and false results.
 
-
 #### What tools or techniques can be used to achieve a 'Clean Slate' in software testing?
 
   To achieve a **Clean Slate** in software [test automation](/en/wiki/test-automation/), consider the following tools and techniques:
 
   - **Virtualization** : Use tools like VMware or VirtualBox to create virtual environments that can be reset to a known state before each test run.
   - **Containerization** : Leverage Docker or Kubernetes to encapsulate your test environment and dependencies, allowing for quick resets.
-
-
-
 
     ```bash
     docker-compose down && docker-compose up -d
@@ -253,13 +240,10 @@ A clean slate refers to the practice of resetting a system, application, or envi
     git reset --hard HEAD && git clean -fdx
     ```
 
-
   - **Automated Cleanup Scripts** : Write scripts to clean up the environment post-test execution.
   - **Continuous Integration Systems** : Employ Jenkins or GitLab CI to automate the setup and teardown of test environments.
   - **Cloud-based Solutions** : AWS, Azure, or GCP can provide on-demand environments that are torn down after use.
   Remember to **isolate** tests to prevent cross-contamination, **automate** the cleanup process, and **validate** the environment before each test run to ensure consistency.
-
-
 
 #### How can you maintain a 'Clean Slate' throughout the testing process?
 
@@ -357,9 +341,6 @@ A clean slate refers to the practice of resetting a system, application, or envi
   - **Frequent Communication**: Ensure team members are aware of changes that could affect the [test environment](/en/wiki/test-environment/) and coordinate accordingly.
   By integrating these practices, [test automation](/en/wiki/test-automation/) engineers can effectively manage and maintain a **Clean Slate**, ensuring reliable and consistent testing outcomes.
 
-  - **Automate Cleanup Processes** : Implement scripts that automatically reset the environment before each test run. This can include clearing databases, resetting server states, or refreshing configurations.
-  - **Leverage Virtualization and Containerization** : Use tools like Docker and Kubernetes to create isolated and reproducible environments that can be quickly spun up or torn down.
-  - **Utilize Service Virtualization** : Mock external dependencies to ensure they are in a known state for each test.
 
 #### What are some best practices for maintaining a 'Clean Slate' in end-to-end testing?
 
@@ -394,14 +375,12 @@ A clean slate refers to the practice of resetting a system, application, or envi
   - **Regularly refresh [test environments](/en/wiki/test-environment/)**: Schedule periodic resets of the entire [test environment](/en/wiki/test-environment/) to a clean state.
   By following these practices, you can maintain a 'Clean Slate' and ensure the integrity and reliability of your end-to-end tests.
 
-
 #### Can you provide examples of situations where maintaining a 'Clean Slate' was particularly challenging and how it was handled?
 
   Maintaining a **Clean Slate** can be particularly challenging in **distributed systems** where multiple services and [databases](/en/wiki/database/) must be reset or rolled back to a known state. For instance, when testing a microservices architecture, each service might have its own [database](/en/wiki/database/) and external dependencies, making it difficult to ensure all components are in the initial state before each test.
   One scenario involved a **CI/CD pipeline** where tests ran in parallel across different environments. Flakiness arose due to shared resources not being properly isolated or reset. The team addressed this by implementing **containerization** with Docker, where each test ran in its own isolated container, ensuring no shared state.
   Another challenging situation was with **persistent queues** like Kafka or RabbitMQ, where messages from previous test runs remained and polluted new tests. The solution was to purge the queues before each test run using scripts that were integrated into the test [setup](/en/wiki/setup/) phase.
   In a **cloud environment**, ensuring a Clean Slate was tough due to leftover resources like storage blobs or VM instances, which also incurred costs. The team used cloud-specific tools to automate the teardown process, ensuring resources were cleaned up after each test run.
-
 
   ```javascript
   // Example teardown script for cloud resources

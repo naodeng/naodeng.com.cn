@@ -65,7 +65,6 @@ order: 0
   - **[Quality assurance](/en/wiki/quality-assurance/)** : It helps maintain a consistent level of quality by ensuring that critical functionalities work as expected after each build.
   Incorporating BVT into the software development process is a strategic approach to identify and address potential defects early, ultimately leading to a more reliable and efficient release process.
 
-
 #### What is the main goal of Build Verification Testing?
 
   The main goal of **Build Verification Testing (BVT)** is to **validate the stability and core functionality** of a software build, ensuring that it is reliable enough for further testing. BVT acts as a gatekeeper, confirming that the build meets a quality threshold to warrant a full suite of more exhaustive tests. By quickly identifying any major issues early in the development cycle, BVT saves time and resources, allowing teams to focus on builds that are likely to pass more rigorous testing phases.
@@ -125,7 +124,6 @@ order: 0
   - **Environment Specific Tests** : Ensure the build works in the specific configuration it’s intended for.
   Use **automation frameworks** to execute these tests efficiently, and integrate them into a **CI/CD pipeline** for continuous validation. Address challenges by maintaining a well-organized [test suite](/en/wiki/test-suite/), prioritizing tests effectively, and keeping tests up-to-date with application changes. Optimize BVT by continuously reviewing and refining the [test suite](/en/wiki/test-suite/) to eliminate redundancies and focusing on high-impact tests.
 
-
 #### How do you determine which tests to include in a Build Verification Test suite?
 
   Determining which tests to include in a **Build [Verification](/en/wiki/verification/) Test (BVT)** suite involves identifying a subset of tests that are:
@@ -147,7 +145,6 @@ order: 0
   });
   ```
   Regularly analyze test results to refine the selection of tests, ensuring the BVT suite remains an effective gatekeeper for the build process.
-
 
 #### What is the role of automation in Build Verification Testing?
 
@@ -196,7 +193,6 @@ order: 0
   - **Bitbucket Pipelines** : A CI/CD service built within Bitbucket that provides build verification and deployment automation.
   These tools automate the execution of [test suites](/en/wiki/test-suite/) and provide feedback on the build's health. They can be configured to trigger automatically upon each commit or as scheduled tasks. Integration with version control systems enables them to pull the latest code for testing. Reporting features offer insights into the test results, helping teams to quickly identify and address issues. For optimal BVT, these tools are often configured to run a subset of the [test suite](/en/wiki/test-suite/) that covers the most critical features of the application.
 
-
 #### How do these tools help in the process of Build Verification Testing?
 
   [Test automation](/en/wiki/test-automation/) tools streamline **Build Verification Testing (BVT)** by executing a predefined set of tests automatically upon each new build. These tools can **detect regressions** and **validate core functionalities** quickly, ensuring that the build is stable enough for further testing.
@@ -214,7 +210,6 @@ order: 0
   - **Relevant** : Tests should cover the most critical features of the application.
   - **Maintainable** : Test code should be kept clean and updated to adapt to changes in the application.
   By adhering to these principles, automation tools enhance the effectiveness of BVT, providing a solid foundation for a stable and reliable software delivery process.
-
 
 #### What are some best practices when using these tools for Build Verification Testing?
 
@@ -257,8 +252,6 @@ order: 0
   config.maxInstances = 5;
   ```
   By adhering to these practices, you can ensure that your BVTs are an efficient and reliable foundation for your continuous integration and delivery pipeline.
-
-  - **Maintain a focused [test suite](/en/wiki/test-suite/)**
 
 #### How can these tools be integrated into a continuous integration/continuous delivery pipeline?
 
@@ -328,7 +321,6 @@ order: 0
      ```
   By automating these steps, you ensure a robust and reliable integration of [test automation](/en/wiki/test-automation/) into the CI/CD pipeline, facilitating rapid feedback and high-quality software delivery.
 
-
 ### Challenges and Solutions
 
 #### What are some common challenges faced during Build Verification Testing?
@@ -386,9 +378,6 @@ order: 0
     **notification policies**
     to distinguish between flaky and genuine failures.
 
-  - Implementing
-    **retry logic**
-    for flaky tests.
 
   - Using
     **containerization**
@@ -407,7 +396,6 @@ order: 0
   - **Keeping Tests Up-to-Date**: Implement a process for updating tests alongside feature development. Encourage collaboration between developers and testers to align test updates with code changes.
   - **Tooling**: Choose tools that integrate well with your tech stack and CI/CD pipeline. Keep tools updated and train the team to use them effectively.
   By addressing these challenges proactively, you can ensure that your BVTs remain an asset to your software development lifecycle, providing fast and reliable feedback on the health of your builds.
-
 
 #### What are some best practices to ensure effective and efficient Build Verification Testing?
 
@@ -437,8 +425,6 @@ order: 0
   - **Integrate BVTs into your CI/CD pipeline**
     to automatically trigger tests with each build, providing immediate feedback on the health of the build.
   By adhering to these practices, you'll enhance the effectiveness of your BVTs, providing rapid, reliable feedback on new builds and maintaining a high standard of [software quality](/en/wiki/software-quality/).
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### How can Build Verification Testing be optimized to save time and resources?
 

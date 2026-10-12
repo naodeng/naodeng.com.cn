@@ -205,8 +205,6 @@ Test tools assist in various test activities, from planning to analysis. They id
     within the team to ensure everyone is proficient in using the test tool to its full potential.
   By following these practices, you can maximize the output of your test tool and ensure a robust and efficient [automated testing](/en/wiki/automated-testing/) process.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### What are the common challenges faced while using a test tool and how to overcome them?
 
   Common challenges in using test tools include:
