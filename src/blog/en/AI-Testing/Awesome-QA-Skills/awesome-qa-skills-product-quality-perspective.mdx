@@ -1,6 +1,6 @@
 ---
 title: "Product Quality Perspective: Bring user value and business impact into quality decisions"
-description: "Product Quality Perspective field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+description: "Evaluate product quality through user tasks, business rules, trust and conversion risk so release decisions reflect customer outcomes."
 date: 2026-09-22T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Product Quality Perspective"]
@@ -12,7 +12,7 @@ From a product perspective, quality is not a defect count; it is whether users c
 
 The Product Quality Perspective Skill evaluates behavior through customer outcomes and product risk, preventing a green dashboard from standing in for user value.
 
-This guide uses collaboration-grounded examples to unpack the judgment process, helping you turn different signals into actions that are communicable and traceable.
+The membership-upgrade example ties customer tasks, pricing and entitlement rules, payment failure states, conversion signals, and acceptance gaps to business decisions.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Product Quality Perspective.
 
@@ -22,82 +22,143 @@ The main prompt covers Inputs, Applicability Check, Product Questions, Output Co
 
 This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
 
-## A review fragment that keeps disagreement visible
+## Related Skills
 
-Review membership upgrades for user value, business rules, failure states, and acceptance gaps
+Product Quality Perspective starts with user tasks and business trade-offs. These Skills add collaboration, QA evidence, or experience detail:
 
-Different roles can read the same artifact and find different risks.
+| Skill | When to use it | What it adds |
+| --- | --- | --- |
+| [Multi-Role Quality Synthesis](https://inaodeng.com/en/qaskills/multi-role-quality-synthesis/) | Product, QA, Technical, and UX material needs to be combined | Preserves role evidence and disagreement in a decision-ready summary |
+| [QA Quality Perspective](https://inaodeng.com/en/qaskills/qa-quality-perspective/) | Product risks need to be tied to coverage, gaps, and release evidence | Checks whether test conclusions support a specific release judgment |
+| [UX Quality Perspective](https://inaodeng.com/en/qaskills/ux-quality-perspective/) | A user task is blocked by comprehension or failure recovery | Connects the issue to states, impact, and verifiable actions |
+| [Technical Quality Perspective](https://inaodeng.com/en/qaskills/technical-quality-perspective/) | Business rules depend on interfaces, data, or recovery | Connects business risk to runtime consequences and technical evidence |
+| [Project Delivery Perspective](https://inaodeng.com/en/qaskills/project-delivery-perspective/) | Scope, dependencies, or verification windows affect the date | Tracks delivery conditions without making Product or QA approvals |
 
-| Observation | Evidence | Impact | Recommendation |
+## What Product Perspective contributes across the workflow
+
+Product, QA, and UX use the same development stages but ask different questions. For a membership-upgrade change, Product keeps asking what it means for users and the business; it does not turn every stage into a test checklist.
+
+| Stage | Product question | What the team receives |
+| --- | --- | --- |
+| Requirements analysis | Are user value, business rules, scope, and acceptance clear? | Product report, rule gaps, open questions, and responsible roles |
+| Test strategy | Which journeys and failure outcomes deserve protection, and are trade-offs explainable? | User/business risk priorities and evidence needed for a decision |
+| Test strategy review | Do excluded or downgraded risks have a Product rationale and accepter? | Findings, impact, and revisions to strategy trade-offs |
+| Code review | Can the change be traced to user value, business rules, and acceptance criteria? | User-impact questions and evidence requests for Development or QA |
+| Test case writing | Do cases protect key journeys and business rules? | Product priorities, missing rules, and verifiable outcomes |
+| Test case review | Do expected results represent outcomes users can perceive? | Coverage gaps, business ambiguity, and missing materials |
+| Test reporting | How do tested, untested, and blocked work affect user and business decisions? | Product impact, residual risk, and release questions |
+| Test report review | Do conclusions trace to user value, rules, and real evidence? | Risk, information gaps, actions, and confidence |
+
+The Product output contract includes summary, facts, evidence, findings, risks, information gaps, questions, actions, and confidence. It explains product impact but does not turn a recommendation into a test pass or release approval.
+
+## Separate the three perspectives on one input
+
+| Shared input: delayed payment callback | Product Quality Perspective | QA Quality Perspective | UX Quality Perspective |
 | --- | --- | --- | --- |
-| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
-| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
+| Requirements, PR, regression record, payment logs, timeout recording | Confirm waiting rules, duplicate-charge risk, and business approver | Check whether timeout, retry, and reconciliation ran and have evidence | Check whether users understand processing/timeout states and can recover |
 
-Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
+## Membership-upgrade evidence should answer product questions
 
-## Merge evidence without flattening disagreement
+Review membership-upgrade scope, failure states, and acceptance gaps through user value and business rules. The examples tie product questions to user actions and business outcomes.
 
-For Review membership upgrades for user value, business rules, failure states, and acceptance gaps, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
+| Product question | Evidence | Judgment |
+| --- | --- | --- |
+| Does the user understand the benefits? | Benefits copy, pricing page, usability record | Missing explanation can affect conversion and complaints |
+| Can the user continue after payment fails? | Callback, order state, retry record | The failure path determines duplicate-charge risk |
+| Is trial eligibility stable? | Rule document, account data, boundary cases | Eligibility drift can damage trust |
 
-| Role | Observation | Evidence needed | Decision ownership |
+Put user tasks, business rules, and evidence together before asking the Product owner to make a trade-off.
+
+## Return to the user task when metrics move
+
+Lower conversion, more refunds, and rising support complaints need explanations tied to a specific task. Keep signals, hypotheses, and next checks together.
+
+| Signal | Candidate explanation | Next check |
+| --- | --- | --- |
+| Membership upgrade conversion falls | Price change, unclear benefits, or payment failure | Segmented funnel, payment logs, user interviews |
+| Refund rate rises | Delayed benefit delivery or misunderstood rules | Order state, benefit delivery time, support tickets |
+| Complaints fall | Entry point is hidden and users stop trying | Entry-point exposure, abandonment, new-user feedback |
+
+Retain the signal source and unverified assumptions. The Skill organizes options; the Product owner decides scope and release conditions.
+
+## Carry the same product risk from requirements to release
+
+Product judgment should travel through development handoffs, not appear as a paragraph added just before the release meeting.
+
+| Development step | Inputs | Question | Handoff |
 | --- | --- | --- | --- |
-| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
-| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
-| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
+| Requirements review | Membership rules, pricing, benefits, user tasks | What must the user accomplish, and which outcome is unacceptable? | Business rules, acceptance gaps, open questions |
+| Design and development integration | UI states, API contract, order-state transitions | Are success, processing, failure, and retry defined consistently? | State table, boundary rules, integration record |
+| Testing and defect review | Cases, order samples, payment logs, support feedback | Which risks have evidence and which remain product assumptions? | Risk list, evidence index, follow-up tests |
+| Release review | Build ID, funnel data, residual risk, owners | Does this scope support release, and who accepts remaining risk? | Product decision record and follow-up actions |
 
-Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Inputs and Applicability Check need source links because paraphrasing can change their meaning.
+For a delayed payment callback, Product confirms whether users see “processing” and the maximum wait; Development explains order state, callback idempotency, and benefit delivery; QA retains timeout, retry, and reconciliation evidence. “Payment is broken” is too vague to tell anyone what to do next.
 
-The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+Acceptance rules can be made concrete:
 
-## A prompt you can adapt
+- After successful payment, order state and membership benefits eventually agree; duplicate callbacks do not grant benefits twice.
+- While payment is processing, the page explains the state and next step without prompting another payment.
+- After payment failure, the order is not marked successful and the user can retry safely or contact support.
+- Trial eligibility, price, and benefits use the same business-rule version; test data and release material record their sources.
 
-Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+The following product-quality record is hypothetical; it demonstrates structure and does not describe a real project result.
+
+```text
+stage: test-report-review
+user_task: User upgrades membership and receives benefits
+business_rule: Duplicate callbacks for one order grant benefits only once
+facts:
+  - A successful-payment example for build-2026-09-24-01 is saved
+  - The timeout example has only a screenshot, with no order state or callback log
+evidence:
+  - checkout-success-report.html
+  - order-1234-event-log.json
+inference:
+  - Timeout recovery does not yet support a claim that duplicate payment is prevented
+unknown:
+  - Maximum wait for a processing order and support fallback
+risk: high
+action: Add timeout, duplicate-callback, and reconciliation records; then confirm waiting copy with Product
+owner: Payment lead / Product lead
+confidence: medium
+```
+
+During integration, Product can check whether business_rule appears in the API contract and acceptance criteria; QA can trace evidence to run records; the release owner can review unknown, risk, and owner without searching chat history. The summary can be brief, but the fields must connect to the next action.
+
+## Adaptable prompt
 
 ```text
 Use the product-quality-perspective Skill.
 
-Task: Review membership upgrades for user value, business rules, failure states, and acceptance gaps
+Stage: test report review (test-report-review)
+Task: Review membership-upgrade scope, failure states, and acceptance gaps through user value and business rules
 Version and environment: [requirement / build / environment]
 Inputs: [file paths or links]
 Scope: [included and excluded journeys]
 Constraints: [accounts, data, time, compliance]
 
-Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
-Finish with open questions. Do not invent missing facts.
+Report summary, facts, evidence, findings, risks, information gaps, open questions, actions, and confidence. Focus on user tasks, business rules, acceptance criteria, and business impact. Cite the source for each judgment. Mark unsupported content as a gap or assumption; do not report code correctness, test pass, or release approval.
 ```
 
-Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+## Keep product quality grounded in completed user tasks
 
-## Advanced use, from one call to a maintained flow
+A membership-upgrade review should cover UI states, benefit comprehension, payment completion, and failure recovery. Start with the main task, key rules, and unacceptable failures such as duplicate charges, delayed benefits, or lost trial eligibility.
 
-Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+Metrics also need to map back to tasks. A conversion drop may come from pricing or payment failure; fewer complaints may mean the entry point disappeared. Retain user signals, business rules, and unverified assumptions so the Product owner can decide whether to change scope or release conditions.
 
-### A three-Skill chain
+## Who should use this Skill
 
-`requirements-analysis` → `product-quality-perspective` → `multi-role-quality-synthesis`
+Product managers can check whether acceptance criteria reflect user tasks. QA can add business risks and unacceptable failures. Delivery leads can include conversion, trust, and scope trade-offs in release review. When evidence is missing, keep the question open rather than inventing a user conclusion.
 
-| Handoff | Payload | Receiver check |
+## Review a product assessment before handoff
+
+| Review item | What to retain | If missing |
 | --- | --- | --- |
-| Upstream to product-quality-perspective | Source versions, scope, risks, open questions | Product Quality Perspective staleness and conflicts |
-| product-quality-perspective to downstream | Primary artifact, evidence index, unfinished work | Product Quality Perspective executability and owners |
-| Feedback to product-quality-perspective | Runs, defects, new risks | Product Quality Perspective baseline and regression update |
-
-Do not paste three complete outputs into one large prompt. Give Product Quality Perspective a structured summary and accessible source artifacts. It saves context and makes defects traceable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| product-quality-perspective input | Version, environment, owner, accessible sources | Stop Product Quality Perspective and list gaps |
-| product-quality-perspective artifact | Material claims carry basis and status | Return Product Quality Perspective for evidence |
-| product-quality-perspective execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
-| product-quality-perspective decision | Residual risks have accepter and date | Do not enter the next stage |
-
-Review Product Quality Perspective adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
-
-## A perspective Skill is not role-play
-
-Do not invent what product, QA, or engineering would say. Product Quality Perspective can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+| User task | Target user, key path, and unacceptable failures | Ask for confirmation; do not invent a rule |
+| Business rules and scope | Sources, inclusions, exclusions, and acceptance criteria | Record the rule gap and affected scope |
+| Evidence and judgment | Orders, logs, feedback, acceptance records, and linked conclusions | Separate facts, inference, and assumptions |
+| Product risk and action | User/business impact, owner, next step, and confidence | Do not compress risk into “overall manageable” |
+| Responsibility boundary | Product impact only; no code correctness, test pass, or Go/No-Go | Ask the relevant role for its assessment |
 
 ## Install and invoke
 
@@ -109,25 +170,25 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 Invoke it with “Use the product-quality-perspective Skill,” then attach the real artifacts.
 
-## Two practical questions
+## Common questions
 
-### Can one perspective overrule the others?
+### Will the Skill identify why conversion fell?
 
-No. It adds observations. Keep disagreement and supporting evidence visible.
+No. It separates candidate causes such as price, payment, benefits, and entry points, then lists the evidence needed.
 
-### What if that role is absent?
+### What if there is no user-research data?
 
-Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
+Start with requirements, analytics, support tickets, and order records. Mark risk assumptions and schedule research to confirm them.
 
-### What if roles reach opposite conclusions?
+### Can a Product quality conclusion replace release review?
 
-Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
+No. It provides user and business evidence; release review still considers test, technical, and operational risk.
 
-### Can a perspective be written without data?
+### When is product risk ready for a decision?
 
-It can be an observation or assumption if the missing source and next evidence request stay visible.
+Key tasks, business rules, and failure recovery need sources; remaining risk needs an owner, accepter, and due time.
 
-Run Product Quality Perspective against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+Run Product Quality Perspective against real user tasks, business rules, and order evidence, and retain inputs, output, and review notes. The example provides structure; project evidence must come from the project.
 
 ## References
 - Awesome QA Skills project:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

@@ -1,6 +1,6 @@
 ---
 title: "Production Verification: Verify business flows, metrics, logs, and rollback conditions after release"
-description: "Production Verification field guide covering project inputs, evidence, execution boundaries, advanced composition, and team gates."
+description: "Verify releases against real business flows, metrics, logs, and alerts. Set an observation window and criteria for continuing, pausing, or rolling back."
 date: 2026-09-21T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Production Verification"]
@@ -12,7 +12,7 @@ Deployment complete is not verification complete. Real traffic, configuration pr
 
 The Production Verification Skill defines what to observe, which change signals count, and when evidence is strong enough to continue or roll back.
 
-This guide uses collaboration-grounded examples to unpack the judgment process, helping you turn different signals into actions that are communicable and traceable.
+The examples follow an order-service release, aligning business transactions with telemetry, an observation window, and explicit stop or rollback criteria.
 
 ## Production Verification Skill: what it is for
 

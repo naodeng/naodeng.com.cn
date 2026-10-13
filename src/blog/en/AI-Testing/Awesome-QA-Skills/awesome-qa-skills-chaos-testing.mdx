@@ -1,6 +1,6 @@
 ---
-title: "Chaos Testing Skill: Learn which failure the system can absorb before users discover it"
-description: "Chaos Testing field guide: define hypotheses, blast radius, steady state, failure injection, recovery, and evidence boundaries."
+title: "Chaos Testing: Plan Bounded Failure Experiments"
+description: "Design chaos experiments with sourced hypotheses, blast-radius limits, measurable stop and rollback rules, evidence needs, and CHS-## findings."
 date: 2026-11-06T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,7 +8,7 @@ tags: ["AI Testing", "QA Skills", "Chaos Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-Turning off a service is not a chaos strategy. The useful question is what the system should preserve, how much failure is allowed, and what evidence proves recovery.
+Chaos testing is a controlled failure experiment built around an explicit hypothesis. Before anyone proposes injection, the design needs a measurable steady state, a bounded blast radius, sourced stop conditions, and an owner for rollback.
 
 ## Why this Skill is needed
 
@@ -26,7 +26,7 @@ Use it when the team needs a repeatable review of hypothesis, steady state, fail
 
 ## What it does not do
 
-The Chaos Testing Skill can organize material, evidence, and next actions for Experiment record. It does not replace:
+The Chaos Testing Skill can prepare and review the experiment design. It does not authorize fault injection, access real dependencies, or replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -39,15 +39,16 @@ The value of this Skill is not another keyword list. It connects each focus area
 
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
-| Experiment record | Hypothesis, scope, injection, guardrail, and timeline | Repeatable setup |
-| Observed impact | Technical and business signals during failure | Evidence status |
-| Learning | Control that worked, failed, or remains unknown | Owner and follow-up |
+| Hypothesis and steady state | What must remain true, over which sourced window, compared with which baseline or control | A falsifiable hypothesis |
+| Injection and blast radius | Fault, target, duration, traffic or instance fraction, dependencies, isolation, and exclusions | A bounded experiment card |
+| Stop and rollback | Measurable stop rule, monitoring cadence, stop owner, and recovery action | Readiness blockers and owner |
+| Before/during/after evidence | Functional, data, and recovery signals compared with the baseline and control | Evidence status and residual risk |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analyzing Experiment record, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before designing a fault-injection scenario, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -66,7 +67,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Experiment record, do not compress four different kinds of language into “recommended to pass”:
+For each chaos finding, do not compress four different kinds of language into “recommended to pass”:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -103,7 +104,7 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ### Analysis
 
-Start with a bounded pass—test whether a recommendation service keeps checkout usable when its feature store becomes unavailable. Inject a read-only feature-store timeout for 5% of recommendation traffic while checkout remains outside the experiment. Verify that recommendations degrade to a safe default, checkout error rate stays within the hypothesis, and the rollback removes the fault.
+Treat this as a design-only example: a sample brief asks whether recommendations can tolerate a feature-store timeout and excludes checkout from the experiment. The brief supplies no target fraction, duration, baseline, measurable stop threshold, test environment, or rollback owner. Mark those inputs `missing`; do not substitute a convenient percentage. Execution readiness stays blocked until an accountable owner supplies the values and authorizes an isolated, reversible test. A later run would compare sourced recommendation and checkout invariants before, during, and after the fault against the stated baseline or control. This article records no run or result.
 
 The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
 
@@ -113,17 +114,17 @@ The handoff should preserve the input version, time window, evidence index, owne
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Experiment record meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+Use the source prompt's `CHS-##` contract for each finding. This example records missing execution-readiness evidence; it is not a claim that a system failed.
 
-| Field | Example wording |
+| `CHS-01` field | Bounded example |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Experiment record |
-| Finding | The condition or result for Experiment record is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Object/rule and source | Recommendation path; sample brief and its version must be attached |
+| Trigger/applicability | Feature-store timeout; target and excluded checkout path must be confirmed |
+| Expected concern/rationale | Safe recommendation behavior and checkout isolation, as stated by the sample objective |
+| Evidence state | `missing`: fraction, duration, baseline, stop threshold, environment, and rollback owner are not supplied |
+| Impact/priority and owner | Not scored from this brief; service owner and experiment stop owner need confirmation |
+| Close condition | Approved scope, sourced thresholds, monitor cadence, stop owner, and rollback/recovery steps are reviewable |
+| Validation method | Review the card, then run only in the authorized isolated environment and retain before/during/after artifacts; no execution is claimed here |
 
 The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
 
@@ -141,11 +142,12 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
-| Experiment record | Hypothesis, scope, injection, guardrail, and timeline | Repeatable setup |
-| Observed impact | Technical and business signals during failure | Evidence status |
-| Learning | Control that worked, failed, or remains unknown | Owner and follow-up |
+| Hypothesis/control | Sourced invariant and baseline or control group | Design status |
+| Injection/boundary | Fault, target, duration, exposure, dependencies, and exclusions | Scope and authorization |
+| Stop/recovery | Threshold, cadence, stop owner, rollback, and recovery evidence | Readiness blockers |
+| Learning | What the before/during/after evidence supports or leaves unknown | Owner and next action |
 
-Do not write “passed” without a run record, query result, or source artifact. A good chaos test is boringly specific. It knows the steady state, the first signal that matters, the maximum blast radius, and the exact condition that stops the experiment.
+Do not write “passed” without a run record and raw evidence. A design card is preparation, not an experiment result.
 
 ### Next-stage route
 

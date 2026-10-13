@@ -1,6 +1,6 @@
 ---
-title: "API Design Quality Review Skill: Find contract gaps before consumers inherit them"
-description: "API Design Quality Review field guide: review schemas, errors, authorization, idempotency, compatibility, and consumer impact before implementation."
+title: "API Design Quality Review: Define Contracts Before Build"
+description: "Review API operations, schemas, errors, permissions, retries, versions, and consumer migration before implementation."
 date: 2026-10-17T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -16,34 +16,28 @@ API Design Quality Review evaluates an API contract before implementation or ver
 
 ## What the Skill does
 
-The API Design Quality Review Skill is useful when a team needs a structured review of operation contract, error model, authorization, idempotency, compatibility, and consumer impact.
+Review supplied API designs before implementation or versioning. Build an operation-level matrix across resources and naming, request/response fields and boundaries, errors and HTTP status, authentication/authorization, idempotency and retry, pagination, rate limits, version evolution, consumer migration, privacy, and observability.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Design Quality Review.
+Bind each gap to an `API-##` finding with the operation, source and evidence, status, consumer impact and compatibility risk, owner and decision question, and validation method. One request/response example or OpenAPI file proves only that the artifact exists; it does not prove a complete or compatible contract.
 
-Use it when the team needs a repeatable review of operation contract, error model, authorization, idempotency, compatibility, and consumer impact—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-A useful result keeps operation contract, error model, authorization, idempotency, compatibility, and consumer impact connected to a source and a verification action. It does not turn a design checklist into a passing result.
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage; the [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model.
 
 ## What it does not do
 
-The API Design Quality Review Skill can organize material, evidence, and next actions for Contract finding. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
+The Skill does not call an API, run security or performance tests, or approve a versioning policy. It will not infer missing fields, errors, permissions, retry rules, rate limits, or idempotency behavior from convention. Without runtime identity, time, environment, inputs, responses, and raw results, runtime status stays unverified or unassessed.
 
 ## What it checks
 
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
+| Operation-level dimension | Review question | Evidence to retain |
 | --- | --- | --- |
-| Contract finding | Missing, conflicting, stale, or unverifiable API rule | API-##, impact, and source |
-| Consumer consequence | What client behavior becomes ambiguous or unsafe | Affected consumer and version |
-| Readiness action | Field, error, policy, or migration decision to clarify | Owner and closure evidence |
+| Resource and request/response | Are names, required fields, types, nullability, and boundaries explicit? | Versioned schema and sourced examples |
+| Error and status | Are business codes, HTTP status, and retry meanings defined per operation? | Error catalog, operation exceptions, consumer behavior |
+| Identity and effects | Who may call it, and what prevents duplicate or unauthorized writes? | Authorization rule, idempotency/retry contract, state effects |
+| Collection behavior | Are pagination, sort, filters, and rate limits specified? | Contract source and consumer constraints |
+| Evolution and migration | Which old/new client-server combinations are supported, and how are consumers notified? | Version policy, migration order, compatibility evidence |
+| Privacy and observability | What may appear in responses/logs, and how is one operation traced? | Redaction and correlation rules |
 
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+One sample cannot establish coverage for an operation. Record declared exceptions and consumer-specific constraints rather than assuming that one response applies everywhere.
 
 ## Audit inputs before you start
 
@@ -62,18 +56,9 @@ Keep the input version, scope, environment, evidence locations, and accountable 
 
 ## From problem to structured Finding
 
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+### API-## finding contract
 
-### Keep the decision layers separate
-
-For Contract finding, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+Every finding names a stable operation, source/evidence, status (`assessed`, `missing`, `conflicting`, `stale`, or `unassessed`), consumer/data/security impact and compatibility risk with a P0–P3 rationale, owner role and decision/migration question, and validation with preconditions, action, expected result, and raw evidence needed. Keep facts, inferences, recommendations, and Human decisions separate.
 
 ## A complete case
 
@@ -111,31 +96,23 @@ The useful handoff keeps the input version, time window, evidence index, owner, 
 
 ### Finding
 
-#### Example finding: turn one problem into a handoff
+The following is a review candidate format, not an execution result:
 
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Contract finding meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Field | Example |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Contract finding |
-| Finding | The condition or result for Contract finding is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
-
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+| ID / operation | `API-01` — `POST /subscriptions/{id}/cancel` |
+| Source / status | Supplied cancellation design and version; `missing` until repeat-request and provider-failure behavior are specified |
+| Impact / compatibility risk | Mobile, web, and billing consumers may make conflicting retry or final-state decisions; prioritize using project impact evidence |
+| Owner / decision | API owner to confirm the repeated-cancel rule; consumer owners to confirm migration needs |
+| Validation | Once defined, review request/response and consumer examples; any runtime claim requires call identity, environment, inputs, outputs, logs, and raw results |
 
 ### Decision
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+The API owner decides the contract and version policy. Mobile, web, and billing owners supply their compatibility and migration constraints; the Skill surfaces those trade-offs but does not approve one.
 
 ### Validation
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+Before implementation, validate that each affected operation has an applicable source, defined boundaries, consumer expectations, and a closeable decision. This is design evidence only; do not describe it as a compatibility or runtime test.
 
 ## How a Finding enters the next stage
 
@@ -151,11 +128,11 @@ Do not write “passed” without a run record, query result, or source artifact
 
 ### Next-stage route
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Route missing operation rules to the API owner, and migration questions to each affected consumer owner. Preserve the operation, version, evidence state, decision question, and compatibility risk in the handoff.
 
 ## How to prepare better input
 
-If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+Provide the API objective, operations, OpenAPI or contract versions, request/response examples, all known consumers, authorization model, error and retry rules, pagination/rate limits, rollout order, and migration notes. Mark which consumers or versions have not been reviewed; do not let one example stand in for the rest.
 
 ## Working with other Skills
 

@@ -8,203 +8,54 @@ tags: ["AI Testing", "QA Skills", "Observability Design Review"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A dashboard full of green numbers is not observability if nobody can connect a failed checkout to the request, dependency, state, and user impact.
+Observability starts with a question an operator must answer during a failure: which user flow is affected, where did it break, and what evidence can narrow the cause? This Skill reviews whether the telemetry design can answer that question before implementation.
 
-## Why this Skill is needed
+## When this Skill helps
 
-Observability Design Review checks whether a system emits the signals needed to detect, explain, triage, and verify behavior while respecting privacy.
+Use Observability Design Review for logging, metrics, traces, context propagation, SLO and SLI definitions, alerts, sampling, retention, privacy, and cost. It reviews supplied designs and produces OBS-## findings. It does not query production signals, run probes, assess an incident, or declare system health.
 
-## What the Skill does
+## Review workflow
 
-The Observability Design Review Skill is useful when a team needs a structured review of logs, metrics, traces, correlation, dimensions, alerts, privacy, and diagnostic action.
+Start by naming the service boundary, business flow, environment, version, and time window. Classify each input as known, missing, conflicting, stale, out_of_scope, or assumptions. Then trace a failure path across the signals that should explain it.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Observability Design Review.
-
-A practical standard for this Skill is simple: A good review starts from a decision an operator must make. It asks which signal narrows the cause, which signal identifies the affected journey, and which data should never be emitted.
-
-Use it when the team needs a repeatable review of logs, metrics, traces, correlation, dimensions, alerts, privacy, and diagnostic action—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-## What it does not do
-
-The Observability Design Review Skill can organize material, evidence, and next actions for Observability gap. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
-| --- | --- | --- |
-| Observability gap | Missing signal, wrong dimension, broken correlation, or unsafe data | Impact |
-| Diagnostic path | Query, dashboard, trace, or alert needed | Owner and time |
-| Verification plan | Failure injection or replay that proves the signal works | Evidence artifact |
-
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
-
-## Audit inputs before you start
-
-Before analyzing Observability gap, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
-| --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
-
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
-
-## From problem to structured Finding
-
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
-
-### Keep the decision layers separate
-
-For Observability gap, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
-
-## A complete case
-
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
-
-### Input
-
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Journey map | User action, services, dependencies, states, and failure points | Name the first signal expected |
-| Signal design | Log fields, metric dimensions, trace propagation, and alert rule | Check cardinality and privacy |
-| Diagnostic need | What operator must decide and how fast | Tie every signal to an action |
-
-Use a request like this:
-
-```text
-Use the observability-design-review Skill.
-
-Task: review observability for checkout failures spanning browser, API gateway, payment provider, and order worker
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-```
-
-### Analysis
-
-Start with a bounded pass—review observability for checkout failures spanning browser, API gateway, payment provider, and order worker. Follow a failed checkout with one correlation ID across gateway, provider request, and worker event. Require the dashboard to separate provider timeout from order-state conflict without logging card data or raw customer content.
-
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-### Finding
-
-#### Example finding: turn one problem into a handoff
-
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Observability gap meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Signal area | Questions to answer |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Observability gap |
-| Finding | The condition or result for Observability gap is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Logs | Which event and fields identify the object and outcome? Are sensitive values masked? |
+| Metrics | Are units, dimensions, cardinality, and aggregation semantics explicit? |
+| Traces | Do spans preserve context across service and asynchronous boundaries? |
+| Alerts | What condition triggers the alert, who responds, and what action follows? |
+| Operations | Are sampling, retention, access, and cost constraints stated? |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+Do not fill in missing SLOs, thresholds, retention periods, or sample rates from platform defaults. Record the source and evidence state for each conclusion.
 
-### Decision
+## Worked example
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+Suppose a supplied checkout design shows a gateway request ID, a payment-provider request ID, and an order-worker event, but does not explain how those identifiers join. An OBS finding should name the affected checkout path, show which design sections were reviewed, describe the correlation gap, and give a safe validation action such as checking a masked synthetic request across the planned spans.
 
-### Validation
+A second finding might show an alert rule with no response owner or runbook action. The handoff should ask the team to define the action and validate it in an isolated environment. These are examples of review findings, not claims about a live service.
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+## What to hand off
 
-## How a Finding enters the next stage
+Each OBS-## should identify the signal and covered object, source and evidence status, expected fields or semantics, gap and impact, detection action, owner role, close condition, and validation method. Keep design facts, evidence-backed inferences, recommendations, and Human decisions separate. If runtime identity, time, environment, or raw signals are missing, mark runtime conclusions unverified or unassessed.
 
-### Handoff output
+## Boundaries
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Observability gap | Missing signal, wrong dimension, broken correlation, or unsafe data | Impact |
-| Diagnostic path | Query, dashboard, trace, or alert needed | Owner and time |
-| Verification plan | Failure injection or replay that proves the signal works | Evidence artifact |
+A dashboard proves that a view was designed; it does not prove that an alert fires or that a service is healthy. Do not choose SLOs, incident severity, sample rates, retention, or cost budgets for the owner. Keep production data out of a design-only review.
 
-Do not write “passed” without a run record, query result, or source artifact. A good review starts from a decision an operator must make. It asks which signal narrows the cause, which signal identifies the affected journey, and which data should never be emitted.
+## Related Skills
 
-### Next-stage route
-
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
-
-## How to prepare better input
-
-If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
-
-A richer input changes the answer here because logs, metrics, traces, correlation, dimensions, alerts, privacy, and diagnostic action must be tied to evidence rather than inferred from a familiar pattern.
-
-## Working with other Skills
-
-- [Log Analysis](https://inaodeng.com/en/qaskills/log-analysis/):uses emitted logs to find patterns.
-- [Distributed Trace Analysis](https://inaodeng.com/en/qaskills/distributed-trace-analysis/):follows requests across services.
-- [Production Incident Analysis](https://inaodeng.com/en/qaskills/production-incident-analysis/):uses signals during incident review.
-
-## Common traps
-
-1. Collecting fields without a diagnostic question.
-2. Using high-cardinality dimensions without a cost plan.
-3. Adding alerts that have no owner or response action.
+- [Log Analysis](https://inaodeng.com/en/qaskills/log-analysis/) examines supplied log evidence.
+- [Distributed Trace Analysis](https://inaodeng.com/en/qaskills/distributed-trace-analysis/) follows trace data across services.
+- [Quality Dashboard Design](https://inaodeng.com/en/qaskills/quality-dashboard-design/) organizes decision-facing panels after signal contracts are clear.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the individual Skill from the Awesome QA Skills repository:
 
-```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review -g
-```
 
-After installation, invoke it with the `observability-design-review` Skill and attach the real project material.
+Then invoke observability-design-review with the telemetry design, scope, environment, available evidence, and the decision the review should support.
 
-## FAQ
+## Source
 
-### Does more telemetry mean better observability?
-
-No. Useful signals are connected, queryable, safe, and tied to decisions.
-
-### Can a log line prove a state change?
-
-Only when its source, timing, correlation, and relation to durable state are defined.
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
-
-## References
-
-### Source Skill and execution contract
-
-The complete execution contract lives in the [Observability Design Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review/prompts/observability-design-review.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review) contains the entry point and supporting assets where they exist.
-
-The entry point centers logs, metrics, traces, correlation, dimensions, alerts, privacy, and diagnostic action. Keep its decision boundary visible and do not turn a static design into an execution claim.
-
-### Reference links
-
-- Observability Design Review prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review/prompts/observability-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review/prompts/observability-design-review.md)
-
-- Awesome QA Skills: Observability Design Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- Observability Design Review details:[https://inaodeng.com/en/qaskills/observability-design-review/](https://inaodeng.com/en/qaskills/observability-design-review/)
+Read the [Observability Design Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review/prompts/observability-design-review.md) before using the Skill. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review) contains its entry point and supporting evaluation material.

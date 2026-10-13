@@ -1,6 +1,6 @@
 ---
 title: "QA Quality Perspective: Use coverage, risk, and evidence to support quality conclusions"
-description: "QA quality perspective field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+description: "Use coverage, execution evidence, untested paths and residual risk to support release decisions without overstating green test results."
 date: 2026-09-22T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "QA quality perspective"]
@@ -12,7 +12,7 @@ A QA quality perspective should not only total up test execution. It must identi
 
 The QA Quality Perspective Skill turns coverage and findings into a transparent quality narrative that leaders and delivery teams can act on.
 
-This guide uses collaboration-grounded examples to unpack the judgment process, helping you turn different signals into actions that are communicable and traceable.
+A checkout regression example records the build, command, exit code, verified paths, static-only checks, unrun cases, and blockers separately.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with QA quality perspective.
 
@@ -22,82 +22,135 @@ The main prompt covers Allowed inputs, Applicability and QA checks, Evidence and
 
 This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
 
-## A review fragment that keeps disagreement visible
+## Related Skills
 
-Review a checkout change for testability, coverage, and available evidence
+QA Quality Perspective explains what was covered, what was not, and whether the evidence supports a release judgment. Adjacent work can be divided as follows:
 
-Different roles can read the same artifact and find different risks.
+| Skill | When to use it | What it adds |
+| --- | --- | --- |
+| [Regression Test Selection](https://inaodeng.com/en/qaskills/regression-test-selection/) | Change scope is known and cases must be selected | Chooses a regression set using risk, dependencies, and historical results |
+| [Test Reporting](https://inaodeng.com/en/qaskills/test-reporting/) | Command output and reports need to be communicated | Standardizes run identity, outcomes, failure evidence, and coverage boundaries |
+| [Multi-Role Quality Synthesis](https://inaodeng.com/en/qaskills/multi-role-quality-synthesis/) | QA conclusions must be combined with Product, Technical, and UX views | Preserves disagreements and responsibility boundaries |
+| [Technical Quality Perspective](https://inaodeng.com/en/qaskills/technical-quality-perspective/) | Static findings need to be connected to runtime signals | Adds dependency, performance, observability, and recovery evidence |
+| [Project Delivery Perspective](https://inaodeng.com/en/qaskills/project-delivery-perspective/) | Test windows, dependencies, or actions affect commitments | Tracks delivery constraints without rewriting test facts |
 
-| Observation | Evidence | Impact | Recommendation |
+## What QA Perspective contributes across the workflow
+
+Product, QA, and UX can review the same membership-upgrade change. QA turns the questions into “Can it be tested? What ran? Where is the evidence?” Stage names may match, but outputs and risks differ.
+
+| Stage | What QA checks | What the team receives |
+| --- | --- | --- |
+| Requirements analysis | Whether behavior, boundaries, failure handling, observable outcomes, data, and environment are testable | Testability gaps, risk, owner, and evidence request |
+| Test strategy | Risk order, test levels, dependencies, data, environment, observability, and exit criteria | Coverage priorities, methods, evidence needed, and exclusions |
+| Test strategy review | Whether trade-offs, entry/exit evidence, degradation risks, and owners are clear | Prioritized findings, rationale, and revisions |
+| Code review | Whether test entry points, observable outcomes, error handling, and regression evidence exist | Static findings, risks to verify, and smallest runtime evidence |
+| Test case writing | Whether preconditions, inputs, steps, expected results, positive/negative paths, and data isolation are executable | Prioritized case suggestions and evidence needs |
+| Test case review | Whether cases are executable, decidable, traceable, and cover boundaries and exceptions | Case defects, coverage gaps, and revisions |
+| Test reporting | Actual scope, execution state, result, defects, environment differences, and unrun items | Facts, inferences, missing evidence, risk, and next steps |
+| Test report review | Whether conclusions trace to run records and risk categories match impact | Review findings; review comments do not become run passes |
+
+A QA report is evidence engineering: summary, facts, evidence, inference, testability, risk-based coverage, defects and quality risk, missing evidence, recommendations, next steps, and confidence all need sources. A passed result covers only what ran; it cannot stand for the entire membership-upgrade flow.
+
+## Separate the three perspectives on one input
+
+| Shared input: delayed payment callback | Product Quality Perspective | QA Quality Perspective | UX Quality Perspective |
 | --- | --- | --- | --- |
-| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
-| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
+| Requirements, PR, regression record, payment logs, timeout recording | Confirm waiting rules, duplicate-charge risk, and business approver | Mark timeout, retry, and reconciliation as verified, not_run, or blocked | Check processing/timeout feedback, focus, copy, and recovery |
 
-Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
+## Checkout regression: what did the evidence cover?
 
-## Merge evidence without flattening disagreement
+Review a checkout change through testability, coverage, and evidence. Break “tests passed” into items that can be checked.
 
-For Review a checkout change for testability, coverage, and available evidence, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
+| Scope | Evidence available | Release interpretation |
+| --- | --- | --- |
+| Main path | Automation result, build ID, and order state | Describes this run only |
+| Payment callback | Successful example only; no timeout record | Evidence gap; do not call it covered |
+| Permission boundary | 403 case passed; data isolation was not checked | Add different accounts and resource ownership |
+| Data cleanup | Test account still has residual orders | Blocks repeatability and review |
 
-| Role | Observation | Evidence needed | Decision ownership |
+A QA conclusion should name coverage limits, residual risk, follow-up tests, and who accepts the risk.
+
+## Tie a release recommendation back to evidence
+
+A green regression means only that the selected cases passed with this environment and data. Record each uncovered item as a risk, impact, follow-up action, and accepter.
+
+| Open risk | Impact | Next action | Accepter |
 | --- | --- | --- | --- |
-| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
-| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
-| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
+| Payment timeout not covered | Duplicate submission or a stuck order may occur | Add timeout, retry, and reconciliation cases | Product and payment owners |
+| Test data not cleaned | The next run may not be reproducible | Add setup and cleanup steps | Test owner |
+| Production configuration not verified | Environment differences may change behavior | Add smoke evidence in the target environment | Release owner |
 
-Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Allowed inputs and Applicability and QA checks need source links because paraphrasing can change their meaning.
+Evidence gaps need a source and time window. The Skill organizes the quality account; the release owner accepts or closes risk.
 
-The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+## Turn QA evidence into a handoff
 
-## A prompt you can adapt
+| Development step | QA action | Material to retain | Next owner |
+| --- | --- | --- | --- |
+| Requirements analysis | Check whether acceptance criteria are testable and key boundaries observable | Requirement version, scope, unknown rules, risk assumptions | Product and development |
+| Test strategy | Allocate coverage by change impact and failure cost | Risk matrix, case set, environment and data plan | Test executor |
+| Regression execution | Record actual runs rather than a screenshot of “passed” | Build ID, command, exit code, report, failure artifacts | QA lead |
+| Release handoff | Separate covered, static-only, unrun, and blocked work | Evidence index, residual risk, owner, due time | Release owner |
 
-Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+For a checkout change involving callbacks and order permissions, the run record should identify the build, environment, data, command, exit code, and exception cases that did not run.
+
+```yaml
+run_id: checkout-regression-2026-09-24-01
+source_version: build-2026-09-24-01
+environment: staging
+data: fresh-user + existing-order + duplicated-callback-fixture
+command: npm run test:e2e -- checkout
+exit_code: 0
+verified:
+  - Checkout, successful payment, and order lookup on the main path
+  - 403 permission response
+static_only:
+  - Production payment configuration has not been checked in the target environment
+not_run:
+  - Retry and reconciliation after payment timeout
+blocked:
+  - Cleanup task failed; residual orders need handling
+artifacts:
+  - reports/checkout/index.html
+  - logs/payment-timeout-not-run.md
+owner: QA lead
+next_action: Add timeout and duplicate-callback cases, clean test orders, then rerun
+status: pending
+```
+
+Verified describes only paths with run evidence. static_only means the evidence came from reading code or configuration; not_run means no execution occurred; blocked means the planned work was stopped by environment, data, or infrastructure. These states cannot be combined into one green number.
+
+## Adaptable prompt
 
 ```text
 Use the qa-quality-perspective Skill.
 
-Task: Review a checkout change for testability, coverage, and available evidence
+Stage: test report review (test-report-review)
+Task: Review a checkout change for testability, coverage, and evidence
 Version and environment: [requirement / build / environment]
 Inputs: [file paths or links]
 Scope: [included and excluded journeys]
 Constraints: [accounts, data, time, compliance]
 
-Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
-Finish with open questions. Do not invent missing facts.
+Report summary, facts, evidence, inference, testability, risk-based coverage, defects and quality risk, missing evidence, recommendations, next steps, and confidence. Record run_id, version, environment, command, exit code, and actual coverage. Keep verified, static_only, not_run, and blocked separate. Do not report unexecuted work as passed or as release approval.
 ```
 
-Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+## State what the evidence covers—and what it does not
 
-## Advanced use, from one call to a maintained flow
+A passing checkout regression proves only the result for its environment, data, and cases. List the main path, exception recovery, permission boundaries, and data cleanup separately, with each state marked as run, static-only, unrun, or blocked.
 
-Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+## Who should use this Skill
 
-### A three-Skill chain
+QA leads can prepare release reviews with it. Project owners can check whether a “pass” has a clear boundary. Engineering and Operations can use the findings to add logs, cleanup, or environment checks.
 
-`requirements-analysis` → `qa-quality-perspective` → `multi-role-quality-synthesis`
+## Review QA evidence before handoff
 
-| Handoff | Payload | Receiver check |
+| Review item | What to retain | If missing |
 | --- | --- | --- |
-| Upstream to qa-quality-perspective | Source versions, scope, risks, open questions | QA quality perspective staleness and conflicts |
-| qa-quality-perspective to downstream | Primary artifact, evidence index, unfinished work | QA quality perspective executability and owners |
-| Feedback to qa-quality-perspective | Runs, defects, new risks | QA quality perspective baseline and regression update |
-
-Do not paste three complete outputs into one large prompt. Give QA quality perspective a structured summary and accessible source artifacts. It saves context and makes defects traceable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| qa-quality-perspective input | Version, environment, owner, accessible sources | Stop QA quality perspective and list gaps |
-| qa-quality-perspective artifact | Material claims carry basis and status | Return QA quality perspective for evidence |
-| qa-quality-perspective execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
-| qa-quality-perspective decision | Residual risks have accepter and date | Do not enter the next stage |
-
-Review QA quality perspective adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
-
-## A perspective Skill is not role-play
-
-Do not invent what product, QA, or engineering would say. QA quality perspective can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+| Run identity | run_id, version, environment, time window, command, and exit code | Do not claim the run is traceable |
+| Actual coverage | Executed, static-only, unrun, and blocked paths | Preserve separate states |
+| Evidence index | Reports, logs, screenshots, traces, failure artifacts, and data scope | State the evidence gap and its impact |
+| Residual risk | Unrun or failed items, impact, and acceptance condition | Keep it open |
+| Action owner | Smallest follow-up test, owner, and due time | Do not report a recommendation as a completed fix |
 
 ## Install and invoke
 
@@ -109,25 +162,25 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 Invoke it with “Use the qa-quality-perspective Skill,” then attach the real artifacts.
 
-## Two practical questions
+## Common questions
 
-### Can one perspective overrule the others?
+### Can a fully green pipeline approve release by itself?
 
-No. It adds observations. Keep disagreement and supporting evidence visible.
+First check coverage, environment, data, and failure evidence. Missing critical paths still leave limited evidence.
 
-### What if that role is absent?
+### What if I only have static-check results?
 
-Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
+Mark them static-only or pending and list the smallest runtime action. Do not rewrite them as a pass.
 
-### What if roles reach opposite conclusions?
+### What if nobody accepts a risk?
 
-Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
+Keep the risk and impact visible and name the owner who must decide. Without an accepter, do not archive it as resolved.
 
-### Can a perspective be written without data?
+### What should a quality conclusion retain?
 
-It can be an observation or assumption if the missing source and next evidence request stay visible.
+Keep the input version, command, report, failure samples, and human changes so the next reviewer can assess whether the conclusion still holds.
 
-Run QA quality perspective against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+Run QA Quality Perspective against one real regression record and retain run identity, coverage state, output, and review notes. The example provides structure; project evidence must come from the project.
 
 ## References
 - Awesome QA Skills project:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

@@ -8,203 +8,51 @@ tags: ["AI Testing", "QA Skills", "LLM Consistency Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A language model can answer the same question differently without being wrong. It can also change one eligibility decision while keeping the prose almost identical.
+LLM Consistency Testing asks which parts of an output must remain invariant across controlled repetitions and which variations are acceptable. It is not a demand for identical wording or a claim that one repeated answer proves reliability.
 
-## Why this Skill is needed
+## Fix the comparison conditions
 
-LLM Consistency Testing defines which parts of an output must remain stable, which variation is acceptable, and what repeated evidence can show drift.
+Record a stable sample ID and the model, prompt, tools, data, temperature, seed where supported, and other sampling parameters. Use the repetition count specified by the project. Separate model, prompt, retrieval, and parameter versions instead of pooling them into one stability result.
 
-## What the Skill does
-
-The LLM Consistency Testing Skill is useful when a team needs a structured review of semantic invariants, structured fields, acceptable variation, repetition, version, and drift.
-
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with LLM Consistency Testing.
-
-A practical standard for this Skill is simple: A good consistency test begins with invariants. It does not demand identical prose, but it does demand that a deadline, exclusion, amount, or required field cannot change silently.
-
-Use it when the team needs a repeatable review of semantic invariants, structured fields, acceptable variation, repetition, version, and drift—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-## What it does not do
-
-The LLM Consistency Testing Skill can organize material, evidence, and next actions for Stable fact result. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
-| --- | --- | --- |
-| Stable fact result | Facts preserved, omitted, changed, or invented | Source and run IDs |
-| Variation judgment | Acceptable wording or material behavior drift | Threshold and rationale |
-| Regression action | Prompt, model, retrieval, evaluator, or review change | Owner and next replay |
-
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
-
-## Audit inputs before you start
-
-Before analyzing Stable fact result, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
-| --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
-
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
-
-## From problem to structured Finding
-
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
-
-### Keep the decision layers separate
-
-For Stable fact result, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
-
-## A complete case
-
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
-
-### Input
-
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Consistency contract | Stable facts, required fields, allowed wording variation, and threshold | Do not compare raw strings as meaning |
-| Replay setup | Prompt, document, model version, retrieval context, temperature, and run count | Record every variable that can drift |
-| Oracle | Fact extraction, schema validation, semantic comparison, and human review | Define what counts as a material change |
-
-Use a request like this:
-
-```text
-Use the llm-consistency-testing Skill.
-
-Task: test a policy summarizer that must preserve deadlines, exclusions, and source references across repeated runs
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-```
-
-### Analysis
-
-Start with a bounded pass—test a policy summarizer that must preserve deadlines, exclusions, and source references across repeated runs. Run the same policy document 20 times and compare extracted deadlines, exceptions, and source spans. Allow sentence order to vary; flag a run that moves a 30-day deadline to 60 days or drops the exclusion for contractors.
-
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-### Finding
-
-#### Example finding: turn one problem into a handoff
-
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Stable fact result meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Comparison layer | What to define |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Stable fact result |
-| Finding | The condition or result for Stable fact result is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Structural invariants | Schema, required fields, allowed enums, and policy constraints |
+| Semantic invariants | Decisions, exclusions, dates, amounts, and source references that must stay stable |
+| Permitted variation | Paraphrases, ordering, and other changes allowed by the rubric |
+| Variance measure | Named numeric variable, unit, denominator, and calculation rule |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+Check structural requirements first, then compare meaning with the supplied rubric. A wording difference rate is not a quality-variance measure. If no rubric defines material semantic change, keep that judgment UNKNOWN.
 
-### Decision
+## Analyze repetitions without inventing a baseline
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+Compare runs for the same sample and condition. Report the repetition denominator, structural failures, semantic failures, and intermittent failures per sample. Keep unknown or unassessable outputs visible instead of excluding them from the denominator.
 
-### Validation
+A single observation establishes no repeated consistency. Matching seeds do not prove reproducibility across model versions. If the project has not specified a run count, variance formula, or acceptable threshold, record that gap and propose the smallest decision needed; do not supply arbitrary values.
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+## Worked example: policy summaries
 
-## How a Finding enters the next stage
+For a policy summarizer, the team may require deadlines, exclusions, and source references to remain unchanged while allowing sentence order or phrasing to vary. Compare repeated outputs against that contract, record every model and prompt version, and separate formatting failures from changes to the actual policy decision.
 
-### Handoff output
+If an output changes an eligibility decision, record the affected invariant and source run. Do not call two summaries inconsistent merely because their wording differs, and do not infer stability from one matching pair.
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Stable fact result | Facts preserved, omitted, changed, or invented | Source and run IDs |
-| Variation judgment | Acceptable wording or material behavior drift | Threshold and rationale |
-| Regression action | Prompt, model, retrieval, evaluator, or review change | Owner and next replay |
+## Record an LCT-## finding
 
-Do not write “passed” without a run record, query result, or source artifact. A good consistency test begins with invariants. It does not demand identical prose, but it does demand that a deadline, exclusion, amount, or required field cannot change silently.
+Identify the sample and condition group, invariant or comparison rule, source versions, repetition denominator, structural and semantic results, variance variable and formula if defined, evidence state, impact, owner role, close condition, and validation method. Keep each parameter/version group separate. A missing rubric leaves semantic consistency UNKNOWN; a missing run set leaves repeated behavior unassessed.
 
-### Next-stage route
+## Related Skills
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
-
-## How to prepare better input
-
-If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
-
-A richer input changes the answer here because semantic invariants, structured fields, acceptable variation, repetition, version, and drift must be tied to evidence rather than inferred from a familiar pattern.
-
-## Working with other Skills
-
-- [LLM Evaluation Design](https://inaodeng.com/en/qaskills/llm-evaluation-design/):defines judges and evaluation cases.
-- [LLM Testing](https://inaodeng.com/en/qaskills/llm-testing/):covers wider model behavior.
-- [AI Feature Testing](https://inaodeng.com/en/qaskills/ai-feature-testing/):connects consistency to product behavior.
-
-## Common traps
-
-1. Using exact string equality as the only oracle.
-2. Changing model, prompt, and retrieval at once.
-3. Treating low variance as correctness.
+- [LLM Evaluation Design](https://inaodeng.com/en/qaskills/llm-evaluation-design/) defines cases and judgment contracts.
+- [LLM Testing](https://inaodeng.com/en/qaskills/llm-testing/) covers broader model behavior checks.
+- [LLM Hallucination Testing](https://inaodeng.com/en/qaskills/llm-hallucination-testing/) checks claim support against evidence.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the individual Skill:
 
-```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-consistency-testing -g
-```
 
-After installation, invoke it with the `llm-consistency-testing` Skill and attach the real project material.
+Invoke llm-consistency-testing with the sample set, project run count, model and prompt versions, permitted variation, semantic rubric, and comparison conditions.
 
-## FAQ
+## Source
 
-### How many replays are enough?
-
-Choose a count that matches risk and cost, then state the confidence limitation; there is no universal number.
-
-### Can human review replace automated comparison?
-
-It can judge meaning, but stable fields and formatting still benefit from deterministic checks.
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
-
-## References
-
-### Source Skill and execution contract
-
-The complete execution contract lives in the [LLM Consistency Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-consistency-testing/prompts/llm-consistency-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-consistency-testing) contains the entry point and supporting assets where they exist.
-
-The entry point centers semantic invariants, structured fields, acceptable variation, repetition, version, and drift. Keep its decision boundary visible and do not turn a static design into an execution claim.
-
-### Reference links
-
-- LLM Consistency Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-consistency-testing/prompts/llm-consistency-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-consistency-testing/prompts/llm-consistency-testing.md)
-
-- Awesome QA Skills: LLM Consistency Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-consistency-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-consistency-testing)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- LLM Consistency Testing details:[https://inaodeng.com/en/qaskills/llm-consistency-testing/](https://inaodeng.com/en/qaskills/llm-consistency-testing/)
+Read the [LLM Consistency Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/llm-consistency-testing/prompts/llm-consistency-testing.md) before use. It defines the LCT-## contract, repeat denominators, parameter groups, and variance-evidence boundary.

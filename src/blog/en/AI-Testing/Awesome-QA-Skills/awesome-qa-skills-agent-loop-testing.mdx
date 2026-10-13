@@ -1,6 +1,6 @@
 ---
-title: "Agent Loop Testing Skill: Detect repetition, drift, and unsafe termination before the budget runs out"
-description: "Agent Loop Testing field guide: inspect iteration state, tool repetition, termination rules, budget use, and loop evidence."
+title: "Agent Loop Testing: Measure Progress and Stop Safely"
+description: "Trace plans, tool actions, observations, state changes, and budgets to spot repeated work and unsafe loop termination."
 date: 2026-10-27T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,209 +8,140 @@ tags: ["AI Testing", "QA Skills", "Agent Loop Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-An agent that keeps asking the same search service a slightly different question is not making progress. It is spending budget while hiding the fact that its plan has stopped moving.
+A tool call can succeed while the task makes no progress. Agent Loop Testing compares each plan, action, and observation with the goal to see whether new evidence arrived, the state advanced, or the agent is repeating work.
 
 ## Why this Skill is needed
 
-Agent Loop Testing evaluates whether each iteration changes the state of the task, whether the loop has useful stop conditions, and whether repeated tool calls remain safe and explainable.
+A research agent may keep revisiting a blocked publisher page while its budget runs down. Without a per-iteration trace, a reviewer sees the final answer but cannot tell where the strategy stalled, whether a retry was allowed, or why the agent stopped.
 
-## What the Skill does
+## What the Skill helps you evaluate
 
-The Agent Loop Testing Skill is useful when a team needs a structured review of state delta, repeated actions, termination criteria, budget limits, and loop trace.
+Use the Agent Loop Testing Skill to review the loop as a sequence of evidence-bearing steps:
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Agent Loop Testing.
+- Record task, run, and step IDs; plan; tool and normalized arguments; observation identity or digest; goal-relevant state delta; and cumulative time or cost.
+- Compare the new observation with the prior state. Progress requires new goal-relevant evidence or state advancement; a successful tool response or repeated prose alone does not count.
+- Check the project-supplied no-progress limit, retry policy, time and cost budgets, and authorized stop, strategy-change, or escalation branch.
+- Report the trigger step, termination class, remaining work, and evidence that no extra effects occurred.
 
-Use it when the team needs a repeatable review of state delta, repeated actions, termination criteria, budget limits, and loop trace—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage; the [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model.
 
-A useful result keeps state delta, repeated actions, termination criteria, budget limits, and loop trace connected to a source and a verification action. It does not turn a design checklist into a passing result.
+## Scope and limits
 
-## What it does not do
+This Skill reviews loop behavior and its trace. It does not replace testing of a tool's business contract, payment recovery, model quality, or human safety decisions. It cannot invent iteration limits, infer hidden state from the final answer, or turn a plan, static review, or dry run into execution evidence. If the project has not supplied a hard limit, keep the decision open for its owner instead of choosing a number.
 
-The Agent Loop Testing Skill can organize material, evidence, and next actions for Iteration map. It does not replace:
+## Inputs to audit
 
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
+| Input | What to establish | If it is absent |
 | --- | --- | --- |
-| Iteration map | What changed between two iterations | Useful delta or no-progress |
-| Loop finding | Repetition, drift, premature stop, or runaway behavior | Evidence and severity |
-| Termination action | Stop, retry with a new strategy, ask for input, or escalate | Condition and owner |
+| Objective and success criteria | What evidence or state would complete the task? | Ask the owner to define a checkable completion condition |
+| Loop trace | Which plan, action, observation, and state delta belong to each step? | Do not reconstruct progress from the final response |
+| Limits and policy | What no-progress, retry, time, and cost rules apply? | Mark the boundary missing; do not make up a threshold |
+| Safety and cancellation rules | Which signals require an immediate stop? | Keep execution blocked until the authorized rule is known |
+| Evidence handling | How are arguments normalized and sensitive values redacted? | Preserve deduplication evidence without exposing secrets |
 
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+Mark evidence as known, missing, conflicting, stale, out of scope, or assumed. For every assumption, state how it can be checked.
 
-## Audit inputs before you start
+## Build the loop trace
 
-Before analyzing Iteration map, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
-| --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
-
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
-
-## From problem to structured Finding
-
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
-
-### Keep the decision layers separate
-
-For Iteration map, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
-
-## A complete case
-
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
-
-### Input
-
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Goal and stop rule | Three verified sources, source authority criteria, and maximum iterations | Separate completion from “the model says done” |
-| Trace | Per-iteration plan, tool call, observation, state update, and token or time budget | Do not reconstruct a loop from the final answer |
-| Failure policy | Blocked source, duplicate result, empty result, and escalation behavior | Keep unresolved loops as blocked |
-
-Use a request like this:
-
-```text
-
-Use the agent-loop-testing Skill.
-
-Task: a research agent must collect three authoritative sources but keeps revisiting a blocked publisher page
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-
-```
-
-### Analysis
-
-Start with a bounded pass—a research agent must collect three authoritative sources but keeps revisiting a blocked publisher page. For the blocked publisher, cap attempts at two, record the reason for failure, and switch to an official repository or registry. The output should show the exact point where the strategy changed and why the loop was allowed to continue.
-
-The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-### Finding
-
-#### Example finding: turn one problem into a handoff
-
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Iteration map meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Trace field | Review question |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Iteration map |
-| Finding | The condition or result for Iteration map is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Plan and step ID | What was the agent trying to learn or change on this iteration? |
+| Tool and normalized arguments | Is this materially the same action as before? Redact secrets but retain a safe comparison fingerprint. |
+| Observation identity | Is this a new result, or the same blocked/empty result again? |
+| State delta | Did goal-relevant evidence or business state advance? |
+| Cumulative budget | How much time and cost have been used against supplied limits? |
+| Decision | Continue, change strategy, stop, or escalate—and which rule authorizes it? |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+Treat repeated action/observation with no goal-relevant advancement as a no-progress cycle. A retry is not automatically wrong: it needs a project-authorized reason, a bounded policy, and evidence that distinguishes it from the previous attempt.
 
-### Decision
+## Worked scenario: research agent revisits a blocked source
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+This is a design example, not an execution result. A research agent must collect three sources that meet the project's authority criteria. One publisher page is blocked, and the trace shows the agent returning to it.
 
-### Validation
+### Scenario and decision gates
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+| Stage | Stimulus or precondition | Expected review decision | Evidence and stop condition |
+| --- | --- | --- | --- |
+| First blocked result | The publisher page returns a blocked observation | Record the result and state delta; do not call the task complete | Save step ID, normalized request, observation digest, and budget used |
+| Repeated attempt | The same route returns no new source evidence | Count a no-progress cycle and apply the supplied attempt limit | Stop repeating when the configured limit is reached; if no limit exists, request one |
+| Strategy change | The source remains blocked | Follow the authorized change-strategy branch, such as an official repository or registry | Record why the new source meets the stated authority criteria |
+| Completion check | Candidate sources have been gathered | Verify each source against the objective; do not rely on the agent's completion sentence | Stop only when the documented success rule is met or a hard budget/safety condition requires handoff |
+| Unresolved outcome | Evidence or budget is insufficient | Stop or escalate under project policy | Report remaining work, unresolved evidence, termination class, and no-extra-effect evidence |
 
-## How a Finding enters the next stage
+The old draft's example used two attempts as a scenario-specific cap. Keep that number only when the supplied project rule authorizes it; it is not a universal default.
 
-### Handoff output
+### Example finding contract
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Iteration map | What changed between two iterations | Useful delta or no-progress |
-| Loop finding | Repetition, drift, premature stop, or runaway behavior | Evidence and severity |
-| Termination action | Stop, retry with a new strategy, ask for input, or escalate | Condition and owner |
+The source prompt names findings `ALT-##`. This sample shows fields and evidence state only; it is not a measured failure:
 
-Do not write “passed” without a run record, query result, or source artifact. A strong loop review compares state before and after each iteration. It does not punish repetition automatically—some retries are justified—but it requires a changed hypothesis, a changed input, or a changed verification path.
+| Field | Example |
+| --- | --- |
+| ID and trigger | `ALT-01` — repeated the blocked publisher route without new source evidence |
+| Expected concern | No goal-relevant state advancement across the compared steps |
+| Evidence state | `UNASSESSED` until the run trace and project limit are available |
+| Impact and priority | Explain decision cost or user impact; use `NOT_SCORED` until the project scale is supported |
+| Owner and close condition | Name the agent/workflow owner; close when a repeatable trace check shows the authorized stop or strategy-change branch |
+| Validation | Compare step IDs, normalized arguments, observation digests, state delta, budget, and termination record |
 
-### Next-stage route
+## Handoff to the next stage
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Include the objective and success rule, trace version, evidence states, no-progress and budget policy, triggering step, termination class, remaining work, owner, close condition, and smallest validation action. For tool-side effects, state what was checked and what remains unknown.
 
-## How to prepare better input
+A downstream reviewer should be able to explain why the agent continued or stopped without guessing. If a hard limit or safety decision is missing, hand off that decision instead of embedding an invented default in the test.
 
-If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+## Related Skills
 
-## Working with other Skills
-
-- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/):provides the broader behavior and goal context.
-- [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/):checks time-based stopping and failure behavior.
-- [Agent Failure Recovery Testing](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/):covers fallback after loop failure.
+- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/) provides wider behavior and goal context.
+- [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/) examines time-bound stop and failure behavior.
+- [Agent Failure Recovery Testing](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/) handles recovery after a failed action; loop testing focuses on progress and termination across iterations.
 
 ## Common traps
 
-1. Counting iterations without comparing state.
-2. Using a global iteration cap that hides different risk levels.
-3. Stopping on a plausible sentence before the source requirement is met.
+1. Counting iterations without comparing goal-relevant state.
+2. Treating a successful tool call or fluent answer as proof of progress.
+3. Inventing a retry or budget limit when the project has not supplied one.
+4. Repeating a blocked action without recording the trigger, strategy change, or stop reason.
+5. Logging raw sensitive arguments instead of a safe normalized comparison.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the individual Skill and provide the objective, loop policy, and trace evidence:
 
 ```bash
-
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing -g
-
 ```
 
-After installation, invoke it with the `agent-loop-testing` Skill and attach the real project material.
+```text
+Use the agent-loop-testing Skill.
+
+Task: assess a research agent that revisits a blocked publisher while collecting three authoritative sources
+Inputs: [success criteria, loop policy, task/run/step trace, observations, time or cost record]
+Scope: [loop and tools included or excluded]
+Unknowns: [missing no-progress limit, evidence, authority rule, or permissions]
+Expected output: [risk-ordered ALT-## findings, trace gaps, termination decisions, and validation steps]
+
+Separate facts, inferences, recommendations, and Human decisions. Do not invent thresholds or claim a run that is not in the evidence.
+```
 
 ## FAQ
 
-### Is repeated tool use always a loop failure?
+### Does every repeated tool call mean the loop is stuck?
 
-No. It is a finding only when the retry adds no new evidence or violates the defined budget or side-effect boundary.
+No. Compare the observation and goal-relevant state. A retry can be valid if an authorized policy allows it and it has a reason; unchanged action and evidence without advancement is the signal to review.
 
+### What if the project has not set a no-progress limit?
 
+Do not invent one. Record the missing rule, identify the owner who can define it, and keep the stop decision unassessed until the rule is confirmed.
 
-### What should happen when the agent cannot progress?
+### What should the agent return when it cannot progress?
 
-Stop with the missing condition, the attempted strategies, and one human or system action that can unblock it.
-
-
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+A bounded handoff: the blocking condition, attempts already made, evidence still missing, remaining work, and the authorized human or system action needed to continue.
 
 ## References
 
 ### Source Skill and execution contract
 
-The complete execution contract lives in the [Agent Loop Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing) also contains the entry point and supporting assets where they exist.
+The [Agent Loop Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md) defines the input audit, trace procedure, `ALT-##` finding contract, and output order. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing) contains the entry point and supporting material.
 
-The entry point centers state delta, repeated actions, termination criteria, budget limits, and loop trace. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
-
-### Reference links
-
-- Agent Loop Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md)
-
-- Awesome QA Skills: Agent Loop Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- Agent Loop Testing details:[https://inaodeng.com/en/qaskills/agent-loop-testing/](https://inaodeng.com/en/qaskills/agent-loop-testing/)
+- [Agent Loop Testing details](https://inaodeng.com/en/qaskills/agent-loop-testing/)
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)

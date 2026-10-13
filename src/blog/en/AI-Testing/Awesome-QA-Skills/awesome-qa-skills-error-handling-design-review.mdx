@@ -1,6 +1,6 @@
 ---
-title: "Error Handling Design Review Skill: Make failure useful to users, operators, and the next system"
-description: "Error Handling Design Review field guide: review classification, user messaging, retries, fallback, logging, privacy, and recovery."
+title: "Error Handling Design Review: Failure Modes and Recovery"
+description: "Review failure modes, retry safety, propagation, data consistency, observability, and recovery before implementation."
 date: 2026-11-02T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -12,21 +12,21 @@ An error message can be technically accurate and still leave the user with no sa
 
 ## Why this Skill is needed
 
-Error Handling Design Review evaluates how a system classifies failures, communicates them, records them, retries them, and returns to a safe state.
+Error Handling Design Review checks whether each designed failure path has an evidence-backed behavior before implementation: how it is classified, propagated, exposed to callers, observed, and recovered.
 
 ## What the Skill does
 
-The Error Handling Design Review Skill is useful when a team needs a structured review of failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery.
+Use this Skill to review failure taxonomy, caller action, retryability, fallback, observability, privacy, data consistency, and recovery across distinct failure modes. It prepares findings and validation actions; it does not run fault injection or prove the behavior works at runtime.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Error Handling Design Review.
 
-A practical standard for this Skill is simple: A useful review asks the same failure to make sense at three levels: the user sees a safe next step, the operator sees a diagnosable event, and the downstream client sees a stable contract.
+A useful review follows one failure across three contracts: the caller gets a safe and stable result, the operator gets enough privacy-safe evidence to diagnose it, and the system preserves data consistency or names the required recovery decision.
 
-Use it when the team needs a repeatable review of failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+Use it when the team needs to compare failure paths such as validation rejection, authorization denial, timeout, dependency outage, rate limiting, duplicate requests, transaction conflict, partial success, or corrupted data—especially when sources disagree or a handoff must show what remains unverified.
 
 ## What it does not do
 
-The Error Handling Design Review Skill can organize material, evidence, and next actions for Error judgment. It does not replace:
+The Error Handling Design Review Skill can organize failure-mode evidence and next actions. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -37,17 +37,19 @@ The Error Handling Design Review Skill can organize material, evidence, and next
 
 The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
 
-| Focus | Question before analysis | Handoff output |
+| Failure path | Review questions | Finding evidence |
 | --- | --- | --- |
-| Error judgment | Class, impact, user action, and retryability | Source and status |
-| Observability requirement | Log, metric, trace, or alert needed | Privacy-safe field set |
-| Recovery decision | Fallback, compensation, or escalation | Owner and close condition |
+| Validation, authorization, and rate limit | What triggers the path, what boundary applies, and what can the caller do? | Contracted rejection and caller-visible result |
+| Timeout, dependency outage, and transaction conflict | Is retry safe, and can the original action have committed? | Retry/backoff or human-intervention rule, propagation, and data consistency |
+| Duplicate request, partial success, and corruption | What state may already have changed? | Idempotency, compensation, fallback, or safe-stop decision |
+| Breaker, degradation, and handoff | What stops, degrades, or moves to an operator? | Owner, close condition, and recovery evidence |
+| Telemetry and privacy | What can diagnose the failure without exposing secrets or payloads? | Required log/metric/trace fields and privacy boundary |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analyzing Error judgment, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before analyzing a failure path, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -66,7 +68,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Error judgment, do not compress four different kinds of language into “recommended to pass”:
+For each failure mode, do not compress four different kinds of language into “recommended to pass”:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -83,16 +85,16 @@ This case follows Input, Analysis, Finding, Decision, and Validation. When mater
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
-| Failure points | Validation, queue, worker, storage, download, and user state | Map each point to an owner |
-| Contract | User message, code, retry rule, log fields, and privacy boundary | Keep machine and human messages separate |
-| Recovery | Resume, restart, compensate, cancel, or support handoff | Define what the user can safely do |
+| Failure scope | Validation, queue, worker, storage, download, and affected user state | Name included stages and their owner |
+| Behavior contract | Trigger/boundary, retryability, propagation, caller result, and data effect | Keep undocumented behavior as a question |
+| Evidence and recovery | Telemetry/privacy rules, retry/backoff, fallback, compensation, and handoff | Identify the smallest source or validation action |
 
 Use a request like this:
 
 ```text
 Use the error-handling-design-review Skill.
 
-Task: review error handling for a report export that can fail validation, queueing, generation, storage, or download
+Task: review the designed failure paths for a report export that can fail validation, queueing, generation, storage, or download before implementation
 Inputs: [requirements, versions, links, logs, reports, or data paths]
 Scope: [included and excluded objects]
 Unknowns: [missing environment, accounts, data, or permissions]
@@ -103,7 +105,7 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ### Analysis
 
-Start with a bounded pass—review error handling for a report export that can fail validation, queueing, generation, storage, or download. For a storage failure after report generation, tell the user whether retrying is safe, log the report job ID and storage error class without file contents, and prevent the client from starting a second expensive generation unless the contract allows it.
+Start with the export stages and build one row per failure mode. For a storage write failure after generation, first establish the trigger and boundary, then classify the expected path as retryable, non-retryable, human intervention, or safe rejection from the supplied contract. Trace whether the report job may already exist, what the caller is told, which fallback or handoff applies, and which privacy-safe telemetry fields are required. If idempotency, commit state, retry policy, or caller wording is not supplied, leave it open; do not prescribe a retry or claim a fault was reproduced.
 
 The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
 
@@ -113,17 +115,18 @@ The handoff should preserve the input version, time window, evidence index, owne
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Error judgment meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+Use an `EH-##` record for one failure mode at one boundary. The example below leaves behavior unresolved where the source contract is absent; it is a design finding, not an incident or execution result.
 
-| Field | Example wording |
+| EH-01 field | Storage write fails after report generation |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Error judgment |
-| Finding | The condition or result for Error judgment is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Trigger and boundary | Storage rejects or times out after generation; exact commit boundary is not supplied |
+| Expected behavior type | `unknown` until the contract identifies retryable, non-retryable, human-intervention, or safe-rejection behavior |
+| Propagation and fallback | Caller result, fallback, and handoff are `missing`; do not infer a retry |
+| Data consistency | Determine whether the generated artifact/job already exists and whether repeating the action can duplicate work |
+| Observable evidence | Confirm the required job/correlation identifier and error class; exclude file contents and secrets per the privacy contract |
+| Source and evidence state | Requirement/API version not supplied: `missing`; no fault injection performed |
+| Impact, priority, and owner | Describe user/job impact from evidence; export/API owner confirms priority and behavior |
+| Validation and close condition | Review the source contract, then define a repeatable authorized check; close the design gap only when expected behavior, caller result, owner, and evidence are reviewable |
 
 The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
 
@@ -139,13 +142,13 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 ### Handoff output
 
-| Output field | Why it exists | Example status |
+| Output | Required fields for each `EH-##` | Example status |
 | --- | --- | --- |
-| Error judgment | Class, impact, user action, and retryability | Source and status |
-| Observability requirement | Log, metric, trace, or alert needed | Privacy-safe field set |
-| Recovery decision | Fallback, compensation, or escalation | Owner and close condition |
+| Failure boundary | Mode, trigger, boundary, expected behavior type, and source | `missing` where contract is absent |
+| Caller/system behavior | Propagation, fallback, retry rule, visible result, and data consistency | `unassessed` until source is reviewed |
+| Evidence and ownership | Privacy-safe telemetry, impact/priority, owner, validation, and close condition | `unverified` until the stated check runs |
 
-Do not write “passed” without a run record, query result, or source artifact. A useful review asks the same failure to make sense at three levels: the user sees a safe next step, the operator sees a diagnosable event, and the downstream client sees a stable contract.
+Do not write “passed” without the evidence required for that claim. A useful review asks the same failure to make sense at three levels: the caller sees a stable result, the operator sees a diagnosable privacy-safe event, and the system has an evidence-backed consistency or recovery path.
 
 ### Next-stage route
 

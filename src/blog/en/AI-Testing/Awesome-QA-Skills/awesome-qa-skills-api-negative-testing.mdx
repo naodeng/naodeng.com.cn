@@ -1,6 +1,6 @@
 ---
-title: "API Negative Testing Skill: Turn invalid inputs and forbidden transitions into useful contracts"
-description: "API Negative Testing field guide: cover malformed input, boundary values, forbidden transitions, dependency failures, and safe errors."
+title: "API Negative Testing: Design Rejection and Safety Checks"
+description: "Turn field constraints, permissions, limits, and state rules into bounded invalid-input cases with response and side-effect checks."
 date: 2026-10-18T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -16,34 +16,27 @@ API Negative Testing designs failure cases from contract rules, boundaries, auth
 
 ## What the Skill does
 
-The API Negative Testing Skill is useful when a team needs a structured review of invalid shape, boundary values, forbidden state, authorization, dependency failure, and safe response.
+Extract field types, required/null rules, ranges, length and size constraints, identity/permission rules, error contracts, and dependency behavior. Turn them into `ANT-##` candidates with preconditions, behavior of concern, source evidence, validation, impact/priority, owner role, and close condition.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Negative Testing.
+Keep field constraints and authorization rules traceable separately. When a rule is missing, conflicting, or not applicable, leave the case open instead of inventing an expected response. Candidate counts do not prove coverage, and the Skill does not execute tests.
 
-Use it when the team needs a repeatable review of invalid shape, boundary values, forbidden state, authorization, dependency failure, and safe response—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-A useful result keeps invalid shape, boundary values, forbidden state, authorization, dependency failure, and safe response connected to a source and a verification action. It does not turn a design checklist into a passing result.
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage; the [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model.
 
 ## What it does not do
 
-The API Negative Testing Skill can organize material, evidence, and next actions for Negative case. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
+It does not replace a complete strategy, supply missing API behavior, or decide which status code should be used. It also does not infer that rejection caused no side effect: records, events, and partial-success behavior need their own evidence.
 
 ## What it checks
 
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
+| Rule family | Candidate variants | Evidence to retain |
 | --- | --- | --- |
-| Negative case | Invalid condition and expected rejection | Traceable rule |
-| Response judgment | Status, code, safe message, and retryability | Client action |
-| Mutation check | Records or events that must not change | State evidence |
+| Field presence and type | Missing, null, empty, wrong type | Field rule, valid neighboring control, response and state |
+| Numeric or string limits | Below, at, and above the sourced boundary; encoding and size | Constraint source, exact variant, response |
+| Identity and permission | Wrong principal, missing permission, forbidden object | Authorization source, identity context, allowed/rejected result |
+| State transition | Request from an ineligible or terminal state | State rule, starting state, resulting state |
+| Dependency and rate limit | Supplied failure or limit condition | Failure policy, retry meaning, durable effects |
 
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+For independent rules, vary one factor at a time. Combine invalid factors only when their interaction is itself a risk; record which rule each factor exercises. Include a valid near-neighbor to distinguish over-rejection from correct rejection.
 
 ## Audit inputs before you start
 
@@ -62,18 +55,9 @@ Keep the input version, scope, environment, evidence locations, and accountable 
 
 ## From problem to structured Finding
 
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+### ANT-## finding contract
 
-### Keep the decision layers separate
-
-For Negative case, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+Each candidate should name the constraint or permission rule, input variant, preconditions, allowed/rejected expectation, response and side-effect observation, source evidence, evidence state, impact/priority, owner role, close condition, and validation. Keep field and permission rules separately traceable; do not merge distinct invalid classes into one result.
 
 ## A complete case
 
@@ -111,31 +95,23 @@ The useful handoff keeps the input version, time window, evidence index, owner, 
 
 ### Finding
 
-#### Example finding: turn one problem into a handoff
+The following is a recording pattern, not an execution result:
 
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Negative case meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Field | Example |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Negative case |
-| Finding | The condition or result for Negative case is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
-
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+| ID and subject | `ANT-01` — closed-account update in the bulk-import operation |
+| Preconditions and concern | Account is closed; the sourced state rule may prohibit the update |
+| Evidence state | `UNASSESSED` until the applicable rule, response, and persisted-state query are available |
+| Impact/priority and owner | Explain the affected record or downstream effect; name the API/data owner; score only with the project scale |
+| Close condition and validation | Verify allowed/rejected result, row-level persistence, and event ledger with a repeatable isolated check |
 
 ### Decision
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+The API or domain owner confirms whether the state and field rules apply. If the import contract does not say whether rows may partially succeed, keep that transaction decision open rather than assuming an all-or-nothing write.
 
 ### Validation
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+Use an isolated environment and approved safe data. Compare the response with the applicable rule, then query the affected records and downstream events; a rejection status alone cannot establish that no mutation occurred.
 
 ## How a Finding enters the next stage
 
@@ -151,11 +127,11 @@ Do not write “passed” without a run record, query result, or source artifact
 
 ### Next-stage route
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Send the constraint-to-variant table, valid controls, response expectations, and state-mutation checks to the executor. Keep candidate design separate from executed results and from unresolved transaction policy.
 
 ## How to prepare better input
 
-If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+Provide the versioned schema, field rules, authorization model, error contract, rate-limit or dependency policy, and evidence about affected records and events. State whether partial success is allowed; if unknown, preserve it as a contract gap.
 
 ## Working with other Skills
 

@@ -1,6 +1,6 @@
 ---
 title: "Project Delivery Perspective: Include scope, dependencies, and delivery risk in quality decisions"
-description: "Project Delivery Perspective field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+description: "Assess delivery readiness from scope, dependencies, milestones and evidence; make trade-offs and owners clear when plans shift."
 date: 2026-09-24T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Project Delivery Perspective"]
@@ -12,7 +12,7 @@ Delivering on time by sacrificing verification, operability, or usability does n
 
 The Project Delivery Perspective Skill makes trade-offs explicit, connecting milestones to readiness signals rather than treating a date as proof of success.
 
-This guide uses collaboration-grounded examples to unpack the judgment process, helping you turn different signals into actions that are communicable and traceable.
+The membership-upgrade v3 example connects scope, a payment-sandbox dependency, QA windows, rollback rehearsal, owners, and delivery options.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Project Delivery Perspective.
 
@@ -22,82 +22,135 @@ The main prompt covers Required inputs, Delivery work, Source and quality bounda
 
 This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
 
-## A review fragment that keeps disagreement visible
+## Related Skills
 
-Assess whether schedule, dependencies, and owners support entry into the release gate
+Project Delivery Perspective brings commitments, dependencies, and owners into one delivery assessment. After a change, the workflow can continue through these Skills:
 
-Different roles can read the same artifact and find different risks.
+| Skill | When to use it | What it adds |
+| --- | --- | --- |
+| [Change Impact Analysis](https://inaodeng.com/en/qaskills/change-impact-analysis/) | Requirements, code, or dependencies change | Identifies affected systems, roles, evidence, and deliverables |
+| [Regression Scope Analysis](https://inaodeng.com/en/qaskills/regression-scope-analysis/) | Impact is known and verification must be planned | Maps risk to required, sampled, and deferrable regression scope |
+| [Production Verification](https://inaodeng.com/en/qaskills/production-verification/) | A release is live and needs real-environment verification | Checks critical paths and stop conditions with observable, reversible checks |
+| [Multi-Role Quality Synthesis](https://inaodeng.com/en/qaskills/multi-role-quality-synthesis/) | Product, QA, Engineering, and UX reports exist for the same stage | Preserves agreement, disagreement, and sources for delivery follow-up |
+| [Technical Quality Perspective](https://inaodeng.com/en/qaskills/technical-quality-perspective/) | Dependencies, stability, or recovery evidence affects a commitment | Supplies runtime consequences, technical gaps, and recovery evidence |
 
-| Observation | Evidence | Impact | Recommendation |
-| --- | --- | --- | --- |
-| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
-| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
+## What Delivery Perspective handles across the workflow
 
-Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
+Delivery Perspective does not re-review all eight development stages. It organizes scope, dependencies, milestones, owners, and action status only in the stages it supports. Other stage outputs must first come from the relevant role Skill and then become inputs to delivery planning.
 
-## Merge evidence without flattening disagreement
+| Development stage | Delivery Perspective handling | What to hand off or record |
+| --- | --- | --- |
+| Requirements analysis | Does not perform the analysis; receives confirmed scope, exclusions, and acceptance prerequisites | Product, QA, Technical, or UX facts plus registered dependencies |
+| Test strategy | Supported stage; records target dates, capacity, environments, dependencies, milestones, and owners | Project constraints, action tracking, and information gaps |
+| Test strategy review | Supported stage; checks whether trade-offs have a due time, owner, and escalation path | Executable delivery options without rewriting quality facts |
+| Code review | Does not review code; records dependency or rework impact raised by review | Findings and evidence from Technical Quality Perspective |
+| Test case writing | Does not design cases; records how case volume, data, and environment affect the window | Verification effort and gaps from QA Quality Perspective |
+| Test case review | Does not decide whether QA cases pass; tracks whether review actions affect milestones | Action owner, due time, and status |
+| Test reporting | Does not generate a report for the executor; waits for run identity, results, and failure evidence | Quality facts from QA or Test Reporting Skills |
+| Test report review | Supported stage; separates quality facts, project constraints, and open actions | Review date, dependency blockers, actions, and coordination issues |
 
-For Assess whether schedule, dependencies, and owners support entry into the release gate, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
+Across this set of articles, Technical Quality Perspective asks what happens when a dependency fails; Multi-Role Quality Synthesis asks where role evidence agrees or conflicts; Project Delivery Perspective asks how scope and dates should change under current conditions.
 
-| Role | Observation | Evidence needed | Decision ownership |
-| --- | --- | --- | --- |
-| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
-| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
-| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
+## Put commitments and prerequisites in the same release plan
 
-Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Required inputs and Delivery work need source links because paraphrasing can change their meaning.
+Start with schedule, dependencies, and owners to organize the scope, verification, and accountability required for release review. This Skill does not make a Go/No-Go decision by itself.
 
-The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+| Delivery condition | Current evidence | Action if it fails |
+| --- | --- | --- |
+| Scope | Frozen requirements, exclusions, and acceptance criteria | Record impact and re-estimate the date |
+| External dependency | Commitment time for interface, environment, data, or approval | Name a fallback and latest escalation time |
+| Verification window | Time needed for regression, canary, and rollback | Reduce scope or delay release |
+| Owner | Every deliverable and risk has an owner | Do not mark an item complete without one |
 
-## A prompt you can adapt
+Each condition needs a source, due time, and failure action before the plan can drive delivery.
 
-Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+## Membership upgrade v3 delivery tracker
+
+These project inputs are hypothetical. In a real report, dates, owners, and statuses are facts only when the supplied material supports them; otherwise list a gap.
+
+| Milestone | Prerequisite on record | Owner | Due | Action if it fails |
+| --- | --- | --- | --- | --- |
+| Scope freeze | PRD-42 lists the primary membership-upgrade path and exclusions | Product lead | Wednesday 12:00 | Re-estimate scope; do not include unconfirmed requirements in the on-time commitment |
+| Sandbox callback | Payment provider committed to timeout and duplicate-callback samples | Payment service lead | Thursday 12:00 | Record a dependency blocker; if only a mock service is available, do not report real-callback verification as complete |
+| Regression window | QA reserved time for checkout, benefits, and reconciliation | QA lead | Friday 10:00–14:00 | Reduce scope or delay; do not rewrite execution status as passed because time ran short |
+| Rollback rehearsal | Candidate-version rollback and data checks are scheduled | Release lead | Friday 14:00–15:00 | Raise a coordination issue and wait for the authorized owner to adjust the plan |
+| QA execution status | QA-42 records that timeout callback testing has not run | QA lead | Before Friday 14:00 | Run the test and update the quality fact; do not mark it passed |
+
+If the payment provider misses Thursday's delivery, Delivery Perspective can present three options: wait and move the date, narrow scope to paths with evidence, or split the candidate version into two releases. It cannot call a mock result a real dependency pass or mark unrun regression as passed.
+
+A handoff record could look like this:
+
+```yaml
+stage: test-report-review
+milestone: Membership upgrade v3 release review
+scope: [primary path, benefits delivery, payment callback]
+dependencies:
+  - name: Payment sandbox callback
+    source_id: DELIVERY-42
+    due: Thursday 12:00
+    status: pending
+validation_window:
+  owner: QA lead
+  window: Friday 10:00–14:00
+  source_id: QA-PLAN-42
+retained_quality_facts:
+  - source_id: QA-42
+    statement: Timeout callback has not run
+    status: not_run
+decision: pending
+next_action: Confirm dependency delivery; if late, submit reduced-scope or delay options
+owner: Release lead
+```
+
+The decision remains pending. A delivery record makes people, dates, and fallback paths visible; it does not make the release lead's Go/No-Go decision.
+
+## Turn delivery findings into executable choices
+
+“Release on schedule” is not the only option. State the conditions for proceeding, reducing scope, delaying, or splitting the release.
+
+| Option | When it applies | Evidence to retain |
+| --- | --- | --- |
+| Release as planned | Scope is frozen; dependencies and verification window are ready | Release checklist, regression results, rollback rehearsal |
+| Reduce scope | Core paths are ready but lower-risk features lack evidence | Exclusions, user impact, and a date for follow-up |
+| Delay release | A critical dependency or rollback condition is unmet | Blocker, escalation path, and new date |
+
+Every option needs an approver and a latest confirmation time. The Skill organizes conditions and evidence; it does not make commitments for the project owner.
+
+## Adaptable prompt
+
+Replace the bracketed fields with project material.
 
 ```text
 Use the project-delivery-perspective Skill.
 
-Task: Assess whether schedule, dependencies, and owners support entry into the release gate
+Stage: test report review (test-report-review)
+Task: Assess whether the membership-upgrade release plan has workable scope, dependencies, milestones, and owners
 Version and environment: [requirement / build / environment]
-Inputs: [file paths or links]
-Scope: [included and excluded journeys]
-Constraints: [accounts, data, time, compliance]
+Inputs: [plan, dependency commitments, QA records, rollback evidence]
+Scope: [included and excluded work]
+Constraints: [dates, capacity, environment, approvals]
 
-Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
-Finish with open questions. Do not invent missing facts.
+Separate quality facts from project constraints. For each milestone, record its source, owner, due time, failure action, and current status. Present options with evidence and open decisions. Do not make a Go/No-Go decision.
 ```
 
-Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+## Keep delivery constraints distinct from quality conclusions
 
-## Advanced use, from one call to a maintained flow
+A concise delivery summary still needs project constraints, action tracking, retained quality facts, information gaps, and the next delivery action. Project Delivery Perspective does not produce a quality verdict or release approval.
 
-Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+## Who should use this Skill
 
-### A three-Skill chain
+Project and release leads can use it to make schedule and dependency trade-offs explicit. QA, Product, Engineering, and Operations can use the shared record to see which owner must resolve each delivery condition.
 
-`requirements-analysis` → `project-delivery-perspective` → `multi-role-quality-synthesis`
+## Review a delivery record before handoff
 
-| Handoff | Payload | Receiver check |
+| Review item | What to retain | If missing |
 | --- | --- | --- |
-| Upstream to project-delivery-perspective | Source versions, scope, risks, open questions | Project Delivery Perspective staleness and conflicts |
-| project-delivery-perspective to downstream | Primary artifact, evidence index, unfinished work | Project Delivery Perspective executability and owners |
-| Feedback to project-delivery-perspective | Runs, defects, new risks | Project Delivery Perspective baseline and regression update |
-
-Do not paste three complete outputs into one large prompt. Give Project Delivery Perspective a structured summary and accessible source artifacts. It saves context and makes defects traceable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| project-delivery-perspective input | Version, environment, owner, accessible sources | Stop Project Delivery Perspective and list gaps |
-| project-delivery-perspective artifact | Material claims carry basis and status | Return Project Delivery Perspective for evidence |
-| project-delivery-perspective execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
-| project-delivery-perspective decision | Residual risks have accepter and date | Do not enter the next stage |
-
-Review Project Delivery Perspective adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
-
-## A perspective Skill is not role-play
-
-Do not invent what product, QA, or engineering would say. Project Delivery Perspective can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+| Scope and commitment | Included work, exclusions, dates, and source versions | Reconfirm scope before treating the date as a commitment |
+| Dependencies | Provider, promised artifact, due time, and fallback | Keep the dependency open and record its escalation path |
+| Verification window | Regression, canary, rollback, and recovery time | Reduce scope or delay the decision |
+| Ownership | Owner and approver for each action | Do not mark ownerless risks as closed |
+| Quality facts | Verified, not_run, and blocked states from source reports | Preserve them; do not rewrite them as delivery status |
+| Decision | Options, approver, and latest confirmation time | Leave the release decision pending |
 
 ## Install and invoke
 
@@ -109,25 +162,25 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 Invoke it with “Use the project-delivery-perspective Skill,” then attach the real artifacts.
 
-## Two practical questions
+## Common questions
 
-### Can one perspective overrule the others?
+### Why reassess when the date has not changed?
 
-No. It adds observations. Keep disagreement and supporting evidence visible.
+Dependencies, scope, and verification windows may have changed. The date is a commitment; prerequisites are delivery evidence.
 
-### What if that role is absent?
+### What if an external dependency is late?
 
-Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
+Record impact, fallback, and the latest escalation time, then consider splitting scope or changing the release plan.
 
-### What if roles reach opposite conclusions?
+### How can I tell whether a risk has an owner?
 
-Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
+Each risk needs an owner, decision-maker, due time, and verifiable closure condition.
 
-### Can a perspective be written without data?
+### Can this Skill decide Go/No-Go?
 
-It can be an observation or assumption if the missing source and next evidence request stay visible.
+No. It provides options, conditions, and evidence. An authorized person makes the release decision.
 
-Run Project Delivery Perspective against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+Run Delivery Perspective against a plan with dates, owners, and dependency sources, then retain inputs, output, and review notes. The example gives structure; project evidence must come from the project.
 
 ## References
 - Awesome QA Skills project:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

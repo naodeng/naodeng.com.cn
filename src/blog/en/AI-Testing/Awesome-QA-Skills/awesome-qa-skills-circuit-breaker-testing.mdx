@@ -8,203 +8,56 @@ tags: ["AI Testing", "QA Skills", "Circuit Breaker Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A circuit breaker that opens quickly but never probes recovery is just a permanent outage with better terminology.
+A circuit breaker is a state machine driven by evidence about dependency calls. A useful review checks what counts as a failure, when traffic is rejected locally, how recovery probes are limited, and what event closes or reopens the breaker.
 
-## Why this Skill is needed
+## Define the state contract
 
-Circuit Breaker Testing validates failure thresholds, open and half-open transitions, fallback behavior, probe traffic, and recovery without causing a retry storm.
+Before reviewing state names, collect the configured failure-count definition, rolling or consecutive window, threshold, open duration, half-open probe allowance, concurrency limit, and success or failure transitions. If any value is absent, keep it unknown instead of choosing a default.
 
-## What the Skill does
-
-The Circuit Breaker Testing Skill is useful when a team needs a structured review of failure threshold, state transition, fallback, probe request, reset timing, and downstream protection.
-
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Circuit Breaker Testing.
-
-A practical standard for this Skill is simple: A useful breaker test follows state, traffic, and user behavior together. It checks that open state protects the dependency, half-open state limits probes, and recovery does not turn into a sudden surge.
-
-Use it when the team needs a repeatable review of failure threshold, state transition, fallback, probe request, reset timing, and downstream protection—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-## What it does not do
-
-The Circuit Breaker Testing Skill can organize material, evidence, and next actions for State trace. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
-| --- | --- | --- |
-| State trace | Closed, open, half-open, and reset transitions | Trigger and timestamp |
-| Fallback result | User and downstream behavior while open | Safe, degraded, or unsafe |
-| Recovery finding | Probe, storm, stuck-open, or premature-close issue | Repair action |
-
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
-
-## Audit inputs before you start
-
-Before analyzing State trace, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
-| --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
-
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
-
-## From problem to structured Finding
-
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
-
-### Keep the decision layers separate
-
-For State trace, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
-
-## A complete case
-
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
-
-### Input
-
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Breaker policy | Failure count or rate, open duration, half-open probes, and reset rule | Keep time windows explicit |
-| Dependency behavior | Timeout, 5xx, slow response, recovery, and partial failure | Different failures may have different classification |
-| Fallback contract | Cache, default result, queue, or user message | Verify the fallback is safe for the journey |
-
-Use a request like this:
-
-```text
-Use the circuit-breaker-testing Skill.
-
-Task: test a recommendation dependency protected by a circuit breaker during a regional timeout event
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-```
-
-### Analysis
-
-Start with a bounded pass—test a recommendation dependency protected by a circuit breaker during a regional timeout event. Inject slow responses until the breaker opens, send normal traffic while it is open, then restore the dependency and observe half-open probes. Record fallback rate, probe count, transition timestamps, and the first request that safely returned to normal.
-
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-### Finding
-
-#### Example finding: turn one problem into a handoff
-
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that State trace meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| State | Behavior to verify from the contract |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for State trace |
-| Finding | The condition or result for State trace is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Closed | Which dependency outcomes count, and how are they added to the configured window? |
+| Open | Are ordinary calls rejected locally, and which fallback is returned? |
+| Half-open | How many recovery probes may run, and what happens to ordinary calls? |
+| Reset | Which probe result and timing transition the breaker to closed or open? |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+Separate a real dependency request from a local rejection. Count each only as the configured policy says; a state label alone does not prove that the implementation followed the contract.
 
-### Decision
+## Trace one transition sequence
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+Build a request-identified timeline rather than a checklist of state names:
 
-### Validation
+| Event | State and count | Expected action | Evidence to retain |
+| --- | --- | --- | --- |
+| Dependency call returns a contract-defined failure | Closed; update the configured window | Keep closed until the documented trigger is met | Request ID, outcome, timestamp |
+| Trigger is reached | Closed to open | Stop sending ordinary calls to the dependency | Transition event and local-rejection evidence |
+| Open duration expires | Open to half-open | Admit only the allowed recovery probes | Probe identity, concurrency, timestamp |
+| Probe succeeds or fails | Half-open to closed or open | Apply the documented transition and fallback | Probe result and resulting state |
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+This table describes a review method, not an assumed project policy. Use the supplied threshold and event records. When logs are missing, label the transition expected or unverified rather than observed.
 
-## How a Finding enters the next stage
+## Worked example: regional timeout
 
-### Handoff output
+For a breaker protecting a recommendation dependency, review a proposed regional timeout sequence. Confirm which calls contribute to the failure window, whether calls rejected while open affect that count, how many half-open probes may overlap, and whether a failed probe immediately reopens the breaker or follows another documented rule.
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| State trace | Closed, open, half-open, and reset transitions | Trigger and timestamp |
-| Fallback result | User and downstream behavior while open | Safe, degraded, or unsafe |
-| Recovery finding | Probe, storm, stuck-open, or premature-close issue | Repair action |
+A validation proposal should run in an isolated environment with a stop condition, observe dependency calls separately from local rejections, and capture state and fallback evidence. Do not induce production failures or invent a threshold for the example.
 
-Do not write “passed” without a run record, query result, or source artifact. A useful breaker test follows state, traffic, and user behavior together. It checks that open state protects the dependency, half-open state limits probes, and recovery does not turn into a sudden surge.
+## Findings and boundaries
 
-### Next-stage route
+Use CBR-## for an unclear transition or protection rule. Include the state and request, source, trigger, pre-state and count, action, post-state, fallback, evidence status, impact, owner role, close condition, and validation method. Include concurrency and time-boundary cases where the supplied contract makes them relevant.
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+This Skill reviews circuit-breaker behavior only. Use [Dependency Failure Testing](https://inaodeng.com/en/qaskills/dependency-failure-testing/) for the wider caller/dependency side-effect matrix, [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/) for retry interaction, and [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/) for broader recovery outcomes.
 
-## How to prepare better input
-
-If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
-
-A richer input changes the answer here because failure threshold, state transition, fallback, probe request, reset timing, and downstream protection must be tied to evidence rather than inferred from a familiar pattern.
-
-## Working with other Skills
-
-- [Resilience Testing](https://inaodeng.com/en/qaskills/resilience-testing/):covers broader dependency failure behavior.
-- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/):checks retry interaction with the breaker.
-- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/):verifies return to a safe state.
-
-## Common traps
-
-1. Testing only the open transition.
-2. Letting every request probe during half-open.
-3. Treating fallback success as dependency recovery.
+Do not infer failure thresholds, recovery duration, or production behavior. A configured state and a designed test are not evidence that the breaker transitioned at runtime.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the individual Skill:
 
-```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing -g
-```
 
-After installation, invoke it with the `circuit-breaker-testing` Skill and attach the real project material.
+Invoke circuit-breaker-testing with the state policy, failure-count rules, probe limits, fallback contract, and request-level evidence.
 
-## FAQ
+## Source
 
-### Should a circuit breaker be tested with real traffic?
-
-Use a controlled environment or approved traffic slice; the point is observable state transitions, not uncontrolled disruption.
-
-### What if fallback data is stale?
-
-Record freshness and user impact as part of the fallback contract; stale is not automatically safe.
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
-
-## References
-
-### Source Skill and execution contract
-
-The complete execution contract lives in the [Circuit Breaker Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing/prompts/circuit-breaker-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing) contains the entry point and supporting assets where they exist.
-
-The entry point centers failure threshold, state transition, fallback, probe request, reset timing, and downstream protection. Keep its decision boundary visible and do not turn a static design into an execution claim.
-
-### Reference links
-
-- Circuit Breaker Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing/prompts/circuit-breaker-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing/prompts/circuit-breaker-testing.md)
-
-- Awesome QA Skills: Circuit Breaker Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- Circuit Breaker Testing details:[https://inaodeng.com/en/qaskills/circuit-breaker-testing/](https://inaodeng.com/en/qaskills/circuit-breaker-testing/)
+Read the [Circuit-Breaker Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing/prompts/circuit-breaker-testing.md) before use. It defines the CBR-## finding contract and the per-event pre-state/count/action/post-state/fallback table.

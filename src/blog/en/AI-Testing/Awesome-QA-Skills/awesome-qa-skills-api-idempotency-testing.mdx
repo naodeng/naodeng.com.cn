@@ -1,6 +1,6 @@
 ---
-title: "API Idempotency Testing Skill: Prove repeated writes do not create repeated business effects"
-description: "API Idempotency Testing field guide: test duplicate requests, keys, concurrency, timeouts, replay windows, and stored outcomes."
+title: "API Idempotency Testing: Build a Replay Test Plan"
+description: "Plan evidence for key scope, payload conflicts, concurrency, expiry, and business side effects after retries."
 date: 2026-10-19T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,209 +8,146 @@ tags: ["AI Testing", "QA Skills", "API Idempotency Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-Retries are ordinary. Duplicate refunds, orders, and notifications are not. Idempotency testing checks the business effect—not just whether the second HTTP response looks familiar.
+A repeated HTTP response does not prove an operation was safe. API idempotency testing follows a request through the stored result and every business effect it could create.
 
 ## Why this Skill is needed
 
-API Idempotency Testing verifies that repeated or concurrent requests with the same business intent produce one safe effect and a well-defined response.
+A client may time out after the server commits an order. If the client retries, a response cache can look correct while a second payment, event, or notification slips through. This Skill helps teams examine the write contract and reconcile those effects.
 
-## What the Skill does
+## What the Skill helps you do
 
-The API Idempotency Testing Skill is useful when a team needs a structured review of idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict.
+Use the API Idempotency Testing Skill to turn a write operation into a bounded scenario set:
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Idempotency Testing.
+1. Extract the documented key scope, payload matching rule, retention window, concurrency behavior, and conflict response. Mark any missing rule as a question.
+2. Vary one condition at a time: reuse a key, change the payload, race requests, retry after a timeout, and cross the documented expiry boundary.
+3. Join responses to durable records—such as order IDs, payment attempts, and emitted events—then record an AIT-## finding with the evidence and next validation action.
 
-Use it when the team needs a repeatable review of idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+The point is to judge the contract against observable effects, not to reward familiar-looking response bodies. [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage; the [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model.
 
-A useful result keeps idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict connected to a source and a verification action. It does not turn a design checklist into a passing result.
+## Scope and limits
 
-## What it does not do
+The Skill can propose scenarios and organize supplied evidence. It does not decide what the API's key scope or expiry policy should be, execute requests, or infer a successful commit from a timeout. A design review without run records remains a test plan, not an execution result.
 
-The API Idempotency Testing Skill can organize material, evidence, and next actions for Replay result. It does not replace:
+## What to inspect
 
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
+| Contract area | Questions to resolve | Evidence to compare |
 | --- | --- | --- |
-| Replay result | Whether the same key returns the original outcome | Response and stored state |
-| Side-effect count | Orders, charges, events, or notifications created | Exactly once, zero, or duplicate |
-| Conflict finding | Changed payload, expired key, or concurrent ownership | Policy and repair action |
+| Key scope | Is the key scoped by operation, account, endpoint, or another documented boundary? | Request identity, authenticated principal, operation record |
+| Payload identity | What happens when the same key arrives with a changed body? | Canonical request or fingerprint, conflict response, write ledger |
+| Replay window | How long is the result retained, and what is defined after expiry? | Contract version, key record, timestamps around the boundary |
+| Concurrency | What does a second request observe while the first is still processing? | Ordered request timeline, lock/claim state, response and commit record |
+| Business effects | Did the operation create more than one durable effect? | Order, charge, message, or event identifiers joined to the key |
 
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+Keep response replay and side-effect uniqueness as separate judgments. A repeated `202` or identical body is not enough if the business ledger contains two writes.
 
-## Audit inputs before you start
+## Audit inputs before designing scenarios
 
-Before analyzing Replay result, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
+| Needed input | Why it matters | If it is missing |
 | --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
+| Write operation and intended business effect | Defines what must happen once | Name the unknown effect; do not invent one |
+| Key and payload contract | Defines equivalence and conflict | Leave same-key/different-payload behavior open |
+| Retention and concurrency rules | Defines timing boundaries | Do not infer an expiry from cache configuration |
+| Evidence sources and join fields | Connects requests to committed effects | Request the smallest useful query or trace; keep the result unassessed |
 
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
+Record source version, environment, time range, included operations, and the owner who can confirm the contract. Distinguish `known`, `missing`, `conflicting`, `stale`, `out_of_scope`, and `assumptions` in the input notes.
 
-## From problem to structured Finding
+## Worked scenario: checkout response lost after commit
 
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+This is a test-design example, not a claim that the endpoint has been run. Suppose `cart-1842` is submitted with key `checkout-1842`, the server commits an order, and the client times out before receiving the response.
 
-### Keep the decision layers separate
+### Scenario sequence
 
-For Replay result, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
+| Step | Request or check | Question to answer |
 | --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+| 1 | Submit the checkout request and retain its key, body, and request ID | What does the contract say the write creates? |
+| 2 | After the timeout, query the order and payment records using available join fields | Is the first commit confirmed, absent, or still indeterminate? |
+| 3 | Replay the original request serially, then submit overlapping requests with the same key | Does the documented in-progress or replay behavior hold, and how many effects exist? |
+| 4 | Reuse the key with a changed cart, then inspect the contract-defined conflict result | Is the payload conflict handled as specified without another write? |
+| 5 | Submit the same business intent with a new key | Does the contract treat it as a new operation, and is that effect intentional? |
+| 6 | Repeat on both sides of the retention boundary | What happens to a late retry, and is that behavior explicitly defined? |
 
-## A complete case
+Judge each row against the supplied contract. For example, do not assert that every API must return `409`; record the expected conflict behavior from the actual contract. Count committed business effects, not request attempts.
 
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
+### Example finding
 
-### Input
+Use this shape only after replacing the placeholders with project evidence:
 
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Operation contract | Write effect, idempotency key format, replay window, and conflict policy | Do not infer the replay window from cache settings |
-| Request variants | Same key and payload, same key with changed payload, no key, and concurrent requests | Record exact body and headers |
-| Business evidence | Order IDs, payment attempts, event records, and response bodies | A matching response is not enough without state evidence |
-
-Use a request like this:
-
-```text
-
-Use the api-idempotency-testing Skill.
-
-Task: test a checkout POST when the client times out after the server has created the order
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-
-```
-
-### Analysis
-
-Start with a bounded pass—test a checkout POST when the client times out after the server has created the order. Submit checkout with key `cart-1842`, let the client time out, then replay it twice—once serially and once concurrently. Confirm one order, one payment attempt, one confirmation event, and a response that points to the original order. Reuse the key with a different cart and expect a conflict.
-
-The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-### Finding
-
-#### Example finding: turn one problem into a handoff
-
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Replay result meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Field | Example |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Replay result |
-| Finding | The condition or result for Replay result is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| ID and question | `AIT-01` — Does a retry after a committed checkout timeout create another order or payment? |
+| Evidence state | `UNASSESSED` until request and business ledgers are joined |
+| Impact and priority | Describe the affected effect and use the project's impact scale; `NOT_SCORED` until evidence supports a score |
+| Owner | API or payment-contract owner who can confirm replay and expiry rules |
+| Close condition | Contract judgment, joined commit ledger, and repeatable scenario results are reviewable |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+Do not label the example as a defect or a pass before the source, run, and business-state evidence exist.
 
-### Decision
+## Handoff to the next stage
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+| Handoff field | Include |
+| --- | --- |
+| Contract | Versioned key scope, payload rule, replay window, and conflict behavior |
+| Scenario | Exact request variants, timing, concurrency, and environment |
+| Reconciliation | Join fields and counts for each durable business effect |
+| Finding | AIT-##, evidence state, impact basis, owner, and close condition |
+| Next action | The missing query, contract decision, or repeatable runtime check |
 
-### Validation
+A downstream reviewer should be able to follow the key from request to stored result and effect ledger. If those records cannot be joined, say which link is missing instead of claiming exactly-once behavior.
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+## Related Skills
 
-## How a Finding enters the next stage
-
-### Handoff output
-
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Replay result | Whether the same key returns the original outcome | Response and stored state |
-| Side-effect count | Orders, charges, events, or notifications created | Exactly once, zero, or duplicate |
-| Conflict finding | Changed payload, expired key, or concurrent ownership | Policy and repair action |
-
-Do not write “passed” without a run record, query result, or source artifact. A strong idempotency test follows the request into storage and downstream events. It also tests the uncomfortable case where the key is reused with a different payload—silently accepting it is usually worse than rejecting it.
-
-### Next-stage route
-
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
-
-## How to prepare better input
-
-If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
-
-## Working with other Skills
-
-- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/):anchors the request and response contract.
-- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/):explores retry triggers and boundaries.
-- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/):checks conflict and processing responses.
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/) establishes the request and response contract.
+- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/) explores retry triggers and boundaries.
+- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/) reviews conflict and processing responses.
 
 ## Common traps
 
-1. Checking duplicate responses without checking duplicate effects.
-2. Testing only serial retries.
-3. Allowing a changed payload to inherit an old key silently.
+1. Treating equal responses as proof of one business effect.
+2. Testing serial retries but not overlapping requests.
+3. Assuming a changed payload, missing key, or expired key has a universal expected response.
+4. Counting HTTP attempts instead of committed orders, charges, messages, or events.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the individual Skill, then attach the real operation contract and evidence sources:
 
 ```bash
-
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing -g
-
 ```
 
-After installation, invoke it with the `api-idempotency-testing` Skill and attach the real project material.
+Use the prompt's output contract when preparing a design or evidence review:
+
+```text
+Use the api-idempotency-testing Skill.
+
+Task: assess a checkout POST whose client timed out after the server may have committed the order
+Inputs: [contract version, request samples, logs, state queries, or data paths]
+Scope: [operations and business effects included or excluded]
+Unknowns: [missing environment, key rules, join fields, or permissions]
+Expected output: [risk-ordered AIT-## findings, evidence states, and next validation actions]
+
+Separate facts, assumptions, and open rules. Do not claim execution without a run record.
+```
 
 ## FAQ
 
-### What if the first response is lost?
+### What if the first response was lost?
 
-The replay must recover the original business result or an explicit processing state without creating another effect.
+First establish whether the write committed by querying the business record with the available operation ID or key. A timeout alone does not establish either success or failure.
 
+### Must the server reject every changed payload using an existing key?
 
+Follow the documented API contract. If it does not define the case, record a contract gap and ask the accountable owner; do not supply a policy in the test result.
 
-### Is a time-based key expiry enough?
+### Is a time-based key expiry sufficient?
 
-Only if the contract defines what happens after expiry and evidence shows the business risk is acceptable.
-
-
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+Only when the contract defines late-retry behavior and the remaining duplicate-effect risk has been assessed with evidence.
 
 ## References
 
 ### Source Skill and execution contract
 
-The complete execution contract lives in the [API Idempotency Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing) also contains the entry point and supporting assets where they exist.
+The [API Idempotency Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md) defines the workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing) contains its entry point and supporting material.
 
-The entry point centers idempotency key semantics, replay, concurrency, timeout recovery, result persistence, and conflict. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
-
-### Reference links
-
-- API Idempotency Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing/prompts/api-idempotency-testing.md)
-
-- Awesome QA Skills: API Idempotency Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-idempotency-testing)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- API Idempotency Testing details:[https://inaodeng.com/en/qaskills/api-idempotency-testing/](https://inaodeng.com/en/qaskills/api-idempotency-testing/)
+- [API Idempotency Testing details](https://inaodeng.com/en/qaskills/api-idempotency-testing/)
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)

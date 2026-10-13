@@ -1,6 +1,6 @@
 ---
-title: "Database Design Quality Review Skill: Find integrity and migration risks before data is written"
-description: "Database Design Quality Review field guide: inspect entities, keys, constraints, indexes, lifecycle, tenancy, migration, and recovery."
+title: "Database Design Quality Review: Constraints & Migrations"
+description: "Review database designs against sourced invariants, access patterns, concurrency, lifecycle, tenant boundaries, rollback, recovery, and traceable DB-## findings."
 date: 2026-11-02T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,7 +8,7 @@ tags: ["AI Testing", "QA Skills", "Database Design Quality Review"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A database design is a product decision with a long memory. A missing uniqueness rule can become millions of duplicate records before anyone notices.
+Database design quality review checks whether a supplied schema and migration plan support stated business invariants. An ERD or field name alone cannot establish uniqueness, tenant isolation, retention, or query performance.
 
 ## Why this Skill is needed
 
@@ -26,7 +26,7 @@ Use it when the team needs a repeatable review of entities, relationships, keys,
 
 ## What it does not do
 
-The Database Design Quality Review Skill can organize material, evidence, and next actions for Design finding. It does not replace:
+The Database Design Quality Review Skill reviews supplied ERDs, DDL, ORM schemas, and migration or recovery plans before implementation. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -39,15 +39,17 @@ The value of this Skill is not another keyword list. It connects each focus area
 
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
-| Design finding | Integrity, access, isolation, performance, or lifecycle gap | Source and impact |
-| Migration risk | Lock, backfill, dual-write, or rollback concern | Precondition |
-| Verification action | Constraint, query, load, restore, or migration check | Evidence owner |
+| Model and relationships | Entities, cardinality, keys, ownership, and tenant scope | Object-level coverage |
+| Constraints and access | Unique/not-null/check rules tied to requirements; indexes tied to real query patterns and data volume | Integrity and index risks |
+| Transactions and concurrency | Transaction boundaries, isolation, concurrent writes, and failure handling | Unassessed race conditions |
+| Lifecycle and privacy | Retention, deletion, ownership, privacy rules, and backup scope | Source-backed lifecycle gaps |
+| Migration and recovery | Compatibility, backfill, partial failure, rollback, backup/restore, and recovery readiness | Preconditions and validation owner |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analyzing Design finding, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before reviewing a database object, classify the supplied schema, requirements, workload, migration, and recovery evidence into six states. A gap is not automatically a defect, but it must not disappear inside the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -66,7 +68,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Design finding, do not compress four different kinds of language into “recommended to pass”:
+For each `DB-##` finding, do not compress four different kinds of language into “recommended to pass”:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -103,7 +105,7 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ### Analysis
 
-Start with a bounded pass—review a multi-tenant order and refund schema before the first production migration. Review a refund table with a unique payment reference, tenant key, status history, and a report query by order date. Then walk through a backfill that adds the reference to existing rows and define how duplicates are handled before adding the constraint.
+Use a conditional example, not an assumed business rule: if a supplied requirement explicitly says that each payment may have at most one refund, and the supplied DDL shows no matching constraint, record a possible enforcement gap. Check whether the application or transaction design provides the rule before calling it a defect. If partial refunds or multiple refund rows are allowed, or the requirement is absent, mark that rule `missing` or `unassessed` instead of inferring it from column names. A migration review should then ask how existing rows are checked, how conflicts are handled, and what rollback is available; do not run the migration.
 
 The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
 
@@ -113,17 +115,18 @@ The handoff should preserve the input version, time window, evidence index, owne
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Design finding meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+Use the source prompt's `DB-##` finding contract. This redacted example is conditional on the supplied requirement and DDL; it does not assert a defect in a real database.
 
-| Field | Example wording |
+| `DB-01` field | Conditional example |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Design finding |
-| Finding | The condition or result for Design finding is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Object/scope and source | `refund.payment_id` in the supplied, versioned DDL; attach the explicit refund rule and schema excerpt |
+| Design rule and finding | If the requirement permits one refund per payment, the excerpt shows no matching unique constraint; other enforcement is not yet known |
+| Status | `missing` until application, transaction, and full-schema evidence are reviewed; not yet a confirmed defect |
+| Impact/severity | Not scored until the business impact and affected data scope are supplied |
+| Constraint/index risk | No matching constraint is visible in the excerpt; query and index risks need actual access patterns and volume |
+| Transaction/concurrency | Request transaction boundaries, isolation, and concurrent-write behavior; do not infer them from the table |
+| Migration/rollback | Check existing duplicates, backfill order, compatibility, and rollback evidence before recommending a constraint change |
+| Owner/close/validation | A data or domain owner confirms the invariant; a database owner supplies the full DDL and migration plan for isolated review; retain the reviewed sources, with no production query or migration claimed |
 
 The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
 
@@ -141,11 +144,11 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
-| Design finding | Integrity, access, isolation, performance, or lifecycle gap | Source and impact |
-| Migration risk | Lock, backfill, dual-write, or rollback concern | Precondition |
-| Verification action | Constraint, query, load, restore, or migration check | Evidence owner |
+| Data-object coverage | Entities, constraints, access patterns, ownership, and lifecycle by object | Source and gaps |
+| Migration and rollback | Compatibility, backfill, partial failure, rollback, backup, and recovery | Preconditions |
+| Validation preparation | Smallest isolated check for the named design risk | Owner and required evidence |
 
-Do not write “passed” without a run record, query result, or source artifact. A good review starts from invariants and real queries. It asks what prevents two refunds for one payment, what stops a cross-tenant lookup, and what happens when a migration stops halfway.
+Do not write “passed” without execution identity, time, environment, inputs, and raw results. A static review can prepare the query, constraint, migration, or recovery validation; it cannot claim that one ran.
 
 ### Next-stage route
 

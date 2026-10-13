@@ -1,6 +1,6 @@
 ---
 title: "Technical Quality Perspective: Include architecture, reliability, and maintainability in quality decisions"
-description: "Technical quality perspective field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+description: "Connect architecture, availability, maintainability, recovery and dependencies to operational outcomes for a grounded system quality review."
 date: 2026-09-23T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Technical quality perspective"]
@@ -12,7 +12,7 @@ Technical quality is more than tidy code. Availability, maintainability, recover
 
 The Technical Quality Perspective Skill assesses architecture and operational signals together, avoiding isolated code metrics that hide fragility.
 
-This guide uses collaboration-grounded examples to unpack the judgment process, helping you turn different signals into actions that are communicable and traceable.
+The payment-callback example ties timeout, retry, idempotency, tracing, and rollback evidence to observable runtime consequences.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Technical quality perspective.
 
@@ -22,82 +22,134 @@ The main prompt covers Required inputs and gate, Technical assessment, Boundary 
 
 This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
 
-## A review fragment that keeps disagreement visible
+## Related Skills
 
-Review a service change for architecture, observability, failure recovery, and rollback cost
+Technical Quality Perspective connects code and configuration to runtime consequences. These Skills can follow when a risk needs more investigation or verification:
 
-Different roles can read the same artifact and find different risks.
+| Skill | When to use it | What it adds |
+| --- | --- | --- |
+| [Performance Bottleneck Analysis](https://inaodeng.com/en/qaskills/performance-bottleneck-analysis/) | Latency, throughput, or resource trends show degradation | Forms bottleneck hypotheses across requests, dependencies, resources, and time |
+| [Root Cause Analysis](https://inaodeng.com/en/qaskills/root-cause-analysis/) | Several symptoms exist and the causal chain needs testing | Separates facts, assumptions, and counter-evidence into a testable path |
+| [Production Verification](https://inaodeng.com/en/qaskills/production-verification/) | A fix has shipped and its real impact needs checking | Verifies key metrics, alerts, rollback, and stop conditions |
+| [Multi-Role Quality Synthesis](https://inaodeng.com/en/qaskills/multi-role-quality-synthesis/) | Technical evidence must be reviewed alongside Product, QA, and UX reports | Preserves sources, conflicts, and minority high-risk findings |
+| [Project Delivery Perspective](https://inaodeng.com/en/qaskills/project-delivery-perspective/) | A technical gap affects scope, dependencies, or release date | Connects technical actions to owners, milestones, and fallback options |
 
-| Observation | Evidence | Impact | Recommendation |
+## What the technical perspective contributes across the workflow
+
+Technical Quality Perspective can cover all eight development stages, but answers technical-quality questions only. A passed code review does not prove tests passed, and a target release date does not lower the evidence threshold for runtime claims.
+
+| Development stage | What to check | What to give the team |
+| --- | --- | --- |
+| Requirements analysis | Whether API, data, dependencies, performance, compatibility, observability, and recovery constraints are defined | Technical facts, constraint gaps, questions, and confidence |
+| Test strategy | Which failure modes, loads, recovery paths, and runtime signals need verification | Technical coverage, evidence threshold, and unverified assumptions |
+| Test strategy review | Whether high-risk dependencies, degradation, rollback, or telemetry were omitted | Findings, impact, actions, and severity basis |
+| Code review | Whether code identity and diff are traceable, and whether timeout, retry, idempotency, and logging have evidence | Static findings, runtime risk, and smallest evidence-gathering action |
+| Test case writing | Whether failure injection, boundary inputs, migrations, and expected signals can become executable steps | Technical prerequisites, observable expectations, and recovery checks |
+| Test case review | Whether cases reproduce failure and distinguish logs, metrics, and business outcomes | Gaps, indeterminate cases, and revisions |
+| Test reporting | Whether version, time window, load, logs, metrics, traces, and exit status are recorded | Run facts, static observations, missing evidence, and technical risks |
+| Test report review | Whether the conclusion connects code clues to runtime signals and whether recovery was actually exercised | Findings, impact, limits, and next verification |
+
+A code review has a hard gate: include code identity and a reviewable change. “Please review this code” without a commit, diff, or file reference is not traceable technical evidence.
+
+## Connect service changes to runtime consequences
+
+When reviewing a service change, consider architecture, observability, recovery, and rollback cost together.
+
+| Technical issue | Evidence | Runtime consequence | Next action |
 | --- | --- | --- | --- |
-| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
-| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
+| External call has no timeout | Client configuration and dependency SLA | Threads or connections may stay occupied | Add a timeout, bounded retries, and an alert |
+| Failure path lacks traces | Logs contain only a local request ID | Diagnosis requires manual correlation | Propagate a trace ID and use structured logs |
+| Migration has no rollback | Migration script and rehearsal record | Version rollback may stall | Add a rollback script and rehearse recovery |
+| Shared cache has no invalidation signal | Cache configuration and hit-rate trend | Stale data may continue to spread | Monitor invalidation and define cleanup |
 
-Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
+A technical conclusion should connect a code characteristic to an observable and recoverable runtime consequence.
 
-## Merge evidence without flattening disagreement
+## Technical review example: membership payment callbacks
 
-For Review a service change for architecture, observability, failure recovery, and rollback cost, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
+The example follows a membership-upgrade change through development. It is hypothetical; replace placeholders with the actual version, runtime window, and evidence.
 
-| Role | Observation | Evidence needed | Decision ownership |
+| Development stage | Technical question | Evidence to retain | Handoff |
 | --- | --- | --- | --- |
-| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
-| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
-| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
+| Requirements analysis | Are callback timeout, duplicate notification, idempotency key, and order-state transitions defined? | API contract, state diagram, dependency SLA | Technical constraints and missing rules |
+| Design | How are timeout, retry limit, circuit breaking, trace propagation, and rollback implemented? | Design diagram, error-handling contract, recovery steps | Reviewable design assumptions |
+| Code review | Does the PR set a timeout? Could retries amplify traffic? Can logs be linked to the order? | PR, commit, diff, static-check results | Static findings and smallest runtime check |
+| Test execution | Can the system observe and recover from downstream latency or duplicate notifications? | Run ID, injected condition, logs, metrics, traces | Verified and unrun items |
+| Report review | Does the conclusion apply only to this version and time window? | Report, rollback rehearsal, alert record | Scoped conclusion and repair owner |
 
-Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Required inputs and gate and Technical assessment need source links because paraphrasing can change their meaning.
+For example, TECH-42 may record “no client timeout configuration was found in commit abc123.” That remains a static observation. If RUN-42 records timeout counts, traces, and recovery under a defined latency-injection condition, it adds runtime evidence. Do not merge both into an unexplained “stability passed.”
 
-The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+Keep observations, inferences, and gaps separate:
 
-## A prompt you can adapt
+```yaml
+stage: test-report-review
+source_version: build-42
+dependency: payment-callback
+time_window: [2026-09-24T10:00:00Z, 2026-09-24T11:00:00Z]
+observed:
+  - source_id: PR-42
+    statement: No timeout configuration was seen in the callback client
+    evidence: diff-link-or-file
+    status: static_observation
+  - source_id: RUN-42
+    statement: The latency-injection scenario has not run
+    evidence: run-record
+    status: not_run
+inference:
+  - Verify whether downstream latency keeps connections and threads occupied
+missing_evidence:
+  - [timeout-count, trace-id, rollback-duration]
+action:
+  owner: Payment service lead
+  next_action: Inject a timeout and retain logs, metrics, and traces
+status: pending
+```
 
-Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+This structure can go to Multi-Role Quality Synthesis. Keep the technical material in TECH-42, QA execution status in QA-42, and let Project Delivery Perspective track the owner and due time. Do not collapse those responsibilities into one conclusion.
+
+## Align runtime signals before drawing a conclusion
+
+Technical risk needs corroborating signals; one code metric cannot represent system stability.
+
+| Conclusion | Signals to compare | Review action |
+| --- | --- | --- |
+| Dependency is slower | p95/p99, timeout count, thread pool, downstream errors | Align traces and metrics within the same time window |
+| Recovery is insufficient | Rollback duration, data checks, alert delivery time | Rehearse recovery in an isolated environment |
+| Resources are near capacity | CPU, memory, connection pool, queue depth | Retest under representative load and retain a baseline |
+
+For each conclusion, list its sources, time window, and unverified assumptions. The Skill organizes evidence; the technical owner accepts risk or schedules the fix.
+
+## Adaptable prompt
 
 ```text
 Use the technical-quality-perspective Skill.
 
-Task: Review a service change for architecture, observability, failure recovery, and rollback cost
+Stage: test report review (test-report-review)
+Task: Review a membership payment-callback change for runtime risk and recovery evidence
 Version and environment: [requirement / build / environment]
-Inputs: [file paths or links]
-Scope: [included and excluded journeys]
+Inputs: [PR, diff, logs, metrics, traces, run records]
+Scope: [services and callback paths in scope]
 Constraints: [accounts, data, time, compliance]
 
-Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
-Finish with open questions. Do not invent missing facts.
+Separate static observations, runtime evidence, inferences, and missing evidence. Record source IDs, version, time window, impact, owner, and the smallest next verification. Do not turn a code observation into a runtime claim or release approval.
 ```
 
-Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+## Keep the technical conclusion within its evidence
 
-## Advanced use, from one call to a maintained flow
+A concise technical summary still needs facts, evidence, finding, impact or severity, missing information, and actions. Keep code observations, runtime evidence, and release decisions separate.
 
-Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+## Who should use this Skill
 
-### A three-Skill chain
+Engineering and SRE teams can use it to review service changes, dependency behavior, observability, and recovery. QA and release owners can use its evidence boundaries when interpreting what a run did and did not verify.
 
-`requirements-analysis` → `technical-quality-perspective` → `multi-role-quality-synthesis`
+## Review a technical handoff
 
-| Handoff | Payload | Receiver check |
+| Review item | What to retain | If missing |
 | --- | --- | --- |
-| Upstream to technical-quality-perspective | Source versions, scope, risks, open questions | Technical quality perspective staleness and conflicts |
-| technical-quality-perspective to downstream | Primary artifact, evidence index, unfinished work | Technical quality perspective executability and owners |
-| Feedback to technical-quality-perspective | Runs, defects, new risks | Technical quality perspective baseline and regression update |
-
-Do not paste three complete outputs into one large prompt. Give Technical quality perspective a structured summary and accessible source artifacts. It saves context and makes defects traceable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| technical-quality-perspective input | Version, environment, owner, accessible sources | Stop Technical quality perspective and list gaps |
-| technical-quality-perspective artifact | Material claims carry basis and status | Return Technical quality perspective for evidence |
-| technical-quality-perspective execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
-| technical-quality-perspective decision | Residual risks have accepter and date | Do not enter the next stage |
-
-Review Technical quality perspective adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
-
-## A perspective Skill is not role-play
-
-Do not invent what product, QA, or engineering would say. Technical quality perspective can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+| Code identity | Commit, diff, file, and review scope | Treat the claim as untraceable |
+| Runtime identity | Version, environment, load, and observation window | Limit the conclusion to static analysis |
+| Failure evidence | Injected condition, logs, metrics, trace, and recovery record | Keep runtime behavior unverified |
+| Risk and action | Impact, severity basis, owner, and next verification | Leave risk open |
+| Decision boundary | Technical evidence separated from risk acceptance and release approval | Route the decision to its accountable owner |
 
 ## Install and invoke
 
@@ -109,25 +161,25 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 Invoke it with “Use the technical-quality-perspective Skill,” then attach the real artifacts.
 
-## Two practical questions
+## Common questions
 
-### Can one perspective overrule the others?
+### Why check runtime signals after code review passes?
 
-No. It adds observations. Keep disagreement and supporting evidence visible.
+Timeouts, resources, retries, and recovery often appear only at runtime. Code review gives clues; runtime signals verify consequences.
 
-### What if that role is absent?
+### What if monitoring data is incomplete?
 
-Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
+Name the unobservable risk and the smallest log, metric, or trace to add, then decide whether work can continue.
 
-### What if roles reach opposite conclusions?
+### When can a technical risk be closed?
 
-Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
+After the runtime consequence is verified, recovery has been rehearsed, and the owner confirms the residual risk.
 
-### Can a perspective be written without data?
+### Does this Skill make architecture decisions?
 
-It can be an observation or assumption if the missing source and next evidence request stay visible.
+No. It organizes evidence and options; the team makes trade-offs against cost, goals, and responsibility.
 
-Run Technical quality perspective against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+Use a real PR, diff, and runtime record to produce a Technical Quality Perspective assessment. The fragments provide structure; project evidence must come from the project.
 
 ## References
 - Awesome QA Skills project:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

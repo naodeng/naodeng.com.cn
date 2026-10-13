@@ -1,6 +1,6 @@
 ---
 title: "SuperTest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action"
-description: "深入探讨 Supertest 的高级用法，着重介绍如何将 Supertest 集成到 CI/CD 流程中，以及如何使用 GitHub Actions 实现自动化测试。"
+description: "通过 GitHub Actions 执行 SuperTest 接口测试，分别采用 Mocha 或 Jest，并保存测试报告供后续检查。"
 date: 2023-11-07T10:09:43.000Z
 author: "nao.deng"
 tags: ["接口测试","自动化测试","Supertest"]
@@ -13,7 +13,7 @@ series: ["SuperTest 接口自动化测试教程"]
 
 #### 接入 github action
 
-以 github action 为例，其他 CI 工具类似
+Mocha 和 Jest 示例分别用 GitHub Actions 运行 SuperTest 接口测试，并在 `push` 和 `pull_request` 时上传执行报告。
 
 ##### Mocha 版本接入 github action
 

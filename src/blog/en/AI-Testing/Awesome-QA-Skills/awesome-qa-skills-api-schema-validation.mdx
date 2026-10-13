@@ -8,203 +8,56 @@ tags: ["AI Testing", "QA Skills", "API Schema Validation"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A schema can be valid on paper while the first real client sends a field as null, omits a supposedly optional property, or receives a value outside the documented enum.
+API Schema Validation compares supplied request and response examples with a specific interface contract. The result depends on the schema dialect, operation, direction, and reference context; an unresolved contract is not a pass.
 
-## Why this Skill is needed
+## Identify the dialect and operation first
 
-API Schema Validation checks whether actual request and response payloads obey the declared shape, constraints, formats, and compatibility rules.
+Record whether the contract is OpenAPI, JSON Schema, or GraphQL, including its version or dialect. Identify the operation, request or response direction, content type, reference root, and resolution context. If a version-dependent rule or reference cannot be established, leave that judgment pending.
 
-## What the Skill does
+## Separate missing, null, and constrained values
 
-The API Schema Validation Skill is useful when a team needs a structured review of field shape, requiredness, nullability, format, enum, additional properties, and version drift.
+Evaluate each sample against the actual schema instead of treating similar-looking inputs as equivalent.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Schema Validation.
-
-A practical standard for this Skill is simple: A useful schema pass validates the edges where real systems get untidy—nulls, missing arrays, unknown fields, date formats, and version-specific defaults.
-
-Use it when the team needs a repeatable review of field shape, requiredness, nullability, format, enum, additional properties, and version drift—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-## What it does not do
-
-The API Schema Validation Skill can organize material, evidence, and next actions for Schema finding. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
-| --- | --- | --- |
-| Schema finding | Shape, format, optionality, or version mismatch | Field path and source |
-| Consumer impact | Parser failure, silent default, or unsafe interpretation | Affected client |
-| Repair action | Schema, implementation, fixture, or migration change | Owner and compatibility check |
-
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
-
-## Audit inputs before you start
-
-Before analyzing Schema finding, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
-| --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
-
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
-
-## From problem to structured Finding
-
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
-
-### Keep the decision layers separate
-
-For Schema finding, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
-
-## A complete case
-
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
-
-### Input
-
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Schema source | OpenAPI version, generated types, examples, and compatibility policy | Identify which source wins when they disagree |
-| Real payloads | Requests and responses from each consumer and error path | Synthetic fixtures cannot replace production shape evidence |
-| Validation rules | Required, nullable, format, enum, and additional-property behavior | Do not silently coerce unknown fields |
-
-Use a request like this:
-
-```text
-Use the api-schema-validation Skill.
-
-Task: validate checkout responses from three API versions consumed by web, mobile, and an invoice worker
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-```
-
-### Analysis
-
-Start with a bounded pass—validate checkout responses from three API versions consumed by web, mobile, and an invoice worker. Replay a checkout response against the web type, mobile decoder, and invoice worker schema. A new nullable `taxAmount` is not automatically compatible: the worker may treat null as zero and issue the wrong invoice.
-
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-### Finding
-
-#### Example finding: turn one problem into a handoff
-
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Schema finding meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Sample condition | What to inspect |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Schema finding |
-| Finding | The condition or result for Schema finding is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Property absent | Whether it is required in this operation and schema branch |
+| Property present as null | Whether null is allowed by this dialect and type declaration |
+| Value has wrong type or range | The applicable type, bound, and schema path |
+| Format or enum | Declared format, validator support, and allowed enum values |
+| Unknown property | The schema's additionalProperties rule |
+| Composed or referenced schema | Resolved reference, applicable branch, and dialect rules |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+GraphQL uses input/output types and its non-null rules; do not apply JSON Schema keywords to it. Do not infer that an optional field accepts null, or that a default is automatically inserted.
 
-### Decision
+## Report sample decisions, not assumed coverage
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+For each supplied sample, record the schema path and keyword, the validator or report evidence if provided, and whether the sample is valid, invalid, or unassessable under that contract. Keep unresolved references and missing examples visible. A few examples can expose a mismatch but cannot establish the full contract or prove runtime behavior.
 
-### Validation
+## Keep schema shape within its scope
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+Schema validation addresses declared structure and constraints. It does not by itself prove business rules, authorization, or compatibility with every deployed client. Use [API Version Compatibility Testing](https://inaodeng.com/en/qaskills/api-version-compatibility-testing/) when the question concerns behavior across client/server versions.
 
-## How a Finding enters the next stage
+## Record an ASV-## finding
 
-### Handoff output
+Capture the object, preconditions, behavior of concern, source schema path, evidence state, impact and priority, owner role, close condition, and validation method. Keep facts, evidence-backed inferences, candidate checks, and Human decisions separate.
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Schema finding | Shape, format, optionality, or version mismatch | Field path and source |
-| Consumer impact | Parser failure, silent default, or unsafe interpretation | Affected client |
-| Repair action | Schema, implementation, fixture, or migration change | Owner and compatibility check |
+## Prepare a bounded review
 
-Do not write “passed” without a run record, query result, or source artifact. A useful schema pass validates the edges where real systems get untidy—nulls, missing arrays, unknown fields, date formats, and version-specific defaults.
+Review supplied schemas, examples, and validation reports as design or static comparison. Do not execute tests, edit schema or code, assume missing rules or versions, or turn sample counts into coverage claims.
 
-### Next-stage route
+## Related Skills
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
-
-## How to prepare better input
-
-If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
-
-A richer input changes the answer here because field shape, requiredness, nullability, format, enum, additional properties, and version drift must be tied to evidence rather than inferred from a familiar pattern.
-
-## Working with other Skills
-
-- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/):connects schemas to consumer behavior.
-- [API Version Compatibility Testing](https://inaodeng.com/en/qaskills/api-version-compatibility-testing/):examines schema evolution.
-- [API Negative Testing](https://inaodeng.com/en/qaskills/api-negative-testing/):provides invalid shape cases.
-
-## Common traps
-
-1. Validating only happy-path examples.
-2. Treating generated types as the only schema authority.
-3. Coercing invalid dates or enums before recording the contract violation.
+- [API Version Compatibility Testing](https://inaodeng.com/en/qaskills/api-version-compatibility-testing/) checks supported client/server combinations.
+- [API Contract Testing](https://inaodeng.com/en/qaskills/api-contract-testing/) reviews broader producer/consumer agreements.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the Skill:
 
-```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation -g
-```
 
-After installation, invoke it with the `api-schema-validation` Skill and attach the real project material.
+Invoke api-schema-validation with the contract dialect and version, operation, direction, content type, reference root, supplied examples, and available validator evidence.
 
-## FAQ
+## Source
 
-### Should unknown response fields fail validation?
-
-Follow the consumer contract; strictness is a deliberate compatibility choice, not a universal default.
-
-### Can schema validation prove business correctness?
-
-No. It proves shape and constraints; domain invariants need separate checks.
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
-
-## References
-
-### Source Skill and execution contract
-
-The complete execution contract lives in the [API Schema Validation prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation/prompts/api-schema-validation.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation) contains the entry point and supporting assets where they exist.
-
-The entry point centers field shape, requiredness, nullability, format, enum, additional properties, and version drift. Keep its decision boundary visible and do not turn a static design into an execution claim.
-
-### Reference links
-
-- API Schema Validation prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation/prompts/api-schema-validation.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation/prompts/api-schema-validation.md)
-
-- Awesome QA Skills: API Schema Validation source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- API Schema Validation details:[https://inaodeng.com/en/qaskills/api-schema-validation/](https://inaodeng.com/en/qaskills/api-schema-validation/)
+Read the [API Schema Validation prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-schema-validation/prompts/api-schema-validation.md). It defines the ASV-## finding contract and the sample-by-constraint decision boundary.

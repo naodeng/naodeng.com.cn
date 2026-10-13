@@ -1,6 +1,6 @@
 ---
-title: "Automation ROI Analysis Skill: Decide what is worth automating before the suite becomes expensive"
-description: "Automation ROI Analysis field guide: compare value, maintenance cost, risk reduction, execution frequency, and evidence for automation decisions."
+title: "Automation ROI Analysis: Costs, Savings and Break-Even"
+description: "Compare automation build, run, and maintenance costs with evidence-backed benefits over a fixed horizon; model frequency and change-driven upkeep."
 date: 2026-10-16T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,203 +8,117 @@ tags: ["AI Testing", "QA Skills", "Automation ROI Analysis"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-Automating a test that runs once a quarter can be a poor investment. Automating a payment check that runs after every deploy can be equally poor if the test is too brittle to trust.
+Automation ROI analysis compares a defined automation candidate with its manual alternative over the same time window and cost unit. A useful decision includes setup, execution, review, and change-driven maintenance; saved execution minutes alone do not show whether the investment pays back.
 
 ## Why this Skill is needed
 
-Automation ROI Analysis helps teams compare expected risk reduction and feedback value with build, execution, diagnosis, data, and maintenance cost.
+A quarterly workflow may be too infrequent to justify a brittle end-to-end suite, while a stable calculation check may still repay a smaller automation investment. The decision depends on supplied frequency, risk, effort, maintenance, and benefit evidence—not on a general preference for automation.
 
-## What the Skill does
+## Define the candidate and cost boundary
 
-The Automation ROI Analysis Skill is useful when a team needs a structured review of frequency, risk reduction, feedback speed, maintenance, diagnosis, data, and opportunity cost.
+First state what could be automated: a calculation invariant, data preparation, a full user journey, or a report comparison. Compare that candidate with alternatives such as simplifying the workflow, sampling, keeping specialist review manual, or deferring the investment.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Automation ROI Analysis.
-
-A practical standard for this Skill is simple: A good ROI analysis values diagnosis and trust. A fast test that fails for environment noise can cost more attention than the manual check it replaced.
-
-Use it when the team needs a repeatable review of frequency, risk reduction, feedback speed, maintenance, diagnosis, data, and opportunity cost—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-## What it does not do
-
-The Automation ROI Analysis Skill can organize material, evidence, and next actions for ROI model. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
+| Cost or benefit | Record separately | Evidence to request |
 | --- | --- | --- |
-| ROI model | Value, cost, horizon, and uncertainty | Assumptions visible |
-| Recommendation | Automate, simplify, sample, keep manual, or defer | Risk basis |
-| Review trigger | What change would invalidate the decision | Owner and date |
+| Build | One-time design, implementation, fixtures, and onboarding | Work estimate or recorded effort |
+| Run | Machine occupancy and any human review | Run count, duration, review effort, and the unit used |
+| Maintenance | Change-driven repair, data upkeep, diagnosis, and ownership | Change history and observed maintenance effort |
+| Manual alternative | Preparation, execution, review, and rework | Time records or a bounded estimate with its source |
+| Benefit | Risk reduction, feedback speed, or avoided decision delay | Defect history, exposure, or decision evidence |
 
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+Do not add human hours, machine occupancy, and money as if they were the same unit. Convert them only with project-supplied rates; without a monetary conversion, report labor separately from machine time.
 
-## Audit inputs before you start
+## Compare like with like
 
-Before analyzing ROI model, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
-| --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
-
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
-
-## From problem to structured Finding
-
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
-
-### Keep the decision layers separate
-
-For ROI model, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
-
-## A complete case
-
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
-
-### Input
-
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Candidate behavior | Frequency, criticality, variation, failure history, and manual effort | Use observed data where possible |
-| Automation cost | Build, data, environment, diagnosis, maintenance, and ownership | Separate one-time from recurring cost |
-| Decision context | Release cadence, risk appetite, alternatives, and time horizon | Keep business assumptions explicit |
-
-Use a request like this:
+Fix the candidate, time window, and units before calculating. For a single window, the source Prompt defines:
 
 ```text
-Use the automation-roi-analysis Skill.
-
-Task: decide whether to automate a quarterly tax-report workflow that changes often and requires specialist data
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
+net saving = runs × (manual cost per run − automated cost per run)
+             − maintenance cost − build cost
 ```
 
-### Analysis
+All terms must use the same unit and time window. State the numerator and denominator if reporting an ROI ratio; the Skill does not prescribe a universal financial definition. If the inputs support labor hours but not money, report labor-hour savings rather than a dollar return.
 
-Start with a bounded pass—decide whether to automate a quarterly tax-report workflow that changes often and requires specialist data. Estimate the tax workflow’s quarterly manual effort, defect impact, data preparation, specialist review, and maintenance over two years. A sensible result may automate calculation invariants and sample the full report manually instead of automating every unstable screen.
+For recurring net saving greater than zero, estimate break-even windows as the build cost divided by recurring net saving per window, rounded up to a whole window. If recurring net saving is zero or below, report that there is no break-even under those assumptions.
 
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+Then vary run frequency and change-driven maintenance using project-supplied low, base, and high cases. Show where the sign or recommendation changes. Missing rates or effort data mean formulas and conditional ranges, not a precise return or automatic adoption decision.
 
-### Finding
+## Audit the evidence before ranking
 
-#### Example finding: turn one problem into a handoff
+The source Prompt asks for known, missing, conflicting, stale, out_of_scope, and assumptions. For ROI work, comparability matters as much as completeness.
 
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that ROI model meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
-| --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for ROI model |
-| Finding | The condition or result for ROI model is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
-
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
-
-### Decision
-
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
-
-### Validation
-
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
-
-## How a Finding enters the next stage
-
-### Handoff output
-
-| Output field | Why it exists | Example status |
+| State | Example in an automation decision | Treatment |
 | --- | --- | --- |
-| ROI model | Value, cost, horizon, and uncertainty | Assumptions visible |
-| Recommendation | Automate, simplify, sample, keep manual, or defer | Risk basis |
-| Review trigger | What change would invalidate the decision | Owner and date |
+| known | A versioned release calendar and recorded manual effort | Cite the period and source |
+| missing | Build effort, review time, or maintenance after product changes | Leave that term open; do not treat it as zero |
+| conflicting | One estimate counts specialist review while another omits it | Show both definitions and resolve the unit |
+| stale | Run frequency comes from a retired release cadence | Do not project it into the new horizon without confirmation |
+| out_of_scope | Production automation or business risk acceptance is excluded | Keep the decision boundary explicit |
+| assumptions | A first-pass estimate uses an owner-approved frequency range | State the validation method and which result depends on it |
 
-Do not write “passed” without a run record, query result, or source artifact. A good ROI analysis values diagnosis and trust. A fast test that fails for environment noise can cost more attention than the manual check it replaced.
+Separate confirmed facts, evidence-backed inferences, candidate recommendations, and Human decisions. Do not infer that correlation between automation and fewer defects proves the automation caused the reduction.
 
-### Next-stage route
+## Example: a quarterly specialist report
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Consider an example request to assess a tax-report workflow that runs quarterly, changes often, and needs specialist data. Those details describe the scenario only; they provide no build estimate, run record, failure rate, review effort, maintenance history, or financial conversion.
 
-## How to prepare better input
+A useful first pass would compare bounded candidates—for example, checking stable calculation rules versus automating the entire report journey—without deciding which to adopt. The comparison needs one agreed horizon, the manual and automated effort per run, specialist review, build work, change-driven maintenance, and any supplied rates. If the data are absent, the result remains unscored.
 
-If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+### ARO-01 candidate: maintenance omitted from the comparison
 
-A richer input changes the answer here because frequency, risk reduction, feedback speed, maintenance, diagnosis, data, and opportunity cost must be tied to evidence rather than inferred from a familiar pattern.
+| Finding field | Example record |
+| --- | --- |
+| Object and applicability | The proposed tax-report automation candidate, if its owner is comparing automation with a manual or sampled alternative |
+| Trigger | A decision estimate is prepared without a time window or change-driven maintenance term |
+| Expected concern | The comparison may overstate savings if specialist review, diagnosis, or repair after workflow changes is omitted |
+| Source and evidence state | The example request gives cadence and change context only; cost and run evidence are missing, so mark **UNASSESSED / NOT_SCORED** |
+| Impact, priority, and owner | No priority until business impact and evidence strength are reviewed; assign the automation owner with the finance or process owner as decision partner |
+| Validation and close condition | Put each effort or cost in a sourced unit, calculate the same-window cases, and vary frequency and maintenance in supplied low/base/high scenarios. Close the analysis when another reviewer can reproduce the calculation and a Human has chosen among the options. |
 
-## Working with other Skills
+This is a review candidate, not a calculated ROI or an instruction to automate. The Skill can prepare the comparison; it does not execute the workflow or approve the investment.
 
-- [Automation Testing](https://inaodeng.com/en/qaskills/automation-testing/):turns the decision into an executable strategy.
-- [Test Maintenance Cost Analysis](https://inaodeng.com/en/qaskills/test-maintenance-cost-analysis/):deepens recurring maintenance cost.
-- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/):checks whether feedback actually finds useful problems.
+## Turn the analysis into a decision
 
-## Common traps
+The output should show the candidate, alternatives, source inputs, time horizon, costs, benefits, sensitivity, evidence gaps, and residual risk. A recommendation may be to automate, simplify, sample, keep manual, or defer. State the conditions that would change the recommendation and set a review trigger with an owner.
 
-1. Using saved execution minutes as the only benefit.
-2. Ignoring ownership and test diagnosis.
-3. Assuming automation is permanent after the first implementation.
+## Prepare better input
+
+Provide a stable candidate definition, release or business cadence, a comparable observation period, manual and machine effort, review and maintenance records, benefit evidence, and project-approved conversion rates. Mask sensitive data and state whether numbers are observed, estimated, or assumed.
+
+## Work with related Skills
+
+- [Automation Testing](https://inaodeng.com/en/qaskills/automation-testing/) turns an approved decision into an automation strategy.
+- [Test Maintenance Cost Analysis](https://inaodeng.com/en/qaskills/test-maintenance-cost-analysis/) examines recurring maintenance effort.
+- [Test Effectiveness Analysis](https://inaodeng.com/en/qaskills/test-effectiveness-analysis/) checks whether feedback finds useful problems.
+
+## Common mistakes
+
+1. Counting saved execution time as the entire benefit.
+2. Treating missing maintenance or review cost as zero.
+3. Combining labor, machine time, and money without a sourced conversion.
+4. Presenting a point estimate without its horizon or sensitivity.
 
 ## Install and invoke
-
-Install the individual Skill. The series overview carries the longer installation explanation.
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis -g
 ```
 
-After installation, invoke it with the `automation-roi-analysis` Skill and attach the real project material.
+Invoke automation-roi-analysis with the candidate, comparable time window, cost units, source evidence, and decision alternatives.
 
 ## FAQ
 
 ### Do I need exact financial numbers?
 
-No. Start with ranges and explicit assumptions; false precision is less useful than an honest sensitivity check.
+No. Use sourced ranges and explicit assumptions. If monetary conversion is unavailable, report labor separately and show what is still missing.
 
-### What if risk reduction cannot be measured?
+### What if risk reduction cannot be measured directly?
 
-Use defect history, exposure, and decision impact as bounded proxies, and label the uncertainty.
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
+Use a bounded proxy such as defect history, exposure, or decision delay, explain its source, and keep the causal claim unproven.
 
 ## References
 
-### Source Skill and execution contract
+The [Automation ROI Analysis Prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis/prompts/automation-roi-analysis.md) defines the ARO-## finding fields, calculation boundary, and output order. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis) contains the Skill entry point and supporting material.
 
-The complete execution contract lives in the [Automation ROI Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis/prompts/automation-roi-analysis.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis) contains the entry point and supporting assets where they exist.
-
-The entry point centers frequency, risk reduction, feedback speed, maintenance, diagnosis, data, and opportunity cost. Keep its decision boundary visible and do not turn a static design into an execution claim.
-
-### Reference links
-
-- Automation ROI Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis/prompts/automation-roi-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis/prompts/automation-roi-analysis.md)
-
-- Awesome QA Skills: Automation ROI Analysis source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/automation-roi-analysis)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- Automation ROI Analysis details:[https://inaodeng.com/en/qaskills/automation-roi-analysis/](https://inaodeng.com/en/qaskills/automation-roi-analysis/)
+- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- [Automation ROI Analysis details](https://inaodeng.com/en/qaskills/automation-roi-analysis/)

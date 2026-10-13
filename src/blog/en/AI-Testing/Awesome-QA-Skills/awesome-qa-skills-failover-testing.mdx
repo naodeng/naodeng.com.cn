@@ -8,203 +8,52 @@ tags: ["AI Testing", "QA Skills", "Failover Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A secondary database accepting traffic is not proof of failover. The useful question is whether clients moved, writes stayed consistent, and users can finish the journey.
+Failover Testing examines whether an approved primary-to-standby transition moves requests to a ready path while preserving single-writer authority and business state. A route change alone does not prove that writes are safe or that users can finish the affected workflow.
 
-## Why this Skill is needed
+## Define the cutover contract
 
-Failover Testing checks detection, routing, connection recovery, state consistency, split-brain protection, and return to the primary path.
+Start from the supplied architecture and business requirements. Record which node is primary, which is standby, what triggers automatic or manual action, how health is detected, who may write during each phase, and what “business ready” means.
 
-## What the Skill does
-
-The Failover Testing Skill is useful when a team needs a structured review of failure detection, route switch, in-flight work, consistency, split brain, recovery, and failback.
-
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Failover Testing.
-
-A practical standard for this Skill is simple: A good failover test follows one business object across the switch. It does not stop at healthy checks; it verifies in-flight work, duplicate protection, and the reconciliation needed after the primary returns.
-
-Use it when the team needs a repeatable review of failure detection, route switch, in-flight work, consistency, split brain, recovery, and failback—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-## What it does not do
-
-The Failover Testing Skill can organize material, evidence, and next actions for Failover timeline. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
-| --- | --- | --- |
-| Failover timeline | Detection, decision, route change, reconnect, and stable traffic | Timestamps |
-| State result | Lost, duplicated, delayed, or consistent business state | Artifact evidence |
-| Failback action | Return path, reconciliation, and residual risk | Owner and next run |
-
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
-
-## Audit inputs before you start
-
-Before analyzing Failover timeline, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
-| --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
-
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
-
-## From problem to structured Finding
-
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
-
-### Keep the decision layers separate
-
-For Failover timeline, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
-
-## A complete case
-
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
-
-### Input
-
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Topology | Primary, secondary, routing, replication, client connection, and health checks | Keep actual topology evidence |
-| Traffic | Reads, writes, in-flight transactions, webhooks, and retries | Separate safe and unsafe operations |
-| Consistency oracle | Order state, payment reference, event sequence, and duplicate check | Define what must never diverge |
-
-Use a request like this:
-
-```text
-Use the failover-testing Skill.
-
-Task: fail over an order database while checkout requests and payment webhooks are still arriving
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-```
-
-### Analysis
-
-Start with a bounded pass—fail over an order database while checkout requests and payment webhooks are still arriving. Pause primary writes after an order receives payment authorization, route new traffic to the secondary, and replay the webhook. Confirm one order state, one payment reference, and an explicit reconciliation event if the transition cannot be made atomic.
-
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-### Finding
-
-#### Example finding: turn one problem into a handoff
-
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Failover timeline meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Phase | Evidence to compare |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Failover timeline |
-| Finding | The condition or result for Failover timeline is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Detection and decision | Health signal, trigger rule, election or operator decision |
+| Isolation and write authority | Whether the old primary is fenced before a new writer accepts commits |
+| Route and reconnect | Request destination, stale routes, connection-pool recovery |
+| Readiness and return | Business path health, replication lag, reconciliation, failback gate |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+If the business recovery-time objective or accepted loss boundary is missing, keep it open. Do not infer zero loss or a universal threshold.
 
-### Decision
+## Follow one business record across the switch
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+Trace a supplied request or ledger item through the pre-switch, transition, and post-switch evidence. Compare request IDs, commit records, retries, webhook deliveries, and the resulting business state. Look for an old primary that can still write, a stale route that reaches it, duplicate processing, and an outcome that is unknown because acknowledgement was lost.
 
-### Validation
+Assess availability and single-writer consistency separately. Traffic can reach the standby while two writers still accept commits. A later reconciliation or safe failback also needs its own evidence; success of the initial route change does not establish it.
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+## Distinguish failover from disaster recovery
 
-## How a Finding enters the next stage
+Failover focuses on the live primary/standby transition, routing, write authority, and recovery of service. Disaster recovery also covers a disaster boundary, recovery objectives, backup evidence, and dependencies needed to restore the business path. A failover step may appear inside a recovery plan, but it does not prove that backups can be restored.
 
-### Handoff output
+## Record an FOV-## finding
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Failover timeline | Detection, decision, route change, reconnect, and stable traffic | Timestamps |
-| State result | Lost, duplicated, delayed, or consistent business state | Artifact evidence |
-| Failback action | Return path, reconciliation, and residual risk | Owner and next run |
+Capture the affected object and rule, source, trigger or applicability, expected concern, evidence state, impact and priority, owner role, close condition, and validation method. Keep facts, inferences, candidate checks, and Human decisions separate. A timeline should identify nodes, request routes, and write authority at each phase.
 
-Do not write “passed” without a run record, query result, or source artifact. A good failover test follows one business object across the switch. It does not stop at healthy checks; it verifies in-flight work, duplicate protection, and the reconciliation needed after the primary returns.
+## Prepare a bounded validation
 
-### Next-stage route
+Use supplied diagrams, requirements, logs, and ledger evidence for a static review. Propose the smallest authorized, isolated, reversible check and its stop condition; do not inject a failure, access live dependencies, or describe a candidate as an executed test.
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+## Related Skills
 
-## How to prepare better input
-
-If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
-
-A richer input changes the answer here because failure detection, route switch, in-flight work, consistency, split brain, recovery, and failback must be tied to evidence rather than inferred from a familiar pattern.
-
-## Working with other Skills
-
-- [Disaster Recovery Testing](https://inaodeng.com/en/qaskills/disaster-recovery-testing/):covers wider recovery objectives.
-- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/):checks service return after failure.
-- [Dependency Failure Testing](https://inaodeng.com/en/qaskills/dependency-failure-testing/):covers dependency behavior during the switch.
-
-## Common traps
-
-1. Checking health endpoints without business writes.
-2. Ignoring client connection pools after the route changes.
-3. Failing back without reconciling both sides.
+- [Disaster Recovery Testing](https://inaodeng.com/en/qaskills/disaster-recovery-testing/) covers recovery objectives, backups, and restore paths.
+- [Resilience Testing](https://inaodeng.com/en/qaskills/resilience-testing/) reviews broader service behavior under disruption.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the Skill:
 
-```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing -g
-```
 
-After installation, invoke it with the `failover-testing` Skill and attach the real project material.
+Invoke failover-testing with the architecture, primary/standby roles, approved triggers, business readiness rule, and available route or ledger evidence.
 
-## FAQ
+## Source
 
-### Can failover be tested with read traffic only?
-
-It can validate routing, but it cannot prove write consistency or business continuity.
-
-### What if the secondary is intentionally behind?
-
-Measure the lag against the accepted RPO and expose which user actions are unavailable during the gap.
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
-
-## References
-
-### Source Skill and execution contract
-
-The complete execution contract lives in the [Failover Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing/prompts/failover-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing) contains the entry point and supporting assets where they exist.
-
-The entry point centers failure detection, route switch, in-flight work, consistency, split brain, recovery, and failback. Keep its decision boundary visible and do not turn a static design into an execution claim.
-
-### Reference links
-
-- Failover Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing/prompts/failover-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing/prompts/failover-testing.md)
-
-- Awesome QA Skills: Failover Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- Failover Testing details:[https://inaodeng.com/en/qaskills/failover-testing/](https://inaodeng.com/en/qaskills/failover-testing/)
+Read the [Failover Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing/prompts/failover-testing.md). It defines the FOV-## contract and requires node, routing, and write-authority timelines.

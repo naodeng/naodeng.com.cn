@@ -1,6 +1,6 @@
 ---
 title: "UX Quality Perspective: Bring user task flows and usability issues into quality decisions"
-description: "UX Quality Perspective field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+description: "Assess task flow, waiting, feedback, accessibility and recovery to find experience risks even when the interface reports no errors."
 date: 2026-09-23T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "UX Quality Perspective"]
@@ -12,7 +12,7 @@ An interface without errors does not necessarily deliver quality. Waiting, compr
 
 The UX Quality Perspective Skill examines task flow, feedback, accessibility, and recovery moments, making lived experience concrete enough to improve.
 
-This guide uses collaboration-grounded examples to unpack the judgment process, helping you turn different signals into actions that are communicable and traceable.
+A checkout journey makes waiting, timeout, keyboard focus, mobile recovery, and accessible feedback observable across concrete interface states.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with UX Quality Perspective.
 
@@ -22,82 +22,170 @@ The main prompt covers Inputs, Applicability Check, UX Questions, Output Contrac
 
 This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
 
-## A review fragment that keeps disagreement visible
+## Related Skills
 
-Review checkout feedback, error recovery, keyboard operation, copy, and mobile behavior
+UX Quality Perspective looks at whether users can understand, complete, and recover from a task. These Skills help with cross-role or specialist questions:
 
-Different roles can read the same artifact and find different risks.
+| Skill | When to use it | What it adds |
+| --- | --- | --- |
+| [Product Quality Perspective](https://inaodeng.com/en/qaskills/product-quality-perspective/) | An experience issue affects business rules or user value | Connects observations to tasks, conversion, trust, and acceptance trade-offs |
+| [Accessibility Testing](https://inaodeng.com/en/qaskills/accessibility-testing/) | Keyboard, focus, semantics, or assistive technology is a primary risk | Checks accessibility criteria, interaction paths, and reproducible evidence |
+| [Multi-Role Quality Synthesis](https://inaodeng.com/en/qaskills/multi-role-quality-synthesis/) | UX conclusions need to be decided alongside Product, QA, and Technical material | Preserves user impact, technical constraints, and role disagreements |
+| [Technical Quality Perspective](https://inaodeng.com/en/qaskills/technical-quality-perspective/) | An experience issue depends on APIs, performance, errors, or telemetry | Adds runtime consequences and technical evidence boundaries |
+| [Project Delivery Perspective](https://inaodeng.com/en/qaskills/project-delivery-perspective/) | UX evidence work affects test windows or release dates | Tracks follow-up work without deciding whether UX passes |
 
-| Observation | Evidence | Impact | Recommendation |
+## What UX Perspective contributes across the workflow
+
+UX Quality Perspective shares eight stages with Product and QA, but analyzes only material with UX impact or evidence. The stage names may match; the questions and outputs do not.
+
+| Stage | What UX checks | What the team receives |
+| --- | --- | --- |
+| Requirements analysis | Whether task, navigation, state, feedback, breakpoint, and assistive-technology evidence is sufficient | UX facts, evidence gaps, questions, and responsible role |
+| Test strategy | Whether proven UX risks cover task flow, key states, devices, input methods, and accessibility | UX coverage, method, observation signals, and exit criteria |
+| Test strategy review | Whether evidence-backed states, devices, or assistive paths are missing | UX risks, strategy gaps, and evidence requests |
+| Code review | Whether the PR has traceable UI impact and follows design and state evidence | Demonstrable UX deviations and evidence requests for Design, Development, and QA |
+| Test case writing | Whether supplied tasks, states, and design requirements can become observable steps | Evidence-backed preconditions, steps, expected results, and risks |
+| Test case review | Whether cases cover evidenced states, input methods, devices, and assistive technology | Demonstrable UX coverage gaps and revisions |
+| Test reporting | What conclusions the record supports across tasks, devices, input methods, and assistive technology | Observations, impact, reproduction conditions, owner, and next step |
+| Test report review | Whether a screenshot or recording is being generalized to all states and devices | Evidence scope, UX risk, information gaps, and actions |
+
+A UX report includes summary, facts, evidence, findings, risks, information gaps, questions, actions, and confidence. State what a recording proves and what it does not. Without prototype, flow, state, or device evidence, the useful output may be “not applicable” and a list of evidence to collect.
+
+## Separate the three perspectives on one input
+
+| Shared input: delayed payment callback | Product Quality Perspective | QA Quality Perspective | UX Quality Perspective |
 | --- | --- | --- | --- |
-| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
-| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
+| Requirements, PR, regression record, payment logs, timeout recording | Confirm waiting rules, duplicate-charge risk, and business approver | Check whether timeout, retry, and reconciliation ran and have evidence | Check processing/timeout feedback, focus, copy, and recovery |
 
-Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
+## Turn checkout experience observations into actions
 
-## Merge evidence without flattening disagreement
+Review feedback, error recovery, keyboard use, copy, and mobile behavior in the checkout flow. The question is whether the user can take the next step.
 
-For Review checkout feedback, error recovery, keyboard operation, copy, and mobile behavior, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
-
-| Role | Observation | Evidence needed | Decision ownership |
+| Task state | Observation | User impact | Improvement |
 | --- | --- | --- | --- |
-| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
-| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
-| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
+| Waiting for payment | No progress, timeout, or duplicate-submit message | User may refresh or pay again | Show state and idempotency guidance |
+| Address validation fails | Error appears only at the top of the page | User may not find the field to correct | Associate focus and error text with the input |
+| Keyboard use | Focus stays behind an opened dialog | Keyboard user cannot complete payment | Manage focus and provide an exit path |
+| Mobile recovery | Form is empty after returning to the page | User must re-enter details | Preserve safe draft state |
 
-Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Inputs and Applicability Check need source links because paraphrasing can change their meaning.
+A UX conclusion should name the specific state, user impact, and verifiable improvement.
 
-The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+## Make observation records reproducible
 
-## A prompt you can adapt
+“Feels awkward” is not enough to reproduce an experience issue. Record device, entry point, steps, state changes, and whether the user can continue.
 
-Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+| Record field | Example |
+| --- | --- |
+| Environment | iOS Safari, slow network, keyboard input |
+| Entry point | Membership page → Upgrade → Payment |
+| Failure state | Payment times out while the order remains processing |
+| Evidence | Recording, analytics event, accessibility tree, support record |
+
+Product and Technical owners can then assess impact and repair priority.
+
+## Hand off the same UX path through development
+
+Keep one reproducible path as a UX issue moves through requirements, design, development, and testing.
+
+| Development step | Input or artifact | Experience question | Handoff |
+| --- | --- | --- | --- |
+| Requirements review | User task, flow diagram, target user | What must the user do while waiting, failing, and recovering? | Define task states and open questions |
+| Design handoff | Prototype, copy, breakpoints, design system | Are empty, error, loading, keyboard, and mobile states designed? | Save state map and interaction notes |
+| Development integration | State model, components, API error codes | Can the UI reliably show feedback and preserve input and focus? | Record state changes, telemetry, and reproduction entry |
+| QA verification | Build, device, browser, assistive technology | Can the user see feedback, understand the next step, and recover? | Recording, steps, accessibility tree, defect link |
+| Post-release review | Funnel, support records, user feedback | Does the same friction recur in real use? | Update risk, owner, and acceptance criteria |
+
+For payment waiting, Product, Development, and QA can share a state table:
+
+| State | What the user should see | What the user can do | Acceptance evidence |
+| --- | --- | --- | --- |
+| idle | Amount, payment method, and submit conditions | Check details and submit | Screen recording, keyboard path |
+| submitting | Clear submission progress and button state | Wait without submitting twice | Network log, button state |
+| processing | Order is processing, with next step or lookup entry | Stay or leave safely | Order state, UI copy |
+| timeout | Timeout status and whether to wait or contact support | Look up, retry, or exit | Slow-network recording, duplicate-click record |
+| success | Payment result and benefit-delivery state | View benefits or order | Order and UI state comparison |
+| failure | Reason and an actionable recovery path | Correct details and retry | Error linkage and focus position |
+
+The state table can become component acceptance criteria: link error text to its field, move focus into a dialog and return it on close, prevent duplicate submission while loading, and retain safe form content after navigation. Accessibility and mobile behavior affect whether users can complete the same task.
+
+The following observation is hypothetical. It shows how to turn “the flow feels stuck” into a reviewable input and does not claim the current product has this issue.
+
+```text
+stage: test-reporting
+environment: iPhone Safari / slow network / VoiceOver enabled
+task: Recover membership upgrade after payment timeout
+steps:
+  1. Open the membership upgrade page and submit payment
+  2. Delay the payment callback until the client times out
+  3. Return to the order page, then reopen the upgrade page
+observed:
+  - The page shows an error but does not say whether an order was created
+  - VoiceOver does not announce the processing state
+  - The address field is empty after returning to the upgrade page
+evidence:
+  - checkout-timeout.mov
+  - order-status-response.json
+  - repro-steps.md
+user_impact: User may pay twice or abandon the flow and re-enter details
+inference: Failure recovery information, status announcement, and form retention need confirmation
+action: Add an order lookup entry, announce status, retain safe fields, and review keyboard behavior
+owner: Front-end lead / Product lead
+status: pending
+confidence: medium
+```
+
+Reviewers should also check whether screen readers announce error copy, focus reaches the field that needs correction, narrow screens obscure status messages, and slow networks make it clear that work is still in progress. Each check needs an interface, prototype, recording, accessibility tree, or run record; impressions alone cannot close it.
+
+## Adaptable prompt
 
 ```text
 Use the ux-quality-perspective Skill.
 
-Task: Review checkout feedback, error recovery, keyboard operation, copy, and mobile behavior
+Stage: test report review (test-report-review)
+Task: Review checkout feedback, error recovery, keyboard use, copy, and mobile behavior
 Version and environment: [requirement / build / environment]
 Inputs: [file paths or links]
 Scope: [included and excluded journeys]
 Constraints: [accounts, data, time, compliance]
 
-Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
-Finish with open questions. Do not invent missing facts.
+First check whether the UX perspective applies. Report summary, facts, evidence, findings, risks, information gaps, questions, actions, and confidence. Record task flow, state, device/browser, input method, accessibility setup, and screenshots/recordings/reproduction steps. Without UX evidence, use not_applicable or evidence_gap; do not report code correctness, test pass, or release approval.
 ```
 
-Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+## Check whether users can continue after failure
 
-## Advanced use, from one call to a maintained flow
+Experience problems often appear in failure states: can a user avoid paying twice after a timeout, retain an address after validation fails, and understand what to do after an API error? Check the start, wait, failure, recovery, and completion states for each key task.
 
-Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+These conclusions need evidence from a real task, such as a prototype, analytics, usability observation, or support record. Without it, state a risk assumption rather than claiming that the experience is good.
 
-### A three-Skill chain
+## Who should use this Skill
 
-`requirements-analysis` → `ux-quality-perspective` → `multi-role-quality-synthesis`
+Design and Product can use it to review task flows and failure states; QA can make experience issues reproducible; front-end and accessibility owners can plan focus, feedback, and recovery fixes. Without task material, keep the result as a risk assumption.
 
-| Handoff | Payload | Receiver check |
+## Review UX evidence before handoff
+
+| Review item | What to retain | If missing |
 | --- | --- | --- |
-| Upstream to ux-quality-perspective | Source versions, scope, risks, open questions | UX Quality Perspective staleness and conflicts |
-| ux-quality-perspective to downstream | Primary artifact, evidence index, unfinished work | UX Quality Perspective executability and owners |
-| Feedback to ux-quality-perspective | Runs, defects, new risks | UX Quality Perspective baseline and regression update |
+| Task and flow | Start, goal, key path, and failure-recovery path | Record the flow gap; do not invent interactions |
+| State and feedback | Loading, success, failure, empty state, focus, and errors | State which evidence is missing |
+| Use conditions | Device, browser, viewport, input method, and accessibility settings | Do not generalize one device observation |
+| UX evidence | Prototype, screenshot, recording, accessibility tree, reproduction, or user observation | Mark evidence_gap or not_applicable |
+| Impact and action | User impact, owner, fix, and confidence | Separate fact, inference, and recommendation |
 
-Do not paste three complete outputs into one large prompt. Give UX Quality Perspective a structured summary and accessible source artifacts. It saves context and makes defects traceable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| ux-quality-perspective input | Version, environment, owner, accessible sources | Stop UX Quality Perspective and list gaps |
-| ux-quality-perspective artifact | Material claims carry basis and status | Return UX Quality Perspective for evidence |
-| ux-quality-perspective execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
-| ux-quality-perspective decision | Residual risks have accepter and date | Do not enter the next stage |
-
-Review UX Quality Perspective adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
-
-## A perspective Skill is not role-play
-
-Do not invent what product, QA, or engineering would say. UX Quality Perspective can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+```yaml
+stage: test-report-review
+applicability: applicable / not_applicable / evidence_gap
+task: [user task]
+flow: [start, wait, failure, recovery, completion]
+state: [observed interface state]
+device_browser_input: [device, browser, viewport, input method]
+accessibility: [screen reader, keyboard, focus, or other condition]
+evidence: [screenshot, recording, prototype, accessibility tree, or reproduction steps]
+experience_impact: [user impact]
+action:
+  owner: [owner]
+  next_action: [next step]
+confidence: high / medium / low
+```
 
 ## Install and invoke
 
@@ -109,25 +197,25 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 Invoke it with “Use the ux-quality-perspective Skill,” then attach the real artifacts.
 
-## Two practical questions
+## Common questions
 
-### Can one perspective overrule the others?
+### Can I review UX with screenshots alone?
 
-No. It adds observations. Keep disagreement and supporting evidence visible.
+Screenshots show a visual state, but do not prove waiting, keyboard, screen-reader, or recovery behavior. Add an interactive prototype, recording, or direct observation where possible.
 
-### What if that role is absent?
+### What if there is no user research?
 
-Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
+Use task flows, analytics, support records, and accessibility checks, while marking which claims are observations and which need user confirmation.
 
-### What if roles reach opposite conclusions?
+### How do I know an experience issue is fixed?
 
-Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
+Repeat the same entry and failure path. Confirm the user sees feedback, understands the next step, and can recover; retain review evidence.
 
-### Can a perspective be written without data?
+### Can a UX conclusion replace functional testing?
 
-It can be an observation or assumption if the missing source and next evidence request stay visible.
+No. It adds task-flow and perceived-quality evidence. Functional, API, and security checks remain separate.
 
-Run UX Quality Perspective against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+Run UX Quality Perspective on a real checkout path and retain device, state, evidence, and review notes. The example provides structure; project evidence must come from the project.
 
 ## References
 - Awesome QA Skills project:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

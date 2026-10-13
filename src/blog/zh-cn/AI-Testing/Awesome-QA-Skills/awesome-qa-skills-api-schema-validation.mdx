@@ -8,201 +8,56 @@ tags: ["AI 测试", "QA Skills", "API Schema 校验"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-接口定义在纸面上看似合法，真实客户端却可能传入 null、漏掉所谓可选字段，或者收到文档枚举之外的值。
+API Schema 校验是将已有请求和响应样例与指定接口契约对照。判断结果取决于 schema 方言、接口操作、方向和引用上下文；无法解析的契约不能算作通过。
 
-## 为什么需要这个 Skill
+## 先确定方言和接口操作
 
-API 结构校验用于检查真实请求和响应是否遵守声明的结构、约束、格式与兼容性规则。
+记录契约属于 OpenAPI、JSON Schema 还是 GraphQL，以及具体版本或 dialect；同时确认 operation、请求或响应方向、内容类型、引用根和解析上下文。依赖版本的规则或引用无法确认时，应保留为待判断。
 
-## Skill 用来做什么
+## 分开判断缺失、null 与受约束的值
 
-当团队需要围绕“字段结构、必填性、可空性、格式、枚举、额外属性和版本漂移”工作时，使用 API 结构校验 Skill。
+将每个样例与实际 schema 对照，不要把外观相似的输入当成同一种情况。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 API 结构校验。
-
-结构校验会检查真实系统最容易变乱的边界——null、缺失数组、未知字段、日期格式和版本默认值。
-
-它适合这些场景：团队需要重复检查字段结构、必填性、可空性、格式、枚举、额外属性和版本漂移；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
-
-## 它不做什么
-
-API 结构校验 Skill 可以整理结构问题所需的材料、证据和下一步动作，但它不能替代：
-
-- 业务或领域负责人对规则、范围和风险的确认。
-- 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
-- 发布、合规、生产操作和残余风险接受等授权决定。
-- 在输入相互冲突时替团队选择一个未经确认的事实。
-
-## 它主要检查哪些内容
-
-这个 Skill 的价值不在于把关键词再列一遍，而在于把每个关注点接到可观察的输入、判断和收口动作。先用源 Skill 已定义的输出字段整理一张小矩阵：
-
-| 检查关注点 | 开始前要问 | 结果应留下什么 |
-| --- | --- | --- |
-| 结构问题 | 结构、格式、可选性或版本不一致 | 字段路径与来源 |
-| 消费者影响 | 解析失败、静默默认值或不安全解释 | 受影响客户端 |
-| 修复动作 | 结构定义、实现、测试夹具或迁移改动 | 负责人和兼容性检查 |
-
-如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
-
-## 开始之前先审计输入
-
-围绕“结构问题”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
-
-| 状态 | 含义 | 本 Skill 的处理方式 |
-| --- | --- | --- |
-| known | 材料直接证明的事实 | 标出来源、版本和时间，允许进入判断 |
-| missing | 本轮需要但尚未提供的材料 | 列出最小补证动作，结论保持受限 |
-| conflicting | 来源之间互相矛盾 | 并列来源和冲突点，交给负责人裁决 |
-| stale | 材料存在但版本或时间已经过期 | 标出新鲜度，不把旧结论当当前事实 |
-| out_of_scope | 有关但不在本轮范围内 | 明确排除，避免分析悄悄扩大 |
-| assumptions | 为继续分析而暂时采用的假设 | 写出验证方式和失效条件 |
-
-至少把输入版本、范围、环境、证据位置和负责人放在一起。没有运行记录时，只能交付分析、设计或验证计划，不能写执行通过。
-
-## 从问题到结构化发现
-
-先把来源、范围、证据状态、分析判断、责任角色、动作、关闭条件和验证方式连起来，再写结论。下面的案例保留这个 Skill 的专属编号和领域语境。
-
-### 分层写法
-
-围绕结构问题，不要把四种语气揉成一句“建议通过”：
-
-| 层次 | 写法 | 本文应用 |
-| --- | --- | --- |
-| 事实 | 材料直接显示了什么 | 引用来源中的重点、版本、输入或运行记录 |
-| 基于证据的推断 | 多个事实共同支持的判断 | 说明推断链，并保留不确定性 |
-| 建议 | 下一步最小动作是什么 | 指定补证、复核、执行或回归路径 |
-| 人工决策 | 谁需要决定什么 | 由负责人确认范围、风险接受、资源和发布含义 |
-
-## 一个完整案例
-
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
-
-### 输入
-
-| 材料 | 这次提供什么 | 缺失时怎么处理 |
-| --- | --- | --- |
-| 结构定义来源 | OpenAPI 版本、生成类型、示例和兼容策略 | 来源冲突时指定依据 |
-| 真实载荷 | 每个消费者和错误路径的请求与响应 | 合成测试夹具不能替代真实结构证据 |
-| 校验规则 | 必填、可空、格式、枚举和额外属性行为 | 不要静默吞掉未知字段 |
-
-可以这样调用：
-
-```text
-请使用 api-schema-validation Skill。
-
-任务：校验 Web、移动端和发票 Worker 使用的三个 API 版本的结算响应
-输入材料：[需求、版本、链接、日志、报告或数据路径]
-范围：[本次包含和排除的对象]
-未知项：[缺失的环境、账号、数据或权限]
-期望输出：[按风险排序的发现、证据状态和下一步动作]
-
-先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
-```
-
-### 分析
-
-先从一个边界清楚的小回合开始：校验网页端、移动端和发票处理进程使用的三个 API 版本的结算响应。把结算响应分别交给网页端类型、移动端解码器和发票处理进程的结构校验。新增可空字段 `taxAmount` 不一定兼容，因为处理进程可能把 null 当成零并开出错误发票。
-
-交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
-
-### 发现
-
-#### 示例发现：把一次问题写成可交接动作
-
-下面的字段示例只展示记录方式，不代表真实环境已经执行。
-
-假设当前材料无法证明“结构问题”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
-
-| 字段 | 示例写法 |
+| 样例情况 | 核对内容 |
 | --- | --- |
-| 来源与范围 | 记录本轮使用的需求、版本、环境和结构问题对应的具体对象 |
-| 发现 | 结构校验的判断条件或结果仍缺少可追溯依据 |
-| 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
-| 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
-| 负责人和人工决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
-| 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
-| 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
+| 属性缺失 | 在当前操作和 schema 分支中是否必填 |
+| 属性值为 null | 该方言和类型声明是否允许 null |
+| 类型或范围不符 | 适用类型、边界和 schema 路径 |
+| 格式或枚举值 | 声明的格式、校验器支持情况和允许的枚举值 |
+| 未知属性 | schema 的 additionalProperties 规则 |
+| 组合 schema 或引用 | 引用是否解析、适用分支及方言规则 |
 
-这类记录的重点是让下一位同事能从发现回到来源，再执行一项能改变结论的动作。
+GraphQL 应使用输入/输出类型和非空规则，不能套用 JSON Schema 关键词。可选字段不必然接受 null，声明默认值也不代表系统会自动填入。
 
-### 决策
+## 报告样例判定，不推断覆盖率
 
-责任角色和待决策问题应由对应负责人确认；Skill 不替他们做风险取舍。
+对每个已有样例记录 schema 路径和关键词、可用的校验器或报告证据，以及它依据该契约属于有效、无效还是无法评估。未解析的引用和缺少的样例都要保留。少量样例可以暴露不匹配，但不能证明完整契约或运行时行为。
 
-### 验证
+## 不把结构校验扩展成其他结论
 
-关闭前按发现中的验证方式执行，并保留原始产物；没有执行记录时，状态仍然保持未验证。
+Schema 校验处理声明的结构与约束，不能单独证明业务规则、授权或所有已部署客户端的兼容性。涉及客户端与服务端版本行为时，使用 [API 版本兼容性测试](https://inaodeng.com/zh-cn/qaskills/api-version-compatibility-testing/)。
 
-## 发现如何进入下一阶段
+## 记录 ASV-## 发现
 
-### 交接产物
+记录对象、前置条件、关注行为、schema 来源路径、证据状态、影响与优先级、责任角色、关闭条件和验证方法。事实、证据支持的推断、候选检查和 Human 决策要分开。
 
-| 输出字段 | 它要回答什么 | 示例状态 |
-| --- | --- | --- |
-| 结构问题 | 结构、格式、可选性或版本不一致 | 字段路径与来源 |
-| 消费者影响 | 解析失败、静默默认值或不安全解释 | 受影响客户端 |
-| 修复动作 | 结构定义、实现、测试夹具或迁移改动 | 负责人和兼容性检查 |
+## 准备有边界的复核
 
-没有运行记录、查询结果或原始产物时，不要写“已通过”。结构校验会检查真实系统最容易变乱的边界——null、缺失数组、未知字段、日期格式和版本默认值。
+将已有 schema、样例和校验报告作为设计或静态比对材料。不要执行测试、修改 schema 或代码、假设缺失的规则或版本，也不要把样例数量说成覆盖率。
 
-### 下一步路由
+## 相关 Skill
 
-至少交付来源、证据状态、负责人、关闭条件和验证动作；下一阶段的结论仍受证据状态约束。
-
-## 怎样准备更好的输入
-
-如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
-
-这里补充信息会改变结果，因为字段结构、必填性、可空性、格式、枚举、额外属性和版本漂移必须接回证据，不能只靠熟悉的测试套路推断。
-
-## 和其他 Skill 怎么配合
-
-- [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/)：把 Schema 接回消费者行为。
-- [API 版本兼容性测试](https://inaodeng.com/zh-cn/qaskills/api-version-compatibility-testing/)：检查 Schema 演进。
-- [API 异常测试](https://inaodeng.com/zh-cn/qaskills/api-negative-testing/)：提供无效结构场景。
-
-## 容易踩的坑
-
-1. 只校验成功示例。
-2. 把生成的类型定义当成唯一的接口结构依据。
-3. 在记录契约违规前先把错误日期或枚举强行转换。
+- [API 版本兼容性测试](https://inaodeng.com/zh-cn/qaskills/api-version-compatibility-testing/)检查受支持的客户端/服务端组合。
+- [API 契约测试](https://inaodeng.com/zh-cn/qaskills/api-contract-testing/)复核更广泛的生产者/消费者约定。
 
 ## 安装与调用
 
-全局安装这个 Skill：
+安装这个 Skill：
 
-```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation -g
-```
 
-安装后使用 `api-schema-validation` Skill，并附上真实项目材料。
+调用 api-schema-validation 时，提供契约方言和版本、operation、方向、内容类型、引用根、现有样例及可用的校验器证据。
 
-## 常见问题
+## 源文件
 
-### 响应多出未知字段必须失败吗？
-
-遵守消费者契约；严格程度是兼容性选择，不是统一默认值。
-
-### 结构校验可以证明业务正确吗？
-
-不能。它证明结构和约束，业务不变量需要单独检查。
-
-## 参考
-
-### 源 Skill 与执行契约
-
-完整执行契约位于 [API 结构校验 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation/prompts/api-schema-validation.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation) 中包含入口文件以及实际存在的配套资料。
-
-入口文件重点约束字段结构、必填性、可空性、格式、枚举、额外属性和版本漂移。要保留它的决策边界，不要把静态设计写成执行结论。
-
-### 参考链接
-
-- API 结构校验 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation/prompts/api-schema-validation.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation/prompts/api-schema-validation.md)
-
-- Awesome QA Skills：API 结构校验 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- API 结构校验 详情页:[https://inaodeng.com/zh-cn/qaskills/api-schema-validation/](https://inaodeng.com/zh-cn/qaskills/api-schema-validation/)
+阅读[API Schema 校验 Prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-schema-validation/prompts/api-schema-validation.md)。其中定义 ASV-## 发现合同，以及样例×约束的判定边界。

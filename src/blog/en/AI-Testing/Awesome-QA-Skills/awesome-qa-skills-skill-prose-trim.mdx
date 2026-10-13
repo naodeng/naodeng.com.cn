@@ -1,6 +1,6 @@
 ---
 title: "Process Prose Trimming: Remove redundant process and keep only executable constraints"
-description: "Process Prose Trimming field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+description: "Trim Skill documentation while preserving trigger conditions, exceptions, failure handling, and verification requirements."
 date: 2026-11-12T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,136 +8,55 @@ tags: ["AI Testing", "Agent Skills", "Process Prose Trimming"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
+Shorter Skill documentation is not automatically safer or clearer. Process Prose Trimming removes material that readers cannot resolve from the current repository while preserving the rules, measurements, and negative guarantees that still govern behavior.
 
-Trimming skill prose is not simple word-count reduction. If conditions, exceptions, or verification requirements disappear with the extra words, a shorter document increases execution risk.
+## Classify a passage before editing it
 
-The Skill Prose Trim Skill preserves decision-critical instructions while removing repetition, leaving guidance that is shorter without losing safeguards.
+First confirm the file scope, language pair, and permission to edit. Then decide what each passage represents:
 
-This guide provides an actionable checking framework and examples, helping you make evidence-backed judgments even when uncertainty remains.
+| Passage type | Treatment | Example |
+| --- | --- | --- |
+| Current fact | Verify it and state it in the present tense | A supported command, path, or behavior |
+| Contract or negative guarantee | Preserve its meaning and conditions | A refusal boundary or statement that an action is not performed |
+| Historical record | Keep it in the appropriate archive when it is still needed | A dated release decision or incident record |
+| Reasoning transcript or review dialogue | Remove process residue, or restate a durable fact if one remains | “The reviewer suggested this in PR 12” |
+| Measurement or formal reference | Retain the value, scope, date, and source | A benchmark result or cited standard |
+| Generated file, sealed archive, or fixture | Report it; do not edit without explicit authorization | A recorded Eval fixture used to reproduce a case |
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Process Prose Trimming.
+This classification prevents two opposite mistakes: leaving temporary review notes in a reader-facing Skill, and deleting history or a safeguard that users still need.
 
-## Read the source Skill first
+## Example: remove the process note, keep the rule
 
-The main prompt covers Deleted or restated, Preserved contracts and facts, Unchanged scope, Bilingual synchronization, Workflow. Those headings are navigation; the project artifacts still provide the facts.
+Imagine a document says: “This PR follows up on design note 4. The importer rejects rows without an account ID.” If the first sentence has no meaning outside its review history, remove it from the active guide. Keep the second sentence only after checking it against the current implementation or contract. If that fact is no longer verifiable, report the uncertainty rather than converting it into a promise.
 
-This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
+A trim report should make the change auditable:
 
-## Findings need a location
-
-Shorten an oversized Skill entry point without losing activation, critical rules, or failure handling
-
-“This could be better” gives the author nothing to act on.
-
-| Severity | Location | Finding | Fix |
-| --- | --- | --- | --- |
-| P1 | Input contract | Source priority is undefined | Add conflict and degradation rules |
-| P2 | Output contract | Conclusions have no evidence field | Add source, status, and owner |
-
-Every finding needs a location, impact, and practical fix. Otherwise it is review noise.
-
-## Compare one finding before and after revision
-
-For Shorten an oversized Skill entry point without losing activation, critical rules, or failure handling, the first draft often contains a broad quality request.
-
-```text
-Before: Check output quality and make the result accurate and complete.
-
-After: Every conclusion carries source, status, and owner.
-Use assumption when no source exists. Do not use passed without a run record.
+```markdown
+# Trimming report
+## Deleted or restated
+| Location | Type | Action | Reason |
+## Preserved contracts and facts
+## Unchanged scope
+## Bilingual synchronization
 ```
 
-The second contract is testable. During a Deleted or restated and Preserved contracts and facts review, also inspect trigger overlap, degraded behavior for missing input, and examples that imply execution without evidence.
+## Preserve what controls behavior
 
-| Recheck | Method | Passing signal |
-| --- | --- | --- |
-| Trigger | Run positive and neighboring negative requests | Correct activation boundary |
-| Contract | Try input with missing fields | Missing facts are named |
-| Example | Trace each claim to a source | No invented files or results |
-| Scope | Read the diff | Unrelated rules remain untouched |
+Before accepting a shorter version, compare the original and edited text for trigger conditions, required inputs, exceptions, refusal rules, failure handling, measurements, identifiers, and references. Keep an important negative guarantee even when it costs words. Do not collapse “not run” into “passed,” or change an assumption into a capability.
 
-## A prompt you can adapt
+The source Skill does not set a target word count. It asks the maintainer to remove process residue and preserve durable content. After editing, read the complete affected page and its language pair; then verify that links, examples, and the unchanged scope still make sense. Do not edit generated files, sealed archives, fixtures, or related files outside the authorized scope.
 
-Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+## Use the adjacent Skills for separate jobs
 
-```text
-Use the skill-prose-trim Skill.
+[Skill Prose Contract Review](/en/qaskills/skill-prose-review/) identifies ambiguity and contract gaps before an edit. Process Prose Trimming removes only the authorized residue. [Skill Change Verification](/en/qaskills/skill-change-verification/) checks the effect of the actual diff and keeps unrun behavior checks visible.
 
-Task: Shorten an oversized Skill entry point without losing activation, critical rules, or failure handling
-Version and environment: [requirement / build / environment]
-Inputs: [file paths or links]
-Scope: [included and excluded journeys]
-Constraints: [accounts, data, time, compliance]
-
-Give location, severity, impact, and a proposed edit for every finding. Separate contract gaps, factual defects, and preference; include a recheck method.
-Finish with open questions. Do not invent missing facts.
-```
-
-Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
-
-## Advanced use, from one call to a maintained flow
-
-Turn representative findings into regression examples. After a Process Prose Trimming edit, run expected-pass, expected-reject, and missing-input checks.
-
-### A three-Skill chain
-
-`skill-prose-review` → `skill-prose-trim` → `skill-change-verification`
-
-| Handoff | Payload | Receiver check |
-| --- | --- | --- |
-| Upstream to skill-prose-trim | Source versions, scope, risks, open questions | Process Prose Trimming staleness and conflicts |
-| skill-prose-trim to downstream | Primary artifact, evidence index, unfinished work | Process Prose Trimming executability and owners |
-| Feedback to skill-prose-trim | Runs, defects, new risks | Process Prose Trimming baseline and regression update |
-
-Do not paste three complete outputs into one large prompt. Give Process Prose Trimming a structured summary and accessible source artifacts. It saves context and makes defects traceable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| skill-prose-trim input | Version, environment, owner, accessible sources | Stop Process Prose Trimming and list gaps |
-| skill-prose-trim artifact | Material claims carry basis and status | Return Process Prose Trimming for evidence |
-| skill-prose-trim execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
-| skill-prose-trim decision | Residual risks have accepter and date | Do not enter the next stage |
-
-Review Process Prose Trimming adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
-
-## Keep the original text and evidence in the review
-
-Quote a location before describing the problem. Separate contract gaps, wording defects, and personal preference. Findings related to Deleted or restated should explain the behavioral drift they can cause. Recheck behavior after the edit.
-
-## Install and invoke
-
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install this Skill with:
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim -g
 ```
 
-Invoke it with “Use the skill-prose-trim Skill,” then attach the real artifacts.
-
-## Two practical questions
-
-### Must every review finding be accepted?
-
-No. Use severity and contract impact. A preference can be declined if the choice is recorded.
-
-### Does shorter prose mean a better Skill?
-
-No. Triggers, inputs, outputs, and risk boundaries still need to survive the edit.
-
-### When is human review mandatory?
-
-Require an accountable person for scope trade-offs, risk acceptance, release decisions, and source conflicts.
-
-### What should be archived?
-
-Keep the input version, Skill output, human edits, and final evidence so the conclusion can be reconstructed.
-
-Run Process Prose Trimming against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
-
 ## References
-- Awesome QA Skills project:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- Awesome QA Skills series overview:[https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- Awesome QA Skills: Process Prose Trimming Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim)
-- Process Prose Trimming Skill details:[https://inaodeng.com/en/qaskills/skill-prose-trim/](https://inaodeng.com/en/qaskills/skill-prose-trim/)
+
+- [Process Prose Trimming source, prompt, and Eval files](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim)
+- [Process Prose Trimming directory on this site](/en/qaskills/skill-prose-trim/)

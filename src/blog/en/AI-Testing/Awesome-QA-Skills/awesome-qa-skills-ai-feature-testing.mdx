@@ -1,6 +1,6 @@
 ---
 title: "AI Feature Testing: Validate AI product functionality, degradation, privacy, and feedback mechanisms"
-description: "AI Feature Testing field guide covering project inputs, evidence, execution boundaries, advanced composition, and team gates."
+description: "Test AI features for user impact, wrong advice, context gaps, input boundaries, degradation, privacy, and feedback behavior."
 date: 2026-10-21T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,122 +8,42 @@ tags: ["AI Testing", "Agent Skills", "AI Feature Testing"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
+AI Feature Testing looks at the feature users encounter, not just the model response. It checks whether quality, safety, privacy, fairness, fallback, and feedback behavior work together in the product. This helps separate a model limitation from an integration defect or a confusing user experience.
 
-A feature powered by a model does not always fail with an error. It may offer confident but wrong guidance, ignore context, or change behavior at input boundaries. Testing must be defined by user consequences.
+## Fix the product and evaluation context
 
-The AI Feature Testing Skill combines deterministic product checks with evaluated model behavior, making uncertainty visible instead of hiding it behind a pass flag.
+Record the feature goal, model or service configuration, product version, environment, user segments, input/output samples, and business or safety constraints. Organize coverage by product task, language, user group, and risk. Save sample provenance and counts so an overall average cannot conceal an untested or poorly served group.
 
-This guide provides an actionable checking framework and examples, helping you make evidence-backed judgments even when uncertainty remains.
+| Area | Questions for the test plan |
+| --- | --- |
+| Task quality | Does the feature address the user's task, and how are correctness and usefulness judged? |
+| Safety and privacy | Which outputs must be refused, masked, or sent to a human? What information may be retained? |
+| Fairness | Which user or language slices need separate review, and are there enough sourced samples? |
+| Fallback | What does the user see when the model is unavailable, uncertain, or blocked? |
+| Feedback | Can users report a problem, and can the team connect that report to a version and evidence? |
 
-## AI Feature Testing Skill: what it is for
+## Make the rubric and launch gates observable
 
-AI Feature Testing is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+For each rubric dimension, define observable anchors, who labels examples, how disagreement is handled, and where reference answers came from. Calibrate examples before applying project-defined scores or weights. Do not invent thresholds when none were supplied.
 
-## Start with the source Skill
+Keep task quality, safety and privacy, required refusals, answerable controls, and fallback gates separate. A higher refusal rate is not automatically safer. If a slice lacks examples or a gate has no source, mark it `UNKNOWN` or open. A static plan can propose checks; it cannot establish that execution passed or that a feature is ready to launch.
 
-The complete execution contract lives in [AI Feature Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-feature-testing/prompts/ai-feature-testing.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+For an illustrative recommendation panel, inspect the model suggestion, the rendered UI, the explanation shown to the user, and the human fallback together. Verify both the intended path and the degraded path, and preserve the exact feature and model versions with the result.
 
-The entry point calls out these constraints:
+## Report user impact and unresolved risk
 
-- do not test only ideal inputs
-- distinguish model limitations from integration defects
-- require refusal or human fallback for high-risk outputs
+The deliverable can contain a test dataset, risk scenarios, rubric, per-slice results, launch gates, monitoring recommendations, blockers, and owners for next actions. Every scenario should name preconditions, steps, expected behavior, and evidence. Keep unknowns and human decisions visible instead of collapsing them into an overall score.
 
-## Begin with project facts
+For agent planning and traces, see [AI Agent Testing](/en/qaskills/ai-agent-testing/). For language-model evaluation details, see [LLM Testing](/en/qaskills/llm-testing/); security-focused input attacks are covered by [Prompt Injection Testing](/en/qaskills/prompt-injection-testing/) and [Security Testing](/en/qaskills/security-testing/).
 
-Put the material you have on the table. Gaps may remain; their status needs to stay explicit.
+Install the Skill with:
 
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Goal and scope | Design correctness, degradation, privacy, and user-feedback tests for a product feature with summaries and recommendations | Name journeys outside this pass |
-| Version and environment | Requirement version, build, environment, time window | Stay in design or analysis mode |
-| Evidence | Requirements, interfaces, logs, metrics, traces, or defects | Separate facts, assumptions, and open questions |
-| Decision boundary | Risk approver and actions that are not authorized | Name the owner and next step |
-
-Use a request like this:
-
-```text
-Use the ai-feature-testing Skill.
-
-Task: Design correctness, degradation, privacy, and user-feedback tests for a product feature with summaries and recommendations
-Inputs: [versions, links, log paths, or reports]
-Scope: [included and excluded objects]
-Constraints: [time, data, permissions, compliance]
-
-Audit the inputs first. Order results by risk and evidence strength. Label unsupported claims as assumptions and give a validation method.
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-feature-testing -g
 ```
 
-## Make the result usable by the next person
-
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Finding or judgment | Describes observed behavior, difference, or risk | Confirmed / Assumption / Open |
-| Basis | Points to a version, log, trace, test, or requirement | source_id or link |
-| Impact | Explains affected users, journeys, or release decision | P0, P1, or accepted residual risk |
-| Next action | Names verification work and an owner | Owner, date, expected evidence |
-
-Do not write “passed” without a run record, query result, or source artifact. Static analysis and runtime proof are different things.
-
-## Run one focused pass
-
-Start with a bounded pass—Design correctness, degradation, privacy, and user-feedback tests for a product feature with summaries and recommendations. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
-
-Assess model output alongside the product UI, human fallback, and error feedback. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
-
-## Run one focused pass
-
-Start with a bounded pass—Design correctness, degradation, privacy, and user-feedback tests for a product feature with summaries and recommendations. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
-
-Assess model output alongside the product UI, human fallback, and error feedback. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
-
-## Advanced use: turn one analysis into a maintained mechanism
-
-Assess model output alongside the product UI, human fallback, and error feedback.
-
-Keep input versions and source IDs with every result. When requirements, code, environment, or data change, recompute only affected judgments and mark them `changed`, `unchanged`, or `needs-review`. Old conclusions are not new evidence.
-
-### A three-Skill chain
-
-`requirements-analysis` → `ai-feature-testing` → `llm-testing`
-
-| Handoff | Payload | Receiver check |
-| --- | --- | --- |
-| Upstream to ai-feature-testing | Source versions, scope, risk, open items | Staleness and conflicts |
-| ai-feature-testing to downstream | Judgments, evidence index, residual risk, tasks | Executability and ownership |
-| Feedback to ai-feature-testing | Runs, defects, changed facts | Baseline and regression scope |
-
-Hand over a summary, an evidence index, and locations for the source artifacts. That gives the receiver enough context and keeps the trail recoverable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| ai-feature-testing input | Version, environment, sources, and owner | Stop and list gaps |
-| ai-feature-testing artifact | Material claims have basis, status, and impact | Return for evidence |
-| ai-feature-testing execution | Command, query, or verification path is repeatable | Classify infrastructure or test issue |
-| ai-feature-testing decision | Residual risk has an accepter and date | Do not enter the next stage |
-
-## Common traps
-
-1. Listing checks without input conditions, expected results, or evidence.
-2. Marking every finding high priority and removing the team’s ability to choose.
-3. Refusing to produce a bounded first pass, or presenting guesses as facts.
-4. Treating one success or one anomaly as long-term behavior while ignoring repeated trials and version changes.
-
-## Two practical questions
-
-### Can I start with incomplete input?
-
-Yes. Produce a constrained first pass with known facts, assumptions, gaps, and the smallest validation action. Missing environment, data, or permission cannot support an execution claim.
-
-### When is human confirmation required?
-
-The accountable owner must confirm scope trade-offs, risk acceptance, production actions, data permission, and release decisions. The Skill organizes evidence and options; it does not grant authority.
-
-Run AI Feature Testing with one real artifact and keep the input, output, human edits, and verification evidence in the same work chain. That is what makes the next change cheaper to assess.
-
 ## References
-- AI Feature Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-feature-testing/prompts/ai-feature-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-feature-testing/prompts/ai-feature-testing.md)
-- Awesome QA Skills: AI Feature Testing Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-feature-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-feature-testing)
-- Awesome QA Skills on GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- AI Feature Testing Skill details:[https://inaodeng.com/en/qaskills/ai-feature-testing/](https://inaodeng.com/en/qaskills/ai-feature-testing/)
+
+- [AI Feature Testing prompt](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-feature-testing/prompts/ai-feature-testing.md)
+- [AI Feature Testing source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-feature-testing)
+- [AI Feature Testing directory on this site](/en/qaskills/ai-feature-testing/)

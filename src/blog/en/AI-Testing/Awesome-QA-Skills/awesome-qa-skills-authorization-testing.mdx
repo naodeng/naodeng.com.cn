@@ -8,203 +8,58 @@ tags: ["AI Testing", "QA Skills", "Authorization Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-Authentication tells the system who arrived. Authorization decides whether that person may export this report, edit this record, or delete this tenant’s data.
+A valid login does not prove that the user may edit this record. Authorization Testing checks each permission decision against the subject, resource, action, context, and policy that govern it.
 
-## Why this Skill is needed
+## Define the decision tuple
 
-Authorization Testing evaluates permissions as a combination of identity, resource, action, context, and policy version.
+Start with the actual policy source and identify the subject role, resource owner, tenant, action, sensitive fields, request context, delegation, and policy version. A role name alone is not evidence that a user can access every object of that type.
 
-## What the Skill does
-
-The Authorization Testing Skill is useful when a team needs a structured review of role, object ownership, tenant isolation, action scope, context, denial, and audit.
-
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Authorization Testing.
-
-A practical standard for this Skill is simple: A strong authorization pass holds the actor constant while changing the resource, then holds the resource constant while changing the actor. That is how horizontal and vertical gaps stop hiding behind a single happy-path role.
-
-Use it when the team needs a repeatable review of role, object ownership, tenant isolation, action scope, context, denial, and audit—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-## What it does not do
-
-The Authorization Testing Skill can organize material, evidence, and next actions for Access decision. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
-
-## What it checks
-
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
-| --- | --- | --- |
-| Access decision | Allow, deny, or unresolved with policy basis | Actor, resource, action |
-| Bypass finding | Horizontal, vertical, tenant, or state boundary failure | Reproducible condition |
-| Audit action | Log, alert, or policy repair needed | Owner and close condition |
-
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
-
-## Audit inputs before you start
-
-Before analyzing Access decision, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
-
-| State | Meaning | How this Skill should handle it |
-| --- | --- | --- |
-| known | Directly supported by the supplied material | Keep the source, version, and time with the judgment |
-| missing | Needed for this pass but not supplied | Name the smallest evidence action and limit the conclusion |
-| conflicting | Sources disagree | Show both sources and route the conflict to an owner |
-| stale | Present but outside the relevant version or time window | Mark freshness; old evidence is not current proof |
-| out_of_scope | Related but excluded from this pass | Keep the boundary explicit |
-| assumptions | Temporarily adopted to continue analysis | State how and when the assumption will be checked |
-
-Keep the input version, scope, environment, evidence locations, and accountable owner together. Without a run record, deliver analysis, design, or a validation plan—not an execution pass.
-
-## From problem to structured Finding
-
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
-
-### Keep the decision layers separate
-
-For Access decision, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
-
-## A complete case
-
-This case follows Input, Analysis, Finding, Decision, and Validation. When material is incomplete, keep missing, conflicting, or assumptions visible instead of turning them into a pass.
-
-### Input
-
-| Material | What to provide | What to do when it is missing |
-| --- | --- | --- |
-| Permission matrix | Actors, resources, actions, ownership, and context conditions | List missing combinations |
-| State and policy | Draft, approved, archived, and cross-tenant states | Do not flatten state-dependent permissions |
-| Evidence | Decision log, response, resource state, and audit event | A status code without data evidence is incomplete |
-
-Use a request like this:
-
-```text
-Use the authorization-testing Skill.
-
-Task: check whether a project manager can edit their team’s budget but not another department’s approved forecast
-Inputs: [requirements, versions, links, logs, reports, or data paths]
-Scope: [included and excluded objects]
-Unknowns: [missing environment, accounts, data, or permissions]
-Expected output: [risk-ordered findings, evidence status, and next actions]
-
-Audit the inputs first. Separate facts, assumptions, and open questions. Do not claim execution without a run record.
-```
-
-### Analysis
-
-Start with a bounded pass—check whether a project manager can edit their team’s budget but not another department’s approved forecast. Use the same edit request against an owned draft, a peer’s draft, an approved forecast, and an archived record. Compare the decision, response, state mutation, and audit trail for a project manager and a finance administrator.
-
-The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
-
-### Finding
-
-#### Example finding: turn one problem into a handoff
-
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Access decision meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Decision dimension | Example question |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Access decision |
-| Finding | The condition or result for Access decision is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Subject | Which user, service account, or delegated actor makes the request? |
+| Resource | Who owns the record, and which tenant or state contains it? |
+| Action | Is the request reading, editing, exporting, approving, or deleting? |
+| Context | Does approval state, delegation scope, or a policy version change the result? |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+Keep the result as allow, deny, or unknown for each supplied rule. Do not fill an unknown cell with an assumed default.
 
-### Decision
+## Authorization Testing: vary one permission boundary at a time
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+Build comparison cases that change one dimension while holding the others steady:
 
-### Validation
+- Keep the subject and action, then change resource owner or tenant to expose horizontal access.
+- Keep the resource and action, then change privilege level to expose vertical access.
+- Keep the subject and resource, then change the action or record state.
+- Revoke a delegation and compare decisions from existing sessions or caches against the documented propagation window.
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+Trace both permitted and denied requests to server-side enforcement and resulting data changes. A hidden button, successful login, or client-supplied tenant field does not prove an authorization decision. For denials, check that the request created no prohibited state change or side effect.
 
-## How a Finding enters the next stage
+## Worked example: editing a forecast
 
-### Handoff output
+Suppose the supplied rule says a project manager may edit their team’s draft forecast but may not change another department’s approved forecast. Compare those two subject-resource-action cells, then record which policy rule and server-side evidence support each expected outcome.
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Access decision | Allow, deny, or unresolved with policy basis | Actor, resource, action |
-| Bypass finding | Horizontal, vertical, tenant, or state boundary failure | Reproducible condition |
-| Audit action | Log, alert, or policy repair needed | Owner and close condition |
+If the requirement says nothing about archived forecasts or a recently revoked delegate, keep those cells unknown and ask for the governing rule. Do not turn a plausible security expectation into a confirmed vulnerability or a passing result.
 
-Do not write “passed” without a run record, query result, or source artifact. A strong authorization pass holds the actor constant while changing the resource, then holds the resource constant while changing the actor. That is how horizontal and vertical gaps stop hiding behind a single happy-path role.
+## Record an AZT-## finding
 
-### Next-stage route
+For each gap, name the subject, resource, action, context, source rule, trigger, evidence state, expected concern, impact and priority, owner role, close condition, and isolated validation method. Include the denied-request side effects and any revocation timeline that affect the decision.
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+A validation proposal should use redacted data and an authorized isolated environment. This Skill reviews supplied policy and evidence; it does not log into a real system, call live APIs, or read credentials.
 
-## How to prepare better input
+## Related Skills
 
-If the first request contains only a one-line goal, keep the output limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
-
-A richer input changes the answer here because role, object ownership, tenant isolation, action scope, context, denial, and audit must be tied to evidence rather than inferred from a familiar pattern.
-
-## Working with other Skills
-
-- [Authentication Testing](https://inaodeng.com/en/qaskills/authentication-testing/):establishes who the actor is.
-- [API Security Testing](https://inaodeng.com/en/qaskills/api-security-testing/):checks authorization at the API boundary.
-- [Agent Permission Testing](https://inaodeng.com/en/qaskills/agent-permission-testing/):applies permission checks to agent actions.
-
-## Common traps
-
-1. Testing roles without resource ownership.
-2. Treating UI visibility as authorization proof.
-3. Ignoring state transitions after an allowed write.
+- [Authentication Testing](https://inaodeng.com/en/qaskills/authentication-testing/) checks how identity is established.
+- [API Security Testing](https://inaodeng.com/en/qaskills/api-security-testing/) reviews broader API security controls.
+- [Security Testing](https://inaodeng.com/en/qaskills/security-testing/) helps frame the wider security scope.
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the individual Skill:
 
-```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing -g
-```
 
-After installation, invoke it with the `authorization-testing` Skill and attach the real project material.
+Invoke authorization-testing with the policy source, subjects, resources, actions, tenant and ownership rules, and available denial or audit evidence.
 
-## FAQ
+## Source
 
-### Can authorization tests rely on the frontend?
-
-No. The server or policy decision point must enforce the boundary; the UI is only one consumer.
-
-### What if the matrix has an intentional exception?
-
-Record the exception, owner, expiry or review date, and the evidence that makes it deliberate.
-
-The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
-
-## References
-
-### Source Skill and execution contract
-
-The complete execution contract lives in the [Authorization Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing/prompts/authorization-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing) contains the entry point and supporting assets where they exist.
-
-The entry point centers role, object ownership, tenant isolation, action scope, context, denial, and audit. Keep its decision boundary visible and do not turn a static design into an execution claim.
-
-### Reference links
-
-- Authorization Testing prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing/prompts/authorization-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing/prompts/authorization-testing.md)
-
-- Awesome QA Skills: Authorization Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing)
-
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-
-- Authorization Testing details:[https://inaodeng.com/en/qaskills/authorization-testing/](https://inaodeng.com/en/qaskills/authorization-testing/)
+Read the [Authorization Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing/prompts/authorization-testing.md) before use. It defines the AZT-## finding contract and the subject/resource/action matrix with revocation timelines.

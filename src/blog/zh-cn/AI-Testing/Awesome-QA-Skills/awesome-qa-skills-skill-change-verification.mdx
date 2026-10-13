@@ -1,6 +1,6 @@
 ---
 title: "Skill 变更验证：改完以后，原来的约束和示例还有效吗"
-description: "Skill 变更验证 实战：Skill 变更验证，让 Skill 文档经得起复核。包含真实输入要求、示例输出、证据边界、安装方法和常见误区。"
+description: "对照修改前后的触发条件、输出契约、证据要求和代表性任务行为，验证 Skill 变更是否破坏约束。"
 date: 2026-11-11T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,168 +8,56 @@ tags: ["AI 测试", "Agent Skills", "Skill 变更验证"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
+Skill 改一处，影响可能不止措辞：触发范围、输入要求、输出字段、限制条件和失败处理都可能改变。Skill 变更验证从实际 diff 出发，为受影响的行为选择检查，并明确证据能支持什么结论。它不会把配置检查说成运行时证明。
 
-Skill 文本改了一句，可能改变智能体的触发条件、边界或输出方式。验证不能只看文档是否通顺，还要确认行为契约没有被悄悄改坏。
+## 先按改动面选择检查
 
-变更验证 Skill 在代表性任务上对照预期与观察到的行为，让更新对用户负责。
+根据实际改动文件及其消费者分类。即使跑了全量检查，也要单独覆盖本次改动触及的路径。
 
-本文以一次 Skill 修改为例，说明如何验证触发边界、输出契约和评测表现。
+| 改动范围 | 最少考虑的证据 | 证据能支持的结论 |
+| --- | --- | --- |
+| 入口、元数据、链接或目录 | 相关静态与结构检查；适用时检查独立安装副本 | 包结构有效、引用资源可解析；未验证实际行为 |
+| Prompt、流程或输出契约 | 实际运行成功、缺材料和边界用例，并保留 judge 结果 | 仅限已运行的用例、版本、宿主和环境 |
+| 解析、生成或安装脚本 | 原故障回归、有效对照，以及目标格式或工具执行 | 仅限实际覆盖的路径 |
+| 发布建议 | 变更证据、版本、残余风险和授权决策记录 | AI 建议与正式批准分别报告 |
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构和通用安装方式见[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)，本文只讲 Skill 变更验证。
+证据等级也要分开写：**Static** 检查文件和 frontmatter；**Structural** 检查配对、索引和 Eval 结构；**Configuration** 检查 `skill-up validate` 这类配置；**Evaluation** 记录实际 `skill-up run`、选中用例、运行元数据和 judge 结果；**Runtime** 记录 Skill 或 Prompt 在目标宿主上的实际行为；**Human review** 负责语义和风险判断。配置命令成功不代表 Evaluation 或 Runtime 已完成。
 
-## 先看源 Skill
+## 示例：修改 Skill 的触发描述
 
-主提示词把工作拆成“证据等级、变更分类、已执行检查、未执行检查、可以声称”几个部分。这些标题只是导航，真正使用时还要回到项目材料。
+假设改动目标是让某个 Skill 用于 API 兼容性审查。先记录新旧版本与实际 diff，再用固定请求集验证：一条属于兼容性审查的请求、一条相邻的 API 任务，以及一条无关请求。如果宿主可以观察 Skill 选择结果，也要保存选择记录和最终输出。若新指令依赖接口规范或版本，再加入缺少这些材料的用例。
 
-这个 Skill 没有单独示例目录，文中的片段根据入口、主提示词和评测约束整理而成。
+如果只检查了 frontmatter 并运行 `skill-up validate`，报告配置检查结果，同时把 Evaluation 和 Runtime 标为 `NOT_RUN`。没有对应运行和人工决策时，不要声称触发变准、Skill 已可靠，或改动可以用于生产。
 
-## 评审结果要能定位
+## 让报告可以复核
 
-本例验证一次 Skill 修改是否改变触发边界、输出契约、示例结果或评测表现。
+保留所选命令、版本、环境、Eval 用例、原始输出和 judge 状态。每个未执行的检查都写明原因及留下的风险。超时、认证缺失、过滤掉相关用例或 judge 失败，都不能当作全套通过。
 
-“内容不够好”没法行动。下面这种写法更有用。
-
-| 严重度 | 位置 | 发现 | 修复建议 |
-| --- | --- | --- | --- |
-| P0 | 触发边界 | 新描述会误触发相邻 Skill | 加入应触发与应拒绝的正反例 |
-| P1 | 输出契约 | 字段、状态或失败条件发生漂移 | 固定结构定义，并保留迁移说明 |
-
-每条发现都要指向具体位置。没有位置、影响和修法的意见，先别塞进评审报告。
-
-## 看一处修改前后
-
-以“验证一次 Skill 修改是否改变触发边界、输出契约、示例结果或评测表现”为例，评审前的写法常常只有一句宽泛要求。
-
-```text
-修改前：检查输出质量，确保结果准确完整。
-
-修改后：每条结论必须包含 source、status 和 owner。
-找不到来源时标记 assumption；没有运行记录时 status 不得写 passed。
+```markdown
+# 验证报告
+## 变更分类
+## 已执行检查
+| 命令 | 证据等级 | 结果 |
+## 未执行检查
+| 项目 | 原因 | 风险 |
+## 可以声称
+## 不能声称
+## 残余风险
 ```
 
-这样既能测试，也能在失败时定位具体字段。围绕“证据等级”和“变更分类”评审时，我会再查三件事：触发条件有没有误伤相邻任务，输入缺失时是否降级，示例是否偷偷承诺了工具没有执行的事情。
+明确写 `NOT_RUN` 能让下一位审查者看到未知项，不会把配置检查的绿灯误读成行为证明。
 
-### 修完以后怎么复核
+## 按任务交接
 
-| 复核对象 | 方法 | 通过信号 |
-| --- | --- | --- |
-| 触发边界 | 跑旧请求、新请求和相邻请求 | 旧行为保持，新增行为有明确依据 |
-| 输出契约 | 用完整、缺字段和冲突输入试跑 | 字段、状态和阻塞条件可预测 |
-| 评测样例 | 重跑应通过、应拒绝和边界用例 | 结果变化有差异说明和来源 |
-| 同步范围 | 检查中英文与引用链接 | 相关版本一起更新，无孤立链接 |
+若改动本身存在歧义或规则冲突，先看 [Skill 文案契约审查](/zh-cn/qaskills/skill-prose-review/)；若本次任务是清理过程残留，使用[过程性文案清理](/zh-cn/qaskills/skill-prose-trim/)。完成获准的编辑后，再用 Skill 变更验证检查相应契约和示例是否仍成立。
 
-## 一段可以直接改的调用词
-
-把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
-
-```text
-请使用 skill-change-verification Skill。
-
-任务：验证一次 Skill 修改是否改变触发边界、输出契约、示例结果或评测表现
-版本与环境：[需求版本 / 构建号 / 环境]
-输入材料：[文件路径或链接]
-范围：[本次包含与排除的业务链路]
-限制：[账号、数据、时间、合规要求]
-
-逐条给出位置、严重度、影响和修改建议。区分契约缺失、事实错误和个人偏好，修改后附复核方法。
-最后列出待确认问题，不要补写材料里没有的事实。
-```
-
-第一次调用先看结构和缺口，补齐材料后再生成正式产物，可以少一些来回修改。
-
-## 进阶使用，从一次调用走到持续流程
-
-把典型问题变成回归样例。每次修改这个 Skill 后，同时跑应通过、应拒绝和缺失输入三组检查，评审结论才不会只停在文字层。
-
-### 三段式 Skill 链
-
-`skill-prose-review` → `skill-change-verification` → `discover-testing`
-
-| 交接 | 传递内容 | 接收方检查 |
-| --- | --- | --- |
-| 上游到 skill-change-verification | 来源版本、范围、风险和未决问题 | 输入是否过期，冲突是否标记 |
-| skill-change-verification 到下游 | 主产物、证据索引、未完成项 | 产物能否继续执行，负责人是否明确 |
-| 下游回写 skill-change-verification | 运行结果、缺陷和新风险 | 是否更新 Skill 变更验证基线与回归范围 |
-
-不要把三次输出复制进一个大提示词。这个 Skill 只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
-
-### 放进团队流程的门禁
-
-| 门禁 | 建议检查 | 失败动作 |
-| --- | --- | --- |
-| skill-change-verification 输入门禁 | 版本、环境、负责人、来源可访问 | 停止流程并列出缺口 |
-| skill-change-verification 产物门禁 | 关键结论带依据和状态 | 退回补证据 |
-| skill-change-verification 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
-| skill-change-verification 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
-
-团队可以每个迭代周期统计这个 Skill 的采用率、人工修改率、无依据结论数和失败定位时间。目标由团队自己定，先连续记录几轮再谈阈值。
-
-## 评审时保留原文和证据
-
-先引用位置，再写问题。区分契约缺失、表达问题和个人偏好。证据等级 相关的问题应说明会导致什么行为漂移。修完以后重新检查，不要只把措辞改得更顺。
-
-## 相关 Skill
-
-Skill 变更验证需要同时检查文案、示例和实际行为：
-
-- [Skill 文案契约审查](https://inaodeng.com/zh-cn/qaskills/skill-prose-review/)：检查承诺、边界、优先级和证据要求。
-- [Skill 文案清理](https://inaodeng.com/zh-cn/qaskills/skill-prose-trim/)：删除过程噪声，保留可执行约束。
-- [测试报告](https://inaodeng.com/zh-cn/qaskills/test-reporting/)：留存运行命令、结果和未完成项。
-
-## 交付前复核：把判断落到证据
-
-拿到 Skill 输出后，先核对四件事：输入版本是否明确，范围是否完整，每条结论能否回到证据，下一步由谁执行。少一项，报告就容易变成漂亮的猜测。
-
-| 项目 | 需要留下 | 缺失时 |
-| --- | --- | --- |
-| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
-| 证据索引 | 日志、报告、链路追踪、截图或命令输出 | 标记 `evidence_pending` |
-| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
-| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
-
-```text
-source_version: [版本或提交]
-scope: [本次包含和排除的对象]
-evidence: [日志、报告、Trace 或命令输出]
-status: pending
-owner: [负责人]
-next_action: [最小验证动作]
-```
-
-分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，否则下一次复核时无法解释结论为何变化。
-
-## 安装与调用
-
-安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
+安装命令：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification -g
 ```
 
-调用时直接写“请使用 skill-change-verification Skill”，然后附上真实材料。
-
-## 常见问题
-
-### 评审发现一定要全部修改吗？
-
-不需要。先看严重度和契约影响。纯偏好问题可以不改，但要记录选择。
-
-### 文案变短就代表更好吗？
-
-不代表。触发条件、输入、输出和风险边界不能被一起删掉。
-
-### 什么时候需要人工复核？
-
-涉及范围取舍、风险接受、发布决定或材料冲突时必须由负责人确认。
-
-### 输出怎么留档？
-
-保存输入版本、Skill 输出、人工修改和最终证据。只留最后一份文档，很难解释结论怎么来的。
-
-先拿一份真实材料跑 Skill 变更验证，保留输入、输出和复核意见。文中的片段只能帮你搭起结构，真正的项目证据仍要在项目中产生。
-
 ## 参考
-- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- Awesome QA Skills 系列总览:[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- Awesome QA Skills：Skill 变更验证 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
-- Skill 变更验证 Skill 详情页:[https://inaodeng.com/zh-cn/qaskills/skill-change-verification/](https://inaodeng.com/zh-cn/qaskills/skill-change-verification/)
+
+- [Skill 变更验证源文件、Prompt 与 Eval](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification)
+- [本站 Skill 变更验证目录](/zh-cn/qaskills/skill-change-verification/)

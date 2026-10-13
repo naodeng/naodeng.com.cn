@@ -1,6 +1,6 @@
 ---
 title: "提示注入测试 Skill：智能体遇到恶意输入时，越权和外泄怎么验"
-description: "提示注入测试实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
+description: "用文档、网页和工具输出等对抗输入，验证指令边界、数据保密与高权限操作防护。"
 date: 2026-10-24T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,155 +8,39 @@ tags: ["AI 测试", "Agent Skills", "提示注入测试"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
+提示注入测试检查不可信文本是否会越过应用的指令层级、暴露受保护数据或触发未授权工具动作。这是针对获准环境的防御性测试计划，不代表可以攻击真实系统或使用敏感数据。
 
-提示注入不是只出现在恶意文本里的安全问题；外部文档、网页和工具输出都可能试图改变模型的优先级。测试要证明系统能守住指令和数据边界。
+## 先定义信任边界和安全范围
 
-提示注入测试 Skill 使用对抗输入和可观察防护，验证不受信任内容不能改道高权限操作。
+收集系统提示词、可信与不可信来源、检索路径、工具权限、敏感资产类别、安全策略和禁止操作。材料缺失时先列当前假设和待确认问题，再设计用例。使用安全占位数据，并在沙箱或 mock 中验证。
 
-本文以不受信任的文本、网页和工具输出为切入点，说明如何验证指令与数据边界。
-
-## 提示注入测试 Skill 用来做什么
-
-提示注入测试适合把智能体接入文档、网页、工具或敏感数据的安全团队。它把攻击入口、工具边界、数据暴露和修复复测放在一条证据链里。
-
-## 先回到源 Skill
-
-这个 Skill 的完整执行规则在 [提示注入测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing/prompts/prompt-injection-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
-
-它要求特别注意：
-
-- 仅在授权环境使用安全占位数据
-- 不提供可用于真实攻击的敏感目标
-- 验证拒绝后是否仍有副作用
-
-## 用一份项目材料开始
-
-先把现有材料列出来。缺口可以保留，但状态要说清楚。
-
-| 材料 | 这次填什么 | 缺失时的处理 |
+| 输入来源 | 要验证的问题 | 应保留的证据 |
 | --- | --- | --- |
-| 目标与范围 | 在授权沙箱中验证检索型智能体对直接和间接提示注入、数据外泄与越权工具调用的防护 | 标出不在本轮判断内的链路 |
-| 版本与环境 | 模型版本、工具白名单、检索数据集、沙箱权限和测试窗口 | 未隔离真实数据时停止攻击验证 |
-| 证据 | 攻击载荷、提示链、工具调用、访问日志和外泄样本 | 没有原始调用记录时不判断越权成立 |
-| 决策边界 | 可测试工具、允许数据、停止条件和安全负责人 | 每个攻击场景写回滚与清理动作 |
+| 用户直接输入 | 不可信内容是否改变高优先级指令或越出任务范围？ | 输入 ID、提示词版本、回答和拒绝状态 |
+| 检索到的文档或网页 | 嵌入其中的指令能否跨越来源边界？ | 来源 ID、检索轨迹、生成的动作 |
+| 工具输出 | 返回结果能否引导后续调用越权？ | 工具响应、下一次调用参数、授权结果 |
+| 多轮上下文 | 已拒绝的指令会不会延续到后续轮次？ | 轮次 ID、记忆状态、后续工具调用 |
 
-可以这样调用：
+## 同时验证拒绝和副作用
 
-```text
-请使用 prompt-injection-testing Skill。
+为直接与间接注入、指令层级、数据暴露、工具滥用、编码混淆、多轮持久化、检测与恢复建立攻击用例集。每个用例都写明获准的前置条件、刺激输入、预期行为和所需证据。
 
-任务：在授权沙箱中验证检索型 Agent 对直接和间接提示注入、数据外泄与越权工具调用的防护
-输入材料：[版本、链接、日志或报告路径]
-范围：[本次包含和排除的对象]
-限制：[时间、数据、权限、合规要求]
+如果应用已经拒绝请求，却仍然执行写入或发送数据，那么只看拒绝文本还不够。在 mock 或获准沙箱中记录阻断后状态是否保持不变、是否尝试过工具调用，以及系统如何说明停止原因。测试输入中不要放真实凭据或敏感目标信息。
 
-先审计输入，再按风险和证据强度排序。材料没有证明的内容标为假设，并列出验证方法。
-```
+## 按风险排序，控制结论边界
 
-## 提示注入测试要证明边界真的挡得住
+按项目影响分级排序已确认风险；把假设与实际观察分开，并列出未覆盖项。可用的交接材料包括威胁模型、攻击用例 ID、安全断言、证据、缓解建议和回归用例。这个 Skill 帮助组织验证工作，不会证明整个应用已经安全。
 
-| 产物 | 要回答的问题 | 最低证据 |
-| --- | --- | --- |
-| 攻击向量 | 恶意指令从哪里进入上下文 | 用户输入、文档、网页或工具结果 |
-| 工具边界 | 智能体是否被诱导越权调用 | 工具策略、拒绝记录和审计日志 |
-| 数据暴露 | 哪些秘密或跨租户数据可能泄露 | 脱敏样例、资源归属和响应 |
-| 修复证明 | 防护改动是否抵挡变体攻击 | 原始攻击、改写攻击和复测结果 |
+模型行为和任务质量见[LLM 测试](/zh-cn/qaskills/llm-testing/)；工具权限和副作用见[智能体工具调用测试](/zh-cn/qaskills/agent-tool-testing/)；更广的防护控制见[安全测试](/zh-cn/qaskills/security-testing/)。
 
-没有安全隔离和攻击样例时，只能提出威胁假设，不能宣称注入防护有效。
-
-## 在项目里跑一轮
-
-先从一个边界清楚的小回合开始：在授权沙箱中验证检索型智能体对直接和间接提示注入、数据外泄与越权工具调用的防护。别急着把结果写成报告。先把输入版本、时间窗口和负责人贴到同一处；然后把每个判断连回具体材料；最后只安排一项能改变结论的验证动作。
-
-测试数据必须安全占位，拒绝后的副作用和多轮持久化同样需要验证。这一轮至少要留下可复查的证据索引、仍然成立的假设，以及下一位同事可以直接执行的动作。
-
-
-## 进阶使用：把一次分析变成持续机制
-
-每次提示注入测试都保存攻击载荷、模型版本、工具策略和数据范围。防护规则变化后，复测原始载荷和同义、编码、多轮变体，并记录拒绝或泄露证据。
-
-### 三段式 Skill 链
-
-`prompt-testing` → `prompt-injection-testing` → `agent-tool-testing`
-
-| 交接 | 传递内容 | 接收方要检查什么 |
-| --- | --- | --- |
-| 上游到 prompt-injection-testing | 来源版本、范围、风险、未决项 | 输入是否过期，冲突是否标记 |
-| prompt-injection-testing 到下游 | 判断、证据索引、残余风险、待办 | 产物是否可执行，负责人是否明确 |
-| 下游回写 prompt-injection-testing | 执行结果、缺陷、事实变化 | 是否更新基线与回归范围 |
-
-交接时同时传摘要、证据索引和原始材料的位置。这样即使结论出了问题，也能回到来源。
-
-### 团队门禁
-
-| 门禁 | 检查内容 | 未满足时 |
-| --- | --- | --- |
-| prompt-injection-testing 输入门禁 | 版本、环境、证据来源和负责人 | 停止生成，列出缺口 |
-| prompt-injection-testing 产物门禁 | 关键结论带依据、状态和影响 | 退回补证据 |
-| prompt-injection-testing 执行门禁 | 命令、查询或验证路径可复现 | 标记基础设施或测试问题 |
-| prompt-injection-testing 决策门禁 | 残余风险有接受人与日期 | 不进入下一阶段 |
-
-## 容易踩的坑
-
-1. 只测直接指令，漏掉文档、网页和工具结果带来的间接注入。
-2. 看到一次拒绝就宣布安全，没有测试改写、编码和多轮攻击。
-3. 在真实生产数据上测试，扩大了不必要的暴露面。
-4. 只记录模型回复，不记录工具调用和数据访问结果。
-
-## 相关 Skill
-
-提示注入测试要和模型行为、工具权限及整体安全评估一起看：
-
-- [LLM 测试](https://inaodeng.com/zh-cn/qaskills/llm-testing/)：检查拒答、事实和输出约束。
-- [智能体工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：验证注入后是否发生越权工具调用。
-- [安全测试](https://inaodeng.com/zh-cn/qaskills/security-testing/)：补充攻击面、可利用性和修复验证。
-
-## 交付前复核：把判断落到证据
-
-拿到 Skill 输出后，先核对四件事：输入版本是否明确、范围是否完整、每条结论能否回到证据、下一步由谁执行。缺一项，报告就容易变成漂亮的猜测。
-
-| 项目 | 需要留下 | 缺失时 |
-| --- | --- | --- |
-| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
-| 证据索引 | 日志、报告、追踪记录、截图或命令输出 | 标记 `evidence_pending` |
-| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
-| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
-
-```text
-source_version: [版本或提交]
-scope: [本次包含和排除的对象]
-evidence: [日志、报告、Trace 或命令输出]
-status: pending
-owner: [负责人]
-next_action: [最小验证动作]
-```
-
-分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，否则下一次复核时无法解释结论为何变化。
-
-## 安装与调用
-
-安装这个 Skill：
+安装命令：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing -g
 ```
 
-安装后，直接使用上面的 `prompt-injection-testing` 调用词，并附上本次的真实材料。
-
-## 常见问题
-
-### 输入还不完整，能开始吗？
-
-能。先交付受限初版：列出已知事实、假设、缺口和最小验证动作。环境、数据或权限缺失时，不写执行结论。
-
-### 什么时候需要人工确认？
-
-范围取舍、风险接受、生产操作、数据权限和发布决定必须由对应负责人确认。Skill 负责整理证据与选项，不替团队做授权决定。
-
-先用一份真实材料跑通提示注入测试，并把输入、产物、人工修改和验证证据留在同一条工作链上。这样下一次发生变化时，才有东西可以复用。
-
 ## 参考
-- 提示注入测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing/prompts/prompt-injection-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing/prompts/prompt-injection-testing.md)
-- Awesome QA Skills：提示注入测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing)
-- Awesome QA Skills GitHub 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- 提示注入测试 Skill 详情页:[https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/](https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/)
+
+- [提示注入测试 Prompt](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/prompt-injection-testing/prompts/prompt-injection-testing.md)
+- [提示注入测试源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/prompt-injection-testing)
+- [本站提示注入测试目录](/zh-cn/qaskills/prompt-injection-testing/)

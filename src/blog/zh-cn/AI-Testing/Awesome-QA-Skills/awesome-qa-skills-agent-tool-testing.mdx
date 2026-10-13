@@ -1,6 +1,6 @@
 ---
 title: "智能体工具调用测试 Skill：退款工具被调用时先看权限和副作用"
-description: "智能体工具调用测试实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
+description: "从工具选择、参数、权限和副作用验证智能体调用，并检查失败后的恢复与安全停止。"
 date: 2026-10-25T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,155 +8,40 @@ tags: ["AI 测试", "Agent Skills", "Agent 工具调用测试"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
+智能体工具调用测试关注 Agent 与工具之间的边界：是否选对工具、参数是否符合契约、调用者是否有权限、失败后能否安全恢复，以及证据能否追溯。最终回答看起来正确，并不能证明工具调用过程安全。
 
-智能体调用工具时，危险不在于它能否发出请求，而在于它是否选择了正确工具、传递了正确参数，并在失败后安全地停下。
+## 把每次调用当作契约检查
 
-智能体工具测试 Skill 将工具契约、权限、状态变化和恢复路径视为一次受控交互来验证。
+先看工具 schema、路由规则、权限模型、沙箱和可用轨迹。每个场景都写明前置条件、刺激动作、预期行为和所需证据。
 
-本文围绕订单查询、退款和通知工具，说明如何把权限、参数和副作用接回证据。
-
-## 智能体工具调用测试 Skill 用来做什么
-
-智能体工具调用测试适合维护智能体工具目录、权限策略和写操作的 QA 与平台团队。它把一次调用拆成契约、授权、副作用和恢复四类证据，方便在真正接入生产工具前发现危险路径。
-
-## 先回到源 Skill
-
-这个 Skill 的完整执行规则在 [智能体工具调用测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
-
-它要求特别注意：
-
-- 默认只使用模拟对象、模拟运行或隔离环境
-- 未经授权不得执行真实写操作
-- 重试测试必须验证重复副作用
-
-## 用一份项目材料开始
-
-先把现有材料列出来。缺口可以保留，但状态要说清楚。
-
-| 材料 | 这次填什么 | 缺失时的处理 |
+| 边界 | 检查重点 | 可用证据 |
 | --- | --- | --- |
-| 目标与范围 | 验证智能体调用订单查询、退款和通知工具时的参数边界、权限、幂等性与副作用 | 标出不在本轮判断内的链路 |
-| 版本与环境 | 智能体、工具接口定义、模型版本、沙箱账号和数据快照 | 工具权限未隔离时不执行副作用动作 |
-| 证据 | 工具调用参数、授权结果、幂等键、写入记录和错误响应 | 没有调用链时只评估设计边界 |
-| 决策边界 | 可调用工具、敏感参数、回滚方式和安全负责人 | 每个副作用动作写人工接管条件 |
+| 工具选择 | 工具是否符合请求；请求有歧义时是否先澄清或安全停止 | 请求、候选工具、路由轨迹 |
+| 参数 | 必填字段、类型、范围和对象标识是否符合 schema | 工具 schema、序列化参数、校验结果 |
+| 授权 | 当前角色是否能对这个资源或租户执行此动作 | 角色与策略快照、允许或拒绝结果 |
+| 重试与恢复 | 超时、部分失败和重试是否会重复写入 | 请求 ID、重试轨迹、前后状态 |
+| 结果处理 | 工具错误或部分结果是否被误报为完成 | 响应内容、Agent 轨迹、用户可见回答 |
 
-可以这样调用：
+## 在隔离环境覆盖失败路径
 
-```text
-请使用 agent-tool-testing Skill。
+退款流程只是一个说明性场景，不代表某个具体产品。在 mock 或获准的沙箱中，分别验证允许的请求、超出当前角色权限的请求，以及服务端可能已接收首次调用后发生的超时。确认拒绝请求没有写入；重试状态不确定的请求时，不会重复退款或通知。每轮都保存参数、授权上下文、响应和状态变化。
 
-任务：验证 Agent 调用订单查询、退款和通知工具时的参数边界、权限、幂等性与副作用
-输入材料：[版本、链接、日志或报告路径]
-范围：[本次包含和排除的对象]
-限制：[时间、数据、权限、合规要求]
+默认使用 mock、dry-run 或隔离环境；未经授权不执行真实写操作。按项目分级标准排列影响和可能性，未确认根因标为假设。缺少 schema、策略或运行记录属于输入缺口，不是调用通过的证据。
 
-先审计输入，再按风险和证据强度排序。材料没有证明的内容标为假设，并列出验证方法。
-```
+## 交付可执行的测试计划
 
-## 智能体工具调用测试要交付什么
+结果应让下一位测试人员无需还原整段对话就能继续。写清工具契约矩阵、正常和失败场景、断言、证据位置、阻塞项与残余风险；未完成事项要有负责人和下一步。这个 Skill 可以整理测试计划，但不能替团队创建授权或运行证据。
 
-| 产物 | 要回答的问题 | 最低证据 |
-| --- | --- | --- |
-| 工具契约 | 参数、返回值和错误码是否符合约定 | 接口定义、请求样例和版本 |
-| 授权判断 | 当前智能体是否有权调用这个工具 | 角色、策略和拒绝记录 |
-| 副作用记录 | 重试、写入和外部通知发生了什么 | 请求 ID、数据差异和审计日志 |
-| 恢复动作 | 失败后如何停止、补偿或人工接管 | 模拟运行记录、回滚记录或人工确认记录 |
+若要覆盖更广的任务完成、记忆和停止条件，可看 [AI 智能体测试](/zh-cn/qaskills/ai-agent-testing/)；若要验证检索内容中的对抗指令，可看[提示注入测试](/zh-cn/qaskills/prompt-injection-testing/)；发布后的检查见[生产验证](/zh-cn/qaskills/production-verification/)。
 
-没有授权上下文或副作用记录时，只能交付设计检查，不能写成工具调用已通过。
-
-## 在项目里跑一轮
-
-先从一个边界清楚的小回合开始：验证智能体调用订单查询、退款和通知工具时的参数边界、权限、幂等性与副作用。别急着把结果写成报告。先把输入版本、时间窗口和负责人贴到同一处；然后把每个判断连回具体材料；最后只安排一项能改变结论的验证动作。
-
-每次工具调用都应留下参数、授权上下文、响应和副作用记录。这一轮至少要留下可复查的证据索引、仍然成立的假设，以及下一位同事可以直接执行的动作。
-
-
-## 进阶使用：把一次分析变成持续机制
-
-每次智能体工具调用测试都保存工具版本、授权上下文和请求 ID。工具契约或权限策略变化时，只重跑受影响的调用，并标记 `changed`、`unchanged` 或 `needs-review`。
-
-### 三段式 Skill 链
-
-`ai-agent-testing` → `agent-tool-testing` → `production-verification`
-
-| 交接 | 传递内容 | 接收方要检查什么 |
-| --- | --- | --- |
-| 上游到 agent-tool-testing | 来源版本、范围、风险、未决项 | 输入是否过期，冲突是否标记 |
-| agent-tool-testing 到下游 | 判断、证据索引、残余风险、待办 | 产物是否可执行，负责人是否明确 |
-| 下游回写 agent-tool-testing | 执行结果、缺陷、事实变化 | 是否更新基线与回归范围 |
-
-交接时同时传摘要、证据索引和原始材料的位置。这样即使结论出了问题，也能回到来源。
-
-### 团队门禁
-
-| 门禁 | 检查内容 | 未满足时 |
-| --- | --- | --- |
-| agent-tool-testing 输入门禁 | 版本、环境、证据来源和负责人 | 停止生成，列出缺口 |
-| agent-tool-testing 产物门禁 | 关键结论带依据、状态和影响 | 退回补证据 |
-| agent-tool-testing 执行门禁 | 命令、查询或验证路径可复现 | 标记基础设施或测试问题 |
-| agent-tool-testing 决策门禁 | 残余风险有接受人与日期 | 不进入下一阶段 |
-
-## 容易踩的坑
-
-1. 只验证参数格式，漏掉授权上下文和资源归属。
-2. 用模拟的成功响应替代真实失败、超时和拒绝路径。
-3. 重试写操作却没有检查重复订单、重复通知或重复扣款。
-4. 记录了响应，却没有记录工具调用造成的数据变化。
-
-## 相关 Skill
-
-工具调用测试需要和智能体行为、安全边界及上线后的验证接起来：
-
-- [AI 智能体测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：检查规划、记忆、失败恢复和最终目标是否一致。
-- [提示注入测试](https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/)：验证恶意输入能否诱导越权调用或泄露数据。
-- [生产验证](https://inaodeng.com/zh-cn/qaskills/production-verification/)：把线上业务信号和工具副作用接回发布判断。
-
-## 交付前复核：把判断落到证据
-
-拿到 Skill 输出后，先核对四件事：输入版本是否明确、范围是否完整、每条结论能否回到证据、下一步由谁执行。缺一项，报告就容易变成漂亮的猜测。
-
-| 项目 | 需要留下 | 缺失时 |
-| --- | --- | --- |
-| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
-| 证据索引 | 日志、报告、追踪记录、截图或命令输出 | 标记 `evidence_pending` |
-| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
-| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
-
-```text
-source_version: [版本或提交]
-scope: [本次包含和排除的对象]
-evidence: [日志、报告、Trace 或命令输出]
-status: pending
-owner: [负责人]
-next_action: [最小验证动作]
-```
-
-分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，否则下一次复核时无法解释结论为何变化。
-
-## 安装与调用
-
-安装这个 Skill：
+安装命令：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing -g
 ```
 
-安装后，直接使用上面的 `agent-tool-testing` 调用词，并附上本次的真实材料。
-
-## 常见问题
-
-### 输入还不完整，能开始吗？
-
-能。先交付受限初版：列出已知事实、假设、缺口和最小验证动作。环境、数据或权限缺失时，不写执行结论。
-
-### 什么时候需要人工确认？
-
-范围取舍、风险接受、生产操作、数据权限和发布决定必须由对应负责人确认。Skill 负责整理证据与选项，不替团队做授权决定。
-
-先用一份真实材料跑通智能体工具调用测试，并把输入、产物、人工修改和验证证据留在同一条工作链上。这样下一次发生变化时，才有东西可以复用。
-
 ## 参考
-- 智能体工具调用测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing/prompts/agent-tool-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)
-- Awesome QA Skills：智能体工具调用测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing)
-- Awesome QA Skills GitHub 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- 智能体工具调用测试 Skill 详情页:[https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)
+
+- [智能体工具调用测试 Prompt](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)
+- [智能体工具调用测试源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-tool-testing)
+- [本站智能体工具调用测试目录](/zh-cn/qaskills/agent-tool-testing/)

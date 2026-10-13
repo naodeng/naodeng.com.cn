@@ -1,6 +1,6 @@
 ---
-title: "API Error Contract Testing Skill: Make failure responses predictable for every consumer"
-description: "API Error Contract Testing field guide: validate error envelopes, codes, retryability, field paths, security, and consumer behavior."
+title: "API Error Contract Testing: Check Responses and Meaning"
+description: "Compare error shapes, status and business codes, retry meaning, redaction, and client action against sourced API contracts."
 date: 2026-10-18T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -16,34 +16,27 @@ API Error Contract Testing checks whether failures have stable structure, useful
 
 ## What the Skill does
 
-The API Error Contract Testing Skill is useful when a team needs a structured review of error envelope, code taxonomy, field paths, retryability, redaction, and client handling.
+Build an operation-by-error comparison from supplied schemas, status conventions, code catalogs, authorization rules, logs, and redaction requirements. Match each response to its request and contract version, then separate violations of applicable rules from documented operation exceptions and unresolved rules.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Error Contract Testing.
+Record candidates as `AEC-##` with the subject, preconditions, behavior of concern, source evidence, validation, impact/priority, owner role, and close condition. This is design review; candidate counts are not test coverage.
 
-Use it when the team needs a repeatable review of error envelope, code taxonomy, field paths, retryability, redaction, and client handling—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-A useful result keeps error envelope, code taxonomy, field paths, retryability, redaction, and client handling connected to a source and a verification action. It does not turn a design checklist into a passing result.
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage; the [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model.
 
 ## What it does not do
 
-The API Error Contract Testing Skill can organize material, evidence, and next actions for Error finding. It does not replace:
-
-- Confirmation of rules, scope, and risk by the accountable domain owner.
-- A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
-- Authorization for release, compliance, production actions, or residual-risk acceptance.
-- A Human decision when supplied sources conflict.
+The Skill does not execute requests, invent a status code or retry policy, require unrelated requests to share a correlation ID, or call every response difference a defect. A valid response control and an applicable contract rule are needed before a difference becomes a finding.
 
 ## What it checks
 
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
-
-| Focus | Question before analysis | Handoff output |
+| Contract dimension | Record from the source | Compare in the response |
 | --- | --- | --- |
-| Error finding | Shape, classification, field location, or security problem | Contract source and impact |
-| Consumer action | Retry, correct input, re-authenticate, wait, or stop | Expected decision |
-| Compatibility note | Change that breaks or weakens a client assumption | Migration or version action |
+| HTTP and business classification | Status mapping, business code catalog, and declared exceptions | Status and code pair for this operation and error |
+| Required fields | Required keys, types, nullable rules, and field-path shape | Missing, mistyped, or incorrectly located fields |
+| Correlation | How one request is linked across response and log | Traceability within the interaction; do not compare IDs from unrelated requests |
+| Retry meaning | Which errors allow retry, correction, re-authentication, waiting, or stop | Whether the code and client action match the documented rule |
+| Disclosure | Redaction rules for provider, database, and internal details | Whether response or log exposes restricted details |
 
-If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
+Compare shared rules across operations while retaining sourced exceptions. A different shape is not automatically wrong; it becomes a candidate only when it contradicts a rule that applies to that operation.
 
 ## Audit inputs before you start
 
@@ -62,18 +55,9 @@ Keep the input version, scope, environment, evidence locations, and accountable 
 
 ## From problem to structured Finding
 
-Connect the source, scope, evidence state, analysis, owner, action, close condition, and validation before writing the conclusion. The case below keeps this Skill’s identifier and domain context.
+### AEC-## finding contract
 
-### Keep the decision layers separate
-
-For Error finding, do not compress four different kinds of language into “recommended to pass”:
-
-| Layer | How to write it | Application here |
-| --- | --- | --- |
-| Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
-| Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
-| Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
+Each candidate should name the operation/error pair, applicable contract source and version, preconditions, observed concern, evidence state, impact/priority, owner role, close condition, and the smallest validation method. Keep facts, inferences, recommendations, and Human decisions distinct. A response difference without a sourced rule remains an open question.
 
 ## A complete case
 
@@ -111,31 +95,25 @@ The useful handoff keeps the input version, time window, evidence index, owner, 
 
 ### Finding
 
-#### Example finding: turn one problem into a handoff
+The following is a recording pattern, not an execution result:
 
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Error finding meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
-
-| Field | Example wording |
+| Field | Example |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Error finding |
-| Finding | The condition or result for Error finding is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| ID and subject | `AEC-01` — provider-timeout retry meaning for the checkout operation |
+| Preconditions and concern | The sourced contract labels the condition retryable, but the mobile client stops without the documented action |
+| Evidence state | `UNASSESSED` until the contract version and matching client trace are reviewed |
+| Impact/priority and owner | Explain consumer impact; name API contract and client owners; score only with the project scale |
+| Close condition and validation | Align applicable contract and client behavior, then perform an isolated contract check and retain raw artifacts |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+The source must establish that the rule applies before the difference can be called a defect.
 
 ### Decision
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+The API contract owner confirms whether the rule applies to this operation; the client owner confirms the intended consumer action. Do not resolve conflicting sources by choosing the more familiar response.
 
 ### Validation
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+Match the request, response, log, and contract version for one interaction. Compare a valid control and retain the raw artifacts; do not require correlation IDs from separate requests to match.
 
 ## How a Finding enters the next stage
 
@@ -151,11 +129,11 @@ Do not write “passed” without a run record, query result, or source artifact
 
 ### Next-stage route
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Route unresolved code-catalog, retry, or redaction rules to their owners with the affected operations and source versions attached. Preserve operation-specific exceptions rather than flattening them into a global rule.
 
 ## How to prepare better input
 
-If the first request contains only a one-line goal, the output should stay limited. Add the source version, affected objects, environment, known defects, and decision owner to move from a plausible checklist to a useful review.
+Provide the error schema and code catalog, operation list, contract versions, sample requests and responses, matching logs, client decisions, and redaction policy. If a source is missing, state which part of the comparison cannot yet be judged.
 
 ## Working with other Skills
 

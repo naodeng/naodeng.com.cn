@@ -4,7 +4,7 @@
 
 ## 开始与验证
 
-先查看 `git status --short --branch`，确认本轮范围和已有修改。源码检查、构建输出、线上状态和搜索表现分别记录，不互相代替。
+先查看 `git status --short --branch`，确认本轮范围和已有修改。源码检查、构建输出、线上状态和搜索表现分别记录，不互相代替。博客源码审计也要覆盖 `draft: true` 草稿，检查标题、摘要、双语配对、日期和正文重复或占位内容；构建与 sitemap 则应排除草稿，因此不能用公开路由检查来代替草稿的源码复核。
 
 ```bash
 npm test
@@ -334,6 +334,128 @@ SEO Playwright 两个 spec 共 81 项，因 Chromium 启动时 macOS `MachPortRe
 
 验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误的 Markdown 链接和内容关联错误均为 0，保留 44 条长摘要人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可收录页面和同数 sitemap URL；813 条短摘要仅作相关性人工复核提示。Astro 检查为 0 个错误、0 个警告和 1 个未使用变量 hint；构建检查通过。构建 HTML 确认新摘要与 meta、Open Graph 和 BlogPosting 描述一致，canonical 自指，hreflang 指向该中文页及默认入口。SEO 临时报告已恢复至运行前快照。线上文章返回 HTTP 200 且 canonical 自指，但仍显示旧摘要；本轮修改仅在本地，未提交或部署。域名复核时，`inaodeng.com.cn` 无法解析，`naodeng.com.cn/robots.txt` 返回 HTTP 200 并跳转到 `inaodeng.com`，因此保留仓库配置的 `inaodeng.com` 主域。Search Console 表现与 CWV 未评估；未运行单元测试或 SEO 浏览器测试。
 
+## 2026-10-13 验收测试摘要具体化
+
+对照中文 Acceptance Testing 词条正文，原摘要重复系列介绍，没有指出页面覆盖的验收类型与实施主题。现改为概括 UAT、BAT、Alpha/Beta、合同、法规和运营验收测试，以及验收标准、真实场景、用户反馈、自动化和发布决策；标题、正文、日期与 URL 不变。英文博客目录没有对应文章，因此只更新中文博客。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误的 Markdown 链接和内容关联错误均为 0，保留 44 条长摘要人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可收录页面与同数 sitemap URL；813 条短摘要只是人工相关性复核提示。Astro 检查为 0 个错误、0 个警告和 1 个未使用变量 hint，SEO 构建门禁通过。生成 HTML 中 meta、Open Graph 与 BlogPosting 描述一致，canonical 自指，hreflang 指向实际中文页和默认入口；临时 SEO 报告与运行前快照一致。线上文章返回 HTTP 200、canonical 自指，但仍显示旧摘要；本地修改尚未提交或部署。Drive 搜索没有 Search Console 报告，GSC Wizard 可用但未安装或连接账号，因此点击、展示、CTR、排名未评估；本轮未测量 CWV，也未运行单元测试或 SEO 浏览器测试。
+
+## 2026-10-13 摘要更新上线复核
+
+`main` 与 `origin/main` 当前都在 `ce0cfa31877b2fe9f5d411bea6b4200a6b4a6cb2`。对应的 [Cloudflare 部署工作流](https://github.com/naodeng/naodeng.com.cn/actions/runs/38333734203) 已成功完成。部署后复查 Availability Testing、Backward Compatibility 和 Acceptance Testing 三篇中文博客：均返回 HTTP 200、canonical 自指，meta 与 Open Graph 摘要均已更新为当前内容。此前读到旧摘要的请求发生在部署完成前。
+
+构建后按 sitemap 对 2,537 个 HTML 页面逐页核对：缺失文件、缺失摘要、重复摘要、meta 与 Open Graph 不一致、canonical 非自指及 sitemap 中的 noindex 均为 0。本轮本地 `npm run seo:check:strict` 与 `npm run build` 均通过。GitHub Tests 工作流已完成，单元测试通过，SEO E2E 为 830 项通过、2 项跳过。Drive 搜索未找到 Search Console 报告，GSC Wizard 可用但尚未安装或连接账号，因此点击、展示、CTR 和排名未评估；CWV 未测量。
+
+## 2026-10-13 QA 术语博客摘要细化（二）
+
+继续逐篇核对中文 QA 术语博客，将背靠背测试、无障碍测试和 A/B 测试的系列通用摘要改为页面实际主题：同输入多实现的输出比对与差异分析；WCAG/Section 508、键盘、屏幕阅读器和 ARIA 检查；随机分组、指标与样本量、统计显著性和用户分群。仅改三篇中文页的 description；没有同主题同目录的英文博客对译，标题、正文、日期和 URL 保持不变。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误的 Markdown 链接和内容关联错误均为 0，保留 44 条长摘要人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可收录页面及同数 sitemap URL；813 条短摘要仍只是人工相关性复核提示，SEO 构建门禁通过。构建 HTML 确认三页的 meta、Open Graph 和 BlogPosting 描述与新摘要一致，canonical 自指，hreflang 指向实际中文页和默认入口。SEO 临时报告已按运行前快照恢复。线上三页返回 HTTP 200 且 canonical 自指，仍显示旧摘要；本轮修改仅在本地，未提交或部署。Drive 搜索没有 Search Console 报告，GSC Wizard 尚未安装或连接账号，因此点击、展示、CTR 和排名未评估；CWV 未测量，未运行单元测试或 SEO 浏览器测试。
+
+## 2026-10-13 QA Skills 三组双语摘要细化
+
+根因分析、日志分析和生产验证的中英文博客原先共用同一套系列摘要，无法区分文章重点。按正文分别概括事故时间线与反证实验、结构化日志聚类与数据限制、发布后的业务和技术信号及回滚决策。仅更新六页的 description，标题、正文、日期和 URL 不变。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误的 Markdown 链接和内容关联错误均为 0；58 条长摘要是人工复核提示。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL；792 条 70 字以下摘要仅作相关性复核提示。Astro 检查为 0 个错误、0 个警告和 1 个未使用变量 hint；构建输出代码块的 Shiki 语言标签回退提示，本轮未修改相关正文。首次构建曾报一个未改动的蜕变测试博客临时模块缺失，检查源码与配置无变化；再次完整构建通过，首次错误未能复现。HTML 核对六页的 meta、Open Graph 与 BlogPosting 描述均和源码一致，canonical 自指，`en-US` 与 `zh-CN` 语言链接双向对应。SEO 检查生成的报告已恢复至运行前快照。
+
+本轮摘要修改未提交或部署，线上结果未复核。Search Console 点击、展示、CTR、排名以及 CWV 本轮均未测量。
+
+## 2026-10-13 性能测试 Skills 双语摘要去模板化
+
+性能测试主题下十组中英文博客仍共用两类通用摘要模板。本轮按正文分别概括容量规划、指标异常、瓶颈定位、性能回归、压测结果、性能目标、负载建模，以及 Gatling、JMeter、k6 的具体实践；更新 20 页的 description，标题、正文、日期和 URL 不变。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误的 Markdown 链接和内容关联错误均为 0；58 条长摘要是人工复核提示。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL；792 条 70 字以下摘要仅作相关性复核提示。构建 HTML 逐页核对 20 页的 meta、Open Graph、BlogPosting 描述与源码一致，canonical 自指，`en-US` 与 `zh-CN` 双向对应，且全部进入 sitemap；本组摘要无重复，英文摘要均不超过 155 字符。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint；构建另输出 Shiki 代码块语言标签回退提示，本轮未修改相关正文。SEO 检查生成的报告已恢复至运行前快照。
+
+修改仅在本地，未提交或部署，线上页面未复核。Drive 搜索未找到 Search Console 报告，GSC Wizard 当前未安装，点击、展示、CTR 和排名未评估；CWV 本轮未测量。
+
+## 2026-10-13 UI 自动化 Skills 双语摘要去模板化
+
+Playwright、Puppeteer、WebdriverIO、Cypress、Selenium 和 TestCafe 六组中英文文章共用泛化摘要，未突出各工具的测试证据与工程重点。按正文分别概括稳定定位器和隔离数据、DOM/导航证据、跨浏览器能力和远端日志、网络控制与断言时机、等待和页面边界，以及选择器与浏览器差异；更新 12 页的 description，标题、正文、日期和 URL 不变。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误的 Markdown 链接和内容关联错误均为 0；58 条长摘要是人工复核提示。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL；798 条 70 字以下摘要仅作相关性复核提示。构建 HTML 核对本组 12 页及上一组 20 页：meta、Open Graph、BlogPosting 描述与源码一致，canonical 自指，`en-US` 与 `zh-CN` 双向对应，全部进入 sitemap，描述无重复且英文均不超过 155 字符。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint；构建输出 Shiki 代码块语言标签回退提示，本轮未改相关正文。SEO 检查生成的报告已恢复至运行前快照。
+
+Drive 搜索未找到 Search Console 报告或导出；GSC Wizard 当前可用但未安装，因此点击、展示、CTR 和排名未评估。CWV 本轮未测量。Web 阅读工具对英文文章路径返回缓存未命中或不可访问，本轮未复核线上页面；这不是页面故障证据。修改仅在本地，未提交或部署。
+
+同目录扫描后仍有 100 条通用模板摘要候选（英文 field-guide 模板 20 条、输入/安装模板 34 条；中文对应模板分别 20 条、26 条）。这些只是筛查线索，需逐篇对照正文确认，不直接视为缺陷。
+
+## 2026-10-13 API 自动化 Skills 双语摘要去模板化
+
+Bruno、Pytest、Postman、Supertest、REST Assured、API 测试和 API 契约测试七组中英文博客使用通用摘要，未突出具体验证边界。本轮依据正文分别概括集合版本管理与 CI 一致性、pytest 夹具隔离、Postman 变量和断言、Supertest HTTP 边界、REST Assured 失败诊断、API 契约风险，以及消费者期望驱动的契约示例；更新 14 页 description，标题、正文、日期和 URL 不变。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误的 Markdown 链接和内容关联错误均为 0；58 条长摘要是人工复核提示。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL；799 条 70 字以下摘要仅作相关性复核提示。HTML 核对 14 页的 meta、Open Graph 和 BlogPosting 描述与源码一致，canonical 自指，`en-US` 与 `zh-CN` 双向对应，全部进入 sitemap，摘要无重复且英文不超过 155 字符。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint；构建另输出 Shiki 代码块语言标签回退提示，本轮未修改相关正文。SEO 检查生成的报告已恢复至运行前快照。
+
+Drive 对 Search Console、GSC 和 Google Search Performance 的搜索均无结果；GSC Wizard 可用但未安装，因此点击、展示、CTR 和排名未评估。CWV 本轮未测量。修改仅在本地，未提交或部署，线上页面未复核。
+
+同目录更新后仍有 88 条完全匹配通用模板的摘要候选：英文 field-guide 模板 19 条、输入/安装模板 28 条；中文分别 19 条、22 条。需继续逐篇对照正文确认，不直接视为缺陷。
+
+## 2026-10-13 大模型与提示词测试双语摘要具体化
+
+LLM 评测设计、LLM 测试和提示词测试三组中英文博客沿用宽泛的 field-guide 摘要。本轮依据正文，分别概括代表性任务集、评分量表与评审器校准；事实准确性、引用、拒答、隐私、时延、成本及随机输出复测；以及提示词变更、多轮样本、量表评分和版本回归。仅更新六页的 description，标题、正文、日期和 URL 不变；相似但未来发布日期的草稿页暂不修改。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误链接和内容关联错误均为 0；58 条长摘要是人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可收录页面及同数 sitemap URL；799 条 70 字以下摘要仅作人工相关性复核提示。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint，SEO 构建门禁通过。构建 HTML 核对六页的 meta、Open Graph、BlogPosting 摘要与源码一致，canonical 自指，`en-US`/`zh-CN` hreflang 相互对应，均在 sitemap 中；摘要互不重复，英文均不超过 155 字符。构建生成的三份 SEO 临时报告已恢复至运行前的干净版本。
+
+Drive 对 Search Console、GSC 和 Google Search Performance 的搜索无结果；插件目录显示 GSC Wizard 可用但尚未安装，因此点击、展示、CTR 和排名未评估，CWV 未测量。本轮仅本地修改，未提交、部署或复核线上页面。
+
+继续扫描后，该目录还有 82 条模板句式候选：英文 field-guide 16 条、输入/安装 28 条，中文 field-guide 16 条、输入/安装 22 条。它们是待逐篇检查的线索，并非自动判定为缺陷。
+
+## 2026-10-13 测试策略与报告双语摘要具体化
+
+测试策略、测试策略加强版、测试报告、测试报告评审、测试用例评审及加强版六组已发布中英文博客使用通用输入/安装摘要。本轮按正文改写为项目范围与质量门禁、来源版本与材料冲突、发布风险与责任人、报告证据审计、用例覆盖及跨来源高风险缺口；更新 12 页 description，其他内容不变。
+
+验证结果：`npm run seo:check:strict` 与 `npm run build` 均通过；缺失标题/摘要、重复标题、坏链及错误关联均为 0，58 条长摘要和 799 条短摘要仍是人工复核提示。构建生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL；Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint。HTML 核对本组 12 页及上一组 6 页的 meta、Open Graph、BlogPosting 描述、canonical、双向 hreflang 和 sitemap；均通过，摘要无重复且英文不超过 155 字符。三份 SEO 临时报告已恢复至运行前的干净版本。
+
+本轮后同目录仍有 70 条模板句式候选：英文 field-guide 16 条、输入/安装 22 条，中文 field-guide 16 条、输入/安装 16 条。它们仍需结合正文逐页判断。Drive 对 Search Console 相关关键词搜索无结果，GSC Wizard 可用但未安装，搜索表现数据未评估；CWV 未测量。修改仅在本地，未提交或部署。
+
+## 2026-10-13 风险与回归分析双语摘要具体化
+
+变更影响分析、质量风险分析、回归范围分析、回归测试选择和不稳定测试分析五组已发布中英文博客共用 field-guide 摘要。本轮按正文说明变更后的依赖与重验证范围、风险触发条件及其证据、回归覆盖取舍，以及偶发失败的分类和处置；仅更新十页的 description。
+
+验证结果：`npm run seo:check:strict` 与 `npm run build` 均通过；缺失标题/摘要、重复标题、坏链及错误关联为 0，58 条长摘要和 799 条短摘要仍作人工复核提示。构建生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL，SEO 构建门禁通过。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint；构建日志有 8 条现存 Shiki 代码块语言标签回退提示，未涉及本轮修改。HTML 核对本轮五组及前两轮九组，共 28 页：meta、Open Graph、BlogPosting 描述与源码一致，canonical 自指，双向 hreflang 和 sitemap 均正确；摘要无重复，英文最长 150 字符。三份 SEO 临时报告已恢复至运行前的干净版本。
+
+本轮后同目录仍有 60 条模板句式候选：英文 field-guide 11 条、输入/安装 22 条，中文 field-guide 11 条、输入/安装 16 条；这些仍是待结合正文判断的线索。Drive 未找到 Search Console 报告，GSC Wizard 可用但未安装；点击、展示、CTR、排名未评估，CWV 未测量。修改仅在本地，未提交或部署。
+
+## 2026-10-13 需求分析与验收标准摘要及开场修订
+
+验收标准评审、需求缺口分析、可测试性分析和需求分析四组已发布中英文文章的摘要仍沿用通用模板。本轮依照正文分别概括验收条件歧义、需求与接口规则缺口、可观察性和测试阻塞，以及会员升级需求中的冲突和未知项；更新八页的 description。另发现前三篇英文正文共用同一段偏离主题的开场，且重复一句话，已按各页实际问题替换为主题明确的介绍。中文对应页的开场已有具体内容，因此保留；标题、日期和 URL 不变。
+
+验证结果：`npm run seo:check:strict` 与 `npm run build` 均通过。缺失标题/摘要、重复标题、坏链、格式错误链接和错误关联均为 0；58 条长摘要与 799 条短摘要是人工复核提示。构建生成 2,819 个 HTML 页面、2,537 个可收录页面及同数 sitemap URL，SEO 构建门禁通过；Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，构建另输出 8 条既有 Shiki 代码块语言标签回退提示。构建 HTML 核对八页的 meta、Open Graph、BlogPosting 描述、canonical、双向 hreflang 和 sitemap，均与源码一致；摘要无重复，英文不超过 155 字符。三份 SEO 临时报告已恢复至运行前的干净版本。
+
+本轮后同目录还剩 52 条模板句式候选：英文 field-guide 8 条、输入/安装 21 条，中文 field-guide 8 条、输入/安装 15 条，仍需结合正文判断。Drive 未找到 Search Console 报告；GSC Wizard 可用但未安装，因此搜索表现未评估，CWV 未测量。本轮改动仅在本地，未提交或部署。
+
+## 2026-10-13 跨角色质量视角双语摘要细化
+
+多角色质量汇总、产品质量、QA 质量、技术质量、UX 质量和项目交付六组文章的英文摘要仍沿用输入/安装模板。根据正文的支付回调、会员升级和结账示例，分别概括多方证据冲突、用户与业务结果、覆盖与残余风险、架构及运行后果、体验恢复路径，以及范围与依赖取舍；更新 12 页中英文 description，并保持语言间事实对应。
+
+验证结果：`npm run seo:check:strict` 与 `npm run build` 通过，缺失标题/摘要、重复标题、坏链、格式错误和错误关联均为 0；58 条长摘要及 799 条短摘要仍是人工复核提示。构建生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL，SEO 构建门禁通过。Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，另有 8 条既有 Shiki 代码块语言标签回退提示。HTML 核对本组 12 页及上一组 8 页：meta、Open Graph、BlogPosting、canonical、双向 hreflang 和 sitemap 均通过；摘要无重复，英文最长 151 字符。三份 SEO 临时报告已恢复至干净版本。
+
+本轮后同目录还有 46 条模板句式候选：英文 field-guide 8 条、输入/安装 15 条，中文 field-guide 8 条、输入/安装 15 条；逐篇判断仍在继续。Drive 搜索没有找到 Search Console 报告，GSC Wizard 可用但未安装，点击、展示、CTR、排名未评估；CWV 未测量。本轮修改仅在本地，未提交或部署。
+
+## 2026-10-13 测试流程双语摘要细化
+
+日常测试、迭代测试、发布测试和陌生项目测试技能探索四组文章仍使用通用摘要。本轮依据正文分别概括日终测试交接、迭代阶段及证据、候选版本发布交接，以及陌生项目入口与风险梳理；更新八页中英文 description，标题、正文、日期和 URL 不变。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误链接和错误关联均为 0，58 条长摘要保留作人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可收录页面及同数 sitemap URL；800 条短摘要仍是相关性人工复核提示。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint；构建另有 8 条 Shiki 语言标签回退提示。HTML 核对八页的 meta、Open Graph、BlogPosting、canonical、双向 hreflang 和 sitemap 均通过；摘要无重复，英文为 123–134 字符。三份 SEO 临时报告已恢复至构建前版本。
+
+本轮后同目录还有 38 条模板摘要候选：英文 field-guide 8 条、输入/安装 11 条，中文 field-guide 8 条、输入/安装 11 条；仍需逐篇对照正文确认，模板匹配本身不代表缺陷。Drive 搜索未找到 Search Console 报告，GSC Wizard 可用但尚未安装或连接账号，因此点击、展示、CTR 和排名未评估；CWV 未测量。本轮修改仅在本地，未提交或部署。
+
+## 2026-10-13 测试与安全 Skills 双语摘要细化
+
+AI 辅助测试、自动化测试、缺陷上报、测试代码审查、手动与探索性测试、移动端测试、测试用例编写加强版和安全测试八组已发布中英文博客共用输入/安装类摘要。本轮依据正文分别概括 AI 生成测试的真实性与证据审查、自动化候选和维护成本、缺陷复现材料、断言与隔离风险、探索会话证据、移动端状态变化、多来源版本追踪，以及安全风险排序和复测证据；更新 16 页 description，其他字段和正文不变。
+
+验证结果：`npm run seo:check:strict` 与 `npm run build` 均通过。缺失标题/摘要、重复标题、坏链、格式错误链接和错误关联均为 0，58 条长摘要仍是人工复核提示。构建生成 2,819 个 HTML 页面、2,537 个可收录页面及同数 sitemap URL；800 条短摘要仍需人工判断相关性。Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，另有 8 条既有 Shiki 语言标签回退提示。HTML 核对本组 16 页及上一组 8 页，共 24 页：meta、Open Graph、BlogPosting 描述、canonical、双向 hreflang 和 sitemap 均通过；摘要无重复，英文均不超过 155 字符。三份 SEO 临时报告已恢复至运行前版本。
+
+本轮后按现有模板分类还剩 22 条摘要候选：英文 field-guide 8 条、输入/安装 3 条，中文各对应 8 条和 3 条。剩余输入/安装模板已逐页确认只在三组中英未来草稿中出现，均标记 `draft: true`，本轮未修改。Drive 对 Search Console、GSC 和 Google Search Performance 的检索均无结果，当前可用工具中也没有直接 GSC 查询入口；点击、展示、CTR 和排名未评估，CWV 未测量。本轮仅本地修改，未提交或部署。
+
+## 2026-10-13 Awesome QA Skills 博客与草稿摘要去模板化
+
+依据正文重写分布式链路分析、PR 测试影响分析、生产事故分析和测试数据生成四组已发布文章的中英文摘要；本轮继续按用户要求，把四组未来草稿（智能体工具调用、AI 智能体、AI 功能、提示注入测试）和三组 Skill 文案草稿（变更验证、文案契约审查、文案精简）也纳入处理，共更新 11 组双语 description。草稿仍保留 `draft: true` 和原发布日期，所有页面的标题、正文和 URL 不变。英文摘要均不超过 155 字符且同语言描述不重复。
+
+本轮清除此前记录的两类精确通用模板候选：英文 field-guide 与输入/安装模板各 0 条，中文对应模板各 0 条。这一结果只覆盖这两类已跟踪句式，不代表所有摘要都已完成人工复核。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误链接及内容关联错误均为 0；58 条长摘要仍是人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可收录页面及同数 sitemap URL；SEO 构建检查通过，800 条 70 字以下摘要仍是相关性复核提示。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint；构建另有 8 条 Shiki 代码块语言标签回退提示。HTML 核对四组已发布文章的八页，meta、Open Graph、BlogPosting 描述、canonical、双向 hreflang 和 sitemap 均正确；14 个草稿路由没有进入公开构建或 sitemap。
+
+当前没有可用的 Search Console 表现数据，点击、展示、CTR 和排名未评估；本轮未测量 CWV。改动仅在本地，未提交或部署。
+
 ## 官方参考
 
 - [Google：管理多语言页面](https://developers.google.com/search/docs/specialty/international/localized-versions)
@@ -343,3 +465,260 @@ SEO Playwright 两个 spec 共 81 项，因 Chromium 启动时 macOS `MachPortRe
 - [Google：创建和提交 sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 - [Astro：sitemap 的 serialize 配置](https://docs.astro.build/en/guides/integrations-guide/sitemap/#serialize)
 - [Google：站点链接搜索框已退出搜索结果](https://developers.google.com/search/blog/2024/10/sitelinks-search-box)
+
+
+## 2026-10-13 Awesome QA Skills 正文重复与双语内容对齐
+
+在 12 篇已发布英文 Skill 文章中发现同一段通用开场；其中六篇质量视角文章还复用了相同的示例表、角色分析和 FAQ，与各自中文版的会员升级、项目交付、技术回调、结账回归、产品规则和 UX 状态内容不符。本轮把 12 篇英文开场改成主题具体的案例摘要，并重写六篇质量视角英文正文，使案例、流程、证据边界和 FAQ 与中文版主题对应。六篇非角色视角文章的中文通用开场也改为逐篇概述；修正技术质量视角中文证据表的列分隔符。标题、日期、URL、现有安装说明和源 Skill 链接保留。
+
+按用户要求，继续核验此前已优化的七组未来草稿：14 个中英文源文件仍标记为草稿，发布日期不变，构建输出和 sitemap 均不包含这些草稿；本轮没有发现相同的正文通用段落出现在草稿中。草稿摘要的去模板处理记录见上一节。
+
+验证结果：npm run seo:check:strict 与 npm run build 均通过。SEO 源码检查的缺失标题、缺失摘要、重复标题、坏链、格式错误链接、legacy 相对链接及错误内容关联均为 0；58 条长摘要和构建检查中的 800 条短摘要仍是人工复核提示。构建生成 2,819 个 HTML 页面、2,537 个可收录页面及同数 sitemap URL；Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint，构建另有 8 条既有 Shiki 代码块语言标签回退提示。对 12 组双语路由共 24 个构建页核对 meta、Open Graph、BlogPosting 描述、canonical、成对 hreflang 和 sitemap，均通过。构建产生的三份 SEO 临时报告已恢复到运行前版本。
+
+本轮没有可用的 Search Console 表现数据，因此点击、展示、CTR 和排名未评估；CWV 未测量。公开页面和索引尚未因本地修改而更新；本轮未提交或部署。
+
+## 2026-10-13 Postman 教程开场去重与未来草稿摘要复核
+
+中文 Postman 入门教程曾复用《接口测试简介》中的 API 定义、类型和步骤开场；英文对应页也以泛化的 API 测试介绍起头。本轮改为围绕 Postman collection 项目搭建、请求和测试脚本、环境配置及 Newman 执行与报告展开，并链接到独立的接口测试概览。同步更新中英文 meta description，保持标题、日期和 URL 不变。
+
+按用户要求将草稿纳入 SEO 检查：核对 69 组中英文 `draft: true` 博客，共 138 个源文件；标题和摘要齐全且无重复，双语发布日期一致，69 篇正文首段均不重复。两条超过 155 字符的英文摘要已精简；中文摘要虽低于 70 字符但内容完整，未为满足字符数而填充。草稿标记和日期均保留，构建输出及 sitemap 中没有这 138 个草稿路由。
+
+验证结果：`npm run seo:check:strict` 和 `npm run build` 通过。严格检查中的缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和错误内容关联均为 0；58 条长摘要仍需人工判断。构建生成 2,819 个 HTML 页面、2,537 个可收录页面及 2,537 个 sitemap URL，SEO 构建门禁通过；800 条短摘要仍是长度提示，不代表内容失败。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量提示，构建另有 8 条既有 Shiki 语言标签回退提示。对 Postman 教程和接口概览的四个中英文构建页核对 meta、Open Graph、BlogPosting、canonical、双向 hreflang 与 sitemap；新开场和内部链接已渲染，重复的 API 定义已从教程中移除。三份 SEO 临时报告已恢复至运行前版本。
+
+当前没有可用的 Search Console 数据，点击、展示、CTR 和排名未评估；CWV 未测量。改动仅在本地，未提交或部署。
+
+## 2026-10-13 CI/CD 教程开场与摘要差异化
+
+首段扫描发现 Pytest、REST Assured、SuperTest 三组中英文 CI/CD 教程复用同一句泛化开场；Gatling 中英文教程也用“以 GitHub Actions 为例”的空泛句子开头。本轮依照实际工作流改为说明 Pytest 的 Python 依赖、触发条件和报告产物，REST Assured 的 Gradle/Maven 与 Allure，SuperTest 的 Mocha/Jest，以及 Gatling 的 Gradle/Scala 与 Maven。同步将 REST Assured 和 SuperTest 的双语 meta description 改为具体工作内容，并把 Pytest 英文摘要从 186 字符收紧到 128 字符。各页标题、发布日期、正文步骤和 URL 保持不变。
+
+验证结果：`npm run seo:check:strict` 通过；缺失标题/摘要、重复标题、坏链、格式错误链接、legacy 相对链接和错误关联均为 0，长摘要人工复核提示由 58 条降至 57 条。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL，SEO 构建检查通过；801 条短摘要仍是人工相关性复核提示。Astro 检查为 0 个错误、0 个警告和 1 个既有未使用变量 hint；8 条 Shiki 语言回退提示仍来自无关旧代码块。构建 HTML 核对四组双语共 8 页：新首段已渲染，meta、Open Graph、BlogPosting 描述、canonical、成对 hreflang 与 sitemap 均通过。临时 SEO 报告已恢复至本轮运行前快照。
+
+线上 Pytest 英文和中文页面均返回 HTTP 200，仍显示旧开场；本轮修改仅在本地，尚未部署。Drive 搜索 “Search Console” 返回空结果，当前可用工具没有 GSC 查询入口；点击、展示、CTR、排名未评估，CWV 未测量。
+
+## 2026-10-13 QA Skills 草稿摘要去模板化
+
+按用户补充要求，将未发布草稿也纳入本轮维护。复核博客中 138 个 `draft: true` 源文件，共 69 组中英文配对：标题与摘要齐全且各语言内唯一，配对发布日期一致，正文首段没有精确重复。16 篇英文 QA Skills 草稿虽各自概括了不同主题，但摘要都以 “A bilingual guide to…” 起头；依据正文所述任务改为直接说明读者可以评估、检查或设计什么。对应中文摘要已具体且与英文主题相符，因此保留。标题、正文、日期、URL 和草稿标记均未改动。该处理遵循 Google 关于摘要准确描述具体页面、避免重复或相似描述的建议；Google 不规定固定长度上限（[Google 搜索摘要指南](https://developers.google.com/search/docs/appearance/snippet)）。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接及内容关联错误均为 0；57 条长摘要仍是人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面和 2,537 个 sitemap URL；801 条短摘要仍需结合内容人工复核。Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，另有 8 条既有 Shiki 语言标签回退提示。逐条核对 69 组双语草稿，138 个预期博客路由均未生成且不在 sitemap 中；英文重复开头现为 0。检查期间更新的三份临时 SEO 报告已恢复到运行前干净版本，`git diff --check` 通过。
+
+当前没有可用的 Search Console 表现数据，点击、展示、CTR 和排名未评估；CWV 未测量。改动仅在本地，未提交或部署。
+
+## 2026-10-13 UI 测试最佳实践摘要去套话
+
+复核中文 UI Testing Best Practice 系列后，发现 10 篇摘要反复使用“这篇博文……读者将学到……”等介绍句，未直接呈现文章中的验证方法。按正文分别概括邮件字段与邀请流程、测试状态隔离和不稳定结果、从端到端测试入门、条件等待与文件命名、测试作为行为文档、React 用例可读性、UI 集成与后端 E2E 分工、测试层级取舍、Cypress 的浏览器调试，以及 Percy/Applitools 视觉回归示例。其余同系列摘要已有具体方法，保留不动。仓库没有这些文章的英文对译源文件，因此本轮只更新中文摘要；标题、正文、日期、URL 和发布状态不变。摘要应准确、独特地描述页面内容；Google 不规定固定长度上限（[Google 搜索摘要指南](https://developers.google.com/search/docs/appearance/snippet)）。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和内容关联错误均为 0；57 条长摘要仍是人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面及 2,537 个 sitemap URL；811 条 70 字以下摘要是相关性复核提示，本轮 10 条已结合正文逐篇核对，没有为长度要求填充。Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，另有 8 条既有 Shiki 语言标签回退提示。核对 10 个构建页面的 meta、Open Graph、BlogPosting 描述、自指 canonical、zh-CN hreflang 和 sitemap，均通过；没有指向不存在英文对译页的 alternate。三份检查生成的 SEO 临时报告已恢复到运行前干净版本，`git diff --check` 通过。
+
+线上复核：`naodeng.com.cn` 根域返回 301 并跳转至 `inaodeng.com`；正式站点的 `robots.txt`、sitemap index 和 sitemap 分片均返回 HTTP 200。线上 sitemap 有 2,537 个唯一 URL，全部使用正式主机名且不带查询参数或片段。本轮三次 Drive 检索（Search Console、Google Search Performance、GSC）均无结果，当前工具列表没有 Search Console 查询入口；点击、展示、CTR、排名未评估，CWV 未测量。改动仅在本地，未提交或部署。
+
+## 2026-10-13 QA Skills 分析类摘要差异化
+
+四组已发布中英文 QA Skills 文章——测试数据需求、测试维护成本、测试有效性和测试套件健康——的摘要都以 “A bilingual guide to analyzing…” / “双语指南，围绕…分析” 开头。依据正文开场与检查范围，把八条摘要改为直接说明各文的判断任务与输入证据：数据实体与准备约束、维护成本与置信度、测试信号与漏检边界、运行历史与套件健康风险。两种语言保持事实对应；标题、正文、发布日期、URL 和发布状态均未改变。更新符合 Google 对页面级摘要应具体、各自有别的建议；不按固定字符长度机械删改（[Google 搜索摘要指南](https://developers.google.com/search/docs/appearance/snippet)）。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和内容关联错误均为 0；57 条长摘要仍是人工复核提示。`npm run build` 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面和 2,537 个 sitemap URL；811 条 70 字以下摘要为相关性复核提示，不代表硬错误。Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，另有 8 条既有 Shiki 代码块语言回退提示。核对这四组共八个构建页的 meta、Open Graph、BlogPosting、canonical、互相返回的 en-US/zh-CN hreflang 和 sitemap，均与源码一致。检查生成的三份 SEO 临时报告已恢复到运行前内容；`git diff --check` 通过。
+
+线上复核确认正式站 `robots.txt`、sitemap index 和 sitemap 分片返回 HTTP 200；sitemap 含 2,537 个唯一 URL，主机名、查询参数和片段检查均无异常。当前 Drive 中没有 Search Console 报告，工具列表也没有直接 GSC 查询入口；点击、展示、CTR 和排名未评估，CWV 未测量。改动仅在本地，未提交或部署。
+
+## 2026-10-13 双语草稿摘要占位符清理
+
+按用户要求把未发布草稿纳入持续 SEO 维护。复核 138 个 `draft: true` 博客源文件，共 69 组中英文配对：标题与摘要齐全、各语言内唯一，配对发布日期一致。摘要扫描发现中文 API 安全测试摘要含 `AST-##`，中文技术设计复核摘要含 `TD-##`；编号格式在正文中是有意的输出约定，但不适合直接出现在搜索摘要中。本轮同步改写 API 安全测试的中英文摘要，说明其证据来源、对象授权与输入检查，以及待授权的验证场景；另改写技术设计复核中文摘要，使其概括 ADR、组件设计、数据流、约束与验证动作。标题、正文、日期、URL 和 `draft: true` 均保留。复查所有草稿摘要后，没有其他编号、TODO 或 TBD 占位符。
+
+验证结果：`npm run seo:check:strict` 通过；博客 566 篇，缺失标题/摘要、重复标题、坏链、格式错误链接、legacy 相对链接和错误内容关联均为 0，57 条长摘要仍是人工复核提示。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面和同数 sitemap URL；SEO 构建检查通过，811 条短摘要仍需结合页面判断相关性。Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，构建另有 8 条既有 Shiki 语言回退提示。全量确认 138 个草稿路由均未进入构建输出或 sitemap。三份本次检查生成的 SEO 临时报告已恢复到运行前版本，`git diff --check` 通过。Search Console 表现数据未评估，CWV 未测量；本轮修改仅在本地，未提交或部署。
+
+## 2026-10-13 AI 测试文章摘要精简
+
+线上英文页面 HTTP 200，canonical 和中英文 hreflang 正常，但其 291 字符 meta description 将文章开场与来源说明连续拼在一起，主旨埋在较长叙述中。对照中英文正文，将两边摘要统一收束为 AI 承担重复测试、人负责需求理解、风险发现、证据判断与团队协作，并保留 Lewis Prescott 分享及 ATDD/BDD 主题。英文摘要从 291 字符缩至 155 字符；中文摘要也相应精简。标题、正文、日期、URL 和发布状态不变。
+
+验证结果：`npm run seo:check:strict` 与 `npm run build` 均通过。缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和错误关联均为 0，56 条长摘要仍是人工复核提示。构建生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL；Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，另有 8 条既有 Shiki 语言标签回退提示。构建 HTML 核对中英文对应页的 meta、Open Graph、BlogPosting 描述、canonical、成对 hreflang 和 sitemap 均正确；更新后的两条摘要与源码一致。三份临时 SEO 报告已恢复到运行前版本，`git diff --check` 通过。Search Console 表现数据未评估，CWV 未测量；改动仅在本地，未提交或部署。
+
+## 2026-10-13 QA Skills 英文长摘要精简
+
+在线抽查五组双语 QA Skills 已发布页面，10 个 URL 均返回 HTTP 200、自指 canonical 和正确的双向 hreflang。英文摘要长 228–258 个字符，而对应中文摘要为 72–81 个字符，且已具体描述相同任务。本轮仅精简英文摘要，分别概括需求冲突与证据风险、订单流程场景、验收标准到用例、测试策略评审发现，以及结账流程中的可访问性问题；英文摘要现在为 146、151、154、150 和 153 个字符。中文摘要内容准确且简洁，因此保留；标题、正文、日期、URL 和发布状态不变。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和错误关联均为 0，长摘要人工复核提示从 56 条降至 51 条。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL；Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，构建另有 8 条既有 Shiki 语言回退提示。逐页核对 10 个构建页的 meta、Open Graph、BlogPosting 描述、自指 canonical、互相返回的 en-US/zh-CN hreflang 和 sitemap，均与源码一致。三份检查生成的 SEO 临时报告已恢复到运行前版本，`git diff --check` 通过。Search Console 表现数据未评估，CWV 未测量；本轮仅本地修改，未提交或部署。
+
+## 2026-10-13 四篇 AI 测试文章英文摘要精简
+
+线上核对 Awesome QA Skills 更新、dsh-qa 与 DeepSeek Harness 兼容性、陌生系统测试及 AI 测试信号与噪音四组双语文章；八个 URL 均返回 HTTP 200，自指 canonical 和英中 hreflang 正常。四条英文摘要长 199–235 个字符，集中列出多个主题。本轮根据正文分别概括项目演进能力、404 兼容修复、陌生系统测试起步方法，以及过滤 AI 测试噪音所需的上下文、评测、指标和人工判断；英文摘要改为 155、152、147、150 个字符。中文摘要已具体、较短且涵盖相同主旨，因此保留；标题、正文、日期、URL 和发布状态不变。
+
+验证结果：`npm run seo:check:strict` 通过，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和错误关联均为 0，长摘要人工复核提示从 51 条降至 47 条。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面及同数 sitemap URL；Astro 检查为 0 个错误、0 个警告和 1 个既有 hint，另有 8 条既有 Shiki 语言标签回退提示。构建 HTML 核对八个页面的 meta、Open Graph、BlogPosting 描述、自指 canonical、互相返回的 en-US/zh-CN hreflang 和 sitemap，均通过。三份临时 SEO 报告已恢复到运行前版本，`git diff --check` 通过。Search Console 报告和查询入口仍不可用，点击、展示、CTR、排名未评估；CWV 未测量。本轮修改仅在本地，未提交或部署。
+
+## 2026-10-13 SuperTest 教程摘要收束
+
+线上抽查 SuperTest 入门与数据驱动教程的中英文页面，四页均返回 HTTP 200，canonical 自指、hreflang 成对；当时英文摘要仍为 198 和 185 字符。根据各篇实际内容，将入门页英文摘要改为概括 SuperTest 与 Jest/Mocha、Chai、请求示例、依赖和示例目录结构，并同步调整中文描述以准确反映正文；数据驱动页英文摘要改为概括外置请求数据与预期响应、参数化输入及验证步骤，中文摘要保留。两条英文摘要现在为 143 和 150 字符。摘要以短而相关的页面概述为目标，不将固定字数当作硬门槛（[Google 搜索摘要指南](https://developers.google.com/search/docs/appearance/snippet)）；标题、正文、日期、URL 与发布状态不变。
+
+验证结果：`npm run seo:check:strict` 通过，博客源码扫描 566 篇，缺失标题/摘要、重复标题、坏链和错误关联均为 0，长摘要人工复核项从 47 条降为 45 条。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面和同数 sitemap URL；Astro 检查 0 错误、0 警告、1 个既有未使用变量 hint，另有 8 条既有 Shiki 语言回退提示。构建 HTML 核对四页 meta、Open Graph、BlogPosting 描述、canonical、三条 hreflang 和 sitemap 均与源码一致；138 个草稿路由未进入构建或 sitemap。`git diff --check` 通过，临时 SEO 报告已恢复为运行前版本。
+
+Search Console 三组 Drive 检索均无结果，当前没有直接查询入口；点击、展示、CTR 和排名未评估，CWV 未测量。线上页面尚未反映本轮本地摘要改动；未提交或部署。
+
+## 2026-10-13 Skill Eval 文章英文摘要精简
+
+线上中英文 Skill Eval 设计文章均返回 HTTP 200，自指 canonical 和三条 hreflang 正常；英文摘要与源码一致，但末尾“让结果有用”没有补充页面信息。将英文摘要从 174 字符收紧为 143 字符，保留成功标准、可执行 Eval Case、Judge、运行元数据、轨迹、产物和限制；中文摘要已准确概括相同内容，因此保持不变。标题、正文、日期、URL 和发布状态不变。按 Google 指南，摘要应简短且相关，Google 按需截断摘要而不规定固定长度（[Google 搜索摘要指南](https://developers.google.com/search/docs/appearance/snippet)）。
+
+验证结果：`npm run seo:check:strict` 通过，博客源码扫描 566 篇，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接及内容关联错误均为 0；45 条摘要长度提示仍供人工复核。`npm run build` 通过，生成 2,819 个页面、2,537 个可收录页面和同数 sitemap URL；Astro 为 0 错误、0 警告、1 个既有未使用变量 hint，另有 8 条既有 Shiki 语言回退提示。构建 HTML 中中英文页的 meta、Open Graph、BlogPosting 描述、canonical、hreflang 和 sitemap 均正确；138 个草稿仍未进入构建或 sitemap。`git diff --check` 通过，生成的三份 SEO 临时报告已恢复至运行前版本。
+
+本轮再次检索 Search Console、Google Search Performance 和 GSC，Drive 均无结果，且当前没有直接查询工具；点击、展示、CTR、排名未评估，CWV 未测量。线上英文页仍显示旧摘要；本轮修改仅在本地，未提交或部署。
+
+## 2026-10-13 QA Skills 设计类草稿正文差异化
+
+继续将未发布草稿纳入 SEO 维护。全量扫描 138 个 draft: true 博客源文件，共 69 组英中配对：标题和摘要存在且各语言内唯一，配对日期一致；未发现 TODO/TBD 等占位符、空图片替代文本、重复 H2 或页内重复的长段落。源码层面确认此前处理的 Skill 工程、工具调用、AI Agent、AI 功能和提示注入草稿仍为草稿。
+
+本轮依据 Awesome QA Skills 的源 Skill 与提示词重写三组设计类草稿的双语正文：可观测性设计复核聚焦信号语义、跨服务关联、隐私、采样和告警动作；质量仪表盘设计聚焦受众决策、指标分子/分母、新鲜度、下钻和缺失值状态；质量门禁设计聚焦单项决策、PASS/FAIL/BLOCKED/UNKNOWN、例外、失效动作和回滚。各文保留独立标题、摘要、日期、URL 和草稿状态，避免用同一套泛化的评审、发现与交接段落填充主题内容。三篇英文稿之间的本地词汇 Jaccard 复核信号现为 0.226–0.291；该数值只是内部文本筛查启发式，不是 Google 指标或政策判定。Google 对规模化内容的政策判断涉及内容是否主要为操纵排名而生成、是否帮助用户；词汇相似度本身不足以作出违规结论（[Google Spam Policies](https://developers.google.com/search/docs/essentials/spam-policies)）。
+
+其他已处理的 QA Skills 草稿组包括 Skill 变更验证、Skill 正文审查、Skill 精简，以及 Agent 工具、AI Agent、AI 功能和提示注入测试。本轮也为后续维护保留了高词汇相似度复核队列，优先项包括依赖故障与熔断器测试、错误处理复核与依赖故障测试。该队列用于逐篇对照各自源 Skill，不能单凭分数批量改写。
+
+验证结果：npm run seo:check:strict 通过；博客源码 566 篇，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接及内容关联错误均为 0，45 条长摘要仍需人工判断。npm run build 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面和 2,537 个 sitemap URL；SEO 构建检查通过，811 条短摘要仍是相关性人工复核提示。Astro 检查为 0 错误、0 警告和 1 个既有未使用变量提示；构建的三份临时 SEO 报告已恢复为运行前内容。额外核对 138 个草稿路由，构建 HTML 和 sitemap 均未包含这些草稿。Playwright 的 SEO 与 SEO 完整性规格共 81 项均因本机 Chromium 启动时报 macOS MachPortRendezvousServer Permission denied 而未能执行；这是浏览器运行环境阻塞，不是页面断言结果。git diff --check 通过。
+
+Search Console 点击、展示、CTR 和排名本轮未评估；CWV 未测量。修改仅在本地，未提交或部署。
+
+## 2026-10-13 依赖故障与熔断器草稿正文区分
+
+对照 Awesome QA Skills 的英文和中文源 Skill、提示词及交付契约，重写依赖故障测试和熔断器测试两组双语草稿正文。依赖故障测试现在聚焦同步/异步失败分类、部分副作用、超时后的未知提交、重试安全性、对账与补偿，并用 DPF-## 保留调用方/依赖/副作用证据；熔断器测试聚焦失败计数窗口、阈值来源、closed/open/half-open 转移、探测并发、本地拒绝及兜底，并用 CBR-## 和逐事件状态表描述验证准备。两篇分别链接重试与恢复相关内容；标题、摘要、日期、URL 和 draft: true 保留。
+
+同一内部词汇 Jaccard 启发式显示，两篇英文稿从改写前 0.712 降至 0.258。该分数仅用于找出需要人工对照源材料的草稿，不代表 Google 的重复内容或垃圾内容判定。
+
+本轮重新检索 Drive 中的 Search Console、Google Search Performance 和 GSC，均无结果；点击、展示、CTR、排名未评估，CWV 未测量。复核 138 个 draft: true 博客源文件、69 组双语配对：无缺失配对、日期差异、缺少标题/摘要、重复标题、占位符、空图片替代文本、重复 H2 或页内重复长段落。改写后本地词汇筛查的下一批候选包括授权测试与多智能体测试、LLM 幻觉测试与一致性测试、故障转移与灾难恢复、API Schema 验证与版本兼容；分数用于审阅排序，不据此自动改写。
+
+验证结果：npm run seo:check:strict 通过；博客源码 566 篇，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和内容关联错误均为 0，45 条长摘要是人工复核提示。npm run build 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面和 2,537 个 sitemap URL，SEO 构建检查通过；811 条短摘要仍是相关性复核提示。Astro 检查为 0 错误、0 警告和 1 个既有 hint。重新核对 138 个草稿路由，HTML 与 sitemap 均为 0 条；检查生成的三份 SEO 临时报告已恢复到运行前版本，git diff --check 通过。
+
+改动仅在本地，未提交或部署。
+
+## 2026-10-13 授权测试与多智能体草稿正文差异化
+
+依据 Authorization Testing 与 Multi-Agent Testing 的中英文源 Skill 和执行提示词，重写两组双语草稿正文。授权测试聚焦主体/资源/动作/上下文矩阵、租户和所有权边界、服务端拒绝、副作用及撤权传播；多智能体测试聚焦任务与消息 ID、父级委派、共享状态版本、原子所有权、部分失败对账、ACK 和停止传播。各文使用各自的 AZT-## 或 MAT-## 发现字段，并增加对应内部内容链接。标题、摘要、日期、URL 和 draft: true 保留。自然地把主题词放在正文开头及相应 H2，不按关键词密度机械填充。
+
+同一内部词汇 Jaccard 筛查中，授权测试与多智能体测试从改写前 0.699 降至 0.242。该值只用于优先人工内容复核；不代表 Google 搜索指标，也不单独构成政策判断。
+
+本轮三次 Drive 搜索（Search Console、GSC performance、Google Search Performance）均无结果。点击、展示、CTR、排名未评估，CWV 未测量。全量复核 138 个 draft: true 博客源文件、69 组双语配对：无缺失标题/摘要、重复标题、缺失配对、日期差异、占位符、空图片替代文本、重复 H2 或页内重复长段落。当前本地词汇筛查的下一批高相似候选为 LLM 幻觉与一致性测试、故障转移与灾难恢复、API Schema 验证与版本兼容；仍需逐篇对照源 Skill，不据分数自动改写。
+
+验证结果：npm run seo:check:strict 通过；博客源码 566 篇，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接及内容关联错误均为 0，45 条长摘要为人工复核提示。npm run build 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面及 2,537 个 sitemap URL，SEO 构建检查通过；811 条短摘要仍是相关性人工复核提示。Astro 检查为 0 错误、0 警告和 1 个既有 hint。138 个草稿路由均未生成 HTML 或进入 sitemap。线上 robots.txt、sitemap index、sitemap 分片和 /en/、/zh-cn/ 均返回 HTTP 200；两种首页 canonical 和 en-US/zh-CN/x-default hreflang 与预期一致。线上 sitemap 的 2,537 个 URL 唯一，全部使用正式主机名且无查询参数或片段。构建生成的三份 SEO 临时报告已恢复为运行前版本，git diff --check 通过。
+
+改动仅在本地，未提交或部署。
+
+## 2026-10-13 LLM 幻觉与一致性测试草稿正文区分
+
+依照 Awesome QA Skills 的英中文源 Skill 与 Prompt，重写 LLM 幻觉测试和 LLM 一致性测试两组草稿正文。幻觉测试文章逐条核对声明与来源，使用源契约的 SUPPORTED、CONTRADICTED、MISSING_SOURCE、UNASSESSABLE 状态；把引用存在、可访问、相关及能否支持声明分开检查，并说明缺少支持不等于证明编造。没有适当真值和代表性样本时，只提供验证计划，不报告事实准确率。
+
+一致性测试文章要求记录样本、模型/提示词/工具/数据版本、temperature、供应商支持时的 seed 和项目给定重复次数；先查结构约束，再按 rubric 判断语义；逐样本保留分母、结构与语义失败、偶发失败。删去原稿里无来源的“运行 20 次”与“30 天变成 60 天”例子，不自定重复次数、方差公式或阈值。两种语言各自保留完整内容，并链接相关 Skill 页面及对应执行 Prompt。标题、摘要、日期、URL 和 draft: true 未改。
+
+内部词汇 Jaccard 筛查中，两篇英文草稿从改写前 0.692 降至 0.247。该分数只用于发现需要人工复核的正文相似，不是 Google 指标，也不单独代表搜索政策结论。
+
+全量复核 138 个 draft: true 博客源文件、69 组双语配对：标题和摘要齐全、语言内不重复，配对日期一致；没有缺失配对、TODO/TBD/FIXME、少于三个 H2、重复 H2 或页内重复长段落。所有 138 个草稿路由在本次构建中均未生成 HTML，也没有出现在 sitemap。
+
+验证结果：npm run seo:check:strict 通过，扫描 452 个 Wiki、234 个 AI Wiki 和 566 篇博客；缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接及关联错误均为 0，45 条长摘要仍供人工复核。npm run build 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面及 2,537 个 sitemap URL；Astro 检查为 0 错误、0 警告和 1 个既有 hint，另有 8 条既有 Shiki 语言标签回退提示；811 条短摘要只作相关性人工复核。构建生成的三份 SEO 临时报告已恢复到运行前内容，git diff --check 通过。
+
+本轮 Search Console、GSC performance 和 Google Search Performance 的 Drive 检索均无结果；点击、展示、CTR 和排名未评估，CWV 未测量。下一批候选为故障转移与灾难恢复、API Schema 验证与版本兼容；仍须先对照各自源 Skill 再处理。修改仅在本地，未提交或部署。
+
+## 2026-10-13 故障恢复、API 契约与智能体草稿差异化
+
+依据 Awesome QA Skills 的中英文 Skill 和 Prompt，重写六个主题共 12 篇 draft: true 草稿正文：故障切换、灾备测试、API Schema 校验、API 版本兼容性、智能体记忆测试和智能体权限测试。原 frontmatter、标题、摘要、日期、URL 与草稿状态保留，并使用各自对应的中英文 Skill 页面及执行 Prompt。
+
+故障切换聚焦主备触发、旧主隔离、写入权、路由、账本冲突和切回；灾备聚焦合同定义的灾难范围、备份/恢复证据、跨区依赖、业务就绪以及有来源的 RTO/RPO 计算。明确说明切换可以是灾备步骤，但不能证明完整恢复。Schema 校验对照指定方言、引用上下文、请求/响应样例，以及缺字段、null、约束和引用状态；API 版本兼容性则评估适用的旧/新客户端与服务端组合、消费者实际容忍度、弃用、迁移与回滚。智能体记忆测试追踪记忆版本、来源、时效、租户隔离与删除传播；智能体权限测试核对主体/委派链、工具与资源范围、参数、授权时效、拒绝及副作用证据。各稿将候选设计与实际执行分开，不声称运行时测试或全量覆盖。
+
+英文稿的内部词汇 Jaccard 筛查值分别从 0.690 降至 0.316（故障切换/灾备）、从 0.688 降至 0.304（Schema/版本兼容）、从 0.685 降至 0.350（智能体记忆/权限）。该词汇筛查只用于人工复核排序，不是 Google 指标或内容政策判定。
+
+全量复核 138 个 draft: true 博客源文件、69 组中英文配对：标题与摘要齐全且各语言内唯一，配对日期一致；无缺失配对、TODO/TBD/FIXME、少于三个 H2、重复 H2、空图片替代文本或页内重复长段落。当前构建未生成这 138 个路由的 HTML，也没有把它们放入 sitemap。
+
+验证结果：npm run seo:check:strict 通过；扫描 452 个 Wiki、234 个 AI Wiki 和 566 篇博客，缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和关联错误均为 0，45 条长摘要保留为人工复核提示。npm run build 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面及 2,537 个 sitemap URL；Astro 检查为 0 错误、0 警告和 1 个既有 hint，另有 8 条既有 Shiki 语言回退提示；811 条短摘要继续作为相关性人工复核项。构建生成的三份 SEO 临时报告已恢复至运行前内容，git diff --check 通过。
+
+本轮重新检索 Drive 中的 Search Console、GSC performance 和 Google Search Performance，均无结果；点击、展示、CTR 与排名未评估，CWV 未测量。下一轮英文草稿词汇筛查候选为韧性测试与恢复测试、跨浏览器测试与认证测试、自动化 ROI 与质量债务分析；这些分数只用于选择后续逐篇核对源 Skill 的对象。改动仅在本地，未提交或部署。
+
+## 2026-10-13 韧性与恢复测试草稿职责边界
+
+依据 Resilience Testing 和 Recovery Testing 的中英文源 Skill 与 Prompt，重写两组双语草稿正文。韧性测试聚焦扰动前/中/后的功能与数据不变量、正常/降级/不可用状态、可暂停功能，以及回退、隔离、恢复和补偿的完整时间线；明确不把故障期间有响应等同于恢复成功，也不把可靠性长期指标或混沌注入实验当作场景证据。恢复测试分开记录服务就绪、实际恢复的数据点和业务一致性，根据有来源的 RTO/RPO 与时间戳计算，并检查账本对账、缺失区间、补偿和人工接管。文章也区分了恢复测试、灾备和韧性各自的问题范围。
+
+韧性测试英文摘要沿用当前已修改的具体描述；中文原摘要较泛且称为“双语指南”，本轮改为概括系统降级、故障隔离、依赖恢复与残余风险。恢复测试中文摘要同步概括 RPO/RTO、恢复步骤、状态校验和自动化停止后的人工接管。标题、日期、URL 和 draft: true 保留。
+
+两篇英文稿的内部词汇 Jaccard 筛查值从 0.680 降至 0.280。该分数只用于发现需要人工复核的正文相似，不是 Google 搜索指标或内容政策结论。
+
+复核 138 个 draft: true 博客源文件、69 组中英文配对：标题摘要齐全、各语言内标题唯一、日期及 H2 数量相符；无缺失配对、占位符、少于三个 H2、重复 H2、空或缺失图片替代文本、页内重复长段落。全部 138 个草稿路由均未生成 HTML，且未进入 sitemap。
+
+验证结果：npm run seo:check:strict 通过，566 篇博客及 452 个 Wiki、234 个 AI Wiki 的缺失标题/摘要、重复标题、坏链、Markdown 链接格式、旧式相对链接和关联错误均为 0，45 条长摘要仍供人工复核。npm run build 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面和 2,537 个 sitemap URL；Astro 检查为 0 错误、0 警告及 1 个既有 hint，另有 8 条 Shiki 语言回退提示；811 条短摘要保留为人工相关性复核项。构建生成的三份 SEO 临时报告已恢复到运行前内容，git diff --check 通过。
+
+本轮 Search Console、GSC performance 与 Google Search Performance 的 Drive 检索均无结果；点击、展示、CTR、排名未评估，CWV 未测量。后续英文草稿筛查候选为跨浏览器测试与认证测试、自动化 ROI 与质量债务分析、认证测试与 API 限流测试；这些分数只用于确定人工复核次序，必须先对照源 Skill 再改写。修改仅在本地，未提交或部署。
+
+## 2026-10-13 跨浏览器与身份认证测试草稿差异化
+
+依据 Awesome QA Skills 的中英文 Cross-Browser Testing 与 Authentication Testing 源 Skill、Prompt，重写两组双语共四篇 draft: true 草稿，并更新标题与摘要，使其先说明各自的搜索主题和读者所得。标题、摘要、日期和正文链接保持中英文配对；日期、路由与草稿状态保留。
+
+跨浏览器测试稿围绕支持策略、用户权重、引擎/平台/版本/设备单元、真实设备与模拟环境差异，以及逐单元证据组织内容；示例使用 CBT-## 字段，明确浏览器候选不代表已运行或覆盖。身份认证稿围绕未认证、挑战、已认证、锁定/过期/撤销和恢复迁移，检查令牌签发及旧凭据有效性；AUT-## 示例受策略适用条件约束，并区分身份验证、资源授权与实际执行。两组稿均删除与主题无关的通用占位式 Finding / 交接句，保留事实、候选验证和人工决策边界。
+
+内部英文词汇 Jaccard 筛查从 0.678 降至 0.290，仅作为正文人工复核信号，不是 Google 指标或质量验收门槛。下一轮待对照源 Skill 的候选是自动化 ROI 与质量债务分析、API 幂等与 Agent 故障恢复测试、API 设计质量评审与 Agent 故障恢复测试；候选排序仍需人工判读。
+
+复核全部 138 个 draft: true 博客源文件、69 组中英文配对：标题和摘要齐全且各语言内唯一，日期及 H2 数量对应；无缺失配对、TODO/TBD/FIXME、重复 H2、空图片替代文本或页内重复长段落。本次检查的 138 个草稿源 slug 均未出现在构建 HTML 路径或 sitemap。
+
+验证结果：npm run seo:check:strict 通过，566 篇博客、452 个 Wiki 和 234 个 AI Wiki 的缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接及关联错误均为 0，45 条长摘要仍供人工复核。npm run build 和 seo:build:check 通过，构建报告 2,819 个页面、2,537 个可索引页面和 2,537 个 sitemap URL；Astro 检查为 0 错误、0 警告和 1 个既有 hint。三份构建生成的 SEO 临时报告已从运行前干净的 HEAD 版本恢复，git diff --check 通过。
+
+本轮重新检索 Drive 中的 Search Console、GSC performance 和 Google Search Performance，均无结果；点击、展示、CTR、排名未评估，CWV 未测量。改动仅在本地，未提交或部署。
+
+## 2026-10-13 自动化 ROI 与质量债务草稿差异化
+
+依据 Awesome QA Skills 的中英文 Automation ROI Analysis 与 Quality Debt Analysis 源 Skill、Prompt，重写两组双语共四篇 draft: true 草稿，并调整标题与摘要。路由、日期与草稿状态保留。
+
+自动化 ROI 稿要求先固定候选、时间窗和成本单位，分开人工投入、机器占用、复核、维护与货币；加入同窗净节省、正向净节省下的回本窗口，以及项目提供的低/基准/高频率和变更维护敏感性。示例只给出季度频率、流程变化和专业数据背景，没有建设/运行/维护成本或费率，因此 ARO-## 保持 NOT_SCORED，不虚构回报或直接建议采纳。
+
+质量债务稿明确区分当前产品缺陷、测试/架构债务、临时例外和证据缺口；利息只用可观察的维护投入、风险暴露或检测延迟说明，并按影响、暴露、可探测性、依赖及偿还投入排序，年龄仅作一个信号。QDA-## 示例将测试不稳定的来源保留为 UNKNOWN，优先级标为 NOT_SCORED；偿还关闭需有资产变更、独立行为检查、债务影响消失和负责人验收，工单或隔离本身不算偿还完成。
+
+内部英文词汇 Jaccard 筛查从 0.676 降至 0.268，仅作为正文人工复核信号，不是 Google 指标或质量验收门槛。下一轮候选为 API 幂等测试与 Agent 故障恢复测试、API 设计质量评审与 Agent 故障恢复测试、Agent 循环测试与 Agent 故障恢复测试；仍须逐组对照源 Skill 后判断。
+
+复核全部 138 个 draft: true 博客源文件、69 组中英文配对：标题和摘要齐全且各语言内唯一，日期及 H2 数量相符；无缺失配对、少于三个 H2、重复 H2、TODO/TBD/FIXME、空图片替代文本或页内重复长段落。本轮所查的草稿路由均未生成 HTML，也未进入 sitemap。
+
+验证结果：npm run seo:check:strict 通过，566 篇博客、452 个 Wiki 和 234 个 AI Wiki 的缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接及关联错误均为 0，45 条长摘要仍供人工复核。npm run build 和 seo:build:check 通过，构建报告 2,819 个页面、2,537 个可索引页面和 2,537 个 sitemap URL；Astro 检查为 0 错误、0 警告和 1 个既有 hint。三份构建生成的 SEO 临时报告已恢复，git diff --check 通过。
+
+本轮重新检索 Drive 中的 Search Console、GSC performance 和 Google Search Performance，均无结果；点击、展示、CTR、排名未评估，CWV 未测量。修改仅在本地，未提交或部署。
+
+## 2026-10-13 QA Skills 多领域草稿正文与元数据差异化
+
+本轮继续把未发布草稿纳入 SEO 维护，对照 Awesome QA Skills 的中英文源 Skill 和 Prompt，修订六个主题的双语正文：API 幂等测试与 Agent 故障恢复、Agent 循环测试、API 错误契约测试、API 负向测试、API 设计质量评审。标题和摘要按各页意图精简或改写；发布日期、URL、tags/series 与 `draft: true` 保留。
+
+API 幂等测试围绕键作用范围、参数冲突、并发、保留期和业务副作用账本设计场景，使用 AIT-##；故障恢复区分暂态、永久、结果不明和部分成功状态，并核对安全重试、对账、授权补偿、升级及用户通知，使用 AFR-##。Agent 循环测试新增逐轮 task/run/step 轨迹、归一化参数、观察摘要、目标状态变化、累计时间/费用及无进展/停止门槛，使用 ALT-##，没有来源的阈值仍待确认。API 错误契约稿用 operation×error 矩阵复核状态与业务码、必需字段、关联 ID、重试含义和脱敏，使用 AEC-##，且只有违反适用来源规则的差异才列为发现；API 负向测试稿把字段/权限规则转成单项输入变体，保留有效邻近对照，并核对拒绝后的持久化副作用与部分成功，使用 ANT-##。API 设计质量评审稿则以 operation 覆盖矩阵呈现字段、错误、鉴权、重试、版本及迁移风险，并按源契约补充 API-## 所需的兼容风险、决策问题和验证证据。
+
+内部英文正文 token-set Jaccard 启发式中，API 幂等/故障恢复从 0.674 降至 0.371，API 设计评审/故障恢复从 0.670 降至 0.294，循环测试/故障恢复从 0.661 降至 0.379，错误契约/负向测试从 0.665 降至 0.466。该分数用于定位需要人工对照源材料的共同段落，不是 Google 搜索指标、重复内容判定或政策结论；不同测试领域可以保留共同的证据状态和决策边界。
+
+复核全部 138 个 `draft: true` 博客源文件、69 组英中配对：未发现缺失配对、标题/摘要缺失或重复、配对日期/H2 数量不一致、少于三个 H2、重复 H2、TODO/TBD/FIXME、空图片替代文本；本轮复核的 138 个草稿文件名均未出现在构建 HTML 路径或 sitemap。
+
+验证结果：`npm run seo:check:strict` 通过，覆盖 452 个 Wiki、234 个 AI Wiki 和 566 篇博客；缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和内容关联错误均为 0，45 条长摘要仍为人工复核项。`npm run build` 与 `seo:build:check` 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面和 2,537 个 sitemap URL；Astro 检查为 0 错误、0 警告、1 个既有 hint，保留 8 条既有 Shiki 语言回退提示；811 条短摘要提示仅供相关性人工复核。构建生成的三份 SEO 临时报告已按运行前干净的 HEAD 内容恢复，`git diff --check` 通过。
+
+本轮 Search Console、GSC performance 和 Google Search Performance 的 Drive 检索均无结果；点击、展示、CTR、排名未评估，CWV 未测量。改动仅在本地，未提交或部署。后续人工复核候选包括 API 限流与错误处理设计、AI 安全与生成测试审查；当前最高的未修改文本相似候选是 Chaos Testing 与 Database Design Quality Review，领域差异较大，应先看正文与各自源 Skill，不按分数自动改写。
+
+## 2026-10-13 API 限流与错误处理设计评审草稿差异化
+
+依据 Awesome QA Skills 的中英文 API Rate Limit Testing 与 Error Handling Design Review 源 Skill 和 Prompt，修订两组双语 `draft: true` 草稿，共四篇。标题和摘要改为直接说明配额/突发/恢复与失败模式/恢复主题；发布日期、路由和草稿状态保留。
+
+API 限流稿现在把场景设计与执行分开，按配额 `N`、成功/拒绝请求计数、身份键、窗口算法、时间来源、突发额度、重置和响应契约整理候选；在规则明确时比较 `N-1`、`N`、`N+1`，并保留配额内控制、身份隔离、窗口恢复和重试预算。只有来源契约承诺时才要求 `429`、`Retry-After` 或其他响应字段；无运行记录的候选标为 `NOT_RUN`，不把设计评审写成测试执行。
+
+错误处理设计评审稿改为按失败模式和边界建立 `EH-##` 矩阵，涵盖触发条件、预期行为类型、传播/回退、调用方结果、数据一致性、隐私安全的可观察证据、来源、影响/优先级、负责人和验证。`EH-01` 以报表生成后存储失败为例，重试安全性和提交状态留待契约确认；不假定恢复行为，也不声称做过故障注入。
+
+内部英文正文 token-set Jaccard 启发式从 0.679 降至 0.587。两篇仍共享证据状态和交接等系列方法段落；该分数只用于定位人工复核点，不是 Google 指标、重复内容结论或验收门槛。
+
+复核全部 138 个 `draft: true` 博客源文件、69 组中英文配对：标题和摘要齐全且各语言内唯一，日期与 H2 数量一致；无缺失配对、少于三个 H2、重复 H2、TODO/TBD/FIXME、空图片 alt 或页内重复长段落。所有草稿文件名均未出现在本次构建 HTML 路径或 sitemap 中。
+
+验证结果：`npm run seo:check:strict` 通过，覆盖 566 篇博客、452 个 Wiki 和 234 个 AI Wiki；缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和关联错误均为 0，45 条长摘要保留人工复核。`npm run build` 与 `seo:build:check` 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面和 2,537 个 sitemap URL；Astro 检查为 0 错误、0 警告、1 个既有 hint，保留 8 条既有 Shiki 语言回退提示；811 条短摘要仍待相关性人工复核。运行生成的三份 SEO 临时报告已恢复到运行前干净的 HEAD 内容，`git diff --check` 通过。
+
+本轮 Search Console、GSC performance 和 Google Search Performance 的 Drive 检索没有结果；点击、展示、CTR 和排名未评估，CWV 未测量。工作仅在本地，未提交或部署。下一轮候选为 AI Safety Testing 与 AI Generated Test Review；先核对两者源 Skill 的证据边界，再决定是否改写。
+
+## 2026-10-13 AI 安全与 AI 生成测试评审草稿差异化
+
+依据 Awesome QA Skills 的中英文 AI Safety Testing 与 AI-Generated Test Review 源 Skill 和 Prompt，重写两组双语共四篇 `draft: true` 草稿。标题与摘要按各页主题调整；发布日期、路由和草稿状态保留。
+
+AI 安全测试稿将适用策略、类别与条件映射到允许、限制、拒答或升级，并区分有害请求处置、正常请求完成和过度拒答。评审须读取完整回答和工具动作，以策略定义的有害样本及近邻正常样本为依据；策略缺失时保留 `UNKNOWN`，未执行时标记 `NOT_RUN`。`AIS-##` 示例补充来源、触发条件、影响、证据状态、负责人及关闭验证；风险优先级未有证据时不打分，风险接受权保留给人工。
+
+AI 生成测试评审稿要求逐条追到适用需求和实际生产代码路径，检查断言是否独立、错误实现能否仍然通过、模拟边界是否遮蔽目标行为，以及最小什么缺陷会逃逸。使用 `STRONG`、`WEAK`、`FAKE` 区分断言证据；没有找到可审查测试时明确记为范围缺口。示例是条件性说明，不声称执行了真实模型评测或实际项目测试。
+
+复核全部 138 个 `draft: true` 博客源文件、69 组英中配对：标题和摘要齐全且各语言内唯一，配对日期一致；无缺失配对、少于三个 H2、重复 H2、TODO/TBD/FIXME、空图片替代文本或页内重复长段落。构建没有为这些草稿生成 HTML，它们也未进入 sitemap。
+
+验证结果：`npm run seo:check:strict` 通过，扫描 452 个 Wiki、234 个 AI Wiki 和 566 篇博客；缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接和关联错误均为 0，45 条长摘要仍供人工复核。`npm run build` 与 `seo:build:check` 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面和 2,537 个 sitemap URL；Astro 检查为 0 错误、0 警告及 1 个既有 hint，另有 8 条既有 Shiki 语言回退提示；811 条短摘要继续作为相关性人工复核项。运行生成的三份 SEO 临时报告已恢复到运行前干净的内容，`git diff --check` 通过。
+
+本轮 Drive 中的 Search Console、GSC performance 和 Google Search Performance 检索均无结果；点击、展示、CTR 与排名未评估，CWV 未测量。改动仅在本地，未提交或部署。后续候选仍需先检查 Chaos Testing 与 Database Design Quality Review 的正文和源 Skill；主题差异较大，文本相似度筛查不能单独作为改写依据。
+
+## 2026-10-13 混沌测试与数据库设计评审草稿差异化
+
+依据 Awesome QA Skills 的中英文 Chaos Testing 与 Database Design Quality Review 源 Skill、Prompt，修订两组双语 `draft: true` 草稿，共四篇。标题和摘要更直接对应实验控制与数据库设计审查主题；日期、URL 和草稿状态保留。
+
+混沌测试稿围绕可证伪假设、稳态信号、故障注入点/类型/范围/持续时间、隔离与爆炸半径、停止阈值、回滚及恢复证据组织候选，并使用 `CHS-##` 留下依据和关闭条件。示例不再套用无来源的流量比例；缺少阈值、负责人或回滚证据时，结论保留为未就绪，不声称实验已执行。数据库设计评审稿分别检查关系与基数、键和约束、访问模式与索引、所有权/隐私/保留、事务与并发、迁移兼容和回滚、备份与恢复，以 `DB-##` 记录来源、风险和验证条件；不从字段名臆测规则，也不声称运行查询、迁移或基准测试。
+
+全量复核 138 个 `draft: true` 博客源文件、69 组英中配对：标题和摘要齐全且各语言内唯一，配对日期与 H2 数量一致；未发现缺失配对、少于三个 H2、重复 H2、TODO/TBD/FIXME、空图片替代文本或页内重复长段落。构建未生成这些草稿的 HTML，它们也未进入 sitemap。
+
+验证结果：快进到最新 `origin/main` 后，`npm run seo:check:strict` 通过，扫描 566 篇博客、452 个 Wiki 和 234 个 AI Wiki；缺失标题/摘要、重复标题、坏链、格式错误链接、旧式相对链接及关联错误均为 0，45 条长摘要保留为人工复核项。`npm run build` 与 `seo:build:check` 通过，生成 2,819 个 HTML 页面、2,537 个可索引页面及同数 sitemap URL；Astro 检查为 0 错误、0 警告和 1 个既有 hint，另有 8 条既有 Shiki 语言回退提示；827 条短摘要仍需人工复核相关性。运行生成的三份 SEO 临时报告已恢复到运行前内容，`git diff --check` 通过。
+
+本轮 Drive 中的 Search Console、GSC performance 和 Google Search Performance 检索均无结果；点击、展示、CTR、排名未评估，CWV 未测量。标准与需求双轴 review 已通过；本批改动待提交并推送。

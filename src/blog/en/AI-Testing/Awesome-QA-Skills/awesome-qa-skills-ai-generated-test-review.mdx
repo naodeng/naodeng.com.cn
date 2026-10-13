@@ -1,6 +1,6 @@
 ---
-title: "AI-Generated Test Review Skill: Separate plausible test cases from traceable coverage"
-description: "AI-Generated Test Review field guide: inspect requirement traceability, invented behavior, oracle quality, gaps, and maintenance risk."
+title: "AI-Generated Test Review: Traceability and False Confidence"
+description: "Review generated tests for source traceability, behavior assertions, escaping bugs, false confidence, and maintenance risk."
 date: 2026-10-22T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -12,21 +12,19 @@ An AI-generated test suite can contain fifty polished cases and still miss the o
 
 ## Why this Skill is needed
 
-AI-Generated Test Review checks whether generated tests are grounded in requirements, identify real risks, use valid oracles, and remain maintainable when the product changes.
+AI-Generated Test Review asks whether each generated test could detect an incorrect production behavior. It traces tests to rules and risks, inspects the code path and assertion, and looks for the smallest bug that could still pass.
 
 ## What the Skill does
 
-The AI-Generated Test Review Skill is useful when a team needs a structured review of source traceability, invented behavior, boundary coverage, oracle quality, and maintenance cost.
+Use this Skill only for test types found in the supplied scope or named by the user. For each test, compare intended behavior with the production behavior exercised, the observable assertion, expected-value independence, mocking boundary, and failure modes that could escape.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with AI-Generated Test Review.
 
-Use it when the team needs a repeatable review of source traceability, invented behavior, boundary coverage, oracle quality, and maintenance cost—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-A useful result keeps source traceability, invented behavior, boundary coverage, oracle quality, and maintenance cost connected to a source and a verification action. It does not turn a design checklist into a passing result.
+Use it when AI-written tests look plausible or increase coverage but their regression protection, source support, data isolation, or maintenance risk still needs evidence.
 
 ## What it does not do
 
-The AI-Generated Test Review Skill can organize material, evidence, and next actions for Traceability map. It does not replace:
+The AI-Generated Test Review Skill can organize per-test verdicts and evidence gaps. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -37,17 +35,19 @@ The AI-Generated Test Review Skill can organize material, evidence, and next act
 
 The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
 
-| Focus | Question before analysis | Handoff output |
+| Review axis | Per-test question | Evidence to record |
 | --- | --- | --- |
-| Traceability map | Case to rule, risk, and decision oracle | Covered, weak, or unsupported |
-| Finding | Missing boundary, hallucinated behavior, duplicate case, or brittle setup | Priority and basis |
-| Repair action | Keep, rewrite, remove, or request source clarification | Owner and next check |
+| Scope and traceability | Which test type is actually present, and which rule/risk does this test serve? | Test location, source rule, version, or a scope gap |
+| Behavior and oracle | Does production logic run? What observable result is asserted? Could a wrong implementation still pass? | Intended behavior, actual path, assertion, independent expected value, smallest escaping bug |
+| False-green risks | Is the subject under test mocked? Are failures swallowed? Are setup, data, cleanup, waits, or parallel runs unsafe? | Concrete test/code evidence and impact |
+| Per-test verdict | Does it provide strong regression protection, partial protection, or almost none? | `STRONG`, `WEAK`, or `FAKE` with confidence and reason |
+| Repair and priority | What smallest change would make the relevant bug fail? | Evidence-backed P0/P1/P2 issue or P2 improvement and verification order |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analyzing Traceability map, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before judging test strength, identify the test types actually in scope and classify the available evidence. If no test code or reviewable test is present, report a scope gap instead of assessing a template or every rules file as a global checklist.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -83,9 +83,9 @@ This case follows Input, Analysis, Finding, Decision, and Validation. When mater
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
-| Source rules | Promotion requirements, examples, exclusions, and version | Reject tests that have no supporting rule |
-| Generated suite | Cases, data, expected results, setup, and cleanup | Mark invented fields and endpoints |
-| Review context | Known defects, risk priorities, test framework, and maintenance owner | Do not optimize for case count alone |
+| Review scope | Test paths/types, test code, code under test, results, and framework | If no reviewable test is found, request a path or test type |
+| Behavior sources | Requirements, acceptance criteria, API contract, risks, and version | Keep absent rules open; do not invent product defects |
+| Test mechanics | Data, fixtures, mocks, expected values, cleanup, waits, and parallel execution | Inspect only relevant mechanisms in discovered test types |
 
 Use a request like this:
 
@@ -93,7 +93,7 @@ Use a request like this:
 
 Use the ai-generated-test-review Skill.
 
-Task: review AI-generated tests for a promotion engine that combines customer tier, coupon expiry, and cart thresholds
+Task: review the supplied AI-generated API tests for a promotion engine that combines customer tier, coupon expiry, and cart thresholds
 Inputs: [requirements, versions, links, logs, reports, or data paths]
 Scope: [included and excluded objects]
 Unknowns: [missing environment, accounts, data, or permissions]
@@ -105,7 +105,7 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ### Analysis
 
-Start with a bounded pass—review AI-generated tests for a promotion engine that combines customer tier, coupon expiry, and cart thresholds. For an expired coupon, trace each generated case back to the expiry rule and check whether it asserts both the rejected discount and the unchanged cart total. Delete a case that invents a “coupon grace period” unless the requirements actually define one.
+Use this as an illustrative review only; no real test suite is supplied here. Assume the source rule says an expired coupon cannot change the order total, and a generated API test only asserts HTTP `200`. First confirm that the API implementation—not a mock of the subject—is exercised. If it is, the test may be `WEAK`: an expired discount could still be applied while the status remains `200`. The smallest escaping bug is that unintended discount. Add source-backed assertions for discount rejection and the unchanged total. If the test only calls a mocked promotion subject and checks its preset response, it may be `FAKE`; confirm the boundary before classifying. If the rule or test code is missing in a real review, keep the verdict unassessed and report the scope gap.
 
 The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
 
@@ -115,17 +115,16 @@ The useful handoff keeps the input version, time window, evidence index, owner, 
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Traceability map meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+For every reviewed test, record its intended behavior, actual assertion, and the smallest relevant bug that could escape. The example below is conditional on the illustrative rule and test above; it is not a finding about a real repository.
 
-| Field | Example wording |
+| Review field | Illustrative API test record |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Traceability map |
-| Finding | The condition or result for Traceability map is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Scope and source | Expired-coupon API test; assume the supplied promotion rule says the expired coupon cannot change order total |
+| Intended behavior and actual assertion | Reject expired discount and preserve total; generated test asserts only HTTP `200` |
+| Escaping bug | Expired discount is applied while API still returns `200` |
+| Verdict and confidence | `WEAK` only if production promotion logic runs; if the subject is mocked, inspect the boundary before deciding whether it is `FAKE` |
+| Evidence gap and repair | Check test body, code path, and independent expected total; add source-backed business-state assertions |
+| Priority, owner, and validation | Set P0/P1/P2 only after impact evidence; test owner confirms the minimal regression check and retains its run result |
 
 The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
 
@@ -141,17 +140,18 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 ### Handoff output
 
-| Output field | Why it exists | Example status |
+| Output | Required detail | Example status |
 | --- | --- | --- |
-| Traceability map | Case to rule, risk, and decision oracle | Covered, weak, or unsupported |
-| Finding | Missing boundary, hallucinated behavior, duplicate case, or brittle setup | Priority and basis |
-| Repair action | Keep, rewrite, remove, or request source clarification | Owner and next check |
+| Scope and evidence | Test types found, reviewed paths, source rules, versions, and open questions | `scope gap` if tests are absent |
+| Per-test verdict | Name, `STRONG`/`WEAK`/`FAKE`, confidence, behavior, assertion, escaping bug, conclusion | Case-level, not suite-count based |
+| Findings and repair | P0/P1 evidence-backed risks, P2 improvements, missing assertions, repair direction | No priority without impact evidence |
+| Coverage and verification | Applicable paths, data/isolation/cleanup risks, residual risk, recommended verification order | `unverified` until evidence exists |
 
-Do not write “passed” without a run record, query result, or source artifact. A useful review asks what would make a generated case fail for the right reason. If the expected result is only “returns success,” the case probably needs a business state, invariant, or source-backed comparison.
+Do not promote pass counts or coverage percentages into quality evidence. A test is useful when the right defect changes an assertion: compare expected values independently, verify that relevant production logic runs, and check persistence or business invariants where the source contract requires them. Apply positive, failure, boundary, permission/state-transition, and recovery checks only to test types actually identified in scope.
 
 ### Next-stage route
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Hand off each test location, source rule, verdict rationale, escaping bug, evidence gap, owner, repair, and verification order. Keep test faults, product faults, and missing evidence separate.
 
 ## How to prepare better input
 

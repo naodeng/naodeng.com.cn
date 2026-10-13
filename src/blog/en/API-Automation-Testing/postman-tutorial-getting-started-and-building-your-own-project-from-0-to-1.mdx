@@ -1,6 +1,6 @@
 ---
 title: "Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1"
-description: "Review API testing basics and Postman/Newman, then set up a project, collections, requests, environment files, and runnable API tests."
+description: "Set up a Postman API automation project with collections, requests, test scripts, environment configuration, and Newman execution and reports."
 date: 2023-11-21T09:37:00.000Z
 author: "nao.deng"
 tags: ["Postman","API Testing","Automated Testing"]
@@ -11,47 +11,11 @@ series: ["Postman API Automation Testing Tutorial"]
 
 ## Introduction
 
-### Introduction to API Testing
+This tutorial focuses on turning a Postman collection into a runnable API automation project: project setup, requests and test scripts, environment configuration, and execution and reporting with Newman.
 
-#### What is API?
+For the broader scope, common test types, and workflow of API testing, see [Introduction to API Testing](https://inaodeng.com/en/blog/api-automation-testing/introduction_of_api_test/).
 
-API, which stands for Application Programming Interface, is a computing interface that defines the interactions between multiple software intermediaries. It specifies the types of calls or requests that can be made, how they are made, the data format to be used, and the conventions to be followed. APIs can also provide extension mechanisms, allowing users to extend existing functionalities in various ways. An API can be custom-made for a specific component or designed based on industry standards to ensure interoperability. By hiding information, APIs enable modular programming, allowing users to work independently using interfaces.
-
-#### What is API Testing?
-
-API testing is a type of [software testing](https://en.wikipedia.org/wiki/Software_testing) that includes two types: specifically testing the functionality of [Application Programming Interfaces](https://en.wikipedia.org/wiki/Application_programming_interface) (referred to as API) and, more broadly, testing the overall functionality, reliability, security, and performance in [integration testing](https://en.wikipedia.org/wiki/Integration_testing) by invoking APIs.
-
-API Best Practice:
-
-- API definition follows the RESTful API style, with semantic URI definitions, accurate HTTP status codes, and the ability to understand the relationships between resources through API definitions.
-- Detailed and accurate API documentation (such as Swagger documentation).
-- External APIs may include version numbers for quick iteration (e.g., [https://thoughtworks.com/v1/users/](https://thoughtworks.com/v1/users/)).
-
-Testing in different quadrants of the testing pyramid has different purposes and strategies. API testing mainly resides in the second and fourth quadrants.
-
-API testing holds a relatively high position in the testing pyramid, focusing on testing functionality and business logic at the boundaries of systems and services. It is executed after the service is built and deployed in the testing environment for validation.
-
-#### Types of API Testing
-
-Functional Testing
-
-- Correctness Testing
-- Exception Handling
-- Internal Logic
-- ...
-
-Non-functional Testing
-
-- Performance
-- Security
-- ...
-
-#### Steps in API Testing
-
-- Send Request
-- Get Response
-- Verify Response Result
-
+Before following the examples, prepare a reachable target API, its documentation, and a suitable test environment. Check the environment and data scope before sending requests.
 ### Introduction to Postman and Newman
 
 Postman is a popular API development tool that provides an easy-to-use graphical interface for creating, testing, and debugging APIs. Postman also features the ability to easily write and share test scripts. It supports various HTTP request methods, including GET, POST, PUT, DELETE, etc., and can use various authentication and authorization methods for API testing.

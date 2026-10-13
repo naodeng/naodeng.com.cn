@@ -1,6 +1,6 @@
 ---
 title: "Multi-Role Quality Synthesis: Preserve different perspectives and reach actionable quality decisions"
-description: "Multi-Role Quality Synthesis field guide: inputs, sample output, evidence boundaries, installation, and common mistakes."
+description: "Synthesize product, QA, engineering and operations views while preserving evidence conflicts, assumptions and unresolved risks for release decisions."
 date: 2026-09-24T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Multi-Role Quality Synthesis"]
@@ -12,7 +12,7 @@ The same release can present four different risk pictures to product, QA, engine
 
 The Multi-role Quality Synthesis Skill aligns perspectives, assumptions, and unresolved risks so cross-functional teams can decide without pretending disagreement does not exist.
 
-This guide uses collaboration-grounded examples to unpack the judgment process, helping you turn different signals into actions that are communicable and traceable.
+The membership-upgrade example shows how Product, QA, Engineering, and UX findings can be synthesized while preserving each source, evidence limit, and unresolved decision.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) covers repository structure and shared installation options; this guide stays with Multi-Role Quality Synthesis.
 
@@ -22,82 +22,151 @@ The main prompt covers Input contract, Input validation, Classification rules, D
 
 This Skill has no separate examples directory. The sample below is derived from its entry point, main prompt, and eval constraints.
 
-## A review fragment that keeps disagreement visible
+## Related Skills
 
-Combine product, QA, engineering, and UX evidence without erasing disagreement
+Multi-role quality synthesis does not replace any specialist judgment. Its job is to validate inputs, preserve conflicts, and make responsibility boundaries explicit. The first four Skills below provide role-specific reports; Project Delivery Perspective supplies project constraints rather than a quality-role report.
 
-Different roles can read the same artifact and find different risks.
+| Skill | Main inputs | What synthesis should retain |
+| --- | --- | --- |
+| [Product Quality Perspective](https://inaodeng.com/en/qaskills/product-quality-perspective/) | User tasks, business rules, conversion, and feedback | User value, business trade-offs, and unverified assumptions |
+| [QA Quality Perspective](https://inaodeng.com/en/qaskills/qa-quality-perspective/) | Coverage, cases, gaps, and run results | Evidence scope, residual risk, and release gates |
+| [Technical Quality Perspective](https://inaodeng.com/en/qaskills/technical-quality-perspective/) | Architecture, logs, metrics, traces, and rollback records | Runtime consequences, recovery capability, and technical constraints |
+| [UX Quality Perspective](https://inaodeng.com/en/qaskills/ux-quality-perspective/) | Task observations, accessibility, and failure-recovery records | User impact, reproduction paths, and experience improvements |
+| [Project Delivery Perspective](https://inaodeng.com/en/qaskills/project-delivery-perspective/) | Scope, dependencies, milestones, and owners | Connect quality material to delivery conditions without rewriting quality facts |
 
-| Observation | Evidence | Impact | Recommendation |
+## How synthesis receives reports across one delivery workflow
+
+The Product, QA, UX, and Technical articles use the same development stages, but each has a different focus. Multi-role synthesis receives reports from the same stage, records sources, classifies facts, merges equivalent findings, and preserves conflicts. It does not create an averaged opinion.
+
+| Development stage | Inputs to synthesis | Synthesis output |
+| --- | --- | --- |
+| Requirements analysis | Product rules, QA testability, technical constraints, UX task evidence | Shared facts, input gaps, role disagreements, and questions to resolve |
+| Test strategy | Coverage priorities, technical risks, experience paths, and project constraints | Separate quality facts from project constraints and retain each source's trade-offs |
+| Test strategy review | Role views on scope, exit criteria, and downgrade risk | Agreement, conflict severity, blockers, and action sources |
+| Code review | Product impact, QA static findings, technical diff observations, and UI impact | Merge only equivalent findings; retain code identity and evidence limits |
+| Test case writing | Business rules, testable entry points, technical failure modes, and UX states | Relevant agreement, gaps, and conditions that still need an owner |
+| Test case review | Executability, coverage, observability, and user paths | Separate facts, risks, and recommendations; do not report recommendations as run results |
+| Test reporting | Command results, product impact, runtime signals, and UX observations | Align run identity and scope; preserve verified, not_run, and blocked states |
+| Test report review | Role conclusions, evidence, project requirements, and residual risk | Shared facts, disagreements, decision options, approver, and information gaps |
+
+Here, delivery means handing off a synthesis report; it does not mean release approval. A nearing project date cannot turn an unrun QA case into a completed one, and a Product view cannot override high-risk evidence in a technical report.
+
+## Keep inputs from different roles mergeable
+
+When combining Product, QA, UX, and Technical perspectives, preserve disagreements so the quality conclusion remains actionable.
+
+| Role | Focus | Evidence to include | Decision it does not make for another role |
 | --- | --- | --- | --- |
-| A critical state has no user feedback | Prototype shows only success | Users may submit twice | Add failure and recovery states |
-| The schedule has no regression window | Release plan leaves half a day | High-risk fixes cannot be retested | Reduce scope or move the gate |
+| Product | User tasks, conversion, and business rules | Funnel, acceptance record, user feedback | Whether to change scope or goals |
+| QA | Coverage, gaps, and residual risk | Cases, run records, defects | Whether to accept insufficient test evidence |
+| Engineering | Stability, dependencies, and recovery | Logs, metrics, traces, rollback records | Whether to accept a technical trade-off |
+| UX | Task flow, states, accessibility, and recovery | Prototype, screenshots, recordings, reproduction steps | Whether to accept an experience trade-off |
 
-Do not force agreement. Record evidence and impact, then leave the decision with the accountable owner.
+Project Delivery Perspective can separately provide scope, dependencies, dates, and owners. Treat those as project constraints, not as a quality-role report. First check whether each input has a source, time window, and clear object of observation.
 
-## Merge evidence without flattening disagreement
+## Separate shared facts from conflicting judgments
 
-For Combine product, QA, engineering, and UX evidence without erasing disagreement, product may care about completion rate, QA about recovery, and engineering about observability and rollback cost. Keep those observations separate.
+Suppose a payment callback passed in staging. Product may focus on conversion, QA on exception coverage, and Engineering on production configuration differences. One fact can support different judgments.
 
-| Role | Observation | Evidence needed | Decision ownership |
+| Synthesis section | How to write it | Example |
+| --- | --- | --- |
+| Shared fact | Evidence every role can point to | Staging payment callback passed; build is build-42 |
+| Conflicting judgments | Keep each role's observation and impact separate | QA has no timeout case; Engineering found the rollback window insufficient |
+| Decision needed | List options, risk, approver, and due time | Release after reducing scope, pending Product approval |
+
+Do not compress disagreement into “overall risk is manageable.” Decision-makers need to see the risk of each option and the evidence still missing.
+
+## Membership upgrade example: from four reports to one decision-ready output
+
+The following inputs are hypothetical and show how the six articles can connect in a real workflow. Replace source_id, version, environment, and evidence links with project material in actual use. Register project delivery constraints separately from role reports.
+
+| source_id | Source type | Stage | Observation and evidence |
 | --- | --- | --- | --- |
-| Product | Can users finish the journey | Funnel and acceptance record | Scope trade-off |
-| QA | Can errors and recovery be verified | Cases, runs, defects | Test conclusion |
-| Engineering | Can failures be diagnosed and rolled back | Logs, metrics, deployment record | Technical risk |
+| PROD-42 | Product | test-report-review | PRD-42 says benefits should appear immediately after payment succeeds, but does not define the user experience when a callback takes more than 10 seconds |
+| QA-42 | QA | test-report-review | RUN-42 exercised only the successful callback; timeout and duplicate submission are marked not_run |
+| TECH-42 | Engineering | test-report-review | PR-42's callback client has no timeout configuration; the code observation is from commit abc123 and runtime behavior is unverified |
+| UX-42 | UX | test-report-review | REC-42 shows no progress explanation while waiting in iPhone Safari, but covers only one device and one path |
 
-Write shared facts after the role-specific notes. A conflict becomes an open decision with options and an approver. Claims about Input contract and Input validation need source links because paraphrasing can change their meaning.
+Register the project constraint separately:
 
-The final quality note can stay short: what is proven, what remains unknown, and who owns it.
+| source_id | Source type | Stage | Constraint and evidence |
+| --- | --- | --- | --- |
+| DELIVERY-42 | Project constraint, not a quality report | test-report-review | The delivery calendar sets a review for Friday at 18:00; the payment provider committed to a sandbox callback by Thursday at 12:00 |
 
-## A prompt you can adapt
+The synthesis should separate the material into four layers rather than conclude that “most roles think it is ready”:
 
-Replace the bracketed fields with project facts. Specific material leaves less room for guessing.
+| Synthesis area | Example wording | Source |
+| --- | --- | --- |
+| Quality fact | One successful callback has a run record; timeout and duplicate submission have not been run | QA-42 |
+| Technical finding | No timeout configuration was seen in code; this static observation does not prove that production will time out | TECH-42 |
+| Experience finding | One recording shows insufficient waiting feedback, with limited device and path coverage | UX-42 |
+| Project constraint | A decision meeting is scheduled for Friday and the sandbox callback has an external commitment time | DELIVERY-42 |
+| Disagreement and decision | Confirm whether Product accepts the scheduled review; QA and Technical inputs call for timeout evidence first, and no approver is recorded | PROD-42, QA-42, TECH-42, DELIVERY-42 |
+
+A handoff record can use this structure so Project Delivery Perspective does not need to rebuild source attribution:
+
+```yaml
+stage: test-report-review
+common_facts:
+  - id: FACT-01
+    statement: One successful callback has a run record
+    sources: [QA-42]
+role_observations:
+  - source_id: TECH-42
+    finding: No timeout configuration was seen in the callback client
+    evidence: Code observation from commit abc123
+    status: static_observation
+  - source_id: UX-42
+    finding: Waiting state lacks a progress explanation
+    evidence: REC-42
+    status: limited_observation
+conflicts:
+  - topic: Whether the review can proceed on schedule
+    sources: [PROD-42, QA-42, TECH-42]
+    unresolved_reason: Timeout and duplicate-submission evidence is missing
+decision_options:
+  - option: Review after reducing scope
+    approver: pending
+    required_evidence: [timeout callback result, rollback criteria]
+status: pending
+```
+
+The statuses static_observation and limited_observation are deliberate. Synthesis can organize them, but cannot promote them to verified or release-approved. The summary can be short, but stage coverage, quality facts, project constraints, agreement, disagreement, blockers, actions, and sources must remain. The Skill does not vote or invent an approver.
+
+## Adaptable prompt
+
+Replace the bracketed fields with project material. Specific inputs leave less room for guessing.
 
 ```text
 Use the multi-role-quality-synthesis Skill.
 
-Task: Combine product, QA, engineering, and UX evidence without erasing disagreement
+Stage: test report review (test-report-review)
+Task: Synthesize the Product, QA, Technical, and UX reports for a membership-upgrade change
 Version and environment: [requirement / build / environment]
 Inputs: [file paths or links]
 Scope: [included and excluded journeys]
-Constraints: [accounts, data, time, compliance]
+Constraints: [time, data, permissions, compliance]
 
-Keep each role observation, evidence, and impact separate. Distinguish shared facts from disagreement and name the approver for open decisions.
-Finish with open questions. Do not invent missing facts.
+Register each source and keep shared facts, role observations, project constraints, conflicts, decision options, and missing evidence separate. Preserve verified, static_observation, limited_observation, not_run, and blocked states. Do not invent approval or turn a role recommendation into a release decision.
 ```
 
-Use the first pass to inspect structure and gaps. Supply missing material before asking for the handoff-ready artifact.
+## Synthesis preserves conflicts and routes decisions
 
-## Advanced use, from one call to a maintained flow
+A multi-role summary does not need one forced conclusion. Separate common facts, conflicting observations, and pending decisions so the accountable owner can choose with the evidence visible.
 
-Add confidence and source_id to observations. Re-evaluate conclusions as evidence changes while retaining prior versions and decision records.
+## Who should use this Skill
 
-### A three-Skill chain
+Teams preparing a cross-functional test report review can use it to combine Product, QA, Engineering, and UX reports without flattening their boundaries. Delivery leads can then track owners and dates against the same source-linked record.
 
-`requirements-analysis` → `multi-role-quality-synthesis` → `multi-role-quality-synthesis`
+## Review a synthesis before handoff
 
-| Handoff | Payload | Receiver check |
+| Review item | What to retain | If missing |
 | --- | --- | --- |
-| Upstream to multi-role-quality-synthesis | Source versions, scope, risks, open questions | Multi-Role Quality Synthesis staleness and conflicts |
-| multi-role-quality-synthesis to downstream | Primary artifact, evidence index, unfinished work | Multi-Role Quality Synthesis executability and owners |
-| Feedback to multi-role-quality-synthesis | Runs, defects, new risks | Multi-Role Quality Synthesis baseline and regression update |
-
-Do not paste three complete outputs into one large prompt. Give Multi-Role Quality Synthesis a structured summary and accessible source artifacts. It saves context and makes defects traceable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| multi-role-quality-synthesis input | Version, environment, owner, accessible sources | Stop Multi-Role Quality Synthesis and list gaps |
-| multi-role-quality-synthesis artifact | Material claims carry basis and status | Return Multi-Role Quality Synthesis for evidence |
-| multi-role-quality-synthesis execution | Command, exit status, report are reproducible | Classify infrastructure or test failure |
-| multi-role-quality-synthesis decision | Residual risks have accepter and date | Do not enter the next stage |
-
-Review Multi-Role Quality Synthesis adoption, human edit rate, unsupported claims, and failure-to-diagnosis time each sprint. Record a baseline for several cycles before setting targets.
-
-## A perspective Skill is not role-play
-
-Do not invent what product, QA, or engineering would say. Multi-Role Quality Synthesis can only draw observations from available artifacts. When views conflict, record evidence, impact, and the decision owner.
+| Stage and scope | Same-stage reports, versions, and included journeys | List the sources or stages still missing |
+| Source identity | source_id, source link, observation window, and owner | Keep the claim unverified until it can be traced |
+| Shared facts and conflicts | Facts, role-specific views, impact, and disagreement | Do not replace them with a consensus phrase |
+| Project constraints | Scope, dependencies, date, and delivery owner | Keep them separate from quality conclusions |
+| Decision record | Options, evidence needed, approver, and due time | Leave the decision pending |
 
 ## Install and invoke
 
@@ -109,25 +178,25 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 Invoke it with “Use the multi-role-quality-synthesis Skill,” then attach the real artifacts.
 
-## Two practical questions
+## Common questions
 
-### Can one perspective overrule the others?
+### Must a synthesis report have only one conclusion?
 
-No. It adds observations. Keep disagreement and supporting evidence visible.
+No. Keeping common facts, conflicting views, and pending decisions separate makes the accountable owner's choice traceable.
 
-### What if that role is absent?
+### What if one role has no input?
 
-Label the result as proxy analysis and list questions for the actual role. Do not fabricate approval.
+Mark the role absent or label any proxy analysis. List questions for that role; do not invent its observations.
 
-### What if roles reach opposite conclusions?
+### Who makes the final decision?
 
-Keep both evidence sets, state the risk each role owns, and route the decision to the accountable person.
+An authorized Product, release, or Technical owner approves an option. The Skill makes the evidence and risk visible.
 
-### Can a perspective be written without data?
+### Can a release proceed without agreement?
 
-It can be an observation or assumption if the missing source and next evidence request stay visible.
+The team can discuss it, but must list unresolved risks, the accepter, and the due time. Without those, there is no auditable release decision.
 
-Run Multi-Role Quality Synthesis against one real artifact and keep the input, output, and review notes. The fragments here establish structure; project evidence must still come from the project.
+Run a synthesis on reports from the same stage and retain source IDs, inputs, output, and review notes. The examples provide structure; project evidence must come from the project.
 
 ## References
 - Awesome QA Skills project:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

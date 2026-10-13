@@ -1,6 +1,6 @@
 ---
 title: "AI 智能体测试 Skill：记忆、规划和失败恢复能否接上"
-description: "AI 智能体测试实战指南，围绕具体项目场景讲清输入、证据、执行边界、进阶组合与团队门禁。"
+description: "围绕多步任务检查智能体的规划、记忆、工具反馈与终止条件，并验证失败恢复。"
 date: 2026-10-25T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,155 +8,42 @@ tags: ["AI 测试", "Agent Skills", "AI Agent 测试"]
 categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
+AI 智能体测试既看任务有没有完成，也要核对它是怎么完成的。每个测试都需要任务成功 oracle 和运行轨迹：看起来合理的答案仍可能掩盖步骤跳过、越权调用、记忆污染或错误的停止决策。
 
-AI 智能体的质量取决于多步决策，而不是单轮回答。计划、记忆、工具反馈和终止条件只要有一处偏差，就可能把任务带到错误的结果。
+## 定义任务目标和允许路径
 
-AI 智能体测试 Skill 同时评估执行轨迹和最终结果，并用受控环境暴露不安全或无效的循环。
+每个样本记录任务 ID、成功 oracle、允许使用的工具与资源、禁止的副作用和停止条件，再把最终结果与 run/step 轨迹对照。
 
-本文以客服智能体为例，拆解如何同时检查规划、工具调用和失败恢复。
-
-## AI 智能体测试 Skill 用来做什么
-
-AI 智能体测试适合验证客服、研发或运营智能体的规划、记忆和工具协作。它会把一次会话拆成目标完成、过程选择和失败恢复，帮助团队定位“答案错了”之外的行为问题。
-
-## 先回到源 Skill
-
-这个 Skill 的完整执行规则在 [AI 智能体测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing/prompts/ai-agent-testing.md)。源目录还包含 3 个评测用例，用于验证输出是否遵守契约。
-
-它要求特别注意：
-
-- 同时评价最终结果和过程轨迹
-- 将随机性纳入重复试验
-- 不要把单次成功当作可靠性证明
-
-## 用一份项目材料开始
-
-先把现有材料列出来。缺口可以保留，但状态要说清楚。
-
-| 材料 | 这次填什么 | 缺失时的处理 |
+| 维度 | 观察什么 | 最终答案可能掩盖的问题 |
 | --- | --- | --- |
-| 目标与范围 | 评估客服智能体的目标完成、规划、记忆、工具调用、失败恢复和安全边界 | 标出不在本轮判断内的链路 |
-| 版本与环境 | 模型、系统提示词、记忆存储、工具版本、会话 ID 和运行窗口 | 环境未锁定时只评估轨迹样本 |
-| 证据 | 任务轨迹、计划修订、记忆读取、工具结果和终止原因 | 缺少中间步骤时不判定规划可靠 |
-| 决策边界 | 自动执行范围、重试上限、人工接管和数据保留 | 每个副作用动作绑定停止条件 |
+| 规划 | 步骤顺序、依赖关系和新信息到来后的调整 | 跳过前置步骤，或无依据地改变计划 |
+| 工具使用 | 工具选择、参数、权限和结果解释 | 通过不安全或无关的调用得到表面正确的答案 |
+| 记忆 | 哪些状态会保留、重置或泄漏 | 上一用户或上一任务的数据影响当前运行 |
+| 恢复 | 步骤失败后的重试、降级和人工交接 | 重复副作用，或阻塞后仍继续执行 |
+| 终止 | 成功、目标失败、预算耗尽、取消、安全阻断或环境错误 | 把缺少终止证据误当成任务完成 |
 
-可以这样调用：
+## 对可能波动的行为重复试验
 
-```text
-请使用 ai-agent-testing Skill。
+固定样本 ID，记录模型、Prompt、工具、数据和环境版本，并按项目提供的重复方案执行，不自行编造样本门槛。按样本报告结果，让偶发失败可见。一次成功只证明观察到一次成功，不证明可靠性。
 
-任务：评估客服 Agent 的目标完成、规划、记忆、工具调用、失败恢复和安全边界
-输入材料：[版本、链接、日志或报告路径]
-范围：[本次包含和排除的对象]
-限制：[时间、数据、权限、合规要求]
+例如，一个多步客服任务可能给出正确的最终答复，但轨迹显示它查询了未获授权的数据，那么过程检查仍应失败。任务结果正确性和过程合规要分开判定；任一不满足，都可能导致整体不能通过。保留 run 和 step ID，方便复核决策过程。
 
-先审计输入，再按风险和证据强度排序。材料没有证明的内容标为假设，并列出验证方法。
-```
+## 每个用例都要有 oracle 和证据
 
-## AI 智能体测试要把行为拆成可复核的产物
+每个候选用例写明前置条件、动作或刺激、预期行为及所需证据。把静态分析、设计用 fixture 和真实运行分开。如果项目没有给出成功标准、权限或停止门槛，应列为待确认问题，不要自造规则。
 
-| 产物 | 要回答的问题 | 最低证据 |
-| --- | --- | --- |
-| 目标完成 | 智能体是否真正完成用户任务 | 目标状态、业务结果和工具记录 |
-| 规划过程 | 计划是否覆盖约束和必要步骤 | 计划版本、分支选择和理由 |
-| 记忆使用 | 记忆是否过期或污染当前任务 | 记忆来源、时间和读取范围 |
-| 失败恢复 | 失败后是否重试、降级或交给人工 | 重试次数、最终状态和接管记录 |
+交付物可以包括能力矩阵、任务集、轨迹断言、安全与恢复场景、评分规则、观察指标、阻塞项和下一步。确认事实、当前假设和未知项都要保留。这个 Skill 帮助组织验证工作，不会为 Agent 或发布背书。
 
-没有完整会话、工具结果和最终状态时，只能说明设计覆盖，不能说明智能体行为稳定。
+工具契约和副作用的细项见[智能体工具调用测试](/zh-cn/qaskills/agent-tool-testing/)；产品内置 AI 功能见[AI 功能测试](/zh-cn/qaskills/ai-feature-testing/)；不可信指令与攻击路径见[提示注入测试](/zh-cn/qaskills/prompt-injection-testing/)。
 
-## 在项目里跑一轮
-
-先从一个边界清楚的小回合开始：评估客服智能体的目标完成、规划、记忆、工具调用、失败恢复和安全边界。别急着把结果写成报告。先把输入版本、时间窗口和负责人贴到同一处；然后把每个判断连回具体材料；最后只安排一项能改变结论的验证动作。
-
-单次成功不足以证明可靠，重复试验需要保留任务轨迹和失败分类。这一轮至少要留下可复查的证据索引、仍然成立的假设，以及下一位同事可以直接执行的动作。
-
-
-## 进阶使用：把一次分析变成持续机制
-
-每次 AI 智能体测试都保存模型版本、系统提示词、工具清单和会话 ID。模型、记忆或工具变化时，按变化类型重跑规划、工具调用或恢复用例，并标记复核状态。
-
-### 三段式 Skill 链
-
-`llm-testing` → `ai-agent-testing` → `agent-tool-testing`
-
-| 交接 | 传递内容 | 接收方要检查什么 |
-| --- | --- | --- |
-| 上游到 ai-agent-testing | 来源版本、范围、风险、未决项 | 输入是否过期，冲突是否标记 |
-| ai-agent-testing 到下游 | 判断、证据索引、残余风险、待办 | 产物是否可执行，负责人是否明确 |
-| 下游回写 ai-agent-testing | 执行结果、缺陷、事实变化 | 是否更新基线与回归范围 |
-
-交接时同时传摘要、证据索引和原始材料的位置。这样即使结论出了问题，也能回到来源。
-
-### 团队门禁
-
-| 门禁 | 检查内容 | 未满足时 |
-| --- | --- | --- |
-| ai-agent-testing 输入门禁 | 版本、环境、证据来源和负责人 | 停止生成，列出缺口 |
-| ai-agent-testing 产物门禁 | 关键结论带依据、状态和影响 | 退回补证据 |
-| ai-agent-testing 执行门禁 | 命令、查询或验证路径可复现 | 标记基础设施或测试问题 |
-| ai-agent-testing 决策门禁 | 残余风险有接受人与日期 | 不进入下一阶段 |
-
-## 容易踩的坑
-
-1. 只看最终答案，漏掉错误规划和不必要的工具调用。
-2. 用一条成功会话代表智能体在多轮任务中的稳定性。
-3. 记忆没有版本和来源，导致旧事实继续影响新任务。
-4. 失败后无限重试，却没有停止条件和人工接管路径。
-
-## 相关 Skill
-
-AI 智能体测试要和模型、工具及安全测试互相校验：
-
-- [智能体工具调用测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)：检查具体工具的权限、参数和副作用。
-- [LLM 测试](https://inaodeng.com/zh-cn/qaskills/llm-testing/)：覆盖事实、拒答、稳定性和安全边界。
-- [提示注入测试](https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/)：验证恶意输入下的越权和数据外泄风险。
-
-## 交付前复核：把判断落到证据
-
-拿到 Skill 输出后，先核对四件事：输入版本是否明确、范围是否完整、每条结论能否回到证据、下一步由谁执行。缺一项，报告就容易变成漂亮的猜测。
-
-| 项目 | 需要留下 | 缺失时 |
-| --- | --- | --- |
-| 输入边界 | 版本、环境、时间窗口和本次范围 | 标记假设，不写成事实 |
-| 证据索引 | 日志、报告、追踪记录、截图或命令输出 | 标记 `evidence_pending` |
-| 结论状态 | `verified`、`assumption`、`blocked` 或 `pending` | 停止扩大结论 |
-| 后续动作 | 最小验证命令、负责人和截止时间 | 交付为待办，不进入门禁 |
-
-```text
-source_version: [版本或提交]
-scope: [本次包含和排除的对象]
-evidence: [日志、报告、Trace 或命令输出]
-status: pending
-owner: [负责人]
-next_action: [最小验证动作]
-```
-
-分析类 Skill 要保留查询条件和时间窗口；执行类 Skill 要保留命令、退出码和失败产物。人工修改也要记录，否则下一次复核时无法解释结论为何变化。
-
-## 安装与调用
-
-安装这个 Skill：
+安装命令：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing -g
 ```
 
-安装后，直接使用上面的 `ai-agent-testing` 调用词，并附上本次的真实材料。
-
-## 常见问题
-
-### 输入还不完整，能开始吗？
-
-能。先交付受限初版：列出已知事实、假设、缺口和最小验证动作。环境、数据或权限缺失时，不写执行结论。
-
-### 什么时候需要人工确认？
-
-范围取舍、风险接受、生产操作、数据权限和发布决定必须由对应负责人确认。Skill 负责整理证据与选项，不替团队做授权决定。
-
-先用一份真实材料跑通 AI 智能体测试，并把输入、产物、人工修改和验证证据留在同一条工作链上。这样下一次发生变化时，才有东西可以复用。
-
 ## 参考
-- AI 智能体测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing/prompts/ai-agent-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing/prompts/ai-agent-testing.md)
-- Awesome QA Skills：AI 智能体测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing)
-- Awesome QA Skills GitHub 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- AI 智能体测试 Skill 详情页:[https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)
+
+- [AI 智能体测试 Prompt](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-agent-testing/prompts/ai-agent-testing.md)
+- [AI 智能体测试源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing)
+- [本站 AI 智能体测试目录](/zh-cn/qaskills/ai-agent-testing/)

@@ -1,6 +1,6 @@
 ---
-title: "API Rate Limit Testing Skill: Check fairness, retry behavior, and recovery after a limit is reached"
-description: "API Rate Limit Testing field guide: validate quotas, windows, identities, headers, retry timing, and safe recovery."
+title: "API Rate Limit Testing: Quota, Burst, and Recovery"
+description: "Design traceable rate-limit scenarios for quota boundaries, bursts, identity isolation, retry guidance, and recovery."
 date: 2026-10-20T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,25 +8,25 @@ tags: ["AI Testing", "QA Skills", "API Rate Limit Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A rate limit that only returns 429 is not a complete contract. Clients need to know whether to wait, which identity was limited, and whether a retry will make the situation worse.
+A quota is only part of the contract: the counted event, identity scope, window, reset rule, and client guidance determine what a useful scenario can check. Expect a particular status or `Retry-After` header only when the supplied contract defines it.
 
 ## Why this Skill is needed
 
-API Rate Limit Testing verifies that limits apply to the intended identity and resource, remain fair across windows, expose actionable metadata, and recover predictably.
+API Rate Limit Testing turns documented quotas into traceable scenario candidates. A review can expose gaps in identity scope, counted events, window boundaries, burst allowance, response guidance, and recovery before anyone runs a test.
 
 ## What the Skill does
 
-The API Rate Limit Testing Skill is useful when a team needs a structured review of quota identity, window boundary, burst behavior, response metadata, retry timing, and recovery.
+Use this Skill to design a bounded review of quota identity, window boundaries, burst behavior, response metadata, retry timing, and recovery. It organizes candidates and evidence requests; it does not execute them.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with API Rate Limit Testing.
 
-A practical standard for this Skill is simple: A good limit test changes one identity dimension at a time and uses the server-provided clock guidance. It checks both the blocked period and the first successful request after recovery.
+A useful first pass records the quota limit `N`, the event being counted, identity key, window algorithm, time source, burst allowance, reset behavior, and response contract. Where those rules are known, candidates can compare `N-1`, `N`, and `N+1`, a permitted in-quota control, a window boundary, a burst, a separate identity, and recovery. Missing counting or clock rules stay open questions; they are not filled in from convention.
 
-Use it when the team needs a repeatable review of quota identity, window boundary, burst behavior, response metadata, retry timing, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+Use it when the team needs a repeatable review of quota identity, window boundary, burst behavior, response metadata, retry timing, and recovery—especially when sources disagree or a handoff must show what remains unverified.
 
 ## What it does not do
 
-The API Rate Limit Testing Skill can organize material, evidence, and next actions for Limit decision. It does not replace:
+The API Rate Limit Testing Skill can organize quota-policy material, evidence, and next actions. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -37,17 +37,18 @@ The API Rate Limit Testing Skill can organize material, evidence, and next actio
 
 The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
 
-| Focus | Question before analysis | Handoff output |
+| Evidence area | Capture from the source | Candidate checks |
 | --- | --- | --- |
-| Limit decision | Which key was limited and why | User, tenant, token, or resource |
-| Client action | Wait, back off, switch queue, or stop | Header and policy basis |
-| Fairness finding | Identity starvation, burst leak, or cross-tenant impact | Evidence and repair |
+| Quota ledger | Limit `N`, which successful/rejected events count, user/tenant/route key, window and time source | Compare `N-1`, `N`, and `N+1` only when the counting rule is explicit; retain an allowed in-quota control |
+| Burst and reset | Documented burst allowance, algorithm, reset rule, and boundary semantics | Check the stated burst and before/at/after-window cases; do not infer a fixed, sliding, or token-bucket algorithm |
+| Response and retry | Contracted status, remaining-quota fields, retry hint, client budget, and side effects | Check only fields the contract promises; preserve hint-aware retry, total retry budget, and counted-failure behavior as candidates |
+| Isolation and recovery | Identity dimensions and expected effect on other subjects | Compare one identity dimension at a time; check unaffected subjects and early/late recovery |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analyzing Limit decision, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before analyzing the quota contract, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -83,16 +84,16 @@ This case follows Input, Analysis, Finding, Decision, and Validation. When mater
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
-| Limit contract | Quota, window, burst allowance, identity key, and response headers | Name defaults that are not documented |
-| Traffic plan | Steady requests, bursts, concurrent identities, and retry schedule | Separate client retries from direct load |
-| Recovery evidence | 429 body, Retry-After, remaining count, and post-window success | Keep clock assumptions visible |
+| Limit contract | Quota, counted event, window algorithm, burst, identity key, reset, and response fields | Mark undocumented rules missing; do not supply conventional defaults |
+| Scenario boundary | Subject, endpoint, approved environment, and allowed traffic | Keep a proposed scenario separate from an executed load or test |
+| Recovery evidence | Contracted retry hint, remaining count, time source, and recovery condition | Keep absent clock or retry rules unassessed |
 
 Use a request like this:
 
 ```text
 Use the api-rate-limit-testing Skill.
 
-Task: test a report-export API with per-user and per-tenant quotas while several browser tabs retry after receiving 429
+Task: design evidence-bounded scenarios for a report-export API with per-user and per-tenant quotas and browser clients that may retry after a limit response
 Inputs: [requirements, versions, links, logs, reports, or data paths]
 Scope: [included and excluded objects]
 Unknowns: [missing environment, accounts, data, or permissions]
@@ -103,7 +104,7 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ### Analysis
 
-Start with a bounded pass—test a report-export API with per-user and per-tenant quotas while several browser tabs retry after receiving 429. Exhaust the user quota in one tab, keep a second user in the same tenant active, and retry both according to `Retry-After`. The result should show whether the user, tenant, or endpoint was limited—and whether an automatic retry stampedes the recovery window.
+Start with a bounded design pass for the report-export API. If the supplied policy defines a per-user limit `N`, its counted event, and window, outline `N-1`, `N`, and `N+1` candidates plus an allowed control. Add a second user or tenant only to distinguish the documented identity scopes. Include burst and window-boundary candidates when the policy defines them. Treat `429`, remaining-quota fields, and `Retry-After` as expected evidence only if the contract promises them. Mark every candidate `NOT_RUN` until a real run record exists; do not exhaust a shared quota as part of this design review.
 
 The handoff should preserve the input version, time window, evidence index, owner, and next validation action. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
 
@@ -113,17 +114,16 @@ The handoff should preserve the input version, time window, evidence index, owne
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Limit decision meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+Use an `ARL-##` record when a quota rule or scenario needs a traceable decision. This example keeps absent policy details visible; it does not claim a test ran.
 
-| Field | Example wording |
+| ARL-01 field | Report-export per-user quota |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Limit decision |
-| Finding | The condition or result for Limit decision is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Subject and preconditions | Report-export per-user quota; capture the actual limit, counted event, window, and time source before deriving boundary cases |
+| Behavior of concern | Whether `N-1`, `N`, and `N+1` requests follow the documented quota rule; status and headers remain contract-dependent |
+| Source and evidence state | Quota policy/version not supplied: `missing`; candidate is `NOT_RUN` |
+| Impact and priority | Describe affected users or tenants from evidence; leave priority for the accountable owner if impact is unknown |
+| Owner and close condition | Policy/API owner confirms scope and counting semantics; close the design gap when the source and expected outcomes are reviewable |
+| Validation | A later approved run records identity, request sequence, timestamps, raw responses, and post-window behavior; execution status stays `NOT_RUN` until then |
 
 The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
 
@@ -139,13 +139,13 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 ### Handoff output
 
-| Output field | Why it exists | Example status |
+| Output | Required detail | Example status |
 | --- | --- | --- |
-| Limit decision | Which key was limited and why | User, tenant, token, or resource |
-| Client action | Wait, back off, switch queue, or stop | Header and policy basis |
-| Fairness finding | Identity starvation, burst leak, or cross-tenant impact | Evidence and repair |
+| Quota ledger | `N`, counted event, subject key, window/time source, and source version | `missing` if policy is absent |
+| Scenario candidate | Preconditions, boundary or burst behavior, allowed control, and expected contract evidence | `NOT_RUN` until a run artifact exists |
+| Isolation/recovery | Other subject affected, retry budget, and recovery condition | `unassessed` where rules or observations are absent |
 
-Do not write “passed” without a run record, query result, or source artifact. A good limit test changes one identity dimension at a time and uses the server-provided clock guidance. It checks both the blocked period and the first successful request after recovery.
+Do not write “passed” without a run record. In the design, vary one identity dimension at a time, use a documented time source if one exists, and specify the observation needed during the limited period and after recovery. If those rules are absent, record the gap instead of inventing a delay or status.
 
 ### Next-stage route
 
@@ -183,11 +183,11 @@ After installation, invoke it with the `api-rate-limit-testing` Skill and attach
 
 ### Should rate-limit tests use a real quota?
 
-Use approved isolated quotas or a controllable test policy; do not exhaust shared production capacity.
+This Skill designs scenarios and does not consume quota. For a later authorized run, use an isolated quota or controllable policy; do not exhaust shared production capacity.
 
 ### What if Retry-After is missing?
 
-Record the contract gap and do not invent a client delay as if it were server behavior.
+Record the contract gap. Do not assume `Retry-After`, another header, a status code, or a client delay unless the applicable contract defines it.
 
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 

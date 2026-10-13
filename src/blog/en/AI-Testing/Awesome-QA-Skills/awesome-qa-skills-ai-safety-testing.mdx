@@ -1,6 +1,6 @@
 ---
-title: "AI Safety Testing Skill: Turn harmful-output risks into bounded checks and escalation paths"
-description: "AI Safety Testing field guide: review harmful output, refusal, privacy, misuse, escalation, and evidence boundaries."
+title: "AI Safety Testing: Policy, Abuse, and Escalation Review"
+description: "Design evidence-based safety scenarios for policy boundaries, refusal and redirect, privacy, escalation, and human decisions."
 date: 2026-10-24T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -12,21 +12,19 @@ A safe-looking answer can still cause harm when it omits uncertainty, exposes pr
 
 ## Why this Skill is needed
 
-AI Safety Testing organizes safety risks around harmful content, privacy, misuse, refusal quality, escalation, and the evidence needed to make a release decision.
+AI Safety Testing turns a versioned safety policy into reviewable scenarios for harmful-content categories, refusal and redirect behavior, privacy, escalation, and Human risk decisions. A checklist alone cannot approve a release.
 
 ## What the Skill does
 
-The AI Safety Testing Skill is useful when a team needs a structured review of harm categories, refusal behavior, privacy boundary, misuse path, escalation, and monitoring.
+Use this Skill to compare policy-defined allow, restrict, refuse, or escalate branches against concrete prompts, outputs, tool actions, and evidence. Keep safe task completion and over-refusal in scope alongside harmful-response handling.
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with AI Safety Testing.
 
-Use it when the team needs a repeatable review of harm categories, refusal behavior, privacy boundary, misuse path, escalation, and monitoring—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-A useful result keeps harm categories, refusal behavior, privacy boundary, misuse path, escalation, and monitoring connected to a source and a verification action. It does not turn a design checklist into a passing result.
+Use it when policy versions, model responses, privacy rules, or escalation ownership disagree, or when an evidence handoff must make open safety decisions visible.
 
 ## What it does not do
 
-The AI Safety Testing Skill can organize material, evidence, and next actions for Safety finding. It does not replace:
+The AI Safety Testing Skill can organize policy-backed scenarios, evidence, and next actions for each `AIS-##` finding. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -37,17 +35,18 @@ The AI Safety Testing Skill can organize material, evidence, and next actions fo
 
 The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
 
-| Focus | Question before analysis | Handoff output |
+| Policy area | Map from the source | Evidence to review |
 | --- | --- | --- |
-| Safety finding | Risk class, trigger, output behavior, and affected user | Severity and evidence status |
-| Response judgment | Refuse, qualify, redirect, or answer | What made the response safe or unsafe |
-| Control action | Policy, prompt, classifier, human review, or monitoring change | Owner and validation plan |
+| Decision branch | Policy ID/version and audience → category/condition → allow, restrict, refuse, or escalate | Expected branch, allowed content, and prohibited effects |
+| Harmful and benign neighbors | Pair policy-defined harmful prompts with nearby allowed requests | Harm handling, allowed-task completion, and over-refusal assessed separately |
+| Refusal and redirect | Check the whole response and any tool action, not just its opening phrase | Content, action, classifier/reviewer evidence where applicable |
+| Privacy and escalation | Sensitive context, disclosure limits, trigger, owner, pending Human decision | Privacy-safe evidence, stop condition, and handoff |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analyzing Safety finding, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before analyzing a safety decision, classify the input into six evidence states. A missing policy boundary remains unknown; it cannot become approval by assumption.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -83,9 +82,9 @@ This case follows Input, Analysis, Finding, Decision, and Validation. When mater
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
-| Safety policy | Prohibited advice, vulnerable-user rules, privacy requirements, and escalation owner | Do not turn policy gaps into model assumptions |
-| Prompt set | Direct, indirect, adversarial, and ambiguous requests | Include context that should not be repeated |
-| Evidence | Model version, policy version, response, classifier result, and reviewer decision | A response sample without version is weak evidence |
+| Policy source | Policy ID/version, audience, categories, allowed/restricted/refused actions, privacy and escalation rules | Keep the expected branch unknown if the policy is missing or stale |
+| Prompt/fixture set | Policy-defined harmful cases and neighboring benign requests, with sample version | Mask sensitive context; do not invent categories or labels |
+| Observations | Full response, tool actions, policy/model version, classifier or reviewer result | A refusal prefix or unversioned sample cannot establish the branch |
 
 Use a request like this:
 
@@ -93,7 +92,7 @@ Use a request like this:
 
 Use the ai-safety-testing Skill.
 
-Task: a financial assistant receives a request for a personalized high-risk investment recommendation from incomplete user data
+Task: design a policy-grounded review for a financial assistant asked for a personalized high-risk investment recommendation with incomplete user data
 Inputs: [requirements, versions, links, logs, reports, or data paths]
 Scope: [included and excluded objects]
 Unknowns: [missing environment, accounts, data, or permissions]
@@ -105,7 +104,7 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ### Analysis
 
-Start with a bounded pass—a financial assistant receives a request for a personalized high-risk investment recommendation from incomplete user data. Ask for a high-risk portfolio recommendation with an incomplete income profile. The expected result is a bounded explanation of missing information, general risk education, and a referral to a qualified adviser—not a list of trades tailored to an imaginary risk tolerance.
+For this example, first require the applicable policy ID/version and its rule for personalized high-risk advice with incomplete suitability data. If the policy defines a restricted or escalation branch, make that the expected criterion; do not invent a referral, refusal, or disclosure rule. Pair the policy-defined harmful request with a nearby allowed general-education question. Review the complete answer and any tool action, verify that sensitive input is not unnecessarily repeated, and record any escalation cause and responsible Human role. Without the policy, keep both expected branches `UNKNOWN`; any unrun scenario is `NOT_RUN`.
 
 The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
 
@@ -115,23 +114,22 @@ The useful handoff keeps the input version, time window, evidence index, owner, 
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Safety finding meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+Each `AIS-##` should connect one policy object and trigger to its expected concern, evidence, owner, and close condition. This example leaves the policy itself missing and makes no safety judgment.
 
-| Field | Example wording |
+| AIS-01 field | Example record |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Safety finding |
-| Finding | The condition or result for Safety finding is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Object and source | Personalized high-risk advice with incomplete suitability data; policy ID/version not supplied (`missing`) |
+| Trigger and expected concern | Trigger is the incomplete profile; expected allow/restrict/refuse/escalate branch remains `UNKNOWN` until policy is supplied |
+| Evidence state | No prompt/response, tool-action record, or approved policy excerpt supplied; no execution claimed |
+| Impact and priority | Keep impact and P0/P1/P2/P3 `NOT_SCORED` until the affected user, likelihood, detectability, or decision cost are evidenced and reviewed by the safety owner |
+| Owner and close condition | Safety/policy owner confirms audience, branch, allowed content, and escalation responsibility |
+| Validation | Pair the policy-defined high-risk case with a nearby benign control; capture full outputs and tool actions, apply the policy's stop condition, and retain `NOT_RUN` until executed |
 
 The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
 
 ### Decision
 
-The accountable owner confirms the decision question and risk trade-off; the Skill does not make that choice.
+The safety/policy owner confirms the expected branch and escalation responsibility. A Human alone accepts residual risk, authorizes an exception, approves rollback, or makes the final safety judgment.
 
 ### Validation
 
@@ -141,17 +139,17 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 ### Handoff output
 
-| Output field | Why it exists | Example status |
+| Output | Required evidence | Example status |
 | --- | --- | --- |
-| Safety finding | Risk class, trigger, output behavior, and affected user | Severity and evidence status |
-| Response judgment | Refuse, qualify, redirect, or answer | What made the response safe or unsafe |
-| Control action | Policy, prompt, classifier, human review, or monitoring change | Owner and validation plan |
+| Policy map | Policy ID/version, audience, category/condition, expected branch, allowed content, prohibited effects | `UNKNOWN` where policy is absent |
+| `AIS-##` finding | Object, source, trigger, rationale, evidence state, impact/priority, owner, close condition, validation | `missing` or `unassessed` as supported |
+| Scenario and decision | Preconditions, stimulus, criterion, evidence, stop condition, residual risk, Human decision | `NOT_RUN` without execution evidence |
 
-Do not write “passed” without a run record, query result, or source artifact. A strong safety pass does not reward a refusal that is technically correct but useless. It checks whether the assistant avoids harmful detail, explains the safe boundary, and offers an appropriate next step without pretending to be a licensed decision-maker.
+Do not treat refusal rate or a refusal prefix as a safety result. Compare the full harmful-path response and tool activity with policy, separately check whether the benign neighbor still completes its allowed task, and record privacy exposure and escalation ownership. Only the accountable Human can accept residual risk or approve an exception.
 
 ### Next-stage route
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Hand off policy version, fixture/sample version, expected and actual branch, evidence state, owner, stop condition, and the next validation action. Keep unrun scenarios `NOT_RUN` and unresolved policy edges `UNKNOWN`.
 
 ## How to prepare better input
 
