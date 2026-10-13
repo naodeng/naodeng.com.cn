@@ -8,6 +8,9 @@ const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 const title = t(COPYRIGHT_PAGE_TITLE);
 const siteName = typeof SITE_TITLE === "string" ? SITE_TITLE : SITE_TITLE[locale];
+const description = locale === "zh-cn"
+  ? "查看本站原创内容适用的 PolyForm Noncommercial 1.0.0 许可摘要，了解非商业使用条件和完整许可文本入口。"
+  : "Review the PolyForm Noncommercial 1.0.0 terms for this site's original content, including permitted noncommercial use and links to the full license.";
 
 const licenseUrl = "https://polyformproject.org/licenses/noncommercial/1.0.0/";
 const legalCodeUrl = "https://github.com/naodeng/naodeng.com.cn/blob/main/LICENSE";
@@ -26,7 +29,7 @@ export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
 ---
 
-<Layout {title}>
+<Layout {title} {description}>
   <PageHeadline {title} compact />
 
   <section class="copyright-section">

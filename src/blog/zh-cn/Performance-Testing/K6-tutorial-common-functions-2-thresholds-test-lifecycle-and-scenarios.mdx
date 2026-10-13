@@ -1,6 +1,6 @@
 ---
 title: "K6 性能测试教程：常用功能（2）- 阈值，测试生命周期和场景"
-description: "这篇博文深入介绍了 K6 性能测试工具的常用功能，主要聚焦在阈值设置、测试生命周期和场景设计方面。阐述了如何利用 K6 在性能测试中设定合理的阈值，以便有效监测系统的性能表现。同时，探讨了测试生命周期的重要性，以及如何在不同阶段进行有针对性的性能测试。此外，博文还详细解释了 K6 中场景的概念，以及如何根据实际需求设计和配置场景…"
+description: "通过阈值定义性能测试的通过条件，了解 k6 的 init、VU、setup 和 teardown 生命周期，并用不同执行器配置测试场景。"
 date: 2024-01-18T09:10:00.000Z
 author: "nao.deng"
 tags: ["K6","性能测试"]
@@ -65,7 +65,7 @@ export default function () {
 
 运行该脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EiPBZ9.png)
+![k6 阈值结果：http_req_failed 通过，http_req_duration 未通过](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EiPBZ9.png)
 
 结果中显示，http_req_failed 阈值通过了，http_req_duration 阈值没有通过，整体测试以失败状态结束。
 
@@ -508,7 +508,7 @@ export default function () {
 
 运行场景 demo 脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/zLDexk.png)
+![k6 中 shared_iter_scenario 和 per_vu_scenario 的场景结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/zLDexk.png)
 
 观看测试结果，你会发现配置了场景的测试结果中，除了常规的测试结果外，k6 输出将包含有关 demo 场景的 详细结果信息 (shared_iter_scenario 场景和 per_vu_scenario 场景的很详细的指标信息)。
 
@@ -524,5 +524,5 @@ export default function () {
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

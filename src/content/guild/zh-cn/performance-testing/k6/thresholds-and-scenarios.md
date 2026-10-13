@@ -69,7 +69,7 @@ export default function () {
 
 运行该脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EiPBZ9.png)
+![k6 阈值结果：http_req_failed 通过，http_req_duration 未通过](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EiPBZ9.png)
 
 结果中显示，http_req_failed 阈值通过了，http_req_duration 阈值没有通过，整体测试以失败状态结束。
 
@@ -512,7 +512,7 @@ export default function () {
 
 运行场景 demo 脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/zLDexk.png)
+![k6 中 shared_iter_scenario 和 per_vu_scenario 的场景结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/zLDexk.png)
 
 观看测试结果，你会发现配置了场景的测试结果中，除了常规的测试结果外，k6 输出将包含有关 demo 场景的 详细结果信息 (shared_iter_scenario 场景和 per_vu_scenario 场景的很详细的指标信息)。
 
@@ -528,5 +528,5 @@ export default function () {
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

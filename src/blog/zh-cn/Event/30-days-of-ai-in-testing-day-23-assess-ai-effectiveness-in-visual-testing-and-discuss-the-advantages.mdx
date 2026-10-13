@@ -1,6 +1,6 @@
 ---
 title: "30 天 AI 测试挑战活动：第二十三天：评估 AI 在视觉测试中的有效性并讨论其优势"
-description: "这篇博文是关于 30 天 AI 测试挑战活动的第二十三天，涉及评估人工智能在视觉测试中的有效性，并讨论其优势。文章可能包括作者对于使用人工智能进行视觉测试的实际应用经验，以及对于人工智能在视觉测试中所带来的优势和挑战的思考和评估。通过分享对人工智能在视觉测试中的应用效果和优势的评估，读者将了解到作者对于这一新兴测试方法的认识和见解…"
+description: "记录 Percy 视觉测试试用，通过页面布局和小图标变化比较快照，并复核识别结果、潜在优势与失败场景。"
 date: 2024-03-26T12:06:44.000Z
 author: "nao.deng"
 tags: ["AI 测试","视觉测试"]
@@ -80,7 +80,7 @@ Percy 官方介绍：
 
 - 新建项目：可以选择是 web app 项目还是 mobile app 项目，也可以选择代码管理工具 git 或者 github
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/0KPcbd.png)
+![Percy 项目设置中选择 web 或 mobile app 与代码管理工具的页面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/0KPcbd.png)
 
 - 选择代码编写工具
 - 获取 Percy token
@@ -89,7 +89,7 @@ Percy 官方介绍：
 - 运行测试
 - Percy 平台查看报告
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sp8nHu.png)
+![用于查看视觉测试结果的 Percy 项目报告列表](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sp8nHu.png)
 
 #### Percy 试用开始
 
@@ -141,11 +141,11 @@ npx percy exec -- cypress run
 
 - 查看命令行结果
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HvIxIz.png)
+![Percy 命令行测试输出及结果页面链接](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HvIxIz.png)
 
 测试运行成功后，命令行上会显示一个 percy 平台链接，点击可以去查看具体的视觉验证结果
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tmz854.png)
+![Percy 中当前博客首页与上次运行结果的对比](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tmz854.png)
 
 > 平台上会显示这一次运行后我的博客首页和上一次运行对比的的差异结果。
 
@@ -155,7 +155,7 @@ npx percy exec -- cypress run
 - 重新运行 demo 测试
 - 查看 percy 识别结果
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/exwX2h.png)
+![Percy 对比结果中页面多处视觉变化](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/exwX2h.png)
 
 - 结论：能成功识别并给出页面顶部和顶部的多次差异点
 
@@ -165,9 +165,9 @@ npx percy exec -- cypress run
 - 重新运行 demo 测试
 - 查看 percy 识别结果
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Ma0RMp.png)
+![Percy 对变化后小图标的识别结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Ma0RMp.png)
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8FN43p.png)
+![Percy 对比结果中标出的小图标视觉差异](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8FN43p.png)
 
 - 结论：也能成功识别到页面小图标的变化
 
@@ -232,6 +232,6 @@ npx percy exec -- cypress run
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>
 

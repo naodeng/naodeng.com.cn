@@ -85,7 +85,7 @@ pm.test("res.body should be correct", function() {
 ```
 
 - Click Save and then click Send to be shown that the test passes.
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/20231124181Zpwgn.png)
+![Postman post-demo request using the host environment variable](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/20231124181Zpwgn.png)
 
 ##### 3. Debugging Environment Variable Data-Driven Scripts
 

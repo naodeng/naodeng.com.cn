@@ -1,6 +1,6 @@
 ---
 title: "K6 性能测试教程：常用功能（1）- HTTP 请求，指标和检查"
-description: "这篇文章详细介绍了 K6 中的 HTTP 请求（http request）功能，解析了常用的性能指标和检查功能。学会如何使用 K6 进行强大的性能测试，通过 HTTP 请求模拟用户行为，了解性能指标以评估系统响应。文章还深入讲解了如何配置和执行检查，确保性能符合预期标准。无论您是初学者还是经验丰富的性能测试专业人员，这篇教程将为您提供实用知识…"
+description: "使用 k6 发送 HTTP 请求，查看内置与自定义指标，并通过 checks 检查响应状态和响应体，掌握性能脚本中的常用验证方法。"
 date: 2024-01-11T09:10:00.000Z
 author: "nao.deng"
 tags: ["K6","性能测试"]
@@ -224,7 +224,7 @@ k6 run demo_custom_metrics.js
 
 运行结果如下：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/4tbqVc.png)
+![k6 摘要输出中显示的 waiting_time 自定义指标](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/4tbqVc.png)
 
 > 可以看到，自定义指标 `waiting_time` 已经在结果输出中显示出来了。
 
@@ -265,7 +265,7 @@ export default function () {
 
 运行该脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/aTXnpy.png)
+![k6 HTTP 响应状态检查的运行结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/aTXnpy.png)
 
 > 当脚本包含检查时，摘要报告会显示通过了多少测试检查。
 
@@ -292,7 +292,7 @@ export default function () {
 
 运行该脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AmbL0E.png)
+![k6 对 HTTP 响应体执行检查后的摘要结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AmbL0E.png)
 
 > 当脚本包含检查时，摘要报告会显示通过了多少测试检查。
 
@@ -318,7 +318,7 @@ export default function () {
 
 运行该脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5yJyBw.png)
+![k6 结果显示两个 HTTP 检查均通过，成功率为 100%](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5yJyBw.png)
 
 在此示例中，两个检查都是正常通过的（调用是 100% 成功的）。
 
@@ -333,6 +333,6 @@ export default function () {
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>
 

@@ -1,6 +1,6 @@
 ---
 title: "gatling 性能测试教程 - 进阶用法：报告解析和场景设置"
-description: "文章介绍性能测试工具 gatling 的进阶用法：性能测试报告的解析，不同类型的测试报告报表介绍，不同业务类型下的性能测试场景配置"
+description: "学习解读 Gatling HTML 报告中的总体指标、单请求数据和响应分布，并按业务负载配置用户注入场景。"
 testType: performance-testing
 framework: gatling
 language: Scala/Java
@@ -204,5 +204,5 @@ setUp(
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

@@ -53,7 +53,7 @@ const breadcrumbs = [
   { name: testTypeConfig.title, url: `/${locale}/guild/${testType}/` },
 ];
 
-const pageTitle = testTypeConfig.title;
+const pageTitle = `${testTypeConfig.title} ${isZh ? "指南" : "Guides"}`;
 const metaDescription = testTypeConfig.description;
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const testTypeUrl = `${siteOrigin}/${locale}/guild/${testType}/`;

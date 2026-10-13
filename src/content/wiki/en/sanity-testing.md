@@ -327,7 +327,7 @@ Sanity testing, a subset of regression testing, ensures that code modifications 
     - Payment gateway integration
     - New user registration
   - **Failures**:
-    - Payment gateway integration: Timeout error when processing payments. Steps to reproduce: [Link to test case]. Screenshot: ![Error Screenshot](url).
+    - Payment gateway integration: Timeout error when processing payments. Steps to reproduce: [Link to test case].
   - **Environment**: Windows 10, Software v2.3.1, Test Environment B
   - **Test Data Used**: Test Credit Card #1234
   - **Impact**: Payment processing critical for release. Failure blocks release.

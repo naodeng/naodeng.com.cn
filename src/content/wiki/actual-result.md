@@ -1,6 +1,6 @@
 ---
 title: "实际结果 ｜ Actual Result"
-description: "关于实际结果的问题？"
+description: "实际结果是测试执行中观察到的系统输出或行为，需与预期结果比较，以判定测试是否通过并发现差异。"
 section: "A"
 related:
   - test-case

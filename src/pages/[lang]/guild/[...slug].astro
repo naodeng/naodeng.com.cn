@@ -19,6 +19,7 @@ import { wikiIdToSlug, getTitleZhFromBody, getTitleZh, slugToTitleEn } from "@/d
 import { aiwikiIdToSlug, aiwikiIdToLang, getAiWikiDisplayTitle } from "@/data/aiwiki";
 import { getGuildConfig } from "@/config/guild.config";
 import { readingTime } from "@/utils/readingTime";
+import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 import type { Lang } from "@/i18n";
 import TrackingEvents from "@/components/TrackingEvents.astro";
 
@@ -103,7 +104,23 @@ const { prev, next } = getAdjacentArticles(allEntries, locale, testType, framewo
 
 // SEO
 const pageTitle = `${entry.data.title} - ${frameworkConfig.name}`;
-const metaDescription = entry.data.description || entry.data.title;
+const sourceDescription = String(entry.data.description || entry.data.title).trim();
+const metaDescriptionKey = (value: string) => value.length > 155
+  ? value.slice(0, 152).trimEnd()
+  : value;
+const blogDescriptionKeys = new Set(
+  filterPublishedBlogPosts(await getCollection("blog"))
+    .filter((post) => post.id.startsWith(`${locale}/`))
+    .map((post) => metaDescriptionKey(String(post.data.description || "").trim()))
+    .filter(Boolean),
+);
+const isDuplicateBlogDescription = blogDescriptionKeys.has(metaDescriptionKey(sourceDescription));
+const guideContext = locale === "zh-cn"
+  ? `${frameworkConfig.name} ${testTypeConfig.title}教程：`
+  : `${frameworkConfig.name} ${testTypeConfig.title} tutorial: `;
+const metaDescription = isDuplicateBlogDescription
+  ? `${guideContext}${sourceDescription}`
+  : sourceDescription;
 
 // 结构化数据
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";

@@ -1,6 +1,6 @@
 ---
 title: "gatling 性能测试教程 - 进阶用法：CI/CD 集成"
-description: "文章介绍性能测试工具 gatling 的进阶用法：CI/CD 集成，以 github action 为例来介绍如何集成 gatling 到 CI/CD 流程中"
+description: "以 GitHub Actions 为例，将 Gatling 性能测试接入 CI/CD 流程；其他 CI 工具也可沿用相同的集成思路。"
 testType: performance-testing
 framework: gatling
 language: Scala/Java
@@ -138,5 +138,5 @@ jobs:
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

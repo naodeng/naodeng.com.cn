@@ -1,6 +1,6 @@
 ---
 title: "Retesting"
-description: "Retesting involves running tests on modified software to verify that changes haven't introduced new issues and that previously identified defects are resolved."
+description: "Retesting repeats a failed test after its related defect is fixed. Regression testing checks for side effects in unchanged areas."
 section: "R"
 related:
   - "automated-testing"
@@ -41,7 +41,7 @@ order: 0
       - [How can retesting be integrated into continuous integration and continuous delivery pipelines?](#how-can-retesting-be-integrated-into-continuous-integration-and-continuous-delivery-pipelines)
 <!-- TOC END -->
 
-Retesting involves running tests on modified software to verify that changes haven't introduced new issues and that previously identified defects are resolved.
+Retesting repeats a failed test after its related defect is fixed. Regression testing checks for side effects in unchanged areas.
 
 ## Questions about Retesting?
 

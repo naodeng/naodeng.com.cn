@@ -9,6 +9,7 @@ import { BLOG_POSTS_PER_PAGE, NAV_HOME, NAV_TAGS } from "@/consts";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 import { paginateItems } from "@/utils/blogPagination";
+import { buildBlogArchiveDescription } from "@/utils/blogArchiveDescription.mjs";
 
 function tagToSlug(tag: string) {
   return tag.includes("/") || tag.includes(" ") ? encodeURIComponent(tag) : tag;
@@ -54,6 +55,14 @@ const t = useTranslations(locale);
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const paginated = paginateItems(sortedPosts, Number(page) || 1, BLOG_POSTS_PER_PAGE);
 const title = `#${tag}`;
+const description = buildBlogArchiveDescription({
+  kind: "tag",
+  name: tag,
+  totalItems: paginated.totalItems,
+  currentPage: paginated.currentPage,
+  totalPages: paginated.totalPages,
+  lang: locale,
+});
 const tagBasePath = `/tags/${tagToSlug(tag)}/`;
 const pageLabel = locale === "zh-cn" ? `第 ${paginated.currentPage} 页` : `Page ${paginated.currentPage}`;
 const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
@@ -66,7 +75,7 @@ const breadcrumbs = [
 ];
 ---
 
-<Layout title={`${title} · ${pageLabel}`}>
+<Layout title={`${title} · ${pageLabel}`} {description}>
   <Breadcrumb items={breadcrumbs} />
   <PageHeadline {title} compact>
     <p class="tag-meta">{paginated.totalItems} {t({ en: "posts found", "zh-cn": "篇文章" })}</p>

@@ -1,108 +1,108 @@
 ---
-title: "Introduce of API Testing"
-description: "文章介绍接口测试的简介，类型和工具"
+title: "Introduction to API Testing"
+description: "An introduction to API testing that explains its scope, common functional and non-functional test types, and practical testing guidance."
 date: 2023-04-20T00:00:00.000Z
 author: "nao.deng"
 tags: ["API Testing"]
-categories: ["接口测试","测试工具"]
+categories: ["API Testing", "Testing Tools"]
 series: ["测试理论指南"]
 
 ---
 
-### 什么是 API?
+### What Is an API?
 
-API:应用程序接口（全称：application programming interface），缩写为 API，是一种计算接口，它定义多个软件中介之间的交互，以及可以进行的调用（call）或请求（request）的种类，如何进行调用或发出请求，应使用的数据格式，应遵循的惯例等。它还可以提供扩展机制，以便用户可以通过各种方式对现有功能进行不同程度的扩展。一个 API 可以是完全定制的，针对某个组件的，也可以是基于行业标准设计的以确保互操作性。通过信息隐藏，API 实现了模块化编程，从而允许用户实现独立地使用接口。
+An application programming interface (API) defines how software components interact. It describes the operations that can be called or requested, how to invoke them, the data formats they use, and the conventions they follow. APIs may also provide extension points so users can adapt existing capabilities. An API can be tailored to a specific component or follow an industry standard for interoperability. By hiding implementation details, an API supports modular software whose components can be used independently.
 
-### 什么是 API 测试？
+### What Is API Testing?
 
-接口测试是[软件测试](https://zh.wikipedia.org/wiki/软件测试)的一种，它包括两种测试类型：狭义上指的是直接针对[应用程序接口](https://zh.wikipedia.org/wiki/应用程序接口)（下面使用缩写 API 指代，其中文简称为接口）的功能进行的测试；广义上指[集成测试](https://zh.wikipedia.org/wiki/集成测试)中，通过调用 API 测试整体的功能完成度、可靠性、安全性与性能等指标。
+API testing is a form of [software testing](https://en.wikipedia.org/wiki/Software_testing). In a narrow sense, it checks the behavior of an [application programming interface](https://en.wikipedia.org/wiki/API) directly. More broadly, it can be part of integration testing: teams call APIs to verify system behavior, reliability, security, and performance.
 
-API Best Practice:
+### API Testing Best Practices
 
-- API 定义遵循 RESTFUL API 风格，语意化的 URI 定义，准确的 HTTP 状态码，通过 API 的定义就可以知道资源间的关系
-- 配有详细且准确的 API 文档（如 Swagger 文档）
-- 对外的 API 可以包含版本号以快速迭代（如 https://thoughtworks.com/v1/users/）
+- Follow a consistent API style, such as REST, use resource-oriented URIs, and return accurate HTTP status codes so clients can understand the resource model and request outcome.
+- Provide detailed, accurate API documentation, such as a Swagger or OpenAPI specification.
+- Consider versioning public APIs when it helps teams evolve them safely, for example `https://thoughtworks.com/v1/users/`.
 
-### API 测试与测试四象限
+### API Testing and the Testing Quadrants
 
-测试四象限中不同象限的测试，其测试目的跟测试策略也不同，API 测试主要位于第二、第四象限
+Each testing quadrant has a different purpose and strategy. API tests commonly support the second and fourth quadrants, depending on what the tests are intended to learn or verify.
 
-### API 测试与测试金字塔
+### API Testing and the Test Pyramid
 
-API 测试在测试金子塔中处于一个相对靠上的位置，主要站在系统、服务边界来测试功能和业务逻辑，执行时机是在服务完成构建、部署到测试环境之后再执行、验证。
+API tests occupy a relatively high layer in the test pyramid and exercise functionality and business rules at system and service boundaries. Teams run them after the service has been built and deployed to a test environment.
 
-### API 测试类型
+### Types of API Testing
 
-功能测试
+Functional testing can cover areas such as:
 
-- 正确性测试
-- 异常处理
-- 内部逻辑
-- ……
+- Correctness
+- Error handling
+- Internal logic
+- …
 
-非功能测试
+Non-functional testing can cover areas such as:
 
-- 性能
-- 安全
-- ……
+- Performance
+- Security
+- …
 
-### API 测试步骤
+### A Basic API Testing Workflow
 
-- 发送请求
-- 得到响应
-- 验证响应结果
+- Send a request.
+- Receive the response.
+- Validate the response.
 
-### API 功能测试设计
+### Designing Functional API Tests
 
-设计理论
+Test design can consider scenarios such as:
 
-- 正面
-- 负面
-- 异常处理
-- 内部逻辑
-- ……
+- Positive behavior
+- Negative behavior
+- Error handling
+- Internal logic
+- …
 
-测试方法
+Common techniques include:
 
-- 等价类划分
-- 边界值
-- 错误推断
-- ……
+- Equivalence partitioning
+- Boundary value analysis
+- Error guessing
+- …
 
-### API 非功能测试设计
+### Designing Non-Functional API Tests
 
-安全测试
+Security testing can include:
 
-- 随机测试
-- SQL 注入
-- XSS
-- ……
+- Random testing
+- SQL injection testing
+- Cross-site scripting (XSS) testing
+- …
 
-性能测试
+Performance testing can include:
 
-- 性能瓶颈
-- 稳定性测试
-- ……
+- Finding performance bottlenecks
+- Stability testing
+- …
 
-### API 测试工具
+### API Testing Tools
 
-API 请求工具
+Tools for sending API requests include:
 
-- CURL
-- Soap UI
+- cURL
+- SoapUI
 - Postman
 - Swagger UI
-- ……
+- …
 
-Http proxy 工具
+HTTP proxy tools include:
 
 - Fiddler
 - Charles
-- ……
+- …
 
-API 性能测试工具
+API performance testing tools include:
 
-- ab(apache bench)
-- Jmeter
-- ……
+- ApacheBench (`ab`)
+- JMeter
+- …
 

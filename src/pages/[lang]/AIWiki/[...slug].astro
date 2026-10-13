@@ -39,7 +39,7 @@ const rawDescription =
   (entry.data.description && String(entry.data.description).trim()) ||
   (bodyStr && bodyStr.replace(/^#.+/m, "").replace(/[#*_[\]()`]/g, "").trim().slice(0, 200)) ||
   pageTitle;
-const metaDescription = rawDescription.length > 155 ? rawDescription.slice(0, 152).trimEnd() + "…" : rawDescription;
+const metaDescription = rawDescription;
 
 const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },

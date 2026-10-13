@@ -21,6 +21,7 @@ interface Props {
   /** 页面标题模式：首页可使用 absolute 避免重复拼接站点名 */
   titleMode?: PageTitleMode;
   description?: string;
+  descriptionMaxLength?: number | null;
   /** 页面级关键词，覆盖全局 SITE_KEYWORDS */
   keywords?: string;
   /** og:type，文章页传 "article"，默认 "website" */
@@ -53,6 +54,7 @@ const {
   title,
   titleMode = "append-site",
   description,
+  descriptionMaxLength = null,
   keywords,
   type: ogType = "website",
   image: customImage,
@@ -107,12 +109,13 @@ const metaDescriptionSuffix = (() => {
     ? "本文介绍相关概念、适用场景、实践步骤、输入输出与常见注意事项，帮助读者在软件测试、质量保障和 AI 工程实践中查阅、理解并复用这些内容，也可作为相关质量决策的入门参考。"
     : "Find practical context, guidance, usage scenarios, and next steps for this software testing or engineering topic.";
 })();
-/** Bing 建议避免过短或重复的默认描述；补充页面上下文，再控制在 155 字内。 */
+/** 保留页面明确提供的完整摘要；默认站点描述可补充上下文，长度上限由页面按需指定。 */
 const localeDescription = buildMetaDescription({
   description,
   siteDescription: t(SITE_DESCRIPTION),
   pageContext,
   suffix: metaDescriptionSuffix,
+  maxLength: descriptionMaxLength,
 });
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;

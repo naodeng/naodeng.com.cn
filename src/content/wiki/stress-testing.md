@@ -1,6 +1,6 @@
 ---
 title: "压力测试 ｜ Stress Testing"
-description: "关于压力测试的问题？"
+description: "压力测试在超出正常运行范围的条件下评估系统的稳定性与弹性，帮助识别性能极限和潜在故障。"
 section: "S"
 related:
   - manual-testing

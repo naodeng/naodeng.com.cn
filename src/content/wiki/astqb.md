@@ -1,6 +1,6 @@
 ---
 title: "美国软件测试认证委员会 ｜ ASTQB"
-description: "关于 ASTQB 的问题？"
+description: "美国软件测试认证委员会（ASTQB）是 ISTQB 的美国国家委员会，负责美国认证测试员计划、认证管理和培训认可。"
 section: "A"
 related:
   - istqb

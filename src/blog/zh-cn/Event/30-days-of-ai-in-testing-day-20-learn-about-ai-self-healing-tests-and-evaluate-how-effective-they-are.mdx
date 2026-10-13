@@ -1,6 +1,6 @@
 ---
 title: "30 天 AI 测试挑战活动：第二十天：探索 AI 自愈测试的有效性"
-description: "这篇博文是关于 30 天 AI 测试挑战活动的第二十天，探索 AI 自愈测试的有效性。文章可能包括作者对 AI 自愈测试的定义、目的和方法，以及对其有效性的评估和实践经验。通过分享对 AI 自愈测试的探索和评价，读者将了解到作者对于这一新兴测试方法的看法和认识，以及其在实际测试环境中的应用效果…"
+description: "以 Katalon Studio 为例测试 AI 自愈功能：故意更改 WebUI 定位符和步骤顺序，观察恢复行为并分析失败场景。"
 date: 2024-03-23T13:06:44.000Z
 author: "nao.deng"
 tags: ["AI 测试"]
@@ -73,31 +73,31 @@ Katalon Studio 的 AI 自愈测试的工作机制：
 ### 2. **验证其中一个声明**
 
 为了验证 Katalon Studio 的 AI 自愈测试功能，我使用 Katalon Studio 录制了 [Swag Labs](https://www.saucedemo.com/)在线购物网站的登录，选择商品，加入购物车，并下单成功的流程，Katalon Studio 生成的代码如下
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yJz1dB.png)
+![Katalon Studio 录制并通过的登录、选品和加入购物车测试](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yJz1dB.png)
 
 > 当前的 demo 测试用例能运行通过
 
 #### 2.1 故意更改定位符验证 AI 自愈测试功能
 
 为了验证工具的 AI 自愈测试功能中的检测到元素定位符变动后的修复功能，我将测试脚本中更改了两处错误定位，调整后的用例如下：
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/P1SgEU.png)
+![为验证自愈能力而修改了两个定位符的测试脚本](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/P1SgEU.png)
 
 运行测试失败后，查看工具的 AI 自愈测试功能，发现并没有提供定位失败修复建议
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EES0vN.png)
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dahhBI.png)
+![元素定位符变更后的测试失败结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EES0vN.png)
+![定位符变更测试失败后 Katalon Studio 自愈功能的界面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dahhBI.png)
 
 #### 2.2 故意调换测试中的两个步骤验证 AI 自愈测试功能
 
 为了验证工具的 AI 自愈测试功能中的检测到元素定位符变动后的修复功能，我将测试脚本中更改了 测试步骤的顺序，调整后的用例如下：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/rLRZWL.png)
+![调换了登录操作顺序的 Katalon 测试步骤](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/rLRZWL.png)
 
 运行测试失败后，查看工具的 AI 自愈测试功能，发现并没有提供定位失败修复建议
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/TLAW06.png)
+![调换两个测试步骤后运行失败的结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/TLAW06.png)
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AXttDE.png)
+![测试步骤调换后 AI 自愈功能给出的处理结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AXttDE.png)
 
 ### 3.**这项功能可能在哪里失效？**
 
@@ -156,6 +156,6 @@ Katalon Studio 的 AI 自愈测试的工作机制：
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>
 

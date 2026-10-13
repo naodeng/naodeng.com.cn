@@ -1,6 +1,6 @@
 ---
 title: "工厂验收测试 ｜ Fat"
-description: "关于 FAT 的问题？"
+description: "工厂验收测试（FAT）在交付前的受控环境中验证设备或软件是否满足客户要求和约定规范。"
 section: "F"
 related:
   - test-case

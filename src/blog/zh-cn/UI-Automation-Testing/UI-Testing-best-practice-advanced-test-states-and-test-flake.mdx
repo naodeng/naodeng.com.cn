@@ -173,7 +173,7 @@ it('allows user to login', { // can also be in a context or describe block
 ... 我们如何检测系统存在的更深层次问题，这可能表明存在*不稳定的系统*？以下是团队[Cypress 仪表板](https://www.cypress.io/dashboard/)上的一个示例快照：
 
 >*“在周末的 40 次执行中，它以 10% 的错误率失败... 我们运行了测试套件 40 次，在其中的一次执行中看到该规范重试了 2 次，直到通过...”*
-![ ](https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/test-retry-pipeline.png?raw=true)
+![用于处理间歇性失败的 Cypress 测试重试流水线示意图](https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/test-retry-pipeline.png?raw=true)
 
 *请注意：相机图标表示一些测试失败，因为 Cypress 在失败时会拍摄视频和截图。*
 
@@ -195,7 +195,7 @@ At minute 0 past hour 2, 6, 8, 10, 12, 14, 16, 18, and 20 on every day-of-week f
 一旦排除了所有其他因素，并且在管道中使用 cron 任务自动化测试初步指示了“系统波动”，这些问题就是**性能测试**的理想候选项，因为这种测试方法可以直接指出可能导致“不稳定的系统”的系统缺陷。
 
 性能测试的要点如下：
-![ ](https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/performanceTesting.jpg?raw=true)
+![k6 教程中介绍性能测试的配图](https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/performanceTesting.jpg?raw=true)
 
 有许多性能测试工具，其中一个我们认为比较易于使用的是 [k6-loadImpact](https://docs.k6.io/docs)，因为它采用了 ES6 语法，并且与流水线兼容。
 你可以在 [这里](https://github.com/muratkeremozcan/k6-loadImpact) 找到一个包含代码示例的简单教程。
@@ -212,5 +212,5 @@ At minute 0 past hour 2, 6, 8, 10, 12, 14, 16, 18, and 20 on every day-of-week f
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

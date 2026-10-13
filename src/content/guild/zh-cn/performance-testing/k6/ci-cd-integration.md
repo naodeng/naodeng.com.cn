@@ -62,7 +62,7 @@ export function handleSummary(data) {
 - 4. 使用 k6 运行测试脚本即可在项目根目录生成名称为 summary.html 的 html 报告
 
 - 5. 打开 summary.html 报告即可查看 html 报告。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tty2Zs.png)
+![在浏览器中打开的 k6 summary.html 测试报告](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tty2Zs.png)
 
 更多关于 K6 HTML Report Exporter v2 插件的用法，请参考官方文档 https://github.com/benc-uk/k6-reporter[https://github.com/benc-uk/k6-reporter]
 
@@ -97,7 +97,7 @@ jobs:
 
 - 提交代码：将 k6.yml 文件添加到仓库中并提交。
 - 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 K6 Performance Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NlOiHp.png)
+![GitHub Actions 中 K6 Performance Test 工作流的运行记录](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NlOiHp.png)
 
 - 我们也通过 github action 输出 html 报告，先调整一下 k6.yml 文件
 
@@ -130,7 +130,7 @@ jobs:
 
 - 提交代码：将 k6.yml 文件添加到仓库中并提交。
 - 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 K6 Performance Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果和测试报告附件。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sFCarY.png)
+![K6 Performance Test GitHub Actions 工作流生成的 HTML 报告附件](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sFCarY.png)
 
 ## 参考文档
 
@@ -141,5 +141,5 @@ jobs:
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

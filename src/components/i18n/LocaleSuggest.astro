@@ -1,11 +1,13 @@
 ---
 import { LOCALES, getLocalePaths, type Lang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 const currentLocale = Astro.currentLocale as Lang;
 const localePaths = Object.fromEntries((await getLocalePaths(Astro.url)).map(({ lang, path }) => [lang, path]));
+const currentLocaleHomePath = getRelativeLocaleUrl(currentLocale, "/");
 ---
 
 <div id="js-languageSuggest">
-  <a id="js-link" href="/">
+  <a id="js-link" href={currentLocaleHomePath}>
     <span class="material-icons-sharp">autorenew</span>
     <span id="js-linkText"></span>
   </a>

@@ -1,6 +1,6 @@
 ---
 title: "gatling 性能测试教程：入门介绍"
-description: "文章介绍性能测试工具 gatling 的新手入门介绍，环境搭建，如何将官方 demo 跑起来"
+description: "配置 Gatling 入门环境，并用 VS Code 或 IntelliJ IDEA 搭配 Gradle 或 Maven 启动和调试官方示例。"
 testType: performance-testing
 framework: gatling
 language: Scala/Java
@@ -141,5 +141,5 @@ mvn gatling:test
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

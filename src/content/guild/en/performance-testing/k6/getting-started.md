@@ -86,7 +86,7 @@ k6 version
 
 If the installation was successful, the k6 version information will be displayed:
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/QR8wKb.png)
+![Terminal output confirming the installed k6 version](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/QR8wKb.png)
 
 ## First k6 test script
 
@@ -195,7 +195,7 @@ k6 run demo.js
 
 If all is well, you will see output similar to the following:
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/a4vK69.png)
+![Summary output from the first k6 test script](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/a4vK69.png)
 
 Contains the following information:
 

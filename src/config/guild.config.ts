@@ -126,7 +126,7 @@ export const guildConfigZhCn: GuildConfig = {
     {
       id: 'performance-testing',
       title: '性能测试',
-      description: '学习如何进行性能测试和压力测试',
+      description: '浏览 JMeter、K6 和 Gatling 性能测试指南，涵盖负载测试、脚本、场景设计、报告分析与 CI/CD 集成。',
       icon: 'bolt',
       frameworks: [
         {
@@ -262,7 +262,7 @@ export const guildConfigEn: GuildConfig = {
     {
       id: 'performance-testing',
       title: 'Performance Testing',
-      description: 'Learn how to perform performance and load testing',
+      description: 'Explore JMeter, K6, and Gatling guides for load testing, script writing, scenario design, report analysis, and CI/CD integration.',
       icon: 'bolt',
       frameworks: [
         {

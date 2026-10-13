@@ -1,6 +1,6 @@
 ---
 title: "预期结果 ｜ Expected Result"
-description: "关于预期结果的问题？"
+description: "预期结果是测试用例在指定条件下应产生的输出或行为，作为与实际结果比较并判断测试是否通过的基准。"
 section: "E"
 related:
   - test-case

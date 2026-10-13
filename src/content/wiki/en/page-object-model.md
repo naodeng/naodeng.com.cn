@@ -1,6 +1,6 @@
 ---
 title: "Page Object Model"
-description: "The Page Object Model (POM) is a design pattern that consolidates web elements into an object repository, promoting code reusability and simplifying test maintenance."
+description: "The Page Object Model (POM) groups a page's locators and UI actions in an object, separating test flow from interface details and easing maintenance."
 section: "P"
 related:
   - "webdriver"
@@ -35,7 +35,7 @@ order: 0
       - [How can you handle multiple windows or frames using the Page Object Model?](#how-can-you-handle-multiple-windows-or-frames-using-the-page-object-model)
 <!-- TOC END -->
 
-The Page Object Model (POM) is a design pattern that consolidates web elements into an object repository, promoting code reusability and simplifying test maintenance.
+The Page Object Model (POM) groups a page's locators and UI actions in an object, separating test flow from interface details and easing maintenance.
 
 ## Related Terms:
 

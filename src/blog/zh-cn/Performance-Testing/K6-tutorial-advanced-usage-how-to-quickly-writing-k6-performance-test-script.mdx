@@ -1,6 +1,6 @@
 ---
 title: "K6 性能测试教程 - 进阶用法：如何快速编写 K6 性能测试脚本"
-description: "这篇博文深入介绍了在进行 K6 性能测试时，除了传统的 JavaScript 编写脚本方式外，还介绍了 K6 提供的多种快捷方式。首先，通过 K6 提供的 Test Builder 测试生成器工具，读者能够轻松快捷地生成性能测试脚本，简化了脚本编写过程。其次，博文介绍了使用 K6 Recorder 录制器的方法，通过录制操作生成脚本，省去手动编写的步骤…"
+description: "本文演示三种快速生成 k6 性能测试脚本的方法：使用 Test Builder、k6 Recorder 录制浏览器操作，以及将 HAR 文件转换为 k6 脚本。"
 date: 2024-01-19T05:10:00.000Z
 author: "nao.deng"
 tags: ["K6","性能测试"]
@@ -35,37 +35,37 @@ Test builder 不需要安装，它是 Grafana Cloud k6 提供的一个功能，�
 
 - 登录进入 Grafana Cloud 首页
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/66TXQ3.png)
+![Grafana Cloud 首页，准备进入 k6 性能测试项目](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/66TXQ3.png)
 
 - 依次点击左侧菜单栏上的 Testing & synthetics--->Performance--->Projects
 - 然后选择 default project 或者新建一个 project，进入到项目的详情页面
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Ynx49y.png)
+![Grafana Cloud 中选择或新建 k6 项目的页面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Ynx49y.png)
 - 点击页面上的 Start testing 按钮，然后再选择页面下的 Test builder，进入到 Test builder 测试生成器界面
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/GgzyK7.png)
+![从项目页面打开的 Grafana Cloud k6 Test Builder 界面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/GgzyK7.png)
 
 > 提醒：由于 Test builder 测试生成器是 Grafana Cloud 上登录进行使用，可能 Grafana Cloud 存储一些敏感数据，所以建议大家不要在生产环境中使用 Test builder 测试生成器。
 
 #### 如何使用 Test builder 测试生成器
 
 - 1.在 Test builder 测试生成器界面，点击 Scenario_1 下的 Options 按钮进入到配置页面，配置测试场景的基本信息，如下图所示：
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/JvABl9.png)
+![k6 Test Builder 中配置 Scenario_1 的选项页面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/JvABl9.png)
 
 > 可以看到场景配置页面提供了多种配置选项，可以根据自己的需求进行配置场景名称，执行器类型和不同的 UV 配置。
 
 - 2.在 Test builder 测试生成器界面，点击 Scenario_1 下的 Requests 按钮进入到 Requests 管理页面，如下图所示：
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ohtOQD.png)
+![k6 Test Builder 中 Scenario_1 的 Requests 管理页面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ohtOQD.png)
 
 - 3.点击页面下的 Request 按钮进入添加请求页面，如下图所示：
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BFSEME.png)
+![k6 Test Builder 中用于添加请求的 Add Request 页面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BFSEME.png)
 
 - 4.在添加请求页面，输入请求的 URL 地址，再根据实际情况添加请求的 headers 或请求的 body 或检查点等参数，然后点击页面上的 Create 按钮，完成性能场景的配置，如下图所示：
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/inCNCz.png)
+![k6 Test Builder 中配置请求 URL、请求头、请求体和检查点的表单](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/inCNCz.png)
 
 #### 获取 Test builder 测试生成器生成的脚本
 
 在 Test builder 测试生成器界面，点击页面上的 Script 按钮，页面就会展示出 Test builder 测试生成器生成的脚本，如下图所示：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/rh3Qfr.png)
+![Test Builder 中展示的自动生成 k6 测试脚本](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/rh3Qfr.png)
 
 > 可以看到 Test builder 测试生成器生成的脚本，是一个完整的 K6 测试脚本，可以直接复制到本地，然后使用 k6 运行该脚本。
 
@@ -73,7 +73,7 @@ Test builder 不需要安装，它是 Grafana Cloud k6 提供的一个功能，�
 
 在 Test builder 测试生成器界面，点击页面上的 Run Test 按钮，页面就会展示出 Test builder 测试生成器生成的脚本的运行结果，如下图所示：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yFuEyu.png)
+![Test Builder 生成的 k6 脚本运行结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yFuEyu.png)
 
 > 可以看到 Test builder 测试生成器生成的脚本运行的很详细的测试结果信息。
 
@@ -104,27 +104,27 @@ K6 Recorder 录制器是一个浏览器扩展程序，可以在 Chrome 或 Firef
 - 2. 选择保存自动生成的脚本的位置。
   - 要将其保存在本地计算机上，请选择"我不想在云中保存测试"(后面的例子我选择的这个选项)。
   - 要将其保存到任何 Grafana Cloud k6 项目中，请选择“登录”。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yj75Ef.png)
+![Grafana Cloud k6 Recorder 中选择脚本保存位置的页面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yj75Ef.png)
 - 3. 选择保存脚本位置后，在当前浏览器选项卡输入测试网站地址，点击选择开始录制按钮以开始录制当前浏览器选项卡。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/6NjHGS.png)
+![k6 Recorder 中开始浏览器录制的界面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/6NjHGS.png)
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/KFMDWX.png)
+![k6 录制过程中输入了 123 的 Google 首页搜索框](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/KFMDWX.png)
 
 > 图中我打开了谷歌的首页并点击了搜索框，输入了 123，然后点击了搜索按钮，
 
 - 4. 点击了 k6 Recorder 录制器的停止录制按钮停止录制。
 - 5. 将录制的文件取名保存在本地（我这里取名为 record-demo.har）。
 - 6. 使用 har-to-k6 工具将 HAR 文件转换为 K6 脚本。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2nRtpW.png)
+![使用 har-to-k6 将 HAR 文件转换为 k6 脚本的终端示例](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2nRtpW.png)
 
 > har-to-k6 工具是一个命令行工具，可以将 HAR 文件转换为 k6 脚本。需要先通过 `npm install -g har-to-k6`安装 har-to-k6 工具，然后通过 `har-to-k6 record-demo.har -O record-demo.js`命令将 HAR 文件转换为 K6 脚本。
 
 - 7. 转换后的 K6 脚本部分截图如下所示：
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ldC2kl.png)
+![由 HAR 录制文件转换生成的 k6 脚本片段](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ldC2kl.png)
 
 - 8. 大家可以根据自己的需求对转换后的 K6 脚本进行修改，然后使用 k6 运行该脚本。
 - 9. 使用 k6 运行转换后的 K6 脚本，查看运行结果。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/jUpYWj.png)
+![运行 HAR 转换脚本后的 k6 测试结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/jUpYWj.png)
 
 更多关于 K6 Recorder 录制器的内容，请参考官方文档：[https://grafana.com/docs/k6/latest/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder/](https://grafana.com/docs/k6/latest/using-k6/test-authoring/create-tests-from-recordings/using-the-browser-recorder/)
 
@@ -151,12 +151,12 @@ K6 Recorder 录制器是一个浏览器扩展程序，可以在 Chrome 或 Firef
 - 选择网络选项卡 Network。
 - 检查和确认录音按钮（圆形按钮）是否已激活（红色）。
 - 如果想要记录多个连续的页面加载，请选中“保留日志”复选框。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/1RDeqJ.png)
+![启用 Preserve log 的 Chrome DevTools Network 面板](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/1RDeqJ.png)
 
 - 输入测试网站的 URL（如 [https://www.google.com/](https://www.google.com/)），然后开始执行和后续模拟用户执行的操作（如输入 123 进行搜索）。
 
 - 完成后，在 Chrome 开发人员工具中，右键单击 URL 并选择“将内容另存为 HAR”。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/WBsOXl.png)
+![Chrome DevTools 中将网络请求保存为 HAR 文件的菜单](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/WBsOXl.png)
 
 - 选择保存 HAR 文件的位置并重命名（如 har-demo），然后点击保存按钮，完成 HAR 文件的保存。
 
@@ -169,14 +169,14 @@ K6 Recorder 录制器是一个浏览器扩展程序，可以在 Chrome 或 Firef
 - 2. 使用 har-to-k6 工具将 HAR 文件转换为 K6 脚本
 
   - 通过 `har-to-k6 har-demo.har -O har-demo.js`命令将 HAR 文件转换为 K6 脚本。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/UIKobM.png)
+![使用 har-to-k6 将 har-demo.har 转换为 har-demo.js 的命令](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/UIKobM.png)
 
 - 3. 转换后的 K6 脚本部分截图如下所示：
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/1OWWG0.png)
+![由 har-demo.har 生成的 k6 脚本片段](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/1OWWG0.png)
 
 - 4. 大家可以根据自己的需求对转换后的 K6 脚本进行修改，然后使用 k6 运行该脚本。
 - 5. 使用 k6 运行转换后的 K6 脚本，查看运行结果。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/9BLD7D.png)
+![运行 har-demo.har 转换脚本后的 k6 测试结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/9BLD7D.png)
 
 更多关于 HAR 文件的内容，请参考官方文档：[https://grafana.com/docs/k6/latest/using-k6/test-authoring/create-tests-from-recordings/using-the-har-converter/](https://grafana.com/docs/k6/latest/using-k6/test-authoring/create-tests-from-recordings/using-the-har-converter/)
 
@@ -189,5 +189,5 @@ K6 Recorder 录制器是一个浏览器扩展程序，可以在 Chrome 或 Firef
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

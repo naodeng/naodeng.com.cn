@@ -1,6 +1,6 @@
 ---
 title: "Cypress UI 自动化测试框架学习（3）- 元素定位，操作和断言"
-description: "文章介绍如何去使用 cypress 的元素定位、操作和断言"
+description: "介绍 Cypress 的 CSS 与 jQuery 元素定位、常见 DOM 操作和断言，并展示 Selector Playground 生成定位器的步骤。"
 date: 2022-05-10
 author: "nao.deng"
 
@@ -89,17 +89,17 @@ cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery c
 
 - 1.前提：demo 代码已经跑起来 (运行脚本：npm run cypress:open)
 
-![](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152305.png)
+![启动测试后的 Cypress Selector Playground 界面](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152305.png)
 
 - 2.点击运行调试用例，进入定位元素对应的页面
 
-![](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152419.png)
+![运行调试用例后显示的待定位页面](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152419.png)
 
 - 3.在页面上选择瞄准镜标识（open selector playground）
 
 - 4.选择页面上的元素区域，元素的定位信息就会展示在定位信息展示区域，点击复制就可使用
 
-![](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152904.png)
+![Cypress Selector Playground 生成的元素定位信息](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601152904.png)
 
 ## 元素常用操作
 
@@ -192,7 +192,7 @@ cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery c
 
 > 可参考官网文档:https://docs.cypress.io/guides/references/assertions#BDD-Assertions
 
-![](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601161229.png)
+![Cypress BDD 常用断言示例](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601161229.png)
 
 ### TDD 断言
 
@@ -210,7 +210,7 @@ cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery c
 
 > 可参考官网文档:https://docs.cypress.io/guides/references/assertions#TDD-Assertions
 
-![](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601161926.png)
+![Cypress TDD 常用断言示例](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601161926.png)
 
 ### 常用断言
 
@@ -257,7 +257,7 @@ cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery c
 
 ##### 报错截图如下：
 
-![](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601150230.png)
+![Cypress 提示尚未安装版本的错误截图](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601150230.png)
 
 ##### 修复方式
 
@@ -271,7 +271,7 @@ cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery c
 
 ##### 报错截图如下：
 
-![](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601151647.png)
+![Cypress verification timed out 错误截图](https://raw.githubusercontent.com/waitnoww/hexoblogimg/master/img/20210601151647.png)
 
 ##### 修复方式
 
@@ -284,5 +284,5 @@ cypress 框架除了支持常用的元素定位，还提供了好用的 JQuery c
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

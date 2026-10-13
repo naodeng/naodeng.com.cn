@@ -1,6 +1,6 @@
 ---
 title: "变更请求 ｜ Change Requests"
-description: "关于变更请求的问题？"
+description: "变更请求是对产品或开发方式进行调整的提案，范围可从缺陷报告到新功能或增强需求，并需评估其对项目的影响。"
 section: "C"
 related:
   - change-control

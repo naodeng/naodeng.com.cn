@@ -1,6 +1,6 @@
 ---
 title: "Test Process Improvement"
-description: "An evaluation that compares an organization's testing activities to industry standards, offering an objective assessment of the organization's testing performance."
+description: "Test process improvement (TPI) assesses current testing practices, prioritizes gaps, and guides changes to improve testing effectiveness and efficiency."
 section: "T"
 related:
   - "manual-testing"
@@ -38,7 +38,7 @@ order: 0
       - [What is the role of test management in test process improvement?](#what-is-the-role-of-test-management-in-test-process-improvement)
 <!-- TOC END -->
 
-An evaluation that compares an organization's testing activities to industry standards, offering an objective assessment of the organization's testing performance.
+Test process improvement (TPI) assesses current testing practices, prioritizes gaps, and guides changes to improve testing effectiveness and efficiency.
 
 ## Questions about Test Process Improvement?
 

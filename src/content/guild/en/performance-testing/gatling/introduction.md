@@ -1,6 +1,6 @@
 ---
 title: "Gatling Performance Testing Tutorial: Getting Started"
-description: "This article describes how to get started with the performance testing tool gatling, how to set up the environment, and how to get the official demo up and running."
+description: "Set up Gatling with VS Code or IntelliJ IDEA, Gradle or Maven, then run and debug an official demo project."
 testType: performance-testing
 framework: gatling
 language: Scala/Java

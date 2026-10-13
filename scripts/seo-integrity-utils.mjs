@@ -32,10 +32,35 @@ function languageMatches(actual, requested) {
   return a === b || ((!a.includes("-") || !b.includes("-")) && a.split("-")[0] === b.split("-")[0]);
 }
 
+function linksToNoindexRoot(html, pageUrl, origin) {
+  for (const match of html.matchAll(/<a\b[^>]*>/gi)) {
+    const href = readHtmlAttributes(match[0]).href;
+    if (!href) continue;
+    try {
+      const target = new URL(decodeHtmlEntities(href), pageUrl);
+      if (target.origin === origin && target.pathname === "/") return true;
+    } catch {
+      // Invalid or non-URL anchor values are handled by other checks.
+    }
+  }
+  return false;
+}
+
+function hasWhitespaceOnlyImageAlt(html) {
+  for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
+    const alt = readHtmlAttributes(match[0]).alt;
+    if (typeof alt === "string" && alt.length > 0 && alt.trim() === "") return true;
+  }
+  return false;
+}
+
 /** Validate all built content pages and every sitemap declared by the index. */
 export function checkSeoIntegrity(distDir, origin = "https://inaodeng.com") {
   const failures = [];
   const pages = new Map();
+  const rootPagePath = path.join(distDir, "index.html");
+  const rootIsNoindex = fs.existsSync(rootPagePath)
+    && readHtmlSeoMetadata(fs.readFileSync(rootPagePath, "utf8")).noindex;
   for (const file of walkPages(distDir)) {
     const relative = `/${path.relative(distDir, file).replaceAll(path.sep, "/").replace(/index\.html$/, "")}`;
     const html = fs.readFileSync(file, "utf8");
@@ -44,6 +69,12 @@ export function checkSeoIntegrity(distDir, origin = "https://inaodeng.com") {
     const page = { ...metadata, url, relative };
     pages.set(url, page);
     if (page.noindex) continue;
+    if (hasWhitespaceOnlyImageAlt(html)) {
+      failures.push(`whitespace-only image alt text: ${relative}`);
+    }
+    if (rootIsNoindex && linksToNoindexRoot(html, url, origin)) {
+      failures.push(`indexable page links to noindex root language entry: ${relative}`);
+    }
     if (page.canonicalUrls.length !== 1 || normalizedUrl(page.canonicalUrls[0]) !== url) {
       failures.push(`canonical must reference the page itself: ${relative}`);
     }

@@ -1,6 +1,6 @@
 ---
 title: "gatling Performance Testing Tutorial: building your own gatling project from 0 to 1"
-description: "The article introduces the performance testing tool gatling advanced introduction: from 0 to 1 build your own Gatling project, introduces the basic use of Gatling, and how to build your own Gatling project, write performance test scripts, view the test report and so on."
+description: "Build a Gatling project with Gradle and Scala or Maven and Scala, then write and debug a performance test script, run it, and inspect the report."
 testType: performance-testing
 framework: gatling
 language: Scala/Java

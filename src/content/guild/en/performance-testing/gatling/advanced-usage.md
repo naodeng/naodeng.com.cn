@@ -1,6 +1,6 @@
 ---
 title: "Gatling Performance Testing Tutorial advanced usage: Test report analysis and Performance Scenario Setting"
-description: "This article introduces the advanced usage of the performance testing tool gatling: analysis of performance test reports, introduction of different types of test report reports, and configuration of performance test scenarios under different business types."
+description: "Analyze Gatling HTML reports, including overview metrics, individual requests, and response distributions, then configure injection profiles for different workloads."
 testType: performance-testing
 framework: gatling
 language: Scala/Java

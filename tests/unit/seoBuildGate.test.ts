@@ -38,7 +38,8 @@ function createBuildFixture() {
     const url = `https://inaodeng.com${pathname}`;
     const isChinese = pathname.startsWith("/zh-cn/");
     const language = isChinese ? "zh-CN" : "en-US";
-    const webPage = { "@context": "https://schema.org", "@type": "WebPage", "@id": `${url}#webpage`, url, name: content, description: "Software testing resources with practical guidance for test design and automation workflows.", inLanguage: language, isPartOf: { "@id": "https://inaodeng.com/#website" } };
+    const description = `${content} at ${pathname} covers practical software testing guidance for test design and automation workflows.`;
+    const webPage = { "@context": "https://schema.org", "@type": "WebPage", "@id": `${url}#webpage`, url, name: content, description, inLanguage: language, isPartOf: { "@id": "https://inaodeng.com/#website" } };
     const term = pathname.startsWith("/en/wiki/") && pathname !== "/en/wiki/"
       ? { "@context": "https://schema.org", "@type": "DefinedTerm", name: "A/B Testing", inDefinedTermSet: { "@type": "DefinedTermSet", name: "QA Wiki", url: "https://inaodeng.com/en/wiki/" } }
       : null;
@@ -48,7 +49,7 @@ function createBuildFixture() {
     const schemas = [webPage, term, termSet].filter(Boolean).map(schema => `<script type="application/ld+json">${JSON.stringify(schema)}</script>`).join("");
     const linksHtml = links.includes("<link rel=") ? links : links.split("|").filter(Boolean).map(href => `<link rel="alternate" hreflang="${href.includes("/zh-cn/") ? "zh-CN" : href.includes("x-default") ? "x-default" : "en-US"}" href="${href.replace(/^x-default:/, "")}">`).join("");
     const canonical = `<link rel="canonical" href="${url}">`;
-    return `<html lang="${language}"><head><title>${content}</title><meta name="description" content="Software testing resources with practical guidance for test design and automation workflows."><meta name="robots" content="index, follow">${canonical}${linksHtml}${schemas}</head><body><main><h1>${content}</h1>${pathname === "/en/wiki/" ? '<a class="wiki-letter-link" href="/en/wiki/a-b-testing/">A/B Testing</a>' : ""}</main></body></html>`;
+    return `<html lang="${language}"><head><title>${content}</title><meta name="description" content="${description}"><meta name="robots" content="index, follow">${canonical}${linksHtml}${schemas}</head><body><main><h1>${content}</h1>${pathname === "/en/wiki/" ? '<a class="wiki-letter-link" href="/en/wiki/a-b-testing/">A/B Testing</a>' : ""}</main></body></html>`;
   };
   const enWikiUrl = "https://inaodeng.com/en/wiki/a-b-testing/";
   const zhWikiUrl = "https://inaodeng.com/zh-cn/wiki/a-b-testing/";
@@ -65,6 +66,7 @@ function createBuildFixture() {
   write("zh-cn/wiki/index.html", page("/zh-cn/wiki/", zhIndexLinks, "测试百科"));
   write("en/wiki/a-b-testing/index.html", page("/en/wiki/a-b-testing/", enWikiLinks, "A/B Testing"));
   write("zh-cn/wiki/a-b-testing/index.html", page("/zh-cn/wiki/a-b-testing/", zhWikiLinks, "A/B 测试"));
+  write("index.html", '<html><head><meta name="robots" content="noindex, follow"></head><body></body></html>');
   writeSource("a-b-testing.md", "---\ntitle: A/B 测试\n---\n");
   writeSource("en/a-b-testing.md", "---\ntitle: A/B Testing\n---\n");
   const noindex = '<html><head><meta name="robots" content="noindex, follow"></head><body>private</body></html>';
@@ -95,6 +97,43 @@ describe("SEO checks the rendered pages", () => {
     expect(result.status, result.stderr).toBe(0);
   });
 
+  it("allows an accurate concise meta description without a fixed minimum", () => {
+    const fixture = createBuildFixture();
+    const original = fixture.read("en/index.html");
+    const currentDescription = original.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? "";
+    const page = original.replaceAll(currentDescription, "Compare API responses for status, data, and error behavior.");
+    fixture.write("en/index.html", page);
+    const result = runGate(fixture.root);
+    expect(result.status, result.stderr).toBe(0);
+    expect(result.stdout).toMatch(/review relevance manually/i);
+  });
+
+  it("rejects duplicate meta descriptions on indexable pages", () => {
+    const fixture = createBuildFixture();
+    const description = fixture.read("en/index.html").match(/<meta name="description" content="([^"]*)"/)?.[1];
+    fixture.write(
+      "zh-cn/index.html",
+      fixture.read("zh-cn/index.html").replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${description}"`),
+    );
+    const result = runGate(fixture.root);
+    expect(result.status).toBe(1);
+    expect(result.stderr).toMatch(/duplicate meta description/i);
+  });
+
+  it("rejects the known generic Wiki fallback description", () => {
+    const fixture = createBuildFixture();
+    fixture.write(
+      "en/index.html",
+      fixture.read("en/index.html").replace(
+        /<meta name="description" content="[^"]*"/,
+        '<meta name="description" content="Learn the key concepts, use cases, practical guidance, and quality considerations for this software testing topic."',
+      ),
+    );
+    const result = runGate(fixture.root);
+    expect(result.status).toBe(1);
+    expect(result.stderr).toMatch(/generic meta description/i);
+  });
+
   it("rejects a canonical pointing to another language", () => {
     const fixture = createBuildFixture();
     fixture.write("en/index.html", fixture.read("en/index.html").replace('rel="canonical" href="https://inaodeng.com/en/"', 'rel="canonical" href="https://inaodeng.com/zh-cn/"'));
@@ -117,6 +156,29 @@ describe("SEO checks the rendered pages", () => {
     const result = runGate(fixture.root);
     expect(result.status).toBe(1);
     expect(result.stderr).toMatch(/reciprocal/i);
+  });
+
+  it.each(["/", "https://inaodeng.com/"])("rejects an internal link to the noindex root language entry: %s", href => {
+    const fixture = createBuildFixture();
+    fixture.write("en/index.html", fixture.read("en/index.html").replace("</body>", `<a href="${href}">Home</a></body>`));
+    const result = runGate(fixture.root);
+    expect(result.status).toBe(1);
+    expect(result.stderr).toMatch(/noindex root language entry/i);
+  });
+
+  it("rejects whitespace-only image alt text on indexable pages", () => {
+    const fixture = createBuildFixture();
+    fixture.write("en/index.html", fixture.read("en/index.html").replace("</main>", '<img src="/screen.png" alt="   "></main>'));
+    const result = runGate(fixture.root);
+    expect(result.status).toBe(1);
+    expect(result.stderr).toMatch(/whitespace-only image alt/i);
+  });
+
+  it("allows empty alt text for decorative images", () => {
+    const fixture = createBuildFixture();
+    fixture.write("en/index.html", fixture.read("en/index.html").replace("</main>", '<img src="/decoration.svg" alt=""></main>'));
+    const result = runGate(fixture.root);
+    expect(result.status, result.stderr).toBe(0);
   });
 
   it("rejects malformed JSON-LD instead of only checking that a script exists", () => {
