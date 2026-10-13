@@ -1,35 +1,35 @@
-# AI Wiki 扩充计划（实施与验收记录）
+# AI Wiki 扩充计划（调研与实施方案）
 
-> 调研与复核日期：2026-10-12。状态：正文已完成；最终结构、链接、SEO 和构建检查以文末记录为准。
+> 调研日期：2026-10-12。状态：待分批实施；本次只形成计划，尚未新增或修改 AI Wiki 正文。本文提出 50 个概念候选，不等于一次性发布承诺；正式开写前仍需做语义去重、来源复核和批次准入。
 
 ## 方案结论
 
-- **本轮已按用户要求一次性完成新旧词条。** 对原有 67 组中英文条目做了结构与正文复核，新增 50 组双语词条，共 117 个概念、234 篇 Markdown 页面。
-- **新增主题**覆盖模型基础机制、检索与 RAG、多模态、Agent 协作与安全、AI 质量工程。原有 67 个概念保留原主题与 slug；修订过时产品信息、无依据的量化承诺、重复模板和不准确的机制描述。
-- **正文统一采用用户指定的 12 个章节。** 英文参考 ASD-STE100 的清晰表达原则：短句、单句表达一个主要意思、主动表达、术语一致。此处不宣称通过 ASD-STE100 合规认证，也不要求一般科普内容使用其受控词典。
-- **双语按概念复核。** 中英文页面使用同一 slug，并保持定义、例子、风险边界、资源和相关词条在事实层面一致；表达按语言习惯撰写，不逐句硬译。
-- **维护边界**：协议和产品页面说明具体实现及适用版本；通用词条不以单一厂商行为作定义。对 MCP Tasks 草案、模型生命周期等易变信息，正文标出版本或时间边界，并链接维护方资料。
+- **建议扩充，但按 50 个“概念”规划，不按 50 篇文件理解。** 当前中英文各有 67 篇。若新增 50 个概念并保持双语，最终会新增最多 100 篇 Markdown 文件；建议先发布 15 个双语词条（30 篇），验收内容质量与维护流程后再决定后续批次。
+- **把 50 个候选当作选题池。** 第一优先级应是能解释 AI 基础机制、RAG、Agent 工程、安全和 AI 测试的词条。偏通用媒体生成、机器人、内容溯源等主题与网站现有的 AI/Vibe Coding 定位距离更远，先进入候补池；仅在确认读者需求和站点边界后再排期。
+- **先修内容方法，再扩数量。** 抽查发现部分中文页反复使用同一套“高级功能”“基础控制点”“流水线工位”泛化描述（分别出现在 38、28、38 篇中文词条中）。新增页面不应复用这些套句；每篇需用与概念贴合的机制解释、应用场景和失败边界来讲清楚。
+- **发布前先做一轮存量更新。** 134 篇现有中英文文件的 `topic` 都是 `ai-vibe-coding`，`lastReviewedAt` 都是 `2026-03-02`。新主题不应未经判断全部沿用这一 topic；第一批同时抽查相邻旧条目的事实、来源和互链，再确定是否需要小范围修正。
+- **给扩充内容建立轻量主题标记。** 建议新词条按主概念选用 `ai-foundations`、`retrieval-and-rag`、`multimodal-ai`、`ai-agents`、`ai-safety-quality` 之一，次级主题放入 `tags`；与 Vibe Coding 直接相关的现有条目继续使用 `ai-vibe-coding`。当前索引仍按字母展示，不必为这次扩充同时开发分类筛选。
 
 ## 目标与基线
 
 - 把 AI Wiki 从“模型与开发工具名词”扩展为一套面向普通读者的 AI 科普图谱：读者能从模型如何学习、如何检索资料、如何处理多模态输入，继续读到 Agent 的实际执行方式、质量验证和风险边界。
-- 调研基线中 `src/content/aiwiki/en/` 与 `src/content/aiwiki/zh-cn/` 各有 67 篇，两个目录的文件名一一配对。本轮实施的 50 个新增 slug 均与原有 67 个 slug 不重复；通过正文和相关词条边界进一步避免概念重叠。
-- 本轮交付范围为 **117 个概念 × 2 种语言 = 234 篇正文**：完成既有 67 组复核，新增 50 组。章节、配对 slug 和 review 日期已对照；站内链接、SEO 与构建结果见文末。
+- 当前 `src/content/aiwiki/en/` 与 `src/content/aiwiki/zh-cn/` 各有 67 篇，两个目录的文件名一一配对。以下 50 个候选均没有现存同名 slug；“相邻内容”列出需要交叉链接或明确边界的既有条目，不能把新文写成旧文的重复摘要。
+- 扩充规模建议按 **50 个概念 × 2 种语言 = 最多 100 篇正文** 规划，分阶段发布。先完成编辑与去重，再决定是否全部采用；候选数不等于一次性发布承诺。
 - 范围提醒：当前 AI Wiki 首页按字母列出词条并提供搜索，站点描述聚焦 AI 与 Vibe Coding。若未来要覆盖一般 AI 科普，可先通过清晰的词条导航与页面简介说明范围；分类筛选 UI 属于独立体验改动，不是本轮内容扩充的前置条件。
 
 ## 内容写法与一致性约定
 
 以现有 AI Wiki 的词条详情为体例，而不是套用测试 Wiki 的 frontmatter。沿用 AI Wiki 已有字段：`title`、`titleEn` / `titleZh`、`slug`、`lang`、`summary`、`topic`、`aliases`、`tags`、`related`、`lastReviewedAt`。中英文使用相同 slug，事实、例子、适用边界、来源和相关条目保持一致；表达按语言重写，不逐句硬译。
 
-正文沿用 AI Wiki 的 frontmatter、配对 slug、详情页和导航约定。117 组词条都使用用户指定的 12 个二级标题；EN/ZH 标题、顺序和信息点逐项对应。以 ASD-STE100 的清晰写作原则作为英文表达参考：短句、每句一个主要意思、主动表达、同一概念使用同一术语。中文采用对应的简明表达。此处只借用写作原则，不宣称词条通过 ASD-STE100 合规认证，也不要求一般科普文章遵守其受控词典。具体场景须回答“这是什么、AI 在这里做了什么、它不能保证什么”。先解释通用概念；标准、协议和厂商 API 只说明具体实现，不以单一厂商口径定义通用术语。参照 [ASD-STE100 FAQ](https://www.asd-ste100.org/faq.html) 与 [Issue 9（2025-01）](https://www.asd-ste100.org/STE_downloads.html)。
+正文沿用现有详情页的语气、双语组织和导航约定，但不照搬现有重复句式，也不强迫所有概念使用完全相同的小标题。可按主题选择：一句话定义 → 机制或流程示例 → 在开发、测试或产品中的应用 → 易混概念 → 局限与风险 → 相关条目和一手来源。每篇至少用一个具体场景回答“这是什么、AI 在这里做了什么、它不能保证什么”。先解释通用概念；标准、协议、厂商 API 只用于解释具体实现，不用单一厂商的宣传口径定义通用术语。
 
-新增词条按读者相关性、与存量内容的区分度、可解释性、可靠来源和维护成本复核。与旧页面相邻时，在正文和相关链接中写清边界；例如，Agent Card 解释 A2A 服务发现信息，A2A 条目解释服务间交互。多模态与机器人条目聚焦可迁移的概念和软件测试/开发场景，不将其扩展成产品目录。
+收录前用统一评分表评估：与 AI 开发/测试读者的相关性、和现有词条的区分度、能否用具体例子讲透、是否有可靠一手来源、后续维护成本。任何候选若主要靠改写现有页面才能成立，应优先扩充原页面或从新增名单移出。多模态和机器人类候选即使技术上有趣，也要先证明与站点受众直接相关。
 
-## 本轮新增词条（50）
+## 50 个候选词条
 
 ### A. 模型如何学习与运行（12）
 
-| # | 词条 / slug | 科普重点 | 与现有条目的边界 | 一手来源 |
+| # | 候选词条 / 暂定 slug | 科普重点 | 与现有条目的边界 | 一手来源 |
 |---:|---|---|---|---|
 | 1 | 分词与 Token / `tokenization` | 把一句话切成模型可处理的片段；用中英文、代码和数字说明切分为何影响输入长度与表达。 | LLM/SLM 词条已有提及；新文解释机制，并链接 `large-language-models-llms`、`small-language-models-slms`。 | [Hugging Face Tokenizers 文档](https://huggingface.co/docs/tokenizers/) |
 | 2 | 向量嵌入 / `embeddings` | 把文本等输入映射成可比较的数值向量；强调“语义相近”不等于“内容为真”。 | 与 `codebase-indexing-rag` 相邻；本条解释通用表示，不重复代码库 RAG 流程。 | [Sentence-BERT 原始论文](https://arxiv.org/abs/1908.10084) |
@@ -46,12 +46,12 @@
 
 ### B. 检索、搜索与知识依据（10）
 
-| # | 词条 / slug | 科普重点 | 与现有条目的边界 | 一手来源 |
+| # | 候选词条 / 暂定 slug | 科普重点 | 与现有条目的边界 | 一手来源 |
 |---:|---|---|---|---|
 | 13 | 向量搜索 / `vector-search` | 用向量相似度寻找语义相关内容，并与精确关键词匹配做直观比较。 | 与 `codebase-indexing-rag` 相邻；新文解释可复用的搜索机制。 | [Faiss 原始论文](https://arxiv.org/abs/1702.08734) |
 | 14 | 向量数据库 / `vector-database` | 解释向量索引、相似度查询、元数据过滤分别解决什么问题；不把“有向量列”自动等同于完整 RAG。 | 与代码库 RAG 互链，不再复述其产品化场景。 | [The Faiss library](https://arxiv.org/abs/2401.08281) |
 | 15 | 近似最近邻搜索（ANN）/ `approximate-nearest-neighbor` | 说明大规模向量查询为何常用近似索引，以及速度、内存、召回率如何权衡。 | 当前无同名条目；作为向量搜索/数据库的机制级补充。 | [Billion-scale similarity search with GPUs](https://arxiv.org/abs/1702.08734) |
-| 16 | BM25 关键词检索 / `bm25` | 通过词频和文档频率解释经典关键词排序为何仍能找到型号、错误码和专有名词。 | 与“混合检索”互链；避免把传统检索误写成过时技术。 | [Microsoft Research：Relevance weighting of search terms](https://www.microsoft.com/en-us/research/publication/relevance-weighting-of-search-terms/) |
+| 16 | BM25 关键词检索 / `bm25` | 通过词频和文档频率解释经典关键词排序为何仍能找到型号、错误码和专有名词。 | 与新候选“混合检索”互链；避免把传统检索误写成过时技术。 | [Microsoft Research：Relevance weighting of search terms](https://www.microsoft.com/en-us/research/publication/relevance-weighting-of-search-terms/) |
 | 17 | 混合检索 / `hybrid-search` | 展示关键词检索与向量检索并用的流程，以及精确词与语义词如何互补。 | 与 `codebase-indexing-rag` 相邻；RAG 页面讲应用闭环，本条讲候选召回。 | [Azure AI Search 混合搜索技术文档](https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview)（只作为实现例子，不作为通用定义） |
 | 18 | 检索重排 / `reranking` | 解释先快速召回、再对少量候选精排的两阶段流程和代价。 | 与 `codebase-indexing-rag` 相邻；不与 `graders` 的答案评分混淆。 | [ColBERT 原始论文](https://arxiv.org/abs/2004.12832) |
 | 19 | 倒数排名融合（RRF）/ `reciprocal-rank-fusion` | 用两份不同搜索结果的排序清单解释如何融合名次，而不直接比较量纲不同的分数。 | 当前无同名条目；作为混合检索的独立算法补充。 | [Google Research：Reciprocal Rank Fusion](https://research.google/pubs/reciprocal-rank-fusion-outperforms-condorcet-and-individual-rank-learning-methods/) |
@@ -61,7 +61,7 @@
 
 ### C. 图像、音频、视频与行动（8）
 
-| # | 词条 / slug | 科普重点 | 与现有条目的边界 | 一手来源 |
+| # | 候选词条 / 暂定 slug | 科普重点 | 与现有条目的边界 | 一手来源 |
 |---:|---|---|---|---|
 | 23 | 视觉语言模型（VLM）/ `vision-language-model` | 说明同一模型怎样关联图像与文本，可用于图片问答、分类和视觉内容检索；不能把“看图”说成无误识别。 | 通用 LLM、GPT、Gemini 条目可能提到图像能力；本条解释任务与模型路线，不讲产品型号。 | [CLIP 原始论文](https://arxiv.org/abs/2103.00020) |
 | 24 | 文档版面理解 / `document-understanding` | 通过表格、表单、发票等案例说明 AI 如何联合利用文字内容与页面布局。 | 现有通用 AI 条目未覆盖该专门任务；互链视觉语言模型。 | [LayoutLMv3](https://arxiv.org/abs/2204.08387) |
@@ -74,7 +74,7 @@
 
 ### D. Agent 互操作、安全执行与观测（10）
 
-| # | 词条 / slug | 科普重点 | 与现有条目的边界 | 一手来源 |
+| # | 候选词条 / 暂定 slug | 科普重点 | 与现有条目的边界 | 一手来源 |
 |---:|---|---|---|---|
 | 31 | Agent-to-Agent（A2A）协议 / `a2a-protocol` | 解释不同 Agent 系统怎样发现能力、交换消息并协作，同时说明协议互通不代表 Agent 彼此可信。 | 与 `multi-agent-orchestration`（内部如何协作）、`acp-agent-client-protocol`（客户端协议）、MCP（工具/数据连接）做对照。 | [A2A 官方规范 1.0.0](https://a2a-protocol.org/v1.0.0/specification/) |
 | 32 | Agent Card / `agent-card` | 通过能力卡片说明远端 Agent 如何公开名称、能力、技能、端点与认证要求；讨论签名和信息披露边界。 | 属于 A2A 的发现机制；如篇幅不足，应并入 #31 而不是硬拆薄词条。 | [A2A 规范：Agent Discovery 1.0.0](https://a2a-protocol.org/v1.0.0/specification/) |
@@ -89,7 +89,7 @@
 
 ### E. 信任、安全与 AI 质量工程（10）
 
-| # | 词条 / slug | 科普重点 | 与现有条目的边界 | 一手来源 |
+| # | 候选词条 / 暂定 slug | 科普重点 | 与现有条目的边界 | 一手来源 |
 |---:|---|---|---|---|
 | 41 | 提示注入 / `prompt-injection` | 用直接输入和藏在网页、邮件、文件里的间接指令展示攻击路径；说明检索到的文本也可能是恶意输入。 | 与 `privacy-mode`、命令许可和 HITL 相邻；不把提示词规则说成安全边界。 | [NIST Adversarial Machine Learning Taxonomy](https://csrc.nist.gov/pubs/ai/100/2/e2025/final)；[OWASP Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) |
 | 42 | 越狱攻击 / `jailbreak-attack` | 解释试图绕过模型安全行为的提示策略，并区分模型拒答绕过与 Agent 工具权限滥用。 | 与 `permission-policies-allowed-command-list` 是模型行为与系统权限两个层次。 | [OWASP LLM Top 10 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/) |
@@ -104,55 +104,52 @@
 
 ## 重点去重与收录判断
 
-| 已有条目 | 本轮相关词条 | 收录边界 |
+| 已有条目 | 相关候选 | 收录边界 |
 |---|---|---|
-| `large-language-models-llms`、`small-language-models-slms`、`gpt`、`llama`、`mistral-mixtral` | Token、Embedding、Transformer、预训练、MoE、量化、蒸馏、合成数据 | 现有模型词条保留为模型概览；新增词条做机制解释与应用示例，概览只放短定义和内链。 |
-| `direct-preference-optimization-dpo`、`reinforcement-fine-tuning-rft` | 指令微调、RLHF | 已校对 DPO/RFT 条目的术语和训练阶段，并分别说明指令微调与偏好对齐；不把所有后训练都叫 RLHF。 |
-| `codebase-indexing-rag` | Embeddings、向量搜索/数据库、BM25、混合检索、重排、分块、GraphRAG、多模态 RAG | 现有页聚焦代码库索引场景；新增词条分别讲可迁移组件和其他数据形态，并在正文说明与代码库 RAG 的边界。 |
+| `large-language-models-llms`、`small-language-models-slms`、`gpt`、`llama`、`mistral-mixtral` | Token、Embedding、Transformer、预训练、MoE、量化、蒸馏、合成数据 | 现有模型词条保留为模型概览；新词条做机制解释与应用示例，概览只放短定义和内链。 |
+| `direct-preference-optimization-dpo`、`reinforcement-fine-tuning-rft` | 指令微调、RLHF | 先校对现有 DPO/RFT 页的术语和训练阶段，再分别写 SFT/偏好对齐；不把所有后训练都叫 RLHF。 |
+| `codebase-indexing-rag` | Embeddings、向量搜索/数据库、BM25、混合检索、重排、分块、GraphRAG、多模态 RAG | 现有页聚焦代码库索引场景；候选分别讲可迁移组件和其他数据形态。若现有页已覆盖到足够深度，就将其改为专题章节而非另建重复页。 |
 | `agent-evals`、`graders`、`trace-grading` | 推理时计算、协议一致性测试、GenAI 可观测性、红队测试、蜕变测试 | 区分性能/结果评分、协议符合性、运行遥测、安全攻击面测试和基于不变量的测试。 |
-| `multi-agent-orchestration`、`subagents`、`acp-agent-client-protocol`、`model-context-protocol-mcp` | A2A、Agent Card、MCP Apps/Tasks/Elicitation | 现有页解释基础概念；新增页面聚焦读者问题独立且有可靠来源的概念。Agent Card 单独解释 A2A 服务发现信息，并与 A2A 条目互链。 |
+| `multi-agent-orchestration`、`subagents`、`acp-agent-client-protocol`、`model-context-protocol-mcp` | A2A、Agent Card、MCP Apps/Tasks/Elicitation | 现有页解释基础概念；新文只在规范已明确、读者问题独立时收录。Agent Card 若无法形成独立科普深度，则并入 A2A。 |
 | `human-in-the-loop`、`permission-policies-allowed-command-list`、`privacy-mode` | Agent 身份/授权、工具沙箱、过度代理权限、提示注入 | 用“主体—授权—执行隔离—用户确认—攻击输入”区分概念，不暗示增加提示规则即可保证安全。 |
 
-新增 slug 在实施时结合现有 `slug`、`aliases`、正文标题和相关链接完成了第二轮语义去重，不只依赖文件名。本轮最终收录 50 个新增独立词条；相邻概念在正文和相关链接中注明边界，没有用新词条重复已有页面的读者任务。
+候选 slug 是草案，应在实施前用现有 `slug`、`aliases`、正文标题和相关链接做第二轮语义去重；仅看文件名不够。若词条现有页面的覆盖已经满足读者任务，优先扩充原页并把它从 50 个“新增独立词条”中换出。
 
 ## 当前趋势快照（截至 2026-10-12）
 
-1. **Agent 互操作进入标准化与身份治理议程。** NIST 于 2026-02-17 启动 AI Agent Standards Initiative，重点包含互操作协议、安全与身份/授权研究。[NIST 倡议页](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) 因此本轮新增 A2A、身份与授权条目，但不把某一家的 Agent 产品当成标准。
+1. **Agent 互操作进入标准化与身份治理议程。** NIST 于 2026-02-17 启动 AI Agent Standards Initiative，重点包含互操作协议、安全与身份/授权研究。[NIST 倡议页](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) 因此本计划新增 A2A、身份与授权，但不把某一家的 Agent 产品当成标准。
 2. **MCP 正在从单一核心协议扩展到独立扩展。** 2026-07-28 版本引入无状态协议核心、认证强化及扩展框架；MCP Apps 有 2026-01-26 版本化规范；Tasks 页面对应 2026-07-28 且调研时标为 draft。[MCP 版本说明](https://blog.modelcontextprotocol.io/posts/2026-07-28/) [MCP Apps 规范](https://apps.extensions.modelcontextprotocol.io/specification/2026-01-26/apps.mdx) [Tasks 规范](https://tasks.extensions.modelcontextprotocol.io/specification/2026-07-28/tasks) 教学正文必须标明观察版本和成熟度，发布前重新确认，不能写成永恒定义。
-3. **GenAI 可观测性约定仍是活跃规范工作。** OpenTelemetry 已将 GenAI 语义约定放在独立项目中；本轮新增页面解释统一记录模型/工具调用的作用，并把当前字段和成熟度放在带日期的正文中。[OpenTelemetry GenAI conventions](https://github.com/open-telemetry/semantic-conventions-genai)
-4. **模型评估关注点不止得分，也包括评估诚信与风险。** NIST 2026 年公开材料将 Agent 评测中的解题污染和评分器被利用列为风险案例；本轮沿用现有 `agent-evals` 解释评测污染，不另建重复词条。[NIST：Cheating on AI Agent Evaluations](https://www.nist.gov/caissi/cheating-ai-agent-evaluations)
+3. **GenAI 可观测性约定仍是活跃规范工作。** OpenTelemetry 已将 GenAI 语义约定放在独立项目中；这一候选适合做“为什么要统一记录模型/工具调用”的科普，并将当前字段和成熟度放在带日期的侧栏中。[OpenTelemetry GenAI conventions](https://github.com/open-telemetry/semantic-conventions-genai)
+4. **模型评估关注点不止得分，也包括评估诚信与风险。** NIST 2026 年公开材料将 Agent 评测中的解题污染和评分器被利用列为风险案例；网站现有 `agent-evals` 已谈数据污染，因此先扩展旧页或在新页中严守边界，不新增一个仅重复“测试集污染”的薄词条。[NIST：Cheating on AI Agent Evaluations](https://www.nist.gov/caissi/cheating-ai-agent-evaluations)
 
 更新方式：趋势类内容记录规范名称、版本/状态、核对日期和来源；每季度检查协议与标准页面，稳定基础概念按年复核。新版本有重大兼容变化时，更新相关专题和互链，不按每个发布日期复制新词条。
 
 ## 实施建议与验收标准
 
-### 本轮实施结果
+### 分批落地
 
-1. **内容范围**：复核 67 个既有概念，并完成新增 50 个概念；每个概念均有英文和中文页面，共 234 篇正文。
-2. **结构与双语审校**：所有正文使用同一组 12 个二级标题；以概念为单位核对定义、示例、边界、来源和相关链接。英文参考 ASD-STE100 的清晰表达原则，中文按自然表达重写。
-3. **事实复核**：对模型生命周期、MCP/A2A 协议和服务商 API 等高变化内容检查维护方资料，并在正文保留版本或适用范围。
-4. **质量复核**：除 slug 和章节顺序外，逐项复核定义、机制和应用示例的双语覆盖。对照复核发现并修正了 LLM、Agent 工作流、产物反馈、验证产物、轨迹评分、Agent Evals、Grader 和结构化输出中的信息遗漏或过度断言；完整性、SEO 与构建结果见下文。静态检查不等于事实审校或发布验证。
-5. **后续维护**：A2A、MCP、OWASP、NIST 和 OpenTelemetry 等页面应在规范更新时复查；稳定基础概念按年复核。
+0. **存量校准（不新增条目）**：抽查 AI Wiki 全部中英文配对，核对受新词影响的定义、来源、`topic`、推荐链接和更新时间；重点复核 `ai-agent`、`model-context-protocol-mcp`、`prompt-caching` 等更新较快页面的版本化陈述；确定新主题标记，并记录当前完整性检查器的能力边界。
+1. **试点批次（15 对 / 30 篇）**：从模型基础、检索/RAG、Agent 安全和 AI 测试中选最相关且互不重复的 15 个主题。优先覆盖 Token、Embedding、指令微调、量化、LoRA、向量搜索、混合检索、重排、分块、提示注入、Agent 授权/沙箱、红队或蜕变测试等方向；具体名单通过收录评分后冻结。先验证科普质量、双语审稿和推荐链接是否可持续。
+2. **扩展批次（最多 15 对）**：试点通过后补齐高分的模型机制、GraphRAG、协议互操作、Agent 身份与观测等主题。每批先更新相邻旧条目的短定义和互链，再新增页面。
+3. **候补批次（最多 20 对）**：剩余候选只有在相关性评分达标、资料有新意且维护成本可接受时才实施。通用图像/音频/视频、机器人和 C2PA 等泛 AI 主题优先在此复审；不为凑够 50 而发布。
 
 ### 每篇质量门槛
 
 - **定义准确**：至少一个定义来源来自原始研究、正式规范或标准组织；产品文档只支撑它的具体实现案例。
-- **易读易懂**：每篇按科普速读、概览、核心定义、背景与发展、工作机制、软件测试与开发中的应用、优势与局限、相近术语对比、实施建议、常见误区、FAQ、相关资源组织；先给直白定义与用途，用具体场景解释系统做了什么，不堆术语，不夸大自治、正确率或安全性。英语参考 ASD-STE100 的短句、主动语态、单句单点与术语一致原则；中文采用等效的清楚写法。
+- **易读易懂**：首屏先给直白定义与用途；通过一个具体流程或例子说明模型/系统做了什么，不堆术语，不夸大自治、正确率或安全性。
 - **应用科普**：至少覆盖一个真实应用场景以及输入、处理、输出；AI 测试/开发用途应自然说明，而不是强行加营销式案例。
 - **边界清晰**：解释失败模式、成本/质量权衡及人工/系统控制点；协议和正在演进的规范标注版本、状态、核对日期。
-- **双语一致**：EN/ZH 同 slug、事实和来源一致；标题、摘要、定义、机制、示例、风险与 related 链接逐项核对，确保解释点和例子覆盖一致，不做逐句直译，也不以章节齐全代替内容深度审校。
+- **双语一致**：EN/ZH 同 slug、事实和来源一致；标题、摘要、示例、风险与 related 链接均逐项核对，不做逐句直译。
 - **站内连接**：每篇至少链接 2 个有效的同语言 AI Wiki 条目；既有页面的标题或描述如只需补定义/互链，优先做局部更新。
 
 ### 交付检查
 
-- 同 slug 集合与章节顺序检查覆盖 117 组 EN/ZH 页面；每篇有 12 个指定二级标题，`lastReviewedAt` 为 `2026-10-12`。
-- 新增 100 篇 Markdown 页面，分别是 50 篇英文和 50 篇中文；另外 134 篇既有正文有修改。
-- `git diff --check` 已通过。`npm run wiki:integrity:check` 扫描 452 篇 Wiki/AI Wiki 页面（含 234 篇 AI Wiki），错误和警告均为 0。
-- `npm run seo:check` 扫描 452 篇测试 Wiki、234 篇 AI Wiki 和 566 篇博客；标题/摘要缺失、重复标题、死链、无效 related 和孤立词条均为 0。全站有 51 条长摘要提示，AI Wiki 中为 0。
-- `npm run build` 已通过：生成 3,477 个页面，SEO 构建检查通过，覆盖 2,523 个可索引页面和 2,523 个 sitemap URL。Astro 检查为 0 错误、0 警告、1 条不相关的未使用变量提示，位置在 Guild 页面。
-- `wiki:style:check` 当前只扫描测试 Wiki，不是本轮 AI Wiki 文案门禁；ASD-STE100 可读性审校按用户要求人工执行。
-- 静态检查只证明结构、链接和页面能构建，不代表生产部署、页面在线展示或业务效果已经验证。
+- 先完成候选词条语义去重和优先级审批，再创建双语内容文件；slug、别名、`related` 和中英文标题对照真实文件校验。
+- 按站点 AI Wiki schema 编写，更新 `lastReviewedAt`，补一手来源。MCP/A2A/OWASP/NIST 等会变的页面注明所据版本。
+- 先增强或补充 AI Wiki 内容校验：当前 `wiki:integrity:check` 会检查 AI Wiki 的标题/摘要字段、H1、重复 slug 和正文内链，但不检查 EN/ZH 配对是否齐全，也不核对 AI Wiki `related` frontmatter 是否指向存在的同语言条目；`seo:check` 会检查 AI Wiki `related` 和相关内链目标。`wiki:style:check` 当前只扫描测试 Wiki，不扫描 AI Wiki。补齐这几项后再把相应检查纳入批次门禁。
+- 使用完整性/SEO 检查与 `npm run build` 验证内容元数据、双语配对、链接、路由和页面输出；抽查桌面与移动端详情页、搜索、侧栏与 related 导航。静态检查只能证明结构和链接等可机器验证项，不能代替双语事实审校和科普质量审稿。
+- 交付时分别报告新增中英文条目数量、语义去重结果、内容检查/构建结果；不要把静态构建结果表述成线上可见或业务效果已验证。
 
 ## 调研与来源边界
 
-词条优先链接原始论文、正式规范、标准组织或维护方资料。厂商文档用于说明该厂商的具体实现，不单独定义通用概念。协议和产品会变化，引用的日期或版本表示本轮核对边界；此记录不声称所有 234 篇的每个事实都经过逐句独立查证。
+本计划的概念定义优先引用提出方法的论文、研究机构或规范。对不断变化的 Agent 协议、MCP 扩展和 OpenTelemetry 语义约定，引用带版本的规范或维护方资料，并要求实施前再次核对。厂商实现文档（如检索分块、混合检索示例）只用于解释一种具体做法，不作为通用定义的唯一证据。所有来源本轮核对日期为 2026-10-12。
