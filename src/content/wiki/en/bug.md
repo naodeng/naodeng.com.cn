@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Bug](#bug)
-  - [See also:](#see-also)
   - [Questions about Bug?](#questions-about-bug)
     - [Basics and Importance](#basics-and-importance)
       - [What is a bug in software testing?](#what-is-a-bug-in-software-testing)
@@ -48,7 +47,7 @@ order: 0
 
 (aka Defect) A bug is an error or fault in a program that leads to incorrect outcomes or crashes. It arises from flawed or incomplete logic and can cause the software to deviate from its expected performance.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Software_bug)
 ## Questions about Bug?

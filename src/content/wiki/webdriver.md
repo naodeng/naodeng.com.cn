@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Webdriver ｜ Webdriver](#webdriver--webdriver)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于 WebDriver 有疑问吗？](#关于-webdriver-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Selenium 中的 WebDriver 是什么？](#selenium-中的-webdriver-是什么)
@@ -52,11 +50,11 @@ order: 0
 <!-- TOC END -->
 用于浏览器自动化的开源框架，支持跨各种浏览器和操作系统对网页进行自动化测试。
 
-## 相关术语
+相关术语
 
 - [selenium](/zh-cn/wiki/selenium/)
 
-### 另请参阅：
+另请参阅：
 
 - [官网](https://www.selenium.dev/documentation/webdriver/)
 

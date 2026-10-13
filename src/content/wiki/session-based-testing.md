@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [基于会话的测试 ｜ Session-Based Testing](#基于会话的测试--session-based-testing)
-  - [另请参阅：](#另请参阅)
   - [关于基于会话的测试有疑问吗？](#关于基于会话的测试有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是基于会话的测试？](#什么是基于会话的测试)
@@ -44,7 +43,7 @@ order: 0
 
 有组织的形式探索性测试以会议形式进行。
 
-## 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Session-based_testing)
 ## 关于基于会话的测试有疑问吗？

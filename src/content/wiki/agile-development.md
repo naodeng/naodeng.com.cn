@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [敏捷开发 ｜ Agile Development](#敏捷开发--agile-development)
-  - [另请参阅：](#另请参阅)
   - [关于敏捷开发的问题](#关于敏捷开发的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是敏捷开发，为什么它很重要？](#什么是敏捷开发为什么它很重要)
@@ -45,7 +44,7 @@ order: 0
 也可以看看：
 敏捷软件开发维基百科
 
-## 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Agile_software_development)
 

@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [边界测试 ｜ Boundary Testing](#边界测试--boundary-testing)
-  - [相关术语](#相关术语)
   - [关于边界测试的问题吗？](#关于边界测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是边界测试？](#什么是边界测试)
@@ -46,7 +45,7 @@ order: 0
 
 通过关注输入域的边界或边缘值来评估软件。
 
-## 相关术语
+相关术语
 
 - [等价划分](/zh-cn/wiki/equivalence-partitioning/)
 - [边缘测试](/zh-cn/wiki/edge-testing/)

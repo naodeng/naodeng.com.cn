@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Chai.js](#chaijs)
-  - [相关术语](#相关术语)
   - [关于 Chai.js 有疑问吗？](#关于-chaijs-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Chai.js 是什么？](#chaijs-是什么)
@@ -48,7 +47,7 @@ order: 0
 
 Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动开发 ) 断言库 Node.js 和浏览器。它与流行的 JavaScript 测试框架无缝配对，例如 Mocha 和 jasmine。Chai 为开发人员提供了以可读语言表达断言的能力，模仿自然语言结构。
 
-## 相关术语
+相关术语
 
 - [断言库](/zh-cn/wiki/chai-js/)
 - [Jest](/zh-cn/wiki/jest/)

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Unit Testing](#unit-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Unit Testing?](#questions-about-unit-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is unit testing?](#what-is-unit-testing)
@@ -43,7 +42,7 @@ order: 0
 
 The practice of testing individual software units or components to validate their functionality.
 
-## Related Terms:
+Related Terms:
 
 - [Integration Testing](/en/wiki/integration-testing/)
 - [Test-Driven Development](/en/wiki/test-driven-development/)

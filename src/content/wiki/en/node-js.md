@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Node.js](#nodejs)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Node.js?](#questions-about-nodejs)
     - [Basics and Importance](#basics-and-importance)
       - [What is Node.js and why is it important?](#what-is-nodejs-and-why-is-it-important)
@@ -52,13 +50,13 @@ order: 0
 
 Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to execute JavaScript code server-side. Traditionally, JavaScript was primarily used for client-side scripting in web browsers. Node.js, however, enables JavaScript to be used for building scalable network applications outside the browser. Built on Chrome's V8 JavaScript engine, Node.js is designed for building fast and efficient web applications, especially I/O-bound applications.
 
-## Related Terms:
+Related Terms:
 
 - JavaScript runtime
 - [Jest](/en/wiki/jest/)
 - [Jasmine](/en/wiki/jasmine/)
 
-### See also:
+See also:
 
 - [Official Website](https://nodejs.org/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Node.js)

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Bottom-up Integration](#bottom-up-integration)
-  - [Related Terms:](#related-terms)
   - [Questions about Bottom-up Integration?](#questions-about-bottom-up-integration)
     - [Basics and Importance](#basics-and-importance)
       - [What is bottom-up integration?](#what-is-bottom-up-integration)
@@ -45,7 +44,7 @@ order: 0
 
 Bottom-up integration testing starts by testing lower-level modules first, then integrates and tests them with higher-level ones. During this process, "Drivers" may be used to assist in testing.
 
-## Related Terms:
+Related Terms:
 
 - [Top-Down Integration](/en/wiki/top-down-integration/)
 

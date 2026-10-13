@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Pair Testing](#pair-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Pair Testing?](#questions-about-pair-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is pair testing and how does it work?](#what-is-pair-testing-and-how-does-it-work)
@@ -40,7 +39,7 @@ order: 0
 
 Pair testing is a collaborative approach where two team members, typically a tester and a developer or analyst, work together on testing efforts.
 
-## Related Terms:
+Related Terms:
 
 - [Peer Testing](/en/wiki/peer-testing/)
 

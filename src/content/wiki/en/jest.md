@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Jest](#jest)
-  - [Related Terms:](#related-terms)
   - [Questions about Jest?](#questions-about-jest)
     - [Basics and Importance](#basics-and-importance)
       - [What is Jest and what is it used for?](#what-is-jest-and-what-is-it-used-for)
@@ -44,7 +43,7 @@ order: 0
 
 Jest is a JavaScript unit testing framework by Meta. It's primarily used for writing unit tests to assess individual code segments.
 
-## Related Terms:
+Related Terms:
 
 - Testing framework
 - [Jasmine](/en/wiki/jasmine/)

@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Canary Testing](#canary-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Canary Testing?](#questions-about-canary-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Canary Testing?](#what-is-canary-testing)
@@ -46,7 +45,7 @@ order: 0
 
 Canary Testing is a technique used to detect issues by gradually releasing changes or updates to a subset of users. Often paired with A/B testing, it enables developers to evaluate and refine features based on feedback before a full release.
 
-## Related Terms:
+Related Terms:
 
 - [A/B Testing](/en/wiki/a-b-testing/)
 

@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Use Case](#use-case)
-  - [Related Terms:](#related-terms)
   - [Questions about Use Case?](#questions-about-use-case)
     - [Basics and Importance](#basics-and-importance)
       - [What is a use case in software testing?](#what-is-a-use-case-in-software-testing)
@@ -46,7 +45,7 @@ order: 0
 
 A description detailing how a user interacts with a system. It forms a foundation for system development and tests.
 
-## Related Terms:
+Related Terms:
 
 - [Use Case Testing](/en/wiki/use-case-testing/)
 

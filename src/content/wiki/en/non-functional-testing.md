@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Non-functional Testing](#non-functional-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Non-functional Testing?](#questions-about-non-functional-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is non-functional testing?](#what-is-non-functional-testing)
@@ -43,7 +42,7 @@ order: 0
 
 Non-functional testing evaluates software's non-functional attributes, such as usability and performance, ensuring the software's overall competence and effectiveness.
 
-## Related Terms:
+Related Terms:
 
 - [Performance Testing](/en/wiki/performance-testing/)
 - [Load Testing](/en/wiki/load-testing/)

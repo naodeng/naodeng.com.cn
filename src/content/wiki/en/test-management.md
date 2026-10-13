@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Management](#test-management)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Management?](#questions-about-test-management)
     - [Basics and Importance](#basics-and-importance)
       - [What is test management in software testing?](#what-is-test-management-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Test management supervises the testing processes, documentation, and other software aspects, ensuring thorough testing and high-quality software delivery.
 
-## Related Terms:
+Related Terms:
 
 - [Test Plan](/en/wiki/test-plan/)
 - [Test Observability](/en/wiki/test-observability/)

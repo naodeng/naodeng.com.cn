@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Robustness Testing](#robustness-testing)
-  - [See also:](#see-also)
   - [Questions about Robustness Testing?](#questions-about-robustness-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is robustness testing in software testing?](#what-is-robustness-testing-in-software-testing)
@@ -41,7 +40,7 @@ order: 0
 
 Evaluates software's performance under extreme or unexpected inputs.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Robustness_testing)
 ## Questions about Robustness Testing?

@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [测试设计工具 ｜ Test Design Tool](#测试设计工具--test-design-tool)
-  - [相关术语](#相关术语)
   - [关于测试设计工具的问题吗？](#关于测试设计工具的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是测试设计工具？](#什么是测试设计工具)
@@ -40,7 +39,7 @@ order: 0
       - [测试设计工具在敏捷和 DevOps 环境中的作用是什么？](#测试设计工具在敏捷和-devops-环境中的作用是什么)
 <!-- TOC END -->
 
-## 相关术语
+相关术语
 
 - [测试工具](/zh-cn/wiki/test-tool/)
 - [Test Automation tool (e.g., Selenium, JUnit)](/zh-cn/wiki/test-tool/)

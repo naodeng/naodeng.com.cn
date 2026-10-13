@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Jest ｜ Jest](#jest--jest)
-  - [相关术语](#相关术语)
   - [关于 Jest 有疑问吗？](#关于-jest-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Jest 是什么以及它的用途是什么？](#jest-是什么以及它的用途是什么)
@@ -45,7 +44,7 @@ order: 0
 
 笑话是一个 JavaScript 单元测试 Meta 框架。它主要用于编写单元测试来评估各个代码段。
 
-## 相关术语
+相关术语
 
 - [Testing framework](/zh-cn/wiki/unit-test-framework/)
 - [jasmine](/zh-cn/wiki/jasmine/)

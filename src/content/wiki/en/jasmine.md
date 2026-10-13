@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Jasmine](#jasmine)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Jasmine?](#questions-about-jasmine)
     - [Basics and Importance](#basics-and-importance)
       - [What is Jasmine in the context of software testing?](#what-is-jasmine-in-the-context-of-software-testing)
@@ -48,13 +46,13 @@ order: 0
 
 Jasmine is an open-source testing framework for JavaScript. It is designed to be behavior-driven, allowing developers to write tests in a way that describes the expected behavior of the software in clear, human-readable terms. Jasmine provides functions to structure your tests, set up preconditions, and define assertions.
 
-## Related Terms:
+Related Terms:
 
 - Testing framework
 - [Jest](/en/wiki/jest/)
 - [Chai.js](/en/wiki/chai-js/)
 
-### See also:
+See also:
 
 - [Official Website](https://jasmine.github.io/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Jasmine_(software))

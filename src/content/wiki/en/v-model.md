@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [V-Model](#v-model)
-  - [See also:](#see-also)
   - [Questions about V-Model?](#questions-about-v-model)
     - [Basics and Importance](#basics-and-importance)
       - [What is the V-Model in software testing?](#what-is-the-v-model-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 A development model that aligns with the product's validation phase.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/V-model)
 ## Questions about V-Model?

@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [False Positive](#false-positive)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about False Positive?](#questions-about-false-positive)
     - [Basics and Understanding](#basics-and-understanding)
       - [What is a false positive in software testing?](#what-is-a-false-positive-in-software-testing)
@@ -41,11 +39,11 @@ order: 0
 
 In software testing, a False Positive refers to a situation where a test incorrectly identifies a defect or issue in the software when, in reality, there isn't one. Essentially, it's a test indicating a problem where none exists. False positives can arise due to various reasons, such as incorrect test data, flawed test conditions, or misconfigurations in the testing environment. While they might seem harmless, false positives can be detrimental as they can lead to wasted effort, resources, and time for development teams, potentially diverting attention away from genuine issues. Thus, it's essential to validate and rectify such occurrences to maintain the efficiency and accuracy of the testing process.
 
-## Related Terms:
+Related Terms:
 
 - [False Negative](/en/wiki/false-negative/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
 ## Questions about False Positive?

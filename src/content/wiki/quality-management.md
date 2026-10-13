@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [质量管理 ｜ Quality Management](#质量管理--quality-management)
-  - [相关术语](#相关术语)
   - [关于质量管理的问题？](#关于质量管理的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是质量管理？](#什么是质量管理)
@@ -52,7 +51,7 @@ order: 0
 
 质量管理确保组织的产品或服务始终满足特定的质量标准。
 
-## 相关术语
+相关术语
 
 - [质量检查指标](/zh-cn/wiki/qa-metrics/)
 - [质量保证](/zh-cn/wiki/quality-assurance/)

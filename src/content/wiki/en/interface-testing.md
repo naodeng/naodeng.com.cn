@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Interface Testing](#interface-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Interface Testing?](#questions-about-interface-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is interface testing in software testing?](#what-is-interface-testing-in-software-testing)
@@ -43,7 +42,7 @@ order: 0
 
 Interface testing ensures that two software components communicate correctly. Interfaces, including APIs and Web services, connect these components, and their testing is termed Interface Testing.
 
-## Related Terms:
+Related Terms:
 
 - [Integration Testing](/en/wiki/integration-testing/)
 

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Observability](#test-observability)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Observability?](#questions-about-test-observability)
     - [Basics and Importance](#basics-and-importance)
       - [What is test observability?](#what-is-test-observability)
@@ -45,7 +44,7 @@ order: 0
 
 Test observability denotes the capability to monitor a system during testing, analyzing its performance to pinpoint and rectify issues. It aggregates data like logs, metrics, and traces for insights and improvements.
 
-## Related Terms:
+Related Terms:
 
 - [Test Management](/en/wiki/test-management/)
 

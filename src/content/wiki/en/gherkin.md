@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Gherkin](#gherkin)
-  - [Related Terms:](#related-terms)
   - [Questions about Gherkin?](#questions-about-gherkin)
     - [Basics and Importance](#basics-and-importance)
       - [What is Gherkin and why is it important in software testing?](#what-is-gherkin-and-why-is-it-important-in-software-testing)
@@ -44,7 +43,7 @@ order: 0
 
 Gherkin is a domain-specific language used primarily for behavior-driven development (BDD). It provides a structured and human-readable format to describe and document the desired behavior of software features. Gherkin 's syntax uses plain language combined with specific keywords—such as "Given," "When," "Then," "And," and "But"—to define preconditions, actions, and expected outcomes. These Gherkin scenarios can then be utilized as both specifications for the system's behavior and the foundation for automated tests, making it a bridge between non-technical stakeholders and the technical team.
 
-## Related Terms:
+Related Terms:
 
 - [BDD (Behavior Driven Development)](/en/wiki/bdd/)
 - [Test Scenario](/en/wiki/test-scenario/)

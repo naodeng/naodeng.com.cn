@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Chaos Engineering](#chaos-engineering)
-  - [See also:](#see-also)
   - [Questions about Chaos Engineering?](#questions-about-chaos-engineering)
     - [Basics and Importance](#basics-and-importance)
       - [What is Chaos Engineering?](#what-is-chaos-engineering)
@@ -40,7 +39,7 @@ order: 0
 
 (aka Chaos Testing) Chaos engineering tests a software's resilience by introducing random faults and disruptions. This method challenges applications in unpredictable ways, aiming to uncover unanticipated flaws and weaknesses.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Chaos_engineering)
 ## Questions about Chaos Engineering?

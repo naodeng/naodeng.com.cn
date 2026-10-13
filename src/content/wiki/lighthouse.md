@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Lighthouse ｜ Lighthouse](#lighthouse--lighthouse)
-  - [另请参阅：](#另请参阅)
   - [关于 lighthouse 的问题吗？](#关于-lighthouse-的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [lighthouse是什么？](#lighthouse是什么)
@@ -45,7 +44,7 @@ order: 0
 <!-- TOC END -->
 Lighthouse 是 Google 开发的开源自动化工具，用于评估和提升网页质量。它可以审核网页的性能、无障碍性、渐进式 Web 应用准备情况、SEO 等方面，并提供可执行的改进建议。
 
-## 另请参阅：
+另请参阅：
 
 - [维基百科](https://en.wikipedia.org/wiki/Google_Lighthouse)
 

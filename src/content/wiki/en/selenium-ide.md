@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Selenium IDE](#selenium-ide)
-  - [Related Terms:](#related-terms)
   - [Questions about Selenium IDE?](#questions-about-selenium-ide)
     - [Basics and Importance](#basics-and-importance)
       - [What is Selenium IDE?](#what-is-selenium-ide)
@@ -45,7 +44,7 @@ order: 0
 
 Selenium IDE enhances your testing environment with tools for logging in, item searching, and UI interactions.
 
-## Related Terms:
+Related Terms:
 
 - [WebDriver](/en/wiki/webdriver/)
 - [Web Automation](/en/wiki/web-automation/)

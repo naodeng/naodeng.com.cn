@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [CMMI](#cmmi)
-  - [Related Terms:](#related-terms)
   - [Questions about CMMI?](#questions-about-cmmi)
     - [Basics and Importance](#basics-and-importance)
       - [What is CMMI and why is it important?](#what-is-cmmi-and-why-is-it-important)
@@ -43,7 +42,7 @@ order: 0
 
 The Capability Maturity Model Integration (CMMI) is a collection of best practices in engineering, service delivery, and management. It aids organizations in enhancing their delivery capabilities, ensuring customer satisfaction through continuous improvement.
 
-## Related Terms:
+Related Terms:
 
 - Capability Maturity Model Integration
 - [Quality Management](/en/wiki/quality-management/)

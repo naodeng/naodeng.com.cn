@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Fuzz Testing](#fuzz-testing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Fuzz Testing?](#questions-about-fuzz-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is fuzz testing?](#what-is-fuzz-testing)
@@ -40,12 +38,12 @@ order: 0
 
 (aka fuzzing) Fuzz Testing is a dynamic software testing technique that involves providing a system with random, malformed, or unexpected input data to identify vulnerabilities and weaknesses. The goal of fuzz testing is to trigger errors, crashes, memory leaks, or other unforeseen behaviors in the software, which can then be analyzed to find potential security threats or software defects. It's especially effective for uncovering issues that might be exploited by malicious attacks, such as buffer overflows or data injection vulnerabilities. Fuzzing is commonly used in security testing and is considered a proactive measure to enhance software robustness and reliability.
 
-## Related Terms:
+Related Terms:
 
 - [Security Testing](/en/wiki/security-testing/)
 - [Penetration Testing](/en/wiki/penetration-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Fuzzing)
 ## Questions about Fuzz Testing?

@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Web Performance Testing](#web-performance-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Web Performance Testing?](#questions-about-web-performance-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is web performance testing?](#what-is-web-performance-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Evaluation of a web application's speed, responsiveness, and stability under varying loads. It identifies and addresses potential bottlenecks.
 
-## Related Terms:
+Related Terms:
 
 - [Load Testing](/en/wiki/load-testing/)
 - [Stress Testing](/en/wiki/stress-testing/)

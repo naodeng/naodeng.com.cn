@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Tool](#test-tool)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Tool?](#questions-about-test-tool)
     - [Basics and Importance](#basics-and-importance)
       - [What is a test tool in software testing?](#what-is-a-test-tool-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 Test tools assist in various test activities, from planning to analysis. They identify input fields and their valid value ranges, often in tandem with test management or CASE tools.
 
-## Related Terms:
+Related Terms:
 
 - [Test Design Tool](/en/wiki/test-design-tool/)
 - [Test Automation tool (e.g., Selenium, JUnit)](/en/wiki/automated-testing/)

@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Black Box Testing](#black-box-testing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Black Box Testing?](#questions-about-black-box-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Black Box Testing?](#what-is-black-box-testing)
@@ -46,13 +44,13 @@ order: 0
 
 Black box testing assesses software without considering its internal workings. Typically focused on functional or acceptance testing, it can be done by anyone, regardless of their familiarity with the codebase.
 
-## Related Terms:
+Related Terms:
 
 - [White Box Testing](/en/wiki/white-box-testing/)
 - [Grey Box Testing](/en/wiki/grey-box-testing/)
 - [Glass Box Testing](/en/wiki/glass-box-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Black-box_testing)
 ## Questions about Black Box Testing?

@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Environment](#test-environment)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Environment?](#questions-about-test-environment)
     - [Basics and Importance](#basics-and-importance)
       - [What is a test environment in software testing?](#what-is-a-test-environment-in-software-testing)
@@ -46,7 +45,7 @@ order: 0
 
 A test environment is a configured setting where tests are executed. It encompasses the necessary hardware, software, and network configurations tailored for the application under test.
 
-## Related Terms:
+Related Terms:
 
 - [Test Data](/en/wiki/test-data/)
 - [Test Infrastructure](/en/wiki/test-infrastructure/)

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [White Box Testing](#white-box-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about White Box Testing?](#questions-about-white-box-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is White Box Testing?](#what-is-white-box-testing)
@@ -41,7 +40,7 @@ order: 0
 
 Evaluation of software's internal coding and architecture. It emphasizes security, input-output flow, design, and usability.
 
-## Related Terms:
+Related Terms:
 
 - [Black Box Testing](/en/wiki/black-box-testing/)
 - [Grey Box Testing](/en/wiki/grey-box-testing/)

@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Extreme Programming](#extreme-programming)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Extreme Programming?](#questions-about-extreme-programming)
     - [Basics and Importance](#basics-and-importance)
       - [What is Extreme Programming (XP)?](#what-is-extreme-programming-xp)
@@ -46,11 +44,11 @@ order: 0
 
 Extreme Programming (XP) is an agile software development method. Unlike Scrum which targets project management, XP emphasizes software development best practices.
 
-## Related Terms:
+Related Terms:
 
 - [Agile Development](/en/wiki/agile-development/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Extreme_programming)
 ## Questions about Extreme Programming?

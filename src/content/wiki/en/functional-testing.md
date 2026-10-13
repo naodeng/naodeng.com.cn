@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Functional Testing](#functional-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Functional Testing?](#questions-about-functional-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is functional testing in software testing?](#what-is-functional-testing-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Functional testing checks if a software application's functions align with its requirements. It's a type of black box testing, meaning it doesn't involve the application's source code.
 
-## Related Terms:
+Related Terms:
 
 - [Non-functional Testing](/en/wiki/non-functional-testing/)
 

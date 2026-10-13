@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Execution Automation](#test-execution-automation)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Execution Automation?](#questions-about-test-execution-automation)
     - [Basics and Importance](#basics-and-importance)
       - [What is test execution automation?](#what-is-test-execution-automation)
@@ -44,7 +43,7 @@ order: 0
 
 This involves using automation tools for test execution, either directly or via a management tool. The concluding test report offers a summarized account of the project’s testing.
 
-## Related Terms:
+Related Terms:
 
 - [Test Automation](/en/wiki/test-automation/)
 - [Automated Testing](/en/wiki/automated-testing/)

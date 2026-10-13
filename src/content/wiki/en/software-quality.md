@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Software Quality](#software-quality)
-  - [Related Terms:](#related-terms)
   - [Questions about Software Quality?](#questions-about-software-quality)
     - [Basics and Importance](#basics-and-importance)
       - [What is software quality?](#what-is-software-quality)
@@ -51,7 +50,7 @@ order: 0
 
 Software quality reflects a software's capability to meet user requirements as documented in the SRS (Software Requirement Specifications). High-quality software aligns with user specifications and is maintainable, timely, and cost-effective.
 
-## Related Terms:
+Related Terms:
 
 - [Software Quality Management](/en/wiki/software-quality-management/)
 - [QA Metrics](/en/wiki/qa-metrics/)

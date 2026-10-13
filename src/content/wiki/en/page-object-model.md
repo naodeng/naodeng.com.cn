@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Page Object Model](#page-object-model)
-  - [Related Terms:](#related-terms)
   - [Questions about Page Object Model?](#questions-about-page-object-model)
     - [Basics and Importance](#basics-and-importance)
       - [What is the Page Object Model in automation testing?](#what-is-the-page-object-model-in-automation-testing)
@@ -37,7 +36,7 @@ order: 0
 
 The Page Object Model (POM) is a design pattern that consolidates web elements into an object repository, promoting code reusability and simplifying test maintenance.
 
-## Related Terms:
+Related Terms:
 
 - [Web Automation](/en/wiki/web-automation/)
 - [Selenium IDE](/en/wiki/selenium-ide/)

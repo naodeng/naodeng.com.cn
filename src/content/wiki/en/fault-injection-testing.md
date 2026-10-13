@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Fault Injection Testing](#fault-injection-testing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Fault Injection Testing?](#questions-about-fault-injection-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Fault Injection Testing?](#what-is-fault-injection-testing)
@@ -42,11 +40,11 @@ order: 0
 
 Introducing faults deliberately to test the system's robustness.
 
-## Related Terms:
+Related Terms:
 
 - [Negative Testing](/en/wiki/negative-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Fault_injection)
 ## Questions about Fault Injection Testing?

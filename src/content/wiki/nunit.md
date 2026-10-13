@@ -17,8 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [Nunit ｜ Nunit](#nunit--nunit)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于 NUnit 有疑问吗？](#关于-nunit-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [NUnit 是什么？](#nunit-是什么)
@@ -46,12 +44,12 @@ order: 0
 
 单位是一个开源的单元测试源自 JUnit 的 C# 框架。它有助于在.NET 中编写和执行测试，例如单位 -console.exe 用于批处理测试执行。
 
-## 相关术语
+相关术语
 
 - [JUnit 测试](/zh-cn/wiki/junit-testing/)
 - [Test Framework](/zh-cn/wiki/unit-test-framework/)
 
-### 另请参阅：
+另请参阅：
 
 - [Official Website](https://nunit.org/)
 - [Wikipedia](https://en.wikipedia.org/wiki/NUnit)

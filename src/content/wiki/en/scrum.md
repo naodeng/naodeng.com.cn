@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Scrum](#scrum)
-  - [See also:](#see-also)
   - [Questions about Scrum?](#questions-about-scrum)
     - [Basics and Importance](#basics-and-importance)
       - [What is Scrum and why is it important?](#what-is-scrum-and-why-is-it-important)
@@ -46,7 +45,7 @@ order: 0
 
 Scrum is an iterative and incremental Agile framework that facilitates collaboration among a cross-functional team to develop and deliver high-quality products. In Scrum, work is broken down into cycles called "sprints," typically lasting two to four weeks, during which a predetermined set of features are developed and tested. Key roles in Scrum include the Product Owner (who defines product requirements and prioritizes tasks), the Scrum Master (who ensures the team follows Scrum practices and principles), and the Development Team (which includes testers, developers, and other necessary roles). Regular ceremonies, such as Daily Stand-ups, Sprint Planning, Sprint Review, and Sprint Retrospective, ensure consistent communication and reflection on progress and processes. In the context of software testing, Scrum emphasizes the integration of testing throughout the sprint, ensuring that features are potentially shippable by the sprint's end.
 
-## See also:
+See also:
 
 - [Official Website](https://www.scrum.org/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Scrum_(software_development))

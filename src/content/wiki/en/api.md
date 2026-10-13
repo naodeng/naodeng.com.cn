@@ -16,36 +16,36 @@ order: 0
 
 - [API](#api)
   - [Questions about API?](#questions-about-api)
-  - [Basics and Importance](#basics-and-importance)
-    - [What is an API and how does it work?](#what-is-an-api-and-how-does-it-work)
-    - [Why are APIs important in software development?](#why-are-apis-important-in-software-development)
-    - [What are the different types of APIs?](#what-are-the-different-types-of-apis)
-    - [What is the difference between a web API and a library API?](#what-is-the-difference-between-a-web-api-and-a-library-api)
-    - [What is the role of APIs in microservices architecture?](#what-is-the-role-of-apis-in-microservices-architecture)
-  - [API Design and Development](#api-design-and-development)
-    - [What are the best practices for designing an API?](#what-are-the-best-practices-for-designing-an-api)
-    - [How do you version an API?](#how-do-you-version-an-api)
-    - [What is API-first design and why is it important?](#what-is-api-first-design-and-why-is-it-important)
-    - [What are the key considerations when developing an API?](#what-are-the-key-considerations-when-developing-an-api)
-    - [What is the role of an API Gateway?](#what-is-the-role-of-an-api-gateway)
-  - [API Testing](#api-testing)
-    - [What is API testing and why is it important?](#what-is-api-testing-and-why-is-it-important)
-    - [What are the different types of API testing?](#what-are-the-different-types-of-api-testing)
-    - [What tools are commonly used for API testing?](#what-tools-are-commonly-used-for-api-testing)
-    - [What are the key steps in API testing?](#what-are-the-key-steps-in-api-testing)
-    - [How do you automate API testing?](#how-do-you-automate-api-testing)
-  - [API Security](#api-security)
-    - [What are the common security risks associated with APIs?](#what-are-the-common-security-risks-associated-with-apis)
-    - [How can you secure an API?](#how-can-you-secure-an-api)
-    - [What is API key authentication?](#what-is-api-key-authentication)
-    - [What is OAuth and how is it used in API security?](#what-is-oauth-and-how-is-it-used-in-api-security)
-    - [What is the role of SSL/TLS in API security?](#what-is-the-role-of-ssltls-in-api-security)
-  - [API Documentation](#api-documentation)
-    - [Why is API documentation important?](#why-is-api-documentation-important)
-    - [What should be included in good API documentation?](#what-should-be-included-in-good-api-documentation)
-    - [What tools are available for creating API documentation?](#what-tools-are-available-for-creating-api-documentation)
-    - [How often should API documentation be updated?](#how-often-should-api-documentation-be-updated)
-    - [What is the role of API documentation in API testing?](#what-is-the-role-of-api-documentation-in-api-testing)
+    - [Basics and Importance](#basics-and-importance)
+      - [What is an API and how does it work?](#what-is-an-api-and-how-does-it-work)
+      - [Why are APIs important in software development?](#why-are-apis-important-in-software-development)
+      - [What are the different types of APIs?](#what-are-the-different-types-of-apis)
+      - [What is the difference between a web API and a library API?](#what-is-the-difference-between-a-web-api-and-a-library-api)
+      - [What is the role of APIs in microservices architecture?](#what-is-the-role-of-apis-in-microservices-architecture)
+    - [API Design and Development](#api-design-and-development)
+      - [What are the best practices for designing an API?](#what-are-the-best-practices-for-designing-an-api)
+      - [How do you version an API?](#how-do-you-version-an-api)
+      - [What is API-first design and why is it important?](#what-is-api-first-design-and-why-is-it-important)
+      - [What are the key considerations when developing an API?](#what-are-the-key-considerations-when-developing-an-api)
+      - [What is the role of an API Gateway?](#what-is-the-role-of-an-api-gateway)
+    - [API Testing](#api-testing)
+      - [What is API testing and why is it important?](#what-is-api-testing-and-why-is-it-important)
+      - [What are the different types of API testing?](#what-are-the-different-types-of-api-testing)
+      - [What tools are commonly used for API testing?](#what-tools-are-commonly-used-for-api-testing)
+      - [What are the key steps in API testing?](#what-are-the-key-steps-in-api-testing)
+      - [How do you automate API testing?](#how-do-you-automate-api-testing)
+    - [API Security](#api-security)
+      - [What are the common security risks associated with APIs?](#what-are-the-common-security-risks-associated-with-apis)
+      - [How can you secure an API?](#how-can-you-secure-an-api)
+      - [What is API key authentication?](#what-is-api-key-authentication)
+      - [What is OAuth and how is it used in API security?](#what-is-oauth-and-how-is-it-used-in-api-security)
+      - [What is the role of SSL/TLS in API security?](#what-is-the-role-of-ssltls-in-api-security)
+    - [API Documentation](#api-documentation)
+      - [Why is API documentation important?](#why-is-api-documentation-important)
+      - [What should be included in good API documentation?](#what-should-be-included-in-good-api-documentation)
+      - [What tools are available for creating API documentation?](#what-tools-are-available-for-creating-api-documentation)
+      - [How often should API documentation be updated?](#how-often-should-api-documentation-be-updated)
+      - [What is the role of API documentation in API testing?](#what-is-the-role-of-api-documentation-in-api-testing)
 <!-- TOC END -->
 
 An Application Programming Interface (API) is a set of rules allowing two applications to communicate. The term "Application" in this context denotes any software with a specific function. The API defines how these applications send and receive requests and responses.
@@ -60,9 +60,9 @@ See also:
 - [Wikipedia](https://en.wikipedia.org/wiki/API)
 ## Questions about API?
 
-## Basics and Importance
+### Basics and Importance
 
-### What is an API and how does it work?
+#### What is an API and how does it work?
 
   An **[API](/en/wiki/api-testing/)** (Application Programming Interface) is a set of protocols, routines, and tools for building software applications. It specifies how software components should interact, allowing different systems to communicate with each other. An [API](/en/wiki/api-testing/) works as an intermediary layer that processes requests and ensures seamless functioning of enterprise systems.
   [APIs](/en/wiki/api-testing/) operate through **"calls"** or **"requests"** made over the internet, and the data is typically exchanged in a format like JSON or XML. When a request is made to an [API](/en/wiki/api-testing/), it performs a predefined operation and returns a response. This can include data retrieval, updates, or other CRUD (Create, Read, Update, Delete) operations.
@@ -82,14 +82,14 @@ See also:
   ```
   In this example, the [API](/en/wiki/api-testing/) at `https://api.example.com/data` is called with a `GET` request to retrieve data. The `fetch` function handles the HTTP request, and the response is processed and logged to the console. The headers often include content type and authorization information, ensuring that the request is recognized and allowed by the [API](/en/wiki/api-testing/).
 
-### Why are APIs important in software development?
+#### Why are APIs important in software development?
 
   [APIs](/en/wiki/api-testing/) are crucial in software development for **enabling communication** between different software components or systems. They act as **contracts**, stipulating how software elements interact, ensuring that changes in one part do not break functionality elsewhere. This **decoupling** allows for **modularity**, making it easier to design, develop, and maintain applications.
   [APIs](/en/wiki/api-testing/) facilitate **reusability**, allowing developers to leverage existing functionalities without reinventing the wheel. They also enable **scalability**, as services can be scaled independently to meet demand. In the context of [test automation](/en/wiki/test-automation/), [APIs](/en/wiki/api-testing/) are instrumental for **[integration testing](/en/wiki/integration-testing/)**, ensuring that different parts of the application work together as expected.
   Moreover, [APIs](/en/wiki/api-testing/) are key in **continuous integration/continuous deployment (CI/CD)** pipelines, allowing automated tools to interact with the software being developed, thus speeding up the release process. They also provide a means for **monitoring and health checks**, which are essential for maintaining the reliability of live systems.
   In summary, [APIs](/en/wiki/api-testing/) are the backbone of modern software development, supporting **communication**, **modularity**, **reusability**, **scalability**, and **automation**. They are indispensable for creating complex, robust, and efficient software systems.
 
-### What are the different types of APIs?
+#### What are the different types of APIs?
 
   [APIs](/en/wiki/api-testing/) come in various forms, each serving different purposes. Here are the different types of [APIs](/en/wiki/api-testing/):
 
@@ -103,7 +103,7 @@ See also:
   Each type of [API](/en/wiki/api-testing/) has its own set of standards and best practices for implementation and testing. Understanding the characteristics of each is crucial for effective [test automation](/en/wiki/test-automation/).
 
 
-### What is the difference between a web API and a library API?
+#### What is the difference between a web API and a library API?
 
   A **web [API](/en/wiki/api-testing/)** is an interface that allows communication between different software systems over the internet, typically using HTTP/HTTPS protocols. It enables services and clients to exchange data and functionality through web requests and responses, often in JSON or XML format. Web [APIs](/en/wiki/api-testing/) are designed to be accessed remotely and support web-based interactions.
   On the other hand, a **library [API](/en/wiki/api-testing/)** is a set of functions, classes, or protocols provided by a library, which is a collection of non-volatile resources used by computer programs. These [APIs](/en/wiki/api-testing/) are intended for direct use within software and are not exposed over the network. They provide a way for developers to leverage predefined functionality without having to write the code from scratch, ensuring code reuse and modularity.
@@ -120,7 +120,7 @@ See also:
   console.log(formattedDate);
   ```
 
-### What is the role of APIs in microservices architecture?
+#### What is the role of APIs in microservices architecture?
 
   In a **microservices architecture**, [APIs](/en/wiki/api-testing/) serve as the **primary communication channel** between services, enabling each service to operate independently while still being part of a cohesive system. They allow services to **exchange data** and **functionality** seamlessly, without needing to share code or implementation details.
   [APIs](/en/wiki/api-testing/) in microservices are designed to be **lightweight** and **focused**, often around a specific business capability. This aligns with the principle of **single responsibility**, where each microservice is responsible for a distinct feature or process.
@@ -128,9 +128,9 @@ See also:
   Moreover, [APIs](/en/wiki/api-testing/) enable **polyglot programming**, allowing services to be written in different programming languages that best suit their functionality. This is possible because [APIs](/en/wiki/api-testing/) provide a language-agnostic interface for interaction.
   In summary, [APIs](/en/wiki/api-testing/) are integral to microservices architecture, providing a mechanism for services to interact while maintaining a level of **isolation** and **autonomy** that supports the microservices' goals of agility, scalability, and resilience.
 
-## API Design and Development
+### API Design and Development
 
-### What are the best practices for designing an API?
+#### What are the best practices for designing an API?
 
   When designing an [API](/en/wiki/api-testing/), adhere to the following best practices:
 
@@ -166,7 +166,7 @@ See also:
   Remember, the goal is to create an [API](/en/wiki/api-testing/) that is easy to understand, integrate with, and maintain over time.
 
   - **Consistency**
-### How do you version an API?
+#### How do you version an API?
 
   Versioning an [API](/en/wiki/api-testing/) is crucial for maintaining compatibility and informing users of changes. Here's a concise guide:
   **Semantic Versioning (SemVer)** is a popular scheme: `MAJOR.MINOR.PATCH` format, where you increment the:
@@ -195,7 +195,7 @@ See also:
 
   - `MAJOR`
 
-### What is API-first design and why is it important?
+#### What is API-first design and why is it important?
 
   [API](/en/wiki/api-testing/)-first design is an approach where you prioritize the development of your **[APIs](/en/wiki/api-testing/)** before implementing the core application. It's a strategy that treats [APIs](/en/wiki/api-testing/) as "first-class citizens" in the software development process.
   This design philosophy is important because it ensures that [APIs](/en/wiki/api-testing/) are:
@@ -218,7 +218,7 @@ See also:
   In the context of **[test automation](/en/wiki/test-automation/)**, [API](/en/wiki/api-testing/)-first design simplifies the creation of automated tests by providing stable and well-documented endpoints. This allows [test automation](/en/wiki/test-automation/) engineers to write tests that are less brittle and more focused on validating business logic rather than dealing with UI changes or other front-end concerns.
 
 
-### What are the key considerations when developing an API?
+#### What are the key considerations when developing an API?
 
   When developing an [API](/en/wiki/api-testing/), **consistency** is crucial for [maintainability](/en/wiki/maintainability/) and usability. Ensure consistent naming conventions, request/response formats, and behavior across endpoints.
   **Performance** must be optimized; design for efficient data retrieval and consider implementing caching, pagination, and compression to reduce latency.
@@ -232,7 +232,7 @@ See also:
   **Monitoring and logging** are essential for maintaining a healthy [API](/en/wiki/api-testing/); track usage patterns, performance metrics, and errors to proactively manage the [API](/en/wiki/api-testing/).
   **User feedback** is invaluable; engage with your [API](/en/wiki/api-testing/) consumers to gather insights and prioritize improvements based on their experiences.
 
-### What is the role of an API Gateway?
+#### What is the role of an API Gateway?
 
   An **[API](/en/wiki/api-testing/) Gateway** acts as a reverse proxy to accept all application programming interface ([API](/en/wiki/api-testing/)) calls, aggregate the various services required to fulfill them, and return the appropriate result. In a **microservices architecture**, it serves as a single entry point for all clients, routing requests to the appropriate microservice.
   The [API](/en/wiki/api-testing/) Gateway can handle **cross-cutting concerns** such as:
@@ -246,9 +246,9 @@ See also:
   In summary, the [API](/en/wiki/api-testing/) Gateway is a critical component that manages the flow of [API](/en/wiki/api-testing/) calls in microservices architectures, providing a centralized point for common functionalities that are essential for maintaining a scalable, secure, and efficient system.
 
 
-## API Testing
+### API Testing
 
-### What is API testing and why is it important?
+#### What is API testing and why is it important?
 
   [API testing](/en/wiki/api-testing/) is a type of [software testing](/en/wiki/software-testing/) that involves verifying and validating Application Programming Interfaces ([APIs](/en/wiki/api-testing/)) and their interactions with other software components. It is **crucial** for ensuring that [APIs](/en/wiki/api-testing/) function as expected, handle loads efficiently, and respond correctly to edge cases and unexpected input.
   The importance of [API testing](/en/wiki/api-testing/) lies in its focus on the **business logic layer** of the software architecture. Unlike [UI testing](/en/wiki/ui-testing/), which assesses the front-end interface, [API testing](/en/wiki/api-testing/) deals with the code that processes data and transactions, which is often more stable than UI. This stability allows for earlier test development and execution in the software development lifecycle, leading to **faster feedback** and **quicker [iterations](/en/wiki/iteration/)**.
@@ -279,7 +279,7 @@ See also:
   Given the rise of microservices and distributed architectures, [API testing](/en/wiki/api-testing/) has become even more significant, as systems increasingly rely on multiple [APIs](/en/wiki/api-testing/) working in harmony. Automating [API](/en/wiki/api-testing/) tests is a best practice, enabling continuous testing and integration, which is a cornerstone of agile and DevOps methodologies.
 
 
-### What are the different types of API testing?
+#### What are the different types of API testing?
 
   Different types of [API testing](/en/wiki/api-testing/) focus on various aspects of the [API](/en/wiki/api-testing/)'s functionality, reliability, performance, and security. Here are the primary types:
 
@@ -297,7 +297,7 @@ See also:
   Each type of testing is crucial for ensuring that an [API](/en/wiki/api-testing/) is reliable, secure, performs well, and integrates smoothly with other system components.
 
 
-### What tools are commonly used for API testing?
+#### What tools are commonly used for API testing?
 
   Common tools for [API testing](/en/wiki/api-testing/) include:
 
@@ -313,7 +313,7 @@ See also:
   These tools offer various features, such as [test automation](/en/wiki/test-automation/), request chaining, environment variables, and integration with CI/CD pipelines, to streamline and enhance the [API testing](/en/wiki/api-testing/) process.
 
 
-### What are the key steps in API testing?
+#### What are the key steps in API testing?
 
   [API testing](/en/wiki/api-testing/) involves several key steps to ensure the functionality, reliability, security, and performance of the application programming interfaces. Here are the essential steps:
 
@@ -339,7 +339,7 @@ See also:
   By following these steps, you can ensure comprehensive coverage of [API testing](/en/wiki/api-testing/), leading to robust and reliable [API](/en/wiki/api-testing/) integrations.
 
 
-### How do you automate API testing?
+#### How do you automate API testing?
 
   To automate [API testing](/en/wiki/api-testing/), follow these steps:
 
@@ -367,9 +367,9 @@ See also:
   By automating [API](/en/wiki/api-testing/) tests, you ensure consistent and efficient validation of [API](/en/wiki/api-testing/) functionality, reliability, and security.
 
 
-## API Security
+### API Security
 
-### What are the common security risks associated with APIs?
+#### What are the common security risks associated with APIs?
 
   Common security risks associated with [APIs](/en/wiki/api-testing/) include:
 
@@ -386,7 +386,7 @@ See also:
   Mitigating these risks involves implementing robust authentication and authorization, encrypting data in transit and at rest, validating and sanitizing input, using secure coding practices, and keeping all components up to date. Regular security audits and [penetration testing](/en/wiki/penetration-testing/) are also crucial for maintaining [API](/en/wiki/api-testing/) security.
 
 
-### How can you secure an API?
+#### How can you secure an API?
 
   Securing an [API](/en/wiki/api-testing/) involves implementing measures to protect it from unauthorized access and threats. Here are key strategies:
 
@@ -419,7 +419,7 @@ See also:
   Implement these practices to create a robust security posture for your [API](/en/wiki/api-testing/).
 
 
-### What is API key authentication?
+#### What is API key authentication?
 
   [API](/en/wiki/api-testing/) key authentication is a simple security method that involves sending a **secret token** as part of the request to access an [API](/en/wiki/api-testing/). The [API](/en/wiki/api-testing/) key is a unique identifier that the server uses to **validate** the identity of the requester and to **authorize** access to the [API](/en/wiki/api-testing/)'s resources.
   To implement [API](/en/wiki/api-testing/) key authentication, the client must include the [API](/en/wiki/api-testing/) key in the request headers or as a query parameter. Here's an example of including an [API](/en/wiki/api-testing/) key in the request header using JavaScript:
@@ -437,7 +437,7 @@ See also:
   ```
   [API](/en/wiki/api-testing/) keys are typically provided by the [API](/en/wiki/api-testing/) provider during the **registration** process and should be kept **confidential** to prevent unauthorized access. While [API](/en/wiki/api-testing/) key authentication is easy to implement, it is not the most secure method on its own, as the key can be intercepted or leaked if not handled properly. It is often used in conjunction with other security measures such as **HTTPS** to ensure the key is transmitted securely.
 
-### What is OAuth and how is it used in API security?
+#### What is OAuth and how is it used in API security?
 
   OAuth is an **open standard** for access delegation, commonly used to grant websites or applications access to user data on other websites without giving them the passwords. It acts as an intermediary, providing tokens instead of user credentials to access resources.
   In [API](/en/wiki/api-testing/) security, OAuth allows clients to access server resources on behalf of a resource owner. It specifies a process for resource owners to authorize third-party access to their server resources without sharing their credentials. Designed specifically to work with **HTTP**, it provides a secure and standardized method for tokens to be issued, validated, and for the scopes and durations of access permissions to be defined.
@@ -458,7 +458,7 @@ See also:
   OAuth is widely used in [API](/en/wiki/api-testing/) security for its ability to provide **fine-grained authorization** with limited permissions for different types of access.
 
 
-### What is the role of SSL/TLS in API security?
+#### What is the role of SSL/TLS in API security?
 
   SSL/TLS plays a crucial role in **[API](/en/wiki/api-testing/) security** by establishing an encrypted link between the client and the server. This ensures that all data transmitted between the two parties remains **private and integral**, protecting it from eavesdropping, tampering, and message forgery.
   When an [API](/en/wiki/api-testing/) is served over HTTPS, which is HTTP layered over SSL/TLS, it benefits from the underlying security features:
@@ -474,9 +474,9 @@ See also:
   Incorporating SSL/TLS checks into automated [API testing](/en/wiki/api-testing/) helps maintain the security posture and compliance with best practices, making it an indispensable part of the [API testing](/en/wiki/api-testing/) process.
 
 
-## API Documentation
+### API Documentation
 
-### Why is API documentation important?
+#### Why is API documentation important?
 
   [API](/en/wiki/api-testing/) documentation is crucial for several reasons:
 
@@ -495,7 +495,7 @@ See also:
   In summary, [API](/en/wiki/api-testing/) documentation is a foundational element that supports the entire lifecycle of an [API](/en/wiki/api-testing/), from design and development to testing and maintenance.
 
 
-### What should be included in good API documentation?
+#### What should be included in good API documentation?
 
   Good [API](/en/wiki/api-testing/) documentation should include the following elements:
 
@@ -527,7 +527,7 @@ See also:
   Remember to keep the documentation **up-to-date** and **accurate** to ensure a seamless integration and testing experience for users.
 
 
-### What tools are available for creating API documentation?
+#### What tools are available for creating API documentation?
 
   Creating [API](/en/wiki/api-testing/) documentation can be streamlined with various tools designed to facilitate the process. Here are some widely-used options:
 
@@ -548,14 +548,14 @@ See also:
   Each tool offers unique features and integrations, so the choice depends on specific project requirements, preferred workflow, and the technology stack in use.
 
 
-### How often should API documentation be updated?
+#### How often should API documentation be updated?
 
   [API](/en/wiki/api-testing/) documentation should be updated **as soon as changes are made** to the [API](/en/wiki/api-testing/). This ensures that the documentation accurately reflects the current state of the [API](/en/wiki/api-testing/), which is critical for developers who rely on it for integrating and testing purposes. Updates should include new endpoints, changes to existing endpoints, deprecations, and any modifications to request or response structures.
   For continuous delivery environments, consider integrating the documentation process into the CI/CD pipeline. This can be achieved by using tools that generate documentation directly from the code or [API](/en/wiki/api-testing/) specifications, such as OpenAPI/[Swagger](/en/wiki/swagger/). This way, documentation is generated and published automatically with each code release, ensuring it remains up-to-date.
   In addition to automated updates, **manual reviews** should be conducted **periodically** to ensure clarity, accuracy, and completeness. This could be part of a sprint review for Agile teams or scheduled on a regular basis, such as quarterly.
   Remember that outdated or incorrect documentation can lead to wasted time in development and testing, and potentially cause miscommunication between teams. Therefore, keeping [API](/en/wiki/api-testing/) documentation current is not just a matter of good practice, but a necessity for maintaining the efficiency and reliability of software development and [test automation](/en/wiki/test-automation/) processes.
 
-### What is the role of API documentation in API testing?
+#### What is the role of API documentation in API testing?
 
   [API](/en/wiki/api-testing/) documentation is crucial in [API testing](/en/wiki/api-testing/) as it serves as a **roadmap** for understanding the functionalities, expected behaviors, and integration methods of an [API](/en/wiki/api-testing/). It provides **endpoints**, **methods**, **parameters**, and **request/response schemas**, which testers use to create meaningful [test cases](/en/wiki/test-case/). Good documentation includes **examples** of both requests and responses, making it easier to validate the [API](/en/wiki/api-testing/) against its contract.
   Testers rely on documentation to ensure that the [API](/en/wiki/api-testing/) adheres to its **specification**. Without accurate documentation, testers cannot effectively perform **contract testing** to verify that the [API](/en/wiki/api-testing/) meets the agreed-upon standards for interaction between services.

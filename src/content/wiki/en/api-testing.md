@@ -16,36 +16,36 @@ order: 0
 
 - [API Testing](#api-testing)
   - [Questions about API Testing?](#questions-about-api-testing)
-  - [Basics and Importance](#basics-and-importance)
-    - [What is API Testing?](#what-is-api-testing)
-    - [Why is API Testing important?](#why-is-api-testing-important)
-    - [What are the benefits of API Testing?](#what-are-the-benefits-of-api-testing)
-    - [What is the difference between API Testing and Unit Testing?](#what-is-the-difference-between-api-testing-and-unit-testing)
-    - [What is the role of API Testing in Integration Testing?](#what-is-the-role-of-api-testing-in-integration-testing)
-  - [API Testing Types](#api-testing-types)
-    - [What are the different types of API Testing?](#what-are-the-different-types-of-api-testing)
-    - [What is the difference between REST and SOAP APIs in terms of testing?](#what-is-the-difference-between-rest-and-soap-apis-in-terms-of-testing)
-    - [What is CRUD testing in API Testing?](#what-is-crud-testing-in-api-testing)
-    - [What is Load Testing in API Testing?](#what-is-load-testing-in-api-testing)
-    - [What is Security Testing in API Testing?](#what-is-security-testing-in-api-testing)
-  - [API Testing Tools](#api-testing-tools)
-    - [What tools are commonly used for API Testing?](#what-tools-are-commonly-used-for-api-testing)
-    - [What are the features of Postman for API Testing?](#what-are-the-features-of-postman-for-api-testing)
-    - [How does SoapUI differ from other API Testing tools?](#how-does-soapui-differ-from-other-api-testing-tools)
-    - [What are the advantages of using automated tools for API Testing?](#what-are-the-advantages-of-using-automated-tools-for-api-testing)
-    - [What factors should be considered when choosing an API Testing tool?](#what-factors-should-be-considered-when-choosing-an-api-testing-tool)
-  - [API Testing Process](#api-testing-process)
-    - [What are the steps involved in API Testing?](#what-are-the-steps-involved-in-api-testing)
-    - [What is API endpoint testing?](#what-is-api-endpoint-testing)
-    - [How do you validate responses in API Testing?](#how-do-you-validate-responses-in-api-testing)
-    - [How do you handle authentication and authorization in API Testing?](#how-do-you-handle-authentication-and-authorization-in-api-testing)
-    - [What are common API errors to look for during testing?](#what-are-common-api-errors-to-look-for-during-testing)
-  - [Advanced Concepts](#advanced-concepts)
-    - [What is the role of API Testing in Continuous Integration/Continuous Deployment (CI/CD)?](#what-is-the-role-of-api-testing-in-continuous-integrationcontinuous-deployment-cicd)
-    - [How can API Testing be integrated into the Agile methodology?](#how-can-api-testing-be-integrated-into-the-agile-methodology)
-    - [What is the role of API Testing in Microservices architecture?](#what-is-the-role-of-api-testing-in-microservices-architecture)
-    - [What is contract testing in API Testing?](#what-is-contract-testing-in-api-testing)
-    - [How can API Testing help with performance optimization?](#how-can-api-testing-help-with-performance-optimization)
+    - [Basics and Importance](#basics-and-importance)
+      - [What is API Testing?](#what-is-api-testing)
+      - [Why is API Testing important?](#why-is-api-testing-important)
+      - [What are the benefits of API Testing?](#what-are-the-benefits-of-api-testing)
+      - [What is the difference between API Testing and Unit Testing?](#what-is-the-difference-between-api-testing-and-unit-testing)
+      - [What is the role of API Testing in Integration Testing?](#what-is-the-role-of-api-testing-in-integration-testing)
+    - [API Testing Types](#api-testing-types)
+      - [What are the different types of API Testing?](#what-are-the-different-types-of-api-testing)
+      - [What is the difference between REST and SOAP APIs in terms of testing?](#what-is-the-difference-between-rest-and-soap-apis-in-terms-of-testing)
+      - [What is CRUD testing in API Testing?](#what-is-crud-testing-in-api-testing)
+      - [What is Load Testing in API Testing?](#what-is-load-testing-in-api-testing)
+      - [What is Security Testing in API Testing?](#what-is-security-testing-in-api-testing)
+    - [API Testing Tools](#api-testing-tools)
+      - [What tools are commonly used for API Testing?](#what-tools-are-commonly-used-for-api-testing)
+      - [What are the features of Postman for API Testing?](#what-are-the-features-of-postman-for-api-testing)
+      - [How does SoapUI differ from other API Testing tools?](#how-does-soapui-differ-from-other-api-testing-tools)
+      - [What are the advantages of using automated tools for API Testing?](#what-are-the-advantages-of-using-automated-tools-for-api-testing)
+      - [What factors should be considered when choosing an API Testing tool?](#what-factors-should-be-considered-when-choosing-an-api-testing-tool)
+    - [API Testing Process](#api-testing-process)
+      - [What are the steps involved in API Testing?](#what-are-the-steps-involved-in-api-testing)
+      - [What is API endpoint testing?](#what-is-api-endpoint-testing)
+      - [How do you validate responses in API Testing?](#how-do-you-validate-responses-in-api-testing)
+      - [How do you handle authentication and authorization in API Testing?](#how-do-you-handle-authentication-and-authorization-in-api-testing)
+      - [What are common API errors to look for during testing?](#what-are-common-api-errors-to-look-for-during-testing)
+    - [Advanced Concepts](#advanced-concepts)
+      - [What is the role of API Testing in Continuous Integration/Continuous Deployment (CI/CD)?](#what-is-the-role-of-api-testing-in-continuous-integrationcontinuous-deployment-cicd)
+      - [How can API Testing be integrated into the Agile methodology?](#how-can-api-testing-be-integrated-into-the-agile-methodology)
+      - [What is the role of API Testing in Microservices architecture?](#what-is-the-role-of-api-testing-in-microservices-architecture)
+      - [What is contract testing in API Testing?](#what-is-contract-testing-in-api-testing)
+      - [How can API Testing help with performance optimization?](#how-can-api-testing-help-with-performance-optimization)
 <!-- TOC END -->
 
 API testing involves verifying and validating an API 's performance, functionality, reliability, and security. The process includes sending requests to the API and analyzing its responses to ensure they meet expected outcomes. This testing can be done manually or using automated tools, helping identify issues like invalid inputs, poor error handling, and unauthorized access.
@@ -59,9 +59,9 @@ Related Terms:
 
 ## Questions about API Testing?
 
-## Basics and Importance
+### Basics and Importance
 
-### What is API Testing?
+#### What is API Testing?
 
   API Testing is a type of [software testing](/en/wiki/software-testing/) that involves verifying and validating Application Programming Interfaces (APIs) and their interactions with other software components. This testing focuses on the business logic layer of the software architecture, ensuring that APIs function as expected, data is accurately exchanged, and services are reliable and performant under various conditions.
   Testing is conducted at the message layer without a user interface, using tools to send calls to the API, get output, and log the system's response. Inputs can be in the form of REST, SOAP, or other web service calls, and the outputs are typically in the form of HTTP status codes, JSON, XML, or other data formats.
@@ -74,7 +74,7 @@ Related Terms:
   API Testing is crucial for verifying the core functionalities of applications that rely on multiple interconnected API services. It allows for early detection of issues and helps maintain a high level of service quality. [Test cases](/en/wiki/test-case/) are designed based on the API's specifications, and assertions are used to validate the responses against expected outcomes.
 
 
-### Why is API Testing important?
+#### Why is API Testing important?
 
   API Testing is crucial because it directly examines the **business logic** layer of the software architecture, offering **early detection** of defects and **security vulnerabilities**. It allows for testing of the **interactions** between various software components and the **external systems** without the need for a user interface. This leads to **faster [test execution](/en/wiki/test-execution/)** and **better [test coverage](/en/wiki/test-coverage/)**, as APIs can be tested in isolation.
   Moreover, API Testing is essential for **modern development practices** such as **DevOps** and **microservices**, where services are frequently updated and deployed. It ensures that these services **communicate effectively** and **function as expected** before they are integrated into the application, reducing the risk of integration issues.
@@ -82,7 +82,7 @@ Related Terms:
   In addition, API Testing is indispensable for **performance optimization**, as it helps to identify bottlenecks and performance issues at the service level. It also plays a significant role in **contract testing**, ensuring that the API adheres to its defined expectations and agreements with other services or clients.
   In summary, API Testing is a **foundational element** of a robust [software testing](/en/wiki/software-testing/) strategy, ensuring system reliability, performance, and security at the most critical level of software interaction.
 
-### What are the benefits of API Testing?
+#### What are the benefits of API Testing?
 
   API Testing offers several benefits that enhance the quality and reliability of software systems:
 
@@ -97,7 +97,7 @@ Related Terms:
   - **Performance Benchmarking** : It can be used to assess the performance and behavior of the application under load, helping to identify bottlenecks and optimize throughput and response times.
   - **Automation** : API tests can be easily automated, integrated into CI/CD pipelines, and executed in different environments, providing continuous feedback on the system's health.
 
-### What is the difference between API Testing and Unit Testing?
+#### What is the difference between API Testing and Unit Testing?
 
   API Testing and [Unit Testing](/en/wiki/unit-testing/) are distinct testing approaches with different scopes and objectives.
   **[Unit Testing](/en/wiki/unit-testing/)** focuses on the smallest parts of the software, typically individual functions or methods within a class. It's conducted by developers to ensure that each unit of the software performs as designed. Unit tests are isolated from dependencies, often using mocks or stubs to simulate other modules.
@@ -124,7 +124,7 @@ Related Terms:
   ```
   While **[Unit Testing](/en/wiki/unit-testing/)** ensures that individual components work in isolation, **API Testing** validates that the system's external interfaces behave correctly, potentially catching issues that unit tests might miss due to integration with other system components.
 
-### What is the role of API Testing in Integration Testing?
+#### What is the role of API Testing in Integration Testing?
 
   API Testing plays a critical role in [Integration Testing](/en/wiki/integration-testing/) by ensuring that different software modules, which interact through APIs, communicate and work together as expected. In [Integration Testing](/en/wiki/integration-testing/), API Testing focuses on verifying the end-to-end functionality, reliability, performance, and security of the APIs when integrated with other components of the system.
   During [Integration Testing](/en/wiki/integration-testing/), testers use API calls to validate the interactions between various software layers and external systems. This includes checking the data flow, error handling, and business logic that occurs between interconnected modules. API Testing at this stage helps identify issues that might not surface during [Unit Testing](/en/wiki/unit-testing/), such as discrepancies in data exchange formats, authentication problems, and failures in handling concurrent processes.
@@ -146,9 +146,9 @@ Related Terms:
   - **Automating [test cases](/en/wiki/test-case/)**
     to facilitate continuous testing in CI/CD pipelines.
 
-## API Testing Types
+### API Testing Types
 
-### What are the different types of API Testing?
+#### What are the different types of API Testing?
 
   Different types of API testing focus on various aspects of the API's functionality, reliability, performance, and security. Here are some key types:
 
@@ -166,7 +166,7 @@ Related Terms:
   Each type targets different aspects and layers of the API, ensuring a comprehensive testing strategy that covers the full scope of the API's functionality and potential issues.
 
 
-### What is the difference between REST and SOAP APIs in terms of testing?
+#### What is the difference between REST and SOAP APIs in terms of testing?
 
   When testing **REST** (Representational State Transfer) and **SOAP** (Simple Object Access Protocol) APIs, the key differences lie in the **protocols**, **data formats**, **complexity**, and **testing methods** used.
   **REST APIs**:
@@ -204,7 +204,7 @@ Related Terms:
   - Operate with
     **SOAP protocol**
 
-### What is CRUD testing in API Testing?
+#### What is CRUD testing in API Testing?
 
   CRUD testing in API testing focuses on validating the **Create**, **Read**, **Update**, and **Delete** operations that are fundamental to the functionality of RESTful APIs. Each operation corresponds to an HTTP method: POST for create, GET for read, PUT/PATCH for update, and DELETE for delete.
   During CRUD testing, you ensure that:
@@ -238,7 +238,7 @@ Related Terms:
 
   - **POST**
 
-### What is Load Testing in API Testing?
+#### What is Load Testing in API Testing?
 
   [Load testing](/en/wiki/load-testing/) in API testing involves simulating a high volume of requests to an API endpoint to assess how the system performs under stress. This type of testing is crucial for determining the **scalability** and **reliability** of an API, as it helps identify bottlenecks and potential points of failure when the API is subjected to heavy traffic.
   During [load testing](/en/wiki/load-testing/), various metrics such as **response time**, **throughput**, **error rates**, and **resource utilization** are measured to evaluate the API's performance. The goal is to ensure that the API can handle anticipated load conditions while maintaining acceptable performance levels.
@@ -246,7 +246,7 @@ Related Terms:
   [Load testing](/en/wiki/load-testing/) is typically conducted in a controlled environment that mirrors the production [setup](/en/wiki/setup/) as closely as possible. This ensures that the test results are relevant and actionable. It's important to gradually increase the load during testing to understand how performance changes in relation to the load applied.
   By identifying performance limitations early, organizations can make necessary optimizations to their APIs before they impact end-users, ensuring a smooth and efficient user experience even at peak times.
 
-### What is Security Testing in API Testing?
+#### What is Security Testing in API Testing?
 
   [Security Testing](/en/wiki/security-testing/) in API testing focuses on verifying the confidentiality, integrity, and availability of APIs. It aims to uncover vulnerabilities that could lead to unauthorized access, data breaches, or other security threats. Key aspects include:
 
@@ -259,9 +259,9 @@ Related Terms:
   [Security testing](/en/wiki/security-testing/) tools like OWASP ZAP or Burp Suite can automate vulnerability scanning. It's crucial to integrate [security testing](/en/wiki/security-testing/) into the CI/CD pipeline for continuous security assurance.
 
 
-## API Testing Tools
+### API Testing Tools
 
-### What tools are commonly used for API Testing?
+#### What tools are commonly used for API Testing?
 
   Commonly used tools for API testing include:
 
@@ -279,7 +279,7 @@ Related Terms:
   These tools offer various features, including test scripting, response validation, and integration with CI/CD pipelines, catering to different testing needs and preferences.
 
 
-### What are the features of Postman for API Testing?
+#### What are the features of Postman for API Testing?
 
   [Postman](/en/wiki/postman/) is a versatile tool for API testing with features that streamline the creation, execution, and management of API tests:
 
@@ -298,7 +298,7 @@ Related Terms:
   These features make [Postman](/en/wiki/postman/) a comprehensive tool for API testing, facilitating both manual [exploratory testing](/en/wiki/exploratory-testing/) and automated [test execution](/en/wiki/test-execution/).
 
 
-### How does SoapUI differ from other API Testing tools?
+#### How does SoapUI differ from other API Testing tools?
 
   SoapUI stands out from other API testing tools primarily due to its focus on **SOAP (Simple Object Access Protocol)** services, although it also supports RESTful services and other web protocols. It offers a specialized environment for **SOAP-specific validations** such as WS-Security, WS-Addressing, and MTOM (Message Transmission Optimization Mechanism), which are less common in other tools that may be more REST-centric.
   Another differentiator is SoapUI's extensive support for **data-driven testing**. It allows testers to easily read data from external sources like [databases](/en/wiki/database/) and Excel files, which can be used to create dynamic requests and validate responses. This is coupled with its ability to create complex scenarios through **scripting with Groovy**.
@@ -306,7 +306,7 @@ Related Terms:
   For [performance testing](/en/wiki/performance-testing/), SoapUI offers **LoadUI**, an integrated tool that allows testers to reuse functional [test cases](/en/wiki/test-case/) as performance tests, which is a unique feature that not all API testing tools provide.
   Lastly, SoapUI Pro, the commercial version of SoapUI, offers advanced features like **[SQL](/en/wiki/sql/) query builder**, **form-based input**, and **report generation**, which enhance the user experience and productivity, setting it apart from many open-source alternatives.
 
-### What are the advantages of using automated tools for API Testing?
+#### What are the advantages of using automated tools for API Testing?
 
   Automated tools for API testing offer several advantages:
 
@@ -323,7 +323,7 @@ Related Terms:
   By leveraging these advantages, [test automation](/en/wiki/test-automation/) engineers can ensure a more robust and reliable API, while optimizing their testing efforts and resources.
 
 
-### What factors should be considered when choosing an API Testing tool?
+#### What factors should be considered when choosing an API Testing tool?
 
   When selecting an API testing tool, consider the following factors:
 
@@ -342,9 +342,9 @@ Related Terms:
   Choose a tool that aligns with your team's skills, fits within your technology stack, and meets your testing requirements.
 
 
-## API Testing Process
+### API Testing Process
 
-### What are the steps involved in API Testing?
+#### What are the steps involved in API Testing?
 
   The steps involved in API testing typically include:
 
@@ -361,7 +361,7 @@ Related Terms:
   Each step is critical to ensure a thorough evaluation of the API's functionality, reliability, performance, and security.
 
 
-### What is API endpoint testing?
+#### What is API endpoint testing?
 
   API endpoint testing is the process of validating individual points of interaction between a client and an API. It ensures that the **endpoints** respond correctly to various HTTP methods, such as GET, POST, PUT, and DELETE, with the appropriate input parameters. This type of testing focuses on:
 
@@ -389,7 +389,7 @@ Related Terms:
   In this context, endpoint testing is a crucial aspect of API testing, focusing on the correctness and reliability of the API's external interfaces.
 
 
-### How do you validate responses in API Testing?
+#### How do you validate responses in API Testing?
 
   Validating responses in API testing involves several checks to ensure the API behaves as expected. Use **assertions** to compare the actual response against the expected outcome. Key validation points include:
 
@@ -417,7 +417,7 @@ Related Terms:
   Automate these validations using your chosen API testing tool to ensure consistency and efficiency in your testing process.
 
 
-### How do you handle authentication and authorization in API Testing?
+#### How do you handle authentication and authorization in API Testing?
 
   Handling authentication and authorization in API testing involves verifying that the API correctly identifies users (authentication) and grants appropriate access levels (authorization). Here's how to approach it:
 
@@ -435,7 +435,7 @@ Related Terms:
   7. **Securely store credentials**: Use environment variables or secure vaults to store and access credentials in your [test automation](/en/wiki/test-automation/) environment, avoiding hard-coded sensitive information.
   8. **Check response codes and messages**: Ensure that the API returns appropriate HTTP status codes and messages for authentication and authorization scenarios, such as `401 Unauthorized` or `403 Forbidden`.
 
-### What are common API errors to look for during testing?
+#### What are common API errors to look for during testing?
 
   When testing APIs, watch for these common errors:
 
@@ -453,9 +453,9 @@ Related Terms:
   Validate response payloads against schema, check for data consistency, and ensure error messages are clear and helpful. Use automated tools to simulate various scenarios and edge cases. Always consider the API's context and business logic when assessing error responses.
 
 
-## Advanced Concepts
+### Advanced Concepts
 
-### What is the role of API Testing in Continuous Integration/Continuous Deployment (CI/CD)?
+#### What is the role of API Testing in Continuous Integration/Continuous Deployment (CI/CD)?
 
   API Testing plays a critical role in Continuous Integration/Continuous Deployment (CI/CD) pipelines by ensuring that the application programming interfaces (APIs) meet functionality, reliability, performance, and security standards. In CI/CD, every code commit triggers an automated build and [test process](/en/wiki/test-process/), which includes API tests to validate the interactions between different software components.
   **In CI/CD, API Testing:**
@@ -484,7 +484,7 @@ Related Terms:
 
   - **Verifies**
 
-### How can API Testing be integrated into the Agile methodology?
+#### How can API Testing be integrated into the Agile methodology?
 
   Integrating API testing into the **Agile methodology** requires aligning testing activities with the iterative development cycle. Begin by incorporating API testing into **user stories** and **acceptance criteria**, ensuring that API functionality is considered from the start. During **sprint planning**, allocate tasks for API [test case](/en/wiki/test-case/) creation and automation, aligning them with the sprint's development work.
   Leverage **[test-driven development](/en/wiki/test-driven-development/) (TDD)** by writing API tests before the actual API code, ensuring that the code meets the test requirements from the outset. In **sprints**, include API testing as part of the **definition of done** to ensure that APIs are fully tested before considering a feature complete.
@@ -492,7 +492,7 @@ Related Terms:
   Incorporate **[test automation](/en/wiki/test-automation/) frameworks** that integrate well with Agile project management tools, enabling traceability between [test cases](/en/wiki/test-case/), user stories, and defects. Apply **mocking and service virtualization** to test APIs independently of their dependencies, allowing for testing in isolation and in parallel with development.
   Finally, foster a culture of **collaboration** between developers, testers, and product owners, encouraging shared responsibility for API quality and promoting quick resolution of issues discovered through API testing.
 
-### What is the role of API Testing in Microservices architecture?
+#### What is the role of API Testing in Microservices architecture?
 
   In a **Microservices architecture**, API testing plays a critical role in ensuring that each service can communicate effectively with others and that the entire system functions as intended. Given that microservices are designed to be loosely coupled and independently deployable, API testing becomes essential to verify the **inter-service contracts** and interactions.
   API testing in this context focuses on:
@@ -505,7 +505,7 @@ Related Terms:
   By rigorously testing APIs within a microservices architecture, teams can detect issues early, reduce inter-service dependencies, and maintain a high level of service autonomy. This is crucial for achieving the scalability, flexibility, and resilience that microservices promise. Additionally, API testing supports the **CI/CD pipeline** by automating the validation of service integrations, which is vital for rapid and reliable delivery of microservices-based applications.
 
 
-### What is contract testing in API Testing?
+#### What is contract testing in API Testing?
 
   Contract testing is a type of API testing that focuses on verifying that the interactions between different services adhere to a shared understanding documented in a "contract". This contract defines the expected requests and responses between a consumer (such as a client application) and a provider (such as a web service).
   In contract testing, the consumer and provider tests are developed against the agreed contract, which acts as a single source of truth. The consumer tests validate that the client can correctly generate requests that meet the contract's specifications. The provider tests ensure that the service can handle those requests and return responses that conform to the contract.
@@ -513,7 +513,7 @@ Related Terms:
   The main goal of contract testing is to detect any incompatibilities between services before they are deployed to production. This is particularly important in a microservices architecture where services are developed and deployed independently.
   Contract testing does not replace other forms of API testing but complements them by focusing on the interaction contracts, which can be a blind spot in [integration testing](/en/wiki/integration-testing/). It provides quick feedback and confidence that the independently deployable units of an application will work together as expected.
 
-### How can API Testing help with performance optimization?
+#### How can API Testing help with performance optimization?
 
   API Testing can significantly contribute to performance optimization by allowing engineers to **identify performance bottlenecks** at the service layer. By executing performance tests against API endpoints, teams can measure response times, throughput, and resource utilization under various load conditions. This data helps in pinpointing inefficiencies and areas that require optimization.
   For instance, using tools like [JMeter](/en/wiki/jmeter/) or LoadRunner, testers can simulate high-concurrency scenarios to assess how the API behaves under stress. If an API exhibits **long response times** or **high error rates**, it indicates a need for performance tuning. This might involve optimizing [database](/en/wiki/database/) queries, caching responses, or scaling the infrastructure.

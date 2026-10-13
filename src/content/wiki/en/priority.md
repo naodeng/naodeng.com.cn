@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Priority](#priority)
-  - [Related Terms:](#related-terms)
   - [Questions about Priority?](#questions-about-priority)
     - [Basics and Importance](#basics-and-importance)
       - [What is priority in software testing?](#what-is-priority-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Priority denotes the order or significance of an issue based on user needs, while severity indicates its system impact. Decisions on priority and severity may vary based on roles and processes.
 
-## Related Terms:
+Related Terms:
 
 - [Severity](/en/wiki/severity/)
 

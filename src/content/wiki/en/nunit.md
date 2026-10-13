@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [NUnit](#nunit)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about NUnit?](#questions-about-nunit)
     - [Basics and Importance](#basics-and-importance)
       - [What is NUnit?](#what-is-nunit)
@@ -45,12 +43,12 @@ order: 0
 
 NUnit is an open-source unit testing framework for C# derived from JUnit. It facilitates writing and executing tests in.NET, with tools like NUnit -console.exe for batch test executions.
 
-## Related Terms:
+Related Terms:
 
 - [JUnit Testing](/en/wiki/junit-testing/)
 - Test Framework
 
-### See also:
+See also:
 
 - [Official Website](https://nunit.org/)
 - [Wikipedia](https://en.wikipedia.org/wiki/NUnit)

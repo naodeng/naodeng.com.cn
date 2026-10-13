@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [单元测试 ｜ Unit Testing](#单元测试--unit-testing)
-  - [相关术语](#相关术语)
   - [有关单元测试的问题吗？](#有关单元测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是单元测试？](#什么是单元测试)
@@ -44,7 +43,7 @@ order: 0
 
 测试单个软件单元或组件以验证其功能的实践。
 
-## 相关术语
+相关术语
 
 - [集成测试](/zh-cn/wiki/integration-testing/)
 - [测试驱动开发](/zh-cn/wiki/test-driven-development/)

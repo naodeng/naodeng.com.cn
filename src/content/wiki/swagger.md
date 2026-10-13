@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Swagger ｜ Swagger](#swagger--swagger)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于 Swagger 有疑问吗？](#关于-swagger-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Swagger 是什么？为什么它在 API 开发中很重要？](#swagger-是什么为什么它在-api-开发中很重要)
@@ -47,12 +45,12 @@ order: 0
 
 昂首阔步现在通常称为 OpenAPI，是一组用于构建、设计和记录 RESTful 的工具和规范蜜蜂。它提供了一个标准的、与语言无关的 RESTful 接口蜜蜂，允许人类和计算机了解服务的功能，而无需访问其源代码或进一步详细的文档。
 
-## 相关术语
+相关术语
 
 - [API documentation](/zh-cn/wiki/swagger/)
 - [Postman](/zh-cn/wiki/postman/)
 
-### 另请参阅：
+另请参阅：
 
 - [Official Website](https://swagger.io/)
 ## 关于 Swagger 有疑问吗？

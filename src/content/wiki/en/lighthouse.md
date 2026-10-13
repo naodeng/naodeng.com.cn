@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Lighthouse](#lighthouse)
-  - [See also:](#see-also)
   - [Questions about Lighthouse?](#questions-about-lighthouse)
     - [Basics and Importance](#basics-and-importance)
       - [What is Lighthouse?](#what-is-lighthouse)
@@ -45,7 +44,7 @@ order: 0
 
 Lighthouse is an open-source, automated tool developed by Google to assess and improve web page quality. It audits performance, accessibility, progressive web app readiness, SEO, and other aspects, then provides actionable recommendations.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Google_Lighthouse)
 

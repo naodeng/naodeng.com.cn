@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [可用性测试 ｜ Usability Testing](#可用性测试--usability-testing)
-  - [另请参阅：](#另请参阅)
   - [关于可用性测试的问题？](#关于可用性测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是可用性测试？](#什么是可用性测试)
@@ -46,7 +45,7 @@ order: 0
 
 一种定性研究方法，可深入了解用户与软件的交互。它识别可用性问题并评估用户友好性。
 
-## 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Usability_testing)
 ## 关于可用性测试的问题？

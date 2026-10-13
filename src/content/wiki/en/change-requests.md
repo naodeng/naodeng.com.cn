@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Change Requests](#change-requests)
-  - [Related Terms:](#related-terms)
   - [Questions about Change Requests?](#questions-about-change-requests)
     - [Basics and Importance](#basics-and-importance)
       - [What is a change request in software development?](#what-is-a-change-request-in-software-development)
@@ -39,7 +38,7 @@ order: 0
 
 Change requests originate from stakeholders wishing to alter a product or its development method. They can range from defect reports to requests for new features or enhancements.
 
-## Related Terms:
+Related Terms:
 
 - [Change Control](/en/wiki/change-control/)
 

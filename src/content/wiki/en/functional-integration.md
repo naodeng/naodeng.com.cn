@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Functional Integration](#functional-integration)
-  - [Related Terms:](#related-terms)
   - [Questions about Functional Integration?](#questions-about-functional-integration)
     - [Basics and Importance](#basics-and-importance)
       - [What is functional integration in software testing?](#what-is-functional-integration-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Functional Integration relates products and services to an ecosystem to attract and retain customers.
 
-## Related Terms:
+Related Terms:
 
 - [Integration Testing](/en/wiki/integration-testing/)
 

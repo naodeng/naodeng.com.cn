@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Software Risk Analysis](#software-risk-analysis)
-  - [Related Terms:](#related-terms)
   - [Questions about Software Risk Analysis?](#questions-about-software-risk-analysis)
     - [Basics and Importance](#basics-and-importance)
       - [What is software risk analysis?](#what-is-software-risk-analysis)
@@ -46,7 +45,7 @@ order: 0
 
 Software risk analysis inspects code violations that could compromise software stability, security, or performance.
 
-## Related Terms:
+Related Terms:
 
 - [Risk-based Testing](/en/wiki/risk-based-testing/)
 

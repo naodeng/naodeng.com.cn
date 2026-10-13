@@ -17,7 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [Web 性能测试 ｜ Web Performance Testing](#web-性能测试--web-performance-testing)
-  - [相关术语](#相关术语)
   - [有关 Web 性能测试的问题吗？](#有关-web-性能测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是网络性能测试？](#什么是网络性能测试)
@@ -43,7 +42,7 @@ order: 0
 
 评估 Web 应用程序在不同负载下的速度、响应能力和稳定性。它识别并解决潜在的瓶颈。
 
-## 相关术语
+相关术语
 
 - [负载测试](/zh-cn/wiki/load-testing/)
 - [压力测试](/zh-cn/wiki/stress-testing/)

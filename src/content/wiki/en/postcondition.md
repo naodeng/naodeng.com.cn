@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Postcondition](#postcondition)
-  - [Related Terms:](#related-terms)
   - [Questions about Postcondition?](#questions-about-postcondition)
     - [Basics and Importance](#basics-and-importance)
       - [What is a postcondition in software testing?](#what-is-a-postcondition-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 Postcondition is a condition that must hold true after a segment of code runs, often verified through code predicates.
 
-## Related Terms:
+Related Terms:
 
 - Precondition
 

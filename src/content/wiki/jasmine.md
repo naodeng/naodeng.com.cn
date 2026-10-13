@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Jasmine ｜ Jasmine](#jasmine--jasmine)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于jasmine的问题吗？](#关于jasmine的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [软件测试中的 Jasmine 是什么？](#软件测试中的-jasmine-是什么)
@@ -49,13 +47,13 @@ order: 0
 
 jasmine 是一个 JavaScript 开源测试框架。它被设计为行为驱动的，允许开发人员以清晰、人类可读的术语描述软件预期行为的方式编写测试。 jasmine 提供构建测试、设置前提条件和定义断言的函数。
 
-## 相关术语
+相关术语
 
 - [Testing framework](/zh-cn/wiki/unit-test-framework/)
 - [Jest](/zh-cn/wiki/jest/)
 - [Chai.js](/zh-cn/wiki/chai-js/)
 
-### 另请参阅：
+另请参阅：
 
 - [Official Website](https://jasmine.github.io/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Jasmine_(software))

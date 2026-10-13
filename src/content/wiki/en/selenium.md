@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Selenium](#selenium)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Selenium?](#questions-about-selenium)
     - [Basics and Importance](#basics-and-importance)
       - [What is Selenium?](#what-is-selenium)
@@ -46,11 +44,11 @@ order: 0
 
 Selenium is an open-source software suite of browser automation tools primarily used for automating web browsers in the context of web application testing. It provides a way for developers and testers to write scripts in various programming languages (such as Java, C#, Python, and Ruby) to simulate user interactions with web pages and web applications.
 
-## Related Terms:
+Related Terms:
 
 - [WebDriver](/en/wiki/webdriver/)
 
-### See also:
+See also:
 
 - [Official Website](https://www.selenium.dev/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Selenium_(software))

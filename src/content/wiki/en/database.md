@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Database](#database)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Database?](#questions-about-database)
     - [Basics and Importance](#basics-and-importance)
       - [What is a database?](#what-is-a-database)
@@ -52,11 +50,11 @@ order: 0
 
 A database is an organized collection of structured information or data, typically stored electronically in a computer system. It is designed to store, retrieve, and manage data efficiently and securely. Databases allow users to access data in various ways, from simple queries to complex transactions. They can be classified based on their data model, such as relational, document-based, key-value, and graph databases. A relational database, one of the most common types, organizes data into tables with rows and columns. Databases are integral to numerous applications and systems, from websites to banking software, ensuring data integrity, availability, and consistency. They are managed using database management systems (DBMS), which provide tools and interfaces for interacting with the stored data.
 
-## Related Terms:
+Related Terms:
 
 - [SQL](/en/wiki/sql/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Database)
 ## Questions about Database?

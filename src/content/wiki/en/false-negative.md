@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [False Negative](#false-negative)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about False Negative?](#questions-about-false-negative)
     - [Basics and Understanding](#basics-and-understanding)
       - [What is a false negative in software testing?](#what-is-a-false-negative-in-software-testing)
@@ -41,11 +39,11 @@ order: 0
 
 In software testing, a False Negative refers to a situation where a test fails to identify a defect or issue that is actually present in the system. In other words, the test incorrectly indicates that the software is functioning correctly when, in reality, there's a fault or bug. False negatives can give a false sense of security, leading teams to believe the software is of higher quality than it actually is. This type of error is particularly concerning because it might allow critical defects to go unnoticed and reach the production environment, potentially resulting in undesired consequences for users or businesses.
 
-## Related Terms:
+Related Terms:
 
 - [False Positive](/en/wiki/false-positive/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
 ## Questions about False Negative?

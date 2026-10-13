@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Requirements Management Tool](#requirements-management-tool)
-  - [Related Terms:](#related-terms)
   - [Questions about Requirements Management Tool?](#questions-about-requirements-management-tool)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Requirements Management Tool?](#what-is-a-requirements-management-tool)
@@ -41,7 +40,7 @@ order: 0
 
 Requirements management tools oversee requirements, inform stakeholders about changes, and regulate new or adjusted requirements.
 
-## Related Terms:
+Related Terms:
 
 - [Traceability Matrix](/en/wiki/traceability-matrix/)
 

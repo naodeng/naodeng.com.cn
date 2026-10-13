@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Regression Testing](#regression-testing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Regression Testing?](#questions-about-regression-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is regression testing?](#what-is-regression-testing)
@@ -46,12 +44,12 @@ order: 0
 
 Regression testing checks if existing functionalities remain intact after new changes. It ensures that new additions don't disrupt existing software operations.
 
-## Related Terms:
+Related Terms:
 
 - [Release Testing](/en/wiki/release-testing/)
 - [Retesting](/en/wiki/retesting/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Regression_testing)
 ## Questions about Regression Testing?

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Risk-based Testing](#risk-based-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Risk-based Testing?](#questions-about-risk-based-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is risk-based testing?](#what-is-risk-based-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Prioritizes testing based on potential risk of feature or function failure.
 
-## Related Terms:
+Related Terms:
 
 - [Software Risk Analysis](/en/wiki/software-risk-analysis/)
 

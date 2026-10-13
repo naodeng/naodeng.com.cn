@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Sanity Testing](#sanity-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Sanity Testing?](#questions-about-sanity-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is sanity testing in software testing?](#what-is-sanity-testing-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 Sanity testing, a subset of regression testing, ensures that code modifications function correctly. If issues arise, it halts the build.
 
-## Related Terms:
+Related Terms:
 
 - [Build Verification Testing](/en/wiki/build-verification-testing/)
 

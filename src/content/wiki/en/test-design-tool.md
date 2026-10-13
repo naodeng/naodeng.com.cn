@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Design Tool](#test-design-tool)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Design Tool?](#questions-about-test-design-tool)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Design Tool?](#what-is-a-test-design-tool)
@@ -41,7 +40,7 @@ order: 0
 
 Test design tools aid in creating test cases or inputs. With an automated oracle, they can determine expected results, effectively generating test cases.
 
-## Related Terms:
+Related Terms:
 
 - [Test Tool](/en/wiki/test-tool/)
 - [Test Automation tool (e.g., Selenium, JUnit)](/en/wiki/automated-testing/)

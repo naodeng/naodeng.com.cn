@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Swagger](#swagger)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Swagger?](#questions-about-swagger)
     - [Basics and Importance](#basics-and-importance)
       - [What is Swagger and why is it important in API development?](#what-is-swagger-and-why-is-it-important-in-api-development)
@@ -46,12 +44,12 @@ order: 0
 
 Swagger, now often referred to as OpenAPI, is a set of tools and specifications for building, designing, and documenting RESTful APIs. It offers a standard, language-agnostic interface to RESTful APIs, allowing both humans and computers to understand the capabilities of a service without accessing its source code or further detailed documentation.
 
-## Related Terms:
+Related Terms:
 
 - API documentation
 - [Postman](/en/wiki/postman/)
 
-### See also:
+See also:
 
 - [Official Website](https://swagger.io/)
 ## Questions about Swagger?

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Code Coverage](#code-coverage)
-  - [See also:](#see-also)
   - [Questions about Code Coverage?](#questions-about-code-coverage)
     - [Basics and Importance](#basics-and-importance)
       - [What is code coverage?](#what-is-code-coverage)
@@ -45,7 +44,7 @@ order: 0
 
 Code coverage measures the extent of code that has been tested, assisting in evaluating the test suite 's quality. It identifies areas not executed during testing and is a form of white box testing.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Code_coverage)
 ## Questions about Code Coverage?

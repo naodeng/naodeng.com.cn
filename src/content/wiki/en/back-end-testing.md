@@ -17,7 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [Back-end Testing](#back-end-testing)
-  - [Related Terms](#related-terms)
   - [What is back-end testing?](#what-is-back-end-testing)
   - [Why is back-end testing important?](#why-is-back-end-testing-important)
   - [What should back-end testing cover?](#what-should-back-end-testing-cover)
@@ -29,7 +28,7 @@ order: 0
 
 Back-end testing focuses on the parts of an application users do not see: server-side code, data storage, API contracts, and system behavior.
 
-## Related Terms
+Related Terms
 
 - [Front-end Testing](/en/wiki/front-end-testing/)
 - [API Testing](/en/wiki/api-testing/)

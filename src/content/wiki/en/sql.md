@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [SQL](#sql)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about SQL?](#questions-about-sql)
     - [Basics and Importance](#basics-and-importance)
       - [What is SQL and why is it important?](#what-is-sql-and-why-is-it-important)
@@ -47,11 +45,11 @@ order: 0
 
 SQL (Structured Query Language) is a standardized language for managing and querying relational databases. It supports selecting, inserting, updating, and deleting data, as well as creating schemas and managing access. SQL provides a common interface for relational database management systems (RDBMS) and is supported by platforms such as MySQL, PostgreSQL, SQL Server, and Oracle.
 
-## Related Terms:
+Related Terms:
 
 - [Database](/en/wiki/database/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/SQL)
 

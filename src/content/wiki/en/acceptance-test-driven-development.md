@@ -17,30 +17,30 @@ order: 0
 
 - [Acceptance Test Driven Development](#acceptance-test-driven-development)
   - [Questions about Acceptance Test Driven Development?](#questions-about-acceptance-test-driven-development)
-  - [Basics and Importance](#basics-and-importance)
-    - [What is Acceptance Test Driven Development (ATDD)?](#what-is-acceptance-test-driven-development-atdd)
-    - [Why is ATDD important in software development?](#why-is-atdd-important-in-software-development)
-    - [How does ATDD differ from traditional testing methods?](#how-does-atdd-differ-from-traditional-testing-methods)
-    - [What are the key benefits of using ATDD?](#what-are-the-key-benefits-of-using-atdd)
-    - [How does ATDD contribute to the quality of a software product?](#how-does-atdd-contribute-to-the-quality-of-a-software-product)
-  - [Process and Techniques](#process-and-techniques)
-    - [What are the key steps involved in ATDD?](#what-are-the-key-steps-involved-in-atdd)
-    - [How are acceptance tests created in ATDD?](#how-are-acceptance-tests-created-in-atdd)
-    - [What techniques are commonly used in ATDD?](#what-techniques-are-commonly-used-in-atdd)
-    - [How is ATDD integrated into the software development lifecycle?](#how-is-atdd-integrated-into-the-software-development-lifecycle)
-    - [What is the role of a tester in ATDD?](#what-is-the-role-of-a-tester-in-atdd)
-  - [Tools and Technologies](#tools-and-technologies)
-    - [What tools are commonly used for ATDD?](#what-tools-are-commonly-used-for-atdd)
-    - [How do these tools support the ATDD process?](#how-do-these-tools-support-the-atdd-process)
-    - [What skills are required to use these tools effectively?](#what-skills-are-required-to-use-these-tools-effectively)
-    - [What is the role of automation in ATDD?](#what-is-the-role-of-automation-in-atdd)
-    - [How can ATDD be implemented in agile development environments?](#how-can-atdd-be-implemented-in-agile-development-environments)
-  - [Challenges and Solutions](#challenges-and-solutions)
-    - [What are some common challenges encountered in ATDD?](#what-are-some-common-challenges-encountered-in-atdd)
-    - [How can these challenges be overcome?](#how-can-these-challenges-be-overcome)
-    - [What are some best practices for implementing ATDD?](#what-are-some-best-practices-for-implementing-atdd)
-    - [How can ATDD be scaled for large projects?](#how-can-atdd-be-scaled-for-large-projects)
-    - [How can the effectiveness of ATDD be measured?](#how-can-the-effectiveness-of-atdd-be-measured)
+    - [Basics and Importance](#basics-and-importance)
+      - [What is Acceptance Test Driven Development (ATDD)?](#what-is-acceptance-test-driven-development-atdd)
+      - [Why is ATDD important in software development?](#why-is-atdd-important-in-software-development)
+      - [How does ATDD differ from traditional testing methods?](#how-does-atdd-differ-from-traditional-testing-methods)
+      - [What are the key benefits of using ATDD?](#what-are-the-key-benefits-of-using-atdd)
+      - [How does ATDD contribute to the quality of a software product?](#how-does-atdd-contribute-to-the-quality-of-a-software-product)
+    - [Process and Techniques](#process-and-techniques)
+      - [What are the key steps involved in ATDD?](#what-are-the-key-steps-involved-in-atdd)
+      - [How are acceptance tests created in ATDD?](#how-are-acceptance-tests-created-in-atdd)
+      - [What techniques are commonly used in ATDD?](#what-techniques-are-commonly-used-in-atdd)
+      - [How is ATDD integrated into the software development lifecycle?](#how-is-atdd-integrated-into-the-software-development-lifecycle)
+      - [What is the role of a tester in ATDD?](#what-is-the-role-of-a-tester-in-atdd)
+    - [Tools and Technologies](#tools-and-technologies)
+      - [What tools are commonly used for ATDD?](#what-tools-are-commonly-used-for-atdd)
+      - [How do these tools support the ATDD process?](#how-do-these-tools-support-the-atdd-process)
+      - [What skills are required to use these tools effectively?](#what-skills-are-required-to-use-these-tools-effectively)
+      - [What is the role of automation in ATDD?](#what-is-the-role-of-automation-in-atdd)
+      - [How can ATDD be implemented in agile development environments?](#how-can-atdd-be-implemented-in-agile-development-environments)
+    - [Challenges and Solutions](#challenges-and-solutions)
+      - [What are some common challenges encountered in ATDD?](#what-are-some-common-challenges-encountered-in-atdd)
+      - [How can these challenges be overcome?](#how-can-these-challenges-be-overcome)
+      - [What are some best practices for implementing ATDD?](#what-are-some-best-practices-for-implementing-atdd)
+      - [How can ATDD be scaled for large projects?](#how-can-atdd-be-scaled-for-large-projects)
+      - [How can the effectiveness of ATDD be measured?](#how-can-the-effectiveness-of-atdd-be-measured)
 <!-- TOC END -->
 
 Acceptance Test Driven Development (ATDD) is a development approach aimed at reducing defects by integrating testing as a core component of the development process. This ensures that the application meets quality standards.
@@ -56,9 +56,9 @@ See also:
 
 ## Questions about Acceptance Test Driven Development?
 
-## Basics and Importance
+### Basics and Importance
 
-### What is Acceptance Test Driven Development (ATDD)?
+#### What is Acceptance Test Driven Development (ATDD)?
 
   Acceptance Test Driven Development (ATDD) is a development methodology where team members with different perspectives (developers, testers, and business customers) collaborate to write acceptance tests before coding begins. The primary goal is to specify detailed, customer-centric criteria for system functionality which guides development and provides a clear understanding of desired outcomes.
   In ATDD, acceptance tests are expressed as examples or scenarios, often using the "Given-When-Then" format, which describe a system's behavior from the user's perspective. These tests are automated and serve as living documentation and regression suite.
@@ -67,7 +67,7 @@ See also:
   Commonly used tools for ATDD include Cucumber, SpecFlow, and FitNesse, which support Behavior-Driven Development ([BDD](/en/wiki/bdd/)) and Specification by Example practices. These tools allow the writing of tests in a language that is understandable by all stakeholders, bridging the gap between technical and non-technical team members.
   Implementing ATDD effectively requires a shift in mindset and practice, emphasizing upfront specification, continuous feedback, and iterative development. It is a key practice in agile and lean development methodologies, contributing to the delivery of high-quality software that meets user expectations.
 
-### Why is ATDD important in software development?
+#### Why is ATDD important in software development?
 
   ATDD is crucial in software development as it ensures that all stakeholders have a shared understanding of the requirements before coding begins. This approach aligns developers, testers, and business representatives around agreed-upon acceptance criteria, fostering better communication and collaboration. By focusing on customer requirements from the outset, ATDD minimizes the risk of misinterpretation and reduces the likelihood of costly rework later in the development cycle.
   Incorporating ATDD early in the development process helps in identifying and resolving issues before they escalate, leading to a more efficient and streamlined workflow. It encourages behavior specification in simple language, making tests understandable to all parties involved. This clarity helps in preventing defects rather than detecting them post-development, which is a more proactive approach compared to traditional testing methods.
@@ -75,14 +75,14 @@ See also:
   Moreover, ATDD's emphasis on automation supports [regression testing](/en/wiki/regression-testing/) and enables a sustainable testing process that can handle changes without a significant increase in effort. This [automated testing](/en/wiki/automated-testing/) framework is essential for maintaining a high level of quality in a fast-paced development environment, especially when scaling to larger projects.
   In summary, ATDD is important because it promotes a shared understanding, reduces rework, ensures alignment with business goals, and supports a sustainable, high-quality development process.
 
-### How does ATDD differ from traditional testing methods?
+#### How does ATDD differ from traditional testing methods?
 
   ATDD, or Acceptance Test Driven Development, differs from traditional testing methods primarily in its **collaborative approach** and **timing**. Traditional testing often occurs after the development phase, where testers create and execute tests based on already implemented features. In contrast, ATDD involves multiple stakeholders including developers, testers, and business representatives who define acceptance criteria and create acceptance tests **before** any code is written.
   This upfront collaboration in ATDD ensures that all parties have a shared understanding of the requirements and the definition of "done." It shifts the focus from finding [bugs](/en/wiki/bug/) after development to preventing [bugs](/en/wiki/bug/) by clarifying expectations early on. Additionally, ATDD encourages **behavior-driven development** ([BDD](/en/wiki/bdd/)), where tests are written in a language that is understandable to all stakeholders, often using a Given-When-Then format.
   While traditional testing methods may rely heavily on [manual testing](/en/wiki/manual-testing/) or create automated tests after the fact, ATDD integrates **[test automation](/en/wiki/test-automation/)** from the start. Acceptance tests are automated and become part of the **regression suite**, providing immediate feedback on whether new changes meet the agreed-upon criteria.
   In summary, ATDD's proactive, collaborative approach contrasts with traditional reactive testing methods, emphasizing prevention over detection and fostering a shared responsibility for quality across the entire team.
 
-### What are the key benefits of using ATDD?
+#### What are the key benefits of using ATDD?
 
   ATDD offers several key benefits that enhance the software development process:
 
@@ -95,7 +95,7 @@ See also:
   - **Streamlined development** : Clear acceptance criteria guide development efforts, preventing feature creep and over-engineering.
   Implementing ATDD can lead to a more efficient, collaborative, and quality-focused development lifecycle, ultimately delivering software that better satisfies user needs and withstands the test of time.
 
-### How does ATDD contribute to the quality of a software product?
+#### How does ATDD contribute to the quality of a software product?
 
   ATDD enhances [software quality](/en/wiki/software-quality/) by ensuring that **[functional requirements](/en/wiki/functional-requirements/)** are precisely met and that the product behaves as the stakeholders expect. By focusing on customer requirements from the outset, ATDD promotes the creation of **clear and executable specifications**. These specifications guide development and testing, reducing the likelihood of defects due to misunderstandings or incomplete requirements.
   Acceptance tests are defined **before** code is written, which means that developers have a clear target to aim for. This **test-first approach** helps prevent feature creep and ensures that the codebase only contains what is necessary to pass the tests, leading to a cleaner and more maintainable codebase.
@@ -103,9 +103,9 @@ See also:
   Continuous feedback from the execution of acceptance tests allows for **early detection of issues**, which is generally less costly to fix than [bugs](/en/wiki/bug/) found later in the development cycle. Additionally, the suite of acceptance tests becomes a living documentation that can be used for **[regression testing](/en/wiki/regression-testing/)**, ensuring that new changes do not break existing functionality.
   In summary, ATDD contributes to [software quality](/en/wiki/software-quality/) by clarifying requirements, fostering collaboration, and providing continuous feedback, all of which help in building a product that aligns closely with business needs and user expectations.
 
-## Process and Techniques
+### Process and Techniques
 
-### What are the key steps involved in ATDD?
+#### What are the key steps involved in ATDD?
 
   The key steps involved in ATDD are:
 
@@ -145,7 +145,7 @@ See also:
 
   1. **Collaboration**
 
-### How are acceptance tests created in ATDD?
+#### How are acceptance tests created in ATDD?
 
   Acceptance tests in ATDD are created through **collaboration** among team members, including developers, testers, and business stakeholders. The process begins with defining **user stories** that describe the desired functionality from the user's perspective. Each user story includes **acceptance criteria**, which serve as the basis for the acceptance tests.
   The team discusses the acceptance criteria to ensure a shared understanding of the requirements. This discussion often involves **Example Mapping** or **Specification by Example**, where concrete examples are used to clarify expectations and cover different scenarios.
@@ -174,7 +174,7 @@ See also:
   ```
   The acceptance tests are executed continuously throughout the development process to validate that the software meets the agreed-upon criteria. This ensures that new features are developed with the user's needs in mind and that regressions are caught early.
 
-### What techniques are commonly used in ATDD?
+#### What techniques are commonly used in ATDD?
 
   In ATDD, several techniques are employed to ensure that acceptance criteria are met and that the software behaves as expected:
 
@@ -188,7 +188,7 @@ See also:
   - **Version Control for Test Artifacts**: Storing acceptance tests in version control systems alongside the codebase to maintain synchronization between [test cases](/en/wiki/test-case/) and application code.
   These techniques help in defining clear acceptance criteria, fostering collaboration among team members, and ensuring that the software meets the business requirements before it is considered complete.
 
-### How is ATDD integrated into the software development lifecycle?
+#### How is ATDD integrated into the software development lifecycle?
 
   ATDD is integrated into the software development lifecycle (SDLC) by aligning development activities with specified acceptance criteria from the outset. In the **initial phase**, stakeholders collaborate to define and understand the requirements, which are then translated into acceptance tests. These tests represent the **behavior** the software must exhibit to be considered complete.
   During **planning and design**, acceptance tests are reviewed and refined, ensuring they are clear and testable. Developers, testers, and business representatives maintain **continuous communication** to clarify any ambiguities.
@@ -197,7 +197,7 @@ See also:
   Before release, ATDD ensures that the product meets business requirements, as all features have been developed against the predefined acceptance tests. The **continuous integration** of code and the **regular execution** of acceptance tests help in maintaining a **stable build** ready for deployment.
   Post-deployment, these acceptance tests become part of the **regression suite**, safeguarding against future changes that might break existing functionality. This integration of ATDD into the SDLC supports a **sustainable, quality-focused development process**.
 
-### What is the role of a tester in ATDD?
+#### What is the role of a tester in ATDD?
 
   In ATDD, a tester's role is multifaceted, focusing on collaboration, specification, and validation. Testers work closely with **developers**, **business analysts**, and **stakeholders** to clarify requirements and ensure that acceptance criteria are well-defined. They contribute to the **creation of user stories** and **acceptance tests**, ensuring that these tests accurately reflect business needs and can be automated.
   During the development process, testers are involved in the **continuous refinement** of acceptance tests, often pairing with developers to create and maintain [test automation](/en/wiki/test-automation/). They ensure that tests are **executable specifications** that guide development and provide immediate feedback on the software's behavior against expected outcomes.
@@ -205,9 +205,9 @@ See also:
   In the ATDD cycle, testers help facilitate the **three Amigos meetings**, where discussions about feature implementation take place, and they actively participate in **[iteration](/en/wiki/iteration/) planning** and **retrospectives** to continuously improve the process.
   Ultimately, testers in ATDD ensure that the team delivers a product that not only meets the technical requirements but also fulfills the business needs and provides value to the end user. They are key in driving the **quality-first approach** inherent in ATDD.
 
-## Tools and Technologies
+### Tools and Technologies
 
-### What tools are commonly used for ATDD?
+#### What tools are commonly used for ATDD?
 
   Common tools for ATDD include:
 
@@ -220,7 +220,7 @@ See also:
   - **Serenity [BDD](/en/wiki/bdd/)** : Enhances other BDD tools like Cucumber and JBehave by providing advanced reporting and living documentation features.
   These tools support the ATDD process by enabling the definition of acceptance criteria in a language that is understandable by all stakeholders. They facilitate the automation of acceptance tests and help ensure that software features meet the predefined criteria before they are considered complete. [Test automation](/en/wiki/test-automation/) engineers use these tools to write, manage, and execute acceptance tests, often integrating them into continuous integration pipelines for continuous feedback. Proficiency in programming, understanding of the application domain, and familiarity with the chosen tool's syntax and best practices are essential to use these tools effectively.
 
-### How do these tools support the ATDD process?
+#### How do these tools support the ATDD process?
 
   [Test automation](/en/wiki/test-automation/) tools facilitate the **ATDD process** by enabling the **execution** of acceptance tests written in a **behavior-driven** format. These tools often integrate with frameworks like **Cucumber**, **SpecFlow**, or **FitNesse**, which allow the definition of tests in a **business-readable** language, such as [Gherkin](/en/wiki/gherkin/).
   By using these tools, teams can automate the **validation** of acceptance criteria, ensuring that the software adheres to the agreed-upon specifications. This automation supports **continuous integration** (CI) practices by allowing tests to be run automatically upon code check-ins, providing **immediate feedback** to developers.
@@ -237,7 +237,7 @@ See also:
   ```
   Automation tools would then execute this scenario against the application, validating the behavior described. This ensures that the software meets the business's expectations, as defined in the **collaboratively written** acceptance tests.
 
-### What skills are required to use these tools effectively?
+#### What skills are required to use these tools effectively?
 
   To effectively use [test automation](/en/wiki/test-automation/) tools, several skills are essential:
 
@@ -264,7 +264,7 @@ See also:
 
   - **Performance and [Security Testing](/en/wiki/security-testing/)** : Awareness of performance bottlenecks and security vulnerabilities to incorporate relevant tests into the automation suite.
 
-### What is the role of automation in ATDD?
+#### What is the role of automation in ATDD?
 
   In ATDD, automation plays a pivotal role in **validating** and **regressing** acceptance criteria consistently and efficiently. Automated tests are derived from acceptance criteria agreed upon by the team, ensuring that the software adheres to business requirements. Automation in ATDD:
 
@@ -296,7 +296,7 @@ See also:
   ```
   Automation in ATDD is not just about testing; it's about **building the right product** by continuously validating the software against the business needs throughout the development lifecycle.
 
-### How can ATDD be implemented in agile development environments?
+#### How can ATDD be implemented in agile development environments?
 
   Implementing ATDD in agile environments involves collaboration between developers, testers, and business stakeholders to define acceptance criteria before development begins. Use **user stories** to capture requirements and define **acceptance tests** that reflect the behavior expected by the stakeholders.
   Start with a **planning meeting** to discuss the user stories and create acceptance tests. This ensures a shared understanding of the feature and its expected outcomes. Use **Behavior-Driven Development ([BDD](/en/wiki/bdd/)) tools** like Cucumber or SpecFlow to write acceptance tests in a language that is understandable by all parties involved.
@@ -306,9 +306,9 @@ See also:
   Remember to **refactor** both the code and the tests to maintain simplicity and readability. This practice helps keep the automation suite maintainable and scalable.
   Lastly, ensure that the team is **cross-functional**, with members capable of contributing to both development and testing. This approach fosters a culture of quality and shared responsibility for the final product.
 
-## Challenges and Solutions
+### Challenges and Solutions
 
-### What are some common challenges encountered in ATDD?
+#### What are some common challenges encountered in ATDD?
 
   Common challenges in ATDD include:
 
@@ -323,7 +323,7 @@ See also:
   - **Skillset** : Team members may need training to effectively participate in ATDD, including writing acceptance tests and automating them.
   Overcoming these challenges often involves improving communication, investing in training, refining processes, and selecting appropriate tools that align with the team's needs and the technology stack.
 
-### How can these challenges be overcome?
+#### How can these challenges be overcome?
 
   Overcoming challenges in ATDD requires a strategic approach:
 
@@ -340,7 +340,7 @@ See also:
   - **Risk Management**: Prioritize tests based on risk and business value to ensure critical features are thoroughly tested.
   By addressing these areas, teams can enhance their ATDD practices and overcome common challenges.
 
-### What are some best practices for implementing ATDD?
+#### What are some best practices for implementing ATDD?
 
   Best practices for implementing ATDD include:
 
@@ -387,7 +387,7 @@ See also:
 
   - **Collaborate**
 
-### How can ATDD be scaled for large projects?
+#### How can ATDD be scaled for large projects?
 
   Scaling ATDD for large projects requires strategic planning and efficient tooling. Begin by **structuring acceptance tests** to reflect the project's modular architecture. This allows for parallel development and testing across different teams. Utilize **version control** to manage test artifacts and ensure synchronization across teams.
   Leverage **[test data](/en/wiki/test-data/) management** to provide consistent and isolated [test environments](/en/wiki/test-environment/), avoiding conflicts and dependencies that can arise with shared data. Implement **continuous integration (CI)** to automatically run acceptance tests against new code commits, providing immediate feedback on the integration status.
@@ -397,7 +397,7 @@ See also:
   Lastly, **modularize and reuse** test components where possible. Shared libraries of test steps or domain-specific language (DSL) definitions can reduce duplication and maintenance overhead.
   By focusing on these strategies, ATDD can be effectively scaled to accommodate the complexities of large-scale projects.
 
-### How can the effectiveness of ATDD be measured?
+#### How can the effectiveness of ATDD be measured?
 
   The effectiveness of ATDD can be measured through several key indicators:
 

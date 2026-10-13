@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Mobile App Testing](#mobile-app-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Mobile App Testing?](#questions-about-mobile-app-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is mobile app testing?](#what-is-mobile-app-testing)
@@ -40,7 +39,7 @@ order: 0
 
 Mobile app testing involves verifying a mobile application's functionalities before its public release, ensuring both technical and business requirements are met.
 
-## Related Terms:
+Related Terms:
 
 - [Mobile Device Testing](/en/wiki/mobile-device-testing/)
 - [Web Testing](/en/wiki/web-testing/)

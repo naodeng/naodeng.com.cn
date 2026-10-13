@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Headless Testing](#headless-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Headless Testing?](#questions-about-headless-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is headless testing?](#what-is-headless-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Headless Testing refers to the practice of running browser automation tests without the graphical user interface (GUI) being visible or rendered. In this approach, tests are conducted using a "headless" browser—a browser without a user interface. Since these tests do not require the browser's GUI elements to load visually, they tend to run faster and are particularly useful in environments where display devices, windows, or browsers are unnecessary or unavailable, such as continuous integration pipelines or server environments. Common tools for headless testing include Chrome's headless mode, PhantomJS, and Puppeteer. The primary advantage of headless testing is its efficiency, enabling faster feedback and more frequent test runs.
 
-## Related Terms:
+Related Terms:
 
 - [UI Testing](/en/wiki/ui-testing/)
 

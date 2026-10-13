@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Security Testing](#security-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Security Testing?](#questions-about-security-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is security testing in software testing?](#what-is-security-testing-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Security Testing aims to reveal potential vulnerabilities in a software system which may lead to information loss, revenue reduction, or reputational damage.
 
-## Related Terms:
+Related Terms:
 
 - [Penetration Testing](/en/wiki/penetration-testing/)
 

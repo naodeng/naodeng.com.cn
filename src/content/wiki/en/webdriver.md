@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [WebDriver](#webdriver)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about WebDriver?](#questions-about-webdriver)
     - [Basics and Importance](#basics-and-importance)
       - [What is WebDriver in Selenium?](#what-is-webdriver-in-selenium)
@@ -52,11 +50,11 @@ order: 0
 
 An open-source framework for browser automation, enabling automated tests for web pages across various browsers and operating systems.
 
-## Related Terms:
+Related Terms:
 
 - [Selenium](/en/wiki/selenium/)
 
-### See also:
+See also:
 
 - [Official Website](https://www.selenium.dev/documentation/webdriver/)
 ## Questions about WebDriver?

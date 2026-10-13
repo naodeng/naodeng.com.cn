@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [故障注入测试 ｜ Fault Injection Testing](#故障注入测试--fault-injection-testing)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于故障注入测试的问题？](#关于故障注入测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是故障注入测试？](#什么是故障注入测试)
@@ -43,11 +41,11 @@ order: 0
 
 故意引入故障来测试系统的鲁棒性。
 
-## 相关术语
+相关术语
 
 - [负面测试](/zh-cn/wiki/negative-testing/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Fault_injection)
 ## 关于故障注入测试的问题？

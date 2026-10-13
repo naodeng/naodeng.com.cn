@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Change Control](#change-control)
-  - [Related Terms:](#related-terms)
   - [Questions about Change Control?](#questions-about-change-control)
     - [Basics and Importance](#basics-and-importance)
       - [What is change control in software development?](#what-is-change-control-in-software-development)
@@ -42,7 +41,7 @@ order: 0
 
 Change Control, in the context of software testing, refers to a formal process used to ensure that modifications or updates to a software product or system are introduced in a controlled and coordinated manner. It involves documenting, evaluating, approving, and overseeing any changes made to the software, its environment, or associated documents during and after the development process.
 
-## Related Terms:
+Related Terms:
 
 - [Change Requests](/en/wiki/change-requests/)
 

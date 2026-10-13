@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Session-Based Testing](#session-based-testing)
-  - [See also:](#see-also)
   - [Questions about Session-Based Testing?](#questions-about-session-based-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is session-based testing?](#what-is-session-based-testing)
@@ -43,7 +42,7 @@ order: 0
 
 An organized form of exploratory testing conducted in sessions.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Session-based_testing)
 ## Questions about Session-Based Testing?

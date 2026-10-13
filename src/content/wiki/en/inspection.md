@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Inspection](#inspection)
-  - [Related Terms:](#related-terms)
   - [Questions about Inspection?](#questions-about-inspection)
     - [Basics and Importance](#basics-and-importance)
       - [What is an inspection in software testing?](#what-is-an-inspection-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Inspection, sometimes referred to as a Fagan inspection, is a peer review process where trained individuals evaluate a work product looking for defects.
 
-## Related Terms:
+Related Terms:
 
 - [Reviewer](/en/wiki/reviewer/)
 

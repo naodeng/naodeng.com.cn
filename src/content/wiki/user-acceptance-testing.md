@@ -17,7 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [用户验收测试 ｜ User Acceptance Testing](#用户验收测试--user-acceptance-testing)
-  - [另请参阅：](#另请参阅)
   - [关于用户验收测试的问题？](#关于用户验收测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是用户验收测试（UAT）？](#什么是用户验收测试uat)
@@ -45,7 +44,7 @@ order: 0
 
 测试阶段，客户在发布前在其预期环境中验证软件，确保符合他们的期望。
 
-## 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Acceptance_testing)
 ## 关于用户验收测试的问题？

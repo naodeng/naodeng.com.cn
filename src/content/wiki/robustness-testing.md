@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [鲁棒性测试 ｜ Robustness Testing](#鲁棒性测试--robustness-testing)
-  - [另请参阅：](#另请参阅)
   - [关于稳健性测试的问题？](#关于稳健性测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [软件测试中的稳健性测试是什么？](#软件测试中的稳健性测试是什么)
@@ -42,7 +41,7 @@ order: 0
 
 评估软件在极端或意外输入下的性能。
 
-## 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Robustness_testing)
 ## 关于稳健性测试的问题？

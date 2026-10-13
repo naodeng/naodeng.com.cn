@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Static Testing](#static-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Static Testing?](#questions-about-static-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is static testing?](#what-is-static-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Static Testing involves early-cycle assessment of software artifacts like requirements, design documents, and source code without execution. This technique identifies defects and elevates product quality, and can be manual or automated.
 
-## Related Terms:
+Related Terms:
 
 - [Dynamic Testing](/en/wiki/dynamic-testing/)
 

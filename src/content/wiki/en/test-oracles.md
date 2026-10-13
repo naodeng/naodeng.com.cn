@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Oracles](#test-oracles)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Oracles?](#questions-about-test-oracles)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Oracle in software testing?](#what-is-a-test-oracle-in-software-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Mechanisms to determine if a test is successful or not.
 
-## Related Terms:
+Related Terms:
 
 - [Test Stub](/en/wiki/test-stub/)
 

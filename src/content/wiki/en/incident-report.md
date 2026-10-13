@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Incident Report](#incident-report)
-  - [Related Terms:](#related-terms)
   - [Questions about Incident Report?](#questions-about-incident-report)
     - [Basics and Importance](#basics-and-importance)
       - [What is an incident report in software testing?](#what-is-an-incident-report-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 An incident report chronicles observed anomalies, capturing details like summary, steps, priority, and status. It's crucial for tracking and informing relevant stakeholders.
 
-## Related Terms:
+Related Terms:
 
 - [Defect](/en/wiki/bug/)
 - [Bug](/en/wiki/bug/)

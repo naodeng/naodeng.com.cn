@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [XPath Query](#xpath-query)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about XPath Query?](#questions-about-xpath-query)
     - [Basics and Importance](#basics-and-importance)
       - [What is XPath Query?](#what-is-xpath-query)
@@ -46,12 +44,12 @@ order: 0
 
 A language designed to extract and manipulate XML document data. Useful for retrieving XML data for content scanning.
 
-## Related Terms:
+Related Terms:
 
 - [Web Testing](/en/wiki/web-testing/)
 - [UI Testing](/en/wiki/ui-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/XPath)
 ## Questions about XPath Query?

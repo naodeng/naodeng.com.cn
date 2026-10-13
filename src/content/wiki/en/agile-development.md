@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Agile Development](#agile-development)
-  - [See also:](#see-also)
   - [Questions about Agile Development?](#questions-about-agile-development)
     - [Basics and Importance](#basics-and-importance)
       - [What is Agile Development and why is it important?](#what-is-agile-development-and-why-is-it-important)
@@ -41,7 +40,7 @@ order: 0
 
 Agile software development is an iterative method where requirements and solutions are collaboratively developed by cross-functional teams. It emphasizes adaptability and responsiveness over rigid planning.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Agile_software_development)
 ## Questions about Agile Development?

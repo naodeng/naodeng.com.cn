@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Specification](#test-specification)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Specification?](#questions-about-test-specification)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Specification in software testing?](#what-is-a-test-specification-in-software-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Generative drafts for test design, allowing for iterative test development. These guidelines help compare new test versions with previous ones.
 
-## Related Terms:
+Related Terms:
 
 - [Test Plan](/en/wiki/test-plan/)
 - [Test Scenario](/en/wiki/test-scenario/)

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Front-end Testing](#front-end-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Front-end Testing?](#questions-about-front-end-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is front-end testing?](#what-is-front-end-testing)
@@ -45,7 +44,7 @@ order: 0
 
 (aka browser testing, functional testing) Front-end testing focuses on the user interface (UI) and its interactions within an application.
 
-## Related Terms:
+Related Terms:
 
 - [UI Testing](/en/wiki/ui-testing/)
 - [Back-end Testing](/en/wiki/back-end-testing/)

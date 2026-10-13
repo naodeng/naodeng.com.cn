@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Traceability Matrix](#traceability-matrix)
-  - [Related Terms:](#related-terms)
   - [Questions about Traceability Matrix?](#questions-about-traceability-matrix)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Traceability Matrix in software testing?](#what-is-a-traceability-matrix-in-software-testing)
@@ -41,7 +40,7 @@ order: 0
 
 A table-type document tracking software requirements. It supports both forward and backward tracing of requirements to code and vice versa.
 
-## Related Terms:
+Related Terms:
 
 - [Requirements Management Tool](/en/wiki/requirements-management-tool/)
 

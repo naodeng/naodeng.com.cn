@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [极限编程 ｜ Extreme Programming](#极限编程--extreme-programming)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于极限编程的问题吗？](#关于极限编程的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是极限编程 (XP)？](#什么是极限编程-xp)
@@ -47,11 +45,11 @@ order: 0
 
 极限编程 (XP) 是一种敏捷软件开发方法。不像 Scrum XP 以项目管理为目标，强调软件开发最佳实践。
 
-## 相关术语
+相关术语
 
 - [敏捷开发](/zh-cn/wiki/agile-development/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Extreme_programming)
 ## 关于极限编程的问题吗？

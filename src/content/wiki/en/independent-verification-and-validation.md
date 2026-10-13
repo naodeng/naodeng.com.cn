@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Independent Verification and Validation](#independent-verification-and-validation)
-  - [Related Terms:](#related-terms)
   - [Questions about Independent Verification and Validation?](#questions-about-independent-verification-and-validation)
     - [Basics and Importance](#basics-and-importance)
       - [What is the definition of Independent Verification and Validation (IV&V)?](#what-is-the-definition-of-independent-verification-and-validation-ivv)
@@ -46,7 +45,7 @@ order: 0
 
 Independent Verification and Validation (IV&V) refers to a specialized process where an external organization or team evaluates the correctness and quality of a software product, independent of the developers and the development process. The primary goal is to ensure that the system meets its specified requirements and functions as intended.
 
-## Related Terms:
+Related Terms:
 
 - [Quality Assurance](/en/wiki/quality-assurance/)
 

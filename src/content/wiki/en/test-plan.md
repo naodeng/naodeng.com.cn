@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Plan](#test-plan)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Plan?](#questions-about-test-plan)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Plan in software testing?](#what-is-a-test-plan-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 A document detailing the objectives and activities of testing. Prepared by the test lead, it communicates the testing approach, pass/fail criteria, stages, and other vital information to the project team and stakeholders. It also covers potential risks and contingency plans.
 
-## Related Terms:
+Related Terms:
 
 - [Test Strategy](/en/wiki/test-strategy/)
 - [Test Execution](/en/wiki/test-execution/)

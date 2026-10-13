@@ -16,37 +16,37 @@ order: 0
 
 - [Automated Testing](#automated-testing)
   - [Questions about Automated Testing?](#questions-about-automated-testing)
-  - [Basics and Importance](#basics-and-importance)
-    - [What is automated testing?](#what-is-automated-testing)
-    - [Why is automated testing important?](#why-is-automated-testing-important)
-    - [What are the benefits and drawbacks of automated testing?](#what-are-the-benefits-and-drawbacks-of-automated-testing)
-    - [How does automated testing fit into the software development lifecycle?](#how-does-automated-testing-fit-into-the-software-development-lifecycle)
-    - [What is the difference between manual testing and automated testing?](#what-is-the-difference-between-manual-testing-and-automated-testing)
-  - [Tools and Techniques](#tools-and-techniques)
-    - [What are some common tools used for automated testing?](#what-are-some-common-tools-used-for-automated-testing)
-    - [What are the differences between these tools?](#what-are-the-differences-between-these-tools)
-    - [How do you choose the right tool for a specific testing task?](#how-do-you-choose-the-right-tool-for-a-specific-testing-task)
-    - [What are some common techniques used in automated testing?](#what-are-some-common-techniques-used-in-automated-testing)
-    - [How can automated testing tools be integrated into a CI/CD pipeline?](#how-can-automated-testing-tools-be-integrated-into-a-cicd-pipeline)
-  - [Test Cases and Scripts](#test-cases-and-scripts)
-    - [How are test cases developed for automated testing?](#how-are-test-cases-developed-for-automated-testing)
-    - [What is a test script in the context of automated testing?](#what-is-a-test-script-in-the-context-of-automated-testing)
-    - [How do you ensure that your test cases cover all possible scenarios?](#how-do-you-ensure-that-your-test-cases-cover-all-possible-scenarios)
-    - [What are some best practices for writing test scripts?](#what-are-some-best-practices-for-writing-test-scripts)
-    - [How can you manage and maintain test cases and scripts over time?](#how-can-you-manage-and-maintain-test-cases-and-scripts-over-time)
-  - [Types of Automated Testing](#types-of-automated-testing)
-    - [What is unit testing?](#what-is-unit-testing)
-    - [What is integration testing?](#what-is-integration-testing)
-    - [What is system testing?](#what-is-system-testing)
-    - [What is regression testing?](#what-is-regression-testing)
-    - [What is the difference between black box and white box testing?](#what-is-the-difference-between-black-box-and-white-box-testing)
-    - [What is end-to-end (e2e) testing and why is it important?](#what-is-end-to-end-e2e-testing-and-why-is-it-important)
-  - [Advanced Concepts](#advanced-concepts)
-    - [What is test-driven development (TDD) and how does it relate to automated testing?](#what-is-test-driven-development-tdd-and-how-does-it-relate-to-automated-testing)
-    - [What is behavior-driven development (BDD) and how does it relate to automated testing?](#what-is-behavior-driven-development-bdd-and-how-does-it-relate-to-automated-testing)
-    - [What is data-driven testing?](#what-is-data-driven-testing)
-    - [What is keyword-driven testing?](#what-is-keyword-driven-testing)
-    - [What is the role of AI and machine learning in automated testing?](#what-is-the-role-of-ai-and-machine-learning-in-automated-testing)
+    - [Basics and Importance](#basics-and-importance)
+      - [What is automated testing?](#what-is-automated-testing)
+      - [Why is automated testing important?](#why-is-automated-testing-important)
+      - [What are the benefits and drawbacks of automated testing?](#what-are-the-benefits-and-drawbacks-of-automated-testing)
+      - [How does automated testing fit into the software development lifecycle?](#how-does-automated-testing-fit-into-the-software-development-lifecycle)
+      - [What is the difference between manual testing and automated testing?](#what-is-the-difference-between-manual-testing-and-automated-testing)
+    - [Tools and Techniques](#tools-and-techniques)
+      - [What are some common tools used for automated testing?](#what-are-some-common-tools-used-for-automated-testing)
+      - [What are the differences between these tools?](#what-are-the-differences-between-these-tools)
+      - [How do you choose the right tool for a specific testing task?](#how-do-you-choose-the-right-tool-for-a-specific-testing-task)
+      - [What are some common techniques used in automated testing?](#what-are-some-common-techniques-used-in-automated-testing)
+      - [How can automated testing tools be integrated into a CI/CD pipeline?](#how-can-automated-testing-tools-be-integrated-into-a-cicd-pipeline)
+    - [Test Cases and Scripts](#test-cases-and-scripts)
+      - [How are test cases developed for automated testing?](#how-are-test-cases-developed-for-automated-testing)
+      - [What is a test script in the context of automated testing?](#what-is-a-test-script-in-the-context-of-automated-testing)
+      - [How do you ensure that your test cases cover all possible scenarios?](#how-do-you-ensure-that-your-test-cases-cover-all-possible-scenarios)
+      - [What are some best practices for writing test scripts?](#what-are-some-best-practices-for-writing-test-scripts)
+      - [How can you manage and maintain test cases and scripts over time?](#how-can-you-manage-and-maintain-test-cases-and-scripts-over-time)
+    - [Types of Automated Testing](#types-of-automated-testing)
+      - [What is unit testing?](#what-is-unit-testing)
+      - [What is integration testing?](#what-is-integration-testing)
+      - [What is system testing?](#what-is-system-testing)
+      - [What is regression testing?](#what-is-regression-testing)
+      - [What is the difference between black box and white box testing?](#what-is-the-difference-between-black-box-and-white-box-testing)
+      - [What is end-to-end (e2e) testing and why is it important?](#what-is-end-to-end-e2e-testing-and-why-is-it-important)
+    - [Advanced Concepts](#advanced-concepts)
+      - [What is test-driven development (TDD) and how does it relate to automated testing?](#what-is-test-driven-development-tdd-and-how-does-it-relate-to-automated-testing)
+      - [What is behavior-driven development (BDD) and how does it relate to automated testing?](#what-is-behavior-driven-development-bdd-and-how-does-it-relate-to-automated-testing)
+      - [What is data-driven testing?](#what-is-data-driven-testing)
+      - [What is keyword-driven testing?](#what-is-keyword-driven-testing)
+      - [What is the role of AI and machine learning in automated testing?](#what-is-the-role-of-ai-and-machine-learning-in-automated-testing)
 <!-- TOC END -->
 
 Automated testing uses scripts to conduct repetitive tasks, increasing software performance and testing efficiency. It enhances test coverage and execution speed, making the software testing process more effective.
@@ -61,9 +61,9 @@ See also:
 - [Wikipedia](https://en.wikipedia.org/wiki/Test_automation)
 ## Questions about Automated Testing?
 
-## Basics and Importance
+### Basics and Importance
 
-### What is automated testing?
+#### What is automated testing?
 
   Automated testing is the process of executing pre-written [test scripts](/en/wiki/test-script/) by a software tool to validate the functionality, performance, and reliability of a software application. Unlike [manual testing](/en/wiki/manual-testing/), which requires human intervention at every step, automated tests run with minimal human oversight once they are set up and can be executed repeatedly.
   Tests are typically written in the same or a different language than the application code and are designed to be reusable and maintainable. They can range from simple unit tests that verify individual components to complex end-to-end tests that validate entire workflows within the application.
@@ -82,13 +82,13 @@ See also:
   ```
   Effective automated testing relies on selecting appropriate tools and frameworks, developing robust [test cases](/en/wiki/test-case/), and maintaining them as the application evolves. It is also essential to ensure comprehensive [test coverage](/en/wiki/test-coverage/) to catch as many issues as possible before deployment. With advancements in AI and machine learning, automated testing is becoming more intelligent, capable of predicting and adapting to changes in the software with less manual input.
 
-### Why is automated testing important?
+#### Why is automated testing important?
 
   Automated testing is crucial for **ensuring [software quality](/en/wiki/software-quality/)** at a speed and scale that [manual testing](/en/wiki/manual-testing/) cannot match. It enables teams to execute more tests in less time, providing **rapid feedback** on code changes. This is essential in modern development practices like Agile and DevOps, where continuous integration and delivery are key. Automation supports these methodologies by allowing for frequent and consistent testing, leading to early detection of defects, which reduces the cost and effort of fixing [bugs](/en/wiki/bug/).
   Moreover, automated tests can be run **repeatedly** with little additional cost, ensuring that previously developed features still work after new changes ([regression testing](/en/wiki/regression-testing/)). They also allow for **parallel execution** across various environments and devices, increasing [test coverage](/en/wiki/test-coverage/) and efficiency. Automated tests produce **reliable results** with less human error and provide detailed logs that help in debugging.
   In essence, automated testing is a cornerstone of a **[quality assurance](/en/wiki/quality-assurance/) strategy** that aims to deliver robust software in a timely manner. It complements [manual testing](/en/wiki/manual-testing/) efforts by handling repetitive, time-consuming tasks, allowing human testers to focus on more complex and [exploratory testing](/en/wiki/exploratory-testing/) scenarios.
 
-### What are the benefits and drawbacks of automated testing?
+#### What are the benefits and drawbacks of automated testing?
 
   Benefits of Automated Testing:
 
@@ -109,7 +109,7 @@ See also:
   - **Complex [Setup](/en/wiki/setup/)** : Some test scenarios are complex to automate and may not be worth the effort.
   - **Tool Limitations** : Tools may not support every technology or application type, limiting their use.
 
-### How does automated testing fit into the software development lifecycle?
+#### How does automated testing fit into the software development lifecycle?
 
   Automated testing seamlessly integrates into various stages of the software development lifecycle (SDLC), enhancing efficiency and reliability. During the **requirements phase**, automated tests are planned, aligning with acceptance criteria. In the **design and development phases**, automated unit tests are implemented, often following TDD practices. As features are completed, automated integration tests verify component interactions.
   In the **testing phase**, automated regression tests ensure new changes don't break existing functionality, while automated system tests validate the software as a whole. Automated e2e tests mimic user behavior, covering the full application flow. For **deployment**, automated tests are crucial in a CI/CD pipeline, providing immediate feedback on the build's health.
@@ -126,7 +126,7 @@ See also:
   });
   ```
 
-### What is the difference between manual testing and automated testing?
+#### What is the difference between manual testing and automated testing?
 
   [Manual testing](/en/wiki/manual-testing/) involves human testers executing [test cases](/en/wiki/test-case/) without the assistance of tools or scripts. Automated testing, on the other hand, uses software tools to run tests automatically, managing both the execution of tests and the comparison of actual outcomes with predicted outcomes.
   The key differences are:
@@ -142,9 +142,9 @@ See also:
   - **[Use Cases](/en/wiki/use-case/)** : Manual testing is often more suitable for exploratory, usability, and ad-hoc testing. Automated testing is ideal for regression, load, and performance testing, among others.
   In practice, a balanced approach that leverages the strengths of both methods is often the most effective strategy.
 
-## Tools and Techniques
+### Tools and Techniques
 
-### What are some common tools used for automated testing?
+#### What are some common tools used for automated testing?
 
   Common tools for automated testing include:
 
@@ -221,7 +221,7 @@ See also:
 
 
 
-### What are the differences between these tools?
+#### What are the differences between these tools?
 
   Different automated testing tools have unique features, capabilities, and [use cases](/en/wiki/use-case/). Here's a brief comparison:
 
@@ -276,7 +276,7 @@ See also:
   Each tool has its strengths, and the choice often depends on the application under test, the preferred programming language, and the specific requirements of the testing process.
 
 
-### How do you choose the right tool for a specific testing task?
+#### How do you choose the right tool for a specific testing task?
 
   Choosing the right tool for a specific testing task involves several considerations:
 
@@ -292,7 +292,7 @@ See also:
   - **Reliability** : Choose tools with a proven track record of stability to avoid flaky tests and inconsistent results.
   By weighing these factors against the specific needs of your testing task, you can select a tool that enhances your testing efficiency and effectiveness. Remember to periodically reassess your choice as both your requirements and the tools themselves evolve.
 
-### What are some common techniques used in automated testing?
+#### What are some common techniques used in automated testing?
 
   Common techniques in automated testing include:
 
@@ -312,7 +312,7 @@ See also:
   - **[Security Testing](/en/wiki/security-testing/)**: Automated scripts that probe the application for vulnerabilities, ensuring that the software is protected against potential attacks.
   These techniques can be combined and tailored to fit specific project requirements, ensuring a robust and efficient automated testing process.
 
-### How can automated testing tools be integrated into a CI/CD pipeline?
+#### How can automated testing tools be integrated into a CI/CD pipeline?
 
   Integrating automated testing tools into a CI/CD pipeline involves several steps:
 
@@ -374,9 +374,9 @@ See also:
   Ensure that the pipeline is designed to **stop deployment** if tests fail, maintaining the quality of the release. Regularly **review and update** [test cases](/en/wiki/test-case/) and scripts to adapt to changes in the application.
 
 
-## Test Cases and Scripts
+### Test Cases and Scripts
 
-### How are test cases developed for automated testing?
+#### How are test cases developed for automated testing?
 
   Developing [test cases](/en/wiki/test-case/) for automated testing involves several steps:
 
@@ -393,7 +393,7 @@ See also:
   11. **Integrate with CI/CD**: Automate [test case](/en/wiki/test-case/) execution as part of the CI/CD pipeline to ensure continuous validation of the AUT with each build or release.
   By following these steps, [test automation](/en/wiki/test-automation/) engineers can create robust, reliable, and effective automated [test cases](/en/wiki/test-case/) that contribute to the overall quality of the software product.
 
-### What is a test script in the context of automated testing?
+#### What is a test script in the context of automated testing?
 
   In automated testing, a **[test script](/en/wiki/test-script/)** is a set of instructions executed by an automation tool to validate the functionality of a software application. It's essentially a program that automates the steps of a manual [test case](/en/wiki/test-case/).
   [Test scripts](/en/wiki/test-script/) interact with the application under test (AUT), inputting data, and comparing expected outcomes with actual outcomes. They are written in a programming or scripting language supported by the automation tool being used, such as JavaScript, Python, or Ruby.
@@ -423,7 +423,7 @@ See also:
   Scripts are often organized into [test suites](/en/wiki/test-suite/) for better manageability and can be run individually or as part of a larger test run. They are crucial for continuous integration and delivery pipelines, allowing for frequent and automated validation of software builds.
 
 
-### How do you ensure that your test cases cover all possible scenarios?
+#### How do you ensure that your test cases cover all possible scenarios?
 
   To ensure [test cases](/en/wiki/test-case/) cover all possible scenarios, follow these strategies:
 
@@ -439,7 +439,7 @@ See also:
   - **[Code Coverage](/en/wiki/code-coverage/) Analysis** : Use tools to measure the extent of code executed by tests, aiming for high coverage metrics like statement, branch, and path coverage.
   Incorporate these strategies into your test design process to create a comprehensive [test suite](/en/wiki/test-suite/). Regularly review and update [test cases](/en/wiki/test-case/) to adapt to changes in the application and its usage patterns.
 
-### What are some best practices for writing test scripts?
+#### What are some best practices for writing test scripts?
 
   Best practices for writing [test scripts](/en/wiki/test-script/) include:
 
@@ -464,7 +464,7 @@ See also:
     ```
   Adhering to these practices will lead to robust, reliable, and efficient [test automation](/en/wiki/test-automation/) scripts.
 
-### How can you manage and maintain test cases and scripts over time?
+#### How can you manage and maintain test cases and scripts over time?
 
   Managing and maintaining [test cases](/en/wiki/test-case/) and scripts over time requires a combination of **good practices**, **organization**, and **tooling**. Here are some strategies:
 
@@ -481,9 +481,9 @@ See also:
   - **Deprecation Strategy** : Have a clear strategy for deprecating and removing obsolete tests to avoid clutter and confusion.
   By applying these strategies, [test automation](/en/wiki/test-automation/) engineers can ensure that their [test suites](/en/wiki/test-suite/) remain robust, relevant, and reliable over time, providing ongoing value in the software development lifecycle.
 
-## Types of Automated Testing
+### Types of Automated Testing
 
-### What is unit testing?
+#### What is unit testing?
 
   [Unit testing](/en/wiki/unit-testing/) is the practice of testing the smallest testable parts of an application, typically functions or methods, in isolation from the rest of the system. This ensures that each component operates as expected. Unit tests are typically written and run by developers as they work on the code, allowing for immediate feedback on their changes.
   In the context of **automated testing**, unit tests are executed automatically, often as part of a build process or via a **continuous integration** (CI) system. They are crucial for identifying problems early in the development cycle, which can reduce the cost and time to fix [bugs](/en/wiki/bug/).
@@ -498,7 +498,7 @@ See also:
   ```
   Unit tests should be **maintainable** and **reliable**, with no dependencies on external systems or states. They are a fundamental part of a robust automated testing strategy, contributing to the overall health and quality of the software.
 
-### What is integration testing?
+#### What is integration testing?
 
   [Integration testing](/en/wiki/integration-testing/) is a level of the [software testing](/en/wiki/software-testing/) process where individual units or components of a software application are combined and tested as a group. The primary goal is to verify the functional, performance, and reliability between the modules that are integrated.
   In automated testing, integration tests are scripted and often incorporated into the build process to ensure that new changes do not break the interaction between components. These tests can be more complex than unit tests as they require the configuration of the environment where multiple components interact.
@@ -520,7 +520,7 @@ See also:
   ```
   This example demonstrates a simple integration test where `processInput` and `fetchData` are two separate components that need to work together correctly. The test ensures that the data processed by one component is suitable for the other component to fetch the [expected result](/en/wiki/expected-result/).
 
-### What is system testing?
+#### What is system testing?
 
   [System testing](/en/wiki/system-testing/) is a **high-level** testing phase that evaluates the complete and integrated software system to verify that it meets specified requirements. It is conducted after **[integration testing](/en/wiki/integration-testing/)** and before **[acceptance testing](/en/wiki/acceptance-testing/)**, and it focuses on behaviors and outputs under a variety of conditions.
   During [system testing](/en/wiki/system-testing/), the application is tested in an environment that closely resembles production, including **[database](/en/wiki/database/) interactions**, **network communication**, and **server interaction**. The goal is to identify defects that could only surface when components are integrated and interacting in a system-wide context.
@@ -533,7 +533,7 @@ See also:
   - **[Compatibility Testing](/en/wiki/compatibility-testing/)** : Confirming the software works across different devices, browsers, and operating systems.
   Automated [system testing](/en/wiki/system-testing/) can significantly **reduce the time** required to perform repetitive but necessary checks, allowing for more frequent and thorough testing cycles. It is particularly useful for **[regression testing](/en/wiki/regression-testing/)** to ensure new changes haven't adversely affected existing functionality. However, it may not fully replace [manual testing](/en/wiki/manual-testing/), especially for exploratory, usability, and ad-hoc testing scenarios.
 
-### What is regression testing?
+#### What is regression testing?
 
   [Regression testing](/en/wiki/regression-testing/) is the process of verifying that previously developed and tested software still performs correctly after changes such as enhancements, patches, or configuration changes. It ensures that new code changes have not adversely affected existing functionality. In the context of **automated testing**, regression tests are typically executed as part of a [test suite](/en/wiki/test-suite/) that is run frequently, often during a CI/CD pipeline, to provide quick feedback on the impact of code modifications.
   Automated regression tests are crucial for maintaining the stability of the software over time, especially as the codebase grows and evolves. They allow for consistent and repeatable validation of software behavior, which is more efficient than manual [regression testing](/en/wiki/regression-testing/). Automated tests can be run on various environments and configurations to ensure broad coverage.
@@ -549,7 +549,7 @@ See also:
   In this example, the `add` function is part of the software that has been previously tested. The regression test will ensure that after changes to the codebase, the `add` function continues to produce the [expected result](/en/wiki/expected-result/).
   Effective [regression testing](/en/wiki/regression-testing/) typically involves selecting relevant [test cases](/en/wiki/test-case/) that cover critical features, frequently running these tests, and updating them as the software evolves. This helps to identify defects early and reduces the risk of introducing [bugs](/en/wiki/bug/) into production.
 
-### What is the difference between black box and white box testing?
+#### What is the difference between black box and white box testing?
 
   [Black box testing](/en/wiki/black-box-testing/) and [white box testing](/en/wiki/white-box-testing/) are two distinct approaches to evaluating software functionality and integrity.
   **[Black box testing](/en/wiki/black-box-testing/)** treats the software as an opaque entity, focusing on inputs and outputs without considering internal code structure. Testers verify functionality against specifications, ensuring the system behaves as expected under various conditions. This method is oblivious to the internal workings, hence the term "black box."
@@ -557,16 +557,16 @@ See also:
   While both methods can be automated, black box tests are typically higher-level, such as user [interface testing](/en/wiki/interface-testing/), whereas white box tests are lower-level, like unit tests. Black box automation scripts simulate user interactions, while white box scripts interact directly with the application code.
   In practice, combining both approaches provides a comprehensive testing strategy, with [black box testing](/en/wiki/black-box-testing/) validating user-facing features and [white box testing](/en/wiki/white-box-testing/) ensuring the robustness of the underlying codebase.
 
-### What is end-to-end (e2e) testing and why is it important?
+#### What is end-to-end (e2e) testing and why is it important?
 
   End-to-end (E2E) testing is a technique where the entire application is tested in a scenario closely mimicking real-world use, such as interacting with a [database](/en/wiki/database/), network, hardware, and other applications. The goal is to validate the system's integration and data integrity from start to finish, ensuring that all components of the application behave as expected under various scenarios.
   **E2E testing** is crucial because it verifies the system's overall health, as opposed to unit or integration tests that focus on individual components or interactions. It helps catch issues that occur when different parts of a system work together, which might not be evident in isolation. This type of testing is particularly important for critical workflows that directly impact the user experience or the business's bottom line.
   By simulating real user scenarios, E2E testing ensures that the application meets the business requirements and functions correctly in the production environment. It can uncover unexpected behaviors resulting from the combination of various subsystems, which is invaluable for preventing issues in live settings.
   In the context of **[test automation](/en/wiki/test-automation/)**, E2E tests are often executed as part of a CI/CD pipeline to ensure that new changes do not break key functionalities. While they can be more complex and time-consuming to run than other types of tests, their importance in confirming the viability of a software product cannot be overstated.
 
-## Advanced Concepts
+### Advanced Concepts
 
-### What is test-driven development (TDD) and how does it relate to automated testing?
+#### What is test-driven development (TDD) and how does it relate to automated testing?
 
   [Test-Driven Development](/en/wiki/test-driven-development/) (TDD) is a software development approach where tests are written before the code that needs to pass them. It follows a simple cycle: **write a test**, **run the test** (it should fail initially), **write the minimal code** to pass the test, and then **refactor** the code while ensuring tests continue to pass.
   TDD relates to automated testing in that it inherently relies on the creation of automated tests for software features before they are implemented. These tests are typically **unit tests** which are quick to run and can be easily automated. The TDD cycle ensures that every new feature starts with a corresponding [test case](/en/wiki/test-case/), which helps in building a suite of automated tests over time.
@@ -578,7 +578,7 @@ See also:
   - **Refactoring confidence** : Automated tests allow developers to refactor code with assurance that existing functionality remains intact.
   TDD complements other automated testing strategies by ensuring that tests are considered from the very beginning of the development process, rather than as an afterthought. It encourages a discipline of testing that can lead to higher quality software and fits well within Agile and Continuous Integration/Continuous Deployment (CI/CD) workflows.
 
-### What is behavior-driven development (BDD) and how does it relate to automated testing?
+#### What is behavior-driven development (BDD) and how does it relate to automated testing?
 
   Behavior-Driven Development ([BDD](/en/wiki/bdd/)) is an agile software development process that encourages collaboration among developers, QA, and non-technical or business participants in a software project. [BDD](/en/wiki/bdd/) focuses on obtaining a clear understanding of desired software behavior through discussion with stakeholders. It extends [Test-Driven Development](/en/wiki/test-driven-development/) (TDD) by writing [test cases](/en/wiki/test-case/) in a natural language that non-programmers can read.
   [BDD](/en/wiki/bdd/) relates to automated testing by providing a framework for writing tests. Tests are written in a **Domain Specific Language (DSL)**, often using a language like [Gherkin](/en/wiki/gherkin/), allowing for human-readable descriptions of software behaviors. These descriptions can then be automated by tools like Cucumber or SpecFlow.
@@ -593,7 +593,7 @@ See also:
   In [BDD](/en/wiki/bdd/), scenarios are defined before the development starts and serve as the basis for [test cases](/en/wiki/test-case/). This ensures that automated tests are aligned with the expected behavior from a user's perspective. As development progresses, these scenarios are turned into automated tests, which are continuously executed to verify the application's behavior against the expected outcomes.
   [BDD](/en/wiki/bdd/)'s emphasis on shared understanding and clear communication makes it particularly useful for ensuring that automated tests are relevant, understandable, and maintainable. It helps bridge the gap between technical and non-technical team members, ensuring that automated tests accurately reflect business requirements and user needs.
 
-### What is data-driven testing?
+#### What is data-driven testing?
 
   Data-driven testing (DDT) is a **[test automation](/en/wiki/test-automation/)** strategy that involves executing a set of test steps with multiple sets of input data. This approach enhances [test coverage](/en/wiki/test-coverage/) by validating application behavior across a wide range of input values without writing multiple [test scripts](/en/wiki/test-script/) for each data set.
   In DDT, test logic is separated from the [test data](/en/wiki/test-data/), typically stored in external data sources like CSV files, Excel spreadsheets, XML, or [databases](/en/wiki/database/). During [test execution](/en/wiki/test-execution/), the automation framework reads the data and feeds it into the [test cases](/en/wiki/test-case/).
@@ -608,7 +608,7 @@ See also:
   DDT is particularly useful for scenarios where application behavior is consistent across different data inputs, and it's essential for ensuring that edge cases and boundary conditions are tested. It also simplifies the process of updating tests since changes in [test data](/en/wiki/test-data/) do not require alterations in the [test scripts](/en/wiki/test-script/).
   However, it's crucial to design DDT carefully to avoid creating a maintenance burden, as the volume and complexity of [test data](/en/wiki/test-data/) can grow significantly. Proper management of [test data](/en/wiki/test-data/) is key to the success of data-driven testing.
 
-### What is keyword-driven testing?
+#### What is keyword-driven testing?
 
   Keyword-driven testing, also known as table-driven testing or action word based testing, is a methodology used in automated testing where [test cases](/en/wiki/test-case/) are written using a set of predefined keywords. These keywords represent actions that can be performed on the application under test (AUT). Each keyword corresponds to a function or method that executes a specific operation, such as clicking a button, entering text, or verifying a result.
   In keyword-driven testing, [test scripts](/en/wiki/test-script/) are not written in a programming language. Instead, they are composed of a sequence of keywords, which are easy to read and understand. This abstraction allows individuals without programming expertise to design and execute tests, promoting collaboration between different stakeholders.
@@ -624,7 +624,7 @@ See also:
   ```
   The [test automation](/en/wiki/test-automation/) framework interprets these keywords and translates them into actions on the AUT. The separation of [test case](/en/wiki/test-case/) design from [test script](/en/wiki/test-script/) implementation allows for easier maintenance and scalability of [test cases](/en/wiki/test-case/). When the underlying implementation of a keyword changes, only the associated function or method needs to be updated, leaving the [test cases](/en/wiki/test-case/) themselves untouched.
 
-### What is the role of AI and machine learning in automated testing?
+#### What is the role of AI and machine learning in automated testing?
 
   AI and machine learning (ML) are transforming automated testing by enhancing its capabilities and efficiency. **AI-driven [test automation](/en/wiki/test-automation/)** can **analyze application data** to predict and prioritize [test cases](/en/wiki/test-case/), detect dependencies, and identify areas with a higher likelihood of defects. This predictive analysis helps in optimizing [test suites](/en/wiki/test-suite/), reducing redundancy, and focusing on high-risk areas.
   **Machine learning algorithms** can learn from past [test executions](/en/wiki/test-execution/) to **recognize patterns** and **anticipate future failures**. By analyzing results over time, ML can improve test accuracy and adapt to changes in the application without requiring manual intervention for test maintenance.

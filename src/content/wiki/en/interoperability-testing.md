@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Interoperability Testing](#interoperability-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Interoperability Testing?](#questions-about-interoperability-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Interoperability Testing?](#what-is-interoperability-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Interoperability Testing is a type of software testing that evaluates the capability of different systems, applications, or components to exchange and utilize information effectively, accurately, and consistently. The primary goal is to ensure that diverse software products and services can work seamlessly together in a given environment, be it within the same organization or across different entities. Interoperability Testing identifies integration issues, incompatibilities, or other hindrances that might prevent systems from interacting as intended. Such testing is crucial in environments where multiple vendors, platforms, or standards coexist and need to cooperate without causing disruptions or data discrepancies.
 
-## Related Terms:
+Related Terms:
 
 - [Compatibility Testing](/en/wiki/compatibility-testing/)
 

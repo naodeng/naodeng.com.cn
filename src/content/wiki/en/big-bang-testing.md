@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Big Bang Testing](#big-bang-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Big Bang Testing?](#questions-about-big-bang-testing)
     - [Basics and Understanding](#basics-and-understanding)
       - [What is Big Bang Testing in software testing?](#what-is-big-bang-testing-in-software-testing)
@@ -43,7 +42,7 @@ order: 0
 
 Big Bang Testing is an approach where all system units are linked simultaneously without regard for their interactions. This method can make error isolation challenging as it requires focusing on the interfaces of individual units.
 
-## Related Terms:
+Related Terms:
 
 - [Incremental Testing](/en/wiki/incremental-testing/)
 

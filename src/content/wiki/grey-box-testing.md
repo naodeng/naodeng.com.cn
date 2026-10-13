@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [灰盒测试 ｜ Grey Box Testing](#灰盒测试--grey-box-testing)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于灰盒测试的问题吗？](#关于灰盒测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是灰盒测试？](#什么是灰盒测试)
@@ -43,13 +41,13 @@ order: 0
 
 灰盒测试涉及在对其内部工作原理有部分了解的情况下测试应用程序。它的目的是识别源自代码结构或其应用程序的问题。
 
-## 相关术语
+相关术语
 
 - [黑盒测试](/zh-cn/wiki/black-box-testing/)
 - [白盒测试](/zh-cn/wiki/white-box-testing/)
 - [玻璃盒测试](/zh-cn/wiki/glass-box-testing/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Gray-box_testing)
 ## 关于灰盒测试的问题吗？

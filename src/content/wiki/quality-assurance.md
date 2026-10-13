@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [质量保证 ｜ Quality Assurance](#质量保证--quality-assurance)
-  - [另请参阅：](#另请参阅)
   - [有关质量保证的问题吗？](#有关质量保证的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是质量保证？](#什么是质量保证)
@@ -46,7 +45,7 @@ order: 0
 
 品质保证 (QA) 是确保尽可能高的产品或服务质量的过程。它强调改进流程以实现一致的质量交付成果。
 
-## 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Quality_assurance)
 ## 有关质量保证的问题吗？

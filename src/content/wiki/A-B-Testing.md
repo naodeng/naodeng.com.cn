@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [A/B 测试 ｜ A/B Testing](#ab-测试--ab-testing)
-  - [另请参阅：](#另请参阅)
   - [关于 A/B 测试的问题](#关于-ab-测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是 A/B 测试？](#什么是-ab-测试)
@@ -49,7 +48,7 @@ A/B 测试涉及创建一个或多个网页变体，以与当前版本进行比�
 也可以看看：
 [Wikipedia](https://zh.wikipedia.org/zh-cn/A/B%E6%B8%AC%E8%A9%A6)
 
-## 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/A/B_testing)
 

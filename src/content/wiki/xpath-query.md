@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Xpath Query ｜ Xpath Query](#xpath-query--xpath-query)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [有关 XPath 查询的问题吗？](#有关-xpath-查询的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是 XPath 查询？](#什么是-xpath-查询)
@@ -47,12 +45,12 @@ order: 0
 
 一种设计用于提取和操作 XML 文档数据的语言。对于检索 XML 数据以进行内容扫描很有用。
 
-## 相关术语
+相关术语
 
 - [网页测试](/zh-cn/wiki/web-testing/)
 - [用户界面测试](/zh-cn/wiki/ui-testing/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/XPath)
 ## 有关 XPath 查询的问题吗？

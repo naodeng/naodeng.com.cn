@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Grey Box Testing](#grey-box-testing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Grey Box Testing?](#questions-about-grey-box-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Grey Box Testing?](#what-is-grey-box-testing)
@@ -42,13 +40,13 @@ order: 0
 
 Grey box testing involves testing an application with partial knowledge of its internal workings. It aims to identify issues stemming from the code structure or its application.
 
-## Related Terms:
+Related Terms:
 
 - [Black Box Testing](/en/wiki/black-box-testing/)
 - [White Box Testing](/en/wiki/white-box-testing/)
 - [Glass Box Testing](/en/wiki/glass-box-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Gray-box_testing)
 ## Questions about Grey Box Testing?

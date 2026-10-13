@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Stress Testing](#stress-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Stress Testing?](#questions-about-stress-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is stress testing in software testing?](#what-is-stress-testing-in-software-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Stress testing (Intrusive Testing) gauges the stability and resilience of a system, infrastructure, or entity under extreme conditions.
 
-## Related Terms:
+Related Terms:
 
 - [Performance Testing](/en/wiki/performance-testing/)
 - [Load Testing](/en/wiki/load-testing/)

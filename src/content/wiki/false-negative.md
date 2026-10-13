@@ -17,8 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [漏报 ｜ False Negative](#漏报--false-negative)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于假阴性的问题？](#关于假阴性的问题)
     - [基础知识和理解](#基础知识和理解)
       - [软件测试中的漏报是什么？](#软件测试中的漏报是什么)
@@ -41,11 +39,11 @@ order: 0
 <!-- TOC END -->
 在软件测试中，假阴性（False Negative，也称漏报）是指测试未能发现实际存在的缺陷，却错误地判定软件正常。这会造成错误的安全感，使团队高估软件质量，并可能让关键缺陷进入生产环境，影响用户和业务。
 
-## 相关术语
+相关术语
 
 - [误报](/zh-cn/wiki/false-positive/)
 
-### 另请参阅：
+另请参阅：
 
 - [维基百科](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
 

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [End-to-End Testing](#end-to-end-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about End-to-End Testing?](#questions-about-end-to-end-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is End-to-End Testing?](#what-is-end-to-end-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Tests the complete functionality of an application process from start to finish.
 
-## Related Terms:
+Related Terms:
 
 - [System Testing](/en/wiki/system-testing/)
 

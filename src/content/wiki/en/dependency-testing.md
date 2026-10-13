@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Dependency Testing](#dependency-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Dependency Testing?](#questions-about-dependency-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is dependency testing in software testing?](#what-is-dependency-testing-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Dependency Testing in software testing refers to the process of examining the interactions and dependencies between different software modules or components to ensure they interact correctly. This type of testing focuses on identifying issues that might arise when one component relies on another to function properly.
 
-## Related Terms:
+Related Terms:
 
 - [Integration Testing](/en/wiki/integration-testing/)
 

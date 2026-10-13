@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Jira](#jira)
-  - [Related Terms:](#related-terms)
   - [Questions about Jira?](#questions-about-jira)
     - [Basics and Importance](#basics-and-importance)
       - [What is Jira and what is it used for?](#what-is-jira-and-what-is-it-used-for)
@@ -41,7 +40,7 @@ order: 0
 
 Jira is a popular software developed by Atlassian, primarily used for bug tracking, issue tracking, and project management. Originating as a tool for software development teams to track defects and tasks, Jira has since evolved to cater to various business functions with customizable workflows, real-time collaboration, and integration capabilities. It allows teams to create, prioritize, and assign work items, such as stories or bugs, and then track their progress through different stages. Jira supports Agile methodologies like Scrum and Kanban, offering features like boards, backlogs, and sprints. Its versatility and extensive plugin ecosystem make it suitable for a wide range of use cases beyond just software development.
 
-## Related Terms:
+Related Terms:
 
 - Bug tracking tool
 - [Change Requests](/en/wiki/change-requests/)

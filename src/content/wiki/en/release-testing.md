@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Release Testing](#release-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Release Testing?](#questions-about-release-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is release testing?](#what-is-release-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Release testing evaluates a new software version to determine its readiness for release, examining its complete functionality.
 
-## Related Terms:
+Related Terms:
 
 - [Regression Testing](/en/wiki/regression-testing/)
 - [Retesting](/en/wiki/retesting/)

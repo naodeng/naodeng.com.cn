@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [行为驱动开发 ｜ BDD](#行为驱动开发--bdd)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于 BDD 有疑问吗？](#关于-bdd-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是行为驱动开发（BDD）？](#什么是行为驱动开发bdd)
@@ -43,13 +41,13 @@ order: 0
       - [BDD 如何与其他测试方法集成？](#bdd-如何与其他测试方法集成)
 <!-- TOC END -->
 
-## 相关术语
+相关术语
 
 - [行为驱动开发](/zh-cn/wiki/bdd/)
 - [Gherkin](/zh-cn/wiki/gherkin/)
 - [测试场景](/zh-cn/wiki/test-scenario/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Behavior-driven_development)
 ## 关于 BDD 有疑问吗？

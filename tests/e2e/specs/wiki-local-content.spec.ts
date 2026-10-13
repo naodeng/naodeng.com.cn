@@ -23,12 +23,54 @@ test("English Wiki term is served from a local page with a matching Chinese tran
   expect(term?.inDefinedTermSet?.name).toBe("QA Wiki");
 });
 
+test("Wiki question sections render with H2, H3, and H4 hierarchy", async ({ page }) => {
+  const cases = [
+    {
+      path: "/en/wiki/acceptance-testing/",
+      root: "Questions about Acceptance Testing?",
+      category: "Basics and Importance",
+      question: "What is acceptance testing?",
+    },
+    {
+      path: "/zh-cn/wiki/acceptance-testing/",
+      root: "关于验收测试的问题",
+      category: "基础知识和重要性",
+      question: "什么是验收测试？",
+    },
+    {
+      path: "/en/wiki/acceptance-test-driven-development/",
+      root: "Questions about Acceptance Test Driven Development?",
+      category: "Basics and Importance",
+      question: "What is Acceptance Test Driven Development (ATDD)?",
+    },
+    {
+      path: "/zh-cn/wiki/acceptance-test-driven-development/",
+      root: "关于验收测试驱动开发的问题",
+      category: "基础知识和重要性",
+      question: "什么是验收测试驱动开发（ATDD）？",
+    },
+  ];
+
+  for (const item of cases) {
+    await page.goto(item.path, { waitUntil: "domcontentloaded" });
+    for (const [level, text] of [[2, item.root], [3, item.category], [4, item.question]] as const) {
+      await expect(page.locator(`.docs-content article h${level}`).filter({ hasText: text })).toHaveCount(1);
+    }
+  }
+});
+
 test("English Wiki table of contents follows the Chinese section hierarchy", async ({ page }) => {
   await page.goto("/en/wiki/acceptance-test-driven-development/", { waitUntil: "domcontentloaded" });
 
   const tocLinks = page.locator(".toc-list--desktop .toc-link");
   await expect(tocLinks).toHaveText([
     "Questions about Acceptance Test Driven Development?",
+    "Basics and Importance",
+    "Process and Techniques",
+    "Tools and Technologies",
+    "Challenges and Solutions",
+  ]);
+  await expect(page.locator(".toc-list--desktop .toc-item--h3 .toc-link")).toHaveText([
     "Basics and Importance",
     "Process and Techniques",
     "Tools and Technologies",
@@ -48,6 +90,18 @@ test("paired Wiki See also labels stay outside headings and tables of contents",
       await expect(page.getByRole("heading", { name: label, exact: true })).toHaveCount(0);
       await expect(page.locator(".toc-link").filter({ hasText: label })).toHaveCount(0);
     }
+  }
+});
+
+test("Related-term labels stay outside headings and the Wiki table of contents", async ({ page }) => {
+  for (const { locale, label } of [
+    { locale: "en", label: "Related Terms:" },
+    { locale: "zh-cn", label: "相关术语" },
+  ]) {
+    await page.goto(`/${locale}/wiki/defect-management/`, { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("heading", { name: label, exact: true })).toHaveCount(0);
+    await expect(page.locator(".toc-link").filter({ hasText: label })).toHaveCount(0);
+    await expect(page.getByText(label, { exact: true })).toBeVisible();
   }
 });
 

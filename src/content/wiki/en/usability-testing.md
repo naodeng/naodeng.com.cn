@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Usability Testing](#usability-testing)
-  - [See also:](#see-also)
   - [Questions about Usability Testing?](#questions-about-usability-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is usability testing?](#what-is-usability-testing)
@@ -45,7 +44,7 @@ order: 0
 
 A qualitative research method providing insights into user interactions with software. It identifies usability issues and evaluates user-friendliness.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Usability_testing)
 ## Questions about Usability Testing?

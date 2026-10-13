@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Performance Indicator](#performance-indicator)
-  - [Related Terms:](#related-terms)
   - [Questions about Performance Indicator?](#questions-about-performance-indicator)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Performance Indicator?](#what-is-a-performance-indicator)
@@ -38,7 +37,7 @@ order: 0
 
 A performance indicator or KPI is a metric testers use to measure the efficacy and quality of their testing process.
 
-## Related Terms:
+Related Terms:
 
 - [Performance Testing](/en/wiki/performance-testing/)
 

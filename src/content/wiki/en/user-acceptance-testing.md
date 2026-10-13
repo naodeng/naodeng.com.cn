@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [User Acceptance Testing](#user-acceptance-testing)
-  - [See also:](#see-also)
   - [Questions about User Acceptance Testing?](#questions-about-user-acceptance-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is User Acceptance Testing (UAT)?](#what-is-user-acceptance-testing-uat)
@@ -44,7 +43,7 @@ order: 0
 
 A testing phase where the customer validates the software in its intended environment before release, ensuring alignment with their expectations.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Acceptance_testing)
 ## Questions about User Acceptance Testing?

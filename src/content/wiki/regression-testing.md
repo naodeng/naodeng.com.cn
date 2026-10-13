@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [回归测试 ｜ Regression Testing](#回归测试--regression-testing)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [有关回归测试的问题吗？](#有关回归测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是回归测试？](#什么是回归测试)
@@ -47,12 +45,12 @@ order: 0
 
 回归测试检查新更改后现有功能是否保持不变。它确保新添加的内容不会破坏现有软件的运行。
 
-## 相关术语
+相关术语
 
 - [发布测试](/zh-cn/wiki/release-testing/)
 - [重新测试](/zh-cn/wiki/retesting/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Regression_testing)
 ## 有关回归测试的问题吗？

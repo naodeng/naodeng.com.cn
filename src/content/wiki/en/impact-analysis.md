@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Impact Analysis](#impact-analysis)
-  - [Related Terms:](#related-terms)
   - [Questions about Impact Analysis?](#questions-about-impact-analysis)
     - [Basics and Importance](#basics-and-importance)
       - [What is impact analysis in software testing?](#what-is-impact-analysis-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Impact Analysis, in the context of software testing, refers to the process of identifying and assessing the potential effects of a change in the software. When a code change or a new feature is introduced, it's crucial to understand how this alteration might influence existing functionalities or components. By conducting impact analysis, teams can ensure that modifications don't introduce new defects, make efficient use of testing resources by targeting the affected areas, and reduce the risk of unforeseen issues in the production environment.
 
-## Related Terms:
+Related Terms:
 
 - [Change Control](/en/wiki/change-control/)
 - [Change Requests](/en/wiki/change-requests/)

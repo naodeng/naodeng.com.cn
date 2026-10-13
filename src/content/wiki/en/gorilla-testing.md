@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Gorilla Testing](#gorilla-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Gorilla Testing?](#questions-about-gorilla-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Gorilla Testing in software testing?](#what-is-gorilla-testing-in-software-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Intense testing of a specific module or feature, often by a tester or developer.
 
-## Related Terms:
+Related Terms:
 
 - [Monkey Testing](/en/wiki/monkey-testing/)
 

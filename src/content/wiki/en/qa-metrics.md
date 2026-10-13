@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [QA Metrics](#qa-metrics)
-  - [Related Terms:](#related-terms)
   - [Questions about QA Metrics?](#questions-about-qa-metrics)
     - [Basics and Importance](#basics-and-importance)
       - [What are QA Metrics?](#what-are-qa-metrics)
@@ -42,7 +41,7 @@ order: 0
 
 QA metrics are tools that developers use to enhance their product quality by refining testing processes, helping in identifying or forecasting product flaws.
 
-## Related Terms:
+Related Terms:
 
 - [Software Quality](/en/wiki/software-quality/)
 - [Software Quality Management](/en/wiki/software-quality-management/)

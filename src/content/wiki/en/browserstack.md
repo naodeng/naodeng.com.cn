@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [BrowserStack](#browserstack)
-  - [Related Terms:](#related-terms)
   - [Questions about BrowserStack?](#questions-about-browserstack)
     - [Basics and Importance](#basics-and-importance)
       - [What is BrowserStack?](#what-is-browserstack)
@@ -46,7 +45,7 @@ order: 0
 
 BrowserStack is a cloud-based web and mobile testing platform that allows developers and testers to view and interact with their websites and applications across multiple browsers, operating systems, and real mobile devices without the need for an internal lab of virtual machines or devices. It provides instant access to a wide range of browser and OS combinations, ensuring that developers can test their products in real-world conditions. This helps in identifying and resolving compatibility issues that might not be evident on a single platform or browser. BrowserStack is particularly beneficial for ensuring cross-browser and cross-platform compatibility, and it integrates with many popular continuous integration tools to streamline the testing process.
 
-## Related Terms:
+Related Terms:
 
 - [Cross-Browser Testing tool](/en/wiki/cross-browser-testing/)
 

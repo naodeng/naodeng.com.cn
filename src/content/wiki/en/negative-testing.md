@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Negative Testing](#negative-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Negative Testing?](#questions-about-negative-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is negative testing in software testing?](#what-is-negative-testing-in-software-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Negative testing verifies an application's ability to handle incorrect input, comparing expected outcomes with actual results.
 
-## Related Terms:
+Related Terms:
 
 - [Positive Testing](/en/wiki/positive-testing/)
 

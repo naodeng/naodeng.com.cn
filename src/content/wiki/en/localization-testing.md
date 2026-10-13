@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Localization Testing](#localization-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Localization Testing?](#questions-about-localization-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is localization testing in software testing?](#what-is-localization-testing-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Localization testing ensures a software product resonates culturally with users in a specific region, guaranteeing its usability in that locale.
 
-## Related Terms:
+Related Terms:
 
 - [Internationalization Testing](/en/wiki/internationalization-testing/)
 

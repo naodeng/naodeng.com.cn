@@ -36,6 +36,8 @@ interface Props {
   sidebarSearchLabel?: string;
   /** 本页标题锚点，用于右侧「本页目录」；无则只显示左右两栏 */
   headings?: { depth: number; slug: string; text: string }[];
+  /** 右侧目录是否包含 H3 子标题 */
+  tocIncludeSubheadings?: boolean;
   /** 右侧 TOC 标题：本页目录 / On this page */
   tocLabel?: string;
   /** 目录首页使用完整主列；正文页默认保留阅读宽度。 */
@@ -57,6 +59,7 @@ const {
   sidebarSearchAction,
   sidebarSearchLabel,
   headings = [],
+  tocIncludeSubheadings = false,
   tocLabel,
   contentMode = "reading",
 } = Astro.props;
@@ -92,7 +95,12 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
     </aside>
     {hasToc && (
       <aside class="docs-toc-wrap">
-        <TableOfContents headings={headings} label={rightTocLabel} placement="right" />
+        <TableOfContents
+          headings={headings}
+          label={rightTocLabel}
+          placement="right"
+          includeSubheadings={tocIncludeSubheadings}
+        />
       </aside>
     )}
     <div class="docs-content">

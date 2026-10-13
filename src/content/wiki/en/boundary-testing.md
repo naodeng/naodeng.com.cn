@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Boundary Testing](#boundary-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Boundary Testing?](#questions-about-boundary-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is boundary testing?](#what-is-boundary-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Evaluates software by focusing on the boundary or edge values of the input domain.
 
-## Related Terms:
+Related Terms:
 
 - [Equivalence Partitioning](/en/wiki/equivalence-partitioning/)
 - [Edge Testing](/en/wiki/edge-testing/)

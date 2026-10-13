@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Quality Management](#quality-management)
-  - [Related Terms:](#related-terms)
   - [Questions about Quality Management?](#questions-about-quality-management)
     - [Basics and Importance](#basics-and-importance)
       - [What is Quality Management?](#what-is-quality-management)
@@ -51,7 +50,7 @@ order: 0
 
 Quality management ensures that an organization's products or services consistently meet a certain quality standard.
 
-## Related Terms:
+Related Terms:
 
 - [QA Metrics](/en/wiki/qa-metrics/)
 - [Quality Assurance](/en/wiki/quality-assurance/)

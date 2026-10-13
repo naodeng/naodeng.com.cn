@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Runner](#test-runner)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Runner?](#questions-about-test-runner)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Runner in software testing?](#what-is-a-test-runner-in-software-testing)
@@ -41,7 +40,7 @@ order: 0
 
 A tool that automates the running of test cases and the collection of results, ensuring software functions as intended. Can be a GUI or command-line tool.
 
-## Related Terms:
+Related Terms:
 
 - [Test framework (e.g., NUnit, JUnit, Jest)](/en/wiki/automated-testing/)
 

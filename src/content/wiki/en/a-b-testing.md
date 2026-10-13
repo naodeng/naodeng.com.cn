@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [A/B Testing](#ab-testing)
-  - [See also:](#see-also)
   - [Questions about A/B Testing?](#questions-about-ab-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is A/B testing?](#what-is-ab-testing)
@@ -45,7 +44,7 @@ order: 0
 
 (aka split testing) A/B testing involves creating one or more variants of a webpage to compare against the current version. The goal is to determine which version performs best based on specific metrics, such as revenue per visitor or conversion rate.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/A/B_testing)
 ## Questions about A/B Testing?

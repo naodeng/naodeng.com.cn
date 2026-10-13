@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [System Testing](#system-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about System Testing?](#questions-about-system-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is system testing in software testing?](#what-is-system-testing-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 System testing verifies interactions between software components in an integrated environment. Based on functional or design criteria, it helps identify shortcomings in the overall software functionality.
 
-## Related Terms:
+Related Terms:
 
 - [Integration Testing](/en/wiki/integration-testing/)
 - [Functional Testing](/en/wiki/functional-testing/)

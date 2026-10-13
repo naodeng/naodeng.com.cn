@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Defect Management](#defect-management)
-  - [Related Terms:](#related-terms)
   - [Questions about Defect Management?](#questions-about-defect-management)
     - [Basics and Importance](#basics-and-importance)
       - [What is defect management in software testing?](#what-is-defect-management-in-software-testing)
@@ -46,7 +45,7 @@ order: 0
 
 Defect Management, in software testing, refers to the systematic process of identifying, recording, tracking, and resolving defects or bugs detected in a software application. It encompasses the entire lifecycle of a defect, from its discovery to closure, ensuring that issues are appropriately addressed and resolved before the software's release.
 
-## Related Terms:
+Related Terms:
 
 - Bug tracking (e.g., Jira)
 

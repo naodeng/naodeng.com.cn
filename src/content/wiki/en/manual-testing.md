@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Manual Testing](#manual-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Manual Testing?](#questions-about-manual-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is manual testing?](#what-is-manual-testing)
@@ -48,7 +47,7 @@ order: 0
 
 Manual testing is the process of manually checking software functionalities against expected outcomes.
 
-## Related Terms:
+Related Terms:
 
 - [Automated Testing](/en/wiki/automated-testing/)
 - [Test Automation](/en/wiki/test-automation/)

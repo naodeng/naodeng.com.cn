@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Maintainability](#maintainability)
-  - [Related Terms:](#related-terms)
   - [Questions about Maintainability?](#questions-about-maintainability)
     - [Basics and Importance](#basics-and-importance)
       - [What is maintainability in the context of software automation?](#what-is-maintainability-in-the-context-of-software-automation)
@@ -38,7 +37,7 @@ order: 0
 
 Maintainability measures how easily a system can be updated or modified. This attribute is crucial as software undergoes changes throughout its lifecycle.
 
-## Related Terms:
+Related Terms:
 
 - [Maintenance Testing](/en/wiki/maintenance-testing/)
 - [Software Quality Management](/en/wiki/software-quality-management/)

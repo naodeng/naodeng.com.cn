@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Responsive Design](#responsive-design)
-  - [Related Terms:](#related-terms)
   - [Questions about Responsive Design?](#questions-about-responsive-design)
     - [Basics and Importance](#basics-and-importance)
       - [What is responsive design?](#what-is-responsive-design)
@@ -46,7 +45,7 @@ order: 0
 
 Responsive design involves dynamically adjusting a website's appearance based on screen size and device orientation, ensuring compatibility between content and display.
 
-## Related Terms:
+Related Terms:
 
 - [UI Testing](/en/wiki/ui-testing/)
 - [Web Testing](/en/wiki/web-testing/)

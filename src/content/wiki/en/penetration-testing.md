@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Penetration Testing](#penetration-testing)
-  - [See also:](#see-also)
   - [Questions about Penetration Testing?](#questions-about-penetration-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is penetration testing?](#what-is-penetration-testing)
@@ -47,7 +46,7 @@ order: 0
 
 (aka pen testing, ethical hacking) Penetration Testing is a cybersecurity practice where trained professionals simulate cyberattacks on a system, network, or application to identify vulnerabilities that could be exploited by malicious actors. The primary objective of penetration testing is to discover security weaknesses from an attacker's perspective, thereby allowing organizations to better understand potential risks and take corrective actions before real-world malicious attacks occur. Penetration tests can be manual or automated and are often categorized by their scope and the knowledge level of the tester, such as black box (tester has limited knowledge about the system) or white box (tester has complete knowledge about the system).
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Penetration_test)
 ## Questions about Penetration Testing?

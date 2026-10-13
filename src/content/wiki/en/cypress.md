@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Cypress](#cypress)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Cypress?](#questions-about-cypress)
     - [Basics and Importance](#basics-and-importance)
       - [What is Cypress?](#what-is-cypress)
@@ -52,12 +50,12 @@ order: 0
 
 (aka Cypress.io) Cypress is an end-to-end testing framework designed for modern web applications. Unlike many other testing solutions, Cypress operates directly within the web browser, ensuring more consistent and accurate real-world testing scenarios. It provides a rich set of features and tools for writing tests, debugging in real time, and capturing screenshots or video recordings of test runs. Cypress supports both unit testing and full end-to-end testing, making it a versatile choice for developers and QA professionals. One of its notable features is its interactive test runner that allows developers to see commands as they execute while also viewing the application under test. Built on top of technologies like Mocha, Chai, and Sinon, Cypress offers a comprehensive and user-friendly environment for web application testing.
 
-## Related Terms:
+Related Terms:
 
 - Web Automation tool
 - Playwright
 
-### See also:
+See also:
 
 - [Official Website](https://www.cypress.io/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Cypress_(software))

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Coverage](#test-coverage)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Coverage?](#questions-about-test-coverage)
     - [Basics and Importance](#basics-and-importance)
       - [What is test coverage in software testing?](#what-is-test-coverage-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Test coverage measures the portion of a program’s code tested. It identifies which sections of code are exercised during test cases, ensuring thorough evaluation.
 
-## Related Terms:
+Related Terms:
 
 - [Code Coverage](/en/wiki/code-coverage/)
 

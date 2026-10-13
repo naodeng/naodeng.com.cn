@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Glass Box Testing](#glass-box-testing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Glass Box Testing?](#questions-about-glass-box-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Glass Box Testing?](#what-is-glass-box-testing)
@@ -42,13 +40,13 @@ order: 0
 
 (aka clear box testing, logic-driven testing) Glass box testing inspects a program's structure and formulates test data based on its logic.
 
-## Related Terms:
+Related Terms:
 
 - [Black Box Testing](/en/wiki/black-box-testing/)
 - [Grey Box Testing](/en/wiki/grey-box-testing/)
 - [White Box Testing](/en/wiki/white-box-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/White-box_testing)
 ## Questions about Glass Box Testing?

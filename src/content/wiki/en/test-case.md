@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Case](#test-case)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Test Case?](#questions-about-test-case)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Case in software testing?](#what-is-a-test-case-in-software-testing)
@@ -46,12 +44,12 @@ order: 0
 
 A test case is a detailed specification of test inputs, conditions, procedures, and expected outcomes. It ensures comprehensive program evaluation and identifies potential missed errors.
 
-## Related Terms:
+Related Terms:
 
 - [Test Script](/en/wiki/test-script/)
 - [Test Scenario](/en/wiki/test-scenario/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Test_case)
 ## Questions about Test Case?

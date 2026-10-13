@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Edge Testing](#edge-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Edge Testing?](#questions-about-edge-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is edge testing in software testing?](#what-is-edge-testing-in-software-testing)
@@ -39,7 +38,7 @@ order: 0
 
 (aka Boundary Testing) Edge Testing, often confused with " boundary testing," is a testing technique used to identify problems that might occur at the extreme operating parameters, often referred to as the "edges" of the software's capability or limits. It focuses on testing the system's performance or behavior at or near its capacity limits or operational extremes. For instance, if a software claims to support up to 1,000 concurrent users, edge testing would involve testing the system with close to, if not exactly, 1,000 users to observe its behavior. The goal is to ensure the system operates reliably at its boundaries and to uncover potential issues that arise only under extreme conditions.
 
-## Related Terms:
+Related Terms:
 
 - [Boundary Testing](/en/wiki/boundary-testing/)
 

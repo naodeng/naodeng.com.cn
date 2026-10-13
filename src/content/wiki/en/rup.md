@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [RUP](#rup)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about RUP?](#questions-about-rup)
     - [Basics and Importance](#basics-and-importance)
       - [What is RUP and why is it important in software development?](#what-is-rup-and-why-is-it-important-in-software-development)
@@ -47,12 +45,12 @@ order: 0
 
 RUP, developed by Rational (an IBM division), is a software development process segmented into four phases: business modeling, analysis and design, implementation, testing, and deployment.
 
-## Related Terms:
+Related Terms:
 
 - Software development methodology
 - [Iteration](/en/wiki/iteration/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Rational_unified_process)
 ## Questions about RUP?

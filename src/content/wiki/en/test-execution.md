@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Execution](#test-execution)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Execution?](#questions-about-test-execution)
     - [Basics and Importance](#basics-and-importance)
       - [What is test execution in software testing?](#what-is-test-execution-in-software-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Test execution is the process of running software test cases to verify adherence to user requirements. It is pivotal in the software testing and development life cycles, starting after test planning.
 
-## Related Terms:
+Related Terms:
 
 - [Test Plan](/en/wiki/test-plan/)
 - [Test Automation](/en/wiki/test-automation/)

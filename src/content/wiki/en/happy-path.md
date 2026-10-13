@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Happy Path](#happy-path)
-  - [See also:](#see-also)
   - [Questions about Happy Path?](#questions-about-happy-path)
     - [Basics and Importance](#basics-and-importance)
       - [What is the definition of a 'Happy Path' in software testing?](#what-is-the-definition-of-a-happy-path-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 (aka happy flow) The " happy path " refers to the default scenario in which a system or application operates without any errors, exceptions, or unexpected user behavior. It represents the most straightforward and trouble-free journey through a given system or process, resulting in a successful outcome. When testing software, the happy path ensures that the core functionalities work as expected under optimal conditions. However, while it's essential to verify that the happy path operates correctly, comprehensive testing also requires examining edge cases, exceptions, and potential error scenarios to ensure robustness and reliability.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Happy_path)
 ## Questions about Happy Path?

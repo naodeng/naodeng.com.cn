@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [ISTQB](#istqb)
-  - [Related Terms:](#related-terms)
   - [Questions about ISTQB?](#questions-about-istqb)
     - [Basics and Importance](#basics-and-importance)
       - [What does ISTQB stand for?](#what-does-istqb-stand-for)
@@ -41,7 +40,7 @@ order: 0
 
 The International Software Testing Qualifications Board, a non-profit that certifies software testers.
 
-## Related Terms:
+Related Terms:
 
 - International Software Testing Qualifications Board
 

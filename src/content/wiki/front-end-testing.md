@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [前端测试 ｜ Front End Testing](#前端测试--front-end-testing)
-  - [相关术语：](#相关术语)
   - [关于前端测试的问题？](#关于前端测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是前端测试？](#什么是前端测试)
@@ -45,7 +44,7 @@ order: 0
 <!-- TOC END -->
 （又名浏览器测试、功能测试）前端测试重点关注用户界面 (UI) 及其在应用程序中的交互。
 
-## 相关术语：
+相关术语：
 
 - [用户界面测试](/zh-cn/wiki/ui-testing/)
 - [Back-end Testing](/zh-cn/wiki/back-end-testing/)

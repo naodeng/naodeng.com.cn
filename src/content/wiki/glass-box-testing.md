@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [玻璃盒测试 ｜ Glass Box Testing](#玻璃盒测试--glass-box-testing)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于玻璃盒测试的问题吗？](#关于玻璃盒测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是玻璃盒测试？](#什么是玻璃盒测试)
@@ -43,13 +41,13 @@ order: 0
 
 （又名明盒测试、逻辑驱动测试）玻璃箱测试检查程序的结构并制定测试数据根据其逻辑。
 
-## 相关术语
+相关术语
 
 - [黑盒测试](/zh-cn/wiki/black-box-testing/)
 - [灰盒测试](/zh-cn/wiki/grey-box-testing/)
 - [白盒测试](/zh-cn/wiki/white-box-testing/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/White-box_testing)
 ## 关于玻璃盒测试的问题吗？

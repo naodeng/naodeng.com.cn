@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [JMeter](#jmeter)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about JMeter?](#questions-about-jmeter)
     - [Basics and Importance](#basics-and-importance)
       - [What is JMeter?](#what-is-jmeter)
@@ -47,11 +45,11 @@ order: 0
 
 JMeter, officially known as Apache JMeter, is an open-source software application developed by the Apache Software Foundation. It is designed for load testing and performance measurement of web applications, but its capabilities extend beyond web protocols. JMeter allows users to simulate multiple users with concurrent threads, create a variety of requests to servers, and analyze the performance of applications under different load conditions. Features of JMeter include its ability to simulate multiple users with concurrent threads, support for various protocols (including HTTP, FTP, JDBC, and more), and a graphical interface for designing and visualizing test plans. Its extensible nature allows developers and testers to integrate additional plugins or write custom code to enhance its functionality. With JMeter, organizations can validate the scalability, responsiveness, and reliability of their software applications and infrastructure.
 
-## Related Terms:
+Related Terms:
 
 - [Performance Testing tool](/en/wiki/performance-testing/)
 
-### See also:
+See also:
 
 - [Official Website](https://jmeter.apache.org/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Apache_JMeter)

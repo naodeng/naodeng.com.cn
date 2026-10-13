@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Validation Testing](#validation-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Validation Testing?](#questions-about-validation-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is validation testing in software testing?](#what-is-validation-testing-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 An evaluation of specific development stage requirements, ensuring the final product aligns with customer expectations.
 
-## Related Terms:
+Related Terms:
 
 - [Verification](/en/wiki/verification/)
 
