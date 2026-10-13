@@ -1,6 +1,6 @@
 ---
 title: "容量测试 ｜ Volume Testing"
-description: "容量测试 (Volume Testing) 涉及使软件应用程序承受大量数据，以评估其在不同 数据库 容量下的性能和行为。这种类型的测试对于预期在其正常操作中处理大量数据的应用程序至关重要。"
+description: "容量测试（Volume Testing）通过增加数据库或文件等数据规模，观察系统在大量数据下的处理能力、响应表现和存储行为。它关注数据量对性能与稳定性的影响，不等同于并发用户负载测试。"
 section: "V"
 related:
   - test-data

@@ -1,6 +1,6 @@
 ---
 title: "Postman 接口自动化测试教程：入门介绍和从 0 到 1 搭建 Postman 接口自动化测试项目"
-description: "关于 Postman 接口自动化测试的导引，全面介绍入门基础和从零开始搭建项目的步骤。学习如何有效地使用 Postman 进行 API 测试，了解项目搭建的基础结构、环境设置和测试用例的编写"
+description: "从零搭建 Postman 与 Newman 接口自动化测试项目，配置环境变量和集合，编写并运行请求断言，再了解如何组织目录与复用测试数据，并通过命令行重复执行集合。"
 testType: api-testing
 framework: postman
 language: JavaScript

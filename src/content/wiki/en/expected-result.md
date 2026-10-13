@@ -1,6 +1,6 @@
 ---
 title: "Expected Result"
-description: "The anticipated outcome when a specific test case runs."
+description: "An expected result states the observable outcome a test should produce for defined conditions and inputs. Compare it with the actual result to decide whether the test passes and investigate any difference."
 section: "E"
 related:
   - "test-case"

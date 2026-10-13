@@ -1,6 +1,6 @@
 ---
 title: "Actual Result"
-description: "(aka outcome) The actual result is the outcome obtained after a test is conducted."
+description: "The actual result records system behavior observed during a test, including responses or data changes. Comparing it with the expected result helps determine the outcome and preserves evidence for investigating differences."
 section: "A"
 related:
   - "test-case"

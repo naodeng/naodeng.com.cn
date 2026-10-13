@@ -3,7 +3,7 @@ title: "Rules and Memories"
 titleZh: "规则与记忆"
 slug: "rules-and-memories"
 lang: "en"
-summary: "A governance pattern combining persistent rules with memory to align model behavior over time."
+summary: "Rules instruct an AI system how to handle tasks, while memories store facts or preferences that may be reused later. This entry explains their loading, scope, persistence, and conflict boundaries; memory is not automatically a current requirement or permission control."
 topic: "ai-vibe-coding"
 aliases:
   - "Rules and Memories"

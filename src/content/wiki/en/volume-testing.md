@@ -1,6 +1,6 @@
 ---
 title: "Volume Testing"
-description: "Challenges the system by subjecting it to large amounts of data."
+description: "Volume testing evaluates how a system behaves as the amount of stored or processed data grows. It helps reveal effects on response time, storage, and stability, distinct from testing concurrent user load."
 section: "V"
 related:
   - "test-data"

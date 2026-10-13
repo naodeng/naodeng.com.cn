@@ -1,6 +1,6 @@
 ---
 title: "Pytest 接口自动化测试教程：进阶用法 - 集成 CI/CD 和 Github action"
-description: "深入探讨 Pytest 的高级用法，着重介绍如何将 Pytest 集成到 CI/CD 流程中，以及如何使用 GitHub Actions 实现自动化测试。"
+description: "以 GitHub Actions 为例，将 Pytest 接口自动化测试接入 CI/CD：配置依赖与工作流、运行测试用例并保留执行结果，让代码变更后的 API 验证可重复跟进。"
 testType: api-testing
 framework: pytest
 language: Python

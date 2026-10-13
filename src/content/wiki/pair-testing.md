@@ -1,6 +1,6 @@
 ---
 title: "结对测试 ｜ Pair Testing"
-description: "结对测试是一种协作方法，两名团队成员共同测试同一个测试用例。"
+description: "结对测试由两名成员共同探索同一产品或测试目标，通常由一人操作、另一人观察和提出问题，再交换角色。它适合共享领域知识、发现非预设问题并记录后续验证点。"
 section: "P"
 related:
   - manual-testing

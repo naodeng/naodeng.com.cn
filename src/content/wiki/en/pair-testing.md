@@ -1,6 +1,6 @@
 ---
 title: "Pair Testing"
-description: "Pair testing is a collaborative approach where two team members, typically a tester and a developer or analyst, work together on testing efforts."
+description: "Pair testing brings two people together to explore the same product or test objective. They can alternate driving and observing, share domain knowledge, and capture unexpected behavior and follow-up checks."
 section: "P"
 related:
   - "manual-testing"

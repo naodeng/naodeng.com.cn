@@ -3,7 +3,7 @@ title: "规则与记忆"
 titleEn: "Rules and Memories"
 slug: "rules-and-memories"
 lang: "zh-cn"
-summary: "将持久规则与记忆机制结合的治理模式，用于长期对齐模型行为。"
+summary: "规则以指令规定 AI 如何处理任务，记忆则保存可能在后续交互中复用的事实或偏好。本文说明两者的加载、作用范围、持久性与冲突边界，强调记忆不会自动成为当前要求或权限控制。"
 topic: "ai-vibe-coding"
 aliases:
   - "Rules and Memories"

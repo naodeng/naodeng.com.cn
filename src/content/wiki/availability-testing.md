@@ -1,6 +1,6 @@
 ---
 title: "系统可用性测试 ｜ Availability Testing"
-description: "系统可用性测试评估应用或系统在需要时持续可访问和可操作的能力，并检查正常运行时间、响应性和故障恢复。"
+description: "系统可用性测试评估服务在需要时能否持续访问并正常提供功能，常检查运行时间、中断、容错与故障恢复，帮助团队判断服务连续性是否达到既定目标，并定位影响用户访问的故障环节。"
 section: "A"
 related:
   - failover-testing

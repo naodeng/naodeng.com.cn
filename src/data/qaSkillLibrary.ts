@@ -33,6 +33,27 @@ const INTRO_FALLBACKS: Record<Lang, Partial<Record<RecommendedSlug, string>>> = 
   },
 };
 
+const QA_SKILL_PAGE_DESCRIPTION_OVERRIDES: Record<Lang, Record<string, string>> = {
+  "zh-cn": {
+    "visual-regression-testing": "视觉回归测试 Skill 根据页面范围、基线截图、视口、浏览器、字体和测试数据整理截图对比候选，标明阈值依据、证据缺口与人工复核边界；它不代替实际截图执行。",
+    "functional-testing": "功能测试 Skill 根据业务流程、用户界面、数据和集成需求设计可执行的测试计划或用例，按风险确定覆盖优先级，并明确事实、假设和待补充信息。",
+    "test-case-reviewer": "测试用例评审 Skill 检查覆盖、清晰度、可执行性和可维护性，识别遗漏场景、重复测试与证据缺口，并按影响优先级给出可跟进的修改建议。评审结论关联需求和可观察结果。",
+    "api-testing": "API 测试 Skill 面向 REST、GraphQL、SOAP、gRPC 和 WebSocket 等接口设计测试方案，检查契约、鉴权、错误响应、数据边界与依赖风险，并标出证据缺口。",
+    "acceptance-criteria-review": "验收标准评审 Skill 将需求和用户故事转成可观察、可验证的验收条件，检查歧义、遗漏、异常路径与证据不足，并输出待澄清事项和优先改进建议。",
+  },
+  en: {
+    "visual-regression-testing": "The visual regression testing Skill defines evidence-bounded screenshot comparison candidates from page scope, baselines, viewports, browsers, fonts, and test data; it records threshold sources and gaps without claiming tests were run.",
+    "functional-testing": "The functional testing Skill turns business flows, UI, data, and integration needs into executable test plans or cases, prioritizes coverage by risk, and separates confirmed facts from assumptions and missing context.",
+    "test-case-reviewer": "The test case review Skill checks coverage, clarity, executability, and maintainability, identifies missing scenarios, duplicate tests, and evidence gaps, then prioritizes actionable revisions by impact.",
+    "api-testing": "The API testing Skill plans checks for REST, GraphQL, SOAP, gRPC, and WebSocket interfaces, covering contracts, authentication, error responses, data boundaries, dependencies, and evidence gaps.",
+    "acceptance-criteria-review": "The acceptance criteria review Skill turns requirements and user stories into observable, verifiable criteria, checks ambiguity, omissions, exception paths, and evidence, and lists open questions and prioritized improvements.",
+  },
+};
+
+export function getQASkillPageDescription(slug: string, lang: Lang): string | undefined {
+  return QA_SKILL_PAGE_DESCRIPTION_OVERRIDES[lang][slug];
+}
+
 export function getQASkillCardIntro(
   skill: Pick<QASkill, "slug" | "intro"> & { chineseName?: string | null; title?: string | null },
   lang: Lang,

@@ -1,6 +1,6 @@
 ---
 title: "QA 指标 ｜ QA Metrics"
-description: "QA 指标是衡量测试进展与软件质量的量化度量。结合项目背景分析，有助于团队识别风险并决定改进方向。"
+description: "QA 指标用可量化信号描述测试进度与软件质量，例如执行、缺陷和覆盖情况。结合目标、版本与风险解读这些指标，才能支持改进决策，避免把单一数字当成质量结论。"
 section: "Q"
 related:
   - manual-testing

@@ -1,6 +1,6 @@
 ---
 title: "Postman API Automation Testing Tutorial: Getting Started and Building a Postman API Automation Test project from 0 to 1"
-description: "This guide provides a comprehensive introduction to getting started with Postman API automation testing, covering both the basics and the step-by-step process of building a project from scratch. Learn how to effectively use Postman for API testing, understand the foundational structure of project setup, environment configuration, and writing test cases from the ground up."
+description: "Build a Postman and Newman API test project from scratch. Configure environments and collections, write and run request assertions, and organize reusable test data and project structure."
 testType: api-testing
 framework: postman
 language: JavaScript

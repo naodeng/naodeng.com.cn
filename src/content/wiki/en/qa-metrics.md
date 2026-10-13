@@ -1,6 +1,6 @@
 ---
 title: "QA Metrics"
-description: "QA metrics measure testing progress and software quality, helping teams identify risks and guide improvements in context."
+description: "QA metrics quantify testing progress and quality signals, such as execution, defects, and coverage. Interpreting them against project goals, releases, and risks helps teams choose improvements without treating one number as a quality verdict."
 section: "Q"
 related:
   - "manual-testing"

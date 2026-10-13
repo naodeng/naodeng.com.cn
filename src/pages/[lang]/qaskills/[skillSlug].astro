@@ -5,7 +5,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { getQASkills } from "@/utils/qaskills";
 import { getRelatedQASkills } from "@/utils/qaskillsRelated";
 import { buildQASkillMetaDescription } from "@/utils/seoDescription.mjs";
-import { getQASkillCardIntro, getQASkillCardSummary } from "@/data/qaSkillLibrary";
+import { getQASkillCardIntro, getQASkillCardSummary, getQASkillPageDescription } from "@/data/qaSkillLibrary";
 import { buildGenericQASkillDetailData, getQASkillDetailData } from "@/data/qaSkillDetail";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
@@ -150,7 +150,7 @@ const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaoden
 const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}`;
 const pageLocale = (lang === "zh-cn" ? "zh-cn" : "en") as "en" | "zh-cn";
 const pageTitle = lang === "zh-cn" ? `${displayName} - 软件测试技能库` : `${displayName} - QA Skill Library`;
-const pageDescription = buildQASkillMetaDescription({
+const pageDescription = getQASkillPageDescription(skill.slug, lang) ?? buildQASkillMetaDescription({
   description: localizedDescription,
   input: summary.input,
   output: summary.output,

@@ -69,6 +69,7 @@ export type PromptRegistryEntry = {
   title: string;
   description: string;
   cardDescription: string;
+  pageDescription: string;
   category: string;
   categoryOrder: number;
   sourcePath: string;
@@ -634,6 +635,43 @@ function truncatePromptDescription(value: string, lang: Lang): string {
   return characters.length > limit ? `${characters.slice(0, limit).join("").trimEnd()}…` : characters.join("");
 }
 
+const PROMPT_PAGE_DESCRIPTION_OVERRIDES: Record<Lang, Record<string, string>> = {
+  en: {
+    "automation-testing": "Plan automation scope, test layers, frameworks, reusable data, and CI integration from project risks and constraints; surface maintainability trade-offs and evidence to check before adoption.",
+    "test-strategy": "Turn product goals, release scope, architecture, and team constraints into a risk-based test strategy with priorities, methods, environments, resources, entry and exit criteria, and review points.",
+    "ai-assisted-testing": "Assess where AI can support testing, then outline use cases, data and tool needs, evaluation criteria, risks, human checkpoints, and an implementable rollout plan.",
+    "requirements-analysis": "Analyze a requirement or user story for business rules, gaps, dependencies, and risks; produce test scope and scenarios without writing step-by-step test cases.",
+    "mobile-testing": "Plan mobile test coverage across iOS and Android versions, devices, permissions, installation, interruptions, networks, performance, and user experience.",
+    "performance-testing": "Translate architecture, workload, and performance targets into load, stress, spike, volume, and endurance scenarios, measurable thresholds, and bottleneck investigation steps.",
+    "test-scope-analysis": "Map supplied requirements, designs, and changes to test objects, levels, depth, exclusions, evidence, and unresolved risks; keep assumptions and source references explicit.",
+    "test-case-writing": "Convert requirements and scenarios into prioritized, traceable test cases with preconditions, data, steps, and expected results across normal, negative, boundary, and state-transition paths.",
+    "functional-testing": "Design functional coverage from requirements and system rules, including business flows, validations, permissions, exceptions, boundaries, and cross-platform differences.",
+    "manual-testing": "Plan manual and exploratory testing around user journeys, usability, and risks that need human judgment; define scenarios, evidence to collect, and automation boundaries.",
+    "api-testing": "Plan API validation for REST, GraphQL, SOAP, and other contracts across status codes, schemas, authentication, errors, data boundaries, performance, and security.",
+    "test-plan-analysis": "Review a test plan for alignment among goals, scope, activities, staffing, schedule, environments, evidence, risks, and exit criteria; identify conflicts and actionable gaps.",
+    "test-case-optimization": "Review test assets for missing risk coverage, duplicate cases, unclear expected results, flakiness, and maintenance cost; propose evidence-based changes while separating test and product failures.",
+    "automation-failure-rca": "Analyze test logs, failure signatures, timelines, and environment changes to distinguish product, test, data, and infrastructure causes; provide hypotheses and verification steps.",
+    "requirement-conflict-analysis": "Compare requirement sources and revisions to surface conflicting rules, roles, states, priorities, scope, dates, or quality goals, with evidence, impact, questions, and decisions needed.",
+  },
+  "zh-cn": {
+    "automation-testing": "根据项目风险和约束规划自动化范围、测试分层、框架、可复用数据与 CI 接入，并说明维护成本、稳定性取舍和实施前需要核对的证据。指出优先自动化的路径及验证收益的方法。",
+    "test-strategy": "结合产品目标、发布范围、架构和团队约束制定风险驱动的测试策略，明确优先级、方法、环境、资源、准入准出条件与评审节点。另列关键风险和需要决策的假设。",
+    "ai-assisted-testing": "评估 AI 可用于哪些测试任务，规划应用场景、数据与工具需求、效果评估标准、风险和人工复核点，并形成可实施的落地方案。区分模型建议与可采信的测试证据。",
+    "requirements-analysis": "分析需求或用户故事中的业务规则、信息缺口、依赖与风险，整理测试范围和场景；重点做策略与场景规划，不生成逐步测试用例。分列可验证规则、待澄清问题和测试关注点。",
+    "mobile-testing": "规划 iOS 与 Android 测试覆盖，检查系统版本、设备、权限、安装升级、前后台中断、网络、性能和用户体验等移动端场景。根据目标用户与约束给出设备覆盖优先级。",
+    "performance-testing": "根据系统架构、业务负载和性能目标设计负载、压力、峰值、容量与稳定性场景，明确可测指标、阈值依据和瓶颈分析步骤。说明负载假设、环境条件及结果解释边界。",
+    "test-scope-analysis": "把提供的需求、设计和变更映射到测试对象、层级、深度与排除范围，列出证据、风险和未决事项，并保留假设及来源。区分已确认范围、风险接受项和待决边界。",
+    "test-case-writing": "将需求和测试场景转成有优先级、可追溯的用例，写明前置条件、数据、步骤和预期结果，覆盖正常、异常、边界及状态变化。标出需求来源和未决规则，不把假设写成预期行为。",
+    "functional-testing": "依据需求和系统规则设计功能测试覆盖，梳理业务流程、校验、权限、异常分支、边界条件及跨平台差异，形成可执行的测试方案。关联需求来源并说明覆盖优先级。",
+    "manual-testing": "围绕用户旅程、可用性和需要人工判断的风险规划手动与探索性测试，明确测试场景、要收集的证据，以及自动化适用边界。将需要工具专项验证的项目另行标注。",
+    "api-testing": "为 REST、GraphQL、SOAP 等接口规划验证，覆盖状态码、契约与数据结构、鉴权、异常响应、数据边界、性能和安全风险。区分可自动化断言与需要进一步确认的事项。",
+    "test-plan-analysis": "检查测试计划中的目标、范围、活动、人力、排期、环境、证据、风险和退出条件是否一致，识别冲突、不可执行承诺与可跟进缺口。区分可执行计划、待接受风险和需协商事项。",
+    "test-case-optimization": "检查测试资产中的风险覆盖缺口、重复用例、预期结果歧义、易抖动问题和维护成本，基于证据提出改进并区分产品与测试故障。保留覆盖依据并说明变更验证方式。",
+    "automation-failure-rca": "结合自动化日志、失败特征、时间线和环境变更，区分产品、测试、数据或基础设施原因，并给出有证据边界的假设与验证步骤。不把时间相关性直接当作根因。",
+    "requirement-conflict-analysis": "对比不同需求来源与版本，识别规则、角色、状态、优先级、范围、时间或质量目标冲突，并说明证据、影响、待问问题和决策项。保留最终优先级给有权确认的责任方。",
+  },
+};
+
 function cleanPromptDescription(value: string): string {
   return value
     .replace(/^\s*#{1,6}\s+/gm, "")
@@ -702,12 +740,14 @@ export function buildPromptRegistry(entries: readonly PromptSourceEntry[], lang:
         ...outputs,
       ]);
 
+      const cardDescription = getPromptCardDescription(entry.body || "", description, lang);
       return {
         id: testingType,
         slug: testingType,
         title,
         description,
-        cardDescription: getPromptCardDescription(entry.body || "", description, lang),
+        cardDescription,
+        pageDescription: PROMPT_PAGE_DESCRIPTION_OVERRIDES[lang][testingType] || cardDescription,
         category,
         categoryOrder,
         sourcePath,

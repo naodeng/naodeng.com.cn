@@ -1,6 +1,6 @@
 ---
 title: "Availability Testing"
-description: "Availability Testing, in the context of software testing, refers to evaluating a system's uptime, ensuring that the application or system remains accessible and operational to users as intended."
+description: "Availability testing checks whether a system remains accessible and usable when needed. It examines uptime, interruptions, fault tolerance, and recovery so teams can assess service continuity against stated targets."
 section: "A"
 related:
   - "failover-testing"

@@ -66,7 +66,7 @@ const promptUrl = (slug: string) => getRelativeLocaleUrl(lang, `/prompts/${slug}
 
 const pageTitle = activeEntry.data.title;
 const hasDuplicateVariantDescription = variants.some(
-  (variant) => variant.id !== currentPrompt.id && variant.cardDescription === currentPrompt.cardDescription,
+  (variant) => variant.id !== currentPrompt.id && variant.pageDescription === currentPrompt.pageDescription,
 );
 const platformDescriptionPrefix = currentPrompt.platform === "mobile"
   ? (lang === "zh-cn" ? "移动端测试：" : "Mobile testing: ")
@@ -74,8 +74,8 @@ const platformDescriptionPrefix = currentPrompt.platform === "mobile"
     ? (lang === "zh-cn" ? "网页端测试：" : "Web testing: ")
     : "";
 const pageDescription = hasDuplicateVariantDescription && currentPrompt.platform
-  ? `${platformDescriptionPrefix}${currentPrompt.cardDescription}`
-  : currentPrompt.cardDescription;
+  ? `${platformDescriptionPrefix}${currentPrompt.pageDescription}`
+  : currentPrompt.pageDescription;
 const canonicalUrl = `${Astro.site?.toString().replace(/\/$/, "") || "https://inaodeng.com"}${promptUrl(testingType)}`;
 const sourceRepositoryUrl = "https://github.com/naodeng/awesome-qa-prompt/blob/main/";
 const sourceUrl = `${sourceRepositoryUrl}${activeEntry.data.sourcePath}`;
