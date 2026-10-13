@@ -94,10 +94,21 @@ function scanHeadingHierarchy(body, file, result) {
   }
 
   const rootPattern = isEnglish ? EN_QUESTION_ROOT : ZH_QUESTION_ROOT;
-  const questionRootIndex = headings.findIndex(
-    (heading) => heading.depth === 2 && rootPattern.test(heading.text.trim()),
-  );
+  const questionRootIndex = headings.findIndex((heading) => rootPattern.test(heading.text.trim()));
   if (questionRootIndex < 0) return;
+
+  const questionRoot = headings[questionRootIndex];
+  if (questionRoot.depth !== 2) {
+    result.issues.questionHeadingHierarchy += 1;
+    if (result.samples.questionHeadingHierarchy.length < 30) {
+      result.samples.questionHeadingHierarchy.push({
+        file,
+        text: questionRoot.text.trim(),
+        level: questionRoot.depth,
+        expectedLevel: 2,
+      });
+    }
+  }
 
   const promptPattern = isEnglish ? EN_QUESTION_PROMPT : ZH_QUESTION_PROMPT;
   for (const heading of headings.slice(questionRootIndex + 1)) {
