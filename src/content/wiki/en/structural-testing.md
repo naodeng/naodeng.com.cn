@@ -101,7 +101,6 @@ Structural Testing evaluates software code structure. Combining white-box and gl
   - **Tools** : Structural testing often uses tools that can analyze and instrument code; functional testing tools simulate user interactions.
   In practice, both testing types complement each other, with structural testing ensuring the code works as intended internally, and [functional testing](/en/wiki/functional-testing/) confirming it meets external expectations.
 
-
 #### How does structural testing contribute to the overall quality of a software product?
 
   Structural testing enhances [software quality](/en/wiki/software-quality/) by ensuring the internal operations of the application conform to specifications and are error-free. It **validates code behavior** under various conditions, leading to the detection of hidden [bugs](/en/wiki/bug/) that [functional testing](/en/wiki/functional-testing/) might miss. By focusing on code paths, branches, and statements, structural testing verifies that all parts of the code are exercised, reducing the risk of untested logic and potential faults.
@@ -188,11 +187,6 @@ Structural Testing evaluates software code structure. Combining white-box and gl
   However, [path testing](/en/wiki/path-testing/) can be challenging due to the potentially vast number of paths in complex systems. To manage this, you might focus on **high-risk paths** or use heuristics to prioritize paths that are more likely to contain defects.
   Automated tools can assist in [path testing](/en/wiki/path-testing/) by generating [test cases](/en/wiki/test-case/) from CFGs or by identifying paths that have not yet been tested. Integrating [path testing](/en/wiki/path-testing/) into your [test suite](/en/wiki/test-suite/) can significantly enhance the robustness of your software by ensuring that all code paths are verified under test conditions.
 
-  - **Control flow graphs (CFGs)**
-    to visualize paths.
-
-  - **Cyclomatic complexity**
-    to determine the number of linearly independent paths and thus the number of test cases needed.
 
 ### Implementation and Tools
 
@@ -213,7 +207,6 @@ Structural Testing evaluates software code structure. Combining white-box and gl
   11. **Integrate with CI/CD**: Automate the execution of structural tests within the CI/CD pipeline to ensure continuous feedback and [quality assurance](/en/wiki/quality-assurance/).
   By following these steps, you can systematically implement structural testing to enhance the reliability and [maintainability](/en/wiki/maintainability/) of your software.
 
-
 #### What tools are commonly used in structural testing?
 
   Common tools for **structural testing** include:
@@ -226,7 +219,6 @@ Structural Testing evaluates software code structure. Combining white-box and gl
   - **Integrated Development Environments (IDEs)**: **Eclipse**, **IntelliJ IDEA**, and **Visual Studio** often have built-in or plugin-supported features for [code coverage](/en/wiki/code-coverage/) and [unit testing](/en/wiki/unit-testing/), facilitating structural testing within the development environment.
   - **Continuous Integration Tools**: **Jenkins**, **Travis CI**, and **CircleCI** can automate the execution of structural tests as part of the CI/CD pipeline.
   These tools assist in automating and enhancing the effectiveness of structural testing by providing detailed insights into the code structure and [test coverage](/en/wiki/test-coverage/), ultimately contributing to higher code quality and reliability.
-
 
 #### How can structural testing be automated?
 
@@ -289,7 +281,6 @@ Structural Testing evaluates software code structure. Combining white-box and gl
   - **Integration with CI/CD** : Ensuring structural tests run efficiently within CI/CD pipelines without slowing down the delivery process requires careful planning and optimization.
   Mitigation strategies include prioritizing [test cases](/en/wiki/test-case/), using mock objects to simulate complex dependencies, employing static code analysis tools, and integrating tests into smaller, more manageable units. Continuous refactoring of [test cases](/en/wiki/test-case/) and collaborative efforts between developers and testers can also help address these challenges.
 
-
 #### How can these challenges be mitigated?
 
   Mitigating challenges in structural testing involves strategic planning and efficient execution. **Prioritize [test cases](/en/wiki/test-case/)** based on risk and complexity to ensure critical paths are covered first. Utilize **code analysis tools** to identify areas of the code that are not exercised by existing tests, and focus on these areas to improve coverage.
@@ -310,7 +301,6 @@ Structural Testing evaluates software code structure. Combining white-box and gl
   - **Microsoft's use of Static Analysis Tools**: Microsoft integrates static analysis tools into their development process, which perform structural testing to identify security vulnerabilities and critical code defects before deployment.
   - **Open Source Projects**: Many open source projects use continuous integration services like Travis CI, which run structural tests on every commit. Projects like Django and Angular have robust [test suites](/en/wiki/test-suite/) that include structural testing to maintain code quality.
   In each of these cases, structural testing has been key to maintaining high-quality, reliable software by ensuring that the internal workings of the software components are as defect-free as possible.
-
 
 #### How can structural testing be integrated into a continuous integration/continuous deployment (CI/CD) pipeline?
 

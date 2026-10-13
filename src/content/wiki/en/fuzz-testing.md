@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Fuzz Testing](#fuzz-testing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Fuzz Testing?](#questions-about-fuzz-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is fuzz testing?](#what-is-fuzz-testing)
@@ -40,12 +38,12 @@ order: 0
 
 (aka fuzzing) Fuzz Testing is a dynamic software testing technique that involves providing a system with random, malformed, or unexpected input data to identify vulnerabilities and weaknesses. The goal of fuzz testing is to trigger errors, crashes, memory leaks, or other unforeseen behaviors in the software, which can then be analyzed to find potential security threats or software defects. It's especially effective for uncovering issues that might be exploited by malicious attacks, such as buffer overflows or data injection vulnerabilities. Fuzzing is commonly used in security testing and is considered a proactive measure to enhance software robustness and reliability.
 
-## Related Terms:
+Related Terms:
 
 - [Security Testing](/en/wiki/security-testing/)
 - [Penetration Testing](/en/wiki/penetration-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Fuzzing)
 ## Questions about Fuzz Testing?
@@ -233,13 +231,7 @@ order: 0
     **CI/CD pipeline**
     with tools that support automation and reporting.
 
-  - Utilize
-    **cloud-based resources**
-    to scale fuzzing tasks.
 
-  - Employ
-    **advanced fuzzing tools**
-    that automate test case generation.
 
   - Implement
     **automated triage systems**
@@ -300,24 +292,14 @@ order: 0
     - Add a stage in your CI/CD pipeline that triggers the fuzz tests.
     - Use scripts or pipeline configuration to run the fuzzing tool against the targets.
     - Set reasonable time or iteration limits to ensure pipeline efficiency.
-    - Add a stage in your CI/CD pipeline that triggers the fuzz tests.
-    - Use scripts or pipeline configuration to run the fuzzing tool against the targets.
-    - Set reasonable time or iteration limits to ensure pipeline efficiency.
   5. **Handle results**:
-    - Collect and analyze the output from the fuzzing tool.
-    - Automatically file bugs or issues for crashes and failures detected.
-    - Set up notifications for critical findings.
     - Collect and analyze the output from the fuzzing tool.
     - Automatically file bugs or issues for crashes and failures detected.
     - Set up notifications for critical findings.
   6. **Optimize**:
     - Regularly update your fuzzing corpus with new inputs that cover recent code changes.
     - Monitor the performance and effectiveness of the fuzz tests, adjusting configurations as needed.
-    - Regularly update your fuzzing corpus with new inputs that cover recent code changes.
-    - Monitor the performance and effectiveness of the fuzz tests, adjusting configurations as needed.
   7. **Security and coverage checks**:
-    - Integrate security analysis tools to further analyze fuzzing-generated crashes.
-    - Use coverage tools to ensure a wide range of input space is being tested.
     - Integrate security analysis tools to further analyze fuzzing-generated crashes.
     - Use coverage tools to ensure a wide range of input space is being tested.
   By following these steps, fuzz testing becomes a seamless part of the development lifecycle, helping to catch and resolve issues early and maintain [software quality](/en/wiki/software-quality/).

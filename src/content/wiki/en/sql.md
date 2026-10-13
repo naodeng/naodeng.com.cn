@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [SQL](#sql)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about SQL?](#questions-about-sql)
     - [Basics and Importance](#basics-and-importance)
       - [What is SQL and why is it important?](#what-is-sql-and-why-is-it-important)
@@ -45,51 +43,13 @@ order: 0
       - [What are some common SQL queries used in software testing?](#what-are-some-common-sql-queries-used-in-software-testing)
 <!-- TOC END -->
 
-SQL
+SQL (Structured Query Language) is a standardized language for managing and querying relational databases. It supports selecting, inserting, updating, and deleting data, as well as creating schemas and managing access. SQL provides a common interface for relational database management systems (RDBMS) and is supported by platforms such as MySQL, PostgreSQL, SQL Server, and Oracle.
 
-(Structured Query Language) is a standardized programming language specifically designed for managing and manipulating relational
-
-databases
-
-.
-
-SQL
-
-is used to perform tasks such as querying data, updating data, inserting data, and deleting data from a
-
-database
-
-. It also involves creating and modifying schemas (
-
-database
-
-structures) and controlling access to data.
-
-SQL
-
-provides a consistent interface to relational
-
-database
-
-management systems (RDBMS) and is supported by most modern RDBMS platforms like MySQL, PostgreSQL,
-
-SQL
-
-Server, Oracle, and many others. Through
-
-SQL
-
-, users can define, retrieve, and manipulate data within the
-
-database
-
-efficiently and effectively.
-
-## Related Terms:
+Related Terms:
 
 - [Database](/en/wiki/database/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/SQL)
 
@@ -109,12 +69,6 @@ efficiently and effectively.
   - Check data integrity and constraints to ensure that the database maintains a valid state throughout different test scenarios.
   [SQL](/en/wiki/sql/) is a critical skill for [test automation](/en/wiki/test-automation/) engineers as it enables them to interact directly with the [database](/en/wiki/database/), bypassing the user interface. This allows for more thorough testing of the application layers that interact with the [database](/en/wiki/database/), and for the creation of more complex [test scenarios](/en/wiki/test-scenario/) that might be difficult or time-consuming to replicate through the UI.
 
-  - Verify that data manipulation operations, such as inserts, updates, and deletions, have been performed correctly.
-  - Set up and tear down test data, ensuring tests run in a known state.
-  - Validate business logic that involves data retrieval and manipulation, ensuring the application behaves as expected.
-  - Perform backend testing to ensure that the application interacts with the database correctly, including handling of transactions and concurrency.
-  - Check data integrity and constraints to ensure that the database maintains a valid state throughout different test scenarios.
-
 #### What are the different types of SQL commands?
 
   [SQL](/en/wiki/sql/) commands can be broadly categorized into four types:
@@ -124,63 +78,19 @@ efficiently and effectively.
     - `ALTER` : Modifies existing database objects.
     - `DROP` : Deletes database objects.
     - `TRUNCATE` : Removes all records from a table, including all spaces allocated for the records.
-    - `CREATE` : Creates new database objects.
-    - `ALTER` : Modifies existing database objects.
-    - `DROP` : Deletes database objects.
-    - `TRUNCATE` : Removes all records from a table, including all spaces allocated for the records.
   2. **Data Manipulation Language (DML)**: These commands deal with the manipulation of data present in the [database](/en/wiki/database/).
-    - `INSERT` : Adds new data to a table.
-    - `UPDATE` : Modifies existing data within a table.
-    - `DELETE` : Removes data from a table.
     - `INSERT` : Adds new data to a table.
     - `UPDATE` : Modifies existing data within a table.
     - `DELETE` : Removes data from a table.
   3. **Data Control Language (DCL)**: These commands are related to the rights, permissions, and other controls of the [database](/en/wiki/database/) system.
     - `GRANT` : Gives user's access privileges to the database.
     - `REVOKE` : Withdraws user's access privileges given by using the GRANT command.
-    - `GRANT` : Gives user's access privileges to the database.
-    - `REVOKE` : Withdraws user's access privileges given by using the GRANT command.
   4. **Transaction Control Language (TCL)**: These commands deal with the transaction operations within the [database](/en/wiki/database/).
-    - `COMMIT` : Saves all the transactions to the database.
-    - `ROLLBACK` : Restores the database to the last committed state.
-    - `SAVEPOINT` : Sets a savepoint within a transaction.
-    - `SET TRANSACTION` : Places a name on a transaction.
     - `COMMIT` : Saves all the transactions to the database.
     - `ROLLBACK` : Restores the database to the last committed state.
     - `SAVEPOINT` : Sets a savepoint within a transaction.
     - `SET TRANSACTION` : Places a name on a transaction.
   Understanding these commands is crucial for [database](/en/wiki/database/) manipulation and management, which is often necessary in [test automation](/en/wiki/test-automation/) to ensure the application interacts correctly with the [database](/en/wiki/database/).
-
-  1. **Data Definition Language (DDL)**: These commands define the structure of the [database](/en/wiki/database/) and manipulate [database](/en/wiki/database/) objects such as tables, indexes, and views.
-    - `CREATE` : Creates new database objects.
-    - `ALTER` : Modifies existing database objects.
-    - `DROP` : Deletes database objects.
-    - `TRUNCATE` : Removes all records from a table, including all spaces allocated for the records.
-    - `CREATE` : Creates new database objects.
-    - `ALTER` : Modifies existing database objects.
-    - `DROP` : Deletes database objects.
-    - `TRUNCATE` : Removes all records from a table, including all spaces allocated for the records.
-  2. **Data Manipulation Language (DML)**: These commands deal with the manipulation of data present in the [database](/en/wiki/database/).
-    - `INSERT` : Adds new data to a table.
-    - `UPDATE` : Modifies existing data within a table.
-    - `DELETE` : Removes data from a table.
-    - `INSERT` : Adds new data to a table.
-    - `UPDATE` : Modifies existing data within a table.
-    - `DELETE` : Removes data from a table.
-  3. **Data Control Language (DCL)**: These commands are related to the rights, permissions, and other controls of the [database](/en/wiki/database/) system.
-    - `GRANT` : Gives user's access privileges to the database.
-    - `REVOKE` : Withdraws user's access privileges given by using the GRANT command.
-    - `GRANT` : Gives user's access privileges to the database.
-    - `REVOKE` : Withdraws user's access privileges given by using the GRANT command.
-  4. **Transaction Control Language (TCL)**: These commands deal with the transaction operations within the [database](/en/wiki/database/).
-    - `COMMIT` : Saves all the transactions to the database.
-    - `ROLLBACK` : Restores the database to the last committed state.
-    - `SAVEPOINT` : Sets a savepoint within a transaction.
-    - `SET TRANSACTION` : Places a name on a transaction.
-    - `COMMIT` : Saves all the transactions to the database.
-    - `ROLLBACK` : Restores the database to the last committed state.
-    - `SAVEPOINT` : Sets a savepoint within a transaction.
-    - `SET TRANSACTION` : Places a name on a transaction.
 
 #### What is the difference between SQL and NoSQL?
 
@@ -188,11 +98,6 @@ efficiently and effectively.
   NoSQL (Not Only [SQL](/en/wiki/sql/)) [databases](/en/wiki/database/) are designed for distributed data stores with **horizontal scaling** in mind. They do not require a fixed schema and can store unstructured data like documents, key-value pairs, wide-column stores, or graphs. NoSQL [databases](/en/wiki/database/) are often chosen for their ability to handle **large volumes of data** and **high traffic loads** with **flexible data models**.
   The key differences are:
 
-  - **Schema flexibility** : NoSQL databases allow for a flexible, dynamic schema, while SQL databases require a predefined schema.
-  - **Scaling** : NoSQL databases are typically designed to scale out by distributing data across multiple servers, whereas SQL databases scale up by increasing the power of the existing hardware.
-  - **Data model** : SQL databases are table-based, while NoSQL databases can be document-oriented, key-value pairs, wide-column stores, or graph databases.
-  - **Transactions** : SQL databases support complex transactions and are ACID-compliant, making them suitable for applications that require reliability and consistency. NoSQL databases may offer eventual consistency and prioritize availability and partition tolerance (following the CAP theorem).
-  - **Query language** : SQL databases use the SQL language for queries, which is powerful for complex queries. NoSQL databases have varied query languages that are typically less complex and may not support JOIN operations or multi-record ACID transactions.
   - **Schema flexibility** : NoSQL databases allow for a flexible, dynamic schema, while SQL databases require a predefined schema.
   - **Scaling** : NoSQL databases are typically designed to scale out by distributing data across multiple servers, whereas SQL databases scale up by increasing the power of the existing hardware.
   - **Data model** : SQL databases are table-based, while NoSQL databases can be document-oriented, key-value pairs, wide-column stores, or graph databases.
@@ -306,90 +211,16 @@ efficiently and effectively.
     ```
   These operations are foundational for interacting with and manipulating data within a [database](/en/wiki/database/).
 
-  - **Selecting**
-    data with
-    `SELECT` :
 
-    ```
-    SELECT column1, column2 FROM table_name;
-    ```
 
-  - **Filtering**
-    data using
-    `WHERE` :
 
-    ```
-    SELECT * FROM table_name WHERE condition;
-    ```
 
-  - **Sorting**
-    results with
-    `ORDER BY` :
 
-    ```
-    SELECT * FROM table_name ORDER BY column ASC|DESC;
-    ```
 
-  - **Limiting**
-    results using
-    `LIMIT` :
 
-    ```
-    SELECT * FROM table_name LIMIT number;
-    ```
 
-  - **Grouping**
-    data with
-    `GROUP BY`
-    for aggregate functions:
 
-    ```
-    SELECT COUNT(column1), column2 FROM table_name GROUP BY column2;
-    ```
 
-  - **Combining**
-    columns from multiple tables using
-    `JOIN` :
-
-    ```
-    SELECT * FROM table1 INNER JOIN table2 ON table1.column_name = table2.column_name;
-    ```
-
-    ```
-    SELECT AVG(column1) FROM table_name;
-    ```
-
-  - **Aliasing**
-    columns or tables for readability with
-    `AS` :
-
-    ```
-    SELECT column1 AS alias_name FROM table_name;
-    ```
-
-  - **Inserting**
-    new data with
-    `INSERT INTO` :
-
-    ```
-    INSERT INTO table_name (column1, column2) VALUES (value1, value2);
-    ```
-
-  - **Updating**
-    existing data with
-    `UPDATE` :
-
-    ```
-    UPDATE table_name SET column1 = value1 WHERE condition;
-    ```
-
-  - **Deleting**
-    data with
-    `DELETE` :
-
-    ```
-    DELETE FROM table_name WHERE condition;
-    ```
 
 ### SQL Syntax and Queries
 
@@ -480,17 +311,6 @@ efficiently and effectively.
     `SET`
     clause.
   **Note**: In [test automation](/en/wiki/test-automation/), ensure your [test data](/en/wiki/test-data/) is backed up or can be easily restored before running update queries, as they modify the data state.
-
-  - Always use a
-    `WHERE`
-    clause to avoid updating all rows unintentionally.
-
-  - When updating multiple rows based on different conditions, you can use a
-    `CASE`
-    statement within the
-    `SET`
-    clause.
-
 #### What is the purpose of the SELECT statement in SQL?
 
   The `SELECT` statement in [SQL](/en/wiki/sql/) is used to **retrieve data** from one or more tables in a [database](/en/wiki/database/). It allows you to specify the exact columns you want to fetch, along with any conditions for selecting rows. The `SELECT` statement is fundamental for [test automation](/en/wiki/test-automation/) engineers to **validate the state of the data**, ensuring that the application under test is manipulating the data correctly.
@@ -512,12 +332,6 @@ efficiently and effectively.
   SELECT * FROM users WHERE username = 'testuser';
   ```
   This query checks if 'testuser' was successfully added to the `users` table. The `SELECT` statement is versatile and can be combined with other [SQL](/en/wiki/sql/) clauses and functions to perform complex data validations, making it an indispensable tool for backend testing.
-
-  - Verify the insertion of a new record.
-  - Check updates to existing records.
-  - Confirm the deletion of records.
-  - Validate business logic by checking if the data meets certain conditions.
-  - Extract data to be used as input for automated test cases.
 
 #### How do you delete data from a table in SQL?
 
@@ -630,12 +444,6 @@ efficiently and effectively.
     ```
   Understanding and utilizing these joins is crucial for querying complex data sets and validating data relationships during [software testing](/en/wiki/software-testing/).
 
-  - **INNER JOIN** : Returns records that have matching values in both tables.
-  - **LEFT (OUTER) JOIN** : Returns all records from the left table, and the matched records from the right table. If there is no match, the result is NULL on the right side.
-  - **RIGHT (OUTER) JOIN** : Returns all records from the right table, and the matched records from the left table. If there is no match, the result is NULL on the left side.
-  - **FULL (OUTER) JOIN** : Returns all records when there is a match in either left or right table. If there is no match, the result is NULL for the unmatched side.
-  - **CROSS JOIN** : Returns all possible combinations of rows from both tables. This join does not require a condition to join and can produce a large number of rows.
-  - **SELF JOIN** : A regular join, but the table is joined with itself.
 
 #### What are SQL Views and how are they used?
 
@@ -661,11 +469,6 @@ efficiently and effectively.
   ```
   Remember, views do not store data physically; they fetch data from the underlying tables each time they are queried. Changes to the data in the base tables are immediately reflected in the views. However, some views are updatable and can be used to modify data in the base tables, subject to certain constraints.
 
-  - **Restrict access to data** : By providing a specific view of the data, sensitive information can be hidden from certain users.
-  - **Simplify complex queries** : Instead of writing lengthy SQL queries each time, a view can store the complexity and present a simple interface.
-  - **Enhance readability** : Views can be named descriptively to convey the data they represent, making SQL code easier to understand.
-  - **Maintain legacy code** : If underlying table structures change, views can provide a consistent interface without modifying existing queries or applications.
-
 #### What are SQL Indexes and why are they important?
 
   [SQL](/en/wiki/sql/) indexes are special lookup tables that the [database](/en/wiki/database/) search engine can use to speed up data retrieval. Simply put, an index in [SQL](/en/wiki/sql/) is used to **quickly locate and access the data** in a [database](/en/wiki/database/) table. Indexes are particularly important for improving the performance of **SELECT** queries and are also beneficial when you have **WHERE** clauses that filter sorted data.
@@ -681,11 +484,6 @@ efficiently and effectively.
     **reduce the load**
     on the database and minimize the risk of timeouts or slow test execution.
   However, it's important to note that while indexes can improve read performance, they can also **slow down write operations** (INSERT, UPDATE, DELETE) because the index has to be updated whenever the data in the indexed columns is modified. Therefore, careful consideration must be given to determine which columns to index, especially in a frequently updated [database](/en/wiki/database/).
-
-  - They help in identifying performance issues that could be mitigated by proper indexing, ensuring that the application scales well.
-  - They are essential for writing efficient SQL queries in tests, which can
-    **reduce the load**
-    on the database and minimize the risk of timeouts or slow test execution.
 
 #### What are SQL Triggers and how are they used?
 
@@ -713,13 +511,6 @@ efficiently and effectively.
   - **[Regression testing](/en/wiki/regression-testing/)** : Confirm that new changes do not break existing triggers.
   Triggers should be used judiciously as they can introduce complexity and affect performance. [Test automation](/en/wiki/test-automation/) engineers must ensure that triggers work as expected and do not introduce unintended side effects.
 
-  - **BEFORE triggers** : Perform a task before a data row is inserted, updated, or deleted.
-  - **AFTER triggers** : Execute after the data modification is completed.
-  - **Verify business logic** : Ensure that business rules are enforced by the trigger during test cases.
-  - **Data validation** : Check if the trigger maintains data integrity by preventing invalid data operations.
-  - **[Performance testing](/en/wiki/performance-testing/)** : Assess the impact of triggers on database performance.
-  - **[Regression testing](/en/wiki/regression-testing/)** : Confirm that new changes do not break existing triggers.
-
 #### What is SQL Injection and how can it be prevented?
 
   [SQL](/en/wiki/sql/) Injection is a type of security vulnerability where an attacker can manipulate a [SQL](/en/wiki/sql/) query by injecting malicious [SQL](/en/wiki/sql/) code through an application's input data. This can result in unauthorized access to or manipulation of [database](/en/wiki/database/) data.
@@ -742,23 +533,7 @@ efficiently and effectively.
   - **Keep Software Updated**: Ensure that your [database](/en/wiki/database/) management system (DBMS) and any related software are up-to-date with the latest security patches.
   - **Use Web Application Firewalls**: They can help to detect and block [SQL](/en/wiki/sql/) Injection attacks.
   - **[Security Testing](/en/wiki/security-testing/)**: Regularly test your application for [SQL](/en/wiki/sql/) Injection vulnerabilities using tools like SQLMap or by performing [penetration testing](/en/wiki/penetration-testing/).
-  - **Use Prepared Statements (Parameterized Queries)**: They enforce a clear separation between the code and the data. For example, in Java, you can use `PreparedStatement` objects.
 
-    ```
-    String query = "SELECT * FROM users WHERE username = ? AND password = ?";
-    PreparedStatement ps = connection.prepareStatement(query);
-    ps.setString(1, username);
-    ps.setString(2, password);
-    ```
-
-  - **Employ Stored Procedures**: They encapsulate the [SQL](/en/wiki/sql/) statements and treat all input as data rather than executable code.
-  - **Validate Input**: Rigorously validate user inputs for type, length, format, and range. Use regular expressions or validation libraries.
-  - **Escape User Input**: If you must include user input within [SQL](/en/wiki/sql/) queries, make sure to escape special characters. However, this is less secure than prepared statements and should be avoided when possible.
-  - **Use ORM Libraries**: Object-Relational Mapping (ORM) libraries like Hibernate or Entity Framework can abstract [SQL](/en/wiki/sql/) queries and use their own methods to prevent injection.
-  - **Implement Least Privilege**: Restrict [database](/en/wiki/database/) user permissions so that if an injection occurs, the potential damage is minimized.
-  - **Keep Software Updated**: Ensure that your [database](/en/wiki/database/) management system (DBMS) and any related software are up-to-date with the latest security patches.
-  - **Use Web Application Firewalls**: They can help to detect and block [SQL](/en/wiki/sql/) Injection attacks.
-  - **[Security Testing](/en/wiki/security-testing/)**: Regularly test your application for [SQL](/en/wiki/sql/) Injection vulnerabilities using tools like SQLMap or by performing [penetration testing](/en/wiki/penetration-testing/).
 
 ### SQL for Testing
 

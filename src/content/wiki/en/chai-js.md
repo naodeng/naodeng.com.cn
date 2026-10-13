@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Chai.js](#chaijs)
-  - [Related Terms:](#related-terms)
   - [Questions about Chai.js?](#questions-about-chaijs)
     - [Basics and Importance](#basics-and-importance)
       - [What is Chai.js?](#what-is-chaijs)
@@ -48,7 +47,7 @@ order: 0
 
 Chai.js, often simply referred to as Chai, is a BDD /TDD (Behavior-Driven Development/ Test-Driven Development) assertion library for Node.js and browsers. It pairs seamlessly with popular JavaScript testing frameworks, such as Mocha and Jasmine. Chai provides developers with the capability to express assertions in a readable language, mimicking natural language constructions.
 
-## Related Terms:
+Related Terms:
 
 - Assertion library
 - [Jest](/en/wiki/jest/)
@@ -560,11 +559,6 @@ See also:
      ```
   By following these steps, you can extend Chai's functionality and tailor your testing suite to your project's needs.
 
-  1. **Install** the plugin:
-
-     ```
-     npm install chai-as-promised
-     ```
 
 #### What are some popular Chai.js plugins and what do they do?
 

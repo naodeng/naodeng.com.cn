@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Oracles](#test-oracles)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Oracles?](#questions-about-test-oracles)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Oracle in software testing?](#what-is-a-test-oracle-in-software-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Mechanisms to determine if a test is successful or not.
 
-## Related Terms:
+Related Terms:
 
 - [Test Stub](/en/wiki/test-stub/)
 
@@ -101,7 +100,6 @@ Mechanisms to determine if a test is successful or not.
   - **Implicit Oracles** : Based on general expectations such as a system should not crash or produce unhandled exceptions, without specific expected outcomes.
   Each type influences the testing process by offering different ways to validate outcomes, ranging from strict adherence to specifications to more flexible, probabilistic approaches. They can be integrated into [automated testing](/en/wiki/automated-testing/) by embedding oracle checks within [test scripts](/en/wiki/test-script/) or utilizing separate oracle services. Challenges include ensuring the oracle's accuracy, dealing with incomplete specifications, and handling oracle complexity. Overcoming these often involves a combination of oracle types, thorough validation of the oracle itself, and regular updates to the oracle as the system evolves. Limitations include potential [false positives](/en/wiki/false-positive/) or negatives and the difficulty in creating oracles for non-deterministic systems. Effectiveness is measured by the oracle's ability to correctly identify pass and fail conditions in a consistent and reliable manner.
 
-
 #### Can you provide examples of each type of Test Oracle?
 
   Examples of each type of Test Oracle:
@@ -143,7 +141,6 @@ Mechanisms to determine if a test is successful or not.
     ```
   Each type of oracle provides a different lens through which the software can be evaluated, contributing to a more thorough and robust testing process.
 
-
 #### How do different types of Test Oracles impact the testing process?
 
   Different types of Test Oracles impact the testing process by guiding the validation of test outcomes against [expected results](/en/wiki/expected-result/). The choice of oracle influences the **efficiency**, **effectiveness**, and **scope** of testing.
@@ -154,7 +151,6 @@ Mechanisms to determine if a test is successful or not.
   - **Consensus Oracles** use the agreement between multiple sources or systems to validate outcomes. They are effective in **detecting anomalies** when a single source of truth is not available but can be **misleading** if all sources have the same error.
   - **Human Oracles** involve manual [inspection](/en/wiki/inspection/) and are necessary when automated judgment is infeasible. They are **flexible** and can catch subtle issues but are **subjective** and **scalability** is limited.
   The impact of these oracles is also seen in the **test design**, where the selection of an oracle shapes the [test cases](/en/wiki/test-case/) and the **[test coverage](/en/wiki/test-coverage/)**. Moreover, the **maintenance** of oracles is crucial, as outdated or incorrect oracles can lead to [false positives](/en/wiki/false-positive/) or negatives, affecting the **trust** in test results. [Test automation](/en/wiki/test-automation/) engineers must balance the strengths and weaknesses of each oracle type to optimize the testing process.
-
 
 #### What are some real-world examples of Test Oracle usage?
 
@@ -226,7 +222,6 @@ Mechanisms to determine if a test is successful or not.
   7. **Continuous Refinement**: As the system evolves, continuously update the oracle to ensure it remains accurate and relevant.
   Remember, the oracle should be **maintained** alongside the [test cases](/en/wiki/test-case/) to ensure it reflects the current understanding of the system's correct behavior.
 
-
 #### What are the steps to use a Test Oracle in a test case?
 
   To use a **Test Oracle** in a [test case](/en/wiki/test-case/), follow these steps:
@@ -271,7 +266,6 @@ Mechanisms to determine if a test is successful or not.
   - **Balance cost and benefit**: Consider the cost of implementing and maintaining Test Oracles against the benefit they provide in terms of increased [test coverage](/en/wiki/test-coverage/) and defect detection.
   By adhering to these best practices, [test automation](/en/wiki/test-automation/) engineers can effectively utilize Test Oracles to enhance the reliability and efficiency of their testing processes.
 
-
 #### How can Test Oracles be used in automated testing?
 
   In [automated testing](/en/wiki/automated-testing/), **Test Oracles** are integrated to validate the outcomes of [test cases](/en/wiki/test-case/). They serve as a source of truth to determine if the software behaves as expected. Here's how they can be utilized:
@@ -294,7 +288,6 @@ Mechanisms to determine if a test is successful or not.
   - **Relevance** : Ensure they are relevant to the test context and capable of detecting meaningful failures.
   - **Efficiency** : Optimize oracles to avoid unnecessary complexity that can slow down test execution.
   Challenges such as flakiness or oracle complexity can be mitigated by refining the oracle's logic and using heuristic or probabilistic approaches when absolute correctness is unattainable. The effectiveness of a Test Oracle is measured by its ability to accurately detect defects and its contribution to reducing [false positives](/en/wiki/false-positive/) and negatives.
-
 
 ### Challenges and Solutions
 
@@ -335,17 +328,8 @@ Mechanisms to determine if a test is successful or not.
     **monitoring and logging**
     to provide additional information for ambiguous test outcomes.
 
-  - Using
-    **heuristics**
-    to reduce complexity.
 
-  - Implementing
-    **retry mechanisms**
-    for flaky tests.
 
-  - Regularly
-    **reviewing and updating**
-    Test Oracles.
 
   - Employing
     **automated consistency checks**
@@ -365,7 +349,6 @@ Mechanisms to determine if a test is successful or not.
   - **Documentation**: Maintain clear **documentation** on how oracles are used and updated, ensuring knowledge transfer and consistent application across the team.
   By addressing these challenges head-on, [test automation](/en/wiki/test-automation/) engineers can ensure that Test Oracles remain effective and contribute positively to the software quality assurance process.
 
-
 #### What are the limitations of Test Oracles?
 
   Test Oracles have several limitations that can affect their effectiveness in [software testing](/en/wiki/software-testing/):
@@ -379,7 +362,6 @@ Mechanisms to determine if a test is successful or not.
   - **Performance** : High-performance Oracles are needed for large-scale testing, but creating and maintaining them can be resource-intensive.
   - **[False positives](/en/wiki/false-positive/)/negatives** : Inaccurate Oracles may lead to false positives (reporting a defect when there is none) or false negatives (failing to detect actual defects).
   To mitigate these limitations, it's important to combine multiple Oracles, continuously review and update Oracles, and use them alongside other testing methods. Additionally, automating Oracle updates and employing heuristic Oracles for complex or subjective scenarios can help manage these challenges.
-
 
 #### How can the effectiveness of a Test Oracle be measured?
 

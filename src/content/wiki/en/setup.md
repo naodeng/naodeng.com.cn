@@ -143,7 +143,6 @@ Arranging the necessary conditions for test cases to run.
      ```
   Remember to **document the setup process** for team reference and ensure **security best practices** are followed to protect [test data](/en/wiki/test-data/) and environments.
 
-  1. **Select appropriate tools**
 #### How to set up the testing environment for e2e testing?
 
   To set up the testing environment for e2e testing, follow these concise steps:
@@ -259,8 +258,6 @@ Arranging the necessary conditions for test cases to run.
     to run tests automatically on code changes, ensuring immediate feedback on the impact of those changes.
   By adhering to these practices, you'll create a robust and reliable e2e testing setup that can significantly enhance the quality and stability of your software.
 
-  - **Isolate [test environments](/en/wiki/test-environment/)**
-
 #### How can setup be optimized for better performance in e2e testing?
 
   Optimizing setup for better performance in e2e testing involves streamlining processes and leveraging efficient tools and practices. Here are some strategies:
@@ -331,113 +328,31 @@ Arranging the necessary conditions for test cases to run.
 
 #### How does setup differ for different types of testing environments?
 
-  Setup for different types of testing environments varies based on the **specific requirements** and **constraints** of each environment. Here's a brief overview:
-  **[Unit Testing](/en/wiki/unit-testing/)**:
+The setup depends on each test type's objectives, dependencies, and risks:
 
-  - **Isolation**
-    is key; often requires mocking frameworks to simulate dependencies.
+- **[Unit testing](/en/wiki/unit-testing/):** Keep the environment lightweight and isolate the unit under test. Mock external dependencies when needed.
+- **[Integration testing](/en/wiki/integration-testing/):** Configure the connected components, such as databases, APIs, and services, along with the network access they require.
+- **[System testing](/en/wiki/system-testing/):** Deploy the complete system in an environment that resembles production, with realistic test data and suitable substitutes for external systems.
+- **[Performance testing](/en/wiki/performance-testing/):** Provision enough compute and network capacity, configure load generators and monitoring, and record baseline performance data for comparison.
+- **[Security testing](/en/wiki/security-testing/):** Use an isolated, secure environment with vulnerability-scanning and penetration-testing tools. Use synthetic data to avoid exposing sensitive information.
 
-  - Setup is typically lightweight, involving the configuration of the unit testing framework (e.g., JUnit, NUnit, pytest) and the inclusion of necessary dependencies.
-  **[Integration Testing](/en/wiki/integration-testing/)**:
-
-  - Requires configuring the environment to include
-    **all the components**
-    that interact with each other.
-
-  - Often involves setting up
-    **[databases](/en/wiki/database/)**
-    ,
-    **[APIs](/en/wiki/api-testing/)**
-    , and
-    **services**
-    that need to be tested together.
-
-  - May require
-    **network configuration**
-    to allow communication between components.
-  **[System Testing](/en/wiki/system-testing/)**:
-
-  - Involves setting up the
-    **entire system**
-    in an environment that closely mirrors production.
-
-  - Requires
-    **data setup**
-    to ensure the system can be tested under realistic conditions.
-
-  - May need
-    **specialized tools**
-    to simulate external systems and interfaces.
-  **[Performance Testing](/en/wiki/performance-testing/)**:
-
-  - Setup involves provisioning of
-    **high-capacity hardware**
-    and
-    **network resources**
-    to simulate load.
-
-  - Tools like
-    **load generators**
-    and
-    **performance monitoring**
-    solutions are configured.
-
-  - Requires
-    **baseline performance data**
-    for comparison.
-  **[Security Testing](/en/wiki/security-testing/)**:
-
-  - Often requires a
-    **separate, secure environment**
-    to prevent risks to the actual systems.
-
-  - Tools for
-    **vulnerability scanning**
-    and
-    **[penetration testing](/en/wiki/penetration-testing/)**
-    are set up.
-
-  - May involve
-    **dummy data**
-    to avoid exposing sensitive information.
-  Each environment setup must consider the **test objectives**, **resource availability**, and **risk management**. Automation engineers should script and document environment configurations to ensure **repeatability** and **consistency** across test cycles.
-
-  - **Isolation**
-    is key; often requires mocking frameworks to simulate dependencies.
-
-  - Setup is typically lightweight, involving the configuration of the unit testing framework (e.g., JUnit, NUnit, pytest) and the inclusion of necessary dependencies.
-
-  - Involves setting up the
-    **entire system**
-
-  - Requires
-    **baseline performance data**
-    for comparison.
-
-  - Often requires a
-    **separate, secure environment**
+For every environment, consider test objectives, available resources, and risk. Script and document the configuration so it can be reproduced consistently across test cycles.
 
 #### What role does setup play in continuous integration and continuous deployment?
 
-  In **Continuous Integration (CI)** and **Continuous Deployment (CD)**, setup plays a pivotal role in establishing a reliable and efficient pipeline. Proper setup ensures that code changes are automatically built, tested, and prepared for release to production.
-  For CI, setup involves configuring the automation server to fetch the latest code from the repository, execute the [test suite](/en/wiki/test-suite/), and report outcomes. This includes:
+In **Continuous Integration (CI)**, setup configures the automation server to fetch code, run the [test suite](/en/wiki/test-suite/), and report results. Typical tasks include:
 
-  - Integrating source control hooks to trigger builds on commits.
-  - Defining build steps, such as compilation and unit testing.
-  - Configuring notifications for build results.
-  In CD, setup extends the CI pipeline to automate deployment. This requires:
+- Connecting source-control events to build triggers.
+- Defining build steps such as compilation and unit tests.
+- Configuring notifications for build results.
 
-  - Configuring environments for staging and production.
-  - Setting up deployment scripts or using deployment tools.
-  - Establishing rollback mechanisms for failed deployments.
-  Both CI and CD rely on a robust setup to detect integration issues early, streamline the release process, and reduce manual intervention, leading to faster and more reliable deliveries.
+**Continuous Deployment (CD)** extends the pipeline to release changes automatically. Its setup includes:
 
-  - Integrating source control hooks to trigger builds on commits.
-  - Defining build steps, such as compilation and unit testing.
-  - Configuring notifications for build results.
-  - Configuring environments for staging and production.
-  - Setting up deployment scripts or using deployment tools.
-  - Establishing rollback mechanisms for failed deployments.
+- Configuring staging and production environments.
+- Preparing deployment scripts or tools.
+- Defining rollback steps for failed deployments.
+
+A reliable setup helps both pipelines detect integration issues early and deliver changes consistently.
 
 #### How to automate the setup process for e2e testing?
 

@@ -328,8 +328,6 @@ A test approach outlines the strategy for how testing will be conducted. It spec
     where developers and testers collaborate closely, sharing responsibility for the quality of the product.
   By focusing on these areas, [test automation](/en/wiki/test-automation/) engineers can streamline their Test Approach, ensuring it is both efficient in execution and effective in catching defects.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### What is the future of Test Approach in the context of AI and Machine Learning?
 
   The future of **Test Approach** in the context of **AI and Machine Learning (ML)** is geared towards increased **efficiency**, **predictive capabilities**, and **autonomy**. AI and ML algorithms are being integrated to **predict** high-risk areas, **optimize** [test cases](/en/wiki/test-case/), and **automate** test generation and execution.

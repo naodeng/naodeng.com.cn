@@ -74,12 +74,6 @@ Internationalization Testing, often abbreviated as "i18n testing," is a software
   **Automation** is key, using scripts to simulate locale changes and verify correct application responses. It's essential to integrate i18n tests into the continuous integration pipeline for regular feedback.
   **Success metrics** involve the absence of i18n defects, user satisfaction across locales, and the seamless integration of new languages and regions.
 
-  - Using
-    **resource files**
-    for strings and locale data.
-
-  - **Code [inspection](/en/wiki/inspection/)**
-    to ensure proper use of internationalization libraries and APIs.
 
 #### Why is Internationalization Testing important in software development?
 
@@ -110,8 +104,6 @@ Internationalization Testing, often abbreviated as "i18n testing," is a software
     ```
   In essence, internationalization testing is about potential: ensuring the software can be localized. [Localization testing](/en/wiki/localization-testing/) is about actuality: ensuring the localized experience is correct and complete.
 
-  - **Internationalization** : Automated tests verify framework capabilities like Unicode support, locale-aware functions, and resource handling.
-  - **Localization** : Automated tests check specific localized content and formats.
 
 #### How does Internationalization Testing contribute to the overall user experience?
 
@@ -226,9 +218,6 @@ Internationalization Testing, often abbreviated as "i18n testing," is a software
     - UI elements for proper translation and layout.
     - Input fields to accept and process international characters.
     - Functionality to handle different time zones, currencies, and date formats.
-    - UI elements for proper translation and layout.
-    - Input fields to accept and process international characters.
-    - Functionality to handle different time zones, currencies, and date formats.
   3. **Automate [test cases](/en/wiki/test-case/)** using tools like [Selenium](/en/wiki/selenium/) or Appium, which support multi-language testing. Use parameterization to run the same test with different locale inputs.
 
      ```
@@ -275,9 +264,6 @@ Internationalization Testing, often abbreviated as "i18n testing," is a software
   1. **Content Delivery**: Ensure content delivery networks (CDNs) and web servers are configured to serve content in the correct encoding.
   2. **Font Support**: Check that the application's fonts support the character sets for the languages being tested.
   By carefully addressing these aspects, you can effectively handle character encoding in Internationalization Testing, avoiding common pitfalls such as mojibake (garbled text) and ensuring a seamless user experience across different locales.
-
-  1. **Content Delivery**: Ensure content delivery networks (CDNs) and web servers are configured to serve content in the correct encoding.
-  2. **Font Support**: Check that the application's fonts support the character sets for the languages being tested.
 
 #### What are the key factors to consider when testing the internationalization of a mobile application?
 
@@ -326,8 +312,6 @@ Internationalization Testing, often abbreviated as "i18n testing," is a software
 
   - **Automated linguistic testing** : Employ natural language processing (NLP) tools to assess the quality of translations in terms of grammar, usage, and style.
   By leveraging these advanced techniques, [test automation](/en/wiki/test-automation/) engineers can ensure a robust and efficient internationalization testing process, leading to a high-quality user experience for global audiences.
-
-  - **Automated linguistic testing** : Employ natural language processing (NLP) tools to assess the quality of translations in terms of grammar, usage, and style.
 
 #### How does automation play a role in Internationalization Testing?
 

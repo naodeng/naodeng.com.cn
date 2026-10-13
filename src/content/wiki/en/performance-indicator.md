@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Performance Indicator](#performance-indicator)
-  - [Related Terms:](#related-terms)
   - [Questions about Performance Indicator?](#questions-about-performance-indicator)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Performance Indicator?](#what-is-a-performance-indicator)
@@ -38,7 +37,7 @@ order: 0
 
 A performance indicator or KPI is a metric testers use to measure the efficacy and quality of their testing process.
 
-## Related Terms:
+Related Terms:
 
 - [Performance Testing](/en/wiki/performance-testing/)
 
@@ -181,8 +180,6 @@ A performance indicator or KPI is a metric testers use to measure the efficacy a
   });
   ```
   This code captures the start and end times of the [API](/en/wiki/api-testing/) call, calculates the response time, and logs it for later analysis.
-
-  1. **Define the specific metrics**
 
 #### What tools are commonly used to measure Performance Indicators?
 

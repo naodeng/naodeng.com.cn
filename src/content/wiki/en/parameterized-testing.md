@@ -260,10 +260,6 @@ Executing the same test using varied data sets.
     ```
   Remember to **validate** the data before using it in tests to ensure it meets the expected format and type. Also, consider **refactoring** common data provisioning code into shared methods or classes to promote reusability and [maintainability](/en/wiki/maintainability/).
 
-  - **External Data Sources** : Load test data from external sources like CSV files, JSON files, or databases. Use libraries or built-in support to read the data and pass it to your tests.
-  - **In-Code Data Providers** : Define data directly in your test code using annotations or methods that supply data arrays or collections.
-  - **Enumerations** : Use enums to define a set of constants that represent your test data.
-  - **Custom Annotations** : Create custom annotations that encapsulate your data provisioning logic, making your tests cleaner and more expressive.
 
 #### What are some common mistakes to avoid when implementing parameterized tests?
 
@@ -401,8 +397,6 @@ Executing the same test using varied data sets.
   - **Modular Code**: Write modular code to handle data [setup](/en/wiki/setup/) and retrieval, making it reusable and easier to manage.
   By applying these strategies, [test automation](/en/wiki/test-automation/) engineers can efficiently manage large datasets, ensuring that parameterized tests are both scalable and maintainable.
 
-  - **External Data Sources** : Store test data in external sources like CSV files, JSON files, databases, or Excel spreadsheets. Use libraries or built-in functionalities to read the data during test execution.
-  - **Data Generation Libraries** : Utilize libraries like Faker to generate realistic test data dynamically.
 
 #### What are some strategies for selecting test data for parameterized tests?
 

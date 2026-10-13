@@ -166,11 +166,7 @@ Dynamic Testing, in the context of software testing, refers to the process of ev
   ```
   Both approaches are crucial for a comprehensive testing strategy, with [white box testing](/en/wiki/white-box-testing/) ensuring internal correctness and [black box testing](/en/wiki/black-box-testing/) validating external functionality.
 
-  - Unit Testing
-  - Integration Testing
   - Code Coverage Analysis
-  - Functional Testing
-  - System Testing
   - Acceptance Testing
 
 #### What is the role of exploratory testing in dynamic testing?
@@ -244,8 +240,6 @@ Dynamic Testing, in the context of software testing, refers to the process of ev
   Dynamic testing automation scripts are maintained alongside application code, ensuring they evolve with the application. **Version control systems** like Git are used to manage these scripts, and **code review practices** are applied to maintain their quality.
   Metrics such as **defect density, [test coverage](/en/wiki/test-coverage/), and pass/fail rates** are tracked to measure the effectiveness of dynamic testing efforts, guiding continuous improvement in the testing process.
 
-  - **Setting up [test environments](/en/wiki/test-environment/)**
-
 #### What tools are commonly used in dynamic testing?
 
   Commonly used tools in dynamic testing include:
@@ -298,8 +292,6 @@ Dynamic Testing, in the context of software testing, refers to the process of ev
   - **Maintain [test scripts](/en/wiki/test-script/)**
     to keep up with changes in the application, ensuring that the automation remains reliable and relevant.
   Automating dynamic testing requires an initial investment in script development and environment configuration, but it pays off with faster test cycles, early [bug](/en/wiki/bug/) detection, and the ability to run tests frequently and consistently.
-
-  - **Identify [test cases](/en/wiki/test-case/)**
 
 ### Challenges and Best Practices
 
@@ -425,8 +417,6 @@ Dynamic Testing, in the context of software testing, refers to the process of ev
   - **Monitor and analyze test results**
     to identify patterns and recurring issues, enabling targeted improvements in the test process.
   By addressing these areas, [test automation](/en/wiki/test-automation/) engineers can enhance the efficiency and effectiveness of dynamic testing, leading to higher quality software releases.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### How can the effectiveness of dynamic testing be measured?
 

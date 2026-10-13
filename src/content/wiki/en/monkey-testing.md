@@ -95,8 +95,6 @@ Involves providing random inputs to a system to check if it crashes.
     . Monkey Testing can show how well the software can recover from errors without data loss or corruption.
   In summary, Monkey Testing aims to push the software beyond its normal operational boundaries to ensure it can withstand and recover from unanticipated user behavior and inputs. This helps in creating more resilient and user-friendly applications.
 
-  - **Identify random defects**
-
 ### Implementation and Techniques
 
 #### How is Monkey Testing implemented in a software testing process?
@@ -190,11 +188,6 @@ Involves providing random inputs to a system to check if it crashes.
     ```
   These techniques help in identifying defects that might not be caught through conventional testing methods. Automation tools can be employed to execute these techniques repeatedly and efficiently.
 
-  - **Random Input Generation** : Inputs are generated without any predefined patterns or sequences, often using random number generators or algorithms to simulate unpredictable user behavior.
-  - **[Stress Testing](/en/wiki/stress-testing/)** : The application is subjected to high loads or inputs at a rapid pace to check for stability and error handling under stress.
-  - **[Fuzz Testing](/en/wiki/fuzz-testing/)** : Data is intentionally corrupted or malformed to test how the software handles unexpected or invalid input.
-  - **[State Transition Testing](/en/wiki/state-transition-testing/)** : Random events are triggered to see if the application transitions correctly between different states or modes.
-  - **User Simulation** : Scripts or tools mimic user behavior in a random but plausible manner to uncover issues that might occur during typical usage.
 
 #### How can Monkey Testing be automated?
 

@@ -231,7 +231,6 @@ Test classes are code fragments designed to validate the proper functioning of t
       ```
   Remember to **review and maintain** the test class regularly, updating it to reflect changes in the codebase and ensuring it remains effective and relevant.
 
-  1. **Identify the class or module**
 #### What are the best practices for creating a Test Class?
 
   Best practices for creating a Test Class include:
@@ -441,45 +440,6 @@ Test classes are code fragments designed to validate the proper functioning of t
     `assert`
     module or other assertion libraries.
   Each framework has its own **conventions** and **helper methods** that can affect how you structure your Test Classes. It's important to follow the idiomatic practices of the framework you're using to leverage its full capabilities.
-
-  - Uses annotations like
-    `@Test`
-    .
-
-  - Assertions are part of the
-    `org.junit.jupiter.api.Assertions`
-    class.
-
-  - Similar to JUnit but uses its own set of annotations and assertions.
-  - Supports more complex features like parameterization and grouping.
-  - Functions prefixed with
-    `test_`
-    are automatically recognized as tests.
-
-  - Uses the built-in
-    `assert`
-    statement.
-
-  - Descriptive language with
-    `describe`
-    and
-    `it`
-    blocks.
-
-  - Uses
-    `expect`
-    syntax for assertions.
-
-  - Descriptive blocks with
-    `describe`
-    and
-    `it`
-    .
-
-  - Uses Node's
-    `assert`
-    module or other assertion libraries.
-
 #### How can you integrate a Test Class with a continuous integration tool like Jenkins?
 
   Integrating a **Test Class** with a continuous integration tool like **Jenkins** involves several steps:
@@ -538,10 +498,6 @@ Test classes are code fragments designed to validate the proper functioning of t
   1. **Trigger builds**: Set Jenkins to trigger builds automatically upon code commits or at scheduled intervals.
   2. **Monitor and act**: After integration, monitor test results for each build. Investigate failures and address them promptly to maintain a stable build pipeline.
   By following these steps, your **Test Class** becomes an integral part of the CI pipeline, ensuring that tests are automatically run and results are reported with each build, helping to maintain code quality and catch issues early.
-
-  1. **Configure [test reports](/en/wiki/test-report/)** : Configure Jenkins to publish test results. For JUnit, Jenkins can archive and display reports using the JUnit plugin.
-  1. **Trigger builds**: Set Jenkins to trigger builds automatically upon code commits or at scheduled intervals.
-  2. **Monitor and act**: After integration, monitor test results for each build. Investigate failures and address them promptly to maintain a stable build pipeline.
 
 #### What are some advanced features of testing frameworks that can be utilized in a Test Class?
 

@@ -198,8 +198,6 @@ The SDLC (Software Development Life Cycle) is a framework for software creation 
     or updates in testing frameworks may necessitate refactoring or optimizing test scripts for better efficiency or compatibility.
   Maintenance is not just about keeping the software functional; it's about **continuous improvement** and **adaptation** in the face of evolving user needs and system environments. [Automated testing](/en/wiki/automated-testing/) is integral to this process, providing a safety net that enables rapid and reliable software [iteration](/en/wiki/iteration/).
 
-  - **Automated tests need updates**
-
 #### What are the key considerations in the deployment stage of SDLC?
 
   In the **deployment stage** of the SDLC, key considerations for [test automation](/en/wiki/test-automation/) include:
@@ -253,8 +251,6 @@ The SDLC (Software Development Life Cycle) is a framework for software creation 
   - **[Performance testing](/en/wiki/performance-testing/) tools**
     to assess scalability and responsiveness.
   Automated tests are version-controlled and maintained alongside application code, ensuring they evolve with the software.
-
-  - **[Unit testing](/en/wiki/unit-testing/) frameworks**
 
 #### What types of testing are typically performed at different stages of SDLC?
 

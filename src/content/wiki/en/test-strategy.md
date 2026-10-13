@@ -245,8 +245,6 @@ A document detailing the methodology adopted for software testing. It provides c
     such as TestPad or qTest Sessions support manual testing efforts within an automated testing framework.
   Selecting the right combination of these tools is dependent on the specific needs of the project and should align with the overall objectives outlined in the Test Strategy.
 
-  - **[Test Management](/en/wiki/test-management/) Tools**
-
 #### How can automation be incorporated into a Test Strategy?
 
   Incorporating automation into a **Test Strategy** involves identifying areas where [automated testing](/en/wiki/automated-testing/) can provide the most value and aligning them with the overall testing objectives. Begin by assessing the application's **architecture** and **technology stack** to determine the most suitable automation tools and frameworks.

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Change Requests](#change-requests)
-  - [Related Terms:](#related-terms)
   - [Questions about Change Requests?](#questions-about-change-requests)
     - [Basics and Importance](#basics-and-importance)
       - [What is a change request in software development?](#what-is-a-change-request-in-software-development)
@@ -39,7 +38,7 @@ order: 0
 
 Change requests originate from stakeholders wishing to alter a product or its development method. They can range from defect reports to requests for new features or enhancements.
 
-## Related Terms:
+Related Terms:
 
 - [Change Control](/en/wiki/change-control/)
 
@@ -78,7 +77,6 @@ Change requests originate from stakeholders wishing to alter a product or its de
   10. **Monitor** : After the changes are deployed, continue to monitor test results to ensure that the change has not introduced new issues.
   Throughout this process, it's crucial to maintain clear communication with the development team and other stakeholders to ensure that the [test automation](/en/wiki/test-automation/) efforts remain aligned with the project's evolving requirements.
 
-
 #### How can change requests impact the scope of a project?
 
   Change requests can significantly **alter the scope** of a project by introducing new features, modifying existing functionality, or removing requirements. These changes can lead to:
@@ -89,7 +87,6 @@ Change requests originate from stakeholders wishing to alter a product or its de
   - **Budget implications** : More testing hours and resources translate into increased costs.
   - **Scope creep** : Without proper management, continuous change requests can lead to uncontrolled growth in project scope.
   [Test automation](/en/wiki/test-automation/) engineers must be agile, ready to **update automated [test scripts](/en/wiki/test-script/)** and **re-prioritize [test cases](/en/wiki/test-case/)** to align with the revised project scope. Efficient change management ensures that the [test automation](/en/wiki/test-automation/) strategy remains relevant and effective, despite the evolving requirements.
-
 
 #### What is the role of a change control board in managing change requests?
 
@@ -119,10 +116,6 @@ Change requests originate from stakeholders wishing to alter a product or its de
     , since the inclusion of new changes can affect timelines and delivery milestones.
   By governing change requests, the CCB helps maintain the integrity of the [test automation](/en/wiki/test-automation/) process and minimizes disruptions, ensuring that testing remains effective and aligned with project goals.
 
-  - **Assesses**
-
-  - **[Test strategy](/en/wiki/test-strategy/) adjustments**
-
 ### Change Request Management
 
 #### What are the steps involved in change request management?
@@ -140,7 +133,6 @@ Change requests originate from stakeholders wishing to alter a product or its de
   9. **Documentation**: All changes and outcomes are documented, including updates to [test cases](/en/wiki/test-case/) and user manuals.
   10. **Closure**: Once the change is fully integrated and stable, the request is formally closed in the tracking system.
   Throughout these steps, communication is crucial to keep all stakeholders informed and involved. [Test automation](/en/wiki/test-automation/) engineers must adapt their [test suites](/en/wiki/test-suite/) and strategies to accommodate these changes, ensuring that the software continues to meet quality standards.
-
 
 #### How can effective change request management benefit a project?
 
@@ -162,7 +154,6 @@ Change requests originate from stakeholders wishing to alter a product or its de
   - **Rally (formerly CA Agile Central)** : Focuses on agile project management and can be used to track changes and features throughout the development process.
   - **VersionOne** : An all-in-one agile project management tool that supports change request management as part of its feature set.
   These tools help automate the change request process, ensuring that changes are logged, reviewed, and implemented systematically. They often include features for assigning tasks, setting priorities, and tracking progress, which are essential for maintaining control over the change management process. Integration with [test automation](/en/wiki/test-automation/) tools and continuous integration/continuous deployment (CI/CD) pipelines is also a common feature, which helps in aligning testing activities with change requests.
-
 
 #### What are some best practices for managing change requests?
 
@@ -240,11 +231,6 @@ Change requests originate from stakeholders wishing to alter a product or its de
     as part of the sprint to keep the automation suite reliable.
   In essence, change requests necessitate a **flexible** and **adaptable** [test automation](/en/wiki/test-automation/) strategy to ensure continuous delivery of quality software.
 
-  - Maintain
-    **modular**
-    and
-    **reusable**
-    test code to simplify updates.
 
   - Use
     **version control**
@@ -311,7 +297,6 @@ Change requests originate from stakeholders wishing to alter a product or its de
   });
   ```
   Adapting to change requests is a dynamic process that requires [test automation](/en/wiki/test-automation/) engineers to be flexible and responsive to ensure the [test plan](/en/wiki/test-plan/) remains effective and relevant.
-
 
 #### How should testers adapt their strategies to accommodate change requests?
 

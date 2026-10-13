@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Exploratory Testing](#exploratory-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Exploratory Testing?](#questions-about-exploratory-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is exploratory testing?](#what-is-exploratory-testing)
@@ -43,7 +42,7 @@ order: 0
 
 Exploratory testing is a dynamic process where test design and test execution happen simultaneously. It leverages the tester's experience and is especially useful under tight time constraints.
 
-## Related Terms:
+Related Terms:
 
 - [Ad Hoc Testing](/en/wiki/ad-hoc-testing/)
 

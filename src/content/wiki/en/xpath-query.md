@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [XPath Query](#xpath-query)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about XPath Query?](#questions-about-xpath-query)
     - [Basics and Importance](#basics-and-importance)
       - [What is XPath Query?](#what-is-xpath-query)
@@ -46,12 +44,12 @@ order: 0
 
 A language designed to extract and manipulate XML document data. Useful for retrieving XML data for content scanning.
 
-## Related Terms:
+Related Terms:
 
 - [Web Testing](/en/wiki/web-testing/)
 - [UI Testing](/en/wiki/ui-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/XPath)
 ## Questions about XPath Query?
@@ -442,11 +440,7 @@ A language designed to extract and manipulate XML document data. Useful for retr
   ```
   By following these steps, you can effectively utilize XPath in [Selenium](/en/wiki/selenium/) to target and manipulate web elements for your automation testing needs.
 
-  1. **Import**
-    the necessary Selenium WebDriver classes in your test script:
 
-  1. **Instantiate**
-    the WebDriver and navigate to the desired URL:
 
 #### What are some common use cases for XPath Query in software automation?
 
@@ -496,13 +490,6 @@ A language designed to extract and manipulate XML document data. Useful for retr
     ```
   These [use cases](/en/wiki/use-case/) demonstrate XPath's versatility in addressing various scenarios encountered in software [test automation](/en/wiki/test-automation/).
 
-  - **Locating Elements** : Automators use XPath to pinpoint specific elements within a web page or XML document that need interaction or verification. For example, clicking a button, checking a checkbox, or validating the presence of a node.
-  - **Dynamic Element Identification** : When elements have dynamic IDs or classes, XPath can locate these elements using partial matches or other attributes.
-  - **Complex DOM Traversal** : XPath excels in navigating complex Document Object Models (DOM) by using axes and predicates to traverse parent, child, or sibling nodes.
-  - **Handling Web Tables** : XPath queries can iterate through rows and columns of web tables to extract or interact with data.
-  - **Customized Searches** : XPath's functions allow for customized searches, such as selecting elements with a specific text, attribute value, or following a particular pattern.
-  - **XML Data Extraction** : In non-web contexts, XPath is used to extract information from XML files, which is useful for configuration, data-driven testing, or validating API responses.
-  - **Conditional Element Selection** : XPath's ability to use conditions within predicates enables testers to select elements based on complex criteria.
 
 #### How can XPath Query be used to navigate XML documents?
 
@@ -593,8 +580,6 @@ A language designed to extract and manipulate XML document data. Useful for retr
   ```
   **Remember** to ensure that your XPath queries are precise and efficient to avoid performance issues and to target elements unambiguously. Use relative paths and predicates to narrow down selections and avoid overly complex expressions that can be brittle and hard to maintain.
 
-  1. **Identify the HTML element**
-    containing the desired data.
 
 ### Advanced Concepts
 
@@ -687,9 +672,6 @@ A language designed to extract and manipulate XML document data. Useful for retr
      ```
   Remember, the choice of prefix is arbitrary and does not have to match the prefix used in the XML document; it just needs to be consistent within your XPath query and namespace registration.
 
-  1. **Register the namespace**: Before executing an XPath query, register the namespace with a prefix using the [API](/en/wiki/api-testing/) provided by your XML parsing library. For example, in Java's XPath [API](/en/wiki/api-testing/), you can use a `NamespaceContext` to map prefixes to namespace URIs.
-  2. **Use the prefix in your XPath query**: Once registered, use the prefix in your XPath expressions to reference elements in the namespace.
-  1. **Write the XPath expression** : With the namespace registered, you can now write the XPath expression using the prefix.
 
 #### What is XPath Injection and how can it be prevented?
 

@@ -1,6 +1,6 @@
 ---
 title: "Selenium Ide ｜ Selenium Ide"
-description: "Selenium IDE（集成开发环境）是一款用于创建自动化测试用例的开源录制与回放 (Record and Playback) 工具。它是适用于 Firefox 和 Chrome 的浏览器扩展，使测试人员能够通过用户友好的界面快速开发测试，而无需编写大量的测试脚本…"
+description: "Selenium IDE（集成开发环境）是一款用于创建自动化测试用例的开源录制与回放 (Record and Playback) 工具。"
 section: "S"
 related:
   - selenium
@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Selenium Ide ｜ Selenium Ide](#selenium-ide--selenium-ide)
-  - [相关术语](#相关术语)
   - [有关 Selenium IDE 的问题吗？](#有关-selenium-ide-的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是 Selenium IDE？](#什么是-selenium-ide)
@@ -46,7 +45,7 @@ order: 0
 
 selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强您的测试环境。
 
-## 相关术语
+相关术语
 
 - [WebDriver](/zh-cn/wiki/webdriver/)
 - [网络自动化](/zh-cn/wiki/web-automation/)
@@ -91,8 +90,8 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
 #### Selenium IDE 与其他测试工具有何不同？
 
 [selenium IDE](/zh-cn/wiki/selenium-ide/) 从其他测试工具中脱颖而出，主要是因为它的**浏览器扩展**性质，使用户能够直接在浏览器中**记录、编辑和回放**测试。与许多需要广泛编程知识的工具不同，[selenium IDE](/zh-cn/wiki/selenium-ide/) 提供了**无代码/低代码**方法和易于使用的界面，使其适合初学者或非开发人员使用。
-  它的独特之处在于 **对 Selenese** 的本机支持，Selenese**是 [selenium](/zh-cn/wiki/selenium/) 自己的脚本语言，尽管它也允许在复杂场景中执行 **JavaScript**。 [selenium IDE](/zh-cn/wiki/selenium-ide/) 的**记录和回放**功能特别独特，因为它允许快速创建测试，而无需从头开始编写代码。
-  另一个差异化因素是它**与 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)** 紧密集成。 [selenium IDE](/zh-cn/wiki/selenium-ide/) 中记录的测试可以导出到[WebDriver](/zh-cn/wiki/webdriver/) 代码，这在其他记录和回放工具中是不常见的功能。这使得从简单的测试创建到更高级的、以编程方式驱动的[测试自动化](/zh-cn/wiki/test-automation/)框架能够顺利过渡。
+  它的独特之处在于 **对 Selenese** 的本机支持，Selenese**是 [selenium](/zh-cn/wiki/selenium/) 自己的脚本语言，尽管它也允许在复杂场景中执行**JavaScript **。 [selenium IDE](/zh-cn/wiki/selenium-ide/) 的**记录和回放**功能特别独特，因为它允许快速创建测试，而无需从头开始编写代码。
+  另一个差异化因素是它**与 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 紧密集成。 [selenium IDE](/zh-cn/wiki/selenium-ide/) 中记录的测试可以导出到[WebDriver](/zh-cn/wiki/webdriver/) 代码，这在其他记录和回放工具中是不常见的功能。这使得从简单的测试创建到更高级的、以编程方式驱动的[测试自动化](/zh-cn/wiki/test-automation/)框架能够顺利过渡。
   [selenium IDE](/zh-cn/wiki/selenium-ide/) 还支持**插件**，这可以将其功能扩展到开箱即用的功能之外。这种可扩展性在其他测试工具中并不总是可用，尤其是那些闭源或具有更严格架构的测试工具。
   最后，作为 [selenium](/zh-cn/wiki/selenium/) 套件的一部分，它受益于**大型社区**和生态系统，提供了许多其他工具所缺乏的丰富资源、共享知识和支持。对于寻求帮助或希望扩展工具功能的用户来说，这种社区驱动的方面可能是一个显着的优势。
 
@@ -100,53 +99,39 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
 
 **[selenium IDE](/zh-cn/wiki/selenium-ide/)的优点：**
 
-- **易于使用：**用于创建自动化测试的简单界面，无需编写代码。
+- **易于使用：** 用于创建自动化测试的简单界面，无需编写代码。
 
-- **录制和回放：**通过记录用户操作快速生成测试脚本。
+- **录制和回放：** 通过记录用户操作快速生成测试脚本。
 
-- **快速原型制作：**可以立即创建并执行测试用例。
+- **快速原型制作：** 可以立即创建并执行测试用例。
 
-- **浏览器兼容性：**测试可以用最少的配置在不同的浏览器上运行。
+- **浏览器兼容性：** 测试可以用最少的配置在不同的浏览器上运行。
 
-- **塞勒尼斯命令：**用于执行各种操作和断言的丰富的内置命令集。
+- **塞勒尼斯命令：** 用于执行各种操作和断言的丰富的内置命令集。
 
-- **可扩展性：**能够使用用户创建的脚本和插件扩展功能。
+- **可扩展性：** 能够使用用户创建的脚本和插件扩展功能。
 
-- **不需要[环境搭建](/zh-cn/wiki/setup/)：**作为浏览器扩展，它不需要复杂的环境设置。
+- **不需要[环境搭建](/zh-cn/wiki/setup/)：** 作为浏览器扩展，它不需要复杂的环境设置。
 
-- **出口能力：**测试可以导出为各种编程语言，以便与 Selenium WebDriver 一起使用。 **[selenium IDE](/zh-cn/wiki/selenium-ide/) 的缺点：**
+- **出口能力：** 测试可以导出为各种编程语言，以便与 Selenium WebDriver 一起使用。 **[selenium IDE](/zh-cn/wiki/selenium-ide/) 的缺点：**
 
-- **仅限于浏览器测试：**仅适用于 Web 应用程序，无法测试桌面或移动应用程序。
+- **仅限于浏览器测试：** 仅适用于 Web 应用程序，无法测试桌面或移动应用程序。
 
-- **无编程逻辑：**缺乏直接使用条件语句、循环和其他编程结构的能力。
+- **无编程逻辑：** 缺乏直接使用条件语句、循环和其他编程结构的能力。
 
-- **维护开销：**记录的测试可能很脆弱，并且可能需要通过 UI 更改进行频繁更新。
+- **维护开销：** 记录的测试可能很脆弱，并且可能需要通过 UI 更改进行频繁更新。
 
-- **可扩展性问题：**不适合大型测试套件或复杂的测试场景。
+- **可扩展性问题：** 不适合大型测试套件或复杂的测试场景。
 
-- **缺乏报告：**与更复杂的工具相比，报告功能有限。
+- **缺乏报告：** 与更复杂的工具相比，报告功能有限。
 
 - **取决于用户界面：** UI 的更改可能需要重新录制或编辑测试。
 
-- **无内置[测试管理](/zh-cn/wiki/test-management/):**缺乏管理和组织大量测试的功能。
+- **无内置[测试管理](/zh-cn/wiki/test-management/):** 缺乏管理和组织大量测试的功能。
 
-- **对高级操作的有限支持：**复杂的用户交互可能无法准确记录，并且可能需要手动编写脚本。
+- **对高级操作的有限支持：** 复杂的用户交互可能无法准确记录，并且可能需要手动编写脚本。
 
-- **易于使用：**用于创建自动化测试的简单界面，无需编写代码。
-
-- **录制和回放：**通过记录用户操作快速生成测试脚本。
-
-- **快速原型制作：**可以立即创建并执行测试用例。
-
-- **浏览器兼容性：**测试可以用最少的配置在不同的浏览器上运行。
-
-- **塞勒尼斯命令：**用于执行各种操作和断言的丰富的内置命令集。
-
-- **可扩展性：**能够使用用户创建的脚本和插件扩展功能。
-
-- **不需要[环境搭建](/zh-cn/wiki/setup/)：**作为浏览器扩展，它不需要复杂的环境设置。
-
-- **出口能力：**测试可以导出为各种编程语言，以便与 Selenium WebDriver 一起使用。
+- **出口能力：** 测试可以导出为各种编程语言，以便与 Selenium WebDriver 一起使用。
 
 ### 安装和设置
 
@@ -169,12 +154,6 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
       [Chrome Web Store](https://chrome.google.com/webstore/category/extensions)
       。
 
-- 对于 Firefox，请访问 [Firefox Add-ons](https://addons.mozilla.org/)。
-
-- 对于 Chrome，请访问 [Chrome Web Store](https://chrome.google.com/webstore/category/extensions)。
-
-- 对于 Firefox，请访问 [Firefox Add-ons](https://addons.mozilla.org/)。
-
 #### Selenium IDE 有哪些系统要求？
 
 [selenium IDE](/zh-cn/wiki/selenium-ide/) 是[selenium](/zh-cn/wiki/selenium/) 脚本的集成开发环境。它是作为 Chrome 和 Firefox 浏览器的扩展实现的。要使用[selenium IDE](/zh-cn/wiki/selenium-ide/)，您需要：
@@ -192,13 +171,6 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
 2. 搜索“Selenium IDE”。
 3. 单击“添加到Chrome”或“添加到Firefox”以安装扩展程序。 确保您的浏览器是最新的以避免兼容性问题。 IDE 本身不需要额外的驱动程序或服务器[setups](/zh-cn/wiki/setup/)，因为它直接在浏览器中运行。但是，如果您计划使用[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 进行更复杂的测试，则需要满足[WebDriver](/zh-cn/wiki/webdriver/) 的特定系统要求。
 
-- **谷歌浏览器**或 **火狐浏览器**浏览器已安装。
-
-- 对于 Chrome， **版本 55 及以上** 。
-
-- 对于火狐浏览器， **版本 54 及以上** 。
-
-- 支持这些浏览器版本的操作系统，例如 Windows、macOS 或 Linux。
 - 足够 **内存**和 **CPU**顺利运行您选择的浏览器的资源，因为 Selenium IDE 将在其中运行。
 
 #### 第一次如何设置 Selenium IDE？
@@ -213,15 +185,6 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
 - **[测试执行](/zh-cn/wiki/test-execution/) Delay** ：设置命令之间的延迟。
 - **默认超时**：调整 Selenium IDE 等待元素的时间。
 - **剪贴板选项**：管理如何将定位器复制到剪贴板。
-- **[测试执行](/zh-cn/wiki/test-execution/) Delay** ：设置命令之间的延迟。
-- **默认超时**：调整 Selenium IDE 等待元素的时间。
-- **剪贴板选项**：管理如何将定位器复制到剪贴板。
-6. **记录或创建测试**：您可以通过单击“记录”按钮并在浏览器中执行操作来**记录**新测试，也可以通过在 IDE 中添加命令来手动**创建**测试。
-7. **保存项目**：创建第一个测试后，单击“文件”>“保存项目”保存项目。在计算机上选择一个位置来存储项目文件。
-8. **运行测试**：要执行测试，请单击“运行”按钮。 [selenium IDE](/zh-cn/wiki/selenium-ide/) 将在浏览器中执行操作并报告结果。 请记住在进行更改和创建新测试时定期**保存您的项目**。
-
-6. **记录或创建测试**：您可以通过单击“记录”按钮并在浏览器中执行操作来**记录**新测试，也可以通过在 IDE 中添加命令来手动**创建**测试。
-7. **保存项目**：创建第一个测试后，单击“文件”>“保存项目”保存项目。在计算机上选择一个位置来存储项目文件。
 8. **运行测试**：要执行测试，请单击“运行”按钮。 [selenium IDE](/zh-cn/wiki/selenium-ide/) 将在浏览器中执行操作并报告结果。
 
 #### 在不同浏览器上配置 Selenium IDE 的步骤是什么？
@@ -237,16 +200,6 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
 3. **配置特定于浏览器的设置**（如有必要）：
 - **Chrome**：默认情况下，Selenium IDE 应该可以使用。但是，请右键单击该图标并选择“选项”来检查扩展设置，以确保其配置符合您的偏好。
 - **Firefox** ：与 Chrome 类似，通过单击菜单按钮，选择“附加组件”，找到 Selenium IDE，然后选择“选项”来检查附加选项。
-- **Chrome**：默认情况下，Selenium IDE 应该可以使用。但是，请右键单击该图标并选择“选项”来检查扩展设置，以确保其配置符合您的偏好。
-- **Firefox** ：与 Chrome 类似，通过单击菜单按钮，选择“附加组件”，找到 Selenium IDE，然后选择“选项”来检查附加选项。
-4. **设置[WebDriver](/zh-cn/wiki/webdriver/)**（对于[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)）：
-- 虽然 Selenium IDE 主要适用于 Chrome 和 Firefox，但您可以使用 WebDriver 在其他浏览器中运行测试。下载适合您的目标浏览器的相应 WebDriver（例如，Firefox 的 geckodriver、Chrome 的 chromedriver）并确保它位于系统的 PATH 中。
-5. **在[selenium IDE](/zh-cn/wiki/selenium-ide/)中配置[WebDriver](/zh-cn/wiki/webdriver/)**：
-- 打开 Selenium IDE，转到项目设置，并指定 WebDriver 可执行文件的路径（如果它不在 PATH 环境变量中）。
-6. **测试配置**：
-- 创建一个简单的测试用例并执行它以确保 Selenium IDE 与浏览器正确交互。 请记住，[selenium IDE](/zh-cn/wiki/selenium-ide/) 主要是 Chrome 和 Firefox 的记录和播放工具。对于全面的[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)，请考虑将[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 与编程语言和测试框架结合使用。
-
-- 对于 **Firefox** ：转到 Firefox 附加组件页面并搜索 Selenium IDE。单击“添加到 Firefox”进行安装。
 ### 使用 Selenium IDE
 
 #### 如何在 Selenium IDE 中创建测试用例？
@@ -270,8 +223,6 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
   ```
 请记住在创建或修改 [测试用例](/zh-cn/wiki/test-case/) 后保存您的项目，以避免丢失您的工作。
 
-1. **打开 [selenium IDE](/zh-cn/wiki/selenium-ide/)** ：从浏览器启动 IDE。
-2. **创建新项目**：如果您还没有创建新项目，请单击“创建新项目”并提供名称来创建新项目。
 3. **添加新的[测试用例](/zh-cn/wiki/test-case/)** ：在项目中，单击“添加新测试”以创建新的测试用例。
 9. **保存[测试用例](/zh-cn/wiki/test-case/)** ：确保在运行测试用例之前保存它。
 
@@ -280,27 +231,17 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
 要在 [selenium IDE](/zh-cn/wiki/selenium-ide/) 中记录测试，请执行以下步骤：
 
 1. 从浏览器中打开 Selenium IDE。
-2. 单击 **‘记录’**右上角的按钮开始录制。
+2. 单击 **‘记录’** 右上角的按钮开始录制。
 
 3. 在要测试的 Web 应用程序上执行操作。 Selenium IDE 将捕获每个操作作为单独的命令。
-4. 完成操作后，单击 **‘记录’**再次按下按钮即可停止录制。 要回放录制的测试：
+4. 完成操作后，单击 **‘记录’** 再次按下按钮即可停止录制。 要回放录制的测试：
 
 1. 确保在测试用例窗格中选择了记录的测试。
-2. 单击 **“奔跑”**按钮来执行测试。
+2. 单击 **“奔跑”** 按钮来执行测试。
 
 3. Selenium IDE 将在浏览器中重放记录的操作。
 4. 监控测试运行以确保其按预期执行。 IDE 将在运行时突出显示每个步骤，并将每个步骤标记为通过或失败。 请记住在录制后保存您的[测试用例](/zh-cn/wiki/test-case/)以供将来使用或修改。使用文件菜单中的“保存”或“另存为”选项来执行此操作。 对于更复杂的测试，您可能需要编辑记录的步骤以添加断言、循环或条件逻辑。这可以在 [selenium IDE](/zh-cn/wiki/selenium-ide/) 内的命令编辑器中完成。
 
-1. 从浏览器中打开 Selenium IDE。
-2. 单击 **‘记录’**右上角的按钮开始录制。
-
-3. 在要测试的 Web 应用程序上执行操作。 Selenium IDE 将捕获每个操作作为单独的命令。
-4. 完成操作后，单击 **‘记录’**再次按下按钮即可停止录制。
-
-1. 确保在测试用例窗格中选择了记录的测试。
-2. 单击 **“奔跑”**按钮来执行测试。
-
-3. Selenium IDE 将在浏览器中重放记录的操作。
 4. 监控测试运行以确保其按预期执行。 IDE 将在运行时突出显示每个步骤，并将每个步骤标记为通过或失败。
 
 #### 如何在 Selenium IDE 中调试测试用例？
@@ -379,15 +320,6 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
   ```
 通过结合这些策略，您可以在 [selenium IDE](/zh-cn/wiki/selenium-ide/) 中创建可以有效处理动态元素的强大测试。
 
-- **CSS 选择器**：使用 CSS 选择器，根据元素的结构特征而不是可能更改的属性来定位元素。例如，使用父子关系或第 n 个子选择器。
-- **XPath** ：制作不太可能改变的 XPath 表达式。避免绝对 XPath 并使用具有以下功能的相对 XPath `contains()` , `starts-with()` , 或 `text()` 来匹配元素。
-
-- **等待命令**：使用 `waitForElementPresent` 或 `waitForElementVisible` 命令等待元素在页面上出现或可见，然后再与其交互。
-
-- **JavaScript** ：当定位器失败时，使用 JavaScript 查找元素。执行返回动态元素的脚本。
-- **变量**：在测试期间将动态值存储在变量中，以便稍后重用它们来定位元素。
-- **模式**：使用模式匹配 `glob:` 或 `regex:` 匹配部分属性。
-
 #### 如何在 Selenium IDE 中导入和导出测试用例？
 
 要**在 [selenium IDE](/zh-cn/wiki/selenium-ide/) 中导入[测试用例](/zh-cn/wiki/test-case/)**：
@@ -400,17 +332,12 @@ selenium集成开发环境通过登录、项目搜索和 UI 交互工具增强�
 4. 选择文件并单击 **开放** 。 [测试用例](/zh-cn/wiki/test-case/) 通常保存为 `.side` 项目文件的一部分，其中包含项目的所有测试。单个[测试用例](/zh-cn/wiki/test-case/) 无法单独导入，因为它们不是独立文件。 要 **从 [selenium IDE](/zh-cn/wiki/selenium-ide/) 导出 [测试用例](/zh-cn/wiki/test-case/)**：
 
 1. 打开包含要导出的测试用例的项目。
-2. 右键单击​​测试用例面板中的测试用例。
+2. 右键单击测试用例面板中的测试用例。
 3. 选择 **出口**从上下文菜单中。
 
 4. 选择所需的导出格式（例如，Python pytest、Java JUnit）。
 5. 提供文件名和保存位置。
 6. 单击 **保存** 。 [selenium IDE](/zh-cn/wiki/selenium-ide/) 允许将[测试用例](/zh-cn/wiki/test-case/) 导出到各种编程语言和测试框架，从而能够与其他工具和版本控制系统集成。请记住，导出到特定语言/框架将生成可能需要额外编辑才能在 [selenium IDE](/zh-cn/wiki/selenium-ide/) 之外成功运行的代码。
-
-1. 打开 Selenium IDE。
-2. 单击 **打开现有项目**按钮或选择 `File > Open Project` 从菜单中。
-
-3. 导航至您所在的位置 `.side` 项目文件。
 
 4. 选择文件并单击 **开放** 。
 
@@ -438,10 +365,6 @@ Selenese 是用于在[selenium IDE](/zh-cn/wiki/selenium-ide/) 中编写[测试�
   ```
 经验丰富的[测试自动化](/zh-cn/wiki/test-automation/) 工程师使用Selenese 快速创建[测试用例](/zh-cn/wiki/test-case/)，无需编程语言。然而，对于更复杂的测试逻辑，用户可以通过使用 **JavaScript** 和 Selenese 来扩展 [selenium IDE](/zh-cn/wiki/selenium-ide/) 的功能，从而允许条件逻辑、循环和更复杂的 [测试场景](/zh-cn/wiki/test-scenario/)。
 
-- **Actions** ：通常操纵应用程序状态的命令，例如 `click` , `type` , 或 `select` 。
-
-- **访问器**：检查应用程序状态并将结果存储在变量中的命令，例如 `storeTitle` 作为页面标题。
-
 - **断言** ：验证应用程序是否处于某种状态的命令，例如 `assertText` 或 `verifyElementPresent` 。
 
 #### 如何处理 Selenium IDE 中的弹出窗口和警报？
@@ -468,10 +391,6 @@ Selenese 是用于在[selenium IDE](/zh-cn/wiki/selenium-ide/) 中编写[测试�
   answer on next prompt | The input value
   ```
 请记住在测试步骤中以正确的顺序放置这些命令，因为它们需要在 Web 应用程序触发实际弹出窗口或警报之前执行。 [selenium IDE](/zh-cn/wiki/selenium-ide/) 将等待弹出窗口或警报出现，然后再执行下一步，确保测试和应用程序状态之间的同步。
-
-- **警报**：使用 `assertAlert` 命令来验证警报文本，以及 `accept alert` 或 `dismiss alert` 关闭它。
-
-- **提示**：对于提示对话框，设置输入值 `answer on next prompt` 在提示出现之前，然后像警报一样处理它。
 
 #### 如何在 Selenium IDE 中执行数据驱动测试？
 
@@ -502,7 +421,7 @@ JavaScript 在[selenium IDE](/zh-cn/wiki/selenium-ide/) 中发挥着至关重要
 
 - **创建自定义函数**执行不属于默认 Selenium IDE 命令的特定操作或计算。
 
-- **访问浏览器[API](/zh-cn/wiki/api/)**与某些测试可能需要的浏览器级事件、存储或功能进行交互。
+- **访问浏览器[API](/zh-cn/wiki/api/)** 与某些测试可能需要的浏览器级事件、存储或功能进行交互。
 
 - **实施控制结构**像循环和条件语句一样，在 IDE 环境中实现更复杂的测试逻辑和流程控制。 以下是在 [selenium IDE](/zh-cn/wiki/selenium-ide/) [测试用例](/zh-cn/wiki/test-case/) 中使用 JavaScript 的示例：
 
@@ -514,12 +433,6 @@ JavaScript 在[selenium IDE](/zh-cn/wiki/selenium-ide/) 中发挥着至关重要
   ```
 通过将 JavaScript 直接嵌入[测试用例](/zh-cn/wiki/test-case/) 或引用外部 JavaScript 文件，工程师可以显着增强[selenium IDE](/zh-cn/wiki/selenium-ide/) 的功能，使其成为[自动化测试](/zh-cn/wiki/automated-testing/) 更强大、更灵活的工具。
 
-- **操作网页元素**在测试执行期间动态地进行，这对于处理标准命令不直接支持的复杂场景特别有用。
-
-- **创建自定义函数**执行不属于默认 Selenium IDE 命令的特定操作或计算。
-
-- **访问浏览器[API](/zh-cn/wiki/api/)**与某些测试可能需要的浏览器级事件、存储或功能进行交互。
-
 - **实施控制结构**像循环和条件语句一样，在 IDE 环境中实现更复杂的测试逻辑和流程控制。
 
 #### 如何将 Selenium IDE 与其他测试工具集成？
@@ -529,7 +442,7 @@ JavaScript 在[selenium IDE](/zh-cn/wiki/selenium-ide/) 中发挥着至关重要
   **[selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/)**：对于复杂的[测试场景](/zh-cn/wiki/test-scenario/)，将[selenium IDE](/zh-cn/wiki/selenium-ide/) 测试转换为[WebDriver](/zh-cn/wiki/webdriver/) 代码。 [WebDriver](/zh-cn/wiki/webdriver/) 可以与 Maven 或 Gradle 等工具集成，以进行依赖管理和构建过程。
   **CI/CD 工具**：与 Jenkins、Bamboo 或 GitLab CI 等 CI/CD 工具集成。使用插件或编写自定义脚本来触发 [selenium](/zh-cn/wiki/selenium/) 测试作为构建管道的一部分。
   **[API 测试](/zh-cn/wiki/api-testing/) 工具**：与 [Postman](/zh-cn/wiki/postman/) 或 Rest-Assured for [API 测试](/zh-cn/wiki/api-testing/) 等工具结合使用。使用 [selenium IDE](/zh-cn/wiki/selenium-ide/) 进行 UI 测试，使用 [API](/zh-cn/wiki/api/) 工具进行后端验证。
-  **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：与 [JMeter](/zh-cn/wiki/jmeter/) 或 Gatting for [性能测试](/zh-cn/wiki/performance-testing/) 集成。将功能测试转换为性能@@PR​​OTECTED_22@@。
+  **[性能测试](/zh-cn/wiki/performance-testing/) 工具**：与 [JMeter](/zh-cn/wiki/jmeter/) 或 Gatting for [性能测试](/zh-cn/wiki/performance-testing/) 集成。将功能测试转换为性能测试。
   **版本控制系统**：将测试存储在 Git 等版本控制系统中。这可以实现协作和版本跟踪。
   **[测试管理](/zh-cn/wiki/test-management/) 工具**：与 TestRail 或 Zephyr 等 [测试管理](/zh-cn/wiki/test-management/) 工具链接，以管理 [测试用例](/zh-cn/wiki/test-case/) 并报告结果。
   **自定义脚本**：使用自定义脚本将[selenium IDE](/zh-cn/wiki/selenium-ide/) 与其他工具连接。利用 Python 或 JavaScript 等编程语言创建集成脚本。

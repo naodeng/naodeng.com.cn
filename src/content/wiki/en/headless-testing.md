@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Headless Testing](#headless-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Headless Testing?](#questions-about-headless-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is headless testing?](#what-is-headless-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Headless Testing refers to the practice of running browser automation tests without the graphical user interface (GUI) being visible or rendered. In this approach, tests are conducted using a "headless" browser—a browser without a user interface. Since these tests do not require the browser's GUI elements to load visually, they tend to run faster and are particularly useful in environments where display devices, windows, or browsers are unnecessary or unavailable, such as continuous integration pipelines or server environments. Common tools for headless testing include Chrome's headless mode, PhantomJS, and Puppeteer. The primary advantage of headless testing is its efficiency, enabling faster feedback and more frequent test runs.
 
-## Related Terms:
+Related Terms:
 
 - [UI Testing](/en/wiki/ui-testing/)
 
@@ -101,7 +100,6 @@ Headless Testing refers to the practice of running browser automation tests with
   - Writing robust selectors and logic to handle dynamic content, as visual feedback is not available for troubleshooting.
   By integrating headless testing into the development workflow, engineers can achieve faster feedback loops, more efficient resource usage, and ultimately, a more reliable and maintainable [test suite](/en/wiki/test-suite/).
 
-
 #### What are the key differences between headless testing and traditional browser testing?
 
   Key differences between **headless testing** and **traditional browser testing** include:
@@ -114,7 +112,6 @@ Headless Testing refers to the practice of running browser automation tests with
   - **Real User Conditions** : Traditional testing mimics real user interactions more closely, which can be critical for capturing visual and interaction-based issues.
   - **[Cross-Browser Testing](/en/wiki/cross-browser-testing/)** : While both approaches support cross-browser testing, traditional testing allows for direct observation of browser-specific rendering and behaviors.
   In summary, headless testing is more resource-efficient and faster, suitable for automation and non-UI intensive tests, while traditional browser testing is more comprehensive for visual and interaction fidelity, better suited for final user experience validation.
-
 
 #### What are the advantages and disadvantages of headless testing?
 
@@ -194,7 +191,6 @@ Headless Testing refers to the practice of running browser automation tests with
     ```
   These tools are integral to modern [test automation](/en/wiki/test-automation/) strategies, enabling faster and more efficient testing cycles.
 
-
 #### How does headless testing work with tools like Puppeteer or Selenium?
 
   Headless testing with tools like **Puppeteer** or **[Selenium](/en/wiki/selenium/)** involves running tests without a graphical user interface. These tools control a headless browser programmatically, allowing automated scripts to perform actions as a user would.
@@ -247,7 +243,6 @@ Headless Testing refers to the practice of running browser automation tests with
   ```
   In this context, JavaScript is not just a language to write tests but also the **runtime environment** that executes these tests in a headless browser. Its **event-driven** nature and **non-blocking I/O** model make it well-suited for automating and testing web applications in a headless environment.
 
-
 #### How can I set up a headless testing environment?
 
   To set up a headless testing environment, follow these steps:
@@ -286,7 +281,6 @@ Headless Testing refers to the practice of running browser automation tests with
   10. **Monitor and review test results** to fix issues and improve [test coverage](/en/wiki/test-coverage/).
   Remember to **keep your dependencies up to date** and **regularly review your [test strategy](/en/wiki/test-strategy/)** to adapt to new testing requirements.
 
-
 ### Practical Application
 
 #### When should I use headless testing in my software development process?
@@ -322,7 +316,6 @@ Headless Testing refers to the practice of running browser automation tests with
   driver.quit();
   ```
   Incorporate headless tests into your CI/CD pipeline to ensure that they are part of the regular build process, providing rapid feedback on the health of the application.
-
 
 #### How can headless testing improve the speed and efficiency of my testing process?
 
@@ -410,15 +403,11 @@ Headless Testing refers to the practice of running browser automation tests with
      - Check out the code.
      - Install dependencies.
      - Start the headless tests.
-     - Check out the code.
-     - Install dependencies.
-     - Start the headless tests.
   6. **Run the tests** as part of the pipeline. Configure the pipeline to fail if any tests fail, ensuring immediate feedback.
   7. **Collect and store test results** for analysis. Use plugins or built-in features to visualize test outcomes.
   8. **Optimize the pipeline** by caching dependencies and using parallel execution where possible to reduce execution time.
   9. **Monitor and maintain** the [test suite](/en/wiki/test-suite/) to ensure it remains effective and up-to-date with application changes.
   By following these steps, you can achieve a seamless integration of headless testing into your CI/CD workflow, enhancing your software delivery process.
-
 
 #### What are some best practices for headless testing?
 
@@ -469,7 +458,6 @@ Headless Testing refers to the practice of running browser automation tests with
   - **Monitor Test Metrics**: Track test results over time to identify trends and areas for improvement.
   - **Documentation**: Maintain clear documentation for [test cases](/en/wiki/test-case/) to ensure clarity and ease of maintenance.
   By applying these practices, you can enhance the reliability and accuracy of your headless tests, leading to a more stable and predictable testing process.
-
 
 #### How does headless testing handle dynamic content on a webpage?
 

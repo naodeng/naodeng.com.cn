@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Load Testing](#load-testing)
-  - [See also:](#see-also)
   - [Questions about Load Testing?](#questions-about-load-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is load testing?](#what-is-load-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Load Testing evaluates how a system, software, or application behaves under multiple concurrent users. It mimics real-life conditions to determine system performance.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Load_testing)
 ## Questions about Load Testing?
@@ -207,8 +206,6 @@ Load Testing evaluates how a system, software, or application behaves under mult
   }
   ```
   Effective scripting requires **proficiency** in the specific language or tools used for load testing and an understanding of the application's **workflow** and **user interactions**.
-
-  - **Customize [test cases](/en/wiki/test-case/)**
 
 ### Process and Execution
 

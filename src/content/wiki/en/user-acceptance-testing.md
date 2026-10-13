@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [User Acceptance Testing](#user-acceptance-testing)
-  - [See also:](#see-also)
   - [Questions about User Acceptance Testing?](#questions-about-user-acceptance-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is User Acceptance Testing (UAT)?](#what-is-user-acceptance-testing-uat)
@@ -44,7 +43,7 @@ order: 0
 
 A testing phase where the customer validates the software in its intended environment before release, ensuring alignment with their expectations.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Acceptance_testing)
 ## Questions about User Acceptance Testing?
@@ -264,8 +263,6 @@ A testing phase where the customer validates the software in its intended enviro
     that all legal, regulatory, and company compliance requirements are met by the software.
   UAT testers must possess a strong understanding of the business domain and be able to think critically about the software's functionality from an end-user perspective. They should also have excellent communication skills to effectively collaborate with both technical teams and non-technical stakeholders.
 
-  - **Reviewing and understanding**
-
 #### How do stakeholders participate in User Acceptance Testing?
 
   Stakeholders play a **critical role** in User Acceptance Testing (UAT) by providing **real-world insights** and **feedback** on the software's functionality from the user's perspective. Their participation typically involves:
@@ -305,11 +302,6 @@ A testing phase where the customer validates the software in its intended enviro
   - **Ensuring consistency**
     in test execution.
   Ultimately, stakeholder involvement is essential for UAT's success, ensuring the software is ready for production and meets user expectations.
-
-  - **Reviewing and validating**
-
-  - **Communicating clearly**
-
 
 #### What is the role of the development team during User Acceptance Testing?
 

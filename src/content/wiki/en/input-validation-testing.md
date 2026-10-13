@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Input Validation Testing](#input-validation-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Input Validation Testing?](#questions-about-input-validation-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is input validation testing?](#what-is-input-validation-testing)
@@ -38,7 +37,7 @@ order: 0
 
 Input Validation Testing is a software testing technique that focuses on verifying the correctness and appropriateness of the data entered into a system. The primary objective is to ensure that the system can gracefully handle invalid, unexpected, or malicious input. By doing so, the system not only maintains its integrity and functions correctly but also safeguards against potential vulnerabilities like SQL injections, cross-site scripting, and other forms of attacks that exploit poorly validated input. Through Input Validation Testing, testers aim to identify weaknesses in input validation mechanisms and ensure that only valid and safe data passes through to the application's processing stages.
 
-## Related Terms:
+Related Terms:
 
 - [Security Testing](/en/wiki/security-testing/)
 

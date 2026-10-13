@@ -1,6 +1,6 @@
 ---
 title: "准入条件的问题？ ｜ Entry Criteria"
-description: "# 准入条件的问题？ ｜ Entry Criteria #### 基础与重要性 - 软件测试中的准入条件是什么？ 准入条件 (Entry Criteria) 是一组预先定义的条件，必须在测试活动开始前满足。"
+description: "准入条件是在测试阶段开始前必须满足的一组预定义条件或要求。它们有助于确认测试活动具备开始所需的输入、资源和准备状态。"
 section: "E"
 related:
   - manual-testing
@@ -44,11 +44,11 @@ order: 0
 
 #### 软件测试的准入标准是什么？
 
-[进入标准](/zh-cn/wiki/entry-criteria/) 是一组预定义的条件，在测试活动开始之前必须满足这些条件。 These conditions ensure that testing begins with a stable and viable baseline, reducing the risk of encountering critical issues during the [测试执行](/zh-cn/wiki/test-execution/) phase that could invalidate test results or lead to wasted effort.
-  In defining [进入标准](/zh-cn/wiki/entry-criteria/), stakeholders typically consider factors such as the readiness of the [测试环境](/zh-cn/wiki/test-environment/), the availability and stability of the test item, the completion of prerequisite steps like unit or [集成测试](/zh-cn/wiki/integration-testing/), and the establishment of baseline documentation. It's often the responsibility of the project manager or [质量保证](/zh-cn/wiki/quality-assurance/) lead to outline these criteria, with input from developers, testers, and other stakeholders.
-  当应用[进入标准](/zh-cn/wiki/entry-criteria/)时，[测试自动化](/zh-cn/wiki/test-automation/)工程师应在继续操作之前验证是否满足每个条件。 This might involve checks like ensuring the software build is deployed correctly, the [测试数据](/zh-cn/wiki/test-data/) is prepared, and all necessary tools and resources are in place.
+“[准入标准](/zh-cn/wiki/entry-criteria/)”是测试活动开始前必须满足的一组预定义条件。它们能确保测试从稳定、可用的基线开始，降低测试执行期间出现严重问题、导致结果失效或浪费工作的风险。
+  制定准入标准时，利益相关者通常会考虑[测试环境](/zh-cn/wiki/test-environment/)是否就绪、被测项是否可用且稳定、单元测试或[集成测试](/zh-cn/wiki/integration-testing/)等前置步骤是否完成，以及基线文档是否齐备。项目经理或[质量保证](/zh-cn/wiki/quality-assurance/)负责人通常负责拟定这些标准，并征求开发人员、测试人员和其他利益相关者的意见。
+  应用准入标准时，[测试自动化](/zh-cn/wiki/test-automation/)工程师应先验证每项条件是否满足，例如确认软件构建已正确部署、[测试数据](/zh-cn/wiki/test-data/)已准备就绪，且所需工具和资源均可用。
   随着项目的发展，[进入标准](/zh-cn/wiki/entry-criteria/) 可能会发生调整，特别是在范围发生变化或出现不可预见的挑战的情况下。然而，任何修改都应得到相关利益相关者的同意，以保持测试过程的完整性。
-  虽然[进入标准](/zh-cn/wiki/entry-criteria/) 专注于测试的开始，但它们与退出标准有着内在的联系，退出标准定义了测试何时结束。 Together, they frame the testing lifecycle, guiding both the initiation and the closure of test activities, and ensuring alignment with the overall [测试策略](/zh-cn/wiki/test-strategy/) and project goals.
+  准入标准关注测试的开始，与定义测试结束条件的退出标准相互关联。两者共同界定测试生命周期的起点和终点，并确保测试活动与整体[测试策略](/zh-cn/wiki/test-strategy/)及项目目标一致。
 
 #### 为什么进入标准在测试过程中很重要？
 
@@ -59,7 +59,7 @@ order: 0
 
 #### 准入标准如何影响软件产品的整体质量？
 
-[进入标准](/zh-cn/wiki/entry-criteria/) 确保**[软件测试](/zh-cn/wiki/software-testing/)** 仅在产品达到**定义的成熟度**时才开始。这有助于通过以下方式提高整体质量：
+[进入标准](/zh-cn/wiki/entry-criteria/) 确保 **[软件测试](/zh-cn/wiki/software-testing/)** 仅在产品达到**定义的成熟度**时才开始。这有助于通过以下方式提高整体质量：
 
 - **防止过早测试** ，这可能会导致在不稳定的构建上浪费精力。
 
@@ -70,14 +70,6 @@ order: 0
 - **降低缺陷漏掉的风险**由于对不完整或不稳定的产品进行测试。
 
 - **与项目里程碑保持一致** ，这有助于跟踪计划进度和质量目标的进度。 通过遵守[进入标准](/zh-cn/wiki/entry-criteria/)，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以专注于提供反映产品真实状态的**高质量测试结果**，从而就产品的发布准备情况做出更明智的决策。
-
-- **防止过早测试** ，这可能会导致在不稳定的构建上浪费精力。
-
-- **确保稳定的环境**和测试基线，从而获得更可靠和一致的测试结果。
-
-- **促进有效的资源分配** ，因为测试资源在准备测试的构建上得到有效利用。
-
-- **降低缺陷漏掉的风险**由于对不完整或不稳定的产品进行测试。
 
 - **与项目里程碑保持一致** ，这有助于跟踪计划进度和质量目标的进度。
 
@@ -96,12 +88,12 @@ order: 0
 - **资源分配**：分配具有测试执行和分析所需技能的人员。
 - **风险评估**：识别和评估可能影响测试的风险。
 - **文档**：提供必要的文档，包括测试计划和测试用例。
-- **基线指标**：建立用于比较和评估测试结果的基线指标。 These components ensure that testing begins with a clear understanding of what will be tested, how it will be tested, and the expected outcomes, thus facilitating a smooth and effective [测试自动化](/zh-cn/wiki/test-automation/) process.
+- **基线指标**：建立用于比较和评估测试结果的基线指标。这些组成部分能明确测试范围、测试方法和预期结果，从而支持顺畅有效的[测试自动化](/zh-cn/wiki/test-automation/)流程。
 
 #### 准入标准是如何定义的以及由谁定义的？
 
 [进入标准](/zh-cn/wiki/entry-criteria/) 通常由涉及关键利益相关者（如 **测试经理、项目经理、开发人员**和 **业务分析师**）的 **协作努力** 来定义。定义过程通常以项目的**范围**、**目标**和**约束**为指导。
-  The **test lead** or **test manager** usually takes the initiative to draft the [进入标准](/zh-cn/wiki/entry-criteria/), leveraging their understanding of the testing requirements and the project's context.他们将考虑诸如**[测试环境](/zh-cn/wiki/test-environment/)**的准备情况、**[测试数据](/zh-cn/wiki/test-data/)**的可用性、**功能开发的完成度**以及**构建的稳定性**等因素。
+  **测试负责人**或**测试经理**通常会根据测试需求和项目背景起草[进入标准](/zh-cn/wiki/entry-criteria/)。他们会考虑**[测试环境](/zh-cn/wiki/test-environment/)**是否就绪、**[测试数据](/zh-cn/wiki/test-data/)**是否可用、**功能开发是否完成**以及**构建是否稳定**等因素。
   草案准备好后，将通过与**开发团队**的讨论进行审查和完善，以确保技术可行性，并与**业务利益相关者**进行讨论，以符合业务需求和风险承受能力。这种协作方法确保[进入标准](/zh-cn/wiki/entry-criteria/) 是现实的并得到所有相关方的同意。
   在某些情况下，特别是在**敏捷环境**中，**产品所有者**也可能在定义[进入标准](/zh-cn/wiki/entry-criteria/)中发挥重要作用，特别是当标准与用户故事或验收标准密切相关时。
   然后，[进入标准](/zh-cn/wiki/entry-criteria/) 的最终集合会被记录下来，通常作为 **[测试计划](/zh-cn/wiki/test-plan/)** 的一部分，并作为正式测试开始之前的 **检查点**。这些标准必须**明确**、**可衡量**和**可实现**，以防止误解并确保顺利过渡到测试阶段。
@@ -139,10 +131,6 @@ order: 0
 5. **在[测试计划](/zh-cn/wiki/test-plan/) 或测试准备报告中记录[进入标准](/zh-cn/wiki/entry-criteria/) 的履行情况**。这是项目已准备好进行测试的正式记录。
 6. **与[测试管理](/zh-cn/wiki/test-management/) 工具集成**以跟踪和执行[进入标准](/zh-cn/wiki/entry-criteria/)。许多工具允许设置在下一阶段开始之前必须通过的关卡。
 7. **在测试阶段持续重新评估**。如果项目范围或环境发生变化，请重新评估 [进入标准](/zh-cn/wiki/entry-criteria/) 以确保它们仍然得到满足。 本质上，[进入标准](/zh-cn/wiki/entry-criteria/) 被用作**前提条件检查**，以促进结构化和有效的测试，防止过早[测试执行](/zh-cn/wiki/test-execution/) 和潜在的返工。
-
-1. **在测试开始之前查看标准**，以确认满足所有条件。这包括可测试代码的可用性、[测试环境](/zh-cn/wiki/test-environment/) 准备情况、[测试数据](/zh-cn/wiki/test-data/) [环境搭建](/zh-cn/wiki/setup/) 以及先前开发里程碑的完成。
-2. **经常使用清单[验证 ](/zh-cn/wiki/verification/)**。测试人员检查 [进入标准](/zh-cn/wiki/entry-criteria/) 项目列表，将每个项目标记为满足或未满足。只有当所有项目都检查合格后，测试才会继续进行。
-7. **在测试阶段持续重新评估**。如果项目范围或环境发生变化，请重新评估 [进入标准](/zh-cn/wiki/entry-criteria/) 以确保它们仍然得到满足。
 
 #### 现实世界软件测试场景中的进入标准有哪些示例？
 
@@ -204,7 +192,7 @@ order: 0
 #### 准入标准和测试计划之间有什么关系？
 
 **[进入标准](/zh-cn/wiki/entry-criteria/)** 和 **测试计划** 之间的关系是测试阶段的结构和成功的基础。 [进入标准](/zh-cn/wiki/entry-criteria/) 作为测试开始前必须满足的**前提条件**，从而直接影响[测试计划](/zh-cn/wiki/test-plan/) 的**范围**和**时间表**。
-  In test planning, [进入标准](/zh-cn/wiki/entry-criteria/) are used to:
+在测试计划中，[进入标准](/zh-cn/wiki/entry-criteria/)可用于：
 
 - **定义基线**测试何时开始执行，确保仅当软件准备就绪且足够稳定以进行有效的测试周期时才开始测试。
 
@@ -212,13 +200,7 @@ order: 0
 
 - **降低风险**通过防止过早测试，这可能会导致在与未就绪的功能或不稳定的构建相关的缺陷上浪费精力和资源。
 
-- **促进沟通**提供明确的、商定的进展基准，这对于协调活动和期望至关重要。 在测试计划阶段，标准被集成到计划中，以建立明确的**里程碑**和**检查点**。这种集成有助于确保测试团队清楚地了解何时继续进行测试活动以及何时暂停，直至满足进入条件。 总之，[进入标准](/zh-cn/wiki/entry-criteria/) 是测试计划不可或缺的一部分，因为它们为结构化且高效的测试流程奠定了基础，确保测试工作与软件的准备情况和项目目标保持一致。
-
-- **定义基线**测试何时开始执行，确保仅当软件准备就绪且足够稳定以进行有效的测试周期时才开始测试。
-
-- **指导资源分配** ，因为满足进入标准可以表明需要特定的工具、环境或人员。
-
-- **降低风险**通过防止过早测试，这可能会导致在与未就绪的功能或不稳定的构建相关的缺陷上浪费精力和资源。
+- **促进沟通**：提供明确且经各方同意的进度基准，帮助协调活动和预期。在测试计划阶段，应将这些标准纳入计划，设定清晰的**里程碑**和**检查点**，让测试团队知道何时可以继续测试、何时需要暂停并等待条件满足。总之，[进入标准](/zh-cn/wiki/entry-criteria/)是测试计划的重要组成部分，它为结构化、高效的测试流程奠定基础，并使测试工作符合软件就绪情况和项目目标。
 
 - **促进沟通**提供明确的、商定的进展基准，这对于协调活动和期望至关重要。
 
@@ -230,7 +212,7 @@ order: 0
 - **指导资源分配**：通过设置明确的切入点，团队可以在正确的时间高效地分配资源，例如人员和测试环境。
 - **简化工作流程**：进入标准有助于对测试活动进行排序，确保在测试开始之前解决依赖关系。
 - **降低风险**：通过遵守进入标准，团队可以避免与测试不完整的功能或具有已知关键问题的功能相关的风险。
-- **促进自动化**：对于自动化测试，可以将进入标准集成到 CI/CD 管道中，以便在满足条件时自动触发测试套件。 In practice, [进入标准](/zh-cn/wiki/entry-criteria/) might include conditions such as:
+- **促进自动化**：对于自动化测试，可以将进入标准集成到 CI/CD 流水线中，在满足条件时自动触发测试套件。实际的进入条件例如：
 
   ```
   allFeaturesImplemented = true;

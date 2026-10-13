@@ -1,6 +1,6 @@
 ---
 title: "质量保证 ｜ Quality Assurance"
-description: "质量保证 (QA) 是一个系统性的过程，旨在确定产品或服务是否满足规定的要求。它涉及一套确保产品开发过程质量的活动。QA 是前瞻性的，专注于通过改进生产过程来预防缺陷。它不仅是建立一个良好的质量管理系统，还包括评估其充分性。在软件开发中，QA 涵盖了整个软件开发生命周期 (SDLC)…"
+description: "质量保证 (QA) 是一个系统性的过程，旨在确定产品或服务是否满足规定的要求。它涉及一套确保产品开发过程质量的活动。QA 是前瞻性的，专注于通过改进生产过程来预防缺陷。它不仅是建立一个良好的质量管理系统，还包括评估其充分性。"
 section: "Q"
 related:
   - quality-management
@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [质量保证 ｜ Quality Assurance](#质量保证--quality-assurance)
-  - [另请参阅：](#另请参阅)
   - [有关质量保证的问题吗？](#有关质量保证的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是质量保证？](#什么是质量保证)
@@ -46,7 +45,7 @@ order: 0
 
 品质保证 (QA) 是确保尽可能高的产品或服务质量的过程。它强调改进流程以实现一致的质量交付成果。
 
-## 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Quality_assurance)
 ## 有关质量保证的问题吗？
@@ -119,20 +118,23 @@ order: 0
 - **[手动测试](/zh-cn/wiki/manual-testing/)**：人类测试人员在没有自动化工具的情况下手动执行[测试用例](/zh-cn/wiki/test-case/)。这包括[探索性测试](/zh-cn/wiki/exploratory-testing/)、临时测试和[可用性测试](/zh-cn/wiki/usability-testing/)。
 - **[自动化测试](/zh-cn/wiki/automated-testing/)**：使用工具和脚本自动执行[测试用例](/zh-cn/wiki/test-case/)。这包括[单元测试](/zh-cn/wiki/unit-testing/)、[集成测试](/zh-cn/wiki/integration-testing/)、[系统测试](/zh-cn/wiki/system-testing/) 和[回归测试](/zh-cn/wiki/regression-testing/)。
 
-// JavaScript 中的简单自动化单元测试示例
-  描述('计算器', () => {
-  it('应该将两个数字相加', () => {
-  期望(添加(2, 3)).toEqual(5);
+```javascript
+describe('Calculator', () => {
+  it('adds two numbers', () => {
+    expect(add(2, 3)).toBe(5);
   });
+});
+```
 
-- **Performance Testing**: Evaluating the speed, responsiveness, and stability of a system under a particular workload. Tools like JMeter or LoadRunner are often used.
-- **Security Testing**: Identifying vulnerabilities, threats, and risks in the software. Techniques include penetration testing and using automated security scanning tools.
-- **Compatibility Testing**: Ensuring software operates as expected across different browsers, devices, and operating systems.
-- **User Acceptance Testing (UAT)**: Conducted to ensure that the system meets the business requirements and is ready for operational use.
-- **Code Reviews**: Peers review source code to find defects and suggest improvements. This can be manual or supported by tools like SonarQube.
-- **Static Code Analysis**: Tools analyze source code to detect potential vulnerabilities, code smells, and adherence to coding standards without executing the program.
-- **Risk-Based Testing**: Prioritizing testing efforts based on the risk of failure and its impact on the project.
-Each technique plays a crucial role in identifying defects, ensuring functionality, and maintaining the overall quality of the software product.
+- **性能测试**：评估系统在特定负载下的速度、响应能力和稳定性，常用工具包括 JMeter 和 LoadRunner。
+- **安全测试**：识别软件中的漏洞、威胁和风险，可采用渗透测试和自动化安全扫描。
+- **兼容性测试**：验证软件在不同浏览器、设备和操作系统上的表现。
+- **用户验收测试（UAT）**：确认系统满足业务需求并已准备好投入使用。
+- **代码审查**：由同行检查源代码以发现缺陷、提出改进建议，可手动开展，也可借助 SonarQube 等工具。
+- **静态代码分析**：不执行程序，使用工具检查潜在漏洞、代码异味和编码规范问题。
+- **基于风险的测试**：根据故障发生的可能性及其对项目的影响确定测试优先级。
+
+这些技术共同帮助发现缺陷、验证功能并维护软件产品的整体质量。
 
 #### 质量保证流程通常如何运作？
 
@@ -140,14 +142,14 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
   接下来，**[测试用例](/zh-cn/wiki/test-case/) 开发**开始，包括创建详细的[测试场景](/zh-cn/wiki/test-scenario/) 和脚本。然后，这些 [测试用例](/zh-cn/wiki/test-case/) 在 **[测试执行](/zh-cn/wiki/test-execution/)** 阶段执行，在此阶段根据要求验证软件功能。
   **缺陷跟踪**是一项持续的活动，其中识别的 [bugs](/zh-cn/wiki/bug/) 会被报告、管理和监控直至解决。在整个过程中，**测试报告**为利益相关者提供有关测试进度和质量状态的信息。
   **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)** 至关重要，确保在模拟生产条件的受控设置中测试软件。
-  自动化工程师通过编写脚本来自动化重复的[测试用例](/zh-cn/wiki/test-case/)来专注于**[测试自动化](/zh-cn/wiki/test-automation/)**，从而提高效率和一致性。
+  自动化工程师通过编写脚本来自动化重复的[测试用例](/zh-cn/wiki/test-case/)来专注于 **[测试自动化](/zh-cn/wiki/test-automation/)**，从而提高效率和一致性。
   **持续集成和交付 (CI/CD)** 实践通常集成到 QA 流程中，允许自动化构建和测试，这有助于及早发现问题。
   最后，**测试结束**活动结束了整个过程，包括测试工件的收集、从测试周期中学习以及为未来的版本进行改进。
   在整个过程中，**风险管理**至关重要，根据潜在影响确定测试的优先级，而**质量指标**用于衡量和改进测试过程和产品质量。
 
 #### 测试在质量保证中的作用是什么？
 
-测试在[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 中起着**关键作用**，因为它涉及软件的**[验证 ](/zh-cn/wiki/verification/)** 和**验证**，以确保其满足指定的要求和标准。这是一个**主动的过程**，旨在识别与实际产品功能相比的缺陷、差距或缺失的需求。
+测试在[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 中起着**关键作用**，因为它涉及软件的 **[验证 ](/zh-cn/wiki/verification/)** 和**验证**，以确保其满足指定的要求和标准。这是一个**主动的过程**，旨在识别与实际产品功能相比的缺陷、差距或缺失的需求。
   在 QA 中，测试用于：
 
 - **评估质量**的软件，确保产品可靠、高效运行且无缺陷。
@@ -164,25 +166,7 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 
 - **重复性**和 **一致性**在测试执行中。
 
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**能够在更短的时间内运行更多测试。
-
-- **效率**在资源利用方面，将人类测试人员解放出来，专注于需要人类判断的更复杂的测试场景。
-
-- **评估质量**的软件，确保产品可靠、高效运行且无缺陷。
-
-- **降低风险**通过在开发周期的早期识别潜在问题，这可以节省时间和资源。
-
-- **验证**软件根据业务逻辑和用户需求运行。
-
-- **验证**该软件符合技术要求，包括性能、安全性和集成标准。
-
-- **支持持续改进**通过提供质量反馈并建议需要改进的领域。
-
-- **更快的反馈周期** ，以便更快地解决问题。
-
-- **重复性**和 **一致性**在测试执行中。
-
-- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)**能够在更短的时间内运行更多测试。
+- **增加[测试覆盖率](/zh-cn/wiki/test-coverage/)** 能够在更短的时间内运行更多测试。
 
 - **效率**在资源利用方面，将人类测试人员解放出来，专注于需要人类判断的更复杂的测试场景。
 
@@ -207,9 +191,9 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 
 [质量保证](/zh-cn/wiki/quality-assurance/) (QA) 专家确保软件符合既定标准和最终用户要求。他们的职责包括：
 
-- **设计[测试计划](/zh-cn/wiki/test-plan/) 和[测试用例](/zh-cn/wiki/test-case/)**涵盖软件的功能、性能和安全方面。
+- **设计[测试计划](/zh-cn/wiki/test-plan/) 和[测试用例](/zh-cn/wiki/test-case/)** 涵盖软件的功能、性能和安全方面。
 
-- **执行[测试用例](/zh-cn/wiki/test-case/)**手动和使用自动化工具，并记录结果。
+- **执行[测试用例](/zh-cn/wiki/test-case/)** 手动和使用自动化工具，并记录结果。
 
 - **识别缺陷**软件功能、可用性和性能方面的不一致。
 
@@ -217,7 +201,7 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 
 - **验证修复**并进行回归测试以确保没有引入新问题。
 
-- **维护[测试环境](/zh-cn/wiki/test-environment/)**尽可能地反映生产情况。
+- **维护[测试环境](/zh-cn/wiki/test-environment/)** 尽可能地反映生产情况。
 
 - **增强测试框架**并不断改进自动化测试的效率和覆盖范围。
 
@@ -225,29 +209,9 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 
 - **审查需求和设计文件**确保可测试性并提供有关潜在质量问题的反馈。
 
-- **监控和报告[测试执行](/zh-cn/wiki/test-execution/)**和缺陷指标，以提供有关软件质量和发布准备情况的见解。
+- **监控和报告[测试执行](/zh-cn/wiki/test-execution/)** 和缺陷指标，以提供有关软件质量和发布准备情况的见解。
 
 - **及时了解新的测试工具和测试策略**改进测试流程和产品质量。 QA 专家在软件开发生命周期中发挥着关键作用，他们与开发人员、产品经理和其他利益相关者密切合作，以确保软件可靠、用户友好，并满足或超过质量标准。
-
-- **设计[测试计划](/zh-cn/wiki/test-plan/) 和[测试用例](/zh-cn/wiki/test-case/)**涵盖软件的功能、性能和安全方面。
-
-- **执行[测试用例](/zh-cn/wiki/test-case/)**手动和使用自动化工具，并记录结果。
-
-- **识别缺陷**软件功能、可用性和性能方面的不一致。
-
-- **与开发人员合作**以确保缺陷得到理解和解决。
-
-- **验证修复**并进行回归测试以确保没有引入新问题。
-
-- **维护[测试环境](/zh-cn/wiki/test-environment/)**尽可能地反映生产情况。
-
-- **增强测试框架**并不断改进自动化测试的效率和覆盖范围。
-
-- **参加敏捷仪式** ，例如冲刺计划、站立会议和回顾，以提供 QA 见解。
-
-- **审查需求和设计文件**确保可测试性并提供有关潜在质量问题的反馈。
-
-- **监控和报告[测试执行](/zh-cn/wiki/test-execution/)**和缺陷指标，以提供有关软件质量和发布准备情况的见解。
 
 - **及时了解新的测试工具和测试策略**改进测试流程和产品质量。
 
@@ -255,7 +219,7 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 
 [质量保证](/zh-cn/wiki/quality-assurance/) (QA) 专家与软件开发团队中的各个角色密切合作，以确保交付高质量的产品。他们与 **产品经理** 合作，了解需求并确保 [测试计划](/zh-cn/wiki/test-plan/) 符合客户期望。与**开发人员**的合作至关重要； QA 提供问题反馈，并经常参与代码审查，以在开发周期的早期倡导质量。他们还可以与开发人员合作创建**单元测试**。
   质量保证专家与**业务分析师**合作以澄清需求并确保验收标准是可测试的。他们与**用户体验 (UX) 设计师**合作，验证软件是否符合可用性标准并提供积极的用户体验。
-  在敏捷环境中，QA 是 **[Scrum](/zh-cn/wiki/scrum/) 团队**的一部分，积极参与冲刺计划、每日站会和回顾，以不断将质量集成到流程中。他们确保将**自动化测试**集成到**持续集成/持续部署（CI/CD）**管道中，并与**DevOps工程师**合作以促进这一点。
+  在敏捷环境中，QA 是 **[Scrum](/zh-cn/wiki/scrum/) 团队**的一部分，积极参与冲刺计划、每日站会和回顾，以不断将质量集成到流程中。他们确保将**自动化测试**集成到**持续集成/持续部署（CI/CD）** 管道中，并与**DevOps工程师**合作以促进这一点。
   QA 还与**客户支持**合作，了解常见的用户问题，从而为测试策略提供信息。此外，他们可能与**发布经理**合作，以确保软件已准备好部署并满足发布的质量标准。
   有效的协作通常涉及：
 
@@ -272,14 +236,12 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 - **分析思维**：分析需求、设计全面的[测试计划](/zh-cn/wiki/test-plan/) 以及识别潜在问题的能力是确保[软件质量](/zh-cn/wiki/software-quality/) 的关键。
 - **注重细节**：[测试用例](/zh-cn/wiki/test-case/) 创建、执行和[bug](/zh-cn/wiki/bug/) 报告中的一丝不苟确保不会漏掉任何缺陷。
 - **解决问题的技能**：排除故障和解决复杂问题的能力对于维护 [测试自动化](/zh-cn/wiki/test-automation/) 套件的可靠性至关重要。
-- **沟通**​​：与开发人员、项目经理和其他利益相关者的清晰沟通对于使 QA 目标与业务目标保持一致非常重要。
+- **沟通**：与开发人员、项目经理和其他利益相关者的清晰沟通对于使 QA 目标与业务目标保持一致非常重要。
 - **适应性**：跟上不断发展的测试方法、工具和软件开发实践对于保持与该领域的相关性是必要的。
 - **了解敏捷方法**：了解敏捷原则有助于使测试活动与迭代开发周期保持一致。
 - **版本控制系统**：熟练掌握 Git 等系统对于代码管理和协作非常重要。
 - **风险管理**：能够根据潜在风险确定测试工作的优先级，确保资源的有效利用。 这些技能使 QA 专家能够设计、开发和维护有效的 [测试自动化](/zh-cn/wiki/test-automation/) 策略，从而有助于交付高质量的软件。
 
-- **技术熟练程度**：了解编程语言（例如 Java、Python）、[数据库](/zh-cn/wiki/database/) 和 Web 技术对于创建和维护自动化 [测试脚本](/zh-cn/wiki/test-script/) 至关重要。
-- **工具专业知识**：熟悉自动化工具（如 [selenium](/zh-cn/wiki/selenium/)、Appium 或 [Cypress](/zh-cn/wiki/cypress/)）和持续集成系统（如 Jenkins 或 CircleCI）对于高效的测试工作流程是必要的。
 - **分析思维**：分析需求、设计全面[测试计划](/zh-cn/wiki/test-plan/)以及识别潜在问题的能力是确保[软件质量](/zh-cn/wiki/software-quality/)的关键。
 - **注重细节**：[测试用例](/zh-cn/wiki/test-case/) 创建、执行和[bug](/zh-cn/wiki/bug/) 报告一丝不苟，确保没有任何缺陷被漏掉。
 - **风险管理**：能够根据潜在风险确定测试工作的优先级，确保资源的有效利用。
@@ -287,7 +249,7 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 #### 质量保证专家的职业道路是什么？
 
 **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 专家**的职业道路通常从入门级职位发展到更高级的职位，通常会分支到专业领域或管理领域。最初，人们可以从 **QA 分析师** 或 **测试工程师** 开始，专注于 [手动测试](/zh-cn/wiki/manual-testing/) 并学习 [软件质量](/zh-cn/wiki/software-quality/) 的基础知识。
-  凭借经验，质量检查专家可以晋升为**高级质量检查分析师**或**高级测试工程师**，承担更复杂的项目并可能指导初级人员。专业化选项包括成为**[测试自动化](/zh-cn/wiki/test-automation/) 工程师**，重点是开发自动化[测试脚本](/zh-cn/wiki/test-script/) 和框架，或成为**性能测试工程师**，专注于负载和[压力测试](/zh-cn/wiki/stress-testing/) 等非功能方面。
+  凭借经验，质量检查专家可以晋升为**高级质量检查分析师**或**高级测试工程师**，承担更复杂的项目并可能指导初级人员。专业化选项包括成为 **[测试自动化](/zh-cn/wiki/test-automation/) 工程师**，重点是开发自动化[测试脚本](/zh-cn/wiki/test-script/) 和框架，或成为**性能测试工程师**，专注于负载和[压力测试](/zh-cn/wiki/stress-testing/) 等非功能方面。
   进一步晋升可能会担任**质量保证团队领导**或**测试经理**等角色，其中领导和战略规划将成为关键职责。在这些角色中，人员负责监督测试团队、管理资源并确保与业务目标保持一致。
   对于那些具有战略思维的人来说，**QA 顾问**或**质量工程师**角色提供了就跨项目或组织的流程改进和质量策略提供建议的机会。
   最后，在职业阶梯的顶端，像**质量保证总监**或**质量副总裁**这样的职位涉及执行层决策、制定公司的质量愿景以及将质量保证流程与组织目标相结合。
@@ -351,11 +313,6 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 - **[ISTQB](/zh-cn/wiki/istqb/)**：虽然不是正式标准，但国际 [软件测试](/zh-cn/wiki/software-testing/) 资格委员会为 [软件测试](/zh-cn/wiki/software-testing/) 提供认证并定义最佳实践，这些实践在业界得到广泛接受。
 - **[CMMI](/zh-cn/wiki/cmmi/)（能力成熟度模型集成）**：[CMMI](/zh-cn/wiki/cmmi/) 是一个流程级别改进培训和评估计划，可帮助组织改进其软件质量保证流程。 遵守这些标准有助于 QA 专业人员将其 [测试自动化](/zh-cn/wiki/test-automation/) 策略与行业最佳实践保持一致，确保软件产品满足客户期望和监管要求。
 
-- **ISO/IEC 9126**：该标准重点关注[软件质量](/zh-cn/wiki/software-quality/)，并概述了[软件质量](/zh-cn/wiki/software-quality/) 评估模型，包括六个质量特征：功能性、可靠性、可用性、效率、[可维护性](/zh-cn/wiki/maintainability/) 和可移植性。
-- **ISO/IEC 25010**：继 ISO/IEC 9126 之后，该标准提供了 [软件质量](/zh-cn/wiki/software-quality/) 要求和评估的综合模型，详细说明了产品质量和系统质量属性。
-- **[IEEE 829](/zh-cn/wiki/ieee-829/)**：也称为 IEEE 软件测试文档标准，该标准指定了在[软件测试](/zh-cn/wiki/software-testing/) 的八个定义阶段中使用的一组文档的形式，每个阶段都可能生成其自己的单独类型的文档。
-- **IEEE 730**：该标准提供了建立 [质量保证](/zh-cn/wiki/quality-assurance/) 计划的框架，包括管理、执行和记录软件质量保证的流程。
-- **[ISTQB](/zh-cn/wiki/istqb/)**：虽然不是正式标准，但国际 [软件测试](/zh-cn/wiki/software-testing/) 资格委员会为 [软件测试](/zh-cn/wiki/software-testing/) 提供认证并定义最佳实践，这些实践在业界得到广泛接受。
 - **[CMMI](/zh-cn/wiki/cmmi/)（能力成熟度模型集成）**：[CMMI](/zh-cn/wiki/cmmi/) 是一个流程级别改进培训和评估计划，可帮助组织改进其软件质量保证流程。
 
 #### 遵守标准如何有助于质量保证？
@@ -371,10 +328,10 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 
 #### 如何在软件开发项目中实施质量保证标准？
 
-在软件开发项目中实施**[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 标准**涉及整合系统措施和程序，以确保软件满足某些质量基准。以下是针对经验丰富的 [测试自动化](/zh-cn/wiki/test-automation/) 工程师的简洁指南：
+在软件开发项目中实施 **[质量保证](/zh-cn/wiki/quality-assurance/) (QA) 标准**涉及整合系统措施和程序，以确保软件满足某些质量基准。以下是针对经验丰富的 [测试自动化](/zh-cn/wiki/test-automation/) 工程师的简洁指南：
 
 1. **定义质量标准**：与 ISO 9001 等行业标准或医疗软件的 IEC 62304 等特定领域标准保持一致。明确定义质量对您的项目意味着什么。
-2. **集成到开发生命周期**：将 QA 实践嵌入到软件开发生命周期 (SDLC) 的每个阶段，从需​​求收集到设计、编码和部署。
+2. **集成到开发生命周期**：将 QA 实践嵌入到软件开发生命周期 (SDLC) 的每个阶段，从需求收集到设计、编码和部署。
 3. **自动化测试**：利用[测试自动化](/zh-cn/wiki/test-automation/)框架和工具执行重复且广泛的测试任务。使用与您的项目堆栈相符的语言和框架，例如：
 
   ```
@@ -391,10 +348,3 @@ Each technique plays a crucial role in identifying defects, ensuring functionali
 8. **培训和知识共享**：让团队了解最新的 QA 方法和工具。
 9. **监控和测量**：使用指标来监控 QA 活动的有效性并进行数据驱动的改进。
 10. **反馈循环**：在QA、开发和运营之间建立反馈机制，以确保持续的质量改进。 通过整合这些实践，质量保证标准成为开发过程的固有组成部分，从而产生更可靠和高质量的软件。
-
-  ```
-    import { WebDriver, By } from 'selenium-webdriver';
-    let driver = new WebDriver();
-    driver.get('http://yourapp.com');
-    driver.findElement(By.id('testElement')).click();
-  ```

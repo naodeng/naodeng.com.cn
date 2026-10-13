@@ -74,16 +74,6 @@ Related Terms:
 
   - Difficult to reproduce issues without detailed notes.
   - Complements structured testing in later stages.
-  - **Unstructured**
-    and
-    **informal**
-    testing method.
-
-  - Relies on tester's
-    **intuition**
-    and
-    **experience**
-    .
 
 
 #### Why is Ad Hoc testing important in the software development lifecycle?
@@ -117,7 +107,6 @@ Related Terms:
   - **Not Suitable for All Stages** : May not be effective in later stages of development where more formal verification is required.
   Remember, Ad Hoc testing is a complement to other testing methods, not a standalone solution. It's most effective when used by **experienced testers** who can quickly identify and explore complex application areas.
 
-
 ### Implementation and Techniques
 
 #### How is Ad Hoc testing performed?
@@ -131,14 +120,10 @@ Related Terms:
     - Trying out different inputs
     - Navigating through the application in unexpected ways
     - Attempting to break the application with unusual behavior
-    - Trying out different inputs
-    - Navigating through the application in unexpected ways
-    - Attempting to break the application with unusual behavior
   4. **Note Observations** : Keep track of any defects or strange behaviors observed during testing.
   5. **Report [Bugs](/en/wiki/bug/)** : Communicate found issues to the development team for resolution.
   During Ad Hoc testing, testers may employ techniques like **[error guessing](/en/wiki/error-guessing/)** or **[exploratory testing](/en/wiki/exploratory-testing/)** to guide their approach. The process is inherently **flexible and unstructured**, allowing testers to rapidly identify issues that structured testing might miss.
   It's important to note that while Ad Hoc testing can be spontaneous, having a **broad knowledge of the system** and its potential weak points can lead to more effective testing sessions.
-
 
 #### What are some common techniques used in Ad Hoc testing?
 
@@ -150,7 +135,6 @@ Related Terms:
   - **[Pair Testing](/en/wiki/pair-testing/)** : Two testers work together at one keyboard; one operates the testing while the other provides guidance and records findings.
   - **[Session-Based Testing](/en/wiki/session-based-testing/)** : Testing is structured into uninterrupted sessions focused on a particular area, with testers documenting their findings and thought processes.
   These techniques are often used in a **complementary** manner, depending on the context and goals of the testing session. They leverage the tester's creativity, experience, and intuition to uncover issues that structured testing might miss.
-
 
 #### What skills are required to effectively perform Ad Hoc testing?
 
@@ -166,7 +150,6 @@ Related Terms:
   - **Adaptability** : Flexibility to switch focus and adapt to new information or areas of concern as they arise during testing.
   - **Time Management** : Skill to manage time effectively, as Ad Hoc testing is often time-boxed or performed in limited time frames.
   These skills help testers to perform **Ad Hoc testing** in a manner that is both efficient and effective, providing valuable insights into the software's quality and reliability.
-
 
 #### Can Ad Hoc testing be automated or is it strictly manual?
 
@@ -189,7 +172,6 @@ Related Terms:
   - **User Feedback** : If users report unexpected behavior, testers might use Ad Hoc testing to replicate the issue and explore related functionalities that might be affected.
   - **Technology Changes** : When underlying technology or frameworks are updated, Ad Hoc testing can help in quickly identifying any compatibility issues or regressions.
   In these scenarios, the tester's experience, intuition, and knowledge of the system guide the testing process, often leading to the discovery of defects that structured testing might overlook.
-
 
 #### Can you provide a scenario where Ad Hoc testing identified a critical bug?
 
@@ -221,7 +203,6 @@ Related Terms:
   - **Integrate with formal testing** : Use insights from Ad Hoc testing to enhance your formal test cases and automation scripts.
   Remember, while Ad Hoc testing is informal, it should still be strategic and targeted to maximize its effectiveness in identifying potential defects.
 
-
 #### How can the effectiveness of Ad Hoc testing be measured?
 
   Measuring the effectiveness of **Ad Hoc testing** can be challenging due to its unstructured nature. However, certain metrics can be used to gauge its impact:
@@ -233,7 +214,6 @@ Related Terms:
   - **Cost of [Bugs](/en/wiki/bug/)** : Analyze the cost savings from identifying and fixing bugs early, which can be attributed to the informal and rapid nature of Ad Hoc testing.
   - **Feedback from Testers** : Collect qualitative feedback from testers on the ease of finding defects and their perception of the thoroughness of Ad Hoc testing.
   Use these metrics in conjunction with the context of your testing environment to determine the effectiveness of Ad Hoc testing. Remember that while these metrics can provide insights, the unscripted nature of Ad Hoc testing means that its true value often lies in the tester's expertise and intuition, which can be harder to quantify.
-
 
 #### How can Ad Hoc testing be integrated into a continuous integration/continuous deployment (CI/CD) pipeline?
 

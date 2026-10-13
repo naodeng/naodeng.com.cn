@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [IEEE 829](#ieee-829)
-  - [Related Terms:](#related-terms)
   - [Questions about IEEE 829?](#questions-about-ieee-829)
     - [Basics and Importance](#basics-and-importance)
       - [What is the IEEE 829 standard?](#what-is-the-ieee-829-standard)
@@ -41,7 +40,7 @@ order: 0
 
 IEEE 829 is a standard for Software Test Documentation, dictating the structure for documents throughout the testing life cycle.
 
-## Related Terms:
+Related Terms:
 
 - Testing documentation standard
 

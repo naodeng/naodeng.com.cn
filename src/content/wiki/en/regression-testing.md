@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Regression Testing](#regression-testing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Regression Testing?](#questions-about-regression-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is regression testing?](#what-is-regression-testing)
@@ -46,12 +44,12 @@ order: 0
 
 Regression testing checks if existing functionalities remain intact after new changes. It ensures that new additions don't disrupt existing software operations.
 
-## Related Terms:
+Related Terms:
 
 - [Release Testing](/en/wiki/release-testing/)
 - [Retesting](/en/wiki/retesting/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Regression_testing)
 ## Questions about Regression Testing?
@@ -88,7 +86,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Release Readiness** : Helps determine if the software is ready for release based on the stability of existing features.
   By incorporating regression testing into the development process, teams can ensure that their software remains reliable and high-quality, even as it evolves and grows.
 
-
 #### How does regression testing fit into the software development life cycle?
 
   Regression testing is integrated into the **[Software Development Life Cycle](/en/wiki/software-development-life-cycle/) (SDLC)** primarily during the **maintenance phase**, but it is also relevant after any change or addition to the software. It ensures that new code changes do not adversely affect the existing functionality.
@@ -111,8 +108,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   [Retesting](/en/wiki/retesting/) is usually performed first to confirm the resolution of known issues. Once [retesting](/en/wiki/retesting/) is complete and the fixes are verified, regression testing follows to ensure that those fixes have not introduced any new issues elsewhere in the application.
   In practice, [retesting](/en/wiki/retesting/) is a targeted approach, often manual or with specific automated tests, while regression testing is extensive and typically benefits from a robust automated [test suite](/en/wiki/test-suite/) to efficiently cover a wide range of functionalities.
 
-  - **[Retesting](/en/wiki/retesting/)**
-    is focused and confined to the particular defect fixes.
 
   - **Regression testing**
     is comprehensive and concerned with overall software stability post-change.
@@ -134,7 +129,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Smoke Regression Testing** : A quick set of tests run to confirm that basic functionality works after a change.
   Each type targets different aspects and levels of the software, and the choice depends on the scope of changes, project constraints, and risk assessment. Automation is often leveraged to make these processes more efficient and reliable.
 
-
 #### What are the techniques used in regression testing?
 
   Regression testing techniques vary depending on the scope and purpose of the tests. Here are some commonly used techniques:
@@ -149,7 +143,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Combinatorial Testing**: Applying combinatorial strategies, such as pairwise or all-pairs testing, to generate [test cases](/en/wiki/test-case/) that cover interactions between different input parameters.
   Each technique has its own merits and can be chosen based on the specific context of the regression testing needs. Combining multiple techniques can often lead to a more robust and efficient regression testing strategy.
 
-
 #### What is selective regression testing?
 
   Selective regression testing is a strategy where only a subset of regression tests is executed to verify that recent changes have not adversely affected existing functionalities. This approach is taken to reduce the time and resources required for testing by focusing on the most relevant or risky areas of the software after a modification.
@@ -162,7 +155,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Dependencies** : Tests for components that depend on the changed code are considered.
   To implement selective regression testing effectively, [test cases](/en/wiki/test-case/) must be well-organized and tagged with metadata that allows for easy identification and selection. Automation tools can facilitate this process by enabling [test case](/en/wiki/test-case/) selection based on predefined criteria or changes detected in the version control system.
   Selective regression testing is a balance between risk and efficiency. It aims to provide sufficient [test coverage](/en/wiki/test-coverage/) to ensure [software quality](/en/wiki/software-quality/) while optimizing the testing process to accommodate tight schedules and resource constraints. However, it's important to periodically perform a full regression [test suite](/en/wiki/test-suite/) to cover areas that might be inadvertently missed by selective testing.
-
 
 #### What is the difference between unit regression testing and full regression testing?
 
@@ -198,7 +190,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **RSpec** : A behavior-driven development (BDD) framework for Ruby, commonly used for writing human-readable automated tests.
   - **[Postman](/en/wiki/postman/)** : Primarily used for API testing, it can also be utilized to perform regression tests on services.
   These tools can be integrated with continuous integration systems like Jenkins, TeamCity, or Travis CI to automate the regression testing process as part of the CI/CD pipeline. Additionally, many of these tools support integration with defect tracking systems and version control systems to streamline the testing workflow.
-
 
 #### How is regression testing automated?
 
@@ -245,8 +236,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   ```
   By following these steps and utilizing best practices, [test automation](/en/wiki/test-automation/) engineers can ensure that regression testing is both efficient and effective, catching defects early and maintaining [software quality](/en/wiki/software-quality/).
 
-  1. **Identify [test cases](/en/wiki/test-case/)**
-
 #### What are the benefits of automating regression testing?
 
   Automating regression testing offers several benefits:
@@ -261,7 +250,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Risk Mitigation** : Frequent and thorough regression testing reduces the risk of defects slipping into production.
   - **Resource Allocation** : Freeing up manual testers from repetitive tasks allows them to focus on exploratory testing and other high-value activities.
   By automating regression testing, teams can maintain a high level of [software quality](/en/wiki/software-quality/) with each new release, without sacrificing speed or increasing costs.
-
 
 #### What factors should be considered when choosing a tool for regression testing?
 
@@ -280,7 +268,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Vendor Stability**: Choose a tool from a reputable vendor with a track record of consistent updates and support.
   - **Compliance and Security**: Ensure the tool meets any regulatory compliance requirements and does not introduce security vulnerabilities.
   Selecting the right tool involves balancing these factors based on your team's specific needs and the context of your project.
-
 
 #### How can regression testing be optimized with automation?
 
@@ -322,8 +309,6 @@ Regression testing checks if existing functionalities remain intact after new ch
     the automation code to maintain readability, reduce complexity, and improve maintainability.
   By implementing these strategies, you can ensure that your regression testing is not only automated but also optimized for speed, coverage, and resource utilization.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 ### Challenges and Best Practices
 
 #### What are the challenges in regression testing?
@@ -339,7 +324,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Environment consistency** : Ensuring that the test environment matches production closely enough to yield accurate results can be a challenge, especially with complex infrastructure.
   - **Feedback loop** : Slow feedback from lengthy regression test runs can delay the development process, making it harder to quickly identify and fix issues.
   Addressing these challenges often involves a combination of **[test suite](/en/wiki/test-suite/) optimization**, **effective prioritization strategies**, **robust [test data](/en/wiki/test-data/) management**, and **infrastructure improvements** to streamline the regression testing process.
-
 
 #### What are the best practices in regression testing?
 
@@ -385,8 +369,6 @@ Regression testing checks if existing functionalities remain intact after new ch
     to continuously improve the regression testing process and address any pain points.
   By adhering to these practices, [test automation](/en/wiki/test-automation/) engineers can ensure that regression testing is efficient, effective, and provides valuable insights into the quality and stability of the software.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How can the effectiveness of regression testing be measured?
 
   The effectiveness of regression testing can be measured through several key [performance indicators](/en/wiki/performance-indicator/) (KPIs):
@@ -400,7 +382,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Cost of Testing**: Considers the resources expended on regression testing. Lower costs can signal more efficient testing processes.
   - **Return on Investment (ROI)**: Compares the cost of regression testing against the savings from catching defects early. A positive ROI indicates cost-effectiveness.
   By monitoring these KPIs, [test automation](/en/wiki/test-automation/) engineers can assess and improve the impact of regression testing on [software quality](/en/wiki/software-quality/) and development efficiency.
-
 
 #### How can regression testing be made more efficient?
 
@@ -438,8 +419,6 @@ Regression testing checks if existing functionalities remain intact after new ch
   - **Leverage artificial intelligence (AI)**
     and machine learning (ML) to predict which areas of the application are most likely to be affected by recent changes, focusing testing efforts accordingly.
   By implementing these strategies, you can streamline your regression testing process, making it more efficient and effective.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### What are the common mistakes to avoid in regression testing?
 

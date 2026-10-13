@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Coverage](#test-coverage)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Coverage?](#questions-about-test-coverage)
     - [Basics and Importance](#basics-and-importance)
       - [What is test coverage in software testing?](#what-is-test-coverage-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Test coverage measures the portion of a program’s code tested. It identifies which sections of code are exercised during test cases, ensuring thorough evaluation.
 
-## Related Terms:
+Related Terms:
 
 - [Code Coverage](/en/wiki/code-coverage/)
 
@@ -81,7 +80,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   - **Continuous Integration (CI) Efficiency**: In a CI pipeline, high coverage ensures that most code paths are checked with each integration, making the pipeline more robust.
   - **Code Quality**: It often correlates with higher code quality, as the discipline required to write tests can lead to better coding practices.
   Remember, while high test coverage is beneficial, it is not an end in itself. The goal is to create a suite of meaningful tests that provide value and confidence in the software's behavior.
-
 
 #### How does test coverage impact the quality of software?
 
@@ -127,7 +125,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   - **Security Coverage** : Focuses on testing the code against security threats and vulnerabilities.
   - **Performance Coverage** : Tests the system's performance, including load, stress, and scalability tests.
   Each type of coverage targets different aspects of the software to ensure a comprehensive testing strategy. Combining multiple coverage types can provide a more holistic view of the software's reliability and robustness.
-
 
 #### How does function coverage differ from statement coverage?
 
@@ -179,10 +176,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   - Improve the robustness of the test suite.
   While branch coverage can increase the quality of testing, it's not a silver bullet. It doesn't guarantee the execution of all paths (path coverage) or the testing of all logical conditions within a branch (condition coverage). It's one of several metrics used to assess the thoroughness of testing efforts. [Test automation](/en/wiki/test-automation/) engineers should combine it with other coverage types to create a comprehensive [test suite](/en/wiki/test-suite/).
 
-  - Detect flaws in specific branches that might be missed by statement coverage.
-  - Ensure error handling and edge cases are tested.
-  - Improve the robustness of the test suite.
-
 #### What is condition coverage in test coverage?
 
   Condition coverage, also known as predicate coverage, is a metric in test coverage that assesses whether each individual Boolean sub-expression within a decision point has been evaluated to both `true` and `false`. This differs from decision coverage, which focuses on the decision points themselves being evaluated to `true` and `false`.
@@ -195,68 +188,12 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   ```
   To achieve full condition coverage, tests must be designed to evaluate `conditionA` and `conditionB` independently to both outcomes. This would require at least the following scenarios:
 
-  1. `conditionA`
-    is
-    `true`
-    ,
-    `conditionB`
-    is
-    `true`
-    .
-
-  2. `conditionA`
-    is
-    `false`
-    ,
-    `conditionB`
-    doesn't matter.
-
-  3. `conditionA`
-    doesn't matter,
-    `conditionB`
-    is
-    `true`
-    .
-
-  4. `conditionA`
-    doesn't matter,
-    `conditionB`
-    is
-    `false`
-    .
+  1. `conditionA` is `true`, and `conditionB` is `true`.
+  2. `conditionA` is `false`, and `conditionB` doesn't matter.
+  3. `conditionA` doesn't matter, and `conditionB` is `true`.
+  4. `conditionA` doesn't matter, and `conditionB` is `false`.
   Condition coverage is more granular than decision coverage and can reveal issues that decision coverage might miss, such as faulty logic within complex decisions. However, achieving 100% condition coverage does not guarantee the detection of all [bugs](/en/wiki/bug/) related to decision logic, as it does not cover all possible combinations of conditions (which is addressed by multiple condition coverage).
   In practice, condition coverage helps to identify edge cases and increase the robustness of [test suites](/en/wiki/test-suite/) by ensuring that each part of a conditional expression is tested independently.
-
-  1. `conditionA`
-    is
-    `true`
-    ,
-    `conditionB`
-    is
-    `true`
-    .
-
-  2. `conditionA`
-    is
-    `false`
-    ,
-    `conditionB`
-    doesn't matter.
-
-  3. `conditionA`
-    doesn't matter,
-    `conditionB`
-    is
-    `true`
-    .
-
-  4. `conditionA`
-    doesn't matter,
-    `conditionB`
-    is
-    `false`
-    .
-
 #### How does decision coverage contribute to overall test coverage?
 
   Decision coverage, also known as **branch coverage**, enhances overall test coverage by ensuring that every possible branch from each decision point is executed at least once. This means that all the true/false outcomes of each decision statement, such as `if` conditions, are evaluated during testing.
@@ -293,7 +230,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   This command runs the Mocha [test suite](/en/wiki/test-suite/) with Istanbul collecting coverage data, outputting both HTML and text summaries.
   Remember, while high coverage can indicate thorough testing, it does not guarantee the absence of defects. Coverage should be balanced with other quality measures such as good [test case](/en/wiki/test-case/) design, peer reviews, and [manual testing](/en/wiki/manual-testing/).
 
-
 #### What tools are commonly used to measure test coverage?
 
   Common tools for measuring test coverage include:
@@ -312,7 +248,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   - **Codecov** : An online service that can process coverage reports from multiple languages and integrate with GitHub, Bitbucket, and GitLab.
   - **Coveralls** : Similar to Codecov, it integrates with GitHub to track code coverage over time.
   These tools can be integrated into CI/CD pipelines to automate coverage reporting. They often provide insights via dashboards, detailed file-by-file breakdowns, and historical data tracking. Selecting the right tool depends on the programming language, the existing development environment, and the level of integration required with other development tools.
-
 
 #### What is the role of coverage metrics in test coverage?
 
@@ -343,7 +278,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   // Test Cases: TC_Login_001, TC_Login_002, TC_Login_003
   ```
   By integrating a coverage map into your [test strategy](/en/wiki/test-strategy/), you ensure a structured approach to achieving comprehensive test coverage, which can lead to more robust and reliable software.
-
 
 #### What are some best practices for using tools to measure test coverage?
 
@@ -378,7 +312,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   - **Adopt [Test-Driven Development](/en/wiki/test-driven-development/) (TDD)**: Writing tests before code can lead to better test coverage and design.
   By implementing these strategies, you can systematically increase test coverage and enhance the quality of your software.
 
-
 #### How can I ensure that my test coverage is comprehensive?
 
   To ensure comprehensive test coverage in [test automation](/en/wiki/test-automation/), follow these strategies:
@@ -395,7 +328,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   - **Integrate with continuous integration/continuous deployment (CI/CD)** : This ensures tests are run frequently and coverage is consistently monitored.
   Remember, the goal is not to achieve 100% test coverage but to cover the most critical aspects of the application effectively.
 
-
 #### What are some common pitfalls to avoid when aiming for high test coverage?
 
   Avoiding common pitfalls when aiming for high test coverage involves being aware of the following:
@@ -411,7 +343,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   - **Insufficient refactoring** : Refactor tests regularly to improve clarity and reduce redundancy, which helps in maintaining high test coverage.
   - **Ignoring [non-functional testing](/en/wiki/non-functional-testing/)** : Performance, security, and usability tests are also crucial and should not be overlooked in the pursuit of high test coverage.
   Remember, the goal is to create a robust and reliable [test suite](/en/wiki/test-suite/) that effectively supports the development process, not to achieve an arbitrary coverage metric.
-
 
 #### How can I balance the need for high test coverage with the need to deliver software quickly?
 
@@ -454,8 +385,6 @@ Test coverage measures the portion of a program’s code tested. It identifies w
   - **Monitor and analyze test results**
     to identify trends and areas for improvement, allowing for targeted increases in coverage.
   By focusing on these strategies, you can maintain a balance between achieving high test coverage and delivering software rapidly.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### What are some best practices for maintaining high test coverage over time?
 

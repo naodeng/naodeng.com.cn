@@ -1,6 +1,6 @@
 ---
 title: "手动测试 ｜ Manual Testing"
-description: "手动测试 (Manual Testing) 是指在不使用自动化工具的情况下，由人工执行测试用例 (test cases) 的过程。测试人员通过遵循一组预定义的测试用例，确保软件行为符合预期。它涉及测试人员与应用程序界面交互、提供输入并观察输出，以验证应用程序行为的正确性。由于手动测试依赖于人类的观察…"
+description: "手动测试 (Manual Testing) 是指在不使用自动化工具的情况下，由人工执行测试用例 (test cases) 的过程。测试人员通过遵循一组预定义的测试用例，确保软件行为符合预期。它涉及测试人员与应用程序界面交互、提供输入并观察输出，以验证应用程序行为的正确性。"
 section: "M"
 related:
   - automated-testing
@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [手动测试 ｜ Manual Testing](#手动测试--manual-testing)
-  - [相关术语](#相关术语)
   - [有关手动测试的问题吗？](#有关手动测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是手动测试？](#什么是手动测试)
@@ -49,7 +48,7 @@ order: 0
 
 手动测试是根据预期结果手动检查软件功能的过程。
 
-## 相关术语
+相关术语
 
 - [自动化测试](/zh-cn/wiki/automated-testing/)
 - [测试自动化](/zh-cn/wiki/test-automation/)
@@ -105,10 +104,7 @@ order: 0
 - **不可扩展**：随着应用程序的增长，手动测试工作量会成倍增加，使得在紧迫的期限内管理和执行变得困难。
 - **覆盖范围有限**：手动执行大量场景复杂的测试用例是不切实际的，导致测试覆盖范围有限。
 - **没有可重用性**：测试用例每次都需要从头开始执行，而不是可以多次运行且几乎不需要额外成本的自动化测试。
-- **反馈缓慢**：手动执行测试所需的时间延迟了向开​​发人员的反馈，可能会减慢开发周期。
-- **灵活性**：手动测试允许在测试人员探索软件并与软件交互时进行即时调整。
-- **人类洞察**：测试人员可以利用他们的直觉和经验来识别自动化测试可能遗漏的问题，例如微妙的 UI 不一致或复杂的用户体验问题。
-- **不需要脚本**：不需要编写测试脚本，这对于探索性测试或应用程序处于开发的早期阶段时是有益的。
+- **反馈缓慢**：手动执行测试所需的时间延迟了向开发人员的反馈，可能会减慢开发周期。
 - **小型项目的成本效益**：对于范围有限的小型项目，手动测试比设置自动化测试环境更具成本效益。
 
 #### 手动测试的关键原则是什么？
@@ -139,9 +135,6 @@ order: 0
 - **[验收测试](/zh-cn/wiki/acceptance-testing/)** ：确定软件是否满足业务要求并准备好部署，通常由最终用户执行。
 - **[阿尔法测试](/zh-cn/wiki/alpha-testing/)** ：在将产品发布给真实用户之前在内部进行以确定所有可能的问题。
 - **[Beta 测试](/zh-cn/wiki/beta-testing/)** ：由真实用户在真实环境中执行，以在最终发布之前提供有关产品质量的反馈。
-- **[探索性测试](/zh-cn/wiki/exploratory-testing/)** ：测试人员在没有预定义测试用例的情况下，依靠他们的经验和直觉探索软件来识别缺陷。
-- **临时测试**：与探索性测试类似，但更加随机和非结构化，侧重于以不太系统的方式发现缺陷。
-- **[可用性测试](/zh-cn/wiki/usability-testing/)** ：通过观察真实用户与应用程序交互时评估用户界面和用户体验。
 - **[辅助功能测试](/zh-cn/wiki/accessibility-testing/)** ：确保软件可供残疾人使用，检查是否符合无障碍标准。
 
 #### 什么是黑盒测试？
@@ -179,7 +172,7 @@ order: 0
 #### 功能测试和非功能测试有什么区别？
 
 [功能测试](/zh-cn/wiki/functional-testing/) 重点验证软件应用程序的每个功能是否按照需求规范运行。此类测试通过提供适当的输入并根据定义的 [功能需求](/zh-cn/wiki/functional-requirements/) 检查输出来验证应用程序的行为。它包括单元测试、集成测试、系统测试和验收测试等各种测试。
-  另一方面，[非功能测试](/zh-cn/wiki/non-functional-testing/) 指的是与系统的特定行为或功能无关的方面。它检查软件应用程序的非功能方面（性能、可用​​性、可靠性等）。 [非功能测试](/zh-cn/wiki/non-functional-testing/) 旨在根据[功能测试](/zh-cn/wiki/functional-testing/) 从未解决的非功能参数来评估系统的准备情况。 [非功能测试](/zh-cn/wiki/non-functional-testing/) 的类型包括[性能测试](/zh-cn/wiki/performance-testing/)、[负载测试](/zh-cn/wiki/load-testing/)、[压力测试](/zh-cn/wiki/stress-testing/)、[安全测试](/zh-cn/wiki/security-testing/)、[兼容性测试](/zh-cn/wiki/compatibility-testing/) 和[可用性测试](/zh-cn/wiki/usability-testing/)。
+  另一方面，[非功能测试](/zh-cn/wiki/non-functional-testing/) 指的是与系统的特定行为或功能无关的方面。它检查软件应用程序的非功能方面（性能、可用性、可靠性等）。 [非功能测试](/zh-cn/wiki/non-functional-testing/) 旨在根据[功能测试](/zh-cn/wiki/functional-testing/) 从未解决的非功能参数来评估系统的准备情况。 [非功能测试](/zh-cn/wiki/non-functional-testing/) 的类型包括[性能测试](/zh-cn/wiki/performance-testing/)、[负载测试](/zh-cn/wiki/load-testing/)、[压力测试](/zh-cn/wiki/stress-testing/)、[安全测试](/zh-cn/wiki/security-testing/)、[兼容性测试](/zh-cn/wiki/compatibility-testing/) 和[可用性测试](/zh-cn/wiki/usability-testing/)。
   本质上，**[功能测试](/zh-cn/wiki/functional-testing/)** 确保软件执行其应做的操作，而 **[非功能测试](/zh-cn/wiki/non-functional-testing/)** 确保软件在各种条件下的用户环境中都能良好运行。两者对于评估软件的整体质量和用户体验都至关重要。
 
 ### 手动测试过程
@@ -198,7 +191,7 @@ order: 0
 
 #### 什么是测试计划以及它涉及什么？
 
-测试计划是 [软件测试](/zh-cn/wiki/software-testing/) 生命周期的关键阶段，在此阶段创建详细的蓝图来指导整个测试过程。它涉及定义测试所需的**目标**、**范围**、**方法**和**资源**。 [测试计划](/zh-cn/wiki/test-plan/) 概述了**[测试策略](/zh-cn/wiki/test-strategy/)**、**时间表**、**可交付成果**和**风险管理**计划，以确保全面覆盖和高效执行。
+测试计划是 [软件测试](/zh-cn/wiki/software-testing/) 生命周期的关键阶段，在此阶段创建详细的蓝图来指导整个测试过程。它涉及定义测试所需的**目标**、**范围**、**方法**和**资源**。 [测试计划](/zh-cn/wiki/test-plan/) 概述了 **[测试策略](/zh-cn/wiki/test-strategy/)**、**时间表**、**可交付成果**和**风险管理**计划，以确保全面覆盖和高效执行。
   测试计划的关键组成部分包括：
 
 - **测试目标**：测试要实现的明确目标。
@@ -229,7 +222,7 @@ order: 0
 
 软件中的[测试执行](/zh-cn/wiki/test-execution/) [测试自动化](/zh-cn/wiki/test-automation/) 是针对被测软件运行自动化脚本以验证其行为是否符合预期的过程。 [测试执行](/zh-cn/wiki/test-execution/)涉及的步骤如下：
 
-1. **环境[环境搭建](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/)正确配置所有必要的硬件、软件、网络设置和数​​据。
+1. **环境[环境搭建](/zh-cn/wiki/setup/)**：确保[测试环境](/zh-cn/wiki/test-environment/)正确配置所有必要的硬件、软件、网络设置和数据。
 2. **[测试数据](/zh-cn/wiki/test-data/) 准备**：创建或加载[测试用例](/zh-cn/wiki/test-case/) 所需的[测试数据](/zh-cn/wiki/test-data/)。
 3. **执行调度**：确定[测试用例](/zh-cn/wiki/test-case/)的顺序和时间，可能使用持续集成（CI）工具来调度和触发测试。
 4. **运行测试**：使用所选[测试自动化](/zh-cn/wiki/test-automation/) 工具或框架执行自动化[测试脚本](/zh-cn/wiki/test-script/)。
@@ -263,16 +256,11 @@ order: 0
 - **协作工具**：Slack、Microsoft Teams 和 Confluence 有助于团队成员之间的沟通，这对于协调 [手动测试](/zh-cn/wiki/manual-testing/) 工作和分享见解至关重要。
 - **屏幕捕获和注释工具**：Snagit 和 LightShot 用于捕获缺陷的屏幕截图或录制缺陷视频，然后对其进行注释，为开发人员提供视觉证据和上下文。 这些工具通过增强组织、沟通和文档来支持 [手动测试](/zh-cn/wiki/manual-testing/) 流程，但它们不会自动执行测试。
 
-- **[测试管理](/zh-cn/wiki/test-management/) 工具**：TestRail、Zephyr 和 Quality Center 等工具用于组织和管理 [测试用例](/zh-cn/wiki/test-case/)、计划和运行。它们帮助跟踪进度并报告测试活动的状态。
-- **缺陷跟踪工具**：[jira](/zh-cn/wiki/jira/)、Bugzilla 和 Mantis 是记录、跟踪和管理测试期间发现的缺陷的常用选择。它们促进测试人员和开发人员之间的协作以解决问题。
-- **文档工具**：Microsoft Word 和 Google Docs 用于创建 [测试计划](/zh-cn/wiki/test-plan/)、[测试用例](/zh-cn/wiki/test-case/) 和测试报告。它们有助于维护测试过程的清晰且可访问的记录。
-- **电子表格工具**：Microsoft Excel 和 Google Sheets 通常用于 [测试用例管理](/zh-cn/wiki/test-case-management/)，特别是在没有专用 [测试管理](/zh-cn/wiki/test-management/) 软件的小型项目或组织中。
-- **协作工具**：Slack、Microsoft Teams 和 Confluence 有助于团队成员之间的沟通，这对于协调 [手动测试](/zh-cn/wiki/manual-testing/) 工作和分享见解至关重要。
 - **屏幕捕获和注释工具**：Snagit 和 LightShot 用于捕获缺陷的屏幕截图或录制缺陷视频，然后对其进行注释，为开发人员提供视觉证据和上下文。
 
 #### 测试管理工具在手动测试中的作用是什么？
 
-[手动测试](/zh-cn/wiki/manual-testing/) 中的**[测试管理](/zh-cn/wiki/test-management/) 工具**充当所有与测试相关的活动的中央存储库。它有助于测试过程的组织、记录和跟踪，确保[手动测试](/zh-cn/wiki/manual-testing/) 工作系统化且透明。主要角色包括：
+[手动测试](/zh-cn/wiki/manual-testing/) 中的 **[测试管理](/zh-cn/wiki/test-management/) 工具**充当所有与测试相关的活动的中央存储库。它有助于测试过程的组织、记录和跟踪，确保[手动测试](/zh-cn/wiki/manual-testing/) 工作系统化且透明。主要角色包括：
 
 - **测试计划**：帮助定义和管理测试计划，概述测试活动的范围、目标和策略。
 - **[测试用例管理](/zh-cn/wiki/test-case-management/)** ：允许创建、存储和维护测试用例，以及将它们映射到需求以确保覆盖范围。
@@ -288,7 +276,7 @@ order: 0
 
 - **记录缺陷**：测试人员记录缺陷的详细信息，例如描述、严重性、重现步骤和屏幕截图。
 - **跟踪进度**：该工具允许监控缺陷从发现到解决的状态。
-- **优先级**：可以根据严重性、频率或影响来确定缺陷的优先​​级，帮助团队首先解决最关键的问题。
+- **优先级**：可以根据严重性、频率或影响来确定缺陷的优先级，帮助团队首先解决最关键的问题。
 - **分配职责**：可以将缺陷分配给特定的团队成员进行调查和解决。
 - **历史数据**：它提供了缺陷的历史记录，这对于未来的项目和回归测试很有用。
 - **指标和报告**：该工具生成有助于评估软件质量和测试过程效率的报告和指标。 通过使用缺陷跟踪工具，团队可以确保没有缺陷被漏掉，并且可以提高软件产品的整体质量。它还通过提供缺陷解决工作流程的清晰可视性，促进更好的资源分配和项目管理。
@@ -312,33 +300,27 @@ order: 0
 
 考虑到受众在 [测试自动化](/zh-cn/wiki/test-automation/) 方面的专业知识，[手动测试](/zh-cn/wiki/manual-testing/) 的最佳实践包括：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。首先关注关键功能。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于风险和影响。首先关注关键功能。
 
 - **保持[测试用例](/zh-cn/wiki/test-case/)清晰简洁**确保它们易于遵循且可重复。
 
-- **使用[探索性测试](/zh-cn/wiki/exploratory-testing/)**发现结构化测试可能遗漏的问题。
+- **使用[探索性测试](/zh-cn/wiki/exploratory-testing/)** 发现结构化测试可能遗漏的问题。
 
 - **彻底记录缺陷** ，包括重现步骤、预期结果与实际结果以及屏幕截图（如果适用）。
 
-- **执行[回归测试](/zh-cn/wiki/regression-testing/)**经过修复和增强以确保新的更改不会引入新的问题。
+- **执行[回归测试](/zh-cn/wiki/regression-testing/)** 经过修复和增强以确保新的更改不会引入新的问题。
 
-- **同行评审[测试用例](/zh-cn/wiki/test-case/)**提高测试覆盖率并发现错误。
+- **同行评审[测试用例](/zh-cn/wiki/test-case/)** 提高测试覆盖率并发现错误。
 
 - **保持更新**使用最新的测试技术和工具来增强手动测试流程。
 
-- **平衡手册和[自动化测试](/zh-cn/wiki/automated-testing/)**通过确定哪些测试最适合自动化以及哪些需要人性化。
+- **平衡手册和[自动化测试](/zh-cn/wiki/automated-testing/)** 通过确定哪些测试最适合自动化以及哪些需要人性化。
 
 - **有效沟通**与开发团队合作，确保清楚地了解功能和要求。
 
-- **保持组织良好的[测试环境](/zh-cn/wiki/test-environment/)**以确保测试结果的一致性和可靠性。
+- **保持组织良好的[测试环境](/zh-cn/wiki/test-environment/)** 以确保测试结果的一致性和可靠性。
 
 - **适应性强**并准备随着项目的发展调整测试策略。 通过集成这些实践，手动测试人员可以补充自动化流程并有助于制定稳健的测试策略。
-
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。首先关注关键功能。
-
-- **保持[测试用例](/zh-cn/wiki/test-case/)清晰简洁**确保它们易于遵循且可重复。
-
-- **使用[探索性测试](/zh-cn/wiki/exploratory-testing/)**发现结构化测试可能遗漏的问题。
 
 - **适应性强**并准备随着项目的发展调整测试策略。
 
@@ -346,15 +328,15 @@ order: 0
 
 为了增强[手动测试](/zh-cn/wiki/manual-testing/)的有效性，请考虑以下策略：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。专注于直接影响用户体验的关键功能。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于风险和影响。专注于直接影响用户体验的关键功能。
 
-- **利用[探索性测试](/zh-cn/wiki/exploratory-testing/)**发现脚本测试可能遗漏的问题。这使得测试人员能够发挥他们的创造力和直觉。
+- **利用[探索性测试](/zh-cn/wiki/exploratory-testing/)** 发现脚本测试可能遗漏的问题。这使得测试人员能够发挥他们的创造力和直觉。
 
 - **使用清单**确保所有领域都被覆盖，而没有正式测试用例的僵化。
 
-- **[配对测试](/zh-cn/wiki/pair-testing/)**两个测试人员一起工作来发现缺陷可能是有益的；一个人操作软件，另一个人做笔记并思考新的测试场景。
+- **[配对测试](/zh-cn/wiki/pair-testing/)** 两个测试人员一起工作来发现缺陷可能是有益的；一个人操作软件，另一个人做笔记并思考新的测试场景。
 
-- **实施[基于会话的测试](/zh-cn/wiki/session-based-testing/)**管理和跟踪探索性测试工作，确保问责制和覆盖范围。
+- **实施[基于会话的测试](/zh-cn/wiki/session-based-testing/)** 管理和跟踪探索性测试工作，确保问责制和覆盖范围。
 
 - **审查和完善**定期测试用例以消除冗余并使其与应用程序更改保持同步。
 

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Session-Based Testing](#session-based-testing)
-  - [See also:](#see-also)
   - [Questions about Session-Based Testing?](#questions-about-session-based-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is session-based testing?](#what-is-session-based-testing)
@@ -43,7 +42,7 @@ order: 0
 
 An organized form of exploratory testing conducted in sessions.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Session-based_testing)
 ## Questions about Session-Based Testing?
@@ -65,7 +64,6 @@ An organized form of exploratory testing conducted in sessions.
   Common tools include note-taking applications, screen recording software, and issue tracking systems.
   Integration into existing workflows might involve scheduling regular sessions alongside other testing activities or using session-based testing to complement automated [test suites](/en/wiki/test-suite/).
   Best practices include clear charter creation, thorough logging, and regular debriefs. Challenges such as lack of structure can be mitigated by well-defined charters and skilled testers. The effectiveness is measured by the value of the information gathered and the impact on [software quality](/en/wiki/software-quality/).
-
 
 #### Why is session-based testing important?
 
@@ -121,7 +119,6 @@ An organized form of exploratory testing conducted in sessions.
   The log is typically maintained by the tester in real-time, ensuring that insights and observations are captured as they occur. This immediacy helps prevent the loss of information that might occur if logging were delayed until after the session's conclusion.
   For automation engineers, the session log can be integrated with [automated testing](/en/wiki/automated-testing/) tools to correlate manual exploratory efforts with automated test results, providing a comprehensive view of the testing landscape.
 
-
 ### Implementation
 
 #### How is a session-based testing session structured?
@@ -138,7 +135,6 @@ An organized form of exploratory testing conducted in sessions.
   4. Document findings in a session log.
   5. Debrief to review and analyze outcomes.
   6. Report insights to inform decision-making.
-  1. Define a clear charter.
 
 #### What are the steps involved in conducting a session-based test?
 
@@ -167,7 +163,6 @@ An organized form of exploratory testing conducted in sessions.
   - **qTest** : Provides exploratory testing modules that support session-based testing, allowing for in-session note-taking and defect logging.
   - **Testpad** : A checklist-based test management tool that can be used for lightweight session-based testing, with a focus on exploratory testing approaches.
   These tools help automate the administrative parts of session-based testing, allowing testers to focus on the actual testing activities. They enable efficient logging of test session outcomes, issues found, and provide a structure for reporting and analyzing results post-session.
-
 
 #### How can session-based testing be integrated into an existing testing workflow?
 
@@ -220,7 +215,6 @@ An organized form of exploratory testing conducted in sessions.
   - **Balance between structure and flexibility** : While sessions need structure, allow flexibility for testers to pursue unexpected insights or issues.
   By following these best practices, testers can ensure that session-based testing is effective, efficient, and contributes significantly to the overall quality of the software product.
 
-
 ### Benefits and Challenges
 
 #### What are the benefits of session-based testing?
@@ -237,7 +231,6 @@ An organized form of exploratory testing conducted in sessions.
   - **Metrics** : The use of session logs allows for the collection of metrics on testing efforts and defect rates, aiding in the assessment of the testing process and product quality.
   These benefits make session-based testing a valuable approach, particularly in environments where adaptability and rapid feedback are essential.
 
-
 #### What are the challenges or limitations of session-based testing?
 
   Session-based testing, while flexible and exploratory, faces several challenges:
@@ -250,7 +243,6 @@ An organized form of exploratory testing conducted in sessions.
   - **Integration with Automation** : While session-based testing is manual by nature, integrating its findings with automated tests can be challenging.
   - **Time Management** : Balancing the time spent on exploration versus reporting can be difficult, as both are crucial to the process.
   Mitigating these challenges involves clear guidelines, training for testers, and integrating session-based testing with other methods to ensure a comprehensive testing strategy.
-
 
 #### How can the effectiveness of session-based testing be measured?
 
@@ -267,7 +259,6 @@ An organized form of exploratory testing conducted in sessions.
   - **Exploratory vs. Scripted Balance**: Assess the balance between [exploratory testing](/en/wiki/exploratory-testing/) and adherence to session charters. Too much deviation may indicate a lack of focus, while too little may suggest missed opportunities for discovery.
   By analyzing these aspects, you can gauge the effectiveness of session-based testing and identify areas for improvement. Continuous refinement based on these metrics will enhance the testing process over time.
 
-
 #### How can the challenges of session-based testing be mitigated?
 
   Mitigating the challenges of **session-based testing** can be achieved through several strategies:
@@ -282,7 +273,6 @@ An organized form of exploratory testing conducted in sessions.
   - **Continuous Improvement**: Incorporate feedback from session retrospectives to refine the testing process and address any systemic issues that arise.
   By applying these strategies, you can enhance the effectiveness of session-based testing and overcome its inherent challenges.
 
-
 ### Real-world Applications
 
 #### Can you provide examples of real-world applications of session-based testing?
@@ -295,7 +285,6 @@ An organized form of exploratory testing conducted in sessions.
   - **Cybersecurity**: Penetration testers use session-based approaches to identify security vulnerabilities. They simulate an attacker's behavior, trying to exploit potential security holes, and documenting their findings in session logs.
   - **User Experience (UX) Testing**: UX testers conduct session-based testing to understand how users interact with a product and to identify any usability issues. They observe and document the user's journey, noting any confusion or difficulties encountered.
   In each case, session-based testing complements [automated testing](/en/wiki/automated-testing/) by adding a layer of human intuition and creativity to the [test process](/en/wiki/test-process/), often leading to the discovery of issues that automated tests might miss.
-
 
 #### How is session-based testing used in agile development?
 
@@ -317,7 +306,6 @@ An organized form of exploratory testing conducted in sessions.
   - **Projects with limited documentation** : where testers rely on their skills and intuition to explore the application.
   - **Maintenance phases** : for regression testing when formal test cases may not cover recent changes or for testing patches and updates.
   By leveraging the skills and creativity of testers, session-based testing can provide rapid feedback and uncover issues that structured testing might miss. It's less suited for projects that require strict compliance to regulations or where detailed [test case](/en/wiki/test-case/) documentation is necessary for audits.
-
 
 #### How can session-based testing be used to improve software quality?
 

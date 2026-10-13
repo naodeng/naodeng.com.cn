@@ -1,6 +1,6 @@
 ---
 title: "Nunit ｜ Nunit"
-description: "NUnit 是一个针对 .NET 语言的开源单元测试框架，旨在为编写和运行测试提供灵活且用户友好的工具。它是 .NET 基金会的一部分，因其能够创建简单及复杂的测试用例而被广泛使用。核心用法："
+description: "NUnit 是一个针对 .NET 语言的开源单元测试框架，旨在为编写和运行测试提供灵活且用户友好的工具。它是 .NET 基金会的一部分，因其能够创建简单及复杂的测试用例而被广泛使用。"
 section: "N"
 related:
   - test-runner
@@ -17,8 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [Nunit ｜ Nunit](#nunit--nunit)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于 NUnit 有疑问吗？](#关于-nunit-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [NUnit 是什么？](#nunit-是什么)
@@ -46,12 +44,12 @@ order: 0
 
 单位是一个开源的单元测试源自 JUnit 的 C# 框架。它有助于在.NET 中编写和执行测试，例如单位 -console.exe 用于批处理测试执行。
 
-## 相关术语
+相关术语
 
 - [JUnit 测试](/zh-cn/wiki/junit-testing/)
 - [Test Framework](/zh-cn/wiki/unit-test-framework/)
 
-### 另请参阅：
+另请参阅：
 
 - [Official Website](https://nunit.org/)
 - [Wikipedia](https://en.wikipedia.org/wiki/NUnit)
@@ -70,7 +68,7 @@ order: 0
 
 #### 为什么 NUnit 在软件测试中很重要？
 
-[NUnit](/zh-cn/wiki/nunit/) 通过提供**灵活且高效的**框架来编写和执行测试，在[软件测试](/zh-cn/wiki/software-testing/) 中发挥着至关重要的作用。作为 [单元测试](/zh-cn/wiki/unit-testing/) 框架，它有助于促进**[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**，其中测试是在实际代码之前编写的，确保软件组件从一开始就按预期工作。 [NUnit](/zh-cn/wiki/nunit/) 的重要性还源于它与**持续集成 (CI)** 系统集成的能力，允许自动构建和测试，从而尽早检测到缺陷和回归。
+[NUnit](/zh-cn/wiki/nunit/) 通过提供**灵活且高效的**框架来编写和执行测试，在[软件测试](/zh-cn/wiki/software-testing/) 中发挥着至关重要的作用。作为 [单元测试](/zh-cn/wiki/unit-testing/) 框架，它有助于促进 **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**，其中测试是在实际代码之前编写的，确保软件组件从一开始就按预期工作。 [NUnit](/zh-cn/wiki/nunit/) 的重要性还源于它与**持续集成 (CI)** 系统集成的能力，允许自动构建和测试，从而尽早检测到缺陷和回归。
   此外，[NUnit](/zh-cn/wiki/nunit/) 支持**并行[测试执行](/zh-cn/wiki/test-execution/)**，显着减少运行大量[测试套件](/zh-cn/wiki/test-suite/) 所需的时间，并向开发人员提供快速反馈。其**可扩展性**允许通过插件进行定制和添加新功能，使其能够适应各种测试需求。 [NUnit](/zh-cn/wiki/nunit/) 的 **断言库** 非常全面，使测试人员能够验证各种条件，这对于确保代码质量和功能至关重要。
   在涉及多个开发人员或团队的环境中，[NUnit](/zh-cn/wiki/nunit/) 凭借其定义明确的结构和约定，有助于保持测试方法的**一致性**。这种一致性对于理解和维护不同团队成员编写的测试至关重要。通过实施良好的测试实践并提供强大的测试创建平台，[NUnit](/zh-cn/wiki/nunit/) 为软件开发中的整体 **[质量保证](/zh-cn/wiki/quality-assurance/)** 流程做出了重大贡献。
 
@@ -92,16 +90,13 @@ order: 0
 - **与各种 IDE 和 CI 工具集成**：与流行的开发环境和持续集成服务器无缝协作，增强开发工作流程。 这些功能共同使[测试自动化](/zh-cn/wiki/test-automation/) 工程师能够高效地编写、组织和执行测试，使[NUnit](/zh-cn/wiki/nunit/) 成为许多测试场景的多功能选择。
 
 - **测试过滤**：使用[NUnit](/zh-cn/wiki/nunit/) 强大的测试选择语言执行测试子集，该语言允许按名称、类别、属性或其他标准进行过滤。
-- **结果报告**：生成各种格式的详细测试结果报告，包括 XML，可用于进一步分析或与 CI/CD 工具集成。
-- **平台和运行时支持**：兼容多个平台和运行时，包括.NET Core和Mono，支持跨平台测试。
-- **可扩展性**：通过自定义属性、约束和事件侦听器扩展[NUnit](/zh-cn/wiki/nunit/)，以根据特定的测试需求进行定制。
 - **与各种 IDE 和 CI 工具集成**：与流行的开发环境和持续集成服务器无缝协作，增强开发工作流程。
 
 #### NUnit 与其他测试框架相比如何？
 
 [NUnit](/zh-cn/wiki/nunit/) 是.NET 生态系统中流行的测试框架，通常与 **MSTest** 和 **xUnit** 等其他框架进行比较。
   **MSTest** 是 Microsoft 的官方测试框架，与 Visual Studio 紧密集成，为在此 IDE 中工作的开发人员提供流畅的体验。然而，[NUnit](/zh-cn/wiki/nunit/) 往往更灵活、功能更丰富，[测试用例](/zh-cn/wiki/test-case/) 具有更广泛的属性，并且更好地支持参数化测试。 [NUnit](/zh-cn/wiki/nunit/)的断言库也被认为更强大。随着时间的推移，MSTest 不断得到改进，但通常被选择是因为它与 Microsoft 堆栈的无缝集成，而不是高级功能。
-  **xUnit** 是另一个开源框架，被.NET 社区中的一些人视为 [NUnit](/zh-cn/wiki/nunit/) 的继承者。它引入了一种更现代的测试方法，取消了 [环境搭建](/zh-cn/wiki/setup/) 和拆卸，转而使用构造函数和处置方法来进行测试初始化​​和清理。 xUnit 还拥有对异步测试的更好支持，并为[测试用例](/zh-cn/wiki/test-case/) 发现和执行提供了更可扩展的模型。然而，[NUnit](/zh-cn/wiki/nunit/) 的广泛使用和熟悉度仍然是许多团队的优势，特别是那些现有 [NUnit](/zh-cn/wiki/nunit/) [测试套件](/zh-cn/wiki/test-suite/) 的团队。
+  **xUnit** 是另一个开源框架，被.NET 社区中的一些人视为 [NUnit](/zh-cn/wiki/nunit/) 的继承者。它引入了一种更现代的测试方法，取消了 [环境搭建](/zh-cn/wiki/setup/) 和拆卸，转而使用构造函数和处置方法来进行测试初始化和清理。 xUnit 还拥有对异步测试的更好支持，并为[测试用例](/zh-cn/wiki/test-case/) 发现和执行提供了更可扩展的模型。然而，[NUnit](/zh-cn/wiki/nunit/) 的广泛使用和熟悉度仍然是许多团队的优势，特别是那些现有 [NUnit](/zh-cn/wiki/nunit/) [测试套件](/zh-cn/wiki/test-suite/) 的团队。
   总之，[NUnit](/zh-cn/wiki/nunit/) 在 MSTest 提供的易用性和 xUnit 的现代测试方法之间提供了平衡。它以其灵活性、广泛的断言库以及对数据驱动测试的强大支持而脱颖而出，使其成为许多.NET 开发人员的可靠选择。然而，这些框架之间的选择通常取决于特定的项目需求、团队熟悉程度和集成要求。
 
 ### 安装和设置
@@ -113,7 +108,7 @@ order: 0
 1. 在 Visual Studio 中打开您的项目。
 2. 前往 **解决方案浏览器** 。
 
-3. 右键单击​​要添加 NUnit 的项目。
+3. 右键单击要添加 NUnit 的项目。
 4. 选择 **管理 NuGet 包** 。
 
 5. 在 NuGet 包管理器中，单击 **浏览**选项卡。
@@ -135,18 +130,6 @@ order: 0
   ```
 再次将 `3.x.x` 替换为您要安装的特定版本。
   确保您的项目的目标框架与您正在安装的[NUnit](/zh-cn/wiki/nunit/) 版本兼容。安装后，您可以开始使用 [NUnit](/zh-cn/wiki/nunit/) 框架编写测试。如果您想在 Visual Studio 的测试资源管理器中运行测试，请记住还安装`NUnit3TestAdapter`。
-
-1. 在 Visual Studio 中打开您的项目。
-2. 前往 **解决方案浏览器** 。
-
-3. 右键单击​​要添加 NUnit 的项目。
-4. 选择 **管理 NuGet 包** 。
-
-5. 在 NuGet 包管理器中，单击 **浏览**选项卡。
-
-6. 搜索 `NUnit` 。
-
-7. 选择 `NUnit` 列表中的包。
 
 8. 单击 **安装**按钮将 NUnit 添加到您的项目中。
 
@@ -195,18 +178,14 @@ order: 0
   ```
 
 4. **通过在测试文件顶部添加`using NUnit.Framework;` 指令来引用测试项目中的[NUnit](/zh-cn/wiki/nunit/) 框架**。
-5. **创建一个[测试类](/zh-cn/wiki/test-class/)**并用`[TestFixture]`装饰它。在类内部，定义测试方法并用`[Test]`对其进行注释。
+5. **创建一个[测试类](/zh-cn/wiki/test-class/)** 并用`[TestFixture]`装饰它。在类内部，定义测试方法并用`[Test]`对其进行注释。
 6. **构建项目**来编译[测试用例](/zh-cn/wiki/test-case/)。
-7. **使用 IDE 中的测试资源管理器或通过命令行运行测试。对于命令行，导航到您的项目目录并运行：
+7. 使用 IDE 中的测试资源管理器或通过命令行运行测试。对于命令行，导航到您的项目目录并运行：
 
   ```
     dotnet test
   ```
 确保您的项目针对 [NUnit](/zh-cn/wiki/nunit/) 的兼容框架版本。如果遇到问题，请验证 [NUnit](/zh-cn/wiki/nunit/) 和测试适配器版本是否与项目的目标框架兼容。
-
-```
-    dotnet test
-```
 
 #### NUnit 安装过程中常见的问题有哪些以及如何解决？
 
@@ -360,12 +339,6 @@ order: 0
   ```
 这些断言有助于验证被测代码的行为，确保软件按预期运行。
 
-- **相等断言**：验证两个值是否相等。
-
-  ```
-    Assert.AreEqual(expected, actual);
-  ```
-
 #### 在 NUnit 中如何对测试进行分组？
 
 在[NUnit](/zh-cn/wiki/nunit/) 中，可以使用**属性** 对测试进行分组，以有效地组织和管理它们。用于分组的主要属性是`[TestFixture]`，它表示包含测试方法的类。在测试装置中，您可以使用 `[Category]` 属性进一步对测试进行分组。
@@ -405,7 +378,7 @@ order: 0
   ```
   nunit-console --where "cat == Addition" MyTests.dll
   ```
-对于更复杂的分组，您可以使用**[NUnit](/zh-cn/wiki/nunit/) 的测试选择语言**来包含或排除基于多个类别或其他属性的测试。
+对于更复杂的分组，您可以使用 **[NUnit](/zh-cn/wiki/nunit/) 的测试选择语言**来包含或排除基于多个类别或其他属性的测试。
   请记住，对测试进行分组有助于根据其类别执行测试子集，这对于在测试期间定位应用程序的特定区域非常有用。它还有助于维护组织良好的[测试套件](/zh-cn/wiki/test-suite/)。
 
 #### 如何在 NUnit 中运行一组特定的测试？

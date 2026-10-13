@@ -1,6 +1,6 @@
 ---
 title: "需求管理工具 ｜ Requirements Management Tool"
-description: "需求管理工具是一种旨在捕获、组织和管理系统或项目所有需求的软件应用程序。它充当需求及相关信息的中央存储库，使利益相关者能够在整个项目生命周期中访问和更新需求。该工具简化了需求获取、分析和验证的过程，确保所有需求都得到清晰定义、理解和一致认可。它通常支持版本控制，允许跟踪需求随时间的变化…"
+description: "需求管理工具是一种旨在捕获、组织和管理系统或项目所有需求的软件应用程序。它充当需求及相关信息的中央存储库，使利益相关者能够在整个项目生命周期中访问和更新需求。该工具简化了需求获取、分析和验证的过程，确保所有需求都得到清晰定义、理解和一致认可。"
 section: "R"
 related:
   - test-management
@@ -17,7 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [需求管理工具 ｜ Requirements Management Tool](#需求管理工具--requirements-management-tool)
-  - [相关术语](#相关术语)
   - [有关需求管理工具的问题吗？](#有关需求管理工具的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是需求管理工具？](#什么是需求管理工具)
@@ -42,7 +41,7 @@ order: 0
 
 需求管理工具监督要求，向利益相关者通报变化，并规范新的或调整后的要求。
 
-## 相关术语
+相关术语
 
 - [可追溯性矩阵](/zh-cn/wiki/traceability-matrix/)
 
@@ -99,7 +98,7 @@ order: 0
 [需求管理工具](/zh-cn/wiki/requirements-management-tool/) (RMT) 通过提供用于捕获、组织和管理需求的集中存储库来运行。它允许用户**定义**和**分类**需求，通常使用自定义字段和数据类型来捕获必要的详细信息。需求可以**链接**到其他相关项目，例如[测试用例](/zh-cn/wiki/test-case/)或设计文档，从而建立可追溯性。
   RMT 支持**版本控制**，确保随着时间的推移跟踪需求的更改。此功能允许团队了解需求的演变，并在必要时恢复到以前的版本。 **变更管理**通过管理如何修改和批准需求的工作流程来促进。
   **访问控制**机制确保只有授权人员才能进行更改，而**评论**和**讨论线程**允许协作细化需求。通知和警报让利益相关者随时了解变更或所需采取的行动。
-  与 [测试自动化](/zh-cn/wiki/test-automation/) 工具集成至关重要； RMT 通常为此目的提供 [API](/zh-cn/wiki/api/) 或插件。通过将需求链接到自动化测试，团队可以直接将测试结果与原始需求关联起来，从而实现**实时可追溯性**和**[影响分析](/zh-cn/wiki/impact-analysis/)**。这种集成允许自动报告[测试覆盖率](/zh-cn/wiki/test-coverage/) 和需求满足情况。
+  与 [测试自动化](/zh-cn/wiki/test-automation/) 工具集成至关重要； RMT 通常为此目的提供 [API](/zh-cn/wiki/api/) 或插件。通过将需求链接到自动化测试，团队可以直接将测试结果与原始需求关联起来，从而实现**实时可追溯性**和 **[影响分析](/zh-cn/wiki/impact-analysis/)**。这种集成允许自动报告[测试覆盖率](/zh-cn/wiki/test-coverage/) 和需求满足情况。
   为了支持决策，RMT 提供**报告**和**仪表板功能**，提供有关需求状态和进度的数据。自定义查询和过滤器允许团队查看与其需求最相关的信息。
   总之，RMT 简化了需求流程，提供了对于维护软件项目的质量和一致性至关重要的结构、可追溯性和协作功能。
 
@@ -169,17 +168,6 @@ order: 0
 10. **监控和优化**：持续监控工具的使用情况并收集反馈以优化流程和配置。
 11. **制定维护计划**：创建定期更新、备份和审核的维护计划，以确保该工具保持有效。
 
-- Assess current processes and identify improvements.
-- Secure stakeholder buy-in.
-- Choose a tool that fits project needs and existing infrastructure.
-- Plan and execute data import strategy.
-- Customize tool with necessary custom fields.
-- Set up necessary integrations with other systems.
-- Migrate and validate existing requirements data.
-- Train the team on tool usage.
-- Implement appropriate access controls.
-- Monitor tool usage and refine as needed.
-- Establish a maintenance plan for the tool.
 通过执行这些步骤，您可以将 [需求管理工具](/zh-cn/wiki/requirements-management-tool/) 集成到您的项目中，从而增强可追溯性和协作。
 
 #### 实施需求管理工具时面临哪些常见挑战以及如何克服这些挑战？
@@ -217,14 +205,6 @@ order: 0
   ```
 定期**审查和更新**培训材料，以反映工具的更新或团队流程的变化。
 
-- **创建、编辑和删除需求**了解工具内的生命周期。
-
-- **链接要求**测试用例和代码提交以掌握可追溯性功能。
-
-- **使用过滤器和搜索功能**有效地浏览需求。
-
-- **练习协作功能** ，例如评论和分配任务，以增强沟通。
-
 - **运行报告**了解该工具如何提供有关需求覆盖范围和项目健康状况的见解。
 
 ### 集成和兼容性
@@ -233,7 +213,7 @@ order: 0
 
 [需求管理工具](/zh-cn/wiki/requirements-management-tool/) (RMT) 与其他项目管理工具的集成功能对于无缝工作流程和数据一致性至关重要。大多数现代 RMT 提供 **[API](/zh-cn/wiki/api/)** 或 **插件** 来促进与 [jira](/zh-cn/wiki/jira/)、Trello 或 Microsoft Azure DevOps 等各种工具的集成。这允许需求与任务、[bugs](/zh-cn/wiki/bug/) 和用户故事的自动同步，确保所有团队成员都能访问最新信息。
   集成通常支持**双向数据流**，这意味着一个系统中的更改可以反映在另一个系统中。例如，更新 RMT 中的需求可以自动更新项目管理工具中的相关任务。这减少了手动输入和出错的风险。
-  对于[测试自动化](/zh-cn/wiki/test-automation/)，与**持续集成/持续部署（CI/CD）管道**和**[测试管理](/zh-cn/wiki/test-management/) 工具**的集成特别有价值。它使需求能够直接链接到[测试用例](/zh-cn/wiki/test-case/) 和结果，从而提供对[测试覆盖率](/zh-cn/wiki/test-coverage/) 和质量的可追溯性和洞察。
+  对于[测试自动化](/zh-cn/wiki/test-automation/)，与**持续集成/持续部署（CI/CD）管道**和 **[测试管理](/zh-cn/wiki/test-management/) 工具**的集成特别有价值。它使需求能够直接链接到[测试用例](/zh-cn/wiki/test-case/) 和结果，从而提供对[测试覆盖率](/zh-cn/wiki/test-coverage/) 和质量的可追溯性和洞察。
   要利用集成，您可能需要配置 **webhooks** 或 **自定义脚本**。例如：
 
   ```
@@ -276,6 +256,5 @@ order: 0
 9. **检查供应商路线图**：确保供应商的开发路线图与您未来的基础设施计划保持一致。
 10. **利用社区和论坛**：与工具的用户社区互动，获取有关兼容性和最佳实践的见解。 通过彻底评估这些方面，您可以确保所选的 [需求管理工具](/zh-cn/wiki/requirements-management-tool/) 将与您现有的软件基础设施顺利集成。
 
-1. **识别关键集成**：列出应与该工具集成的所有关键系统（例如版本控制、CI/CD、[测试管理](/zh-cn/wiki/test-management/)）。
 2. **检查[API](/zh-cn/wiki/api/) 支持**：验证该工具是否提供强大的 **[API](/zh-cn/wiki/api/)** 集成。寻找有利于无缝数据交换的 RESTful 或 SOAP [API](/zh-cn/wiki/api/)。
 10. **利用社区和论坛**：与工具的用户社区互动，获取有关兼容性和最佳实践的见解。

@@ -154,10 +154,6 @@ Future-proof testing ensures a software application can adapt to future technolo
   - **Regular Refactoring**: Periodically review and update tests to improve efficiency and remove redundancies.
   By applying these techniques, you can create a robust and adaptable [test automation](/en/wiki/test-automation/) suite that stands the test of time.
 
-  - **Modular Design** : Create tests with reusable components or modules. This allows for easier updates and scalability.
-  - **Data-Driven Testing** : Externalize test data from scripts. This allows tests to be data agnostic and easily updated.
-  - **Behavior-Driven Development ([BDD](/en/wiki/bdd/))** : Use domain-specific language to express tests, making them understandable to non-technical stakeholders and resistant to changes in implementation.
-  - **[Page Object Model](/en/wiki/page-object-model/) (POM)** : Abstract UI structure and interactions into page objects to minimize the impact of UI changes on tests.
 
 #### How can I develop a future proof testing strategy?
 
@@ -267,8 +263,6 @@ Future-proof testing ensures a software application can adapt to future technolo
   5. **Incorporate AI-based tools**
     that support continuous learning and improvement of test processes.
   By adopting these AI-driven approaches, [test automation](/en/wiki/test-automation/) can become more **proactive**, **efficient**, and **adaptable** to changes, ensuring that it remains robust in the face of evolving software landscapes.
-
-  1. **Identify repetitive tasks**
 
 #### What should I consider when choosing tools for future proof testing?
 
@@ -426,12 +420,6 @@ Future-proof testing ensures a software application can adapt to future technolo
     ```
   By implementing these strategies, [test automation](/en/wiki/test-automation/) remains robust against future developments and continues to provide value over time.
 
-  - **Decoupling tests from implementation details** : By focusing on behavior rather than how it's implemented, tests remain valid even when the underlying code changes. For instance, using page objects in UI tests to separate test logic from UI structure.
-  - **Data-driven testing** : Externalizing test data and using it to drive tests can ensure that tests are not hard-coded and can easily be extended for additional scenarios.
-  - **[API](/en/wiki/api-testing/) versioning tests** : Ensuring that tests check for API version compatibility can prevent failures when services are updated.
-  - **Cross-platform and [cross-browser testing](/en/wiki/cross-browser-testing/)** : Using tools like Selenium WebDriver to run tests across multiple browsers and platforms ensures that applications work as expected in diverse environments.
-  - **Continuous Integration (CI) pipelines** : Integrating tests into CI/CD pipelines ensures that they are run regularly and can catch issues early.
-  - **Performance and [load testing](/en/wiki/load-testing/)** : Regularly running performance tests can detect regressions and ensure that the application scales with user demand.
 
 #### How can I measure the effectiveness of my future proof testing strategy?
 

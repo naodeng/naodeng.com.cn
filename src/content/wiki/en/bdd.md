@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [BDD](#bdd)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about BDD?](#questions-about-bdd)
     - [Basics and Importance](#basics-and-importance)
       - [What is Behavior Driven Development (BDD)?](#what-is-behavior-driven-development-bdd)
@@ -44,13 +42,13 @@ order: 0
 
 BDD (Behavior-Driven Development) is an agile software development approach that emphasizes collaboration between developers, testers, and domain experts. It focuses on understanding and defining the desired behavior of a system from the user's perspective. BDD encourages the use of simple, plain-language descriptions of software behavior, often structured as "Given-When-Then" scenarios. These descriptions serve as both requirements documentation and a basis for automated tests, ensuring that software development is aligned with user needs and expectations.
 
-## Related Terms:
+Related Terms:
 
 - Behavior Driven Development
 - [Gherkin](/en/wiki/gherkin/)
 - [Test Scenario](/en/wiki/test-scenario/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Behavior-driven_development)
 ## Questions about BDD?
@@ -181,11 +179,7 @@ BDD (Behavior-Driven Development) is an agile software development approach that
   ```
   This scenario can be directly translated into automated tests, ensuring that the software behaves as expected. The **Given-When-Then** format also facilitates communication between technical and non-technical team members, bridging the gap between business requirements and technical implementation.
 
-  - **Given**
-    sets up the initial context or preconditions.
 
-  - **When**
-    describes the action or event that triggers the behavior.
 
   - **Then**
     outlines the expected outcome or result.
@@ -296,9 +290,6 @@ BDD (Behavior-Driven Development) is an agile software development approach that
     between the requirements (user stories) and the automated tests, which helps in maintaining and evolving test suites alongside the application.
   BDD scenarios effectively become a **detailed specification** of the user story, which is both executable and serves as documentation. This tight integration supports Agile principles by fostering collaboration, enabling quick feedback loops, and ensuring that the software incrementally evolves with a focus on delivering the most valuable features first.
 
-  - Development is
-    **guided by the user's needs**
-    and the expected system behavior.
 
   - There is a
     **direct traceability**

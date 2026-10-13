@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [A/B Testing](#ab-testing)
-  - [See also:](#see-also)
   - [Questions about A/B Testing?](#questions-about-ab-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is A/B testing?](#what-is-ab-testing)
@@ -45,7 +44,7 @@ order: 0
 
 (aka split testing) A/B testing involves creating one or more variants of a webpage to compare against the current version. The goal is to determine which version performs best based on specific metrics, such as revenue per visitor or conversion rate.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/A/B_testing)
 ## Questions about A/B Testing?
@@ -182,7 +181,6 @@ order: 0
   1. **Adjust for practical considerations** : Consider the traffic you have available and the duration of the test. If the calculated sample size is too large, you may need to increase the MDE or decrease the power to obtain a feasible sample size.
   Remember, the larger the sample size, the more precise your results will be, but it will also take longer and cost more to obtain those results. It's about finding the right balance for your specific context.
 
-  1. **Adjust for practical considerations** : Consider the traffic you have available and the duration of the test. If the calculated sample size is too large, you may need to increase the MDE or decrease the power to obtain a feasible sample size.
 
 #### What are control and variant in A/B testing?
 

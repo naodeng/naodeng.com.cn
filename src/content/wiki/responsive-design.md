@@ -1,6 +1,6 @@
 ---
 title: "响应式设计 ｜ Responsive Design"
-description: "响应式设计是一种 Web 开发方法，它根据用于查看网站的设备的屏幕大小和方向，对网站外观进行动态更改。它是通过使用 CSS 媒体查询 (Media Queries) 和灵活的网格布局来实现的，使网站能够根据查看环境自行调整布局。这种方法确保了网站在从台式机显示器到手机等各种设备上都能保持可用性和美感…"
+description: "响应式设计是一种 Web 开发方法，它根据用于查看网站的设备的屏幕大小和方向，对网站外观进行动态更改。它是通过使用 CSS 媒体查询 (Media Queries) 和灵活的网格布局来实现的，使网站能够根据查看环境自行调整布局。"
 section: "R"
 related:
   - browserstack
@@ -17,7 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [响应式设计 ｜ Responsive Design](#响应式设计--responsive-design)
-  - [相关术语](#相关术语)
   - [关于响应式设计的问题吗？](#关于响应式设计的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是响应式设计？](#什么是响应式设计)
@@ -46,7 +45,7 @@ order: 0
 <!-- TOC END -->
 响应式设计涉及根据屏幕尺寸和设备方向动态调整网站的外观，确保内容和显示之间的兼容性。
 
-## 相关术语
+相关术语
 
 - [用户界面测试](/zh-cn/wiki/ui-testing/)
 - [网页测试](/zh-cn/wiki/web-testing/)
@@ -66,10 +65,6 @@ order: 0
 - 检查图像和媒体是否正确缩放和更改。
 - 确保按钮和链接等交互元素可在所有设备上使用。
 - 测试媒体查询是否在设置的断点处正确触发。
-- 验证流体网格布局的规模是否符合预期。
-- 检查图像和媒体是否正确缩放和更改。
-- 确保按钮和链接等交互元素可在所有设备上使用。
-- 测试媒体查询是否在设置的断点处正确触发。
 
 #### 为什么响应式设计很重要？
 
@@ -81,23 +76,13 @@ order: 0
 - **准确性**：当用户在各种设备上访问应用程序时，更准确地反映实际使用情况。
 - **可扩展性**：方便对具有新屏幕尺寸和分辨率的未来设备进行测试，而无需对测试脚本进行重大更改。 将 [响应式设计](/zh-cn/wiki/responsive-design/) 合并到 [测试自动化](/zh-cn/wiki/test-automation/) 需要：
 
-- 使用类似的工具 **[selenium](/zh-cn/wiki/selenium/)**或 **阿皮姆**支持在不同浏览器大小和各种设备上进行测试。
+- 使用类似的工具 **[selenium](/zh-cn/wiki/selenium/)** 或 **阿皮姆**支持在不同浏览器大小和各种设备上进行测试。
 
 - 实施 **动态定位器**和 **灵活的断言**处理布局和设计的变化。
 
 - 设计测试以根据元素的相对位置而不是绝对坐标与元素进行交互。
 - 在一个上运行并行测试 **设备农场**或 **基于云的服务**例如 BrowserStack 或 Sauce Labs 来提高效率。 通过在[测试自动化](/zh-cn/wiki/test-automation/)中优先考虑[响应式设计](/zh-cn/wiki/responsive-design/)，工程师可以确保应用程序提供无缝的用户体验，无论使用什么设备或浏览器，这在当今多样化的设备环境中至关重要。
 
-- **一致性**：确保自动化测试在各种设备和屏幕尺寸上产生一致的结果，减少由于布局问题导致的误报。
-- **覆盖范围**：扩大测试覆盖范围以包括广泛的设备，提高测试套件的可靠性。
-- **效率**：允许使用一套测试来验证多个设备上的 UI/UX，从而节省时间和资源。
-- **准确性**：当用户在各种设备上访问应用程序时，更准确地反映实际使用情况。
-- **可扩展性**：方便对具有新屏幕尺寸和分辨率的未来设备进行测试，而无需对测试脚本进行重大更改。
-- 使用类似的工具 **[selenium](/zh-cn/wiki/selenium/)**或 **阿皮姆**支持在不同浏览器大小和各种设备上进行测试。
-
-- 实施 **动态定位器**和 **灵活的断言**处理布局和设计的变化。
-
-- 设计测试以根据元素的相对位置而不是绝对坐标与元素进行交互。
 - 在一个上运行并行测试 **设备农场**或 **基于云的服务**例如 BrowserStack 或 Sauce Labs 来提高效率。
 
 #### 响应式设计的关键原则是什么？
@@ -155,9 +140,6 @@ order: 0
 - **CSS Flexbox 和网格**：现代布局技术，在页面上的元素定位和对齐方面提供更大的灵活性和控制力。
 - **排版调整**：通过调整不同设备的大小、间距和行高，确保文本保持可读性和可访问性。
 - **触摸目标**：使按钮和链接等交互元素足够大，以便在触摸设备上轻松点击。 通过结合这些技术，开发人员可以创建在各种设备和屏幕尺寸上视觉一致且功能齐全的网站。
-
-- **灵活布局**：使用相对单位（例如宽度百分比）而不是固定单位（例如像素），以允许元素根据视口大小进行缩放。
-- **灵活的图像和媒体**：确保图像和其他媒体内容缩放或更改尺寸以适应不同的屏幕分辨率，而不会损失质量或变得对于视口来说太大。
 
 #### 媒体查询在响应式设计中如何工作？
 
@@ -247,16 +229,6 @@ order: 0
 - **避免不必要的框架**：使用轻量级框架或自定义代码来防止加载不必要的功能，这些功能可能会减慢您的网站速度。
 - **持续测试**：将 [响应式设计](/zh-cn/wiki/responsive-design/) 测试集成到持续集成/持续部署 (CI/CD) 管道中，以便及早发现问题。 通过遵循这些实践，您将创建一个[响应式设计](/zh-cn/wiki/responsive-design/)，它可以在所有设备和屏幕尺寸上提供最佳的用户体验。
 
-- **从移动优先开始**：首先针对最小屏幕进行设计，然后再放大。这种方法可确保您优先考虑所有设备上必不可少的内容和功能。
-- **使用相对单位**：使用百分比、`em` 或`rem` 等相对单位，而不是像素等固定单位。这使您的设计更加灵活并适应不同的屏幕尺寸。
-- **实施灵活的布局**：利用可以随浏览器窗口扩展或收缩的灵活网格布局。避免使用可能在较小屏幕上损坏的固定宽度布局。
-- **优化图像**：确保图像不仅响应灵敏，而且还针对快速加载进行了优化。使用 WebP 等现代图像格式以获得更好的压缩效果。
-- **确定内容的优先级**：确定哪些内容对于不同设备上的用户最重要，并确保其易于访问。
-- **在真实设备上进行测试**：虽然模拟器和仿真器很有用，但在实际设备上进行测试可以提供最准确的用户体验表示。
-- **专注于触摸交互**：确保按钮和表单字段等交互元素适合触摸，并为手指提供足够的尺寸和间距。
-- **牢记性能**：[响应式设计](/zh-cn/wiki/responsive-design/) 不应损害网站性能。优化 CSS 和 JavaScript，并最大限度地减少 HTTP 请求。
-- **使用 CSS3 功能**：利用 Flexbox 和 CSS 网格等 CSS3 功能来实现更高效的布局管理。
-- **避免不必要的框架**：使用轻量级框架或自定义代码来防止加载不必要的功能，这些功能可能会减慢您的网站速度。
 - **持续测试**：将 [响应式设计](/zh-cn/wiki/responsive-design/) 测试集成到持续集成/持续部署 (CI/CD) 管道中，以便及早发现问题。
 
 ### 测试和调试
@@ -277,10 +249,6 @@ order: 0
 6. **[性能测试](/zh-cn/wiki/performance-testing/)**：确保网站的性能在不同设备上保持一致，特别是在速度至关重要的移动设备上。
 7. **持续集成 (CI)**：将响应测试集成到 CI 管道中，以便尽早且频繁地发现问题。
 8. **[跨浏览器测试](/zh-cn/wiki/cross-browser-testing/)**：使用 [browserstack](/zh-cn/wiki/browserstack/) 或 Sauce Labs 等平台来测试跨多个浏览器及其版本的响应能力。 通过组合这些方法，您可以全面测试网站的响应能力，确保无论设备或浏览器如何，都能获得一致的用户体验。
-
-  ```
-    driver.manage().window().setSize(new Dimension(1024, 768)); // Set window size for a tablet
-  ```
 
 #### 可以使用哪些工具来测试响应式设计？
 
@@ -324,36 +292,6 @@ order: 0
   ```
 将这些工具与 **CI/CD 管道** 相结合，以自动化 [响应式设计](/zh-cn/wiki/responsive-design/) 测试并将其集成到您的开发工作流程中。
 
-  ```
-    WebDriver driver = new ChromeDriver();
-    driver.manage().window().setSize(new Dimension(1024, 768));
-    // Add assertions to validate responsive elements
-  ```
-- **Appium**：将[selenium](/zh-cn/wiki/selenium/) 的框架扩展到移动应用程序，允许在仿真器、模拟器和真实设备上进行测试。
-
-  ```
-    from appium import webdriver
-    desired_caps = {
-        'platformName': 'iOS',
-        'platformVersion': '13.0',
-        'deviceName': 'iPhone X',
-        'browserName': 'Safari',
-    }
-    driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-    # Add assertions to validate responsive elements
-  ```
-
-  ```
-    const puppeteer = require('puppeteer');
-    (async () => {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.setViewport({ width: 1280, height: 800 });
-      // Add assertions to validate responsive elements
-      await browser.close();
-    })();
-  ```
-
 #### 响应式设计中有哪些常见问题以及如何调试？
 
 [响应式设计](/zh-cn/wiki/responsive-design/) 中的常见问题通常围绕**布局问题**、**内容可见性**和**交互元素**无法在不同设备上正常运行。这些可能表现为重叠的元素、不可读的文本、不可点击的按钮或无法正确缩放的图像。
@@ -377,19 +315,6 @@ order: 0
 6. **[性能测试](/zh-cn/wiki/performance-testing/)**：检查响应式图像和资源是否过大，导致移动网络加载速度缓慢。
 7. **[自动化测试](/zh-cn/wiki/automated-testing/) 工具**：利用[selenium](/zh-cn/wiki/selenium/) 或 Puppeteer 等工具跨各种设备和视口自动进行测试。 通过系统地解决这些领域，您可以识别并解决大多数 [响应式设计](/zh-cn/wiki/responsive-design/) 问题，确保所有设备上的一致且功能齐全的用户体验。
 
-1. **使用开发人员工具**：现代浏览器附带开发人员工具，可让您模拟不同的屏幕尺寸。检查元素以查看应用的 CSS 规则并实时测试更改。
-
-  ```
-    // Example: Chrome DevTools allows toggling the device toolbar to simulate various devices
-  ```
-2. **检查媒体查询**：确保媒体查询正确编写并在预期断点处激活。
-
-  ```
-    @media (min-width: 768px) {
-      /* Styles for tablets and above */
-    }
-  ```
-
 #### 如何确保网站在所有设备和浏览器上都能响应？
 
 为了确保网站在所有设备和浏览器上都能响应，请遵循以下策略：
@@ -410,14 +335,6 @@ order: 0
 - **持续集成 (CI)**：将响应测试集成到 CI 管道中，以确保持续的兼容性。
 - **[性能测试](/zh-cn/wiki/performance-testing/)**：使用 [lighthouse](/zh-cn/wiki/lighthouse/) 等工具评估移动设备上的性能，确保响应能力不会影响速度。 通过组合这些 [自动化测试](/zh-cn/wiki/automated-testing/) 策略，您可以有效地验证网站的响应能力，确保在所有平台上获得一致且最佳的用户体验。
 
-  ```
-    const { Builder, By, Key, until } = require('selenium-webdriver');
-    let driver = new Builder().forBrowser('firefox').build();
-    driver.get('http://yourwebsite.com');
-    // Add responsive tests here
-    driver.quit();
-  ```
-
 #### 自动化在测试响应式设计中的作用是什么？
 
 自动化在测试 [响应式设计](/zh-cn/wiki/responsive-design/) 中发挥着 **关键作用**，确保网站或应用程序在各种设备和屏幕尺寸上**正常运行**。它允许对布局、功能和性能进行**一致且可重复的验证**，而无需手动干预。
@@ -429,7 +346,7 @@ order: 0
   driver.manage().window().setSize(new Dimension(1024, 768));
   // Add assertions to check for layout changes
   ```
-像 **Appium** 这样的自动化框架可以在真实设备上自动执行测试，而 **[browserstack](/zh-cn/wiki/browserstack/)** 或 **Sauce Labs** 这样的工具提供基于云的平台，用于跨多种设备浏览​​器组合进行测试。
+像 **Appium** 这样的自动化框架可以在真实设备上自动执行测试，而 **[browserstack](/zh-cn/wiki/browserstack/)** 或 **Sauce Labs** 这样的工具提供基于云的平台，用于跨多种设备浏览器组合进行测试。
   自动化测试还可以检查不同分辨率下的**加载时间**，以确保满足性能标准，这对于保持积极的用户体验和 SEO 排名至关重要。
   将 [响应式设计](/zh-cn/wiki/responsive-design/) 测试合并到**持续集成/持续部署 (CI/CD)** 管道中可确保在开发过程的早期发现响应能力问题，从而降低部署后进行昂贵修复的风险。
   总之，测试 [响应式设计](/zh-cn/wiki/responsive-design/) 的自动化涉及**效率、覆盖范围和可靠性**，从而能够快速反馈跨目标设备和浏览器范围的响应体验的质量。
@@ -454,8 +371,6 @@ Adaptive 和 [响应式设计](/zh-cn/wiki/responsive-design/) 都是创建在�
 
 - 响应式设计是关于 **灵活性** ，其布局可根据观看环境不断调整。 对于[测试自动化](/zh-cn/wiki/test-automation/) 工程师来说，在创建[测试用例](/zh-cn/wiki/test-case/) 时这种区别至关重要。测试自适应设计可能需要在定义的断点处验证特定布局，而测试 [响应式设计](/zh-cn/wiki/responsive-design/) 则需要确保布局在连续的屏幕尺寸上顺利运行。 [响应式设计](/zh-cn/wiki/responsive-design/) 测试通常需要更复杂的自动化脚本来模拟各种视口大小并确保设计保持连贯性和功能性。 [selenium](/zh-cn/wiki/selenium/) [WebDriver](/zh-cn/wiki/webdriver/) 等工具可以通过编程方式调整浏览器窗口大小，对于此目的至关重要。
 
-- 自适应设计更多的是关于 **剪裁**针对特定设备，具有针对特定屏幕尺寸设计的一定数量的布局。
-
 - 响应式设计是关于 **灵活性** ，其布局可根据观看环境不断调整。
 
 #### 响应式设计如何应用于电子邮件营销？
@@ -474,7 +389,7 @@ Adaptive 和 [响应式设计](/zh-cn/wiki/responsive-design/) 都是创建在�
 ```
 合并使用百分比而不是固定像素宽度的**流体布局**，允许内容适应各种屏幕尺寸。另外，将**可缩放图像**与`max-width: 100%`一起使用，以确保它们在其包含的元素内调整大小。
   考虑移动设备的**单列布局**，以增强可读性和导航便利性。按钮和链接的**最小尺寸应为 44x44 像素**，以适应触摸交互，并且**填充**应用于增加可点击区域。
-  采用 **内联 CSS** 以避免电子邮件客户端删除样式，并使用 Litmus 或 Email on Acid 等工具跨不同设备和电子邮件客户端测试电子邮件**。这可确保兼容性并有助于在发送之前识别渲染问题。
+  采用 **内联 CSS** 以避免电子邮件客户端删除样式，并使用 Litmus 或 Email on Acid 等工具跨不同设备和电子邮件客户端测试电子邮件。这可确保兼容性并有助于在发送之前识别渲染问题。
   请记住，我们的目标是为收件人提供无缝的体验，无论他们使用什么设备阅读您的电子邮件。这种方法不仅提高了参与度，还积极体现了品牌的专业精神和对细节的关注。
 
 #### 响应式设计的未来趋势是什么？

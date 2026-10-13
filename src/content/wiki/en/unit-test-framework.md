@@ -77,8 +77,6 @@ Tools designed for creating and executing unit tests, offering foundational stru
   Frameworks may also support **test discovery**, automatically finding and running tests according to naming conventions or configurations, and **test fixtures** for sharing common [test data](/en/wiki/test-data/) or state.
   Popular unit test frameworks include **JUnit** for Java, **[NUnit](/en/wiki/nunit/)** for .NET, **unittest** for Python, and **[Jest](/en/wiki/jest/)** for JavaScript. Each framework has its own syntax and features, but they all serve the same fundamental purpose of facilitating [unit testing](/en/wiki/unit-testing/) in software development.
 
-  - **[Test runners](/en/wiki/test-runner/)**
-
 #### Why is a Unit Test Framework important in software development?
 
   A **Unit Test Framework** is crucial in software development for several reasons:

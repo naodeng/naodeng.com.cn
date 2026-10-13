@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Edge Testing](#edge-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Edge Testing?](#questions-about-edge-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is edge testing in software testing?](#what-is-edge-testing-in-software-testing)
@@ -39,7 +38,7 @@ order: 0
 
 Edge testing checks system behavior near operating limits, such as maximum user load. It helps expose failures that routine testing may miss.
 
-## Related Terms:
+Related Terms:
 
 - [Boundary Testing](/en/wiki/boundary-testing/)
 
@@ -73,7 +72,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
   Automated edge testing can be integrated into CI/CD pipelines using tools like [Selenium](/en/wiki/selenium/) or JUnit, with scripts specifically crafted to challenge the application's boundaries. This automation allows for continuous validation of edge cases throughout the development lifecycle.
   Neglecting edge testing can lead to software that is fragile and prone to failure in the wild, where real-world use often includes unexpected and extreme conditions. By incorporating edge testing, developers can preemptively address potential points of failure, leading to more resilient and user-friendly applications.
 
-
 #### How does edge testing differ from other types of testing?
 
   Edge testing differs from other types of testing by focusing specifically on the **boundary conditions** of the software, which are often overlooked in other testing methods. While [unit testing](/en/wiki/unit-testing/), [integration testing](/en/wiki/integration-testing/), and [system testing](/en/wiki/system-testing/) validate the functionality and performance of the software under typical conditions, edge testing targets the **extreme operational capacities** and **corner cases** where defects are more likely to occur.
@@ -93,7 +91,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
   - **Compliance and safety** : For regulated industries or safety-critical applications, edge testing can be crucial for ensuring compliance with standards and maintaining safety.
   - **Future-proofing** : By validating the software's behavior at its boundaries, edge testing can make it more adaptable to future changes or expansions in functionality.
   Incorporating edge testing into the [test automation](/en/wiki/test-automation/) strategy can lead to a more comprehensive [test coverage](/en/wiki/test-coverage/) and a more resilient application, ultimately contributing to the success of the software in the market.
-
 
 #### What are the potential consequences of not performing edge testing?
 
@@ -120,8 +117,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
   - **Higher maintenance costs**
     due to the need to fix issues that were not identified early in the development cycle.
   To mitigate these risks, ensure edge testing is a part of your [test strategy](/en/wiki/test-strategy/). Automate edge case scenarios where possible and prioritize them based on risk assessment.
-
-  - **Increased risk of defects**
 
 ### Implementation and Techniques
 
@@ -163,7 +158,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
      ```
   By following these steps, edge testing can be systematically incorporated into the [software testing](/en/wiki/software-testing/) process, ensuring that edge cases are consistently and effectively evaluated to maintain the robustness of the application.
 
-  1. **Identify critical paths**
 #### What are some common techniques used in edge testing?
 
   Common techniques used in **edge testing** include:
@@ -178,7 +172,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
   - **Model-Based Testing**: Using models to simulate real-world scenarios where edge conditions might occur, and then developing [test cases](/en/wiki/test-case/) based on these models.
   - **[Exploratory Testing](/en/wiki/exploratory-testing/)**: Actively exploring the software without predefined [test cases](/en/wiki/test-case/) to find edge cases through ad-hoc testing and learning.
   Automating these techniques often involves scripting [test cases](/en/wiki/test-case/) with parameters that target edge conditions and integrating them into the [test suite](/en/wiki/test-suite/). Tools like [Selenium](/en/wiki/selenium/), JUnit, or TestNG can be used to automate boundary value and [equivalence partitioning](/en/wiki/equivalence-partitioning/) tests, while more sophisticated tools or frameworks may be required for combinatorial or model-based testing.
-
 
 #### What tools are commonly used for edge testing?
 
@@ -257,7 +250,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
   - **Permissions** : Check system behavior with restricted user permissions or read-only files.
   Automated tests for these cases can be written using testing frameworks and tools that support parameterization and boundary value analysis. It's crucial to include assertions that specifically validate the system's behavior under these edge conditions.
 
-
 ### Challenges and Solutions
 
 #### What are some challenges that might be encountered during edge testing?
@@ -273,7 +265,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
   - **[Test Coverage](/en/wiki/test-coverage/)** : Achieving high test coverage that includes all potential edge cases can be nearly impossible for very large or complex applications.
   - **Automation Complexity** : Automating edge case tests can be challenging due to their unique and often complex nature.
   Mitigation strategies include **prioritizing** edge cases based on risk, using **[exploratory testing](/en/wiki/exploratory-testing/)** to uncover unexpected behavior, and employing **monitoring tools** to catch edge cases in production. Additionally, **[test case](/en/wiki/test-case/) design techniques** like boundary value analysis can help systematically identify edge conditions.
-
 
 #### How can these challenges be mitigated or overcome?
 
@@ -314,8 +305,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
     the edge testing strategy regularly to adapt to new features, changes in user behavior, or emerging technologies that may introduce new edge cases.
   By adopting these strategies, [test automation](/en/wiki/test-automation/) engineers can effectively manage the complexities of edge testing and ensure a robust and reliable software product.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How can edge testing be integrated into an Agile development process?
 
   Integrating edge testing into an **[Agile development](/en/wiki/agile-development/) process** requires a strategic approach to ensure it aligns with the iterative nature of Agile. Begin by incorporating edge case scenarios into user stories during the backlog refinement sessions. This ensures that edge cases are considered early in the planning phase.
@@ -349,9 +338,6 @@ Edge testing checks system behavior near operating limits, such as maximum user 
   Use **custom scripts** to simulate edge cases in the environment, like network latency or disk space shortages.
   **Continuous Integration (CI) tools** like Jenkins or GitHub Actions can schedule and run these automated edge tests regularly. Ensure that your [test suite](/en/wiki/test-suite/) includes comprehensive **logging** and **reporting** for quick identification of issues.
   Remember to maintain and update your edge [test cases](/en/wiki/test-case/) as the application evolves, ensuring they remain relevant and effective.
-
-  - **Boundary value analysis** : Test the limits of input fields and data processing routines.
-  - **[Stress testing](/en/wiki/stress-testing/)** : Automate interactions that push the system to its performance limits.
 
 #### What are some best practices for effective edge testing?
 
@@ -392,6 +378,3 @@ Edge testing checks system behavior near operating limits, such as maximum user 
 
   - **Document findings and share knowledge**
     across the team to improve awareness of potential edge-related issues and foster a culture of quality.
-
-  - **Prioritize edge cases**
-  - **Incorporate [negative testing](/en/wiki/negative-testing/)**

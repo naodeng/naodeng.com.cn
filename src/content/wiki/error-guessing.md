@@ -17,8 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [错误猜测 ｜ Error Guessing](#错误猜测--error-guessing)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于错误猜测的问题？](#关于错误猜测的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [软件测试中的错误猜测是什么？](#软件测试中的错误猜测是什么)
@@ -39,11 +37,11 @@ order: 0
 
 错误猜测是一个软件测试测试人员依靠他们的经验、直觉和系统知识尝试预测缺陷可能出现的位置的技术。而不是遵循系统的测试方法或预定义的测试用例，测试人员进行有根据的猜测，以确定软件可能出现故障的潜在问题区域或场景。该技术基于测试人员对常见错误、过去缺陷或特定系统行为的熟悉程度。 错误猜测通常用作补充测试方法，补充更结构化的技术，并且在识别独特或意外问题方面特别有效。
 
-## 相关术语
+相关术语
 
 - [启发式测试](/zh-cn/wiki/heuristic-testing/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Error_guessing)
 ## 关于错误猜测的问题？
@@ -54,26 +52,27 @@ order: 0
 
 [错误猜测](/zh-cn/wiki/error-guessing/) 是一种 **[测试用例](/zh-cn/wiki/test-case/) 设计技术**，测试人员可以利用他们的直觉、经验和对系统的理解来预测 [bugs](/zh-cn/wiki/bug/) 可能发生的位置，而不需要遵循任何正式的方法。测试人员利用他们对常见陷阱和特定系统怪癖的了解来识别潜在的错误情况。
   在实践中，[错误猜测](/zh-cn/wiki/error-guessing/) 涉及根据类似应用程序的**预感**或**过去的经验**创建测试。测试人员可能会考虑边界条件、无效输入和可能导致错误的复杂用户场景等因素。
-  为了增强[错误猜测](/zh-cn/wiki/error-guessing/)，测试人员可以保留通用[bugs](/zh-cn/wiki/bug/)**的**存储库，并使用从历史缺陷数据派生的**清单**。定期回顾过去的缺陷并从中学习可以增强测试人员的直觉。
-  In [自动化测试](/zh-cn/wiki/automated-testing/), [错误猜测](/zh-cn/wiki/error-guessing/) can inform the creation of **[测试脚本](/zh-cn/wiki/test-script/)** that target likely failure points.例如，如果测试人员怀疑表单可能无法正确处理特殊字符，他们可能会编写一个自动测试，将这些字符输入到表单字段中。
+  为了提高[错误猜测](/zh-cn/wiki/error-guessing/)的效果，测试人员可以建立常见[缺陷](/zh-cn/wiki/bug/)案例库，并使用根据历史缺陷数据整理的**检查清单**。定期回顾并总结过去的缺陷，有助于提升测试人员的判断能力。
+
+在[自动化测试](/zh-cn/wiki/automated-testing/)中，[错误猜测](/zh-cn/wiki/error-guessing/)可以帮助设计针对高风险失效点的**[测试脚本](/zh-cn/wiki/test-script/)**。例如，如果测试人员怀疑表单无法正确处理特殊字符，可以编写自动化测试，将这些字符输入表单字段并验证系统的响应。
   虽然[错误猜测](/zh-cn/wiki/error-guessing/) 的结构不如其他技术，但它可以**互补**。它通常会填补更正式方法留下的空白，提供一个安全网来捕获否则可能会被遗漏的问题。
   为了衡量其有效性，与其他方法相比，团队可以通过 [错误猜测](/zh-cn/wiki/error-guessing/) 跟踪**发现的缺陷数量**。如果[错误猜测](/zh-cn/wiki/error-guessing/) 始终如一地发现重大问题，则它验证了该技术在测试策略中的价值。
 
 #### 为什么错误猜测被认为是软件测试中的一项重要技术？
 
 [错误猜测](/zh-cn/wiki/error-guessing/) 在[软件测试](/zh-cn/wiki/software-testing/) 中至关重要，因为它利用**测试人员的直觉和经验**来预测和模拟正式测试技术可能无法涵盖的非常规或边缘情况场景。它充当**系统方法的补充**，填补结构化方法可能遗漏的空白。测试人员运用他们对常见故障的理解和领域知识来假设潜在的错误情况。
-  这项技术特别有价值，因为它可以**识别独特且意外的[bugs](/zh-cn/wiki/bug/)**。虽然结构化测试基于规范和预定义的标准，但 [错误猜测](/zh-cn/wiki/error-guessing/) 是动​​态的，可以适应对应用程序及其环境不断发展的理解。
+  这项技术特别有价值，因为它可以**识别独特且意外的[bugs](/zh-cn/wiki/bug/)**。虽然结构化测试基于规范和预定义的标准，但 [错误猜测](/zh-cn/wiki/error-guessing/) 是动态的，可以适应对应用程序及其环境不断发展的理解。
   将[错误猜测](/zh-cn/wiki/error-guessing/) 合并到[测试自动化](/zh-cn/wiki/test-automation/) 涉及根据**测试人员对潜在错误的假设**创建脚本。这些脚本可以与常规自动化测试一起运行，以发现可能漏掉的问题。
   为了提高[错误猜测](/zh-cn/wiki/error-guessing/) 的有效性，测试人员应该**不断地从过去的缺陷中学习**，及时了解类似应用程序中的常见问题，并与同行分享知识。缺陷检测率等指标可以帮助衡量其影响。
   总之，[错误猜测](/zh-cn/wiki/error-guessing/) 是一项**重要的技术**，它为测试过程添加了一层人类洞察力，使其更加强大和全面。当与其他测试方法结合使用时，它是最有效的，可确保彻底探索应用程序的潜在弱点。
 
 #### 错误猜测和其他测试技术有什么区别？
 
-[错误猜测](/zh-cn/wiki/error-guessing/) differs from other testing techniques primarily in its **lack of formal structure** and reliance on the tester's intuition and experience. While methods like **boundary value analysis** or **[等价划分](/zh-cn/wiki/equivalence-partitioning/)** are systematic and based on specific rules or models, [错误猜测](/zh-cn/wiki/error-guessing/) is more **ad-hoc** and **heuristic-based**.它不遵循一组预定义的[测试用例](/zh-cn/wiki/test-case/)，而是依赖于测试人员预测可能的错误源的能力。
-  其他技术通常需要详细的文档，并且可以**轻松地实现自动化**或**外包**。 In contrast, [错误猜测](/zh-cn/wiki/error-guessing/) is highly **subjective** and **personal**, making it harder to automate or transfer between testers without loss of effectiveness.
-  **基于模型的测试**等正式方法根据正式规范生成[测试用例](/zh-cn/wiki/test-case/)，确保覆盖所有定义的场景。 [错误猜测](/zh-cn/wiki/error-guessing/), however, targets areas that might be overlooked by formal methods, often based on past experiences with similar applications or common failure patterns.
-  While structured methods can be more **comprehensive** and **repeatable**, [错误猜测](/zh-cn/wiki/error-guessing/) can quickly identify critical issues without the need for extensive preparation.它通常用作**补充方法**，填补更系统的技术留下的空白。
-  In summary, [错误猜测](/zh-cn/wiki/error-guessing/) is a **flexible**, **experience-driven** approach that contrasts with the **rigorous**, **rule-based** nature of other testing techniques.它对于识别更正式的方法可能无法捕获的异常或被忽视的错误特别有用。
+[错误猜测](/zh-cn/wiki/error-guessing/)与其他测试技术的主要区别在于，它缺少形式化结构，依赖测试人员的直觉和经验。与边界值分析或[等价划分](/zh-cn/wiki/equivalence-partitioning/)等基于特定规则或模型的系统方法相比，错误猜测更偏向临时判断和经验启发。它不遵循预先定义的一组[测试用例](/zh-cn/wiki/test-case/)，而是依赖测试人员预测可能出错之处的能力。
+  其他技术通常需要详细文档，也更容易自动化或外包。相比之下，错误猜测具有较强的主观性和个人经验色彩，因此难以自动化，也难以在不损失效果的情况下移交给其他测试人员。
+  基于模型的测试等正式方法会根据规范生成[测试用例](/zh-cn/wiki/test-case/)，覆盖已定义的场景；错误猜测则借助测试人员对类似应用和常见故障模式的经验，检查正式方法可能忽略的区域。
+  结构化方法通常覆盖更全面、结果更易重复；错误猜测则能以较少准备快速发现关键问题。它通常作为补充方法，弥补系统化技术留下的空白。
+  总之，错误猜测是一种灵活、以经验为基础的方法，与其他测试技术严谨且基于规则的特点不同。它有助于识别正式方法可能遗漏的异常或问题。
 
 #### 错误猜测的优点和缺点是什么？
 
@@ -86,15 +85,7 @@ order: 0
 
 - **主观**：严重依赖个人技能和经验，导致结果存在差异。
 - **不可重现**：缺乏正式的方法，使得难以在团队之间复制测试或共享技术。
-- **不完整**：可能无法涵盖所有​​可能的错误场景，尤其是在复杂的系统中。
-- **不可预测**：有效性难以衡量，如果忽视关键错误，可能会导致错误的安全感。
-- **直观**：利用测试人员的直觉和经验来识别潜在的弱点。
-- **灵活**：适应不同的环境和应用，无需正式程序。
-- **高效**：快速定位可能失败的区域，节省测试过程的时间。
-- **补充**：通过解决预定义测试可能遗漏的情况来增强结构化测试方法。
-- **主观**：严重依赖个人技能和经验，导致结果存在差异。
-- **不可重现**：缺乏正式的方法，使得难以在团队之间复制测试或共享技术。
-- **不完整**：可能无法涵盖所有​​可能的错误场景，尤其是在复杂的系统中。
+- **不完整**：可能无法涵盖所有可能的错误场景，尤其是在复杂的系统中。
 - **不可预测**：有效性难以衡量，如果忽视关键错误，可能会导致错误的安全感。
 
 ### 技术和策略

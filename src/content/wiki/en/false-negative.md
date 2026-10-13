@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [False Negative](#false-negative)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about False Negative?](#questions-about-false-negative)
     - [Basics and Understanding](#basics-and-understanding)
       - [What is a false negative in software testing?](#what-is-a-false-negative-in-software-testing)
@@ -41,11 +39,11 @@ order: 0
 
 In software testing, a False Negative refers to a situation where a test fails to identify a defect or issue that is actually present in the system. In other words, the test incorrectly indicates that the software is functioning correctly when, in reality, there's a fault or bug. False negatives can give a false sense of security, leading teams to believe the software is of higher quality than it actually is. This type of error is particularly concerning because it might allow critical defects to go unnoticed and reach the production environment, potentially resulting in undesired consequences for users or businesses.
 
-## Related Terms:
+Related Terms:
 
 - [False Positive](/en/wiki/false-positive/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
 ## Questions about False Negative?
@@ -77,17 +75,9 @@ In software testing, a False Negative refers to a situation where a test fails t
   In [agile development](/en/wiki/agile-development/), false negatives conflict with the 'fail fast' principle by delaying the detection of defects. For continuous integration and deployment, they can compromise the reliability of automated pipelines, leading to the promotion of faulty builds.
   To minimize the impact of false negatives, it's essential to foster a culture of quality, invest in robust test design, and maintain vigilance in [test execution](/en/wiki/test-execution/) and analysis.
 
-  1. **Investigating**
-    the root cause.
 
-  2. **Correcting**
-    the test case or environment setup.
 
-  3. **[Retesting](/en/wiki/retesting/)**
-    to confirm the issue is now detected.
 
-  4. **Reviewing**
-    related test cases for similar issues.
 
   5. **Updating**
     test strategies to mitigate future occurrences.
@@ -108,13 +98,6 @@ In software testing, a False Negative refers to a situation where a test fails t
   - Ensuring tests are idempotent and repeatable
   In an automated CI/CD pipeline, [false positives](/en/wiki/false-positive/) can halt the delivery process, requiring immediate attention to maintain the flow. It's crucial to balance the sensitivity of tests to detect real issues without being tripped up by false alarms.
 
-  - Flaky tests due to timing issues or external dependencies
-  - Incorrect test assertions or data
-  - Environmental issues, such as configuration problems or network instability
-  - Analyzing and correcting the root cause
-  - Improving test stability and accuracy
-  - Ensuring tests are idempotent and repeatable
-
 #### What are the potential causes of false negatives in software testing?
 
   Potential causes of false negatives in [software testing](/en/wiki/software-testing/) can include:
@@ -129,7 +112,6 @@ In software testing, a False Negative refers to a situation where a test fails t
   - **Misconfigured [test tools](/en/wiki/test-tool/)** : Tools set up incorrectly can lead to missed defects or misinterpreted test results.
   - **Human error** : Mistakes in test case design, implementation, or interpretation of results can lead to overlooked issues.
   To mitigate these causes, regular review and maintenance of [test cases](/en/wiki/test-case/), data, and environments are essential. Additionally, implementing robust logging and monitoring can help identify discrepancies between test results and actual system behavior.
-
 
 #### How can false negatives impact the overall testing process?
 
@@ -206,7 +188,6 @@ In software testing, a False Negative refers to a situation where a test fails t
      ```
   In each case, the [test suite](/en/wiki/test-suite/) may report a pass, but due to the issues outlined, defects may still exist in the codebase.
 
-
 ### Prevention and Handling
 
 #### What strategies can be used to prevent false negatives?
@@ -225,7 +206,6 @@ In software testing, a False Negative refers to a situation where a test fails t
   - **Foster Collaboration**: Encourage collaboration between developers, testers, and operations to share knowledge and insights that could help identify and prevent false negatives.
   By implementing these strategies, [test automation](/en/wiki/test-automation/) engineers can minimize the occurrence of false negatives, ensuring a more reliable and effective testing process.
 
-
 #### How can you handle a false negative when it occurs?
 
   Handling a false negative effectively involves a combination of immediate action and long-term strategy. Here's a concise guide:
@@ -239,7 +219,6 @@ In software testing, a False Negative refers to a situation where a test fails t
   7. **Update Documentation** : Document the false negative and the steps taken to address it, so that there's a record for future reference.
   8. **Educate the Team** : Share the learnings with your team to prevent similar issues in the future.
   By following these steps, you can mitigate the impact of false negatives and improve the reliability of your [test automation](/en/wiki/test-automation/) suite. Remember, the goal is to ensure that your automated tests consistently provide trustworthy feedback to support the development process.
-
 
 #### What steps should be taken after identifying a false negative?
 
@@ -333,7 +312,6 @@ In software testing, a False Negative refers to a situation where a test fails t
     so that tests run in a consistent environment, reducing the chance of environmental factors causing false negatives.
   By focusing on these areas, QA helps to establish a solid foundation for [test automation](/en/wiki/test-automation/), reducing the likelihood of false negatives and maintaining the integrity of the testing process.
 
-
 ### Advanced Concepts
 
 #### How do false negatives relate to the concept of test coverage?
@@ -348,7 +326,6 @@ In software testing, a False Negative refers to a situation where a test fails t
     **robust assertion mechanisms**
     to reduce the likelihood of overlooking failures.
   By addressing false negatives proactively, [test automation](/en/wiki/test-automation/) engineers can ensure that high [test coverage](/en/wiki/test-coverage/) translates to high [software quality](/en/wiki/software-quality/), maintaining trust in the [test suite](/en/wiki/test-suite/)'s ability to detect defects.
-
 
 #### What is the impact of false negatives on regression testing?
 

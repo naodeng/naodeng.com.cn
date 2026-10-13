@@ -337,7 +337,6 @@ OTT testing assesses the quality of video, data, and voice services provided ove
 
   To optimize OTT testing for better results, focus on the following strategies:
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
     based on user impact and likelihood of failure. Use risk-based testing to allocate resources effectively.
 
   - Implement

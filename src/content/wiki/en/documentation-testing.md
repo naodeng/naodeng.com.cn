@@ -264,11 +264,6 @@ Documentation Testing in software testing refers to the process of evaluating an
     ```
   Select tools that integrate well with your existing workflow and enhance the efficiency and accuracy of your documentation testing process.
 
-  - **Static site generators**
-    (e.g.,
-    **MkDocs**
-    ,
-    **Sphinx**
 ### Challenges and Solutions
 
 #### What are some common challenges faced during documentation testing?
@@ -380,8 +375,6 @@ Documentation Testing in software testing refers to the process of evaluating an
   - **Assisting in the creation**
     of automated tests that verify the documentation's accuracy against the software.
   Testers use their **critical eye** and **attention to detail** to simulate end-user interactions with the documentation, identifying areas that could cause confusion or misinterpretation. They play a crucial role in the **feedback loop**, often suggesting improvements and clarifications that enhance the user experience. Their work ensures that the documentation is not only a reliable source of information but also an asset that complements the software's usability and accessibility.
-
-  - **Identifying discrepancies**
 
 #### What skills are necessary for effective documentation testing?
 

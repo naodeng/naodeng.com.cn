@@ -10,15 +10,22 @@ interface Props {
   label?: string;
   /** 左侧固定、右侧流式、标题下方，或博客的响应式目录 */
   placement?: "left" | "right" | "below" | "article";
+  /** Include H3 category headings in the right-side Wiki TOC. */
+  includeSubheadings?: boolean;
 }
 
-const { headings, label = "目录", placement = "right" } = Astro.props;
+const {
+  headings,
+  label = "目录",
+  placement = "right",
+  includeSubheadings = false,
+} = Astro.props;
 
-// 7.1: 目录层级控制：
-// - left / below / article: 展示 h2+h3
-// - right: 仅展示 h2（控制长度）
+// 右侧目录默认只展示 H2；Wiki 详情页可额外展示 H3 分类。
 const tocItems = headings.filter((h) =>
-  placement === "right" ? h.depth === 2 : h.depth === 2 || h.depth === 3
+  placement === "right"
+    ? h.depth === 2 || (includeSubheadings && h.depth === 3)
+    : h.depth === 2 || h.depth === 3
 );
 const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 ---

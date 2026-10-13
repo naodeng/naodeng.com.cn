@@ -1,6 +1,6 @@
 ---
 title: "数据库 ｜ Database"
-description: "数据库 (Database) 是以电子方式存储和访问的结构化数据集合。它作为数据的存储库，可以使用专用软件进行查询和操作。在测试自动化的上下文中，数据库通常用于存储测试数据、结果和配置，以便进行高效的检索和分析。 数据库可以是集中式或分布式的，可以部署在本地或云端…"
+description: "数据库 (Database) 是以电子方式存储和访问的结构化数据集合。它作为数据的存储库，可以使用专用软件进行查询和操作。在测试自动化的上下文中，数据库通常用于存储测试数据、结果和配置，以便进行高效的检索和分析。"
 section: "D"
 related:
   - sql
@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [数据库 ｜ Database](#数据库--database)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [有关数据库的问题吗？](#有关数据库的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是数据库？](#什么是数据库)
@@ -51,13 +49,13 @@ order: 0
       - [加密在数据库安全中的作用是什么？](#加密在数据库安全中的作用是什么)
 <!-- TOC END -->
 
-＃ 数据库一个数据库是结构化信息或数据的有组织的集合，通常以电子方式存储在计算机系统中。它旨在高效、安全地存储、检索和管理数据。 数据库允许用户以各种方式访问​​数据，从简单的查询到复杂的事务。它们可以根据数据模型进行分类，例如关系型、基于文档型、键值型和图型数据库。一个关系型数据库是最常见的类型之一，它将数据组织到具有行和列的表中。 数据库是从网站到银行软件等众多应用程序和系统的组成部分，可确保数据完整性、可用性和一致性。他们使用以下方式进行管理数据库管理系统（DBMS），提供与存储数据交互的工具和接口。
+数据库是用于有组织地存储、检索和管理信息的系统。数据库可采用关系型、文档型、键值型或图形等数据模型，并通常通过数据库管理系统（DBMS）进行访问。
 
-## 相关术语
+相关术语
 
 - [SQL](/zh-cn/wiki/sql/)
 
-### 另请参阅：
+另请参阅：
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Database)
 ## 有关数据库的问题吗？
@@ -169,7 +167,6 @@ order: 0
 - **成本**：根据所使用的 DBMS，可能存在与数据库使用相关的许可和基础设施成本。
 - **数据污染**：如果没有适当的管理，测试数据可能会受到污染，导致测试结果不可靠。
 - **报告和分析**：促进测试结果分析和报告的复杂查询。
-- **复杂性**：需要了解数据库概念，这会增加测试工程师的学习曲线。
 
 ### 数据库管理系统
 
@@ -196,25 +193,27 @@ order: 0
 
 #### 流行的 DBMS 软件有哪些示例？
 
-流行的 DBMS 软件包括：
+常见的数据库管理系统包括：
 
-- **Oracle [数据库](/zh-cn/wiki/database/)** ：一种多模型数据库管理系统，以其功能丰富、以企业为中心的解决方案而闻名。
-- **MySQL**：一种开源关系数据库，广泛用于 Web 应用程序并支持多种编程语言。
+- **Oracle Database**：多模型数据库管理系统，提供面向企业的丰富功能。
+- **MySQL**：广泛用于 Web 应用的开源关系型数据库，支持多种编程语言。
 
-从年龄 > 20 岁的用户中选择 *；
+例如，可以使用以下 SQL 查询筛选年龄大于 20 岁的用户：
 
-- **Microsoft SQL Server**: A relational DBMS with a broad set of tools for data management, analytics, and business intelligence.
-- **PostgreSQL**: An open-source, object-relational database system with an emphasis on extensibility and standards compliance.
-- **IBM Db2**: A family of data management products, including database servers, developed by IBM.
-- **SQLite**: A C-language library that implements a small, fast, self-contained, high-reliability, full-featured SQL database engine.
-- **MongoDB**: A document-oriented NoSQL database used for high volume data storage.
-- **Cassandra**: A distributed NoSQL database designed to handle large amounts of data across many commodity servers.
-- **Redis**: An in-memory data structure store, used as a database, cache, and message broker.
-- **Amazon DynamoDB**: A fully managed NoSQL database service that supports key-value and document data structures, provided by Amazon Web Services (AWS).
-Each of these DBMSs offers unique features and capabilities, catering to different use cases and performance requirements in software development and test automation environments.
+```sql
+SELECT * FROM users WHERE age > 20;
+```
 
-- **Oracle [数据库](/zh-cn/wiki/database/)**：一种多模型数据库管理系统，以其功能丰富、以企业为中心的解决方案而闻名。
-- **MySQL**：一种开源关系数据库，广泛用于 Web 应用程序并支持多种编程语言。
+- **Microsoft SQL Server**：关系型数据库，提供数据管理、分析和商业智能工具。
+- **PostgreSQL**：开源对象关系数据库，强调可扩展性和标准兼容性。
+- **IBM Db2**：IBM 开发的数据管理产品系列，包含数据库服务器。
+- **SQLite**：轻量、快速且独立的 SQL 数据库引擎，以 C 语言库的形式提供。
+- **MongoDB**：面向文档的 NoSQL 数据库，适用于大量数据存储。
+- **Cassandra**：分布式 NoSQL 数据库，可在多台通用服务器上处理大量数据。
+- **Redis**：内存数据结构存储，可用作数据库、缓存和消息代理。
+- **Amazon DynamoDB**：AWS 提供的托管式 NoSQL 数据库，支持键值和文档数据结构。
+
+这些系统各有特点，适用于不同的数据模型、规模和性能需求。
 
 #### DBMS 在管理数据库中的作用是什么？
 
@@ -237,9 +236,7 @@ Each of these DBMSs offers unique features and capabilities, catering to differe
   ```
 通过利用 DBMS，[测试自动化](/zh-cn/wiki/test-automation/) 可以实现更可靠、可重复和可维护的测试流程。
 
-- **数据驱动测试**：自动从数据库检索测试数据。
 - **[测试数据](/zh-cn/wiki/test-data/) 管理**：作为测试设置和拆卸的一部分插入、更新和删除测试数据。
-- **结果存储**：存储测试结果以供分析和报告。
 - **[性能测试](/zh-cn/wiki/performance-testing/)** ：模拟数据库上的工作负载以测试响应能力和稳定性。
 
 #### DBMS 和数据库有什么区别？
@@ -247,7 +244,7 @@ Each of these DBMSs offers unique features and capabilities, catering to differe
 **[数据库](/zh-cn/wiki/database/)** 是结构化数据集合，而 **[数据库](/zh-cn/wiki/database/) 管理系统 (DBMS)** 是与最终用户、应用程序和 [数据库](/zh-cn/wiki/database/) 本身交互以捕获和分析数据的软件。 DBMS 软件还包含用于管理 [数据库](/zh-cn/wiki/database/) 的核心设施。
   主要区别在于它们的角色：
 
-- A **[数据库](/zh-cn/wiki/database/)**保存实际数据并定义其存储、组织和维护方式。它是信息的容器。
+- A **[数据库](/zh-cn/wiki/database/)** 保存实际数据并定义其存储、组织和维护方式。它是信息的容器。
 
 - A **数据库管理系统**另一方面，它是一种从数据库插入、更新、删除和检索数据的工具。它确保数据能够得到有效管理，并允许进行各种管理操作，包括备份和恢复、安全性和访问控制。 [数据库](/zh-cn/wiki/database/) 和 DBMS 紧密相连，但它们在数据存储和管理领域具有不同的用途。 DBMS 在[数据库](/zh-cn/wiki/database/) 与其最终用户或其他应用程序之间提供接口，确保数据组织一致并易于访问。
 
@@ -260,8 +257,6 @@ Each of these DBMSs offers unique features and capabilities, catering to differe
   assert(result.name === 'Test User');
   ```
 在此示例中，`dbms` 包用于与[数据库](/zh-cn/wiki/database/) 交互，以执行查询并根据检索到的数据断言条件。
-
-- A **[数据库](/zh-cn/wiki/database/)**保存实际数据并定义其存储、组织和维护方式。它是信息的容器。
 
 - A **数据库管理系统**另一方面，它是一种从数据库插入、更新、删除和检索数据的工具。它确保数据能够得到有效管理，并允许进行各种管理操作，包括备份和恢复、安全性和访问控制。
 
@@ -378,9 +373,6 @@ NoSQL 是一类 **[数据库](/zh-cn/wiki/database/) 管理系统**，其存储�
     SELECT * FROM table_name ORDER BY column_name ASC;
   ```
 
-- **SELECT** ：从数据库检索数据。
-
-
 #### NoSQL 数据库有哪些示例？
 
 NoSQL [数据库](/zh-cn/wiki/database/) 的示例包括：
@@ -416,12 +408,6 @@ NoSQL [数据库](/zh-cn/wiki/database/) 的示例包括：
 
 - 您需要一个可以轻松使用的数据库 **跨多个数据中心扩展**和云。 NoSQL 数据库被设计为分布式，并且通常在数据存储位置方面更加灵活。 在[测试自动化](/zh-cn/wiki/test-automation/) 中，选择符合应用程序要求和您需要执行的测试性质的[数据库](/zh-cn/wiki/database/) 类型。
 
-- 你需要 **强酸合规性**用于交易。
-
-- 您的数据是 **结构化**和 **不变** 。如果您的业务没有经历大规模增长，则没有理由使用旨在支持各种数据类型和高流量的系统。
-
-- 你需要利用杠杆 **复杂查询**和 **深度分析** 。 SQL 强大的 JOIN 操作在这里特别有用。
-
 - **数据完整性**是必不可少的。关系数据库的结构化特性有助于确保输入数据库的数据正确可靠。
 
 - 您需要一个可以轻松使用的数据库 **跨多个数据中心扩展**和云。 NoSQL 数据库被设计为分布式，并且通常在数据存储位置方面更加灵活。
@@ -453,25 +439,23 @@ NoSQL [数据库](/zh-cn/wiki/database/) 的示例包括：
 - **节省存储空间**：通过消除冗余数据。
 - **提高查询性能**：可以更快地查询较小、索引良好的表。 但是，过度规范化可能会导致过多的表连接，这可能会降低性能。平衡规范化与实际查询需求对于高效[数据库](/zh-cn/wiki/database/) 设计至关重要。
 
-
 #### 数据库中有哪些不同的范式？
 
 范式是构建关系[数据库](/zh-cn/wiki/database/)的指南，以最大限度地减少冗余并避免插入、更新和删除异常等不良特征。主要的范式有：
 
-- **第一范式（1NF）：**确保每个表格单元格包含单个值并且每个记录都是唯一的。
+- **第一范式（1NF）：** 确保每个表格单元格包含单个值并且每个记录都是唯一的。
 
-- **第二范式（2NF）：**基于 1NF 构建，删除适用于表的多行的数据子集并将它们放置在单独的表中，并使用外键在这些表之间创建关系。
+- **第二范式（2NF）：** 基于 1NF 构建，删除适用于表的多行的数据子集并将它们放置在单独的表中，并使用外键在这些表之间创建关系。
 
-- **第三范式（3NF）：**要求表中的所有列不仅依赖于主键（如 2NF），而且还直接依赖于主键，从而消除传递依赖。
+- **第三范式（3NF）：** 要求表中的所有列不仅依赖于主键（如 2NF），而且还直接依赖于主键，从而消除传递依赖。
 
 - **博伊斯-科德范式 (BCNF)：** 3NF 的更严格版本，其中每个行列式都是候选键。
 
-- **第四范式（4NF）：**处理多值依赖性，确保没有表包含两个或多个描述相关实体的独立多值数据。
+- **第四范式（4NF）：** 处理多值依赖性，确保没有表包含两个或多个描述相关实体的独立多值数据。
 
-- **第五范式（5NF）：**确保数据是从较小的信息片段重建而没有冗余，处理涉及 4NF 未涵盖的复杂关系的情况。
+- **第五范式（5NF）：** 确保数据是从较小的信息片段重建而没有冗余，处理涉及 4NF 未涵盖的复杂关系的情况。
 
-- **第六范式（6NF）：**建议未来的数据库通过隔离语义相关的多个值来处理时态数据。 每个后续的范式都需要符合前一个范式，虽然更高的范式减少了冗余，但它们也会增加复杂性，并且对于所有[数据库](/zh-cn/wiki/database/)来说可能不是必需的。
-
+- **第六范式（6NF）：** 建议未来的数据库通过隔离语义相关的多个值来处理时态数据。 每个后续的范式都需要符合前一个范式，虽然更高的范式减少了冗余，但它们也会增加复杂性，并且对于所有[数据库](/zh-cn/wiki/database/)来说可能不是必需的。
 
 #### 数据库规范化的目的是什么？
 
@@ -494,9 +478,6 @@ NoSQL [数据库](/zh-cn/wiki/database/) 的示例包括：
 - **安全**：保护敏感数据免遭未经授权的访问至关重要。使用访问控制、加密和定期安全审核来增强安全性。
 - **维护**：随着时间的推移，[数据库](/zh-cn/wiki/database/) 需要维护才能发挥最佳性能。实施定期备份和恢复程序，并使用 [数据库](/zh-cn/wiki/database/) 监控工具预先解决问题。
 - **迁移**：升级或迁移到新的 DBMS 可能很复杂。仔细规划迁移，广泛测试，并考虑使用 [数据库](/zh-cn/wiki/database/) 迁移工具。 应对这些挑战需要结合良好的设计实践、技术的适当使用以及持续的管理和监控。 [测试自动化](/zh-cn/wiki/test-automation/) 工程师应该意识到这些挑战，以确保他们的测试策略稳健并解决潜在的[数据库](/zh-cn/wiki/database/) 问题。
-
-- **维护**：随着时间的推移，[数据库](/zh-cn/wiki/database/) 需要维护才能发挥最佳性能。实施定期备份和恢复程序，并使用[数据库](/zh-cn/wiki/database/) 监控工具预先解决问题。
-- **迁移**：升级或迁移到新的 DBMS 可能很复杂。仔细规划迁移，广泛测试，并考虑使用 [数据库](/zh-cn/wiki/database/) 迁移工具。
 
 ### 数据库安全
 
@@ -527,7 +508,7 @@ NoSQL [数据库](/zh-cn/wiki/database/) 的示例包括：
 
 #### 确保数据库安全的最佳实践有哪些？
 
-为了确保 [测试自动化](/zh-cn/wiki/test-automation/) 中的**[数据库](/zh-cn/wiki/database/) 安全**，请遵循以下最佳实践：
+为了确保 [测试自动化](/zh-cn/wiki/test-automation/) 中的 **[数据库](/zh-cn/wiki/database/) 安全**，请遵循以下最佳实践：
 
 - **最小权限原则**：授予用户执行其工作职能所需的最低访问级别或权限。
 - **强大的身份验证**：实施强大的身份验证机制，例如多重身份验证 (MFA)，以验证用户身份。

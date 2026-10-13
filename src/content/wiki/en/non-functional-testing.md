@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Non-functional Testing](#non-functional-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Non-functional Testing?](#questions-about-non-functional-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is non-functional testing?](#what-is-non-functional-testing)
@@ -43,7 +42,7 @@ order: 0
 
 Non-functional testing evaluates software's non-functional attributes, such as usability and performance, ensuring the software's overall competence and effectiveness.
 
-## Related Terms:
+Related Terms:
 
 - [Performance Testing](/en/wiki/performance-testing/)
 - [Load Testing](/en/wiki/load-testing/)
@@ -284,8 +283,6 @@ Non-functional testing evaluates software's non-functional attributes, such as u
   - **Collaborate with developers**
     to understand system architecture and design tests that are comprehensive and targeted.
   By adhering to these practices, you can maximize the effectiveness of non-functional testing tools and contribute to the delivery of high-quality software.
-
-  - **Select tools that integrate**
 
 ### Implementation and Management
 

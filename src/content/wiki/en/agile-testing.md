@@ -16,31 +16,31 @@ order: 0
 
 - [Agile Testing](#agile-testing)
   - [Questions about Agile Testing?](#questions-about-agile-testing)
-  - [Basics and Importance](#basics-and-importance)
-    - [What is Agile Testing?](#what-is-agile-testing)
-    - [What is the importance of Agile Testing in software development?](#what-is-the-importance-of-agile-testing-in-software-development)
-    - [How does Agile Testing differ from traditional testing methods?](#how-does-agile-testing-differ-from-traditional-testing-methods)
-    - [What are the key principles of Agile Testing?](#what-are-the-key-principles-of-agile-testing)
-  - [Processes and Techniques](#processes-and-techniques)
-    - [What are the different stages in Agile Testing?](#what-are-the-different-stages-in-agile-testing)
-    - [What are some common Agile Testing methodologies?](#what-are-some-common-agile-testing-methodologies)
-    - [What are the key techniques used in Agile Testing?](#what-are-the-key-techniques-used-in-agile-testing)
-    - [How is testing integrated into the Agile development process?](#how-is-testing-integrated-into-the-agile-development-process)
-  - [Roles and Responsibilities](#roles-and-responsibilities)
-    - [What is the role of a tester in an Agile team?](#what-is-the-role-of-a-tester-in-an-agile-team)
-    - [How do the responsibilities of a tester in Agile differ from traditional testing roles?](#how-do-the-responsibilities-of-a-tester-in-agile-differ-from-traditional-testing-roles)
-    - [What skills are important for an Agile tester?](#what-skills-are-important-for-an-agile-tester)
-    - [How does the tester collaborate with other team members in Agile?](#how-does-the-tester-collaborate-with-other-team-members-in-agile)
-  - [Tools and Technologies](#tools-and-technologies)
-    - [What tools are commonly used in Agile Testing?](#what-tools-are-commonly-used-in-agile-testing)
-    - [How do these tools support the Agile Testing process?](#how-do-these-tools-support-the-agile-testing-process)
-    - [What is the role of automation in Agile Testing?](#what-is-the-role-of-automation-in-agile-testing)
-    - [How can continuous integration be implemented in Agile Testing?](#how-can-continuous-integration-be-implemented-in-agile-testing)
-  - [Challenges and Solutions](#challenges-and-solutions)
-    - [What are some common challenges faced in Agile Testing?](#what-are-some-common-challenges-faced-in-agile-testing)
-    - [How can these challenges be overcome?](#how-can-these-challenges-be-overcome)
-    - [What are some best practices for effective Agile Testing?](#what-are-some-best-practices-for-effective-agile-testing)
-    - [How can Agile Testing be improved over time?](#how-can-agile-testing-be-improved-over-time)
+    - [Basics and Importance](#basics-and-importance)
+      - [What is Agile Testing?](#what-is-agile-testing)
+      - [What is the importance of Agile Testing in software development?](#what-is-the-importance-of-agile-testing-in-software-development)
+      - [How does Agile Testing differ from traditional testing methods?](#how-does-agile-testing-differ-from-traditional-testing-methods)
+      - [What are the key principles of Agile Testing?](#what-are-the-key-principles-of-agile-testing)
+    - [Processes and Techniques](#processes-and-techniques)
+      - [What are the different stages in Agile Testing?](#what-are-the-different-stages-in-agile-testing)
+      - [What are some common Agile Testing methodologies?](#what-are-some-common-agile-testing-methodologies)
+      - [What are the key techniques used in Agile Testing?](#what-are-the-key-techniques-used-in-agile-testing)
+      - [How is testing integrated into the Agile development process?](#how-is-testing-integrated-into-the-agile-development-process)
+    - [Roles and Responsibilities](#roles-and-responsibilities)
+      - [What is the role of a tester in an Agile team?](#what-is-the-role-of-a-tester-in-an-agile-team)
+      - [How do the responsibilities of a tester in Agile differ from traditional testing roles?](#how-do-the-responsibilities-of-a-tester-in-agile-differ-from-traditional-testing-roles)
+      - [What skills are important for an Agile tester?](#what-skills-are-important-for-an-agile-tester)
+      - [How does the tester collaborate with other team members in Agile?](#how-does-the-tester-collaborate-with-other-team-members-in-agile)
+    - [Tools and Technologies](#tools-and-technologies)
+      - [What tools are commonly used in Agile Testing?](#what-tools-are-commonly-used-in-agile-testing)
+      - [How do these tools support the Agile Testing process?](#how-do-these-tools-support-the-agile-testing-process)
+      - [What is the role of automation in Agile Testing?](#what-is-the-role-of-automation-in-agile-testing)
+      - [How can continuous integration be implemented in Agile Testing?](#how-can-continuous-integration-be-implemented-in-agile-testing)
+    - [Challenges and Solutions](#challenges-and-solutions)
+      - [What are some common challenges faced in Agile Testing?](#what-are-some-common-challenges-faced-in-agile-testing)
+      - [How can these challenges be overcome?](#how-can-these-challenges-be-overcome)
+      - [What are some best practices for effective Agile Testing?](#what-are-some-best-practices-for-effective-agile-testing)
+      - [How can Agile Testing be improved over time?](#how-can-agile-testing-be-improved-over-time)
 <!-- TOC END -->
 
 Agile testing aligns with the principles of Agile software development. Unlike traditional approaches, testing starts at the project's outset with development and testing occurring simultaneously. This close collaboration ensures tasks are accomplished efficiently.
@@ -56,9 +56,9 @@ See also:
 - [Wikipedia](https://en.wikipedia.org/wiki/Agile_testing)
 ## Questions about Agile Testing?
 
-## Basics and Importance
+### Basics and Importance
 
-### What is Agile Testing?
+#### What is Agile Testing?
 
   Agile Testing is a **[software testing](/en/wiki/software-testing/) practice** that follows the principles of agile software development. It is an iterative testing process where **requirements evolve** through collaboration between self-organizing cross-functional teams. Agile Testing aligns with the iterative development methodology and ensures that testing is not a separate phase but an integral part of the development lifecycle.
   In Agile Testing, testers are actively involved from the beginning of the project, ensuring continuous feedback and incremental improvement. Testing is conducted in parallel with development in **short [iterations](/en/wiki/iteration/)** called sprints, allowing for **continuous integration** and frequent validation of the functionality.
@@ -67,7 +67,7 @@ See also:
   [Test automation](/en/wiki/test-automation/) is a critical component of Agile Testing, enabling teams to execute regression tests quickly and frequently. Common tools include [Selenium](/en/wiki/selenium/), JUnit, TestNG, Cucumber, and SpecFlow, which support the rapid development and execution of automated [test scripts](/en/wiki/test-script/).
   Agile Testing is a continuous process that requires testers to be proactive, adaptive, and collaborative to ensure that the software meets customer expectations and is delivered with minimal defects.
 
-### What is the importance of Agile Testing in software development?
+#### What is the importance of Agile Testing in software development?
 
   Agile Testing is crucial in software development for several reasons. It ensures that **quality** is baked into the product from the beginning, rather than being an afterthought. By aligning testing activities with the iterative development process, Agile Testing enables **early defect detection** and **resolution**, reducing the cost and effort of fixing [bugs](/en/wiki/bug/) later in the cycle.
   With its focus on **continuous feedback**, Agile Testing allows for **rapid response to change**, be it changing customer requirements or new insights into the product's use. This adaptability is key to delivering a product that truly meets user needs and can pivot when necessary.
@@ -75,7 +75,7 @@ See also:
   Incorporating **automation** in Agile Testing is also significant as it supports frequent and reliable testing, enabling teams to maintain a high pace of delivery without compromising on quality. Automated tests provide a safety net that facilitates **continuous integration** and **deployment** practices, which are central to Agile methodologies.
   Ultimately, Agile Testing is about delivering **value** to the customer faster and more efficiently, while maintaining a high standard of quality and adapting to change as it happens. It's an integral part of the Agile ethos, which prioritizes customer satisfaction and effective team dynamics over rigid processes and documentation.
 
-### How does Agile Testing differ from traditional testing methods?
+#### How does Agile Testing differ from traditional testing methods?
 
   Agile Testing differs from traditional testing methods in its **flexibility**, **collaboration**, and **integration** within the development cycle. Unlike traditional methods where testing is a separate phase after development, Agile Testing is **continuous** and **iterative**, with tests being written and executed as features are developed.
   In traditional testing, requirements are defined upfront and often remain static, leading to a **waterfall** approach. Agile Testing, however, embraces changes in requirements, even late in the development process, ensuring the product remains aligned with user needs.
@@ -84,7 +84,7 @@ See also:
   **Communication** is key in Agile Testing, with daily stand-ups and frequent collaboration replacing formal documentation and status meetings. Testers are expected to be proactive, voicing concerns and suggestions early, rather than reporting issues at the end of a long test cycle.
   In summary, Agile Testing is characterized by its **adaptive nature**, **team integration**, and **continuous feedback loop**, contrasting with the sequential and often rigid approach of traditional testing methods.
 
-### What are the key principles of Agile Testing?
+#### What are the key principles of Agile Testing?
 
   Key principles of Agile Testing include:
 
@@ -100,18 +100,14 @@ See also:
   - **Whole-Team Responsibility**: Testing is not solely the responsibility of testers; the entire team is accountable for the quality of the product.
   By adhering to these principles, Agile testing aims to deliver high-quality software in a timely and efficient manner, with a focus on customer satisfaction and responsiveness to change.
 
+### Processes and Techniques
 
-## Processes and Techniques
-
-### What are the different stages in Agile Testing?
+#### What are the different stages in Agile Testing?
 
   Agile Testing involves several stages that align with the iterative nature of [Agile development](/en/wiki/agile-development/). These stages are not strictly linear but often overlap and recur as the project evolves:
 
   - **Sprint Planning**: Testers collaborate with developers and product owners to define testable user stories and acceptance criteria.
   - **Test Design**: As soon as user stories are defined, testers start designing tests. They create [test cases](/en/wiki/test-case/) and identify necessary [test data](/en/wiki/test-data/).
-
-
-
 
     ```javascript
     // Example: [Test case](/en/wiki/test-case/) pseudocode for a login feature
@@ -131,9 +127,7 @@ See also:
   - **Release Testing**: Prior to release, testers perform final validation to ensure the product is ready for production.
   - **Post-Release Testing**: After deployment, testing continues to monitor the performance and user feedback for any issues that need to be addressed in future sprints.
 
-
-
-### What are some common Agile Testing methodologies?
+#### What are some common Agile Testing methodologies?
 
   Common Agile testing methodologies include:
 
@@ -146,8 +140,7 @@ See also:
   - **Continuous Testing**: Part of Continuous Integration/Continuous Deployment (CI/CD), where automated tests are run frequently to provide immediate feedback on the business risks associated with a software release candidate.
   Each methodology complements the Agile principles of collaboration, flexibility, and delivering high-quality software in short [iterations](/en/wiki/iteration/). Agile testers often combine these methodologies to suit their team's unique context and requirements.
 
-
-### What are the key techniques used in Agile Testing?
+#### What are the key techniques used in Agile Testing?
 
   Key techniques used in Agile Testing include:
 
@@ -179,8 +172,7 @@ See also:
   - **Mob Testing**: The entire team tests the software together, sharing insights and knowledge.
   By employing these techniques, Agile teams aim to ensure quality throughout the development process, rather than treating testing as a separate phase. This approach enables faster feedback, promotes collaboration, and maintains a consistent focus on delivering value to the customer.
 
-
-### How is testing integrated into the Agile development process?
+#### How is testing integrated into the Agile development process?
 
   Testing is woven into the **[Agile development](/en/wiki/agile-development/) cycle** through **continuous collaboration** and **[iteration](/en/wiki/iteration/)**. Each sprint begins with a planning session where **testers** and **developers** define **user stories** and **acceptance criteria** together, ensuring a shared understanding of the feature and how it will be tested.
   During development, testers work in parallel with developers, often employing **[Test-Driven Development](/en/wiki/test-driven-development/) (TDD)** or **Behavior-Driven Development ([BDD](/en/wiki/bdd/))** to create automated tests before the code is written. As features are completed, these tests are run to validate functionality immediately, promoting **continuous feedback**.
@@ -189,9 +181,9 @@ See also:
   At the end of each sprint, the team conducts a **sprint review** where completed features are demonstrated, and a **retrospective** to reflect on the process and improve practices. Testers contribute insights on [test coverage](/en/wiki/test-coverage/), quality metrics, and risk assessments, influencing the next [iteration](/en/wiki/iteration/).
   In summary, testing in Agile is an **ongoing, collaborative effort** that aligns closely with development activities, ensuring quality is built into the product from the start and maintained through frequent, iterative cycles.
 
-## Roles and Responsibilities
+### Roles and Responsibilities
 
-### What is the role of a tester in an Agile team?
+#### What is the role of a tester in an Agile team?
 
   In an **Agile team**, a tester's role is multifaceted. Testers are integral to the **development lifecycle**, actively participating from the initial stages of product conception to the final stages of release. They work closely with developers, business analysts, product owners, and other stakeholders to ensure a shared understanding of the product and its requirements.
   Testers in Agile are responsible for:
@@ -239,11 +231,10 @@ See also:
     to ensure they are effective and efficient.
   Testers in Agile environments are proactive, continuously adapting to changes, and focused on delivering value to the customer through high-quality software. They are not just testing specialists but are key contributors to the team's success.
 
-  - **Creating [test cases](/en/wiki/test-case/)**
     and
     **[test plans](/en/wiki/test-plan/)**
 
-### How do the responsibilities of a tester in Agile differ from traditional testing roles?
+#### How do the responsibilities of a tester in Agile differ from traditional testing roles?
 
   In Agile, testers are integral to the development team, working in **sprints** to ensure continuous integration and delivery. Unlike traditional roles where testing is a separate phase, Agile testers are involved from the **beginning of the project**, participating in planning, design, and review sessions.
   Agile testers must be **adaptive** and comfortable with **change**, as requirements can evolve. They work closely with developers, often in **pair programming**, to create and run tests, ensuring immediate feedback. This collaboration promotes a **"testing mindset"** across the team, encouraging all members to take responsibility for quality.
@@ -252,7 +243,7 @@ See also:
   Agile testers are also responsible for maintaining the **[test environment](/en/wiki/test-environment/)** and ensuring that it aligns with the production environment to avoid discrepancies. They must be proficient in using **version control** and **continuous integration tools** to manage their [test scripts](/en/wiki/test-script/) and share results with the team.
   Overall, Agile testers are proactive, collaborative, and technically adept, playing a key role in delivering high-quality software iteratively and efficiently.
 
-### What skills are important for an Agile tester?
+#### What skills are important for an Agile tester?
 
   For an Agile tester, several skills are paramount to success:
 
@@ -269,8 +260,7 @@ See also:
   - **Automation strategy** : Knowing when and what to automate to maximize the value and maintainability of test suites.
   These skills help Agile testers contribute effectively to the team's goal of delivering high-quality software at a rapid pace.
 
-
-### How does the tester collaborate with other team members in Agile?
+#### How does the tester collaborate with other team members in Agile?
 
   In Agile, testers collaborate closely with **developers**, **product owners**, and other team members to ensure a shared understanding of the product and its requirements. They engage in **daily stand-ups** to discuss progress, impediments, and plans. During **sprint planning**, testers help define **acceptance criteria** and provide input on the testability of user stories.
   Testers work alongside developers in **pair programming** or **mob testing** sessions to create and execute tests early in the development cycle. They also participate in **code reviews** to identify potential issues before code is merged.
@@ -278,15 +268,13 @@ See also:
   In **sprint retrospectives**, testers contribute insights on quality and process improvements, ensuring that testing evolves with the team's practices. By advocating for quality, they help the team prioritize **technical debt** and **[bug](/en/wiki/bug/) fixes**.
   Testers also support the **product owner** by verifying that user stories meet acceptance criteria and by providing feedback on product behavior from a user's perspective. This collaboration ensures that the product not only works as intended but also meets the users' needs and expectations.
 
-
   // Example of a communication snippet in a messaging tool
   tester: "I've noticed a recurring issue with feature X. Can we discuss potential causes in today's stand-up?"
   developer: "Sure, I've seen it too. Let's review the logs together after the meeting."
 
+### Tools and Technologies
 
-## Tools and Technologies
-
-### What tools are commonly used in Agile Testing?
+#### What tools are commonly used in Agile Testing?
 
   Commonly used tools in Agile Testing include:
 
@@ -305,8 +293,7 @@ See also:
   - **Puppeteer** : A Node library which provides a high-level API to control Chrome or Chromium over the DevTools Protocol.
   These tools support various aspects of Agile Testing, from [test case management](/en/wiki/test-case-management/) to continuous integration, and cater to different testing needs such as [unit testing](/en/wiki/unit-testing/), [integration testing](/en/wiki/integration-testing/), [functional testing](/en/wiki/functional-testing/), and [acceptance testing](/en/wiki/acceptance-testing/). They facilitate the rapid feedback and continuous improvement that are hallmarks of Agile methodologies.
 
-
-### How do these tools support the Agile Testing process?
+#### How do these tools support the Agile Testing process?
 
   [Test automation](/en/wiki/test-automation/) tools support the **Agile Testing process** by enabling rapid feedback and continuous improvement, which are central to Agile methodologies. These tools facilitate **continuous integration** and **continuous delivery** by allowing teams to execute tests frequently and detect issues early.
   Automated tests can be integrated into the **build pipeline**, running automatically whenever changes are committed. This ensures that new code does not break existing functionality, maintaining the **health of the software** throughout development.
@@ -316,7 +303,7 @@ See also:
   **Collaboration features** in these tools help testers, developers, and other stakeholders to share results and work together to address issues. This aligns with the Agile emphasis on team collaboration and collective ownership of quality.
   Lastly, many [test automation](/en/wiki/test-automation/) tools support **behavior-driven development ([BDD](/en/wiki/bdd/))** and **[test-driven development](/en/wiki/test-driven-development/) (TDD)**, methodologies that are commonly used in Agile to ensure that testing is aligned with customer requirements from the outset.
 
-### What is the role of automation in Agile Testing?
+#### What is the role of automation in Agile Testing?
 
   In Agile Testing, automation plays a pivotal role in maintaining the pace of rapid development cycles and ensuring immediate feedback on the quality of the product. Automation supports **continuous integration** and **continuous delivery** by executing a suite of tests quickly and reliably, which is essential for frequent releases.
   Automated tests act as a safety net that helps in catching regressions and defects early. They enable testers to focus on more complex [exploratory testing](/en/wiki/exploratory-testing/) by automating repetitive and time-consuming tasks. In Agile, where changes are frequent, automation ensures that existing functionality remains intact after new changes are introduced.
@@ -328,8 +315,7 @@ See also:
   - **Fast** : Executing within a time frame that supports quick iterations.
   Automation in Agile is not just about the tests themselves but also about the **automation of the [test data](/en/wiki/test-data/) generation**, **environment [setup](/en/wiki/setup/)**, and **deployment processes**. This comprehensive approach to automation helps Agile teams to deliver high-quality software at a speed that matches the Agile ethos of rapid delivery.
 
-
-### How can continuous integration be implemented in Agile Testing?
+#### How can continuous integration be implemented in Agile Testing?
 
   Continuous Integration (CI) in Agile Testing can be implemented by setting up a CI server that automatically triggers a suite of tests whenever a new code commit is made to the version control system. **[Test automation](/en/wiki/test-automation/)** is crucial here, as it allows for rapid feedback on the health of the application.
   To start, configure your CI server (e.g., Jenkins, CircleCI, Travis CI) to monitor your repository for changes. Upon detecting a change, the CI server should:
@@ -348,18 +334,14 @@ See also:
   Finally, integrate **test results reporting** into the CI pipeline. This should provide clear feedback on test outcomes, making it easy for the team to address issues quickly.
   By following these steps, CI becomes an integral part of Agile Testing, enabling teams to detect and resolve issues early, thus maintaining a high standard of [software quality](/en/wiki/software-quality/) throughout the development process.
 
-  1. **Pull the latest code**
-    from the main branch.
 
-  2. **Build the application**
-    to ensure that the new code integrates without issues.
 
   3. **Run automated tests**
     , which should include unit tests, integration tests, and any other relevant automated checks.
 
-## Challenges and Solutions
+### Challenges and Solutions
 
-### What are some common challenges faced in Agile Testing?
+#### What are some common challenges faced in Agile Testing?
 
   Common challenges in Agile Testing include:
 
@@ -401,10 +383,8 @@ See also:
   - Regularly review and maintain automated tests to reduce flakiness.
   - Allocate time for addressing technical debt in each sprint.
   - Ensure performance and security are considered from the start of the development process.
-  - **Maintaining test quality**
 
-
-### How can these challenges be overcome?
+#### How can these challenges be overcome?
 
   Overcoming challenges in Agile Testing requires a strategic approach and the adoption of best practices tailored to the Agile environment. Here are some strategies:
 
@@ -421,8 +401,7 @@ See also:
   - **Sprint Retrospectives**: Utilize retrospectives to reflect on the testing process and identify areas for improvement.
   By implementing these strategies, Agile Testing can become more efficient, effective, and aligned with the dynamic nature of Agile software development.
 
-
-### What are some best practices for effective Agile Testing?
+#### What are some best practices for effective Agile Testing?
 
   Best practices for effective Agile Testing include:
 
@@ -462,7 +441,7 @@ See also:
 
   - **Collaborate closely**
 
-### How can Agile Testing be improved over time?
+#### How can Agile Testing be improved over time?
 
   Improving Agile Testing over time involves a continuous feedback loop and adaptation. **Frequent retrospectives** are crucial, allowing teams to reflect on what's working and what isn't. During these sessions, discuss testing strategies, tool effectiveness, and collaboration issues.
   **Test metrics** should be carefully chosen and monitored to track progress and identify areas for improvement. Metrics such as defect density, [test coverage](/en/wiki/test-coverage/), and cycle time can provide insights into the testing process's efficiency and effectiveness.

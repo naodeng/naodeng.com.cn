@@ -453,9 +453,6 @@ Related Terms:
   - **Dynamic content updates** : Lack of alerts for screen readers when dynamic content updates occur.
   These issues can be identified through a combination of automated tools and [manual testing](/en/wiki/manual-testing/) to ensure a comprehensive accessibility evaluation.
 
-  - **Text alternatives** : Missing
-    `alt`
-
 #### How can you make a website more accessible?
 
   To enhance website accessibility:

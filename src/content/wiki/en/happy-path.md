@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Happy Path](#happy-path)
-  - [See also:](#see-also)
   - [Questions about Happy Path?](#questions-about-happy-path)
     - [Basics and Importance](#basics-and-importance)
       - [What is the definition of a 'Happy Path' in software testing?](#what-is-the-definition-of-a-happy-path-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 (aka happy flow) The " happy path " refers to the default scenario in which a system or application operates without any errors, exceptions, or unexpected user behavior. It represents the most straightforward and trouble-free journey through a given system or process, resulting in a successful outcome. When testing software, the happy path ensures that the core functionalities work as expected under optimal conditions. However, while it's essential to verify that the happy path operates correctly, comprehensive testing also requires examining edge cases, exceptions, and potential error scenarios to ensure robustness and reliability.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Happy_path)
 ## Questions about Happy Path?
@@ -93,7 +92,6 @@ order: 0
   - **Code Reviews** : Ensuring the code supports the Happy Path without unnecessary complexity.
   The Happy Path should be **clearly documented** and **easily accessible** to the team, often within the [test case management](/en/wiki/test-case-management/) tool or the project's documentation repository. It serves as the baseline for further testing and is critical for understanding the core functionality of the application.
 
-
 #### What are the steps involved in performing a 'Happy Path' test?
 
   To perform a 'Happy Path' test, follow these steps:
@@ -129,7 +127,6 @@ order: 0
     the test as the application evolves to ensure it continues to reflect the 'Happy Path' accurately.
   By automating and regularly running 'Happy Path' tests, you maintain a baseline assurance that the core functionality of your application remains intact with each change.
 
-
 #### What tools can be used to automate 'Happy Path' testing?
 
   Several tools can be used to automate 'Happy Path' testing, each with its own strengths and capabilities:
@@ -161,7 +158,6 @@ order: 0
   - **RSpec** or **Cucumber** for behavior-driven development ([BDD](/en/wiki/bdd/)) in Ruby: These tools allow for writing human-readable acceptance tests.
   Each tool has its own scripting or programming approach, but they all enable the automation of the 'Happy Path' to ensure the main functionality of the application works as expected.
 
-
 #### What are some common challenges in 'Happy Path' testing and how can they be overcome?
 
   Common challenges in 'Happy Path' testing include:
@@ -175,7 +171,6 @@ order: 0
   - **Automation Flakiness**: Automated tests can be flaky, giving false results. Invest in **robust [test automation](/en/wiki/test-automation/) frameworks** and **flakiness detection** mechanisms to minimize this issue.
   - **Performance**: The happy path might not consider performance issues. Include **[performance testing](/en/wiki/performance-testing/)** to ensure the path remains happy under load.
   By addressing these challenges, you can ensure that happy path testing remains an effective part of your [test automation](/en/wiki/test-automation/) strategy.
-
 
 #### How can 'Happy Path' testing be integrated into a continuous integration/continuous deployment (CI/CD) pipeline?
 
@@ -209,7 +204,6 @@ order: 0
   4. **Maintain and prioritize the Happy Path tests** to ensure they are always up-to-date with the application's functionality.
   5. **Use test results to gate deployments**; prevent code from being deployed to production if Happy Path tests fail.
   By following these steps, Happy Path testing becomes an integral part of the development process, providing **quick feedback** and maintaining **confidence** in the application's core functionality with every change.
-
 
 ### Real-world Applications and Examples
 
@@ -275,13 +269,7 @@ order: 0
   ```
   This [test case](/en/wiki/test-case/) assumes all actions are completed without errors or exceptions, and the system behaves as expected at each step. It's a straightforward, ideal scenario that confirms the core functionality works as intended.
 
-  1. User
-    **logs in**
-    with valid credentials.
 
-  2. User
-    **searches**
-    for a specific product.
 
   3. User
     **selects**
@@ -299,7 +287,6 @@ order: 0
   - **Demonstrations** : When showcasing the software to potential clients or investors, Happy Path tests can be used to demonstrate the software's capabilities without the risk of encountering errors.
   - **Documentation and training** : Happy Path scenarios are often documented as examples and used for training purposes, helping new users understand the intended flow of the application.
   In all these scenarios, Happy Path testing is a key component of ensuring that the software delivers a positive experience for the end user by confirming that the essential functions work as intended.
-
 
 #### How have real-world software teams benefited from 'Happy Path' testing?
 

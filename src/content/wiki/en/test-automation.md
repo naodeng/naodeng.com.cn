@@ -364,7 +364,6 @@ Test automation involves using tools to run tests and compare actual outcomes to
   - **Running E2E tests strategically**
     , possibly on a scheduled basis or triggered by significant changes, to balance feedback time with resource consumption.
 
-  - **Selecting critical user flows**
 #### What are the challenges in automating end-to-end testing?
 
   [End-to-end testing](/en/wiki/end-to-end-testing/) automation faces several challenges:

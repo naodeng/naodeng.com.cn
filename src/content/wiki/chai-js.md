@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Chai.js](#chaijs)
-  - [相关术语](#相关术语)
   - [关于 Chai.js 有疑问吗？](#关于-chaijs-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Chai.js 是什么？](#chaijs-是什么)
@@ -48,7 +47,7 @@ order: 0
 
 Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动开发 ) 断言库 Node.js 和浏览器。它与流行的 JavaScript 测试框架无缝配对，例如 Mocha 和 jasmine。Chai 为开发人员提供了以可读语言表达断言的能力，模仿自然语言结构。
 
-## 相关术语
+相关术语
 
 - [断言库](/zh-cn/wiki/chai-js/)
 - [Jest](/zh-cn/wiki/jest/)
@@ -113,7 +112,7 @@ Chai.js，通常简称为 Chai，是 BDD /TDD（行为驱动开发/ 测试驱动
 
 [Chai.js](/zh-cn/wiki/chai-js/) 因其**灵活的断言样式**而在 JavaScript 测试领域脱颖而出：[BDD](/zh-cn/wiki/bdd/)（期望/应该）和 TDD（断言）。这种适应性允许开发人员选择最适合他们的偏好或现有代码库的样式。
 
-与**[Jest](/zh-cn/wiki/jest/)**（提供自己的断言的成熟测试框架）相比，Chai 更像是一个断言库，可以与 Mocha 或 [Jasmine](/zh-cn/wiki/jasmine/) 等任何测试框架配合使用。 [Jest](/zh-cn/wiki/jest/) 的断言是内置的，不能脱离框架，而 Chai 的断言是独立的，可以通过插件扩展。
+与 **[Jest](/zh-cn/wiki/jest/)**（提供自己的断言的成熟测试框架）相比，Chai 更像是一个断言库，可以与 Mocha 或 [Jasmine](/zh-cn/wiki/jasmine/) 等任何测试框架配合使用。 [Jest](/zh-cn/wiki/jest/) 的断言是内置的，不能脱离框架，而 Chai 的断言是独立的，可以通过插件扩展。
 
 **[Jasmine](/zh-cn/wiki/jasmine/)** 带有自己的断言库，因此将 Chai 与 [Jasmine](/zh-cn/wiki/jasmine/) 一起使用是出于偏好原因而不是必要。Chai 可能因其更丰富的插件生态系统或 [Jasmine](/zh-cn/wiki/jasmine/) 中未找到的特定断言风格而被选中。
 
@@ -377,12 +376,6 @@ TDD ([测试驱动开发](/zh-cn/wiki/test-driven-development/)) 风格使用更
 - **assert.exists(value)** ：断言非空且非未定义。
 - **assert.isEmpty(value)** ：断言空数组、字符串或对象。
 - **.equal(value)** ：断言严格相等（ `===` ）。`true`。
-- **.false** ：断言严格等于 `false` 。
-- **.null** ：断言严格等于 `null` 。
-- **.undefined** ：断言严格等于 `undefined` 。
-- **.NaN** ：断言值为 `NaN` 。
-- **.exist** ：断言非空且非未定义。
-- **.empty** ：断言空数组、字符串或对象。
 
 #### 如何断言 Chai.js 中的函数抛出错误？
 
@@ -752,7 +745,7 @@ TDD ([测试驱动开发](/zh-cn/wiki/test-driven-development/)) 风格使用更
   number.should.equal(2);
 ```
 
-.should` 接口的工作原理是向 `Object.prototype` 添加一个 getter，返回 `Should` 断言对象。然后可以使用该对象将进一步的断言链接到正在测试的值。请务必注意，使用 `.should` 会修改 `Object.prototype`，如果您的应用程序依赖于对象的枚举属性，这可能会导致意外行为。
+`.should` 接口的工作原理是向 `Object.prototype` 添加一个 getter，并返回 `Should` 断言对象。随后可以将更多断言链接到待测值上。请注意，使用 `.should` 会修改 `Object.prototype`；如果应用程序依赖对象的可枚举属性，这可能导致意外行为。
 
 使用`.should` 的断言在失败时抛出`AssertionError`，然后[test runner](/zh-cn/wiki/test-runner/) 可以捕获该断言以报告失败。 `.should` 接口支持与 Chai 的 `expect` 和 `assert` 接口相同的所有断言，提供丰富的断言集，如 `.equal`、`.deep.equal`、`.have.property` 等。
 

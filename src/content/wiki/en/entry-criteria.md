@@ -76,8 +76,6 @@ In software testing, Entry Criteria refer to the set of predefined conditions or
     , which helps in tracking progress against the planned schedule and quality objectives.
   By adhering to entry criteria, [test automation](/en/wiki/test-automation/) engineers can focus on delivering **high-quality test results** that are reflective of the product's true state, leading to better-informed decisions about the product's readiness for release.
 
-  - **Preventing premature testing**
-
 ### Components and Elements
 
 #### What are the key components of entry criteria?

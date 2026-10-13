@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Postman ｜ Postman](#postman--postman)
-  - [相关术语：](#相关术语)
   - [关于Postman 有疑问吗？](#关于postman-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Postman 是什么以及它的用途是什么？](#postman-是什么以及它的用途是什么)
@@ -27,7 +26,7 @@ order: 0
       - [如何安装和设置Postman？](#如何安装和设置postman)
       - [如何在 Postman 中创建新请求？](#如何在-postman-中创建新请求)
       - [如何在 Postman 中发送请求？](#如何在-postman-中发送请求)
-      - [如何将回复保存在Postman 中？](#如何将回复保存在postman-中)
+      - [如何在 Postman 中保存响应？](#如何在-postman-中保存响应)
       - [如何在Postman 中使用变量？](#如何在postman-中使用变量)
     - [高级功能](#高级功能)
       - [如何使用Postman 进行自动化测试？](#如何使用postman-进行自动化测试)
@@ -42,7 +41,7 @@ order: 0
       - [在团队环境中如何使用Postman？](#在团队环境中如何使用postman)
 <!-- TOC END -->
 
-## 相关术语：
+相关术语：
 
 - [API 测试](/zh-cn/wiki/api-testing/)
 - [Swagger](/zh-cn/wiki/swagger/)
@@ -57,16 +56,16 @@ order: 0
 
 #### Postman 是什么以及它的用途是什么？
 
-[Postman](/zh-cn/wiki/postman/) 是一个**[API](/zh-cn/wiki/api/)（应用程序编程接口）开发工具**，它简化了构建、测试和修改[APIs](/zh-cn/wiki/api/) 的过程。它提供了一个用户友好的界面，用于向 Web 服务发送 HTTP 请求并查看响应，而无需专用客户端或编写自定义代码。 [Postman](/zh-cn/wiki/postman/) 支持各种 HTTP 方法，例如 GET、POST、PUT、DELETE，并包含设置标头、添加正文数据和构造查询参数的功能。
+[Postman](/zh-cn/wiki/postman/) 是一个 **[API](/zh-cn/wiki/api/)（应用程序编程接口）开发工具**，它简化了构建、测试和修改[APIs](/zh-cn/wiki/api/) 的过程。它提供了一个用户友好的界面，用于向 Web 服务发送 HTTP 请求并查看响应，而无需专用客户端或编写自定义代码。 [Postman](/zh-cn/wiki/postman/) 支持各种 HTTP 方法，例如 GET、POST、PUT、DELETE，并包含设置标头、添加正文数据和构造查询参数的功能。
   开发人员和测试人员使用 [Postman](/zh-cn/wiki/postman/) **验证 [APIs](/zh-cn/wiki/api/)** 的行为，确保它们按预期运行、返回正确的数据并正确处理错误。它还用于模拟[API](/zh-cn/wiki/api/)请求以检查服务器在不同条件下的响应方式。凭借保存请求和响应的能力，[Postman](/zh-cn/wiki/postman/) 促进了团队内或跨项目的[API](/zh-cn/wiki/api/) 调用的重用和共享。
-  [Postman](/zh-cn/wiki/postman/) 的功能超出了[manual testing](/zh-cn/wiki/manual-testing/) 的范围。它可用于**自动化[test suites](/zh-cn/wiki/test-suite/)**并将其集成到CI/CD管道中，从而允许对[API](/zh-cn/wiki/api/)端点进行定期和系统的验证。 [Postman](/zh-cn/wiki/postman/) 的脚本功能增强了这种自动化功能，可以执行预先请求或以JavaScript 编写的[test scripts](/zh-cn/wiki/test-script/)。
+  [Postman](/zh-cn/wiki/postman/) 的功能超出了[manual testing](/zh-cn/wiki/manual-testing/) 的范围。它可用于**自动化[test suites](/zh-cn/wiki/test-suite/)** 并将其集成到CI/CD管道中，从而允许对[API](/zh-cn/wiki/api/)端点进行定期和系统的验证。 [Postman](/zh-cn/wiki/postman/) 的脚本功能增强了这种自动化功能，可以执行预先请求或以JavaScript 编写的[test scripts](/zh-cn/wiki/test-script/)。
   在团队环境中，[Postman](/zh-cn/wiki/postman/) 提供**协作功能**，允许共享集合、环境和其他配置，确保[API testing](/zh-cn/wiki/api-testing/) 和开发工作的一致性和效率。其与其他工具和系统的集成功能进一步简化了工作流程并实现了更具凝聚力的开发流程。
 
 #### 为什么Postman 在软件测试中很重要？
 
-[Postman](/zh-cn/wiki/postman/) 在[software testing](/zh-cn/wiki/software-testing/) 中至关重要，因为它能够**验证[API](/zh-cn/wiki/api/) 合约**并确保**[API](/zh-cn/wiki/api/) 端点**按预期运行。它简化了[API](/zh-cn/wiki/api/) 测试的**创建、维护和执行**，从而可以快速反馈服务的运行状况。通过[Postman](/zh-cn/wiki/postman/)，测试人员可以轻松地将测试组织到集合中，并将它们集成到**CI/CD管道**中，从而大规模推广**[test automation](/zh-cn/wiki/test-automation/)**和**[regression testing](/zh-cn/wiki/regression-testing/)**。
+[Postman](/zh-cn/wiki/postman/) 在[software testing](/zh-cn/wiki/software-testing/) 中至关重要，因为它能够**验证[API](/zh-cn/wiki/api/) 合约**并确保 **[API](/zh-cn/wiki/api/) 端点**按预期运行。它简化了[API](/zh-cn/wiki/api/) 测试的**创建、维护和执行**，从而可以快速反馈服务的运行状况。通过[Postman](/zh-cn/wiki/postman/)，测试人员可以轻松地将测试组织到集合中，并将它们集成到**CI/CD管道**中，从而大规模推广 **[test automation](/zh-cn/wiki/test-automation/)** 和 **[regression testing](/zh-cn/wiki/regression-testing/)**。
   该工具的**脚本功能**能够模拟复杂的用户行为和数据驱动的测试，从而增强[API testing](/zh-cn/wiki/api-testing/)的深度。 [Postman](/zh-cn/wiki/postman/) 的**监控功能**对于生产环境中的**主动问题检测**至关重要，其**共享功能**促进团队成员之间的**协作**，确保[test strategy](/zh-cn/wiki/test-strategy/) 实施的一致性和效率。
-  通过支持各种**身份验证方法**，[Postman](/zh-cn/wiki/postman/) 确保对需要凭据的[APIs](/zh-cn/wiki/api/) 进行安全测试。其**[performance testing](/zh-cn/wiki/performance-testing/) 功能**允许基本的[load testing](/zh-cn/wiki/load-testing/)，帮助在开发周期的早期识别瓶颈和性能问题。
+  通过支持各种**身份验证方法**，[Postman](/zh-cn/wiki/postman/) 确保对需要凭据的[APIs](/zh-cn/wiki/api/) 进行安全测试。其 **[performance testing](/zh-cn/wiki/performance-testing/) 功能**允许基本的[load testing](/zh-cn/wiki/load-testing/)，帮助在开发周期的早期识别瓶颈和性能问题。
   总之，[Postman](/zh-cn/wiki/postman/) 在[software testing](/zh-cn/wiki/software-testing/) 中非常重要，因为它具有支持**自动化**、**协作**和**高效测试实践**的全面功能套件，这对于现代[API](/zh-cn/wiki/api/) 驱动的应用程序至关重要。
 
 #### Postman 的主要功能是什么？
@@ -74,23 +73,21 @@ order: 0
 [Postman](/zh-cn/wiki/postman/) 的主要功能包括：
 
 - **内置身份验证协议**：简化设置各种身份验证类型（例如 OAuth、基本身份验证、摘要身份验证和[API](/zh-cn/wiki/api/) 密钥）的过程。
-  - **预请求脚本**：允许编写在发送请求之前运行的 JavaScript 代码以设置变量或修改请求。
-  - **测试**：允许编写 JavaScript 测试来验证响应数据、状态代码和响应时间。
-  - **环境**：提供创建不同环境来存储和管理变量集的能力，从而可以轻松切换上下文。
-  - **请求链接**：通过在后续请求中使用响应数据，有助于从响应和链接请求中提取数据。
-  - **模拟服务器**：提供在实际实现可用之前模拟 [API](/zh-cn/wiki/api/) 端点的能力。
-  - **文档生成**：自动为[API](/zh-cn/wiki/api/) 集合生成并托管精美的机器可读文档。
-  - **[API](/zh-cn/wiki/api/) 发布**：允许[APIs](/zh-cn/wiki/api/) 发布并与其他人共享，提供协作平台。
-  - **版本控制**：与版本控制系统集成，以保持 [API](/zh-cn/wiki/api/) 集合和环境在团队成员之间保持同步。
-  - **工作空间**：支持个人和团队工作空间来组织工作并与团队成员协作。
-  - **[API](/zh-cn/wiki/api/) 监控**：提供设置按计划时间间隔运行的自动化测试的能力，以监控[APIs](/zh-cn/wiki/api/) 的性能和运行状况。
-  - **互操作性**：以各种格式导出和导入集合，并与[Swagger](/zh-cn/wiki/swagger/)/OpenAPI 规范集成。
-  - **插件**：支持一系列插件以及与 Newman 等其他工具的集成，用于从命令行运行集合。
-  - **可视化工具**：将响应数据呈现为可自定义的视觉格式，从而实现更直观的数据分析。
-  这些功能共同使[Postman](/zh-cn/wiki/postman/)成为[API testing](/zh-cn/wiki/api-testing/)和开发工作流程的多功能工具。
+- **预请求脚本**：允许编写在发送请求之前运行的 JavaScript 代码以设置变量或修改请求。
+- **测试**：允许编写 JavaScript 测试来验证响应数据、状态代码和响应时间。
+- **环境**：提供创建不同环境来存储和管理变量集的能力，从而可以轻松切换上下文。
+- **请求链接**：通过在后续请求中使用响应数据，有助于从响应和链接请求中提取数据。
+- **模拟服务器**：提供在实际实现可用之前模拟 [API](/zh-cn/wiki/api/) 端点的能力。
+- **文档生成**：自动为[API](/zh-cn/wiki/api/) 集合生成并托管机器可读文档。
+- **[API](/zh-cn/wiki/api/) 发布**：允许[API](/zh-cn/wiki/api/) 发布并与他人共享，促进协作。
+- **版本控制**：与版本控制系统集成，以保持 [API](/zh-cn/wiki/api/) 集合和环境在团队成员之间保持同步。
+- **工作空间**：支持个人和团队工作空间来组织工作并与团队成员协作。
+- **[API](/zh-cn/wiki/api/) 监控**：提供按计划运行自动化测试的能力，以监控[API](/zh-cn/wiki/api/) 的性能和运行状况。
+- **互操作性**：以各种格式导出和导入集合，并与 [Swagger](/zh-cn/wiki/swagger/)/OpenAPI 规范集成。
+- **插件**：支持插件以及与 Newman 等工具的集成，可从命令行运行集合。
+- **可视化工具**：将响应数据呈现为可自定义的视觉格式，便于分析数据。
 
-- **内置身份验证协议**：简化设置各种身份验证类型（例如 OAuth、基本身份验证、摘要身份验证和[API](/zh-cn/wiki/api/) 密钥）的过程。
-  - **预请求脚本**：允许编写JavaScript 代码，该代码在发送请求之前运行以设置变量或修改请求。
+  这些功能共同使[Postman](/zh-cn/wiki/postman/)成为[API testing](/zh-cn/wiki/api-testing/)和开发工作流程的多功能工具。
 
 #### Postman 如何改进API 开发流程？
 
@@ -138,14 +135,6 @@ order: 0
       `.exe`
       文件并按照安装提示进行操作。
 
-- 对于
-      **Linux**
-      ，根据发行版，使用包管理器安装下载的
-      `.tar.gz`
-      或
-      `.deb`
-      文件。
-
 3. **启动[Postman](/zh-cn/wiki/postman/)**：打开已安装的[Postman](/zh-cn/wiki/postman/) 应用程序。
   4. **登录或创建帐户**（可选）：您可以使用现有的 [Postman](/zh-cn/wiki/postman/) 帐户登录或创建一个新帐户以跨设备同步您的工作并与其他人协作。
   5. **配置设置**（如有必要）：通过单击右上角的齿轮图标访问设置。根据测试环境的需要配置代理、证书和其他首选项。
@@ -153,9 +142,6 @@ order: 0
   7. **导入集合或[APIs](/zh-cn/wiki/api/)**（可选）：如果您有现有的[Postman](/zh-cn/wiki/postman/) 集合或[APIs](/zh-cn/wiki/api/)，请使用左上角的“导入”按钮导入它们。
   8. **验证安装**：创建一个到公共 [API](/zh-cn/wiki/api/) 端点的简单 GET 请求，以确保 [Postman](/zh-cn/wiki/postman/) 设置正确并且可以发送请求。
   [Postman](/zh-cn/wiki/postman/) 现已安装并设置完毕，可供您创建、发送和管理 [API](/zh-cn/wiki/api/) 请求并自动执行测试。
-
-  7. **导入集合或[APIs](/zh-cn/wiki/api/)**（可选）：如果您有现有的[Postman](/zh-cn/wiki/postman/)集合或[APIs](/zh-cn/wiki/api/)，请使用左上角的“导入”按钮导入它们。
-  8. **验证安装**：创建一个到公共 [API](/zh-cn/wiki/api/) 端点的简单 GET 请求，以确保 [Postman](/zh-cn/wiki/postman/) 设置正确并且可以发送请求。
 
 #### 如何在 Postman 中创建新请求？
 
@@ -219,48 +205,6 @@ order: 0
     按钮来执行请求并查看响应。
   如果您进行了任何修改，请记得单击“**保存**”按钮来保存对请求的更改。
 
-1. 打开Postman并确保您位于
-    **工作区**
-    您要在其中创建请求的位置。
-
-3. 选择
-    **请求**
-    从下拉菜单中。
-
-4. 将出现一个对话框。输入一个
-    **姓名**
-    在“请求名称”字段中输入您的请求。
-
-5. 您可以选择添加
-    **描述**
-    描述请求的目的。
-
-6. 要整理您的请求，您可以选择将新请求保存到现有的请求中。
-    **收藏**
-    或通过单击创建一个新的
-    **创建收藏**
-    按钮。
-
-7. 选择或创建集合后，单击
-    **保存到**
-    按钮。
-
-- 在请求选项卡中，选择适当的
-    **HTTP 方法**
-    （GET、POST、PUT、DELETE 等）来自 URL 字段旁边的下拉列表。
-
-- 输入
-    **URL**
-    您想要将请求发送至。
-
-- 添加
-    **标题**
-    ,
-    **参数**
-    , 或
-    **身体数据**
-    根据您的要求。
-
 - 单击
     **发送**
     按钮来执行请求并查看响应。
@@ -297,85 +241,28 @@ order: 0
   响应将出现在 [Postman](/zh-cn/wiki/postman/) 界面的下部。您可以查看状态代码、响应时间、大小和响应正文。如果您需要进一步调整，您可以根据需要修改请求并重新发送。
   对于[automated testing](/zh-cn/wiki/automated-testing/)，您可以使用JavaScript 在“测试”选项卡中编写**测试**，并利用[Postman](/zh-cn/wiki/postman/) 的内置测试片段进行常见断言。发送请求后，测试结果将显示在“测试结果”选项卡中。
 
-1. 打开Postman并选择
-    **工作区**
-    您想在哪里工作。
-
-2. 确保您已创建新请求或已打开现有请求。
-  3. 在请求选项卡中，选择适当的
-    **HTTP 方法**
-    （GET、POST、PUT、DELETE 等）从下拉菜单中。
-
-4. 输入
-    **URL**
-    您想要将请求发送到地址栏中。
-
-5. 如果需要，添加
-    **标题**
-    单击“标题”选项卡并输入键值对。
-
 8. 设置请求后，单击
     **发送**
     按钮。
 
-#### 如何将回复保存在Postman 中？
+#### 如何在 Postman 中保存响应？
 
-要将回复保存在[Postman](/zh-cn/wiki/postman/)中，您可以使用以下方法：
+在 [Postman](/zh-cn/wiki/postman/) 中发送请求后，可以通过以下方式保存响应：
 
-1. **手动复制粘贴**：发送请求后，只需选择响应正文，将其复制并粘贴到您所需的位置，例如文本文件或笔记应用程序。
-  2. **将响应保存到文件**：
-    - 单击
-      **“保存响应”**
-      按钮位于响应正文旁边。
+1. **复制响应正文**：选择响应正文并将其复制到文本文件或笔记应用中。
+2. **保存到文件**：在响应区域选择 **Save Response**，然后选择 **Save to a file**，指定保存位置和文件名。
+3. **保存到环境变量**：在 **Tests** 选项卡中编写脚本，将响应内容存入环境变量：
 
-- 选择
-      **“保存到文件”**
-      从下拉菜单中。
+   ```javascript
+   const responseBody = pm.response.json();
+   pm.environment.set("responseBody", JSON.stringify(responseBody));
+   ```
 
-- 选择文件系统上的位置并使用适当的扩展名保存文件。
-    - 单击
-      **“保存响应”**
-      按钮位于响应正文旁边。
+   后续请求或脚本可以从该环境变量读取响应内容。
+4. **使用 Collection Runner**：将请求作为集合的一部分运行，并通过脚本保存后续请求需要的值。
+5. **使用 Postman API**：如果 API 和集合工作流提供了响应数据，可以通过程序检索这些数据。
 
-- 选择
-      **“保存到文件”**
-      从下拉菜单中。
-
-- 选择文件系统上的位置并使用适当的扩展名保存文件。
-  3. **使用测试和脚本**：
-    - 在
-      **“测试”**
-      选项卡，编写一个脚本来保存对环境或全局变量的响应：
-
-      ```
-      var jsonData = pm.response.json();
-      pm.environment.set("responseVariable", JSON.stringify(jsonData));
-      ```
-- 在需要时从环境或全局变量访问保存的响应。
-    - 在
-      **“测试”**
-      选项卡，编写一个脚本来保存对环境或全局变量的响应：
-
-      ```
-      var jsonData = pm.response.json();
-      pm.environment.set("responseVariable", JSON.stringify(jsonData));
-      ```
-- 在需要时从环境或全局变量访问保存的响应。
-  4. **使用 Collection Runner 实现自动化**：
-    - 创建一个测试脚本来保存如上所述的响应。
-    - 使用 Collection Runner 执行请求。
-    - 响应将保存在环境或全局变量中以供以后使用或进一步的自动化步骤。
-    - 创建一个测试脚本来保存如上所述的响应。
-    - 使用 Collection Runner 执行请求。
-    - 响应将保存在环境或全局变量中以供以后使用或进一步的自动化步骤。
-  5. **[Postman](/zh-cn/wiki/postman/) [API](/zh-cn/wiki/api/)**：
-    - 使用Postman 的API 以编程方式检索和保存响应。
-    - 使用集合和请求 ID 向 Postman API 发送请求以获取响应数据。
-    - 将 API 调用的响应保存到您想要的位置。
-    - 使用Postman 的API 以编程方式检索和保存响应。
-    - 使用集合和请求 ID 向 Postman API 发送请求以获取响应数据。
-    - 将 API 调用的响应保存到您想要的位置。
-  请记住在保存响应时适当处理敏感数据，确保不会不安全地存储机密信息。
+保存响应时应妥善处理敏感数据，避免将凭据或个人信息写入不安全的位置。
 
 #### 如何在Postman 中使用变量？
 
@@ -414,66 +301,47 @@ order: 0
 
 要使用 [Postman](/zh-cn/wiki/postman/) 自动进行测试，请执行以下步骤：
 
-1. **创建集合** ：将相关API请求分组到集合中。
-  2. **编写测试**：对于每个请求，使用 JavaScript 和 Postman 的 pm 对象在“测试”选项卡中编写测试。例子：
+1. **创建集合**：将相关 API 请求分组到一个集合中。
+2. **编写测试**：在每个请求的“Tests”选项卡中使用 JavaScript 和 Postman 的 `pm` 对象编写测试。例如：
 
-     ```
-     pm.test("Status code is 200", function () {
-             pm.response.to.have.status(200);
-     });
-     ```
-3. **使用环境变量**：为请求和测试中的动态数据设置环境变量。
-  4. **链式请求**：使用
-    `pm.sendRequest`
-    链接请求并将一个请求的响应用作另一请求的输入。
+   ```
+   pm.test("Status code is 200", function () {
+       pm.response.to.have.status(200);
+   });
+   ```
+3. **使用环境变量**：为请求和测试中的动态数据配置环境变量。
+4. **链式请求**：使用 `pm.sendRequest` 链式发送请求，并将一个请求的响应作为后续请求的输入。
+5. **运行集合**：使用 Collection Runner 执行集合中的所有请求；可选择环境并设置迭代次数和请求间隔。
+6. **查看结果**：在 Collection Runner 中检查通过和失败的测试结果。
+7. **使用 Newman 自动化**：安装 Postman 的命令行工具 Newman，在 Postman 应用之外运行集合，例如：
 
-5. **运行集合** ：使用 Collection Runner 执行集合中的所有请求。或者，选择一个环境并指定迭代和延迟。
-  6. **查看结果**：运行后，在 Collection Runner 中分析通过和失败测试的结果。
-  7. **使用 Newman 实现自动化**：安装 Postman 的命令行伴侣 Newman，以在 Postman 之外运行集合。使用以下命令：
+   ```bash
+   newman run <Collection URL> -e <Environment URL>
+   ```
+8. **集成 CI/CD**：在构建脚本或配置文件中运行 Newman，将集合纳入 CI/CD 管道。
 
-     ```
-     newman run <Collection URL> -e <Environment URL>
-     ```
-8. **与 CI/CD** 集成：使用构建脚本或配置文件中的适当命令将 Newman 合并到 CI/CD 管道中。
-  通过在 [Postman](/zh-cn/wiki/postman/) 中自动执行测试，您可以确保 [API](/zh-cn/wiki/api/) 在更改后按预期运行，并且您可以将这些测试集成到您的开发工作流程中以进行持续测试。
-
-1. **创建集合** ：将相关API请求分组到集合中。
+通过在 [Postman](/zh-cn/wiki/postman/) 中自动执行测试，可以验证 [API](/zh-cn/wiki/api/) 在更改后是否按预期运行，并将这些测试集成到持续测试流程中。
 
 #### Postman Collection Runner 是什么以及如何使用它？
 
-**[Postman](/zh-cn/wiki/postman/) Collection Runner** 是[Postman](/zh-cn/wiki/postman/) 中的一个工具，允许您按指定顺序执行多个[API](/zh-cn/wiki/api/) 请求。它对于跨端点集合运行测试、模拟工作流程或执行冒烟测试特别有用。
-  要使用集合运行器：
+**[Postman](/zh-cn/wiki/postman/) Collection Runner** 是一个按指定顺序执行多个 [API](/zh-cn/wiki/api/) 请求的工具，适合针对一组端点运行测试、模拟工作流或执行冒烟测试。
 
-1. 打开Postman 并选择您要运行的集合。
-  2. 单击
-    **跑步者**
-    Postman 窗口左下角的按钮。
+要使用 Collection Runner：
 
-3. 在 Collection Runner 窗口中，选择集合和环境（如果您使用环境变量）。
-  4. 配置迭代、请求之间的延迟和日志响应等选项。
-  5. 如果您想要使用不同的数据集运行集合（数据驱动测试），则可以选择一个数据文件。
-  6. 单击
-    **运行[集合名称]**
-    按钮开始执行。
-  当 Collection Runner 执行请求时，它会显示实时结果，包括通过/失败的测试、响应时间和日志输出。您可以使用此反馈来调试和优化您的[API](/zh-cn/wiki/api/) 请求和测试。
-  对于自动化，您可以使用 [Postman](/zh-cn/wiki/postman/) 的配套工具 Newman 通过命令行触发 Collection Runner，用于在 [Postman](/zh-cn/wiki/postman/) 应用程序之外运行集合。这对于与 CI/CD 管道集成特别有用。
+1. 打开 Postman 并选择要运行的集合。
+2. 点击 Postman 窗口左下角的 **Runner** 按钮。
+3. 在 Collection Runner 窗口中选择集合和环境（如果使用环境变量）。
+4. 配置迭代次数、请求间隔和响应日志等选项。
+5. 如需使用不同数据集运行集合，可选择数据文件。
+6. 点击 **Run [collection name]** 开始执行。
 
-  ```
-  newman run <Collection URL or Path> -e <Environment File Path>
-  ```
-请记住在集合中利用 **脚本** 来增强自动化功能，例如设置预请求脚本或将与运行程序中的每个请求一起运行的测试。
+Collection Runner 会显示通过或失败的测试、响应时间和日志，帮助你调试并优化 [API](/zh-cn/wiki/api/) 请求和测试。你也可以使用 Postman 的命令行伴侣 Newman 在应用外运行集合，并将其接入 CI/CD 管道：
 
-1. 打开Postman 并选择您要运行的集合。
-  2. 单击
-    **跑步者**
-    Postman 窗口左下角的按钮。
+```bash
+newman run <Collection URL or Path> -e <Environment File Path>
+```
 
-3. 在 Collection Runner 窗口中，选择集合和环境（如果您使用环境变量）。
-  4. 配置迭代、请求之间的延迟和日志响应等选项。
-  5. 如果您想要使用不同的数据集运行集合（数据驱动测试），则可以选择一个数据文件。
-  6. 单击
-    **运行[集合名称]**
-    按钮开始执行。
+你还可以在集合中使用脚本，例如设置预请求脚本，或为 Collection Runner 执行的请求编写测试。
 
 #### 如何使用Postman 的脚本功能？
 
@@ -507,11 +375,12 @@ order: 0
   要设置监视器，您需要选择一个集合、配置运行频率并指定环境。监视器可以每 5 分钟运行一次，也可以每天、每周或每月运行一次。当监视器运行时，它会执行集合中的每个请求并报告结果。
   监视器可用于：
 
-- **持续监控**：确保您的API 始终启动并运行。
-  - **版本检查**：验证最新部署是否未破坏任何现有功能。
-  - **响应时间警报**：当 API 响应速度慢于预期时发出通知，这可能表明存在性能问题。
-  监视器的结果可以在 [Postman](/zh-cn/wiki/postman/) 应用程序或 Web 仪表板中查看，您可以在其中查看运行历史记录、响应时间以及任何故障的详细信息。您还可以设置集成，以便在监视器出现故障或检测到问题时通过电子邮件、Slack 或其他平台接收通知。
-  以下是如何使用 [Postman](/zh-cn/wiki/postman/) 的 [API](/zh-cn/wiki/api/) 设置监视器的基本示例：
+- **持续监控**：检查 API 是否持续可用。
+- **版本检查**：确认最新部署未破坏既有功能。
+- **响应时间告警**：API 响应变慢时发出通知，提示可能存在性能问题。
+
+监视器的结果可以在 [Postman](/zh-cn/wiki/postman/) 应用程序或 Web 仪表板中查看，您可以在其中查看运行历史记录、响应时间以及任何故障的详细信息。您还可以设置集成，以便在监视器出现故障或检测到问题时通过电子邮件、Slack 或其他平台接收通知。
+以下是如何使用 [Postman](/zh-cn/wiki/postman/) 的 [API](/zh-cn/wiki/api/) 设置监视器的基本示例：
 
   ```
   POST /monitors
@@ -527,13 +396,9 @@ order: 0
   ```
 这将创建一个名为“[API](/zh-cn/wiki/api/) Health Check”的监视器，该监视器使用指定的集合和环境每 10 分钟运行一次。
 
-- **持续监控**：确保您的API 始终启动并运行。
-  - **版本检查**：验证最新部署是否未破坏任何现有功能。
-  - **响应时间警报**：当 API 响应速度慢于预期时发出通知，这可能表明存在性能问题。
-
 #### 如何使用Postman 进行性能测试？
 
-要将[Postman](/zh-cn/wiki/postman/) 用于[performance testing](/zh-cn/wiki/performance-testing/)，您将主要利用**Collection Runner** 和**[Postman](/zh-cn/wiki/postman/) 监视器**。这是一个简洁的指南：
+要将[Postman](/zh-cn/wiki/postman/) 用于[performance testing](/zh-cn/wiki/performance-testing/)，您将主要利用**Collection Runner** 和 **[Postman](/zh-cn/wiki/postman/) 监视器**。这是一个简洁的指南：
 
 1. **创建集合**：将要测试的所有请求分组到单个集合下。
   2. **编写预请求和[Test Scripts](/zh-cn/wiki/test-script/)**：在预请求和测试选项卡中使用JavaScript 自定义您的请求和响应处理。
@@ -549,8 +414,6 @@ order: 0
   7. **与CI/CD集成**：使用[Postman](/zh-cn/wiki/postman/)的Newman命令行工具将性能测试集成到CI/CD管道中以获取定期反馈。
   8. **使用云代理进行扩展**：对于更广泛的[performance testing](/zh-cn/wiki/performance-testing/)，请使用[Postman](/zh-cn/wiki/postman/) 的云代理来模拟更高的负载和更真实的条件。
   请记住，虽然 [Postman](/zh-cn/wiki/postman/) 可以处理基本的 [performance testing](/zh-cn/wiki/performance-testing/)，但在处理复杂的 [load testing](/zh-cn/wiki/load-testing/) 场景时，它不能替代 [performance testing](/zh-cn/wiki/performance-testing/) 等专用工具，例如 [JMeter](/zh-cn/wiki/jmeter/) 或 LoadRunner。使用[Postman](/zh-cn/wiki/postman/) 进行轻量级性能检查，并使用[API](/zh-cn/wiki/api/) 端点[stress testing](/zh-cn/wiki/stress-testing/)。
-
-1. **创建集合**：将要测试的所有请求分组到单个集合下。
 
 ### 集成与协作
 
@@ -574,7 +437,6 @@ order: 0
   ```
 请记住告知收件人有效使用集合所需的任何环境变量或先决条件。
 
-1. **导出收藏集**：单击要共享的收藏集，然后单击三个点以打开收藏集菜单。选择“导出”并选择格式版本。将文件保存到本地系统。
   2. **通过 [Postman](/zh-cn/wiki/postman/) 共享**：如果您使用 [Postman](/zh-cn/wiki/postman/) 的协作功能，请单击收藏选项卡顶部的“共享”按钮。然后，您可以通过电子邮件邀请团队成员或共享该集合的链接。
   3. **使用版本控制**：将导出的集合文件提交到版本控制系统（例如Git）。这允许其他人将集合拉入他们的本地 [Postman](/zh-cn/wiki/postman/) 环境。
 

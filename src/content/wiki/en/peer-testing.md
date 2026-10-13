@@ -72,10 +72,6 @@ Peer testing involves team members evaluating each other's work, ensuring code c
   - Having a moderator or lead to guide the process and resolve conflicts.
   **Automation** can play a role by automating repetitive tasks, allowing more time for the human-centric aspects of peer testing. Tools like automated code linters or static analysis tools can complement peer testing by catching simple issues, so peer sessions can focus on more complex problems.
 
-  - Establishing a respectful and professional environment.
-  - Using a structured approach to feedback.
-  - Having a moderator or lead to guide the process and resolve conflicts.
-
 #### What is the purpose of peer testing?
 
   The purpose of **peer testing** is to leverage the collective expertise and perspectives of multiple developers to identify defects, improve code quality, and ensure functionality aligns with requirements. It serves as an early-stage quality gate, catching issues before they escalate into more costly problems. By involving peers, the process encourages collaboration and fosters a shared responsibility for the codebase. This collaborative approach not only enhances the technical robustness of the software but also supports a culture of continuous learning and mutual mentorship within the team.
@@ -333,7 +329,6 @@ Peer testing involves team members evaluating each other's work, ensuring code c
   Automation plays a **supportive role** in peer testing by **streamlining** the process and **enhancing its effectiveness**. While peer testing primarily involves manual [inspection](/en/wiki/inspection/) and review by fellow team members, automation can be leveraged to **prepare** and **execute** repetitive tasks, freeing up human testers to focus on more complex aspects of the review.
   Automated scripts can be used to:
 
-  - **Set up [test environments](/en/wiki/test-environment/)**
     quickly, ensuring that peer testing occurs under consistent conditions.
 
   - **Generate [test data](/en/wiki/test-data/)**

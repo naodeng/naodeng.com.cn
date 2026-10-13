@@ -114,7 +114,6 @@ TDD (Test-Driven Development) is a development methodology that prioritizes writ
   - **[Bug](/en/wiki/bug/) Prevention vs. Detection** : TDD focuses on preventing bugs through test-first development, whereas traditional testing focuses on detecting bugs after implementation.
   TDD's emphasis on test-first development fundamentally shifts the role of tests in the software development lifecycle, integrating them into the design and construction of software rather than treating them as a separate phase.
 
-
 ### TDD Process
 
 #### What are the steps involved in the TDD process?
@@ -156,8 +155,6 @@ TDD (Test-Driven Development) is a development methodology that prioritizes writ
     the cycle for the next piece of functionality or requirement.
   Throughout the process, run all tests after each change to ensure that no regressions are introduced. This iterative cycle of test-code-refactor helps build a robust and well-tested codebase.
 
-  1. **Identify a requirement**
-
 #### What is the Red-Green-Refactor cycle in TDD?
 
   The **Red-Green-Refactor** cycle is a fundamental rhythm of TDD that promotes a disciplined approach to development:
@@ -185,7 +182,6 @@ TDD (Test-Driven Development) is a development methodology that prioritizes writ
      ```
   Repeat this cycle for each new feature or behavior incrementally, ensuring that tests are always passing after the refactor phase. This process helps maintain a clean codebase and provides immediate feedback on the impact of changes.
 
-
 #### How do you write a failing test in TDD?
 
   Writing a failing test in TDD involves the following steps:
@@ -210,7 +206,6 @@ TDD (Test-Driven Development) is a development methodology that prioritizes writ
   ```
   In this example, the `Calculator` class and its `add` method have not been implemented yet. Running this test will result in a failure, which is the desired outcome in the red phase of the Red-Green-Refactor cycle. After the failing test is in place, you would then write the minimal amount of code to make the test pass, moving into the green phase.
 
-
 #### How do you make a failing test pass in TDD?
 
   To make a failing test pass in TDD, follow these steps:
@@ -233,7 +228,6 @@ TDD (Test-Driven Development) is a development methodology that prioritizes writ
   }
   ```
   Remember, the goal is to write code that is just enough to pass the test, not to anticipate future requirements or add additional functionality. This keeps the development focused and avoids over-engineering.
-
 
 #### What does it mean to refactor in TDD?
 
@@ -273,8 +267,6 @@ TDD (Test-Driven Development) is a development methodology that prioritizes writ
   ```
   In this example, the `calculateArea` function is refactored to use a new `calculateRadius` function, improving readability and potentially reusability of the `calculateRadius` logic.
 
-  - **Simplify code**
-    by breaking down complex methods.
 
   - **Remove duplication**
 
@@ -409,7 +401,6 @@ TDD (Test-Driven Development) is a development methodology that prioritizes writ
     by configuring mocks to return various outputs or throw exceptions, which helps in achieving thorough test coverage.
   Mock objects are essential for maintaining a fast and reliable suite of tests that can run frequently, which is a cornerstone of TDD. They help to ensure that each test remains focused on a single piece of functionality and that the suite as a whole can run quickly and deterministically.
 
-
 #### How does TDD handle testing of complex systems and dependencies?
 
   TDD handles complex systems and dependencies by emphasizing **incremental development** and **isolation** of components. For complex systems, tests are written for small, manageable pieces of functionality before the corresponding code is implemented. This approach ensures that each component is thoroughly tested in isolation before being integrated into the larger system.
@@ -452,9 +443,6 @@ TDD (Test-Driven Development) is a development methodology that prioritizes writ
   - **TDD** : Write a failing unit test, make it pass, refactor.
   - **ATDD** : Write a failing acceptance test, implement the functionality (using TDD for the units), make the acceptance test pass, refactor.
   ATDD typically involves creating a detailed, automated test for a user story before the code is written, while TDD is about writing a test for a small piece of functionality (usually at the class or method level) and then writing the code to pass the test. Both practices aim to ensure that the codebase is robust and regression-free, but ATDD extends the validation to the feature or system level, ensuring that the software fulfills the business requirements.
-
-  - **TDD** : Write a failing unit test, make it pass, refactor.
-  - **ATDD** : Write a failing acceptance test, implement the functionality (using TDD for the units), make the acceptance test pass, refactor.
 
 #### What are some strategies for handling legacy code in TDD?
 

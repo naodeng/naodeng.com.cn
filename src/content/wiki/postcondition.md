@@ -17,7 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [后置条件 ｜ Postcondition](#后置条件--postcondition)
-  - [相关术语](#相关术语)
   - [关于后置条件的问题吗？](#关于后置条件的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [软件测试中的后置条件是什么？](#软件测试中的后置条件是什么)
@@ -41,7 +40,7 @@ order: 0
 
 后置条件是一段代码运行后必须成立的条件，通常通过代码谓词进行验证。
 
-## 相关术语
+相关术语
 
 - 前置条件（Precondition）
 
@@ -73,7 +72,7 @@ order: 0
 #### 前置条件和后置条件有什么区别？
 
 先决条件和 [后置条件](/zh-cn/wiki/postcondition/) 都是 [测试用例](/zh-cn/wiki/test-case/) 结构的组成部分，但它们在测试生命周期中具有不同的用途。
-  **前提条件**是执行测试之前**必须满足的特定状态或条件。他们为测试奠定了基础，确保系统处于正确状态并且所有必要的配置均已到位。前提条件是为测试成功运行创建一个受控环境。
+  **前提条件**是执行测试之前必须满足的特定状态或条件。他们为测试奠定了基础，确保系统处于正确状态并且所有必要的配置均已到位。前提条件是为测试成功运行创建一个受控环境。
 
   ```
   // Example: Preconditions for a login test might include
@@ -81,7 +80,7 @@ order: 0
   // - The application is accessible
   // - The login service is running
   ```
-另一方面，**[后置条件](/zh-cn/wiki/postcondition/)** 是 [测试执行](/zh-cn/wiki/test-execution/) **之后必须验证的预期状态或条件，以确认测试已通过。它们是用于确定[测试用例](/zh-cn/wiki/test-case/) 成功或失败的标准。 [后置条件](/zh-cn/wiki/postcondition/) 关注[测试执行](/zh-cn/wiki/test-execution/) 带来的结果和变化。
+另一方面，**[后置条件](/zh-cn/wiki/postcondition/)** 是 [测试执行](/zh-cn/wiki/test-execution/) 之后必须验证的预期状态或条件，以确认测试已通过。它们是用于确定[测试用例](/zh-cn/wiki/test-case/) 成功或失败的标准。 [后置条件](/zh-cn/wiki/postcondition/) 关注[测试执行](/zh-cn/wiki/test-execution/) 带来的结果和变化。
 
 ```
   // Example: Postconditions for a login test might include
@@ -116,7 +115,7 @@ order: 0
 
 #### 如何定义测试用例的后置条件？
 
-为[测试用例](/zh-cn/wiki/test-case/) 定义**[后置条件](/zh-cn/wiki/postcondition/)** 涉及在[测试执行](/zh-cn/wiki/test-execution/) 之后指定系统的预期状态。此状态应反映测试旨在引起或验证的任何变化。要有效定义 [后置条件](/zh-cn/wiki/postcondition/)：
+为[测试用例](/zh-cn/wiki/test-case/) 定义 **[后置条件](/zh-cn/wiki/postcondition/)** 涉及在[测试执行](/zh-cn/wiki/test-execution/) 之后指定系统的预期状态。此状态应反映测试旨在引起或验证的任何变化。要有效定义 [后置条件](/zh-cn/wiki/postcondition/)：
 
 - **识别**系统中预期的更改，例如数据库更新、文件创建或用户界面的修改。
 
@@ -142,11 +141,7 @@ order: 0
   assert(currentPage == 'dashboard');
   assert(database.hasLoginTimestampFor(user));
 ```
-请记住，[后置条件](/zh-cn/wiki/postcondition/) 对于验证测试不仅按预期执行而且导致系统状态的正确修改或维护至关重要**。
-
-- **识别**系统中预期的更改，例如数据库更新、文件创建或用户界面的修改。
-
-- **指定**以清晰、明确的措辞表达结果。使用准确的语言以避免误解。
+请记住，[后置条件](/zh-cn/wiki/postcondition/) 对于验证测试不仅按预期执行而且导致系统状态的正确修改或维护至关重要。
 
 - **焦点**系统状态的相关方面与测试用例目标直接相关。
 
@@ -206,7 +201,6 @@ order: 0
   ```
 管理多个 [后置条件](/zh-cn/wiki/postcondition/) 涉及对断言进行逻辑分组并确保它们独立、清晰且与测试目标直接相关。
 
-
 #### 定义后置条件的最佳实践是什么？
 
 为[测试自动化](/zh-cn/wiki/test-automation/) 定义[后置条件](/zh-cn/wiki/postcondition/) 时，请遵循以下最佳实践：
@@ -225,9 +219,6 @@ order: 0
 - **文档更改**：如果[测试用例](/zh-cn/wiki/test-case/) 或基础功能发生更改，请相应更新[后置条件](/zh-cn/wiki/postcondition/) 以使其保持最新状态。
 - **定期审查**：作为测试维护的一部分定期审查[后置条件](/zh-cn/wiki/postcondition/)，以确保它们仍然符合应用程序的预期行为。 通过遵循这些实践，您将创建清晰、可靠且可维护的[后置条件](/zh-cn/wiki/postcondition/)，从而提高[自动化测试](/zh-cn/wiki/automated-testing/) 工作的有效性。
 
-- **具体**：在[测试执行](/zh-cn/wiki/test-execution/)之后清楚地说明系统的预期状态。歧义可能导致误解和不可靠的测试结果。
-- **保持相关性**：确保[后置条件](/zh-cn/wiki/postcondition/) 与[测试用例](/zh-cn/wiki/test-case/) 的目标直接相关。不相关的[后置条件](/zh-cn/wiki/postcondition/) 会增加噪音并降低测试结果的清晰度。
-- **文档更改**：如果[测试用例](/zh-cn/wiki/test-case/) 或基础功能发生更改，请相应更新[后置条件](/zh-cn/wiki/postcondition/) 以使其保持最新状态。
 - **定期审查**：作为测试维护的一部分定期审查[后置条件](/zh-cn/wiki/postcondition/)，以确保它们仍然符合应用程序的预期行为。
 
 #### 如何验证测试用例中是否满足后置条件？
@@ -242,7 +233,7 @@ order: 0
   expect(actualState).toEqual(expectedState);
   ```
 如果有多个[后置条件](/zh-cn/wiki/postcondition/)，请独立验证每个[后置条件](/zh-cn/wiki/postcondition/)，确保应用程序状态的所有必要方面均符合预期。将断言链接在一起或使用逻辑结构来管理复杂的验证。
-  对于**[数据库](/zh-cn/wiki/database/) 验证**，执行查询以检索相关数据并将其与[预期结果](/zh-cn/wiki/expected-result/) 进行比较：
+  对于 **[数据库](/zh-cn/wiki/database/) 验证**，执行查询以检索相关数据并将其与[预期结果](/zh-cn/wiki/expected-result/) 进行比较：
 
   ```
   // Retrieve data from the database
@@ -265,13 +256,13 @@ order: 0
 如果是这样，你如何管理它们？
   是的，一个[测试用例](/zh-cn/wiki/test-case/) 可以有多个[后置条件](/zh-cn/wiki/postcondition/)。管理它们涉及明确定义每个[后置条件](/zh-cn/wiki/postcondition/)并确保它们是可独立验证的。以下是有效处理多个[后置条件](/zh-cn/wiki/postcondition/)的方法：
 
-- **列出每个[后置条件](/zh-cn/wiki/postcondition/)**分开以保持清晰度。
+- **列出每个[后置条件](/zh-cn/wiki/postcondition/)** 分开以保持清晰度。
 
 - **确保独立性**这样一来，一个人的成功或失败就不会影响到其他人。
 
 - **使用断言**在您的测试脚本中验证每个后置条件。
 
-- **组织[后置条件](/zh-cn/wiki/postcondition/)**从逻辑上讲，反映了被测系统状态变化的顺序。
+- **组织[后置条件](/zh-cn/wiki/postcondition/)** 从逻辑上讲，反映了被测系统状态变化的顺序。
 
 - **文档依赖关系**后置条件之间（如果存在），尽管这并不理想。
 
@@ -286,16 +277,6 @@ order: 0
   assert(successMessageDisplayed(uploadPage));
   ```
 每个[后置条件](/zh-cn/wiki/postcondition/) 都通过断言进行验证，它们都与上传文件的单个操作相关，但代表操作后系统状态的不同方面。
-
-- **列出每个[后置条件](/zh-cn/wiki/postcondition/)**分开以保持清晰度。
-
-- **确保独立性**这样一来，一个人的成功或失败就不会影响到其他人。
-
-- **使用断言**在您的测试脚本中验证每个后置条件。
-
-- **组织[后置条件](/zh-cn/wiki/postcondition/)**从逻辑上讲，反映了被测系统状态变化的顺序。
-
-- **文档依赖关系**后置条件之间（如果存在），尽管这并不理想。
 
 - **自动验证**在可能的情况下，使用可以有效检查多个结果的工具或脚本。
 
@@ -318,7 +299,7 @@ order: 0
 
 #### 后置条件和测试用例设计之间有什么关系？
 
-[后置条件](/zh-cn/wiki/postcondition/) 是**[测试用例](/zh-cn/wiki/test-case/) 设计**不可或缺的一部分，因为它们定义了执行测试后系统的预期状态。设计[测试用例](/zh-cn/wiki/test-case/) 时，工程师必须指定要采取的操作以及验证这些操作是否成功的[后置条件](/zh-cn/wiki/postcondition/)。这确保每个[测试用例](/zh-cn/wiki/test-case/)都有明确的通过或失败标准。
+[后置条件](/zh-cn/wiki/postcondition/) 是 **[测试用例](/zh-cn/wiki/test-case/) 设计**不可或缺的一部分，因为它们定义了执行测试后系统的预期状态。设计[测试用例](/zh-cn/wiki/test-case/) 时，工程师必须指定要采取的操作以及验证这些操作是否成功的[后置条件](/zh-cn/wiki/postcondition/)。这确保每个[测试用例](/zh-cn/wiki/test-case/)都有明确的通过或失败标准。
   在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[后置条件](/zh-cn/wiki/postcondition/) 通常被翻译成**断言**。这些断言是自动检查，将系统的实际状态与预期[后置条件](/zh-cn/wiki/postcondition/)进行比较。如果断言通过，则满足[后置条件](/zh-cn/wiki/postcondition/)；如果失败，则 [测试用例](/zh-cn/wiki/test-case/) 失败，表明存在潜在缺陷。
   多个[后置条件](/zh-cn/wiki/postcondition/) 可以与单个[测试用例](/zh-cn/wiki/test-case/) 关联，特别是在测试复杂场景时。管理它们需要一种结构化的方法，通常涉及：
 
@@ -340,10 +321,6 @@ order: 0
   assert(sessionStarted());
   ```
 在此代码片段中，每个 [后置条件](/zh-cn/wiki/postcondition/) 都通过相应的断言进行检查。因此，[后置条件](/zh-cn/wiki/postcondition/) 和[测试用例](/zh-cn/wiki/test-case/) 设计之间的关系是指定预期结果并实施检查以确保在执行测试操作后实现这些结果的问题。
-
-- **逻辑分组**相关后置条件。
-
-- **顺序验证**其中一个后置条件的结果可能会影响下一个后置条件的评估。
 
 - **模块化断言**保持代码的可维护性和可重用性。
 
@@ -387,14 +364,6 @@ order: 0
 - **利用数据屏蔽**敏感数据的技术。
 
 - **选择合适的工具**可以处理系统的复杂性和后置条件。 有效验证[后置条件](/zh-cn/wiki/postcondition/) 可确保软件在[测试用例](/zh-cn/wiki/test-case/) 执行后按预期运行，这对于[自动化测试](/zh-cn/wiki/automated-testing/) 的可靠性至关重要。
-
-- **协作**与开发人员和业务分析师一起澄清需求。
-
-- **隔离**尽可能多地进行测试以减少相互依赖性。
-
-- **使用模拟和存根**模拟外部系统并控制测试环境。
-
-- **利用数据屏蔽**敏感数据的技术。
 
 - **选择合适的工具**可以处理系统的复杂性和后置条件。
 

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Software Quality](#software-quality)
-  - [Related Terms:](#related-terms)
   - [Questions about Software Quality?](#questions-about-software-quality)
     - [Basics and Importance](#basics-and-importance)
       - [What is software quality?](#what-is-software-quality)
@@ -51,7 +50,7 @@ order: 0
 
 Software quality reflects a software's capability to meet user requirements as documented in the SRS (Software Requirement Specifications). High-quality software aligns with user specifications and is maintainable, timely, and cost-effective.
 
-## Related Terms:
+Related Terms:
 
 - [Software Quality Management](/en/wiki/software-quality-management/)
 - [QA Metrics](/en/wiki/qa-metrics/)
@@ -409,8 +408,6 @@ Software quality reflects a software's capability to meet user requirements as d
   - **Enforcing**
     a rigorous change management process to ensure that any modifications do not introduce new defects.
   By focusing on process improvement, SQA helps in identifying potential issues early, reducing the cost of fixing defects post-development. It ensures that quality is built into the product from the ground up, rather than being inspected in after the fact. This proactive stance on quality helps in delivering a more reliable and robust software product, ultimately reducing the risk of failure and enhancing customer satisfaction.
-
-  - **Establishing processes**
 
 #### What are the best practices in software quality assurance?
 

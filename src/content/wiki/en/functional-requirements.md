@@ -110,8 +110,6 @@ Functional Requirements define the expected behavior of a software system or app
   ```
   By aligning e2e tests with functional requirements, [test automation](/en/wiki/test-automation/) engineers ensure that the software delivers the intended value to end-users and meets the business objectives.
 
-  - **Design [test cases](/en/wiki/test-case/)**
-
 ### Identification and Documentation
 
 #### How are functional requirements identified?
@@ -277,8 +275,6 @@ Functional Requirements define the expected behavior of a software system or app
   });
   ```
   In summary, E2E testing ensures that the application behaves as intended from the user's perspective, which is the ultimate validation of functional requirements.
-
-  - **Validate critical paths**
 
 #### What are some common challenges in validating functional requirements and how can they be overcome?
 

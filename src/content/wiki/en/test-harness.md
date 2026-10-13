@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Harness](#test-harness)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Harness?](#questions-about-test-harness)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Harness in software testing?](#what-is-a-test-harness-in-software-testing)
@@ -41,7 +40,7 @@ order: 0
 
 A test harness is a suite of auxiliary tools, including stubs and drivers, used during testing. It utilizes a test library to run tests and generate reports.
 
-## Related Terms:
+Related Terms:
 
 - [Test environment](/en/wiki/test-environment/)
 - [Test infrastructure](/en/wiki/test-infrastructure/)
@@ -103,8 +102,6 @@ A test harness is a suite of auxiliary tools, including stubs and drivers, used 
   - **Providing quick feedback**
     through logs and reports, accelerating issue resolution.
   By leveraging a Test Harness, [test automation](/en/wiki/test-automation/) engineers can focus on designing effective tests rather than managing the intricacies of [test execution](/en/wiki/test-execution/), leading to a more streamlined and efficient testing process.
-
-  - **Automating repetitive tasks**
 
 ### Types and Usage
 

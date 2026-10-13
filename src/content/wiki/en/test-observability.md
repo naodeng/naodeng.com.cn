@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Observability](#test-observability)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Observability?](#questions-about-test-observability)
     - [Basics and Importance](#basics-and-importance)
       - [What is test observability?](#what-is-test-observability)
@@ -45,7 +44,7 @@ order: 0
 
 Test observability denotes the capability to monitor a system during testing, analyzing its performance to pinpoint and rectify issues. It aggregates data like logs, metrics, and traces for insights and improvements.
 
-## Related Terms:
+Related Terms:
 
 - [Test Management](/en/wiki/test-management/)
 
@@ -75,9 +74,6 @@ Test observability denotes the capability to monitor a system during testing, an
   Emerging technologies in observability include **AI-powered analytics** and **machine learning** for predictive insights. **Docker** and **Kubernetes** facilitate consistent environments and orchestration for tests, aiding in reliability and scalability.
   To maintain observability in complex systems, adopt a **microservices-oriented monitoring** approach and ensure **centralized logging**. When facing challenges in observability, focus on **incremental improvements** and leverage **community knowledge** and **open-source tools**. Real-world problems like [flaky tests](/en/wiki/flaky-test/) and performance bottlenecks are often addressed through enhanced observability.
 
-  - Using
-    **assertions**
-    to validate expected outcomes.
 
   - Utilizing
     **distributed tracing**
@@ -155,9 +151,6 @@ Test observability denotes the capability to monitor a system during testing, an
   - **Continuous Feedback Loop**: Establish a feedback loop where test observations are reviewed and acted upon in development and test cycles.
   By integrating these practices, [test automation](/en/wiki/test-automation/) engineers can enhance the observability of their tests, leading to quicker issue identification, better understanding of system behavior, and ultimately, higher quality software.
 
-  - **Implement Custom Metrics** : Define and track custom metrics specific to your application's functionality. Use tools like Prometheus or Grafana to visualize these metrics.
-  - **Structured Logging** : Use structured logging formats like JSON to make logs easily searchable and analyzable.
-  - **Correlation IDs** : Assign unique IDs to test cases or transactions to trace them across services and logs.
 
 #### How can logging and monitoring be used to enhance test observability?
 
@@ -209,8 +202,6 @@ Test observability denotes the capability to monitor a system during testing, an
   ```
   By instrumenting [test environments](/en/wiki/test-environment/), engineers gain the ability to **trace issues back to their source**, making debugging more efficient. It also aids in creating a comprehensive picture of the system's behavior under test, contributing to more reliable and maintainable [test suites](/en/wiki/test-suite/).
   However, it's important to balance the level of instrumentation to avoid performance overhead or an overwhelming amount of data. **Selective instrumentation**—focusing on critical paths and components—is often a best practice to maintain a high level of observability without compromising system performance.
-
-  - **Track performance metrics**
 
 #### What techniques can be used to increase the observability of a system under test?
 

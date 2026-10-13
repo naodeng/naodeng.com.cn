@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Traceability Matrix](#traceability-matrix)
-  - [Related Terms:](#related-terms)
   - [Questions about Traceability Matrix?](#questions-about-traceability-matrix)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Traceability Matrix in software testing?](#what-is-a-traceability-matrix-in-software-testing)
@@ -41,7 +40,7 @@ order: 0
 
 A table-type document tracking software requirements. It supports both forward and backward tracing of requirements to code and vice versa.
 
-## Related Terms:
+Related Terms:
 
 - [Requirements Management Tool](/en/wiki/requirements-management-tool/)
 
@@ -82,7 +81,6 @@ A table-type document tracking software requirements. It supports both forward a
   - **[Test Script](/en/wiki/test-script/) Location** : References to where the test scripts or automation code are stored.
   Maintaining a **Traceability Matrix** involves ensuring that all these components are accurately reflected and updated throughout the software development lifecycle. It serves as a map that links requirements to their corresponding [test cases](/en/wiki/test-case/) and defects, providing a clear view of the project's [test coverage](/en/wiki/test-coverage/) and facilitating [impact analysis](/en/wiki/impact-analysis/) when changes occur.
 
-
 #### How does a Traceability Matrix contribute to the overall quality of a software product?
 
   A Traceability Matrix (TM) enhances [software quality](/en/wiki/software-quality/) by ensuring **alignment** between requirements, [test cases](/en/wiki/test-case/), and deliverables. It provides a **visual map** that helps teams verify that all **requirements** are covered by tests and that each test is linked to a **specific requirement** or user story. This linkage ensures that no critical functionality is overlooked during testing, leading to a more **reliable** and **consistent** product.
@@ -121,8 +119,6 @@ A table-type document tracking software requirements. It supports both forward a
   2. **Use Automation Tools**: Leverage tools to automate the creation and maintenance of the matrix where possible.
   Remember, the matrix should be a **living document** that evolves with the project. It's essential for ensuring that all requirements are tested and that any changes are consistently reflected across all project artifacts.
 
-  1. **Maintain Bidirectional Traceability**: Ensure that changes in [test cases](/en/wiki/test-case/) are reflected back to the requirements and vice versa.
-  2. **Use Automation Tools**: Leverage tools to automate the creation and maintenance of the matrix where possible.
 
 #### What tools are commonly used to create and maintain a Traceability Matrix?
 
@@ -137,7 +133,6 @@ A table-type document tracking software requirements. It supports both forward a
   - **qTest** : Part of the Tricentis platform, it offers traceability by linking requirements, test cases, and defects.
   - **ReqTest** : A tool that manages requirements, tests, and bugs with traceability features.
   These tools often provide **dashboards** and **reporting features** to visualize the traceability matrix and track the status of testing activities against requirements. Automation engineers can leverage **[APIs](/en/wiki/api-testing/)** or **plugins** to integrate these tools with their [test automation](/en/wiki/test-automation/) frameworks, ensuring that traceability is updated in real-time as tests are executed.
-
 
 #### What steps should be taken to keep a Traceability Matrix up to date?
 
@@ -154,7 +149,6 @@ A table-type document tracking software requirements. It supports both forward a
   9. **Documentation**: Document the process for updating the matrix and ensure the team is trained on it.
   10. **Tool Synchronization**: If using multiple tools, ensure they are synchronized to update the matrix consistently across platforms.
   By following these steps, you can maintain an accurate and valuable Traceability Matrix that enhances your [test automation](/en/wiki/test-automation/) efforts.
-
 
 #### Who is typically responsible for maintaining the Traceability Matrix in a software development team?
 
@@ -204,10 +198,6 @@ A table-type document tracking software requirements. It supports both forward a
     to generate reports for stakeholders, demonstrating test coverage and project status.
   In summary, the TM is a dynamic tool that guides the testing process, ensuring thorough coverage and providing insights into the project's quality at any point in time.
 
-  - **Map [test cases](/en/wiki/test-case/)**
-
-  1. **Link [test cases](/en/wiki/test-case/)**
-
 #### What types of testing can benefit from a Traceability Matrix?
 
   Types of testing that can benefit from a **Traceability Matrix** include:
@@ -222,7 +212,6 @@ A table-type document tracking software requirements. It supports both forward a
   - **[Usability Testing](/en/wiki/usability-testing/)** : Evaluates the software's user interface and user experience. The matrix can track the relationship between user feedback and test cases.
   By mapping tests to requirements, a Traceability Matrix can ensure comprehensive [test coverage](/en/wiki/test-coverage/) across all these testing types, facilitating a more efficient and effective [test process](/en/wiki/test-process/).
 
-
 #### How can a Traceability Matrix help in identifying gaps in test coverage?
 
   A Traceability Matrix (TM) can highlight [test coverage](/en/wiki/test-coverage/) gaps by mapping [test cases](/en/wiki/test-case/) to specific requirements or user stories. When you cross-reference the matrix, areas without corresponding [test cases](/en/wiki/test-case/) become apparent, indicating potential risks where functionality is unverified. This visual representation allows for a quick scan to ensure that all requirements have been accounted for in the [test plan](/en/wiki/test-plan/).
@@ -232,7 +221,6 @@ A table-type document tracking software requirements. It supports both forward a
   - Check for test cases that are linked to multiple requirements, which might be too broad and miss specific details.
   - Analyze the matrix for any changes in requirements that are not reflected in updated or new test cases.
   By maintaining an up-to-date TM, you ensure that any modifications in the scope of work are immediately assessed for their impact on existing [test coverage](/en/wiki/test-coverage/). This proactive approach allows for the early detection of areas that may require additional testing, thus preventing gaps from going unnoticed until later stages of development or after release.
-
 
 #### How can a Traceability Matrix assist in impact analysis?
 
@@ -261,14 +249,6 @@ A table-type document tracking software requirements. It supports both forward a
   In practice, bidirectional traceability can be visualized as a matrix where rows and columns represent requirements and [test cases](/en/wiki/test-case/), respectively, with intersections indicating links. This matrix becomes a pivotal reference point for stakeholders to assess the progress and completeness of testing activities.
   Maintaining bidirectional traceability requires diligence and regular updates as project requirements and test artifacts evolve. It is a collective responsibility, often overseen by QA leads or test managers, to ensure that the Traceability Matrix reflects the current state of the project accurately.
 
-  - Each requirement has been adequately tested (forward traceability).
-  - Each test case is associated with a specific requirement (backward traceability).
-  - **Link each requirement**
-    to corresponding test cases, design elements, and code artifacts.
-
-  - **Ensure that [test cases](/en/wiki/test-case/)**
-    are mapped back to their specific requirements and design references.
-
 #### How can a Traceability Matrix be used in Agile development methodologies?
 
   In [Agile development](/en/wiki/agile-development/) methodologies, a **Traceability Matrix** (TM) is leveraged to ensure that all user stories, requirements, and product backlog items are adequately tested. Agile teams use TMs to:
@@ -280,7 +260,6 @@ A table-type document tracking software requirements. It supports both forward a
   - **Enhance test prioritization** : By mapping tests to business value or risk, teams can prioritize testing efforts, focusing on the most critical areas first.
   - **Adapt to changes** : Agile is about embracing change. A TM makes it easier to update test cases when requirements evolve, maintaining the relevance and effectiveness of the test suite.
   To integrate TMs effectively in Agile, they should be maintained in a collaborative tool where they can be easily updated and accessed by the whole team, reflecting the iterative and dynamic nature of Agile projects.
-
 
 #### What are some challenges in implementing a Traceability Matrix and how can they be overcome?
 
@@ -317,7 +296,6 @@ A table-type document tracking software requirements. It supports both forward a
   };
   ```
   Regular reviews and audits of the TM ensure it remains an effective tool for [test coverage](/en/wiki/test-coverage/) and [impact analysis](/en/wiki/impact-analysis/).
-
 
 #### What is the role of a Traceability Matrix in regulatory compliance and audits?
 

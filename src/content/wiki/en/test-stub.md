@@ -186,8 +186,6 @@ Simulates the behavior of components that are absent.
   ```
   Remember to **keep stubs simple** and focused only on the behavior necessary for your tests. Avoid logic in stubs that isn't directly related to the [test scenario](/en/wiki/test-scenario/). This ensures that tests remain maintainable and that the stubs do not become a source of complexity or potential [bugs](/en/wiki/bug/) in the testing suite.
 
-  1. **Identify the dependencies**
-
 #### What are the key elements of a Test Stub?
 
   Key elements of a **Test Stub** include:
@@ -438,13 +436,6 @@ Simulates the behavior of components that are absent.
 
   - **TestNG**: Similar to JUnit, but with different annotations and more flexible test configuration. TestNG allows for more complex stubbing through data providers and factory methods.
 
-    ```
-    public class StubService implements Service {
-        public String operation() {
-            return "stubbed response";
-        }
-    }
-    ```
 
   - **RSpec (Ruby)**: Stubs are created using `allow` and `receive` methods, providing a more **DSL-like** approach.
 

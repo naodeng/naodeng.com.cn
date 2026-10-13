@@ -15,8 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [JMeter](#jmeter)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于 JMeter 有疑问吗？](#关于-jmeter-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是 JMeter？](#什么是-jmeter)
@@ -47,11 +45,11 @@ order: 0
 
 JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的开源软件应用程序。它是专为负载测试以及 Web 应用程序的性能测量，但其功能超出了 Web 协议的范围。 JMeter 允许用户使用并发线程模拟多个用户，向服务器创建各种请求，并分析应用程序在不同负载条件下的性能。 特点 JMeter 包括使用并发线程模拟多个用户的能力、对各种协议（包括 HTTP、FTP、JDBC 等）的支持以及用于设计和可视化的图形界面测试计划。其可扩展性允许开发人员和测试人员集成其他插件或编写自定义代码以增强其功能。和 JMeter，组织可以验证其软件应用程序和基础设施的可扩展性、响应能力和可靠性。
 
-## 相关术语
+相关术语
 
 - [性能测试](/zh-cn/wiki/performance-testing/)
 
-### 另请参阅：
+另请参阅：
 
 - [Official Website](https://jmeter.apache.org/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Apache_JMeter)
@@ -149,7 +147,6 @@ JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的�
      ```
 [JMeter](/zh-cn/wiki/jmeter/) 现在应该启动，您可以开始创建 [测试计划](/zh-cn/wiki/test-plan/)。
 
-
 #### JMeter 有哪些系统要求？
 
 [JMeter](/zh-cn/wiki/jmeter/) 是基于 Java 的应用程序。运行前，请根据所用 JMeter 版本检查 Apache JMeter 官方文档中的 Java 兼容要求，并安装相应的 JRE 或 JDK。
@@ -192,8 +189,8 @@ JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的�
 
 - **通过在 `Sample Result Save Configuration` 中设置适当的值来减少收集的样本数量**。
   - **使用`Summary Report` 或`Aggregate Report` 等合适的侦听器而不是`View Results in Table` 或`View Results Tree` 来聚合和总结结果**。
-  - **如果可能的话，从服务器级计算机运行 [JMeter](/zh-cn/wiki/jmeter/)，因为它们拥有更多资源和网络容量。
-  - **在进行大规模测试时，将负载分布在多个[JMeter](/zh-cn/wiki/jmeter/) 实例上，以避免单台机器过载。
+  - 如果可能的话，从服务器级计算机运行 [JMeter](/zh-cn/wiki/jmeter/)，因为它们拥有更多资源和网络容量。
+  - 在进行大规模测试时，将负载分布在多个[JMeter](/zh-cn/wiki/jmeter/) 实例上，以避免单台机器过载。
   - **通过使用最有效的脚本元素并避免不必要或复杂的正则表达式来优化您的[测试脚本](/zh-cn/wiki/test-script/)**。
   - **在`jmeter.properties` 或`user.properties` 文件中配置[JMeter](/zh-cn/wiki/jmeter/) 属性**以进行微调，例如控制 DNS 缓存、TCP 套接字设置以及[JMeter](/zh-cn/wiki/jmeter/) 对示例错误的行为。
   - **监控运行[JMeter](/zh-cn/wiki/jmeter/)的机器的资源使用情况**，以确保它不是瓶颈。
@@ -224,7 +221,7 @@ JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的�
 
 在 [JMeter](/zh-cn/wiki/jmeter/) 中创建基本 [测试计划](/zh-cn/wiki/test-plan/) 涉及以下步骤：
 
-1. **打开[JMeter](/zh-cn/wiki/jmeter/)**并选择 `File > New` 开始新的测试计划。
+1. **打开[JMeter](/zh-cn/wiki/jmeter/)** 并选择 `File > New` 开始新的测试计划。
 
 2. **添加线程组**通过右键单击测试计划并选择来添加到您的测试计划 `Add > Threads (Users) > Thread Group` 。
 
@@ -236,7 +233,7 @@ JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的�
 
 6. **添加监听器**到您的测试计划以查看结果。右键单击线程组并选择 `Add > Listener` 。常见的听众有 `View Results Tree` 和 `Summary Report` 。
 
-7. **保存您的[测试计划](/zh-cn/wiki/test-plan/)**使用 `File > Save` 以保留您的设置。
+7. **保存您的[测试计划](/zh-cn/wiki/test-plan/)** 使用 `File > Save` 以保留您的设置。
 
 8. **运行测试**单击绿色开始按钮或选择 `Run > Start` 。 以下是在 [JMeter](/zh-cn/wiki/jmeter/) 中添加线程组和 HTTP 请求的示例：
 
@@ -319,7 +316,7 @@ JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的�
 
 要在 [JMeter](/zh-cn/wiki/jmeter/) 中记录测试，请按照下列步骤操作：
 
-1. **打开[JMeter](/zh-cn/wiki/jmeter/)**并选择 **[测试计划](/zh-cn/wiki/test-plan/)**在左侧面板上。
+1. **打开[JMeter](/zh-cn/wiki/jmeter/)** 并选择 **[测试计划](/zh-cn/wiki/test-plan/)** 在左侧面板上。
 
 2. **右键单击**在测试计划上并转至 **添加 > 线程（用户）> 线程组** 。
 
@@ -344,36 +341,22 @@ JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的�
     根据您的测试计划的需要。
   请记住在记录之前**清除浏览器缓存**，以确保捕获所有请求，并**禁用代理可能无法捕获的特定于浏览器的功能**，例如预取。
 
-1. **打开[JMeter](/zh-cn/wiki/jmeter/)**并选择 **[测试计划](/zh-cn/wiki/test-plan/)**在左侧面板上。
-
-
 #### 如何分析 JMeter 测试的结果？
 
 分析[JMeter](/zh-cn/wiki/jmeter/) 测试结果涉及检查各种指标以评估性能。运行测试后，[JMeter](/zh-cn/wiki/jmeter/) 提供了多种查看和解释数据的方法：
 
-1. **侦听器**：将侦听器添加到您的[测试计划](/zh-cn/wiki/test-plan/) 以捕获结果。常见的听众包括：
-    - 总结报告
-    - 综合报告
-    - 查看结果树
-    - 图表结果
-    - 响应时间图
-    - 总结报告
-    - 综合报告
-    - 查看结果树
-    - 图表结果
-    - 响应时间图
-  2. **查看结果树**：要获取详细的请求和响应数据，请使用此侦听器。它有助于调试错误，但会占用大量资源；避免在大负载测试期间使用它。
-  3. **聚合报告**：提供一个表格，其中包含平均响应时间、最小/最大、吞吐量、错误百分比等指标。对于快速概览性能很有用。
-  4. **图形分析**：使用图形直观地表示随时间变化的响应时间、吞吐量和其他指标。有助于识别趋势和峰值。
-  5. **导出结果**：将测试结果保存为 CSV 或 XML 格式，以便使用 Excel 或专用软件等外部工具进行进一步分析。
-  6. **插件**：使用[JMeter](/zh-cn/wiki/jmeter/) 插件管理器等插件扩展[JMeter](/zh-cn/wiki/jmeter/) 的分析功能。插件提供高级图表和报告以获取更深入的见解。
-  7. **日志文件**：查看 [JMeter](/zh-cn/wiki/jmeter/) 日志文件以了解 [test execution](/zh-cn/wiki/test-execution/) 期间发生的任何错误或问题。
-  8. **自动分析**：将[JMeter](/zh-cn/wiki/jmeter/)与 Jenkins 等持续集成工具集成，以自动运行测试并生成报告。
-  9. **关联指标**：交叉引用不同的指标以了解响应时间、吞吐量和错误率之间的关系。
-  10. **比较结果**：比较不同测试运行的结果，以确定性能改进或回归。
-  对于经验丰富的工程师来说，分析 [JMeter](/zh-cn/wiki/jmeter/) 结果意味着识别瓶颈、了解负载下的系统行为以及做出明智的决策以提高应用程序性能。
+1. **添加监听器**：将监听器添加到[测试计划](/zh-cn/wiki/test-plan/)以收集结果。常用监听器包括摘要报告、聚合报告、查看结果树、图形结果和响应时间图。
+2. **检查查看结果树**：查看详细的请求和响应数据以调试错误。该监听器会占用较多资源，应避免在大负载测试期间使用。
+3. **查看聚合报告**：分析平均、最小和最大响应时间、吞吐量及错误率等指标。
+4. **分析图表**：观察响应时间、吞吐量和其他指标随时间的变化，识别趋势和峰值。
+5. **导出结果**：将结果保存为 CSV 或 XML，以便使用电子表格或专用软件进一步分析。
+6. **使用插件**：通过 [JMeter](/zh-cn/wiki/jmeter/) 插件管理器扩展分析功能，例如添加图表和报告。
+7. **检查日志文件**：查看 [JMeter](/zh-cn/wiki/jmeter/) 日志，查找[测试执行](/zh-cn/wiki/test-execution/)期间的错误或问题。
+8. **自动生成报告**：将 [JMeter](/zh-cn/wiki/jmeter/) 集成到 Jenkins 等持续集成工具中，以自动运行测试并生成报告。
+9. **关联指标**：交叉分析响应时间、吞吐量和错误率，了解它们之间的关系。
+10. **比较运行结果**：比较不同测试运行的结果，识别性能改进或回归。
 
-1. **侦听器**：将侦听器添加到您的[测试计划](/zh-cn/wiki/test-plan/) 以捕获结果。常见的听众包括：
+分析结果时，应识别性能瓶颈、了解系统在负载下的行为，并据此改进应用程序性能。
 
 ### 高级主题
 
@@ -455,7 +438,7 @@ JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的�
   </BackendListener>
   ```
 **[API Testing](/zh-cn/wiki/api-testing/) 工具：**
-  对于[API testing](/zh-cn/wiki/api-testing/)，将[JMeter](/zh-cn/wiki/jmeter/) 与[Postman](/zh-cn/wiki/postman/) 或 SoapUI 等工具集成。使用[JMeter](/zh-cn/wiki/jmeter/) 来实现[负载测试](/zh-cn/wiki/load-testing/) [APIs](/zh-cn/wiki/api/) 并使用其他工具来实现功能@@PR​​OTECTED_7@@。
+  对于[API testing](/zh-cn/wiki/api-testing/)，将[JMeter](/zh-cn/wiki/jmeter/) 与[Postman](/zh-cn/wiki/postman/) 或 SoapUI 等工具集成。使用[JMeter](/zh-cn/wiki/jmeter/) 来实现[负载测试](/zh-cn/wiki/load-testing/) [APIs](/zh-cn/wiki/api/) 并使用其他工具来实现功能测试。
   **代码质量工具：**
   通过将测试结果转换为与这些平台兼容的格式，将 [JMeter](/zh-cn/wiki/jmeter/) 测试合并到 SonarQube 等代码质量平台中。
   **云服务：**
@@ -495,5 +478,5 @@ JMeter，正式名称为 Apache JMeter，是由 Apache 软件基金会开发的�
   7. **参数化请求** 使用`CSV Data Set Config` 来测试不同的数据集。
   8. **通过单击工具栏上的 `Start` 按钮运行测试**。
   9. **使用所选侦听器分析结果**，以了解 Web 服务在负载下的性能。
-  10. **保存[测试计划](/zh-cn/wiki/test-plan/)**以供将来使用或修改。
+  10. **保存[测试计划](/zh-cn/wiki/test-plan/)** 以供将来使用或修改。
   请记住通过单个用户运行来**验证您的测试**，以确保它在扩展之前按预期工作。根据 Web 服务的预期负载和性能目标调整配置。

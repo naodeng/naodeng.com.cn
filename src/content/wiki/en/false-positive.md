@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [False Positive](#false-positive)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about False Positive?](#questions-about-false-positive)
     - [Basics and Understanding](#basics-and-understanding)
       - [What is a false positive in software testing?](#what-is-a-false-positive-in-software-testing)
@@ -41,11 +39,11 @@ order: 0
 
 In software testing, a False Positive refers to a situation where a test incorrectly identifies a defect or issue in the software when, in reality, there isn't one. Essentially, it's a test indicating a problem where none exists. False positives can arise due to various reasons, such as incorrect test data, flawed test conditions, or misconfigurations in the testing environment. While they might seem harmless, false positives can be detrimental as they can lead to wasted effort, resources, and time for development teams, potentially diverting attention away from genuine issues. Thus, it's essential to validate and rectify such occurrences to maintain the efficiency and accuracy of the testing process.
 
-## Related Terms:
+Related Terms:
 
 - [False Negative](/en/wiki/false-negative/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/False_positives_and_false_negatives)
 ## Questions about False Positive?
@@ -79,7 +77,6 @@ In software testing, a False Positive refers to a situation where a test incorre
     expect(page.url()).toContain('/dashboard'); // Passes even if the dashboard is broken but URL is correct
     ```
   Managing these issues requires careful analysis of test results, continuous improvement of [test cases](/en/wiki/test-case/), and maintaining a robust [test environment](/en/wiki/test-environment/). While false positives can be a nuisance, [false negatives](/en/wiki/false-negative/) pose a significant risk to [software quality](/en/wiki/software-quality/) and must be addressed with higher [priority](/en/wiki/priority/).
-
 
 #### What are the common causes of false positives in software testing?
 
@@ -162,7 +159,6 @@ In software testing, a False Positive refers to a situation where a test incorre
   - **Refine Test Selection**: Use [risk-based testing](/en/wiki/risk-based-testing/) to focus on areas with the highest impact, reducing the noise from less critical tests.
   By implementing these strategies, [test automation](/en/wiki/test-automation/) engineers can minimize the occurrence of false positives, leading to more reliable and trustworthy test results.
 
-
 #### How can you effectively manage false positives in software testing?
 
   Effectively managing false positives in [software testing](/en/wiki/software-testing/) requires a combination of **proactive measures** and **responsive actions**. Here's a concise guide:
@@ -176,7 +172,6 @@ In software testing, a False Positive refers to a situation where a test incorre
   - **Use Version Control** : Maintain test scripts in version control systems to track changes and revert to previous versions if updates lead to false positives.
   - **Root Cause Analysis** : When false positives occur, perform a root cause analysis to prevent similar issues in the future.
   By implementing these practices, you can minimize the occurrence of false positives and maintain the integrity of your testing process.
-
 
 #### What steps should be taken when a false positive is identified?
 
@@ -214,19 +209,8 @@ In software testing, a False Positive refers to a situation where a test incorre
        **assertions**
        to reflect the current expected behavior.
 
-     - Correct any
-       **logic errors**
-       .
 
-     - Improve
-       **selectors**
-       or
-       **waits**
-       to handle dynamic content.
 
-     - Adjust
-       **assertions**
-       to reflect the current expected behavior.
 
   7. **Document**
     the false positive and the fix applied.
@@ -276,9 +260,6 @@ In software testing, a False Positive refers to a situation where a test incorre
   - **Isolation** : Tests designed to check specific functionalities in isolation prevent interference from unrelated components.
   - **Deterministic** : Tests must produce consistent results, avoiding flakiness that can lead to false positives.
 
-
-
-
     ```javascript
     expect(result).toBe(expectedOutcome);
 
@@ -289,14 +270,9 @@ In software testing, a False Positive refers to a situation where a test incorre
     assert.strictEqual(actual, expected);
     ```
 
-
   - **Error Handling** : Properly capturing and asserting error conditions ensures that tests fail when exceptions are not handled as expected.
   - **Continuous Review** : Regularly reviewing and refactoring tests maintain their effectiveness and relevance, reducing false positives.
   By focusing on these elements, test design strengthens the integrity of the [test suite](/en/wiki/test-suite/), ensuring that passing tests genuinely reflect correct system behavior.
-
-
-  - **Error Handling** : Properly capturing and asserting error conditions ensures that tests fail when exceptions are not handled as expected.
-  - **Continuous Review** : Regularly reviewing and refactoring tests maintain their effectiveness and relevance, reducing false positives.
 
 ### Advanced Concepts
 
@@ -336,11 +312,7 @@ In software testing, a False Positive refers to a situation where a test incorre
 
   - **Review and refine**
 
-  1. **Document**
-    the occurrence and the investigation process.
 
-  2. **Adjust**
-    test parameters or environments as needed.
 
   3. **Communicate**
     the findings to prevent future occurrences.

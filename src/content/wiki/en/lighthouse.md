@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Lighthouse](#lighthouse)
-  - [See also:](#see-also)
   - [Questions about Lighthouse?](#questions-about-lighthouse)
     - [Basics and Importance](#basics-and-importance)
       - [What is Lighthouse?](#what-is-lighthouse)
@@ -43,15 +42,9 @@ order: 0
       - [What are some common issues and solutions when using Lighthouse?](#what-are-some-common-issues-and-solutions-when-using-lighthouse)
 <!-- TOC END -->
 
-Lighthouse
+Lighthouse is an open-source, automated tool developed by Google to assess and improve web page quality. It audits performance, accessibility, progressive web app readiness, SEO, and other aspects, then provides actionable recommendations.
 
-is an open-source, automated tool developed by Google for improving the quality of web pages. It provides audits for performance, accessibility, progressive web apps, SEO, and other aspects of web page quality. By running
-
-Lighthouse
-
-against a web page, developers and testers can obtain a set of actionable recommendations and insights that help in optimizing the user experience and overall effectiveness of the website.
-
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Google_Lighthouse)
 
@@ -61,13 +54,7 @@ against a web page, developers and testers can obtain a set of actionable recomm
 
 #### What is Lighthouse?
 
-  [Lighthouse](/en/wiki/lighthouse/) is an **open-source**, **automated tool** for improving the quality of web pages. It can be run against any web page, public or requiring authentication. [Lighthouse](/en/wiki/lighthouse/) audits for performance, accessibility, progressive web apps, SEO, and more, providing a well-rounded view of the quality and effectiveness of a web page.
-  To use [Lighthouse](/en/wiki/lighthouse/) in **Chrome**, navigate to the page you want to audit, open **DevTools**, and click on the **[Lighthouse](/en/wiki/lighthouse/)** tab. Select the audits you want to run, and then click the **Generate report** button. [Lighthouse](/en/wiki/lighthouse/) will run the selected audits against the page, then generate a report on how well the page did.
-  For **[automated testing](/en/wiki/automated-testing/)**, [Lighthouse](/en/wiki/lighthouse/) can be integrated into **continuous integration** systems. It can be run as a Node module, as a command line tool, or programmatically as part of a custom build process. [Lighthouse](/en/wiki/lighthouse/) CI is a set of commands that make it easier to use [Lighthouse](/en/wiki/lighthouse/) for continuous integration.
-  Scores are calculated based on the performance metrics and heuristics. Each metric is scored individually, and then the scores are combined into an overall score.
-  Improving a low [Lighthouse](/en/wiki/lighthouse/) score involves addressing the specific feedback provided in the report. This could include optimizing images, minifying CSS and JavaScript, implementing lazy loading, improving accessibility features, and more.
-  For **JavaScript execution**, [Lighthouse](/en/wiki/lighthouse/) simulates a mid-tier device, even when run on a powerful desktop machine, to create consistent, real-world conditions.
-  Common issues when using [Lighthouse](/en/wiki/lighthouse/) include flaky performance metrics, which can be mitigated by running the audit multiple times and considering median values.
+  [Lighthouse](/en/wiki/lighthouse/) is an **open-source**, **automated tool** for assessing web page quality. It can audit public pages and pages that require authentication for performance, accessibility, progressive web app readiness, SEO, and other quality concerns.
 
 #### Why is Lighthouse important in software automation?
 
@@ -89,19 +76,9 @@ against a web page, developers and testers can obtain a set of actionable recomm
   - **CLI and Programmable [API](/en/wiki/api/)**: [Lighthouse](/en/wiki/lighthouse/) can be run via command line or programmatically through its [API](/en/wiki/api/), allowing integration into automated workflows and CI/CD pipelines.
   - **Configurability**: Users can configure [Lighthouse](/en/wiki/lighthouse/) runs by specifying categories to audit, throttling settings, and other runtime options.
   - **Reporting**: After an audit, [Lighthouse](/en/wiki/lighthouse/) generates a report with scores in each category, detailed explanations, and actionable recommendations for improvement.
-  - **Extensibility**: [Lighthouse](/en/wiki/lighthouse/) is open-source and can be extended or customized to fit specific testing needs, and it integrates with other tools like [Lighthouse](/en/wiki/lighthouse/) CI for continuous testing.
-  These features make [Lighthouse](/en/wiki/lighthouse/) a versatile tool for web developers and [test automation](/en/wiki/test-automation/) engineers focused on improving the quality of web applications.
+  - **Extensibility**: [Lighthouse](/en/wiki/lighthouse/) is open source and can be extended or customized for specific testing needs. It also integrates with tools such as Lighthouse CI for continuous testing.
 
-  - **Performance Metrics**: [Lighthouse](/en/wiki/lighthouse/) provides detailed metrics such as First Contentful Paint (FCP), Speed Index, Largest Contentful Paint (LCP), Time to Interactive (TTI), Total Blocking Time (TBT), and Cumulative Layout Shift (CLS).
-  - **Accessibility Audits**: It evaluates the accessibility of a web page against the Web Content Accessibility Guidelines (WCAG) and suggests improvements.
-  - **Best Practices**: [Lighthouse](/en/wiki/lighthouse/) checks for adherence to best practices in web development, such as HTTPS usage, correct image aspect ratios, and avoiding deprecated [APIs](/en/wiki/api/).
-  - **SEO Audits**: It assesses elements that affect a page's search engine ranking, including meta tags, hreflang tags, and descriptive link text.
-  - **Progressive Web App (PWA) Assessment**: [Lighthouse](/en/wiki/lighthouse/) can validate various aspects of PWAs, ensuring they meet certain criteria for reliability, performance, and engagement.
-  - **Custom Audits**: Developers can extend [Lighthouse](/en/wiki/lighthouse/) by writing custom audits to check for specific requirements or standards relevant to their projects.
-  - **CLI and Programmable [API](/en/wiki/api/)**: [Lighthouse](/en/wiki/lighthouse/) can be run via command line or programmatically through its [API](/en/wiki/api/), allowing integration into automated workflows and CI/CD pipelines.
-  - **Configurability**: Users can configure [Lighthouse](/en/wiki/lighthouse/) runs by specifying categories to audit, throttling settings, and other runtime options.
-  - **Reporting**: After an audit, [Lighthouse](/en/wiki/lighthouse/) generates a report with scores in each category, detailed explanations, and actionable recommendations for improvement.
-  - **Extensibility**: [Lighthouse](/en/wiki/lighthouse/) is open-source and can be extended or customized to fit specific testing needs, and it integrates with other tools like [Lighthouse](/en/wiki/lighthouse/) CI for continuous testing.
+  These features make [Lighthouse](/en/wiki/lighthouse/) useful to web developers and [test automation](/en/wiki/test-automation/) engineers who want to improve web application quality.
 
 #### How does Lighthouse differ from other performance auditing tools?
 
@@ -120,13 +97,7 @@ against a web page, developers and testers can obtain a set of actionable recomm
   - **Best Practices**: Looks for modern web development practices, including HTTPS usage, correct image aspect ratios, and avoidance of deprecated [APIs](/en/wiki/api/).
   - **SEO**: Assesses elements that affect a page's visibility to search engines, like meta descriptions, hreflang links, and legible font sizes.
   - **PWA**: Verifies the presence of a service worker, a web app manifest, and other criteria that enable a web app to be installed on a device's home screen and function offline.
-  Each audit provides specific, actionable feedback and is scored individually, contributing to an overall category score. [Lighthouse](/en/wiki/lighthouse/) also offers **opportunities** and **diagnostics** to help identify areas for improvement and understand underlying issues. These audits can be extended or customized for specific [use cases](/en/wiki/use-case/) through [Lighthouse](/en/wiki/lighthouse/) configuration.
-
-  - **Performance**: Evaluates metrics like First Contentful Paint, Speed Index, and Time to Interactive, focusing on user-perceived loading experience and interactivity.
-  - **Accessibility**: Checks for common issues that may prevent users from accessing content, such as missing alt text for images, improper ARIA attributes, and incorrect semantic HTML elements.
-  - **Best Practices**: Looks for modern web development practices, including HTTPS usage, correct image aspect ratios, and avoidance of deprecated [APIs](/en/wiki/api/).
-  - **SEO**: Assesses elements that affect a page's visibility to search engines, like meta descriptions, hreflang links, and legible font sizes.
-  - **PWA**: Verifies the presence of a service worker, a web app manifest, and other criteria that enable a web app to be installed on a device's home screen and function offline.
+  Each audit provides specific, actionable feedback and contributes to a category score. [Lighthouse](/en/wiki/lighthouse/) also offers **opportunities** and **diagnostics** to help identify areas for improvement and understand underlying issues. Audits can be extended or customized for specific [use cases](/en/wiki/use-case/) through Lighthouse configuration.
 
 ### Usage and Implementation
 
@@ -173,12 +144,7 @@ against a web page, developers and testers can obtain a set of actionable recomm
   For continuous integration, you can use **[Lighthouse](/en/wiki/lighthouse/) CI** which provides commands to run audits against a website and assert if the scores meet your requirements. It can be integrated into your CI pipeline using configuration files and CLI commands.
   Remember to review the audit results and make necessary code or configuration changes to improve the scores. Automate the process by integrating it into your build and deployment pipeline to ensure continuous performance monitoring.
 
-  2. Navigate to the
-    **[Lighthouse](/en/wiki/lighthouse/)**
-    tab.
 
-  3. Choose the desired audit categories (Performance, Accessibility, Best Practices, SEO, and Progressive Web App).
-  4. Select the appropriate device type (Mobile or Desktop) for the simulation.
   5. Click on
     **Generate report**
     to start the audit.
@@ -279,12 +245,7 @@ against a web page, developers and testers can obtain a set of actionable recomm
   ```
   Replace `https://example.com` with your URL and adjust the output format and path as needed. This command will generate a JSON report that can be integrated into your CI/CD pipeline.
 
-  1. **Open Google Chrome**
-    and navigate to the page you want to audit.
 
-  5. Choose the
-    **device type**
-    (mobile or desktop) for the simulation.
 
   7. Click on the
     **"Generate report"**
@@ -321,26 +282,7 @@ against a web page, developers and testers can obtain a set of actionable recomm
   6. **Automate the process** to run on every pull request or push to specific branches, ensuring that new code meets the defined quality standards.
   By integrating [Lighthouse](/en/wiki/lighthouse/) into CI, you create a **feedback loop** that alerts developers to potential issues early, maintaining a high standard for your web application's user experience.
 
-  1. **Install [Lighthouse](/en/wiki/lighthouse/) CI**:
 
-     ```
-     npm install -g @lhci/cli
-     ```
-
-     ```
-     - name: Run Lighthouse CI
-         run: lhci autorun
-     ```
-
-     ```
-     "assertions": {
-         "categories:performance": ["error", { "minScore": 0.9 }],
-         "categories:accessibility": ["error", { "minScore": 0.9 }]
-     }
-     ```
-
-  5. **Store reports** for historical comparison and tracking regressions. Use the `--upload.target` option to upload to [Lighthouse](/en/wiki/lighthouse/) CI server or other storage solutions.
-  6. **Automate the process** to run on every pull request or push to specific branches, ensuring that new code meets the defined quality standards.
 
 #### How can you configure Lighthouse for custom audits?
 
@@ -447,12 +389,6 @@ against a web page, developers and testers can obtain a set of actionable recomm
   - **Progressive Web App (PWA)**: Determines the site's adherence to PWA standards. It checks for service worker registration, a valid web app manifest, and a [responsive design](/en/wiki/responsive-design/).
   Each category provides specific, actionable insights. For instance, the **Performance** category can highlight opportunities to lazy-load offscreen images, while **Accessibility** might suggest improvements for screen reader users. These insights guide engineers in optimizing their web apps for better user experiences and technical robustness.
 
-  - **Performance**: Measures the speed and efficiency of the site. Metrics include First Contentful Paint, Speed Index, and Time to Interactive.
-  - **Accessibility**: Assesses how well the site can be used by people with disabilities. It checks for proper use of ARIA attributes, screen reader support, and navigation accessibility.
-  - **Best Practices**: Evaluates the use of modern web development practices. This includes checks for HTTPS usage, correct image aspect ratios, and avoidance of deprecated [APIs](/en/wiki/api/).
-  - **SEO**: Analyzes the site's potential to be indexed by search engines. It looks at mobile-friendliness, content best practices, and metadata presence.
-  - **Progressive Web App (PWA)**: Determines the site's adherence to PWA standards. It checks for service worker registration, a valid web app manifest, and a [responsive design](/en/wiki/responsive-design/).
-
 #### How do you interpret Lighthouse reports?
 
   Interpreting [Lighthouse](/en/wiki/lighthouse/) reports involves analyzing the data provided in each audit category to identify areas for improvement in your web application. After running a [Lighthouse](/en/wiki/lighthouse/) audit, you'll receive a report with scores in **Performance**, **Accessibility**, **Best Practices**, **SEO**, and **Progressive Web App**.
@@ -473,17 +409,6 @@ against a web page, developers and testers can obtain a set of actionable recomm
   - **Actionable recommendations**
     for improving your score.
   Use the detailed suggestions to prioritize fixes and enhancements. Address **red** items first as they represent the most critical issues, followed by **orange**, and then **green** to fine-tune performance. Implement changes, re-run [Lighthouse](/en/wiki/lighthouse/), and compare reports to track progress.
-
-  - A
-    **score**
-    (0-100) indicating the quality of the page for that category.
-
-  - **Color-coded metrics**
-    (green for good, orange for needs improvement, red for poor).
-
-  - **Actionable recommendations**
-    for improving your score.
-
 #### What actions can be taken based on Lighthouse audit results?
 
   Based on [Lighthouse](/en/wiki/lighthouse/) audit results, several actions can be taken to improve the quality and performance of a web application:
@@ -501,19 +426,6 @@ against a web page, developers and testers can obtain a set of actionable recomm
   - **Accessibility enhancements** : Address issues that affect users with disabilities, like color contrast and keyboard navigation.
   - **SEO improvements** : Ensure meta tags are present and descriptive, and that content is crawlable.
   Apply these actions iteratively, integrating them into your CI/CD pipeline for continuous improvement. Regularly re-audit with [Lighthouse](/en/wiki/lighthouse/) to measure progress and identify new optimization opportunities.
-
-  - **Optimize images** : Compress and properly format images to reduce load times.
-  - **Minify CSS, JavaScript, and HTML** : Remove unnecessary characters without changing functionality to decrease file sizes.
-  - **Leverage browser caching** : Set appropriate cache headers to minimize repeat load times for returning users.
-  - **Eliminate render-blocking resources** : Defer non-critical CSS and JavaScript to speed up the first paint.
-  - **Use lazy loading** : Load images and iframes on demand to reduce initial load time.
-  - **Improve server response times** : Optimize server configuration, use a content delivery network (CDN), or upgrade hosting if necessary.
-  - **Remove unused code** : Detect and purge dead code to reduce file sizes and complexity.
-  - **Enable compression** : Use Gzip or Brotli to compress text-based resources.
-  - **Implement HTTP/2** : Take advantage of multiplexing and server push features for faster load times.
-  - **Prioritize above-the-fold content** : Structure HTML to load the most important content first.
-  - **Accessibility enhancements** : Address issues that affect users with disabilities, like color contrast and keyboard navigation.
-  - **SEO improvements** : Ensure meta tags are present and descriptive, and that content is crawlable.
 
 #### How can you improve a low Lighthouse score?
 
@@ -551,8 +463,6 @@ against a web page, developers and testers can obtain a set of actionable recomm
 
   - **Audit Third-Party Code** : Remove or optimize third-party scripts that are not critical.
   Apply these optimizations iteratively and monitor the [Lighthouse](/en/wiki/lighthouse/) score after each change to understand their impact.
-
-  - **Audit Third-Party Code** : Remove or optimize third-party scripts that are not critical.
 
 ### Advanced Concepts
 
@@ -596,35 +506,7 @@ against a web page, developers and testers can obtain a set of actionable recomm
   6. **Integration**: [Lighthouse](/en/wiki/lighthouse/) CI can be integrated into popular CI services like GitHub Actions, Travis CI, and Jenkins, ensuring that performance and quality checks are part of the development workflow.
   [Lighthouse](/en/wiki/lighthouse/) CI ensures that performance and quality are continuously monitored, helping to prevent regressions and maintain high standards across updates.
 
-  1. **Installation**: [Lighthouse](/en/wiki/lighthouse/) CI is installed as an npm package.
 
-     ```
-     npm install -g @lhci/cli
-     ```
-
-     ```
-     module.exports = {
-         ci: {
-             collect: {
-                 /* ... */
-             },
-             assert: {
-                 /* ... */
-             },
-             upload: {
-                 /* ... */
-             },
-         },
-     };
-     ```
-
-     ```
-     lhci autorun
-     ```
-
-  4. **Assertions**: Define assertions for performance metrics and other audit scores. [Lighthouse](/en/wiki/lighthouse/) CI will fail the CI build if assertions don't meet the specified thresholds.
-  5. **Reports**: Results are displayed in the CI output, and detailed reports can be uploaded to the [Lighthouse](/en/wiki/lighthouse/) CI server or other hosting solutions for further analysis.
-  6. **Integration**: [Lighthouse](/en/wiki/lighthouse/) CI can be integrated into popular CI services like GitHub Actions, Travis CI, and Jenkins, ensuring that performance and quality checks are part of the development workflow.
 
 #### How can you use Lighthouse for performance budgeting?
 
@@ -671,10 +553,6 @@ against a web page, developers and testers can obtain a set of actionable recomm
     . Lighthouse will include a section in the report that indicates whether your site stays within the defined budgets. If it exceeds any budget, Lighthouse provides details on the overages.
   By integrating this process into your **CI/CD pipeline**, you can automatically check that every build complies with your performance budget, ensuring that performance regressions are caught and addressed early in the development process.
 
-  1. **Define your performance budget**. Decide on the metrics and thresholds you want to enforce, such as maximum page load time, total image size, or number of HTTP requests.
-  2. **Create a [Lighthouse](/en/wiki/lighthouse/) configuration file**. In a JSON file, specify your performance budget constraints. For example:
-  1. **Run [Lighthouse](/en/wiki/lighthouse/) with your config**
-    . Use the CLI to run Lighthouse with your configuration file:
 
   1. **Review the output**
     . Lighthouse will include a section in the report that indicates whether your site stays within the defined budgets. If it exceeds any budget, Lighthouse provides details on the overages.
@@ -694,15 +572,6 @@ against a web page, developers and testers can obtain a set of actionable recomm
   - **User Engagement** : Measures the ability to prompt users to install the web app to their home screens.
   By integrating [Lighthouse](/en/wiki/lighthouse/) into the [test automation](/en/wiki/test-automation/) process, engineers can automate the evaluation of these PWA-specific criteria, identify areas for improvement, and track progress over time. This ensures that PWAs meet high standards for performance, accessibility, and user experience, which are critical for user retention and satisfaction.
 
-  - **Service Worker** : Verifies if a service worker is registered and that it allows for offline use.
-  - **Web App Manifest** : Ensures the presence of a manifest file with appropriate icons, theme colors, and display settings for a full-screen, standalone user experience.
-  - **HTTPS** : Confirms the app is served over a secure connection, which is a prerequisite for many PWA features.
-  - **Redirects** : Checks that navigations are not redirected, which can slow down the app.
-  - **Splash Screen** : Assesses if a custom splash screen is provided during the load, improving the user experience.
-  - **Theming** : Evaluates consistency in theming colors for the address bar and the splash screen.
-  - **Viewport Configuration** : Ensures the viewport is properly set for responsive design.
-  - **User Engagement** : Measures the ability to prompt users to install the web app to their home screens.
-
 #### How does Lighthouse handle JavaScript execution?
 
   [Lighthouse](/en/wiki/lighthouse/) handles JavaScript execution through a **headless Chrome browser**. When a [Lighthouse](/en/wiki/lighthouse/) audit is initiated, it launches Chrome in headless mode, which allows it to programmatically interact with the page as a user might. [Lighthouse](/en/wiki/lighthouse/) then navigates to the target URL and waits for the page to load.
@@ -719,13 +588,6 @@ against a web page, developers and testers can obtain a set of actionable recomm
   - **Total Blocking Time (TBT)**
   These metrics help assess the impact of JavaScript on the page's load performance and interactivity, which are crucial for understanding and improving the user experience.
 
-  - **Script evaluation** : Time spent parsing and compiling scripts.
-  - **Task execution** : Time spent executing script tasks.
-  - **JavaScript boot-up time** : Time taken for the page to become interactive, which is critical for understanding user experience.
-  - **First Contentful Paint (FCP)**
-  - **Time to Interactive (TTI)**
-  - **Total Blocking Time (TBT)**
-
 #### What are some common issues and solutions when using Lighthouse?
 
   Common issues with [Lighthouse](/en/wiki/lighthouse/) and their solutions:
@@ -737,7 +599,6 @@ against a web page, developers and testers can obtain a set of actionable recomm
   - **Accessibility Issues**: [Lighthouse](/en/wiki/lighthouse/) might report accessibility concerns that are not immediately obvious. **Solution**: Review each issue, consult WCAG guidelines, and make necessary HTML/ARIA adjustments.
   - **SEO Shortcomings**: Missing meta tags or improper semantics can affect SEO audits. **Solution**: Ensure proper use of semantic HTML and meta tags like `description`, `viewport`, and structured data.
   - **Progressive Web App Criteria**: [Lighthouse](/en/wiki/lighthouse/) may indicate PWA features are missing. **Solution**: Implement a service worker, create a web app manifest, and ensure your app is served over HTTPS.
-  - **Timeouts or Errors**: [Lighthouse](/en/wiki/lighthouse/) might timeout or encounter errors when auditing. **Solution**: Check for server issues, ensure no browser extensions are interfering, and run the audit in incognito mode.
   Use the following command to run [Lighthouse](/en/wiki/lighthouse/) headlessly, which can help with consistency in automated environments:
 
   ```
@@ -745,11 +606,4 @@ against a web page, developers and testers can obtain a set of actionable recomm
   ```
   Remember to keep your [Lighthouse](/en/wiki/lighthouse/) version updated to benefit from the latest checks and [bug](/en/wiki/bug/) fixes.
 
-  - **Fluctuating Scores**: Scores can vary between runs due to network conditions, cache state, or CPU throttling. **Solution**: Run [Lighthouse](/en/wiki/lighthouse/) multiple times and average the scores for consistency.
-  - **Large Assets**: Unoptimized images or bulky scripts can negatively impact performance. **Solution**: Compress images, minify CSS/JS, and use lazy loading.
-  - **Third-Party Scripts**: External scripts can slow down your site. **Solution**: Use the `rel="preconnect"` attribute for known hosts, defer non-critical scripts, or remove unnecessary third-party scripts.
-  - **Cache Configuration**: Improperly configured caching can lead to redundant data fetching. **Solution**: Set appropriate `Cache-Control` headers for static assets.
-  - **Accessibility Issues**: [Lighthouse](/en/wiki/lighthouse/) might report accessibility concerns that are not immediately obvious. **Solution**: Review each issue, consult WCAG guidelines, and make necessary HTML/ARIA adjustments.
-  - **SEO Shortcomings**: Missing meta tags or improper semantics can affect SEO audits. **Solution**: Ensure proper use of semantic HTML and meta tags like `description`, `viewport`, and structured data.
-  - **Progressive Web App Criteria**: [Lighthouse](/en/wiki/lighthouse/) may indicate PWA features are missing. **Solution**: Implement a service worker, create a web app manifest, and ensure your app is served over HTTPS.
   - **Timeouts or Errors**: [Lighthouse](/en/wiki/lighthouse/) might timeout or encounter errors when auditing. **Solution**: Check for server issues, ensure no browser extensions are interfering, and run the audit in incognito mode.

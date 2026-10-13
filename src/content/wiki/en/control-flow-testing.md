@@ -60,12 +60,6 @@ Examines the paths that a program takes during its execution flow.
   5. Execute tests and analyze results.
   Tools like **CodeSonar** and **Coverity** can assist in automating parts of this process. Integrating control flow testing into CI/CD pipelines ensures continuous feedback and early detection of issues, enhancing [software quality](/en/wiki/software-quality/) and reliability.
 
-  1. Generate a CFG.
-  2. Calculate cyclomatic complexity.
-  3. Identify independent paths.
-  4. Design test cases to cover these paths.
-  5. Execute tests and analyze results.
-
 #### Why is control flow testing important in software testing?
 
   Control flow testing is crucial in [software testing](/en/wiki/software-testing/) because it ensures that all possible paths through a program's control flow are executed at least once. This is important for uncovering [bugs](/en/wiki/bug/) that may not be apparent through [functional testing](/en/wiki/functional-testing/) alone, as it helps to identify issues related to the flow of execution, such as infinite loops, unreachable code, and logic errors.
@@ -125,8 +119,6 @@ Examines the paths that a program takes during its execution flow.
   - **Decision Testing** : Similar to branch testing but includes the evaluation of compound logical expressions, ensuring every possible outcome is tested.
   By applying these techniques, [test automation](/en/wiki/test-automation/) engineers can systematically verify the logical flow of an application, uncovering potential issues that might not be detected through other testing methods.
 
-  - **Decision Testing** : Similar to branch testing but includes the evaluation of compound logical expressions, ensuring every possible outcome is tested.
-
 #### How is cyclomatic complexity used in control flow testing?
 
   Cyclomatic complexity is a quantitative measure of the number of linearly independent paths through a program's source code. In control flow testing, it serves as a guide to define the minimum number of [test cases](/en/wiki/test-case/) needed for adequate coverage. By calculating the cyclomatic complexity of a function or module, testers can determine the number of paths to be tested to ensure each decision point and branch is exercised at least once.
@@ -148,7 +140,6 @@ Examines the paths that a program takes during its execution flow.
   3. **Identify Independent Paths** : Based on the complexity number, identify the set of paths that will cover all the edges and nodes.
   4. **Design [Test Cases](/en/wiki/test-case/)** : Create test cases that correspond to these paths.
   By focusing on these paths, testers can systematically cover all the possible routes through the code, which helps in identifying edge cases and potential [bugs](/en/wiki/bug/) that might not be apparent through other testing methods. Cyclomatic complexity thus provides a structured approach to control flow testing, ensuring thoroughness and efficiency in [test case](/en/wiki/test-case/) design and execution.
-
 
 #### What is the difference between static and dynamic control flow testing?
 
@@ -274,7 +265,6 @@ Examines the paths that a program takes during its execution flow.
     help in designing and managing test cases, which can be aligned with control flow requirements.
   Incorporating these tools into your [test automation](/en/wiki/test-automation/) strategy can significantly enhance the effectiveness of control flow testing. Select tools that best fit your technology stack and testing needs. Remember to integrate them into your CI/CD pipeline for continuous feedback on control flow integrity.
 
-
 #### How can control flow testing be integrated into a continuous integration/continuous deployment (CI/CD) pipeline?
 
   Integrating control flow testing into a **CI/CD pipeline** involves automating the execution of control flow-based [test cases](/en/wiki/test-case/) as part of the build and deployment process. To achieve this, follow these steps:
@@ -290,7 +280,6 @@ Examines the paths that a program takes during its execution flow.
   9. **Monitor Metrics**: Track metrics like [test coverage](/en/wiki/test-coverage/) and cyclomatic complexity to assess the effectiveness of your control flow testing over time.
   By incorporating these steps, control flow testing becomes an integral part of the CI/CD process, ensuring that control flow errors are detected early and often, maintaining the robustness and reliability of the software.
 
-
 #### What are some common challenges faced during control flow testing and how can they be overcome?
 
   Control flow testing can present several challenges, such as **complex code paths**, **inadequate coverage metrics**, and **time constraints**. To overcome these:
@@ -303,7 +292,6 @@ Examines the paths that a program takes during its execution flow.
   - **Handling Exception Paths**: Ensure that exception handling is properly tested by writing tests that simulate errors and unexpected conditions.
   - **Resource Constraints**: Mock out external dependencies to ensure tests can run independently of external systems and to reduce the load on resources.
   By addressing these challenges with strategic approaches and leveraging automation tools, you can enhance the effectiveness of control flow testing and maintain high [software quality](/en/wiki/software-quality/).
-
 
 ### Advanced Concepts
 
@@ -344,9 +332,6 @@ Examines the paths that a program takes during its execution flow.
   }
   ```
   In conclusion, control flow testing in concurrent programming requires careful consideration of the unique challenges posed by parallel execution, and the use of specialized techniques and tools to uncover issues that could lead to unreliable or incorrect behavior.
-
-  - **Injecting delays** : Introducing artificial delays to manipulate the order of operations and expose potential issues.
-  - **[Stress testing](/en/wiki/stress-testing/)** : Running the system under high loads to increase the likelihood of concurrent interactions and reveal problems that may not surface under normal conditions.
 
 #### How does control flow testing handle exception paths?
 

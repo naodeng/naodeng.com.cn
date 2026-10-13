@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Error Guessing](#error-guessing)
-  - [Related Terms:](#related-terms)
-    - [See also:](#see-also)
   - [Questions about Error Guessing?](#questions-about-error-guessing)
     - [Basics and Importance](#basics-and-importance)
       - [What is error guessing in software testing?](#what-is-error-guessing-in-software-testing)
@@ -38,11 +36,11 @@ order: 0
 
 Error Guessing is a software testing technique where the tester, relying on their experience, intuition, and knowledge of the system, tries to predict where defects might occur. Instead of following a systematic testing approach or predefined test cases, testers make educated guesses to identify potential problem areas or scenarios where the software might fail. The technique is based on the tester's familiarity with common errors, past defects, or specific system behavior. Error guessing is often used as a supplementary testing method, complementing more structured techniques, and is particularly effective in identifying unique or unanticipated issues.
 
-## Related Terms:
+Related Terms:
 
 - [Heuristic Testing](/en/wiki/heuristic-testing/)
 
-### See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Error_guessing)
 ## Questions about Error Guessing?

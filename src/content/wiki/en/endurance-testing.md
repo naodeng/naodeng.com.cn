@@ -69,13 +69,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
   To address challenges like resource exhaustion or inconsistent behavior over time, ensure proper resource management and implement robust error-handling within the application. Regular monitoring and [incremental testing](/en/wiki/incremental-testing/) during development can help mitigate such issues.
   Incorporate endurance testing as part of a comprehensive testing strategy to ensure software resilience and reliability in long-running scenarios.
 
-  - **Detecting system behavior**
-    under sustained use.
-
-  - **Identifying performance issues**
-    that may surface only after a long period of activity.
-
-  1. **Define the load**
 
 #### Why is endurance testing important in software development?
 
@@ -96,7 +89,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
   - **Test system's ability to handle anticipated load over duration** : It confirms that the system can manage expected load without issues for an extended period.
   - **Highlight potential performance issues** : By pushing the system to its limits, endurance testing can uncover performance bottlenecks that may not be evident in shorter tests.
   Endurance testing is crucial for applications that are expected to run continuously or for long periods, such as server applications, online transaction systems, and critical business services. It's an essential part of ensuring that software can not only handle peak loads but also perform consistently under sustained use.
-
 
 #### How does endurance testing differ from other types of testing?
 
@@ -134,7 +126,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
   12. **Retest** : After changes, rerun tests to confirm issues are resolved.
   Remember, endurance testing is iterative. Regularly refine your approach based on previous test outcomes to ensure comprehensive coverage and system reliability.
 
-
 #### What techniques are commonly used in endurance testing?
 
   Endurance testing techniques often involve:
@@ -150,7 +141,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
   - **Load Variation** : Vary the load on the system to observe how it behaves under different stress levels over time.
   - **Transaction and Error Logging** : Record all transactions and errors for post-analysis.
   These techniques help identify potential issues that could arise in a production environment when the system is subjected to a workload for an extended period. They are crucial for ensuring the reliability and stability of software applications.
-
 
 #### How do you plan and design an endurance test?
 
@@ -190,8 +180,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
     , including all the above steps, and ensure it is accessible to all relevant stakeholders.
   By meticulously planning and designing your endurance test, you can ensure that it provides valuable insights into the long-term performance and stability of your software.
 
-  1. **Define endurance test goals**
-
 #### What tools are commonly used for endurance testing?
 
   Common tools for endurance testing include:
@@ -204,7 +192,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
   - **NeoLoad** : A tool from Neotys for web and mobile applications, offering real-time monitoring and analysis, useful for endurance test insights.
   - **K6** : A modern load testing tool, which is scriptable in JavaScript and integrates well with CI/CD pipelines for automated endurance tests.
   These tools help simulate prolonged load on software applications, revealing potential performance issues over time. Experienced [test automation](/en/wiki/test-automation/) engineers can leverage these tools' scripting and reporting capabilities to create, execute, and analyze endurance tests effectively. Integration with continuous integration systems is also a key feature, enabling automated and regular endurance testing as part of the software development lifecycle.
-
 
 #### How do you analyze the results of an endurance test?
 
@@ -220,7 +207,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
   8. **Document Findings**: Record all findings, including any deviations from [expected results](/en/wiki/expected-result/), and provide detailed reports for stakeholders.
   9. **Recommendations**: Based on the analysis, suggest improvements or changes to enhance system endurance.
   Use tools that provide detailed reports and analytics to streamline the analysis process. Automation can help in continuously monitoring and capturing relevant data throughout the test.
-
 
 ### Challenges and Solutions
 
@@ -238,7 +224,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
   - **Scheduling**: Coordinating long-running tests within the broader project timeline can be tricky, especially when accommodating for [test environment](/en/wiki/test-environment/) availability and other testing activities.
   Addressing these challenges involves careful planning, efficient resource management, and the use of specialized tools for monitoring and analysis. Automation plays a key role in managing the complexity of endurance testing.
 
-
 #### How can these challenges be overcome?
 
   Overcoming challenges in endurance testing requires a strategic approach:
@@ -254,7 +239,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
   - **Collaborate with stakeholders**: Engage with developers, system architects, and business analysts to interpret results and make informed decisions.
   - **Iterate and refine**: Use insights from each test to fine-tune the approach, improving test accuracy and efficiency over time.
   By addressing these aspects, [test automation](/en/wiki/test-automation/) engineers can enhance the effectiveness of endurance testing and ensure the reliability and performance of the software under test.
-
 
 #### What are the best practices for effective endurance testing?
 
@@ -278,8 +262,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
     }
     ```
 
-  - **Document Findings and Actions** : Record test results, observations, and corrective actions taken to inform future tests and development cycles.
-  - **Iterate and Refine** : Use insights from each test to refine the approach, improve test accuracy, and enhance system performance.
   - **Document Findings and Actions** : Record test results, observations, and corrective actions taken to inform future tests and development cycles.
   - **Iterate and Refine** : Use insights from each test to refine the approach, improve test accuracy, and enhance system performance.
 
@@ -318,7 +300,6 @@ Endurance Testing, in the context of software, is a type of performance testing 
     ```
   Automated endurance testing is a key component in a robust [test automation](/en/wiki/test-automation/) strategy, providing confidence in the software's ability to operate under extended use without manual oversight.
 
-  - **Run tests continuously**
 #### What are some examples of successful endurance testing?
 
   Successful endurance testing examples often involve scenarios where software is required to operate under normal or high load for extended periods. Here are a few instances:

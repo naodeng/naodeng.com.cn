@@ -164,11 +164,6 @@ Evaluation of the user interface after code changes. It checks for appearance an
   - **Dynamic Content Handling:**
     Use strategies to stabilize dynamic elements during tests.
 
-  - **Detects UI Defects:**
-
-  - **[False Positives](/en/wiki/false-positive/):**
-
-  - **Selective Testing:**
 ### Tools and Techniques
 
 #### What tools are commonly used for visual regression testing?

@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Responsive Design](#responsive-design)
-  - [Related Terms:](#related-terms)
   - [Questions about Responsive Design?](#questions-about-responsive-design)
     - [Basics and Importance](#basics-and-importance)
       - [What is responsive design?](#what-is-responsive-design)
@@ -46,7 +45,7 @@ order: 0
 
 Responsive design involves dynamically adjusting a website's appearance based on screen size and device orientation, ensuring compatibility between content and display.
 
-## Related Terms:
+Related Terms:
 
 - [UI Testing](/en/wiki/ui-testing/)
 - [Web Testing](/en/wiki/web-testing/)
@@ -417,10 +416,6 @@ Responsive design involves dynamically adjusting a website's appearance based on
     **flexibility**
     , with a layout that adjusts continuously to the viewing environment.
   For [test automation](/en/wiki/test-automation/) engineers, this distinction is crucial when creating [test cases](/en/wiki/test-case/). Testing adaptive designs may require validating specific layouts at defined breakpoints, whereas testing responsive designs involves ensuring the layout works smoothly across a continuum of screen sizes. Responsive design testing often requires more complex automation scripts to simulate various viewport sizes and ensure the design remains coherent and functional. Tools like [Selenium](/en/wiki/selenium/) [WebDriver](/en/wiki/webdriver/), which can programmatically adjust browser window sizes, are essential for this purpose.
-
-  - Adaptive design is more about
-    **tailoring**
-
 #### How can responsive design be used in email marketing?
 
   Responsive design in email marketing ensures that emails render well on any device, providing a consistent and accessible user experience. To achieve this, use **CSS media queries** to apply different styles based on the recipient's screen size. For example:

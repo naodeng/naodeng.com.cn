@@ -124,8 +124,6 @@ Mean Time Between Failures (MTBF) calculates the average duration between equipm
     to assess the impact of new features or changes on system reliability.
   By doing so, you can proactively manage system reliability and ensure that the end-to-end user experience remains consistent and dependable. Remember, a higher MTBF indicates a more stable system, which is crucial for maintaining user trust and satisfaction.
 
-  1. **Integrate MTBF tracking**
-
 #### What are some common tools or methods for measuring MTBF?
 
   To measure MTBF (Mean Time Between Failures) effectively, [test automation](/en/wiki/test-automation/) engineers commonly use a combination of **software monitoring tools**, **[test management](/en/wiki/test-management/) systems**, and **custom scripts**. These tools and methods capture failure data and operational periods to facilitate MTBF calculation.

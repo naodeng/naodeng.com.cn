@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Use Case](#use-case)
-  - [Related Terms:](#related-terms)
   - [Questions about Use Case?](#questions-about-use-case)
     - [Basics and Importance](#basics-and-importance)
       - [What is a use case in software testing?](#what-is-a-use-case-in-software-testing)
@@ -46,7 +45,7 @@ order: 0
 
 A description detailing how a user interacts with a system. It forms a foundation for system development and tests.
 
-## Related Terms:
+Related Terms:
 
 - [Use Case Testing](/en/wiki/use-case-testing/)
 
@@ -75,7 +74,6 @@ A description detailing how a user interacts with a system. It forms a foundatio
   - Enhance communication and understanding across teams.
   By focusing on user interactions and outcomes, use cases contribute to the development of robust, user-centric software systems and the creation of effective automated tests.
 
-
 #### What are the key components of a use case?
 
   Key components of a use case include:
@@ -91,7 +89,6 @@ A description detailing how a user interacts with a system. It forms a foundatio
   - **Frequency of Use** : An indication of how often the use case is likely to be initiated.
   - **Miscellaneous** : Any other relevant information, such as data variations or relevant business rules.
   These components ensure that use cases are comprehensive and provide a clear understanding of the interactions between actors and the system. They serve as a foundation for creating [test cases](/en/wiki/test-case/) and scenarios that validate the intended behavior of the system.
-
 
 #### How does a use case help in understanding the system functionality?
 
@@ -145,7 +142,6 @@ A description detailing how a user interacts with a system. It forms a foundatio
   - **Generalization** : A solid line with a hollow arrowhead, illustrating inheritance between actors or use cases.
   Use case diagrams are visual representations that specify the relationships and interactions between actors and use cases within a system. They serve as a tool for discussing and managing system requirements.
 
-
 #### How do you create a use case diagram?
 
   Creating a **use case diagram** involves the following steps:
@@ -180,7 +176,6 @@ A description detailing how a user interacts with a system. It forms a foundatio
   - Checkout -> Make Payment (include)
   ```
   Remember to keep the diagram **simple** and **focused** on user interactions. Avoid cluttering with too many details that can be reserved for more detailed use case scenarios or other diagrams.
-
 
 #### What is the role of actors in a use case diagram?
 
@@ -243,12 +238,6 @@ A description detailing how a user interacts with a system. It forms a foundatio
   5. System confirms the update.
   The scenario provides a clear sequence for [test automation](/en/wiki/test-automation/), while the use case defines the broader capability.
 
-  1. User logs in to the system.
-  2. User navigates to the profile management page.
-  3. User updates their email address.
-  4. User saves changes.
-  5. System confirms the update.
-
 #### How do you write a use case scenario?
 
   Writing a use case scenario involves detailing the steps that a user or system will take to achieve a specific goal within the application. Here's a concise guide:
@@ -285,7 +274,6 @@ A description detailing how a user interacts with a system. It forms a foundatio
   ```
   Remember to keep scenarios **realistic** and **focused** on user interactions, avoiding technical jargon to ensure clarity for stakeholders.
 
-
 #### What is the role of a use case scenario in software testing?
 
   In [software testing](/en/wiki/software-testing/), a **use case scenario** plays a crucial role in guiding the creation of **[test scripts](/en/wiki/test-script/)** and **[test cases](/en/wiki/test-case/)**. It provides a detailed sequence of steps that represent a specific interaction between an actor (usually a user) and the system, to achieve a goal. This detailed narrative includes the **preconditions**, **triggers**, and **[postconditions](/en/wiki/postcondition/)**, offering a clear path for testers to follow.
@@ -306,7 +294,6 @@ A description detailing how a user interacts with a system. It forms a foundatio
   - **Requirement Gaps**: By detailing specific actions and outcomes, use case scenarios can expose missing requirements or misunderstandings about the intended functionality.
   - **Regression Effects**: When system changes are made, scenarios help ensure that existing functionality remains unaffected, revealing potential regression issues.
   Incorporating use case scenarios into [test automation](/en/wiki/test-automation/) strategies ensures that tests are user-centric and focused on real-world application, leading to a more robust and reliable system.
-
 
 ### Advanced Concepts
 
@@ -372,8 +359,6 @@ A description detailing how a user interacts with a system. It forms a foundatio
   - **Execute tests**
     to validate the system's performance, security, usability, etc., against the expectations set by the use cases.
   By doing so, you ensure that [non-functional testing](/en/wiki/non-functional-testing/) is grounded in realistic and relevant user scenarios, providing a comprehensive assessment of the system's overall quality.
-
-  - **Identify critical use cases**
 
 #### What are some common mistakes to avoid when writing use cases?
 

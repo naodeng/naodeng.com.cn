@@ -74,7 +74,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   ```
   In this [test case](/en/wiki/test-case/), `accessSharedResource` represents a function that multiple threads or processes would call concurrently, while `isValidState` would be a method to verify the integrity of the shared resource after concurrent access.
 
-
 #### Why is concurrency testing important?
 
   Concurrency testing is crucial because it ensures that a software application can handle multiple processes or users simultaneously without performance degradation or data corruption. In today's multi-user environments, applications often face concurrent access, making it essential to validate their stability and reliability under such conditions.
@@ -97,7 +96,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   - **Regulatory Compliance** : In some industries, the ability to handle concurrent operations is a regulatory requirement, making concurrency testing essential for compliance.
   By addressing these aspects, concurrency testing plays a crucial role in delivering a high-quality, dependable, and user-friendly product.
 
-
 #### What are the potential issues that can be identified through concurrency testing?
 
   Concurrency testing can reveal a variety of issues that are critical to the performance and stability of multi-threaded applications. Here are some potential issues that can be identified:
@@ -112,7 +110,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   - **Incorrect Processing** : Errors in the logic that only manifest under specific timing or sequencing of events, leading to incorrect results or behavior.
   - **Livelocks** : Situations where threads are not blocked, but they are unable to make progress because they keep responding to each other without doing any useful work.
   Identifying these issues early through concurrency testing is crucial to ensure that the software can handle simultaneous operations without adverse effects on performance or functionality.
-
 
 #### What is the difference between concurrency testing and other types of testing?
 
@@ -136,7 +133,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   - **Randomized Testing** : Randomizing the order and timing of operations to simulate unpredictable concurrent interactions.
   - **[State Transition Testing](/en/wiki/state-transition-testing/)** : Monitoring the state transitions of the application under concurrent usage to ensure state consistency.
   These techniques are often combined and executed in a controlled environment to simulate real-world scenarios. Automation tools can be used to script these tests and run them repeatedly, ensuring thorough coverage and the detection of concurrency-related defects.
-
 
 #### How to design a test case for concurrency testing?
 
@@ -185,18 +181,8 @@ Measures the system's performance under simultaneous or multi-user loads.
   - Making informed decisions about
     **scalability**
     and resource allocation.
+  - **Evaluate system performance** under realistic concurrent load.
   In summary, load generators are indispensable for creating the necessary conditions to thoroughly test and ensure an application's readiness for concurrent usage in production environments.
-
-  - **Evaluate performance**
-
-
-  - Tuning the application and infrastructure for
-    **optimal performance**
-    .
-
-  - Making informed decisions about
-    **scalability**
-    and resource allocation.
 
 #### What is the difference between stress testing and concurrency testing?
 
@@ -241,8 +227,6 @@ Measures the system's performance under simultaneous or multi-user loads.
     to understand the system architecture and to ensure that tests are aligned with the application's design and concurrency control mechanisms.
   By following these practices, you can enhance the reliability and robustness of your software in handling concurrent operations.
 
-  - **Prioritize critical sections**
-
 ### Tools and Technologies
 
 #### What tools are commonly used for concurrency testing?
@@ -258,7 +242,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   - **MultiMechanize** : An open-source framework for performance and load testing that allows you to run concurrent Python scripts to generate load.
   - **Taurus** : An automation-friendly framework for continuous testing, which can run JMeter and Gatling tests, among others, and provides an abstraction layer for writing tests.
   These tools help automate the process of simulating multiple users or processes and can identify issues such as deadlocks, race conditions, and throughput problems. They often provide detailed reports and analytics to aid in diagnosing concurrency-related issues.
-
 
 #### What are the features to look for in a concurrency testing tool?
 
@@ -278,7 +261,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   - **Reusability** : Facilitates the reuse of test scripts and scenarios across different tests and environments.
   - **Support and community** : Offers robust support options and has an active community for troubleshooting and sharing best practices.
   Choose a tool that aligns with your specific testing requirements and integrates seamlessly into your existing [test automation](/en/wiki/test-automation/) ecosystem.
-
 
 #### How to use JMeter for concurrency testing?
 
@@ -304,13 +286,7 @@ Measures the system's performance under simultaneous or multi-user loads.
        **Number of Threads**
        (users) to simulate concurrency.
 
-     - Define the
-       **Ramp-Up Period**
-       to specify how long it takes to start all threads.
 
-     - Optionally, set the
-       **Loop Count**
-       for the number of iterations.
 
   5. **Add Samplers**: Right-click on the Thread Group and add samplers (HTTP Request, JDBC Request, etc.) to define the actions each user will perform.
   6. **Add Listeners**: To view results and analyze performance, add listeners like Summary Report, Graph Results, etc.
@@ -336,7 +312,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   </ThreadGroup>
   ```
   Remember to **save your [test plan](/en/wiki/test-plan/)** and **review [JMeter](/en/wiki/jmeter/)'s documentation** for specific configurations and advanced features.
-
 
 #### What is the role of Selenium in concurrency testing?
 
@@ -366,7 +341,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   - **Automation** : Cloud-based tools often come with built-in automation capabilities, making it easier to integrate concurrency testing into continuous integration/continuous deployment (CI/CD) pipelines.
   By leveraging cloud-based tools, [test automation](/en/wiki/test-automation/) engineers can efficiently execute concurrency tests, identify potential synchronization issues, and ensure that applications can handle expected user loads with minimal performance degradation.
 
-
 ### Challenges and Solutions
 
 #### What are the challenges in concurrency testing?
@@ -381,7 +355,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   - **[Test environment](/en/wiki/test-environment/)** : Mimicking the production environment closely is essential for meaningful concurrency tests, but it can be resource-intensive and expensive.
   - **Tooling** : Selecting tools that can effectively simulate concurrent operations and collect relevant data is critical but can be challenging due to the variety of options and their varying capabilities.
   Addressing these challenges often requires a combination of thorough planning, robust tooling, and an iterative approach to test design and execution.
-
 
 #### How to overcome the challenges in concurrency testing?
 
@@ -429,7 +402,6 @@ Measures the system's performance under simultaneous or multi-user loads.
   - **Analyze thread dumps and logs** : Examine thread dumps and logs for deadlocks, race conditions, and other concurrency issues.
   - **Collaborate with developers** : Work closely with developers to understand the application's concurrency model and incorporate their insights into testing.
   By integrating these strategies into your concurrency testing approach, you can enhance the reliability and stability of your software in multi-user, concurrent environments.
-
 
 #### What are the solutions for deadlock and race conditions in concurrency testing?
 

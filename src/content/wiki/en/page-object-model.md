@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Page Object Model](#page-object-model)
-  - [Related Terms:](#related-terms)
   - [Questions about Page Object Model?](#questions-about-page-object-model)
     - [Basics and Importance](#basics-and-importance)
       - [What is the Page Object Model in automation testing?](#what-is-the-page-object-model-in-automation-testing)
@@ -37,7 +36,7 @@ order: 0
 
 The Page Object Model (POM) groups a page's locators and UI actions in an object, separating test flow from interface details and easing maintenance.
 
-## Related Terms:
+Related Terms:
 
 - [Web Automation](/en/wiki/web-automation/)
 - [Selenium IDE](/en/wiki/selenium-ide/)
@@ -252,11 +251,6 @@ The Page Object Model (POM) groups a page's locators and UI actions in an object
     ```
   By employing these strategies within your Page Object classes, you can effectively manage dynamic elements and maintain stable, reliable automated tests.
 
-  - **Use of Waits** : Implement explicit waits to handle elements that appear after a certain condition or time. This ensures that the elements are interactable when your test tries to access them.
-  - **Dynamic Selectors** : Craft XPath or CSS selectors that can locate elements based on their relative position or other attributes that do not change.
-  - **Regular Expressions** : Use regex with selectors to match patterns if part of an element's identifier is dynamic.
-  - **JavaScript Execution** : Execute JavaScript to interact with elements that are difficult to handle with standard Selenium methods.
-  - **Custom Methods** : Create custom methods within your Page Objects that encapsulate the logic for handling dynamic elements, making your tests cleaner and more readable.
 
 #### How can you use the Page Factory class in the Page Object Model?
 

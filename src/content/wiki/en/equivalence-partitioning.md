@@ -186,8 +186,6 @@ Equivalence Partitioning is a software testing technique used to reduce the numb
     the process if new partitions are identified during the testing phase.
   This technique is often combined with **boundary value analysis** to select [test cases](/en/wiki/test-case/) at the edges of each partition. It's crucial to ensure that each partition is tested with at least one input to maximize coverage while minimizing the number of [test cases](/en/wiki/test-case/).
 
-  1. **Identify testable functions**
-
 #### What are some examples of equivalence partitioning?
 
   Examples of equivalence partitioning typically involve dividing input data into valid and invalid partitions from which [test cases](/en/wiki/test-case/) can be derived. Here are a few scenarios:
@@ -203,19 +201,7 @@ Equivalence Partitioning is a software testing technique used to reduce the numb
        `150`
        (above range)
 
-     - Valid partition:
-       `25`
-       (within range)
-
-     - Invalid partitions:
-       `-5`
-       (below range),
-       `150`
-       (above range)
-
   2. **User Role Permissions**: For a system with roles 'Admin', 'User', and 'Guest':
-    - Valid partition: Test with 'Admin' to ensure all permissions are granted.
-    - Invalid partition: Test with 'Guest' to ensure restricted access.
     - Valid partition: Test with 'Admin' to ensure all permissions are granted.
     - Invalid partition: Test with 'Guest' to ensure restricted access.
   3. **File Upload Feature**: Accepts files between 1MB and 5MB:
@@ -229,21 +215,9 @@ Equivalence Partitioning is a software testing technique used to reduce the numb
        `10MB`
        file (above range)
 
-     - Valid partition:
-       `3MB`
-       file (within range)
-
   4. **Date Input**: For a system that processes dates within the current year:
     - Valid partition:
       `July 15, current year`
-
-     - Invalid partitions:
-       `January 1, next year`
-       ,
-       `December 31, previous year`
-
-     - Valid partition:
-       `July 15, current year`
 
      - Invalid partitions:
        `January 1, next year`
@@ -387,8 +361,6 @@ Equivalence Partitioning is a software testing technique used to reduce the numb
     , which are common at the edges. Test values just inside and just outside of the boundaries to catch these errors.
   For example, if an input field accepts ages from 1 to 100, equivalence partitioning might suggest a valid partition (1-100) and two invalid partitions (less than 1, more than 100). To handle edge cases, test the boundaries: 1 and 100 for the valid partition, and 0 and 101 for the invalid partitions.
   By combining equivalence partitioning with careful attention to boundary conditions, testers can ensure that edge cases are not overlooked, leading to more robust and reliable software.
-
-  - **Identify boundary conditions**
 
 ### Advanced Concepts
 

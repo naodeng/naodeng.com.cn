@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Manual Testing](#manual-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Manual Testing?](#questions-about-manual-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is manual testing?](#what-is-manual-testing)
@@ -48,7 +47,7 @@ order: 0
 
 Manual testing is the process of manually checking software functionalities against expected outcomes.
 
-## Related Terms:
+Related Terms:
 
 - [Automated Testing](/en/wiki/automated-testing/)
 - [Test Automation](/en/wiki/test-automation/)
@@ -361,8 +360,6 @@ Manual testing is the process of manually checking software functionalities agai
     and ready to adjust testing strategies as the project evolves.
   By integrating these practices, manual testers can complement automated processes and contribute to a robust testing strategy.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How can manual testing be made more effective?
 
   To enhance the effectiveness of manual testing, consider the following strategies:
@@ -403,8 +400,6 @@ Manual testing is the process of manually checking software functionalities agai
   - **Invest in tester training**
     to keep skills sharp and knowledge current, especially in areas like new testing techniques or domain expertise.
   By applying these strategies, manual testers can maximize their efficiency and contribute to higher [software quality](/en/wiki/software-quality/).
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### What are some common mistakes to avoid in manual testing?
 

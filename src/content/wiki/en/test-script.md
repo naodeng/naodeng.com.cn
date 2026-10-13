@@ -108,7 +108,6 @@ Contains specific instructions for the system during a test.
   ```
   Each component plays a critical role in ensuring the test script is reliable, maintainable, and provides clear results.
 
-
 #### How does a test script contribute to the overall testing process?
 
   Test scripts serve as the **executable components** of the testing strategy, translating [test cases](/en/wiki/test-case/) into actions that can be automatically performed by testing tools. They drive the **automation framework** to interact with the application under test, validating expected outcomes against [actual results](/en/wiki/actual-result/). By doing so, test scripts enhance the efficiency of the testing process, enabling rapid execution of repetitive tasks and complex [test scenarios](/en/wiki/test-scenario/) that would be time-consuming and error-prone if done manually.
@@ -134,10 +133,6 @@ Contains specific instructions for the system during a test.
     —they are concerned with how to perform the test steps programmatically and are used to automate the execution of test cases.
   In essence, [test cases](/en/wiki/test-case/) can exist without automation, serving as a guide for [manual testing](/en/wiki/manual-testing/), while test scripts are inherently tied to automation and are the practical execution of [test cases](/en/wiki/test-case/) in an automated framework.
 
-  - **[Test cases](/en/wiki/test-case/)**
-    are more about the
-    **what**
-
 ### Creation and Execution
 
 #### How is a test script created?
@@ -149,10 +144,6 @@ Contains specific instructions for the system during a test.
   3. **Choose a testing tool**: Select an appropriate automation tool that supports the application's technology stack.
   4. **Set up the [test environment](/en/wiki/test-environment/)**: Ensure the environment is prepared with the necessary configurations and data.
   5. **Write the test script**: Develop the script using the chosen tool's scripting language or a general-purpose programming language. This typically includes:
-    - **Initialization** : Set up any prerequisites for the test.
-    - **Execution steps** : Translate manual test steps into automated instructions.
-    - **[Verification](/en/wiki/verification/) points** : Assert expected outcomes at specific stages.
-    - **Teardown** : Clean up after test execution, such as closing applications or connections.
     - **Initialization** : Set up any prerequisites for the test.
     - **Execution steps** : Translate manual test steps into automated instructions.
     - **[Verification](/en/wiki/verification/) points** : Assert expected outcomes at specific stages.
@@ -172,7 +163,6 @@ Contains specific instructions for the system during a test.
   assertExpectedOutcome("Expected Result");
   cleanupTestEnvironment();
   ```
-
 
 #### What are the steps involved in executing a test script?
 
@@ -261,16 +251,12 @@ Contains specific instructions for the system during a test.
     ```
   These tools offer various features for different testing needs and can be integrated into continuous integration/continuous deployment (CI/CD) pipelines for automated [test execution](/en/wiki/test-execution/).
 
-
 #### What are the best practices for writing a test script?
 
   Best practices for writing a test script include:
 
   - **[Maintainability](/en/wiki/maintainability/)** : Write clear, understandable code with meaningful variable names and comments. This makes it easier for others to modify and maintain the script.
   - **Modularity** : Break down the test script into smaller, reusable functions or methods to promote code reuse and simplify updates.
-
-
-
 
     ```javascript
     function login(username, password) {
@@ -285,7 +271,6 @@ Contains specific instructions for the system during a test.
     assert.strictEqual(actualValue, expectedValue, "Value mismatch error");
     ```
 
-
   - **Data Separation** : Keep test data separate from the script, using data-driven techniques to allow for easy updates and scalability.
   - **Consistency** : Follow consistent naming conventions and coding standards to ensure uniformity across scripts.
   - **Performance** : Optimize scripts to run efficiently, avoiding unnecessary waits or resource-heavy operations.
@@ -294,8 +279,6 @@ Contains specific instructions for the system during a test.
   - **Documentation** : Document the purpose and scope of the test script within the code for clarity.
   - **Continuous Integration** : Integrate test scripts into a CI/CD pipeline to enable continuous testing and feedback.
   By adhering to these practices, [test automation](/en/wiki/test-automation/) engineers can create reliable, efficient, and maintainable test scripts that contribute to the overall quality of the [software testing](/en/wiki/software-testing/) process.
-
-
 
 #### How can you debug a test script?
 
@@ -327,10 +310,6 @@ Contains specific instructions for the system during a test.
   - **Update dependencies**: Ensure that all frameworks, libraries, and tools are up-to-date and compatible with each other.
   By systematically applying these techniques, you can identify the root cause of issues in your test scripts and resolve them effectively.
 
-  - **Use logging** : Implement logging within the script to capture detailed information during execution. This can help pinpoint where the script is failing.
-  - **Breakpoints** : Set breakpoints in your test script to pause execution at specific points. This allows you to inspect the current state and variables.
-  - **Step-through execution**: Use your IDE's debugging tools to step through the script line by line. This helps you observe the flow of execution and the state of the application at each step.
-  - **Check assertions**: Verify that your assertions are correct and are testing what you expect. Incorrect assertions can lead to [false positives](/en/wiki/false-positive/) or negatives.
 
 ### Types and Techniques
 
@@ -351,13 +330,11 @@ Contains specific instructions for the system during a test.
   - **Exploratory Test Scripts** : Less structured, guiding testers through exploratory testing sessions.
   Each type serves different purposes and may be chosen based on the testing requirements, application complexity, and team expertise.
 
-
 #### What is the difference between manual and automated test scripts?
 
   Manual test scripts are typically written in a human-readable format, such as plain language steps in a document, and require a human tester to execute the steps manually to verify the behavior of the application under test. They are more flexible and can adapt to unexpected changes during execution but are time-consuming and prone to human error.
   Automated test scripts, on the other hand, are written in a programming language or a scripting language and are executed by a software tool. They enable the execution of predefined actions on the application automatically, without human intervention. Automated scripts are faster and more reliable for repetitive tasks but require initial [setup](/en/wiki/setup/) time and maintenance to adapt to changes in the application.
   **Manual Test Script Example:**
-
 
   1. Open the application.
   2. Navigate to the login page.
@@ -420,7 +397,6 @@ Contains specific instructions for the system during a test.
   In this approach, test scripts are composed of a sequence of keywords, each representing a higher-level action, such as "click", "enter text", or "verify". The keywords are associated with parameters that provide context, like the specific UI element to interact with or the value to verify.
   Here's a simplified example of a keyword-driven test script:
 
-
   OpenBrowser "http://example.com/login"
   EnterText "username_field", "testuser"
   EnterText "password_field", "securepassword"
@@ -437,17 +413,19 @@ Contains specific instructions for the system during a test.
   - **Refactor regularly**: Keep your code clean by refactoring for readability and [maintainability](/en/wiki/maintainability/). Remove duplication and improve script structure.
   - **Use [Page Object Model](/en/wiki/page-object-model/) (POM)**: Encapsulate UI structure changes within page objects to reduce maintenance and improve clarity.
 
-
-
-
     ```java
-    class LoginPage {
-    private By usernameField = By.id("username");
-    public void enterUsername(String username) {
-    driver.findElement(usernameField).sendKeys(username);
-    }
-    }
+    public class LoginPage {
+        private final WebDriver driver;
+        private final By usernameField = By.id("username");
 
+        public LoginPage(WebDriver driver) {
+            this.driver = driver;
+        }
+
+        public void enterUsername(String username) {
+            driver.findElement(usernameField).sendKeys(username);
+        }
+    }
     ```
   - **Prioritize tests**: Focus on critical paths and functionalities. Use risk-based testing to determine which areas are most crucial.
   - **Parallel execution**: Run tests concurrently to reduce execution time. Ensure tests are independent to avoid conflicts.
@@ -461,12 +439,8 @@ Contains specific instructions for the system during a test.
     </suite>
     ```
 
-
   - **Utilize [test data](/en/wiki/test-data/) efficiently**: Use data providers or external data sources to feed tests with the necessary data without hardcoding.
   - **Implement waits wisely**: Use explicit waits over implicit to reduce unnecessary delays and flakiness.
-
-
-
 
     ```text
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -477,9 +451,6 @@ Contains specific instructions for the system during a test.
   - **Leverage caching**: Cache setup data when possible to avoid repeating expensive setup tasks for each test.
   - **Continuous Integration (CI)**: Integrate tests into a CI pipeline to detect issues early and fix them faster.
   - **Regularly review and update**: Keep scripts aligned with application changes and remove obsolete tests to ensure relevance and efficiency.
-
-
-
 
 ### Integration and Maintenance
 
@@ -508,7 +479,6 @@ Contains specific instructions for the system during a test.
   - **Monitoring** : Use monitoring tools to track the performance and reliability of scripts over time, identifying degradation or areas for improvement.
   By following these practices, test scripts can be kept robust and adaptable to changes in the software they are designed to test.
 
-
 #### What is the role of test scripts in regression testing?
 
   In [regression testing](/en/wiki/regression-testing/), test scripts serve as automated checks to ensure that recent code changes haven't adversely affected existing functionalities. They are crucial for **validating the stability** of software after modifications such as enhancements, patches, or configuration changes.
@@ -522,7 +492,6 @@ Contains specific instructions for the system during a test.
 
   Test scripts can be reused across different testing scenarios by implementing **modularization**, **parameterization**, and **abstraction** techniques.
   **Modularization** involves breaking down test scripts into smaller, reusable modules or functions that perform specific tasks. These modules can be called multiple times with different inputs across various [test cases](/en/wiki/test-case/).
-
 
   ```javascript
   function login(username, password) {
@@ -580,7 +549,6 @@ Contains specific instructions for the system during a test.
   Leverage version control systems like Git to track changes and facilitate collaboration. Code reviews help catch issues early and share knowledge across the team.
   Automate the detection of deprecated or unused code with static analysis tools. This helps in keeping the test codebase clean and up-to-date.
   Finally, prioritize tests based on risk and value. Focus maintenance efforts on high-value tests to ensure critical application paths are always covered.
-
 
   ```typescript
   // Example of a deterministic wait in a test script

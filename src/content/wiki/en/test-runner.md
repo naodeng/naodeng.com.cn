@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Runner](#test-runner)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Runner?](#questions-about-test-runner)
     - [Basics and Importance](#basics-and-importance)
       - [What is a Test Runner in software testing?](#what-is-a-test-runner-in-software-testing)
@@ -41,7 +40,7 @@ order: 0
 
 A tool that automates the running of test cases and the collection of results, ensuring software functions as intended. Can be a GUI or command-line tool.
 
-## Related Terms:
+Related Terms:
 
 - [Test framework (e.g., NUnit, JUnit, Jest)](/en/wiki/automated-testing/)
 
@@ -245,35 +244,16 @@ A tool that automates the running of test cases and the collection of results, e
 
 #### Can you provide a brief overview of how to use a popular Test Runner?
 
-To use **JUnit** for Java tests, follow these basic steps:
+To use JUnit for Java tests:
 
-1. Add Java and JUnit to the project dependencies.
-2. Create a test class and annotate test methods with `@Test`:
+1. Add the Java Development Kit and JUnit to the project dependencies.
+2. Create a test class and mark test methods with **@Test**.
+3. Group related test classes in a suite when the project needs one.
+4. Run the tests from the IDE or with the project's configured Maven or Gradle task.
+5. Review the test results and stack traces to investigate failures.
+6. Configure the CI pipeline to run the tests automatically and report failures.
 
-```java
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-
-public class ExampleTest {
-    @Test
-    public void addsTwoNumbers() {
-        assertEquals(3, 1 + 2);
-    }
-}
-```
-
-3. Group related test classes in a suite when needed:
-
-```java
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-
-@RunWith(Suite.class)
-@Suite.SuiteClasses({ExampleTest.class})
-public class ExampleTestSuite {}
-```
-
-4. Run the tests from the IDE or with a build tool such as Maven or Gradle.
+Keep tests independent where possible, and update them as the project changes.
 
 ### Integration and Compatibility
 

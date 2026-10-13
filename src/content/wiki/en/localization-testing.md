@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Localization Testing](#localization-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Localization Testing?](#questions-about-localization-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is localization testing in software testing?](#what-is-localization-testing-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Localization testing ensures a software product resonates culturally with users in a specific region, guaranteeing its usability in that locale.
 
-## Related Terms:
+Related Terms:
 
 - [Internationalization Testing](/en/wiki/internationalization-testing/)
 
@@ -221,9 +220,6 @@ Localization testing ensures a software product resonates culturally with users 
   - **Performance** : Localized versions may have different performance characteristics, requiring targeted testing.
   - **Third-party services integration** : Ensuring that services like maps or weather are localized and function correctly.
   Addressing these challenges requires a combination of **technical solutions**, **cultural understanding**, and **rigorous testing** to ensure a seamless user experience across different locales.
-
-  - **Performance** : Localized versions may have different performance characteristics, requiring targeted testing.
-  - **Third-party services integration** : Ensuring that services like maps or weather are localized and function correctly.
 
 #### How can these challenges be mitigated or overcome?
 

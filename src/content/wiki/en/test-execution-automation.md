@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Execution Automation](#test-execution-automation)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Execution Automation?](#questions-about-test-execution-automation)
     - [Basics and Importance](#basics-and-importance)
       - [What is test execution automation?](#what-is-test-execution-automation)
@@ -44,7 +43,7 @@ order: 0
 
 This involves using automation tools for test execution, either directly or via a management tool. The concluding test report offers a summarized account of the project’s testing.
 
-## Related Terms:
+Related Terms:
 
 - [Test Automation](/en/wiki/test-automation/)
 - [Automated Testing](/en/wiki/automated-testing/)
@@ -122,7 +121,6 @@ This involves using automation tools for test execution, either directly or via 
   - **Scalability** : As the application grows, scaling the test automation suite to match can become a challenge.
   Addressing these challenges requires careful planning, continuous monitoring, and regular refinement of the automation strategy.
 
-
 ### Tools and Technologies
 
 #### What tools are commonly used for test execution automation?
@@ -156,7 +154,6 @@ This involves using automation tools for test execution, either directly or via 
   - **Playwright** : A Node library to automate Chromium, Firefox, and WebKit with a single API, supporting cross-browser testing.
   These tools offer various capabilities for automating [test execution](/en/wiki/test-execution/) across different platforms and technologies. They can be integrated into CI/CD pipelines and support parallel execution, reporting, and [cross-browser testing](/en/wiki/cross-browser-testing/).
 
-
 #### What are the differences between these tools?
 
   When comparing [test automation](/en/wiki/test-automation/) tools, consider the following key differences:
@@ -187,7 +184,6 @@ This involves using automation tools for test execution, either directly or via 
   - **Vendor Stability and Roadmap**: Research the tool's vendor to ensure they have a history of stability and a clear roadmap for future development.
   By carefully considering these factors, you can select a test execution automation tool that enhances your testing process and contributes to the overall quality and efficiency of your software development lifecycle.
 
-
 #### What is the role of Selenium in test execution automation?
 
   [Selenium](/en/wiki/selenium/) plays a **central role** in test execution automation, primarily for web applications. It provides a suite of tools that enable automation engineers to **interact with web browsers** and **automate web application testing** across various platforms.
@@ -201,7 +197,6 @@ This involves using automation tools for test execution, either directly or via 
   - **[Page Object Model](/en/wiki/page-object-model/) (POM)** : Encouraging better test maintenance and reducing code duplication.
   [Selenium](/en/wiki/selenium/) integrates with tools like TestNG, JUnit for [test management](/en/wiki/test-management/), and frameworks like Cucumber for [BDD](/en/wiki/bdd/). It also fits seamlessly into CI/CD pipelines, working alongside tools like Jenkins for automated [test execution](/en/wiki/test-execution/) in build and deployment processes.
   In summary, [Selenium](/en/wiki/selenium/) provides a **robust, flexible, and widely adopted** solution for automating the execution of web application tests, making it a staple in the [test automation](/en/wiki/test-automation/) engineer's toolkit.
-
 
 #### What are some other technologies or frameworks used in test execution automation?
 
@@ -218,7 +213,6 @@ This involves using automation tools for test execution, either directly or via 
   - **Gatling** : A powerful tool for load testing, it's designed for ease of use, maintainability, and high performance.
   - **K6** : An open-source load testing tool for testing the performance of backend services, developed in Go and scriptable in JavaScript.
   Each of these frameworks and tools offers unique features and capabilities that can be leveraged to enhance [test automation](/en/wiki/test-automation/) efforts, depending on the specific requirements of the project and the technology stack involved.
-
 
 ### Implementation and Best Practices
 
@@ -289,7 +283,6 @@ This involves using automation tools for test execution, either directly or via 
   - **Integrate with CI/CD** : Automate the triggering of tests as part of the CI/CD pipeline to ensure immediate feedback on code changes.
   By adhering to these practices, [test automation](/en/wiki/test-automation/) engineers can ensure their automated [test execution](/en/wiki/test-execution/) is efficient, reliable, and provides value to the development lifecycle.
 
-
 #### How to maintain and update automated test scripts?
 
   Maintaining and updating automated [test scripts](/en/wiki/test-script/) is crucial for ensuring their effectiveness over time. Here are some key practices:
@@ -305,7 +298,6 @@ This involves using automation tools for test execution, either directly or via 
   - **Monitoring**: Implement monitoring tools to track the performance and reliability of tests over time, alerting you to potential maintenance needs.
   - **Collaboration**: Encourage collaboration among team members to share knowledge and collectively address test maintenance challenges.
   By following these practices, you can ensure that your automated [test scripts](/en/wiki/test-script/) remain robust, reliable, and aligned with the evolving needs of your software project.
-
 
 #### How to handle dynamic elements in test execution automation?
 
@@ -345,13 +337,6 @@ This involves using automation tools for test execution, either directly or via 
 
   - **[Page Object Model](/en/wiki/page-object-model/) (POM)** : Encapsulate the interactions with dynamic elements within page objects to centralize changes.
   Remember to **keep locators as stable as possible** and **avoid over-reliance on absolute paths**. When elements are highly dynamic, consider working with developers to add more stable identifiers to the UI elements.
-
-  - **Use of Smart Waits** : Implement explicit waits that allow your script to wait for certain conditions (like element visibility) before proceeding.
-  - **Dynamic Selectors** : Craft locators that can match elements based on patterns or relationships rather than fixed attributes.
-  - **Regular Expressions** : Utilize regex in your locators to match elements with dynamic text or attributes.
-  - **Parameterization**: Use parameters to handle elements that change based on user input or [test data](/en/wiki/test-data/).
-  - **JavaScript Execution**: Execute JavaScript to interact with elements that are difficult to handle with standard [WebDriver](/en/wiki/webdriver/) methods.
-  - **[Page Object Model](/en/wiki/page-object-model/) (POM)** : Encapsulate the interactions with dynamic elements within page objects to centralize changes.
 
 #### What are the strategies to ensure effective test execution automation?
 
@@ -398,8 +383,6 @@ This involves using automation tools for test execution, either directly or via 
     with the latest testing trends and tools to continuously improve your automation strategy.
   By applying these strategies, you can enhance the efficiency, reliability, and coverage of your automated [test execution](/en/wiki/test-execution/).
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 ### Integration and Continuous Testing
 
 #### How does test execution automation fit into continuous integration/continuous deployment (CI/CD)?
@@ -442,11 +425,7 @@ This involves using automation tools for test execution, either directly or via 
     are shortened, allowing for quicker iterations.
   For **CD**, automated tests are part of the **gating criteria** for deployment to production, ensuring that only well-tested code is released. This practice supports a **DevOps** approach by aligning development and operations towards a common goal of delivering high-quality software at speed.
 
-  - **Code quality**
-    is maintained with each commit.
 
-  - **Releases**
-    are more reliable and can be deployed frequently.
 
   - **Feedback loops**
     are shortened, allowing for quicker iterations.
@@ -499,5 +478,3 @@ This involves using automation tools for test execution, either directly or via 
   - Deploy to production if all tests pass
   ```
   CT's goal is to provide continuous feedback and [quality assurance](/en/wiki/quality-assurance/) throughout the development lifecycle, reducing the time and effort required for [manual testing](/en/wiki/manual-testing/) and increasing the speed of delivery.
-
-  - **Automating the execution**

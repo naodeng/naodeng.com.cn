@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Priority](#priority)
-  - [Related Terms:](#related-terms)
   - [Questions about Priority?](#questions-about-priority)
     - [Basics and Importance](#basics-and-importance)
       - [What is priority in software testing?](#what-is-priority-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Priority denotes the order or significance of an issue based on user needs, while severity indicates its system impact. Decisions on priority and severity may vary based on roles and processes.
 
-## Related Terms:
+Related Terms:
 
 - [Severity](/en/wiki/severity/)
 
@@ -148,8 +147,6 @@ Priority denotes the order or significance of an issue based on user needs, whil
   In an automation context, these [bugs](/en/wiki/bug/) can necessitate immediate changes to [test scripts](/en/wiki/test-script/) and may require **hotfixes** or **patches**. Automated tests might need to be **re-prioritized** or **updated** to reflect the urgency of the fixes. Additionally, high priority [bugs](/en/wiki/bug/) can lead to a **reassessment of the automation strategy**, ensuring that similar issues are detected early in future development cycles.
   In Agile environments, high priority [bugs](/en/wiki/bug/) often lead to **reprioritization** of the backlog and can affect sprint goals. They may require **cross-functional collaboration** to address quickly and effectively.
   Overall, high priority [bugs](/en/wiki/bug/) demand **immediate attention** and **resources** to mitigate their impact, ensuring that the software product meets the necessary quality standards for release.
-
-  - **Block critical functionality**
 
 #### What is the difference between high and low priority test cases?
 

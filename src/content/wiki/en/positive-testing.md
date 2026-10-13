@@ -17,7 +17,6 @@ order: 0
 <!-- TOC START -->
 
 - [Positive Testing](#positive-testing)
-  - [Related Terms](#related-terms)
   - [What is positive testing?](#what-is-positive-testing)
   - [What are its goals?](#what-are-its-goals)
   - [Positive testing and negative testing](#positive-testing-and-negative-testing)
@@ -29,7 +28,7 @@ order: 0
 
 Positive testing checks what a system should do; negative testing checks how it handles inputs or conditions it should reject. Both are needed for balanced coverage.
 
-## Related Terms
+Related Terms
 
 - [Negative Testing](/en/wiki/negative-testing/)
 - [Test Case](/en/wiki/test-case/)

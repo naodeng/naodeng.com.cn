@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [White Box Testing](#white-box-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about White Box Testing?](#questions-about-white-box-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is White Box Testing?](#what-is-white-box-testing)
@@ -41,7 +40,7 @@ order: 0
 
 Evaluation of software's internal coding and architecture. It emphasizes security, input-output flow, design, and usability.
 
-## Related Terms:
+Related Terms:
 
 - [Black Box Testing](/en/wiki/black-box-testing/)
 - [Grey Box Testing](/en/wiki/grey-box-testing/)
@@ -110,8 +109,6 @@ Evaluation of software's internal coding and architecture. It emphasizes securit
     efforts by ensuring that changes to the code do not introduce new defects.
   White Box Testing is an integral part of a comprehensive testing strategy, complementing other testing methods to provide a thorough evaluation of [software quality](/en/wiki/software-quality/). It requires a **deep understanding of the code**, which can be a challenge but also allows for more **precise and targeted testing**.
 
-  - **Identifying hidden errors**
-
 #### What are the key differences between White Box Testing and Black Box Testing?
 
   Key differences between **White Box Testing** and **[Black Box Testing](/en/wiki/black-box-testing/)**:
@@ -169,7 +166,6 @@ Evaluation of software's internal coding and architecture. It emphasizes securit
   - **Static Code Analysis**: Uses tools to examine the code for potential vulnerabilities, code smells, and adherence to coding standards without executing the program.
   These techniques are often supported by tools that can automate the analysis and testing process. Effective application of these techniques requires a deep understanding of the codebase, programming skills, and attention to detail.
 
-
 #### What is the difference between Statement Coverage and Branch Coverage?
 
   Statement Coverage, also known as Line Coverage, measures the percentage of executable statements in the source code that have been executed through a [test suite](/en/wiki/test-suite/). The goal is to ensure that each line of code has been tested at least once, which helps in identifying parts of the code that have not been exercised by the [test cases](/en/wiki/test-case/).
@@ -214,11 +210,7 @@ Evaluation of software's internal coding and architecture. It emphasizes securit
   [Path testing](/en/wiki/path-testing/) is closely related to **branch coverage** but takes it further by looking at sequences of branches, which can reveal more complex [bugs](/en/wiki/bug/). It's particularly useful for critical code where every possible scenario must be tested, such as financial transactions or life-critical systems.
   To automate [path testing](/en/wiki/path-testing/), testers often write unit tests that target specific paths through the code. This can be done manually or with the help of tools that generate [test cases](/en/wiki/test-case/) from the CFG. Effective [path testing](/en/wiki/path-testing/) requires a deep understanding of the code's logic and can be time-consuming, as the number of possible paths can grow exponentially with the complexity of the code.
 
-  1. **Analyze the CFG**
-    to find all the possible paths.
 
-  2. **Define [test cases](/en/wiki/test-case/)**
-    that will execute each path.
 
   3. **Run the tests**
     and compare the actual outcome with the expected outcome.
@@ -238,7 +230,6 @@ Evaluation of software's internal coding and architecture. It emphasizes securit
   - **[Mutation Testing](/en/wiki/mutation-testing/)** : Modifying the program's source code in small ways to check if the existing test cases can detect these intentional faults.
   - **[API Testing](/en/wiki/api-testing/)** : Directly testing APIs to verify that they meet expectations for functionality, reliability, performance, and security.
   Each type targets specific aspects of the codebase and helps in identifying different kinds of issues that could affect the software's functionality, performance, or security.
-
 
 ### Tools and Implementation
 
@@ -298,7 +289,6 @@ Evaluation of software's internal coding and architecture. It emphasizes securit
   10. **Document Findings** : Record the outcomes of the testing process, including any defects found and the coverage achieved.
   Throughout the process, continuous integration can be leveraged to automate the execution of white box tests, ensuring immediate feedback on code changes. This integration is critical for maintaining code quality throughout the development lifecycle.
 
-
 #### What skills are required for effective White Box Testing?
 
   Effective white box testing requires a blend of technical skills and analytical abilities. Here are the key skills needed:
@@ -334,7 +324,6 @@ Evaluation of software's internal coding and architecture. It emphasizes securit
   - Implement **[test coverage](/en/wiki/test-coverage/) tools** like JaCoCo or Istanbul to ensure that tests cover a sufficient amount of the codebase, including branches and paths.
   - Develop **custom scripts** to test specific internal functions or to simulate certain conditions within the application.
   Automating white box tests requires a deep understanding of the codebase and may involve interfacing with [APIs](/en/wiki/api-testing/), [databases](/en/wiki/database/), or other internal components. It's crucial to maintain these tests as the application evolves to ensure they remain effective and relevant.
-
 
 ### Case Studies and Scenarios
 
@@ -375,7 +364,6 @@ Evaluation of software's internal coding and architecture. It emphasizes securit
   7. **[Mutation Testing](/en/wiki/mutation-testing/)**: The code is modified (mutated) to check if existing tests can detect the changes. This ensures the robustness of the [test suite](/en/wiki/test-suite/).
   Each example leverages the tester's knowledge of the internal workings of the software to design and execute tests, aiming to thoroughly validate the code's logic, functionality, and performance.
 
-
 #### How would you apply White Box Testing in a microservices architecture?
 
   Applying **White Box Testing** in a microservices architecture involves understanding the internal structure and workings of each service. Since microservices are designed to be loosely coupled and independently deployable, white box testing should be focused on the **unit** and **integration** levels.
@@ -388,7 +376,6 @@ Evaluation of software's internal coding and architecture. It emphasizes securit
   - **Performance** : Analyze the service's performance, especially when dealing with shared resources or high-load scenarios.
   - **Security** : Examine the service for potential security vulnerabilities, particularly those related to authentication, authorization, and data privacy.
   Automate these tests using CI/CD pipelines to run them against every change. This ensures that any issues are caught early and can be addressed before deployment. Remember to maintain **test independence** between services to avoid brittle tests that could fail due to unrelated changes in the ecosystem.
-
 
 #### What are some common challenges faced during White Box Testing and how can they be overcome?
 

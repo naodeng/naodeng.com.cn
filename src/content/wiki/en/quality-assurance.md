@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Quality Assurance](#quality-assurance)
-  - [See also:](#see-also)
   - [Questions about Quality Assurance?](#questions-about-quality-assurance)
     - [Basics and Importance](#basics-and-importance)
       - [What is Quality Assurance?](#what-is-quality-assurance)
@@ -45,7 +44,7 @@ order: 0
 
 Quality Assurance (QA) is a process ensuring the highest possible product or service quality. It emphasizes refining processes for consistent quality deliverables.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Quality_assurance)
 ## Questions about Quality Assurance?
@@ -194,7 +193,6 @@ Quality Assurance (QA) is a process ensuring the highest possible product or ser
 
   - **Assess the quality**
 
-  - **Faster feedback cycles**
 #### What are some examples of Quality Assurance tools?
 
   Quality Assurance (QA) tools are essential for ensuring that software meets certain standards of quality. Here are some examples of QA tools used in [test automation](/en/wiki/test-automation/):

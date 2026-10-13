@@ -136,8 +136,6 @@ State Transition testing is a black-box testing method that observes system beha
     the process to refine test cases and cover additional scenarios, including boundary conditions and error states.
   Use assertions to validate that the system is in the expected state after a transition. Implement [test scripts](/en/wiki/test-script/) that can handle asynchronous events if the system includes them. Integrate the automated state transition tests into the continuous testing pipeline to run them regularly, ensuring the system's state-related functionality remains intact after changes.
 
-  1. **Analyze the specification**
-
 #### What are the steps involved in State Transition Testing?
 
   State Transition Testing involves the following steps:
@@ -202,13 +200,6 @@ State Transition testing is a black-box testing method that observes system beha
     ```
   These techniques help in identifying defects that might not be caught through traditional [functional testing](/en/wiki/functional-testing/), ensuring robustness in the application's state management logic.
 
-  - **Valid State Transition Testing** : Focuses on the expected behavior of the system when it receives valid inputs in different states. This ensures that the system transitions correctly between states.
-  - **Invalid State Transition Testing** : Tests the system's response to unexpected or invalid inputs. This helps identify how the system handles exceptions or errors.
-  - **State Transition [Path Testing](/en/wiki/path-testing/)** : Involves testing sequences of transitions to ensure that paths through the state space are handled correctly.
-  - **Boundary Value Analysis** : Applied to state transitions to test the system at the boundaries between states, often where bugs are found.
-  - **Time-Dependent State Transition Testing** : Some systems have states that are time-dependent. Testing ensures that transitions occur as expected when time-based events are triggered.
-  - **State Transition Coverage** : Measures how many states and transitions have been exercised by the test suite to ensure thorough testing.
-  - **Data-Driven State Transition Testing** : Utilizes data sets to drive the inputs to the system, allowing for extensive and varied test scenarios.
 
 #### How do you create a State Transition Diagram?
 

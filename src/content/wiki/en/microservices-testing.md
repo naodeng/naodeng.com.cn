@@ -98,10 +98,6 @@ Microservices testing evaluates each individual microservice's functionality, en
     playing a significant role in automating the testing process, as they enable continuous testing and deployment of individual services.
   Overall, microservices testing requires a more granular approach, with a focus on individual service functionality, inter-service communication, and maintaining a stable system despite the independent deployment of services.
 
-  - **[Integration testing](/en/wiki/integration-testing/)**
-
-  - **Increased complexity**
-
 ### Testing Strategies
 
 #### What are the different strategies for testing microservices?
@@ -218,9 +214,6 @@ Microservices testing evaluates each individual microservice's functionality, en
     and
     **Zipkin** : For distributed tracing, helping to monitor and troubleshoot transactions across microservices.
   These tools are integrated into various stages of the development and deployment pipeline, aiding in the continuous testing and delivery of microservices. They are chosen based on the specific needs of the testing strategy, such as [API](/en/wiki/api-testing/) validation, [load testing](/en/wiki/load-testing/), service virtualization, or end-to-end [verification](/en/wiki/verification/).
-
-  - **[Postman](/en/wiki/postman/)**
-    and
 
 #### How can Docker be used in microservices testing?
 

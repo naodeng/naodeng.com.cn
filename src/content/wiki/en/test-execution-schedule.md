@@ -230,8 +230,6 @@ This schedule orchestrates sequential test steps, either at preset times or upon
   By implementing these strategies, test automation engineers can effectively overcome the challenges associated with creating and managing a Test Execution Schedule.
 
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### What are some common mistakes made when creating a Test Execution Schedule and how can they be avoided?
 
   Common mistakes in creating a Test Execution Schedule can be avoided with careful planning and realistic expectations:
@@ -275,8 +273,6 @@ This schedule orchestrates sequential test steps, either at preset times or upon
   - **Review and adjust**
     the schedule regularly based on feedback and the actual pace of testing. Continuous improvement can help refine future schedules.
   By focusing on these strategies, [test automation](/en/wiki/test-automation/) engineers can enhance the likelihood of adhering to a Test Execution Schedule, ensuring that testing is both thorough and timely.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 ### Advanced Concepts
 

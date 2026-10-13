@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [确认测试 ｜ Validation Testing](#确认测试--validation-testing)
-  - [相关术语](#相关术语)
   - [有关验证测试的问题吗？](#有关验证测试的问题吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [软件测试中的验证测试是什么？](#软件测试中的验证测试是什么)
@@ -45,7 +44,7 @@ order: 0
 <!-- TOC END -->
 对特定开发阶段要求的评估，确保最终产品符合客户期望。
 
-## 相关术语
+相关术语
 
 - [验证 ](/zh-cn/wiki/verification/)
 
@@ -73,10 +72,9 @@ order: 0
 
 [验证 ](/zh-cn/wiki/verification/) 测试和[验证测试](/zh-cn/wiki/validation-testing/) 是[软件测试](/zh-cn/wiki/software-testing/) 中的两个不同阶段，具有不同的目标：
 
-- **[验证 ](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[检查s](/zh-cn/wiki/inspection/)、演练和案头检查。
+- **[验证 ](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[检查](/zh-cn/wiki/inspection/)、演练和案头检查。
 - **[验证测试](/zh-cn/wiki/validation-testing/)** 另一方面，是评估最终产品以检查其是否满足业务需求和要求的过程。这是关于“我们正在制造正确的产品吗？”验证是通过执行来测试真实产品的动态过程。它涉及实际测试，并在 [verifications](/zh-cn/wiki/verification/) 完成后进行。 主要区别在于它们的重点：[验证 ](/zh-cn/wiki/verification/) 是关于开发过程中指定要求的一致性和遵守，而验证是关于产品的功能及其在现实场景中预期用途的适用性。 [验证 ](/zh-cn/wiki/verification/) 回答了设计的一致性问题，而验证则解决了产品在解决问题或满足需求方面的有效性。
 
-- **[验证 ](/zh-cn/wiki/verification/) 测试**是评估开发阶段的工作产品以确保它们满足指定要求的过程。 [验证 ](/zh-cn/wiki/verification/) 通常被称为“我们构建的产品正确吗？”它是一种检查文档、设计、代码和程序的静态方法。它涉及审查、[检查s](/zh-cn/wiki/inspection/)、演练和案头检查。
 - **[验证测试](/zh-cn/wiki/validation-testing/)** 另一方面，是评估最终产品以检查其是否满足业务需求和要求的过程。这是关于“我们正在制造正确的产品吗？”验证是通过执行来测试真实产品的动态过程。它涉及实际测试，并在 [verifications](/zh-cn/wiki/verification/) 完成后进行。
 
 #### 验证测试在软件开发生命周期 (SDLC) 中的作用是什么？
@@ -84,7 +82,7 @@ order: 0
 [验证测试](/zh-cn/wiki/validation-testing/) 充当软件产品发布到市场之前的**最终检查点**。在 SDLC 中，它确保软件满足**业务需求**和**用户需求**，确认产品提供预期价值。
   在 SDLC 的**后期阶段**，[验证测试](/zh-cn/wiki/validation-testing/) 是在 [验证 ](/zh-cn/wiki/verification/) 活动（例如单元和 [集成测试](/zh-cn/wiki/integration-testing/)）完成之后进行的。它侧重于**用户视角**而不是代码正确性，验证软件**适合目的**并且行为符合最终用户的期望。
   在**敏捷环境**中，[验证测试](/zh-cn/wiki/validation-testing/) 集成到**sprints** 或[迭代](/zh-cn/wiki/iteration/) 中，允许持续反馈和调整。这种迭代方法有助于及早发现问题，并在整个开发过程中使软件与用户需求保持一致。
-  自动化在[验证测试](/zh-cn/wiki/validation-testing/) 中发挥着至关重要的作用，它可以**加快**流程并增加**[测试覆盖率](/zh-cn/wiki/test-coverage/)**。自动化验证测试可以频繁且一致地运行，确保新的更改不会破坏现有功能。
+  自动化在[验证测试](/zh-cn/wiki/validation-testing/) 中发挥着至关重要的作用，它可以**加快**流程并增加 **[测试覆盖率](/zh-cn/wiki/test-coverage/)**。自动化验证测试可以频繁且一致地运行，确保新的更改不会破坏现有功能。
   [验证测试](/zh-cn/wiki/validation-testing/) 在 SDLC 中的作用不仅是发现缺陷，而且还**提高质量**。它为软件的可靠性和可用性提供了**信心**，这对于实现客户满意度和保持市场竞争优势至关重要。
 
 #### 验证测试如何提高软件质量？
@@ -102,7 +100,7 @@ order: 0
 不同类型的 [验证测试](/zh-cn/wiki/validation-testing/) 包括：
 
 - **[功能测试](/zh-cn/wiki/functional-testing/)** ：确保软件在所有情况下都按预期运行，包括边缘情况。
-- **[非功能测试](/zh-cn/wiki/non-functional-testing/)** ：验证系统的性能、可用​​性、可靠性和安全性。
+- **[非功能测试](/zh-cn/wiki/non-functional-testing/)** ：验证系统的性能、可用性、可靠性和安全性。
 - **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：与实际用户一起进行，以确保软件满足他们的要求并准备好部署。
 - **[系统测试](/zh-cn/wiki/system-testing/)** ：检查完整且集成的软件以验证其是否满足指定要求。
 - **[集成测试](/zh-cn/wiki/integration-testing/)** ：确保应用程序使用的不同模块或服务能够很好地协同工作。
@@ -136,13 +134,13 @@ order: 0
 
 #### 静态验证测试和动态验证测试有什么区别？
 
-静态[验证测试](/zh-cn/wiki/validation-testing/)涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[检查s](/zh-cn/wiki/inspection/) 以及文档和代码分析（如语法检查和 linter）。目标是及早发现缺陷。
+静态[验证测试](/zh-cn/wiki/validation-testing/)涉及在不执行代码的情况下检查软件的工件。它包括评论、演练、[检查](/zh-cn/wiki/inspection/) 以及文档和代码分析（如语法检查和 linter）。目标是及早发现缺陷。
   另一方面，动态 [验证测试](/zh-cn/wiki/validation-testing/) 需要在实时环境中运行软件以验证其行为是否符合预期。它包括各种类型的测试，例如单元、集成、系统和[验收测试](/zh-cn/wiki/acceptance-testing/)。此方法检查应用程序的运行时行为，包括内存使用情况、CPU 消耗和整体性能。
   从本质上讲，**静态验证**是关于预防，在代码运行之前确保质量，而**动态验证**是关于检测，在执行期间或之后识别问题。静态方法通常在资源方面成本较低，因为它们不需要正在运行的系统，但它们可能会错过运行时特定的缺陷。动态方法可以揭示仅在软件运行时发生的复杂交互和故障，但需要更多 [环境搭建](/zh-cn/wiki/setup/) 和执行时间。两者是互补的，对于彻底的验证过程至关重要。
 
 #### 功能验证测试与非功能验证测试有何不同？
 
-功能@@PR​​OTECTED_127@@ 侧重于验证软件的行为是否符合其指定的要求。它确保应用程序的每个功能都按照所需的行为运行。测试基于用户场景，涵盖用户命令、数据操作和业务流程。这包括检查用户界面、[API](/zh-cn/wiki/api/)、[数据库](/zh-cn/wiki/database/)、安全性、客户端/服务器应用程序和软件功能。
+功能测试 侧重于验证软件的行为是否符合其指定的要求。它确保应用程序的每个功能都按照所需的行为运行。测试基于用户场景，涵盖用户命令、数据操作和业务流程。这包括检查用户界面、[API](/zh-cn/wiki/api/)、[数据库](/zh-cn/wiki/database/)、安全性、客户端/服务器应用程序和软件功能。
   另一方面，非功能性[验证测试](/zh-cn/wiki/validation-testing/) 评估与软件的特定行为或功能无关的方面。它包括性能、可扩展性、可靠性、可用性和标准合规性测试。非功能测试关注的是系统如何运行而不是它做什么。例如，[性能测试](/zh-cn/wiki/performance-testing/) 检查系统在特定负载下是否快速响应，而[可用性测试](/zh-cn/wiki/usability-testing/) 则评估界面的用户友好程度。
   本质上，[功能测试](/zh-cn/wiki/functional-testing/) 回答“它做了它应该做的事情吗？”而[非功能测试](/zh-cn/wiki/non-functional-testing/) 则回答“它是否足以满足用户的需求？”两者对于交付优质产品都至关重要，但它们侧重于软件系统的不同质量属性。
 
@@ -173,27 +171,6 @@ order: 0
 - 检查预期结果
 - 记录测试用例的结果
 - 记录任何差异的缺陷
-- 输入有效和无效数据
-- 检查预期结果
-- 记录测试用例的结果
-- 记录任何差异的缺陷
-6. **缺陷跟踪**：监控和跟踪测试过程中发现的缺陷。使用缺陷跟踪系统来管理缺陷生命周期。
-7. **[重新测试](/zh-cn/wiki/retesting/) 和[回归测试](/zh-cn/wiki/regression-testing/)**：修复缺陷后，重新测试特定功能并执行[回归测试](/zh-cn/wiki/regression-testing/) 以确保新更改不会对现有功能产生不利影响。
-8. **结果分析**：根据预期结果评估测试结果，以确定软件是否按预期运行。
-9. **测试结束**：编写测试结束报告，总结测试活动、结果和任何未解决的问题。
-10. **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：促进UAT确认软件满足用户需求并准备好部署。
-11. **最终验证**：确保满足所有验证标准并且软件已准备好发布。 在整个过程中，与利益相关者保持清晰的沟通，并确保所有测试工件都记录在案并可供将来参考。
-
-1. **需求分析**：了解并分析用户对准确性和可测试性的需求。
-2. **测试计划**：定义测试范围、目标、资源、时间表和可交付成果。
-3. **测试设计**：创建符合用户要求的详细[测试用例](/zh-cn/wiki/test-case/) 和[测试场景](/zh-cn/wiki/test-scenario/)。
-4. **[测试环境](/zh-cn/wiki/test-environment/) [环境搭建](/zh-cn/wiki/setup/)**：配置执行测试所需的硬件和软件环境。
-5. **[测试执行](/zh-cn/wiki/test-execution/)**：手动或使用自动化工具运行[测试用例](/zh-cn/wiki/test-case/)。该步骤包括：
-6. **缺陷跟踪**：监控和跟踪测试过程中发现的缺陷。使用缺陷跟踪系统来管理缺陷生命周期。
-7. **[重新测试](/zh-cn/wiki/retesting/) 和[回归测试](/zh-cn/wiki/regression-testing/)**：修复缺陷后，重新测试特定功能并执行[回归测试](/zh-cn/wiki/regression-testing/) 以确保新更改不会对现有功能产生不利影响。
-8. **结果分析**：根据预期结果评估测试结果，以确定软件是否按预期运行。
-9. **测试结束**：编写测试结束报告，总结测试活动、结果和任何未解决的问题。
-10. **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：促进UAT确认软件满足用户需求并准备好部署。
 11. **最终验证**：确保满足所有验证标准并且软件已准备好发布。
 
 #### 敏捷开发中验证测试是如何实施的？
@@ -209,12 +186,6 @@ order: 0
 7. **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：利益相关者在模拟真实使用情况的环境中测试软件，以验证它是否满足他们的需求。
 8. **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：测试人员在没有预定义测试的情况下积极探索软件，以发现自动化测试可能遗漏的问题。 敏捷团队经常使用 **[selenium](/zh-cn/wiki/selenium/)**、**Cucumber** 或 **SpecFlow** 等工具来自动化验证测试。关键是将[验证测试](/zh-cn/wiki/validation-testing/) 无缝集成到开发工作流程中，确保反馈快速且可操作，从而产生满足用户期望的高质量软件。
 
-1. **定义验收标准**：在编码开始之前，团队定义成功的功能应该做什么，通常是带有验收标准的用户故事。
-2. **持续集成（CI）**：开发人员经常将代码更改合并到共享存储库中，触发自动化构建和测试，包括验证测试。
-3. **[测试驱动开发](/zh-cn/wiki/test-driven-development/) (TDD)**：开发人员在实际代码之前编写测试，确保每个功能从一开始就满足验收标准。
-4. **行为驱动开发 ([BDD](/zh-cn/wiki/bdd/))**：通过以非技术利益相关者可以理解的自然语言描述功能来扩展 TDD，然后将其转换为自动验证测试。
-5. **自动化[回归测试](/zh-cn/wiki/regression-testing/)**：随着新功能的添加，自动化回归测试可确保现有功能仍然有效。
-6. **冲刺评审/演示**：在每个冲刺结束时，团队向利益相关者演示工作软件，提供反馈和验证的机会。
 7. **[用户验收测试](/zh-cn/wiki/user-acceptance-testing/) (UAT)**：利益相关者在模拟实际使用的环境中测试软件，以验证它是否满足他们的需求。
 8. **[探索性测试](/zh-cn/wiki/exploratory-testing/)**：测试人员在没有预定义测试的情况下积极探索软件，以发现自动化测试可能遗漏的问题。
 
@@ -291,15 +262,7 @@ order: 0
   ```
 这些工具有助于自动执行[测试用例](/zh-cn/wiki/test-case/)，确保软件满足其要求并按预期运行。
 
-- **[selenium](/zh-cn/wiki/selenium/)** ：用于自动化网络浏览器的开源工具。它支持多种语言和框架。
-- **Appium** ：将 Selenium 的框架扩展到移动应用程序（Android 和 iOS）。
-- **[JMeter](/zh-cn/wiki/jmeter/)** ：用于性能测试，还可以验证 Web 服务的功能。
-- **[Postman](/zh-cn/wiki/postman/)** ：API 测试工具，确保 API 满足验证标准。
 - **HP UFT (Unified [功能测试](/zh-cn/wiki/functional-testing/))**：一种具有可视化界面的功能和回归测试商业工具。
-- **TestComplete**：为桌面、移动和 Web 应用程序测试提供一套全面的功能。
-- **Cucumber** ：支持具有简单语言规范的行为驱动开发（BDD）。
-- **SoapUI**：专门测试 SOAP 和 REST Web 服务的功能和安全性。
-- **Robot Framework**：关键字驱动的验收测试和验收测试驱动开发（ATDD）方法。
 
 #### 如何编写验证测试用例？
 
@@ -308,9 +271,6 @@ order: 0
 1. **识别[测试场景](/zh-cn/wiki/test-scenario/)**：确定[测试用例](/zh-cn/wiki/test-case/) 将验证哪些功能或要求。
 2. **定义测试目标**：明确说明[测试用例](/zh-cn/wiki/test-case/) 旨在证明或反驳什么。
 3. **设计[测试用例](/zh-cn/wiki/test-case/)**：
-- **输入数据**：指定执行测试所需的输入数据。
-- **执行步骤**：概述测试期间要遵循的步骤。
-- **[预期结果](/zh-cn/wiki/expected-result/)** ：描述软件按预期运行时的预期结果。
 - **输入数据**：指定执行测试所需的输入数据。
 - **执行步骤**：概述测试期间要遵循的步骤。
 - **[预期结果](/zh-cn/wiki/expected-result/)** ：描述软件按预期运行时的预期结果。
@@ -334,24 +294,6 @@ order: 0
 8. **验证结果**：将[实际结果](/zh-cn/wiki/actual-result/) 与[预期结果](/zh-cn/wiki/expected-result/) 进行比较，以确定测试是否通过。
 9. **文档**：记录[测试用例](/zh-cn/wiki/test-case/)、执行详细信息和结果，以供将来参考和报告。 请记住保持[测试用例](/zh-cn/wiki/test-case/) **独立**和**可重复**，确保它们可以在不依赖外部因素的情况下执行，并且可以使用相同的[预期结果](/zh-cn/wiki/expected-result/)多次运行。
 
-1. **识别[测试场景](/zh-cn/wiki/test-scenario/)**：确定[测试用例](/zh-cn/wiki/test-case/) 将验证哪些功能或要求。
-2. **定义测试目标**：明确说明[测试用例](/zh-cn/wiki/test-case/) 旨在证明或反驳什么。
-3. **设计[测试用例](/zh-cn/wiki/test-case/)**：
-4. **设置[测试环境](/zh-cn/wiki/test-environment/)**：确保环境与软件的使用条件相匹配。
-5. **自动化[测试用例](/zh-cn/wiki/test-case/)**：
-
-  ```
-    // Example pseudocode for a login functionality test case
-    describe("Login Functionality", () => {
-      it("should allow a user with valid credentials to log in", () => {
-        navigateToLoginPage();
-        enterCredentials("validUser", "validPassword");
-        clickLoginButton();
-        expect(isLoggedIn()).toBeTruthy();
-      });
-    });
-  ```
-
 #### 自动化如何应用于验证测试？
 
 可以在[验证测试](/zh-cn/wiki/validation-testing/)中应用自动化来**简化**确保软件满足用户期望和要求的过程。通过自动化[测试用例](/zh-cn/wiki/test-case/)，团队可以更高效、更一致地**执行重复性任务**。以下是将自动化集成到[验证测试](/zh-cn/wiki/validation-testing/) 中的方法：
@@ -373,14 +315,6 @@ order: 0
 6. **使用仪表板和报告工具监控和分析测试结果**，以快速识别故障和关注领域。
 7. **定期完善和维护**自动化测试，以适应应用程序中的新要求和变化。 通过遵循这些步骤，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[验证测试](/zh-cn/wiki/validation-testing/) 既**有效**又**高效**，从而有助于交付高质量的软件。
 
-  ```
-    describe('User Login', () => {
-      it('should allow a user to log in with valid credentials', () => {
-        // Automated test code here
-      });
-    });
-  ```
-
 ### 挑战和最佳实践
 
 #### 验证测试中常见的挑战有哪些？
@@ -401,16 +335,6 @@ order: 0
 - **法规遵从性**：确保软件满足所有法规要求可能会给验证测试增加额外的复杂性。 应对这些挑战通常需要结合战略规划、稳健的测试设计、有效的工具和持续的流程改进。
 
 - **[测试环境](/zh-cn/wiki/test-environment/) 不匹配**：测试和生产环境之间的差异可能会导致错误的测试结果。
-- **数据复杂性**：制作真实且全面的测试数据集很困难，特别是对于处理大量数据的系统。
-- **用户行为模拟**：准确模拟用户行为和交互可能具有挑战性，因为它需要了解人类行为的细微差别。
-- **更改需求**：需求的频繁更改可能会导致范围蔓延和过时的测试，需要不断的测试维护。
-- **集成依赖性**：由于这些系统的可用性和控制，测试与外部系统的集成可能会出现问题。
-- **资源限制**：有限的时间、预算和人员可能会限制验证测试的彻底性。
-- **非功能方面**：性能、安全性和可用性方面通常比功能需求更难验证。
-- **工具限制**：测试自动化工具在技术支持方面可能存在限制，或者可能无法完全复制用户交互。
-- **不稳定**：测试可能会不稳定，由于时序问题、异步操作或环境不稳定而提供不确定的结果。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)** ：实现足够的测试覆盖率以确保应用程序的所有方面都得到验证可能是令人畏惧的。
-- **反馈循环**：针对验证测试期间发现的问题建立快速反馈循环可能很复杂，尤其是在大型组织中。
 - **法规遵从性**：确保软件满足所有法规要求可能会给验证测试增加额外的复杂性。
 
 #### 有效验证测试的最佳实践是什么？
@@ -421,7 +345,7 @@ order: 0
 
 - **与利益相关者合作**使测试目标与业务目标保持一致。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响，首先关注关键功能。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于风险和影响，首先关注关键功能。
 
 - **保持可追溯性**需求、测试用例和缺陷之间的关系，以确保覆盖范围和责任。
 
@@ -429,13 +353,13 @@ order: 0
 
 - **实施持续测试**在 CI/CD 管道中尽早并经常发现问题。
 
-- **利用[测试环境](/zh-cn/wiki/test-environment/)**即镜面制作，确保测试结果真实。
+- **利用[测试环境](/zh-cn/wiki/test-environment/)** 即镜面制作，确保测试结果真实。
 
 - **自动化回归测试**快速验证现有功能是否不受更改影响。
 
-- **执行[探索性测试](/zh-cn/wiki/exploratory-testing/)**与结构化测试一起发现意外问题。
+- **执行[探索性测试](/zh-cn/wiki/exploratory-testing/)** 与结构化测试一起发现意外问题。
 
-- **定期审查和更新[测试用例](/zh-cn/wiki/test-case/)**随着应用程序的发展保持它们的相关性。
+- **定期审查和更新[测试用例](/zh-cn/wiki/test-case/)** 随着应用程序的发展保持它们的相关性。
 
 - **监控和分析测试结果**确定趋势和需要改进的领域。
 
@@ -447,63 +371,37 @@ order: 0
 
 - **随时了解测试工具和实践的最新动态**利用测试自动化的进步。 通过遵循这些实践，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[验证测试](/zh-cn/wiki/validation-testing/) 彻底、高效，并符合软件的预期用途和用户期望。
 
-- **了解用户期望**确保测试反映真实世界的使用情况。
-
-- **与利益相关者合作**使测试目标与业务目标保持一致。
-
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响，首先关注关键功能。
-
-- **保持可追溯性**需求、测试用例和缺陷之间的关系，以确保覆盖范围和责任。
-
-- **使用数据驱动测试**使用各种输入组合进行验证以获得更广泛的覆盖范围。
-
-- **实施持续测试**在 CI/CD 管道中尽早并经常发现问题。
-
-- **利用[测试环境](/zh-cn/wiki/test-environment/)**即镜面制作，确保测试结果真实。
-
-- **自动化回归测试**快速验证现有功能是否不受更改影响。
-
-- **执行[探索性测试](/zh-cn/wiki/exploratory-testing/)**与结构化测试一起发现意外问题。
-
-- **定期审查和更新[测试用例](/zh-cn/wiki/test-case/)**随着应用程序的发展保持它们的相关性。
-
-- **监控和分析测试结果**确定趋势和需要改进的领域。
-
-- **有效管理[测试数据](/zh-cn/wiki/test-data/)** ，确保其具有代表性、安全性并符合法规。
-
-- **记录并沟通**测试结果清晰，有利于快速决策。
-
-- **投资于培训和知识共享**使测试团队保持熟练和知情。
-
 - **随时了解测试工具和实践的最新动态**利用测试自动化的进步。
 
 #### 如何优化验证测试以提高效率？
 
 优化[验证测试](/zh-cn/wiki/validation-testing/)以提高效率涉及多种策略：
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。专注于影响应用程序最重要方面的关键功能。
+- **优先考虑[测试用例](/zh-cn/wiki/test-case/)** 基于风险和影响。专注于影响应用程序最重要方面的关键功能。
 
 - **自动化重复任务**以节省时间并减少人为错误。使用脚本和工具自动执行测试用例、数据设置和结果验证。
 
-// 使用测试框架的自动化 [测试用例](/zh-cn/wiki/test-case/) 示例
-  描述('登录功能', () => {
-  it('应该允许用户使用有效凭据登录', async () => {
-  等待登录页面.enterCredentials('用户', '密码');
-  期望（等待仪表板页面.isUserLoggedIn（））。toBe（true）;
+  ```javascript
+  import { test, expect } from "@playwright/test";
+
+  test("validates login", async ({ page }) => {
+    await page.goto("/login");
+    await page.getByLabel("Username").fill("user");
+    await page.getByLabel("Password").fill("password");
+    await page.getByRole("button", { name: "Log in" }).click();
+    await expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible();
   });
+  ```
 
-- Implement **continuous integration** (CI) to automatically run validation tests on new code commits, ensuring immediate feedback.
-- Use **service virtualization** to simulate dependent systems, allowing tests to run without waiting for actual integrations to be available.
-- **Parallelize tests** to run simultaneously across different environments or machines, reducing the overall execution time.
-- **Review and maintain** test cases regularly to remove redundancies and ensure they remain relevant with application changes.
-- Apply **smart test selection** techniques, such as test case prioritization and test suite minimization, to run only the necessary tests.
-- **Monitor and analyze** test results to identify patterns and areas for improvement, using metrics like test coverage and defect density.
-- **Leverage AI and machine learning** to predict high-risk areas and optimize the test suite accordingly.
-By implementing these strategies, test automation engineers can enhance the efficiency of validation testing, leading to faster release cycles and higher-quality software.
+- **接入持续集成（CI）**：在新代码提交时自动运行验证测试，及时反馈结果。
+- **使用服务虚拟化**：模拟依赖系统，避免等待实际集成环境就绪。
+- **并行运行测试**：在不同环境或机器上同时执行测试，缩短总耗时。
+- **定期审查和维护测试用例**：删除冗余内容，并根据应用变更保持测试相关性。
+- **智能选择测试**：通过用例优先级排序、测试套件缩减等方式，只运行当前必要的测试。
+- **监控并分析结果**：利用覆盖率、缺陷密度等指标识别趋势和改进空间。
+- **适度使用 AI 和机器学习**：预测高风险区域，并据此优化测试套件。
 
-- **优先考虑[测试用例](/zh-cn/wiki/test-case/)**基于风险和影响。专注于影响应用程序最重要方面的关键功能。
-
-- **自动化重复任务**以节省时间并减少人为错误。使用脚本和工具自动执行测试用例、数据设置和结果验证。
+这些策略可以提升验证测试的效率，帮助缩短发布周期并改善软件质量。
 
 #### 如何处理验证测试中的误报和漏报？
 
@@ -521,14 +419,6 @@ By implementing these strategies, test automation engineers can enhance the effi
 - **日志记录和监控**：在测试中实施详细的日志记录和监控，以提供失败的上下文，帮助区分真假结果。 通过应用这些策略，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以最大限度地减少[误报](/zh-cn/wiki/false-positive/) 和负面影响的发生，确保[验证测试](/zh-cn/wiki/validation-testing/) 保持可靠和有效。
 
 - **审查[测试用例](/zh-cn/wiki/test-case/) 和结果**：定期分析失败的测试以区分实际缺陷和[误报](/zh-cn/wiki/false-positive/)。对于[假阴性](/zh-cn/wiki/false-negative/)，确保测试足够敏感以捕获故障。
-- **提高测试准确性**：细化[测试脚本](/zh-cn/wiki/test-script/)和验证标准。使用精确的断言并通过等待元素加载或使用显式等待来避免 [片状测试](/zh-cn/wiki/flaky-test/)。
-- **数据驱动测试**：使用各种真实的数据集来减少忽略缺陷 ([假阴性](/zh-cn/wiki/false-negative/)) 或发出不必要的警报 ([误报](/zh-cn/wiki/false-positive/)) 的机会。
-- **持续集成 (CI)**：将测试集成到 CI 管道中以频繁运行它们并尽早发现问题。
-- **[测试环境](/zh-cn/wiki/test-environment/) 稳定性**：确保[测试环境](/zh-cn/wiki/test-environment/) 密切反映生产环境，以减少可能导致错误结果的差异。
-- **根本原因分析**：当出现错误结果时，执行彻底的根本原因分析，以防止将来出现类似问题。
-- **定期更新和维护**：使 [测试用例](/zh-cn/wiki/test-case/) 和自动化框架与应用程序更改保持同步，以防止过时的测试生成错误结果。
-- **同行评审**：对 [测试用例](/zh-cn/wiki/test-case/) 和自动化脚本进行同行评审，以捕获错误结果的潜在来源。
-- **阈值和容差**：为某些测试设置可接受的阈值，以允许不影响功能的微小变化。
 - **日志记录和监控**：在测试中实施详细的日志记录和监控，以提供失败的上下文，帮助区分真假结果。
 
 #### 哪些指标可用于评估验证测试的有效性？
@@ -561,13 +451,5 @@ By implementing these strategies, test automation engineers can enhance the effi
 
 - **不稳定分数**：通过跟踪一段时间内间歇性故障的频率来量化测试结果的可靠性。 每个指标都应该在项目的具体目标和约束的背景下进行分析。结合多个指标可以对[验证测试](/zh-cn/wiki/validation-testing/) 有效性进行更全面的评估。
 
-- **缺陷检测有效性 (DDE)**：衡量验证测试期间发现的实际缺陷与发布后发现的缺陷总数的百分比。 DDE 越高表示测试越有效。
-- **[测试覆盖率](/zh-cn/wiki/test-coverage/)**：评估验证测试覆盖需求、用户故事或代码的程度。使用覆盖率工具来量化该指标。
-- **缺陷密度**：计算每个尺寸单位（例如每个 KLOC 或每个功能点）在软件中发现的缺陷数量。缺陷密度越低表明质量越好。
-- **[测试执行](/zh-cn/wiki/test-execution/) 时间**：跟踪运行验证[测试套件](/zh-cn/wiki/test-suite/) 所需的时间。在不影响覆盖范围的情况下优化执行时间对于效率至关重要。
-- **通过/失败率**：表示通过的测试与执行的测试总数的比率。高通过率可能反映了测试的有效性，但要考虑上下文和测试质量。
-- **按[严重性](/zh-cn/wiki/severity/) 和[Priority](/zh-cn/wiki/priority/)** 划分的缺陷：按影响和紧急程度细分已发现的缺陷。优先考虑高[严重性](/zh-cn/wiki/severity/) 缺陷可以提高测试工作的重点和有效性。
-- **平均检测时间 (MTTD)**：测量 [验证测试](/zh-cn/wiki/validation-testing/) 期间检测缺陷所需的平均时间。较短的 MTTD 表明更有效[测试用例](/zh-cn/wiki/test-case/)。
-- **平均修复时间 (MTTR)**：修复缺陷所需的平均时间。更快的 MTTR 可以建议更好的开发和测试协作。
 - **自动化测试成功率**：专门针对自动化[验证测试](/zh-cn/wiki/validation-testing/)，此指标跟踪每次运行通过的自动化测试的百分比。
 - **不稳定分数**：通过跟踪一段时间内间歇性故障的频率来量化测试结果的可靠性。

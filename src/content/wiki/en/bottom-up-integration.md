@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Bottom-up Integration](#bottom-up-integration)
-  - [Related Terms:](#related-terms)
   - [Questions about Bottom-up Integration?](#questions-about-bottom-up-integration)
     - [Basics and Importance](#basics-and-importance)
       - [What is bottom-up integration?](#what-is-bottom-up-integration)
@@ -45,7 +44,7 @@ order: 0
 
 Bottom-up integration testing starts by testing lower-level modules first, then integrates and tests them with higher-level ones. During this process, "Drivers" may be used to assist in testing.
 
-## Related Terms:
+Related Terms:
 
 - [Top-Down Integration](/en/wiki/top-down-integration/)
 
@@ -290,12 +289,6 @@ Bottom-up integration testing starts by testing lower-level modules first, then 
   - **End-to-end tests**: Once the system is fully integrated from the bottom up, conduct end-to-end tests to validate the complete system functionality.
   By following these strategies, you can ensure that each component is robust on its own and behaves correctly when integrated, leading to a reliable and maintainable system.
 
-  - **Start with unit tests** : Write comprehensive unit tests for the lowest-level modules. Use a unit testing framework appropriate for the language and environment you're working in.
-  - **Mock dependencies** : Since higher-level modules are not integrated yet, use
-    **mocks**
-    or
-    **stubs**
-    to simulate the behavior of dependent modules.
 
 ### Advanced Concepts
 
@@ -378,8 +371,3 @@ Bottom-up integration testing starts by testing lower-level modules first, then 
 
   - **Strengthened foundation**
     for the application, leading to fewer system-wide issues.
-
-  - **Early detection**
-    of defects at the unit level.
-
-  - **Incremental [test coverage](/en/wiki/test-coverage/)**

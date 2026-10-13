@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Test Management](#test-management)
-  - [Related Terms:](#related-terms)
   - [Questions about Test Management?](#questions-about-test-management)
     - [Basics and Importance](#basics-and-importance)
       - [What is test management in software testing?](#what-is-test-management-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Test management supervises the testing processes, documentation, and other software aspects, ensuring thorough testing and high-quality software delivery.
 
-## Related Terms:
+Related Terms:
 
 - [Test Plan](/en/wiki/test-plan/)
 - [Test Observability](/en/wiki/test-observability/)
@@ -128,11 +127,6 @@ Test management supervises the testing processes, documentation, and other softw
   - **Tosca** : Also from Tricentis, focuses on continuous testing with a model-based test automation approach.
   - **SpiraTest** : Provides integrated test management and includes requirements and defect management features.
   These tools support various aspects of test management, such as [test case](/en/wiki/test-case/) creation, organization, execution tracking, and reporting. They often integrate with version control systems, continuous integration tools, and automation frameworks to streamline the testing process within the SDLC. When selecting a tool, consider factors like existing ecosystem, scalability, ease of integration, and specific features that align with your organization's needs.
-
-  - **[Jira](/en/wiki/jira/)**
-    with
-    **Xray**
-    or
 
 #### What are the key features to look for in a test management tool?
 
@@ -290,8 +284,6 @@ Test management supervises the testing processes, documentation, and other softw
   - **Document [test cases](/en/wiki/test-case/) and data**
     with clear descriptions and expected outcomes for better understanding and collaboration among team members.
   By following these practices, you can maintain a robust, efficient, and reliable [test automation](/en/wiki/test-automation/) suite that supports the [quality assurance](/en/wiki/quality-assurance/) process effectively.
-
-  - **Organize [test cases](/en/wiki/test-case/)**
 
 ### Integration with Other Processes
 

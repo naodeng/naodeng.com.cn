@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Functional Integration](#functional-integration)
-  - [Related Terms:](#related-terms)
   - [Questions about Functional Integration?](#questions-about-functional-integration)
     - [Basics and Importance](#basics-and-importance)
       - [What is functional integration in software testing?](#what-is-functional-integration-in-software-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Functional Integration relates products and services to an ecosystem to attract and retain customers.
 
-## Related Terms:
+Related Terms:
 
 - [Integration Testing](/en/wiki/integration-testing/)
 
@@ -183,8 +182,6 @@ Functional Integration relates products and services to an ecosystem to attract 
   - **Review and refine tests regularly**
     to adapt to changes in the system and remove obsolete or redundant tests.
   By following these practices, you can ensure that functional integration testing is efficient, effective, and contributes to the overall quality and reliability of the software product.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### How do you manage dependencies in functional integration testing?
 
@@ -369,5 +366,3 @@ Functional Integration relates products and services to an ecosystem to attract 
   **Continuous Integration (CI) pipelines** are configured to trigger these tests automatically upon code commits, ensuring immediate feedback on the integration status of the services.
   **Observability tools** are integrated to monitor the services and provide insights into the system's behavior, which is critical for diagnosing issues that may arise during testing.
   In summary, functional integration testing in microservices ensures that independently developed services work together seamlessly, maintaining system integrity and reliability.
-
-  - **[API testing](/en/wiki/api-testing/) tools**

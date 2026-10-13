@@ -1,6 +1,6 @@
 ---
 title: "Swagger ｜ Swagger"
-description: "Swagger 是一套供开发人员设计、构建、记载和使用 RESTful Web 服务的工具。它通过提供一种通用的语言，在不直接访问源码或文档的情况下，确保人类和计算机都能理解服务的功能，从而在 API 开发中发挥着至关重要的作用。API 开发中的重要性："
+description: "Swagger 是一套供开发人员设计、构建、记载和使用 RESTful Web 服务的工具。它通过提供一种通用的语言，在不直接访问源码或文档的情况下，确保人类和计算机都能理解服务的功能，从而在 API 开发中发挥着至关重要的作用。"
 section: "S"
 related:
   - postman
@@ -16,8 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Swagger ｜ Swagger](#swagger--swagger)
-  - [相关术语](#相关术语)
-    - [另请参阅：](#另请参阅)
   - [关于 Swagger 有疑问吗？](#关于-swagger-有疑问吗)
     - [基础知识和重要性](#基础知识和重要性)
       - [Swagger 是什么？为什么它在 API 开发中很重要？](#swagger-是什么为什么它在-api-开发中很重要)
@@ -47,12 +45,12 @@ order: 0
 
 昂首阔步现在通常称为 OpenAPI，是一组用于构建、设计和记录 RESTful 的工具和规范蜜蜂。它提供了一个标准的、与语言无关的 RESTful 接口蜜蜂，允许人类和计算机了解服务的功能，而无需访问其源代码或进一步详细的文档。
 
-## 相关术语
+相关术语
 
 - [API documentation](/zh-cn/wiki/swagger/)
 - [Postman](/zh-cn/wiki/postman/)
 
-### 另请参阅：
+另请参阅：
 
 - [Official Website](https://swagger.io/)
 ## 关于 Swagger 有疑问吗？
@@ -66,11 +64,11 @@ order: 0
 
 - **标准化：** Swagger 基于 OpenAPI 规范，提供了一种标准化的方式来描述 RESTful API，从而促进跨服务和平台的一致性。
 
-- **互操作性：**围绕 Swagger 构建的工具可以轻松解释和使用不同来源的 API，从而增强协作和集成。
+- **互操作性：** 围绕 Swagger 构建的工具可以轻松解释和使用不同来源的 API，从而增强协作和集成。
 
 - **自动化：** Swagger 能够生成客户端库、服务器存根和 API 文档，从而减少了手动编码并加速了开发过程。
 
-- **[质量保证](/zh-cn/wiki/quality-assurance/):**通过精确的 API 定义，测试变得更加高效，因为测试自动化工程师可以直接从 API 规范生成测试用例。
+- **[质量保证](/zh-cn/wiki/quality-assurance/):** 通过精确的 API 定义，测试变得更加高效，因为测试自动化工程师可以直接从 API 规范生成测试用例。
 
 - **能见度：** Swagger 的交互式文档允许开发人员可视化 API 的资源并与之交互，而无需任何实现逻辑。 从本质上讲，[swagger](/zh-cn/wiki/swagger/) 促进了团队成员之间更清晰的沟通、更高效的设计和测试阶段以及从设计到实现的更平稳过渡。它是现代 [API](/zh-cn/wiki/api/) 开发的基础工具，可实现更快、更可靠且可扩展的服务创建和维护。
 
@@ -89,7 +87,6 @@ order: 0
 - **SwaggerHub**：一个平台，汇集了所有 [swagger](/zh-cn/wiki/swagger/) 工具，并允许团队在 [API](/zh-cn/wiki/api/) 设计和文档方面进行协作，并具有版本控制和集成功能。 将[swagger](/zh-cn/wiki/swagger/) 集成到项目中通常涉及为[API](/zh-cn/wiki/api/) 文档设置[swagger](/zh-cn/wiki/swagger/) UI，使用[swagger](/zh-cn/wiki/swagger/) 编辑器进行[API](/zh-cn/wiki/api/) 设计，利用[swagger](/zh-cn/wiki/swagger/) Codegen 生成SDK，以及使用[swagger](/zh-cn/wiki/swagger/) Inspector 进行测试和验证。
 
 - **[swagger](/zh-cn/wiki/swagger/) Codegen**：根据 OpenAPI 规范生成服务器存根、客户端库和 [API](/zh-cn/wiki/api/) 文档的工具，支持多种语言和框架。
-- **[swagger](/zh-cn/wiki/swagger/) Inspector**：一种在线工具，允许开发人员直接从浏览器测试[API](/zh-cn/wiki/api/)，根据 OpenAPI 规范验证[API](/zh-cn/wiki/api/)。
 - **SwaggerHub**：一个平台，汇集了所有 [swagger](/zh-cn/wiki/swagger/) 工具，并允许团队在 [API](/zh-cn/wiki/api/) 设计和文档方面进行协作，并具有版本控制和集成功能。
 
 #### Swagger 如何帮助设计和记录 API？
@@ -120,7 +117,7 @@ order: 0
 #### Swagger 在 RESTful Web 服务中的作用是什么？
 
 [swagger](/zh-cn/wiki/swagger/) 通过提供用于描述 REST [API](/zh-cn/wiki/api/) 结构的标准化接口，在 **RESTful Web 服务** 中发挥着至关重要的作用。这使得人类和计算机都能够了解服务的功能，而无需直接访问源代码或文档。
-  对于[测试自动化](/zh-cn/wiki/test-automation/)、[swagger](/zh-cn/wiki/swagger/) 的意义在于它能够动态生成**客户端库**、**服务器存根**和**[API](/zh-cn/wiki/api/) 文档**。测试工程师可以利用它们来创建强大且可维护的[测试套件](/zh-cn/wiki/test-suite/)。 [swagger](/zh-cn/wiki/swagger/) 的详细[API](/zh-cn/wiki/api/) 描述允许自动生成测试，确保测试与[API](/zh-cn/wiki/api/) 的实际行为一致。
+  对于[测试自动化](/zh-cn/wiki/test-automation/)、[swagger](/zh-cn/wiki/swagger/) 的意义在于它能够动态生成**客户端库**、**服务器存根**和 **[API](/zh-cn/wiki/api/) 文档**。测试工程师可以利用它们来创建强大且可维护的[测试套件](/zh-cn/wiki/test-suite/)。 [swagger](/zh-cn/wiki/swagger/) 的详细[API](/zh-cn/wiki/api/) 描述允许自动生成测试，确保测试与[API](/zh-cn/wiki/api/) 的实际行为一致。
   使用[swagger](/zh-cn/wiki/swagger/)，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以：
 
 - **自动化[测试用例](/zh-cn/wiki/test-case/) 创建**：直接根据 API 规范生成测试用例。
@@ -128,9 +125,6 @@ order: 0
 - **模拟服务**：根据API规范创建模拟服务以进行隔离测试。
 - **数据驱动测试**：使用 Swagger 规范中提供的示例将测试数据输入到自动化测试中。 [swagger](/zh-cn/wiki/swagger/) 能够描述 RESTful Web 服务的各个方面（从端点到身份验证方法），这使其成为 [测试自动化](/zh-cn/wiki/test-automation/) 不可或缺的工具，使工程师能够快速适应变化并以最少的手动工作保持高[测试覆盖率](/zh-cn/wiki/test-coverage/)。
 
-- **自动化[测试用例](/zh-cn/wiki/test-case/) 创建**：直接根据 API 规范生成测试用例。
-- **验证 [API](/zh-cn/wiki/api/) 响应**：确保 API 的响应遵循定义的架构。
-- **模拟服务**：根据API规范创建模拟服务以进行隔离测试。
 - **数据驱动测试**：使用 Swagger 规范中提供的示例将测试数据输入到自动化测试中。
 
 #### Swagger 如何为 API 生命周期做出贡献？
@@ -148,23 +142,21 @@ order: 0
 [swagger](/zh-cn/wiki/swagger/) UI 是一个基于 Web 的交互式界面，允许用户可视化 [API](/zh-cn/wiki/api/) 的资源并与之交互，而无需任何实现逻辑。它是根据 OpenAPI 规范 (OAS) 生成的，为开发人员提供了一种清晰、直观的方式来了解服务的功能，而无需访问其源代码。
   **[swagger](/zh-cn/wiki/swagger/) UI 的好处：**
 
-- **易于使用：**为人类与 API 的交互提供简单易读的界面。
+- **易于使用：** 为人类与 API 的交互提供简单易读的界面。
 
-- **实时互动：**使用户能够向 API 发送实时请求并直接在浏览器中查看响应。
+- **实时互动：** 使用户能够向 API 发送实时请求并直接在浏览器中查看响应。
 
-- **文档：**自动生成并呈现最新的 API 文档，减少手动文档工作的需要。
+- **文档：** 自动生成并呈现最新的 API 文档，减少手动文档工作的需要。
 
-- **调试：**通过允许用户执行 API 方法来促进快速识别问题，这在测试阶段至关重要。
+- **调试：** 通过允许用户执行 API 方法来促进快速识别问题，这在测试阶段至关重要。
 
-- **领养：**通过为潜在消费者提供沙箱来试验 API 来鼓励采用。
+- **领养：** 通过为潜在消费者提供沙箱来试验 API 来鼓励采用。
 
-- **定制：**提供定制选项以匹配应用程序或公司品牌的外观和感觉。
+- **定制：** 提供定制选项以匹配应用程序或公司品牌的外观和感觉。
 
-- **整合：**轻松与现有项目集成，无需进行大量设置即可增强开发人员体验。 通过利用[swagger](/zh-cn/wiki/swagger/) UI，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以快速了解[API](/zh-cn/wiki/api/) 端点、参数和预期响应，从而简化自动化测试的创建并有助于更高效的[API 测试](/zh-cn/wiki/api-testing/) 流程。
+- **整合：** 轻松与现有项目集成，无需进行大量设置即可增强开发人员体验。 通过利用[swagger](/zh-cn/wiki/swagger/) UI，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以快速了解[API](/zh-cn/wiki/api/) 端点、参数和预期响应，从而简化自动化测试的创建并有助于更高效的[API 测试](/zh-cn/wiki/api-testing/) 流程。
 
-- **易于使用：**为人类与 API 的交互提供简单易读的界面。
-
-- **整合：**轻松与现有项目集成，无需进行大量设置即可增强开发人员体验。
+- **整合：** 轻松与现有项目集成，无需进行大量设置即可增强开发人员体验。
 
 #### Swagger 编辑器是什么以及如何使用它？
 
@@ -191,11 +183,6 @@ order: 0
             description: A list of users.
   ```
 [swagger](/zh-cn/wiki/swagger/) 编辑器是[测试自动化](/zh-cn/wiki/test-automation/) 工程师高效定义、可视化[API](/zh-cn/wiki/api/) 规范并进行协作的强大工具。
-
-1. **编写[API](/zh-cn/wiki/api/)规范**：您可以从空白文档开始或导入现有的OAS文件。当您键入时，编辑器提供**语法突出显示**、**自动完成**和**错误检查**来帮助您编写有效的规范。
-2. **预览文档**：[swagger](/zh-cn/wiki/swagger/) 编辑器在您编写规范时呈现 [API](/zh-cn/wiki/api/) 文档的并排预览。这可以帮助您了解最终用户对文档的看法，并让您及早发现问题。
-3. **生成服务器存根和客户端 SDK**：[API](/zh-cn/wiki/api/) 定义完成后，您可以直接从编辑器使用 [swagger](/zh-cn/wiki/swagger/) Codegen 工具来生成服务器存根、客户端库，甚至完整的 [API](/zh-cn/wiki/api/) 文档。
-4. **测试端点**：虽然[swagger](/zh-cn/wiki/swagger/) Editor本身不是测试工具，但生成的有效OAS文件可以与其他[swagger](/zh-cn/wiki/swagger/)工具（例如[swagger](/zh-cn/wiki/swagger/) UI和[swagger](/zh-cn/wiki/swagger/) Inspector）一起使用来测试[API](/zh-cn/wiki/api/)端点。
 
 #### Swagger Codegen 是什么以及它的用途是什么？
 
@@ -229,10 +216,6 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
 - **集成：** 它与[API](/zh-cn/wiki/api/) 开发工作流程中的其他工具无缝集成，例如[API](/zh-cn/wiki/api/) 网关和源控制系统，促进从设计到部署的顺利过渡。
 - **托管：** SwaggerHub 提供了一个空间来托管您的[API](/zh-cn/wiki/api/) 文档，使利益相关者和消费者无需额外的基础设施即可访问该文档。 通过利用 SwaggerHub，[测试自动化](/zh-cn/wiki/test-automation/) 工程师可以确保[API](/zh-cn/wiki/api/) 的设计一致、准确记录并且易于测试，最终导致[API](/zh-cn/wiki/api/) 更加可靠和可维护。
 
-- **协作：** SwaggerHub 允许多个用户同时处理 [API](/zh-cn/wiki/api/) 定义并进行实时同步，从而提高团队生产力和沟通。
-- **版本控制：** 它提供内置版本控制来管理 [API](/zh-cn/wiki/api/) 生命周期的不同阶段，从而更轻松地跟踪更改并保持 [API](/zh-cn/wiki/api/) 版本之间的一致性。
-- **标准化：** SwaggerHub 通过允许组织创建和应用自定义规则和样式指南来强制一致性，以确保所有[API](/zh-cn/wiki/api/) 都遵守公司标准。
-- **集成：** 它与[API](/zh-cn/wiki/api/) 开发工作流程中的其他工具无缝集成，例如[API](/zh-cn/wiki/api/) 网关和源控制系统，促进从设计到部署的顺利过渡。
 - **托管：** SwaggerHub 提供了一个空间来托管您的[API](/zh-cn/wiki/api/) 文档，使利益相关者和消费者无需额外的基础设施即可访问该文档。
 
 ### 实施和使用
@@ -284,14 +267,6 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
 2. **运行您的 Spring Boot 应用程序**。 [swagger](/zh-cn/wiki/swagger/) UI 将在`http://localhost:8080/swagger-ui.html` 上提供。
 3. **直接从[swagger](/zh-cn/wiki/swagger/) UI 测试您的[API](/zh-cn/wiki/api/)**，它提供了用于发送请求和查看响应的可视化界面。 请记住在生产环境中**限制[swagger](/zh-cn/wiki/swagger/) 访问**，因为它会暴露您的[API](/zh-cn/wiki/api/) 的结构。使用配置文件或条件配置仅在开发或测试环境中启用[swagger](/zh-cn/wiki/swagger/)。
 
-1. **添加依赖**给你的 `pom.xml` 对于 Maven 或 `build.gradle` 对于 Gradle。对于Maven：
-
-1. **创建配置类**启用 Swagger2 并设置 Docket bean：
-
-1. **根据需要自定义 Docket bean**，以设置 [API](/zh-cn/wiki/api/) 信息、安全方案或 [API](/zh-cn/wiki/api/) 选择器。
-2. **运行您的 Spring Boot 应用程序**。 [swagger](/zh-cn/wiki/swagger/) UI 将在 `http://localhost:8080/swagger-ui.html` 上提供。
-3. **直接从[swagger](/zh-cn/wiki/swagger/) UI 测试您的[API](/zh-cn/wiki/api/)**，它提供了用于发送请求和查看响应的可视化界面。
-
 #### 如何使用Swagger生成API文档？
 
 要使用 [swagger](/zh-cn/wiki/swagger/) 生成 [API](/zh-cn/wiki/api/) 文档，请执行以下步骤：
@@ -313,7 +288,7 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
     host: api.example.com
     basePath: /v1
     schemes:
-- https
+      - https
     paths:
       /items:
         get:
@@ -403,7 +378,7 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
 
 5. **验证**状态代码和响应负载。
 
-6. **保存**如果需要，可以将 API 调用作为 Swagger 定义。 对于**[自动化测试](/zh-cn/wiki/automated-testing/)**，您可以使用[swagger](/zh-cn/wiki/swagger/)生成的客户端库：
+6. **保存**如果需要，可以将 API 调用作为 Swagger 定义。 对于 **[自动化测试](/zh-cn/wiki/automated-testing/)**，您可以使用[swagger](/zh-cn/wiki/swagger/)生成的客户端库：
 
 1. **生成**使用 Swagger Codegen 作为您的首选语言的客户端代码。
 
@@ -422,36 +397,6 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
   });
   ```
 请记住，不仅要**验证**响应数据，还要**错误处理**和**边缘情况**，以确保全面的 [API](/zh-cn/wiki/api/) 覆盖范围。
-
-1. **导航**到您的 API 的 Swagger UI。
-
-2. **展开**您要测试的端点。
-
-3. **填写**所需的参数或请求正文。
-
-4. **执行**单击“尝试”按钮来满足请求。
-
-5. **审查**用于验证 API 行为的响应代码、标头和正文。
-
-1. **访问**斯威格督察。
-
-2. **输入**您想要测试的 API 端点。
-
-3. **定制** HTTP 方法并根据需要添加标头或正文。
-
-4. **发送**查看实时响应的请求。
-
-5. **验证**状态代码和响应负载。
-
-6. **保存**如果需要，可以将 API 调用作为 Swagger 定义。
-
-1. **生成**使用 Swagger Codegen 作为您的首选语言的客户端代码。
-
-2. **写**使用生成的客户端库测试脚本。
-
-3. **包括**根据预期结果验证响应的断言。
-
-4. **运行**您的测试作为 CI/CD 管道或测试套件的一部分。
 
 #### 如何在 Swagger 中定义 API 端点？
 
@@ -526,13 +471,6 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
   ```
 通过执行以下步骤，您可以在[swagger](/zh-cn/wiki/swagger/)中有效地定义[API](/zh-cn/wiki/api/)端点，创建清晰且可执行的[API](/zh-cn/wiki/api/)合约。
 
-1. **从 `paths` 对象开始**：您将在此处列出 API 中的可用路径 (URI)。
-1. **定义操作**：在每个路径下，指定 HTTP 方法（例如， `get` , `post` , `put` , `delete` ）并提供每项操作的详细信息。
-
-1. **包含参数** ：对于需要输入的操作，定义路径变量、查询参数或标头等参数。
-1. **描述响应** ：对于每个操作，描述可能的响应，包括状态代码、描述和数据结构。
-1. **参考模式**：使用 `$ref` 参考中定义的模式 `components/schemas` 部分以避免重复并保持 API 定义干燥。
-
 ### 高级概念
 
 #### OpenAPI 规范是什么以及它与 Swagger 有何关系？
@@ -565,11 +503,11 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
 
 #### 如何使用 Swagger 进行 API 版本控制？
 
-使用**[swagger](/zh-cn/wiki/swagger/)** 进行版本控制[API](/zh-cn/wiki/api/) 需要在[swagger](/zh-cn/wiki/swagger/) 规范文件中定义[API](/zh-cn/wiki/api/) 的不同版本。以下是有关如何使用 [swagger](/zh-cn/wiki/swagger/) 管理 [API](/zh-cn/wiki/api/) 版本控制的简洁指南：
+使用 **[swagger](/zh-cn/wiki/swagger/)** 进行版本控制[API](/zh-cn/wiki/api/) 需要在[swagger](/zh-cn/wiki/swagger/) 规范文件中定义[API](/zh-cn/wiki/api/) 的不同版本。以下是有关如何使用 [swagger](/zh-cn/wiki/swagger/) 管理 [API](/zh-cn/wiki/api/) 版本控制的简洁指南：
 
 1. **URI 版本控制**：将版本号包含在 [API](/zh-cn/wiki/api/) 路径中。这对于用户来说是简单且可见的。
 
-  ```
+  ```yaml
     /api/v1/pets:
       get:
         # ...
@@ -580,35 +518,45 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
 
 2. **参数版本控制**：使用查询参数指定版本。这可以保持 URL 的干净，但不那么明确。
 
+  ```yaml
   /api/pets:
     get:
       parameters:
-- name: version in: query required: true type: string enum:
-- v1
-- v2
+        - name: version
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [v1, v2]
       # ...
+  ```
 
 3. **标头版本控制**：在自定义标头中指定版本。这在 URL 中是不可见的，当您不想向客户端 URL 公开版本控制时，这可能是首选方法。
 
+  ```yaml
   /api/pets:
     get:
       parameters:
-- name: X-API-Version in: header required: true type: string enum:
-- v1
-- v2
+        - name: X-API-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [v1, v2]
       # ...
+  ```
 
 4. **媒体类型版本控制**：使用 `Accept` 标头来定义使用自定义媒体类型的版本。
 
+  ```yaml
   /api/pets:
     get:
       produces:
-- application/vnd.myapi.v1+json
-- application/vnd.myapi.v2+json
+        - application/vnd.myapi.v1+json
+        - application/vnd.myapi.v2+json
       # ...
+  ```
 选择最适合您的[API](/zh-cn/wiki/api/) 需求的版本控制策略，并确保您的[API](/zh-cn/wiki/api/) 文档的一致性。 **[swagger](/zh-cn/wiki/swagger/) UI** 将显示不同的版本，允许用户与他们感兴趣的[API](/zh-cn/wiki/api/) 的特定版本进行交互。请记住在新版本发布时更新您的[swagger](/zh-cn/wiki/swagger/) 文件，以保持您的[API](/zh-cn/wiki/api/) 文档准确且最新。
-
-1. **URI 版本控制**：将版本号包含在 [API](/zh-cn/wiki/api/) 路径中。这对于用户来说是简单且可见的。
 
   ```
     /api/v1/pets:
@@ -618,22 +566,6 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
       get:
         # ...
   ```
-
-2. **参数版本控制**：使用查询参数指定版本。这可以保持 URL 的干净，但不那么明确。
-
-  /api/pets:
-    get:
-      parameters:
-      # ...
-
-3. **标头版本控制**：在自定义标头中指定版本。这在 URL 中是不可见的，当您不想向客户端 URL 公开版本控制时，这可能是首选方法。
-
-  /api/pets:
-    get:
-      parameters:
-      # ...
-
-4. **媒体类型版本控制**：使用 `Accept` 标头来定义使用自定义媒体类型的版本。
 
   /api/pets:
     get:
@@ -703,7 +635,6 @@ SwaggerHub 是一个集成的[API](/zh-cn/wiki/api/) 设计和文档平台，通
 - **版本控制挑战**：使用 Swagger 处理 API 版本控制可能很麻烦，并且可能需要手动干预才能保持文档与 API 版本保持一致。 尽管存在这些限制，[swagger](/zh-cn/wiki/swagger/) 由于其全面的功能集和活跃的社区，仍然是[API](/zh-cn/wiki/api/) 文档和设计的广泛使用的工具。
 
 - **[API](/zh-cn/wiki/api/) 设计优先方法** ：Swagger 通常与设计优先方法相关联，该方法可能不适合所有开发工作流程，尤其是那些喜欢代码优先方法的开发工作流程。
-- **工具依赖性**：依赖 Swagger 工具可能会产生可能影响长期灵活性的依赖性，特别是在项目需要摆脱 Swagger 的情况下。
 - **版本控制挑战**：使用 Swagger 处理 API 版本控制可能很麻烦，并且可能需要手动干预才能保持文档与 API 版本保持一致。
 
 #### 如何扩展Swagger的功能？

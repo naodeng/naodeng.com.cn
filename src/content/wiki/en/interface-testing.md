@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Interface Testing](#interface-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Interface Testing?](#questions-about-interface-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is interface testing in software testing?](#what-is-interface-testing-in-software-testing)
@@ -43,7 +42,7 @@ order: 0
 
 Interface testing ensures that two software components communicate correctly. Interfaces, including APIs and Web services, connect these components, and their testing is termed Interface Testing.
 
-## Related Terms:
+Related Terms:
 
 - [Integration Testing](/en/wiki/integration-testing/)
 
@@ -93,7 +92,6 @@ Interface testing ensures that two software components communicate correctly. In
     , by checking that the interface does not expose the system to security vulnerabilities, such as data leaks or unauthorized access.
   By focusing on these objectives, interface testing aims to establish a reliable, efficient, and secure interaction between different software entities, which is critical for the overall system integrity and user satisfaction.
 
-
 #### How does interface testing contribute to the overall quality of a software product?
 
   Interface testing ensures that different software components interact correctly, contributing to the overall quality of a software product by:
@@ -114,8 +112,6 @@ Interface testing ensures that two software components communicate correctly. In
     by isolating issues at the interface level, making it easier to update or replace components without affecting others.
   By focusing on the points of interaction, interface testing helps maintain a high level of software integrity and user satisfaction, as interfaces often serve as the user's entry point to the software's functionality.
 
-  - **Detecting inconsistencies**
-
 ### Methods and Techniques
 
 #### What are the common methods used in interface testing?
@@ -133,7 +129,6 @@ Interface testing ensures that two software components communicate correctly. In
   - **Service Virtualization**: Mimicking the behavior of dependent services that are not available for testing using virtual services or mock servers.
   - **Performance Profiling**: Monitoring the interface's resource usage under different scenarios to identify potential performance bottlenecks.
   Automated tests can be written in various languages and frameworks, such as **Python** with **pytest**, **JavaScript** with **Mocha**, or **Java** with **TestNG**. The choice of tools and methods depends on the specific requirements and context of the interface under test.
-
 
 #### How is a stub used in interface testing?
 
@@ -194,10 +189,6 @@ Interface testing ensures that two software components communicate correctly. In
   In this example, `moduleUnderTest.functionToTest` is the interface being tested, and `testDriver` acts as the driver by providing 'Test Input' and verifying the 'Expected Output'.
   Drivers are often temporary and are replaced by the actual calling modules once those are developed and integrated. In [automated testing](/en/wiki/automated-testing/), drivers can be part of the [test harness](/en/wiki/test-harness/) and are created using the same or compatible testing frameworks and languages as the software under test.
 
-  - Initiates calls to the module under test.
-  - Passes test data as inputs to these calls.
-  - Receives outputs that can be verified against expected results.
-
 #### What are some techniques for effective interface testing?
 
   To ensure effective interface testing, consider the following techniques:
@@ -246,7 +237,6 @@ Interface testing ensures that two software components communicate correctly. In
     ```
   Remember to **validate both the functional and non-functional** aspects of the interface, such as security, usability, and compliance with standards.
 
-  - **Design clear [test cases](/en/wiki/test-case/)**
 #### How is interface testing different from integration testing?
 
   Interface testing focuses on verifying the interactions between different software modules or systems, ensuring that data is correctly exchanged and that the interface adheres to specified requirements. It targets the points of connection where modules or systems meet, checking for issues in communication protocols, data formats, and request and response patterns.
@@ -324,8 +314,6 @@ Interface testing ensures that two software components communicate correctly. In
   ```
   Automated interface testing ensures consistent execution of [test cases](/en/wiki/test-case/), saves time, and allows for more frequent testing cycles. It's crucial to maintain and update [test scripts](/en/wiki/test-script/) as the software evolves to ensure continued effectiveness.
 
-  - **Identify the interfaces**
-
 #### What are the benefits and drawbacks of using automated tools for interface testing?
 
   Benefits of Automated Tools for Interface Testing:
@@ -344,7 +332,6 @@ Interface testing ensures that two software components communicate correctly. In
   - **[False Positives](/en/wiki/false-positive/)/Negatives** : Automated tests can produce incorrect results if not designed or maintained properly, leading to either overlooked defects or unnecessary work.
   In summary, while automated tools for interface testing offer significant advantages in terms of efficiency and coverage, they also come with challenges such as maintenance overhead and the potential for false results. [Test automation](/en/wiki/test-automation/) engineers must balance these factors to effectively leverage automation in interface testing.
 
-
 #### What are some examples of technologies that can be used for interface testing?
 
   Technologies for interface testing vary based on the type of interface and the level of testing required. Here are some examples:
@@ -361,7 +348,6 @@ Interface testing ensures that two software components communicate correctly. In
   - **Charles Proxy** : Useful for monitoring HTTP and HTTPS traffic between a client and server to test web service interfaces.
   - **Wireshark** : A network protocol analyzer that can be used to inspect and debug traffic at the interface level.
   Each tool offers unique features that cater to different testing needs, such as [functional testing](/en/wiki/functional-testing/), [performance testing](/en/wiki/performance-testing/), or monitoring network traffic. Selecting the right technology depends on the specific requirements of the interface under test.
-
 
 ### Best Practices
 
@@ -410,7 +396,6 @@ Interface testing ensures that two software components communicate correctly. In
   - **Review and update tests regularly** : Keep tests current with interface changes to maintain test relevance and effectiveness.
   - **Collaborate with stakeholders** : Work with developers, users, and other stakeholders to understand interface usage and potential problem areas.
   By integrating these strategies into your testing process, you can enhance the coverage and reliability of your interface tests, leading to more robust and dependable software integrations.
-
 
 #### What are some common mistakes to avoid in interface testing?
 

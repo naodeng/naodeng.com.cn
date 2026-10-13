@@ -103,7 +103,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   - **Continuous Integration** : Integrate web tests into your CI/CD pipeline to catch issues early and often.
   Automate where it makes sense, but remember that not all tests are suitable for automation. Maintain a balance between manual and [automated testing](/en/wiki/automated-testing/) to achieve comprehensive coverage.
 
-
 ### Tools and Techniques
 
 #### What are some common tools used in web testing?
@@ -120,7 +119,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   - **[Jasmine](/en/wiki/jasmine/)** : A behavior-driven development framework for testing JavaScript code, it does not rely on browsers, DOM, or any JavaScript framework.
   - **Karma** : A test runner created by the AngularJS team that fits all our testing needs.
   Each tool has its own strengths and is chosen based on the specific needs of the project, such as framework compatibility, ease of use, and community support.
-
 
 #### What is Selenium and how is it used in web testing?
 
@@ -145,7 +143,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   driver.quit()
   ```
   This script launches Chrome, navigates to "example.com", checks if the title contains "Example Domain", and then closes the browser. It illustrates the simplicity and power of [Selenium](/en/wiki/selenium/) for web application testing.
-
 
 #### What is the role of JavaScript in web testing?
 
@@ -182,13 +179,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   - **Custom Scripts**: Sometimes, testing requires custom scripts for [setup](/en/wiki/setup/), teardown, or complex user interactions that are not supported out-of-the-box by testing frameworks.
   - **Integration with CI/CD**: JavaScript can be used to integrate testing suites with Continuous Integration/Continuous Deployment pipelines, ensuring tests are automatically run at various stages of development.
   In summary, JavaScript's versatility and ubiquity make it a **powerhouse** in web testing, enabling automation, interaction, and integration across diverse testing scenarios.
-
-  - **Manipulating DOM** : Test scripts often need to interact with the Document Object Model (DOM) to verify the state and behavior of web pages. JavaScript allows testers to query, modify, and validate DOM elements dynamically.
-  - **Asynchronous Testing** : Modern web applications heavily rely on asynchronous operations like AJAX. JavaScript's asynchronous features, such as promises and async/await, are vital for writing tests that handle these operations.
-  - **Browser Automation** : Tools like Selenium WebDriver use JavaScript to control browsers and simulate user actions. This is essential for end-to-end testing.
-  - **Behavior Driven Development ([BDD](/en/wiki/bdd/))** : Frameworks like Jasmine or Mocha use JavaScript to describe test cases in a language that resembles natural language, improving readability and maintainability.
-  - **Custom Scripts**: Sometimes, testing requires custom scripts for [setup](/en/wiki/setup/), teardown, or complex user interactions that are not supported out-of-the-box by testing frameworks.
-  - **Integration with CI/CD**: JavaScript can be used to integrate testing suites with Continuous Integration/Continuous Deployment pipelines, ensuring tests are automatically run at various stages of development.
 
 #### What are some techniques for effective web testing?
 
@@ -261,9 +251,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   3. **Integrate with CI/CD pipelines**
     to automate the execution of tests upon each commit or build, ensuring immediate feedback on the impact of changes.
   Automated tools also support **[load testing](/en/wiki/load-testing/)** by simulating multiple users to test performance and **[API testing](/en/wiki/api-testing/)** to ensure backend functionality. By automating these tasks, engineers can focus on more complex [test scenarios](/en/wiki/test-scenario/) and [exploratory testing](/en/wiki/exploratory-testing/), leading to a more efficient testing process and a higher quality web application.
-
-  1. **Identify [test cases](/en/wiki/test-case/)**
-  1. **Run tests**
 
 ### Testing Process
 
@@ -346,7 +333,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   10. **Iterate**: Implement changes based on feedback and retest as necessary to ensure issues have been resolved.
   Remember, [usability testing](/en/wiki/usability-testing/) is about understanding the user experience, so focus on the user's interaction with the website and be prepared to adapt your approach based on the feedback received.
 
-
 #### What is the process for performance testing a website?
 
   [Performance testing](/en/wiki/performance-testing/) a website involves simulating user behavior under various conditions to evaluate the site's responsiveness, stability, and scalability. The process typically includes the following steps:
@@ -362,7 +348,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   9. **Retest**: After making changes, re-run tests to validate improvements.
   10. **Report findings**: Document the results, including any identified issues and actions taken.
   Remember to test under a variety of conditions, including different user loads, network speeds, and browser/device combinations, to ensure a comprehensive performance assessment.
-
 
 ### Challenges and Solutions
 
@@ -382,7 +367,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   - **Continuous integration**: Integrating and maintaining a robust [automated testing](/en/wiki/automated-testing/) suite within a CI/CD pipeline requires careful planning and execution.
   To overcome these challenges, it's essential to adopt best practices such as using a combination of manual and [automated testing](/en/wiki/automated-testing/), implementing a solid [test management](/en/wiki/test-management/) strategy, and staying up-to-date with the latest testing tools and methodologies.
 
-
 #### How can these challenges be overcome?
 
   Overcoming challenges in web testing requires a strategic approach and the use of advanced tools and methodologies:
@@ -398,7 +382,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   - **Documentation**: Keep test documentation up-to-date with tools like **[Swagger](/en/wiki/swagger/)** for [API testing](/en/wiki/api-testing/). Ensure [test cases](/en/wiki/test-case/) are well-documented and version-controlled.
   - **Collaboration**: Foster a culture of collaboration between developers, testers, and operations. Use **communication tools** and **issue tracking systems** to stay aligned.
   By addressing these challenges with the right strategies and tools, [test automation](/en/wiki/test-automation/) can be made more reliable, efficient, and integrated into the software development lifecycle.
-
 
 #### What are some best practices for web testing?
 
@@ -419,7 +402,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   - **Code reviews** : Conduct peer reviews of test scripts to ensure quality and adherence to best practices.
   - **Stay updated** : Keep up with the latest testing tools, frameworks, and industry trends to continuously improve the testing process.
   By following these practices, [test automation](/en/wiki/test-automation/) engineers can ensure that their web testing efforts are efficient, effective, and aligned with the overall goals of the software development lifecycle.
-
 
 #### How do you ensure comprehensive coverage in web testing?
 
@@ -463,8 +445,6 @@ A crucial evaluation for web developers, assessing the functionality, usability,
   - **Review and update [test cases](/en/wiki/test-case/)**
     regularly to reflect changes in user behavior and application functionality. Remove outdated tests and add new ones as needed.
   By combining these strategies, you can achieve a robust and comprehensive web testing coverage that aligns with user needs and business goals.
-
-  - **Identify critical paths**
 
 #### How do you handle testing for different browsers and devices?
 

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [ISTQB](#istqb)
-  - [Related Terms:](#related-terms)
   - [Questions about ISTQB?](#questions-about-istqb)
     - [Basics and Importance](#basics-and-importance)
       - [What does ISTQB stand for?](#what-does-istqb-stand-for)
@@ -41,7 +40,7 @@ order: 0
 
 The International Software Testing Qualifications Board, a non-profit that certifies software testers.
 
-## Related Terms:
+Related Terms:
 
 - International Software Testing Qualifications Board
 
@@ -71,7 +70,6 @@ The International Software Testing Qualifications Board, a non-profit that certi
   Additionally, ISTQB offers **Agile Tester** certification for testers working in agile environments and **Specialist** certifications that focus on specific areas like **[Usability Testing](/en/wiki/usability-testing/)**, **[Performance Testing](/en/wiki/performance-testing/)**, and **[Security Testing](/en/wiki/security-testing/)**.
   Each level requires passing an exam, and for the Advanced and Expert levels, there are prerequisites such as having a certain amount of experience and holding the Foundation certificate. The ISTQB also offers **Product Owner** and **Automotive Software Tester** certifications for more specialized roles.
 
-
 #### How does ISTQB certification enhance the career of a software tester?
 
   ISTQB certification can significantly enhance a software tester's career by **validating their testing knowledge and skills**. It serves as a **globally recognized credential** that can open doors to new job opportunities or promotions within a current role. By achieving ISTQB certification, testers demonstrate a **commitment to the profession** and a willingness to invest in their personal development, which can be attractive to employers.
@@ -93,7 +91,6 @@ The International Software Testing Qualifications Board, a non-profit that certi
   5. **[Test Management](/en/wiki/test-management/)**: This area includes test organization, test planning and estimation, test progress monitoring and control, configuration management, risk and [defect management](/en/wiki/defect-management/), and test closure activities.
   6. **Tool Support for Testing**: It discusses types of [test tools](/en/wiki/test-tool/), effective use of tools, and the potential benefits and risks associated with tool support in testing.
   Each section is detailed with specific learning objectives and cognitive levels of K1 to K4 (Remember, Understand, Apply, and Analyze). The syllabus is designed to ensure a comprehensive understanding of the basic principles of [software testing](/en/wiki/software-testing/), including practical applications and tool usage.
-
 
 #### What is the format of the ISTQB exam?
 
@@ -122,24 +119,9 @@ The International Software Testing Qualifications Board, a non-profit that certi
   - **Multiple-choice**
     .
 
-  - **Number of Questions** : 40.
   - **Duration** : 60 minutes (or 75 minutes for non-native speakers).
   - **Passing Score** : 65% (26 out of 40).
   Exams are typically administered online or at testing centers, and some regions offer paper-based exams.
-
-  - **Combination of multiple-choice and essay-type questions**
-    .
-
-  - **Duration and number of questions vary**
-    by the specific Expert Level module.
-
-  - **Multiple-choice**
-    .
-
-  - **Number of Questions** : 40.
-  - **Duration** : 60 minutes (or 75 minutes for non-native speakers).
-  - **Passing Score** : 65% (26 out of 40).
-
 #### How many questions are there in the ISTQB Foundation level exam?
 
   The ISTQB Foundation level exam consists of **40 multiple-choice questions**. Each question is worth one point, and candidates must score at least 65% (26 out of 40) to pass the exam. The duration of the exam is **60 minutes**, or **75 minutes** for candidates taking the exam in a language that is not their native language.
@@ -162,7 +144,6 @@ The International Software Testing Qualifications Board, a non-profit that certi
   - **Understanding of Advanced Level Syllabus** : Self-study or training is recommended to grasp the complex concepts covered at this level.
   Remember to check with your local ISTQB board or examination provider for any additional requirements or variations, as these can differ by region.
 
-
 #### What is the syllabus for the ISTQB Advanced level exam?
 
   The ISTQB Advanced Level exam syllabus is divided into three core modules, each focusing on a different aspect of [software testing](/en/wiki/software-testing/):
@@ -176,7 +157,6 @@ The International Software Testing Qualifications Board, a non-profit that certi
   - **Test Analyst**: Test techniques, test documentation, test quality attributes, and defect-based techniques.
   - **Technical Test Analyst**: Structure-based testing, technical testing techniques, quality characteristics for technical testing, and reviews.
   For detailed content, refer to the official ISTQB Advanced Level syllabus documents, which outline the learning objectives and cognitive levels for each topic.
-
 
 #### How is the Advanced level different from the Foundation level in ISTQB?
 
@@ -206,7 +186,6 @@ The International Software Testing Qualifications Board, a non-profit that certi
     the domain, system under test, and test processes.
   To sit for the Advanced Level exam, candidates must have the Foundation Level certificate and typically need **18 months** of practical experience. The exam itself is more rigorous, with **scenario-based questions** that test the candidate's ability to apply concepts in complex situations.
 
-
 #### What are the specializations in the ISTQB Advanced level?
 
   The ISTQB Advanced Level certification is divided into three core specializations:
@@ -215,7 +194,6 @@ The International Software Testing Qualifications Board, a non-profit that certi
   - **Test Analyst**: This specialization emphasizes the design and execution of detailed tests. It includes test techniques, test documentation, and analysis of the test basis (such as requirements, risk analysis, and test design).
   - **Technical Test Analyst**: This area is tailored for testers involved in [non-functional testing](/en/wiki/non-functional-testing/) and white-box testing. It covers topics like [performance testing](/en/wiki/performance-testing/), [security testing](/en/wiki/security-testing/), [test tools](/en/wiki/test-tool/), and automation.
   Each specialization has its own syllabus and exam, allowing testers to focus on areas that align with their career goals and job roles. Advanced Level certification requires a deeper understanding of testing practices and principles, as well as the ability to apply them in complex scenarios.
-
 
 ### ISTQB in Practice
 
@@ -243,7 +221,6 @@ The International Software Testing Qualifications Board, a non-profit that certi
     **test independence**
     and how to achieve it, which can lead to more objective test results.
   Moreover, ISTQB's emphasis on **continuous learning** encourages professionals to stay updated with the latest testing tools and trends, directly benefiting the practical aspects of [test automation](/en/wiki/test-automation/). The certification's focus on **ethical considerations** also ensures that testing is conducted responsibly and with integrity. Overall, ISTQB certification equips [test automation](/en/wiki/test-automation/) engineers with a toolkit of principles and practices that can be adapted to various testing scenarios, leading to improved [test coverage](/en/wiki/test-coverage/), efficiency, and ultimately, [software quality](/en/wiki/software-quality/).
-
 
 #### What are some real-world examples where ISTQB principles are applied?
 

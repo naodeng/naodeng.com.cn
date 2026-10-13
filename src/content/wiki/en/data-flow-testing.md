@@ -82,8 +82,6 @@ Centers on the variables and their values during computations and storage.
     by making the code more readable and understandable through the identification of data flow patterns and potential refactorings.
   By achieving these objectives, data flow testing helps in creating a more robust, error-free software application, ensuring that data handling within the program is both logical and efficient. This contributes to the overall [software quality](/en/wiki/software-quality/), potentially reducing the number of [bugs](/en/wiki/bug/) encountered by end-users and decreasing the cost and time associated with fixing data-related defects post-release.
 
-  - **Identify and eliminate**
-
 #### How does data flow testing differ from other types of software testing?
 
   Data flow testing specifically analyzes the flow of data within the program, focusing on the lifecycle of variables. It differs from other testing types by concentrating on the points at which variables receive values (definitions) and where these values are used (uses), ensuring that the paths between definitions and uses are correct and free of anomalies.

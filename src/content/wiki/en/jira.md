@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Jira](#jira)
-  - [Related Terms:](#related-terms)
   - [Questions about Jira?](#questions-about-jira)
     - [Basics and Importance](#basics-and-importance)
       - [What is Jira and what is it used for?](#what-is-jira-and-what-is-it-used-for)
@@ -41,7 +40,7 @@ order: 0
 
 Jira is a popular software developed by Atlassian, primarily used for bug tracking, issue tracking, and project management. Originating as a tool for software development teams to track defects and tasks, Jira has since evolved to cater to various business functions with customizable workflows, real-time collaboration, and integration capabilities. It allows teams to create, prioritize, and assign work items, such as stories or bugs, and then track their progress through different stages. Jira supports Agile methodologies like Scrum and Kanban, offering features like boards, backlogs, and sprints. Its versatility and extensive plugin ecosystem make it suitable for a wide range of use cases beyond just software development.
 
-## Related Terms:
+Related Terms:
 
 - Bug tracking tool
 - [Change Requests](/en/wiki/change-requests/)
@@ -167,11 +166,7 @@ See also:
     - **Post functions**
       automate actions after the transition is completed, such as updating an issue field or triggering an event.
 
-    - **Conditions**
-      control who can execute the transition.
 
-    - **Validators**
-      ensure that certain criteria are met before the transition is allowed.
 
   - Customize the **workflow screen** by adding or removing fields that are presented during a transition.
   - Use **workflow schemes** to apply your workflow to specific projects.
@@ -192,14 +187,7 @@ See also:
   ```
   This [setup](/en/wiki/setup/) can trigger an event in your [test automation](/en/wiki/test-automation/) tool when an issue transitions to the 'In Testing' status in the 'TEST' project.
 
-  1. **Navigate**
-    to Jira settings (cog icon) >
-    **Issues**
-    .
 
-  2. Select
-    **Workflows**
-    from the sidebar to see the list of existing workflows.
 
   3. Click
     **Edit**
@@ -469,8 +457,6 @@ See also:
   Regularly review and adjust your board's configuration and dashboard gadgets to ensure they reflect the most relevant information for your project's current state.
 
   - **Burn-down/up charts**
-
-  - **[Scrum](/en/wiki/scrum/) boards**
 
 #### What are some best practices for using Jira effectively?
 

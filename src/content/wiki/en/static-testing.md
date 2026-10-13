@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Static Testing](#static-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Static Testing?](#questions-about-static-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is static testing?](#what-is-static-testing)
@@ -45,7 +44,7 @@ order: 0
 
 Static Testing involves early-cycle assessment of software artifacts like requirements, design documents, and source code without execution. This technique identifies defects and elevates product quality, and can be manual or automated.
 
-## Related Terms:
+Related Terms:
 
 - [Dynamic Testing](/en/wiki/dynamic-testing/)
 
@@ -336,10 +335,6 @@ Static Testing involves early-cycle assessment of software artifacts like requir
 
   - **Rework Percentage** : The amount of code that requires rework after static testing. Lower percentages suggest higher initial code quality.
   Regularly track these metrics to evaluate and refine your static testing process, ensuring it remains effective and aligned with project goals.
-
-  - **Defect Density** : Calculate the number of defects found per lines of code (LOC) or per module. A lower defect density after static testing indicates higher code quality.
-  - **Defect Detection Rate** : The percentage of defects found during static testing compared to the total number of defects found throughout the project lifecycle. A higher rate suggests static testing is effective in early defect identification.
-  - **Rework Percentage** : The amount of code that requires rework after static testing. Lower percentages suggest higher initial code quality.
 
 ### Best Practices
 

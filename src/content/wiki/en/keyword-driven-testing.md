@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Keyword Driven Testing](#keyword-driven-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Keyword Driven Testing?](#questions-about-keyword-driven-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is Keyword Driven Testing?](#what-is-keyword-driven-testing)
@@ -41,7 +40,7 @@ order: 0
 
 Keyword driven testing is a functional testing approach where test case design is separated from its execution. Keywords represent user actions on test objects, making test cases clearer and more maintainable.
 
-## Related Terms:
+Related Terms:
 
 - Data-Driven Testing
 

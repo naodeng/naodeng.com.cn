@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Robustness Testing](#robustness-testing)
-  - [See also:](#see-also)
   - [Questions about Robustness Testing?](#questions-about-robustness-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is robustness testing in software testing?](#what-is-robustness-testing-in-software-testing)
@@ -41,7 +40,7 @@ order: 0
 
 Evaluates software's performance under extreme or unexpected inputs.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Robustness_testing)
 ## Questions about Robustness Testing?
@@ -126,8 +125,6 @@ Evaluates software's performance under extreme or unexpected inputs.
   Throughout the process, **focus on fault tolerance mechanisms** such as exception handling, transaction rollbacks, and failover strategies. Use **automation frameworks** that support robustness testing, like **[Selenium](/en/wiki/selenium/)** for web applications or **Appium** for mobile apps, to run tests repeatedly and consistently.
   Remember to **document findings** and **update [test cases](/en/wiki/test-case/)** as the software evolves. This ensures that robustness is continually assessed as new features are added or changes are made to the system.
 
-  1. **Identify critical components**
-
 #### What is the role of boundary value analysis in robustness testing?
 
   Boundary Value Analysis (BVA) plays a crucial role in **robustness testing** by targeting the edges of input ranges, where defects are more likely to occur. In robustness testing, BVA is employed to validate how software behaves under extreme, unexpected, or edge-case inputs. It involves testing at, just inside, and just outside the boundaries.
@@ -194,8 +191,6 @@ Evaluates software's performance under extreme or unexpected inputs.
   - **Stay updated with the latest testing tools and practices**
     to enhance your robustness testing strategy and keep up with evolving software complexities.
   By adhering to these practices, you can enhance the robustness of your software, ensuring it remains functional and reliable under a wide range of conditions.
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 ### Tools and Technologies
 

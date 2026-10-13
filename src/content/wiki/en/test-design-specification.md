@@ -261,8 +261,6 @@ This is a detailed plan outlining the testing approach, features to test, and ne
     that use the TDS to outline how test data should be fed into the tests.
   By following the TDS, automated tests can be developed in a structured and consistent manner, reducing the risk of errors and omissions. It also facilitates **maintenance** and **scalability** of the [test automation](/en/wiki/test-automation/) suite, as changes to the testing requirements can be reflected by updating the TDS, which then cascades to the automated tests. This ensures that the automation remains relevant and effective over time.
 
-  - **Code generation tools**
-
 #### What is the role of a Test Design Specification in Agile or DevOps environments?
 
   In Agile or DevOps environments, a **Test Design Specification (TDS)** plays a pivotal role in aligning testing activities with the iterative and continuous delivery model. It serves as a dynamic blueprint for test creation and execution, ensuring that testing is both efficient and responsive to frequent changes in requirements.

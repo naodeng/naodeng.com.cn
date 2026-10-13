@@ -1,6 +1,6 @@
 ---
 title: "严重程度 ｜ Severity"
-description: "在软件测试中，**严重程度 (Severity)** 是指缺陷对软件运行的影响程度。它表明了 Bug 影响系统功能、性能或稳定性的程度。严重程度通常分为 **致命/致命 (Critical)**、**严重 (High)**、**一般 (Medium)** 和 **轻微 (Low)** 等类别…"
+description: "在软件测试中，**严重程度 (Severity)** 是指缺陷对软件运行的影响程度。它表明了 Bug 影响系统功能、性能或稳定性的程度。"
 section: "S"
 related:
   - bug
@@ -53,7 +53,7 @@ order: 0
 #### 为什么理解严重性在软件测试中很重要？
 
 了解[软件测试](/zh-cn/wiki/software-testing/) 中的[严重性](/zh-cn/wiki/severity/) 至关重要，因为它有助于有效地**分配资源**并**确定**测试和[bug](/zh-cn/wiki/bug/) 修复工作的优先级。 [严重性](/zh-cn/wiki/severity/)表示缺陷对系统运行的影响，这直接影响与软件发布相关的**风险**。
-  当识别出 [bug](/zh-cn/wiki/bug/) 时，了解其 [严重性](/zh-cn/wiki/severity/) 允许测试工程师向利益相关者**传达潜在后果**，确保首先解决最关键的问题。这种优先级确保软件在发布前满足其**质量标准**和**[功能需求](/zh-cn/wiki/functional-requirements/)**。
+  当识别出 [bug](/zh-cn/wiki/bug/) 时，了解其 [严重性](/zh-cn/wiki/severity/) 允许测试工程师向利益相关者**传达潜在后果**，确保首先解决最关键的问题。这种优先级确保软件在发布前满足其**质量标准**和 **[功能需求](/zh-cn/wiki/functional-requirements/)**。
   此外，[严重性](/zh-cn/wiki/severity/) 理解有助于**风险管理**。高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 可能会带来重大风险，例如数据丢失、安全漏洞或系统崩溃，这可能会给最终用户和公司带来可怕的影响。通过关注这些[bugs](/zh-cn/wiki/bug/)，团队可以降低风险并防止昂贵的发布后修复或对公司声誉的损害。
   此外，[严重性](/zh-cn/wiki/severity/) 在**测试计划**中发挥着作用。 [测试用例](/zh-cn/wiki/test-case/) 涵盖容易出现高[严重性](/zh-cn/wiki/severity/) 问题的功能可以在测试周期的早期执行。这种早期检测可以让我们有更多的时间来解决严重缺陷并管理其对项目时间表的影响。
   最后，[严重性](/zh-cn/wiki/severity/) 评估有助于测试过程中的**持续改进**。通过分析过去缺陷的[严重性](/zh-cn/wiki/severity/)，团队可以识别可能需要更强大的测试或设计改进的应用程序区域，从而在未来的版本中实现更高的质量。
@@ -108,25 +108,11 @@ order: 0
 
 - **需要广泛的测试**后修复以确保问题得到解决而不会引入新问题，否则会进一步延迟发布。 在[测试自动化](/zh-cn/wiki/test-automation/) 中，高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 可能会导致：
 
-- **重新评估[测试覆盖率](/zh-cn/wiki/test-coverage/)**了解为什么这个错误没有被更早地发现。
+- **重新评估[测试覆盖率](/zh-cn/wiki/test-coverage/)** 了解为什么这个错误没有被更早地发现。
 
 - **测试策略的调整**对关键领域进行更严格的检查。
 
 - **增加维护**如果错误导致应用程序代码库发生重大变化，则测试脚本的数量。 总体而言，高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 需要迅速而彻底的响应，以维持[软件质量](/zh-cn/wiki/software-quality/) 和项目时间表。
-
-- **阻止**主要功能，阻止用户执行基本操作。
-
-- **需要立即关注**和资源，可能会扰乱开发工作流程并导致重新确定任务的优先级。
-
-- **增加风险**如果在开发周期的后期发现它们会错过发布截止日期。
-
-- **影响客户信任**如果它们投入生产，特别是当它们损害数据完整性或隐私时，我们会感到满意。
-
-- **需要广泛的测试**后修复以确保问题得到解决而不会引入新问题，否则会进一步延迟发布。
-
-- **重新评估[测试覆盖率](/zh-cn/wiki/test-coverage/)**了解为什么这个错误没有被更早地发现。
-
-- **测试策略的调整**对关键领域进行更严格的检查。
 
 - **增加维护**如果错误导致应用程序代码库发生重大变化，则测试脚本的数量。
 
@@ -136,15 +122,15 @@ order: 0
 
 [严重性](/zh-cn/wiki/severity/) 通过影响开发和测试阶段处理[bugs](/zh-cn/wiki/bug/) 的**顺序**和**紧迫性**来影响[bug](/zh-cn/wiki/bug/) 生命周期。高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 通常会导致**发布过程停止**，直到它们得到解决，因为它们可能会对系统或最终用户体验造成重大损害。这些[bugs](/zh-cn/wiki/bug/) 通常被**升级**到开发团队优先事项的首位。
   相反，较低的[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 可能会安排在以后的版本中进行修复，或者可能与其他次要修复捆绑在一起。用于修复[bugs](/zh-cn/wiki/bug/)的**工作流程**和**资源分配**通常直接与其[严重性](/zh-cn/wiki/severity/)相关；关键[bugs](/zh-cn/wiki/bug/)可能需要高级开发人员立即关注或导致**加班**，而次要问题可以分配给经验不足的团队成员或在正常开发周期中解决。
-  此外，[严重性](/zh-cn/wiki/severity/) 会影响与利益相关者的**沟通**​​。高[严重性](/zh-cn/wiki/severity/) 问题通常需要立即向内部团队和潜在的外部利益相关者发出通知和详细报告，具体取决于[bug](/zh-cn/wiki/bug/) 的性质和业务环境。
+  此外，[严重性](/zh-cn/wiki/severity/) 会影响与利益相关者的**沟通**。高[严重性](/zh-cn/wiki/severity/) 问题通常需要立即向内部团队和潜在的外部利益相关者发出通知和详细报告，具体取决于[bug](/zh-cn/wiki/bug/) 的性质和业务环境。
   在[自动化测试](/zh-cn/wiki/automated-testing/) 环境中，[严重性](/zh-cn/wiki/severity/) 还可以影响**自动化策略**。覆盖应用程序关键区域的测试可能会在持续集成管道中更频繁地运行或使用更高的[priority](/zh-cn/wiki/priority/)，以确保尽早捕获并解决高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/)。
   总体而言，[严重性](/zh-cn/wiki/severity/) 是与 [bug](/zh-cn/wiki/bug/) 修复相关的 **决策过程** 的关键因素，影响从优先级和资源管理到利益相关者沟通和测试策略的各个方面。
 
 #### 严重性在错误分类中扮演什么角色？
 
-在[bug](/zh-cn/wiki/bug/) 分类中，**[严重性](/zh-cn/wiki/severity/)** 在有关**资源分配**和**[bug](/zh-cn/wiki/bug/) 修复顺序**的决策过程中发挥着关键作用。它有助于评估 [bug](/zh-cn/wiki/bug/)** 对应用程序功能和用户体验的影响。在分类会议期间，团队评估[严重性](/zh-cn/wiki/severity/) 以了解问题的**紧迫性**和**范围**。
+在[bug](/zh-cn/wiki/bug/) 分类中，**[严重性](/zh-cn/wiki/severity/)** 在有关**资源分配**和 **[bug](/zh-cn/wiki/bug/) 修复顺序**的决策过程中发挥着关键作用。它有助于评估 [bug](/zh-cn/wiki/bug/)**对应用程序功能和用户体验的影响。在分类会议期间，团队评估[严重性](/zh-cn/wiki/severity/) 以了解问题的**紧迫性**和**范围。
   高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 通常需要**立即关注**，并可能导致开发和测试工作的**重新确定优先级**。如果它们对产品的稳定性或安全性构成重大风险，它们还可能触发对发布时间表的**重新评估**。相反，较低的 [严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 可能会安排在以后的冲刺或发布中，从而使团队能够首先关注更关键的问题。
-  [严重性](/zh-cn/wiki/severity/) 评估会影响与利益相关者的**沟通**​​，因为高[严重性](/zh-cn/wiki/severity/) 问题可能需要立即通知和详细报告。它还指导**风险管理策略**，确保最具破坏性的[bugs](/zh-cn/wiki/bug/)得到及时解决，以尽量减少其对最终产品的影响。
+  [严重性](/zh-cn/wiki/severity/) 评估会影响与利益相关者的**沟通**，因为高[严重性](/zh-cn/wiki/severity/) 问题可能需要立即通知和详细报告。它还指导**风险管理策略**，确保最具破坏性的[bugs](/zh-cn/wiki/bug/)得到及时解决，以尽量减少其对最终产品的影响。
   在[自动化测试](/zh-cn/wiki/automated-testing/) 场景中，[严重性](/zh-cn/wiki/severity/) 可以规定**自动化策略**，例如优先为应用程序的关键区域创建自动化测试，以在未来的开发周期中快速识别和解决高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 问题。
   最终，在分类过程中理解并准确评估[bug](/zh-cn/wiki/bug/) [严重性](/zh-cn/wiki/severity/) 可确保团队能够保持**平衡的工作量**，**优化[质量保证](/zh-cn/wiki/quality-assurance/) 流程**，并在所需的时间范围内交付**可靠的软件产品**。
 
@@ -193,17 +179,13 @@ order: 0
 
 - **优先考虑**解决严重错误，以确保产品在发布时稳定且功能齐全。 [验收测试](/zh-cn/wiki/acceptance-testing/) 中的[严重性](/zh-cn/wiki/severity/) 评估不仅是为了识别缺陷，也是为了确保产品提供**优质的用户体验**并满足**业务要求**。发现的任何严重问题都必须立即传达给利益相关者，以便就产品的发布准备情况做出明智的决策。
 
-- **识别**和 **记录**可能妨碍用户有效操作软件的严重错误。
-
-- **评估**严重性以确定其是否属于该版本可接受的风险阈值。
-
 - **优先考虑**解决严重错误，以确保产品在发布时稳定且功能齐全。
 
 ### 测试管理的严重性
 
 #### 严重性如何影响测试用例设计？
 
-[严重性](/zh-cn/wiki/severity/) 通过规定测试工作的**焦点**和**深度**来影响[测试用例](/zh-cn/wiki/test-case/) 设计。高[严重性](/zh-cn/wiki/severity/)区域通常需要**鲁棒**[测试用例](/zh-cn/wiki/test-case/)来覆盖广泛的场景，包括边缘情况和压力条件。这些领域的[测试用例](/zh-cn/wiki/test-case/) 在设计时考虑到了**彻底性**，通常采用**[负面测试](/zh-cn/wiki/negative-testing/)** 技术来确保系统可以处理无效输入或意外的用户行为。
+[严重性](/zh-cn/wiki/severity/) 通过规定测试工作的**焦点**和**深度**来影响[测试用例](/zh-cn/wiki/test-case/) 设计。高[严重性](/zh-cn/wiki/severity/)区域通常需要**鲁棒**[测试用例](/zh-cn/wiki/test-case/)来覆盖广泛的场景，包括边缘情况和压力条件。这些领域的[测试用例](/zh-cn/wiki/test-case/) 在设计时考虑到了**彻底性**，通常采用 **[负面测试](/zh-cn/wiki/negative-testing/)** 技术来确保系统可以处理无效输入或意外的用户行为。
   例如，如果某个功能与安全性或数据完整性相关，则其失败将被视为高[严重性](/zh-cn/wiki/severity/)。 [测试用例](/zh-cn/wiki/test-case/) 此类功能将包括：
 
   ```
@@ -216,12 +198,12 @@ order: 0
   });
   ```
 相比之下，较低[严重性](/zh-cn/wiki/severity/) 区域可能会使用更**直接**和**更简单**[测试用例](/zh-cn/wiki/test-case/) 进行测试，重点关注最常见和预期的[用例](/zh-cn/wiki/use-case/)。这些[测试用例](/zh-cn/wiki/test-case/)可能不会深入研究罕见场景或压力条件，因为故障的影响不太重要。
-  [测试用例](/zh-cn/wiki/test-case/) 设计还考虑[bug](/zh-cn/wiki/bug/) 与[严重性](/zh-cn/wiki/severity/) 一起发生的**可能性**。故障可能性高的高[严重性](/zh-cn/wiki/severity/)区域可能有**额外的[测试用例](/zh-cn/wiki/test-case/)**或**自动检查**以快速捕获潜在的回归。
+  [测试用例](/zh-cn/wiki/test-case/) 设计还考虑[bug](/zh-cn/wiki/bug/) 与[严重性](/zh-cn/wiki/severity/) 一起发生的**可能性**。故障可能性高的高[严重性](/zh-cn/wiki/severity/)区域可能有**额外的[测试用例](/zh-cn/wiki/test-case/)** 或**自动检查**以快速捕获潜在的回归。
   最终，[严重性](/zh-cn/wiki/severity/) 指导[测试用例](/zh-cn/wiki/test-case/) 设计中的**资源分配**和**时间**，确保软件最关键的方面经过彻底测试且可靠。
 
 #### 严重性如何影响测试执行计划？
 
-[严重性](/zh-cn/wiki/severity/) 通过指定执行[测试用例](/zh-cn/wiki/test-case/) 的**顺序**和**[priority](/zh-cn/wiki/priority/)** 来影响[测试执行](/zh-cn/wiki/test-execution/) 规划。首先测试可能导致重大功能故障或数据丢失的高[严重性](/zh-cn/wiki/severity/) 问题，以确保软件最关键的方面稳定。这种方法有助于在测试周期的早期识别和解决最具破坏性的缺陷。
+[严重性](/zh-cn/wiki/severity/) 通过指定执行[测试用例](/zh-cn/wiki/test-case/) 的**顺序**和 **[priority](/zh-cn/wiki/priority/)** 来影响[测试执行](/zh-cn/wiki/test-execution/) 规划。首先测试可能导致重大功能故障或数据丢失的高[严重性](/zh-cn/wiki/severity/) 问题，以确保软件最关键的方面稳定。这种方法有助于在测试周期的早期识别和解决最具破坏性的缺陷。
   [测试用例](/zh-cn/wiki/test-case/) 覆盖具有已知高[严重性](/zh-cn/wiki/severity/) 问题的应用程序区域，可以**优先**并更频繁地执行（例如在[回归测试](/zh-cn/wiki/regression-testing/) 中），以确认这些问题已得到解决并且没有再次出现。相反，[严重性](/zh-cn/wiki/severity/) 问题较低的区域可能测试频率较低或紧迫性较低。
   在[自动化测试](/zh-cn/wiki/automated-testing/) 中，[测试套件](/zh-cn/wiki/test-suite/) 可以组织运行高[严重性](/zh-cn/wiki/severity/) [测试用例](/zh-cn/wiki/test-case/) 作为**冒烟测试**或**健全性测试**套件的一部分，以快速评估构建的运行状况。这确保任何构建或发布候选版本都满足进一步测试或部署的最低标准。
   此外，在规划[测试执行](/zh-cn/wiki/test-execution/)时，为高[严重性](/zh-cn/wiki/severity/)[测试场景](/zh-cn/wiki/test-scenario/)分配适当的**资源**和**时间**至关重要。这可能涉及建立更强大的测试环境或投入更多时间用于[测试执行](/zh-cn/wiki/test-execution/)和分析。
@@ -229,7 +211,7 @@ order: 0
 
 #### 严重性如何影响测试报告？
 
-[严重性](/zh-cn/wiki/severity/) 通过指导缺陷的**沟通**​​和**管理**来影响测试报告。在报告测试结果时，[严重性](/zh-cn/wiki/severity/) 会明确指示 [bug](/zh-cn/wiki/bug/) 对系统功能的**影响**。 [测试报告](/zh-cn/wiki/test-report/) 通常包括每个缺陷的 **[严重性](/zh-cn/wiki/severity/) 评级**，以帮助利益相关者了解潜在风险和修复的紧迫性。
+[严重性](/zh-cn/wiki/severity/) 通过指导缺陷的**沟通**和**管理**来影响测试报告。在报告测试结果时，[严重性](/zh-cn/wiki/severity/) 会明确指示 [bug](/zh-cn/wiki/bug/) 对系统功能的**影响**。 [测试报告](/zh-cn/wiki/test-report/) 通常包括每个缺陷的 **[严重性](/zh-cn/wiki/severity/) 评级**，以帮助利益相关者了解潜在风险和修复的紧迫性。
   在自动化测试报告中，[严重性](/zh-cn/wiki/severity/) 评级可以向适当的团队成员触发**警报**和**通知**。例如，高[严重性](/zh-cn/wiki/severity/) [bug](/zh-cn/wiki/bug/) 可能会自动通知产品经理或首席开发人员，促使立即采取行动。这可确保关键问题得到及时解决，从而降低发布时出现重大问题的风险。
   此外，[严重性](/zh-cn/wiki/severity/) 可以影响报告缺陷的**排序**。 [测试报告](/zh-cn/wiki/test-report/) 可能会被排序，以在顶部显示最严重的 [bugs](/zh-cn/wiki/bug/)，确保它们首先受到关注。这有助于根据对产品的潜在影响确定缺陷解决工作的优先级。
   此外，[测试报告](/zh-cn/wiki/test-report/) 中的[严重性](/zh-cn/wiki/severity/) 评级可用于生成一段时间内的**指标**和**趋势**，从而提供对软件质量的深入了解。高[严重性](/zh-cn/wiki/severity/) [bugs](/zh-cn/wiki/bug/) 趋势下降可能表明[软件质量](/zh-cn/wiki/software-quality/) 有所改进，而上升趋势可能表明需要进行工艺或设计更改。

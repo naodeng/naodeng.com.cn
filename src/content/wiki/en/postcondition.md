@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Postcondition](#postcondition)
-  - [Related Terms:](#related-terms)
   - [Questions about Postcondition?](#questions-about-postcondition)
     - [Basics and Importance](#basics-and-importance)
       - [What is a postcondition in software testing?](#what-is-a-postcondition-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 Postcondition is a condition that must hold true after a segment of code runs, often verified through code predicates.
 
-## Related Terms:
+Related Terms:
 
 - Precondition
 
@@ -224,9 +223,6 @@ Postcondition is a condition that must hold true after a segment of code runs, o
   - **Review Regularly**: Periodically review postconditions as part of test maintenance to ensure they still align with the application's expected behavior.
   By following these practices, you'll create clear, reliable, and maintainable postconditions that enhance the effectiveness of your [automated testing](/en/wiki/automated-testing/) efforts.
 
-  - **Document Changes**: If a [test case](/en/wiki/test-case/) or the underlying feature changes, update the postconditions accordingly to keep them current.
-  - **Review Regularly**: Periodically review postconditions as part of test maintenance to ensure they still align with the application's expected behavior.
-
 #### How do you validate if a postcondition is met in a test case?
 
   Validating if a postcondition is met in a [test case](/en/wiki/test-case/) involves asserting the expected state of the application after the test actions have been executed. Use **assertions** to compare the actual state of the application with the expected postcondition. If the assertion passes, the postcondition is met; if it fails, the postcondition is not met, indicating a potential issue.
@@ -291,8 +287,6 @@ Postcondition is a condition that must hold true after a segment of code runs, o
   ```
   Each postcondition is validated with an assertion, and they are all related to the single action of uploading a file but represent different aspects of the system's state after the operation.
 
-  - **List each postcondition**
-    separately to maintain clarity.
 
   - **Ensure independence**
 
@@ -342,8 +336,6 @@ Postcondition is a condition that must hold true after a segment of code runs, o
   ```
   In this snippet, each postcondition is checked through a corresponding assertion. The relationship between postconditions and [test case](/en/wiki/test-case/) design is thus a matter of specifying expected outcomes and implementing checks to ensure these outcomes are achieved after the test actions are performed.
 
-  - **Logical grouping**
-    of related postconditions.
 
   - **Modular assertions**
     to keep the code maintainable and reusable.

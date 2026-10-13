@@ -122,7 +122,6 @@ Outlines a user action at a high level. It is broader than a detailed test case.
   8. **Refine** : Update the scenario based on feedback and ensure it aligns with the test objectives.
   Use a descriptive naming convention for easy identification and traceability. Document the scenario in a [test management](/en/wiki/test-management/) tool or a shared repository for team access and collaboration. Remember to keep scenarios independent to allow for modular testing and easier maintenance.
 
-
 #### What are the key elements to consider when designing a Test Scenario?
 
   When designing a **Test Scenario**, consider the following key elements:
@@ -140,7 +139,6 @@ Outlines a user action at a high level. It is broader than a detailed test case.
   - **Review and Update**: Regularly review scenarios for relevance and accuracy, updating them to reflect changes in the application or user behavior.
   By considering these elements, you ensure that your Test Scenarios are robust, maintainable, and provide valuable insights into the quality of the software.
 
-
 #### How can you ensure that a Test Scenario is effective and comprehensive?
 
   To ensure a **Test Scenario** is effective and comprehensive, follow these strategies:
@@ -156,7 +154,6 @@ Outlines a user action at a high level. It is broader than a detailed test case.
   - **Automated regression tests** : Incorporate scenarios into regression suites to continuously validate functionality as the software evolves.
   - **Continuous improvement** : Regularly revisit and refine scenarios based on feedback, defect discoveries, and changes in the software or underlying technology.
   By integrating these practices, test scenarios will be robust, covering a wide range of application behaviors and ensuring a high level of [software quality](/en/wiki/software-quality/).
-
 
 #### What is the role of requirements and specifications in creating Test Scenarios?
 
@@ -247,9 +244,6 @@ Outlines a user action at a high level. It is broader than a detailed test case.
   - **Robot Framework** : A keyword-driven test automation framework for acceptance testing and acceptance test-driven development (ATDD).
   Each tool has its own scripting or programming language for test scenario execution, ranging from domain-specific languages to common programming languages like Java, Python, or JavaScript. The choice of tool depends on the application under test, the environment it runs in, and the specific requirements of the test scenarios.
 
-  - **[Selenium](/en/wiki/selenium/)** : An open-source tool for automating web browsers. It supports multiple languages and frameworks.
-  - **Appium** : Extends Selenium's framework to mobile applications, supporting both iOS and Android platforms.
-  - **[Cypress](/en/wiki/cypress/)** : A JavaScript-based end-to-end testing framework designed for modern web applications.
 
 #### How do you evaluate the results of a Test Scenario?
 
@@ -265,7 +259,6 @@ Outlines a user action at a high level. It is broader than a detailed test case.
   - **Gathering Stakeholder Feedback** : Share results with stakeholders to confirm that the scenario fulfills business requirements.
   Use automation tools to assist in result evaluation, leveraging features like assertions, reporting, and analytics. Continuous integration systems can further streamline the process by automatically running scenarios and providing instant feedback. Remember to prioritize critical defects and ensure that all issues are addressed before considering the scenario successfully executed.
 
-
 #### What are the common issues encountered when executing Test Scenarios and how can they be resolved?
 
   Common issues encountered during test scenario execution include:
@@ -280,7 +273,6 @@ Outlines a user action at a high level. It is broader than a detailed test case.
   - **Resource Leaks**: Tests may not clean up after execution, leading to exhausted resources. Ensure tests are self-contained and release resources after completion.
   - **Version Control Conflicts**: Multiple [test automation](/en/wiki/test-automation/) engineers working on the same scripts can cause merge conflicts. Use version control best practices and review processes to manage changes.
   Addressing these issues often requires a combination of good practices, robust design, and proactive maintenance. Regularly reviewing and refining the [test automation](/en/wiki/test-automation/) strategy is essential for minimizing these common problems.
-
 
 ### Advanced Concepts
 
@@ -316,10 +308,6 @@ Outlines a user action at a high level. It is broader than a detailed test case.
   4. **Write**
     automation scripts:
 
-     - Define test data and variables.
-     - Use Page Object Model (POM) or similar design patterns for maintainability.
-     - Implement assertions to check the expected outcomes.
-     - Include setup and teardown methods for preconditions and postconditions.
      - Define test data and variables.
      - Use Page Object Model (POM) or similar design patterns for maintainability.
      - Implement assertions to check the expected outcomes.

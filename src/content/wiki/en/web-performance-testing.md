@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [Web Performance Testing](#web-performance-testing)
-  - [Related Terms:](#related-terms)
   - [Questions about Web Performance Testing?](#questions-about-web-performance-testing)
     - [Basics and Importance](#basics-and-importance)
       - [What is web performance testing?](#what-is-web-performance-testing)
@@ -42,7 +41,7 @@ order: 0
 
 Evaluation of a web application's speed, responsiveness, and stability under varying loads. It identifies and addresses potential bottlenecks.
 
-## Related Terms:
+Related Terms:
 
 - [Load Testing](/en/wiki/load-testing/)
 - [Stress Testing](/en/wiki/stress-testing/)
@@ -301,9 +300,6 @@ Evaluation of a web application's speed, responsiveness, and stability under var
   - **Collaborate with developers** to ensure they understand the importance of performance considerations and to foster a performance-minded culture.
   - **Stay updated with the latest testing tools and methodologies** to take advantage of advancements in performance testing and analysis.
   By implementing these strategies, test automation engineers can effectively address the challenges in web performance testing and ensure that applications meet the desired performance standards.
-
-
-  - **Prioritize [test cases](/en/wiki/test-case/)**
 
 #### What are some best practices in web performance testing?
 

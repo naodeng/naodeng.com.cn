@@ -16,7 +16,6 @@ order: 0
 <!-- TOC START -->
 
 - [V-Model](#v-model)
-  - [See also:](#see-also)
   - [Questions about V-Model?](#questions-about-v-model)
     - [Basics and Importance](#basics-and-importance)
       - [What is the V-Model in software testing?](#what-is-the-v-model-in-software-testing)
@@ -40,7 +39,7 @@ order: 0
 
 A development model that aligns with the product's validation phase.
 
-## See also:
+See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/V-model)
 ## Questions about V-Model?
@@ -198,10 +197,6 @@ A development model that aligns with the product's validation phase.
     **[Unit Testing](/en/wiki/unit-testing/)**
     . Unit tests are written based on the detailed design of components to ensure each component functions correctly.
   Each phase begins only after the preceding phase is complete, ensuring a **high level of discipline**. The completion of a development phase is the trigger for the start of the corresponding testing phase. This linkage ensures that [test plans](/en/wiki/test-plan/) and [test cases](/en/wiki/test-case/) are developed parallel to each phase of software development, making it easier to trace back from tests to requirements, which is crucial for **[test coverage](/en/wiki/test-coverage/)** and **[quality assurance](/en/wiki/quality-assurance/)**.
-
-  - **Requirements Analysis**
-    is linked to
-    **[Acceptance Testing](/en/wiki/acceptance-testing/)**
 
 #### What is the role of testing in the V-Model?
 

@@ -15,7 +15,6 @@ order: 0
 <!-- TOC START -->
 
 - [Postman](#postman)
-  - [Related Terms:](#related-terms)
   - [Questions about Postman?](#questions-about-postman)
     - [Basics and Importance](#basics-and-importance)
       - [What is Postman and what is it used for?](#what-is-postman-and-what-is-it-used-for)
@@ -43,7 +42,7 @@ order: 0
 
 Postman is a widely-used software tool that facilitates API (Application Programming Interface) development and testing. It offers a user-friendly interface that allows developers and testers to send requests to and receive responses from web services. With Postman, users can create, save, and organize HTTP requests, test APIs by sending various request types (GET, POST, PUT, DELETE, etc.), and inspect the responses. Additional features include the ability to automate tests, create mock servers, and document APIs. Postman also provides collaboration capabilities for teams, enabling them to share collections of requests, environments, and other data. Over time, Postman has evolved from a simple API testing tool into a comprehensive API development environment.
 
-## Related Terms:
+Related Terms:
 
 - [API testing tool](/en/wiki/api-testing/)
 - [Swagger](/en/wiki/swagger/)
@@ -238,9 +237,6 @@ See also:
   The response will appear in the lower section of the Postman interface. You can view the status code, response time, size, and the body of the response. If you need to make further adjustments, you can modify the request as needed and resend it.
   For [automated testing](/en/wiki/automated-testing/), you can write **tests** in the 'Tests' tab using JavaScript and utilize Postman's built-in test snippets for common assertions. After sending the request, the test results will be displayed in the 'Test Results' tab.
 
-  1. Open Postman and select the
-    **workspace**
-    where you want to work.
 
 #### How do you save responses in Postman?
 

@@ -116,10 +116,6 @@ A collection of tests examining application features. Automated test suites exec
     **strategy and planning**
     of the testing process. It covers what needs to be tested, how it will be tested, who will do the testing, when the testing will happen, and what resources will be required.
   In essence, the [Test Plan](/en/wiki/test-plan/) is the blueprint for the testing phase, providing a high-level view of the testing approach, while the Test Suite is a component of the [Test Plan](/en/wiki/test-plan/), focusing on the actual tests to be run. Test Suites are often derived from the [Test Plan](/en/wiki/test-plan/) and are used to organize and execute tests in a coherent and structured manner.
-
-  - A Test Suite is more about the
-    **practical execution**
-
 ### Creation and Management
 
 #### How is a Test Suite created?
@@ -388,8 +384,6 @@ A collection of tests examining application features. Automated test suites exec
     within the test code or accompanying documentation to provide context for future reference.
   By following these practices, [test automation](/en/wiki/test-automation/) engineers can create robust, reliable, and maintainable Test Suites that effectively support the [quality assurance](/en/wiki/quality-assurance/) process.
 
-  - **Prioritize [test cases](/en/wiki/test-case/)**
-
 #### How can a Test Suite be optimized for efficiency?
 
   To optimize a **Test Suite** for efficiency, consider the following strategies:
@@ -463,8 +457,6 @@ A collection of tests examining application features. Automated test suites exec
   - **Monitor and act on test results**: Use dashboards and reporting tools to monitor test results over time and address flakiness or other issues promptly.
   By following these practices, [test automation](/en/wiki/test-automation/) engineers can ensure their Test Suites remain robust, adaptable, and easy to manage over the software lifecycle.
 
-  - **Modularize tests** : Break down tests into smaller, reusable modules or functions. This promotes reusability and makes updates easier.
-  - **Use [Page Object Model](/en/wiki/page-object-model/) (POM)** : Encapsulate UI structure and behaviors in page objects. This reduces duplication and simplifies maintenance when UI changes.
 
 #### What are some strategies for managing large or complex Test Suites?
 

@@ -1,6 +1,6 @@
 ---
 title: "正交数组测试 ｜ Orthogonal Array Testing"
-description: "正交数组测试 (Orthogonal Array Testing, OAT) 是一种系统的、统计性的测试方法，用于测试成对交互 (pair-wise interactions)，以识别影响系统性能的因素。它基于组合设计理论中的正交表，确保每对参数至少一起测试一次。实施步骤：1…"
+description: "正交数组测试 (Orthogonal Array Testing, OAT) 是一种系统的、统计性的测试方法，用于测试成对交互 (pair-wise interactions)，以识别影响系统性能的因素。它基于组合设计理论中的正交表，确保每对参数至少一起测试一次。"
 section: "O"
 related:
   - test-case
@@ -71,19 +71,6 @@ order: 0
 - 选择正确的阵列。
 - 正确映射参数。 **克服挑战**：投资于培训并使用专门的工具来协助测试设计。
 
-1. 确定参数和可能的值。
-2. 选择合适的正交阵。
-3. 将测试参数映射到数组。
-4. 根据阵列组合执行测试。
-- 具有许多参数和级别的配置。
-- 测试的早期阶段，以快速识别主要问题。
-- 减少测试用例的数量。
-- 有效涵盖互动。
-- 可能会遗漏配对测试未涵盖的特定缺陷。
-- 需要了解统计方法。
-- 有多个相互作用的参数。
-- 资源有限。
-- 选择正确的阵列。
 - 正确映射参数。
 
 #### 为什么正交阵列测试在软件测试中很重要？
@@ -94,7 +81,7 @@ order: 0
   此外，OAT 可以与其他测试方法集成，以提高[测试套件](/zh-cn/wiki/test-suite/) 的整体**有效性和效率**。例如，它可以与边界值分析或[等价划分](/zh-cn/wiki/equivalence-partitioning/)一起使用，以确保全面的测试策略。
   总之，[正交数组测试](/zh-cn/wiki/orthogonal-array-testing/) 很重要，因为它：
 
-- 确保 **高效[测试覆盖率](/zh-cn/wiki/test-coverage/)**测试用例较少。
+- 确保 **高效[测试覆盖率](/zh-cn/wiki/test-coverage/)** 测试用例较少。
 
 - 保存 **时间和资源**在测试过程中。
 
@@ -234,7 +221,7 @@ order: 0
 
 - 该项目需要一个 **系统抽样方法**确保测试用例在输入域中的代表性分布。
 
-- **[回归测试](/zh-cn/wiki/regression-testing/)**现有功能的重新测试可以受益于一组减少但有效的测试用例，以确保没有引入新的缺陷。
+- **[回归测试](/zh-cn/wiki/regression-testing/)** 现有功能的重新测试可以受益于一组减少但有效的测试用例，以确保没有引入新的缺陷。
 
 - 情况 **缺陷风险**由于组件之间的交互复杂，因此需要关注关键交互。
 
@@ -257,7 +244,7 @@ order: 0
 
 [正交数组测试](/zh-cn/wiki/orthogonal-array-testing/) (OAT) 可以与各种测试方法集成，以增强[测试覆盖率](/zh-cn/wiki/test-coverage/) 和效率。例如，**将 OAT 与 [等价划分](/zh-cn/wiki/equivalence-partitioning/)** 相结合可以减少 [测试用例](/zh-cn/wiki/test-case/) 的数量，同时确保每个等价类都得到表示。这在处理大输入空间时特别有用。
   在 **[集成测试](/zh-cn/wiki/integration-testing/)** 中，OAT 可用于系统地测试组件之间的交互。通过基于正交阵列选择一组有代表性的交互，测试人员可以发现由于集成组件的异常组合而可能出现的缺陷。
-  对于 **[性能测试](/zh-cn/wiki/performance-testing/)**，OAT 有助于确定性能变量的最佳组合。测试人员可以创建一组性能@@PR​​OTECTED_32@@，涵盖这些变量之间最重要的相互作用。
+  对于 **[性能测试](/zh-cn/wiki/performance-testing/)**，OAT 有助于确定性能变量的最佳组合。测试人员可以创建一组性能测试用例，涵盖这些变量之间最重要的相互作用。
   当在 **[回归测试](/zh-cn/wiki/regression-testing/)** 中使用时，OAT 可确保测试最具影响力的更改组合。当时间限制不允许执行完整的回归套件时，这非常有用。
   在 **用户[接口测试](/zh-cn/wiki/interface-testing/)** 中，OAT 可以指导不同 UI 元素和用户操作的选择，以创建一组最小的 [测试用例](/zh-cn/wiki/test-case/)，从而提供 UI 功能的广泛覆盖。
   要将 OAT 与 **[自动化测试](/zh-cn/wiki/automated-testing/) 框架**集成，测试人员可以使用支持组合测试设计的工具或开发基于正交数组生成 [测试用例](/zh-cn/wiki/test-case/) 的自定义脚本。
@@ -292,7 +279,7 @@ order: 0
 2. **将OAT与其他测试设计技术**（例如[等价划分](/zh-cn/wiki/equivalence-partitioning/)或边界值分析）相结合，以减少[测试用例](/zh-cn/wiki/test-case/)的数量，同时保持覆盖范围。
 3. **使用支持OAT的自动化工具**生成[测试用例](/zh-cn/wiki/test-case/)并管理执行。 *Tosca* 或 *Hexawise* 等工具可以有效地处理复杂的数组和大型数据集。
 4. **模块化[测试用例](/zh-cn/wiki/test-case/)** 以创建可重用组件。随着软件的增长，这种方法有助于管理变更并扩展[测试套件](/zh-cn/wiki/test-suite/)。
-5. **实施持续集成/持续部署（CI/CD）**管道以自动执行OAT生成的[测试用例](/zh-cn/wiki/test-case/)。这确保了即时反馈和更快的[迭代](/zh-cn/wiki/iteration/)周期。
+5. **实施持续集成/持续部署（CI/CD）** 管道以自动执行OAT生成的[测试用例](/zh-cn/wiki/test-case/)。这确保了即时反馈和更快的[迭代](/zh-cn/wiki/iteration/)周期。
 6. **通过删除冗余测试并关注更有可能发现缺陷的交互来优化正交数组**。
 7. **利用并行测试**同时执行多个[测试用例](/zh-cn/wiki/test-case/)，减少总体测试时间。
 8. **定期审查和更新测试矩阵**，以确保其随着软件的发展而保持相关性。这包括在添加或修改功能时添加新的因素或级别。 通过执行这些步骤，您可以在处理大型软件项目的复杂性的同时保持 OAT 的效率和有效性。
