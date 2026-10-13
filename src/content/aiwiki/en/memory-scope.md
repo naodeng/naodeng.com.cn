@@ -16,99 +16,61 @@ related:
   - "automatic-memory"
   - "privacy-mode"
   - "rules-and-memories"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
 # Memory Scope
-
-> One-line definition: Defining the visibility and effectiveness boundaries of memory items to ensure the AI possesses clear knowledge isolation and targeted activation capabilities across different projects, teams, or tasks.
 
 ## Quick Take
 
-- Problem it solves: Keep the right context and avoid context pollution.
-- When to use: Use it in long sessions and multi-task workflows.
-- Boundary: Not ideal for strict stateless-response requirements.
+- **In brief:** Memory scope defines where saved information may be used.
+- **Useful for:** Separating personal, project, or session context.
+- **Main limit:** Scope labels do not guarantee access control or privacy.
 
 ## Overview
 
-`Memory Scope` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A preference about test output may apply to one repository but not to another. A memory system needs a clear scope so it does not reuse the preference in the wrong project.
 
 ## Core Definition
 
-### Formal Definition
-
-Memory Scope is a logical layering mechanism used to tag memory items with metadata. It typically includes: **Global**, **Organization/Team**, **Project/Repo**, and **Session/Chat**. When querying vector databases, the system filters results based on the current physical path or session context.
-
-### Plain-Language Explanation
-
-Think of `Memory Scope` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Memory scope is the boundary that determines which users, projects, sessions, or tasks can use saved information. The available scopes and how they are enforced depend on the product.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: Developers often maintain multiple projects simultaneously with vastly different tech stacks (e.g., Vue 2 vs. Vue 3). If the AI confuses these, it can cause disastrous code errors.
-- **Focus**: Preserving data privacy (isolation between teams) and avoiding knowledge conflicts.
-
-### Evolution
-
-- **Stage 1.0 (Unitary Global Memory)**: Everything the AI learned applied to all projects, easily leading to chaos.
-- **Stage 2.0 (Path-based Isolation)**: Started supporting the recognition of rule files like `.cursorrules` located at the project root.
-- **Stage 3.0 (Dynamic Multi-level Scope)**: Memory can be cross-referenced based on task tags, supporting "Conditional Selective Inheritance."
+Applications began storing context to support later interactions. As saved context grew, systems needed rules for when and where to retrieve it. There is no universal scope hierarchy.
 
 ## How It Works
 
-1. **Tagging**: Every memory item entered into the library is tagged with a Scope (e.g., `scope: repo_A`).
-2. **Context Detection**: When a user launches the AI assistant, the system automatically identifies the current file path, Git repository info, and the user's logged-in organization.
-3. **Hierarchical Filtering**:
-   - First, load generic personal preferences (Global).
-   - Second, load project rules for the current Git repository (Project).
-   - Finally, activate immediate memory unique to the current chat (Session).
-4. **Collision Handling**: Typically follows the **"Principle of Proximity"**: Session > Project > Global.
+1. The system stores information with a scope or ownership rule.
+2. A later request identifies its user, project, or session.
+3. The system retrieves information allowed for that context.
+4. The application applies its access controls and retention rules.
+5. A user checks whether the returned information is relevant and current.
 
 ## Applications in Software Development and Testing
 
-- **Multi-tenant Development Security**: In outsourcing or consulting scenarios, strictly limiting AI memory to the client's specified repo prevents cross-project logic leakage.
-- **Team Consensus Retention**: A backend team shares a "Team Scope" to sync the latest API design specs, while the frontend team remains undisturbed.
-- **Temporary Task Snapshots**: Create a temporary scope for a complex refactoring task; destroy it after completion to avoid affecting long-term system behavior.
+A coding assistant may keep a repository-specific convention, such as the test command. A team should avoid sharing private notes across repositories unless the storage and permissions support that use.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Precision Alignment**: AI suggestions are always tailored to the project's specific context.
-- **Security Assurance**: Prevents sensitive knowledge from being accidentally carried into unrelated projects.
-- **Performance Optimization**: Scoped filtering reduces the volume of irrelevant memory that needs to be read and processed.
-
-### Limitations and Risks
-
-- **Information Fragmentation**: Excessive partitioning might prevent universal good habits from being reused across projects.
-- **Inheritance Conflicts**: If top-level and bottom-level rules contradict during layering, the AI may become confused.
-- **Management Complexity**: Requires developers to clearly understand which level their rules were written at.
+Scopes can reduce irrelevant reuse and help separate contexts. A wrong label, broad retrieval rule, or weak access control can expose or apply information in the wrong place. A scope name alone does not provide security.
 
 ## Comparison with Similar Terms
 
-| Dimension | Memory Scope | Privacy Mode | Environment Isolation |
-| :--- | :--- | :--- | :--- |
-| **Core Goal** | **Targeted Activation** | Data not used for training | Runtime independence |
-| **Control** | User/Developer | Platform provider | Infrastructure provider |
-| **Logic** | Metadata Filtering | Anonymization | Container/VM Tech |
+Memory scope defines where saved memory applies. Conversation state supports an active interaction. Rules provide instructions. Permission policies control access to actions or resources. These controls solve different problems.
 
 ## Best Practices
 
-- **Principle of Least Privilege**: For non-universal knowledge, prioritize Project or Session scope.
-- **Structured Naming**: Use hierarchies like `company/team/project` for easier retrieval.
-- **Scope Visibility**: AI editors should show the user which scopes are currently influencing the AI's memory.
+Document the available scopes and owners. Keep personal, team, and project data separate when required. Review access and deletion behavior. Let users inspect and correct stored information.
+
+## Common Pitfalls
+
+Do not assume a product has the same global, project, and session scopes as another product. Do not treat scope as a substitute for access control.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does project-scoped memory stay inside one repository?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+Only if the product enforces that boundary. Check retrieval behavior and access controls.
 
 ## Related Resources
 

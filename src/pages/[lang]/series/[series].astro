@@ -9,6 +9,7 @@ import { BLOG_POSTS_PER_PAGE, NAV_HOME, NAV_SERIES } from "@/consts";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
 import { paginateItems } from "@/utils/blogPagination";
+import { buildBlogArchiveDescription, getBlogSeriesDisplayName } from "@/utils/blogArchiveDescription.mjs";
 
 function slugToSeries(slug: string) {
   return decodeURIComponent(slug);
@@ -59,21 +60,33 @@ const t = useTranslations(locale);
 
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const paginated = paginateItems(sortedPosts, 1, BLOG_POSTS_PER_PAGE);
-const title = seriesName;
+const displaySeriesName = getBlogSeriesDisplayName(seriesName, locale);
+const title = displaySeriesName;
+const description = buildBlogArchiveDescription({
+  kind: "series",
+  name: displaySeriesName,
+  totalItems: paginated.totalItems,
+  currentPage: 1,
+  totalPages: paginated.totalPages,
+  lang: locale,
+});
 const seriesBasePath = `/series/${encodeURIComponent(seriesName)}/`;
+const seriesCountLabel = locale === "en" && paginated.totalItems === 1
+  ? "post in this series"
+  : t({ en: "posts in this series", "zh-cn": "篇系列文章" });
 const homeName = typeof NAV_HOME === "string" ? NAV_HOME : (NAV_HOME[locale] ?? (locale === "zh-cn" ? "首页" : "Home"));
 const seriesLabel = typeof NAV_SERIES === "string" ? NAV_SERIES : (NAV_SERIES[locale] ?? (locale === "zh-cn" ? "系列" : "Series"));
 const breadcrumbs = [
   { name: homeName, url: `/${lang}/` },
   { name: seriesLabel, url: `/${lang}/series/` },
-  { name: seriesName, url: `/${lang}/series/${encodeURIComponent(seriesSlug ?? "")}/` },
+  { name: displaySeriesName, url: `/${lang}/series/${encodeURIComponent(seriesSlug ?? "")}/` },
 ];
 ---
 
-<Layout {title}>
+<Layout {title} {description}>
   <Breadcrumb items={breadcrumbs} />
   <PageHeadline {title} compact>
-    <p class="series-meta">{paginated.totalItems} {t({ en: "posts in this series", "zh-cn": "篇系列文章" })}</p>
+    <p class="series-meta">{paginated.totalItems} {seriesCountLabel}</p>
   </PageHeadline>
 
   <div class="blog-container">

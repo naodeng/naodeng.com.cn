@@ -31,13 +31,13 @@ series: ["Awesome QA Skills 实战"]
 
 技术设计质量复核 Skill 不替代：
 
-- Code 评审 和实现质量检查；
+- 代码评审和实现质量检查；
 - 性能、容量、兼容性或安全测试；
 - 生产运行验证和故障演练；
 - 架构批准、风险接受或发布决策；
 - 真实系统中的数据库、API 或探针执行。
 
-它是一层 Design Quality Gate：帮助团队在实现前明确设计声明、证据缺口和验证动作。
+它是一层设计质量关口：帮助团队在实现前明确设计声明、证据缺口和验证动作。
 
 ## 它主要检查哪些内容
 
@@ -50,8 +50,8 @@ series: ["Awesome QA Skills 实战"]
 | 数据与一致性 | 事务、幂等、重复提交和最终一致性如何保证？ |
 | 安全与权限 | 身份、授权、租户隔离和敏感数据在哪里处理？ |
 | 性能与容量 | TPS、并发、延迟、容量和资源假设是否明确？ |
-| 可观测性 | Log、Metric、Trace 能否定位一次失败和一次重试？ |
-| 兼容与演进 | API、Schema、客户端和版本升级如何共存？ |
+| 可观测性 | 日志、指标和链路追踪能否定位一次失败和一次重试？ |
+| 兼容与演进 | API、数据模式、客户端和版本升级如何共存？ |
 | 恢复与降级 | 是否有补偿、重放、降级、回滚和数据修复路径？ |
 | 可维护性 | 配置、扩展点、职责和依赖复杂度是否可控？ |
 | 验证准备度 | 设计声明由什么测试、指标、实验或运行证据证明？ |
@@ -83,7 +83,7 @@ series: ["Awesome QA Skills 实战"]
 | --- | --- |
 | 设计事实 | ADR 指定使用异步队列，未提供死信处理说明 |
 | 证据支持的推断 | 消费者失败可能让任务长期处于 Pending |
-| 候选建议 | 考虑 Dead Letter Queue、重放和超时告警 |
+| 候选建议 | 考虑死信队列、重放和超时告警 |
 | 人工决策 | 是否接受至少一次投递语义，以及重复任务由谁裁决 |
 
 这样，AI 可以帮助团队暴露风险和准备验证，但最终架构取舍仍然属于团队。
@@ -115,17 +115,17 @@ series: ["Awesome QA Skills 实战"]
 
 ##### TD-03 — 下载链路缺少明确的租户授权边界
 
-- **来源 / 证据：** Export Storage Design §3.2；Download API Contract §2.1；租户权限矩阵和审计方案未提供。
+- **来源 / 证据：** 导出存储设计 §3.2；下载 API 契约 §2.1；租户权限矩阵和审计方案未提供。
 - **状态：** missing
 - **影响：** 如果接口只按 job_id 查询文件，路径名称本身不能证明租户隔离，可能让跨租户访问在实现阶段才暴露。
 - **优先级：** P1——它直接影响授权设计、API 验证和审计要求。
 - **缺口动作：** 明确 job_id 与 tenant_id 的绑定位置，并说明 API、服务端和对象存储签名策略各自负责什么。
 - **责任角色：** API 负责人、安全负责人、存储负责人。
-- **待决策问题：** 租户授权由 API Gateway、Export Service 还是对象存储策略执行？跨租户请求统一返回什么？
+- **待决策问题：** 租户授权由 API 网关、导出服务还是对象存储策略执行？跨租户请求统一返回什么？
 - **关闭条件：** 设计和权限矩阵对合法、跨租户、过期和不存在资源给出一致行为，并能追踪到验证场景。
-- **验证方式：** 在隔离环境用 Tenant A 请求 Tenant B 的 job_id，预期拒绝并保留审计记录；实际执行结果单独记录。
+- **验证方式：** 在隔离环境用租户 A 请求租户 B 的 job_id，预期拒绝并保留审计记录；实际执行结果单独记录。
 
-TD-03 把风险送进 ADR 修订、Issue、测试任务或验证实验，不负责给设计打分。实现完成后，它还可以重新审计并关闭。
+TD-03 把风险送进 ADR 修订、问题单、测试任务或验证实验，不负责给设计打分。实现完成后，它还可以重新审计并关闭。
 
 ### 决策
 
@@ -217,11 +217,11 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行规则在技术设计质量复核 Prompt：
+完整执行规则在技术设计质量复核提示词：
 
 https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md
 
-Skill 源目录同时包含 Skill 定义、Agent 适配和 Eval 资产：
+Skill 源目录同时包含 Skill 定义、智能体适配和评测资产：
 
 https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review
 
@@ -229,7 +229,7 @@ https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/t
 
 ### 参考链接
 
-- 技术设计质量复核 Prompt：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md
+- 技术设计质量复核提示词：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md
 - 技术设计质量复核 Skill 源文件：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review
 - 技术设计质量复核详情页：[https://inaodeng.com/zh-cn/qaskills/technical-design-quality-review/](https://inaodeng.com/zh-cn/qaskills/technical-design-quality-review/)
 - Awesome QA Skills 项目：https://github.com/naodeng/awesome-qa-skills

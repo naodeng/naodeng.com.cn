@@ -1,14 +1,14 @@
 ---
 title: "如何测试聊天机器人：五个质量维度与可执行检查清单"
 description: "以独立书店聊天机器人为例，检查职责边界、安全、准确性、表达风格与真实性，并给出自动化和回归做法。"
-date: 2026-10-12T09:00:00.000Z
+date: 2026-10-13T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "聊天机器人", "质量工程"]
 categories: ["AI 测试"]
 ---
 
-问计算器 1 + 1，结果应当是 2。聊天机器人可能回答“2”“1 + 1 = 2”，也可能补充解释，甚至主动提议帮用户创建计算器技能。算术虽然答对了，额外的提议却可能与请求无关。测试聊天机器人不能只做文本完全匹配，但也不能因此放弃明确的预期。
+问计算器 1 + 1，结果应当是 2。聊天机器人可能回答“2”“1 + 1 = 2”，也可能补充解释，甚至主动提议帮用户创建计算器功能。算术虽然答对了，额外的提议却可能与请求无关。测试聊天机器人不能只做文本完全匹配，但也不能因此放弃明确的预期。
 
 Kristin Jackvony 用独立书店的聊天机器人举例：它可以找书、荐书、查询版本、价格和库存，但不应该把顾客能输入的每个问题都当成自己的工作。
 
@@ -127,4 +127,4 @@ assert not response.contains_other_users_data
 
 ## 延伸阅读
 
-- Kristin Jackvony，《How to Test a ChatBot》，Think Like a Tester：https://thinkingtester.com/how-to-test-a-chatbot/
+- Kristin Jackvony,“How to Test a ChatBot”, Think Like a Tester: https://thinkingtester.com/how-to-test-a-chatbot/

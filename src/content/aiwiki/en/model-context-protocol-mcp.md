@@ -3,7 +3,7 @@ title: "MCP (Model Context Protocol)"
 titleZh: "模型上下文协议（MCP）"
 slug: "model-context-protocol-mcp"
 lang: "en"
-summary: "An open protocol for connecting AI models with external tools and data sources in a standardized way."
+summary: "An open protocol that defines how AI applications connect to external tools and information sources."
 topic: "ai-vibe-coding"
 aliases:
   - "Model Context Protocol"
@@ -14,111 +14,111 @@ related:
   - "ai-agent"
   - "skill"
   - "rules-cursorrules"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Model Context Protocol (MCP)
 
-> One-line definition: An open standard developed by Anthropic that allows AI models to seamlessly connect to external data sources and tools (like Google Drive, Slack, or local databases).
+> One-line definition: An open protocol that defines how AI applications connect to external tools and information sources. Access still depends on the host, server, and configured permissions.
 
 ## Quick Take
 
-- Problem it solves: Define execution capability and governance boundaries for AI agents.
-- When to use: Use for tool invocation, policy control, and multi-step task execution.
-- Boundary: Risk increases without permission and audit controls.
+- **In brief:** MCP defines a common way for AI applications to connect to tools and data.
+- **Useful for:** Connecting an AI client to external services through a shared interface.
+- **Main limit:** The protocol does not make a server safe or a tool call authorized.
 
 ## Overview
 
-`MCP (Model Context Protocol)` matters less as a buzzword and more as an engineering control point for reliability, interpretability, and collaboration in AI-enabled development.
+MCP is an open protocol that connects an AI application to external tools and information sources. A client and server can exchange requests through a host application. What the application can access depends on its configuration and permissions.
 
 ## Core Definition
 
 ### Formal Definition
 
-MCP is an open-source, JSON-RPC 2.0 based protocol that establishes a standardized communication layer between AI applications (clients) and external data/tool providers (servers). It enables models to discover and utilize **Resources** (data), **Tools** (functions), and **Prompts** (templates) through a consistent interface.
-
-### Plain-Language Explanation
-
-Think of it as a foundational control point in AI engineering: it reduces randomness, improves reuse, and turns team know-how into repeatable practice.
-Think of MCP as the **"USB standard"** for the AI computing world. Whether your data is in a notepad, on GitHub, or in AWS, as long as you provide an MCP-compliant "plug," the AI can read, understand, and operate on it.
+The Model Context Protocol (MCP) defines how a host application, its client connection, and an MCP server communicate. Servers can expose capabilities such as tools, resources, and prompts. The protocol does not itself grant access to a user’s files or systems.
 
 ## Background and Evolution
 
-### Origin
+### Background
 
-- **Context**: AI models' knowledge is often confined to their training data. To complete real-world engineering tasks, they urgently need access to private data and real-time tools.
-- **Founder**: Anthropic (released late 2024).
+Before MCP, each application often needed a separate integration for each tool or data source. MCP provides a shared protocol for these connections.
 
-### Evolution
+### Development
 
-- **Pre-MCP Era**: Tool developers had to write different interfaces for different models (GPT, Claude, Gemini).
-- **MCP Era**: **Write Once, Run Everywhere**. Developers only need to build one MCP Server to be integrated into all mainstream model clients.
+Anthropic introduced MCP in 2024. The specification has since evolved. Optional extensions and newer features require support from the client and server; compatible support is not automatic.
 
 ## How It Works
 
-1.  **MCP Client (Host)**: For example, Claude Desktop or an IDE, which manages sessions and integrates user intent.
-2.  **MCP Server**: A lightweight background executable responsible for exposing **Resources**, **Tools**, and **Prompts**.
-3.  **Communication Channel**: Usually based on standard input/output (stdio) or HTTP/SSE (Server-Sent Events).
-4.  **Resource Discovery**: When the client starts, it automatically asks the server: "What superpowers can you provide?" The server lists options (e.g., `/search-files`, `/read-db`), and the AI calls them as needed.
+1. The host application starts or connects to an MCP client.
+2. The client connects to an MCP server and negotiates supported capabilities.
+3. The server lists tools or provides resources that it has been configured to expose.
+4. The host decides what to show the model and whether a tool call needs user approval.
+
+A connection does not make every available action safe. The host and server still need access controls.
 
 ## Applications in Software Development and Testing
 
--   **Local Engineering Environment Connectivity**: Through MCP, AI can directly read your local Git commit history or query real-time logs of services running locally.
--   **Custom Evaluation Toolsets**: QA engineers can write an MCP Server to wrap internal proprietary testing platform interfaces, allowing the AI to trigger automation pipelines directly.
--   **Instant Documentation Sync**: Connect Confluence or Notion to an AI assistant via MCP to reference the latest business context while writing code.
+- **Test reports**: A server can provide a tool that reads a test run or retrieves a report.
+- **Repository information**: A server can expose selected files, issue data, or build results.
+- **Controlled actions**: A server can start a permitted workflow. Use approval and logging for changes that affect shared systems.
 
 ## Strengths and Limitations
 
 ### Strengths
 
--   **Ecosystem Unification**: Dramatically lowers the cost of integrating developer tools with AI models.
--   **Security**: The MCP Server runs locally or in a controlled environment; developers can precisely control which data and commands the AI is allowed to touch.
--   **Real-time**: AI gains access to the latest data rather than outdated knowledge from training.
+- **Reusable integration**: A shared protocol can reduce custom connection code.
+- **Discoverable capabilities**: Clients can learn which tools or resources a server offers.
 
 ### Limitations and Risks
 
--   **Early Stage**: The tool ecosystem (MCP Servers) is still in a rapid growth phase; some advanced features are not yet fully mature.
--   **Latencey Jitter**: Frequent cross-process or cross-network MCP calls can increase AI response times.
--   **Configuration Complexity**: Average users might find configuring multiple local MCP Servers technically challenging.
+- **Partial support**: Clients and servers may implement different features or protocol versions.
+- **Permission risk**: A server may expose sensitive data or actions. Apply least privilege and inspect tool behavior.
+- **No automatic freshness**: Data freshness depends on the connected source and server implementation.
 
 ## Comparison with Similar Terms
 
-| Dimension | MCP Protocol | API Calling | LSP (Language Server) |
-| :--- | :--- | :--- | :--- |
-| **Main Goal** | **Universal Model Interface** | Basic program comms | Code completion/diagnostics|
-| **Observability** | Strong (displayed by Host) | Weak (hidden in code) | Strong |
-| **Architecture** | C/S architecture, self-describing | Request/Response | C/S architecture |
+| Term | Main role |
+| :--- | :--- |
+| MCP | Connects an AI application to tools and context providers |
+| Function calling | Lets a model request a tool through a particular model API |
+| REST API | Lets software exchange requests with a web service |
+
+MCP can carry tool interactions, but it does not replace the APIs that the server uses behind the connection.
 
 ## Best Practices
 
--   **Keep Tools Atomic**: An MCP Tool should do one thing (e.g., read a single file), allowing the AI to combine these tools itself.
--   **Provide Detailed Self-Description (Docstrings)**: Since the AI decides which tool to call based on descriptions, the server's function descriptions must be as precise as a well-written Prompt.
--   **Leverage the Ecosystem**: Prioritize `mcp-get` or official repositories to find existing servers (e.g., GitHub, PostgreSQL, Linear) instead of reinventing the wheel.
+- Start with read-only access and add write access only when needed.
+- Review server identity, available tools, and required permissions.
+- Require confirmation for destructive or externally visible actions.
+- Log tool calls and test failure handling.
+- Check client and server support before relying on an optional feature.
 
 ## Common Pitfalls
 
--   **Hardcoding Sensitive Info**: In writing MCP Servers, use environment variables for keys instead of writing them directly in code.
--   **Vague Error Handling**: If an MCP Server fails, it should return clear text error messages instead of just crashing; this allows the AI to attempt "self-correction" based on the error.
+- **Treating MCP as a security boundary**: The protocol does not enforce every host or server permission.
+- **Assuming “write once, run everywhere”**: Implementations support different features and policies.
+- **Assuming current data**: The connected service may cache or delay updates.
 
 ## FAQ
 
-### Q1: Should beginners master this immediately?
+### What can a team do with MCP in software testing?
 
-A: Learn the core purpose first, then adopt it gradually in real workflows.
+A team can connect a client to a server that exposes a test-report lookup tool. The server should limit which reports the tool can access.
 
-### Q2: How do teams know adoption is working?
+### Does MCP make a tool call safe?
 
-A: Check for more stable delivery, less rework, and smoother collaboration.
+No. The host and server must control access, validate inputs, and provide approval where needed. Review the actual operation before enabling it.
 
 ## Related Resources
 
 ### Related Terms
 
-- [ai-agent](https://inaodeng.com/en/AIWiki/ai-agent/)
-- [skill](https://inaodeng.com/en/AIWiki/skill/)
 - [function-calling](https://inaodeng.com/en/AIWiki/function-calling/)
+- [agent-authorization](https://inaodeng.com/en/AIWiki/agent-authorization/)
+- [mcp-apps](https://inaodeng.com/en/AIWiki/mcp-apps/)
+- [mcp-tasks](https://inaodeng.com/en/AIWiki/mcp-tasks/)
 
 ### External References
 
-- [MCP Official Introduction](https://modelcontextprotocol.io/)
-- [Anthropic: Introducing MCP](https://www.anthropic.com/news/model-context-protocol)
+- [Model Context Protocol: Specification](https://modelcontextprotocol.io/specification)
+- [Model Context Protocol: What is MCP?](https://modelcontextprotocol.io/introduction)

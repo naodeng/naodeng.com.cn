@@ -7,13 +7,16 @@ import { PRIVACY_PAGE_TITLE, SITE_TITLE } from "@/consts";
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 const title = t(PRIVACY_PAGE_TITLE);
+const description = locale === "zh-cn"
+  ? "了解本站如何处理访问日志、Cookie、本地存储、访问统计、第三方资源、数据保留和隐私请求。"
+  : "Review how this site handles access logs, cookies, local storage, analytics, third-party services, data retention, and privacy requests.";
 const siteName = typeof SITE_TITLE === "string" ? SITE_TITLE : SITE_TITLE[locale];
 
 export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
 ---
 
-<Layout {title}>
+<Layout {title} {description}>
   <PageHeadline {title} compact />
 
   <section class="privacy-section">

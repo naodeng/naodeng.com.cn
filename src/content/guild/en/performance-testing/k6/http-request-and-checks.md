@@ -224,7 +224,7 @@ k6 run demo_custom_metrics.js
 
 The running results are as follows:
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/4tbqVc.png)
+![k6 summary output showing the custom waiting_time metric](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/4tbqVc.png)
 
 > As you can see, the custom metric `waiting_time` has been displayed in the result output.
 
@@ -264,7 +264,7 @@ export default function () {
 
 Running this script, you can see the following results:
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/aTXnpy.png)
+![k6 results for a check of the HTTP response status](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/aTXnpy.png)
 
 > When a script contains checks, the summary report shows how many test checks have passed.
 
@@ -290,7 +290,7 @@ export default function () {
 
 Running this script, you can see the following results:
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AmbL0E.png)
+![k6 summary results for checks against an HTTP response body](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AmbL0E.png)
 
 > When a script contains checks, the summary report shows how many test checks have passed.
 
@@ -315,7 +315,7 @@ export default function () {
 
 Running this script, you can see the following results:
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5yJyBw.png)
+![k6 results showing both HTTP checks passing at 100 percent](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5yJyBw.png)
 
 In this example, both checks pass successfully (the call is 100% successful).
 

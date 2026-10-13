@@ -16,124 +16,71 @@ related:
   - "reasoning-models"
   - "agent-evals"
   - "trace-grading"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Reinforcement Fine-Tuning (RFT) (强化微调（RFT）)
-
-> One-line definition: Fine-tune models using reinforcement signals to improve task-specific performance.
+# Reinforcement Fine-Tuning (RFT)
 
 ## Quick Take
 
-- Problem it solves: Balance speed, quality, and cost as an engineering decision.
-- When to use: Use it for large-scale inference and model strategy tuning.
-- Boundary: Not suitable without baseline metrics and monitoring.
+- **In brief:** RFT adjusts a model using scores from a task-specific reward or grader.
+- **Useful for:** Tasks with clear goals and results that can be evaluated.
+- **Main limit:** The model learns the grader's signal, which may not capture the full goal.
 
 ## Overview
 
-`Reinforcement Fine-Tuning (RFT)` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A team can train a model to generate test cases and score each result against a schema and executable checks. A high score matters only if those checks measure useful behavior.
 
 ## Core Definition
 
-### Formal Definition
-
-Fine-tune models using reinforcement signals to improve task-specific performance.
-
-### Plain-Language Explanation
-
-Think of `Reinforcement Fine-Tuning (RFT)` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Reinforcement fine-tuning (RFT) applies reinforcement-learning methods during fine-tuning. A reward signal or grader evaluates candidate outputs, and training updates the model to favor higher-scoring behavior. Implementations differ in their algorithms and supported tasks.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+RFT applies reward-based learning to a pretrained model. Some providers use the term for a specific API workflow. Availability and exact behavior can change, so check current documentation.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. Define the task and reward criteria.
+2. Generate candidate outputs.
+3. Score the candidates with a grader or reward function.
+4. Update the model using the training method.
+5. Evaluate the result on separate data and safety cases.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- Model optimization using preference/reinforcement signals.
-- Batch inference for throughput under cost constraints.
-- Predicted outputs to reduce interaction latency.
-
-### Practical Example
-
-```text
-Goal: improve task accuracy with cost control
-Steps: 1) choose training/inference strategy 2) run batches 3) compare eval outcomes
-Outcome: balanced performance and operating cost
-```
+A team can use executable tests to score generated code or a structured rubric to score bug explanations. The grader should cover correctness and constraints, not only formatting.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Data bias can mislead optimization.
-- Bad retry policy can pile up failed batches.
-- Speed-first tuning may degrade output quality.
+RFT can optimize behavior for a task with a useful reward signal. It can be costly and sensitive to grader errors. A model may learn to exploit the scoring rule instead of solving the intended task.
 
 ## Comparison with Similar Terms
 
-| Dimension | Reinforcement Fine-Tuning (RFT) | Direct Preference Optimization (DPO) | Reasoning Models |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Reinforcement Fine-Tuning (RFT)` capability boundaries | Leans toward `Direct Preference Optimization (DPO)` capabilities | Leans toward `Reasoning Models` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+Supervised fine-tuning trains on target examples. DPO trains from preference pairs with a direct objective. RLHF commonly uses preference-trained rewards with reinforcement learning. RFT is a broader label for fine-tuning with reward-based feedback; provider definitions vary.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Check whether independent reviewers agree on task criteria. Make the reward hard to game. Keep evaluation data separate. Inspect examples with high and low scores and re-evaluate after training.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not assume a high reward means the output is useful or safe. Do not evaluate only with the grader used for training. Confirm current provider support before planning an implementation.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does RFT work for every task?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. It is more suitable when the goal can be evaluated with a meaningful and reliable signal.
 
 ## Related Resources
 
 ### Related Terms
 
-- [direct-preference-optimization-dpo](https://inaodeng.com/en/AIWiki/direct-preference-optimization-dpo/)
-- [reasoning-models](https://inaodeng.com/en/AIWiki/reasoning-models/)
-- [agent-evals](https://inaodeng.com/en/AIWiki/agent-evals/)
-- [trace-grading](https://inaodeng.com/en/AIWiki/trace-grading/)
+- [Direct preference optimization](/en/AIWiki/direct-preference-optimization-dpo/)
+- [Reasoning models](/en/AIWiki/reasoning-models/)
+- [Agent evaluations](/en/AIWiki/agent-evals/)
+- [Trace grading](/en/AIWiki/trace-grading/)
 
 ### External References
 
-- [OpenAI API Docs](https://developers.openai.com/api/docs)
-- [OpenAI Platform Docs](https://platform.openai.com/docs/overview)
+- [OpenAI: Reinforcement fine-tuning guide](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)

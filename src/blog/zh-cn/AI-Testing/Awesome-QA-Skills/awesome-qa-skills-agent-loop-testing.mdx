@@ -1,6 +1,6 @@
 ---
-title: "Agent 循环测试 Skill：在预算耗尽前发现重复、漂移和不安全终止"
-description: "Agent 循环测试实战指南：检查迭代状态、工具重复调用、终止规则、预算使用和循环证据。"
+title: "智能体循环测试 Skill：在预算耗尽前发现重复、漂移和不安全终止"
+description: "智能体循环测试实战指南：检查迭代状态、工具重复调用、终止规则、预算使用和循环证据。"
 date: 2026-10-27T09:00:00.000Z
 draft: true
 author: "nao.deng"
@@ -8,17 +8,17 @@ tags: ["AI 测试", "QA Skills", "Agent 循环测试"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-Agent 反复向同一个搜索服务换几个词提问，不代表它还在推进。它可能只是在消耗预算，同时掩盖计划已经停住。
+智能体反复向同一个搜索服务换几个词提问，不代表它还在推进。它可能只是在消耗预算，同时掩盖计划已经停住。
 
 ## 为什么需要这个 Skill
 
-Agent 循环测试用于评估每次迭代是否改变任务状态、循环是否有有效终止条件，以及重复工具调用是否仍然安全且可解释。
+智能体循环测试用于评估每次迭代是否改变任务状态、循环是否有有效终止条件，以及重复工具调用是否仍然安全且可解释。
 
 ## Skill 用来做什么
 
-当团队需要围绕“状态增量、重复动作、终止条件、预算限制和循环追踪”工作时，使用 Agent 循环测试 Skill。
+当团队需要围绕“状态增量、重复动作、终止条件、预算限制和循环追踪”工作时，使用智能体循环测试 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦 Agent 循环测试。
+[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦智能体循环测试。
 
 它适合这些场景：团队需要重复检查状态增量、重复动作、终止条件、预算限制和循环追踪；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
@@ -26,7 +26,7 @@ Agent 循环测试用于评估每次迭代是否改变任务状态、循环是�
 
 ## 它不做什么
 
-Agent 循环测试 Skill 可以组织迭代地图的材料、证据和下一步动作，但它不能替代：
+智能体循环测试 Skill 可以组织迭代地图的材料、证据和下一步动作，但它不能替代：
 
 - 业务或领域负责人对规则、范围和风险的确认。
 - 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
@@ -84,7 +84,7 @@ Agent 循环测试 Skill 可以组织迭代地图的材料、证据和下一步�
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
 | 目标与停止规则 | 三个已核验来源、来源权威标准和最大迭代次数 | 把完成定义和“模型说完成了”分开 |
-| 追踪 | 每次迭代的计划、工具调用、观察、状态更新和 Token 或时间预算 | 不要只凭最终答案还原循环 |
+| 追踪 | 每次迭代的计划、工具调用、观察、状态更新和 Token 数量或时间预算 | 不要只凭最终答案还原循环 |
 | 失败策略 | 来源被阻断、结果重复、结果为空和升级行为 | 未解决的循环保持 blocked |
 
 可以这样调用：
@@ -105,7 +105,7 @@ Agent 循环测试 Skill 可以组织迭代地图的材料、证据和下一步�
 
 ### 分析
 
-先从一个边界清楚的小回合开始：研究 Agent 需要收集三个可靠来源，却不断回到一个被阻断的发布者页面。对被阻断的发布者最多尝试两次，记录失败原因，然后切换到官方仓库或注册表。输出要写清策略在哪个点发生变化，以及为什么允许循环继续。
+先从一个边界清楚的小回合开始：研究智能体需要收集三个可靠来源，却不断回到一个被阻断的发布者页面。对被阻断的发布者最多尝试两次，记录失败原因，然后切换到官方仓库或注册表。输出要写清策略在哪个点发生变化，以及为什么允许循环继续。
 
 交接产物要同时保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
 
@@ -159,9 +159,9 @@ Agent 循环测试 Skill 可以组织迭代地图的材料、证据和下一步�
 
 ## 和其他 Skill 怎么配合
 
-- [AI Agent 测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：提供更大的行为与目标上下文。
+- [AI 智能体测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)：提供更大的行为与目标上下文。
 - [超时测试](https://inaodeng.com/zh-cn/qaskills/timeout-testing/)：检查基于时间的停止与失败行为。
-- [Agent 故障恢复测试](https://inaodeng.com/zh-cn/qaskills/agent-failure-recovery-testing/)：覆盖循环失败后的回退。
+- [智能体故障恢复测试](https://inaodeng.com/zh-cn/qaskills/agent-failure-recovery-testing/)：覆盖循环失败后的回退。
 
 ## 容易踩的坑
 
@@ -188,7 +188,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 
 
-### Agent 无法推进时应该输出什么？
+### 智能体无法推进时应该输出什么？
 
 停止并写清缺少的条件、已经尝试的策略，以及一个可以解除阻塞的人工或系统动作。
 
@@ -196,16 +196,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [Agent 循环测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing/prompts/agent-loop-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing) 中还包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [智能体循环测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing/prompts/agent-loop-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing) 中还包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束状态增量、重复动作、终止条件、预算限制和循环追踪。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
 
 ### 参考链接
 
-- Agent 循环测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing/prompts/agent-loop-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing/prompts/agent-loop-testing.md)
+- 智能体循环测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing/prompts/agent-loop-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing/prompts/agent-loop-testing.md)
 
-- Awesome QA Skills：Agent 循环测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing)
+- Awesome QA Skills：智能体循环测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-loop-testing)
 
 - Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- Agent 循环测试 详情页:[https://inaodeng.com/zh-cn/qaskills/agent-loop-testing/](https://inaodeng.com/zh-cn/qaskills/agent-loop-testing/)
+- 智能体循环测试详情页:[https://inaodeng.com/zh-cn/qaskills/agent-loop-testing/](https://inaodeng.com/zh-cn/qaskills/agent-loop-testing/)

@@ -191,7 +191,7 @@ const footerGroups = [
     <div class="footer-info">
       <p class="footer-slogan">{typeof SITE_SLOGAN === 'string' ? SITE_SLOGAN : SITE_SLOGAN[locale]}</p>
       <div class="copyright">
-        <a class="copy-link" href="https://inaodeng.com/">
+        <a class="copy-link" href={localizedHomePath}>
           © {new Date().getFullYear()} {typeof SITE_TITLE === 'string' ? SITE_TITLE : SITE_TITLE[locale]}
         </a>
         <span class="separator">|</span>

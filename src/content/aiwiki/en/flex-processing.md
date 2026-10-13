@@ -3,7 +3,7 @@ title: "Flex Processing"
 titleZh: "弹性处理"
 slug: "flex-processing"
 lang: "en"
-summary: "A load-balancing mechanism that dynamically switches between models and inference strategies based on task urgency and complexity, balancing latency…"
+summary: "Flex processing is an OpenAI API service tier for lower-priority requests. It can lower cost, but responses may be slower or unavailable."
 topic: "ai-vibe-coding"
 aliases:
   - "Flex Processing"
@@ -15,110 +15,108 @@ related:
   - "batch-processing"
   - "model-optionality"
   - "reasoning-models"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Flex Processing
 
-> One-line definition: A "right-tool-for-the-job" inference strategy: pursuing ultra-low cost and latency for simple tasks while deploying the strongest compute at any cost for complex ones, achieving optimal engineering efficiency.
+> One-line definition: A lower-priority OpenAI API request tier that can trade lower cost for slower responses.
 
 ## Quick Take
 
-- Problem it solves: Balance speed, quality, and cost as an engineering decision.
-- When to use: Use it for large-scale inference and model strategy tuning.
-- Boundary: Not suitable without baseline metrics and monitoring.
+- **In brief:** Flex processing is a provider-specific option for lower-priority inference.
+- **Useful for:** Non-urgent requests that can tolerate variable latency or availability.
+- **Main limit:** Terms and behavior depend on the provider and model.
 
 ## Overview
 
-`Flex Processing` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+In the OpenAI API, Flex processing is a service tier for lower-priority requests. It trades lower cost for slower responses and occasional resource unavailability. Other providers may use the word Flex for different features.
 
 ## Core Definition
 
-### Formal Definition
+Flex processing is a request option in the OpenAI API. An application selects a supported model and sets its service tier to Flex. OpenAI handles the request at lower priority. The request may take longer or fail when resources are unavailable. Flex does not choose a model or guarantee a response.
 
-Flex Processing refers to a set of dynamic routing and inference control logic. It automatically selects the most appropriate model tier (e.g., Flash vs. Pro), inference parameters (e.g., sampling temperature), and processing channel (e.g., real-time vs. batch) based on request characteristics like token length, predicted task difficulty, and user-defined latency preferences.
-
-### Plain-Language Explanation
-
-Think of `Flex Processing` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Think of Flex as a slower queue for work that can wait. The application still sends a model request and handles its response.
 
 ## Background and Evolution
 
-### Origin
+OpenAI describes Flex for non-production or lower-priority tasks. Examples include model evaluations, data enrichment, and asynchronous workloads. It uses the same basic request APIs as other service tiers.
 
-- **Context**: As model families become more specialized (e.g., GPT-4o giving rise to 4o-mini), developers face "choice anxiety"—manually switching models for every tiny Code Action is impractical.
-- **Focus**: Automatically balancing MTTF (Mean Time to Finish Task) with total token expenditure through algorithms.
-
-### Evolution
-
-- **Stage 1.0 (Fixed Model)**: All tasks are sent to one model, leading to extremely high costs.
-- **Stage 2.0 (Manual Toggling)**: IDEs allow users to choose "Basic" or "Advanced" modes, but this adds cognitive load.
-- **Stage 3.0 (Flex/Adaptive)**: The system automatically senses task intent and makes routing decisions in milliseconds, achieving an optimal performance solution invisible to the user.
+Flex is not an automatic model router. The caller chooses a model and requests the Flex tier. Model support and service terms can change.
 
 ## How It Works
 
-1. **Intent Classification**: Analyzing prompt intent. For example, "fix typo" is classified as "very low difficulty."
-2. **Urgency Scoring**: Detecting the user's current operation. If in continuous input (flow state), latency priority is greatly increased.
-3. **Tiered Routing**:
-    - **Fast Tier**: Calls ultra-lightweight models combined with Predicted Outputs for sub-second responses.
-    - **Deep Tier**: Calls reasoning models (e.g., o1) and allocates a longer Chain-of-Thought (CoT) step count.
-    - **Batch Tier**: Tasks non-urgent for feedback (e.g., whole-project doc updates) are put into a low-cost batch queue.
-4. **Param Adaptive**: Dynamically adjusts parameters like Top-p and Temperature based on remaining token quota and task goals.
+1. The application selects a model that supports Flex.
+2. It sends a request with the Flex service tier.
+3. The provider may process the request more slowly than a standard-tier request.
+4. The application checks the result or handles a resource-unavailable error.
+
+Flex does not move the request to the Batch API. It does not switch models based on task difficulty.
 
 ## Applications in Software Development and Testing
 
-- **Inline Linter/Refactor**: Dispatched by Flex Processing to the lightest Flash model to ensure the editor doesn't drop frames.
-- **Architecture-level Refactoring**: When a user clicks "Deep Analysis," Flex wakes up expensive reasoning models for multi-dimensional logic derivation.
-- **Automated Test Regression**: In CI workflows, Flex automatically selects "Economy Mode" to run large-scale low-cost test suites during idle hours.
+- **Offline evaluation:** Run non-urgent prompt or model comparisons.
+- **Data enrichment:** Classify or summarize records outside a user-facing request.
+- **Test preparation:** Generate draft test data for later review.
+
+Keep production checks and interactive coding on a tier that meets their response requirements.
 
 ## Strengths and Limitations
 
 ### Strengths
 
-- **Significant Cost Reduction**: "Offloading" low-difficulty tasks typically saves 30%-60% in token expenditure.
-- **Optimized User Experience**: Simple interactions give instant feedback, while complex operations get the depth they deserve, matching human psychological rhythms.
-- **In-process Throughput**: Efficiently mitigates concurrency limit pressures on high-end model APIs.
+- OpenAI documents lower prices for eligible Flex requests.
+- Teams can use it for work that does not need immediate results.
 
 ### Limitations and Risks
 
-- **Routing Misjudgment**: If a seemingly simple but deceptively complex bug is assigned to a lightweight model, an incorrect fix might be returned.
-- **State Inconsistency**: Code styles generated by different models might vary slightly, adding a burden to code audits.
-- **Cold Start Latency**: Frequent switching between models might increase Time to First Token (TTFT) for inactive models.
+- Responses can take longer.
+- Resources may not be available for every request.
+- Only listed models support the tier.
+- Prices, model support, and availability can change.
+- A lower service price does not remove retry or monitoring costs.
 
 ## Comparison with Similar Terms
 
-| Dimension | Flex Processing | Batch Processing | Model Optionality |
-| :--- | :--- | :--- | :--- |
-| **Decision Maker** | **System (Auto)** | Developer (Preset) | Developer (Manual) |
-| **Real-time** | Dynamic (Real-time + Async) | Async only | Dependent on choice |
-| **Key Term** | **"Adaptive"** | "Throughput, Cost" | "Control" |
+| Term | What changes | Main use |
+|---|---|---|
+| Flex processing | Request priority and price in a provider API | Lower-priority work that can wait |
+| Batch processing | Requests run as an asynchronous job | Large groups of independent requests |
+| Model optionality | The system can select among models | Avoiding dependence on one model |
+
+Flex does not route a request to a different model. Batch processing has a separate job lifecycle.
 
 ## Best Practices
 
-- **Build an Intent Taxonomy**: Pre-maintain a task-level guide for code operations (e.g., Rename < Style Fix < Refactor < Feature Design).
-- **Set a "Failover"**: If the flex-selected model fails in the first validation round (e.g., Lint/Test), automatically upgrade to a higher-tier model.
-- **Transparent Notifications**: Subtly show "Using Deep Reasoning mode" in the IDE status bar to manage user expectations for result depth.
+- Use Flex only when the task can tolerate slower responses.
+- Check the current supported-model list and price before rollout.
+- Handle resource-unavailable errors with a bounded retry or fallback.
+- Record the selected model, tier, latency, and failure status.
+- Keep a standard-tier path for work with a response deadline.
+
+## Common Pitfalls
+
+Do not assume every model supports Flex. Do not treat Flex as automatic model selection. Check the provider response and handle availability errors.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### When should a team use Flex processing?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
+Use it for lower-priority evaluations or data enrichment that can wait.
 
-### Q2: How do teams avoid overengineering with too many mechanisms?
+### Does Flex processing choose a cheaper or faster model?
 
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. The application selects the model. Flex changes the request tier and can affect cost, latency, and availability.
 
 ## Related Resources
 
 ### Related Terms
 
-- [batch-processing](https://inaodeng.com/en/AIWiki/batch-processing/)
-- [model-optionality](https://inaodeng.com/en/AIWiki/model-optionality/)
-- [reasoning-models](https://inaodeng.com/en/AIWiki/reasoning-models/)
-- [prompt-caching](https://inaodeng.com/en/AIWiki/prompt-caching/)
+- [Batch processing](/en/AIWiki/batch-processing/)
+- [Model optionality](/en/AIWiki/model-optionality/)
+- [Reasoning models](/en/AIWiki/reasoning-models/)
+- [Prompt caching](/en/AIWiki/prompt-caching/)
 
 ### External References
 
-- [Cost-Optimal LLM Inference Strategies](https://arxiv.org/)
-- [OpenAI Batch API Guide](https://platform.openai.com/docs/guides/batch)
+- [OpenAI: Flex processing guide](https://developers.openai.com/api/docs/guides/flex-processing)

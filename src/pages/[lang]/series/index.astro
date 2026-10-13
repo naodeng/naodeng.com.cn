@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
 import { NAV_HOME, NAV_SERIES, SERIES_INDEX_DESCRIPTION } from "@/consts";
 import { filterPublishedBlogPosts } from "@/utils/blogPublication";
+import { getBlogSeriesDisplayName } from "@/utils/blogArchiveDescription.mjs";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -21,7 +22,7 @@ const seriesWithCount = allPosts
 
 const seriesList = Object.entries(seriesWithCount)
   .sort(([a], [b]) => a.localeCompare(b))
-  .map(([name, count]) => ({ name, count }));
+  .map(([name, count]) => ({ name, displayName: getBlogSeriesDisplayName(name, locale), count }));
 
 const title = t(NAV_SERIES);
 const description = t(SERIES_INDEX_DESCRIPTION);
@@ -45,10 +46,10 @@ export const getStaticPaths = () =>
   <div class="aggregate-container">
     {seriesList.length > 0 ? (
       <ul class="aggregate-list">
-        {seriesList.map(({ name, count }) => (
+        {seriesList.map(({ name, displayName, count }) => (
           <li>
             <a href={`/${locale}/series/${encodeURIComponent(name)}/`} class="aggregate-item">
-              <span class="aggregate-name">{name}</span>
+              <span class="aggregate-name">{displayName}</span>
               <span class="aggregate-count">{count} {locale === "zh-cn" ? "篇" : count === 1 ? "post" : "posts"}</span>
             </a>
           </li>

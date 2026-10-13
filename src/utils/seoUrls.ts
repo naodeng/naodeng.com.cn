@@ -29,7 +29,7 @@ const NON_INDEXABLE_SITEMAP_PATHS = new Set([
 
 /**
  * Keep only indexable, canonical pages in the generated XML sitemap.
- * Legacy Wiki aliases remain routable, but must not be discovery targets.
+ * Legacy Wiki paths are not generated and must not become discovery targets.
  */
 export function shouldIncludeInSitemap(page: string): boolean {
   let pathname: string;

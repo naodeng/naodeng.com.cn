@@ -40,7 +40,7 @@ series: ["Awesome QA Skills 实战"]
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
 | 错误判断 | 类别、影响、用户动作和可重试性 | 来源与状态 |
-| 可观察性要求 | 所需日志、指标、Trace 或告警 | 符合隐私的字段集合 |
+| 可观察性要求 | 所需日志、指标、链路追踪或告警 | 符合隐私的字段集合 |
 | 恢复决策 | 回退、补偿或升级 | 负责人和关闭条件 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
@@ -77,13 +77,13 @@ series: ["Awesome QA Skills 实战"]
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
-| 失败点 | 校验、队列、Worker、存储、下载和用户状态 | 每个失败点都指定负责人 |
+| 失败点 | 校验、队列、工作进程、存储、下载和用户状态 | 每个失败点都指定负责人 |
 | 契约 | 用户消息、错误码、重试规则、日志字段和隐私边界 | 分开机器消息与人类消息 |
 | 恢复 | 继续、重启、补偿、取消或转客服 | 定义用户可以安全做什么 |
 
@@ -142,7 +142,7 @@ series: ["Awesome QA Skills 实战"]
 | 输出字段 | 它要回答什么 | 示例状态 |
 | --- | --- | --- |
 | 错误判断 | 类别、影响、用户动作和可重试性 | 来源与状态 |
-| 可观察性要求 | 所需日志、指标、Trace 或告警 | 符合隐私的字段集合 |
+| 可观察性要求 | 所需日志、指标、链路追踪或告警 | 符合隐私的字段集合 |
 | 恢复决策 | 回退、补偿或升级 | 负责人和关闭条件 |
 
 没有运行记录、查询结果或原始产物时，不要写“已通过”。好的评审会要求同一个失败在三个层面都说得通：用户看到安全下一步，运维看到可诊断事件，下游客户端看到稳定契约。
@@ -193,16 +193,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [错误处理设计评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review) 中包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [错误处理设计评审提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review) 中包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束失败分类、用户动作、可重试性、回退、可观察性、隐私和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 错误处理设计评审 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)
+- 错误处理设计评审提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)
 
 - Awesome QA Skills：错误处理设计评审 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review)
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 - 错误处理设计评审 详情页:[https://inaodeng.com/zh-cn/qaskills/error-handling-design-review/](https://inaodeng.com/zh-cn/qaskills/error-handling-design-review/)

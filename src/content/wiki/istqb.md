@@ -1,6 +1,6 @@
 ---
 title: "ISTQB ｜ Istqb"
-description: "# 关于 ISTQB 的问题？ ｜ Istqb #### 基础与重要性 - ISTQB 代表什么？ISTQB 全称是 International Software Testing Qualifications Board（国际软件测试认证委员会）。"
+description: "国际软件测试资格委员会（ISTQB）是为不同职业阶段的测试人员提供标准化课程和认证的全球组织。"
 section: "I"
 related:
   - astqb

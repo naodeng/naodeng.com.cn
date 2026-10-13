@@ -3,7 +3,7 @@ title: "Automatic Memory"
 titleZh: "自动记忆"
 slug: "automatic-memory"
 lang: "en"
-summary: "Memory automatically extracted from interactions and reused in later tasks."
+summary: "Information that a system selects from earlier interactions and may reuse in later tasks."
 topic: "ai-vibe-coding"
 aliases:
   - "Automatic Memory"
@@ -16,101 +16,101 @@ related:
   - "memory-scope"
   - "conversation-state"
   - "prompt-caching"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Automatic Memory
 
-> One-line definition: Experiences automatically extracted, aggregated, and stored by the system during human-AI interaction, aiming to achieve self-evolution and personalized adaptation of AI behavior.
+> One-line definition: Information selected from past interactions and reused in later tasks. It can include preferences or project facts, but it does not necessarily update model weights.
 
 ## Quick Take
 
-- Problem it solves: Keep the right context and avoid context pollution.
-- When to use: Use it in long sessions and multi-task workflows.
-- Boundary: Not ideal for strict stateless-response requirements.
+- **In brief:** Automatic memory stores selected information for later interactions.
+- **Useful for:** Reducing the need to repeat stable preferences or project facts.
+- **Main limit:** Stored details can be incomplete, stale, or irrelevant.
 
 ## Overview
 
-`Automatic Memory` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+Automatic memory is a product feature that can save selected information from past interactions for later use. Products differ in what they save, where they store it, and how users can manage it.
 
 ## Core Definition
 
 ### Formal Definition
 
-Automatic Memory is an implicit learning mechanism based on observation and statistics. It extracts high-frequency patterns by analyzing user conversation paths, code adoption rates, and feedback signals, converting them into weighted knowledge items. These items are typically stored in vector databases (like RAG systems) and automatically activated in similar scenarios.
-
-### Plain-Language Explanation
-
-Think of `Automatic Memory` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Automatic memory is stored context that a product selects from earlier interactions and may retrieve in a later one. It is different from model training: saving a memory does not, by itself, change the model’s weights. Storage and retrieval may use summaries, files, databases, or embeddings.
 
 ## Background and Evolution
 
-### Origin
+### Background
 
-- **Context**: Prompt Engineering had too high of a barrier for average users to manually maintain complex System Prompts.
-- **Focus**: How to grant AI "Lifelong Learning" capabilities and reduce repetitive configuration work.
+People repeat stable preferences and project facts across sessions. Memory features aim to reduce that repetition.
 
-### Evolution
+### Development
 
-- **Stage 1.0 (Stateless)**: Every chat started as a blank slate.
-- **Stage 2.0 (LTM/STM Split)**: Simple session summary caching began to appear.
-- **Stage 3.0 (Semantic Automatic Distillation)**: Systems can now distinguish valuable "Knowledge" from temporary "Noise," performing automatic deduplication and archiving.
+Products first relied on the current conversation or notes that users supplied. Some products now offer automatic selection and retrieval. The selection rules and user controls remain product-specific.
 
 ## How It Works
 
-1. **Observation & Capture**: Analyzes every user action (Accept/Reject) and natural language confirmation.
-2. **Extraction & Clustering**: Uses lightweight models to identify "Decision Points" within interactions.
-3. **Verification & Storage**: Validates the stability of the pattern over multiple occurrences. High-frequency patterns are stored in a persistent vector store.
-4. **Dynamic Retrieval**: Automatically injects relevant background knowledge into the Prompt when similar query intents are detected.
+1. The product selects a detail from an interaction.
+2. It stores that detail in a product-specific format.
+3. A later request may trigger retrieval of the saved detail.
+4. The model receives the retrieved text as context.
+
+The system can miss a useful detail or retrieve one that is stale or unrelated.
 
 ## Applications in Software Development and Testing
 
-- **Auto-learning Architecture Specs**: After observing you manually fix a specific Lint error several times, the AI remembers the rule and avoids it in future code generation.
-- **Personalized Tool Preferences**: If you always use specific helper scripts, the AI will proactively suggest: "Shall we run our local validation script as we did last time?"
-- **Bug Pattern Recognition**: Automatically recording common pitfalls in the project (e.g., missing timezone handling) to provide warnings when developing related features.
+- **Project preferences**: A tool may reuse a preferred programming language or response format.
+- **Repeated workflows**: It may recall a test command or a review preference.
+- **Project context**: It may surface a repository fact that the user saved earlier.
+
+Check the product’s controls before saving confidential or short-lived information.
 
 ## Strengths and Limitations
 
 ### Strengths
 
-- **Zero Maintenance**: Users don't need to write rules; the AI gets stronger as you use it.
-- **Extreme Personalization**: Deep adaptation based on the subtle habits of each developer.
-- **Cold Start Acceleration**: When moving between projects, the AI can use historical memory to get you up to speed quickly.
+- **Less repetition**: A saved preference may not need to be entered in every session.
+- **Useful context**: Retrieved facts can help tailor an answer to a person or project.
 
 ### Limitations and Risks
 
-- **Error Entrenchment**: If a user's previous operations were incorrect, the AI might "learn" the error and repeat it.
-- **Privacy Boundaries**: Automatically recording interaction details can raise corporate concerns about sensitive info leakage (requires coordination with Privacy Mode).
-- **Black-box Effect**: Users may not know why the AI suddenly changed its style because memory is generated implicitly and lacks transparency.
+- **Stale details**: A saved fact can stop being true.
+- **Wrong retrieval**: The system may apply a memory to an unrelated task.
+- **Privacy**: Saved interactions may contain sensitive information. Review retention and deletion controls.
 
 ## Comparison with Similar Terms
 
-| Dimension | Automatic Memory | Active Memory | Prompt Caching |
-| :--- | :--- | :--- | :--- |
-| **Generation** | **Machine Learning** | User-specified | System-level acceleration|
-| **Observability** | Low (Implicit) | Very High (Explicit) | None (Transparent) |
-| **Core Goal** | Evolution/Adaptation | Strong Constraint | Latency/Cost reduction |
+| Term | What it stores or does | Main purpose |
+| :--- | :--- | :--- |
+| Automatic memory | Selected details from past interactions | Reuse context later |
+| Active memory | Guidance that a person or system saves explicitly | Make durable instructions visible |
+| Prompt caching | Reuses a request prefix at the service level | Reduce repeated processing when supported |
+
+A memory supplies context. It does not guarantee that the model will follow it.
 
 ## Best Practices
 
-- **Set Confidence Thresholds**: Only behaviors observed three or more times are worth converting into Automatic Memory.
-- **Provide Confirm/Delete Access**: Allow users to see what the AI has learned and clear incorrect perceptions with one click.
-- **Integrated Long-term Memory**: Sync Automatic Memory with cloud-based model memory mechanisms for cross-device consistency.
+- Review saved details when the product provides that option.
+- Remove information that is sensitive, stale, or no longer useful.
+- Keep important project requirements in version-controlled documentation and tests.
+- Check whether a retrieved memory is relevant before relying on it.
 
 ## Common Pitfalls
 
-- **Thinking it's a Panacea**: Automatic Memory is for "habits." For serious project specifications, always use Active Memory (.cursorrules).
-- **Ignoring Context Decay**: If an old habit doesn't appear for a long time, the system should have a "Decay" mechanism to prevent obsolete memories from interfering.
+- **Treating memory as training**: Saved context does not necessarily change model weights.
+- **Treating retrieval as certain**: A system can omit or misapply a memory.
+- **Saving every detail**: A larger memory can add noise and privacy risk.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does automatic memory train the model?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
+Usually, the term refers to saved context that can be retrieved later. It does not necessarily describe model training. Check the product documentation for its implementation.
 
-### Q2: How do teams avoid overengineering with too many mechanisms?
+### Can a memory replace project rules or tests?
 
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. Use explicit, version-controlled requirements for important constraints. Verify the generated changes with tests and review.
 
 ## Related Resources
 
@@ -118,10 +118,9 @@ A: Start with clear metrics, add mechanisms incrementally, and change one variab
 
 - [active-memory](https://inaodeng.com/en/AIWiki/active-memory/)
 - [memory-scope](https://inaodeng.com/en/AIWiki/memory-scope/)
-- [compaction](https://inaodeng.com/en/AIWiki/compaction/)
+- [conversation-state](https://inaodeng.com/en/AIWiki/conversation-state/)
 - [prompt-caching](https://inaodeng.com/en/AIWiki/prompt-caching/)
 
 ### External References
 
-- [The Future of Agentic Memory](https://docs.qoder.com/)
-- [OpenAI: Personalization and Memory](https://platform.openai.com/docs/guides/memory)
+- [Cursor Docs: Rules and Memories](https://cursor.com/docs/rules) — one product example; behavior may differ in other tools.

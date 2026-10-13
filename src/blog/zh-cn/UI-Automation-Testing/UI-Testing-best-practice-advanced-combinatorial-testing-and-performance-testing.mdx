@@ -1,6 +1,6 @@
 ---
 title: "UI 测试最佳实践的进阶篇（二）：组合测试和性能测试"
-description: "这篇博文是 UI 测试最佳实践的进阶篇，第二篇深入讨论组合测试和性能测试。文章详细介绍了如何有效地进行组合测试，覆盖多个交互元素的不同组合，以提高测试的全面性。此外，博文探讨了 UI 性能测试的重要性，并提供了一些性能测试的最佳实践，确保应用程序在各种负载下的高性能和稳定性。通过学习这些进阶实践，读者将能够更全面地应对复杂的 UI 测试场景…"
+description: "说明如何用组合测试缩减复杂 UI 状态组合，并介绍通过 Lighthouse、Cypress 和不同负载验证界面性能的方法。"
 date: 2024-01-30T08:06:44.000Z
 author: "nao.deng"
 tags: ["最佳实践"]
@@ -81,7 +81,7 @@ Model POquestion
 
 以 NASA 的一个例子为参考，有 34 个开关，每个开关可以处于打开或关闭的状态。要进行详尽的测试，有 170 亿种可能的组合方式。
 
-![ ](https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/combinatorial-testing/nasa-switches.PNG?raw=true)
+![NASA 34 开关示例展示组合测试面对的 2^34 种组合](https://github.com/NoriSte/ui-testing-best-practices/blob/master/assets/images/combinatorial-testing/nasa-switches.PNG?raw=true)
 
 不必测试所有的 2^34 种可能性。通过使用组合测试进行建模，你可以根据风险做出经过计算的决策。
 
@@ -468,6 +468,6 @@ K6 提供了一个简单的[CLI 输出](https://docs.k6.io/docs/results-output)�
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>
 

@@ -1,6 +1,6 @@
 ---
 title: "压力测试 ｜ Stress Testing"
-description: "压力测试用于评估系统、基础设施或组件在极端负载或条件下的稳定性和韧性。"
+description: "压力测试在超出正常运行范围的条件下评估系统的稳定性与弹性，帮助识别性能极限和潜在故障。"
 section: "S"
 related:
   - manual-testing

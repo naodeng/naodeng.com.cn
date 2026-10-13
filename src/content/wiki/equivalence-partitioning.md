@@ -1,6 +1,6 @@
 ---
 title: "等价类划分 ｜ Equivalence Partitioning"
-description: "等价类划分将输入数据划分为预期行为相同的类别，从而减少测试用例数量，同时保持有效覆盖。"
+description: "等价类划分通过把输入划分为预期行为相同的组，并为每组选择代表值设计测试用例，以减少测试数量。"
 section: "E"
 related:
   - boundary-testing

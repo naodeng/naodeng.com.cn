@@ -97,14 +97,14 @@ npm install @usebruno/cli --save-dev
 
 - 运行 Bruno app 到首页
 - 新建名称为 Testcase 的 COLLECTION，且选择 COLLECTION 的目录为上面创建的项目文件夹
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bkIvUi.png)
+![Bruno 项目中的 Testcase 测试用例集合目录](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bkIvUi.png)
 
 #### 新建 Get 请求测试用例
 
 - 点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 GET 请求
 - 输入请求名称为 GetDemo，输入请求地址为 [https://jsonplaceholder.typicode.com/posts/1](https://jsonplaceholder.typicode.com/posts/1)
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XYeiXB.png)
+![Bruno 中已配置 GetDemo 的 GET 请求及 /posts/1 地址](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XYeiXB.png)
 
 #### 给 Get 请求添加测试断言
 
@@ -112,10 +112,10 @@ npm install @usebruno/cli --save-dev
 
 - 点击 GetDemo 请求下的 Assert 按钮，进入测试断言编辑页面
 - 输入断言 1：响应状态码等于 200.断言 2：响应体中的 title 包含 provident
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/z86CB2.png)
+![Bruno 内置断言：状态码为 200 且响应 title 包含 provident](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/z86CB2.png)
 
 - 调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YkAbiG.png)
+![Bruno 中调试 GET 请求内置断言的运行结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YkAbiG.png)
 
 ##### 使用 JavaScript 编写测试断言
 
@@ -133,16 +133,16 @@ expect(data.title).to.contains('provident');
 });
 ```
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ubyRwj.png)
+![使用 JavaScript 编写的 GET 请求响应断言示例](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ubyRwj.png)
 
 - 调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3pAMDd.png)
+![Bruno 中运行 JavaScript GET 请求断言后的结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3pAMDd.png)
 
 #### 新建 Post 请求测试用例
 
 - 点击 Testcase 的 COLLECTION 下的 ADD REQUEST 按钮，新建一个 POST 请求
 - 输入请求名称为 PostDemo，输入请求地址为 [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3IP5B4.png)
+![Bruno 中新建 PostDemo POST 请求并配置 posts 地址](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3IP5B4.png)
 
 - 点击新建的 PostDemo 请求下的 Body 按钮，进入请求体编辑页面
 - 选择 Body 类型为 JSON，输入请求体内容为
@@ -155,7 +155,7 @@ expect(data.title).to.contains('provident');
 }
 ```
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/psbGLD.png)
+![Bruno 中 PostDemo 请求体的 JSON 内容](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/psbGLD.png)
 
 #### 给 Post 请求添加测试断言
 
@@ -163,10 +163,10 @@ expect(data.title).to.contains('provident');
 
 - 点击 PostDemo 请求下的 Assert 按钮，进入测试断言编辑页面
 - 输入断言 1：响应状态码等于 201.断言 2：响应体中的 title 等于 foo
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oN8D5G.png)
+![Bruno 内置 POST 请求断言：状态码为 201 且标题为 foo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oN8D5G.png)
 
 - 调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HKb4fn.png)
+![Bruno 中调试 POST 请求内置断言的运行结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HKb4fn.png)
 
 ##### 使用 JavaScript 编写 Post 请求测试断言
 
@@ -185,14 +185,14 @@ expect(data.title).to.equal('foo');
 ```
 
 - 调试断言：点击右上角的 Run 按钮，运行断言，查看断言结果是否符合预期
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/mkKIsE.png)
+![使用 JavaScript 编写的 POST 请求测试断言示例](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/mkKIsE.png)
 
 #### 本地运行两个测试用例
 
 - 点击 Testcase 的 COLLECTION 下的 Run 按钮，运行所有测试用例
 - 确认运行结果是否符合预期
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/CvfPIn.png)
+![Bruno 本地运行 GetDemo 与 PostDemo 两个测试用例的结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/CvfPIn.png)
 
 至此，两个接口的测试用例和断言已经编写完成
 
@@ -207,7 +207,7 @@ expect(data.title).to.equal('foo');
 - 点击新建的 dev 环境变量配置文件，进入环境变量配置页面
 - 点击右上角的 ADD VARIABLE 按钮，新建一个环境变量，输入名称为 host，输入值为 `https://jsonplaceholder.typicode.com`，点击右上角的 SAVE 按钮保存环境变量
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YDKvOr.png)
+![Bruno 环境变量文件中将 host 设置为 JSONPlaceholder 基础地址](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/YDKvOr.png)
 
 ##### 在测试用例中使用环境变量
 
@@ -221,7 +221,7 @@ expect(data.title).to.equal('foo');
 - 点击 Testcase 的 COLLECTION 下的 Environments 按钮，选择 dev 环境变量
 - 点击右上角的 RUN 按钮，运行所有测试用例，确认运行结果是否符合预期
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NfAX6z.png)
+![Bruno 使用环境变量运行测试用例的结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/NfAX6z.png)
 
 至此，环境变量配置和调试已经完成
 
@@ -252,7 +252,7 @@ Bruno-demo
 
 - 确认运行结果是否符合预期
   
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/iKnEYL.png)
+![使用 bru 命令行运行 Bruno 测试用例的终端结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/iKnEYL.png)
 
 #### 输出 json 格式报告
 
@@ -260,10 +260,10 @@ Bruno-demo
 
 - 在项目文件下的 Testcase 文件夹，运行命令行命令 `bru run --env dev --output Report/results.json`，运行所有测试用例
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/MM85y5.png)
+![运行 bru 命令后生成的 JSON 测试报告文件](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/MM85y5.png)
 
 - 确认测试报告文件正常输出
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/jnJHMQ.png)
+![Bruno 输出的 JSON 测试报告内容示例](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/jnJHMQ.png)
 
 至此，Bruno 接口自动化测试项目的搭建已经完成。
 
@@ -279,5 +279,5 @@ Bruno 程序的安装和基本使用请参考：[postman 替换工具 bruno 使�
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

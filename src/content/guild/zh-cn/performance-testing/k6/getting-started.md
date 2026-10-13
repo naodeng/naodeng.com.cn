@@ -86,7 +86,7 @@ k6 version
 
 如果安装成功，会显示 k6 的版本信息：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/QR8wKb.png)
+![终端中显示的已安装 k6 版本信息](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/QR8wKb.png)
 
 ## 第一个 K6 测试脚本
 
@@ -195,7 +195,7 @@ k6 run demo.js
 
 如果一切正常，会看到类似如下的输出：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/a4vK69.png)
+![第一个 k6 测试脚本的运行摘要](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/a4vK69.png)
 
 包含以下信息：
 
@@ -232,5 +232,5 @@ k6 run demo.js
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

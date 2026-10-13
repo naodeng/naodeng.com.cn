@@ -41,7 +41,7 @@ series: ["Awesome QA Skills 实战"]
 | --- | --- | --- |
 | 恢复时间线 | 发现、决策、恢复、依赖启动和服务就绪 | 观察到的时间戳 |
 | 完整性结果 | 丢失、重复、不一致或可用状态 | RPO 证据 |
-| 缺口与动作 | Runbook、备份、权限或负责人问题 | 负责人和下一次演练 |
+| 缺口与动作 | 运行手册、备份、权限或负责人问题 | 负责人和下一次演练 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
 
@@ -77,14 +77,14 @@ series: ["Awesome QA Skills 实战"]
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
 | 恢复目标 | RTO、RPO、服务优先级和用户关键动作 | 没有测量的目标不能直接接受 |
-| 恢复材料 | 备份、副本、配置、密钥、依赖和 Runbook | 验证负责人和访问权限 |
+| 恢复材料 | 备份、副本、配置、密钥、依赖和运行手册 | 验证负责人和访问权限 |
 | 完整性检查 | 数量、支付、订单、事件和对账查询 | 定义“可用”是什么意思 |
 
 可以这样调用：
@@ -143,7 +143,7 @@ series: ["Awesome QA Skills 实战"]
 | --- | --- | --- |
 | 恢复时间线 | 发现、决策、恢复、依赖启动和服务就绪 | 观察到的时间戳 |
 | 完整性结果 | 丢失、重复、不一致或可用状态 | RPO 证据 |
-| 缺口与动作 | Runbook、备份、权限或负责人问题 | 负责人和下一次演练 |
+| 缺口与动作 | 运行手册、备份、权限或负责人问题 | 负责人和下一次演练 |
 
 没有运行记录、查询结果或原始产物时，不要写“已通过”。好的灾备测试测量的是业务路径，不只是进程健康。数据库变绿不能证明客户能看到订单、收到退款或完成支付对账。
 
@@ -193,16 +193,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [灾备测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing) 中包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [灾备测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing) 中包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束 RTO、RPO、备份、恢复、依赖顺序、故障切换、数据完整性和用户验收。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 灾备测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md)
+- 灾备测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing/prompts/disaster-recovery-testing.md)
 
-- Awesome QA Skills：灾备测试 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing)
+- Awesome QA Skills：灾备测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing)
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
-- 灾备测试 详情页:[https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/](https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/)
+- 灾备测试详情页:[https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/](https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/)

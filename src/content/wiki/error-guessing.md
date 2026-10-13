@@ -1,6 +1,6 @@
 ---
 title: "错误猜测 ｜ Error Guessing"
-description: "错误猜测是一种经验驱动的测试技术，测试人员利用对系统的了解、直觉和既往经验，预测缺陷可能出现的位置。"
+description: "错误猜测是基于测试人员的经验、直觉和系统知识，预测软件可能出现缺陷的位置或场景的测试技术。"
 section: "E"
 related:
   - heuristic-testing

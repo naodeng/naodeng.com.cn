@@ -16,113 +16,61 @@ related:
   - "function-calling"
   - "custom-commands"
   - "permission-policies-allowed-command-list"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Hook Events (钩子事件)
-
-> One-line definition: Named event points (e.g., pre-tool, post-tool) where hook logic can be attached.
+# Hook Events
 
 ## Quick Take
 
-- Problem it solves: Make AI outputs predictable and machine-consumable.
-- When to use: Use it when downstream systems need stable formats.
-- Boundary: Not ideal for fully open-ended creative tasks.
+- **In brief:** A hook event is a named point in a host workflow where configured logic may run.
+- **Useful for:** Triggering checks before or after a supported action.
+- **Main limit:** Event names, order, and data depend on the host product.
 
 ## Overview
 
-`Hook Events` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A coding tool may expose an event before a tool call. A host can use it to inspect the request. Another product may expose different events or none.
 
 ## Core Definition
 
-### Formal Definition
-
-Named event points (e.g., pre-tool, post-tool) where hook logic can be attached.
-
-### Plain-Language Explanation
-
-Think of `Hook Events` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+A hook event is a lifecycle event that a host makes available to extension logic. Examples may include session start, tool use, or task completion. These names are not universal.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+Hooks are a common software pattern for running logic at defined points. AI tools may expose similar event points around sessions or tool use. Each host defines its own event contract.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. The host defines an event and the data it provides.
+2. A developer registers a hook for that event.
+3. The host runs the hook when the event occurs.
+4. The host handles the hook result under its documented rules.
+5. The team tests event order, errors, and missing data.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- API orchestration where AI output feeds automation directly.
-- Test generation with fixed schemas for assertions.
-- Standardized actions triggered via commands/hooks.
-
-### Practical Example
-
-```text
-Goal: generate machine-consumable test steps
-Steps: 1) define JSON schema 2) call function 3) validate via hooks
-Outcome: lower parse errors and better CI automation reuse
-```
+A pre-tool event may let a team check a command against a policy. A post-task event may help save a report. These controls cover only events the host emits and routes through the hook.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Overly strict schemas can reduce model flexibility.
-- Over-permissive function access increases misuse risk.
-- Hook failures can break pipelines without fallback paths.
+Events can connect checks to predictable workflow points. They may not cover every action path. A hook can fail, receive incomplete data, or behave differently after a host update.
 
 ## Comparison with Similar Terms
 
-| Dimension | Hook Events | Hooks | Function Calling |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Hook Events` capability boundaries | Leans toward `Hooks` capabilities | Leans toward `Function Calling` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+A hook event is the point that triggers logic. A hook is the callback or script that runs there. Function calling is a model request to invoke an application tool.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Use the host's event documentation. Check which actions emit each event, what data it contains, and how hook failures affect the workflow. Test success and failure paths.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not assume an event name has the same meaning across products. Do not claim a hook protects actions that bypass the event.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does every tool call produce a hook event?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. The host decides which events it exposes. Confirm the supported list and test the paths your system uses.
 
 ## Related Resources
 

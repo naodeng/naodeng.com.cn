@@ -1,6 +1,6 @@
 ---
 title: "工厂验收测试 ｜ Fat"
-description: "工厂验收测试（FAT）用于确认新制造的设备按预期运行并满足客户要求。"
+description: "工厂验收测试（FAT）在交付前的受控环境中验证设备或软件是否满足客户要求和约定规范。"
 section: "F"
 related:
   - test-case

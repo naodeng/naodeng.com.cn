@@ -1,6 +1,6 @@
 ---
-title: "可用性测试 ｜ Availability Testing"
-description: "可用性测试评估系统的运行时间和可访问性，确认应用或系统能否按预期持续向用户提供服务。"
+title: "系统可用性测试 ｜ Availability Testing"
+description: "系统可用性测试评估应用或系统在需要时持续可访问和可操作的能力，并检查正常运行时间、响应性和故障恢复。"
 section: "A"
 related:
   - failover-testing
@@ -11,11 +11,11 @@ related:
 order: 0
 ---
 
-# 可用性测试 ｜ Availability Testing
+# 系统可用性测试 ｜ Availability Testing
 
 <!-- TOC START -->
 
-- [可用性测试 ｜ Availability Testing](#可用性测试--availability-testing)
+- [系统可用性测试 ｜ Availability Testing](#系统可用性测试--availability-testing)
   - [关于可用性测试的问题](#关于可用性测试的问题)
     - [基础知识和重要性](#基础知识和重要性)
       - [什么是可用性测试？](#什么是可用性测试)

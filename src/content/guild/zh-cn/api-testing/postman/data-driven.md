@@ -83,7 +83,7 @@ pm.test("res.body should be correct", function() {
 
 - 点击保存，然后点击发送，可以看到测试通过。
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112418URuFUy.png)
+![Postman 中使用环境变量配置并通过测试的 get-demo 请求](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112418URuFUy.png)
 
 ###### 编辑 post-demo 接口
 
@@ -109,7 +109,7 @@ pm.test("res.body should be correct", function() {
 
 - 点击保存，然后点击发送，可以看到测试通过。
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/20231124181Zpwgn.png)
+![Postman 中通过 host 环境变量配置的 post-demo 请求](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/20231124181Zpwgn.png)
 
 ##### 3. 调试环境变量数据驱动脚本
 
@@ -287,5 +287,5 @@ npm run data-driven-test
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

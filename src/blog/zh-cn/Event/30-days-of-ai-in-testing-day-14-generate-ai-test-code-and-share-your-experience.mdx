@@ -1,6 +1,6 @@
 ---
 title: "30 天 AI 测试挑战活动：第十四天：生成 AI 测试代码并分享你的体验"
-description: "这篇博文是关于 30 天 AI 测试挑战活动的第十四天，旨在生成 AI 测试代码并分享体验。博文可能包括作者使用 AI 工具生成测试代码的过程、工具的选择、生成的代码质量评估以及在实际测试中的应用体验。通过分享生成 AI 测试代码的过程和体验，读者将了解到 AI 在测试领域的应用实例，以及作者对 AI 生成代码的效果和可靠性的看法…"
+description: "记录 Postman AI 助手在 API 请求中的试用：生成响应测试、创建可视化、提取响应字段并辅助撰写接口文档。"
 date: 2024-03-15T02:06:44.000Z
 author: "nao.deng"
 tags: ["AI 测试"]
@@ -64,7 +64,7 @@ Postman AI Assistant 官方的介绍：
 
 我下载 Postman 并使用常用的 demo 接口进行了 Postbot 的试用：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/n7YK4F.png)
+![用于试用 Postbot 的 Postman 工作区及示例 API 请求](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/n7YK4F.png)
 
 ### 2. 关于**创建一些测试代码**
 
@@ -82,12 +82,12 @@ Postman AI Assistant 官方的介绍：
 
 在 Postbot 界面上点击**Add tests to this request**
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/PDPH8I.png)
+![Postbot 在生成请求测试前提示先运行请求并获取响应](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/PDPH8I.png)
 
 如果你添加了 request 后还没点击 send 运行过该 request，
 Postbot 会提示"I‘ll need a response to perform this action"，然后 Postbot 也会给出快捷运行 request 输出 response 的菜单;点击"Send request and continue"按钮后 Postman 会自动运行 request 并编写测试脚本，如下图所示：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZGYSwi.png)
+![发送示例请求后再让 Postbot 生成测试脚本的提示](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZGYSwi.png)
 
 Postbot 针对 demo request 编写测试脚本如下：
 
@@ -132,11 +132,11 @@ pm.test("UserId is a positive integer", function () {
 
 我先尝试运行了“Add more tests”，然后 Postbot 也新增了几条测试
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/VDUws3.png)
+![Postbot 为示例请求新增的测试用例](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/VDUws3.png)
 
 但是有趣的是，有一个测试运行失败了，然后我点击运行“Fix test”尝试让 Postbot 去修复这一条错误的测试
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/33nkUH.png)
+![Postman 中生成的测试失败以及 Postbot Fix test 修复尝试的结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/33nkUH.png)
 
 然而 Postbot 并没有修复成功这一条错误的测试用例
 
@@ -168,10 +168,10 @@ pm.test("UserId matches the ID of the user who created the post", function () {
 
 在 Postbot 界面上点击**Test for response**后，Postbot 会更新之前通过**Add tests to this request**生成的测试用例，如下图所示：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fNrz10.png)
+![Postbot 使用 Test for response 更新后的测试用例](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fNrz10.png)
 
 通过查看更新后的测试运行结果发现，更新后的用例大部分用例都没办法运行通过。
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/liVBHj.png)
+![Postbot 尝试修复更新后响应测试用例的结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/liVBHj.png)
 
 然后我尝试通过 Postbot 的“Fix test”去修复错误的用例，大部分的用例的都能运行通过，但还是出现了之前**Add tests to this request**指令生成且出现过的错误测试用例。
 
@@ -179,13 +179,13 @@ pm.test("UserId matches the ID of the user who created the post", function () {
 
 不知道**Add tests to this request**和**Test for response**两个指令的差异在哪里？
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oq0mEw.png)
+![对比 Postbot 两个测试生成指令时展示的示例界面](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/oq0mEw.png)
 
 #### 试用**Visualize response**
 
 在 Postbot 界面上点击**Visualize response**后，需要选择生成的格式，格式可以选择表格/折线图/条形图，我这里选择为表格，然后 Postbot 会在 request 请求之后的结果页面展示 response 的实例化表格样式。
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3DjMD6.png)
+![Postman 中由 Visualize response 生成的 response 表格](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/3DjMD6.png)
 
 这个 response 的表格实例化展示是通过在 tests 下生成脚本实现的，具体的脚本如下：
 
@@ -235,13 +235,13 @@ pm.globals.set("postId", postId);
 
 然后我再次点击 Postbot 的**Save a field from response**指令，发现 Postbot 还是会生成将 response 中的 id 存储为环境变量的测试脚本，而不是生成存储 response 中的 其他字段存储为环境变量的测试脚本
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/R7gwUZ.png)
+![Postbot 生成的将 response 中 id 存入环境变量的测试脚本](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/R7gwUZ.png)
 
 #### 试用**Add documentation**
 
 在 Postbot 界面上点击使用**Add documentation**指令后，Postbot 会在 postman 界面右侧生成一个非常详细的接口文档，如下图所示
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Amwb4n.png)
+![Postman 工作区中由 Postbot 生成的 API 文档](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Amwb4n.png)
 
 接口文档上描述了接口的请求信息，request 字段定义，response 返回示例等非常详细的接口相关信息。
 
@@ -291,6 +291,6 @@ pm.globals.set("postId", postId);
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>
 

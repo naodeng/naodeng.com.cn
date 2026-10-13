@@ -16,113 +16,61 @@ related:
   - "rule-types"
   - "function-calling"
   - "hooks"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Permission Policies / Allowed Command List (权限策略 / 命令白名单)
-
-> One-line definition: Policies controlling which tools/commands an agent is allowed to execute.
+# Permission Policies and Allowed Command Lists
 
 ## Quick Take
 
-- Problem it solves: Set guardrails for safety, compliance, and consistency.
-- When to use: Use it for enterprise rollout and permission control.
-- Boundary: Not suitable for speed-only workflows with no governance.
+- **In brief:** Permission policies define which actions or resources a user or tool may access.
+- **Useful for:** Limiting what an AI coding assistant can read, run, or change.
+- **Main limit:** A command list is only as strong as its matching and enforcement rules.
 
 ## Overview
 
-`Permission Policies / Allowed Command List` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A team may allow a test command but block commands that delete files. The system must define how it interprets command arguments, shell operators, and scripts.
 
 ## Core Definition
 
-### Formal Definition
-
-Policies controlling which tools/commands an agent is allowed to execute.
-
-### Plain-Language Explanation
-
-Think of `Permission Policies / Allowed Command List` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+A permission policy is a set of rules that allows, denies, or requests approval for actions. An allowed command list identifies commands that a policy permits under defined conditions. Products implement these rules differently.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+AI tools gained access to files, shells, and external services. Permission controls limit that access. A list of command names may not cover every effect of a command or script.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. Define the resources and actions to protect.
+2. Write allow, deny, or approval rules.
+3. Match each requested action against the rules.
+4. Block, allow, or request approval.
+5. Record and test the decision path.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- Enterprise governance with command/tool allowlists.
-- Compliance controls for retention and data egress.
-- Protocol-level interoperability across runtimes/clients.
-
-### Practical Example
-
-```text
-Goal: meet enterprise security and compliance baselines
-Steps: 1) define permission policies 2) enable privacy mode 3) integrate tools via protocol layer
-Outcome: controlled risk surface and standardized integration
-```
+Allow read-only test discovery while requiring approval before a command writes files or changes a remote system. Test compound commands, scripts, paths, and environment variables.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Loose policies broaden attack surface.
-- Overly strict policies hurt developer velocity.
-- Protocol-version drift can break compatibility.
+Policies can reduce accidental or unauthorized actions. Matching rules can be too broad or too narrow. A command may invoke another program or produce side effects that its name does not reveal.
 
 ## Comparison with Similar Terms
 
-| Dimension | Permission Policies / Allowed Command List | Privacy Mode | Rule Types |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Permission Policies / Allowed Command List` capability boundaries | Leans toward `Privacy Mode` capabilities | Leans toward `Rule Types` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+An allowlist describes permitted items. A permission policy also defines denials and approval behavior. A sandbox restricts execution at the environment level. A hook can check actions only when they pass through a supported event.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Use least privilege. Prefer narrow rules. Test shell expansion, chained commands, and scripts. Keep an approval path for uncertain actions and review policy changes.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not assume that allowing a command makes all its effects safe. Do not rely on a textual pattern without knowing how the host matches it. Keep environment-level isolation separate.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Is an allowed command list a complete security boundary?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+Not by itself. Safety depends on matching, enforcement, the command's behavior, and other controls.
 
 ## Related Resources
 

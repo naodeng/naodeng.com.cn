@@ -16,113 +16,60 @@ related:
   - "artifact-feedback-loop"
   - "multi-agent-orchestration"
   - "task-level-abstraction"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Artifacts (任务产物)
-
-> One-line definition: Structured outputs produced during agent workflows, such as plans, diffs, logs, and reports.
+# Artifacts
 
 ## Quick Take
 
-- Problem it solves: Decompose and parallelize complex work at scale.
-- When to use: Use it for multi-step, multi-role, cross-tool execution.
-- Boundary: Not suitable for high-risk workflows without review gates.
+- **In brief:** An artifact is a saved output produced or used during a task.
+- **Useful for:** Reviewing code changes, reports, screenshots, logs, and other results.
+- **Main limit:** An artifact is not automatically proof that a result is correct.
 
 ## Overview
 
-`Artifacts` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A coding agent may return a patch, a test report, and a screenshot. These files help a person inspect what happened. The screenshot alone does not prove that the code is correct.
 
 ## Core Definition
 
-### Formal Definition
-
-Structured outputs produced during agent workflows, such as plans, diffs, logs, and reports.
-
-### Plain-Language Explanation
-
-Think of `Artifacts` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+An artifact is a file or recorded output associated with a task. In an AI coding workflow, it may be a code diff, generated document, test result, screenshot, or execution log. The exact meaning depends on the product.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+Build systems have long produced artifacts such as packages and binaries. AI tools can also expose intermediate and final task outputs for review. Products vary in what they save and how they connect files to a task.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. A task produces or collects files and outputs.
+2. The host saves or displays selected items.
+3. A user opens an artifact and checks its source and context.
+4. The team keeps artifacts that support review or later work.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- Model optimization using preference/reinforcement signals.
-- Batch inference for throughput under cost constraints.
-- Predicted outputs to reduce interaction latency.
-
-### Practical Example
-
-```text
-Goal: improve task accuracy with cost control
-Steps: 1) choose training/inference strategy 2) run batches 3) compare eval outcomes
-Outcome: balanced performance and operating cost
-```
+Review a patch alongside its test output. Inspect a generated screenshot against the original browser state. Keep logs when they help reproduce a failure, but remove secrets before sharing them.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- Supports scalable collaboration and continuous optimization.
-
-### Limitations and Risks
-
-- Data bias can mislead optimization.
-- Bad retry policy can pile up failed batches.
-- Speed-first tuning may degrade output quality.
+Artifacts make work easier to inspect and hand off. They may be incomplete, outdated, or detached from the code version that produced them. Their presence alone does not validate a claim.
 
 ## Comparison with Similar Terms
 
-| Dimension | Artifacts | Verification Artifacts | Artifact Feedback Loop |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Focuses on `Artifacts` capability boundaries | Leans toward `Verification Artifacts` capabilities | Leans toward `Artifact Feedback Loop` capabilities |
-| Lifecycle Stage | Key stages from planning to regression | More common in a narrower sub-flow | More common in a narrower sub-flow |
-| Automation Level | Medium to high (toolchain maturity dependent) | Medium (implementation dependent) | Medium to high (implementation dependent) |
-| Human Involvement | Medium (checkpoint approvals recommended) | Medium | Medium | Medium | Medium |
+An artifact is a saved output. A build artifact is a package or file produced by a build. A verification artifact is evidence used to check a claim. A log records events and may be one kind of artifact.
 
 ## Best Practices
 
-- Start with high-value, low-risk pilot scenarios.
-- Define policies, permissions, and evaluation metrics together.
-- Keep human review and rollback paths available.
+Label each item with its task and code revision. Keep the files needed for review. Apply access and retention controls. State what a file shows and what it cannot establish.
 
 ## Common Pitfalls
 
-- Optimizing speed while ignoring quality gates.
-- Missing artifact tracing and failure attribution.
-- No sustainable rule maintenance process.
+Do not use “artifact” and “verification evidence” as synonyms in every context. Do not assume a screenshot, log, or report proves the underlying behavior.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Is every artifact evidence that a task succeeded?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. An artifact records an output. A reviewer must check whether it supports the claimed result.
 
 ## Related Resources
 

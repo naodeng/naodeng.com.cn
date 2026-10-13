@@ -1,6 +1,6 @@
 ---
 title: "QA Metrics"
-description: "QA metrics are tools that developers use to enhance their product quality by refining testing processes, helping in identifying or forecasting product flaws."
+description: "QA metrics measure testing progress and software quality, helping teams identify risks and guide improvements in context."
 section: "Q"
 related:
   - "manual-testing"
@@ -39,7 +39,7 @@ order: 0
       - [How can QA Metrics be misused or misunderstood?](#how-can-qa-metrics-be-misused-or-misunderstood)
 <!-- TOC END -->
 
-QA metrics are tools that developers use to enhance their product quality by refining testing processes, helping in identifying or forecasting product flaws.
+QA metrics are quantitative measures that help teams assess testing progress and software quality. Teams interpret them in project context to identify risks and guide improvement decisions.
 
 Related Terms:
 

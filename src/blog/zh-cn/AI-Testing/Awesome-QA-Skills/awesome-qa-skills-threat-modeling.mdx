@@ -12,7 +12,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Threat Modeling Skill 用有证据边界的方式整理资产、信任边界、攻击面、威胁场景、缓解措施和假设，准备安全验证，不登录、不调用真实 API，也不声称安全通过。
+威胁建模 Skill 用有证据边界的方式整理资产、信任边界、攻击面、威胁场景、缓解措施和假设，准备安全验证，不登录、不调用真实 API，也不声称安全通过。
 
 ## Skill 用来做什么
 
@@ -110,7 +110,7 @@ Threat Modeling Skill 用有证据边界的方式整理资产、信任边界、�
 
 #### 聚焦例子：建模发票下载中的跨租户访问
 
-门户从浏览器接收 export ID，但设计没有说明 API 是否把导出所属租户与会话租户对比。这个 Skill 应建模跨租户访问场景，把它连接到授权控制和审计证据，并建议合成租户验证；不应对生产发起访问尝试。
+门户从浏览器接收导出 ID，但设计没有说明 API 是否把导出所属租户与会话租户对比。这个 Skill 应建模跨租户访问场景，把它连接到授权控制和审计证据，并建议合成租户验证；不应对生产发起访问尝试。
 
 模型可以整理安全上下文和假设，不能证明漏洞、利用成功、缓解有效或发布安全。
 
@@ -201,13 +201,13 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行规则在 [威胁建模 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling) 中还可能包含评测用例和补充材料。
+完整执行规则在 [威胁建模提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling) 中还可能包含评测用例和补充材料。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+静态计划、文件存在和模拟运行保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
 ### 参考链接
 
-- 威胁建模 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)
+- 威胁建模提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling/prompts/threat-modeling.md)
 - 威胁建模 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/threat-modeling)
-- 威胁建模 详情页:[https://inaodeng.com/zh-cn/qaskills/threat-modeling/](https://inaodeng.com/zh-cn/qaskills/threat-modeling/)
+- 威胁建模详情页:[https://inaodeng.com/zh-cn/qaskills/threat-modeling/](https://inaodeng.com/zh-cn/qaskills/threat-modeling/)
 - Awesome QA Skills 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

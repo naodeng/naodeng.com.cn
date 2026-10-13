@@ -4,6 +4,7 @@ import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getQASkills } from "@/utils/qaskills";
 import { getRelatedQASkills } from "@/utils/qaskillsRelated";
+import { buildQASkillMetaDescription } from "@/utils/seoDescription.mjs";
 import { getQASkillCardIntro, getQASkillCardSummary } from "@/data/qaSkillLibrary";
 import { buildGenericQASkillDetailData, getQASkillDetailData } from "@/data/qaSkillDetail";
 import ArticleShare from "@/components/ArticleShare.astro";
@@ -85,7 +86,14 @@ const text = lang === "zh-cn" ? {
 };
 
 const summary = getQASkillCardSummary(skill, lang);
-const localizedDescription = (lang === "zh-cn" ? localizedIntro || skill.description || skill.title : skill.description || localizedIntro || skill.title).trim();
+const isGenericLocalizedIntro = /(?:围绕「.*」处理当前质量任务|Use .+ for the current quality task)/i.test(localizedIntro);
+const hasLocalizedIntro = localizedIntro.trim() !== skill.description.trim()
+  && !/triggers include/i.test(localizedIntro)
+  && !isGenericLocalizedIntro;
+const localizedDescription = (hasLocalizedIntro
+  ? localizedIntro
+  : `${displayName}: ${summary.whenToUse || skill.title || skill.description}`
+).trim();
 const heroIntro = /当前质量任务|current quality task/i.test(localizedDescription) && summary.whenToUse
   ? summary.whenToUse
   : localizedDescription;
@@ -142,9 +150,12 @@ const siteOrigin = Astro.site?.toString().replace(/\/$/, "") || "https://inaoden
 const canonicalUrl = `${siteOrigin}${getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}`;
 const pageLocale = (lang === "zh-cn" ? "zh-cn" : "en") as "en" | "zh-cn";
 const pageTitle = lang === "zh-cn" ? `${displayName} - 软件测试技能库` : `${displayName} - QA Skill Library`;
-const pageDescription = localizedDescription.length < 80
-  ? lang === "zh-cn" ? `${localizedDescription} 提供可直接使用的安装、调用、输入输出与人工复核说明。` : `${localizedDescription} Includes practical installation, input, output, and human-review guidance.`
-  : localizedDescription;
+const pageDescription = buildQASkillMetaDescription({
+  description: localizedDescription,
+  input: summary.input,
+  output: summary.output,
+  lang: lang === "zh-cn" ? "zh-cn" : "en",
+});
 const pageKeywords = [skill.title, skill.chineseName, detail.domain, lang === "zh-cn" ? "软件测试技能库" : "QA skill library"].filter(Boolean).join(", ");
 const skillSchema = { "@context": "https://schema.org", "@type": "TechArticle", headline: displayName, description: pageDescription, url: canonicalUrl, inLanguage: lang === "zh-cn" ? "zh-CN" : "en", dateModified: skill.updatedAt || undefined, author: { "@type": "Person", name: skill.author || "naodeng" }, publisher: { "@type": "Organization", name: "naodeng", url: siteOrigin }, mainEntityOfPage: canonicalUrl };
 const tocHeadings = [
@@ -158,6 +169,7 @@ const tocHeadings = [
 <Base
   title={pageTitle}
   description={pageDescription}
+  descriptionMaxLength={null}
   keywords={pageKeywords}
   breadcrumbs={[
     { name: text.home, url: getRelativeLocaleUrl(lang, "/") },
@@ -430,7 +442,7 @@ const tocHeadings = [
       grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
       justify-content: center;
       gap: clamp(2rem, 3vw, 3rem);
-      max-width: min(100%, 1640px);
+      max-width: 100%;
     }
   }
   @media (prefers-reduced-motion: reduce) {

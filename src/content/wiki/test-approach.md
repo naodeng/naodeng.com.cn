@@ -1,6 +1,6 @@
 ---
 title: "测试方法 ｜ Test Approach"
-description: "测试方法说明项目将如何开展测试，概述实现特定测试目标所需的策略和任务。"
+description: "测试方法概述项目如何开展测试，把测试策略转化为适用于具体项目的任务和执行步骤，并考虑范围、目标与资源。"
 section: "T"
 related:
   - automated-testing

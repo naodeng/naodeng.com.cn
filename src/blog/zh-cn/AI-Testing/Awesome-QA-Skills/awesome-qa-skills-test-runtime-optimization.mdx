@@ -12,13 +12,13 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Test Runtime Optimization Skill 分析慢测试、性能剖析、初始化与清理、并行、隔离和基线，把提速方案变成有边界的实验，而不是口头承诺。
+测试运行时间优化 Skill 分析慢测试、性能剖析、初始化与清理、并行、隔离和基线，把提速方案变成有边界的实验，而不是口头承诺。
 
 ## Skill 用来做什么
 
 本文关注的速度只有在优化后的测试仍然产生可比较、可信信号时才有价值。
 
-当 CI 反馈慢，或者需要在改夹具、Worker、顺序或环境初始化前做剖析时，使用这个 Skill。
+当 CI 反馈慢，或者需要在改夹具、工作进程、顺序或环境初始化前做剖析时，使用这个 Skill。
 
 结果要识别慢信号、测量基线、瓶颈假设、隔离约束、优化方式、预期行为和验证证据。
 
@@ -85,8 +85,8 @@ Test Runtime Optimization Skill 分析慢测试、性能剖析、初始化与清
 | 材料 | 这次提供什么 | 缺失时的处理 |
 | --- | --- | --- |
 | 运行基线 | 时长分布、分位数、环境、版本和队列 | 不要只用一次偶然运行 |
-| 剖析证据 | 慢测试、初始化/清理、IO、网络、夹具和 Worker 数据 | 假设要标出来 |
-| 执行限制 | 顺序依赖、共享资源、并行 Worker 和隔离 | 不要假设并行安全 |
+| 剖析证据 | 慢测试、初始化/清理、IO、网络、夹具和工作进程数据 | 假设要标出来 |
+| 执行限制 | 顺序依赖、共享资源、并行工作进程和隔离 | 不要假设并行安全 |
 | 验证计划 | 前后运行、正确性检查和回滚 | 速度与通过证据分开 |
 
 可以这样调用：
@@ -159,7 +159,7 @@ Test Runtime Optimization Skill 分析慢测试、性能剖析、初始化与清
 
 ## 怎样准备更好的输入
 
-提供时长分布、版本和环境、剖析数据、初始化/清理代码、Worker 设置、资源限制和正确性检查。一次性的速度观察要限定范围。
+提供时长分布、版本和环境、剖析数据、初始化/清理代码、工作进程设置、资源限制和正确性检查。一次性的速度观察要限定范围。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
 
@@ -203,7 +203,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 完整执行规则在 [测试运行时间优化 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization/prompts/test-runtime-optimization.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-runtime-optimization) 中还可能包含评测用例和补充材料。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+静态计划、文件存在和试运行仍保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
 ### 参考链接
 

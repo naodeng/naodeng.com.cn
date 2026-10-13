@@ -1,6 +1,6 @@
 ---
 title: "随机测试 ｜ Ad Hoc Testing"
-description: "随机测试是一种非正式、即兴的软件测试方式，测试人员根据经验自由探索系统，而不依赖预先编写的详细测试用例。"
+description: "随机测试（Ad Hoc Testing）是一种非正式、即兴的测试方法，通常不依赖详细计划或文档，用于快速发现问题。"
 section: "A"
 related:
   - manual-testing

@@ -14,101 +14,61 @@ related:
   - "vibe-coding"
   - "context-window-management"
   - "skill"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
 # Prompt-Driven Development (PDD)
-
-> One-line definition: A software development methodology where natural language prompts are treated as the primary "source code," driving the AI to generate, test, and iterate on application logic.
 
 ## Quick Take
 
-- Problem it solves: Turn “can code” into reliable delivery.
-- When to use: Use for workflow design, testing collaboration, and quality governance.
-- Boundary: Do not use without review and validation gates.
+- **In brief:** Prompt-driven development uses written instructions to guide AI-assisted software work.
+- **Useful for:** Repeating a bounded task or exploring an implementation.
+- **Main limit:** Prompts do not replace requirements, code review, or tests.
 
 ## Overview
 
-`Prompt-Driven Development (PDD)` matters less as a buzzword and more as an engineering control point for reliability, interpretability, and collaboration in AI-enabled development.
+A team can keep a prompt for reviewing test changes. It can state the project context, review criteria, and expected report. The team still checks the result.
 
 ## Core Definition
 
-### Formal Definition
-
-PDD is an iterative development process where natural language instructions (Prompts) serve as the fundamental input for an AI-native toolchain. It involves treating prompt engineering as a first-class citizen, using structured instructions to generate code, tests, and documentation, followed by a continuous "Human-in-the-loop" review cycle.
-
-### Plain-Language Explanation
-
-Think of it as a foundational control point in AI engineering: it reduces randomness, improves reuse, and turns team know-how into repeatable practice.
+Prompt-driven development (PDD) is a descriptive approach that uses prompts as an important part of an AI-assisted workflow. A prompt can guide code generation, analysis, or testing. The term has no single agreed process or standard.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: Emerged as AI models (like GPT-4 and Claude 3) became capable of generating entire modules rather than just snippets.
-- **Main focus**: Streamlining the development lifecycle by reducing the manual overhead of writing boilerplate and common patterns.
-
-### Evolution
-
-- **TDD (Test-Driven Development)**: Write tests first, then code.
-- **PDD (Prompt-Driven Development)**: Write the prompt first, let AI generate the code and tests, then verify.
-- **The Shift**: Moving from "AI as a Search Engine" to "AI as the Primary Architect."
+Prompting is one way to give a model instructions and context. Some teams save prompts for repeated tasks. Others use them only during one interaction. These practices do not require a fixed development lifecycle.
 
 ## How It Works
 
-1. **Requirement Formulation**: Turning a vague idea into a structured prompt with context and constraints.
-2. **AI Synthesis**: The model generates the implementation based on the prompt.
-3. **Execution & Verification**: The developer runs the generated code and reviews it for logic errors or "Vibe" mismatches.
-4. **Iterative Refinement**: Instead of fixing the code manually, the developer **updates the prompt** and generates again, ensuring the "Prompt" remains the source of truth.
+1. State the task and its constraints.
+2. Provide relevant code, examples, or project rules.
+3. Ask the model to produce an output or propose a change.
+4. Review the result and run relevant checks.
+5. Update the prompt when repeated gaps show that the instruction needs to change.
 
 ## Applications in Software Development and Testing
 
-- **Rapid Scaffolding**: Prompting for a complete CRUD API with specific middleware and database schemas.
-- **Feature Exploration**: "Implement this search feature using three different algorithms so I can compare them."
-- **Automated Test Suites**: "Based on this requirement, generate all possible edge-case unit tests."
+Use a prompt to draft a test outline, explain an error, or propose a bounded code change. For repeated work, keep a template with expected inputs and review criteria.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Infinite Speed**: Going from idea to running code in seconds instead of hours.
-- **Lower Barrier to Entry**: Allows domain experts (who know the requirements) to build software even if they aren't master coders.
-- **Consistency**: Once a prompt "template" works, it can be reused to generate similar features with zero drift.
-
-### Limitations and Risks
-
-- **Prompt Fragility**: A small change in the prompt can sometimes lead to wildly different code (Stochasticity).
-- **Technical Debt**: If not careful, PDD can lead to a "pile of code" that the developer doesn't fully understand.
-- **Review Fatigue**: The speed of generation can overwhelm the developer's ability to properly audit the code.
+A clear prompt can make a request easier to repeat and review. Results can vary across model versions and contexts. A prompt may also omit assumptions that the team has not documented.
 
 ## Comparison with Similar Terms
 
-| Dimension | PDD | Vibe Coding | Traditional Coding |
-| :--- | :--- | :--- | :--- |
-| **Primary Tool** | **Structured Prompts** | Intuitive Flow/Chat | Manual Keyboarding |
-| **Mindset** | **Engineering-centric** | Creative/Exploratory | Syntax-centric |
-| **Output Type** | Functional Components | Working Prototypes | Line-by-line Logic |
+Prompt-driven development describes a way to use instructions during software work. Prompt engineering focuses on prompt design. Vibe coding describes informal, iterative AI-assisted coding. Test-driven development uses tests to guide implementation; it does not depend on prompts.
 
 ## Best Practices
 
-- **Treat Prompts as Code**: Store your best prompts in Git or a "Skill" library so they aren't lost.
-- **Define "Done"**: Always include a definition of success in your prompt (e.g., "The output should be a valid React hook with no external dependencies").
-- **Audit twice, Apply once**: Since the AI writes so fast, you must spend that "saved time" on rigorous review and testing.
+State the desired behavior, constraints, and acceptance checks. Include examples when exact format matters. Version prompts for repeated workflows. Review generated code and run tests.
 
 ## Common Pitfalls
 
-- **Vague Prompts**: Asking for "a beautiful website" (the AI has no idea what you find beautiful).
-- **Ignoring the Diff**: Blindly "Applying" AI changes without checking every line.
+Do not treat a prompt as the only source of truth for requirements. Do not assume the same prompt produces identical results across models or versions. A detailed prompt does not remove the need for review.
 
 ## FAQ
 
-### Q1: Should beginners master this immediately?
+### Is prompt-driven development a formal standard?
 
-A: Learn the core purpose first, then adopt it gradually in real workflows.
-
-### Q2: How do teams know adoption is working?
-
-A: Check for more stable delivery, less rework, and smoother collaboration.
+No. The term describes a broad practice. Teams should define their own prompt format and verification steps.
 
 ## Related Resources
 
@@ -118,12 +78,6 @@ A: Check for more stable delivery, less rework, and smoother collaboration.
 - [context-window-management](https://inaodeng.com/en/AIWiki/context-window-management/)
 - [skill](https://inaodeng.com/en/AIWiki/skill/)
 
-### Term Metadata
-
-- Aliases: PDD
-- Tags: AI Vibe Coding, Wiki
-
-## References
-
+### References
 - [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
 - [Anthropic Prompt Engineering Overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)

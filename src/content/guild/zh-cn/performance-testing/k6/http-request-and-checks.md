@@ -228,7 +228,7 @@ k6 run demo_custom_metrics.js
 
 运行结果如下：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/4tbqVc.png)
+![k6 摘要输出中显示的 waiting_time 自定义指标](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/4tbqVc.png)
 
 > 可以看到，自定义指标 `waiting_time` 已经在结果输出中显示出来了。
 
@@ -269,7 +269,7 @@ export default function () {
 
 运行该脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/aTXnpy.png)
+![k6 HTTP 响应状态检查的运行结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/aTXnpy.png)
 
 > 当脚本包含检查时，摘要报告会显示通过了多少测试检查。
 
@@ -296,7 +296,7 @@ export default function () {
 
 运行该脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AmbL0E.png)
+![k6 对 HTTP 响应体执行检查后的摘要结果](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/AmbL0E.png)
 
 > 当脚本包含检查时，摘要报告会显示通过了多少测试检查。
 
@@ -322,7 +322,7 @@ export default function () {
 
 运行该脚本，可以看到如下结果：
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5yJyBw.png)
+![k6 结果显示两个 HTTP 检查均通过，成功率为 100%](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5yJyBw.png)
 
 在此示例中，两个检查都是正常通过的（调用是 100% 成功的）。
 
@@ -337,6 +337,6 @@ export default function () {
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>
 

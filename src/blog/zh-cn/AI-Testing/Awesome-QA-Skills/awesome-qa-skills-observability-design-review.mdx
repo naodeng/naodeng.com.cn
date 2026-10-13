@@ -16,13 +16,13 @@ series: ["Awesome QA Skills 实战"]
 
 ## Skill 用来做什么
 
-当团队需要围绕“日志、指标、Trace、关联、维度、告警、隐私和诊断动作”工作时，使用可观测性设计评审 Skill。
+当团队需要围绕“日志、指标、链路追踪、关联、维度、告警、隐私和诊断动作”工作时，使用可观测性设计评审 Skill。
 
 [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦可观测性设计评审。
 
 好的评审从运维必须做出的决定开始。它会问哪个信号能缩小原因、哪个信号能识别受影响流程，以及哪些数据绝不能发出。
 
-它适合这些场景：团队需要重复检查日志、指标、Trace、关联、维度、告警、隐私和诊断动作；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+它适合这些场景：团队需要重复检查日志、指标、链路追踪、关联、维度、告警、隐私和诊断动作；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
 ## 它不做什么
 
@@ -40,7 +40,7 @@ series: ["Awesome QA Skills 实战"]
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
 | 可观测性缺口 | 信号缺失、维度错误、关联断裂或数据不安全 | 影响 |
-| 诊断路径 | 需要的查询、仪表盘、Trace 或告警 | 负责人和时间 |
+| 诊断路径 | 需要的查询、仪表盘、链路追踪或告警 | 负责人和时间 |
 | 验证计划 | 证明信号有效的故障注入或重放 | 证据产物 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
@@ -77,14 +77,14 @@ series: ["Awesome QA Skills 实战"]
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
 | 流程地图 | 用户动作、服务、依赖、状态和失败点 | 写出预期的第一信号 |
-| 信号设计 | 日志字段、指标维度、Trace 传递和告警规则 | 检查基数与隐私 |
+| 信号设计 | 日志字段、指标维度、链路追踪信息传递和告警规则 | 检查基数与隐私 |
 | 诊断目的 | 运维必须做什么决定、需要多快 | 每个信号都接回动作 |
 
 可以这样调用：
@@ -103,7 +103,7 @@ series: ["Awesome QA Skills 实战"]
 
 ### 分析
 
-先从一个边界清楚的小回合开始：评审跨浏览器、API 网关、支付提供商和订单 Worker 的结算失败可观测性。用一个关联 ID 追踪失败结算穿过网关、提供商请求和 Worker 事件。仪表盘应能区分提供商超时与订单状态冲突，但不能记录卡数据或原始客户内容。
+先从一个边界清楚的小回合开始：评审跨浏览器、API 网关、支付提供商和订单工作进程的结算失败可观测性。用一个关联 ID 追踪失败结算穿过网关、提供商请求和工作进程事件。仪表盘应能区分提供商超时与订单状态冲突，但不能记录卡数据或原始客户内容。
 
 交接产物要保留输入版本、时间窗口、证据索引、负责人和下一次验证动作。Skill 可以整理不确定性，不能制造缺失的产物。
 
@@ -142,7 +142,7 @@ series: ["Awesome QA Skills 实战"]
 | 输出字段 | 它要回答什么 | 示例状态 |
 | --- | --- | --- |
 | 可观测性缺口 | 信号缺失、维度错误、关联断裂或数据不安全 | 影响 |
-| 诊断路径 | 需要的查询、仪表盘、Trace 或告警 | 负责人和时间 |
+| 诊断路径 | 需要的查询、仪表盘、链路追踪或告警 | 负责人和时间 |
 | 验证计划 | 证明信号有效的故障注入或重放 | 证据产物 |
 
 没有运行记录、查询结果或原始产物时，不要写“已通过”。好的评审从运维必须做出的决定开始。它会问哪个信号能缩小原因、哪个信号能识别受影响流程，以及哪些数据绝不能发出。
@@ -155,7 +155,7 @@ series: ["Awesome QA Skills 实战"]
 
 如果第一次调用只有一行目标，输出就应该保持受限。补充来源版本、受影响对象、环境、已知缺陷和决策负责人，才能从看起来完整的清单推进到可用评审。
 
-这里补充信息会改变结果，因为日志、指标、Trace、关联、维度、告警、隐私和诊断动作必须接回证据，不能只靠熟悉的测试套路推断。
+这里补充信息会改变结果，因为日志、指标、链路追踪、关联、维度、告警、隐私和诊断动作必须接回证据，不能只靠熟悉的测试套路推断。
 
 ## 和其他 Skill 怎么配合
 
@@ -193,16 +193,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [可观测性设计评审 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review/prompts/observability-design-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review) 中包含入口文件以及实际存在的配套资料。
+完整执行契约位于 [可观测性设计评审提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review/prompts/observability-design-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review) 中包含入口文件以及实际存在的配套资料。
 
-入口文件重点约束日志、指标、Trace、关联、维度、告警、隐私和诊断动作。要保留它的决策边界，不要把静态设计写成执行结论。
+入口文件重点约束日志、指标、链路追踪、关联、维度、告警、隐私和诊断动作。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 可观测性设计评审 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review/prompts/observability-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review/prompts/observability-design-review.md)
+- 可观测性设计评审提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review/prompts/observability-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review/prompts/observability-design-review.md)
 
 - Awesome QA Skills：可观测性设计评审 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review)
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
 
 - 可观测性设计评审 详情页:[https://inaodeng.com/zh-cn/qaskills/observability-design-review/](https://inaodeng.com/zh-cn/qaskills/observability-design-review/)

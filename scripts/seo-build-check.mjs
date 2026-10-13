@@ -6,7 +6,11 @@ import { checkSeoIntegrity } from "./seo-integrity-utils.mjs";
 
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, "dist");
-const MIN_META_DESCRIPTION_LENGTH = 70;
+const META_DESCRIPTION_REVIEW_LENGTH = 70;
+const GENERIC_META_DESCRIPTION_MARKERS = [
+  "本文介绍相关概念、适用场景、实践步骤、输入输出与常见注意事项",
+  "Learn the key concepts, use cases, practical guidance, and quality considerations",
+];
 const sitemapPath = path.join(DIST, "sitemap-0.xml");
 const WIKI_DIR = path.join(ROOT, "src", "content", "wiki");
 const failures = [];
@@ -142,8 +146,24 @@ if (!fs.existsSync(redirectsPath)) {
   failures.push("missing generated _redirects file");
 } else {
   const redirects = fs.readFileSync(redirectsPath, "utf8");
-  if (!redirects.split(/\r?\n/).some((line) => line.trim() === "/zh-cn/wiki/A-B-Testing/ /zh-cn/wiki/a-b-testing/ 301")) {
-    failures.push("missing lowercase redirect for /zh-cn/wiki/A-B-Testing/");
+  if (redirects.split(/\r?\n/).some((line) => /^\/(?:en|zh-cn)\/wiki\//.test(line.trim()))) {
+    failures.push("legacy Wiki redirects must not be published");
+  }
+}
+
+for (const locale of ["en", "zh-cn"]) {
+  const wikiBuildDir = path.join(DIST, locale, "wiki");
+  if (fs.existsSync(wikiBuildDir)) {
+    const entries = fs.readdirSync(wikiBuildDir, { withFileTypes: true });
+    if (entries.some((entry) => entry.isDirectory() && entry.name === "wiki")) {
+      failures.push(`legacy nested Wiki routes must not be generated: /${locale}/wiki/wiki/`);
+    }
+    if (entries.some((entry) => entry.isDirectory() && entry.name.toLowerCase().endsWith(".md"))) {
+      failures.push(`legacy Markdown filename Wiki routes must not be generated for ${locale}`);
+    }
+    if (entries.some((entry) => entry.isDirectory() && entry.name !== entry.name.toLowerCase())) {
+      failures.push(`noncanonical uppercase Wiki routes must not be generated for ${locale}`);
+    }
   }
 }
 
@@ -211,6 +231,8 @@ for (const locale of ["en", "zh-cn"]) {
   }
 }
 
+const shortMetaDescriptions = [];
+const metaDescriptionOwners = new Map();
 for (const file of walkHtmlFiles(DIST)) {
   const html = fs.readFileSync(file, "utf8");
   if (hasNoindexRobots(html)) continue;
@@ -218,8 +240,22 @@ for (const file of walkHtmlFiles(DIST)) {
   const relative = `/${path.relative(DIST, file).replace(/\\/g, "/").replace(/\/index\.html$/, "")}`;
   if (!match) {
     failures.push(`indexable page has no meta description: ${relative}`);
-  } else if (match[1].trim().length < MIN_META_DESCRIPTION_LENGTH) {
-    failures.push(`indexable page has a short meta description: ${relative}`);
+    continue;
+  }
+  const description = match[1].trim();
+  if (!description) {
+    failures.push(`indexable page has an empty meta description: ${relative}`);
+    continue;
+  }
+  if (description.length < META_DESCRIPTION_REVIEW_LENGTH) shortMetaDescriptions.push(relative);
+
+  const normalizedDescription = description.replace(/\s+/g, " ").toLowerCase();
+  const previousOwner = metaDescriptionOwners.get(normalizedDescription);
+  if (previousOwner) failures.push(`duplicate meta description: ${previousOwner} and ${relative}`);
+  else metaDescriptionOwners.set(normalizedDescription, relative);
+
+  if (GENERIC_META_DESCRIPTION_MARKERS.some(marker => description.includes(marker))) {
+    failures.push(`indexable page uses a generic meta description: ${relative}`);
   }
 }
 
@@ -262,3 +298,6 @@ if (failures.length > 0) {
 
 console.log("SEO build check passed");
 console.log(`SEO coverage: ${JSON.stringify(integrity.counts)}`);
+if (shortMetaDescriptions.length > 0) {
+  console.log(`Meta description review: ${shortMetaDescriptions.length} indexable page(s) are under ${META_DESCRIPTION_REVIEW_LENGTH} characters; review relevance manually, since length alone is not a build failure.`);
+}

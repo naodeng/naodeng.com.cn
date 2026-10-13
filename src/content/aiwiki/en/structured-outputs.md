@@ -16,7 +16,7 @@ related:
   - "graders"
   - "verification-artifacts"
   - "predicted-outputs"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Structured Outputs (结构化输出)
@@ -25,88 +25,75 @@ lastReviewedAt: "2026-03-02"
 
 ## Quick Take
 
-- Problem it solves: Make AI outputs predictable and machine-consumable.
-- When to use: Use it when downstream systems need strict data contracts.
-- Boundary: Not ideal for fully open-ended creative writing tasks.
+- **In brief:** Structured outputs constrain model responses to a defined data format.
+- **Useful for:** Extracting fields or returning data for an application to consume.
+- **Main limit:** Check refusals, incomplete responses, schema support, and business rules.
 
 ## Overview
 
-`Structured Outputs` is often misunderstood as a niche feature. In reality, it solves core engineering problems: unreliable formatting, fragile parsing, and weak integration reliability. From a science-communication perspective, it helps move AI from “it can answer” to “it can operate safely in systems.”
+Structured outputs constrain a model response to a supported data schema, such as a JSON schema. They help an application parse successful responses. They do not prove that the values are true or satisfy business rules.
 
 ## Core Definition
 
-### Formal Definition
+A structured-output feature asks a model API to return data that follows a supplied schema. A provider may constrain generation for supported schemas and models. The supported schema features vary by provider.
 
-Structured Outputs enforce a predefined schema (for example JSON Schema) during generation, so the model returns structurally valid data that downstream services can parse directly.
-
-### Plain-Language Explanation
-
-Think of `Structured Outputs` as a mold for AI output. The model can still decide the content, but the shape must fit the mold.
+A successful response can match the schema and still contain incorrect values. A refusal, interrupted response, unsupported schema, or output limit can also prevent a usable result.
 
 ## Background and Evolution
 
-### Origin
+Teams first asked models to “return JSON only.” This instruction did not ensure that every response used the required fields and types. Some APIs later added JSON modes that target valid JSON, followed by schema-constrained formats.
 
-- Background: teams spent significant effort cleaning malformed AI responses (invalid JSON, missing keys, mixed prose + data).
-- Focus: maximize parse success while minimizing glue code.
-
-### Evolution
-
-- Prompt-only phase: “Return JSON only” with unstable reliability.
-- JSON mode phase: better formatting, but not strict enough for many production contracts.
-- Schema-constrained phase: generation and validation aligned to strict output schemas.
+These features differ across APIs. Read the selected provider's documentation instead of assuming every product uses the same method or guarantees.
 
 ## How It Works
 
-1. Schema submission: define a strict response schema.
-2. Constrained generation: generation is guided by allowed structure.
-3. Validation gate: invalid structures are rejected or regenerated.
-4. Extraction: outputs are parsed into typed program objects.
+1. The application defines the fields, types, and constraints it needs.
+2. The API checks whether the selected model supports the schema.
+3. The model returns a structured response when generation succeeds.
+4. The application checks response status, handles refusals or incomplete output, then parses the data.
+5. The application validates business rules before it stores or acts on the values.
+
+Schema matching checks structure. It does not validate meaning or authorization.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- API automation where outputs must be machine-consumable.
-- Test result generation with strict required fields.
-- Agent pipelines requiring deterministic downstream parsing.
-
-### Practical Example
-
-```text
-Goal: generate parse-safe test result payloads
-Steps: 1) define schema 2) request structured output 3) validate and persist
-Outcome: higher parse success, lower post-processing overhead
-```
+- **Test reports:** Return a case ID, status, and failure summary for later processing.
+- **Issue triage:** Extract a component, severity, and reproduction step from a bug report.
+- **Tool requests:** Prepare typed arguments for an API call. The application still enforces permissions.
+- **Evaluation:** Save scores and labels in a consistent record format.
 
 ## Strengths and Limitations
 
 ### Strengths
 
-- High integration reliability in production pipelines.
-- Less post-processing and fewer parser failures.
-- Better compatibility with typed systems and contracts.
+- A supported schema can reduce formatting and parsing errors.
+- Typed fields make it easier to connect model responses to software.
+- Versioned schemas can make data contracts clearer.
 
 ### Limitations and Risks
 
-- Overly rigid schemas can reduce flexibility for exploratory tasks.
-- Schema drift can break integrations if not versioned.
-- Structurally valid output can still contain factual errors.
+- Providers support only part of the schema specification.
+- Refusals and incomplete responses may not match the schema.
+- Correct structure does not ensure correct facts or valid business values.
+- A schema change can break downstream consumers.
 
 ## Comparison with Similar Terms
 
-| Dimension | Structured Outputs | Function Calling | Graders |
-| :--- | :--- | :--- | :--- |
-| Core Goal | Schema-safe output contracts | Trigger external actions via tools | Score quality against criteria |
-| Lifecycle Stage | Output generation and integration | Action execution phase | Evaluation/acceptance phase |
-| Automation Level | Medium to high | Medium to high | Medium to high |
-| Human Involvement | Medium (schema design/review) | Medium (tool policy review) | Medium (metric and threshold design) |
+| Method | Main purpose | What the application must check |
+|---|---|---|
+| Structured outputs | Return data in a defined shape | Status, schema support, and business meaning |
+| JSON mode | Return syntactically valid JSON | Required fields, types, and business meaning |
+| Function calling | Request an external tool action | Arguments, authorization, and action result |
+
+Structured outputs describe a response format. They do not grant permission to perform an action.
 
 ## Best Practices
 
-- Start with a minimal schema and expand iteratively.
-- Version schemas to avoid silent downstream breakage.
-- Add semantic validators in addition to structure checks.
+- Start with a small schema and add fields only when needed.
+- Check that the selected model supports the required schema features.
+- Handle refusal, incomplete, and error states explicitly.
+- Validate business rules after parsing.
+- Version schemas and test downstream consumers before changing them.
 
 ## Common Pitfalls
 
@@ -116,13 +103,13 @@ Outcome: higher parse success, lower post-processing overhead
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does a structured response guarantee correct data?
 
-A: For simple exploratory tasks, not necessarily. For automation and production integration, adopt early.
+No. It can constrain the format, but the values can still be wrong or incomplete.
 
-### Q2: How should teams measure value?
+### Can an application safely execute a tool call because its arguments match a schema?
 
-A: Track parse success rate, post-processing effort, and downstream failure rate.
+No. The application must check the caller's authority and validate the action before execution.
 
 ## Related Resources
 

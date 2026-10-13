@@ -54,7 +54,12 @@ const techGroups = [
   { icon: "build", title: ABOUT_TECH_DEVOPS, items: ["GitHub Actions", "Docker"] },
 ];
 
-const aboutMeHtml = marked(t(ABOUT_ME_BODY), { gfm: true }) as string;
+const localizedHomePath = getRelativeLocaleUrl(locale, "/");
+const aboutMeRaw = (t(ABOUT_ME_BODY) as string).replace(
+  /\]\(https:\/\/inaodeng\.com\/?\)/g,
+  `](${localizedHomePath})`,
+);
+const aboutMeHtml = marked(aboutMeRaw, { gfm: true }) as string;
 // 赞助链接使用本站相对路径，保证指向当前语言的 /sponsor
 const sponsorPath = getRelativeLocaleUrl(locale, "/sponsor");
 const supportRaw = (t(ABOUT_SUPPORT_BODY) as string).replace(/\/sponsor/g, sponsorPath);

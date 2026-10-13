@@ -1,6 +1,6 @@
 ---
 title: "UI 测试最佳实践的通用最佳实践（三）：将你的测试工具用作主要的开发工具和保持低抽象度以便于调试测试"
-description: "这篇博文深入研究 UI 测试的通用最佳实践之三：将测试工具作为主要开发工具，并保持低抽象度以便于调试。文章强调将测试工具纳入主要开发过程，加强测试与开发的协同，提高代码质量。另外，博文建议保持测试脚本的低抽象度，以便更容易调试和理解。这种做法有助于加速问题排查和测试脚本的维护，从而提高 UI 测试的效率和可靠性。通过采用这些通用最佳实践…"
+description: "说明如何把 UI 测试工具用于开发循环，并通过清晰选择器、低抽象度和适度分组，让测试更易读、易调试。"
 date: 2024-01-20T09:06:44.000Z
 author: "nao.deng"
 tags: ["最佳实践"]
@@ -419,5 +419,5 @@ cy.get('[data-test="Actions list"]').within(() => { // <-- reduce the scope
 ---
 欢迎关注软件测试同学的公众号“**软件测试同学**”，原创 QA 技术文章第一时间推送。
 <div style="text-align: center">
-  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" />
+  <img src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112015'QR Code for 公众号.jpg" style="width: 100px;" alt="软件测试同学微信公众号二维码" />
 </div>

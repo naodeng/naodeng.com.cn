@@ -3,7 +3,7 @@ title: "Rule"
 titleZh: "Rule（规则）"
 slug: "rule"
 lang: "en"
-summary: "A Rule is a concrete constraint unit that governs AI behavior, output format, and execution boundaries in coding workflows."
+summary: "A reusable instruction that guides an AI system’s behavior or output. A rule does not enforce itself."
 topic: "ai-vibe-coding"
 aliases:
   - "Instruction Rule"
@@ -15,115 +15,84 @@ related:
   - "rules-cursorrules"
   - "skill"
   - "prompt-driven-development"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Rule
 
-> One-line definition: A Rule is an "Explicit Contract" used in AI collaboration to constrain behavior, align intent, and ensure output quality—the underlying infrastructure that transforms "Casual Chatting" into "Professional Engineering."
+> One-line definition: A reusable instruction that guides an AI system.
 
 ## Quick Take
 
-- Problem it solves: Turn abstract AI behavior constraints into executable team rules.
-- When to use: Use in team projects, compliance-sensitive workflows, and policy-driven automation.
-- Boundary: Rules without verification quickly become outdated documentation.
+- **In brief:** A rule gives an AI workflow a preference, constraint, or procedure.
+- **Useful for:** Repeating project guidance across related tasks.
+- **Main limit:** A rule guides model output; it does not enforce permission or guarantee compliance.
 
 ## Overview
 
-In the Vibe Coding lexicon, **Rule** is the heart of all controllable AI. AI is like creative but unstable "Water," and the Rule is the "Container." Without rules, AI might write code that runs fast but is unmaintainable, or code with messy styles. Through a carefully designed rule system (like `.cursorrules`), we can synchronize a team's decade of engineering experience and taboos to an AI assistant in milliseconds, instantly giving it the "Common Sense" of a senior employee.
+A team can store “run the focused tests before changing an API” as a project rule. The instruction can guide an AI assistant each time it works in that project.
 
 ## Core Definition
 
-### Formal Definition
-
-A Rule is a set of explicitly defined constraint instructions or guidelines, typically written in natural language, designed to limit the decision space of an AI model when handling tasks. It covers code style, security guidelines, output structure, tool-calling tendencies, and specific business logic limits.
-
-### Plain-Language Explanation
-
-You can think of a Rule as **"The AI Agent's Onboarding Manual + Automated Redlines."** You don't have to remind it every time: "Don't forget Type Hints when writing Python"; you just write it in the rule, and it will be like your double—always remembering the company's code standards. It's the "Guardrail" you set for the AI.
+A rule is a reusable instruction that an AI application can add to task context. Rules can describe conventions, constraints, or workflows. Their scope and activation depend on the host application.
 
 ## Background and Evolution
 
-### Origin
-
-- **Context**: Early Prompt Engineering was too random and hard to manage, leading to serious "Inconsistent Output Style" issues when large teams promoted AI-assisted tools.
-- **Focus**: How to extract rules from a single conversation in a declarative, persistent way.
-
-### Evolution
-
-- **Generation 1.0 (System Prompt)**: One-way instruction injection, hard to modify, hard to split, and consumed massive context.
-- **Generation 2.0 (Config-based Rules)**: Represented by `.cursorrules`, rules began to coexist with project files, gaining the ability to be "Automatically activated per project."
-- **Generation 3.0 (Dynamic & Managed Rules)**: Rules began to have a hierarchical system (Global Rules, Project Rules, Micro-rules for specific files) and could be version-controlled and distributed via Git.
+Teams first entered guidance in individual prompts. Development tools later added reusable user or project rules. File names and rule formats differ across tools and can change over time.
 
 ## How It Works
 
-1. **Declaration**: Describe constraints in precise, unambiguous natural language (e.g., "All SQL must use parameterized queries").
-2. **Retrieval**: When a developer calls for AI in a specific directory, the IDE automatically searches for nearby `.cursorrules` files and injects them into the prompt header.
-3. **Alignment**: During the reasoning process, the model treats rules as strong constraints, prioritizing the filtering out of candidate solutions that do not satisfy the rules.
-4. **Verification**: In coordination with Linters and automated testing, AI outputs that violate rules are intercepted and errored.
+A host application selects rules based on its own settings and task context. It may include those rules in the prompt sent to a model. The model then uses them as guidance. The host still needs permissions, validation, or tests to enforce requirements.
 
 ## Applications in Software Development and Testing
 
-- **Unified Architectural Style**: A rule "Strictly forbids writing SQL directly in the Controller layer," forcing the AI to call through the Service layer.
-- **Automated Testing Standards**: A rule "Must synchronously generate corresponding unit tests for every new function, with coverage of no less than 80%."
-- **Security Warning**: A rule "Prohibits hardcoding any API Keys or password placeholders in code blocks."
+- **Code conventions:** Ask the assistant to follow the project’s naming and formatting rules.
+- **Test workflow:** Ask it to run a named test command after a change and report the result.
+- **Security guidance:** Remind it not to copy secrets into logs or generated examples. Enforce secret handling with tools and policy checks.
 
 ## Strengths and Limitations
 
-### Strengths
-
-- **Ultra-low Learning Cost**: Writing a few sentences in English or Chinese can significantly change AI behavior, no complex fine-tuning required.
-- **Knowledge Inheritance**: "Pitfalls" summarized by veteran employees can be taught to all new employees assisted by AI in one second via rules.
-- **High Transparency**: Rules are written in the codebase; everyone can see why the AI made a certain suggestion, making auditing easy.
-
-## Limitations and Risks
-
-- **Rule Conflicts**: When global rules and project rules contradict each other, it can easily lead to model "Deadlock" or nonsense.
-- **Rule Bloat**: Injecting too many rules eats up a large amount of context Tokens, reducing the amount of code the model can read.
-- **Bypassing Risk**: Extremely smart models (like o1) occasionally "Take shortcuts" to complete a task, even unintentionally violating ambiguous rules.
+Rules make recurring guidance easier to find and revise. Version-controlled project rules can help a team share that guidance. Rules consume context and can conflict. A model can ignore or misread them, so high-impact requirements need independent controls.
 
 ## Comparison with Similar Terms
 
-| Dimension | Rule | Prompt | Logic (Hardcode) |
-| :--- | :--- | :--- | :--- |
-| **Persistence** | **Long-term, Shared** | Temporary, Session-only | Absolute, Immutable |
-| **Flexibility** | High, Natural Language | Extremely High | Extremely Low |
-| **Mechanism** | Semantic Constraint | Intent Guidance | Deterministic Execution |
+| Term | Role |
+|---|---|
+| Rule | Reusable guidance that applies across selected tasks |
+| Prompt | Instructions and information for one request |
+| Permission policy | A control that allows or blocks an action |
+| Automated test | A check that reports whether specified behavior passes |
 
 ## Best Practices
 
-- **Atomic Description**: Don't write "Write good code"; write "Variable names must use camelCase and be no longer than 25 characters."
-- **Use Markdown Structure**: Use headers and bolding in rule files to help the model locate key constraints faster.
-- **Build a "Rule Repository"**: Establish a curated library of excellent rules (Awesome Rules) internally for various projects to reference.
+- Write one clear requirement per rule.
+- State where the rule applies and how to verify it.
+- Keep project guidance in version control.
+- Use permissions and automated checks for requirements that must be enforced.
 
 ## Common Pitfalls
 
-- **Thinking More is Better**: Too many rules increase the model's cognitive load. Keeping the 10-15 most important rules often provides the best value.
-- **Ignoring Negative Constraints**: Telling the AI "What NOT to do" is often more effective than telling it "What TO do" (e.g., "Prohibit the use of jQuery").
+Do not treat a natural-language rule as a security boundary. Do not copy conflicting guidance into several files without deciding which instruction takes priority.
 
 ## FAQ
 
-### Q1: Do Rules need to be written in code comments?
-A: No. While helpful, the best practice is to write them in separate config files (like `.cursorrules`), keeping the code clean and outside the formal compilation scope.
+### Can a rule guarantee that the AI will not make mistakes?
 
-### Q2: Will AI ever write bugs again now that we have Rules?
-A: Definitely not. Rules significantly reduce "low-level style errors" and "common logical oversights," but intrinsic algorithmic flaws still require resolution through Code Review.
+No. A rule guides the model. Tests, review, and system controls are still needed.
+
+### Where does Cursor store project rules?
+
+Current Cursor project rules use files under .cursor/rules. Cursor lists .cursorrules as a legacy format that is still supported but deprecated.
 
 ## Related Resources
 
 ### Related Terms
 
-- [rules-cursorrules](https://inaodeng.com/en/AIWiki/rules-cursorrules/)
-- [skill](https://inaodeng.com/en/AIWiki/skill/)
-- [prompt-driven-development](https://inaodeng.com/en/AIWiki/prompt-driven-development/)
+- [Rules and Cursor rules](/en/AIWiki/rules-cursorrules/)
+- [Skill](/en/AIWiki/skill/)
+- [Prompt-driven development](/en/AIWiki/prompt-driven-development/)
 
-### Term Metadata
+### References
 
-- Aliases: Instruction Rule, Constraint Rule
-- Tags: AI Vibe Coding, Wiki
-
-## References
-
-- [Anthropic: Model Context Protocol (MCP)](https://docs.anthropic.com/en/docs/mcp)
-- [Cursor Docs: Rules](https://docs.cursor.com/context/rules)
-- [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
+- [Cursor: Rules](https://docs.cursor.com/context/rules)
+- [OpenAI: Prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering)

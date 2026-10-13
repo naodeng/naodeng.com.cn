@@ -16,125 +16,71 @@ related:
   - "agent-evals"
   - "graders"
   - "trace-grading"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
-
-# Verification Artifacts (验证产物)
-
-> One-line definition: Evidence artifacts used to validate AI task outcomes, e.g., screenshots, recordings, and test reports.
+# Verification Artifacts
 
 ## Quick Take
 
-- Problem it solves: Turn “feels good” into measurable quality.
-- When to use: Use it for regression, acceptance, and policy comparison.
-- Boundary: Not suitable when judging from a single run only.
+- **In brief:** Verification artifacts are records used to check a claim about a task or change.
+- **Useful for:** Reviewing tests, command output, screenshots, or reproduction steps.
+- **Main limit:** Evidence supports a claim only when it matches the change and environment.
 
 ## Overview
 
-`Verification Artifacts` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+A patch may claim to fix a bug. A test report and reproduction steps can help a reviewer check that claim. The evidence needs to match the code revision under review.
 
 ## Core Definition
 
-### Formal Definition
-
-Evidence artifacts used to validate AI task outcomes, e.g., screenshots, recordings, and test reports.
-
-### Plain-Language Explanation
-
-Think of `Verification Artifacts` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+A verification artifact is a saved record that supports a specific check. Examples include a test result, command output, screenshot, recording, or reproduction steps. It can support verification, but it does not prove a claim by itself.
 
 ## Background and Evolution
 
-### Origin
-
-- Context: AI systems evolved from single-turn assistance to multi-step engineering execution.
-- Focus: balancing speed, quality, and governance.
-
-### Evolution
-
-- Early phase: capabilities were fragmented across tools.
-- Middle phase: rules, memory, and tool use became reusable workflow patterns.
-- Recent phase: deep integration with evals, permissions, and artifact tracing.
+As development tasks became distributed across tools and people, teams needed to link checks to the code version and environment that produced them. Tools may collect this evidence, but formats and provenance vary.
 
 ## How It Works
 
-1. Input: goals, context, and constraints.
-2. Processing: model reasoning + tool invocation + state handling.
-3. Output: code, tests, docs, logs, or structured results.
-4. Feedback loop: eval, review, and replay for iterative improvement.
+1. State the claim to verify.
+2. Run a check that can provide relevant evidence.
+3. Save the result with the code revision and environment.
+4. Compare the evidence with the claim.
+5. Record gaps or checks that were not run.
 
 ## Applications in Software Development and Testing
 
-### Typical Scenarios
-
-- Regression evaluations across model/policy variants.
-- CI quality gates with scoring thresholds.
-- Failure diagnosis via trace and artifact replay.
-
-### Practical Example
-
-```text
-Goal: improve AI patch success rate
-Steps: 1) define graders 2) collect traces 3) replay artifacts and score
-Outcome: better root-cause visibility and faster policy iteration
-```
+For a bug fix, attach the relevant test command, result, code revision, and reproduction steps. For a UI change, include a screenshot with the route, viewport, and browser version.
 
 ## Strengths and Limitations
 
-### Strengths
+Artifacts help reviewers see what was checked and where. A report can be incomplete or come from another revision. A screenshot may show one state but not prove the behavior across devices.
 
-- Improves standardization and reuse.
-- Increases observability and auditability.
-- **Greatly Reduces Review Costs**: Humans don't need to re-run the program; they can confirm the results just by checking the artifacts.
-- **Supports Automated Grading**: Graders can make more precise judgments by reading artifacts instead of just raw logs.
-- **Increases System Transparency**: Makes agent behavior predictable and traceable to its source.
+## Comparison with Similar Terms
 
-### Limitations & Risks
+An artifact is any saved task output. A verification artifact supports a check. A build artifact is a package or file produced by a build. A trace records connected execution events.
 
-- **Storage Explosion**: Massive amounts of screenshots and trace files can quickly fill up disk space.
-- **Evidence Falsification Risk**: If an agent hallucinates, it might occasionally generate realistic-looking "fake evidence" (though the probability is low).
-- **Parsing Pressure**: Too many artifacts can increase the parsing overhead for downstream grading systems.
+## Best Practices
 
-## Comparison with Related Terms
-
-| Dimension | Verification Artifacts | Build Artifacts | System Logs |
-| :--- | :--- | :--- | :--- |
-| **Primary Goal** | **Prove work correctness** | Deployment & Release | Troubleshooting |
-| **Audience** | **Human Reviewers or Graders** | DevOps Systems | Developers |
-| **Structuring** | High (Targeted presentation) | High (Binaries/Packages) | Low (Streaming text) |
-
-## Implementation Best Practices
-
-- **Artifact Categorization**: Use a dedicated `artifacts/` directory to store different types of artifacts.
-- **Keyframe Snapshots**: Don't record every useless process; only record snapshots of the most critical "acceptance points."
-- **Self-Describing Metadata**: Each artifact file should ideally come with a simple description explaining what the file proves.
+Link each record to the claim, code revision, and environment. Keep evidence relevant and readable. Remove secrets and personal data. State what the evidence does not cover.
 
 ## Common Pitfalls
 
-- **Equating Logs with Artifacts**: Logs are the process; artifacts are the evidence. Piling up logs only increases the review burden.
-- **Ignoring Version Management**: If artifacts are not tied to code versions, it causes serious "mismatch" issues during auditing.
+Do not call an output proof without checking it. Do not mix results from different revisions. Do not save large logs without identifying the relevant lines.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does a passing test report prove a change is correct?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
-
-### Q2: How do teams avoid overengineering with too many mechanisms?
-
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. It shows that selected tests passed in a particular environment. Other requirements or conditions may remain untested.
 
 ## Related Resources
 
 ### Related Terms
 
-- [artifact-feedback-loop](https://inaodeng.com/en/AIWiki/artifact-feedback-loop/)
-- [trace-grading](https://inaodeng.com/en/AIWiki/trace-grading/)
-- [agent-evals](https://inaodeng.com/en/AIWiki/agent-evals/)
+- [Artifact feedback loop](/en/AIWiki/artifact-feedback-loop/)
+- [Trace grading](/en/AIWiki/trace-grading/)
+- [Agent evaluations](/en/AIWiki/agent-evals/)
 
 ### External References
 
-- [Vibe Coding: The Power of Artifacts](https://docs.qoder.com/)
-- [Building Observability into AI Agents](https://arize.com/)
-- [Antigravity Get Started](https://antigravity.google/docs/get-started)
-- [Google Developers Blog: Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)
+- [GitHub Actions: Workflow artifacts](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts)
+- [Playwright: Screenshots](https://playwright.dev/docs/screenshots)

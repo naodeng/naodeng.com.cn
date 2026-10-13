@@ -69,7 +69,7 @@ For the thresholds set in the above code, if during execution the HTTP error rat
 
 Running this script, you can see the following results:
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EiPBZ9.png)
+![k6 threshold results: http_req_failed passes while http_req_duration fails](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/EiPBZ9.png)
 
 The results show that the http_req_failed threshold passed, but the http_req_duration threshold did not pass, and the overall test ended with a failed status.
 
@@ -514,7 +514,7 @@ export default function () {
 
 Running the scenario demo script, you can see the following results:
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/zLDexk.png)
+![k6 scenario results for shared_iter_scenario and per_vu_scenario](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/zLDexk.png)
 
 Observing the test results, you'll find that in addition to regular test results, the k6 output will include detailed result information about demo scenarios (very detailed metric information for both shared_iter_scenario and per_vu_scenario scenarios).
 

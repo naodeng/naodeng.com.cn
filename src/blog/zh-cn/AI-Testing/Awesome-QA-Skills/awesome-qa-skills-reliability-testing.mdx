@@ -12,7 +12,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 为什么需要这个 Skill
 
-Reliability Testing Skill 用有证据边界的方式准备服务可靠性判断，帮助团队建模故障和暴露范围，不把静态架构图或一周没有事故当作证明。
+可靠性测试 Skill 用有证据边界的方式准备服务可靠性判断，帮助团队建模故障和暴露范围，不把静态架构图或一周没有事故当作证明。
 
 ## Skill 用来做什么
 
@@ -42,7 +42,7 @@ Reliability Testing Skill 用有证据边界的方式准备服务可靠性判断
 | 可靠性目标 | 预期可用性或降级行为 | 来源与统计窗口 |
 | 故障模式判断 | 某个故障下服务应该如何表现 | 场景与证据状态 |
 | 暴露分析 | 谁或什么会受影响、影响多久 | 影响范围与未知项 |
-| 证据计划 | 哪个指标、Trace 或演练可以减少不确定性 | 负责人和停止条件 |
+| 证据计划 | 哪个指标、链路追踪或演练可以减少不确定性 | 负责人和停止条件 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
 
@@ -78,7 +78,7 @@ Reliability Testing Skill 用有证据边界的方式准备服务可靠性判断
 
 ## 一个完整案例
 
-本节按输入、分析、发现、决策和验证展开；材料不足时保留 missing、conflicting 或 assumptions，不把它们改写成通过。
+本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
 
 ### 输入
 
@@ -87,7 +87,7 @@ Reliability Testing Skill 用有证据边界的方式准备服务可靠性判断
 | 可用性目标 | SLO 或业务目标、服务边界和统计窗口 | 目标没有依据时保留 pending |
 | 故障模式 | 队列延迟、供应商不可用、存储饱和或依赖超时 | 不要只写系统不可用 |
 | 暴露窗口 | 每个模式影响的用户、操作、区域和持续时间 | 影响范围未知时标为未评估 |
-| 证据就绪度 | 指标、日志、Trace、告警、runbook 和安全测试环境 | 设计证据与执行证据分开 |
+| 证据就绪度 | 指标、日志、链路追踪、告警、运行手册和安全测试环境 | 设计证据与执行证据分开 |
 
 可以这样调用：
 
@@ -110,7 +110,7 @@ Reliability Testing Skill 用有证据边界的方式准备服务可靠性判断
 
 #### 聚焦例子：复核供应商故障，不要凭空推导可用性
 
-邮件供应商协议说请求可能超时，服务设计提到重试，却没有说明队列背压或用户可见状态。这个 Skill 应标记故障模式和暴露窗口不完整，要求补充重试、队列和告警证据；不能根据一次成功的 staging 冒烟测试推导可用性百分比。
+邮件供应商协议说请求可能超时，服务设计提到重试，却没有说明队列背压或用户可见状态。这个 Skill 应标记故障模式和暴露窗口不完整，要求补充重试、队列和告警证据；不能根据一次成功的预发布环境冒烟测试推导可用性百分比。
 
 复核可以根据已有材料分类目标和证据就绪度，不能在授权验证产生运行时证据前证明真实可用性、故障隔离或恢复行为。
 
@@ -149,9 +149,9 @@ Reliability Testing Skill 用有证据边界的方式准备服务可靠性判断
 | 可靠性目标 | 预期可用性或降级行为 | 来源与统计窗口 |
 | 故障模式判断 | 某个故障下服务应该如何表现 | 场景与证据状态 |
 | 暴露分析 | 谁或什么会受影响、影响多久 | 影响范围与未知项 |
-| 证据计划 | 哪个指标、Trace 或演练可以减少不确定性 | 负责人和停止条件 |
+| 证据计划 | 哪个指标、链路追踪或演练可以减少不确定性 | 负责人和停止条件 |
 
-每条结论都应该能回到来源、证据状态和下一步动作。材料不足时使用 pending、blocked、未评估或 NOT_SCORED，不要用自信填空。
+每条结论都应该能回到来源、证据状态和下一步动作。材料不足时保留 `pending`、`blocked`、未评估或 `NOT_SCORED`，不要用肯定语气填补证据空白。
 
 ### 下一步路由
 
@@ -159,7 +159,7 @@ Reliability Testing Skill 用有证据边界的方式准备服务可靠性判断
 
 ## 怎样准备更好的输入
 
-提供目标来源、依赖和故障模式图、暴露窗口、指标定义、告警与 runbook、环境和数据限制。没有批准的目标时写证据缺口，不要自行发明 SLO。
+提供目标来源、依赖和故障模式图、暴露窗口、指标定义、告警与运行手册、环境和数据限制。没有批准的目标时写证据缺口，不要自行发明 SLO。
 
 交接时至少保留输入版本、范围、时间窗口、证据索引、假设、人工决策边界和最小验证动作。
 
@@ -201,13 +201,13 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行规则在 [可靠性测试 提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing/prompts/reliability-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing) 中还可能包含评测用例和补充材料。
+完整执行规则在 [可靠性测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing/prompts/reliability-testing.md)。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing) 中还可能包含评测用例和补充材料。
 
-静态计划、文件存在和 dry-run 保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
+静态计划、文件存在和空跑保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
 ### 参考链接
 
-- 可靠性测试 提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing/prompts/reliability-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing/prompts/reliability-testing.md)
+- 可靠性测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing/prompts/reliability-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing/prompts/reliability-testing.md)
 - 可靠性测试 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/reliability-testing)
-- 可靠性测试 详情页:[https://inaodeng.com/zh-cn/qaskills/reliability-testing/](https://inaodeng.com/zh-cn/qaskills/reliability-testing/)
+- 可靠性测试详情页:[https://inaodeng.com/zh-cn/qaskills/reliability-testing/](https://inaodeng.com/zh-cn/qaskills/reliability-testing/)
 - Awesome QA Skills 项目:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

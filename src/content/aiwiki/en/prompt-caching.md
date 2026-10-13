@@ -3,7 +3,7 @@ title: "Prompt Caching"
 titleZh: "提示缓存"
 slug: "prompt-caching"
 lang: "en"
-summary: "A technology that significantly improves AI response speeds and lowers token costs for long conversations by caching pre-parsed prompt context in the clou…"
+summary: "Prompt caching reuses eligible prompt-prefix work across requests. It can reduce processing time or input cost, depending on provider rules."
 topic: "ai-vibe-coding"
 aliases:
   - "Prompt Caching"
@@ -15,96 +15,98 @@ related:
   - "compaction"
   - "context-window-management"
   - "predicted-outputs"
-lastReviewedAt: "2026-03-02"
+lastReviewedAt: "2026-10-12"
 ---
 
 # Prompt Caching
 
-> One-line definition: Giving AI a "short-term memory card"—for those tens of thousands of lines of code you just fed it, it remembers them (caches them) after seeing them once; next time you ask a question, it reacts instantly and charges you half as much.
+> One-line definition: A provider reuses processing for an eligible prompt prefix that appears in a later request.
 
 ## Quick Take
 
-- Problem it solves: Keep the right context and avoid context pollution.
-- When to use: Use it in long sessions and multi-task workflows.
-- Boundary: Not ideal for strict stateless-response requirements.
+- **In brief:** Prompt caching reuses a matching prompt prefix across requests.
+- **Useful for:** Repeated requests with large, stable instructions or shared context.
+- **Main limit:** Cache thresholds, lifetime, pricing, and behavior vary by provider.
 
 ## Overview
 
-`Prompt Caching` is often viewed as a niche feature, but it actually solves practical delivery problems: unreliable outputs, weak reuse, and poor traceability. From a science-communication perspective, it helps move AI from “answers” to “operational outcomes.”
+Prompt caching lets a provider reuse work for an eligible prompt prefix that appears again. This can reduce processing time or input cost. The exact rules depend on the provider.
 
 ## Core Definition
 
-### Formal Definition
+A model API may cache computation for part of a request, often a repeated prefix. When a later request contains an eligible matching prefix, the provider can reuse cached processing instead of processing that part from the beginning.
 
-Prompt Caching refers to the mechanism where model providers store prompt prefixes that have already been parsed and processed (e.g., System Prompts, code snippets, documentation) in server memory or fast storage using Hash Matching. When subsequent requests contain the same prefix, the model directly reuses the existing intermediate state (KV Cache), bypassing the expensive Prefill calculation.
-
-### Plain-Language Explanation
-
-Think of `Prompt Caching` as a reliability checkpoint in an AI pipeline. Its real value is not being “advanced,” but making outputs safer, repeatable, and easier to operate in production.
+Prompt caching is not a memory feature. It does not make the model remember unrelated requests. Providers set their own matching rules, minimum prompt sizes, cache lifetime, and prices.
 
 ## Background and Evolution
 
-### Origin
+Long system instructions, tool definitions, and shared reference material can repeat across requests. Providers introduced prompt caching to reduce the work needed for these repeated inputs.
 
-- **Context**: Modern AI development (like Vibe Coding) relies heavily on "Long Context." Carrying full information every time leads to skyrocketing API costs and high Time to First Token (TTFT) that breaks development flow.
-- **Focus**: Performance optimization during the Prefill phase and economic model transformation of tokens.
-
-### Evolution
-
-- **Stage 1.0 (Stateless)**: Every interaction is a "first encounter," even if you just asked a second ago.
-- **Stage 2.0 (Manual Caching)**: Developers needed to mark specific `tags` to tell the AI "cache this part," which was complex to manage.
-- **Stage 3.0 (Auto-caching/Anthropic/DeepSeek)**: The system automatically decides caching strategies based on duplicate content. Developers just converse normally and get the pleasant surprise of "Cache Hit" discounts on their bill.
+Some APIs create caches automatically. Others let the caller mark cache breakpoints or set cache options. These are implementation choices, not universal parts of prompt caching.
 
 ## How It Works
 
-1. **Header Matching**: The system calculates a digital fingerprint (Hash) for the prompt. Caching takes effect as long as the first several thousand tokens match perfectly from the last time.
-2. **KV Cache Storage**: Storing the results (Key/Value matrices) of mathematical feature extraction for these tokens in high-speed nodes.
-3. **Instant Activation**: When a new request arrives, the system instantly injects the cached intermediate state into the inference engine.
-4. **Differential Pricing**: Users only pay full price for new content. Vendors charge as little as 10%—or even zero—for cached content because their compute cost is extremely low.
+1. The application sends a request with a prompt.
+2. The provider checks whether part of the prompt matches an eligible cached prefix.
+3. If it finds a match, the provider reuses the cached computation for that part.
+4. The model processes the new or changed input and generates a response.
+
+The provider may not cache a request that is too short or does not meet its matching rules. A cache can also expire.
 
 ## Applications in Software Development and Testing
 
-- **Long-session Debugging**: Chatting with AI for 50 rounds about a persistent bug, repeatedly including a 2000-line core logic file; caching ensures the 51st round is as nimble as the first.
-- **Large Codebase Q&A**: The entire project's API documentation serves as a "background" that is cached; you can ask a hundred questions about calls without paying for the full documentation every time.
-- **Automated Test Report Generation**: Thousands of test failure logs are fed to the AI; common log headers and system environment context are cached, dramatically accelerating analysis.
+- **Repeated evaluations:** Reuse stable instructions across many test prompts.
+- **Repository Q&A:** Reuse shared project guidance when the provider and application support caching.
+- **Tool workflows:** Reuse stable tool definitions across requests.
+
+Measure cache hits and response time in the chosen environment. Do not assume that every repeated conversation qualifies.
 
 ## Strengths and Limitations
 
 ### Strengths
 
-- **Ultra-low Latency**: Reducing Time to First Token (TTFT) from seconds to milliseconds.
-- **Significant Cost Savings**: For heavy users of long conversations, total API fees can drop by 50%-90%.
-- **Breaking Length Anxiety**: Because of caching, you can afford to feed more background material to the AI, gaining more accurate answers.
+- Eligible repeated input may need less processing.
+- Providers may charge less for cached input.
+- Stable shared instructions can be reused across requests.
 
 ### Limitations and Risks
 
-- **Order Sensitivity**: If you place frequently changing code at the very beginning of the prompt, the fixed background behind it cannot trigger caching (caching must match from the prefix).
-- **Cache Expiration**: Most providers only keep cache for minutes to a few hours. Cache may "expire" if your questioning interval is too long.
-- **Capacity Limits**: Extremely large knowledge bases (e.g., hundreds of millions of tokens) might still fail to be fully cached due to single-cache capacity limits.
+- A request must meet the provider's cache rules.
+- Changes to a prefix can reduce or prevent reuse.
+- Providers differ in cache lifetime, privacy terms, and price.
+- Caching does not improve the factual quality of a response.
 
 ## Comparison with Similar Terms
 
-| Dimension | Prompt Caching | Compaction | Predicted Outputs |
-| :--- | :--- | :--- | :--- |
-| **Stage** | **Input Parsing** | History Trimming | Output Generation |
-| **Goal** | **Costs + Speed** | Context Space | Typing Speed |
-| **Logic** | KV Cache Reuse | Semantic Summary | Speculative Decoding |
+| Term | What it does |
+|---|---|
+| Prompt caching | Reuses processing for eligible repeated input |
+| Compaction | Replaces older context with a shorter summary |
+| Conversation memory | Stores selected information for use in later interactions |
+
+Prompt caching can lower repeated processing. It does not store a summary or user preference.
 
 ## Best Practices
 
-- **Fixed-Structure First**: Place stable content (e.g., .cursorrules, System Prompts, project architecture overviews) at the very beginning of the prompt.
-- **Layered Granularity**: Put base library definitions at the top, business logic in the middle, and the code currently being modified at the very end to maximize cache coverage layers.
-- **Monitor Hit Rates**: Regularly check the `cache_hit_tokens` ratio in your developer console and adjust the prompt organization based on the ratio.
+- Put stable instructions before request-specific content when the provider uses prefix matching.
+- Avoid changing stable content without a reason.
+- Check the provider's cache threshold, retention, and pricing.
+- Measure cache hits and total cost; caching can add setup or write costs.
+- Review the provider's data-handling terms before sending sensitive code.
+
+## Common Pitfalls
+
+Do not assume that a prompt stays cached indefinitely. Cache keys, expiry, eligible content, and prices depend on the provider.
 
 ## FAQ
 
-### Q1: Should beginners adopt this immediately?
+### Does prompt caching give a model long-term memory?
 
-A: Not always. For simple tasks, start lightweight; for team workflows or production-risk tasks, adopt it early.
+No. It reuses eligible prompt processing. It does not create general memory across unrelated requests.
 
-### Q2: How do teams avoid overengineering with too many mechanisms?
+### Will every repeated prompt receive a cache discount?
 
-A: Start with clear metrics, add mechanisms incrementally, and change one variable at a time.
+No. The prompt must meet the provider's current caching rules. Prices and cache lifetime vary.
 
 ## Related Resources
 

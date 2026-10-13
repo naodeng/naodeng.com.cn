@@ -16,6 +16,9 @@ const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
 const title = t(SPONSOR_PAGE_TITLE);
+const description = locale === "zh-cn"
+  ? "了解支持本站的赞助方式、资金用途和赞助者回馈，并选择爱发电、Buy Me a Coffee、Ko-fi 或其他页面所列方式。"
+  : "Learn how to support this site, how contributions are used, and which options are available through Afdian, Buy Me a Coffee, Ko-fi, and other listed methods.";
 
 const whyBodyHtml = marked(t(SPONSOR_WHY_BODY), { gfm: true }) as string;
 const benefitsBodyHtml = marked(t(SPONSOR_BENEFITS_BODY), { gfm: true }) as string;
@@ -26,7 +29,7 @@ export const getStaticPaths = () =>
   }));
 ---
 
-<Layout {title}>
+<Layout {title} {description}>
   <PageHeadline {title} compact />
 
   <section class="sponsor-section">

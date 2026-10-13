@@ -81,7 +81,9 @@ const breadcrumbs = [
   { name: frameworkConfig.name, url: `/${locale}/guild/${testType}/${framework}/` },
 ];
 
-const pageTitle = `${frameworkConfig.name} ${locale === "zh-cn" ? "教程" : "Tutorial"}`;
+const pageTitle = locale === "zh-cn"
+  ? `${frameworkConfig.name} ${testTypeConfig.title}资源`
+  : `${frameworkConfig.name} ${testTypeConfig.title} Resources`;
 const metaDescription = frameworkConfig.description;
 
 // 生成丰富的介绍文案（100字以内）

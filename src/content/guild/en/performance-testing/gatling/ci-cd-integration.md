@@ -1,6 +1,6 @@
 ---
 title: "Gatling Performance Testing Tutorial advanced usage: CI/CD Integration"
-description: "This article introduces the advanced usage of the performance testing tool gatling: CI/CD integration, using github action as an example to introduce how to integrate gatling into the CI/CD process."
+description: "Integrate Gatling performance tests into a CI/CD pipeline using GitHub Actions, with a demo project you can adapt to other CI tools."
 testType: performance-testing
 framework: gatling
 language: Scala/Java

@@ -1,6 +1,6 @@
 ---
 title: "30 Days of AI in Testing Challenge: Day 23: Assess AI effectiveness in visual testing and discuss the advantages"
-description: "This blog post is about Day 23 of the 30-Day AI Testing Challenge, focusing on assessing the effectiveness of Artificial Intelligence in visual testing and discussing its advantag…"
+description: "Trial Percy for visual testing by comparing snapshots after page-layout and small-icon changes, then review detection results and risks."
 date: 2024-03-26T12:06:44.000Z
 author: "nao.deng"
 tags: ["AI in Testing","30 Days of AI in Testing","Visual Testing"]
@@ -78,7 +78,7 @@ After registering and email verification, I could start a trial with a new proje
 
 - New project setup: options for web or mobile app projects and choice of code management tools like git or GitHub.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/0KPcbd.png)
+![Percy project setup options for web or mobile apps and source control](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/0KPcbd.png)
 
 - Selecting code writing tool.
 - Obtaining Percy token.
@@ -87,7 +87,7 @@ After registering and email verification, I could start a trial with a new proje
 - Running tests.
 - Viewing reports on the Percy platform.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sp8nHu.png)
+![Percy project report list used to review visual test results](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sp8nHu.png)
 
 #### Starting the Percy Trial
 
@@ -139,11 +139,11 @@ npx percy exec -- cypress run
 
 - Viewing command line results.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HvIxIz.png)
+![Percy CLI test output with a link to the Percy results](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/HvIxIz.png)
 
 After the test runs successfully, the command line displays a link to the Percy platform for detailed visual verification results.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tmz854.png)
+![Percy comparison of the current blog homepage with its previous run](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tmz854.png)
 
 #### Test Scenario 1: Multiple Visual Difference Recognition on a Page
 
@@ -151,7 +151,7 @@ After the test runs successfully, the command line displays a link to the Percy 
 - Rerunning the demo test.
 - Viewing Percy recognition results.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/exwX2h.png)
+![Percy comparison showing multiple visual changes on a page](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/exwX2h.png)
 
 #### Test Scenario 2: Small Icon Visual Difference Recognition
 
@@ -159,9 +159,9 @@ After the test runs successfully, the command line displays a link to the Percy 
 - Rerunning the demo test.
 - Viewing Percy recognition results.
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8FN43p.png)
+![Percy comparison highlighting a small icon visual difference](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8FN43p.png)
 
-![ ](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Ma0RMp.png)
+![Percy recognition result for a changed small icon](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Ma0RMp.png)
 
 ### 3. **About Considering Failure Scenarios**
 

@@ -1,6 +1,6 @@
 ---
 title: "RUP"
-description: "RUP, developed by Rational (an IBM division), is a software development process segmented into four phases: business modeling, analysis and design, implementation, testing, and deployment."
+description: "RUP is an iterative software development process with four phases: Inception, Elaboration, Construction, and Transition. Testing spans the lifecycle."
 section: "R"
 related:
   - "automated-testing"
@@ -43,7 +43,7 @@ order: 0
       - [What are the challenges of automation in a RUP project and how can they be overcome?](#what-are-the-challenges-of-automation-in-a-rup-project-and-how-can-they-be-overcome)
 <!-- TOC END -->
 
-RUP, developed by Rational (an IBM division), is a software development process segmented into four phases: business modeling, analysis and design, implementation, testing, and deployment.
+RUP is an iterative software development process with four phases: Inception, Elaboration, Construction, and Transition. Testing spans the lifecycle.
 
 Related Terms:
 
@@ -53,6 +53,7 @@ Related Terms:
 See also:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Rational_unified_process)
+- [IBM Rational Unified Process: Best Practices](https://public.dhe.ibm.com/software/rational/web/whitepapers/2003/rup_bestpractices.pdf)
 ## Questions about RUP?
 
 ### Basics and Importance

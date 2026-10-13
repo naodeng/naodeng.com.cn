@@ -7,6 +7,9 @@ import { LINKS_PAGE_TITLE } from "@/consts";
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 const title = t(LINKS_PAGE_TITLE);
+const description = locale === "zh-cn"
+  ? "查看本站已确认的友情链接，并了解提交友链申请时需要提供的站点名称、链接和简短介绍。"
+  : "Browse confirmed partner links and learn what to include when requesting a link exchange: your site name, URL, and a short description.";
 
 // 友情链接：只展示已经确认的真实链接，不把空位伪装成可用内容。
 const friendLinks: Array<{ name: string; url: string; desc: string }> = [
@@ -24,7 +27,7 @@ export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
 ---
 
-<Layout {title}>
+<Layout {title} {description}>
   <PageHeadline {title} compact />
 
   <section class="links-section">
