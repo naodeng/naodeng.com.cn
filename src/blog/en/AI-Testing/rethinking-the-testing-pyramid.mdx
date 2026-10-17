@@ -1,0 +1,118 @@
+---
+title: "Rethinking the Testing Pyramid: From Test Ratios to Feedback Economics"
+description: "A source-grounded look at Tom Akehurst’s testing pyramid argument, service-level API tests, mock boundaries, and risk-driven test investment."
+date: 2026-10-17T09:00:00.000Z
+author: "nao.deng"
+tags: ["Software Testing", "Testing Strategy", "API Testing"]
+categories: ["Testing Strategy"]
+---
+
+Many teams read the testing pyramid as a ratio chart: lots of unit tests, fewer integration tests, and very few end-to-end tests. Tom Akehurst asks whether the economics behind that ratio still hold. Writing and maintaining tests takes effort; feedback takes time; failures take time to diagnose; and refactoring can leave tests either useful or brittle. Together, those costs determine whether a test portfolio is worth the investment.
+
+This article explains WireMock’s argument, then adds practical guidance on test boundaries and review. That guidance is a QA engineering extension, not a universal prescription from the original author.
+
+> Source: Tom Akehurst, “The Testing Pyramid Is an Outdated Economic Model,” WireMock, August 5, 2026. The article traces the pyramid’s history and links to material on the pyramid, testing trophy, and mock APIs.
+
+## The pyramid describes a trade-off
+
+WireMock attributes the testing pyramid, also called the test automation pyramid, to Mike Cohn. The concept was proposed as the “test automation pyramid” in 2004 and formalized in Cohn’s 2009 book, *Succeeding with Agile*. The familiar shape has three layers: a broad base of fast unit tests, a smaller layer of integration tests that check collaboration between modules, and a narrow top of end-to-end (E2E) tests that simulate user workflows.
+
+| Layer | Typical target | Common strength | Common cost |
+| --- | --- | --- | --- |
+| Unit | A function, class, or local business rule | Fast, inexpensive, easy to automate, and useful for many input combinations | Tests coupled to implementation may break during refactoring; isolated tests do not show the full collaboration path |
+| Integration or service-level | Collaboration between components or a service’s public interface | Can cover routing, configuration, serialization, and business orchestration | Usually slower and more involved than unit tests; requires control of service startup, test data, and dependencies |
+| E2E | Critical user journeys across systems | Closer to real use; validates complete workflows | Usually the smallest layer, with higher costs to write, run, and diagnose, plus more environmental and external dependencies |
+
+These layers are not a test-count recipe for every team. The pyramid captures a default judgment: under the engineering conditions of its time, unit tests were usually cheap and fast enough to provide a broad foundation. Tests that exercised more realistic collaboration tended to cost more.
+
+## Test cost is more than runtime
+
+Akehurst calls the pyramid an economic model because each test type trades the information it may reveal against the cost of obtaining it. That cost includes at least four things:
+
+- The work needed to write and maintain tests.
+- Execution time.
+- Time to find the root cause when a test fails.
+- Whether tests continue to verify observable behavior after a refactor.
+
+The pyramid emerged when computers were slower, testing and debugging tools were less capable, and development infrastructure was cumbersome. In that context, narrow, isolated unit tests were easy to run and diagnose, and often offered a strong return on effort.
+
+The article argues that technology has changed the equation. Running many tests quickly through a public interface is now more practical, so coverage need not stay within narrow unit boundaries. Test frameworks have reduced the effort to write robust, maintainable integration tests; and better debuggers and observability platforms make failures across a broader boundary easier to investigate. Teams therefore may not need to rely as heavily on large numbers of fine-grained unit tests for fast feedback. Along with advances in mock tools, application frameworks, and computing power, some service-level tests that once looked too expensive may now offer a better return on investment.
+
+“May” matters. Better tools do not automatically remove unstable environments, test-data coupling, stale simulations, or hard-to-reproduce failures. Teams still need to measure their own execution and maintenance costs.
+
+## WireMock’s choice: a thicker middle
+
+Akehurst describes WireMock’s own test codebases as looking more like a **vase**: the middle is widest. Similar middle-heavy shapes are also called a **trophy** or a **diamond**, though their test classifications and intended scope are not identical.
+
+WireMock keeps unit tests for complex logic or large sets of examples. Most of its regression tests, however, call the whole service through its public API and mock external dependencies outside the process. The team often uses WireMock itself to provide those substitutes. This exercises the actual service entry point without relying on a third-party environment always being available or its data remaining unchanged.
+
+The reported benefits are practical: external systems sit behind controlled substitutes, so tests are less likely to be slowed by them; changing third-party data—or other uncontrollable external factors—is less likely to create false failures; requests still pass through routing, validation, business orchestration, and response serialization in a way closer to production, which can expose more service-collaboration issues; and tests that assert observable behavior leave more room for internal refactoring. Akehurst goes further: in principle, the web framework itself could be replaced while these tests still provide protection.
+
+For example, an order service may call an inventory service to check availability. The pseudocode below sends a request through the order service’s public API, controls the inventory response with a test double, and checks the observable result.
+
+~~~python
+# Given: control the external inventory dependency
+inventory_stub.respond(
+    method="GET",
+    path="/inventory/sku-123",
+    status=200,
+    json={"available": True, "quantity": 5},
+)
+
+# When: submit a request through the order service's real public interface
+response = order_service.post(
+    "/orders",
+    json={"sku": "sku-123", "quantity": 2},
+)
+
+# Then: assert the business result and dependency call
+assert response.status_code == 201
+assert response.json()["status"] == "CREATED"
+assert inventory_stub.received("GET", "/inventory/sku-123")
+~~~
+
+This is illustrative pseudocode, not a directly executable API for a specific WireMock version. Real suites should also cover out-of-stock responses, dependency timeouts, and error responses, as defined by the product and service contract.
+
+## Trophy, diamond, and vase are not identical taxonomies
+
+WireMock calls its own suite a vase and notes that readers have also used the trophy and diamond metaphors. The testing trophy is generally attributed to Kent C. Dodds. In his account, the drawing first appeared in a 2018 tweet and was influenced by Guillermo Rauch’s earlier argument to write fewer tests, mostly integration tests. Dodds’s trophy puts static checks at the base and focuses primarily on test classifications within a single JavaScript codebase; he cautions against applying it indiscriminately to microservices or every backend architecture.
+
+That history points to a practical issue: different authors do not always mean the same thing by “unit,” “integration,” or “service” test. Before debating ratios, agree on what each test starts, which process or network boundaries it crosses, which dependencies are real, and whether it asserts behavior or implementation details. Otherwise, the team may appear to disagree about proportions while actually using different definitions.
+
+## A thicker middle does not make other tests obsolete
+
+Unit tests remain useful for complex pricing, permissions, state machines, and combinations of edge cases. They are fast, failures are localized, and they can cover many input examples. Teams should not duplicate every pure-function check in an API suite just to make tests “more production-like.”
+
+Mocking a third-party service can make feedback reliable, but a mock can also reproduce an incorrect interface assumption reliably. Consumer contracts, provider verification, or periodic integration tests against real dependencies help check that the simulation still matches the real service. Important calls should also cover error, timeout, and retry boundaries.
+
+Service-level API tests cannot prove that a browser interface is usable, keyboard focus order is correct, assistive technology reads the page properly, or a user can complete sign-in and payment. Keep a small set of E2E tests for valuable user journeys. Add accessibility, performance, security, and resilience checks according to risk.
+
+## Adjust the portfolio by risk and feedback value
+
+Start with a risk inventory rather than assigning target percentages to unit, API, and E2E tests. For each candidate test, consider risk coverage, feedback speed, maintenance effort, diagnosis time, and signal reliability. Do not combine these dimensions into an uncalibrated universal score; use them to make trade-offs explicit.
+
+| Example risk | A useful starting boundary | Additional evidence |
+| --- | --- | --- |
+| Discount-rule edge-case error | Unit or property-based tests | Critical business regression through the service API |
+| Invalid order fields or incorrect state transitions | Service-level API tests | Contract checks and real provider integration |
+| Inventory service timeout or malformed response | API tests with mocks | Periodic real integration and resilience checks |
+| A customer cannot complete checkout | A small number of critical E2E tests | Authentication, API, and post-deployment monitoring |
+| Browser interaction or accessibility issue | UI and accessibility tests | Cross-browser checks and human evaluation |
+
+When reviewing an existing suite, look across several iterations: execution time and flaky rate by test type; defects found and their severity; time from failure to root cause; maintenance effort caused by refactoring; and real issues that mocks failed to predict. Then pilot the approach on one service. Keep unit tests for complex logic, convert a subset of brittle implementation checks into public-API behavior tests, verify mocks with contracts and real integrations, and use a few E2E tests to protect key user journeys. Compare the results over several iterations before expanding the change.
+
+## Keep the author’s argument in context
+
+Tom Akehurst is WireMock’s CTO and co-founder. Testing a whole service through its public API while mocking external dependencies aligns with WireMock’s product area. That connection does not invalidate the engineering argument, but it is a reason to separate the principle from a specific tool: external dependencies can be simulated with WireMock or other mock servers, service virtualization, and containerized test environments.
+
+The source presents WireMock’s vase as an observation of its own codebase, not a target or rule of thumb, and acknowledges that other projects will have different shapes. Akehurst even predicts that the old pyramids will be confined to history books. That is his view of the direction of travel, not a reason for every team to turn its pyramid into a vase. Choose test boundaries based on business risk, feedback value, and maintenance cost—not a preferred shape.
+
+### References
+
+- WireMock source article: https://www.wiremock.io/post/rethinking-the-testing-pyramid
+- Mike Cohn on the test automation pyramid and service layer: https://www.mountaingoatsoftware.com/agile/the-forgotten-layer-of-the-test-automation-pyramid
+- Tom Akehurst’s LinkedIn post on testing-pyramid economics: https://www.linkedin.com/posts/tomakehurst_the-test-pyramid-is-an-economic-model-activity-7273356136127336448-OHFm
+- Kent C. Dodds on the testing trophy and test classifications: https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications
+- WireMock’s mock API overview (vendor material): https://www.wiremock.io/glossary/mock-api
+
+> Source note: The WireMock page is dated August 5, 2026, while its practical-implications section also uses the phrase “in 2025.” This article follows the page’s publication date and does not infer a publication year from that phrase. The guidance on mock contracts, E2E, and non-functional testing is a QA practice extension.
