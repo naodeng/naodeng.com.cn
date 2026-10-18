@@ -12,7 +12,7 @@ categories: ["Software Testing"]
 >
 > Source: https://www.accelq.com/blog/rsat-migration-guide/
 
-## 1. Why plan an RSAT migration?
+## Treat the support date as a planning trigger
 
 Regression Suite Automation Tool (RSAT) supports regression automation for Microsoft Dynamics 365 Finance & Operations (F&O), typically using Task Recorder and Azure DevOps test management. According to the supplied ACCELQ notes, **Microsoft support is scheduled to end on May 15, 2027**.
 
@@ -20,7 +20,7 @@ Regression Suite Automation Tool (RSAT) supports regression automation for Micro
 
 The objective is not simply to reproduce scripts in another tool. It is to **preserve or improve evidence that critical business risks are covered**.
 
-## 2. Inventory the test estate before choosing a tool
+## Build a baseline around business coverage
 
 Export Azure DevOps test plans and gather associated Task Recorder files, Excel parameter files, and BPM references. A count of scripts alone is an inadequate baseline.
 
@@ -35,7 +35,7 @@ Export Azure DevOps test plans and gather associated Task Recorder files, Excel 
 
 Classify tests into **simple UI recordings**, **multistep business workflows**, and **cross-module/integration scenarios**. A small number of difficult integrations can dominate the timeline.
 
-## 3. The six-step migration method
+## Six steps from inventory to coverage equivalence
 
 ### Step 1 — Export and inventory
 
@@ -63,7 +63,7 @@ Map each original **verification obligation** to replacement coverage and mark i
 
 Parallel execution should include the business's actual critical events—month-end close, batch processing, upgrades, or release waves where applicable—not merely an arbitrary four-week window. Investigate discrepancies and document explanations before retiring RSAT.
 
-## 4. Indicative migration timelines
+## Use vendor timelines as a starting hypothesis
 
 These ranges are reported in the supplied ACCELQ notes, not independently established industry benchmarks.
 
@@ -75,7 +75,7 @@ These ranges are reported in the supplied ACCELQ notes, not independently establ
 
 For planning, run a **stratified pilot** across complexity classes and measure actual rebuild, data setup, debugging, review, and parallel-run effort. Extrapolate from observed throughput with explicit contingency for integrations.
 
-## 5. Four migration mistakes
+## Risks that make a migration look complete too early
 
 **Treating migration as a recorder swap.** Existing integration gaps should trigger a fresh coverage discussion, not blind replication.
 
@@ -85,7 +85,7 @@ For planning, run a **stratified pilot** across complexity classes and measure a
 
 **Retiring RSAT too early.** Financial close, batch, and upgrade failures may emerge only later in the business cycle.
 
-## 6. Quality-engineering extension: migrate verification obligations, not just scripts
+## Make verification obligations the cutover gate
 
 The recommendations below are an independent interpretation, not direct quotations from ACCELQ.
 
@@ -118,7 +118,7 @@ Use **Inventory → Pilot → Rebuild → Equivalence Review → Parallel Run �
 
 Compare D365 F&O support, Cloud POS/warehouse compatibility, assertion capabilities, test data, Azure DevOps integration, maintainability, security, cost, and lock-in. A proof of concept must include representative complex workflows, not only a successful vendor demo.
 
-## 7. Migration review questions
+### Questions to close before cutover
 
 - Do we know every active test and its business purpose?
 - Do we distinguish script migration percentage from verification-obligation preservation?
@@ -127,7 +127,7 @@ Compare D365 F&O support, Cloud POS/warehouse compatibility, assertion capabilit
 - Who signs off retired coverage and residual risk?
 - Are cutover, pause, and rollback conditions explicit?
 
-## Conclusion
+## Success means preserved coverage, not a green count
 
 **RSAT migration succeeds when the team can demonstrate that critical business risks remain effectively tested—not when a replacement tool produces a large number of green checks.** Early inventory, representative pilots, and coverage-equivalence evidence are the foundation of a controlled transition.
 

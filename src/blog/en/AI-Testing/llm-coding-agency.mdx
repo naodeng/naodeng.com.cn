@@ -10,7 +10,7 @@ categories: ["AI Testing"]
 
 > **Source:** Joe Woods, “I don't think LLMs are making you lazy,” October 10, 2026. The user supplied the full original text. The QA engineering sections are an independent extension, not claims attributed to Woods. Original: https://blog.joewoods.dev/programming/i-dont-think-llms-are-making-you-lazy/
 
-## 1. Writing less code is not the same as losing ownership
+## Ownership lives in the decisions around the code
 
 When an LLM can produce an implementation in minutes, developers may wonder whether they are slowly losing their ability to program. Joe Woods offers a different perspective: **LLMs do not necessarily make people lazy, provided they continue to shape the code and intervene when the result is wrong for the project.**
 
@@ -18,29 +18,29 @@ The distinction is between **delegating implementation** and **delegating judgme
 
 Both look like AI-assisted coding, but their consequences can be very different.
 
-## 2. What effective LLM users continue to do
+**Give the model a target, then correct its shape.**
 
-### Define what good code should look like
+**Define what good code should look like.**
 
 Code that runs is not necessarily well-designed code. Naming, abstraction, module boundaries, dependencies, error handling, readability, and maintainability require contextual decisions. A model may imitate repository conventions without knowing the incident history, organizational needs, or product constraints behind them.
 
-### Correct code that works but is still wrong
+**Correct code that works but is still wrong.**
 
 A generated implementation may introduce unnecessary abstractions, bypass an established service boundary, place assertions in Page Objects, or weaken tests to make a build pass. These are not necessarily syntax failures. They are failures of intent, design, and engineering judgment.
 
-### Capture corrections as reusable knowledge
+**Capture corrections as reusable knowledge.**
 
 Instead of repeating the same guidance in every chat, teams can maintain documentation, review criteria, constraints, and **golden samples** of approved code. A golden sample demonstrates not just what compiles but how the team expects code to be organized, tested, named, and maintained.
 
 Golden samples also need review: yesterday's preferred architecture should not become tomorrow's unquestionable rule.
 
-## 3. Code taste is not identical to typing muscle memory
+## Taste, memory, and tooling are different engineering skills
 
 Woods compares engineering taste to riding a bicycle. Not performing an activity for a while does not automatically erase the ability to recognize when it is done well.
 
 Experienced engineers may forget exact API syntax while retaining an ability to spot excessive coupling, inappropriate abstractions, or missing failure handling. Yet taste does not maintain itself indefinitely. It benefits from reading real code, discussing designs, investigating incidents, and having one's assumptions challenged by colleagues.
 
-## 4. Forgetting rarely used algorithms is not necessarily an AI problem
+**Some skills fade because the work rarely calls for them.**
 
 Woods admits he cannot readily recall how to invert a binary tree. He says he has memorized it roughly twice, briefly, to prepare for the ritual of solving LeetCode problems so someone will pay him to write a different kind of code. His explanation is not that an LLM erased the knowledge, but that the task has rarely been relevant outside interview preparation.
 
@@ -50,13 +50,13 @@ Much everyday programming is **software plumbing**: connecting systems, represen
 
 This does not diminish algorithms or computer science fundamentals. Performance-sensitive, security-critical, and systems-level work may depend heavily on them. Woods still plans to keep doing Advent of Code, while recognizing that it does not resemble his current day-to-day work. The more useful principle is to evaluate capability against real responsibilities rather than isolated recall tests.
 
-## 5. Past tooling skills still matter
+**Tool fluency still pays off.**
 
 Woods describes opening his editor mainly when something goes wrong—a situation he says is worth avoiding. Its keyboard shortcuts are burned into his memory like the subconscious actions of driving a car. His prior investment in editor fluency, debugging, and code reading still helps him mentor others, set guardrails, and recognize problematic model output.
 
 That is a personal workflow, not a universal prescription. For learners, test automation engineers, and teams operating complex systems, hands-on code inspection and debugging remain essential.
 
-## 6. Three questions to ask when you feel your skills slipping
+## Three questions for checking your own habits
 
 | Question | Warning sign | Practical response |
 | --- | --- | --- |
@@ -66,7 +66,7 @@ That is a personal workflow, not a universal prescription. For learners, test au
 
 Woods does not insist that everyone return to their previous coding habits. For each concern, decide whether it is a problem to solve or a change to accept; either answer can be reasonable. He says he will make a point of addressing any problems that emerge for him across all three areas.
 
-## 7. QA engineering extension: retaining quality ownership
+## Keep quality ownership in QA
 
 > **The following section extends the article into QA engineering. It is not a direct summary of Woods's recommendations.**
 
@@ -111,13 +111,11 @@ ai_coding_policy:
 
 This YAML is an illustrative policy, not the configuration format of a specific tool.
 
-## 8. Is AI improving productivity or relocating costs?
+## Measure the whole delivery cost
 
 Lines of generated code are a poor success metric. More useful measures include time from requirement to mergeable change, rework, structural defects found in review, test effectiveness, ongoing maintenance, and whether team members can explain critical decisions.
 
 A faster generation step may merely shift work into review, debugging, or incident response. Real productivity gains should be evaluated across the delivery system.
-
-## 9. Conclusion: protect judgment, not keystrokes
 
 Woods's argument is a useful reminder that engineering value does not come solely from typing code. It also comes from setting direction, making trade-offs, recognizing defects, and teaching others.
 
@@ -127,4 +125,6 @@ For AI Native Quality Engineering, the goal is not to have AI write every test. 
 
 ---
 
-**Reference:** Joe Woods, *I don't think LLMs are making you lazy*, October 10, 2026: https://blog.joewoods.dev/programming/i-dont-think-llms-are-making-you-lazy/. The full original text was supplied by the user.
+## References
+
+- Joe Woods, *I don't think LLMs are making you lazy*, October 10, 2026: https://blog.joewoods.dev/programming/i-dont-think-llms-are-making-you-lazy/. The full original text was supplied by the user.

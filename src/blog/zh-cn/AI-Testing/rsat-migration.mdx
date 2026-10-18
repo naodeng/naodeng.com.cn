@@ -8,6 +8,8 @@ tags: ["RSAT", "Dynamics 365", "测试迁移"]
 categories: ["软件测试"]
 ---
 
+## 把停止支持日期当作规划触发点
+
 微软 Dynamics 365 Finance & Operations（F&O）的回归套件自动化工具 RSAT，通常与 Task Recorder 和 Azure DevOps 测试管理流程配合使用。微软官方文档目前写明，RSAT 将在 **2027 年 5 月 15 日之后不再受支持**。
 
 **停止支持不等于立即停用。**既有测试可能还会运行，但之后的修复、安全更新、兼容性和维护责任都将成为实际风险。制定计划前，应再核实微软公告中的具体范围和时间。
@@ -17,7 +19,7 @@ categories: ["软件测试"]
 ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration-guide/
 微软官方 RSAT 文档与支持说明: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/rsat/rsat-overview/
 
-## 一、迁移前先盘点测试资产
+## 建立覆盖业务风险的资产基线
 
 从 Azure DevOps 测试计划导出清单，并收集关联的 Task Recorder 录制、Excel 参数文件和 BPM 条目。只数脚本是不够的，还要知道每条测试保护什么业务能力、依赖哪些环境和数据。
 
@@ -32,7 +34,7 @@ ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration
 
 可以先分成三档：简单的单屏或单模块操作；同一模块内跨多个页面的业务流程；涉及多个模块、外部系统、异步任务或财务数据流的集成场景。少数复杂用例往往决定整体工期，不能按用例总量平均估算。
 
-## 二、六步迁移方法
+## 六步迁移流程
 
 ### 第一步：导出并盘点
 
@@ -62,7 +64,7 @@ ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration
 
 记录新旧结果差异、误报、漏报、环境不一致和调查结论。重要差异得到解释后，再考虑停用旧套件。
 
-## 三、工期只能作为初步估算
+## 把厂商工期当作起始假设
 
 以下区间来自 ACCELQ 学习笔记，是厂商给出的参考估算，不是经过独立验证的行业基准。
 
@@ -74,7 +76,7 @@ ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration
 
 正式规划前，先按复杂度分层抽样试迁移，记录重建、数据准备、调试、评审和并行验证所需时间，再按实际吞吐量估算剩余工作，并为集成风险留出缓冲。
 
-## 四、四个容易踩的坑
+## 这些风险会让迁移看起来完成得太早
 
 **把迁移当成录制工具替换。**旧套件遗漏的集成验证，应触发覆盖讨论，而不是被原样复制。
 
@@ -84,7 +86,7 @@ ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration
 
 **太早停掉 RSAT。**没有经历完整业务周期，结账、批处理和升级问题可能还没出现。
 
-## 五、实践延伸：迁移的是验证义务，不只是脚本
+## 用验证义务决定何时切换
 
 以下是本文的质量工程建议，不是 ACCELQ 原文的直接结论。
 
@@ -100,7 +102,7 @@ ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration
 
 选工具时保持厂商中立：对比 D365 F&O、Cloud POS 和仓库应用支持，断言能力、测试数据管理、Azure DevOps 集成、可维护性、安全、费用和供应商锁定。概念验证应包含有代表性的复杂流程，而不只是一个成功的厂商演示。
 
-## 六、迁移评审问题
+### 切换前还要回答的问题
 
 - 是否掌握全部在用测试及其业务目的？
 - 是否区分脚本迁移率与验证义务保留率？
@@ -109,8 +111,13 @@ ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration
 - 谁批准淘汰的覆盖和剩余风险？
 - 切换、暂停与回滚条件是否明确？
 
-## 结语
+## 成功看覆盖是否保住，不看绿灯数量
 
 **RSAT 迁移的成功标准，不是新工具跑出了多少绿色结果，而是团队能否证明关键业务风险仍被有效验证。**越早盘点、越早试点、越早积累覆盖等价性证据，迁移就越可控。
 
 > 资料边界：迁移流程和工期区间依据 ACCELQ 文章及用户提供的笔记；工期为厂商估算。RSAT 支持日期应以微软最新官方资料为准，目标工具的录制格式兼容性也需要逐项验证。
+
+## 参考资料
+
+- ACCELQ，《RSAT Migration Guide》（厂商文章）: https://www.accelq.com/blog/rsat-migration-guide/
+- Microsoft Learn，RSAT 概览与支持说明: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/rsat/rsat-overview/

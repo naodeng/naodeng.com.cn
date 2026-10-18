@@ -12,7 +12,7 @@ AI can turn an idea into a prototype in an afternoon. That is a genuine producti
 
 Hanisha Arora's *When Building Things Was the Fun Part* begins with a small contrast: knitting for pleasure versus reviewing AI-generated code. The first sections follow her argument. The QA and engineering recommendations are my extensions, not claims from Arora. Leonard Thiele explores a related question separately; that essay is linked below as a neighboring perspective.
 
-## 1. Knitting on a bus versus reviewing generated code
+## A bus ride, a ball of yarn, and a different kind of workday
 
 The author watches someone knit slowly while reading, enjoying an activity that could be completed more quickly. By contrast, she finds herself examining AI-written code and repeatedly asking what the assistant changed. The resulting software may be impressive, but the experience of making it has become less enjoyable.
 
@@ -20,7 +20,7 @@ Building used to mean spending weeks exploring an idea, getting stuck, fixing on
 
 That speed is also useful: the author can reach validation sooner, discard weak ideas sooner, and try five approaches in the time it once took to properly build one. The gain is real, even as it raises a separate question about which parts of the journey she wants to keep experiencing herself.
 
-## 2. Not all friction is waste
+**Some friction is part of learning the craft.**
 
 Engineering culture often treats friction as something to eliminate. Yet different kinds of friction create different kinds of value.
 
@@ -34,7 +34,7 @@ Engineering culture often treats friction as something to eliminate. Yet differe
 
 The key question is not whether someone typed the code. It is whether doing the work builds understanding and judgment that transfer to future situations.
 
-## 3. Coding has become managing an agent
+## Faster code still needs someone to manage it
 
 The author compares AI-assisted coding to directing a fast engineer who lacks crucial context: assign a task, explain constraints, review output, correct misunderstandings, and prevent unnecessary rewrites. Code generation accelerates, but coordination, verification, and course correction remain.
 
@@ -42,7 +42,7 @@ Therefore, “AI wrote 1,000 lines” is not equivalent to “1,000 lines of eff
 
 Arora says she had long avoided people management because she wanted to stay close to building products. She understood that senior roles often shift toward reviewing, planning, unblocking, and helping others build, but she was not especially happy about that transition. AI gave her another reason to stop coding; managing agents now brings back familiar coordination work in a new form.
 
-## 4. When execution gets cheaper, judgment becomes scarcer
+**Experience matters when the output already looks finished.**
 
 The author's concern about hiring and professional development is the growing gap between producing polished output and understanding it. AI can implement solutions and confidently explain incorrect ones. Experience is valuable because it provides the instinct to challenge an elegant-looking design that will fail under real constraints.
 
@@ -50,7 +50,7 @@ Hiring and mentorship should therefore test whether someone can articulate const
 
 Arora connects that concern to a recent interview: she says some candidates had become adept at using AI without making that assistance obvious, presenting impressive resumes but struggling to explain what they had learned once questioned. She says one interview ended after seven minutes. The anecdote is not a hiring benchmark; it illustrates the gap she sees between fluent output and understanding.
 
-## 5. A QA extension: do not outsource every testing decision
+## Keep quality judgments in human hands
 
 The following applications are my quality-engineering interpretation, not empirical findings from the source.
 
@@ -64,7 +64,7 @@ AI can help organize requirements, suggest test ideas, scaffold API/UI automatio
 
 Fifty generated test cases do not represent stronger quality engineering if the tester cannot identify the five most important, explain their purpose, or describe what failures they could detect.
 
-## 6. Choose delegation boundaries according to the goal
+## Let the task decide what to delegate
 
 **Delivery:** Delegate repetitive, well-specified, verifiable work; retain ownership of goals, acceptance criteria, and review.
 
@@ -74,13 +74,11 @@ Fifty generated test cases do not represent stronger quality engineering if the 
 
 **High-risk change:** Preserve human design review, critical test oracles, authorization, and release decisions, supported by reproducible evidence.
 
-## 7. Make the choice explicit in team practice
+**Make the working mode explicit.**
 
 Before starting a task, choose an informal working mode: `delegate` for repetitive execution, `pair` for exploration, `challenge` for counterarguments, or `manual-first` for deliberate learning. This need not become a new approval process; it simply clarifies whether the task optimizes for speed, learning, or decision quality.
 
 In code and test reviews, two questions are especially useful: “Why do you believe this is correct?” and “What evidence would change your mind?” They reveal understanding more effectively than asking whether AI generated the artifact.
-
-## 8. Productivity is not the only measure of progress
 
 AI reduces the cost of reaching a result. Engineers still get to choose which parts of the journey matter. The goal is not to reject automation; it is to **automate empty friction while preserving friction that creates understanding, judgment, and joy**.
 

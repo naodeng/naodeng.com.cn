@@ -10,7 +10,7 @@ categories: ["Software Testing"]
 
 > Based on study notes from Rahul Parwal's WonderProxy Blog article (September 30, 2026). Sections marked as engineering extensions are independent recommendations, not quotations from the author. Regulatory obligations evolve; legal counsel should confirm applicable requirements against authoritative guidance.
 
-## 1. A cookie banner is a promise that must be tested
+## Treat the banner as a behavior contract
 
 A cookie banner is more than a visual component. It expresses choices about data processing. Essential cookies may support authentication, while analytics and advertising technologies may require prior consent or an opt-out mechanism depending on jurisdiction, purpose, and legal basis.
 
@@ -20,11 +20,11 @@ That choice can travel through browser storage, tag managers, CDNs, application 
 
 Parwal opens with a location contrast using Netflix: visitors in Berlin, the UK, and the US can encounter different language, content, banner behavior, and consent requirements on the same service. A banner is therefore not just a translated component; it is part of a region-dependent product and data-processing flow.
 
-## 2. First establish how the application determines location
+**First find which location signal the application trusts.**
 
 | Signal | Examples | Failure modes |
 | --- | --- | --- |
-| Network/request | IP address, CDN country header | Incorrect IP geolocation, cache-key leakage |
+| Network/request | IP address, CDN country header, mobile-network country from the SIM | Incorrect IP geolocation, cache-key leakage |
 | Browser | `Accept-Language`, geolocation, timezone | Language is not location; values can be modified |
 | Account | Registration country, billing details | Travel and stale profile data create conflicts |
 | URL/site | Country paths and regional domains | Domain and physical location may disagree |
@@ -33,33 +33,33 @@ Ask product, frontend, backend, and infrastructure teams: **What is the preceden
 
 A CDN that does not vary its cache by relevant location signals can serve a banner configuration intended for another country. Conversely, changing browser language in DevTools validates only part of client-side behavior, not the actual server-side geolocation path.
 
-## 3. Four levels of testing: visible behavior to actual data flows
+## Follow the evidence from the interface to the data flow
 
-### Level 1: UI, interaction, and accessibility
+**Interface, interaction, and accessibility.**
 
 Check translations, truncation, responsive layout, discoverability of Accept/Reject/Manage buttons, keyboard focus, and screen-reader order. Compare the prominence of “Accept All” and “Reject All”: rejection should not be hidden or made materially harder to find. Flag potentially manipulative visual or interaction asymmetries, while avoiding the assumption that any visual difference is automatically unlawful.
 
 Cover first visits, reopening settings, category-level preferences, and continued use of essential functionality after rejection.
 
-### Level 2: Browser storage and persistence
+**Browser storage and persistence.**
 
 Inspect cookies, localStorage, and sessionStorage in DevTools. Record each item's name, purpose, domain, path, expiry, `Secure`, `SameSite`, and creation timing. Delete entries to investigate whether the claimed dependency is genuine.
 
 Test refreshes, multiple tabs, `www` versus `app` subdomains, HTTP-to-HTTPS transitions, deleting only the consent record, and logout/login. One recurring defect is storing consent in two places but clearing only one.
 
-### Level 3: Network requests and third-party tracking
+**Network requests and third-party tracking.**
 
 Start with a fresh browser context. Preserve network logs, reload, and **do not interact with the banner**. Inspect whether optional pixels, scripts, or network calls fire before a choice. Then exercise rejection, acceptance, reject-then-accept, accept-then-reject, and withdrawal, on the current page and subsequent pages.
 
 Domain allow/deny lists alone are insufficient: essential and analytical calls may share a host. Classify requests using their purpose, payload, identifiers, and vendor documentation.
 
-### Level 4: End-to-end verification of the promise
+**End-to-end verification of the promise.**
 
 Record a full rejected-consent session, including navigation, background requests, and traffic potentially sent on page unload through `navigator.sendBeacon()`. Correlate browser observations with controlled proxy traces, server logs, or vendor audit records for flows not visible in DevTools. The source mentions tools such as Cookie-Editor for inspecting or changing browser cookies and MITMProxy or Fiddler for examining traffic; these are examples, not required products.
 
 Exercise `Sec-GPC: 1` and verify handling of global opt-out preference signals. **GPC's legal effect, covered businesses, and required behavior depend on the jurisdiction.** The study notes mention a figure of 12 US states in 2026; that number and the individual effective dates require independent, state-by-state verification before being used as compliance criteria.
 
-## 4. Regional law: translate requirements into testable rules
+## Turn regional requirements into test assertions
 
 | Region | Concern from the source notes | Testing and verification |
 | --- | --- | --- |
@@ -71,7 +71,7 @@ The UK Information Commissioner's Office (ICO) currently lists narrow exceptions
 
 Country alone may be too coarse: some US requirements are state-specific and depend on the organization, user, and processing purpose. This is testing guidance, not legal advice. Legal teams should confirm applicability and effective dates.
 
-## 5. Five ways to test across countries without traveling
+## Simulate location—and understand what each method cannot prove
 
 | Method | What changes | Useful for | Limitation |
 | --- | --- | --- | --- |
@@ -81,7 +81,7 @@ Country alone may be too coarse: some US requirements are state-specific and dep
 | Real host in target region | Network exit | IP, CDN, edge configuration | Higher operational cost |
 | Playwright plus regional proxy | Browser and network | Closer approximation of a real overseas user | Proxy reputation and location must still be checked |
 
-### Playwright example: no optional tracking before or after rejection
+**Playwright example: no optional tracking before or after rejection.**
 
 This is an **engineering illustration**, not a turnkey compliance test. Replace selectors, hosts, and regional expectations with your application's configuration.
 
@@ -110,7 +110,7 @@ test('optional trackers stay blocked before and after rejection', async ({ page 
 
 If using a regional proxy, configure `use.proxy` in Playwright. Store credentials in CI secrets, not in source control. Beacon traffic, server-side forwarding, and shared-domain trackers require additional evidence beyond this sample.
 
-## 6. Engineering extension: a maintainable location × consent matrix
+## Use a risk-based location and consent matrix
 
 Separate dimensions into **region/state, location signal, locale, first/return visit, consent state, page phase, and tracker category**. Avoid the full Cartesian product: prioritize high-risk combinations and use pairwise coverage for remaining interactions.
 
@@ -127,11 +127,11 @@ For each run, preserve an evidence package: network exit IP and detected locatio
 
 Version-control third-party script inventories and regional rule definitions. Trigger targeted regression whenever the consent management platform, tag manager, CDN configuration, SDKs, or privacy policy changes—not just when the banner UI changes.
 
-## 7. A practical starting point: audit three regions
+**Start with three regions.**
 
 Pick one primary market and two under-tested regions. Confirm location precedence with the team, run all four testing levels, exercise a GPC signal, and validate the most important flows through a real regional network exit. The source also points to TestLocal.ly as an example for coordinating a three-country check; assess any service independently. Report reproducible network evidence and business impact rather than screenshots alone.
 
-## 8. Conclusion
+**The evidence must follow the user's choice.**
 
 Cookie-banner quality is not whether buttons work. It is whether **a user's choice continues to govern behavior across the browser, CDN, application server, and third parties**. UI, storage, network, and end-to-end evidence must reinforce each other. The deliverable is a defensible body of evidence that product, engineering, security, and legal teams can inspect together.
 
