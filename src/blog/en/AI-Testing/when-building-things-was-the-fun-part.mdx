@@ -1,0 +1,92 @@
+---
+title: "When AI Makes Building Faster: Which Friction Should We Keep?"
+description: "AI makes implementation faster, but the learning, judgment, and enjoyment in building may still be worth preserving."
+date: 2026-10-21T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Coding","Engineering Culture","Learning"]
+categories: ["AI Testing"]
+---
+
+AI can turn an idea into a prototype in an afternoon. That is a genuine productivity gain. But what if the exploration, mistakes, repairs, and eventual understanding were precisely the parts that made building worthwhile?
+
+Hanisha Arora's *When Building Things Was the Fun Part* begins with a small contrast: knitting for pleasure versus reviewing AI-generated code. The first sections follow her argument. The QA and engineering recommendations are my extensions, not claims from Arora. Leonard Thiele explores a related question separately; that essay is linked below as a neighboring perspective.
+
+## 1. Knitting on a bus versus reviewing generated code
+
+The author watches someone knit slowly while reading, enjoying an activity that could be completed more quickly. By contrast, she finds herself examining AI-written code and repeatedly asking what the assistant changed. The resulting software may be impressive, but the experience of making it has become less enjoyable.
+
+Building used to mean spending weeks exploring an idea, getting stuck, fixing one issue, breaking another, and gradually understanding the system. Now a working prototype can arrive in an afternoon. The problem-solving work has not entirely disappeared; the **time spent personally solving those problems** has shrunk.
+
+That speed is also useful: the author can reach validation sooner, discard weak ideas sooner, and try five approaches in the time it once took to properly build one. The gain is real, even as it raises a separate question about which parts of the journey she wants to keep experiencing herself.
+
+## 2. Not all friction is waste
+
+Engineering culture often treats friction as something to eliminate. Yet different kinds of friction create different kinds of value.
+
+| Type | Example | Sensible approach |
+| --- | --- | --- |
+| Repetitive friction | Boilerplate, formatting, mechanical renaming | Automate aggressively |
+| Information-handling friction | Moving logs, assembling reports | Delegate to tools and AI |
+| Cognitive friction | Understanding architecture and side effects | Preserve direct exploration |
+| Judgment friction | Design trade-offs, risky assumptions | Keep humans accountable |
+| Creative friction | Building from scratch for enjoyment | Preserve by choice |
+
+The key question is not whether someone typed the code. It is whether doing the work builds understanding and judgment that transfer to future situations.
+
+## 3. Coding has become managing an agent
+
+The author compares AI-assisted coding to directing a fast engineer who lacks crucial context: assign a task, explain constraints, review output, correct misunderstandings, and prevent unnecessary rewrites. Code generation accelerates, but coordination, verification, and course correction remain.
+
+Therefore, “AI wrote 1,000 lines” is not equivalent to “1,000 lines of effort saved.” Total cost includes reviewing the diff, validating behavior, diagnosing regressions, maintaining architectural coherence, and changing the implementation later.
+
+Arora says she had long avoided people management because she wanted to stay close to building products. She understood that senior roles often shift toward reviewing, planning, unblocking, and helping others build, but she was not especially happy about that transition. AI gave her another reason to stop coding; managing agents now brings back familiar coordination work in a new form.
+
+## 4. When execution gets cheaper, judgment becomes scarcer
+
+The author's concern about hiring and professional development is the growing gap between producing polished output and understanding it. AI can implement solutions and confidently explain incorrect ones. Experience is valuable because it provides the instinct to challenge an elegant-looking design that will fail under real constraints.
+
+Hiring and mentorship should therefore test whether someone can articulate constraints, construct counterexamples, reproduce a failure, compare alternatives, and perform a small amount of critical reasoning without assistance—not merely whether they can produce an impressive demo.
+
+Arora connects that concern to a recent interview: she says some candidates had become adept at using AI without making that assistance obvious, presenting impressive resumes but struggling to explain what they had learned once questioned. She says one interview ended after seven minutes. The anecdote is not a hiring benchmark; it illustrates the gap she sees between fluent output and understanding.
+
+## 5. A QA extension: do not outsource every testing decision
+
+The following applications are my quality-engineering interpretation, not empirical findings from the source.
+
+AI can help organize requirements, suggest test ideas, scaffold API/UI automation, and summarize execution evidence. Humans should continue to lead the following decisions:
+
+- **Risk identification:** Which failures matter to users, money, privacy, or compliance?
+- **Test oracles:** What makes an outcome correct beyond the presence of a UI element?
+- **Exploratory testing:** Which unexpected behavior deserves a new hypothesis?
+- **Failure analysis:** Is this environmental noise, a product defect, or a flawed test?
+- **Quality trade-offs:** What should be automated, deeply investigated, or consciously deferred?
+
+Fifty generated test cases do not represent stronger quality engineering if the tester cannot identify the five most important, explain their purpose, or describe what failures they could detect.
+
+## 6. Choose delegation boundaries according to the goal
+
+**Delivery:** Delegate repetitive, well-specified, verifiable work; retain ownership of goals, acceptance criteria, and review.
+
+**Learning:** Form an initial mental model or minimal implementation yourself, then use AI to challenge it rather than requesting the full answer immediately.
+
+**Creative enjoyment:** Intentionally keep parts of the making process that you want to experience. Throughput need not be the sole objective.
+
+**High-risk change:** Preserve human design review, critical test oracles, authorization, and release decisions, supported by reproducible evidence.
+
+## 7. Make the choice explicit in team practice
+
+Before starting a task, choose an informal working mode: `delegate` for repetitive execution, `pair` for exploration, `challenge` for counterarguments, or `manual-first` for deliberate learning. This need not become a new approval process; it simply clarifies whether the task optimizes for speed, learning, or decision quality.
+
+In code and test reviews, two questions are especially useful: “Why do you believe this is correct?” and “What evidence would change your mind?” They reveal understanding more effectively than asking whether AI generated the artifact.
+
+## 8. Productivity is not the only measure of progress
+
+AI reduces the cost of reaching a result. Engineers still get to choose which parts of the journey matter. The goal is not to reject automation; it is to **automate empty friction while preserving friction that creates understanding, judgment, and joy**.
+
+For AI Native Quality Engineering, tools may expand the reach of quality work, but lasting expertise still rests on understanding risks, designing verification, interpreting evidence, and owning consequential decisions.
+
+## References
+
+- Hanisha Arora, *When Building Things Was the Fun Part*, bitshift.ing: https://bitshift.ing/when-building-things-was-the-fun-part/
+- Leonard Thiele, *What If AI Removes the Friction That Makes Good Engineers?* (related perspective): https://leonardthiele.substack.com/p/what-if-ai-removes-the-friction

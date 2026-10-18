@@ -1,0 +1,87 @@
+---
+title: "Building Reliable Background Agent Automations: State, Failure, and Permissions"
+description: "Treat scheduled agents as stateful distributed workflows, with durable bookmarks, confirmed delivery, least privilege, and testable recovery."
+date: 2026-10-19T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Agents","Automation","Reliability"]
+categories: ["AI Testing"]
+---
+
+The most dangerous scheduled-agent failure is not a visible crash. It is **a failure that looks like success**: an expired GitHub credential becomes “no PR updates,” or an ambiguous Slack delivery is recorded as complete, permanently skipping a change.
+
+This article develops the notes from Lance Martin and CJ Avilla's Building Effective Agent Automations: https://claude.dev/blog/building-effective-agent-automations/. Their example is a daily brief using Claude Managed Agents (beta). The quality-engineering tests below are my practical extensions, not reported findings from the authors.
+
+## 1. A scheduled agent is a stateful distributed workflow
+
+The design has six components: Sources (Slack and GitHub), Destination (the single permitted write target), Agent (versioned instructions and tools), Schedule (execution trigger), Memory (preferences and operational state), and Guardrails (permissions and budget). Each execution may start in a fresh sandbox; continuity must therefore be persisted explicitly.
+
+A reliable run reads preferences, loads per-source bookmarks, fetches increments, deduplicates, selects actionable items, rechecks live status, verifies the destination, posts, confirms delivery, and only then commits bookmarks and the ledger.
+
+## 2. Use bookmarks, not fixed lookback windows
+
+“Last 24 hours” breaks under delayed execution, retries, and timezone changes. Store an independent bookmark for each source and resume from the last confirmed position. Where timestamps are not unique, use stable IDs as tie-breakers; overlapping reads plus deduplication can protect against coarse timestamps and eventual consistency.
+
+**Do not advance a bookmark merely because reading succeeded.** Advance it after the corresponding output has been confirmed. A failed source is not an empty source: preserve its bookmark, continue with available sources where appropriate, and disclose the incomplete coverage.
+
+## 3. Posting is a side effect that requires confirmation
+
+Before posting, look for the daily brief's unique identifier in the target channel. Only a response containing Slack `ok: true` and a message `ts` establishes successful delivery. Then, and only then, update the ledger and bookmarks. If the request times out and delivery is uncertain, enter `maybe_posted`, reconcile against Slack, and do not commit progress prematurely.
+
+In the reference implementation, the scheduled agent publishes automatically; the Slack acknowledgement confirms delivery, not human approval of the content. If a workflow requires review before publication, model that approval as an explicit state. Otherwise, keep the bot's write scope narrow and make the automatic side effect visible to the people relying on the brief.
+
+| State | Meaning | Next action |
+| --- | --- | --- |
+| `posting` | Delivery attempted or pending | Check destination and send |
+| `posted` | Explicit remote acknowledgement | Commit ledger and bookmarks |
+| `maybe_posted` | Ambiguous response | Reconcile before retrying |
+| `source_partial` | Some inputs unavailable | Disclose missing sources |
+
+Checking for an existing post is an application-level idempotency measure, **not an atomic exactly-once guarantee**. Concurrent runs can still race. Production implementations may need a persistent run key, locking, a posting-intent record, and recovery logic.
+
+## 4. Relevance and freshness outweigh volume
+
+Include an item only if it requires action today or materially changes an imminent decision. Raw counts such as “12 open PRs” are not actionable by themselves. Repeated unresolved items should be concise, e.g., “Still waiting, day 3.”
+
+Immediately before publication, re-fetch the state of every candidate: remove resolved items, update changed ones, and omit anything that cannot be verified. Copy URLs from the source response instead of constructing them from guessed identifiers. One stale action request can undermine more trust than several omitted low-priority items.
+
+## 5. Separate preferences from operational state
+
+Keep user-owned `preferences` read-only to the agent: channels, repositories, exclusions, maximum length, and destination. Keep bookmarks, ledger, run records, and source-specific notes in a writable `state` store. Re-read preferences on **every** execution; if unavailable, stop explicitly rather than silently reverting to old prompt defaults.
+
+Version preferences so that unexpected omissions can be explained. A useful ledger entry contains reporting date, source, stable ID, current status, and the last reported time.
+
+## 6. Least privilege and budgets are reliability controls
+
+Use read-only GitHub credentials, vault-mediated secrets, and destination host allowlists. Untrusted source messages can contain prompt-injection instructions, so do not allow them to change preferences or mutate repositories. Restrict the Slack bot's write scope to necessary channels.
+
+The source suggests initially setting a per-run budget at roughly 3–5 times normal cost and tightening it after observing real usage. This is a starting heuristic, not a universal limit. Monitor `budget_reached` as a distinct paused state; budget exhaustion must never be interpreted as “no updates.”
+
+## 7. Quality-engineering extension: failure-injection scenarios
+
+| Injected condition | Expected behavior |
+| --- | --- |
+| GitHub token expires | Source failure visible; bookmark unchanged |
+| Slack times out after actually posting | Ambiguous state; reconcile without double-posting |
+| Slack explicitly rejects the post | No published ledger or bookmark commit |
+| Schedule runs three hours late | No lost changes; date uses configured timezone |
+| Two runs overlap | Locking or deduplication prevents duplicate briefs |
+| PR is merged during drafting | Final verification removes stale reminder |
+| User changes exclusions | Next run reads the updated preference version |
+| Source message contains malicious instructions | No unauthorized writes or preference edits |
+| Budget limit is reached | Visible pause and alert, not a fake success |
+
+These scenarios yield testable invariants: `source_failure => bookmark_unchanged`, `posted => remote_acknowledged`, and `unknown_delivery => no_commit`. Track last successful read, last successful post, and last health check separately.
+
+## 8. Adopt incrementally
+
+Start with one source, durable bookmarks, and explicit failures. Add ledger and confirmed delivery next. Then introduce fresh-state checks, isolated preferences, least privilege, and finally systematic failure injection and cost/freshness monitoring. Multi-agent orchestration is not a prerequisite for a trustworthy daily brief.
+
+The same contract applies to QA digests, PR risk alerts, CI failure summaries, and weekly quality reporting. The reusable asset is not a particular model: it is an automation whose **state is correct, failures are visible, permissions are bounded, and output is verifiable**.
+
+## References
+
+- Lance Martin and CJ Avilla, Building Effective Agent Automations: https://claude.dev/blog/building-effective-agent-automations/, claude.dev, October 8, 2026.
+- Daily Brief reference implementation: https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/daily-brief.
+
+> Note: Managed Agents deployment commands and beta capabilities may change. Consult current official documentation before implementing them.

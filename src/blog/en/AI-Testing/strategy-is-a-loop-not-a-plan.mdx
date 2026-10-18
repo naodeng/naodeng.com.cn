@@ -1,0 +1,177 @@
+---
+title: "Strategy Is a Loop, Not a Plan: Combining OODA with the Strategic Kernel"
+description: "Combine Boyd’s OODA loop and Rumelt’s strategy kernel to observe reality, diagnose constraints, make choices, and learn through coherent action."
+date: 2026-10-27T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["Strategy","OODA","Quality Engineering"]
+categories: ["Engineering Leadership"]
+---
+
+Most strategies do not fail because they were wrong at the start. They fail because they were right once, and nobody returned to check. A leadership team can spend a quarter preparing a strategy, present and applaud it, then file it away. Six months later, the market has moved, the organization has changed, and a key assumption has quietly failed. The strategy remains on the intranet, while teams make local decisions without coordination because the document no longer describes the world they work in.
+
+The problem is not necessarily poor analysis. It is treating strategy as a document to execute rather than a discipline to keep running.
+
+Ragan McGill brings together two useful ideas: John Boyd’s OODA loop and Richard Rumelt’s kernel of good strategy. Boyd was a US Air Force fighter pilot and military strategist; his model was intended for competitive, uncertain situations, where success depends on cycling through decisions faster and more accurately than an opponent. Rumelt explains what a good strategy contains; Boyd explains how to keep it alive.
+
+Original article: Strategy Is a Loop, Not a Plan: https://www.raganmcgill.co.uk/Articles/Detail/article-strategy-is-a-loop-not-a-plan
+
+## Two complementary models
+
+Boyd’s OODA loop moves through **Observe, Orient, Decide, Act**. The stages are not simply four equal boxes. Boyd treated **Orient** as the center of gravity: experience, mental models, culture, and new information combine to form an understanding of the situation. That orientation shapes what people notice, which options they consider, and how they act. If the organization orients badly, everything downstream can be wrong, however quickly it moves.
+
+In *Good Strategy/Bad Strategy*, Rumelt's kernel has three parts:
+
+- **Diagnosis:** explain what is happening and identify the critical challenge.
+- **Guiding policy:** choose an overall approach to address that challenge.
+- **Coherent actions:** coordinate steps that carry out the policy and reinforce one another.
+
+McGill maps the two models into a four-stage strategy loop:
+
+| Strategy stage | Boyd’s OODA | Rumelt’s kernel | Output |
+| --- | --- | --- | --- |
+| Observe | Observe | — | Signals, facts, surprises |
+| Derive insight | Orient | Diagnosis | A testable explanation of the crux |
+| Establish guiding policies | Decide | Guiding policy | A choice, including what not to do |
+| Set coherent actions | Act | Coherent actions | Sequenced steps that reinforce each other |
+
+This distinction matters: **identifying the real problem belongs in Orient, not Decide**. Diagnosis is sense-making. Decide should be about choosing an approach, not still trying to discover what the problem is.
+
+## Observe: gather signals from the work itself
+
+Strategy begins with an honest look at reality—not just the reality in a quarterly report, but the one teams experience every day. In an engineering organization, signals can come from:
+
+- **Systems:** flow measures, DORA metrics, incidents, cost, and reliability.
+- **People:** open conversations with engineers, product managers, and leaders.
+- **Customers:** what they use, complain about, or abandon.
+- **The environment:** market shifts, regulation, technology, and competitors.
+- **The work itself:** where it waits, bounces between teams, or gets stuck.
+
+Dashboards show what someone previously decided to measure. Conversations can surface what nobody thought to count. The best observations often come from going where the work happens and watching.
+
+This stage calls for breadth and humility. Boyd’s point also warns that orientation influences observation: if leaders already “know” the problem is capacity, they may see a capacity problem everywhere. Look deliberately for evidence that could disconfirm the current belief.
+
+## Derive insight: diagnose the crux, not a list of symptoms
+
+Raw observations are data; insight comes from asking why until the explanation becomes structural. The goal is not a list of twenty problems. It is the one or two constraints that, if addressed, would unlock much of the rest.
+
+Consider a slow delivery rate and teams asking for more engineers.
+
+**Observation:** Delivery is slow, and teams say they need more people.
+
+**Diagnosis:** Team boundaries cut across value streams. Nearly every meaningful change requires three or more teams to coordinate, so work spends most of its life waiting rather than being worked on. Hiring more people could add handoffs instead of improving flow.
+
+The same signals can lead to very different strategies because the diagnosis changes the orientation.
+
+A strong diagnosis simplifies a messy situation without flattening it, explains symptoms rather than listing them, makes some responses more promising than others, and remains **falsifiable**. If cross-team waiting falls substantially but lead time does not improve, the diagnosis may need revision.
+
+This is also where a sense-making framework such as Cynefin can help. A complicated problem may reward expert analysis; a complex problem may require bounded probes and learning from what happens. The type of problem should shape the response. McGill discusses this further in Why Most Engineering Organisations Misdiagnose Their Problems: https://www.raganmcgill.co.uk/Articles/Detail/article-why-most-engineering-organisations-misdiagnose-their-problems
+
+Avoid jumping from “we are slow” straight to “we need a platform team,” “we need SAFe,” or “we need AI.” Those are answers looking for a question. If the diagnosis cannot be stated clearly in a couple of sentences, the organization is not ready to decide.
+
+## Establish guiding policies: make a real choice
+
+A guiding policy sits between a broad goal and a detailed project plan. It narrows the field and channels effort. Possible policies for the example above include:
+
+- Organize around value streams rather than components.
+- Give teams end-to-end responsibility for what they build, including operating it.
+- Make platform capabilities self-service instead of building ticket queues.
+
+Each is a choice with a cost. Organizing around value streams may give up some efficiency from pooled specialists. That is part of the decision, not an inconvenience to hide. Strategy is as much about what the organization will not do as what it will do.
+
+A useful test is: **could a sensible person argue for the opposite?** “We will deliver high-quality software” is not a strategic choice; nobody argues for low quality. “We will optimize for flow over utilization” is a choice, because many organizations deliberately prioritize utilization instead.
+
+“Be world-class,” “double delivery speed,” and “become AI-first” are ambitions, not guiding policies. They describe a desired destination without explaining how to get there or what trade-offs to accept.
+
+## Set coherent actions: connect the work
+
+A guiding policy that changes nothing on Monday morning is only a sentence. Coherent actions translate it into coordinated work. Compare a collection of activities with a connected sequence:
+
+| A bag of initiatives | Coherent actions |
+| --- | --- |
+| Launch a developer-experience survey | Redraw boundaries for the two highest-value streams first |
+| Adopt a new ticketing tool | Provide a paved deployment path those teams can use immediately |
+| Run agile training | Make environment provisioning self-service |
+| Create an innovation week | Measure waiting time and flow monthly to test the diagnosis |
+| Hire a platform lead | Stop funding projects that depend on the old structure |
+
+Each coherent action follows from the policy and makes the others more effective. Notice that one action is to stop work. Strategy requires freeing capacity as well as spending it. Good actions are sequenced, resourced with real people and money, and observable enough to show whether they work.
+
+Twenty half-funded initiatives are usually a way to avoid choosing, not a strategy.
+
+## Keep the loop running
+
+The moment an organization acts, it changes the situation. Teams and customers respond; competitors may respond; the original diagnosis can become stale. A strategy cycle is therefore a learning cycle:
+
+- A **diagnosis is a hypothesis**—the best current explanation, not an eternal truth.
+- A **guiding policy is a bet** that the chosen approach will address the crux.
+- **Actions are experiments** that produce evidence.
+- That evidence becomes the next set of observations.
+
+In complex systems, cause and effect may become clear only afterward. The organization cannot analyze its way to certainty up front; it has to act, sense, and respond. The loop is how strategy handles uncertainty instead of pretending it is not there.
+
+## Implicit guidance: shared orientation lets teams act
+
+Boyd’s full OODA diagram includes a direct link from Orient to Act, often called **implicit guidance and control**. When people share an understanding of the situation and the intent behind a policy, they do not need to route every local decision through a central approval. They can act quickly and consistently within that shared orientation.
+
+If teams understand “we optimize for flow over utilization,” they can make many daily decisions—what to pick up, whether to take on a dependency, when to split work—without escalating each one. The policy coordinates their choices.
+
+That is the difference between **alignment and control**. Control depends on central decisions and slows as an organization grows. Shared orientation can scale.
+
+## Tempo is the speed of learning, not the speed of work
+
+Boyd’s advantage is not simply working faster. It is cycling faster and more accurately: shortening the time from noticing a change to responding well. In an organization, that competitive idea becomes a faster learning loop. A strategy revisited once a year gets one learning cycle a year; a continuously observed strategy can complete many. Over time, one organization steers from last year’s map while another adjusts to what it saw last week.
+
+That does not mean rewriting the strategy every Friday. Different stages can run at different cadences:
+
+| Stage | Suggested rhythm | Focus |
+| --- | --- | --- |
+| Observe | Weekly or continuously | Flow measures, incidents, conversations, customer signals |
+| Orient | Monthly | Does the diagnosis still explain what we see? What surprised us? |
+| Decide | Quarterly | Do the guiding policies still fit? What should change or retire? |
+| Act | Continuously | Teams take coherent actions within the policy |
+| Full reset | Annually or after a major change | Reconsider the entire strategic kernel |
+
+These rhythms are suggestions, not universal rules. Policies should be stable enough for teams to rely on; actions should remain adaptable; orientation should be refreshed regularly.
+
+## Put it on one page
+
+McGill’s one-page strategy has one plain-language box for each stage. If the strategy cannot be expressed clearly on a page, it may not yet be thought through.
+
+| Box | Prompts |
+| --- | --- |
+| Observe | What are we seeing? What surprised us? What are we not measuring? |
+| Derive insight | What is really going on? What is the crux? What evidence could prove this diagnosis wrong? |
+| Guiding policies | What approach will we take? What are we deliberately choosing not to do? |
+| Coherent actions | What happens first? How do actions reinforce one another? What will we stop? |
+
+## Common traps
+
+| Trap | What it looks like | Better response |
+| --- | --- | --- |
+| Goals mistaken for strategy | “Be world-class at engineering” | State the choices and costs |
+| Diagnosis skipped | Starting with a favorite solution | Describe the crux before discussing answers |
+| Symptom list | Twenty problems, no priority | Find the structural cause behind them |
+| Bag of initiatives | Many actions that do not connect | Test each action against the guiding policy |
+| Set and forget | Annual strategy, never revisited | Establish observation and reorientation rhythms |
+| Orientation lock-in | “We already know the problem” | Invite challenge and seek disconfirming evidence |
+
+## A quality-engineering extension
+
+The following is an editorial application of McGill’s framework, not a claim from the original article.
+
+A test strategy can become another archived document: it lists UI, API, performance, tools, and schedules, but rarely changes as evidence accumulates. A learning-oriented QA strategy should connect the testing portfolio to escaped defects, feedback time, diagnosis effort, user impact, and changing delivery risk.
+
+For example, if regression runs grow from 35 to 95 minutes while retries rise and critical defects still escape, the diagnosis may not be “we need more tests.” It may be duplicated UI coverage, shared-environment contention, and flaky tests obscuring useful signals. The policy could prioritize reliable feedback, preserve a small number of essential E2E journeys, and move suitable rules to API or component checks. Actions might remove duplication, isolate data, triage flaky tests, choose regression scope by risk, and review feedback time and escaped defects monthly.
+
+The goal is not to make the test portfolio look like a predetermined shape. It is to rebalance it against actual cost and risk.
+
+For AI Native QA teams building Skills, Agents, Evals, or test auditors, use the same loop: observe real failures, false positives, reviewer effort, and adoption; diagnose the current trust bottleneck; choose a narrow policy; and invest in actions that can test the diagnosis. Keep real-project validation, quality outcomes, and deliberately deprioritized work visible. That last record helps distinguish a strategic choice from feature accumulation.
+
+## Closing thought
+
+Rumelt defines the substance of strategy; Boyd provides the motion that keeps it alive. The strongest strategy is not the document that claims to remain right forever. It is the mechanism that notices when it is becoming wrong and adapts.
+
+**Observe honestly, orient carefully, decide clearly, and act coherently. Then run the loop again.**
+
+Reference: Strategy Is a Loop, Not a Plan, Ragan McGill, September 24, 2026: https://www.raganmcgill.co.uk/Articles/Detail/article-strategy-is-a-loop-not-a-plan

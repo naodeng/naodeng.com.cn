@@ -1,0 +1,133 @@
+---
+title: "Feature-Led Security Research: What QA Can Learn from a Bug Bounty Researcher"
+description: "Explore security through feature behavior, authorization boundaries, verified evidence, and practical QA extensions."
+date: 2026-10-23T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["Security Testing","Bug Bounty","Exploratory Testing"]
+categories: ["Security Testing"]
+---
+
+Security testing often starts with vulnerability categories: XSS today, authorization tomorrow, input validation next. For complex business systems, another entry point can be more productive: **choose a feature worth understanding, learn how it is supposed to work, then explore how its capabilities might be misused.**
+
+This article draws on Shilpa Kumari's October 8, 2026 GitHub Blog interview with VIP bug bounty researcher `@vaib25vicky`, whose research focuses on authorization and access control. It first summarizes the interview's ideas and then separately explores their application to QA and AI Native Quality Engineering.
+
+> Source: How one bug bounty researcher chooses the features they investigate: https://github.blog/security/how-one-bug-bounty-researcher-chooses-the-features-they-investigate/. This article is based on the supplied study notes; consult GitHub's current official materials for program details.
+
+## 1. Research quality matters more than report volume
+
+The notes describe GitHub's emphasis on high-quality findings rather than maximizing submission counts. They describe a permanent, invitation-only VIP program, potentially exceeding $30,000 for critical findings, with faster responses and opportunities to preview some beta capabilities.
+
+The stated invitation thresholds are one resolved Critical, two High, four Medium, or seven Low findings. **These are descriptions of the program at the article's publication, not guarantees of current rewards or eligibility.**
+
+For QA teams, the transferable principle is evidence quality: a report demonstrating a real authorization failure, its impact, and reproducible conditions is more useful than numerous unverified suspicions.
+
+## 2. Start with a feature, not a vulnerability label
+
+The research approach can be expressed as a sequence:
+
+1. Select a feature worth investigating.
+2. Use it directly and understand its normal behavior.
+3. Map users, resources, permissions, states, and dependencies.
+4. Ask how the capability might behave in unintended contexts.
+5. Explore anomalies repeatedly and determine whether they are genuine security findings.
+
+This does not make vulnerability taxonomies such as OWASP irrelevant. It changes the **starting point**: taxonomies help generate hypotheses and classify findings without dictating every research session.
+
+### Why investigate complex features?
+
+Complex features may involve more actors, transitions, and implicit business rules. An organization-wide sharing capability, for example, might combine owners, members, external collaborators, administrators, pending invitations, and permission revocation.
+
+Complexity does not imply a vulnerability. It warrants careful examination of boundaries. The researcher explores a target for a while, pursues promising signals, and moves on when the investigation is no longer productive. This is also a sensible allocation strategy for time-constrained QA teams.
+
+The interview also sketches how he entered the field: he started by building coding projects, then moved into bug bounty research. He chose GitHub in part because he already knew the platform and enjoyed its challenges. To keep learning, he follows other researchers, company security blogs and write-ups, Hacker News, and security communities; examples he named include Google Project Zero, GitHub Security Lab, and PortSwigger. His advice to beginners is to be patient: progress can mean spending a long time investigating before finding a reportable issue.
+
+## 3. Authorization example: from normal behavior to boundary questions
+
+The following is an **original QA example added for this article**, not a vulnerability disclosed in the GitHub interview.
+
+Imagine an application that lets users share project reports. Begin with the expected behavior: who can create, view, share, or export a report? When do shared links expire? What happens when someone leaves the organization?
+
+Then examine **relationships and lifecycle transitions**:
+
+| Dimension | Business question to verify | Useful evidence |
+| --- | --- | --- |
+| Identity | Does each role see only the resources it is authorized to access? | Role matrix and request outcomes |
+| Ownership | Are resources isolated across organizations or tenants? | Cross-tenant isolation results |
+| State | Does access expire after revocation or member removal? | Before/after state and audit logs |
+| Operation | Are read-only users prevented from modifying or exporting restricted data? | Server-side authorization results |
+| Capability combinations | Do search, export, and bulk operations enforce the same rules as detail views? | Cross-entry-point comparisons |
+
+**Hiding a button is not an authorization control.** An absent UI action does not prove the server rejects unauthorized requests. Perform all testing within an explicitly authorized environment and scope; never access real third-party data.
+
+## 4. AI accelerates exploration but does not establish truth
+
+The researcher compares AI to a very fast car that still needs a good driver. AI can summarize feature documentation, propose boundary questions, organize hypotheses, and prepare evidence. It cannot make an unverified hypothesis true.
+
+Keep three states distinct:
+
+- **Risk hypothesis:** a possible failure inferred from design or observed behavior.
+- **Unconfirmed anomaly:** unexpected behavior that still needs environmental, configuration, or business-rule explanations ruled out.
+- **Verified finding:** a reproducible issue in authorized scope, with clear expected-versus-actual behavior and evidence supporting the impact assessment.
+
+The interview's rule is straightforward: **never submit a vulnerability that you have not personally verified.** The same applies to AI-generated QA reports and security test cases.
+
+AI-enabled products still need familiar security thinking. The researcher says the approach may need some adjustment, but many important issues remain recognizable: authorization failures, weak guardrails, and capabilities that were overlooked. Understanding the feature and applying established web-security skills are still useful.
+
+### A reusable AI assistance prompt
+
+```text
+You are a security test design assistant. Work only within an authorized scope.
+Inputs: feature description, role/permission matrix, state transitions, API contracts.
+Tasks:
+1. Summarize expected business behavior and authorization boundaries.
+2. Propose hypotheses by identity, resource ownership, state, entry point, and combined capability.
+3. State the factual basis and missing information for each hypothesis.
+4. Suggest human-executable checks and expected evidence.
+5. Never label a hypothesis as a confirmed vulnerability.
+```
+
+## 5. QA engineering extension: turn exploration into quality assets
+
+This section is an **independent engineering application** of the interview, not a direct claim by the researcher.
+
+### Build feature research cards
+
+For high-risk features, record business purpose, roles, sensitive resources, authorization boundaries, lifecycle states, external dependencies, known anomalies, and unverified hypotheses. The aim is continuity of understanding, not documentation for its own sake.
+
+### Convert findings into layered tests
+
+- **Unit tests:** complex permission rules, policy decisions, and state transitions.
+- **API/service tests:** server-side authorization, object ownership, revocation, and error paths.
+- **End-to-end tests:** critical user journeys involving role changes and visible feedback.
+- **Human exploration:** unknown combinations across roles, entry points, and lifecycle events.
+
+Confirmed issues should become regression assets with the original failure evidence and post-fix verification. A green automated script alone is not enough.
+
+### Implications for AI Native QA
+
+A QA Skill or Agent could implement a controlled **Understand → Hypothesize → Verify → Record → Learn** loop:
+
+- **Understand:** gather requirements, API contracts, code, and permission models.
+- **Hypothesize:** generate evidence-grounded risk hypotheses.
+- **Verify:** authorized testers validate them; sensitive actions require human approval.
+- **Record:** capture reproduction conditions, evidence, conclusions, and uncertainty.
+- **Learn:** preserve confirmed findings as regression tests, evaluation examples, and change-impact obligations.
+
+AI can assist with the first two steps and evidence organization, but **a named human remains accountable for confirming findings, accepting risk, and external reporting**. AI-generated tests also need assertion-quality checks: they must actually verify the authorization obligation, not merely a successful response.
+
+## 6. Starting small: one feature exploration session
+
+Choose one feature with multiple roles or lifecycle states and conduct a short session in an authorized test environment. Map the happy path, build a role/state matrix, and validate a few high-value hypotheses. At the end, classify observations as confirmed, disproved, or unresolved. Turn reproducible failures into regression tests, then decide whether to investigate further or switch features.
+
+Do not measure every exploration session by the number of bugs found. A session without a finding can still produce a clearer authorization model, reusable test data, and a better understanding of system boundaries.
+
+## 7. Conclusion
+
+The interview offers more than a list of security techniques. It models a research discipline: **understand the feature before challenging its assumptions; use AI to think faster, but let evidence determine the conclusion.**
+
+For quality engineering, feature-led security exploration moves beyond ticking off vulnerability categories toward understanding business capabilities and their misuse boundaries. It complements rather than replaces systematic security testing.
+
+**Reference**
+
+- Shilpa Kumari, GitHub Blog, October 8, 2026: How one bug bounty researcher chooses the features they investigate: https://github.blog/security/how-one-bug-bounty-researcher-chooses-the-features-they-investigate/

@@ -1,0 +1,139 @@
+---
+title: "RSAT Migration: From Test Inventory to Coverage Equivalence"
+description: "A risk-led guide to migrating Dynamics 365 F&O regression tests, with six migration steps, parallel runs, and quality gates."
+date: 2026-10-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["RSAT","Dynamics 365","Test Migration"]
+categories: ["Software Testing"]
+---
+
+> Based on study notes of ACCELQ's *RSAT Migration Guide* (August 2026). The first sections summarize the supplied notes; the quality-engineering recommendations are an independent extension. ACCELQ is a testing-tool vendor, so its product suggestions should not be treated as a neutral tool comparison.
+>
+> Source: https://www.accelq.com/blog/rsat-migration-guide/
+
+## 1. Why plan an RSAT migration?
+
+Regression Suite Automation Tool (RSAT) supports regression automation for Microsoft Dynamics 365 Finance & Operations (F&O), typically using Task Recorder and Azure DevOps test management. According to the supplied ACCELQ notes, **Microsoft support is scheduled to end on May 15, 2027**.
+
+**End of support does not mean an immediate shutdown.** Existing tests may continue to run, but future fixes, security updates, compatibility, and maintenance become material risks. Microsoft's current RSAT documentation says the tool will not be supported after May 15, 2027. Recheck the precise scope before committing to a migration schedule.
+
+The objective is not simply to reproduce scripts in another tool. It is to **preserve or improve evidence that critical business risks are covered**.
+
+## 2. Inventory the test estate before choosing a tool
+
+Export Azure DevOps test plans and gather associated Task Recorder files, Excel parameter files, and BPM references. A count of scripts alone is an inadequate baseline.
+
+| Dimension | Record | Purpose |
+| --- | --- | --- |
+| Assets | Test ID, title, version, recording path | Traceability and completeness |
+| Business | F&O module, flow, critical control | Actual risk coverage |
+| Special channels | Cloud POS, Warehouse App | Distinct migration paths |
+| Complexity | Single-screen, multistep, cross-module | Work estimates |
+| Dependencies | Data, permissions, external systems, environments | Migration blockers |
+| Verification | Original assertions, expected outcomes, linked defects | Prevent assertion loss |
+
+Classify tests into **simple UI recordings**, **multistep business workflows**, and **cross-module/integration scenarios**. A small number of difficult integrations can dominate the timeline.
+
+## 3. The six-step migration method
+
+### Step 1 — Export and inventory
+
+Create a central inventory linking test plans, recordings (the notes mention `.axtr` and `.xml`), Excel parameter files, and BPM entries. Explicitly check Cloud POS and warehouse coverage.
+
+### Step 2 — Classify complexity and risk
+
+Add business criticality, execution frequency, failure history, environment dependencies, and compliance exposure to the three complexity levels. Prioritize posting, settlement, inventory, and authorization controls where relevant.
+
+### Step 3 — Decide the fate of each test
+
+Choose among **rebuild as-is**, **rebuild with stronger assertions**, or **retire**. Retire only when the underlying business flow is obsolete, duplicated, or no longer valuable, and record business approval. Migration tools should not autonomously remove coverage.
+
+### Step 4 — Import or rebuild
+
+Direct import support depends on the target tool's current capabilities; `.axtr` or `.xml` compatibility must not be assumed. Using old recordings as a workflow blueprint and rebuilding against the current D365 UI can avoid preserving obsolete interface behavior. The original verification intent must still be retained.
+
+### Step 5 — Verify coverage equivalence
+
+**A green replacement test is not proof of a successful migration.** Compare old and new tests under equivalent environments and data, checking prerequisites, roles, business rules, financial values, state changes, downstream effects, and diagnostic evidence.
+
+Map each original **verification obligation** to replacement coverage and mark it `preserved`, `enhanced`, `removed`, or `unresolved`. Removed and unresolved obligations require explicit risk decisions.
+
+### Step 6 — Run both suites through a full release cycle
+
+Parallel execution should include the business's actual critical events—month-end close, batch processing, upgrades, or release waves where applicable—not merely an arbitrary four-week window. Investigate discrepancies and document explanations before retiring RSAT.
+
+## 4. Indicative migration timelines
+
+These ranges are reported in the supplied ACCELQ notes, not independently established industry benchmarks.
+
+| Size | Test count | Indicative duration |
+| --- | ---: | --- |
+| Small | Fewer than 50 | 2–4 weeks |
+| Medium | 50–200 | 6–10 weeks |
+| Large | More than 200 | 12–20+ weeks |
+
+For planning, run a **stratified pilot** across complexity classes and measure actual rebuild, data setup, debugging, review, and parallel-run effort. Extrapolate from observed throughput with explicit contingency for integrations.
+
+## 5. Four migration mistakes
+
+**Treating migration as a recorder swap.** Existing integration gaps should trigger a fresh coverage discussion, not blind replication.
+
+**Skipping the inventory.** Cloud POS and warehouse scenarios may be omitted, inflating apparent completion.
+
+**Rebuilding everything at once.** Validate the target platform on a small pilot before tackling difficult cross-module cases.
+
+**Retiring RSAT too early.** Financial close, batch, and upgrade failures may emerge only later in the business cycle.
+
+## 6. Quality-engineering extension: migrate verification obligations, not just scripts
+
+The recommendations below are an independent interpretation, not direct quotations from ACCELQ.
+
+### Build an obligation mapping
+
+| Old test | Verification obligation | New test | Status | Evidence |
+| --- | --- | --- | --- | --- |
+| RSAT-101 | Order status after submission | NEW-011 | preserved | Comparative run |
+| RSAT-102 | Posting amount reconciles to ledger | NEW-021 | enhanced | Ledger evidence |
+| RSAT-103 | Retired workflow | — | removed | Business approval |
+
+Test counts may fall, but high-risk assertions must not silently disappear.
+
+### Establish migration exit criteria
+
+Set thresholds based on business risk, rather than copying arbitrary percentages:
+
+- Critical business processes have traceable replacement tests.
+- High-risk assertions are preserved or strengthened.
+- Retired tests have approved business justifications.
+- A full business cycle has been covered in parallel, with significant discrepancies explained.
+- Roles, data, and environments are reproducible.
+- Maintainers are trained; diagnostics and rollback are documented.
+
+### Roll out incrementally
+
+Use **Inventory → Pilot → Rebuild → Equivalence Review → Parallel Run → Cutover**. Cut over by business process or module. Where critical verification remains unreliable, retain the old path or temporary manual controls until residual risk is explicitly accepted.
+
+### Evaluate tools without vendor bias
+
+Compare D365 F&O support, Cloud POS/warehouse compatibility, assertion capabilities, test data, Azure DevOps integration, maintainability, security, cost, and lock-in. A proof of concept must include representative complex workflows, not only a successful vendor demo.
+
+## 7. Migration review questions
+
+- Do we know every active test and its business purpose?
+- Do we distinguish script migration percentage from verification-obligation preservation?
+- Have we compared results using equivalent data and environments?
+- Does parallel execution include critical financial, batch, and integration cycles?
+- Who signs off retired coverage and residual risk?
+- Are cutover, pause, and rollback conditions explicit?
+
+## Conclusion
+
+**RSAT migration succeeds when the team can demonstrate that critical business risks remain effectively tested—not when a replacement tool produces a large number of green checks.** Early inventory, representative pilots, and coverage-equivalence evidence are the foundation of a controlled transition.
+
+## References
+
+- ACCELQ, *RSAT Migration Guide* (vendor article): https://www.accelq.com/blog/rsat-migration-guide/
+- Microsoft Learn, RSAT overview and support notice: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/rsat/rsat-overview/
+
+> Source note: Migration estimates and tool recommendations are attributed to ACCELQ and are not independent benchmarks. The Microsoft page confirms the support notice; recording-format compatibility still needs to be checked with the target tool.

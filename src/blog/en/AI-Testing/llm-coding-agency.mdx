@@ -1,0 +1,130 @@
+---
+title: "Are LLMs Making Developers Lazy? Code Taste, Judgment, and Engineering Ownership"
+description: "Joe Woods argues that AI does not remove engineering ownership when people keep shaping, reviewing, and learning from generated code."
+date: 2026-10-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Coding","Developer Skills","Quality Engineering"]
+categories: ["AI Testing"]
+---
+
+> **Source:** Joe Woods, “I don't think LLMs are making you lazy,” October 10, 2026. The user supplied the full original text. The QA engineering sections are an independent extension, not claims attributed to Woods. Original: https://blog.joewoods.dev/programming/i-dont-think-llms-are-making-you-lazy/
+
+## 1. Writing less code is not the same as losing ownership
+
+When an LLM can produce an implementation in minutes, developers may wonder whether they are slowly losing their ability to program. Joe Woods offers a different perspective: **LLMs do not necessarily make people lazy, provided they continue to shape the code and intervene when the result is wrong for the project.**
+
+The distinction is between **delegating implementation** and **delegating judgment**. In the first case, humans still define the problem, constraints, design, and acceptance criteria. In the second, they accept whatever the model produces without challenging its assumptions or checking whether it serves the team's long-term goals.
+
+Both look like AI-assisted coding, but their consequences can be very different.
+
+## 2. What effective LLM users continue to do
+
+### Define what good code should look like
+
+Code that runs is not necessarily well-designed code. Naming, abstraction, module boundaries, dependencies, error handling, readability, and maintainability require contextual decisions. A model may imitate repository conventions without knowing the incident history, organizational needs, or product constraints behind them.
+
+### Correct code that works but is still wrong
+
+A generated implementation may introduce unnecessary abstractions, bypass an established service boundary, place assertions in Page Objects, or weaken tests to make a build pass. These are not necessarily syntax failures. They are failures of intent, design, and engineering judgment.
+
+### Capture corrections as reusable knowledge
+
+Instead of repeating the same guidance in every chat, teams can maintain documentation, review criteria, constraints, and **golden samples** of approved code. A golden sample demonstrates not just what compiles but how the team expects code to be organized, tested, named, and maintained.
+
+Golden samples also need review: yesterday's preferred architecture should not become tomorrow's unquestionable rule.
+
+## 3. Code taste is not identical to typing muscle memory
+
+Woods compares engineering taste to riding a bicycle. Not performing an activity for a while does not automatically erase the ability to recognize when it is done well.
+
+Experienced engineers may forget exact API syntax while retaining an ability to spot excessive coupling, inappropriate abstractions, or missing failure handling. Yet taste does not maintain itself indefinitely. It benefits from reading real code, discussing designs, investigating incidents, and having one's assumptions challenged by colleagues.
+
+## 4. Forgetting rarely used algorithms is not necessarily an AI problem
+
+Woods admits he cannot readily recall how to invert a binary tree. He says he has memorized it roughly twice, briefly, to prepare for the ritual of solving LeetCode problems so someone will pay him to write a different kind of code. His explanation is not that an LLM erased the knowledge, but that the task has rarely been relevant outside interview preparation.
+
+He also makes a personal qualification: his own work does require command of data structures and algorithms. His point is about matching practice and evaluation to the work people actually do, not dismissing those fundamentals.
+
+Much everyday programming is **software plumbing**: connecting systems, representing business workflows, and solving user problems. The difficult work is often deciding how software should behave and how to express that behavior maintainably, not recalling an interview exercise.
+
+This does not diminish algorithms or computer science fundamentals. Performance-sensitive, security-critical, and systems-level work may depend heavily on them. Woods still plans to keep doing Advent of Code, while recognizing that it does not resemble his current day-to-day work. The more useful principle is to evaluate capability against real responsibilities rather than isolated recall tests.
+
+## 5. Past tooling skills still matter
+
+Woods describes opening his editor mainly when something goes wrong—a situation he says is worth avoiding. Its keyboard shortcuts are burned into his memory like the subconscious actions of driving a car. His prior investment in editor fluency, debugging, and code reading still helps him mentor others, set guardrails, and recognize problematic model output.
+
+That is a personal workflow, not a universal prescription. For learners, test automation engineers, and teams operating complex systems, hands-on code inspection and debugging remain essential.
+
+## 6. Three questions to ask when you feel your skills slipping
+
+| Question | Warning sign | Practical response |
+| --- | --- | --- |
+| Am I guiding the LLM enough? | Code runs but violates important design constraints | Specify acceptance criteria, prohibitions, and review expectations |
+| Have I stopped discussing good code with others? | Model conversations replace peer challenge | Restore design reviews, pairing, and code-reading sessions |
+| Have I stopped learning? | I can invoke tools but struggle to explain the result | Debug real failures, learn unfamiliar concepts, and occasionally solve problems independently |
+
+Woods does not insist that everyone return to their previous coding habits. For each concern, decide whether it is a problem to solve or a change to accept; either answer can be reasonable. He says he will make a point of addressing any problems that emerge for him across all three areas.
+
+## 7. QA engineering extension: retaining quality ownership
+
+> **The following section extends the article into QA engineering. It is not a direct summary of Woods's recommendations.**
+
+For testers, the critical failure mode is not that AI generates automated tests. It is that teams stop evaluating whether those tests provide meaningful evidence.
+
+Consider this Playwright example:
+
+```ts
+await page.goto('/checkout');
+await page.getByRole('button', { name: 'Pay' }).click();
+await expect(page.getByText('Success')).toBeVisible();
+```
+
+The code might run, but key questions remain: Did it create a real order? Is payment isolated from production? Does a visible `Success` message prove the business outcome? How is test data cleaned up?
+
+A practical AI-assisted QA workflow can apply four layers of control:
+
+1. **Intent contract:** Humans define requirements, risks, business invariants, and expected outcomes.
+2. **Implementation constraints:** Specify semantic locators, Page Object boundaries, fixtures, assertions, and cleanup requirements.
+3. **Validation evidence:** Execute tests, inspect failures, and where appropriate use mutation testing or seeded defects to establish that tests detect real problems.
+4. **Change governance:** Use PR reviews, golden samples, skill evaluations, and regression datasets to improve the system over time.
+
+For example, a team might document illustrative rules like these:
+
+```yaml
+ai_coding_policy:
+  human_owns:
+    - acceptance_criteria
+    - risk_assessment
+    - architectural_decisions
+    - final_review_and_merge
+  generated_tests_must:
+    - assert_business_outcomes
+    - avoid_invented_locators
+    - isolate_test_data
+    - provide_execution_evidence
+  reject_when:
+    - tests_only_assert_element_visibility
+    - production_side_effects_are_uncontrolled
+    - generated_code_cannot_be_explained
+```
+
+This YAML is an illustrative policy, not the configuration format of a specific tool.
+
+## 8. Is AI improving productivity or relocating costs?
+
+Lines of generated code are a poor success metric. More useful measures include time from requirement to mergeable change, rework, structural defects found in review, test effectiveness, ongoing maintenance, and whether team members can explain critical decisions.
+
+A faster generation step may merely shift work into review, debugging, or incident response. Real productivity gains should be evaluated across the delivery system.
+
+## 9. Conclusion: protect judgment, not keystrokes
+
+Woods's argument is a useful reminder that engineering value does not come solely from typing code. It also comes from setting direction, making trade-offs, recognizing defects, and teaching others.
+
+One caveat matters: **“LLMs do not necessarily make developers lazy” is not the same as “LLM dependence can never erode skills.”** If people stop understanding, challenging, and learning from code, the risk remains.
+
+For AI Native Quality Engineering, the goal is not to have AI write every test. It is to **retain human ownership of quality criteria, risk decisions, and final approval while delegating suitable repetitive implementation work**.
+
+---
+
+**Reference:** Joe Woods, *I don't think LLMs are making you lazy*, October 10, 2026: https://blog.joewoods.dev/programming/i-dont-think-llms-are-making-you-lazy/. The full original text was supplied by the user.
