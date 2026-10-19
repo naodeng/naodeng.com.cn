@@ -12,8 +12,11 @@ const breadcrumbs = [
   { name: homeName, url: `/${locale}/` },
   { name: "dsh-qa", url: `/${locale}/dsh-qa/` },
 ];
-const pluginCommand = site.installModes.find((mode) => mode.id === "install-plugin")?.commands[0] ?? "npx @deepseek-ai/dsh plugin --profile web add dsh-qa";
-const standaloneCommand = site.installModes.find((mode) => mode.id === "install-standalone")?.commands[0] ?? "npm install -g dsh-qa";
+const pluginMode = site.installModes.find((mode) => mode.id === "install-plugin");
+const standaloneMode = site.installModes.find((mode) => mode.id === "install-standalone");
+const pluginCommand = pluginMode?.commands[0] ?? "npx @deepseek-ai/dsh plugin --profile web add dsh-qa";
+const standaloneCommand = standaloneMode?.commands[0] ?? "npm install -g dsh-qa";
+const heroTitle = site.hero.title.replace("dsh-qa · ", "");
 const copyLabels = locale === "zh-cn"
   ? { copy: "复制命令", copied: "已复制", unavailable: "无法复制，请手动选择命令" }
   : { copy: "Copy command", copied: "Copied", unavailable: "Copy unavailable; select the command manually" };
@@ -25,7 +28,7 @@ const historicalReleases = site.releases.slice(1);
   <div class="dsh-qa-page" data-dsh-qa-page>
     <section class="hero" aria-labelledby="dsh-qa-title">
       <div class="hero-copy">
-        <h1 id="dsh-qa-title">{site.hero.title}</h1>
+        <h1 id="dsh-qa-title"><span class="hero-title-prefix">dsh-qa ·</span> {heroTitle}</h1>
         <p class="hero-summary">{site.hero.summary}</p>
         <div class="hero-actions">
           {site.hero.actions.map((action) => <a class:list={["hero-action", { primary: action.external }]} href={action.href} target={action.external ? "_blank" : undefined} rel={action.external ? "noopener noreferrer" : undefined} data-dsh-qa-action>{action.label}<span aria-hidden="true">{action.external ? "↗" : "↓"}</span></a>)}
@@ -37,21 +40,33 @@ const historicalReleases = site.releases.slice(1);
           <span aria-hidden="true">↗</span>
         </a>
       </div>
-      <div class="hero-side">
+
+      <div class="hero-side" data-reveal>
         <div class="hero-panel" data-ui="gate-status" aria-label={locale === "zh-cn" ? "质量门禁状态" : "Quality gate states"}>
-          <div class="panel-heading"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>{locale === "zh-cn" ? "本地 QA 工作区" : "Local QA workspace"}</span></div>
+          <div class="panel-heading">{locale === "zh-cn" ? "本地 QA 工作区" : "Local QA workspace"}</div>
           <p>{locale === "zh-cn" ? "交付门禁" : "Delivery gate"}</p>
-          <div class="gate-states"><span class="gate-pass">PASS</span><span class="gate-warn">WARN</span><span class="gate-block">BLOCK</span></div>
-          <span>{locale === "zh-cn" ? "证据先于结论，最终决策由人保留。" : "Evidence precedes conclusions; people retain the final decision."}</span>
-        </div>
-        <div class="command-card" data-ui="install-command" data-dsh-command-card data-copy-state="idle" data-command={standaloneCommand}>
-          <div class="command-tabs" role="group" aria-label={locale === "zh-cn" ? "安装方式" : "Installation method"}>
-            <button type="button" aria-pressed="true" data-dsh-command-tab data-command={standaloneCommand}>{locale === "zh-cn" ? "独立安装" : "Standalone"}</button>
-            <button type="button" aria-pressed="false" data-dsh-command-tab data-command={pluginCommand}>{locale === "zh-cn" ? "Harness 插件" : "Harness plugin"}</button>
+          <div class="gate-states">
+            <span class="gate-pass">PASS</span>
+            <span class="gate-warn">WARN</span>
+            <span class="gate-block">BLOCK</span>
           </div>
+          <span class="gate-note">{locale === "zh-cn" ? "证据先于结论，最终决策由人保留。" : "Evidence precedes conclusions; people retain the final decision."}</span>
+        </div>
+
+        <div class="command-card" data-ui="install-command" data-dsh-command-card data-copy-state="idle" data-command={standaloneCommand}>
+          <div class="command-topline">
+            <div class="command-tabs" role="tablist" aria-label={locale === "zh-cn" ? "安装方式" : "Installation method"}>
+              <button id="install-standalone" type="button" role="tab" aria-selected="true" aria-controls="command-panel" tabindex="0" data-dsh-command-tab data-command={standaloneCommand} data-description={standaloneMode?.description ?? ""}>{locale === "zh-cn" ? "独立安装" : "Standalone"}</button>
+              <button id="install-plugin" type="button" role="tab" aria-selected="false" aria-controls="command-panel" tabindex="-1" data-dsh-command-tab data-command={pluginCommand} data-description={pluginMode?.description ?? ""}>{locale === "zh-cn" ? "Harness 插件" : "Harness plugin"}</button>
+            </div>
+            <button type="button" class="copy-command" data-dsh-command-copy data-copied-label={copyLabels.copied} data-copy-error-label={copyLabels.unavailable}>
+              <span class="material-icons-sharp" aria-hidden="true">content_copy</span>
+              <span data-copy-label>{copyLabels.copy}</span>
+            </button>
+          </div>
+          <p class="command-description" data-dsh-command-description>{standaloneMode?.description}</p>
           <div class="command-line">
-            <code data-dsh-command-value><span aria-hidden="true">$</span> {standaloneCommand}</code>
-            <button type="button" data-dsh-command-copy data-copied-label={copyLabels.copied} data-copy-error-label={copyLabels.unavailable}><span class="material-icons-sharp" aria-hidden="true">content_copy</span>{copyLabels.copy}</button>
+            <code id="command-panel" role="tabpanel" aria-labelledby="install-standalone"><span aria-hidden="true">$</span><span data-dsh-command-value>{standaloneCommand}</span></code>
           </div>
           <span class="visually-hidden" aria-live="polite" data-dsh-command-feedback></span>
         </div>
@@ -61,14 +76,17 @@ const historicalReleases = site.releases.slice(1);
     <section class="section" aria-labelledby="features-title">
       <div class="section-heading"><h2 id="features-title">{site.labels.features}</h2></div>
       <div class="feature-grid">
-        {site.features.map((feature) => <article class="feature-card" data-dsh-qa-feature><span class="material-icons-sharp" aria-hidden="true">{feature.icon}</span><h3>{feature.title}</h3><p>{feature.description}</p></article>)}
+        {site.features.map((feature, index) => <article class:list={["feature-card", { "feature-lead": index === 0 }]} data-dsh-qa-feature data-reveal>
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </article>)}
       </div>
     </section>
 
     <section class="section showcase" aria-labelledby="showcase-title">
       <div class="section-heading"><h2 id="showcase-title">{site.labels.showcase}</h2></div>
       <div class="showcase-grid">
-        {site.showcase.map((item, index) => <article class="showcase-card" data-dsh-qa-showcase>
+        {site.showcase.map((item, index) => <article class="showcase-card" data-dsh-qa-showcase data-reveal>
           <img src={item.image} width={item.width} height={item.height} alt={item.alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" fetchpriority={index === 0 ? "high" : "auto"} />
           <div><h3>{item.title}</h3><p>{item.description}</p></div>
         </article>)}
@@ -78,25 +96,42 @@ const historicalReleases = site.releases.slice(1);
     <section class="section flow-section" aria-labelledby="flow-title">
       <div class="section-heading"><h2 id="flow-title">{site.labels.flow}</h2></div>
       <ol class="flow-list">
-        {site.deliveryFlow.map((stage, index) => <li data-dsh-qa-flow-stage><span class="flow-index">{index + 1}</span><div><h3>{stage.title}</h3><p>{stage.description}</p></div><span class:list={["flow-status", stage.status.toLowerCase()]}>{stage.status}</span></li>)}
+        {site.deliveryFlow.map((stage) => <li data-dsh-qa-flow-stage data-reveal>
+          <div><h3>{stage.title}</h3><p>{stage.description}</p></div>
+          <span class:list={["flow-status", stage.status.toLowerCase()]}>{stage.status}</span>
+        </li>)}
       </ol>
     </section>
 
-    <section class="section" aria-labelledby="install-title">
+    <section class="section install-section" aria-labelledby="install-title">
       <div class="section-heading"><h2 id="install-title">{site.labels.install}</h2></div>
       <div class="install-grid">
-        {site.installModes.map((mode) => <article class="install-card" id={mode.id} data-install-mode><h3>{mode.title}</h3><p>{mode.description}</p><span class="command-label">{site.labels.commandLabel}</span>{mode.commands.map((command) => <pre><code>{command}</code></pre>)}</article>)}
+        {site.installModes.map((mode) => <article class="install-card" data-install-mode data-reveal>
+          <h3>{mode.title}</h3>
+          <p>{mode.description}</p>
+          <span class="command-label">{site.labels.commandLabel}</span>
+          {mode.commands.map((command) => <div class="install-command" data-copy-state="idle">
+            <pre><code>{command}</code></pre>
+            <button type="button" class="copy-command" data-install-command-copy data-command={command} data-copy-label={copyLabels.copy} data-copied-label={copyLabels.copied} data-copy-error-label={copyLabels.unavailable}>
+              <span class="material-icons-sharp" aria-hidden="true">content_copy</span>
+              <span data-copy-label>{copyLabels.copy}</span>
+            </button>
+            <span class="visually-hidden" aria-live="polite" data-copy-feedback></span>
+          </div>)}
+        </article>)}
       </div>
     </section>
 
     <section class="section ecosystem" aria-labelledby="ecosystem-title">
       <div class="section-heading"><h2 id="ecosystem-title">{site.labels.ecosystem}</h2></div>
-      <div class="ecosystem-links">{site.ecosystemLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>{link.label}<span aria-hidden="true">→</span></a>)}</div>
+      <div class="ecosystem-links">
+        {site.ecosystemLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}
+      </div>
     </section>
 
     <section class="section releases" data-release-notes aria-labelledby="releases-title">
       <div class="section-heading"><h2 id="releases-title">{site.labels.releaseNotes}</h2></div>
-      <article class="current-release" data-dsh-current-release>
+      <article class="current-release" data-dsh-current-release data-reveal>
         <div class="current-release-heading"><span>{locale === "zh-cn" ? "当前版本" : "Current release"}</span><strong>{latestRelease.version}</strong><time datetime={latestRelease.publishedAt}>{latestRelease.publishedAt}</time></div>
         <p>{latestRelease.summary}</p>
         <div class="release-body"><ul>{latestRelease.changes.map((change) => <li>{change}</li>)}</ul><a href={latestRelease.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} <span aria-hidden="true">↗</span></a></div>
@@ -112,45 +147,104 @@ const historicalReleases = site.releases.slice(1);
 </Layout>
 
 <script>
-  const copyCommand = async (button: HTMLButtonElement) => {
-    const card = button.closest<HTMLElement>("[data-dsh-command-card]");
-    const feedback = card?.querySelector<HTMLElement>("[data-dsh-command-feedback]");
-    if (!card || !feedback) return;
+  const commandCard = document.querySelector<HTMLElement>("[data-dsh-command-card]");
+  const commandTabs = commandCard?.querySelectorAll<HTMLButtonElement>("[data-dsh-command-tab]");
+  const commandValue = commandCard?.querySelector<HTMLElement>("[data-dsh-command-value]");
+  const commandDescription = commandCard?.querySelector<HTMLElement>("[data-dsh-command-description]");
 
-    try {
-      await navigator.clipboard.writeText(card.dataset.command || "");
-    } catch {
-      card.dataset.copyState = "failed";
-      feedback.textContent = button.dataset.copyErrorLabel || "Copy unavailable; select the command manually";
-      return;
-    }
-
-    card.dataset.copyState = "copied";
-    feedback.textContent = button.dataset.copiedLabel || "Copied";
+  const selectCommand = (tab: HTMLButtonElement) => {
+    if (!commandCard || !commandValue) return;
+    commandCard.dataset.command = tab.dataset.command || "";
+    commandCard.dataset.copyState = "idle";
+    commandValue.textContent = commandCard.dataset.command;
+    if (commandDescription) commandDescription.textContent = tab.dataset.description || "";
+    commandTabs?.forEach((button) => {
+      const selected = button === tab;
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+    });
+    const panel = commandCard.querySelector<HTMLElement>("#command-panel");
+    panel?.setAttribute("aria-labelledby", tab.id);
   };
 
-  document.querySelectorAll<HTMLButtonElement>("[data-dsh-command-copy]").forEach((button) => {
+  commandTabs?.forEach((tab) => tab.addEventListener("click", () => selectCommand(tab)));
+  commandCard?.querySelector<HTMLElement>("[role='tablist']")?.addEventListener("keydown", (event) => {
+    if (!(event instanceof KeyboardEvent) || !commandTabs?.length) return;
+    const currentIndex = Array.from(commandTabs).findIndex((tab) => tab.getAttribute("aria-selected") === "true");
+    const lastIndex = commandTabs.length - 1;
+    const nextIndex = event.key === "ArrowRight" ? (currentIndex + 1) % commandTabs.length
+      : event.key === "ArrowLeft" ? (currentIndex + lastIndex) % commandTabs.length
+      : event.key === "Home" ? 0
+      : event.key === "End" ? lastIndex
+      : -1;
+    if (nextIndex < 0) return;
+    event.preventDefault();
+    commandTabs[nextIndex].focus();
+    selectCommand(commandTabs[nextIndex]);
+  });
+
+  const selectModeFromHash = () => {
+    if (location.hash === "#install-plugin") {
+      const pluginTab = commandCard?.querySelector<HTMLButtonElement>("#install-plugin");
+      if (pluginTab) selectCommand(pluginTab);
+    } else if (location.hash === "#install-standalone") {
+      const standaloneTab = commandCard?.querySelector<HTMLButtonElement>("#install-standalone");
+      if (standaloneTab) selectCommand(standaloneTab);
+    }
+  };
+  window.addEventListener("hashchange", selectModeFromHash);
+  selectModeFromHash();
+
+  const copyCommand = async (button: HTMLButtonElement) => {
+    const group = button.closest<HTMLElement>("[data-copy-state]");
+    const feedback = group?.querySelector<HTMLElement>("[data-dsh-command-feedback], [data-copy-feedback]");
+    const command = button.dataset.command || commandCard?.dataset.command || "";
+    if (!group || !command) return;
+
+    const label = button.querySelector<HTMLElement>("[data-copy-label]");
+    const idleLabel = button.dataset.copyLabel || label?.textContent || "";
+    try {
+      await navigator.clipboard.writeText(command);
+      group.dataset.copyState = "copied";
+      if (label) label.textContent = button.dataset.copiedLabel || "Copied";
+      if (feedback) feedback.textContent = button.dataset.copiedLabel || "Copied";
+    } catch {
+      group.dataset.copyState = "failed";
+      if (label) label.textContent = button.dataset.copyErrorLabel || "Copy unavailable";
+      if (feedback) feedback.textContent = button.dataset.copyErrorLabel || "Copy unavailable";
+    }
+
+    window.setTimeout(() => {
+      if (group.isConnected && group.dataset.copyState !== "idle") {
+        group.dataset.copyState = "idle";
+        if (label) label.textContent = idleLabel;
+      }
+    }, 2400);
+  };
+
+  document.querySelectorAll<HTMLButtonElement>("[data-dsh-command-copy], [data-install-command-copy]").forEach((button) => {
     button.addEventListener("click", () => void copyCommand(button));
   });
 
-  document.querySelectorAll<HTMLButtonElement>("[data-dsh-command-tab]").forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const card = tab.closest<HTMLElement>("[data-dsh-command-card]");
-      const value = card?.querySelector<HTMLElement>("[data-dsh-command-value]");
-      if (!card || !value) return;
-      card.dataset.command = tab.dataset.command || "";
-      card.dataset.copyState = "idle";
-      value.lastChild!.textContent = ` ${card.dataset.command}`;
-      card.querySelectorAll<HTMLButtonElement>("[data-dsh-command-tab]").forEach((button) => {
-        button.setAttribute("aria-pressed", String(button === tab));
+  const page = document.querySelector<HTMLElement>("[data-dsh-qa-page]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (page && !reduceMotion.matches && "IntersectionObserver" in window) {
+    page.dataset.motionReady = "true";
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target);
       });
-    });
-  });
+    }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
+    page.querySelectorAll<HTMLElement>("[data-reveal]").forEach((item) => observer.observe(item));
+  }
 </script>
-\n<style>
+
+<style>
   .dsh-qa-page {
     --page-line: var(--color-border);
-    --page-soft: color-mix(in srgb, var(--color-theme) 4%, var(--color-surface));
+    --page-soft: color-mix(in srgb, var(--color-theme) 7%, var(--color-surface));
     max-width: var(--layout-max);
     margin: 0 auto;
     padding: 2rem 0 5rem;
@@ -161,200 +255,299 @@ const historicalReleases = site.releases.slice(1);
   .dsh-qa-page h3 { color: var(--color-main); }
   .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(19rem, .8fr);
+    grid-template-columns: minmax(0, 1.05fr) minmax(20rem, .95fr);
     align-items: center;
-    gap: clamp(2rem, 5vw, 5rem);
-    padding: 1.5rem 0 3rem;
+    gap: clamp(2rem, 4.5vw, 4rem);
+    padding: 1.5rem 0 3.25rem;
   }
   .hero-copy { min-width: 0; }
   .hero h1 {
     margin: 0;
-    font-size: clamp(3.4rem, 8vw, 6rem);
+    font-size: clamp(3.25rem, 5.2vw, 4.5rem);
     font-weight: 800;
     letter-spacing: -.065em;
     line-height: .98;
+    word-break: keep-all;
+    animation: headline-rise 680ms cubic-bezier(.2,.8,.2,1) both;
   }
+  .hero-title-prefix { white-space: nowrap; }
   .hero-summary {
     max-width: 42rem;
     margin: 1.25rem 0 0;
     color: var(--color-text-secondary);
-    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-    line-height: 1.65;
+    font-size: clamp(1.1rem, 1.55vw, 1.25rem);
+    line-height: 1.6;
   }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.6rem; }
-  .hero-action,
-  .ecosystem-links a,
-  .release-body a {
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin-top: 1.55rem; }
+  .hero-action {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: .65rem;
-    min-height: 2.8rem;
-    padding: .65rem .9rem;
-    border: 1px solid var(--page-line);
+    justify-content: center;
+    gap: .55rem;
+    min-height: 3rem;
+    padding: .55rem .95rem;
+    border: 0;
     border-radius: var(--radius-sm);
     color: var(--color-main);
-    background: var(--color-surface);
+    background: transparent;
     text-decoration: none;
+    font-size: 1rem;
     font-weight: 700;
-    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
   }
-  .hero-action.primary { border-color: var(--color-theme); background: var(--color-theme); color: var(--color-theme-on-dark); }
+  .hero-action.primary { color: var(--color-theme-on-dark); background: var(--color-theme); }
   .hero-action:hover,
-  .hero-action:focus-visible,
-  .ecosystem-links a:hover,
-  .ecosystem-links a:focus-visible,
-  .release-body a:hover,
-  .release-body a:focus-visible { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-main); }
+  .hero-action:focus-visible { color: var(--color-theme); background: var(--color-theme-soft); }
   .hero-action.primary:hover,
-  .hero-action.primary:focus-visible { background: var(--color-theme-focus); color: var(--color-theme-on-dark); }
+  .hero-action.primary:focus-visible { color: var(--color-theme-on-dark); background: var(--color-theme-focus); }
+  .hero-action > span,
+  .ecosystem-links a > span { transition: transform var(--transition-fast); }
+  .hero-action:hover > span,
+  .ecosystem-links a:hover > span { transform: translateX(3px); }
   .latest-release {
     display: inline-flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: .35rem .65rem;
-    margin-top: 1.2rem;
+    margin-top: 1rem;
     color: var(--color-text-secondary);
-    font-size: .9rem;
+    font-size: .95rem;
     text-decoration: none;
   }
   .latest-release strong { color: var(--color-theme); }
   .latest-release:hover strong,
   .latest-release:focus-visible strong { text-decoration: underline; text-underline-offset: .2em; }
-  .hero-side { display: grid; gap: .8rem; min-width: 0; }
+  .hero-side { display: grid; gap: .75rem; min-width: 0; }
   .hero-panel,
-  .command-card,
-  .feature-card,
-  .install-card,
-  .showcase-card,
-  .current-release,
-  .release-history {
-    border: 1px solid var(--page-line);
+  .command-card {
+    min-width: 0;
+    border: 0;
     border-radius: var(--radius-md);
-    background: var(--color-surface);
   }
-  .hero-panel { display: grid; gap: .85rem; padding: 1rem 1.1rem 1.1rem; }
-  .panel-heading { display: flex; align-items: center; gap: .65rem; color: var(--color-text-secondary); font-size: .82rem; }
-  .window-dots { display: inline-flex; gap: .28rem; }
-  .window-dots i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--color-border-strong); }
-  .window-dots i:first-child { background: var(--color-theme); }
-  .hero-panel > p { margin: .35rem 0 0; font-size: .9rem; font-weight: 700; }
-  .gate-states { display: flex; flex-wrap: wrap; gap: .45rem; }
-  .gate-states span { padding: .24rem .55rem; border-radius: 999px; font-size: .78rem; font-weight: 800; }
-  .gate-pass { background: color-mix(in srgb, var(--color-success-text) 12%, var(--color-surface)); color: var(--color-success-text); }
-  .gate-warn { background: color-mix(in srgb, var(--color-warn) 12%, var(--color-surface)); color: var(--color-warn); }
-  .gate-block { background: color-mix(in srgb, var(--color-caution) 11%, var(--color-surface)); color: var(--color-caution); }
-  .hero-panel > span { color: var(--color-text-secondary); font-size: .92rem; line-height: 1.5; }
-  .command-card { overflow: hidden; background: var(--color-code-surface); }
-  .command-tabs { display: flex; flex-wrap: wrap; gap: .35rem; padding: .55rem .65rem; border-bottom: 1px solid var(--page-line); background: var(--color-surface); }
+  .hero-panel { display: grid; gap: .7rem; padding: 1.15rem 1.25rem; background: var(--color-surface); }
+  .panel-heading { color: var(--color-text-secondary); font-size: 1rem; font-weight: 700; }
+  .hero-panel > p { margin: 0; font-size: 1.25rem; font-weight: 800; }
+  .gate-states { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .gate-states span { display: inline-flex; align-items: center; gap: .45rem; font-size: 1rem; font-weight: 800; }
+  .gate-states span::before { width: .55rem; height: .55rem; border-radius: 50%; background: currentColor; content: ""; }
+  .gate-pass { color: var(--color-success-text); }
+  .gate-warn { color: var(--color-warn); }
+  .gate-block { color: var(--color-caution); }
+  .gate-note { color: var(--color-main); font-size: 1rem; line-height: 1.55; }
+  .command-card { overflow: hidden; padding: .2rem 1.15rem 1rem; background: var(--color-code-surface); }
+  .command-topline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; }
+  .command-tabs { display: flex; flex-wrap: wrap; gap: .4rem 1rem; }
   .command-tabs button {
-    min-height: 2.2rem;
-    padding: .45rem .7rem;
-    border: 1px solid transparent;
-    border-radius: 999px;
+    min-height: 3rem;
+    padding: .5rem .1rem .35rem;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
     color: var(--color-text-secondary);
     background: transparent;
     font: inherit;
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
   }
-  .command-tabs button[aria-pressed="true"] { border-color: var(--page-line); color: var(--color-theme); background: var(--color-theme-soft); }
-  .command-line { display: flex; align-items: center; gap: .5rem; min-width: 0; padding: .35rem .55rem .35rem .9rem; }
-  .command-card button[data-dsh-command-copy] { display: inline-flex; flex: 0 0 auto; align-items: center; gap: .35rem; min-height: 2.2rem; padding: .35rem .45rem; border: 0; border-radius: var(--radius-sm); color: var(--color-text-secondary); background: transparent; font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }
-  .command-card button:hover,
-  .command-card button:focus-visible { color: var(--color-theme); background: var(--color-theme-soft); }
-  .command-card button .material-icons-sharp { font-size: 1rem; }
-  .command-card code { display: block; flex: 1 1 auto; min-width: 0; padding: .65rem 0; color: var(--color-main); font-family: ui-monospace, monospace; font-size: clamp(.75rem, 1.3vw, .9rem); line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .command-card code span { color: var(--color-theme); }
-  .command-card[data-copy-state="copied"] [data-dsh-command-copy] { color: var(--color-success-text); }
-  .command-card[data-copy-state="failed"] [data-dsh-command-copy] { color: var(--color-caution); }
-  .section { padding-top: clamp(3rem, 6vw, 5rem); }
-  .section-heading { display: flex; align-items: baseline; gap: .8rem; }
-  .section h2 { margin: 0; font-size: clamp(1.55rem, 3vw, 2.3rem); line-height: 1.2; }
-  .feature-grid,
-  .install-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin-top: 1.15rem; }
-  .feature-card,
-  .install-card { min-width: 0; padding: 1.15rem; transition: border-color var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast); }
-  .feature-card:hover,
-  .install-card:hover { transform: translateY(-2px); border-color: var(--color-border-strong); background: var(--page-soft); }
-  .feature-card .material-icons-sharp { color: var(--color-theme); }
+  .command-tabs button[aria-selected="true"] { border-color: var(--color-theme); color: var(--color-theme); }
+  .command-tabs button:hover { color: var(--color-theme); }
+  .copy-command {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: .45rem;
+    min-height: 2.75rem;
+    padding: .5rem .6rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    color: var(--color-main);
+    background: transparent;
+    font: inherit;
+    font-size: .95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  }
+  .copy-command .material-icons-sharp { font-size: 1.1rem; }
+  .copy-command:hover,
+  .copy-command:focus-visible { color: var(--color-theme); background: var(--color-theme-soft); }
+  [data-copy-state="copied"] .copy-command { color: var(--color-success-text); }
+  [data-copy-state="failed"] .copy-command { color: var(--color-caution); }
+  .command-description { margin: .6rem 0 .85rem; color: var(--color-main); font-size: 1rem; line-height: 1.5; }
+  .command-line {
+    display: block;
+    padding: .8rem .85rem;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+  }
+  .command-line code > span:first-child { margin-right: .55rem; color: var(--color-theme); user-select: none; }
+  .command-card code {
+    display: block;
+    min-width: 0;
+    color: var(--color-main);
+    font-family: ui-monospace, monospace;
+    font-size: 1rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .command-card[data-copy-state="copied"] .command-line { background: color-mix(in srgb, var(--color-success-text) 8%, var(--color-surface)); }
+  .command-card[data-copy-state="failed"] .command-line { background: color-mix(in srgb, var(--color-caution) 7%, var(--color-surface)); }
+  .section { padding-top: clamp(3.1rem, 6vw, 5rem); }
+  .section-heading { margin-bottom: 1.25rem; }
+  .section h2 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.35rem); line-height: 1.15; letter-spacing: -.03em; }
+  .feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 3rem; align-items: start; }
+  .feature-card { min-width: 0; padding: .35rem 0; }
+  .feature-card.feature-lead { display: grid; grid-column: 1 / -1; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); align-items: baseline; gap: 2rem; padding-bottom: .55rem; }
   .feature-card h3,
   .install-card h3,
   .flow-list h3,
-  .showcase-card h3 { margin: .65rem 0 .4rem; font-size: 1.1rem; line-height: 1.35; }
+  .showcase-card h3 { margin: 0 0 .45rem; font-size: 1.2rem; line-height: 1.35; }
   .feature-card p,
   .install-card p,
   .flow-list p,
-  .showcase-card p { margin: 0; color: var(--color-text-secondary); line-height: 1.55; }
-  .showcase-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; margin-top: 1.15rem; }
-  .showcase-card { min-width: 0; overflow: hidden; transition: transform var(--transition-fast), border-color var(--transition-fast); }
-  .showcase-card:hover { transform: translateY(-2px); border-color: var(--color-border-strong); }
-  .showcase-card img { display: block; width: 100%; height: auto; background: var(--color-code-surface); }
-  .showcase-card > div { min-height: 7.5rem; padding: .9rem 1rem 1rem; background: var(--color-code-surface); }
-  .showcase-card h3 { margin-top: 0; }
-  .showcase-card p { font-size: .93rem; }
-  .flow-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .55rem; margin: 1.15rem 0 0; padding: 0; list-style: none; }
-  .flow-list li { min-width: 0; padding: .85rem; border: 1px solid var(--page-line); border-radius: var(--radius-md); background: var(--color-surface); }
-  .flow-index { color: var(--color-theme); font-size: .8rem; font-variant-numeric: tabular-nums; font-weight: 700; }
-  .flow-list h3 { margin-top: .65rem; }
-  .flow-list p { font-size: .9rem; }
-  .flow-status { display: inline-flex; margin-top: .7rem; padding: .2rem .5rem; border-radius: 999px; background: var(--color-theme-soft); color: var(--color-theme); font-size: .7rem; font-weight: 800; }
-  .flow-status.pass { background: color-mix(in srgb, var(--color-success-text) 12%, var(--color-surface)); color: var(--color-success-text); }
-  .command-label { display: block; margin-top: 1rem; color: var(--color-text-tertiary); font-size: .82rem; font-weight: 700; }
-  .install-card pre { overflow: visible; margin: .45rem 0 0; padding: .75rem; border: 1px solid var(--page-line); border-radius: var(--radius-sm); background: var(--color-code-surface); color: var(--color-main); font-size: .82rem; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .install-card code { font-family: ui-monospace, monospace; overflow-wrap: anywhere; white-space: inherit; }
-  .ecosystem-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: .55rem; margin-top: 1.15rem; }
-  .ecosystem-links a { gap: 1rem; }
-  .current-release { margin-top: 1.15rem; padding: 1.1rem; background: var(--page-soft); }
-  .current-release-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .65rem; }
-  .current-release-heading > span { color: var(--color-text-secondary); font-size: .84rem; }
-  .current-release-heading strong { font-size: 1.2rem; }
+  .showcase-card p { margin: 0; color: var(--color-text-secondary); font-size: 1rem; line-height: 1.55; }
+  .showcase-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2.2rem 1.1rem; align-items: start; }
+  .showcase-card { min-width: 0; grid-column: span 5; }
+  .showcase-card:nth-child(4n + 1),
+  .showcase-card:nth-child(4n + 4) { grid-column: span 7; }
+  .showcase-card img { display: block; width: 100%; height: auto; background: var(--color-code-surface); transition: transform 320ms cubic-bezier(.2,.8,.2,1); }
+  .showcase-card:hover img { transform: scale(1.012); }
+  .showcase-card > div { padding: .7rem .1rem 0; }
+  .showcase-card h3 { margin-bottom: .25rem; }
+  .flow-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; margin: 1.1rem 0 0; padding: 0; list-style: none; }
+  .flow-list li { position: relative; min-width: 0; padding: .7rem .25rem; }
+  .flow-list li:not(:last-child)::after { position: absolute; top: .75rem; right: -.65rem; color: var(--color-theme); content: "→"; font-size: 1.2rem; font-weight: 700; }
+  .flow-list h3 { font-size: 1.15rem; }
+  .flow-list p { margin-bottom: .65rem; }
+  .flow-status { color: var(--color-text-secondary); font-size: .875rem; font-weight: 700; }
+  .flow-status.pass { color: var(--color-success-text); }
+  .install-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.4rem; align-items: start; }
+  .install-card { min-width: 0; }
+  .install-card > p { min-height: 4.7em; }
+  .command-label { display: block; margin: 1rem 0 .45rem; color: var(--color-text-secondary); font-size: .875rem; font-weight: 700; }
+  .install-command { display: grid; gap: .35rem; }
+  .install-command pre {
+    min-width: 0;
+    margin: 0;
+    padding: .8rem .9rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-code-surface);
+    color: var(--color-main);
+    font-size: 1rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .install-command code { font-family: ui-monospace, monospace; font-size: 1rem; overflow-wrap: anywhere; white-space: inherit; }
+  .ecosystem-links { display: flex; flex-wrap: wrap; gap: .35rem 1.7rem; }
+  .ecosystem-links a,
+  .release-body a {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    min-height: 2.8rem;
+    color: var(--color-main);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  .ecosystem-links a:hover,
+  .ecosystem-links a:focus-visible,
+  .release-body a:hover,
+  .release-body a:focus-visible { color: var(--color-theme); }
+  .current-release { display: grid; grid-template-columns: minmax(12rem, .6fr) minmax(0, 1.4fr); gap: .5rem 2.2rem; align-items: start; }
+  .current-release-heading { display: grid; justify-items: start; align-content: start; gap: .35rem; }
+  .current-release-heading > span { color: var(--color-text-secondary); font-size: .875rem; }
+  .current-release-heading strong { font-size: 1.55rem; }
   .current-release-heading time,
-  .release-list time { color: var(--color-text-secondary); font-size: .83rem; }
-  .current-release > p { margin: .7rem 0; font-weight: 700; line-height: 1.5; }
+  .release-list time { color: var(--color-text-secondary); font-size: .875rem; }
+  .current-release > p { margin: 0 0 .5rem; font-size: 1.1rem; font-weight: 700; line-height: 1.5; }
   .release-body { color: var(--color-text-secondary); }
-  .release-body ul { margin: .7rem 0 1rem; padding-inline-start: 1.25rem; line-height: 1.6; }
-  .release-body a { display: flex; width: fit-content; min-height: 2.6rem; }
-  .release-history { margin-top: .65rem; overflow: hidden; }
+  .release-body ul { margin: .55rem 0 1rem; padding-inline-start: 1.25rem; line-height: 1.6; }
+  .release-body a { width: fit-content; }
+  .release-history { margin-top: 2rem; }
   .release-history > summary,
-  .release-list summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .9rem 1rem; cursor: pointer; font-weight: 700; }
-  .release-history > summary { min-height: 3rem; }
-  .release-history[open] > summary { background: var(--page-soft); }
-  .release-history > .release-list { display: grid; gap: .5rem; margin: 0; padding: .6rem; }
-  .release-list details { border: 1px solid var(--page-line); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .release-list summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; cursor: pointer; font-size: 1rem; font-weight: 700; }
+  .release-history[open] > summary { color: var(--color-theme); }
+  .release-history > .release-list { display: grid; gap: .35rem; margin: 0; padding: .3rem 0 0; }
+  .release-list details { background: transparent; }
   .release-list summary > span:first-child { display: flex; flex: 0 0 auto; align-items: baseline; gap: .65rem; }
   .release-list summary > span:last-child { color: var(--color-text-secondary); font-weight: 400; text-align: end; }
-  .release-list details[open] { background: var(--page-soft); }
-  .release-list .release-body { padding: 0 1rem 1rem; }
+  .release-list details[open] summary { color: var(--color-theme); }
+  .release-body { padding: 0 0 .7rem; }
   .dsh-qa-page a:focus-visible,
   .dsh-qa-page button:focus-visible,
   .dsh-qa-page summary:focus-visible { outline: 2px solid var(--color-theme-focus); outline-offset: 3px; }
-  .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  [data-reveal] { opacity: 1; transform: none; }
+  [data-motion-ready="true"] [data-reveal] {
+    opacity: 1;
+    transform: translateY(1rem);
+    transition: transform 520ms cubic-bezier(.2,.8,.2,1);
+  }
+  [data-motion-ready="true"] [data-reveal].is-revealed { transform: translateY(0); }
+  .hero h1 { animation: headline-rise 680ms cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes headline-rise {
+    from { clip-path: inset(0 0 100% 0); transform: translateY(.18em); }
+    to { clip-path: inset(0); transform: translateY(0); }
+  }
   @media (max-width: 1000px) {
-    .hero { grid-template-columns: minmax(0, 1fr) minmax(17rem, .85fr); gap: 2rem; }
-    .showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .flow-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .dsh-qa-page { padding-top: 1.5rem; }
+    .hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .hero-side { grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); align-items: stretch; }
+    .hero-panel { align-content: center; }
+    .flow-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 1.2rem; }
+    .flow-list li:not(:last-child)::after { display: none; }
   }
   @media (max-width: 720px) {
-    .dsh-qa-page { padding: 1.25rem 0 4rem; }
-    .hero { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding: 1rem 0 2rem; }
-    .hero h1 { font-size: clamp(3.4rem, 16vw, 5rem); }
-    .hero-summary { margin-top: .9rem; font-size: 1.08rem; }
-    .hero-side { gap: .65rem; }
-    .section { padding-top: 2.8rem; }
-    .feature-grid,
-    .install-grid,
-    .showcase-grid { grid-template-columns: minmax(0, 1fr); }
-    .flow-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .showcase-card > div { min-height: 0; }
-    .release-list summary { align-items: flex-start; }
+    .dsh-qa-page { padding: 1.2rem 0 4rem; }
+    .hero { gap: 1.45rem; padding: .75rem 0 2.2rem; }
+    .hero h1 { font-size: clamp(3.4rem, 15vw, 4.5rem); }
+    .hero-summary { margin-top: .85rem; font-size: 1.1rem; }
+    .hero-actions { gap: .4rem .5rem; margin-top: 1.15rem; }
+    .hero-action { min-height: 2.8rem; padding-inline: .75rem; }
+    .hero-side { grid-template-columns: minmax(0, 1fr); }
+    .hero-panel { gap: .5rem; padding: 1rem; }
+    .command-card { padding-inline: .85rem; }
+    .command-topline { align-items: flex-start; }
+    .command-tabs { gap: .2rem .8rem; }
+    .command-tabs button { font-size: .95rem; }
+    .copy-command { min-height: 2.65rem; padding-inline: .35rem; font-size: .875rem; }
+    .command-description { margin-block: .4rem .7rem; }
+    .command-line { padding: .75rem; }
+    .section { padding-top: 3rem; }
+    .section h2 { font-size: 1.8rem; }
+    .feature-grid { grid-template-columns: minmax(0, 1fr); gap: 1.45rem; }
+    .feature-card.feature-lead { grid-column: auto; grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+    .showcase-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.7rem .7rem; }
+    .showcase-card,
+    .showcase-card:nth-child(4n + 1),
+    .showcase-card:nth-child(4n + 4) { grid-column: span 6; }
+    .showcase-card:nth-child(4n + 2),
+    .showcase-card:nth-child(4n + 3) { grid-column: span 3; }
+    .showcase-card:nth-child(4n + 2) h3,
+    .showcase-card:nth-child(4n + 3) h3 { font-size: 1rem; }
+    .showcase-card:nth-child(4n + 2) p,
+    .showcase-card:nth-child(4n + 3) p { font-size: .875rem; }
+    .flow-list { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+    .flow-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .7rem; align-items: start; padding: .4rem 0; }
+    .flow-list p { grid-column: 1 / -1; }
+    .flow-status { align-self: start; }
+    .install-grid { grid-template-columns: minmax(0, 1fr); gap: 1.8rem; }
+    .install-card > p { min-height: 0; }
+    .current-release { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+    .current-release-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .7rem; }
+    .release-list summary { align-items: flex-start; flex-direction: column; }
     .release-list summary > span:last-child { text-align: start; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero-action,
-    .feature-card,
-    .install-card,
-    .showcase-card { transition: none; }
+    .dsh-qa-page *,
+    .dsh-qa-page *::before,
+    .dsh-qa-page *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    .dsh-qa-page [data-motion-ready="true"] [data-reveal] { opacity: 1; transform: none; }
   }
 </style>

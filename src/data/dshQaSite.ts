@@ -105,7 +105,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
   en: {
     meta: { title: "dsh-qa · QA Workbench", description: "A local-first QA workbench for DeepSeek Harness. Keep project planning, controlled runs, traceable evidence, and delivery decisions in one workspace." },
     hero: {
-      title: "dsh-qa",
+      title: "dsh-qa · QA Workbench",
       summary: "A local-first QA workbench for DeepSeek Harness. Manage projects and evidence standalone; use the Harness plugin for native DSH sessions.",
       actions: [
         { label: "View on GitHub", href: "https://github.com/naodeng/dsh-qa", external: true },
@@ -178,7 +178,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
   "zh-cn": {
     meta: { title: "dsh-qa · 质量工作台", description: "面向 DeepSeek Harness 的本地优先 QA 工作台，在一个工作区中连接项目计划、受控执行、可追溯证据与交付决策。" },
     hero: {
-      title: "dsh-qa",
+      title: "dsh-qa · 质量工作台",
       summary: "面向 DeepSeek Harness 的本地优先 QA 工作台。独立运行时管理项目与证据；需要原生 DSH 会话时，启用 Harness 插件。",
       actions: [
         { label: "查看 GitHub", href: "https://github.com/naodeng/dsh-qa", external: true },

@@ -129,10 +129,19 @@ for (const locale of ["en", "zh-cn"] as const) {
         await page.evaluate(() => document.fonts.ready);
 
         const lineCount = await heading.evaluate((node) => {
-          const title = node.textContent ?? "";
-          const offset = title.indexOf("质量");
-          const textNode = node.firstChild;
-          if (offset < 0 || textNode?.nodeType !== Node.TEXT_NODE) return 0;
+          const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+          let textNode: Text | null = null;
+          let offset = -1;
+          while (walker.nextNode()) {
+            const candidate = walker.currentNode as Text;
+            const candidateOffset = candidate.textContent?.indexOf("质量") ?? -1;
+            if (candidateOffset >= 0) {
+              textNode = candidate;
+              offset = candidateOffset;
+              break;
+            }
+          }
+          if (!textNode) return 0;
 
           const range = document.createRange();
           range.setStart(textNode, offset);
