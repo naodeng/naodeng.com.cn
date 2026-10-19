@@ -1,0 +1,171 @@
+---
+title: "敏捷测试贯穿一个迭代：每个 Skill 在交接中的具体用法"
+description: "按 Sprint 计划、故事澄清、增量测试和迭代评审组织 Skills，说明各阶段如何交接项目上下文与质量证据。"
+date: 2026-10-23T09:00:00.000Z
+author: "nao.deng"
+draft: true
+tags: ["AI 测试", "Agent Skills", "敏捷测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 流程实践"]
+---
+
+测试反馈要在迭代结束前交到团队手里，团队才有时间处理问题。范围、测试准备度、执行证据和未关闭风险应随迭代推进持续更新。
+
+Sprint Testing Workflow 跟踪阶段和门禁；其他 Skills 分别支持故事澄清、用例设计、功能检查、缺陷记录和迭代回顾。是否进入下一环节，要看当前故事和手头资料。
+
+## 流程一览
+
+![迭代 QA 交接流程：从需求和完成定义开始，经过计划、测试、稳定化，最后回顾](/images/blog/qa-skills-workflows/sprint-zh.svg)
+
+| 阶段 | 主要 Skill | 阶段退出时需要的证据 |
+| --- | --- | --- |
+| 规划迭代 | Sprint Testing Workflow（迭代测试工作流） | 范围、风险顺序、负责人、当前门禁和下一步交接 |
+| 按需澄清故事 | Requirements Analysis（需求分析） | 规则、缺口、依赖和已确认问题 |
+| 准备可执行检查 | Test Case Writing（测试用例编写） | 有优先级、能追溯到已确认行为的用例 |
+| 测试一个增量 | Functional Testing（功能测试） | 核心流程覆盖、场景优先级和执行说明 |
+| 记录可复现失败 | Bug Reporting（缺陷报告） | 复现步骤、影响、实际/预期行为和证据 |
+| 迭代回顾和交接 | Test Reporting（测试报告） | 有证据的状态、剩余风险和下一迭代行动 |
+
+源 Skill 中的两周迭代只是示例。按实际迭代长度、发布日历、团队人力和交付节点安排阶段；每次围绕当前重点调用一个主要 Skill，后续交接根据需要再进行。
+
+## 一起安装需要的 Skills
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill sprint-testing-workflow -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill requirements-analysis -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill test-case-writing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill bug-reporting -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill test-reporting -g
+~~~
+
+英文版请将命令来源改为 `naodeng/awesome-qa-skills`，保留对应的 `--skill` 名称。`-g` 表示全局安装；只在当前项目使用时去掉它，指定 Codex 时可加 `-a codex`。可以一次安装整组，但只有当前阶段确实需要某个专项产物时才调用它。调用方式由 Agent 决定：支持自动发现时直接描述任务；需要显式选择时，按该 Agent 支持的格式调用。下文的 `@skill` 仅作示例。每次调用都要写明故事或任务范围，并附上说明实际行为的项目文件。新安装的 Skill 未出现时，重新加载会话，并查看对应 Agent 的安装说明。
+
+迭代上下文资料建议包括：迭代目标、故事清单、Definition of Done、团队容量、环境和数据策略、已知风险与技术债、未完成缺陷，以及距离发布的时间。具体故事还需提供验收标准、产品规则、设计/API 契约、相关改动代码和测试；必要时补上分支或构建版本。
+
+
+## Sprint 计划会：定范围、节奏和退出条件
+### Sprint Testing Workflow（迭代测试工作流）——安排阶段和门禁
+
+迭代规划、优先级明显变化或准备评估迭代退出时，从这个 Skill 开始。它负责组织阶段与门禁，但不能代替详细需求分析、测试用例或执行报告。
+
+~~~text
+@skill sprint-testing-workflow
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# sprint/PAY-48-goal.md（迭代目标）、backlog/PAY-482.md（需求）、docs/qa/definition-of-done.md（完成定义）、qa/carryover.md（遗留项）和 docs/qa/environment-plan.md（环境计划）。
+请为 PAY-48 迭代规划 QA。目标：Web 应用和 API 支持部分退款。
+请阅读 sprint/PAY-48-goal.md、backlog/PAY-482.md、
+docs/qa/definition-of-done.md、qa/carryover.md 和 docs/qa/environment-plan.md。
+团队有 2 名 QA；本次迭代一周后结束，临近 4.18.2 发布。
+请按这个实际节奏安排阶段。返回范围、当前阶段、门禁、P0-P2 队列、退出证据、
+风险，以及唯一的下一步 Skill 交接。不要推断日期、负责人或测试结果。
+~~~
+
+它应写清迭代目标和范围、阶段、门禁、优先级队列、退出标准及下一步交接。范围变化后，补充故事清单和影响，让它重新排列队列。
+
+## 故事梳理：先确认规则，再设计用例
+### Requirements Analysis（需求分析）——解决故事中的不确定规则
+
+当故事、验收标准或来源资料存在会影响测试预期的重要歧义时才调用它。附上故事、产品规则、原型/设计、技术说明、依赖和已知问题，并要求生成可以交给产品或研发负责人的具体问题。
+
+~~~text
+@skill requirements-analysis
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# backlog/PAY-482.md（需求）、product/refund-policy.md（业务规则）、design/refund-v3.md（设计）和 api/refunds.yaml（API 约定）。
+请依据 backlog/PAY-482.md、product/refund-policy.md、design/refund-v3.md、
+api/refunds.yaml 和 services/refund/ 分析 PAY-482。
+比较不同来源，区分已确认行为与假设，列出缺失或冲突的规则，评估对可测性的影响，
+并给负责人一组具体待确认问题。暂时不要编写测试用例。
+~~~
+
+它应输出需求理解、规则缺口、风险、可测性影响和待确认问题。故事已经明确时，跳过这一步。
+
+### Test Case Writing（测试用例编写）——把已确认行为转成用例
+
+会影响通过/失败标准的规则经负责人确认后，再把结论、需求来源、范围、环境、用户角色和权限、测试数据限制、历史缺陷及输出格式交给这个 Skill。
+
+~~~text
+@skill test-case-writing
+# 示例文档：qa/decisions/PAY-482-refund-rules.md 是已确认规则的决策记录示例；请替换为自己项目中的实际规则来源。
+请依据 qa/decisions/PAY-482-refund-rules.md 中已确认的行为，为 PAY-482 编写
+有优先级的测试用例。每条用例包括前置条件、测试数据、步骤、可判定的预期结果、
+优先级，以及到验收标准或业务规则的 Trace。视情况覆盖正向、负向和边界场景。
+未解决假设单独列出，不要自行编造限制或 API 行为。
+~~~
+
+产出应是一套统一、可执行且可追溯的用例，并明确列出规则缺口。用例属于测试设计，不是执行报告。高风险规则仍未确认时，应把相关用例标为等待澄清，而不是虚构判断标准。
+
+## 增量进入测试：准备检查并记录实际发现
+### Functional Testing（功能测试）——为一个增量准备检查
+
+某个故事的增量达到可测试状态后，可以调用它为单个功能流程准备重点检查。提供目标构建、角色、功能流程、需求、测试数据、环境、已有用例和已知薄弱处。如果 Test Case Writing 已生成完整用例，就让 Functional Testing 排定优先级并检查流程或集成缺口，避免重复生成用例。
+
+~~~text
+@skill functional-testing
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# docs/product/refund-policy.md（退款规则）和 qa/cases/PAY-482.md（测试用例）。
+请为构建 4.18.2-sprint-rc1 上的部分退款准备执行优先级。
+阅读 docs/product/refund-policy.md、services/refund/、tests/refund/ 和
+qa/cases/PAY-482.md。按用户流程和业务目标组织覆盖，指出重要的角色、数据状态、
+负向、边界与集成检查。返回执行说明和待确认问题，不要声称构建已测试。
+~~~
+
+预期产出包括任务理解、风险优先级、核心功能覆盖、关键场景、执行说明和待确认问题。仍需要测试人员或自动化流水线真正运行检查，并保存证据。
+
+### Bug Reporting（缺陷报告）——记录测试中真实发现的问题
+
+只有真实观察到失败后才调用 Bug Reporting。提供准确的构建和环境、账号及初始状态、复现步骤、规则来源、实际与预期行为、频率、影响以及日志/截图。确认事实和根因推测必须分开。
+
+~~~text
+@skill bug-reporting
+# 示例文档：qa/repro/PAY-482-2.md 是缺陷复现记录示例；请换成自己项目中的实际记录，并附上对应证据。
+请整理在构建 4.18.2-sprint-rc1 上观察到的部分退款问题。
+复现和实际/预期行为见 qa/repro/PAY-482-2.md；请附上
+qa/evidence/PAY-482-2/console.log 和录屏。
+报告环境、前置条件、复现频率、影响及证据。除非证据足以证明，
+不要写根因结论。
+~~~
+
+产出包含缺陷摘要、环境和前置条件、复现步骤、实际与预期、影响以及证据。如果暂时无法复现，应记为存在不确定性的观察，不要夸大成已确认缺陷。
+
+## Sprint Review：根据证据评估迭代退出
+### Test Reporting（测试报告）——评估迭代退出情况
+
+迭代回顾时，附上运行结果导出、缺陷清单、已测和未测范围、构建/环境、阻塞、延期检查及已获授权接受的风险。质量结论必须有实际证据支撑。
+
+~~~text
+@skill test-reporting
+请基于附件中的 PAY-48 运行记录、缺陷导出和遗留清单，整理迭代 QA 回顾。
+说明已测和未测范围、阻塞、严重问题、覆盖置信度、剩余风险及下一迭代行动。
+每项状态或缺陷都需关联证据。如果缺少运行结果或缺陷证据，
+请将 quality_status 写为 not executed or insufficient evidence。
+~~~
+
+把报告用于工作流的迭代退出门禁。P0 失败要修复，或由有权限的负责人书面接受；故事不能仅因为迭代结束就算 Done，仍需满足约定证据。
+
+## 最佳实践
+
+- **让工作流保持在阶段层。**用它跟踪阶段和门禁，专项 Skill 负责当前阶段需要的产物。
+- **故事进入下一阶段前先检查门槛。**代码合并不等于可测试，也不自动满足 Done。
+- **范围变化后重新排风险。**记录哪些测试被延期、剩余风险是什么，以及谁有权决定接受。
+- **回顾时带上实际证据。**计划、用例草稿、运行结果和已接受风险是不同状态。
+
+## 常见问题
+
+**Skill 里的天数安排必须照做吗？**不必。两周迭代只是示例。按实际迭代映射阶段，但不要为了赶时间删除测试准备、功能完成或退出门禁。
+
+**每个故事都要调用所有 Skills 吗？**不需要。先看当前阶段，再调用需要的专项 Skill。规则清楚时可以跳过需求分析；没有实际失败时不需要缺陷报告。
+
+**未解决的 P0 可以直接带到下个迭代并标记 Done 吗？**通常不可以。除非有权负责人书面接受风险并记录剩余影响，否则它会阻塞迭代退出。
+
+**有了用例就能说故事测试通过了吗？**不能。用例说明要检查什么；还要提供实际运行的构建、环境和结果，才能报告执行状态。
+
+## 参考
+
+- Awesome QA Skills:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Sprint Testing Workflow:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/sprint-testing-workflow](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/sprint-testing-workflow)
+- Requirements Analysis:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirements-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/requirements-analysis)
+- Test Case Writing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-case-writing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-case-writing)
+- Functional Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- Bug Reporting:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting)
+- Test Reporting:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-reporting](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-reporting)

@@ -1,0 +1,138 @@
+---
+title: "用 Skills 做探索性测试：任务章程、时间盒和可用证据"
+description: "围绕探索性测试会话，说明如何选风险、准备章程、记录真实观察，并总结覆盖范围和未解风险。"
+date: 2026-10-21T09:00:00.000Z
+author: "nao.deng"
+draft: true
+tags: ["AI 测试", "Agent Skills", "探索性测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 流程实践"]
+---
+
+探索性测试需要明确任务、项目上下文和时间盒，也要给测试人员留出追查新线索的空间。这样，测试既有风险重点，也能跟进应用实际表现出的意外行为。
+
+Skills 可以帮助准备会话、整理过程和分享结果，但不会代替人工探索。测试人员需要亲自执行、记录观察，再把真实证据交给下一步。
+
+## 流程一览
+
+![探索性测试流程：结合任务与项目上下文，限时探索、记录证据并跟进发现](/images/blog/qa-skills-workflows/exploratory-zh.svg)
+
+| 会话时点 | Skill | 需要传递的产物 |
+| --- | --- | --- |
+| 选出值得探索的风险 | Quality Risk Analysis（质量风险分析） | 有依据的风险、影响、优先级和待确认问题 |
+| 准备探索章程 | Manual Testing（手工测试） | 时间盒、环境准备、检查单、探索重点和证据要求 |
+| 实际执行会话 | 测试人员 | 构建、环境、操作、观察、截图/日志和状态 |
+| 描述已确认失败 | Bug Reporting（缺陷报告） | 包含复现方式、影响和证据的缺陷记录 |
+| 收尾并分享发现 | Test Reporting（测试报告） | 覆盖与未覆盖内容、发现、置信度和后续行动 |
+
+各 Skill 的职责要分清：风险分析不执行测试；Manual Testing 产出章程，不是运行记录；Bug Reporting 要区分观察与确认缺陷；Test Reporting 只能总结证据覆盖到的范围。
+
+## 一起安装需要的 Skills
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill quality-risk-analysis -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill manual-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill bug-reporting -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill test-reporting -g
+~~~
+
+英文版请将命令来源改为 `naodeng/awesome-qa-skills`，保留对应的 `--skill` 名称。`-g` 表示全局安装；只在当前项目使用时去掉它，指定 Codex 时可加 `-a codex`。调用方式由 Agent 决定：支持自动发现时直接描述任务；需要显式选择时，按该 Agent 支持的格式调用。下文的 `@skill` 仅作示例。新安装的 Skill 未出现时，重新加载会话，并查看对应 Agent 的安装说明。
+
+开始前整理功能范围和用户角色、业务规则、UI/API 设计或截图、近期代码改动、构建和环境、测试账号及数据、已知问题和会话时间限制。
+
+
+## 会话开始前：选定风险，写好任务章程
+### Quality Risk Analysis（质量风险分析）——决定会话时间花在哪里
+
+当你需要在多个候选风险中选出优先检查项，或可用测试时间有限时，先调用这个 Skill。提供业务目标、变更范围、架构/依赖、用户和数据、缺陷历史、发布约束、当前版本和环境、已有结果，以及时间或禁止操作限制。
+
+~~~text
+@skill quality-risk-analysis
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# product/saved-payment-rules.md（业务规则）、design/payment-settings.md（设计说明）和 qa/known-payment-issues.md（已知问题）。
+请为 Staging 构建 4.18.2-rc3 的“已保存支付方式”流程排定风险。
+阅读 product/saved-payment-rules.md、design/payment-settings.md、
+src/payments/savedMethods/、qa/known-payment-issues.md 和上次发布的缺陷导出。
+时间 45 分钟，只有 standard-member 测试账号；不允许删除类生产数据。
+请区分证据和假设，依据业务影响、可能性与可发现性排序主要失败模式，
+说明不确定性，并给出具体检查、要保留的证据和待确认问题。不要声称已测试。
+请用中文输出。
+~~~
+
+它会根据输入资料排序风险，提出场景或验证项，并说明阻塞、剩余风险和后续行动。重要判断要有依据；项目没有评分标准时，要求定性排序，不要伪造精确数字。风险分析属于测试设计，不是执行证据。如需中文结果，在提示词中明确写出语言要求。
+
+### Manual Testing（手工测试）——准备可以执行的探索章程
+
+选定高价值风险后，调用 Manual Testing 把它转成测试人员可执行的会话。需要提供任务、构建和环境、账号和数据、时间盒、探索范围、已知缺陷、证据要求，以及数据清理和访问策略。
+
+~~~text
+@skill manual-testing
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# qa/risk/saved-payment.md（已确认风险）和 docs/qa/staging-access.md（测试环境访问说明）。
+请针对 qa/risk/saved-payment.md 中已经确认的风险，准备一次 45 分钟会话。
+在 Staging 构建 4.18.2-rc3 上使用 docs/qa/staging-access.md 描述的账号。
+探索更换和移除已保存银行卡的流程，以及相关错误和数据状态。
+返回优先级、会话检查单、探索重点、证据字段、停止/升级条件和待确认问题。
+不要报告测试执行结果。
+~~~
+
+章程要能直接执行：写明任务和风险、构建与环境、测试数据、时间盒、探索范围、证据要求及待确认问题。
+
+## 时间盒进行中：由测试人员探索并保留证据
+执行时，测试人员记录初始状态、操作、依据明确的预期、实际观察和证据编号，并标注状态。预期行为尚未明确时，记录待确认的规则，不要自行补出判断标准。尚未开始标记为 NOT_RUN；中断标记为 INCOMPLETE；环境阻塞标记为 BLOCKED。检查单不能代替运行日志。
+
+## 发现异常时：把观察整理成可复现报告
+### Bug Reporting（缺陷报告）——把观察整理成可复现问题
+
+实际观察到失败后，调用 Bug Reporting。提供准确的应用版本、浏览器/设备、账号、前置条件、步骤、实际与预期、出现频率、影响以及截图/视频/日志。预期行为要能追溯到规则或设计来源。
+
+~~~text
+@skill bug-reporting
+# 示例文档：qa/sessions/EX-209.md 是探索会话记录示例；请替换为本次会话的真实记录，并附上实际截图和网络日志。
+请整理探索会话 EX-209 中发现的已保存银行卡问题。
+运行记录在 qa/sessions/EX-209.md；请附上截图 EX-209-04.png 和网络日志 EX-209.har。
+报告环境、账号状态、复现步骤、实际与预期、出现频率、用户影响和证据。
+请把观察到的失败与根因假设分开，并列出仍缺少的信息。
+~~~
+
+缺陷报告要让其他人能够复现问题并判断影响。暂时无法复现时，把它记录为待跟进观察；不要写成已确认缺陷或猜测根因。
+
+## 时间盒结束：复盘覆盖、学习和剩余风险
+### Test Reporting（测试报告）——说明会话学到了什么
+
+会话结束后，附上章程、实际会话笔记、证据链接、缺陷、构建/环境、已探索和未探索区域及剩余问题，再调用 Test Reporting。总结范围应严格匹配证据支持的观察。
+
+~~~text
+@skill test-reporting
+请基于 EX-209 的章程、会话记录、截图和缺陷清单总结探索结果。
+列出探索与未探索区域、观察与已确认缺陷、阻塞、剩余风险、置信度和后续行动。
+每项结论都关联证据。如果缺少执行或缺陷证据，
+请将 quality_status 写为 not executed or insufficient evidence。
+~~~
+
+报告应列出已测和未测范围、风险、阻塞、缺陷、后续行动及证据等级。一次探索会话只能支持证据覆盖到的结论，不能代表整个版本的质量状态。
+
+## 最佳实践
+
+- **章程要小到能在时间盒内执行。**45 分钟只围绕少数高优先问题，并为跟进新线索留出时间。
+- **保护状态和数据。**使用可恢复的测试账号和检查点；清理订单、卡片或配置时遵循项目策略。
+- **把脚本执行和探索记录分开。**标明哪些步骤执行了已有用例，哪些是探索过程中的新观察。
+- **边测边留证据。**趁会话还新鲜，记录构建、环境、初始状态、操作、观察和证据编号。
+
+## 常见问题
+
+**Manual Testing 会自动探索应用吗？**不会。它根据资料准备计划或检查单。实际与应用交互、执行和留证据仍需要人工测试人员，或单独配置的浏览器 Agent。
+
+**如果没有明确的预期行为怎么办？**保留观察，注明缺少哪条规则并请负责人澄清。不要把猜测的行为写成产品缺陷。
+
+**会话中可以临时调整章程吗？**可以。新证据值得跟进时就调整，但要记下为何转移重点、哪些内容未完成以及后续从哪里继续。
+
+**45 分钟的探索能证明功能没有问题吗？**不能。报告只覆盖实际探索的风险和路径，结论置信度也要受限于这段时间和已提供的上下文。
+
+## 参考
+
+- Awesome QA Skills:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Quality Risk Analysis:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-risk-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-risk-analysis)
+- Manual Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/manual-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/manual-testing)
+- Bug Reporting:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting)
+- Test Reporting:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-reporting](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-reporting)

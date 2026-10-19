@@ -1,0 +1,169 @@
+---
+title: "用 Skills 做发布测试：从发布范围到 Go/No-Go 的逐步交接"
+description: "围绕发布窗口和 Go/No-Go 门禁，介绍如何使用发布工作流、测试策略、功能测试、缺陷与报告 Skills 交接真实证据。"
+date: 2026-10-22T09:00:00.000Z
+author: "nao.deng"
+draft: true
+tags: ["AI 测试", "Agent Skills", "发布测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 流程实践"]
+---
+
+发布前要确认范围、候选构建、可检查的门禁、测试证据和未决缺陷，也要明确谁有最终决策权。Release Testing Workflow 负责组织这些信息；专项 Skills 为各道门禁准备所需产物。
+
+下面按发布节奏说明各 Skill 的任务、项目资料和交接产物。发布工作流在决策窗口汇总证据并提出建议；正式批准仍由授权负责人作出。
+
+## 流程一览
+
+![发布测试流程：从范围和候选版本开始，经过门禁及专项检查，基于证据做 Go 或 No-Go 决策并监控上线](/images/blog/qa-skills-workflows/release-zh.svg)
+
+| 发布节点 | Skill | 决策所需产物 |
+| --- | --- | --- |
+| 确定发布窗口 | Release Testing Workflow（发布测试工作流） | 发布范围、T 时间线、门禁、证据队列和下一步交接 |
+| 把风险变成可检查的门禁 | Test Strategy Plus（测试策略加强版） | 各区域风险、深度、负责人、进入/退出条件、门禁和明确延期项 |
+| 准备候选版本功能检查 | Functional Testing（功能测试） | 核心、负向、边界场景及执行说明 |
+| 记录实际观察到的失败 | Bug Reporting（缺陷报告） | 可复现的问题、影响、环境和证据 |
+| 汇总真实执行结果 | Test Reporting（测试报告） | 有证据限定的质量状态、阻塞、剩余风险和建议 |
+| 回到发布门禁 | Release Testing Workflow（发布测试工作流） | Go/No-Go 建议，或待授权人决策的状态 |
+
+专项测试按发布范围和制度要求选择。涉及性能、安全、无障碍或合规时，再安装相应 Skill，并把报告作为单独证据交给门禁汇总。
+
+## 一起安装核心 Skills
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill release-testing-workflow -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill test-strategy-plus -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill bug-reporting -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill test-reporting -g
+~~~
+
+英文版请将命令来源改为 `naodeng/awesome-qa-skills`，保留对应的 `--skill` 名称。`-g` 表示全局安装；只在当前项目使用时去掉它，指定 Codex 时可加 `-a codex`。发布确实需要某项专项测试时，再单独安装对应 Skill。调用方式由 Agent 决定：支持自动发现时直接描述任务；需要显式选择时，按该 Agent 支持的格式调用。下文的 `@skill` 仅作示例。每次交接都带上同一发布范围和候选构建信息。
+
+先整理发布资料包：计划发布日期和干系人、包含/排除的改动、冻结规则、候选版本/构建、已知缺陷及上次发布问题、回滚步骤、要求的专项测试、预发/生产环境、监控权限，以及已有运行记录。附上相关需求、变更清单、设计/API 契约、测试套件和缺陷/事故记录。
+
+
+## 发布窗口启动：先建时间线和门禁草案
+### Release Testing Workflow（发布测试工作流）——建立时间线和门禁草案
+
+先确认当前时间窗口和待准备的门禁。提供发布日期、范围、回滚方案、冻结规则、候选版本状态、已知缺陷、专项测试要求、环境、负责人和监控限制。
+
+~~~text
+@skill release-testing-workflow
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# releases/4.18.2-scope.md（发布范围）、releases/4.18.2-known-defects.md（已知缺陷）、docs/release/rollback-4.18.md（回滚方案）和 docs/release/freeze-policy.md（冻结策略）。
+请为计划于 2026-10-23 发布的 4.18.2 版本准备就绪计划。
+阅读 releases/4.18.2-scope.md、releases/4.18.2-known-defects.md、
+docs/release/rollback-4.18.md、docs/release/freeze-policy.md
+以及附件中的候选构建记录。
+返回当前 T 时间窗口、明确的范围/排除项、门禁、已有与缺失证据、
+负责人或未知负责人，以及下一步 Skill 交接。目前没有测试运行记录，
+不要给出 Go/No-Go 建议。
+~~~
+
+它应说明发布范围、当前窗口、门禁、证据队列、缺陷和剩余风险，以及下一步交接。T-14、T-3 等是相对时间示例；窗口较短时可以合并日程活动，但要保留门禁标准。
+
+## 候选版本之前：把风险、范围和测试方法定下来
+### Test Strategy Plus（测试策略加强版）——把风险变成可检查门禁
+
+需要一份整合多来源、明确负责人和里程碑、说明取舍的评审级测试计划时，调用 Test Strategy Plus。提供发布需求、变更分析、技术限制、团队容量、环境和数据状态、质量目标、已知风险及干系人预期。只给发布日期，无法推断其他输入。
+
+~~~text
+@skill test-strategy-plus
+请依据附件中的发布范围、变更清单、结算/退款规则、架构说明、已知缺陷、
+团队容量、环境/测试数据状态和发布门禁，为 4.18.2 制定可评审的测试策略。
+每个重点区域写明 Risk、Depth、Methods、Owner、Entry、Exit、Out of scope
+和 Gate link。门禁必须可以检查。说明哪些项目要重点测试、抽样或延期，以及
+对应的剩余风险。不要替有权限的负责人接受风险，也不要编造人力或环境事实。
+~~~
+
+策略应说明各区域的测试范围与深度、负责人和进入/退出条件，并列明门禁、排除项、延期内容及可检查标准。交付约束、质量证据和经授权的风险接受要分别记录。策略会交回发布门禁，但不能替代专项测试结果。
+
+### Functional Testing（功能测试）——准备候选版本检查
+
+针对一个明确流程或改动区域调用 Functional Testing。提供确切 RC 构建、发布差异、已批准业务规则、目标角色、环境、数据准备、现有测试资产和已知薄弱点。请它列场景和执行优先级，不要暗示它已经运行了测试。
+
+~~~text
+@skill functional-testing
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# docs/product/checkout-and-refund-rules.md（结算和退款规则）和 releases/4.18.2-scope.md（发布范围）。
+请为 RC 4.18.2-rc3 上的结算和退款准备高优先级功能检查。
+阅读 docs/product/checkout-and-refund-rules.md、releases/4.18.2-scope.md、
+src/checkout/、src/refunds/ 和 tests/smoke/。
+按用户流程和发布风险组织场景，覆盖相关正向、负向、边界、角色/数据和集成路径。
+列出执行准备、待确认问题和范围外内容。请返回计划，不要报告通过结果。
+~~~
+
+产出应说明任务范围、优先级、核心功能覆盖、关键场景、执行说明和待确认问题。测试人员或 CI 仍要在同一个候选构建上实际运行检查，并附上结果，门禁才能将它视为证据。
+
+## 候选版本测试中：只把真实失败登记为缺陷
+### Bug Reporting（缺陷报告）——报告候选版本上发现的问题
+
+只有有人实际观察到失败时，才调用 Bug Reporting。提供候选构建、环境、账号和状态、前置条件、复现步骤、实际与预期、出现频率、影响及证据。预期行为要有已批准规则或需求作为依据。
+
+~~~text
+@skill bug-reporting
+# 示例文档：qa/repro/REL-221.md 是缺陷复现记录示例；请换成自己项目中的实际记录，并附上对应证据。
+请报告 RC 4.18.2-rc3 上观察到的退款失败。
+复现步骤和实际/预期行为见 qa/repro/REL-221.md。
+附上 qa/evidence/REL-221/ 下的屏幕录制和请求日志。
+写明环境、前置条件、出现频率、用户影响和证据。把观察事实与根因
+假设分开，并列出仍缺少的信息。
+~~~
+
+缺陷产物应包含简明摘要、环境/前置条件、可复现步骤、实际与预期、影响及证据。不要把怀疑的原因写成已经确认的技术结论。
+
+## 发布门禁之前：汇总证据，再回到发布工作流
+### Test Reporting（测试报告）——整理发布证据包
+
+测试和复测结束后，提供真实运行结果导出、构建/环境、已测和未测范围、缺陷清单及状态、覆盖说明、阻塞、豁免/延期项，以及本次范围内的专项报告。
+
+~~~text
+@skill test-reporting
+请基于附件中的测试运行导出、缺陷清单、复测记录和性能报告，整理
+RC 4.18.2-rc3 的证据包。总结已测和未测范围、阻塞、严重缺陷、置信度、
+剩余风险、发布建议和下一步。每项状态关联证据。如果缺少运行或缺陷证据，
+请将 quality_status 标为 not executed or insufficient evidence。
+~~~
+
+报告应区分已确认事实、推断、缺失证据、剩余风险和建议。没有运行记录或其他实际执行证据时，质量状态应为“尚未执行或证据不足”；环境已部署、测试已计划或缺陷清单为空，都不能证明通过。
+
+### Release Testing Workflow（发布测试工作流）——形成门禁建议
+
+最后把证据包、专项报告、未关闭缺陷、回滚/监控准备情况、剩余风险和已授权的风险接受交回 Release Testing Workflow。只有来到决策窗口时才要求它给出 Go、No-Go 或有条件建议。
+
+~~~text
+@skill release-testing-workflow
+请使用附件中的证据包、未关闭缺陷、回滚准备、监控检查单和已批准风险接受，
+评估 4.18.2-rc3 的 Go/No-Go 门禁。请分开列出已有通过证据、失败、阻塞和未知项。
+如果缺少条件或批准记录，就保持待决策状态，并注明有权限的负责人和所需证据。
+这只是建议，不是正式发布批准。
+~~~
+
+Skill 可以提出发布建议，但正式批准仍需要有权限的决策人，并记录版本/范围、决策时间和证据来源。没有这条记录，就保持待授权决策。有条件 Go 必须写清可验证的条件、接受人，以及条件未满足时的处理方式。
+
+## 最佳实践
+
+- **压缩时间，不压缩门禁。**热修复可以缩短日程，但影响分析、必要检查、回滚、监控和决策负责人仍需有依据。
+- **每次都注明候选构建。**运行记录、缺陷、专项报告和决策必须对应准确版本与范围。
+- **分清证据与风险接受。**排期限制可以改变测试深度，但不能把失败变成通过，也不能代替授权人接受风险。
+- **专项任务保持单一明确。**每个专项 Skill 只负责一份聚焦的产物，由发布工作流在门禁阶段汇总。
+
+## 常见问题
+
+**必须按 T-14 的日程执行吗？**不必。它只是相对时间示例。按真实发布日期安排；如果需要合并活动，也不能删掉门禁标准。
+
+**Skill 可以正式批准发布吗？**不可以。它可以形成建议；正式批准需要有权限的决策人记录版本、范围、时间和依据。
+
+**性能或安全报告缺失怎么办？**如果它属于本次发布范围，就保持相应专项门禁未完成或阻塞。不能把计划测试或其他构建的报告当作通过证据。确实需要该测试时，再安装并调用对应的专项 Skill。
+
+**没有测试证据，Test Reporting 能否写“已就绪”？**不能。应标明尚未执行或证据不足，并说明决策还缺什么。
+
+## 参考
+
+- Awesome QA Skills:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Release Testing Workflow:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/release-testing-workflow](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/release-testing-workflow)
+- Test Strategy Plus:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-strategy-plus](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-strategy-plus)
+- Functional Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- Bug Reporting:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting)
+- Test Reporting:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-reporting](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-reporting)

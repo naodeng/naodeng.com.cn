@@ -1,0 +1,134 @@
+---
+title: "用 Awesome QA Skills 跑好每天的测试：计划、执行、交接"
+description: "日常 QA 循环实用指南：安装四个 Skills，分别支持开工计划、功能检查、缺陷记录和日终交接。"
+date: 2026-10-20T09:00:00.000Z
+author: "nao.deng"
+draft: true
+tags: ["AI 测试", "Agent Skills", "日常测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 流程实践"]
+---
+
+候选构建延期、Staging 不可用，或刚修复的缺陷需要复测，日常测试计划可能午饭前就得调整。Daily Testing Workflow 帮你重排当天安排；每次交接时再调用相应专项 Skill。
+
+这套日常流程从开工计划开始，再按需进入功能检查、缺陷记录和日终交接。计划不能当作已执行测试。
+
+## 流程一览
+
+![日常 QA 循环：提供当天项目快照、安排测试、记录检查结果，再交接阻塞和证据](/images/blog/qa-skills-workflows/daily-zh.svg)
+
+| 当天阶段 | Skill | 负责的内容 |
+| --- | --- | --- |
+| 开始工作 | Daily Testing Workflow（日常测试工作流） | 明确范围、风险队列、环境门禁和下一步交接 |
+| 准备重点功能测试 | Functional Testing（功能测试） | 输出有优先级的功能场景和执行说明 |
+| 发现实际失败后 | Bug Reporting（缺陷报告） | 整理复现步骤、影响和证据 |
+| 日终交接 | Test Reporting（测试报告） | 根据证据汇总状态、阻塞、剩余风险和下一步 |
+
+Daily Testing Workflow 负责安排当前阶段和下一步交接。检查仍需由测试人员或运行器执行并记录真实结果；功能用例和测试报告交给对应专项 Skill。
+
+## 一起安装需要的 Skills
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill daily-testing-workflow -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill bug-reporting -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill test-reporting -g
+~~~
+
+英文版请将命令来源改为 `naodeng/awesome-qa-skills`，保留对应的 `--skill` 名称。`-g` 表示全局安装；只在当前项目使用时去掉它，指定 Codex 时可加 `-a codex`。调用方式由 Agent 决定：支持自动发现时直接描述任务；需要显式选择时，按该 Agent 支持的格式调用。下文的 `@skill` 仅作示例。新安装的 Skill 未出现时，重新加载会话，并查看对应 Agent 的安装说明。
+
+调用前整理当天的项目快照：构建版本或 Commit、目标环境、故事和验收标准、变更文件、测试账号和数据、未关闭的 P0/P1 问题、前一天遗留项、团队可用时间和冻结时间。只附上会影响当天决策的资料。
+
+
+## 开工前：确定今天能测什么
+### Daily Testing Workflow（日常测试工作流）——确定当天范围和门禁
+
+在开始一天的工作时，或当天优先级发生明显变化时，调用这个 Skill。需要提供当天目标、故事/缺陷/回归范围、距离发布的时间、构建和环境状态、严重缺陷、遗留任务、可用人力，以及时间和数据限制。
+
+~~~text
+@skill daily-testing-workflow
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# releases/4.18.2-scope.md（发布范围）、qa/known-issues.md（已知问题）和 docs/runbooks/staging-test-data.md（测试数据运行手册）。
+请为构建版本 4.18.2-rc3 制定今天的 QA 计划。只有一名测试人员，时间四小时。
+请阅读 releases/4.18.2-scope.md、qa/known-issues.md、
+docs/runbooks/staging-test-data.md 和昨天的测试交接。
+今天重点是结算和退款；请标出可能需要延期的低优先级任务。
+先检查当前构建和 Staging 环境是否具备执行条件。
+返回当天范围、P0-P2 优先级队列、门禁状态、阻塞项，以及唯一的下一步 Skill
+交接和它需要的上下文。不要声称测试已经执行。
+~~~
+
+它应写清当天范围、优先级、门禁状态、风险和下一步交接。如果环境不可用，或当前构建还没有冒烟结果，执行准备度应继续标为 RED。即使已安排环境恢复负责人，门禁也不算通过；离线规划可以继续，实际执行仍然受阻。
+
+## 跟进今天的变更：为重点功能准备检查
+### Functional Testing（功能测试）——为一个功能设计检查
+
+当天需要检查功能变更时，针对一个具体功能或流程调用它。提供故事或需求、UI/API 行为、目标用户和角色、构建版本、环境、数据限制、已知缺陷和已有测试资产。
+
+~~~text
+@skill functional-testing
+# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+# docs/requirements/refund-flow.md（需求）和 docs/product/refund-policy.md（退款规则）。
+请为 PR 842 中改动的退款流程准备功能测试覆盖。
+阅读 docs/requirements/refund-flow.md、docs/product/refund-policy.md、
+services/refund/ 和 tests/refund/。目标环境是 Staging，构建为 4.18.2-rc3。
+优先覆盖核心退款流程，再补充相关的负向、边界、角色、数据状态和集成场景。
+返回场景及执行说明；将待确认问题与已确认行为分开。不要报告测试结果。
+~~~
+
+Functional Testing 输出测试设计或执行计划。团队仍需运行用例，并保存运行编号、结果和环境信息，才能报告执行状态。
+
+## 观察到失败时：留下可复现的问题记录
+### Bug Reporting（缺陷报告）——记录实际观察到的失败
+
+只有实际观察到失败后，才调用 Bug Reporting。提供应用和构建版本、浏览器/设备、账号类型、前置条件、准确步骤、实际与预期行为、复现频率、影响范围，以及截图、视频或日志证据。预期行为不明确时，附上规则来源或标为待确认。
+
+~~~text
+@skill bug-reporting
+# 示例文档：qa/repro/BUG-1842.md 是缺陷复现记录示例；请换成自己项目中的实际记录，并附上对应证据。
+请整理 Staging 构建 4.18.2-rc3 上发现的结算问题。
+前置条件：standard member 账号有一张有效的 10% 优惠券。
+复现步骤、实际和预期行为见 qa/repro/BUG-1842.md。
+请使用 qa/evidence/BUG-1842/ 下的浏览器日志和截图。
+把观察事实与根因猜测分开，评估用户影响，并列出复现仍缺的证据或问题。
+~~~
+
+缺陷报告应记录摘要、环境和前置条件、复现步骤、实际与预期、影响、证据及缺失信息。不要编造根因，也不要把模糊观察写成已确认缺陷。
+
+## 收工交接：说明证据、阻塞和未完成项
+### Test Reporting（测试报告）——基于证据完成日终交接
+
+完成检查或确认受阻后，调用 Test Reporting，并附上真实运行结果、缺陷清单、覆盖说明、测试范围、环境、延期检查项和阻塞。证据不完整时，报告也要说明结论边界。
+
+~~~text
+@skill test-reporting
+请基于附件中的运行结果导出、缺陷列表和环境说明，整理构建 4.18.2-rc3
+今天的 QA 交接。汇总已测和未测范围、严重缺陷、阻塞、置信度、剩余风险
+和明天优先事项。每个状态注明运行记录或资料来源。若缺少执行或缺陷证据，
+请将质量状态标为 not executed or insufficient evidence。
+~~~
+
+报告应覆盖范围、进展、风险、阻塞、缺陷、下一步和证据等级。计划中的用例数量不能当作执行数量；没有运行证据，就不能声称通过。
+
+## 最佳实践
+
+- **一次只做一个主要交接。**不要要求日常工作流一次回答完整功能方案、缺陷报告和管理层总结。
+- **如实记录环境门禁。**环境是 RED 时，即使已经安排恢复负责人，也不能开始报告执行结果。
+- **每个阶段都携带构建信息。**同一轮测试的用例、缺陷和报告应能追溯到相同的构建与环境。
+- **区分计划与事实。**计划中、未执行、阻塞、失败、通过要分开使用，并以证据支持状态。
+
+## 常见问题
+
+**环境不可用怎么办？**让 Daily Testing Workflow 保持开始门禁为 RED，分派或升级恢复工作，并重新安排可以离线完成的分析。不要把执行状态写成已开始。
+
+**没有运行结果还能生成 Test Reporting 报告吗？**可以。报告应说明缺少哪些证据，并标注“尚未执行或证据不足”，不能编造通过率或零缺陷结论。
+
+**Functional Testing 会替我运行自动化套件吗？**它会整理功能覆盖和执行说明。运行套件并提供结果仍需要测试运行器或测试人员，除非 Agent 另行连接并明确配置了执行工具。
+
+## 参考
+
+- Awesome QA Skills:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Daily Testing Workflow:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/daily-testing-workflow](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/daily-testing-workflow)
+- Functional Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/functional-testing)
+- Bug Reporting:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/bug-reporting)
+- Test Reporting:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-reporting](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/test-reporting)
