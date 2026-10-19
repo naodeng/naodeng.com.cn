@@ -132,7 +132,7 @@ That does not mean rewriting the strategy every Friday. Different stages can run
 | Act | Continuously | Teams take coherent actions within the policy |
 | Full reset | Annually or after a major change | Reconsider the entire strategic kernel |
 
-These rhythms are suggestions, not universal rules. Policies should be stable enough for teams to rely on; actions should remain adaptable; orientation should be refreshed regularly.
+These rhythms are suggestions, not universal rules. Policies should be stable enough for teams to rely on; actions should remain adaptable; understanding should be refreshed continuously.
 
 ## Keep the strategy usable on one page
 
@@ -142,8 +142,8 @@ McGill’s one-page strategy has one plain-language box for each stage. If the s
 | --- | --- |
 | Observe | What are we seeing? What surprised us? What are we not measuring? |
 | Derive insight | What is really going on? What is the crux? What evidence could prove this diagnosis wrong? |
-| Guiding policies | What approach will we take? What are we deliberately choosing not to do? |
-| Coherent actions | What happens first? How do actions reinforce one another? What will we stop? |
+| Guiding policies | What approach will we take? What are we deliberately choosing not to do? Who owns the decision, and what trade-offs are we accepting? |
+| Coherent actions | What happens first? How do actions reinforce one another? Who owns each action, what capacity is assigned, what will we stop, how will we measure outcomes, and when will we review them? |
 
 **Patterns that break the loop.**
 
@@ -162,11 +162,11 @@ The following is an editorial application of McGill’s framework, not a claim f
 
 A test strategy can become another archived document: it lists UI, API, performance, tools, and schedules, but rarely changes as evidence accumulates. A learning-oriented QA strategy should connect the testing portfolio to escaped defects, feedback time, diagnosis effort, user impact, and changing delivery risk.
 
-For example, if regression runs grow from 35 to 95 minutes while retries rise and critical defects still escape, the diagnosis may not be “we need more tests.” It may be duplicated UI coverage, shared-environment contention, and flaky tests obscuring useful signals. The policy could prioritize reliable feedback, preserve a small number of essential E2E journeys, and move suitable rules to API or component checks. Actions might remove duplication, isolate data, triage flaky tests, choose regression scope by risk, and review feedback time and escaped defects monthly.
+For example, if regression runs grow from 35 to 95 minutes while retries rise and critical defects still escape, the diagnosis may not be “we need more tests.” It may be duplicated UI coverage, shared-environment contention, and flaky tests obscuring useful signals. The policy could prioritize reliable feedback, preserve a small number of essential E2E journeys, and move suitable rules to API or component checks. Actions might remove duplication, isolate data, triage flaky tests, choose regression scope by risk, stop rewarding raw test counts, and review feedback time and escaped defects monthly.
 
 The goal is not to make the test portfolio look like a predetermined shape. It is to rebalance it against actual cost and risk.
 
-For AI Native QA teams building Skills, Agents, Evals, or test auditors, use the same loop: observe real failures, false positives, reviewer effort, and adoption; diagnose the current trust bottleneck; choose a narrow policy; and invest in actions that can test the diagnosis. Keep real-project validation, quality outcomes, and deliberately deprioritized work visible. That last record helps distinguish a strategic choice from feature accumulation.
+For AI Native QA teams building Skills, Agents, Evals, or test auditors, use the same loop: observe real failures, false positives, reviewer effort, and adoption; diagnose the current trust bottleneck; choose a narrow policy; and invest in actions that can test the diagnosis. Avoid launching several initiatives just because AI is attracting attention. Keep real-project validation, quality outcomes, and deliberately deferred directions—with the reasons—visible. That last record helps distinguish a strategic choice from feature accumulation.
 
 **Closing thought.**
 
@@ -174,4 +174,4 @@ Rumelt defines the substance of strategy; Boyd provides the motion that keeps it
 
 **Observe honestly, orient carefully, decide clearly, and act coherently. Then run the loop again.**
 
-Reference: Strategy Is a Loop, Not a Plan, Ragan McGill, September 24, 2026: https://www.raganmcgill.co.uk/Articles/Detail/article-strategy-is-a-loop-not-a-plan
+Reference: Strategy Is a Loop, Not a Plan: https://www.raganmcgill.co.uk/Articles/Detail/article-strategy-is-a-loop-not-a-plan (Ragan McGill, September 24, 2026). Based on the supplied study notes; the original webpage could not be independently loaded during this review.

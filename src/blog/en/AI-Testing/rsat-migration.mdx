@@ -71,13 +71,17 @@ These ranges are reported in the supplied ACCELQ notes, not independently establ
 | --- | ---: | --- |
 | Small | Fewer than 50 | 2–4 weeks |
 | Medium | 50–200 | 6–10 weeks |
-| Large | More than 200 | 12–20+ weeks |
+| Large | 200+ | 12–20+ weeks |
+
+The source's own thresholds overlap at exactly 200: its table lists medium as 50–200 and large as 200+, while its FAQ estimates 12–20+ weeks for a 200-case library. Treat these as vendor estimates, not a contract, and resolve the boundary during project scoping.
 
 For planning, run a **stratified pilot** across complexity classes and measure actual rebuild, data setup, debugging, review, and parallel-run effort. Extrapolate from observed throughput with explicit contingency for integrations.
 
 ## Risks that make a migration look complete too early
 
 **Treating migration as a recorder swap.** Existing integration gaps should trigger a fresh coverage discussion, not blind replication.
+
+The ACCELQ article specifically says RSAT does not support Data Management workspace scenarios involving Excel, XML, or CSV import/export, and that workflow-configuration testing requires third-party connections. This is the vendor article's description of RSAT's limits, so verify the exact scope against current Microsoft guidance and the target test platform. Microsoft separately says not to use RSAT for data-integration tests; use the Data Management Framework and its data-task automation capabilities for that purpose. A regression suite can still cover business workflows that cross modules, but that is not the same as validating a file-based data integration.
 
 **Skipping the inventory.** Cloud POS and warehouse scenarios may be omitted, inflating apparent completion.
 
@@ -134,6 +138,6 @@ Compare D365 F&O support, Cloud POS/warehouse compatibility, assertion capabilit
 ## References
 
 - ACCELQ, *RSAT Migration Guide* (vendor article): https://www.accelq.com/blog/rsat-migration-guide/
-- Microsoft Learn, RSAT overview and support notice: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/rsat/rsat-overview/
+- Microsoft Learn, RSAT overview, support notice, and data-integration testing guidance: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/rsat/rsat-overview/
 
 > Source note: Migration estimates and tool recommendations are attributed to ACCELQ and are not independent benchmarks. The Microsoft page confirms the support notice; recording-format compatibility still needs to be checked with the target tool.

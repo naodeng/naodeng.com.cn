@@ -22,12 +22,12 @@ The essential question changes from “Does the page look right?” to **“Can 
 
 | Tool | Common platform | Practical note |
 | --- | --- | --- |
-| JAWS | Windows | Commercial screen reader, common in enterprise settings |
+| JAWS | Windows | Commercial screen reader; the source article reports roughly 40% market share, without specifying the survey population or date |
 | NVDA | Windows | Free and open source; useful for building desktop Web testing skills |
 | VoiceOver | macOS and iOS | Built into Apple systems; desktop and mobile interactions differ |
 | TalkBack | Android | Built-in Android screen reader with gesture and focus navigation |
 
-The notes mention a JAWS share of about 40%. Such figures vary by survey, population, geography, and date. Choose a test matrix based on actual users and current evidence, not a single market-share figure.
+The source article reports a JAWS share of about 40%, but does not identify the survey population, geography, or date behind that figure. Treat it as the article's reported estimate, not a current universal market share. Choose a test matrix based on actual users and current evidence.
 
 **Text-to-speech is not necessarily a screen reader.** A read-aloud tool may speak text without exposing heading navigation, control roles, accessible names, and states.
 
@@ -38,6 +38,7 @@ Beyond visible text, screen readers can communicate information exposed by HTML 
 - A field's name, empty/filled status, required status, and protected-input behavior.
 - Whether an element is a link or button, and whether it is available.
 - Headings and levels, and landmarks such as navigation or main content.
+- Tables and their headers, which provide a way to navigate tabular information without reading every cell in sequence.
 - Expanded, selected, disabled, and validation states.
 
 Experienced users do not necessarily listen from top to bottom. They navigate by heading, link, form control, or landmark. The article compares these to different maps of the same city: each gives a useful way into the information. The notes mention listening speeds above 300 words per minute for some experienced users; beginners do not need to aim for that speed.
@@ -58,6 +59,8 @@ These announcements communicate the name, role, value state, required state, and
 
 Stokes recalls enabling a screen reader on his phone in a train carriage without headphones, then panicking because he did not know how to switch it off. It took him about five minutes to recover. His first tip is practical: learn the device's toggle shortcut before you start. On his iPhone, he uses three taps on the back of the phone.
 
+Mobile screen-reader mode also changes how touch input works: swipes and taps move through accessible items rather than behaving like ordinary visual navigation, and multi-finger gestures can trigger different commands. The exact gestures vary by device and settings, so learn the relevant controls before testing.
+
 1. **Learn to enable and disable the screen reader first.** Mobile shortcuts depend on device and user configuration.
 2. **Keep a keyboard or gesture reference nearby.** Include next item, headings, controls, and interaction-mode commands.
 3. **Complete the built-in tutorial.** Screen reader navigation is not the same thing as Tab-key navigation.
@@ -70,6 +73,8 @@ Stokes recalls enabling a screen reader on his phone in a train carriage without
 A sustainable habit is to repeat one familiar business flow each week using keyboard and screen reader, recording barriers to discovering, understanding, or operating the interface.
 
 ## Test the task, not a perfect transcript
+
+The article calls out headings, semantic elements, labels, errors, live updates, links, duplicate announcements, and equivalent user journeys. The focus-restoration checks and ARIA implementation examples below are practical QA extensions inspired by those questions, not specific techniques attributed to Stokes.
 
 **Headings and page structure.**
 
@@ -146,7 +151,7 @@ Start with high-value tasks such as login, search, checkout, or payment. Record 
 
 WCAG 2.2 can provide relevant success criteria, but **standards conformance and the experience of one screen reader are not identical**. Choose device and assistive-technology coverage based on users, platforms, and risk.
 
-Screen reader testing is not simply “having the page read aloud.” It challenges how a product communicates structure, state, and feedback. **A visually correct interface is not necessarily an understandable or operable interface.** One familiar workflow, one tool, and five minutes of practice can be the beginning of a sustainable accessibility testing habit.
+Screen reader testing is not simply “having the page read aloud.” It challenges how a product communicates structure, state, and feedback. For testers, a screen reader is not only a specialized accessibility tool; it is another way to explore an interface and discover information that visual checks may miss. **A visually correct interface is not necessarily an understandable or operable interface.** One familiar workflow, one tool, and five minutes of practice can be the beginning of a sustainable accessibility testing habit.
 
 ## References
 

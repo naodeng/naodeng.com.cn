@@ -24,7 +24,7 @@ For QA teams, the transferable principle is evidence quality: a report demonstra
 
 ## Learn the feature before choosing a vulnerability category
 
-The research approach can be expressed as a sequence:
+The following five steps are my synthesis of the interview, not a named framework presented by the researcher:
 
 1. Select a feature worth investigating.
 2. Use it directly and understand its normal behavior.
@@ -36,11 +36,11 @@ This does not make vulnerability taxonomies such as OWASP irrelevant. It changes
 
 **Why investigate complex features?**
 
-Complex features may involve more actors, transitions, and implicit business rules. An organization-wide sharing capability, for example, might combine owners, members, external collaborators, administrators, pending invitations, and permission revocation.
+The researcher looks for features that seem complex and difficult to understand, then uses experience to judge whether a target is worth further time. Complex features may involve more actors, transitions, and implicit business rules. An organization-wide sharing capability, for example, might combine owners, members, external collaborators, administrators, pending invitations, and permission revocation.
 
 Complexity does not imply a vulnerability. It warrants careful examination of boundaries. The researcher explores a target for a while, pursues promising signals, and moves on when the investigation is no longer productive. This is also a sensible allocation strategy for time-constrained QA teams.
 
-The interview also sketches how he entered the field: he started by building coding projects, learned to understand systems deeply and make them behave in new ways, and then moved into bug bounty research. He chose GitHub in part because he already knew the platform, valued its rewards and challenges, and had a good experience with its team. To keep learning, he follows researchers on X, company security blogs and write-ups, Hacker News, and security subreddits; examples he named include Google Project Zero, GitHub Security Lab, and PortSwigger. His advice to beginners is to be patient: progress can mean spending a long time investigating before finding a reportable issue.
+The interview also sketches the researcher's path into the field: building coding projects in college, learning to understand systems deeply and make them behave in new ways, then discovering bug bounty research by accident and finding it fun. GitHub felt like a natural place to start because the researcher already knew the platform, and its rewards, challenges, and team experience kept drawing them back. Learning sources include researchers on X, company security blogs and write-ups, Hacker News, and security subreddits; examples named in the interview include Google Project Zero, GitHub Security Lab, and PortSwigger. The advice to beginners is to be patient: progress can mean spending a long time investigating before finding a reportable issue.
 
 ## Follow a boundary from normal use to a verified finding
 
@@ -62,7 +62,9 @@ Then examine **relationships and lifecycle transitions**:
 
 **Keep hypotheses separate from verified findings.**
 
-The researcher compares AI to a very fast car that still needs a good driver. AI can summarize feature documentation, propose boundary questions, organize hypotheses, and prepare evidence. It cannot make an unverified hypothesis true.
+The interview says AI saves the researcher time and improves efficiency, but still needs a human to guide it. The researcher compares AI to a very fast car that still needs a good driver.
+
+For QA, AI could summarize feature documentation, propose boundary questions, organize hypotheses, and prepare evidence. These are practical extensions for this article, not uses attributed to the interviewee. AI still cannot make an unverified hypothesis true.
 
 Keep three states distinct:
 
@@ -130,4 +132,8 @@ For quality engineering, feature-led security exploration moves beyond ticking o
 
 ## References
 
-- Shilpa Kumari, GitHub Blog, October 8, 2026: How one bug bounty researcher chooses the features they investigate: https://github.blog/security/how-one-bug-bounty-researcher-chooses-the-features-they-investigate/
+- Shilpa Kumari, GitHub Blog (October 8, 2026), How one bug bounty researcher chooses the features they investigate: https://github.blog/security/how-one-bug-bounty-researcher-chooses-the-features-they-investigate/
+- Google Project Zero: https://projectzero.google/
+- GitHub Security Lab: https://securitylab.github.com/
+- PortSwigger Research: https://portswigger.net/research
+- Hacker News: https://news.ycombinator.com/

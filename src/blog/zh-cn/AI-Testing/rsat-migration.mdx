@@ -8,6 +8,8 @@ tags: ["RSAT", "Dynamics 365", "测试迁移"]
 categories: ["软件测试"]
 ---
 
+> 学习来源：ACCELQ《RSAT Migration Guide》。文中的迁移步骤与工期是厂商文章提供的参考信息；后半部分的验证义务、切换门槛和评审建议属于本文的质量工程延伸。ACCELQ 同时提供测试工具，文中涉及工具能力的说法应结合微软官方资料和目标平台现状核实。
+
 ## 把停止支持日期当作规划触发点
 
 微软 Dynamics 365 Finance & Operations（F&O）的回归套件自动化工具 RSAT，通常与 Task Recorder 和 Azure DevOps 测试管理流程配合使用。微软官方文档目前写明，RSAT 将在 **2027 年 5 月 15 日之后不再受支持**。
@@ -72,13 +74,17 @@ ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration
 | --- | ---: | --- |
 | 小型 | 少于 50 | 2–4 周 |
 | 中型 | 50–200 | 6–10 周 |
-| 大型 | 超过 200 | 12–20 周或更长 |
+| 大型 | 200 及以上 | 12–20 周或更长 |
+
+原文的工期边界在恰好 200 条用例时存在重叠：表格把中型写成 50–200 条、大型写成 200 条及以上；问答又把 200 条归为大型，并给出 12–20 周或更长的估算。以上数字是厂商估算，不是承诺；制定计划时应先明确项目采用哪条分界。
 
 正式规划前，先按复杂度分层抽样试迁移，记录重建、数据准备、调试、评审和并行验证所需时间，再按实际吞吐量估算剩余工作，并为集成风险留出缓冲。
 
 ## 这些风险会让迁移看起来完成得太早
 
 **把迁移当成录制工具替换。**旧套件遗漏的集成验证，应触发覆盖讨论，而不是被原样复制。
+
+ACCELQ 原文还指出，RSAT 不支持涉及 Excel、XML 或 CSV 导入导出的 Data Management 工作区场景，工作流配置测试则需要第三方连接。这是厂商文章对 RSAT 能力边界的描述，使用前应结合微软当前文档和目标测试平台再次确认。微软另有明确建议：数据集成测试不要使用 RSAT，应使用 Data Management Framework 及其数据任务自动化能力。跨模块业务流程回归与文件数据集成验证不是一回事，测试策略应按验证目标拆开。
 
 **跳过盘点。**Cloud POS 或仓库场景可能遗漏，导致完成率看起来很高，实际覆盖却不完整。
 
@@ -120,4 +126,4 @@ ACCELQ 原文：RSAT Migration Guide: https://www.accelq.com/blog/rsat-migration
 ## 参考资料
 
 - ACCELQ，《RSAT Migration Guide》（厂商文章）: https://www.accelq.com/blog/rsat-migration-guide/
-- Microsoft Learn，RSAT 概览与支持说明: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/rsat/rsat-overview/
+- Microsoft Learn，RSAT 概览、支持说明与数据集成测试指引: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/rsat/rsat-overview/

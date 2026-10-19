@@ -20,9 +20,7 @@ Requirements live in Jira, test cases in a management platform or Markdown, auto
 
 Each record may be accurate, yet a standalone “test failed” says little about whether a requirement changed, which build and environment were involved, whether the failure is recurring, or whether the test itself is flaky.
 
-**Data volume is not context quality.** The presenter says Sembi surveys several thousand of its users annually; respondents reported that 53% of code was AI-generated or AI-assisted. This is a survey-specific reported figure, not a measured global share of all code, and the session does not substantiate a more precise respondent count. Faster software production makes trustworthy quality knowledge more important.
-
-The speaker also said respondents reported moderate to dramatic increases in QA demand associated with AI-generated or AI-assisted development. The session did not give a percentage for that point, so it should be read as the survey's reported trend rather than a universal measurement or proof of causation.
+**Data volume is not context quality.** The presenter says Sembi has conducted annual software-quality surveys of several thousand users, and that its first combined Software Quality Pulse report found respondents reporting 53% of code was AI-generated or AI-assisted. The public 2026 report describes nearly 4,000 respondents across QA, security, development, and engineering leadership. It reports that an average 53% of respondents' code had been touched by AI, 61% saw moderate-to-dramatic increases in QA demand due to AI-generated code, and 17% said AI-driven testing had a significant impact. These are respondent-reported findings in a vendor-published survey—not a global census or proof that AI alone caused the changes. Faster software production makes trustworthy quality knowledge more important.
 
 ## What makes a test result useful later?
 
@@ -123,17 +121,17 @@ The question-and-answer session sharpened several practical points.
 
 **Does model choice matter more than context?** In the speaker's experiments, relevant context often mattered more than switching between specific models. A more capable model without useful context could still perform poorly; retrieving focused material through MCP helped. Model capability, context quality, token usage, and task type all matter, so this is not a claim that model selection never matters.
 
-**Can teams connect multiple context sources?** Yes. The speaker described combining test management with sources such as GitHub or GitLab and CI. The goal is not to connect everything indiscriminately, but to make important relationships useful and trustworthy. Do not exclude a source merely because it is different, and do not treat access as a reason to retrieve every record.
+**Can teams connect multiple context sources?** Yes. The speaker described combining test management with sources such as GitHub or GitLab and CI. The goal is not to connect everything indiscriminately, but to make important relationships useful and trustworthy. My practical recommendation: do not exclude a source merely because it is different, and do not treat access as a reason to retrieve every record.
 
-**How did the speaker's team use the approach?** He described manual and automated testing, testing early and often, and a release rhythm close to monthly. The team aimed to bring testing data into developer workflows through MCP. These are the speaker's team practices, not a universal cadence.
+**How did the speaker's team use the approach?** He described manual and automated testing, testing early and often, and bringing testing data into developer workflows through MCP. In the Q&A, he said TestRail had been releasing almost monthly, alongside early-track releases for some customers. That is a product release cadence, not a universal team delivery recommendation.
 
 **Is this test management or quality management?** The speaker described a move from managing a test library toward **quality orchestration**: connecting requirements, builds, executions, defects, releases, and decisions so that quality work is visible across the lifecycle.
 
 **How should context follow versions?** Associate tests, requirements, defects, and change history with release milestones—for example, Jira fixed versions or Git release tags. The speaker preferred traceable history across releases over maintaining arbitrary isolated context for every branch.
 
-**Is AI augmenting work or merely offloading it?** The speaker framed AI as a force multiplier for existing work, not simply a way to transfer tasks away. Faster code generation without corresponding verification and governance can reduce production quality. Focused context can reduce rework, but does not remove human responsibility.
+**Is AI augmenting work or merely offloading it?** The speaker framed AI as a force multiplier for existing work, not simply a way to transfer tasks away. My extension of that point is that faster code generation without corresponding verification and governance can reduce production quality; focused context can reduce rework, but it does not remove human responsibility.
 
-**When is Markdown enough, and when might a platform help?** A small team can begin with Markdown, test code, CI artifacts, and a lightweight index. Structured platforms may help as cross-team data and governance needs grow. The speaker mentioned a client with 5 TB of test data as an anecdote, not a threshold for buying a platform; he also acknowledged his possible TestRail bias. Evaluate scale, relationships, governance, integrations, maintenance cost, and lock-in.
+**When is Markdown enough, and when might a platform help?** An audience member described a large defense organization considering version-controlled Markdown for requirements and quality records. The speaker's response emphasized integrations, structured data entities, and the ability to scale; he also acknowledged his possible TestRail bias. A small team can begin with Markdown, test code, CI artifacts, and a lightweight index. He also mentioned a client with 5 TB of test data as an anecdote, not a threshold for buying a platform. These are vendor-side examples, not proof that every team needs a dedicated platform. Evaluate scale, relationships, governance, integrations, maintenance cost, and lock-in.
 
 **Read the reported outcomes as case data.**
 
@@ -171,7 +169,8 @@ Test cases should not become static lists that are forgotten after execution. Co
 ## References
 
 - Ministry of Testing session, Chris Faraglia, October 15, 2026: https://www.ministryoftesting.com/media-sessions/from-test-cases-to-ai-ready-quality-data-why-structure-matters
-- Sembi, *Software Quality Pulse* report: https://www.sembi.com/first-edition-software-quality-pulse-report/
+- Sembi Software Quality Pulse Report (session resource): https://www.sembi.com/first-edition-software-quality-pulse-report/
+- Sembi, *First Edition Software Quality Pulse Report*: https://www.sembi.com/news/first-edition-sembi-software-quality-pulse-report/
 - Ministry of Testing, *Managing Distributed QA Teams: Strategies for Success*: https://www.ministryoftesting.com/media-sessions/managing-distributed-qa-teams-strategies-for-success
 - Ministry of Testing, *Testing in Regulated Industries with TestRail*: https://www.ministryoftesting.com/media-sessions/testing-in-regulated-industries-with-testrail
 - TestRail Academy (vendor resource): https://academy.testrail.com/plus/
