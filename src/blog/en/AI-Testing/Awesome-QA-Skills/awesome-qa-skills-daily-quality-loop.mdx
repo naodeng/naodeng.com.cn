@@ -39,16 +39,16 @@ For Chinese versions, use `https://github.com/naodeng/awesome-qa-skills/tree/mai
 
 Before calling the workflow Skill, prepare today's project snapshot: build/commit ID, target environment, stories and acceptance criteria, changed files, test data/accounts, known P0/P1 issues, yesterday's carryover, team capacity, and freeze time. Reference only the documents that affect today's decisions.
 
-
 ## Before testing: set today's scope and readiness
 ### Daily Testing Workflow — set today's scope and gates
 
 Use this Skill at the start of the workday, or when priorities change materially. It needs today's goal, stories/bugs/regression scope, proximity to release, build and environment status, known severe defects, carryover, capacity, and any time or data constraints.
 
+> Example document paths (replace them with the corresponding documents that exist in your project):
+> releases/4.18.2-scope.md (release scope), qa/known-issues.md (known issues), and docs/runbooks/staging-test-data.md (test-data runbook).
+
 ~~~text
 @skill daily-testing-workflow
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# releases/4.18.2-scope.md (release scope), qa/known-issues.md (known issues), and docs/runbooks/staging-test-data.md (test-data runbook).
 Plan QA for build 4.18.2-rc3 today. We have one tester for four hours.
 Read releases/4.18.2-scope.md, qa/known-issues.md,
 docs/runbooks/staging-test-data.md, and yesterday's handoff.
@@ -65,10 +65,11 @@ It should state today's scope, priorities, gate status, risks, and next handoff.
 
 When today's focus is a functional change, call this Skill for a bounded feature or flow. Provide the requirement/story, UI or API behavior, target users and roles, current build, environment, data constraints, known defects, and existing test assets.
 
+> Example document paths (replace them with the corresponding documents that exist in your project):
+> docs/requirements/refund-flow.md (requirements) and docs/product/refund-policy.md (refund rules).
+
 ~~~text
 @skill functional-testing
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# docs/requirements/refund-flow.md (requirements) and docs/product/refund-policy.md (refund rules).
 Prepare functional coverage for the refund flow changed in PR 842.
 Read docs/requirements/refund-flow.md, docs/product/refund-policy.md,
 services/refund/, and tests/refund/. The target is staging build 4.18.2-rc3.
@@ -84,9 +85,10 @@ The output is a test design or plan. The team still needs to run the cases and c
 
 Call Bug Reporting only after observing a failure. Provide the app/build, browser/device, account type, preconditions, exact steps, actual and expected behavior, reproduction frequency, impact, and screenshot/video/log evidence. If the expected behavior is uncertain, include its rule source or mark it as an open question.
 
+> Example document: qa/repro/BUG-1842.md is a sample defect reproduction record. Replace it with your project’s actual record and attach the related evidence.
+
 ~~~text
 @skill bug-reporting
-# Example document: qa/repro/BUG-1842.md is a sample defect reproduction record. Replace it with your project’s actual record and attach the related evidence.
 Format the checkout failure from staging build 4.18.2-rc3.
 Precondition: a standard member has an active 10% coupon.
 Steps and observed/expected behavior are in qa/repro/BUG-1842.md.
@@ -115,18 +117,35 @@ The report should cover scope, progress, risks, blockers, defects, next actions,
 
 ## Best practices
 
-- **Choose one primary handoff at a time.** Do not ask the daily workflow to expand into a complete functional test plan, defect report, and executive report in one response.
-- **Keep the readiness gate honest.** A red environment blocks execution even if a recovery owner has been assigned.
-- **Carry the build identity through every stage.** Cases, defects, and reports should identify the same build and environment when they concern the same run.
-- **Separate the plan from what happened.** Use planned, not run, blocked, failed, and passed only when the evidence supports that state.
+### Choose one primary handoff at a time
+
+Do not ask the daily workflow to expand into a complete functional test plan, defect report, and executive report in one response.
+
+### Keep the readiness gate honest
+
+A red environment blocks execution even if a recovery owner has been assigned.
+
+### Carry the build identity through every stage
+
+Cases, defects, and reports should identify the same build and environment when they concern the same run.
+
+### Separate the plan from what happened
+
+Use planned, not run, blocked, failed, and passed only when the evidence supports that state.
 
 ## FAQ
 
-**What if the environment is down?** Ask Daily Testing Workflow to keep the start gate RED, assign/escalate recovery, and replan work that can be done offline. Do not describe execution as started.
+### What if the environment is down?
 
-**Can Test Reporting still produce a report when run results are missing?** Yes. It should explain the evidence gap and report “not executed or insufficient evidence,” rather than inventing a pass rate or zero defects.
+Ask Daily Testing Workflow to keep the start gate RED, assign/escalate recovery, and replan work that can be done offline. Do not describe execution as started.
 
-**Does Functional Testing run my automated suite?** The Skill provides functional coverage and execution notes. A test runner or tester must run the suite and provide results unless your agent has a separate, explicitly configured execution tool.
+### Can Test Reporting still produce a report when run results are missing?
+
+Yes. It should explain the evidence gap and report “not executed or insufficient evidence,” rather than inventing a pass rate or zero defects.
+
+### Does Functional Testing run my automated suite?
+
+The Skill provides functional coverage and execution notes. A test runner or tester must run the suite and provide results unless your agent has a separate, explicitly configured execution tool.
 
 ## References
 

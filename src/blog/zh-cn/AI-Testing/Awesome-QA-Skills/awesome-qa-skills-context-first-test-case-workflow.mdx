@@ -38,17 +38,17 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 开始前，整理会影响测试设计的资料：用户故事或需求、业务规则、验收标准、相关设计或 API 契约、本次改动代码或数据结构、现有测试和已知缺陷。注明版本、分支或文档版本，方便确认资料对应的行为。
 
-
 ## 先澄清业务事实：Requirements Analysis（需求分析）
 
 当需求涉及多个资料来源、业务规则不明确，或预期行为依赖项目背景时，先调用这个 Skill。它负责区分已明确与待澄清的要求，找出规则缺口、可测性问题、依赖和风险；不直接生成用例。
 
 提供用户故事、验收标准、产品规则、技术说明、发布范围、已知问题和约束。如果只有截图或原型，也应尽量附上需求说明；不能只靠图片推断权限、状态和后台规则。
 
+> 示例文档路径（使用时请替换为自己项目中实际存在的对应资料）：
+> docs/requirements/checkout-coupon.md（需求）、docs/product/coupon-rules.md（业务规则）和 docs/design/checkout-v2.md（设计说明）。
+
 ~~~text
 @skill requirements-analysis
-# 示例文档路径（使用时请替换为自己项目中实际存在的对应资料）：
-# docs/requirements/checkout-coupon.md（需求）、docs/product/coupon-rules.md（业务规则）和 docs/design/checkout-v2.md（设计说明）。
 分析 docs/requirements/checkout-coupon.md 中描述的优惠券变更。
 范围：Web 结算页和订单 API；不包含支付渠道认证。
 请阅读 docs/product/coupon-rules.md、docs/design/checkout-v2.md、
@@ -63,10 +63,11 @@ src/checkout/applyCoupon.ts 和 tests/checkout/coupon.spec.ts。
 
 规则足以定义预期结果后，再调用这个 Skill。提供已确认的分析、来源文件、涉及角色、环境、权限、测试数据限制、已知风险和输出格式，让它生成一组可执行、可追溯的测试用例。多个参与方提供场景候选时，请它合并等价场景并保留来源。
 
+> 示例文档路径（请替换为自己项目中实际存在的资料）：
+> docs/qa/checkout-coupon-rule-review.md（已确认的规则评审）和 docs/product/coupon-rules.md（业务规则）。
+
 ~~~text
 @skill test-case-writing
-# 示例文档路径（请替换为自己项目中实际存在的资料）：
-# docs/qa/checkout-coupon-rule-review.md（已确认的规则评审）和 docs/product/coupon-rules.md（业务规则）。
 请依据 docs/qa/checkout-coupon-rule-review.md 中已确认的规则，编写
 Web 结算和订单 API 优惠券场景的分级测试用例。
 参考 docs/product/coupon-rules.md、src/checkout/applyCoupon.ts 和
@@ -81,10 +82,11 @@ Web 结算和订单 API 优惠券场景的分级测试用例。
 
 把已生成或已有用例与相同的需求和业务资料一并交给评审 Skill。如果没有这些参考，它可以检查语句是否清楚，却无法可靠判断测试是否保护了真实业务行为。
 
+> 示例文档路径（请替换为自己项目中实际存在的资料）：
+> qa/cases/checkout-coupon.md（测试用例）、docs/product/coupon-rules.md（业务规则）和 docs/design/checkout-v2.md（设计说明）。
+
 ~~~text
 @skill test-case-reviewer
-# 示例文档路径（请替换为自己项目中实际存在的资料）：
-# qa/cases/checkout-coupon.md（测试用例）、docs/product/coupon-rules.md（业务规则）和 docs/design/checkout-v2.md（设计说明）。
 请对照已确认的规则评审 qa/cases/checkout-coupon.md，并阅读
  docs/product/coupon-rules.md 和 docs/design/checkout-v2.md。
 先指出业务影响最大的发现。每项发现说明缺失或薄弱的用例、相关规则
@@ -96,18 +98,35 @@ Web 结算和订单 API 优惠券场景的分级测试用例。
 
 ## 最佳实践
 
-- **把任务和参考资料分开写。**说明要 Skill 产出什么、任务范围是什么，以及哪些文件提供项目事实。
-- **注明资料版本。**业务行为可能变化时，写明 Commit、发布版本或文档版本。
-- **要求规则到用例可追溯。**每个预期结果都应关联验收标准、规则，或明确标注的假设。
-- **业务预期由人确认。**Skill 可以发现资料缺口，但资料没有写的业务决策仍需要领域负责人确认。
+### 把任务和参考资料分开写
+
+说明要 Skill 产出什么、任务范围是什么，以及哪些文件提供项目事实。
+
+### 注明资料版本
+
+业务行为可能变化时，写明 Commit、发布版本或文档版本。
+
+### 要求规则到用例可追溯
+
+每个预期结果都应关联验收标准、规则，或明确标注的假设。
+
+### 业务预期由人确认
+
+Skill 可以发现资料缺口，但资料没有写的业务决策仍需要领域负责人确认。
 
 ## 常见问题
 
-**只附一张截图可以吗？**截图有助于说明界面，但通常无法说明权限、状态转换、后台规则和错误处理。条件允许时，再提供需求、业务规则以及相关设计或代码。
+### 只附一张截图可以吗？
 
-**只有代码，没有完整需求怎么办？**可以提供改动代码和已有测试，让 Requirements Analysis 区分代码当前表现、明确规则、假设和待确认问题。不要默认把当前实现当作已批准的业务规则。
+截图有助于说明界面，但通常无法说明权限、状态转换、后台规则和错误处理。条件允许时，再提供需求、业务规则以及相关设计或代码。
 
-**Test Case Reviewer 会执行用例吗？**不会。它评审提供的用例和参考资料。实际执行仍需要测试人员或测试运行器，并形成单独的运行证据。
+### 只有代码，没有完整需求怎么办？
+
+可以提供改动代码和已有测试，让 Requirements Analysis 区分代码当前表现、明确规则、假设和待确认问题。不要默认把当前实现当作已批准的业务规则。
+
+### Test Case Reviewer 会执行用例吗？
+
+不会。它评审提供的用例和参考资料。实际执行仍需要测试人员或测试运行器，并形成单独的运行证据。
 
 ## 参考
 

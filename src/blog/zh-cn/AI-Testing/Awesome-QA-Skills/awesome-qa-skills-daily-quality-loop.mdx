@@ -39,16 +39,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 调用前整理当天的项目快照：构建版本或 Commit、目标环境、故事和验收标准、变更文件、测试账号和数据、未关闭的 P0/P1 问题、前一天遗留项、团队可用时间和冻结时间。只附上会影响当天决策的资料。
 
-
 ## 开工前：确定今天能测什么
 ### Daily Testing Workflow（日常测试工作流）——确定当天范围和门禁
 
 在开始一天的工作时，或当天优先级发生明显变化时，调用这个 Skill。需要提供当天目标、故事/缺陷/回归范围、距离发布的时间、构建和环境状态、严重缺陷、遗留任务、可用人力，以及时间和数据限制。
 
+> 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+> releases/4.18.2-scope.md（发布范围）、qa/known-issues.md（已知问题）和 docs/runbooks/staging-test-data.md（测试数据运行手册）。
+
 ~~~text
 @skill daily-testing-workflow
-# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
-# releases/4.18.2-scope.md（发布范围）、qa/known-issues.md（已知问题）和 docs/runbooks/staging-test-data.md（测试数据运行手册）。
 请为构建版本 4.18.2-rc3 制定今天的 QA 计划。只有一名测试人员，时间四小时。
 请阅读 releases/4.18.2-scope.md、qa/known-issues.md、
 docs/runbooks/staging-test-data.md 和昨天的测试交接。
@@ -65,10 +65,11 @@ docs/runbooks/staging-test-data.md 和昨天的测试交接。
 
 当天需要检查功能变更时，针对一个具体功能或流程调用它。提供故事或需求、UI/API 行为、目标用户和角色、构建版本、环境、数据限制、已知缺陷和已有测试资产。
 
+> 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+> docs/requirements/refund-flow.md（需求）和 docs/product/refund-policy.md（退款规则）。
+
 ~~~text
 @skill functional-testing
-# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
-# docs/requirements/refund-flow.md（需求）和 docs/product/refund-policy.md（退款规则）。
 请为 PR 842 中改动的退款流程准备功能测试覆盖。
 阅读 docs/requirements/refund-flow.md、docs/product/refund-policy.md、
 services/refund/ 和 tests/refund/。目标环境是 Staging，构建为 4.18.2-rc3。
@@ -83,9 +84,10 @@ Functional Testing 输出测试设计或执行计划。团队仍需运行用例�
 
 只有实际观察到失败后，才调用 Bug Reporting。提供应用和构建版本、浏览器/设备、账号类型、前置条件、准确步骤、实际与预期行为、复现频率、影响范围，以及截图、视频或日志证据。预期行为不明确时，附上规则来源或标为待确认。
 
+> 示例文档：qa/repro/BUG-1842.md 是缺陷复现记录示例；请换成自己项目中的实际记录，并附上对应证据。
+
 ~~~text
 @skill bug-reporting
-# 示例文档：qa/repro/BUG-1842.md 是缺陷复现记录示例；请换成自己项目中的实际记录，并附上对应证据。
 请整理 Staging 构建 4.18.2-rc3 上发现的结算问题。
 前置条件：standard member 账号有一张有效的 10% 优惠券。
 复现步骤、实际和预期行为见 qa/repro/BUG-1842.md。
@@ -112,18 +114,35 @@ Functional Testing 输出测试设计或执行计划。团队仍需运行用例�
 
 ## 最佳实践
 
-- **一次只做一个主要交接。**不要要求日常工作流一次回答完整功能方案、缺陷报告和管理层总结。
-- **如实记录环境门禁。**环境是 RED 时，即使已经安排恢复负责人，也不能开始报告执行结果。
-- **每个阶段都携带构建信息。**同一轮测试的用例、缺陷和报告应能追溯到相同的构建与环境。
-- **区分计划与事实。**计划中、未执行、阻塞、失败、通过要分开使用，并以证据支持状态。
+### 一次只做一个主要交接
+
+不要要求日常工作流一次回答完整功能方案、缺陷报告和管理层总结。
+
+### 如实记录环境门禁
+
+环境是 RED 时，即使已经安排恢复负责人，也不能开始报告执行结果。
+
+### 每个阶段都携带构建信息
+
+同一轮测试的用例、缺陷和报告应能追溯到相同的构建与环境。
+
+### 区分计划与事实
+
+计划中、未执行、阻塞、失败、通过要分开使用，并以证据支持状态。
 
 ## 常见问题
 
-**环境不可用怎么办？**让 Daily Testing Workflow 保持开始门禁为 RED，分派或升级恢复工作，并重新安排可以离线完成的分析。不要把执行状态写成已开始。
+### 环境不可用怎么办？
 
-**没有运行结果还能生成 Test Reporting 报告吗？**可以。报告应说明缺少哪些证据，并标注“尚未执行或证据不足”，不能编造通过率或零缺陷结论。
+让 Daily Testing Workflow 保持开始门禁为 RED，分派或升级恢复工作，并重新安排可以离线完成的分析。不要把执行状态写成已开始。
 
-**Functional Testing 会替我运行自动化套件吗？**它会整理功能覆盖和执行说明。运行套件并提供结果仍需要测试运行器或测试人员，除非 Agent 另行连接并明确配置了执行工具。
+### 没有运行结果还能生成 Test Reporting 报告吗？
+
+可以。报告应说明缺少哪些证据，并标注“尚未执行或证据不足”，不能编造通过率或零缺陷结论。
+
+### Functional Testing 会替我运行自动化套件吗？
+
+它会整理功能覆盖和执行说明。运行套件并提供结果仍需要测试运行器或测试人员，除非 Agent 另行连接并明确配置了执行工具。
 
 ## 参考
 

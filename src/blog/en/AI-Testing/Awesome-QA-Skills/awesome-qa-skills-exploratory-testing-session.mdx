@@ -38,16 +38,16 @@ npx skills add naodeng/awesome-qa-skills --skill test-reporting -g
 
 For Chinese versions, use `https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh` as the source and keep each `--skill` name. These commands install at user scope (`-g`); remove `-g` for a project-local install, or add `-a codex` to target Codex. Invocation depends on the agent: describe the task when it supports automatic discovery, or use its supported syntax to select a Skill. The `@skill` lines below are examples. If a newly installed Skill does not appear, reload the session and check that agent's installation instructions. Before you start, collect the feature scope and user roles, business rules, UI/API design or screenshots, recent code changes, build and environment, test accounts and data, known issues, and the session time limit.
 
-
 ## Before the session: choose a risk and write the charter
 ### Quality Risk Analysis — decide where to spend the session
 
 Use this Skill when you need to select a high-value area before testing, or when multiple candidate risks compete for limited session time. Supply business goals, change scope, architecture/dependencies, users and data, defect history, release constraints, current version/environment, prior results, and any time or prohibited-action limits.
 
+> Example document paths (replace them with the corresponding documents that exist in your project):
+> product/saved-payment-rules.md (business rules), design/payment-settings.md (design), and qa/known-payment-issues.md (known issues).
+
 ~~~text
 @skill quality-risk-analysis
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# product/saved-payment-rules.md (business rules), design/payment-settings.md (design), and qa/known-payment-issues.md (known issues).
 Prioritize risks for the new saved-payment flow on staging build 4.18.2-rc3.
 Read product/saved-payment-rules.md, design/payment-settings.md,
 src/payments/savedMethods/, qa/known-payment-issues.md, and the attached
@@ -64,10 +64,11 @@ The Skill uses the supplied information to rank risks, suggest scenarios or chec
 
 Choose the highest-value risk from the analysis and call Manual Testing to turn it into a session a tester can run. Include mission, build/environment, account and data, time box, scope, known defects, evidence requirements, and any data-cleanup or access policy.
 
+> Example document paths (replace them with the corresponding documents that exist in your project):
+> qa/risk/saved-payment.md (confirmed risks) and docs/qa/staging-access.md (test-environment access instructions).
+
 ~~~text
 @skill manual-testing
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# qa/risk/saved-payment.md (confirmed risks) and docs/qa/staging-access.md (test-environment access instructions).
 Create a 45-minute session charter for the saved-payment risks confirmed in
 qa/risk/saved-payment.md. Test staging build 4.18.2-rc3 using the standard-member
 account described in docs/qa/staging-access.md.
@@ -86,9 +87,10 @@ During execution, record the starting state, action, any defined expectation, ac
 
 After the tester observes a failure, call Bug Reporting with the exact app version, browser/device, account, preconditions, steps, actual and expected behavior, frequency, impact, and screenshot/video/log. Include the rule or design source for the expected behavior.
 
+> Example document: qa/sessions/EX-209.md is a sample session record. Replace it with the actual record for your session and attach its screenshots and network log.
+
 ~~~text
 @skill bug-reporting
-# Example document: qa/sessions/EX-209.md is a sample session record. Replace it with the actual record for your session and attach its screenshots and network log.
 Write a report for the saved-card failure observed during session EX-209.
 The run record is qa/sessions/EX-209.md; attach screenshot EX-209-04.png
 and network log EX-209.har. State environment, account state, repro steps,
@@ -116,20 +118,39 @@ The report should cover tested and untested areas, risks, blockers, defects, nex
 
 ## Best practices
 
-- **Keep the charter small enough to run.** A 45-minute session should focus on a few priority questions and leave time to follow new evidence.
-- **Protect state and data.** Use recoverable test accounts and checkpoints; follow project policy when resetting orders, cards, or configuration.
-- **Separate scripted and exploratory work.** Mark which checks followed an existing case and which were exploratory observations.
-- **Capture evidence as you go.** Record build, environment, starting state, action, observation, and evidence ID while the session is fresh.
+### Keep the charter small enough to run
+
+A 45-minute session should focus on a few priority questions and leave time to follow new evidence.
+
+### Protect state and data
+
+Use recoverable test accounts and checkpoints; follow project policy when resetting orders, cards, or configuration.
+
+### Separate scripted and exploratory work
+
+Mark which checks followed an existing case and which were exploratory observations.
+
+### Capture evidence as you go
+
+Record build, environment, starting state, action, observation, and evidence ID while the session is fresh.
 
 ## FAQ
 
-**Does Manual Testing explore the application for me?** No. It prepares a plan or checklist from the supplied materials. A human tester or an explicitly configured browser agent must interact with the application and record execution evidence.
+### Does Manual Testing explore the application for me?
 
-**What if there is no clear expected behavior?** Keep the observation, cite the missing rule, and ask the owner to clarify the oracle. Do not report the guessed behavior as a product defect.
+No. It prepares a plan or checklist from the supplied materials. A human tester or an explicitly configured browser agent must interact with the application and record execution evidence.
 
-**Can I change the charter mid-session?** Yes. Follow new evidence when useful, but record why the focus changed, what was left incomplete, and where to resume.
+### What if there is no clear expected behavior?
 
-**Does a 45-minute session prove the feature is safe?** No. The report covers only the risks and paths actually explored, with confidence qualified by that limited scope.
+Keep the observation, cite the missing rule, and ask the owner to clarify the oracle. Do not report the guessed behavior as a product defect.
+
+### Can I change the charter mid-session?
+
+Yes. Follow new evidence when useful, but record why the focus changed, what was left incomplete, and where to resume.
+
+### Does a 45-minute session prove the feature is safe?
+
+No. The report covers only the risks and paths actually explored, with confidence qualified by that limited scope.
 
 ## References
 

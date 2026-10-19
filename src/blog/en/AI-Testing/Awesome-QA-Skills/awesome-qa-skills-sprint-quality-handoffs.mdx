@@ -43,16 +43,16 @@ For Chinese versions, use `https://github.com/naodeng/awesome-qa-skills/tree/mai
 
 Prepare a sprint context pack with the sprint goal, selected stories, Definition of Done, team capacity, environment/data strategy, known risks and technical debt, carryover defects, and release proximity. For a story, include its acceptance criteria, product rules, design/API contract, relevant changed code, and related tests. Include a branch or build identifier where it matters.
 
-
 ## Sprint planning: scope, cadence, and exit criteria
 ### Sprint Testing Workflow — map stages and gates
 
 Start here when planning the iteration, changing priorities, or assessing sprint exit. It organizes the phases and identifies the current gate; it does not replace detailed requirements analysis, test cases, or execution reports.
 
+> Example document paths (replace them with the corresponding documents that exist in your project):
+> sprint/PAY-48-goal.md (sprint goal), backlog/PAY-482.md (requirement), docs/qa/definition-of-done.md (definition of done), qa/carryover.md (carryover), and docs/qa/environment-plan.md (environment plan).
+
 ~~~text
 @skill sprint-testing-workflow
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# sprint/PAY-48-goal.md (sprint goal), backlog/PAY-482.md (requirement), docs/qa/definition-of-done.md (definition of done), qa/carryover.md (carryover), and docs/qa/environment-plan.md (environment plan).
 Plan QA for sprint PAY-48. Goal: support partial refunds in the web app and API.
 Read sprint/PAY-48-goal.md, backlog/PAY-482.md, docs/qa/definition-of-done.md,
 qa/carryover.md, and docs/qa/environment-plan.md.
@@ -69,10 +69,11 @@ The output should state sprint goals and scope, stage and gate status, the prior
 
 Use this Skill only where the story, acceptance criteria, or source documents leave a material ambiguity. Attach the story, product rules, prototype/design, technical notes, dependencies, and known issues. Ask for specific questions to take back to the product or engineering owner.
 
+> Example document paths (replace them with the corresponding documents that exist in your project):
+> backlog/PAY-482.md (requirement), product/refund-policy.md (business rules), design/refund-v3.md (design), and api/refunds.yaml (API contract).
+
 ~~~text
 @skill requirements-analysis
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# backlog/PAY-482.md (requirement), product/refund-policy.md (business rules), design/refund-v3.md (design), and api/refunds.yaml (API contract).
 Analyze PAY-482 using backlog/PAY-482.md, product/refund-policy.md,
 design/refund-v3.md, api/refunds.yaml, and services/refund/.
 Compare the sources. Separate confirmed behavior from assumptions, list
@@ -86,9 +87,10 @@ The output should cover requirement understanding, rule gaps, risk, testability,
 
 Once the owner confirms rules that affect pass/fail, give the Skill the decisions, requirements, scope, environment, roles/permissions, data constraints, prior defects, and required output format.
 
+> Example document: qa/decisions/PAY-482-refund-rules.md is a sample decision record for confirmed rules. Replace it with the actual source in your project.
+
 ~~~text
 @skill test-case-writing
-# Example document: qa/decisions/PAY-482-refund-rules.md is a sample decision record for confirmed rules. Replace it with the actual source in your project.
 Write a prioritized case suite for the confirmed PAY-482 behavior in
 qa/decisions/PAY-482-refund-rules.md. Include preconditions, test data,
 steps, decidable expected results, priority, and a Trace to an acceptance
@@ -104,10 +106,11 @@ The output should be one unified, executable suite with traceable cases and expl
 
 Use Functional Testing when a story or integrated flow is ready for a focused check. Provide the target build, users/roles, feature flow, requirements, test data, environment, existing cases, and known weak areas. If Test Case Writing already produced a complete suite, ask Functional Testing to prioritize it and find integration or state gaps rather than generating the cases again.
 
+> Example document paths (replace them with the corresponding documents that exist in your project):
+> docs/product/refund-policy.md (refund rules) and qa/cases/PAY-482.md (test cases).
+
 ~~~text
 @skill functional-testing
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# docs/product/refund-policy.md (refund rules) and qa/cases/PAY-482.md (test cases).
 Prepare execution priorities for partial refunds on build 4.18.2-sprint-rc1.
 Read docs/product/refund-policy.md, services/refund/, tests/refund/,
 and qa/cases/PAY-482.md. Group coverage by user flow and business goal.
@@ -121,9 +124,10 @@ Expect task understanding, risk priorities, core functional coverage, scenario l
 
 Invoke Bug Reporting only after observing a failure. Pass the exact build/environment, account and starting state, reproduction steps, actual and expected outcome with the rule source, frequency, impact, and logs/screenshots. Separate confirmed behavior from a root-cause theory.
 
+> Example document: qa/repro/PAY-482-2.md is a sample defect reproduction record. Replace it with your project’s actual record and attach the related evidence.
+
 ~~~text
 @skill bug-reporting
-# Example document: qa/repro/PAY-482-2.md is a sample defect reproduction record. Replace it with your project’s actual record and attach the related evidence.
 Create a report for the partial-refund failure observed on build 4.18.2-sprint-rc1.
 Reproduction and actual/expected behavior are in qa/repro/PAY-482-2.md;
 attach qa/evidence/PAY-482-2/console.log and the screen recording.
@@ -151,20 +155,39 @@ Use the report to inform the workflow’s exit gate. A P0 failure must be fixed 
 
 ## Best practices
 
-- **Keep the workflow stage-level.** Use it to track phases and gates; use the specialist for the current artifact.
-- **Set entry and exit criteria before a story moves.** “Merged” is not equivalent to test-ready or Done.
-- **Re-rank on scope change.** Record what moved out, what remains at risk, and who owns the decision.
-- **Carry evidence into review.** Planned work, drafted cases, executed results, and accepted risks are different states.
+### Keep the workflow stage-level
+
+Use it to track phases and gates; use the specialist for the current artifact.
+
+### Set entry and exit criteria before a story moves
+
+“Merged” is not equivalent to test-ready or Done.
+
+### Re-rank on scope change
+
+Record what moved out, what remains at risk, and who owns the decision.
+
+### Carry evidence into review
+
+Planned work, drafted cases, executed results, and accepted risks are different states.
 
 ## FAQ
 
-**Are the day numbers in the workflow mandatory?** No. The sample two-week cadence is illustrative. Map the phases to your real iteration and do not remove readiness, feature-complete, or exit gates to fit the calendar.
+### Are the day numbers in the workflow mandatory?
 
-**Should I call every Skill for every story?** No. Start with the workflow, then invoke a focused Skill only when the stage needs its artifact. Skip requirements analysis for an unambiguous story; skip bug reporting when there was no observed failure.
+No. The sample two-week cadence is illustrative. Map the phases to your real iteration and do not remove readiness, feature-complete, or exit gates to fit the calendar.
 
-**Can an unresolved P0 be carried into the next sprint as Done?** Not by default. It blocks sprint exit unless the authorized owner accepts the risk in writing and the residual risk is recorded.
+### Should I call every Skill for every story?
 
-**Does a case suite prove the story passed?** No. The suite describes what to run. The test run, build, environment, and results must be supplied separately.
+No. Start with the workflow, then invoke a focused Skill only when the stage needs its artifact. Skip requirements analysis for an unambiguous story; skip bug reporting when there was no observed failure.
+
+### Can an unresolved P0 be carried into the next sprint as Done?
+
+Not by default. It blocks sprint exit unless the authorized owner accepts the risk in writing and the residual risk is recorded.
+
+### Does a case suite prove the story passed?
+
+No. The suite describes what to run. The test run, build, environment, and results must be supplied separately.
 
 ## References
 

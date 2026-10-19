@@ -38,17 +38,17 @@ For Chinese versions, use `https://github.com/naodeng/awesome-qa-skills/tree/mai
 
 Before starting, collect the materials that can change the test design: the story or requirement, business rules, acceptance criteria, relevant design or API contract, changed code or schema, existing tests, and known defects. Include version, branch, or document revision so the agent can identify which behavior the references describe.
 
-
 ## Clarify the business rules: Requirements Analysis
 
 Use this Skill before writing cases when the requirement has multiple sources, rules are unclear, or expected behavior depends on business context. It is designed to identify clear and unclear requirements, missing rules, testability gaps, dependencies, and risks. It is not the case-writing step.
 
 Provide the user story, acceptance criteria, product rules, relevant technical notes, release scope, known issues, and constraints. If you have a screenshot or prototype, include it alongside the requirement rather than expecting the Skill to infer behavior from an image alone.
 
+> Example document paths (replace these with the corresponding documents that exist in your project):
+> docs/requirements/checkout-coupon.md (requirements), docs/product/coupon-rules.md (business rules), and docs/design/checkout-v2.md (design).
+
 ~~~text
 @skill requirements-analysis
-# Example document paths (replace these with the corresponding documents that exist in your project):
-# docs/requirements/checkout-coupon.md (requirements), docs/product/coupon-rules.md (business rules), and docs/design/checkout-v2.md (design).
 Analyze the coupon change in docs/requirements/checkout-coupon.md.
 Scope: web checkout and the order API. Exclude payment-provider certification.
 Read docs/product/coupon-rules.md, docs/design/checkout-v2.md,
@@ -64,10 +64,11 @@ The analysis should rank issues by risk, separate facts from assumptions, and ph
 
 Call this Skill once the rules are clear enough to define expected results. Provide the confirmed analysis, source documents, in-scope roles, environment, permissions, test-data limits, known risks, and output format. Ask for an executable, traceable suite; when several stakeholders supply candidate scenarios, you can also ask it to merge equivalent cases.
 
+> Example document paths (replace these with the corresponding documents that exist in your project):
+> docs/qa/checkout-coupon-rule-review.md (confirmed rule review) and docs/product/coupon-rules.md (business rules).
+
 ~~~text
 @skill test-case-writing
-# Example document paths (replace these with the corresponding documents that exist in your project):
-# docs/qa/checkout-coupon-rule-review.md (confirmed rule review) and docs/product/coupon-rules.md (business rules).
 Using the confirmed rules in docs/qa/checkout-coupon-rule-review.md, write
 prioritized cases for coupon application in web checkout and the order API.
 Use docs/product/coupon-rules.md, src/checkout/applyCoupon.ts, and
@@ -83,10 +84,11 @@ Review the output for the case ID, priority, preconditions, data, steps, expecte
 
 Use the reviewer on the generated or existing suite, with the same requirements and business references. Without those references, it can comment on wording but cannot reliably say whether the tests protect the real product behavior.
 
+> Example document paths (replace these with the corresponding documents that exist in your project):
+> qa/cases/checkout-coupon.md (test cases), docs/product/coupon-rules.md (business rules), and docs/design/checkout-v2.md (design).
+
 ~~~text
 @skill test-case-reviewer
-# Example document paths (replace these with the corresponding documents that exist in your project):
-# qa/cases/checkout-coupon.md (test cases), docs/product/coupon-rules.md (business rules), and docs/design/checkout-v2.md (design).
 Review qa/cases/checkout-coupon.md against the confirmed rule review,
 docs/product/coupon-rules.md, and docs/design/checkout-v2.md.
 Prioritize findings by business impact. For each finding, identify the
@@ -99,18 +101,35 @@ The reviewer should return a conclusion, prioritized findings, missing scenarios
 
 ## Best practices
 
-- **Keep the prompt and references distinct.** Say what you want the Skill to produce, what is in scope, and which files provide product facts.
-- **Name the source revision.** Include a commit, release, or document version when behavior may have changed.
-- **Ask for source-to-rule traceability.** Every expected result should connect to an acceptance criterion, rule, or explicitly labeled assumption.
-- **Use a human review for business oracles.** A Skill can find gaps in supplied material; a domain owner must resolve decisions the material does not contain.
+### Keep the prompt and references distinct
+
+Say what you want the Skill to produce, what is in scope, and which files provide product facts.
+
+### Name the source revision
+
+Include a commit, release, or document version when behavior may have changed.
+
+### Ask for source-to-rule traceability
+
+Every expected result should connect to an acceptance criterion, rule, or explicitly labeled assumption.
+
+### Use a human review for business oracles
+
+A Skill can find gaps in supplied material; a domain owner must resolve decisions the material does not contain.
 
 ## FAQ
 
-**Can I attach only a screenshot?** It can help explain a screen, but it rarely defines permissions, state transitions, backend rules, or error behavior. Add the requirement, business rules, and relevant design or code where available.
+### Can I attach only a screenshot?
 
-**What if I have the code but no complete requirement?** Provide the changed code and existing tests, then ask Requirements Analysis to separate observable behavior from assumptions and open questions. Do not treat current implementation as the approved business rule by default.
+It can help explain a screen, but it rarely defines permissions, state transitions, backend rules, or error behavior. Add the requirement, business rules, and relevant design or code where available.
 
-**Does Test Case Reviewer execute the cases?** No. It reviews the supplied cases and references. Execution needs a tester or test runner and produces separate run evidence.
+### What if I have the code but no complete requirement?
+
+Provide the changed code and existing tests, then ask Requirements Analysis to separate observable behavior from assumptions and open questions. Do not treat current implementation as the approved business rule by default.
+
+### Does Test Case Reviewer execute the cases?
+
+No. It reviews the supplied cases and references. Execution needs a tester or test runner and produces separate run evidence.
 
 ## References
 

@@ -43,16 +43,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 迭代上下文资料建议包括：迭代目标、故事清单、Definition of Done、团队容量、环境和数据策略、已知风险与技术债、未完成缺陷，以及距离发布的时间。具体故事还需提供验收标准、产品规则、设计/API 契约、相关改动代码和测试；必要时补上分支或构建版本。
 
-
 ## Sprint 计划会：定范围、节奏和退出条件
 ### Sprint Testing Workflow（迭代测试工作流）——安排阶段和门禁
 
 迭代规划、优先级明显变化或准备评估迭代退出时，从这个 Skill 开始。它负责组织阶段与门禁，但不能代替详细需求分析、测试用例或执行报告。
 
+> 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+> sprint/PAY-48-goal.md（迭代目标）、backlog/PAY-482.md（需求）、docs/qa/definition-of-done.md（完成定义）、qa/carryover.md（遗留项）和 docs/qa/environment-plan.md（环境计划）。
+
 ~~~text
 @skill sprint-testing-workflow
-# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
-# sprint/PAY-48-goal.md（迭代目标）、backlog/PAY-482.md（需求）、docs/qa/definition-of-done.md（完成定义）、qa/carryover.md（遗留项）和 docs/qa/environment-plan.md（环境计划）。
 请为 PAY-48 迭代规划 QA。目标：Web 应用和 API 支持部分退款。
 请阅读 sprint/PAY-48-goal.md、backlog/PAY-482.md、
 docs/qa/definition-of-done.md、qa/carryover.md 和 docs/qa/environment-plan.md。
@@ -68,10 +68,11 @@ docs/qa/definition-of-done.md、qa/carryover.md 和 docs/qa/environment-plan.md�
 
 当故事、验收标准或来源资料存在会影响测试预期的重要歧义时才调用它。附上故事、产品规则、原型/设计、技术说明、依赖和已知问题，并要求生成可以交给产品或研发负责人的具体问题。
 
+> 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+> backlog/PAY-482.md（需求）、product/refund-policy.md（业务规则）、design/refund-v3.md（设计）和 api/refunds.yaml（API 约定）。
+
 ~~~text
 @skill requirements-analysis
-# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
-# backlog/PAY-482.md（需求）、product/refund-policy.md（业务规则）、design/refund-v3.md（设计）和 api/refunds.yaml（API 约定）。
 请依据 backlog/PAY-482.md、product/refund-policy.md、design/refund-v3.md、
 api/refunds.yaml 和 services/refund/ 分析 PAY-482。
 比较不同来源，区分已确认行为与假设，列出缺失或冲突的规则，评估对可测性的影响，
@@ -84,9 +85,10 @@ api/refunds.yaml 和 services/refund/ 分析 PAY-482。
 
 会影响通过/失败标准的规则经负责人确认后，再把结论、需求来源、范围、环境、用户角色和权限、测试数据限制、历史缺陷及输出格式交给这个 Skill。
 
+> 示例文档：qa/decisions/PAY-482-refund-rules.md 是已确认规则的决策记录示例；请替换为自己项目中的实际规则来源。
+
 ~~~text
 @skill test-case-writing
-# 示例文档：qa/decisions/PAY-482-refund-rules.md 是已确认规则的决策记录示例；请替换为自己项目中的实际规则来源。
 请依据 qa/decisions/PAY-482-refund-rules.md 中已确认的行为，为 PAY-482 编写
 有优先级的测试用例。每条用例包括前置条件、测试数据、步骤、可判定的预期结果、
 优先级，以及到验收标准或业务规则的 Trace。视情况覆盖正向、负向和边界场景。
@@ -100,10 +102,11 @@ api/refunds.yaml 和 services/refund/ 分析 PAY-482。
 
 某个故事的增量达到可测试状态后，可以调用它为单个功能流程准备重点检查。提供目标构建、角色、功能流程、需求、测试数据、环境、已有用例和已知薄弱处。如果 Test Case Writing 已生成完整用例，就让 Functional Testing 排定优先级并检查流程或集成缺口，避免重复生成用例。
 
+> 示例文档路径（请替换为自己项目中实际存在的对应资料）：
+> docs/product/refund-policy.md（退款规则）和 qa/cases/PAY-482.md（测试用例）。
+
 ~~~text
 @skill functional-testing
-# 示例文档路径（请替换为自己项目中实际存在的对应资料）：
-# docs/product/refund-policy.md（退款规则）和 qa/cases/PAY-482.md（测试用例）。
 请为构建 4.18.2-sprint-rc1 上的部分退款准备执行优先级。
 阅读 docs/product/refund-policy.md、services/refund/、tests/refund/ 和
 qa/cases/PAY-482.md。按用户流程和业务目标组织覆盖，指出重要的角色、数据状态、
@@ -116,9 +119,10 @@ qa/cases/PAY-482.md。按用户流程和业务目标组织覆盖，指出重要�
 
 只有真实观察到失败后才调用 Bug Reporting。提供准确的构建和环境、账号及初始状态、复现步骤、规则来源、实际与预期行为、频率、影响以及日志/截图。确认事实和根因推测必须分开。
 
+> 示例文档：qa/repro/PAY-482-2.md 是缺陷复现记录示例；请换成自己项目中的实际记录，并附上对应证据。
+
 ~~~text
 @skill bug-reporting
-# 示例文档：qa/repro/PAY-482-2.md 是缺陷复现记录示例；请换成自己项目中的实际记录，并附上对应证据。
 请整理在构建 4.18.2-sprint-rc1 上观察到的部分退款问题。
 复现和实际/预期行为见 qa/repro/PAY-482-2.md；请附上
 qa/evidence/PAY-482-2/console.log 和录屏。
@@ -145,20 +149,39 @@ qa/evidence/PAY-482-2/console.log 和录屏。
 
 ## 最佳实践
 
-- **让工作流保持在阶段层。**用它跟踪阶段和门禁，专项 Skill 负责当前阶段需要的产物。
-- **故事进入下一阶段前先检查门槛。**代码合并不等于可测试，也不自动满足 Done。
-- **范围变化后重新排风险。**记录哪些测试被延期、剩余风险是什么，以及谁有权决定接受。
-- **回顾时带上实际证据。**计划、用例草稿、运行结果和已接受风险是不同状态。
+### 让工作流保持在阶段层
+
+用它跟踪阶段和门禁，专项 Skill 负责当前阶段需要的产物。
+
+### 故事进入下一阶段前先检查门槛
+
+代码合并不等于可测试，也不自动满足 Done。
+
+### 范围变化后重新排风险
+
+记录哪些测试被延期、剩余风险是什么，以及谁有权决定接受。
+
+### 回顾时带上实际证据
+
+计划、用例草稿、运行结果和已接受风险是不同状态。
 
 ## 常见问题
 
-**Skill 里的天数安排必须照做吗？**不必。两周迭代只是示例。按实际迭代映射阶段，但不要为了赶时间删除测试准备、功能完成或退出门禁。
+### Skill 里的天数安排必须照做吗？
 
-**每个故事都要调用所有 Skills 吗？**不需要。先看当前阶段，再调用需要的专项 Skill。规则清楚时可以跳过需求分析；没有实际失败时不需要缺陷报告。
+不必。两周迭代只是示例。按实际迭代映射阶段，但不要为了赶时间删除测试准备、功能完成或退出门禁。
 
-**未解决的 P0 可以直接带到下个迭代并标记 Done 吗？**通常不可以。除非有权负责人书面接受风险并记录剩余影响，否则它会阻塞迭代退出。
+### 每个故事都要调用所有 Skills 吗？
 
-**有了用例就能说故事测试通过了吗？**不能。用例说明要检查什么；还要提供实际运行的构建、环境和结果，才能报告执行状态。
+不需要。先看当前阶段，再调用需要的专项 Skill。规则清楚时可以跳过需求分析；没有实际失败时不需要缺陷报告。
+
+### 未解决的 P0 可以直接带到下个迭代并标记 Done 吗？
+
+通常不可以。除非有权负责人书面接受风险并记录剩余影响，否则它会阻塞迭代退出。
+
+### 有了用例就能说故事测试通过了吗？
+
+不能。用例说明要检查什么；还要提供实际运行的构建、环境和结果，才能报告执行状态。
 
 ## 参考
 

@@ -48,10 +48,10 @@ Prepare a release context pack containing release date and stakeholders, include
 
 First identify the current release window and the gate to prepare. Provide the release date, scope, rollback plan, freeze rules, candidate status, known defects, required specialty areas, environments, owners, and monitoring constraints.
 
+The paths below are examples. Replace them with the release scope, known-defect, rollback, and freeze-policy documents that actually exist in your project.
+
 ~~~text
 @skill release-testing-workflow
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# releases/4.18.2-scope.md (release scope), releases/4.18.2-known-defects.md (known defects), docs/release/rollback-4.18.md (rollback plan), and docs/release/freeze-policy.md (freeze policy).
 Prepare the readiness plan for release 4.18.2, planned for 2026-10-23.
 Read releases/4.18.2-scope.md, releases/4.18.2-known-defects.md,
 docs/release/rollback-4.18.md, docs/release/freeze-policy.md,
@@ -85,10 +85,10 @@ The strategy should list scope and depth by area, owners, entry/exit criteria, g
 
 Call Functional Testing for a bounded flow or changed product area. Include the exact RC build, release diff, approved business rules, target roles, environment, data/setup, current test assets, and known weak areas. Ask for scenarios and execution priorities; do not imply the Skill has run them.
 
+The paths below are examples. Replace them with the business rules, release scope, and test directories that actually exist in your project.
+
 ~~~text
 @skill functional-testing
-# Example document paths (replace them with the corresponding documents that exist in your project):
-# docs/product/checkout-and-refund-rules.md (checkout/refund rules) and releases/4.18.2-scope.md (release scope).
 Prepare the high-priority functional checks for checkout and refund on RC
 4.18.2-rc3. Read docs/product/checkout-and-refund-rules.md,
 releases/4.18.2-scope.md, src/checkout/, src/refunds/, and tests/smoke/.
@@ -104,9 +104,10 @@ The output should identify task scope, priorities, core functional coverage, key
 
 Only call Bug Reporting for a failure someone observed. Provide the candidate build, environment, account/state, preconditions, repro steps, actual and expected outcomes, frequency, impact, and evidence. Cite the approved rule or requirement that supports the expected outcome.
 
+`qa/repro/REL-221.md` and `qa/evidence/REL-221/` are example paths. Replace them with the defect record and evidence locations used by your project.
+
 ~~~text
 @skill bug-reporting
-# Example document: qa/repro/REL-221.md is a sample defect reproduction record. Replace it with your project’s actual record and attach the related evidence.
 Report the refund failure observed on RC 4.18.2-rc3.
 Repro steps and actual/expected are in qa/repro/REL-221.md.
 Attach the screen recording and request log under qa/evidence/REL-221/.
@@ -150,20 +151,39 @@ The Skill may recommend a release position, but formal approval requires the aut
 
 ## Best practices
 
-- **Compress dates, not gate criteria.** A hotfix can shorten the timeline, but impact assessment, required checks, rollback, monitoring, and decision ownership still need evidence.
-- **Repeat the candidate identity.** Tie runs, defects, specialist reports, and the decision to the exact build and scope.
-- **Separate evidence from risk acceptance.** A schedule constraint can change test depth; it cannot turn a failed test into a pass or accept risk without authority.
-- **Keep specialist work bounded.** Ask one specialist Skill for one focused report; let the release workflow combine those reports at the gate.
+### Shorten the timeline, not the gates
+
+A hotfix can shorten the schedule, but impact assessment, required checks, rollback, monitoring, and decision ownership still need evidence.
+
+### Name the candidate build every time
+
+Tie run records, defects, specialist reports, and the release decision to the exact build and scope.
+
+### Separate test evidence from risk acceptance
+
+A schedule constraint can change test depth; it cannot turn a failed test into a pass or accept risk without an authorized owner.
+
+### Keep specialist work focused
+
+Each specialist Skill should produce one focused artifact. The release workflow combines those reports at the gate.
 
 ## FAQ
 
-**Do I have to use the sample T-14 schedule?** No. It is a relative example. Use the supplied release date and merge activities if needed, but do not delete gate criteria.
+### Do I have to follow the sample T-14 schedule?
 
-**Can the Skill approve the release?** No. It can prepare a recommendation. The authorized decision owner must approve and record the version, scope, time, and evidence.
+No. T-14 is a relative example. Use the actual release date and merge activities if needed, but keep the gate criteria.
 
-**What if a required performance or security report is missing?** Keep that specialty gate open or blocked. Do not treat a planned test or a report from another build as a pass. Install and invoke the relevant specialty Skill if that work is in scope.
+### Can a Skill approve the release?
 
-**Can Test Reporting say “ready” when test evidence is missing?** No. It should mark the quality status as not executed or insufficient evidence and explain what evidence is still needed.
+No. A Skill can prepare a recommendation. The authorized decision owner must approve and record the version, scope, time, and evidence.
+
+### What if a required performance or security report is missing?
+
+Keep that specialty gate open or blocked. Do not treat a planned test or a report from another build as a pass. Install and invoke the relevant specialty Skill if that work is in scope.
+
+### Can Test Reporting say “ready” when test evidence is missing?
+
+No. It should mark the quality status as not executed or insufficient evidence and explain what evidence is still needed.
 
 ## References
 
