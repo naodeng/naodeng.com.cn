@@ -440,6 +440,10 @@ const sidebarDate = (date: Date) =>
       max-inline-size: min(100%, 1200px);
       margin-inline: 0 auto;
     }
+    .article-with-toc:not(.article-with-toc--plain) .article-main .prose > :global(:is(p, figure, picture):has(img)) {
+      max-inline-size: min(100%, 1200px);
+      margin-inline: 0 auto;
+    }
     .article-main .prose {
       font-size: clamp(1rem, calc(0.75rem + 0.25vw), 1.125rem);
     }
