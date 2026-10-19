@@ -2,117 +2,377 @@
 import { LOCALES, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 import { AI_TEST_AUDITOR_SITE } from "@/data/aiTestAuditorSite";
+
 export const getStaticPaths = () => Object.keys(LOCALES).map((lang) => ({ params: { lang } }));
+
 const locale = Astro.currentLocale as Lang;
 const site = AI_TEST_AUDITOR_SITE[locale];
-const breadcrumbs = [{ name: locale === "zh-cn" ? "首页" : "Home", url: `/${locale}/` }, { name: "AI Test Auditor", url: `/${locale}/ai-test-auditor/` }];
+const breadcrumbs = [
+  { name: locale === "zh-cn" ? "首页" : "Home", url: `/${locale}/` },
+  { name: "AI Test Auditor", url: `/${locale}/ai-test-auditor/` },
+];
+const latestRelease = site.releases[0];
+const historicalReleases = site.releases.slice(1);
 ---
+
 <Layout title={site.meta.title} description={site.meta.description} breadcrumbs={breadcrumbs}>
   <div class="auditor-page" data-ai-test-auditor-page>
-    <section class="hero"><div><p class="eyebrow">{site.hero.eyebrow}</p><h1>{site.hero.title}</h1><p class="summary">{site.hero.summary}</p><div class="actions">{site.hero.actions.map((a) => <a class:list={['action', { primary: a.external }]} href={a.href} target={a.external ? '_blank' : undefined} rel={a.external ? 'noopener noreferrer' : undefined}>{a.label}<span>{a.external ? '↗' : '↓'}</span></a>)}</div></div><aside class="panel"><small>AI TEST / AUDIT</small><strong>FAKE · WEAK</strong><span>{locale === 'zh-cn' ? '证据先于信任，边界清晰才能做出更好的质量判断。' : 'Evidence before trust. Clear boundaries make better quality decisions.'}</span></aside></section>
-    <section class="section"><h2>{site.labels.features}</h2><div class="grid">{site.features.map((f) => <article><span class="material-icons-sharp icon">{f.icon}</span><h3>{f.title}</h3><p>{f.description}</p></article>)}</div></section>
-    <section class="section"><h2>{site.labels.rules}</h2><div class="rules">{site.rules.map((r) => <article><strong class:list={['status', r.status.toLowerCase()]}>{r.status}</strong><div><h3>{r.title}</h3><p>{r.description}</p></div></article>)}</div></section>
-    <section class="section"><h2>{site.labels.install}</h2><div class="grid">{site.installModes.map((m) => <article id={m.id}><h3>{m.title}</h3><p>{m.description}</p><small class="command">{site.labels.commandLabel}</small>{m.commands.map((c) => <pre><code>{c}</code></pre>)}</article>)}</div></section>
-    <section class="section"><h2>{site.labels.ecosystem}</h2><div class="links">{site.ecosystemLinks.map((l) => <a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener noreferrer' : undefined}>{l.label}<span>→</span></a>)}</div></section>
-    <section class="section"><h2>{site.labels.releaseNotes}</h2><div class="releases">{site.releases.map((r) => <details><summary><span><strong>{r.version}</strong><time>{r.publishedAt}</time></span><span>{r.summary}</span></summary><div><ul>{r.changes.map((c) => <li>{c}</li>)}</ul><a href={r.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink} ↗</a></div></details>)}</div></section>
+    <section class="hero" aria-labelledby="auditor-title">
+      <div class="hero-copy">
+        <h1 id="auditor-title">{site.hero.title}</h1>
+        <p class="hero-summary">{site.hero.summary}</p>
+        <div class="hero-actions">
+          {site.hero.actions.map((action) => <a class:list={["hero-action", { primary: action.external }]} href={action.href} target={action.external ? "_blank" : undefined} rel={action.external ? "noopener noreferrer" : undefined}>{action.label}<span aria-hidden="true">{action.external ? "↗" : "↓"}</span></a>)}
+        </div>
+        <a class="latest-release" href={latestRelease.url} target="_blank" rel="noopener noreferrer">
+          <span>{locale === "zh-cn" ? "最新版本" : "Latest release"}</span>
+          <strong>{latestRelease.version}</strong>
+          <time datetime={latestRelease.publishedAt}>{latestRelease.publishedAt}</time>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <aside class="hero-summary-card" aria-label={locale === "zh-cn" ? "审计结果概览" : "Audit summary"}>
+        <div class="report-window-heading"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>{locale === "zh-cn" ? "源码审计 / 摘要" : "Source audit / summary"}</span></div>
+        <div class="hero-metrics">
+          <div><strong>{site.demo.total}</strong><span>{site.labels.tests}</span></div>
+          <div><strong class="fake-ink">{site.demo.fake}</strong><span>{site.labels.fake}</span></div>
+          <div><strong class="weak-ink">{site.demo.weak}</strong><span>{site.labels.weak}</span></div>
+          <div><strong>{site.demo.unassessed}</strong><span>{site.labels.unassessed}</span></div>
+        </div>
+        <p>{site.labels.sourceOnlyNotice}</p>
+      </aside>
+    </section>
+
+    <section class="report-section" aria-labelledby="sample-report-title">
+      <div class="section-heading">
+        <div><h2 id="sample-report-title">{site.labels.sampleReport}</h2></div>
+        <span class="fixture-tag">{site.labels.benchmarkFixture}</span>
+      </div>
+      <div class="report-shell" data-ui="audit-report" data-report-shell>
+        <div class="report-toolbar">
+          <div class="source-path"><span class="material-icons-sharp" aria-hidden="true">description</span><code>{site.demo.source}</code></div>
+          <div class="report-filters" role="group" aria-label={locale === "zh-cn" ? "按发现类型筛选" : "Filter findings by type"}>
+            <button type="button" data-report-filter="all" aria-pressed="true">{site.labels.filterAll}</button>
+            <button type="button" data-report-filter="fake" aria-pressed="false">{site.labels.filterFake}</button>
+            <button type="button" data-report-filter="weak" aria-pressed="false">{site.labels.filterWeak}</button>
+          </div>
+        </div>
+        <div class="report-ledger">
+          <div class="report-total"><span>{locale === "zh-cn" ? "审计汇总" : "Audit summary"}</span><strong>{site.demo.assessed} / {site.demo.total}</strong><small>{site.labels.tests}</small></div>
+          <div><span class="ledger-dot fake-dot" aria-hidden="true"></span><span>{site.labels.fake}</span><strong>{site.demo.fake}</strong></div>
+          <div><span class="ledger-dot weak-dot" aria-hidden="true"></span><span>{site.labels.weak}</span><strong>{site.demo.weak}</strong></div>
+          <div><span class="ledger-dot" aria-hidden="true"></span><span>{site.labels.unassessed}</span><strong>{site.demo.unassessed}</strong></div>
+        </div>
+        <div class="finding-list" data-finding-list>
+          {site.demo.findings.map((finding) => (
+            <article class="finding-card" data-finding-card data-finding-class={finding.classification.toLowerCase()}>
+              <div class="finding-heading">
+                <div class="finding-meta"><span class:list={["classification", finding.classification.toLowerCase()]}>{finding.classification}</span><span>{finding.ruleId}</span><span>{locale === "zh-cn" ? `第 ${finding.line} 行` : `Line ${finding.line}`}</span></div>
+              </div>
+              <h3>{finding.title}</h3>
+              <pre class="source-code"><span aria-hidden="true">{finding.line}</span><code>{finding.code}</code></pre>
+              <p class="finding-description">{finding.description}</p>
+              <div class="remediation"><span>{locale === "zh-cn" ? "修复建议" : "Suggested remediation"}</span><p>{finding.remediation}</p></div>
+            </article>
+          ))}
+        </div>
+        <p class="filter-status" data-report-status aria-live="polite" data-summary-template={locale === "zh-cn" ? "显示 {visible} / {total} 条发现" : "Showing {visible} of {total} findings"}>
+          {locale === "zh-cn" ? `显示 ${site.demo.findings.length} / ${site.demo.findings.length} 条发现` : `Showing ${site.demo.findings.length} of ${site.demo.findings.length} findings`}
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="features-title">
+      <div class="section-heading"><div><h2 id="features-title">{site.labels.features}</h2></div></div>
+      <div class="feature-grid">
+        {site.features.map((feature, index) => <article class="feature-card"><span class="feature-number">0{index + 1}</span><span class="material-icons-sharp icon" aria-hidden="true">{feature.icon}</span><h3>{feature.title}</h3><p>{feature.description}</p></article>)}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="rules-title">
+      <div class="section-heading"><div><h2 id="rules-title">{site.labels.rules}</h2></div></div>
+      <div class="rule-ledger">
+        {site.rules.map((rule) => <article class="rule-row"><strong class:list={["status", rule.status.toLowerCase()]}>{rule.status}</strong><div><h3>{rule.title}</h3><p>{rule.description}</p></div></article>)}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="install-title">
+      <div class="section-heading"><div><h2 id="install-title">{site.labels.install}</h2></div></div>
+      <div class="install-grid">
+        {site.installModes.map((mode) => <article class="install-card" id={mode.id}><h3>{mode.title}</h3><p>{mode.description}</p><span class="command-label">{site.labels.commandLabel}</span>{mode.commands.map((command) => <pre><code>{command}</code></pre>)}</article>)}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ecosystem-title">
+      <div class="section-heading"><div><h2 id="ecosystem-title">{site.labels.ecosystem}</h2></div></div>
+      <div class="ecosystem-links">
+        {site.ecosystemLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}
+      </div>
+      <p class="license-note"><span class="material-icons-sharp" aria-hidden="true">policy</span><a href="https://github.com/naodeng/ai-test-auditor/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">{site.labels.licenseNotice}<span aria-hidden="true">↗</span></a></p>
+    </section>
+
+    <section class="section releases" aria-labelledby="releases-title">
+      <div class="section-heading"><div><h2 id="releases-title">{site.labels.releaseNotes}</h2></div></div>
+      <article class="current-release">
+        <div class="current-release-heading"><span>{locale === "zh-cn" ? "当前版本" : "Current release"}</span><strong>{latestRelease.version}</strong><time datetime={latestRelease.publishedAt}>{latestRelease.publishedAt}</time></div>
+        <p>{latestRelease.summary}</p>
+        <ul>{latestRelease.changes.map((change) => <li>{change}</li>)}</ul>
+        <a href={latestRelease.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink}<span aria-hidden="true">↗</span></a>
+      </article>
+      <details class="release-history">
+        <summary>{locale === "zh-cn" ? "查看历史版本" : "View release history"}<span aria-hidden="true">↓</span></summary>
+        <div class="release-list">
+          {historicalReleases.map((release) => <details><summary><span><strong>{release.version}</strong><time datetime={release.publishedAt}>{release.publishedAt}</time></span><span>{release.summary}</span></summary><div class="release-body"><ul>{release.changes.map((change) => <li>{change}</li>)}</ul><a href={release.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink}<span aria-hidden="true">↗</span></a></div></details>)}
+        </div>
+      </details>
+    </section>
   </div>
 </Layout>
+
+<script>
+  const reportShell = document.querySelector<HTMLElement>("[data-report-shell]");
+  const filterButtons = reportShell?.querySelectorAll<HTMLButtonElement>("[data-report-filter]");
+  const findingCards = reportShell?.querySelectorAll<HTMLElement>("[data-finding-card]");
+  const reportStatus = reportShell?.querySelector<HTMLElement>("[data-report-status]");
+
+  filterButtons?.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.reportFilter;
+      let visible = 0;
+      findingCards?.forEach((card) => {
+        const matches = filter === "all" || card.dataset.findingClass === filter;
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+      filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      if (reportStatus) {
+        reportStatus.textContent = (reportStatus.dataset.summaryTemplate || "Showing {visible} of {total} findings")
+          .replace("{visible}", String(visible))
+          .replace("{total}", String(findingCards?.length ?? 0));
+      }
+    });
+  });
+</script>
+
 <style>
   .auditor-page {
-    max-inline-size: var(--layout-max);
-    margin-inline: auto;
-    padding: 2rem var(--sp-m) 5rem;
+    --page-line: var(--color-border);
+    --page-soft: color-mix(in srgb, var(--color-theme) 4%, var(--color-surface));
+    max-width: var(--layout-max);
+    margin: 0 auto;
+    padding: 2rem 0 5rem;
     color: var(--color-main);
   }
-  .hero,
-  .section { border: 0; background: transparent; }
+  .auditor-page h1,
+  .auditor-page h2,
+  .auditor-page h3 { color: var(--color-main); }
   .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.55fr);
-    gap: 2rem;
-    padding: 2.5rem 0 3rem;
-    border-block-end: 1px solid var(--color-border);
+    grid-template-columns: minmax(0, 1.1fr) minmax(19rem, .9fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: 1.5rem 0 3rem;
+    border-bottom: 1px solid var(--page-line);
   }
-  .eyebrow,
-  .command { color: var(--color-theme); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.14em; }
-  .hero h1,
-  .section h2 { margin: 0; font-family: inherit; }
-  .hero h1 { font-size: clamp(2.7rem, 7vw, 5.6rem); line-height: 0.95; }
-  .summary { max-inline-size: 42rem; margin: 1.35rem 0 0; color: var(--color-text-secondary); font-size: 1.1rem; line-height: 1.7; }
-  .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
-  .action,
-  .links a,
-  .releases a {
+  .hero-copy { min-width: 0; }
+  .hero h1 { margin: 0; font-size: clamp(3rem, 6.4vw, 5.25rem); font-weight: 800; letter-spacing: -.06em; line-height: 1; }
+  .hero-summary { max-width: 42rem; margin: 1.2rem 0 0; color: var(--color-text-secondary); font-size: clamp(1.08rem, 1.6vw, 1.28rem); line-height: 1.65; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.55rem; }
+  .hero-action,
+  .ecosystem-links a,
+  .current-release > a,
+  .release-body a {
     display: inline-flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 0.7rem;
-    padding: 0.7rem 1rem;
-    border: 1px solid var(--color-border);
+    gap: .65rem;
+    min-height: 2.8rem;
+    padding: .65rem .9rem;
+    border: 1px solid var(--page-line);
     border-radius: var(--radius-sm);
     color: var(--color-main);
-    text-decoration: none;
-    font-weight: 800;
-  }
-  .action.primary,
-  .action:hover,
-  .action:focus-visible,
-  .links a:hover,
-  .links a:focus-visible,
-  .releases a:hover,
-  .releases a:focus-visible { background: var(--color-theme); color: var(--color-theme-on-dark); }
-  .panel {
-    align-self: center;
-    display: grid;
-    gap: 0.8rem;
-    padding: 1.25rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
     background: var(--color-surface);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
   }
-  .panel small { color: var(--color-text-tertiary); }
-  .panel strong { color: var(--color-main); }
-  .panel span,
-  .auditor-page article p,
-  .auditor-page time { color: var(--color-text-secondary); line-height: 1.55; }
-  .section { padding-top: 3.5rem; }
-  .section h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
-  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-  .grid article,
-  .rules article,
-  .releases details {
-    padding: 1.15rem;
-    border: 1px solid var(--color-border);
+  .hero-action.primary { border-color: var(--color-theme); background: var(--color-theme); color: var(--color-theme-on-dark); }
+  .hero-action:hover,
+  .hero-action:focus-visible,
+  .ecosystem-links a:hover,
+  .ecosystem-links a:focus-visible,
+  .current-release > a:hover,
+  .current-release > a:focus-visible,
+  .release-body a:hover,
+  .release-body a:focus-visible { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-main); }
+  .hero-action.primary:hover,
+  .hero-action.primary:focus-visible { background: var(--color-theme-focus); color: var(--color-theme-on-dark); }
+  .latest-release { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .65rem; margin-top: 1.15rem; color: var(--color-text-secondary); font-size: .9rem; text-decoration: none; }
+  .latest-release strong { color: var(--color-theme); }
+  .latest-release:hover strong,
+  .latest-release:focus-visible strong { text-decoration: underline; text-underline-offset: .2em; }
+  .hero-summary-card,
+  .report-shell,
+  .feature-card,
+  .install-card,
+  .current-release,
+  .release-history {
+    border: 1px solid var(--page-line);
     border-radius: var(--radius-md);
     background: var(--color-surface);
   }
-  .grid article { min-width: 0; }
-  .icon { color: var(--color-text-secondary); }
-  .auditor-page h3 { margin: 0.8rem 0 0.45rem; }
-  .grid p,
-  .rules p { margin: 0; }
-  .rules { display: grid; gap: 0.6rem; margin-top: 1.5rem; }
-  .rules article { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; align-items: start; }
-  .status { font-family: ui-monospace, monospace; color: var(--color-theme); }
+  .hero-summary-card { overflow: hidden; }
+  .report-window-heading { display: flex; align-items: center; gap: .65rem; padding: .8rem 1rem; border-bottom: 1px solid var(--page-line); color: var(--color-text-secondary); font-size: .83rem; }
+  .window-dots { display: inline-flex; gap: .28rem; }
+  .window-dots i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--color-border-strong); }
+  .window-dots i:first-child { background: var(--color-theme); }
+  .hero-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-metrics > div { display: grid; gap: .2rem; min-height: 6.4rem; align-content: center; padding: .8rem 1rem; }
+  .hero-metrics > div:nth-child(odd) { border-right: 1px solid var(--page-line); }
+  .hero-metrics > div:nth-child(-n + 2) { border-bottom: 1px solid var(--page-line); }
+  .hero-metrics strong { font-size: 1.8rem; font-variant-numeric: tabular-nums; line-height: 1; }
+  .hero-metrics span { color: var(--color-text-secondary); font-size: .86rem; }
+  .fake-ink,
+  .classification.fake,
   .status.fake { color: var(--color-caution); }
+  .weak-ink,
+  .classification.weak,
   .status.weak { color: var(--color-warn); }
+  .hero-summary-card > p { margin: 0; padding: .85rem 1rem; border-top: 1px solid var(--page-line); color: var(--color-text-secondary); font-size: .85rem; line-height: 1.5; }
+  .report-section { padding-top: clamp(3rem, 6vw, 5rem); }
+  .section { padding-top: clamp(3.2rem, 6vw, 5rem); }
+  .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; padding-bottom: .85rem; border-bottom: 1px solid var(--page-line); }
+  .section-heading > div { min-width: 0; }
+  .section h2 { margin: 0; font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.2; }
+  .fixture-tag { flex: 0 0 auto; padding: .32rem .62rem; border-radius: 999px; background: var(--color-theme-soft); color: var(--color-theme); font-size: .78rem; font-weight: 700; }
+  .report-shell { margin-top: 1.15rem; overflow: hidden; }
+  .report-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 1rem; border-bottom: 1px solid var(--page-line); }
+  .source-path { display: flex; align-items: center; gap: .55rem; min-width: 0; color: var(--color-text-secondary); }
+  .source-path .material-icons-sharp { flex: 0 0 auto; color: var(--color-theme); font-size: 1.1rem; }
+  .source-path code { overflow-wrap: anywhere; color: var(--color-main); font-family: ui-monospace, monospace; font-size: .83rem; }
+  .report-filters { display: flex; flex: 0 0 auto; gap: .35rem; }
+  .report-filters button { min-height: 2.3rem; padding: .4rem .65rem; border: 1px solid transparent; border-radius: var(--radius-sm); color: var(--color-text-secondary); background: transparent; font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }
+  .report-filters button[aria-pressed="true"] { border-color: var(--page-line); color: var(--color-main); background: var(--color-code-surface); }
+  .report-filters button:hover,
+  .report-filters button:focus-visible { color: var(--color-theme); }
+  .report-ledger { display: grid; grid-template-columns: 1.25fr repeat(3, 1fr); border-bottom: 1px solid var(--page-line); background: var(--color-code-surface); }
+  .report-ledger > div { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .45rem; min-width: 0; padding: .75rem .9rem; border-right: 1px solid var(--page-line); font-size: .8rem; }
+  .report-ledger > div:last-child { border-right: 0; }
+  .report-ledger > div > strong { font-variant-numeric: tabular-nums; }
+  .report-ledger .report-total { display: grid; grid-template-columns: 1fr auto; gap: 0 .55rem; }
+  .report-total > span { color: var(--color-text-secondary); }
+  .report-total > strong { grid-row: span 2; font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+  .report-total > small { color: var(--color-text-secondary); }
+  .ledger-dot { width: .52rem; height: .52rem; border-radius: 50%; background: var(--color-text-tertiary); }
+  .fake-dot { background: var(--color-caution); }
+  .weak-dot { background: var(--color-warn); }
+  .finding-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; padding: .75rem; }
+  .finding-card { min-width: 0; padding: 1rem; border: 1px solid var(--page-line); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .finding-card[hidden] { display: none; }
+  .finding-heading { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
+  .finding-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; color: var(--color-text-secondary); font-size: .76rem; }
+  .classification { font-weight: 800; }
+  .finding-card h3 { margin: .7rem 0 .55rem; font-size: 1.08rem; line-height: 1.4; }
+  .source-code { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .7rem; margin: 0; padding: .7rem .8rem; border-radius: var(--radius-sm); background: var(--color-code-surface); }
+  .source-code > span { color: var(--color-text-tertiary); font-family: ui-monospace, monospace; font-size: .8rem; text-align: end; }
+  .source-code code { min-width: 0; overflow-wrap: anywhere; white-space: normal; color: var(--color-main); font-family: ui-monospace, monospace; font-size: .83rem; }
+  .finding-description { margin: .7rem 0; color: var(--color-text-secondary); font-size: .92rem; line-height: 1.5; }
+  .remediation { padding: .75rem .8rem; border-left: 2px solid var(--color-theme); background: var(--page-soft); }
+  .remediation > span { color: var(--color-text-secondary); font-size: .74rem; font-weight: 700; }
+  .remediation p { margin: .25rem 0 0; font-size: .88rem; line-height: 1.5; }
+  .filter-status { margin: 0; padding: .7rem 1rem; border-top: 1px solid var(--page-line); color: var(--color-text-secondary); font-size: .82rem; }
+  .feature-grid,
+  .install-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin-top: 1.15rem; }
+  .feature-card,
+  .install-card { position: relative; min-width: 0; padding: 1.15rem; transition: border-color var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast); }
+  .feature-card:hover,
+  .install-card:hover { transform: translateY(-2px); border-color: var(--color-border-strong); background: var(--page-soft); }
+  .feature-number { color: var(--color-theme); font-size: .8rem; font-variant-numeric: tabular-nums; font-weight: 700; }
+  .feature-card .icon { display: block; margin-top: 1.2rem; color: var(--color-theme); font-size: 1.35rem; }
+  .auditor-page h3 { line-height: 1.35; }
+  .feature-card h3,
+  .install-card h3,
+  .rule-row h3 { margin: .45rem 0 .35rem; font-size: 1.08rem; }
+  .feature-card p,
+  .install-card p,
+  .rule-row p { margin: 0; color: var(--color-text-secondary); line-height: 1.55; }
+  .rule-ledger { display: grid; gap: 0; margin-top: 1.15rem; border-top: 1px solid var(--page-line); }
+  .rule-row { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 1rem; align-items: start; padding: 1rem .3rem; border-bottom: 1px solid var(--page-line); }
+  .status { font-size: .84rem; font-weight: 800; }
   .status.unassessed { color: var(--color-text-secondary); }
-  .command { display: block; margin-top: 1.2rem; }
-  .auditor-page pre { overflow: auto; margin: 0.45rem 0 0; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-code-surface); color: var(--color-text-primary); }
-  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.7rem; margin-top: 1.5rem; }
-  .releases { display: grid; gap: 0.6rem; margin-top: 1.5rem; }
-  .releases summary { display: flex; justify-content: space-between; gap: 1rem; cursor: pointer; }
-  .releases summary:focus,
-  .releases summary:focus-visible { outline: 2px solid var(--color-theme-focus); outline-offset: 2px; }
-  .releases summary span { display: grid; gap: 0.25rem; min-width: 0; }
-  .releases time { font-size: 0.8rem; }
-  .releases details > div { padding-top: 1rem; }
-  .releases ul { line-height: 1.6; }
+  .rule-row h3 { margin-top: 0; }
+  .command-label { display: block; margin-top: 1rem; color: var(--color-text-tertiary); font-size: .82rem; font-weight: 700; }
+  .install-card pre { overflow: visible; margin: .45rem 0 0; padding: .75rem; border: 1px solid var(--page-line); border-radius: var(--radius-sm); background: var(--color-code-surface); color: var(--color-main); font-size: .82rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .install-card code { font-family: ui-monospace, monospace; overflow-wrap: anywhere; white-space: inherit; }
+  .ecosystem-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: .55rem; margin-top: 1.15rem; }
+  .license-note { display: flex; align-items: center; gap: .55rem; margin: 1rem 0 0; color: var(--color-text-secondary); font-size: .86rem; }
+  .license-note > .material-icons-sharp { color: var(--color-theme); font-size: 1.1rem; }
+  .license-note a { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.4rem; color: inherit; text-decoration: underline; text-decoration-color: var(--color-border-strong); text-underline-offset: .2em; }
+  .license-note a:hover,
+  .license-note a:focus-visible { color: var(--color-theme); }
+  .current-release { margin-top: 1.15rem; padding: 1.1rem; background: var(--page-soft); }
+  .current-release-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .65rem; }
+  .current-release-heading > span { color: var(--color-text-secondary); font-size: .84rem; }
+  .current-release-heading strong { font-size: 1.2rem; }
+  .current-release-heading time,
+  .release-list time { color: var(--color-text-secondary); font-size: .83rem; }
+  .current-release > p { margin: .7rem 0; font-weight: 700; line-height: 1.5; }
+  .current-release ul { margin: .65rem 0 1rem; padding-inline-start: 1.25rem; color: var(--color-text-secondary); line-height: 1.6; }
+  .current-release > a,
+  .release-body a { width: fit-content; min-height: 2.6rem; }
+  .release-history { margin-top: .65rem; overflow: hidden; }
+  .release-history > summary,
+  .release-list summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .9rem 1rem; cursor: pointer; font-weight: 700; }
+  .release-history > summary { min-height: 3rem; }
+  .release-history[open] > summary { border-bottom: 1px solid var(--page-line); }
+  .release-history > .release-list { display: grid; gap: .5rem; margin: 0; padding: .6rem; }
+  .release-list details { border: 1px solid var(--page-line); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .release-list summary > span:first-child { display: flex; flex: 0 0 auto; align-items: baseline; gap: .65rem; }
+  .release-list summary > span:last-child { color: var(--color-text-secondary); font-weight: 400; text-align: end; }
+  .release-list details[open] summary { border-bottom: 1px solid var(--page-line); }
+  .release-body { padding: 0 1rem 1rem; color: var(--color-text-secondary); }
+  .release-body ul { margin: .7rem 0 1rem; padding-inline-start: 1.25rem; line-height: 1.6; }
+  .auditor-page a:focus-visible,
+  .auditor-page button:focus-visible,
+  .auditor-page summary:focus-visible { outline: 2px solid var(--color-theme-focus); outline-offset: 3px; }
+  @media (max-width: 1000px) {
+    .hero { grid-template-columns: minmax(0, 1fr) minmax(17rem, .9fr); gap: 2rem; }
+    .report-toolbar { align-items: flex-start; flex-direction: column; }
+    .report-ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .report-ledger > div:nth-child(2) { border-right: 0; }
+    .report-ledger > div:nth-child(-n + 2) { border-bottom: 1px solid var(--page-line); }
+  }
+  @media (max-width: 850px) {
+    .hero { grid-template-columns: minmax(0, 1fr); }
+  }
   @media (max-width: 720px) {
-    .hero,
-    .grid { grid-template-columns: minmax(0, 1fr); }
-    .panel { margin-top: 1rem; }
-    .section { padding-top: 2.75rem; }
-    .rules article,
-    .releases summary { display: grid; grid-template-columns: 1fr; }
+    .auditor-page { padding: 1.25rem 0 4rem; }
+    .hero { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding: 1rem 0 2rem; }
+    .hero h1 { font-size: clamp(2.8rem, 12vw, 4.2rem); }
+    .hero-summary { margin-top: .9rem; font-size: 1.08rem; }
+    .section,
+    .report-section { padding-top: 2.8rem; }
+    .section-heading { align-items: flex-start; flex-direction: column; }
+    .fixture-tag { white-space: normal; }
+    .report-toolbar { gap: .65rem; padding: .75rem; }
+    .source-path code { font-size: .75rem; }
+    .report-filters { width: 100%; }
+    .report-filters button { flex: 1; }
+    .report-ledger { grid-template-columns: minmax(0, 1fr); }
+    .report-ledger > div,
+    .report-ledger > div:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--page-line); }
+    .report-ledger > div:last-child { border-bottom: 0; }
+    .finding-list,
+    .feature-grid,
+    .install-grid { grid-template-columns: minmax(0, 1fr); }
+    .rule-row { grid-template-columns: 1fr; gap: .4rem; }
+    .release-list summary { align-items: flex-start; flex-direction: column; }
+    .release-list summary > span:last-child { text-align: start; }
+    .license-note { align-items: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-action,
+    .feature-card,
+    .install-card { transition: none; }
   }
 </style>

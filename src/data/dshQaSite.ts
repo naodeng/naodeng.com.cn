@@ -49,7 +49,7 @@ export type DshQaRelease = DshQaReleaseFact & DshQaReleaseContent;
 
 export interface DshQaSiteCopy {
   meta: { title: string; description: string };
-  hero: { eyebrow: string; title: string; summary: string; actions: DshQaLink[]; latestRelease: DshQaReleaseFact };
+  hero: { title: string; summary: string; actions: DshQaLink[]; latestRelease: DshQaReleaseFact };
   labels: {
     features: string;
     showcase: string;
@@ -103,11 +103,10 @@ function releases(content: DshQaReleaseContent[]): DshQaRelease[] {
 
 export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
   en: {
-    meta: { title: "dsh-qa · QA Workbench", description: "A local-first QA workbench for DeepSeek Harness, from planning and execution to evidence and delivery decisions." },
+    meta: { title: "dsh-qa · QA Workbench", description: "A local-first QA workbench for DeepSeek Harness. Keep project planning, controlled runs, traceable evidence, and delivery decisions in one workspace." },
     hero: {
-      eyebrow: "LOCAL-FIRST QUALITY DELIVERY",
-      title: "dsh-qa · QA Workbench",
-      summary: "Bring projects, test work, evidence, and delivery decisions into one local workspace while keeping DeepSeek Harness sessions native.",
+      title: "dsh-qa",
+      summary: "A local-first QA workbench for DeepSeek Harness. Manage projects and evidence standalone; use the Harness plugin for native DSH sessions.",
       actions: [
         { label: "View on GitHub", href: "https://github.com/naodeng/dsh-qa", external: true },
         { label: "Install DSH plugin", href: "#install-plugin" },
@@ -118,7 +117,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
     labels: { features: "Capability map", showcase: "QA Workbench in practice", flow: "Evidence-led delivery flow", install: "Install and run", ecosystem: "Explore the QA ecosystem", releaseNotes: "Release notes", releaseLink: "View GitHub Release", commandLabel: "Command" },
     features: [
       { icon: "account_tree", title: "Projects and iterations", description: "Organize projects, iterations, milestones, kanban work, calendars, and local QA materials in one workspace." },
-      { icon: "smart_toy", title: "AI collaboration", description: "Use native DSH sessions to draft requirements, cases, defects, reports, and QA knowledge without a second model configuration." },
+      { icon: "smart_toy", title: "AI collaboration", description: "In plugin mode, use native DSH sessions to draft requirements, cases, defects, reports, and QA knowledge without a second model configuration." },
       { icon: "folder_lock", title: "Local-first evidence", description: "Keep operational QA data on your machine and preserve traceable source snapshots, plans, runs, and evidence packages." },
       { icon: "verified_user", title: "Quality control", description: "Review risks, controlled execution, evidence, regressions, and delivery gates with accountable human decisions." },
     ],
@@ -177,11 +176,10 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
     ]),
   },
   "zh-cn": {
-    meta: { title: "dsh-qa · 质量工作台", description: "面向 DeepSeek Harness 的本地优先 QA 工作台，贯通计划、执行、证据与交付决策。" },
+    meta: { title: "dsh-qa · 质量工作台", description: "面向 DeepSeek Harness 的本地优先 QA 工作台，在一个工作区中连接项目计划、受控执行、可追溯证据与交付决策。" },
     hero: {
-      eyebrow: "本地优先的质量交付",
-      title: "dsh-qa · 质量工作台",
-      summary: "把测试项目、执行、证据与交付决策汇集到一个本地工作区，同时复用 DeepSeek Harness 原生会话。",
+      title: "dsh-qa",
+      summary: "面向 DeepSeek Harness 的本地优先 QA 工作台。独立运行时管理项目与证据；需要原生 DSH 会话时，启用 Harness 插件。",
       actions: [
         { label: "查看 GitHub", href: "https://github.com/naodeng/dsh-qa", external: true },
         { label: "安装 DSH 插件", href: "#install-plugin" },
@@ -192,7 +190,7 @@ export const DSH_QA_SITE: Record<Lang, DshQaSiteCopy> = {
     labels: { features: "能力地图", showcase: "QA 工作台一览", flow: "证据驱动的交付流程", install: "安装与运行", ecosystem: "探索 QA 生态", releaseNotes: "版本变更", releaseLink: "查看 GitHub Release", commandLabel: "命令" },
     features: [
       { icon: "account_tree", title: "项目与迭代", description: "在一个工作区中管理项目、迭代、里程碑、看板、日历与本地 QA 材料。" },
-      { icon: "smart_toy", title: "AI 协作", description: "通过 DSH 原生会话整理需求、用例、缺陷、报告和测试知识，不维护第二套模型配置。" },
+      { icon: "smart_toy", title: "AI 协作", description: "在插件模式下，通过 DSH 原生会话整理需求、用例、缺陷、报告和测试知识，不维护第二套模型配置。" },
       { icon: "folder_lock", title: "本地优先证据", description: "将运行中的 QA 数据保存在本机，并保留可追溯的来源快照、计划、执行与证据包。" },
       { icon: "verified_user", title: "质量控制", description: "围绕风险、受控执行、证据、回归与交付门禁开展可追责的人工决策。" },
     ],
