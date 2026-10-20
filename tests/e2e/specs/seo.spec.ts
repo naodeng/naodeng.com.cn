@@ -165,15 +165,20 @@ test.describe("SEO 元数据", () => {
 
   test("en 博客详情页：canonical 与 hreflang 正确", async ({ page, baseURL }) => {
     const base = normalizeBase(baseURL);
-    await page.goto(base + "/en/blog/", { waitUntil: "domcontentloaded" });
-    const firstPost = page.locator("main a[href*='/en/blog/']").first();
-    await expect(firstPost).toBeVisible({ timeout: 10000 });
-    const href = await firstPost.getAttribute("href");
-    expect(href).toBeTruthy();
-    const url = new URL(String(href), base).href;
+    const url = base + "/en/blog/ai-testing/awesome-qa-skills/awesome-qa-skills-test-strategy-review/";
     await page.goto(url, { waitUntil: "domcontentloaded" });
     await expectCanonicalEquals(page, url);
     await expectAlternateSet(page);
+  });
+
+  test("en 未发布中文译文的博客页不声明 zh-CN alternate", async ({ page, baseURL }) => {
+    const base = normalizeBase(baseURL);
+    const url = base + "/en/blog/ai-testing/ai-ready-quality-data/";
+    await page.goto(url, { waitUntil: "domcontentloaded" });
+    await expectCanonicalEquals(page, url);
+    await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveCount(0);
+    await expectEnglishAlternate(page);
+    await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveCount(1);
   });
 
   test("zh-cn AIWiki 详情页：canonical 与 hreflang 正确", async ({ page, baseURL }) => {

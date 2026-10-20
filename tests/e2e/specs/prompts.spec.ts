@@ -99,7 +99,7 @@ test.describe("Prompt library discovery and review flow", () => {
   test("header controls keep one size and one visible state on desktop and mobile", async ({ page, baseURL }) => {
     const viewports = [
       { width: 1440, height: 900, controlSize: 44 },
-      { width: 390, height: 844, controlSize: 40 },
+      { width: 390, height: 844, controlSize: 44 },
     ];
 
     for (const viewport of viewports) {
