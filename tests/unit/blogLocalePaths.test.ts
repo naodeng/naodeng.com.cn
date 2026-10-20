@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { filterPublishedBlogPosts } from "../../src/utils/blogPublication";
 import { createBlogLocaleResolver } from "../../src/utils/blogLocalePaths";
 
 const posts = [
@@ -23,6 +24,26 @@ describe("published blog language destinations", () => {
 
   it("offers the localized blog index when an article has no published translation", () => {
     expect(resolve("/en/blog/ai-testing/post-4/", "zh-cn")).toEqual({ path: "/zh-cn/blog/", isEquivalent: false });
+  });
+
+  it("does not advertise draft translations in either language", () => {
+    const now = new Date("2026-08-31T12:00:00.000Z");
+    const posts = filterPublishedBlogPosts([
+      { id: "en/AI-Testing/zh-draft", data: { date: new Date("2026-08-30T12:00:00.000Z") } },
+      { id: "zh-cn/AI-Testing/zh-draft", data: { date: new Date("2026-08-30T12:00:00.000Z"), draft: true } },
+      { id: "zh-cn/AI-Testing/en-draft", data: { date: new Date("2026-08-30T12:00:00.000Z") } },
+      { id: "en/AI-Testing/en-draft", data: { date: new Date("2026-08-30T12:00:00.000Z"), draft: true } },
+    ], now);
+    const resolvePublished = createBlogLocaleResolver(posts, 2);
+
+    expect(resolvePublished("/en/blog/ai-testing/zh-draft/", "zh-cn")).toEqual({
+      path: "/zh-cn/blog/",
+      isEquivalent: false,
+    });
+    expect(resolvePublished("/zh-cn/blog/ai-testing/en-draft/", "en")).toEqual({
+      path: "/en/blog/",
+      isEquivalent: false,
+    });
   });
 
   it("keeps a tag pagination route only when the target language has that page", () => {

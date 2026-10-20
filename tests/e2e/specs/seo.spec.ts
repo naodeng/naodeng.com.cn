@@ -171,16 +171,6 @@ test.describe("SEO 元数据", () => {
     await expectAlternateSet(page);
   });
 
-  test("en 未发布中文译文的博客页不声明 zh-CN alternate", async ({ page, baseURL }) => {
-    const base = normalizeBase(baseURL);
-    const url = base + "/en/blog/ai-testing/ai-ready-quality-data/";
-    await page.goto(url, { waitUntil: "domcontentloaded" });
-    await expectCanonicalEquals(page, url);
-    await expect(page.locator('link[rel="alternate"][hreflang="zh-CN"]')).toHaveCount(0);
-    await expectEnglishAlternate(page);
-    await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveCount(1);
-  });
-
   test("zh-cn AIWiki 详情页：canonical 与 hreflang 正确", async ({ page, baseURL }) => {
     const base = normalizeBase(baseURL);
     await page.goto(base + "/zh-cn/AIWiki/", { waitUntil: "domcontentloaded" });
