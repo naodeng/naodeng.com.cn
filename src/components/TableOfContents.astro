@@ -12,6 +12,8 @@ interface Props {
   placement?: "left" | "right" | "below" | "article";
   /** Include H3 category headings in the right-side Wiki TOC. */
   includeSubheadings?: boolean;
+  /** Collapse a right-side TOC at desktop widths where the three-column layout is tight. */
+  compactAtDesktop?: boolean;
 }
 
 const {
@@ -19,6 +21,7 @@ const {
   label = "目录",
   placement = "right",
   includeSubheadings = false,
+  compactAtDesktop = false,
 } = Astro.props;
 
 // 右侧目录默认只展示 H2；Wiki 详情页可额外展示 H3 分类。
@@ -31,7 +34,10 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
 ---
 
 {tocItems.length > 0 ? (
-  <aside class={`toc-sidebar toc-sidebar--${placement}`} aria-label={label}>
+  <aside
+    class={`toc-sidebar toc-sidebar--${placement}${compactAtDesktop ? " toc-sidebar--compact-desktop" : ""}`}
+    aria-label={label}
+  >
     <nav class="toc-nav">
       <h2 class="toc-title">{label}</h2>
       <p class="toc-current" aria-live="polite">
@@ -393,6 +399,44 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
   }
   .toc-list--mobile {
     margin-block-start: 0.5rem;
+  }
+
+  @media (width < 1600px) {
+    .toc-sidebar--compact-desktop .toc-title,
+    .toc-sidebar--compact-desktop .toc-current,
+    .toc-sidebar--compact-desktop .toc-progress,
+    .toc-sidebar--compact-desktop .toc-list--desktop {
+      display: none;
+    }
+    .toc-sidebar--compact-desktop .toc-details-mobile {
+      display: block;
+    }
+    .toc-sidebar--compact-desktop .toc-nav {
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+    }
+    .toc-sidebar--compact-desktop .toc-summary {
+      min-block-size: 44px;
+      color: var(--color-main);
+      opacity: 1;
+    }
+    .toc-sidebar--compact-desktop .toc-summary-current {
+      color: var(--color-text-secondary);
+      opacity: 1;
+    }
+    .toc-sidebar--compact-desktop .toc-list--mobile {
+      max-block-size: min(60dvh, 24rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border-strong) transparent;
+    }
+    .toc-sidebar--compact-desktop .toc-link {
+      display: flex;
+      align-items: center;
+      min-block-size: 40px;
+    }
   }
 
   @media (max-width: 1099px) {
