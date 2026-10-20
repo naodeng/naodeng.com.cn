@@ -13,10 +13,9 @@ test.describe("zenix homepage exploration", () => {
       await expect(page.locator("[data-home-example]")).toHaveCount(0);
       await expect(page.locator(".home-latest-posts")).toBeVisible();
       await expect(page.locator(".home-explore-hub .home-explore-grid")).toBeVisible();
-      // zh 比 en 多一张 wiki 卡（wiki 为中文专属内容）
-      await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(
-        lang === "zh-cn" ? 4 : 3,
-      );
+      // QA Wiki has local entries in both locales, so both homepages expose four paths.
+      await expect(page.locator(".home-explore-grid .home-card")).toHaveCount(4);
+      await expect(page.locator(`.home-explore-grid .home-card[href='/${lang}/wiki/']`)).toBeVisible();
       await expect(page.locator(`.home-product-link[href='/${lang}/dsh-qa/']`)).toBeVisible();
       await expect(page.locator(`.home-product-link[href='/${lang}/ai-test-auditor/']`)).toBeVisible();
       if (lang === "zh-cn") {

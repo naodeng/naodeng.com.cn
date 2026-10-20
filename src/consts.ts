@@ -465,6 +465,13 @@ export const HOME_EXPLORE_CARDS: Record<
   ],
   en: [
     {
+      key: "wiki",
+      path: "/wiki",
+      title: "QA Wiki",
+      desc: "A practical, growing encyclopedia of software testing concepts, from fundamentals through specialist topics.",
+      icon: "menu_book",
+    },
+    {
       key: "aiwiki",
       path: "/AIWiki",
       title: "AI Wiki",
