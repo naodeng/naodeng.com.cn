@@ -375,7 +375,8 @@ const sidebarDate = (date: Date) =>
     padding-inline: 0;
   }
   .article-with-toc {
-    --blog-reading-max: min(1440px, calc(var(--layout-max) - 19rem));
+    --blog-reading-max: min(1440px, var(--layout-max));
+    --blog-body-max: 1200px;
     display: grid;
     max-inline-size: var(--blog-reading-max);
     margin-inline: auto;
@@ -383,6 +384,20 @@ const sidebarDate = (date: Date) =>
     grid-template-areas: "heading" "toc" "body" "discover";
     gap: 1.5rem;
     align-items: start;
+  }
+  .article-title-header,
+  .article-main .prose {
+    max-inline-size: min(100%, var(--blog-body-max));
+  }
+  @media (min-width: 1600px) {
+    .article-with-toc {
+      --blog-body-max: clamp(1200px, calc(8.333vw + 1067px), 1280px);
+    }
+  }
+  @media (min-width: 2560px) {
+    .article-with-toc {
+      --blog-body-max: clamp(1280px, calc(4.6875vw + 1160px), 1400px);
+    }
   }
   @media (min-width: 1100px) {
     .article-with-toc {
@@ -425,27 +440,27 @@ const sidebarDate = (date: Date) =>
       column-gap: clamp(2rem, 2vw, 2.5rem);
     }
     .article-with-toc:not(.article-with-toc--plain) .article-title-header {
-      inline-size: min(100%, 1600px);
+      inline-size: min(100%, var(--blog-body-max));
       margin-inline: 0;
     }
     .article-with-toc--plain .article-title-header {
-      inline-size: min(100%, 1440px);
+      inline-size: min(100%, var(--blog-body-max));
       margin-inline: 0;
     }
     .article-with-toc--plain .article-main .prose {
-      max-inline-size: min(100%, 1440px);
+      max-inline-size: min(100%, var(--blog-body-max));
       margin-inline: 0;
     }
     .article-with-toc:not(.article-with-toc--plain) .article-main .prose > :global(:is(p, h2, h3, h4, h5, h6, ul, ol, blockquote):not(:has(img, video, iframe, picture, table, pre))) {
-      max-inline-size: min(100%, 1200px);
+      max-inline-size: min(100%, var(--blog-body-max));
       margin-inline: 0 auto;
     }
     .article-with-toc:not(.article-with-toc--plain) .article-main .prose > :global(:is(p, figure, picture):has(img)) {
-      max-inline-size: min(100%, 1200px);
+      max-inline-size: min(100%, var(--blog-body-max));
       margin-inline: 0 auto;
     }
     .article-with-toc:not(.article-with-toc--plain) .article-main .prose > :global(:is(pre, table)) {
-      max-inline-size: min(100%, 1200px);
+      max-inline-size: min(100%, var(--blog-body-max));
       margin-inline: 0 auto;
     }
     .article-main .prose {
@@ -465,7 +480,7 @@ const sidebarDate = (date: Date) =>
       padding: 1.1rem;
     }
   }
-  @media (min-width: 1800px) {
+  @media (min-width: 3200px) {
     .article-with-toc:not(.article-with-toc--plain) {
       grid-template-columns: minmax(15rem, 17rem) minmax(0, 1fr) minmax(19rem, 21rem);
       grid-template-areas: "discover heading toc" "discover body toc";

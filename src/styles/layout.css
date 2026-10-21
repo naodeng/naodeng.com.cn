@@ -7,7 +7,7 @@
   padding-block-end: 4rem;
 }
 
-/* 全站内容区随宽屏增长，同时保留统一的页面边距。 */
+/* 全站内容使用居中的最大版心，并保留统一的页面边距。 */
 .l-main.l-content {
   max-inline-size: var(--layout-max);
 }

@@ -1,6 +1,6 @@
 :root {
   color-scheme: light;
-  --layout-max: max(1280px, 92vw);
+  --layout-max: min(1536px, 92vw);
   --layout-gutter: 24px;
   --reading-max: 768px;
   --sidebar-layout-max: var(--layout-max);
@@ -102,6 +102,18 @@
   font-weight: 400;
   font-size: var(--text-base);
   font-family: var(--font-sans);
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --layout-max: min(92vw, clamp(1536px, calc(40vw + 896px), 1920px));
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --layout-max: min(92vw, clamp(1920px, calc(5vw + 1792px), 2048px));
+  }
 }
 
 :where([data-metric], .metric, .wiki-stat, .gs-stats, .weekly-meta-item) {

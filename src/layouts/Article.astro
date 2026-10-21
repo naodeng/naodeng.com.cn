@@ -240,7 +240,7 @@ const {
     const failedLabel = isZhCn ? "复制失败，请重试" : "Copy failed. Try again";
 
     function enhanceCodeBlocks() {
-      if (typeof navigator.clipboard === "undefined") return;
+      const canCopy = typeof navigator.clipboard !== "undefined";
       document.querySelectorAll<HTMLPreElement>("article pre").forEach((pre) => {
         if (pre.parentElement?.classList.contains("code-block-wrapper")) return;
         const code = pre.querySelector("code");
@@ -248,6 +248,10 @@ const {
 
         const wrapper = document.createElement("div");
         wrapper.className = "code-block-wrapper";
+        pre.parentNode!.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        if (!canCopy) return;
 
         const copyBtn = document.createElement("button");
         copyBtn.className = "code-copy-btn";
@@ -273,8 +277,6 @@ const {
           });
         });
 
-        pre.parentNode!.insertBefore(wrapper, pre);
-        wrapper.appendChild(pre);
         wrapper.appendChild(copyBtn);
       });
     }
@@ -309,7 +311,45 @@ const {
       });
     }
 
-    const enhanceArticle = () => { enhanceCodeBlocks(); enhanceTables(); };
+    function alignArticleContentBlocks() {
+      const prose = document.querySelector<HTMLElement>(".article-main .prose");
+      if (!prose) return;
+
+      const wrappers = Array.from(
+        prose.querySelectorAll<HTMLElement>(".article-table-scroll, .code-block-wrapper"),
+      );
+      wrappers.forEach((wrapper) => {
+        wrapper.style.removeProperty("inline-size");
+        wrapper.style.removeProperty("max-inline-size");
+        wrapper.style.removeProperty("margin-inline-start");
+      });
+
+      const proseRect = prose.getBoundingClientRect();
+      wrappers.forEach((wrapper) => {
+        const offset = Math.max(0, wrapper.getBoundingClientRect().left - proseRect.left);
+        if (offset <= 0.5) return;
+
+        wrapper.style.setProperty("inline-size", `${proseRect.width}px`);
+        wrapper.style.setProperty("max-inline-size", `${proseRect.width}px`);
+        wrapper.style.setProperty("margin-inline-start", `${-offset}px`);
+      });
+    }
+
+    let alignmentFrame = 0;
+    const scheduleArticleContentAlignment = () => {
+      if (alignmentFrame) cancelAnimationFrame(alignmentFrame);
+      alignmentFrame = requestAnimationFrame(() => {
+        alignmentFrame = 0;
+        alignArticleContentBlocks();
+      });
+    };
+
+    const enhanceArticle = () => {
+      enhanceCodeBlocks();
+      enhanceTables();
+      alignArticleContentBlocks();
+      window.addEventListener("resize", scheduleArticleContentAlignment, { passive: true });
+    };
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", enhanceArticle);
     } else {
