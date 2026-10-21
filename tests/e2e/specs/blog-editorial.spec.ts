@@ -69,32 +69,36 @@ for (const locale of ["en", "zh-cn"]) {
     await expect(page.locator(".article-body .author-stats-card")).toHaveCount(1);
   });
 
-  test(`${locale}: 1920px and 5K Retina articles keep text, tables, and code at one width`, async ({ page }) => {
+  test(`${locale}: wide articles keep content widths aligned with the TOC from 1536px through 5K Retina`, async ({ page }) => {
     const readingWidths: number[] = [];
-    for (const width of [1920, 2560]) {
+    for (const width of [1536, 1920, 2048, 2560]) {
       await page.setViewportSize({ width, height: 1440 });
       await page.goto(article, { waitUntil: "domcontentloaded" });
       const layout = await page.evaluate(() => {
         const main = document.querySelector(".article-main")!;
         const prose = document.querySelector(".prose")!;
+        const sidebar = document.querySelector(".article-sidebar")!;
         const paragraph = prose.querySelector(":scope > p")!;
         const table = prose.querySelector("table")!;
         const code = prose.querySelector("pre")!;
         return {
           mainWidth: main.getBoundingClientRect().width,
           proseWidth: prose.getBoundingClientRect().width,
+          tocGap: sidebar.getBoundingClientRect().left - prose.getBoundingClientRect().right,
           paragraphWidth: paragraph.getBoundingClientRect().width,
           tableWidth: table.getBoundingClientRect().width,
           codeWidth: code.getBoundingClientRect().width,
           overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
         };
       });
-      expect(layout.mainWidth).toBeGreaterThan(1024);
-      expect(layout.proseWidth).toBeGreaterThan(1024);
+      expect(layout.mainWidth).toBeGreaterThanOrEqual(1024);
+      expect(layout.proseWidth).toBeGreaterThanOrEqual(1024);
       expect(layout.proseWidth).toBeLessThanOrEqual(1200);
       expect(layout.paragraphWidth).toBeCloseTo(layout.proseWidth, 0);
       expect(layout.tableWidth).toBeCloseTo(layout.proseWidth, 0);
       expect(layout.codeWidth).toBeCloseTo(layout.proseWidth, 0);
+      expect(layout.tocGap).toBeGreaterThanOrEqual(24);
+      expect(layout.tocGap).toBeLessThanOrEqual(64);
       expect(layout.overflow).toBe(false);
       readingWidths.push(layout.proseWidth);
     }
@@ -131,7 +135,7 @@ for (const locale of ["en", "zh-cn"]) {
     });
     expect(wideLayout.discoveryWidth).toBeGreaterThanOrEqual(240);
     expect(wideLayout.discoveryRight + 24).toBeLessThanOrEqual(wideLayout.bodyLeft);
-    expect(wideLayout.bodyWidth).toBeGreaterThan(1200);
+    expect(wideLayout.bodyWidth).toBeGreaterThanOrEqual(1200);
     expect(wideLayout.bodyRight + 24).toBeLessThanOrEqual(wideLayout.tocLeft);
     expect(wideLayout.tocWidth).toBeGreaterThanOrEqual(300);
     expect(wideLayout.paragraphWidth).toBeLessThanOrEqual(1200);

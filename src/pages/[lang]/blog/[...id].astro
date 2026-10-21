@@ -401,7 +401,7 @@ const sidebarDate = (date: Date) =>
   }
   @media (min-width: 1100px) {
     .article-with-toc {
-      max-inline-size: min(var(--layout-max), 1440px);
+      max-inline-size: min(var(--layout-max), calc(var(--blog-body-max) + 16rem + 3rem));
       grid-template-columns: minmax(0, 1fr) 16rem;
       grid-template-areas: "heading toc" "body toc" "discover toc";
       column-gap: 3rem;
@@ -426,7 +426,8 @@ const sidebarDate = (date: Date) =>
   }
   @media (min-width: 1600px) {
     .article-with-toc:not(.article-with-toc--plain) {
-      max-inline-size: min(var(--layout-max), 2160px);
+      --blog-wide-gap: clamp(2rem, 2vw, 2.5rem);
+      max-inline-size: min(var(--layout-max), calc(var(--blog-body-max) + 22rem + var(--blog-wide-gap)));
       margin-inline: auto;
     }
     :global(.l-main:has(.article-with-toc) .breadcrumb) {
@@ -474,7 +475,7 @@ const sidebarDate = (date: Date) =>
     .article-with-toc:not(.article-with-toc--plain) {
       grid-template-columns: minmax(0, 1fr) minmax(19rem, 22rem);
       grid-template-areas: "heading toc" "body toc" "discover toc";
-      column-gap: clamp(2rem, 2vw, 2.5rem);
+      column-gap: var(--blog-wide-gap);
     }
     .article-sidebar :global(.toc-nav) {
       padding: 1.1rem;
@@ -482,9 +483,11 @@ const sidebarDate = (date: Date) =>
   }
   @media (min-width: 2560px) {
     .article-with-toc:not(.article-with-toc--plain) {
+      --blog-wide-gap: clamp(1.5rem, 1.5vw, 2rem);
+      max-inline-size: min(var(--layout-max), calc(17rem + var(--blog-body-max) + 21rem + var(--blog-wide-gap) + var(--blog-wide-gap)));
       grid-template-columns: minmax(15rem, 17rem) minmax(0, 1fr) minmax(19rem, 21rem);
       grid-template-areas: "discover heading toc" "discover body toc";
-      column-gap: clamp(1.5rem, 1.5vw, 2rem);
+      column-gap: var(--blog-wide-gap);
     }
     .article-discovery-inner {
       position: sticky;
