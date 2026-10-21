@@ -10,7 +10,11 @@ const footer = readFileSync(resolve(process.cwd(), "../src/components/Footer.ast
 
 describe("Astro Editorial theme tokens", () => {
   test("defines responsive layout measurements", () => {
-    expect(baseCss).toContain("--layout-max: max(1280px, 92vw)");
+    expect(baseCss).toContain("--layout-max: min(1536px, 92vw)");
+    expect(baseCss).toContain("@media (min-width: 1600px)");
+    expect(baseCss).toContain("--layout-max: min(92vw, clamp(1536px, calc(40vw + 896px), 1920px))");
+    expect(baseCss).toContain("@media (min-width: 2560px)");
+    expect(baseCss).toContain("--layout-max: min(92vw, clamp(1920px, calc(5vw + 1792px), 2048px))");
     expect(baseCss).toContain("--layout-gutter: 24px");
     expect(baseCss).toContain("--reading-max: 768px");
     expect(baseCss).toContain("--header-height: 80px");
