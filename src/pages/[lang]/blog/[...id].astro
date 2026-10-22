@@ -391,7 +391,7 @@ const sidebarDate = (date: Date) =>
   }
   @media (min-width: 1600px) {
     .article-with-toc {
-      --blog-body-max: clamp(1024px, calc(18.333vw + 730.667px), 1200px);
+      --blog-body-max: clamp(1024px, calc(var(--layout-max) - 520px), 1200px);
     }
   }
   @media (min-width: 2560px) {
