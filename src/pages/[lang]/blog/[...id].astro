@@ -393,12 +393,12 @@ const sidebarDate = (date: Date) =>
   }
   @media (min-width: 1600px) {
     :global(.l-main:has(.article-with-toc)) {
-      --blog-body-max: clamp(1024px, calc(var(--layout-max) - 485px), 1260px);
+      --blog-body-max: clamp(1024px, calc(var(--layout-max) - 485px), 1200px);
     }
   }
   @media (min-width: 2400px) {
     :global(.l-main:has(.article-with-toc)) {
-      --blog-body-max: clamp(1250px, calc(5.859375vw + 1100px), 1400px);
+      --blog-body-max: clamp(1200px, calc(7.8125vw + 1000px), 1400px);
     }
   }
   @media (min-width: 1100px) {
@@ -485,12 +485,12 @@ const sidebarDate = (date: Date) =>
   }
   @media (min-width: 1800px) {
     :global(.l-main:has(.article-with-toc)) {
-      --blog-wide-gap: clamp(1rem, 1vw, 1.25rem);
+      --blog-wide-gap: clamp(24px, 1vw, 32px);
       --blog-discovery-width: 11rem;
       --blog-toc-width: 16rem;
     }
     .article-with-toc:not(.article-with-toc--plain) {
-      --blog-wide-gap: clamp(1rem, 1vw, 1.25rem);
+      --blog-wide-gap: clamp(24px, 1vw, 32px);
       max-inline-size: min(var(--layout-max), calc(var(--blog-discovery-width) + var(--blog-body-max) + var(--blog-toc-width) + var(--blog-wide-gap) + var(--blog-wide-gap)));
       grid-template-columns: var(--blog-discovery-width) minmax(0, 1fr) var(--blog-toc-width);
       grid-template-areas: "discover heading toc" "discover body toc";
@@ -516,12 +516,12 @@ const sidebarDate = (date: Date) =>
   }
   @media (min-width: 2540px) {
     :global(.l-main:has(.article-with-toc)) {
-      --blog-wide-gap: clamp(1.25rem, 1vw, 1.5rem);
+      --blog-wide-gap: clamp(24px, 1vw, 32px);
       --blog-discovery-width: 16rem;
       --blog-toc-width: 20rem;
     }
     .article-with-toc:not(.article-with-toc--plain) {
-      --blog-wide-gap: clamp(1.25rem, 1vw, 1.5rem);
+      --blog-wide-gap: clamp(24px, 1vw, 32px);
       max-inline-size: min(var(--layout-max), calc(var(--blog-discovery-width) + var(--blog-body-max) + var(--blog-toc-width) + var(--blog-wide-gap) + var(--blog-wide-gap)));
       grid-template-columns: minmax(14rem, 16rem) minmax(0, 1fr) minmax(18rem, 20rem);
       grid-template-areas: "discover heading toc" "discover body toc";
