@@ -1,0 +1,158 @@
+---
+title: "Agentic PR Reviews: Code Review Does Not Have to Wait for a PR"
+description: "A source-grounded look at moving quality feedback earlier, reviewing in pairs, separating shipping from done, and the evidence needed to reduce human review."
+date: 2026-10-24T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["Agentic Development", "Code Review", "Quality Engineering"]
+categories: ["Quality Engineering"]
+---
+
+“Could AI approve 90% of pull requests without a human?” Antony Marcano says that was the question at a roundtable he attended. It sounds like a comparison of human and model accuracy, but he wanted to ask two other questions: What evidence tells a team that human review no longer adds value? And why wait until a pull request to review code at all?
+
+This is not a measured target for automatic approvals, nor an announcement that pull requests are obsolete. Marcano argues for bringing code review into the implementation process so feedback arrives earlier and more often. Whether a human gate can be reduced should depend on a team’s own quality evidence and risk boundaries. This article draws on his original post and the accompanying learning notes, and distinguishes his arguments from the practical extensions proposed here.
+
+## Ask for evidence, and ask why review waits for a PR
+
+A pull request is a common way to organize code review, discuss a change, and preserve decisions. It is not code review itself. Removing a PR gate does not mean removing code review. Teams still need to judge whether an implementation is correct, maintainable, consistent with architectural constraints, and free of unnecessary complexity.
+
+Marcano’s principle is direct: “Human review should stay until your own data shows it no longer justifies the effort.” That reframes the discussion as an engineering question. Where does the current process get quality feedback? Which risks still need human judgment? If a gate changes, what evidence will show that the outcome has not become worse?
+
+## Put feedback back into the implementation process
+
+Quality assurance is broader than testing after the fact. Tests can reveal whether behavior differs from expectations; code review also considers maintainability, architecture, complexity, and consistency. A feature can pass its acceptance tests and still create future costs through mixed responsibilities, unnecessary abstractions, or code that is difficult to change.
+
+Marcano compares this shift to spell-checking. In the past, he would write a document and then run it through SpellStar for a final check. Later, word processors began flagging spelling issues as he typed, and sometimes correcting them automatically. The change was not simply a faster final check; it changed when the check happened.
+
+Software development can similarly move from “finish implementation, open a PR, review everything, then rework” to “implement a small increment, review it immediately, correct it, then continue.” When the decision context is still fresh, it is usually easier to explain why the code took a particular shape and to adjust the design. This is closely related to shift-left testing: move quality work toward the point where a problem forms and a decision is made instead of concentrating it at the end of delivery.
+
+## Specifications, acceptance, and code design have different jobs
+
+Spec-Driven Development (SDD), Behavior-Driven Development (BDD), and Test-Driven Development (TDD) can complement one another, but they answer different questions. A project Constitution, architecture principles, and coding conventions tell an agent what constraints to follow. Specifications, BDD scenarios, and acceptance tests describe the behavior to build. Ongoing code review asks whether the implementation is clear, reasonable, and maintainable over time.
+
+Detailed specifications therefore do not replace code-quality review. A clear statement of business intent does not automatically produce a sound code structure. Likewise, consistent style does not prove that the product behavior matches the need.
+
+Marcano’s outside-in TDD example connects these concerns through two nested loops:
+
+- The outer loop starts with a business scenario and expresses user or business behavior as an executable acceptance test. Once the implementation passes, the team uses what it learned to refine the next scenario.
+- The inner loop follows Red–Green–Refactor: write a failing test, add the smallest implementation that makes it pass, then improve the design under the test’s protection while continuously reviewing the code.
+
+The outer loop helps answer “Are we building the right thing?” The inner loop keeps design feedback close to implementation. TDD is not only a way to write tests here; it is also a mechanism for incremental design and review. It is not the only option, but it shows why quality review need not wait for a PR.
+
+## Pairing makes review part of the work
+
+In Ping-Pong Pair Programming, one developer writes a failing test and another implements the smallest passing solution. The two then refactor together and switch roles. Alternatively, a Driver can write while a Navigator watches the code, asks questions, and contributes to design decisions; then they rotate.
+
+The benefit is more than another set of eyes. Review happens as the code is created, so participants can see how a design choice took shape. They can discuss abstractions, responsibility boundaries, and test intent in the moment. Rotating partners also spreads knowledge and judgment across the team. A PR reviewer usually sees the final diff, not necessarily the constraints and trade-offs that shaped it.
+
+Marcano described how this kind of collaboration made blocking PR review redundant in a high-performing team he had worked with. That is an experience from a particular team, not a recommendation for every organization to remove PRs. Team distribution, regulation, change risk, collaboration habits, and existing feedback quality all affect whether the approach fits.
+
+## Agent review granularity is still an open question
+
+An agent can review specification compliance and code quality after an implementation task. Teams can also try adversarial review, where different agents look for problems and challenge one another’s conclusions. For example, Superpowers’ Subagent-Driven Development separates specification-compliance review from code-quality review. But there is no universal answer yet to how large an increment should be before an agent reviews it.
+
+| Review point | Potential benefit | Cost to watch |
+| --- | --- | --- |
+| Every Red–Green cycle | Fast feedback on a small change | Frequent calls and possibly too little context |
+| Every business scenario | Findings map closely to user behavior | Design issues within a scenario may be missed |
+| Every implementation task | Easier to fit into an agent workflow | Feedback still arrives late if the task is large |
+| Every commit | Easier to trace code changes and review history | Commit size and content may be inconsistent |
+| Every pull request | Fits existing collaboration and supports broader discussion | Later feedback can increase rework |
+
+This table is an engineering interpretation of the open question in the original post, not a ranking validated by comparative trials. A team can start with small, low-risk increments, observe feedback timing, review quality, and cost, and then decide whether to change its approach.
+
+Adding more review agents does not automatically create more independent judgment. If the coding and reviewing agents share a wrong assumption, a gap in source material, or the same model blind spot, both may miss the same issue. Evaluation should ask: Does the review use independent grounds? Does it point to specific code, tests, or rules? Can the finding be reproduced? Who arbitrates when opinions conflict? How will a shared omission be detected?
+
+## Automated review is not new; contextual judgment is harder
+
+Static analysis has long handled part of automated code review: complexity checks, duplicate-code detection, dead-code detection, and coding rules can all be automated and used as merge gates. The harder question is whether AI can reliably judge issues that require project context: Is an abstraction necessary? Are responsibility boundaries clear? Even if tests pass, will the design impose unreasonable maintenance costs?
+
+Review quality should not be measured by comment volume. More useful questions are whether findings are real, important, and actionable—and what the reviewer missed. A stream of irrelevant warnings consumes developers’ attention. A fluent explanation does not automatically count as evidence.
+
+## Shipped does not mean done
+
+Marcano separates two decisions that a PR gate often conflates:
+
+| Decision | Question | Common evidence |
+| --- | --- | --- |
+| Safe to Ship | Does this change meet the conditions required for a safe release? | Automated tests, static checks, security controls, and deployment safeguards |
+| Done | Does the code meet the team’s standard for long-term maintainability? | Ongoing review, design reflection, refactoring, and team agreement |
+
+In the specific setup Marcano describes, the team used trunk-based development without branches and CI/CD, deploying to production within minutes once the agreed automated checks passed. They continued improving the design afterward. Marcano captures that cadence as: “Ship, ship, ship, done.” Release can precede the end of all long-term maintenance work, but quality responsibility does not disappear at release.
+
+Some teams use Reverse Pull-Requests to keep discussion, knowledge sharing, and feedback associated with PRs without making them a blocking pre-release gate. This changes the timing of review and release; it does not abandon code review.
+
+There is an important boundary: security, compliance, data integrity, and irreversible risks cannot simply be deferred until after release. Marcano acknowledges that regulated or operationally sensitive environments may still require human approval. Any “ship first, review later” approach must fit the business risk, recovery capability, and organizational obligations.
+
+## Research results show limitations, not a universal approval rate
+
+The SWR-Bench study cited by Marcano is based on 1,000 real GitHub pull requests. In one PR-Review evaluation using Gemini 2.5 Pro, the model detected 38.35% of required change actions for PRs with one action. For PRs requiring five or more actions, the figure was 8.88%, but that group contained only 22 PRs.
+
+Marcano also cites a 2026 short-programming benchmark in which some models incorrectly rejected roughly 25% to 75% of correct implementations under simple prompts. That range describes the models and tasks tested in that study; it is not a general error rate for every code-review tool.
+
+These results offer several cautions. Finding issues is not the same as being safe to approve. A small subgroup cannot represent every repository and risk profile. Both false positives and false negatives affect engineering efficiency and release safety. Studies also differ in tasks, metrics, and samples. Faros AI, GitClear, CodeRabbit, SlopCodeBench v2, Adversarial Review, and CodeAgent offer different perspectives, but their results should not be collapsed into “all AI code is worse.”
+
+## Use team data to decide whether human review can step back
+
+Marcano’s test is not whether an AI review sounds like it came from a senior engineer. It is whether the reviewer reliably finds the problems the team cares about. As long as human review finds important issues missed by an agent, that human contribution should remain—and those findings should feed back into coding rules, automated checks, or the agent workflow.
+
+Conversely, a series of “approved with no human comments” records is not sufficient evidence that human review has no value. Reviewers may be rubber-stamping. The sample may contain low-risk changes. A defect may simply not have surfaced in production yet. Review records need to be considered alongside later outcomes.
+
+**Practical extension in this article: metrics a team could start observing.**
+
+| Metric | Purpose |
+| --- | --- |
+| Human Unique Finding Rate | Count important issues found by humans but missed by AI |
+| AI Review Recall | Measure whether AI detects known important issues |
+| AI Review Precision | See what proportion of AI comments are useful |
+| Escaped Defect Rate | Track changes in defects found after release |
+| Review Rework Cost | Estimate the effort spent on review and resulting changes |
+| Maintainability Trend | Observe complexity, duplication, and technical-debt signals |
+| Review Feedback Latency | Measure time from issue introduction to feedback |
+
+For example, Human Unique Finding Rate could be defined as “confirmed important issues found only by human reviewers ÷ changes reviewed by humans.” Interpret that number together with change risk, sampling, and review quality; it should not be used on its own to remove a human gate.
+
+A staged trial could work as follows: run AI and human reviews in parallel and record misses, false alarms, and unique human findings; turn recurring issues into deterministic rules or tests; pilot automatic release only for low-risk changes with rollback and monitoring in place; compare defects, security, operations, rework, and maintainability after release; then adjust the location and strength of human review by risk class. Treating “90% automatically approved” as a single target regardless of risk can optimize the number without showing the quality outcome.
+
+## Make review part of a continuous quality loop
+
+**The following is a practical extension of the original argument, not a framework Marcano presented in the article.** If a PR is no longer the only point of quality judgment, teams need evidence to travel through requirements, implementation, release, and post-release learning. For example: review requirements and acceptance criteria first; have an agent implement in small steps; let another reviewer check the code and run tests; fix or refactor issues and retain checkable evidence; release after the automated gates pass; then observe production behavior and review the outcome.
+
+This broadens QA work beyond “look at the change at the end.” It includes checking requirements and acceptance criteria before implementation, judging whether tests cover real business behavior, reviewing incremental code, validating the evidence behind review findings, assessing release readiness, and following defects and maintainability after release.
+
+Evidence validation deserves particular attention. An agent saying “the code looks good” is very different from one specifying which files it checked, where it found an issue, which tests it ran, and which risks remain unverified. Reviewers need the grounds for a conclusion, not just the conclusion.
+
+When an agent repeatedly misses the same class of issue, the response should not be only “be more careful next time.” A stronger loop is: detect the issue, provide evidence, correct the implementation, verify again, record the result, and use it to improve a rule, test, or review trigger.
+
+## Questions that still need answers
+
+- What is the right granularity for agent review: each TDD cycle, business scenario, implementation task, commit, or pull request?
+- How can a team prove that an AI reviewer found a real issue rather than generating a plausible explanation?
+- How can teams detect incorrect assumptions shared by the coding and reviewing agents?
+- What evidence, risk boundaries, and recovery mechanisms are enough to remove a human PR gate?
+- If PRs are no longer the center of quality decisions, where should test evidence, review findings, and design decisions live so they remain traceable?
+
+There is no answer that fits every team. Together, these questions point beyond an approval button: they ask how feedback is triggered, how evidence is recorded, and who owns the remaining risk.
+
+## Closing: make quality feedback happen earlier
+
+Marcano’s article neither argues that PRs are obsolete nor claims that AI can never review code. It challenges the habit of treating a PR as the only moment for review and automatic-approval percentage as the goal. Teams can move review into implementation, check small increments continuously, use their own data to understand what AI and people each find, and distinguish “safe to release” from “all long-term maintenance work is done.”
+
+In practice, that means reviewing earlier, reviewing incrementally, grounding decisions in evidence, and separating “safe to ship” from “done.”
+
+Rather than chasing 90% AI approval, carry quality review through each implementation increment and use verifiable team evidence to decide which human reviews can safely step back.
+
+## References
+
+- Antony Marcano, What (Almost) Everyone Gets Wrong About Agentic PR Reviews, 2026-10-16: https://www.linkedin.com/pulse/what-almost-everyone-gets-wrong-agentic-pr-reviews-antony-marcano-bkawe/
+- SWR-Bench, research paper: https://arxiv.org/abs/2509.01494
+- 2026 short-programming benchmark cited by Marcano: https://link.springer.com/article/10.1007/s10515-026-00638-5
+- Faros AI, The Acceleration Whiplash: https://www.faros.ai/research/ai-acceleration-whiplash
+- GitClear, The Maintainability Gap: https://www.gitclear.com/the_ai_code_quality_maintainability_gap
+- CodeRabbit, State of AI vs Human Code Generation: https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
+- SlopCodeBench v2, research paper: https://arxiv.org/abs/2603.24755
+- Larry Smith, Shift-Left Testing: https://jacobfilipp.com/DrDobbs/articles/DDJ/2001/0109/0109e/0109e.htm
+- Qiu and Gill, Adversarial Review: https://arxiv.org/abs/2608.18167
+- Tang et al., CodeAgent: Autonomous Communicative Agents for Code Review: https://aclanthology.org/2024.emnlp-main.632/
+- Superpowers, Subagent-Driven Development: https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md
+- Reverse Pull-Requests, practice note: https://medium.com/riverglide-ideas/reverse-pull-requests-a56b48080fb0
