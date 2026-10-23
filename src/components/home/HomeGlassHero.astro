@@ -25,7 +25,6 @@ const topicLinks = locale === "zh-cn" ? [
 >
   <div class="hero-a__shell">
     <div class="hero-a__copy">
-      <p class="hero-eyebrow">{locale === "zh-cn" ? "软件测试 · QA · AI" : "SOFTWARE TESTING · QA · AI"}</p>
       <h1 id="glass-hero-title">{t(HOME_HERO_TITLE)}</h1>
       <p class="glass-hero__summary home-hero__subtitle">{t(HOME_HERO_SUBTITLE)}</p>
       <div class="glass-hero__actions home-hero__ctas">
@@ -39,12 +38,11 @@ const topicLinks = locale === "zh-cn" ? [
     </div>
 
     <nav class="hero-topic-map" aria-label={locale === "zh-cn" ? "首页内容入口" : "Homepage content paths"}>
-      <p class="hero-topic-map__label">{locale === "zh-cn" ? "从这里进入" : "START HERE"}</p>
+      <p class="hero-topic-map__label">{locale === "zh-cn" ? "从这里进入" : "Start here"}</p>
       <ol>
-        {topicLinks.map((topic, index) => (
+        {topicLinks.map((topic) => (
           <li>
             <a href={topic.href}>
-              <span class="hero-topic-map__number">0{index + 1}</span>
               <span class="hero-topic-map__copy">
                 <strong>{topic.label}</strong>
                 <small>{topic.meta}</small>
@@ -90,14 +88,6 @@ const topicLinks = locale === "zh-cn" ? [
     max-width: 44rem;
   }
 
-  .hero-eyebrow {
-    margin: 0 0 1rem;
-    color: var(--color-theme);
-    font-size: .7rem;
-    font-weight: 900;
-    letter-spacing: .14em;
-  }
-
   .glass-hero h1 {
     margin: 0;
     color: var(--color-main);
@@ -115,9 +105,10 @@ const topicLinks = locale === "zh-cn" ? [
 
   /* The English copy is longer, so keep its visual weight compact. */
   .home-hero--en h1 {
-    max-width: 20ch;
-    font-size: clamp(2.45rem, 4.15vw, 4.15rem);
-    line-height: 1.07;
+    max-width: 13.5em;
+    font-size: clamp(2.35rem, 3.5vw, 3.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
   }
 
   .glass-hero__summary {
@@ -197,11 +188,11 @@ const topicLinks = locale === "zh-cn" ? [
 
   .hero-topic-map__label {
     margin: 0 0 .85rem;
-    color: var(--color-text-tertiary);
-    font-size: .68rem;
-    font-weight: 900;
-    letter-spacing: .14em;
-    text-transform: uppercase;
+    color: var(--color-main);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
   }
 
   .hero-topic-map ol {
@@ -214,7 +205,7 @@ const topicLinks = locale === "zh-cn" ? [
 
   .hero-topic-map a {
     display: grid;
-    grid-template-columns: 1.8rem minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: .65rem;
     padding: .85rem .4rem .85rem 0;
@@ -232,11 +223,6 @@ const topicLinks = locale === "zh-cn" ? [
   .hero-topic-map a:hover,
   .hero-topic-map a:focus-visible {
     background: var(--color-theme-soft);
-  }
-
-  .hero-topic-map__number {
-    color: var(--color-theme);
-    font: 800 .7rem/1 var(--font-sans);
   }
 
   .hero-topic-map__copy {
@@ -283,8 +269,8 @@ const topicLinks = locale === "zh-cn" ? [
     }
 
     .home-hero--en h1 {
-      max-width: 18ch;
-      font-size: clamp(2.4rem, 5.4vw, 3.8rem);
+      max-width: 13em;
+      font-size: clamp(2.15rem, 4.6vw, 3.2rem);
     }
   }
 
@@ -304,8 +290,10 @@ const topicLinks = locale === "zh-cn" ? [
     }
 
     .home-hero--en h1 {
-      max-width: 16ch;
-      font-size: clamp(2.2rem, 9.5vw, 3.2rem);
+      max-width: none;
+      font-size: clamp(1.9rem, 8.2vw, 2.45rem);
+      line-height: 1.08;
+      text-wrap: wrap;
     }
 
     .hero-topic-map {

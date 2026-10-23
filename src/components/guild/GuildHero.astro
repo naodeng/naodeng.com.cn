@@ -38,12 +38,8 @@ const totalTestTypes = guildConfig.testTypes.length;
 const totalArticles = filterGuildEntries(await getCollection('guild'), locale).length;
 ---
 
-<div class="guild-hero">
+<div class:list={["guild-hero", locale === "en" && "guild-hero--en"]}>
   <div class="guild-hero__inner">
-    <div class="guild-hero__badge">
-      <span class="material-icons-sharp" aria-hidden="true">rocket_launch</span>
-      {text.badge}
-    </div>
     <h1 class="guild-hero__title">{text.title}</h1>
     <p class="guild-hero__description">{text.description}</p>
 
@@ -121,7 +117,7 @@ const totalArticles = filterGuildEntries(await getCollection('guild'), locale).l
   .guild-hero__description {
     font-size: 1rem;
     line-height: 1.75;
-    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    color: var(--color-text-secondary);
     margin: 0 auto 2rem;
     max-width: 580px;
   }
@@ -152,11 +148,10 @@ const totalArticles = filterGuildEntries(await getCollection('guild'), locale).l
   }
 
   .stat-item__label {
-    font-size: 0.78rem;
+    font-size: 0.875rem;
     color: var(--color-text-secondary);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: 600;
+    letter-spacing: 0;
   }
 
   .stat-sep {
@@ -180,6 +175,14 @@ const totalArticles = filterGuildEntries(await getCollection('guild'), locale).l
 
     .stat-item__value {
       font-size: 1.6rem;
+    }
+
+    .guild-hero--en .guild-hero__title {
+      max-width: 11.5em;
+      margin-inline: auto;
+      font-size: clamp(1.65rem, 6.6vw, 2rem);
+      line-height: 1.08;
+      text-wrap: wrap;
     }
   }
 

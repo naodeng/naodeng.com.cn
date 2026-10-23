@@ -50,7 +50,7 @@ const { items } = Astro.props;
     flex-wrap: wrap;
     align-items: center;
     gap: 0;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     color: var(--color-text-secondary);
   }
   .breadcrumb-item {
@@ -65,6 +65,7 @@ const { items } = Astro.props;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    min-height: 44px;
     transition: color 0.15s;
   }
   .breadcrumb-link:hover {
@@ -81,9 +82,12 @@ const { items } = Astro.props;
     font-weight: 300;
   }
   .breadcrumb-current {
-    color: color-mix(in srgb, var(--color-main) 75%, transparent);
+    color: var(--color-text-secondary);
     max-inline-size: min(100%, 72ch);
-    overflow-wrap: anywhere;
-    display: inline-block;
+    min-height: 44px;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    display: inline-flex;
+    align-items: center;
   }
 </style>

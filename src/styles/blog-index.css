@@ -11,11 +11,6 @@
   border-radius: var(--radius-md);
 }
 
-.blog-headline-wrap header.compact h1 {
-  font-size: clamp(1.75rem, 3vw, 2rem);
-  line-height: 1.25;
-}
-
 .blog-headline-wrap .headline-intro {
   max-inline-size: 48rem;
   margin: .65rem auto 0;

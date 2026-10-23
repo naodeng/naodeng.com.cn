@@ -49,17 +49,16 @@ const breadcrumbs = [{ name: isZh ? "首页" : "Home", url: getRelativeLocaleUrl
 
 <Base title={text.title} description={text.description} breadcrumbs={breadcrumbs}>
   <div class="resource-page">
-    <header class="resource-hero"><p class="eyebrow">{isZh ? "NAODENG / QA" : "NAODENG / QA"}</p><h1>{text.title}</h1><p>{text.intro}</p><nav class="resource-index" aria-label={isZh ? "资源分类" : "Resource categories"}>{sections.map((section) => <a href={`#${section.key}`}>{text.sections[section.key as keyof typeof text.sections]}</a>)}</nav></header>
-    {sections.map((section) => <section class="resource-section" id={section.key} aria-labelledby={`${section.key}-title`}><div class="section-heading"><div><p class="section-kicker">{String(section.data.length).padStart(2, "0")} {text.items}</p><h2 id={`${section.key}-title`}>{text.sections[section.key as keyof typeof text.sections]}</h2><p>{text.descriptions[section.key as keyof typeof text.descriptions]}</p></div>{section.href.startsWith("#") ? null : <a class="view-all" href={getRelativeLocaleUrl(locale, section.href)}>{text.viewAll} <span aria-hidden="true">→</span></a>}</div><div class="resource-grid">{section.data.slice(0, RESOURCE_PREVIEW_LIMIT).map((item) => <a class="resource-card" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}><div class="card-top"><span class="card-arrow material-icons-sharp" aria-hidden="true">{item.href.startsWith("http") ? "open_in_new" : "arrow_forward"}</span></div><h3>{item.title}</h3><p>{item.description}</p>{item.tags.length > 0 && <div class="card-tags">{item.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}</div>}<span class="card-link">{text.open}</span></a>)}</div></section>)}
+    <header class="resource-hero"><h1>{text.title}</h1><p>{text.intro}</p><nav class="resource-index" aria-label={isZh ? "资源分类" : "Resource categories"}>{sections.map((section) => <a href={`#${section.key}`}>{text.sections[section.key as keyof typeof text.sections]}</a>)}</nav></header>
+    {sections.map((section) => <section class="resource-section" id={section.key} aria-labelledby={`${section.key}-title`}><div class="section-heading"><div><h2 id={`${section.key}-title`}>{text.sections[section.key as keyof typeof text.sections]}</h2><p class="section-count">{section.data.length} {text.items}</p><p>{text.descriptions[section.key as keyof typeof text.descriptions]}</p></div>{section.href.startsWith("#") ? null : <a class="view-all" href={getRelativeLocaleUrl(locale, section.href)}>{text.viewAll} <span aria-hidden="true">→</span></a>}</div><div class="resource-grid">{section.data.slice(0, RESOURCE_PREVIEW_LIMIT).map((item) => <a class="resource-card" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}><div class="card-top"><span class="card-arrow material-icons-sharp" aria-hidden="true">{item.href.startsWith("http") ? "open_in_new" : "arrow_forward"}</span></div><h3>{item.title}</h3><p>{item.description}</p>{item.tags.length > 0 && <div class="card-tags">{item.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}</div>}<span class="card-link">{text.open}</span></a>)}</div></section>)}
   </div>
 </Base>
 
 <style>
   .resource-page { max-width: var(--layout-max); margin: 0 auto; padding: 0 0 5rem; }
   .resource-hero { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--color-border); }
-  .eyebrow, .section-kicker { margin: 0 0 .65rem; color: var(--color-theme); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-  .resource-hero h1 { margin: 0; font-size: clamp(2.4rem, 6vw, 5rem); line-height: 1.15; color: var(--color-main); }
-  .resource-hero > p:not(.eyebrow) { max-width: 42rem; margin: 1.25rem 0 0; font-size: 1.08rem; line-height: 1.7; color: var(--color-text-secondary); }
+  .resource-hero h1 { margin: 0; font-size: clamp(2.15rem, 1.15rem + 2.2vw, 3.4rem); line-height: 1.12; letter-spacing: -0.03em; text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; color: var(--color-main); }
+  .resource-hero > p { max-width: 42rem; margin: 1.25rem 0 0; font-size: 1.08rem; line-height: 1.7; color: var(--color-text-secondary); }
   .resource-index { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
   .resource-index a, .card-tags span { padding: .38rem .7rem; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-main); text-decoration: none; font-size: .82rem; }
   .resource-index a { display: inline-flex; align-items: center; min-height: 44px; transition: color var(--transition-fast), background-color var(--transition-fast); }
@@ -67,7 +66,8 @@ const breadcrumbs = [{ name: isZh ? "首页" : "Home", url: getRelativeLocaleUrl
   .resource-section { padding: 3.5rem 0 0; scroll-margin-top: calc(var(--sticky-offset) + .5rem); }
   .section-heading { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-bottom: 1.25rem; }
   .section-heading h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--color-main); }
-  .section-heading p:not(.section-kicker) { max-width: 42rem; margin: .55rem 0 0; line-height: 1.55; color: var(--color-text-secondary); }
+  .section-count { margin: .45rem 0 0; color: var(--color-text-secondary); font-size: 1rem; font-variant-numeric: tabular-nums; }
+  .section-heading p:not(.section-count) { max-width: 42rem; margin: .55rem 0 0; line-height: 1.55; color: var(--color-text-secondary); }
   .view-all { display: inline-flex; align-items: center; min-height: 44px; flex: 0 0 auto; color: var(--color-theme); font-weight: 700; text-decoration: none; }
   .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem; }
   .resource-card { display: flex; min-height: 14rem; flex-direction: column; padding: 1.15rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: inherit; text-decoration: none; transition: background-color var(--transition-fast), border-color var(--transition-fast); }
@@ -76,8 +76,8 @@ const breadcrumbs = [{ name: isZh ? "首页" : "Home", url: getRelativeLocaleUrl
   .card-arrow { font-size: 1.15rem; }
   .resource-card h3 { margin: 1.2rem 0 .55rem; font-size: 1.05rem; line-height: 1.35; color: var(--color-main); }
   .resource-card p { flex: 1; margin: 0 0 1rem; font-size: .88rem; line-height: 1.55; color: var(--color-text-secondary); }
-  .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }.card-tags span { padding: .2rem .5rem; font-size: .7rem; color: var(--color-text-secondary); }
-  .card-link { color: var(--color-theme); font-size: .8rem; font-weight: 800; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }.card-tags span { padding: .2rem .5rem; border-radius: var(--radius-sm); font-size: .8125rem; color: var(--color-text-secondary); }
+  .card-link { color: var(--color-theme); font-size: .875rem; font-weight: 700; }
   @media (prefers-reduced-motion: reduce) { .resource-card, .resource-index a { transition: none; } }
   @media (max-width: 640px) { .resource-page { padding-top: 1rem; }.resource-hero { padding-top: 1.5rem; }.section-heading { align-items: start; flex-direction: column; gap: .7rem; }.resource-grid { grid-template-columns: 1fr; } }
 </style>

@@ -354,22 +354,22 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-sidebar-toggle { display: none; width: 100%; justify-content: space-between; padding: 0.85rem 1rem; border: 0; background: transparent; color: var(--color-main); font: inherit; font-weight: 800; text-align: start; cursor: pointer; }
   .prompt-sidebar-toggle .material-icons-sharp { font-size: 1.1rem; }
   .prompt-sidebar-nav { max-height: calc(100dvh - var(--sticky-offset) - 1rem); overflow-y: auto; padding: 1rem; }
-  .prompt-sidebar-home, .prompt-sidebar-all { display: inline-flex; gap: 0.35rem; align-items: center; color: var(--color-theme); font-size: 0.78rem; font-weight: 800; text-decoration: none; line-height: 1.45; }
+  .prompt-sidebar-home, .prompt-sidebar-all { display: inline-flex; min-height: 44px; gap: 0.35rem; align-items: center; color: var(--color-theme); font-size: 0.875rem; font-weight: 700; text-decoration: none; line-height: 1.45; }
   .prompt-sidebar-home .material-icons-sharp { font-size: 0.95rem; }
   .prompt-sidebar-home:hover, .prompt-sidebar-all:hover { text-decoration: underline; }
   .prompt-sidebar-all { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--color-border); }
-  .prompt-sidebar-label { margin: 1rem 0 0.5rem; color: var(--color-text-secondary); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .prompt-sidebar-label { margin: 1rem 0 0.5rem; color: var(--color-text-secondary); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0; text-transform: none; }
   .prompt-sidebar-nav ul { display: grid; gap: 0.15rem; list-style: none; margin: 0; padding: 0; }
-  .prompt-sidebar-nav li a { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.48rem 0.55rem; border-radius: var(--radius-sm); color: color-mix(in srgb, var(--color-main) 70%, transparent); font-size: 0.8rem; line-height: 1.35; text-decoration: none; }
+  .prompt-sidebar-nav li a { display: flex; align-items: center; min-height: 44px; justify-content: space-between; gap: 0.5rem; padding: 0.45rem 0.55rem; border-radius: var(--radius-sm); color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.35; text-decoration: none; }
   .prompt-sidebar-nav li a:hover, .prompt-sidebar-nav li a.is-current { background: var(--color-theme-soft); color: var(--color-theme); }
   .prompt-sidebar-nav li small { flex: 0 0 auto; opacity: 1; }
   .prompt-detail-main { min-width: 0; }
   .prompt-detail-header { padding: 0 0 2rem; }
   .prompt-detail-kicker { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; color: var(--color-theme); font-size: 0.76rem; font-weight: 800; }
-  .prompt-detail-header h1 { max-width: 22ch; margin: 0.75rem 0 0; font-size: clamp(2.1rem, 5vw, 4.2rem); line-height: 1.2; letter-spacing: -0.055em; word-break: keep-all; overflow-wrap: anywhere; }
-  .prompt-detail-desc { max-width: 70ch; margin: 1rem 0 0; color: color-mix(in srgb, var(--color-main) 68%, transparent); font-size: 1rem; line-height: 1.7; }
+  .prompt-detail-header h1 { max-width: 22ch; margin: 0.75rem 0 0; font-size: clamp(2.1rem, 5vw, 4.2rem); line-height: 1.15; letter-spacing: -0.03em; text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; }
+  .prompt-detail-desc { max-width: 70ch; margin: 1rem 0 0; color: var(--color-text-secondary); font-size: 1rem; line-height: 1.7; }
   .prompt-detail-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
-  .prompt-detail-badges span, .prompt-variants a { padding: 0.3rem 0.6rem; border: 1px solid var(--color-border); border-radius: 999px; color: color-mix(in srgb, var(--color-main) 72%, transparent); font-size: 0.72rem; font-weight: 800; text-decoration: none; }
+  .prompt-detail-badges span, .prompt-variants a { padding: 0.3rem 0.6rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-text-secondary); font-size: 0.8125rem; font-weight: 700; text-decoration: none; }
   .prompt-detail-badges span:first-child { border-color: color-mix(in srgb, var(--color-theme) 30%, var(--color-border)); background: var(--color-theme-soft); color: var(--color-theme); }
   .prompt-detail-actions { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.5rem; }
   .prompt-copy-btn, .prompt-source-link { display: inline-flex; min-height: 44px; align-items: center; gap: 0.45rem; padding: 0 0.8rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-main); font: inherit; font-size: 0.82rem; font-weight: 800; text-decoration: none; cursor: pointer; }
@@ -377,11 +377,11 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
   .prompt-at-a-glance { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin: 1.5rem 0 0; }
   .prompt-contract-block { min-width: 0; padding: 1.15rem 1rem 1.25rem; border-radius: var(--radius-sm); background: var(--color-surface-muted); }
   .prompt-contract-block + .prompt-contract-block { padding-inline: 1rem; border-inline-start: 0; }
-  .prompt-glance-label { color: var(--color-theme); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
-  .prompt-contract-block ul { display: grid; gap: 0.45rem; margin: 0.7rem 0 0; padding-inline-start: 1.1rem; color: color-mix(in srgb, var(--color-main) 75%, transparent); font-size: 0.83rem; line-height: 1.45; }
+  .prompt-glance-label { color: var(--color-theme); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0; text-transform: none; }
+  .prompt-contract-block ul { display: grid; gap: 0.45rem; margin: 0.7rem 0 0; padding-inline-start: 1.1rem; color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.45; }
 
   .prompt-variants { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; margin: 1.5rem 0; padding-block: 0.2rem; }
-  .prompt-variants-label { color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 800; }
+  .prompt-variants-label { color: var(--color-text-secondary); font-size: 0.8125rem; font-weight: 700; }
   .prompt-variants > div { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .prompt-variants a:hover, .prompt-variants a.is-current { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-theme); }
   .prompt-variants a { display: inline-flex; align-items: center; min-height: 44px; }

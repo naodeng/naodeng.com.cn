@@ -360,6 +360,9 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     font-weight: 800;
     letter-spacing: 0;
     line-height: 1.15;
+    text-wrap: balance;
+    word-break: keep-all;
+    overflow-wrap: break-word;
     color: var(--color-main);
   }
 
@@ -373,7 +376,10 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
 
   @media (width < 900px) {
     .guild-article-title {
-      font-size: clamp(1.75rem, 6vw, 2.25rem);
+      font-size: clamp(2rem, 1.15rem + 2.2vw, 2.5rem);
+      text-wrap: balance;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
   }
 
@@ -591,9 +597,9 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
 
   .guild-pagination-label {
     font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
     color: var(--color-text-secondary);
   }
 

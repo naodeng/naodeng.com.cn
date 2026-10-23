@@ -173,7 +173,7 @@ export const getStaticPaths = () =>
   }
 
   .sitemap-note {
-    color: color-mix(in srgb, var(--color-main) 65%, transparent);
+    color: var(--color-text-secondary);
     font-size: 0.92rem;
     margin-top: 0.75rem;
   }
@@ -183,7 +183,8 @@ export const getStaticPaths = () =>
     display: flex;
     align-items: center;
     min-block-size: 44px;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    word-break: keep-all;
     color: var(--color-main);
     text-decoration: none;
   }

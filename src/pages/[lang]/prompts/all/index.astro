@@ -137,7 +137,6 @@ const itemListSchema = {
   <div class="prompt-explorer" data-prompt-explorer>
     <header class="explorer-header">
       <div>
-        <p class="explorer-eyebrow">{copy.eyebrow}</p>
         <h1>{copy.title}</h1>
         <p>{copy.intro}</p>
       </div>
@@ -301,45 +300,44 @@ const itemListSchema = {
   .prompt-explorer { --explorer-button-ink: #ffffff; max-width: var(--layout-max); margin: 0 auto; padding: 0 0 5rem; }
   :global(:root[data-theme="dark"]) .prompt-explorer { --explorer-button-ink: var(--color-base); }
   .explorer-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(1.5rem, 5vw, 4rem); align-items: start; padding: 0 0 3rem; }
-  .explorer-eyebrow { margin: 0 0 0.8rem; color: var(--color-theme); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.13em; }
-  .explorer-header h1 { margin: 0; font-size: clamp(2.3rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -0.05em; }
-  .explorer-header p:not(.explorer-eyebrow) { max-width: 62ch; margin: 1rem 0 0; color: color-mix(in srgb, var(--color-main) 65%, transparent); line-height: 1.7; }
+  .explorer-header h1 { margin: 0; font-size: clamp(2.3rem, 5vw, 4.2rem); line-height: 1.05; letter-spacing: -0.03em; }
+  .explorer-header p { max-width: 62ch; margin: 1rem 0 0; color: var(--color-text-secondary); line-height: 1.7; }
   .explorer-back { display: inline-flex; gap: 0.45rem; align-items: center; margin-top: 2.15rem; color: var(--color-theme); font-weight: 800; text-decoration: none; }
   .explorer-back:hover { text-decoration: underline; }
   .explorer-toolbar { margin: 0 0 2.25rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface-muted); }
   .explorer-toolbar form { display: grid; gap: 1rem; }
   .explorer-search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.75rem; align-items: end; }
   .explorer-search-field { display: grid; gap: 0.35rem; min-width: 0; }
-  .explorer-search-label, .explorer-filter-grid label { display: grid; gap: 0.35rem; color: color-mix(in srgb, var(--color-main) 70%, transparent); font-size: 0.76rem; font-weight: 800; }
-  .explorer-search-control { display: flex; min-height: 42px; align-items: center; padding-inline: 0.7rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .explorer-search-label, .explorer-filter-grid label { display: grid; gap: 0.35rem; color: var(--color-text-secondary); font-size: 0.8125rem; font-weight: 700; }
+  .explorer-search-control { display: flex; min-height: 44px; align-items: center; padding-inline: 0.7rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); }
   .explorer-search-control > .material-icons-sharp { flex: 0 0 auto; color: var(--color-theme); font-size: 1.2rem; }
   .explorer-search-control input { width: 100%; min-width: 0; padding-inline: 0.55rem; border: 0; outline: 0; background: transparent; color: var(--color-main); font: inherit; text-overflow: ellipsis; }
   .explorer-search-control input::placeholder { color: var(--color-text-tertiary); opacity: 1; }
   .explorer-search-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-  .explorer-submit, .explorer-clear { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 0.35rem; padding: 0 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-main); font: inherit; font-size: 0.78rem; font-weight: 800; cursor: pointer; }
+  .explorer-submit, .explorer-clear { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 0.35rem; padding: 0 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-main); font: inherit; font-size: 0.875rem; font-weight: 700; cursor: pointer; }
   .explorer-submit { border-color: var(--color-theme); background: var(--color-theme); color: var(--explorer-button-ink); }
   .explorer-submit:hover { background: var(--color-theme-focus); }
   .explorer-submit .material-icons-sharp { font-size: 1rem; }
   .explorer-submit:active, .explorer-clear:active { transform: translateY(1px); }
   .explorer-filter-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; }
-  .explorer-filter-grid select { width: 100%; min-height: 42px; padding: 0 0.55rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-main); font: inherit; }
+  .explorer-filter-grid select { width: 100%; min-height: 44px; padding: 0 0.55rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-main); font: inherit; }
   .explorer-clear:hover { border-color: var(--color-theme); color: var(--color-theme); }
   .explorer-count { margin: 0.1rem 0 0; color: var(--color-text-secondary); font-size: 0.8rem; }
   .explorer-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; margin: 0; padding: 0; }
   .explorer-results > li[hidden] { display: none; }
   .explorer-card { display: flex; flex-direction: column; padding: 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-main); text-decoration: none; }
   .explorer-card:hover { border-color: color-mix(in srgb, var(--color-theme) 60%, var(--color-border)); }
-  .explorer-card-topline { display: flex; justify-content: space-between; gap: 0.5rem; color: var(--color-theme); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+  .explorer-card-topline { display: flex; justify-content: space-between; gap: 0.5rem; color: var(--color-theme); font-size: 0.8125rem; font-weight: 700; text-transform: none; }
   .explorer-card h2 { margin: 0.95rem 0 0.55rem; font-size: 1.08rem; line-height: 1.25; }
   .explorer-card:hover h2 { color: var(--color-theme); }
-  .explorer-card-description { display: -webkit-box; min-height: 4.5em; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; margin: 0; color: color-mix(in srgb, var(--color-main) 68%, transparent); font-size: 0.86rem; line-height: 1.55; }
+  .explorer-card-description { display: -webkit-box; min-height: 4.5em; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; margin: 0; color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.55; }
   .explorer-card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; }
-  .explorer-card-tags span { padding: 0.2rem 0.45rem; border-radius: 999px; background: var(--color-theme-soft); color: var(--color-theme); font-size: 0.68rem; font-weight: 800; }
+  .explorer-card-tags span { padding: 0.2rem 0.45rem; border-radius: var(--radius-sm); background: var(--color-theme-soft); color: var(--color-theme); font-size: 0.8125rem; font-weight: 700; }
   .explorer-card-signals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; margin-top: 1rem; }
   .explorer-card-signals div { display: grid; gap: 0.25rem; padding: 0.65rem; border-radius: var(--radius-sm); background: var(--color-surface-muted); }
-  .explorer-card-signals span { color: var(--color-theme); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; }
-  .explorer-card-signals strong { font-size: 0.77rem; line-height: 1.4; }
-  .explorer-empty { margin: 1rem 0; padding: 2rem; border: 1px dashed var(--color-border); border-radius: var(--radius-md); color: color-mix(in srgb, var(--color-main) 65%, transparent); text-align: center; }
+  .explorer-card-signals span { color: var(--color-theme); font-size: 0.8125rem; font-weight: 700; text-transform: none; }
+  .explorer-card-signals strong { color: var(--color-main); font-size: 0.875rem; font-weight: 700; line-height: 1.4; }
+  .explorer-empty { margin: 1rem 0; padding: 2rem; border: 1px dashed var(--color-border); border-radius: var(--radius-md); color: var(--color-text-secondary); text-align: center; }
   @media (width >= 1600px) {
     .explorer-results { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }

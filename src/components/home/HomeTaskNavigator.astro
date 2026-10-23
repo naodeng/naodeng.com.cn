@@ -68,11 +68,13 @@ const entries = HOME_TASK_ENTRIES[locale];
               <span class="task-card__chip">{chip}</span>
             </span>
             <p class="task-card__desc">{entry.description}</p>
-            <ul class="task-card__links" role="list">
+              <ul class="task-card__links" role="list">
               {entry.targets.map((target) => (
                 <li>
-                  <a href={targetHref(target)}>{target.label}</a>
-                  <small>{target.description}</small>
+                  <a href={targetHref(target)}>
+                    <span>{target.label}</span>
+                    <small>{target.description}</small>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -145,7 +147,7 @@ const entries = HOME_TASK_ENTRIES[locale];
     border-radius:var(--radius-xl);
     background:var(--color-theme-soft);
     color:var(--color-theme);
-    font-size:.7rem;
+    font-size:.8125rem;
     font-weight:800;
     letter-spacing:.02em;
     white-space:nowrap;
@@ -172,9 +174,13 @@ const entries = HOME_TASK_ENTRIES[locale];
   /* 多目标任务的内链列表 */
   .task-card__links { list-style:none; margin:auto 0 0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
   .task-card__links a {
-    display:inline-flex;
+    display:grid;
+    grid-template-columns:6px minmax(0, 1fr);
+    column-gap:.45rem;
+    row-gap:.15rem;
     align-items:center;
-    gap:.35rem;
+    min-height:44px;
+    padding:.4rem 0;
     color:var(--color-theme);
     text-decoration:none;
     font-weight:800;
@@ -187,7 +193,8 @@ const entries = HOME_TASK_ENTRIES[locale];
     border-radius:50%;
     background:var(--color-theme);
   }
-  .task-card__links small { display:block; margin-top:3px; padding-left:.85rem; font-size:12px; line-height:1.5; color:var(--color-text-secondary); font-weight:400; }
+  .task-card__links a span { grid-column:2; }
+  .task-card__links small { grid-column:2; display:block; margin:0; padding:0; font-size:.8125rem; line-height:1.5; color:var(--color-text-secondary); font-weight:400; }
 
   /* 统一的卡片交互反馈：与最新文章卡/探索卡保持一致 */
   .task-card:hover,

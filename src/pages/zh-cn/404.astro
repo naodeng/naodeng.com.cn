@@ -77,34 +77,44 @@ const homeUrl = "/zh-cn/";
     border-radius: var(--radius-md);
   }
   .container > h1 {
-    color: var(--color-caution);
+    color: var(--color-main);
     font-size: 2rem;
+    line-height: 1.08;
   }
   .container > h1 b {
     display: block;
-    font-size: 4em;
+    font-size: min(6rem, 28vw);
     font-weight: 900;
-    letter-spacing: -0.1em;
-    opacity: 0.6;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: var(--color-caution);
+    opacity: 1;
   }
   .container > p {
     margin-block-start: var(--sp-s);
   }
   .redirect-hint {
     margin-block-start: var(--sp-s);
+    color: var(--color-text-secondary);
     font-size: 0.95rem;
-    opacity: 0.85;
   }
   .gotop {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     margin-inline: auto;
     margin-block-start: var(--sp-s);
     padding: 0.5em 1.5em;
     border-radius: var(--radius-sm);
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: 700;
     background: var(--color-theme);
-    color: var(--color-base);
+    color: var(--color-theme-on-dark);
+    text-decoration: none;
+  }
+  .gotop:hover {
+    background: var(--color-theme-focus);
   }
   .langList {
     margin-block-start: var(--sp-l);

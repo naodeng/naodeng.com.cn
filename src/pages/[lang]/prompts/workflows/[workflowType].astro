@@ -219,10 +219,10 @@ const howToSchema = {
     scrollbar-width: thin;
   }
   .workflow-sidebar-section-title {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    text-transform: none;
+    letter-spacing: 0;
     color: var(--color-text-secondary);
     margin: 0 0 var(--sp-s);
     padding-block-end: 0.35rem;
@@ -295,13 +295,18 @@ const howToSchema = {
     border-block-end: 1px solid var(--color-border);
   }
   .workflow-detail-header h1 {
-    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-size: clamp(2rem, 1.15rem + 1.6vw, 2.75rem);
     font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    word-break: keep-all;
+    overflow-wrap: break-word;
     margin-block-end: 0.4em;
   }
   .workflow-detail-desc {
     font-size: 1rem;
-    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    color: var(--color-text-secondary);
     line-height: 1.6;
     margin: 0;
   }

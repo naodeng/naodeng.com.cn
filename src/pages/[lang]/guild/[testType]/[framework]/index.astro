@@ -368,7 +368,7 @@ const itemListSchema = {
   .fw-badge--advanced { background: var(--color-surface); color: var(--color-text-secondary); border-color: var(--color-border); }
 
   .fw-hero__title {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-size: clamp(2rem, 1.15rem + 1.6vw, 2.75rem);
     font-weight: 900;
     letter-spacing: -0.02em;
     color: var(--color-main);
@@ -379,7 +379,7 @@ const itemListSchema = {
   .fw-hero__desc {
     font-size: 0.95rem;
     line-height: 1.65;
-    color: color-mix(in srgb, var(--color-main) 68%, transparent);
+    color: var(--color-text-secondary);
     margin: 0;
   }
 
@@ -421,11 +421,11 @@ const itemListSchema = {
   }
 
   .fw-stat__label {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--color-text-secondary);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
   }
 
   .fw-stat__value--language {
@@ -553,12 +553,13 @@ const itemListSchema = {
     align-items: center;
     padding: 0.3em 0.8em;
     border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 500;
+    min-height: 44px;
+    font-size: 0.8125rem;
+    font-weight: 700;
     cursor: pointer;
     border: 1px solid var(--color-border);
     background: transparent;
-    color: color-mix(in srgb, var(--color-main) 70%, transparent);
+    color: var(--color-text-secondary);
     transition: var(--transition-base);
   }
 
@@ -585,11 +586,11 @@ const itemListSchema = {
   }
 
   .stage-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform: none;
+    letter-spacing: 0;
     margin: 0;
     padding-left: 0.75rem;
     border-left: 1px solid var(--color-border);
@@ -620,7 +621,7 @@ const itemListSchema = {
   }
 
   .article-title {
-    font-size: 0.92rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--color-main);
     margin: 0;
@@ -632,7 +633,7 @@ const itemListSchema = {
   }
 
   .article-description {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     line-height: 1.5;
     color: var(--color-text-secondary);
     margin: 0;
@@ -657,7 +658,7 @@ const itemListSchema = {
     display: flex;
     align-items: center;
     gap: 0.35em;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--color-text-secondary);
   }
 

@@ -13,7 +13,13 @@ for (const locale of ["en", "zh-cn"] as const) {
     expect(await page.locator(".auditor-page .grid article").count()).toBeGreaterThan(0);
     await expect(page.locator(".auditor-page pre code").first()).toBeVisible();
 
-    const release = page.locator(".releases details").first();
+    const history = page.locator("[data-auditor-release-history]");
+    await expect(history).toBeVisible();
+    await expect(history).not.toHaveAttribute("open");
+    await expect(history.locator(".release-history-toggle > span").first()).toHaveText(locale === "zh-cn" ? "历史版本" : "Release history");
+    const release = history.locator("[data-release-note]").first();
+    await expect(release).toBeHidden();
+    await history.locator("summary").first().click();
     await expect(release).toBeVisible();
     await release.locator("summary").click();
     await expect(release.locator("ul")).toBeVisible();

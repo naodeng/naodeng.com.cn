@@ -785,12 +785,13 @@ const mobilePriorityItems = [
     display: inline-flex;
     align-items: center;
     gap: 0;
+    min-height: 44px;
     text-decoration: none;
     white-space: nowrap;
-    transition: opacity 0.18s ease;
+    transition: color var(--transition-fast);
   }
   .site-brand-link:hover {
-    opacity: 0.8;
+    opacity: 1;
   }
   .site-title-cobrand {
     display: inline-flex;
@@ -1453,6 +1454,10 @@ const mobilePriorityItems = [
   .site-brand-link:hover {
     color: var(--color-main);
   }
+  .site-brand-link:hover .site-title-primary,
+  .site-brand-link:hover .site-title-secondary {
+    color: var(--color-theme);
+  }
 
   .site-title-cobrand {
     gap: 0.34em;
@@ -1482,7 +1487,7 @@ const mobilePriorityItems = [
 
   .site-nav > ul > li > a,
   .nav-group-trigger {
-    min-height: 36px;
+    min-height: 44px;
     padding: 0 0.65rem;
     border-radius: var(--radius-sm);
     font-size: var(--text-sm);

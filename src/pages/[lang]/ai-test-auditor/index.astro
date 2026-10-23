@@ -152,20 +152,25 @@ const quickStartTitle = locale === "zh-cn" ? "快速开始" : "Quick start";
           <a href={latestRelease.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink}<span aria-hidden="true">↗</span></a>
         </div>
       </article>
-      <h3 class="release-history-title">{locale === "zh-cn" ? "历史版本" : "Release history"}</h3>
-      <div class="release-list">
-        {historicalReleases.map((release) => <details class="release-entry" data-release-note>
-          <summary>
-            <span><strong>{release.version}</strong><time datetime={release.publishedAt}>{release.publishedAt}</time></span>
-            <span>{release.summary}</span>
-            <span class="release-chevron" aria-hidden="true">⌄</span>
-          </summary>
-          <div class="release-body">
-            <ul>{release.changes.map((change) => <li>{change}</li>)}</ul>
-            <a href={release.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink}<span aria-hidden="true">↗</span></a>
-          </div>
-        </details>)}
-      </div>
+      <details class="release-history" data-auditor-release-history>
+        <summary class="release-history-toggle">
+          <span>{locale === "zh-cn" ? "历史版本" : "Release history"}</span>
+          <span class="release-history-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="release-list">
+          {historicalReleases.map((release) => <details class="release-entry" data-release-note>
+            <summary>
+              <span><strong>{release.version}</strong><time datetime={release.publishedAt}>{release.publishedAt}</time></span>
+              <span>{release.summary}</span>
+              <span class="release-chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="release-body">
+              <ul>{release.changes.map((change) => <li>{change}</li>)}</ul>
+              <a href={release.url} target="_blank" rel="noopener noreferrer">{site.labels.releaseLink}<span aria-hidden="true">↗</span></a>
+            </div>
+          </details>)}
+        </div>
+      </details>
     </section>
   </div>
 </Layout>
@@ -449,7 +454,11 @@ const quickStartTitle = locale === "zh-cn" ? "快速开始" : "Quick start";
   .release-list summary > span:nth-child(2) { min-width: 0; text-wrap: pretty; word-break: keep-all; overflow-wrap: break-word; }
   .current-release ul,
   .release-body ul { margin: .6rem 0 1rem; padding-inline-start: 1.25rem; color: var(--color-text-secondary); line-height: 1.6; }
-  .release-history-title { margin: 1.8rem 0 .45rem; color: var(--color-main); font-size: 1.1rem; }
+  .release-history { margin-top: 1.8rem; }
+  .release-history-toggle { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .45rem; color: var(--color-main); cursor: pointer; font-size: 1.1rem; font-weight: 700; list-style: none; }
+  .release-history-toggle::-webkit-details-marker { display: none; }
+  .release-history-chevron { flex: 0 0 auto; transition: transform var(--transition-fast); }
+  .release-history[open] > .release-history-toggle .release-history-chevron { transform: rotate(180deg); }
   .release-list { display: grid; gap: .25rem; }
   .release-entry { background: transparent; }
   .release-list summary { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 1.6rem .8rem 0; cursor: pointer; font-size: 1rem; font-weight: 700; }

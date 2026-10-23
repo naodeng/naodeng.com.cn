@@ -86,7 +86,7 @@ const isZh = Astro.currentLocale === "zh-cn";
   .wiki-letter-group .wiki-letter-title { margin: 0; padding-block: 0.65rem; color: var(--color-main); font-size: 1.35rem; font-weight: 800; line-height: 1.5; }
   .wiki-letter-group .wiki-letter-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
   .wiki-letter-list li { margin: 0; min-inline-size: 0; }
-  .wiki-letter-list .wiki-letter-link { display: block; min-block-size: 44px; padding: 0.65rem 0.5rem; border-radius: var(--radius-sm); color: var(--color-main); font-size: 0.95rem; line-height: 1.6; text-decoration: none; overflow-wrap: anywhere; transition: color var(--transition-fast), background-color var(--transition-fast); }
+  .wiki-letter-list .wiki-letter-link { display: block; min-block-size: 44px; padding: 0.65rem 0.5rem; border-radius: var(--radius-sm); color: var(--color-main); font-size: 0.95rem; line-height: 1.6; text-decoration: none; overflow-wrap: break-word; word-break: keep-all; transition: color var(--transition-fast), background-color var(--transition-fast); }
   .wiki-letter-list .wiki-letter-link:hover, .wiki-letter-list .wiki-letter-link:focus-visible { color: var(--color-theme); background: var(--color-theme-soft); }
   .wiki-search-empty { margin-block: 1.5rem; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text-secondary); }
   .wiki-search-empty p { margin: 0; }

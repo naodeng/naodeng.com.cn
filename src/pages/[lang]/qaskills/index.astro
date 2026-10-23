@@ -45,7 +45,7 @@ const text = lang === "zh-cn" ? {
   intro: "收录测试类型、测试工作流程和加强版技能，帮助你快速找到合适技能并直接上手。",
   directoryLabel: "技能目录",
   searchLabel: "搜索 Skills",
-  searchHint: "按名称、场景或关键词搜索…",
+  searchHint: "按名称、场景或关键词搜索",
   filterTitle: "筛选目录",
   moreFilters: "更多筛选",
   featuredTitle: "常用入口",
@@ -91,7 +91,7 @@ const text = lang === "zh-cn" ? {
   intro: "Browse testing types, testing workflows, and plus skills to quickly find the right skill and start using it.",
   directoryLabel: "Skill directory",
   searchLabel: "Search Skills",
-  searchHint: "Search by name, scenario, or keyword…",
+  searchHint: "Search name or keyword",
   filterTitle: "Filter directory",
   moreFilters: "More filters",
   featuredTitle: "Popular entry points",
@@ -216,7 +216,6 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   <div class="qaskills-page" data-qaskills-directory>
     <header class="directory-hero">
       <div class="directory-hero-topline">
-        <span class="eyebrow">{text.directoryLabel}</span>
         <span class="hero-sync">{totalCount} {text.skillCountLabel} · {text.syncedLabel} {latestSync}</span>
       </div>
       <div class="directory-hero-main">
@@ -262,7 +261,6 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
         <div class="featured-list">
           {recommendedSkills.map((skill, index) => (
             <a class:list={["featured-link", index === 0 && "featured-link-primary"]} data-recommended-skill={skill.slug} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
-              <span class="featured-number">0{index + 1}</span>
               <span class="featured-link-copy">
                 <strong>{displayNameOf(skill)}</strong>
                 <small>{getQASkillCardIntro(skill, lang)}</small>
@@ -1222,11 +1220,12 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
+    min-height: 44px;
     gap: 0.45rem;
     padding-block: 0.45rem;
     border-block-end: 1px solid color-mix(in srgb, var(--color-theme) 45%, transparent);
-    font-size: 0.86rem;
-    font-weight: 800;
+    font-size: 0.95rem;
+    font-weight: 700;
   }
   .source-link:hover,
   .featured-link:hover,
@@ -1271,10 +1270,13 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   }
   .search-input {
     min-height: 50px;
-    padding-inline: 2.8rem 6.2rem;
+    padding-inline: 2.8rem 1.05rem;
     border-color: var(--color-border-strong);
     background: var(--color-surface-elevated);
     font-size: 1rem;
+  }
+  .search-control:has(.toolbar-clear:not([hidden])) .search-input {
+    padding-inline-end: 5.75rem;
   }
   .toolbar-clear {
     position: absolute;
@@ -1308,11 +1310,11 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .toolbar-label,
   .filter-group-label,
   .filter-footnote {
-    color: var(--color-text-tertiary);
-    font-size: 0.72rem;
-    font-weight: 900;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.4;
   }
   .toolbar-label { display: block; }
   .shortcut-list {
@@ -1378,11 +1380,11 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   }
   .featured-link {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.45rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 0.65rem;
     min-width: 0;
-    padding: 0.55rem 0.65rem;
+    padding: 0.85rem 0.9rem;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     background: var(--color-surface-elevated);
@@ -1392,9 +1394,9 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .featured-link-primary { background: var(--color-theme-soft); }
   .featured-link-copy { min-width: 0; }
   .featured-link strong,
-  .featured-link small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .featured-link strong { color: var(--color-main); font-size: 0.78rem; }
-  .featured-link small { margin-top: 0.12rem; color: var(--color-text-secondary); font-size: 0.68rem; }
+  .featured-link small { display: -webkit-box; overflow: hidden; white-space: normal; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .featured-link strong { color: var(--color-main); font-size: 1rem; line-height: 1.35; }
+  .featured-link small { margin-top: 0.28rem; color: var(--color-text-secondary); font-size: 0.8125rem; line-height: 1.45; }
   .featured-arrow { color: var(--color-text-secondary); font-size: 0.8rem; }
 
   .directory-section { padding-top: 0.5rem; }
@@ -1415,7 +1417,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .filter-sidebar h2 { margin: 0.2rem 0 0; font-size: 1rem; }
   .filter-sidebar-count { color: var(--color-text-secondary); font-size: 1.1rem; font-weight: 900; }
   .filter-group { margin-top: 0.8rem; }
-  .filter-group-label { margin: 0 0 0.35rem; font-size: 0.68rem; }
+  .filter-group-label { margin: 0 0 0.35rem; }
   .filter-options { display: grid; gap: 0.12rem; }
   .filter-option {
     display: flex;
@@ -1430,11 +1432,11 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     background: transparent;
     color: var(--color-text-secondary);
     cursor: pointer;
-    font-size: 0.78rem;
-    font-weight: 800;
+    font-size: 0.9rem;
+    font-weight: 700;
     text-align: start;
   }
-  .filter-option span:last-child { color: var(--color-text-tertiary); font-size: 0.68rem; }
+  .filter-option span:last-child { color: var(--color-text-tertiary); font-size: 0.8125rem; }
   .filter-option:hover { border-color: var(--color-border); background: var(--color-surface-muted); color: var(--color-main); }
   .filter-option.is-active { border-color: color-mix(in srgb, var(--color-theme) 25%, transparent); background: var(--color-theme-soft); color: var(--color-theme); }
   .filter-option.is-active span:last-child { color: var(--color-theme); }
@@ -1471,7 +1473,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .chip [data-filter-count] { margin-inline-start: 0.3rem; opacity: 0.7; font-size: 0.8em; }
   .active-filters { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
   .active-filter { padding: 0.3rem 0.5rem; border: 1px solid color-mix(in srgb, var(--color-theme) 30%, transparent); border-radius: var(--radius-sm); background: var(--color-theme-soft); color: var(--color-theme); cursor: pointer; font-size: 0.7rem; font-weight: 800; }
-  .filter-footnote { margin: 0.75rem 0 0; padding-top: 0.65rem; border-top: 1px solid var(--color-border); color: var(--color-text-tertiary); font-size: 0.7rem; font-weight: 800; line-height: 1.5; }
+  .filter-footnote { margin: 0.75rem 0 0; padding-top: 0.65rem; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 0.8125rem; font-weight: 700; line-height: 1.5; }
 
   .results-column { min-width: 0; }
   .results-heading { align-items: end; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border); }
@@ -1492,15 +1494,15 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .category-block[hidden] { display: none; }
   .subgroup { margin-top: 1.05rem; padding-top: 0.75rem; border-top: 1px dashed var(--color-border); }
   .subgroup:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
-  .subgroup h4 { margin: 0 0 0.5rem; color: var(--color-text-secondary); font-size: 0.78rem; font-weight: 900; letter-spacing: 0.02em; }
-  .cards { --skill-card-height: 148px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: var(--skill-card-height); gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .subgroup h4 { margin: 0 0 0.65rem; color: var(--color-text-secondary); font-size: 0.95rem; font-weight: 700; letter-spacing: 0; }
+  .cards { --skill-card-height: 164px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: var(--skill-card-height); gap: 0.65rem; margin: 0; padding: 0; list-style: none; }
   .cards > li { min-height: 0; }
   .cards > li[hidden] { display: none; }
   .skill-card { display: flex; flex-direction: column; height: 100%; min-width: 0; min-height: 0; padding: 0.72rem; border: 1px solid var(--color-border) !important; border-radius: var(--radius-md); background: var(--color-surface) !important; box-shadow: none !important; color: inherit; overflow: hidden; text-decoration: none; transition: border-color 0.16s ease, background-color 0.16s ease; }
   .skill-card:hover { transform: none; border-color: color-mix(in srgb, var(--color-theme) 48%, var(--color-border)) !important; background: var(--color-theme-soft) !important; box-shadow: none !important; }
-  .skill-card-type { display: block; margin-bottom: 0.34rem; color: var(--color-text-secondary); font-size: 0.66rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
-  .skill-card h5 { display: -webkit-box; min-height: 2.58rem; margin: 0; color: var(--color-main); font-size: 0.96rem; line-height: 1.35; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
-  .card-intro { display: -webkit-box; min-height: 2.32rem; overflow: hidden; margin: 0.35rem 0 0; color: var(--color-text-secondary); font-size: 0.79rem; line-height: 1.48; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .skill-card-type { display: block; margin-bottom: 0.34rem; color: var(--color-text-secondary); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0; text-transform: none; }
+  .skill-card h5 { display: -webkit-box; min-height: 2.7rem; margin: 0; color: var(--color-main); font-size: 1.05rem; line-height: 1.3; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .card-intro { display: -webkit-box; min-height: 2.6rem; overflow: hidden; margin: 0.35rem 0 0; color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.5; opacity: 1; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
   .usage-note,
   .lifecycle-path {
     padding-block-start: 1.35rem;
@@ -1511,21 +1513,21 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .usage-note ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
   .usage-note li { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem; padding: 0.55rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); }
   .usage-note li > span { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--color-surface-muted); color: var(--color-text-secondary); font-size: 0.7rem; font-weight: 900; }
-  .usage-note li strong { display: block; color: var(--color-main); font-size: 0.76rem; }
-  .usage-note li p { margin: 0.2rem 0 0; color: var(--color-text-secondary); font-size: 0.7rem; line-height: 1.45; }
-  .lifecycle-heading { align-items: end; margin-bottom: 0.8rem; }
-  .lifecycle-heading p { max-width: 42ch; margin-bottom: 0.1rem; text-align: end; }
-  .lifecycle-track { display: flex; align-items: stretch; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.3rem; -webkit-overflow-scrolling: touch; }
+  .usage-note li strong { display: block; color: var(--color-main); font-size: 0.9rem; }
+  .usage-note li p { margin: 0.2rem 0 0; color: var(--color-text-secondary); font-size: 0.8125rem; line-height: 1.45; }
+  .lifecycle-heading { display: grid; justify-content: start; align-items: start; gap: 0.35rem; margin-bottom: 0.9rem; }
+  .lifecycle-heading p { max-width: 46ch; margin: 0.35rem 0 0; color: var(--color-text-secondary); font-size: 0.875rem; text-align: start; }
+  .lifecycle-track { display: flex; align-items: flex-start; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.3rem; -webkit-overflow-scrolling: touch; }
   .lifecycle-cell { display: flex; flex: 1 1 0; min-width: 9.5rem; align-items: stretch; gap: 0.4rem; }
   .lifecycle-stage { flex: 1; min-width: 0; padding: 0.65rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); }
-  .lifecycle-stage-title { display: flex; align-items: center; gap: 0.35rem; margin: 0 0 0.45rem; color: var(--color-main); font-size: 0.76rem; font-weight: 900; line-height: 1.35; }
+  .lifecycle-stage-title { display: flex; align-items: center; gap: 0.4rem; margin: 0 0 0.55rem; color: var(--color-main); font-size: 0.9rem; font-weight: 700; line-height: 1.35; }
   .lifecycle-stage-num { display: inline-grid; flex: 0 0 auto; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--color-surface-muted); color: var(--color-text-secondary); font-size: 0.68rem; }
   .lifecycle-skills { display: grid; gap: 0.28rem; margin: 0; padding: 0; list-style: none; }
-  .lifecycle-skill { display: flex; align-items: center; justify-content: space-between; gap: 0.3rem; padding: 0.34rem 0.42rem; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-surface); color: var(--color-main); font-size: 0.7rem; font-weight: 700; line-height: 1.3; text-decoration: none; }
+  .lifecycle-skill { display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; min-height: 44px; padding: 0.4rem 0.55rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-main); font-size: 0.8125rem; font-weight: 700; line-height: 1.35; text-decoration: none; }
   .lifecycle-skill:hover { border-color: var(--color-theme); color: var(--color-theme); }
   .lifecycle-skill--plus { border-style: dashed; background: transparent; }
-  .lifecycle-plus-tag { flex: 0 0 auto; color: var(--color-text-secondary); font-size: 0.62rem; font-weight: 900; }
-  .lifecycle-arrow { align-self: center; flex: 0 0 auto; color: var(--color-text-tertiary); font-weight: 800; }
+  .lifecycle-plus-tag { flex: 0 0 auto; color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 700; }
+  .lifecycle-arrow { align-self: flex-start; flex: 0 0 auto; padding-top: 1.15rem; color: var(--color-text-tertiary); font-weight: 800; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
   @media (max-width: 980px) {
@@ -1537,7 +1539,8 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   }
   @media (max-width: 760px) {
     .directory-toolbar { position: static; }
-    .toolbar-main { display: grid; gap: 0.55rem; }
+    .toolbar-main { display: grid; grid-template-columns: minmax(0, 1fr); justify-content: stretch; gap: 0.55rem; }
+    .search-control { width: 100%; }
     .results-count { justify-self: start; }
     .directory-layout { grid-template-columns: 1fr; }
     .filter-sidebar { position: static; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border); }
@@ -1694,22 +1697,22 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     justify-content: space-between;
     gap: 0.75rem;
     min-width: 0;
-    min-height: 2.58rem;
+    min-height: 2.7rem;
   }
   .skill-card-title-row h5 { flex: 1 1 auto; min-width: 0; }
   .skill-card-type {
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
-    max-width: 5.5rem;
+    max-width: 7rem;
     margin: 0 0 0 auto;
     padding: 0.18rem 0.42rem;
     border: 1px solid var(--color-border);
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     color: var(--color-text-secondary);
-    font-size: 0.62rem;
-    font-weight: 900;
-    letter-spacing: 0.02em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0;
     line-height: 1.2;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1727,7 +1730,7 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .usage-note h2,
   .lifecycle-heading h2 { margin-top: 0; }
   .lifecycle-track { min-width: 0; }
-  .lifecycle-stage { box-sizing: border-box; height: 100%; }
+  .lifecycle-stage { box-sizing: border-box; height: auto; }
 
   @media (max-width: 760px) {
     .hero-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem 0; }
@@ -1752,12 +1755,20 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     .directory-hero-main { margin-top: 0.9rem; }
     .directory-hero h1 { max-width: 13ch; }
     .toolbar-main { gap: 0.65rem; }
-    .search-input { min-height: 52px; }
+    .search-input { min-height: 52px; padding-inline-start: 2.5rem; }
+    .search-control-icon { inset-inline-start: 0.72rem; }
     .results-heading { gap: 0.45rem; }
     .results-heading p { margin-top: 0; }
     .cards { grid-template-columns: 1fr; }
+    .featured-list { grid-template-columns: 1fr; }
   }
   @media (max-width: 360px) {
     .featured-list { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 1280px) {
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1800px) {
+    .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
 </style>

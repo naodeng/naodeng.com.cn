@@ -499,7 +499,7 @@ const sidebarDate = (date: Date) =>
     :global(.l-main:has(.article-with-toc:not(.article-with-toc--plain)) .breadcrumb) {
       max-inline-size: min(var(--layout-max), calc(var(--blog-discovery-width) + var(--blog-body-max) + var(--blog-toc-width) + var(--blog-wide-gap) + var(--blog-wide-gap)));
       box-sizing: border-box;
-      padding-inline-start: calc(var(--blog-discovery-width) + var(--blog-wide-gap));
+      padding-inline-start: 0;
     }
     .article-sidebar :global(.toc-nav) {
       padding: 1rem;

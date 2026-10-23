@@ -97,7 +97,6 @@ export const getStaticPaths = () =>
     <h2 class="section-title">{t(ABOUT_ME_TITLE)}</h2>
     <div class="about-me-grid">
       <div class="about-me-lead">
-        <span class="about-me-lead__eyebrow">NAODENG / QA</span>
         <p class="about-me-lead__title">{t(ABOUT_HERO_TAGLINE)}</p>
         <span class="about-me-lead__mark" aria-hidden="true">N</span>
       </div>
@@ -231,8 +230,8 @@ export const getStaticPaths = () =>
     color: var(--color-theme);
   }
   .about-stat span {
-    font-size: 0.75rem;
-    color: var(--color-text-tertiary);
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
   }
 
   /* ── Sections ── */
@@ -284,12 +283,6 @@ export const getStaticPaths = () =>
     border: 1px solid color-mix(in srgb, var(--color-theme) 22%, transparent);
     border-radius: 50%;
     content: "";
-  }
-  .about-me-lead__eyebrow {
-    color: var(--color-theme);
-    font-size: var(--text-xs);
-    font-weight: 800;
-    letter-spacing: 0.12em;
   }
   .about-me-lead__title {
     max-width: 18rem;

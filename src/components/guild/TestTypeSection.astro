@@ -205,6 +205,8 @@ const isZh = locale === 'zh-cn';
   }
 
   .fw-card__lang {
+    min-width: 0;
+    max-width: 100%;
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-text-secondary);
@@ -214,18 +216,17 @@ const isZh = locale === 'zh-cn';
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 80px;
   }
 
   .fw-card__name {
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--color-main);
     line-height: 1.25;
   }
 
   .fw-card__desc {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--color-text-secondary);
     line-height: 1.4;
     display: -webkit-box;

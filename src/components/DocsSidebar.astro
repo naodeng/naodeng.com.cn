@@ -160,7 +160,7 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
   }
   .docs-sidebar-nav {
     display: block;
-    padding: var(--sp-s) var(--sp-m);
+    padding: var(--sp-s);
     max-height: calc(100vh - 10rem);
     overflow-y: auto;
     overflow-x: hidden;
@@ -190,8 +190,8 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
   .docs-sidebar-section-title {
     font-size: 1.1rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--color-text-secondary);
     margin: 0 0 var(--sp-s);
     padding-block-end: 0.35rem;
@@ -248,6 +248,9 @@ const isActive = (itemHref: string) => normalize(itemHref) === current;
     color: color-mix(in srgb, var(--color-main) 88%, transparent);
     text-decoration: none;
     border-radius: var(--radius-sm);
+    text-wrap: balance;
+    word-break: normal;
+    overflow-wrap: break-word;
     transition: background 0.2s ease, color 0.2s ease;
   }
   .docs-sidebar-link:hover {
