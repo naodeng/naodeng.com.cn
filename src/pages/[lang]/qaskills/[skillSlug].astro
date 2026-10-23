@@ -192,6 +192,10 @@ const tocHeadings = [
         </div>
         <div class="console-hero-side">
           <aside class="console-hero-command" aria-label={text.heroCommand}>
+            <div class="console-hero-command-meta">
+              <span class="console-hero-command-meta-label">{text.skillAttributes}</span>
+              <div class="console-tag-row" aria-label={text.skillAttributes}><span class="tag">{detail.domain}</span><span class="tag">{detail.sdlc}</span><span class="tag">{detail.type}</span></div>
+            </div>
             <div class="console-hero-command-head"><span>{text.heroCommand}</span><span class="console-hero-command-kind">{text.heroCommandKind}</span></div>
             <pre><code>@skill {skill.slug}</code></pre>
             <p>{text.heroCommandHint}</p>

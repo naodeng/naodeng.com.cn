@@ -82,7 +82,7 @@ test.describe("QA Skills", () => {
       const colors = await page.evaluate(() => {
         const secondary = getComputedStyle(document.querySelector(".results-count")!).color;
         const metadata = [
-          ".featured-number",
+          ".hero-sync",
           ".filter-sidebar-count",
           ".featured-arrow",
           ".usage-note li > span",
