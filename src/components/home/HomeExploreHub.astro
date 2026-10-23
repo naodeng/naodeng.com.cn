@@ -7,7 +7,7 @@ interface Props {
   subtitle: string;
   moreLabel: string;
   cards: Array<{ key: string; href: string; title: string; desc: string; icon: string; meta?: string }>;
-  productLinks?: Array<{ href: string; title: string; desc: string }>;
+  productLinks?: Array<{ href: string; title: string; desc: string; logo?: string }>;
 }
 const { locale, title, subtitle, moreLabel, cards, productLinks = [] } = Astro.props;
 const isZh = locale === "zh-cn";
@@ -47,7 +47,8 @@ const isZh = locale === "zh-cn";
         <div class="home-product-links__list">
           {productLinks.map((link) => (
             <a class="home-product-link" href={link.href}>
-              <span>
+              {link.logo && <img class="home-product-link__logo" src={link.logo} alt="" width="48" height="48" loading="lazy" decoding="async" />}
+              <span class="home-product-link__copy">
                 <strong>{link.title}</strong>
                 <small>{link.desc}</small>
               </span>
@@ -142,7 +143,7 @@ const isZh = locale === "zh-cn";
     border-radius: var(--radius-xl);
     background: var(--color-surface-muted);
     color: var(--color-text-secondary);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     white-space: nowrap;
   }
@@ -256,6 +257,18 @@ const isZh = locale === "zh-cn";
   .home-product-link strong,
   .home-product-link small {
     display: block;
+  }
+
+  .home-product-link__logo {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .home-product-link__copy {
+    flex: 1;
+    min-width: 0;
   }
 
   .home-product-link strong {

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <title>AI Test Auditor</title>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="16" fill="#0B1528" stroke="#263B55" />
+  <path d="m38 38 14 14" stroke="#73E2EA" stroke-linecap="round" stroke-width="5" />
+  <circle cx="26" cy="26" r="15.5" fill="#102038" stroke="#73E2EA" stroke-width="3.5" />
+  <path d="M19.5 21.5h11" stroke="#9AADC3" stroke-linecap="round" stroke-width="2.4" />
+  <path d="M19.5 27h13" stroke="#36D5E6" stroke-linecap="round" stroke-width="2.8" />
+  <path d="M19.5 32.5h8" stroke="#9AADC3" stroke-linecap="round" stroke-width="2.4" />
+  <circle cx="34.5" cy="27" r="2.5" fill="#FFB84D" />
+</svg>

@@ -7,6 +7,9 @@ for (const locale of ["en", "zh-cn"] as const) {
     expect(response?.status()).toBe(200);
     await expect(page.locator("[data-ai-test-auditor-page]")).toBeVisible();
     await expect(page.locator(".auditor-page h1")).toBeVisible();
+    await expect(page.locator("#sample-report-title")).toHaveText(locale === "zh-cn" ? "立即体验" : "Try it now");
+    await expect(page.locator("#install-title")).toHaveText(locale === "zh-cn" ? "快速开始" : "Quick start");
+    expect(await page.locator(".report-section").evaluate((report) => report.compareDocumentPosition(document.querySelector("#install-title")!) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy();
     expect(await page.locator(".auditor-page .grid article").count()).toBeGreaterThan(0);
     await expect(page.locator(".auditor-page pre code").first()).toBeVisible();
 

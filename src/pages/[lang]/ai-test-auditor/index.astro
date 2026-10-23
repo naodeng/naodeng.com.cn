@@ -16,16 +16,26 @@ const historicalReleases = site.releases.slice(1);
 const copyLabels = locale === "zh-cn"
   ? { copy: "复制命令", copied: "已复制", unavailable: "无法复制，请手动选择命令" }
   : { copy: "Copy command", copied: "Copied", unavailable: "Copy unavailable; select the command manually" };
+const primaryActionIndex = site.hero.actions.findIndex((action) => !action.external);
+const tryTitle = locale === "zh-cn" ? "立即体验" : "Try it now";
+const tryDescription = locale === "zh-cn"
+  ? "按类型筛选样例发现，查看对应源码位置和修复建议。"
+  : "Filter the sample findings by type, then inspect source locations and remediation guidance.";
+const quickStartTitle = locale === "zh-cn" ? "快速开始" : "Quick start";
 ---
 
 <Layout title={site.meta.title} description={site.meta.description} breadcrumbs={breadcrumbs}>
   <div class="auditor-page" data-ai-test-auditor-page>
     <section class="hero" aria-labelledby="auditor-title">
       <div class="hero-copy">
+        <img class="hero-product-logo" src="/images/product-logos/ai-test-auditor.svg" alt="" width="64" height="64" decoding="async" />
         <h1 id="auditor-title">{site.hero.title}</h1>
         <p class="hero-summary">{site.hero.summary}</p>
         <div class="hero-actions">
-          {site.hero.actions.map((action) => <a class:list={["hero-action", { primary: action.external }]} href={action.href} target={action.external ? "_blank" : undefined} rel={action.external ? "noopener noreferrer" : undefined}>{action.label}<span aria-hidden="true">{action.external ? "↗" : "↓"}</span></a>)}
+          {site.hero.actions.map((action, index) => index === primaryActionIndex && <a class="hero-action primary" href={action.href}>{action.label}<span aria-hidden="true">→</span></a>)}
+          <div class="method-row">
+            {site.hero.actions.map((action, index) => index !== primaryActionIndex && <a class="hero-action" href={action.href} target={action.external ? "_blank" : undefined} rel={action.external ? "noopener noreferrer" : undefined}>{action.label}{action.external && <span aria-hidden="true">↗</span>}</a>)}
+          </div>
         </div>
         <a class="latest-release" href={latestRelease.url} target="_blank" rel="noopener noreferrer">
           <span>{locale === "zh-cn" ? "最新版本" : "Latest release"}</span>
@@ -36,6 +46,7 @@ const copyLabels = locale === "zh-cn"
       </div>
 
       <aside class="hero-summary-card panel" data-ui="audit-summary" aria-label={locale === "zh-cn" ? "审计结果概览" : "Audit summary"} data-reveal>
+        <div class="window-caption">{locale === "zh-cn" ? "审计结果概览" : "Audit summary"}</div>
         <div class="hero-metrics">
           <div><strong>{site.demo.total}</strong><span>{site.labels.tests}</span></div>
           <div><strong class="fake-ink">{site.demo.fake}</strong><span>{site.labels.fake}</span></div>
@@ -48,9 +59,10 @@ const copyLabels = locale === "zh-cn"
 
     <section class="report-section" aria-labelledby="sample-report-title">
       <div class="section-heading">
-        <h2 id="sample-report-title">{site.labels.sampleReport}</h2>
+        <h2 id="sample-report-title">{tryTitle}</h2>
         <span class="fixture-tag">{site.labels.benchmarkFixture}</span>
       </div>
+      <p class="section-intro">{tryDescription}</p>
       <div class="report-shell" data-report-shell>
         <div class="report-toolbar" data-ui="report-controls">
           <div class="source-path"><code>{site.demo.source}</code></div>
@@ -83,28 +95,8 @@ const copyLabels = locale === "zh-cn"
       </div>
     </section>
 
-    <section class="section" aria-labelledby="features-title">
-      <h2 id="features-title">{site.labels.features}</h2>
-      <div class="feature-grid grid">
-        {site.features.map((feature, index) => <article class:list={["feature-card", { "feature-lead": index === 0 }]} data-reveal>
-          <h3>{feature.title}</h3>
-          <p>{feature.description}</p>
-        </article>)}
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="rules-title">
-      <h2 id="rules-title">{site.labels.rules}</h2>
-      <div class="rule-ledger">
-        {site.rules.map((rule) => <article class="rule-row" data-reveal>
-          <strong class:list={["status", rule.status.toLowerCase()]}>{rule.status}</strong>
-          <div><h3>{rule.title}</h3><p>{rule.description}</p></div>
-        </article>)}
-      </div>
-    </section>
-
     <section class="section install-section" aria-labelledby="install-title">
-      <h2 id="install-title">{site.labels.install}</h2>
+      <h2 id="install-title">{quickStartTitle}</h2>
       <div class="install-grid grid">
         {site.installModes.map((mode) => <article class="install-card" id={mode.id} data-reveal>
           <h3>{mode.title}</h3>
@@ -122,7 +114,27 @@ const copyLabels = locale === "zh-cn"
       </div>
     </section>
 
-    <section class="section" aria-labelledby="ecosystem-title">
+    <section class="section" aria-labelledby="features-title">
+      <h2 id="features-title">{site.labels.features}</h2>
+      <div class="feature-grid grid">
+        {site.features.map((feature, index) => <article class:list={["feature-card", { "feature-lead": index === 0 }]} data-reveal>
+          <span class="material-icons-sharp" aria-hidden="true">{feature.icon}</span>
+          <div><h3>{feature.title}</h3><p>{feature.description}</p></div>
+        </article>)}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="rules-title">
+      <h2 id="rules-title">{site.labels.rules}</h2>
+      <div class="rule-ledger">
+        {site.rules.map((rule) => <article class="rule-row" data-reveal>
+          <strong class:list={["status", rule.status.toLowerCase()]}>{rule.status}</strong>
+          <div><h3>{rule.title}</h3><p>{rule.description}</p></div>
+        </article>)}
+      </div>
+    </section>
+
+    <section class="section ecosystem" aria-labelledby="ecosystem-title">
       <h2 id="ecosystem-title">{site.labels.ecosystem}</h2>
       <div class="ecosystem-links">
         {site.ecosystemLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}
@@ -226,25 +238,28 @@ const copyLabels = locale === "zh-cn"
 
   .auditor-page {
     --page-soft: color-mix(in srgb, var(--color-theme) 7%, var(--color-surface));
-    max-width: var(--layout-max);
+    max-width: min(78rem, 100%);
     margin: 0 auto;
-    padding: 2rem 0 5rem;
+    padding: 1.5rem 0 5rem;
     color: var(--color-main);
   }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   .auditor-page h1,
   .auditor-page h2,
   .auditor-page h3 { color: var(--color-main); }
   .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(20rem, .95fr);
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
     align-items: center;
-    gap: clamp(2rem, 4.5vw, 4rem);
-    padding: 1.5rem 0 3.2rem;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: 1rem 0 2.4rem;
   }
   .hero-copy { min-width: 0; }
-  .hero h1 { margin: 0; font-size: clamp(3.2rem, 6.6vw, 5.4rem); font-weight: 800; letter-spacing: -.06em; line-height: .98; animation: headline-rise 680ms cubic-bezier(.2,.8,.2,1) both; }
+  .hero-product-logo { display: block; width: clamp(2.75rem, 5vw, 3.5rem); height: clamp(2.75rem, 5vw, 3.5rem); margin-block-end: .85rem; object-fit: contain; }
+  .hero h1 { margin: 0; font-size: clamp(2.45rem, 1.2rem + 2vw, 3.5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; animation: headline-rise 180ms ease-out both; }
   .hero-summary { max-width: 42rem; margin: 1.2rem 0 0; color: var(--color-text-secondary); font-size: clamp(1.1rem, 1.55vw, 1.25rem); line-height: 1.6; }
-  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin-top: 1.5rem; }
+  .hero-actions { display: grid; justify-items: start; gap: .7rem; margin-top: 1.45rem; }
+  .method-row { display: flex; flex-wrap: wrap; gap: .5rem; }
   .hero-action {
     display: inline-flex;
     align-items: center;
@@ -252,16 +267,16 @@ const copyLabels = locale === "zh-cn"
     gap: .55rem;
     min-height: 3rem;
     padding: .55rem .95rem;
-    border: 0;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     color: var(--color-main);
-    background: transparent;
+    background: var(--color-surface);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 700;
     transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
   }
-  .hero-action.primary { color: var(--color-theme-on-dark); background: var(--color-theme); }
+  .hero-action.primary { border-color: var(--color-theme); color: var(--color-theme-on-dark); background: var(--color-theme); }
   .hero-action:hover,
   .hero-action:focus-visible { color: var(--color-theme); background: var(--color-theme-soft); }
   .hero-action.primary:hover,
@@ -270,18 +285,19 @@ const copyLabels = locale === "zh-cn"
   .ecosystem-links a > span { transition: transform var(--transition-fast); }
   .hero-action:hover > span,
   .ecosystem-links a:hover > span { transform: translateX(3px); }
-  .latest-release { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .65rem; margin-top: 1rem; color: var(--color-text-secondary); font-size: .95rem; text-decoration: none; }
+  .latest-release { display: inline-flex; flex-wrap: wrap; align-items: center; min-height: 44px; gap: .35rem .65rem; margin-top: 1rem; color: var(--color-text-secondary); font-size: .95rem; text-decoration: none; }
   .latest-release strong { color: var(--color-theme); }
   .latest-release:hover strong,
   .latest-release:focus-visible strong { text-decoration: underline; text-underline-offset: .2em; }
   .hero-summary-card {
     min-width: 0;
-    border: 0;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     background: var(--color-code-surface);
     color: var(--color-main);
     overflow: hidden;
   }
+  .window-caption { padding: .7rem 1rem; color: var(--color-text-secondary); font-size: .875rem; font-weight: 700; }
   .hero-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; padding: .65rem; }
   .hero-metrics > div { display: grid; gap: .35rem; min-height: 6rem; align-content: center; padding: 1rem 1.2rem; border-radius: var(--radius-sm); background: var(--color-surface); }
   .hero-metrics strong { font-size: 2rem; font-variant-numeric: tabular-nums; line-height: 1; }
@@ -299,7 +315,7 @@ const copyLabels = locale === "zh-cn"
   .auditor-page .section h2,
   .report-section h2 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.35rem); line-height: 1.15; letter-spacing: -.03em; }
   .fixture-tag { flex: 0 0 auto; max-width: 50%; color: var(--color-theme); font-size: .875rem; font-weight: 700; text-align: end; }
-  .report-shell { min-width: 0; overflow: hidden; border-radius: var(--radius-md); background: var(--color-surface); }
+  .report-shell { min-width: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
   .report-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem .9rem; background: var(--color-code-surface); }
   .source-path { min-width: 0; color: var(--color-main); }
   .source-path code { overflow-wrap: anywhere; font-family: ui-monospace, monospace; font-size: 1rem; }
@@ -349,17 +365,22 @@ const copyLabels = locale === "zh-cn"
   .remediation > span { color: var(--color-text-secondary); font-size: .875rem; font-weight: 700; }
   .remediation p { margin: .3rem 0 0; font-size: 1rem; line-height: 1.5; }
   .filter-status { margin: 0; padding: .65rem .9rem .8rem; color: var(--color-text-secondary); font-size: .875rem; }
-  .feature-grid,
-  .install-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.8rem 2.8rem; align-items: start; }
-  .feature-card,
-  .install-card { position: relative; min-width: 0; }
-  .feature-card.feature-lead { display: grid; grid-column: 1 / -1; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: 2rem; align-items: baseline; }
+  .feature-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .9fr); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: .75rem; align-items: stretch; }
+  .install-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; align-items: stretch; }
+  .feature-card { display: grid; grid-column: 2; grid-template-columns: auto minmax(0, 1fr); gap: .85rem; align-items: center; min-width: 0; padding: 1rem 1.1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+  .feature-card .material-icons-sharp { color: var(--color-theme); font-size: 1.35rem; }
+  .feature-card.feature-lead { display: flex; grid-column: 1; grid-row: 1 / -1; flex-direction: column; justify-content: center; align-items: flex-start; gap: .75rem; min-height: 16rem; padding: 1.4rem 1.5rem; border-color: transparent; background: var(--color-theme); color: var(--color-theme-on-dark); }
+  .feature-lead .material-icons-sharp { color: var(--color-theme-on-dark); font-size: 1.6rem; }
+  .install-card { position: relative; min-width: 0; padding: 1.15rem 1.2rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
   .auditor-page h3 { margin: 0 0 .45rem; font-size: 1.2rem; line-height: 1.35; }
   .feature-card p,
   .install-card p,
   .rule-row p { margin: 0; color: var(--color-text-secondary); font-size: 1rem; line-height: 1.55; }
-  .rule-ledger { display: grid; gap: 1.25rem; }
-  .rule-row { display: grid; grid-template-columns: minmax(10rem, .7fr) minmax(0, 1.3fr); gap: 2rem; align-items: start; }
+  .feature-card.feature-lead h3,
+  .feature-card.feature-lead p { color: var(--color-theme-on-dark); }
+  .feature-card.feature-lead h3 { font-size: 1.65rem; }
+  .rule-ledger { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+  .rule-row { display: flex; flex-direction: column; gap: .55rem; min-width: 0; padding: 1.15rem 1.2rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
   .status { font-size: 1rem; font-weight: 800; }
   .status.unassessed { color: var(--color-text-secondary); }
   .install-card h3 { margin-bottom: .45rem; }
@@ -373,7 +394,7 @@ const copyLabels = locale === "zh-cn"
     justify-content: center;
     gap: .45rem;
     width: fit-content;
-    min-height: 2.7rem;
+    min-height: 44px;
     padding: .45rem .6rem;
     border: 0;
     border-radius: var(--radius-sm);
@@ -390,7 +411,10 @@ const copyLabels = locale === "zh-cn"
   .copy-command:focus-visible { color: var(--color-theme); background: var(--color-theme-soft); }
   [data-copy-state="copied"] .copy-command { color: var(--color-success-text); }
   [data-copy-state="failed"] .copy-command { color: var(--color-caution); }
+  .section.ecosystem { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2rem; margin-top: clamp(3rem, 6vw, 4.5rem); padding-top: 1.35rem; border-top: 1px solid var(--color-border); }
+  .ecosystem > h2 { margin: 0; }
   .ecosystem-links { display: flex; flex-wrap: wrap; gap: .35rem 1.7rem; }
+  .ecosystem .license-note { flex: 1 0 100%; }
   .ecosystem-links a,
   .current-release a,
   .release-body a {
@@ -413,13 +437,16 @@ const copyLabels = locale === "zh-cn"
   .license-note { margin: .85rem 0 0; color: var(--color-text-secondary); font-size: 1rem; }
   .license-note a { color: inherit; text-decoration: underline; text-decoration-color: var(--color-border-strong); text-underline-offset: .2em; }
   .license-note a:hover { color: var(--color-theme); }
-  .current-release { display: grid; grid-template-columns: minmax(12rem, .6fr) minmax(0, 1.4fr); gap: .5rem 2.2rem; align-items: start; }
+  .current-release { display: grid; grid-template-columns: minmax(9rem, 14rem) minmax(0, 1fr); gap: .5rem 2.2rem; align-items: start; padding: 1.2rem 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+  .release-copy { min-width: 0; }
   .current-release-heading { display: grid; justify-items: start; align-content: start; gap: .35rem; }
   .current-release-heading > span { color: var(--color-text-secondary); font-size: .875rem; }
   .current-release-heading strong { font-size: 1.55rem; }
   .current-release-heading time,
   .release-list time { color: var(--color-text-secondary); font-size: .875rem; }
-  .release-copy > p { margin: 0 0 .5rem; font-size: 1.1rem; font-weight: 700; line-height: 1.5; }
+  .release-copy > p { margin: 0 0 .5rem; font-size: 1.1rem; font-weight: 700; line-height: 1.5; text-wrap: pretty; word-break: keep-all; overflow-wrap: break-word; }
+  .release-body li,
+  .release-list summary > span:nth-child(2) { min-width: 0; text-wrap: pretty; word-break: keep-all; overflow-wrap: break-word; }
   .current-release ul,
   .release-body ul { margin: .6rem 0 1rem; padding-inline-start: 1.25rem; color: var(--color-text-secondary); line-height: 1.6; }
   .release-history-title { margin: 1.8rem 0 .45rem; color: var(--color-main); font-size: 1.1rem; }
@@ -442,13 +469,19 @@ const copyLabels = locale === "zh-cn"
   }
   [data-motion-ready="true"] [data-reveal].is-revealed { transform: translateY(0); }
   @keyframes headline-rise {
-    from { clip-path: inset(0 0 100% 0); transform: translateY(.18em); }
-    to { clip-path: inset(0); transform: translateY(0); }
+    from { opacity: 0; transform: translateY(.18em); }
+    to { opacity: 1; transform: translateY(0); }
   }
+  .section-intro { margin: -.55rem 0 1rem; color: var(--color-text-secondary); font-size: 1rem; line-height: 1.55; }
   @media (max-width: 1000px) {
     .auditor-page { padding-top: 1.5rem; }
-    .hero { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 2rem; }
-    .hero-summary-card { max-width: 42rem; }
+    .hero,
+    .feature-grid,
+    .install-grid,
+    .rule-ledger { grid-template-columns: minmax(0, 1fr); }
+    .feature-grid { grid-template-rows: none; }
+    .feature-card,
+    .feature-card.feature-lead { grid-column: auto; grid-row: auto; min-height: 0; }
     .report-toolbar { align-items: flex-start; flex-direction: column; }
     .report-ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .report-ledger > div { min-height: 3.6rem; }
@@ -456,10 +489,11 @@ const copyLabels = locale === "zh-cn"
   @media (max-width: 720px) {
     .auditor-page { padding: 1.2rem 0 4rem; }
     .hero { gap: 1.45rem; padding: .75rem 0 2.2rem; }
-    .hero h1 { font-size: clamp(3rem, 12vw, 4rem); }
+    .hero h1 { font-size: clamp(2.15rem, 1.15rem + 3.2vw, 3.1rem); }
     .hero-summary { margin-top: .85rem; font-size: 1.1rem; }
     .hero-actions { gap: .4rem .5rem; margin-top: 1.15rem; }
-    .hero-action { min-height: 2.8rem; padding-inline: .75rem; }
+    .hero-action { min-height: 44px; padding-inline: .75rem; }
+    .ecosystem { align-items: flex-start; }
     .section,
     .report-section { padding-top: 2.8rem; }
     .section-heading { align-items: flex-start; flex-direction: column; gap: .35rem; }
@@ -469,11 +503,7 @@ const copyLabels = locale === "zh-cn"
     .report-filters { width: 100%; gap: .15rem; }
     .report-filters button { flex: 1; padding-inline: .4rem; }
     .report-ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; }
-    .finding-list,
-    .feature-grid,
-    .install-grid { grid-template-columns: minmax(0, 1fr); }
-    .feature-card.feature-lead { grid-column: auto; grid-template-columns: minmax(0, 1fr); gap: .35rem; }
-    .rule-row { grid-template-columns: minmax(0, 1fr); gap: .35rem; }
+    .finding-list { grid-template-columns: minmax(0, 1fr); }
     .current-release { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
     .current-release-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .7rem; }
     .release-list summary { align-items: flex-start; flex-direction: column; gap: .25rem; }
