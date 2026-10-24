@@ -40,7 +40,6 @@ const { Content, headings = [] } = await render(post);
 const hasToc = headings.some(({ depth }) => depth === 2 || depth === 3);
 const tocLabel = locale === "zh-cn" ? "目录" : "Table of Contents";
 const title = post.data.title;
-const titleParts = title.match(/^(.+?[?？])\s*(.+)$/u);
 const description = post.data.description;
 const articleCategory = post.data.categories?.[0];
 const categoryTag = articleCategory
@@ -213,9 +212,7 @@ const sidebarDate = (date: Date) =>
   <script type="application/ld+json" set:html={serializeJsonLd(blogPostingSchema)} is:inline />
   <div class:list={["article-with-toc", { "article-with-toc--plain": !hasToc }]}>
     <header class="article-title-header" id="article-title-header">
-      <h1 class:list={{ "article-title-header__title--split": Boolean(titleParts) }}>
-        {titleParts ? <><span>{titleParts[1]}</span><span>{titleParts[2]}</span></> : title}
-      </h1>
+      <h1>{title}</h1>
       <p class="article-summary">{description}</p>
       <div class="article-byline">
         <p class="article-meta">
@@ -634,17 +631,14 @@ const sidebarDate = (date: Date) =>
   }
   .article-title-header h1 {
     color: var(--color-main);
+    width: 100%;
+    max-width: 100%;
     font-size: clamp(2rem, 2.75vw, 3.25rem);
     line-height: 1.14;
     letter-spacing: -0.025em;
-    text-wrap: balance;
+    text-wrap: wrap;
+    word-break: normal;
     margin: 0;
-  }
-  .article-title-header h1.article-title-header__title--split {
-    text-wrap: pretty;
-  }
-  .article-title-header h1.article-title-header__title--split > span {
-    display: block;
   }
   .article-summary {
     max-inline-size: min(100%, 64em);
