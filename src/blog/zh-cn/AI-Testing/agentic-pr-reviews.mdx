@@ -1,8 +1,7 @@
 ---
-title: "智能体 PR 审查：代码审查不必等到 PR"
+title: "智能体代码审查：让质量反馈发生在 PR 之前"
 description: "从 Antony Marcano 对智能体代码审查的讨论出发，梳理质量反馈左移、结对审查、发布与完成的区别，以及决定人工审查去留所需的证据。"
 date: 2026-10-24T09:00:00.000Z
-draft: true
 author: "nao.deng"
 tags: ["智能体开发", "代码审查", "质量工程"]
 categories: ["质量工程"]
@@ -78,7 +77,7 @@ Marcano 还把两个经常被 PR 合并门禁混在一起的判断拆开了：
 | 可以安全发布（Safe to Ship） | 当前变更是否满足发布条件？ | 自动化测试、静态检查、安全控制和部署保障 |
 | 真正完成（Done） | 代码是否达到团队认可的长期维护标准？ | 持续审查、设计反思、重构和团队共识 |
 
-Marcano 描述的团队采用主干开发（Trunk-Based Development，原文描述为不使用分支）和持续集成、持续部署（CI/CD）；约定的自动化检查通过后，代码可以在几分钟内进入生产环境，团队再继续改进设计。作者用一句话概括这种节奏：“Ship, ship, ship, done.” 发布可以早于长期维护工作的全部结束，但质量责任不会随发布消失。
+Marcano 描述的团队采用主干开发（Trunk-Based Development，原文描述为不使用分支）和持续集成、持续部署（CI/CD）；约定的自动化检查通过后，代码可以在几分钟内进入生产环境，团队再继续改进设计。作者用一句话概括这种节奏：“Ship, ship, ship, done.”发布可以早于长期维护工作的全部结束，但质量责任不会随发布消失。
 
 有些团队会用反向拉取请求（Reverse Pull-Requests）保留 PR 的讨论、知识共享和反馈价值，同时不再让它阻塞发布。改变的是审查与发布的先后顺序，不是放弃代码审查。
 
@@ -145,14 +144,14 @@ Marcano 既没有说 PR 已经过时，也没有断言 AI 永远不能审代码�
 ## 参考资料
 
 - Antony Marcano，What (Almost) Everyone Gets Wrong About Agentic PR Reviews，2026-10-16: https://www.linkedin.com/pulse/what-almost-everyone-gets-wrong-agentic-pr-reviews-antony-marcano-bkawe/
-- SWR-Bench，研究论文: https://arxiv.org/abs/2509.01494
-- Marcano 引用的 2026 年短程序编写基准研究: https://link.springer.com/article/10.1007/s10515-026-00638-5
+- SWR-Bench，研究论文：https://arxiv.org/abs/2509.01494
+- Marcano 引用的 2026 年短程序编写基准研究：https://link.springer.com/article/10.1007/s10515-026-00638-5
 - Faros AI，The Acceleration Whiplash: https://www.faros.ai/research/ai-acceleration-whiplash
 - GitClear，The Maintainability Gap: https://www.gitclear.com/the_ai_code_quality_maintainability_gap
 - CodeRabbit，State of AI vs Human Code Generation: https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-- SlopCodeBench v2，研究论文: https://arxiv.org/abs/2603.24755
+- SlopCodeBench v2，研究论文：https://arxiv.org/abs/2603.24755
 - Larry Smith，Shift-Left Testing: https://jacobfilipp.com/DrDobbs/articles/DDJ/2001/0109/0109e/0109e.htm
 - Qiu 与 Gill，Adversarial Review: https://arxiv.org/abs/2608.18167
 - Tang 等人，CodeAgent: Autonomous Communicative Agents for Code Review: https://aclanthology.org/2024.emnlp-main.632/
 - Superpowers，Subagent-Driven Development: https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md
-- Reverse Pull-Requests，实践说明: https://medium.com/riverglide-ideas/reverse-pull-requests-a56b48080fb0
+- Reverse Pull-Requests，实践说明：https://medium.com/riverglide-ideas/reverse-pull-requests-a56b48080fb0
