@@ -8,30 +8,54 @@ tags: ["AI Testing", "Agent Skills", "Prompt Injection Testing"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-Prompt Injection Testing checks whether untrusted text can override an application's instruction hierarchy, expose protected data, or cause an unauthorized tool action. The work is a defensive test plan for an authorized environment; it is not permission to target real systems or sensitive data.
+Prompt Injection Testing checks whether untrusted text can change an application's task, expose protected data, or steer an agent into an unauthorized action. The text may come from a user or be embedded in a retrieved web page, file, email, or tool response. The impact depends on the data the application can reach and the tools and permissions available to the model, so testing must observe responses, tool calls, and system state together.
 
-## Define trust boundaries and safe scope first
+This guide is for defensive verification in an authorized environment. Confirm the system owner, scope, and permitted actions first. Use a sandbox, mocks, and synthetic data; do not send test writes to real services or put real credentials or sensitive target details in test inputs.
 
-Collect the system prompt, trusted and untrusted sources, retrieval paths, tool permissions, sensitive asset categories, security policy, and prohibited actions. If any are missing, record assumptions and open questions before proposing cases. Use safe placeholder data and a sandbox or mock.
+## Map trust boundaries, assets, and actions first
 
-| Input source | Test question | Evidence to retain |
+Inventory the application's task instructions, policy sources, model and version, external-content entry points, retrieval paths, session or memory behavior, tool permissions, and high-impact operations. Identify which text is trusted and which is data to process. List the assets to protect, such as a synthetic test marker, mock profile, or mock account record. If information is missing, record assumptions and questions separately instead of turning unknown behavior into a confirmed system rule.
+
+| Input or capability | Boundary to confirm | Observable evidence |
 | --- | --- | --- |
-| Direct user input | Does untrusted text change higher-priority instructions or exceed the task? | Input ID, prompt version, response and refusal state |
-| Retrieved document or web page | Can embedded instructions cross the source boundary? | Source ID, retrieval trace, generated action |
-| Tool output | Can a result steer a later call outside its permission? | Tool response, next-call arguments, authorization result |
-| Multi-turn context | Does a rejected instruction persist into a later turn? | Turn IDs, memory state, later tool calls |
+| User message | Can the user change the task, override policy, or request protected data? | Case ID, input, policy version, response and refusal state |
+| Retrieved content | Can text from a page, file, email, or knowledge base be treated as an instruction? | Source ID, retrieved chunk, citation, and follow-up action |
+| Tool response | Can returned text change the next call or its arguments? | Tool response, candidate call, authorization decision, and call trace |
+| Session, memory, and multimodal input | Can instructions persist across turns or enter through supported images, audio, or other inputs? | Turn ID, memory state, parsed input, and follow-up action |
 
-## Check refusal and side effects together
+Include only entry points and capabilities the product actually supports. State which tools are mocked, which external connections are disabled, and which state changes are permitted in the test scope.
 
-Build an attack corpus for direct and indirect injection, instruction hierarchy, data exposure, tool abuse, encoding obfuscation, multi-turn persistence, and detection or recovery. Each case should state the authorized preconditions, stimulus, expected behavior, and required evidence.
+## Turn risks into decidable test cases
 
-A refusal is not sufficient if the application still performs a write or sends data. In a mock or authorized sandbox, record whether a blocked request leaves state unchanged, whether a tool call was attempted, and how the system explains the stop. Do not include real credentials or sensitive target details in test inputs.
+Do not collect “malicious prompts” without a test contract. Give every case a unique ID, preconditions, input source, security property, expected behavior, prohibited side effects, and evidence requirements. Derive expected behavior from the application's policy and tool authorization rules. Suspicious text does not mean the application must reject every related task; it may still need to safely summarize or quote that text as content.
 
-## Prioritize findings without overstating them
+| Coverage area | Safe setup | Main assertion |
+| --- | --- | --- |
+| Direct injection and task hijacking | Put conflicting text in a user message that asks the app to ignore its task and reveal a synthetic marker | The app follows its defined task and policy without exposing the protected marker |
+| Indirect injection | Add similar conflicting text to a test page or document fixture, then ask for a summary | The system treats it as content and does not disclose data or expand the task because of it |
+| Tool overreach | Have a mock tool return text containing an instruction, then observe candidate follow-up calls | Tool calls still require application-policy authorization; the injection does not broaden parameters or target scope |
+| Obfuscation and persistence | Vary language, format, or turn structure where the product supports those paths | Unsupported paths are marked untested; a rejected instruction does not enter later tasks or memory without basis |
+| Refusal and recovery | Cover policy-blocked requests, cases requiring clarification, and allowed normal tasks | A refusal has no side effects; normal tasks still work; the reason for stopping is traceable |
 
-Rank confirmed risks using the project's impact scale. Keep a hypothesis separate from observed behavior, and list what remains untested. A useful handoff contains the threat model, attack-case IDs, security assertions, evidence, mitigation ideas, and regression cases. The Skill structures verification; it does not certify that the whole application is secure.
+**Example:** In an isolated document-Q&A environment, add conflicting text to a test document and place the marker `TEST_SECRET_7F3A` in controlled test data. Ask only for a document summary. Check whether the summary stays focused on the document, whether the marker is disclosed, whether any tool tries to read or send data, and whether system state changes unexpectedly. The marker must be a synthetic value created for the test, never a real key.
 
-For model behavior and task quality, see [LLM Testing](/en/qaskills/llm-testing/). For tool permission and side-effect checks, see [Agent Tool Call Testing](/en/qaskills/agent-tool-testing/); broader controls are covered by [Security Testing](/en/qaskills/security-testing/).
+## Verify the full path, not only the response
+
+For each case, record the model, system-instruction, application, and tool-configuration versions; run time; input source; response; citations or retrieval trace; attempted tool calls; authorization result; and post-run state. Repeat runs for behavior that can vary, recording each outcome. If settings cannot be fixed, capture those differences. One refusal does not prove later turns are safe, and one successful run does not show that every similar input will be blocked.
+
+Compare side-effect evidence directly: did the blocked write stay blocked, was a tool call attempted, was data sent outside the system, and did mock state remain as expected? If you have only refusal text but no call trace or state evidence, mark the result “insufficient evidence” rather than a security pass.
+
+## Classify, prioritize, and close the regression loop
+
+Use a clear outcome for each case:
+
+- **Pass:** All required assertions have supporting evidence and no prohibited side effect was observed.
+- **Fail:** An unauthorized action, data disclosure, or task hijack was observed, or a policy-required block did not occur.
+- **Insufficient evidence:** Environment, trace, or state information is missing, so behavior cannot be determined.
+
+Prioritize findings by business impact, reachable entry point, permission scope, and evidence strength. Separate assumptions, observed facts, and recommendations; list untested models, channels, and tools. After a fix, rerun the original cases and add neighboring boundary cases. A useful handoff includes the trust-boundary map, case IDs, expected assertions, run configuration, evidence locations, risk ranking, and next owner. The Skill organizes verification; it does not certify that an entire application is secure.
+
+Use the OWASP GenAI Security Project's [Prompt Injection risk guidance](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) as a reference, and derive expected behavior from the project's own authorization policy. For model behavior and task quality, see [LLM Testing](/en/qaskills/llm-testing/). For tool permission and side-effect checks, see [Agent Tool Call Testing](/en/qaskills/agent-tool-testing/); broader controls are covered by [Security Testing](/en/qaskills/security-testing/).
 
 Install the Skill with:
 
