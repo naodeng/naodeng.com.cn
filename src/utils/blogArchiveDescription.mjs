@@ -1,4 +1,8 @@
 const localizedSeriesNames = {
+  "AI 软件测试入门与实践：从会用到用好": {
+    en: "Getting Started with AI for Software Testing: From First Use to Effective Practice",
+    "zh-cn": "AI 软件测试入门与实践：从会用到用好",
+  },
   "测试理论指南": {
     en: "Software Testing Theory Guide",
     "zh-cn": "测试理论指南",

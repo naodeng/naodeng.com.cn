@@ -1,0 +1,143 @@
+---
+title: "How to Use AI for Software Testing: From Direct Questions to Prompts and Skills"
+description: "A practical starting point for software testers: follow one phone-number login example through direct chat, structured Prompts, reusable Skills, and a repeatable quality loop."
+date: 2026-10-25T09:07:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Software Testing", "Test Design"]
+categories: ["AI Testing"]
+series: ["AI 软件测试入门与实践：从会用到用好"]
+---
+
+People often ask how AI can help with software testing. Some use it to generate test cases; others ask it to analyze requirements or are beginning to explore test automation, Agents, and Skills.
+
+For testers who are new to AI, the first question is usually more practical: if you already have an AI tool, what should you try first?
+
+Start with a testing task you already own and move through three ways of working. First, talk to AI directly to learn what it can do and where it tends to go wrong. Then turn instructions that work well into a reusable Prompt. Once the workflow is stable and reuse has real value, consider capturing it as a Skill. The approaches differ in how much reuse and process guidance they provide, but they are not steps you must climb in order.
+
+This article maps out the route. The later posts will use the same phone-number-and-verification-code login example to explore each part in more detail.
+
+## Start with a familiar testing task
+
+Suppose you need to test login with a phone number and a verification code. AI does not know your product's rules. If you only say, “Help me test login,” it may list common scenarios, but it may also mistake industry conventions or its own guesses for your requirements.
+
+To make the example concrete, this article uses the practice rules from the original draft: a verification code is valid for five minutes; one phone number can request no more than 20 codes per day; five consecutive incorrect attempts lock the account for 15 minutes; and a new user is registered automatically after their first successful login. These are teaching assumptions for this article. In a real project, use the requirements, API contract, and decisions confirmed with the business team. If the requirements do not say when the lockout timer starts, when the failed-attempt count resets, or when the daily counter rolls over, those details still need confirmation. Do not let AI fill in the gaps on its own.
+
+## Start by talking to AI directly
+
+The easiest way to begin is to open an AI tool you already have and explain the task. For example:
+
+> I need to test a user login feature that supports phone numbers and verification codes. Please analyze the scenarios I should test and draft test cases.
+
+AI may suggest successful login, invalid phone-number formats, incorrect or expired codes, code reuse, rate limits, and repeated verification failures. This is a useful starting list, but the model does not yet know the business rules above. It also does not know the product's account states, API behavior, or test environment.
+
+Add confirmed facts, then ask it to revise the result:
+
+> Here are the business rules: verification codes expire after five minutes; a phone number can request up to 20 codes per day; five consecutive incorrect attempts lock the account for 15 minutes; and a new user is registered automatically after their first successful login. Update the test scenarios based on these rules. List any behavior that is still unknown instead of making assumptions about when the failed-attempt count resets or what the error message says.
+
+You may need a third or fourth round. Ask how the code-expiration boundary is evaluated, whether a failed registration leaves a partially created account, how duplicate submissions are handled, or request preconditions and expected results for each scenario. You describe the task, supply context, and review the result; AI helps with analysis and drafting.
+
+Direct chat has a low barrier to entry: there is little preparation, so it works well for one-off analysis, exploration, or a first attempt at using AI. Its limitations are just as practical. You have to restate the background each time, the output format may vary, business details can be missed, and different people or sessions may get very different results.
+
+So do not wait until you have mastered Prompt engineering or installed Skills. Try AI on a real requirement after removing sensitive information. You will learn more about where it helps—and what context is missing—than you will from collecting tool guides.
+
+## Turn effective instructions into a Prompt
+
+After using AI for a while, you may notice that one response contains a detailed test analysis while another offers only a generic list of “normal, error, and boundary” cases. One important reason is that the task was described differently.
+
+If you only say, “Generate test cases for login,” the model has to guess the scope, business rules, and expected format. A more structured Prompt makes those expectations explicit:
+
+> You are an experienced software tester. Analyze the business requirement below and design test cases.
+>
+> First identify the business rules and constraints. Then find ambiguities, omissions, and questions that need confirmation. Analyze scenarios across the happy path, error paths, boundary conditions, and security. For scenarios supported by clear evidence, write executable test cases with preconditions, steps, and expected results. Do not present rules missing from the requirement as facts; label them “Needs confirmation.”
+>
+> Business requirement:
+> [Paste the requirement and confirmed rules here]
+
+This Prompt does more than assign the role of an “experienced software tester.” It also sets the goal, steps, areas of focus, expected output, and boundaries the model must not cross. The role label alone will not tell the model when a verification code expires or fill in a missing business rule. For a complex task, you can also provide product context, API documentation, user roles, known defects, the test environment, and data constraints.
+
+A Prompt does not need to be long for its own sake. What matters is making clear what AI should analyze, which materials count as evidence, what it must not guess, and how the result will be checked. In the phone-login example, the expiration boundary, rate-limit counter, and timing of user creation can all change the expected behavior. If the requirements do not define them, leave them as questions for Product or Engineering rather than letting the model choose an answer that merely sounds plausible.
+
+A general Prompt also cannot be copied unchanged into every product. An e-commerce system may need checks for order, inventory, and payment states. A financial product may put more weight on amounts, permissions, and transaction security. A SaaS product may need tenant isolation and role variations. An AI application may need evaluation criteria, safety boundaries, and rules for handling unknown answers. Put the template into a real project and improve it based on mistakes and omissions; that is more valuable than saving a library of Prompts you never test.
+
+## Consider Skills when the workflow is stable
+
+As your Prompt collection grows, you may have separate templates for requirement analysis, test design, and automation preparation. Another problem appears: you have to find the right template each time, manually coordinate several steps for complex tasks, and still get inconsistent results when team members follow the same instructions.
+
+That is when Skills may be worth evaluating. A Skill packages task instructions, steps, reference material, and output expectations so an Agent tool that supports the mechanism can use them for an appropriate task. It is more than a way to save a few lines of Prompt text; its value is in putting a relatively stable workflow somewhere reusable.
+
+For example, a requirement-analysis Skill could ask AI to understand the business context, extract rules, identify gaps, analyze risks, check testability, and then produce results in an agreed format. A test-case-design Skill could guide it to identify test conditions and apply techniques such as equivalence partitioning, boundary-value analysis, and state-transition testing. An automation Skill could provide the project's tech stack, existing framework, coding conventions, and execution commands, so the generated code is less likely to be disconnected from the repository.
+
+Using the phone-number login example, direct chat might begin with “Analyze this phone-number login requirement.” With a Prompt, you provide the same requirement along with a fixed analysis process and output format. With a Skill, you first confirm that the current tool can discover and run it, then provide the requirement, confirmed rules, and reference material for the Agent to follow the workflow. If you switch to an order requirement, the method still applies, but you must supply the relevant business rules and risks again. None of the three approaches works without real product context.
+
+Installing a Skill does not make AI understand your product or guarantee a correct result. You still need to provide the requirement, acceptance criteria, existing behavior, API or data model, known defects, and risks relevant to the task. Skills also vary in quality: check their scope, workflow, input requirements, output format, and actual validation. A poorly designed Skill can be less reliable than a well-tested Prompt.
+
+Start with a task you know well, do often, and can describe consistently—requirement analysis or test-case design, for example. Check whether your Agent tool supports the Skill format, how it discovers or invokes Skills, and which files and tools it can access. Then try one Skill on a small scale. Do not install a large collection at the outset; first see whether it actually reduces repeated explanations, prevents omissions, or makes review easier.
+
+If you are looking for testing Skills, you can also explore the open-source project I maintain. It collects reusable workflows for requirement analysis, test design, functional testing, API testing, test automation, performance testing, and AI application testing. Follow the repository README and the current documentation for your tool when installing them.
+
+## The same method can behave differently across tools
+
+Prompts and Skills describe tasks and workflows, but their results also depend on the Agent tool and model. Tools may differ in how they discover and invoke Skills, read files, access external tools, manage context, and enforce permission boundaries. Models may differ in how well they follow complex instructions, handle long context, detect ambiguity, and produce structured results. Model versions, settings, tool connections, and information already present in a session can all affect the output.
+
+For example, one Agent may read project materials step by step when using a Skill, while another may load only its main instructions. The same Prompt may also produce omissions, unnecessary detail, or invented rules when used with a different model. The general method can be reused, but its configuration and results must be validated with the target tools, models, and tasks. Installing a Skill—or getting it to run once—is not enough to establish that it is compatible.
+
+To compare approaches, first hold the requirement, input materials, and review criteria constant. Record the Agent tool, model and version, key settings, Prompt or Skill version, and number of runs. Start each run in a clean session and keep the original output and human edits. The goal is not to prove that one tool is best; it is to understand whether a difference came from the way the task was described, the model, or the Agent's ability to read materials, manage context, and enforce permissions.
+
+You can break the comparison into small experiments. To compare direct chat, Prompts, and Skills, keep the model and requirement fixed and change only the way you work. To compare models, keep the Agent, input, and task fixed and change only the model version. To compare Agent tools, use the same model and input where possible, while recording which files and tools each one can actually access and whether it loads the Skill as expected. If the conditions cannot be made identical, record the differences instead of treating the results as a fair, controlled comparison.
+
+## How to choose among the three approaches
+
+| Dimension | Direct chat | Prompt | Skill |
+| --- | --- | --- | --- |
+| Setup effort | Low; ask in natural language | Moderate; organize and refine the instructions | Moderate; confirm tool support and learn how it is invoked |
+| How it works | Organize the task in the moment and fill gaps through conversation | Define the task, steps, and output in advance | Reuse a workflow with instructions, materials, and output conventions |
+| Output consistency | Depends on each request and the session context | More controllable, but still affected by input and model | Can standardize the process, provided the tool loads and follows it correctly |
+| Reuse | Limited; context usually has to be repeated | Good; templates can be saved and revised | Strong for shared team workflows, with ongoing maintenance required |
+| Common use | One-off tasks, first attempts, and exploration | Repeated tasks with relatively stable steps | Frequent, multi-step tasks that a team needs to reuse |
+
+This is not a ranking of capability. A simple question is easiest to ask directly. A well-written Prompt may be more reliable than a mediocre Skill. A Skill may be more convenient for a frequent, stable workflow that a team wants to share. The useful comparison is whether each approach can produce evidence-based, reviewable results for the task at a reasonable cost.
+
+When reviewing outputs, pay attention to how each approach handles unknowns. If the requirement does not say how the verification-code rate-limit window is calculated or when the failed-attempt count resets, an answer that marks those points “Needs confirmation” is more trustworthy than one that invents a plausible rule. Define the review criteria before looking at the outputs. Where possible, hide which approach produced each result to reduce bias toward a familiar tool.
+
+## What to explore after the comparison
+
+A comparison of the three approaches answers a limited question: which one fits this task, with this requirement, model, and tool configuration? It does not show that another business, model, or team will get the same result.
+
+There are several useful directions for further experiments. Start with task type: does the same approach work equally well for finding requirement gaps, designing test cases, and drafting automation code? Then look at models and Agents: with the task and materials fixed, what becomes more consistent when you change the model or tool, and what is more likely to be missed? Finally, test different business contexts: when moving from phone-number login to orders, finance, or SaaS, do you need new risks and constraints? For each experiment, record the inputs, versions, number of runs, review criteria, and human revision effort. Do not turn a single experience into a universal claim.
+
+## Judge progress by the quality of the result
+
+Fifty generated test cases do not prove that the requirements are fully covered. Automation code that runs does not prove that it checks the right business behavior. A test may have no meaningful assertion; worse, the feature could be broken while the test still passes.
+
+Whether you use direct chat, Prompts, or Skills, check three things: Did the input include the essential business facts? Did the analysis present unknowns as confirmed rules? Is the output evidence-based, executable, and verifiable? For important work, keep traceability to requirements, execution records, and review decisions. Do not keep only an AI response that looks complete.
+
+This is what I mean by a **quality loop**. After each use, record problems, test results, and human adjustments. Use business facts to revise the input, Prompt, Skill, or tool configuration, then validate the changes. Turn rules and practices that have been confirmed into context that can inform the next run. That run creates new evidence, which can update the context again. Different business domains, Agents, and models need different adjustments; no configuration is perfect once and for all.
+
+## For software testers getting started with AI
+
+You do not need to begin with a complex Agent, multi-agent collaboration, or a full testing platform. Choose a real requirement you are responsible for, remove sensitive information, and ask AI to organize the business rules, risks, and open questions. Once the business team has confirmed the rules, ask it to generate scenarios and test cases. Save instructions that worked well and turn them into a Prompt when a similar task comes up again. Evaluate a Skill only when the workflow recurs and other people need to reuse it.
+
+To compare the three approaches for yourself, try a small exercise with the same phone-login requirement: ask directly, use a structured Prompt, and then invoke a Skill you have reviewed. Keep the requirement materials, model, and key settings as consistent as possible, and start each attempt in a new session. That makes it more likely that differences come from the approach rather than context left over from the previous conversation. If you are comparing Agent tools or models, change only one of those variables at a time and record its name, version, and settings.
+
+Do not evaluate the results only by counting test cases. Record a few measures together:
+
+- **Requirement questions:** Did the approach uncover real ambiguity, omissions, or conflicts?
+- **Scenario coverage:** How many critical states, boundaries, and failure paths were missed?
+- **Quality of assumptions:** Did it present an unconfirmed rule as fact?
+- **Human effort:** How much time did clarification, review, and editing take?
+- **Consistency and reuse:** Were repeated runs similar, and could team members use the approach again?
+
+Then consider how often the task occurs and whether the workflow is worth maintaining. One exercise cannot prove that a tool is generally better, but it can show you which context or checks to improve next.
+
+The point is not to chase increasingly complex tools. It is to preserve effective testing practices one step at a time: start using AI and learn how to give it a task and context; make those instructions clearer and more consistent; then capture the workflow for the team only when reuse is worthwhile. That is also why I am interested in **AI-Native Quality Engineering**: AI can take part in more testing activities, but quality claims still need reliable grounds and verifiable evidence. Test engineers remain responsible for defining test goals, understanding the business, identifying risks, validating AI output, and preserving practices that have proved useful.
+
+The next articles will unpack this route: first, using direct chat for requirement analysis and test-case generation; then structuring and iterating on testing Prompts; then choosing and using Skills. After that, we will compare the three approaches on the same requirement, review AI-generated test cases, and continue into test automation and reusable team practices. The comparison article will explain how to design the experiment; it will not declare a winner without actual runs and review records. Later, we can apply the same evaluation approach to different models, Agents, and business tasks, gradually building evidence that fits a team's needs. This article lays out the route; the later posts will explore each part in more detail.
+
+Related resources:
+
+inaodeng.com: https://inaodeng.com
+
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills
+
+Agent Skills overview: https://agentskills.io/
