@@ -28,6 +28,10 @@ Model the partial or slow dependency, the fallback, the isolation boundary, and 
 
 For example, a checkout design may use a cached tax estimate during a provider timeout. The review can ask how that estimate is reconciled before payment capture and what evidence would confirm the boundary. This example is a review candidate, not an executed fault test.
 
+### How to interpret the example
+
+This remains illustrative. If an isolated run record shows a cached estimate returned during the dependency timeout, it supports only the bounded claim that the fallback response appeared for that request. Without a post-recovery ledger reconciliation, the data invariant remains unverified. If reconciliation shows duplicate or missing records, record that scoped discrepancy for the owner to assess. Without request identity, environment, and raw records, do not turn the design expectation into a runtime result.
+
 ## Keep resilience distinct from adjacent evidence
 
 Resilience scenarios assess degraded behavior and recovery together. A service that responds during an outage but cannot restore its data invariants has not demonstrated complete resilience. Long-term reliability metrics and chaos-injection experiments answer different questions; neither is a substitute for the supplied scenario and its evidence.

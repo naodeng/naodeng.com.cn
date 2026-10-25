@@ -139,11 +139,28 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 ### Handoff output
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the route still needs an accountable owner.
+Shape each SRR-## so the next owner can act on it:
+
+| Handoff field | What to retain |
+| --- | --- |
+| Source and scope | Requirement version, asset, role, channel, and exclusions for this pass |
+| Evidence state | Known, missing, conflicting, stale, out of scope, or assumed, with source locations |
+| Gap and impact | The undefined control or acceptance condition, affected asset, and possible decision impact |
+| Owner and decision | Who must confirm which rule, risk, or exception |
+| Close and validation | Close condition, isolated environment, synthetic data, expected result, and raw evidence |
 
 ### Next-stage route
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Route work by the kind of gap. A candidate validation or review finding does not trigger formal approval on its own:
+
+| Current gap | Next owner | Handoff goal |
+| --- | --- | --- |
+| Asset, role, or acceptance rule is undefined | Product or security requirements owner | Confirm scope, allowed and denied behavior, and acceptance criteria |
+| Control is named but has no observable result | Design or API owner | Specify failure responses, audit events, data flow, and trace fields |
+| Control effectiveness needs validation | Security test owner and environment owner | Run the smallest authorized check with synthetic data in an isolated environment and retain evidence |
+| Residual risk, exception, or release impact remains | Authorized risk owner | Record accepted scope, compensating controls, expiry, and the formal decision |
+
+An SRR-## can enter the trace chain across requirements, design, testing, and audit. The record alone does not show that a penetration test ran.
 
 ## How to prepare better input
 

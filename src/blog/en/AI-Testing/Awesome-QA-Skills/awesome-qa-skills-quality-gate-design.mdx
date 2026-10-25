@@ -33,6 +33,17 @@ An exception should record its scope, reason, authorizer, approval, expiry, comp
 
 Keep gate design, comparison against supplied evidence, and pipeline implementation as separate activities. A designed rule or a dry run is not proof that the real gate ran.
 
+During review, write the rules as state transitions and pay particular attention to stale evidence, reruns, and exception expiry. The project contract must define the response; the gate should not invent a default.
+
+| Changed condition | Gate response to specify | What to verify |
+| --- | --- | --- |
+| Previously valid evidence expires | Whether it becomes UNKNOWN, BLOCKED, or another declared state, and how the current decision handles it | Whether an old PASS remains visible, with evidence time and affected scope |
+| A failed check may be rerun | Who can start it, when to stop rerunning, and which build and data version to use | Whether the new run links to the original failure without overwriting its record |
+| An exception expires | When the original obligation resumes and whether new human approval is required | An expired exception cannot renew itself or erase a failure |
+| A required check is blocked | Whether the decision pauses, who is notified, and when to stop or roll back | BLOCKED is not counted as a pass, and stop conditions are explicit |
+
+Evidence marked PASS still may not satisfy the current gate if its source, build, or time window does not match. Name the specific linkage gap and leave acceptance of substitute evidence to an authorized owner.
+
 ## Worked example
 
 Consider a staged checkout release with unit, contract, browser, and production-observation obligations. Before deployment, the contract might require current unit and contract evidence. Before traffic expands, it might require browser evidence. Full rollout might depend on an agreed production observation window. These are candidate stages only; the project owner must set the actual obligations and thresholds.

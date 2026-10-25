@@ -93,6 +93,8 @@ The ACCELQ article specifically says RSAT does not support Data Management works
 
 The recommendations below are an independent interpretation, not direct quotations from ACCELQ.
 
+The test IDs and statuses in the mapping below are illustrative. Link each mapping to the old and new test versions, roles and data used, execution environments, key assertions, and both run IDs. If the environments or data are not equivalent, record that difference before treating the results as comparable.
+
 ### Build an obligation mapping
 
 | Old test | Verification obligation | New test | Status | Evidence |
@@ -102,6 +104,8 @@ The recommendations below are an independent interpretation, not direct quotatio
 | RSAT-103 | Retired workflow | — | removed | Business approval |
 
 Test counts may fall, but high-risk assertions must not silently disappear.
+
+“Preserved” means the replacement still verifies the original obligation with supporting evidence; “enhanced” adds checks while retaining that obligation; “removed” requires a business-approved reason; and “unresolved” means there is no reliable mapping or comparable evidence. These statuses describe coverage disposition; they do not mean the replacement test has passed.
 
 ### Establish migration exit criteria
 

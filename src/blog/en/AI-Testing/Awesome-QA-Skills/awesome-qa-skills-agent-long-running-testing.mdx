@@ -8,7 +8,7 @@ tags: ["AI Testing", "QA Skills", "Agent Long-Running Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A long-running agent can look healthy for an hour and still lose the only useful state when a worker restarts. Progress bars are decoration until they correspond to checkpoints someone can verify.
+A long-running job can look healthy for an hour and still lose critical state when a worker restarts. A progress bar only shows where work stands when it maps to records someone can verify.
 
 ## Why this Skill is needed
 
@@ -22,11 +22,11 @@ The Agent Long-Running Testing Skill is useful when a team needs a structured re
 
 Use it when the team needs a repeatable review of progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
-A useful result keeps progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics connected to a source and a verification action. It does not turn a design checklist into a passing result.
+A review should connect progress records, lease renewal, restart recovery, cancellation, and partial-result rules to concrete sources and validation actions. A design checklist supports a design review; it does not establish a runtime pass.
 
 ## What it does not do
 
-The Agent Long-Running Testing Skill can organize material, evidence, and next actions for Progress model. It does not replace:
+The Agent Long-Running Testing Skill can organize material, evidence, and next actions for progress rules. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -39,7 +39,7 @@ The value of this Skill is not another keyword list. It connects each focus area
 
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
-| Progress model | Stages, checkpoint meaning, and how counts map to work | A reproducible progress explanation |
+| Progress records | Stage and checkpoint meaning, and how counts map to completed work | A progress explanation that can be checked against the same rules |
 | Interruption result | What survives restart or cancellation | Partial, cancelled, recovered, or unknown |
 | Operational action | Lease, queue, or storage change to verify | Owner and evidence needed |
 
@@ -47,7 +47,7 @@ If a row has only a conventional expectation and no source or validation method,
 
 ## Audit inputs before you start
 
-Before analyzing Progress model, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before analysis, classify the input into six evidence states. Missing material does not mean a runtime failure, but it must remain visible in the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -66,7 +66,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Progress model, do not compress four different kinds of language into “recommended to pass”:
+Keep facts, inferences, recommendations, and Human decisions separate instead of compressing them into “recommended to pass”:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -105,9 +105,22 @@ Audit the inputs first. Separate facts, assumptions, and open questions. Do not 
 
 ### Analysis
 
-Start with a bounded pass—an agent spends two hours classifying 80,000 support tickets while workers can restart and users can cancel the job. Pause the ticket-classification job after checkpoint 37, restart the worker, and compare the resumed input set with the checkpoint manifest. The useful output is not “the job resumed”; it is the set of ticket IDs resumed, skipped, duplicated, or left unclassified.
+Use a bounded example: an agent spends two hours classifying 80,000 support tickets while workers can restart and users can cancel the job. Pause classification after checkpoint 37, restart the worker, and compare the resumed input set with the checkpoint manifest. Check which ticket IDs resumed, were skipped, were processed twice, or remain unclassified; a UI message that says “resumed” is not enough. This illustrates a test method and does not report a run on a real system.
 
-The useful handoff keeps the input version, time window, evidence index, owner, and next validation action together. The Skill can organize uncertainty; it cannot manufacture the missing artifact.
+Keep the input version, time window, evidence index, owner, and next validation action together in the handoff. The Skill can organize uncertainty, but it cannot supply a missing artifact.
+
+### Make recovery, lease, and cancellation checks observable
+
+Using the same job, trigger one interruption condition at a time. First confirm that the job contract defines completion, cancellation, and partial completion; then check whether the run records support those states.
+
+| Check | Condition | Records to inspect |
+| --- | --- | --- |
+| Checkpoint recovery | Restart the worker after a checkpoint | Input range in the checkpoint, resume position, duplicates, and gaps |
+| Lease takeover | Pause a lease holder until another worker takes over, then resume the old worker | Old and new owners, lease version or fencing token, and whether the old worker can still commit |
+| Cancellation propagation | Cancel while a batch is in progress | Request and acknowledgment times, unfinished items, active child jobs, and user-visible terminal state |
+| Partial result | End or pause the job mid-run or after a dependency failure | Completed and unfinished items, result freshness, downstream safety, and recovery or retry path |
+
+If the system exposes no input manifest, commit identifier, or lease record, record that as missing evidence. A progress number alone cannot show whether work was lost, duplicated, or completed safely.
 
 ### Finding
 
@@ -119,8 +132,8 @@ If the supplied material cannot prove that Progress model meets its contract, wr
 
 | Field | Example wording |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Progress model |
-| Finding | The condition or result for Progress model is not yet traceable to evidence |
+| Source and scope | Record the requirement, version, environment, and the checkpoint rule under review |
+| Finding | The relationship between a checkpoint and completed work is not yet traceable to evidence |
 | Evidence state | missing / assumptions; use conflicting when sources disagree |
 | Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
 | Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
@@ -143,11 +156,11 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
-| Progress model | Stages, checkpoint meaning, and how counts map to work | A reproducible progress explanation |
+| Progress records | Stage and checkpoint meaning, and how counts map to completed work | A progress explanation that can be checked against the same rules |
 | Interruption result | What survives restart or cancellation | Partial, cancelled, recovered, or unknown |
 | Operational action | Lease, queue, or storage change to verify | Owner and evidence needed |
 
-Do not write “passed” without a run record, query result, or source artifact. A good analysis treats a checkpoint as a claim about durable work, not as a heartbeat. It asks whether the same ticket can be processed twice, whether a lease can expire mid-stage, and whether a cancelled job tells the user exactly what is still running.
+Do not write “passed” without a run record, query result, or source artifact. A checkpoint should show which work has been persisted; a heartbeat alone only shows that the system is responding. Also check whether a ticket can be processed twice, a lease can expire mid-stage, or work continues after cancellation.
 
 ### Next-stage route
 
@@ -159,7 +172,7 @@ If the first request contains only a one-line goal, the output should stay limit
 
 ## Working with other Skills
 
-- [Agent Failure Recovery Testing](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/):covers failure and recovery decisions around the long job.
+- [Agent Failure Recovery Testing](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/): covers failure and recovery decisions around the long job.
 - [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/):focuses on time-bound interruption behavior.
 - [Production Verification](https://inaodeng.com/en/qaskills/production-verification/):checks live progress and operational signals.
 

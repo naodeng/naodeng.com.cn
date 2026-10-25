@@ -30,6 +30,20 @@ Suppose a pipeline has planner, source-checker, writer, and reviewer agents. The
 
 If a child times out after making a side effect, distinguish completed work from unfinished and indeterminate effects before reassignment. Preserve the owner and evidence for each item. A stop request also needs acknowledgment and a terminal state; a parent’s timeout is not proof that every child stopped.
 
+## Choose failure scenarios from the protocol
+
+Do not put every failure into one regression run. Select paths that can change ownership, state, or an external side effect, then inject one condition at a time. Run these checks with isolated or reversible test data; production writes are not a test mechanism.
+
+| Scenario | Injected condition | What to observe |
+| --- | --- | --- |
+| Duplicate handoff | Replay a message after the receiver acknowledged it | Whether the message ID is deduplicated, the repeated acknowledgment matches the original result, and a side effect is submitted twice |
+| Shared-state change | Another agent updates the version after the receiver reads it | Whether the stale version is rejected, merged, or explicitly marked as a conflict instead of silently overwriting the newer value |
+| Expired ownership | Pause a worker holding a lease, let another worker take over, then resume the first | Whether the old worker can commit with an expired token and whether the commit path checks current ownership or a fencing token |
+| Timeout after a side effect | The write succeeds but its completion message is lost, so the parent retries | Whether the system reconciles a stable operation ID before retrying, reusing the result, or escalating an indeterminate state |
+| Stop propagation | One child receives cancellation while other children are queued or calling tools | Whether each child’s request, acknowledgment, tool state, and terminal state can be inspected separately |
+
+Change one condition per run and preserve the input task ID, message ID, state version, ownership token, tool operation ID, and final acknowledgment. This separates “duplicate but safely deduplicated,” “state change detected,” and “indeterminate result treated as failure and retried.” If the protocol does not define an outcome, record a contract gap, have its owner decide the expected behavior, and add the rule to regression coverage.
+
 ## Record a MAT-## finding
 
 For each coordination gap, identify the task or protocol rule, source, trigger, message and state version, expected concern, evidence status, impact and priority, owner role, close condition, and validation method. Include duplicate, stale, partial-failure, reassignment, and stop-propagation cases only where the supplied protocol makes them applicable.

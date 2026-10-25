@@ -28,6 +28,20 @@ For each audience, write down the decision and the time window. Give every propo
 
 Represent missing values honestly. Zero, null, NOT_RUN, BLOCKED, and stale data mean different things; never substitute zero or a previous green value for unavailable evidence. An overall rate must not hide a small high-risk group or a P0 blocker.
 
+## Check that the view preserves state
+
+Turn the dashboard plan into a small set of reviewable display scenarios. A design review can check whether the rules are specified; evidence from the actual environment and run is still needed to show that the interface and data pipeline follow them.
+
+| Scenario | How the panel should respond | Evidence to inspect |
+| --- | --- | --- |
+| Denominator is missing or zero | Show a not-computable or no-data state, not an assumed 0% | Denominator definition, null handling, and time window |
+| Source is past its freshness limit | Show the last update and stale state instead of reusing a previous green result | Refresh time, delay rule, and owner for the staleness threshold |
+| Overall result is healthy but a high-risk group is not | Keep the segment and its scope visible; do not average it away in the summary | Segment definition, sample-size limits, and alert rule |
+| Drill-down link is broken | Mark the evidence trace as missing and identify the responsible source | Correlation key between panel and run, defect, or incident record |
+| Alert fires | Name the owner, response, escalation path, and resolution condition | Alert contract and on-call or business ownership |
+
+Also check that the overview, segments, and drill-down use the same metric definition, time window, and filters. Matching numbers do not prove matching data rules.
+
 ## Worked example
 
 For a staged checkout rollout, a dashboard might show checkout errors, payment authorization outcomes, order-state reconciliation, latency, and sampled user feedback. The design should define each population and time window, then link unusual values to their source run or query.

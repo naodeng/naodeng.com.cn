@@ -112,6 +112,19 @@ Use the input, matrix, and evidence state to form the judgment before writing th
 
 The portal receives an export ID from the browser, but the design does not say whether the API verifies the export's tenant against the session. The Skill should model a cross-tenant access scenario, connect it to the authorization control and audit evidence, and propose a synthetic-tenant validation. It should not perform the access attempt against production.
 
+Record the scenario as a `THM-01` threat card. This illustrative entry follows the design gap above; it does not claim that a real vulnerability was found or that validation ran.
+
+| Field | Example record |
+| --- | --- |
+| Asset and path | Invoice export file; the browser submits an export ID, the portal API reads the file from object storage |
+| Actor and precondition | An authenticated tenant user submits another tenant's export ID; the applicable access rule must come from a supplied policy |
+| Boundary and candidate threat | The portal API to object-storage read path; the design does not say how the API binds the session tenant to the file owner |
+| Existing control and evidence | Supply the authorization rule, object ownership field, and server-side audit record; whether a control exists is still unknown |
+| Impact and state | If ownership is not checked, cross-tenant invoice exposure is a possible impact; this is a `missing` design-evidence state, not a confirmed vulnerability |
+| Next validation | After the owner confirms the rule, use two synthetic tenants in an isolated environment and retain request scope, server decision, and audit evidence |
+
+If the materials do not show how tenant identity reaches the server, how file ownership is bound, or whether a denied request read or returned the object, record those gaps first. Do not draw assumed components or controls into the data-flow model.
+
 The model organizes supplied security context and assumptions. It cannot prove vulnerability, exploit success, mitigation effectiveness, or release security.
 
 #### Example finding: turn one problem into a handoff

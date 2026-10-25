@@ -29,6 +29,16 @@ Trace a supplied request or ledger item through the pre-switch, transition, and 
 
 Assess availability and single-writer consistency separately. Traffic can reach the standby while two writers still accept commits. A later reconciliation or safe failback also needs its own evidence; success of the initial route change does not establish it.
 
+### Worked example: read write authority from a timeline
+
+This is illustrative. Assume request req-example-01 was sent to the primary before cutover, then timed out at the caller and was retried against the standby. The review needs to join the original request, timeout record, old-primary fencing event, new-primary commit, and final business ledger.
+
+| Evidence combination | Bounded interpretation | Still needed |
+| --- | --- | --- |
+| Only the new-primary route is recorded; there is no old-primary fencing evidence | The request may have reached the standby, but single-writer authority is unproven | Old-primary fencing event, timestamps, and commit records |
+| Both nodes accept writes for the same business intent | There is a split-write risk in that window; record the scoped discrepancy | Reconciliation, affected records, and an owner decision |
+| The old primary is fenced and the retry reconciles to one record | This supports single-writer behavior for the supplied request and evidence scope | Broader scenarios still need the approved validation plan |
+
 ## Distinguish failover from disaster recovery
 
 Failover focuses on the live primary/standby transition, routing, write authority, and recovery of service. Disaster recovery also covers a disaster boundary, recovery objectives, backup evidence, and dependencies needed to restore the business path. A failover step may appear inside a recovery plan, but it does not prove that backups can be restored.

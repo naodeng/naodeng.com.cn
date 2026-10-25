@@ -42,6 +42,8 @@ For a breaker protecting a recommendation dependency, review a proposed regional
 
 A validation proposal should run in an isolated environment with a stop condition, observe dependency calls separately from local rejections, and capture state and fallback evidence. Do not induce production failures or invent a threshold for the example.
 
+Keep the state label separate from request behavior. Illustrative example: if a dashboard shows Open but there is no transition event, request identity, or dependency-call record, it proves only that the view displayed a state; it does not show that ordinary calls were rejected locally. If the supplied policy requires rejection while open and ordinary calls still reach the dependency in the same window, retain request-level evidence and review the implementation. Without a run record, the behavior remains unverified.
+
 ## Findings and boundaries
 
 Use CBR-## for an unclear transition or protection rule. Include the state and request, source, trigger, pre-state and count, action, post-state, fallback, evidence status, impact, owner role, close condition, and validation method. Include concurrency and time-boundary cases where the supplied contract makes them relevant.

@@ -141,7 +141,15 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 ### Handoff output
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the route still needs an accountable owner.
+Each TD-## should carry the information needed to continue the work:
+
+| Handoff field | What to retain |
+| --- | --- |
+| Source and scope | Design revision, component, interface, dependency, and exclusions for this pass |
+| Evidence and impact | Facts stated in the design, missing material, and the affected boundary or decision |
+| Owner and open decision | Which design owner must confirm the interface, ownership, failure semantics, or trade-off |
+| Validation | Smallest scenario, preconditions, expected behavior, required evidence, and stop condition |
+| Close condition | Records needed for the design change, independent validation, and owner acceptance |
 
 ### Next-stage route
 
@@ -151,7 +159,7 @@ At minimum, hand off the source, evidence state, owner, close condition, and val
 | Design review to implementation | TD findings, resolved decisions, invariants, failure states, and validation fixtures |
 | Implementation to test or operations | Version, changed boundary, runtime evidence, logs, metrics, and residual risk |
 
-The review prepares a safe next step; it does not approve the architecture by itself.
+The review prepares an actionable next step; it does not approve the architecture by itself.
 
 ## How to prepare better input
 

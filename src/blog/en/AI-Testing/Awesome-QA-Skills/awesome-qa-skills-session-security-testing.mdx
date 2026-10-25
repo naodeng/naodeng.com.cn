@@ -112,6 +112,16 @@ Use the input, matrix, and evidence state to form the judgment before writing th
 
 A password reset revokes the web cookie but leaves a mobile refresh token usable. The Skill should record the cross-device revocation gap, preserve the approved recovery-device exception if one exists, and propose a synthetic-account replay with token timestamps and server-side revocation evidence.
 
+Track refresh credentials separately from access tokens that were already issued; they may follow different invalidation contracts:
+
+| Credential state | Compare | Do not infer |
+| --- | --- | --- |
+| Refresh token | Redacted labels before and after the password change, issue time, server-side revocation state, and later refresh records | A successful logout response does not prove the refresh token was revoked |
+| Already-issued access token | Expiry claims, resource-request result, and the applicable revocation rule | Revoking a refresh token does not prove that an existing access token stops working immediately |
+| Cross-device session | Web cookie, mobile refresh credential, recovery-device exception, and server session records | One client's result does not establish the result for every device |
+
+If policy does not say what happens to existing access tokens after a password change, leave that rule open. Do not invent a lifetime or claim immediate invalidation. A validation candidate should still use a synthetic account and retain redacted credential labels, a timeline, and server-side evidence.
+
 The review prepares security scenarios and evidence checks. It cannot prove exploit success, absence of vulnerability, or release security without an authorized run.
 
 #### Example finding: turn one problem into a handoff

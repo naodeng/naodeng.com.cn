@@ -40,6 +40,16 @@ Suppose the supplied rule says a project manager may edit their team’s draft f
 
 If the requirement says nothing about archived forecasts or a recently revoked delegate, keep those cells unknown and ask for the governing rule. Do not turn a plausible security expectation into a confirmed vulnerability or a passing result.
 
+The comparison becomes clearer in a subject × resource × action matrix. This illustrative table follows only the rules above; no request has been sent:
+
+| Subject | Resource and action | Rule state | Evidence to retain |
+| --- | --- | --- | --- |
+| Project manager | Edit a draft forecast for their own team | Allowed by the supplied rule | Policy version, server-side decision, saved data state |
+| Project manager | Edit another department's approved forecast | Denied by the supplied rule | Policy version, denial decision, no prohibited data change or side effect |
+| Project manager | Edit an archived forecast for their own team | Unknown | Ask the product or policy owner for the archive-state rule |
+
+For a validation, keep the subject and action fixed and change only the resource. Then use approved test identities in an isolated environment to check the server-side decision and side effects. Interpret HTTP status, UI controls, and client-supplied tenant fields under the project contract; none is authorization evidence by itself.
+
 ## Record an AZT-## finding
 
 For each gap, name the subject, resource, action, context, source rule, trigger, evidence state, expected concern, impact and priority, owner role, close condition, and isolated validation method. Include the denied-request side effects and any revocation timeline that affect the decision.

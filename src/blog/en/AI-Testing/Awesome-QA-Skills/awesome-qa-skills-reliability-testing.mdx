@@ -110,7 +110,7 @@ Use the input, matrix, and evidence state to form the judgment before writing th
 
 #### Focused example: Review provider outage behavior without inventing availability
 
-The email provider contract says requests may time out, while the service design mentions retries but not queue backpressure or user-visible status. The Skill should flag the failure mode and exposure window as incomplete, then request retry, queue, and alert evidence. It should not infer an availability percentage from a successful staging smoke test.
+Illustrative scenario: assume the email-provider contract says requests may time out and the notification-service design mentions retries, but neither explains queue backpressure or user-visible status. Mark timeout and retry as supported by the supplied material, the queue and status behavior as missing, and request evidence for the queue, alert, and exposure window. One successful staging smoke test covers one run; it does not establish an availability percentage.
 
 The review classifies objectives and readiness from supplied material. It cannot prove real availability, fault containment, or recovery behavior until authorized validation produces runtime evidence.
 

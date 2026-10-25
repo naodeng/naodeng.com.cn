@@ -29,6 +29,8 @@ Suppose a description change is intended to make a Skill activate for API compat
 
 If only frontmatter and `skill-up validate` were checked, report the configuration result and mark Evaluation and Runtime `NOT_RUN`. Do not say that activation improved, that the Skill is reliable, or that the change is production-ready without the corresponding runs and human decision.
 
+When the output contract changes, use normal, missing-input, and conflicting-source cases. Check that the new version still emits required fields, preserves unknown states, and does not turn competing sources into one certain answer. Add a neighboring but out-of-scope request to check the trigger boundary. Compare old and new versions on the same cases so a new behavior does not hide a removed constraint.
+
 ## Write a report another person can audit
 
 Preserve the selected commands, versions, environment, selected Eval cases, raw outputs, and judge status. For every omitted check, give the reason and the risk it leaves open. A timeout, missing authentication, filtered-out case, or failed judge is not a full-suite pass.

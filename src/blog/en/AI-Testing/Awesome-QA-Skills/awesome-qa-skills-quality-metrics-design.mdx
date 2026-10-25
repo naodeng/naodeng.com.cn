@@ -26,7 +26,7 @@ Use it when a team is proposing a new quality KPI, merging signals from several 
 
 ## What it does not do
 
-The Quality Metrics Design Skill can organize material, evidence, and next actions for Metric contract. It does not replace:
+The Quality Metrics Design Skill can organize material, evidence, and next actions for metric definitions. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -35,11 +35,11 @@ The Quality Metrics Design Skill can organize material, evidence, and next actio
 
 ## What it checks
 
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+Review each link in the metric: how an event is identified, how the numerator relates to the denominator, when the data is complete, and which decision the result supports. Start with a matrix based on the source Skill's output contract:
 
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
-| Metric contract | Calculation and inclusion rules | Versioned definition with examples |
+| Metric definition | Calculation and inclusion rules | Versioned definition with examples |
 | Lineage and freshness | Where each event comes from and when it is trustworthy | Source, delay, and gap |
 | Interpretation boundary | What the metric can and cannot explain | No unsupported causality |
 | Anti-gaming review | How behavior or labels could improve the number without improving quality | Risk and counter-check |
@@ -48,7 +48,7 @@ If a row has only a conventional expectation and no source or validation method,
 
 ## Audit inputs before you start
 
-Before analyzing Metric contract, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before analysis, classify the material into six evidence states. Missing event definitions or sources do not mean the calculation failed, but they limit the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -67,7 +67,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Metric contract, do not compress four different kinds of language into “recommended to pass”:
+Keep facts, inferences, recommendations, and Human decisions separate in the metric review:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -118,19 +118,17 @@ Metric design proves the definition is explicit and reviewable. It does not prov
 
 #### Example finding: turn one problem into a handoff
 
-The field example below shows the recording pattern; it is not an execution result.
-
-If the supplied material cannot prove that Metric contract meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+The field example below follows the checkout case. It identifies a definition that cannot yet be recalculated; it does not infer that the missing lineage already produced incorrect data.
 
 | Field | Example wording |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Metric contract |
-| Finding | The condition or result for Metric contract is not yet traceable to evidence |
-| Evidence state | missing / assumptions; use conflicting when sources disagree |
-| Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
-| Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
-| Action and close condition | Add the smallest missing evidence; close only when source, judgment, and owner can be reviewed |
-| Validation | Name one repeatable check, query, or run and retain the raw artifact |
+| Source and scope | Checkout metric request, event definitions, and proposed release window; use the actual supplied versions |
+| Finding | “Production defects divided by test cases” does not explain how the two populations relate and cannot be recalculated as an exposure measure |
+| Evidence state | Mark `missing` if the event dictionary, release linkage, or sample records are absent; do not assume complete lineage |
+| Impact | The definition cannot support cross-release comparison or a gate yet; priority depends on the decision and affected exposure |
+| Owner and open decision | The metric owner confirms event scope, time window, late-linkage handling, and population |
+| Action and close condition | Add numerator, denominator, include/exclude rules, and boundary examples so another engineer can recalculate it |
+| Validation | Check included and excluded records against redacted samples, retaining the query, sample version, and recalculation; keep unrun work unverified |
 
 The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
 
@@ -157,7 +155,15 @@ Every conclusion should point to a source, evidence state, and next action. If e
 
 ### Next-stage route
 
-At minimum, hand off the source, evidence state, owner, close condition, and validation action; the next-stage conclusion remains bounded by the evidence state.
+Route each gap to the owner who can resolve it:
+
+| Gap | Next owner | Question to resolve |
+| --- | --- | --- |
+| Event, numerator, or denominator is undefined | Metric and business owners | Confirm the population, window, and inclusion/exclusion rules |
+| Source, late data, or linkage key is unclear | Data platform or system owner | Specify lineage, freshness, and reconciliation |
+| Metric may become a gate or team target | Quality governance and business owners | Review interpretation limits, counter-metrics, and the authorized decision |
+
+Include the evidence state and smallest validation action in the handoff. A later conclusion cannot exceed the available evidence.
 
 ## How to prepare better input
 
@@ -211,7 +217,7 @@ The Skill is most useful when attached to one real project artifact and kept wit
 
 The complete execution contract lives in [Quality Metrics Design prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md). The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design) may also contain evaluation cases and supporting material.
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval. Before putting a metric on a dashboard, recalculate it against project samples and check that late-arriving data cannot silently rewrite a published window.
 
 ### Reference links
 

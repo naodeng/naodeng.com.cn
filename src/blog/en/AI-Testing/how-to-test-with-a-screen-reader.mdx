@@ -22,7 +22,7 @@ The essential question changes from “Does the page look right?” to **“Can 
 
 | Tool | Common platform | Practical note |
 | --- | --- | --- |
-| JAWS | Windows | Commercial screen reader; the source article reports roughly 40% market share, without specifying the survey population or date |
+| JAWS | Windows | Commercial screen reader |
 | NVDA | Windows | Free and open source; useful for building desktop Web testing skills |
 | VoiceOver | macOS and iOS | Built into Apple systems; desktop and mobile interactions differ |
 | TalkBack | Android | Built-in Android screen reader with gesture and focus navigation |
@@ -112,6 +112,8 @@ Compare mouse, keyboard-only, and screen-reader paths. All users should be able 
 | Trigger recoverable error | Open and dismiss a dialog | Dialog name, focus order, focus restoration |
 
 Record the platform, browser, screen reader and versions; steps; expected accessible information; actual announcement summary; focus position; and relevant DOM or accessibility-tree evidence. “Screen reader broken” is not an actionable bug report.
+
+**Illustrative defect record.** Suppose an empty login submission shows an email error visually, but a tester cannot discover the corresponding message with the screen-reader combination recorded for the run. Include the page and build version, reproduction steps, product rule or applicable criterion, expected perceivable information, a summary of the actual announcement, focus position, and relevant DOM or accessibility-tree evidence. This observation applies only to that task and environment; retest the fix in the same environment before deciding whether to expand coverage.
 
 ## Automate checks; keep real screen-reader judgment
 

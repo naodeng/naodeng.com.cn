@@ -20,7 +20,7 @@ Build a failure matrix from evidence the project actually provides:
 
 | Failure | Confirmed write state | Retryability | Recovery action | Recovered state and evidence |
 | --- | --- | --- | --- | --- |
-| Transient and no write confirmed | No committed effect found within the authoritative evidence available | Only if policy permits | Retry or poll with the original operation identity | Verify one final effect and user notice |
+| Transient and no write confirmed | Authoritative sources and a complete query scope confirm no committed effect | Only if policy permits | Retry or poll with the original operation identity | Verify one final effect and user notice |
 | Permanent rejection | Rejection is confirmed | Not by repeating unchanged input | Stop and explain or escalate | Preserve rejection and handoff record |
 | Indeterminate timeout | Commit state is not established | Do not assume safe replay | Query by operation ID or idempotency key; then follow the contract | Keep unresolved until records reconcile |
 | Partial workflow success | Some steps are committed | Depends on each remaining step | Reconcile completed and remaining steps; compensate only with protocol and authority | Verify every step and any compensation outcome |
@@ -63,7 +63,7 @@ This scenario is a design example, not an executed payment test. The agent submi
 ### Recovery sequence
 
 1. Keep the original operation ID and idempotency key; record the timeout and attempt number.
-2. Query the payment provider and internal ledger using those identifiers before issuing another write.
+2. Within the authorized access scope, query the payment provider and internal ledger using those identifiers before issuing another write.
 3. If authorization is confirmed, reconcile the order state and continue the documented confirmation path. Do not charge again to make the order look complete.
 4. If the provider reports no operation, follow the contract's retry rule with the original identity. A missing lookup result is not proof of failure if the source can be delayed or incomplete.
 5. If records conflict or remain indeterminate, stop automated replay and escalate with both records attached.

@@ -43,6 +43,8 @@ Do not collect “malicious prompts” without a test contract. Give every case 
 
 For each case, record the model, system-instruction, application, and tool-configuration versions; run time; input source; response; citations or retrieval trace; attempted tool calls; authorization result; and post-run state. Repeat runs for behavior that can vary, recording each outcome. If settings cannot be fixed, capture those differences. One refusal does not prove later turns are safe, and one successful run does not show that every similar input will be blocked.
 
+Link those details under one case ID and run ID, preserving the relationships among input source, retrieved content, call trace, and post-run state. Keep each repeated run separate instead of combining several outputs into a single “pass” result.
+
 Compare side-effect evidence directly: did the blocked write stay blocked, was a tool call attempted, was data sent outside the system, and did mock state remain as expected? If you have only refusal text but no call trace or state evidence, mark the result “insufficient evidence” rather than a security pass.
 
 ## Classify, prioritize, and close the regression loop

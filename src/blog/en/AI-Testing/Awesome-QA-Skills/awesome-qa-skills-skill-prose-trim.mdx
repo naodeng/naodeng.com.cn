@@ -25,6 +25,8 @@ First confirm the file scope, language pair, and permission to edit. Then decide
 
 This classification prevents two opposite mistakes: leaving temporary review notes in a reader-facing Skill, and deleting history or a safeguard that users still need.
 
+Work in this order: list the authorized files and language pairs; classify each passage; find a current source for claims about commands, paths, or product behavior; then edit only material confirmed to be process residue. Report unverifiable facts as uncertain instead of rewriting them as capabilities to make the prose smoother.
+
 ## Example: remove the process note, keep the rule
 
 Imagine a document says: “This PR follows up on design note 4. The importer rejects rows without an account ID.” If the first sentence has no meaning outside its review history, remove it from the active guide. Keep the second sentence only after checking it against the current implementation or contract. If that fact is no longer verifiable, report the uncertainty rather than converting it into a promise.
@@ -45,6 +47,8 @@ A trim report should make the change auditable:
 Before accepting a shorter version, compare the original and edited text for trigger conditions, required inputs, exceptions, refusal rules, failure handling, measurements, identifiers, and references. Keep an important negative guarantee even when it costs words. Do not collapse “not run” into “passed,” or change an assumption into a capability.
 
 The source Skill does not set a target word count. It asks the maintainer to remove process residue and preserve durable content. After editing, read the complete affected page and its language pair; then verify that links, examples, and the unchanged scope still make sense. Do not edit generated files, sealed archives, fixtures, or related files outside the authorized scope.
+
+Before delivery, compare the trigger and required inputs, limits and exceptions, failure paths, commands, versions, IDs, numbers, and references. Check that both languages still describe the same behavior. If deleting a sentence changes what a downstream user can rely on, treat it as a contract change and send it through prose review and change verification instead of treating it as a word-count edit.
 
 ## Use the adjacent Skills for separate jobs
 

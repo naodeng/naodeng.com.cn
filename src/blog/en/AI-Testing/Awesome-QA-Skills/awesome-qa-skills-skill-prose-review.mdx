@@ -34,6 +34,17 @@ Consider the illustrative instruction “Check output quality and make the resul
 
 The reviewer may suggest adding criteria or a `pending` state, but should not silently rewrite the file or claim the change was tested.
 
+Tie severity to behavioral impact. Follow the repository's scale when it has one; otherwise, use questions like these to calibrate the review:
+
+| Level | Basis | Example |
+| --- | --- | --- |
+| Blocking | The instruction could bypass authority, misreport completion, or drop a critical refusal condition | Conflicting rules have no priority and may trigger an unauthorized action |
+| Important suggestion | A missing condition may make common task results inconsistent without directly bypassing authority | The Skill does not say whether to pause or request input when required material is absent |
+| Information gap | Supplied material cannot establish actual behavior; name the source needed | No target-host selection record is available to verify activation |
+| Style suggestion | The wording is unclear, but there is no evidence it changes execution or consumption | Repeated wording could be shortened or terminology made more consistent |
+
+Include the affected request, output field, or authority boundary with the rating. “I dislike this wording” is not enough to make a blocker.
+
 ## Keep review separate from execution
 
 The source Skill asks for a bounded review and a report with a conclusion, blocking findings, important suggestions, information gaps, and an evidence boundary. It prohibits executing the business task or editing files unless the user explicitly asks. Static reading can establish what the provided text says; it cannot prove how a target host selects or runs the Skill.

@@ -124,7 +124,7 @@ The materials do not explain how job_id is bound to the caller's tenant, whether
 | Trigger | Tenant A requests Tenant B's job_id, a nonexistent job_id, and an expired job_id |
 | Expected concern | Authentication success must not bypass object authorization; failure should not overexpose existence or sensitive fields |
 | Evidence state | missing |
-| Impact and priority | API, gateway, audit, and client may implement different failure semantics; P1 |
+| Impact and priority | API, gateway, audit, and client may implement different failure semantics; the example provides no impact assessment or priority rubric, so priority remains unassigned |
 | Owner and decision | API, security, and tenant-authorization owners choose enforcement point and 403, 404, or uniform-error strategy |
 | Close condition | Authorization, error, audit, and sensitive-data rules are explicit in the contract |
 | Validation | In an authorized isolated environment use synthetic tenants and files; retain raw responses, audit records, version, time, and stop conditions |

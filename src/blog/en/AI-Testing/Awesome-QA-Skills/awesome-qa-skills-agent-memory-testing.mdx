@@ -20,6 +20,18 @@ Use the project’s actual consistency window and preference precedence rules. C
 
 Do not assume last-write-wins or invent a retention period. If precedence, expiry, deletion propagation, or the expected consistency window is missing, leave that judgment open.
 
+## Follow one item through update and deletion review
+
+The following is an illustrative isolated-environment scenario; expected behavior must still come from the project's policy. Use two synthetic preference values to follow one memory item from write through deletion:
+
+| Stage | Check | Evidence to retain |
+| --- | --- | --- |
+| Write | Create a memory in an authorized test tenant | Tenant and user scope, memory ID, source, version, write time, consent state, and expiry policy |
+| Update | Change the test preference from A to B, then query within the policy's consistency window | Update event, returned memory ID and version, retrieval result, and provenance |
+| Delete | Submit an authorized deletion request and inspect the stores named by policy | Deletion request ID, checks for each storage scope, completion state, and time |
+
+If the old value is still retrieved after an update, compare it with the policy's propagation window and version rules. An empty result from one query does not prove that every store has been cleared. If backup or propagation policy is missing, limit the conclusion to the scopes that were checked. Missing retrieval traces, deletion scope, or authorization evidence means “insufficient evidence” or “needs confirmation”; this plan is not proof of execution.
+
 ## Trace deletion through the real storage scope
 
 Compare the deletion request with evidence for the index, cache, and backup scope that the project actually uses. A missing propagation or backup-retention policy limits the conclusion; absence from one search result does not prove erasure from every store.

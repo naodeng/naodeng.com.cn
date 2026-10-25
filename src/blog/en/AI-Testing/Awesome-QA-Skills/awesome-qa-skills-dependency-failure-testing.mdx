@@ -36,6 +36,16 @@ The expected contract might distinguish a confirmed rejection from an unknown ou
 
 For an asynchronous queue, review delayed delivery, duplicate messages, ordering, and lost acknowledgment separately. A message still pending is not the same state as a failed operation, and a successful acknowledgment is not automatically proof that every business side effect completed.
 
+### How to interpret example evidence
+
+These are illustrative outcomes, not claims about a provider's actual behavior.
+
+| Supplied observation | Bounded interpretation | Next action |
+| --- | --- | --- |
+| The caller timed out and the dependency lookup still says unknown | The write outcome is unresolved; a timeout is not a rejection | Reconcile by request identity and do not blindly retry a non-idempotent write |
+| An authoritative dependency record says the request was rejected before side effects | This supports rejection only for that request and evidence scope | Retain the lookup result, request ID, and timestamp, then review retry behavior |
+| Multiple reservation records share one business intent | This suggests a duplicate side effect, but the impact needs source-record review | Join the original request, retry, and ledger; let the owner decide compensation or further validation |
+
 ## Build a reviewable finding
 
 Use DPF-## for each risk. Record the caller and dependency, interaction mode, failure trigger, side-effect window, invariant at risk, source and evidence state, expected result, priority, owner role, close condition, validation method, and stop condition. The scenario should distinguish synchronous rejection, asynchronous pending work, and unknown commit.

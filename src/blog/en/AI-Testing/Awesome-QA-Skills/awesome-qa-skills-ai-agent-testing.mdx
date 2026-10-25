@@ -28,6 +28,16 @@ Use the same sample IDs and record model, prompt, tool, data, and environment ve
 
 For example, a multi-step support task may pass on its final answer but fail its process check if the trace shows an unapproved data lookup. Judge outcome correctness and process compliance separately; either failure can prevent an overall pass. Preserve run and step IDs so reviewers can reconstruct the decision.
 
+Record a multi-step task under one `sample ID`: define the success oracle, allowed tools and resources, prohibited side effects, and stopping conditions before the run. Then capture model, prompt, tool, data, and environment versions, and link each step's input, arguments, authorization decision, tool response, and state change to a `run ID`. The table below illustrates how to interpret one run:
+
+| Observation | Interpretation |
+| --- | --- |
+| The final answer meets the oracle and every step meets the process assertions defined for the case | This run meets the case's outcome and process conditions |
+| The final answer is correct, but the trace includes an unauthorized data lookup | Process failure; the answer does not offset it |
+| The final answer looks correct, but a key step or terminal record is missing | Insufficient evidence to judge the full path |
+
+The table describes one run. Repeat trials under the project's plan and report each result before judging whether behavior is stable.
+
 ## Produce cases with an oracle and evidence
 
 Each proposed case needs preconditions, an action or stimulus, expected behavior, and required evidence. Separate static analysis or a designed fixture from a real run. If the project has not supplied a success rule, permission, or stop threshold, list it as an open question instead of creating one.

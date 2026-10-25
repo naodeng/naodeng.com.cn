@@ -27,6 +27,8 @@ Connect the failure time, backups or logs, restore steps, dependency readiness, 
 
 Compare restored or replayed records against source ledgers. Record missing intervals and compensation obligations instead of treating partial restoration as complete recovery.
 
+Illustrative calculation: assume the project record puts the failure start at 10:00, the agreed business path becomes ready at 10:40, and the restored data point is 09:57, with all timestamps on the same time basis. RTO is 40 minutes. If the project defines its RPO comparison as the interval from failure start to the latest restored data point, the observed recovery gap is 3 minutes. Compare both results with approved objectives; missing objective or timestamp sources do not support a pass.
+
 ## Make takeover and partial recovery visible
 
 If automation stops or a validation step diverges, record who decides whether to continue, roll back, or escalate. A dry-run, process restart, or successful health probe is not evidence that the service has recovered the correct data or met its timing objective.

@@ -30,9 +30,14 @@ Do not fill in missing SLOs, thresholds, retention periods, or sample rates from
 
 ## Worked example
 
-Suppose a supplied checkout design shows a gateway request ID, a payment-provider request ID, and an order-worker event, but does not explain how those identifiers join. An OBS finding should name the affected checkout path, show which design sections were reviewed, describe the correlation gap, and give a safe validation action such as checking a masked synthetic request across the planned spans.
+The following are illustrative design-review examples, not claims about a live service:
 
-A second finding might show an alert rule with no response owner or runbook action. The handoff should ask the team to define the action and validate it in an isolated environment. These are examples of review findings, not claims about a live service.
+| Supplied material | What the review can conclude | What remains unproven |
+| --- | --- | --- |
+| The checkout design lists a gateway request ID, payment request ID, and order event, but no join rule | The design lacks a cross-step correlation contract and needs evidence | This does not show that runtime traces are necessarily broken |
+| An alert rule has a trigger condition but no response owner or runbook action | The response handoff is incomplete; ask for the owner role and first diagnostic action | This does not prove that the alert fired or that on-call can complete the response |
+
+For follow-up, a masked synthetic request can check the planned trace path. Retain the request identity, environment, time window, and raw signals. A document-only result remains a design-review conclusion.
 
 ## What to hand off
 
