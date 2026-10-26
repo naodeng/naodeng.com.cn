@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Nao Deng — Software Testing &amp; AI Testing</title>
+  <desc id="desc">Practical bilingual software testing and AI testing knowledge, QA Skills, prompts, guides, and workflows.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#176b75" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <rect x="710" y="0" width="490" height="630" fill="url(#grid)"/>
+  <path d="M0 0H12V630H0Z" fill="#176b75"/>
+
+  <g font-family="Noto Sans, PingFang SC, Noto Sans SC, Arial, sans-serif">
+    <circle cx="83" cy="82" r="8" fill="#176b75"/>
+    <text x="105" y="89" fill="#202a30" font-size="19" font-weight="750" letter-spacing="1.3">NAO DENG</text>
+    <path d="M232 71V94" stroke="#b9cfcb" stroke-width="1.5"/>
+    <text x="250" y="89" fill="#5c6b6d" font-size="18" font-weight="500">软件测试同学</text>
+
+    <text x="80" y="166" fill="#176b75" font-size="14" font-weight="700" letter-spacing="2.2">PRACTICAL QA KNOWLEDGE</text>
+
+    <text x="78" y="251" fill="#202a30" font-size="58" font-weight="760" letter-spacing="-2.3">Software Testing</text>
+    <text x="78" y="326" fill="#202a30" font-size="58" font-weight="760" letter-spacing="-2.3">&amp; AI Testing</text>
+
+    <text x="80" y="386" fill="#176b75" font-size="25" font-weight="700">把测试任务变成可执行的下一步</text>
+    <text x="80" y="423" fill="#5c6b6d" font-size="18" font-weight="450">Turn testing tasks into actionable next steps.</text>
+
+    <path d="M80 467H657" stroke="#dfe4e1" stroke-width="1.5"/>
+    <circle cx="86" cy="515" r="4" fill="#176b75"/>
+    <text x="102" y="521" fill="#5c6b6d" font-size="16" font-weight="600" letter-spacing=".4">QA WIKI</text>
+    <circle cx="207" cy="515" r="3" fill="#b9cfcb"/>
+    <text x="222" y="521" fill="#5c6b6d" font-size="16" font-weight="600" letter-spacing=".4">SKILLS</text>
+    <circle cx="307" cy="515" r="3" fill="#b9cfcb"/>
+    <text x="322" y="521" fill="#5c6b6d" font-size="16" font-weight="600" letter-spacing=".4">PROMPTS</text>
+    <circle cx="431" cy="515" r="3" fill="#b9cfcb"/>
+    <text x="446" y="521" fill="#5c6b6d" font-size="16" font-weight="600" letter-spacing=".4">WORKFLOWS</text>
+
+    <text x="80" y="577" fill="#202a30" font-size="16" font-weight="700" letter-spacing=".6">inaodeng.com</text>
+    <text x="223" y="577" fill="#9ba8a5" font-size="15" font-weight="400">Software Testing · AI Testing · QA Practice</text>
+  </g>
+
+  <g font-family="Noto Sans, PingFang SC, Noto Sans SC, Arial, sans-serif">
+    <rect x="736" y="75" width="397" height="480" rx="16" fill="#ffffff" stroke="#dfe4e1" stroke-width="1.5"/>
+    <path d="M737 91Q737 76 752 76H1117Q1132 76 1132 91V150H737Z" fill="#f1f5f3"/>
+    <circle cx="775" cy="112" r="6" fill="#176b75"/>
+    <text x="794" y="117" fill="#202a30" font-size="14" font-weight="700" letter-spacing="1.6">A PRACTICAL TOOLKIT</text>
+    <text x="775" y="143" fill="#5c6b6d" font-size="14" font-weight="500">从知识到行动 · From knowledge to action</text>
+    <path d="M775 168H1094" stroke="#dfe4e1" stroke-width="1.5"/>
+
+    <path d="M798 220V425" stroke="#b9cfcb" stroke-width="2"/>
+
+    <circle cx="798" cy="226" r="17" fill="#e4f0ed" stroke="#176b75" stroke-width="1.5"/>
+    <text x="798" y="231" text-anchor="middle" fill="#176b75" font-size="12" font-weight="750">01</text>
+    <text x="832" y="222" fill="#202a30" font-size="18" font-weight="700">查阅知识</text>
+    <text x="832" y="246" fill="#5c6b6d" font-size="14" font-weight="500">QA Wiki · AI Wiki</text>
+
+    <circle cx="798" cy="326" r="17" fill="#e4f0ed" stroke="#176b75" stroke-width="1.5"/>
+    <text x="798" y="331" text-anchor="middle" fill="#176b75" font-size="12" font-weight="750">02</text>
+    <text x="832" y="322" fill="#202a30" font-size="18" font-weight="700">复用方法</text>
+    <text x="832" y="346" fill="#5c6b6d" font-size="14" font-weight="500">QA Skills · Prompts</text>
+
+    <circle cx="798" cy="426" r="17" fill="#176b75"/>
+    <text x="798" y="431" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="750">03</text>
+    <text x="832" y="422" fill="#202a30" font-size="18" font-weight="700">推进实践</text>
+    <text x="832" y="446" fill="#5c6b6d" font-size="14" font-weight="500">Guides · Workflows</text>
+
+    <path d="M775 481H1094" stroke="#dfe4e1" stroke-width="1.5"/>
+    <rect x="775" y="500" width="112" height="32" rx="7" fill="#176b75"/>
+    <text x="831" y="521" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700" letter-spacing=".7">QA + AI</text>
+    <text x="901" y="521" fill="#5c6b6d" font-size="13" font-weight="550">TESTING PRACTICE</text>
+  </g>
+</svg>
