@@ -1,0 +1,161 @@
+---
+title: "How Much Testing Is Enough? Decide by Risk and Evidence"
+description: "A practical look at testing volume, coverage, regression-suite growth, AI evaluation uncertainty, and the evidence needed to support a release decision."
+date: 2026-10-26T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["Test Strategy", "Risk-Based Testing", "AI Testing"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["AI Testing"]
+---
+
+# How Much Testing Is Enough? Decide by Risk and Evidence
+
+“Is testing done?” The question often gets reduced to a few numbers: execution rate, requirements coverage, and open defects. Those numbers show how much of the plan has been completed. They do not answer the harder question: is the quality evidence strong enough to support a release decision?
+
+In his LinkedIn article “How Much Testing Is Enough? The Stoic Case for Knowing When to Stop,” published on October 19, 2026, Stephen P. (The Stoic Tester) puts the question back in the context of risk, evidence, and judgment. This article first summarizes his argument, then labels the operational models, statistical example, and team workflow as practical extensions.
+
+## “Testing complete” does not mean “quality is sufficient”
+
+There is no universal definition of how much testing is enough. Common answers include executing 100% of planned cases, covering every requirement, fixing all known defects, or testing until the deadline. Each describes part of the work. None independently proves that the system has reached an acceptable level of quality.
+
+Projects often face two opposite problems: testing time gets squeezed as a delivery date approaches, or the regression pack grows until running it becomes a project of its own. The article argues that neither situation necessarily represents good testing. The first may remove important checks; the second can consume time on repetitive, low-value work.
+
+## Temperance means judgment, not simply doing less
+
+The author draws on the Stoic virtue of Temperance, one of the four cardinal virtues alongside Wisdom, Courage, and Justice. In software testing, temperance means allocating effort proportionately and making decisions based on risk and evidence—not adding or cutting tests mechanically because of habit, fear, industry convention, or external pressure.
+
+He quotes Marcus Aurelius in *Meditations*: “Do few things, if thou wouldst have tranquillity.” The author reads this as a call to focus on what is necessary, not to reduce testing to the bare minimum.
+
+Executing 5,000 test cases does not necessarily provide better assurance than executing 500 or even one. It depends on what those tests cover, which risks they address, and what the team learns from the results. Fewer tests do not automatically mean efficiency either. If payment, authorization, or data-integrity risks lack evidence, a fast test cycle cannot replace the missing assurance.
+
+**Practical extension:** Test efficiency and assurance effectiveness are different things. Efficiency focuses on execution time and maintenance cost. Assurance effectiveness asks whether testing can find important problems, reduce critical uncertainty, and help the team make a better decision.
+
+## Coverage tells us where we looked—not whether we looked deeply enough
+
+A dashboard showing 100% execution and all passing means the team completed the planned tests. If the plan missed an important integration, misunderstood a requirement, or skipped a high-impact scenario, passing everything does not prove that the system is safe or good. As the author puts it:
+
+> Coverage tells us where we've looked.
+
+Before reporting coverage, the team needs to agree on what is being counted:
+
+| Coverage type | What it can show | What it cannot prove on its own |
+| --- | --- | --- |
+| Requirements coverage | Which requirements are linked to tests | Whether requirements were understood correctly or verified deeply enough |
+| Code coverage | Which code ran during execution | Whether assertions are effective or business outcomes are correct |
+| Business-process coverage | Which user or business paths were checked | Whether exceptional paths and high-impact variations were tested sufficiently |
+| Risk coverage | Which identified risks have related checks | Whether unidentified risks still exist |
+
+For example, covering successful payment, failure, and refund does not automatically mean the team tested concurrent requests, duplicate charges, network timeouts, transaction rollback, and idempotency. Coverage is useful, but it needs context about the target, depth, and risk.
+
+## Regression tests need both entry and retirement rules
+
+If every defect adds a test and every release adds more functionality to the regression pack, while outdated and duplicate checks rarely leave, the suite keeps growing. As execution costs rise, teams may run out of time, take shortcuts, and face growing frustration from stakeholders who see testing as a delivery bottleneck.
+
+Low-value tests may repeat the same scenario or repeatedly check stable, low-risk behavior while taking time away from more complex new integrations. But “this feature has been stable for years” is not enough reason to delete a test. Some critical checks need to remain regardless of how many times they have passed.
+
+**Practical extension:** Give regression tests a lifecycle, not just admission rules:
+
+| Test type | Suggested handling |
+| --- | --- |
+| Critical business and high-risk checks | Keep, prioritize, and periodically confirm that they remain valid |
+| Checks related to recent changes | Select based on change impact; include in full regression when needed |
+| Duplicate or low-value checks | Consider merging, reducing frequency, or removing after equivalent evidence is identified |
+| Outdated, broken, or retired-feature checks | Repair, replace, or retire with a recorded reason |
+
+Retiring a test needs evidence—for example, the feature no longer exists, the risk has changed, or another more reliable check covers the same objective. “We have not seen a defect in years” is not a sufficient reason to remove a critical check.
+
+## Five questions to answer before recommending release
+
+Drawing on his background in Royal Air Force (RAF) aircraft engineering, the author argues that assurance should match the consequences of potential failure. A low-risk internal application and a financial transaction platform, regulated AI decision system, or safety-critical product cannot share one coverage threshold.
+
+| Question | What the answer should explain |
+| --- | --- |
+| Do we understand the risks? | Beyond the requirements: what could go wrong, who would be affected, and how serious the business consequences would be. |
+| Have we tested what matters most? | Critical journeys, important integrations, security, data integrity, and scenarios with the greatest failure impact. |
+| What evidence have we gathered? | Not just the number of passing tests, but which quality claims the results support. |
+| What have we not tested? | Untested areas, assumptions, and uncertainty that stakeholders need to understand. |
+| Would more testing change the decision? | Continue when additional testing could reveal significant risk; otherwise explain why it is unlikely to provide decision-relevant information. |
+
+These questions move the stop decision from “how much did we execute?” to “what can the current evidence support?” The author notes that additional testing may have diminishing returns, but the point depends on the system, its risks, and the quality of the evidence already available. There is no universal percentage.
+
+## Stopping tests is not the same as approving release
+
+**Practical extension:** Stopping testing and approving a release are separate decisions. A team may conclude that spending more of the same effort is unlikely to produce useful evidence while the remaining risk is still outside the organization’s tolerance. A team may also be forced to stop because time is up, without enough evidence to assess the risk.
+
+| Current evidence | Remaining risk | Suggested next step |
+| --- | --- | --- |
+| Sufficient | Acceptable | Make a release recommendation and state its evidence scope |
+| Sufficient | Unacceptable | Hold release, reduce the risk, or have an authorized owner explicitly accept it |
+| Insufficient | Unclear | Prioritize the missing evidence most likely to change the assessment |
+| Testing stopped because of time or capacity | Some items remain unverified | Disclose why testing stopped, the gaps, and the owner; do not describe “stopped” as “quality proven” |
+
+Testers are responsible for explaining risk, evidence, and uncertainty, and for making a professional recommendation. The release owner or the organization’s governance process decides whether to accept the risk. Test results do not replace that responsibility.
+
+## Is more testing worth it? Look at the information it can add
+
+**Practical extension:** A simple conceptual model can help evaluate additional testing:
+
+> Expected value of additional testing = probability of finding important new information × value of that information to the decision − cost of the additional testing
+
+Cost includes more than execution time: it can include maintenance effort and the cost of delaying delivery. This model is not a formula from the source article, and teams do not need to assign precise numbers to every term. It prompts a useful question: what decision could this test change? If it could uncover a high-impact risk, more testing may be justified even when the chance is small. If it would only repeat evidence already available, its marginal value may be low.
+
+## AI makes “enough testing” harder to prove
+
+Generative AI outputs vary with prompts, context, and runs. The same input may produce different answers, and a fluent response may still be wrong, incomplete, or misleading. Teams cannot enumerate every input, output, and combination, and simply increasing the number of tests does not solve the problem.
+
+The article calls for representative evaluation data, high-risk scenarios, repeated evaluations, and an understanding of statistical uncertainty. A hundred successful evaluations can provide useful evidence, but whether they are enough depends on the samples, observed variability, and consequences of an incorrect output.
+
+**Practical extension:** The Rule of Three can illustrate the limits of a sample with zero observed failures. If n independent evaluations from the same distribution show no failures, the approximate one-sided 95% upper confidence bound for the failure rate is 3/n:
+
+| Evaluations with zero failures | Approximate one-sided 95% upper bound |
+| ---: | ---: |
+| 100 | About 3% |
+| 300 | About 1% |
+| 1,000 | About 0.3% |
+| 3,000 | About 0.1% |
+
+So 100 successful evaluations do not prove that the true failure rate is zero. The approximation also depends on assumptions: samples are independent and identically distributed, and the evaluation method reliably detects failures. Correlated samples, unrepresentative data, evaluator errors, or a changing production input distribution make the bound a poor description of actual risk.
+
+Higher-risk AI applications call for more extensive evaluation, independent assurance, and monitoring after release. Lower-risk applications may use a lighter approach. In either case, offline evaluation and changes in real use need to be considered separately.
+
+## Connect risk, evidence, and the stop decision
+
+**Practical extension:** A risk-to-evidence map helps teams avoid relying on an overall coverage percentage. The examples below are illustrative; their statuses do not describe any real project:
+
+| Risk scenario | Potential impact | Evidence needed | Example status |
+| --- | --- | --- | --- |
+| Duplicate payment charge | High | Idempotency, concurrency, and failure-recovery checks | To verify |
+| Unauthorized access | High | Permission matrix, negative tests, and security verification | Verified |
+| Minor visual variation on a standard page | Low | Visual regression samples on key devices | Verified |
+| AI answer lacks supporting evidence | Depends on use case | Factuality evaluation, source checks, and repeated evaluation | Partially verified |
+
+A reviewable stop process can follow a few practical steps: identify material risks and non-negotiable release gates; select tests that provide relevant evidence; inspect result quality, untested assumptions, and remaining uncertainty; assess whether more testing could change the recommendation; then give the recommendation and residual risks to the authorized decision-maker.
+
+The record should include at least the test scope, key risks, results, untested areas, residual risks, expected value of additional testing, release recommendation, and accountable owner. That makes the stop point reviewable and lets someone later understand why the team made the decision it did.
+
+## The Quality Loop: let stop conditions follow changing risk
+
+The stop condition is not something to write once at project kickoff and never revisit. Escaped defects, user feedback, business changes, and new integrations all change risk—and may change the value of earlier evidence.
+
+The Quality Loop makes that continuous: record what testing found and missed; adjust the checks; capture the risk, evidence, and decision as context for the next cycle; then reassess when the product, prompt, data, model, or agent tool changes. Different models and agents can behave differently under the same method, so validate the current combination instead of treating earlier results as a permanent guarantee.
+
+This also gives AI-native Quality Engineering a practical direction: connect risk analysis, test selection, evidence validation, regression optimization, and release readiness as complementary capabilities. Automation or an agent can help organize results, find gaps, and compare regressions. Without agreed thresholds and decision authority, it should not declare that testing is “enough.” The loop should produce more reliable evidence and clearer decisions—not a one-time stopping number.
+
+## Three questions from the comments
+
+- Thabo Mahlangu points out that a small issue in an e-commerce cart and the same kind of issue in health tech or fintech have very different consequences. Testing thresholds need to change with the project’s risk profile.
+- Tinashe Maphela asks the hard operational question: when a regression pack keeps growing, what is the rule for retiring tests? Adding them is easy; removing them needs evidence.
+- Sharon Heying notes that product complexity, risk, and available time all shape test depth. Projects change, so the testing focus needs to be reassessed.
+
+The comments bring the article back to everyday work: how to adjust thresholds to risk, retire old tests, and decide when test depth should change. None has a context-free answer.
+
+## The decision depends on the evidence
+
+Stoic temperance asks us to focus on what we can control. Testers cannot guarantee software will have no defects. They can improve the testing approach, ask better questions, gather more reliable evidence, and explain uncertainty clearly.
+
+Before stopping, ask two more questions: Are we continuing because risk still needs investigation, or because nobody wants to make the release decision? Are we stopping because the evidence is sufficient, or because the project has run out of time?
+
+Good testing does not mean checking everything. It means checking the important risks well enough to support an informed decision—and making clear which risks remain. Sometimes temperance means stopping. Sometimes it means having a reason to keep testing.
+
+How Much Testing Is Enough? The Stoic Case for Knowing When to Stop: https://www.linkedin.com/pulse/how-much-testing-enough-stoic-case-knowing-when-stop-stephen-platten-l4xqe/
