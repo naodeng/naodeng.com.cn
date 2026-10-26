@@ -1,7 +1,7 @@
 ---
 title: "Dependency Failure Testing Skill: Make timeout, stale data, and partial failure observable"
 description: "Dependency Failure Testing field guide: model timeout, error, slow response, stale data, fallback, retry, and recovery evidence."
-date: 2026-11-05T09:00:00.000Z
+date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Dependency Failure Testing"]
@@ -54,7 +54,7 @@ A useful validation proposal names an isolated environment, synthetic or masked 
 
 ## Boundaries and related Skills
 
-Keep design facts, evidence-backed inferences, candidate recommendations, and Human decisions separate. Leave unsupported thresholds and provider behavior open for confirmation. [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/) examines retry policy; [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/) checks restoration to a safe state; [Circuit Breaker Testing](https://inaodeng.com/en/qaskills/circuit-breaker-testing/) focuses on breaker states and probe traffic.
+Keep design facts, evidence-backed inferences, candidate recommendations, and Human decisions separate. Leave unsupported thresholds and provider behavior open for confirmation. Retry Testing: https://inaodeng.com/en/qaskills/retry-testing/ examines retry policy; Recovery Testing: https://inaodeng.com/en/qaskills/recovery-testing/ checks restoration to a safe state; Circuit Breaker Testing: https://inaodeng.com/en/qaskills/circuit-breaker-testing/ focuses on breaker states and probe traffic.
 
 ## Install and invoke
 
@@ -66,4 +66,4 @@ Invoke dependency-failure-testing with the dependency contract, caller and depen
 
 ## Source
 
-Read the [Dependency-Failure Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md) before use. It defines the DPF-## output contract and failure-mode/caller/dependency/side-effect matrix.
+Read the Dependency-Failure Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md before use. It defines the DPF-## output contract and failure-mode/caller/dependency/side-effect matrix.

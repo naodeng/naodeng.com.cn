@@ -1,7 +1,7 @@
 ---
 title: "错误处理设计评审：失败模式与恢复"
 description: "在实现前评审失败模式、重试安全性、错误传播、数据一致性、可观察性和恢复路径。"
-date: 2026-11-02T09:00:00.000Z
+date: 2026-11-13T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "错误处理设计评审"]
@@ -18,7 +18,7 @@ series: ["Awesome QA Skills 实战"]
 
 当团队需要跨失败模式评审“失败分类、调用方动作、可重试性、回退、可观察性、隐私、数据一致性和恢复”时，使用错误处理设计评审 Skill。它准备发现项与验证动作，不执行故障注入，也不证明运行行为正确。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦错误处理设计评审。
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill。系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 解释通用安装方式，本文只聚焦错误处理设计评审。
 
 好的评审会沿着同一个失败检查三层契约：调用方得到安全且稳定的结果，运维拿到足以诊断问题且符合隐私要求的证据，系统则保持数据一致，或明确需要由谁决定恢复方式。
 
@@ -162,9 +162,9 @@ series: ["Awesome QA Skills 实战"]
 
 ## 和其他 Skill 怎么配合
 
-- [API 错误契约测试](https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/)：检查机器可读的失败响应。
-- [根因分析](https://inaodeng.com/zh-cn/qaskills/root-cause-analysis/)：在设计评审后追踪失败根因。
-- [恢复测试](https://inaodeng.com/zh-cn/qaskills/recovery-testing/)：验证设计出的恢复路径。
+- API 错误契约测试: https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/；检查机器可读的失败响应。
+- 根因分析: https://inaodeng.com/zh-cn/qaskills/root-cause-analysis/；在设计评审后追踪失败根因。
+- 恢复测试: https://inaodeng.com/zh-cn/qaskills/recovery-testing/；验证设计出的恢复路径。
 
 ## 容易踩的坑
 
@@ -196,16 +196,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [错误处理设计评审提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review) 中包含入口文件以及实际存在的配套资料。
+完整执行契约见错误处理设计评审提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review 中包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束失败分类、用户动作、可重试性、回退、可观察性、隐私和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 错误处理设计评审提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)
+- 错误处理设计评审提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md
 
-- Awesome QA Skills：错误处理设计评审 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review)
+- Awesome QA Skills：错误处理设计评审 源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review
 
-- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 项目主页: https://github.com/naodeng/awesome-qa-skills
 
-- 错误处理设计评审 详情页:[https://inaodeng.com/zh-cn/qaskills/error-handling-design-review/](https://inaodeng.com/zh-cn/qaskills/error-handling-design-review/)
+- 错误处理设计评审 详情页: https://inaodeng.com/zh-cn/qaskills/error-handling-design-review/

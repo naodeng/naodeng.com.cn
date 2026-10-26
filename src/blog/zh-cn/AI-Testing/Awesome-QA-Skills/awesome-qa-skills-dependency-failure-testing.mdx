@@ -1,7 +1,7 @@
 ---
 title: "依赖故障测试 Skill：让超时、过期数据和部分失败都可观察"
 description: "依赖故障测试实战指南：建模超时、错误、慢响应、过期数据、回退、重试和恢复证据。"
-date: 2026-11-05T09:00:00.000Z
+date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "依赖故障测试"]
@@ -54,7 +54,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 结论边界与相关 Skill
 
-事实、基于证据的推断、候选建议和人工决策要分开写。没有来源支持的阈值与提供方行为应留待确认。[重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)复核重试策略；[恢复测试](https://inaodeng.com/zh-cn/qaskills/recovery-testing/)检查系统是否回到安全状态；[熔断器测试](https://inaodeng.com/zh-cn/qaskills/circuit-breaker-testing/)聚焦熔断状态与探测流量。
+事实、基于证据的推断、候选建议和人工决策要分开写。没有来源支持的阈值与提供方行为应留待确认。重试测试: https://inaodeng.com/zh-cn/qaskills/retry-testing/；复核重试策略；恢复测试: https://inaodeng.com/zh-cn/qaskills/recovery-testing/；检查系统是否回到安全状态；熔断器测试: https://inaodeng.com/zh-cn/qaskills/circuit-breaker-testing/；聚焦熔断状态与探测流量。
 
 ## 安装与调用
 
@@ -66,4 +66,4 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 源文件
 
-使用前请阅读[依赖故障测试 Prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md)。其中定义了 DPF-## 输出契约，以及故障模式×调用方/依赖/副作用矩阵。
+使用前请阅读依赖故障测试 Prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing/prompts/dependency-failure-testing.md。其中定义了 DPF-## 输出契约，以及故障模式×调用方/依赖/副作用矩阵。

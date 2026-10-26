@@ -1,7 +1,7 @@
 ---
 title: "Agent Memory Testing Skill: Keep remembered facts scoped, current, and safe to reuse"
 description: "Agent Memory Testing field guide: review memory scope, retrieval, staleness, deletion, consent, and evidence across conversations."
-date: 2026-10-26T09:00:00.000Z
+date: 2026-11-03T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Agent Memory Testing"]
@@ -38,7 +38,7 @@ Compare the deletion request with evidence for the index, cache, and backup scop
 
 ## Distinguish memory lifecycle from access permission
 
-Memory testing follows stored state over time: provenance, freshness, tenant isolation, retention, and forgetting. [Agent Permission Testing](https://inaodeng.com/en/qaskills/agent-permission-testing/) evaluates whether a principal may perform a particular read or tool action. Both can matter, but one result does not establish the other.
+Memory testing follows stored state over time: provenance, freshness, tenant isolation, retention, and forgetting. Agent Permission Testing: https://inaodeng.com/en/qaskills/agent-permission-testing/ evaluates whether a principal may perform a particular read or tool action. Both can matter, but one result does not establish the other.
 
 ## Record an AMT-## finding
 
@@ -50,8 +50,8 @@ Review supplied policies, memory records, retrieval traces, and deletion evidenc
 
 ## Related Skills
 
-- [Agent Permission Testing](https://inaodeng.com/en/qaskills/agent-permission-testing/) checks identity and action authorization.
-- [RAG Retrieval Testing](https://inaodeng.com/en/qaskills/rag-retrieval-testing/) traces retrieval coverage and source selection.
+- Agent Permission Testing: https://inaodeng.com/en/qaskills/agent-permission-testing/ checks identity and action authorization.
+- RAG Retrieval Testing: https://inaodeng.com/en/qaskills/rag-retrieval-testing/ traces retrieval coverage and source selection.
 
 ## Install and invoke
 
@@ -63,4 +63,4 @@ Invoke agent-memory-testing with the memory policy, tenant scope, item versions,
 
 ## Source
 
-Read the [Agent Memory Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing/prompts/agent-memory-testing.md). It defines the AMT-## finding contract and the evidence boundary for update, retention, isolation, and deletion.
+Read the Agent Memory Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing/prompts/agent-memory-testing.md. It defines the AMT-## finding contract and the evidence boundary for update, retention, isolation, and deletion.

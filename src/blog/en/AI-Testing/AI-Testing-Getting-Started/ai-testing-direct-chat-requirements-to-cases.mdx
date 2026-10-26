@@ -1,0 +1,82 @@
+---
+title: "Direct Chat for Software Testing: From Requirements to Test Cases"
+description: "Use a phone-number login example to provide business context in stages, clarify unknown rules, and turn AI analysis into executable, evidence-based test cases."
+date: 2026-10-27T09:06:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Requirements Analysis", "Test Cases"]
+categories: ["AI Testing"]
+series: ["AI 软件测试入门与实践：从会用到用好"]
+---
+
+When people first use AI for testing, they often paste in one requirement and ask for test cases. The model may return familiar scenarios, but it is not always clear which details came from the requirement and which ones it added on its own.
+
+You can use a chat to analyze requirements and design tests. Treat it as a discussion with checkpoints, though—not a one-shot answer generator.
+
+## Start with a requirement and ask what is unknown
+
+For this exercise, the requirement is: “Users can log in with a phone number and a verification code. After a new user successfully verifies for the first time, an account is created automatically.”
+
+Do not ask AI to write test cases in the first round. Ask it to identify what the requirement does and does not tell you:
+
+> Based on this requirement, list the confirmed rules, missing information, potential risks, and questions that need confirmation. Do not add behavior that the requirement does not specify, and do not generate test cases yet.
+
+The first response should give you questions to investigate. How long is a code valid? Is sending rate-limited? How many incorrect attempts trigger a restriction? Can a disabled user log in? Is the account created when a code is sent or only after verification succeeds? Could a retry or duplicate submission create the account twice? How do the logs avoid recording verification codes?
+
+These are open questions, not confirmed rules.
+
+## Keep confirmed facts separate from open questions
+
+Suppose the business team confirms four rules for the exercise: a code is valid for five minutes; each phone number can request at most 20 codes per day; five consecutive incorrect attempts trigger a 15-minute lockout; and a new account is created only after the first successful verification. Paste those facts back into the conversation and ask AI to keep marking the remaining unknowns.
+
+| Information | Current status | Testing impact |
+| --- | --- | --- |
+| Verification codes expire after five minutes | Confirmed | Test behavior before and after expiry |
+| Each phone number can request at most 20 codes per day | Confirmed | Verify the rate limit and reset time |
+| Is a code still valid at exactly 300 seconds? | Needs confirmation | Do not hard-code a boundary expectation yet |
+| How are concurrent requests counted? | Needs confirmation | Requires a product or API rule |
+| Five incorrect attempts trigger a 15-minute lockout | Confirmed | Confirm whether the counter spans codes or sessions |
+| How is a failed registration rolled back? | Needs confirmation | Check for a partially created account |
+
+These rules are teaching assumptions. In a real project, replace them with rules confirmed by Product and Engineering, and keep their sources.
+
+## Move the conversation toward test scenarios
+
+Once you have business facts, ask AI to organize scenarios around the business flow instead of maximizing the number of cases:
+
+> Design test scenarios using only the confirmed rules below. Cover normal, error, boundary, concurrency, security, and observability behavior. For each scenario, cite the rule it comes from. Mark an expected behavior as “Needs confirmation” if there is no supporting evidence. Start with scenarios; do not invent API status codes or page copy.
+
+Initial scenarios might include login with a valid code, an incorrect or expired code, another request after the daily limit is reached, the lockout after the failed-attempt threshold, and account creation after the first successful login. A tester still needs to decide which risks are missing and which scenarios depend on product behavior that has not been confirmed.
+
+After the scenarios are reviewed, turn one into an executable test case. For example, “An incorrect verification code must not create an account” requires more than checking an error message. You also need to verify that no account was created. The exact observation point depends on the project’s API, data access rules, and test environment.
+
+### Turn a scenario into a reviewable test case
+
+The following is an example record for training. It does not describe a real product. Its business rule comes from the exercise above; replace it with a confirmed rule and test data in a real project.
+
+| Field | Example |
+| --- | --- |
+| Test case ID | `LOGIN-OTP-EX-01` (sample ID) |
+| Rule | A new account is created only after the first successful verification (exercise assumption) |
+| Preconditions | Use an unregistered test number and prepare a valid code in an isolated environment |
+| Action | Submit the code and complete login |
+| Expected result | Login succeeds; account creation follows the confirmed rule |
+| Evidence | Redacted test identity, rule source, environment and build version, request or validation event ID, before-and-after account lookup, and execution time |
+
+Do not put the verification code itself in the report. A “login successful” message does not prove the account was created exactly once; use an allowed account-state or audit record. If duplicate-submission behavior has no product rule, or you cannot access evidence of the resulting state, mark it “Needs confirmation” or “Insufficient evidence.” Do not mark it as passed. This is a test-design example, not a report of an executed test.
+
+## Keep useful context in the conversation
+
+AI may not know how your system works. Along with the requirement, provide the task-relevant context: user types, business rules, state transitions, roles and permissions, system boundaries, relevant APIs, known defects, environment limits, and test-data strategy. Redact production data, personal information, and credentials according to your team’s rules before sharing anything.
+
+There is another risk in multi-turn conversations: a constraint confirmed earlier can get weakened or forgotten in a later response. Keep a short list of confirmed rules and quote it again when you move to a new stage. Record the source and the person who confirmed important decisions. A chat transcript should not be your only source of truth.
+
+## Check whether the response is useful
+
+Do not judge the result by whether it looks good in a table. Check that each case traces to a requirement or confirmed rule, its preconditions and steps are executable, error paths and state changes are covered, and unknowns are labeled honestly. When you find a specific issue, tell AI what is wrong and ask it to revise that part. “Make it more complete” is too vague to be useful.
+
+Try this with a current requirement: start with a list of facts and open questions, get the business rules confirmed, and only then generate scenarios and cases. You may end up with fewer cases, but they will be easier to bring into a real review.
+
+This is also where the quality loop starts. Record omissions, false assumptions, and useful additions from each conversation. Test or review the revised scenarios against the requirement, then carry confirmed rules and real findings into the next round. Do not save guesses as reusable context; that just makes the next conversation repeat the same mistake. When the business, Agent tool, or model changes, check that the context still applies.
+
+The next article turns the parts of this conversation that proved useful into a Prompt template that can be reused and revised.

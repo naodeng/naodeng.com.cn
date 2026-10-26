@@ -1,7 +1,7 @@
 ---
 title: "Error Handling Design Review: Failure Modes and Recovery"
 description: "Review failure modes, retry safety, propagation, data consistency, observability, and recovery before implementation."
-date: 2026-11-02T09:00:00.000Z
+date: 2026-11-13T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Error Handling Design Review"]
@@ -18,7 +18,7 @@ Error Handling Design Review checks whether each designed failure path has an ev
 
 Use this Skill to review failure taxonomy, caller action, retryability, fallback, observability, privacy, data consistency, and recovery across distinct failure modes. It prepares findings and validation actions; it does not run fault injection or prove the behavior works at runtime.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Error Handling Design Review.
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage. The series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model; this guide stays with Error Handling Design Review.
 
 A useful review follows one failure across three contracts: the caller gets a safe and stable result, the operator gets enough privacy-safe evidence to diagnose it, and the system preserves data consistency or names the required recovery decision.
 
@@ -162,9 +162,9 @@ A richer input changes the answer here because failure taxonomy, user action, re
 
 ## Working with other Skills
 
-- [API Error Contract Testing](https://inaodeng.com/en/qaskills/api-error-contract-testing/):checks machine-readable failure responses.
-- [Root Cause Analysis](https://inaodeng.com/en/qaskills/root-cause-analysis/):follows failures after the design review.
-- [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/):verifies the designed recovery path.
+- API Error Contract Testing: https://inaodeng.com/en/qaskills/api-error-contract-testing/ — checks machine-readable failure responses.
+- Root Cause Analysis: https://inaodeng.com/en/qaskills/root-cause-analysis/ — follows failures after the design review.
+- Recovery Testing: https://inaodeng.com/en/qaskills/recovery-testing/ — verifies the designed recovery path.
 
 ## Common traps
 
@@ -198,16 +198,16 @@ The example above is a design and review pattern, not an execution result. Keep 
 
 ### Source Skill and execution contract
 
-The complete execution contract lives in the [Error Handling Design Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review) contains the entry point and supporting assets where they exist.
+The complete execution contract lives in the Error Handling Design Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md. Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review contains the entry point and supporting assets where they exist.
 
 The entry point centers failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
 
 ### Reference links
 
-- Error Handling Design Review prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md)
+- Error Handling Design Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md
 
-- Awesome QA Skills: Error Handling Design Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review)
+- Awesome QA Skills: Error Handling Design Review source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
 
-- Error Handling Design Review details:[https://inaodeng.com/en/qaskills/error-handling-design-review/](https://inaodeng.com/en/qaskills/error-handling-design-review/)
+- Error Handling Design Review details: https://inaodeng.com/en/qaskills/error-handling-design-review/

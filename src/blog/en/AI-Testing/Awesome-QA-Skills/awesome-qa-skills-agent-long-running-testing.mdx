@@ -1,7 +1,7 @@
 ---
 title: "Agent Long-Running Testing Skill: Keep progress, leases, and cancellation visible during long jobs"
 description: "Agent Long-Running Testing field guide: review progress, checkpoints, leases, cancellation, and evidence across extended agent jobs."
-date: 2026-10-28T09:00:00.000Z
+date: 2026-11-07T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Agent Long-Running Testing"]
@@ -18,7 +18,7 @@ Agent Long-Running Testing examines whether extended jobs make progress, preserv
 
 The Agent Long-Running Testing Skill is useful when a team needs a structured review of progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Agent Long-Running Testing.
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage. The series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model; this guide stays with Agent Long-Running Testing.
 
 Use it when the team needs a repeatable review of progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics—especially when several evidence sources disagree or a handoff must explain what remains unverified.
 
@@ -172,9 +172,9 @@ If the first request contains only a one-line goal, the output should stay limit
 
 ## Working with other Skills
 
-- [Agent Failure Recovery Testing](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/): covers failure and recovery decisions around the long job.
-- [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/):focuses on time-bound interruption behavior.
-- [Production Verification](https://inaodeng.com/en/qaskills/production-verification/):checks live progress and operational signals.
+- Agent Failure Recovery Testing: https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/ — covers failure and recovery decisions around the long job.
+- Timeout Testing: https://inaodeng.com/en/qaskills/timeout-testing/ — focuses on time-bound interruption behavior.
+- Production Verification: https://inaodeng.com/en/qaskills/production-verification/ — checks live progress and operational signals.
 
 ## Common traps
 
@@ -214,16 +214,16 @@ The example above is a design and review pattern, not an execution result. Keep 
 
 ### Source Skill and execution contract
 
-The complete execution contract lives in the [Agent Long-Running Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing) also contains the entry point and supporting assets where they exist.
+The complete execution contract lives in the Agent Long-Running Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md. Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing also contains the entry point and supporting assets where they exist.
 
 The entry point centers progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
 
 ### Reference links
 
-- Agent Long-Running Testing:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md)
+- Agent Long-Running Testing: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md
 
-- Awesome QA Skills: Agent Long-Running Testing source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing)
+- Awesome QA Skills: Agent Long-Running Testing source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
 
-- Agent Long-Running Testing details:[https://inaodeng.com/en/qaskills/agent-long-running-testing/](https://inaodeng.com/en/qaskills/agent-long-running-testing/)
+- Agent Long-Running Testing details: https://inaodeng.com/en/qaskills/agent-long-running-testing/

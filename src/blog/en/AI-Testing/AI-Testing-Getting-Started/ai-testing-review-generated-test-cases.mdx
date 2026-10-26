@@ -1,0 +1,90 @@
+---
+title: "Can You Trust AI-Generated Test Cases? Finding Gaps and Weak Assertions"
+description: "Use requirement traceability, risk coverage, and assertion review to find omissions, unsupported assumptions, unexecutable steps, and false passes in AI-generated test cases."
+date: 2026-10-31T09:02:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Test Cases", "Quality Review"]
+categories: ["AI Testing"]
+series: ["AI 软件测试入门与实践：从会用到用好"]
+---
+
+When AI generates dozens of test cases at once, it is easy to assume that coverage must be adequate. The count says nothing about whether critical risks are covered, and it does not prove that each expected result has a source.
+
+Review each case back to its requirement and risk. Then check whether the steps and assertions can actually reveal a fault.
+
+## Start with traceability
+
+Give the confirmed login rules IDs and have each case refer to a relevant rule or risk:
+
+| Rule | Testing focus |
+| --- | --- |
+| R-01: Verification codes are valid for five minutes | Within the valid period, after expiry, and the boundary still needs confirmation |
+| R-02: Each phone number can request at most 20 codes per day | Behavior at the limit; the counting window still needs confirmation |
+| R-03: Five consecutive incorrect attempts trigger a 15-minute lockout | The fifth failure, requests during lockout, and the reset condition |
+| R-04: An account is created after the first successful verification | Account creation after success and no partial account after failure |
+
+These are still exercise assumptions from the series. Real cases should cite the project requirement ID, API contract, or decision record. If an expected result has no source, mark it as needing confirmation rather than treating it as product behavior.
+
+## The problem is not only missing coverage
+
+| Issue | Example | Why it matters |
+| --- | --- | --- |
+| Coverage gap | No check for an expired code or for the end of a lockout | A critical state may never be tested |
+| Unsupported assumption | The case invents an HTTP 400 response or “Incorrect code” message | The actual contract may differ |
+| Weak assertion | It checks a successful response but not the account state | A response can look correct while the business outcome is wrong |
+| Unexecutable steps | It does not explain how to prepare an expired code or reach the rate limit | Testers cannot reproduce the case reliably |
+| False pass | The test is skipped, an exception is swallowed, or an assertion is always true | The result cannot support a quality claim |
+
+Check side effects on failure paths too. After an incorrect code is rejected, did the system still create an account? Checking only for an error message could miss a changed data state.
+
+> Image to add: annotate one AI-generated case with its requirement source, execution conditions, assertions, and side-effect checks to show how review exposes a weak assertion.
+
+## A practical review checklist
+
+For each case, ask:
+
+- Can the expected result be traced to a requirement, API contract, or confirmed behavior?
+- Does the set cover normal and error paths, boundaries, state changes, permissions, and important dependencies?
+- Can the preconditions and test data be prepared consistently, and can the steps be repeated?
+- Do assertions check the business outcome and relevant data side effects, not just a page or status code?
+- Could the test pass because it was skipped, an exception was caught and ignored, an assertion was empty, or the environment happened to behave a certain way?
+
+If an important test passes, ask one more question: would it fail if the target behavior were broken on purpose? A controlled test double or a small mutation can help verify that an assertion is effective. Do not break functionality casually in a shared or production environment.
+
+## Example: trace a rule to an assertion
+
+The example below uses the exercise rule R-03, “Five consecutive incorrect attempts trigger a 15-minute lockout.” It shows a review method; it does not describe an actual product rule or test run.
+
+| Review item | What to check | How to interpret the result |
+| --- | --- | --- |
+| Requirement source | Does the case cite R-03 and its version, rather than adding a rule from experience? | Without a source or version, the expected result needs confirmation |
+| Boundary inputs | What happens on failures 1–4, the fifth attempt, and during lockout? | A case that only checks for an error message has not covered the threshold |
+| Observation point | Can you inspect authentication or server-side lockout state, rather than only page copy? | A message alone does not confirm the server state changed |
+| Timing | When does the 15-minute period start, and how is its end boundary handled? | If the rule does not define inclusivity, record an open question |
+| Execution evidence | Record the case ID, environment, data identity, run time, assertion result, and raw report location | An unrun case remains unverified; its design is not a pass |
+
+If an AI-generated case does not distinguish the fourth from the fifth attempt, identify that missing boundary and ask for an expected result with a source. If the rule does not define the response during lockout, list it as a question. Do not invent a status code or message for Product.
+
+## Ask AI to find problems, not to certify its own work
+
+You can use this instruction for a second review of generated cases:
+
+    Review the following test cases. Do not add more cases.
+    For each case, check:
+    - whether it has a requirement source and turns unknown rules into facts;
+    - whether it misses important states, boundaries, failure paths, or side effects;
+    - whether its preconditions and steps can be executed consistently;
+    - whether its assertions can detect the target problem;
+    - whether the test could still pass when the feature is wrong.
+    Cite the requirement as evidence. Mark anything you cannot confirm as “Needs confirmation.”
+
+This review can share the same blind spots as the model that generated the cases. It is a screening aid, not an independent certification. Higher-risk behavior still needs review by testers, Product, or Engineering, plus execution and evidence from the real test environment.
+
+The source notes mention AI Test Auditor as a related project for reviewing generated tests. Check its current documentation before publication to confirm that it is still a suitable reference.
+
+AI Test Auditor: https://github.com/naodeng/ai-test-auditor
+
+Try a small exercise: choose a few existing cases, add their requirement sources, check the boundaries and assertions, and record the types of issues you find. That will show you more about the distance between generated cases and trustworthy tests than doubling the case count.
+
+Add review findings to the quality loop. Record omissions, unsupported expectations, weak assertions, and unexecutable steps separately. After revising the requirement context, generation Prompt, or review rules, regenerate and review the same representative samples. Only confirmed business decisions belong in reusable references; keep open questions marked as open. Update the regression set when requirements, models, or Agent tools change. One review does not provide a permanent guarantee.

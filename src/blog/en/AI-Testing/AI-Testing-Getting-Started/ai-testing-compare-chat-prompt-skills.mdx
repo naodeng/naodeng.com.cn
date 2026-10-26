@@ -1,0 +1,66 @@
+---
+title: "One Requirement, Three Approaches: Direct Chat, Prompts, and Skills"
+description: "Design a reviewable experiment that compares direct chat, Prompts, and a Skill using the same requirement, model, and scoring criteria—without inventing results."
+date: 2026-10-30T09:03:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Prompts", "Skills"]
+categories: ["AI Testing"]
+series: ["AI 软件测试入门与实践：从会用到用好"]
+---
+
+Which works better for testing: a direct question, a Prompt, or a Skill? A few sample responses cannot answer that. Model versions, requirement materials, conversation history, and run settings can all affect the output. If the conditions differ between groups, you are comparing three different experiments—not three ways of working.
+
+This article lays out a comparison method. The source notes do not contain measured results, so it does not declare a winner. Fill in the result table after running the same samples under controlled conditions.
+
+## Prepare a review reference first
+
+For the phone-number login requirement, ask someone who knows the business to prepare a reference list: confirmed rules, important risks, open questions, and acceptable output requirements. For example, the five-minute code expiry may be confirmed while the exact 300-second boundary remains unknown. Raising that question is useful; choosing an answer without evidence is not.
+
+Prepare the reference before reading outputs from the three approaches. Otherwise, reviewers can mistake a model’s suggestion for the “correct answer.” The reference does not need to cover every possibility. It needs to identify the important conditions the team can support with evidence.
+
+## Control the inputs and change only the approach
+
+Set up three groups:
+
+- **Direct chat:** ask the same testing question in concise natural language.
+- **Prompt:** use the structured template from the previous article.
+- **Skills:** invoke a reviewed requirement-analysis or test-design Skill.
+
+Use the same requirement, context, model version, and settings in all three groups. Start each run in a clean session so one group does not inherit context from another. Record the tool, model, Prompt or Skill version, and the total time until the result is ready to deliver. Run each approach at least three times if possible; compare consistency instead of presenting only its best run. If time or budget limits the number of runs, say so in the report.
+
+> Image to add: once the experiment has been run, show anonymized outputs from all three groups beside the same scoring record. There are no measured results yet, so do not present an illustration as data.
+
+## Do not score by test-case count
+
+| Observation | What to record |
+| --- | --- |
+| Critical gaps found | How many pre-marked important unknowns were identified |
+| Unsupported conclusions | How many unconfirmed rules were stated as facts |
+| Risk coverage | Whether important states, boundaries, failure paths, and side effects were addressed |
+| Executability | Whether preconditions, steps, and expected results can be used in the project |
+| Format compliance | Whether the output meets agreed fields and traceability requirements |
+| Consistency | Whether repeated runs find similar issues and how much scores vary |
+| Human effort | Time spent on follow-up, review, and revision |
+
+If you calculate a rate, define the denominator. For example, “critical-gap recall” can be the number of pre-marked critical gaps found divided by the total number on the reference list. It measures only that list; it does not prove that every unknown risk has been found.
+
+If completeness also matters, agree on scoring rules before the experiment and have reviewers score independently. For example, 0 could mean “not identified,” 1 “mentioned without a source or action,” and 2 “supported by evidence with a next step.” Count unsupported conclusions separately so strong scores elsewhere cannot hide them. This scale is only an example for the experiment team to adapt; write the actual criteria down before running the comparison.
+
+## Interpret results in the context of the task
+
+If direct chat quickly finds the important issues and a Prompt or Skill only makes the format more consistent, a simple task may not justify the extra maintenance. If a Skill reduces omissions and rework, check whether it also requires more materials or is harder to maintain. If all three approaches score similarly, choosing the lightest method the team can keep using is reasonable.
+
+Review bias matters too. Hide which approach produced each result where possible, and have two reviewers use the same criteria before discussing disagreements. Keep “looks professional” separate from “has evidence and can be executed.” Familiarity with a tool should not automatically earn it a higher score.
+
+For disputed items, return to the requirement and reference list. Record the evidence each reviewer cites, then decide whether the scoring rules need clarification. Do not average away a disagreement first. If reviewers define a critical gap differently, revise the list or mark the result as unresolved before comparing the approaches.
+
+| Approach | Critical gaps | Unsupported claims | Format | Consistency | Human revision time | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| Direct chat | To be measured | To be measured | To be measured | To be measured | To be measured |  |
+| Prompt | To be measured | To be measured | To be measured | To be measured | To be measured |  |
+| Skills | To be measured | To be measured | To be measured | To be measured | To be measured |  |
+
+This is a blank record, not a test result. If a later version of the article reports a conclusion, include the samples, model settings, run count, and review method so readers know what it applies to.
+
+Use the comparison to improve the quality loop. Record which inputs led to omissions, which context reduced guessing, and where human revisions clustered. Adjust the Prompt, Skill, or workflow, then rerun the same samples. Recheck when the Agent, model, or business context changes; do not carry an old ranking over automatically. The experiment should answer a narrower question: for this task, which approach best balances quality, time, reuse, and maintenance cost? The next article turns to the generated test cases themselves and checks whether they cover requirements and risks.

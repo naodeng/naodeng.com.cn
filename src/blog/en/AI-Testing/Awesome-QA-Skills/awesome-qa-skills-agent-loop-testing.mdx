@@ -1,7 +1,7 @@
 ---
 title: "Agent Loop Testing: Measure Progress and Stop Safely"
 description: "Trace plans, tool actions, observations, state changes, and budgets to spot repeated work and unsafe loop termination."
-date: 2026-10-27T09:00:00.000Z
+date: 2026-11-06T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Agent Loop Testing"]
@@ -23,7 +23,7 @@ Use the Agent Loop Testing Skill to review the loop as a sequence of evidence-be
 - Check the project-supplied no-progress limit, retry policy, time and cost budgets, and authorized stop, strategy-change, or escalation branch.
 - Report the trigger step, termination class, remaining work, and evidence that no extra effects occurred.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage; the [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model.
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage; the series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model.
 
 ## Scope and limits
 
@@ -89,9 +89,9 @@ A downstream reviewer should be able to explain why the agent continued or stopp
 
 ## Related Skills
 
-- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/) provides wider behavior and goal context.
-- [Timeout Testing](https://inaodeng.com/en/qaskills/timeout-testing/) examines time-bound stop and failure behavior.
-- [Agent Failure Recovery Testing](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/) handles recovery after a failed action; loop testing focuses on progress and termination across iterations.
+- AI Agent Testing: https://inaodeng.com/en/qaskills/ai-agent-testing/ provides wider behavior and goal context.
+- Timeout Testing: https://inaodeng.com/en/qaskills/timeout-testing/ examines time-bound stop and failure behavior.
+- Agent Failure Recovery Testing: https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/ handles recovery after a failed action; loop testing focuses on progress and termination across iterations.
 
 ## Common traps
 
@@ -139,7 +139,7 @@ A bounded handoff: the blocking condition, attempts already made, evidence still
 
 ### Source Skill and execution contract
 
-The [Agent Loop Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md) defines the input audit, trace procedure, `ALT-##` finding contract, and output order. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing) contains the entry point and supporting material.
+The Agent Loop Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing/prompts/agent-loop-testing.md defines the input audit, trace procedure, `ALT-##` finding contract, and output order. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-loop-testing contains the entry point and supporting material.
 
-- [Agent Loop Testing details](https://inaodeng.com/en/qaskills/agent-loop-testing/)
-- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- Agent Loop Testing details: https://inaodeng.com/en/qaskills/agent-loop-testing/
+- Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills

@@ -1,7 +1,7 @@
 ---
 title: "身份认证测试：追踪凭据与会话生命周期"
 description: "围绕登录、多因素认证、恢复、过期、重放和撤销建模认证状态与凭据生命周期，将策略缺口和已确认故障分开。"
-date: 2026-10-31T09:00:00.000Z
+date: 2026-10-30T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "身份认证测试"]
@@ -18,7 +18,7 @@ series: ["Awesome QA Skills 实战"]
 
 身份认证测试 Skill 会围绕凭据、身份状态、失败路径和生命周期，组织有证据边界的场景。它可根据脱敏需求、令牌元数据、会话记录、审计事件和现有报告，准备可复核的验证候选。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 介绍通用安装方式；本文聚焦身份验证和凭据生命周期。
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill。系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 介绍通用安装方式；本文聚焦身份验证和凭据生命周期。
 
 ## 建模状态迁移，而不只看登录表单
 
@@ -84,9 +84,9 @@ Skill 不会登录系统、调用真实 API、读取凭据或执行这个候选�
 
 ## 和其他 Skill 配合
 
-- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)检查已认证身份可以执行哪些操作。
-- [会话安全测试](https://inaodeng.com/zh-cn/qaskills/session-security-testing/)聚焦会话连续性与隔离。
-- [API 安全测试](https://inaodeng.com/zh-cn/qaskills/api-security-testing/)检查 API 边界上的安全控制。
+- 授权测试: https://inaodeng.com/zh-cn/qaskills/authorization-testing/；检查已认证身份可以执行哪些操作。
+- 会话安全测试: https://inaodeng.com/zh-cn/qaskills/session-security-testing/；聚焦会话连续性与隔离。
+- API 安全测试: https://inaodeng.com/zh-cn/qaskills/api-security-testing/；检查 API 边界上的安全控制。
 
 ## 常见错误
 
@@ -115,7 +115,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 参考
 
-调用 Skill 前先阅读[身份认证测试 Prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md)，其中定义 AUT-## 场景、证据边界和发现合同。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing)包含入口文件和可能存在的配套资料。
+调用 Skill 前先阅读身份认证测试 Prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md，其中定义 AUT-## 场景、证据边界和发现合同。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing；包含入口文件和可能存在的配套资料。
 
-- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
-- [身份认证测试详情](https://inaodeng.com/zh-cn/qaskills/authentication-testing/)
+- Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills
+- 身份认证测试详情: https://inaodeng.com/zh-cn/qaskills/authentication-testing/

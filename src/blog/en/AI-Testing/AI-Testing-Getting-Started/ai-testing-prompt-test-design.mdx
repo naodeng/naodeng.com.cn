@@ -1,0 +1,96 @@
+---
+title: "Using Prompts for Software Testing: Getting More Useful AI Outputs"
+description: "Break down a testing Prompt into its task, evidence, steps, constraints, and output requirements, then refine it without turning unknown rules into facts."
+date: 2026-10-28T09:05:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Prompts", "Test Design"]
+categories: ["AI Testing"]
+series: ["AI 软件测试入门与实践：从会用到用好"]
+---
+
+The same model may spot a gap in one requirement and return a generic list of “normal, error, and boundary” cases for another. Model capability matters, but so does how clearly you describe the task.
+
+A Prompt should make the work, available evidence, analysis steps, boundaries, and deliverable clear. A role description can help set a point of view or tone, but it cannot replace those details.
+
+## What a testing Prompt needs to say
+
+Use phone-number login with a verification code as an example. A Prompt can include these parts:
+
+| Part | What to specify |
+| --- | --- |
+| Task | Is this a requirement review, risk analysis, or test-case design? |
+| Inputs | Requirements, confirmed rules, API contracts, and system boundaries |
+| Steps | Extract facts first, identify gaps, then analyze risks and scenarios |
+| Constraints | Do not invent error codes, messages, state transitions, or unconfirmed rules |
+| Output | How to present rules, questions, risks, scenarios, and test cases |
+| Self-check | Can each expected result be traced to a requirement? Are unknowns labeled? |
+
+Filling in this structure is more useful than adding only “You are a senior test engineer.” A role does not tell the model when a verification code expires, and it cannot make up for a missing requirement.
+
+## A template you can adapt
+
+~~~text
+Task: Analyze the login requirement below and design test cases for confirmed behavior.
+
+Requirement:
+{Paste the requirement}
+
+Confirmed rules:
+{List rules confirmed by Product or Engineering, with their sources}
+
+Project context:
+{API, roles and permissions, system boundaries, environment, and data constraints}
+
+Steps:
+- Separate requirement facts, assumptions, and open questions.
+- Extract business rules, state changes, and dependencies.
+- Identify ambiguity, conflicts, missing conditions, and high-risk paths.
+- Design scenarios and cases only for behavior supported by evidence.
+- Mark unknown expectations as “Needs confirmation”; do not fill them in.
+
+Output:
+A rules table, open questions, risk list, test scenarios, and executable cases.
+Each case must include preconditions, actions, expected results, and a requirement source.
+
+Before finishing:
+Call out unsupported assumptions, duplicate scenarios, and steps that cannot be executed.
+~~~
+
+Replace the brace-delimited sections with task-specific material each time. The steps, evidence constraints, and output fields can remain fairly stable. That makes the Prompt easier to maintain and compare than rewriting the whole instruction every time.
+
+## Fit the Prompt to the business; do not let it make business decisions
+
+“The verification code is valid for five minutes” still leaves questions. When does the timer start? Is a code valid at exactly 300 seconds? Does the client or server decide? If a request is delayed, which timestamp matters?
+
+Ask AI to identify these questions, but do not let it pick an answer based on convention. Only a decision from the business team or an API contract can turn an assumption into an expected result. Keep a rule ID or requirement source beside each conclusion; it makes later review much easier.
+
+Project context also depends on the task. A feature test may need user roles and states. An API test needs request and response contracts. Code generation for automation needs the project framework, directory conventions, and test-data setup. A general template provides the method; project materials provide the facts.
+
+Business context changes the focus as well. E-commerce testing may need to reconcile order, inventory, and payment states. Financial workflows may put more weight on amounts, permissions, and transaction security. Multi-tenant products need tenant-isolation checks. AI applications need evaluation criteria, safety boundaries, and rules for handling unknown answers. The template can share a skeleton, but no fixed checklist fits every product.
+
+## Use fixed samples to check each revision
+
+Prompts change as you use them. A longer, more professional-looking answer does not prove that the change improved quality. Prepare a few redacted samples: one with complete rules, one missing key information, one with a conflict, and one with difficult boundary conditions. Run the same samples after each template change.
+
+Track observable things: how many pre-marked critical questions were found, how often an unknown was presented as fact, whether required output fields were present, and how much time a person spent reviewing and editing. “Satisfaction with the answer” alone says little about whether a real risk was found.
+
+If the template keeps growing, look for repeated or conflicting instructions. A concise Prompt with clear boundaries is often easier to review than one packed with “be comprehensive” and “be absolutely accurate.”
+
+**Record the result of each Prompt change.** The table below is an evaluation-record example. It does not claim that any model has been run or improved:
+
+| Field | Record |
+| --- | --- |
+| Sample | `LOGIN-PROMPT-EX-01`: code expiry is confirmed; whether a code is valid at exactly 300 seconds remains unknown |
+| Version and environment | Prompt version, model and settings, run date; use the same redacted input before and after the change |
+| Predefined checks | Preserve confirmed rules, raise the 300-second boundary question, and do not choose an expected result |
+| Output differences | Record omissions, unsupported additions, duplicates, human edits, and review time |
+| Conclusion | State which changes improved, degraded, or did not affect the predefined checks |
+
+Only say that a revision improved this sample if the output better matches the known checks without presenting an unknown as fact. A longer or smoother answer is not enough.
+
+Treat the Prompt as a testing asset that keeps improving. Record missed risks, false assumptions, and human edits after each run. Update the template or context based on the cause, then run the same samples again. Recheck after a business change, model update, or Agent-tool change; the same text can produce different results. Save what each revision taught you for the next round. The latest version is not automatically the final one.
+
+## When to turn a template into a reusable workflow
+
+If you have used a Prompt once, save the task context and result. If the same work recurs and the steps have become stable, consider turning it into a team template or Skill. The next article looks at how Skills carry reusable workflows—and the maintenance they add.

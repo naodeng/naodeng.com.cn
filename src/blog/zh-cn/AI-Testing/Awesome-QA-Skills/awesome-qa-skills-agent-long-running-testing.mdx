@@ -1,7 +1,7 @@
 ---
 title: "长运行智能体测试 Skill：让长任务的进度、租约和取消路径可核对"
 description: "长运行智能体测试实战指南：检查长时间智能体任务中的进度、检查点、租约、取消和跨时间证据。"
-date: 2026-10-28T09:00:00.000Z
+date: 2026-11-07T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "长运行 Agent 测试"]
@@ -18,7 +18,7 @@ series: ["Awesome QA Skills 实战"]
 
 当团队需要围绕“进度检查点、租约续期、重启恢复、取消行为和部分结果语义”工作时，使用长运行智能体测试 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦长运行智能体测试。
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill。系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 解释通用安装方式，本文只聚焦长运行智能体测试。
 
 它适合这些场景：团队需要重复检查进度检查点、租约续期、重启恢复、取消行为和部分结果语义；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
 
@@ -172,9 +172,9 @@ series: ["Awesome QA Skills 实战"]
 
 ## 和其他 Skill 怎么配合
 
-- [智能体故障恢复测试](https://inaodeng.com/zh-cn/qaskills/agent-failure-recovery-testing/)：检查长任务相关的故障和恢复决策。
-- [超时测试](https://inaodeng.com/zh-cn/qaskills/timeout-testing/)：聚焦有时间边界的中断行为。
-- [生产验证](https://inaodeng.com/zh-cn/qaskills/production-verification/)：检查线上进度与运行信号。
+- 智能体故障恢复测试: https://inaodeng.com/zh-cn/qaskills/agent-failure-recovery-testing/；检查长任务相关的故障和恢复决策。
+- 超时测试: https://inaodeng.com/zh-cn/qaskills/timeout-testing/；聚焦有时间边界的中断行为。
+- 生产验证: https://inaodeng.com/zh-cn/qaskills/production-verification/；检查线上进度与运行信号。
 
 ## 容易踩的坑
 
@@ -209,16 +209,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [长运行智能体测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing) 中还包含入口文件以及实际存在的配套资料。
+完整执行契约见长运行智能体测试提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing 中还包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束进度检查点、租约续期、重启恢复、取消行为和部分结果语义。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
 
 ### 参考链接
 
-- 长运行智能体测试提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md)
+- 长运行智能体测试提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md
 
-- Awesome QA Skills：长运行智能体测试源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing)
+- Awesome QA Skills：长运行智能体测试源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
 
-- 长运行智能体测试详情页:[https://inaodeng.com/zh-cn/qaskills/agent-long-running-testing/](https://inaodeng.com/zh-cn/qaskills/agent-long-running-testing/)
+- 长运行智能体测试详情页: https://inaodeng.com/zh-cn/qaskills/agent-long-running-testing/

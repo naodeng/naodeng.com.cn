@@ -1,7 +1,7 @@
 ---
 title: "Database Design Quality Review: Constraints & Migrations"
 description: "Review database designs against sourced invariants, access patterns, concurrency, lifecycle, tenant boundaries, rollback, recovery, and traceable DB-## findings."
-date: 2026-11-02T09:00:00.000Z
+date: 2026-11-13T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Database Design Quality Review"]
@@ -18,7 +18,7 @@ Database Design Quality Review evaluates whether a schema can preserve business 
 
 The Database Design Quality Review Skill is useful when a team needs a structured review of entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery.
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage. The [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model; this guide stays with Database Design Quality Review.
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage. The series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model; this guide stays with Database Design Quality Review.
 
 A practical standard for this Skill is simple: A good review starts from invariants and real queries. It asks what prevents two refunds for one payment, what stops a cross-tenant lookup, and what happens when a migration stops halfway.
 
@@ -162,9 +162,9 @@ A richer input changes the answer here because entities, relationships, keys, co
 
 ## Working with other Skills
 
-- [API Design Quality Review](https://inaodeng.com/en/qaskills/api-design-quality-review/):connects data rules to API contracts.
-- [Technical Design Quality Review](https://inaodeng.com/en/qaskills/technical-design-quality-review/):reviews the wider architecture.
-- [Disaster Recovery Testing](https://inaodeng.com/en/qaskills/disaster-recovery-testing/):checks restore and data recovery assumptions.
+- API Design Quality Review: https://inaodeng.com/en/qaskills/api-design-quality-review/ — connects data rules to API contracts.
+- Technical Design Quality Review: https://inaodeng.com/en/qaskills/technical-design-quality-review/ — reviews the wider architecture.
+- Disaster Recovery Testing: https://inaodeng.com/en/qaskills/disaster-recovery-testing/ — checks restore and data recovery assumptions.
 
 ## Common traps
 
@@ -198,16 +198,16 @@ The example above is a design and review pattern, not an execution result. Keep 
 
 ### Source Skill and execution contract
 
-The complete execution contract lives in the [Database Design Quality Review prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md). Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review) contains the entry point and supporting assets where they exist.
+The complete execution contract lives in the Database Design Quality Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md. Read it before invoking the Skill; the prompt defines the detailed workflow and output contract. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review contains the entry point and supporting assets where they exist.
 
 The entry point centers entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
 
 ### Reference links
 
-- Database Design Quality Review prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md)
+- Database Design Quality Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md
 
-- Awesome QA Skills: Database Design Quality Review source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review)
+- Awesome QA Skills: Database Design Quality Review source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review
 
-- Awesome QA Skills GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
 
-- Database Design Quality Review details:[https://inaodeng.com/en/qaskills/database-design-quality-review/](https://inaodeng.com/en/qaskills/database-design-quality-review/)
+- Database Design Quality Review details: https://inaodeng.com/en/qaskills/database-design-quality-review/

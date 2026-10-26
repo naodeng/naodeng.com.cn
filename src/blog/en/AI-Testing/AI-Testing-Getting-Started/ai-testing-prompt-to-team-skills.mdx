@@ -1,0 +1,74 @@
+---
+title: "From Prompts to Skills: Turning Personal AI Testing Practices into Team Workflows"
+description: "Learn when to turn personal Prompt practices into a Skill, and how sample-based evaluation, versioning, and a small pilot can build a reusable team capability."
+date: 2026-11-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Skills", "Team Practices"]
+categories: ["AI Testing"]
+series: ["AI 软件测试入门与实践：从会用到用好"]
+---
+
+Using a Prompt to analyze requirements is a personal practice. Getting the whole team to use that method consistently on similar tasks is a different challenge. Copying the Prompt into a shared document does not automatically create a workflow the team can maintain.
+
+Look back at real work before writing a Skill. Which tasks recur? Which judgment steps actually help? Which failure cases would be useful to avoid next time?
+
+## Move from one success to repeatable work
+
+Start by saving a few requirement analyses, including input versions, confirmed rules, AI output, human edits, and issues found. After several runs, identify the steps that recur and the details that apply only to one project.
+
+Good first candidates happen often, have a fairly clear input, and produce results that can be checked—acceptance-criteria review or test-case review, for example. Exploratory testing and discussions where the business goal is still unclear need room to adapt; forcing them into a fixed workflow may do more harm than good.
+
+| Stage | Question | Reusable asset |
+| --- | --- | --- |
+| Individual use | Does this task actually benefit? | Original requirement, conversation, and human edits |
+| Stable Prompt | Which instructions work repeatedly? | Template, input fields, and output conventions |
+| Skill packaging | Which steps must be followed each time? | Skill instructions, references, templates, or scripts |
+| Team pilot | Can different people use it effectively? | Usage guide, evaluation samples, feedback, and version records |
+
+> Image to add: a horizontal flow from real task to Prompt iteration, Skill packaging, and team pilot. Replace illustrative content with real work artifacts.
+
+## Make the Skill understandable
+
+A team Skill for requirement-gap analysis should explain where it applies, what inputs it needs, what steps to follow, what to output, which decisions still need human review, and how it handles missing information. It might ask AI to extract rules, mark gaps and conflicts, cite evidence, and identify risks. Unknown behavior should become a question rather than an invented business rule.
+
+At minimum, document its name and intended use, required inputs, steps, output format, human confirmation points, and maintenance version. Not every Skill needs a script. If clear instructions and a reference template are enough, do not add files just to make the package look more complete.
+
+Make maintenance ownership explicit too: who updates references, who confirms business rules, and who reviews Skill changes? If it includes scripts, file writes, or external access, define the authorized scope and prohibited actions. A workflow should not get more permissions than the task requires just because it is convenient.
+
+For “requirement-gap review,” an individual Prompt can first become an evaluation sample, then an input-and-output agreement for a Skill:
+
+| Item | Example agreement |
+| --- | --- |
+| Input | Versioned requirement, scope, existing acceptance criteria, and relevant API contract |
+| Steps | Extract rules and cite each source; mark missing, conflicting, and outdated information separately |
+| Output | Rule ID, source location, risk impact, open question, and smallest action to get evidence |
+| Boundary | Do not make up business rules for Product; keep unsupported expectations open |
+| Regression samples | Three redacted inputs: complete requirements, a missing key field, and conflicting sources |
+
+This table shows a possible structure, not measured evaluation results. During the pilot, keep input versions, output, human edits, and review conclusions. If the model turns missing information into a fact, retain that sample as a failure case, revise the instructions, and rerun it.
+
+## Do not collect only success screenshots
+
+Prepare three to five redacted samples covering complete rules, missing information, conflicting rules, and difficult boundaries. Check whether important questions are found, unknowns are kept open, the output follows the agreement, and human edits decrease. Add failure samples to the regression set and rerun them after each Prompt or Skill change.
+
+This prevents the team from saving only attractive examples. The real value shows up on difficult inputs. If the sample set is too small, write “not yet validated” instead of claiming the team is already more efficient.
+
+## Run a small pilot over four weeks
+
+| Week | Focus | Deliverable |
+| --- | --- | --- |
+| 1 | Choose a frequent task and collect redacted requirements and failure samples | Sample set and known-issues list |
+| 2 | Stabilize the Prompt, required inputs, and output format | Reviewable template |
+| 3 | Package the Skill for the target platform and run regression checks | Initial Skill and evaluation record |
+| 4 | Invite a small group to try it, collect issues, and decide whether to expand | Usage guide, improvement list, and rollout decision |
+
+Four weeks is a useful pilot cadence, not a rule every team must follow. If samples are insufficient, output is unstable, or no one owns maintenance, pausing the rollout may be better than expanding it prematurely.
+
+## Bring the work back to quality responsibility
+
+Prompts and Skills are ways to carry a method. The team still has to maintain trustworthy inputs, suitable steps, traceable outputs, and a way to correct failures. A Skill can reduce repeated explanations. It cannot confirm requirements, judge risk, or take responsibility for a release decision.
+
+The team quality loop connects those activities. Record the task inputs, Agent and model versions, output, issues, and human edits. Verify whether the correction worked. Then update shared context, Prompts, Skills, and regression samples with confirmed rules and examples. Reassess when the business process, tools, or models change. What the team maintains is not a template that stays right forever, but a method that can change when evidence changes.
+
+This series has covered direct chat, Prompts, Skills, comparison, test-case review, automation, and team reuse. Let the task and evidence decide whether to add a more complex Agent; automation level is not the goal.

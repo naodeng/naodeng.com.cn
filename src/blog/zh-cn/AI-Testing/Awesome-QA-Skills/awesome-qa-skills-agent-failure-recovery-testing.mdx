@@ -1,7 +1,7 @@
 ---
 title: "智能体故障恢复测试：规划安全重试与人工接管"
 description: "评估故障确定性、安全重试、补偿授权、状态对账、升级处理和用户沟通。"
-date: 2026-10-27T09:00:00.000Z
+date: 2026-11-05T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "Agent 故障恢复测试"]
@@ -25,7 +25,7 @@ series: ["Awesome QA Skills 实战"]
 | 超时导致结果不明 | 尚未确认是否提交 | 不能假设安全重放 | 按操作 ID 或幂等键查询，再遵循契约 | 对账完成前保持未决 |
 | 工作流部分成功 | 部分步骤已提交 | 取决于其余步骤 | 对账已完成和待完成步骤；只有协议允许时才补偿 | 核对每一步以及补偿结果 |
 
-用 `AFR-##` 编号记录，将故障点、证据、恢复选择、用户可见结果、负责人和关闭条件关联起来。矩阵支持复核或测试设计，不证明运行时恢复已经发生。[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill；[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 介绍了通用安装方式。
+用 `AFR-##` 编号记录，将故障点、证据、恢复选择、用户可见结果、负责人和关闭条件关联起来。矩阵支持复核或测试设计，不证明运行时恢复已经发生。Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill；系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 介绍了通用安装方式。
 
 ## 范围与限制
 
@@ -101,9 +101,9 @@ series: ["Awesome QA Skills 实战"]
 
 ## 相关 Skill
 
-- [AI 智能体测试](https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/)检查更广泛的规划、记忆和目标行为。
-- [重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)检查重试边界与重复执行。
-- [生产验证](https://inaodeng.com/zh-cn/qaskills/production-verification/)将恢复判断与线上信号关联。
+- AI 智能体测试: https://inaodeng.com/zh-cn/qaskills/ai-agent-testing/；检查更广泛的规划、记忆和目标行为。
+- 重试测试: https://inaodeng.com/zh-cn/qaskills/retry-testing/；检查重试边界与重复执行。
+- 生产验证: https://inaodeng.com/zh-cn/qaskills/production-verification/；将恢复判断与线上信号关联。
 
 ## 容易踩的坑
 
@@ -153,7 +153,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-[智能体故障恢复测试提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md)定义了工作流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing)包含入口文件与配套材料。
+智能体故障恢复测试提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md；定义了工作流程和输出契约。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-failure-recovery-testing；包含入口文件与配套材料。
 
-- [智能体故障恢复测试详情](https://inaodeng.com/zh-cn/qaskills/agent-failure-recovery-testing/)
-- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- 智能体故障恢复测试详情: https://inaodeng.com/zh-cn/qaskills/agent-failure-recovery-testing/
+- Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills

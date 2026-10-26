@@ -1,7 +1,7 @@
 ---
 title: "Circuit Breaker Testing Skill: Verify open, half-open, and recovery behavior under dependency failure"
 description: "Circuit Breaker Testing field guide: review thresholds, state transitions, fallback, probe traffic, reset, and evidence."
-date: 2026-11-07T09:00:00.000Z
+date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Circuit Breaker Testing"]
@@ -48,7 +48,7 @@ Keep the state label separate from request behavior. Illustrative example: if a 
 
 Use CBR-## for an unclear transition or protection rule. Include the state and request, source, trigger, pre-state and count, action, post-state, fallback, evidence status, impact, owner role, close condition, and validation method. Include concurrency and time-boundary cases where the supplied contract makes them relevant.
 
-This Skill reviews circuit-breaker behavior only. Use [Dependency Failure Testing](https://inaodeng.com/en/qaskills/dependency-failure-testing/) for the wider caller/dependency side-effect matrix, [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/) for retry interaction, and [Recovery Testing](https://inaodeng.com/en/qaskills/recovery-testing/) for broader recovery outcomes.
+This Skill reviews circuit-breaker behavior only. Use Dependency Failure Testing: https://inaodeng.com/en/qaskills/dependency-failure-testing/ for the wider caller/dependency side-effect matrix, Retry Testing: https://inaodeng.com/en/qaskills/retry-testing/ for retry interaction, and Recovery Testing: https://inaodeng.com/en/qaskills/recovery-testing/ for broader recovery outcomes.
 
 Do not infer failure thresholds, recovery duration, or production behavior. A configured state and a designed test are not evidence that the breaker transitioned at runtime.
 
@@ -62,4 +62,4 @@ Invoke circuit-breaker-testing with the state policy, failure-count rules, probe
 
 ## Source
 
-Read the [Circuit-Breaker Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing/prompts/circuit-breaker-testing.md) before use. It defines the CBR-## finding contract and the per-event pre-state/count/action/post-state/fallback table.
+Read the Circuit-Breaker Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing/prompts/circuit-breaker-testing.md before use. It defines the CBR-## finding contract and the per-event pre-state/count/action/post-state/fallback table.

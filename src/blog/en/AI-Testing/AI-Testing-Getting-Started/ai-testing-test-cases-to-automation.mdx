@@ -1,0 +1,73 @@
+---
+title: "From Test Cases to Test Automation: Let AI Help Write and Run Tests"
+description: "Use a login example to give AI project context, generate API and UI automation, and verify assertions, data isolation, and execution results."
+date: 2026-11-01T09:01:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Test Automation", "API Testing"]
+categories: ["AI Testing"]
+series: ["AI 软件测试入门与实践：从会用到用好"]
+---
+
+Once a test case has been reviewed, asking AI to write automation sounds straightforward. But code that runs is not necessarily an effective test. It may call the wrong endpoint, use unstable data, or check a response field that says little about the behavior that matters.
+
+A safer approach is to start from one clear test condition, generate the smallest implementation, then have a person run, inspect, and revise it.
+
+## Explain the project boundaries first
+
+Before asking AI to write code, provide the language and test framework, test-directory conventions, existing helpers, API contract, authentication method, test environment, data setup and cleanup, and external systems the test must not access. For a UI test, include the page path, accessible names, state, and waiting conventions.
+
+Even with a test case, AI can guess how the project organizes tests. Do not paste production secrets, real user data, or unredacted logs. When credentials are required, use the environment-variable or secrets-management approach already adopted by the project.
+
+## API tests: do not stop at “the request succeeded”
+
+To verify that an incorrect code does not create an account, define the test phone number, how to ensure the code is invalid, the response specified by the API contract, how to check that no account was created, and how to clean up afterward. This pseudocode only expresses the intent; replace the endpoint, status, and query with the project’s actual contract:
+
+    response = submit_verification(test_phone, invalid_code)
+    assert response.status == expected_rejection_status
+    assert account_for(test_phone) is None
+
+Checking only an HTTP status does not prove that the business side effect is correct. On the other hand, if test data is reused by other runs, a concurrent test could affect whether an account exists. Use unique data, an isolated environment, or a clear cleanup strategy.
+
+## UI tests: prefer stable user-facing semantics
+
+In a project that supports Playwright, locate controls by labels and button names before using DOM hierarchy selectors that may change easily. This snippet shows the shape of a test only; confirm the actual labels and error copy against the product:
+
+    page.get_by_label("Phone number").fill(test_phone)
+    page.get_by_label("Verification code").fill(invalid_code)
+    page.get_by_role("button", name="Log in").click()
+    expect(page.get_by_text("Incorrect verification code")).to_be_visible()
+
+If the interface does not expose these accessible names, do not ask AI to invent a selector. Review the page implementation, requirement, and test accessibility. Avoid fixed sleeps in place of condition-based waits; wait for the expected state or return a clear timeout failure.
+
+> Image to add: include a redacted automation run showing the command, test environment, failed assertion, and linked requirement—not only a green “all passed” screenshot.
+
+## Classify failures before changing anything
+
+When a test fails, do not immediately ask AI to make it green. Keep the failure log and environment details, then determine whether the cause is incorrect test code, product behavior, contaminated test data, an environment fault, or intermittent instability. Only then decide whether to change the test, fix the product, or repair the environment.
+
+Passing tests need review too. Do assertions cover the target behavior? Was the test skipped? Would it fail if the feature were deliberately broken? Add it to the continuous integration pipeline only after it runs consistently and produces traceable evidence.
+
+You can also use small Test-Driven Development (TDD) steps: confirm the behavior and expected result, write and run a minimal test, and confirm that it fails because the behavior is not implemented. Then implement or adjust the code and make the test pass. Finally, in a controlled environment, deliberately break the behavior and verify that the test fails. That checks whether the test can actually distinguish the right behavior.
+
+## Keep reviewable execution records
+
+Keep code review and execution evidence together whenever AI generates or changes a test. The fields below are a recording template; they do not claim that any project has been run.
+
+| Field | What to record | What to keep in mind |
+| --- | --- | --- |
+| Source case | Requirement ID, test-case ID, expected behavior, and version | Mark an assertion as needing confirmation if it has no source |
+| Code scope | Changed files, test framework, reused fixtures or helpers | Explain changes unrelated to the requirement separately |
+| Data and environment | Synthetic-data identifier, environment, external dependency boundary, cleanup result | Shared data or real credentials make results harder to reproduce and increase risk |
+| Execution | Full command, time, exit status, and raw report location | Not run, skipped, and passed are different states |
+| Assertion strength | Would the test fail if the target behavior broke, and what evidence supports the answer? | One pass does not prove an assertion is effective |
+
+Treat the run as regression evidence only when requirement source, test code, data isolation, and execution report line up. If an environment problem prevents the test from reaching its assertion, record it as unevaluated—not as a product pass or failure.
+
+## Ask AI to do one small step at a time
+
+First, ask it to inspect the existing test directories and framework conventions. Then request the smallest code change for one reviewed test case. After the run, have it explain the log and failure evidence; you decide what to change. Starting with “automate the whole login module” makes the code scope, test data, and acceptance target difficult to review.
+
+For an exercise, choose an invalid-code case. Check the API or UI contract before asking AI to generate a test. Review data isolation, assertions, and cleanup, then verify at least once that the test fails when the feature behavior is wrong. Automation earns its place through reliable feedback, not fast code generation.
+
+Bring automation into the quality loop as well. Record issues found during generation and execution, failure logs, environment differences, and human edits. After fixing the test, data setup, or project context, rerun the same case. Confirm that it fails when the target behavior is broken and passes after the fix. Carry validated helpers, run conventions, and failure samples into the next generation and regression cycle. Recheck them after changing frameworks, models, or Agent tools. One successful run only describes that run in that environment; it does not guarantee future reliability.

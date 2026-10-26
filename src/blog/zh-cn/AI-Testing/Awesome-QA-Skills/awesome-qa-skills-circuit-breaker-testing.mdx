@@ -1,7 +1,7 @@
 ---
 title: "熔断器测试 Skill：验证依赖失败时的打开、半开和恢复行为"
 description: "熔断器测试实战指南：检查阈值、状态转移、回退、探测流量、重置和证据。"
-date: 2026-11-07T09:00:00.000Z
+date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "熔断器测试"]
@@ -48,7 +48,7 @@ series: ["Awesome QA Skills 实战"]
 
 遇到含糊的状态转移或保护规则时，用 CBR-## 编号，记录状态与请求、来源、触发条件、前置状态与计数、动作、后置状态、兜底、证据状态、影响、负责人角色、关闭条件和验证方法。只有在现有契约涉及并发或时间边界时，才补充对应检查。
 
-这个 Skill 只复核熔断器行为。[依赖故障测试](https://inaodeng.com/zh-cn/qaskills/dependency-failure-testing/)覆盖更广的调用方/依赖副作用矩阵；[重试测试](https://inaodeng.com/zh-cn/qaskills/retry-testing/)检查与重试策略的交互；[恢复测试](https://inaodeng.com/zh-cn/qaskills/recovery-testing/)覆盖更广的恢复结果。
+这个 Skill 只复核熔断器行为。依赖故障测试: https://inaodeng.com/zh-cn/qaskills/dependency-failure-testing/；覆盖更广的调用方/依赖副作用矩阵；重试测试: https://inaodeng.com/zh-cn/qaskills/retry-testing/；检查与重试策略的交互；恢复测试: https://inaodeng.com/zh-cn/qaskills/recovery-testing/；覆盖更广的恢复结果。
 
 不要推断失败阈值、恢复时长或生产行为。配置的状态和设计好的测试都不能证明熔断器已经在运行时完成转移。
 
@@ -62,4 +62,4 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 源文件
 
-使用前请阅读[熔断器测试 Prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/circuit-breaker-testing/prompts/circuit-breaker-testing.md)。其中定义了 CBR-## 发现契约，以及逐事件的前状态/计数/动作/后状态/兜底表。
+使用前请阅读熔断器测试 Prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/circuit-breaker-testing/prompts/circuit-breaker-testing.md。其中定义了 CBR-## 发现契约，以及逐事件的前状态/计数/动作/后状态/兜底表。

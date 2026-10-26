@@ -1,7 +1,7 @@
 ---
 title: "Agent Failure Recovery Testing: Plan Safe Retries"
 description: "Assess failure certainty, safe retries, compensation authority, state reconciliation, escalation, and user communication."
-date: 2026-10-27T09:00:00.000Z
+date: 2026-11-05T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Agent Failure Recovery Testing"]
@@ -25,7 +25,7 @@ Build a failure matrix from evidence the project actually provides:
 | Indeterminate timeout | Commit state is not established | Do not assume safe replay | Query by operation ID or idempotency key; then follow the contract | Keep unresolved until records reconcile |
 | Partial workflow success | Some steps are committed | Depends on each remaining step | Reconcile completed and remaining steps; compensate only with protocol and authority | Verify every step and any compensation outcome |
 
-Use `AFR-##` findings to connect the failure point, evidence, recovery choice, user-visible outcome, owner, and close condition. The matrix supports a review or test plan; it does not prove runtime recovery happened. [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) organizes Skills by language and testing stage; the [series overview](https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/) explains the shared installation model.
+Use `AFR-##` findings to connect the failure point, evidence, recovery choice, user-visible outcome, owner, and close condition. The matrix supports a review or test plan; it does not prove runtime recovery happened. Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage; the series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model.
 
 ## Scope and limits
 
@@ -101,9 +101,9 @@ A recovery is verified only when the system state and user-visible outcome agree
 
 ## Related Skills
 
-- [AI Agent Testing](https://inaodeng.com/en/qaskills/ai-agent-testing/) reviews wider planning, memory, and goal behavior.
-- [Retry Testing](https://inaodeng.com/en/qaskills/retry-testing/) examines retry boundaries and duplicate execution.
-- [Production Verification](https://inaodeng.com/en/qaskills/production-verification/) connects recovery decisions to live signals.
+- AI Agent Testing: https://inaodeng.com/en/qaskills/ai-agent-testing/ reviews wider planning, memory, and goal behavior.
+- Retry Testing: https://inaodeng.com/en/qaskills/retry-testing/ examines retry boundaries and duplicate execution.
+- Production Verification: https://inaodeng.com/en/qaskills/production-verification/ connects recovery decisions to live signals.
 
 ## Common traps
 
@@ -153,7 +153,7 @@ No. Compensation can create another business effect. Use it only when an approve
 
 ### Source Skill and execution contract
 
-The [Agent Failure Recovery Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md) defines the workflow and output contract. The [source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing) contains the entry point and supporting material.
+The Agent Failure Recovery Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing/prompts/agent-failure-recovery-testing.md defines the workflow and output contract. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-failure-recovery-testing contains the entry point and supporting material.
 
-- [Agent Failure Recovery Testing details](https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/)
-- [Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills)
+- Agent Failure Recovery Testing details: https://inaodeng.com/en/qaskills/agent-failure-recovery-testing/
+- Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills

@@ -1,7 +1,7 @@
 ---
 title: "智能体权限测试 Skill：逐个边界验证工具访问、身份和拒绝行为"
 description: "智能体权限测试实战指南：检查身份、最小权限、工具授权、拒绝处理和审计证据。"
-date: 2026-10-26T09:00:00.000Z
+date: 2026-10-28T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "Agent 权限测试"]
@@ -47,7 +47,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 区分权限判断与记忆状态
 
-权限测试判断当前主体能否执行该动作，包括审批和副作用边界。[智能体记忆测试](https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/)追踪存储信息在更新、过期、会话和删除过程中的变化。记忆记录存在不代表访问获批，也不能证明拒绝正确。
+权限测试判断当前主体能否执行该动作，包括审批和副作用边界。智能体记忆测试: https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/；追踪存储信息在更新、过期、会话和删除过程中的变化。记忆记录存在不代表访问获批，也不能证明拒绝正确。
 
 ## 记录 AGP-## 发现
 
@@ -59,9 +59,9 @@ series: ["Awesome QA Skills 实战"]
 
 ## 相关 Skill
 
-- [智能体记忆测试](https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/)复核存储状态与删除行为。
-- [智能体工具测试](https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/)复核工具行为与调用边界。
-- [授权测试](https://inaodeng.com/zh-cn/qaskills/authorization-testing/)覆盖更广泛的主体/资源/动作判断。
+- 智能体记忆测试: https://inaodeng.com/zh-cn/qaskills/agent-memory-testing/；复核存储状态与删除行为。
+- 智能体工具测试: https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/；复核工具行为与调用边界。
+- 授权测试: https://inaodeng.com/zh-cn/qaskills/authorization-testing/；覆盖更广泛的主体/资源/动作判断。
 
 ## 安装与调用
 
@@ -73,4 +73,4 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 源文件
 
-阅读[智能体权限测试 Prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing/prompts/agent-permission-testing.md)。其中定义 AGP-## 发现合同，以及审批、拒绝和副作用边界的证据要求。
+阅读智能体权限测试 Prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-permission-testing/prompts/agent-permission-testing.md。其中定义 AGP-## 发现合同，以及审批、拒绝和副作用边界的证据要求。

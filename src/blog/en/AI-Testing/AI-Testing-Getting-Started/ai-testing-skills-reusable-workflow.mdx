@@ -1,0 +1,74 @@
+---
+title: "Using Skills for Software Testing: Turning Test Methods into Reusable Workflows"
+description: "See how testing Skills organize steps, references, and output conventions, including selection, installation, context preparation, use, and evaluation."
+date: 2026-10-29T09:04:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Skills", "Quality Engineering"]
+categories: ["AI Testing"]
+series: ["AI 软件测试入门与实践：从会用到用好"]
+---
+
+If a team keeps copying Prompts, maintaining separate versions, or repeating the same checks by hand, the question is bigger than “How should I ask AI this time?” The team also needs a way to make the method repeatable and reviewable.
+
+That is when Skills may be worth evaluating. A Skill can hold reusable instructions and references. It is not just a renamed Prompt, and it will not supply product context that the model has never been given.
+
+## What usually goes into a Skill
+
+The public Agent Skills format organizes a Skill as a directory centered on `SKILL.md`. It can also include reference material, templates, or scripts. Tools differ in how they discover, install, and invoke Skills, so check what the AI tool you use actually supports.
+
+A Skill for “requirement-gap analysis” might explain:
+
+- when to use it and when not to;
+- which requirements, confirmed rules, system boundaries, and API materials to provide;
+- how to identify facts before analyzing ambiguity, conflicts, risks, and testability;
+- how to keep uncertainty marked as a question instead of inventing product behavior;
+- how to report the issue location, evidence, risk, and suggested person to consult.
+
+These steps make the method reusable. The user still supplies business requirements and project facts.
+
+## Check the fit before choosing or installing one
+
+Start with work that happens often, follows fairly stable steps, and produces results you can check—acceptance-criteria review, requirement-gap analysis, or test-case design, for example. A highly exploratory task with a different goal every time may not fit a fixed workflow.
+
+Before choosing a Skill, review its scope, required inputs, steps, output format, examples, and maintenance status. If it runs scripts, reads or writes files, or accesses external systems, check its permissions and safety boundaries too. Follow the instructions for your current tool and repository when installing it. Do not assume every client uses the same command or directory.
+
+For example, the Awesome QA Skills repository currently provides an installation example for Chinese-language Skills. If your tool supports the Skills CLI, you can follow the repository instructions to choose a suitable Skill. Commands and client support can change, so check the latest README before using them:
+
+    npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+
+After installation, confirm that the tool can discover the Skill, when it will trigger, and whether its inputs and permissions fit your team’s requirements. If the current client does not support this mechanism, do not assume that copying the command installed anything.
+
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills
+
+Agent Skills overview: https://agentskills.io/
+
+## From input to review
+
+For a login-requirement review, the user provides the requirement, confirmed rules, and reference materials, then invokes a suitable Skill. The model organizes rules, questions, and risks. The user checks the evidence for each finding, asks the business team to confirm unknown behavior, and only then turns confirmed conclusions into test scenarios.
+
+“Analyze this login feature” is not enough context. Include the requirement version, confirmed verification-code policy, system boundaries, and restrictions on production data or environments. Without those materials, a Skill can still return a very polished answer—and it can still be a guess.
+
+> Image to add: a screenshot of the Skill directory and a redacted run, showing which parts are the reusable workflow and which are project-specific inputs.
+
+## Decide whether it is worth keeping
+
+Do not use output length or successful installation as a measure of value. Compare a Skill with direct chat or a Prompt using the same requirement and review criteria. Does it miss fewer critical questions? Does it reduce unsupported conclusions? Can teammates get results that match the agreed format? Is the time saved in review and rework worth the maintenance cost?
+
+Look for downsides too. Does the fixed process force an unsuitable method onto a task? Does the Skill still reference old rules after the source materials change? Can the model cross a permission boundary? Treat the Skill as a versioned testing asset and use failure samples for regression checks.
+
+Start with a familiar scenario and a small group. Record the version, inputs, output, issues, and human edits. Expand only after it proves useful. If a clear Prompt already does the job, adding another maintenance layer for the sake of “upgrading” is unnecessary.
+
+Keep a reviewable record so others can judge whether a result is reproducible:
+
+| Record | Example details |
+| --- | --- |
+| Skill and invocation environment | Repository and Skill versions, host tool, and model version |
+| Input snapshot | Requirement version, references, scope, and redaction method |
+| Review criteria | Rules confirmed in advance, unknowns, and output requirements |
+| Run result | Actual output, evidence locations, unresolved issues, and human edits |
+| Trial conclusion | Suitable tasks, known limits, and conditions that trigger another review |
+
+Record and reproduce any issue found during a run. After changing the Skill, references, or invocation method, check it again against the original sample. Carry confirmed rules and examples into the next version; keep failed samples for regression. A tool may load a Skill differently, and a model may follow its steps to a different degree. Recheck suitability when the Agent, model, version, or business context changes. A Skill needs ongoing maintenance as tools and tasks change; it is not finished once and for all.
+
+The next article compares direct questions, Prompts, and Skills against the same login requirement and asks where each approach fits.

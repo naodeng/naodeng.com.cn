@@ -1,7 +1,7 @@
 ---
 title: "Agent Tool Call Testing: Focus on parameters, permissions, idempotency, and side effects"
 description: "Agent tool testing covers tool selection, parameters, permissions, idempotency, side effects, and safe recovery from failed calls."
-date: 2026-10-26T09:00:00.000Z
+date: 2026-10-27T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Agent Tool Testing"]
@@ -32,7 +32,7 @@ Use mocks, dry runs, or isolation by default. Never execute real writes without 
 
 The result should let another tester act without reconstructing the conversation. Include the tool-contract matrix, normal and failure scenarios, assertions, evidence locations, blockers, and residual risk. Keep an action owner and a next check for each open item. The Skill can organize the test plan; it cannot manufacture authorization or runtime evidence.
 
-For broader planning across memory, task completion, and stopping conditions, see [AI Agent Testing](/en/qaskills/ai-agent-testing/). For adversarial instructions in retrieved content, see [Prompt Injection Testing](/en/qaskills/prompt-injection-testing/); for post-release checks, see [Production Verification](/en/qaskills/production-verification/).
+For broader planning across memory, task completion, and stopping conditions, see AI Agent Testing: https://inaodeng.com/en/qaskills/ai-agent-testing/. For adversarial instructions in retrieved content, see Prompt Injection Testing: https://inaodeng.com/en/qaskills/prompt-injection-testing/; for post-release checks, see Production Verification: https://inaodeng.com/en/qaskills/production-verification/.
 
 Install the Skill with:
 
@@ -42,6 +42,6 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/
 
 ## References
 
-- [Agent Tool Testing prompt](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-tool-testing/prompts/agent-tool-testing.md)
-- [Agent Tool Testing source directory](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing)
-- [Agent Tool Testing directory on this site](/en/qaskills/agent-tool-testing/)
+- Agent Tool Testing prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-tool-testing/prompts/agent-tool-testing.md
+- Agent Tool Testing source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing
+- Agent Tool Testing directory on this site: https://inaodeng.com/en/qaskills/agent-tool-testing/

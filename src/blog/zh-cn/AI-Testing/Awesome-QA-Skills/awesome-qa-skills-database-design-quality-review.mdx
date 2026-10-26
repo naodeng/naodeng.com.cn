@@ -1,7 +1,7 @@
 ---
 title: "数据库设计质量评审：约束、访问与迁移"
 description: "依据有来源的不变量、访问模式、并发、生命周期、租户边界、回滚和恢复评审数据库设计，并记录可追溯的 DB-## 发现。"
-date: 2026-11-02T09:00:00.000Z
+date: 2026-11-13T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "数据库设计质量评审"]
@@ -18,7 +18,7 @@ series: ["Awesome QA Skills 实战"]
 
 当团队需要围绕“实体、关系、键、约束、索引、租户、生命周期、迁移和恢复”工作时，使用数据库设计质量评审 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/) 解释通用安装方式，本文只聚焦数据库设计质量评审。
+Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill。系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 解释通用安装方式，本文只聚焦数据库设计质量评审。
 
 好的评审从不变量和真实查询开始。它会追问什么阻止同一笔支付出现两次退款、什么阻止跨租户查询，以及迁移执行到一半停止时会发生什么。
 
@@ -162,9 +162,9 @@ series: ["Awesome QA Skills 实战"]
 
 ## 和其他 Skill 怎么配合
 
-- [API 设计质量评审](https://inaodeng.com/zh-cn/qaskills/api-design-quality-review/)：把数据规则接回 API 契约。
-- [技术设计质量评审](https://inaodeng.com/zh-cn/qaskills/technical-design-quality-review/)：评审更大的技术架构。
-- [灾备测试](https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/)：检查恢复与数据灾备假设。
+- API 设计质量评审: https://inaodeng.com/zh-cn/qaskills/api-design-quality-review/；把数据规则接回 API 契约。
+- 技术设计质量评审: https://inaodeng.com/zh-cn/qaskills/technical-design-quality-review/；评审更大的技术架构。
+- 灾备测试: https://inaodeng.com/zh-cn/qaskills/disaster-recovery-testing/；检查恢复与数据灾备假设。
 
 ## 容易踩的坑
 
@@ -196,16 +196,16 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ### 源 Skill 与执行契约
 
-完整执行契约位于 [数据库设计质量评审提示词](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review/prompts/database-design-quality-review.md)。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。[源目录](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review) 中包含入口文件以及实际存在的配套资料。
+完整执行契约见数据库设计质量评审提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review/prompts/database-design-quality-review.md。调用 Skill 前先阅读它；提示词定义了详细流程和输出契约。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review 中包含入口文件以及实际存在的配套资料。
 
 入口文件重点约束实体、关系、键、约束、索引、租户、生命周期、迁移和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
 
 ### 参考链接
 
-- 数据库设计质量评审提示词:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review/prompts/database-design-quality-review.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review/prompts/database-design-quality-review.md)
+- 数据库设计质量评审提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review/prompts/database-design-quality-review.md
 
-- Awesome QA Skills：数据库设计质量评审 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review)
+- Awesome QA Skills：数据库设计质量评审 源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review
 
-- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
+- Awesome QA Skills 项目主页: https://github.com/naodeng/awesome-qa-skills
 
-- 数据库设计质量评审 详情页:[https://inaodeng.com/zh-cn/qaskills/database-design-quality-review/](https://inaodeng.com/zh-cn/qaskills/database-design-quality-review/)
+- 数据库设计质量评审 详情页: https://inaodeng.com/zh-cn/qaskills/database-design-quality-review/

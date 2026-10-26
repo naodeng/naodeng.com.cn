@@ -1,0 +1,191 @@
+---
+title: "Skill Quality Engineering: The Model, a Practical Guide, and 12 Articles"
+description: "An introduction to SQEM’s seven quality domains, eight principles, evidence levels, practical adoption, common questions, and the 12-article series."
+date: 2026-11-05T09:00:00.000Z
+author: "nao.deng"
+draft: true
+tags: ["AI Testing", "Agent Skills", "Skill Quality Engineering"]
+categories: ["AI Testing", "Quality Engineering"]
+series: ["Skill Quality Engineering"]
+---
+
+A clear instruction file and a passing structural check give an Agent Skill a sound starting point. They do not prove that an agent will select it, follow it, or produce stable results across different models and tools.
+
+An actual Skill outcome depends on the package, user task, agent, model, tools, environment, context, and runtime state. A useful quality claim needs to name those conditions and point to the evidence behind it.
+
+The Skill Quality Engineering Toolkit (SQET) and the Skill Quality Evaluation Model (SQEM) address these questions. SQEM helps a team decide what to evaluate, how deeply to evaluate it, what evidence to retain, and which quality claims that evidence can support. Its central boundary is:
+
+Quality Claim &lt;= Available Evidence
+
+A quality claim should never exceed what the available evidence can demonstrate.
+
+## SQET and SQEM have different roles
+
+SQET is the method and governance documentation in the Awesome QA Skills repository. It describes how to design, evaluate, verify, evolve, and review Agent Skills. SQEM is its central evaluation model, covering quality domains, risk assessment, validation depth, and evidence boundaries.
+
+Neither is a new installable Skill or a second evaluation runner. SQET reuses the repository’s existing evaluation contracts and execution tools, and does not create a shared case library. Each Skill keeps its own evaluation configuration. The repository’s installable Skill Engineering Skills are a separate layer.
+
+SQET is currently in Pilot validation. The pilot is checking whether the method is understandable, practical to run, affordable to maintain, and useful for finding real issues. It is not proof of runtime quality across the entire repository, cross-model compatibility, business acceptance, release approval, or a certification scheme.
+
+## Seven domains give Skill quality a shape
+
+The seven domains turn “Is this Skill good?” into distinct questions. A team does not need to test every domain to the same depth on every change, but it should know which conclusions have evidence and which remain open.
+
+| Domain | Question | Typical checks |
+| --- | --- | --- |
+| Specification | Does the Skill follow its specification? | Entry file, metadata, name, description, folders, and references |
+| Design | What should this Skill do? | Purpose, inputs and outputs, preconditions, boundaries, non-goals, and distinction from neighboring Skills |
+| Package | Is the Skill package complete and usable? | References, scripts, dependencies, progressive disclosure, and language parity |
+| Behavior | Can an agent use it correctly? | Discovery, triggering, selection, instruction following, output, failure handling, and side effects |
+| Effectiveness | Does it provide measurable value? | Results, cost, and risk with versus without the Skill under the same task, agent, model, and environment |
+| Compatibility | Where has it been shown to work? | Runtime evidence for named agents, models, tools, environments, and languages |
+| Evidence and evolution | Can the quality conclusion be traced over time? | Versions, run records, known gaps, reproduced failures, regression cases, and improvements |
+
+SQEM does not compress these domains into one overall score. A passing specification check does not mean behavior is reliable. One successful run does not show that the Skill is more effective than working without it. A domain-based profile makes the gaps visible instead of hiding them behind an average.
+
+## Eight principles guide the evaluation
+
+The model’s principles keep evaluation and claims grounded:
+
+- Prefer evidence to an impression from one run.
+- Evaluate observable behavior instead of requiring identical wording.
+- Choose depth according to risk instead of testing every possible combination.
+- Start with deterministic assertions and rule checks before using model judges or human review.
+- Turn valuable real failures into regression cases.
+- Establish a reasonable baseline before claiming effectiveness.
+- Demonstrate compatibility in the target environment instead of inferring it from specification compliance.
+- Keep every quality claim within the evidence boundary.
+
+These principles explain why it is rarely practical to run the same large test suite against every Skill. Risk, capability, and the claim being made determine what evidence is needed.
+
+## Test depth and evidence source are separate axes
+
+SQEM uses L1 through L4 to describe test depth, and E1 through E4 to describe the strongest evidence source currently available. They are related, but they are not interchangeable scales.
+
+| Test depth | Meaning | Typical activities |
+| --- | --- | --- |
+| L1 Valid | The structural and engineering basics are valid | Specification, static checks, and package integrity |
+| L2 Verified | Key behavior has basic verification | Positive, negative, and relevant boundary cases, behavior contracts, and basic regression |
+| L3 Evaluated | A fuller evaluation has been selected according to risk | Broader cases, repeated runs, benchmarks, regression, runtime checks, and compatibility sampling |
+| L4 Proven | There is stronger evidence from broader and longer practice | Multiple runtime environments, cross-model or cross-agent evidence, real projects, and historical regression |
+
+Every maintained Skill should reach L1. The repository recommends L2 as a minimum target for formal Skills. Whether a Skill needs L3 or L4 depends on its risk and the claims its owners want to make. L4 means more mature evidence; it does not mean the Skill is perfect.
+
+| Evidence source | What it can show |
+| --- | --- |
+| E1 Static | Specification, structure, metadata, references, and static-check results |
+| E2 Evaluation | Assertions, behavior evaluations, judges, and regression results |
+| E3 Runtime | A real agent harness, benchmark comparison, or cross-model and cross-agent runs |
+| E4 Real-world | Project use, real failures, user feedback, and longitudinal records |
+
+For example, a static check can support the claim that “the package follows these structural rules.” It cannot support “this Skill has been validated on every model.” If runtime evidence is missing, record that it was not run, was blocked, or is insufficient. Do not turn a gap into a pass.
+
+## How different people can use the model
+
+| User | Recommended use |
+| --- | --- |
+| Skill author | Define capability boundaries and intended outcomes, then add a behavior contract, representative cases, and run evidence. Add meaningful real failures to regression after fixing them. |
+| Repository maintainer | Track each domain in a shared quality profile. Keep L1 and needed L2 checks in the maintenance flow; add deeper evaluation for high-risk Skills instead of requiring L4 from everything. |
+| QA lead or reviewer | Review claims against risk and evidence. Make gaps, owners, and the next validation step visible before deciding whether to accept residual risk. |
+| Team using a Skill | Rely only on capabilities within the verified scope. Record the agent, model, tools, and environment used; recheck compatibility when those conditions change. |
+
+You do not need to migrate to a specific evaluation platform before starting. Define the contract with the model and templates, then connect cases to an existing runner, scripts, or CI workflow. SQEM defines evaluation intent and evidence limits; it does not require a second engine.
+
+## A practical first evaluation
+
+Choose one Skill and one claim that can be checked. For example: “With this named agent and model, the Skill produces a test design for a given requirement that covers the main positive, negative, and boundary scenarios.” Avoid starting with a broad judgment such as “This Skill is good.”
+
+Next, describe the risk. SQEM suggests looking at seven dimensions:
+
+| Risk dimension | What to assess |
+| --- | --- |
+| Reasoning complexity | Is the task a simple judgment, a multi-step process, or complex reasoning? |
+| Trigger ambiguity | Is the Skill distinct, or could it overlap with neighboring Skills? |
+| Side effects | Does it return advice, create artifacts, or change external state? |
+| Tool dependency | Does it use no tools, one tool, or several tools? |
+| Impact | How serious would the business or user impact of failure be? |
+| Model sensitivity | Does behavior remain similar across models, or is sensitivity already known? |
+| Failure detectability | Is an error obvious, or could plausible wording hide it? |
+
+Use the risk profile to choose evaluation types, target test depth, compatibility scope, and runtime validation effort.
+
+Turn success into observable behavior. Prepare positive cases for representative tasks, check that unrelated tasks do not trigger the Skill, and cover important boundaries, failures, and regressions. Start with the least costly reliable evaluation method: deterministic assertions, rule checks, scripts or domain evaluators, model judges, and then human review. Reserve human review for decisions that automation cannot make reliably but that matter to risk.
+
+Keep enough run detail for someone else to reproduce or interpret the result: Skill version, task input, agent, model, tools, environment, outcome, relevant trajectory and artifacts, evaluation method, and limitations. To claim added value, compare with and without the Skill under the same conditions. To claim compatibility with an agent or model, retain run evidence from that environment.
+
+Finally, record evidence, status, known gaps, and the next validation step for each relevant domain. The goal is not a polished score. It is a conclusion other people can trace and understand, including what remains unknown.
+
+In a working flow, a pull request can run static checks, critical evaluations for the changed Skill, and a regression smoke suite. Before release, run the relevant full evaluation, critical regression, selected benchmarks and compatibility samples, then update the evidence report. More expensive cross-model or longitudinal regression checks can run on a schedule.
+
+## Frequently asked questions
+
+### Can I start without an agent runtime?
+
+Yes. Begin with specification, design, and package checks, and prepare behavior contracts and evaluation cases. State clearly that you currently have static evidence and have not validated runtime behavior. Do not describe an L1 result as an overall Skill pass.
+
+### Do I need to reevaluate after changing the model or agent?
+
+Reevaluate at least the parts affected by the change. Different agents, models, tools, and context can change triggering, instruction following, output, and side effects. Record the exact versions and environment, then sample representative compatibility cases according to risk. Do not mark untested combinations as compatible.
+
+### Should I change the prompt as soon as an evaluation fails?
+
+First reproduce and classify the failure. It may come from triggering or selection, Skill instructions, reference files, tools, context, model variation, the test case, or the judge. Keep the run evidence, identify the cause, and then make a targeted correction. Important real failures should become regression cases.
+
+### Must I run every domain and every case at once?
+
+No. The seven domains describe the quality picture; risk analysis determines the depth of each evaluation. A low-risk Skill with a clear boundary may start with lightweight evidence. A high-impact Skill that changes state or has hard-to-detect failures needs stronger runtime, regression, and human review.
+
+### Is SQEM a certification or release approval?
+
+No. SQEM helps a team structure evaluation and state evidence accurately. It does not decide whether the team should accept a risk, and it does not replace business or release owners. SQET is still in Pilot validation.
+
+### What should I report when evidence is missing?
+
+State what evidence is missing, why it is missing, which claims it affects, and how it could be collected. When runtime evidence is unavailable, use NOT_RUN, BLOCKED, UNASSESSED, or NOT_SCORED according to the situation. Mark INSUFFICIENT_EVIDENCE when the sample is too small. Do not turn an unknown into a pass just because a report expects a result.
+
+## Follow the model through 12 articles
+
+The series begins with why Skills need quality engineering, then moves through the model, cases, evaluation, and continuous improvement. Read from the beginning or jump to the topic you need.
+
+| Theme | Article and what you will take away |
+| --- | --- |
+| Understanding the subject | Testing Agent Skills: Why “It Works” Does Not Mean “It’s Good.” Why a valid package, successful trigger, and plausible output are not enough to prove quality. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-01-testing-agent-skills/ |
+| Understanding the subject | What Is an Agent Skill? From Specification to Runtime. How the entry file, references, package, and runtime work together to shape results. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-02-specification-to-runtime/ |
+| Model foundations | Defining Agent Skill Quality: The SQEM Model. The seven domains, eight principles, and reasons not to rely on one overall score. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-03-sqem-quality-model/ |
+| Model foundations | The Skill Testing Pyramid: How Much Testing Is Enough? How to choose L1–L4 test depth by risk and distinguish it from E1–E4 evidence sources. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-04-testing-pyramid/ |
+| Trigger and behavior | Skill Trigger Testing: Can the Agent Select the Right Skill? How positive, negative, boundary, and paraphrase cases test routing. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-05-trigger-testing/ |
+| Trigger and behavior | Skill Behavior Testing: Evaluate Contracts, Not Exact Answers. How MUST, SHOULD, and MUST NOT behaviors help evaluate outcomes, trajectories, artifacts, and side effects. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-06-behavior-testing/ |
+| Evaluation and value | Designing Skill Evals: From Success Criteria to Evidence. How to turn success criteria into cases, select evaluators, and retain run records. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-07-eval-design/ |
+| Evaluation and value | Skill Benchmarking: Is the Skill Actually Better Than the Baseline? How to compare with and without a Skill, including cost and negative effects. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-08-benchmarking/ |
+| Evaluation and value | Agent Skill Compatibility: Agents, Models, Tools, and Environments. How to define the compatibility scope and support it with runtime evidence. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-09-compatibility/ |
+| Continuous governance | Skill Regression Testing: Proving Changes Did Not Break Existing Behavior. How to select regression scope from change impact and preserve real failures. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-10-regression-testing/ |
+| Continuous governance | Skill Evidence: What Does PASS Actually Prove? How to separate static, evaluation, runtime, and real-world evidence without overclaiming. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-11-evidence-boundaries/ |
+| Continuous governance | The Skill Quality Loop: Applying QA Engineering to Agent Skills. How to connect matching, design, validation, evaluation, release, observation, regression, and improvement. Article: https://inaodeng.com/en/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-12-quality-loop/ |
+
+## Turn each result into a quality loop
+
+The model is not a one-time scorecard. When an evaluation finds a problem, record the task, Skill version, agent and model, runtime environment, observed and expected behavior, and supporting evidence. Classify the cause, update the Skill, case, or runtime setup, and rerun the relevant checks. Add representative failures to regression; carry the conclusions and remaining gaps into the next task.
+
+Different businesses, models, and agents may need different evaluation setups. The quality loop lets the method change as evidence grows instead of treating the first tool or workflow as the only answer.
+
+## Further reading and method resources
+
+Skill Quality Engineering Toolkit README: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/README.md
+
+Skill Quality Evaluation Model (SQEM): https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/SKILL_QUALITY_EVALUATION_MODEL.md
+
+Skill Eval Contract: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/SKILL_EVAL_CONTRACT.md
+
+SQEM Pilot plan: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/SKILL_QUALITY_PILOT.md
+
+Behavior Contract template: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/templates/SKILL_BEHAVIOR_CONTRACT_TEMPLATE.md
+
+Quality Profile template: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/templates/SKILL_QUALITY_PROFILE_TEMPLATE.md
+
+Available Chinese Skill Engineering Skills: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering
+
+Available English Skill Engineering Skills: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering
+
+## Closing thought
+
+Skill Quality Engineering is not a ranking system for Skills. It helps a team understand what has been checked, under which conditions, what remains unknown, and where the next investment should go. Start with one Skill and one important quality claim, then use real results to improve the model and workflow. Bounded claims give improvement a direction.

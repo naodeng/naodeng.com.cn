@@ -1,7 +1,7 @@
 ---
 title: "Agent Permission Testing Skill: Verify tool access, identity, and refusal at every boundary"
 description: "Agent Permission Testing field guide: check identity, least privilege, tool authorization, denial handling, and audit evidence."
-date: 2026-10-26T09:00:00.000Z
+date: 2026-10-28T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Agent Permission Testing"]
@@ -47,7 +47,7 @@ A denial candidate should establish, from available audit evidence, that the too
 
 ## Distinguish permission from remembered state
 
-Permission testing asks whether this principal may perform this action now, including the approval and side-effect boundary. [Agent Memory Testing](https://inaodeng.com/en/qaskills/agent-memory-testing/) follows stored information across updates, expiry, sessions, and deletion. A memory record’s presence neither grants access nor proves that access was correctly denied.
+Permission testing asks whether this principal may perform this action now, including the approval and side-effect boundary. Agent Memory Testing: https://inaodeng.com/en/qaskills/agent-memory-testing/ follows stored information across updates, expiry, sessions, and deletion. A memory record’s presence neither grants access nor proves that access was correctly denied.
 
 ## Record an AGP-## finding
 
@@ -59,9 +59,9 @@ Compare supplied identity, policy, request, and audit material as a static revie
 
 ## Related Skills
 
-- [Agent Memory Testing](https://inaodeng.com/en/qaskills/agent-memory-testing/) reviews stored state and deletion behavior.
-- [Agent Tool Testing](https://inaodeng.com/en/qaskills/agent-tool-testing/) reviews tool behavior and invocation boundaries.
-- [Authorization Testing](https://inaodeng.com/en/qaskills/authorization-testing/) covers broader subject/resource/action decisions.
+- Agent Memory Testing: https://inaodeng.com/en/qaskills/agent-memory-testing/ reviews stored state and deletion behavior.
+- Agent Tool Testing: https://inaodeng.com/en/qaskills/agent-tool-testing/ reviews tool behavior and invocation boundaries.
+- Authorization Testing: https://inaodeng.com/en/qaskills/authorization-testing/ covers broader subject/resource/action decisions.
 
 ## Install and invoke
 
@@ -73,4 +73,4 @@ Invoke agent-permission-testing with the identity and delegation context, policy
 
 ## Source
 
-Read the [Agent Permission Testing prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing/prompts/agent-permission-testing.md). It defines the AGP-## finding contract and evidence needed for approval, denial, and side-effect boundaries.
+Read the Agent Permission Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing/prompts/agent-permission-testing.md. It defines the AGP-## finding contract and evidence needed for approval, denial, and side-effect boundaries.
