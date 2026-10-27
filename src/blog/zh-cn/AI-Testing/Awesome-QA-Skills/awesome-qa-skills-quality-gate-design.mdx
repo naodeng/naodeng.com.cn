@@ -68,9 +68,32 @@ series: ["Awesome QA Skills 实战"]
 
 从 Awesome QA Skills 仓库安装这个独立 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-gate-design -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill quality-gate-design
+```
 
 调用 quality-gate-design 时，提供目标决策、门禁策略、所需义务、证据来源、负责人、例外和回滚规则。
+
+可以直接使用下面的请求模板：
+
+~~~text
+请使用 quality-gate-design Skill。
+门禁控制的决策：[合并、部署、扩大流量或停止]。
+策略和义务：[已批准的规则及所需证据]。
+证据：[来源、版本、时效和当前状态]。
+负责人和例外：[角色、审批路径、到期条件和补偿控制]。
+按现有策略处理缺失、过期、阻塞和失败证据。规则未定义时指出缺口并交给负责人；不要自行补阈值或批准发布。
+~~~
+
+## 常见问题
+
+### 缺少证据时可以算 PASS 吗？
+
+不能。按项目契约保留相应状态，例如 UNKNOWN 或 BLOCKED。若契约没有定义，就记录缺口并交给负责人决定。
+
+### 这个 Skill 能替团队选择发布阈值吗？
+
+不能。它可以指出规则缺失或冲突，但阈值必须由负责人设定，例外是否可接受也由负责人决定。
 
 ## 源文件
 

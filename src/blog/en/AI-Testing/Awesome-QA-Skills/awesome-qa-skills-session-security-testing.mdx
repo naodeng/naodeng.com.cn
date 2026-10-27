@@ -26,7 +26,7 @@ Use it when authentication changes, refresh-token behavior changes, logout or pa
 
 ## What it does not do
 
-The Session-Security Testing Skill can organize material, evidence, and next actions for Lifecycle scenario. It does not replace:
+The Session-Security Testing Skill can organize material, evidence, and next actions for a session lifecycle review. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -39,7 +39,7 @@ The value of this Skill is not another keyword list. It connects each focus area
 
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
-| Lifecycle scenario | Session state, trigger, actor, and device | Source and applicability |
+| Session lifecycle | Session state, trigger, actor, and device | Source and applicability |
 | Security concern | Unexpected authority, fixation, stale access, or cross-device leak | Evidence state |
 | Expected boundary | What should expire, rotate, revoke, or remain | Policy and owner |
 | Validation action | Safe replay and evidence needed | Synthetic account and cleanup |
@@ -48,7 +48,7 @@ If a row has only a conventional expectation and no source or validation method,
 
 ## Audit inputs before you start
 
-Before analyzing Lifecycle scenario, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before reviewing the session lifecycle, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -67,7 +67,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Lifecycle scenario, do not compress four different kinds of language into “recommended to pass”:
+For a session lifecycle review, do not compress four different judgments into “recommended to pass”:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -128,12 +128,12 @@ The review prepares security scenarios and evidence checks. It cannot prove expl
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Lifecycle scenario meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+If the supplied material does not define the expected session state after a password reset across web and mobile, record the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
 
 | Field | Example wording |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Lifecycle scenario |
-| Finding | The condition or result for Lifecycle scenario is not yet traceable to evidence |
+| Source and scope | Record the requirement, version, environment, and web/mobile session-revocation rule |
+| Finding | The expected cross-device session state after a password reset is not yet traceable to evidence |
 | Evidence state | missing / assumptions; use conflicting when sources disagree |
 | Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
 | Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
@@ -156,7 +156,7 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
-| Lifecycle scenario | Session state, trigger, actor, and device | Source and applicability |
+| Session lifecycle | Session state, trigger, actor, and device | Source and applicability |
 | Security concern | Unexpected authority, fixation, stale access, or cross-device leak | Evidence state |
 | Expected boundary | What should expire, rotate, revoke, or remain | Policy and owner |
 | Validation action | Safe replay and evidence needed | Synthetic account and cleanup |
@@ -188,8 +188,14 @@ A useful handoff includes input versions, scope, time window, evidence index, as
 ## Install and invoke
 
 ~~~bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing -g
+npx skills add naodeng/awesome-qa-skills --skill session-security-testing
 ~~~
+
+Installation and troubleshooting:
+
+- README: https://github.com/naodeng/awesome-qa-skills/blob/main/README_EN.md
+- FAQ: https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ_EN.md
+- Installation guide: https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS_EN.md
 
 ~~~text
 Use the session-security-testing Skill.
@@ -207,19 +213,17 @@ No. Expiry, rotation, revocation, storage, concurrency, and resource checks all 
 
 No. Use synthetic accounts with explicit roles and cleanup; do not move real credentials across environments.
 
-The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+### Will this Skill log in or replay tokens directly?
+
+No. It organizes scenarios and validation suggestions from supplied material. An authorized tester must perform any execution in an isolated environment.
+
+The Skill is easiest to review when applied to one redacted project artifact and kept with its source evidence. Validate the uncertain part first, then expand only when the evidence supports it.
 
 ## References
 
-### Source Skill and execution contract
-
-The complete execution contract lives in the Session-Security Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing/prompts/session-security-testing.md. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing may also contain evaluation cases and supporting material.
-
 Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
 
-### Reference links
-
-- Session-Security Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing/prompts/session-security-testing.md
+- Session-Security Testing prompt (execution contract): https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing/prompts/session-security-testing.md
 - Session-Security Testing Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/session-security-testing
 - Session-Security Testing details: https://inaodeng.com/en/qaskills/session-security-testing/
 - Awesome QA Skills on GitHub: https://github.com/naodeng/awesome-qa-skills

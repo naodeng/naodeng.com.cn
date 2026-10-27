@@ -82,8 +82,27 @@ When a review finds process residue, Process Prose Trimming: https://inaodeng.co
 Install this Skill with:
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-review -g
+npx skills add naodeng/awesome-qa-skills --skill skill-prose-review
 ```
+
+After installation, provide the Skill files, their intended consumers, and the review boundary. For example:
+
+~~~text
+Use skill-prose-review to review [files and version].
+Intended task and consumer: [what the Skill should support and who consumes its output].
+Constraints: [files in scope, safety rules, and whether editing is authorized].
+Trace triggers, inputs, instruction priority, output contract, refusal boundaries, examples, and verification claims. Report findings with location, consequence, and evidence; do not edit files or execute the described business task.
+~~~
+
+## FAQ
+
+### Will the review edit the Skill or run its business task?
+
+No. It reports evidence-backed prose and contract findings. Editing or executing the reviewed workflow requires separate authorization.
+
+### Is unclear wording automatically a blocking finding?
+
+No. Tie severity to a plausible behavior or consumer consequence. Pure style preferences are suggestions unless evidence shows they could change the contract.
 
 ## References
 

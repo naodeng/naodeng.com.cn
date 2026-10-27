@@ -2,7 +2,6 @@
 title: "Agent Tool Call Testing: Focus on parameters, permissions, idempotency, and side effects"
 description: "Agent tool testing covers tool selection, parameters, permissions, idempotency, side effects, and safe recovery from failed calls."
 date: 2026-10-27T09:00:00.000Z
-draft: true
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Agent Tool Testing"]
 categories: ["AI Testing", "QA Skills"]
@@ -12,33 +11,72 @@ Agent tool testing focuses on the boundary between an agent and the tools it can
 
 ## Treat each call as a contract
 
-Start from the tool schema, routing rules, authorization model, sandbox, and available traces. For every scenario, record preconditions, stimulus, expected behavior, and the evidence that would confirm it.
+Start from the tool schema, routing rules, authorization model, sandbox, and available tool-call traces. For every scenario, record preconditions, the triggering action, expected behavior, and the evidence that would confirm it.
 
 | Boundary | What to check | Useful evidence |
 | --- | --- | --- |
 | Selection | The chosen tool matches the requested action; ambiguity leads to a question or safe stop | Request, candidate tools, routing trace |
-| Arguments | Required fields, types, ranges, and object identifiers match the schema | Tool schema, serialized arguments, validation result |
+| Arguments | Required fields, types, ranges, and object identifiers match the schema | Tool schema, arguments actually sent, validation result |
 | Authorization | The actor may perform this action on this resource in this tenant | Role and policy snapshot, allow or deny result |
 | Retry and recovery | Timeouts, partial failures, and retries do not repeat a write | Request IDs, retry trace, before-and-after state |
 | Result handling | Tool errors and partial results are not presented as completed work | Response payload, agent trace, user-facing answer |
 
 ## Exercise failure paths in an isolated environment
 
-A refund workflow is one illustrative scenario, not a claim about a particular product. In a mock or authorized sandbox, test an allowed request, a request outside the actor's permission, and a timeout that occurs after the service may have accepted the first call. Confirm that the denied request leaves no write. For the timeout case, have the mock record the request as accepted before returning a timeout, then inspect the trace under the project's retry rule and evaluate side effects against the tool contract. Assert that no duplicate refund or notification occurs only if the contract defines idempotency; if it does not, leave retry semantics open. Capture arguments, authorization decisions, request and call IDs, responses, retry count, before-and-after state, and notification records. A timeout without mock-state evidence cannot show whether the first call took effect; mark it “insufficient evidence.”
+A refund workflow is an illustrative scenario, not a claim about a particular product. First, use a mock service or authorized sandbox to test an allowed request and a request outside the actor's permissions. Confirm that a denied request leaves no state change.
+
+Then check a timeout that occurs after the service may have accepted the first call. The mock can record the request as accepted before returning a timeout. Inspect the call trace under the project's retry rule and evaluate side effects against the tool contract. Assert that no duplicate refund or notification occurs only if the contract defines idempotency; otherwise, leave retry semantics open.
+
+For each test run, record the arguments, authorization decision, request ID and call ID, response, retry count, before-and-after state, and notification records. A timeout response without mock-state evidence cannot show whether the first call took effect; mark it “insufficient evidence.”
 
 Use mocks, dry runs, or isolation by default. Never execute real writes without authorization. For each issue, rank impact and likelihood using the project's scale; label unconfirmed causes as hypotheses. Missing schemas, policies, or run records are input gaps, not proof that a call passed.
 
 ## Hand off an executable test plan
 
-The result should let another tester act without reconstructing the conversation. Include the tool-contract matrix, normal and failure scenarios, assertions, evidence locations, blockers, and residual risk. Keep an action owner and a next check for each open item. The Skill can organize the test plan; it cannot manufacture authorization or runtime evidence.
+The result should let another tester act without reconstructing the conversation. Include the tool-contract matrix, normal and failure scenarios, assertions, evidence locations, risk priority, blockers, and residual risks. Give each open item an owner and a next check. The Skill can organize the test plan; it cannot manufacture authorization or runtime evidence.
 
-For broader planning across memory, task completion, and stopping conditions, see AI Agent Testing: https://inaodeng.com/en/qaskills/ai-agent-testing/. For adversarial instructions in retrieved content, see Prompt Injection Testing: https://inaodeng.com/en/qaskills/prompt-injection-testing/; for post-release checks, see Production Verification: https://inaodeng.com/en/qaskills/production-verification/.
+Related guides:
 
-Install the Skill with:
+- AI Agent Testing: https://inaodeng.com/en/qaskills/ai-agent-testing/
+- Prompt Injection Testing: https://inaodeng.com/en/qaskills/prompt-injection-testing/
+- Production Verification: https://inaodeng.com/en/qaskills/production-verification/
+
+## Install and use
+
+Install the English Skill with the Agent Skills CLI:
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-tool-testing -g
+npx skills add naodeng/awesome-qa-skills --skill agent-tool-testing
 ```
+
+Quick-start and troubleshooting guides:
+
+- README: https://github.com/naodeng/awesome-qa-skills/blob/main/README_EN.md
+- FAQ: https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ_EN.md
+- Installation guide: https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS_EN.md
+
+After installation, describe the task in a tool that discovers Agent Skills automatically. If your tool supports explicit invocation, use its syntax to select `agent-tool-testing`. Invocation syntax varies by tool; do not assume every tool supports `@skill`.
+
+Before analysis, gather the tool schema, Agent instructions and routing rules, authorization model, sandbox or simulator, tool-call traces, and the task scope, environment, constraints, and success criteria. Redact production data, personal information, and credentials according to your team's rules.
+
+For example:
+
+```text
+Use agent-tool-testing to review this tool-call testing task.
+Goal and success criteria: [fill in]
+Scope, environment, and version: [fill in]
+Materials: [attach the tool schema, Agent instructions and routing rules, authorization model, sandbox details, and call traces]
+Constraints: [list prohibited actions; default to mocks, dry runs, or an isolated environment]
+Separate confirmed facts, assumptions, and information gaps. Return risk priorities, executable scenarios, assertions, evidence, blockers, and next steps.
+```
+
+### FAQ
+
+- **What should I do if the tool does not load the Skill?** Check the target tool's Skills directory, language version, and installation method. If the tool supports explicit invocation, use its syntax to select the Skill.
+- **How do I judge whether the output is ready for review?** Check whether tool selection, normal and failure scenarios, assertions, evidence, and risk priorities match the task materials. Keep conclusions without supporting evidence marked as open questions or information gaps.
+- **Will the Skill run tests or make real writes?** No. It helps organize a test plan. Execution depends on the Agent, tools, and target environment. Use mocks, dry runs, or isolation by default; do not make real writes without authorization.
+- **What if the schema, authorization policy, or run records are missing?** You can still produce a limited plan, but label assumptions and input gaps. Do not mark a call as passed when evidence is insufficient.
+- **Must the output be Markdown?** Markdown is the default. Request a table, JSON, or ticket format by specifying the required format and fields.
 
 ## References
 

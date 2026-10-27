@@ -19,17 +19,19 @@ For the phone-number login requirement, ask someone who knows the business to pr
 
 Prepare the reference before reading outputs from the three approaches. Otherwise, reviewers can mistake a model’s suggestion for the “correct answer.” The reference does not need to cover every possibility. It needs to identify the important conditions the team can support with evidence.
 
+Redact real phone numbers, tokens, and other sensitive material before using requirements in the comparison.
+
 ## Control the inputs and change only the approach
 
 Set up three groups:
 
 - **Direct chat:** ask the same testing question in concise natural language.
-- **Prompt:** use the structured template from the previous article.
+- **Prompt:** use the structured template from the previous article about Prompt-based test design.
 - **Skills:** invoke a reviewed requirement-analysis or test-design Skill.
 
-Use the same requirement, context, model version, and settings in all three groups. Start each run in a clean session so one group does not inherit context from another. Record the tool, model, Prompt or Skill version, and the total time until the result is ready to deliver. Run each approach at least three times if possible; compare consistency instead of presenting only its best run. If time or budget limits the number of runs, say so in the report.
+Use the same requirement and context, model version, and parameters in all three groups. Keep the host tool and its settings the same where possible; vary only the direct-chat, Prompt, or Skill instructions. If the tool or settings differ, disclose that limitation: the result then compares tool configurations, not the method alone. Start each run in a clean session so one group does not inherit context from another.
 
-> Image to add: once the experiment has been run, show anonymized outputs from all three groups beside the same scoring record. There are no measured results yet, so do not present an illustration as data.
+Record the tool, model, Prompt or Skill version, and the total time until the result is ready to deliver. Run each approach at least three times if possible and compare consistency instead of presenting only its best run. Three runs provide only an initial stability check, not statistical significance or evidence about other requirements. If time or budget limits the number of runs, state the run count and limitation.
 
 ## Do not score by test-case count
 

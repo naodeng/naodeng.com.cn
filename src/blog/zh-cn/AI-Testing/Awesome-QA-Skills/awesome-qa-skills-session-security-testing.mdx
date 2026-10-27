@@ -26,7 +26,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 它不做什么
 
-会话安全测试 Skill 可以组织生命周期场景的材料、证据和下一步动作，但它不能替代：
+会话安全测试 Skill 可以整理会话生命周期的材料、证据和下一步动作，但它不能替代：
 
 - 业务或领域负责人对规则、范围和风险的确认。
 - 真实环境、账号、数据、日志或运行结果；静态分析不会自动升级为运行证据。
@@ -39,7 +39,7 @@ series: ["Awesome QA Skills 实战"]
 
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
-| 生命周期场景 | 会话状态、触发、角色和设备 | 来源与适用性 |
+| 会话生命周期 | 会话状态、触发、角色和设备 | 来源与适用性 |
 | 安全关注 | 意外权限、固定、旧权限或跨设备泄露 | 证据状态 |
 | 预期边界 | 什么应过期、轮换、撤销或保留 | 策略与负责人 |
 | 验证动作 | 安全重放和所需证据 | 合成账号与清理 |
@@ -48,7 +48,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 开始之前先审计输入
 
-围绕“生命周期场景”开始分析时，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
+开始复核会话生命周期前，先把输入分成六种状态。缺口不会自动变成失败，但也不能被隐藏在结论里。
 
 | 状态 | 含义 | 本 Skill 的处理方式 |
 | --- | --- | --- |
@@ -67,7 +67,7 @@ series: ["Awesome QA Skills 实战"]
 
 ### 分层写法
 
-围绕生命周期场景，不要把四种语气揉成一句“建议通过”：
+围绕会话生命周期，不要把四种判断揉成一句“建议通过”：
 
 | 层次 | 写法 | 本文应用 |
 | --- | --- | --- |
@@ -128,19 +128,19 @@ series: ["Awesome QA Skills 实战"]
 
 下面的字段示例只展示记录方式，不代表真实环境已经执行。
 
-假设当前材料无法证明“生命周期场景”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+假设当前材料无法说明改密后 Web 和移动端会话应处于什么状态，可以这样记录发现。它既不替团队补写规则，也不把缺失证据伪装成失败。
 
 | 字段 | 示例写法 |
 | --- | --- |
-| 来源与范围 | 记录本轮使用的需求、版本、环境和生命周期场景的具体对象 |
-| 发现 | 生命周期场景的判断条件或结果仍缺少可追溯依据 |
+| 来源与范围 | 记录本轮使用的需求、版本、环境，以及 Web 和移动端会话撤销规则 |
+| 发现 | 改密后的跨设备会话状态仍缺少可追溯依据 |
 | 证据状态 | missing / assumptions；如果来源相互矛盾则改为 conflicting |
 | 影响与优先级 | 说明会影响哪个用户、链路或交付决定，不凭感觉扩大等级 |
 | 负责人和人工决策 | 由业务、开发、安全或测试负责人确认规则和风险取舍 |
 | 动作与关闭条件 | 补齐最小证据；关闭条件是来源、判断和责任人都能复核 |
 | 验证 | 指定一次可重复的检查、查询或运行，并保存原始产物 |
 
-接手者应能沿会话时间线比较触发事件前后的旧、新凭据和服务端权限状态。
+接手者应能沿会话时间线比较触发事件前后的旧、新凭据和服务端会话状态。
 
 ### 决策
 
@@ -156,7 +156,7 @@ series: ["Awesome QA Skills 实战"]
 
 | 产物 | 要回答的问题 | 示例状态 |
 | --- | --- | --- |
-| 生命周期场景 | 会话状态、触发、角色和设备 | 来源与适用性 |
+| 会话生命周期 | 会话状态、触发、角色和设备 | 来源与适用性 |
 | 安全关注 | 意外权限、固定、旧权限或跨设备泄露 | 证据状态 |
 | 预期边界 | 什么应过期、轮换、撤销或保留 | 策略与负责人 |
 | 验证动作 | 安全重放和所需证据 | 合成账号与清理 |
@@ -188,8 +188,14 @@ series: ["Awesome QA Skills 实战"]
 ## 安装与调用
 
 ~~~bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill session-security-testing
 ~~~
+
+安装说明与排查方式：
+
+- README：https://github.com/naodeng/awesome-qa-skills/blob/main/README.md
+- FAQ：https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ.md
+- 安装手册：https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS.md
 
 ~~~text
 请使用 session-security-testing Skill。
@@ -207,17 +213,17 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 不可以。使用明确角色的合成账号并清理，不要跨环境搬运真实凭证。
 
+### 这个 Skill 会直接登录或重放令牌吗？
+
+不会。它只根据提供的材料整理场景和验证建议；实际执行需由获授权的测试人员在隔离环境完成。
+
+把 Skill 用在一份真实项目的脱敏材料上，并与来源一起保存，更容易核对结果。先验证不确定点，再根据证据决定是否扩大范围。
+
 ## 参考
-
-### 源 Skill 与执行契约
-
-完整执行规则见会话安全测试提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing/prompts/session-security-testing.md。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing 中还可能包含评测用例和补充材料。
 
 静态计划、文件存在和空跑保留原有证据状态，不能变成运行时证明、全部通过结论或发布批准。
 
-### 参考链接
-
-- 会话安全测试提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing/prompts/session-security-testing.md
-- 会话安全测试 Skill 源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing
+- 会话安全测试提示词（执行契约）: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing/prompts/session-security-testing.md
+- 会话安全测试 Skill 源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/session-security-testing
 - 会话安全测试详情页: https://inaodeng.com/zh-cn/qaskills/session-security-testing/
 - Awesome QA Skills 项目: https://github.com/naodeng/awesome-qa-skills

@@ -56,8 +56,27 @@ Skill 改一处，影响可能不止措辞：触发范围、输入要求、输�
 安装命令：
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-change-verification
 ```
+
+安装后，提供实际 diff、Skill 版本、目标宿主、可用检查及授权边界。例如：
+
+~~~text
+请使用 skill-change-verification 复核这次改动：[diff 或修改文件列表]。
+新旧版本：[版本]。目标宿主：[宿主和环境]。
+可执行的检查与用例：[命令、Eval 用例、运行时执行]。
+按证据等级分类，指出未运行的检查和残余风险，并准确说明证据支持哪些结论。相关运行没有实际执行时，不要声称行为已验证。
+~~~
+
+## 常见问题
+
+### 配置检查通过，能证明 Skill 行为正确吗？
+
+不能。配置证据只说明被检查的配置通过。要声称通过评测或运行时验证，必须记录实际用例、版本、宿主、输出和结果。
+
+### 只改了一点文案，可以不检查行为吗？
+
+不能直接这样假定。先判断文案是否可能影响触发、必需输入、输出字段、权限或失败处理，再选择覆盖对应改动面的检查。
 
 ## 参考
 

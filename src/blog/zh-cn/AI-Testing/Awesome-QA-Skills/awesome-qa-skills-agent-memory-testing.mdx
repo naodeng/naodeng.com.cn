@@ -57,9 +57,21 @@ series: ["Awesome QA Skills 实战"]
 
 安装这个 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-memory-testing -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill agent-memory-testing
+```
 
-调用 agent-memory-testing 时，提供记忆策略、租户范围、条目版本、来源、有效期或删除规则，以及现有检索证据。
+调用 agent-memory-testing 时，提供记忆策略、租户范围、条目版本、来源、有效期或删除规则，以及现有检索证据。可以从一条脱敏记录开始：
+
+```text
+请按 agent-memory-testing 复核这条脱敏记忆记录。只依据我提供的策略和证据，检查租户/用户范围、版本与来源、有效期、同意状态及删除传播范围。分别列出已确认事实、待确认项和证据不足项；不要推断未提供的保留期限或删除结果，也不要访问真实账户或秘密数据。
+```
+
+## 常见问题
+
+**一次检索没有返回记录，能证明记忆已经删除吗？** 不能。它只说明本次查询在当前检索路径下没有返回结果。还要根据实际架构检查策略列出的索引、缓存和其他存储，并保留各范围的删除证据。
+
+**调用 Skill 后会自动检查线上账户吗？** 本文的复核流程基于提供的材料；如需运行验证，应先确认授权和隔离环境，并使用脱敏数据或 mock。
 
 ## 源文件
 

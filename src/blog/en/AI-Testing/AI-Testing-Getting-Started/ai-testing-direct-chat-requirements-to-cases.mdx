@@ -1,8 +1,7 @@
 ---
 title: "Direct Chat for Software Testing: From Requirements to Test Cases"
 description: "Use a phone-number login example to provide business context in stages, clarify unknown rules, and turn AI analysis into executable, evidence-based test cases."
-date: 2026-10-27T09:06:00.000Z
-draft: true
+date: 2026-10-27T11:06:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Requirements Analysis", "Test Cases"]
 categories: ["AI Testing"]
@@ -27,7 +26,7 @@ These are open questions, not confirmed rules.
 
 ## Keep confirmed facts separate from open questions
 
-Suppose the business team confirms four rules for the exercise: a code is valid for five minutes; each phone number can request at most 20 codes per day; five consecutive incorrect attempts trigger a 15-minute lockout; and a new account is created only after the first successful verification. Paste those facts back into the conversation and ask AI to keep marking the remaining unknowns.
+For this example, suppose the business team confirms four rules: a code is valid for five minutes; each phone number can request at most 20 codes per day; five consecutive incorrect attempts trigger a 15-minute lockout; and a new account is created only after the first successful verification. Paste those facts back into the conversation and ask AI to keep marking the remaining unknowns.
 
 | Information | Current status | Testing impact |
 | --- | --- | --- |
@@ -52,6 +51,17 @@ After the scenarios are reviewed, turn one into an executable test case. For exa
 
 ### Turn a scenario into a reviewable test case
 
+After a scenario passes review, give AI the confirmed rules and the scenario together. Specify the output fields and evidence requirements instead of asking only to “turn it into a test case”:
+
+```text
+Turn the following reviewed test scenario into one executable test case.
+Confirmed rules and sources: [paste the confirmed rules and their sources]
+Open questions: [paste unresolved items; do not treat them as facts]
+Reviewed test scenario: [paste the approved scenario]
+Return: test case ID, rule basis, preconditions, test data, steps, observable expected results, assertions, and required evidence.
+Mark expected behavior without a rule basis as “Needs confirmation.” Do not invent API status codes, page copy, or data fields. Identify missing information instead of filling it in.
+```
+
 The following is an example record for training. It does not describe a real product. Its business rule comes from the exercise above; replace it with a confirmed rule and test data in a real project.
 
 | Field | Example |
@@ -60,7 +70,7 @@ The following is an example record for training. It does not describe a real pro
 | Rule | A new account is created only after the first successful verification (exercise assumption) |
 | Preconditions | Use an unregistered test number and prepare a valid code in an isolated environment |
 | Action | Submit the code and complete login |
-| Expected result | Login succeeds; account creation follows the confirmed rule |
+| Expected result | Login succeeds after verification, and an account lookup finds the new account for that number. If audit events are available, the creation event occurs after the successful verification event |
 | Evidence | Redacted test identity, rule source, environment and build version, request or validation event ID, before-and-after account lookup, and execution time |
 
 Do not put the verification code itself in the report. A “login successful” message does not prove the account was created exactly once; use an allowed account-state or audit record. If duplicate-submission behavior has no product rule, or you cannot access evidence of the resulting state, mark it “Needs confirmation” or “Insufficient evidence.” Do not mark it as passed. This is a test-design example, not a report of an executed test.
@@ -77,6 +87,8 @@ Do not judge the result by whether it looks good in a table. Check that each cas
 
 Try this with a current requirement: start with a list of facts and open questions, get the business rules confirmed, and only then generate scenarios and cases. You may end up with fewer cases, but they will be easier to bring into a real review.
 
-This is also where the quality loop starts. Record omissions, false assumptions, and useful additions from each conversation. Test or review the revised scenarios against the requirement, then carry confirmed rules and real findings into the next round. Do not save guesses as reusable context; that just makes the next conversation repeat the same mistake. When the business, Agent tool, or model changes, check that the context still applies.
+This is also where the quality loop starts. Record omissions, false assumptions, and useful additions from each conversation. After revising the requirement context or Prompt, regenerate scenarios or cases from the same requirement and review rule traceability, executability, error coverage, and evidence requirements to see whether the change helped.
+
+Carry findings confirmed during review or execution into the next round. Do not save guesses as reusable context, or the next conversation may repeat the same mistake. When the business, Agent tool, or model changes, check that the context still applies.
 
 The next article turns the parts of this conversation that proved useful into a Prompt template that can be reused and revised.

@@ -54,9 +54,32 @@ series: ["Awesome QA Skills 实战"]
 
 安装这个 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/resilience-testing -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill resilience-testing
+```
 
 调用 resilience-testing 时，提供业务不变量、允许的降级方式、依赖图、回退与隔离规则、恢复证据及剩余风险问题。
+
+也可以直接使用下面的请求模板：
+
+~~~text
+请使用 resilience-testing Skill。
+复核这份服务设计：[带版本的设计文档和依赖图]。
+业务不变量：[来源，以及必须保护的数据或功能]。
+允许的降级：[已批准的行为与边界]。
+恢复证据：[已有运行记录；如果没有，请明确说明]。
+不要访问线上系统或注入故障。区分材料支持的事实、缺口和假设；按 RES-## 输出发现，并给出负责人、关闭条件和最小隔离验证方式。
+~~~
+
+## 常见问题
+
+### 有回退响应就能证明系统有韧性吗？
+
+不能。还要沿恢复过程检查受保护的数据和业务不变量，以及系统何时可以安全恢复正常。一次运行中观察到回退，只支持这次运行范围内的判断。
+
+### 什么时候可以说设计中的恢复机制有效？
+
+只能根据已有的执行证据，在其实际范围内作出判断。保留运行身份、版本、环境、时间和原始结果；没有这些记录时，应报告设计缺口或验证计划。
 
 ## 源文件
 

@@ -57,8 +57,27 @@ Skill Prose Contract Review: https://inaodeng.com/en/qaskills/skill-prose-review
 Install this Skill with:
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim -g
+npx skills add naodeng/awesome-qa-skills --skill skill-prose-trim
 ```
+
+After installation, list the authorized files, language pairs, and the reason each passage may be removed. For example:
+
+~~~text
+Use skill-prose-trim for these authorized files: [file list].
+Language pairs: [languages and paired files].
+Goal: remove confirmed process residue while preserving behavior contracts and historical facts.
+For each candidate passage, classify it, verify current claims against a source, and report the edit or reason to retain it. Preserve triggers, inputs, exceptions, refusal rules, failure handling, measurements, identifiers, and references. Do not edit generated files, sealed archives, or fixtures.
+~~~
+
+## FAQ
+
+### Should the edit aim for a fixed word count?
+
+No. The source Skill sets no target length. Remove only material that no longer helps the reader or controls behavior, while preserving the full contract.
+
+### Can generated files or fixtures be trimmed with the prose?
+
+No. The source Skill treats them as protected evidence; report them and edit only the files explicitly in scope.
 
 ## References
 

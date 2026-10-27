@@ -46,11 +46,29 @@ AI 智能体测试既看任务有没有完成，也要核对它是怎么完成�
 
 工具契约和副作用的细项见智能体工具调用测试: https://inaodeng.com/zh-cn/qaskills/agent-tool-testing/；产品内置 AI 功能见 AI 功能测试: https://inaodeng.com/zh-cn/qaskills/ai-feature-testing/；不可信指令与攻击路径见提示注入测试: https://inaodeng.com/zh-cn/qaskills/prompt-injection-testing/。
 
-安装命令：
+## 安装与调用
+
+安装 Skill：
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-agent-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill ai-agent-testing
 ```
+
+提供任务目标、成功 oracle、允许的工具和资源、禁止的副作用、停止条件，以及脱敏的 run/step 轨迹。先从一个边界清楚的样本开始：
+
+```text
+请用 ai-agent-testing 评审下面这个多步任务。任务目标与成功 oracle：[…]
+允许使用的工具和资源：[…]
+禁止的副作用与停止条件：[…]
+已有的脱敏 run/step 轨迹：[…]
+请分别判断结果是否符合 oracle、过程是否满足约束；列出缺失证据和待确认项，不要自行补造通过阈值，也不要把设计用例说成已执行测试。
+```
+
+## 常见问题
+
+**最终答案正确，就算这个用例通过吗？** 不一定。还要检查轨迹是否满足用例中的权限、工具、步骤和停止条件；如果关键轨迹缺失，应标为证据不足。
+
+**要重复运行多少次？** 按项目已经定义的重复方案执行。若方案或稳定性门槛未提供，先列为待确认，不要自行设定次数或通过阈值。
 
 ## 参考
 

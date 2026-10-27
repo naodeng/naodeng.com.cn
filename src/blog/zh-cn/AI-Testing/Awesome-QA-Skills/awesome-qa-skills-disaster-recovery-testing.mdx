@@ -56,9 +56,24 @@ series: ["Awesome QA Skills 实战"]
 
 安装这个 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/disaster-recovery-testing -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill disaster-recovery-testing
+```
 
-调用 disaster-recovery-testing 时，提供获批准的恢复目标、区域和灾难范围、备份证据、依赖图及业务恢复标准。
+调用 disaster-recovery-testing 时，提供获批准的恢复目标、区域和灾难范围、备份证据、依赖图及业务恢复标准：
+
+```text
+请用 disaster-recovery-testing 复核这份脱敏灾备材料。
+目标与范围：[批准的 RTO/RPO、灾难起点、主备区域、业务恢复标准]
+证据：[备份/数据点、依赖图、恢复时间线、数据完整性和业务对账记录]
+请说明哪些目标可计算、哪些仍未评估，给出 DRT-## 候选发现和最小获授权的恢复演练建议。不要把备份存在或进程启动当成业务恢复证明。
+```
+
+## 常见问题
+
+**备份文件存在，就能说明灾备可恢复吗？** 不能。还要核实备份完整性、解密和恢复结果，以及身份、配置、网络、依赖和业务对账。
+
+**RTO/RPO 没有定义时，可以套用常见目标吗？** 不可以。把目标和起止事件列为待确认，不要自行设定阈值。
 
 ## 源文件
 

@@ -46,11 +46,30 @@ The output can include a capability matrix, task suite, trace assertions, recove
 
 Use Agent Tool Call Testing: https://inaodeng.com/en/qaskills/agent-tool-testing/ for detailed tool contracts and side effects. For an AI feature embedded in a product, see AI Feature Testing: https://inaodeng.com/en/qaskills/ai-feature-testing/; for untrusted instructions and attack paths, see Prompt Injection Testing: https://inaodeng.com/en/qaskills/prompt-injection-testing/.
 
-Install the Skill with:
+## Install and invoke
+
+Install the Skill:
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-agent-testing -g
+npx skills add naodeng/awesome-qa-skills --skill ai-agent-testing
 ```
+
+Provide the task goal, success oracle, allowed tools and resources, prohibited side effects, stopping conditions, and a redacted run/step trace. Start with one bounded sample:
+
+```text
+Review this multi-step task with ai-agent-testing.
+Task goal and success oracle: […]
+Allowed tools and resources: […]
+Prohibited side effects and stopping conditions: […]
+Available redacted run/step trace: […]
+Judge the outcome against the oracle and the process against its constraints separately. List missing evidence and open questions. Do not invent a pass threshold or describe a designed case as an executed test.
+```
+
+## FAQ
+
+**Does a correct final answer make the case a pass?** Not by itself. Check whether the trace meets the case's permission, tool, step, and stopping assertions. If a key part of the trace is missing, report insufficient evidence.
+
+**How many times should a task be repeated?** Follow the repetition plan defined by the project. If the plan or stability threshold is missing, list it as an open question instead of inventing a count or pass threshold.
 
 ## References
 

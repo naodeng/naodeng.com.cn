@@ -68,9 +68,30 @@ A gate controls a decision only within its stated scope. It cannot choose busine
 
 Install the individual Skill from the Awesome QA Skills repository:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-gate-design -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill quality-gate-design
+```
 
 Invoke quality-gate-design with the target decision, gate policy, obligations, evidence sources, owners, exceptions, and rollback rules.
+
+~~~text
+Use the quality-gate-design Skill.
+Decision controlled: [merge, deploy, expand traffic, or stop].
+Policy and obligations: [approved rules and required evidence].
+Evidence: [source, version, freshness, and current state].
+Owners and exceptions: [roles, approval path, expiry, and compensating controls].
+Map missing, stale, blocked, and failed evidence to the supplied policy. Flag undefined rules for an owner; do not invent thresholds or approve a release.
+~~~
+
+## FAQ
+
+### Can missing evidence count as PASS?
+
+No. Keep it in the state defined by the project contract, such as UNKNOWN or BLOCKED. If the contract does not define a state, record the gap and ask the owner to decide.
+
+### Can this Skill choose the release threshold?
+
+No. It can expose missing or conflicting rules. An accountable owner must set the threshold and decide whether an exception is acceptable.
 
 ## Source
 

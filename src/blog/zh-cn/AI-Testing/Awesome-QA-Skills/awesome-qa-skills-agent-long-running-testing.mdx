@@ -40,8 +40,9 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 | 检查关注点 | 开始前要问 | 结果应留下什么 |
 | --- | --- | --- |
 | 进度记录 | 阶段、检查点的含义，以及计数如何对应到已完成工作 | 可按相同规则复核的进度说明 |
+| 心跳与存活信号 | 心跳只表示工作进程仍响应，还是能关联到实际处理进展？ | 与检查点、已提交 step 或条目清单分开的存活证据 |
 | 中断结果 | 重启或取消后保留了什么 | partial、cancelled、recovered 或 unknown |
-| 运行动作 | 需要验证的租约、队列或存储改动 | 负责人和所需证据 |
+| 重复提交与运行动作 | task ID 的重试策略是什么？租约、队列或资源变更如何核验？ | 幂等规则、提交/恢复证据、负责人和验证动作 |
 
 如果某一行只有经验判断、没有来源或验证方法，就把它留在待确认项里，不要提前写成通过。
 
@@ -84,7 +85,7 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 | 材料 | 这次提供什么 | 缺失时怎么处理 |
 | --- | --- | --- |
 | 任务契约 | 工单数量、阶段划分、完成定义和部分结果策略 | 不要用运行时长推断完成 |
-| 运行控制 | 工作进程租约、检查点间隔、重启行为、取消请求和队列状态 | 没有观察到的状态变化标记为 unassessed |
+| 运行控制 | task ID 与重复提交策略、工作进程租约、检查点/心跳、重启、取消、队列和资源生命周期 | 没有观察到的状态变化标记为 unassessed |
 | 证据 | 任务 ID、检查点记录、处理数量、重复标记和取消审计 | 没有运行记录时不要下可靠性结论 |
 
 可以这样调用：
@@ -96,11 +97,11 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 任务：Agent 花两个小时处理 8 万条客服工单，期间 Worker 可能重启，用户也可能取消任务
 输入材料：[需求、版本、链接、日志、报告或数据路径]
 范围：[本次包含和排除的对象]
+运行证据：[task ID、检查点与状态版本、心跳、处理清单、租约、取消记录和副作用]
 未知项：[缺失的环境、账号、数据或权限]
 期望输出：[按风险排序的发现、证据状态和下一步动作]
 
 先审计输入。分开写事实、假设和待确认问题。没有运行记录时不要声称已经执行。
-
 ```
 
 ### 分析
@@ -115,12 +116,13 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 | 检查 | 操作条件 | 需要核对的记录 |
 | --- | --- | --- |
-| 检查点恢复 | 在检查点后重启工作进程 | 检查点中记录的输入范围、重启后的续跑位置、重复与遗漏项 |
+| 检查点恢复 | 在检查点后重启工作进程 | 检查点中记录的输入范围、状态版本、重启后的续跑位置、重复与遗漏项 |
 | 租约接管 | 暂停持有租约的工作进程，等租约到期并由其他工作进程接管，再恢复旧进程 | 新旧持有者、租约版本或 fencing token，以及旧进程是否还能提交 |
+| 重复提交 | 使用相同 task ID 或请求标识再次提交任务 | 项目幂等/去重规则、已提交副作用和处理结果；不要假定 exactly-once |
 | 取消传播 | 在一个批次处理中发出取消请求 | 请求时间、确认时间、未完成项、仍在运行的子任务，以及用户可见终态 |
 | 部分结果 | 在任务中途结束或因依赖故障暂停 | 已完成与未完成项、结果时效、能否安全供下游使用，以及后续恢复或重试方式 |
 
-如果系统没有提供输入清单、提交标识或租约记录，先把这些缺口写成待补证项。不能仅凭进度数字判断是否丢失、重复或安全地完成了工作。
+如果系统没有提供输入清单、提交标识、状态版本或租约记录，先把这些缺口写成待补证项。不能仅凭心跳或进度数字判断是否丢失、重复或安全地完成了工作。
 
 ### 发现
 
@@ -128,7 +130,7 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 下面的字段示例只展示记录方式，不代表真实环境已经执行。
 
-假设当前材料无法证明“进度模型”已经满足要求，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
+假设当前材料无法证明进度定义已经满足契约，发现可以这样写。它既不替团队补写规则，也不把缺失证据伪装成失败。
 
 | 字段 | 示例写法 |
 | --- | --- |
@@ -184,11 +186,9 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 ## 安装与调用
 
-全局安装这个 Skill：
+安装这个 Skill：
 ```bash
-
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing -g
-
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill agent-long-running-testing
 ```
 
 安装后使用 `agent-long-running-testing` Skill，并附上真实项目材料。
@@ -205,6 +205,10 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 只有当契约定义了完整度、时效性和下游安全使用方式时才可以。
 
+### 心跳能证明任务在推进吗？
+
+不能单独证明。心跳通常只能说明进程仍在响应；还要用检查点、已提交步骤或条目级结果核对实际进展。最终状态仍以项目契约和运行证据为准。
+
 ## 参考
 
 ### 源 Skill 与执行契约
@@ -213,12 +217,5 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 入口文件重点约束进度检查点、租约续期、重启恢复、取消行为和部分结果语义。写结论前先阅读配套提示词，并保留这个 Skill 的决策边界。
 
-### 参考链接
-
-- 长运行智能体测试提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md
-
-- Awesome QA Skills：长运行智能体测试源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/agent-long-running-testing
-
-- Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
-
 - 长运行智能体测试详情页: https://inaodeng.com/zh-cn/qaskills/agent-long-running-testing/
+- Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills

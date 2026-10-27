@@ -14,12 +14,12 @@ A circuit breaker is a state machine driven by evidence about dependency calls. 
 
 Before reviewing state names, collect the configured failure-count definition, rolling or consecutive window, threshold, open duration, half-open probe allowance, concurrency limit, and success or failure transitions. If any value is absent, keep it unknown instead of choosing a default.
 
-| State | Behavior to verify from the contract |
+| State or transition | Behavior to verify from the contract |
 | --- | --- |
 | Closed | Which dependency outcomes count, and how are they added to the configured window? |
 | Open | Are ordinary calls rejected locally, and which fallback is returned? |
 | Half-open | How many recovery probes may run, and what happens to ordinary calls? |
-| Reset | Which probe result and timing transition the breaker to closed or open? |
+| Reset/recovery transition | Which probe result and timing transition the breaker to closed or open? Use the project's own name and rule. |
 
 Separate a real dependency request from a local rejection. Count each only as the configured policy says; a state label alone does not prove that the implementation followed the contract.
 
@@ -56,9 +56,25 @@ Do not infer failure thresholds, recovery duration, or production behavior. A co
 
 Install the individual Skill:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/circuit-breaker-testing -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill circuit-breaker-testing
+```
 
-Invoke circuit-breaker-testing with the state policy, failure-count rules, probe limits, fallback contract, and request-level evidence.
+Invoke circuit-breaker-testing with the state policy, failure-count rules, probe limits, fallback contract, and request-level evidence. Start with a redacted trace:
+
+```text
+Review this redacted circuit-breaker event trace with circuit-breaker-testing.
+Contract: [failure count, window, threshold, open duration, half-open probe allowance/concurrency, fallback, and transitions]
+Trace: [request IDs, timestamps, dependency outcomes, local rejections, probe outcomes, and state events]
+Scope: [environment, version, and calls included or excluded]
+Return a per-event pre-state/count/action/post-state/fallback table and candidate CBR-## findings. Separate expected from observed behavior. Do not invent thresholds or present static review as runtime evidence.
+```
+
+## FAQ
+
+**Does an Open label in monitoring prove that ordinary calls were rejected locally?** No. Compare request identities, dependency-call records, and local-rejection evidence in the same time window.
+
+**Will the Skill inject a failure into the target dependency?** No. It reviews supplied materials and prepares isolated validation proposals; live fault injection is outside its scope.
 
 ## Source
 

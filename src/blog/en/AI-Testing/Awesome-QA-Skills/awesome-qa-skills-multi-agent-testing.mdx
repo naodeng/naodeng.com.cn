@@ -60,9 +60,23 @@ Keep static design, candidate validation, and actual execution separate. A task 
 
 Install the individual Skill:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/multi-agent-testing -g
+npx skills add naodeng/awesome-qa-skills --skill multi-agent-testing
 
-Invoke multi-agent-testing with the coordination protocol, task and message records, shared-state versions, ownership rules, and termination behavior.
+Invoke multi-agent-testing with the coordination protocol, task and message records, shared-state versions, ownership rules, and termination behavior. Start with a redacted trace:
+
+```text
+Review these redacted multi-agent handoff records with multi-agent-testing.
+Protocol and success conditions: [delegation, claim/commit, retry, cancellation, and termination rules]
+Trace: [task/message/correlation IDs, sender/receiver, state versions, acknowledgments, tool side effects]
+Scope: [agents, messages, and steps included or excluded]
+List confirmed facts, conflicts, missing evidence, and candidate MAT-## findings. Separate static design from runtime results. Do not assume exactly-once delivery or claim that an unobserved child stopped.
+```
+
+## FAQ
+
+**Is duplicate message delivery automatically a defect?** No. Check deduplication, ownership, and side effects against the project's protocol. Do not assume exactly-once delivery or safe replay when evidence is missing.
+
+**Does a parent-task timeout prove every child stopped?** No. Check each active child's cancellation acknowledgment, tool state, and terminal record.
 
 ## Source
 

@@ -60,9 +60,24 @@ Use supplied diagrams, requirements, logs, and ledger evidence for a static revi
 
 Install the Skill:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/failover-testing -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill failover-testing
+```
 
-Invoke failover-testing with the architecture, primary/standby roles, approved triggers, business readiness rule, and available route or ledger evidence.
+Invoke failover-testing with the architecture, primary/standby roles, approved triggers, business readiness rule, and available route or ledger evidence:
+
+```text
+Review this redacted primary/standby cutover timeline with failover-testing.
+Architecture and rules: [nodes, trigger/election rule, write authority, business-ready and failback gates]
+Records: [request IDs, routing, old-primary fencing, retries, commits, ledger reconciliation]
+Judge availability and single-writer consistency separately. List candidate FOV-## findings, missing evidence, and the smallest isolated validation steps. Do not equate a successful route change with zero data loss or business recovery.
+```
+
+## FAQ
+
+**Does reaching the standby prove that failover was safe?** No. Verify that the old primary was fenced and reconcile commits from both nodes with the final business state.
+
+**Are failover and disaster recovery the same thing?** No. Failover covers the live primary/standby path; disaster recovery also needs evidence that backups, recovery data, and business dependencies can restore the service.
 
 ## Source
 

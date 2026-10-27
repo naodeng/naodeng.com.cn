@@ -60,9 +60,23 @@ Keep design facts, evidence-backed inferences, candidate recommendations, and Hu
 
 Install the individual Skill:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/dependency-failure-testing -g
+npx skills add naodeng/awesome-qa-skills --skill dependency-failure-testing
 
-Invoke dependency-failure-testing with the dependency contract, caller and dependency states, interaction mode, evidence, and business invariants.
+Invoke dependency-failure-testing with the dependency contract, caller and dependency states, interaction mode, evidence, and business invariants. Start with a redacted scenario:
+
+```text
+Review this dependency-failure scenario with dependency-failure-testing.
+Contract: [caller, dependency, sync/async mode, timeout/retry/fallback rules, business invariants]
+Evidence: [request or message IDs, caller state, dependency state, retries, message/database side effects]
+Scope: [environment, version, operations included or excluded]
+Separate confirmed rejection, asynchronous pending work, and unknown commit. List candidate DPF-## findings, evidence gaps, and the smallest isolated validation steps. Do not treat a timeout or HTTP 500 as proof that no write occurred, and do not claim that a fault was injected.
+```
+
+## FAQ
+
+**Does a caller timeout or HTTP 500 show that a write did not happen?** No. Reconcile dependency state and side effects by request or message ID; do not blindly retry a non-idempotent write when its result is unknown.
+
+**Will the Skill inject a fault into a live dependency?** No. It reviews supplied material and prepares an isolated validation plan; fault injection needs separate authorization and a safe test environment.
 
 ## Source
 

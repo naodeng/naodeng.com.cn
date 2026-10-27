@@ -54,9 +54,32 @@ Review supplied contracts, dependency maps, fallback rules, ledgers, and prior r
 
 Install the Skill:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/resilience-testing -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill resilience-testing
+```
 
 Invoke resilience-testing with the business invariants, allowed degradation, dependency map, fallback and isolation rules, recovery evidence, and residual-risk questions.
+
+For example:
+
+~~~text
+Use the resilience-testing Skill.
+Review this service design: [versioned design and dependency map].
+Business invariants: [source and protected data/functions].
+Allowed degradation: [approved behaviors and boundaries].
+Recovery evidence: [supplied run records or state that none are available].
+Do not access live systems or inject faults. Separate supported facts, gaps, and assumptions; produce RES-## findings with an owner, close condition, and smallest isolated validation.
+~~~
+
+## FAQ
+
+### Does a fallback response prove resilience?
+
+No. The review must also trace the protected data and business invariants through recovery and the return to normal operation. A fallback seen in one run supports only that bounded observation.
+
+### When can a design review claim that recovery works?
+
+Only within the scope of supplied execution evidence. Retain the run identity, version, environment, time, and raw result; without those records, report a design gap or validation plan.
 
 ## Source
 

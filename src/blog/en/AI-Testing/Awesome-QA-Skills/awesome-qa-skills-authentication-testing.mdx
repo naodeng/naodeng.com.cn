@@ -100,10 +100,27 @@ Provide the authentication mechanisms in scope, roles, identity states, relevant
 Install the individual Skill:
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authentication-testing -g
+npx skills add naodeng/awesome-qa-skills --skill authentication-testing
 ```
 
-Invoke authentication-testing with scoped, redacted material. The Skill prepares static analysis and validation candidates; it does not perform authentication.
+Installation and troubleshooting:
+
+- README: https://github.com/naodeng/awesome-qa-skills/blob/main/README_EN.md
+- FAQ: https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ_EN.md
+- Installation guide: https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS_EN.md
+
+If the tool discovers Agent Skills automatically, describe the task after installation. If it requires explicit invocation, use the syntax supported by that client to select `authentication-testing`. Provide the policy source and version, authentication mechanisms, identity state, redacted session or token metadata, audit evidence, and environment boundaries. Do not paste real credentials. The Skill prepares static analysis and validation; it does not log in or perform authentication.
+
+For example:
+
+```text
+Use authentication-testing to review this email-link login and MFA step-up flow.
+Policy source and version: [provide]
+Authentication mechanisms and scope: [provide]
+Identity state, redacted token/session metadata, and audit evidence: [provide]
+Test environment and constraints: [provide; no real credentials or production access]
+Return the state transitions, credential lifecycle, and AUT-## candidate findings. Separate confirmed facts, open policy questions, validation suggestions, and Human decisions.
+```
 
 ## FAQ
 
@@ -114,6 +131,10 @@ No. Authentication establishes identity; authorization and transaction policy de
 ### What if email-link expiry or reuse rules are missing?
 
 Keep expected behavior unresolved, mark the related item unassessed, and request the policy owner and smallest source needed before treating it as a test oracle.
+
+### Is a login screenshot enough for an authentication review?
+
+No. It does not establish server-side authentication state, token issuance, or whether an earlier credential stopped working. You also need policy, redacted state material, and relevant audit evidence.
 
 ## References
 

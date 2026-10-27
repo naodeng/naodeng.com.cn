@@ -60,9 +60,24 @@ series: ["Awesome QA Skills 实战"]
 
 安装这个 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/failover-testing -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill failover-testing
+```
 
-调用 failover-testing 时，提供架构、主备角色、已批准的触发规则、业务就绪条件以及现有路由或账本证据。
+调用 failover-testing 时，提供架构、主备角色、已批准的触发规则、业务就绪条件以及现有路由或账本证据：
+
+```text
+请用 failover-testing 复核这段脱敏的主备切换时间线。
+架构与规则：[主备节点、触发/选主规则、写入权、业务就绪和切回门槛]
+记录：[请求 ID、路由、旧主隔离、重试、提交记录、账本对账]
+请区分可用性和单写一致性，列出 FOV-## 候选发现、缺失证据和最小隔离验证步骤。不要把路由切换成功写成无数据丢失或业务已恢复。
+```
+
+## 常见问题
+
+**请求已经到达备节点，就能证明切换安全了吗？** 不能。还要确认旧主已被隔离，并对账新旧节点的提交和最终业务状态。
+
+**故障切换和灾备恢复是一回事吗？** 不是。切换关注在线主备路径；灾备还要证明备份、恢复数据点和业务依赖可以支撑完整恢复。
 
 ## 源文件
 

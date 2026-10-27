@@ -18,7 +18,7 @@ The API Security Testing Skill reviews the boundary between caller identity, req
 
 Use this Skill when a team needs to review authentication, authorization, object scope, input exposure, secrets, rate limits, error leakage, or audit evidence for an API.
 
-A strong pass follows one object across the full request: who owns it, who may act on it, which alternate entry points exist, what a failure reveals, and which audit record proves the decision. A 403, an OpenAPI document, or a valid token alone is not comprehensive security evidence.
+A thorough review follows one object across the full request: who owns it, who may act on it, which alternate entry points exist, what a failure reveals, and which audit record proves the decision. A 403, an OpenAPI document, or a valid token alone is not comprehensive security evidence.
 
 ## What it does not do
 
@@ -36,9 +36,12 @@ It does not replace:
 | --- | --- | --- |
 | Attack surface | Which path, query, body, header, upload, batch, or alternate endpoint accepts input? | Inventory and boundary |
 | Input boundary | What malformed, oversized, encoded, repeated, or unexpected input must be handled? | Safe scenario and oracle |
-| Identity | Who is the caller, tenant, role, and token subject? | Identity fixture and version |
-| Authorization | Can this caller perform this action on this object? | Allow or deny condition |
+| Authentication | Who issued the token, and what do its subject, tenant, and lifecycle show? | Identity and token evidence |
+| Authorization | Can this caller perform this action? | Role and action policy |
+| Object authorization | Can the caller access this specific object, including across tenant boundaries? | Ownership matrix and allow/deny evidence |
 | Error and response | What do status, body, timing, headers, URLs, and logs reveal on failure? | Leakage check and evidence |
+| Rate limits and abuse | How are repeated, bulk, unusually frequent, or resource-heavy requests handled? | Bounded scenario and expected limit |
+| Audit | Can a security-relevant action be traced without exposing excess data? | Audit event and evidence path |
 | Security contract | Can authentication, permission, data, error, rate, and audit rules trace to verification? | AST finding and close condition |
 
 The matrix turns a security label into a request that can be authorized, executed, and reviewed.
@@ -179,8 +182,14 @@ A useful handoff keeps target, object, in/out scope, evidence states, AST findin
 ## Install and invoke
 
 ~~~bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing -g
+npx skills add naodeng/awesome-qa-skills --skill api-security-testing
 ~~~
+
+Installation and troubleshooting:
+
+- README: https://github.com/naodeng/awesome-qa-skills/blob/main/README_EN.md
+- FAQ: https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ_EN.md
+- Installation guide: https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS_EN.md
 
 ~~~text
 Use the api-security-testing Skill.
@@ -200,17 +209,9 @@ No. It provides evidence-bounded analysis and validation preparation. Intrusive 
 
 ## References
 
-### Source Skill and execution contract
+The Skill does not log in with real credentials, read secrets, call production APIs, or perform destructive probing. Static contracts, request templates, and dry runs remain planning or material evidence; they do not prove an attack occurred, a vulnerability is absent, or a release was approved.
 
 - API Security Testing prompt (execution contract): https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md
-
 - API Security Testing Skill source directory (definition, prompt, agent adaptation, and evaluation assets): https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing
-
-The Skill does not log in with real credentials, read secrets, call production APIs, or perform destructive probing.
-
-### Reference links
-
-- API Security Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing/prompts/api-security-testing.md
-- API Security Testing Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/api-security-testing
 - API Security Testing details: https://inaodeng.com/en/qaskills/api-security-testing/
 - Awesome QA Skills project: https://github.com/naodeng/awesome-qa-skills

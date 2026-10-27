@@ -60,9 +60,23 @@ series: ["Awesome QA Skills 实战"]
 
 安装这个独立 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/dependency-failure-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill dependency-failure-testing
 
-调用 dependency-failure-testing 时，提供依赖契约、调用方与依赖状态、交互方式、证据和业务不变量。
+调用 dependency-failure-testing 时，提供依赖契约、调用方与依赖状态、交互方式、证据和业务不变量。可从下面的脱敏场景开始：
+
+```text
+请用 dependency-failure-testing 复核这个依赖故障场景。
+契约：[调用方、依赖、同步/异步模式、超时/重试/降级规则、业务不变量]
+证据：[请求或消息 ID、调用方状态、依赖状态、重试、消息/数据库副作用]
+范围：[环境、版本、纳入或排除的操作]
+请区分已确认拒绝、异步待处理和提交结果未知，列出 DPF-## 候选发现、证据缺口及最小隔离验证步骤。不要把超时或 HTTP 500 当作未提交的证明，也不要声称本次已注入故障。
+```
+
+## 常见问题
+
+**调用方超时或收到 HTTP 500，能说明写入没有发生吗？** 不能。按请求或消息 ID 对账依赖状态和已发生的副作用；结果未明时不要盲目重试非幂等写入。
+
+**Skill 会在真实依赖上注入故障吗？** 不会。它复核已提供的材料并准备隔离验证方案；故障注入需要另行授权和安全测试环境。
 
 ## 源文件
 

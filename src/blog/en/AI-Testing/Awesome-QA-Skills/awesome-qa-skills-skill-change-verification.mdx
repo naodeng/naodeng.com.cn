@@ -56,8 +56,27 @@ Use Skill Prose Contract Review: https://inaodeng.com/en/qaskills/skill-prose-re
 Install this Skill with:
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification -g
+npx skills add naodeng/awesome-qa-skills --skill skill-change-verification
 ```
+
+After installation, provide the actual diff, Skill version, target host, available checks, and authorization boundary. For example:
+
+~~~text
+Use skill-change-verification to review this change: [diff or changed-file list].
+Old and new versions: [versions]. Target host: [host and environment].
+Available checks and selected cases: [commands, Eval cases, runtime runs].
+Classify evidence by level, identify unrun checks and residual risk, and state exactly which claims the evidence supports. Do not report behavior as verified unless the relevant run was performed.
+~~~
+
+## FAQ
+
+### Does a successful configuration check prove the Skill behaves correctly?
+
+No. Configuration evidence shows only that the checked setup passed. Evaluation or runtime claims need actual runs with recorded cases, versions, host, outputs, and results.
+
+### Does a small wording change need no behavior review?
+
+Not automatically. Check whether the wording can affect activation, required inputs, output fields, permissions, or failure handling, then choose checks that cover the changed surface.
 
 ## References
 

@@ -73,6 +73,13 @@ API 安全分析不能把请求样例当成真实执行结果。先做输入审�
 
 结构化发现至少要区分事实、证据支持的推断、建议和人工决策。它们对应不同的证据强度和责任边界。
 
+| 判断层次 | 记录什么 | 示例 |
+| --- | --- | --- |
+| 事实 | 材料直接说明了什么 | 接口接受令牌和 `job_id` |
+| 证据支持的推断 | 哪个缺口可能造成什么风险 | 尚无租户绑定规则，可能无法确认对象授权是否生效；这不是漏洞确认 |
+| 建议 | 接下来最小且安全的动作 | 补充租户绑定、错误语义和审计要求，再设计合成数据验证 |
+| Human 决策 | 哪些事项需要授权或权衡 | 由负责人确认环境、账号范围和错误信息取舍 |
+
 ## 一个完整案例
 
 本节按输入、分析、发现、决策和验证展开；材料不足时保留 `missing`、`conflicting` 或 `assumptions` 状态，不把它们改写成通过。
@@ -177,8 +184,14 @@ Skill 可以准备第四步需要什么，但不会代替第四步。尤其不�
 ## 安装与调用
 
 ~~~bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill api-security-testing
 ~~~
+
+安装说明与排查方式：
+
+- README：https://github.com/naodeng/awesome-qa-skills/blob/main/README.md
+- FAQ：https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ.md
+- 安装手册：https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS.md
 
 ~~~text
 请使用 api-security-testing Skill。
@@ -209,17 +222,9 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 ## 参考
 
-### 源 Skill 与执行契约
-
-- API 安全测试提示词（执行契约）: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md
-
-- API 安全测试 Skill 源目录（定义、智能体适配和评测资产）: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing
-
 静态 API 合同、请求模板和空跑只能保留计划或材料证据，不能升级为真实攻击、漏洞不存在或发布批准。
 
-### 参考链接
-
-- API 安全测试提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md
-- API 安全测试 Skill 源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing
+- API 安全测试提示词（执行契约）: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing/prompts/api-security-testing.md
+- API 安全测试 Skill 源目录（定义、智能体适配和评测资产）: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/api-security-testing
 - API 安全测试详情页: https://inaodeng.com/zh-cn/qaskills/api-security-testing/
 - Awesome QA Skills 项目: https://github.com/naodeng/awesome-qa-skills

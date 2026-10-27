@@ -56,9 +56,24 @@ Review supplied backup inventories, runbooks, dependency maps, and prior restore
 
 Install the Skill:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/disaster-recovery-testing -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill disaster-recovery-testing
+```
 
-Invoke disaster-recovery-testing with the approved recovery objectives, region and disaster scope, backup evidence, dependency map, and business restoration criteria.
+Invoke disaster-recovery-testing with the approved recovery objectives, region and disaster scope, backup evidence, dependency map, and business restoration criteria:
+
+```text
+Review these redacted disaster-recovery materials with disaster-recovery-testing.
+Objectives and scope: [approved RTO/RPO, disaster start, primary/recovery regions, business-ready criterion]
+Evidence: [backup/data point, dependency map, recovery timeline, data-integrity and business-reconciliation records]
+State which objectives can be calculated and which remain unassessed. Provide candidate DRT-## findings and the smallest authorized restore-drill proposal. Do not treat a backup's existence or process startup as proof of business recovery.
+```
+
+## FAQ
+
+**Does an existing backup prove that disaster recovery will work?** No. Verify backup integrity, decryption and restore, plus identity, configuration, network, dependencies, and business reconciliation.
+
+**Can I use a conventional target when RTO/RPO is undefined?** No. Keep the objective and start/end events open for the owner; do not invent a threshold.
 
 ## Source
 

@@ -66,9 +66,31 @@ series: ["Awesome QA Skills 实战"]
 
 从 Awesome QA Skills 仓库安装这个独立 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-dashboard-design -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill quality-dashboard-design
+```
 
 调用 quality-dashboard-design 时，提供目标受众、决策问题、仪表盘方案、数据来源定义、时间窗口和已知证据缺口。
+
+可以直接使用下面的请求模板：
+
+~~~text
+请使用 quality-dashboard-design Skill。
+受众和决策：[谁使用仪表盘、要据此做什么决定]。
+仪表盘方案：[面板、定义、数据源、分组、刷新窗口和下钻链接]。
+已知约束：[数据新鲜度、隐私和告警策略]。
+复核缺失、过期、分母为零和高风险分组数据的呈现方式。区分设计发现与需要运行中的仪表盘才能验证的内容；不要批准发布。
+~~~
+
+## 常见问题
+
+### 质量仪表盘能替团队批准发布吗？
+
+不能。它可以呈现决策证据，但发布策略和风险接受必须由负责人员决定。
+
+### 缺失或过期的数据应该怎样显示？
+
+明确显示状态和最后更新时间。不能用 0 或之前的绿色结果替代不可用或过期的证据。
 
 ## 源文件
 

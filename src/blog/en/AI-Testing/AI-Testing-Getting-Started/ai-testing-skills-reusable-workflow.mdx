@@ -15,7 +15,7 @@ That is when Skills may be worth evaluating. A Skill can hold reusable instructi
 
 ## What usually goes into a Skill
 
-The public Agent Skills format organizes a Skill as a directory centered on `SKILL.md`. It can also include reference material, templates, or scripts. Tools differ in how they discover, install, and invoke Skills, so check what the AI tool you use actually supports.
+The open Agent Skills format organizes each Skill as a directory centered on `SKILL.md`. It can also include reference material, templates, or scripts. Tools differ in how they discover, install, and invoke Skills, so check what your AI tool supports.
 
 A Skill for “requirement-gap analysis” might explain:
 
@@ -33,11 +33,38 @@ Start with work that happens often, follows fairly stable steps, and produces re
 
 Before choosing a Skill, review its scope, required inputs, steps, output format, examples, and maintenance status. If it runs scripts, reads or writes files, or accesses external systems, check its permissions and safety boundaries too. Follow the instructions for your current tool and repository when installing it. Do not assume every client uses the same command or directory.
 
-For example, the Awesome QA Skills repository currently provides an installation example for Chinese-language Skills. If your tool supports the Skills CLI, you can follow the repository instructions to choose a suitable Skill. Commands and client support can change, so check the latest README before using them:
+For example, the Awesome QA Skills README provides an installation example for Chinese-language Skills. If your tool supports the Agent Skills CLI, choose a Skill using the repository instructions. Commands and client support can change, so check the latest guidance before using them:
 
-    npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill functional-testing
+```
+
+README and installation guidance:
+
+- README: https://github.com/naodeng/awesome-qa-skills/blob/main/README_EN.md
+- Installation guide: https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS_EN.md
+- FAQ: https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ_EN.md
 
 After installation, confirm that the tool can discover the Skill, when it will trigger, and whether its inputs and permissions fit your team’s requirements. If the current client does not support this mechanism, do not assume that copying the command installed anything.
+
+### A minimal invocation example
+
+For example, give `functional-testing` the task materials and expected deliverables:
+
+```text
+Use functional-testing to analyze this login requirement and design test scenarios.
+Requirement version and source: [fill in]
+Confirmed rules and sources: [paste the rules and their sources]
+Roles, system boundaries, environment, and test-data constraints: [fill in]
+Separate confirmed facts from open questions. For each scenario, include its rule basis, expected result, and evidence requirements. Do not add behavior the requirement does not specify.
+```
+
+### FAQ
+
+- **Does a successful install command mean the tool has loaded the Skill?** Not necessarily. Confirm that the target tool supports the format, discovers Skills in the installed directory, and uses the invocation syntax supported by that tool.
+- **Will the Skill supply project context?** No. The user still provides the requirement version, confirmed rules, permissions, system boundaries, and environment. Keep unknowns marked as open questions.
+- **Does installing a Skill make tests run automatically?** That depends on whether the Skill includes scripts and whether the host tool supports and permits execution. Check the Skill and its permissions; runtime results must come from an actual authorized run.
+- **When is a Skill worth maintaining?** Consider it when similar tasks recur, the steps are stable, and the result can be reviewed. A Prompt is usually enough for a one-off task.
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills
 
@@ -48,8 +75,6 @@ Agent Skills overview: https://agentskills.io/
 For a login-requirement review, the user provides the requirement, confirmed rules, and reference materials, then invokes a suitable Skill. The model organizes rules, questions, and risks. The user checks the evidence for each finding, asks the business team to confirm unknown behavior, and only then turns confirmed conclusions into test scenarios.
 
 “Analyze this login feature” is not enough context. Include the requirement version, confirmed verification-code policy, system boundaries, and restrictions on production data or environments. Without those materials, a Skill can still return a very polished answer—and it can still be a guess.
-
-> Image to add: a screenshot of the Skill directory and a redacted run, showing which parts are the reusable workflow and which are project-specific inputs.
 
 ## Decide whether it is worth keeping
 
@@ -69,6 +94,8 @@ Keep a reviewable record so others can judge whether a result is reproducible:
 | Run result | Actual output, evidence locations, unresolved issues, and human edits |
 | Trial conclusion | Suitable tasks, known limits, and conditions that trigger another review |
 
-Record and reproduce any issue found during a run. After changing the Skill, references, or invocation method, check it again against the original sample. Carry confirmed rules and examples into the next version; keep failed samples for regression. A tool may load a Skill differently, and a model may follow its steps to a different degree. Recheck suitability when the Agent, model, version, or business context changes. A Skill needs ongoing maintenance as tools and tasks change; it is not finished once and for all.
+Record issues from each run and keep enough material to reproduce them. After changing the Skill, references, or invocation method, check it against the original sample. Carry confirmed rules and examples into the next version; keep failed samples for regression.
+
+Tools may load Skills differently, and models may follow their steps to different degrees. Recheck suitability when the Agent, model, version, or business context changes. A Skill needs ongoing maintenance as tools and tasks change; one final edit does not make it permanent.
 
 The next article compares direct questions, Prompts, and Skills against the same login requirement and asks where each approach fits.

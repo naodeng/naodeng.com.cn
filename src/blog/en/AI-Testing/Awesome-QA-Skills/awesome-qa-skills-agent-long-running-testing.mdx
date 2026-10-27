@@ -40,8 +40,9 @@ The value of this Skill is not another keyword list. It connects each focus area
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
 | Progress records | Stage and checkpoint meaning, and how counts map to completed work | A progress explanation that can be checked against the same rules |
+| Heartbeat and liveness | Does a heartbeat only show that a worker responds, or is it tied to actual work progress? | Liveness evidence kept separate from checkpoints, committed steps, or item manifests |
 | Interruption result | What survives restart or cancellation | Partial, cancelled, recovered, or unknown |
-| Operational action | Lease, queue, or storage change to verify | Owner and evidence needed |
+| Duplicate submission and operations | What retry rule applies to a task ID? How are lease, queue, or resource changes verified? | Idempotency rule, commit/recovery evidence, owner, and validation action |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
@@ -84,7 +85,7 @@ This case follows Input, Analysis, Finding, Decision, and Validation. When mater
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
 | Job contract | Ticket count, expected stages, completion definition, and partial-result policy | Do not infer completion from elapsed time |
-| Runtime controls | Worker lease, checkpoint interval, restart behavior, cancellation request, and queue state | Mark unobserved transitions as unassessed |
+| Runtime controls | Task IDs and duplicate-submission policy, worker lease, checkpoints/heartbeats, restart, cancellation, queue, and resource lifecycle | Mark unobserved transitions as unassessed |
 | Evidence | Job ID, checkpoint records, processed counts, duplicate markers, and cancellation audit | Request a run record before making a reliability claim |
 
 Use a request like this:
@@ -96,6 +97,7 @@ Use the agent-long-running-testing Skill.
 Task: an agent spends two hours classifying 80,000 support tickets while workers can restart and users can cancel the job
 Inputs: [requirements, versions, links, logs, reports, or data paths]
 Scope: [included and excluded objects]
+Runtime evidence: [task IDs, checkpoint/state versions, heartbeats, processed-item manifest, lease, cancellation records, and side effects]
 Unknowns: [missing environment, accounts, data, or permissions]
 Expected output: [risk-ordered findings, evidence status, and next actions]
 
@@ -115,12 +117,13 @@ Using the same job, trigger one interruption condition at a time. First confirm 
 
 | Check | Condition | Records to inspect |
 | --- | --- | --- |
-| Checkpoint recovery | Restart the worker after a checkpoint | Input range in the checkpoint, resume position, duplicates, and gaps |
+| Checkpoint recovery | Restart the worker after a checkpoint | Input range, state version, resume position, duplicates, and gaps |
 | Lease takeover | Pause a lease holder until another worker takes over, then resume the old worker | Old and new owners, lease version or fencing token, and whether the old worker can still commit |
+| Duplicate submission | Resubmit a task with the same task ID or request identity | Project idempotency/deduplication rule, committed effects, and processing result; do not assume exactly-once |
 | Cancellation propagation | Cancel while a batch is in progress | Request and acknowledgment times, unfinished items, active child jobs, and user-visible terminal state |
 | Partial result | End or pause the job mid-run or after a dependency failure | Completed and unfinished items, result freshness, downstream safety, and recovery or retry path |
 
-If the system exposes no input manifest, commit identifier, or lease record, record that as missing evidence. A progress number alone cannot show whether work was lost, duplicated, or completed safely.
+If the system exposes no input manifest, commit identifier, state version, or lease record, record that as missing evidence. A heartbeat or progress number alone cannot show whether work was lost, duplicated, or completed safely.
 
 ### Finding
 
@@ -128,7 +131,7 @@ If the system exposes no input manifest, commit identifier, or lease record, rec
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Progress model meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+If the supplied material cannot prove that the progress definition meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
 
 | Field | Example wording |
 | --- | --- |
@@ -187,9 +190,7 @@ If the first request contains only a one-line goal, the output should stay limit
 Install the individual Skill. The series overview carries the longer installation explanation.
 
 ```bash
-
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing -g
-
+npx skills add naodeng/awesome-qa-skills --skill agent-long-running-testing
 ```
 
 After installation, invoke it with the `agent-long-running-testing` Skill and attach the real project material.
@@ -206,7 +207,9 @@ Treat it as a claim to validate; request checkpoint or item-level evidence befor
 
 Only when the contract defines their completeness, staleness, and safe downstream use.
 
+### Does a heartbeat prove that a job is progressing?
 
+Not by itself. A heartbeat usually shows that a process is responsive; verify work progress with checkpoints, committed steps, or item-level results. Interpret the terminal state against the project contract and run evidence.
 
 The example above is a design and review pattern, not an execution result. Keep static analysis, runtime evidence, human approval, and release acceptance separate.
 
@@ -218,12 +221,5 @@ The complete execution contract lives in the Agent Long-Running Testing prompt: 
 
 The entry point centers progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics. Read the supporting prompt before writing a conclusion, and keep the Skill's decision boundary visible.
 
-### Reference links
-
-- Agent Long-Running Testing: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing/prompts/agent-long-running-testing.md
-
-- Awesome QA Skills: Agent Long-Running Testing source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-long-running-testing
-
-- Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
-
 - Agent Long-Running Testing details: https://inaodeng.com/en/qaskills/agent-long-running-testing/
+- Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills

@@ -57,8 +57,27 @@ Skill 文案契约审查: https://inaodeng.com/zh-cn/qaskills/skill-prose-review
 安装命令：
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-prose-trim -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-prose-trim
 ```
+
+安装后，先列出授权文件、双语配对和候选段落需要清理的原因。例如：
+
+~~~text
+请使用 skill-prose-trim 清理以下授权文件：[文件列表]。
+语言配对：[语言和对应文件]。
+目标：删除已确认的过程残留，同时保留行为契约和历史事实。
+逐段分类候选内容，并对照来源核实当前事实；报告改动或保留理由。保留触发条件、输入、例外、拒绝规则、失败处理、测量结果、标识符和引用。不要编辑生成文件、封存档案或 fixture。
+~~~
+
+## 常见问题
+
+### 清理时要达到固定字数吗？
+
+不需要。源 Skill 没有规定目标长度。只删掉对读者和行为契约都没有帮助的内容，不能为了缩短而删掉有效契约。
+
+### 可以顺手精简生成文件或 fixture 吗？
+
+不可以。源 Skill 将它们视为受保护证据；应报告这些文件，并且只编辑明确授权的范围。
 
 ## 参考
 

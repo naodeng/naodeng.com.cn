@@ -60,9 +60,23 @@ series: ["Awesome QA Skills 实战"]
 
 安装这个独立 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/multi-agent-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill multi-agent-testing
 
-调用 multi-agent-testing 时，提供协调协议、任务和消息记录、共享状态版本、所有权规则与终止行为。
+调用 multi-agent-testing 时，提供协调协议、任务和消息记录、共享状态版本、所有权规则与终止行为。可以先从一段脱敏轨迹开始：
+
+```text
+请用 multi-agent-testing 复核这组脱敏多智能体交接记录。
+协议与成功条件：[委派、认领/提交、重试、取消和终止规则]
+轨迹：[task/message/correlation ID、发送方/接收方、状态版本、ACK、工具副作用]
+范围：[纳入或排除的 Agent、消息和步骤]
+请列出已确认事实、冲突、缺失证据和 MAT-## 候选发现；区分静态设计与实际运行结果。不要假设消息只投递一次，也不要声称未提供的子任务已停止。
+```
+
+## 常见问题
+
+**重复投递消息就代表缺陷吗？** 不一定。按项目协议检查去重、所有权和副作用；没有证据时，不要假设 exactly-once 或安全重放。
+
+**父任务超时能证明所有子任务都已停止吗？** 不能。需要各活跃子任务的取消确认、工具状态和终态证据。
 
 ## 源文件
 

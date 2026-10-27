@@ -20,6 +20,7 @@ Start with the actual policy source and identify the subject role, resource owne
 | Resource | Who owns the record, and which tenant or state contains it? |
 | Action | Is the request reading, editing, exporting, approving, or deleting? |
 | Context | Does approval state, delegation scope, or a policy version change the result? |
+| Policy and delegation | Which rule and version apply? Is the grant expired, revoked, or outside its delegation scope? |
 
 Keep the result as allow, deny, or unknown for each supplied rule. Do not fill an unknown cell with an assumed default.
 
@@ -48,7 +49,7 @@ The comparison becomes clearer in a subject × resource × action matrix. This i
 | Project manager | Edit another department's approved forecast | Denied by the supplied rule | Policy version, denial decision, no prohibited data change or side effect |
 | Project manager | Edit an archived forecast for their own team | Unknown | Ask the product or policy owner for the archive-state rule |
 
-For a validation, keep the subject and action fixed and change only the resource. Then use approved test identities in an isolated environment to check the server-side decision and side effects. Interpret HTTP status, UI controls, and client-supplied tenant fields under the project contract; none is authorization evidence by itself.
+For a candidate validation, keep the subject and action fixed and change only the resource. An authorized tester should check the server-side decision and side effects in an isolated environment. Interpret HTTP status, UI controls, and client-supplied tenant fields under the project contract; none is authorization evidence by itself. This Skill reviews supplied material and proposes validation; it does not execute requests.
 
 ## Record an AZT-## finding
 
@@ -64,11 +65,38 @@ A validation proposal should use redacted data and an authorized isolated enviro
 
 ## Install and invoke
 
-Install the individual Skill:
+Install the English Skill with the Agent Skills CLI:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/authorization-testing -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill authorization-testing
+```
 
-Invoke authorization-testing with the policy source, subjects, resources, actions, tenant and ownership rules, and available denial or audit evidence.
+Installation and troubleshooting guides:
+
+- README: https://github.com/naodeng/awesome-qa-skills/blob/main/README_EN.md
+- FAQ: https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ_EN.md
+- Installation guide: https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS_EN.md
+
+In a tool that discovers Agent Skills automatically, describe the task directly. If the tool supports explicit invocation, use its syntax to select `authorization-testing`. Provide the policy source and version, subjects, resources, actions, tenant and ownership rules, revocation context, and available denial or audit evidence.
+
+For example:
+
+```text
+Use authorization-testing to review the following access-control policy.
+Policy source and version: [fill in]
+Subjects and roles: [fill in]
+Resources, tenant, ownership, and state: [fill in]
+Actions and applicable context: [fill in]
+Existing server decisions and audit evidence: [attach material]
+Unknown rules: [list them; do not fill them with assumed behavior]
+Return a subject × resource × action matrix, allow/deny/unknown states, evidence gaps, and isolated validation proposals. Do not log into a real system or call a live API.
+```
+
+### FAQ
+
+- **Does a role name prove that a user can access a resource?** No. Expected decisions must trace to the applicable policy, resource scope, and server-side evidence.
+- **Will this Skill call APIs or confirm a vulnerability?** No. It reviews supplied policy and evidence and proposes candidate validation. An authorized tester must perform any actual run in an isolated environment.
+- **What if the policy does not define a state?** Mark the combination unknown and ask the product or policy owner to confirm it. Do not fill it with an assumed allow or deny rule.
 
 ## Source
 

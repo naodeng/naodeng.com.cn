@@ -55,9 +55,24 @@ Compare supplied objectives, backups, runbooks, dependencies, validation queries
 
 Install the Skill:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/recovery-testing -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill recovery-testing
+```
 
-Invoke recovery-testing with sourced RTO/RPO definitions, failure and business-ready timestamps, backup or log evidence, dependencies, reconciliation records, and takeover rules.
+Invoke recovery-testing with sourced RTO/RPO definitions, failure and business-ready timestamps, backup or log evidence, dependencies, reconciliation records, and takeover rules:
+
+```text
+Review this redacted recovery timeline with recovery-testing.
+Objectives: [RTO/RPO definitions, failure start, business-ready end, accepted data loss]
+Evidence: [backup/log data point, restore steps, dependency readiness, business reconciliation, and operator handoff]
+Assess service readiness, the restored data point, and business consistency separately. Calculate only objective deltas supported by the timestamps, then list candidate RCV-## findings, missing evidence, and the smallest isolated validation action. Do not treat a passing health probe as business recovery.
+```
+
+## FAQ
+
+**Does a passing health probe end the RTO clock?** Only if the project defines it as the business-recovery event. Otherwise, use the agreed time when the business path is ready.
+
+**Can RPO be calculated without a recovered data point?** No. Record the missing point and source; do not substitute a backup-file timestamp for the data actually restored.
 
 ## Source
 

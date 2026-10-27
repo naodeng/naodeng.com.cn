@@ -66,9 +66,29 @@ This Skill designs a decision view; it does not replace telemetry design or rele
 
 Install the individual Skill from the Awesome QA Skills repository:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill quality-dashboard-design
+```
 
 Invoke quality-dashboard-design with the intended audience, decision, dashboard plan, source definitions, time window, and known evidence gaps.
+
+~~~text
+Use the quality-dashboard-design Skill.
+Audience and decision: [who uses the dashboard and what they decide].
+Dashboard plan: [panels, definitions, sources, groups, refresh window, and drill-down links].
+Known constraints: [data freshness, privacy, and alert policy].
+Review how missing, stale, zero-denominator, and high-risk subgroup data are displayed. Separate design findings from checks that require a running dashboard; do not approve a release.
+~~~
+
+## FAQ
+
+### Can a quality dashboard approve a release?
+
+No. It can present evidence for an authorized decision, but release policy and risk acceptance belong to the accountable owner.
+
+### How should missing or stale data appear?
+
+Show the state and its last update explicitly. Do not substitute zero or an earlier green result for unavailable or stale evidence.
 
 ## Source
 

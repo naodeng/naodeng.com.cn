@@ -26,7 +26,7 @@ Use it when a resilience exercise is planned, a dependency or traffic pattern ch
 
 ## What it does not do
 
-The Reliability Testing Skill can organize material, evidence, and next actions for Reliability objective. It does not replace:
+The Reliability Testing Skill helps organize evidence and next steps for a reliability review. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -39,16 +39,28 @@ The value of this Skill is not another keyword list. It connects each focus area
 
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
-| Reliability objective | Expected availability or degraded behavior | Source and measurement window |
+| reliability objective | Expected availability or degraded behavior | Source and measurement window |
 | Failure-mode judgment | Expected behavior under one failure | Scenario and evidence state |
 | Exposure analysis | Who or what is affected and for how long | Blast radius and unknowns |
 | Evidence plan | Metric, trace, or exercise that reduces uncertainty | Owner and stop condition |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
+## Define the SLI and observation window first
+
+Before comparing an availability objective, record the project's SLI event definition, success/failure conditions, denominator, exclusions, measurement window, and data source. Request success rate and time-based availability are different measures; do not substitute or combine them.
+
+| Metric type | Evidence to retain | Review focus |
+| --- | --- | --- |
+| Request-based SLI | Successful requests, eligible total requests, and explicit exclusions | Apply the defined treatment of retries, duplicate events, and missing records; state numerator and denominator |
+| Time-based SLI | Expected observation time, available time, and missing intervals | Explain sampling and missing-data treatment; do not replace time with request counts |
+| Failure timeline | Start/end, duration, recurrence, detection, and recovery records | State whether the window covers the target load; do not extrapolate long-term reliability from a short window |
+
+If definitions, sources, or windows are incompatible, report them separately instead of merging them into one conclusion.
+
 ## Audit inputs before you start
 
-Before analyzing Reliability objective, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before analyzing reliability evidence, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -67,12 +79,12 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Reliability objective, do not compress four different kinds of language into “recommended to pass”:
+In a reliability review, do not compress four different kinds of language into “recommended to pass”:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
 | Fact | What the supplied material directly shows | Cite the source, version, input, or run record for the focus |
-| Evidence-backed Inference | What several facts support together | Show the inference chain and retain uncertainty |
+| Evidence-backed inference | What several facts support together | Show the inference chain and retain uncertainty |
 | Recommendation | The smallest next action | Name the evidence, review, execution, or regression path |
 | Human Decision | What an accountable person must decide | Leave scope, risk acceptance, resources, and release meaning to the owner |
 
@@ -84,7 +96,7 @@ This case follows Input, Analysis, Finding, Decision, and Validation. When mater
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
-| Availability objective | SLO or business objective, service boundary, and measurement window | Keep unsupported targets pending |
+| Availability objective | SLO or business objective, service boundary, SLI definition, and measurement window | Mark unsupported targets or definitions as unconfirmed |
 | Failure modes | Queue delay, provider outage, storage saturation, or dependency timeout | Avoid generic system-down labels |
 | Exposure window | Users, operations, regions, and duration affected | Mark unknown blast radius unassessed |
 | Evidence readiness | Metrics, logs, traces, alerts, runbooks, and safe test environment | Separate design and execution evidence |
@@ -96,7 +108,7 @@ Use the reliability-testing Skill.
 
 Task: Prepare a reliability review for a notification service depending on a queue and a third-party email provider.
 Inputs: [SLO, dependency map, failure modes, traffic window, metrics, alerts, runbooks]
-Scope: [staging exercise and production evidence review]
+Scope: [authorized staging design and supplied/redacted production evidence review (read-only)]
 Constraints: [no production fault injection, provider data masked]
 
 Cover availability objectives, failure modes, exposure windows, and evidence readiness. State pending, blocked, or unassessed items and give the smallest isolated validation method.
@@ -118,12 +130,12 @@ The review classifies objectives and readiness from supplied material. It cannot
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Reliability objective meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+If the supplied material cannot show whether the stated reliability objective is met, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
 
 | Field | Example wording |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Reliability objective |
-| Finding | The condition or result for Reliability objective is not yet traceable to evidence |
+| Source and scope | Record the requirement, version, environment, and the specific availability objective |
+| Finding | The objective's condition or result is not yet traceable to evidence |
 | Evidence state | missing / assumptions; use conflicting when sources disagree |
 | Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
 | Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
@@ -146,12 +158,12 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
-| Reliability objective | Expected availability or degraded behavior | Source and measurement window |
+| reliability objective | Expected availability or degraded behavior | Source and measurement window |
 | Failure-mode judgment | Expected behavior under one failure | Scenario and evidence state |
 | Exposure analysis | Who or what is affected and for how long | Blast radius and unknowns |
 | Evidence plan | Metric, trace, or exercise that reduces uncertainty | Owner and stop condition |
 
-Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
+Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use unconfirmed, BLOCKED, UNASSESSED, or NOT_SCORED instead of filling the gap with confidence.
 
 ### Next-stage route
 
@@ -159,7 +171,7 @@ At minimum, hand off the source, evidence state, owner, close condition, and val
 
 ## How to prepare better input
 
-Provide the objective source, dependency and failure-mode map, exposure window, metric definitions, alert and runbook references, environment, and data constraints. Without an approved objective, write an evidence gap rather than inventing an SLO.
+Provide the objective source, dependency and failure-mode map, exposure window, SLI definition and denominator, measurement window, alert and runbook references, environment, and data constraints. Without an approved objective, write an evidence gap rather than inventing an SLO.
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
 
@@ -178,7 +190,7 @@ A useful handoff includes input versions, scope, time window, evidence index, as
 ## Install and invoke
 
 ~~~bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing -g
+npx skills add naodeng/awesome-qa-skills --skill reliability-testing
 ~~~
 
 ~~~text
@@ -197,6 +209,10 @@ No. It exposes missing objectives, measurement windows, and validation paths. Se
 
 It is one observation with limited coverage. Keep its window and failure exposure visible; it does not prove failures that did not occur.
 
+### Does request success rate equal time-based availability?
+
+No. Calculate each measure from its defined event, denominator, and observation window. If the definitions differ, report them separately instead of substituting one for the other.
+
 The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
 
 ## References
@@ -206,10 +222,3 @@ The Skill is most useful when attached to one real project artifact and kept wit
 The complete execution contract lives in the Reliability Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing/prompts/reliability-testing.md. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing may also contain evaluation cases and supporting material.
 
 Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
-
-### Reference links
-
-- Reliability Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing/prompts/reliability-testing.md
-- Reliability Testing Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/reliability-testing
-- Reliability Testing details: https://inaodeng.com/en/qaskills/reliability-testing/
-- Awesome QA Skills on GitHub: https://github.com/naodeng/awesome-qa-skills

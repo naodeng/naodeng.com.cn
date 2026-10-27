@@ -57,9 +57,30 @@ A dashboard proves that a view was designed; it does not prove that an alert fir
 
 Install the individual Skill from the Awesome QA Skills repository:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/observability-design-review -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill observability-design-review
+```
 
 Then invoke observability-design-review with the telemetry design, scope, environment, available evidence, and the decision the review should support.
+
+~~~text
+Use the observability-design-review Skill.
+Service and flow: [boundary, version, and environment].
+Review material: [log, metric, trace, alert, and SLI/SLO designs].
+Decision to support: [the operator or product question].
+Constraints: [privacy, retention, sampling, and cost rules].
+Identify missing or conflicting evidence and propose the smallest safe validation. Do not query production or infer service health from design documents.
+~~~
+
+## FAQ
+
+### Does a dashboard design prove that the service is observable?
+
+No. It shows that a view is planned. Runtime observability needs actual signals with identity, time, environment, and enough linked evidence to answer the diagnostic question.
+
+### What if the SLI or alert threshold is missing?
+
+Mark it as missing and name the owner who must define it. Do not borrow a platform default or invent a target.
 
 ## Source
 

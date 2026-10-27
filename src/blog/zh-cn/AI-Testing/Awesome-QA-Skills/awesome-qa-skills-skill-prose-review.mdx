@@ -80,8 +80,27 @@ Skill 文案本身就是行为契约的一部分。触发条件、指令优先�
 安装命令：
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-prose-review -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-prose-review
 ```
+
+安装后，提供 Skill 文件、预期使用者和审查边界。例如：
+
+~~~text
+请使用 skill-prose-review 审查[文件和版本]。
+预期任务与使用者：[Skill 应支持什么任务，谁会使用它的输出]。
+约束：[审查文件范围、安全规则，以及是否授权编辑]。
+沿触发条件、输入、指令优先级、输出契约、拒绝边界、示例和验证声明逐项检查。按位置、可能影响和证据报告发现；不要编辑文件，也不要执行文案描述的业务任务。
+~~~
+
+## 常见问题
+
+### 审查会直接改 Skill 或执行其中的业务任务吗？
+
+不会。它只报告有证据支持的文案与契约问题。编辑或执行被审查的流程需要另外授权。
+
+### 文案不清楚就一定是阻塞问题吗？
+
+不一定。严重度应对应可能的行为变化或使用影响。纯风格偏好应作为建议，除非有证据表明它会改变契约。
 
 ## 参考
 

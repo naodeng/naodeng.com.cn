@@ -22,7 +22,7 @@ Give the confirmed login rules IDs and have each case refer to a relevant rule o
 | R-01: Verification codes are valid for five minutes | Within the valid period, after expiry, and the boundary still needs confirmation |
 | R-02: Each phone number can request at most 20 codes per day | Behavior at the limit; the counting window still needs confirmation |
 | R-03: Five consecutive incorrect attempts trigger a 15-minute lockout | The fifth failure, requests during lockout, and the reset condition |
-| R-04: An account is created after the first successful verification | Account creation after success and no partial account after failure |
+| R-04: An account is created after the first successful verification | Create it after success; confirm from the requirement whether failure leaves an account or other state |
 
 These are still exercise assumptions from the series. Real cases should cite the project requirement ID, API contract, or decision record. If an expected result has no source, mark it as needing confirmation rather than treating it as product behavior.
 
@@ -37,8 +37,6 @@ These are still exercise assumptions from the series. Real cases should cite the
 | False pass | The test is skipped, an exception is swallowed, or an assertion is always true | The result cannot support a quality claim |
 
 Check side effects on failure paths too. After an incorrect code is rejected, did the system still create an account? Checking only for an error message could miss a changed data state.
-
-> Image to add: annotate one AI-generated case with its requirement source, execution conditions, assertions, and side-effect checks to show how review exposes a weak assertion.
 
 ## A practical review checklist
 
@@ -62,7 +60,7 @@ The example below uses the exercise rule R-03, “Five consecutive incorrect att
 | Boundary inputs | What happens on failures 1–4, the fifth attempt, and during lockout? | A case that only checks for an error message has not covered the threshold |
 | Observation point | Can you inspect authentication or server-side lockout state, rather than only page copy? | A message alone does not confirm the server state changed |
 | Timing | When does the 15-minute period start, and how is its end boundary handled? | If the rule does not define inclusivity, record an open question |
-| Execution evidence | Record the case ID, environment, data identity, run time, assertion result, and raw report location | An unrun case remains unverified; its design is not a pass |
+| Execution evidence | Record the case ID, environment, test-data identifier, run time, assertion result, and raw report location | An unrun case remains unverified; its design is not a pass |
 
 If an AI-generated case does not distinguish the fourth from the fifth attempt, identify that missing boundary and ask for an expected result with a source. If the rule does not define the response during lockout, list it as a question. Do not invent a status code or message for Product.
 
@@ -81,7 +79,7 @@ You can use this instruction for a second review of generated cases:
 
 This review can share the same blind spots as the model that generated the cases. It is a screening aid, not an independent certification. Higher-risk behavior still needs review by testers, Product, or Engineering, plus execution and evidence from the real test environment.
 
-The source notes mention AI Test Auditor as a related project for reviewing generated tests. Check its current documentation before publication to confirm that it is still a suitable reference.
+AI Test Auditor can complement this review with source-only checks for a narrow set of patterns that may make tests ineffective. It does not run tests or calculate coverage, and an unflagged test remains unassessed rather than proven effective. Check the project documentation to confirm its supported source scope still fits the examples here.
 
 AI Test Auditor: https://github.com/naodeng/ai-test-auditor
 

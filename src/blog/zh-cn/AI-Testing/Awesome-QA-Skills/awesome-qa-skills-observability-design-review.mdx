@@ -57,9 +57,32 @@ series: ["Awesome QA Skills 实战"]
 
 从 Awesome QA Skills 仓库安装这个独立 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/observability-design-review -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill observability-design-review
+```
 
 调用 observability-design-review 时，提供遥测设计、范围、环境、现有证据，以及本次复核要支持的决策。
+
+可以直接使用下面的请求模板：
+
+~~~text
+请使用 observability-design-review Skill。
+服务和流程：[边界、版本和环境]。
+复核材料：[日志、指标、Trace、告警及 SLI/SLO 设计]。
+需要支持的决策：[运维或产品要回答的问题]。
+约束：[隐私、保留、采样和成本规则]。
+找出缺失或冲突的证据，并提出最小安全验证。不要查询生产系统，也不要根据设计文档推断系统健康。
+~~~
+
+## 常见问题
+
+### 有仪表盘设计就能证明系统可观测吗？
+
+不能。设计只能说明计划了一个视图。要判断实际运行时是否可观测，需要真实信号带有身份、时间、环境等信息，并且能关联到足以回答排查问题的证据。
+
+### SLI 或告警阈值没有定义怎么办？
+
+标记为缺失，并指出需要由谁定义。不要套用平台默认值，也不要自行设目标。
 
 ## 源文件
 

@@ -35,23 +35,21 @@ This is an illustrative case: the test policy explicitly denies a principal in `
 | Denial evidence | Authorization decision, tool execution trace, post-run mock state, and audit record |
 | Control path | A test action explicitly permitted by policy, with its grant evidence, to detect false denial |
 
-A refusal in the agent's text without an authorization decision, execution trace, or state evidence remains “insufficient evidence.” If policy requires denial and the trace shows that the tool executed or caused a side effect, the case fails. If a permitted control path is denied, record a false denial against the policy. Label static review separately from runtime results.
+A refusal in the agent's text without an authorization decision, execution trace, or post-run state or audit evidence remains “insufficient evidence.” For a denial, also confirm that no tool executed and that there was no write, message, or cost side effect. If policy requires denial and the trace shows execution or a side effect, the case fails. If a permitted control path is denied, record a false denial against the policy. Label static review separately from runtime results.
 
 ## Recheck authority when the request changes
 
 Before a proposed action, compare the current identity, grant status, resource, and parameters with the supplied policy. Delegation cannot expand the original grant. If the resource, amount, recipient, or action changes, request approval again when policy requires it. Expired or revoked authority is no longer valid.
 
-## Review both denial and permitted paths
-
-A denial candidate should establish, from available audit evidence, that the tool was not executed and that no write, message, or cost side effect occurred. Also include an authorized normal action so the review can detect false denial. Expected decisions must come from the project policy; do not invent roles or access rules.
-
 ## Distinguish permission from remembered state
 
-Permission testing asks whether this principal may perform this action now, including the approval and side-effect boundary. Agent Memory Testing: https://inaodeng.com/en/qaskills/agent-memory-testing/ follows stored information across updates, expiry, sessions, and deletion. A memory record’s presence neither grants access nor proves that access was correctly denied.
+Permission testing asks whether this principal may perform this action now, including the approval and side-effect boundary. Agent Memory Testing follows stored information across updates, expiry, sessions, and deletion. A memory record’s presence neither grants access nor proves that access was correctly denied.
 
 ## Record an AGP-## finding
 
 Capture the object or rule, source, trigger or applicability, expected concern, evidence state, impact and priority, owner role, close condition, and validation method. For a denial, name the evidence needed to prove no tool call and no side effect; for an allowed path, record the policy source for the grant.
+
+Human reviewers must make risk-acceptance, exception-approval, and safety decisions. The Skill can list those decisions; it cannot make them for the team.
 
 ## Keep review and execution separate
 
@@ -65,11 +63,37 @@ Compare supplied identity, policy, request, and audit material as a static revie
 
 ## Install and invoke
 
-Install the Skill:
+Install the English Skill with the Agent Skills CLI:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-permission-testing -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill agent-permission-testing
+```
 
-Invoke agent-permission-testing with the identity and delegation context, policy source, resource and tenant, proposed action and parameters, approval state, and audit evidence.
+Installation and troubleshooting guides:
+
+- README: https://github.com/naodeng/awesome-qa-skills/blob/main/README_EN.md
+- FAQ: https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ_EN.md
+- Installation guide: https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS_EN.md
+
+In a tool that discovers Agent Skills automatically, describe the task directly. If the tool supports explicit invocation, use its syntax to select `agent-permission-testing`. Provide the identity and delegation context, policy source and version, resource and tenant, proposed action and parameters, approval state, scope, environment, and audit evidence.
+
+For example:
+
+```text
+Use agent-permission-testing to review this Agent permission design.
+Identity and delegation chain: [fill in]
+Policy source, version, and expiry: [fill in]
+Tool, resource, tenant, action, and parameters: [fill in]
+Approval state and audit evidence: [attach relevant material]
+Scope, environment, and constraints: [fill in; do not access real resources or execute tools]
+Separate facts, evidence-supported inferences, candidate validation, and Human decisions. For each finding, include priority, owner role, close condition, and validation method.
+```
+
+### FAQ
+
+- **Does an Agent's refusal prove that the permission decision was correct?** No. Check the policy decision, tool execution trace, post-run state, and audit evidence. Without them, mark the result “insufficient evidence.”
+- **Will this Skill run permission tests?** No. It organizes static review and candidate validation. Actual execution requires separate authorization and should be performed by the team in an isolated or mocked environment.
+- **What if identity or policy materials are incomplete?** List the unknowns and input gaps. Do not infer permission from an Agent name, tool listing, or external content.
 
 ## Source
 

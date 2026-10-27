@@ -57,9 +57,21 @@ Review supplied policies, memory records, retrieval traces, and deletion evidenc
 
 Install the Skill:
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing -g
+```bash
+npx skills add naodeng/awesome-qa-skills --skill agent-memory-testing
+```
 
-Invoke agent-memory-testing with the memory policy, tenant scope, item versions, provenance, expiry or deletion rules, and available retrieval evidence.
+Invoke agent-memory-testing with the memory policy, tenant scope, item versions, provenance, expiry or deletion rules, and available retrieval evidence. Start with one redacted record:
+
+```text
+Review this redacted memory record with agent-memory-testing. Use only the policy and evidence I provide to check tenant/user scope, version and provenance, expiry, consent state, and deletion propagation scope. Separate confirmed facts, open questions, and insufficient-evidence items. Do not infer an undocumented retention period or deletion result, and do not access real accounts or secret data.
+```
+
+## FAQ
+
+**Does one empty retrieval prove that a memory was deleted?** No. It shows only that this query returned no result through the current retrieval path. Check the indexes, caches, and other stores named by the actual architecture and policy, and retain evidence for each scope.
+
+**Will invoking the Skill inspect a live account automatically?** This review uses supplied materials. Any runtime validation needs prior authorization and an isolated environment with redacted data or mocks.
 
 ## Source
 

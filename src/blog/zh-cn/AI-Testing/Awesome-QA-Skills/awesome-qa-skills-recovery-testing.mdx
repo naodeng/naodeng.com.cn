@@ -55,9 +55,24 @@ series: ["Awesome QA Skills 实战"]
 
 安装这个 Skill：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/recovery-testing -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill recovery-testing
+```
 
-调用 recovery-testing 时，提供有来源的 RTO/RPO 定义、故障与业务就绪时间戳、备份或日志证据、依赖、对账记录和人工接管规则。
+调用 recovery-testing 时，提供有来源的 RTO/RPO 定义、故障与业务就绪时间戳、备份或日志证据、依赖、对账记录和人工接管规则：
+
+```text
+请用 recovery-testing 复核这份脱敏恢复时间线。
+目标：[RTO/RPO 定义、故障起点、业务就绪终点、可接受丢失]
+证据：[备份/日志数据点、恢复步骤、依赖就绪、业务对账和人工接管记录]
+请分别检查服务就绪、恢复数据点和业务一致性；计算可由现有时间戳支持的目标差值，并列出 RCV-## 候选发现、缺失证据和最小隔离验证动作。不要把健康探针成功当作业务恢复。
+```
+
+## 常见问题
+
+**健康探针通过，就能结束 RTO 计时吗？** 只有项目定义将其作为业务恢复事件时才可以。否则应以约定的业务路径就绪时间为准。
+
+**没有恢复数据点，还能计算 RPO 吗？** 不能。记录缺少的数据点和来源，不要用备份文件时间替代实际恢复数据。
 
 ## 源文件
 

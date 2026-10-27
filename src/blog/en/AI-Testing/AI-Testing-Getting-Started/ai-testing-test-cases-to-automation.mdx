@@ -11,7 +11,7 @@ series: ["AI 软件测试入门与实践：从会用到用好"]
 
 Once a test case has been reviewed, asking AI to write automation sounds straightforward. But code that runs is not necessarily an effective test. It may call the wrong endpoint, use unstable data, or check a response field that says little about the behavior that matters.
 
-A safer approach is to start from one clear test condition, generate the smallest implementation, then have a person run, inspect, and revise it.
+A safer approach is to start from one clear test condition, generate the smallest implementation, then have a person review it and run, inspect, and revise it in an authorized isolated test environment.
 
 ## Explain the project boundaries first
 
@@ -40,15 +40,13 @@ In a project that supports Playwright, locate controls by labels and button name
 
 If the interface does not expose these accessible names, do not ask AI to invent a selector. Review the page implementation, requirement, and test accessibility. Avoid fixed sleeps in place of condition-based waits; wait for the expected state or return a clear timeout failure.
 
-> Image to add: include a redacted automation run showing the command, test environment, failed assertion, and linked requirement—not only a green “all passed” screenshot.
-
 ## Classify failures before changing anything
 
 When a test fails, do not immediately ask AI to make it green. Keep the failure log and environment details, then determine whether the cause is incorrect test code, product behavior, contaminated test data, an environment fault, or intermittent instability. Only then decide whether to change the test, fix the product, or repair the environment.
 
 Passing tests need review too. Do assertions cover the target behavior? Was the test skipped? Would it fail if the feature were deliberately broken? Add it to the continuous integration pipeline only after it runs consistently and produces traceable evidence.
 
-You can also use small Test-Driven Development (TDD) steps: confirm the behavior and expected result, write and run a minimal test, and confirm that it fails because the behavior is not implemented. Then implement or adjust the code and make the test pass. Finally, in a controlled environment, deliberately break the behavior and verify that the test fails. That checks whether the test can actually distinguish the right behavior.
+For a new behavior that has not been implemented yet, you can use small Test-Driven Development (TDD) steps: confirm the behavior and expected result, write and run a minimal test, and confirm that it fails because the behavior is not implemented. Then implement or adjust the code and make the test pass. Finally, in a controlled environment, deliberately break the behavior and verify that the test fails. If the behavior already exists, do not force an initial failure just to apply TDD; add a regression test and use a controlled mutation to check whether its assertion can distinguish correct from incorrect behavior.
 
 ## Keep reviewable execution records
 
@@ -66,7 +64,23 @@ Treat the run as regression evidence only when requirement source, test code, da
 
 ## Ask AI to do one small step at a time
 
-First, ask it to inspect the existing test directories and framework conventions. Then request the smallest code change for one reviewed test case. After the run, have it explain the log and failure evidence; you decide what to change. Starting with “automate the whole login module” makes the code scope, test data, and acceptance target difficult to review.
+First, ask AI to inspect the existing test directories and framework conventions. Then request the smallest code change for one reviewed test case. Starting with “automate the whole login module” makes the code scope, test data, and acceptance target difficult to review.
+
+For example:
+
+```text
+Add one automated test for the reviewed case below using the current test framework.
+Requirement source and case ID: [provide]
+API or UI contract: [provide]
+Test data, isolation, and cleanup: [provide]
+Project directory and framework conventions: [provide]
+Constraints: [no production access, real accounts, or unapproved external systems]
+Do not invent behavior, status codes, or copy that was not supplied. First list the files you would change and the test command, then explain how the assertions check the target behavior and side effects.
+```
+
+If the tool can run tests, review the command, environment, data cleanup, and external dependencies first. Run only in an authorized isolated environment. Record the actual command, output, and exit status; mark a test as “not run” when no execution took place.
+
+After a run, ask AI to explain the log and failure evidence, then decide what to change.
 
 For an exercise, choose an invalid-code case. Check the API or UI contract before asking AI to generate a test. Review data isolation, assertions, and cleanup, then verify at least once that the test fails when the feature behavior is wrong. Automation earns its place through reliable feedback, not fast code generation.
 

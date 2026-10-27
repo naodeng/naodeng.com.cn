@@ -20,6 +20,7 @@ series: ["Awesome QA Skills 实战"]
 | 资源 | 记录由谁拥有，属于哪个租户和状态？ |
 | 动作 | 请求是在读取、编辑、导出、批准还是删除？ |
 | 上下文 | 审批状态、委派范围或策略版本是否会改变结果？ |
+| 策略与委派 | 适用哪条规则和哪个版本？授权是否过期、撤销或超出委派范围？ |
 
 对每条有来源的规则记录允许、拒绝或未知；不要用未经确认的默认值补齐未知项。
 
@@ -48,7 +49,7 @@ series: ["Awesome QA Skills 实战"]
 | 项目经理 | 其他部门已批准的预测 / 编辑 | 规则拒绝 | 策略版本、拒绝决策、无禁止的数据变更或副作用 |
 | 项目经理 | 自己团队已归档的预测 / 编辑 | 未知 | 请求产品或策略负责人确认归档状态的规则 |
 
-验证时保持主体与动作不变，只替换资源；再用已批准的测试身份在隔离环境检查服务端决定和数据副作用。HTTP 状态码、界面按钮和客户端提交的租户字段都应按项目契约解释，不能单独当作授权证据。
+候选验证可以保持主体与动作不变，只替换资源；实际运行时，由获授权的测试人员在隔离环境检查服务端决定和数据副作用。HTTP 状态码、界面按钮和客户端提交的租户字段都应按项目契约解释，不能单独当作授权证据。这个 Skill 只复核材料并提出验证建议，不会执行请求。
 
 ## 记录 AZT-## 发现
 
@@ -64,11 +65,38 @@ series: ["Awesome QA Skills 实战"]
 
 ## 安装与调用
 
-安装这个独立 Skill：
+使用 Agent Skills CLI 安装中文版本：
 
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authorization-testing -g
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill authorization-testing
+```
 
-调用 authorization-testing 时，提供策略来源、主体、资源、动作、租户和所有权规则，以及现有的拒绝或审计证据。
+安装说明与排查方式：
+
+- README：https://github.com/naodeng/awesome-qa-skills/blob/main/README.md
+- FAQ：https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ.md
+- 安装手册：https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS.md
+
+工具支持 Agent Skills 自动发现时，可以直接描述任务；如果工具支持显式调用，按它自己的语法指定 `authorization-testing`。提供策略来源与版本、主体、资源、动作、租户和所有权规则、撤权上下文，以及现有拒绝或审计证据。
+
+例如：
+
+```text
+请使用 authorization-testing 评审以下访问控制规则。
+策略来源与版本：[填写]
+主体与角色：[填写]
+资源、租户、所有权和状态：[填写]
+动作与适用上下文：[填写]
+现有服务端决定和审计证据：[附材料]
+未知规则：[列出；不要使用默认行为补齐]
+请输出主体×资源×动作矩阵、允许/拒绝/未知状态、证据缺口和隔离验证建议。不要登录真实系统或调用线上 API。
+```
+
+### 常见问题
+
+- **角色名称能证明用户有访问权限吗？** 不能。预期决定必须能追溯到适用策略、资源范围和服务端证据。
+- **这个 Skill 会直接测试 API 或确认漏洞吗？** 不会。它评审提供的策略和证据、提出候选验证；实际执行需要获授权的测试人员在隔离环境完成。
+- **策略没有说明某个状态怎么办？** 将该组合标为未知，并请产品或策略负责人确认；不要自行补默认允许或拒绝。
 
 ## 源文件
 

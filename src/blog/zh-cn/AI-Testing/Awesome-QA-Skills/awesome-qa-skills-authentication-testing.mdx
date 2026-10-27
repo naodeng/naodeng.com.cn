@@ -8,7 +8,7 @@ tags: ["AI 测试", "QA Skills", "身份认证测试"]
 categories: ["AI 测试","QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
-身份认证测试会追踪用户身份凭据如何经过挑战、会话、恢复、过期与撤销，并确认每次事件后服务应处于什么状态、需要什么证据来判断。验证“是谁”与判断“这个身份能做什么”是两件事。
+身份认证测试会追踪凭据和会话在认证、恢复、过期、撤销等事件中的状态变化，并核对每次变化后的服务端状态及其证据。确认“是谁”和判断“这个身份能做什么”是两件事。
 
 ## 为什么需要这个 Skill
 
@@ -16,7 +16,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## Skill 用来做什么
 
-身份认证测试 Skill 会围绕凭据、身份状态、失败路径和生命周期，组织有证据边界的场景。它可根据脱敏需求、令牌元数据、会话记录、审计事件和现有报告，准备可复核的验证候选。
+身份认证测试 Skill 会根据凭据、身份状态、失败路径和生命周期整理可复核场景，并根据脱敏需求、令牌元数据、会话记录、审计事件与现有报告，准备验证候选。
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill。系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 介绍通用安装方式；本文聚焦身份验证和凭据生命周期。
 
@@ -31,7 +31,7 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 | 已认证 → 过期、锁定或撤销 | 当前会话状态与先前凭据是否仍有效 | 哪种事件会结束或限制该身份？ |
 | 恢复 → 已认证 | 恢复凭据、替代凭据、通知和审计事件 | 恢复要遵循哪些控制，何时结束？ |
 
-源 Skill 还要求核对凭据创建、轮换、过期、撤销和重放规则。对照每个已提供事件前后的认证状态、令牌签发情况和旧凭据有效性。身份验证不能替代资源授权：身份有效不等于有权修改收款账户或执行其他资源操作。
+源 Skill 还要求核对凭据创建、轮换、过期、撤销和重放规则。对照每个已提供事件前后的认证状态、令牌签发情况和旧凭据有效性。身份认证不能替代资源授权：身份有效不等于有权修改收款账户或执行其他资源操作。
 
 ## 建模风险前先审计证据
 
@@ -98,10 +98,27 @@ Skill 不会登录系统、调用真实 API、读取凭据或执行这个候选�
 ## 安装与调用
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing -g
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill authentication-testing
 ```
 
-使用 authentication-testing Skill 时，提供限定范围并完成脱敏的材料。它负责静态分析和准备验证候选，不会实际执行身份认证。
+安装说明与排查方式：
+
+- README：https://github.com/naodeng/awesome-qa-skills/blob/main/README.md
+- FAQ：https://github.com/naodeng/awesome-qa-skills/blob/main/FAQ.md
+- 安装手册：https://github.com/naodeng/awesome-qa-skills/blob/main/scripts/INSTALL_SKILLS.md
+
+工具支持 Agent Skills 自动发现时，可以直接描述任务；如果工具支持显式调用，按它自己的语法指定 `authentication-testing`。提供策略来源与版本、认证机制、身份状态、脱敏后的会话或令牌元数据、审计证据和环境边界。不要粘贴真实凭据。这个 Skill 只做静态分析和验证准备，不会登录或执行认证。
+
+例如：
+
+```text
+请使用 authentication-testing 复核以下邮件链接登录和 MFA 升级流程。
+策略来源与版本：[填写]
+认证机制与适用范围：[填写]
+身份状态、脱敏令牌/会话元数据和审计证据：[填写]
+测试环境与限制：[填写；不提供真实凭据，不访问生产系统]
+请输出认证状态迁移、凭据生命周期和 AUT-## 候选发现。区分已知事实、待确认规则、验证建议和 Human 决策。
+```
 
 ## 常见问题
 
@@ -113,9 +130,13 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/
 
 先不定义预期结果，把相关项标为未评估，并向策略负责人请求继续分析所需的最小来源。
 
+### 只有登录截图，能完成认证评审吗？
+
+不能。截图不能证明服务端认证状态、令牌签发或旧凭据是否已失效；还需要策略、脱敏后的状态材料和相应审计证据。
+
 ## 参考
 
-调用 Skill 前先阅读身份认证测试 Prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md，其中定义 AUT-## 场景、证据边界和发现合同。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing；包含入口文件和可能存在的配套资料。
+调用 Skill 前先阅读身份认证测试 Prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing/prompts/authentication-testing.md，其中定义 AUT-## 场景、证据边界和发现合同。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/authentication-testing；包含入口文件和配套资料。
 
 - Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills
 - 身份认证测试详情: https://inaodeng.com/zh-cn/qaskills/authentication-testing/
