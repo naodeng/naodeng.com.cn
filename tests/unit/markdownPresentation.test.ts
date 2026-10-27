@@ -15,7 +15,7 @@ describe("markdown presentation helpers", () => {
     };
 
     markdownPresentationRemark()(tree, { path: "/repo/src/content/wiki/example.md", data: {} });
-    expect(tree.children.map((node) => node.type)).toEqual(["heading", "paragraph"]);
+    expect(tree.children.map((node) => node.type)).toEqual(["paragraph"]);
   });
 
   it("only removes an H1 that matches the rendered page title", () => {
@@ -55,7 +55,28 @@ describe("markdown presentation helpers", () => {
     };
 
     markdownPresentationRemark()(tree, { path: "/repo/src/content/wiki/example.md", data: {} });
-    expect(tree.children.map((node) => node.depth)).toEqual([1, 2]);
+    expect(tree.children.map((node) => node.depth)).toEqual([2]);
+    expect(tree.children[0].data.hProperties.id).toBe("section");
+  });
+
+  it("recognizes a relative Wiki source path and keeps the title metadata", () => {
+    const tree = {
+      type: "root",
+      children: [
+        { type: "heading", depth: 1, children: [{ type: "text", value: "Page title" }] },
+        { type: "heading", depth: 2, children: [{ type: "text", value: "Section" }] },
+      ],
+    };
+    const file = {
+      path: "src/content/wiki/example.md",
+      data: { astro: { frontmatter: {} } },
+    };
+
+    markdownPresentationRemark()(tree, file);
+
+    expect(tree.children).toHaveLength(1);
+    expect(file.data.astro.frontmatter.__detailPageTitle).toEqual({ text: "Page title", id: "page-title" });
+    expect(tree.children[0].data.hProperties.id).toBe("section");
   });
 
   it("demotes nested Wiki H1 headings from malformed source blocks", () => {
@@ -76,6 +97,6 @@ describe("markdown presentation helpers", () => {
     };
 
     markdownPresentationRemark()(tree, { path: "/repo/src/content/wiki/example.md", data: {} });
-    expect(tree.children[1].children[0].children[0].depth).toBe(2);
+    expect(tree.children[0].children[0].children[0].depth).toBe(2);
   });
 });

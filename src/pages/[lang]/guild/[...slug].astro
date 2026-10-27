@@ -231,6 +231,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
   sidebarMenuLabel={locale === "zh-cn" ? "本页导航" : "Navigation"}
   headings={headings}
   tocLabel={locale === "zh-cn" ? "本页目录" : "On this page"}
+  showPageActions={true}
 >
   <article class="guild-article">
     <!-- 文章标题 -->
@@ -332,7 +333,7 @@ for (const item of candidates.sort((a, b) => b.score - a.score || a.label.locale
     )}
   </article>
 
-  <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" />
+  <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" discussionId="page-discussion" />
 </DocsLayout>
 <TrackingEvents mode="detail" locale={locale} channel="guild" slug={slugParam} detailLinkSelector=".guild-related-terms-pill" />
 

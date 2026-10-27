@@ -42,6 +42,38 @@ test.describe("Code Block Enhancements", () => {
     expect(text?.trim()).toMatch(/copy|复制/i);
   });
 
+  test("copy button appears on hover and keyboard focus on desktop", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto("/en/blog/ai-testing/ai-test-auditor-static-evidence-for-ai-generated-tests/", { waitUntil: "domcontentloaded" });
+
+    const wrapper = page.locator(".code-block-wrapper").first();
+    const copyBtn = wrapper.locator(".code-copy-btn");
+    await expect(copyBtn).toHaveCSS("opacity", "0");
+
+    await wrapper.hover();
+    await expect(copyBtn).toHaveCSS("opacity", "1");
+
+    await page.mouse.move(0, 0);
+    await expect(copyBtn).toHaveCSS("opacity", "0");
+
+    await copyBtn.focus();
+    await expect(copyBtn).toHaveCSS("opacity", "1");
+  });
+
+  test("copy button stays visible on touch devices", async ({ browser, baseURL }) => {
+    const context = await browser.newContext({
+      baseURL,
+      isMobile: true,
+      hasTouch: true,
+      viewport: { width: 390, height: 844 },
+    });
+    const page = await context.newPage();
+    await page.goto("/en/blog/ai-testing/ai-test-auditor-static-evidence-for-ai-generated-tests/", { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator(".code-copy-btn").first()).toHaveCSS("opacity", "1");
+    await context.close();
+  });
+
   test("copy button shows confirmation state after click", async ({ page, baseURL, context }) => {
     // Grant clipboard permissions so navigator.clipboard.writeText() works in headless mode
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);

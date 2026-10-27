@@ -7,6 +7,7 @@ import Base from "@/layouts/Base.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import DocsSidebar from "@/components/DocsSidebar.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
+import DetailPageActions from "@/components/DetailPageActions.astro";
 import type { DocsNavSection } from "@/data/docsNav";
 import type { Lang } from "@/i18n";
 
@@ -42,6 +43,8 @@ interface Props {
   tocLabel?: string;
   /** 目录首页使用完整主列；正文页默认保留阅读宽度。 */
   contentMode?: "reading" | "index";
+  /** 在详情页目录栏提供支持和评论快捷入口。 */
+  showPageActions?: boolean;
 }
 
 const {
@@ -62,10 +65,12 @@ const {
   tocIncludeSubheadings = false,
   tocLabel,
   contentMode = "reading",
+  showPageActions = false,
 } = Astro.props;
 const locale = Astro.currentLocale as Lang;
 const menuLabel = sidebarMenuLabel ?? (locale === "zh-cn" ? "本页导航" : "On this page");
 const hasToc = headings.length > 0;
+const hasTocPanel = hasToc || showPageActions;
 const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On this page");
 ---
 
@@ -80,7 +85,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
   {breadcrumbs && breadcrumbs.length > 0 && (
     <Breadcrumb items={breadcrumbs} />
   )}
-  <div class="l-docs" data-has-toc={hasToc} data-content-mode={contentMode}>
+  <div class="l-docs" data-has-toc={hasTocPanel} data-content-mode={contentMode}>
     <aside class="docs-sidebar-wrap">
       <DocsSidebar
         sections={sidebarSections}
@@ -93,7 +98,7 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
         searchLabel={sidebarSearchLabel}
       />
     </aside>
-    {hasToc && (
+    {hasTocPanel && (
       <aside class="docs-toc-wrap">
         <TableOfContents
           headings={headings}
@@ -101,7 +106,9 @@ const rightTocLabel = tocLabel ?? (locale === "zh-cn" ? "本页目录" : "On thi
           placement="right"
           includeSubheadings={tocIncludeSubheadings}
           compactAtDesktop
-        />
+        >
+          {showPageActions && <DetailPageActions slot="actions" lang={locale} />}
+        </TableOfContents>
       </aside>
     )}
     <div class="docs-content">

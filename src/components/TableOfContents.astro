@@ -31,29 +31,45 @@ const tocItems = headings.filter((h) =>
     : h.depth === 2 || h.depth === 3
 );
 const currentLabel = label.includes("目录") ? "当前：" : "Now:";
+const hasActions = Astro.slots.has("actions");
+const actionsOnlyLabel = Astro.currentLocale === "zh-cn" ? "页面操作" : "Page actions";
 ---
 
-{tocItems.length > 0 ? (
+{tocItems.length > 0 || hasActions ? (
   <aside
-    class={`toc-sidebar toc-sidebar--${placement}${compactAtDesktop ? " toc-sidebar--compact-desktop" : ""}`}
-    aria-label={label}
+    class={`toc-sidebar toc-sidebar--${placement}${compactAtDesktop ? " toc-sidebar--compact-desktop" : ""}${tocItems.length === 0 ? " toc-sidebar--actions-only" : ""}`}
+    aria-label={tocItems.length > 0 ? label : actionsOnlyLabel}
   >
-    <nav class="toc-nav">
-      <h2 class="toc-title">{label}</h2>
-      <p class="toc-current" aria-live="polite">
-        <span>{currentLabel}</span>
-        <span data-current-section>{tocItems[0].text}</span>
-      </p>
-      <div class="toc-progress" aria-hidden="true">
-        <span class="toc-progress-bar"></span>
-      </div>
-      {/* 7.3: 移动端 <details> 折叠组件 */}
-      <details class="toc-details-mobile">
-        <summary class="toc-summary">
-          <span>{label}</span>
-          <span class="toc-summary-current" data-current-section>{tocItems[0].text}</span>
-        </summary>
-        <ul class="toc-list toc-list--mobile">
+    {tocItems.length > 0 ? (
+      <nav class="toc-nav">
+        <h2 class="toc-title">{label}</h2>
+        <p class="toc-current" aria-live="polite">
+          <span>{currentLabel}</span>
+          <span data-current-section>{tocItems[0].text}</span>
+        </p>
+        <div class="toc-progress" aria-hidden="true">
+          <span class="toc-progress-bar"></span>
+        </div>
+        {/* 7.3: 移动端 <details> 折叠组件 */}
+        <details class="toc-details-mobile">
+          <summary class="toc-summary">
+            <span>{label}</span>
+            <span class="toc-summary-current" data-current-section>{tocItems[0].text}</span>
+          </summary>
+          <ul class="toc-list toc-list--mobile">
+            {tocItems.map((item) => (
+              <li
+                class={`toc-item${item.depth === 3 ? " toc-item--h3" : ""}`}
+              >
+                <a href={`#${item.slug}`} class="toc-link">
+                  {item.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+        {/* Desktop list (hidden on mobile via CSS) */}
+        <ul class="toc-list toc-list--desktop">
           {tocItems.map((item) => (
             <li
               class={`toc-item${item.depth === 3 ? " toc-item--h3" : ""}`}
@@ -64,20 +80,11 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
             </li>
           ))}
         </ul>
-      </details>
-      {/* Desktop list (hidden on mobile via CSS) */}
-      <ul class="toc-list toc-list--desktop">
-        {tocItems.map((item) => (
-          <li
-            class={`toc-item${item.depth === 3 ? " toc-item--h3" : ""}`}
-          >
-            <a href={`#${item.slug}`} class="toc-link">
-              {item.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+        <slot name="actions" />
+      </nav>
+    ) : (
+      <div class="toc-nav toc-actions-only"><slot name="actions" /></div>
+    )}
   </aside>
 ) : null}
 
@@ -91,6 +98,21 @@ const currentLabel = label.includes("目录") ? "当前：" : "Now:";
   }
   .toc-sidebar::-webkit-scrollbar {
     display: none;
+  }
+
+  .toc-sidebar--actions-only {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .toc-sidebar--actions-only .toc-nav {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .toc-actions-only :global(.detail-page-actions) {
+    margin: 0;
   }
 
   /* 右侧：流式布局，在正文右侧 */

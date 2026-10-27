@@ -5,6 +5,7 @@ import TableOfContents from "@/components/TableOfContents.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
+import DetailPageActions from "@/components/DetailPageActions.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import {
@@ -198,7 +199,9 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
 
     {tocHeadings.length > 0 && (
       <aside class="prompt-detail-toc" id="prompts-toc-wrap">
-        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
+        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right">
+          <DetailPageActions slot="actions" lang={lang} />
+        </TableOfContents>
       </aside>
     )}
 
@@ -227,6 +230,8 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
           <a class="prompt-source-link" href={sourceUrl} target="_blank" rel="noopener noreferrer">{detailCopy.source}<span class="material-icons-sharp" aria-hidden="true">open_in_new</span></a>
         </div>
       </header>
+
+      {tocHeadings.length === 0 && <DetailPageActions lang={lang} />}
 
       <section class="prompt-at-a-glance" aria-labelledby="prompt-at-a-glance-heading">
         <h2 id="prompt-at-a-glance-heading" class="visually-hidden">{detailCopy.contract}</h2>
@@ -306,7 +311,7 @@ const variantDisplayLabel = (entry: (typeof registry)[number]) => (
         </section>
       )}
 
-      <Giscus lang={lang === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" loading="lazy" />
+      <Giscus lang={lang === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" loading="lazy" discussionId="page-discussion" />
     </div>
 
 

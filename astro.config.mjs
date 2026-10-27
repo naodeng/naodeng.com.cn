@@ -73,6 +73,8 @@ export default defineConfig({
     processor: unified({
       remarkPlugins: [markdownPresentationRemark],
       rehypePlugins: [rehypeSlug],
+      gfm: true,
+      smartypants: true,
     }),
     shikiConfig: {
       themes: {

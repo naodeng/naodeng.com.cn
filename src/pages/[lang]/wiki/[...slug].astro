@@ -70,7 +70,13 @@ const sidebarSections = [
     ? [{ title: isEn ? "Related terms" : "相关词条", items: relatedItems.map((item) => ({ label: item.label, href: item.slug })) }]
     : []),
 ];
-const { Content, headings: renderedHeadings = [] } = await render(entry);
+const {
+  Content,
+  headings: renderedHeadings = [],
+  remarkPluginFrontmatter = {},
+} = await render(entry);
+const titleHeading = remarkPluginFrontmatter.__detailPageTitle as { text: string; id: string } | null | undefined;
+const displayTitle = titleHeading?.text || pageTitle;
 
 function parseHeadings(body: string): { depth: number; slug: string; text: string }[] {
   const used = new Map<string, number>();
@@ -117,8 +123,10 @@ const basePath = `/${locale}/wiki`;
   headings={headings}
   tocIncludeSubheadings={true}
   tocLabel={isEn ? "On this page" : "本页目录"}
+  showPageActions={true}
 >
   <article class="wiki-article">
+    <h1 id={titleHeading?.id}>{displayTitle}</h1>
     <Content />
     {relatedItems.length > 0 && (
       <section class="wiki-related" aria-labelledby="wiki-related-heading">
@@ -131,7 +139,7 @@ const basePath = `/${locale}/wiki`;
       </section>
     )}
   </article>
-  <Giscus lang={isEn ? "en" : "zh-CN"} inputPosition="bottom" />
+  <Giscus lang={isEn ? "en" : "zh-CN"} inputPosition="bottom" discussionId="page-discussion" />
 </DocsLayout>
 <TrackingEvents mode="detail" locale={locale} channel="wiki" slug={slugParam} detailLinkSelector=".wiki-related-pill" />
 

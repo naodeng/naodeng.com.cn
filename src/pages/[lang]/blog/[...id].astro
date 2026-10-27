@@ -3,6 +3,7 @@ import Layout from "@/layouts/Article.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
 import AuthorStatsCard from "@/components/AuthorStatsCard.astro";
 import Giscus from "@/components/Giscus.astro";
+import DetailPageActions from "@/components/DetailPageActions.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import TrackingEvents from "@/components/TrackingEvents.astro";
 import { getCollection, render } from "astro:content";
@@ -261,9 +262,13 @@ const sidebarDate = (date: Date) =>
 
     {hasToc && <aside class="article-sidebar" aria-label={tocLabel}>
       <div class="article-sidebar-inner">
-        <TableOfContents headings={headings} label={tocLabel} placement="article" />
+        <TableOfContents headings={headings} label={tocLabel} placement="article">
+          <DetailPageActions slot="actions" lang={locale} />
+        </TableOfContents>
       </div>
     </aside>}
+
+    {!hasToc && <DetailPageActions lang={locale} />}
 
     <div class="article-body">
       <div class="article-main">
@@ -315,6 +320,7 @@ const sidebarDate = (date: Date) =>
           inputPosition="bottom"
           reactionsEnabled={true}
           loading="lazy"
+          discussionId="page-discussion"
         />
       </div>
     </div>

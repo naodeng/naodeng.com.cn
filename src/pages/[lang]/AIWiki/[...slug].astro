@@ -66,7 +66,13 @@ const sidebarSections = [
     : []),
 ];
 
-const { Content, headings: renderedHeadings = [] } = await render(entry);
+const {
+  Content,
+  headings: renderedHeadings = [],
+  remarkPluginFrontmatter = {},
+} = await render(entry);
+const titleHeading = remarkPluginFrontmatter.__detailPageTitle as { text: string; id: string } | null | undefined;
+const displayTitle = titleHeading?.text || pageTitle;
 
 function parseHeadings(body: string): { depth: number; slug: string; text: string }[] {
   const lines = body.split("\n");
@@ -119,8 +125,10 @@ const structuredData = {
   sidebarSearchLabel={locale === "zh-cn" ? "检索词条" : "Search terms"}
   headings={headings}
   tocLabel={locale === "zh-cn" ? "本页目录" : "On this page"}
+  showPageActions={true}
 >
   <article class="aiwiki-article" data-locale={locale}>
+    <h1 id={titleHeading?.id}>{displayTitle}</h1>
     <Content />
 
     {relatedItems.length > 0 && (
@@ -136,7 +144,7 @@ const structuredData = {
   </article>
 
   <ArticleShare title={pageTitle} url={canonicalUrl} locale={shareLocale} />
-  <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" />
+  <Giscus lang={locale === "zh-cn" ? "zh-CN" : "en"} inputPosition="bottom" discussionId="page-discussion" />
 </DocsLayout>
 <TrackingEvents mode="detail" locale={locale} channel="aiwiki" slug={slugParam} detailLinkSelector=".aiwiki-related-pill" />
 

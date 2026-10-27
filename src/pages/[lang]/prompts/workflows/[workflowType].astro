@@ -5,6 +5,7 @@ import TableOfContents from "@/components/TableOfContents.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
+import DetailPageActions from "@/components/DetailPageActions.astro";
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { PROMPTS_PAGE_TITLE, PROMPTS_WORKFLOWS_SECTION_TITLE, PROMPTS_DETAIL_KEYWORDS } from "@/consts";
@@ -115,7 +116,9 @@ const howToSchema = {
     <!-- Main content -->
     {tocHeadings.length > 0 && (
       <aside class="workflow-toc-wrap" id="workflow-toc-wrap">
-        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right" />
+        <TableOfContents headings={tocHeadings} label={tocLabel} placement="right">
+          <DetailPageActions slot="actions" lang={lang} />
+        </TableOfContents>
       </aside>
     )}
 
@@ -124,6 +127,8 @@ const howToSchema = {
         <h1>{entry.data.title}</h1>
         <p class="workflow-detail-desc">{entry.data.description}</p>
       </header>
+
+      {tocHeadings.length === 0 && <DetailPageActions lang={lang} />}
 
       <div class="workflow-content prose">
         <Content />
@@ -139,6 +144,7 @@ const howToSchema = {
         lang={lang === "zh-cn" ? "zh-CN" : "en"}
         inputPosition="bottom"
         loading="lazy"
+        discussionId="page-discussion"
       />
     </div>
 

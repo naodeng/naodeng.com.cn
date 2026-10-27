@@ -1,0 +1,90 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Lang } from "@/i18n";
+
+interface Props {
+  lang: Lang;
+  discussionId?: string;
+}
+
+const { lang } = Astro.props;
+const discussionId: string = Astro.props.discussionId ?? "page-discussion";
+const isChinese = lang === "zh-cn";
+const supportLabel = isChinese ? "支持" : "Support";
+const discussionLabel = isChinese ? "评论" : "Comments";
+const discussionAccessibleLabel = isChinese ? "跳转到点赞和评论" : "Go to reactions and comments";
+---
+
+<div
+  class="detail-page-actions"
+  data-detail-actions
+  role="group"
+  aria-label={isChinese ? "页面操作" : "Page actions"}
+>
+  <a class="detail-page-actions__support" data-sponsor-link href={getRelativeLocaleUrl(lang, "/sponsor/")}>{supportLabel}</a>
+  <a
+    class="detail-page-actions__discussion"
+    data-discussion-link
+    href={`#${discussionId}`}
+    aria-label={discussionAccessibleLabel}
+  >
+    {discussionLabel}
+  </a>
+</div>
+
+<style>
+  .detail-page-actions {
+    display: flex;
+    inline-size: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    margin-block: 0.75rem;
+    font-size: var(--text-sm);
+  }
+
+  .detail-page-actions a {
+    display: inline-flex;
+    min-inline-size: 0;
+    min-block-size: 44px;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.55rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .detail-page-actions a:hover {
+    border-color: var(--color-theme);
+    color: var(--color-theme);
+  }
+
+  .detail-page-actions a:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+
+  .detail-page-actions__support {
+    background: color-mix(in srgb, var(--color-theme) 4%, var(--color-surface));
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>("[data-discussion-link]").forEach((link) => {
+    const discussionId = link.getAttribute("href")?.slice(1);
+    const discussion = discussionId ? document.getElementById(discussionId) : null;
+    if (!discussion) return;
+
+    link.addEventListener("click", () => {
+      window.setTimeout(() => discussion.focus({ preventScroll: true }), 0);
+    });
+  });
+</script>

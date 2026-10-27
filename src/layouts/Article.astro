@@ -201,6 +201,25 @@ const {
     line-height: 1.6;
     white-space: nowrap;
   }
+
+  @media (hover: hover) and (pointer: fine) {
+    :global(.code-copy-btn) {
+      opacity: 0;
+    }
+    :global(.code-block-wrapper:hover .code-copy-btn),
+    :global(.code-block-wrapper:focus-within .code-copy-btn),
+    :global(.code-copy-btn:focus-visible),
+    :global(.code-copy-btn.copied),
+    :global(.code-copy-btn.copy-failed) {
+      opacity: 1;
+    }
+  }
+  @media (any-pointer: coarse) {
+    :global(.code-copy-btn) {
+      opacity: 1;
+    }
+  }
+
   :global(.code-block-wrapper:hover .code-copy-btn) {
     opacity: 1;
   }

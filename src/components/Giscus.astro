@@ -25,6 +25,8 @@ interface Props {
   reactionsEnabled?: boolean;
   /** 是否懒加载 */
   loading?: "lazy" | "eager";
+  /** 详情页讨论区的可聚焦锚点；未传时保持现有组件输出 */
+  discussionId?: string;
 }
 
 const {
@@ -33,6 +35,7 @@ const {
   inputPosition = "bottom",
   reactionsEnabled = true,
   loading = "lazy",
+  discussionId,
 } = Astro.props;
 
 const repo = (import.meta.env.PUBLIC_GISCUS_REPO as string | undefined) ?? GISCUS_DEFAULTS.repo;
@@ -41,29 +44,129 @@ const category = (import.meta.env.PUBLIC_GISCUS_CATEGORY as string | undefined) 
 const categoryId = (import.meta.env.PUBLIC_GISCUS_CATEGORY_ID as string | undefined) ?? GISCUS_DEFAULTS.categoryId;
 
 const enabled = Boolean(repo && repoId && category && categoryId);
+const isChinese = lang.toLowerCase().startsWith("zh");
+const loadingLabel = isChinese ? "讨论区加载中…" : "Loading discussion…";
+const unavailableLabel = isChinese ? "讨论区暂时无法加载，请稍后重试。" : "Discussion is temporarily unavailable. Please try again later.";
 ---
 
-{enabled && (
-  <section class="giscus-section" aria-label={lang === "zh-CN" ? "评论" : "Comments"}>
+{(enabled || discussionId) && (
+  <section
+    class="giscus-section"
+    aria-label={discussionId
+      ? (isChinese ? "点赞与评论" : "Reactions and comments")
+      : (lang === "zh-CN" ? "评论" : "Comments")}
+    id={discussionId}
+    tabindex={discussionId ? -1 : undefined}
+    data-discussion-status={discussionId ? "enabled" : undefined}
+  >
     <div class="giscus"></div>
-    <script is:inline
-      src="https://giscus.app/client.js"
-      data-repo={repo}
-      data-repo-id={repoId}
-      data-category={category}
-      data-category-id={categoryId}
-      data-mapping="url"
-      data-strict="0"
-      data-reactions-enabled={reactionsEnabled ? "1" : "0"}
-      data-emit-metadata="0"
-      data-input-position={inputPosition}
-      data-theme={theme}
-      data-lang={lang}
-      data-loading={loading}
-      crossorigin="anonymous"
-      async
-    />
-    {theme === "preferred_color_scheme" && (
+    {discussionId && (
+      <div
+        class="giscus-status"
+        role="status"
+        aria-live="polite"
+        hidden={enabled}
+        data-state={enabled ? "pending" : "unavailable"}
+        data-loading-label={loadingLabel}
+        data-unavailable-label={unavailableLabel}
+      >
+        {!enabled && unavailableLabel}
+      </div>
+    )}
+    {discussionId && (
+      <script is:inline>
+        (() => {
+          const section = document.currentScript?.closest(".giscus-section");
+          const status = section?.querySelector(".giscus-status");
+          if (!(section instanceof HTMLElement) || !(status instanceof HTMLElement)) return;
+          if (status.dataset.state === "unavailable") return;
+
+          const loadingLabel = status.dataset.loadingLabel || "Loading discussion…";
+          const unavailableLabel = status.dataset.unavailableLabel || "Discussion is temporarily unavailable.";
+          let timeoutId;
+          let started = false;
+          let observer;
+          let nodesObserver;
+
+          const showLoading = () => {
+            status.textContent = loadingLabel;
+            status.hidden = false;
+            status.dataset.state = "loading";
+          };
+          const showUnavailable = (keepWatchingForFrame = false) => {
+            status.textContent = unavailableLabel;
+            status.hidden = false;
+            status.dataset.state = "unavailable";
+            if (timeoutId) window.clearTimeout(timeoutId);
+            observer?.disconnect();
+            if (!keepWatchingForFrame) nodesObserver?.disconnect();
+          };
+          const showLoaded = () => {
+            status.hidden = true;
+            status.dataset.state = "loaded";
+            if (timeoutId) window.clearTimeout(timeoutId);
+            observer?.disconnect();
+            nodesObserver?.disconnect();
+          };
+          const watchClient = () => {
+            const client = section.querySelector('script[src="https://giscus.app/client.js"]');
+            if (!client || client.dataset.statusObserved) return;
+            client.dataset.statusObserved = "true";
+            client.addEventListener("error", () => showUnavailable(true), { once: true });
+          };
+          const watchFrame = () => {
+            const frame = section.querySelector("iframe.giscus-frame");
+            if (!(frame instanceof HTMLIFrameElement) || frame.dataset.statusObserved) return;
+            frame.dataset.statusObserved = "true";
+            frame.addEventListener("load", showLoaded, { once: true });
+            nodesObserver?.disconnect();
+          };
+          const startLoading = () => {
+            if (started) return;
+            started = true;
+            showLoading();
+            watchFrame();
+            timeoutId = window.setTimeout(() => showUnavailable(true), 15000);
+          };
+
+          nodesObserver = new MutationObserver(() => {
+            watchClient();
+            watchFrame();
+          });
+          nodesObserver.observe(section, { childList: true, subtree: true });
+          watchClient();
+          watchFrame();
+          if ("IntersectionObserver" in window) {
+            observer = new IntersectionObserver((entries) => {
+              if (entries.some((entry) => entry.isIntersecting)) startLoading();
+            }, { rootMargin: "300px" });
+            observer.observe(section);
+          } else {
+            startLoading();
+          }
+        })();
+      </script>
+    )}
+    {enabled && (
+      <script is:inline
+        src="https://giscus.app/client.js"
+        data-repo={repo}
+        data-repo-id={repoId}
+        data-category={category}
+        data-category-id={categoryId}
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled={reactionsEnabled ? "1" : "0"}
+        data-emit-metadata="0"
+        data-input-position={inputPosition}
+        data-theme={theme}
+        data-lang={lang}
+        data-loading={loading}
+        crossorigin="anonymous"
+        async
+      />
+    )}
+    {enabled && theme === "preferred_color_scheme" && (
       <script is:inline>
         (() => {
           const section = document.currentScript?.closest(".giscus-section");
@@ -99,6 +202,16 @@ const enabled = Boolean(repo && repoId && category && categoryId);
     margin-block-start: var(--sp-l);
     padding-block-start: var(--sp-l);
     border-block-start: 1px solid color-mix(in srgb, var(--color-theme) 14%, transparent);
+    scroll-margin-block-start: var(--sticky-offset);
+  }
+  .giscus-section:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 4px;
+  }
+  .giscus-status {
+    margin-block-end: 1rem;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
   }
   .giscus-section :global(.giscus-frame) {
     width: 100%;

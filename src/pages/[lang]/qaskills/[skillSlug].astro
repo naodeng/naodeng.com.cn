@@ -9,6 +9,7 @@ import { getQASkillCardIntro, getQASkillCardSummary, getQASkillPageDescription }
 import { buildGenericQASkillDetailData, getQASkillDetailData } from "@/data/qaSkillDetail";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
+import DetailPageActions from "@/components/DetailPageActions.astro";
 
 export async function getStaticPaths() {
   const langs: Lang[] = ["en", "zh-cn"];
@@ -208,7 +209,11 @@ const tocHeadings = [
       <div><span>{text.status}</span><strong>{detail.status}</strong></div><div><span>{text.type}</span><strong>{detail.type}</strong></div><div><span>{text.domain}</span><strong>{detail.domain}</strong></div><div><span>{text.sdlc}</span><strong>{detail.sdlc}</strong></div><div><span>{text.roles}</span><strong>{detail.roles.length ? detail.roles.join(" / ") : text.notProvided}</strong></div><div><span>{text.language}</span><strong>{text.languageValue}</strong></div><div><span>{text.evals}</span><strong>{skill.hasEvals ? text.evalsAvailable : text.noEvals}</strong></div><div><span>{text.synced}</span><strong>{skill.updatedAt || text.noSyncDate}</strong></div>
     </section>
 
-    <nav class="detail-nav" id="skill-elevator" aria-label={text.onThisPage}><p class="elevator-title">{text.onThisPage}</p><ul class="elevator-list">{tocHeadings.map((item) => <li><a class="elevator-link" href={`#${item.slug}`} data-elevator-target={item.slug}>{item.text}</a></li>)}</ul></nav>
+    <nav class="detail-nav" id="skill-elevator" aria-label={text.onThisPage}>
+      <p class="elevator-title">{text.onThisPage}</p>
+      <ul class="elevator-list">{tocHeadings.map((item) => <li><a class="elevator-link" href={`#${item.slug}`} data-elevator-target={item.slug}>{item.text}</a></li>)}</ul>
+      <DetailPageActions lang={lang} />
+    </nav>
 
     <div class="detail-layout">
       <div class="detail-main">
@@ -249,7 +254,7 @@ const tocHeadings = [
     </div>
 
     <ArticleShare title={displayName} url={canonicalUrl} locale={pageLocale} showLabel={false} />
-    <Giscus lang={lang === "zh-cn" ? "zh-CN" : "en"} theme="preferred_color_scheme" inputPosition="bottom" reactionsEnabled={true} loading="eager" />
+    <Giscus lang={lang === "zh-cn" ? "zh-CN" : "en"} theme="preferred_color_scheme" inputPosition="bottom" reactionsEnabled={true} loading="eager" discussionId="page-discussion" />
   </article>
 </Base>
 
@@ -346,6 +351,8 @@ const tocHeadings = [
   .detail-layout, .detail-main { min-width: 0; background: transparent; }
   .elevator-title { flex: 0 0 auto; margin: 0; color: var(--color-text-tertiary); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
   .elevator-list { display: flex; flex: 1 1 auto; flex-wrap: wrap; gap: 0.35rem; min-width: 0; margin: 0; padding: 0; list-style: none; }
+  .detail-nav :global(.detail-page-actions) { inline-size: auto; flex: 0 0 auto; gap: 0.4rem; margin: 0 0 0 auto; }
+  .detail-nav :global(.detail-page-actions a) { min-block-size: 44px; padding-inline: 0.65rem; }
   .elevator-link { display: block; padding: 0.28rem 0.7rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-text-secondary); font-size: 0.875rem; font-weight: 700; line-height: 1.35; text-decoration: none; }
   .elevator-link:hover, .elevator-link.is-active { border-color: var(--color-theme); background: var(--color-theme-soft); color: var(--color-theme); }
   .elevator-link { display: flex; align-items: center; min-height: 44px; }
@@ -461,6 +468,7 @@ const tocHeadings = [
   @media (max-width: 680px) {
     .detail-nav { display: block; }
     .elevator-title { margin-bottom: 0.45rem; }
+    .detail-nav :global(.detail-page-actions) { inline-size: min(100%, 18rem); margin: 0.65rem 0 0; }
     .console-info-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .console-info-strip > div:nth-child(2n) { border-right: 0; }
     .decision-grid, .contract-grid, .example-flow, .related-preview-grid { grid-template-columns: minmax(0, 1fr); }

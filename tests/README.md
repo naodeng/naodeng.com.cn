@@ -108,6 +108,8 @@ describe('myUtil', () => {
 | `readingTime.test.ts` | `readingTime(wordCount)` | Min 1 min, monotonically non-decreasing, always positive integer |
 | `progressBar.test.ts` | `progressBarWidth(scrollY, totalHeight)` | Clamped to [0,100], 0 at start, monotonically non-decreasing |
 | `scrollToTop.test.ts` | `shouldShowScrollToTop(scrollY, threshold?)` | False at 0, false ≤ threshold, true > threshold, always boolean |
+| `markdownTitleMetadata.test.ts` | Markdown title and stable heading IDs | Preserves visible title text, explicit IDs, and duplicate-heading slugs |
+| `markdownPresentation.test.ts` | Markdown presentation transform | Removes source-only TOCs and template-rendered titles; preserves Wiki heading structure |
 | `wikiFilter.test.ts` | `filterWikiEntries(entries, query)` | Returns all on empty query, subset of input, length ≤ input, case-insensitive |
 
 ## E2E Tests
@@ -134,6 +136,7 @@ test('page loads correctly', async ({ page }) => {
 | Spec | What It Tests |
 |---|---|
 | `code-block.spec.ts` | Code block rendering, copy button behavior |
+| `detail-page-engagement-actions.spec.ts` | Localized support and discussion links, TOC placement, Wiki title anchors, and Giscus states |
 | `docs.spec.ts` | Retired demo routes return 404; live content keeps shared sidebar navigation |
 | `guild.spec.ts` | Guild homepage, framework cards, filter pills |
 | `interaction.spec.ts` | Tag clicks, search modal, interactive elements |
