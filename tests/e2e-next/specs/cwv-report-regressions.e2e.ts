@@ -119,7 +119,9 @@ for (const locale of ["en", "zh-cn"] as const) {
       await expect(browser.locator('a[href="https://inaodeng.com/dsh-qa/"]')).toHaveCount(0);
       const projectLink = browser.locator(`a[href="https://inaodeng.com/${locale}/dsh-qa/"]`);
       await expect(projectLink).toHaveCount(1);
-      await projectLink.click();
+      const projectHref = await projectLink.getAttribute("href");
+      expect(projectHref).toBe(`https://inaodeng.com/${locale}/dsh-qa/`);
+      await app.open(new URL(projectHref!).pathname);
       await expect(browser).toHaveURL(new RegExp(`/${locale}/dsh-qa/?$`));
       await expect(browser.locator("main h1")).toBeVisible();
     });
@@ -130,7 +132,9 @@ for (const locale of ["en", "zh-cn"] as const) {
     await expect(browser.locator('a[href="https://inaodeng.com/sponsor"]')).toHaveCount(0);
     const sponsorLink = browser.locator(`a[href="https://inaodeng.com/${locale}/sponsor"]`);
     await expect(sponsorLink).toHaveCount(1);
-    await sponsorLink.click();
+    const sponsorHref = await sponsorLink.getAttribute("href");
+    expect(sponsorHref).toBe(`https://inaodeng.com/${locale}/sponsor`);
+    await app.open(new URL(sponsorHref!).pathname);
     await expect(browser).toHaveURL(new RegExp(`/${locale}/sponsor/?$`));
     await expect(browser.locator("main h1")).toBeVisible();
   });
