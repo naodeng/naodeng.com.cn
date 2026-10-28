@@ -45,14 +45,14 @@ test("prompt explorer finds the exact task, updates its query, then filters by a
 });
 
 test("localized prompt detail exposes variants, source, and related prompts", async ({ app, browser, screen }) => {
-  await browser.addInitScript(() => {
+  await app.open("/en/prompts/test-strategy/");
+  await browser.evaluate(() => {
     const testWindow = window as Window & { __e2eClipboard?: string };
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
       value: { writeText: async (text: string) => { testWindow.__e2eClipboard = text; } },
     });
   });
-  await app.open("/en/prompts/test-strategy/");
   await expect(screen.getByRole("heading", { name: "Test Strategy Prompt", level: 1 })).toBeVisible();
   await expect(browser.locator(".prompt-at-a-glance")).toBeVisible();
   await expect(browser.locator(".prompt-variants a")).toHaveCount(4);
