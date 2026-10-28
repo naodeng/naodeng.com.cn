@@ -1,6 +1,6 @@
 # Tests
 
-This directory contains all tests for [inaodeng.com](https://inaodeng.com), organized as an independent project with two test suites: unit tests (Vitest) and end-to-end tests (Playwright).
+This directory contains all tests for [inaodeng.com](https://inaodeng.com), organized as an independent project with unit tests (Vitest) and two E2E suites: the existing Playwright suite and a parallel suite using [TesterArmy e2e](https://github.com/tester-army/e2e).
 
 ## Directory Structure
 
@@ -34,6 +34,9 @@ tests/
       wiki.spec.ts
     support/
       constants.ts         # Shared URL helpers and locale constants
+  e2e-next/
+    specs/                 # e2e framework specs (kept alongside Playwright)
+  e2e.config.ts            # e2e framework runner configuration
   package.json
   vitest.config.ts
   playwright.config.ts
@@ -41,19 +44,19 @@ tests/
 
 ## Setup
 
-Requires Node.js `22.12.0` or later.
+The site supports Node.js `22.12.0` or later. The e2e framework requires Node.js `22.22.3+` on the Node 22 line or `24.8+`.
 
 ```bash
 cd tests
 npm install
 ```
 
-> Playwright browsers are installed automatically. If needed, run `npx playwright install chromium`.
+> Install the browsers if needed: `npx playwright install chromium` for the existing suite and `npx @e2e-dev/web install chromium` for the new suite.
 
 ## Running Tests
 
 ```bash
-# Run all tests (unit + e2e)
+# Run unit tests and both E2E suites
 npm test
 
 # Unit tests only
@@ -62,8 +65,14 @@ npm run test:unit
 # Unit tests in watch mode
 npm run test:unit:watch
 
-# E2E tests only (requires the site to be built first)
+# Existing Playwright suite
 npm run test:e2e
+
+# New e2e framework suite (builds the site first)
+npm run test:e2e:next
+
+# Both E2E suites, after the site is built
+npm run test:e2e:all
 
 # E2E tests with interactive UI
 npm run test:e2e:ui
@@ -72,7 +81,7 @@ npm run test:e2e:ui
 npm run test:e2e:report
 ```
 
-> E2E tests automatically build and preview the site unless `PLAYWRIGHT_BASE_URL` is set.
+> Playwright builds and previews the site automatically unless `PLAYWRIGHT_BASE_URL` is set. The new suite uses the built preview; `test:e2e:next` builds it first, while `test:e2e:next:run` is for CI or an already-built site. Set `E2E_BASE_URL` (or `PLAYWRIGHT_BASE_URL`) to use an external site.
 
 ## Unit Tests
 
@@ -114,9 +123,11 @@ describe('myUtil', () => {
 
 ## E2E Tests
 
-E2E tests use [Playwright](https://playwright.dev/) and run against a built and previewed version of the site. All tests run on Chromium.
+The existing E2E suite uses [Playwright](https://playwright.dev/). New migration specs use [TesterArmy e2e](https://github.com/tester-army/e2e) in parallel; both run on Chromium and remain enabled while the new framework is evaluated. The new suite currently uses deterministic locators and assertions, so it does not require a model provider or API key.
 
 ### Writing E2E Tests
+
+For the existing Playwright suite:
 
 1. Create a `*.spec.ts` file in `tests/e2e/specs/`
 2. Import helpers from `../support/constants`
@@ -130,6 +141,16 @@ test('page loads correctly', async ({ page }) => {
   await expect(page).toHaveTitle(/博客/);
 });
 ```
+
+For the new framework, create `*.e2e.ts` files under `tests/e2e-next/specs/`, import `test` from `@e2e-dev/web` and `expect` from `e2e`, and navigate with `app.open('/path')`. Use `screen` for semantic locators and `browser.locator()` for CSS selectors. Keep old Playwright specs until the migration is stable and coverage has been reviewed.
+
+### Migration policy
+
+The framework is still pre-1.0, so keep its package versions pinned and review upgrades before changing the lockfile. Retire the Playwright suite only after the replacement coverage is reviewed and the new suite has passed repeatedly in CI; keep any behavior that still depends on unsupported APIs in the legacy suite until it has a reviewed replacement.
+
+The new suite currently has a counterpart for each of the 46 Playwright spec files, and both suites remain enabled. The legacy contrast audit now uses reduced motion so it samples settled text instead of the first frame of an entrance animation. Same-origin link status checks grew from 28 route pages in the legacy scan (main, extra, and blog detail pages) to 40, adding both Wiki indexes and five representative Wiki articles per language. The new suite also checks homepage image loading, TOC scroll position, share controls in both languages, and author-profile link destinations. Two behaviors still rely on Playwright-only browser-context features: code-copy visibility on a real touch device (`isMobile` / `hasTouch`) and native clipboard permission/write verification (the new suite uses a deterministic clipboard shim). Keep these checks in the old suite until equivalent support is available and reviewed.
+
+The framework sends anonymous command, version, OS, and run-summary telemetry; it does not send test names, app data, or credentials. Disable it locally with `E2E_TELEMETRY_DISABLED=1`. CI runs already set this opt-out.
 
 ### Coverage
 
@@ -163,10 +184,13 @@ E2E tests respect the following environment variable:
 | Variable | Default | Description |
 |---|---|---|
 | `PLAYWRIGHT_BASE_URL` | `http://localhost:4321` | Override the base URL for E2E tests |
+| `E2E_BASE_URL` | unset | Override the base URL for the new e2e framework suite |
 
 ## CI
 
 In CI (`CI=true`), E2E tests:
 - Use 2 workers with 2 retries
 - Expect the site to already be built (`npm run preview` only)
-- Output GitHub Actions annotations + HTML report
+- Install the browser versions required by both runners
+- Run the Playwright suite and the new e2e framework suite; the new suite uses 2 workers and 1 retry
+- Disable e2e framework telemetry
