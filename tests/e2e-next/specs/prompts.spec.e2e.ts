@@ -45,14 +45,28 @@ test("prompt explorer finds the exact task, updates its query, then filters by a
 });
 
 test("localized prompt detail exposes variants, source, and related prompts", async ({ app, browser, screen }) => {
-  await browser.addInitScript(() => {
-    const testWindow = window as Window & { __e2eClipboard?: string };
+  await app.open("/en/prompts/test-strategy/");
+  await browser.evaluate(() => {
+    const testWindow = window as Window & {
+      __e2eClipboard?: string;
+      __e2eCopyFeedbackSeen?: boolean;
+      __e2eCopyFeedbackObserver?: MutationObserver;
+    };
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
       value: { writeText: async (text: string) => { testWindow.__e2eClipboard = text; } },
     });
+    testWindow.__e2eCopyFeedbackSeen = false;
+    const copyText = document.querySelector(".prompt-copy-btn-text");
+    if (!copyText) throw new Error("Prompt copy button text was not found");
+    testWindow.__e2eCopyFeedbackObserver = new MutationObserver(() => {
+      if (copyText.textContent?.trim() === "Copied!") {
+        testWindow.__e2eCopyFeedbackSeen = true;
+        testWindow.__e2eCopyFeedbackObserver?.disconnect();
+      }
+    });
+    testWindow.__e2eCopyFeedbackObserver.observe(copyText, { childList: true, characterData: true, subtree: true });
   });
-  await app.open("/en/prompts/test-strategy/");
   await expect(screen.getByRole("heading", { name: "Test Strategy Prompt", level: 1 })).toBeVisible();
   await expect(browser.locator(".prompt-at-a-glance")).toBeVisible();
   await expect(browser.locator(".prompt-variants a")).toHaveCount(4);
@@ -61,9 +75,15 @@ test("localized prompt detail exposes variants, source, and related prompts", as
   const rawPrompt = await copyButton.getAttribute("data-raw-content");
   expect(rawPrompt).toBeTruthy();
   await copyButton.click();
-  await expect(copyButton).toContainText("Copied!");
-  const copiedPrompt = await browser.evaluate(() => (window as Window & { __e2eClipboard?: string }).__e2eClipboard ?? "");
-  expect(copiedPrompt).toBe(rawPrompt!);
+  const copyResult = await browser.evaluate(() => {
+    const testWindow = window as Window & { __e2eClipboard?: string; __e2eCopyFeedbackSeen?: boolean };
+    return {
+      copiedPrompt: testWindow.__e2eClipboard ?? "",
+      showedCopiedFeedback: testWindow.__e2eCopyFeedbackSeen === true,
+    };
+  });
+  expect(copyResult.copiedPrompt).toBe(rawPrompt!);
+  expect(copyResult.showedCopiedFeedback).toBe(true);
   await expect(browser.locator(".prompt-source-link")).toHaveAttribute(
     "href",
     /github\.com\/naodeng\/awesome-qa-prompt\/blob\/main\/testing-types\//,
