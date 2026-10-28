@@ -17,7 +17,7 @@
 
 ## 开发环境
 
-- Node.js `>=22.12.0`
+- Node.js `>=22.12.0` for the site; `tests/` additionally requires `^22.22.3 || >=24.8.0` for the new E2E runner
 - npm `10+`
 - 包管理：npm（不要换成 pnpm / yarn，除非用户明确要求）
 
@@ -116,7 +116,7 @@ Wiki 格式细节见 `docs/standards/wiki-format.md`。
 | 工具函数 / 数据处理 | `npm test`；必要时补 `tests/unit/` |
 | 内容结构 / 链接 / SEO | `npm run seo:check`，必要时 `npm run build` |
 | Wiki / AI Wiki 内容 | `npm run wiki:style:check`、`npm run wiki:integrity:check` |
-| 导航 / 多语言 / 关键交互 | `cd tests && npm run test:e2e`（或相关 spec） |
+| 导航 / 多语言 / 关键交互 | `cd tests && npm run test:e2e:all`（或相关 spec） |
 | 测试本身 | 重跑受影响测试，确认不是“只改断言让它变绿” |
 
 常用命令：
@@ -126,6 +126,7 @@ npm run build
 npm test
 cd tests && npm run test:unit
 cd tests && npm run test:e2e
+cd tests && npm run test:e2e:all
 npm run seo:check
 npm run wiki:style:check
 npm run wiki:integrity:check

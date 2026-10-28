@@ -1,6 +1,6 @@
 # 测试说明
 
-本目录包含 [inaodeng.com](https://inaodeng.com) 的所有测试，作为独立项目管理，包含两套测试：单元测试（Vitest）和端到端测试（Playwright）。
+本目录包含 [inaodeng.com](https://inaodeng.com) 的所有测试，作为独立项目管理，包含单元测试（Vitest）和两套并行的 E2E 测试：原有 Playwright 测试，以及新引入的 [TesterArmy e2e](https://github.com/tester-army/e2e) 测试。
 
 ## 目录结构
 
@@ -34,6 +34,9 @@ tests/
       wiki.spec.ts
     support/
       constants.ts         # 共享 URL 工具函数和 locale 常量
+  e2e-next/
+    specs/                 # 新框架用例（与 Playwright 并存）
+  e2e.config.ts            # 新框架运行配置
   package.json
   vitest.config.ts
   playwright.config.ts
@@ -46,12 +49,14 @@ cd tests
 npm install
 ```
 
-> Playwright 浏览器会自动安装。如需手动安装，运行 `npx playwright install chromium`。
+> 如需安装浏览器，原有测试运行 `npx playwright install chromium`，新框架运行 `npx @e2e-dev/web install chromium`。
+
+站点支持 Node.js `22.12.0+`；新框架要求 Node.js 22 分支不低于 `22.22.3`，或使用 `24.8+`。
 
 ## 运行测试
 
 ```bash
-# 运行所有测试（单元 + E2E）
+# 运行单元测试和新旧两套 E2E
 npm test
 
 # 仅运行单元测试
@@ -60,8 +65,14 @@ npm run test:unit
 # 单元测试监听模式
 npm run test:unit:watch
 
-# 仅运行 E2E 测试（需先构建站点）
+# 仅运行原有 Playwright 测试
 npm run test:e2e
+
+# 运行新框架测试（会先构建站点）
+npm run test:e2e:next
+
+# 运行新旧两套 E2E
+npm run test:e2e:all
 
 # E2E 测试交互式 UI 模式
 npm run test:e2e:ui
@@ -70,7 +81,7 @@ npm run test:e2e:ui
 npm run test:e2e:report
 ```
 
-> E2E 测试会自动构建并预览站点，除非设置了 `PLAYWRIGHT_BASE_URL` 环境变量。
+> Playwright 测试会自动构建并预览站点，除非设置了 `PLAYWRIGHT_BASE_URL`。新框架使用构建后的预览站点；`test:e2e:next` 会先构建，`test:e2e:next:run` 适合 CI 或已经构建好的站点。设置 `E2E_BASE_URL`（或 `PLAYWRIGHT_BASE_URL`）可改用外部站点。
 
 ## 单元测试
 
@@ -110,9 +121,11 @@ describe('myUtil', () => {
 
 ## E2E 测试
 
-E2E 测试使用 [Playwright](https://playwright.dev/)，针对构建并预览后的站点运行，全部使用 Chromium 浏览器。
+原有 E2E 测试使用 [Playwright](https://playwright.dev/)；迁移中的新用例使用 [TesterArmy e2e](https://github.com/tester-army/e2e)。两套测试都使用 Chromium，在评估新框架期间会同时保留并运行。当前新用例使用确定性的 locator 和断言，不需要模型服务或 API key。
 
 ### 编写 E2E 测试
+
+原有 Playwright 测试：
 
 1. 在 `tests/e2e/specs/` 下创建 `*.spec.ts` 文件
 2. 从 `../support/constants` 导入共享工具
@@ -126,6 +139,16 @@ test('页面正常加载', async ({ page }) => {
   await expect(page).toHaveTitle(/博客/);
 });
 ```
+
+新框架测试放在 `tests/e2e-next/specs/`，文件名以 `*.e2e.ts` 结尾；从 `@e2e-dev/web` 导入 `test`，从 `e2e` 导入 `expect`，用 `app.open('/path')` 打开页面。语义定位优先用 `screen`，CSS 定位用 `browser.locator()`。在迁移稳定且覆盖完成复核前，不删除旧 Playwright 用例。
+
+### 迁移约定
+
+该框架仍处于 1.0 前开发阶段，因此依赖版本保持精确锁定，升级前先检查变更。只有在替代覆盖通过复核、新套件在 CI 连续多次稳定通过后，才考虑退役 Playwright 套件；仍依赖框架未支持 API 的行为先留在旧套件，直到有经过复核的替代用例。
+
+目前新套件已为 46 个 Playwright spec 文件各准备一个对应文件，新旧两套测试都会继续运行。旧套件的对比度检查已启用减少动态效果，确保采样稳定后的文字，而不是入场动画首帧。同源链接状态扫描从旧套件的 28 个主页面、扩展页和博客详情页，扩展到新套件的 40 个路由页面，新增双语 Wiki 首页和每种语言各 5 篇代表词条。新套件还检查首页图片加载属性、目录点击后的目标位置、双语分享入口和作者资料链接。仍依赖 Playwright 专有浏览器上下文能力的两项行为是：真实触控设备上的代码复制按钮可见性（`isMobile` / `hasTouch`），以及系统剪贴板权限和写入（新套件使用确定性 clipboard shim）。在新框架具备经复核的等价能力前，旧套件继续保留这些检查。
+
+框架会发送匿名命令、版本、操作系统和运行摘要遥测，不发送测试名称、应用数据或凭据。本地可设置 `E2E_TELEMETRY_DISABLED=1` 关闭；CI 已默认关闭。
 
 ### 覆盖情况
 
@@ -158,10 +181,13 @@ E2E 测试支持以下环境变量：
 | 变量 | 默认值 | 说明 |
 |---|---|---|
 | `PLAYWRIGHT_BASE_URL` | `http://localhost:4321` | 覆盖 E2E 测试的基础 URL |
+| `E2E_BASE_URL` | 未设置 | 覆盖新框架测试的基础 URL |
 
 ## CI 环境
 
 在 CI 环境（`CI=true`）下，E2E 测试：
 - 使用 2 个 worker，失败重试 2 次
 - 仅运行 `npm run preview`（不重新构建）
-- 输出 GitHub Actions 注解 + HTML 报告
+- 安装两套运行器需要的浏览器版本
+- 同时运行 Playwright 和新框架测试；新框架使用 2 个 worker、失败重试 1 次
+- 禁用新框架的 CI 遥测
