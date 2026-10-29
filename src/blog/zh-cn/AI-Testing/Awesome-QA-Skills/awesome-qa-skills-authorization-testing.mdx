@@ -1,8 +1,7 @@
 ---
-title: "授权测试 Skill：证明正确身份只能对正确资源执行正确动作"
+title: "授权测试 Skill：验证身份、资源与操作的权限边界"
 description: "授权测试实战指南：验证角色、资源所有权、租户边界、动作范围、拒绝和审计证据。"
 date: 2026-10-29T09:00:00.000Z
-draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "授权测试"]
 categories: ["AI 测试","QA Skills"]
@@ -37,7 +36,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 示例：编辑预测数据
 
-假设提供的规则允许项目经理编辑自己团队的草稿预测，但不允许修改其他部门已批准的预测。分别核对这两个主体-资源-动作组合，并记录支撑预期结果的策略规则和服务端证据。
+假设提供的规则允许项目经理编辑自己团队的草稿预测，但不允许修改其他部门已批准的预测。分别核对这两个主体 - 资源 - 动作组合，并记录支撑预期结果的策略规则和服务端证据。
 
 如果需求没有说明已归档预测或刚撤销委派的处理方式，就把这些项标为未知并询问适用规则。不要把合理猜测写成已确认的漏洞或通过结果。
 
@@ -59,9 +58,9 @@ series: ["Awesome QA Skills 实战"]
 
 ## 相关 Skill
 
-- 认证测试: https://inaodeng.com/zh-cn/qaskills/authentication-testing/；检查身份如何建立。
-- API 安全测试: https://inaodeng.com/zh-cn/qaskills/api-security-testing/；复核更广的 API 安全控制。
-- 安全测试: https://inaodeng.com/zh-cn/qaskills/security-testing/；用于梳理整体安全范围。
+- 认证测试：https://inaodeng.com/zh-cn/qaskills/authentication-testing/；检查身份如何建立。
+- API 安全测试：https://inaodeng.com/zh-cn/qaskills/api-security-testing/；复核更广的 API 安全控制。
+- 安全测试：https://inaodeng.com/zh-cn/qaskills/security-testing/；用于梳理整体安全范围。
 
 ## 安装与调用
 
