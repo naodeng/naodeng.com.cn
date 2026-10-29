@@ -18,7 +18,7 @@
 - 内容表面使用浅色 `#ffffff` 和深色 `#1a2226`。
 - 信号强调色使用浅色 `#176b75` 和深色 `#12ccd8`，只用于 CTA、交互状态、当前项、链接和少量指标/标记；标题、普通导航和默认表面保持中性。
 - 继续使用现有 Noto Sans / Noto Sans SC fallback，不新增字体、UI 框架或运行时依赖。
-- 保留现有路由、双语路径、href、SEO 入口、内容集合和产品功能。
+- 保留现有路由、双语路径、href、SEO 入口、内容集合和产品功能；唯一链接例外是将首页“Code review / 代码评审”推荐目标更正为对应的双语 `/prompts/code-review/` 页面，修复原标签与 Security Testing 目标不符的问题。
 - Docs 旧网站模板占位内容不补齐、不重写、不作为本轮内容问题处理。
 - 不修改 `dist/`、`node_modules/`、测试产物、部署配置或域名配置。
 - 不使用虚构内容填充 Bruno TODO；只替换已有正文对应的标题，或隐藏空章节。
@@ -175,11 +175,11 @@
 
 **Interfaces:**
 - Consumes: Task 1 的主题 token、Task 2 的 PageHeadline 和共享控件。
-- Produces: 首页、列表页和资源入口使用 Proofline 栏目线、指标带和变量卡片，不改变现有 CTA、文章和项目 href。
+- Produces: 首页、列表页和资源入口使用 Proofline 栏目线、指标带和变量卡片；现有 CTA、文章和项目 href 保持不变，上述 Code review 推荐目标修复作为明确例外。
 
 - [ ] **Step 1: 固定首页和集合页的行为/链接契约**
 
-  扩展现有 Home/editorial/reponsive 测试，断言现有 task、project、resource、post href 数量和目标不变；增加主内容宽度上限、浅色/深色 surface、移动端无横向溢出和首页 Hero 不使用 backdrop-filter 的断言。
+  扩展现有 Home/editorial/reponsive 测试，断言现有 task、project、resource、post href 数量和目标不变；首页 Code review 推荐链接需指向对应语言的 `/prompts/code-review/`。增加主内容宽度上限、浅色/深色 surface、移动端无横向溢出和首页 Hero 不使用 backdrop-filter 的断言。
 
 - [ ] **Step 2: 运行测试确认现有视觉契约失败**
 

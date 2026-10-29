@@ -1,17 +1,17 @@
 ---
 interface Props {
   id: string;
-  watermark: string;
+  eyebrow?: string;
   title: string;
   subtitle?: string;
-  showWatermark?: boolean;
+  showEyebrow?: boolean;
 }
 
-const { id, watermark, title, subtitle, showWatermark = true } = Astro.props;
+const { id, eyebrow, title, subtitle, showEyebrow = true } = Astro.props;
 ---
 
 <header class="home-section-heading">
-  {showWatermark && <span class="home-section-heading__watermark" aria-hidden="true">{watermark}</span>}
+  {showEyebrow && eyebrow && <span class="home-section-heading__eyebrow" aria-hidden="true">{eyebrow}</span>}
   <h2 id={id} class="home-band__title">{title}</h2>
   {subtitle && <p class="home-band__subtitle">{subtitle}</p>}
 </header>
@@ -28,7 +28,7 @@ const { id, watermark, title, subtitle, showWatermark = true } = Astro.props;
     text-align: center;
   }
 
-  .home-section-heading__watermark {
+  .home-section-heading__eyebrow {
     margin-bottom: .5rem;
     color: var(--color-theme);
     font-family: var(--font-heading);

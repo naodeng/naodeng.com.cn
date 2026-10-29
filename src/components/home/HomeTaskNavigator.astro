@@ -36,7 +36,7 @@ const entries = HOME_TASK_ENTRIES[locale];
   <div class="home-inner">
     <HomeSectionHeading
       id="home-task-title"
-      watermark={locale === "zh-cn" ? "测试任务" : "QA TASKS"}
+      eyebrow={locale === "zh-cn" ? "测试任务" : "QA TASKS"}
       title={locale === "zh-cn" ? "你现在要完成什么测试任务？" : "What QA task do you need to complete?"}
       subtitle={locale === "zh-cn" ? "先选择要完成的测试任务，再进入对应的技能或提示词，获取输入模板和执行方式。" : "Choose the QA task first, then open the matching Skill or Prompt for its input template and execution guide."}
     />
@@ -107,8 +107,8 @@ const entries = HOME_TASK_ENTRIES[locale];
   .task-card--link .task-card__link {
     display:grid;
     flex:1;
-    grid-template-columns:2.75rem minmax(0, 1fr);
-    column-gap:1rem;
+    grid-template-columns:inherit;
+    column-gap:inherit;
     align-content:start;
     padding:1.15rem 1.2rem;
     color:inherit;

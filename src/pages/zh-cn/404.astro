@@ -13,7 +13,7 @@ const homeUrl = "/zh-cn/";
     </h1>
 
     <p>您要查找的页面不存在。请返回首页或尝试其他语言。</p>
-    <p class="redirect-hint">请从下方链接选择继续方式。</p>
+    <p class="redirect-hint" id="redirect-hint" aria-live="polite">10 秒后自动返回首页…</p>
 
     <a href={homeUrl} class="gotop">首页</a>
 
@@ -50,6 +50,21 @@ const homeUrl = "/zh-cn/";
     });
     localStorage.removeItem("userAccessPath");
   }
+</script>
+<script is:inline define:vars={{ homeUrl }}>
+  (function () {
+    var sec = 10;
+    var el = document.getElementById("redirect-hint");
+    var timer = window.setInterval(function () {
+      sec--;
+      if (sec <= 0) {
+        window.clearInterval(timer);
+        window.location.href = homeUrl;
+        return;
+      }
+      if (el) el.textContent = sec + " 秒后自动返回首页…";
+    }, 1000);
+  })();
 </script>
 <style>
   .container {

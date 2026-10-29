@@ -65,6 +65,20 @@ test.describe("zenix homepage exploration", () => {
 });
 
 test.describe("home information architecture", () => {
+  test("Code review recommendations open the matching localized prompt", async ({ page, baseURL }) => {
+    for (const { lang, label, title } of [
+      { lang: "en", label: "Code review", title: "Code Review Prompt" },
+      { lang: "zh-cn", label: "代码评审", title: "代码审查 Prompt" },
+    ] as const) {
+      await page.goto(`${baseURL || ""}/${lang}/`);
+      const link = page.locator('[data-home-capability="prompts"] .capability-recommendations a').filter({ hasText: label });
+      await expect(link).toHaveAttribute("href", `/${lang}/prompts/code-review/`);
+      await link.click();
+      await expect(page).toHaveURL(new RegExp(`/${lang}/prompts/code-review/?$`));
+      await expect(page.locator("main h1")).toHaveText(title);
+    }
+  });
+
   test("hero directs visitors to one task entry and one resource-library entry", async ({ page, baseURL }) => {
     const expectations = [
       { lang: "zh-cn", h1: "把测试任务变成可执行的下一步" },

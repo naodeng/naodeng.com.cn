@@ -66,12 +66,20 @@ test.describe("Proofline site pages", () => {
       await page.goto(`${baseURL || ""}/${locale}/404/`, { waitUntil: "domcontentloaded" });
       await expect(page.locator(".container .gotop")).toBeVisible();
       await expect(page.locator(".redirect-hint")).toHaveText(
-        locale === "en" ? "Choose a link below to continue." : "请从下方链接选择继续方式。",
+        locale === "en" ? "Redirecting to home in 10 seconds…" : "10 秒后自动返回首页…",
       );
       await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-      await page.clock.fastForward(11_000);
-      expect(new URL(page.url()).pathname).toBe(`/${locale}/404/`);
+      for (let second = 0; second < 3; second++) {
+        await page.clock.fastForward(1_000);
+      }
+      await expect(page.locator(".redirect-hint")).toHaveText(
+        locale === "en" ? "Redirecting to home in 7 seconds…" : "7 秒后自动返回首页…",
+      );
+      for (let second = 0; second < 7; second++) {
+        await page.clock.fastForward(1_000);
+      }
+      await expect(page).toHaveURL(new RegExp(`/${locale}/?$`));
     });
   }
 });
