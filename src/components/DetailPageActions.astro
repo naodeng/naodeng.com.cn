@@ -35,6 +35,7 @@ const discussionAccessibleLabel = isChinese ? "跳转到点赞和评论" : "Go t
 <style>
   .detail-page-actions {
     display: flex;
+    flex-wrap: wrap;
     inline-size: 100%;
     align-items: center;
     gap: 0.5rem;
@@ -44,9 +45,9 @@ const discussionAccessibleLabel = isChinese ? "跳转到点赞和评论" : "Go t
 
   .detail-page-actions a {
     display: inline-flex;
-    min-inline-size: 0;
+    min-inline-size: max-content;
     min-block-size: 44px;
-    flex: 1 1 0;
+    flex: 1 1 max-content;
     align-items: center;
     justify-content: center;
     padding: 0.4rem 0.55rem;

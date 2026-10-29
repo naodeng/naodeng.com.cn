@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import sharp from "sharp";
 
 test.describe("zenix homepage exploration", () => {
   for (const lang of ["zh-cn", "en"] as const) {
@@ -175,5 +176,38 @@ test.describe("home information architecture", () => {
       getComputedStyle(element).gridTemplateColumns.split(" ").length,
     );
     expect(columns).toBe(1);
+  });
+
+  test("keyboard focus remains visible inside a task card", async ({ page, baseURL }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    for (const lang of ["zh-cn", "en"] as const) {
+      for (const colorScheme of ["light", "dark"] as const) {
+        await page.emulateMedia({ reducedMotion: "reduce", colorScheme });
+        await page.goto(`${baseURL || ""}/${lang}/`);
+        await expect(page.locator("html")).toHaveAttribute("data-theme", colorScheme);
+        const card = page.locator('[data-home-task="requirements"]');
+        const link = card.locator("a");
+        await card.scrollIntoViewIfNeeded();
+        await page.mouse.move(0, 0);
+        const before = await card.screenshot();
+        await link.focus();
+        await page.keyboard.press("Tab");
+        await page.keyboard.press("Shift+Tab");
+        await expect(link).toBeFocused();
+        const after = await card.screenshot();
+        const unfocused = await sharp(before).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+        const focused = await sharp(after).removeAlpha().raw().toBuffer();
+        let focusPixels = 0;
+        // Compare the inner top edge, away from rounded corners; the old outline was clipped there.
+        for (let x = 12; x < unfocused.info.width - 12; x++) {
+          const offset = (3 * unfocused.info.width + x) * unfocused.info.channels;
+          const colorDifference = Math.abs(unfocused.data[offset] - focused[offset])
+            + Math.abs(unfocused.data[offset + 1] - focused[offset + 1])
+            + Math.abs(unfocused.data[offset + 2] - focused[offset + 2]);
+          if (colorDifference > 60) focusPixels++;
+        }
+        expect(focusPixels, `${lang} ${colorScheme}`).toBeGreaterThan(unfocused.info.width / 2);
+      }
+    }
   });
 });

@@ -24,6 +24,7 @@ export type PromptTaskKey =
   | "test-review"
   | "api-testing"
   | "automation-testing"
+  | "code-review"
   | "performance-analysis"
   | "failure-analysis"
   | "release-readiness"
@@ -279,10 +280,10 @@ const taskDefinitions: Record<Lang, PromptTaskDefinition[]> = {
     },
     {
       key: "test-review",
-      label: "Review test cases",
-      description: "Check coverage, traceability, clarity, risk, and executability.",
+      label: "Review test assets",
+      description: "Check test coverage, duplication, freshness, quality, and maintainability.",
       areaKey: "quality-governance",
-      aliases: ["test review", "coverage review", "quality review"],
+      aliases: ["test review", "coverage review", "quality review", "test assets", "duplicate tests", "obsolete tests"],
     },
     {
       key: "api-testing",
@@ -293,10 +294,17 @@ const taskDefinitions: Record<Lang, PromptTaskDefinition[]> = {
     },
     {
       key: "automation-testing",
-      label: "Build UI automation",
-      description: "Choose automation scope, layers, locators, frameworks, and CI signals.",
+      label: "Plan automation engineering",
+      description: "Choose automation scope, test layers, frameworks, and CI signals.",
       areaKey: "automation-engineering",
-      aliases: ["ui automation", "test code", "playwright", "cypress", "selenium", "ci"],
+      aliases: ["automation plan", "ui automation", "test code", "playwright", "cypress", "selenium", "ci"],
+    },
+    {
+      key: "code-review",
+      label: "Review code changes",
+      description: "Assess code changes for defects, regression impact, security, and testing gaps.",
+      areaKey: "automation-engineering",
+      aliases: ["code review", "pull request", "diff", "regression risk"],
     },
     {
       key: "performance-analysis",
@@ -372,10 +380,10 @@ const taskDefinitions: Record<Lang, PromptTaskDefinition[]> = {
     },
     {
       key: "test-review",
-      label: "评审测试用例",
-      description: "检查覆盖、可追溯性、清晰度、风险和可执行性。",
+      label: "评审测试资产",
+      description: "检查测试覆盖、重复项、时效性、质量和可维护性。",
       areaKey: "quality-governance",
-      aliases: ["测试评审", "覆盖评审", "质量评审"],
+      aliases: ["测试评审", "覆盖评审", "质量评审", "测试资产", "重复用例", "过时用例"],
     },
     {
       key: "api-testing",
@@ -386,10 +394,17 @@ const taskDefinitions: Record<Lang, PromptTaskDefinition[]> = {
     },
     {
       key: "automation-testing",
-      label: "构建 UI 自动化",
-      description: "选择自动化范围、分层、定位、框架和 CI 信号。",
+      label: "规划自动化工程",
+      description: "选择自动化范围、测试分层、框架和 CI 信号。",
       areaKey: "automation-engineering",
-      aliases: ["UI 自动化", "测试代码", "Playwright", "Cypress", "Selenium", "CI"],
+      aliases: ["自动化规划", "UI 自动化", "测试代码", "Playwright", "Cypress", "Selenium", "CI"],
+    },
+    {
+      key: "code-review",
+      label: "审查代码变更",
+      description: "从缺陷、回归影响、安全和测试缺口角度评估代码变更。",
+      areaKey: "automation-engineering",
+      aliases: ["代码审查", "代码评审", "Pull Request", "Diff", "回归风险"],
     },
     {
       key: "performance-analysis",
@@ -498,7 +513,12 @@ function getTaskKey(slug: string, title: string, areaKey: PromptAreaKey): Prompt
   if (areaKey === "data-environment") return "data-environment";
   if (areaKey === "performance-reliability") return "performance-analysis";
   if (areaKey === "api-integration") return "api-testing";
-  if (areaKey === "automation-engineering") return "automation-testing";
+  if (areaKey === "automation-engineering") {
+    if (/code review|review code|pull request/.test(value)) return "code-review";
+    if (/failure|flaky|unstable test|root cause|failure classification/.test(value)) return "failure-analysis";
+    if (/coverage analysis|duplicate test|obsolete test|test code quality/.test(value)) return "test-review";
+    return "automation-testing";
+  }
 
   if (areaKey === "release-observability") {
     if (/release|go no go|rollback|production verification|hotfix/.test(value)) {
@@ -563,9 +583,10 @@ function metadataForTask(task: PromptTaskDefinition, lang: Lang): { inputs: stri
       "requirements-analysis": ["需求原文、用户故事或验收标准", "已知业务目标与约束"],
       "test-strategy": ["发布范围、风险背景和环境信息", "可用的测试资源与时间窗口"],
       "test-design": ["需求、业务规则或用户旅程", "相关数据、状态和边界条件"],
-      "test-review": ["待评审的测试用例或测试代码", "需求、接口契约或覆盖目标"],
+      "test-review": ["待评审的测试用例、自动化代码或覆盖数据", "需求、近期变更和质量或维护目标"],
       "api-testing": ["API 契约、请求与响应示例", "鉴权、数据和环境说明"],
-      "automation-testing": ["核心回归路径与目标平台", "定位方式、框架和 CI 约束"],
+      "automation-testing": ["自动化目标、用户路径或现有测试资产", "框架、平台、CI 与维护约束"],
+      "code-review": ["代码 Diff、Pull Request 或提交背景", "需求、接口契约、测试和仓库约束"],
       "performance-analysis": ["性能目标、场景和负载模型", "指标、日志或性能结果"],
       "failure-analysis": ["失败现象、日志和时间线", "复现步骤、环境与已知变更"],
       "release-readiness": ["发布范围、执行结果和缺陷清单", "阻塞项、风险和回滚信息"],
@@ -578,9 +599,10 @@ function metadataForTask(task: PromptTaskDefinition, lang: Lang): { inputs: stri
       "requirements-analysis": ["信息缺口、业务规则和风险", "可追溯的测试关注点与待确认项"],
       "test-strategy": ["测试范围、优先级和方法", "环境、证据和风险跟踪建议"],
       "test-design": ["结构化测试场景与用例", "正向、异常、边界和状态覆盖"],
-      "test-review": ["覆盖与可执行性评审", "问题分级和可操作的修改建议"],
+      "test-review": ["覆盖缺口、重复项、过时资产或可维护性问题", "有证据支持的改进优先级与验证步骤"],
       "api-testing": ["接口、契约和异常场景", "断言重点、数据策略和依赖风险"],
-      "automation-testing": ["自动化范围与分层方案", "稳定性、维护性和 CI 建议"],
+      "automation-testing": ["自动化范围、测试分层与工程方案", "稳定性、复用、可观测性和 CI 改进建议"],
+      "code-review": ["按风险排序并标注证据与文件位置的发现", "回归、可测试性、安全和验证建议"],
       "performance-analysis": ["场景、指标和负载模型", "瓶颈、风险与下一步分析"],
       "failure-analysis": ["证据整理与可能原因", "复现、定位和验证下一步"],
       "release-readiness": ["发布证据与风险清单", "放行、条件放行或暂缓的判断依据"],
@@ -596,9 +618,10 @@ function metadataForTask(task: PromptTaskDefinition, lang: Lang): { inputs: stri
     "requirements-analysis": ["Requirement text, user stories, or acceptance criteria", "Known product goals and constraints"],
     "test-strategy": ["Release scope, risk context, and environment notes", "Available test resources and time window"],
     "test-design": ["Requirements, business rules, or user journeys", "Relevant data, states, and boundary conditions"],
-    "test-review": ["Test cases or test code to review", "Requirements, API contracts, or coverage goals"],
+    "test-review": ["Test cases, automation code, or coverage data to review", "Requirements, recent changes, and quality or maintenance goals"],
     "api-testing": ["API contract, request, and response examples", "Auth, data, and environment notes"],
-    "automation-testing": ["Core regression paths and target platforms", "Locator, framework, and CI constraints"],
+    "automation-testing": ["Automation goals, user flows, or existing test assets", "Framework, platform, CI, and maintenance constraints"],
+    "code-review": ["Code diff, pull request, or commit context", "Requirements, API contracts, tests, and repository constraints"],
     "performance-analysis": ["Performance goals, scenarios, and load model", "Metrics, logs, or performance results"],
     "failure-analysis": ["Failure symptoms, logs, and timeline", "Reproduction steps, environment, and recent changes"],
     "release-readiness": ["Release scope, execution results, and defect list", "Blockers, risks, and rollback information"],
@@ -611,9 +634,10 @@ function metadataForTask(task: PromptTaskDefinition, lang: Lang): { inputs: stri
     "requirements-analysis": ["Information gaps, business rules, and risks", "Traceable testing concerns and open questions"],
     "test-strategy": ["Testing scope, priorities, and methods", "Environment, evidence, and risk tracking guidance"],
     "test-design": ["Structured test scenarios and cases", "Happy-path, negative, boundary, and state coverage"],
-    "test-review": ["Coverage and executability review", "Prioritized issues and actionable changes"],
+    "test-review": ["Coverage gaps, duplicates, stale assets, or maintainability issues", "Evidence-based improvement priorities and validation steps"],
     "api-testing": ["API, contract, and error scenarios", "Assertion focus, data strategy, and dependency risks"],
-    "automation-testing": ["Automation scope and layer strategy", "Stability, maintenance, and CI guidance"],
+    "automation-testing": ["Automation scope, test layers, and engineering approach", "Stability, reuse, observability, and CI improvements"],
+    "code-review": ["Risk-ranked findings with evidence and file locations", "Regression, testability, security, and validation follow-ups"],
     "performance-analysis": ["Scenarios, metrics, and load model", "Bottlenecks, risks, and next analysis steps"],
     "failure-analysis": ["Organized evidence and possible causes", "Reproduction, isolation, and verification steps"],
     "release-readiness": ["Release evidence and risk list", "Go, conditional-go, or hold decision inputs"],

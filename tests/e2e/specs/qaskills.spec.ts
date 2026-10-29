@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { measureContrast } from "../support/wcag-contrast";
 
 for (const locale of ["en", "zh-cn"]) {
   for (const slug of ["negative-scenario-discovery", "manual-testing"]) {
@@ -519,17 +520,35 @@ test.describe("QA Skills", () => {
     await expect(card.locator(".tag")).toHaveCount(0);
   });
 
-  test("lifecycle filters stay compact on mobile", async ({ page }) => {
+  test("lifecycle filters are readable and reachable on mobile", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/zh-cn/qaskills/#qaskills-search");
-    await page.locator(".more-filter-details > summary").click();
-    const buttons = page.locator(".chips-lifecycle [data-lifecycle-filter]");
-    const heights = await buttons.evaluateAll((elements) =>
-      elements.map((element) => Math.round(element.getBoundingClientRect().height))
-    );
+    for (const locale of ["zh-cn", "en"]) {
+      await page.goto(`/${locale}/qaskills/#qaskills-search`);
+      // Measure the settled colors, independently of hover and theme transitions.
+      await page.addStyleTag({ content: "*, *::before, *::after { transition: none !important; }" });
+      await page.locator(".more-filter-details > summary").click();
+      const buttons = page.locator(".chips-lifecycle [data-lifecycle-filter]");
+      const heights = await buttons.evaluateAll((elements) =>
+        elements.map((element) => Math.round(element.getBoundingClientRect().height))
+      );
+      expect(heights.length).toBeGreaterThan(0);
+      expect.soft(Math.min(...heights), `${locale} touch target`).toBeGreaterThanOrEqual(44);
+      expect.soft(Math.max(...heights), `${locale} compact layout`).toBeLessThanOrEqual(48);
 
-    expect(heights.length).toBeGreaterThan(0);
-    expect(Math.max(...heights)).toBeLessThanOrEqual(48);
+      for (const theme of ["light", "dark"]) {
+        await page.evaluate((value) => { document.documentElement.dataset.theme = value; }, theme);
+        const selector = '[data-lifecycle-filter="requirements-strategy"] [data-filter-label]';
+        const label = await page.evaluate(measureContrast, selector);
+        expect.soft(label.fontSize, `${locale} ${theme} label size`).toBeGreaterThanOrEqual(14);
+        expect.soft(label.ratio, `${locale} ${theme} contrast`).toBeGreaterThanOrEqual(4.5);
+        const filter = page.locator('[data-lifecycle-filter="requirements-strategy"]');
+        await filter.click();
+        await expect(filter).toHaveAttribute("aria-pressed", "true");
+        const selected = await page.evaluate(measureContrast, selector);
+        expect.soft(selected.ratio, `${locale} ${theme} selected contrast`).toBeGreaterThanOrEqual(4.5);
+        await filter.click();
+      }
+    }
   });
 
   test("secondary category filters do not collapse into vertical text on mobile", async ({ page }) => {

@@ -62,10 +62,16 @@ test.describe("Proofline site pages", () => {
     test(`${locale}/about and ${locale}/404 keep readable recovery surfaces`, async ({ page, baseURL }) => {
       await page.goto(`${baseURL || ""}/${locale}/about/`, { waitUntil: "domcontentloaded" });
       await expect(page.locator(".about-hero")).toBeVisible();
+      await page.clock.install();
       await page.goto(`${baseURL || ""}/${locale}/404/`, { waitUntil: "domcontentloaded" });
       await expect(page.locator(".container .gotop")).toBeVisible();
+      await expect(page.locator(".redirect-hint")).toHaveText(
+        locale === "en" ? "Choose a link below to continue." : "请从下方链接选择继续方式。",
+      );
       await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+      await page.clock.fastForward(11_000);
+      expect(new URL(page.url()).pathname).toBe(`/${locale}/404/`);
     });
   }
 });

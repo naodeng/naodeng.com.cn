@@ -42,6 +42,17 @@ function prompt(
   };
 }
 
+function automationPrompt(type: string, title: string, lang: "en" | "zh-cn") {
+  const entry = prompt(
+    type,
+    title,
+    lang === "en" ? "Automation And Test Engineering" : "自动化与测试工程",
+  );
+  entry.id = `prompts/${lang}/${type}`;
+  entry.data.lang = lang;
+  return entry;
+}
+
 describe("prompt registry", () => {
   const entries = [
     prompt("requirements-analysis", "Requirements Analysis Prompt"),
@@ -71,6 +82,44 @@ describe("prompt registry", () => {
     expect(base.searchText).toContain("requirements analysis");
     expect(base.inputs.length).toBeGreaterThan(0);
     expect(base.outputs.length).toBeGreaterThan(0);
+  });
+
+  it("classifies automation prompts by their actual task in both languages", () => {
+    const cases = [
+      ["automation-candidate-analysis", "Automation Candidate Analysis Prompt", "automation-testing"],
+      ["automation-coverage-analysis", "Automation Coverage Analysis Prompt", "test-review"],
+      ["automation-failure-rca", "Automation Failure RCA Analyzer Prompt", "failure-analysis"],
+      ["automation-testing", "Test Automation Prompt", "automation-testing"],
+      ["cicd-failure-analysis", "CI/CD Failure Analysis Prompt", "failure-analysis"],
+      ["code-review", "Code Review Prompt", "code-review"],
+      ["duplicate-test-detection", "Duplicate Test Detection Prompt", "test-review"],
+      ["flaky-test-analysis", "Flaky Test Analysis Prompt", "failure-analysis"],
+      ["locator-repair", "Locator Repair Assistant Prompt", "automation-testing"],
+      ["obsolete-test-detection", "Obsolete Test Detection Prompt", "test-review"],
+      ["test-code-quality-analysis", "Test Code Quality Analysis Prompt", "test-review"],
+      ["test-failure-classification", "Test Failure Classification Prompt", "failure-analysis"],
+      ["test-refactoring", "Test Refactoring Prompt", "automation-testing"],
+      ["ui-test-cypress", "UI Test Cypress Prompt", "automation-testing"],
+      ["ui-test-playwright", "UI Test Playwright Prompt", "automation-testing"],
+      ["ui-test-selenium", "UI Test Selenium Prompt", "automation-testing"],
+    ] as const;
+
+    for (const lang of ["en", "zh-cn"] as const) {
+      const registry = buildPromptRegistry(
+        cases.map(([slug, title]) => automationPrompt(slug, title, lang)),
+        lang,
+      );
+      expect(registry.map((entry) => entry.taskKey)).toEqual(cases.map(([, , task]) => task));
+
+      const codeReview = registry.find((entry) => entry.slug === "code-review")!;
+      expect(codeReview.taskLabel).toBe(lang === "en" ? "Review code changes" : "审查代码变更");
+      expect(codeReview.inputs[0]).toContain(lang === "en" ? "Code diff" : "代码 Diff");
+      expect(codeReview.outputs[0]).toContain(lang === "en" ? "Risk-ranked" : "按风险排序");
+
+      const automation = registry.find((entry) => entry.slug === "automation-testing")!;
+      expect(automation.taskLabel).toBe(lang === "en" ? "Plan automation engineering" : "规划自动化工程");
+      expect(automation.inputs[0]).toContain(lang === "en" ? "Automation goals" : "自动化目标");
+    }
   });
 
   it("uses the prompt body lead for a prompt-specific card summary", () => {
