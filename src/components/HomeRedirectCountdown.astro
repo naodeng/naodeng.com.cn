@@ -2,10 +2,10 @@
 interface Props {
   homeUrl: string;
   lang: "en" | "zh-cn";
-  seconds?: number;
 }
 
-const { homeUrl, lang, seconds = 10 } = Astro.props;
+const { homeUrl, lang } = Astro.props;
+const seconds = 10;
 const initialText = lang === "zh-cn"
   ? `${seconds} 秒后自动返回首页…`
   : `Redirecting to home in ${seconds} seconds…`;
