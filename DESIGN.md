@@ -37,6 +37,9 @@ typography:
     fontFamily: '"Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif'
     fontSize: "2.5rem"
     fontWeight: 800
+  icons:
+    fontFamily: '"Material Icons Sharp"'
+    usage: "UI icon glyphs only"
 rounded:
   sm: "6px"
   md: "10px"

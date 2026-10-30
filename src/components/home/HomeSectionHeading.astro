@@ -4,14 +4,13 @@ interface Props {
   eyebrow?: string;
   title: string;
   subtitle?: string;
-  showEyebrow?: boolean;
 }
 
-const { id, eyebrow, title, subtitle, showEyebrow = true } = Astro.props;
+const { id, eyebrow, title, subtitle } = Astro.props;
 ---
 
 <header class="home-section-heading">
-  {showEyebrow && eyebrow && <span class="home-section-heading__eyebrow" aria-hidden="true">{eyebrow}</span>}
+  {eyebrow && <span class="home-section-heading__eyebrow" aria-hidden="true">{eyebrow}</span>}
   <h2 id={id} class="home-band__title">{title}</h2>
   {subtitle && <p class="home-band__subtitle">{subtitle}</p>}
 </header>
