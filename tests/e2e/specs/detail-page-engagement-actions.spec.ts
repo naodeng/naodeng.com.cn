@@ -89,17 +89,11 @@ test("TOC comment action jumps to the focused discussion section", async ({ page
   await expect(discussion).toBeFocused();
 });
 
-const responsiveRoutes = [
-  { family: "Blog", path: "/en/blog/ai-testing/ai-test-auditor-static-evidence-for-ai-generated-tests/", hasTocDetails: true },
-  { family: "QA Skill", path: "/zh-cn/qaskills/manual-testing/", hasTocDetails: false },
-  { family: "QA Skill English", path: "/en/qaskills/manual-testing/", hasTocDetails: false },
-  { family: "Prompt", path: "/en/prompts/test-case-writing/", hasTocDetails: true },
-  { family: "Prompt workflow", path: "/en/prompts/workflows/daily/", hasTocDetails: true },
-  { family: "Guild tutorial", path: "/en/guild/ui-testing/playwright/getting-started/", hasTocDetails: true },
-  { family: "Wiki", path: "/en/wiki/test-automation/", hasTocDetails: true },
-  { family: "Wiki Chinese", path: "/zh-cn/wiki/test-automation/", hasTocDetails: true },
-  { family: "AI Wiki", path: "/en/AIWiki/qwen/", hasTocDetails: true },
-];
+const responsiveRoutes = detailRoutes.map((route) => ({
+  family: `${route.family} (${route.locale})`,
+  path: route.path,
+  hasTocDetails: route.family !== "QA Skill",
+}));
 
 for (const route of responsiveRoutes) {
   test(`${route.family} keeps page actions in its navigation at desktop, tablet, and mobile sizes`, async ({ page }) => {
