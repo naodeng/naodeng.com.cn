@@ -7,6 +7,17 @@
   padding-block-end: 4rem;
 }
 
+@media (max-width: 600px) {
+  .l-main:has(.l-docs[data-content-mode="reading"]) {
+    margin-block-start: var(--sp-m);
+  }
+
+  .l-main:has(.l-docs[data-content-mode="reading"]) .breadcrumb {
+    margin-block-end: var(--sp-s);
+    padding-block: 0.25rem;
+  }
+}
+
 /* 全站内容使用居中的最大版心，并保留统一的页面边距。 */
 .l-main.l-content {
   max-inline-size: var(--layout-max);
