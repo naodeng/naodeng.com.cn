@@ -53,7 +53,7 @@ test.describe("Prompt library discovery and review flow", () => {
 
     await expect(page.locator("#prompt-home-title")).toContainText("Start with the task");
     await expect(page.locator(".prompt-home-search")).toBeVisible();
-    await expect(page.locator("[data-prompt-task]")).toHaveCount(13);
+    await expect(page.locator("[data-prompt-task]")).toHaveCount(14);
     await expect(page.locator("[data-prompt-area]")).toHaveCount(10);
     await expect(page.locator(".prompt-outline-link")).toHaveAttribute("href", "/en/prompts/all/");
     await expect(page.locator("[data-featured-prompt]").first()).toHaveAttribute("href", /\/en\/prompts\//);
@@ -175,6 +175,24 @@ test.describe("Prompt library discovery and review flow", () => {
     expect(layout?.buttonHeight).toBeLessThan(52);
   });
 
+  test("mobile quick searches have reachable targets and keep the selected query", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    for (const locale of ["zh-cn", "en"]) {
+      await page.goto(`/${locale}/prompts/`);
+      const examples = page.locator(".prompt-search-examples a");
+      const sizes = await examples.evaluateAll((elements) => elements.map((element) => {
+        const rect = element.getBoundingClientRect();
+        return { width: rect.width, height: rect.height };
+      }));
+      expect(sizes).toHaveLength(4);
+      expect.soft(Math.min(...sizes.map((size) => size.width)), `${locale} width`).toBeGreaterThanOrEqual(44);
+      expect.soft(Math.min(...sizes.map((size) => size.height)), `${locale} height`).toBeGreaterThanOrEqual(44);
+      await examples.first().click();
+      await expect(page).toHaveURL((url) => url.pathname === `/${locale}/prompts/all/` && url.searchParams.get("q") === "requirements");
+      await expect(page.locator("#prompt-explorer-search")).toHaveValue("requirements");
+    }
+  });
+
   test("explorer searches and filters the real prompt registry", async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(`${baseURL}/en/prompts/all/`, { waitUntil: "domcontentloaded" });
@@ -245,7 +263,7 @@ test.describe("Prompt library discovery and review flow", () => {
         return new Set(Array.from(range.getClientRects()).map((rect) => Math.round(rect.top))).size;
       });
       expect(titleLines).toBeLessThanOrEqual(2);
-      await expect(page.locator("[data-prompt-task]")).toHaveCount(13);
+      await expect(page.locator("[data-prompt-task]")).toHaveCount(14);
       await expect(page.locator("[data-prompt-area]")).toHaveCount(10);
       await expect(page.locator("#ai-output-notice")).toBeVisible();
       await expect(page.locator("main")).not.toContainText("9007199254740991");

@@ -17,10 +17,8 @@ const isZh = locale === "zh-cn";
   <div class="home-inner">
     <HomeSectionHeading
       id="home-explore-title"
-      watermark={title.includes("资源") ? "资源探索" : "EXPLORE"}
       title={title}
       subtitle={subtitle}
-      showWatermark={false}
     />
     <ul class="home-grid home-explore-grid" role="list">
       {cards.map((card) => (

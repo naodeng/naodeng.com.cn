@@ -1,17 +1,16 @@
 ---
 interface Props {
   id: string;
-  watermark: string;
+  eyebrow?: string;
   title: string;
   subtitle?: string;
-  showWatermark?: boolean;
 }
 
-const { id, watermark, title, subtitle, showWatermark = true } = Astro.props;
+const { id, eyebrow, title, subtitle } = Astro.props;
 ---
 
-<header class:list={["home-section-heading", { "home-section-heading--plain": !showWatermark }]}>
-  {showWatermark && <span class="home-section-heading__watermark" aria-hidden="true">{watermark}</span>}
+<header class="home-section-heading">
+  {eyebrow && <span class="home-section-heading__eyebrow" aria-hidden="true">{eyebrow}</span>}
   <h2 id={id} class="home-band__title">{title}</h2>
   {subtitle && <p class="home-band__subtitle">{subtitle}</p>}
 </header>
@@ -24,34 +23,18 @@ const { id, watermark, title, subtitle, showWatermark = true } = Astro.props;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    min-height: 6.5rem;
-    padding-top: 2.8rem;
     box-sizing: border-box;
     text-align: center;
   }
 
-  .home-section-heading__watermark {
-    position: absolute;
-    z-index: 0;
-    top: .25rem;
-    left: 50%;
-    width: 100%;
-    transform: translateX(-50%);
+  .home-section-heading__eyebrow {
+    margin-bottom: .5rem;
     color: var(--color-theme);
-    opacity: .025;
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 5.5vw, 4.8rem);
-    font-weight: 900;
-    letter-spacing: -.02em;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  .home-section-heading--plain {
-    min-height: 0;
-    padding-top: 0;
+    font-size: .8125rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.3;
   }
 
   .home-band__title {
@@ -69,9 +52,4 @@ const { id, watermark, title, subtitle, showWatermark = true } = Astro.props;
     text-wrap: pretty;
   }
 
-  @media (max-width: 700px) {
-    .home-section-heading { min-height: 0; padding-top: 1.6rem; }
-    .home-section-heading__watermark { top: 0; font-size: clamp(1.5rem, 6vw, 2.6rem); }
-    .home-section-heading--plain { min-height: 0; padding-top: 0; }
-  }
 </style>

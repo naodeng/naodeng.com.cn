@@ -279,7 +279,7 @@ const topicLinks = locale === "zh-cn" ? [
       display: block;
       width: min(100% - (2 * var(--layout-gutter)), var(--layout-max));
       min-height: 0;
-      padding-block: 2.75rem 2.5rem;
+      padding-block: 2rem 1.75rem;
     }
 
     .home-hero--a h1,
@@ -296,16 +296,28 @@ const topicLinks = locale === "zh-cn" ? [
       text-wrap: wrap;
     }
 
+    .glass-hero__summary { margin-top: 1rem; }
+    .glass-hero__actions { gap: .5rem; margin-top: 1.25rem; }
+    .glass-hero .pill-cta { padding-inline: .75rem; }
+
     .hero-topic-map {
       width: 100%;
       max-width: none;
-      margin-top: 2rem;
-      padding: 1.2rem 0 0;
+      margin-top: 1.5rem;
+      padding: .9rem 0 0;
       border-inline-start: 0;
       border-top: 1px solid color-mix(in srgb, var(--color-theme) 38%, var(--color-border));
     }
 
     .hero-topic-map::before { display: none; }
+    .hero-topic-map__label { margin-bottom: .35rem; font-size: .9rem; }
+    .hero-topic-map ol { gap: 0; }
+    .hero-topic-map a { min-height: 44px; padding: .5rem .25rem .5rem 0; }
+    .hero-topic-map__copy {
+      grid-template-columns: max-content minmax(0, 1fr);
+      align-items: baseline;
+      column-gap: .65rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

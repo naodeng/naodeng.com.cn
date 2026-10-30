@@ -224,6 +224,15 @@ const actionsOnlyLabel = Astro.currentLocale === "zh-cn" ? "页面操作" : "Pag
     backdrop-filter: none;
   }
 
+  @media (min-width: 1100px) {
+    .toc-sidebar--right:not(.toc-sidebar--actions-only) .toc-nav {
+      padding-inline: var(--sp-s);
+    }
+    .toc-sidebar--right:not(.toc-sidebar--actions-only) :global(.detail-page-actions a) {
+      padding-inline: 4px;
+    }
+  }
+
   .toc-title {
     margin: 0 0 0.75rem 0;
     font-size: 0.875rem;

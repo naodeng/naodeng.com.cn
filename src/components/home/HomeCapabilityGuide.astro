@@ -16,7 +16,7 @@ const items = locale === "zh-cn" ? [
     ["需求分析", "/qaskills/requirements-analysis/"], ["测试用例评审", "/qaskills/test-case-reviewer/"], ["测试用例编写", "/qaskills/test-case-writing/"], ["代码评审", "/qaskills/code-review/"]
   ] },
   { key:"prompts", title:"提示词", desc:"面向单次生成和分析任务的提示词，可快速复制、调整并人工复核。", path:"/prompts/", recommendations:[
-    ["需求分析", "/prompts/requirements-analysis/"], ["测试用例评审", "/prompts/test-case-reviewer/"], ["测试用例编写", "/prompts/test-case-writing/"], ["代码评审", "/prompts/security-testing/"]
+    ["需求分析", "/prompts/requirements-analysis/"], ["测试用例评审", "/prompts/test-case-reviewer/"], ["测试用例编写", "/prompts/test-case-writing/"], ["代码评审", "/prompts/code-review/"]
   ] },
   { key:"knowledge", title:"知识与实践", desc:"通过博客、测试百科和 AI 百科理解方法、概念与真实实践。", path:"/blog/", recommendations:[
     ["AI 测试质量工作台", "/blog/ai-testing/dsh-qa-ai-testing-workbench/"], ["自动化测试实践", "/blog/ui-automation-testing/ui-testing-best-practice-generic-best-practices-2-ui-tests-debugging-best-practices-and-reaching-ui-state/"]
@@ -26,7 +26,7 @@ const items = locale === "zh-cn" ? [
     ["Requirements analysis", "/qaskills/requirements-analysis/"], ["Test case review", "/qaskills/test-case-reviewer/"], ["Test case writing", "/qaskills/test-case-writing/"], ["Code review", "/qaskills/code-review/"]
   ] },
   { key:"prompts", title:"Prompts", desc:"Prompts for focused generation and analysis tasks, ready to copy, adapt, and review.", path:"/prompts/", recommendations:[
-    ["Requirements analysis", "/prompts/requirements-analysis/"], ["Test case review", "/prompts/test-case-reviewer/"], ["Test case writing", "/prompts/test-case-writing/"], ["Code review", "/prompts/security-testing/"]
+    ["Requirements analysis", "/prompts/requirements-analysis/"], ["Test case review", "/prompts/test-case-reviewer/"], ["Test case writing", "/prompts/test-case-writing/"], ["Code review", "/prompts/code-review/"]
   ] },
   { key:"knowledge", title:"Knowledge and practice", desc:"Learn methods, concepts, and field experience through the blog and wikis.", path:"/blog/", recommendations:[
     ["AI testing quality workbench", "/blog/ai-testing/dsh-qa-ai-testing-workbench/"], ["Automation testing practice", "/blog/api-automation-testing/a-collection-of-tutorials-on-api-automation-testing-for-different-frameworks-and-different-development-languages/"]
@@ -38,7 +38,7 @@ const items = locale === "zh-cn" ? [
   <div class="home-inner home-capability-inner">
     <HomeSectionHeading
       id="home-capability-title"
-      watermark={locale === "zh-cn" ? "核心能力" : "CORE CAPABILITIES"}
+      eyebrow={locale === "zh-cn" ? "核心能力" : "CORE CAPABILITIES"}
       title={locale === "zh-cn" ? "三类核心能力" : "Three core capabilities"}
       subtitle={locale === "zh-cn" ? "如果已经知道需要哪类资源，可以按 QA 技能、提示词或知识实践直接浏览。" : "If you already know the resource type, browse directly by QA Skills, Prompts, or practical knowledge."}
     />

@@ -89,19 +89,15 @@ test("TOC comment action jumps to the focused discussion section", async ({ page
   await expect(discussion).toBeFocused();
 });
 
-const responsiveRoutes = [
-  { family: "Blog", path: "/en/blog/ai-testing/ai-test-auditor-static-evidence-for-ai-generated-tests/", hasTocDetails: true },
-  { family: "QA Skill", path: "/zh-cn/qaskills/manual-testing/", hasTocDetails: false },
-  { family: "Prompt", path: "/en/prompts/test-case-writing/", hasTocDetails: true },
-  { family: "Prompt workflow", path: "/en/prompts/workflows/daily/", hasTocDetails: true },
-  { family: "Guild tutorial", path: "/en/guild/ui-testing/playwright/getting-started/", hasTocDetails: true },
-  { family: "Wiki", path: "/en/wiki/test-automation/", hasTocDetails: true },
-  { family: "AI Wiki", path: "/en/AIWiki/qwen/", hasTocDetails: true },
-];
+const responsiveRoutes = detailRoutes.map((route) => ({
+  family: `${route.family} (${route.locale})`,
+  path: route.path,
+  hasTocDetails: route.family !== "QA Skill",
+}));
 
 for (const route of responsiveRoutes) {
   test(`${route.family} keeps page actions in its navigation at desktop, tablet, and mobile sizes`, async ({ page }) => {
-    for (const viewport of [{ width: 1440, height: 900 }, { width: 834, height: 900 }, { width: 390, height: 844 }]) {
+    for (const viewport of [{ width: 1440, height: 900 }, { width: 1100, height: 900 }, { width: 834, height: 900 }, { width: 390, height: 844 }]) {
       await page.setViewportSize(viewport);
       await page.goto(route.path, { waitUntil: "domcontentloaded" });
 
@@ -116,6 +112,22 @@ for (const route of responsiveRoutes) {
       expect(actionsBox!.height).toBeGreaterThanOrEqual(38);
       expect(pageWidth).toBe(true);
       expect(actionIsInNavigation).toBe(true);
+
+      // The action container can fit the column while its labels still overflow their own buttons.
+      await page.evaluate(() => document.fonts.ready);
+      const labelBounds = await actions.locator("a").evaluateAll((links) => links.map((link) => {
+        const button = link.getBoundingClientRect();
+        const range = document.createRange();
+        range.selectNodeContents(link);
+        const label = range.getBoundingClientRect();
+        return { text: link.textContent?.trim(), left: button.left, right: button.right, labelLeft: label.left, labelRight: label.right, height: button.height };
+      }));
+      expect(labelBounds).toHaveLength(2);
+      for (const bounds of labelBounds) {
+        expect.soft(bounds.labelLeft, `${route.family} ${viewport.width}px ${bounds.text} left`).toBeGreaterThanOrEqual(bounds.left - 0.5);
+        expect.soft(bounds.labelRight, `${route.family} ${viewport.width}px ${bounds.text} right`).toBeLessThanOrEqual(bounds.right + 0.5);
+        expect.soft(bounds.height, `${route.family} ${viewport.width}px ${bounds.text} target`).toBeGreaterThanOrEqual(44);
+      }
 
       if (route.hasTocDetails && viewport.width < 1100) {
         await expect(page.locator(".toc-details-mobile summary").first()).toBeVisible();

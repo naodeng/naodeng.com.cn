@@ -1,0 +1,42 @@
+---
+interface Props {
+  homeUrl: string;
+  lang: "en" | "zh-cn";
+}
+
+const { homeUrl, lang } = Astro.props;
+const seconds = 10;
+const initialText = lang === "zh-cn"
+  ? `${seconds} 秒后自动返回首页…`
+  : `Redirecting to home in ${seconds} seconds…`;
+---
+
+<p class="redirect-hint" id="redirect-hint" aria-live="polite">{initialText}</p>
+
+<script is:inline define:vars={{ homeUrl, lang, seconds }}>
+  (function () {
+    var remaining = seconds;
+    var hint = document.getElementById("redirect-hint");
+    var timer = window.setInterval(function () {
+      remaining--;
+      if (remaining <= 0) {
+        window.clearInterval(timer);
+        window.location.href = homeUrl;
+        return;
+      }
+      if (hint) {
+        hint.textContent = lang === "zh-cn"
+          ? remaining + " 秒后自动返回首页…"
+          : "Redirecting to home in " + remaining + " seconds…";
+      }
+    }, 1000);
+  })();
+</script>
+
+<style>
+  .redirect-hint {
+    margin-block-start: var(--sp-s);
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+  }
+</style>

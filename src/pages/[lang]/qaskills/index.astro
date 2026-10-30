@@ -851,10 +851,9 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     font-size: 0.88rem;
     color: var(--color-text-secondary);
   }
-  .chips-lifecycle .chip span {
-    margin-left: 0.2rem;
-    opacity: 0.72;
-    font-size: 0.78em;
+  .chips-lifecycle .chip {
+    min-height: 44px;
+    font-size: var(--text-sm);
   }
   @media (max-width: 720px) {
     .chips-lifecycle {

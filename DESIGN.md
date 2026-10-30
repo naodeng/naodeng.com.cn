@@ -37,6 +37,9 @@ typography:
     fontFamily: '"Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif'
     fontSize: "2.5rem"
     fontWeight: 800
+  icons:
+    fontFamily: '"Material Icons Sharp"'
+    usage: "UI icon glyphs only"
 rounded:
   sm: "6px"
   md: "10px"
@@ -83,6 +86,7 @@ Proofline — A QA-inspired editorial system built around evidence, signals, and
 
 标题和正文均使用 Noto Sans / Noto Sans SC 回退栈；Proofline 迁移目标不再使用 Sora 作为标题字体，Task 7 会清理产品页当前遗留的局部声明。
 代码使用 `ui-monospace, monospace`，只用于代码、命令和复制控件，不参与正文标题或导航。
+界面图标使用 Material Icons Sharp 字体图标，只承载图标字形，不用于正文、标题或导航文案。
 实际基础字号为 `--text-base: 1.0625rem`，基础行高 1.65；方案中的 16px 是原始目标，不能描述为当前实现。display token 为 2.5rem，具体 hero 可使用响应式字号。
 正文阅读列默认上限 768px，代码和表格在自身区域滚动，不扩大页面；页面族可以有明确记录的宽屏布局例外，但文章段落仍须有可读行宽上限。
 较长的行内代码允许在窄屏自然折行，保持完整文本与页面宽度；代码块仍在自身区域横向滚动。
@@ -98,6 +102,7 @@ Proofline — A QA-inspired editorial system built around evidence, signals, and
 统一 `--reading-max:768px`、`--sidebar-layout-max:var(--layout-max)`。全站版心在常规桌面约 1536px；随视口平滑增宽，在 2560px 视口最多约 1920px，在 5120px 视口最多约 2048px，并保持居中和两侧留白。页面族可用自身上限收束内容；宽屏扩展不能让长文正文失去明确行宽上限。
 容器宽度为 `min(var(--layout-max), calc(100% - 2 * var(--layout-gutter)))`。
 gutter 默认 24px，768px 起为 32px。首页 main 全宽，内部区块应用一次容器约束，避免重复缩窄。
+首页手机首屏将内容入口的名称与说明紧凑排列，保留原有两个 CTA 和三个入口。区块使用清晰的小标签代替低对比度水印。测试任务区在桌面保持双栏、内容宽度上限 80rem，手机为单栏；卡片图标与文字并排，键盘焦点框显示在卡片内侧，避免被裁切。
 
 桌面 Header 最小高度 80px，1100px 以下为 60px 折叠导航，避免品牌与导航互相挤压；480px 以下顶栏公众号入口隐藏，页脚二维码仍可访问。Footer 在 760px 以下堆叠，导航为两列。
 吸顶目录和侧栏统一使用 `--sticky-offset`（Header 高度加 1rem）；Docs 在 900px 以下堆叠，正文与主容器不重复叠加外边距。
@@ -121,12 +126,14 @@ gutter 默认 24px，768px 起为 32px。首页 main 全宽，内部区块应用
 - Header：保留导航、语言、搜索、主题切换及原有 URL，近不透明表面与细底边。
 - Footer：中文左侧二维码与 RSS，右侧导航；社交与法律信息各占独立整行。英文无中文公众号块。
 - 主按钮：实色强调底；次按钮：中性或轻强调表面。键盘焦点清晰，不依赖颜色传达状态。
+- 详情页操作：桌面窄目录收紧水平内边距；支持与评论入口在空间不足时按内容宽度换行，标签不溢出按钮，点击高度至少 44px。
 - 卡片：正文和内容入口清晰；hover 上浮最多 2px，颜色/边框承担主要反馈。尊重 reduced-motion。
 - 动效：共享反馈使用 180ms 的指数式 ease-out；首页引导线仅在首次呈现时伸展，内容默认可见。阅读和目录进度通过 transform 更新，减少布局重算。
 - 主题切换：文字与背景同步更新，避免短暂低对比度；完成绘制后恢复悬停与按压的过渡反馈。
 - 浏览器细节：选区、输入光标、代码与导航区域滚动条使用语义配色；辅助文字和 placeholder 保持可读对比度。
-- QA Skills：正文列上限 768px，侧栏保留；窄屏使用现有堆叠行为。
-- 链接：视觉修订不能改动既有 href、博客路径、内容、SEO 或部署配置。
+- QA Skills：正文列上限 768px，侧栏保留；窄屏使用现有堆叠行为。测试阶段筛选保持清晰的标签对比度和至少 44px 的点击高度。
+- Prompts：首页快捷搜索入口至少 44px × 44px，保留键盘焦点和搜索词跳转。
+- 链接：视觉修订不能改动既有 href、博客路径、内容、SEO 或部署配置；若审计确认现有链接的标签与目标不符、目标失效或为空，应作为独立功能修复说明原因，并验证目标和双语对应关系。
 
 ## Do's and Don'ts
 

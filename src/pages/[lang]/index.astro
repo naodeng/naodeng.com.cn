@@ -135,9 +135,7 @@ const homePageSchema = {
       <div class="home-inner">
         <HomeSectionHeading
           id="home-latest-title"
-          watermark={locale === "zh-cn" ? "最新内容" : "LATEST"}
           title={t(HOME_LATEST_POSTS)}
-          showWatermark={false}
         />
         <ul class="home-post-list" role="list">
           {latestPosts.map((post) => {
