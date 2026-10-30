@@ -9,7 +9,7 @@ for (const item of [
     await app.open(`/${item.locale}/prompts/`);
 
     await expect(screen.getByRole("heading", { name: item.title, level: 1 })).toBeVisible();
-    await expect(browser.locator("[data-prompt-task]")).toHaveCount(13);
+    await expect(browser.locator("[data-prompt-task]")).toHaveCount(14);
     await expect(browser.locator("[data-prompt-area]")).toHaveCount(10);
     await expect(browser.locator("#ai-output-notice")).toBeVisible();
     await expect(browser.locator(".prompt-outline-link")).toHaveAttribute("href", `/${item.locale}/prompts/all/`);
