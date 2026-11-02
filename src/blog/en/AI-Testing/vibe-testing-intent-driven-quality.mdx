@@ -17,16 +17,6 @@ That does not mean testing no longer needs code, or that natural language remove
 
 Andrej Karpathy introduced the term Vibe Coding in early 2025 for using natural language to guide AI-generated code. Tools such as Replit, Cursor, Bolt, and Lovable make it possible for developers and non-developers to build applications quickly. Faster construction does not remove the need to validate the result. Code can compile and all unit tests can pass while a full business journey or user experience still fails. A mobile checkout button might respond, for example, while the confirmation step silently fails; a login flow can work while unclear errors and redirects leave new users confused.
 
-```mermaid
-flowchart LR
-    A[Business intent] --> B[AI-generated application]
-    B --> C[Build and unit tests pass]
-    C --> D[Intent-driven end-to-end validation]
-    D --> E[Human review of experience and risk]
-    E --> F[Record evidence and exclusions]
-    F --> A
-```
-
 Vibe Testing aims to close that validation gap. The question expands from “Did it pass?” to “Did the software do what we meant, and can a user complete the task?” Functional correctness and an experience that meets expectations are different things.
 
 ## Intent-first, adaptive, and experience-focused
@@ -43,13 +33,7 @@ An agent should not decide by itself what counts as correct. A safer approach is
 
 ACCELQ describes Vibe Testing as a conversational, iterative loop rather than a linear scripting process:
 
-```mermaid
-flowchart LR
-    A[1. Define intent<br/>Plain-language scenario, no code] --> B[2. AI generates scenarios<br/>Happy paths, edge cases, boundaries]
-    B --> C[3. Execute and observe<br/>Browsers, devices, environments]
-    C --> D[4. System self-heals<br/>Adapts to UI and workflow changes]
-    D --> E[5. Human validates<br/>Confirms intent against output]
-```
+![Five-step Vibe Testing workflow: define intent, generate scenarios, execute and observe, adapt to interface changes, then have a person validate intent against the result. The process can repeat as the intent is refined.](/images/blog/ai-testing-quality-loops/vibe-testing-workflow-en.svg)
 
 1. **Define the intent:** The tester describes expected behavior in plain language without naming specific elements, selectors, or steps. The source example is a first-time user signing up, browsing the catalog, and completing a purchase without support.
 2. **AI expands the scenario:** The agent translates that intent into concrete cases, including happy paths, edge cases, boundary values, and unusual input combinations the tester may not have specified.
@@ -103,16 +87,6 @@ Natural language is ambiguous. “Make sure checkout works” may omit discount 
 | Traceability | Which requirement, user story, or risk does this test cover? | Requirement or risk ID, acceptance criteria, test intent, and test ID |
 | Auditability | Can we reconstruct why the test passed later? | Decision criteria, model and prompt versions, environment, logs, and approvals |
 | Coverage confidence | Does the tool say what it did not test? | Coverage map, exclusions, unknowns, and residual risks |
-
-```mermaid
-flowchart LR
-    R[Requirement or risk] <--> A[Acceptance criteria]
-    A <--> T[Test intent and case]
-    T <--> E[Execution result and evidence]
-    E <--> D[Defect and disposition]
-    T --> U[Uncovered areas and unknown risks]
-    D --> R
-```
 
 Bidirectional traceability does not mean every exploratory finding must be forced onto an existing ticket. A newly discovered risk or implicit business rule can be recorded first and linked to a test. Do not let AI invent a requirement just to complete a chain.
 

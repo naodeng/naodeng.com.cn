@@ -92,7 +92,7 @@ To turn a vague description into a reviewable condition, add the source, data, a
 | Weak case: “Enter a wrong code repeatedly; the page shows an error.” | It has no rule ID, attempt count, lockout observation, or failure-side-effect check. It cannot show that R-03 was verified. |
 | Reviewable case: “Under R-03, use a resettable synthetic phone number in an isolated environment. Submit four consecutive incorrect codes and record the state; reset the counter, then submit five consecutive incorrect codes and observe the state after the fifth. Check responses against the API contract and use an authorized state query to confirm lockout. Record account side effects and cleanup.” | The scenario and observation points are clear. The exact response, test hook, copy, and boundary inclusivity still need the project contract; mark undefined details as “Needs confirmation.” |
 
-This rewrite does not add a product rule. It makes the open questions visible and moves the check beyond “a message appeared” toward an observable business state.
+This rewrite adds observation steps without deciding product rules. It surfaces behavior that still needs confirmation and checks account side effects; a visible message alone does not prove R-03.
 
 ## Ask AI to find problems, not to certify its own work
 
