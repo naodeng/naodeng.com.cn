@@ -1,7 +1,7 @@
 ---
 title: "Agent Long-Running Testing Skill: Keep progress, leases, and cancellation visible during long jobs"
 description: "Agent Long-Running Testing field guide: review progress, checkpoints, leases, cancellation, and evidence across extended agent jobs."
-date: 2026-11-07T09:00:00.000Z
+date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Agent Long-Running Testing"]
@@ -16,13 +16,11 @@ Agent Long-Running Testing examines whether extended jobs make progress, preserv
 
 ## What the Skill does
 
-The Agent Long-Running Testing Skill is useful when a team needs a structured review of progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics.
+The Agent Long-Running Testing Skill gives teams a structured way to review progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result rules.
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage. The series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model; this guide stays with Agent Long-Running Testing.
 
-Use it when the team needs a repeatable review of progress checkpoints, lease renewal, restart recovery, cancellation, and partial-result semantics—especially when several evidence sources disagree or a handoff must explain what remains unverified.
-
-A review should connect progress records, lease renewal, restart recovery, cancellation, and partial-result rules to concrete sources and validation actions. A design checklist supports a design review; it does not establish a runtime pass.
+Use it when sources disagree or a handoff needs to state what remains unverified. Tie each rule to a source and validation action; a design checklist supports a design review but does not establish a runtime pass.
 
 ## What it does not do
 
@@ -190,7 +188,7 @@ If the first request contains only a one-line goal, the output should stay limit
 Install the individual Skill. The series overview carries the longer installation explanation.
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill agent-long-running-testing
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill agent-long-running-testing
 ```
 
 After installation, invoke it with the `agent-long-running-testing` Skill and attach the real project material.
@@ -200,7 +198,6 @@ After installation, invoke it with the `agent-long-running-testing` Skill and at
 ### What if the system only exposes a progress number?
 
 Treat it as a claim to validate; request checkpoint or item-level evidence before trusting it.
-
 
 
 ### Should partial results be published?

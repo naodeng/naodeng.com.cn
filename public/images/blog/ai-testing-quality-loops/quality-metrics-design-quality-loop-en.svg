@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1143" viewBox="0 0 820 1143" role="img" aria-labelledby="title desc">
+<title id="title">Quality metrics loop</title>
+<desc id="desc">Quality metrics loop: define the question and metric, review and run accepted AI test cases, recalculate from evidence, then update tests or metric rules</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#8797ae"/></marker><marker id="loop-arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#4265df"/></marker></defs>
+<rect x="0" y="0" width="820" height="1143" rx="24" fill="#f7f9fc"/>
+<text x="52" y="58" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="27" font-weight="700">Quality metrics loop</text>
+<text x="52" y="91" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Use test evidence to improve a decision, not a score alone</text>
+<path d="M 410 253 V 280" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 398 V 425" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 543 V 570" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 688 V 715" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 833 V 860" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 120 924 H 72 V 199 H 109" fill="none" stroke="#4265df" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#loop-arrow)"/>
+<text x="34" y="561" transform="rotate(-90 34 561)" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="15" font-weight="700">Next cycle</text>
+<g>
+<rect x="120" y="145" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="145" width="580" height="108" rx="18" fill="#e8f0ff" fill-opacity="0.88"/>
+<circle cx="154" cy="175" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="180" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">01</text>
+<text x="410" y="192" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Set the quality question</text>
+<text x="410" y="222" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Name the product risk, decision, and accountable owner</text>
+</g>
+<g>
+<rect x="120" y="290" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="290" width="580" height="108" rx="18" fill="#e3f7f3" fill-opacity="0.88"/>
+<circle cx="154" cy="320" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="325" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">02</text>
+<text x="410" y="337" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Define the metric contract</text>
+<text x="410" y="367" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Specify unit, numerator, denominator, window, and source</text>
+</g>
+<g>
+<rect x="120" y="435" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="435" width="580" height="108" rx="18" fill="#f3eaff" fill-opacity="0.88"/>
+<circle cx="154" cy="465" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="470" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">03</text>
+<text x="410" y="482" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Review AI test candidates</text>
+<text x="410" y="512" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Trace each case to a requirement and expected result</text>
+</g>
+<g>
+<rect x="120" y="580" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="580" width="580" height="108" rx="18" fill="#fff3dc" fill-opacity="0.88"/>
+<circle cx="154" cy="610" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="615" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">04</text>
+<text x="410" y="627" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Run accepted tests</text>
+<text x="410" y="657" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Record outcomes, retries, and the named build</text>
+</g>
+<g>
+<rect x="120" y="725" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="725" width="580" height="108" rx="18" fill="#eaf4fb" fill-opacity="0.88"/>
+<circle cx="154" cy="755" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="760" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">05</text>
+<text x="410" y="772" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Recalculate and inspect gaps</text>
+<text x="410" y="802" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Check escapes, missing data, and gaming risks</text>
+</g>
+<g>
+<rect x="120" y="870" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="870" width="580" height="108" rx="18" fill="#fce8ef" fill-opacity="0.88"/>
+<circle cx="154" cy="900" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="905" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">06</text>
+<text x="410" y="917" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Choose and verify the next action</text>
+<text x="410" y="947" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Update tests or metric rules, then review again</text>
+</g>
+</svg>

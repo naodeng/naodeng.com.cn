@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">从个人 Prompt 到团队 Skill 的质量循环</title>
+  <desc id="desc">从真实重复任务中提取稳定做法，封装并标记 Skill 版本，用多类样本评估，小组试用并记录失败，修订后以相同样本回归。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4263eb"/></marker>
+    <style>
+      .bg{fill:#f7f9ff}.title{font:700 32px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#172554}.subtitle{font:400 17px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#475569}.card{fill:#fff;stroke:#cbd5ff;stroke-width:2}.num{fill:#138a72}.numtext{font:700 20px system-ui,sans-serif;fill:#fff;text-anchor:middle}.head{font:700 20px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#172554}.body{font:400 16px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#334155}.arrow{fill:none;stroke:#138a72;stroke-width:3;stroke-linecap:round;marker-end:url(#arrow)}.loop{font:600 15px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#087f5b}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700" rx="24"/>
+  <text class="title" x="64" y="58">从 Prompt 到团队 Skill：质量循环</text>
+  <text class="subtitle" x="64" y="88">沉淀的是经样本和团队复核的方法；Skill 需要随证据持续维护。</text>
+  <path class="arrow" d="M400 205H430"/><path class="arrow" d="M770 205H800"/>
+  <path class="arrow" d="M960 300V380"/><path class="arrow" d="M800 485H770"/><path class="arrow" d="M430 485H400"/><path class="arrow" d="M240 390V300"/>
+  <text class="loop" x="1030" y="350">持续复核</text><text class="loop" x="64" y="355">下一轮</text>
+  <g transform="translate(80 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">1</text><text class="head" x="68" y="43">收集真实任务</text><text class="body" x="26" y="88"><tspan x="26">保存脱敏需求、Prompt、输出、</tspan><tspan x="26" dy="27">人工修改和最终发现。</tspan></text></g>
+  <g transform="translate(440 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">2</text><text class="head" x="68" y="43">提取稳定做法</text><text class="body" x="26" y="88"><tspan x="26">区分重复有效的步骤与项目特定</tspan><tspan x="26" dy="27">规则，明确输入、证据和输出。</tspan></text></g>
+  <g transform="translate(800 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">3</text><text class="head" x="68" y="43">封装并标记版本</text><text class="body" x="26" y="88"><tspan x="26">写明适用范围、维护人、依赖资料</tspan><tspan x="26" dy="27">和每次变更的理由。</tspan></text></g>
+  <g transform="translate(800 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">4</text><text class="head" x="68" y="43">评估代表性样本</text><text class="body" x="26" y="88"><tspan x="26">覆盖完整、缺失、冲突与边界，</tspan><tspan x="26" dy="27">检查遗漏、猜测和人工修订。</tspan></text></g>
+  <g transform="translate(440 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">5</text><text class="head" x="68" y="43">小组试用并记录</text><text class="body" x="26" y="88"><tspan x="26">记录输入、模型与 Skill 版本、</tspan><tspan x="26" dy="27">缺陷、人工修改和复核结论。</tspan></text></g>
+  <g transform="translate(80 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">6</text><text class="head" x="68" y="43">修订后重新回归</text><text class="body" x="26" y="88"><tspan x="26">用原样本核对修复，再加新样本</tspan><tspan x="26" dy="27">确认方法能适应新的任务条件。</tspan></text></g>
+  <text class="subtitle" x="64" y="635">业务、参考资料、模型或宿主工具变化时，重新评估并记录结论边界。</text>
+</svg>

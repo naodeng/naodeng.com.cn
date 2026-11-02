@@ -1,7 +1,7 @@
 ---
 title: "Reliability Testing Skill: Connect Failure Modes to Availability Evidence"
 description: "Assess reliability using availability objectives, failure modes, exposure windows, and evidence readiness."
-date: 2026-11-10T09:00:00.000Z
+date: 2026-11-11T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Reliability Testing"]
@@ -16,13 +16,9 @@ The Reliability Testing Skill prepares an evidence-bounded view of service relia
 
 ## What the Skill does
 
-The result should tell the next engineer what failure to isolate and what evidence would change the reliability judgment.
+The review should identify which failure to isolate and what evidence could change the reliability judgment. Map each important failure mode to expected behavior, affected exposure, evidence source, validation method, owner, and stop condition.
 
-Use this Skill to review availability objectives, dependency failures, degraded modes, exposure windows, and validation evidence readiness. It does not inject faults or access production systems by itself.
-
-A good reliability review maps each important failure mode to expected behavior, affected exposure, evidence source, validation method, owner, and stop condition.
-
-Use it when a resilience exercise is planned, a dependency or traffic pattern changed, or an SLO exists without a clear validation path.
+Use the Skill to assess availability objectives, dependency failures, degraded modes, exposure windows, and evidence readiness. It is useful when planning a resilience exercise, after a dependency or traffic change, or when an SLO lacks a clear validation path. It does not inject faults or access production systems by itself.
 
 ## What it does not do
 
@@ -190,7 +186,7 @@ A useful handoff includes input versions, scope, time window, evidence index, as
 ## Install and invoke
 
 ~~~bash
-npx skills add naodeng/awesome-qa-skills --skill reliability-testing
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill reliability-testing
 ~~~
 
 ~~~text

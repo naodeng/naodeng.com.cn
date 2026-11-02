@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1143" viewBox="0 0 820 1143" role="img" aria-labelledby="title desc">
+<title id="title">质量指标循环</title>
+<desc id="desc">质量指标循环：明确问题和指标，复核并执行验收后的 AI 测试用例，根据证据重算，再更新测试或指标规则</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#8797ae"/></marker><marker id="loop-arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#4265df"/></marker></defs>
+<rect x="0" y="0" width="820" height="1143" rx="24" fill="#f7f9fc"/>
+<text x="52" y="58" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="27" font-weight="700">质量指标循环</text>
+<text x="52" y="91" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">把测试证据带回决策和下一轮改进</text>
+<path d="M 410 253 V 280" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 398 V 425" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 543 V 570" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 688 V 715" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 833 V 860" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 120 924 H 72 V 199 H 109" fill="none" stroke="#4265df" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#loop-arrow)"/>
+<text x="34" y="561" transform="rotate(-90 34 561)" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="15" font-weight="700">下一轮</text>
+<g>
+<rect x="120" y="145" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="145" width="580" height="108" rx="18" fill="#e8f0ff" fill-opacity="0.88"/>
+<circle cx="154" cy="175" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="180" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">01</text>
+<text x="410" y="192" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">明确质量问题</text>
+<text x="410" y="222" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">写清产品风险、决策和负责人</text>
+</g>
+<g>
+<rect x="120" y="290" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="290" width="580" height="108" rx="18" fill="#e3f7f3" fill-opacity="0.88"/>
+<circle cx="154" cy="320" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="325" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">02</text>
+<text x="410" y="337" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">定义指标契约</text>
+<text x="410" y="367" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">明确统计单位、分子分母、窗口和来源</text>
+</g>
+<g>
+<rect x="120" y="435" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="435" width="580" height="108" rx="18" fill="#f3eaff" fill-opacity="0.88"/>
+<circle cx="154" cy="465" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="470" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">03</text>
+<text x="410" y="482" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">复核 AI 测试候选</text>
+<text x="410" y="512" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">逐条关联需求和预期结果</text>
+</g>
+<g>
+<rect x="120" y="580" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="580" width="580" height="108" rx="18" fill="#fff3dc" fill-opacity="0.88"/>
+<circle cx="154" cy="610" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="615" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">04</text>
+<text x="410" y="627" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">执行验收用例</text>
+<text x="410" y="657" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">记录结果、重试和构建版本</text>
+</g>
+<g>
+<rect x="120" y="725" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="725" width="580" height="108" rx="18" fill="#eaf4fb" fill-opacity="0.88"/>
+<circle cx="154" cy="755" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="760" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">05</text>
+<text x="410" y="772" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">重算并检查缺口</text>
+<text x="410" y="802" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">检查逃逸缺陷、缺失数据和博弈风险</text>
+</g>
+<g>
+<rect x="120" y="870" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="870" width="580" height="108" rx="18" fill="#fce8ef" fill-opacity="0.88"/>
+<circle cx="154" cy="900" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="905" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">06</text>
+<text x="410" y="917" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">决定并验证下一步</text>
+<text x="410" y="947" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">更新测试或指标规则，再次复核</text>
+</g>
+</svg>

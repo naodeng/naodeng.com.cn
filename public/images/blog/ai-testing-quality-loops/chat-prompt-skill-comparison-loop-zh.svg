@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">直接提问、Prompt 与 Skill 的比较质量循环</title>
+  <desc id="desc">固定同一份需求和样本，运行三种方式，盲审结果，归类问题，修订一个因素，再用原样本回归并增加新样本。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4263eb"/></marker>
+    <style>
+      .bg{fill:#f7f9ff}.title{font:700 32px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#172554}.subtitle{font:400 17px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#475569}.card{fill:#fff;stroke:#cbd5ff;stroke-width:2}.num{fill:#294ce6}.numtext{font:700 20px system-ui,sans-serif;fill:#fff;text-anchor:middle}.head{font:700 20px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#172554}.body{font:400 16px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#334155}.arrow{fill:none;stroke:#4263eb;stroke-width:3;stroke-linecap:round;marker-end:url(#arrow)}.loop{font:600 15px system-ui,-apple-system,"PingFang SC",sans-serif;fill:#3b5bdb}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700" rx="24"/>
+  <text class="title" x="64" y="58">三种 AI 使用方式的比较质量循环</text>
+  <text class="subtitle" x="64" y="88">比较的目标是持续改进方法；一次输出或一次排名不能代表长期质量。</text>
+  <path class="arrow" d="M400 205H430"/><path class="arrow" d="M770 205H800"/>
+  <path class="arrow" d="M960 300V380"/><path class="arrow" d="M800 485H770"/><path class="arrow" d="M430 485H400"/><path class="arrow" d="M240 390V315Q240 345 240 315V300"/>
+  <text class="loop" x="1030" y="350">继续复核</text><text class="loop" x="64" y="355">下一轮</text>
+  <g transform="translate(80 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">1</text><text class="head" x="68" y="43">固定评审基线</text><text class="body" x="26" y="88"><tspan x="26">需求版本、已知规则、关键未知项、</tspan><tspan x="26" dy="27">样本、评分标准和模型配置。</tspan></text></g>
+  <g transform="translate(440 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">2</text><text class="head" x="68" y="43">运行三种方式</text><text class="body" x="26" y="88"><tspan x="26">同一任务、同一材料，分别从</tspan><tspan x="26" dy="27">干净会话运行并保存原始输出。</tspan></text></g>
+  <g transform="translate(800 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">3</text><text class="head" x="68" y="43">盲审并记录</text><text class="body" x="26" y="88"><tspan x="26">按同一标准检查追溯、遗漏、</tspan><tspan x="26" dy="27">无依据结论和人工修订成本。</tspan></text></g>
+  <g transform="translate(800 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">4</text><text class="head" x="68" y="43">归类质量问题</text><text class="body" x="26" y="88"><tspan x="26">区分需求、输入、指令、模型或</tspan><tspan x="26" dy="27">评审标准造成的问题；证据不足</tspan><tspan x="26" dy="27">时保留为待确认。</tspan></text></g>
+  <g transform="translate(440 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">5</text><text class="head" x="68" y="43">修订一个因素</text><text class="body" x="26" y="88"><tspan x="26">例如补边界检查、澄清输出字段</tspan><tspan x="26" dy="27">或更新参考资料，并记录版本。</tspan></text></g>
+  <g transform="translate(80 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">6</text><text class="head" x="68" y="43">回归并扩展样本</text><text class="body" x="26" y="88"><tspan x="26">重跑原样本，确认问题已修复；</tspan><tspan x="26" dy="27">另加未调优样本检查是否过拟合。</tspan></text></g>
+  <text class="subtitle" x="64" y="635">每轮保留：输入版本、方法版本、模型与工具、原始输出、人工修改、缺陷和复核结论。</text>
+</svg>

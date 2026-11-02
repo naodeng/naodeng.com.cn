@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1435" viewBox="0 0 820 1435" role="img" aria-labelledby="title desc">
+<title id="title">AI 生成测试用例的质量循环</title>
+<desc id="desc">从确认需求和风险开始，AI 生成用例，经人工评审、代表性执行、问题分类和规则修订后，再复查同一组样本并进入下一轮。</desc>
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto">
+    <path d="M0,0 L9,4 L0,8 Z" fill="#8797ae"/>
+  </marker>
+  <marker id="loop-arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto">
+    <path d="M0,0 L9,4 L0,8 Z" fill="#4265df"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="820" height="1435" rx="24" fill="#f7f9fc"/>
+<text x="52" y="58" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="28" font-weight="700">AI 生成测试用例的质量循环</text>
+<text x="52" y="91" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">用同一组样本检查需求、评审和生成规则的改进是否有效</text>
+<path d="M 410 245 V 280" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 390 V 425" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 535 V 570" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 680 V 715" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 825 V 860" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 970 V 1005" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 410 1115 V 1150" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 120 1210 H 72 V 195 H 109" fill="none" stroke="#4265df" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#loop-arrow)"/>
+<text x="34" y="720" transform="rotate(-90 34 720)" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="15" font-weight="700">下一轮</text>
+<g>
+  <rect x="120" y="145" width="580" height="100" rx="18" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.4"/>
+  <rect x="120" y="145" width="580" height="100" rx="18" fill="#e8f0ff" fill-opacity="0.88"/>
+  <circle cx="154" cy="175" r="17" fill="#ffffff" stroke="#4265df" stroke-width="1.4"/>
+  <text x="154" y="180" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">01</text>
+  <text x="410" y="188" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="23" font-weight="700">确认需求与风险</text>
+  <text x="410" y="217" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="17">记录规则编号、版本和未决项</text>
+</g>
+<g>
+  <rect x="120" y="290" width="580" height="100" rx="18" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.4"/>
+  <rect x="120" y="290" width="580" height="100" rx="18" fill="#e3f7f3" fill-opacity="0.88"/>
+  <circle cx="154" cy="320" r="17" fill="#ffffff" stroke="#2c9c85" stroke-width="1.4"/>
+  <text x="154" y="325" text-anchor="middle" fill="#2c9c85" font-family="Arial, sans-serif" font-size="13" font-weight="700">02</text>
+  <text x="410" y="333" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="23" font-weight="700">AI 生成可追溯用例</text>
+  <text x="410" y="362" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="17">覆盖主路径、边界、失败场景和前置条件</text>
+</g>
+<g>
+  <rect x="120" y="435" width="580" height="100" rx="18" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.4"/>
+  <rect x="120" y="435" width="580" height="100" rx="18" fill="#f3eaff" fill-opacity="0.88"/>
+  <circle cx="154" cy="465" r="17" fill="#ffffff" stroke="#8a63c7" stroke-width="1.4"/>
+  <text x="154" y="470" text-anchor="middle" fill="#8a63c7" font-family="Arial, sans-serif" font-size="13" font-weight="700">03</text>
+  <text x="410" y="478" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="23" font-weight="700">人工评审每条用例</text>
+  <text x="410" y="507" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="17">核对依据、假设、断言和可执行性</text>
+</g>
+<g>
+  <rect x="120" y="580" width="580" height="100" rx="18" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.4"/>
+  <rect x="120" y="580" width="580" height="100" rx="18" fill="#fff3dc" fill-opacity="0.88"/>
+  <circle cx="154" cy="610" r="17" fill="#ffffff" stroke="#c4871d" stroke-width="1.4"/>
+  <text x="154" y="615" text-anchor="middle" fill="#c4871d" font-family="Arial, sans-serif" font-size="13" font-weight="700">04</text>
+  <text x="410" y="623" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="23" font-weight="700">执行代表性用例</text>
+  <text x="410" y="652" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="17">在获准的隔离测试环境运行并留证</text>
+</g>
+<g>
+  <rect x="120" y="725" width="580" height="100" rx="18" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.4"/>
+  <rect x="120" y="725" width="580" height="100" rx="18" fill="#e6f2ff" fill-opacity="0.88"/>
+  <circle cx="154" cy="755" r="17" fill="#ffffff" stroke="#3777bd" stroke-width="1.4"/>
+  <text x="154" y="760" text-anchor="middle" fill="#3777bd" font-family="Arial, sans-serif" font-size="13" font-weight="700">05</text>
+  <text x="410" y="768" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="23" font-weight="700">复核结果和断言</text>
+  <text x="410" y="797" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="17">确认目标行为出错时测试能否失败</text>
+</g>
+<g>
+  <rect x="120" y="870" width="580" height="100" rx="18" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.4"/>
+  <rect x="120" y="870" width="580" height="100" rx="18" fill="#fff0f1" fill-opacity="0.88"/>
+  <circle cx="154" cy="900" r="17" fill="#ffffff" stroke="#c64b60" stroke-width="1.4"/>
+  <text x="154" y="905" text-anchor="middle" fill="#c64b60" font-family="Arial, sans-serif" font-size="13" font-weight="700">06</text>
+  <text x="410" y="913" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="23" font-weight="700">归类评审发现</text>
+  <text x="410" y="942" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="17">遗漏、弱断言、数据或步骤问题</text>
+</g>
+<g>
+  <rect x="120" y="1015" width="580" height="100" rx="18" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.4"/>
+  <rect x="120" y="1015" width="580" height="100" rx="18" fill="#e3f7f3" fill-opacity="0.88"/>
+  <circle cx="154" cy="1045" r="17" fill="#ffffff" stroke="#2c9c85" stroke-width="1.4"/>
+  <text x="154" y="1050" text-anchor="middle" fill="#2c9c85" font-family="Arial, sans-serif" font-size="13" font-weight="700">07</text>
+  <text x="410" y="1058" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="23" font-weight="700">调整生成上下文</text>
+  <text x="410" y="1087" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="17">修订需求材料、Prompt 和评审标准</text>
+</g>
+<g>
+  <rect x="120" y="1160" width="580" height="100" rx="18" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.4"/>
+  <rect x="120" y="1160" width="580" height="100" rx="18" fill="#e8f0ff" fill-opacity="0.88"/>
+  <circle cx="154" cy="1190" r="17" fill="#ffffff" stroke="#4265df" stroke-width="1.4"/>
+  <text x="154" y="1195" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">08</text>
+  <text x="410" y="1203" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="23" font-weight="700">复查同一组样本</text>
+  <text x="410" y="1232" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="17">保留已确认规则和新反例，再开始下一轮</text>
+</g>
+<rect x="120" y="1328" width="580" height="60" rx="14" fill="#ffffff" stroke="#d8e0ec" stroke-width="1.2"/>
+<text x="410" y="1365" text-anchor="middle" fill="#344765" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16" font-weight="600">未确认的规则继续标记待确认；未执行的用例仍是未验证。</text>
+</svg>

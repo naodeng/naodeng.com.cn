@@ -1,7 +1,7 @@
 ---
 title: "Agentic AI Governance for Testing: Bringing Permissions, Accountability, and Evidence into the Workflow"
 description: "A source-grounded guide to the six pillars of agentic AI governance for testing, artifact controls, 2026 policy context, organizational ownership, and engineering extensions."
-date: 2026-11-21T09:00:00.000Z
+date: 2026-11-22T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "Agent Governance", "Quality Engineering"]
@@ -177,7 +177,7 @@ NIST has since published a summary of more than 600 comments on its identity and
 
 The Digital Omnibus changed the application date for obligations concerning high-risk systems under Annex III to December 2, 2027, and for product-related systems under Annex I to August 2, 2028. Article 50 transparency obligations apply from August 2, 2026. A limited transition until December 2, 2026 applies only to the Article 50(2) marking and detection obligations for synthetic-content systems already placed on the market before August 2; it does not defer all Article 50 duties. Specific duties depend on the provision and transition rules, so check the current official text. The AI Act's risk classification depends on the system's use context, not only on how autonomous an agent is.
 
-## AI-generated test artifacts need governance too
+## Best practices for governing AI-generated test artifacts
 
 Managing only agent accounts and permissions is not enough. Test cases, scripts, regression suites, and defect reports also need quality rules because they affect test conclusions and release decisions.
 
@@ -276,6 +276,34 @@ The final section of the ACCELQ article describes its own platform architecture 
 The article names Discovery, Automation Generation, Change Analyzer, and Execution Agent roles for its platform, covering application discovery, test generation, self-healing analysis, and execution decisions. These are vendor product descriptions that illustrate one implementation. They are not independently validated industry standards, and governance does not require a particular platform.
 
 The original article also notes that independently documented governance cases specific to testing remain limited. Keep vendor descriptions, research findings, and industry standards distinct when evaluating the claims.
+
+## A five-step start for QA leads
+
+Begin with a small pilot and make permissions and ownership explicit:
+
+1. Inventory every AI agent involved in the testing lifecycle, including experiments that have not been formally registered.
+2. Assign each agent an autonomy tier and state what it may do without asking.
+3. Choose one checkpoint that requires a named person's approval, then enforce it in the tooling or pipeline.
+4. Record task inputs, decision rationale, tool calls, and outcomes first; add log fields as needed, with redaction and access controls in place.
+5. Review the inventory, permissions, and checkpoints every quarter.
+
+## Frequently asked questions
+
+### What does governance for a testing agent cover?
+
+It defines what an agent may generate, execute, modify, or approve; which actions need human sign-off; and who owns the records and review. Testing governance also has to cover the environment, data, and changes to test artifacts.
+
+### Does every step need human approval?
+
+No. Set checkpoints according to risk. A person may review generated suggestions, while consequential actions such as changing the regression suite or opening a release gate need a named owner and clear approval conditions.
+
+### Which teams need to be involved?
+
+QA leadership sets testing risk tiers and review requirements; platform or DevOps teams enforce identity, permissions, logging, and pipeline checkpoints; security and compliance handle regulated data, third-party audits, and relevant rules. Approval authority still depends on the organization's role assignments.
+
+### Do the available examples prove that governance for testing agents is mature?
+
+No. The regulatory case studies and platform architecture discussed here are not independent validation specific to software testing. The ACCELQ article also notes that public, independently documented cases in testing remain limited. Keep research findings, vendor descriptions, and deployment evidence separate.
 
 ## Conclusion
 

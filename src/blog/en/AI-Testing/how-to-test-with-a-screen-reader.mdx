@@ -1,162 +1,106 @@
 ---
-title: "How to Test with a Screen Reader: From Visual UI to Perceivable User Experience"
-description: "A practical introduction to screen reader testing, including tools, navigation, forms, dynamic content, and QA engineering workflows."
-date: 2026-11-03T09:00:00.000Z
+title: "How to Test with a Screen Reader"
+description: "An introduction to common screen readers, getting started, and questions to ask while testing headings, forms, dynamic content, and links."
+date: 2026-11-04T09:00:00.000Z
 draft: true
 author: "nao.deng"
-tags: ["Accessibility","Screen Reader","Quality Engineering"]
+tags: ["Accessibility", "Screen Reader", "Quality Engineering"]
 categories: ["Accessibility Testing"]
 ---
 
-> Learning source: Ady Stokes, “How to Test with a Screen Reader,” WonderProxy Blog, October 14, 2026. The first sections adapt the supplied study notes; the QA engineering section is an independent extension. Original: How to Test with a Screen Reader: https://wonderproxy.com/blog/how-to-test-with-a-screen-reader/.
+> Learning source: Ady Stokes, “How to Test with a Screen Reader,” WonderProxy Blog, October 14, 2026. This article follows the source's order and keeps the author's beginner tips and testing questions. Original: https://wonderproxy.com/blog/how-to-test-with-a-screen-reader/
 
-**Why screen reader testing belongs in everyday QA.**
+If you are not visually impaired, you may rarely come across a screen reader or text-to-speech tool. The source mentions that about 2.2 billion people worldwide have some form of vision impairment, including millions who are blind or have moderate to severe vision loss. Stokes also says it is hard to estimate how many people regularly use screen readers. The figure points to the reach of accessibility barriers; it is not a count of screen reader users.
 
-Visual interfaces communicate through position, color, icons, and layout. Screen readers expose the structure, accessible names, roles, states, and changes that assistive technology can convey. A login page can look fine while containing an unnamed field, an unannounced error, or an unreachable button.
+## Some common tools
 
-The study notes cite roughly 2.2 billion people worldwide with some form of visual impairment. That illustrates the scope of accessibility needs, but **not everyone with a visual impairment uses a screen reader**. Screen reader testing serves real users and can also expose structural problems in semantics and interaction state.
-
-The essential question changes from “Does the page look right?” to **“Can someone understand the page, locate the next action, and complete the task?”**
-
-## Start with the reader and the information it exposes
-
-| Tool | Common platform | Practical note |
+| Tool | Common platform | Note |
 | --- | --- | --- |
-| JAWS | Windows | Commercial screen reader |
-| NVDA | Windows | Free and open source; useful for building desktop Web testing skills |
-| VoiceOver | macOS and iOS | Built into Apple systems; desktop and mobile interactions differ |
-| TalkBack | Android | Built-in Android screen reader with gesture and focus navigation |
+| JAWS (Job Access With Speech) | Windows | The source calls it the most common and reports about 40% market share; it does not state the estimate's date or sample. |
+| NVDA (NonVisual Desktop Access) | Windows | A free, open-source tool from NV Access; WebAIM lists accessibility tools and resources. |
+| VoiceOver | Apple systems | Built into macOS and iOS. |
+| TalkBack | Android | Built into Android. |
 
-The source article reports a JAWS share of about 40%, but does not identify the survey population, geography, or date behind that figure. Treat it as the article's reported estimate, not a current universal market share. Choose a test matrix based on actual users and current evidence.
+There are also text-to-speech tools, and some browsers include read-aloud features. Tools vary in how they work, but their main functions are similar.
 
-**Text-to-speech is not necessarily a screen reader.** A read-aloud tool may speak text without exposing heading navigation, control roles, accessible names, and states.
+## What do screen readers say?
 
-**Listen for meaning, not a fixed transcript.**
+Screen readers can sound strange the first time you hear one. People who use them all day, every day can follow speech much faster than a tester who is just learning. Some can listen to 300 or more words per minute. At first, that can sound like another language. Stokes reminds beginners that they can still look at the screen to help them understand; there is no need to match an experienced user's speed.
 
-Beyond visible text, screen readers can communicate information exposed by HTML semantics and accessibility APIs:
+Screen readers announce details that sighted users usually get by looking: whether a field is empty or already filled in; whether an element is a button or a link, including whether a link has been visited or is broken; and whether text is a heading and what level it has. Those details help users build a picture of the page and navigate it.
 
-- A field's name, empty/filled status, required status, and protected-input behavior.
-- Whether an element is a link or button, and whether it is available.
-- Headings and levels, and landmarks such as navigation or main content.
-- Tables and their headers, which provide a way to navigate tabular information without reading every cell in sequence.
-- Expanded, selected, disabled, and validation states.
+Users do not have to listen from top to bottom. A screen reader can navigate by headings, links, buttons, form fields, or tables. A user can open a list of headings and jump to a section, browse only links, or move between form fields.
 
-Experienced users do not necessarily listen from top to bottom. They navigate by heading, link, form control, or landmark. The article compares these to different maps of the same city: each gives a useful way into the information. The notes mention listening speeds above 300 words per minute for some experienced users; beginners do not need to aim for that speed.
+Screen readers can also announce whether a link has been visited, a button is disabled, a menu is expanded, or an instruction is present that a sighted user might not need. Stokes compares this to switching between maps of the same city: one shows roads, another train stations, and another tourist attractions. The information comes from the same place, but the view changes with the task.
 
-**Example: a login page.**
+## A simple login screen with a screen reader
 
-An email field might be announced as:
+A simple login form usually has email and password fields. A sighted user can glance at the page, see the labels or placeholders, and notice which field has focus if the visual indicator is clear. A screen reader has to communicate those details through speech. As the user starts navigating after the page loads, they will typically hear the page name, such as “Login” or “Sign in.” When they move to the first field, often the email field, they might hear:
 
-> Email address, edit, blank, required
+> Email address, edit, blank, required.
 
-A password field might be announced as:
+That announcement carries four pieces of information. “Email address” identifies the field; “edit” means it accepts input; “blank” means nothing has been entered; and “required” means the field must be filled in to submit the form. The user needs those details to know where to enter an email address or username.
 
-> Password, edit, protected, blank, required
+After entering an email address and moving to the password field, the screen reader might say:
 
-These announcements communicate the name, role, value state, required state, and password protection. Headings may be announced as “Heading level one, Welcome back” and “Heading level two, Sign in.” **Exact wording and ordering vary across screen readers, browsers, languages, and settings.** Test the information conveyed, not a hard-coded spoken transcript.
+> Password, edit, protected, blank, required.
 
-## Practice before you test
+The announcement carries five details: the field name, that it accepts input, that its contents are protected, that it is empty, and that it is required. “Protected” tells the user that typed characters will be hidden. Testers can also listen for headings, such as “Heading level one, Welcome back,” followed by “Heading level two, Sign in.” These announcements may feel repetitive or overly detailed at first, but they provide the context, structure, and navigation cues that people who cannot rely on sight need. Stokes compares the screen reader to a tour guide describing a room, helping the listener understand both what is there and how it fits together.
 
-Stokes recalls enabling a screen reader on his phone in a train carriage without headphones, then panicking because he did not know how to switch it off. It took him about five minutes to recover. His first tip is practical: learn the device's toggle shortcut before you start. On his iPhone, he uses three taps on the back of the phone.
+With practice, these announcements become easier to follow. Stokes describes screen reader testing as another skill testers can build, and one that may help them find a bug affecting someone they will never meet.
 
-Mobile screen-reader mode also changes how touch input works: swipes and taps move through accessible items rather than behaving like ordinary visual navigation, and multi-finger gestures can trigger different commands. The exact gestures vary by device and settings, so learn the relevant controls before testing.
+## A few hard-earned tips
 
-1. **Learn to enable and disable the screen reader first.** Mobile shortcuts depend on device and user configuration.
-2. **Keep a keyboard or gesture reference nearby.** Include next item, headings, controls, and interaction-mode commands.
-3. **Complete the built-in tutorial.** Screen reader navigation is not the same thing as Tab-key navigation.
-4. **Start with a familiar page.** Login, search, and profile pages reduce the effort needed to understand the business flow.
-5. **Practice in short sessions.** Five minutes is a reasonable starting point; increase duration as comfortable.
-6. **Avoid the mouse when practical.** Compare keyboard-only operation with screen reader navigation.
-7. **Try multiple navigation modes.** Headings, links, buttons, fields, and landmarks reveal different problems, including meaningless “click here” links.
-8. **Adjust speaking speed.** Comprehension matters more than matching an expert user's speed.
+Stokes starts with an embarrassing story. On desktop, turning a screen reader on and off is relatively simple because the mouse still works in that mode. On mobile, the toggle is buried in accessibility settings, and turning it off can be much harder if you do not know the shortcut.
 
-A sustainable habit is to repeat one familiar business flow each week using keyboard and screen reader, recording barriers to discovering, understanding, or operating the interface.
+In screen reader mode, a phone works more like a trackpad: users navigate with swipes and taps. One, two, three, or four fingers can change the input, as can the shape of a swipe. Stokes found himself in a train carriage without headphones, trying to turn off a screen reader while his phone announced elements and status information. He panicked and did not think to lower the volume. It took him about five minutes to find a way out.
 
-## Test the task, not a perfect transcript
+1. **Learn the on/off shortcut first.** Some phones use a volume and power button combination. Stokes's iPhone is set to toggle the reader with three taps on the back.
+2. **Keep a keyboard or gesture cheat sheet nearby.** Stokes found these useful when he was starting out.
+3. **Take the built-in tutorial.** Most screen reader tools have one.
+4. **Start slowly on a familiar page.** Turn on the reader, move through the page, and listen carefully. Look up anything you are unsure about.
+5. **Build up timed sessions.** Start with five minutes, then take a break. Stokes found that concentrating was tiring at first and sometimes gave him a headache, though nothing too serious; gradually increasing practice time helped.
+6. **Try not to use the mouse.** Stokes's point is that someone who cannot see does not rely on a mouse. He recommends doing some normal testing each week without one; testers may be surprised by what they find.
+7. **Try different navigation modes as you gain confidence.** Links can be hard to understand out of context when they all say “here” or “click here.”
+8. **Adjust the speech rate.** Beginners can slow it below 1x, then increase it as they gain experience.
 
-The article calls out headings, semantic elements, labels, errors, live updates, links, duplicate announcements, and equivalent user journeys. The focus-restoration checks and ARIA implementation examples below are practical QA extensions inspired by those questions, not specific techniques attributed to Stokes.
+## How to test with a screen reader
 
-**Headings and page structure.**
+Some checks will feel familiar. Heading levels and order may become easier to assess by listening. A jump from a level-three heading to a level-five heading can be hard to spot visually, but obvious when the levels are announced. Stokes recommends one H1 per page unless it contains specific independent regions.
 
-Can someone use headings to understand the page and jump to the right section? Does the hierarchy reflect the content? A jump from H3 to H5 is worth investigating, **not an automatic failure without context**. Stokes recommends one H1 unless a page contains specific independent regions; treat that as guidance to assess against the page's semantics, not a rule to apply mechanically.
+Check whether semantic HTML is announced, including regions such as `header`, `main`, and `footer`. Labels should be clear and descriptive. “Submit” may be a suitable label in some contexts; in others, it may not. Pop-ups, error messages, and real-time updates such as search results can be difficult to follow, so check whether the announcements are clear. Anything users need to know but are not told is a problem. Duplicate announcements also need attention; Stokes says they usually mean one item should be hidden, such as an icon on a button.
 
-Check whether appropriate `header`, `main`, `nav`, and `footer` landmarks are exposed. If several navigation regions exist, can users distinguish them by name?
+Look for inconsistent journeys, too. A keyboard or screen reader journey does not need to use the same steps as a sighted, mouse-driven journey, but it should provide the same or equivalent information. If a difference prevents that, flag it.
 
-**Forms, names, and errors.**
+### Questions to ask while testing
 
-Can users identify the email and password fields and their requirements? After invalid submission, can they discover the error, find the affected field, and understand how to fix it? A red border without an accessible explanation is a common failure. A button named “Submit” may be clear in context, but check whether its purpose remains understandable alongside other actions.
+**Headings**
 
-**Dynamic content and focus.**
+- Can you navigate by heading?
+- Does the hierarchy make sense?
 
-When a dialog opens, does focus move somewhere useful? After it closes, does focus return to the trigger or another sensible location? Are live search updates communicated without interrupting the user on every keystroke?
+**Forms**
 
-`aria-live` and `role="alert"` may help, but overusing them creates noise. Validate timing, duplication, and context with an actual screen reader.
+- Are labels announced?
+- Are required fields announced?
+- Are validation errors announced?
 
-**Links, buttons, and duplicate announcements.**
+**Dynamic content**
 
-Do links still make sense when read as a list, without surrounding content? Links labeled only “here” or “click here,” and repeated “View details” links, may be ambiguous. Some screen readers can also indicate whether a link has been visited or is broken; consider whether that information is clear and useful in the task. If an icon and text are announced twice, investigate the accessible name and alternative text. **Duplication is a diagnostic clue, not proof that an element must always be hidden.**
+- Are search results announced?
+- Are error messages announced?
 
-**Equivalent task completion.**
+**Links**
 
-Compare mouse, keyboard-only, and screen-reader paths. All users should be able to find important actions, complete the task, and understand success or failure. Interaction sequences can differ without denying essential functionality.
+- Do links make sense out of context?
 
-**A login journey as a test case.**
+## To sum up
 
-| Step | Action | Evidence to collect |
-| --- | --- | --- |
-| Enter page | Navigate by heading and landmark | Page identity, main content, heading structure |
-| Find email | Navigate by form controls | Name, role, required state |
-| Find password | Enter test data | Protected state and guidance |
-| Submit empty form | Trigger validation | Perceivable error, route to affected field |
-| Submit valid form | Complete login | Progress, success feedback, focus and page transition |
-| Trigger recoverable error | Open and dismiss a dialog | Dialog name, focus order, focus restoration |
-
-Record the platform, browser, screen reader and versions; steps; expected accessible information; actual announcement summary; focus position; and relevant DOM or accessibility-tree evidence. “Screen reader broken” is not an actionable bug report.
-
-**Illustrative defect record.** Suppose an empty login submission shows an email error visually, but a tester cannot discover the corresponding message with the screen-reader combination recorded for the run. Include the page and build version, reproduction steps, product rule or applicable criterion, expected perceivable information, a summary of the actual announcement, focus position, and relevant DOM or accessibility-tree evidence. This observation applies only to that task and environment; retest the fix in the same environment before deciding whether to expand coverage.
-
-## Automate checks; keep real screen-reader judgment
-
-> This section is an independent engineering proposal inspired by the article, not a list of practices attributed to its author.
-
-Automated checks can flag missing labels, obvious semantic problems, and some ARIA misuse. They **cannot replace real screen reader testing of task usability**. A practical layered approach is:
-
-- **Static and component checks:** semantic HTML, accessible names, state attributes, automated rule scans.
-- **Keyboard and browser checks:** reachability, Tab order, dialog focus management, validation feedback.
-- **Real assistive technology checks:** representative screen reader/browser combinations, task completion, navigation efficiency, announcement timing, and comprehension.
-
-For example, a limited Playwright check:
-
-```ts
-import { test, expect } from '@playwright/test';
-
-test('login form exposes meaningful names and errors', async ({ page }) => {
-  await page.goto('/login');
-
-  const email = page.getByRole('textbox', { name: /email/i });
-  const password = page.getByLabel(/password/i);
-  await expect(email).toBeVisible();
-  await expect(password).toBeVisible();
-
-  await page.getByRole('button', { name: /sign in/i }).click();
-  await expect(page.getByText(/email is required/i)).toBeVisible();
-});
-```
-
-This checks a few accessibility-related behaviors; it **does not establish what NVDA, JAWS, or VoiceOver will announce**. Use manual testing or a validated specialized solution for actual screen reader behavior.
-
-In an AI Native QA workflow, a Skill could prepare tasks, collect environment details, inspect the accessibility tree, and suggest risks. An Agent could organize evidence and track regressions. But whether the experience is understandable and a task is achievable still requires user-centered judgment. An automated accessibility pass rate is not the same as accessibility conformance.
-
-**Make room for assistive-technology testing in the current strategy.**
-
-Start with high-value tasks such as login, search, checkout, or payment. Record a repeatable environment and tool versions. Alongside component checks and keyboard testing, reserve a modest but consistent amount of real screen reader testing each iteration. Re-test the same task after a fix on the relevant assistive-technology combination. Prioritize defects by user impact, not by how visible they are.
-
-WCAG 2.2 can provide relevant success criteria, but **standards conformance and the experience of one screen reader are not identical**. Choose device and assistive-technology coverage based on users, platforms, and risk.
-
-Screen reader testing is not simply “having the page read aloud.” It challenges how a product communicates structure, state, and feedback. For testers, a screen reader is not only a specialized accessibility tool; it is another way to explore an interface and discover information that visual checks may miss. **A visually correct interface is not necessarily an understandable or operable interface.** One familiar workflow, one tool, and five minutes of practice can be the beginning of a sustainable accessibility testing habit.
+Screen reader use is more widespread than many people realize. Testing with screen readers or other assistive technology can uncover problems that visual checks miss, such as issues with application structure. Some of those issues may affect overall product quality and other users too. Stokes describes testing as a way to mitigate risk by finding issues before customers do. He recommends considering screen reader compatibility with empathy and inclusive testing. It is one part of digital accessibility, and testers do not need to become experts before they start. For testers, a screen reader is another way to explore a page and find information they might otherwise miss. Stokes encourages readers to try one, share their experience, and keep testing inclusively.
 
 ## References
 
-- Ady Stokes, How to Test with a Screen Reader: https://wonderproxy.com/blog/how-to-test-with-a-screen-reader/, WonderProxy Blog, October 14, 2026 (source of supplied study notes).
-- W3C Web Content Accessibility Guidelines (WCAG) 2.2: https://www.w3.org/TR/WCAG22/ (further reading).
-- WebAIM Screen Reader User Survey: https://webaim.org/projects/screenreadersurvey/ (tool adoption; check the survey year).
+- Ady Stokes, “How to Test with a Screen Reader,” WonderProxy Blog, October 14, 2026: https://wonderproxy.com/blog/how-to-test-with-a-screen-reader/
+- WebAIM, accessibility tools and resources: https://webaim.org/
+
+Ady Stokes is a Ministry of Testing Ambassador and accessibility advocate. At the time of the source article, he had contributed to quality and testing for nearly 25 years.

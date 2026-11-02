@@ -1,7 +1,7 @@
 ---
-title: "Quality Dashboard Design Skill: Turn scattered signals into decisions people can act on"
+title: "Quality Dashboard Design Skill: Make Quality Signals Useful for Decisions"
 description: "Quality Dashboard Design field guide: define audience, decisions, metrics, dimensions, evidence, freshness, and action paths."
-date: 2026-11-17T09:00:00.000Z
+date: 2026-11-18T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Quality Dashboard Design"]
@@ -44,9 +44,16 @@ Also check that the overview, segments, and drill-down use the same metric defin
 
 ## Worked example
 
-For a staged checkout rollout, a dashboard might show checkout errors, payment authorization outcomes, order-state reconciliation, latency, and sampled user feedback. The design should define each population and time window, then link unusual values to their source run or query.
+The source Skill includes a sanitized synthetic fixture. Its project rules say an open P0 blocks, data older than 24 hours is stale, and tests without an execution record are NOT_RUN. These rules belong to the fixture, not every team's release policy.
 
-If payment evidence is stale, the panel should show that state and withhold a current conclusion. If a high-risk payment subgroup has a blocker, the summary must keep it visible even if the overall pass rate looks healthy. The team still has to supply the actual project threshold and decide whether to stop or continue; this example supplies no real values or approval.
+| Case | Supplied evidence | Dashboard state |
+| --- | --- | --- |
+| D-1 | 99/100 passes, with one open P0 | `BLOCKED`; an overall pass rate cannot hide the blocker |
+| D-2 | The green source data is 48 hours old | `STALE`; show the last refresh and do not reuse the green result as current |
+| D-3 | The panel shows zero failures and green, but tests did not run | `NOT_RUN`; no run means no test result |
+| D-4 | Current 100/100 evidence, no P0, a drill-down to run17, and a complete definition and window | `PASS` under this fixture's rules |
+
+The source example's expected decisions are D-1 `BLOCKED`, D-2 `STALE`, D-3 `NOT_RUN`, and D-4 `PASS`. These states test whether the view maps evidence to the stated project rules. They are not a production approval or a general release policy.
 
 ## What to hand off
 
@@ -55,6 +62,25 @@ Use a QDD-## finding for a panel or rule that cannot yet support its decision. I
 ## Boundaries
 
 This Skill designs a decision view; it does not replace telemetry design or release gates. It does not query production systems or make the Human decision to accept risk, approve an exception, or release. Incomplete input can support a bounded design review, not a current quality verdict.
+
+## Best practices
+
+- Start with the audience and decision, then choose the metrics and panels that support that decision.
+- Put the definition, population, numerator and denominator, source version, refresh time, and stale-data rule where a reviewer can find them.
+- Keep P0 blockers and small high-risk groups visible in the summary. Give each alert an owner, action, escalation path, and resolution condition.
+- Validate display states with sample evidence before relying on the live dashboard. Agree the schema, enums, required fields, and evidence links before sending findings to a tool.
+
+## First use: build one decision view
+
+1. Choose one audience and one decision, such as daily test triage or release readiness.
+2. Select one panel and provide its definition, source, population, time window, refresh rule, and drill-down link.
+3. Ask the Skill to check how the panel handles a real value, a zero denominator, missing evidence, stale data, and a blocker. Confirm the action owner before expanding the view.
+
+## Keep the dashboard inside the quality loop
+
+![Dashboard decision loop: define the decision, show fresh evidence and its status, investigate, update tests, and refresh after reruns](/images/blog/ai-testing-quality-loops/quality-dashboard-design-quality-loop-en.svg)
+
+In daily testing, an AI-generated case stays a candidate until someone reviews and accepts it. The dashboard should show `NOT_RUN` until there is an execution record, then link the result to its requirement and build. A blocker, stale source, or failed run sends work back to investigation, repair, and another run. The owner uses that evidence to decide what happens next.
 
 ## Related Skills
 
@@ -67,7 +93,7 @@ This Skill designs a decision view; it does not replace telemetry design or rele
 Install the individual Skill from the Awesome QA Skills repository:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill quality-dashboard-design
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill quality-dashboard-design
 ```
 
 Invoke quality-dashboard-design with the intended audience, decision, dashboard plan, source definitions, time window, and known evidence gaps.
@@ -90,6 +116,10 @@ No. It can present evidence for an authorized decision, but release policy and r
 
 Show the state and its last update explicitly. Do not substitute zero or an earlier green result for unavailable or stale evidence.
 
+### Should an AI-generated test appear as a pass on the dashboard?
+
+No. Show it as a candidate or `NOT_RUN` until it has been reviewed, accepted, and executed. Link the result to its requirement and build so a reviewer can trace the evidence.
+
 ## Source
 
-Read the Quality Dashboard Design prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design/prompts/quality-dashboard-design.md before using the Skill. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design includes its entry point, references, and evaluation contract.
+Read the Quality Dashboard Design prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design/prompts/quality-dashboard-design.md before using the Skill. The worked decisions come from its sanitized synthetic fixture: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/quality-dashboard-design/references/domain-decision-example.md. Source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-dashboard-design.

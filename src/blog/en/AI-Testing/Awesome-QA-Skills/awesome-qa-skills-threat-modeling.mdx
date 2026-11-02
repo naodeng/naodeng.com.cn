@@ -1,7 +1,7 @@
 ---
 title: "Threat Modeling Skill: Turn Assets and Trust Boundaries into Reviewable Scenarios"
 description: "Identify assets, trust boundaries, attack surface, threat scenarios, mitigations, assumptions, and safe validation in a threat model."
-date: 2026-11-12T09:00:00.000Z
+date: 2026-11-13T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Threat Modeling"]
@@ -18,15 +18,13 @@ The Threat Modeling Skill builds an evidence-bounded view of assets, trust bound
 
 The model should show where an attacker could cross a boundary and what evidence would change the risk judgment.
 
-Use this Skill for a new service, data flow, integration, or high-impact change when the team needs to make security assumptions and mitigations reviewable.
+Use this Skill when a new service, data flow, integration, or high-impact change needs reviewable security assumptions and mitigations. It also fits systems that cross tenant, network, identity, or data boundaries, and designs that need security scenarios before implementation.
 
 A good finding names the asset, boundary, actor, threat scenario, existing mitigation, evidence state, impact, owner, close condition, and isolated validation method.
 
-Use it when a system crosses tenant, network, identity, or data boundaries, or a design needs security scenarios before implementation.
-
 ## What it does not do
 
-The Threat Modeling Skill can organize material, evidence, and next actions for Asset and boundary. It does not replace:
+The Threat Modeling Skill can organize material, evidence, and next actions for assets and trust boundaries. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -39,7 +37,7 @@ The value of this Skill is not another keyword list. It connects each focus area
 
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
-| Asset and boundary | What is protected and where trust changes | Source and applicability |
+| Asset / trust boundary | What is protected and where trust changes | Source and applicability |
 | Threat scenario | Actor, path, precondition, impact, and mitigation | Evidence state |
 | Assumption gap | What the model relies on but does not prove | Owner question |
 | Validation action | Safe check for the highest-risk scenario | Isolation and stop condition |
@@ -48,7 +46,7 @@ If a row has only a conventional expectation and no source or validation method,
 
 ## Audit inputs before you start
 
-Before analyzing Asset and boundary, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before modeling assets and trust boundaries, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -67,7 +65,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Asset and boundary, do not compress four different kinds of language into “recommended to pass”:
+For each asset or trust boundary, keep facts, evidence-backed inferences, recommendations, and Human decisions separate:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -117,11 +115,14 @@ Record the scenario as a `THM-01` threat card. This illustrative entry follows t
 | Field | Example record |
 | --- | --- |
 | Asset and path | Invoice export file; the browser submits an export ID, the portal API reads the file from object storage |
-| Actor and precondition | An authenticated tenant user submits another tenant's export ID; the applicable access rule must come from a supplied policy |
+| Trigger and precondition | An authenticated user from tenant A submits an export ID belonging to tenant B; the applicable access rule must come from a supplied policy |
 | Boundary and candidate threat | The portal API to object-storage read path; the design does not say how the API binds the session tenant to the file owner |
-| Existing control and evidence | Supply the authorization rule, object ownership field, and server-side audit record; whether a control exists is still unknown |
-| Impact and state | If ownership is not checked, cross-tenant invoice exposure is a possible impact; this is a `missing` design-evidence state, not a confirmed vulnerability |
-| Next validation | After the owner confirms the rule, use two synthetic tenants in an isolated environment and retain request scope, server decision, and audit evidence |
+| Existing control and evidence | The authorization rule, object ownership field, and server-side audit record were not supplied; whether a control exists is still unknown |
+| Impact and state | If ownership is not checked, cross-tenant invoice exposure is a possible impact; this is a `missing` design-evidence state, not a confirmed vulnerability. Priority remains open until a project risk rubric is supplied |
+| Expected result and evidence | If the supplied policy requires tenant isolation, deny the request and retain the server decision and audit record; because the policy is not supplied here, treat this as a provisional expected result to confirm with the owner |
+| Owner and close condition | The accountable security or service owner confirms the rule; close when its source, owner, and isolated validation result are reviewable |
+| Candidate validation | After the owner confirms the rule, use two synthetic tenants in an isolated environment and retain request scope, server decision, and audit evidence |
+| Stop condition | Stop if the check leaves the isolated environment, encounters real tenant data, or exceeds the approved scope; preserve the evidence and escalate to the owner |
 
 If the materials do not show how tenant identity reaches the server, how file ownership is bound, or whether a denied request read or returned the object, record those gaps first. Do not draw assumed components or controls into the data-flow model.
 
@@ -131,12 +132,12 @@ The model organizes supplied security context and assumptions. It cannot prove v
 
 The field example below shows the recording pattern; it is not an execution result.
 
-If the supplied material cannot prove that Asset and boundary meets its contract, write the finding like this. It does not invent the missing rule or turn missing evidence into a failure.
+If the supplied material does not support a conclusion about an asset or trust boundary, use this finding format. Keep the unknown rule visible; do not treat missing evidence as a failure.
 
 | Field | Example wording |
 | --- | --- |
-| Source and scope | Record the requirement, version, environment, and the concrete object for Asset and boundary |
-| Finding | The condition or result for Asset and boundary is not yet traceable to evidence |
+| Source and scope | Record the requirement, version, environment, and the asset or trust boundary under review |
+| Finding | The condition or result for the asset and trust-boundary review is not yet traceable to evidence |
 | Evidence state | missing / assumptions; use conflicting when sources disagree |
 | Impact and priority | Name the affected user, journey, or delivery decision without inflating severity |
 | Owner and Human decision | Ask the product, engineering, security, or test owner to confirm the rule and trade-off |
@@ -159,7 +160,7 @@ Before closing the finding, run the stated validation and retain the raw artifac
 
 | Output field | Why it exists | Example status |
 | --- | --- | --- |
-| Asset and boundary | What is protected and where trust changes | Source and applicability |
+| Asset / trust boundary | What is protected and where trust changes | Source and applicability |
 | Threat scenario | Actor, path, precondition, impact, and mitigation | Evidence state |
 | Assumption gap | What the model relies on but does not prove | Owner question |
 | Validation action | Safe check for the highest-risk scenario | Isolation and stop condition |
@@ -176,6 +177,12 @@ Provide a current data-flow diagram, assets, actor and role matrix, trust bounda
 
 A useful handoff includes input versions, scope, time window, evidence index, assumptions, Human decision boundary, and the smallest validation action.
 
+## Best practices
+
+- Start with high-impact, hard-to-detect, permission-sensitive, or data-sensitive paths.
+- Use redacted material and keep candidate validation least-privileged, isolated, and reversible.
+- Trace each conclusion to its source and boundary; threat-category names alone do not establish an attack path.
+
 ## Working with other Skills
 
 - Security Requirement Review: https://inaodeng.com/en/qaskills/security-requirement-review/ — turns protection goals into testable conditions.
@@ -191,7 +198,7 @@ A useful handoff includes input versions, scope, time window, evidence index, as
 ## Install and invoke
 
 ~~~bash
-npx skills add naodeng/awesome-qa-skills --skill threat-modeling
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill threat-modeling
 ~~~
 
 ~~~text
@@ -220,9 +227,7 @@ The complete execution contract lives in the Threat Modeling prompt: https://git
 
 Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
 
-### Reference links
+### Further reading
 
-- Threat Modeling prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/threat-modeling/prompts/threat-modeling.md
-- Threat Modeling Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/threat-modeling
 - Threat Modeling details: https://inaodeng.com/en/qaskills/threat-modeling/
 - Awesome QA Skills on GitHub: https://github.com/naodeng/awesome-qa-skills

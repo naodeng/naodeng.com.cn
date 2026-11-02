@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1180" role="img" aria-labelledby="title desc">
+<title id="title">AI 智能体测试质量循环</title>
+<desc id="desc">固定任务基线，按计划运行样本，联合复核最终结果与 run/step 轨迹，归类问题并修订，再回归原样本并加入新样本。</desc>
+<defs>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1e293b" stroke-width="0.6"/></pattern>
+  <marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0L9 4L0 8Z" fill="#64748b"/></marker>
+  <marker id="loop-arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0L9 4L0 8Z" fill="#60a5fa"/></marker>
+  <style>
+    text { font-family: Arial, 'Noto Sans SC', 'PingFang SC', sans-serif; }
+  </style>
+</defs>
+<rect width="960" height="1180" fill="#0f172a"/>
+<rect width="960" height="1180" fill="url(#grid)"/>
+<text x="52" y="58" fill="#f8fafc" font-size="28" font-weight="700">AI 智能体测试质量循环</text>
+<text x="52" y="90" fill="#94a3b8" font-size="16">同时评估任务结果、运行过程与证据完整性</text>
+<path d="M480 232V266M480 367V401M480 502V536M480 637V671M480 772V806" fill="none" stroke="#64748b" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M170 861H96V185H170" fill="none" stroke="#60a5fa" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#loop-arrow)"/>
+<text x="55" y="530" transform="rotate(-90 55 530)" fill="#60a5fa" font-size="14" font-weight="700" text-anchor="middle">下一轮</text>
+<g>
+  <rect x="170" y="142" width="620" height="90" rx="20" fill="#0f172a"/>
+  <rect x="170" y="142" width="620" height="90" rx="20" fill="#1e3a8a" fill-opacity="0.42" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="480" y="180" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">固定任务基线</text>
+  <text x="480" y="207" text-anchor="middle" fill="#cbd5e1" font-size="15">成功 oracle、边界、样本与环境版本</text>
+</g>
+<g>
+  <rect x="170" y="277" width="620" height="90" rx="8" fill="#0f172a"/>
+  <rect x="170" y="277" width="620" height="90" rx="8" fill="#083344" fill-opacity="0.62" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="480" y="315" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">按方案运行样本</text>
+  <text x="480" y="342" text-anchor="middle" fill="#cbd5e1" font-size="15">记录 sample ID 和 run/step 轨迹</text>
+</g>
+<g>
+  <rect x="170" y="412" width="620" height="90" rx="8" fill="#0f172a"/>
+  <rect x="170" y="412" width="620" height="90" rx="8" fill="#064e3b" fill-opacity="0.62" stroke="#34d399" stroke-width="1.5"/>
+  <text x="480" y="450" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">联合复核结果与过程</text>
+  <text x="480" y="477" text-anchor="middle" fill="#cbd5e1" font-size="15">对照 oracle、权限、步骤和终止断言</text>
+</g>
+<g>
+  <rect x="170" y="547" width="620" height="90" rx="8" fill="#0f172a"/>
+  <rect x="170" y="547" width="620" height="90" rx="8" fill="#78350f" fill-opacity="0.48" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="480" y="585" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">归类失败与证据缺口</text>
+  <text x="480" y="612" text-anchor="middle" fill="#cbd5e1" font-size="15">区分规则、工具、记忆、环境与轨迹问题</text>
+</g>
+<g>
+  <rect x="170" y="682" width="620" height="90" rx="8" fill="#0f172a"/>
+  <rect x="170" y="682" width="620" height="90" rx="8" fill="#4c1d95" fill-opacity="0.5" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="480" y="720" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">修订并记录依据</text>
+  <text x="480" y="747" text-anchor="middle" fill="#cbd5e1" font-size="15">更新场景、Prompt 或工具契约并标版本</text>
+</g>
+<g>
+  <rect x="170" y="817" width="620" height="90" rx="20" fill="#0f172a"/>
+  <rect x="170" y="817" width="620" height="90" rx="20" fill="#1e3a8a" fill-opacity="0.42" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="480" y="855" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">回归原样本并扩展</text>
+  <text x="480" y="882" text-anchor="middle" fill="#cbd5e1" font-size="15">重跑旧样本，再加入新的边界样本</text>
+</g>
+<rect x="170" y="1018" width="620" height="76" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.2"/>
+<text x="480" y="1050" text-anchor="middle" fill="#e2e8f0" font-size="15" font-weight="600">没有项目重复方案时先确认；单次成功不能证明可靠性。</text>
+<text x="480" y="1077" text-anchor="middle" fill="#94a3b8" font-size="13">未执行和证据不足的状态应继续保留</text>
+</svg>

@@ -1,7 +1,7 @@
 ---
-title: "Quality Debt Analysis: Risk and Paydown Priorities"
+title: "Quality Debt Analysis Skill: Assess Risk and Paydown Priorities"
 description: "Trace a quality debt item's source, impact, age, controls, ongoing interest, ownership, and repayment evidence; rank by risk rather than age alone."
-date: 2026-11-17T09:00:00.000Z
+date: 2026-11-18T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Quality Debt Analysis"]
@@ -31,7 +31,7 @@ Rank by business impact, exposure, detectability, dependencies, and repayment ef
 
 ## Audit the evidence
 
-Record known, missing, conflicting, stale, out_of_scope, and assumptions before assigning a priority. Check that evidence covers a comparable time period, the relevant build, and the asset being discussed.
+Before assigning a priority, check evidence completeness, credibility, recency, and comparability. Record known, missing, conflicting, stale, out_of_scope, and assumptions. Confirm that evidence covers a comparable time period, the relevant build, and the asset being discussed.
 
 - known: cite the issue, run, incident, effort record, or control that supports the claim.
 - missing: request the smallest log, time window, impact source, or ownership detail needed.
@@ -42,24 +42,32 @@ Record known, missing, conflicting, stale, out_of_scope, and assumptions before 
 
 Separate facts, evidence-backed inferences, candidate recommendations, and Human decisions. Do not convert correlation between a flaky suite and escaped defects into a confirmed cause.
 
-## Example: a flaky checkout suite
+## Worked example: rank by ongoing risk, not age
 
-Consider an example request that describes a checkout suite delaying releases while a payment-state defect recurs. The description alone is not a source record: it does not identify the affected test, release window, users, defect ticket, root cause, age, or measured delay.
+The source Skill includes a sanitized synthetic fixture. Its items and decisions are examples, not real project records or business approvals.
 
-Keep at least two questions separate: Is there an active payment-state product defect, and is there a test or architecture gap that makes this behavior harder to detect? A flaky test may be related, but the cause needs evidence. Do not assume the fixture is the root cause or that quarantining a test repays the debt.
+| Item | Supplied evidence | Fixture decision |
+| --- | --- | --- |
+| Q-1 | A 180-day-old duplicate helper costs 1 hour per month and has no high-risk protection gap | `LOWER_PRIORITY`; age alone does not outrank current impact |
+| Q-2 | A one-day-old refund test mocks the subject, missed a duplicate debit yesterday, and still leaves loss exposure | `HIGHER_PRIORITY`; the newer item has greater stated exposure, but the mock is not proven to be the cause |
+| Q-3 | A confirmed production duplicate-debit defect remains unfixed | `PRODUCT_DEFECT`; track it as an active defect, not test debt |
+| Q-4 | A helper-refactor ticket is closed, but there is no behavior-regression or maintenance-impact evidence | `NOT_CLOSED`; the ticket alone does not show that the debt effect is gone |
+| Q-5 | Refactored code, an independent regression, a maintenance sample, and owner acceptance are recorded | `CLOSED`; the fixture contains the required closure evidence |
 
-### QDA-01 candidate: recurring checkout-suite instability
+### QDA-01 candidate: assess the refund-test gap
 
 | Finding field | Example record |
 | --- | --- |
-| Object and origin | Candidate test debt in a named checkout test or fixture; origin is **UNKNOWN** until source history or a reproducible analysis supports it |
-| Applicability and source | Applies if CI records confirm repeated instability or reruns; the example request supplies no test ID, issue, time window, or run evidence |
-| Observed concern and evidence state | Release delay and missed payment behavior are concerns to investigate, not confirmed cause or rate; mark **UNASSESSED** |
-| Impact, priority, and owner | Gather affected release/user scope, exposure, detectability, dependency, and paydown effort. Keep priority **NOT_SCORED** until evidence and owner review; assign the checkout test owner |
-| Validation and stop condition | Compare test history, failure clusters, delay records, and the product defect timeline over an agreed period. Stop the ranking if sources conflict or the active defect requires a separate incident decision. |
-| Close condition | Show the changed test or architecture asset, an independent behavior check, disappearance of the debt effect, and accountable acceptance. A ticket or quarantine alone does not close it. |
+| Finding field | Example record |
+| --- | --- |
+| Object and source | Q-2, the refund test described in the sanitized fixture; no live test ID or repository history is supplied |
+| Trigger and concern | The test mocks its subject, while the fixture reports a missed duplicate debit and continuing loss exposure. This warrants checking the test boundary; it does not establish that the mock caused the miss. |
+| Evidence state | `known` for the synthetic fixture; live test history, defect linkage, and production scope remain `UNASSESSED` |
+| Impact, priority, and owner | `HIGHER_PRIORITY` relative to Q-1 in the fixture. The live owner and impact rubric are unknown; identify the responsible test owner before ranking project work. |
+| Validation and stop condition | Compare the test definition, execution history, and duplicate-debit evidence over an agreed window. If an active production defect is confirmed, stop the debt ranking and route it through the product-defect or incident process. |
+| Close condition | Change the relevant asset, independently check the intended behavior, show that the recurring exposure or detection gap is removed, and record accountable acceptance. |
 
-This record proposes an evidence path; it does not assert that the suite caused the product defect. Treat any accepted risk as an authorized exception with an expiry or review date.
+This example keeps the test gap separate from the active product defect. Any accepted residual risk needs an authorized owner and an expiry or review date.
 
 ## Choose repayment, containment, or acceptance
 
@@ -73,9 +81,15 @@ For each item, compare the smallest repayment action with containment, monitorin
 
 A debt item is not repaid when a ticket closes or a document is written. The source contract requires a changed asset, an independent check of the intended behavior, evidence that the debt effect is gone, and accountable acceptance. If those conditions are not met, keep it open or record an authorized exception.
 
+## Put debt repayment inside the quality loop
+
+![Quality debt repayment loop: record and rank sourced debt, choose an authorized action, change the asset, verify behavior, and review remaining impact](/images/blog/ai-testing-quality-loops/quality-debt-analysis-quality-loop-en.svg)
+
+AI-generated tests can suggest missing cases, but generation alone does not repay debt. Review and deduplicate candidates, connect accepted tests to the affected requirement, execute them, then check independently that the original debt effect has changed. Feed escapes, maintenance effort, detection delay, and unresolved evidence back into the next review.
+
 ## Prepare a reviewable record
 
-Provide the item identifier, origin evidence, impact and controls, age, comparable observation period, effort or exposure data, dependencies, and repayment options. Mark each amount and rate as observed, estimated, or unknown. Keep current defects and decisions outside the debt record unless their relationship is sourced.
+Provide the item identifier, origin evidence, impact and controls, age, comparable observation period, effort or exposure data, dependencies, and repayment options. Mark each amount and rate as observed, estimated, or unknown. Keep current defects and decisions outside the debt record unless their relationship is sourced. For CSV, JSON, or ticket output, agree the schema, enums, required fields, and evidence sources first.
 
 ## Work with related Skills
 
@@ -90,10 +104,23 @@ Provide the item identifier, origin evidence, impact and controls, age, comparab
 3. Assigning a root cause from correlation.
 4. Closing the ticket without evidence that the debt effect disappeared.
 
+## Best practices
+
+- Separate active product defects, test or architecture debt, temporary exceptions, and evidence gaps before ranking.
+- Estimate ongoing cost or risk from observed effort, exposure, or detection delay. Without a sourced rate, keep the estimate qualitative or conditional.
+- Rank by impact, exposure, detectability, dependencies, and repayment effort or benefit. Use age as one signal.
+- Close debt only after the asset changes, an independent check passes, the ongoing effect is gone, and an accountable owner accepts the result.
+
+## First use: assess one debt item
+
+1. Pick one test, architecture asset, or exception and identify its source and current control.
+2. Provide a comparable observation period, evidence of impact or effort, age, dependencies, and possible repayment actions.
+3. Ask the Skill to classify the item, state what is known or missing, and name the smallest validation step. Keep the priority unscored if impact evidence or an owner is missing.
+
 ## Install and invoke
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill quality-debt-analysis
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill quality-debt-analysis
 ```
 
 Invoke quality-debt-analysis with scoped evidence, comparable time periods, and the asset or exception under review.
@@ -108,9 +135,13 @@ Yes, when an authorized owner records the impact, controls, residual risk, and a
 
 Use the original evidence measure, show the relevant asset changed, independently verify the intended behavior, and confirm the debt effect is gone.
 
+### Can an AI-generated test close a debt item?
+
+No. Treat it as a candidate until it is reviewed and run. Closure still needs a changed asset, an independent behavior check, evidence that the debt effect is gone, and accountable acceptance.
+
 ## References
 
-The Quality Debt Analysis Prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md defines QDA-## fields, debt classification, priority considerations, and closure evidence. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis contains the Skill entry point and supporting material.
+The Quality Debt Analysis prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis/prompts/quality-debt-analysis.md defines QDA-## fields, debt classification, priority considerations, and closure evidence. The worked decisions come from its sanitized synthetic fixture: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/quality-debt-analysis/references/domain-decision-example.md. Source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-debt-analysis.
 
 - Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills
 - Quality Debt Analysis details: https://inaodeng.com/en/qaskills/quality-debt-analysis/

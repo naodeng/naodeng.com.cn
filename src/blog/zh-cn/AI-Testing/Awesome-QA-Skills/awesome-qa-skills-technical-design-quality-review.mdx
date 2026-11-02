@@ -1,7 +1,7 @@
 ---
 title: "技术设计质量复核 Skill：在第一行代码前暴露设计风险"
 description: "在实现前复核 ADR、组件设计、数据流和非功能约束，检查边界、依赖、故障、数据、安全、性能、可观测性与兼容性风险，并整理验证动作。"
-date: 2026-11-14T09:00:00.000Z
+date: 2026-11-15T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "技术设计质量复核"]
@@ -115,15 +115,14 @@ series: ["Awesome QA Skills 实战"]
 
 ##### TD-03 — 下载链路缺少明确的租户授权边界
 
-- **来源 / 证据：** 导出存储设计 §3.2；下载 API 契约 §2.1；租户权限矩阵和审计方案未提供。
+- **来源 / 证据：** 已提供的导出设计、下载 API、对象存储路径和审计流程；实际复核时应补充具体版本和章节。租户权限矩阵、对象存储签名策略和审计方案未提供。
 - **状态：** missing
-- **影响：** 如果接口只按 job_id 查询文件，路径名称本身不能证明租户隔离，可能让跨租户访问在实现阶段才暴露。
-- **优先级：** P1——它直接影响授权设计、API 验证和审计要求。
+- **影响 / 优先级：** 如果要求租户隔离，跨租户访问和审计缺口都可能影响设计；受影响范围和项目分级标准尚未提供，优先级暂不评定。
 - **缺口动作：** 明确 job_id 与 tenant_id 的绑定位置，并说明 API、服务端和对象存储签名策略各自负责什么。
-- **责任角色：** API 负责人、安全负责人、存储负责人。
+- **责任角色：** 需要分配 API 或安全负责人决定在哪里执行所有权校验；现有设计没有指定负责人。
 - **待决策问题：** 租户授权由 API 网关、导出服务还是对象存储策略执行？跨租户请求统一返回什么？
 - **关闭条件：** 设计和权限矩阵对合法、跨租户、过期和不存在资源给出一致行为，并能追踪到验证场景。
-- **验证方式：** 在隔离环境用租户 A 请求租户 B 的 job_id，预期拒绝并保留审计记录；实际执行结果单独记录。
+- **验证方式：** 负责人确认需要租户隔离后，在隔离环境使用合成租户和导出文件；跨租户请求预期被拒绝，并保留响应和审计记录。实际执行结果单独记录。
 
 TD-03 把风险送进 ADR 修订、问题单、测试任务或验证实验，不负责给设计打分。实现完成后，它还可以重新审计并关闭。
 
@@ -215,6 +214,11 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 提供接口、数据流、权限矩阵和验证环境后，复核结果可以逐项关联到设计决策；缺少这些输入时，应保留缺口和待确认项，不能只留下泛化建议。
 
+## 实践建议
+
+- 优先处理影响大的设计缺口，并请求足以解决问题的最小证据或安全检查。
+- 分开记录设计事实、证据支持的推断、建议和人工决策；不要把假设写成结论。
+
 ## 常见问题
 
 ### 这个 Skill 会复核代码吗？
@@ -239,9 +243,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 设计文档存在只能证明文档存在。没有身份、时间、环境、输入和原始结果的执行结论，只能标记为 unverified、unexecuted 或 unassessed。
 
-### 参考链接
+### 延伸阅读
 
-- 技术设计质量复核提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md
-- 技术设计质量复核 Skill 源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/technical-design-quality-review
 - 技术设计质量复核详情页: https://inaodeng.com/zh-cn/qaskills/technical-design-quality-review/
 - Awesome QA Skills 项目: https://github.com/naodeng/awesome-qa-skills

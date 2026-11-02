@@ -1,7 +1,7 @@
 ---
 title: "Regression Testing vs Retesting: Key Differences and Best Practices"
 description: "Clarify the goals and scope of regression testing and retesting, with a discount-code example, impact analysis, metrics, and practical checklists."
-date: 2026-11-20T09:00:00.000Z
+date: 2026-11-21T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["Regression Testing", "Retesting", "Test Strategy"]
@@ -22,7 +22,7 @@ Original article: https://www.accelq.com/blog/regression-testing-and-retesting/
 
 **Regression testing** checks whether a change to code, configuration, dependencies, or the environment has unexpectedly broken existing functionality. Its scope is usually broader than retesting, but it does not mean rerunning every historical test after every change. Choose the scope based on impact, business risk, and available evidence.
 
-In short: retesting asks, “Was this defect fixed?” Regression testing asks, “Did the fix or change break anything else?”
+Retesting asks, “Was this defect fixed?” Regression testing asks, “Did the fix or change break anything else?”
 
 Retesting confirms whether a fix works, helps prevent premature defect closure, and gives stakeholders a clear “fixed” or “not fixed” result. Regression testing protects existing functionality, supports continuous delivery, and provides evidence before a build moves to staging or production. Keep separate goals and success criteria for the two activities. When they are combined into one undefined test pass, it becomes harder to tell whether a failure belongs to the fix or to another affected workflow.
 
@@ -247,6 +247,20 @@ The learning notes organize these checks to make the goals of the two activities
 4. **Passing tests do not reduce risk to zero.** A release decision must also account for untested areas and business consequences.
 
 > **One-line reminder:** Confirm that the original problem is fixed, check that related behavior still works, then use verified and unverified evidence to support the release decision.
+
+## Frequently asked questions
+
+### Do I still need regression testing after a retest passes?
+
+If the change could affect other behavior, run regression tests for the relevant scope. Retesting checks the original defect scenario; it does not cover side effects in shared services, interfaces, or data models.
+
+### Should every change run the full regression suite?
+
+Not necessarily. Choose the scope from the actual diff, dependencies, and business risk. Keep a stable check for critical paths, expand coverage for high-impact changes, and run broader regression periodically.
+
+### Can AI impact analysis decide which features to test?
+
+It can suggest a scope from code changes and dependencies. The team still needs to check the mapping for gaps, confirm critical paths are covered, and record what remains untested.
 
 ## References
 

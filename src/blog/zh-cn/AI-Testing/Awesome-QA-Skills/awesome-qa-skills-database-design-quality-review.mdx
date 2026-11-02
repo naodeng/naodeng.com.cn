@@ -1,7 +1,7 @@
 ---
 title: "数据库设计质量评审：约束、访问与迁移"
 description: "依据有来源的不变量、访问模式、并发、生命周期、租户边界、回滚和恢复评审数据库设计，并记录可追溯的 DB-## 发现。"
-date: 2026-11-13T09:00:00.000Z
+date: 2026-11-14T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "数据库设计质量评审"]
@@ -20,9 +20,7 @@ series: ["Awesome QA Skills 实战"]
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill。系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 解释通用安装方式，本文只聚焦数据库设计质量评审。
 
-好的评审从不变量和真实查询开始。它会追问什么阻止同一笔支付出现两次退款、什么阻止跨租户查询，以及迁移执行到一半停止时会发生什么。
-
-它适合这些场景：团队需要重复检查实体、关系、键、约束、索引、租户、生命周期、迁移和恢复；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+好的评审从不变量和真实查询开始。它会追问什么阻止同一笔支付出现两次退款、什么阻止跨租户查询，以及迁移执行到一半停止时会发生什么。资料不完整或来源冲突、但仍需要受限评审，或交接时需要交代尚未验证的事项，也适合使用这个 Skill。
 
 ## 它不做什么
 
@@ -68,7 +66,7 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 ### 分层写法
 
-对每条 `DB-##` 发现，不要把四种语气揉成一句“建议通过”：
+每条 `DB-##` 发现都要分开写事实、证据支持的推断、建议和人工决策：
 
 | 层次 | 写法 | 本文应用 |
 | --- | --- | --- |
@@ -160,6 +158,11 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 这里补充信息会改变结果，因为实体、关系、键、约束、索引、租户、生命周期、迁移和恢复必须接回证据，不能只靠熟悉的测试套路推断。
 
+## 实践建议
+
+- 先选影响最大的业务不变量或迁移风险，再提出判断它所需的最小补证动作。
+- 把约束和索引与访问模式、事务、并发、生命周期、迁移、回滚和恢复放在一起评审；不要从表名或字段名推导业务规则。
+
 ## 和其他 Skill 怎么配合
 
 - API 设计质量评审: https://inaodeng.com/zh-cn/qaskills/api-design-quality-review/；把数据规则接回 API 契约。
@@ -174,7 +177,7 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 ## 安装与调用
 
-全局安装这个 Skill：
+从中文语言目录单独安装这个 Skill：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill database-design-quality-review
@@ -200,11 +203,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 入口文件重点约束实体、关系、键、约束、索引、租户、生命周期、迁移和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
 
-### 参考链接
-
-- 数据库设计质量评审提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review/prompts/database-design-quality-review.md
-
-- Awesome QA Skills：数据库设计质量评审 源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/database-design-quality-review
+### 延伸阅读
 
 - Awesome QA Skills 项目主页: https://github.com/naodeng/awesome-qa-skills
 

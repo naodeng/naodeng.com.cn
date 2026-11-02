@@ -1,7 +1,7 @@
 ---
-title: "Quality Metrics Design Skill: Define Trustworthy Measures for Release Decisions"
-description: "Define quality metrics for release decisions with clear numerators and denominators, data sources, freshness, interpretation limits, and anti-gaming checks."
-date: 2026-11-16T09:00:00.000Z
+title: "Quality Metrics Design Skill: Build Clear, Reviewable Metrics"
+description: "Design evidence-bounded quality metrics with clear numerators and denominators, data sources, freshness, interpretation limits, and anti-gaming checks."
+date: 2026-11-17T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Quality Metrics Design"]
@@ -16,9 +16,9 @@ The Quality Metrics Design Skill creates evidence-bounded metric definitions bef
 
 ## What the Skill does
 
-The important output is a metric contract that another engineer can recalculate from the named sources.
+The metric contract should let another engineer recalculate a measure from the named sources.
 
-Use this Skill to design measures such as escaped-defect rate, test feedback time, flaky-test rate, or requirement rework rate. It makes a metric reviewable and resistant to accidental or intentional gaming; it does not select one number to represent quality.
+Use this Skill to design measures such as escaped-defect rate, test feedback time, flaky-test rate, or requirement rework rate. It makes a metric reviewable and resistant to accidental or intentional gaming while recognizing that no single number represents quality.
 
 A good metric definition states the event, numerator, denominator, time window, source of truth, freshness, segmentation, exclusions, interpretation limits, and supported decisions.
 
@@ -43,12 +43,13 @@ Review each link in the metric: how an event is identified, how the numerator re
 | Lineage and freshness | Where each event comes from and when it is trustworthy | Source, delay, and gap |
 | Interpretation boundary | What the metric can and cannot explain | No unsupported causality |
 | Anti-gaming review | How behavior or labels could improve the number without improving quality | Risk and counter-check |
+| Output contract | Whether a table, CSV, JSON, or ticket format is requested | Preserve finding fields; confirm the schema, enums, required fields, and evidence sources before machine use |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analysis, classify the material into six evidence states. Missing event definitions or sources do not mean the calculation failed, but they limit the conclusion.
+Before analysis, classify the material into six evidence states and check its completeness, source credibility, freshness, and comparability. Missing event definitions or sources limit the conclusion.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -82,55 +83,68 @@ This case follows Input, Analysis, Finding, Decision, and Validation. When mater
 
 ### Input
 
-Put the material on the table before asking for a judgment. Gaps can remain, but their status must stay visible.
+The source Skill includes a sanitized synthetic fixture for checking event deduplication and first-attempt calculations. These records are a worked example, not a production run.
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
-| Decision question | Decide whether checkout regressions are detected before release | Do not begin with a fashionable KPI |
-| Event definitions | What counts as a release, escaped defect, failed run, or resolved issue | List unresolved definitions as gaps |
-| Data sources | Issue tracker, CI events, deployment records, and production incidents | Mark lineage gaps unassessed |
-| Boundary | Users, review cadence, privacy limits, and anti-gaming concerns | Keep targets and release decisions separate |
+| Decision question | Recalculate the new-defect count and first-attempt pass rate | Do not infer a target or release gate |
+| Metric dictionary v1 | New defects use distinct `defect_id`; first-attempt pass rate uses the first attempt for each distinct `test_id` | Keep an undefined unit or rule open |
+| Event sample | D1 is created, closed, reopened, and imported twice; D2 is created. T1 fails, then passes on retry; T2 passes on its first attempt; T3 is planned but not run | Preserve entity, state-event, first-attempt, retry, and unexecuted-test distinctions |
+| Missing boundary | The fixture labels new defects as “this month” but gives no timezone or exact window boundaries | Use it to demonstrate the calculation, not cross-window comparison |
 
 Use a request like this:
 
 ~~~text
 Use the quality-metrics-design Skill.
 
-Task: Define an escaped-defect rate and a pre-merge test-feedback metric for the checkout service.
-Inputs: [event schemas, release IDs, issue fields, CI timestamps, incident sources]
-Scope: [services, teams, window, environments]
-Constraints: [late data, privacy, missing deployment links]
+Task: Recalculate new defects and first-attempt pass rate from the supplied metric dictionary and event sample.
+Inputs: [versioned event definitions, defect IDs, test IDs, first attempts, retries, execution status]
+Scope: [service, release or time window, environment]
+Constraints: [missing timezone, late data, duplicate imports, privacy limits]
+Success criteria: [a second engineer can reproduce the calculation]
+Exclude: [setting an unapproved target or release gate]
 
-Specify numerator, denominator, source, freshness, exclusions, segmentation, interpretation limits, and validation. Separate facts, assumptions, recommendations, and Human decisions.
+Show the numerator, denominator, calculation, exclusions, evidence state, and interpretation limits. Separate facts, assumptions, recommendations, and Human decisions; do not treat a retry as a first attempt or a planned test as executed.
 ~~~
 
 ### Analysis
 
-Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+Check the statistical unit and calculation before interpreting the result. The fixture says “this month” but gives no timezone or exact window boundaries, so it supports a worked calculation only; it cannot support cross-window comparison.
 
 ### Finding
 
-#### Focused example: Define escaped-defect rate without hiding exposure
+#### Worked example: Deduplicate defects and keep retries out of first-pass results
 
-The team proposes “production bugs divided by test cases.” The Skill should reject that denominator as unrelated to user exposure and ask for a release or transaction basis. A better draft may count defects linked to a release over affected production transactions in the same window, with late linkage pending until source fields are checked.
+For new defects, count distinct IDs in the supplied sample: D1 and D2 make **2 new defects**. D1's close and reopen events, plus its duplicate imports, do not create new defect entities.
 
-Metric design proves the definition is explicit and reviewable. It does not prove the data pipeline is complete, the metric predicts quality, or a target is fair for teams.
+For first-attempt pass rate, T1 and T2 are the two tests with recorded first attempts. T2 passed, while T1 failed before a passing retry. The calculation is **1 / 2 = 50%**. T1's retry cannot replace its first result. T3 was planned but never run, so its pass status is **unknown**, not passed.
 
-#### Example finding: turn one problem into a handoff
+| Candidate claim | Review result |
+| --- | --- |
+| K-1 reports four new defects | `WRONG`; the sample contains two distinct defect IDs |
+| K-2 replaces T1's failed first attempt with its passing retry and reports 100% first-pass | `WRONG`; the first-attempt rate is 1/2 |
+| K-3 recalculates both metrics from distinct IDs and first attempts | `CALCULABLE`; the sample results are 2 defects and 1/2 first-attempt pass |
+| K-4 calls unexecuted T3 a pass | `UNKNOWN`; there is no execution evidence |
 
-The field example below follows the checkout case. It identifies a definition that cannot yet be recalculated; it does not infer that the missing lineage already produced incorrect data.
+The calculations demonstrate how the dictionary controls counting. They do not show that a production event pipeline is complete, that the metrics predict quality, or that a target is fair.
+
+For an escaped-defect measure, “production defects divided by test cases” does not express user exposure unless the relationship between those populations is defined. A release or affected-transaction denominator may be considered, but the metric owner must confirm the population and defect-to-release linkage before using it.
+
+#### Example finding: hand off a calculation that another engineer can reproduce
 
 | Field | Example wording |
 | --- | --- |
-| Source and scope | Checkout metric request, event definitions, and proposed release window; use the actual supplied versions |
-| Finding | “Production defects divided by test cases” does not explain how the two populations relate and cannot be recalculated as an exposure measure |
-| Evidence state | Mark `missing` if the event dictionary, release linkage, or sample records are absent; do not assume complete lineage |
-| Impact | The definition cannot support cross-release comparison or a gate yet; priority depends on the decision and affected exposure |
-| Owner and open decision | The metric owner confirms event scope, time window, late-linkage handling, and population |
-| Action and close condition | Add numerator, denominator, include/exclude rules, and boundary examples so another engineer can recalculate it |
-| Validation | Check included and excluded records against redacted samples, retaining the query, sample version, and recalculation; keep unrun work unverified |
+| Finding | `QMD-01`: dictionary v1 counts distinct defects and each test's first attempt; the sample supports 2 defects and a 1/2 first-attempt pass rate |
+| Source and trigger | Sanitized fixture events D1, D2, T1, T2, and T3; trigger is a report that counts state events as defects, retries as first attempts, or planned work as passed |
+| Expected concern | Duplicate imports can inflate defect counts; replacing a failed first attempt with a retry can inflate first-pass results |
+| Evidence state | `known` for the supplied sample calculation; exact production window, timezone, and pipeline completeness are not provided |
+| Impact and priority | Miscounted values could mislead comparisons; priority remains `NOT_SCORED` because the fixture has no business-impact rubric |
+| Owner and open decision | The metric owner confirms the production window, timezone, source lineage, and intended decision |
+| Action and close condition | Record the unit, filters, deduplication, missing-data rule, and inclusion examples; another engineer can reproduce the sample result |
+| Validation | Recalculate against versioned, redacted records and preserve the query and result; keep production use pending until the missing scope and lineage are checked |
+| Stop condition | Do not use the metric as a target or gate while the production window, timezone, or source lineage is unresolved; route the decision to the accountable owner |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+This finding follows the source Skill's QMD fields: source, trigger, expected concern, evidence, impact, owner, close condition, and validation.
 
 ### Decision
 
@@ -138,7 +152,7 @@ The accountable owner confirms the decision question and risk trade-off; the Ski
 
 ### Validation
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+Before closing a production finding, run the stated validation and retain the raw artifact. The worked fixture calculation is not evidence that a production pipeline has been validated.
 
 ## How a Finding enters the next stage
 
@@ -183,12 +197,31 @@ A useful handoff includes input versions, scope, time window, evidence index, as
 2. Mixing event time, ingestion time, and release time so late data silently rewrites history.
 3. Publishing a target before checking whether labels or reporting behavior can game it.
 
+## Best practices
+
+- Start with the decision the metric needs to support. Define its statistical unit, numerator, denominator, window and timezone, filters, deduplication, missing-data rule, version, source, and lineage.
+- Recalculate sample records, including at least one included and one excluded case. Check denominator coverage, delays, and exclusions; missing records stay unknown rather than becoming zero. Treat a malformed record as a measurement issue until product-quality evidence supports a defect conclusion.
+- Compare only matching windows and definitions. Set action thresholds only from an approved source, keep interpretation limits and an anti-gaming counter-check beside the metric, and do not read correlation as cause.
+- Stop gate or target use when lineage or denominator coverage is unresolved, and hand off any production or risk decision to its accountable owner.
+
+## First use: start with one metric
+
+1. Choose one service, one decision, and one metric.
+2. Attach its event dictionary, source, version, sample records, and the applicable window and timezone.
+3. Ask the Skill to audit the definition and recalculate the sample. Review facts, inferences, recommendations, and Human decisions separately before setting a target or gate.
+
+## Keep the quality loop visible
+
+![Quality metrics loop: define the question and metric, review and run accepted AI test cases, recalculate from evidence, then update tests or metric rules](/images/blog/ai-testing-quality-loops/quality-metrics-design-quality-loop-en.svg)
+
+In daily testing, an AI-generated case remains a candidate until it is reviewed, deduplicated, accepted, and run against a named build. Link its requirement, result, defect, and release evidence where available. Use escapes, retries, late data, and missing links to choose the next investigation; the metric informs that work but does not make the release decision.
+
 ## Install and invoke
 
-Install this Skill globally:
+Add this Skill to the current project:
 
 ~~~bash
-npx skills add naodeng/awesome-qa-skills --skill quality-metrics-design
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill quality-metrics-design
 ~~~
 
 Then invoke it by name with the project material:
@@ -209,19 +242,19 @@ No. Establish definition, lineage, freshness, and interpretation first. A target
 
 Preserve both calculations, identify the event or scope difference, and mark the metric pending until an owner approves a canonical source or reconciliation.
 
-The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+### How should AI-generated test cases appear in a quality metric?
+
+Count them as candidates until they meet the metric's review, acceptance, and execution rules. Generated-case volume alone does not show coverage, reliable execution, or product quality.
 
 ## References
 
 ### Source Skill and execution contract
 
-The complete execution contract lives in the Quality Metrics Design prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design may also contain evaluation cases and supporting material.
+The complete execution contract lives in the Quality Metrics Design prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md. The worked calculations come from its sanitized synthetic fixture: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/quality-metrics-design/references/domain-decision-example.md.
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval. Before putting a metric on a dashboard, recalculate it against project samples and check that late-arriving data cannot silently rewrite a published window.
+The source Skill directory is available at: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design.
 
-### Reference links
+### Further reading
 
-- Quality Metrics Design prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design/prompts/quality-metrics-design.md
-- Quality Metrics Design Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-metrics-design
 - Quality Metrics Design details: https://inaodeng.com/en/qaskills/quality-metrics-design/
 - Awesome QA Skills on GitHub: https://github.com/naodeng/awesome-qa-skills

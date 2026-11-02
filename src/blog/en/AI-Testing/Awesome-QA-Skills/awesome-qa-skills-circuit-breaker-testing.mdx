@@ -1,7 +1,7 @@
 ---
 title: "Circuit Breaker Testing Skill: Verify open, half-open, and recovery behavior under dependency failure"
 description: "Circuit Breaker Testing field guide: review thresholds, state transitions, fallback, probe traffic, reset, and evidence."
-date: 2026-11-08T09:00:00.000Z
+date: 2026-11-09T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Circuit Breaker Testing"]
@@ -57,7 +57,7 @@ Do not infer failure thresholds, recovery duration, or production behavior. A co
 Install the individual Skill:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill circuit-breaker-testing
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill circuit-breaker-testing
 ```
 
 Invoke circuit-breaker-testing with the state policy, failure-count rules, probe limits, fallback contract, and request-level evidence. Start with a redacted trace:

@@ -1,7 +1,7 @@
 ---
 title: "Database Design Quality Review: Constraints & Migrations"
 description: "Review database designs against sourced invariants, access patterns, concurrency, lifecycle, tenant boundaries, rollback, recovery, and traceable DB-## findings."
-date: 2026-11-13T09:00:00.000Z
+date: 2026-11-14T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Database Design Quality Review"]
@@ -16,13 +16,11 @@ Database Design Quality Review evaluates whether a schema can preserve business 
 
 ## What the Skill does
 
-The Database Design Quality Review Skill is useful when a team needs a structured review of entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery.
+Use this Skill before implementation to review supplied ERDs, DDL, ORM schemas, and migration or recovery plans. It covers entities, relationships, keys, constraints, indexes, tenancy, lifecycle, access patterns, transactions, concurrency, migration, and recovery, including incomplete or conflicting inputs that need a bounded review and handoffs that must surface unverified items.
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage. The series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model; this guide stays with Database Design Quality Review.
 
-A practical standard for this Skill is simple: A good review starts from invariants and real queries. It asks what prevents two refunds for one payment, what stops a cross-tenant lookup, and what happens when a migration stops halfway.
-
-Use it when the team needs a repeatable review of entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery—especially when several evidence sources disagree or a handoff must explain what remains unverified.
+A good review starts from invariants and real queries. It asks what prevents two refunds for one payment, what stops a cross-tenant lookup, and what happens when a migration stops halfway.
 
 ## What it does not do
 
@@ -35,7 +33,7 @@ The Database Design Quality Review Skill reviews supplied ERDs, DDL, ORM schemas
 
 ## What it checks
 
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+Connect each focus area to an observable input, a judgment, and a closeable next action. Start with a small matrix based on the source Skill's output contract:
 
 | Focus | Question before analysis | Handoff output |
 | --- | --- | --- |
@@ -68,7 +66,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For each `DB-##` finding, do not compress four different kinds of language into “recommended to pass”:
+For each `DB-##` finding, separate facts, evidence-backed inferences, recommendations, and Human decisions:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -128,7 +126,7 @@ Use the source prompt's `DB-##` finding contract. This redacted example is condi
 | Migration/rollback | Check existing duplicates, backfill order, compatibility, and rollback evidence before recommending a constraint change |
 | Owner/close/validation | A data or domain owner confirms the invariant; a database owner supplies the full DDL and migration plan for isolated review; retain the reviewed sources, with no production query or migration claimed |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+This handoff lets the next reviewer trace the concern to its source and see which evidence or decision remains open.
 
 ### Decision
 
@@ -160,6 +158,11 @@ If the first request contains only a one-line goal, keep the output limited. Add
 
 A richer input changes the answer here because entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery must be tied to evidence rather than inferred from a familiar pattern.
 
+## Best practices
+
+- Start with the highest-impact invariant or migration concern, then request the smallest missing artifact needed to assess it.
+- Review constraints and indexes alongside access patterns, transactions, concurrency, lifecycle, migration, rollback, and recovery; do not derive business rules from names.
+
 ## Working with other Skills
 
 - API Design Quality Review: https://inaodeng.com/en/qaskills/api-design-quality-review/ — connects data rules to API contracts.
@@ -174,10 +177,10 @@ A richer input changes the answer here because entities, relationships, keys, co
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the English Skill from its language directory. The series overview carries the shared installation instructions.
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill database-design-quality-review
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill database-design-quality-review
 ```
 
 After installation, invoke it with the `database-design-quality-review` Skill and attach the real project material.
@@ -202,11 +205,7 @@ The complete execution contract lives in the Database Design Quality Review prom
 
 The entry point centers entities, relationships, keys, constraints, indexes, tenancy, lifecycle, migration, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
 
-### Reference links
-
-- Database Design Quality Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review/prompts/database-design-quality-review.md
-
-- Awesome QA Skills: Database Design Quality Review source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/database-design-quality-review
+### Further reading
 
 - Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
 

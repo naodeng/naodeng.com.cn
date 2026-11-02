@@ -1,7 +1,7 @@
 ---
 title: "Technical Design Quality Review Skill: Expose Design Risks Before the First Line of Code"
 description: "Review technical designs before implementation for boundary, dependency, failure, data, security, performance, observability, and verification risks."
-date: 2026-11-14T09:00:00.000Z
+date: 2026-11-15T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Technical Design Quality Review"]
@@ -118,14 +118,14 @@ The design stores export files under a tenant-prefixed path but does not specify
 
 | Field | Example |
 | --- | --- |
-| Source and scope | Export design revision 4, download API, object storage path, and audit flow |
+| Source and scope | The supplied export design, download API, object-storage path, and audit flow; add exact revisions and sections when available |
 | Finding | A tenant-prefixed path is described, but the authorization decision and object-owner check are not defined |
 | Evidence state | missing; no API-to-storage trace or negative-case contract supplied |
-| Impact and priority | Cross-tenant access, inconsistent cache behavior, and incomplete audit evidence are possible; P1 |
-| Owner and decision | API, storage, security, and tenant-platform owners decide where ownership is enforced |
-| Action | Define the authorization decision, cache key, failure response, audit fields, and deletion or expiry behavior |
+| Impact and priority | Cross-tenant access and incomplete audit evidence are possible if tenant isolation is required; priority stays unassessed until the affected scope and project rubric are supplied |
+| Owner and decision | Assign an accountable API or security owner to decide where ownership is enforced; the design does not name that owner |
+| Action | Define where the API verifies the tenant-to-object relationship and how object-storage signing enforces the same rule; specify the failure response and audit evidence |
 | Close condition | The design traces one owner check through API, storage, response, audit, and recovery paths |
-| Validation | In an isolated environment use synthetic tenants and exports; compare owner, same-tenant, cross-tenant, missing, and expired objects |
+| Validation | After the owner confirms tenant isolation is required, use synthetic tenants and exports in an isolated environment; expect cross-tenant requests to be denied and retain the response and audit evidence |
 
 The Skill does not infer isolation from a path name. It turns the missing boundary into a decision and a check.
 
@@ -167,6 +167,11 @@ Provide the current design revision, scope, interfaces, dependency assumptions, 
 
 A useful handoff keeps source revisions, scope, evidence index, assumptions, Human decision boundary, owner, close condition, and the smallest validation action together.
 
+## Best practices
+
+- Prioritize high-impact design gaps and request the smallest evidence or safe check that can resolve them.
+- Keep design facts, evidence-backed inferences, recommendations, and Human decisions separate; do not turn an assumption into a conclusion.
+
 ## Working with other Skills
 
 - Security Requirement Review: https://inaodeng.com/en/qaskills/security-requirement-review/
@@ -184,7 +189,7 @@ A useful handoff keeps source revisions, scope, evidence index, assumptions, Hum
 ## Install and invoke
 
 ~~~bash
-npx skills add naodeng/awesome-qa-skills --skill technical-design-quality-review
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill technical-design-quality-review
 ~~~
 
 ~~~text
@@ -213,9 +218,7 @@ No. Build, compatibility, security, performance, recovery, and runtime behavior 
 
 Static plans, file presence, and dry runs retain their evidence state. They do not become runtime proof, capacity evidence, security approval, or release readiness.
 
-### Reference links
+### Further reading
 
-- Technical Design Quality Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/technical-design-quality-review/prompts/technical-design-quality-review.md
-- Technical Design Quality Review Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/technical-design-quality-review
 - Technical Design Quality Review details: https://inaodeng.com/en/qaskills/technical-design-quality-review/
 - Awesome QA Skills project: https://github.com/naodeng/awesome-qa-skills

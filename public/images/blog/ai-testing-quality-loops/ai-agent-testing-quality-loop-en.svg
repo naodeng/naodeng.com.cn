@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1180" role="img" aria-labelledby="title desc">
+<title id="title">AI Agent testing quality loop</title>
+<desc id="desc">Freeze the task baseline, run samples under the plan, review final outcomes and run/step traces together, classify and revise, then regress on the same samples and add a new one.</desc>
+<defs>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1e293b" stroke-width="0.6"/></pattern>
+  <marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0L9 4L0 8Z" fill="#64748b"/></marker>
+  <marker id="loop-arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0L9 4L0 8Z" fill="#60a5fa"/></marker>
+  <style>
+    text { font-family: Arial, 'Noto Sans', sans-serif; }
+  </style>
+</defs>
+<rect width="960" height="1180" fill="#0f172a"/>
+<rect width="960" height="1180" fill="url(#grid)"/>
+<text x="52" y="58" fill="#f8fafc" font-size="28" font-weight="700">AI Agent testing quality loop</text>
+<text x="52" y="90" fill="#94a3b8" font-size="16">Review task outcome, execution process, and evidence completeness</text>
+<path d="M480 232V266M480 367V401M480 502V536M480 637V671M480 772V806" fill="none" stroke="#64748b" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M170 861H96V185H170" fill="none" stroke="#60a5fa" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#loop-arrow)"/>
+<text x="55" y="530" transform="rotate(-90 55 530)" fill="#60a5fa" font-size="14" font-weight="700" text-anchor="middle">Next round</text>
+<g>
+  <rect x="170" y="142" width="620" height="90" rx="20" fill="#0f172a"/>
+  <rect x="170" y="142" width="620" height="90" rx="20" fill="#1e3a8a" fill-opacity="0.42" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="480" y="180" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Freeze the task baseline</text>
+  <text x="480" y="207" text-anchor="middle" fill="#cbd5e1" font-size="15">Oracle, boundaries, samples, and environment versions</text>
+</g>
+<g>
+  <rect x="170" y="277" width="620" height="90" rx="8" fill="#0f172a"/>
+  <rect x="170" y="277" width="620" height="90" rx="8" fill="#083344" fill-opacity="0.62" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="480" y="315" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Run samples under the plan</text>
+  <text x="480" y="342" text-anchor="middle" fill="#cbd5e1" font-size="15">Record each sample ID and run/step trace</text>
+</g>
+<g>
+  <rect x="170" y="412" width="620" height="90" rx="8" fill="#0f172a"/>
+  <rect x="170" y="412" width="620" height="90" rx="8" fill="#064e3b" fill-opacity="0.62" stroke="#34d399" stroke-width="1.5"/>
+  <text x="480" y="450" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Review outcome and process</text>
+  <text x="480" y="477" text-anchor="middle" fill="#cbd5e1" font-size="15">Check the oracle, permissions, steps, and stop assertions</text>
+</g>
+<g>
+  <rect x="170" y="547" width="620" height="90" rx="8" fill="#0f172a"/>
+  <rect x="170" y="547" width="620" height="90" rx="8" fill="#78350f" fill-opacity="0.48" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="480" y="585" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Classify failures and gaps</text>
+  <text x="480" y="612" text-anchor="middle" fill="#cbd5e1" font-size="15">Separate rule, tool, memory, environment, and trace issues</text>
+</g>
+<g>
+  <rect x="170" y="682" width="620" height="90" rx="8" fill="#0f172a"/>
+  <rect x="170" y="682" width="620" height="90" rx="8" fill="#4c1d95" fill-opacity="0.5" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="480" y="720" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Revise and record the basis</text>
+  <text x="480" y="747" text-anchor="middle" fill="#cbd5e1" font-size="15">Update cases, Prompt, or tool contracts with versioning</text>
+</g>
+<g>
+  <rect x="170" y="817" width="620" height="90" rx="20" fill="#0f172a"/>
+  <rect x="170" y="817" width="620" height="90" rx="20" fill="#1e3a8a" fill-opacity="0.42" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="480" y="855" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Regress and expand</text>
+  <text x="480" y="882" text-anchor="middle" fill="#cbd5e1" font-size="15">Rerun old samples, then add a new boundary case</text>
+</g>
+<rect x="170" y="1018" width="620" height="76" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.2"/>
+<text x="480" y="1050" text-anchor="middle" fill="#e2e8f0" font-size="15" font-weight="600">Confirm the repetition plan; one success does not prove reliability.</text>
+<text x="480" y="1077" text-anchor="middle" fill="#94a3b8" font-size="13">Keep not-run and insufficient-evidence states visible</text>
+</svg>

@@ -1,8 +1,7 @@
 ---
 title: "From Test Cases to Test Automation: Let AI Help Write and Run Tests"
 description: "Use a login example to give AI project context, generate API and UI automation, and verify assertions, data isolation, and execution results."
-date: 2026-11-01T09:01:00.000Z
-draft: true
+date: 2026-11-02T10:02:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Test Automation", "API Testing"]
 categories: ["AI Testing"]
@@ -12,6 +11,19 @@ series: ["AI 软件测试入门与实践：从会用到用好"]
 Once a test case has been reviewed, asking AI to write automation sounds straightforward. But code that runs is not necessarily an effective test. It may call the wrong endpoint, use unstable data, or check a response field that says little about the behavior that matters.
 
 A safer approach is to start from one clear test condition, generate the smallest implementation, then have a person review it and run, inspect, and revise it in an authorized isolated test environment.
+
+## Getting started: automate one reviewed case
+
+Move from a manual case to automation in this order:
+
+1. **Choose one specific scenario.** Start with a case that runs often, has a clear risk, and has a sourced expected result. Do not begin with “automate the whole module.”
+2. **Provide project context.** Tell AI the language, framework, directory, existing fixtures and helpers, UI or API contract, data setup and cleanup, and environments it must not access.
+3. **Request the smallest code change.** Ask AI to explain the proposed files and assertions, then generate a test for this single scenario. Mark missing response codes, copy, selectors, or state hooks as needing confirmation.
+4. **Review the code yourself.** Check locators, business assertions, test-data isolation, cleanup, and scope. Do not run code you cannot explain.
+5. **Run it in an authorized isolated environment.** Save the command, result, logs, and environment details. Distinguish not run, skipped, failed, and passed.
+6. **Use evidence to choose the next step.** Classify failures first. Add stable tests with useful diagnostic power to the regression set.
+
+> **Flow at a glance:** reviewed case → project context → small AI draft → human review → isolated run → evidence review.
 
 ## Explain the project boundaries first
 
@@ -28,6 +40,18 @@ To verify that an incorrect code does not create an account, define the test pho
     assert account_for(test_phone) is None
 
 Checking only an HTTP status does not prove that the business side effect is correct. On the other hand, if test data is reused by other runs, a concurrent test could affect whether an account exists. Use unique data, an isolated environment, or a clear cleanup strategy.
+
+For the exercise rule R-03, “Five consecutive incorrect attempts trigger a 15-minute lockout,” the test needs to connect the threshold, state, and data setup:
+
+| Step | What the automation should do | What the project must define |
+| --- | --- | --- |
+| Setup | Use a resettable synthetic phone number and ensure each run starts without a previous failure count | Test-data creation/reset interface and isolation method |
+| Failures 1–4 | Submit four consecutive invalid codes and check the state against the contract. If testing the fourth attempt alone, submit all four from the initial state. | Response contract and observable state for these attempts |
+| Fifth failure | Continue the same sequence with one more invalid code. If testing it alone, submit five consecutive invalid codes from the initial state; check whether lockout begins as R-03 specifies. | How to query and record lockout state |
+| During lockout | Submit another request, check the contract-defined behavior, and confirm there are no unintended account or session side effects | Lockout response and side-effect rules |
+| Teardown | Save the case ID, synthetic-data identifier, and report, then clean up or reset the state | Cleanup owner and recovery method after failure |
+
+If the project has no controlled counter reset or state-observation method, record that as a testability gap. Do not ask AI to invent a test endpoint or guess how the 15-minute boundary is handled.
 
 ## UI tests: prefer stable user-facing semantics
 
@@ -84,4 +108,50 @@ After a run, ask AI to explain the log and failure evidence, then decide what to
 
 For an exercise, choose an invalid-code case. Check the API or UI contract before asking AI to generate a test. Review data isolation, assertions, and cleanup, then verify at least once that the test fails when the feature behavior is wrong. Automation earns its place through reliable feedback, not fast code generation.
 
-Bring automation into the quality loop as well. Record issues found during generation and execution, failure logs, environment differences, and human edits. After fixing the test, data setup, or project context, rerun the same case. Confirm that it fails when the target behavior is broken and passes after the fix. Carry validated helpers, run conventions, and failure samples into the next generation and regression cycle. Recheck them after changing frameworks, models, or Agent tools. One successful run only describes that run in that environment; it does not guarantee future reliability.
+## Best practices: keep automation feedback reliable
+
+- Start with one case whose source is clear, so the code diff and failure reason can be traced to the requirement.
+- Reuse project fixtures, API clients, page objects, and cleanup mechanisms. Do not have AI create a parallel structure that conflicts with the project.
+- Use synthetic, isolated data and define concurrency and cleanup after failures. Handle credentials through the existing secrets-management approach.
+- For UI tests, prefer user-facing labels, roles, and names, and wait on condition-based assertions. Avoid guessed selectors and fixed sleeps.
+- Classify failures before changing anything. Separate test logic, product behavior, test data, environment faults, and intermittent instability.
+- Keep code review, execution command, report, and assertion sensitivity together. One passing run does not prove adequate coverage.
+
+## Frequently asked questions
+
+### Can I get started if I do not know how to code?
+
+You can start with one reviewed manual case. Ask AI to inspect the existing test structure and explain every changed file, step, and assertion. Read and review the change, then run it in an authorized isolated environment. Do not merge AI-generated code without review.
+
+### Can I let AI run the generated tests automatically?
+
+Execution depends on the tool and project permissions. Before a run, confirm the command, environment, data cleanup, and external-service boundaries. Run only in an authorized isolated environment and save the actual output. Mark a test “not run” when no execution occurred.
+
+### What makes an assertion useful?
+
+It checks a business outcome and important side effects defined by the requirement, and it fails when the target behavior is wrong. Checking only that a request succeeded or an element appeared may not be enough.
+
+### Can I ask AI to fix a failure until the test passes?
+
+First preserve the logs and classify the cause. Then decide whether the test, product, or environment needs a change. If AI is asked only to “make it green,” it may weaken the assertion and hide a product defect.
+
+### Can I use production accounts or real user data?
+
+Do not give production secrets, real personal information, or unredacted logs to AI. Follow the project’s existing secrets-management and authorized test-data practices. Avoid accessing production or external systems without approval.
+
+### How does automation fit into daily quality work?
+
+For each important requirement, choose a reviewed case and ask AI for a minimal implementation. Review the code and assertions, run it in isolation, and keep the evidence. Classify issues, fix them, and rerun the same case. Add validated cases, helpers, and failure patterns to the regression set and the next round of AI context. The dedicated section below shows the full loop.
+
+## Focus: make automation part of the daily quality loop
+
+**The quality loop must include the test case, automation code, and execution feedback.** AI-generated cases become automation; execution then reveals gaps in the case, assertion, data setup, or project context. Carry evidence into the next round instead of changing code only when a run fails.
+
+![Quality loop for AI-assisted automation: start from a reviewed case, generate and review code, run in isolation, inspect evidence, classify and fix failures, rerun, and update regression samples and context](/images/blog/ai-testing-quality-loops/automation-quality-loop-en.svg)
+
+In daily work, start each new story or rule with one high-value, confirmed manual case. AI proposes a reviewable change that follows project conventions; a tester checks the code, data, and assertions before execution. When it fails, find the cause first, then fix the relevant test, product behavior, data setup, or environment and rerun the same case. After a stable pass, check whether the test would fail when the target behavior breaks, then add the case, execution evidence, and validated helpers to the regression set.
+
+Feed this loop back into AI generation too. Add confirmed project conventions, common failures, and correct examples to the context. Keep unknown behavior as an open question instead of turning a temporary fix or unconfirmed assumption into a general rule. After changing requirements, frameworks, models, or Agent tools, use the same samples to confirm that generation and execution remain reliable.
+
+Playwright Python locators: https://playwright.dev/python/docs/locators
+Playwright Python assertions: https://playwright.dev/python/docs/test-assertions

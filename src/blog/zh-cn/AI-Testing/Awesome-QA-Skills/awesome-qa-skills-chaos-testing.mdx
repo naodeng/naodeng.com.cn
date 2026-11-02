@@ -1,7 +1,7 @@
 ---
 title: "混沌测试：设计有边界的故障实验"
 description: "依据来源设计混沌实验：梳理故障假设、爆炸半径、停止与回滚规则、证据需求和 CHS-## 准备度发现。"
-date: 2026-11-11T09:00:00.000Z
+date: 2026-11-12T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "混沌测试"]
@@ -16,13 +16,13 @@ series: ["Awesome QA Skills 实战"]
 
 ## Skill 用来做什么
 
-当团队需要围绕“假设、稳态、故障注入、爆炸半径、护栏、恢复和学习”工作时，使用混沌测试 Skill。
+使用混沌测试 Skill 判断实验是否具备准备条件，将故障假设、稳态、有限注入、护栏、恢复和学习连到同一份设计中。
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill。系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 解释通用安装方式，本文只聚焦混沌测试。
 
 实验设计应写清稳态、最先监测的信号、最大爆炸半径和准确的停止条件。
 
-当多个证据来源互相矛盾，或交接时必须说明哪些内容仍未验证，可以用它做有边界的复核。
+证据来源冲突，或交接时需要说明哪些内容仍未验证时，可以用它做有边界的复核。
 
 ## 它不做什么
 
@@ -197,12 +197,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 入口文件重点约束假设、稳态、故障注入、爆炸半径、护栏、恢复和学习。要保留它的决策边界，不要把静态设计写成执行结论。
 
-### 参考链接
-
-- 混沌测试提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/chaos-testing/prompts/chaos-testing.md
-
-- Awesome QA Skills：混沌测试源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/chaos-testing
+### 延伸阅读
 
 - Awesome QA Skills 项目主页: https://github.com/naodeng/awesome-qa-skills
-
 - 混沌测试详情页: https://inaodeng.com/zh-cn/qaskills/chaos-testing/

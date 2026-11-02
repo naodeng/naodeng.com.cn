@@ -1,14 +1,24 @@
 ---
 title: "AI Agent Testing: Systematically validate planning, memory, tool use, and failure recovery"
 description: "Evaluate an AI agent's planning, memory, tool feedback, and stopping decisions across multi-step tasks and recovery paths."
-date: 2026-11-04T09:00:00.000Z
+date: 2026-11-05T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "AI Agent Testing"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-AI Agent Testing evaluates an agent's task completion and the path it took to get there. The test needs a task-success oracle and a trace: a plausible answer can still hide a skipped step, unauthorized tool call, contaminated memory, or unsafe stop decision.
+> Source note: This article is based on the Awesome QA Skills AI Agent Testing prompt and Skill. The repeated-trial example, quality loop, diagram, and FAQ are editorial expansions to help readers apply the source requirements; reliability claims still depend on the project's repetition plan and actual trace evidence.
+
+AI Agent Testing evaluates whether an agent completed its task and how it got there. Each test needs a task-success oracle (a predefined criterion for deciding whether the goal was met) and a run trace of the steps and tool interactions. A plausible answer can still hide a skipped step, unauthorized tool call, contaminated memory, or unsafe stop decision.
+
+## Getting started: choose one bounded task
+
+1. Choose one multi-step task with clear scope. State its success criteria, allowed tools and resources, prohibited side effects, and stopping conditions.
+2. Audit input completeness, credibility, recency, and comparability: record what is confirmed, missing, conflicting, stale, out of scope, or assumed; include sources, versions, and evidence state, plus the environment, time budget, and boundaries that must not be crossed.
+3. Fix a sample ID and record model, Prompt, tool, data, and environment versions. Redact sensitive data or use an isolated environment.
+4. During a run, retain run/step IDs, tool arguments, authorization decisions, responses, and state changes. Do not infer execution from a missing trace.
+5. Judge the final outcome, process constraints, and evidence completeness separately. One run describes one observation, not reliability.
 
 ## Define the task and its permitted path
 
@@ -16,15 +26,20 @@ For each sample, record the task ID, success oracle, allowed tools and resources
 
 | Dimension | What to observe | Failure that can be hidden by the final answer |
 | --- | --- | --- |
+| Task outcome | Whether the predefined success oracle is met | A complete-looking answer that misses the actual goal |
 | Planning | Step order, dependencies, and response to new information | A skipped prerequisite or unsupported plan change |
+| Multi-step consistency | Whether constraints, state, and user goals persist across steps | A later step loses an earlier constraint or uses stale state |
 | Tool use | Selection, arguments, permissions, and result interpretation | A correct-looking answer after an unsafe or irrelevant call |
 | Memory | What state persists, resets, or leaks between tasks | One user's data or an earlier task influencing the next run |
-| Recovery | Retry, fallback, and human handoff after a failed step | Repeated side effects or continuation after a hard blocker |
+| Recovery | Retry, fallback, and human handoff after a failed step | A retry repeats side effects (an idempotency failure), or the agent continues after a blocker |
 | Termination | Success, goal failure, budget exhaustion, cancellation, safety block, or environment error | Missing terminal evidence being mistaken for completion |
+| Cost and latency | Actual consumption against project-defined budgets or targets | Good-looking output that hides excessive cost or timeout |
+
+Check tool permissions as part of the safety boundary. If the project has not defined cost, latency, or pass thresholds, list them as open questions instead of inventing values.
 
 ## Repeat trials when behavior can vary
 
-Use the same sample IDs and record model, prompt, tool, data, and environment versions. Follow the project's repetition plan; do not invent a sample threshold. Report outcomes per sample and keep intermittent failures visible. A single successful run shows one observed result, not reliability.
+Use the same sample IDs and record model, prompt, tool, data, and environment versions. Follow the project's repetition plan; do not invent a sample threshold. Report per-sample pass/fail counts and keep intermittent failures visible. A single successful run shows one observed result, not reliability.
 
 For example, a multi-step support task may pass on its final answer but fail its process check if the trace shows an unapproved data lookup. Judge outcome correctness and process compliance separately; either failure can prevent an overall pass. Preserve run and step IDs so reviewers can reconstruct the decision.
 
@@ -40,18 +55,41 @@ The table describes one run. Repeat trials under the project's plan and report e
 
 ## Produce cases with an oracle and evidence
 
-Each proposed case needs preconditions, an action or stimulus, expected behavior, and required evidence. Separate static analysis or a designed fixture from a real run. If the project has not supplied a success rule, permission, or stop threshold, list it as an open question instead of creating one.
+Build a risk or failure model from the supplied input, then turn high-priority concerns into cases. Each proposed case needs preconditions, an action or stimulus, expected behavior, and required evidence. Separate static analysis or a designed fixture from a real run. If the project has not supplied a success rule, permission, or stop threshold, list it as an open question instead of creating one.
+
+Use the project's risk scheme, such as P0/P1/P2/P3, or an equivalent scale, and explain the basis for each priority. Link conclusions to a source, evidence state, and validation method; give high-risk items an owner or next action. Prioritize high-impact, likely, or hard-to-detect paths without presenting priority as verified severity.
 
 The output can include a capability matrix, task suite, trace assertions, recovery and safety cases, scoring rubric, observability measures, blockers, and next actions. Keep confirmed facts, assumptions, and unknowns visible. The Skill helps structure the work; it does not certify the agent or a release.
 
 Use Agent Tool Call Testing: https://inaodeng.com/en/qaskills/agent-tool-testing/ for detailed tool contracts and side effects. For an AI feature embedded in a product, see AI Feature Testing: https://inaodeng.com/en/qaskills/ai-feature-testing/; for untrusted instructions and attack paths, see Prompt Injection Testing: https://inaodeng.com/en/qaskills/prompt-injection-testing/.
+
+## Focus: put Agent testing into a quality loop
+
+Keep the same samples and raw traces each round, then use evidence to judge whether a change to the test method or system helped:
+
+![AI Agent testing quality loop: freeze the task and constraints, run samples under the plan, review the final result and run/step trace, classify gaps and revise the case or environment, then regress on the same samples](/images/blog/ai-testing-quality-loops/ai-agent-testing-quality-loop-en.svg)
+
+1. **Freeze the baseline:** retain the task, success oracle, allowed tools, prohibited side effects, stopping conditions, model, and environment versions.
+2. **Run under the plan:** follow the project's repetition plan. If none exists, mark it open instead of inventing a sample count.
+3. **Review result and trace together:** link the final answer to each step's input, call, authorization, response, and state change.
+4. **Classify failures and gaps:** distinguish task rules, Prompt, tool contract, memory, recovery, environment variation, and missing evidence.
+5. **Revise one evidence-backed factor:** record the version and reason, and retain the original failing sample.
+6. **Regress on the same samples and add a new one:** report each result and intermittent failure; keep unrun checks marked as not run.
+
+## Best practices: make outcomes and process reviewable
+
+- Use a sourced success oracle for the task outcome; assess process compliance, permissions, and side effects separately.
+- Start with high-impact, likely, or hard-to-detect risks, then expand to more capabilities and environments.
+- Preserve every run/step trace and version; do not use one successful run as evidence of reliability.
+- For production, safety, or privacy work, use least privilege, redacted data, mocks, or an isolated environment.
+- Put stop, escalation, rollback, and human-handoff conditions in each case; keep missing conditions open.
 
 ## Install and invoke
 
 Install the Skill:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill ai-agent-testing
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-agent-testing
 ```
 
 Provide the task goal, success oracle, allowed tools and resources, prohibited side effects, stopping conditions, and a redacted run/step trace. Start with one bounded sample:
@@ -71,8 +109,11 @@ Judge the outcome against the oracle and the process against its constraints sep
 
 **How many times should a task be repeated?** Follow the repetition plan defined by the project. If the plan or stability threshold is missing, list it as an open question instead of inventing a count or pass threshold.
 
+**Can process compliance be judged without a run/step trace?** No. You can review the test design or available output, but a process judgment should remain insufficient evidence until the minimum trace is supplied.
+
 ## References
 
 - AI Agent Testing prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-agent-testing/prompts/ai-agent-testing.md
+- AI Agent Testing Skill: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-agent-testing/SKILL.md
 - AI Agent Testing source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/ai-agent-testing
 - AI Agent Testing directory on this site: https://inaodeng.com/en/qaskills/ai-agent-testing/

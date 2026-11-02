@@ -1,7 +1,7 @@
 ---
-title: "Skill Change Verification: After a change, do constraints, examples, and references still hold?"
+title: "Skill Change Verification: Check the Contract After an Edit"
 description: "Verify a Skill edit by comparing trigger rules, output contracts, evidence, and representative task behavior before and after."
-date: 2026-11-18T09:00:00.000Z
+date: 2026-11-19T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Skill Change Verification"]
@@ -56,7 +56,7 @@ Use Skill Prose Contract Review: https://inaodeng.com/en/qaskills/skill-prose-re
 Install this Skill with:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill skill-change-verification
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-change-verification
 ```
 
 After installation, provide the actual diff, Skill version, target host, available checks, and authorization boundary. For example:
@@ -68,6 +68,25 @@ Available checks and selected cases: [commands, Eval cases, runtime runs].
 Classify evidence by level, identify unrun checks and residual risk, and state exactly which claims the evidence supports. Do not report behavior as verified unless the relevant run was performed.
 ~~~
 
+## Best practices
+
+- Choose checks from the changed behavior and its consumers, not from file count or a broad test run alone.
+- Compare the old and new versions on the same representative inputs, including normal, missing-input, boundary, and out-of-scope cases when they apply.
+- Retain the exact versions, host, environment, selected cases, outputs, and judge status. Mark omitted evaluation or runtime checks `NOT_RUN` with the risk they leave open.
+- If results will be consumed by tooling, confirm the schema, enums, required fields, and evidence sources before the run.
+
+## First use: verify one changed behavior
+
+1. Read the actual diff and name the behavior or contract it could change.
+2. Pick a small fixed set of requests that exercises the expected behavior and one relevant boundary.
+3. Run the checks that are available, then report the evidence level, unrun work, and limits of the claim. If a command is unknown, mark it for confirmation instead of guessing.
+
+## Keep Skill changes in the quality loop
+
+![Skill change verification loop: observe a gap, revise the contract, compare fixed representative cases, review evidence, and carry findings into the next test cycle](/images/blog/ai-testing-quality-loops/skill-change-verification-quality-loop-en.svg)
+
+When a change affects a test-generation Skill, check whether its generated cases still map to requirements and boundaries. Review them, run the relevant accepted cases, and compare the evidence before and after the edit. Generation or a configuration check alone does not show that test behavior improved.
+
 ## FAQ
 
 ### Does a successful configuration check prove the Skill behaves correctly?
@@ -77,6 +96,10 @@ No. Configuration evidence shows only that the checked setup passed. Evaluation 
 ### Does a small wording change need no behavior review?
 
 Not automatically. Check whether the wording can affect activation, required inputs, output fields, permissions, or failure handling, then choose checks that cover the changed surface.
+
+### What if I cannot run the target host?
+
+Report the static, structural, or configuration evidence you actually collected. Mark Evaluation and Runtime `NOT_RUN`, describe the open risk, and leave host-behavior claims unsupported.
 
 ## References
 

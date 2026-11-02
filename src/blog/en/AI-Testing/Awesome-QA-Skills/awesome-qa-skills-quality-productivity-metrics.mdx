@@ -1,7 +1,7 @@
 ---
-title: "Quality Productivity Metrics Skill: Measure QA Flow Without Rewarding Test Theater"
+title: "Quality Productivity Metrics Skill: Balance QA Delivery and Quality Outcomes"
 description: "Design quality and delivery productivity metrics with valid denominators, attribution limits, gaming checks, and clear boundaries for human use."
-date: 2026-11-16T09:00:00.000Z
+date: 2026-11-17T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Quality Productivity Metrics"]
@@ -26,7 +26,7 @@ Use it when a team wants to know whether faster execution, more automation, or s
 
 ## What it does not do
 
-The Quality Productivity Metrics Skill can organize material, evidence, and next actions for Quality signal. It does not replace:
+The Quality Productivity Metrics Skill can organize material, evidence, and next actions for quality and delivery measures. It does not replace:
 
 - Confirmation of rules, scope, and risk by the accountable domain owner.
 - A real environment, account, dataset, log, or run record; static analysis does not become runtime evidence by itself.
@@ -42,13 +42,14 @@ Review whether quality outcomes, delivery speed, and their measurement rules can
 | Quality signal | Whether the change affected user risk or detection outcome | Evidence and source |
 | Delivery signal | Whether feedback became faster under a comparable cohort | Window and denominator |
 | Attribution limit | Other changes that could explain movement | Candidate confounders |
-| Use boundary | How the result may be used safely | Team learning, not ranking |
+| Use boundary | How the result may be used safely | Team learning; governed uses need separate approval |
+| Output contract | Whether a table, CSV, JSON, or ticket format is requested | Preserve finding fields; confirm the schema, enums, required fields, and evidence sources before machine use |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analyzing Quality signal, classify the input into six evidence states. A gap is not automatically a failure, but it must not disappear inside the conclusion.
+Before analyzing quality and delivery measures, classify the input into six evidence states and check its completeness, source credibility, freshness, and comparability. A missing input limits the conclusion; record the gap clearly.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -67,7 +68,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For Quality signal, do not compress four different kinds of language into “recommended to pass”:
+Write four separate layers for each quality signal:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -82,55 +83,66 @@ This case follows Input, Analysis, Finding, Decision, and Validation. When mater
 
 ### Input
 
-Put the material on the table before asking for a judgment. Gaps can remain, but their status must stay visible.
+The source Skill includes a sanitized synthetic fixture for comparing effort, accepted output, quality, and comparability. It is a worked example, not a real team measurement.
 
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
-| Change evaluated | A CI migration that reduced queue time for two product squads | Do not attribute every change to it |
-| Quality and delivery events | Feedback time, escaped defects, flaky reruns, deploys, and rework | Keep unavailable events unassessed |
-| Denominator and cohort | Runs, releases, changed files, users, or fixed team period | Reject mismatched denominators |
-| Use boundary | Team learning, planning, or compensation context | Do not use a draft metric to punish people |
+| Baseline | 100 accepted tasks in 100 hours, with one escaped defect | Keep the cohort and task unit explicit |
+| P-1 candidate | 200 case rows after splitting, but still 100 accepted tasks in 100 hours, with five escapes | Do not treat row count as accepted output |
+| P-2 candidate | 100 accepted tasks in 80 hours, one escape, comparable rework, and complete acceptance evidence | Keep unprovided quality or effort evidence open |
+| P-3 comparison | A payment team is ranked against a copy team by case count alone | Mark the comparison `NOT_COMPARABLE` without matched tasks and context |
+| Fixture boundary | Baseline and P-1/P-2 are matched by team, window, and complexity; the fixture is synthetic | Do not generalize it to other teams or use it as a ranking |
 
 Use a request like this:
 
 ~~~text
 Use the quality-productivity-metrics Skill.
 
-Task: Evaluate whether CI parallelization improved QA productivity for checkout and catalog squads without increasing escaped risk.
-Inputs: [before/after windows, run events, queue times, reruns, releases, defects, changed scope]
-Scope: [two squads and named pipelines]
-Constraints: [missing incident linkage, different release volume, privacy limits]
+Task: Review whether the supplied candidates support a productivity improvement for the matched QA work.
+Inputs: [accepted tasks, effort hours, escaped defects, case splits, rework, acceptance evidence]
+Scope: [matched team, time window, and task complexity]
+Constraints: [synthetic sample only, incomplete causal context, no individual ranking]
+Success criteria: [claims stay within the matched evidence]
+Exclude: [individual ranking or an unauthorized reward decision]
 
-Separate quality metrics, delivery metrics, denominators, attribution limits, gaming risks, and Human decisions. Do not convert activity counts into an employee score.
+Calculate accepted tasks per effort hour, compare the quality evidence, identify unsupported or non-comparable claims, and state what is still unknown. Do not turn case rows or activity counts into an employee score.
 ~~~
 
 ### Analysis
 
-Use the input, matrix, and evidence state to form the judgment before writing the Finding; keep missing material as a gap.
+Balance effort, accepted output, escaped defects, and rework before writing the Finding. Keep missing evidence visible and compare only the matched cohort described in the fixture.
 
 ### Finding
 
-#### Focused example: Evaluate faster CI without celebrating rerun volume
+#### Worked example: Compare accepted work, effort, and escapes
 
-Suppose the supplied before-and-after summary says that parallelization reduced median feedback time from 28 minutes to 12, doubled reruns, and provides no release linkage for escaped defects. If raw CI records support the figures, the flow change can be reported as evidenced; the quality impact remains unassessed. Investigate rerun causes and add release linkage before judging the overall value of the change. This illustrates the analysis and does not report measurements made by this site.
+For the baseline, accepted-task throughput is **100 / 100 = 1 task per hour**. P-1 also delivers 100 accepted tasks in 100 hours, so splitting cases into 200 rows does not double accepted output or throughput. Its five escapes, compared with one in the baseline, also contradict the claim of better quality.
 
-The result can show what supplied cohorts and events support. It cannot prove individual effort, causal impact from one change, or that shorter feedback is valuable if it increases false confidence.
+P-2 delivers the same 100 accepted tasks in 80 hours: **100 / 80 = 1.25 tasks per hour**, a 25% higher rate for this matched sample. The fixture also reports one escape in each cohort, comparable rework, and complete acceptance evidence, so P-2 supports a productivity improvement for this sample. P-3 cannot support a ranking because payment and copy work are compared by case count alone.
 
-#### Example finding: turn one problem into a handoff
+The calculations do not establish that a tool or process change caused the result. They also do not justify ranking individuals or teams.
 
-Follow the example above. If the input contains summary numbers but no raw run records or defect-to-release linkage, record the missing evidence explicitly. “Not linked” does not by itself mean quality got worse.
+| Candidate claim | Review result |
+| --- | --- |
+| P-1 says productivity doubled because cases were split into 200 rows | `UNSUPPORTED`; accepted output and effort remain 100 tasks in 100 hours, while escapes rise from one to five |
+| P-2 says productivity improved for the matched sample | `SUPPORTED` by 100 accepted tasks in 80 hours, one escape, comparable rework, and complete acceptance evidence |
+| P-3 ranks payment and copy teams by case count | `NOT_COMPARABLE`; the supplied basis does not match the work or establish a useful denominator |
+
+#### Example finding: hand off the unsupported claim
 
 | Field | Example wording |
 | --- | --- |
-| Source and scope | The two teams, named pipeline, and comparison windows; use the actual supplied versions and scope |
-| Finding | Feedback time fell and reruns increased, but the summary cannot show whether quality changed |
-| Evidence state | If CI run records and defect-to-release links are absent, report the flow summary and quality impact separately; keep quality `unassessed` |
-| Impact | Faster feedback may reduce waiting, while extra reruns add triage effort; this does not support individual or team ranking |
-| Owner and open decision | The pipeline owner confirms run definitions; the quality owner confirms defect attribution and intended use |
-| Action and close condition | Provide comparable cohorts, rerun causes, and release linkage; trace conclusions to sources and retain any unresolved quality gap |
-| Validation | Recalculate feedback time and reruns for the same service scope and comparable windows, keeping the source query and release-link check |
+| Finding | `QPM-01`: P-1 does not show doubled productivity; its accepted-task throughput is unchanged and the fixture reports more escapes |
+| Source and trigger | Sanitized source fixture for the matched team, window, and complexity; trigger is a productivity claim based on split case rows |
+| Expected concern | Counting rows instead of accepted work can inflate output while hiding a worse quality signal |
+| Evidence state | `known` for the fixture calculation; it is not a real team measurement |
+| Impact and priority | The claim may mislead planning or evaluation; priority remains `NOT_SCORED` because no business-impact rubric is supplied |
+| Owner and open decision | The quality and delivery-metric owners confirm task acceptance, escape definitions, and intended use |
+| Action and close condition | Deduplicate split cases, calculate accepted tasks per effort hour, and retain defect and rework evidence for the matched cohort |
+| Validation | Recalculate from versioned records and trace accepted tasks and escapes to their source; do not compare or rank unmatched work |
+| Stop condition | Do not use the result for ranking or rewards when task acceptance, complexity, or quality evidence is not comparable; escalate the intended use to the accountable owner |
 
-This record tells the next owner what evidence is missing, who will confirm it, and which check could change the current judgment.
+The QPM finding keeps its source, trigger, expected concern, evidence state, impact, owner, close condition, and validation method together.
 
 ### Decision
 
@@ -138,7 +150,7 @@ The accountable owner confirms the decision question and risk trade-off; the Ski
 
 ### Validation
 
-Before closing the finding, run the stated validation and retain the raw artifact. Without an execution record, the status remains unverified.
+Before closing a real project finding, run the stated validation and retain the raw artifact. The synthetic fixture demonstrates the calculation; it does not validate a team's live data pipeline.
 
 ## How a Finding enters the next stage
 
@@ -149,7 +161,7 @@ Before closing the finding, run the stated validation and retain the raw artifac
 | Quality signal | Whether the change affected user risk or detection outcome | Evidence and source |
 | Delivery signal | Whether feedback became faster under a comparable cohort | Window and denominator |
 | Attribution limit | Other changes that could explain movement | Candidate confounders |
-| Use boundary | How the result may be used safely | Team learning, not ranking |
+| Use boundary | How the result may be used safely | Team learning; governed uses need separate approval |
 
 Every conclusion should point to a source, evidence state, and next action. If evidence is missing, use pending, blocked, unassessed, or NOT_SCORED instead of filling the gap with confidence.
 
@@ -183,12 +195,31 @@ A useful handoff includes input versions, scope, time window, evidence index, as
 2. Comparing teams with different risk, release volume, or denominator definitions.
 3. Calling a tooling change causal while ignoring flaky reruns, staffing changes, or scope reduction.
 
+## Best practices
+
+- Compare matched tasks, complexity, tools, and windows. Balance effort or cost with accepted output, defects or escapes, waiting, and rework.
+- Deduplicate split or merged cases and verify acceptance. A case or commit count does not equal delivered value.
+- Check for dropped hard tests, unreported defects, deferred time, and reruns. Missing quality or rework evidence keeps a productivity claim unassessed.
+- Use movement in the metrics to trigger investigation or the smallest verifiable experiment; record its conditions, versions, sources, and evidence. Metrics do not make automatic causal claims, reward, or ranking decisions.
+
+## First use: review one process change
+
+1. Choose one change and a baseline that covers comparable tasks, complexity, and time windows.
+2. Provide effort, accepted output, quality outcomes, waiting or rework, and the source records behind them.
+3. Ask the Skill to check the denominator, attribution limits, and gaming risks, then name the smallest validation action. Use the result for team learning before considering any governed use.
+
+## Put productivity metrics inside the quality loop
+
+![Productivity evidence loop: compare matched accepted work, effort, and quality outcomes, investigate confounders, update the workflow, and measure again](/images/blog/ai-testing-quality-loops/quality-productivity-metrics-quality-loop-en.svg)
+
+In daily QA, more AI-generated cases count as candidates, not accepted output. Review and deduplicate them against requirements, confirm acceptance, and record which build ran them. Compare the effort saved with escapes, dropped hard tests, retries, deferred work, and rework. Feed the findings into the next test set or process experiment; do not use case volume alone to claim higher productivity.
+
 ## Install and invoke
 
-Install this Skill globally:
+Add this Skill to the current project:
 
 ~~~bash
-npx skills add naodeng/awesome-qa-skills --skill quality-productivity-metrics
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill quality-productivity-metrics
 ~~~
 
 Then invoke it by name with the project material:
@@ -209,19 +240,19 @@ It can organize comparable evidence, but ranking is a separate governance decisi
 
 Keep productivity and quality signals separate, mark the missing part unassessed, and name the smallest linkage or sampling action.
 
-The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+### Does generating more AI test cases mean the team is more productive?
+
+No. Generated cases are candidates until they are reviewed, deduplicated, accepted, and run. Compare the time spent on that work with accepted output, quality outcomes, retries, and rework rather than counting generated rows.
 
 ## References
 
 ### Source Skill and execution contract
 
-The complete execution contract lives in the Quality Productivity Metrics prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics may also contain evaluation cases and supporting material.
+The complete execution contract lives in the Quality Productivity Metrics prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md. The worked calculations come from its sanitized synthetic fixture: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/quality-productivity-metrics/references/domain-decision-example.md.
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+The source Skill directory is available at: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics.
 
-### Reference links
+### Further reading
 
-- Quality Productivity Metrics prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics/prompts/quality-productivity-metrics.md
-- Quality Productivity Metrics Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/quality-productivity-metrics
 - Quality Productivity Metrics details: https://inaodeng.com/en/qaskills/quality-productivity-metrics/
 - Awesome QA Skills on GitHub: https://github.com/naodeng/awesome-qa-skills

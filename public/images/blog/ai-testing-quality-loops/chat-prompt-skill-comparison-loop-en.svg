@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Quality loop for comparing direct chat, Prompts, and Skills</title>
+  <desc id="desc">Freeze the same requirement and samples, run all three approaches, review blind, classify issues, revise one factor, then regress on the original samples and add a new one.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4263eb"/></marker>
+    <style>
+      .bg{fill:#f7f9ff}.title{font:700 32px system-ui,-apple-system,sans-serif;fill:#172554}.subtitle{font:400 17px system-ui,-apple-system,sans-serif;fill:#475569}.card{fill:#fff;stroke:#cbd5ff;stroke-width:2}.num{fill:#294ce6}.numtext{font:700 20px system-ui,sans-serif;fill:#fff;text-anchor:middle}.head{font:700 20px system-ui,-apple-system,sans-serif;fill:#172554}.body{font:400 16px system-ui,-apple-system,sans-serif;fill:#334155}.arrow{fill:none;stroke:#4263eb;stroke-width:3;stroke-linecap:round;marker-end:url(#arrow)}.loop{font:600 15px system-ui,-apple-system,sans-serif;fill:#3b5bdb}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700" rx="24"/>
+  <text class="title" x="64" y="58">A quality loop for comparing three AI approaches</text>
+  <text class="subtitle" x="64" y="88">The goal is to improve the method over time; one output or ranking does not represent lasting quality.</text>
+  <path class="arrow" d="M400 205H430"/><path class="arrow" d="M770 205H800"/>
+  <path class="arrow" d="M960 300V380"/><path class="arrow" d="M800 485H770"/><path class="arrow" d="M430 485H400"/><path class="arrow" d="M240 390V300"/>
+  <text class="loop" x="1030" y="350">Review again</text><text class="loop" x="64" y="355">Next round</text>
+  <g transform="translate(80 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">1</text><text class="head" x="68" y="43">Freeze the baseline</text><text class="body" x="26" y="88"><tspan x="26">Requirement version, known rules, key</tspan><tspan x="26" dy="27">unknowns, samples, rubric, and settings.</tspan></text></g>
+  <g transform="translate(440 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">2</text><text class="head" x="68" y="43">Run all three methods</text><text class="body" x="26" y="88"><tspan x="26">Same task and materials; clean sessions;</tspan><tspan x="26" dy="27">save every raw output.</tspan></text></g>
+  <g transform="translate(800 120)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">3</text><text class="head" x="68" y="43">Review blind</text><text class="body" x="26" y="88"><tspan x="26">Use one rubric for traceability, gaps,</tspan><tspan x="26" dy="27">unsupported claims, and human effort.</tspan></text></g>
+  <g transform="translate(800 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">4</text><text class="head" x="68" y="43">Classify quality issues</text><text class="body" x="26" y="88"><tspan x="26">Separate requirement, input, instruction,</tspan><tspan x="26" dy="27">model, and review causes. Keep uncertain</tspan><tspan x="26" dy="27">causes open.</tspan></text></g>
+  <g transform="translate(440 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">5</text><text class="head" x="68" y="43">Revise one factor</text><text class="body" x="26" y="88"><tspan x="26">Add a boundary check, clarify a field, or</tspan><tspan x="26" dy="27">update a reference; record the version.</tspan></text></g>
+  <g transform="translate(80 390)"><rect class="card" width="320" height="180" rx="18"/><circle class="num" cx="34" cy="36" r="20"/><text class="numtext" x="34" y="43">6</text><text class="head" x="68" y="43">Regress and expand samples</text><text class="body" x="26" y="88"><tspan x="26">Rerun old samples to verify the fix; add</tspan><tspan x="26" dy="27">an untuned sample to check for overfitting.</tspan></text></g>
+  <text class="subtitle" x="64" y="635">Retain each round's inputs, method version, model and tool, raw output, edits, defects, and review outcome.</text>
+</svg>

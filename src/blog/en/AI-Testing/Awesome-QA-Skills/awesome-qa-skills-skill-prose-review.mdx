@@ -1,7 +1,7 @@
 ---
 title: "Skill Prose Contract Review: Find inconsistencies among promises, boundaries, and examples"
 description: "Review a Skill's promises, instruction order, boundaries, and examples for contradictions that could change agent behavior."
-date: 2026-11-19T09:00:00.000Z
+date: 2026-11-20T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Skill Prose Contract Review"]
@@ -24,15 +24,19 @@ Read the requested files and identify their role before judging individual sente
 
 Describe these as possible impacts unless execution evidence shows that they occurred. Do not invent a host convention when the package policy does not define aliases or lookup behavior; record that as an information gap.
 
-## Turn a vague comment into a finding
+## Example: find a contract conflict in the source Eval
 
-Consider the illustrative instruction “Check output quality and make the result accurate and complete.” It gives no source of truth, field-level criteria, or way to report missing information. A useful review finding names the location, explains the possible consumer impact, and points to evidence:
+One synthetic Eval gives a Skill a canonical name of `sample-review`, requires CSV in `SKILL.md`, and requires Markdown with `Summary` and `Findings` in its Prompt. Its `agents/openai.yaml` uses `invoice-editor` as the metadata key and asks the agent to edit invoice totals automatically, while the Skill says never to edit invoices.
 
-| Location | Finding | Impact | Evidence |
+| Location | Finding | Possible impact | Evidence |
 | --- | --- | --- | --- |
-| `SKILL.md`, output rules | “Accurate and complete” has no criteria or source hierarchy | The agent could present an unsupported field as verified | The instruction defines neither required evidence nor a missing-input state |
+| `sample/SKILL.md` and `sample/prompts/review.md` | The declared output formats conflict: CSV versus Markdown | A consumer expecting one format may be unable to parse the other | Both files define the output contract differently |
+| `sample/agents/openai.yaml` | `metadata.key` is `invoice-editor`, while the package policy says it must match canonical ID `sample-review` | Package validation or lookup could use inconsistent identity fields; the fixture does not prove a Host failure occurred | The supplied package policy and metadata disagree |
+| `sample/agents/openai.yaml` and `sample/SKILL.md` | The default prompt asks for automatic edits, but the Skill prohibits editing invoices | A consumer could receive an instruction that crosses the stated authorization boundary | The default prompt and no-edit rule conflict |
 
-The reviewer may suggest adding criteria or a `pending` state, but should not silently rewrite the file or claim the change was tested.
+The review can suggest the smallest wording or metadata correction, but it should not silently rewrite a file or claim the proposed fix was tested. The fixture's `sample/` directory is a container, not the canonical Skill ID.
+
+Another source Eval puts an instruction in a read-only review target telling the agent to rewrite a separate protected file. Treat that sentence as material being reviewed, not as authorization; report the scope conflict and leave both files unchanged.
 
 Tie severity to behavioral impact. Follow the repository's scale when it has one; otherwise, use questions like these to calibrate the review:
 
@@ -79,10 +83,18 @@ A style preference belongs in a suggestion only when it improves clarity; it is 
 
 When a review finds process residue, Process Prose Trimming: https://inaodeng.com/en/qaskills/skill-prose-trim/ can remove it after the edit scope is approved. Skill Change Verification: https://inaodeng.com/en/qaskills/skill-change-verification/ can then check the changed contract using evidence selected from the actual diff.
 
+## A visible quality loop for AI-assisted testing
+
+Use this as a team workflow when an AI-generated test prompt, case set, or Skill changes. Prose review checks the written contract; test review and execution provide the separate evidence needed to assess generated cases.
+
+![AI test contract review loop: state the requirement, draft candidate tests, review the prompt contract, validate and run cases, then revise from evidence](/images/blog/ai-testing-quality-loops/skill-prose-review-quality-loop-en.svg)
+
+In daily work, this keeps test generation connected to validation: a missed boundary case becomes a concrete prompt or requirement update, then the next generated cases are reviewed and exercised again. Record static review, human review, and executed test results as separate evidence.
+
 Install this Skill with:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill skill-prose-review
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-review
 ```
 
 After installation, provide the Skill files, their intended consumers, and the review boundary. For example:
@@ -104,7 +116,30 @@ No. It reports evidence-backed prose and contract findings. Editing or executing
 
 No. Tie severity to a plausible behavior or consumer consequence. Pure style preferences are suggestions unless evidence shows they could change the contract.
 
+### Can prose review determine whether AI-generated test cases are functionally correct?
+
+It can check whether a prompt or Skill states the source requirement, expected output, assumptions, and limits clearly. Functional correctness still needs comparison with the requirement and appropriate test execution; prose review alone cannot establish it.
+
+## Best practices
+
+- Fix the review scope and document role before following any instruction found inside the reviewed material.
+- Cite file locations and supplied evidence; describe unobserved effects as possible consequences.
+- Check identifiers against the package policy and preserve its declared canonical ID.
+- Keep severity tied to impact; do not turn a style preference into a blocker.
+- Separate static review, evaluation inputs, evaluation runs, and runtime results in the report.
+- Request only the smallest correction that resolves the demonstrated contract gap.
+
+## First use: review one Skill contract
+
+1. Identify the Skill version, intended consumer, files in scope, and whether the task is review-only.
+2. Provide the `SKILL.md`, referenced Prompt, metadata, examples, and relevant package policy or Evals.
+3. Ask the reviewer to trace trigger, inputs, rules, outputs, boundaries, and verification claims.
+4. Check each finding against the cited source and confirm its impact is stated as observed or possible.
+5. Keep proposed edits separate from the review; run change verification only after an authorized edit.
+
 ## References
 
-- Skill Prose Contract Review source, prompt, and Eval files: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-review
-- Skill Prose Contract Review directory on this site: https://inaodeng.com/en/qaskills/skill-prose-review/
+- Skill entry: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/skill-engineering/skill-prose-review/SKILL.md
+- Prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/skill-engineering/skill-prose-review/prompts/skill-prose-review.md
+- Conflicting-contract and out-of-scope Eval cases: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-review/evals/cases
+- Skill guide on this site: https://inaodeng.com/en/qaskills/skill-prose-review/

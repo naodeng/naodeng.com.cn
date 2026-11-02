@@ -1,7 +1,7 @@
 ---
-title: "质量仪表盘设计 Skill：把分散信号变成团队可以行动的决策"
+title: "质量仪表盘设计 Skill：让质量信号支持实际决策"
 description: "质量仪表盘设计实战指南：定义受众、决策、指标、维度、证据、新鲜度和行动路径。"
-date: 2026-11-17T09:00:00.000Z
+date: 2026-11-18T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "质量仪表盘设计"]
@@ -42,11 +42,18 @@ series: ["Awesome QA Skills 实战"]
 
 还要确认总览、分组和下钻页面对同一指标使用相同的定义、时间窗口和筛选范围。数值相同也可能来自不同口径，需核对实际规则。
 
-## 示例：分阶段发布结算功能
+## 示例：按项目规则呈现仪表盘状态
 
-分阶段发布结算功能时，仪表盘可以展示结算错误、支付授权结果、订单状态对账、延迟和抽样用户反馈。设计要定义每项信号对应的人群与时间窗口，并把异常值连回来源运行或查询。
+源 Skill 附有一组脱敏合成样例。样例项目规定：未关闭的 P0 会阻断发布，数据超过 24 小时标为过期，未运行的测试标为 `NOT_RUN`。这些规则只适用于样例，不是所有团队都应采用的门禁。
 
-如果支付证据已经过期，面板就应显示过期状态，不能据此给出当前结论。如果高风险支付人群存在阻塞，即使总体通过率看起来良好，摘要也要保留这个问题。团队仍需提供项目阈值，并决定停止还是继续；本例没有提供真实数值，也不代表已经批准发布。
+| 样例 | 提供的证据 | 仪表盘状态 |
+| --- | --- | --- |
+| D-1 | 100 项中通过 99 项，另有 1 项 P0 未关闭 | `BLOCKED`；总体通过率不能掩盖阻塞项 |
+| D-2 | 显示绿色的数据来自 48 小时前 | `STALE`；标出最后刷新时间，不沿用旧的绿灯结论 |
+| D-3 | 面板显示失败数为零和绿色，但测试没有运行 | `NOT_RUN`；没有运行记录就没有测试结果 |
+| D-4 | 当前 100/100 证据、无 P0、可下钻到 run17，且定义和时间窗口完整 | 按样例规则标为 `PASS` |
+
+源样例的预期判定依次为 D-1 `BLOCKED`、D-2 `STALE`、D-3 `NOT_RUN`、D-4 `PASS`。这些状态用于检查仪表盘是否按既定项目规则映射证据，不代表生产批准或通用发布策略。
 
 ## 交付哪些内容
 
@@ -56,6 +63,25 @@ series: ["Awesome QA Skills 实战"]
 
 这个 Skill 可以复核决策视图，不能代替遥测设计或发布门禁，也不会查询生产系统或批准风险例外。输入不完整时，结论只适用于已提供的设计材料，不能说明当前产品质量。
 
+## 最佳实践
+
+- 先确定受众和决策，再选能支持该决策的指标与面板。
+- 让复核者能找到指标定义、统计人群、分子与分母、来源版本、刷新时间和过期规则。
+- 总览中保留 P0 阻塞项和小规模高风险群体。每条告警都要有负责人、动作、升级路径和解除条件。
+- 依赖线上仪表盘前，先用样例证据检查各类显示状态。向工具输出发现时，先约定 schema、枚举值、必填字段和证据链接。
+
+## 新手入门：先做一个决策视图
+
+1. 选一个受众和一项决策，例如日常测试分诊或发布准备度。
+2. 选一个面板，提供指标定义、数据源、统计人群、时间窗口、刷新规则和下钻链接。
+3. 请 Skill 检查面板如何呈现正常数值、分母为零、证据缺失、数据过期和阻塞项。扩展视图前，先确认行动负责人。
+
+## 让仪表盘进入质量循环
+
+![仪表盘决策循环：明确决策，展示新鲜证据及状态，调查问题，更新测试并在重跑后刷新视图](/images/blog/ai-testing-quality-loops/quality-dashboard-design-quality-loop-zh.svg)
+
+日常测试中，AI 生成的用例要先经过人工复核和验收，才能进入测试结果视图。没有执行记录时，仪表盘应显示候选状态或 `NOT_RUN`；执行后再把结果关联到需求和构建。阻塞、过期来源或失败运行会触发调查、修复和重跑，负责人根据新证据决定后续动作。
+
 ## 相关 Skill
 
 - 质量指标设计: https://inaodeng.com/zh-cn/qaskills/quality-metrics-design/；用于澄清定义和指标边界。
@@ -64,7 +90,7 @@ series: ["Awesome QA Skills 实战"]
 
 ## 安装与调用
 
-从 Awesome QA Skills 仓库安装这个独立 Skill：
+在当前项目从 Awesome QA Skills 仓库安装这个 Skill：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill quality-dashboard-design
@@ -92,6 +118,10 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 明确显示状态和最后更新时间。不能用 0 或之前的绿色结果替代不可用或过期的证据。
 
+### AI 生成的测试用例能直接在仪表盘上显示为通过吗？
+
+不能。经过复核、验收和实际运行前，只能显示为候选项或 `NOT_RUN`。执行后要把结果关联到对应需求和构建，方便复核证据。
+
 ## 源文件
 
-使用前请阅读质量仪表盘设计提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-dashboard-design/prompts/quality-dashboard-design.md。源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-dashboard-design；包含入口、参考资料和评估契约。
+使用前请阅读质量仪表盘设计提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-dashboard-design/prompts/quality-dashboard-design.md。状态判定示例来自该 Skill 附带的脱敏合成样例: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/quality-dashboard-design/references/domain-decision-example.md。质量仪表盘设计 Skill 源目录: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/quality-dashboard-design。

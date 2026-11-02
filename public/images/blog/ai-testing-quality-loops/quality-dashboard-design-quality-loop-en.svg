@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1143" viewBox="0 0 820 1143" role="img" aria-labelledby="title desc">
+<title id="title">Dashboard decision loop</title>
+<desc id="desc">Dashboard decision loop: define the decision, show fresh evidence and its status, investigate, update tests, and refresh after reruns</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#8797ae"/></marker><marker id="loop-arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#4265df"/></marker></defs>
+<rect width="820" height="1143" rx="24" fill="#f7f9fc"/>
+<text x="52" y="58" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="27" font-weight="700">Dashboard decision loop</text>
+<text x="52" y="91" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Show current evidence, its status, and the next action</text>
+<path d="M410 253 V280" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M410 398 V425" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M410 543 V570" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M410 688 V715" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M410 833 V860" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M120 924 H72 V199 H109" fill="none" stroke="#4265df" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#loop-arrow)"/>
+<text x="34" y="561" transform="rotate(-90 34 561)" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="15" font-weight="700">Next cycle</text>
+<g>
+<rect x="120" y="145" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="145" width="580" height="108" rx="18" fill="#e8f0ff" fill-opacity="0.88"/>
+<circle cx="154" cy="175" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="180" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">01</text>
+<text x="410" y="192" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Define the audience and decision</text>
+<text x="410" y="222" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Name the risk the view needs to support</text>
+</g>
+<g>
+<rect x="120" y="290" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="290" width="580" height="108" rx="18" fill="#e3f7f3" fill-opacity="0.88"/>
+<circle cx="154" cy="320" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="325" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">02</text>
+<text x="410" y="337" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Set metric and freshness rules</text>
+<text x="410" y="367" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Define states, windows, sources, and expiry</text>
+</g>
+<g>
+<rect x="120" y="435" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="435" width="580" height="108" rx="18" fill="#f3eaff" fill-opacity="0.88"/>
+<circle cx="154" cy="465" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="470" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">03</text>
+<text x="410" y="482" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Review AI test candidates</text>
+<text x="410" y="512" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Accept only cases linked to requirements</text>
+</g>
+<g>
+<rect x="120" y="580" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="580" width="580" height="108" rx="18" fill="#fff3dc" fill-opacity="0.88"/>
+<circle cx="154" cy="610" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="615" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">04</text>
+<text x="410" y="627" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Run and link the evidence</text>
+<text x="410" y="657" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Attach results to a named build and test run</text>
+</g>
+<g>
+<rect x="120" y="725" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="725" width="580" height="108" rx="18" fill="#eaf4fb" fill-opacity="0.88"/>
+<circle cx="154" cy="755" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="760" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">05</text>
+<text x="410" y="772" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Show status and drill-downs</text>
+<text x="410" y="802" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Expose blockers, stale data, and missing runs</text>
+</g>
+<g>
+<rect x="120" y="870" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
+<rect x="120" y="870" width="580" height="108" rx="18" fill="#fce8ef" fill-opacity="0.88"/>
+<circle cx="154" cy="900" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
+<text x="154" y="905" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">06</text>
+<text x="410" y="917" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Investigate and act</text>
+<text x="410" y="947" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Repair, update tests, rerun, and refresh the view</text>
+</g>
+</svg>

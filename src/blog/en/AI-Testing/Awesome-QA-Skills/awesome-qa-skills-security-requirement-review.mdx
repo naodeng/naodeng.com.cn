@@ -1,7 +1,7 @@
 ---
 title: "Security Requirement Review Skill: Turn Protection Goals into Testable Requirements"
 description: "Turn security goals into testable requirements with acceptance conditions, trace links, and evidence gaps; avoid unverified pass claims."
-date: 2026-11-12T09:00:00.000Z
+date: 2026-11-13T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Security Requirement Review"]
@@ -117,13 +117,16 @@ The requirement prohibits exporting card data but does not say whether masked va
 | Field | Example |
 | --- | --- |
 | Asset and boundary | Payment-card data viewed by support agents through the portal, API, export job, and audit path |
-| Security objective | Agents may view the minimum masked value but must not export raw card data |
+| Security objective | The requirement permits support agents to view customer invoices and prohibits exporting payment-card data; it does not define which card fields may be displayed |
+| Trigger and precondition | An authenticated support agent opens an invoice and attempts an export through an applicable channel; the channel scope is not yet confirmed |
 | Evidence state | missing; channel and data-class rules are incomplete |
 | Trace gap | The requirement is not linked to API response fields, export behavior, logging, and acceptance cases |
-| Impact and priority | Different channels may implement different protection; P1 |
+| Expected result | After the owner confirms fields and channels, prohibited card-data exports should be denied; invoice views should follow the approved field policy |
+| Impact and priority | Protection may differ by channel; the project priority rubric was not supplied, so this example does not assign a priority |
 | Owner and decision | Security, privacy, support-product, and API owners confirm permitted view, copy, export, and log behavior |
 | Close condition | Each channel has one observable allow or deny condition and a source-backed trace link |
 | Validation | Use synthetic card data in an isolated environment; preserve responses, export files, logs, and policy version |
+| Stop condition | Stop if a check reaches real card data, leaves the isolated environment, or enters an unapproved channel; retain the record and escalate to the owner |
 
 The finding does not claim the portal is unsafe. It says the current material cannot yet support a consistent security validation.
 
@@ -164,9 +167,15 @@ An SRR-## can enter the trace chain across requirements, design, testing, and au
 
 ## How to prepare better input
 
-Provide the exact requirement, asset and threat context, role and data matrix, applicable channels, version, design links, acceptance conditions, and safe validation environment. Use redacted or synthetic data.
+Provide the exact security objective, asset classification, role and data matrix, trust boundaries, applicable channels, version, environment, dependencies, known controls, design links, acceptance conditions, and available evidence. Use redacted or synthetic data, and identify the authorized validation environment and stop/escalation conditions.
 
-A useful handoff keeps source versions, scope, evidence index, assumptions, Human decision boundary, owner, close condition, and validation action together.
+The output should include task and scope, the six-state input audit, requirements with triggers and expected results, evidence gaps, prioritized SRR-## findings, candidate validation, residual risks, and Human decisions. A broad statement such as “the system must be secure” leaves assets, roles, controls, and success criteria undefined. Provide those inputs so the review can produce conditions that someone can check.
+
+## Best practices
+
+- Start with high-impact assets, permission-sensitive actions, and data-protection goals.
+- Use redacted or synthetic data; keep candidate checks least-privileged, isolated, and reversible.
+- Trace every acceptance condition to a requirement, design control, and owner; leave unsourced thresholds open for a decision.
 
 ## Working with other Skills
 
@@ -185,7 +194,7 @@ A useful handoff keeps source versions, scope, evidence index, assumptions, Huma
 ## Install and invoke
 
 ~~~bash
-npx skills add naodeng/awesome-qa-skills --skill security-requirement-review
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill security-requirement-review
 ~~~
 
 ~~~text
@@ -214,9 +223,7 @@ Mark the acceptance condition unassessed, record the decision question, and do n
 
 Static plans, file presence, and dry runs retain their evidence state. They do not become runtime proof, exploit resistance, or release approval.
 
-### Reference links
+### Further reading
 
-- Security Requirement Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review/prompts/security-requirement-review.md
-- Security Requirement Review Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/security-requirement-review
 - Security Requirement Review details: https://inaodeng.com/en/qaskills/security-requirement-review/
 - Awesome QA Skills project: https://github.com/naodeng/awesome-qa-skills

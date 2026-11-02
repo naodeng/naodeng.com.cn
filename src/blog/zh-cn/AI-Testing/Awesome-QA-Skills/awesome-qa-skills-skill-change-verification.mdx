@@ -1,7 +1,7 @@
 ---
-title: "Skill 变更验证：改完以后，原来的约束和示例还有效吗"
+title: "Skill 变更验证：改动后复核触发、输出与约束"
 description: "对照修改前后的触发条件、输出契约、证据要求和代表性任务行为，验证 Skill 变更是否破坏约束。"
-date: 2026-11-18T09:00:00.000Z
+date: 2026-11-19T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "Agent Skills", "Skill 变更验证"]
@@ -56,7 +56,7 @@ Skill 改一处，影响可能不止措辞：触发范围、输入要求、输�
 安装命令：
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-change-verification
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-change-verification
 ```
 
 安装后，提供实际 diff、Skill 版本、目标宿主、可用检查及授权边界。例如：
@@ -68,6 +68,25 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 按证据等级分类，指出未运行的检查和残余风险，并准确说明证据支持哪些结论。相关运行没有实际执行时，不要声称行为已验证。
 ~~~
 
+## 最佳实践
+
+- 根据实际改动影响的行为选择检查，不按文件数量或一次全量检查来决定。
+- 用相同的代表性输入对照新旧版本；按需包含正常、缺少材料、边界和范围外请求。
+- 保存版本、宿主、环境、用例、原始输出和 judge 状态。未运行的评测或运行时检查标为 `NOT_RUN`，并说明留下的风险。
+- 若结果要交给工具读取，运行前确认 schema、枚举值、必填字段和证据来源。
+
+## 新手入门：验证一项行为改动
+
+1. 阅读实际 diff，写清它可能改变的行为或输出契约。
+2. 选一组小而固定的请求，覆盖预期行为和至少一个相关边界。
+3. 运行当前可用的检查，报告证据等级、未运行项和结论边界。命令不确定时先标记待确认，不要猜。
+
+## 把 Skill 改动放进质量循环
+
+![Skill 变更验证循环：发现缺口、修改契约、用固定代表性案例对比、复核证据，并把发现带入下一轮测试](/images/blog/ai-testing-quality-loops/skill-change-verification-quality-loop-zh.svg)
+
+如果改动影响生成测试用例的 Skill，要检查生成结果是否仍然对应需求和边界。复核用例，运行相关且已验收的样本，再比较改动前后的证据。生成行为或配置检查本身不能说明测试质量已经提高。
+
 ## 常见问题
 
 ### 配置检查通过，能证明 Skill 行为正确吗？
@@ -77,6 +96,10 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 ### 只改了一点文案，可以不检查行为吗？
 
 不能直接这样假定。先判断文案是否可能影响触发、必需输入、输出字段、权限或失败处理，再选择覆盖对应改动面的检查。
+
+### 无法运行目标宿主怎么办？
+
+报告实际完成的静态、结构或配置检查，把 Evaluation 和 Runtime 标为 `NOT_RUN`，并说明留下的风险。不要声称目标宿主上的行为已经验证。
 
 ## 参考
 

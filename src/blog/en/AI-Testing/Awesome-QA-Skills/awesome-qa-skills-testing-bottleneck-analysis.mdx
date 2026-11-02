@@ -1,14 +1,14 @@
 ---
-title: "Testing Bottleneck Analysis Skill: Turn Queues, Handoffs, and Capacity into Actions"
+title: "Testing Bottleneck Analysis Skill: Separate Wait, Execution, and Rework"
 description: "Find testing constraints across queues, dependencies, capacity, handoffs, and observable evidence without inventing causes."
-date: 2026-11-18T09:00:00.000Z
+date: 2026-11-19T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Testing Bottleneck Analysis"]
 categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-A testing bottleneck is not always a slow test. It may be a shared environment, a review queue, missing data, a specialist handoff, or a capacity rule that no dashboard captures.
+Test duration is one possible bottleneck. Shared environments, review queues, missing data, specialist handoffs, and capacity rules can also constrain flow.
 
 ## Why this Skill is needed
 
@@ -43,12 +43,13 @@ The goal is not simply to find the longest queue. Identify where work waits and 
 | Impact scope | Which releases, validation scope, or risks are affected | Affected work and priority rationale |
 | Validation plan | Smallest change that distinguishes candidate causes | Comparison window, measures, and stop condition |
 | Decision boundary | Which capacity or process choices need owner approval | Decision maker, authority, and residual risk |
+| Output contract | Whether the result will feed a table, CSV, JSON, or ticket | Confirm schema, enums, required fields, and evidence sources |
 
 If a row has only a conventional expectation and no source or validation method, keep it open instead of turning it into a pass.
 
 ## Audit inputs before you start
 
-Before analysis, assign one of six evidence states to each input. Missing or conflicting timestamps limit causal claims, but do not automatically prove a process failure.
+Before analysis, assign one of six evidence states to each input and check completeness, credibility, recency, and comparability. Missing or conflicting timestamps limit causal claims; they do not establish a process failure.
 
 | State | Meaning | How this Skill should handle it |
 | --- | --- | --- |
@@ -78,68 +79,78 @@ Keep facts, evidence-backed inferences, recommendations, and Human decisions sep
 
 ## A complete case
 
-The checkout release example below uses a wait for staging and security review to show how a timeline becomes a testable hypothesis. Keep missing, conflicting, or assumed material visible.
+The source fixture below shows how to separate dependency wait, execution, and rework, then test a concurrency claim against comparable observations. Keep missing, conflicting, or assumed material visible.
 
 ### Input
 
+The source Skill includes a sanitized synthetic fixture. It is a worked example, not a real team's flow data.
+
 | Material | What to provide | What to do when it is missing |
 | --- | --- | --- |
-| Flow evidence | Arrival, wait, service, handoff, queue, and completion timestamps | Keep missing timestamps explicit |
-| Dependencies | Environment, data, approval, service, and specialist constraints | Separate observed dependency from assumption |
-| Capacity | Workers, environments, review slots, windows, and utilization | Do not infer saturation from complaints |
-| Decision boundary | Owner, experiment, stop condition, and change authority | Human decides the trade-off |
+| T1 timeline | Arrives at minute 0; waits for environment from 0–40; executes from 40–50; reworks from 50–60; completes at minute 60; runner is idle during the environment wait | Keep each phase and event boundary explicit |
+| Matched daily tasks | Same-day tasks of the same complexity: at concurrency 2, 10 completed tasks/hour and WIP 4; at concurrency 4, 6 completed tasks/hour, WIP 8, and more DB lock waits | Compare only the supplied matched window and task mix |
+| Claims to review | B1 identifies the largest phase; B2 says more concurrency always helps; B3 treats 40 minutes of waiting as proof of understaffing; B4 proposes DB contention for controlled confirmation | Separate supported decision, unsupported claim, and hypothesis |
+| Decision boundary | Observation window, owner, intervention, and rollback signal | Human confirms the trade-off and authorization |
 
 Use a request like this:
 
 ~~~text
 Use the testing-bottleneck-analysis Skill.
 
-Task: Diagnose why checkout release validation waits two days for a shared staging environment and a security review.
-Inputs: [queue timestamps, environment bookings, review handoffs, capacity, blocked reasons, release calendar]
-Scope: [last four releases]
-Constraints: [do not invent root cause or promise throughput improvement]
+Task: Separate dependency wait, execution, and rework in the supplied fixture, then assess the concurrency claims.
+Inputs: [T1 event timeline, completion throughput, WIP, DB lock-wait observations]
+Scope: [same-day tasks of the same complexity and stated concurrency levels]
+Success criteria: [claims stay within the fixture and an experiment has measurable stop signals]
+Exclude: [a staffing conclusion based only on wait time]
 
-Separate wait queue, dependency, capacity, handoff, and evidence findings. Give priority, owner, close condition, and a measurable next action.
+Calculate each phase, distinguish WIP from throughput, and classify B1–B4. Give evidence state, priority or `NOT_SCORED`, owner role, close condition, and the smallest validation action.
 ~~~
 
 ### Analysis
 
-Separate arrival, queue, service, handoff, and completion time. Compare releases only when event definitions, time windows, and scope are comparable; without them, the cause remains unverified.
+T1's cycle is **60 minutes**: **40 minutes** waiting for the environment, **10 minutes** executing, and **10 minutes** in rework. The runner is idle during the dependency wait. The fixture therefore supports `DEPENDENCY_WAIT` as the largest phase; the 60-minute cycle is not 60 minutes of labor.
+
+For the matched daily tasks, concurrency 2 completes 10 tasks per hour with WIP 4. Concurrency 4 completes 6 per hour with WIP 8 and more DB lock waits. This sample does not prove DB contention caused the throughput drop, but it does refute “more concurrency always helps.” A 40-minute wait also does not prove understaffing when the runner is idle waiting for an environment.
 
 ### Finding
 
-#### Focused example: Separate staging scarcity from security-review handoff
+#### Source-fixture decisions
 
-Suppose the example timestamps show a release waiting for staging while security review begins only after a manual handoff. Environment capacity and handoff sequence are separate candidate causes and need separate checks; a long queue alone does not prove that staging capacity is insufficient.
+| Claim | Fixture decision |
+| --- | --- |
+| B1 identifies the environment wait as the largest phase | `DEPENDENCY_WAIT`; the phase breakdown is 40 minutes waiting, 10 executing, and 10 in rework |
+| B2 says more concurrency always helps | `UNSUPPORTED`; the supplied higher-concurrency sample has lower throughput and higher WIP |
+| B3 treats the 40-minute wait as proof of understaffing | `UNSUPPORTED`; the runner is idle while waiting for the environment |
+| B4 proposes DB contention as an explanation | `HYPOTHESIS`; the lock-wait observation needs a controlled comparison |
 
 ## Turn the hypotheses into comparable experiments
 
-Choose the smallest change that distinguishes the hypotheses. Keep the current security review and release gates; change handoff order only if the responsible owners confirm that parallel work is allowed. Change one condition at a time and record other changes that could affect the wait.
+Choose the smallest controlled change that distinguishes the hypotheses. Keep existing test and release controls in place, change one condition at a time, and agree stop or rollback signals with the owner before the experiment. Record other changes that could affect the result.
 
 | Hypothesis | Smallest validation | Observation and boundary |
 | --- | --- | --- |
-| Staging capacity is insufficient | Within authorized scope, add an isolated environment slot and compare booking waits for similar release windows | Check both environment wait and total cycle time; differences in workload, test scope, or release timing limit attribution |
-| Security review is delayed by handoff order | If policy permits, let reviewers assess the same evidence pack while the environment is prepared | Compare review start/end and total wait; do not skip a required review or count preparation as approval |
-| Test execution time is the actual delay | Separate queue time from service time, then analyze slow steps independently | Route to runtime optimization only when service time is a substantial part of the delay; queue length is not test duration |
-| Capacity or event data is missing | Capture arrival, ready, actual start, completion, and blocked-reason times | Keep the cause unassessed until the timeline can be reviewed; do not fill unknowns by adding staff |
+| Environment dependency drives the wait | Compare similar tasks with a recorded environment-ready event and booking status | Measure environment wait and total cycle; keep task mix, complexity, and window comparable |
+| Higher concurrency reduces flow | In an approved, controlled comparison, record completed tasks, WIP, and DB lock waits at each level | Define the rollback signal with the owner before changing concurrency; the fixture does not establish a universal threshold |
+| Staffing is insufficient | Compare arrivals, completions, utilization, and idle reasons by stage | A wait alone is insufficient; an idle runner may be blocked on an environment or material |
+| Event data is incomplete | Capture arrival, environment-ready, execution start/end, rework, completion, and blocked reason | Keep the cause unassessed until the timeline is reviewable; do not infer missing durations |
 
-Before comparing, define each timestamp and timezone and fix the release scope and observation window. Retain the raw events, calculation rules, experiment conditions, stop conditions, and unexplained differences. A diagnosis can propose a change; it cannot prove root cause, throughput gain, or release readiness before validation.
+WIP counts unfinished items; throughput counts completed items within the same window. Measure cycle time and each stage separately, define timestamp meanings and timezone, and retain raw events, calculation rules, experiment conditions, stop signals, and unexplained differences. A diagnosis can propose a change; it cannot prove root cause, throughput gain, or release readiness before validation. Average wait alone does not establish a cause.
 
-#### Example finding: turn one problem into a handoff
-
-Follow the handoff example above. Suppose the summary shows that review starts after manual handoff, but supplies no full booking or service timestamps. Record the gap like this:
+#### Example finding: make the environment wait measurable
 
 | Field | Example record |
 | --- | --- |
-| Source and scope | Booking, review handoff, and CI timeline for the last four checkout releases; use the supplied versions |
-| Finding | The timeline shows review after manual environment handoff but lacks stage-level wait and service time, so the primary constraint is unknown |
-| Evidence state | If only summary durations are supplied and arrival/start events are missing, mark cause `missing` / `unassessed`; do not infer saturation |
-| Impact and priority | The gap may extend release validation; rank it by affected release scope and the risk being investigated |
-| Owner and open decision | The pipeline owner supplies the timeline; the security owner confirms whether review preparation may happen in parallel |
-| Action and close condition | Validate timestamp definitions, then run one authorized experiment; close only when the changed wait stage and remaining confounders are visible |
-| Validation | Compare booking, review start/end, environment-ready, and validation-complete records for similar windows; retain raw events and calculations |
+| Finding | `TBA-01`: T1 spends 40 minutes waiting for its environment, the largest phase in the fixture; this does not establish understaffing |
+| Source and trigger | Sanitized fixture timeline; trigger is repeated environment wait or a capacity claim based only on elapsed time |
+| Expected concern | Total cycle time may be mistaken for labor, or a dependency may be mislabeled as a staffing shortage |
+| Evidence state | `known` for the fixture's phase breakdown; it is not a live project measurement, and DB contention remains a hypothesis |
+| Impact and priority | The wait delays completion; priority is `NOT_SCORED` without project impact and risk criteria |
+| Owner and open decision | The environment owner confirms readiness and booking events; the flow owner confirms the comparable task window and any authorized experiment |
+| Action and close condition | Preserve work-item IDs and stage timestamps; close when the limiting phase and the effect of an approved change can be recalculated |
+| Validation | Compare matched tasks using arrival, environment-ready, execution, rework, and completion events; retain raw data and calculation rules |
+| Stop condition | If event definitions or task comparability are missing, keep the cause unassessed. Do not change concurrency until rollback signals and authority are confirmed. |
 
-This record names the remaining question, its owner, and a check that can change the diagnosis.
+The finding separates the observed dependency wait from hypotheses about staffing or database contention.
 
 ### Decision
 
@@ -170,7 +181,7 @@ Route each gap to the owner who can provide evidence or authorize a process chan
 | --- | --- | --- |
 | Arrival, start, or completion times are missing | CI, environment, or review-system owner | Define the events and how they link to a release |
 | Queue and service time are mixed together | Flow owner and analyst | Calculate wait and processing time by stage and show uncovered intervals |
-| Handoff sequence may add delay | Security review and release owners | Confirm whether parallel preparation is allowed while retaining required approvals |
+| Handoff timing is unclear | The owners of the affected stages | Add handoff start and end events; keep any approval requirement in place |
 | More environment capacity or staff is proposed | Authorized engineering manager | Decide on capacity, scope, and review date from the evidence |
 
 Later conclusions remain bounded by the evidence state; the diagnosis does not authorize a process or capacity change.
@@ -193,10 +204,29 @@ Keep input versions, scope, observation window, event definitions, evidence loca
 2. Using utilization or complaints as proof of capacity saturation.
 3. Changing process before defining a small experiment and success evidence.
 
+## Best practices
+
+- Fix the observation window, work IDs, task complexity, arrival and completion events before comparing flow.
+- Separate queue or dependency wait, execution, rework, handoffs, and blockers. Total cycle time is not labor time.
+- Measure WIP as unfinished work and throughput as completed work in the same window. Use stage times, arrivals, completions, and utilization together; averages alone do not establish a cause.
+- Test one intervention at a time with matched before-and-after measures. Agree stop or rollback signals and retain the conditions, versions, sources, and results.
+
+## First use: trace one delayed work item
+
+1. Choose one stage and a fixed observation window.
+2. Collect work IDs, task complexity, arrival, ready, start, handoff, rework, and completion events, plus WIP and completed items.
+3. Ask the Skill to split wait from execution, classify missing evidence, and propose the smallest controlled check. Keep staffing and root-cause claims open until evidence supports them.
+
+## Put bottleneck analysis inside the quality loop
+
+![Testing flow quality loop: accept requirement-linked tests, measure waits and completed work, locate the constraint, run a controlled experiment, and remeasure](/images/blog/ai-testing-quality-loops/testing-bottleneck-analysis-quality-loop-en.svg)
+
+When AI generates test cases, the generated count alone does not show useful throughput. Review and deduplicate the cases, connect accepted work to requirements, then measure completion, waiting, rework, and quality outcomes. A change that increases WIP or contention can make delivery slower, so carry the result into the next test-planning cycle.
+
 ## Install and invoke
 
 ~~~bash
-npx skills add naodeng/awesome-qa-skills --skill testing-bottleneck-analysis
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill testing-bottleneck-analysis
 ~~~
 
 ~~~text
@@ -215,19 +245,23 @@ No. It identifies evidence and trade-offs; capacity changes are a Human planning
 
 Return a bounded diagnosis, mark causal findings unassessed, and request the smallest missing event timestamps.
 
-The Skill is most useful when attached to one real project artifact and kept with its source evidence. Start narrow, validate the uncertain part, and expand only when evidence supports it.
+### Does increasing concurrency always increase throughput?
+
+No. In the source fixture, the higher-concurrency sample has lower throughput, higher WIP, and more database lock waits. That observation challenges a universal claim; it does not prove which factor caused the change.
+
+### Should generated test cases count as completed work?
+
+Not by their generated count alone. Review and deduplicate them, confirm acceptance, and measure completed work alongside waiting, rework, and quality evidence.
 
 ## References
 
 ### Source Skill and execution contract
 
-The complete execution contract lives in the Testing Bottleneck Analysis prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md. The source directory: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis may also contain evaluation cases and supporting material.
+The complete execution contract lives in the Testing Bottleneck Analysis prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md. The phase and concurrency calculations come from its sanitized synthetic fixture: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/testing-bottleneck-analysis/references/domain-decision-example.md.
 
-Static plans, file presence, and dry runs keep their evidence state. They do not become runtime proof, an all-passed claim, or release approval.
+The source Skill directory is available at: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis.
 
-### Reference links
+### Further reading
 
-- Testing Bottleneck Analysis prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis/prompts/testing-bottleneck-analysis.md
-- Testing Bottleneck Analysis Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/testing-bottleneck-analysis
 - Testing Bottleneck Analysis details: https://inaodeng.com/en/qaskills/testing-bottleneck-analysis/
 - Awesome QA Skills on GitHub: https://github.com/naodeng/awesome-qa-skills

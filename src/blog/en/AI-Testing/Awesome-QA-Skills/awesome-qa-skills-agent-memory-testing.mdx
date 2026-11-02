@@ -1,24 +1,34 @@
 ---
 title: "Agent Memory Testing Skill: Keep remembered facts scoped, current, and safe to reuse"
 description: "Agent Memory Testing field guide: review memory scope, retrieval, staleness, deletion, consent, and evidence across conversations."
-date: 2026-11-03T09:00:00.000Z
+date: 2026-11-04T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Agent Memory Testing"]
 categories: ["AI Testing","QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
-Agent Memory Testing reviews what an assistant stores, retrieves, updates, and forgets across users and sessions. A useful result follows each memory item back to its source and policy; the final answer alone cannot show which version was retrieved.
+> Source note: This article is based on the Awesome QA Skills Agent Memory Testing prompt and Skill. The standalone quality loop, scenarios, and FAQ are editorial expansions for practical use; expected behavior still depends on project policy and evidence from authorized validation.
+
+Agent Memory Testing reviews what an assistant stores, retrieves, updates, and forgets across users and sessions. A review should trace each memory item to its source and governing policy; the final answer alone cannot tell you which version was retrieved.
+
+## Getting started: begin with one isolated record
+
+1. State the objective, subject, scope, success criteria, and any action that is not authorized.
+2. Audit the available material: record what is known, missing, conflicting, stale, out of scope, or assumed. Give each item a source, recency, and evidence state.
+3. Choose one synthetic memory item and an authorized isolated test tenant. Confirm the project's actual rules for tenant scope, preference precedence, expiry, and deletion propagation; leave missing rules open.
+4. Make the scenario concrete: preconditions, trigger, expected result based on project policy, required evidence, and a stop condition.
+5. Start by reviewing supplied policies and traces. If runtime validation is needed, confirm authorization and isolation first, and keep execution evidence separate from the plan.
 
 ## Keep a traceable memory record
 
 For each supplied item, preserve the tenant and user scope, memory ID, content version, source, write time, expiry, and consent, withdrawal, or deletion status. Link the retrieved item and its provenance to the response so a reviewer can inspect the same evidence.
 
-## Compare retrieval across scope and time
+## Check isolation, contamination, and time boundaries
 
-Use the project’s actual consistency window and preference precedence rules. Compare the visible memory set for the same query across two tenants, and keep an authorized retrieval as a control. Check whether an update exposes stale content, whether an expired item still appears, and whether retrieval after withdrawal or deletion follows the supplied policy.
+Use distinct synthetic memories to check what the same query can retrieve across tenants, users, or sessions; expected isolation behavior must come from project policy. Use the project's actual consistency window and preference precedence rules to check stale content after an update, expired items, and retrieval after withdrawal or deletion. A permitted retrieval can serve as a control.
 
-Do not assume last-write-wins or invent a retention period. If precedence, expiry, deletion propagation, or the expected consistency window is missing, leave that judgment open.
+When preferences or memory sources conflict, do not assume last-write-wins or invent a retention period. If precedence, expiry, deletion propagation, or the expected consistency window is missing, leave that judgment open.
 
 ## Follow one item through update and deletion review
 
@@ -30,11 +40,30 @@ The following is an illustrative isolated-environment scenario; expected behavio
 | Update | Change the test preference from A to B, then query within the policy's consistency window | Update event, returned memory ID and version, retrieval result, and provenance |
 | Delete | Submit an authorized deletion request and inspect the stores named by policy | Deletion request ID, checks for each storage scope, completion state, and time |
 
-If the old value is still retrieved after an update, compare it with the policy's propagation window and version rules. An empty result from one query does not prove that every store has been cleared. If backup or propagation policy is missing, limit the conclusion to the scopes that were checked. Missing retrieval traces, deletion scope, or authorization evidence means “insufficient evidence” or “needs confirmation”; this plan is not proof of execution.
+If the old value is still retrieved after an update, compare it with the policy's propagation window and version rules. An empty result from one query does not prove every store has been cleared. Review deletion across the indexes, caches, and backups the system actually uses; if backup or propagation policy is missing, limit the conclusion to the scopes checked. Missing retrieval traces, deletion scope, or authorization evidence means “insufficient evidence” or “needs confirmation”; this plan is not proof of execution.
 
-## Trace deletion through the real storage scope
+## Focus: put memory validation into a quality loop
 
-Compare the deletion request with evidence for the index, cache, and backup scope that the project actually uses. A missing propagation or backup-retention policy limits the conclusion; absence from one search result does not prove erasure from every store.
+This section turns the prompt's baseline, lifecycle, evidence, and regression requirements into a repeatable loop for changes.
+
+Use the same policy and synthetic samples each round to check whether a change helped, while recording what remains unverified:
+
+1. **Freeze the baseline:** retain policy, architecture scope, test tenants, sample versions, precedence rules, and consistency windows.
+2. **Check the lifecycle:** in an authorized environment, write one record and follow the planned read, update, withdrawal, or deletion path. Use separate synthetic data for cross-tenant and expiry checks.
+3. **Keep the full trace:** record memory IDs, versions, sources, retrieval results, times, and the stores actually inspected—not only the final answer.
+4. **Compare against policy:** distinguish behavior mismatch, missing policy, stale fixture or environment, and insufficient evidence. Keep undefined expectations open.
+5. **Revise with a record:** update scenarios, fixtures, or method based on evidence and note the version and reason. Risk acceptance and exceptions remain Human decisions.
+6. **Regress on the same samples:** rerun existing checks, then add a new boundary sample. Record each status as passed, failed, not run, or unassessed.
+
+A plan, static review, or one empty query does not prove every store was cleared or replace runtime evidence.
+
+## Best practices: make conclusions traceable and reviewable
+
+- Cite project policy or architecture for every expected result. Leave rules without a source open for confirmation.
+- Use masked or synthetic data, least privilege, and isolated tenants. Do not access real accounts unless authorization and stop conditions are in place.
+- Check deletion only across the stores actually used, and limit conclusions to the index, cache, and backup scopes reviewed.
+- Preserve each item's source, version, expiry, withdrawal state, and retrieval trace; compare evidence before and after a change.
+- Separate facts, evidence-backed inferences, candidate recommendations, and Human decisions. Do not present a plan as an execution result.
 
 ## Distinguish memory lifecycle from access permission
 
@@ -42,11 +71,20 @@ Memory testing follows stored state over time: provenance, freshness, tenant iso
 
 ## Record an AMT-## finding
 
-Capture the object or rule, source, trigger or applicability, expected concern, evidence state, impact and priority, owner role, close condition, and validation method. Keep confirmed facts, inferences, candidate checks, and Human decisions distinct.
+Capture the object or rule, source, trigger or applicability, expected concern, evidence state, impact and priority, owner role, close condition, and validation method. Each scenario also needs preconditions, action, expected result or decision criterion, required evidence, and a stop condition. Use the project's priority scheme; if P0/P1/P2/P3 is used temporarily, explain impact, likelihood, detectability, or decision cost instead of treating the labels as universal. Present facts, evidence-backed inferences, candidate recommendations, and Human decisions in separate sections.
 
-## Keep validation isolated
+**Example (assuming project policy requires memory isolation between tenants).**
 
-Review supplied policies, memory records, retrieval traces, and deletion evidence as static material. If further validation is needed, propose the smallest authorized check using masked data, mocks, or an isolated environment. Do not claim execution or complete deletion without the relevant evidence.
+- **Object and source:** tenant isolation; cite the relevant project policy clause.
+- **Trigger and scope:** write a unique synthetic memory in authorized test tenant A, then run the same query as tenant B.
+- **Expected concern and evidence:** use the policy to judge whether B can retrieve A's memory; retain both tenant scopes, memory ID, and retrieval trace.
+- **Evidence state:** if not run, mark “designed/not executed”; do not report a runtime result.
+- **Impact, priority, and owner:** assess potential cross-tenant exposure under the project scale and assign a responsible review role.
+- **Close condition and validation:** verify retrieval against policy in an authorized isolated environment; stop and mark open if policy or authorization is missing.
+
+## Candidate validation and residual risk
+
+When static material is insufficient, propose the smallest authorized validation action and state stop or escalation conditions, residual risk, and open questions. Use masked data, mocks, or an isolated environment; keep a check marked “not run” until execution evidence exists.
 
 ## Related Skills
 
@@ -58,7 +96,7 @@ Review supplied policies, memory records, retrieval traces, and deletion evidenc
 Install the Skill:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill agent-memory-testing
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing
 ```
 
 Invoke agent-memory-testing with the memory policy, tenant scope, item versions, provenance, expiry or deletion rules, and available retrieval evidence. Start with one redacted record:
@@ -69,10 +107,13 @@ Review this redacted memory record with agent-memory-testing. Use only the polic
 
 ## FAQ
 
-**Does one empty retrieval prove that a memory was deleted?** No. It shows only that this query returned no result through the current retrieval path. Check the indexes, caches, and other stores named by the actual architecture and policy, and retain evidence for each scope.
+**Does a query that returns no record prove that a memory was deleted?** No. It shows only that this query returned no result through the current retrieval path. Check the indexes, caches, and other stores named by the actual architecture and policy, and retain evidence for each scope.
 
-**Will invoking the Skill inspect a live account automatically?** This review uses supplied materials. Any runtime validation needs prior authorization and an isolated environment with redacted data or mocks.
+**Should a conflict default to the most recently written preference?** Do not assume so. Use the project's precedence rules; if they are missing or conflicting, mark the item open instead of inferring a rule.
 
-## Source
+**Will invoking the Skill inspect a live account automatically?** No. This review uses supplied materials. Runtime validation needs prior authorization and an isolated environment with redacted data or mocks.
 
-Read the Agent Memory Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/agent-memory-testing/prompts/agent-memory-testing.md. It defines the AMT-## finding contract and the evidence boundary for update, retention, isolation, and deletion.
+## Sources
+
+- Agent Memory Testing prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-memory-testing/prompts/agent-memory-testing.md. It defines the AMT-## finding contract and the evidence boundary for update, retention, isolation, and deletion.
+- Agent Memory Testing Skill: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-memory-testing/SKILL.md. It describes when to use the Skill, its execution essentials, and its delivery checklist.

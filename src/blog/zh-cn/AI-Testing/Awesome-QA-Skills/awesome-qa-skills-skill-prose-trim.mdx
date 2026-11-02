@@ -1,7 +1,7 @@
 ---
-title: "Skill 文案清理：把过程噪声删到只剩可执行约束"
+title: "Skill 文案清理：清除过程残留，保留契约与事实"
 description: "精简 Skill 文案时保留触发条件、例外、失败处理和验证要求，避免因删减扩大执行风险。"
-date: 2026-11-19T09:00:00.000Z
+date: 2026-11-20T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "Agent Skills", "过程性文案清理"]
@@ -23,13 +23,15 @@ Skill 文档变短，不一定更安全或更清楚。过程性文案清理要�
 | 测量结果或正式引用 | 保留数值、范围、日期和来源 | 基准测试结果或引用的标准 |
 | 生成文件、封存档案或 fixture | 只报告；没有明确授权时不修改 | 用来复现问题的记录型 Eval fixture |
 
-分类可以避免两类错误：把临时审查对话留在用户会读到的 Skill 里，以及误删仍然有效的历史或防护规则。
+先做分类，才能判断哪些临时审查对话可以从用户会读到的 Skill 中删除，哪些历史或防护规则仍然有效。
 
 实际清理可以按这个顺序进行：先列出获准修改的文件和语言配对；再按段落分类；对可能描述当前命令、路径或产品行为的内容找现行来源；最后只改已确认属于过程残留的句子。无法核实的事实要作为不确定项报告，不能为了让文档更顺而改成确定能力。
 
-## 示例：删掉过程说明，保留有效规则
+## 示例：删掉过程句，保留证据
 
-假设文档写着：“本 PR 跟进设计记录 4。导入器会拒绝缺少 account ID 的数据行。”如果第一句脱离审查历史后无法理解，就从当前指南中移除。第二句先对照现行实现或契约核实，再决定是否保留；如果已经无法验证，就报告这个不确定项，不要把它改写成承诺。
+源 Eval 使用了一份合成契约，其中包含禁止向生产环境写入的规则、一句“本 PR 已解决审查意见”、一项仅有一个本地 fixture 且运行效果标记为 `UNASSESSED` 的测量边界、一条带日期的 issue 记录，以及一个正式 URL。在获准修改 `contract.md` 时，只有 PR 过程说明属于可清理内容；禁止规则、测量值和状态、日期、issue ID、URL 都要原样保留。Eval 还包含记录型 fixture `fixtures/recorded.json`，其数据里也出现了“本 PR”；因为 fixture 必须保持原样，不能顺手清理。
+
+看起来过时的句子仍可能承载证据或防护规则。能否修改取决于目标文件、授权范围和每句话的用途。
 
 清理报告应让处理过程可以复核：
 
@@ -50,6 +52,14 @@ Skill 文档变短，不一定更安全或更清楚。过程性文案清理要�
 
 提交前可做一遍逐项对照：触发条件和必需输入是否还在；限制、例外和失败路径是否保留；命令、版本、ID、数字和引用有没有变化；中英文是否仍指向相同的行为。若删除一句话会改变下游消费方式，就应把它当作契约修改，交给文案契约审查和变更验证，而不是当作简单删字。
 
+## AI 辅助文档的质量循环
+
+团队用 AI 起草或修改 Skill、Prompt、测试指南时，可以按下面的循环处理。源 Skill 没有定义这套循环；这是团队把其中的文案清理步骤放进日常 QA 后形成的做法。
+
+![AI 辅助文案清理循环：明确范围、分类段落、核实来源、只清理获准的残留、对照防护规则，并处理契约变化](/images/blog/ai-testing-quality-loops/skill-prose-trim-quality-loop-zh.svg)
+
+日常 QA 中，如果某个 AI 生成的测试 Prompt 或测试指南因漏测案例而要修改，可以用这套循环：保留需求、预期结果和安全边界；只删除确认过的过程残留；再按需求核对生成的测试，并在获准的环境里运行代表性案例。确认缺口后，把它反馈到下一轮需求或 Prompt 修改中。单独做文案清理不能证明生成的测试正确。
+
 ## 把相邻任务交给不同 Skill
 
 Skill 文案契约审查: https://inaodeng.com/zh-cn/qaskills/skill-prose-review/；先找歧义和契约缺口；过程性文案清理只删除授权范围内的残留；Skill 变更验证: https://inaodeng.com/zh-cn/qaskills/skill-change-verification/；再按实际 diff 检查影响，并明确标出未运行的行为验证。
@@ -57,7 +67,7 @@ Skill 文案契约审查: https://inaodeng.com/zh-cn/qaskills/skill-prose-review
 安装命令：
 
 ```bash
-npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill skill-prose-trim
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-prose-trim
 ```
 
 安装后，先列出授权文件、双语配对和候选段落需要清理的原因。例如：
@@ -79,7 +89,29 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 不可以。源 Skill 将它们视为受保护证据；应报告这些文件，并且只编辑明确授权的范围。
 
+### AI 不再引用某句话，就可以删掉吗？
+
+不能只凭这一点决定。先确认它属于当前事实、行为契约、测量、历史记录还是受保护的 fixture 内容。仍然约束行为或支撑证据的内容要保留。
+
+## 最佳实践
+
+- 修改前先确认具体文件、双语配对和修改权限。
+- 对照实现或契约核实当前行为；无法核实的说法要标为不确定。
+- 原样保留负向保证、测量边界、标识符、日期和正式引用。
+- 除非授权明确覆盖，否则不要改记录型 fixture 或生成文件。
+- 从头通读修改后的页面和语言配对，并在报告中列出保留内容及未运行的检查。
+
+## 新手入门：先清理一小段
+
+1. 选一份获准修改的文档及其双语版本，并记录正在审查的版本或 commit。
+2. 请 Skill 给候选段落分类；涉及当前状态的说法要附上来源。
+3. 只有在获得修改授权后才删除确认过的过程说明；否则只要求它给出修改前后建议。
+4. 对照原文逐项确认受保护的规则、测量值、ID、日期、链接和 fixture 引用。
+5. 从头阅读两个语言版本，并用上面的报告格式记录范围和证据。
+
 ## 参考
 
-- 过程性文案清理源文件、Prompt 与 Eval: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-prose-trim
-- 本站过程性文案清理目录: https://inaodeng.com/zh-cn/qaskills/skill-prose-trim/
+- Skill 入口: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/skill-engineering/skill-prose-trim/SKILL.md
+- Prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/skill-engineering/skill-prose-trim/prompts/skill-prose-trim.md
+- 获准修改和只读审查 Eval 案例: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-prose-trim/evals/cases
+- 本站 Skill 指南: https://inaodeng.com/zh-cn/qaskills/skill-prose-trim/

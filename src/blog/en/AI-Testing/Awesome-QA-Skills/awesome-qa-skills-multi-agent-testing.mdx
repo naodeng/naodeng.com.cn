@@ -1,7 +1,7 @@
 ---
 title: "Multi-Agent Testing Skill: Check handoffs, authority, and disagreement across agent roles"
 description: "Multi-Agent Testing field guide: review role boundaries, handoffs, shared state, conflicts, tool access, and evidence."
-date: 2026-11-07T09:00:00.000Z
+date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Multi-Agent Testing"]
@@ -60,7 +60,9 @@ Keep static design, candidate validation, and actual execution separate. A task 
 
 Install the individual Skill:
 
-npx skills add naodeng/awesome-qa-skills --skill multi-agent-testing
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill multi-agent-testing
+```
 
 Invoke multi-agent-testing with the coordination protocol, task and message records, shared-state versions, ownership rules, and termination behavior. Start with a redacted trace:
 

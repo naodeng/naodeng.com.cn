@@ -1,7 +1,7 @@
 ---
 title: "Chaos Testing: Plan Bounded Failure Experiments"
 description: "Design chaos experiments with sourced hypotheses, blast-radius limits, measurable stop and rollback rules, evidence needs, and CHS-## findings."
-date: 2026-11-11T09:00:00.000Z
+date: 2026-11-12T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Chaos Testing"]
@@ -16,13 +16,13 @@ The Chaos Testing Skill connects the hypothesis, steady-state signals, blast-rad
 
 ## What the Skill does
 
-The Chaos Testing Skill is useful when a team needs a structured review of hypothesis, steady state, failure injection, blast radius, guardrail, recovery, and learning.
+Use the Chaos Testing Skill to check whether an experiment is ready by linking its hypothesis and steady state to a bounded injection, guardrails, recovery, and learning.
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage. The series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model; this guide stays with Chaos Testing.
 
 Keep the experiment card specific: identify the steady state, first signal to watch, maximum blast radius, and precise stop condition.
 
-Use it for a repeatable review of hypothesis, steady state, failure injection, blast radius, guardrails, recovery, and learning. It is especially useful when sources disagree or a handoff must show what remains unverified.
+Use it when sources disagree or a handoff must show what remains unverified.
 
 ## What it does not do
 
@@ -176,7 +176,7 @@ A richer input changes the answer here because hypothesis, steady state, failure
 Install the individual Skill. The series overview carries the longer installation explanation.
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill chaos-testing
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill chaos-testing
 ```
 
 After installation, invoke it with the `chaos-testing` Skill and attach the real project material.
@@ -201,12 +201,7 @@ The complete execution contract lives in the Chaos Testing prompt: https://githu
 
 The entry point centers hypothesis, steady state, failure injection, blast radius, guardrail, recovery, and learning. Keep its decision boundary visible and do not turn a static design into an execution claim.
 
-### Reference links
-
-- Chaos Testing prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/chaos-testing/prompts/chaos-testing.md
-
-- Awesome QA Skills: Chaos Testing source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/chaos-testing
+### Further reading
 
 - Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
-
 - Chaos Testing details: https://inaodeng.com/en/qaskills/chaos-testing/

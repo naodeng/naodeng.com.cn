@@ -1,7 +1,7 @@
 ---
-title: "Process Prose Trimming: Remove redundant process and keep only executable constraints"
+title: "Process Prose Trimming Skill: Remove Residue, Preserve Contracts and Facts"
 description: "Trim Skill documentation while preserving trigger conditions, exceptions, failure handling, and verification requirements."
-date: 2026-11-19T09:00:00.000Z
+date: 2026-11-20T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "Process Prose Trimming"]
@@ -23,13 +23,15 @@ First confirm the file scope, language pair, and permission to edit. Then decide
 | Measurement or formal reference | Retain the value, scope, date, and source | A benchmark result or cited standard |
 | Generated file, sealed archive, or fixture | Report it; do not edit without explicit authorization | A recorded Eval fixture used to reproduce a case |
 
-This classification prevents two opposite mistakes: leaving temporary review notes in a reader-facing Skill, and deleting history or a safeguard that users still need.
+Without this distinction, a reader-facing Skill can keep temporary review notes or lose history and safeguards that still matter.
 
 Work in this order: list the authorized files and language pairs; classify each passage; find a current source for claims about commands, paths, or product behavior; then edit only material confirmed to be process residue. Report unverifiable facts as uncertain instead of rewriting them as capabilities to make the prose smoother.
 
-## Example: remove the process note, keep the rule
+## Example: trim the sentence, preserve the evidence
 
-Imagine a document says: “This PR follows up on design note 4. The importer rejects rows without an account ID.” If the first sentence has no meaning outside its review history, remove it from the active guide. Keep the second sentence only after checking it against the current implementation or contract. If that fact is no longer verifiable, report the uncertainty rather than converting it into a promise.
+The source Eval uses a synthetic contract containing a production-write prohibition, a sentence saying “This PR fixed the reviewer concern,” a measured limit of one local fixture with runtime effectiveness marked `UNASSESSED`, a dated issue reference, and a formal URL. In an authorized edit of `contract.md`, only the PR narration is process residue. Keep the prohibition, measurement and status, date, issue ID, and URL unchanged. The Eval also contains `fixtures/recorded.json`, whose recorded payload includes “This PR”; leave it untouched because fixture fidelity is part of the evidence.
+
+Old-sounding text can still carry evidence or a safeguard. The target file, permission, and role of each sentence determine what may change.
 
 A trim report should make the change auditable:
 
@@ -50,6 +52,14 @@ The source Skill does not set a target word count. It asks the maintainer to rem
 
 Before delivery, compare the trigger and required inputs, limits and exceptions, failure paths, commands, versions, IDs, numbers, and references. Check that both languages still describe the same behavior. If deleting a sentence changes what a downstream user can rely on, treat it as a contract change and send it through prose review and change verification instead of treating it as a word-count edit.
 
+## A visible quality loop for AI-assisted documentation
+
+Use this as a team workflow when AI drafts or revises a Skill, Prompt, or testing guide. The source Skill does not define this loop; the team applies its trimming steps during routine QA.
+
+![AI-assisted prose trimming loop: set scope, classify passages, verify sources, remove only authorized residue, compare safeguards, and route contract changes](/images/blog/ai-testing-quality-loops/skill-prose-trim-quality-loop-en.svg)
+
+In daily QA work, apply it when an AI-generated test prompt or test guide is revised after a missed case. Preserve the requirement, expected result, and safety limits; remove only confirmed process residue; then check the generated tests against the requirement and run an authorized representative case. Feed a verified gap back into the next requirement or prompt revision. A prose trim alone does not establish that generated tests are correct.
+
 ## Use the adjacent Skills for separate jobs
 
 Skill Prose Contract Review: https://inaodeng.com/en/qaskills/skill-prose-review/ identifies ambiguity and contract gaps before an edit. Process Prose Trimming removes only the authorized residue. Skill Change Verification: https://inaodeng.com/en/qaskills/skill-change-verification/ checks the effect of the actual diff and keeps unrun behavior checks visible.
@@ -57,7 +67,7 @@ Skill Prose Contract Review: https://inaodeng.com/en/qaskills/skill-prose-review
 Install this Skill with:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill skill-prose-trim
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim
 ```
 
 After installation, list the authorized files, language pairs, and the reason each passage may be removed. For example:
@@ -79,7 +89,29 @@ No. The source Skill sets no target length. Remove only material that no longer 
 
 No. The source Skill treats them as protected evidence; report them and edit only the files explicitly in scope.
 
+### If a sentence is no longer referenced by the AI, can it be deleted?
+
+Not on that basis alone. First determine whether it is a current fact, contract, measurement, historical record, or protected fixture content. Keep it when it still governs behavior or supports evidence.
+
+## Best practices
+
+- Agree on the exact files, language pairs, and edit permission before changing anything.
+- Check current behavior against the implementation or contract; label unresolved claims as uncertain.
+- Preserve negative guarantees, measured limits, identifiers, dates, and formal references exactly.
+- Keep recorded fixtures and generated files outside the edit unless explicit authorization covers them.
+- Review the complete edited page and its language pair, then report both preserved content and checks that were not run.
+
+## First use: a safe, small trim
+
+1. Select one authorized document and its paired translation; record the version or commit being reviewed.
+2. Ask the Skill to classify candidate passages and show the source for any current-state claim.
+3. If editing is allowed, remove only confirmed process narration; otherwise request a proposed before/after edit.
+4. Compare every protected rule, measurement, ID, date, link, and fixture reference with the original.
+5. Read both language versions end to end and use the report format above to record scope and evidence.
+
 ## References
 
-- Process Prose Trimming source, prompt, and Eval files: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim
-- Process Prose Trimming directory on this site: https://inaodeng.com/en/qaskills/skill-prose-trim/
+- Skill entry: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/skill-engineering/skill-prose-trim/SKILL.md
+- Prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/skill-engineering/skill-prose-trim/prompts/skill-prose-trim.md
+- Authorized-edit and review-only Eval cases: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-prose-trim/evals/cases
+- Skill guide on this site: https://inaodeng.com/en/qaskills/skill-prose-trim/

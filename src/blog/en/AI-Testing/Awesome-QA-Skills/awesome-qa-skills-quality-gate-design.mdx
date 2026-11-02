@@ -1,7 +1,7 @@
 ---
 title: "Quality Gate Design Skill: Make release decisions explicit without pretending every signal is complete"
 description: "Quality Gate Design field guide: define decision scope, evidence states, thresholds, exceptions, owners, and failure actions."
-date: 2026-11-15T09:00:00.000Z
+date: 2026-11-16T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Quality Gate Design"]
@@ -50,9 +50,18 @@ Consider a staged checkout release with unit, contract, browser, and production-
 
 If browser execution is BLOCKED by unavailable infrastructure, the gate should not silently convert that state to PASS. The owner can keep the rollout stopped or authorize a scoped, expiring exception with a compensating control. Record which choice was made, by whom, and what evidence will close the exception.
 
+## Keep the quality loop visible
+
+In day-to-day testing, connect each obligation to its outcome: requirement or risk → reviewed test design → execution on a named build and environment → evidence-backed gate state → owner action → fix and linked rerun. AI-generated test cases enter as drafts. Review them against the requirement and expected result before execution; generation alone does not satisfy a gate. Preserve the original failure when a rerun happens, and count a result as PASS only when its evidence is fresh, valid, and tied to the stated obligation.
+
 ## What to hand off
 
 Use QGD-## for a missing or ambiguous gate rule. Include the object or obligation, source, trigger, expected concern, evidence state, impact and priority, owner role, close condition, and validation method. Also name the stop, escalation, and rollback conditions. State residual risk and keep Human approval separate from technical evidence.
+
+## Best practices
+
+- Start with obligations that could cause business loss, a quality regression, or a blocked decision.
+- Keep every rerun linked to the original result; require an owner, scope, expiry, and compensating control for each exception.
 
 ## Boundaries
 
@@ -69,7 +78,7 @@ A gate controls a decision only within its stated scope. It cannot choose busine
 Install the individual Skill from the Awesome QA Skills repository:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill quality-gate-design
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill quality-gate-design
 ```
 
 Invoke quality-gate-design with the target decision, gate policy, obligations, evidence sources, owners, exceptions, and rollback rules.

@@ -1,7 +1,7 @@
 ---
 title: "Error Handling Design Review: Failure Modes and Recovery"
 description: "Review failure modes, retry safety, propagation, data consistency, observability, and recovery before implementation."
-date: 2026-11-13T09:00:00.000Z
+date: 2026-11-14T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Error Handling Design Review"]
@@ -16,13 +16,11 @@ Error Handling Design Review checks whether each designed failure path has an ev
 
 ## What the Skill does
 
-Use this Skill to review failure taxonomy, caller action, retryability, fallback, observability, privacy, data consistency, and recovery across distinct failure modes. It prepares findings and validation actions; it does not run fault injection or prove the behavior works at runtime.
+Use this Skill before implementation to review failure taxonomy, caller action, retryability, fallback, observability, privacy, data consistency, and recovery across distinct failure modes. It prepares findings and validation actions; it does not run fault injection or prove runtime behavior. It is especially useful when inputs are incomplete or conflicting but a bounded review is still needed, or a handoff must identify what remains unverified.
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills organizes Skills by language and testing stage. The series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/ explains the shared installation model; this guide stays with Error Handling Design Review.
 
-A useful review follows one failure across three contracts: the caller gets a safe and stable result, the operator gets enough privacy-safe evidence to diagnose it, and the system preserves data consistency or names the required recovery decision.
-
-Use it when the team needs to compare failure paths such as validation rejection, authorization denial, timeout, dependency outage, rate limiting, duplicate requests, transaction conflict, partial success, or corrupted data—especially when sources disagree or a handoff must show what remains unverified.
+A useful review follows one failure across three contracts: the caller gets a safe and stable result, the operator gets enough privacy-safe evidence to diagnose it, and the system preserves data consistency or names the required recovery decision. Apply it to paths such as validation rejection, authorization denial, timeout, dependency outage, rate limiting, duplicate requests, transaction conflict, partial success, or corrupted data.
 
 ## What it does not do
 
@@ -35,7 +33,7 @@ The Error Handling Design Review Skill can organize failure-mode evidence and ne
 
 ## What it checks
 
-The value of this Skill is not another keyword list. It connects each focus area to an observable input, a judgment, and a way to close the loop. Start with a small matrix based on the source Skill's output contract:
+Connect each failure path to an observable input, a judgment, and a closeable next action. Start with a small matrix based on the source Skill's output contract:
 
 | Failure path | Review questions | Finding evidence |
 | --- | --- | --- |
@@ -68,7 +66,7 @@ Connect the source, scope, evidence state, analysis, owner, action, close condit
 
 ### Keep the decision layers separate
 
-For each failure mode, do not compress four different kinds of language into “recommended to pass”:
+For each failure mode, separate facts, evidence-backed inferences, recommendations, and Human decisions:
 
 | Layer | How to write it | Application here |
 | --- | --- | --- |
@@ -128,7 +126,7 @@ Use an `EH-##` record for one failure mode at one boundary. The example below le
 | Impact, priority, and owner | Describe user/job impact from evidence; export/API owner confirms priority and behavior |
 | Validation and close condition | Review the source contract, then define a repeatable authorized check; close the design gap only when expected behavior, caller result, owner, and evidence are reviewable |
 
-The point is to let the next person walk from the finding back to the source and run an action that can change the decision.
+This handoff lets the next reviewer trace the failure path to its source and see which behavior or evidence remains unresolved.
 
 ### Decision
 
@@ -160,6 +158,12 @@ If the first request contains only a one-line goal, keep the output limited. Add
 
 A richer input changes the answer here because failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery must be tied to evidence rather than inferred from a familiar pattern.
 
+## Best practices
+
+- Review one trigger and boundary at a time, then follow expected behavior through propagation, retries or fallback, state changes, and telemetry.
+- Do not recommend a retry until the source establishes whether the original action committed and whether repeating it is safe.
+- Prioritize high-impact gaps and request the smallest evidence or isolated check that can resolve them.
+
 ## Working with other Skills
 
 - API Error Contract Testing: https://inaodeng.com/en/qaskills/api-error-contract-testing/ — checks machine-readable failure responses.
@@ -174,10 +178,10 @@ A richer input changes the answer here because failure taxonomy, user action, re
 
 ## Install and invoke
 
-Install the individual Skill. The series overview carries the longer installation explanation.
+Install the English Skill from its language directory. The series overview carries the shared installation instructions.
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill error-handling-design-review
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill error-handling-design-review
 ```
 
 After installation, invoke it with the `error-handling-design-review` Skill and attach the real project material.
@@ -202,11 +206,7 @@ The complete execution contract lives in the Error Handling Design Review prompt
 
 The entry point centers failure taxonomy, user action, retryability, fallback, observability, privacy, and recovery. Keep its decision boundary visible and do not turn a static design into an execution claim.
 
-### Reference links
-
-- Error Handling Design Review prompt: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review/prompts/error-handling-design-review.md
-
-- Awesome QA Skills: Error Handling Design Review source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/error-handling-design-review
+### Further reading
 
 - Awesome QA Skills GitHub: https://github.com/naodeng/awesome-qa-skills
 

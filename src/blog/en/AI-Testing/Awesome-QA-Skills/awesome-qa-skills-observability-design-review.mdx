@@ -1,7 +1,7 @@
 ---
-title: "Observability Design Review Skill: Make a future failure explainable before it happens"
+title: "Observability Design Review Skill: Make Failures Explainable Before They Happen"
 description: "Observability Design Review field guide: review logs, metrics, traces, correlation, privacy, alerts, and diagnostic actions."
-date: 2026-11-14T09:00:00.000Z
+date: 2026-11-15T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI Testing", "QA Skills", "Observability Design Review"]
@@ -23,6 +23,8 @@ Start by naming the service boundary, business flow, environment, version, and t
 | Logs | Which event and fields identify the object and outcome? Are sensitive values masked? |
 | Metrics | Are units, dimensions, cardinality, and aggregation semantics explicit? |
 | Traces | Do spans preserve context across service and asynchronous boundaries? |
+| SLOs and SLIs | Are service objectives, indicators, windows, and measurement rules defined by a supplied source? |
+| Dashboards | Does each panel support a named operator or product decision, with units and context visible? |
 | Alerts | What condition triggers the alert, who responds, and what action follows? |
 | Operations | Are sampling, retention, access, and cost constraints stated? |
 
@@ -43,6 +45,11 @@ For follow-up, a masked synthetic request can check the planned trace path. Reta
 
 Each OBS-## should identify the signal and covered object, source and evidence status, expected fields or semantics, gap and impact, detection action, owner role, close condition, and validation method. Keep design facts, evidence-backed inferences, recommendations, and Human decisions separate. If runtime identity, time, environment, or raw signals are missing, mark runtime conclusions unverified or unassessed.
 
+## Best practices
+
+- Prioritize high-impact gaps and ask for the smallest evidence or safe check that can resolve them.
+- Keep facts, evidence-backed inferences, recommendations, and Human decisions distinct; do not turn assumptions into conclusions.
+
 ## Boundaries
 
 A dashboard proves that a view was designed; it does not prove that an alert fires or that a service is healthy. Do not choose SLOs, incident severity, sample rates, retention, or cost budgets for the owner. Keep production data out of a design-only review.
@@ -58,7 +65,7 @@ A dashboard proves that a view was designed; it does not prove that an alert fir
 Install the individual Skill from the Awesome QA Skills repository:
 
 ```bash
-npx skills add naodeng/awesome-qa-skills --skill observability-design-review
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en --skill observability-design-review
 ```
 
 Then invoke observability-design-review with the telemetry design, scope, environment, available evidence, and the decision the review should support.

@@ -1,7 +1,7 @@
 ---
 title: "错误处理设计评审：失败模式与恢复"
 description: "在实现前评审失败模式、重试安全性、错误传播、数据一致性、可观察性和恢复路径。"
-date: 2026-11-13T09:00:00.000Z
+date: 2026-11-14T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "错误处理设计评审"]
@@ -22,7 +22,7 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 好的评审会沿着同一个失败检查三层契约：调用方得到安全且稳定的结果，运维拿到足以诊断问题且符合隐私要求的证据，系统则保持数据一致，或明确需要由谁决定恢复方式。
 
-适用场景包括：团队需要比较校验拒绝、鉴权拒绝、超时、依赖故障、限流、重复请求、事务冲突、部分成功或数据损坏等失败路径；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
+适用于校验拒绝、鉴权拒绝、超时、依赖故障、限流、重复请求、事务冲突、部分成功或数据损坏等失败路径。资料不完整或多个来源冲突、但仍需要受限评审，或交接时需要说明尚未验证的行为，也可以使用这个 Skill。
 
 ## 它不做什么
 
@@ -68,7 +68,7 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 ### 分层写法
 
-针对每种失败模式，不要把四种语气揉成一句“建议通过”：
+针对每种失败模式，分开写事实、证据支持的推断、建议和人工决策：
 
 | 层次 | 写法 | 本文应用 |
 | --- | --- | --- |
@@ -160,6 +160,12 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 这里补充信息会改变结果，因为失败分类、用户动作、可重试性、回退、可观察性、隐私和恢复必须接回证据，不能只靠熟悉的测试套路推断。
 
+## 实践建议
+
+- 一次先评审一种触发条件和边界，再沿着预期行为检查错误传播、重试或回退、状态变化和遥测。
+- 来源没有说明原操作是否提交、重复执行是否安全时，不要直接建议重试。
+- 优先处理高影响缺口，并请求足以解除疑问的最小证据或隔离检查。
+
 ## 和其他 Skill 怎么配合
 
 - API 错误契约测试: https://inaodeng.com/zh-cn/qaskills/api-error-contract-testing/；检查机器可读的失败响应。
@@ -174,7 +180,7 @@ Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测�
 
 ## 安装与调用
 
-全局安装这个 Skill：
+从中文语言目录单独安装这个 Skill：
 
 ```bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh --skill error-handling-design-review
@@ -200,11 +206,7 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 
 入口文件重点约束失败分类、用户动作、可重试性、回退、可观察性、隐私和恢复。要保留它的决策边界，不要把静态设计写成执行结论。
 
-### 参考链接
-
-- 错误处理设计评审提示词: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review/prompts/error-handling-design-review.md
-
-- Awesome QA Skills：错误处理设计评审 源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/error-handling-design-review
+### 延伸阅读
 
 - Awesome QA Skills 项目主页: https://github.com/naodeng/awesome-qa-skills
 

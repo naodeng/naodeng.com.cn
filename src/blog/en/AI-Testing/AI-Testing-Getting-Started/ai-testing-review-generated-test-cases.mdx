@@ -1,8 +1,7 @@
 ---
 title: "Can You Trust AI-Generated Test Cases? Finding Gaps and Weak Assertions"
 description: "Use requirement traceability, risk coverage, and assertion review to find omissions, unsupported assumptions, unexecutable steps, and false passes in AI-generated test cases."
-date: 2026-11-01T09:02:00.000Z
-draft: true
+date: 2026-11-02T10:02:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Test Cases", "Quality Review"]
 categories: ["AI Testing"]
@@ -26,7 +25,29 @@ Give the confirmed login rules IDs and have each case refer to a relevant rule o
 
 These are still exercise assumptions from the series. Real cases should cite the project requirement ID, API contract, or decision record. If an expected result has no source, mark it as needing confirmation rather than treating it as product behavior.
 
-## The problem is not only missing coverage
+## Beginner guide: start with one confirmed requirement
+
+You do not need dozens of cases for your first review. Choose one short, clear requirement and work through these steps:
+
+1. **Find the source.** Locate the requirement, acceptance criteria, or API contract. Record its ID and version. Note gaps rather than asking AI to make product decisions.
+2. **Give AI enough context.** Provide the requirement, known constraints, test scope, and output format. Ask it to list unknowns as “Needs confirmation.”
+3. **Generate a small set.** Ask for representative happy-path, failure, boundary, and state-change scenarios. For each case, include its rule, preconditions, inputs, expected result, and observation point.
+4. **Trace every case.** Use the review checklist below to check for omissions, unsupported expectations, weak assertions, and unexecutable steps.
+5. **Verify representative cases.** Prepare data and execute them in an authorized test environment. Record the result. An unrun case remains unverified.
+6. **Feed findings into the next round.** Record issue types and confirmed decisions. Keep the examples that reproduce the problems, not only the revised cases.
+
+A first prompt could look like this:
+
+```text
+Generate only five representative test cases from the requirement below. Do not invent product behavior that is not specified.
+Requirement text and version: [provide]
+Confirmed rule IDs: [provide]
+Test scope and known constraints: [provide]
+Use a table with: case ID, source rule, risk, preconditions, input, steps, expected result, and observation point.
+Mark missing rules and uncertain expectations as “Needs confirmation,” and say who needs to confirm them.
+```
+
+## Common review problems beyond coverage gaps
 
 | Issue | Example | Why it matters |
 | --- | --- | --- |
@@ -64,6 +85,15 @@ The example below uses the exercise rule R-03, “Five consecutive incorrect att
 
 If an AI-generated case does not distinguish the fourth from the fifth attempt, identify that missing boundary and ask for an expected result with a source. If the rule does not define the response during lockout, list it as a question. Do not invent a status code or message for Product.
 
+To turn a vague description into a reviewable condition, add the source, data, and observation point, then check whether the expected result is actually specified:
+
+| Wording | Review judgment |
+| --- | --- |
+| Weak case: “Enter a wrong code repeatedly; the page shows an error.” | It has no rule ID, attempt count, lockout observation, or failure-side-effect check. It cannot show that R-03 was verified. |
+| Reviewable case: “Under R-03, use a resettable synthetic phone number in an isolated environment. Submit four consecutive incorrect codes and record the state; reset the counter, then submit five consecutive incorrect codes and observe the state after the fifth. Check responses against the API contract and use an authorized state query to confirm lockout. Record account side effects and cleanup.” | The scenario and observation points are clear. The exact response, test hook, copy, and boundary inclusivity still need the project contract; mark undefined details as “Needs confirmation.” |
+
+This rewrite does not add a product rule. It makes the open questions visible and moves the check beyond “a message appeared” toward an observable business state.
+
 ## Ask AI to find problems, not to certify its own work
 
 You can use this instruction for a second review of generated cases:
@@ -79,10 +109,52 @@ You can use this instruction for a second review of generated cases:
 
 This review can share the same blind spots as the model that generated the cases. It is a screening aid, not an independent certification. Higher-risk behavior still needs review by testers, Product, or Engineering, plus execution and evidence from the real test environment.
 
-AI Test Auditor can complement this review with source-only checks for a narrow set of patterns that may make tests ineffective. It does not run tests or calculate coverage, and an unflagged test remains unassessed rather than proven effective. Check the project documentation to confirm its supported source scope still fits the examples here.
+AI Test Auditor can complement this review with source-only checks for a limited set of patterns in supported JavaScript and TypeScript tests. It does not run tests, inspect runtime behavior, or calculate coverage. An unflagged test remains unassessed rather than proven effective. Check the project documentation to confirm the supported test frameworks and source scope fit your examples.
 
-AI Test Auditor: https://github.com/naodeng/ai-test-auditor
+AI Test Auditor: https://github.com/AI-Native-QA-Lab/ai-test-auditor
 
 Try a small exercise: choose a few existing cases, add their requirement sources, check the boundaries and assertions, and record the types of issues you find. That will show you more about the distance between generated cases and trustworthy tests than doubling the case count.
 
-Add review findings to the quality loop. Record omissions, unsupported expectations, weak assertions, and unexecutable steps separately. After revising the requirement context, generation Prompt, or review rules, regenerate and review the same representative samples. Only confirmed business decisions belong in reusable references; keep open questions marked as open. Update the regression set when requirements, models, or Agent tools change. One review does not provide a permanent guarantee.
+## Best practices: make review findings reusable
+
+- Keep the source for every expected result: a requirement, API contract, or decision record. Mark expectations without a source as needing confirmation.
+- Review coverage by risk. Prioritize boundaries, state transitions, permissions, failure paths, and side effects instead of treating case count as coverage.
+- Record “designed,” “executed,” and “verified” separately. Not run, skipped, failed, and passed are different states.
+- Use a controlled mutation or test double to check whether important assertions can detect a fault. Do this only in a safe, isolated test environment.
+- Keep a small regression set of confirmed rules, counterexamples, and review criteria. Recheck it when the rules or generation method changes; do not treat an old result as a permanent guarantee.
+
+## Frequently asked questions
+
+### Can I use AI-generated test cases as they are?
+
+Do not assume so. Check the source for each expected result, risk coverage, data setup, assertions, and side effects, then execute suitable cases. AI output is a draft for review, not proof of quality.
+
+### Where should a beginner start?
+
+Start with one confirmed requirement. Ask AI for a small set of traceable scenarios, review each against the requirement, then execute one representative case. The “Beginner start” steps and prompt above are enough for a first pass.
+
+### How can I find scenarios AI missed?
+
+Break requirements into rules and risks, then check happy paths, failures, boundaries, state changes, permissions, and side effects. Coverage gaps may remain when a case cannot be tied to a requirement or risk.
+
+### Is a second review by the same AI independent verification?
+
+No. A second pass can screen for obvious issues, but the model can repeat the same blind spots. High-risk scenarios still need review by someone who knows the domain and evidence from test execution.
+
+### What if the requirement does not define a response code or error message?
+
+Do not guess. Mark the behavior as needing confirmation and ask the requirement or API owner before writing an expected result. Otherwise, automation can turn an unapproved assumption into a fixed rule.
+
+### How do I improve the review over time?
+
+Classify omissions, weak assertions, and unsupported assumptions. Revise the requirement context, generation Prompt, or review rules, then check the same representative samples again. The dedicated quality loop below shows the cycle.
+
+## Focus: make case review part of the daily quality loop
+
+**The quality loop is not a one-time review or a request for AI to generate more cases.** Whenever a story or requirement changes, feed real findings into the next round and use fixed samples to check whether the change reduced omissions instead of merely making the output look more complete.
+
+![Quality loop for AI-generated test cases: confirm requirements, generate and review cases, run representative tests, classify findings, revise rules, and recheck the same samples](/images/blog/ai-testing-quality-loops/generated-cases-quality-loop-en.svg)
+
+For each new requirement in daily testing, keep a representative sample set. Add issues found in review or execution to an improvement record with their cause and evidence. After changing generation context or review criteria, run the same samples again to check whether old issues disappeared and new ones appeared. Only confirmed business decisions become reusable rules; open questions remain open. Run the samples again when requirements, models, or Agent tools change.
+
+That feedback from real review and execution helps AI-generated tests improve over time. Quality comes from traceable feedback and repeated checks, not the volume of a single output.

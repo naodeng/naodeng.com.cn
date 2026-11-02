@@ -1,7 +1,7 @@
 ---
 title: "长运行智能体测试 Skill：让长任务的进度、租约和取消路径可核对"
 description: "长运行智能体测试实战指南：检查长时间智能体任务中的进度、检查点、租约、取消和跨时间证据。"
-date: 2026-11-07T09:00:00.000Z
+date: 2026-11-08T09:00:00.000Z
 draft: true
 author: "nao.deng"
 tags: ["AI 测试", "QA Skills", "长运行 Agent 测试"]
@@ -16,13 +16,11 @@ series: ["Awesome QA Skills 实战"]
 
 ## Skill 用来做什么
 
-当团队需要围绕“进度检查点、租约续期、重启恢复、取消行为和部分结果语义”工作时，使用长运行智能体测试 Skill。
+长运行智能体测试 Skill 将进度检查点、租约续期、重启恢复、取消行为和部分结果规则整理成结构化评审。
 
 Awesome QA Skills: https://github.com/naodeng/awesome-qa-skills 按语言和测试阶段组织 Skill。系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/ 解释通用安装方式，本文只聚焦长运行智能体测试。
 
-它适合这些场景：团队需要重复检查进度检查点、租约续期、重启恢复、取消行为和部分结果语义；多个证据来源互相矛盾；交接时必须说明哪些内容仍未验证。
-
-复核结果要把进度记录、租约续期、重启恢复、取消行为和部分结果规则连到具体来源与验证动作。只有设计清单时，结论仍然只是设计复核。
+当证据来源冲突，或交接时需要说明哪些内容仍未验证，可以用它梳理待决项。每条规则都应关联来源和验证动作；设计清单只能支持设计复核，不能证明运行通过。
 
 ## 它不做什么
 
@@ -198,8 +196,6 @@ npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh 
 ### 系统只提供一个进度数字怎么办？
 
 把它当成待验证声明；在相信它之前要求检查点或条目级证据。
-
-
 
 ### 部分结果可以直接发布吗？
 
