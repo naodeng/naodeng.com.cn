@@ -111,7 +111,7 @@ Use the input, matrix, and evidence state to form the judgment before writing th
 Suppose the contract contains:
 
 ~~~text
-GET /exports/{job_id}/download
+GET '/exports/{job_id}/download'
 Authorization: Bearer <token>
 ~~~
 
@@ -121,7 +121,7 @@ The materials do not explain how job_id is bound to the caller's tenant, whether
 
 | Field | Example |
 | --- | --- |
-| Object and rule | `GET /exports/{job_id}/download` and tenant-owned export access |
+| Object and rule | `GET '/exports/{job_id}/download'` and tenant-owned export access |
 | Source | API Contract v3.2; token description supplied, object matrix and error contract missing |
 | Trigger | Tenant A requests Tenant B's job_id, a nonexistent job_id, and an expired job_id |
 | Expected concern | Authentication success must not bypass object authorization; failure should not overexpose existence or sensitive fields |
