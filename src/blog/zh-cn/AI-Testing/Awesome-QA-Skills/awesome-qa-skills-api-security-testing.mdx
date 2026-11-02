@@ -98,7 +98,7 @@ API 安全分析不能把请求样例当成真实执行结果。先做输入审�
 假设接口合同提供：
 
 ~~~text
-GET '/exports/{job_id}/download'
+GET `/exports/{job_id}/download`
 Authorization: Bearer <token>
 ~~~
 
@@ -106,7 +106,7 @@ Authorization: Bearer <token>
 
 ##### AST-02 — 下载接口缺少对象授权和错误泄露合同
 
-- **对象 / 规则：** GET '/exports/{job_id}/download' 的租户对象访问。
+- **对象 / 规则：** `GET /exports/{job_id}/download` 的租户对象访问。
 - **来源：** API 合同 v3.2；令牌说明存在，但对象权限矩阵和错误响应规范未提供。
 - **触发条件：** 租户 A 的合法身份请求租户 B 的 job_id，以及请求不存在或已过期的 job_id。
 - **预期关注点：** 认证成功不等于对象授权成功；跨租户、不存在和已过期资源是否有一致且不过度泄露的响应。
