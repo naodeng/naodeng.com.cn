@@ -62,7 +62,7 @@ These **illustrative snippets** show what a reviewer might examine. They are exa
 | Approach | Illustrative output | What the reviewer should still check |
 | --- | --- | --- |
 | Direct chat | “Test a valid and expired code, a lock after five wrong attempts, and account creation after first success.” | Check whether it links the themes to R-01–R-03, distinguishes attempt four from five, explains setup, and flags unknowns. |
-| Prompt | “R-01: cover inside and after expiry; the 300-second boundary needs confirmation. R-02: distinguish attempts one through four, attempt five, and the locked period; use the API contract for response details.” | Traceability is clearer; still check counter reset, failure side effects, required fields, and whether the real output follows the template. |
+| Prompt | “R-01: cover codes used before and after expiry; confirm whether a code is valid at exactly 300 seconds. R-02: distinguish the fourth and fifth incorrect attempts; confirm the response after attempt five and exactly when the 15-minute lock ends.” | Traceability is clearer; still check counter reset, failure side effects, required fields, and whether the real output follows the template. |
 | Skill | “Input audit: lock response and counter-reset rules are missing. Use a resettable synthetic phone number to check attempt four and five; preserve source, state evidence, and open questions.” | It combines repeatable review steps, gap detection, and handoff. Check whether it actually uses references and produces auditable fields without constraining the task too much. |
 
 The example shows the kind of information each approach may surface. Direct chat needs little setup, a Prompt can fix output fields, and a Skill can carry repeatable steps and boundaries. The snippets do not rank the methods; actual performance depends on the runs.
@@ -101,17 +101,19 @@ Review bias matters too. Hide which approach produced each result where possible
 
 For disputed items, return to the requirement and reference list. Record the evidence each reviewer cites and clarify the scoring rules where needed. If reviewers still define a critical gap differently, revise the list or mark the result unresolved. Do not calculate an average score until the reviewers agree on what counts.
 
-### Example review: scoring only the three snippets
+### Example review: scoring only the three snippets (not model runs)
 
-These scores apply only to the three snippets above; they do not fill in details a reader might infer. The exercise requirement has five open points: behavior at exactly 300 seconds, the response after attempt five, when the 15-minute lock ends, when the error counter resets, and whether a failed path leaves account or session state. Format compliance uses four fields: requirement source, preconditions, expected result, and open questions. A field earns one point only when the snippet states specific content for it.
+These scores apply only to the three author-written snippets above. They do not fill in details a reader might infer, and they are not model-run results.
 
-| Approach | Critical gaps (5 items) | Unsupported claims | Format (4 fields) | Consistency | Human revision time | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| Direct chat | 0/5 | 0; no unknown rule is stated as fact in the snippet | 0/4 | Not measured | Not measured | Lists scenario names but none of the five open points; gives no source, preconditions, expected result, or open question. |
-| Prompt | 1/5: behavior at exactly 300 seconds | 0; defers response details to the API contract | 2/4: requirement source and open question | Not measured | Not measured | Gives no specific preconditions or expected result; misses the unlock boundary, counter reset, and failed-path side effects. |
-| Skills | 2/5: lock response after attempt five and counter reset | 0; missing rules are presented as information to supply | 2/4: preconditions and open questions | Not measured | Not measured | Gives no requirement IDs or expected result; misses the 300-second boundary, unlock boundary, and failed-path side effects. |
+The five open points are: R-01, behavior at exactly 300 seconds; R-02, the response after attempt five, when the 15-minute lock ends, and when the error counter resets; R-03, whether a failed path leaves account or session state. A point counts as found only when the snippet explicitly marks the behavior as unknown; naming a related test scenario is not enough. Unsupported claims count only when a snippet states an unconfirmed behavior as a settled rule. The four format fields are requirement source, preconditions, expected result, and open questions. A field earns one point only when the snippet gives specific content for it.
 
-This is a manual review of illustrative text, not a model evaluation. Run each method several times and record consistency and revision time before updating the table under the same rubric; until those records exist, do not rank the methods by effectiveness.
+| Approach | Open points explicitly flagged (5) | Unsupported claims | Fields explicitly present (4) | What the snippet shows |
+| --- | --- | --- | --- | --- |
+| Direct chat | 0/5 | 0 in this snippet | 0/4 | Lists scenario names but does not flag the five open points or give a requirement source, preconditions, expected result, or open question. |
+| Prompt | 3/5: 300-second boundary, response after attempt five, when the lock ends | 0 in this snippet | 2/4: requirement source, open questions | Identifies R-01 and R-02 and three open points; gives no preconditions or expected result, and misses the counter reset and failed-path side effects. |
+| Skills | 2/5: lock response after attempt five, counter reset | 0 in this snippet | 2/4: preconditions, open questions | Gives a resettable synthetic phone number as a precondition and flags two missing rules; provides no requirement ID or expected result, and misses the 300-second boundary, when the lock ends, and failed-path side effects. |
+
+A single illustrative snippet cannot show result consistency or measure human revision time, so those metrics are not scored here. In a real comparison, run each approach several times under the same conditions, save every output, then record consistency and actual revision time. Do not rank the approaches from this example.
 
 ## Focus: Put the comparison into a quality loop
 
