@@ -405,6 +405,75 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
 
     <SearchModal />
 
+    <script>
+      let mermaidModule: Promise<typeof import("mermaid")> | undefined;
+      let mermaidRenderSequence = 0;
+
+      async function renderMermaidDiagrams() {
+        const sourceBlocks = Array.from(
+          document.querySelectorAll<HTMLPreElement>(
+            'main pre[data-language="mermaid"]:not([data-mermaid-render-failed])',
+          ),
+        );
+        const existingDiagrams = Array.from(
+          document.querySelectorAll<HTMLElement>("main .mermaid-diagram[data-mermaid-source]"),
+        );
+        if (sourceBlocks.length === 0 && existingDiagrams.length === 0) return;
+
+        const sequence = ++mermaidRenderSequence;
+        try {
+          mermaidModule ??= import("mermaid");
+          const { default: mermaid } = await mermaidModule;
+          mermaid.initialize({
+            startOnLoad: false,
+            securityLevel: "strict",
+            suppressErrorRendering: true,
+            theme: document.documentElement.dataset.theme === "dark" ? "dark" : "default",
+          });
+          if (document.fonts?.ready) await document.fonts.ready;
+
+          for (const [index, sourceBlock] of sourceBlocks.entries()) {
+            const source = sourceBlock.textContent?.trim();
+            if (!source) continue;
+            try {
+              const { svg } = await mermaid.render(`mermaid-${sequence}-${index}`, source);
+              if (sequence !== mermaidRenderSequence) return;
+              const diagram = document.createElement("div");
+              diagram.className = "mermaid-diagram";
+              diagram.dataset.mermaidSource = source;
+              diagram.innerHTML = svg;
+              sourceBlock.replaceWith(diagram);
+            } catch (error) {
+              if (sequence !== mermaidRenderSequence) return;
+              sourceBlock.dataset.mermaidRenderFailed = "true";
+              console.warn("[Mermaid] Diagram could not be rendered; keeping its source visible.", error);
+            }
+          }
+
+          for (const [index, diagram] of existingDiagrams.entries()) {
+            const source = diagram.dataset.mermaidSource;
+            if (!source) continue;
+            try {
+              const { svg } = await mermaid.render(
+                `mermaid-${sequence}-${sourceBlocks.length + index}`,
+                source,
+              );
+              if (sequence !== mermaidRenderSequence) return;
+              diagram.innerHTML = svg;
+            } catch (error) {
+              if (sequence !== mermaidRenderSequence) return;
+              console.warn("[Mermaid] Theme update failed; keeping the previous diagram.", error);
+            }
+          }
+        } catch (error) {
+          console.warn("[Mermaid] Renderer could not load; source blocks remain visible.", error);
+        }
+      }
+
+      void renderMermaidDiagrams();
+      window.addEventListener("themechange", () => void renderMermaidDiagrams());
+    </script>
+
     <script is:inline>
       (() => {
         const key = "themePreference";

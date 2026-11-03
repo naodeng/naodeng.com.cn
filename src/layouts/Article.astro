@@ -262,6 +262,7 @@ const {
       const canCopy = typeof navigator.clipboard !== "undefined";
       document.querySelectorAll<HTMLPreElement>("article pre").forEach((pre) => {
         if (pre.parentElement?.classList.contains("code-block-wrapper")) return;
+        if (pre.dataset.language?.toLowerCase() === "mermaid") return;
         const code = pre.querySelector("code");
         if (!code) return;
 
