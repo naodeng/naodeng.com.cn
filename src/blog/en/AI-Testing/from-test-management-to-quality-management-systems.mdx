@@ -17,7 +17,11 @@ Rosie Sherry captures the direction in one sentence:
 
 > **“You can't test your way to a good product.”**
 
-More testing cannot replace sound product planning, collaboration, and continuous improvement. Testing still matters; it is one part of a quality management system.
+More testing cannot replace sound product planning, collaboration, and continuous improvement. Testing still matters; it is one part of a quality management system (QMS).
+
+Melissa's plain-language explanation is that a QMS is a structured way of working to meet the expectations of operators, customers, and other stakeholders. Here, “system” includes planning, collaboration, delivery, and feedback, not only the software. This is a working explanation of the conversation, not a formal ISO 9001 definition.
+
+In the title, “from test management to a QMS” means widening the view from testing activities to the whole work system that produces quality. It does not imply replacing test management with a single kind of QMS tool.
 
 ~~~mermaid
 flowchart LR
@@ -47,10 +51,6 @@ A software team works in much the same way. Requirements, design, development, t
 | Tower coordination | Cross-team and release coordination | Out-of-sync information or blocked dependencies |
 | Weather and external constraints | External services, regulation, and infrastructure risks | Uncertainty and unexpected failures |
 | Delay investigation | Defect analysis and incident review | Fixing symptoms without changing root causes |
-
-Melissa's plain-language explanation of a QMS is **a structured way of working that meets the expectations of operators, customers, and other stakeholders**.
-
-The airport is an explanatory analogy, not a formal ISO 9001 definition.
 
 ## “Quality is the absence of friction”: a way to observe the system
 
@@ -147,6 +147,8 @@ flowchart TD
     F --> G[Adjust the way of working]
     G -->|Review again periodically| A
 ~~~
+
+For example, if automated tests repeatedly fail because of environment or data problems, record the failure causes and recovery time, then assign an owner to improve environment resets or data preparation. At the next review, check whether those failures and recovery time have decreased, and confirm that the change did not hide test failures or weaken risk coverage. If users were affected, review related feedback or production issues too. This turns “reducing friction” into an action the team can check.
 
 ### Friction in the AI era
 
@@ -299,13 +301,11 @@ The conversation mentions or discusses several role directions:
 
 These are not standard career steps prescribed by the interview. They are directions the guest observes in evolving roles.
 
-For a tester, professional value is not measured only by how many defects they find. It also comes from explaining why defects occur and helping the team reduce the chance of recurrence.
+For a tester, professional value comes not only from how many defects they find, but also from explaining why defects occur and helping the team reduce the chance of recurrence.
 
-## An engineering extension: AI-native quality engineering
+## AI-native quality engineering: an engineering extension
 
-The following is an independent engineering extension of the conversation, not a formal model proposed by Melissa or Rosie.
-
-AI-native quality engineering can be viewed as three connected capabilities:
+The following is an engineering extension based on the conversation, not a formal model proposed by Melissa or Rosie. AI-native quality engineering can be viewed as three connected areas:
 
 | Area | Key capabilities | Question to answer |
 |---|---|---|
@@ -315,7 +315,7 @@ AI-native quality engineering can be viewed as three connected capabilities:
 
 AI may help interpret context, generate candidate approaches, connect evidence, and surface gaps. Quality ownership, business trade-offs, and high-risk decisions still need clear human accountability.
 
-This view also raises a practical question: can tools work together to reduce friction, rather than just add more testing tools? An automation tool may run quickly, but if its results cannot be traced to business risks, the team may spend more time explaining them and making decisions.
+This view also raises a practical question: can existing tools work together to reduce friction, rather than just add more testing tools? An automation tool may run quickly, but if its results cannot be traced to business risks, the team may spend more time explaining them and making decisions.
 
 ## Takeaway
 
@@ -342,4 +342,5 @@ Melissa's three lenses—quality planning, quality control, and continuous impro
 
 - **Source**: *Into the MoTaverse*, “From Test Management to Quality Management Systems” (28 October 2026)
 - **Session page**: https://www.ministryoftesting.com/media-sessions/from-test-management-to-quality-management-systems
+- **Access note**: The MoTaverse page currently requires a free account to view the content. Its public summary lists the main topics; the interview details here follow the transcript notes.
 - **Reading note**: QMS means quality management system. This article follows the conversation; it is not an interpretation of ISO 9001 or a complete, certifiable QMS implementation guide. Engineering applications are marked separately.
