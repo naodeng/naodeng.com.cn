@@ -70,7 +70,7 @@ series: ["AI 软件测试入门与实践：从会用到用好"]
 
 步骤：
 1. 提取可验证规则，为每条规则记录来源位置。
-2. 将规则标记为 confirmed、missing、conflicting 或 stale。
+2. 将规则标记为已确认、缺失、冲突或过时。
 3. 检查正向、失败、边界、状态变化和副作用；说明每个风险依据。
 4. 对无法从材料确认的行为提出问题和最小补证动作，不替产品决定答案。
 
@@ -91,27 +91,27 @@ series: ["AI 软件测试入门与实践：从会用到用好"]
 再把稳定部分整理成一个易读的 Skill 文件。下面展示内容结构；名称和元数据字段需要按目标宿主的 Skill 规范调整：
 
 ~~~markdown
-# Requirement Gap Review
+# 需求缺口审查
 
-## Use when
-Reviewing a versioned requirement for missing, conflicting, or outdated test-relevant behavior.
+## 适用场景
+用于审查带版本的需求，找出其中测试相关行为的缺失、冲突或过时之处。
 
-## Required input
-- Requirement version and scope
-- Acceptance criteria
-- Relevant interface or design constraints
+## 必需输入
+- 需求版本与范围
+- 验收标准
+- 相关接口或设计约束
 
-## Workflow
-1. Extract each verifiable rule and cite its source location.
-2. Mark each rule as confirmed, missing, conflicting, or stale.
-3. Review success, failure, boundary, state-change, and side-effect paths.
-4. Turn unresolved behavior into a question and a minimum evidence request.
+## 执行流程
+1. 提取每条可验证规则，并注明其来源位置。
+2. 将每条规则标记为已确认、缺失、冲突或过时。
+3. 检查成功、失败、边界、状态变更和副作用路径。
+4. 将尚未解决的行为转化为问题，并说明需要补充的最少证据。
 
-## Output
-Rule ID, source, evidence state, risk, open question, and evidence action.
+## 输出
+规则编号、来源、证据状态、风险、待确认问题和补证动作。
 
-## Boundaries
-Separate fact, inference, and recommendation. Do not invent business rules or make the human decision.
+## 边界
+区分事实、推断与建议；不要编造业务规则，也不要代替人作出判断。
 ~~~
 
 注意，需求版本、客户数据、负责人和业务决定不应该硬编码到 Skill；它们会变化，应在运行时作为输入提供。也不要把令牌、真实个人信息或超出任务需要的访问权限放进示例。
