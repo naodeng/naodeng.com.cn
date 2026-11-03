@@ -101,19 +101,19 @@ Review bias matters too. Hide which approach produced each result where possible
 
 For disputed items, return to the requirement and reference list. Record the evidence each reviewer cites and clarify the scoring rules where needed. If reviewers still define a critical gap differently, revise the list or mark the result unresolved. Do not calculate an average score until the reviewers agree on what counts.
 
-### Example review: scoring only the three snippets (not model runs)
+### Example comparison: what the three snippets say (not model runs)
 
-These scores apply only to the three author-written snippets above. They do not fill in details a reader might infer, and they are not model-run results.
+The table below records only what the three author-written snippets explicitly say. It does not score the approaches or report model runs.
 
-The five open points are: R-01, behavior at exactly 300 seconds; R-02, the response after attempt five, when the 15-minute lock ends, and when the error counter resets; R-03, whether a failed path leaves account or session state. A point counts as found only when the snippet explicitly marks the behavior as unknown; naming a related test scenario is not enough. Unsupported claims count only when a snippet states an unconfirmed behavior as a settled rule. The four format fields are requirement source, preconditions, expected result, and open questions. A field earns one point only when the snippet gives specific content for it.
+The review reference has five open points: R-01, behavior at exactly 300 seconds; R-02, the response after attempt five, when the 15-minute lock ends, and when the error counter resets; R-03, whether a failed path leaves account or session state. A point appears in the table only when the snippet explicitly marks that behavior as unknown; naming a related test scenario is not enough. An unsupported claim is an unconfirmed behavior stated as a settled rule. The table also records whether each snippet gives specific content for the four agreed fields: requirement source, preconditions, expected result, and open questions.
 
-| Approach | Open points explicitly flagged (5) | Unsupported claims | Fields explicitly present (4) | What the snippet shows |
+| Approach | Open points explicitly flagged | Unsupported claims | Fields explicitly present | What is still missing |
 | --- | --- | --- | --- | --- |
-| Direct chat | 0/5 | 0 in this snippet | 0/4 | Lists scenario names but does not flag the five open points or give a requirement source, preconditions, expected result, or open question. |
-| Prompt | 3/5: 300-second boundary, response after attempt five, when the lock ends | 0 in this snippet | 2/4: requirement source, open questions | Identifies R-01 and R-02 and three open points; gives no preconditions or expected result, and misses the counter reset and failed-path side effects. |
-| Skills | 2/5: lock response after attempt five, counter reset | 0 in this snippet | 2/4: preconditions, open questions | Gives a resettable synthetic phone number as a precondition and flags two missing rules; provides no requirement ID or expected result, and misses the 300-second boundary, when the lock ends, and failed-path side effects. |
+| Direct chat | None explicitly flagged | None seen | None provided | Lists scenario names but gives no requirement source, preconditions, expected result, or open question. |
+| Prompt | R-01: behavior at exactly 300 seconds; R-02: response after attempt five and when the lock ends | None seen | Requirement source (R-01, R-02); open questions | Gives no preconditions or expected result; does not mention counter reset or failed-path side effects. |
+| Skills | R-02: lock response after attempt five and counter-reset rule | None seen | Preconditions (resettable synthetic phone number); open questions | Gives no requirement ID or expected result; does not mention the 300-second boundary, when the lock ends, or failed-path side effects. |
 
-A single illustrative snippet cannot show result consistency or measure human revision time, so those metrics are not scored here. In a real comparison, run each approach several times under the same conditions, save every output, then record consistency and actual revision time. Do not rank the approaches from this example.
+Do not infer method quality from the number of open points in each snippet: the Prompt example foregrounds unspecified behavior, while the Skill example shows a precondition, review steps, and evidence handoff. Result consistency requires repeated runs, and human revision time must be recorded from real output edits; a single illustrative snippet provides neither measure. For a real comparison, run each approach several times under the same conditions, save every output, then record consistency and revision time.
 
 ## Focus: Put the comparison into a quality loop
 
