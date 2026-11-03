@@ -10,11 +10,13 @@ series: ["AI 软件测试入门与实践：从会用到用好"]
 
 For one login requirement, a tester can ask directly, use a Prompt, or invoke a Skill. A few sample responses cannot show which works better. Model versions, requirement materials, conversation history, and run settings all affect the output. When conditions differ, you cannot isolate the effect of the approach.
 
+To keep the terms distinct, this article uses “direct chat” for a one-off natural-language request, “Prompt” for a reusable structured template, and “Skill” for reusable instructions, steps, and supporting material loaded by a host tool. Skill capabilities and available resources vary by tool.
+
 The examples below show what to review in each approach. Measure actual performance by running the same samples under controlled conditions.
 
 ## Getting started: a first comparison
 
-For a first comparison, one requirement is enough. Prepare a review reference, then follow these steps:
+For a first comparison, one requirement is enough. Prepare shared inputs and a reviewer-only reference, then follow these steps:
 
 1. **Fix the task and requirement version.** State what all three approaches must do, such as “identify key test scenarios and flag unspecified behavior.”
 2. **Start clean sessions.** Do not let one approach inherit another's conversation. Record the tool, model, settings, and versions.
@@ -22,35 +24,37 @@ For a first comparison, one requirement is enough. Prepare a review reference, t
 4. **Review against one checklist.** Hide the approach name where possible and check evidence, omissions, unsupported claims, and usability.
 5. **Choose for the task.** Direct chat may be enough for a one-off exploration; recurring work may justify maintaining a Prompt or Skill.
 
-## Prepare a review reference first
+## Prepare shared inputs and a review reference
 
-For the phone-number login requirement, ask someone who knows the business to prepare a reference list: confirmed rules, important risks, open questions, and acceptable output requirements. For example, the five-minute code expiry may be confirmed while the exact 300-second boundary remains unknown. Raising that question is useful; choosing an answer without evidence is not.
+For the phone-number login requirement, separate two kinds of material. Shared inputs include the requirement, confirmed rules, necessary context, and output requirements that all three approaches can see. A reviewer who knows the business prepares a separate reference list of evidence-backed critical risks, open behavior, and scoring rules. If the goal is to see whether the model can find gaps, do not give it the open points in the reference list. If the goal is to test execution against a known checklist, state that as a separate task.
 
-Prepare the reference before reading outputs from the three approaches so reviewers do not mistake a model suggestion for the “correct answer.” It only needs to list the important conditions the team can support with evidence; it does not need to cover every possibility.
+Finalize the reference before reading outputs so reviewers do not mistake a model suggestion for the “correct answer.” It only needs to list the important, evidence-backed conditions for this task; it does not need to cover every possibility.
 
 Redact real phone numbers, tokens, and other sensitive material before using requirements in the comparison.
 
-The examples below use this exercise requirement. It is only a review exercise, not a statement of a real product's rules:
+The examples below use this exercise requirement. It illustrates the review method; it is not a real product rule or complete login test scope. “Given exercise rule” is shared input, while “still to confirm” is reviewer-only reference and is not given to the model:
 
-| ID | Given exercise rule | Still to confirm |
+| ID | Given exercise rule (shared input) | Still to confirm (review reference, not model input) |
 | --- | --- | --- |
 | R-01 | An SMS verification code is valid for five minutes | Is it still valid at exactly 300 seconds? |
 | R-02 | The phone number is locked for 15 minutes after five consecutive incorrect attempts | What happens after attempt five, at unlock, and when the counter resets? |
 | R-03 | An account is created after the first successful verification | Can a failed path leave account or session state behind? |
 
-Keep the inputs identical across the three groups. Record newly raised questions as open questions, then add them to all groups in the next round.
+Keep the requirement, context, and output requirements identical across the three groups. Record newly raised questions as findings for this round. If you update the model inputs for the next round, give every group the same version; if you update the review reference, give every reviewer the same version.
 
 ## Control the inputs and change only the approach
 
 Set up three groups:
 
 - **Direct chat:** ask the same testing question in concise natural language.
-- **Prompt:** use the structured template from the previous article about Prompt-based test design.
-- **Skills:** invoke a reviewed requirement-analysis or test-design Skill.
+- **Prompt:** use the structured template from the previous article, “Prompt-Based Software Testing: Make AI Outputs Fit Your Testing Needs.” Article: https://inaodeng.com/en/blog/ai-testing/ai-testing-getting-started/ai-testing-prompt-test-design/.
+- **Skill:** invoke a reviewed requirement-analysis or test-design Skill, and record its name, source, version, supporting materials, and available tools.
 
 Use the same requirement and context, model version, and parameters in all three groups. Keep the host tool and its settings the same where possible; vary only the direct-chat, Prompt, or Skill instructions. If the tool or settings differ, disclose that limitation: the result then compares tool configurations, not the method alone. Start each run in a clean session so one group does not inherit context from another.
 
-Record the tool, model, Prompt or Skill version, and the time until each result is ready to deliver. Where possible, run each approach at least three times and review all outputs for consistency. Three runs provide an initial stability check, not statistical significance or evidence about other requirements. If time or budget limits the run count, report that limit.
+Record tool and model names and versions, model settings, and the time from task input to a deliverable result. Where possible, run each approach at least three times and review all outputs for consistency. Three runs provide an initial stability check, not statistical significance or evidence about other requirements. If time or budget limits the run count, report that limit.
+
+Record one-time setup and maintenance, per-run waiting time, and human follow-up, review, and revision separately. To estimate longer-term savings, state how many tasks you assume will share the setup and maintenance cost.
 
 Keep the task fixed: for example, ask all three approaches to list key test scenarios and include the requirement source, preconditions, expected result, and open questions. Change only whether the instruction arrives as a one-off natural-language request, a reusable Prompt, or a Skill with fixed steps and output rules.
 
@@ -64,7 +68,7 @@ These **illustrative snippets** show what a reviewer might examine. They are exa
 | Prompt | “R-01: cover codes used before and after expiry; confirm whether a code is valid at exactly 300 seconds. R-02: distinguish the fourth and fifth incorrect attempts; confirm the response after attempt five and exactly when the 15-minute lock ends.” | Traceability is clearer; still check counter reset, failure side effects, required fields, and whether the real output follows the template. |
 | Skill | “Input audit: lock response and counter-reset rules are missing. Use a resettable synthetic phone number to check attempt four and five; preserve source, state evidence, and open questions.” | It combines repeatable review steps, gap detection, and handoff. Check whether it actually uses references and produces auditable fields without constraining the task too much. |
 
-The example shows the kind of information each approach may surface. Direct chat needs little setup, a Prompt can fix output fields, and a Skill can carry repeatable steps and boundaries. The snippets do not rank the methods; actual performance depends on the runs.
+These snippets show the kinds of information each approach may produce: direct chat takes little setup, a Prompt can fix output fields, and a Skill can carry repeatable steps and boundaries.
 
 ## Do not score by test-case count
 
@@ -84,8 +88,8 @@ If completeness also matters, agree on scoring rules before the experiment and h
 
 ## Best practices for a reviewable comparison
 
-- Write down requirement sources, confirmed rules, and open questions before reading model outputs.
-- Keep the task, context, output fields, and model settings aligned. If the tools differ, limit the conclusion to the complete tool configurations.
+- Before reading model outputs, separately fix the shared inputs for all three groups and the reviewer-only reference list. Record requirement sources, confirmed rules, and open questions; do not change review criteria after seeing the outputs.
+- Keep the task, inputs, output fields, and model settings aligned. Save the full instructions, Prompt template, and Skill source and version used. If the tools differ, limit the conclusion to the complete tool configurations.
 - Save all runs, including failures and incomplete outputs; do not select one best run to represent an approach.
 - Count unsupported claims separately so a format score or a large number of cases cannot hide them.
 - Have reviewers score independently before discussing disagreements. Mark major unresolved disagreements instead of averaging them away.
@@ -100,9 +104,9 @@ Review bias matters too. Hide which approach produced each result where possible
 
 For disputed items, return to the requirement and reference list. Record the evidence each reviewer cites and clarify the scoring rules where needed. If reviewers still define a critical gap differently, revise the list or mark the result unresolved. Do not calculate an average score until the reviewers agree on what counts.
 
-### Example comparison: what the three snippets say (not model runs)
+### Example comparison: fields in the three illustrative snippets
 
-The table below records only what the three author-written snippets explicitly say. It does not score the approaches or report model runs.
+The table below inventories only the content explicitly present in the three author-written snippets. It does not assess real-world performance.
 
 The review reference has five open points: R-01, behavior at exactly 300 seconds; R-02, the response after attempt five, when the 15-minute lock ends, and when the error counter resets; R-03, whether a failed path leaves account or session state. A point appears in the table only when the snippet explicitly marks that behavior as unknown; naming a related test scenario is not enough. An unsupported claim is an unconfirmed behavior stated as a settled rule. The table also records whether each snippet gives specific content for the four agreed fields: requirement source, preconditions, expected result, and open questions.
 
@@ -110,9 +114,9 @@ The review reference has five open points: R-01, behavior at exactly 300 seconds
 | --- | --- | --- | --- | --- |
 | Direct chat | None explicitly flagged | None seen | None provided | Lists scenario names but gives no requirement source, preconditions, expected result, or open question. |
 | Prompt | R-01: behavior at exactly 300 seconds; R-02: response after attempt five and when the lock ends | None seen | Requirement source (R-01, R-02); open questions | Gives no preconditions or expected result; does not mention counter reset or failed-path side effects. |
-| Skills | R-02: lock response after attempt five and counter-reset rule | None seen | Preconditions (resettable synthetic phone number); open questions | Gives no requirement ID or expected result; does not mention the 300-second boundary, when the lock ends, or failed-path side effects. |
+| Skill | R-02: lock response after attempt five and counter-reset rule | None seen | Preconditions (resettable synthetic phone number); open questions | Gives no requirement ID or expected result; does not mention the 300-second boundary, when the lock ends, or failed-path side effects. |
 
-Do not infer method quality from the number of open points in each snippet: the Prompt example foregrounds unspecified behavior, while the Skill example shows a precondition, review steps, and evidence handoff. Result consistency requires repeated runs, and human revision time must be recorded from real output edits; a single illustrative snippet provides neither measure. For a real comparison, run each approach several times under the same conditions, save every output, then record consistency and revision time.
+Do not infer method quality from the number of open points in each snippet: the Prompt example foregrounds unspecified behavior, while the Skill example shows a precondition, review steps, and evidence handoff. Measure consistency and human revision cost from repeated real runs; these snippets cannot provide those measures.
 
 ## Focus: Put the comparison into a quality loop
 
@@ -120,8 +124,8 @@ Use each comparison to define a reviewable improvement for the next round:
 
 ![Quality loop for comparing direct chat, Prompts, and Skills: freeze requirements and samples, run all three approaches, review blind, classify gaps and cost, revise the method, then rerun the same samples](/images/blog/ai-testing-quality-loops/chat-prompt-skill-comparison-loop-en.svg)
 
-1. **Freeze the baseline:** save requirement versions, references, samples, scoring rules, and model settings. Record known rules separately from critical unknowns.
-2. **Run in parallel:** use the same task and materials for direct chat, Prompt, and Skill. Start clean sessions and keep every raw output.
+1. **Freeze the baseline:** save requirement versions, shared inputs, the reviewer-only reference list, samples, scoring rules, and model settings. Record known rules separately from critical unknowns.
+2. **Run independently:** use the same task and materials for direct chat, Prompt, and Skill. Start clean sessions and keep every raw output.
 3. **Review blind:** hide approach names and apply the same checks for traceability, omissions, unsupported claims, usability, and human revision time.
 4. **Classify issues:** decide whether each issue came from the requirement, input context, Prompt or Skill instructions, model variation, or review criteria. Keep it open when evidence is insufficient.
 5. **Change one explainable factor:** for example, add a boundary check, clarify an output field, or update a reference. Record the version and reason.
@@ -134,10 +138,6 @@ For each round, retain input and method versions, model and tool, raw output, hu
 ### Is a Prompt or Skill always better than direct chat?
 
 No. Recurring tasks may benefit more from consistent structure and traceable steps. Direct chat may be cheaper for a one-off, low-risk exploration. Use task samples to decide instead of inferring quality from the method's name.
-
-### Are the three output snippets measured results?
-
-No. They illustrate the review criteria, and the scores only assess those snippets. They are not model-run results; measure consistency and revision time through actual repeated runs.
 
 ### Must I run each approach three times?
 
