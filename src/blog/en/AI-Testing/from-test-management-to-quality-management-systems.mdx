@@ -1,0 +1,348 @@
+---
+title: "From Test Management to Quality Management Systems: Finding Friction in the Work System"
+description: "A source-led review of Melissa Fisher and Rosie Sherry's discussion on QMS, friction mapping, product risk, quality orchestration, and AI-era collaboration, with interview views separated from engineering extensions."
+date: 2026-11-03T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["Quality Engineering", "Quality Management", "AI Testing"]
+categories: ["AI Testing", "Quality Engineering"]
+---
+
+## Core idea: improve the system that produces quality, not only the test findings
+
+Melissa Fisher starts with a recurring pattern in testing: **the root cause of a problem found in testing often lies somewhere outside testing itself**. Planning may have been unclear, design may have missed a risk, or actions agreed in a retrospective may never have been implemented.
+
+That shifts the quality conversation from “find and report defects” toward understanding how the whole system produces its results, then improving the weak points.
+
+Rosie Sherry captures the direction in one sentence:
+
+> **“You can't test your way to a good product.”**
+
+More testing cannot replace sound product planning, collaboration, and continuous improvement. Testing still matters; it is one part of a quality management system.
+
+~~~mermaid
+flowchart LR
+    A[Requirements and business goals] --> B[Quality planning]
+    B --> C[Design and development]
+    C --> D[Quality control: testing, security, review]
+    D --> E[Delivery and user feedback]
+    E --> F[Continuous improvement]
+    F --> B
+    D -.Findings and evidence.-> F
+    E -.Incidents and feedback.-> F
+~~~
+
+**How to read the diagram:** Testing is an important way to find problems and produce feedback. Quality improves when that feedback changes planning, development, and collaboration.
+
+## What is a system? The airport-tower analogy
+
+In a workshop, Melissa asks people to imagine looking out from an airport control tower. They can see aircraft, weather, crews, passengers, baggage, and flight schedules. Each element might be working, yet the airport can still have delays or lost luggage if the elements are not coordinated.
+
+A software team works in much the same way. Requirements, design, development, testing, deployment, operations, and user support affect one another.
+
+| Airport system | Software delivery system | Possible friction |
+|---|---|---|
+| Flight schedules | Requirements, iterations, and release plans | Unclear goals or conflicting schedules |
+| Crews and ground staff | Product, engineering, QA, and operations | Unclear ownership or missed handoffs |
+| Baggage handling | Movement of test data, code, configuration, and artifacts | Missing data or version mismatch |
+| Tower coordination | Cross-team and release coordination | Out-of-sync information or blocked dependencies |
+| Weather and external constraints | External services, regulation, and infrastructure risks | Uncertainty and unexpected failures |
+| Delay investigation | Defect analysis and incident review | Fixing symptoms without changing root causes |
+
+Melissa's plain-language explanation of a QMS is **a structured way of working that meets the expectations of operators, customers, and other stakeholders**.
+
+The airport is an explanatory analogy, not a formal ISO 9001 definition.
+
+## “Quality is the absence of friction”: a way to observe the system
+
+In the conversation, Melissa refers to the phrase **“Quality is the absence of friction”** to describe how quality professionals can look for resistance, rework, repeated effort, and major problems in a system. The transcript notes render the person being quoted as “Stuart Crocken,” but that name may be a speech-to-text error, so this article does not treat it as a verified attribution.
+
+Friction does not always mean a product defect. It can also look like:
+
+- A requirement is explained in several meetings, yet people still understand it differently.
+- Conflicting acceptance criteria are discovered only after development is complete.
+- Automated tests fail repeatedly, while most of the effort goes into repairing environments and data.
+- Retrospectives keep raising the same issue, but nobody follows through on the action.
+- AI generates a large amount of content, then deduplication and review take longer than expected.
+
+| Visible symptom | Possible system cause | A useful question |
+|---|---|---|
+| The same kind of defect keeps returning | Requirements clarification or design review is weak | Why does the issue surface late in development? |
+| Regression testing keeps getting slower | The test suite lacks maintenance and governance | Which tests still provide useful risk evidence? |
+| Retrospectives do not change much | Actions have no owner or follow-up | Which improvements have actually changed how people work? |
+| AI output grows while efficiency falls | Input quality, review strategy, or ownership is unclear | Did faster generation shorten the end-to-end delivery cycle? |
+
+**A boundary to keep in mind:** friction is a useful diagnostic signal, but “no friction” is not a complete definition of quality. Safety, compliance, reliability, and user value still need explicit requirements. A review or security gate may add work in the short term while reducing longer-term risk.
+
+## Three practical lenses for looking at a QMS
+
+At the workshop, Melissa grouped areas a team can actively improve into **Quality Planning, Quality Control, and Continuous Improvement**. The conversation also mentions management, leadership, and auditing. These three areas are practical lenses, not the full set of QMS requirements.
+
+| Lens | Key question | Typical software-team activities | Common gap |
+|---|---|---|---|
+| Quality planning | Do we know what we are delivering, why, and where the risks are? | Requirements clarification, Three Amigos, acceptance criteria, risk analysis | Ambiguous requirements or untested assumptions |
+| Quality control | How do we detect and manage results that differ from expectations? | Testing, code review, security checks, release verification | Checks happen late or evidence is insufficient |
+| Continuous improvement | Have feedback and findings changed the system? | Retrospectives, root-cause analysis, action tracking, process changes | Problems are discussed but actions are not completed |
+
+~~~mermaid
+flowchart TB
+    P[Quality planning<br/>Goals, requirements, risks, and acceptance criteria]
+    C[Quality control<br/>Testing, review, security, and feedback]
+    I[Continuous improvement<br/>Root causes, actions, and outcome checks]
+    P --> C
+    C --> I
+    I -->|Revise planning and collaboration| P
+    H[People and collaboration] -.runs through.-> P
+    H -.runs through.-> C
+    H -.runs through.-> I
+~~~
+
+Melissa emphasizes that teams should observe **how work is done**, not only record **what was done**. A team may hold retrospectives, but that alone does not mean it is improving; the agreed actions have to change the work.
+
+## Match governance to product risk
+
+The conversation uses medical devices, payment problems, and a notes app to show that failures have different consequences. Quality practices should reflect those differences rather than follow one fixed level of rigor.
+
+| Example from the conversation | Main risk | Possible governance emphasis |
+|---|---|---|
+| Medical device | Could endanger life | More rigorous verification, change control, and evidence |
+| Payment feature | Financial loss or incorrect transactions | Transaction correctness, exception handling, and data consistency |
+| Notes app | General feature or experience problems | More room for controlled experiments and iteration |
+
+These are **illustrative examples from the conversation**, not a fixed industry risk classification. Actual risk depends on the use case, data sensitivity, impact, and applicable regulation. A notes app handling highly sensitive information may carry serious risk; some payment failures can also cause substantial harm.
+
+~~~mermaid
+flowchart TD
+    A[Understand the product and use context] --> B[Identify failure consequences and affected people]
+    B --> C[Assess risk and uncertainty]
+    C --> D{Is the risk high?}
+    D -->|Yes| E[Increase review, evidence, access controls, and change control]
+    D -->|Lower and manageable| F[Allow more flexible experiments and faster feedback]
+    E --> G[Observe actual outcomes]
+    F --> G
+    G -->|Context changes| A
+~~~
+
+An AI agent may be easier to try on a low-risk task. Work involving a high-risk system or irreversible actions needs more careful authorization and review. **Permission to experiment is not permission for unconstrained automation.**
+
+## Friction mapping: make the QMS visible in everyday work
+
+At the MoTaCon workshop, Melissa used a simple sheet divided into three areas: planning, control, and continuous improvement. Participants wrote down what their team actually does, how it does it, and where the gaps are.
+
+She suggests repeating the exercise every **six to twelve months**, particularly as AI changes how work gets done.
+
+| Quality planning | Quality control | Continuous improvement |
+|---|---|---|
+| How do requirements enter the team? | How are important risks verified? | How are retrospective actions tracked? |
+| Who discusses acceptance criteria? | When do testing and security checks happen? | Do we check whether improvements worked? |
+| Who reviews AI-generated scope? | How do we classify automation failures? | Do the same issues keep returning? |
+| Which assumptions are still unconfirmed? | Are any quality conclusions unsupported by evidence? | Which practices are adding rework? |
+
+~~~mermaid
+flowchart TD
+    A[Record how the team actually works] --> B[Sort observations into planning, control, and improvement]
+    B --> C[Find friction, repeated effort, and gaps]
+    C --> D[Ask about system causes]
+    D --> E[Choose a small improvement]
+    E --> F[Observe outcomes and side effects]
+    F --> G[Adjust the way of working]
+    G -->|Review again periodically| A
+~~~
+
+### Friction in the AI era
+
+**Example: AI generates acceptance criteria, but planning takes longer.**
+
+An agent may quickly generate requirement scope and acceptance criteria, yet the output may be repetitive or vague. A person then spends hours cleaning it up. Generation is faster locally; total planning time may have increased across the system.
+
+The useful change may not be to choose a faster model. It may be to improve context, output structure, deduplication, review ownership, or the quality bar for acceptance criteria.
+
+**Example: more AI-generated code, less time to understand and review it.**
+
+The conversation raises a question: do engineers understand the code they submit? If not, a team may need to adjust reviews, training, or safeguards instead of judging efficiency by code volume alone.
+
+These are examples raised in the conversation. Which response will reduce friction needs to be checked against the team's actual situation; no tool is guaranteed to do so.
+
+## Common misconceptions: a QMS is not a pile of meetings and process
+
+| Common assumption | Response in the conversation | A more precise reading |
+|---|---|---|
+| Nothing has gone wrong, so nothing needs to change | A normal present does not rule out future risk | Look ahead for risks and opportunities |
+| A QMS will slow the team down | Its purpose is to reduce rework, repetition, and firefighting | Evaluate end-to-end effects, not the number of processes |
+| Retrospectives should deal only with the most annoying current issue | Step back and inspect the wider system | Consider both immediate symptoms and systemic causes |
+| Quality belongs to the QA team | Quality depends on collaboration across roles | QA brings expertise; the organization shares responsibility |
+| If every step is faster with AI, the system is faster | AI can add review and coordination costs | Look at end-to-end flow and risk |
+
+Rosie adds that teams cannot always change a system by pushing a formal process onto it. It helps to understand the organization's constraints and begin with a small change that can make a difference.
+
+## QMS and ISO 9001: the transferable part is systems thinking
+
+Melissa connects quality management experience with manufacturing, automotive production lines, and medical devices. She sees ideas about systems, processes, and continuous improvement that software teams can learn from.
+
+Two distinctions matter:
+
+- ISO 9001 is a generic quality management system requirements standard; it is not limited to manufacturing. The standard applies across organization types and sectors.
+- The point in the conversation is that software teams can draw more deliberately on systems-oriented quality management, rather than organizing quality only around testing activities.
+
+**Engineering extension:** A software team can draw on process thinking, risk awareness, evidence-based decisions, and continuous improvement. Whether to build a formal management system or seek certification depends on the organization's business and regulatory context.
+
+## From test management to quality orchestration: a possible future direction
+
+Rosie refers to an online course about test management that discussed orchestration, context, and relationships among data. When teams connect Jira tickets, acceptance criteria, tests, architecture diagrams, and other documents, she asks whether they are managing more than testing activities, perhaps moving toward a quality management system.
+
+The course presenter used the term **Quality Orchestration**. Melissa agrees with the direction and says AI may help teams process information faster and identify risks and assumptions earlier.
+
+| View | Main focus | Example |
+|---|---|---|
+| Test management | Test plans, cases, execution, and defects | A test management platform |
+| Quality management system | How an organization plans, controls, and improves quality | Cross-team ways of working, ownership, and feedback |
+| Quality orchestration | Connecting related information, roles, and activities | Relationships among requirements, risks, design, tests, and results |
+
+**Important boundary:** Quality orchestration is a direction for discussion in the episode, not an established industry conclusion or a standard tool that every organization will adopt.
+
+~~~mermaid
+flowchart LR
+    R[Requirement or user story] --> A[Acceptance criteria]
+    R --> K[Business risks and assumptions]
+    D[Architecture and design] --> K
+    A --> T[Test design and execution]
+    K --> T
+    T --> E[Results and quality evidence]
+    E --> Q[Risk judgment and delivery decision]
+    Q --> F[Feedback and improvement]
+    F -.Update requirements and strategy.-> R
+    D -.Technical constraints.-> T
+~~~
+
+**Engineering extension:** These relationships can be represented with links, structured metadata, or a knowledge graph. The tool is secondary. The team should be able to answer: Why are we testing this? What did we learn? What lacks evidence? Which risks remain open?
+
+## AI in a QMS: opportunities and boundaries
+
+The conversation does not set a mature standard for agent autonomy. It leaves an open question: **how much work should go to an agent, and which decisions still require human review?**
+
+Based on the discussion, AI can help organize information, surface assumptions, and identify risks. It does not take over quality responsibility.
+
+| Work AI may help with | Judgment to retain |
+|---|---|
+| Summarizing requirements, design, and historical defects | Whether the business goal and requirement were understood correctly |
+| Finding conflicts and omissions across documents | Which issues are genuinely important risks |
+| Suggesting acceptance criteria and test scenarios | Whether expected behavior matches business intent |
+| Organizing retrospective notes and actions | Which improvement merits investment and who owns it |
+| Linking test results to risk evidence | Whether residual risk is acceptable |
+
+### Why consider accessibility earlier?
+
+Melissa points out that accessibility is often considered late. Identifying user roles, different access needs, and interaction constraints during planning can reduce rework before design and development are complete.
+
+That is one way a QMS can help: bring quality concerns into the way work is planned, rather than adding every check at the end.
+
+## People and collaboration matter more than the process name
+
+Later in the conversation, Melissa emphasizes that good systems rely on collaboration. When people discuss systems, they can focus on process and mechanisms and forget the people doing the work.
+
+She describes a team that was mostly reactive when she joined. Better planning, different kinds of testing, and collaboration helped it move toward prevention.
+
+Melissa did not begin by asking the team to adopt “QMS.” She started with a small practice, such as a **Three Amigos** discussion, where relevant roles could share an understanding of requirements and quality risks. As the team saw value, the approach was accepted.
+
+~~~mermaid
+flowchart LR
+    A[React to problems] --> B[Notice friction in planning]
+    B --> C[Try a small Three Amigos discussion]
+    C --> D[Clarify requirements and risks earlier]
+    D --> E[The team sees the result]
+    E --> F[Build a habit of proactive prevention]
+~~~
+
+**Engineering extension:** Three Amigos often brings business, development, and testing perspectives together. The group does not have to contain exactly three people; the point is to bring different expertise into the conversation early.
+
+## Learn from incidents, not only their immediate technical cause
+
+Melissa recommends reading real incident reports and root-cause analyses to understand system-level problems. In the conversation she mentions a security incident involving Hugging Face and an AI agent, but the transcript's description is informal and does not provide a verifiable incident identifier.
+
+It would therefore be unsafe to use this conversation alone to claim exactly what attack succeeded, who carried it out, or what impact it had.
+
+The useful learning method is to read an incident report and ask about gaps in security design, access control, collaboration, and review. Even without deep security experience, a basic question can open the discussion: **“Did we consider this agent's security?”**
+
+## The Ahh Test and flywheel thinking
+
+Rosie describes an intuitive decision principle used by the MoTaverse team. The session page calls it **The Ahh Test**: before deciding, the team asks whether a choice feels right and supports the whole system.
+
+Concerns might include adding too much work, putting pressure on the team, creating security risks, or treating some users unfairly.
+
+This is not a formal testing method and cannot replace verifiable security, compliance, or quality evidence. It is a starting point for noticing when something does not fit.
+
+Rosie also uses a **flywheel** metaphor: if a practice keeps slowing the system down, it is worth investigating the friction.
+
+~~~mermaid
+flowchart LR
+    A[Better collaboration and planning] --> B[Less misunderstanding and rework]
+    B --> C[Smoother delivery]
+    C --> D[More timely feedback]
+    D --> E[Improved ways of working]
+    E --> A
+~~~
+
+The flywheel is not a call to maximize speed. Speed gained at the expense of safety, reliability, or sustainable work may damage the system.
+
+## Career growth: from executing tests to improving the system
+
+Melissa says that, with experience, testers can do more than report defects. They can suggest improvements to products, processes, and team capability. **People can show leadership without holding a management title.**
+
+The conversation mentions or discusses several role directions:
+
+| Role direction | Focus | Connection to a QMS |
+|---|---|---|
+| Quality Engineer | Testing and quality engineering practice | Identifying risks and providing quality evidence |
+| Quality Architect | Quality design across delivery stages | Embedding quality requirements in system design |
+| Quality Enablement Lead | Helping teams build quality capability | Improving collaboration, methods, and organizational ability |
+| Staff Quality Engineer | Technical influence across teams | Driving systemic quality improvement |
+| Engineering Manager with a testing background | Team delivery and organizational collaboration | Extending quality thinking into engineering management |
+
+These are not standard career steps prescribed by the interview. They are directions the guest observes in evolving roles.
+
+For a tester, professional value is not measured only by how many defects they find. It also comes from explaining why defects occur and helping the team reduce the chance of recurrence.
+
+## An engineering extension: AI-native quality engineering
+
+The following is an independent engineering extension of the conversation, not a formal model proposed by Melissa or Rosie.
+
+AI-native quality engineering can be viewed as three connected capabilities:
+
+| Area | Key capabilities | Question to answer |
+|---|---|---|
+| Quality planning | Requirement understanding, risk modeling, acceptance criteria | Are we building the right thing? |
+| Quality verification and control | Test strategy, automation, agent evaluation, quality evidence | What supports our confidence that it meets expectations? |
+| Continuous improvement and governance | Root-cause analysis, metric feedback, access and change governance | How does the system become more reliable over time? |
+
+AI may help interpret context, generate candidate approaches, connect evidence, and surface gaps. Quality ownership, business trade-offs, and high-risk decisions still need clear human accountability.
+
+This view also raises a practical question: can tools work together to reduce friction, rather than just add more testing tools? An automation tool may run quickly, but if its results cannot be traced to business risks, the team may spend more time explaining them and making decisions.
+
+## Takeaway
+
+The episode does not ask testers to stop testing, and it does not suggest that every team should immediately build a large QMS platform.
+
+It asks teams to treat test results as signals from a wider system. To improve quality over time, understand the planning, control, collaboration, and feedback behind those signals.
+
+Melissa's three lenses—quality planning, quality control, and continuous improvement—give a team a practical way to examine its work and identify friction. Rosie extends the conversation to quality orchestration, AI, team culture, and career development.
+
+> **Do not only test what the system produces. Keep improving the system that produces it.**
+
+---
+
+*Editorial note: The article follows the episode and the reviewed transcript notes. The airport analogy, three practical lenses, friction map, risk examples, quality orchestration, Three Amigos, Ahh Test, and career directions are discussed in the conversation. The diagrams are explanatory redrawings, not official visuals from the episode. The full scope of ISO 9001, the specific incident, and the exact book title are treated with the limits described above.*
+
+## Further reading
+
+- **ISO 9001**: A quality management system requirements standard covering process thinking, risk, and continual improvement. ISO 9001 standard information: https://www.iso.org/standard/9001
+- **Systems thinking**: Useful for understanding how local optimization can affect overall outcomes.
+- **Elizabeth Hendrickson et al., *Signals and Levers***: A reading suggestion added by a commenter on the MoTaverse page. Melissa mentions interest in a new book by Hendrickson but does not confirm this title during the conversation.
+- **Real incident root-cause reports**: Useful for tracing a visible failure back to planning, collaboration, design, or governance.
+
+## Source and editorial notes
+
+- **Source**: *Into the MoTaverse*, “From Test Management to Quality Management Systems” (28 October 2026)
+- **Guest**: Melissa Fisher, quality and test consultant
+- **Host**: Rosie Sherry, founder and CEO of the MoTaverse
+- **Session page**: https://www.ministryoftesting.com/media-sessions/from-test-management-to-quality-management-systems
+- **Reading note**: QMS means quality management system. This article follows the conversation; it is not an interpretation of ISO 9001 or a complete, certifiable QMS implementation guide. Engineering applications are marked separately.
