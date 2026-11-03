@@ -4,7 +4,7 @@
 
 .mermaid-diagram {
   max-inline-size: 100%;
-  margin-block: 1.25rem;
+  margin-block: var(--space-24);
   overflow-x: auto;
 }
 
@@ -12,5 +12,16 @@
   display: block;
   max-inline-size: 100%;
   block-size: auto;
+  aspect-ratio: auto;
   margin-inline: auto;
+}
+
+.mermaid-diagram:focus-visible {
+  outline: 2px solid var(--color-theme);
+  outline-offset: 3px;
+}
+
+.mermaid-diagram--wide > svg {
+  max-inline-size: none;
+  margin-inline: 0;
 }

@@ -409,6 +409,30 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
       let mermaidModule: Promise<typeof import("mermaid")> | undefined;
       let mermaidRenderSequence = 0;
 
+      function setMermaidDiagramSvg(diagram: HTMLElement, svg: string) {
+        diagram.innerHTML = svg;
+        diagram.classList.remove("mermaid-diagram--wide");
+        diagram.removeAttribute("tabindex");
+        diagram.removeAttribute("role");
+        diagram.removeAttribute("aria-label");
+        const svgElement = diagram.querySelector("svg");
+        if (!svgElement) return;
+
+        const { width, height } = svgElement.viewBox.baseVal;
+        if (width > 0 && height > 0 && width > height) {
+          svgElement.setAttribute("width", String(width));
+          diagram.classList.add("mermaid-diagram--wide");
+          diagram.tabIndex = 0;
+          diagram.setAttribute("role", "region");
+          diagram.setAttribute(
+            "aria-label",
+            document.documentElement.lang.toLowerCase().startsWith("zh")
+              ? "图表，可横向滚动"
+              : "Diagram, scroll horizontally",
+          );
+        }
+      }
+
       async function renderMermaidDiagrams() {
         const sourceBlocks = Array.from(
           document.querySelectorAll<HTMLPreElement>(
@@ -441,7 +465,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
               const diagram = document.createElement("div");
               diagram.className = "mermaid-diagram";
               diagram.dataset.mermaidSource = source;
-              diagram.innerHTML = svg;
+              setMermaidDiagramSvg(diagram, svg);
               sourceBlock.replaceWith(diagram);
             } catch (error) {
               if (sequence !== mermaidRenderSequence) return;
@@ -459,7 +483,7 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
                 source,
               );
               if (sequence !== mermaidRenderSequence) return;
-              diagram.innerHTML = svg;
+              setMermaidDiagramSvg(diagram, svg);
             } catch (error) {
               if (sequence !== mermaidRenderSequence) return;
               console.warn("[Mermaid] Theme update failed; keeping the previous diagram.", error);
