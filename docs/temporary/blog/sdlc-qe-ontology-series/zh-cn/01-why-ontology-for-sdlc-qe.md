@@ -126,8 +126,8 @@ flowchart LR
 
 ## 系列导航
 
-- 上一篇：`00-what-is-ontology.md`
-- 下一篇：`02-ontology-graph-rag-database.md`
+- 上一篇草稿：`00-what-is-ontology.md`
+- 下一篇草稿：`02-ontology-graph-rag-database.md`
 
 ## 参考资料
 

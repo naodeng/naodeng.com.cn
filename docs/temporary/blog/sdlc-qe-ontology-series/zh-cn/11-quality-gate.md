@@ -109,8 +109,8 @@ AI 可以汇总关系和证据状态。批准权限应由组织政策控制，�
 
 ## 系列导航
 
-- 上一篇：`10-quality-evidence.md`
-- 下一篇：`12-ontology-effectiveness.md`
+- 上一篇草稿：`10-quality-evidence.md`
+- 下一篇草稿：`12-ontology-effectiveness.md`
 
 ## 参考资料
 

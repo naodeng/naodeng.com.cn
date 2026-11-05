@@ -159,8 +159,8 @@ These project stories show how an ontology makes objects and relationships inspe
 
 ## Series Navigation
 
-- Previous: `02-ontology-graph-rag-database.md`
-- Next: `04-sdlc-ontology.md`
+- Previous draft: `02-ontology-graph-rag-database.md`
+- Next draft: `04-sdlc-ontology.md`
 
 ## References
 

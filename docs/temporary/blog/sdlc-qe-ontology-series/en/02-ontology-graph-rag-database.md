@@ -165,8 +165,8 @@ Databases, graphs, RAG, and ontologies have different roles. A real system can c
 
 ## Series Navigation
 
-- Previous: `01-why-ontology-for-sdlc-qe.md`
-- Next: `03-sdlc-qe-walkthrough.md`
+- Previous draft: `01-why-ontology-for-sdlc-qe.md`
+- Next draft: `03-sdlc-qe-walkthrough.md`
 
 ## References
 

@@ -175,8 +175,8 @@ Multiple QA agents can divide work across requirements, changes, testing, and ex
 
 ## Series Navigation
 
-- Previous: `18-build-a-domain-aware-qa-agent.md`
-- Series starting point: `00-what-is-ontology.md`
+- Previous draft: `18-build-a-domain-aware-qa-agent.md`
+- Series entry point (draft): `00-what-is-ontology.md`
 
 ## References
 

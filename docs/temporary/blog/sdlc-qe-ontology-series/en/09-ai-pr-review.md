@@ -110,8 +110,8 @@ An ontology lets an AI PR review read explicit engineering relationships and sho
 
 ## Series Navigation
 
-- Previous: `08-change-impact.md`
-- Next: `10-quality-evidence.md`
+- Previous draft: `08-change-impact.md`
+- Next draft: `10-quality-evidence.md`
 
 ## References
 

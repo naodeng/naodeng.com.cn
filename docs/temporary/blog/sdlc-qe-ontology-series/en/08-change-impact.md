@@ -109,8 +109,8 @@ An ontology can turn existing requirement and test relationships into a candidat
 
 ## Series Navigation
 
-- Previous: `07-build-runnable-ontology.md`
-- Next: `09-ai-pr-review.md`
+- Previous draft: `07-build-runnable-ontology.md`
+- Next draft: `09-ai-pr-review.md`
 
 ## References
 

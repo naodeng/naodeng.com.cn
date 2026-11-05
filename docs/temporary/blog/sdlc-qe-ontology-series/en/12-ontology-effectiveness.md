@@ -122,8 +122,8 @@ The available materials support an experiment design, not a performance conclusi
 
 ## Series Navigation
 
-- Previous: `11-quality-gate.md`
-- Next: `13-defect-risk-analysis.md`
+- Previous draft: `11-quality-gate.md`
+- Next draft: `13-defect-risk-analysis.md`
 
 ## References
 

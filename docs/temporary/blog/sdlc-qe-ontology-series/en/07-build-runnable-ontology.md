@@ -195,8 +195,8 @@ A runnable ontology experiment combines a question, conceptual model, instance d
 
 ## Series Navigation
 
-- Previous: `06-connect-sdlc-qe.md`
-- Next: `08-change-impact.md`
+- Previous draft: `06-connect-sdlc-qe.md`
+- Next draft: `08-change-impact.md`
 
 ## References
 

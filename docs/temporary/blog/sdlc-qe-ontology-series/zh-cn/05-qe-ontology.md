@@ -113,8 +113,8 @@ flowchart LR
 
 ## 系列导航
 
-- 上一篇：`04-sdlc-ontology.md`
-- 下一篇：`06-connect-sdlc-qe.md`
+- 上一篇草稿：`04-sdlc-ontology.md`
+- 下一篇草稿：`06-connect-sdlc-qe.md`
 
 ## 参考资料
 

@@ -113,8 +113,8 @@ An SDLC ontology makes engineering objects and lifecycle relationships explicit 
 
 ## Series Navigation
 
-- Previous: `03-sdlc-qe-walkthrough.md`
-- Next: `05-qe-ontology.md`
+- Previous draft: `03-sdlc-qe-walkthrough.md`
+- Next draft: `05-qe-ontology.md`
 
 ## References
 

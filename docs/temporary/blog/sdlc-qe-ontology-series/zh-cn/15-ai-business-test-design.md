@@ -158,8 +158,8 @@ flowchart LR
 
 ## 系列导航
 
-- 上一篇：`14-order-payment-ontology.md`
-- 下一篇：`16-find-business-test-gaps.md`
+- 上一篇草稿：`14-order-payment-ontology.md`
+- 下一篇草稿：`16-find-business-test-gaps.md`
 
 ## 参考资料
 

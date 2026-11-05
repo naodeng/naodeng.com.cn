@@ -124,8 +124,8 @@ flowchart LR
 
 ## 系列导航
 
-- 上一篇：`13-defect-risk-analysis.md`
-- 下一篇：`15-ai-business-test-design.md`
+- 上一篇草稿：`13-defect-risk-analysis.md`
+- 下一篇草稿：`15-ai-business-test-design.md`
 
 ## 参考资料
 

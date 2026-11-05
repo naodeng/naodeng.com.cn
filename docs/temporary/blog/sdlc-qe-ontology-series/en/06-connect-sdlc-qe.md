@@ -111,8 +111,8 @@ The SDLC ontology answers what changed and which requirements relate to it. The 
 
 ## Series Navigation
 
-- Previous: `05-qe-ontology.md`
-- Next: `07-build-runnable-ontology.md`
+- Previous draft: `05-qe-ontology.md`
+- Next draft: `07-build-runnable-ontology.md`
 
 ## References
 

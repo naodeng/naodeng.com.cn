@@ -175,8 +175,8 @@ Agent 负责缩短信息查找、分析和草拟时间。测试执行、证据�
 
 ## 系列导航
 
-- 上一篇：`18-build-a-domain-aware-qa-agent.md`
-- 系列起点：`00-what-is-ontology.md`
+- 上一篇草稿：`18-build-a-domain-aware-qa-agent.md`
+- 系列起点草稿：`00-what-is-ontology.md`
 
 ## 参考资料
 

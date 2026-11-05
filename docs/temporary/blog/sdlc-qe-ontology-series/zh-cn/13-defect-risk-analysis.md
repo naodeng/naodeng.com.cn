@@ -115,8 +115,8 @@ AI 可以提出相似记录和可能原因。根因仍需要调查证据。未�
 
 ## 系列导航
 
-- 上一篇：`12-ontology-effectiveness.md`
-- 下一篇：`14-order-payment-ontology.md`
+- 上一篇草稿：`12-ontology-effectiveness.md`
+- 下一篇草稿：`14-order-payment-ontology.md`
 
 ## 参考资料
 

@@ -64,6 +64,7 @@ The series keeps the cycle “business rule / requirement → test obligation �
 ## Work that still needs real execution or follow-up
 
 - The `01_project/...` and `02_blog/...` references in article text are editorial pointers into the v0.19 package, not reader-accessible links. Before moving articles into the published blog, replace public source references with full URLs or move internal pointers to editorial notes.
+- Previous and next entries in the article files currently use draft filenames as editorial pointers, not reader-facing links. Replace them with full absolute URLs that follow the site standard before publication.
 - Article 07's reproduction commands ran on the supplied v0.19 package snapshot on 2026-11-05: Python 3.15.2, rdflib 7.6.0, pySHACL 0.40.2; 22 passed, 0 failed, and 0 skipped. The package has no Git metadata, so the result is not tied to a commit SHA. Before publication, rerun against an immutable source revision and add representative gap-case output.
 - Article 12 has no experiment results. Its metrics table remains marked as pending measurement until a real comparison is complete.
 - Order and payment rules are teaching examples that need confirmation by a business owner. No assumptions are made about timing, concurrency, or refund fees.

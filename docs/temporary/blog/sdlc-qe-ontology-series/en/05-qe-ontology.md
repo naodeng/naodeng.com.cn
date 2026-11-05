@@ -113,8 +113,8 @@ A quality-engineering ontology separates risks, verification obligations, test m
 
 ## Series Navigation
 
-- Previous: `04-sdlc-ontology.md`
-- Next: `06-connect-sdlc-qe.md`
+- Previous draft: `04-sdlc-ontology.md`
+- Next draft: `06-connect-sdlc-qe.md`
 
 ## References
 

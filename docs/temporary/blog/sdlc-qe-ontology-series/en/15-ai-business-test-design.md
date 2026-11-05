@@ -158,8 +158,8 @@ A business ontology gives AI test design context about rules, objects, and state
 
 ## Series Navigation
 
-- Previous: `14-order-payment-ontology.md`
-- Next: `16-find-business-test-gaps.md`
+- Previous draft: `14-order-payment-ontology.md`
+- Next draft: `16-find-business-test-gaps.md`
 
 ## References
 

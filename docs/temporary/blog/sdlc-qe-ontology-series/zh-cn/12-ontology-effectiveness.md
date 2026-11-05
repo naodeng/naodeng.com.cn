@@ -122,8 +122,8 @@ flowchart LR
 
 ## 系列导航
 
-- 上一篇：`11-quality-gate.md`
-- 下一篇：`13-defect-risk-analysis.md`
+- 上一篇草稿：`11-quality-gate.md`
+- 下一篇草稿：`13-defect-risk-analysis.md`
 
 ## 参考资料
 

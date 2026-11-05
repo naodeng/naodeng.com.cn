@@ -127,8 +127,8 @@ Gap analysis starts from confirmed rules, then checks obligations, scenarios, ca
 
 ## Series Navigation
 
-- Previous: `15-ai-business-test-design.md`
-- Next: `17-business-rules-to-automation.md`
+- Previous draft: `15-ai-business-test-design.md`
+- Next draft: `17-business-rules-to-automation.md`
 
 ## References
 

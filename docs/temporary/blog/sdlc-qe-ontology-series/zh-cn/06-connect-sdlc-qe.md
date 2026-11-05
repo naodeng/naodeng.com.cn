@@ -111,8 +111,8 @@ SDLC 本体回答「改了什么、关联哪个需求」，QE 本体回答「需
 
 ## 系列导航
 
-- 上一篇：`05-qe-ontology.md`
-- 下一篇：`07-build-runnable-ontology.md`
+- 上一篇草稿：`05-qe-ontology.md`
+- 下一篇草稿：`07-build-runnable-ontology.md`
 
 ## 参考资料
 

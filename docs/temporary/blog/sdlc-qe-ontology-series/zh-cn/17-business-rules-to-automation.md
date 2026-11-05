@@ -146,8 +146,8 @@ v0.19 使用 `TestExecution executes TestCase` 表示执行与用例的关联，
 
 ## 系列导航
 
-- 上一篇：`16-find-business-test-gaps.md`
-- 下一篇：`18-build-a-domain-aware-qa-agent.md`
+- 上一篇草稿：`16-find-business-test-gaps.md`
+- 下一篇草稿：`18-build-a-domain-aware-qa-agent.md`
 
 ## 参考资料
 

@@ -110,8 +110,8 @@ flowchart LR
 
 ## 系列导航
 
-- 上一篇：`09-ai-pr-review.md`
-- 下一篇：`11-quality-gate.md`
+- 上一篇草稿：`09-ai-pr-review.md`
+- 下一篇草稿：`11-quality-gate.md`
 
 ## 参考资料
 

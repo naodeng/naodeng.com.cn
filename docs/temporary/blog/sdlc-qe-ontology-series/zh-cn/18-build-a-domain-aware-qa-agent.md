@@ -129,8 +129,8 @@ QA Agent 的价值在于把查询到的质量关系和证据组织成可审查�
 
 ## 系列导航
 
-- 上一篇：`17-business-rules-to-automation.md`
-- 下一篇：`19-multi-agent-shared-quality-knowledge.md`
+- 上一篇草稿：`17-business-rules-to-automation.md`
+- 下一篇草稿：`19-multi-agent-shared-quality-knowledge.md`
 
 ## 参考资料
 

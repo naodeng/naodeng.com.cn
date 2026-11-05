@@ -124,8 +124,8 @@ An order and payment ontology gives business objects, states, and rules shared d
 
 ## Series Navigation
 
-- Previous: `13-defect-risk-analysis.md`
-- Next: `15-ai-business-test-design.md`
+- Previous draft: `13-defect-risk-analysis.md`
+- Next draft: `15-ai-business-test-design.md`
 
 ## References
 

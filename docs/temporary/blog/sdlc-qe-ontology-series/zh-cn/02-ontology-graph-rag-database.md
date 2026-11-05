@@ -165,8 +165,8 @@ RAG 适合检索文字材料。精确的多跳关系、版本限定和约束检�
 
 ## 系列导航
 
-- 上一篇：`01-why-ontology-for-sdlc-qe.md`
-- 下一篇：`03-sdlc-qe-walkthrough.md`
+- 上一篇草稿：`01-why-ontology-for-sdlc-qe.md`
+- 下一篇草稿：`03-sdlc-qe-walkthrough.md`
 
 ## 参考资料
 

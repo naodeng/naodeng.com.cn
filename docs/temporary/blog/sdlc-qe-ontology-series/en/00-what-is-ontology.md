@@ -208,7 +208,7 @@ An ontology explicitly describes concepts, relationships, and rules in a domain.
 
 ## Series Navigation
 
-- Next: `01-why-ontology-for-sdlc-qe.md`
+- Next draft: `01-why-ontology-for-sdlc-qe.md`
 
 ## References
 

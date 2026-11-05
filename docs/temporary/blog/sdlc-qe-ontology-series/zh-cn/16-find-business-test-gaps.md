@@ -127,8 +127,8 @@ AI 可以根据给定规则提出候选状态和问题。没有业务策略依�
 
 ## 系列导航
 
-- 上一篇：`15-ai-business-test-design.md`
-- 下一篇：`17-business-rules-to-automation.md`
+- 上一篇草稿：`15-ai-business-test-design.md`
+- 下一篇草稿：`17-business-rules-to-automation.md`
 
 ## 参考资料
 

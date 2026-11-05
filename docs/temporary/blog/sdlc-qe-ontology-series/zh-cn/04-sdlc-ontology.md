@@ -113,8 +113,8 @@ SDLC 本体把工程对象和生命周期关系写清楚，让需求能沿着代
 
 ## 系列导航
 
-- 上一篇：`03-sdlc-qe-walkthrough.md`
-- 下一篇：`05-qe-ontology.md`
+- 上一篇草稿：`03-sdlc-qe-walkthrough.md`
+- 下一篇草稿：`05-qe-ontology.md`
 
 ## 参考资料
 

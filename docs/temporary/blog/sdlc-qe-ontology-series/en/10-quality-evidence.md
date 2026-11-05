@@ -110,8 +110,8 @@ Test count and code coverage cannot replace traceability from an obligation to e
 
 ## Series Navigation
 
-- Previous: `09-ai-pr-review.md`
-- Next: `11-quality-gate.md`
+- Previous draft: `09-ai-pr-review.md`
+- Next draft: `11-quality-gate.md`
 
 ## References
 

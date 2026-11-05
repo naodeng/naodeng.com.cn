@@ -195,8 +195,8 @@ OWL 用于表达语义并支持逻辑推理。缺少字段等完整性要求通�
 
 ## 系列导航
 
-- 上一篇：`06-connect-sdlc-qe.md`
-- 下一篇：`08-change-impact.md`
+- 上一篇草稿：`06-connect-sdlc-qe.md`
+- 下一篇草稿：`08-change-impact.md`
 
 ## 参考资料
 

@@ -146,8 +146,8 @@ Automation lets reviewed test obligations be checked repeatedly during routine c
 
 ## Series Navigation
 
-- Previous: `16-find-business-test-gaps.md`
-- Next: `18-build-a-domain-aware-qa-agent.md`
+- Previous draft: `16-find-business-test-gaps.md`
+- Next draft: `18-build-a-domain-aware-qa-agent.md`
 
 ## References
 

@@ -115,8 +115,8 @@ A defect ontology makes historical failures searchable through components, rules
 
 ## Series Navigation
 
-- Previous: `12-ontology-effectiveness.md`
-- Next: `14-order-payment-ontology.md`
+- Previous draft: `12-ontology-effectiveness.md`
+- Next draft: `14-order-payment-ontology.md`
 
 ## References
 

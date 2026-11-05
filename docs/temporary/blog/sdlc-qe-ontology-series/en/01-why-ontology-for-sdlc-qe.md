@@ -126,8 +126,8 @@ Engineering teams already have requirement, code, test, and release data. The di
 
 ## Series Navigation
 
-- Previous: `00-what-is-ontology.md`
-- Next: `02-ontology-graph-rag-database.md`
+- Previous draft: `00-what-is-ontology.md`
+- Next draft: `02-ontology-graph-rag-database.md`
 
 ## References
 

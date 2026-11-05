@@ -208,7 +208,7 @@ flowchart LR
 
 ## 系列导航
 
-- 下一篇：`01-why-ontology-for-sdlc-qe.md`
+- 下一篇草稿：`01-why-ontology-for-sdlc-qe.md`
 
 ## 参考资料
 

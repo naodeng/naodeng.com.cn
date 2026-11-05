@@ -110,8 +110,8 @@ Agent 的提醒是审查输入。阻断规则应由团队的门禁政策定义�
 
 ## 系列导航
 
-- 上一篇：`08-change-impact.md`
-- 下一篇：`10-quality-evidence.md`
+- 上一篇草稿：`08-change-impact.md`
+- 下一篇草稿：`10-quality-evidence.md`
 
 ## 参考资料
 

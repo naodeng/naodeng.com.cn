@@ -159,8 +159,8 @@ flowchart TD
 
 ## 系列导航
 
-- 上一篇：`02-ontology-graph-rag-database.md`
-- 下一篇：`04-sdlc-ontology.md`
+- 上一篇草稿：`02-ontology-graph-rag-database.md`
+- 下一篇草稿：`04-sdlc-ontology.md`
 
 ## 参考资料
 

@@ -109,8 +109,8 @@ A release gate needs requirements, builds, test executions, evidence, and risks 
 
 ## Series Navigation
 
-- Previous: `10-quality-evidence.md`
-- Next: `12-ontology-effectiveness.md`
+- Previous draft: `10-quality-evidence.md`
+- Next draft: `12-ontology-effectiveness.md`
 
 ## References
 

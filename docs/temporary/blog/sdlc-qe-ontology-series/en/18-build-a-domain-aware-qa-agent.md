@@ -129,8 +129,8 @@ A QA Agent is useful when it turns queried quality relationships and evidence in
 
 ## Series Navigation
 
-- Previous: `17-business-rules-to-automation.md`
-- Next: `19-multi-agent-shared-quality-knowledge.md`
+- Previous draft: `17-business-rules-to-automation.md`
+- Next draft: `19-multi-agent-shared-quality-knowledge.md`
 
 ## References
 
