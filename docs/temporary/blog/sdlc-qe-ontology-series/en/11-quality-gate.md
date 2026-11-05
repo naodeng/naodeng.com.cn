@@ -107,6 +107,11 @@ Answers: 1-B, 2-B, 3-B.
 
 A release gate needs requirements, builds, test executions, evidence, and risks in one reviewable record. Qualified, Unqualified, and Unknown must be interpreted by a versioned policy. People make Go / No-Go decisions under the authorized process. The next article designs an experiment to check whether an ontology improves this work in practice.
 
+## Series Navigation
+
+- Previous: `10-quality-evidence.md`
+- Next: `12-ontology-effectiveness.md`
+
 ## References
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

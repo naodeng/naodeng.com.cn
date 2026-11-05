@@ -127,6 +127,11 @@ flowchart LR
 
 QA Agent 的价值在于把查询到的质量关系和证据组织成可审查的建议。只读查询、明确来源、未知项处理和人工决策边界，是从演示走向可信协作的基本条件。下一篇讨论多个 Agent 如何共享同一份质量知识。
 
+## 系列导航
+
+- 上一篇：`17-business-rules-to-automation.md`
+- 下一篇：`19-multi-agent-shared-quality-knowledge.md`
+
 ## 参考资料
 
 - W3C RDF 1.1 Concepts: https://www.w3.org/TR/rdf11-concepts/

@@ -122,6 +122,11 @@ Answers: 1-B, 2-B, 3-B.
 
 An order and payment ontology gives business objects, states, and rules shared definitions. A suitable execution mechanism must still check transitions and numeric constraints. The next article turns these business rules into traceable AI test designs.
 
+## Series Navigation
+
+- Previous: `13-defect-risk-analysis.md`
+- Next: `15-ai-business-test-design.md`
+
 ## References
 
 - The order and payment rules come from the user-provided ontology research plan and are teaching assumptions that require project review.

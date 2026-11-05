@@ -108,6 +108,11 @@ Answers: 1-B, 2-B, 3-B.
 
 Test count and code coverage cannot replace traceability from an obligation to evidence. A quality report should show links, actual executions, and evidence qualification, with each conclusion tied to a build and source. The next article brings this information into a CI/CD release gate.
 
+## Series Navigation
+
+- Previous: `09-ai-pr-review.md`
+- Next: `11-quality-gate.md`
+
 ## References
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

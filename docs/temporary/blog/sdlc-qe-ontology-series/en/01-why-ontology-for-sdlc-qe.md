@@ -124,6 +124,11 @@ Answers: 1-B, 2-B, 3-B.
 
 Engineering teams already have requirement, code, test, and release data. The difficult part is knowing how each record relates to the others. An ontology gives those relationships explicit meanings and makes analysis traceable. The next article compares what a database, knowledge graph, RAG, and ontology each contribute to the same PR question.
 
+## Series Navigation
+
+- Previous: `00-what-is-ontology.md`
+- Next: `02-ontology-graph-rag-database.md`
+
 ## References
 
 - Series model and terms: `01_project/ontology/baseline.ttl` in the v0.19 project package

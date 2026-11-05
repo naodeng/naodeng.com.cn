@@ -111,6 +111,11 @@ Answers: 1-B, 2-B, 3-A.
 
 A quality-engineering ontology separates risks, verification obligations, test methods, executions, and evidence. This lets a quality conclusion show its basis and expose evidence gaps. The next article connects these QE relationships to SDLC requirements, pull requests, builds, and releases.
 
+## Series Navigation
+
+- Previous: `04-sdlc-ontology.md`
+- Next: `06-connect-sdlc-qe.md`
+
 ## References
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

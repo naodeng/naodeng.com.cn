@@ -173,6 +173,11 @@ Agent 负责缩短信息查找、分析和草拟时间。测试执行、证据�
 
 多个 QA Agent 可以分工处理需求、变更、测试和执行信息，但需要通过统一语义、版本快照和结构化交接保持上下文。质量结论仍要依据可追溯证据，并由有权限的人作出决定。
 
+## 系列导航
+
+- 上一篇：`18-build-a-domain-aware-qa-agent.md`
+- 系列起点：`00-what-is-ontology.md`
+
 ## 参考资料
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

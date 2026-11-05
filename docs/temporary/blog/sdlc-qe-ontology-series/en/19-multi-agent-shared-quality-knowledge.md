@@ -173,6 +173,11 @@ Answers: 1-B, 2-B, 3-B.
 
 Multiple QA agents can divide work across requirements, changes, testing, and execution, but they need shared semantics, versioned snapshots, and structured handoffs to preserve context. Quality conclusions still need traceable evidence and a decision from an authorized person.
 
+## Series Navigation
+
+- Previous: `18-build-a-domain-aware-qa-agent.md`
+- Series starting point: `00-what-is-ontology.md`
+
 ## References
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

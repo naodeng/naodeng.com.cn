@@ -131,7 +131,7 @@ SELECT ?obligation WHERE {
 ORDER BY ?obligation
 ```
 
-The query lists every TestObligation, then excludes obligations that have a `TestCase addresses TestObligation` relationship. The result means that the current data graph has no such link. It cannot distinguish a real lack of tests from data that was never imported.
+The query lists every TestObligation and excludes obligations with a matching `TestCase addresses TestObligation` relationship. Each returned row identifies an obligation with no matching test case in the current graph. An empty result means the query found no such obligation in the queried data. Incomplete imports or mappings can affect that result, so it does not prove that no real-world test gap exists.
 
 ## Turn the Query into a Maintainable Test
 
@@ -155,7 +155,9 @@ python -m unittest discover -s tests -v
 
 The requirements file specifies `rdflib>=7,<9` and `pyshacl>=0.30,<1`. Record the Python and dependency versions, test count, pass/fail/skip status, and actual output when running the commands. If pySHACL is not installed, SHACL-related tests may be skipped. A skip is not a pass.
 
-The project notes also say that the current example covers only a simplified subset of CQ-01 through CQ-04. CQ-03 does not yet trace from a component to tests, and CQ-04 does not yet check time and version. These examples do not constitute complete capability acceptance. Before publication, rerun the commands at a fixed revision and add verifiable results and failure cases.
+Run record for the supplied v0.19 package snapshot (2026-11-05): Python 3.15.2, rdflib 7.6.0, and pySHACL 0.40.2; 22 tests passed, 0 failed, and 0 skipped. The supplied package has no Git metadata, so this result is tied to the v0.19 snapshot rather than a commit SHA. It confirms only the tests included in that package.
+
+The project notes also say that the current example covers only a simplified subset of CQ-01 through CQ-04. CQ-03 does not yet trace from a component to tests, and CQ-04 does not yet check time and version. These examples do not constitute complete capability acceptance. Before publication, rerun the commands against an immutable source revision and record representative gap-case output.
 
 ## Practical Guidance
 
@@ -173,7 +175,7 @@ OWL expresses semantics and supports logical reasoning. Completeness requirement
 
 ### Does an empty SPARQL result mean that an obligation has no test?
 
-It means that no matching relationship is present in the current query data. Check import, mapping, and snapshot scope too.
+No. Each returned row identifies a TestObligation without a matching TestCase link in the current graph. An empty result means no such obligation was found in the queried data; incomplete imports or mappings may hide gaps. Check the snapshot scope too.
 
 ### Can we use the `example.org` namespace in production?
 
@@ -189,7 +191,12 @@ Answers: 1-A, 2-B, 3-B.
 
 ## Summary
 
-A runnable ontology experiment combines a question, conceptual model, instance data, structural constraints, queries, and regression tests. Each result needs a clear statement of what it supports. The commands and output in this draft still need a fixed-version run and recorded results before publication.
+A runnable ontology experiment combines a question, conceptual model, instance data, structural constraints, queries, and regression tests. Each result needs a clear statement of what it supports. The run record above applies to the supplied v0.19 package snapshot. Before publication, rerun it against an immutable source revision and retain a representative gap-case result.
+
+## Series Navigation
+
+- Previous: `06-connect-sdlc-qe.md`
+- Next: `08-change-impact.md`
 
 ## References
 

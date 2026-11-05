@@ -107,6 +107,11 @@ Answers: 1-B, 2-C, 3-A.
 
 An ontology can turn existing requirement and test relationships into a candidate regression scope. The team still needs a human-confirmed impact list to detect misses and false positives, then uses risk to decide what actually runs. The next article supplies similar quality context to an AI PR review.
 
+## Series Navigation
+
+- Previous: `07-build-runnable-ontology.md`
+- Next: `09-ai-pr-review.md`
+
 ## References
 
 - W3C SPARQL 1.1 Query Language: https://www.w3.org/TR/sparql11-query/

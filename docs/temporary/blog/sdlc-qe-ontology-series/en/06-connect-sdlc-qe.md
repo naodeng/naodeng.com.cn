@@ -109,6 +109,11 @@ Answers: 1-A, 2-B, 3-B.
 
 The SDLC ontology answers what changed and which requirements relate to it. The QE ontology answers what verification was required and what evidence was produced. Shared relationships connect those questions. Direction, provenance, and missing-link states must remain reviewable. The next article turns the concepts into a small RDF, SHACL, and SPARQL example.
 
+## Series Navigation
+
+- Previous: `05-qe-ontology.md`
+- Next: `07-build-runnable-ontology.md`
+
 ## References
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

@@ -109,6 +109,11 @@ flowchart LR
 
 SDLC 本体回答「改了什么、关联哪个需求」，QE 本体回答「需要什么验证、留下了什么证据」。共享关系把两类问题接起来。关系方向、来源和缺口状态要能复核。下一篇会把这些概念做成一个小型 RDF、SHACL 和 SPARQL 示例。
 
+## 系列导航
+
+- 上一篇：`05-qe-ontology.md`
+- 下一篇：`07-build-runnable-ontology.md`
+
 ## 参考资料
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

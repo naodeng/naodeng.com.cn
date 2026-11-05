@@ -113,6 +113,11 @@ Answers: 1-B, 2-B, 3-A.
 
 A defect ontology makes historical failures searchable through components, rules, and regression obligations. It helps teams reuse investigation leads but does not replace root-cause confirmation. The next article applies semantic modeling to the order and payment business domain.
 
+## Series Navigation
+
+- Previous: `12-ontology-effectiveness.md`
+- Next: `14-order-payment-ontology.md`
+
 ## References
 
 - Series quality and business ontology plan: user-provided research document “Ontology in AI Native QA.”

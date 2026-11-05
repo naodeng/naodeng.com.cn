@@ -206,6 +206,10 @@ Answers: 1-B, 2-A, 3-B. The second answer depends on the model containing the st
 
 An ontology explicitly describes concepts, relationships, and rules in a domain. Everyday examples help readers start. A professional model also states its semantic assumptions and limits. The next article returns to software development and asks how teams can share meaning across scattered quality information.
 
+## Series Navigation
+
+- Next: `01-why-ontology-for-sdlc-qe.md`
+
 ## References
 
 - ASD-STE100 official FAQ: https://www.asd-ste100.org/STE_faq.html

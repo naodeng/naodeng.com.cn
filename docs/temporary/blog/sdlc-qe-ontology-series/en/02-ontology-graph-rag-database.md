@@ -163,6 +163,11 @@ Answers: 1-A, 2-B, 3-B.
 
 Databases, graphs, RAG, and ontologies have different roles. A real system can combine them so records are queryable, documents are searchable, and relationships have explicit meanings. The next article follows one refund project from requirement to release.
 
+## Series Navigation
+
+- Previous: `01-why-ontology-for-sdlc-qe.md`
+- Next: `03-sdlc-qe-walkthrough.md`
+
 ## References
 
 - OSLC Quality Management 2.1 Specification: https://oslc-op.github.io/oslc-specs/specs/qm/quality-management-spec.html

@@ -111,6 +111,11 @@ flowchart LR
 
 质量工程本体把风险、验证义务、测试方法、执行和证据分开建模。质量结论才能说明依据，也能暴露证据缺口。下一篇将说明如何把这些质量关系接到 SDLC 的需求、PR、构建和发布对象上。
 
+## 系列导航
+
+- 上一篇：`04-sdlc-ontology.md`
+- 下一篇：`06-connect-sdlc-qe.md`
+
 ## 参考资料
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

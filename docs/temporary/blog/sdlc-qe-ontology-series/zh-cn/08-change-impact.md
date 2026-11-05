@@ -107,6 +107,11 @@ flowchart LR
 
 本体能把现有需求和测试关系转成候选回归范围。团队还要用人工确认的影响清单检查漏报和误报，并结合风险决定实际测试。下一篇会把同一类质量上下文提供给 AI PR Review。
 
+## 系列导航
+
+- 上一篇：`07-build-runnable-ontology.md`
+- 下一篇：`09-ai-pr-review.md`
+
 ## 参考资料
 
 - W3C SPARQL 1.1 Query Language: https://www.w3.org/TR/sparql11-query/

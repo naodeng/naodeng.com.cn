@@ -120,6 +120,11 @@ Answers: 1-A, 2-B, 3-B.
 
 The available materials support an experiment design, not a performance conclusion. The next step is to fix the samples, labels, and group settings, then run repeated trials, blind-review the outputs, and calculate the metrics. Add charts and observed failure cases after those results exist.
 
+## Series Navigation
+
+- Previous: `11-quality-gate.md`
+- Next: `13-defect-risk-analysis.md`
+
 ## References
 
 - Evaluation metrics and sample design: `02_blog/articles/12.md` and `02_blog/RESEARCH_BLOG_EXTENSION.md`

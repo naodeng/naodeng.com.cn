@@ -127,6 +127,11 @@ Answers: 1-B, 2-A, 3-B.
 
 A QA Agent is useful when it turns queried quality relationships and evidence into reviewable suggestions. Read-only queries, explicit sources, careful handling of unknowns, and human decision boundaries are basic conditions for moving beyond a demo. The next article explains how multiple agents can share quality knowledge.
 
+## Series Navigation
+
+- Previous: `17-business-rules-to-automation.md`
+- Next: `19-multi-agent-shared-quality-knowledge.md`
+
 ## References
 
 - W3C RDF 1.1 Concepts: https://www.w3.org/TR/rdf11-concepts/

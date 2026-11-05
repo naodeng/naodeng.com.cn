@@ -163,6 +163,11 @@ RAG 适合检索文字材料。精确的多跳关系、版本限定和约束检�
 
 数据库、图谱、RAG 和本体各有职责。实际系统可以把它们放在一起，让记录可查询、文档可检索、关系有明确含义。下一篇会把这些概念放进一个从需求到发布的项目故事里。
 
+## 系列导航
+
+- 上一篇：`01-why-ontology-for-sdlc-qe.md`
+- 下一篇：`03-sdlc-qe-walkthrough.md`
+
 ## 参考资料
 
 - OSLC Quality Management 2.1 Specification: https://oslc-op.github.io/oslc-specs/specs/qm/quality-management-spec.html

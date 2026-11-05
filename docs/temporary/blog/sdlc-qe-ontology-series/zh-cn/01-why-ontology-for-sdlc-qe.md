@@ -124,6 +124,11 @@ flowchart LR
 
 研发团队已经有需求、代码、测试和发布数据，难点常在于各条记录如何对应。本体让这些关系有明确含义，也让分析过程可以追溯。下一篇会用同一个 PR 问题比较数据库、知识图谱、RAG 和本体各自能做什么。
 
+## 系列导航
+
+- 上一篇：`00-what-is-ontology.md`
+- 下一篇：`02-ontology-graph-rag-database.md`
+
 ## 参考资料
 
 - 本系列实验模型与术语见 v0.19 项目资料包中的 `01_project/ontology/baseline.ttl`

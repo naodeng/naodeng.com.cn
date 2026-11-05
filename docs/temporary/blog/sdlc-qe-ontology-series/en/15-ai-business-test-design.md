@@ -156,6 +156,11 @@ Answers: 1-B, 2-A, 3-B.
 
 A business ontology gives AI test design context about rules, objects, and states. Each candidate case should include its source rule and unresolved assumptions, then receive human review and actual execution. The next article uses order states and rules to look for business-testing gaps.
 
+## Series Navigation
+
+- Previous: `14-order-payment-ontology.md`
+- Next: `16-find-business-test-gaps.md`
+
 ## References
 
 - Order/payment rules and AI-test direction: Topic C in the series research plan.

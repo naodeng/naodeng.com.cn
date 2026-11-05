@@ -157,6 +157,11 @@ Answers: 1-B, 2-C, 3-B.
 
 These project stories show how an ontology makes objects and relationships inspectable. A QA user can start with a sample or a data-import flow. A release conclusion still depends on actual execution evidence and team policy. The next article focuses on the SDLC ontology in this chain.
 
+## Series Navigation
+
+- Previous: `02-ontology-graph-rag-database.md`
+- Next: `04-sdlc-ontology.md`
+
 ## References
 
 - The v0.19 project package contains `01_project/ontology/baseline.ttl`, `01_project/shapes/baseline.shacl.ttl`, and `01_project/examples/delivery-flow.ttl`.

@@ -206,6 +206,10 @@ flowchart LR
 
 本体明确描述领域里的概念、关系和规则。生活例子能帮人入门，专业模型还要说明语义假设和适用边界。下一篇会回到软件研发现场，讨论分散在不同工具中的质量信息如何共享语义。
 
+## 系列导航
+
+- 下一篇：`01-why-ontology-for-sdlc-qe.md`
+
 ## 参考资料
 
 - ASD-STE100 官方 FAQ: https://www.asd-ste100.org/STE_faq.html

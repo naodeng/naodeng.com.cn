@@ -157,6 +157,11 @@ flowchart TD
 
 这两个项目故事说明，本体把对象和关系变成可以检查的结构。普通用户可以从示例和数据导入流程理解它的作用；发布结论仍依赖实际运行证据和团队政策。下一篇将从这条链中单独抽出 SDLC 本体。
 
+## 系列导航
+
+- 上一篇：`02-ontology-graph-rag-database.md`
+- 下一篇：`04-sdlc-ontology.md`
+
 ## 参考资料
 
 - 本体、关系和 SHACL 示例模型见项目资料包 v0.19 中的 `01_project/ontology/baseline.ttl`、`01_project/shapes/baseline.shacl.ttl` 和 `01_project/examples/delivery-flow.ttl`。

@@ -125,6 +125,11 @@ Answers: 1-B, 2-B, 3-A.
 
 Gap analysis starts from confirmed rules, then checks obligations, scenarios, cases, executions, and evidence. When an expected outcome is unclear, return to the business rule and define it. The next article connects reviewed business rules to automated test execution.
 
+## Series Navigation
+
+- Previous: `15-ai-business-test-design.md`
+- Next: `17-business-rules-to-automation.md`
+
 ## References
 
 - W3C SHACL: https://www.w3.org/TR/shacl/

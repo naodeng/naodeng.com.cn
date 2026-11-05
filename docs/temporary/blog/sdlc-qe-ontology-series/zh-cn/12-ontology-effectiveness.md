@@ -120,6 +120,11 @@ flowchart LR
 
 现有材料能支持实验设计，不能支持效果结论。下一步需要固定样本、标注标准和组别配置，再执行多次运行、盲审输出并计算指标。结果出来以后，再补图表和观察到的失败案例。
 
+## 系列导航
+
+- 上一篇：`11-quality-gate.md`
+- 下一篇：`13-defect-risk-analysis.md`
+
 ## 参考资料
 
 - 评测指标与样本设计来源: `02_blog/articles/12.md`、`02_blog/RESEARCH_BLOG_EXTENSION.md`

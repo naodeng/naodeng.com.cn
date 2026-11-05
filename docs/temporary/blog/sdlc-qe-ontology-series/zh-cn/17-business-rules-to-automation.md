@@ -144,6 +144,11 @@ v0.19 使用 `TestExecution executes TestCase` 表示执行与用例的关联，
 
 自动化执行让经过审核的测试义务能在日常变更中反复验证。每次运行留下的证据和失败原因，都应回到规则、用例和模型审查中。这样，业务规则才不会停留在一次性的提示词或文档里。
 
+## 系列导航
+
+- 上一篇：`16-find-business-test-gaps.md`
+- 下一篇：`18-build-a-domain-aware-qa-agent.md`
+
 ## 参考资料
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

@@ -108,6 +108,11 @@ Answers: 1-B, 2-B, 3-B.
 
 An ontology lets an AI PR review read explicit engineering relationships and show reviewers the basis for each suggestion. It supplies context; it does not turn missing data into a fact. The next article distinguishes coverage links from evidence that can support a quality claim.
 
+## Series Navigation
+
+- Previous: `08-change-impact.md`
+- Next: `10-quality-evidence.md`
+
 ## References
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

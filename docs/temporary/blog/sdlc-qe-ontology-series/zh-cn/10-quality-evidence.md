@@ -108,6 +108,11 @@ flowchart LR
 
 测试数量和代码覆盖率都不能替代从义务到证据的追踪。质量报告要显示关联、实际执行和证据资格，并说明每个结论对应的构建和来源。下一篇会把这些信息带进 CI/CD 发布门禁。
 
+## 系列导航
+
+- 上一篇：`09-ai-pr-review.md`
+- 下一篇：`11-quality-gate.md`
+
 ## 参考资料
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

@@ -107,6 +107,11 @@ AI 可以汇总关系和证据状态。批准权限应由组织政策控制，�
 
 发布门禁需要把需求、Build、测试执行、证据和风险放到同一份可复核记录中。Qualified、Unqualified 和 Unknown 要按版本化政策解释。人依据证据和授权流程作 Go / No-Go 决定。下一篇将设计实验，检查本体是否实际改善这类质量工作。
 
+## 系列导航
+
+- 上一篇：`10-quality-evidence.md`
+- 下一篇：`12-ontology-effectiveness.md`
+
 ## 参考资料
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

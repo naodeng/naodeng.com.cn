@@ -144,6 +144,11 @@ Answers: 1-B, 2-B, 3-B.
 
 Automation lets reviewed test obligations be checked repeatedly during routine changes. Evidence and failure causes from each run should return to reviews of rules, cases, and models. This keeps business rules from remaining one-time prompts or document entries.
 
+## Series Navigation
+
+- Previous: `16-find-business-test-gaps.md`
+- Next: `18-build-a-domain-aware-qa-agent.md`
+
 ## References
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/

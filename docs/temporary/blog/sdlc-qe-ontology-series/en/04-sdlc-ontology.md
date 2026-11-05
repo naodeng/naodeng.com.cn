@@ -111,6 +111,11 @@ Answers: 1-A, 2-B, 3-B.
 
 An SDLC ontology makes engineering objects and lifecycle relationships explicit so a requirement can be traced through code changes to builds and releases. Relationship direction, object boundaries, and model version all need to be visible. The next article focuses on quality risks, test obligations, and evidence.
 
+## Series Navigation
+
+- Previous: `03-sdlc-qe-walkthrough.md`
+- Next: `05-qe-ontology.md`
+
 ## References
 
 - W3C PROV-O: https://www.w3.org/TR/prov-o/
