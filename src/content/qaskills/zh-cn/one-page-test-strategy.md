@@ -1,0 +1,167 @@
+# 一页纸测试策略
+
+作者：naodeng
+
+## 元数据
+- slug: one-page-test-strategy
+- category: type
+- hasEvals: true
+- syncedAt: 2026-11-06
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/one-page-test-strategy/SKILL.md
+- description: Use this skill when a team needs a concise visual test strategy tied to project goals and risks; triggers include 一页纸测试策略、测试策略图 and one-page test strategy.
+
+## 何时使用
+
+- 团队需要一张便于讨论、传播和更新的测试策略图。
+- 需要把业务目标、质量风险与测试方式压缩到一页。
+- 需要可视化表达测试左移、质量内建和发布后的反馈。
+
+如果用户需要完整执行计划、详细资源安排或测试用例，改用已有的完整测试策略能力，不要把这些内容塞进一页。
+
+## 执行流程
+
+1. 阅读并遵循 `prompts/one-page-test-strategy.md` 中的输入审计、输出结构和质量要求。
+2. 从项目材料提取目标、当前阶段、主要风险、系统特点、团队能力和限制；分开记录事实、假设与缺口。
+3. 按 Prompt 固定版式生成完整策略模块：指导原则与目标、功能/性能/安全范围、环境/数据/工具/团队等测试使能与约束、七阶段生命周期、左右移、测试象限、精益测试分层、迭代发布与反馈环。
+4. 信息不足时仍给可讨论的初稿，并标出假设及待确认事项；不编造门槛、事实或负责人。
+
+## 核心约束
+
+- 将测试策略定位为目标驱动、随项目阶段和风险演进的团队讨论材料，不是完整测试计划或执行记录。
+- 体现全团队共同负责质量；只在输入支持时指定具体责任人。
+- 必须保留功能、性能、安全三个范围栏目，并给出项目相关的风险或“待确认”状态；不要求三类都成为必测项。
+- 必须用紧凑模块呈现测试环境/基础设施、测试数据与访问限制、自动化/手动方式与工具、团队角色/能力；逐项区分已知事实、建议和待确认。
+- 必须覆盖需求分析、开发前、开发中、开发完成、测试、发布前、已发布七阶段，并明确左移的早期反馈和右移的发布后反馈。
+- 必须展示 Q1–Q4 测试象限和单元/API 集成/探索性测试三层；象限纵向为面向业务/面向技术，横向为支持团队/评价产品。按项目定义与证据填充，空缺标“待确认”。自动化/手动和工具是活动属性，不是象限轴。
+- 象限和分层是选择框架，不是固定清单、执行顺序或比例；依据项目目标、风险、架构和能力决定投入。
+- 必须展示迭代 1 → 迭代 2 → … → 迭代 n → 发布/生产的策略节奏，并说明反馈如何进入下一轮；未知节奏与生产机制标“待确认”。
+- 准入、准出、数值门槛、测试比例和排期必须来自项目规则；不把生产监测或用户反馈写成已具备能力，除非输入提供证据。
+
+## 按需加载
+
+- 每次生成策略都要阅读 `prompts/one-page-test-strategy.md`。
+- 用户需要版式参考时，读取 `examples/one-page-sample.md`；示例中的项目事实仅用于说明格式。
+- 用户指定图片、幻灯片或其他载体时，保留同一页的七阶段、四象限、三层测试、左右移和迭代反馈模块，并遵循其格式要求。
+
+## 交付前自检
+
+- [ ] 页面包含团队质量责任、目标，以及功能/性能/安全三类风险状态。
+- [ ] 页面包含环境/基础设施、测试数据及访问限制、工具/方式和团队能力/角色，并区分已知与待确认。
+- [ ] 需求分析、开发前、开发中、开发完成、测试、发布前、已发布七阶段均出现，并呈现左右移反馈。
+- [ ] 象限按纵向面向业务/面向技术、横向支持团队/评价产品呈现；单元/API 集成/探索性测试分层及迭代发布反馈环均有独立模块。
+- [ ] 测试类型、象限和层级符合已知上下文；无证据的内容保留为建议或待确认。
+- [ ] 假设、未知门槛和待确认决策清楚可见。
+- [ ] 没有编造固定测试比例、数值门槛或逐日计划，也没有把策略图扩写成用例清单或执行结论。
+
+## 常见误区
+
+- 不要把通用模板原样套给每个项目。
+- 不要为了填满版面而罗列所有测试类型或测试层级。
+- 不要把测试象限误画成固定执行顺序，也不要假设测试金字塔适用于所有架构。
+- 不要用未经确认的数值门槛暗示团队已达成发布共识。
+
+## 原始 SKILL.md
+
+```markdown
+---
+name: one-page-test-strategy
+description: Use this skill when a team needs a concise visual test strategy tied to project goals and risks; triggers include 一页纸测试策略、测试策略图 and one-page test strategy.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
+---
+
+# 一页纸测试策略
+
+**英文版：** 见对应英文技能。
+
+## 何时使用
+
+- 团队需要一张便于讨论、传播和更新的测试策略图。
+- 需要把业务目标、质量风险与测试方式压缩到一页。
+- 需要可视化表达测试左移、质量内建和发布后的反馈。
+
+如果用户需要完整执行计划、详细资源安排或测试用例，改用已有的完整测试策略能力，不要把这些内容塞进一页。
+
+## 执行流程
+
+1. 阅读并遵循 `prompts/one-page-test-strategy.md` 中的输入审计、输出结构和质量要求。
+2. 从项目材料提取目标、当前阶段、主要风险、系统特点、团队能力和限制；分开记录事实、假设与缺口。
+3. 按 Prompt 固定版式生成完整策略模块：指导原则与目标、功能/性能/安全范围、环境/数据/工具/团队等测试使能与约束、七阶段生命周期、左右移、测试象限、精益测试分层、迭代发布与反馈环。
+4. 信息不足时仍给可讨论的初稿，并标出假设及待确认事项；不编造门槛、事实或负责人。
+
+## 核心约束
+
+- 将测试策略定位为目标驱动、随项目阶段和风险演进的团队讨论材料，不是完整测试计划或执行记录。
+- 体现全团队共同负责质量；只在输入支持时指定具体责任人。
+- 必须保留功能、性能、安全三个范围栏目，并给出项目相关的风险或“待确认”状态；不要求三类都成为必测项。
+- 必须用紧凑模块呈现测试环境/基础设施、测试数据与访问限制、自动化/手动方式与工具、团队角色/能力；逐项区分已知事实、建议和待确认。
+- 必须覆盖需求分析、开发前、开发中、开发完成、测试、发布前、已发布七阶段，并明确左移的早期反馈和右移的发布后反馈。
+- 必须展示 Q1–Q4 测试象限和单元/API 集成/探索性测试三层；象限纵向为面向业务/面向技术，横向为支持团队/评价产品。按项目定义与证据填充，空缺标“待确认”。自动化/手动和工具是活动属性，不是象限轴。
+- 象限和分层是选择框架，不是固定清单、执行顺序或比例；依据项目目标、风险、架构和能力决定投入。
+- 必须展示迭代 1 → 迭代 2 → … → 迭代 n → 发布/生产的策略节奏，并说明反馈如何进入下一轮；未知节奏与生产机制标“待确认”。
+- 准入、准出、数值门槛、测试比例和排期必须来自项目规则；不把生产监测或用户反馈写成已具备能力，除非输入提供证据。
+
+## 按需加载
+
+- 每次生成策略都要阅读 `prompts/one-page-test-strategy.md`。
+- 用户需要版式参考时，读取 `examples/one-page-sample.md`；示例中的项目事实仅用于说明格式。
+- 用户指定图片、幻灯片或其他载体时，保留同一页的七阶段、四象限、三层测试、左右移和迭代反馈模块，并遵循其格式要求。
+
+## 交付前自检
+
+- [ ] 页面包含团队质量责任、目标，以及功能/性能/安全三类风险状态。
+- [ ] 页面包含环境/基础设施、测试数据及访问限制、工具/方式和团队能力/角色，并区分已知与待确认。
+- [ ] 需求分析、开发前、开发中、开发完成、测试、发布前、已发布七阶段均出现，并呈现左右移反馈。
+- [ ] 象限按纵向面向业务/面向技术、横向支持团队/评价产品呈现；单元/API 集成/探索性测试分层及迭代发布反馈环均有独立模块。
+- [ ] 测试类型、象限和层级符合已知上下文；无证据的内容保留为建议或待确认。
+- [ ] 假设、未知门槛和待确认决策清楚可见。
+- [ ] 没有编造固定测试比例、数值门槛或逐日计划，也没有把策略图扩写成用例清单或执行结论。
+
+## 常见误区
+
+- 不要把通用模板原样套给每个项目。
+- 不要为了填满版面而罗列所有测试类型或测试层级。
+- 不要把测试象限误画成固定执行顺序，也不要假设测试金字塔适用于所有架构。
+- 不要用未经确认的数值门槛暗示团队已达成发布共识。
+```
+
+## 安装
+
+### 按系统与 AI 工具选择安装脚本
+
+#### macOS / Linux
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/mac/trae.sh)
+
+#### Windows (PowerShell)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/zh/one-page-test-strategy/windows/trae.ps1)
+
+### 说明
+- 根据你使用的系统和 AI 工具，选择对应脚本。
+
+## 调用示例
+
+```text
+@skill one-page-test-strategy
+结合当前项目上下文，按该技能的要求给出可执行结果。
+```
+
+## 来源
+- 原始技能：[one-page-test-strategy](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/one-page-test-strategy/SKILL.md)
+- 仓库：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

@@ -406,19 +406,25 @@ test.describe("QA Skills", () => {
         for (const el of els) await expect(el).toBeHidden();
       };
 
-      // 默认态：辅助区可见，目录紧跟筛选区
+      // 默认态：任务路由区紧跟搜索区；搜索时会隐藏辅助区
       await assertHelpersVisible();
-      const domOrder = await page.evaluate(() => {
+      const taskDiscoveryFollowsToolbar = await page.evaluate(() => {
         const discovery = document.querySelector(".discovery");
-        const categories = document.getElementById("categories");
-        return discovery && categories ? discovery.nextElementSibling === categories : false;
+        return discovery?.nextElementSibling?.classList.contains("task-discovery") || false;
       });
-      expect(domOrder).toBe(true);
+      expect(taskDiscoveryFollowsToolbar).toBe(true);
 
-      // 搜索态：辅助区隐藏，可见结果紧邻搜索框
+      // 搜索态：辅助区隐藏，目录成为搜索区后的下一个可见区域
       const search = page.locator("#qaskills-search");
       await search.fill("API");
       await assertHelpersHidden();
+      const categoriesFollowToolbar = await page.evaluate(() => {
+        const discovery = document.querySelector(".discovery");
+        let next = discovery?.nextElementSibling || null;
+        while (next?.hasAttribute("hidden")) next = next.nextElementSibling;
+        return next?.id === "categories";
+      });
+      expect(categoriesFollowToolbar).toBe(true);
       const firstCard = page.locator("a.card[data-slug]:visible").first();
       await expect(firstCard).toContainText(/api/i);
       await expect(page.locator("#qaskills-results")).toContainText(/\d+/);

@@ -1,0 +1,126 @@
+# Skill Quality Review
+
+Author: naodeng
+
+## Metadata
+- slug: skill-quality-review
+- category: type
+- hasEvals: true
+- syncedAt: 2026-11-06
+- sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/skill-engineering/skill-quality-review/SKILL.md
+- description: Use this skill when reviewing a complete Skill package for architecture, scope, triggers, independent installation, bilingual consistency, Eval readiness, and evidence boundaries; triggers include Skill quality review and package review.
+
+## Raw SKILL.md
+
+```markdown
+---
+name: skill-quality-review
+description: Use this skill when reviewing a complete Skill package for architecture, scope, triggers, independent installation, bilingual consistency, Eval readiness, and evidence boundaries; triggers include Skill quality review and package review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "skill-engineering"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
+---
+
+# Skill Quality Review
+
+## When to use
+
+- Review a Skill at package level rather than only polishing prose.
+- Check whether `SKILL.md`, the primary Prompt, metadata, examples, references, and `evals/` form one consistent contract.
+- Assess whether a Skill can be copied or installed independently and which conclusions still lack runtime evidence.
+
+## Output format options
+
+- Default to a Markdown review with a conclusion, blocking issues, suggestions, information gaps, and evidence boundaries.
+- Use a table when several files or evidence layers must be compared; do not replace the reasoning with a score.
+
+## How to use
+
+1. Confirm the Skill, language, directory, and review goal; list information gaps before reviewing absent files.
+2. Check architecture responsibility, scope/non-goals, triggers, input audit, output contract, progressive disclosure, and neighbor boundaries.
+3. Check path, name, and semantic consistency across `SKILL.md`, the primary Prompt, `agents/openai.yaml`, examples/references, and `evals/`.
+4. Check independent installation: relative resources still resolve when only this Skill directory is copied, with no hard dependency on another Skill's private files.
+5. Report blocking issues, important suggestions, information gaps, and evidence boundaries; separate static findings from runtime/model conclusions.
+
+## Constraints
+
+- This is a static package review. Do not execute the business task or silently modify the Skill.
+- Directory completeness, `skill-up validate`, CLI install smoke, and Project status cannot prove runtime behavior, model effectiveness, business acceptance, Quality Score, or release approval.
+- Do not invent environments, dependencies, metrics, trigger observations, or execution facts. Use `UNASSESSED`, `NOT_RUN`, `BLOCKED`, or `INSUFFICIENT_EVIDENCE` when evidence is absent.
+- Do not create a second Eval Engine, Judge, Benchmark, or Quality Score.
+
+## Reference files
+
+- Read `prompts/skill-quality-review.md` for the complete review output contract.
+- Inspect the target Skill's `SKILL.md`, Prompt, metadata, references, examples, and `evals/` together.
+- Use repository contracts as optional deep references and preserve missing-runtime limitations.
+
+## Common pitfalls
+
+- Treating directory completeness, CLI smoke, or Project status as runtime or model evidence.
+- Reviewing only prose while missing metadata, eval, installation, or bilingual inconsistencies.
+- Adding a cross-Skill private-file dependency to make a package appear complete.
+
+## Best practices
+
+- Start with scope and information gaps, then trace each claim to a file and evidence level.
+- Separate blocking defects from suggestions and unassessed areas.
+- Keep the review package-level, reproducible, and independent of local machine paths.
+
+## Progressive disclosure
+
+- Read `prompts/skill-quality-review.md` before producing the report; it is the output contract.
+- Read the target Skill's `evals/` when behavior coverage matters, but do not call configuration validation runtime evidence.
+- Read repository Evaluation Contract and local trace rules for deeper evidence when available. If a copied Skill does not contain them, preserve the limitation instead of creating filesystem coupling.
+
+## Pre-delivery checklist
+
+- [ ] Scope, document roles, and input gaps are explicit
+- [ ] Triggers, inputs, outputs, constraints, independent installation, and Eval readiness were checked
+- [ ] Blocking issues, suggestions, unassessed items, and evidence levels are traceable
+- [ ] Static checks are not presented as runtime/model evidence
+
+## Choosing the review scope
+
+Use this Skill for the package-wide contract and installation readiness, including files, metadata, resources, examples, and evals. Use skill-prose-review for a bounded passage, Prompt, or document contract; a prose-only review cannot establish package completeness.
+```
+
+## Install
+
+### Choose installer by OS and AI tool
+
+#### macOS / Linux
+- `codex`：[codex.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/mac/codex.sh)
+- `cursor`：[cursor.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/mac/cursor.sh)
+- `claudecode`：[claudecode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/mac/claudecode.sh)
+- `kiro`：[kiro.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/mac/kiro.sh)
+- `opencode`：[opencode.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/mac/opencode.sh)
+- `trae`：[trae.sh](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/mac/trae.sh)
+
+#### Windows (PowerShell)
+- `codex`：[codex.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/windows/codex.ps1)
+- `cursor`：[cursor.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/windows/cursor.ps1)
+- `claudecode`：[claudecode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/windows/claudecode.ps1)
+- `kiro`：[kiro.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/windows/kiro.ps1)
+- `opencode`：[opencode.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/windows/opencode.ps1)
+- `trae`：[trae.ps1](https://github.com/naodeng/awesome-qa-skills/blob/main/installers/en/skill-quality-review/windows/trae.ps1)
+
+### Notes
+- Pick the script that matches your OS and AI tool.
+
+## Call Example
+
+```text
+@skill skill-quality-review
+Using the current project context, produce an actionable result following this skill.
+```
+
+## Source
+- Original Skill：[skill-quality-review](https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/skill-engineering/skill-quality-review/SKILL.md)
+- Repository：[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)

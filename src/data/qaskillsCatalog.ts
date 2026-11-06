@@ -23,6 +23,7 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         },
         "slugs": [
           "discover-testing",
+          "requirement-to-test",
           "product-quality-perspective",
           "qa-quality-perspective",
           "ux-quality-perspective",
@@ -38,7 +39,10 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         "slugs": [
           "daily-testing-workflow",
           "sprint-testing-workflow",
-          "project-delivery-perspective"
+          "tdd-quality-workflow",
+          "project-delivery-perspective",
+          "pr-quality-review",
+          "change-to-regression"
         ]
       },
       {
@@ -81,6 +85,7 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         },
         "slugs": [
           "test-strategy",
+          "one-page-test-strategy",
           "test-strategy-plus",
           "test-strategy-review"
         ]
@@ -413,6 +418,8 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
     },
     "slugs": [
       "skill-change-verification",
+      "skill-quality-review",
+      "skill-evaluation",
       "skill-prose-review",
       "skill-prose-trim"
     ],
