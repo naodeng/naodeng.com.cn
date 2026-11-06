@@ -28,9 +28,8 @@ flowchart LR
     B --> C[AI drafts automation]
     C --> D[QA reviews structure and assertions]
     D --> E[Validate behaviour in a test environment]
-    E --> F[Integrate with CI/CD and monitor]
-    F --> G[Use saved time for exploratory, integration, and performance testing]
-    G -.Feed risks and lessons back.-> B
+    E --> F[Integrate with CI/CD and monitor false positives and flakiness]
+    D -.Frees some script-writing time.-> G[More time for exploratory, integration, and performance testing]
 ```
 
 Generation speed tells us that code was written faster. It does not prove that the tests cover important risks or that their assertions represent the right business expectations.
@@ -41,14 +40,9 @@ Generation speed tells us that code was written faster. It does not prove that t
 flowchart TD
     S[Choose a feature and understood risks] --> A[Stage 1: Load context]
     A --> B[Stage 2: Generate a draft and review its structure]
-    B --> C{Does the structure follow team conventions?}
-    C -- No --> B
-    C -- Yes --> D[Stage 3: Validate behaviour in a test environment]
-    D --> E{Does every assertion have a reliable basis?}
-    E -- No, clarify the rule or expected result --> A
-    E -- Yes --> F[Stage 4: Integrate with CI/CD]
-    F --> G[Monitor false alarms and flaky tests]
-    G -.Feed lessons into context.-> A
+    B --> C[Stage 3: Verify real behaviour and the basis for each assertion]
+    C --> D[Stage 4: Integrate validated scripts with CI/CD]
+    D --> E[Monitor false positives and flaky tests]
 ```
 
 ### Stage 1: Load context
@@ -87,6 +81,8 @@ Accurate context makes a useful first draft more likely. More context still cann
 Zafar does not run the generated tests immediately. She first reads the code like a code reviewer: Does it follow framework conventions? Can it reuse existing Step Definitions? Is the naming consistent? Can a teammate understand the scenarios?
 
 She reports that this structural review usually takes **15–20 minutes**, compared with **2–3 hours** to write an initial draft from scratch. The comparison is between two ways of producing a draft; it does not mean the full test lifecycle shrank by the same amount.
+
+The diagram turns her structural checks into a review path. Repeating review after a revision is an engineering aid, not a fixed step prescribed by the source article.
 
 ```mermaid
 flowchart TD
@@ -135,16 +131,19 @@ assertThat(response.jsonPath().getBigDecimal("total"))
 
 The fixed amount applies only to this fixture's stated rule; a production test must include the applicable discounts, taxes, and rounding conditions. The point is that the order ID comes from this creation request, while the expected amount comes from an independently confirmed rule.
 
+The diagram expands the checks against real behaviour and assertion evidence. Fixing or clarifying a mismatch and rerunning is an engineering path; the source does not prescribe a specific return step.
+
 ```mermaid
 flowchart LR
     A[Confirmed acceptance criteria and business rules] --> C[Set the expected result and record its basis]
-    B[API response from the test environment] --> D[Check fields, status, and business outcome]
+    B[API response from this test run] --> D[Check fields, status, and business outcome]
     C --> E{Do expected and actual results agree?}
     D --> E
     E -- Yes --> F[Keep the supported assertion]
     E -- No --> G[Separate product defect, test error, or requirement ambiguity]
-    G --> H[Confirm with Product and Development, then record the decision]
+    G --> H[Confirm and record the resolution with Product/Development, then rerun]
     H --> C
+    H --> B
 ```
 
 Change an assertion only when the rule and evidence support the change. Treating the current response as the answer can make a test endorse a defect in the system.

@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="820" height="1143" viewBox="0 0 820 1143" role="img" aria-labelledby="title desc">
-<title id="title">质量债务偿还循环</title>
-<desc id="desc">质量债务偿还循环：记录并排序债务，选择获批动作，修改相关资产，独立验证行为，再复核剩余影响</desc>
+<title id="title">质量债务处置循环</title>
+<desc id="desc">质量债务处置循环：记录并排序有来源的债务，选择偿还、隔离或限期接受，按所选方案执行必要变更与验证，并继续跟踪未解决风险</desc>
 <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#8797ae"/></marker><marker id="loop-arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#4265df"/></marker></defs>
 <rect width="820" height="1143" rx="24" fill="#f7f9fc"/>
-<text x="52" y="58" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="27" font-weight="700">质量债务偿还循环</text>
-<text x="52" y="91" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">让证据贯穿排序、独立验证和关闭</text>
+<text x="52" y="58" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="27" font-weight="700">质量债务处置循环</text>
+<text x="52" y="91" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">让证据贯穿处置、关闭和后续复核</text>
 <path d="M410 253 V280" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
 <path d="M410 398 V425" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
 <path d="M410 543 V570" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
@@ -49,15 +49,15 @@
 <rect x="120" y="725" width="580" height="108" rx="18" fill="#eaf4fb" fill-opacity="0.88"/>
 <circle cx="154" cy="755" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
 <text x="154" y="760" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">05</text>
-<text x="410" y="772" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">修改资产并检查行为</text>
-<text x="410" y="802" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">执行独立的回归检查</text>
+<text x="410" y="772" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">执行所选处置动作</text>
+<text x="410" y="798" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16"><tspan x="410">偿还或隔离时修改资产并独立验证</tspan><tspan x="410" dy="20">限期接受则记录批准人和复核日期</tspan></text>
 </g>
 <g>
 <rect x="120" y="870" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
 <rect x="120" y="870" width="580" height="108" rx="18" fill="#fce8ef" fill-opacity="0.88"/>
 <circle cx="154" cy="900" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
 <text x="154" y="905" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">06</text>
-<text x="410" y="917" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">确认持续影响是否消失</text>
-<text x="410" y="947" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">有证据后关闭，否则带入下一轮</text>
+<text x="410" y="917" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">有证据证明影响消除后关闭</text>
+<text x="410" y="947" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">仍有影响或风险已接受时，带入后续复核</text>
 </g>
 </svg>

@@ -44,7 +44,9 @@ flowchart LR
     D -->|Authorized| E[Controlled tool execution]
     D -->|Approval required| F[Named owner reviews]
     F -->|Approved| E
-    F -->|Rejected| G[Stop or revise the plan]
+    F -->|Rejected| G[Stop the proposed action]
+    F -->|Changes requested| H[Revise the plan and resubmit]
+    H --> D
     E --> H[Verify results and record evidence]
     H --> I[Monitor and review]
     I -.feedback and improvement.-> D
@@ -118,10 +120,13 @@ Every agent action should leave a result and evidence: what it saw, what it deci
 ```mermaid
 flowchart LR
     A[Input and context] --> B[Decision and rationale]
-    B --> C[Tool call]
-    C --> D[Test artifact or environment change]
-    D --> E[Test and validation evidence]
-    E --> F[Approval record and accountable owner]
+    B --> C[Check authorization and required approval]
+    C -->|Authorized or approved| D[Tool call]
+    C -->|Denied or rejected| E[Do not execute; record the reason]
+    D --> F[Test artifact or environment change]
+    F --> G[Test and validation evidence]
+    G --> H[Record decision, execution status, evidence, and owner]
+    E --> H
 ```
 
 As an engineering extension, teams can link the agent, model, and policy versions with tool-parameter summaries, code diffs, execution logs, approval records, and task IDs. Logs also need redaction and access controls. “Complete auditability” does not mean indiscriminately storing every sensitive prompt, customer record, or credential.
@@ -153,8 +158,11 @@ flowchart TD
     F --> G{Can the action be rolled back?}
     G -->|Yes| H[Restore configuration, test assets, or data]
     G -->|No| I[Apply compensating action and human response]
-    H --> J[Review and reauthorize]
+    H --> J[Review recovery and authorization]
     I --> J
+    J --> K{May the agent resume?}
+    K -->|Yes| A
+    K -->|No| L[Keep the agent paused and continue human handling]
 ```
 
 External notifications, real payments, and irreversible data operations may not be reversible. Such actions should be blocked or gated before execution.
@@ -208,7 +216,7 @@ flowchart TD
     D -->|Yes or uncertain| E[Test owner reviews]
     D -->|No and authorized| F[Controlled change]
     E -->|Approved| F
-    E -->|Rejected| G[Keep the failure and investigate a real defect]
+    E -->|Rejected| G[Preserve the failure and investigate its cause]
     F --> H[Rerun the original test and related regression tests]
     H --> I{Is the evidence sufficient?}
     I -->|No| G
@@ -250,13 +258,12 @@ flowchart TB
     P[Policy and risk definition] --> A[Agent identity and authorization]
     A --> X[Controlled execution]
     X --> E[Evidence and quality evaluation]
-    E --> H[Human accountability and audit]
+    E --> Q{Evidence supports the claim and follows policy?}
+    Q -->|Yes| H[Record the accountable decision and audit evidence]
+    Q -->|No| S[Stop, investigate, repair, or reduce permissions]
+    S --> H
     H --> M[Monitoring and improvement]
     M -.update policy and evaluation.-> P
-    E --> Q{Insufficient evidence or policy violation?}
-    Q -->|Yes| S[Stop, repair, or reduce permissions]
-    S --> M
-    Q -->|No| H
 ```
 
 ## What this means for Agent Skills

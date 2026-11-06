@@ -80,6 +80,37 @@ Every maintained Skill should reach L1. The repository recommends L2 as a minimu
 
 For example, a static check can support the claim that “the package follows these structural rules.” It cannot support “this Skill has been validated on every model.” If runtime evidence is missing, record that it was not run, was blocked, or is insufficient. Do not turn a gap into a pass.
 
+## SQEM at a glance: diagram legend
+
+The diagram brings the model's key relationships together. Risk and the eight principles constrain the evaluation plan; the quality domains describe what to examine; L1–L4 describe test depth, while E1–E4 describe evidence sources. Record depth and source separately, then check the claim against the evidence available.
+
+```mermaid
+flowchart TB
+    S[Scope: Skill version, task, and runtime context] --> R[Risk profile]
+    P[Eight principles] -. constrain evaluation .-> PLAN[Evaluation plan]
+    R --> PLAN
+    PLAN --> D[Select relevant quality domains]
+    PLAN --> L[Choose target test depth: L1-L4]
+    PLAN --> E[Record evidence sources: E1-E4]
+    D --> O[Record observations and gaps by domain]
+    O --> C{Is the claim supported by available evidence?}
+    L --> C
+    E --> C
+    C -- Supported --> A[Report a scoped claim, conditions, and gaps]
+    C -- Unsupported --> G[Limit the claim or gather more evidence]
+```
+
+### Legend
+
+| Diagram element | Meaning |
+| --- | --- |
+| Scope | Name the Skill version, representative task, and target runtime conditions |
+| Quality domains | SQEM's seven areas of review; record them separately instead of combining them into one score |
+| Eight principles | Constrain the evaluation and its claims, for example by requiring observable behaviour, risk-based depth, and a baseline |
+| L1–L4 | Test depth: how far validation has gone |
+| E1–E4 | Evidence source: what kind of evidence is available; this is a separate axis from L1–L4 |
+| Claim boundary | Keep claims within the available evidence; when support is insufficient, collect evidence or narrow the claim |
+
 ## How different people can use the model
 
 | User | Recommended use |
@@ -92,6 +123,21 @@ For example, a static check can support the claim that “the package follows th
 You do not need to migrate to a specific evaluation platform before starting. Define the contract with the model and templates, then connect cases to an existing runner, scripts, or CI workflow. SQEM defines evaluation intent and evidence limits; it does not require a second engine.
 
 ## A practical first evaluation
+
+```mermaid
+flowchart TD
+    A[Choose one Skill and a checkable quality claim] --> B[Describe risk and scope]
+    B --> C[Select domains, target depth, and evidence sources]
+    C --> D[Define observable success and representative cases]
+    D --> E[Run with named versions of the agent, model, tools, and environment]
+    E --> F[Keep outcomes, trajectories, artifacts, method, and limitations]
+    F --> G{Does the evidence support the claim?}
+    G -- Yes --> H[Report scope, status, and remaining gaps]
+    G -- No --> I[Narrow the claim or plan follow-up validation]
+    F --> J{Was an important real failure found?}
+    J -- Yes --> K[Add that failure to the relevant regression set for future evaluations]
+    J -- No --> L[No regression case needs to be added]
+```
 
 Choose one Skill and one claim that can be checked. For example: “With this named agent and model, the Skill produces a test design for a given requirement that covers the main positive, negative, and boundary scenarios.” Avoid starting with a broad judgment such as “This Skill is good.”
 

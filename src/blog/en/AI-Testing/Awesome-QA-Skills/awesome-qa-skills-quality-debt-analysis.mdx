@@ -81,9 +81,9 @@ For each item, compare the smallest repayment action with containment, monitorin
 
 A debt item is not repaid when a ticket closes or a document is written. The source contract requires a changed asset, an independent check of the intended behavior, evidence that the debt effect is gone, and accountable acceptance. If those conditions are not met, keep it open or record an authorized exception.
 
-## Put debt repayment inside the quality loop
+## Put debt treatment inside the quality loop
 
-![Quality debt repayment loop: record and rank sourced debt, choose an authorized action, change the asset, verify behavior, and review remaining impact](/images/blog/ai-testing-quality-loops/quality-debt-analysis-quality-loop-en.svg)
+![Quality debt treatment loop: record and rank sourced debt, choose repayment, containment, or time-bounded acceptance, apply and verify treatment where needed, and carry unresolved impact forward](/images/blog/ai-testing-quality-loops/quality-debt-analysis-quality-loop-en.svg)
 
 AI-generated tests can suggest missing cases, but generation alone does not repay debt. Review and deduplicate candidates, connect accepted tests to the affected requirement, execute them, then check independently that the original debt effect has changed. Feed escapes, maintenance effort, detection delay, and unresolved evidence back into the next review.
 

@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="820" height="1143" viewBox="0 0 820 1143" role="img" aria-labelledby="title desc">
-<title id="title">Quality debt repayment loop</title>
-<desc id="desc">Quality debt repayment loop: record and rank sourced debt, choose an authorized action, change the asset, verify behavior, and review remaining impact</desc>
+<title id="title">Quality debt treatment loop</title>
+<desc id="desc">Quality debt treatment loop: record and rank sourced debt, choose repayment, containment, or time-bounded acceptance, apply and verify treatment where needed, and carry unresolved impact forward</desc>
 <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#8797ae"/></marker><marker id="loop-arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#4265df"/></marker></defs>
 <rect width="820" height="1143" rx="24" fill="#f7f9fc"/>
-<text x="52" y="58" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="27" font-weight="700">Quality debt repayment loop</text>
-<text x="52" y="91" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Carry evidence from prioritization through independent closure</text>
+<text x="52" y="58" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="27" font-weight="700">Quality debt treatment loop</text>
+<text x="52" y="91" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Carry evidence through treatment, closure, or review</text>
 <path d="M410 253 V280" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
 <path d="M410 398 V425" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
 <path d="M410 543 V570" fill="none" stroke="#8797ae" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
@@ -49,15 +49,15 @@
 <rect x="120" y="725" width="580" height="108" rx="18" fill="#eaf4fb" fill-opacity="0.88"/>
 <circle cx="154" cy="755" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
 <text x="154" y="760" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">05</text>
-<text x="410" y="772" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Change the asset and check behavior</text>
-<text x="410" y="802" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Run an independent regression check</text>
+<text x="410" y="772" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Apply the selected treatment</text>
+<text x="410" y="798" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16"><tspan x="410">Repay or contain and verify, or document the approved</tspan><tspan x="410" dy="20">exception, owner, and review date</tspan></text>
 </g>
 <g>
 <rect x="120" y="870" width="580" height="108" rx="18" fill="#fff" stroke="#d8e0ec" stroke-width="1.4"/>
 <rect x="120" y="870" width="580" height="108" rx="18" fill="#fce8ef" fill-opacity="0.88"/>
 <circle cx="154" cy="900" r="17" fill="#fff" stroke="#4265df" stroke-width="1.4"/>
 <text x="154" y="905" text-anchor="middle" fill="#4265df" font-family="Arial, sans-serif" font-size="13" font-weight="700">06</text>
-<text x="410" y="917" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Confirm the effect is gone</text>
-<text x="410" y="947" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">Close with evidence or carry the debt forward</text>
+<text x="410" y="917" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">Close only when evidence shows impact is gone</text>
+<text x="410" y="947" text-anchor="middle" fill="#53627a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="16">If risk remains or is accepted, carry it to the next review</text>
 </g>
 </svg>
