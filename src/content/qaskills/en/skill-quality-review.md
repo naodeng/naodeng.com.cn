@@ -91,6 +91,57 @@ metadata:
 Use this Skill for the package-wide contract and installation readiness, including files, metadata, resources, examples, and evals. Use skill-prose-review for a bounded passage, Prompt, or document contract; a prose-only review cannot establish package completeness.
 ```
 
+## When to Use
+
+- Review a Skill at package level rather than only polishing prose.
+- Check whether `SKILL.md`, the primary Prompt, metadata, examples, references, and `evals/` form one consistent contract.
+- Assess whether a Skill can be copied or installed independently and which conclusions still lack runtime evidence.
+
+## Workflow
+
+### Output Format Options
+
+- Default to a Markdown review with a conclusion, blocking issues, suggestions, information gaps, and evidence boundaries.
+- Use a table when several files or evidence layers must be compared; do not replace the reasoning with a score.
+
+### Package Review Workflow
+
+1. Confirm the Skill, language, directory, and review goal; list information gaps before reviewing absent files.
+2. Check architecture responsibility, scope/non-goals, triggers, input audit, output contract, progressive disclosure, and neighbor boundaries.
+3. Check path, name, and semantic consistency across `SKILL.md`, the primary Prompt, `agents/openai.yaml`, examples/references, and `evals/`.
+4. Check independent installation: relative resources still resolve when only this Skill directory is copied, with no hard dependency on another Skill's private files.
+5. Report blocking issues, important suggestions, information gaps, and evidence boundaries; separate static findings from runtime/model conclusions.
+
+### Choosing the Review Scope
+
+Use this Skill for the package-wide contract and installation readiness, including files, metadata, resources, examples, and evals. Use skill-prose-review for a bounded passage, Prompt, or document contract; a prose-only review cannot establish package completeness.
+
+## Core Constraints
+
+- This is a static package review. Do not execute the business task or silently modify the Skill.
+- Directory completeness, `skill-up validate`, CLI install smoke, and Project status cannot prove runtime behavior, model effectiveness, business acceptance, Quality Score, or release approval.
+- Do not invent environments, dependencies, metrics, trigger observations, or execution facts. Use `UNASSESSED`, `NOT_RUN`, `BLOCKED`, or `INSUFFICIENT_EVIDENCE` when evidence is absent.
+- Do not create a second Eval Engine, Judge, Benchmark, or Quality Score.
+
+## Progressive Disclosure
+
+- Read `prompts/skill-quality-review.md` for the complete review output contract.
+- Inspect the target Skill's `SKILL.md`, Prompt, metadata, references, examples, and `evals/` together.
+- Use repository contracts as optional deep references and preserve missing-runtime limitations.
+
+## Pre-delivery Checklist
+
+- [ ] Scope, document roles, and input gaps are explicit
+- [ ] Triggers, inputs, outputs, constraints, independent installation, and Eval readiness were checked
+- [ ] Blocking issues, suggestions, unassessed items, and evidence levels are traceable
+- [ ] Static checks are not presented as runtime/model evidence
+
+## Common Pitfalls
+
+- Treating directory completeness, CLI smoke, or Project status as runtime or model evidence.
+- Reviewing only prose while missing metadata, eval, installation, or bilingual inconsistencies.
+- Adding a cross-Skill private-file dependency to make a package appear complete.
+
 ## Install
 
 ### Choose installer by OS and AI tool
