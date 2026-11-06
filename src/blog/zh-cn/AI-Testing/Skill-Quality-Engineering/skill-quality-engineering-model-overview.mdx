@@ -1,9 +1,8 @@
 ---
-title: "Skill 质量工程总览：模型、使用指南与 12 篇文章"
+title: "Skill 质量工程全景指南：评估模型、实践方法与 12 篇系列文章"
 description: "从 SQEM 七个质量域、八项原则和分层证据出发，说明如何在团队中使用 Skill 质量工程，并串起 12 篇实践文章。"
 date: 2026-11-06T09:00:00.000Z
 author: "nao.deng"
-draft: true
 tags: ["AI 测试", "智能体技能", "Skill 质量工程"]
 categories: ["AI 测试", "质量工程"]
 series: ["Skill 质量工程"]
@@ -193,18 +192,18 @@ SQEM 用于组织评估并准确表达证据，不提供认证，也不代替发
 
 | 主题 | 文章与可带走的内容 |
 | --- | --- |
-| 认识对象 | Skill 也需要测试：从能用走向质量可信。看懂为什么静态合法、能够触发和结果看起来合理仍不足以证明质量。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-01-testing-agent-skills/ |
-| 认识对象 | 智能体技能（Agent Skill）是什么：从规范到运行时的完整链路。理解入口文件、引用资源、技能包和运行时如何共同影响结果。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-02-specification-to-runtime/ |
-| 模型基础 | 如何定义 Skill 质量：建立 SQEM 质量模型。了解七个质量域、八项原则，以及模型为何不使用单一总分。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-03-sqem-quality-model/ |
-| 模型基础 | Skill 测试金字塔：构建分层的 Skill 测试体系。根据风险选择 L1 到 L4 的测试深度，并理解它与 E1 到 E4 证据来源的区别。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-04-testing-pyramid/ |
-| 触发与行为 | Skill 触发测试：如何检查 Skill 的发现、选择与触发。用正向、负向、边界和改写用例检查路由。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-05-trigger-testing/ |
-| 触发与行为 | Skill 行为测试：从固定答案验证转向行为契约测试。以必须、建议和禁止的行为约束评估结果、轨迹、产物与副作用。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-06-behavior-testing/ |
-| 评估与价值 | Skill 评测设计：从成功标准到可验证的评估证据。把成功标准拆成用例，选择适当的评估器并保存运行记录。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-07-eval-design/ |
-| 评估与价值 | Skill 基准测试：这个 Skill 真的比不使用 Skill 更好吗。设置合理基线，对照使用与不使用 Skill 的结果、成本和负面影响。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-08-benchmarking/ |
-| 评估与价值 | Skill 兼容性：换个智能体或模型还能正常工作吗。明确智能体、模型、工具、环境和语言范围，用实际证据支持兼容声明。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-09-compatibility/ |
-| 持续治理 | Skill 回归测试：修改后如何证明没有破坏原有行为。根据改动影响选择回归范围，并把真实失败保留下来。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-10-regression-testing/ |
-| 持续治理 | Skill 证据：PASS 之前先问证据能证明什么。区分静态、评测、运行时和真实使用证据，避免结论越界。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-11-evidence-boundaries/ |
-| 持续治理 | Skill 质量循环：用 QA 方法持续治理智能体技能。把匹配、设计、验证、评估、发布、观察、回归和改进连成持续过程。文章: https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-12-quality-loop/ |
+| 认识对象 | Skill 也需要测试：从能用走向质量可信。看懂为什么静态合法、能够触发和结果看起来合理仍不足以证明质量。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-01-testing-agent-skills/ |
+| 认识对象 | 智能体技能（Agent Skill）是什么：从规范到运行时的完整链路。理解入口文件、引用资源、技能包和运行时如何共同影响结果。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-02-specification-to-runtime/ |
+| 模型基础 | 如何定义 Skill 质量：建立 SQEM 质量模型。了解七个质量域、八项原则，以及模型为何不使用单一总分。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-03-sqem-quality-model/ |
+| 模型基础 | Skill 测试金字塔：构建分层的 Skill 测试体系。根据风险选择 L1 到 L4 的测试深度，并理解它与 E1 到 E4 证据来源的区别。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-04-testing-pyramid/ |
+| 触发与行为 | Skill 触发测试：如何检查 Skill 的发现、选择与触发。用正向、负向、边界和改写用例检查路由。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-05-trigger-testing/ |
+| 触发与行为 | Skill 行为测试：从固定答案验证转向行为契约测试。以必须、建议和禁止的行为约束评估结果、轨迹、产物与副作用。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-06-behavior-testing/ |
+| 评估与价值 | Skill 评测设计：从成功标准到可验证的评估证据。把成功标准拆成用例，选择适当的评估器并保存运行记录。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-07-eval-design/ |
+| 评估与价值 | Skill 基准测试：这个 Skill 真的比不使用 Skill 更好吗。设置合理基线，对照使用与不使用 Skill 的结果、成本和负面影响。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-08-benchmarking/ |
+| 评估与价值 | Skill 兼容性：换个智能体或模型还能正常工作吗。明确智能体、模型、工具、环境和语言范围，用实际证据支持兼容声明。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-09-compatibility/ |
+| 持续治理 | Skill 回归测试：修改后如何证明没有破坏原有行为。根据改动影响选择回归范围，并把真实失败保留下来。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-10-regression-testing/ |
+| 持续治理 | Skill 证据：PASS 之前先问证据能证明什么。区分静态、评测、运行时和真实使用证据，避免结论越界。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-11-evidence-boundaries/ |
+| 持续治理 | Skill 质量循环：用 QA 方法持续治理智能体技能。把匹配、设计、验证、评估、发布、观察、回归和改进连成持续过程。文章：https://inaodeng.com/zh-cn/blog/ai-testing/skill-quality-engineering/skill-quality-engineering-12-quality-loop/ |
 
 ## 把一次结果变成质量循环
 
@@ -214,21 +213,21 @@ SQEM 用于组织评估并准确表达证据，不提供认证，也不代替发
 
 ## 延伸阅读与方法资料
 
-Skill 质量工程工具包说明文档: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/README.md
+Skill 质量工程工具包说明文档：https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/README.md
 
 Skill 质量评测模型（SQEM）: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/SKILL_QUALITY_EVALUATION_MODEL.md
 
-Skill 评测契约: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/SKILL_EVAL_CONTRACT.md
+Skill 评测契约：https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/SKILL_EVAL_CONTRACT.md
 
-SQEM 试点计划: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/SKILL_QUALITY_PILOT.md
+SQEM 试点计划：https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/SKILL_QUALITY_PILOT.md
 
-行为契约模板: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/templates/SKILL_BEHAVIOR_CONTRACT_TEMPLATE.md
+行为契约模板：https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/templates/SKILL_BEHAVIOR_CONTRACT_TEMPLATE.md
 
-质量画像模板: https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/templates/SKILL_QUALITY_PROFILE_TEMPLATE.md
+质量画像模板：https://github.com/naodeng/awesome-qa-skills/blob/main/docs/skill-quality-engineering/templates/SKILL_QUALITY_PROFILE_TEMPLATE.md
 
-可调用的中文 Skill 工程类技能: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering
+可调用的中文 Skill 工程类技能：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering
 
-可调用的英文 Skill 工程类技能: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering
+可调用的英文 Skill 工程类技能：https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering
 
 ## 结语
 
