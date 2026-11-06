@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { parseQASkillMarkdown } from "@/utils/qaskills";
+import { parseQASkillMarkdown, SECTION_KEYS } from "@/utils/qaskills";
 
 const SITE_MD = `# API 测试
 
@@ -81,4 +81,20 @@ describe("parseQASkillMarkdown", () => {
     expect(generated).toContain("## 执行流程");
     expect(generated).toContain("先盘点当前范围内实际存在的测试类型与文件");
   });
+
+  it.each(["skill-evaluation", "skill-quality-review"])(
+    "parses every canonical section from the English %s page content",
+    (slug) => {
+      const markdown = readFileSync(
+        join(process.cwd(), "..", "src", "content", "qaskills", "en", `${slug}.md`),
+        "utf8"
+      );
+      const skill = parseQASkillMarkdown("en", slug, markdown);
+
+      for (const section of SECTION_KEYS) {
+        expect(skill.sections[section], `${slug}: ${section}`).not.toBe("");
+      }
+      expect(skill.rawSkillMarkdown).toContain(`name: ${slug}`);
+    }
+  );
 });

@@ -6,6 +6,7 @@ import { getQASkills } from "@/utils/qaskills";
 import { getRelatedQASkills } from "@/utils/qaskillsRelated";
 import { buildQASkillMetaDescription } from "@/utils/seoDescription.mjs";
 import { getQASkillCardIntro, getQASkillCardSummary, getQASkillPageDescription } from "@/data/qaSkillLibrary";
+import { QA_SKILL_TASK_PATHS } from "@/data/qaSkillTaskPaths";
 import { buildGenericQASkillDetailData, getQASkillDetailData } from "@/data/qaSkillDetail";
 import ArticleShare from "@/components/ArticleShare.astro";
 import Giscus from "@/components/Giscus.astro";
@@ -47,7 +48,7 @@ const text = lang === "zh-cn" ? {
   install: "安装命令", shell: "SHELL", problem: "解决什么问题", recommended: "适用场景", recommendedLabel: "推荐使用",
   notRecommended: "不建议直接使用", input: "输入", minimum: "最低输入",
   recommendedInput: "推荐输入", optional: "可选上下文", output: "输出",
-  outputHint: "不安装也能判断输出价值", preview: "输出预览", priority: "优先级",
+  outputHint: "以下是 Skill 对预期产出的要求，不代表它已在真实项目中执行。", preview: "输出预览", priority: "优先级",
   finding: "发现", evidence: "证据", impact: "影响", action: "行动", example: "真实示例", before: "输入",
   runSkill: "调用", after: "结果", fullExample: "查看完整示例", howItWorks: "工作原理",
   workflow: "Skill 工作流", workflowHint: "当前 Skill 在质量工作流中的位置",
@@ -57,7 +58,7 @@ const text = lang === "zh-cn" ? {
   promptTab: "Prompt", skillMdTab: "SKILL.md", moreDetails: "更多详情", outputFull: "查看完整输出结构", advanced: "高级用法",
   deepDive: "深入阅读", resources: "资源", sourceFiles: "源文件", references: "参考资料", agentConfig: "Agent 配置",
   noContent: "当前 Skill 暂无可展示内容。", notProvided: "未单独定义", relatedHint: "继续探索相邻的质量能力。", nextSkill: "下一步 Skill",
-  nextHint: "完成需求分析后，继续进入下一步质量活动。", noMatch: "暂无可用 Skill",
+  nextHint: "这是当前任务路径上的常见下一步；请按实际范围调整。", noMatch: "暂无可用 Skill",
   rawMissing: "暂无源文件预览，请打开 GitHub 查看。", onThisPage: "本页导航", categoryType: "测试类型",
   categoryWorkflow: "工作流", categoryPlus: "增强 Skill", skillAttributes: "技能属性", heroCommand: "调用入口", heroCommandKind: "调用命令", heroCommandHint: "在 Codex 中输入以下命令即可开始使用。",
   prompt: `@skill ${skill.slug}\n\n${skill.slug === "requirements-analysis" ? "分析这个需求，识别业务规则、边界、依赖、信息缺口和质量风险。\n\n需求：\n[粘贴需求内容]" : "结合当前项目上下文，按该 Skill 的要求给出可执行结果。\n\n补充上下文：\n[粘贴项目背景或需求]"}`,
@@ -70,7 +71,7 @@ const text = lang === "zh-cn" ? {
   install: "Install command", shell: "SHELL", problem: "Why this Skill", recommended: "When to use", recommendedLabel: "Use this Skill",
   notRecommended: "When not to use", input: "Input", minimum: "Minimum Input",
   recommendedInput: "Recommended Input", optional: "Optional Context", output: "Output",
-  outputHint: "Judge the output value before installing", preview: "Output preview",
+  outputHint: "These are the Skill's expected output requirements, not evidence that it ran in a real project.", preview: "Output preview",
   priority: "Priority", finding: "Finding", evidence: "Evidence", impact: "Impact", action: "Action", example: "Real example",
   before: "Before", runSkill: "Run Skill", after: "After", fullExample: "View full example", howItWorks: "How It Works",
   workflow: "Skill Workflow", workflowHint: "Where this Skill sits in the quality workflow",
@@ -80,7 +81,7 @@ const text = lang === "zh-cn" ? {
   promptTab: "Prompt", skillMdTab: "SKILL.md", moreDetails: "More details", outputFull: "View full output structure", advanced: "Advanced",
   deepDive: "Deep dive", resources: "Resources", sourceFiles: "Source files", references: "References", agentConfig: "Agent config",
   noContent: "No content is available for this Skill yet.", notProvided: "Not specified", relatedHint: "Continue exploring adjacent quality capabilities.", nextSkill: "Next Skill",
-  nextHint: "After requirements analysis, continue to the next quality activity.", noMatch: "No matching Skill available",
+  nextHint: "A common next step in this task path; adjust it to the actual scope.", noMatch: "No matching Skill available",
   rawMissing: "Raw preview unavailable. Open GitHub instead.", onThisPage: "On this page", categoryType: "Testing type",
   categoryWorkflow: "Workflow", categoryPlus: "Enhanced Skill", skillAttributes: "Skill attributes", heroCommand: "Call this Skill", heroCommandKind: "Command", heroCommandHint: "Enter this command in Codex to start.",
   prompt: `@skill ${skill.slug}\n\n${skill.slug === "requirements-analysis" ? "Analyze this requirement. Identify business rules, boundaries, dependencies, information gaps, and quality risks.\n\nRequirement:\n[Paste requirement here]" : "Using the current project context, produce an actionable result following this Skill.\n\nAdditional context:\n[Paste project context or requirement]"}`,
@@ -123,6 +124,8 @@ const problemItems = configuredDetail
   : detail.problem.filter((item) => item.trim() !== heroIntro.trim());
 
 const skillMap = new Map(allSkills.map((item) => [item.slug, item]));
+const nextTaskPath = QA_SKILL_TASK_PATHS.find((path) => path.skillSlug === skill.slug);
+const nextTaskSkill = nextTaskPath ? skillMap.get(nextTaskPath.nextSkillSlug) : undefined;
 const relationCards = (slugs: string[]) => slugs.map((slug) => skillMap.get(slug)).filter(Boolean).map((item) => ({ slug: item!.slug, name: lang === "zh-cn" ? (item!.chineseName || item!.title) : item!.title, intro: getQASkillCardIntro(item!, lang) }));
 const beforeCards = relationCards(detail.relations.before);
 const deepenCards = relationCards(detail.relations.deepen);
@@ -236,6 +239,19 @@ const tocHeadings = [
           <section class="console-panel console-panel--wide" id="section-output">
             <div class="console-panel-head"><h2>{text.output}</h2></div>
             <div class="output-layout"><div class="output-summary"><p>{detail.outputSummary}</p><p class="output-hint">{text.outputHint}</p></div><div><ol class="output-sections">{outputHighlights.map((item, index) => <li><b>{String(index + 1).padStart(2, "0")}</b><span>{item}</span></li>)}</ol>{outputMore.length > 0 && <details class="output-more"><summary>{text.outputFull}<span aria-hidden="true">▾</span></summary><ol class="output-sections output-sections--more">{outputMore.map((item, index) => <li><b>{String(index + outputHighlights.length + 1).padStart(2, "0")}</b><span>{item}</span></li>)}</ol></details>}</div></div>
+            {nextTaskSkill && (
+              <div class="output-next-step">
+                <div class="output-next-step-copy">
+                  <strong>{text.nextSkill}</strong>
+                  <p>{text.nextHint}</p>
+                </div>
+                <a href={getRelativeLocaleUrl(lang, `/qaskills/${nextTaskSkill.slug}/`)}>
+                  <span class="output-next-step-title">{lang === "zh-cn" ? (nextTaskSkill.chineseName || nextTaskSkill.title) : nextTaskSkill.title}</span>
+                  <span class="output-next-step-intro">{getQASkillCardIntro(nextTaskSkill, lang)}</span>
+                  <span class="output-next-step-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            )}
           </section>
 
           {detail.outputPreview.length > 0 && <section class="console-panel console-panel--wide" id="section-output-preview"><div class="console-panel-head"><h2>{text.preview}</h2></div><div class="preview-table" role="table" aria-label={text.preview}><div class="preview-row preview-row--head" role="row"><span role="columnheader">{text.priority}</span><span role="columnheader">{text.finding}</span><span role="columnheader">{text.evidence}</span><span role="columnheader">{text.impact}</span><span role="columnheader">{text.action}</span></div>{detail.outputPreview.map((row) => <div class="preview-row" role="row"><strong role="cell" class:list={["priority", `priority--${row.priority.toLowerCase()}`]} data-label={text.priority}>{row.priority}</strong><span role="cell" data-label={text.finding}>{row.finding}</span><span role="cell" data-label={text.evidence}>{row.evidence}</span><span role="cell" data-label={text.impact}>{row.impact}</span><span role="cell" data-label={text.action}>{row.action}</span></div>)}</div></section>}
@@ -379,6 +395,16 @@ const tocHeadings = [
   .output-layout { display: grid; grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.2fr); gap: 1.5rem 2rem; align-items: start; }
   .output-summary p { margin: 0; color: var(--color-text-secondary); line-height: 1.7; }
   .output-hint { margin-top: 0.9rem !important; color: var(--color-theme) !important; font-size: 0.78rem; font-weight: 800; }
+  .output-next-step { display: grid; grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr); gap: 1rem; align-items: center; margin-top: 1.25rem; padding: 0.9rem 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-theme-soft); }
+  .output-next-step-copy strong { display: block; color: var(--color-main); font-size: 0.9rem; }
+  .output-next-step-copy p { margin: 0.3rem 0 0; color: var(--color-text-secondary); font-size: 0.8125rem; line-height: 1.5; }
+  .output-next-step > a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.2rem 0.8rem; min-width: 0; min-height: 44px; color: var(--color-theme); text-decoration: none; transition: transform 0.18s cubic-bezier(.22,1,.36,1); }
+  .output-next-step > a:hover { transform: translateY(-2px); }
+  .output-next-step > a:active { transform: translateY(0); }
+  .output-next-step > a:hover .output-next-step-title { text-decoration: underline; text-underline-offset: 3px; }
+  .output-next-step-title { font-size: 0.95rem; font-weight: 800; line-height: 1.35; }
+  .output-next-step-intro { color: var(--color-text-secondary); font-size: 0.8125rem; line-height: 1.45; }
+  .output-next-step-arrow { grid-column: 2; grid-row: 1 / span 2; color: var(--color-theme); font-size: 1.15rem; font-weight: 800; }
   .output-sections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem 1.25rem; margin: 0; padding: 0; list-style: none; }
   .output-sections li { display: flex; gap: 0.55rem; align-items: baseline; color: var(--color-main); font-size: 0.95rem; line-height: 1.45; }
   .output-sections b, .how-it-works b { color: var(--color-theme); font-size: 0.875rem; font-weight: 700; }
@@ -456,6 +482,8 @@ const tocHeadings = [
   @media (prefers-reduced-motion: reduce) {
     .console-panel.is-highlighted { animation: none; }
     .console-button--primary:hover, .console-button--primary:focus-visible { transform: none; }
+    .output-next-step > a { transition: none; }
+    .output-next-step > a:hover, .output-next-step > a:active { transform: none; }
   }
   @media (max-width: 900px) {
     .console-hero-main { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
@@ -463,6 +491,7 @@ const tocHeadings = [
     .console-tag-row { justify-content: flex-start; }
     .console-hero-command { justify-self: stretch; max-width: none; }
     .problem-layout, .output-layout { grid-template-columns: minmax(0, 1fr); }
+    .output-next-step { grid-template-columns: minmax(0, 1fr); }
     .how-it-works { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
   }
   @media (max-width: 680px) {
@@ -483,6 +512,9 @@ const tocHeadings = [
     .how-it-works { grid-template-columns: repeat(auto-fit, minmax(8.25rem, 1fr)); }
     .quick-start-tabs { max-width: 100%; }
     .quick-start-tabs button { padding-inline: 0.55rem; }
+  }
+  @media (max-width: 640px) {
+    .output-next-step > a { margin-inline-end: 3.25rem; }
   }
   .console-kicker,
   .quick-install-top,

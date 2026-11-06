@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>QA Skills collection spike</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #faf9f6;
+      --surface: #ffffff;
+      --ink: #202a30;
+      --muted: #5c6b6d;
+      --line: #dfe4e1;
+      --green: #176b75;
+      --green-soft: #e5f0ee;
+      --orange: #7a5700;
+      --orange-soft: #fff3ce;
+      --blue: #4355a1;
+      --shadow: 0 18px 55px #263a3110;
+      font-family: "Noto Sans", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 76px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); }
+    a { color: inherit; }
+    button { color: inherit; font: inherit; }
+    .topbar { border-bottom: 1px solid var(--line); background: #f8f8f3e8; position: sticky; top: 0; z-index: 5; backdrop-filter: blur(14px); }
+    .topbar-inner { max-width: 1180px; margin: auto; padding: 12px 28px; display: flex; align-items: center; gap: 26px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 760; letter-spacing: -.02em; white-space: nowrap; }
+    .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; color: #fff; background: var(--green); font-size: 12px; letter-spacing: 0; }
+    .top-nav { display: flex; align-items: center; gap: 21px; color: var(--muted); font-size: 13px; }
+    .top-nav a { text-decoration: none; }
+    .top-nav a:hover { color: var(--green); }
+    .lang-switch { margin-left: auto; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); font-size: 12px; font-weight: 700; cursor: pointer; }
+    main { max-width: 1180px; margin: 0 auto; padding: 42px 28px 74px; }
+    .eyebrow { color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr); align-items: end; gap: 36px; padding: 10px 0 32px; }
+    h1 { max-width: 730px; margin: 12px 0 14px; font-size: clamp(38px, 5vw, 64px); line-height: .99; letter-spacing: -.02em; font-weight: 760; }
+    .hero-copy { max-width: 640px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .hero-side { border-left: 1px solid var(--line); padding: 4px 0 4px 24px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .hero-side strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 14px; }
+    .task-section { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; align-items: stretch; }
+    .task-prompt { padding: 26px 0; }
+    .kicker { margin: 0 0 11px; color: var(--orange); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: 24px; line-height: 1.15; letter-spacing: -.02em; }
+    .task-prompt p:last-child { margin: 12px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .task-match { border: 1px solid var(--line); border-radius: 15px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+    .task-match-head { padding: 20px 22px 15px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .task-match-head span { color: var(--muted); font-size: 12px; }
+    .task-options { display: flex; flex-wrap: wrap; gap: 8px; padding: 13px 22px 18px; border-bottom: 1px solid var(--line); }
+    .task-choice { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 9px 13px; font-size: 12px; font-weight: 680; cursor: pointer; transition: .16s ease; }
+    .task-choice:hover { border-color: var(--green); }
+    .task-choice[aria-pressed="true"] { color: #fff; border-color: var(--green); background: var(--green); }
+    .match-grid { display: grid; grid-template-columns: 1fr 1.05fr 1.12fr; }
+    .match-cell { min-height: 190px; padding: 20px 22px 22px; border-right: 1px solid var(--line); }
+    .match-cell:last-child { border-right: 0; }
+    .match-label { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+    .match-number { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--paper); color: var(--green); font-size: 12px; letter-spacing: 0; }
+    .match-cell h3 { margin: 16px 0 7px; font-size: 19px; line-height: 1.25; letter-spacing: -.02em; }
+    .match-cell p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .skill-inline { display: inline-flex; margin-top: 15px; color: var(--green); font-size: 12px; font-weight: 750; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .output-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 13px; }
+    .output-tags span { padding: 5px 8px; border: 1px solid #dce5dc; border-radius: 6px; background: #f7faf6; color: #3f5b4e; font-size: 12px; }
+    .path-section { margin: 34px 0 62px; padding: 21px 23px 23px; border-radius: 14px; background: #e8ebe3; }
+    .path-top { display: flex; justify-content: space-between; gap: 18px; align-items: baseline; margin-bottom: 17px; }
+    .path-top h2 { font-size: 15px; letter-spacing: -.02em; }
+    .path-top p { margin: 0; color: var(--muted); font-size: 11px; }
+    .path-list { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; list-style: none; padding: 0; margin: 0; }
+    .path-list li { position: relative; padding: 11px 12px; min-height: 59px; border: 1px solid transparent; border-radius: 8px; color: #525e5d; background: #f6f7f1; font-size: 12px; line-height: 1.4; }
+    .path-list li::before { display: block; margin-bottom: 6px; color: #5c6b6d; content: attr(data-step); font-size: 12px; font-weight: 800; }
+    .path-list li.is-active { border-color: #9bc3ad; color: var(--green); background: #f3faf5; font-weight: 740; }
+    .path-list li.is-active::before { color: var(--green); }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin: 0 0 17px; }
+    .section-heading p { max-width: 470px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .directory-link { display: inline-flex; align-items: center; gap: 7px; color: var(--green); font-size: 12px; font-weight: 750; text-decoration: none; white-space: nowrap; }
+    .detail-panel { display: grid; grid-template-columns: .82fr 1.5fr; gap: 0; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); overflow: hidden; box-shadow: var(--shadow); }
+    .detail-side { padding: 25px; border-right: 1px solid var(--line); background: #faf9f6; }
+    .detail-side h3 { margin: 14px 0 7px; font-size: 21px; letter-spacing: -.02em; }
+    .slug { color: var(--muted); font: 12px ui-monospace, monospace; }
+    .detail-side > p { margin: 12px 0 18px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .metadata { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 21px; }
+    .metadata span { border: 1px solid var(--line); border-radius: 999px; padding: 5px 8px; color: #53615b; font-size: 12px; }
+    .primary-link { display: flex; justify-content: center; align-items: center; gap: 8px; padding: 11px 13px; border-radius: 8px; color: #fff; background: var(--green); font-size: 12px; font-weight: 750; text-decoration: none; }
+    .secondary-link { display: inline-flex; margin-top: 13px; color: var(--green); font-size: 11px; font-weight: 720; text-decoration: none; }
+    .detail-main { padding: 25px 27px 22px; }
+    .detail-main-head { display: flex; justify-content: space-between; align-items: start; gap: 18px; margin-bottom: 17px; }
+    .detail-main-head h3 { margin: 0; font-size: 20px; letter-spacing: -.02em; }
+    .source-note { padding: 6px 8px; border-radius: 6px; color: #654900; background: var(--orange-soft); font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .artifact { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fbfcf9; }
+    .artifact-head { display: flex; justify-content: space-between; gap: 12px; padding: 10px 13px; border-bottom: 1px solid var(--line); color: #44524b; background: #f0f3ed; font-size: 12px; font-weight: 730; }
+    .artifact-head small { color: var(--muted); font-size: 12px; font-weight: 500; }
+    .artifact-body { display: grid; grid-template-columns: 1fr 1fr; }
+    .artifact-row { min-height: 54px; padding: 10px 13px; border-bottom: 1px solid #e8ebe5; }
+    .artifact-row:nth-child(odd) { border-right: 1px solid #e8ebe5; }
+    .artifact-row:nth-last-child(-n+2) { border-bottom: 0; }
+    .artifact-row strong { display: block; margin-bottom: 4px; color: #293832; font-size: 11px; }
+    .artifact-row span { color: var(--muted); font-size: 12px; line-height: 1.4; }
+    .boundary { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .boundary-card { padding: 11px 12px; border-radius: 8px; background: #f2f4ed; }
+    .boundary-card.warning { background: #fff3e8; }
+    .boundary-card strong { display: block; margin-bottom: 4px; font-size: 12px; }
+    .boundary-card p { margin: 0; color: #4f5f61; font-size: 12px; line-height: 1.5; }
+    .next-skill { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: 15px; padding: 13px 14px; border: 1px dashed #abc4b3; border-radius: 9px; }
+    .next-skill div { min-width: 0; }
+    .next-skill small { display: block; margin-bottom: 4px; color: var(--muted); font-size: 12px; }
+    .next-skill a { color: var(--green); font-size: 12px; font-weight: 750; text-decoration: none; }
+    .next-skill .arrow { color: var(--green); font-size: 17px; }
+    .takeaways { margin-top: 49px; padding-top: 20px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .takeaways div { padding-right: 12px; }
+    .takeaways strong { display: block; margin-bottom: 6px; font-size: 12px; }
+    .takeaways p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    footer { padding: 18px 28px 25px; color: var(--muted); text-align: center; font-size: 12px; }
+    :focus-visible { outline: 3px solid #668cd5; outline-offset: 3px; }
+    @media (max-width: 820px) {
+      .topbar-inner { padding-inline: 18px; gap: 16px; }
+      .top-nav { gap: 13px; font-size: 12px; }
+      main { padding: 32px 18px 55px; }
+      .hero { grid-template-columns: 1fr; gap: 18px; }
+      .hero-side { border-left: 0; border-top: 1px solid var(--line); padding: 14px 0 0; }
+      .task-section { grid-template-columns: 1fr; gap: 12px; }
+      .task-prompt { padding: 0; }
+      .match-grid { grid-template-columns: 1fr 1fr; }
+      .match-cell:nth-child(2) { border-right: 0; }
+      .match-cell:last-child { grid-column: 1 / -1; min-height: auto; border-top: 1px solid var(--line); }
+      .path-list { grid-template-columns: repeat(3, 1fr); }
+      .detail-panel { grid-template-columns: 1fr; }
+      .detail-side { border-right: 0; border-bottom: 1px solid var(--line); }
+      .detail-side p { max-width: 620px; }
+      .takeaways { gap: 13px; }
+    }
+    @media (max-width: 560px) {
+      .topbar-inner { gap: 9px; padding: 10px 14px; }
+      .brand { gap: 7px; font-size: 12px; }
+      .brand-mark { width: 26px; height: 26px; }
+      .top-nav { gap: 10px; font-size: 12px; }
+      .top-nav a:last-child { display: none; }
+      .lang-switch { padding: 6px 8px; font-size: 12px; }
+      main { padding: 26px 14px 44px; }
+      h1 { max-width: 440px; font-size: 40px; }
+      .hero-copy { font-size: 14px; }
+      .task-match-head { padding: 16px 15px 12px; align-items: start; flex-direction: column; gap: 5px; }
+      .task-options { padding: 12px 15px 15px; gap: 6px; }
+      .task-choice { padding: 8px 10px; font-size: 12px; }
+      .match-grid { grid-template-columns: 1fr; }
+      .match-cell { min-height: auto; padding: 17px 16px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .match-cell:nth-child(2) { border-bottom: 1px solid var(--line); }
+      .match-cell:last-child { grid-column: auto; border-top: 0; border-bottom: 0; }
+      .match-cell h3 { margin-top: 11px; font-size: 17px; }
+      .path-section { margin: 26px 0 48px; padding: 17px 13px; }
+      .path-top { display: block; }
+      .path-top p { margin-top: 5px; }
+      .path-list { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+      .path-list li { min-height: 53px; padding: 8px; font-size: 12px; }
+      .section-heading { display: block; }
+      .section-heading p { margin: 9px 0 11px; }
+      .detail-side, .detail-main { padding: 19px 16px; }
+      .detail-main-head { display: block; }
+      .source-note { display: inline-block; margin-top: 9px; }
+      .artifact-head { align-items: start; flex-direction: column; gap: 3px; }
+      .artifact-body { grid-template-columns: 1fr; }
+      .artifact-row, .artifact-row:nth-child(odd), .artifact-row:nth-last-child(-n+2) { border-right: 0; border-bottom: 1px solid #e8ebe5; }
+      .artifact-row:last-child { border-bottom: 0; }
+      .boundary { grid-template-columns: 1fr; }
+      .takeaways { grid-template-columns: 1fr; gap: 14px; margin-top: 38px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="QA Skills collection spike home"><span class="brand-mark">QA</span><span data-i18n="brand">技能库概念验证</span></a>
+      <nav class="top-nav" aria-label="Page sections">
+        <a href="#home" data-i18n="navHome">首页路径</a>
+        <a href="#detail" data-i18n="navDetail">详情产出</a>
+        <a href="#notes" data-i18n="navNotes">设计取舍</a>
+      </nav>
+      <button class="lang-switch" id="language-switch" type="button" aria-label="Switch language">EN</button>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero" id="home" aria-labelledby="page-title">
+      <div>
+        <div class="eyebrow" data-i18n="eyebrow">QA SKILLS · COLLECTION SPIKE</div>
+        <h1 id="page-title" data-i18n="title">从当前任务开始，找到下一步 QA Skill。</h1>
+        <p class="hero-copy" data-i18n="intro">把“我现在要做什么”作为入口，再说明推荐技能能产出什么。目录和生命周期路径继续作为完整浏览方式。</p>
+      </div>
+      <aside class="hero-side">
+        <strong data-i18n="baselineTitle">沿用现有目录</strong>
+        <span data-i18n="baselineCopy">双语内容、162 个 Skills、搜索与分类、生命周期路径、常用入口和详情信息均保留在现有页面中。</span>
+      </aside>
+    </section>
+
+    <section class="task-section" aria-labelledby="task-heading">
+      <div class="task-prompt">
+        <p class="kicker" data-i18n="stepOne">01 / START WITH A TASK</p>
+        <h2 id="task-heading" data-i18n="taskHeading">你现在要完成什么？</h2>
+        <p data-i18n="taskHint">选择一个例子，查看匹配的 Skill、产出和后续步骤。</p>
+      </div>
+      <div class="task-match" aria-live="polite">
+        <div class="task-match-head"><strong data-i18n="matcherTitle">按任务匹配技能</strong><span data-i18n="matcherHint">示例取自本站已发布的 Skill 摘要</span></div>
+        <div class="task-options" id="task-options" role="group" aria-label="Choose a QA task"></div>
+        <div class="match-grid">
+          <section class="match-cell">
+            <div class="match-label"><span class="match-number">1</span><span data-i18n="yourTask">当前任务</span></div>
+            <h3 id="selected-task-title"></h3><p id="selected-task-detail"></p>
+          </section>
+          <section class="match-cell">
+            <div class="match-label"><span class="match-number">2</span><span data-i18n="recommended">推荐 Skill</span></div>
+            <h3 id="selected-skill-title"></h3><p id="selected-skill-detail"></p>
+            <a class="skill-inline" id="selected-skill-link" href="#detail"></a>
+          </section>
+          <section class="match-cell">
+            <div class="match-label"><span class="match-number">3</span><span data-i18n="expectedOutput">预期产出与下一步</span></div>
+            <h3 id="selected-output-title"></h3><p id="selected-output-detail"></p><a class="skill-inline" id="selected-next-link" href="#detail"></a>
+            <div class="output-tags" id="selected-output-tags"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="path-section" aria-labelledby="path-title">
+      <div class="path-top"><h2 id="path-title" data-i18n="pathTitle">从任务到交付的技能路径</h2><p data-i18n="pathHint">当前选择会标记建议开始的阶段</p></div>
+      <ol class="path-list" id="path-list"></ol>
+    </section>
+
+    <section id="detail" aria-labelledby="detail-section-title">
+      <div class="section-heading">
+        <div><p class="kicker" data-i18n="stepTwo">02 / OPEN A SKILL</p><h2 id="detail-section-title" data-i18n="detailSectionTitle">详情页先让产出变得可判断</h2></div>
+        <p data-i18n="detailSectionIntro">沿用现有使用说明，补一段结构清晰、能追溯到 Skill 内容的输出预览。</p>
+      </div>
+      <article class="detail-panel" aria-label="Test case writing detail concept">
+        <aside class="detail-side">
+          <div class="eyebrow" data-i18n="detailEyebrow">TEST DESIGN · STABLE</div>
+          <h3 data-i18n="detailSkillName">测试用例编写</h3>
+          <div class="slug">test-case-writing</div>
+          <p data-i18n="detailSkillDescription">输入测试场景和业务约束，输出带优先级的结构化测试用例。</p>
+          <div class="metadata"><span data-i18n="metaType">原子 Skill</span><span data-i18n="metaEval">有评测</span><span data-i18n="metaLang">中文 / English</span></div>
+          <a class="primary-link" id="use-skill-link" href="http://localhost:4321/zh-cn/qaskills/test-case-writing/#quick-start"><span data-i18n="useSkill">查看使用步骤</span><span aria-hidden="true">↗</span></a>
+          <a class="secondary-link" id="full-detail-link" href="http://localhost:4321/zh-cn/qaskills/test-case-writing/" data-i18n="fullDetail">打开当前详情页 →</a>
+        </aside>
+        <div class="detail-main">
+          <div class="detail-main-head"><h3 data-i18n="artifactTitle">产出结构预览</h3><span class="source-note" data-i18n="sourceLabel">基于本站 Output 章节</span></div>
+          <div class="artifact">
+            <div class="artifact-head"><span>test-case.md</span><small data-i18n="artifactSub">字段示意；不是测试执行结果</small></div>
+            <div class="artifact-body">
+              <div class="artifact-row"><strong data-i18n="artifactScope">范围与需求追踪</strong><span data-i18n="artifactScopeText">标明用例覆盖范围和对应需求来源</span></div>
+              <div class="artifact-row"><strong data-i18n="artifactPriority">优先级</strong><span data-i18n="artifactPriorityText">按风险和业务影响排序</span></div>
+              <div class="artifact-row"><strong data-i18n="artifactPrecondition">前置条件与测试数据</strong><span data-i18n="artifactPreconditionText">写明执行前需要准备的条件</span></div>
+              <div class="artifact-row"><strong data-i18n="artifactSteps">操作步骤</strong><span data-i18n="artifactStepsText">可复现、可执行的动作</span></div>
+              <div class="artifact-row"><strong data-i18n="artifactExpected">可观察预期</strong><span data-i18n="artifactExpectedText">明确正向和异常场景的判定标准</span></div>
+              <div class="artifact-row"><strong data-i18n="artifactCoverage">覆盖与缺口</strong><span data-i18n="artifactCoverageText">达到最低覆盖，或注明省略原因</span></div>
+            </div>
+          </div>
+          <div class="boundary">
+            <div class="boundary-card"><strong data-i18n="boundaryFacts">页面能说明的</strong><p data-i18n="boundaryFactsText">本站 Skill 对输入、输出结构、工作流程的明确描述。</p></div>
+            <div class="boundary-card warning"><strong data-i18n="boundaryLimits">需要项目上下文</strong><p data-i18n="boundaryLimitsText">具体环境、账号、数据、接口和实际执行结果；缺失时标为待补信息，不填造示例事实。</p></div>
+          </div>
+          <div class="next-skill"><div><small data-i18n="nextLabel">常见下一步</small><a href="http://localhost:4321/zh-cn/qaskills/test-case-reviewer/" data-i18n="nextSkill">测试用例评审 · 检查覆盖与可执行性</a></div><span class="arrow" aria-hidden="true">→</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="takeaways" id="notes" aria-label="Spike decisions">
+      <div><strong data-i18n="takeawayOneTitle">借鉴：任务导航</strong><p data-i18n="takeawayOneText">把用户的工作目标映射到本站已有 Skill 和阶段导航，不另造一套目录。</p></div>
+      <div><strong data-i18n="takeawayTwoTitle">借鉴：产出证据</strong><p data-i18n="takeawayTwoText">展示输出包含什么，并标明内容来源；实际样例与概念结构分开标识。</p></div>
+      <div><strong data-i18n="takeawayThreeTitle">暂缓：热度与评分</strong><p data-i18n="takeawayThreeText">本站没有可验证的安装量、质量分和实时趋势数据，不添加排名或虚构指标。</p></div>
+    </section>
+  </main>
+  <footer data-i18n="footer">概念验证 · 2026-11-06 · 独立原型，不是生产页面</footer>
+  <script>
+    const copy = {
+      zh: {
+        brand:"技能库概念验证", navHome:"首页路径", navDetail:"详情产出", navNotes:"设计取舍", eyebrow:"QA SKILLS · COLLECTION SPIKE", title:"从当前任务开始，找到下一步 QA Skill。", intro:"把“我现在要做什么”作为入口，再说明推荐技能能产出什么。目录和生命周期路径继续作为完整浏览方式。", baselineTitle:"沿用现有目录", baselineCopy:"双语内容、162 个 Skills、搜索与分类、生命周期路径、常用入口和详情信息均保留在现有页面中。", stepOne:"01 / START WITH A TASK", taskHeading:"你现在要完成什么？", taskHint:"选择一个例子，查看匹配的 Skill、产出和后续步骤。", matcherTitle:"按任务匹配技能", matcherHint:"示例取自本站已发布的 Skill 摘要", yourTask:"当前任务", recommended:"推荐 Skill", expectedOutput:"预期产出与下一步", pathTitle:"从任务到交付的技能路径", pathHint:"当前选择会标记建议开始的阶段", stepTwo:"02 / OPEN A SKILL", detailSectionTitle:"详情页先让产出变得可判断", detailSectionIntro:"沿用现有使用说明，补一段结构清晰、能追溯到 Skill 内容的输出预览。", detailEyebrow:"测试设计 · 稳定", detailSkillName:"测试用例编写", detailSkillDescription:"输入测试场景和业务约束，输出带优先级的结构化测试用例。", metaType:"原子 Skill", metaEval:"有评测", metaLang:"中文 / 英文", useSkill:"查看使用步骤", fullDetail:"打开当前详情页 →", artifactTitle:"产出结构预览", sourceLabel:"基于本站 Output 章节", artifactSub:"字段示意；不是测试执行结果", artifactScope:"范围与需求追踪", artifactScopeText:"标明用例覆盖范围和对应需求来源", artifactPriority:"优先级", artifactPriorityText:"按风险和业务影响排序", artifactPrecondition:"前置条件与测试数据", artifactPreconditionText:"写明执行前需要准备的条件", artifactSteps:"操作步骤", artifactStepsText:"可复现、可执行的动作", artifactExpected:"可观察预期", artifactExpectedText:"明确正向和异常场景的判定标准", artifactCoverage:"覆盖与缺口", artifactCoverageText:"达到最低覆盖，或注明省略原因", boundaryFacts:"页面能说明的", boundaryFactsText:"本站 Skill 对输入、输出结构、工作流程的明确描述。", boundaryLimits:"需要项目上下文", boundaryLimitsText:"具体环境、账号、数据、接口和实际执行结果；缺失时标为待补信息，不填造示例事实。", nextLabel:"常见下一步", nextSkill:"测试用例评审 · 检查覆盖与可执行性", takeawayOneTitle:"借鉴：任务导航", takeawayOneText:"把用户的工作目标映射到本站已有 Skill 和阶段导航，不另造一套目录。", takeawayTwoTitle:"借鉴：产出证据", takeawayTwoText:"展示输出包含什么，并标明内容来源；实际样例与概念结构分开标识。", takeawayThreeTitle:"暂缓：热度与评分", takeawayThreeText:"本站没有可验证的安装量、质量分和实时趋势数据，不添加排名或虚构指标。", footer:"概念验证 · 2026-11-06 · 独立原型，不是生产页面", chooseTask:"选择任务", openSkill:"查看 Skill 详情 →", reqTask:"分析需求并确定测试范围", reqDetail:"用户故事边界不清楚，需要梳理规则、风险和信息缺口。", reqSkill:"需求分析", reqSkillDetail:"先澄清需求，再整理业务规则和测试范围。", reqOutput:"信息缺口、业务规则、风险与测试范围", reqNext:"测试策略", caseTask:"把需求转成可执行测试用例", caseDetail:"已知业务规则和约束，需要形成可评审、可跟进的用例。", caseSkill:"测试用例编写", caseSkillDetail:"按风险组织可执行的结构化测试用例。", caseOutput:"带优先级的结构化用例，包含前置条件、步骤和预期", caseNext:"测试用例评审", bugTask:"整理缺陷并准备回归", bugDetail:"已有问题现象和复现信息，需要形成可诊断的报告。", bugSkill:"缺陷上报", bugSkillDetail:"把现象、日志和复现步骤整理成清晰的缺陷报告。", bugOutput:"可诊断的缺陷报告与后续测试汇报", bugNext:"测试报告"
+      },
+      en: {
+        brand:"Directory concept spike", navHome:"Task entry", navDetail:"Skill output", navNotes:"Design decisions", eyebrow:"QA SKILLS · COLLECTION SPIKE", title:"Start with your task. Find the next QA Skill.", intro:"Make the current job the entry point, then show what the recommended Skill can produce. Keep the directory and lifecycle path for broader browsing.", baselineTitle:"Keep the current catalog", baselineCopy:"Bilingual content, 162 Skills, search and categories, lifecycle navigation, popular entry points, and detail information stay in the existing site.", stepOne:"01 / START WITH A TASK", taskHeading:"What are you working on?", taskHint:"Choose an example to see a matching Skill, its output, and a likely next step.", matcherTitle:"Match a Skill to a task", matcherHint:"Examples use published Skill summaries", yourTask:"Your task", recommended:"Recommended Skill", expectedOutput:"Expected output and next step", pathTitle:"A path from task to delivery", pathHint:"The selected task marks a useful starting stage", stepTwo:"02 / OPEN A SKILL", detailSectionTitle:"Make the output concrete on the detail page", detailSectionIntro:"Keep the current usage guide and add a traceable preview of the output structure.", detailEyebrow:"TEST DESIGN · STABLE", detailSkillName:"Test Case Writing", detailSkillDescription:"Turn test scenarios and business constraints into prioritized, structured test cases.", metaType:"Atomic Skill", metaEval:"Has evals", metaLang:"Chinese / English", useSkill:"View usage steps", fullDetail:"Open the current detail page →", artifactTitle:"Output structure preview", sourceLabel:"Based on this Skill's Output section", artifactSub:"Field outline; not an execution result", artifactScope:"Scope and traceability", artifactScopeText:"Show coverage scope and its requirement source", artifactPriority:"Priority", artifactPriorityText:"Order by risk and business impact", artifactPrecondition:"Preconditions and test data", artifactPreconditionText:"State what needs to be prepared before execution", artifactSteps:"Steps", artifactStepsText:"Reproducible, executable actions", artifactExpected:"Observable expectations", artifactExpectedText:"Define pass criteria for positive and negative cases", artifactCoverage:"Coverage and gaps", artifactCoverageText:"Meet minimum coverage or explain omissions", boundaryFacts:"What the page can support", boundaryFactsText:"Published Skill guidance for inputs, output structure, and workflow.", boundaryLimits:"Needs project context", boundaryLimitsText:"Specific environments, accounts, data, APIs, and execution results. Mark missing details as open items; do not invent them.", nextLabel:"Common next step", nextSkill:"Test Case Review · Check coverage and executability", takeawayOneTitle:"Borrow: task navigation", takeawayOneText:"Map user goals to existing Skills and lifecycle stages instead of creating another catalog.", takeawayTwoTitle:"Borrow: output evidence", takeawayTwoText:"Show what an output contains and where the description comes from; label real examples separately from structure concepts.", takeawayThreeTitle:"Defer: popularity and scores", takeawayThreeText:"The site has no verified install counts, quality scores, or live trends. Avoid rankings and invented metrics.", footer:"Concept spike · 2026-11-06 · Standalone prototype, not a production page", chooseTask:"Choose a task", openSkill:"View Skill details →", reqTask:"Analyze requirements and set test scope", reqDetail:"A user story has open questions; clarify rules, risks, and missing information.", reqSkill:"Requirements Analysis", reqSkillDetail:"Clarify requirements, then capture business rules and test scope.", reqOutput:"Gaps, business rules, risks, and test scope", reqNext:"Test Strategy", caseTask:"Turn requirements into executable test cases", caseDetail:"Rules and constraints are known; shape them into reviewable, trackable cases.", caseSkill:"Test Case Writing", caseSkillDetail:"Create structured, executable cases ordered by risk.", caseOutput:"Prioritized cases with preconditions, steps, and expected results", caseNext:"Test Case Review", bugTask:"Document a defect and prepare regression", bugDetail:"Symptoms and reproduction details are available; organize a diagnosable report.", bugSkill:"Bug Reporting", bugSkillDetail:"Turn symptoms, logs, and reproduction steps into a clear defect report.", bugOutput:"A diagnosable defect report and next-step test report", bugNext:"Test Reporting"
+      }
+    };
+    const tasks = {
+      requirements: { title:"reqTask", detail:"reqDetail", skill:"reqSkill", skillDetail:"reqSkillDetail", output:"reqOutput", next:"reqNext", slug:"requirements-analysis", nextSlug:"test-strategy", stage:0, tags:{zh:["信息缺口","业务规则","风险范围"],en:["Gaps","Business rules","Risk scope"]} },
+      cases: { title:"caseTask", detail:"caseDetail", skill:"caseSkill", skillDetail:"caseSkillDetail", output:"caseOutput", next:"caseNext", slug:"test-case-writing", nextSlug:"test-case-reviewer", stage:2, tags:{zh:["前置条件","操作步骤","预期结果"],en:["Preconditions","Steps","Expected results"]} },
+      defect: { title:"bugTask", detail:"bugDetail", skill:"bugSkill", skillDetail:"bugSkillDetail", output:"bugOutput", next:"bugNext", slug:"bug-reporting", nextSlug:"test-reporting", stage:4, tags:{zh:["现象与日志","复现步骤","回归关注点"],en:["Symptoms and logs","Repro steps","Regression focus"]} }
+    };
+    const stageNames = {zh:["需求分析","测试策略","用例设计","用例评审","执行与缺陷","回归与报告"],en:["Requirements","Test strategy","Case design","Case review","Execution and defects","Regression and reporting"]};
+    let locale = "zh";
+    let selected = "cases";
+    const t = (key) => copy[locale][key];
+    function render() {
+      document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
+      document.querySelectorAll("[data-i18n]").forEach(el => { const key = el.dataset.i18n; if (t(key)) el.textContent = t(key); });
+      const choices = document.getElementById("task-options");
+      choices.setAttribute("aria-label", t("chooseTask"));
+      choices.innerHTML = Object.entries(tasks).map(([key, task]) => `<button class="task-choice" type="button" data-task="${key}" aria-pressed="${key === selected}">${t(task.title)}</button>`).join("");
+      choices.querySelectorAll("button").forEach(button => button.addEventListener("click", () => { selected = button.dataset.task; render(); }));
+      const task = tasks[selected];
+      document.getElementById("selected-task-title").textContent = t(task.title);
+      document.getElementById("selected-task-detail").textContent = t(task.detail);
+      document.getElementById("selected-skill-title").textContent = t(task.skill);
+      document.getElementById("selected-skill-detail").textContent = t(task.skillDetail);
+      const skillLink = document.getElementById("selected-skill-link");
+      skillLink.href = `http://localhost:4321/${locale === "zh" ? "zh-cn" : "en"}/qaskills/${task.slug}/`;
+      skillLink.textContent = t("openSkill");
+      document.getElementById("selected-output-title").textContent = t(task.output);
+      document.getElementById("selected-output-detail").textContent = t("nextLabel");
+      const nextLink = document.getElementById("selected-next-link");
+      nextLink.href = `http://localhost:4321/${locale === "zh" ? "zh-cn" : "en"}/qaskills/${task.nextSlug}/`;
+      nextLink.textContent = t(task.next);
+      document.getElementById("selected-output-tags").innerHTML = task.tags[locale].map(tag => `<span>${tag}</span>`).join("");
+      document.getElementById("path-list").innerHTML = stageNames[locale].map((name,index) => `<li class="${index === task.stage ? "is-active" : ""}" data-step="0${index+1}" ${index === task.stage ? "aria-current=step" : ""}>${name}</li>`).join("");
+      const langPrefix = locale === "zh" ? "zh-cn" : "en";
+      document.getElementById("use-skill-link").href = `http://localhost:4321/${langPrefix}/qaskills/test-case-writing/#quick-start`;
+      document.getElementById("full-detail-link").href = `http://localhost:4321/${langPrefix}/qaskills/test-case-writing/`;
+      document.getElementById("language-switch").textContent = locale === "zh" ? "EN" : "中文";
+      document.getElementById("language-switch").setAttribute("aria-label", locale === "zh" ? "Switch to English" : "切换到中文");
+    }
+    document.getElementById("language-switch").addEventListener("click", () => { locale = locale === "zh" ? "en" : "zh"; render(); });
+    render();
+  </script>
+</body>
+</html>

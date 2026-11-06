@@ -4,6 +4,8 @@ import { type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getQASkillsGrouped, resolveLifecyclePath } from "@/utils/qaskills";
 import { shouldShowEvalsFilter } from "@/utils/qaskillsFilter";
+import { HOME_TASK_ENTRIES } from "@/data/homeTaskEntries";
+import { QA_SKILL_TASK_PATHS } from "@/data/qaSkillTaskPaths";
 import {
   getQASkillCardIntro,
   RECOMMENDED_QA_SKILL_SLUGS,
@@ -35,6 +37,25 @@ const latestSync = allSkills.map((s) => s.updatedAt).filter(Boolean).sort().at(-
 const recommendedSkills = RECOMMENDED_QA_SKILL_SLUGS
   .map((slug) => allSkills.find((skill) => skill.slug === slug))
   .filter((skill): skill is NonNullable<typeof skill> => Boolean(skill));
+const skillsBySlug = new Map(allSkills.map((skill) => [skill.slug, skill]));
+const qaskillTaskPaths = QA_SKILL_TASK_PATHS.flatMap((config) => {
+  const task = HOME_TASK_ENTRIES[lang].find((entry) => entry.key === config.taskKey);
+  const skill = skillsBySlug.get(config.skillSlug);
+  const nextSkill = skillsBySlug.get(config.nextSkillSlug);
+  const stage = lifecycleStages.find((item) => item.key === config.stageKey);
+  const taskIncludesSkill = task?.targets.some(
+    (target) => target.kind === "skill" && target.slug === config.skillSlug,
+  );
+  if (!task || !taskIncludesSkill || !skill || !nextSkill || !stage) return [];
+  return [{
+    task,
+    skill,
+    nextSkill,
+    stage,
+    output: lang === "zh-cn" ? config.output["zh-cn"] : config.output.en,
+  }];
+});
+const initialTaskPath = qaskillTaskPaths[0];
 
 // 构建期判断：数据无区分度时不渲染 eval 筛选 chip。
 const showEvalsFilter = shouldShowEvalsFilter(allSkills);
@@ -50,6 +71,15 @@ const text = lang === "zh-cn" ? {
   moreFilters: "更多筛选",
   featuredTitle: "常用入口",
   featuredIntro: "从高频任务开始，或直接搜索整个目录。",
+  taskStartTitle: "从当前任务开始",
+  taskStartIntro: "选择你现在要完成的测试任务，查看建议的 Skill、预期产出和下一步。",
+  taskStartOptions: "选择测试任务",
+  taskCurrent: "当前任务",
+  taskRecommended: "建议 Skill",
+  taskExpected: "预期产出",
+  taskNext: "下一步 Skill",
+  taskPath: "建议开始阶段",
+  taskPathIntro: "按本站维护的生命周期路径关联，不代表自动执行流程。",
   catalogTitle: "全部 Skills",
   catalogIntro: "按分类浏览，点击卡片直接打开使用指南。",
   quickStart: "如何使用",
@@ -96,6 +126,15 @@ const text = lang === "zh-cn" ? {
   moreFilters: "More filters",
   featuredTitle: "Popular entry points",
   featuredIntro: "Start with a common QA task, or search the full directory.",
+  taskStartTitle: "Start with your current task",
+  taskStartIntro: "Choose the QA task at hand to see a suggested Skill, expected output, and next step.",
+  taskStartOptions: "Choose a QA task",
+  taskCurrent: "Current task",
+  taskRecommended: "Suggested Skill",
+  taskExpected: "Expected output",
+  taskNext: "Next Skill",
+  taskPath: "Suggested starting stage",
+  taskPathIntro: "Mapped to this catalog's lifecycle path; this is not an automated workflow.",
   catalogTitle: "All Skills",
   catalogIntro: "Browse by category and open any card to read its usage guide.",
   quickStart: "How to use",
@@ -258,9 +297,9 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
           <h2 id="featured-title">{text.featuredTitle}</h2>
           <p>{text.featuredIntro}</p>
         </div>
-        <div class="featured-list">
-          {recommendedSkills.map((skill, index) => (
-            <a class:list={["featured-link", index === 0 && "featured-link-primary"]} data-recommended-skill={skill.slug} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
+        <div class="featured-list featured-list-editorial">
+          {recommendedSkills.map((skill) => (
+            <a class="featured-link featured-link-editorial" data-recommended-skill={skill.slug} href={getRelativeLocaleUrl(lang, `/qaskills/${skill.slug}/`)}>
               <span class="featured-link-copy">
                 <strong>{displayNameOf(skill)}</strong>
                 <small>{getQASkillCardIntro(skill, lang)}</small>
@@ -271,6 +310,93 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
         </div>
       </section>
     </section>
+
+    {initialTaskPath && (
+      <section class="section task-discovery" data-qaskills-default-only aria-labelledby="task-discovery-title">
+        <header class="task-discovery-heading">
+          <div>
+            <p class="eyebrow">{lang === "zh-cn" ? "测试任务" : "QA TASKS"}</p>
+            <h2 id="task-discovery-title">{text.taskStartTitle}</h2>
+          </div>
+          <p>{text.taskStartIntro}</p>
+        </header>
+
+        <div class="task-choice-list" role="group" aria-label={text.taskStartOptions}>
+          {qaskillTaskPaths.map((path, index) => (
+            <button
+              type="button"
+              class:list={["task-choice", index === 0 && "is-active"]}
+              data-task-choice={path.task.key}
+              data-task-title={path.task.title}
+              data-task-description={path.task.description}
+              data-skill-name={displayNameOf(path.skill)}
+              data-announcement={lang === "zh-cn"
+                ? `${path.task.title}，建议使用 ${displayNameOf(path.skill)}。`
+                : `${path.task.title}. Suggested Skill: ${displayNameOf(path.skill)}.`}
+              data-skill-intro={getQASkillCardIntro(path.skill, lang)}
+              data-skill-href={getRelativeLocaleUrl(lang, `/qaskills/${path.skill.slug}/`)}
+              data-output-summary={path.output}
+              data-next-name={displayNameOf(path.nextSkill)}
+              data-next-intro={getQASkillCardIntro(path.nextSkill, lang)}
+              data-next-href={getRelativeLocaleUrl(lang, `/qaskills/${path.nextSkill.slug}/`)}
+              data-stage-key={path.stage.key}
+              data-stage-title={path.stage.title}
+              aria-pressed={index === 0 ? "true" : "false"}
+              aria-controls="qaskills-task-result"
+            >
+              <strong>{path.task.title}</strong>
+              <span>{path.task.description}</span>
+            </button>
+          ))}
+        </div>
+
+        <p class="sr-only" id="task-selection-announcement" role="status"></p>
+
+        <div class="task-discovery-result" id="qaskills-task-result">
+          <div class="task-result-grid">
+            <section class="task-result-cell">
+              <p class="task-result-label">{text.taskCurrent}</p>
+              <h3 id="task-current-title">{initialTaskPath.task.title}</h3>
+              <p id="task-current-description">{initialTaskPath.task.description}</p>
+            </section>
+            <section class="task-result-cell">
+              <p class="task-result-label">{text.taskRecommended}</p>
+              <h3><a id="task-skill-link" href={getRelativeLocaleUrl(lang, `/qaskills/${initialTaskPath.skill.slug}/`)}>{displayNameOf(initialTaskPath.skill)}</a></h3>
+              <p id="task-skill-intro">{getQASkillCardIntro(initialTaskPath.skill, lang)}</p>
+            </section>
+            <section class="task-result-cell task-result-cell--output">
+              <p class="task-result-label">{text.taskExpected}</p>
+              <p class="task-output-summary" id="task-output-summary">{initialTaskPath.output}</p>
+              <div class="task-next-link-wrap">
+                <span>{text.taskNext}</span>
+                <a id="task-next-link" href={getRelativeLocaleUrl(lang, `/qaskills/${initialTaskPath.nextSkill.slug}/`)}>
+                  <span id="task-next-name">{displayNameOf(initialTaskPath.nextSkill)}</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </section>
+          </div>
+          <div class="task-stage-path">
+            <div class="task-stage-heading">
+              <span>{text.taskPath}</span>
+              <p><strong id="task-active-stage-title">{initialTaskPath.stage.title}</strong> · {text.taskPathIntro}</p>
+            </div>
+            <ol class="task-stage-list">
+              {lifecycleStages.map((stage, index) => (
+                <li
+                  class:list={["task-stage", stage.key === initialTaskPath.stage.key && "is-active"]}
+                  data-task-stage={stage.key}
+                  aria-current={stage.key === initialTaskPath.stage.key ? "step" : undefined}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{stage.title}</strong>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+    )}
 
     <section class="section directory-section" id="categories">
       <div class="directory-layout">
@@ -471,6 +597,44 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     const blocks = Array.from(document.querySelectorAll(".category-block"));
     const categoryToggles = Array.from(document.querySelectorAll(".category-toggle"));
     const defaultOnly = Array.from(document.querySelectorAll("[data-qaskills-default-only]"));
+    const taskChoices = Array.from(document.querySelectorAll("[data-task-choice]"));
+    const taskStageItems = Array.from(document.querySelectorAll("[data-task-stage]"));
+
+    taskChoices.forEach((choice) => {
+      choice.addEventListener("click", () => {
+        taskChoices.forEach((item) => {
+          const selected = item === choice;
+          item.classList.toggle("is-active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+        const announcement = document.getElementById("task-selection-announcement");
+        if (announcement) announcement.textContent = choice.dataset.announcement || "";
+        const setText = (id, value) => {
+          const node = document.getElementById(id);
+          if (node) node.textContent = value || "";
+        };
+        setText("task-current-title", choice.dataset.taskTitle);
+        setText("task-current-description", choice.dataset.taskDescription);
+        setText("task-skill-intro", choice.dataset.skillIntro);
+        setText("task-output-summary", choice.dataset.outputSummary);
+        setText("task-next-name", choice.dataset.nextName);
+        setText("task-active-stage-title", choice.dataset.stageTitle);
+        const skillLink = document.getElementById("task-skill-link");
+        if (skillLink) {
+          skillLink.textContent = choice.dataset.skillName || "";
+          skillLink.href = choice.dataset.skillHref || "#";
+        }
+        const nextLink = document.getElementById("task-next-link");
+        if (nextLink) nextLink.href = choice.dataset.nextHref || "#";
+        taskStageItems.forEach((stage) => {
+          const selected = stage.getAttribute("data-task-stage") === choice.dataset.stageKey;
+          stage.classList.toggle("is-active", selected);
+          if (selected) stage.setAttribute("aria-current", "step");
+          else stage.removeAttribute("aria-current");
+        });
+      });
+    });
+
     if (!search || !empty || !cards.length) return;
 
     let category = "all";
@@ -1398,6 +1562,39 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .featured-link small { margin-top: 0.28rem; color: var(--color-text-secondary); font-size: 0.8125rem; line-height: 1.45; }
   .featured-arrow { color: var(--color-text-secondary); font-size: 0.8rem; }
 
+  .featured-list.featured-list-editorial {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 1.75rem;
+  }
+  .featured-link.featured-link-editorial {
+    align-items: center;
+    min-height: 92px;
+    padding: 0.95rem 0.2rem;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    background: transparent;
+    transition: transform 0.18s cubic-bezier(.22,1,.36,1), border-color 0.18s ease, background-color 0.18s ease;
+  }
+  .featured-link.featured-link-editorial:hover {
+    border-bottom-color: var(--color-theme);
+    background: var(--color-surface-muted);
+    transform: translateY(-2px);
+  }
+  .featured-link.featured-link-editorial:active { transform: translateY(0); }
+  .featured-link.featured-link-editorial:focus-visible {
+    outline: 3px solid var(--color-theme-focus);
+    outline-offset: 3px;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .featured-link-editorial .featured-arrow {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    color: var(--color-text-secondary);
+  }
+
   .directory-section { padding-top: 0.5rem; }
   .directory-layout {
     display: grid;
@@ -1561,6 +1758,8 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     .shortcut-list { display: flex; overflow-x: auto; gap: 0.45rem; margin-inline: -0.1rem; padding-bottom: 0.2rem; }
     .shortcut-list a { flex: 0 0 12rem; }
     .featured-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .featured-list.featured-list-editorial { grid-template-columns: 1fr; gap: 0; }
+    .featured-link.featured-link-editorial { min-height: 76px; padding-block: 0.7rem; }
     .cards { grid-template-columns: 1fr; }
     .usage-note ol { grid-template-columns: 1fr; }
     .lifecycle-track { margin-inline: 0; }
@@ -1600,6 +1799,91 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
   .featured-copy h2 { margin-top: 0; }
   .featured-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .featured-link { min-height: 76px; }
+
+  .task-discovery {
+    display: grid;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+  .task-discovery-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+  .task-discovery-heading .eyebrow { margin: 0 0 0.45rem; }
+  .task-discovery-heading h2 { margin: 0; font-size: 1.35rem; }
+  .task-discovery-heading > p {
+    max-width: 46ch;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+  .task-choice-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+  .task-choice {
+    display: grid;
+    align-content: start;
+    gap: 0.35rem;
+    min-width: 0;
+    min-height: 84px;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-muted);
+    color: var(--color-main);
+    cursor: pointer;
+    text-align: start;
+    transition: transform 0.18s cubic-bezier(.22,1,.36,1), border-color 0.16s ease, background-color 0.16s ease;
+  }
+  .task-choice:hover { border-color: var(--color-theme); transform: translateY(-2px); }
+  .task-choice:active { transform: translateY(0); }
+  .task-choice.is-active,
+  .task-choice[aria-pressed="true"] {
+    border-color: color-mix(in srgb, var(--color-theme) 62%, var(--color-border));
+    background: var(--color-theme-soft);
+  }
+  .task-choice:focus-visible { outline: 2px solid var(--color-theme-focus); outline-offset: 3px; }
+  .task-choice strong { font-size: 0.98rem; line-height: 1.35; }
+  .task-choice span { color: var(--color-text-secondary); font-size: 0.8125rem; line-height: 1.45; }
+  .task-discovery-result { overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface-elevated); }
+  .task-result-grid { display: grid; grid-template-columns: 1fr 1fr 1.15fr; }
+  .task-result-cell { min-width: 0; padding: 1rem; border-inline-end: 1px solid var(--color-border); }
+  .task-result-cell:last-child { border-inline-end: 0; }
+  .task-result-label { margin: 0 0 0.65rem; color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.04em; }
+  .task-result-cell h3 { margin: 0; font-size: 1rem; line-height: 1.4; }
+  .task-result-cell h3 a { color: var(--color-theme); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .task-result-cell > p:not(.task-result-label) { margin: 0.4rem 0 0; color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.5; }
+  .task-result-cell .task-output-summary { color: var(--color-main) !important; font-weight: 650; }
+  .task-next-link-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.55rem; margin-top: 0.75rem; }
+  .task-next-link-wrap > span { color: var(--color-text-secondary); font-size: 0.8125rem; }
+  .task-next-link-wrap a { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; color: var(--color-theme); font-size: 0.9rem; font-weight: 800; text-decoration: none; }
+  .task-next-link-wrap a:hover { color: var(--color-theme-focus); text-decoration: underline; text-underline-offset: 3px; }
+  .task-stage-path { padding: 0.85rem 1rem 1rem; border-top: 1px solid var(--color-border); background: var(--color-surface-muted); }
+  .task-stage-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.6rem; }
+  .task-stage-heading > span { flex: 0 0 auto; color: var(--color-main); font-size: 0.8125rem; font-weight: 800; }
+  .task-stage-heading p { margin: 0; color: var(--color-text-secondary); font-size: 0.8125rem; line-height: 1.4; text-align: end; }
+  .task-stage-heading p strong { color: var(--color-theme); }
+  .task-stage-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+  .task-stage {
+    display: grid;
+    align-content: start;
+    gap: 0.35rem;
+    min-width: 0;
+    min-height: 58px;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+  }
+  .task-stage > span { color: var(--color-text-tertiary); font-size: 0.75rem; font-weight: 800; }
+  .task-stage strong { font-size: 0.8125rem; line-height: 1.35; }
+  .task-stage.is-active { border-color: color-mix(in srgb, var(--color-theme) 45%, var(--color-border)); background: var(--color-theme-soft); color: var(--color-theme-focus); }
+  .task-stage.is-active > span { color: var(--color-theme); }
 
   .filter-sidebar {
     padding: 1rem;
@@ -1740,6 +2024,10 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     .filter-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; padding-bottom: 0; }
     .filter-option { width: 100%; }
     .directory-layout { gap: 1.1rem; }
+    .task-result-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .task-result-cell:nth-child(2) { border-inline-end: 0; }
+    .task-result-cell--output { grid-column: 1 / -1; border-block-start: 1px solid var(--color-border); }
+    .task-stage-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .featured-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .featured-link { min-height: 82px; }
     .usage-note { grid-template-columns: 1fr; }
@@ -1760,9 +2048,36 @@ const secondaryFilterGroups = grouped.catalogGroups.map((catalogGroup) => ({
     .results-heading p { margin-top: 0; }
     .cards { grid-template-columns: 1fr; }
     .featured-list { grid-template-columns: 1fr; }
+    .task-discovery { padding: 1rem; }
+    .task-discovery-heading { display: grid; gap: 0.5rem; }
+    .task-discovery-heading h2 { font-size: 1.2rem; }
+    .task-choice-list { grid-template-columns: 1fr; }
+    .task-choice { min-height: 68px; }
+    .task-result-grid { grid-template-columns: 1fr; }
+    .task-result-cell,
+    .task-result-cell:nth-child(2) { border-inline-end: 0; border-block-end: 1px solid var(--color-border); }
+    .task-result-cell--output { grid-column: auto; border-block-start: 0; border-block-end: 0; }
+    .task-stage-heading { display: grid; gap: 0.25rem; }
+    .task-stage-heading p { text-align: start; }
+    .task-stage-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 360px) {
     .featured-list { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .featured-link.featured-link-editorial,
+    .task-choice { transition: none; }
+    .featured-link.featured-link-editorial:hover,
+    .featured-link.featured-link-editorial:active,
+    .task-choice:hover,
+    .task-choice:active { transform: none; }
+  }
+  @media (max-width: 640px) {
+    :global(body:has(.qaskills-page) #scroll-to-top) {
+      bottom: 0.75rem;
+      width: 44px;
+      height: 44px;
+    }
   }
   @media (min-width: 1280px) {
     .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
