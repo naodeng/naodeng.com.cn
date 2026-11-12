@@ -5,7 +5,6 @@ import Header from "@/components/Header.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import SearchModal from "@/components/SearchModal.astro";
 import LocaleHtmlHead from "@/components/i18n/LocaleHtmlHead.astro";
-import LocaleSuggest from "@/components/i18n/LocaleSuggest.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, X_ACCOUNT } from "@/consts";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations, LOCALES, getLocalePaths, DEFAULT_LOCALE, type Lang } from "@/i18n";
@@ -392,7 +391,6 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
 
   <body class="diffuse-canvas">
     <a href="#main" class="skip-link">{locale === "zh-cn" ? "跳到主内容" : "Skip to main content"}</a>
-    <LocaleSuggest />
     <Header />
 
     <main id="main" class:list={["l-main", "l-content", contentWide && "l-content--with-sidebar"]}>

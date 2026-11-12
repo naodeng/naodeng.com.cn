@@ -80,3 +80,25 @@ test.describe("语言切换", () => {
     }
   });
 });
+
+test.describe("不自动弹出语言切换提示", () => {
+  test.describe("中文页面", () => {
+    test.use({ locale: "en-US" });
+
+    test("浏览器语言不同也不显示提示，并保留手动切换入口", async ({ page }) => {
+      await page.goto("/zh-cn/", { waitUntil: "domcontentloaded" });
+      await expect(page.locator("#js-languageSuggest")).toHaveCount(0);
+      await expect(page.locator("footer .lang-toggle")).toBeVisible();
+    });
+  });
+
+  test.describe("英文页面", () => {
+    test.use({ locale: "zh-CN" });
+
+    test("浏览器语言不同也不显示提示，并保留手动切换入口", async ({ page }) => {
+      await page.goto("/en/", { waitUntil: "domcontentloaded" });
+      await expect(page.locator("#js-languageSuggest")).toHaveCount(0);
+      await expect(page.locator("footer .lang-toggle")).toBeVisible();
+    });
+  });
+});
