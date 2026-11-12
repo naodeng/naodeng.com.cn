@@ -1,0 +1,124 @@
+---
+title: "Testmo MCP 开放公测：把测试用例带进 AI 编码上下文"
+description: "Testmo MCP 将测试用例、运行结果和探索式测试接入编码 Agent。本文梳理开放公测能力、四个 Skill、API 更新与团队采用前的检查项。"
+date: 2026-11-12T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI 测试", "MCP", "测试管理"]
+categories: ["AI 测试"]
+---
+
+> 来源说明：Simon Knight，《The Official Testmo MCP, Now Open to Every Agent on Your Team》，Testmo，2026-10-26。本文依据该公告、Testmo MCP 指南和官方 Changelog 整理。团队落地建议单独标注。截至本文整理时，官方仍将 Testmo MCP 标为 open beta；具体能力和接口以官方文档为准。
+
+## 测试用例为什么要在编码前交给 Agent
+
+Testmo 这篇公告从 AI 编码带来的质量成本谈起：代码审查和返工逐渐堆积，Token 花费也越来越难控制，团队也很难逐一验证 AI 生成的改动，更多缺陷因此可能进入生产环境。文章还引用了一个预算例子：原本预计用一年的 AI 预算，四个月就花完了。
+
+作者提出的核心思路是 **Tests as Context（测试即上下文）**。测试用例记录最终检查项，也保存需求文档遗漏的边界情况、过去事故后团队补上的行为，以及那些大家默认遵守、却没有写进需求的规则。
+
+代码库让 Agent 可以推断当前实现；测试用例则补充真实用户所期待的行为、失败时的预期，以及功能与产品其他部分的关系。Testmo 的主张是：在 Agent 开始写代码前提供这些信息，有机会减少后续审查和返工。这个主张的效果仍取决于测试库是否准确、完整和及时更新。
+
+Testmo 报告称，在内部使用中，AI 生成代码的 bug 减少了 33%，Token 成本下降了 38% 以上。公告没有详细说明样本、统计周期或计算方法；这些数字只能视为厂商报告的内部结果，不能当作独立基准或对其他团队的效果承诺。
+
+~~~mermaid
+flowchart LR
+    A["需求或代码变更"] --> B["Testmo MCP 智能检索"]
+    T["现有测试用例：预期、边界、历史规则"] --> B
+    B --> C["相关测试上下文"]
+    C --> D["编码 Agent"]
+    D --> E["代码与测试改动"]
+    E --> F["人工审查和自动化验证"]
+    F --> G["按权限记录结果或更新测试资料"]
+    G -. "持续维护" .-> T
+~~~
+
+*图：根据“测试即上下文”的思路整理的概念流程。MCP 可读写哪些资料，取决于连接权限；图中回写步骤不是自动发生的保证。*
+
+## 开放公测支持哪些 Agent，如何连接
+
+2026 年 10 月，Testmo 宣布 MCP 向所有客户开放公测。公告列出的客户端包括 Claude Code、Claude Desktop、Cursor、VS Code 中的 GitHub Copilot 和 Codex；官方指南也说明，其他支持 MCP 的助手可以连接同一端点。Testmo 称，开放公测不再需要排队，也没有此前的限流准入。
+
+连接使用 OAuth：首次接入时在浏览器登录 Testmo 并批准授权。MCP 服务由 Testmo 托管，团队无需自行安装或部署服务。Claude Code 的添加命令如下：
+
+~~~bash
+claude mcp add testmo "https://testmo.sembi.com/mcp" --transport http --scope user
+~~~
+
+其他客户端要通过各自的 MCP 设置添加同一端点。Testmo 还提供 Claude Code 插件市场中的可选 Skill；安装方式与其他客户端的连接步骤不同。
+
+## MCP 提供的搜索、Skill 与 QA 工作流
+
+**Intelligent Search** 能按语义和精确关键词搜索测试库。Agent 不需要先知道团队的标签规则，便可以定位与新需求相关的用例；这也可用于查找覆盖空白，或根据新需求起草、更新用例。
+
+开放公测还包含四个引导式 Skill：
+
+| Skill | 公告和指南描述的用途 |
+|---|---|
+| Spec Implementer | 将相关测试用例作为编码上下文交给 Agent |
+| Regression Preventer | 找出变更可能影响的既有用例 |
+| Change Evaluator | 推送前预测用例可能通过、失败或暂时无法判断 |
+| Case Importer | 从文件导入测试用例 |
+
+这些 Skill 是建立在 MCP 工具之上的多步工作流。工具对应 Testmo API 的具体能力；Skill 则把若干工具按特定目标组织起来。官方指南称，MCP 页面上的工具列表直接根据其开放给 MCP 的 API 能力生成，并持续同步。
+
+除了编码上下文，Testmo 也将 MCP 定位为 QA 工作流入口：Agent 可用自然语言处理项目、测试用例、milestone、run、结果、自动化和探索式测试 session，例如新增或更新用例、安排 milestone 和 run、记录结果、整理质量信号。实际能执行的操作受连接权限约束。
+
+Testmo 支持为每个连接单独选择只读或读写权限，也可以从管理设置撤销 Token。公告称，使用 MCP 时提交的内容不会用于训练模型；官方指南进一步说明，用户输入通过加密 API 传输，只处理用户提交的内容。团队仍应按自己的数据分类和隐私要求决定哪些资料可提供给 Agent。
+
+## Beta 阶段的反馈与限制
+
+Testmo 仍将 MCP 标为 Beta，团队正根据真实测试库调整搜索相关性和回答质量，并邀请用户反馈。公告引用了一位早期用户的话：“We cannot work without Testmo MCP anymore.” 这是 Testmo 发布的用户评价，不是独立的效果评估。
+
+## 面向 Agent 的 API 更新
+
+这次更新还补充了一批适合 Agent 和自动化脚本使用的 API：
+
+| 更新 | 作用 |
+|---|---|
+| `GET /runs/{run_id}/tests` | 列出 run 中所有测试，包括尚无结果的测试，并返回记录结果所需的 `test_id`。如果把 case ID 用在需要 test ID 的位置，错误信息会提示正确的 ID。 |
+| 单条读取 | 新增 `GET /cases/{case_id}` 和 `GET /runs/{run_id}/results/{result_id}`，分别读取单条用例和单个 run 结果。 |
+| 探索式测试结果 | 可以通过 API 读取、新建和编辑 session 中的结果与笔记。 |
+| 批量操作 | milestone、session 和 run 结果增加批量接口；无效项会在一次响应中一起报告。 |
+| 一次提交自动化 run | `POST /projects/{project_id}/automation/runs/submit` 可以在一个请求中创建 run、添加结果并完成 run。逐步提交的接口仍可用于 CI 流式上报。 |
+| 更完整的用例与关联信息 | 用例响应包含关联 issue 和配置；查询支持 `config_id`，更新支持 `issues_add` 和 `issues_remove`。下拉和多选自定义字段既可传选项 ID，也可传选项名称；milestone 可用 `parent_id` 调整父级。 |
+| 修复 run 用例被清空的问题 | 更新 run 时不再意外清除已选用例。 |
+
+### 现有集成需要复核的三项行为变更
+
+官方 Changelog 标出了几项值得核对的行为变化：
+
+1. `GET /runs/{run_id}/results` 的 `statuses` 展开只返回这批结果实际用到的 active 状态。若需要完整状态列表，应调用 `GET /projects/{project_id}/statuses`。
+2. `PATCH /runs/{run_id}` 如果省略 `case_ids` 和 `include_all`，会保留 run 当前的用例选择；传入空的 `case_ids` 才会清空选择。`case_ids` 和 `cases` 同时传入，或传入非列表值，会返回 422。
+3. `PATCH /runs/{run_id}` 在设置 `is_closed: true` 的同时收到无法识别的字段时，会返回 422，避免请求中有拼写错误仍关闭 run。
+
+另外，URL 中的 ID 不是整数时仍返回 404，但错误信息现在会说明“ID 必须是数字”。升级集成前，建议对照 Changelog 检查请求构造和错误处理。
+
+## 团队采用前可以先验证什么
+
+这部分是本文的实践建议，不是 Testmo 的产品承诺：
+
+- **先检查测试库。** 如果用例过时、预期结果含糊，Agent 可能会把旧规则当成当前需求。先挑选一条近期改动频繁的流程，检查相关用例是否有人维护。
+- **从只读连接开始。** 搜索、覆盖检查和编码上下文通常先需要读取权限。只有确实要导入用例、写入结果或修改测试资料时，再考虑为相应连接启用读写权限。
+- **把效果拆成可核对的指标。** 记录检索结果是否相关、遗漏了哪些关键用例、人工审查与返工耗时、缺陷逃逸情况，以及 Token 使用量。明确比较周期和统计口径，再与团队自己的基线对照。
+- **验证失败时的行为。** 检查没有匹配用例、用例互相冲突、配置不适用或 MCP 暂时不可用时，Agent 是否会说明不确定性，而不是把检索结果当成完整需求。
+- **先在沙盒项目试写入。** 若要启用读写权限，先验证用例导入、结果提交和批量更新，再扩大使用范围；同时为集成测试覆盖上面列出的 API 行为变化。
+
+一个团队可以自行改写这样的提示，让 Agent 在编码前查找测试。它是示例，不是 Testmo 内置模板：
+
+~~~text
+开始修改代码前，请在 Testmo 中按需求语义和关键词搜索相关测试用例。
+列出用例 ID、预期行为、适用配置、边界条件和未覆盖部分。
+只读访问；不要修改 Testmo 中的数据。
+如果没有匹配项或用例之间存在冲突，请标明待确认，不要自行补成确定需求。
+~~~
+
+## 结语
+
+Testmo MCP 把已有测试库接到了 MCP 客户端，让测试用例可以在编码前作为上下文，也让 Agent 能通过 API 参与部分 QA 工作流。它能否减少返工和 Token 消耗，需要团队用自己的数据验证；测试库本身的质量、连接权限和集成兼容性也都要一起考虑。
+
+## 官方资料
+
+Testmo 博客：The Official Testmo MCP, Now Open to Every Agent on Your Team: https://www.testmo.com/blog/the-official-testmo-mcp/
+
+Testmo MCP 指南：https://support.testmo.com/hc/en-us/articles/48315716289165-The-Testmo-MCP
+
+Testmo Changelog：https://support.testmo.com/hc/en-us/articles/38044957362317-Changelog
