@@ -1,0 +1,124 @@
+---
+title: "Testmo MCP Open Beta: Bringing Test Cases into AI Coding Context"
+description: "Testmo MCP connects test cases, run results, and exploratory testing to coding agents. This article covers the open beta, four skills, API updates, and adoption checks."
+date: 2026-11-12T09:00:00.000Z
+author: "nao.deng"
+tags: ["AI Testing", "MCP", "Test Management"]
+categories: ["AI Testing"]
+---
+
+> Source note: Simon Knight, “The Official Testmo MCP, Now Open to Every Agent on Your Team,” Testmo, October 26, 2026. This article follows the announcement, Testmo MCP guide, and official changelog. Adoption advice is identified separately. According to the current official guide, Testmo MCP remains in open beta; check the official documentation for current capabilities and endpoints.
+
+## Why give coding agents test cases before they write code?
+
+Testmo’s announcement starts with the quality costs of AI-assisted coding: review and rework are piling up, token budgets are growing, and teams cannot verify every AI-generated change before it ships. The post also cites a budget example: an AI budget expected to last a year was used up in four months.
+
+The central idea is **Tests as Context**. A test case captures the final check as well as an edge case missing from a PRD, behavior the team added after an incident, or a rule everyone follows but nobody wrote down in the requirements.
+
+A code repository helps an agent infer what the current implementation does. Test cases add context about how a feature should work for real users, what should happen when it fails, and how it relates to the rest of the product. Testmo’s thesis is that providing this information before coding may reduce later review and rework. The result still depends on whether the test repository is accurate, complete, and maintained.
+
+Testmo reports that its internal use has seen 33% fewer bugs in AI-generated code and token costs down by 38% or more. The announcement does not detail the sample, measurement period, or calculation method, so treat these as vendor-reported internal results, not independent benchmarks or promised results for other teams.
+
+~~~mermaid
+flowchart LR
+    A["Requirement or code change"] --> B["Testmo MCP intelligent search"]
+    T["Existing test cases: expected behavior, edges, lessons"] --> B
+    B --> C["Relevant test context"]
+    C --> D["Coding agent"]
+    D --> E["Code and test changes"]
+    E --> F["Human review and automated verification"]
+    F --> G["Record results or update test assets if permitted"]
+    G -. "ongoing maintenance" .-> T
+~~~
+
+*Diagram: a conceptual flow based on the Tests as Context idea. What MCP can read or write depends on the connection’s permissions; the write-back step is not automatic.*
+
+## Which agents are supported, and how do you connect?
+
+In October 2026, Testmo announced an open MCP beta for all customers. The announcement lists Claude Code, Claude Desktop, Cursor, GitHub Copilot in VS Code, and Codex. The official guide also says other MCP-compatible assistants can connect to the same endpoint. Testmo says the open beta no longer requires a waitlist or the earlier access limits.
+
+The connection uses OAuth: on first use, you sign in to Testmo in a browser and approve access. Testmo hosts the MCP service, so teams do not need to install or deploy it themselves. For Claude Code, add it with:
+
+~~~bash
+claude mcp add testmo "https://testmo.sembi.com/mcp" --transport http --scope user
+~~~
+
+Other clients add the same endpoint through their own MCP settings. Testmo also provides optional skills through a Claude Code plugin marketplace; those installation steps differ from connecting other clients.
+
+## Search, skills, and QA workflows
+
+**Intelligent Search** searches the test repository by meaning and exact keyword. An agent does not need to know the team’s tagging conventions to find cases relevant to a requirement. The same capability can help identify coverage gaps or draft and update cases from new requirements.
+
+The open beta also includes four guided skills:
+
+| Skill | Purpose described in the announcement and guide |
+|---|---|
+| Spec Implementer | Give an agent relevant test cases as context for implementation |
+| Regression Preventer | Identify existing cases a change could affect |
+| Change Evaluator | Predict whether cases may pass, fail, or remain uncertain before a push |
+| Case Importer | Import test cases from files |
+
+These skills are multi-step workflows built on MCP tools. Tools expose specific capabilities backed by the Testmo API; skills organize several tools around a particular goal. The guide says the tool list on the MCP page is generated from the API surface exposed to MCP and stays in sync with it.
+
+Testmo also positions MCP as an entry point for QA workflows. Through natural-language interactions, an agent can work with projects, test cases, milestones, runs, results, automation, and exploratory sessions—for example, create or update cases, queue milestones and runs, report results, and analyze quality signals. The connection’s permissions determine which actions are available.
+
+Testmo lets administrators choose read-only or read-write access for each connection, and tokens can be revoked in the admin settings. The announcement says content submitted through MCP is not used to train models. The guide adds that user input is sent through encrypted APIs and only submitted content is processed. Teams should still decide what to expose based on their own data classification and privacy requirements.
+
+## Beta feedback and limitations
+
+Testmo still labels MCP as beta, and says the team is tuning search relevance and response quality as it sees real repositories. The announcement invites users to share feedback. It quotes an early user: “We cannot work without Testmo MCP anymore.” This is a testimonial published by Testmo, not an independent evaluation of results.
+
+## API updates aimed at agents
+
+The release also adds APIs for agents and automation scripts:
+
+| Update | What it does |
+|---|---|
+| `GET /runs/{run_id}/tests` | Lists every test in a run, including tests with no results, and returns the `test_id` needed to record a result. If a case ID is used where a test ID is expected, the error points to the correct ID. |
+| Single-item reads | Adds `GET /cases/{case_id}` and `GET /runs/{run_id}/results/{result_id}` for reading one case or one run result. |
+| Exploratory-session results | The API can read, create, and edit results and notes on a session. |
+| Bulk operations | Adds bulk endpoints for milestones, sessions, and run results. Invalid items are reported together in one response. |
+| Submit an automation run in one call | `POST /projects/{project_id}/automation/runs/submit` creates a run, adds results, and completes it in one request. The step-by-step endpoints remain available for streaming results from CI. |
+| More case and relationship data | Case responses include linked issues and configurations; queries support `config_id`, and updates support `issues_add` and `issues_remove`. Dropdown and multi-select custom fields accept option IDs or names, and `parent_id` can change a milestone’s parent. |
+| Fix for cleared run cases | Updating a run no longer unexpectedly clears its selected cases. |
+
+### Three behavior changes to check in existing integrations
+
+The official changelog flags several behavior changes worth checking:
+
+1. The `statuses` expansion on `GET /runs/{run_id}/results` now returns only active statuses used by the returned results. Call `GET /projects/{project_id}/statuses` for the full list.
+2. On `PATCH /runs/{run_id}`, omitting `case_ids` and `include_all` preserves the run’s current case selection; an empty `case_ids` clears it. Sending both `case_ids` and `cases`, or a non-list value, returns 422.
+3. On `PATCH /runs/{run_id}`, setting `is_closed: true` while sending unrecognized fields returns 422, so a typo does not silently close a run.
+
+Separately, a non-integer ID in a URL still returns 404, but the error now says that the ID must be a number. Check the changelog against request construction and error handling before upgrading an integration.
+
+## What teams can validate before adopting it
+
+The following are practical recommendations for teams, not product claims from Testmo:
+
+- **Check the test repository first.** If cases are stale or expected results are ambiguous, an agent may treat an old rule as current. Start with a frequently changed workflow and check whether its cases are maintained.
+- **Begin with read-only access.** Search, coverage review, and coding context generally need read access first. Enable read-write only for connections that must import cases, report results, or change test assets.
+- **Measure specific outcomes.** Track retrieval relevance, missed high-value cases, human review and rework time, escaped defects, and token use. Define the comparison period and denominator before comparing with your team’s baseline.
+- **Check how uncertainty is handled.** When no case matches, cases conflict, a configuration does not apply, or MCP is unavailable, does the agent say what it cannot determine instead of treating search results as complete requirements?
+- **Test writes in a sandbox project.** If read-write access is needed, validate case imports, result submission, and bulk updates before expanding use. Cover the API behavior changes above in integration tests.
+
+A team could adapt a prompt like this to ask an agent to search for tests before coding. It is an example, not a built-in Testmo template:
+
+~~~text
+Before changing code, search Testmo by requirement meaning and keywords.
+List case IDs, expected behavior, applicable configurations, edge cases, and coverage gaps.
+Use read-only access; do not modify Testmo data.
+If nothing matches or cases conflict, mark that as unresolved instead of inventing a requirement.
+~~~
+
+## Closing thought
+
+Testmo MCP connects an existing test repository to MCP clients, allowing test cases to serve as context before coding and letting agents participate in parts of QA workflows through the API. Whether it reduces rework or token use needs to be measured with a team’s own data. Test repository quality, access permissions, and integration compatibility all matter.
+
+## Official sources
+
+Testmo blog: The Official Testmo MCP, Now Open to Every Agent on Your Team: https://www.testmo.com/blog/the-official-testmo-mcp/
+
+Testmo MCP guide: https://support.testmo.com/hc/en-us/articles/48315716289165-The-Testmo-MCP
+
+Testmo changelog: https://support.testmo.com/hc/en-us/articles/38044957362317-Changelog
