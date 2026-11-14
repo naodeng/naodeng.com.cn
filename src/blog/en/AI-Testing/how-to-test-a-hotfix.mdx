@@ -36,17 +36,7 @@ Six questions can organize the investigation and testing:
 | What should I test? | Choose scenarios that provide evidence for those risks, reusing useful tests. |
 | Is the evidence sufficient to recommend release? | Summarize passes, failures, unexecuted checks, and residual risk. |
 
-```mermaid
-flowchart TD
-    A[Locate the actual failure] --> B[Understand the change]
-    B --> C[Trace the impact]
-    C --> D[Identify new risks]
-    D --> E[Select tests and collect evidence]
-    E --> F{Is the evidence sufficient for release?}
-    F -->|Yes| G[Recommend release and plan follow-up]
-    F -->|No| H[Investigate the change, dependencies, or risks]
-    H --> B
-```
+![Hotfix testing flow: identify the broken feature, understand the change and affected features, assess likely failures, choose tests, and decide whether release is safe; if not, revisit the problem.](/images/blog/hotfix-testing/hotfix-testing-flow-en.webp)
 
 This is not a rigid sequence. A newly discovered dependency or an unexplained result may mean the impact analysis is incomplete. In that case, return to the code, configuration, or business flow instead of mechanically adding more test cases.
 
