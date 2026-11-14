@@ -9,12 +9,6 @@ categories: ["Software Testing", "Quality Engineering"]
 
 # How Should You Test a Hotfix? From Bug Verification to Risk-Based Release Decisions
 
-> Reading source: Hanisha Arora, “How to test a hotfix,” WonderProxy Blog, November 11, 2026.
->
-> WonderProxy Blog: https://wonderproxy.com/blog/how-to-test-a-hotfix/
-
-This article first summarizes the source’s approach to hotfix testing. The file-upload scenario, risk-level table, release-decision template, AI Native QA and Skills workflow, and checklists are practical extensions. The examples illustrate a method; they are not records of tests from a real project and should be adapted to the product’s rules.
-
 Suppose it is 5 p.m. and some users cannot upload contract attachments in production. A developer sends a message: “The hotfix is ready. Could QA verify it quickly?”
 
 One response is to repeat the ticket’s reproduction steps. If the bug does not appear, report “passed.” Another is to run the entire regression suite to be safe. The first can miss side effects from the fix; the second can spend time on paths with no reasonable connection to the change.
