@@ -1,0 +1,74 @@
+---
+title: "TDD Quality Workflow: Keep Evidence for Red, Green, and Refactor"
+description: "Use tdd-quality-workflow to guide or review Red-Green-Refactor and check stage evidence, assertion quality, and the actual authorization boundary."
+date: 2026-12-04T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "TDD"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Seeing only the final passing test does not reconstruct a TDD cycle. It does not show that the test failed as expected before the change, or that behavior remained intact after refactoring.
+
+tdd-quality-workflow guides or reviews test-driven development and keeps evidence for Red, Green, Refactor, and test effectiveness. Whether code can be changed or tests can be run still depends on the user’s authorization and the current environment.
+
+## Work through one observable behavior
+
+Choose a behavior that can be described through inputs and results. Confirm project conventions, test environment, and authorization. When implementation and execution are authorized, proceed one step at a time:
+
+| Stage | Action | Evidence that supports the claim |
+| --- | --- | --- |
+| Red | Write a test for the intended behavior and run it | The target assertion fails because the behavior is missing |
+| Green | Make the smallest implementation and rerun the test | The same test passes on the corresponding revision |
+| Refactor | Improve structure while preserving behavior, then check again | Before/after revisions and relevant test results |
+
+Use stage statuses only when evidence supports them: VERIFIED_RED, VERIFIED_GREEN, and VERIFIED_REFACTOR. One verified stage does not mean the full TDD cycle is complete.
+
+## Check whether tests verify behavior
+
+Inspect whether assertions connect to business behavior, whether important negative paths are covered, and whether mocks hide a real dependency problem. Mutation, complexity, and duplication checks depend on project policy; do not invent thresholds. A weak static assertion alone does not prove a test is ineffective.
+
+Keep statuses distinct. Use NOT_EXECUTED only when the materials confirm that no run occurred. If a run was attempted but errored, is unclear, or lacks evidence, use INCONCLUSIVE. Zero tests collected, environment failure, and skipped tests do not prove an expected Red or Green.
+
+## Use AI to review stage evidence
+
+AI can help check whether a change includes stage records, whether assertions match the behavior, and whether evidence before and after refactoring lines up. If the task is review-only, it should not change code or run tests without authorization.
+
+~~~text
+Use tdd-quality-workflow to review this TDD work.
+
+Target behavior: [user-observable result]
+Versions and materials: [tests, code change, run records, and environment]
+Authorization: [review only / permission to modify / permission to execute]
+
+Report status and evidence separately for Red, Green, and Refactor.
+Review business assertions, negative paths, mocks, and test effectiveness.
+Use NOT_EXECUTED only when confirmed. Use INCONCLUSIVE for attempted runs
+with errors, unclear results, or insufficient evidence. Do not infer missing
+stage records from a plan, static inspection, or a final passing run.
+~~~
+
+Tie each judgment to its revision, command, and result. This lets a reviewer distinguish stage evidence, user-provided historical records, and AI analysis.
+
+### Can a final passing test be used to fill in Red?
+
+No. A first run after the change only describes the current result. Without a recorded failure before implementation, Red was not verified.
+
+### Does an environment error count as Red?
+
+No. Red requires evidence that the expected assertion failed. Environment errors, collection failures, and unrelated exceptions do not establish that.
+
+### Must every test run after Refactor?
+
+Follow project rules and the impact scope. Report what actually ran, which revision it covered, and which risks remain unchecked.
+
+## Install and references
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/tdd-quality-workflow -g
+~~~
+
+- TDD Quality Workflow source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/tdd-quality-workflow
+- TDD Quality Workflow Skill details: https://inaodeng.com/en/qaskills/tdd-quality-workflow/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/

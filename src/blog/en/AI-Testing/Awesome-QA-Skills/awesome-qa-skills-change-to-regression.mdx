@@ -1,0 +1,74 @@
+---
+title: "Change-to-Regression: Separate Pre-Code Assumptions from Post-Code Evidence"
+description: "Use change-to-regression to set regression guardrails before coding and analyze the actual diff afterward, with risk-based must-run, deferred, and excluded scope."
+date: 2026-12-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Regression Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Before coding starts, a team may already know which behaviors could be affected, but there is no diff to prove the scope. After implementation, the actual change may differ from the proposal. Regression analysis needs to preserve both points in time.
+
+change-to-regression supports pre-change guardrails and post-change regression scope analysis. The first is a set of candidates and hypotheses based on a proposal; the second must use an actual diff or base/head commits. They can feed into each other, but one must not be presented as the other.
+
+## Before coding: capture guardrails and hypotheses
+
+Provide the change goal, known behavior, requirements or design material, and possible contracts at risk. Having no diff or commit SHA yet is normal. Label the result as pre-change analysis and separate project facts from candidate impacts and assumptions to verify.
+
+Record expected behavior, likely consumers, behavior that must remain unchanged, and tests to add or rerun. Once the code exists, compare each hypothesis with the actual change.
+
+## After coding: trace the actual change to tests
+
+Provide exact base/head commits, the complete diff, and accessible project evidence. Trace changed symbols, data, and interfaces to consumers, behavior, and existing tests. Then group proposed checks by risk:
+
+| Decision | Meaning |
+| --- | --- |
+| Must run | Risk or contract is significant and available evidence supports execution |
+| Can defer | There is a reason to postpone, with residual risk, an owner, or a follow-up condition |
+| Excluded | Out of this pass, with the basis for exclusion stated |
+
+If call paths, test mappings, or run evidence are missing, keep the gap open or widen the candidate scope. A filename alone does not prove impact. A test plan is not evidence of execution; actual status requires run records.
+
+## Ask AI to compare the two points in time
+
+AI can organize proposal risks and, after implementation, identify which paths the real change confirms or contradicts. Keep input versions and evidence sources with each pass.
+
+~~~text
+Use change-to-regression to assess this change.
+
+Stage: [PRE_CHANGE or POST_CHANGE]
+Goal and known behavior: [requirements or design]
+Code evidence: [write “no diff yet” before coding; give base/head and full diff afterward]
+Test mappings and constraints: [existing tests, environment, time, and permissions]
+
+Before coding, return candidate guardrails, hypotheses, and open checks.
+After coding, use the actual diff to propose must-run, deferred, and excluded checks.
+For each conclusion include its source, status, and reason. Separate analysis
+from actual run results. Do not make external writes unless I authorize them.
+~~~
+
+After implementation, revisit the earlier list: which risks materialized, which the diff ruled out, and which tests need to be added. That comparison can also expose dependencies missed in the first pass.
+
+### Can I start without a diff?
+
+Yes, for pre-change guardrails. Label impacts as candidates or hypotheses; do not call them a complete regression scope.
+
+### When can I say a test passed?
+
+Only with evidence for the relevant version and environment, such as a command or test record and its result. Static analysis or a plan cannot prove a pass.
+
+### Can this Skill change the project?
+
+It is read-only by default and produces risk analysis and test scope. External writes require explicit authorization.
+
+## Install and references
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/change-to-regression -g
+~~~
+
+- Change-to-Regression source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/change-to-regression
+- Change-to-Regression Skill details: https://inaodeng.com/en/qaskills/change-to-regression/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/

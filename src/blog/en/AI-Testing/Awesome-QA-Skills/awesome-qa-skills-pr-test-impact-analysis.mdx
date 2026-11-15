@@ -1,6 +1,6 @@
 ---
-title: "PR Test Impact Analysis: Quickly locate affected test scope from code changes"
-description: "Trace changed files through dependencies and call paths to select risk-based regression checks that cover affected behavior, not just directories."
+title: "PR Test Impact Analysis: Trace Changed Symbols to Behaviors and Tests"
+description: "Use pr-test-impact-analysis to map code changes to consumers, obligations, and tests, while keeping predictions separate from actual run status."
 date: 2026-09-15T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI Testing", "Agent Skills", "PR Test Impact Analysis"]
@@ -8,121 +8,70 @@ categories: ["AI Testing", "QA Skills"]
 series: ["Awesome QA Skills Field Guides"]
 ---
 
-Files changed in a PR are not the same as behaviors affected by it. Selecting regression checks by directory alone often misses the other end of a call chain.
+The files changed by a PR do not directly tell you which behaviors are affected. A shared function can reach several business entry points; choosing tests by directory can miss consumers elsewhere in the call chain.
 
-The PR Test Impact Analysis Skill interprets a diff as behavior change, then connects it to contracts, dependencies, and the smallest credible test set.
+pr-test-impact-analysis uses the actual changes to map affected behavior, dependencies, and test scope. Judgments should trace to evidence instead of filenames alone. When risk is high but impact evidence is weak, expand the review or preserve uncertainty.
 
-This guide organizes the practice around clear inputs, boundaries, and outputs, so the next person can act on the conclusion with confidence.
+## Build a traceable impact chain from the diff
 
-## PR Test Impact Analysis Skill: what it is for
+Provide exact base/head commits, the complete diff, requirements or interface contracts, relevant consumers, and existing test mappings. Record the chain:
 
-PR Test Impact Analysis is for work that needs a clear, handoff-ready testing judgment. It keeps project material, the basis for each decision, and the next action on the same trail—so a reader can see what to inspect before choosing how to execute and review it. This guide works through one concrete scenario and keeps human decision boundaries visible.
+**Changed symbol → consumer → behavior obligation → test ID, level, and revision**
 
-## Start with the source Skill
+For example, a change to order validation may affect an API, a background job, and a UI flow. Find the consumer paths, confirm the expected behavior for each, and map them to unit, API, end-to-end, or regression tests. A filename containing “order” does not prove that all relevant tests are covered.
 
-The complete execution contract lives in [PR Test Impact Analysis prompt](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis/prompts/pr-test-impact-analysis.md). The source directory also contains 3 evaluation cases for checking whether an output follows the contract.
+If the repository lacks call graphs or test mappings, return candidate paths with explicit gaps and a minimal validation action. High-risk changes, shared interfaces, historical defects, and weak evidence call for a wider scope. Both selected and excluded checks need a rationale.
 
-The entry point calls out these constraints:
+## A prediction is not a run result
 
-- do not infer only from filenames
-- provide evidence for test selection
-- expand scope when risk is high and evidence is weak
+Prediction statuses describe the expected relationship between a test and the current change. Run statuses describe whether execution happened and what it returned. Keep these separate.
 
-## Begin with project facts
-
-Put the material you have on the table. Gaps may remain; their status needs to stay explicit.
-
-| Material | What to provide | What to do when it is missing |
+| Prediction | Meaning | Example run status |
 | --- | --- | --- |
-| Goal and scope | Analyze a PR changing order validation rules and select affected unit, API, UI, and regression tests | Name journeys outside this pass |
-| Version and environment | Requirement version, build, environment, time window | Stay in design or analysis mode |
-| Evidence | Requirements, interfaces, logs, metrics, traces, or defects | Separate facts, assumptions, and open questions |
-| Decision boundary | Risk approver and actions that are not authorized | Name the owner and next step |
+| PREDICTED_PASS | Current analysis expects the test to pass | RUN_PASS: a matching run record passed |
+| PREDICTED_FAIL | Current analysis expects failure or a finding | RUN_FAIL: a real run record failed |
+| UNCERTAIN | Available evidence cannot predict the result | NOT_RUN or UNKNOWN: no run or status is unknown |
 
-Use a request like this:
+A prediction is not a test result. A command or CI record, matching revision, and actual outcome are needed for run status. A green result from an older revision is not evidence for the new diff.
 
-```text
-Use the pr-test-impact-analysis Skill.
+## Use AI to trace impact while preserving sources
 
-Task: Analyze a PR changing order validation rules and select affected unit, API, UI, and regression tests
-Inputs: [versions, links, log paths, or reports]
-Scope: [included and excluded objects]
-Constraints: [time, data, permissions, compliance]
+AI can read the diff, search call relationships, and organize candidate tests. The reviewer should confirm that each path points to a symbol, dependency, or contract, and that test ID, level, and revision match.
 
-Audit the inputs first. Order results by risk and evidence strength. Label unsupported claims as assumptions and give a validation method.
-```
+~~~text
+Use pr-test-impact-analysis to assess this PR's test impact.
 
-## Make the result usable by the next person
+Versions and scope: [base/head, file scope, included and excluded paths]
+Code evidence: [complete diff and relevant symbols]
+Project basis: [requirements, contracts, consumers, test mappings, and past defects]
+Constraints: [environment, time, and permissions]
 
-| Output field | Why it exists | Example status |
-| --- | --- | --- |
-| Finding or judgment | Describes observed behavior, difference, or risk | Confirmed / Assumption / Open |
-| Basis | Points to a version, log, trace, test, or requirement | source_id or link |
-| Impact | Explains affected users, journeys, or release decision | P0, P1, or accepted residual risk |
-| Next action | Names verification work and an owner | Owner, date, expected evidence |
+Trace “changed symbol → consumer → behavior obligation → test ID/level/revision.”
+Cite a source for each judgment; do not infer from filenames alone.
+Assign PREDICTED_PASS, PREDICTED_FAIL, or UNCERTAIN, and keep predictions
+separate from actual run status.
+~~~
 
-Do not write “passed” without a run record, query result, or source artifact. Static analysis and runtime proof are different things.
+When a PR changes, recompute affected paths from the new diff. Keep the tests and judgments that changed, those that stayed the same, and those that need review. Old conclusions do not become new evidence automatically.
 
-## Run one focused pass
+### Can I propose scope without test mappings?
 
-Start with a bounded pass—Analyze a PR changing order validation rules and select affected unit, API, UI, and regression tests. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
+Yes, as candidate paths with the evidence gap and validation method stated. In a high-risk area, weak evidence usually means expanding the check, not shrinking it.
 
-Map code differences to behavior, dependencies, and existing tests; expose unmapped high-risk items. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
+### Is PREDICTED_PASS the same as a passing test?
 
-## Run one focused pass
+No. It is an analysis prediction. RUN_PASS requires a real run record for the relevant revision.
 
-Start with a bounded pass—Analyze a PR changing order validation rules and select affected unit, API, UI, and regression tests. Put the input version, time window, and accountable owner in one place. Then link each judgment to an artifact. Finish with one validation action that can change the decision.
+### Which risks need human confirmation?
 
-Map code differences to behavior, dependencies, and existing tests; expose unmapped high-risk items. The handoff should include an evidence index, assumptions that still need checking, and an action the next person can run without reconstructing the conversation. Plain work. It holds up.
+Owners should confirm scope trade-offs, excluded areas, residual risk, and release decisions. The Skill organizes evidence and options; it does not approve risk for the team.
 
-## Advanced use: turn one analysis into a maintained mechanism
+## Install and references
 
-Map code differences to behavior, dependencies, and existing tests; expose unmapped high-risk items.
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis -g
+~~~
 
-Keep input versions and source IDs with every result. When requirements, code, environment, or data change, recompute only affected judgments and mark them `changed`, `unchanged`, or `needs-review`. Old conclusions are not new evidence.
-
-### A three-Skill chain
-
-`pr-test-impact-analysis` → `regression-test-selection` → `release-testing-workflow`
-
-| Handoff | Payload | Receiver check |
-| --- | --- | --- |
-| Upstream to pr-test-impact-analysis | Source versions, scope, risk, open items | Staleness and conflicts |
-| pr-test-impact-analysis to downstream | Judgments, evidence index, residual risk, tasks | Executability and ownership |
-| Feedback to pr-test-impact-analysis | Runs, defects, changed facts | Baseline and regression scope |
-
-Hand over a summary, an evidence index, and locations for the source artifacts. That gives the receiver enough context and keeps the trail recoverable.
-
-### Team gates
-
-| Gate | Check | Failure action |
-| --- | --- | --- |
-| pr-test-impact-analysis input | Version, environment, sources, and owner | Stop and list gaps |
-| pr-test-impact-analysis artifact | Material claims have basis, status, and impact | Return for evidence |
-| pr-test-impact-analysis execution | Command, query, or verification path is repeatable | Classify infrastructure or test issue |
-| pr-test-impact-analysis decision | Residual risk has an accepter and date | Do not enter the next stage |
-
-## Common traps
-
-1. Listing checks without input conditions, expected results, or evidence.
-2. Marking every finding high priority and removing the team’s ability to choose.
-3. Refusing to produce a bounded first pass, or presenting guesses as facts.
-4. Treating one success or one anomaly as long-term behavior while ignoring repeated trials and version changes.
-
-## Two practical questions
-
-### Can I start with incomplete input?
-
-Yes. Produce a constrained first pass with known facts, assumptions, gaps, and the smallest validation action. Missing environment, data, or permission cannot support an execution claim.
-
-### When is human confirmation required?
-
-The accountable owner must confirm scope trade-offs, risk acceptance, production actions, data permission, and release decisions. The Skill organizes evidence and options; it does not grant authority.
-
-Run PR Test Impact Analysis with one real artifact and keep the input, output, human edits, and verification evidence in the same work chain. That is what makes the next change cheaper to assess.
-
-## References
-- PR Test Impact Analysis prompt:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis/prompts/pr-test-impact-analysis.md](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis/prompts/pr-test-impact-analysis.md)
-- Awesome QA Skills: PR Test Impact Analysis Skill source:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis)
-- Awesome QA Skills on GitHub:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- PR Test Impact Analysis Skill details:[https://inaodeng.com/en/qaskills/pr-test-impact-analysis/](https://inaodeng.com/en/qaskills/pr-test-impact-analysis/)
+- PR Test Impact Analysis source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/pr-test-impact-analysis
+- PR Test Impact Analysis Skill details: https://inaodeng.com/en/qaskills/pr-test-impact-analysis/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/

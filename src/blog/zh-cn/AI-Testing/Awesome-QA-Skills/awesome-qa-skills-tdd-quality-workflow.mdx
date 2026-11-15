@@ -1,0 +1,73 @@
+---
+title: "TDD 质量工作流：让 Red、Green、Refactor 都有证据"
+description: "用 tdd-quality-workflow 推进或审查 Red-Green-Refactor，并核对测试断言、阶段证据和实际授权范围。"
+date: 2026-12-04T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "TDD"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+只看到最后一次测试通过，无法还原完整的 TDD 过程。它没有证明修改前测试曾按预期失败，也没有证明重构后仍保持行为。
+
+tdd-quality-workflow 用于指导或审查测试驱动开发，并为 Red、Green、Refactor 和测试有效性保留证据。是否能改项目或运行测试，仍取决于用户授权和当前环境。
+
+## 按一个可观察行为走完一轮
+
+先选一个能通过输入和结果描述的行为，并确认项目约定、测试环境和授权范围。获准开发与运行时，再逐步推进：
+
+| 阶段 | 要做的事 | 可以支持结论的证据 |
+| --- | --- | --- |
+| Red | 写出能表达预期行为的测试，并运行 | 目标断言失败，且失败原因是缺少预期行为 |
+| Green | 做满足该行为的最小实现并重跑 | 同一测试在对应版本通过 |
+| Refactor | 改善结构而保留行为，再执行检查 | 变更前后证据和相应测试结果 |
+
+状态码要和证据对应：VERIFIED_RED、VERIFIED_GREEN、VERIFIED_REFACTOR 分别表示该阶段有可核对证据。一个阶段通过，不代表完整 TDD 周期完成。
+
+## 检查测试是否真的验证行为
+
+除了结果，还要看断言是否连接到业务行为，是否覆盖重要负向路径，Mock 是否掩盖了真正的依赖问题。变异、复杂度或重复度检查依项目策略使用，不预设门槛；静态弱断言也不能自动证明测试无效。
+
+状态也要区分清楚：只有材料明确证明没有执行时才标 NOT_EXECUTED；尝试后异常、结果不明或证据不足应标 INCONCLUSIVE。零测试收集、环境故障或 skipped 都不能证明预期 Red 或 Green。
+
+## AI 可以协助审查阶段证据
+
+AI 能帮助检查一次提交里是否保留阶段记录、测试断言是否对应行为、重构前后证据是否一致。若当前任务只要求审查已有材料，就不应擅自修改代码或补跑测试。
+
+~~~text
+请使用 tdd-quality-workflow 审查这次 TDD 工作。
+
+目标行为：[用户可观察的结果]
+版本和材料：[测试、代码改动、运行记录与环境]
+授权范围：[仅审查 / 允许修改 / 允许执行]
+
+按 Red、Green、Refactor 分别列状态和证据。
+检查业务断言、负向路径、Mock 与测试有效性。
+确认未执行才标 NOT_EXECUTED；尝试失败、结果不明或证据不足标
+INCONCLUSIVE。不要用计划、静态检查或最终一次通过补造阶段记录。
+~~~
+
+把每次判断连回对应版本、命令和结果。这样复核者能区分真正的阶段证据、用户提供的历史记录以及 AI 的分析。
+
+### 最后测试通过，可以补记 Red 吗？
+
+不能。事后第一次运行通过，只能说明当前结果；没有修改前的失败记录，就不能声称已验证 Red。
+
+### 环境失败算 Red 吗？
+
+不算。Red 要证明预期断言失败；环境错误、测试收集失败或无关异常都无法提供这项证据。
+
+### 重构阶段必须跑所有测试吗？
+
+按项目规则和影响范围选择相应检查。报告应说明实际运行了什么、基于哪个版本，以及还有哪些风险未覆盖。
+
+## 安装与参考
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/tdd-quality-workflow -g
+~~~
+
+- TDD 质量工作流源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/tdd-quality-workflow
+- TDD 质量工作流 Skill 详情页: https://inaodeng.com/zh-cn/qaskills/tdd-quality-workflow/
+- Awesome QA Skills 系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/

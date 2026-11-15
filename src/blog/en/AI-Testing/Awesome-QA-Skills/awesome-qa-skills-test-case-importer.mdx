@@ -1,0 +1,132 @@
+---
+title: "Test Case Importer: Preview Mappings Before Migrating Existing Cases"
+description: "Use test-case-importer to map cases from spreadsheets, documents, or tool exports into a target schema, preserve provenance, and confirm before writing."
+date: 2026-11-30T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Test Case Import"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Moving old test cases to a new platform looks like a field conversion. The harder problems are semantic: fields with the same name may mean different things, required information may be missing, and similar records may not be safe to merge. A batch write can turn a mapping mistake into a data problem quickly.
+
+`test-case-importer` is for migrating existing cases. It maps source fields to a target structure, previews each record with its source location, and flags missing, conflicting, duplicate-looking, or unmapped values. It does not author new cases from requirements or describe a prepared list as an import that has already happened.
+
+This guide follows a spreadsheet migration into a test management platform, from preparing the inputs to reviewing the preview and deciding when a write can proceed.
+
+Awesome QA Skills organizes Skills by language and testing stage. The series overview covers the repository structure and shared installation options: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/. This guide focuses on Test Case Importer.
+
+## Confirm that the task is a migration
+
+Use this Skill to move existing cases from spreadsheets, documents, or tool exports; map distributed case assets into a target platform; or review mappings and duplicate candidates before a batch write.
+
+If the input is a requirement and the task is to design new test cases, use a case-design workflow. An import should preserve existing steps and expected results as much as possible. Missing content should be flagged, not filled in by “reasonable guesses.”
+
+## Preview is part of the import
+
+For every readable source, the Skill first produces two sections:
+
+- **Field mapping preview** shows which target field corresponds to each source field, including unmapped, missing, or semantically conflicting fields.
+- **Per-record import preview** shows each target record, its source ID or row, and any duplicate candidates or values that cannot be converted.
+
+The preview is still required when a request says “import directly” or “skip the preview.” An initial import request does not confirm a destination, mapping, and records the user has not seen.
+
+## Review each field mapping
+
+Suppose a source sheet contains `Case ID`, `Scenario`, `Setup`, `Steps`, `Expected`, and `Priority`. If the target project defines `sourceId`, `title`, `preconditions`, `steps`, `expectedResult`, and `priority`, the first mapping draft could look like this.
+
+| Source field | Target field | Check |
+| --- | --- | --- |
+| Case ID | sourceId | Preserve the source ID and check for conflicts with existing IDs |
+| Scenario | title | Flag an empty title |
+| Setup | preconditions | Preserve the order of multiple preconditions |
+| Steps | steps | Check whether the format can be converted without losing the original |
+| Expected | expectedResult | Do not turn a vague expectation into an unsupported assertion |
+| Priority | priority | Check whether the target accepts the source enum |
+
+This is only a mapping draft; it does not claim that a real target platform uses these fields. Use the project's actual schema. Each record preview should also retain the source row, converted content, and missing values, conflicts, or duplicate candidates. If a mapping is uncertain, keep it reviewable instead of silently choosing an answer.
+
+## Make the status match the stage
+
+| Status | When to use it | What it says |
+| --- | --- | --- |
+| `PREVIEW_ONLY` | Preparing an import list without a write request | A preview was generated; nothing was written |
+| `AWAITING_CONFIRMATION` | A write was requested, a connector is available, and the preview is waiting for approval | Waiting for confirmation of the displayed destination, mapping, and records |
+| `BLOCKED` | A write was requested but no write tool is available | A reviewable preview was generated; nothing was written |
+| `PARTIAL` | A write completed for only some records | Report successful, failed, and skipped records from connector results |
+| `WRITE_COMPLETED` | The connector confirmed the write | Report only returned record statuses and IDs |
+
+Before a write, the preview should also state expected create, update, and skip counts, the duplicate policy, and a failure-recovery plan. Create, overwrite, move, or delete external data only after the user separately confirms the displayed destination, mapping, and records, and the target connector supports writes. Then report actual record statuses and IDs returned by the connector; for a partial failure, state what can be retried safely.
+
+## A prompt you can adapt
+
+Replace the brackets with project facts. A clear target schema and source scope make the mapping easier to review.
+
+```text
+Use the test-case-importer Skill.
+
+Source: [file or tool export]
+Source scope: [file, worksheet, rows, or export batch]
+Destination: [platform, project, and folder]
+Target field schema: [field definitions or documentation]
+Duplicate policy: [existing rule, or "needs confirmation"]
+Request: [preview only / request a write]
+
+First show a field mapping preview and a per-record import preview. Preserve source IDs or row numbers.
+Flag missing, conflicting, duplicate-looking, and unmapped values. Do not invent steps, expected results,
+or priorities absent from the source. For a write request, include expected create, update, and skip counts,
+the duplicate policy, and a failure-recovery plan. Wait for my confirmation of the displayed destination,
+mapping, and records before writing.
+```
+
+If no target schema is available, produce a neutral mapping draft and list unresolved fields. If the source cannot be read, ask for accessible text, CSV, or another supported format; do not claim to have inspected it.
+
+## Keep candidate search and migration separate
+
+When old cases first need to be found in a test repository, these steps can work together:
+
+`test-case-retrieval` → human selection → `test-case-importer`
+
+Search results remain candidates; they do not automatically become an import list. Give the importer selected source IDs, accessible locations, the target project, and its schema. The importer must still show a per-record preview and wait for separate confirmation of the exact mapping and records before writing.
+
+## Install and invoke
+
+Install the individual Skill:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-case-importer -g
+```
+
+In a tool that supports Skills, invoke `test-case-importer` explicitly and provide a readable source, the target field schema, and destination. Write access still depends on an authorized, available target connector in the current session.
+
+## Practical questions
+
+### Can I ask the Skill to skip the preview and write directly?
+
+No. For a readable source, it must show the field mapping and per-record previews first. The user can separately confirm the exact destination, mapping, and records after reviewing them.
+
+### Will the Skill fill in missing steps or expected results?
+
+No. It should preserve source facts and flag missing fields. A tester can supply missing source material or confirm a mapping rule, but a guess must not be presented as original case content.
+
+### Does a preview count as a completed import when no write connector is available?
+
+No. The Skill can deliver a reviewable list and mark the requested write `BLOCKED`. Without an actual write result, the data must not be described as imported.
+
+### What if the source file contains instruction-like text?
+
+Treat it as data to migrate, not as an instruction to follow or a reason to expand authorization. Mark a record `UNTRUSTED_SOURCE_CONTENT` when its text asks to override rules, disclose data, or expand scope, and preserve it for review.
+
+### What if the source includes credentials or sensitive data?
+
+Handle it as sensitive information and stay within the user's authorized scope. Do not send it to an unauthorized external service; confirm how to handle fields outside that scope before proceeding.
+
+Start with a small set of real records and complete the preview and confirmation steps. Check provenance, field meaning, and duplicate candidates before expanding the batch.
+
+## References
+
+- Awesome QA Skills project: https://github.com/naodeng/awesome-qa-skills
+- Test Case Importer Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-case-importer
+- Test Case Importer Skill details: https://inaodeng.com/en/qaskills/test-case-importer/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/

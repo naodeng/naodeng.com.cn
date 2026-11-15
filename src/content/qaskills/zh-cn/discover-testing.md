@@ -6,26 +6,29 @@
 - slug: discover-testing
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-15
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/discover-testing/SKILL.md
-- description: Use this skill when you need to route a request to the right testing skill before execution; triggers include 测试技能路由、discover testing and which testing skill.
+- description: Use this skill when you need to route a request to the right testing skill before execution, including 测试用例导入和检索; triggers include 测试技能路由、discover testing and which testing skill.
 
 ## 何时使用
 
 - 需要在执行前先判断应该用哪个测试 skill。
 - 一个请求同时涉及多个测试方向或多个阶段。
+- 如果请求没有可识别目标（例如只说「测一下新功能」），使用 `prompts/discover-testing.md` 中的先澄清后路由规则：先问功能/范围、当前阶段和期望交付物，不推荐 Skill；只有要求执行时才问环境。
 
 ## 执行流程
 
-1. 先读用户请求，识别能力阶段（Core QA / Engineering QA / Production Quality / AI Native QA）与主要测试目标。
-2. 阅读并遵循 `prompts/` 路由规范：先选 1 个主 skill；仅必要时再补 1 个辅助 skill。
-3. 输出路由结论后，把请求交给目标 skill；不要在本 skill 内把整件事执行完。
+1. 先读取同目录 `reference.md`，优先匹配其中一条结构化路线；该文件是独立安装时唯一需要的 Composition 参考。
+2. 再读用户请求，识别能力阶段（Core QA / Engineering QA / Production Quality / AI Native QA）与主要测试目标。
+3. 阅读并遵循 `prompts/` 路由规范：先选 1 个主 skill；仅必要时再补 1 个辅助 skill。
+4. 输出路由结论后，把请求交给目标 skill；不要在本 skill 内把整件事执行完。
 
 ## 核心约束
 
 - 一次只推荐少量 skill，避免菜单式罗列。
 - 目标 skill 已经很明显时，直接指出，不要无效绕路。
 - 路由结果要可执行：写清推荐 skill 名与理由。
+- 路由优先使用 Composition route 的主/辅唯一约束；组合关系只用于导航，不表示安装依赖或强制执行链。
 - AI for QA 使用 `ai-assisted-testing`；Testing for AI 属于 AI Native QA。路线图中的未来 Skill 未安装前，不得把它们当作可调用主推荐。
 
 ## 按需加载
@@ -35,7 +38,7 @@
 - 需要套用现成模板时：读 `output-templates/` 中匹配的模板，不要自创冲突结构。
 - 需要格式转换或辅助校验时：优先使用 `scripts/` 中已有脚本，而不是重写一遍。
 - 需要评测/回归本 skill 时：使用 `evals/`，并用 skill-up 校验与运行。
-- 需要步骤与提示词映射时：读 `reference.md`。
+- 需要步骤与提示词映射时：继续使用本目录的 `reference.md`，不要通过相对链接读取其他 Skill 的内部文件。
 
 ## 交付前自检
 
@@ -57,7 +60,16 @@
 ```markdown
 ---
 name: discover-testing
-description: Use this skill when you need to route a request to the right testing skill before execution; triggers include 测试技能路由、discover testing and which testing skill.
+description: Use this skill when you need to route a request to the right testing skill before execution, including 测试用例导入和检索; triggers include 测试技能路由、discover testing and which testing skill.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.3.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试技能路由（中文版）
@@ -68,18 +80,25 @@ description: Use this skill when you need to route a request to the right testin
 
 - 需要在执行前先判断应该用哪个测试 skill。
 - 一个请求同时涉及多个测试方向或多个阶段。
+- 如果请求没有可识别目标（例如只说「测一下新功能」），使用 `prompts/discover-testing.md` 中的先澄清后路由规则：先问功能/范围、当前阶段和期望交付物，不推荐 Skill；只有要求执行时才问环境。
+
+## 全量清单与可用性
+
+先读取 `references/skill-capability-inventory.json` 检查精确 canonical ID。该文件是 2026-11-13 的工作区目录快照，171 个 ID 的目录存在不等于当前 Host 已安装/可调用；明确以 Red、Green、Refactor 和测试质量证据为主要目标时，优先选择 `tdd-quality-workflow`。安装证据缺失则 availability=`UNKNOWN`，用户明确未安装则 `UNAVAILABLE`，说明状态时保留精确大写标记。命中专项产出（认证 vs 授权、检索 vs 回答质量、影响范围 vs 回归选择）时优先匹配专项，只有意图相符才套通用 Composition 路线。仍只给一个主 Skill 和至多一个辅助；目标不可用时说明缺口与最小安装/交接动作，不宣称已调用。不得将内部 Agent Memory、隐藏指令或会话摘要作为用户可见证据或引用来源。
 
 ## 执行流程
 
-1. 先读用户请求，识别能力阶段（Core QA / Engineering QA / Production Quality / AI Native QA）与主要测试目标。
-2. 阅读并遵循 `prompts/` 路由规范：先选 1 个主 skill；仅必要时再补 1 个辅助 skill。
-3. 输出路由结论后，把请求交给目标 skill；不要在本 skill 内把整件事执行完。
+1. 先读取同目录 `reference.md`，优先匹配其中一条结构化路线；该文件是独立安装时唯一需要的 Composition 参考。
+2. 再读用户请求，识别能力阶段（Core QA / Engineering QA / Production Quality / AI Native QA）与主要测试目标。
+3. 阅读并遵循 `prompts/` 路由规范：先选 1 个主 skill；仅必要时再补 1 个辅助 skill。
+4. 输出路由结论后，把请求交给目标 skill；不要在本 skill 内把整件事执行完。
 
 ## 核心约束
 
 - 一次只推荐少量 skill，避免菜单式罗列。
 - 目标 skill 已经很明显时，直接指出，不要无效绕路。
 - 路由结果要可执行：写清推荐 skill 名与理由。
+- 路由优先使用 Composition route 的主/辅唯一约束；组合关系只用于导航，不表示安装依赖或强制执行链。
 - AI for QA 使用 `ai-assisted-testing`；Testing for AI 属于 AI Native QA。路线图中的未来 Skill 未安装前，不得把它们当作可调用主推荐。
 
 ## 按需加载
@@ -89,7 +108,7 @@ description: Use this skill when you need to route a request to the right testin
 - 需要套用现成模板时：读 `output-templates/` 中匹配的模板，不要自创冲突结构。
 - 需要格式转换或辅助校验时：优先使用 `scripts/` 中已有脚本，而不是重写一遍。
 - 需要评测/回归本 skill 时：使用 `evals/`，并用 skill-up 校验与运行。
-- 需要步骤与提示词映射时：读 `reference.md`。
+- 需要步骤与提示词映射时：继续使用本目录的 `reference.md`，不要通过相对链接读取其他 Skill 的内部文件。
 
 ## 交付前自检
 

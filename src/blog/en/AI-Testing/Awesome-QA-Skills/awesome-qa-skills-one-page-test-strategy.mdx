@@ -1,0 +1,96 @@
+---
+title: "One-Page Test Strategy: Put Goals, Risks, and Test Choices on One Canvas"
+description: "Use one-page-test-strategy to turn project goals, quality risks, constraints, and feedback cadence into a discussable strategy, with AI keeping facts and assumptions separate."
+date: 2026-12-01T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Test Strategy"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A test strategy can be comprehensive and still be hard for a team to use. Requirements, environments, test types, and release gates often live in separate documents, so people have to reconstruct the same picture every time they discuss a decision.
+
+one-page-test-strategy places goals, risks, constraints, and feedback cadence on one page. It is a discussion artifact that can evolve with the project, not a full execution plan or a set of test cases. AI can organize inputs and expose gaps; the team still confirms project facts, thresholds, and trade-offs.
+
+## What belongs on the page
+
+The goal is not to fit every testing term into a small space. Readers should be able to see the objective, the risks, and the basis for choosing an approach.
+
+| Module | What it communicates | When information is missing |
+| --- | --- | --- |
+| Goal and principles | Business objective, shared quality ownership, and strategy choices | State which goal needs confirmation |
+| Risk scope | Relevant functionality, performance, and security risks | Keep each category visible and mark it Open |
+| Enablers | Environment, infrastructure, data, access limits, tools, test methods, and team roles and capability | Separate facts, recommendations, and gaps |
+| Lifecycle | Requirements, before development, during development, development complete, testing, before release, and released | Mark unknown stages or mechanisms |
+| Test selection | Q1–Q4 quadrants and unit, API-integration, and exploratory layers | Fill from project context; do not list tests just to fill space |
+| Feedback cadence | Iteration 1 through iteration n, release or production, and how feedback enters the next cycle | Mark an unknown cadence Open |
+
+Functionality, performance, and security remain visible as risk categories. That does not mean every project needs equal testing investment in all three. Quadrants and test layers are selection frameworks, not a fixed order or ratio.
+
+## Keep the views distinct
+
+The seven lifecycle stages should show shift-left feedback as well as relevant shift-right feedback after release. Requirements and pre-development discussions can surface risk earlier. Production monitoring and user feedback belong on the page only when the project actually has those mechanisms.
+
+For Q1–Q4, the vertical axis is business-facing versus technology-facing, and the horizontal axis is supports-the-team versus evaluates-the-product. Manual, automated, and tool-assisted are attributes of testing activities, not quadrant axes. Unit, API-integration, and exploratory testing form another useful view of coverage. The two views complement each other; neither is a universal checklist.
+
+Risk changes, test findings, and unfinished work from one iteration should feed the next strategy update. Entry and exit gates, numeric thresholds, schedules, and test ratios must come from project agreements. Without a source, leave them Open.
+
+## Let AI organize the inputs without inventing decisions
+
+Give AI the requirements, architecture notes, risk records, existing tests, and team constraints. Ask it to inventory the evidence before drafting the page, and label each statement as one of these:
+
+- **Fact:** directly supported by project material, with its source.
+- **Recommendation:** a risk-based option for the team to consider.
+- **Open:** a threshold, owner, post-release mechanism, or testing capability that lacks evidence.
+
+You can adapt this request:
+
+~~~text
+Use the one-page-test-strategy Skill to prepare a one-page strategy.
+
+Project goal: [goal and success conditions]
+Phase and scope: [current phase, included and excluded journeys]
+Materials: [requirements, architecture, existing tests, risk records, and versions]
+Constraints: [environment, data access, tools, team capability, and time]
+
+Review the inputs first and separate facts, recommendations, and Open items.
+Include functionality/performance/security risks, environment and team constraints,
+the seven lifecycle stages, Q1–Q4, unit/API-integration/exploratory layers,
+and feedback from iterations through release.
+Do not invent test ratios, numeric gates, owners, or production monitoring.
+End with the decisions the team still needs to make.
+~~~
+
+Someone who knows the project should verify sources and trade-offs, then decide which details belong on the page and which belong in an execution plan or risk record. An AI-generated strategy is not proof that testing ran or a release was approved.
+
+## Common traps
+
+- Reusing a generic template so every risk appears covered without project evidence.
+- Forcing every test type into the page or assigning a fixed order to the quadrants.
+- Turning “recommend adding monitoring” into “production monitoring is available.”
+- Shrinking the text to fit test cases and owners until the page is unreadable.
+
+### When do I need a full test plan?
+
+When the team needs execution steps, staffing, owners, time windows, or individual cases, use the one-page strategy as an entry point and maintain those details in a full plan or the relevant project workflow.
+
+### Must every project test all three risk categories?
+
+No. Functionality, performance, and security are visible prompts for risk discussion. Scope depends on goals, architecture, evidence, and constraints; unresolved decisions remain Open.
+
+### Can AI decide release thresholds?
+
+No. AI can organize thresholds supplied by the team and flag missing ones. Project owners confirm thresholds and accept risk.
+
+## Install and references
+
+Install the Skill for the project language and provide materials the assistant can access:
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/one-page-test-strategy -g
+~~~
+
+- One-Page Test Strategy Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/one-page-test-strategy
+- One-Page Test Strategy Skill details: https://inaodeng.com/en/qaskills/one-page-test-strategy/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/
