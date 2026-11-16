@@ -1,0 +1,76 @@
+---
+title: "Skill Quality Review: Check the Package and Keep Evidence Boundaries Clear"
+description: "Use skill-quality-review to inspect a Skill's responsibilities, triggers, resource dependencies, bilingual consistency, and evaluation readiness while separating static checks from runtime evidence."
+date: 2026-12-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Quality Review"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+Reviewing a Skill means looking beyond whether its description reads well. The main file, prompts, metadata, examples, references, and evaluation cases may each look reasonable while failing to work together. A standalone copy may also be missing a file it needs.
+
+skill-quality-review checks the engineering completeness of the whole package and keeps static findings separate from runtime evidence. It does not modify the Skill or treat a complete directory or successful validator as proof of model behavior.
+
+## Start with purpose and boundaries
+
+Identify the Skill, language, directory, and review goal. If a path or source is missing, report the gap first instead of inferring from a similar Skill.
+
+Then inspect:
+
+- **Responsibilities and scope:** what the Skill handles and what it leaves to other capabilities.
+- **Triggers and inputs:** whether the description routes tasks clearly and how missing material is handled.
+- **Output contract:** whether required fields, states, evidence, and formats are explicit.
+- **Resource relationships:** whether prompt, example, reference, and script paths exist and have clear loading instructions.
+- **Independent installation:** whether relative resources still work when only this directory is copied, with no private dependency on another Skill.
+- **Bilingual and evaluation readiness:** whether language versions express the same contract and eval cases cover critical boundaries.
+
+## Know what static checks can prove
+
+File inspection can establish that paths exist, references match, and documents cover certain rules. It cannot prove that a model will trigger a Skill consistently, that runtime tools are available, or that users accept the result.
+
+Separate blockers, important recommendations, information gaps, and evidence boundaries. A broken path is directly verifiable. A claim that “the model always follows this rule” requires run evidence and cannot be concluded from reading files.
+
+## Use AI to check the package, file by file
+
+Give AI the whole Skill directory and the review goal. Ask it to cite concrete files for each finding. Reviewers should verify the references, versions, and paths themselves, especially when the output turns an untested behavior into a conclusion.
+
+~~~text
+Use skill-quality-review to review this Skill package.
+
+Skill directory and language: [path and language]
+Review goal: [scope or change]
+Available material: [SKILL.md, prompts, metadata, examples, references, evals]
+
+Check responsibilities, boundaries, triggers, input/output contracts,
+relative resources, standalone installation, bilingual consistency,
+and evaluation readiness. Cite specific files for every finding.
+Separate blockers, recommendations, information gaps, and evidence limits.
+This is a static review: do not claim runtime behavior, model effectiveness,
+business acceptance, or release approval has passed.
+~~~
+
+At the end, the report should distinguish what files alone can confirm, what needs installation or runtime checks, and what requires a product or business decision. A score should not hide a blocker.
+
+### How is this different from Skill Evaluation?
+
+Quality Review checks package structure, responsibilities, paths, and evidence boundaries. skill-evaluation designs and interprets behavior evaluations. A package review can flag missing eval cases, but it does not replace running them.
+
+### Does a successful installation prove quality?
+
+No. It shows that an installation step completed. It does not prove triggering, output quality, or model behavior.
+
+### Can this Skill modify files automatically?
+
+Its scope is read-only package review. Maintainers can use its findings in their own change and verification workflow.
+
+## Install and references
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-quality-review -g
+~~~
+
+- Skill Quality Review source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-quality-review
+- Skill Quality Review details: https://inaodeng.com/en/qaskills/skill-quality-review/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/

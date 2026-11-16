@@ -98,6 +98,8 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         },
         "slugs": [
           "test-case-writing",
+          "test-case-importer",
+          "test-case-retrieval",
           "testcase-writer-plus",
           "test-case-reviewer",
           "test-case-reviewer-plus",

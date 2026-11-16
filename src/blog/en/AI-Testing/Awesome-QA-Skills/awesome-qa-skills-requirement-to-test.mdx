@@ -1,0 +1,72 @@
+---
+title: "Requirement-to-Test: Preserve Sources and Make Verification Traceable"
+description: "Use requirement-to-test to turn requirements into testable, risk-driven designs and traceability while keeping assumptions, coverage gaps, and open questions visible."
+date: 2026-12-03T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Requirements Analysis"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+When requirements become tests, their sources are easy to lose. A single acceptance condition may turn into several cases, and a reader may no longer know where each assertion came from. Missing thresholds can also be filled in with a “reasonable default” that was never agreed.
+
+requirement-to-test turns requirements into testable, risk-driven, traceable designs. Its outputs usually include test cases and a requirement traceability matrix, with facts, analysis, and open questions kept distinct.
+
+## Check whether the requirements are testable
+
+Provide requirement versions and IDs, acceptance conditions, context, and constraints. For each item, inspect the actor, trigger, result, boundaries, and observable evidence. If a threshold, error behavior, or user role is missing, record the question instead of deciding on behalf of the requirement owner.
+
+Each test case should retain its requirement ID and source location. The designer may use equivalence classes, boundary values, state transitions, or decision tables, but every case should state its design rationale and the behavior it covers.
+
+## Keep traceability in the result
+
+| Requirement | Risk or ambiguity | Test design | Coverage status |
+| --- | --- | --- | --- |
+| Original ID and version | Missing condition or risk | Case ID, input, steps, expected result | Covered, partly covered, or Open |
+
+These statuses describe design evidence; they do not mean a test has run. Execution requires the relevant environment, data, and run records.
+
+Prioritize requirements with high risk, irreversible effects, or significant user impact. Explain the basis for scope and priority. If the materials do not support a conclusion, keep it unknown instead of assigning every item an unexplained high priority.
+
+## Let AI decompose requirements without inventing them
+
+Give AI the original requirement, version, and acceptance material. Ask it to trace every case back to a source. Review whether it treated an implication as a rule, changed an assumption into an expected result, or left requirements uncovered.
+
+~~~text
+Use requirement-to-test to design tests for these requirements.
+
+Requirement version and IDs: [numbers, version, and source text]
+Business context: [users, workflow, and related interfaces]
+Constraints: [data, environment, permissions, and rules]
+
+List testability questions, assumptions, and missing information first.
+Then design risk-based cases and a requirement-to-case traceability matrix.
+For each case, include source, design method, and coverage status. Do not
+invent thresholds, business rules, or execution results; list uncertain
+items as questions to clarify.
+~~~
+
+AI can produce candidate cases and a matrix draft. The requirement owner confirms business meaning; the tester checks whether each case can be observed and verified.
+
+### What if requirements have no IDs?
+
+Record the source location and report the missing stable ID as a traceability risk. Do not invent identifiers just to fill a table.
+
+### Can AI fill in boundary values?
+
+It can suggest candidates, but only values supported by requirements, interface contracts, or project rules should be stated as expected results. Others remain assumptions or Open.
+
+### Does full traceability mean the tests passed?
+
+No. A matrix shows the relationship between requirements and test designs. Execution results need evidence for the relevant version and environment.
+
+## Install and references
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/requirement-to-test -g
+~~~
+
+- Requirement-to-Test Workflow source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/requirement-to-test
+- Requirement-to-Test Skill details: https://inaodeng.com/en/qaskills/requirement-to-test/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/

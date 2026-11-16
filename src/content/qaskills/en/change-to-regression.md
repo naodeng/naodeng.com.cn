@@ -6,13 +6,13 @@ Author: naodeng
 - slug: change-to-regression
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-11-06
+- syncedAt: 2026-11-15
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/change-to-regression/SKILL.md
-- description: Use this skill when you need to select explainable regression scope from a change and its risk; triggers include change-to-regression, 变更回归, and Change-to-Regression Workflow.
+- description: Use this skill when you need pre-change regression guardrails or an explainable regression scope from a proposed or implemented change; triggers include change-to-regression, Change-to-Regression Workflow, and 编码前回归风险.
 
 ## When to Use
 
-Use this Skill to select explainable regression scope from a change and its risk.
+Use this Skill to derive regression guardrails before a proposed change or to select explainable regression scope after an implemented change.
 
 ## Workflow
 
@@ -27,10 +27,10 @@ Do not invent input, assume dependencies are installed, or present recommendatio
 ```markdown
 ---
 name: change-to-regression
-description: Use this skill when you need to select explainable regression scope from a change and its risk; triggers include change-to-regression, 变更回归, and Change-to-Regression Workflow.
+description: Use this skill when you need pre-change regression guardrails or an explainable regression scope from a proposed or implemented change; triggers include change-to-regression, Change-to-Regression Workflow, and 编码前回归风险.
 license: PolyForm-Noncommercial-1.0.0
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   compatibility: ""
   author: "Awesome QA Skills contributors"
   language: "en"
@@ -43,15 +43,15 @@ metadata:
 
 ## When to Use
 
-Use this Skill to select explainable regression scope from a change and its risk.
+Use this Skill to derive regression guardrails before a proposed change or to select explainable regression scope after an implemented change.
 
 ## Output Format Options
 
-Default to Markdown with a required/deferred/excluded regression table. If JSON is requested, preserve the prompt's separate facts, inferences, plans, execution states, and sources.
+Default to Markdown. Before coding, return candidate guardrails and hypotheses; after coding, return a required/deferred/excluded regression table. If JSON is requested, preserve the prompt's separate facts, inferences, plans, execution states, and sources.
 
 ## Core constraints
 
-Compose existing specialist Skills without copying their analysis rules. Mark host installation `UNKNOWN` without evidence. Do not report plans or static analysis as executed results. Read-only by default; external writes require authorization.
+Compose existing specialist Skills without copying their analysis rules. Mark host installation `UNKNOWN` without evidence. A proposed change normally has no Diff/SHA; label pre-change impact as a hypothesis/candidate. Analyze post-change work from actual Diff/SHA evidence. Do not report plans or static analysis as executed results. Read-only by default; external writes require authorization.
 
 ## How to Use
 
@@ -66,6 +66,7 @@ Read `prompts/change-to-regression.md` first; validate inputs, complete each sta
 ## Before delivery
 
 - [ ] Input scope and assumptions are explicit
+- [ ] Distinguish `PRE_CHANGE` proposal analysis from `POST_CHANGE` diff analysis
 - [ ] Handoffs preserve sources, status, and gaps
 - [ ] Execution evidence is separate from plans
 - [ ] Next steps and permission boundary are clear
@@ -76,7 +77,7 @@ Do not invent input, assume dependencies are installed, or present recommendatio
 
 ## Best Practices
 
-Provide exact base/head SHA, the full diff, test runtimes, and environment limits. After execution, attach its time, Commit, and run record.
+Before coding, state the proposed behavior and known constraints. After coding, provide exact base/head SHA, the full diff, test runtimes, and environment limits. After execution, attach its time, Commit, and run record.
 ```
 
 ## Install

@@ -1,0 +1,99 @@
+---
+title: "Skill Evaluation: Use Reproducible Cases to Tell Whether a Change Helped"
+description: "Use skill-evaluation to design and interpret Agent Skill evaluations across outcome, process, style, and efficiency while separating Skill defects from evaluation and infrastructure problems."
+date: 2026-12-01T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Skill Evaluation"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+After changing a Skill, one or two successful examples do not tell you whether it became more reliable. Its trigger may have become too broad, a required step may be skipped, or the output may be longer but less useful. Evaluation puts those changes back against repeatable cases.
+
+skill-evaluation helps teams design evaluations, choose judges, and interpret results. It measures a Skill against a defined set of tasks; a single passing run does not prove behavior across every tool, model, and project.
+
+## Define what you are evaluating
+
+Fix the target Skill, version, runtime environment, and the question the evaluation should answer. Testing whether the Skill triggers in the right situations requires different cases from checking whether it waits for authorization before writing.
+
+Useful observation areas include:
+
+| Area | What to inspect |
+| --- | --- |
+| Outcome | Did the response solve the task and preserve required information and sources? |
+| Process | Did it follow required steps, permissions, and boundaries? |
+| Style and quality | Is the output clear and consistent with its delivery contract? |
+| Efficiency | Were the calls, steps, and resources reasonable for the task? |
+
+Avoid collapsing these into a score that hides the reason for a result. Each check should describe what evidence counts as a pass, failure, or insufficient evidence.
+
+## Cover real boundaries
+
+Start with representative normal requests, then add cases that expose failure modes: missing inputs, out-of-scope requests, competing Skills, boundary conditions, negative requests, and known regressions. Each case needs an input, expected behavior, evaluation criteria, and repeatable run settings.
+
+The goal is not a large case count. Every important rule should have a case, and cases should not all exercise the same easy path. For routing evaluations, distinguish cases that should trigger, should not trigger, and should ask for clarification because the goal is unclear.
+
+## Choose the right judge
+
+Use deterministic checks first for mechanical requirements such as required fields, standard status values, links, file scope, and unauthorized write claims. Use a model judge only when the decision involves semantics, quality, or context, and give it a clear rubric and reference expectations.
+
+Scripts work well for format and executable contracts; people or model judges can interpret more complex meaning. Model judgments can vary, so record the judge prompt, model and version, and rationale, then manually sample important cases. A high score from a judge is not an objective fact by itself.
+
+If the project uses skill-up, run its validation command to check the evaluation configuration first. Configuration validation only shows that the artifact meets the tool's requirements; it does not replace an actual evaluation or prove expected model behavior.
+
+## Compare results with run identity
+
+Record the target Skill version or commit, case-set version, runtime environment, judge, timestamp, and missing evidence for every run. Otherwise, a change in the model, tool, or cases may look like a change in the Skill.
+
+Classify a failed run before changing anything:
+
+- **Skill defect:** the case and environment are valid, but the output violates the Skill contract.
+- **Evaluation defect:** the expected behavior or assertion does not match the goal, or the case cannot be judged consistently.
+- **Infrastructure issue:** the model, tool, network, or data was unavailable.
+- **Unknown:** the available evidence does not support attribution.
+
+Do not count infrastructure failures as Skill failures or remove genuine regression cases to improve a trend. Turn a failure into a long-term regression case only after its root cause is understood, and keep the original run evidence.
+
+## Use AI to draft evaluations, then review the evidence
+
+AI can suggest candidate cases from a Skill’s goal, find positive and negative boundaries, draft assertions, and compare outputs across versions. An evaluation owner still needs to verify that cases represent real tasks, that the judge can distinguish outcomes reliably, and that comparisons use the same environment.
+
+~~~text
+Use skill-evaluation to design an evaluation for this Skill.
+
+Skill and version: [path, version, or commit]
+Evaluation goal: [trigger or behavior to verify]
+Runtime conditions: [model, tools, environment, and data]
+Existing cases and results: [files or records]
+
+List the goal and coverage gaps first. Then propose normal, negative,
+boundary, and regression cases. For each, give the input, expected behavior,
+evaluation criteria, and evidence required.
+Prefer deterministic assertions; state judge limitations for semantic checks.
+Do not report unrun cases as passed or attribute infrastructure failures to the Skill.
+~~~
+
+AI-generated cases are candidates. Check that expectations follow from the Skill contract and real requirements, then preserve original results and human edits after running them.
+
+### Does a passing evaluation mean the Skill is ready to ship?
+
+Not on its own. Results apply to a specific version, case set, and environment. Combine them with risk, other checks, and the owner’s release criteria.
+
+### Must every case run after a Skill change?
+
+Choose based on the change’s impact and evaluation goal. Changes to shared rules or boundaries call for related cases; keeping a complete baseline helps expose unexpected regressions.
+
+### Can I use only a model judge?
+
+That is rarely enough. Use scripts for mechanical rules and model or human judgment for semantics. Important conclusions should trace back to cases, criteria, and output evidence.
+
+## Install and references
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-evaluation -g
+~~~
+
+- Skill Evaluation source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/skill-engineering/skill-evaluation
+- Skill Evaluation details: https://inaodeng.com/en/qaskills/skill-evaluation/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/

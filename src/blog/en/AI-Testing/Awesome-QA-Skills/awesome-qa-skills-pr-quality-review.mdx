@@ -1,0 +1,82 @@
+---
+title: "PR Quality Review: Read Code Risk, Test Effectiveness, and Evidence Together"
+description: "Use pr-quality-review to assess PR code risk, test impact, and execution evidence while distinguishing static analysis from actual test runs."
+date: 2026-12-03T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "PR Review"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A useful PR review does more than inspect changed lines. It explains which behaviors may be at risk, whether the tests cover those changes, which results have run evidence, and who needs to follow up on the remaining issues.
+
+pr-quality-review brings code risk, test impact, test effectiveness, and quality evidence into one review. It is read-only by default; static inspection is not reported as a passing test run.
+
+## Fix the review inputs first
+
+Provide the PR or its materials, base/head commits, complete diff, relevant requirements, and available test records. State the review scope, the team’s severity definitions, and the permission boundary. Incomplete input can support a limited review, but the gaps must remain visible.
+
+Review the evidence in sequence:
+
+1. Identify changed behavior, interfaces, and data constraints; check them against the stated intent.
+2. Trace likely consumers and user paths; check whether the test selection covers them.
+3. Inspect assertions, negative paths, boundaries, and whether test doubles are trustworthy.
+4. Record available CI or local runs, their versions and results, and any checks without evidence.
+5. Name remaining risks, blockers, and the person or next step needed to resolve them.
+
+## Separate analysis from run status
+
+When no test or CI result is provided, keep execution status as UNKNOWN. Use NOT_RUN only when the materials explicitly say a check did not run. If a run was attempted but failed abnormally, its record is stale, or its result is unclear, do not rewrite it as a pass.
+
+Every finding should trace to PR or repository material. Do not cite internal memory, conversation logs, or sources that were not provided to the reviewer. Keep the standard status STALE for an expired checkpoint. Static code analysis can identify risks, but it is not run evidence.
+
+| Review output | What to include |
+| --- | --- |
+| Finding | Location, severity, behavior impact, and evidence |
+| Test impact | Affected paths, coverage, and selection rationale |
+| Run evidence | Version, command or CI record, result, and source |
+| Information gap | What cannot be assessed and what material is needed |
+| Handoff | Next action, owner, or risk requiring human acceptance |
+
+## Use AI for an evidence-led first pass
+
+AI can read the diff, tests, and PR description to list areas for review. A reviewer should verify each finding against its code location and run record, especially where “looks reasonable” could be overstated as “verified.”
+
+~~~text
+Use pr-quality-review to review this PR.
+
+PR and versions: [link, base/head, or commit SHAs]
+Materials: [full diff, requirements, tests, and CI records]
+Review scope: [included and excluded areas]
+Team severity definitions: [provide rules; if missing, say they are unknown]
+
+Report findings for code risk, test impact, test effectiveness, and evidence.
+Cite accessible material for each judgment. Use UNKNOWN when no run record
+exists and NOT_RUN only when the materials confirm it did not run. Separate
+facts, inferences, and follow-up actions. Stay read-only.
+~~~
+
+Provide the source Skill and the necessary materials before the review. Without explicit write authorization, the result should remain analysis and recommendations.
+
+### How is this different from PR Test Impact Analysis?
+
+pr-test-impact-analysis maps code changes to affected behavior and candidate test scope. pr-quality-review also examines code risk, assertion quality, run evidence, and handoff. They can be used together, but serve different roles.
+
+### Does a green CI run mean the PR can merge?
+
+It is one piece of evidence. Confirm that the run matches the PR version, relevant checks actually executed, and risks and team rules have been addressed.
+
+### Can AI approve the PR?
+
+No. AI can organize findings and evidence; merge, risk acceptance, and release decisions stay with authorized owners.
+
+## Install and references
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/pr-quality-review -g
+~~~
+
+- PR Quality Review Workflow source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/pr-quality-review
+- PR Quality Review Skill details: https://inaodeng.com/en/qaskills/pr-quality-review/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/

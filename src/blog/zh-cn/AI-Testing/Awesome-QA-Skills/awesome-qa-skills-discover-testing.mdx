@@ -1,6 +1,6 @@
 ---
-title: "测试技能探索，把测试放进真实交付节奏"
-description: "接手陌生项目时梳理入口、依赖、环境、风险和现有测试，并记录证据缺口与待确认问题。"
+title: "测试技能探索：先弄清任务，再选择合适的测试 Skill"
+description: "用 discover-testing 梳理项目入口、依赖、环境、风险与现有测试；目标不清时先澄清，再选择一个主 Skill 和至多一个辅助 Skill。"
 date: 2026-08-29T09:00:00.000Z
 author: "nao.deng"
 tags: ["AI 测试", "Agent Skills", "测试技能探索"]
@@ -8,134 +8,74 @@ categories: ["AI 测试", "QA Skills"]
 series: ["Awesome QA Skills 实战"]
 ---
 
-接手陌生项目时，先梳理入口、依赖、环境、风险、现有测试和未解问题，再据此选择合适的测试技能。本文展示如何把这份盘点转成下一步工作。
+接手陌生项目或收到范围模糊的测试请求时，先确认任务目标、项目入口、依赖、环境、风险和已有测试，再选择匹配的 Skill。
 
-[Awesome QA Skills](https://github.com/naodeng/awesome-qa-skills) 按语言和测试阶段组织 Skill。项目结构与通用安装方式已经在[系列总览](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)说明，这里聚焦测试技能探索。
+discover-testing 用于这类探索和路由。它会盘点 QA Skills、相关项目材料和信息缺口；如果目标不清楚，应先提出澄清问题。仓库里存在某个 Skill，不代表它已安装或当前 Host 可用；这类结论需要环境或清单证据。
 
-## 先看源 Skill
+## 从目标和项目现状开始
 
-主 Prompt 把工作拆到 路由决策规则（按顺序判断）、质量要求、常见误区（Gotchas）、交付前自检、执行流程。这些标题只是导航，真正使用时还要回到项目材料。
+先说明要交付什么、当前阶段、希望覆盖的范围，以及不允许触碰的内容。随后检查仓库入口、依赖、测试结构、环境和相关文档。把观察到的事实、推断和待确认问题分开，不用内部记忆代替项目材料。
 
-源目录现有 17 个脚本入口。可以先看 [模板批量转换脚本](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing/scripts/batch_convert_templates.py)。
+可用下面这段请求启动：
 
-## 把任务放进时间线
+~~~text
+请使用 discover-testing 帮我探索这个测试任务。
 
-第一次接手陌生项目时梳理入口、依赖、环境、风险、现有测试和待确认问题
+目标：[要解决的问题或需要交付的结果]
+项目材料：[仓库、需求、测试、运行记录和版本]
+范围：[包含与排除的业务路径]
+约束：[环境、数据、权限、时间和合规要求]
 
-工作流 Skill 的价值在交接。下面这段是计划样例，日期、负责人和证据都要换成项目里的真实信息。
+先检查目标是否清楚、材料是否可访问。
+列出已知事实、风险、缺口和可用 Skill，再选择一个主要 Skill。
+只有确实需要时再建议一个辅助 Skill，并说明交接输入。
+不要把 Skill 存在于仓库里说成当前 Host 已安装。
+~~~
 
-| 阶段 | 动作 | 证据 | 负责人 |
-| --- | --- | --- | --- |
-| 进入 | 确认范围与环境 | 需求版本、构建号 | QA |
-| 执行 | 先跑高风险链路 | 运行记录、缺陷链接 | QA 与开发 |
-| 决策 | 检查退出条件 | 残余风险清单 | 发布负责人 |
-| 交接 | 记录未完成项 | Owner 与截止时间 | 项目负责人 |
+目标不清时，先确认会影响路由的信息：任务是设计测试、导入旧用例、检索现有用例，还是检查一次提交。
 
-如果“谁批准”和“拿什么证明”仍是空白，这张表还不能拿去开会。
+## 选择一个主 Skill，再决定是否需要辅助能力
 
-## 工作流里的正常路径和插曲
+路由依据应包括用户目标和可用材料，关键词只作为线索。一次工作默认选择一个主要 Skill；只有主 Skill 范围之外还有独立步骤时，才增加至多一个辅助 Skill。
 
-第一次接手陌生项目时梳理入口、依赖、环境、风险、现有测试和待确认问题。我会先把它排进真实节奏，而不是只列会议名称。
+例如，已有测试资产需要搜索时，可以先用 test-case-retrieval 找候选，再由人确认目标记录；需要迁移已选中的旧用例时，才交给 test-case-importer。检索候选不会自动成为导入授权或导入清单。若用户要按 Red、Green、Refactor 推进开发或审查 TDD 阶段，则优先考虑 tdd-quality-workflow，而不是把它误路由成普通测试设计。
 
-| 时点 | 团队动作 | 产物 | 退出条件 |
-| --- | --- | --- | --- |
-| 开始前 | 锁定需求版本、构建和负责人 | 范围说明 | 高风险未知项已有 Owner |
-| 执行中 | 先跑会阻断交付的链路 | 运行记录与缺陷 | P0 结果已复核 |
-| 决策前 | 汇总未测项和残余风险 | 决策包 | 批准人看过风险 |
-| 交接后 | 跟踪延期项 | Owner、日期、链接 | 后续任务已经落库 |
+路由结果应说明为什么选择当前 Skill、还缺什么输入、下一步需要什么证据，以及哪些工作仍未执行。若没有安装或 Host 能力的明确证据，应将可用性标记为未知。
 
-真实项目总会插进来点事。环境晚到，先完成静态评审和数据准备；构建连续失败，记录阻塞时长，别把它算成测试失败；范围临时增加，重新评估 路由决策规则（按顺序判断）、质量要求，原计划不能悄悄膨胀。
+## 用 AI 做探索，也核对它的依据
 
-### 交接时要说清的四句话
+AI 能快速整理文件入口、测试目录和候选流程，也能把大问题拆成待确认项。它给出的每条事实都应回到可访问的仓库文件、用户提供的记录或明确来源。不要把 AI 的内部记忆、对话日志或无法复查的判断当作面向用户的证据。
 
-1. 这次实际测了哪个构建。
-2. 哪些链路有运行证据。
-3. 哪些风险还留着，谁接受。
-4. 下一次动作由谁在什么时候完成。
+适合复核的输出至少包括：
 
-## 一段可以直接改的调用词
+| 内容 | 需要确认什么 |
+| --- | --- |
+| 任务目标 | 是否足够清楚，是否需要先澄清 |
+| 项目事实 | 是否有对应文件、版本或运行记录 |
+| 风险与缺口 | 哪些来自材料，哪些仍是推断 |
+| Skill 路由 | 主 Skill 是否匹配，辅助 Skill 是否必要 |
+| 下一步 | 输入、交接和执行权限是否明确 |
 
-把下面的方括号换成项目内容。材料越具体，Skill 越少猜。
+探索只产出路由判断和证据缺口，不代表测试已经执行，也不授权项目操作。
 
-```text
-请使用 discover-testing Skill。
+### 可以一次推荐多个 Skill 吗？
 
-任务：第一次接手陌生项目时梳理入口、依赖、环境、风险、现有测试和待确认问题
-版本与环境：[需求版本 / 构建号 / 环境]
-输入材料：[文件路径或链接]
-范围：[本次包含与排除的业务链路]
-限制：[账号、数据、时间、合规要求]
+可以列出候选供比较，但最终路由应先确定一个主要 Skill。只有存在独立、明确的交接任务时，再增加至多一个辅助 Skill。
 
-按时间线列出进入条件、动作、证据、负责人和退出条件。环境或构建阻塞要单列，不能混进产品失败。
-最后列出待确认问题，不要补写材料里没有的事实。
-```
+### 如果没有看到 Skill 的安装记录呢？
 
-第一次调用先看结构和缺口。补齐材料后再生成正式产物，能省掉不少来回修改。
+将 Host 可用性保留为 UNKNOWN，并先核对当前工具或安装清单。仓库源码、网站详情页和本机安装状态是不同证据。
 
-## 进阶使用，从一次调用走到持续流程
+### 检索到的旧用例可以直接导入吗？
 
-给每次运行一个 `workflow_run_id`，把范围、构建、负责人和交接结果串起来。下次启动测试技能探索时先读取上次未完成项，避免每天重新问一遍。
+不应自动导入。先由人确认候选记录、来源和目标，再进入导入预览与确认流程。
 
-### 三段式 Skill 链
+## 安装与参考
 
-`discover-testing` → `requirements-analysis` → `test-strategy`
-
-| 交接 | 传递内容 | 接收方检查 |
-| --- | --- | --- |
-| 上游到测试技能探索 | 来源版本、范围、风险和未决问题 | 测试技能探索输入是否过期，冲突是否标记 |
-| 测试技能探索到下游 | 主产物、证据索引、未完成项 | 测试技能探索产物能否继续执行，Owner 是否明确 |
-| 下游回写测试技能探索 | 运行结果、缺陷和新风险 | 是否更新测试技能探索基线与回归范围 |
-
-不要把三次输出复制进一个大 Prompt。测试技能探索只接收结构化摘要和可访问的原始材料，能减少上下文浪费，也方便追错。
-
-### 放进团队流程的门禁
-
-| 门禁 | 建议检查 | 失败动作 |
-| --- | --- | --- |
-| 测试技能探索输入门禁 | 版本、环境、Owner、来源可访问 | 停止测试技能探索并列出缺口 |
-| 测试技能探索产物门禁 | 关键结论带依据和状态 | 退回测试技能探索补证据 |
-| discover-testing 执行门禁 | 命令、退出码、报告可复现 | 标记基础设施或测试问题 |
-| discover-testing 决策门禁 | 残余风险有接受人和日期 | 不进入下一阶段 |
-
-团队可以每个 Sprint 看一次测试技能探索的采用率、人工修改率、无依据结论数和失败定位时间。数字的目标由团队自己定，先连续记录几轮再谈阈值。
-
-## 工作流别写成仪式清单
-
-测试技能探索应该回答谁在什么时候做什么，拿什么证据进入下一阶段。会议名称和模板不是重点。真正需要盯的是路由决策规则、负责人、截止时间和退出条件。任何未完成项都要有 Owner。
-
-## 安装与调用
-
-安装单个 Skill 就够了。项目总览里的安装说明不再在每篇重复。
-
-```bash
+~~~bash
 npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing -g
-```
+~~~
 
-调用时直接写“请使用 discover-testing Skill”，然后附上真实材料。
-
-## 两个实际问题
-
-### 测试技能探索从什么时候开始？
-
-进入条件满足时开始。至少要知道范围、版本、环境、负责人和目标日期。
-
-### Skill 能做 Go/No-Go 决定吗？
-
-不能。它整理证据、风险和未完成项，决定仍由项目里承担责任的人作出。
-
-### 计划中途失效怎么办？
-
-记录变化发生的时间、受影响范围和新负责人。旧计划保留，方便复盘为什么改。
-
-### 谁维护工作流产物？
-
-阶段负责人更新自己的证据，最终交接人检查链接和未完成项。
-
-先拿一份真实材料跑测试技能探索，保留输入、输出和复核意见。文章里的片段只能帮你搭起结构，项目证据还得在项目里产生。
-
-## 参考
-- Awesome QA Skills 项目主页:[https://github.com/naodeng/awesome-qa-skills](https://github.com/naodeng/awesome-qa-skills)
-- Awesome QA Skills 系列总览:[https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/](https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/)
-- 测试技能探索辅助脚本：模板批量转换脚本:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing/scripts/batch_convert_templates.py](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing/scripts/batch_convert_templates.py)
-- Awesome QA Skills：测试技能探索 Skill 源文件:[https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing](https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing)
-- 测试技能探索 Skill 详情页:[https://inaodeng.com/zh-cn/qaskills/discover-testing/](https://inaodeng.com/zh-cn/qaskills/discover-testing/)
+- 测试技能探索源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/discover-testing
+- 测试技能探索 Skill 详情页: https://inaodeng.com/zh-cn/qaskills/discover-testing/
+- Awesome QA Skills 系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/

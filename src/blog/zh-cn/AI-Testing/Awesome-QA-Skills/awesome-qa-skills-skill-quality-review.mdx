@@ -1,0 +1,74 @@
+---
+title: "Skill 质量审查：从 SKILL.md 检查到完整包的证据边界"
+description: "用 skill-quality-review 审查 Skill 的职责、触发、资源依赖、双语一致性和评测准备度，并区分静态检查与真实运行证据。"
+date: 2026-12-02T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "Skill 质量审查"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+Skill 说明写得顺，并不代表整个包可用。主文件、Prompt、metadata、示例、引用资源和评测用例需要彼此吻合；单独复制安装时，所需文件也应齐全。
+
+skill-quality-review 检查整个 Skill 包的工程完整性，并区分静态结论与运行证据。它不修改 Skill；目录齐全或校验通过，也不能证明模型行为有效。
+
+## 从目标和边界开始
+
+先确定要审查的 Skill、语言、目录和审查目标。若目标路径或材料缺失，应先列出缺口，不能凭另一份相似 Skill 推断。
+
+然后检查这些方面：
+
+- **职责与范围**：这个 Skill 解决什么问题，哪些任务明确交给其他能力。
+- **触发和输入**：描述是否能引导正确使用，关键材料缺失时怎么处理。
+- **输出契约**：要求的字段、状态、证据和格式是否明确。
+- **资源关系**：Prompt、示例、references 和脚本路径是否真实存在，加载方式是否清楚。
+- **独立安装**：只复制这个目录时，相对资源仍可访问，且没有依赖另一个 Skill 的私有文件。
+- **双语与评测准备度**：语言版本是否表达同一契约，eval 案例是否覆盖关键边界。
+
+## 静态检查能证明什么
+
+文件检查可以确认路径存在、字段和引用一致、文档覆盖了哪些规则。模型能否稳定触发 Skill、运行时工具是否可用、业务用户是否认可输出，还需要其他证据。
+
+报告应把阻塞问题、重要建议、信息缺口和证据边界分开。路径引用失效可以从文件确认；模型是否遵守某项规则，则需要对应的运行证据。
+
+## 让 AI 帮忙逐项核对
+
+把整个 Skill 目录及审查目标提供给 AI，让它列出具体文件依据。审查者要回到原文件确认引用、版本和路径，尤其检查它是否把未执行的行为判断写成结论。
+
+~~~text
+请使用 skill-quality-review 审查以下 Skill 包。
+
+Skill 目录与语言：[路径、语言]
+审查目标：[范围或变更]
+可用材料：[SKILL.md、Prompt、metadata、示例、references、evals]
+
+检查职责边界、触发、输入输出契约、相对资源、独立安装、
+双语一致性和评测准备度。每条发现请引用具体文件与依据。
+将阻塞问题、建议、信息缺口和证据边界分开。
+这是静态审查：不要声称运行时行为、模型效果、业务验收或发布批准已通过。
+~~~
+
+审查报告要说明哪些问题可从文件确认，哪些需要安装或运行后检查，哪些需要产品或业务负责人判断。不要用总分掩盖阻塞项。
+
+### 它和 Skill 评测有什么区别？
+
+质量审查检查包结构、职责、路径和证据边界；skill-evaluation 设计和解释行为评测。前者可以指出评测用例缺失，但不会代替实际运行评测。
+
+### 安装成功能说明 Skill 质量合格吗？
+
+不能。安装成功只表明安装步骤完成，无法证明触发、输出或模型行为符合目标。
+
+### 可以让 Skill 质量审查自动修改文件吗？
+
+这个 Skill 的定位是只读审查。可以把建议交给维护者，是否修改以及如何验证由维护流程决定。
+
+## 安装与参考
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-quality-review -g
+~~~
+
+- Skill 质量审查源文件: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/skill-engineering/skill-quality-review
+- Skill 质量审查详情页: https://inaodeng.com/zh-cn/qaskills/skill-quality-review/
+- Awesome QA Skills 系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/

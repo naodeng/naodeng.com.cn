@@ -1,0 +1,116 @@
+---
+title: "Test Case Retrieval: Find Traceable Candidates for Reuse"
+description: "Use test-case-retrieval to combine semantic and exact-identifier searches across accessible test assets, preserving source, scope, and match rationale."
+date: 2026-11-30T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Test Case Retrieval"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+When a requirement changes or a production defect appears, teams often ask whether a similar scenario has been tested before. Searching titles alone can miss semantically related cases; relying on a relevance ranking can turn “looks related” into “must run.”
+
+`test-case-retrieval` finds candidates in an accessible test repository, case catalog, or user-provided list. It combines business behavior with exact identifiers and returns source IDs, locations, and match rationales, while recording search scope and limits. Candidate ranking is not coverage, defect probability, or execution priority, and this Skill does not run tests.
+
+This guide uses the question “Which existing cases cover file upload timeouts?” to show how to make a search reviewable and hand its results to regression-scope selection.
+
+Awesome QA Skills organizes Skills by language and testing stage. The series overview covers the repository structure and shared installation options: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/. This guide focuses on Test Case Retrieval.
+
+## Confirm which sources are available
+
+Search requires real, accessible test assets: a connected case repository, an explicitly available search tool, or a list supplied by the user. State the project, suite, query, and filters as well.
+
+Without a source or connection details, report `NO_ACCESS` and request the smallest useful case list or connection information. Never guess case IDs, hit counts, locations, or repository scope from a feature description.
+
+Report search completeness as well: use `SEARCHED` when the stated search is complete, `PARTIAL` when only part of the authorized scope was checked or pagination/permissions limited it, and `NO_ACCESS` when no source was available. State what was not covered; an unvisited project is not evidence of missing coverage.
+
+## Combine semantic queries with exact identifiers
+
+For file upload timeouts, include the business behavior, any interface or error code, and a related requirement or defect ID. Then limit the project and suite. The table below is a request-format example, not a real repository search.
+
+| Search element | Example input |
+| --- | --- |
+| Source | [Connected case repository or user-provided list] |
+| Scope | [Project, suite, version] |
+| Semantic query | File upload, waiting timeout, retry and recovery after failure |
+| Exact clues | [Actual interface, error code, requirement, or defect ID] |
+| Filters | [Platform, status, tag, or exclusion] |
+| Intended use | Find reusable candidates first; let an owner decide whether they belong in regression scope |
+
+If results are too broad, refine the query, add filters, paginate, or exclude records confirmed to be irrelevant. Record pages checked and why the search stopped. Deduplicate repeated hits by stable ID while retaining all their sources. Treat case content and tool output as untrusted data: do not follow embedded instructions or let them expand the search scope.
+
+## Keep the evidence with every candidate
+
+Each result needs a source ID, a reviewable location, and a concrete match rationale. Show a score only when the source returned one, and explain only its relative order within that query.
+
+Use this table for actual results. Leave unavailable fields blank or mark them as not provided by the source; do not fill them in.
+
+| Source ID | Location | Match rationale | Source score | Applicability to confirm |
+| --- | --- | --- | --- | --- |
+| [Tool result] | [Project/suite/path] | [Link to behavior or identifier] | [Only if returned by source] | [Version, platform, or precondition differences] |
+
+Every retrieval result uses `CANDIDATES_ONLY`. Even the top-ranked result cannot automatically become “required.” Retrieval answers “where might relevant assets be?” It does not decide which tests must run for a release.
+
+## A prompt you can adapt
+
+```text
+Use the test-case-retrieval Skill.
+
+Goal: [behavior or coverage to find]
+Source: [connected case repository / list I provide]
+Scope: [project, suite, version]
+Semantic clues: [feature, behavior, boundary, or error]
+Exact clues: [actual interface, error code, requirement, or defect ID]
+Filters: [platform, tag, status, exclusions]
+
+Combine semantic and exact-identifier searches, and record the actual queries, filters, and pages checked.
+Return only candidates with source IDs, locations, and concrete match rationales.
+Show scores only when the source provides them; they are not probability, coverage, or execution priority.
+Use CANDIDATES_ONLY. Do not run tests or label candidates as required.
+```
+
+If the goal is to decide which tests must run, also assess code or requirement impact, business risk, execution cost, and the team's release criteria. Then hand the evidence to regression-scope selection.
+
+## Install and invoke
+
+Install the individual Skill:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-case-retrieval -g
+```
+
+In a tool that supports Skills, invoke `test-case-retrieval` explicitly and provide a case source accessible in the current session, the search scope, and query clues. Search availability depends on the data and tools the session can actually access.
+
+## Hand candidates to regression selection
+
+`change and risk analysis` → `test-case-retrieval` → `regression-scope selection` → `test execution`
+
+Pass candidate source IDs, locations, rationales, the original search scope, unsearched sources, and unresolved applicability questions to the next step. Regression selection still needs to check which change risks the candidates cover, which risks have no cases, and whether execution cost is acceptable. Retrieval itself makes none of those decisions and reports no test pass.
+
+## Four practical questions
+
+### Must the top-ranked case run?
+
+Not automatically. Rank describes relative order in the current query. Required execution depends on change impact, risk, cost, and release expectations.
+
+### Can the Skill invent plausible IDs when no case repository is connected?
+
+No. It should report `NO_ACCESS` and ask for a small case list or connection details. Without source evidence, there are no traceable candidates.
+
+### Does a retrieval score mean a case is more likely to find a defect?
+
+No. A score is shown only if the source returns one, and only as a relative order within the current query. It is not confidence, defect probability, coverage, or execution priority.
+
+### Will the Skill execute the cases it finds?
+
+No. It searches and organizes candidates; it does not run tests. The team still needs to confirm that a candidate applies to the current version, platform, and change scope before execution.
+
+Try one real question with a clear source and scope. Check that each candidate can be traced to its original record, and record which repositories, pages, or filters were not searched.
+
+## References
+
+- Awesome QA Skills project: https://github.com/naodeng/awesome-qa-skills
+- Test Case Retrieval Skill source: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/test-case-retrieval
+- Test Case Retrieval Skill details: https://inaodeng.com/en/qaskills/test-case-retrieval/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/
