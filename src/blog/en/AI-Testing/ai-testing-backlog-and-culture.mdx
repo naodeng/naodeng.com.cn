@@ -17,19 +17,19 @@ series: ["Rethinking Software Quality in the AI Era"]
 
 ## Contents
 
-- [1. Why faster development does not always speed up delivery](#1-why-faster-development-does-not-always-speed-up-delivery)
-- [2. Where the testing backlog comes from](#2-where-the-testing-backlog-comes-from)
-- [3. Shared quality does not remove QA](#3-shared-quality-does-not-remove-qa)
-- [4. Why dependencies surface near release](#4-why-dependencies-surface-near-release)
-- [5. Where AI can help](#5-where-ai-can-help)
-- [6. How to run a four-week pilot](#6-how-to-run-a-four-week-pilot)
-- [7. Frequently asked questions](#7-frequently-asked-questions)
+- [Why faster development does not always speed up delivery](#why-faster-development-does-not-always-speed-up-delivery)
+- [Where the testing backlog comes from](#where-the-testing-backlog-comes-from)
+- [Shared quality does not remove QA](#shared-quality-does-not-remove-qa)
+- [Why dependencies surface near release](#why-dependencies-surface-near-release)
+- [Where AI can help](#where-ai-can-help)
+- [How to run a four-week pilot](#how-to-run-a-four-week-pilot)
+- [Frequently asked questions](#frequently-asked-questions)
 
 ## Faster coding does not mean users receive value sooner
 
 AI can speed up coding without shortening the time from a requirement to usable software. If testing remains a handoff after development, or work items depend on one another in ways the team has not addressed, AI may make the queue longer. First identify the bottleneck, then change collaboration and work slicing, and finally decide where AI can reduce cost.
 
-## 1. Why faster development does not always speed up delivery
+## Why faster development does not always speed up delivery
 
 Cassandra H. Leung describes two kinds of feedback from teams: developers are submitting more merge requests than testers can keep up with, and product teams have a “Ready for Deployment” column full of work waiting on other items. People begin asking whether more AI can speed things up.
 
@@ -48,7 +48,7 @@ flowchart LR
   D --> E[Value reaches users]
 ```
 
-## 2. Where the testing backlog comes from
+## Where the testing backlog comes from
 
 A common pattern is to hand work to QA after development: a developer marks a ticket Ready for QA, QA owns all verification, failures go back for a fix, and QA tests again. When AI increases the volume of changes, this handoff can create a queue. QA may not have become slower; the existing workflow may simply be unable to absorb more change.
 
@@ -56,7 +56,7 @@ Possible causes include limited testing experience among developers, automation 
 
 The question is not whether QA should test less. It is why basic verification starts only after the feature is complete and why it falls almost entirely to QA.
 
-## 3. Shared quality does not remove QA
+## Shared quality does not remove QA
 
 Leung spends about half her time embedded with a product team and the other half on the company’s AI enablement team. She says she could keep up with testing at that half-time capacity because developers also tested their work. She paired with and coached developers on testing and the automation framework. Developers self-tested and usually asked another developer to review; they brought in QA for higher-risk work or deeper review. Automation was maintained as part of feature work instead of being deferred to a separate ticket.
 
@@ -70,7 +70,7 @@ Leung spends about half her time embedded with a product team and the other half
 
 Shared quality does not eliminate QA or require every role to do the same work. Developers should verify their changes. QA can spend more time on test strategy, deeper exploration, cross-module risks, coaching, and quality evidence. Product and technical leaders still need to clarify business rules, architecture choices, and release risks.
 
-## 4. Why dependencies surface near release
+## Why dependencies surface near release
 
 Another queue appears at “Ready for Deployment.” Task A is complete but cannot ship until B is ready; B in turn depends on C. These blockers often originate in how work is split during discovery and refinement.
 
@@ -96,7 +96,7 @@ Feature flags can separate deployment from enabling a feature and help control r
 - Can technical tasks be combined into smaller end-to-end value slices?
 - If they cannot be split, are integration order, joint testing time, and release constraints clear?
 
-## 5. Where AI can help
+## Where AI can help
 
 AI can lower the cost of addressing root causes, but it should not just automate a handoff that is already creating a queue:
 
@@ -110,7 +110,7 @@ AI can lower the cost of addressing root causes, but it should not just automate
 
 In a comment on the original article, Lisa Crispin also observed that AI can amplify good and bad team practices. That is a useful reminder: tools can help find dependencies and prepare checks, but they cannot replace trust, shared ownership, and reliable engineering practices.
 
-## 6. How to run a four-week pilot
+## How to run a four-week pilot
 
 The following is a suggested pilot, not a requirement from the original author or a promise that team culture will change in four weeks:
 
@@ -134,7 +134,7 @@ flowchart LR
   G --> A
 ```
 
-## 7. Frequently asked questions
+## Frequently asked questions
 
 **If developers test, do we still need QA?**
 

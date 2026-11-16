@@ -17,18 +17,18 @@ series: ["Rethinking Software Quality in the AI Era"]
 
 ## Contents
 
-- [1. A report that had been tested thoroughly](#1-a-report-that-had-been-tested-thoroughly)
-- [2. What production data revealed](#2-what-production-data-revealed)
-- [3. The missing piece was system knowledge](#3-the-missing-piece-was-system-knowledge)
-- [4. Prepare for the unexpected](#4-prepare-for-the-unexpected)
-- [5. What QA can check](#5-what-qa-can-check)
-- [6. Frequently asked questions](#6-frequently-asked-questions)
+- [A report that had been tested thoroughly](#a-report-that-had-been-tested-thoroughly)
+- [What production data revealed](#what-production-data-revealed)
+- [The missing piece was system knowledge](#the-missing-piece-was-system-knowledge)
+- [Prepare for the unexpected](#prepare-for-the-unexpected)
+- [What QA can check](#what-qa-can-check)
+- [Frequently asked questions](#frequently-asked-questions)
 
 ## Testing reduces known risks, but cannot complete our understanding of a system
 
 Testing can reduce risks a team has identified. It cannot verify production conditions the team has never considered. Pre-release checks therefore need to work alongside production monitoring, impact containment, and recovery capability. The goal is not to test less; it is to prepare for situations that were outside the test design.
 
-## 1. A report that had been tested thoroughly
+## A report that had been tested thoroughly
 
 While working at D2L, Tina Fletcher helped build a tool usage report for school administrators. It showed which learning platform tools students and teachers used most often. Each visit generated an event, and the report aggregated those events into a pie chart.
 
@@ -42,7 +42,7 @@ The team tested much more than whether the chart rendered correctly:
 
 They had tested the event flow, retrieval, and presentation and felt they had covered the report well, especially for a relatively simple chart.
 
-## 2. What production data revealed
+## What production data revealed
 
 Soon after release, customers reported that the chart was wrong. Home Page Config accounted for about 90 percent of the report, leaving very little room for the other tools. The investigation found that each production instance had a dedicated monitoring user. D2L’s network operations team used it to run site stability checks, visiting Home Pages Config once a minute.
 
@@ -59,7 +59,7 @@ flowchart LR
 
 The report was meant to show which tools students and teachers used. In practice, it counted every tool visit the system received. Correct data processing does not guarantee that a metric has the right business meaning.
 
-## 3. The missing piece was system knowledge
+## The missing piece was system knowledge
 
 The monitoring user did not exist in the test environments, and the test team did not know that production had one. Without that input, the team could not infer from its existing cases that the user would affect the report.
 
@@ -74,7 +74,7 @@ This kind of risk is often called an *unknown unknown*: the answer is not merely
 
 The incident also separates technical results from business results. A report needs a definition of its population, denominator, exclusion rules, and metric semantics, in addition to correct queries and aggregation. The same questions apply to analytics, event tracking, recommendation systems, and AI products.
 
-## 4. Prepare for the unexpected
+## Prepare for the unexpected
 
 The author shifted more effort toward readiness for failures. Her practices included considering and testing monitoring and alerts for new features; making small, incremental releases; gradually rolling out to selected customers or regions where feasible; writing and regularly exercising playbooks and disaster-recovery procedures; and keeping logs, test environments, test data, and deployment processes useful for diagnosis and repair.
 
@@ -102,7 +102,7 @@ The team can review three capabilities:
 
 This does not mean every feature needs a complex set of controls. The investment should match the business risk. For data changes, distinguish application rollback from data recovery: reverting code does not automatically restore data that has already been written.
 
-## 5. What QA can check
+## What QA can check
 
 ### Before development: identify who produces the data
 
@@ -144,7 +144,7 @@ Alongside HTTP status codes, consider the total event volume, the share of event
 
 Quality reviews can also consider mean time to detect (MTTD), recovery time, affected data scope, alert usefulness, and recovery exercise results. Look at trends and actual business impact instead of turning one number into a performance target.
 
-## 6. Frequently asked questions
+## Frequently asked questions
 
 **If testing cannot cover every situation, should we test less?**
 

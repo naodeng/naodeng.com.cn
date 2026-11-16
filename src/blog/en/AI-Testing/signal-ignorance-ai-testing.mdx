@@ -17,19 +17,19 @@ series: ["Rethinking Software Quality in the AI Era"]
 
 ## Contents
 
-- [1. Metrics improved, but production still failed](#1-metrics-improved-but-production-still-failed)
-- [2. Two defects changed the investigation](#2-two-defects-changed-the-investigation)
-- [3. How AI can shape the testing boundary](#3-how-ai-can-shape-the-testing-boundary)
-- [4. What speed metrics can hide](#4-what-speed-metrics-can-hide)
-- [5. Put human judgment back into the workflow](#5-put-human-judgment-back-into-the-workflow)
-- [6. A practical way to work together](#6-a-practical-way-to-work-together)
-- [7. Warning signs and FAQs](#7-warning-signs-and-faqs)
+- [Metrics improved, but production still failed](#metrics-improved-but-production-still-failed)
+- [Two defects changed the investigation](#two-defects-changed-the-investigation)
+- [How AI can shape the testing boundary](#how-ai-can-shape-the-testing-boundary)
+- [What speed metrics can hide](#what-speed-metrics-can-hide)
+- [Put human judgment back into the workflow](#put-human-judgment-back-into-the-workflow)
+- [A practical way to work together](#a-practical-way-to-work-together)
+- [Warning signs and FAQs](#warning-signs-and-faqs)
 
 ## Green pipelines and higher output do not prove system understanding
 
 Passing pipelines, more test cases, and faster PR merges can all represent real progress. On their own, though, they do not show that the team understands the system better. AI can reduce some preparation and execution costs without removing hidden assumptions, cross-workflow effects, or business uncertainty.
 
-## 1. Metrics improved, but production still failed
+## Metrics improved, but production still failed
 
 Hanisha Arora built an AI-assisted testing workflow for her team. An agent helped surface potential blind spots, and existing business cases provided context for tests generated as developers implemented features. At first, delivery moved faster, the number of generated tests grew, and regression cycles looked healthier.
 
@@ -37,7 +37,7 @@ Production still exposed problems the team expected its checks to catch. PRs had
 
 Arora uses *signal ignorance* to describe this state: the system continues to produce signals, but the team gradually stops paying attention to them.
 
-## 2. Two defects changed the investigation
+## Two defects changed the investigation
 
 **The first defect involved an unauthenticated flow.** A new feature was expected to work for users who were not logged in, but anonymous access was missing from the AI-generated scenarios and no one independently checked it. The problem was not a failed automated test; an important behavior had never entered the test design.
 
@@ -49,7 +49,7 @@ Arora uses *signal ignorance* to describe this state: the system continues to pr
 | The new feature passed in isolation | A shared assumption went unchecked | What do the old and new workflows actually share? |
 | Regression tests were green | Impact paths covered only known relationships | Which callers or dependencies remain uninvestigated? |
 
-## 3. How AI can shape the testing boundary
+## How AI can shape the testing boundary
 
 This does not mean AI-generated tests are inherently poor. The author kept improving prompts and adding business context, and the output was often reasonable. The risk was that the team’s attention began to follow the generated list: listed scenarios got executed, while people explored beyond that list less often.
 
@@ -66,7 +66,7 @@ flowchart TD
 
 With code, search results, and business material as input, AI can help suggest new hypotheses. Generated output cannot prove those hypotheses are correct. Facts that were neither supplied nor independently verified should not be treated as confirmed. AI is better used to expand exploration than to set its limit.
 
-## 4. What speed metrics can hide
+## What speed metrics can hide
 
 The team treated slower testing as an automation problem and added more automation. Routine regression did get faster and fewer straightforward issues escaped, but failures in unrelated workflows and repeated regressions continued.
 
@@ -77,7 +77,7 @@ The team treated slower testing as an automation problem and added more automati
 
 When change volume and rework rise and testers become fatigued, deep exploration can decline. Teams may then rely more heavily on generated output, making hidden risks harder to notice. Testing includes running cases, but it also includes challenging requirements, tracing dependencies, understanding state changes, and raising questions no one explicitly asked to test.
 
-## 5. Put human judgment back into the workflow
+## Put human judgment back into the workflow
 
 The author did not solve the problem by replacing tools. She changed where people had to think in the process.
 
@@ -99,7 +99,7 @@ Once basic paths have coverage, QA can spend more time on exploration, impact an
 
 Alongside throughput, release speed, and coverage, teams can look at whether bugs return after fixes, whether releases affect unrelated areas, how much retesting each release requires, and whether the same regression categories recur. A release template can also ask developers to explain what they built, why they built it, and how to verify it in production.
 
-## 6. A practical way to work together
+## A practical way to work together
 
 ### Change understanding card
 
@@ -143,7 +143,7 @@ flowchart TD
 
 During a quality review, select a few unusual PRs and production defects. Ask what information was available, what was missed, and which signals failed to get attention. Counting completed templates alone can make documentation look complete while understanding remains weak.
 
-## 7. Warning signs and FAQs
+## Warning signs and FAQs
 
 Watch for these signals:
 
