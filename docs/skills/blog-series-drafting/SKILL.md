@@ -46,12 +46,13 @@ Default files:
    - `references/series-template-zh-cn.md`
    - `references/series-template-en.md`
 6. Keep the Chinese and English files aligned article-by-article:
-   - same progression and numbering
+   - same conceptual progression and core structure
+   - keep article headings and table-of-contents entries unnumbered unless the user explicitly asks for numbering
    - same core claims, examples, and references
    - language-appropriate titles and summaries rather than literal sentence-by-sentence translation
 7. Keep structure consistent across articles:
-   - Chinese files: `## 文章定位`, `## 导读`, `## 一...` to `## 五...`, `## 系列导航`, `## 参考资料`
-   - English files: `## Article Positioning`, `## Overview`, `## One...` to `## Five...`, `## Series Navigation`, `## References`
+   - Chinese files: `## 文章定位`, `## 导读`, topic-based unnumbered sections, `## 系列导航`, `## 参考资料`
+   - English files: `## Article Positioning`, `## Overview`, topic-based unnumbered sections, `## Series Navigation`, `## References`
 8. In `## 参考资料` / `## References`, include the key directly provided links and the most important internal links actually used for claims.
 9. If user asks for publish-ready output, apply frontmatter standard from `references/frontmatter-standard.md` in both languages.
 10. Run final QA checklist from `references/release-checklist.md` before concluding.
@@ -64,6 +65,7 @@ Default files:
 - Distinguish clearly between facts from docs and suggested practices.
 - Keep terminology consistent across all 6 files.
 - Do not let the English version drift from the Chinese version in scope or conclusions.
+- Follow `docs/standards/blog-article-writing-review.md` for source handling, bilingual checks, unnumbered headings, visible URLs, and review.
 - If linked pages disagree, prefer the more specific or newer official page and call out the conflict instead of guessing.
 
 ## Quality Gates (must pass)

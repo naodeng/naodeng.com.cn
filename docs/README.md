@@ -4,8 +4,9 @@
 
 ## 目录地图
 
-- `standards/`: 长期有效的规范（Wiki 格式、设计规范入口）
+- `standards/`: 长期有效的规范（博文、SEO、Wiki 格式等）
   - [SEO 维护指南](standards/seo-maintenance.md)：全站验证流程、双语规则与内容优化方向
+  - [博文写作与审核规范](standards/blog-article-writing-review.md)：来源覆盖、双语校对、标题、排期与发布前检查
 - `architecture/`: 模板与架构约定（词条模板等）
 - `skills/`: 站点维护技能（Claude Skill 格式，含 OpenAI agent 配置）
   - `blog-series-drafting/`: 博客系列双语草稿生成
