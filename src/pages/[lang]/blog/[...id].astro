@@ -38,7 +38,10 @@ const canonicalUrl = `${siteOrigin}${postPath}`;
 const ogImageUrl = `${siteOrigin}/ogp.png`;
 
 const { Content, headings = [] } = await render(post);
-const hasToc = headings.some(({ depth }) => depth === 2 || depth === 3);
+// The site-wide resources footer is useful at the end of an article, but not as a TOC section.
+const resourceHeadingSlugs = new Set(["more-resources", "更多参考"]);
+const tocHeadings = headings.filter(({ slug }) => !resourceHeadingSlugs.has(slug));
+const hasToc = tocHeadings.some(({ depth }) => depth === 2 || depth === 3);
 const tocLabel = locale === "zh-cn" ? "目录" : "Table of Contents";
 const title = post.data.title;
 const description = post.data.description;
@@ -262,7 +265,7 @@ const sidebarDate = (date: Date) =>
 
     {hasToc && <aside class="article-sidebar" aria-label={tocLabel}>
       <div class="article-sidebar-inner">
-        <TableOfContents headings={headings} label={tocLabel} placement="article">
+        <TableOfContents headings={tocHeadings} label={tocLabel} placement="article">
           <DetailPageActions slot="actions" lang={locale} />
         </TableOfContents>
       </div>
