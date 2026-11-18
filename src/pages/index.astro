@@ -9,14 +9,14 @@ import {
 } from "@/i18n";
 import { SITE_TITLE, SITE_DESCRIPTION, X_ACCOUNT } from "@/consts";
 
-const t = useTranslations(Astro.currentLocale as Lang);
+const fallbackLocale: Lang = LOCALES["zh-cn"] ? "zh-cn" : DEFAULT_LOCALE;
+const t = useTranslations(fallbackLocale);
 const langs = Object.keys(LOCALES);
-const baseUrl = import.meta.env.PROD ? Astro.site : "/";
-const defaultLocale = DEFAULT_LOCALE;
+const baseUrl = "/";
 const localePaths = await getLocalePaths(Astro.url);
 ---
 
-<html lang={DEFAULT_LOCALE}>
+<html lang={fallbackLocale}>
   <head>
     <meta charset="UTF-8" />
     <title>redirect...</title>
@@ -45,32 +45,45 @@ const localePaths = await getLocalePaths(Astro.url);
     <meta property="og:description" content={t(SITE_DESCRIPTION)} />
     <meta property="og:image" content={Astro.site + "ogp.png"} />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:locale" content={DEFAULT_LOCALE} />
+    <meta property="og:locale" content={fallbackLocale} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content={t(X_ACCOUNT)} />
 
     <noscript>
       <meta
         http-equiv="refresh"
-        content={`0;url=${baseUrl + DEFAULT_LOCALE}/`}
+        content={`0;url=${baseUrl + fallbackLocale}/`}
       />
     </noscript>
 
-    <script is:inline define:vars={{ langs, baseUrl, defaultLocale }}>
+    <script is:inline define:vars={{ langs, baseUrl, fallbackLocale }}>
       (function () {
         // 1. 用户曾在站内选择过语言时，优先使用
-        if (
-          localStorage.selectedLang &&
-          langs.includes(localStorage.selectedLang)
-        ) {
-          location.replace(baseUrl + localStorage.selectedLang + "/");
+        var selectedLang = "";
+        try {
+          selectedLang = localStorage.getItem("selectedLang") || "";
+        } catch {
+          // Browser storage can be unavailable when cookies or site data are blocked.
+        }
+        if (selectedLang && langs.includes(selectedLang)) {
+          location.replace(baseUrl + selectedLang + "/");
           return;
         }
         // 2. 根据浏览器语言偏好选择站点语言（navigator.language + navigator.languages）
-        var preferred = navigator.language || navigator.userLanguage || "";
-        var list = navigator.languages && navigator.languages.length
-          ? [preferred].concat(navigator.languages)
-          : [preferred];
+        var list = [];
+        try {
+          var preferred = navigator.language || navigator.userLanguage || "";
+          if (preferred) list.push(preferred);
+        } catch {
+          // Browser language is optional; use the Chinese fallback below.
+        }
+        try {
+          if (navigator.languages && navigator.languages.length) {
+            list = list.concat(Array.from(navigator.languages));
+          }
+        } catch {
+          // Keep navigator.language when the full preference list is unavailable.
+        }
         for (var i = 0; i < list.length; i++) {
           var raw = (list[i] || "").toLowerCase();
           if (langs.includes(raw)) {
@@ -87,7 +100,7 @@ const localePaths = await getLocalePaths(Astro.url);
             return;
           }
         }
-        location.replace(baseUrl + defaultLocale + "/");
+        location.replace(baseUrl + fallbackLocale + "/");
       })();
     </script>
   </head>

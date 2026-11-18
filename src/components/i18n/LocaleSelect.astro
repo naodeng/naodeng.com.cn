@@ -99,7 +99,13 @@ const getFallbackPath = (lang: string) => {
       link.addEventListener("click", async (event) => {
         const anchor = link as HTMLAnchorElement;
         const lang = anchor.dataset.lang;
-        if (lang) localStorage.setItem("selectedLang", lang);
+        if (lang) {
+          try {
+            localStorage.setItem("selectedLang", lang);
+          } catch {
+            // Remembering the preference is optional; navigation must still work.
+          }
+        }
 
         if (event.defaultPrevented) return;
         const mouse = event as MouseEvent;

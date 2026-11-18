@@ -27,7 +27,7 @@ const homeUrl = "/zh-cn/";
               <a
                 href={`/${lang}/`}
                 data-lang-path={lang}
-                onclick={`localStorage.selectedLang = "${lang}"`}
+                onclick={`try { localStorage.setItem("selectedLang", "${lang}"); } catch {}`}
                 dir={LOCALES[lang].dir || null}
               >
                 {label}
@@ -41,15 +41,25 @@ const homeUrl = "/zh-cn/";
 </Layout>
 
 <script is:inline>
-  if (localStorage.userAccessPath) {
-    history.replaceState("", "", localStorage.userAccessPath);
+  let userAccessPath = "";
+  try {
+    userAccessPath = localStorage.getItem("userAccessPath") || "";
+  } catch {
+    // The 404 page remains usable without restoring a stored path.
+  }
+  if (userAccessPath) {
+    history.replaceState("", "", userAccessPath);
     document.querySelectorAll("a[data-lang-path]").forEach((a) => {
-      const pathnames = localStorage.userAccessPath.split("/");
+      const pathnames = userAccessPath.split("/");
       const lang = a.getAttribute("data-lang-path");
       pathnames[1] = lang;
       a.href = pathnames.join("/");
     });
-    localStorage.removeItem("userAccessPath");
+    try {
+      localStorage.removeItem("userAccessPath");
+    } catch {
+      // Removing the optional stored path is best effort.
+    }
   }
 </script>
 <style>

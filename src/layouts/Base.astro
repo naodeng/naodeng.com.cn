@@ -297,7 +297,12 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
     <script is:inline>
       (() => {
         const key = "themePreference";
-        const preference = localStorage.getItem(key);
+        let preference = null;
+        try {
+          preference = localStorage.getItem(key);
+        } catch {
+          // Use the system theme when browser storage is unavailable.
+        }
         const valid = preference === "light" || preference === "dark" || preference === "system";
         const selected = valid ? preference : "system";
         const resolved = selected === "system"
@@ -518,7 +523,11 @@ const counterscaleDebug = import.meta.env.DEV || import.meta.env.PUBLIC_COUNTERS
           : preference;
         window.setThemePreference = (preference) => {
           const next = ["system", "light", "dark"].includes(preference) ? preference : "system";
-          localStorage.setItem(key, next);
+          try {
+            localStorage.setItem(key, next);
+          } catch {
+            // Theme changes still apply for the current page without persistence.
+          }
           const resolvedTheme = resolve(next);
           document.documentElement.dataset.theme = resolvedTheme;
           document.documentElement.dataset.themePreference = next;
