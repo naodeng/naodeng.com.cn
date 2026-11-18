@@ -81,6 +81,56 @@ test.describe("语言切换", () => {
   });
 });
 
+test.describe("浏览器语言不可用时的回退", () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test("存储和浏览器语言都被阻止时默认跳转到中文首页", async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(window, "localStorage", {
+        configurable: true,
+        get() {
+          throw new DOMException("Storage is blocked", "SecurityError");
+        },
+      });
+      Object.defineProperty(navigator, "language", {
+        configurable: true,
+        get() {
+          throw new Error("Browser language is unavailable");
+        },
+      });
+      Object.defineProperty(navigator, "languages", {
+        configurable: true,
+        get() {
+          throw new Error("Browser language list is unavailable");
+        },
+      });
+    });
+
+    await page.goto("/");
+    await expect(page).toHaveURL(/\/zh-cn\/$/);
+    await expect(page.locator("main")).toBeVisible();
+  });
+});
+
+test.describe("英文浏览器的根域名跳转", () => {
+  test.use({ locale: "en-US" });
+
+  test("localStorage 被阻止时仍按浏览器语言跳转到英文首页", async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(window, "localStorage", {
+        configurable: true,
+        get() {
+          throw new DOMException("Storage is blocked", "SecurityError");
+        },
+      });
+    });
+
+    await page.goto("/");
+    await expect(page).toHaveURL(/\/en\/$/);
+    await expect(page.locator("main")).toBeVisible();
+  });
+});
+
 test.describe("不自动弹出语言切换提示", () => {
   test.describe("中文页面", () => {
     test.use({ locale: "en-US" });
@@ -100,5 +150,24 @@ test.describe("不自动弹出语言切换提示", () => {
       await expect(page.locator("#js-languageSuggest")).toHaveCount(0);
       await expect(page.locator("footer .lang-toggle")).toBeVisible();
     });
+  });
+});
+
+test.describe("根域名语言回退", () => {
+  test.use({ locale: "zh-CN" });
+
+  test("localStorage 被浏览器阻止时仍按浏览器语言跳转", async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(window, "localStorage", {
+        configurable: true,
+        get() {
+          throw new DOMException("Storage is blocked", "SecurityError");
+        },
+      });
+    });
+
+    await page.goto("/");
+    await expect(page).toHaveURL(/\/zh-cn\/$/);
+    await expect(page.locator("main")).toBeVisible();
   });
 });

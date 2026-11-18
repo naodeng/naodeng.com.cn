@@ -24,18 +24,26 @@ const defaultLocale = DEFAULT_LOCALE;
 
     <script is:inline define:vars={{ langs, baseUrl, defaultLocale }}>
       const urlHasLang = langs.includes(location.pathname.split("/")[1]);
-      const localStorageHasLang =
-        localStorage.selectedLang && langs.includes(localStorage.selectedLang);
+      let selectedLang = "";
+      try {
+        selectedLang = localStorage.getItem("selectedLang") || "";
+      } catch {
+        // Browser storage is optional; fall back to the referrer or default locale.
+      }
       const referrerHasLang =
         document.referrer &&
         new URL(document.referrer).host == location.host &&
         langs.includes(new URL(document.referrer).pathname.split("/")[1]);
 
       if (urlHasLang) {
-        localStorage.userAccessPath = location.pathname;
+        try {
+          localStorage.setItem("userAccessPath", location.pathname);
+        } catch {
+          // The localized 404 page still works without restoring the requested path.
+        }
         location.href = `${baseUrl + location.pathname.split("/")[1]}/404/`;
-      } else if (localStorageHasLang) {
-        location.href = baseUrl + localStorage.selectedLang + location.pathname;
+      } else if (selectedLang && langs.includes(selectedLang)) {
+        location.href = baseUrl + selectedLang + location.pathname;
       } else if (referrerHasLang) {
         const referrerLang = new URL(document.referrer).pathname.split("/")[1];
         location.href = baseUrl + referrerLang + location.pathname;

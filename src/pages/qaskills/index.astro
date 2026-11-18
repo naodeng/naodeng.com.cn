@@ -3,28 +3,44 @@
 import { LOCALES, DEFAULT_LOCALE } from "@/i18n";
 
 const langs = Object.keys(LOCALES);
-const baseUrl = import.meta.env.PROD ? Astro.site : "/";
-const defaultLocale = DEFAULT_LOCALE;
+const baseUrl = "/";
+const fallbackLocale = LOCALES["zh-cn"] ? "zh-cn" : DEFAULT_LOCALE;
 ---
 
-<html lang={DEFAULT_LOCALE}>
+<html lang={fallbackLocale}>
   <head>
     <meta charset="UTF-8" />
     <title>redirect...</title>
     <meta name="robots" content="noindex, follow" />
     <noscript>
-      <meta http-equiv="refresh" content={`0;url=${baseUrl + DEFAULT_LOCALE}/qaskills/`} />
+      <meta http-equiv="refresh" content={`0;url=${baseUrl + fallbackLocale}/qaskills/`} />
     </noscript>
-    <script is:inline define:vars={{ langs, baseUrl, defaultLocale }}>
+    <script is:inline define:vars={{ langs, baseUrl, fallbackLocale }}>
       (function () {
-        if (localStorage.selectedLang && langs.includes(localStorage.selectedLang)) {
-          location.replace(baseUrl + localStorage.selectedLang + "/qaskills/");
+        var selectedLang = "";
+        try {
+          selectedLang = localStorage.getItem("selectedLang") || "";
+        } catch {
+          // Browser storage can be unavailable when cookies or site data are blocked.
+        }
+        if (selectedLang && langs.includes(selectedLang)) {
+          location.replace(baseUrl + selectedLang + "/qaskills/");
           return;
         }
-        var preferred = navigator.language || navigator.userLanguage || "";
-        var list = navigator.languages && navigator.languages.length
-          ? [preferred].concat(Array.from(navigator.languages))
-          : [preferred];
+        var list = [];
+        try {
+          var preferred = navigator.language || navigator.userLanguage || "";
+          if (preferred) list.push(preferred);
+        } catch {
+          // Browser language is optional; use the Chinese fallback below.
+        }
+        try {
+          if (navigator.languages && navigator.languages.length) {
+            list = list.concat(Array.from(navigator.languages));
+          }
+        } catch {
+          // Keep navigator.language when the full preference list is unavailable.
+        }
         for (var i = 0; i < list.length; i++) {
           var raw = (list[i] || "").toLowerCase();
           if (langs.includes(raw)) {
@@ -41,7 +57,7 @@ const defaultLocale = DEFAULT_LOCALE;
             return;
           }
         }
-        location.replace(baseUrl + defaultLocale + "/qaskills/");
+        location.replace(baseUrl + fallbackLocale + "/qaskills/");
       })();
     </script>
   </head>

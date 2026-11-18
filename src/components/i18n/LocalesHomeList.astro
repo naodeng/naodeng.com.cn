@@ -7,7 +7,7 @@ import { LOCALES } from "@/i18n";
     <li>
       <a
         href={`/${lang}/`}
-        onclick={`localStorage.selectedLang = "${lang}"`}
+        onclick={`try { localStorage.setItem("selectedLang", "${lang}"); } catch {}`}
         dir={LOCALES[lang].dir || null}
         lang={lang}
       >
