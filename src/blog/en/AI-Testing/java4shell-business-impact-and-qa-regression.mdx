@@ -1,0 +1,355 @@
+---
+title: "Java4Shell（CVE-2026-114938）: Mechanism, Business Impact, and QA Regression"
+description: "Explain Java4Shell in plain language, map its business impact, and plan runtime verification, regression coverage, and a controlled rollout."
+date: 2026-11-23T09:00:00.000Z
+author: "nao.deng"
+tags: ["Security Testing", "Regression Testing", "Java"]
+categories: ["Security Testing"]
+---
+
+# Java4Shell: Mechanism, Business Impact, and QA Regression
+
+When a Java security advisory calls for a JDK upgrade, the team needs to answer three questions: do running services meet the vulnerability's preconditions, do login, transactions, and file handling still work after the upgrade, and do business success rates and service metrics stay within SLOs during rollout?
+
+This article covers Java4Shell (CVE-2026-114938) using Calif's technical analysis and the CERT-EU advisory. The business paths, test priorities, and cases below are QA practice suggestions, not reports of incidents in those industries. CERT-EU published version 1.0 of Security Advisory 2026-021 on November 18, 2026; the version table reflects that advisory. OpenJDK distributions publish fixes on their own schedules, so check the current vendor notice before upgrading.
+
+## Three separate conclusions for QA
+
+A security patch regression should provide evidence for three distinct claims:
+
+- **The security fix is effective:** target JVMs run a vendor-fixed build or an approved and verified temporary mitigation.
+- **Core functions remain compatible:** login, ordering, payment, refunds, file handling, and integrations still meet their contracts.
+- **Production operation is stable:** performance, error rates, resource use, and business success remain within SLO and capacity limits.
+
+These claims do not substitute for one another. A passing security scan does not prove the payment flow works. Passing end-to-end tests does not prove every production process runs a fixed build.
+
+## Plain-language view: A warehouse package handler writes past its space
+
+Java4Shell (CVE-2026-114938) and Spring4Shell are two different vulnerabilities.
+
+Base64 is an encoding that represents bytes as text for transport. The receiver decodes the text back into bytes. It is not encryption; anyone can decode it using the public format.
+
+Think of Java's Base64 decoder as a package handler in a warehouse. It normally puts each package on its assigned shelf. To speed up the work, the warehouse gives it an accelerated machine. With a few unusual package formats, that machine miscalculates the space needed and writes beyond its shelf, damaging nearby goods.
+
+In a program, the decoder writes past the memory allocated for its output and corrupts nearby heap data. The shelves are an analogy; JVM memory is not laid out that way.
+
+### An e-commerce login example
+
+Imagine an e-commerce login request moving through these steps:
+
+1. A user submits a password or an existing login token.
+2. A gateway, authentication framework, or Java service reads the credential.
+3. If the credential needs decoding, the component decodes its Base64 data, then verifies the user's identity.
+4. The system allows or rejects the login.
+
+If attacker-controlled data reaches an affected decoder, and both the environment and input meet the trigger conditions, memory corruption may occur before authentication finishes. The service could crash. Under specific exploitation conditions, heap data may be disclosed or the flaw may lead to remote code execution.
+
+If an authentication endpoint is publicly reachable, an attacker does not need to log in successfully before sending data to the decoder path.
+
+Two limits matter: not every login system invokes this decoder path, and an arbitrary invalid string does not trigger the flaw. Applicability depends on the runtime, CPU, JVM configuration, and actual input path.
+
+### Why QA still needs regression after the fix
+
+Updating to a vendor-fixed build or temporarily disabling the faulty fast path is intended to remove this known vulnerability path. The JDK or JVM-flag change may still affect startup configuration, decoding compatibility, or performance.
+
+QA should check that valid credentials still work, that pre-upgrade sessions follow the existing policy, and that expired or malformed credentials are safely rejected. Then verify downstream order creation, payment callbacks, inventory, refunds, and notifications. If the rollout restarts JVMs, check that requests, queue messages, and in-flight jobs are neither lost nor processed twice.
+
+## Technical view: Mechanism, conditions, and limits
+
+Java4Shell is a memory-safety issue in an x86-64 Base64 decoding optimization in OpenJDK HotSpot. When the CPU and runtime conditions permit it, the JVM can use a CPU-accelerated intrinsic. Calif's technical analysis identifies the defect in handling the padded tail: the low-level implementation miscalculates the range to write to the output buffer, causing an out-of-bounds heap write. The Java layer may reject malformed input afterward, once nearby memory has already been corrupted.
+
+This is not a defect in the Base64 standard or an ordinary array-bounds error in business code. The issue is in a low-level JVM optimization, so application code can enter the path through standard library calls or dependencies without directly invoking an intrinsic.
+
+The trigger conditions can be summarized as follows. The diagram shows the vulnerability conditions, not an exploit flow:
+
+~~~mermaid
+flowchart TD
+    A[External input] --> B[Java Base64 decode call]
+    B --> C{Do runtime, CPU, JVM settings, and input conditions all match?}
+    C -- No --> D[Known Java4Shell trigger conditions are not met]
+    C -- Yes --> E[HotSpot accelerated path]
+    E --> F[Out-of-bounds write to the output buffer]
+    F --> G[Service crash or memory disclosure]
+    F --> H[Remote code execution under specific conditions]
+~~~
+
+If the environment or input does not match, that only means this known vulnerability path is not triggered; it does not show that the system has no other risks.
+
+### Check whether a service is exposed
+
+CERT-EU lists these conditions for exploitation. Check them together:
+
+- **Runtime build:** the actual JDK distribution and full build remain in the affected range.
+- **CPU instructions:** the JVM runs on an x86-64 CPU with avx512f, avx512bw, avx512vbmi, and bmi2 support.
+- **JVM configuration:** the affected Base64 intrinsic is active; it may be enabled by default when the CPU supports the required instructions.
+- **Input reachability:** attacker-controlled Base64 data reaches the decoder and meets the trigger conditions.
+
+CERT-EU says ARM64 is not affected by this specific accelerated path. That finding is limited to this vulnerability and does not replace assessment of other components or risks. Developer, CI, staging, and production machines may use different CPUs, JDK builds, or JVM flags, so a local non-reproduction does not prove the production process is safe.
+
+### Affected version lines listed in the advisory
+
+The table summarizes CERT-EU Security Advisory 2026-021, published November 18, 2026. It reflects the versions listed in that advisory; later vendor builds and fix schedules may differ.
+
+| Product line | Affected range listed in the advisory | Fixed version listed |
+| --- | --- | --- |
+| Oracle Java SE 8 performance builds | 8u511-perf | 8u513 |
+| Oracle Java SE / OpenJDK 17 | 17.0.6 through 17.0.21 | 17.0.21.1 |
+| Oracle Java SE / OpenJDK 21 | 21.0.13 and earlier | 21.0.13.1 |
+| Oracle Java SE / OpenJDK 25 | 25.0.5 and earlier | 25.0.5.1 |
+| Oracle Java SE / OpenJDK 27 | 27.0.1 and earlier | 27.0.1.1 |
+| Oracle GraalVM JDK 17 / 21 | Check vendor notice | Check vendor notice |
+
+OpenJDK-based distributions such as Eclipse Temurin, Amazon Corretto, Azul Zulu, Microsoft Build of OpenJDK, BellSoft Liberica, SAP SapMachine, and Red Hat OpenJDK need to be checked against their own notices and build numbers. Products with a bundled Java runtime also require a notice from the product vendor. A major version such as Java 17 is not enough to determine whether a process is fixed.
+
+Akamai and Red Hat note that standard OpenJDK 8 and 11 do not contain this accelerated decoder. Quarkus says IBM Semeru uses OpenJ9 and is not affected by the HotSpot path. These findings apply to those runtime implementations; still verify the actual distribution and build for each service.
+
+### Remediation options and regression risks
+
+Prefer the fixed version from the runtime vendor and verify that every target JVM has restarted. CERT-EU lists these temporary mitigation options:
+
+~~~text
+Disable the Base64 intrinsic:
+-XX:+UnlockDiagnosticVMOptions -XX:-UseBASE64Intrinsics
+
+Disable AVX-512 on applicable x86-64 hosts:
+-XX:UseAVX=2
+~~~
+
+Both options require a JVM restart and do not replace a permanent patch. Disabling an optimization may reduce throughput or increase CPU use in workloads with heavy Base64 decoding. Confirm that an option applies to the target JDK distribution, then verify the effective settings of the running process rather than only the deployment file.
+
+The remediation choice also depends on the runtime. A practical QA recommendation is to use the vendor's security update within the current major version when available, and assess a Java major-version migration separately. If the fix also changes a base image or a third-party product with a bundled JVM, confirm that the image was rebuilt and instances replaced, or that the product vendor has supplied a fixed release.
+
+| Remediation | QA focus |
+| --- | --- |
+| Upgrade to a vendor-fixed build | Functional and dependency compatibility, startup, and stability; verify the full build on each process |
+| Disable the Base64 intrinsic or related CPU optimization | Decoding results, CPU use, throughput, and latency; confirm the running flag is effective |
+| Update the container base image | Image build, certificates and configuration, process startup, deployment, and image digest |
+| Update a third-party product with a bundled JVM | Vendor fix notice, integration contracts, authentication, and upgrade operations |
+
+Severity scores should be read with their source and scoring scheme. CERT-EU reports a CVSS score of 8.1, but its advisory page does not specify the scoring version. Quarkus says Oracle rates it 8.1 under CVSS 3.1, while Calif's technical article labels it 9.2 under CVSS 4.0. The numbers use different scoring schemes and should not be compared directly; a score also cannot replace evaluation of runtime conditions and business impact.
+
+## Potential impact across business areas
+
+Separate two kinds of impact. Exploitation may cause a service outage, sensitive information disclosure, or remote code execution. Remediation may affect startup settings, authentication compatibility, API behavior, or performance. QA regression focuses on how the change affects business behavior, while working with security to confirm that the vulnerability risk is controlled.
+
+These are investigation examples for QA. They do not mean the corresponding industry or product is confirmed affected. Assess reachability only when runtime, CPU, JVM configuration, and input-path conditions align.
+
+| Business area | Possible entry point | Functions to regress after remediation |
+| --- | --- | --- |
+| E-commerce | Login credentials, JWTs, encoded images or files, payment callbacks | Login, existing sessions, catalog uploads, orders, payment, inventory, refunds |
+| Finance and payments | Auth tokens, encoded request fields, third-party callbacks | Transaction amounts, ledger consistency, idempotency, refunds, reconciliation |
+| Identity and membership | HTTP Basic, JWT, OAuth/OIDC, SAML, SSO | Login, renewal, permission changes, logout, single sign-on |
+| B2B SaaS | Identity service, gateway, integration SDK, tenant calls | APIs, roles, tenant isolation, bulk operations |
+| Healthcare | Medical identity, patient records, image data, attachments | Appointments, record lookup, upload and download, access control |
+| Insurance | Enrollment attachments, images, identity data, third-party APIs | Enrollment, underwriting, claims documents, policy lookup |
+| Logistics | Labels, carrier messages, status callbacks | Shipment creation, status sync, retries, delivery notifications |
+| Education and content | Course files, avatars and media, login tokens | Login, assignments, downloads, posts, messages |
+| Social and content platforms | Login tokens, avatar uploads, image and media metadata | Login, posts, uploads, notifications |
+| IoT and device platforms | Device authentication, encoded messages, remote commands | Onboarding, telemetry, command validation, backlog recovery |
+| Government services | Shared identity, electronic forms, signature data | Login, submissions, approvals, queries, e-signatures |
+
+Use this matrix to start discovery, not to assign a universal P0/P1 rating. Priorities depend on internet exposure, decoder reachability, data and transaction value, outage impact, and the actual change.
+
+### Four e-commerce flows to check
+
+**Login and sessions.** Cover password, one-time-code, and single sign-on. Check whether pre-upgrade tokens remain valid under the session policy, and verify renewal, expiry, logout, and permission revocation. Invalid credentials must not create a session or trigger downstream business actions.
+
+**Product images and attachments.** Images often come from object storage or a CDN; that does not mean every display uses Java Base64 decoding. If an admin tool or API accepts Base64 images, data URLs, or encoded attachments, test upload, preview, format and size validation, stored-content integrity, and CPU, memory, and throughput for large files.
+
+**Order and payment flow.** Test the cart, amount calculation, coupons, order creation, payment request, third-party callback, order status, inventory deduction, and customer notification. Check high-loss failures such as payment succeeding while the order stays pending, duplicate callbacks, repeated charges, or multiple inventory deductions.
+
+**After-sales and refunds.** Cover full and partial refunds, failed refund retries, provider notifications, and final refund state. Even when an after-sales entry point does not use Base64, verify it if its Java service runtime changed.
+
+### Finance and multi-tenant SaaS
+
+Financial systems need both security and normal-transaction checks. Malformed input must not crash the JVM, expose sensitive data, bypass authorization, or change transaction state without permission. Normal payments must preserve amount accuracy, callback idempotency, ledger consistency, and retry behavior. A rejected request must not leave a transaction, charge, or redeemed coupon behind.
+
+For SaaS, check the JVMs used by identity services, gateways, and application services. Tenant A must not read Tenant B's data. Verify permission revocation, member removal, old tokens, and SDK compatibility against the existing contract. Different services in one product may use different JDKs, CPUs, and images; checking a single login service is not enough.
+
+## How QA should choose regression scope
+
+### Build a runtime and business inventory
+
+Work with security, development, and SRE to record for each service:
+
+| Information | What to record |
+| --- | --- |
+| Service identity | Name, owner, environment, deployment type (Kubernetes or VM), internet exposure |
+| Java runtime | Distribution, full version and build, process version, HotSpot implementation |
+| Environment | CPU architecture and relevant instructions, JVM flags, image version and digest |
+| Data path | External inputs, Base64 decoder, framework or third-party SDK that calls it |
+| Business risk | Authentication, funds, sensitive data, critical flows, risk tier |
+| Remediation tracking | Patch or temporary mitigation, target instances, owner, QA approver |
+
+A new base image does not prove that running containers have been replaced. A developer laptop or CI Java version does not prove the production process has been fixed. Check every target instance and confirm restart completion.
+
+`java -version` reports the Java version found in the current command environment. It does not by itself prove that a business process uses the same build. For a target JVM you are authorized to inspect, use process information and JVM diagnostics to check the effective settings, for example:
+
+~~~bash
+java -version
+jcmd <pid> VM.flags -all | grep UseBASE64Intrinsics
+~~~
+
+The `jcmd` output varies with the JDK version and configuration. Keep evidence tied to the actual process, image digest, and deployment record.
+
+If the mitigation disables the Base64 intrinsic, confirm that the target process reports `UseBASE64Intrinsics = false`. Display details and origin fields vary by JDK version, startup flags, and environment variables; verify the effective value on the running process.
+
+### Six validation layers
+
+The layers below are QA practice suggestions that connect reachability, runtime changes, and release evidence.
+
+**Assets and reachability.** Record affected builds, CPU, JVM flags, and external input paths. Keep technical evidence when a service does not meet one of the exploit conditions instead of relying only on scanner labels.
+
+**Remediation evidence.** Check vendor, full build, image digest, or temporary mitigation settings on target processes. Run security validation only in an authorized isolated environment. Do not send an exploit chain to production or treat “no crash” as proof that the fix works.
+
+**Base64 and API contracts.** Test the Basic, URL-safe, and MIME decoders actually used: valid data, padding variations, invalid characters, truncated input, boundary lengths, large files, and sustained high request rates. Decoder rules differ. Derive expected behavior from the protocol, API contract, and security requirements instead of requiring every malformed input to return the same error.
+
+**Core business end-to-end flows.** Based on the change and risk, cover authentication, orders, payments, refunds, files, third-party integrations, and asynchronous tasks. Invalid requests should be safely rejected without business side effects.
+
+**Performance and stability.** If the patch or mitigation changes the decoding path, compare latency, throughput, CPU, heap, GC, error rate, and business success under the same CPU, configuration, data, and traffic. Set limits from existing SLOs, historical baselines, and capacity headroom.
+
+**Deployment, canary, and recovery.** In staging with hardware and configuration close to production, check startup, certificates and TLS, connection pools, consumers, scheduled jobs, health checks, and rolling upgrades. Start with a small canary and compare its metrics with the rest of the fleet. Recovery should return to a fixed build or effective mitigation, not make a vulnerable JDK the default rollback target.
+
+### Prioritize by business risk
+
+These tiers are QA practice suggestions and should be adjusted to actual impact:
+
+- **P0:** Internet-facing services handling authentication, funds, orders, or sensitive data. Verify runtime remediation, authorization, critical flows, and data consistency.
+- **P1:** File handling, third-party integrations, asynchronous messages, reports, and batch jobs. Run API and end-to-end tests based on the actual path.
+- **P2:** Lower-risk flows. Use sampling or existing automation only when asset, dependency, and runtime evidence supports it.
+
+Regression scope depends on both input reachability and runtime change. Even without an identified external Base64 path, a changed JVM or base image warrants startup, key API contract, and critical dependency checks.
+
+## Test cases QA can adapt
+
+Use these cases according to the system's actual paths; they do not all need to run identically on every service.
+
+| ID | Scenario | Pass condition | Suggested tier |
+| --- | --- | --- | --- |
+| SEC-001 | Runtime patch check | Every target process uses a fixed build or approved mitigation | P0 |
+| SEC-002 | Valid Base64 decoding | Output bytes match the expected result | P0 |
+| SEC-003 | Invalid or truncated encoding | Rejected by contract; process stable; no business side effects | P0 |
+| AUTH-001 | Normal login | Session and permissions are correct | P0 |
+| AUTH-002 | Pre-upgrade token | Handled according to the existing session policy | P0 |
+| AUTH-003 | Invalid token | Request rejected; no session or authorization granted | P0 |
+| ORDER-001 | Order and payment flow | Amount, order, and inventory states are consistent | P0 |
+| PAY-001 | Duplicate payment callback | Idempotent; no duplicate charge or ledger entry | P0 |
+| FILE-001 | Valid upload and download | Content or checksum matches | P1 |
+| FILE-002 | Invalid encoded file | Safely rejected with no residual business record | P1 |
+| PERF-001 | High-concurrency authentication | Latency, errors, and resource use meet SLO | P0 |
+| PERF-002 | High-volume Base64 decoding | Performance meets the capacity requirement | P1 |
+| DEPLOY-001 | Rolling update and JVM restart | Every instance updated; no lost requests or messages | P0 |
+| RECOVERY-001 | Safe recovery rehearsal | Service returns to a fixed build or approved mitigation | P0 |
+
+### Acceptance example: handling an invalid token
+
+**Given:** The authentication service runs on a fixed JDK and uses the required token decoding and validation components.
+
+**When:** A request contains an expired token, an invalid signature, malformed Base64URL encoding, or a format that violates the API contract.
+
+**Then:**
+
+- The service rejects the request according to the authentication contract, typically with 401.
+- No session is created and no permission is granted.
+- No order, payment, or points side effect occurs.
+- The JVM remains healthy.
+- Logs and responses do not expose secrets or credentials.
+- Logs and traces contain enough context to investigate the failure.
+
+Establish a baseline before upgrading and rerun the same business contract afterward. Fuzzing or security-specific validation can broaden input coverage, but attack reproduction belongs only in an authorized isolated environment.
+
+Keep evidence such as automation results, API responses, business-state assertions, application logs, JVM metrics, and runtime version and flag records for each target process. This ties the “passed” result to actual instances and business outcomes.
+
+## Controlling production rollout risk
+
+A practical release sequence is:
+
+1. Security and development confirm affected assets and runtime conditions.
+2. Development selects the smallest suitable fix and records changes to runtime, image, or flags.
+3. QA maps reachability and changed components, then preserves the pre-upgrade baseline.
+4. In staging, verify the security fix, P0 business flows, and performance.
+5. Release to a small canary and observe new instances separately.
+6. Expand only when security evidence is complete and service metrics meet SLOs. If results degrade, pause and follow the rehearsed safe recovery plan.
+
+~~~mermaid
+flowchart TD
+    A[Confirm affected assets] --> B[Choose a fix or mitigation]
+    B --> C[QA sets scope and captures the pre-upgrade baseline]
+    C --> D[Verify remediation, business regression, and performance in staging]
+    D --> E{Do the release gates pass?}
+    E -- No --> F[Fix the issue or adjust the plan]
+    F --> D
+    E -- Yes --> G[Start a small canary]
+    G --> H{Are security evidence and service metrics healthy?}
+    H -- No --> I[Pause expansion and recover to a safe option]
+    H -- Yes --> J[Expand gradually and archive evidence]
+~~~
+
+### Release gates
+
+| Gate | Evidence required before expanding the rollout |
+| --- | --- |
+| Security remediation | Every target process uses a fixed build or verified mitigation, and restart completion is confirmed |
+| Business compatibility | P0 authentication, transaction, and data-integrity cases pass; invalid requests have no business side effects |
+| Performance stability | Like-for-like performance results meet existing SLO and capacity limits |
+| Canary and recovery | Canary metrics can be observed separately, and recovery returns to a fixed build or effective mitigation |
+
+During canary rollout, monitor login success, token refresh failures, order and payment success, callback latency, upload failures, JVM crashes and restarts, message backlog, and compensation retries. Compare instances on the same CPU and configuration under similar traffic to reduce noise from different workloads.
+
+## Common misunderstandings
+
+- **“Every Java service is affected.”** Applicability depends on the runtime build, CPU instructions, intrinsic setting, and reachable input.
+- **“Upgrading Spring Boot fixes it.”** The flaw is in the Java runtime; check the build used by each running process.
+- **“No Base64 call in business code means the service is safe.”** Authentication frameworks, SDKs, and protocol libraries may call the decoder through a dependency.
+- **“Base64 is encryption.”** Base64 is an encoding and provides no encryption.
+- **“Any malformed input gives remote code execution.”** Triggering memory corruption and completing a usable RCE chain are different outcomes.
+- **“Passing QA regression proves the vulnerability is fixed.”** Verify runtime builds, instances, and mitigation settings separately.
+- **“No business-code change means no regression is needed.”** The JDK, base image, and JVM flags are production runtime changes.
+- **“Every service needs the same full end-to-end suite.”** Test scope should reflect reachability, runtime changes, and business loss.
+
+## Plain-language terms and technical names
+
+| Plain-language description | Technical term | Meaning |
+| --- | --- | --- |
+| Package handler | Base64 decoder | Converts encoded text back to bytes |
+| Fast package path | JVM intrinsic / CPU optimization | Uses CPU instructions to accelerate processing |
+| Miscalculated shelf space | Out-of-bounds write | Writes outside the allocated range |
+| Nearby shelves are damaged | Heap memory corruption | Program heap state is corrupted |
+| Warehouse stops | Denial of Service (DoS) | A service becomes unavailable |
+| Remote code execution | Remote Code Execution (RCE) | An attacker executes code remotely under specific conditions |
+| Disable the fast path | Disable Base64 intrinsic | Temporarily bypasses the affected optimization |
+| Replace the machine | JDK security patch | A Java runtime build containing the fix |
+| Check that behavior still works | Regression testing | Confirms a change has not broken existing functions |
+| Let a small set of instances use the new version | Canary deployment | Validate a release on a small scale before expanding |
+| Check that data remains consistent | Data integrity validation | Verify the completeness and consistency of business data |
+
+## Questions to check your understanding
+
+1. Which runtime, CPU, JVM, and input-path conditions must be checked before classifying a service as exposed?
+2. If Java rejects malformed Base64 input, does that prove no memory corruption occurred? What evidence would you need?
+3. If all end-to-end tests pass, why do runtime verification, canary metrics, and a safe recovery plan still matter?
+
+## QA deliverables
+
+No single end-to-end run proves zero risk. A release record should trace affected assets, the actual runtime build and flags, change scope, regression results, performance baseline, canary data, recovery plan, and risks that remain unverified. It should show where the security and business evidence came from instead of reporting only “regression passed.”
+
+The same approach applies to security updates for foundational components such as the JDK, OpenSSL, Log4j, database drivers, and container base images.
+
+## References
+
+- Calif Research, Java4Shell technical analysis: https://calif.io/java4shell
+- CERT-EU, Security Advisory 2026-021: https://cert.europa.eu/publications/security-advisories/2026-021/
+- OpenJDK, Vulnerability Advisory 2026-11-17: https://openjdk.org/groups/vulnerability/advisories/2026-11-17
+- Oracle, JDK 17.0.21.1 Release Notes: https://www.oracle.com/java/technologies/javase/17-0-21-1-relnotes.html
+- Akamai Security Intelligence Group, Java4Shell patch analysis: https://www.akamai.com/blog/security-research/java4shell-closer-look-patch-analysis-cve-2026-114938
+- Quarkus, Java4Shell status and mitigation: https://quarkus.io/blog/java4shell/
+- Red Hat, CVE-2026-114938: https://access.redhat.com/security/cve/cve-2026-114938
+
+## More Resources
+
+- Personal website: https://inaodeng.com/en/
+- AI Test Auditor: https://github.com/AI-Native-QA-Lab/ai-test-auditor
+- DeepSeek QA Workbench: https://github.com/naodeng/dsh-qa
+- QA Skills: https://inaodeng.com/en/qaskills/
+- QA Wiki: https://inaodeng.com/en/wiki/
+- AI Wiki: https://inaodeng.com/en/AIWiki/
