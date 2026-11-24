@@ -12,6 +12,7 @@
 - `skills/`: 站点维护技能（Claude Skill 格式，含 OpenAI agent 配置）
   - `blog-series-drafting/`: 博客系列双语草稿生成
   - `qa-wiki-term-research/`: QA Wiki 词条调研与合成
+  - `wechat-cover-generator/`: 软件测试同学公众号封面生成与验收（V1.1-RC）
 - `archive/`: 已完成的历史规划文档（需求 / 设计 / 任务 / 计划 / 规格），按主题归档，见 `archive/README.md`
 - `temporary/`: 临时产物与脚本输出，见下表
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "软件测试同学·公众号封面"
+  short_description: "按 V1.1-RC 品牌规范生成、整改并验收公众号封面"
+  default_prompt: "使用 $wechat-cover-generator 按 V1.1-RC 规范为这篇文章生成公众号封面：[文章标题]"
