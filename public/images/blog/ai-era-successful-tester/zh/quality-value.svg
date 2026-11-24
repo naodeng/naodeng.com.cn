@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="460" viewBox="0 0 650 460" role="img" aria-labelledby="title desc">
+  <title id="title">自我评价：从产出走向价值</title>
+  <desc id="desc">把用例、缺陷和执行次数等过程信号，与风险和上下文结合，评估风险控制、可靠交付和团队能力。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0 9 4 0 8Z" fill="#8797ae"/></marker></defs>
+  <rect x="20" y="20" width="610" height="420" rx="22" fill="#f7f9fc" stroke="#e1e6ee" stroke-width="1.5"/>
+  <text x="42" y="66" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="25" font-weight="700">自我评价：从产出走向价值</text>
+  <rect x="50" y="105" width="550" height="90" rx="18" fill="#e8f0ff" stroke="#a5b4ca" stroke-width="2"/>
+  <text x="325" y="158" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21">过程信号：用例、缺陷、执行次数</text>
+  <rect x="125" y="238" width="400" height="78" rx="18" fill="#f3eaff" stroke="#a5b4ca" stroke-width="2"/>
+  <text x="325" y="285" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="22" font-weight="700">结合风险与上下文</text>
+  <rect x="35" y="358" width="580" height="70" rx="18" fill="#e3f7f3" stroke="#0b998c" stroke-width="2.5"/>
+  <text x="325" y="402" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="21" font-weight="700">结果：风险控制、可靠交付、团队能力</text>
+  <path d="M325 197V228M325 318V348" fill="none" stroke="#8797ae" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>

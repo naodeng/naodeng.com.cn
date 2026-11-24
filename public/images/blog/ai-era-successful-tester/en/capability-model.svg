@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="900" viewBox="0 0 650 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI Native QE capability extension</title>
+  <desc id="desc">Capability grows from testing fundamentals, business understanding and risk analysis, and quality engineering and automation to AI collaboration and verification, then quality strategy and governance.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0 9 4 0 8Z" fill="#8797ae"/></marker></defs>
+  <rect x="20" y="20" width="610" height="860" rx="22" fill="#f7f9fc" stroke="#e1e6ee" stroke-width="1.5"/>
+  <text x="325" y="68" text-anchor="middle" fill="#17243a" font-family="Arial, sans-serif" font-size="25" font-weight="700">AI Native QE capability extension</text>
+  <g fill="#17243a" font-family="Arial, sans-serif" font-size="22" text-anchor="middle">
+    <rect x="75" y="105" width="500" height="100" rx="18" fill="#e8f0ff" stroke="#a5b4ca" stroke-width="2"/><text x="325" y="164">Testing fundamentals</text>
+    <rect x="75" y="255" width="500" height="100" rx="18" fill="#e3f7f3" stroke="#a5b4ca" stroke-width="2"/><text x="325" y="314">Business understanding and risk analysis</text>
+    <rect x="75" y="405" width="500" height="100" rx="18" fill="#f3eaff" stroke="#a5b4ca" stroke-width="2"/><text x="325" y="464">Quality engineering and automation</text>
+    <rect x="75" y="555" width="500" height="100" rx="18" fill="#fff2d2" stroke="#a5b4ca" stroke-width="2"/><text x="325" y="614">AI collaboration and output verification</text>
+    <rect x="75" y="705" width="500" height="100" rx="18" fill="#e8f0ff" stroke="#a5b4ca" stroke-width="2"/><text x="325" y="764">Quality strategy and governance</text>
+  </g>
+  <g fill="none" stroke="#8797ae" stroke-width="3" marker-end="url(#arrow)"><path d="M325 207V245"/><path d="M325 357V395"/><path d="M325 507V545"/><path d="M325 657V695"/></g>
+</svg>

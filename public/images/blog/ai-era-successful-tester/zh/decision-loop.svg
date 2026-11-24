@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="970" viewBox="0 0 650 970" role="img" aria-labelledby="title desc">
+  <title id="title">基于实验的决策与学习循环</title>
+  <desc id="desc">识别问题与机会，选择可验证的方向，开展小范围实践并收集证据与反馈。有效时扩大实践；无效时调整或退出，再回到问题识别。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0 9 4 0 8Z" fill="#8797ae"/></marker><marker id="loopArrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0 9 4 0 8Z" fill="#94a3b8"/></marker></defs>
+  <rect x="20" y="20" width="610" height="930" rx="22" fill="#fbfbfc" stroke="#e1e1e5" stroke-width="1.5"/>
+  <text x="325" y="68" text-anchor="middle" fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="24" font-weight="700">基于实验的决策与学习循环</text>
+  <g fill="#17243a" font-family="Arial, 'Noto Sans SC', 'PingFang SC', sans-serif" font-size="22" text-anchor="middle">
+    <rect x="105" y="105" width="440" height="90" rx="18" fill="#eef0f4" stroke="#94a3b8" stroke-width="2.5"/><text x="325" y="160">识别问题与机会</text>
+    <rect x="105" y="240" width="440" height="90" rx="18" fill="#eef0f4" stroke="#94a3b8" stroke-width="2.5"/><text x="325" y="295">选择一个可验证的方向</text>
+    <rect x="105" y="375" width="440" height="90" rx="18" fill="#eef0f4" stroke="#94a3b8" stroke-width="2.5"/><text x="325" y="430">开展小范围实践</text>
+    <rect x="105" y="510" width="440" height="90" rx="18" fill="#eef0f4" stroke="#94a3b8" stroke-width="2.5"/><text x="325" y="565">收集证据与反馈</text>
+    <rect x="48" y="700" width="270" height="120" rx="18" fill="#e3f7f3" stroke="#0b998c" stroke-width="2.5"/><text x="183" y="770" font-weight="700">有效：扩大实践</text>
+    <rect x="337" y="700" width="270" height="120" rx="18" fill="#fdf0e9" stroke="#e67c00" stroke-width="2.5"/><text x="472" y="770" font-weight="700">无效：调整或退出</text>
+  </g>
+  <g fill="none" stroke="#8797ae" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"><path d="M325 197V230"/><path d="M325 332V365"/><path d="M325 467V500"/><path d="M325 602V650H183V690"/><path d="M325 650H472V690"/></g>
+  <path d="M607 760H615V150H555" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="12 10" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#loopArrow)"/>
+</svg>
