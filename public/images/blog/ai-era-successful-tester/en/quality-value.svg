@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="460" viewBox="0 0 650 460" role="img" aria-labelledby="title desc">
+  <title id="title">Self-review: from output to value</title>
+  <desc id="desc">Combine process signals such as test cases, defects, and executions with risk and context to assess risk control, reliable delivery, and team capability.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8.5" refY="4" orient="auto"><path d="M0 0 9 4 0 8Z" fill="#8797ae"/></marker></defs>
+  <rect x="20" y="20" width="610" height="420" rx="22" fill="#f7f9fc" stroke="#e1e6ee" stroke-width="1.5"/>
+  <text x="42" y="66" fill="#17243a" font-family="Arial, sans-serif" font-size="25" font-weight="700">Self-review: from output to value</text>
+  <rect x="50" y="105" width="550" height="90" rx="18" fill="#e8f0ff" stroke="#a5b4ca" stroke-width="2"/>
+  <text x="325" y="158" text-anchor="middle" fill="#17243a" font-family="Arial, sans-serif" font-size="20">Process signals: test cases, defects, and executions</text>
+  <rect x="125" y="238" width="400" height="78" rx="18" fill="#f3eaff" stroke="#a5b4ca" stroke-width="2"/>
+  <text x="325" y="285" text-anchor="middle" fill="#17243a" font-family="Arial, sans-serif" font-size="22" font-weight="700">Add risk and context</text>
+  <rect x="35" y="358" width="580" height="70" rx="18" fill="#e3f7f3" stroke="#0b998c" stroke-width="2.5"/>
+  <text x="325" y="388" text-anchor="middle" fill="#17243a" font-family="Arial, sans-serif" font-size="18" font-weight="700">Outcome: risk control, reliable delivery,</text>
+  <text x="325" y="411" text-anchor="middle" fill="#17243a" font-family="Arial, sans-serif" font-size="18" font-weight="700">and team capability</text>
+  <path d="M325 197V228M325 318V348" fill="none" stroke="#8797ae" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>
