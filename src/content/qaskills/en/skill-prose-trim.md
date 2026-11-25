@@ -6,7 +6,7 @@ Author: naodeng
 - slug: skill-prose-trim
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/skill-engineering/skill-prose-trim/SKILL.md
 - description: Use this skill when auditing or trimming process residue from Skills, Prompts, comments, or docs; triggers include process prose cleanup, review residue, and current-state rewriting.
 
@@ -17,12 +17,29 @@ Author: naodeng
 3. Delete pure process residue and restate durable facts in present tense.
 4. Preserve negative guarantees, measured bounds, formal references, archives, and fixture fidelity.
 
+## Core Constraints
+
+- Never turn an assumption into a shipped capability.
+- Do not edit generated files, sealed archives, or recorded fixtures without explicit authorization.
+- Keep bilingual meaning aligned.
+
+Read `prompts/skill-prose-trim.md` before producing output.
+
 ## Raw SKILL.md
 
 ```markdown
 ---
 name: skill-prose-trim
 description: Use this skill when auditing or trimming process residue from Skills, Prompts, comments, or docs; triggers include process prose cleanup, review residue, and current-state rewriting.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "skill-engineering"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Process Prose Trimming

@@ -6,7 +6,7 @@
 - slug: mock-quality-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/mock-quality-review/SKILL.md
 - description: Use this skill when you need to review mock fidelity, contract alignment, over-mocking, and drift evidence; triggers include Mock 质量评审 and mock quality review.
 
@@ -51,6 +51,15 @@
 ---
 name: mock-quality-review
 description: Use this skill when you need to review mock fidelity, contract alignment, over-mocking, and drift evidence; triggers include Mock 质量评审 and mock quality review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Mock 质量评审
@@ -76,6 +85,12 @@ description: Use this skill when you need to review mock fidelity, contract alig
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 MQR-## 记录对象、前置条件、关注点、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 先标被测对象与外部协作者边界，将 mock/stub 的版本、字段、状态码、错误、时序和副作用与真实合同逐项对应。
+- 交付真实合同×stub×被测义务的差异表，指出具体漏检路径；mock 使用数量不是质量判据。
+- 形成领域候选时，必须读取并遵循 [prompts/mock-quality-review.md](prompts/mock-quality-review.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

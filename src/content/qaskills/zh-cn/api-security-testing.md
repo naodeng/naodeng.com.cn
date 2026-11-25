@@ -6,7 +6,7 @@
 - slug: api-security-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-security-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded api-security-testing analysis and validation preparation; triggers include API 安全测试 and api-security-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: api-security-testing
 description: Use this skill when you need evidence-bounded api-security-testing analysis and validation preparation; triggers include API 安全测试 and api-security-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API 安全测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded api-security-testing 
 - 每次执行必须读取 prompts/api-security-testing.md。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 从已给 API 清单建立 endpoint、主体、资源、动作、敏感字段和信任边界表，标身份来自服务端还是可控请求。
+- 每个风险必须具备已提供入口、主体/资源/动作、边界路径、适用安全义务和证据；静态候选不等于漏洞确认。
+- 形成领域候选时，必须读取并遵循 [prompts/api-security-testing.md](prompts/api-security-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

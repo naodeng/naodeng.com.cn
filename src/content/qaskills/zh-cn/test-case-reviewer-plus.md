@@ -6,7 +6,7 @@
 - slug: test-case-reviewer-plus
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-case-reviewer-plus/SKILL.md
 - description: Use this skill when you need structured test-case review findings from requirements, strategy, and case docs; triggers include 用例评审增强、test case reviewer plus and advanced test case review.
 
@@ -65,6 +65,15 @@
 ---
 name: test-case-reviewer-plus
 description: Use this skill when you need structured test-case review findings from requirements, strategy, and case docs; triggers include 用例评审增强、test case reviewer plus and advanced test case review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试用例评审增强版（中文版）
@@ -75,6 +84,10 @@ description: Use this skill when you need structured test-case review findings f
 
 - 需要在提测前更严格地评审现有测试用例。
 - 需要明确问题等级、业务影响和补测顺序。
+
+## 脚本能力边界
+
+可选 `scripts/run_*.py` 只准备解析后的输入材料或来源候选，输出 `NOT_ASSESSED`，不调用模型、不执行主 Prompt，不生成语义结论、风险优先级、完整用例或批准。正式分析由 Agent 按主 Prompt 执行；需要运行脚本时先读 `references/script-contract.md`。
 
 ## 执行流程
 

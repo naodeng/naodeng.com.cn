@@ -1,4 +1,4 @@
-# API 异常测试
+# API 负向测试
 
 作者：naodeng
 
@@ -6,13 +6,13 @@
 - slug: api-negative-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-negative-testing/SKILL.md
-- description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 异常测试 and API negative testing.
+- description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 负向测试 and API negative testing.
 
 ## 何时使用
 
-- 需要从 API 契约、认证授权约束、参数规则、错误码、限流规则、历史缺陷和原始响应 中提取 API 异常测试 候选。
+- 需要从 API 契约、认证授权约束、参数规则、错误码、限流规则、历史缺陷和原始响应 中提取 API 负向测试 候选。
 - 需要解释选择理由、适用约束、证据缺口和最小验证动作。
 - 材料不完整但仍要交付受限初版，并明确 blocked 或 unassessed 边界。
 
@@ -50,16 +50,25 @@
 ```markdown
 ---
 name: api-negative-testing
-description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 异常测试 and API negative testing.
+description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 负向测试 and API negative testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
-# API 异常测试
+# API 负向测试
 
 从契约、约束和错误证据中设计非法输入、拒绝和降级候选，输出 ANT-## 发现。它只整理可追溯的 API 质量候选，不执行测试，也不把设计清单写成覆盖、通过或发布证据。
 
 ## 何时使用
 
-- 需要从 API 契约、认证授权约束、参数规则、错误码、限流规则、历史缺陷和原始响应 中提取 API 异常测试 候选。
+- 需要从 API 契约、认证授权约束、参数规则、错误码、限流规则、历史缺陷和原始响应 中提取 API 负向测试 候选。
 - 需要解释选择理由、适用约束、证据缺口和最小验证动作。
 - 材料不完整但仍要交付受限初版，并明确 blocked 或 unassessed 边界。
 
@@ -76,6 +85,12 @@ description: Use this skill when you need to design evidence-bounded API failure
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 ANT-## 记录对象、前置条件、关注行为、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 逐字段抽取类型、必填、可空、范围、长度编码和大小约束，再提取身份/权限与错误合同，注明各自来源。
+- 输出“约束→输入变体→预期拒绝/允许→响应与副作用观察→验证”表，字段规则和权限规则分别追溯。
+- 形成领域候选时，必须读取并遵循 [prompts/api-negative-testing.md](prompts/api-negative-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

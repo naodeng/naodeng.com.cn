@@ -6,7 +6,7 @@
 - slug: authorization-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/authorization-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded authorization-testing analysis and validation preparation; triggers include 授权测试 and authorization-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: authorization-testing
 description: Use this skill when you need evidence-bounded authorization-testing analysis and validation preparation; triggers include 授权测试 and authorization-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 授权测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded authorization-testing
 - 每次执行必须读取 prompts/authorization-testing.md。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 提取主体角色、资源所有权、租户、动作、字段、委派范围/期限及撤权生效合同，建立允许/拒绝/未知矩阵。
+- 交付主体×资源×动作矩阵与撤权时间线，许可和拒绝都须可追溯；不由角色名称推断全局权限。
+- 形成领域候选时，必须读取并遵循 [prompts/authorization-testing.md](prompts/authorization-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

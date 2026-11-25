@@ -6,7 +6,7 @@
 - slug: model-based-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/model-based-testing/SKILL.md
 - description: Use this skill when you need to derive test-path candidates from sourced behavior, state, or process models; triggers include 基于模型的测试设计 and model-based test design.
 
@@ -47,6 +47,15 @@
 ---
 name: model-based-testing
 description: Use this skill when you need to derive test-path candidates from sourced behavior, state, or process models; triggers include 基于模型的测试设计 and model-based test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 基于模型的测试设计
@@ -70,6 +79,12 @@ description: Use this skill when you need to derive test-path candidates from so
 2. 按方法合同形成 MBT-##，保留来源、证据状态、影响、责任角色、关闭条件和验证方法。
 3. 事实、推断、建议和 Human 决策必须分开。
 4. 只提出后续验证意图，不写成已执行结果。
+
+## 领域执行要点
+
+- 从来源建立初始/终止状态、事件、guard、动作、目标及持久化模型，明确是行为模型而非随意列状态。
+- 交付可达图、实际候选路径、状态/边缺口与 oracle；不可达节点不能计为已覆盖。
+- 形成领域候选时，必须读取并遵循 [prompts/model-based-testing.md](prompts/model-based-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

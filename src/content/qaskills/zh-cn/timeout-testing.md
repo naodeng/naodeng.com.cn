@@ -6,7 +6,7 @@
 - slug: timeout-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/timeout-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded timeout-testing analysis and validation preparation; triggers include 超时测试 and timeout-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: timeout-testing
 description: Use this skill when you need evidence-bounded timeout-testing analysis and validation preparation; triggers include 超时测试 and timeout-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 超时测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded timeout-testing analy
 - 每次执行必须读取 prompts/timeout-testing.md；它是本 Skill 的完整执行规范。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录实际存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 标端到端absolute deadline与连接/排队/读取/处理预算、时间源和计时起点，区分串行、重叠与每层独立超时。
+- 交付调用链时间预算及超时后状态/副作用表，迟到提交和取消必须有独立证据。
+- 形成领域候选时，必须读取并遵循 [prompts/timeout-testing.md](prompts/timeout-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

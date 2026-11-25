@@ -6,7 +6,7 @@ Author: naodeng
 - slug: pairwise-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/pairwise-testing/SKILL.md
 - description: Use this skill when you need to identify interactions that need at least pairwise coverage after factors, values, and constraints are explicit; triggers include 成对测试 and pairwise test design.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent rules, replace a complete strategy, or ac
 ---
 name: pairwise-testing
 description: Use this skill when you need to identify interactions that need at least pairwise coverage after factors, values, and constraints are explicit; triggers include 成对测试 and pairwise test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Pairwise Test Design
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent rules, replace a complete strategy, or ac
 2. Complete known, missing, conflicting, stale, out_of_scope, and assumptions before findings.
 3. Record PWT-## with factors, value pair, validity constraint, interaction risk, coverage rationale, source evidence, priority, and validation method, source, evidence state, impact, owner, close condition, and validation.
 4. Preserve conflicts, unknown constraints, and open questions.
+
+## Domain Execution Essentials
+
+- List sourced factors/domains/joint constraints and pairwise applicability, retaining higher-order obligations outside its guarantee.
+- Deliver legal pair-universe and covered/missing details, with additional justified candidates for higher-order interactions.
+- When deriving domain candidates, read and follow [prompts/pairwise-testing.md](prompts/pairwise-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

@@ -6,7 +6,7 @@
 - slug: security-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/security-testing/SKILL.md
 - description: Use this skill when you need to design security testing around OWASP risks, vulnerability scanning, and penetration scenarios; triggers include 安全测试 and security testing.
 
@@ -30,6 +30,8 @@
 - 结果必须可执行：场景具体、有优先级、能指导下一步。
 
 ## 按需加载
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 产出前必须阅读并遵循 `prompts/security-testing.md`（最低覆盖清单、输出结构、质量要求）。
 - 需要 Excel/CSV/JSON/Word 等格式时：读 `output-formats.md`，并按用户格式要求输出。
@@ -62,6 +64,15 @@
 ---
 name: security-testing
 description: Use this skill when you need to design security testing around OWASP risks, vulnerability scanning, and penetration scenarios; triggers include 安全测试 and security testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 安全测试（中文版）
@@ -80,6 +91,13 @@ description: Use this skill when you need to design security testing around OWAS
 3. 信息不全时先给可用初版，并显式标出假设与信息缺口。
 4. 默认 Markdown；用户指定其他格式时再切换。
 
+## 领域执行要点
+
+1. 在已授权范围内建立资产/主体→威胁→控制→验证步骤→预期→证据/状态矩阵；记录环境、动作范围、停止条件与真实授权来源。
+2. 正常授权访问与越权拒绝成对验证；拒绝路径要核对数据未泄露、工具/写入无副作用，不能只看错误响应或扫描结果。
+3. 区分DESIGNED（未执行方案）、EXECUTED（有运行证据）、CONFIRMED（所给证据足以确认控制失效/漏洞）；未测业务授权保持NOT_RUN/UNKNOWN，静态迹象是候选。
+4. 扫描无发现仅限扫描范围，不能外推系统安全；缺授权只给设计/静态分析，真实利用或生产动作须有明确允许范围，不生成危险内容或擅自扩测。
+
 ## 核心约束
 
 - 按风险/业务影响排优先级，不要平均摊铺。
@@ -88,6 +106,8 @@ description: Use this skill when you need to design security testing around OWAS
 - 结果必须可执行：场景具体、有优先级、能指导下一步。
 
 ## 按需加载
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 产出前必须阅读并遵循 `prompts/security-testing.md`（最低覆盖清单、输出结构、质量要求）。
 - 需要 Excel/CSV/JSON/Word 等格式时：读 `output-formats.md`，并按用户格式要求输出。

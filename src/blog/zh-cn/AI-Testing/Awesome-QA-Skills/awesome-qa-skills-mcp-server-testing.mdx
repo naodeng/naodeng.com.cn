@@ -1,0 +1,140 @@
+---
+title: "MCP 服务端测试：从协议版本到工具副作用的可复核检查"
+description: "按声明的 MCP 协议修订版和服务端契约，设计覆盖发现、传输、工具、授权和副作用的安全测试计划。"
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "MCP 服务端测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+MCP 服务端可能暴露工具、资源或 Prompt；初始化成功只证明一段握手发生过，不能证明工具参数、授权、错误处理和实际副作用都符合预期。
+
+MCP 服务端测试 Skill 要求先确定服务端版本与声明支持的协议修订版，再对照相应官方规范和工具契约设计测试。测试计划、静态夹具和真实服务端运行结果必须分开报告。
+
+## 先确定协议判定依据
+
+先收集服务端或软件包、SDK 与实现版本、MCP 修订版、传输方式、能力声明、范围内的工具/资源/Prompt 契约、身份与授权规则、环境和已有证据。不要从服务器名称或 SDK 版本推断协议修订版。
+
+上游打包的参考资料固定到 2026-07-28 修订版；只有目标明确为该修订版时才直接使用。其他修订版要找到匹配版本的官方规范，区分 MUST、SHOULD 和可选能力；只测试产品明确声称支持的兼容版本。
+
+## 用一个隔离的 MCP 服务端搭出案例
+
+假设测试一个提供查询与更新工具的本地 MCP 服务端。以下只展示测试设计，不表示真实服务器已经运行，也不包含生产调用。
+
+| 范围 | 测试准备 | 可观察判定 |
+| --- | --- | --- |
+| 发现与能力 | 目标修订版、初始化消息、能力声明和工具列表 | 响应符合匹配的协议规范；版本不匹配按契约处理 |
+| 工具契约 | 有效、缺字段、类型错误、边界和额外字段参数 | 结果、错误码/错误形态和校验位置可观察 |
+| 传输与会话 | 对每种已声明传输准备独立生命周期测试 | 不混用 stdio 与 Streamable HTTP 的规则 |
+| 身份与授权 | 合成身份、允许/拒绝矩阵、撤销状态 | 按身份暴露或拒绝工具；不泄露其他主体的数据 |
+| 资源与工具描述 | 合成的恶意指令 Canary、隔离资源内容 | 不可信描述或资源内容不能扩大工具权限或泄露数据 |
+| 副作用与恢复 | 隔离数据、审计记录、清理步骤；只测试契约定义的重试/取消行为 | 根据状态和审计证据计数，不按工具调用次数推断提交次数 |
+
+针对任何会写入状态的操作，先确认环境隔离、身份权限、数据清理和停止条件。请求测试的指令本身不构成生产访问授权。
+
+## 从覆盖表到可执行用例
+
+每条用例都应该能让下一位执行者重现和判定：
+
+| 字段 | 需要说明 |
+| --- | --- |
+| ID 与目标 | 对应协议能力、工具契约或安全风险 |
+| 前置条件 | 协议修订版、传输、主体身份、夹具和环境 |
+| 操作 | 消息、工具调用、参数或中断动作 |
+| Oracle | 哪项响应、状态、审计或副作用证明预期成立 |
+| 证据与清理 | 原始记录位置、脱敏规则、清理方式 |
+| 状态 | 设计中、夹具复核、已执行、BLOCKED、NOT_RUN 或 UNKNOWN |
+
+协议符合性不等于业务正确性。MCP 工具可以按协议返回成功，却仍然违反业务规则；同样，某个模型没有选择工具也不能直接证明服务端协议实现有误。
+
+## 一段可以直接改的调用词
+
+~~~text
+请使用 mcp-server-testing Skill。
+
+服务端与版本：[包、SDK、实现版本]
+协议修订版：[产品声明支持的修订版]
+传输与能力：[transport、tools/resources/prompts]
+工具契约：[Schema、副作用、权限和错误约定]
+身份与环境：[合成身份、隔离环境、数据清理]
+证据：[日志、fixture、运行 ID 或当前没有运行记录]
+范围与限制：[包含/排除项、禁止操作、停止条件]
+
+先核对匹配的官方协议规范，再按风险设计正向、负向、边界和兼容用例。
+每条用例提供前置条件、操作、可观察 oracle、证据和清理。
+区分计划、静态夹具复核和实际运行；不要假设生产访问已获授权。
+~~~
+
+## 进阶使用：把服务端与 Agent 行为分开
+
+按故障发生的位置交给不同 Skill，避免协议测试把客户端体验或模型质量一起包进一个结论。
+
+| 关注层 | 相邻 Skill | 适用边界 |
+| --- | --- | --- |
+| MCP 服务端协议与工具契约 | MCP 服务端测试 | 服务端消息、能力、传输、授权和声明的工具副作用 |
+| Agent 选择与调用工具 | Agent 工具调用测试 | Agent 何时调用工具、参数如何生成、调用结果如何回到流程 |
+| 结构化参数与结果 | 结构化输出测试 | JSON/Schema/领域语义层面的结构化模型输出 |
+| API 接口自身的合同 | API 契约测试 | 仅当 MCP 工具映射到另一个 API 契约时扩展检查 |
+| 更广的安全威胁 | API 安全测试 | 只有目标范围包括 API 攻击面时才扩展安全测试 |
+
+一轮团队门禁可以要求：明确协议版本；有效控制与拒绝用例成对；副作用有状态或审计 Oracle；实际执行状态和测试计划分开；安全环境与清理路径经过确认。
+
+## 容易踩的坑
+
+- 用包版本或服务器名称猜协议版本。
+- 用一个旧版本的规范断言不同修订版的要求。
+- 把 stdio 传输的生命周期规则套到 Streamable HTTP。
+- 只覆盖工具成功返回，不覆盖授权、错误、边界和副作用。
+- 把资源内容、工具描述或模型输出当作可信指令。
+- 用 SDK 元数据、静态文件或单条 happy path 宣称协议完全符合。
+- 仅凭服务端自报身份、旧协议初始化成功或已安装的 SDK 版本，断言本次实际行为。
+- 没有隔离、凭据授权和清理方案时直接访问生产工具。
+
+## 安装与调用
+
+单独安装 MCP 服务端测试 Skill：
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/mcp-server-testing -g
+~~~
+
+先提供服务端声明的修订版和工具契约；不要只给一个服务器地址并让 Skill 猜行为。
+
+## 常见问题
+
+### 如果产品没有声明 MCP 修订版怎么办？
+
+先报告该缺口，并请求兼容范围。可以整理待确认问题，但不能替产品挑一个协议版本当作承诺。
+
+### SDK 版本匹配就代表协议符合吗？
+
+不代表。需要针对声明修订版、实现行为和可观察证据设计与执行验证。
+
+### 测试计划能写 PASS 吗？
+
+不能。计划或静态夹具复核不是服务端执行结果；没有运行证据时使用 NOT_RUN、BLOCKED 或 UNKNOWN。
+
+### MCP 服务端符合协议，业务工具就正确吗？
+
+不一定。协议要求和业务工具副作用是两份契约，要分别定义 Oracle 与证据。
+
+### 这个 Skill 会测试 AI 客户端的用户体验吗？
+
+默认不会。客户端或 Host 的体验、模型质量及更广泛的应用安全要另设范围，或交给相邻 Skill。
+
+## 参考
+
+- 上游 Skill: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/mcp-server-testing
+- 完整测试 Prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/mcp-server-testing/prompts/mcp-server-testing.md
+- 上游固定协议参考：MCP 2026-07-28: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/mcp-server-testing/references/mcp-spec-2026-07-28.md
+- MCP 服务端测试详情页: https://inaodeng.com/zh-cn/qaskills/mcp-server-testing/
+- 相邻指南：Agent 工具调用测试: https://inaodeng.com/zh-cn/blog/ai-testing/awesome-qa-skills-agent-tool-testing/
+- Awesome QA Skills 系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/
+
+## 更多参考
+
+- 更多 QA Skills: https://inaodeng.com/zh-cn/qaskills/
+- AI 百科：Model Context Protocol: https://inaodeng.com/zh-cn/AIWiki/model-context-protocol-mcp/
+- 测试百科: https://inaodeng.com/zh-cn/wiki/

@@ -6,7 +6,7 @@
 - slug: llm-evaluation-design
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/llm-evaluation-design/SKILL.md
 - description: Use this skill when you need to design LLM evaluation datasets, judges, metrics, and human-review boundaries; triggers include LLM Eval 设计 and llm evaluation design.
 
@@ -25,6 +25,8 @@
 5. 信息不足时不要停在提问：先交付受限初版，并说明哪些结论暂不能成立。
 
 ## 核心约束
+
+- 记录来源/许可/PII、重复与切分泄漏；由任务风险决定样本/置信方案，校准并固定 judge 版本，缺证据时阻断 CI 门槛。
 
 - 指标必须映射真实任务
 - LLM-as-judge 要校准并抽检
@@ -54,6 +56,15 @@
 ---
 name: llm-evaluation-design
 description: Use this skill when you need to design LLM evaluation datasets, judges, metrics, and human-review boundaries; triggers include LLM Eval 设计 and llm evaluation design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # LLM 评测设计（中文版）
@@ -86,12 +97,20 @@ description: Use this skill when you need to design LLM evaluation datasets, jud
 
 ## 核心约束
 
+- 记录来源/许可/PII、重复与切分泄漏；由任务风险决定样本/置信方案，校准并固定 judge 版本，缺证据时阻断 CI 门槛。
+
 - 指标必须映射真实任务
 - LLM-as-judge 要校准并抽检
 - 区分离线质量与线上业务指标
 - 不编造输入中不存在的系统行为、字段、数据、指标或根因。
 - 关键结论必须关联证据；证据不足时标记为假设并给出验证方法。
 - 优先级必须说明业务影响、发生可能性或可探测性依据。
+
+## 评测证据状态
+
+- 输出评测结论时包含 `evaluation_status`：`PASS`、`FAIL`、`BLOCKED`、`NOT_RUN` 或 `UNKNOWN`。
+- `PASS` 需要有范围内的实际运行记录和完整断言证据；没有运行结果用 `NOT_RUN`，运行受阻用 `BLOCKED`，证据不足用 `UNKNOWN`。方案、静态检查或文件存在不能单独证明 `PASS`。
+- 结构化追踪记录 `trace_id`、样本与版本、参数、run/trial、解析、Schema、语义状态及证据引用；三类检查分别判定。
 
 ## 交付前自检
 

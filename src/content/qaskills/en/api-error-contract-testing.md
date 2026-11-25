@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-error-contract-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-error-contract-testing/SKILL.md
 - description: Use this skill when you need to review API error shape, status, code, and disclosure behavior against sourced contracts; triggers include API 错误契约测试 and API error contract testing.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent contract or behavior, replace a complete 
 ---
 name: api-error-contract-testing
 description: Use this skill when you need to review API error shape, status, code, and disclosure behavior against sourced contracts; triggers include API 错误契约测试 and API error contract testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API Error Contract Testing
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent contract or behavior, replace a complete 
 2. Complete the known, missing, conflicting, stale, out_of_scope, and assumptions input audit before findings.
 3. Record AEC-## with the subject, preconditions, behavior of concern, source evidence, and validation, plus impact/priority, owner role, close condition, and evidence state.
 4. Preserve conflicts, unknown constraints, and open questions when evidence is incomplete.
+
+## Domain Execution Essentials
+
+- Build an operation/error contract table for HTTP status, business code, required fields/types, correlation ID, retry meaning, and redaction; retain sourced operation exceptions.
+- Deliver an operation/error consistency table with sourced expectations and observations; differences become findings only when they violate an applicable rule.
+- When deriving domain candidates, read and follow [prompts/api-error-contract-testing.md](prompts/api-error-contract-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

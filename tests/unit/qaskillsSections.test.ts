@@ -57,6 +57,25 @@ description: Use this skill when you need API tests.
 - Do not pretend completeness.
 `;
 
+const UPSTREAM_EN_SAMPLE = `## When to use
+- Run a Skill evaluation.
+
+## How to use
+1. Read the contract.
+
+## Scope and constraints
+- Keep evidence boundaries clear.
+
+## Load references when needed
+- Read supporting files as needed.
+
+## Pre-delivery checks
+- [ ] Record limitations.
+
+## Common pitfalls
+- Do not overstate results.
+`;
+
 describe("extractCanonicalSections", () => {
   it("maps Chinese headings to canonical keys", () => {
     const sections = extractCanonicalSections(ZH_SAMPLE);
@@ -76,6 +95,35 @@ describe("extractCanonicalSections", () => {
     expect(sections.progressiveDisclosure).toContain("prompts/api-testing.md");
     expect(sections.checklist).toContain("minimum checklist");
     expect(sections.pitfalls).toContain("pretend completeness");
+  });
+
+  it("maps current upstream English heading variants to canonical keys", () => {
+    const sections = extractCanonicalSections(UPSTREAM_EN_SAMPLE);
+    expect(sections.whenToUse).toContain("Skill evaluation");
+    expect(sections.workflow).toContain("Read the contract");
+    expect(sections.coreConstraints).toContain("evidence boundaries");
+    expect(sections.progressiveDisclosure).toContain("supporting files");
+    expect(sections.checklist).toContain("Record limitations");
+    expect(sections.pitfalls).toContain("overstate results");
+  });
+
+  it("maps upstream Chinese Skill headings to canonical keys", () => {
+    const sections = extractCanonicalSections(`## 使用方法
+1. 阅读完整约定。
+
+## 范围与约束
+- 保留证据边界。
+
+## 按需加载参考资料
+- 阅读引用资料。
+
+## 交付前检查
+- [ ] 记录限制。
+`);
+    expect(sections.workflow).toContain("完整约定");
+    expect(sections.coreConstraints).toContain("证据边界");
+    expect(sections.progressiveDisclosure).toContain("引用资料");
+    expect(sections.checklist).toContain("记录限制");
   });
 
   it("omits missing sections as empty string", () => {

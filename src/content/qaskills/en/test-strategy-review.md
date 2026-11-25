@@ -6,9 +6,15 @@ Author: naodeng
 - slug: test-strategy-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-strategy-review/SKILL.md
 - description: Use this skill when a proposed test strategy needs evidence-based review before Human approval; triggers include test strategy review, strategy approval review..
+
+## When to Use
+
+- A test strategy draft needs a decision on sufficiency, feasibility, and alignment with business and technical constraints.
+- A review meeting must distinguish blockers, time-bounded conditions, and optional non-blocking improvements.
+- Requirements, role analysis, technical notes, or project constraints conflict and need a traceable AI recommendation for Human decision.
 
 ## Workflow
 
@@ -19,12 +25,30 @@ Author: naodeng
 5. Apply deterministic rules to produce an AI-assisted `pass`, `conditional_pass`, or `reject` recommendation, with ownership and verifiable revision requests for gaps.
 6. Check evidence, scope, ownership, recommendation, and Human decision boundaries before delivery.
 
+## Pre-delivery Checklist
+
+- [ ] All eight review dimensions have evidence, a gap, or a not-applicable explanation
+- [ ] Blockers and non-blockers are separate; conditions are not mixed with optional improvements
+- [ ] The recommendation follows the classification rules, with no schedule pressure overriding quality gaps
+- [ ] Conflicting sources remain visible; no change, waiver, or decision was invented
+- [ ] Every revision request has an object, owner or `unassigned`, timing/gate, and closure evidence
+- [ ] The result is explicitly AI-assisted and the final Human decision remains pending
+
 ## Raw SKILL.md
 
 ```markdown
 ---
 name: test-strategy-review
 description: Use this skill when a proposed test strategy needs evidence-based review before Human approval; triggers include test strategy review, strategy approval review..
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Strategy Review

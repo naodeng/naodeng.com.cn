@@ -6,7 +6,7 @@
 - slug: test-reporting
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-reporting/SKILL.md
 - description: Use this skill when you need to generate test reports with summary, metrics, defect analysis, and risk assessment; triggers include 测试报告 and test reporting.
 
@@ -30,6 +30,8 @@
 - 不要编造用户未提供的接口、字段、环境或根因细节。
 - 结果必须可执行：场景具体、有优先级、能指导下一步。
 - 执行证据和缺陷证据同时缺失时，整体质量状态只能是 `not executed or insufficient evidence`（未执行或证据不足），不能报告通过或具备发布条件。
+- 包含 AI 效果结论时，记录模型、Prompt/Agent、评测集、judge、run、采样、token 成本、评估者和执行状态；缺 `model_version` 或 `run_id` 时，AI 效果结论为 `UNKNOWN`。
+- 缺少可追溯执行证据时，`execution_state` 只能是 `BLOCKED` 或 `NOT_RUN`；版本冲突列为矛盾，不得静默合并。
 
 ## 按需加载
 
@@ -67,6 +69,15 @@
 ---
 name: test-reporting
 description: Use this skill when you need to generate test reports with summary, metrics, defect analysis, and risk assessment; triggers include 测试报告 and test reporting.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试报告（中文版）
@@ -93,6 +104,8 @@ description: Use this skill when you need to generate test reports with summary,
 - 不要编造用户未提供的接口、字段、环境或根因细节。
 - 结果必须可执行：场景具体、有优先级、能指导下一步。
 - 执行证据和缺陷证据同时缺失时，整体质量状态只能是 `not executed or insufficient evidence`（未执行或证据不足），不能报告通过或具备发布条件。
+- 包含 AI 效果结论时，记录模型、Prompt/Agent、评测集、judge、run、采样、token 成本、评估者和执行状态；缺 `model_version` 或 `run_id` 时，AI 效果结论为 `UNKNOWN`。
+- 缺少可追溯执行证据时，`execution_state` 只能是 `BLOCKED` 或 `NOT_RUN`；版本冲突列为矛盾，不得静默合并。
 
 ## 按需加载
 

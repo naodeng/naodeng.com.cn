@@ -6,7 +6,7 @@ Author: naodeng
 - slug: security-requirement-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/security-requirement-review/SKILL.md
 - description: Use this skill when you need evidence-bounded security-requirement-review analysis and validation preparation; triggers include 安全需求审查 and security-requirement-review.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: security-requirement-review
 description: Use this skill when you need evidence-bounded security-requirement-review analysis and validation preparation; triggers include 安全需求审查 and security-requirement-review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Security-Requirement Review
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded security-requirement-
 - Read prompts/security-requirement-review.md for every invocation.
 - Read evals/eval.yaml and matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Map asset→threat actor/path→security obligation→control→verifiable acceptance, retaining scope, sources and project-supplied standard/version; do not select an unsupplied compliance baseline.
+- Deliver obligation/acceptance/evidence mappings and testability gaps; drafted requirements remain proposals rather than approved obligations.
+- When deriving domain candidates, read and follow [prompts/security-requirement-review.md](prompts/security-requirement-review.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

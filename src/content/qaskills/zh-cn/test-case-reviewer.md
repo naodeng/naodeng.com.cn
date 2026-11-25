@@ -6,7 +6,7 @@
 - slug: test-case-reviewer
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-case-reviewer/SKILL.md
 - description: Use this skill when you need to review test cases for completeness, clarity, maintainability, and missing scenarios; triggers include 测试用例评审 and test case review.
 
@@ -62,6 +62,15 @@
 ---
 name: test-case-reviewer
 description: Use this skill when you need to review test cases for completeness, clarity, maintainability, and missing scenarios; triggers include 测试用例评审 and test case review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试用例评审（中文版）

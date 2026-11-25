@@ -6,7 +6,7 @@ Author: naodeng
 - slug: requirements-analysis-plus
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/requirements-analysis-plus/SKILL.md
 - description: Use this skill when you need to parse Word/HTML/JSON/Markdown/Excel requirements and produce a structured analysis; triggers include requirements analysis plus and requirement document parsing.
 
@@ -65,6 +65,15 @@ Author: naodeng
 ---
 name: requirements-analysis-plus
 description: Use this skill when you need to parse Word/HTML/JSON/Markdown/Excel requirements and produce a structured analysis; triggers include requirements analysis plus and requirement document parsing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # requirements-analysis-plus (EN)
@@ -75,6 +84,10 @@ description: Use this skill when you need to parse Word/HTML/JSON/Markdown/Excel
 
 - Need deeper requirement analysis across multiple source documents.
 - Need stronger prioritization, conflict checks, and follow-up questions than the base version.
+
+## Script capability boundary
+
+Optional `scripts/run_*.py` prepare parsed evidence or source candidates with `NOT_ASSESSED`. They do not call a model, execute the main prompt, or produce semantic conclusions, risk priorities, complete cases, or approval. An agent performs the main prompt. Read `references/script-contract.md` before running helpers.
 
 ## Workflow
 

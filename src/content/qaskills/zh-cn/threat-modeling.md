@@ -6,7 +6,7 @@
 - slug: threat-modeling
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/threat-modeling/SKILL.md
 - description: Use this skill when you need evidence-bounded threat-modeling analysis and validation preparation; triggers include 威胁建模 and threat-modeling.
 
@@ -50,6 +50,15 @@
 ---
 name: threat-modeling
 description: Use this skill when you need evidence-bounded threat-modeling analysis and validation preparation; triggers include 威胁建模 and threat-modeling.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 威胁建模（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded threat-modeling analy
 - 每次执行必须读取 prompts/threat-modeling.md。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 按已给组件画主体、入口、数据存储/流动与信任边界，列资产、敏感数据和允许动作；未给组件不得自行加入。
+- 交付来源化数据流与逐路径威胁卡，每个威胁有实际组件/前提/资产；不通过攻击分类名虚构路径。
+- 形成领域候选时，必须读取并遵循 [prompts/threat-modeling.md](prompts/threat-modeling.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

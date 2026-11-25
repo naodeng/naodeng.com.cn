@@ -6,7 +6,7 @@
 - slug: capacity-planning-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/capacity-planning-analysis/SKILL.md
 - description: Use this skill when you need to assess capacity demand, headroom, constraints, and planning assumptions; triggers include 容量规划分析 and capacity planning analysis.
 
@@ -54,6 +54,15 @@
 ---
 name: capacity-planning-analysis
 description: Use this skill when you need to assess capacity demand, headroom, constraints, and planning assumptions; triggers include 容量规划分析 and capacity planning analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 容量规划分析（中文版）
@@ -80,10 +89,18 @@ description: Use this skill when you need to assess capacity demand, headroom, c
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/capacity-planning-analysis.md`；它是本 Skill 的完整执行规范。
 - 需要评测或回归本 Skill 时，读取 `evals/eval.yaml` 与匹配的 `evals/cases/` 用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 对每个观测点记录环境/配置/实例数、负载 mix、到达/完成吞吐、延迟分位数、错误率、CPU/内存/队列和时窗；把测量→SLO→容量候选的来源链列出。
+2. 仅使用已测 SLO 可接受区间估计；CPU 百分比不能线性换算吞吐，未测点为候选，受下游、饱和与伸缩时延限制。
+3. 按项目假设复算扩容等待期积压 = max(0,到达率−已验证服务率)×等待秒数；仅在速率恒定/队列模型适用时使用，并检查积压时延与恢复。
+4. 故障余量用失去项目指定实例/依赖后的实际测量或明确条件模型；无故障数据不能宣布容量足够。安全余量、增长、成本及接受条件来自项目。
 ## 核心约束
 
 - 没有数据时给区间而非伪精确数字

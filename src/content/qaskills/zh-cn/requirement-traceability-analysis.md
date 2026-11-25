@@ -6,7 +6,7 @@
 - slug: requirement-traceability-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/requirement-traceability-analysis/SKILL.md
 - description: Use this skill when requirements, acceptance criteria, design, code, tests, defects, or evidence must be mapped bidirectionally and coverage gaps made explicit; triggers include 需求可追踪性分析, requirement traceability, and traceability matrix.
 
@@ -59,6 +59,15 @@
 ---
 name: requirement-traceability-analysis
 description: Use this skill when requirements, acceptance criteria, design, code, tests, defects, or evidence must be mapped bidirectionally and coverage gaps made explicit; triggers include 需求可追踪性分析, requirement traceability, and traceability matrix.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 需求可追踪性分析
@@ -93,6 +102,14 @@ description: Use this skill when requirements, acceptance criteria, design, code
 5. 保留孤立项、断链、重复映射、缺少执行记录和只存在名称的链接，给出缺口、责任角色、下一步和验证方式。
 6. 结论只反映提供的材料；执行状态、缺陷关闭和发布结论必须有对应证据。
 
+## 领域执行要点
+
+原RT/TC关系类型保持direct/derived/indirect/contradictory/missing，coverage status保持complete/partial/unverified/stale/unexecuted/unassessed。MAPPED/EXECUTED/SATISFIED与IDENTITY_CONFLICT只作附加判定列，不替换原枚举；有映射未执行保持unexecuted，身份冲突待解决前不计入已满足。
+
+1. 固定requirement/obligation及实现/test/run的ID与版本，关系类型保持direct/derived/indirect/contradictory/missing；implements/validates/executed-by/satisfies只作为独立的边用途列，并记录证据来源；文件存在、名字相似不构成边。
+2. 同义务多测试按义务唯一ID去重分母，保留测试层和具体断言；重复ID但不同内容先标IDENTITY_CONFLICT，不能合并计覆盖。
+3. 分列MAPPED、EXECUTED、SATISFIED：映射有效不等于已运行，运行成功不等于该义务有有效断言。旧版本映射不能支持新版本满足。
+4. 双向检查未映射义务、无来源测试与失效边；覆盖率注明当前唯一义务分母及排除/UNKNOWN，缺追踪不得填PASS。
 ## 核心约束
 
 - 使用 `RT-##` 标识追踪发现；每行至少有需求/控制项、来源、关联制品、关系类型、覆盖状态、证据和缺口行动。
@@ -105,6 +122,8 @@ description: Use this skill when requirements, acceptance criteria, design, code
 - 不编造需求、关系、阈值、负责人、审批或运行结果；建议必须说明依据和关闭条件。
 
 ## 参考文件
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 每次产出前必须阅读 `prompts/requirement-traceability-analysis.md`。
 - 需要回归本 Skill 时使用 `evals/eval.yaml` 和 `evals/cases/`；评测配置和静态映射不证明真实系统已执行。

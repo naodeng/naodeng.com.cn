@@ -6,7 +6,7 @@
 - slug: ai-agent-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-agent-testing/SKILL.md
 - description: Use this skill when you need to test AI agent goals, state, planning, recovery, and safety boundaries; triggers include AI Agent 测试 and ai agent testing.
 
@@ -25,6 +25,8 @@
 5. 信息不足时不要停在提问：先交付受限初版，并说明哪些结论暂不能成立。
 
 ## 核心约束
+
+- 评估 Skill 效果时使用同任务 no-skill baseline；中英文比较需有语义等价输入和两侧运行证据，缺任一侧不得声称增益或等效。
 
 - 同时评价最终结果和过程轨迹
 - 将随机性纳入重复试验
@@ -54,6 +56,15 @@
 ---
 name: ai-agent-testing
 description: Use this skill when you need to test AI agent goals, state, planning, recovery, and safety boundaries; triggers include AI Agent 测试 and ai agent testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # AI Agent 测试（中文版）
@@ -80,11 +91,21 @@ description: Use this skill when you need to test AI agent goals, state, plannin
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/ai-agent-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测或回归本 Skill 时，读取 `evals/eval.yaml` 与匹配的 `evals/cases/` 用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 对每个任务定义输入样本 ID、成功 oracle、允许工具/资源、禁止副作用和停止条件；未知目标保持待确认。
+2. 轨迹按 run/step ID 核对顺序、权限、幂等、数据隔离、恢复和预算不变量；把结果正确性与过程合规分别判定，任一失败不得整体通过。
+3. 终止分类至少区分成功、目标失败、预算耗尽、取消、安全阻断和环境错误；没有终止事件不能推断已完成。
+4. 记录模型/Prompt/工具/数据/环境版本、样本选择与项目指定重复次数。报告每样本成功/失败数和偶发失败；没有重复试验仅报告单次，不能证明稳定性。
 ## 核心约束
+
+- 评估 Skill 效果时使用同任务 no-skill baseline；中英文比较需有语义等价输入和两侧运行证据，缺任一侧不得声称增益或等效。
 
 - 同时评价最终结果和过程轨迹
 - 将随机性纳入重复试验

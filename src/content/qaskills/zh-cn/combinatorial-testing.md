@@ -6,7 +6,7 @@
 - slug: combinatorial-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/combinatorial-testing/SKILL.md
 - description: Use this skill when you need to select high-risk multi-factor combinations after factors, values, and constraints are explicit; triggers include 组合测试设计 and combinatorial test design.
 
@@ -47,6 +47,15 @@
 ---
 name: combinatorial-testing
 description: Use this skill when you need to select high-risk multi-factor combinations after factors, values, and constraints are explicit; triggers include 组合测试设计 and combinatorial test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 组合测试设计
@@ -70,6 +79,12 @@ description: Use this skill when you need to select high-risk multi-factor combi
 2. 按方法合同形成 CT-##，保留来源、证据状态、影响、责任角色、关闭条件和验证方法。
 3. 事实、推断、建议和 Human 决策必须分开。
 4. 只提出后续验证意图，不写成已执行结果。
+
+## 领域执行要点
+
+- 从材料建 factor/value 表及约束表达式，区分输入、环境与状态；未知值域不能补成任意二元值。
+- 交付因素/约束、强度理由、合法 t 元组 universe 和缺口；只对已枚举的模型声明静态组合覆盖。
+- 形成领域候选时，必须读取并遵循 [prompts/combinatorial-testing.md](prompts/combinatorial-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

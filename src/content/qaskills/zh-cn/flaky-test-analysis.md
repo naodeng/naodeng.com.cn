@@ -6,7 +6,7 @@
 - slug: flaky-test-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/flaky-test-analysis/SKILL.md
 - description: Use this skill when you need to investigate intermittent test failures from run history and evidence; triggers include 不稳定测试分析 and flaky test analysis.
 
@@ -54,6 +54,15 @@
 ---
 name: flaky-test-analysis
 description: Use this skill when you need to investigate intermittent test failures from run history and evidence; triggers include 不稳定测试分析 and flaky test analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 不稳定测试分析（中文版）

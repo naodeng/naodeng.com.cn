@@ -6,7 +6,7 @@
 - slug: quality-debt-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/quality-debt-analysis/SKILL.md
 - description: Use this skill when you need evidence-bounded quality-debt items, origins, impact, age, priority, ownership, and paydown tradeoffs; triggers include 质量债务 and quality debt.
 
@@ -53,6 +53,15 @@
 ---
 name: quality-debt-analysis
 description: Use this skill when you need evidence-bounded quality-debt items, origins, impact, age, priority, ownership, and paydown tradeoffs; triggers include 质量债务 and quality debt.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 质量债务分析（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded quality-debt items, o
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/quality-debt-analysis.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 将已存在产品缺陷、测试/架构债务、暂时例外与数据缺口分列；每条记录来源、当前影响、形成原因、年龄和已有控制，不把所有未完成项叫债务。
+2. 估计风险利息时说明变化路径：后续修改成本、故障暴露、检测延迟等可观察证据；没有费率/频率只给定性或条件范围，不自造金额。
+3. 排序按业务影响、暴露、探测性、依赖和偿还成本/收益，年龄仅为一个信号；新生重大风险可优先于高龄轻微项。
+4. 偿还完成需修复资产、独立行为检查、旧债务效果消失及责任人验收证据；完成ticket或文档不能单独关闭债务，风险接受有期限/授权。
 
 ## 核心约束
 

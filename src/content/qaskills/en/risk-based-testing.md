@@ -6,7 +6,7 @@ Author: naodeng
 - slug: risk-based-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/risk-based-testing/SKILL.md
 - description: Use this skill when you need to turn quality risks into prioritized test objectives, depth, methods, and scope tradeoffs; triggers include risk-based testing.
 
@@ -46,6 +46,15 @@ Do not use it only to identify quality risks, write a complete test strategy, se
 ---
 name: risk-based-testing
 description: Use this skill when you need to turn quality risks into prioritized test objectives, depth, methods, and scope tradeoffs; triggers include risk-based testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Risk-Based Testing
@@ -79,6 +88,13 @@ Do not use it only to identify quality risks, write a complete test strategy, se
 4. Define stop conditions, expansion triggers, residual risk, and Human decisions for constrained work.
 5. Never turn unsupported numbers, risk grades, or test recommendations into facts or execution results.
 
+## Domain Execution Essentials
+
+1. Anchor qualitative risk in observable impact, exposure/occurrence evidence, detectability, and control gaps. Without a project numeric model do not invent score products; unknown likelihood remains uncertain.
+2. Link each risk to objective, layer/platform, depth, data, minimum observable evidence, sourced duration, and residual risk. High risk needs falsifiable business assertions, not merely more cases.
+3. Allocate the constrained window with mandatory protection/authority first. Expose deferrals, alternatives, owners, and Human risk acceptance; time shortage never automatically waives gates.
+4. Retain benign/low-risk controls, selection reasons, and scope expansion triggers. Planned priority is no execution or risk-elimination evidence.
+
 ## Core Constraints
 
 - `RBT-##` is a test-decision recommendation, not risk acceptance, a quality score, coverage proof, or release approval.
@@ -87,6 +103,8 @@ Do not use it only to identify quality risks, write a complete test strategy, se
 - Do not select concrete existing test IDs, execute tests, or invent environments, thresholds, defects, or pass results.
 
 ## Reference Files
+
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
 
 - Always read `prompts/risk-based-testing.md` before producing an analysis.
 - For regression, read `evals/eval.yaml` and its cases; configuration and recommendations do not prove that risks are controlled.

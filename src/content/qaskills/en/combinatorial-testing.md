@@ -6,7 +6,7 @@ Author: naodeng
 - slug: combinatorial-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/combinatorial-testing/SKILL.md
 - description: Use this skill when you need to select high-risk multi-factor combinations after factors, values, and constraints are explicit; triggers include 组合测试 and combinatorial test design.
 
@@ -42,6 +42,15 @@ Author: naodeng
 ---
 name: combinatorial-testing
 description: Use this skill when you need to select high-risk multi-factor combinations after factors, values, and constraints are explicit; triggers include 组合测试 and combinatorial test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Combinatorial Test Design
@@ -66,6 +75,12 @@ Select high-risk multi-factor combinations after factors, values, and constraint
 3. Produce CT-## findings with source, evidence state, applicability, impact/priority, owner, close condition, and validation.
 4. Separate facts, evidence-backed inferences, recommendations, and Human decisions.
 5. Recommend follow-up validation without claiming execution.
+
+## Domain Execution Essentials
+
+- Build sourced factor/value tables and constraints, distinguishing input, environment and state; do not invent binary domains for unknown values.
+- Deliver factors/constraints, strength rationale, legal t-tuples and gaps; any static combination coverage is scoped to the enumerated model.
+- When deriving domain candidates, read and follow [prompts/combinatorial-testing.md](prompts/combinatorial-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

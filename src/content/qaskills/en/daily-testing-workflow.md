@@ -6,7 +6,7 @@ Author: naodeng
 - slug: daily-testing-workflow
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/daily-testing-workflow/SKILL.md
 - description: Use this skill when you need a day-by-day QA routine including planning, execution, bug reporting, and end-of-day wrap-up; triggers include daily testing workflow and daily QA routine.
 
@@ -26,6 +26,7 @@ Author: naodeng
 
 - Own phases and gates; hand full cases/strategy/reports to type skills.
 - Prioritize by risk; gates must be checkable.
+- Keep start/environment readiness RED while the environment is unusable or current-build smoke is unavailable; naming a recovery owner does not clear that blocker.
 - Separate confirmed facts from assumptions.
 - Do not invent missing details; no relative-path links to other skill files.
 
@@ -57,6 +58,15 @@ Author: naodeng
 ---
 name: daily-testing-workflow
 description: Use this skill when you need a day-by-day QA routine including planning, execution, bug reporting, and end-of-day wrap-up; triggers include daily testing workflow and daily QA routine.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Daily Testing Workflow
@@ -79,6 +89,7 @@ description: Use this skill when you need a day-by-day QA routine including plan
 
 - Own phases and gates; hand full cases/strategy/reports to type skills.
 - Prioritize by risk; gates must be checkable.
+- Keep start/environment readiness RED while the environment is unusable or current-build smoke is unavailable; naming a recovery owner does not clear that blocker.
 - Separate confirmed facts from assumptions.
 - Do not invent missing details; no relative-path links to other skill files.
 

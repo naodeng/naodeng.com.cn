@@ -6,9 +6,15 @@ Author: naodeng
 - slug: multi-role-quality-synthesis
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/multi-role-quality-synthesis/SKILL.md
 - description: Use this skill when multiple role reports for one quality stage must be combined into a traceable synthesis; triggers include multi-role quality synthesis, role report consolidation, disagreement summary..
+
+## When to Use
+
+- One or more role reports exist for the same quality stage and must become a unified, traceable stage synthesis.
+- Roles raised duplicate, complementary, or conflicting quality findings whose sources and disagreements must remain visible.
+- Project-delivery constraints and quality facts appear together, and schedule or stakeholder requests must not override quality evidence.
 
 ## Workflow
 
@@ -18,12 +24,31 @@ Author: naodeng
 4. Merge only semantically equivalent findings and union all sources. Keep conflicting findings separate and include them under Disagreements.
 5. Produce the traceable synthesis, then run source, disagreement, severity, project-boundary, and no-new-facts checks.
 
+## Pre-delivery Checklist
+
+- [ ] All inputs share one `stage`, or cross-stage synthesis is explicitly blocked
+- [ ] Every synthesized finding cites one or more input sources
+- [ ] Equivalent findings retain all contributors; conflicting findings were not silently merged
+- [ ] Minority P0/P1 views remain visible; no severity was averaged without explanation
+- [ ] Disagreements is always present and says none when no conflict exists
+- [ ] Project constraints remain separate from quality facts; PM/delivery input did not override a quality fact
+- [ ] No unsupported fact, evidence, root cause, impact, or conclusion was added
+
 ## Raw SKILL.md
 
 ```markdown
 ---
 name: multi-role-quality-synthesis
 description: Use this skill when multiple role reports for one quality stage must be combined into a traceable synthesis; triggers include multi-role quality synthesis, role report consolidation, disagreement summary..
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Multi-Role Quality Synthesis

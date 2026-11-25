@@ -6,7 +6,7 @@
 - slug: secrets-exposure-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/secrets-exposure-review/SKILL.md
 - description: Use this skill when you need evidence-bounded secrets-exposure-review analysis and validation preparation; triggers include 敏感信息暴露审查 and secrets-exposure-review.
 
@@ -50,6 +50,15 @@
 ---
 name: secrets-exposure-review
 description: Use this skill when you need evidence-bounded secrets-exposure-review analysis and validation preparation; triggers include 敏感信息暴露审查 and secrets-exposure-review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 敏感信息暴露审查（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded secrets-exposure-revi
 - 每次执行必须读取 prompts/secrets-exposure-review.md。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 按已授权材料盘点代码、配置、CI、日志、产物和历史位置，记录候选的路径/行号、类别及脱敏指纹，不复制值或自行读取真实凭据。
+- 交付脱敏位置与生命周期风险表，风险等级根据暴露/用途证据，候选有效性保持未知。
+- 形成领域候选时，必须读取并遵循 [prompts/secrets-exposure-review.md](prompts/secrets-exposure-review.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

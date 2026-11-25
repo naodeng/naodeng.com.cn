@@ -6,7 +6,7 @@
 - slug: ux-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/ux-quality-perspective/SKILL.md
 - description: Use this skill when a quality stage needs a UX perspective on information architecture, interaction states, consistency, responsive behavior, or accessibility; triggers include UX 质量视角、用户体验评审 and UX quality perspective.
 
@@ -59,6 +59,15 @@
 ---
 name: ux-quality-perspective
 description: Use this skill when a quality stage needs a UX perspective on information architecture, interaction states, consistency, responsive behavior, or accessibility; triggers include UX 质量视角、用户体验评审 and UX quality perspective.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # UX 质量视角（中文版）
@@ -123,6 +132,14 @@ description: Use this skill when a quality stage needs a UX perspective on infor
 - 不要把通用 UX 清单伪装成当前产品的已证实缺陷。
 - 不要因缺少原型而补造页面、状态或移动端行为。
 - 不要把 UX 审视写成无证据的实现正确性、接口可靠性或发布结论。
+
+## 报告来源
+
+报告头保留所选 `stage`、稳定 `source_id` 和已提供 `version`。缺少来源 ID 时声明临时本地定位；缺少版本写 unknown，不得编造。每项发现含稳定 `finding_id`、来源/证据定位与状态。每项行动回链发现并说明关闭所需证据；负责人、日期和行动状态仅在提供时填写，否则 unknown。这些是独立报告字段，不构成对其他 Skill 的依赖。
+
+## 可选体验证据矩阵
+
+项目材料选择这些维度时，记录 `输入方式 × 设备/断点 × 辅助技术 × UI 状态`，每格保留来源/版本及观察结果或 NOT_RUN/unknown。不得默认所有组合适用、规定未提供设备或把未观察格记通过。一张截图只支持可见格；键盘、读屏、手机与恢复结论各需自身证据。
 ```
 
 ## 安装

@@ -1,0 +1,134 @@
+---
+title: "AI 特性发布工作流：把评测证据带到上线与回滚"
+description: "围绕版本化评测、发布门禁、分阶段放量和线上观察，演示如何用 AI 特性发布工作流串起可复核的发布证据。"
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "AI 特性发布工作流"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+AI 特性的发布风险分散在多个阶段：评测使用了哪个模型和 Prompt，门禁依据哪些运行结果，灰度期间观察什么，什么条件下暂停或回滚。若模型、数据集或裁判版本变化，旧结果也可能不再支持当前候选版本。
+
+AI 特性发布工作流 Skill 用一个阶段契约串起这些证据。上游当前把 workflow.yaml 标为 EXPERIMENTAL；它用于规划和交接，不是评测引擎、生产发布工具或发布批准人。
+
+## 先看源 Skill 与当前状态
+
+源 Prompt 要求记录当前与候选模型、Provider、Prompt 或 Agent、数据集和裁判版本、评测运行记录、阈值来源、灰度范围、监控负责人和回滚动作。缺少的材料要明确标为 UNKNOWN。
+
+它也区分评测状态与人工发布决定。只有每个必需门槛都有当前且范围匹配的证据，评测门禁才可能是 PASS；人工决定要单独记录为 PENDING、APPROVED 或 REJECTED，不能从门禁状态推导。新建的计划、静态文件或一句“评测通过”不能替代运行证据。
+
+## 用一项候选变更走完阶段
+
+下面假设团队要更新一项客服摘要功能的模型与 Prompt。场景只用于说明工作流；没有实际项目阈值、评测结果或发布结论。
+
+| 阶段 | 需要记录 | 进入下一步前要回答 |
+| --- | --- | --- |
+| 契约与风险 | 功能范围、风险切片、负责人、评测目标、数据集与裁判版本、阈值来源和隐私边界 | 这次变更要证明什么？指标和样本计划由谁确认？ |
+| 发布前评测 | 候选模型、Prompt、数据集、裁判、配置、运行 ID、样本量、原始报告、成本和不确定性 | 结果确实对应当前候选版本吗？失败和缺失样本如何处理？ |
+| 发布门禁 | 各项条件、观测值、原始证据、例外、残余风险和决策负责人 | 还有未运行、过期或阻塞的必需检查吗？谁有权作出批准？ |
+| 灰度或影子阶段 | Cohort、流量范围、观察窗口、来源明确的保护阈值、停止条件和回滚动作 | 哪些证据允许扩大、保持或停止？回滚由谁执行？ |
+| 线上观察与收尾 | 质量、漂移、拒答、反馈、成本等观测，告警负责人、回滚记录和后续评测 | 缺失的信号是否被误当作健康？收尾结论能回到原始证据吗？ |
+
+这些表格不是通用的产品阈值。团队需要从自己的质量目标、历史基线和可接受风险中定义阈值，并记录来源。
+
+## 一段可以直接改的调用词
+
+把方括号换成当前变更材料；没有运行记录时，保留待运行状态。
+
+~~~text
+请使用 ai-feature-release-workflow Skill。
+
+任务：[描述 AI 特性的候选变更与发布窗口]
+当前与候选版本：[模型、Provider、Prompt/Agent、服务配置]
+评测材料：[数据集、裁判、运行 ID、原始报告、样本量]
+发布范围：[环境、灰度 Cohort、观察窗口]
+门槛与回滚：[已确认的阈值来源、停止条件、回滚动作]
+负责人：[评测、发布、线上观察和决策负责人]
+未知项：[缺失材料、未执行检查或冲突来源]
+
+按阶段列出入口证据、产物、状态、退出条件和交接方。
+区分计划、实际运行证据、建议与人工决定；不要补写阈值、运行结果或批准状态。
+~~~
+
+先检查输入是否足以建立阶段契约。补齐模型、数据、裁判和环境版本后，再整理门禁与放量计划。
+
+## 从一次检查走到持续发布流程
+
+上游 Workflow 明确了协作关系。按需要把阶段交给对应 Skill，保留结构化交接，不要把不同职责塞进一个超长 Prompt。
+
+| 阶段 | 相邻 Skill | 接收方负责什么 |
+| --- | --- | --- |
+| 功能范围与风险 | AI 功能测试、LLM 评测设计 | 定义产品行为风险、评测目标、数据集、裁判和统计协议 |
+| 发布门槛 | 质量门禁设计 | 把阈值、阻断条件、例外和风险接受规则写成门禁 |
+| 发布协调 | 发布测试工作流 | 安排阶段、负责人、进入/退出条件和发布交接 |
+| 灰度与线上验证 | 生产验证 | 在获准的环境观察版本、信号和已声明的运行条件 |
+| 收尾与指标 | 质量生产力指标 | 按来源和时间窗口解释运行质量、成本与后续行动 |
+
+每次交接都应包含来源、状态、开放缺口和下一步。上游配置了只读默认权限；实际发布、切换流量、删除或批准动作仍需要相应权限与人工决定。
+
+### 放进团队流程的门禁
+
+| 门禁 | 复核内容 | 缺失时怎么处理 |
+| --- | --- | --- |
+| 输入门禁 | 变更范围、候选身份、负责人、环境和回滚权限 | 阻止相关阶段，并列出具体缺口 |
+| 评测门禁 | 运行 ID、版本、样本量、原始证据、阈值来源和不确定性 | 标记 NOT_RUN、UNKNOWN、STALE 或 BLOCKED |
+| 发布门禁 | 每项必需标准有当前证据，例外与残余风险可追溯 | 保持 PENDING，交给授权负责人 |
+| 线上门禁 | 观察责任人、观察窗口、停止条件和回滚动作已明确 | 信号缺失不能视为健康；按已约定条件暂停或停止 |
+| 收尾门禁 | 决定、证据、未完成项和 Owner 有记录 | 不把未关闭风险藏进总结 |
+
+## 使用时容易忽略的边界
+
+- 模型、Prompt、数据集、裁判、配置或 Cohort 变化后，受影响的门槛可能需要重评。
+- 一个汇总分数不能代替原始报告、样本量、不确定性和成本依据。
+- 门禁 PASS、人工 APPROVED 和线上健康是不同状态，不能互相推导。
+- 计划了回滚不代表回滚路径已经执行过；没有运行证据就不要写成验证通过。
+- 灰度中监控信号缺失不是绿色信号，应按有来源的保护条件暂停或停止。
+
+## 安装与调用
+
+单独安装工作流 Skill 即可：
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/ai-feature-release-workflow -g
+~~~
+
+调用时提供真实候选版本、评测材料和发布上下文。不要把示例中的门槛或状态直接复制成项目结论。
+
+## 常见问题
+
+### 评测数据集还没准备好，可以先用这个 Skill 吗？
+
+可以先建立阶段契约、列出所需评测资产和负责人；评测状态应保持 NOT_RUN、UNKNOWN 或 BLOCKED，不能把计划写成结果。
+
+### Prompt 改了，但模型没变，需要重新看门禁吗？
+
+需要判断受影响的评测与门槛。上游要求把 Prompt 版本纳入候选身份；旧结果不能自动代表新 Prompt。
+
+### Skill 能批准发布或执行回滚吗？
+
+不能。它整理证据、阶段建议和交接；发布批准与生产操作由获授权的人执行。
+
+### 线上指标暂时没有数据，可以继续放量吗？
+
+工作流不会把缺失信号当作健康。按已确认的保护阈值和停止条件处理，并由负责人决定是否保持或暂停。
+
+### 为什么标记为 EXPERIMENTAL？
+
+这是上游 workflow.yaml 当前记录的生命周期状态。使用时应把它当作实验性规划契约，不应假设存在自动化运行时或生产集成。
+
+## 参考
+
+- 上游 Skill: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-workflows/ai-feature-release-workflow
+- 执行 Prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/ai-feature-release-workflow/prompts/ai-feature-release-workflow.md
+- 阶段与交接定义: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/ai-feature-release-workflow/workflow.yaml
+- AI 特性发布工作流详情页: https://inaodeng.com/zh-cn/qaskills/ai-feature-release-workflow/
+- 相近指南：发布测试工作流: https://inaodeng.com/zh-cn/blog/ai-testing/awesome-qa-skills-release-testing-workflow/
+- Awesome QA Skills 系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/
+
+## 更多参考
+
+- 更多 QA Skills: https://inaodeng.com/zh-cn/qaskills/
+- 测试百科: https://inaodeng.com/zh-cn/wiki/
+- AI 百科: https://inaodeng.com/zh-cn/AIWiki/

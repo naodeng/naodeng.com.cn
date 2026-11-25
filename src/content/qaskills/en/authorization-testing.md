@@ -6,7 +6,7 @@ Author: naodeng
 - slug: authorization-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/authorization-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded authorization-testing analysis and validation preparation; triggers include 授权测试 and authorization-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: authorization-testing
 description: Use this skill when you need evidence-bounded authorization-testing analysis and validation preparation; triggers include 授权测试 and authorization-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Authorization Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded authorization-testing
 - Read prompts/authorization-testing.md for every invocation.
 - Read evals/eval.yaml and matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Extract subject roles, ownership, tenant, actions, fields, delegation scope/lifetime and revocation rules; build allow/deny/unknown cells.
+- Deliver subject/resource/action cells and revocation timelines, tracing allow and deny decisions without inferring global privileges from role names.
+- When deriving domain candidates, read and follow [prompts/authorization-testing.md](prompts/authorization-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

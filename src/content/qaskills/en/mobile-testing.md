@@ -6,7 +6,7 @@ Author: naodeng
 - slug: mobile-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mobile-testing/SKILL.md
 - description: Use this skill when you need to design mobile test plans for iOS or Android covering functionality, compatibility, performance, network, and security; triggers include mobile testing and app testing.
 
@@ -30,6 +30,8 @@ Author: naodeng
 - Keep output executable: concrete scenarios, clear priority, clear next steps.
 
 ## Progressive Disclosure
+
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
 
 - Before producing output, read and follow `prompts/mobile-testing.md` (minimum coverage, output structure, quality bar).
 - When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
@@ -60,6 +62,15 @@ Author: naodeng
 ---
 name: mobile-testing
 description: Use this skill when you need to design mobile test plans for iOS or Android covering functionality, compatibility, performance, network, and security; triggers include mobile testing and app testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Mobile Testing (English)
@@ -78,6 +89,13 @@ description: Use this skill when you need to design mobile test plans for iOS or
 3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
 4. Default to Markdown; switch formats only when the user asks.
 
+## Domain Execution Essentials
+
+1. Select OS×device×install/upgrade×network×lifecycle combinations from distribution, changes, and incidents. Record samples and gaps; do not invent supported devices.
+2. Preserve raw deeplink URI, decoding policy, route/parameters, and authorization. Compare cold/warm/resume paths; restoration must not drop parameters or double-decode.
+3. For interrupted payments retain order/operation IDs and commit point. Read back ledger state and reconcile UI on resume; query lost responses before retrying to avoid duplicate payment.
+4. Check upgrade data compatibility, permissions, process termination/restoration, and resources. Unexecuted devices are candidates; support claims require actual device evidence.
+
 ## Core Constraints
 
 - Prioritize by risk / business impact — do not treat everything equally.
@@ -86,6 +104,8 @@ description: Use this skill when you need to design mobile test plans for iOS or
 - Keep output executable: concrete scenarios, clear priority, clear next steps.
 
 ## Progressive Disclosure
+
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
 
 - Before producing output, read and follow `prompts/mobile-testing.md` (minimum coverage, output structure, quality bar).
 - When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.

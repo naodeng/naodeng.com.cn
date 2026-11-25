@@ -1,0 +1,141 @@
+---
+title: "结构化输出测试：把 JSON、Schema 和业务语义分开验证"
+description: "从 JSON 解析、Schema 约束、业务 Oracle 到流式输出、拒答修复和版本演进，设计有证据边界的结构化输出测试。"
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "结构化输出测试"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+模型返回了 JSON，不等于输出符合合同。JSON 可能语法正确却缺少必填字段；Schema 可能通过，却与业务 Oracle 矛盾；单条样例通过，也不能说明不同模型版本和输入分布都稳定。
+
+结构化输出测试 Skill 将解析、Schema 和领域语义拆开判定，并要求保留输入、模型、Prompt、数据集、Schema、运行参数和重复次数等证据。
+
+## 用一个结构化响应区分三层失败
+
+假设预约服务的 Schema 允许 status、available 和 remaining 字段；领域规则另行规定库存为 0 时 available 不能为 true。以下 JSON 是虚构例子，只用于说明三层判定。
+
+| 样例 | 解析 | Schema | 领域语义 |
+| --- | --- | --- | --- |
+| JSON 语法不完整，例如缺少闭合括号 | FAIL | 未进入此层 | 未进入此层 |
+| JSON 可解析，但缺少必填的 status | PASS | FAIL | 不应覆盖 |
+| 字段类型与枚举合法，但 remaining 为 0 且 available 为 true | PASS | PASS | FAIL |
+
+记录 parse_status、schema_status 和 semantic_status。只输出一个笼统的“失败”会丢失定位信息；只记录 JSON parse PASS 则可能漏掉后两层问题。
+
+## 先确定输出合同和输入状态
+
+调用前收集 Schema 或类型定义、必填字段、枚举值、额外字段策略、格式约束、字段含义、领域 Oracle、允许的自然语言变化，以及模型、Prompt、数据集和运行参数。没有来源支持的字段规则不能由 Skill 自行补写。
+
+评测结论还要记录样本数量、失败数、分母、重复次数和证据引用，并设置 evaluation_status。只有范围内运行记录覆盖所有必需断言时才是 PASS；明确未运行标记 NOT_RUN，执行受阻标记 BLOCKED，证据不足标记 UNKNOWN。每个样本还应保留 trace_id、输入和版本身份、参数、运行/试验 ID、三层状态及脱敏证据引用。静态 Schema 文件或单条样例不能证明 PASS。
+
+## 覆盖模式、流式结果与 Schema 演进
+
+按照产品声明的模式分别设计覆盖：
+
+- JSON mode 与普通文本输出：确认当前模式和完整响应边界。
+- 工具调用参数：检查参数 Schema、必填项、枚举和额外字段策略。
+- 流式响应：区分中间 chunk、结束信号、截断和最终结果，不能把未完成片段当成完整输出。
+- 拒答与修复：按产品契约判断拒答格式、非法输出后的修复行为和失败状态；不能把任意重试都算成功。
+- Schema 演进：明确旧版生产者/新版消费者等兼容目标，分别验证声明支持的组合。
+
+一个模式标签不等于模式成功；每种模式都要有实际样例和可观察 Oracle。
+
+## 一段可以直接改的调用词
+
+~~~text
+请使用 structured-output-testing Skill。
+
+输出模式：[JSON、工具参数或流式输出]
+Schema 与版本：[文件、版本、必填字段、类型、枚举、额外字段策略]
+字段语义：[业务定义、领域 Oracle、允许的等价表达]
+输入与样本：[来源、样本数、重复次数]
+运行上下文：[模型、Prompt、数据集、参数、环境和运行 ID]
+范围限制：[隐私、脱敏、禁止操作]
+
+分别报告 JSON 解析、Schema 和领域语义状态。
+覆盖完整响应、流式中间态与终止、拒答/修复、Schema 兼容性中与产品相关的部分。
+每项结论关联样本、版本、参数、运行记录或脱敏输出引用；没有运行证据不要写 PASS。
+~~~
+
+## 从单次检查走到持续评测
+
+单次分析发现合同缺口后，把确定的字段约束、语义 Oracle 和失败样例纳入固定回归集。模型、Prompt、数据集或 Schema 改变时，比较同一组可追踪样本，保留变化前后的版本、失败数和分母。
+
+| 交接场景 | 相邻 Skill | 职责边界 |
+| --- | --- | --- |
+| 结构化模型输出的广泛质量 | LLM 测试 | 关注模型行为、拒答、安全和失败模式，不限于结构格式 |
+| 数据集、裁判与统计设计 | LLM 评测设计 | 设计样本、Rubric、判定方法和回归门槛 |
+| API 请求/响应 Schema | API Schema 校验 | 校验接口合同和方言；结构化输出测试关注模型/Agent 生成结果及其语义 |
+| MCP 工具参数或返回值 | MCP 服务端测试 | 在协议与工具合同范围内检查工具 schema、服务端行为和运行边界 |
+
+如果需要机器消费的 JSON 报告，先定义报告本身的 Schema，再验证结构化输出结果；不要让 Skill 假设字段或状态值。
+
+### 放进回归门禁
+
+| 门禁 | 检查内容 | 失败时 |
+| --- | --- | --- |
+| 合同门禁 | Schema 版本、字段规则、语义 Oracle 和输出模式明确 | 标记缺口，不虚构断言 |
+| 结构门禁 | parse、schema、semantic 三个状态分别保存 | 修正定位，不用一个通过/失败覆盖所有层 |
+| 证据门禁 | 样本、版本、参数、运行 ID、分母和原始证据可追溯 | 保持 UNKNOWN 或 NOT_RUN |
+| 流式门禁 | 完整终止、截断、拒答/修复按产品契约覆盖 | 不把中间 chunk 当最终结果 |
+| 兼容门禁 | 只覆盖产品声明支持的 Schema 生产者/消费者组合 | 未验证的版本组合列为风险 |
+
+## 容易踩的坑
+
+- 把可解析 JSON 当成 Schema 正确或业务正确。
+- 只测一次就声称输出稳定或整体质量通过。
+- 把自然语言等价表达做成僵硬的字符串完全相等。
+- 丢掉模型、Prompt、Schema 或数据集版本，导致回归结果无法比较。
+- 没有运行记录时仍然写 PASS。
+- 把拒答、修复、流式终止和普通完整输出当成同一种模式。
+
+## 安装与调用
+
+单独安装结构化输出测试 Skill：
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/structured-output-testing -g
+~~~
+
+提供可追溯的 Schema 和领域 Oracle；只有“请检查 JSON”不足以做语义判定。
+
+## 常见问题
+
+### JSON 能解析，为什么还会失败？
+
+解析只证明语法层可读。必填项、类型和枚举属于结构层，业务关系属于语义层；三层有不同的判定依据。
+
+### Schema 缺失时能测试吗？
+
+可以整理已知字段和待确认问题，但不能把推测的字段约束当作合同。结论应限制在现有证据。
+
+### 流式响应到一半就能判定吗？
+
+只有产品合同定义该部分状态可消费时才可以。否则应等待完成标记，并把截断、取消和完整输出分别记录。
+
+### 一个样例通过能说明什么？
+
+只能说明该输入、版本、参数和运行的观察结果；不能推断整体分布或稳定性。
+
+### 什么时候需要 API Schema 校验？
+
+当目标是 API 消费者/生产者合同，使用 API Schema 校验；当目标是模型或 Agent 生成的结构化输出及其领域含义，使用本 Skill。两个范围重叠时可以分别交接。
+
+## 参考
+
+- 上游 Skill: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/structured-output-testing
+- 完整执行 Prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/structured-output-testing/prompts/structured-output-testing.md
+- Eval 入口与案例: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/structured-output-testing/evals
+- 结构化输出测试详情页: https://inaodeng.com/zh-cn/qaskills/structured-output-testing/
+- 相近指南：API Schema 校验: https://inaodeng.com/zh-cn/blog/ai-testing/awesome-qa-skills-api-schema-validation/
+- 相邻指南：LLM 测试: https://inaodeng.com/zh-cn/blog/ai-testing/awesome-qa-skills-llm-testing/
+- Awesome QA Skills 系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/
+
+## 更多参考
+
+- 更多 QA Skills: https://inaodeng.com/zh-cn/qaskills/
+- AI 测试知识库: https://inaodeng.com/zh-cn/AIWiki/
+- 测试百科: https://inaodeng.com/zh-cn/wiki/

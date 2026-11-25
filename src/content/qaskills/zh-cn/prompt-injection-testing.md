@@ -6,7 +6,7 @@
 - slug: prompt-injection-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/prompt-injection-testing/SKILL.md
 - description: Use this skill when you need to design safe prompt-injection tests for AI systems and tool boundaries; triggers include Prompt Injection 测试 and prompt injection testing.
 
@@ -25,6 +25,8 @@
 5. 信息不足时不要停在提问：先交付受限初版，并说明哪些结论暂不能成立。
 
 ## 核心约束
+
+- 纳入 RAG、MCP 资源/工具描述、UI/附件等间接注入面；用合成 canary 验证外泄通道和拒绝后副作用。
 
 - 仅在授权环境使用安全占位数据
 - 不提供可用于真实攻击的敏感目标
@@ -54,6 +56,15 @@
 ---
 name: prompt-injection-testing
 description: Use this skill when you need to design safe prompt-injection tests for AI systems and tool boundaries; triggers include Prompt Injection 测试 and prompt injection testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.2"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 提示注入测试（中文版）
@@ -85,6 +96,8 @@ description: Use this skill when you need to design safe prompt-injection tests 
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
 ## 核心约束
+
+- 纳入 RAG、MCP 资源/工具描述、UI/附件等间接注入面；用合成 canary 验证外泄通道和拒绝后副作用。
 
 - 仅在授权环境使用安全占位数据
 - 不提供可用于真实攻击的敏感目标

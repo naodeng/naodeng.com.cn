@@ -6,7 +6,7 @@ Author: naodeng
 - slug: decision-table-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/decision-table-testing/SKILL.md
 - description: Use this skill when you need to turn conditions, rules, actions, and outcomes into an auditable set of rule combinations; triggers include 决策表测试设计 and decision table test design.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent rules, replace a complete strategy, or ac
 ---
 name: decision-table-testing
 description: Use this skill when you need to turn conditions, rules, actions, and outcomes into an auditable set of rule combinations; triggers include 决策表测试设计 and decision table test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Decision Table Test Design
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent rules, replace a complete strategy, or ac
 2. Complete known, missing, conflicting, stale, out_of_scope, and assumptions before findings.
 3. Record DTT-## with rule ID, condition combination, applicability, action/outcome, exception, source evidence, and validation method, source, evidence state, impact, owner, close condition, and validation.
 4. Preserve conflicts, unknown constraints, and open questions.
+
+## Domain Execution Essentials
+
+- Discretize continuous conditions into sourced mutually exclusive ranges/categories and list domains, actions, exceptions and precedence; do not force vague conditions into booleans.
+- Deliver full combination/rule/action mapping and overlap/gap lists; compression must not hide undefined behavior.
+- When deriving domain candidates, read and follow [prompts/decision-table-testing.md](prompts/decision-table-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

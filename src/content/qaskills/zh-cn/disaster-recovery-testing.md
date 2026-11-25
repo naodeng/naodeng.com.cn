@@ -6,7 +6,7 @@
 - slug: disaster-recovery-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/disaster-recovery-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded disaster-recovery-testing analysis and validation preparation; triggers include 灾备测试 and disaster-recovery-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: disaster-recovery-testing
 description: Use this skill when you need evidence-bounded disaster-recovery-testing analysis and validation preparation; triggers include 灾备测试 and disaster-recovery-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 灾备测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded disaster-recovery-tes
 - 每次执行必须读取 prompts/disaster-recovery-testing.md；它是本 Skill 的完整执行规范。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录实际存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 从灾备合同标主/备用区域、跨区故障范围、RTO/RPO 起止定义、可接受丢失和业务恢复标准，未知目标不得自设。
+- 交付跨区恢复依赖表、时间线、RTO/RPO 计算及一致性证据，目标满足与未验证项分开。
+- 形成领域候选时，必须读取并遵循 [prompts/disaster-recovery-testing.md](prompts/disaster-recovery-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

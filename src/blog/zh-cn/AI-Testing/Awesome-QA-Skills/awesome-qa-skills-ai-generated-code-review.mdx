@@ -1,0 +1,146 @@
+---
+title: "AI 生成代码评审：把实现、测试与生成证据放在一起看"
+description: "用 AI 生成代码评审 Skill 审查变更意图、范围、依赖、测试与 CI 信号，并把未验证的判断留在证据边界内。"
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI 测试", "Agent Skills", "AI 生成代码评审"]
+categories: ["AI 测试", "QA Skills"]
+series: ["Awesome QA Skills 实战"]
+---
+
+AI 或 Agent 生成的代码仍然要按普通工程代码审查。生成过程会带来额外证据：谁启动了 Agent、它调用了哪些工具、修改了哪些文件，测试或 CI 是否在同一变更里被删改。生成来源会改变需要查看的证据，但不能单凭来源认定代码有缺陷。
+
+AI 生成代码评审 Skill 面向生产代码、补丁和编码 Agent 的 PR。它把实现是否符合意图、变更是否受控、测试与 CI 是否保留真实失败信号放在同一轮审查里。
+
+## 先看源 Skill 的输入门槛
+
+正式评审至少需要可识别的代码版本和可审查的变更。缺少仓库/提交身份或 diff 时，应该标记 BLOCKED 并请求准确材料，不能输出正式严重度或合并建议。
+
+模型、Prompt、Agent 运行记录和代码归属，只记录用户提供或能从来源核实的内容。缺少生成轨迹时写 UNKNOWN；Agent 自述、绿色 CI 或一次测试运行，都不能独立证明代码正确。
+
+## 用一个具体 PR 走一遍
+
+假设 Agent 为支付重试逻辑新增分支、修改了一条测试，并调整了 CI 工作流。这是示例场景，不代表某个真实 PR 存在该问题。
+
+| 审查步骤 | 对照材料 | 要确认什么 |
+| --- | --- | --- |
+| 对齐意图和范围 | 需求、验收条件、基线与完整 diff | 改动文件和行为是否都能对应到任务？ |
+| 检查实现 | 状态变化、并发、异常、兼容性和数据路径 | 是否引入静默默认值、吞掉错误或扩大范围？ |
+| 核对依赖与 API | 包锁文件、仓库文档、官方或注册表来源 | 依赖和参数是否真实且与使用方式一致？ |
+| 审查测试与 CI | 测试差异、断言、覆盖门槛、必需 CI job | 是否删掉失败用例、削弱断言或关闭必要工作？ |
+| 追踪生成活动 | 提供的 Agent run、step、tool 和证据 ID | 轨迹是否能对应到具体文件、参数、结果和 diff？ |
+
+每项正式发现都要有具体位置、触发条件、影响、来源、证据状态和最小修复方向。未证实的担忧应该放在验证缺口里，不要伪装成 P0/P1/P2 缺陷。
+
+## 从一个发现到可复核的报告
+
+如果 diff 显示重试分支把异常转换成成功响应，先回到需求、实现路径和相关测试确认它是否真的改变行为。若无法确认，请列出缺少的运行记录或调用链，不要只凭“看起来像兜底”定级。
+
+输出应分别记录：
+
+| 输出部分 | 内容 |
+| --- | --- |
+| 评审状态 | 范围、代码身份、变更材料和 BLOCKED / COMPLETE |
+| 意图与范围 | 目标行为、覆盖到的文件、无关扩展和未审区域 |
+| 生成来源 | 明确提供的模型、Prompt、Agent run、工具轨迹；缺失项标 UNKNOWN |
+| 排序发现 | 位置、来源、触发、影响、证据状态和最小修复 |
+| 测试与 CI | 变更项、对验收条件的影响、独立状态和运行证据 |
+| 下一步 | 阻塞材料、授权/人工决定和可关闭的验证动作 |
+
+## 一段可以直接改的调用词
+
+~~~text
+请使用 ai-generated-code-review Skill。
+
+代码身份：[仓库、PR、提交或稳定版本]
+可审查变更：[完整 diff、补丁或可访问的文件]
+目标与验收条件：[任务、需求来源和行为预期]
+生成来源：[模型、Prompt、Agent run/trace；缺失项写 UNKNOWN]
+验证材料：[测试命令、结果、CI 变更和日志]
+范围与限制：[包含/排除内容、不得执行的动作]
+
+先确认代码身份和变更材料都可审查。
+检查意图、范围、实现行为、依赖/API、测试与 CI。
+每条发现提供位置、来源、触发、影响、证据状态和最小修复。
+不要因代码由 AI 生成而推断缺陷，也不要因 CI 绿色而宣布正确或可合并。
+~~~
+
+第一次调用先检查是否有正式评审所需的身份与变更。如果资料不足，先补资料，不要让模型替你猜 diff。
+
+## 进阶使用：把单次审查连进 PR 流程
+
+当 Agent PR 进入团队流程时，可以分开交接：
+
+| 阶段 | 相邻 Skill | 交接内容 |
+| --- | --- | --- |
+| 需求边界 | 需求分析 | 需求来源、验收条件、未决问题和变更范围 |
+| AI 实现审查 | AI 生成代码评审 | 代码身份、diff、带证据的发现、验证缺口 |
+| AI 生成测试审查 | AI 生成测试评审 | 测试代码、来源规则、断言质量和可能逃逸的缺陷 |
+| PR 整体质量 | PR 质量评审 | 变更范围、风险、审查发现、测试/CI 状态和阻塞项 |
+| Skill 包变更（如适用） | Skill 安全审查 | 仅当变更对象本身是 Skill、插件或类似包时审查信任边界 |
+
+AI 生成代码评审聚焦实现与变更证据。AI 生成测试评审关注测试本身是否有独立依据、有效断言和可观测结果；PR 质量评审覆盖更完整的交付范围。它们互相补充，不应合并成同一个模糊结论。
+
+### 放进团队流程的审查门禁
+
+| 门禁 | 检查点 | 失败动作 |
+| --- | --- | --- |
+| 输入门禁 | 代码版本、完整 diff、目标和来源可访问 | BLOCKED，列出准确缺项 |
+| 范围门禁 | 每项变更能关联到目标或明确依赖 | 请求拆分或解释，不以文件数量单独定罪 |
+| 证据门禁 | 每项发现能回到位置、来源和触发条件 | 移到验证缺口，补充证据 |
+| 测试/CI 门禁 | 断言、必要 job 和失败信号仍然有效 | 阻止把绿色状态当成质量结论 |
+| 决策门禁 | 残余风险和合并责任人明确 | 留给有权限的人工负责人决定 |
+
+## 容易踩的坑
+
+- 因为代码由 AI 生成就提高严重度，或因为 CI 绿就降低严重度。
+- 把未知依赖直接说成虚构；应查锁文件、仓库文档或注册表，仍无法核实时标 UNKNOWN。
+- 只看新增实现，忽略删除的测试、弱化的断言和关闭的 CI job。
+- 把 Agent 轨迹或工具自述当成独立验证。
+- 缺少代码身份或可审查 diff 时仍然给 P0/P1/P2 或合并建议。
+
+## 安装与调用
+
+单独安装 AI 生成代码评审 Skill：
+
+~~~bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-generated-code-review -g
+~~~
+
+调用时提供完整 diff、任务来源和验证材料。若审查的是生成测试而非生产实现，搭配 AI 生成测试评审 Skill。
+
+## 常见问题
+
+### 没有 Agent 运行轨迹，还能做评审吗？
+
+可以审查可见的代码和验证材料，但生成来源必须标 UNKNOWN；不要推断作者身份，也不要让缺失轨迹自动变成缺陷。
+
+### 只有 PR 标题，没有 diff，可以正式评审吗？
+
+不可以。上游要求代码版本和可审查变更同时存在；缺少任一项都应 BLOCKED。
+
+### CI 全绿能说明代码正确吗？
+
+不能。要核对 CI 覆盖的 job、断言、基线和结果来源；绿色信号不能替代行为分析。
+
+### 这个 Skill 会审查 AI 生成的测试吗？
+
+测试代码应交给 AI 生成测试评审 Skill。当前 Skill 仍会检查同一变更中的测试或 CI 是否被删改、削弱或绕过。
+
+## 参考
+
+- 上游 Skill: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/zh/testing-types/ai-generated-code-review
+- 完整执行 Prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-generated-code-review/prompts/ai-generated-code-review.md
+- Agent 轨迹证据参考: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-generated-code-review/references/trajectory-evidence.md
+- AI 代码风险清单: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-generated-code-review/references/ai-code-risk-checklist.md
+- AI 生成代码评审详情页: https://inaodeng.com/zh-cn/qaskills/ai-generated-code-review/
+- 相近指南：代码审查: https://inaodeng.com/zh-cn/blog/ai-testing/awesome-qa-skills-code-review/
+- 相邻指南：AI 生成测试评审: https://inaodeng.com/zh-cn/blog/ai-testing/awesome-qa-skills-ai-generated-test-review/
+- Awesome QA Skills 系列总览: https://inaodeng.com/zh-cn/blog/ai-testing/introduction_of_awesome_qa_skills/
+
+## 更多参考
+
+- 更多 QA Skills: https://inaodeng.com/zh-cn/qaskills/
+- AI 测试知识库: https://inaodeng.com/zh-cn/AIWiki/
+- 测试百科: https://inaodeng.com/zh-cn/wiki/

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: agent-loop-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-loop-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded loop state, plan/action/observation cycles, stop conditions, budgets, repetition, and trace evidence; triggers include Agent 循环 and Agent loop.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: agent-loop-testing
 description: Use this skill when you need evidence-bounded loop state, plan/action/observation cycles, stop conditions, budgets, repetition, and trace evidence; triggers include Agent 循环 and Agent loop.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent Loop Testing
@@ -71,10 +80,18 @@ description: Use this skill when you need evidence-bounded loop state, plan/acti
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/agent-loop-testing.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Record task/run/step IDs, plan, tool and normalized arguments, observation identity/digest, business state delta, and cumulative time/cost; redact sensitive values while preserving deduplication evidence.
+2. Progress requires new goal-relevant evidence or state advancement. Repeated action/observation with no advancement counts as a no-progress cycle; successful calls or repeated prose do not establish progress.
+3. Apply supplied no-progress limits, retry policy, and time/cost budgets. Safety/cancellation stops immediately; any exhausted hard budget precedes more planning. Ask for missing limits rather than invent numbers.
+4. Repetition takes the project-authorized change-strategy, stop, or escalation branch. Report trigger step, termination class, remaining work, and absence of extra effects.
 ## Core Constraints
 
 - Keep the analysis focused on loop state, plan/action/observation cycles, stop conditions, budgets, repetition, and trace evidence; do not replace business owners or Human risk acceptance, exception approval, or safety decisions.

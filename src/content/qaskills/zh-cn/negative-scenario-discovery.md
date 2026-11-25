@@ -1,4 +1,4 @@
-# 异常场景发现
+# 负向场景发现
 
 作者：naodeng
 
@@ -6,9 +6,9 @@
 - slug: negative-scenario-discovery
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/negative-scenario-discovery/SKILL.md
-- description: Use this skill when you need to discover invalid, denied, failed, degraded, or unsafe-recovery scenarios from product evidence; triggers include 异常场景发现 and negative scenario discovery.
+- description: Use this skill when you need to discover invalid, denied, failed, degraded, or unsafe-recovery scenarios from product evidence; triggers include 负向场景发现 and negative scenario discovery.
 
 ## 何时使用
 
@@ -31,8 +31,8 @@
 - 必须区分 invalid input、unauthorized、dependency failure、timeout、retry exhaustion、duplicate request、partial failure 和 unsafe recovery（适用时）。
 - 不执行故障注入，不调用真实依赖，不修改数据或目标系统。
 - 不发明错误码、重试次数、超时阈值、用户文案、SLA 或恢复批准。
-- `NS-##` 是异常候选和证据需求，不是已执行、已通过、已恢复或安全证明。
-- 不把异常场景发现扩写成完整测试用例或事故根因结论。
+- `NS-##` 是负向候选和证据需求，不是已执行、已通过、已恢复或安全证明。
+- 不把负向场景发现扩写成完整测试用例或事故根因结论。
 
 ## 交付前自检
 
@@ -54,10 +54,19 @@
 ```markdown
 ---
 name: negative-scenario-discovery
-description: Use this skill when you need to discover invalid, denied, failed, degraded, or unsafe-recovery scenarios from product evidence; triggers include 异常场景发现 and negative scenario discovery.
+description: Use this skill when you need to discover invalid, denied, failed, degraded, or unsafe-recovery scenarios from product evidence; triggers include 负向场景发现 and negative scenario discovery.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
-# 异常场景发现
+# 负向场景发现
 
 从功能目标、输入约束、权限、依赖失败契约、超时/重试、幂等/事务和恢复设计中发现需要验证的失败、拒绝、降级和不安全恢复路径，输出 `NS-##`。它不写完整测试用例、不执行故障注入、不发明错误码，也不宣布系统行为正确。
 
@@ -93,8 +102,8 @@ description: Use this skill when you need to discover invalid, denied, failed, d
 - 必须区分 invalid input、unauthorized、dependency failure、timeout、retry exhaustion、duplicate request、partial failure 和 unsafe recovery（适用时）。
 - 不执行故障注入，不调用真实依赖，不修改数据或目标系统。
 - 不发明错误码、重试次数、超时阈值、用户文案、SLA 或恢复批准。
-- `NS-##` 是异常候选和证据需求，不是已执行、已通过、已恢复或安全证明。
-- 不把异常场景发现扩写成完整测试用例或事故根因结论。
+- `NS-##` 是负向候选和证据需求，不是已执行、已通过、已恢复或安全证明。
+- 不把负向场景发现扩写成完整测试用例或事故根因结论。
 
 ## 参考文件
 

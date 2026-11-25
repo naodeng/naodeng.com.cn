@@ -6,7 +6,7 @@
 - slug: api-rate-limit-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-rate-limit-testing/SKILL.md
 - description: Use this skill when you need to design evidence-bounded API quota, burst, and recovery scenarios; triggers include API 限流测试 and API rate limit testing.
 
@@ -51,6 +51,15 @@
 ---
 name: api-rate-limit-testing
 description: Use this skill when you need to design evidence-bounded API quota, burst, and recovery scenarios; triggers include API 限流测试 and API rate limit testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API 限流测试
@@ -76,6 +85,12 @@ description: Use this skill when you need to design evidence-bounded API quota, 
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 ARL-## 记录对象、前置条件、关注行为、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 提取算法、配额 N、窗口起止/时间源、突发额度、计数对象、用户/租户/路由作用域和重置规则。
+- 按主体和时间列配额账本与预期/实际响应；限流正确性同时包含拒绝超额与允许额度内请求。
+- 形成领域候选时，必须读取并遵循 [prompts/api-rate-limit-testing.md](prompts/api-rate-limit-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

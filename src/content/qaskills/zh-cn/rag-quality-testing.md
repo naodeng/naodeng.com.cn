@@ -6,7 +6,7 @@
 - slug: rag-quality-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/rag-quality-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded grounding, relevance, completeness, citation support, abstention, and answer-level evidence in RAG outputs; triggers include RAG 质量 and RAG quality.
 
@@ -53,6 +53,15 @@
 ---
 name: rag-quality-testing
 description: Use this skill when you need evidence-bounded grounding, relevance, completeness, citation support, abstention, and answer-level evidence in RAG outputs; triggers include RAG 质量 and RAG quality.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # RAG 质量测试（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded grounding, relevance,
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/rag-quality-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 固定query/sample ID、知识库/索引/检索/模型/Prompt版本；建立query→检索chunk ID/版本→原子声明→引用位置→支持/矛盾/缺失映射，不以有引用判断grounding。
+2. 引用准确性、声明支持与答案完整性分别评：遗漏必需条件即使已有声明全支持也可能不完整；按用户任务和项目rubric判。
+3. 用知识覆盖内可回答与覆盖外应拒答对照，分别判正常任务正确性、错误拒答和应拒答幻觉；拒答率不能代替质量。
+4. 缺chunk、真值、访问权限或门槛保持UNKNOWN/NOT_RUN；区分检索缺陷与生成曲解，报告证据范围和责任环节。
 
 ## 核心约束
 

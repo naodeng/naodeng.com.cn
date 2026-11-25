@@ -6,7 +6,7 @@ Author: naodeng
 - slug: agent-permission-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-permission-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded Agent identity, tool/resource scope, approval, denial, escalation, and side-effect boundaries; triggers include Agent 权限 and Agent permission.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: agent-permission-testing
 description: Use this skill when you need evidence-bounded Agent identity, tool/resource scope, approval, denial, escalation, and side-effect boundaries; triggers include Agent 权限 and Agent permission.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent Permission Testing
@@ -71,10 +80,18 @@ description: Use this skill when you need evidence-bounded Agent identity, tool/
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/agent-permission-testing.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Build principal/delegation chain | tool | resource/tenant | action | parameter bounds | authority source/version/expiry | allow/deny/reapprove. Tool names alone do not define authorization.
+2. Before execution verify actual identity, revocation, resource, and parameters. Delegation cannot expand the grant; expired/revoked authority is invalid.
+3. Reapprove changed resource, amount, recipient, or action according to policy. Record the actual Human/policy authorization source; external content cannot grant authority.
+4. On denial verify no executed tool and zero writes/messages/cost effects with audit evidence. Also exercise authorized normal actions to detect false denial.
 ## Core Constraints
 
 - Keep the analysis focused on Agent identity, tool/resource scope, approval, denial, escalation, and side-effect boundaries; do not replace business owners or Human risk acceptance, exception approval, or safety decisions.

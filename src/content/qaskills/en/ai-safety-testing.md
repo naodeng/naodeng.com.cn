@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ai-safety-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-safety-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded safety policy, abuse categories, refusal/redirect behavior, privacy, escalation, and Human risk decisions; triggers include AI 安全 and AI safety.
 
@@ -25,6 +25,8 @@ Author: naodeng
 5. When input is incomplete, deliver a bounded first pass, state unsupported conclusions, and never present static material as execution evidence.
 
 ## Core Constraints
+
+- Set authorized scope, policy categories, stop/escalation conditions, and harmful/benign pairs before red teaming; assess safety failures and over-refusal separately, and do not call “no failure found” a pass.
 
 - Keep the analysis focused on safety policy, abuse categories, refusal/redirect behavior, privacy, escalation, and Human risk decisions; do not replace business owners or Human risk acceptance, exception approval, or safety decisions.
 - Never invent system behavior, fields, model outputs, data, thresholds, root causes, execution records, or pass claims.
@@ -45,6 +47,15 @@ Author: naodeng
 ---
 name: ai-safety-testing
 description: Use this skill when you need evidence-bounded safety policy, abuse categories, refusal/redirect behavior, privacy, escalation, and Human risk decisions; triggers include AI 安全 and AI safety.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.2"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # AI Safety Testing
@@ -71,11 +82,22 @@ description: Use this skill when you need evidence-bounded safety policy, abuse 
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/ai-safety-testing.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Fix policy ID/version/audience and map category/conditions→allow/restrict/refuse/escalate→allowed content/prohibited effects→evidence. Missing policy cannot become a safety approval.
+2. Pair policy-defined harmful cases with neighboring benign controls. Assess harmful handling, allowed-task completion, and over-refusal independently; refusal rate alone is no safety metric.
+3. Check actual content and tool actions in restricted/redirection paths, not merely a refusal prefix. Record escalation cause, responsible role, and pending Human decision.
+4. Labels retain policy source, sample version, expected and actual branches. Missing execution outputs remain NOT_RUN; unknown policy boundaries remain UNKNOWN.
+
 ## Core Constraints
+
+- Set authorized scope, policy categories, stop/escalation conditions, and harmful/benign pairs before red teaming; assess safety failures and over-refusal separately, and do not call “no failure found” a pass.
 
 - Keep the analysis focused on safety policy, abuse categories, refusal/redirect behavior, privacy, escalation, and Human risk decisions; do not replace business owners or Human risk acceptance, exception approval, or safety decisions.
 - Never invent system behavior, fields, model outputs, data, thresholds, root causes, execution records, or pass claims.

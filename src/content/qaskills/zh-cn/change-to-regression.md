@@ -6,7 +6,7 @@
 - slug: change-to-regression
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-11-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/change-to-regression/SKILL.md
 - description: Use this skill when you need pre-change regression guardrails or an explainable regression scope from a proposed or implemented change; triggers include change-to-regression, 变更到回归, and 编码前回归风险.
 

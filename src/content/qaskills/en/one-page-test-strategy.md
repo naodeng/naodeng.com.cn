@@ -6,7 +6,7 @@ Author: naodeng
 - slug: one-page-test-strategy
 - category: type
 - hasEvals: true
-- syncedAt: 2026-11-06
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/one-page-test-strategy/SKILL.md
 - description: Use this skill when a team needs a concise visual test strategy tied to project goals and risks; triggers include 一页纸测试策略、测试策略图 and one-page test strategy.
 

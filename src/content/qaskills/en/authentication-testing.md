@@ -6,7 +6,7 @@ Author: naodeng
 - slug: authentication-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/authentication-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded authentication-testing analysis and validation preparation; triggers include 身份认证测试 and authentication-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: authentication-testing
 description: Use this skill when you need evidence-bounded authentication-testing analysis and validation preparation; triggers include 身份认证测试 and authentication-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Authentication Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded authentication-testin
 - Read prompts/authentication-testing.md for every invocation.
 - Read evals/eval.yaml and matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Model unauthenticated, challenged, authenticated, locked and recovery states for supplied password/MFA/recovery/federation mechanisms, with creation/rotation/expiry/revocation/replay rules.
+- Deliver authentication transitions and credential lifecycles with expected state/token, observation and gaps; authentication does not replace authorization.
+- When deriving domain candidates, read and follow [prompts/authentication-testing.md](prompts/authentication-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

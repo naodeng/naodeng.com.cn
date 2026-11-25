@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-suite-health-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-suite-health-analysis/SKILL.md
 - description: Use this skill when you need to assess test-suite health from duration, flakiness, duplication, quarantine, and maintenance evidence; triggers include 测试套件健康分析 and test suite health analysis.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent behavior conclusions, replace a complete 
 ---
 name: test-suite-health-analysis
 description: Use this skill when you need to assess test-suite health from duration, flakiness, duplication, quarantine, and maintenance evidence; triggers include 测试套件健康分析 and test suite health analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Suite Health Analysis
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent behavior conclusions, replace a complete 
 2. Complete the known, missing, conflicting, stale, out_of_scope, and assumptions input audit before findings.
 3. Record TSH-## with the subject, preconditions, concern, source evidence, and validation, plus impact/priority, owner role, close condition, and evidence state.
 4. Preserve conflicts, unknown constraints, and open questions when evidence is incomplete.
+
+## Domain Execution Essentials
+
+- Normalize stable test IDs, protected obligations, code/data revisions and run IDs, separating first attempts, retries, quarantine, skips and unrun cases.
+- Deliver identified run metrics, failure/retry/quarantined obligations and duration risks; show denominators/retries alongside final pass rates.
+- When deriving domain candidates, read and follow [prompts/test-suite-health-analysis.md](prompts/test-suite-health-analysis.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

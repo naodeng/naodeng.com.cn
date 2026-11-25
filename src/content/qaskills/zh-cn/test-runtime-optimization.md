@@ -6,7 +6,7 @@
 - slug: test-runtime-optimization
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-runtime-optimization/SKILL.md
 - description: Use this skill when you need evidence-bounded slow tests, profiling evidence, setup/teardown, parallelism, isolation, and baselines; triggers include 测试运行时间 and test runtime.
 
@@ -53,6 +53,15 @@
 ---
 name: test-runtime-optimization
 description: Use this skill when you need evidence-bounded slow tests, profiling evidence, setup/teardown, parallelism, isolation, and baselines; triggers include 测试运行时间 and test runtime.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试运行时间优化（中文版）
@@ -79,10 +88,18 @@ description: Use this skill when you need evidence-bounded slow tests, profiling
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/test-runtime-optimization.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 用同commit/测试义务/数据/资源/窗口的事件profile分setup、execute、teardown、重试；沿依赖DAG求关键路径，重叠job不相加。
+2. 单列cold/warm缓存、runner上限、并发、独立数据与资源争用；候选改变的因素有记录，不能用不同测试规模或环境推断提速。
+3. 对照相同业务故障是否仍由有效断言检出，失败与日志/trace保留；加并行不能共享账号或吞异常，耗时改善不抵消失去保护。
+4. 给基线/候选时长、资源成本、收益比例与回滚信号；只有实际可比运行才叫观察到收益，设计推算保持候选，不当生产保证。
 ## 核心约束
 
 - 只分析慢测试、分析证据、setup/teardown、并行、隔离与基线，不替代业务负责人或 Human 的风险接受、例外批准和发布决定。

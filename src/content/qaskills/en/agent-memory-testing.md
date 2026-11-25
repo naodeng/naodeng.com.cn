@@ -6,7 +6,7 @@ Author: naodeng
 - slug: agent-memory-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-memory-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded memory write/read/update/delete, retention, contamination, isolation, provenance, and forgetting behavior; triggers include Agent 记忆 and Agent memory.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: agent-memory-testing
 description: Use this skill when you need evidence-bounded memory write/read/update/delete, retention, contamination, isolation, provenance, and forgetting behavior; triggers include Agent 记忆 and Agent memory.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent Memory Testing
@@ -71,10 +80,18 @@ description: Use this skill when you need evidence-bounded memory write/read/upd
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/agent-memory-testing.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Capture tenant/user IDs, memory ID, content version, source, write time, expiry, and withdrawal/deletion status. Retain retrieved provenance/version, not only the final answer.
+2. Resolve old/new preferences using supplied precedence rules. Undefined conflicts remain open; never assume last-write-wins or invent retention periods.
+3. Compare visibility for the same query in two tenants. Assess stale versions, expired returns, and post-deletion retrieval using the project's consistency window.
+4. Check deletion across the actual index/cache/backup scope. Missing propagation/backup policies limit the conclusion. Include permitted retrieval as the isolation control.
 ## Core Constraints
 
 - Keep the analysis focused on memory write/read/update/delete, retention, contamination, isolation, provenance, and forgetting behavior; do not replace business owners or Human risk acceptance, exception approval, or safety decisions.

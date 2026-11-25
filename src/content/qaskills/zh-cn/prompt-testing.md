@@ -6,7 +6,7 @@
 - slug: prompt-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/prompt-testing/SKILL.md
 - description: Use this skill when you need to test prompt behavior, regression risk, and output boundaries across versions; triggers include Prompt 测试, prompt testing, and prompt-regression.
 
@@ -60,6 +60,15 @@
 ---
 name: prompt-testing
 description: Use this skill when you need to test prompt behavior, regression risk, and output boundaries across versions; triggers include Prompt 测试, prompt testing, and prompt-regression.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 提示词测试（中文版）
@@ -102,6 +111,12 @@ description: Use this skill when you need to test prompt behavior, regression ri
 - 优先级必须说明业务影响、发生可能性或可探测性依据。
 - `prompt-regression` 模式使用 `PRT-##` 发现编号，必须区分基线、候选版本、预期行为、观察到的行为、差异和验证方法。
 - 版本差异只能基于可比输入和现有证据，不能把静态分析写成模型已运行或回归已通过。
+
+## 评测证据状态
+
+- 输出评测结论时包含 `evaluation_status`：`PASS`、`FAIL`、`BLOCKED`、`NOT_RUN` 或 `UNKNOWN`。
+- `PASS` 需要有范围内的实际运行记录和完整断言证据；没有运行结果用 `NOT_RUN`，运行受阻用 `BLOCKED`，证据不足用 `UNKNOWN`。方案、静态检查或文件存在不能单独证明 `PASS`。
+- 结构化追踪记录 `trace_id`、样本与版本、参数、run/trial、解析、Schema、语义状态及证据引用；三类检查分别判定。
 
 ## 交付前自检
 

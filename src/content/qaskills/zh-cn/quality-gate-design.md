@@ -6,7 +6,7 @@
 - slug: quality-gate-design
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/quality-gate-design/SKILL.md
 - description: Use this skill when you need evidence-bounded entry criteria, evidence requirements, owners, and exception paths for a delivery or release gate; triggers include 质量门禁 and quality gate.
 
@@ -25,6 +25,8 @@
 5. 信息不足时交付受限初版，明确哪些结论不能成立，不把静态材料写成执行结果。
 
 ## 核心约束
+
+- AI 评测门禁绑定数据集/模型/Prompt/judge/run 版本、最低样本/置信要求、flake 与成本阈值；证据不足时保持 BLOCKED/UNKNOWN。
 
 - 只分析发布或交付入口的准入条件、证据要求、责任人与例外路径，不替代业务负责人或 Human 的风险接受、例外批准和发布决定。
 - 不编造系统行为、字段、指标、阈值、数据、根因、执行记录或通过结论。
@@ -53,6 +55,15 @@
 ---
 name: quality-gate-design
 description: Use this skill when you need evidence-bounded entry criteria, evidence requirements, owners, and exception paths for a delivery or release gate; triggers include 质量门禁 and quality gate.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 质量门禁设计（中文版）
@@ -79,17 +90,34 @@ description: Use this skill when you need evidence-bounded entry criteria, evide
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/quality-gate-design.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 为每个门槛记录义务、输入/版本/时效、比较符、PASS/FAIL、不可执行BLOCKED、缺证据或无法判断UNKNOWN的真值表；没有记录不得视为PASS。
+2. 聚合规则由项目指定：必要门槛FAIL优先，无法验证按fail-closed停止；UNKNOWN/BLOCKED保持原因而不是折算失败率。所有必要门槛有新鲜有效PASS才可推荐通过。
+3. 例外单列义务范围、授权人、理由、批准证据、有效期、补偿控制与撤销条件；过期/越界/无授权不生效，不改写原始FAIL。
+4. 明确门禁触发、负责人、重新验证和回滚/停止条件；设计、静态证据判定与实际流水线实施分别报告，缺规则提交待Human决策。
+
 ## 核心约束
+
+- AI 评测门禁绑定数据集/模型/Prompt/judge/run 版本、最低样本/置信要求、flake 与成本阈值；证据不足时保持 BLOCKED/UNKNOWN。
 
 - 只分析发布或交付入口的准入条件、证据要求、责任人与例外路径，不替代业务负责人或 Human 的风险接受、例外批准和发布决定。
 - 不编造系统行为、字段、指标、阈值、数据、根因、执行记录或通过结论。
 - 静态设计、计划、文件存在或 dry-run 只能保留原证据状态，不能升级为真实执行证明。
 - 证据不足时使用待确认、blocked、unassessed 或 NOT_SCORED，并给出最小验证方法。
 - 涉及生产、隐私或安全时采用最小权限、脱敏数据、mock、dry-run 或隔离环境。
+
+## 评测证据状态
+
+- 输出评测结论时包含 `evaluation_status`：`PASS`、`FAIL`、`BLOCKED`、`NOT_RUN` 或 `UNKNOWN`。
+- `PASS` 需要有范围内的实际运行记录和完整断言证据；没有运行结果用 `NOT_RUN`，运行受阻用 `BLOCKED`，证据不足用 `UNKNOWN`。方案、静态检查或文件存在不能单独证明 `PASS`。
+- 结构化追踪记录 `trace_id`、样本与版本、参数、run/trial、解析、Schema、语义状态及证据引用；三类检查分别判定。
 
 ## 交付前自检
 

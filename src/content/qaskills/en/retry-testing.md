@@ -6,7 +6,7 @@ Author: naodeng
 - slug: retry-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/retry-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded retry-testing analysis and validation preparation; triggers include 重试测试 and retry-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: retry-testing
 description: Use this skill when you need evidence-bounded retry-testing analysis and validation preparation; triggers include 重试测试 and retry-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Retry Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded retry-testing analysi
 - Read prompts/retry-testing.md for every invocation; it is the complete execution contract.
 - Read evals/eval.yaml and the matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Classify retryable, permanent and unknown-outcome errors from contracts; define total attempts versus additional retries and nested call relationships.
+- Deliver error/attempt/time-budget/side-effect tables with nested call counts and uncertain timeout commits.
+- When deriving domain candidates, read and follow [prompts/retry-testing.md](prompts/retry-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

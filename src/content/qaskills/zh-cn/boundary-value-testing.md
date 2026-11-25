@@ -6,7 +6,7 @@
 - slug: boundary-value-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/boundary-value-testing/SKILL.md
 - description: Use this skill when you need to select boundary and near-boundary candidates from sourced value, length, time, and resource constraints; triggers include 边界值测试设计 and boundary value test design.
 
@@ -51,6 +51,15 @@
 ---
 name: boundary-value-testing
 description: Use this skill when you need to select boundary and near-boundary candidates from sourced value, length, time, and resource constraints; triggers include 边界值测试设计 and boundary value test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 边界值测试设计
@@ -76,6 +85,12 @@ description: Use this skill when you need to select boundary and near-boundary c
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 BVT-## 记录 输入域、边界值、邻近值、包含关系、单位、来源证据、影响、优先级和验证方法，保留来源、证据状态、影响/优先级、责任角色、关闭条件和验证方法。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 抽取上下界、包含/排除、离散/连续类型、最小可表示步长、长度编码、货币精度、时间单位/时区及来源。
+- 交付规则、单位/步长、边界候选、有效性与来源表；未知精度不得填造 0.01 或默认时间粒度。
+- 形成领域候选时，必须读取并遵循 [prompts/boundary-value-testing.md](prompts/boundary-value-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

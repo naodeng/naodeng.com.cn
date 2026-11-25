@@ -6,7 +6,7 @@
 - slug: ui-test-wait-strategy-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ui-test-wait-strategy-review/SKILL.md
 - description: Use this skill when you need to review asynchronous UI waits, polling conditions, and timeout evidence; triggers include UI 测试等待策略评审 and UI test wait strategy review.
 
@@ -51,6 +51,15 @@
 ---
 name: ui-test-wait-strategy-review
 description: Use this skill when you need to review asynchronous UI waits, polling conditions, and timeout evidence; triggers include UI 测试等待策略评审 and UI test wait strategy review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # UI 测试等待策略评审
@@ -76,6 +85,12 @@ description: Use this skill when you need to review asynchronous UI waits, polli
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 UWR-## 记录对象、前置条件、关注点、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 按动作后义务选择就绪信号：DOM存在/可操作只证明元素条件；业务状态/版本/确认号证明业务进度；网络/事件只有与目标操作关联才可作证据。
+- 交付动作→就绪信号→关联ID→预算/重试副作用表，业务完成需要匹配目标操作的可观测判据。
+- 形成领域候选时，必须读取并遵循 [prompts/ui-test-wait-strategy-review.md](prompts/ui-test-wait-strategy-review.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

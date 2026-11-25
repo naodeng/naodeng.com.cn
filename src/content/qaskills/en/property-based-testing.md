@@ -6,7 +6,7 @@ Author: naodeng
 - slug: property-based-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/property-based-testing/SKILL.md
 - description: Use this skill when you need to turn invariants, generation domains, and shrinking strategies into reviewable property-test candidates; triggers include 基于属性的测试 and property-based test design.
 
@@ -42,6 +42,15 @@ Author: naodeng
 ---
 name: property-based-testing
 description: Use this skill when you need to turn invariants, generation domains, and shrinking strategies into reviewable property-test candidates; triggers include 基于属性的测试 and property-based test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Property-Based Test Design
@@ -66,6 +75,12 @@ Turn invariants, generation domains, and shrinking strategies into reviewable pr
 3. Produce PBT-## findings with source, evidence state, applicability, impact/priority, owner, close condition, and validation.
 4. Separate facts, evidence-backed inferences, recommendations, and Human decisions.
 5. Recommend follow-up validation without claiming execution.
+
+## Domain Execution Essentials
+
+- Extract the input domain, sourced invariants, preconditions and observable oracles; do not infer properties solely from a function name or preference.
+- Deliver domain/properties/preconditions, replay data and minimal-counterexample oracles; sorted output losing elements violates such a sorting contract.
+- When deriving domain candidates, read and follow [prompts/property-based-testing.md](prompts/property-based-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

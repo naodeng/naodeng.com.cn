@@ -6,7 +6,7 @@
 - slug: automation-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/automation-testing/SKILL.md
 - description: Use this skill when you need to design automation testing approaches using patterns like POM, data-driven testing, or BDD; triggers include 自动化测试 and automation testing.
 
@@ -30,6 +30,8 @@
 - 结果必须可执行：场景具体、有优先级、能指导下一步。
 
 ## 按需加载
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 产出前必须阅读并遵循 `prompts/automation-testing.md`（最低覆盖清单、输出结构、质量要求）。
 - 需要 Excel/CSV/JSON/Word 等格式时：读 `output-formats.md`，并按用户格式要求输出。
@@ -62,6 +64,15 @@
 ---
 name: automation-testing
 description: Use this skill when you need to design automation testing approaches using patterns like POM, data-driven testing, or BDD; triggers include 自动化测试 and automation testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 自动化测试（中文版）
@@ -80,6 +91,13 @@ description: Use this skill when you need to design automation testing approache
 3. 信息不全时先给可用初版，并显式标出假设与信息缺口。
 4. 默认 Markdown；用户指定其他格式时再切换。
 
+## 领域执行要点
+
+1. 用 候选流程 | 保护义务 | 重复频率证据 | oracle/可观测性 | 数据隔离/清理 | 稳定性 | 维护约束 | 采用/延期理由 表选型；ROI 另列成本情景，不能抵消缺 oracle 或无授权环境。
+2. 优先沿用现有框架；先检查是否有可核对后置条件、可独立数据和可传播失败的 CI 入口，不满足者延期并写解除条件。
+3. 执行场景包含唯一账号/业务键、前置状态、动作、业务后置条件、失败信号和 teardown；失败必须让 runner/CI 失败，不能仅记录日志。
+4. 区分自动化候选、生成资产、真实运行与业务验收；频繁变化的原型或无法隔离的真实扣款保留人工/受控验证候选，取舍由风险和证据说明。
+
 ## 核心约束
 
 - 按风险/业务影响排优先级，不要平均摊铺。
@@ -88,6 +106,8 @@ description: Use this skill when you need to design automation testing approache
 - 结果必须可执行：场景具体、有优先级、能指导下一步。
 
 ## 按需加载
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 产出前必须阅读并遵循 `prompts/automation-testing.md`（最低覆盖清单、输出结构、质量要求）。
 - 需要 Excel/CSV/JSON/Word 等格式时：读 `output-formats.md`，并按用户格式要求输出。

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: requirement-gap-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/requirement-gap-analysis/SKILL.md
 - description: Use this skill when you need to find missing, conflicting, or untestable requirement information; triggers include requirement gap analysis.
 
@@ -46,6 +46,15 @@ Author: naodeng
 ---
 name: requirement-gap-analysis
 description: Use this skill when you need to find missing, conflicting, or untestable requirement information; triggers include requirement gap analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Requirement Gap Analysis
@@ -72,9 +81,18 @@ description: Use this skill when you need to find missing, conflicting, or untes
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/requirement-gap-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Build a versioned checklist of applicable roles, states, rules, exceptions, and closure conditions, tied to supplied sources. Do not force irrelevant checklist items onto a product.
+2. Separate MISSING_RULE (relevant but undefined behavior), MISSING_MATERIAL (referenced evidence absent), CONFLICT, N/A (evidenced scope exclusion), and COMPLETE.
+3. Give requirement ID, missing content, affected scenarios, blockage, owner, and minimal clarification. An unseen field or empty document does not by itself prove a product defect.
+4. Close only with authoritative added rules/source version and testable expectations, updating traceability. Unapproved suggestions remain proposals; complete controls must not receive invented gaps.
 
 ## Core Constraints
 

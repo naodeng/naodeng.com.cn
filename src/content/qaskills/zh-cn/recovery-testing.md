@@ -6,7 +6,7 @@
 - slug: recovery-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/recovery-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded recovery-testing analysis and validation preparation; triggers include 恢复测试 and recovery-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: recovery-testing
 description: Use this skill when you need evidence-bounded recovery-testing analysis and validation preparation; triggers include 恢复测试 and recovery-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 恢复测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded recovery-testing anal
 - 每次执行必须读取 prompts/recovery-testing.md；它是本 Skill 的完整执行规范。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录实际存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 分开服务重启/就绪、数据恢复点和业务一致性，提取 RTO/RPO 定义、故障起点、业务恢复终点及可接受丢失。
+- 交付服务/业务/数据恢复时间线、目标计算与差额/补偿表，部分恢复不能概括为恢复完成。
+- 形成领域候选时，必须读取并遵循 [prompts/recovery-testing.md](prompts/recovery-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

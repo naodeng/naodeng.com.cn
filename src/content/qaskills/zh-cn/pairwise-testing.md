@@ -6,7 +6,7 @@
 - slug: pairwise-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/pairwise-testing/SKILL.md
 - description: Use this skill when you need to identify interactions that need at least pairwise coverage after factors, values, and constraints are explicit; triggers include 成对组合测试设计 and pairwise test design.
 
@@ -51,6 +51,15 @@
 ---
 name: pairwise-testing
 description: Use this skill when you need to identify interactions that need at least pairwise coverage after factors, values, and constraints are explicit; triggers include 成对组合测试设计 and pairwise test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 成对组合测试设计
@@ -76,6 +85,12 @@ description: Use this skill when you need to identify interactions that need at 
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 PWT-## 记录 因素、取值对、合法性约束、交互风险、覆盖理由、来源证据、优先级和验证方法，保留来源、证据状态、影响/优先级、责任角色、关闭条件和验证方法。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 列来源化因素、值域与联合约束，确定 pairwise 适用风险及不覆盖的三阶以上义务。
+- 交付合法 pair universe、已覆盖与缺失 pair 明细；需要高阶交互时明确额外候选与理由。
+- 形成领域候选时，必须读取并遵循 [prompts/pairwise-testing.md](prompts/pairwise-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: prompt-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/prompt-testing/SKILL.md
 - description: Use this skill when you need to test prompt behavior, regression risk, and output boundaries across versions; triggers include prompt testing and prompt-regression.
 
@@ -51,6 +51,15 @@ Author: naodeng
 ---
 name: prompt-testing
 description: Use this skill when you need to test prompt behavior, regression risk, and output boundaries across versions; triggers include prompt testing and prompt-regression.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Prompt Testing
@@ -93,6 +102,12 @@ description: Use this skill when you need to test prompt behavior, regression ri
 - Explain priority using business impact, likelihood, or detectability.
 - In `prompt-regression`, use `PRT-##` finding IDs and distinguish baseline, candidate version, expected behavior, observed behavior, difference, and validation method.
 - Treat version differences as evidence-bounded comparisons; static analysis must not become a claim that a model ran or regression passed.
+
+## Evaluation Evidence Status
+
+- Include `evaluation_status`: `PASS`, `FAIL`, `BLOCKED`, `NOT_RUN`, or `UNKNOWN` for evaluation conclusions.
+- `PASS` requires in-scope runtime records and evidence for every required assertion. Use `NOT_RUN` when no run results exist, `BLOCKED` when execution was prevented, and `UNKNOWN` when evidence is insufficient. A plan, static check, or file presence alone cannot prove `PASS`.
+- Trace `trace_id`, sample and version identity, parameters, run/trial, parse, schema, semantic status, and evidence reference; decide those checks separately.
 
 ## Delivery Checklist
 

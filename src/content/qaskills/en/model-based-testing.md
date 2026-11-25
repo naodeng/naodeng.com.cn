@@ -6,7 +6,7 @@ Author: naodeng
 - slug: model-based-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/model-based-testing/SKILL.md
 - description: Use this skill when you need to derive test-path candidates from sourced behavior, state, or process models; triggers include 基于模型的测试 and model-based test design.
 
@@ -42,6 +42,15 @@ Author: naodeng
 ---
 name: model-based-testing
 description: Use this skill when you need to derive test-path candidates from sourced behavior, state, or process models; triggers include 基于模型的测试 and model-based test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Model-Based Test Design
@@ -66,6 +75,12 @@ Derive test-path candidates from sourced behavior, state, or process models. Pro
 3. Produce MBT-## findings with source, evidence state, applicability, impact/priority, owner, close condition, and validation.
 4. Separate facts, evidence-backed inferences, recommendations, and Human decisions.
 5. Recommend follow-up validation without claiming execution.
+
+## Domain Execution Essentials
+
+- Build sourced initial/terminal states, events, guards, actions, targets and persistence, rather than an arbitrary state list.
+- Deliver the reachable graph, candidate paths, state/edge gaps and oracles; unreachable nodes cannot count as covered.
+- When deriving domain candidates, read and follow [prompts/model-based-testing.md](prompts/model-based-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

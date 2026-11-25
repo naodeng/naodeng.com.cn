@@ -6,7 +6,7 @@
 - slug: api-pagination-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-pagination-testing/SKILL.md
 - description: Use this skill when you need to design API pagination scenarios from ordered data and cursor or offset evidence; triggers include API 分页测试 and API pagination testing.
 
@@ -51,6 +51,15 @@
 ---
 name: api-pagination-testing
 description: Use this skill when you need to design API pagination scenarios from ordered data and cursor or offset evidence; triggers include API 分页测试 and API pagination testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API 分页测试
@@ -76,6 +85,12 @@ description: Use this skill when you need to design API pagination scenarios fro
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 APT-## 记录对象、前置条件、关注行为、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 提取页大小、offset/cursor、排序方向、唯一 tie-breaker、快照或实时变更合同、cursor 绑定/失效规则。
+- 交付预期与跨页实际 ID 序列、集合/重复比较、cursor 链和变化语义的适用边界。
+- 形成领域候选时，必须读取并遵循 [prompts/api-pagination-testing.md](prompts/api-pagination-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

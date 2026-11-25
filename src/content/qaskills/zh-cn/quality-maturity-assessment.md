@@ -6,7 +6,7 @@
 - slug: quality-maturity-assessment
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/quality-maturity-assessment/SKILL.md
 - description: Use this skill when you need evidence-bounded quality-practice maturity dimensions, rubric anchors, evidence sufficiency, and improvement gaps; triggers include 质量成熟度 and quality maturity.
 
@@ -53,6 +53,15 @@
 ---
 name: quality-maturity-assessment
 description: Use this skill when you need evidence-bounded quality-practice maturity dimensions, rubric anchors, evidence sufficiency, and improvement gaps; triggers include 质量成熟度 and quality maturity.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 质量成熟度评估（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded quality-practice matu
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/quality-maturity-assessment.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 先固定项目成熟度框架、维度、锚点与适用范围；若没有框架，只给证据清单与候选锚点，不能擅自发布组织分级或仓库Quality Score。
+2. 每级锚点至少包含可观察实践、工件及持续性证据：例如“有模板”只证明工件存在，“重复执行且有失败处置记录”才能支持执行实践；示例级别必须标为示例。
+3. 对每维度分列证据、等级、置信度和差距；不适用N/A需范围理由，UNKNOWN因未提供证据而不是最低等级，访谈声明需核对工件。
+4. 双团队比较先检查规模/产品风险/窗口可比；聚合仅按项目权重和覆盖规则，缺维度不能补零或另造总分。改进项有验收证据和复核周期。
 
 ## 核心约束
 

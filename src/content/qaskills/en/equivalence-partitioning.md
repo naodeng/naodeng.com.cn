@@ -6,7 +6,7 @@ Author: naodeng
 - slug: equivalence-partitioning
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/equivalence-partitioning/SKILL.md
 - description: Use this skill when you need to partition inputs into evidence-backed valid, invalid, and unknown classes based on constraints, rules, and response differences; triggers include 等价类划分 and equivalence partitioning test design.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent rules, replace a complete strategy, or ac
 ---
 name: equivalence-partitioning
 description: Use this skill when you need to partition inputs into evidence-backed valid, invalid, and unknown classes based on constraints, rules, and response differences; triggers include 等价类划分 and equivalence partitioning test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Equivalence Partitioning Test Design
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent rules, replace a complete strategy, or ac
 2. Complete known, missing, conflicting, stale, out_of_scope, and assumptions before findings.
 3. Record EP-## with equivalence class, partition rationale, representative value, valid/invalid state, source evidence, expected concern, and validation method, source, evidence state, impact, owner, close condition, and validation.
 4. Preserve conflicts, unknown constraints, and open questions.
+
+## Domain Execution Essentials
+
+- Partition by sourced equivalent behavior/errors and constraints, not input shape alone; invalid classes with different responses must remain distinct.
+- Deliver joint partitions, behavioral oracles and representatives, with disjointness/completeness scope and unknown classes; retain conditional validity.
+- When deriving domain candidates, read and follow [prompts/equivalence-partitioning.md](prompts/equivalence-partitioning.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

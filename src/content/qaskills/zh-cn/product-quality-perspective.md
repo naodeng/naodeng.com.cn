@@ -6,7 +6,7 @@
 - slug: product-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/product-quality-perspective/SKILL.md
 - description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include 产品质量视角、产品质量评审 and product quality perspective.
 
@@ -58,6 +58,15 @@
 ---
 name: product-quality-perspective
 description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include 产品质量视角、产品质量评审 and product quality perspective.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 产品质量视角（中文版）
@@ -121,6 +130,10 @@ description: Use this skill when product-quality responsibility is needed across
 - 不要把产品质量视角写成无证据的代码评审或测试结论。
 - 不要把“需求满足”误写成“代码正确”或“测试已通过”。
 - 不要在材料不完整时用通用清单掩盖关键缺口。
+
+## 报告来源
+
+报告头保留所选 `stage`、稳定 `source_id` 和已提供 `version`。缺少来源 ID 时声明临时本地定位；缺少版本写 unknown，不得编造。每项发现含稳定 `finding_id`、来源/证据定位与状态。每项行动回链发现并说明关闭所需证据；负责人、日期和行动状态仅在提供时填写，否则 unknown。这些是独立报告字段，不构成对其他 Skill 的依赖。
 ```
 
 ## 安装

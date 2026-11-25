@@ -6,7 +6,7 @@
 - slug: ui-test-strategy
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ui-test-strategy/SKILL.md
 - description: Use this skill when you need to define an evidence-bounded UI test strategy across journeys, states, platforms, and risks; triggers include UI 测试策略 and UI test strategy.
 
@@ -51,6 +51,15 @@
 ---
 name: ui-test-strategy
 description: Use this skill when you need to define an evidence-bounded UI test strategy across journeys, states, platforms, and risks; triggers include UI 测试策略 and UI test strategy.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # UI 测试策略
@@ -76,6 +85,12 @@ description: Use this skill when you need to define an evidence-bounded UI test 
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 UTS-## 记录对象、前置条件、关注点、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 建立用户旅程×业务状态×平台矩阵，映射每格的风险、验收义务和现有证据，未支持平台不自扩范围。
+- 交付矩阵与义务→测试层/判据/残余风险表，最小组合须保护关键旅程而非机械套固定层比例。
+- 形成领域候选时，必须读取并遵循 [prompts/ui-test-strategy.md](prompts/ui-test-strategy.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

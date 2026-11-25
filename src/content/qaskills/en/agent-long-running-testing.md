@@ -6,7 +6,7 @@ Author: naodeng
 - slug: agent-long-running-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-long-running-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded checkpoints, heartbeats, resume, cancellation, duplicate submission, timeouts, and resource lifecycle; triggers include 长运行 Agent and long-running Agent.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: agent-long-running-testing
 description: Use this skill when you need evidence-bounded checkpoints, heartbeats, resume, cancellation, duplicate submission, timeouts, and resource lifecycle; triggers include 长运行 Agent and long-running Agent.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Long-Running Agent Testing
@@ -71,10 +80,18 @@ description: Use this skill when you need evidence-bounded checkpoints, heartbea
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/agent-long-running-testing.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Derive queued→running→checkpointed→interrupted→resuming→completed and running→cancelling→cancelled from the actual protocol; undefined transitions remain open.
+2. Capture task_id, checkpoint schema/state version, committed step IDs, provenance, and integrity. Validate versions and committed effects before resuming; incompatible checkpoints cannot be blindly replayed.
+3. Record owner, lease/fencing token, and expiry policy. A worker that loses its lease must not commit. Merge/reject duplicate task IDs according to project idempotency rules; do not assume exactly-once delivery.
+4. Reconstruct cancellation versus commit races using the specified commit point. Preserve committed results and verify terminal state, released resources, and cancellation acknowledgment; missing race rules require Human decisions.
 ## Core Constraints
 
 - Keep the analysis focused on checkpoints, heartbeats, resume, cancellation, duplicate submission, timeouts, and resource lifecycle; do not replace business owners or Human risk acceptance, exception approval, or safety decisions.

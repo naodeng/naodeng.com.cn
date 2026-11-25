@@ -6,7 +6,7 @@
 - slug: quality-dashboard-design
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/quality-dashboard-design/SKILL.md
 - description: Use this skill when you need evidence-bounded quality dashboard audiences, decision questions, panels, drill-downs, freshness, and alert boundaries; triggers include 质量仪表盘 and quality dashboard.
 
@@ -53,6 +53,15 @@
 ---
 name: quality-dashboard-design
 description: Use this skill when you need evidence-bounded quality dashboard audiences, decision questions, panels, drill-downs, freshness, and alert boundaries; triggers include 质量仪表盘 and quality dashboard.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 质量仪表盘设计（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded quality dashboard aud
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/quality-dashboard-design.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 按受众决策建立 问题→指标→口径/时窗→数据来源/版本→可采取行动→责任人 面板映射，不从易取数据倒推决策。
+2. 展示值的分子分母、最后刷新时间与来源状态；0、null、NOT_RUN、BLOCKED、过期值分别呈现，禁止缺值补0或沿用过期绿灯。
+3. 汇总必须保留P0/阻塞项、少数高风险群体和未知证据；总体通过率不能覆盖单项发布阻断，状态聚合来自项目规则。
+4. 为每面板提供钻取到run/obligation/缺陷证据的路径、刷新契约与行动触发；没有数据或门槛时交付设计和缺口，不宣布当前质量通过。
 
 ## 核心约束
 

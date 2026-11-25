@@ -6,7 +6,7 @@ Author: naodeng
 - slug: rag-quality-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/rag-quality-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded grounding, relevance, completeness, citation support, abstention, and answer-level evidence in RAG outputs; triggers include RAG 质量 and RAG quality.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: rag-quality-testing
 description: Use this skill when you need evidence-bounded grounding, relevance, completeness, citation support, abstention, and answer-level evidence in RAG outputs; triggers include RAG 质量 and RAG quality.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # RAG Quality Testing
@@ -71,9 +80,18 @@ description: Use this skill when you need evidence-bounded grounding, relevance,
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/rag-quality-testing.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Fix query/sample, knowledge/index/retrieval/model/prompt versions. Map queries to retrieved chunks, atomic claims and citations with support/contradiction/gap labels.
+2. Judge citation accuracy, claim support and completeness separately. Supported claims may omit required conditions; use the task and project rubric.
+3. Pair answerable in-corpus cases with out-of-corpus refusal controls. Assess task correctness, over-refusal and unsupported answers separately; refusal rate is no quality proxy.
+4. Missing chunks, ground truth, permissions or gates remain UNKNOWN/NOT_RUN. Distinguish retrieval failure from generation misreading, retaining evidence boundaries and responsible stages.
 
 ## Core Constraints
 

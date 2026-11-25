@@ -6,7 +6,7 @@ Author: naodeng
 - slug: change-impact-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/change-impact-analysis/SKILL.md
 - description: Use this skill when you need to analyze how a code, configuration, or requirement change affects quality scope; triggers include change impact analysis.
 
@@ -46,6 +46,15 @@ Author: naodeng
 ---
 name: change-impact-analysis
 description: Use this skill when you need to analyze how a code, configuration, or requirement change affects quality scope; triggers include change impact analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Change Impact Analysis
@@ -72,9 +81,18 @@ description: Use this skill when you need to analyze how a code, configuration, 
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/change-impact-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Fix change version/scope and build typed changed file/symbol/config→dependent→business obligation→test ID evidence edges with source/version and confirmed/candidate/unknown states.
+2. Traverse direct/transitive consumers with cycle deduplication. Stop only at evidenced contract isolation/no-consumer boundaries and record why; directories alone are no boundary.
+3. Dynamic registration/runtime configuration/untraced dependencies remain unknown. Propose risk-based consumer contract/integration checks; absent mapping does not mean no impact.
+4. Explain inclusion/exclusion, minimum validation, residual risk, and expansion triggers. This Skill covers code/data/config changes broadly; the PR-specific counterpart owns base/head/diff identity.
 
 ## Core Constraints
 

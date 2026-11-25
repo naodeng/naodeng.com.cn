@@ -6,7 +6,7 @@
 - slug: agent-tool-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/agent-tool-testing/SKILL.md
 - description: Use this skill when you need to test AI agent tool-call contracts, authorization, failures, and side-effect boundaries; triggers include Agent 工具调用测试 and agent tool testing.
 
@@ -25,6 +25,8 @@
 5. 信息不足时不要停在提问：先交付受限初版，并说明哪些结论暂不能成立。
 
 ## 核心约束
+
+- 使用 `ATT-##` 稳定发现编号；明确 Agent 工具选择/Schema/副作用与 MCP 服务端协议的交接边界。
 
 - 默认只使用 mock、dry-run 或隔离环境
 - 未经授权不得执行真实写操作
@@ -54,6 +56,15 @@
 ---
 name: agent-tool-testing
 description: Use this skill when you need to test AI agent tool-call contracts, authorization, failures, and side-effect boundaries; triggers include Agent 工具调用测试 and agent tool testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.2"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent 工具调用测试（中文版）
@@ -85,6 +96,8 @@ description: Use this skill when you need to test AI agent tool-call contracts, 
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
 ## 核心约束
+
+- 使用 `ATT-##` 稳定发现编号；明确 Agent 工具选择/Schema/副作用与 MCP 服务端协议的交接边界。
 
 - 默认只使用 mock、dry-run 或隔离环境
 - 未经授权不得执行真实写操作

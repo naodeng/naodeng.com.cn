@@ -6,7 +6,7 @@
 - slug: requirements-analysis-plus
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/requirements-analysis-plus/SKILL.md
 - description: Use this skill when you need to parse Word/HTML/JSON/Markdown/Excel requirements and produce a structured analysis; triggers include 需求分析增强、requirements analysis plus and requirement parsing.
 
@@ -65,6 +65,15 @@
 ---
 name: requirements-analysis-plus
 description: Use this skill when you need to parse Word/HTML/JSON/Markdown/Excel requirements and produce a structured analysis; triggers include 需求分析增强、requirements analysis plus and requirement parsing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 需求分析增强版（中文版）
@@ -75,6 +84,10 @@ description: Use this skill when you need to parse Word/HTML/JSON/Markdown/Excel
 
 - 需要基于多份材料做更深入的需求分析。
 - 需要比基础版更强的冲突检查、优先级和追问。
+
+## 脚本能力边界
+
+可选 `scripts/run_*.py` 只准备解析后的输入材料或来源候选，输出 `NOT_ASSESSED`，不调用模型、不执行主 Prompt，不生成语义结论、风险优先级、完整用例或批准。正式分析由 Agent 按主 Prompt 执行；需要运行脚本时先读 `references/script-contract.md`。
 
 ## 执行流程
 
