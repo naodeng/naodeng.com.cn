@@ -24,6 +24,16 @@ Author: naodeng
 4. Merge only semantically equivalent findings and union all sources. Keep conflicting findings separate and include them under Disagreements.
 5. Produce the traceable synthesis, then run source, disagreement, severity, project-boundary, and no-new-facts checks.
 
+## Pre-delivery Checklist
+
+- [ ] All inputs share one `stage`, or cross-stage synthesis is explicitly blocked
+- [ ] Every synthesized finding cites one or more input sources
+- [ ] Equivalent findings retain all contributors; conflicting findings were not silently merged
+- [ ] Minority P0/P1 views remain visible; no severity was averaged without explanation
+- [ ] Disagreements is always present and says none when no conflict exists
+- [ ] Project constraints remain separate from quality facts; PM/delivery input did not override a quality fact
+- [ ] No unsupported fact, evidence, root cause, impact, or conclusion was added
+
 ## Raw SKILL.md
 
 ```markdown

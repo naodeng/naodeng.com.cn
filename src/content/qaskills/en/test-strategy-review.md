@@ -25,6 +25,15 @@ Author: naodeng
 5. Apply deterministic rules to produce an AI-assisted `pass`, `conditional_pass`, or `reject` recommendation, with ownership and verifiable revision requests for gaps.
 6. Check evidence, scope, ownership, recommendation, and Human decision boundaries before delivery.
 
+## Pre-delivery Checklist
+
+- [ ] All eight review dimensions have evidence, a gap, or a not-applicable explanation
+- [ ] Blockers and non-blockers are separate; conditions are not mixed with optional improvements
+- [ ] The recommendation follows the classification rules, with no schedule pressure overriding quality gaps
+- [ ] Conflicting sources remain visible; no change, waiver, or decision was invented
+- [ ] Every revision request has an object, owner or `unassigned`, timing/gate, and closure evidence
+- [ ] The result is explicitly AI-assisted and the final Human decision remains pending
+
 ## Raw SKILL.md
 
 ```markdown

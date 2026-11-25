@@ -97,4 +97,22 @@ describe("parseQASkillMarkdown", () => {
       expect(skill.rawSkillMarkdown).toContain(`name: ${slug}`);
     }
   );
+
+  it.each([
+    { lang: "en" as const, slug: "mcp-server-testing" },
+    { lang: "en" as const, slug: "skill-security-review" },
+    { lang: "zh-cn" as const, slug: "mcp-server-testing" },
+    { lang: "zh-cn" as const, slug: "skill-security-review" },
+  ])("exposes structured sections for $lang $slug", ({ lang, slug }) => {
+    const siteLang = lang === "zh-cn" ? "zh-cn" : "en";
+    const markdown = readFileSync(
+      join(process.cwd(), "..", "src", "content", "qaskills", siteLang, `${slug}.md`),
+      "utf8"
+    );
+    const skill = parseQASkillMarkdown(lang, slug, markdown);
+
+    for (const section of ["workflow", "coreConstraints", "progressiveDisclosure", "checklist"] as const) {
+      expect(skill.sections[section], `${lang}/${slug}: ${section}`).not.toBe("");
+    }
+  });
 });

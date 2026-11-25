@@ -63,13 +63,13 @@ const UPSTREAM_EN_SAMPLE = `## When to use
 ## How to use
 1. Read the contract.
 
-## Constraints
+## Scope and constraints
 - Keep evidence boundaries clear.
 
-## Progressive disclosure
+## Load references when needed
 - Read supporting files as needed.
 
-## Pre-delivery checklist
+## Pre-delivery checks
 - [ ] Record limitations.
 
 ## Common pitfalls
@@ -105,6 +105,25 @@ describe("extractCanonicalSections", () => {
     expect(sections.progressiveDisclosure).toContain("supporting files");
     expect(sections.checklist).toContain("Record limitations");
     expect(sections.pitfalls).toContain("overstate results");
+  });
+
+  it("maps upstream Chinese Skill headings to canonical keys", () => {
+    const sections = extractCanonicalSections(`## 使用方法
+1. 阅读完整约定。
+
+## 范围与约束
+- 保留证据边界。
+
+## 按需加载参考资料
+- 阅读引用资料。
+
+## 交付前检查
+- [ ] 记录限制。
+`);
+    expect(sections.workflow).toContain("完整约定");
+    expect(sections.coreConstraints).toContain("证据边界");
+    expect(sections.progressiveDisclosure).toContain("引用资料");
+    expect(sections.checklist).toContain("记录限制");
   });
 
   it("omits missing sections as empty string", () => {
