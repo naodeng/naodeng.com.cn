@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLocalePaths, type Lang } from "@/i18n";
+import type { Lang } from "@/i18n";
+import type { Multilingual } from "@/i18n";
 import { 
   NAV_ABOUT, 
   NAV_PROJECTS, 
@@ -18,202 +19,172 @@ import {
   NAV_PRIVACY,
   NAV_LINKS,
   NAV_ANALYTICS,
-  SITE_TITLE,
   SITE_SLOGAN,
   LEARNING_SITES
 } from "@/consts";
 
 const locale = Astro.currentLocale as Lang;
-const paths = await getLocalePaths(Astro.url);
+const brandName = locale === "zh-cn" ? "软件测试同学 X naodeng" : "Nao's Blog";
+const siteSlogan = typeof SITE_SLOGAN === "string" ? SITE_SLOGAN : SITE_SLOGAN[locale];
 const localizedHomePath = getRelativeLocaleUrl(locale, "/");
-const isZhHome =
-  locale === "zh-cn" &&
-  (Astro.url.pathname === localizedHomePath || Astro.url.pathname === `${localizedHomePath}/`);
-
-// 找到另一种语言的路径
-const otherLocalePath = paths.find(p => p.lang !== locale)?.path || (locale === 'zh-cn' ? '/en/' : '/zh-cn/');
+const rssLabel = locale === "zh-cn" ? "订阅 RSS" : "RSS Feed";
 
 const socialLinks = [
-  { name: "GitHub", url: "https://github.com/naodeng", icon: "github" },
-  { name: "X", url: "https://x.com/inaodeng", icon: "x" },
-  { name: "Medium", url: "https://naodeng.medium.com/", icon: "medium" },
-  { name: "Weibo", url: "https://weibo.com/u/1651778270", icon: "weibo" },
-  { name: "Ko-fi", url: "https://ko-fi.com/naodeng", icon: "kofi" },
-  { name: "Email", url: "mailto:dengnao@gmail.com", icon: "email" },
+  { name: "GitHub", label: "GitHub", url: "https://github.com/naodeng", icon: "github" },
+  { name: "X", label: "X", url: "https://x.com/inaodeng", icon: "x" },
+  { name: "Medium", label: "Medium", url: "https://naodeng.medium.com/", icon: "medium" },
+  { name: "Weibo", label: locale === "zh-cn" ? "微博" : "Weibo", url: "https://weibo.com/u/1651778270", icon: "weibo" },
+  { name: "Ko-fi", label: "Ko-fi", url: "https://ko-fi.com/naodeng", icon: "kofi" },
+  { name: "Email", label: locale === "zh-cn" ? "邮箱" : "Email", url: "mailto:dengnao@gmail.com", icon: "email" },
+  { name: "RSS", label: rssLabel, url: getRelativeLocaleUrl(locale, "/rss.xml"), icon: "rss" },
 ];
 
 const t = {
-  rss: locale === 'zh-cn' ? '订阅 RSS' : 'RSS Feed',
+  rss: rssLabel,
   sitemap: locale === 'zh-cn' ? '站点地图' : 'Sitemap',
   license: locale === 'zh-cn' ? '遵循 PolyForm Noncommercial 1.0.0 许可协议' : 'Licensed under PolyForm Noncommercial 1.0.0',
-  builtWith: locale === 'zh-cn' ? '由 Astro & Cloudflare & Github & AI 驱动' : 'Built with Astro & Cloudflare & Github & AI',
+  builtWith: locale === 'zh-cn' ? '由 Astro & Cloudflare & GitHub & AI 驱动' : 'Built with Astro & Cloudflare & GitHub & AI',
 };
 
-const footerGroups = [
+type FooterLink = { href: string; label: string; external?: boolean };
+type FooterGroup = { key: string; title: string; rows: FooterLink[][] };
+const localizedLabel = (label: string | Multilingual) => typeof label === "string" ? label : label[locale === "zh-cn" ? "zh-cn" : "en"] ?? "";
+const pageLink = (path: string, label: string | Multilingual): FooterLink => ({
+  href: getRelativeLocaleUrl(locale, path),
+  label: localizedLabel(label),
+});
+const externalLink = (href: string, label: string): FooterLink => ({ href, label, external: true });
+const learningLinks = LEARNING_SITES.map((site) => externalLink(site.url, site.label[locale === "zh-cn" ? "zh-cn" : "en"]));
+
+const footerGroups: FooterGroup[] = [
   {
     key: "explore",
     title: locale === "zh-cn" ? "探索" : "Explore",
-    links: [
-      { href: getRelativeLocaleUrl(locale, "/about"), label: typeof NAV_ABOUT === 'string' ? NAV_ABOUT : NAV_ABOUT[locale] },
-      { href: getRelativeLocaleUrl(locale, "/archive"), label: typeof NAV_ARCHIVE === 'string' ? NAV_ARCHIVE : NAV_ARCHIVE[locale] },
-      { href: getRelativeLocaleUrl(locale, "/projects"), label: typeof NAV_PROJECTS === 'string' ? NAV_PROJECTS : NAV_PROJECTS[locale] },
-      { href: getRelativeLocaleUrl(locale, "/series"), label: typeof NAV_SERIES === 'string' ? NAV_SERIES : NAV_SERIES[locale] },
-      { href: getRelativeLocaleUrl(locale, "/tags"), label: typeof NAV_TAGS === 'string' ? NAV_TAGS : NAV_TAGS[locale] },
-    ],
+    rows: locale === "zh-cn"
+      ? [[pageLink("/about", NAV_ABOUT), pageLink("/archive", NAV_ARCHIVE), pageLink("/projects", NAV_PROJECTS)], [pageLink("/series", NAV_SERIES), pageLink("/tags", NAV_TAGS)]]
+      : [[pageLink("/about", NAV_ABOUT), pageLink("/archive", NAV_ARCHIVE)], [pageLink("/projects", NAV_PROJECTS), pageLink("/series", NAV_SERIES), pageLink("/tags", NAV_TAGS)]],
   },
   {
     key: "knowledge",
     title: locale === "zh-cn" ? "知识库" : "Knowledge",
-    links: [
-      { href: getRelativeLocaleUrl(locale, "/wiki"), label: typeof FOOTER_NAV_QA_WIKI === 'string' ? FOOTER_NAV_QA_WIKI : FOOTER_NAV_QA_WIKI[locale] },
-      { href: getRelativeLocaleUrl(locale, "/AIWiki"), label: typeof FOOTER_NAV_AI_WIKI === 'string' ? FOOTER_NAV_AI_WIKI : FOOTER_NAV_AI_WIKI[locale] },
-      { href: getRelativeLocaleUrl(locale, "/guild"), label: typeof FOOTER_NAV_GUILD === 'string' ? FOOTER_NAV_GUILD : FOOTER_NAV_GUILD[locale] },
-    ],
+    rows: [[pageLink("/wiki", FOOTER_NAV_QA_WIKI), pageLink("/AIWiki", FOOTER_NAV_AI_WIKI)], [pageLink("/guild", FOOTER_NAV_GUILD)]],
   },
   {
     key: "tools",
     title: locale === "zh-cn" ? "工具与学习" : "Tools",
-    links: [
-      { href: getRelativeLocaleUrl(locale, "/prompts"), label: typeof FOOTER_NAV_PROMPTS === 'string' ? FOOTER_NAV_PROMPTS : FOOTER_NAV_PROMPTS[locale] },
-      { href: getRelativeLocaleUrl(locale, "/qaskills"), label: typeof FOOTER_NAV_QASKILLS === 'string' ? FOOTER_NAV_QASKILLS : FOOTER_NAV_QASKILLS[locale] },
-      ...(locale === "zh-cn"
-        ? LEARNING_SITES.map((site) => ({
-            href: site.url,
-            label: site.label["zh-cn"],
-            external: true,
-          }))
-        : []),
-    ],
+    rows: locale === "zh-cn"
+      ? [[pageLink("/prompts", FOOTER_NAV_PROMPTS)], [pageLink("/qaskills", FOOTER_NAV_QASKILLS)], [learningLinks[0], learningLinks[1]], [learningLinks[2]], [learningLinks[3]]]
+      : [[pageLink("/prompts", FOOTER_NAV_PROMPTS)], [pageLink("/qaskills", FOOTER_NAV_QASKILLS)]],
   },
   {
     key: "site",
     title: locale === "zh-cn" ? "站点" : "Site",
-    links: [
-      { href: getRelativeLocaleUrl(locale, "/copyright"), label: typeof NAV_COPYRIGHT === 'string' ? NAV_COPYRIGHT : NAV_COPYRIGHT[locale] },
-      { href: getRelativeLocaleUrl(locale, "/privacy"), label: typeof NAV_PRIVACY === 'string' ? NAV_PRIVACY : NAV_PRIVACY[locale] },
-      { href: getRelativeLocaleUrl(locale, "/links"), label: typeof NAV_LINKS === 'string' ? NAV_LINKS : NAV_LINKS[locale] },
-      { href: getRelativeLocaleUrl(locale, "/sponsor"), label: typeof NAV_SPONSOR === 'string' ? NAV_SPONSOR : NAV_SPONSOR[locale] },
-      { href: "https://status.inaodeng.com", label: typeof NAV_STATUS === 'string' ? NAV_STATUS : NAV_STATUS[locale], external: true },
-      { href: "https://analytics.inaodeng.com/dashboard?site=inaodeng.com", label: typeof NAV_ANALYTICS === 'string' ? NAV_ANALYTICS : NAV_ANALYTICS[locale], external: true },
-      { href: getRelativeLocaleUrl(locale, "/rss.xml"), label: t.rss, external: true },
-      { href: getRelativeLocaleUrl(locale, "/sitemap"), label: t.sitemap },
+    rows: [
+      [pageLink("/copyright", NAV_COPYRIGHT), pageLink("/privacy", NAV_PRIVACY)],
+      [pageLink("/links", NAV_LINKS), pageLink("/sponsor", NAV_SPONSOR)],
+      [externalLink("https://status.inaodeng.com", localizedLabel(NAV_STATUS)), externalLink("https://analytics.inaodeng.com/dashboard?site=inaodeng.com", localizedLabel(NAV_ANALYTICS))],
+      [pageLink("/sitemap", t.sitemap)],
     ],
   },
   {
     key: "products",
     title: locale === "zh-cn" ? "产品官网" : "Product sites",
-    links: [
-      {
-        href: getRelativeLocaleUrl(locale, "/dsh-qa"),
-        label: "DSH-QA",
-      },
-      {
-        href: getRelativeLocaleUrl(locale, "/ai-test-auditor"),
-        label: "AI test audit",
-      },
-    ],
+    rows: [[pageLink("/dsh-qa", "DSH-QA")], [pageLink("/ai-test-auditor", "AI test audit")]],
   },
 ];
 ---
 
 <footer class="l-footer">
   <div class="footer-container l-content">
-    {locale === "zh-cn" && (
-      <section class="footer-subscribe" aria-labelledby="footer-subscribe-title">
-        <img src="/brand/software-testing-students-wechat-qr.jpg" alt="软件测试同学微信公众号二维码" width="112" height="112" loading="lazy" />
-        <div>
-          <p class="footer-subscribe__eyebrow">{locale === "zh-cn" ? "微信公众号" : "WECHAT OFFICIAL ACCOUNT"}</p>
-          <h2 id="footer-subscribe-title">关注软件测试同学</h2>
-          <p>扫码获取软件测试与 AI 测试的最新内容。</p>
-          <a href={getRelativeLocaleUrl(locale, "/rss.xml")}>{t.rss}</a>
-        </div>
-      </section>
-    )}
-    <!-- 社交与语言切换区域 -->
-    <div class="social-links">
-      {socialLinks.map(link => (
-        <a href={link.url} target="_blank" rel="noopener noreferrer" title={link.name} class="social-icon">
-          {link.icon === 'github' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>}
-          {link.icon === 'x' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>}
-          {link.icon === 'medium' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>}
-          {link.icon === 'weibo' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z"/></svg>}
-          {link.icon === 'kofi' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z"/></svg>}
-          {link.icon === 'email' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>}
+    <div class="footer-main">
+      <section class="footer-brand" aria-label={locale === "zh-cn" ? "软件测试同学品牌信息" : "Nao's Blog"}>
+        <a class="footer-brand__link" href={localizedHomePath} aria-label={brandName}>
+          <img
+            src={locale === "zh-cn" ? "/brand/software-testing-students-logo-final.png" : "/favicon.svg"}
+            alt=""
+            width="40"
+            height="40"
+            loading="lazy"
+          />
+          <span>{brandName}</span>
         </a>
-      ))}
+        <p class="footer-brand__slogan">{siteSlogan}</p>
+        <ul class="footer-brand__socials" aria-label={locale === "zh-cn" ? "社交链接" : "Social links"}>
+          {socialLinks.map((link) => (
+            <li>
+              <a
+                class={link.icon === "rss" ? "footer-brand__social-link footer-brand__social-link--rss" : "footer-brand__social-link"}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                title={link.name}
+              >
+                {link.icon === "github" && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>}
+                {link.icon === "x" && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 4.617L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>}
+                {link.icon === "medium" && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>}
+                {link.icon === "weibo" && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M10.08 18.12c-3.12 0-5.64-1.32-5.64-3 0-1.68 2.52-3 5.64-3s5.64 1.32 5.64 3c0 1.68-2.52 3-5.64 3zm13.92-10.8c-.24-.48-.72-.72-1.2-.72h-.24c-1.2.24-2.16 1.44-2.16 2.88 0 1.44.96 2.64 2.16 2.88h.24c.48 0 .96-.24 1.2-.72.24-.48.24-1.2 0-1.68-.24-.48-.24-1.2 0-1.68.24-.48.24-1.2 0-1.68zm-3.36 1.2c-.48-.24-.96-.48-1.44-.48h-.24c-1.44.24-2.64 1.68-2.64 3.36 0 1.68 1.2 3.12 2.64 3.36h.24c.48 0 .96-.24 1.44-.48.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2-.48-.24-.48-1.2 0-1.44.48-.24.72-.72.72-1.2 0-.48-.24-.96-.72-1.2zM12 2.4c-6.6 0-12 4.08-12 9.12 0 5.04 5.4 9.12 12 9.12s12-4.08 12-9.12c0-5.04-5.4-9.12-12-9.12zm0 15.6c-4.68 0-8.4-2.88-8.4-6.48 0-3.6 3.72-6.48 8.4-6.48s8.4 2.88 8.4 6.48c0 3.6-3.72 6.48-8.4 6.48z"/></svg>}
+                {link.icon === "kofi" && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.724c-.604 0-.724.467-.724.467s-.024 11.297 0 14.554c.024 3.258 1.821 4.622 1.821 4.622h12.012c.604 0 .724-.467.724-.467s.024-1.109 0-3.178l.232-.039c4.085-.691 9.113-2.34 9.092-11.361zm-4.805 7.403c-1.053.196-2.306.26-3.509.216l.103-8.847c.301-.004.621.005.952.026 3.29.21 4.269 2.739 4.256 5.075-.012 2.337-.791 3.33-1.802 3.53z"/></svg>}
+                {link.icon === "email" && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>}
+                {link.icon === "rss" && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6.18 17.82a2.18 2.18 0 1 0 0 4.36 2.18 2.18 0 0 0 0-4.36zM4 4.44v3.11c6.87 0 12.44 5.58 12.44 12.45h3.12C19.56 11.42 12.58 4.44 4 4.44zm0 6.22v3.12c3.43 0 6.22 2.79 6.22 6.22h3.12c0-5.15-4.19-9.34-9.34-9.34z"/></svg>}
+                {link.icon === "rss" && <span>{link.label}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-      {isZhHome && (
-        <button
-          type="button"
-          class="social-icon wechat-follow-trigger"
-          aria-label="关注公众号"
-          aria-haspopup="dialog"
-          data-wechat-follow
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8.7 3.5C4.45 3.5 1 6.25 1 9.65c0 1.95 1.16 3.7 2.96 4.82l-.72 2.2 2.62-1.28c.9.27 1.85.42 2.84.42 4.25 0 7.7-2.75 7.7-6.16S12.95 3.5 8.7 3.5Zm-2.58 4.2a1.02 1.02 0 1 1 0-2.04 1.02 1.02 0 0 1 0 2.04Zm5.17 0a1.02 1.02 0 1 1 0-2.04 1.02 1.02 0 0 1 0 2.04Z" />
-            <path d="M23 14.02c0-2.91-2.95-5.28-6.58-5.28-.36 0-.71.03-1.05.07.03.28.05.56.05.84 0 4.01-3.83 7.18-8.63 7.18h-.22c1.1 1.5 3.12 2.48 5.43 2.48.85 0 1.66-.13 2.4-.36l2.24 1.1-.62-1.88C20.16 17.34 23 15.23 23 14.02Zm-8.79-1.5a.87.87 0 1 1 0-1.74.87.87 0 0 1 0 1.74Zm4.42 0a.87.87 0 1 1 0-1.74.87.87 0 0 1 0 1.74Z" />
-          </svg>
-        </button>
-      )}
-      
-      <a href={otherLocalePath} class="social-icon lang-toggle" title={locale === 'zh-cn' ? '切换至英文' : 'Switch to Chinese'}>
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 5.11.76-1.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-        </svg>
-        <span class="lang-label">{locale === 'zh-cn' ? 'EN' : 'ZH'}</span>
-      </a>
+      <nav class="footer-nav" aria-label={locale === "zh-cn" ? "页脚导航" : "Footer navigation"}>
+        {footerGroups.map((group) => (
+          <section class="footer-nav-group" data-footer-group={group.key}>
+            <h2>{group.title}</h2>
+            <ul>
+              {group.rows.map((row) => (
+                <li data-footer-row>
+                  {row.map((link, index) => (
+                    <>
+                      {index > 0 && <span class="footer-nav-separator" aria-hidden="true">·</span>}
+                      <a
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener noreferrer" : undefined}
+                      >
+                        {link.label}
+                      </a>
+                    </>
+                  ))}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+        {locale === "zh-cn" && (
+          <section class="footer-nav-group footer-wechat" data-footer-group="wechat">
+            <img
+              src="/brand/software-testing-students-wechat-qr.jpg"
+              alt="软件测试同学微信公众号二维码"
+              width="112"
+              height="112"
+              loading="lazy"
+              data-footer-qr
+            />
+            <h2>微信公众号</h2>
+            <p data-footer-row>关注软件测试同学<br />扫码获取软件测试与 AI 测试的最新内容。</p>
+          </section>
+        )}
+      </nav>
     </div>
 
-    <!-- 底部次级导航 -->
-    <nav class="footer-nav" aria-label={locale === "zh-cn" ? "页脚导航" : "Footer navigation"}>
-      {footerGroups.map((group) => (
-        <section class="footer-nav-group" data-footer-group={group.key}>
-          <h2>{group.title}</h2>
-          <ul>
-            {group.links.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </nav>
-
-    <!-- 版权与许可区域 -->
+    <div class="footer-divider" aria-hidden="true"></div>
     <div class="footer-info">
-      <p class="footer-slogan">{typeof SITE_SLOGAN === 'string' ? SITE_SLOGAN : SITE_SLOGAN[locale]}</p>
       <div class="copyright">
         <a class="copy-link" href={localizedHomePath}>
-          © {new Date().getFullYear()} {typeof SITE_TITLE === 'string' ? SITE_TITLE : SITE_TITLE[locale]}
+          © {new Date().getFullYear()} {brandName}
         </a>
-        <span class="separator">|</span>
+        <span class="separator" aria-hidden="true">·</span>
         <a href={getRelativeLocaleUrl(locale, "/copyright")} class="license-link">{t.license}</a>
       </div>
-      <div class="tech-stack">
-        <span class="built-with">{t.builtWith}</span>
-        <div class="tech-icons">
-          <a href="https://astro.build" target="_blank" rel="noopener noreferrer" title="Astro" class="tech-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.62 8.35l-5.67 10.8c-.18.34-.64.34-.82 0L4.38 8.35c-.19-.34.09-.7.41-.7h11.22c.32 0 .6.36.41.7zM12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/></svg>
-          </a>
-          <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" title="Cloudflare" class="tech-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 10.5h-9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h9c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm-4.5 4.5h-4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H12c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5zm9-12H3c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3zm0 12H3V6h18v10.5z"/></svg>
-          </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="tech-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          </a>
-          <span title="AI" class="tech-icon tech-icon-ai">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
-          </span>
-        </div>
-      </div>
+      <span class="built-with">{t.builtWith}</span>
     </div>
   </div>
 
@@ -221,7 +192,7 @@ const footerGroups = [
     <dialog class="wechat-follow-dialog" aria-label="关注软件测试同学公众号" data-wechat-dialog>
       <div class="wechat-follow-card">
         <button type="button" class="wechat-follow-close" aria-label="关闭二维码" data-wechat-close>×</button>
-        <p class="wechat-follow-eyebrow">{locale === "zh-cn" ? "微信公众号" : "WECHAT OFFICIAL ACCOUNT"}</p>
+        <p class="wechat-follow-eyebrow">微信公众号</p>
         <h2>关注软件测试同学</h2>
         <p class="wechat-follow-description">使用微信扫描二维码，获取软件测试与 AI 测试的最新内容。</p>
         <img
@@ -648,22 +619,36 @@ const footerGroups = [
 
   /* Astro Editorial Footer: subscription, navigation, social, legal. */
   .l-footer { padding-block: 56px 32px; background: var(--color-surface-muted); border-top: 1px solid var(--color-border); overflow-x: clip; }
-  .footer-container { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.6fr); align-items: start; gap: 2rem 4rem; inline-size: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter)))); max-inline-size: none; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
-  .footer-subscribe { display: flex; gap: 1rem; align-items: center; color: var(--color-text-secondary); }
+  .footer-container { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.6fr); align-items: start; gap: 2rem 4rem; inline-size: min(var(--site-shell-max), calc(100% - (2 * var(--layout-gutter)))); max-inline-size: none; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
+  .footer-brand { display: grid; grid-column: 1; grid-row: 1; align-content: start; gap: .75rem; min-width: 0; }
+  .footer-brand__link { display: inline-flex; width: fit-content; color: var(--color-main); text-decoration: none; }
+  .footer-brand__link:hover { color: var(--color-theme); }
+  .footer-brand__cobrand, .footer-brand__single, .footer-brand__segment { display: inline-flex; align-items: center; }
+  .footer-brand__cobrand { gap: .4rem; font-family: var(--font-heading); font-size: 1.125rem; font-weight: 800; letter-spacing: -.02em; }
+  .footer-brand__segment { gap: .45rem; white-space: nowrap; }
+  .footer-brand__segment img, .footer-brand__single img { width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%; object-fit: contain; }
+  .footer-brand__cross { display: inline-grid; width: 1.2em; height: 1.2em; place-items: center; border: 1px solid var(--color-border-strong); border-radius: 50%; color: var(--color-theme); font-size: .62em; }
+  .footer-brand__single { gap: .6rem; font-family: var(--font-heading); font-size: 1.125rem; font-weight: 800; }
+  .footer-brand > p { max-width: 42ch; margin: 0; color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.6; }
+  .footer-subscribe { display: flex; grid-column: 1; grid-row: 2; gap: 1rem; align-items: flex-start; margin-block-start: .5rem; color: var(--color-text-secondary); }
   .footer-subscribe img { width: 112px; height: 112px; padding: 5px; background: white; border: 1px solid var(--color-border); border-radius: 8px; }
   .footer-subscribe__eyebrow { margin: 0 0 .35rem; font-size: .875rem; font-weight: 700; letter-spacing: 0; color: var(--color-text-secondary); }
   .footer-subscribe h2 { margin: 0; font-size: 1rem; color: var(--color-text-primary); }
   .footer-subscribe p { margin: .35rem 0; font-size: var(--text-sm); }
   .footer-subscribe a { color: var(--color-theme); font-size: var(--text-sm); }
-  .footer-nav { grid-column: 2; grid-row: 1; width: 100%; }
-  .footer-container:not(:has(.footer-subscribe)) .footer-nav { grid-column: 1 / -1; }
-  .social-links { position: static; transform: none; justify-content: center; width: 100%; grid-column: 1 / -1; grid-row: 2; padding: 1.5rem 0 .25rem; border-top: 1px solid var(--color-border); }
+  .footer-nav { grid-column: 2; grid-row: 1 / span 2; width: 100%; }
+  .footer-container:not(:has(.footer-subscribe)) .footer-nav { grid-column: 2; grid-row: 1; }
+  .social-links { position: static; transform: none; justify-content: center; width: 100%; grid-column: 1 / -1; grid-row: auto; padding: 1.5rem 0 .25rem; border-top: 1px solid var(--color-border); }
   .social-icon, .lang-toggle { width: 38px; height: 38px; background: transparent; border-color: transparent; box-shadow: none; border-radius: var(--radius-sm); }
   .social-icon:hover, .social-icon:focus-visible { background: var(--color-theme-soft); border-color: transparent; transform: none; }
-  .footer-info { grid-column: 1 / -1; grid-row: 3; width: 100%; max-inline-size: none; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+  .footer-info { grid-column: 1 / -1; grid-row: auto; width: 100%; max-inline-size: none; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
   @media (max-width: 760px) {
     .footer-container { grid-template-columns: 1fr; gap: 2rem; }
-    .footer-nav { grid-column: 1; grid-row: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .footer-brand, .footer-subscribe, .footer-nav { grid-column: 1; grid-row: auto; }
+    .footer-brand__cobrand { gap: .22rem; font-size: 1rem; }
+    .footer-brand__segment { gap: .3rem; }
+    .footer-brand__segment img, .footer-brand__single img { width: 26px; height: 26px; flex-basis: 26px; }
+    .footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .social-links, .footer-info { grid-column: 1; grid-row: auto; }
   }
 
@@ -718,6 +703,252 @@ const footerGroups = [
     .footer-nav {
       grid-template-columns: repeat(5, minmax(0, 1fr));
       max-width: none;
+    }
+  }
+  /* Shared footer aligned with the Figma desktop and mobile variants. */
+  .l-footer {
+    margin-block-start: 0;
+    padding: 0;
+    overflow-x: clip;
+    background: var(--color-surface-muted) !important;
+    border-top: 0 !important;
+  }
+  .footer-container {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    inline-size: 100% !important;
+    max-inline-size: none;
+    margin-inline: auto;
+    padding: 56px max(24px, calc((100% - 1280px) / 2)) 32px;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .footer-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+  .footer-brand {
+    display: grid;
+    flex: 0 0 clamp(280px, 21vw, 360px);
+    grid-column: auto;
+    grid-row: auto;
+    align-content: start;
+    gap: 0;
+    min-inline-size: 0;
+    inline-size: clamp(280px, 21vw, 360px);
+  }
+  .footer-brand__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    inline-size: fit-content;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-decoration: none;
+  }
+  .footer-brand__link img {
+    display: block;
+    flex: 0 0 40px;
+    inline-size: 40px;
+    block-size: 40px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+  .footer-brand__link:hover { color: var(--color-theme); }
+  .footer-brand__slogan {
+    margin: 12px 0 0;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 22px;
+  }
+  .footer-brand__socials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 12px 0 0;
+    padding: 0;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+  }
+  .footer-brand__socials { gap: 8px; }
+  .footer-brand__socials li { display: inline-flex; flex: 0 0 auto; align-items: center; white-space: nowrap; }
+  .footer-brand__socials svg { display: block; inline-size: 16px; block-size: 16px; }
+  .footer-brand__socials a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .footer-brand__socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 38px;
+    block-size: 38px;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-surface-elevated);
+  }
+  .footer-brand__socials a:hover { color: var(--color-theme); }
+  .footer-brand__socials a:focus-visible {
+    color: var(--color-theme);
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+  .footer-brand__socials .footer-brand__social-link--rss {
+    inline-size: auto;
+    min-inline-size: 96px;
+    gap: 7px;
+    padding-inline: 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 650;
+    white-space: nowrap;
+  }
+  .footer-brand__socials .footer-brand__social-link--rss span { line-height: 1; }
+  .footer-nav {
+    display: contents;
+    grid-column: auto;
+    grid-row: auto;
+    inline-size: auto;
+    width: auto;
+    margin-block-start: 0;
+  }
+  .footer-nav-group {
+    flex: 0 1 auto;
+    min-inline-size: 0;
+    width: auto;
+  }
+  .footer-nav-group[data-footer-group="explore"] { inline-size: clamp(180px, 12vw, 220px); }
+  .footer-nav-group[data-footer-group="knowledge"] { inline-size: clamp(150px, 10.4vw, 220px); }
+  .footer-nav-group[data-footer-group="tools"] { inline-size: clamp(160px, 11.1vw, 240px); }
+  .footer-nav-group[data-footer-group="site"] { inline-size: clamp(150px, 10.4vw, 220px); }
+  .footer-nav-group[data-footer-group="products"] { inline-size: clamp(110px, 7.64vw, 170px); }
+  .footer-nav-group[data-footer-group="wechat"] { inline-size: clamp(120px, 8.33vw, 180px); }
+  .footer-nav-group h2 {
+    margin: 0 0 12px;
+    color: var(--color-text-primary);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+  .footer-container .footer-info { flex-direction: row; }
+  .footer-nav-group ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    line-height: 24px;
+  }
+  .footer-nav-group li[data-footer-row] { display: block; min-block-size: 24px; max-inline-size: 100%; line-height: 24px; }
+  .footer-nav-separator {
+    display: inline-block;
+    margin-inline: 7px;
+    color: var(--color-text-secondary);
+  }
+  .footer-nav-group a {
+    padding: 0;
+    border-radius: 0;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .footer-nav-group a:hover,
+  .footer-nav-group a:focus-visible { color: var(--color-theme); text-decoration: underline; }
+  .footer-wechat img {
+    display: block;
+    inline-size: 112px;
+    block-size: 112px;
+    margin-block-end: 12px;
+    background: #fff;
+    object-fit: contain;
+  }
+  .footer-wechat h2 { margin-block-end: 12px; }
+  .footer-wechat p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 19px;
+  }
+  .footer-divider { inline-size: 100%; block-size: 1px; background: var(--color-border); }
+  .footer-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    inline-size: 100%;
+    max-inline-size: none;
+    margin: 0;
+    padding: 0 !important;
+    border: 0 !important;
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+    line-height: 18px;
+  }
+  .copyright {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 8px;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  .copyright a,
+  .built-with { color: inherit; font-size: inherit; line-height: inherit; text-decoration: none; }
+  .copyright a:hover { color: var(--color-theme); }
+  .built-with { text-align: end; }
+
+  @media (max-width: 1200px) and (min-width: 761px) {
+    .footer-container { padding-inline: max(32px, var(--layout-gutter)); }
+    .footer-main { flex-direction: column; gap: 32px; }
+    .footer-brand { flex-basis: auto; inline-size: 100%; }
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px 32px;
+      inline-size: 100%;
+    }
+    .footer-nav-group { inline-size: auto !important; }
+  }
+  @media (max-width: 760px) {
+    .footer-container { gap: 24px; padding: 32px 24px 24px; }
+    .footer-main { flex-direction: column; gap: 24px; }
+    .footer-brand { flex-basis: auto; inline-size: 100%; }
+    .footer-nav {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      inline-size: 100%;
+    }
+    .footer-nav-group { inline-size: 100% !important; }
+    .footer-container .footer-info { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .built-with { text-align: start; }
+  }
+  @media (min-width: 1750px) {
+    .footer-container {
+      padding-inline: max(32px, calc((100% - var(--site-shell-max)) / 2));
     }
   }
 </style>

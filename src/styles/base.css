@@ -1,6 +1,7 @@
 :root {
   color-scheme: light;
   --layout-max: min(1536px, 92vw);
+  --site-shell-max: var(--layout-max);
   --layout-gutter: 24px;
   --reading-max: 768px;
   --sidebar-layout-max: var(--layout-max);
@@ -107,6 +108,12 @@
 @media (min-width: 1600px) {
   :root {
     --layout-max: min(92vw, clamp(1536px, calc(40vw + 896px), 1920px));
+  }
+}
+
+@media (min-width: 1750px) {
+  :root {
+    --site-shell-max: min(88vw, 2560px);
   }
 }
 

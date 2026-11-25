@@ -38,7 +38,6 @@ const items = locale === "zh-cn" ? [
   <div class="home-inner home-capability-inner">
     <HomeSectionHeading
       id="home-capability-title"
-      eyebrow={locale === "zh-cn" ? "核心能力" : "CORE CAPABILITIES"}
       title={locale === "zh-cn" ? "三类核心能力" : "Three core capabilities"}
       subtitle={locale === "zh-cn" ? "如果已经知道需要哪类资源，可以按 QA 技能、提示词或知识实践直接浏览。" : "If you already know the resource type, browse directly by QA Skills, Prompts, or practical knowledge."}
     />
@@ -73,13 +72,12 @@ const items = locale === "zh-cn" ? [
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
     text-align: start;
   }
 
   .capability-list > li { display: block; }
-  .capability-list > li:last-child { grid-column: 1 / -1; }
 
   .capability-item {
     display: flex;
@@ -189,14 +187,9 @@ const items = locale === "zh-cn" ? [
     .capability-recommendations { padding: .7rem 1.15rem .85rem; }
   }
 
-  @media (min-width: 701px) and (max-width: 960px) {
+  @media (min-width: 701px) and (max-width: 1080px) {
     .capability-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .capability-list > li:last-child { grid-column: 1 / -1; }
-  }
-
-  @media (min-width: 1600px) {
-    .capability-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .capability-list > li:last-child { grid-column: auto; }
   }
 
   @media (prefers-reduced-motion: reduce) {

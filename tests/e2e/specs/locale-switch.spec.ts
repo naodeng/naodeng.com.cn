@@ -1,66 +1,63 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
+
+const openLocaleOption = async (page: Page, locale: "en" | "zh-cn") => {
+  const dropdown = page.locator("header [data-locale-dropdown]");
+  const trigger = dropdown.locator("[data-locale-trigger]");
+  await expect(trigger).toBeVisible();
+  if (await trigger.getAttribute("aria-expanded") !== "true") await trigger.click();
+
+  const option = dropdown.locator(`[data-locale-option][data-lang="${locale}"]`);
+  await expect(option).toBeVisible();
+  return option;
+};
 
 test.describe("语言切换", () => {
   test("en 首页：语言切换器可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
-    const langSwitcher = page.locator('a[href*="/zh-cn/"], button[aria-label*="language" i], [class*="lang-switch"]').first();
-    await expect(langSwitcher).toBeVisible({ timeout: 10000 });
+    await expect(page.locator("header [data-locale-trigger]")).toBeVisible({ timeout: 10000 });
   });
 
   test("zh-cn 首页：语言切换器可见", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
-    const langSwitcher = page.locator('a[href*="/en/"], button[aria-label*="语言"], [class*="lang-switch"]').first();
-    await expect(langSwitcher).toBeVisible({ timeout: 10000 });
+    await expect(page.locator("header [data-locale-trigger]")).toBeVisible({ timeout: 10000 });
   });
 
   test("从 en 首页切换到 zh-cn", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
-    const zhLink = page.locator('a[href*="/zh-cn/"]').first();
-    
-    if (await zhLink.isVisible()) {
-      await zhLink.click();
-      await expect(page).toHaveURL(/\/zh-cn\//);
-      await expect(page.locator("main")).toBeVisible();
-    }
+    await (await openLocaleOption(page, "zh-cn")).click();
+    await expect(page).toHaveURL(/\/zh-cn\//);
+    await expect(page.locator("main")).toBeVisible();
   });
 
   test("从 zh-cn 首页切换到 en", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/", { waitUntil: "domcontentloaded" });
-    const enLink = page.locator('a[href*="/en/"]').first();
-    
-    if (await enLink.isVisible()) {
-      await enLink.click();
-      await expect(page).toHaveURL(/\/en\//);
-      await expect(page.locator("main")).toBeVisible();
-    }
+    await (await openLocaleOption(page, "en")).click();
+    await expect(page).toHaveURL(/\/en\//);
+    await expect(page.locator("main")).toBeVisible();
   });
 
   test("从 en 博客页切换到 zh-cn 保持在博客页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/en/blog/", { waitUntil: "domcontentloaded" });
-    const zhLink = page.locator('a[href*="/zh-cn/blog"]').first();
-    
-    if (await zhLink.isVisible()) {
-      await zhLink.click();
-      await expect(page).toHaveURL(/\/zh-cn\/blog/);
-      await expect(page.locator("main")).toBeVisible();
-    }
+    const zhLink = await openLocaleOption(page, "zh-cn");
+    await expect(zhLink).toHaveAttribute("href", /\/zh-cn\/blog\//);
+    await zhLink.click();
+    await expect(page).toHaveURL(/\/zh-cn\/blog/);
+    await expect(page.locator("main")).toBeVisible();
   });
 
   test("从 zh-cn 博客页切换到 en 保持在博客页", async ({ page, baseURL }) => {
     await page.goto((baseURL || "") + "/zh-cn/blog/", { waitUntil: "domcontentloaded" });
-    const enLink = page.locator('a[href*="/en/blog"]').first();
-    
-    if (await enLink.isVisible()) {
-      await enLink.click();
-      await expect(page).toHaveURL(/\/en\/blog/);
-      await expect(page.locator("main")).toBeVisible();
-    }
+    const enLink = await openLocaleOption(page, "en");
+    await expect(enLink).toHaveAttribute("href", /\/en\/blog\//);
+    await enLink.click();
+    await expect(page).toHaveURL(/\/en\/blog/);
+    await expect(page.locator("main")).toBeVisible();
   });
 
-  for (const [from, to] of [["en", "zh-cn"], ["zh-cn", "en"]]) {
+  for (const [from, to] of [["en", "zh-cn"], ["zh-cn", "en"]] as const) {
     test(`从 ${from} AI 百科切换到 ${to} 保持在同一词条`, async ({ page }) => {
       await page.goto(`/${from}/AIWiki/ai-agent/`, { waitUntil: "domcontentloaded" });
-      const link = page.locator("footer .lang-toggle");
+      const link = await openLocaleOption(page, to);
       await expect(link).toHaveAttribute("href", `/${to}/AIWiki/ai-agent/`);
       await link.click();
       await expect(page).toHaveURL(new RegExp(`/${to}/AIWiki/ai-agent/?$`));
@@ -72,12 +69,9 @@ test.describe("语言切换", () => {
     await page.goto((baseURL || "") + "/en/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("html")).toHaveAttribute("lang", /en/);
     
-    const zhLink = page.locator('a[href*="/zh-cn/"]').first();
-    if (await zhLink.isVisible()) {
-      await zhLink.click();
-      await page.waitForLoadState("domcontentloaded");
-      await expect(page.locator("html")).toHaveAttribute("lang", /zh/);
-    }
+    await (await openLocaleOption(page, "zh-cn")).click();
+    await page.waitForLoadState("domcontentloaded");
+    await expect(page.locator("html")).toHaveAttribute("lang", /zh/);
   });
 });
 
@@ -138,7 +132,7 @@ test.describe("不自动弹出语言切换提示", () => {
     test("浏览器语言不同也不显示提示，并保留手动切换入口", async ({ page }) => {
       await page.goto("/zh-cn/", { waitUntil: "domcontentloaded" });
       await expect(page.locator("#js-languageSuggest")).toHaveCount(0);
-      await expect(page.locator("footer .lang-toggle")).toBeVisible();
+      await expect(page.locator("header [data-locale-trigger]")).toBeVisible();
     });
   });
 
@@ -148,7 +142,7 @@ test.describe("不自动弹出语言切换提示", () => {
     test("浏览器语言不同也不显示提示，并保留手动切换入口", async ({ page }) => {
       await page.goto("/en/", { waitUntil: "domcontentloaded" });
       await expect(page.locator("#js-languageSuggest")).toHaveCount(0);
-      await expect(page.locator("footer .lang-toggle")).toBeVisible();
+      await expect(page.locator("header [data-locale-trigger]")).toBeVisible();
     });
   });
 });
