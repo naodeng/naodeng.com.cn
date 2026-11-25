@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ai-agent-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-agent-testing/SKILL.md
 - description: Use this skill when you need to test AI agent goals, state, planning, recovery, and safety boundaries; triggers include ai agent testing.
 
@@ -25,6 +25,8 @@ Author: naodeng
 5. If information is missing, deliver a bounded first pass and state which conclusions remain unsupported.
 
 ## Core Constraints
+
+- Skill-effect comparisons use a same-task no-skill baseline; Chinese/English comparisons need semantically equivalent inputs and run evidence on both sides before claiming benefit or parity.
 
 - evaluate both final results and execution traces
 - use repeated trials for stochastic behavior
@@ -46,6 +48,15 @@ Author: naodeng
 ---
 name: ai-agent-testing
 description: Use this skill when you need to test AI agent goals, state, planning, recovery, and safety boundaries; triggers include ai agent testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # AI Agent Testing
@@ -72,11 +83,21 @@ description: Use this skill when you need to test AI agent goals, state, plannin
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/ai-agent-testing.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Define input sample ID, task-success oracle, allowed tools/resources, prohibited effects, and stopping conditions. Missing goals remain open.
+2. Check run/step order, permission, idempotency, isolation, recovery, and budget invariants. Judge outcome correctness and process compliance separately; either failure prevents an overall pass.
+3. Classify termination as success, goal failure, budget exhaustion, cancellation, safety block, or environment error. Missing terminal events do not prove completion.
+4. Record model/prompt/tool/data/environment versions, sample selection, and project-supplied repetitions. Report per-sample pass/fail counts and intermittent failures; a single trial establishes no stability claim.
 ## Core Constraints
+
+- Skill-effect comparisons use a same-task no-skill baseline; Chinese/English comparisons need semantically equivalent inputs and run evidence on both sides before claiming benefit or parity.
 
 - evaluate both final results and execution traces
 - use repeated trials for stochastic behavior

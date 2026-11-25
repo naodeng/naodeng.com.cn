@@ -6,7 +6,7 @@
 - slug: session-security-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/session-security-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded session-security-testing analysis and validation preparation; triggers include 会话安全测试 and session-security-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: session-security-testing
 description: Use this skill when you need evidence-bounded session-security-testing analysis and validation preparation; triggers include 会话安全测试 and session-security-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 会话安全测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded session-security-test
 - 每次执行必须读取 prompts/session-security-testing.md。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 先识别 Cookie/opaque session/access+refresh token 等机制，列创建、认证后轮换、固定、闲置/绝对过期、撤销、退出和多端合同。
+- 交付按机制的凭据生命周期与权限状态时间线，退出响应成功不自动证明旧凭据不可用。
+- 形成领域候选时，必须读取并遵循 [prompts/session-security-testing.md](prompts/session-security-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: agent-tool-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/agent-tool-testing/SKILL.md
 - description: Use this skill when you need to test AI agent tool-call contracts, authorization, failures, and side-effect boundaries; triggers include agent tool testing.
 
@@ -25,6 +25,8 @@ Author: naodeng
 5. If information is missing, deliver a bounded first pass and state which conclusions remain unsupported.
 
 ## Core Constraints
+
+- Use stable `ATT-##` finding IDs and define the boundary between agent tool selection/schema/side effects and MCP server protocol work.
 
 - default to mocks, dry runs, or isolated environments
 - never execute real writes without authorization
@@ -46,6 +48,15 @@ Author: naodeng
 ---
 name: agent-tool-testing
 description: Use this skill when you need to test AI agent tool-call contracts, authorization, failures, and side-effect boundaries; triggers include agent tool testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.2"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent Tool Testing
@@ -77,6 +88,8 @@ description: Use this skill when you need to test AI agent tool-call contracts, 
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
 ## Core Constraints
+
+- Use stable `ATT-##` finding IDs and define the boundary between agent tool selection/schema/side effects and MCP server protocol work.
 
 - default to mocks, dry runs, or isolated environments
 - never execute real writes without authorization

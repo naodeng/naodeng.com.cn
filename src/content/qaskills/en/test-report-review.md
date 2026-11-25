@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-report-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-report-review/SKILL.md
 - description: Use this skill when a test report needs an evidence-consistency review before Human approval; triggers include test report review, quality report audit, test evidence review..
 
@@ -25,6 +25,15 @@ Author: naodeng
 ---
 name: test-report-review
 description: Use this skill when a test report needs an evidence-consistency review before Human approval; triggers include test report review, quality report audit, test evidence review..
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Report Review
@@ -54,6 +63,7 @@ Check a test report against source evidence, scope, role reports, and project ac
 - Counts such as 80/80 or 100% prove only their explicitly evidenced execution scope; never extrapolate them to untested, omitted, or version-unknown scope.
 - PM input supplies schedule, resources, dependencies, ownership, and action status only. It cannot change execution results, defect severity/status, quality facts, risk, or the Human decision.
 - Cite a source and version for every conclusion. Preserve conflicting sources until an authorized resolution is supplied; never select the more convenient source.
+- For AI evaluation evidence, check model, prompt/agent, dataset, judge, run, sampling, token cost, evaluator, and execution state. Version mismatches are blockers; missing `model_version` or `run_id` means AI evaluation evidence is `not executed or insufficient evidence`.
 - Always label the output an **AI-assisted recommendation** and keep `human_final_decision: pending`. Never claim approval, release authorization, or risk acceptance occurred.
 
 ## Recommendation rules

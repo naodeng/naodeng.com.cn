@@ -6,7 +6,7 @@ Author: naodeng
 - slug: mutation-testing-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mutation-testing-analysis/SKILL.md
 - description: Use this skill when you need to interpret mutation operators, killed and survived mutants, and evidence limits; triggers include 变异测试分析 and mutation testing analysis.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent behavior conclusions, replace a complete 
 ---
 name: mutation-testing-analysis
 description: Use this skill when you need to interpret mutation operators, killed and survived mutants, and evidence limits; triggers include 变异测试分析 and mutation testing analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Mutation Testing Analysis
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent behavior conclusions, replace a complete 
 2. Complete the known, missing, conflicting, stale, out_of_scope, and assumptions input audit before findings.
 3. Record MTA-## with the subject, preconditions, concern, source evidence, and validation, plus impact/priority, owner role, close condition, and evidence state.
 4. Preserve conflicts, unknown constraints, and open questions when evidence is incomplete.
+
+## Domain Execution Essentials
+
+- Verify subject revision, operators, mutant IDs/locations, test mapping and budgets; distinguish killed, survived, no-coverage, timeout, error and pending equivalence.
+- Deliver mutant categories/test maps, explicitly defined reproducible metrics and exclusion evidence, retaining every unresolved category.
+- When deriving domain candidates, read and follow [prompts/mutation-testing-analysis.md](prompts/mutation-testing-analysis.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

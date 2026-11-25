@@ -6,7 +6,7 @@
 - slug: performance-test-gatling
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/performance-test-gatling/SKILL.md
 - description: Use this skill when you need Gatling performance scope, simulations, or runnable entry points; triggers include Gatling、Gatling 性能测试 and Gatling simulation.
 
@@ -32,6 +32,8 @@
 
 ## 按需加载
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 产出前必须阅读并遵循 `prompts/performance-test-gatling.md`（最低覆盖清单、输出结构、质量要求）。
 - 需要套用现成模板时：读 `output-templates/` 中匹配的模板，不要自创冲突结构。
 - 用户要示例或对标现有资产时：读 `examples/` 中相关样例。
@@ -55,12 +57,23 @@
 - 不要跳过假设与信息缺口。
 - 不要输出大段与当前工具链无关的空泛理论。
 
+- 校验DSL/JMX资产与数据消费边界时，读取 [evals/fixtures/java-dsl/README.md](evals/fixtures/java-dsl/README.md)；示例仅本地校准，项目门槛未提供时不得宣布验收。
+
 ## 原始 SKILL.md
 
 ```markdown
 ---
 name: performance-test-gatling
 description: Use this skill when you need Gatling performance scope, simulations, or runnable entry points; triggers include Gatling、Gatling 性能测试 and Gatling simulation.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 性能测试（Gatling）（中文版）
@@ -79,6 +92,13 @@ description: Use this skill when you need Gatling performance scope, simulations
 3. 信息不全时先给可用初版，并显式标出假设与信息缺口。
 4. 默认 Markdown；用户指定其他格式时再切换。
 
+## 领域执行要点
+
+1. 先读取项目 Gatling/插件/JDK 与 Java/Scala/Kotlin DSL 版本，沿用已有布局；选定同一 DSL 的 injection 与 assertion API，不能混用。生成资产先用项目构建的离线 test-compile 验证，依赖未缓存则标 BLOCKED 而非编译通过。
+2. 开放模型控制用户到达率，只有每用户单请求且无额外循环/重试时才与目标 RPS 一一对应；封闭模型控制并发，RPS 要从实际请求数/时窗核对。
+3. feeder 的总消费数按每用户/每循环 feed 次数复算；queue 耗尽须可见失败，circular 只在项目允许重复数据时使用，身份/业务键不冲突。
+4. 门槛来自项目并使用版本支持的 assertion API，缺门槛输出未配置骨架而不放入自定500ms/1%数值；编译、负载达成和SLO通过分别记证据。
+
 ## 核心约束
 
 - 按风险/业务影响排优先级，不要平均摊铺。
@@ -88,6 +108,8 @@ description: Use this skill when you need Gatling performance scope, simulations
 - 默认只选最关键的 1～2 类性能场景，不要默认基线/负载/压力/尖峰/稳定性全做。
 
 ## 按需加载
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 产出前必须阅读并遵循 `prompts/performance-test-gatling.md`（最低覆盖清单、输出结构、质量要求）。
 - 需要套用现成模板时：读 `output-templates/` 中匹配的模板，不要自创冲突结构。
@@ -111,6 +133,8 @@ description: Use this skill when you need Gatling performance scope, simulations
 - 不要把所有项写成同等重要。
 - 不要跳过假设与信息缺口。
 - 不要输出大段与当前工具链无关的空泛理论。
+
+- 校验DSL/JMX资产与数据消费边界时，读取 [evals/fixtures/java-dsl/README.md](evals/fixtures/java-dsl/README.md)；示例仅本地校准，项目门槛未提供时不得宣布验收。
 ```
 
 ## 安装

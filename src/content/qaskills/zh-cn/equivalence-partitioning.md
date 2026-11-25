@@ -6,7 +6,7 @@
 - slug: equivalence-partitioning
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/equivalence-partitioning/SKILL.md
 - description: Use this skill when you need to partition inputs into evidence-backed valid, invalid, and unknown classes based on constraints, rules, and response differences; triggers include 等价类划分测试设计 and equivalence partitioning test design.
 
@@ -51,6 +51,15 @@
 ---
 name: equivalence-partitioning
 description: Use this skill when you need to partition inputs into evidence-backed valid, invalid, and unknown classes based on constraints, rules, and response differences; triggers include 等价类划分测试设计 and equivalence partitioning test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 等价类划分测试设计
@@ -76,6 +85,12 @@ description: Use this skill when you need to partition inputs into evidence-back
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 EP-## 记录 等价类、判定依据、代表值、有效/无效状态、来源证据、预期关注点和验证方法，保留来源、证据状态、影响/优先级、责任角色、关闭条件和验证方法。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 按相同行为/错误与约束来源划有效、无效和未知类，不仅按字段形状；响应不同的无效类不得合并。
+- 交付联合等价类、行为 oracle 和代表值表，标互斥/完备范围及未知类；有效与无效依赖必须保持。
+- 形成领域候选时，必须读取并遵循 [prompts/equivalence-partitioning.md](prompts/equivalence-partitioning.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

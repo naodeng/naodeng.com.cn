@@ -6,7 +6,7 @@ Author: naodeng
 - slug: quality-metrics-design
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/quality-metrics-design/SKILL.md
 - description: Use this skill when you need evidence-bounded quality metric definitions, calculation rules, data sources, freshness, and anti-gaming boundaries; triggers include 质量指标 and quality metric.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: quality-metrics-design
 description: Use this skill when you need evidence-bounded quality metric definitions, calculation rules, data sources, freshness, and anti-gaming boundaries; triggers include 质量指标 and quality metric.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Quality Metrics Design
@@ -71,9 +80,18 @@ description: Use this skill when you need evidence-bounded quality metric defini
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/quality-metrics-design.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Define purpose, statistical unit, numerator/denominator, window/timezone, filters, deduplication, missing-data handling, version, source and lineage.
+2. Separate defect entities from state events, first attempts from reruns, and closure from reopening. Aggregate supplied IDs/event times; duplicates are not new defects and retries cannot inflate first-pass rates.
+3. Recompute samples and check denominator coverage, delays and exclusions. Missing records remain unknown. Treat flawed records as measurement issues until product-quality evidence exists.
+4. Provide worked calculations, interpretation limits, sourced action thresholds and comparability rules. Correlation does not establish cause.
 
 ## Core Constraints
 

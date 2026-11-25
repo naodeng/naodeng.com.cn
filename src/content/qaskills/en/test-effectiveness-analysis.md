@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-effectiveness-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-effectiveness-analysis/SKILL.md
 - description: Use this skill when you need evidence-bounded the relationship between test signals and defects or risks, missed-detection limits, false signals, and validation plans; triggers include 测试有效性 and test effectiveness.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: test-effectiveness-analysis
 description: Use this skill when you need evidence-bounded the relationship between test signals and defects or risks, missed-detection limits, false signals, and validation plans; triggers include 测试有效性 and test effectiveness.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Effectiveness Analysis
@@ -71,9 +80,18 @@ description: Use this skill when you need evidence-bounded the relationship betw
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/test-effectiveness-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Map obligation/fault class→test ID→real production behavior→effective assertion→escaping defect. Pass/coverage rates are signals, not fault-detection proof.
+2. Historical escapes retain observation window, exposure, detection/misses, and sources. Controlled fault injections use separate denominators, controls, environment, and mutation identity; do not pool them into production-defect rates.
+3. Verify failures came from the intended business assertion; environment errors/timeouts are not automatically valid detections. Give candidate causes/minimal independent checks without claiming causation from correlation.
+4. Report detected/missed/unexecuted faults by class with residual uncertainty, prioritizing critical oracles. Without fault/escape data deliver an evaluation plan, not effectiveness proof.
 
 ## Core Constraints
 

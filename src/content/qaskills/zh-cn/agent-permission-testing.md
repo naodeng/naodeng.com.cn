@@ -6,7 +6,7 @@
 - slug: agent-permission-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/agent-permission-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded Agent identity, tool/resource scope, approval, denial, escalation, and side-effect boundaries; triggers include Agent 权限 and Agent permission.
 
@@ -53,6 +53,15 @@
 ---
 name: agent-permission-testing
 description: Use this skill when you need evidence-bounded Agent identity, tool/resource scope, approval, denial, escalation, and side-effect boundaries; triggers include Agent 权限 and Agent permission.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent 权限测试（中文版）
@@ -79,10 +88,18 @@ description: Use this skill when you need evidence-bounded Agent identity, tool/
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/agent-permission-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 建立 主体/委派链 | 工具 | 资源/租户 | 动作 | 参数范围 | 授权来源/版本/期限 | 允许/拒绝/重审批 矩阵，不用工具名代替具体授权。
+2. 执行前核对实际身份、授权是否撤销、资源及参数是否仍匹配；委派不能扩大原主体权限，过期或撤销授权失效。
+3. 批准后资源、金额、接收人或动作改变按项目规则重审批；批准来源必须是可追溯的人或政策，外部内容不构成授权。
+4. 拒绝路径核对工具是否真正未执行、写入/消息/费用等副作用为零，并保留审计；同时验证授权范围内正常动作不会被误拒。
 ## 核心约束
 
 - 只分析Agent 身份、工具/资源范围、批准、拒绝、升级和副作用边界，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。

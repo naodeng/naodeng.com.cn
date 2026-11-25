@@ -6,7 +6,7 @@
 - slug: change-impact-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/change-impact-analysis/SKILL.md
 - description: Use this skill when you need to analyze how a code, configuration, or requirement change affects quality scope; triggers include 变更影响分析 and change impact analysis.
 
@@ -54,6 +54,15 @@
 ---
 name: change-impact-analysis
 description: Use this skill when you need to analyze how a code, configuration, or requirement change affects quality scope; triggers include 变更影响分析 and change impact analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 变更影响分析（中文版）
@@ -80,9 +89,18 @@ description: Use this skill when you need to analyze how a code, configuration, 
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/change-impact-analysis.md`；它是本 Skill 的完整执行规范。
 - 需要评测或回归本 Skill 时，读取 `evals/eval.yaml` 与匹配的 `evals/cases/` 用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 固定变更版本及范围，输出 changed 文件/符号/配置→dependent→业务义务→test ID 的带类型证据图；每条边记录来源、版本与 confirmed/candidate/unknown。
+2. 遍历直接和传递消费者，去重循环；只有契约隔离或已证明无消费者边才可停止，记录停止依据，不能以目录边界截断。
+3. 动态注册、运行时配置或未追踪依赖保持 unknown；按风险增加消费者契约/集成验证候选，不把没有映射当无影响。
+4. 输出纳入/排除理由、最小验证、残余风险及追加范围触发；本 Skill 可分析代码、数据、配置等变更，PR 专项另保留 base/head 与 diff 身份。
 
 ## 核心约束
 

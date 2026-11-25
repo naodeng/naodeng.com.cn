@@ -6,7 +6,7 @@
 - slug: risk-based-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/risk-based-testing/SKILL.md
 - description: Use this skill when you need to turn quality risks into prioritized test objectives, depth, methods, and scope tradeoffs; triggers include 基于风险的测试 and risk-based testing.
 
@@ -54,6 +54,15 @@
 ---
 name: risk-based-testing
 description: Use this skill when you need to turn quality risks into prioritized test objectives, depth, methods, and scope tradeoffs; triggers include 基于风险的测试 and risk-based testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 基于风险的测试
@@ -87,6 +96,13 @@ description: Use this skill when you need to turn quality risks into prioritized
 4. 为有限资源场景说明停止条件、扩大范围触发器、剩余风险和 Human 待决事项。
 5. 不把未经证据支持的数字、风险等级或测试建议写成事实或执行结果。
 
+## 领域执行要点
+
+1. 按可观察影响、暴露/发生证据、可探测性与控制缺口建立定性锚点；缺项目数值模型不用自定分数乘积，未知概率保留不确定。
+2. 每风险关联测试目标、层/平台、深度、数据、最低可观察证据、时长依据和剩余风险；高风险须有可证伪业务断言，而非仅更多用例。
+3. 按约束分配窗口，关键最低保护与授权边界优先；时间不足明示延期项、替代验证、责任人和需Human接受的取舍，不自动免除门禁。
+4. 保留正常/低风险对照与测试收益边界，输出选取理由和追加范围触发；计划优先级不构成实际执行或风险消除。
+
 ## 核心约束
 
 - `RBT-##` 是测试决策建议，不是风险接受、质量分、覆盖率或发布批准。
@@ -95,6 +111,8 @@ description: Use this skill when you need to turn quality risks into prioritized
 - 不选择具体已有测试 ID，不执行测试，不编造环境、阈值、缺陷或通过结果。
 
 ## 参考文件
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 每次产出前必须阅读 `prompts/risk-based-testing.md`。
 - 回归时读取 `evals/eval.yaml` 和匹配用例；配置和建议不证明真实风险已被控制。

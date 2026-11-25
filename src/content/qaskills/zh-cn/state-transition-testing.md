@@ -6,7 +6,7 @@
 - slug: state-transition-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/state-transition-testing/SKILL.md
 - description: Use this skill when you need to derive test candidates for reachable, unreachable, and abnormal transitions from states, events, guards, and actions; triggers include 状态迁移测试设计 and state transition test design.
 
@@ -51,6 +51,15 @@
 ---
 name: state-transition-testing
 description: Use this skill when you need to derive test candidates for reachable, unreachable, and abnormal transitions from states, events, guards, and actions; triggers include 状态迁移测试设计 and state transition test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 状态迁移测试设计
@@ -76,6 +85,12 @@ description: Use this skill when you need to derive test candidates for reachabl
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 STT-## 记录 状态、事件、前置守卫、动作、目标状态、可达性、来源证据和验证方法，保留来源、证据状态、影响/优先级、责任角色、关闭条件和验证方法。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 建立来源化状态/事件/guard/动作/目标矩阵，标初始与终止、持久化和失败时的原子性合同。
+- 交付有效/无效迁移及guard边界表，状态迁移和业务副作用须共同比对。
+- 形成领域候选时，必须读取并遵循 [prompts/state-transition-testing.md](prompts/state-transition-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

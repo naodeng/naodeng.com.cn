@@ -6,7 +6,7 @@
 - slug: reliability-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/reliability-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded reliability-testing analysis and validation preparation; triggers include 可靠性测试 and reliability-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: reliability-testing
 description: Use this skill when you need evidence-bounded reliability-testing analysis and validation preparation; triggers include 可靠性测试 and reliability-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 可靠性测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded reliability-testing a
 - 每次执行必须读取 prompts/reliability-testing.md；它是本 Skill 的完整执行规范。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录实际存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 明确 SLI 事件/时间口径、成功/失败定义、分母、排除、观测窗口和目标来源；请求成功率与时间可用性不能互换。
+- 交付带窗口/分母的 SLI 与故障时间表，任何目标比较或外推都须说明适用条件。
+- 形成领域候选时，必须读取并遵循 [prompts/reliability-testing.md](prompts/reliability-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

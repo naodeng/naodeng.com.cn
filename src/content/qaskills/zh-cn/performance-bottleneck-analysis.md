@@ -6,7 +6,7 @@
 - slug: performance-bottleneck-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/performance-bottleneck-analysis/SKILL.md
 - description: Use this skill when you need to form evidence-based performance bottleneck hypotheses and validation steps; triggers include 性能瓶颈分析 and performance bottleneck analysis.
 
@@ -54,6 +54,15 @@
 ---
 name: performance-bottleneck-analysis
 description: Use this skill when you need to form evidence-based performance bottleneck hypotheses and validation steps; triggers include 性能瓶颈分析 and performance bottleneck analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 性能瓶颈分析（中文版）

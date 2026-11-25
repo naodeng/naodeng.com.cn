@@ -6,7 +6,7 @@
 - slug: llm-consistency-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/llm-consistency-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded repeat inputs, version/model/prompt factors, invariants, variance evidence, and comparison boundaries; triggers include LLM 一致性 and LLM consistency.
 
@@ -25,6 +25,8 @@
 5. 信息不足时交付受限初版，明确哪些结论不能成立，不把静态材料写成执行结果。
 
 ## 核心约束
+
+- 模型/供应商迁移必须绑定旧版与候选版的同任务双跑、精确版本、run ID、再基线批准、弃用截止和回滚条件。
 
 - 只分析重复输入、版本/模型/提示词因素、不变量、方差证据与比较边界，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。
 - 不编造系统行为、字段、模型输出、数据、阈值、根因、执行记录或通过结论。
@@ -53,6 +55,15 @@
 ---
 name: llm-consistency-testing
 description: Use this skill when you need evidence-bounded repeat inputs, version/model/prompt factors, invariants, variance evidence, and comparison boundaries; triggers include LLM 一致性 and LLM consistency.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # LLM 一致性测试（中文版）
@@ -79,17 +90,34 @@ description: Use this skill when you need evidence-bounded repeat inputs, versio
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/llm-consistency-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 固定样本 ID、模型/Prompt/工具/数据版本、temperature、seed（仅供应商支持时）和其他采样参数，记录项目指定重复次数；seed 相同不代表跨版本可复现。
+2. 先比 schema、必需字段、允许枚举和政策等结构不变量，再依据项目 rubric 比语义结论；同义表达或获准顺序变化不应报错。
+3. 逐样本报告重复分母、结构失败数、语义失败数与偶发失败；方差需明确数值变量、统计单位和算法，不将文本不同率冒充质量方差。
+4. 缺重复数据只报告单次观察，缺 rubric 则语义一致性 UNKNOWN；不同参数或版本分组比较，不混成稳定性证据。
+
 ## 核心约束
+
+- 模型/供应商迁移必须绑定旧版与候选版的同任务双跑、精确版本、run ID、再基线批准、弃用截止和回滚条件。
 
 - 只分析重复输入、版本/模型/提示词因素、不变量、方差证据与比较边界，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。
 - 不编造系统行为、字段、模型输出、数据、阈值、根因、执行记录或通过结论。
 - 静态设计、计划、文件存在或 dry-run 只能保留原证据状态，不能升级为真实执行证明。
 - 证据不足时使用待确认、blocked、unassessed 或 NOT_SCORED，并给出最小验证方法。
 - 涉及用户数据、生产或安全时采用最小权限、脱敏数据、mock、dry-run 或隔离环境。
+
+## 评测证据状态
+
+- 输出评测结论时包含 `evaluation_status`：`PASS`、`FAIL`、`BLOCKED`、`NOT_RUN` 或 `UNKNOWN`。
+- `PASS` 需要有范围内的实际运行记录和完整断言证据；没有运行结果用 `NOT_RUN`，运行受阻用 `BLOCKED`，证据不足用 `UNKNOWN`。方案、静态检查或文件存在不能单独证明 `PASS`。
+- 结构化追踪记录 `trace_id`、样本与版本、参数、run/trial、解析、Schema、语义状态及证据引用；三类检查分别判定。
 
 ## 交付前自检
 

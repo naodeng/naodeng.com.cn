@@ -6,7 +6,7 @@
 - slug: requirement-consistency-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/requirement-consistency-analysis/SKILL.md
 - description: Use this skill when multiple requirement artifacts may disagree on terminology, identifiers, formats, states, rules, or behavior; triggers include 需求一致性分析, requirement consistency, and cross-document consistency.
 
@@ -57,6 +57,15 @@
 ---
 name: requirement-consistency-analysis
 description: Use this skill when multiple requirement artifacts may disagree on terminology, identifiers, formats, states, rules, or behavior; triggers include 需求一致性分析, requirement consistency, and cross-document consistency.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 需求一致性分析
@@ -91,6 +100,15 @@ description: Use this skill when multiple requirement artifacts may disagree on 
 5. 当任务要求 `business-rule` 模式时，使用稳定规则键和 `BR-##` 规则级证据比较主体、触发、适用范围、优先级/覆盖关系、动作、结果和例外；保留通用 `RC-##` 发现。
 6. 给出影响、优先级、责任角色、待确认问题、关闭条件和验证方式。
 
+## 领域执行要点
+
+上述判定不改RC/BR契约：EQUIVALENT对应Relation=aligned、Status=assessed；CONTRADICTED在同适用域下对应conflict/assessed；NOT_COMPARABLE对应unassessed或stale的证据状态，不强填aligned/conflict。决策附表与原Relation/Status分列。
+
+1. 固定比较来源及版本/生效时间，建立术语别名、实体ID、单位和状态映射；映射要有词典/契约证据，名字相同不自动同义。
+2. 比较同范围、同版本、同条件下的业务规则；单位按证据换算，状态按明示映射归一，不静默合并跨版本或不同业务实体。
+3. EQUIVALENT有可追溯同义/数值一致证据，CONTRADICTED有相同适用条件下无法同时成立的规则，NOT_COMPARABLE因身份、版本或单位映射缺失而不能比较。
+4. 逐项给原文、归一值、来源/映射、影响和最小澄清；单来源不能证明跨文档一致，未指定权威源不得自动择一覆盖。
+
 ## 核心约束
 
 - 使用 `RC-##` 标识发现；每行至少有 source pair、comparison key、关系、状态、evidence、scope/version、impact 和 action。关系只能使用 `aligned`、`inconsistent` 或 `conflict`；状态只能使用 `assessed`、`missing`、`stale` 或 `unassessed`。
@@ -101,6 +119,8 @@ description: Use this skill when multiple requirement artifacts may disagree on 
 - 不补造状态迁移、字段含义、平台支持或最终规范。
 
 ## 参考文件
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 每次产出前必须阅读 `prompts/requirement-consistency-analysis.md`。
 - 需要回归本 Skill 时使用 `evals/eval.yaml` 和 `evals/cases/`；结构门禁不证明跨来源语义正确。

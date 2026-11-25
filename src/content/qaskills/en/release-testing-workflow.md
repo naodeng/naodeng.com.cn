@@ -6,7 +6,7 @@ Author: naodeng
 - slug: release-testing-workflow
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/release-testing-workflow/SKILL.md
 - description: Use this skill when you need release-phase QA workflow from T-14 planning to go/no-go and post-release monitoring; triggers include release testing workflow and go/no-go QA.
 
@@ -24,7 +24,7 @@ Author: naodeng
 
 ## Core Constraints
 
-- Own release timeline and ship decision; hand specialty reports to `performance-testing` / `security-testing` / etc.
+- Own release timeline and Go/No-Go recommendation; hand specialty reports to `performance-testing` / `security-testing` / etc.
 - Timelines may compress; gate criteria may not be deleted.
 - Go/No-Go requires evidence; conditional Go must be verifiable.
 - No relative-path links to other skill files.
@@ -57,6 +57,15 @@ Author: naodeng
 ---
 name: release-testing-workflow
 description: Use this skill when you need release-phase QA workflow from T-14 planning to go/no-go and post-release monitoring; triggers include release testing workflow and go/no-go QA.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.2.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Release Testing Workflow
@@ -68,6 +77,10 @@ description: Use this skill when you need release-phase QA workflow from T-14 pl
 - Need a release-window cadence: T-N planning → specialties → RC → Go/No-Go → post-release watch.
 - Need release gates and a ship evidence pack, with specialty execution handed to type skills.
 
+## Decision authority
+
+Provide a release recommendation; formal approval requires an authorized owner and version, scope, time, and evidence record. Hotfix/canary schedules may compress while preserving gate criteria.
+
 ## Workflow
 
 1. Read and follow `prompts/release-testing-workflow.md` (timeline, gates, Go/No-Go, handoffs).
@@ -77,7 +90,7 @@ description: Use this skill when you need release-phase QA workflow from T-14 pl
 
 ## Core Constraints
 
-- Own release timeline and ship decision; hand specialty reports to `performance-testing` / `security-testing` / etc.
+- Own release timeline and Go/No-Go recommendation; hand specialty reports to `performance-testing` / `security-testing` / etc.
 - Timelines may compress; gate criteria may not be deleted.
 - Go/No-Go requires evidence; conditional Go must be verifiable.
 - No relative-path links to other skill files.

@@ -6,7 +6,7 @@
 - slug: llm-hallucination-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/llm-hallucination-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded claim-to-source relations, unsupported assertions, abstention, uncertainty, and evidence review; triggers include LLM 幻觉 and LLM hallucination.
 
@@ -53,6 +53,15 @@
 ---
 name: llm-hallucination-testing
 description: Use this skill when you need evidence-bounded claim-to-source relations, unsupported assertions, abstention, uncertainty, and evidence review; triggers include LLM 幻觉 and LLM hallucination.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # LLM 幻觉测试（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded claim-to-source relat
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/llm-hallucination-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 拆出独立可核对声明，包括数字/单位、实体、条件、时间和引用；为声明编号并保留答案原文、证据库版本和来源位置。
+2. 标签定义：SUPPORTED 有相同范围的证据支持；CONTRADICTED 被证据明确反驳；MISSING_SOURCE 提供材料未支持且没有直接反证；UNASSESSABLE 因来源不可访问、范围/时效不明而不能比对。缺来源不等同已证明虚构。
+3. 引用存在、能打开、相关及支持具体声明分别核对；来源真实却包含相反数字仍为矛盾，不能按整段一次定性。
+4. 汇总保持逐声明分母、支持率与未知比例分开。无参考真值或取样覆盖不足时只给检验方案，不能证明事实准确。
 
 ## 核心约束
 

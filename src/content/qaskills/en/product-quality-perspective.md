@@ -6,7 +6,7 @@ Author: naodeng
 - slug: product-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/product-quality-perspective/SKILL.md
 - description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include product quality perspective, product quality review..
 
@@ -58,6 +58,15 @@ Author: naodeng
 ---
 name: product-quality-perspective
 description: Use this skill when product-quality responsibility is needed across requirements, strategy, review, test-case, or reporting stages; triggers include product quality perspective, product quality review..
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Product Quality Perspective (English)
@@ -121,6 +130,10 @@ Unless the result is Not applicable, every report includes: Summary, Facts, Evid
 - Do not turn a product-quality perspective into unsupported code-review or test-pass conclusions.
 - Do not equate “the requirement is met” with “the code is correct” or “tests have passed.”
 - Do not hide critical information gaps behind a generic checklist.
+
+## Report provenance
+
+Keep the selected `stage`, a stable `source_id`, and supplied `version` in the report header. If a source ID is absent, declare a temporary local locator; if version is absent, write unknown rather than inventing it. Each finding has a stable `finding_id`, its source/evidence locator and status. Each action links its finding and specifies the evidence that would close it; owner, date and action status stay unknown unless supplied. These are standalone report fields, not a dependency on another Skill.
 ```
 
 ## Install

@@ -6,7 +6,7 @@
 - slug: test-data-requirement-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-data-requirement-analysis/SKILL.md
 - description: Use this skill when you need to analyze test-data prerequisites, relationships, privacy, lifecycle, and environment blockers before test design or generation; triggers include 测试数据需求分析 and test data requirement analysis.
 
@@ -55,6 +55,15 @@
 ---
 name: test-data-requirement-analysis
 description: Use this skill when you need to analyze test-data prerequisites, relationships, privacy, lifecycle, and environment blockers before test design or generation; triggers include 测试数据需求分析 and test data requirement analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试数据需求分析
@@ -88,6 +97,13 @@ description: Use this skill when you need to analyze test-data prerequisites, re
 4. 区分事实、数据准备推断、待确认约束和 Human/合规决定。
 5. 信息不足时交付受限需求，标出不能生成或执行的原因，不承诺数据已经存在。
 
+## 领域执行要点
+
+1. 从场景/风险列场景→实体/状态/关系→取值/边界→数量依据→获取来源/权限→准备/清理条件矩阵；本Skill分析需求，不默认生成或抓取数据。
+2. 数据量依据来自并发/隔离/重复次数/消耗模式，未知次数给公式与缺口；不能自定100行或把会话数等同实体数。
+3. 缺schema时分开已知业务关系与未定义字段/键，提出最小澄清；跨实体状态和外键需求必须可追踪，不仅列CSV文件名。
+4. 个人/受限数据优先合成或许可脱敏，记录来源限制、保留/清理、验收oracle；授权未知标BLOCKED，不把分析建议写成已准备完成。
+
 ## 核心约束
 
 - 覆盖适用的实体/字段、关联完整性、有效/无效/边界/组合、状态、角色、来源、脱敏、初始化、清理和隔离。
@@ -97,6 +113,8 @@ description: Use this skill when you need to analyze test-data prerequisites, re
 - 只说明后续需要什么数据与证据，不替代数据生成、测试设计或 Human/合规批准。
 
 ## 参考文件
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 每次产出前必须阅读 `prompts/test-data-requirement-analysis.md`。
 - 回归时读取 `evals/eval.yaml` 和匹配用例；配置不证明数据已经准备好。

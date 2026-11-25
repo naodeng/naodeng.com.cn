@@ -6,7 +6,7 @@ Author: naodeng
 - slug: manual-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/manual-testing/SKILL.md
 - description: Use this skill when you need to plan manual or exploratory testing with charters, heuristics, and session records; triggers include manual testing and exploratory testing.
 
@@ -30,6 +30,8 @@ Author: naodeng
 - Keep output executable: concrete scenarios, clear priority, clear next steps.
 
 ## Progressive Disclosure
+
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
 
 - Before producing output, read and follow `prompts/manual-testing.md` (minimum coverage, output structure, quality bar).
 - When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
@@ -59,6 +61,15 @@ Author: naodeng
 ---
 name: manual-testing
 description: Use this skill when you need to plan manual or exploratory testing with charters, heuristics, and session records; triggers include manual testing and exploratory testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Manual/Exploratory Testing
@@ -77,6 +88,13 @@ description: Use this skill when you need to plan manual or exploratory testing 
 3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
 4. Default to Markdown; switch formats only when the user asks.
 
+## Domain Execution Essentials
+
+1. Give each time-box a charter: task/risk, environment/build, data, exploration scope, deadline, and evidence. Track scripted execution and exploration separately within authorization.
+2. Record precondition→action→expected→actual→evidence ID→state. Not started is NOT_RUN, interrupted is INCOMPLETE, environment prevention is BLOCKED; a checklist is no execution log.
+3. Prepare recoverable data/checkpoints and restore accounts/orders/config according to policy, checking residuals. Unauthorized deletion is not cleanup.
+4. Under limited time complete the critical risk loop first, then preserve unfinished work, owners, and restart points. Conclusions cover observations only; missing oracles stay open.
+
 ## Core Constraints
 
 - Prioritize by risk / business impact — do not treat everything equally.
@@ -85,6 +103,8 @@ description: Use this skill when you need to plan manual or exploratory testing 
 - Keep output executable: concrete scenarios, clear priority, clear next steps.
 
 ## Progressive Disclosure
+
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
 
 - Before producing output, read and follow `prompts/manual-testing.md` (minimum coverage, output structure, quality bar).
 - When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.

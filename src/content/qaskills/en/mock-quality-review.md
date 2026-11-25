@@ -6,7 +6,7 @@ Author: naodeng
 - slug: mock-quality-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mock-quality-review/SKILL.md
 - description: Use this skill when you need to review mock fidelity, contract alignment, over-mocking, and drift evidence; triggers include Mock 质量评审 and mock quality review.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent behavior conclusions, replace a complete 
 ---
 name: mock-quality-review
 description: Use this skill when you need to review mock fidelity, contract alignment, over-mocking, and drift evidence; triggers include Mock 质量评审 and mock quality review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Mock Quality Review
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent behavior conclusions, replace a complete 
 2. Complete the known, missing, conflicting, stale, out_of_scope, and assumptions input audit before findings.
 3. Record MQR-## with the subject, preconditions, concern, source evidence, and validation, plus impact/priority, owner role, close condition, and evidence state.
 4. Preserve conflicts, unknown constraints, and open questions when evidence is incomplete.
+
+## Domain Execution Essentials
+
+- Identify the subject and external-collaborator boundary; map mock/stub version, fields, statuses, errors, timing and side effects to the real contract.
+- Deliver contract/stub/protected-obligation differences with concrete missed paths; mock counts are not a quality oracle.
+- When deriving domain candidates, read and follow [prompts/mock-quality-review.md](prompts/mock-quality-review.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

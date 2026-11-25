@@ -6,7 +6,7 @@
 - slug: api-idempotency-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-idempotency-testing/SKILL.md
 - description: Use this skill when you need to assess API retry and duplicate-request behavior against sourced side-effect evidence; triggers include API 幂等性测试 and API idempotency testing.
 
@@ -51,6 +51,15 @@
 ---
 name: api-idempotency-testing
 description: Use this skill when you need to assess API retry and duplicate-request behavior against sourced side-effect evidence; triggers include API 幂等性测试 and API idempotency testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API 幂等性测试
@@ -76,6 +85,12 @@ description: Use this skill when you need to assess API retry and duplicate-requ
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 AIT-## 记录对象、前置条件、关注行为、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 提取键作用域、载荷等价规则、有效期及到期边界、并发处理和重复响应合同；分别列响应复用与订单/支付/消息等业务副作用义务。
+- 逐场景交付“请求序列→响应→提交账本→合同判定”；幂等性由合同约束下的副作用与响应共同判断。
+- 形成领域候选时，必须读取并遵循 [prompts/api-idempotency-testing.md](prompts/api-idempotency-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

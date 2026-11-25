@@ -6,7 +6,7 @@ Author: naodeng
 - slug: llm-consistency-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/llm-consistency-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded repeat inputs, version/model/prompt factors, invariants, variance evidence, and comparison boundaries; triggers include LLM 一致性 and LLM consistency.
 
@@ -25,6 +25,8 @@ Author: naodeng
 5. When input is incomplete, deliver a bounded first pass, state unsupported conclusions, and never present static material as execution evidence.
 
 ## Core Constraints
+
+- A model/provider migration binds old and candidate versions to same-task dual runs, exact versions, run IDs, re-baseline approval, deprecation deadline, and rollback criteria.
 
 - Keep the analysis focused on repeat inputs, version/model/prompt factors, invariants, variance evidence, and comparison boundaries; do not replace business owners or Human risk acceptance, exception approval, or safety decisions.
 - Never invent system behavior, fields, model outputs, data, thresholds, root causes, execution records, or pass claims.
@@ -45,6 +47,15 @@ Author: naodeng
 ---
 name: llm-consistency-testing
 description: Use this skill when you need evidence-bounded repeat inputs, version/model/prompt factors, invariants, variance evidence, and comparison boundaries; triggers include LLM 一致性 and LLM consistency.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # LLM Consistency Testing
@@ -71,17 +82,34 @@ description: Use this skill when you need evidence-bounded repeat inputs, versio
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/llm-consistency-testing.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Fix sample ID, model/prompt/tool/data versions, temperature, seed where supported, and other sampling parameters, with project-supplied repetition counts. Equal seeds do not establish reproducibility across versions.
+2. Check structural invariants first: schema, required fields, enums, and policy. Then compare semantic decisions using the project rubric; permitted paraphrases/order changes are not failures.
+3. Report repeated-trial denominators, structural/semantic failure counts, and intermittent failures per sample. Variance needs a named numeric variable, unit, and formula; wording difference rates are not quality variance.
+4. Single observations establish no repeated consistency. Missing rubrics leave semantic consistency UNKNOWN. Separate parameter/version groups rather than pooling them as stability evidence.
+
 ## Core Constraints
+
+- A model/provider migration binds old and candidate versions to same-task dual runs, exact versions, run IDs, re-baseline approval, deprecation deadline, and rollback criteria.
 
 - Keep the analysis focused on repeat inputs, version/model/prompt factors, invariants, variance evidence, and comparison boundaries; do not replace business owners or Human risk acceptance, exception approval, or safety decisions.
 - Never invent system behavior, fields, model outputs, data, thresholds, root causes, execution records, or pass claims.
 - Static design, plans, file presence, or a dry run retain their evidence state and cannot become proof of real execution.
 - When evidence is insufficient, use pending confirmation, blocked, unassessed, or NOT_SCORED and give the smallest validation method.
 - For user data, production, or safety work, use least privilege, masked data, mocks, dry runs, or isolation.
+
+## Evaluation Evidence Status
+
+- Include `evaluation_status`: `PASS`, `FAIL`, `BLOCKED`, `NOT_RUN`, or `UNKNOWN` for evaluation conclusions.
+- `PASS` requires in-scope runtime records and evidence for every required assertion. Use `NOT_RUN` when no run results exist, `BLOCKED` when execution was prevented, and `UNKNOWN` when evidence is insufficient. A plan, static check, or file presence alone cannot prove `PASS`.
+- Trace `trace_id`, sample and version identity, parameters, run/trial, parse, schema, semantic status, and evidence reference; decide those checks separately.
 
 ## Delivery Checklist
 

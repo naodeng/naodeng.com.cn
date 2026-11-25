@@ -6,7 +6,7 @@
 - slug: test-scope-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-scope-analysis/SKILL.md
 - description: Use this skill when a test activity, iteration, release, or risk review needs explicit inclusion, exclusion, depth, and expansion boundaries before execution; triggers include 测试范围分析, test scope analysis, and test boundary review.
 
@@ -53,6 +53,15 @@
 ---
 name: test-scope-analysis
 description: Use this skill when a test activity, iteration, release, or risk review needs explicit inclusion, exclusion, depth, and expansion boundaries before execution; triggers include 测试范围分析, test scope analysis, and test boundary review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试范围分析
@@ -86,6 +95,13 @@ description: Use this skill when a test activity, iteration, release, or risk re
 4. 分离范围事实、风险推断、建议和 Human 决策；说明每个取舍的可验证理由。
 5. 信息不足时给出受限范围和扩大条件，不将范围声明升级为覆盖证明。
 
+## 领域执行要点
+
+1. 从当前交付目标与版本建立版本×测试层×平台×数据状态的范围单元，关联需求/义务、纳入/排除证据、负责人和可观察验收；新需求测试不限于回归变更。
+2. 分列INCLUDE、EXCLUDE、UNKNOWN，排除必须有范围来源/独立契约理由；不明支持平台、边界或数据规则保持未知，不能默认不测。
+3. 预算/环境/权限限制单列BLOCKED与残余风险，关键义务不足升级，不自行替产品定义缺失边界或授权风险接受。
+4. 需求/平台/接口/版本变化触发重审范围并更新单元；选取/设计、实际执行与满足状态分别报告，不把清单当覆盖证据。
+
 ## 核心约束
 
 - 不生成完整测试策略，不选择具体可执行测试集，不执行测试。
@@ -94,6 +110,8 @@ description: Use this skill when a test activity, iteration, release, or risk re
 - 未提供风险、执行或环境证据时标记 `unassessed`、`unverified` 或 `unexecuted`。
 
 ## 参考文件
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 每次产出前必须阅读 `prompts/test-scope-analysis.md`。
 - 回归时读取 `evals/eval.yaml` 和用例；范围草案不证明测试已执行。

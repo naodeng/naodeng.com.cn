@@ -6,7 +6,7 @@ Author: naodeng
 - slug: multi-agent-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/multi-agent-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded delegation, coordination, shared state, conflicts, ownership, termination, and traceability; triggers include 多 Agent 协作 and multi-agent coordination.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: multi-agent-testing
 description: Use this skill when you need evidence-bounded delegation, coordination, shared state, conflicts, ownership, termination, and traceability; triggers include 多 Agent 协作 and multi-agent coordination.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Multi-Agent Testing
@@ -71,9 +80,18 @@ description: Use this skill when you need evidence-bounded delegation, coordinat
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/multi-agent-testing.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Trace task/message/correlation IDs, sender/receiver, parent delegation, scope, owner, shared-state version, and ACK using actual acceptance/rejection/termination rules.
+2. Claim/commit follows the project's atomic ownership or fencing protocol. Stale/duplicate messages must not regain ownership or duplicate writes; never assume exactly-once delivery.
+3. Reconcile completed, unfinished, and indeterminate effects on partial failures before reassignment. One child's failure/timeout cannot silently discard unresolved tasks.
+4. Check stop propagation, ACKs, terminal states, and remaining owners; expired leases cannot commit. Include valid single claims/handoffs so message redelivery alone is not a false defect.
 
 ## Core Constraints
 

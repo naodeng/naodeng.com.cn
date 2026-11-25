@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-data-generation
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-data-generation/SKILL.md
 - description: Use this skill when you need to design safe, representative test data from stated constraints; triggers include test data generation.
 
@@ -46,6 +46,15 @@ Author: naodeng
 ---
 name: test-data-generation
 description: Use this skill when you need to design safe, representative test data from stated constraints; triggers include test data generation.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Data Generation
@@ -72,9 +81,18 @@ description: Use this skill when you need to design safe, representative test da
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/test-data-generation.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Derive groups from supplied schema, foreign keys, uniqueness, state relationships, and scenario oracles. Fix seed/generator version; missing rules remain UNKNOWN without invented fields or real identities.
+2. Separate valid happy/boundary data from deliberate invalid groups. Name the violated constraint and expected allow/reject outcome while preserving other relationships; invalid rows cannot silently enter valid groups.
+3. Deliver actual sanitized samples with uniqueness, foreign-key, type/range, state, and reproducibility checks. Equal seeds must reproduce data identities, not merely a strategy statement.
+4. Use isolated IDs/namespaces with provenance, privacy restrictions, and reverse dependency cleanup. Missing authority prevents real personal-data collection; synthetic rows do not establish population representativeness.
 
 ## Core Constraints
 

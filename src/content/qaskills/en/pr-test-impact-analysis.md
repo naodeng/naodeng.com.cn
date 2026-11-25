@@ -6,7 +6,7 @@ Author: naodeng
 - slug: pr-test-impact-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-11-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/pr-test-impact-analysis/SKILL.md
 - description: Use this skill when you need to determine test impact from a pull request or code diff and predict how specific existing cases align with the change; triggers include PR test impact analysis and per-case change prediction.
 

@@ -6,7 +6,7 @@
 - slug: mutation-testing-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/mutation-testing-analysis/SKILL.md
 - description: Use this skill when you need to interpret mutation operators, killed and survived mutants, and evidence limits; triggers include 变异测试分析 and mutation testing analysis.
 
@@ -51,6 +51,15 @@
 ---
 name: mutation-testing-analysis
 description: Use this skill when you need to interpret mutation operators, killed and survived mutants, and evidence limits; triggers include 变异测试分析 and mutation testing analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 变异测试分析
@@ -76,6 +85,12 @@ description: Use this skill when you need to interpret mutation operators, kille
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 MTA-## 记录对象、前置条件、关注点、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 核对被测版本、算子、mutant ID、位置、测试映射和运行预算，将 killed/survived/no-coverage/timeout/error/等价待判分别归类。
+- 交付 mutant 分类与测试映射、明确公式的可复算指标和排除证据；所有未决类别保持可见。
+- 形成领域候选时，必须读取并遵循 [prompts/mutation-testing-analysis.md](prompts/mutation-testing-analysis.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

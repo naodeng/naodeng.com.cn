@@ -6,13 +6,13 @@ Author: naodeng
 - slug: acceptance-criteria-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/acceptance-criteria-review/SKILL.md
 - description: Use this skill when you need to review acceptance criteria for ambiguity, missing rules, and verifiability; triggers include acceptance criteria review.
 
 ## When to Use
 
-- Use this skill when you need to turn requirements and user stories into verifiable, unambiguous acceptance criteria that cover failure paths.
+- Use this skill when you need to review existing acceptance criteria and separately propose verifiable rewrites or identify undefined rules.
 - Use it to review an existing plan, result, or evidence set and produce actionable improvements.
 - Use it when context is incomplete but a bounded first pass is still valuable.
 
@@ -46,13 +46,22 @@ Author: naodeng
 ---
 name: acceptance-criteria-review
 description: Use this skill when you need to review acceptance criteria for ambiguity, missing rules, and verifiability; triggers include acceptance criteria review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Acceptance Criteria Review
 
 ## When to Use
 
-- Use this skill when you need to turn requirements and user stories into verifiable, unambiguous acceptance criteria that cover failure paths.
+- Use this skill when you need to review existing acceptance criteria and separately propose verifiable rewrites or identify undefined rules.
 - Use it to review an existing plan, result, or evidence set and produce actionable improvements.
 - Use it when context is incomplete but a bounded first pass is still valuable.
 
@@ -72,10 +81,18 @@ description: Use this skill when you need to review acceptance criteria for ambi
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/acceptance-criteria-review.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Select `review` (check existing criteria), `proposed-rewrite` (suggest a rewrite), or `missing-rule` (undefined policy). Retain each original AC ID, version, text, and source; a proposal never replaces the source rule.
+2. Produce: AC ID | original criterion | mode | observable oracle | proposed wording | reason for change | product confirmation. Leave undefined rules open.
+3. For each comparison, split below/equal/above inputs using the supplied operator. For repeated requests capture the business key, cumulative refund, refundable balance, and persisted state; a successful response does not prove correct accounting.
+4. Proposed Given/When/Then wording includes observable data and error paths. Mark a sufficiently defined criterion testable instead of manufacturing ambiguity.
 ## Core Constraints
 
 - do not decide missing business rules on behalf of product owners

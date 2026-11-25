@@ -6,7 +6,7 @@ Author: naodeng
 - slug: boundary-value-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/boundary-value-testing/SKILL.md
 - description: Use this skill when you need to select boundary and near-boundary candidates from sourced value, length, time, and resource constraints; triggers include 边界值分析 and boundary value test design.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent rules, replace a complete strategy, or ac
 ---
 name: boundary-value-testing
 description: Use this skill when you need to select boundary and near-boundary candidates from sourced value, length, time, and resource constraints; triggers include 边界值分析 and boundary value test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Boundary Value Test Design
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent rules, replace a complete strategy, or ac
 2. Complete known, missing, conflicting, stale, out_of_scope, and assumptions before findings.
 3. Record BVT-## with input domain, boundary value, neighboring value, inclusivity, unit, source evidence, impact, priority, and validation method, source, evidence state, impact, owner, close condition, and validation.
 4. Preserve conflicts, unknown constraints, and open questions.
+
+## Domain Execution Essentials
+
+- Extract bounds, inclusive/exclusive rules, discrete/continuous type, smallest representable step, length encoding, money precision, time unit/timezone and sources.
+- Deliver rules, units/steps, boundary values, validity and sources; do not invent 0.01 precision or default time granularity.
+- When deriving domain candidates, read and follow [prompts/boundary-value-testing.md](prompts/boundary-value-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

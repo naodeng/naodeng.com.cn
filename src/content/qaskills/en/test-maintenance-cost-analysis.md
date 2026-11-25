@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-maintenance-cost-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-maintenance-cost-analysis/SKILL.md
 - description: Use this skill when you need evidence-bounded change frequency, repair effort, flaky cost, ownership, maintainability, and confidence; triggers include 维护成本 and maintenance cost.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: test-maintenance-cost-analysis
 description: Use this skill when you need evidence-bounded change frequency, repair effort, flaky cost, ownership, maintainability, and confidence; triggers include 维护成本 and maintenance cost.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Maintenance Cost Analysis
@@ -71,9 +80,18 @@ description: Use this skill when you need evidence-bounded change frequency, rep
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/test-maintenance-cost-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Fix assets, sample window, unit, and time sources. Separate product change, test defect, infrastructure, data, duplication, and unclassified costs; do not double-count one event across causes.
+2. Link trigger, change frequency, time ranges, review/rework, and failure impact. Separate one-time build from recurring maintenance; one sample cannot predict precise long-term costs.
+3. Explain sample size, representativeness, outliers, and interval formulas. Without monetary rates report labor; unknown causes remain UNKNOWN and are no personal-performance rating.
+4. Equal totals may require different interventions: change decoupling, test repair, environment stability, isolation, or deduplication. Validate gains and retained protection in matched follow-up samples.
 
 ## Core Constraints
 

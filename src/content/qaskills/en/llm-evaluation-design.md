@@ -6,7 +6,7 @@ Author: naodeng
 - slug: llm-evaluation-design
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/llm-evaluation-design/SKILL.md
 - description: Use this skill when you need to design LLM evaluation datasets, judges, metrics, and human-review boundaries; triggers include llm evaluation design.
 
@@ -25,6 +25,8 @@ Author: naodeng
 5. If information is missing, deliver a bounded first pass and state which conclusions remain unsupported.
 
 ## Core Constraints
+
+- Track provenance/licensing/PII, duplicates, and split leakage; derive sample/confidence plans from task risk, calibrate and pin judge versions, and block CI gates when evidence is insufficient.
 
 - map metrics to real tasks
 - calibrate and audit LLM judges
@@ -46,6 +48,15 @@ Author: naodeng
 ---
 name: llm-evaluation-design
 description: Use this skill when you need to design LLM evaluation datasets, judges, metrics, and human-review boundaries; triggers include llm evaluation design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # LLM Evaluation Design
@@ -78,12 +89,20 @@ description: Use this skill when you need to design LLM evaluation datasets, jud
 
 ## Core Constraints
 
+- Track provenance/licensing/PII, duplicates, and split leakage; derive sample/confidence plans from task risk, calibrate and pin judge versions, and block CI gates when evidence is insufficient.
+
 - map metrics to real tasks
 - calibrate and audit LLM judges
 - separate offline quality from online business metrics
 - Never invent system behavior, fields, data, metrics, or root causes absent from the evidence.
 - Link important conclusions to evidence; mark unsupported conclusions as hypotheses with a verification method.
 - Explain priority using business impact, likelihood, or detectability.
+
+## Evaluation Evidence Status
+
+- Include `evaluation_status`: `PASS`, `FAIL`, `BLOCKED`, `NOT_RUN`, or `UNKNOWN` for evaluation conclusions.
+- `PASS` requires in-scope runtime records and evidence for every required assertion. Use `NOT_RUN` when no run results exist, `BLOCKED` when execution was prevented, and `UNKNOWN` when evidence is insufficient. A plan, static check, or file presence alone cannot prove `PASS`.
+- Trace `trace_id`, sample and version identity, parameters, run/trial, parse, schema, semantic status, and evidence reference; decide those checks separately.
 
 ## Delivery Checklist
 

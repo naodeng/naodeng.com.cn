@@ -6,7 +6,7 @@ Author: naodeng
 - slug: requirement-to-test
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-11-06
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/requirement-to-test/SKILL.md
 - description: Use this skill when you need to turn requirements into testable, risk-driven, traceable test design; triggers include requirement-to-test, 需求到测试, and Requirement-to-Test Workflow.
 

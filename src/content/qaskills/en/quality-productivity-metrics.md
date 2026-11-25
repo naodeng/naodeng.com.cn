@@ -6,7 +6,7 @@ Author: naodeng
 - slug: quality-productivity-metrics
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/quality-productivity-metrics/SKILL.md
 - description: Use this skill when you need evidence-bounded quality and delivery metrics, denominators, attribution limits, gaming risk, and the Human-use boundary; triggers include 质量生产力 and quality productivity.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: quality-productivity-metrics
 description: Use this skill when you need evidence-bounded quality and delivery metrics, denominators, attribution limits, gaming risk, and the Human-use boundary; triggers include 质量生产力 and quality productivity.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Quality Productivity Metrics
@@ -71,9 +80,18 @@ description: Use this skill when you need evidence-bounded quality and delivery 
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/quality-productivity-metrics.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Balance effort/cost, accepted output, defects/escapes and waiting/rework with explicit windows, team/task units, complexity and product risk.
+2. Deduplicate split or merged cases and verify acceptance. Case/commit counts do not equal value; missing quality/rework evidence prevents productivity claims.
+3. Compare only matched tasks, complexity, tools and windows. Different team work mixes cannot support direct ranking or personal performance evaluation; expose context and uncertainty.
+4. Check dropped hard tests, unreported defects, deferred time and rerun counts. Metrics trigger investigations and experiments, not automatic causal or reward decisions.
 
 ## Core Constraints
 

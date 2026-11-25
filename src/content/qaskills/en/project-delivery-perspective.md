@@ -6,7 +6,7 @@ Author: naodeng
 - slug: project-delivery-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/project-delivery-perspective/SKILL.md
 - description: Use this skill when project delivery constraints or action tracking are needed for test strategy, test strategy review, or test report review; triggers include project delivery perspective, delivery planning, schedule and capacity..
 
@@ -29,6 +29,15 @@ Author: naodeng
 ---
 name: project-delivery-perspective
 description: Use this skill when project delivery constraints or action tracking are needed for test strategy, test strategy review, or test report review; triggers include project delivery perspective, delivery planning, schedule and capacity..
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Project Delivery Perspective (English)
@@ -87,6 +96,14 @@ Unless returning **Not applicable**, output in this order: **Summary, Project co
 - Do not turn deadline pressure into a claim that a defect is closed, testing passed, or release quality is acceptable.
 - Do not present a requested fact change as a source-backed fact.
 - Do not create a delivery plan from unprovided capacity, owners, dates, or dependencies.
+
+## Report provenance
+
+Keep the selected `stage`, a stable `source_id`, and supplied `version` in the report header. If a source ID is absent, declare a temporary local locator; if version is absent, write unknown rather than inventing it. Each finding has a stable `finding_id`, its source/evidence locator and status. Each action links its finding and specifies the evidence that would close it; owner, date and action status stay unknown unless supplied. These are standalone report fields, not a dependency on another Skill.
+
+## Delivery requests, decisions and dates
+
+Within Project constraints and Action tracking, separate requested outcomes, source-backed authorized decisions, and observed action status; keep quality evidence in Preserved quality facts. Preserve timezone offsets and date precision; normalize to UTC only when the offset is known, and flag ambiguous local time. A dependency delay updates only supported delivery implications. Missing owner/due date remains unknown; list assignment/clarification as the next coordination action. Report-review timing never authorizes release.
 ```
 
 ## Install

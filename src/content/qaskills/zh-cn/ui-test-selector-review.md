@@ -6,7 +6,7 @@
 - slug: ui-test-selector-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ui-test-selector-review/SKILL.md
 - description: Use this skill when you need to review UI automation selectors for stability, semantics, and maintainability using source evidence; triggers include UI 测试选择器评审 and UI test selector review.
 
@@ -51,6 +51,15 @@
 ---
 name: ui-test-selector-review
 description: Use this skill when you need to review UI automation selectors for stability, semantics, and maintainability using source evidence; triggers include UI 测试选择器评审 and UI test selector review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # UI 测试选择器评审
@@ -76,6 +85,12 @@ description: Use this skill when you need to review UI automation selectors for 
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 USR-## 记录对象、前置条件、关注点、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 从DOM/组件与用户动作明确目标元素，比较role+accessible name、稳定test ID、作用域及CSS/XPath的实际语义和维护合同。
+- 交付目标、匹配数、稳定性来源和替代理由表，语义/唯一性比定位器语法偏好更重要。
+- 形成领域候选时，必须读取并遵循 [prompts/ui-test-selector-review.md](prompts/ui-test-selector-review.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

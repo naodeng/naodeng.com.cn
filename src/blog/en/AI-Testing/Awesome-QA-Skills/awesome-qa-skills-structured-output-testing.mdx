@@ -1,0 +1,150 @@
+---
+title: "Structured Output Testing: Validate JSON, schemas, and business meaning separately"
+description: "Plan evidence-backed structured output tests across parsing, schema constraints, semantic oracles, streaming behavior, refusal and repair, and schema evolution."
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "Structured Output Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+A model can return valid JSON that still violates the output contract. The JSON may parse but omit a required field; it may satisfy the schema but contradict a business rule. One passing sample also says little about behavior across model versions, prompts, or input distributions.
+
+Structured Output Testing separates parsing, schema validation, and domain semantics. It also requires enough trace data to connect a conclusion to the input, model, prompt, dataset, schema, parameters, and repeated runs.
+
+## Use one response to separate three failure layers
+
+Suppose an appointment service returns `status`, `available`, and `remaining`. Its schema permits all three fields, while a separate business rule says `available` cannot be true when inventory is zero. The JSON examples below are fictional and illustrate three different checks.
+
+| Sample | Parse | Schema | Domain semantics |
+| --- | --- | --- | --- |
+| Invalid JSON, such as a missing closing brace | `FAIL` | Not reached | Not reached |
+| Parseable JSON with required `status` omitted | `PASS` | `FAIL` | Do not evaluate as a complete contract result |
+| Valid field types and enums, but `remaining` is 0 and `available` is true | `PASS` | `PASS` | `FAIL` |
+
+Record `parse_status`, `schema_status`, and `semantic_status` separately. One generic “failed” loses the location of the failure; one parse `PASS` can miss the schema and business-rule failures.
+
+## Define the output contract and evidence first
+
+Collect the schema or type definition, required fields, enums, additional-field policy, formatting rules, field meanings, domain oracle, permitted paraphrases, and model, prompt, dataset, and run parameters. Do not invent constraints that have no source in the product contract.
+
+An evaluation conclusion also needs sample counts, failure counts, denominators, repetition counts, and evidence references. Set `evaluation_status` separately: `PASS` requires in-scope runtime records for every required assertion; use `NOT_RUN` for known non-execution, `BLOCKED` when execution was prevented, and `UNKNOWN` when evidence is insufficient. For each sample, retain the trace ID, input and version identity, parameters, run/trial ID, three layer statuses, and a redacted evidence reference. A static schema file or one sample does not establish `PASS`.
+
+## Cover output modes, streaming, and schema change
+
+Build coverage for modes the product actually declares:
+
+| Mode or change | What to check |
+| --- | --- |
+| JSON mode and ordinary text | Which mode was enabled, where the full response ends, whether it parses, and whether it satisfies the schema |
+| Tool-call arguments | Argument schema, required fields, enums, unknown fields, whether a tool ran, result, and side effects |
+| Streaming | Intermediate chunks, terminal marker, reconstructed final JSON, truncation, cancellation, and invalid partial content |
+| Refusal and repair | Expected refusal shape and recovery behavior under the product contract; do not count arbitrary retries as success |
+| Schema evolution | Explicit old/new producer and consumer combinations that the product promises to support |
+
+A mode label is not a success result. Each mode needs a sample and an observable oracle. For compatibility, tie checks to the actual old and new schema versions rather than an assumed “backward compatible” rule.
+
+For repeatable evaluations, preserve a structured trace with at least the trace and input IDs, model/prompt/dataset/schema versions, result-affecting parameters, run or trial ID, three independent statuses, and a redacted output or evidence reference. Report failures and denominators instead of only a pass rate.
+
+## A prompt you can adapt
+
+```text
+Use the structured-output-testing Skill.
+
+Output mode: [JSON, tool arguments, or streaming]
+Schema and version: [file, required fields, types, enums, additional-field policy]
+Field semantics: [business definitions, domain oracle, permitted equivalents]
+Inputs and samples: [source, sample count, repetition count]
+Run context: [model, prompt, dataset, parameters, environment, run ID]
+Scope and limits: [privacy, redaction, prohibited actions]
+
+Report JSON parsing, schema, and domain semantics separately.
+Cover complete responses, streaming states and termination, refusal/repair, and only the schema changes relevant to the product.
+Tie each conclusion to a sample, version, parameter, run, or redacted output reference.
+Do not report PASS without runtime evidence.
+```
+
+## Turn one check into a regression evaluation
+
+When a review exposes a contract gap, add the agreed field constraints, domain oracle, and failure sample to a stable regression set. When the model, prompt, dataset, or schema changes, compare the same traceable samples and retain the before/after versions, failures, and denominators.
+
+| Handoff | Adjacent Skill | Responsibility boundary |
+| --- | --- | --- |
+| Broader model behavior | LLM Testing | Refusal, safety, consistency, and failure patterns beyond output format |
+| Dataset, judge, and statistical design | LLM Evaluation Design | Samples, rubric, judgment method, and regression thresholds |
+| API request/response schema | API Schema Validation | Interface contract and dialect; this Skill targets model- or Agent-generated output and its meaning |
+| MCP tool arguments or results | MCP Server Testing | Protocol, tool contract, server behavior, and runtime boundary |
+
+If the report itself will be consumed as JSON, define a schema for that report too. Do not assume the desired fields or status values.
+
+A regression gate can preserve the boundaries:
+
+| Gate | Check | If it fails |
+| --- | --- | --- |
+| Contract | Schema version, field rules, semantic oracle, and mode are explicit | Keep the gap visible; do not invent an assertion |
+| Structure | Parse, schema, and semantic results remain separate | Correct the failure location rather than masking it with one status |
+| Evidence | Samples, versions, parameters, run IDs, denominator, and raw references are traceable | Keep the conclusion `UNKNOWN` or `NOT_RUN` |
+| Streaming | Termination, truncation, refusal, and repair follow the product contract | Do not treat a partial chunk as a final result |
+| Compatibility | Only supported producer/consumer schema combinations are checked | Record unverified combinations as risk |
+
+## Common traps
+
+- Treating parseable JSON as schema-valid or business-correct.
+- Claiming output stability after one run.
+- Requiring exact string equality when the domain contract permits equivalent language.
+- Dropping model, prompt, schema, or dataset versions so results cannot be compared.
+- Reporting `PASS` without run evidence.
+- Treating refusals, repairs, stream termination, and complete responses as the same output mode.
+
+## Install and invoke
+
+Install the Skill on its own:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/structured-output-testing -g
+```
+
+Provide a traceable schema and domain oracle. “Check this JSON” does not define enough evidence for semantic validation.
+
+## FAQ
+
+### If the JSON parses, why can the result still fail?
+
+Parsing only establishes that the syntax can be read. Required fields, types, and enums belong to schema validation; business relationships need a separate semantic oracle.
+
+### Can I test without a schema?
+
+You can list known fields and questions to resolve, but you cannot treat guessed constraints as the contract. Limit conclusions to the evidence supplied.
+
+### Can I judge a streaming response before it finishes?
+
+Only if the product contract defines that partial state as consumable. Otherwise wait for the completion marker and record truncation, cancellation, and complete output separately.
+
+### What does one passing sample prove?
+
+It records what happened for that input, version, parameters, and run. It does not establish quality across a distribution or stability over repeated runs.
+
+### When should I use API Schema Validation?
+
+Use it for an API producer/consumer contract. Use Structured Output Testing for model- or Agent-generated structures and their domain meaning. If both scopes matter, hand off to both Skills with their separate oracles.
+
+## References
+
+- Upstream Skill: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/structured-output-testing
+- Full execution prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/structured-output-testing/prompts/structured-output-testing.md
+- Evaluation cases: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/structured-output-testing/evals
+- Structured Output Testing Skill page: https://inaodeng.com/en/qaskills/structured-output-testing/
+- Closely related guide, API Schema Validation: https://inaodeng.com/en/blog/ai-testing/awesome-qa-skills-api-schema-validation/
+- Adjacent guide, LLM Testing: https://inaodeng.com/en/blog/ai-testing/awesome-qa-skills-llm-testing/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/
+
+## More Resources
+
+- LLM Testing Skill: https://inaodeng.com/en/qaskills/llm-testing/
+- LLM Evaluation Design Skill: https://inaodeng.com/en/qaskills/llm-evaluation-design/
+- API Schema Validation Skill: https://inaodeng.com/en/qaskills/api-schema-validation/
+- MCP Server Testing Skill: https://inaodeng.com/en/qaskills/mcp-server-testing/
+- More QA Skills: https://inaodeng.com/en/qaskills/
+- AI Wiki: https://inaodeng.com/en/AIWiki/
+- Testing Wiki: https://inaodeng.com/en/wiki/

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-security-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-security-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded api-security-testing analysis and validation preparation; triggers include API 安全测试 and api-security-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: api-security-testing
 description: Use this skill when you need evidence-bounded api-security-testing analysis and validation preparation; triggers include API 安全测试 and api-security-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API Security Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded api-security-testing 
 - Read prompts/api-security-testing.md for every invocation.
 - Read evals/eval.yaml and matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Map supplied endpoints, subjects, resources, actions, sensitive fields and trust boundaries, distinguishing server-derived identity from client-controlled input.
+- Each risk needs a supplied entry, subject/resource/action, boundary path, applicable obligation and evidence; static candidates are not confirmed vulnerabilities.
+- When deriving domain candidates, read and follow [prompts/api-security-testing.md](prompts/api-security-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

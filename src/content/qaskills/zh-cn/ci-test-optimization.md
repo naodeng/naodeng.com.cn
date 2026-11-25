@@ -6,7 +6,7 @@
 - slug: ci-test-optimization
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ci-test-optimization/SKILL.md
 - description: Use this skill when you need evidence-bounded pipeline stages, feedback latency, resources, flakiness, caching/sharding, and rollback boundaries; triggers include CI 测试流水线 and CI test pipeline.
 
@@ -53,6 +53,15 @@
 ---
 name: ci-test-optimization
 description: Use this skill when you need evidence-bounded pipeline stages, feedback latency, resources, flakiness, caching/sharding, and rollback boundaries; triggers include CI 测试流水线 and CI test pipeline.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # CI 测试流水线优化（中文版）
@@ -67,6 +76,7 @@ description: Use this skill when you need evidence-bounded pipeline stages, feed
 
 - 默认输出 Markdown，按领域风险、证据状态、优先级和边界组织。
 - 用户要求表格、CSV、JSON 或工单格式时，保留相同的发现字段、证据和决策边界。
+- Markdown 表格单元格中的字面竖线（包括行内代码）要写为 `\|`，或改写表述，避免被解析为额外列。
 - 输出进入自动化流程前，先确认 schema、枚举值、必填项和证据来源。
 
 ## 如何使用
@@ -79,10 +89,18 @@ description: Use this skill when you need evidence-bounded pipeline stages, feed
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/ci-test-optimization.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 以 commit/run/runner/config/test-set ID 固定比较对象；从事件时间线分解 queue、checkout/install、setup、execute、retry、report，区分端到端等待与 runner 忙时。
+2. 沿 DAG 计算实际关键路径，重叠 job 不相加；报告重试次数与失败原始结果，不能用重跑绿灯隐藏首失败。
+3. 缓存键包含项目相关 lockfile/工具链/配置身份；比较 cold/warm，记录命中和失效验证，不能复用不匹配缓存跳过依赖校验。
+4. before/after 保持保护义务、测试集、故障检出、资源和窗口可比；删测试或吞失败的提速候选拒绝，提出可测收益和回滚信号。
 ## 核心约束
 
 - 只分析流水线阶段、反馈延迟、资源、波动、缓存/分片与回滚边界，不替代业务负责人或 Human 的风险接受、例外批准和发布决定。

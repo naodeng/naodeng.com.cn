@@ -6,7 +6,7 @@ Author: naodeng
 - slug: failover-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/failover-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded failover-testing analysis and validation preparation; triggers include 故障切换测试 and failover-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: failover-testing
 description: Use this skill when you need evidence-bounded failover-testing analysis and validation preparation; triggers include 故障切换测试 and failover-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Failover Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded failover-testing anal
 - Read prompts/failover-testing.md for every invocation; it is the complete execution contract.
 - Read evals/eval.yaml and the matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Extract primary/standby roles, automatic/manual triggers, health detection, routing, fencing/write authority, failback and business-RTO definitions.
+- Deliver node/routing/write-authority timelines, ledger conflicts and recovery/failback oracles, assessing availability and single-writer consistency separately.
+- When deriving domain candidates, read and follow [prompts/failover-testing.md](prompts/failover-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

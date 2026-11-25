@@ -6,7 +6,7 @@
 - slug: test-effectiveness-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-effectiveness-analysis/SKILL.md
 - description: Use this skill when you need evidence-bounded the relationship between test signals and defects or risks, missed-detection limits, false signals, and validation plans; triggers include 测试有效性 and test effectiveness.
 
@@ -53,6 +53,15 @@
 ---
 name: test-effectiveness-analysis
 description: Use this skill when you need evidence-bounded the relationship between test signals and defects or risks, missed-detection limits, false signals, and validation plans; triggers include 测试有效性 and test effectiveness.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试有效性分析（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded the relationship betw
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/test-effectiveness-analysis.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 固定义务/故障类别、测试ID、实际生产逻辑、有效断言与可逃逸缺陷的映射；通过率/覆盖率只是信号，不能替代故障检出证据。
+2. 历史逃逸记录观察窗口、暴露量、检出/漏检与关联来源；可控故障注入另列独立分母、控制组、环境和变异身份，不能混为生产缺陷率。
+3. 检查失败是否来自目标业务断言，环境错误/超时不自动算有效检出；提供未检出原因候选和最小独立验证，不由相关性宣布因果。
+4. 汇总每类故障的检出/漏检/未执行及剩余未知，建议优先补关键oracle；无故障或逃逸资料只交付评估设计，不宣布测试有效。
 
 ## 核心约束
 

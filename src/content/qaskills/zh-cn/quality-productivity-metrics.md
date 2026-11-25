@@ -6,7 +6,7 @@
 - slug: quality-productivity-metrics
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/quality-productivity-metrics/SKILL.md
 - description: Use this skill when you need evidence-bounded quality and delivery metrics, denominators, attribution limits, gaming risk, and the Human-use boundary; triggers include 质量生产力 and quality productivity.
 
@@ -53,6 +53,15 @@
 ---
 name: quality-productivity-metrics
 description: Use this skill when you need evidence-bounded quality and delivery metrics, denominators, attribution limits, gaming risk, and the Human-use boundary; triggers include 质量生产力 and quality productivity.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 质量生产力指标（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded quality and delivery 
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/quality-productivity-metrics.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 将投入工时/成本、可验收产出、质量缺陷/逃逸、流程等待/返工放在平衡视图，明确窗口、团队/任务统计单位、复杂度与产品风险。
+2. 去重拆分/合并用例并核对验收，不以用例/commit数量代替价值；质量和返工下降证据缺失时不宣称生产率改善。
+3. 同任务/复杂度/工具/窗口才能比较趋势；跨团队工作结构不同不能直接排名或用于个人绩效，暴露背景差异和不确定性。
+4. 反操纵检查删难用例、漏报缺陷、延后记时及重跑计数；指标触发调查/改进实验而非自动因果结论或奖惩。
 
 ## 核心约束
 

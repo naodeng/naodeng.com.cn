@@ -6,7 +6,7 @@ Author: naodeng
 - slug: quality-risk-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/quality-risk-analysis/SKILL.md
 - description: Use this skill when you need to identify and prioritize quality risks from product, change, and evidence inputs; triggers include quality risk analysis.
 
@@ -46,6 +46,15 @@ Author: naodeng
 ---
 name: quality-risk-analysis
 description: Use this skill when you need to identify and prioritize quality risks from product, change, and evidence inputs; triggers include quality risk analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Quality Risk Analysis
@@ -72,9 +81,18 @@ description: Use this skill when you need to identify and prioritize quality ris
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/quality-risk-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Register risk events, affected assets/groups, triggers and controls with observable impact, likelihood and detectability anchors and sources.
+2. Without project quantitative rules provide justified qualitative ordering. Separate irreversible impact, authority boundaries and known control gaps; low frequency alone is not low risk.
+3. Propagate uncertainty across likelihood, impact and control confidence using conditional conclusions and minimal checks. UNKNOWN is neither zero nor a precise score.
+4. Link controls/tests, residual risk, owners and authorized acceptance. Ranking supports decisions; it is no vulnerability, root-cause or acceptance proof.
 
 ## Core Constraints
 

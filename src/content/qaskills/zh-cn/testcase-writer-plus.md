@@ -6,7 +6,7 @@
 - slug: testcase-writer-plus
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/testcase-writer-plus/SKILL.md
 - description: Use this skill when you need high-quality test cases from requirements and analysis artifacts; triggers include 测试用例编写增强、testcase writer plus and advanced test case writing.
 
@@ -60,6 +60,15 @@
 ---
 name: testcase-writer-plus
 description: Use this skill when you need high-quality test cases from requirements and analysis artifacts; triggers include 测试用例编写增强、testcase writer plus and advanced test case writing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试用例编写增强版（中文版）
@@ -70,6 +79,10 @@ description: Use this skill when you need high-quality test cases from requireme
 
 - 需要基于多来源材料编写更完整、更有优先级的测试用例。
 - 需要比基础版更强的追踪关系和风险意识。
+
+## 脚本能力边界
+
+可选 `scripts/run_*.py` 只准备解析后的输入材料或来源候选，输出 `NOT_ASSESSED`，不调用模型、不执行主 Prompt，不生成语义结论、风险优先级、完整用例或批准。正式分析由 Agent 按主 Prompt 执行；需要运行脚本时先读 `references/script-contract.md`。
 
 ## 执行流程
 

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: tdd-quality-workflow
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-11-06
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/tdd-quality-workflow/SKILL.md
 - description: Use this skill when guiding or reviewing test-driven development with evidence for Red, Green, Refactor and test effectiveness; triggers include TDD quality workflow, test-driven development and TDD 质量工作流.
 

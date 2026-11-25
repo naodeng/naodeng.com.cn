@@ -1,0 +1,138 @@
+---
+title: "AI Feature Release Workflow: Carry evaluation evidence through rollout and rollback"
+description: "Connect versioned evaluations, release gates, staged rollout, monitoring, and rollback planning for an AI feature with a reviewable evidence trail."
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "AI Feature Release Workflow"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An AI feature can look ready in an evaluation report and still be a poor release candidate. The report may describe a different model or prompt version; a gate may rely on stale evidence; a canary may have no named observer or stop condition. A useful release record connects these details to the exact candidate being considered.
+
+AI Feature Release Workflow is an upstream workflow Skill for coordinating evaluation design, release gates, canary or shadow rollout, monitoring, rollback, and closeout. Its `workflow.yaml` currently labels the workflow `EXPERIMENTAL`. It helps teams plan and hand work off; it is not an evaluation runner, production deployment tool, or release approver.
+
+## Read the source Skill and its current status
+
+Start with the Skill's full prompt and stage definition. They ask for the current and candidate model/provider versions, prompt or agent version, dataset and judge versions, evaluation run IDs, raw report locations, threshold sources, rollout cohort, monitoring owner, and rollback action. Missing inputs should remain visible as gaps.
+
+Keep evidence state separate from a human release decision. The workflow uses `PASS`, `FAIL`, `BLOCKED`, `NOT_RUN`, `UNKNOWN`, and `STALE` for evidence and gate states. A required gate can pass only when its criteria have current, in-scope evidence. Record the human release decision separately as `PENDING`, `APPROVED`, or `REJECTED`; do not infer it from a gate status. A plan, static file, or summary sentence cannot stand in for a run record.
+
+## Walk one candidate change through each phase
+
+Suppose a team is changing the model and prompt behind a customer-support summary feature. This is an illustrative scenario; it does not provide real project thresholds, evaluation results, or a release decision.
+
+| Phase | Evidence to collect | Question before handoff |
+| --- | --- | --- |
+| Contract and risk | Feature scope, risk slices, owner, evaluation objective, dataset and judge versions, threshold source, privacy boundary | What should this change prove, and who owns the sample plan? |
+| Pre-release evaluation | Candidate model, prompt, dataset, judge, configuration, run ID, sample count, raw report, cost, failures, and uncertainty | Does the evidence belong to this exact candidate? Are missing and failed samples visible? |
+| Release gate | Criteria, observed values, evidence references, exceptions, residual risk, decision owner | Is any required check unrun, stale, or blocked? Who can approve? |
+| Canary or shadow | Cohort, traffic scope, observation window, sourced guardrails, stop criteria, rollback action | What allows the team to expand, hold, or stop, and who performs rollback? |
+| Monitoring and closeout | Quality, drift, refusal, feedback, cost, alert owner, rollback record, next evaluation | Are missing signals being mistaken for healthy ones? Can the conclusion be traced to evidence? |
+
+These are workflow fields, not universal thresholds. The team must derive thresholds from its quality goals, baselines, and accepted risks, then record where each value came from.
+
+## A prompt you can adapt
+
+Replace the bracketed fields with the current change materials. If no evaluation run exists, leave the status as not run.
+
+```text
+Use the ai-feature-release-workflow Skill.
+
+Candidate change and release window: [scope and target date]
+Current and candidate versions: [model, provider, prompt/agent, and service configuration]
+Evaluation materials: [dataset, judge, run IDs, raw reports, and sample counts]
+Release scope: [environment, canary cohort, and observation window]
+Gates and rollback: [confirmed threshold sources, stop conditions, and rollback action]
+Owners: [evaluation, release, monitoring, and decision owners]
+Unknowns: [missing materials, unrun checks, or conflicting sources]
+
+For each phase, list entry evidence, outputs, status, exit conditions, and handoff owner.
+Separate plans, observed runtime evidence, recommendations, and Human decisions.
+Do not invent thresholds, run results, approval, or production health.
+```
+
+First check whether the inputs can support a phase contract. Add the candidate, data, judge, and environment versions before asking for gate and rollout planning.
+
+## From one check to a maintained release flow
+
+The upstream workflow defines handoffs to other Skills. Keep each responsibility separate and pass a short evidence packet instead of combining every task in one prompt.
+
+| Stage | Adjacent Skill | Responsibility at the handoff |
+| --- | --- | --- |
+| Feature scope and risk | AI Feature Testing; LLM Evaluation Design | Define product behavior risks, evaluation objectives, datasets, judges, and statistical protocol |
+| Release thresholds | Quality Gate Design | Record thresholds, blocking rules, exceptions, and risk acceptance rules |
+| Release coordination | Release Testing Workflow | Schedule stages, owners, entry and exit criteria, and release handoffs |
+| Canary and production checks | Production Verification | Observe the version, signals, and stated runtime conditions in an authorized environment |
+| Closeout and measures | Quality Productivity Metrics | Interpret quality, cost, and follow-up actions for a defined source and time window |
+
+Each handoff should carry its source, status, open gaps, and next step. The upstream workflow defaults to read-only; publishing, traffic changes, deletion, and approval still require the appropriate authority.
+
+A team can make the handoffs repeatable with a small set of gates:
+
+| Gate | Review | If evidence is missing |
+| --- | --- | --- |
+| Input | Change scope, candidate identity, owners, environment, and rollback authority | Block the affected stage and name the exact gap |
+| Evaluation | Run ID, versions, sample count, raw evidence, threshold source, and uncertainty | Mark `NOT_RUN`, `UNKNOWN`, `STALE`, or `BLOCKED` as supported |
+| Release | Current evidence for every required criterion; traceable exceptions and residual risks | Keep the decision pending for the authorized owner |
+| Production | Observer, window, stop criteria, and rollback action | Missing monitoring is not a healthy signal; follow the sourced guardrail |
+| Closeout | Decision, evidence, unfinished work, and owner | Keep unresolved risk visible in the handoff |
+
+## Limits to keep in view
+
+- A change to the model, prompt, dataset, judge, configuration, or cohort may invalidate evidence for affected gates.
+- An aggregate score does not replace raw reports, sample counts, uncertainty, or cost basis.
+- Gate `PASS`, human `APPROVED`, and healthy production signals are different states.
+- A rollback plan is not proof that rollback has been exercised.
+- Missing monitoring during a canary is not a green result; use the agreed stop conditions.
+
+## Install and invoke
+
+Install the workflow Skill on its own:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/ai-feature-release-workflow -g
+```
+
+Provide the real candidate versions, evaluation materials, and release context. Do not copy example thresholds or statuses into a project decision.
+
+## FAQ
+
+### Can I use the Skill before the evaluation dataset is ready?
+
+Yes, to define the phases, required assets, and owners. The evaluation remains `NOT_RUN`, `UNKNOWN`, or `BLOCKED` as appropriate; a plan is not a result.
+
+### Does a prompt change require the gates to be reviewed again?
+
+Yes. The candidate identity includes the prompt version, so old evidence does not automatically apply to a new prompt. Reassess the affected evaluations and gates.
+
+### Can the Skill approve a release or perform a rollback?
+
+No. It organizes evidence, stage recommendations, and handoffs. An authorized person makes the release decision and carries out production actions.
+
+### What if monitoring has no data yet?
+
+The workflow does not treat missing signals as healthy. Apply the sourced guardrails and stop conditions; the accountable owner decides whether to hold or pause the rollout.
+
+### Why is the upstream workflow marked experimental?
+
+That is the lifecycle state recorded in the current upstream `workflow.yaml`. Treat this as an experimental planning contract; do not assume an automated runtime or production integration exists.
+
+## References
+
+- Upstream Skill: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-workflows/ai-feature-release-workflow
+- Full execution prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/ai-feature-release-workflow/prompts/ai-feature-release-workflow.md
+- Phase and handoff definition: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/ai-feature-release-workflow/workflow.yaml
+- AI Feature Release Workflow Skill page: https://inaodeng.com/en/qaskills/ai-feature-release-workflow/
+- Closely related guide, Release Testing Workflow: https://inaodeng.com/en/blog/ai-testing/awesome-qa-skills-release-testing-workflow/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/
+
+## More Resources
+
+- AI Feature Testing Skill: https://inaodeng.com/en/qaskills/ai-feature-testing/
+- LLM Evaluation Design Skill: https://inaodeng.com/en/qaskills/llm-evaluation-design/
+- Quality Gate Design Skill: https://inaodeng.com/en/qaskills/quality-gate-design/
+- More QA Skills: https://inaodeng.com/en/qaskills/
+- Testing Wiki: https://inaodeng.com/en/wiki/
+- AI Wiki: https://inaodeng.com/en/AIWiki/

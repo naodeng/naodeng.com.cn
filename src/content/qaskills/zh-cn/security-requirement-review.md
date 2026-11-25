@@ -6,7 +6,7 @@
 - slug: security-requirement-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/security-requirement-review/SKILL.md
 - description: Use this skill when you need evidence-bounded security-requirement-review analysis and validation preparation; triggers include 安全需求审查 and security-requirement-review.
 
@@ -50,6 +50,15 @@
 ---
 name: security-requirement-review
 description: Use this skill when you need evidence-bounded security-requirement-review analysis and validation preparation; triggers include 安全需求审查 and security-requirement-review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 安全需求审查（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded security-requirement-
 - 每次执行必须读取 prompts/security-requirement-review.md。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 建立资产→威胁主体/路径→安全义务→控制→可验证验收链，标范围、来源与项目指定标准/版本，未给标准不能自选合规基线。
+- 交付安全义务到验收证据的映射与可测性缺口；补写的候选要求必须标建议，不能当已批准义务。
+- 形成领域候选时，必须读取并遵循 [prompts/security-requirement-review.md](prompts/security-requirement-review.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

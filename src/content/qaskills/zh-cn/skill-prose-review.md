@@ -6,7 +6,7 @@
 - slug: skill-prose-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/skill-engineering/skill-prose-review/SKILL.md
 - description: Use this skill when reviewing Skill、Prompt、元数据或 QA 文档的契约完整性；触发词包括 Skill 文案审查、Prompt review、契约检查。
 
@@ -47,6 +47,15 @@
 ---
 name: skill-prose-review
 description: Use this skill when reviewing Skill、Prompt、元数据或 QA 文档的契约完整性；触发词包括 Skill 文案审查、Prompt review、契约检查。
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "skill-engineering"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Skill 文案契约审查

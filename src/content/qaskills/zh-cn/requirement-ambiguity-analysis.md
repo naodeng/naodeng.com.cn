@@ -6,7 +6,7 @@
 - slug: requirement-ambiguity-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/requirement-ambiguity-analysis/SKILL.md
 - description: Use this skill when requirement wording has unclear actors, references, scope, quantities, conditions, timing, states, or acceptance criteria; triggers include 需求歧义分析, requirement ambiguity, and unclear requirements.
 
@@ -55,6 +55,15 @@
 ---
 name: requirement-ambiguity-analysis
 description: Use this skill when requirement wording has unclear actors, references, scope, quantities, conditions, timing, states, or acceptance criteria; triggers include 需求歧义分析, requirement ambiguity, and unclear requirements.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 需求歧义分析
@@ -88,6 +97,15 @@ description: Use this skill when requirement wording has unclear actors, referen
 4. 按交付、质量和可测性影响排序，给出可指派、可关闭的问题和验证方式。
 5. 若材料明确互斥，标为冲突并建议使用 `requirement-conflict-detection`；只写 Skill 名称，不链接其内部文件。
 
+## 领域执行要点
+
+上述大写判定仅用于逐项决策附表；原RA finding仍使用ambiguous/missing/untestable/conflict/stale/out_of_scope。CLEAR是正确对照，放总览并说明可测，不为满足finding模板制造问题。
+
+1. 保留需求ID、来源、版本和原文；先分清同一句多解AMBIGUOUS、没有规则MISSING_RULE、来源矛盾CONFLICT和明确可测CLEAR，不能为凑发现误报正常简写。
+2. 每项歧义并列至少两种合理解释、适用条件、不同业务/测试后果和支持原文；无第二种合理解释时检查是否其实是缺资料。
+3. 用最小判别问题区分解释，例如起算事件、比较符、并发提交点或包含范围；提供建议选项，但保留产品负责人最终决定。
+4. 明确的标准标CLEAR并给可观察预期；未知结果不补自定时限、阈值或业务规则。按影响与实施阻塞排澄清优先级。
+
 ## 核心约束
 
 - 使用 `RA-##` 标识发现；至少区分 `ambiguous`、`missing`、`untestable`、`conflict` 和 `out_of_scope`。
@@ -97,6 +115,8 @@ description: Use this skill when requirement wording has unclear actors, referen
 - 不决定哪种解释是最终需求，不代替产品、业务或合规角色裁决。
 
 ## 参考文件
+
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
 
 - 每次产出前必须阅读 `prompts/requirement-ambiguity-analysis.md`。
 - 需要回归本 Skill 时使用 `evals/eval.yaml` 和 `evals/cases/`；文件结构或规则评测不代表真实项目效果。

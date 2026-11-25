@@ -6,7 +6,7 @@ Author: naodeng
 - slug: capacity-planning-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/capacity-planning-analysis/SKILL.md
 - description: Use this skill when you need to assess capacity demand, headroom, constraints, and planning assumptions; triggers include capacity planning analysis.
 
@@ -46,6 +46,15 @@ Author: naodeng
 ---
 name: capacity-planning-analysis
 description: Use this skill when you need to assess capacity demand, headroom, constraints, and planning assumptions; triggers include capacity planning analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Capacity Planning Analysis
@@ -72,10 +81,18 @@ description: Use this skill when you need to assess capacity demand, headroom, c
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/capacity-planning-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. For each point record environment/config/instances, workload mix, arrival/completion throughput, latency percentiles, errors, CPU/memory/queues, and window. Trace measurement→SLO→candidate capacity.
+2. Estimate only within measured SLO-acceptable regions. CPU percentage cannot linearly predict throughput; unmeasured points remain candidates constrained by downstream saturation/scaling delay.
+3. Under supplied constant-rate/queue assumptions, scaling-wait backlog=max(0,arrivals−validated service rate)×wait seconds; check backlog latency/recovery, not only totals.
+4. Use measured or explicitly conditional capacity after project-specified instance/dependency failure. Missing failure data cannot establish adequate headroom; margin, growth, cost, and acceptance come from the project.
 ## Core Constraints
 
 - use ranges instead of false precision when data is missing

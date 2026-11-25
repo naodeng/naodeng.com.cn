@@ -6,7 +6,7 @@ Author: naodeng
 - slug: secrets-exposure-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/secrets-exposure-review/SKILL.md
 - description: Use this skill when you need evidence-bounded secrets-exposure-review analysis and validation preparation; triggers include 敏感信息暴露审查 and secrets-exposure-review.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: secrets-exposure-review
 description: Use this skill when you need evidence-bounded secrets-exposure-review analysis and validation preparation; triggers include 敏感信息暴露审查 and secrets-exposure-review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Secrets-Exposure Review
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded secrets-exposure-revi
 - Read prompts/secrets-exposure-review.md for every invocation.
 - Read evals/eval.yaml and matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Inventory supplied authorized code/config/CI/log/artifact/history, recording candidate locations, categories and redacted fingerprints without copying values or reading real credentials.
+- Deliver redacted locations/lifecycle risks; ground severity in exposure/use evidence and retain unknown candidate validity.
+- When deriving domain candidates, read and follow [prompts/secrets-exposure-review.md](prompts/secrets-exposure-review.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

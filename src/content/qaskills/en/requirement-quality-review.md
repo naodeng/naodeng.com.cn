@@ -6,7 +6,7 @@ Author: naodeng
 - slug: requirement-quality-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/requirement-quality-review/SKILL.md
 - description: Use this skill when a requirement, acceptance-criteria set, or change brief needs an evidence-bounded quality review before design or testing; triggers include requirement quality review, requirements quality gate, and requirement completeness review.
 
@@ -15,6 +15,7 @@ Author: naodeng
 - Before test design, technical design, or planning when requirement quality is uncertain.
 - When acceptance criteria look complete but exception paths, constraints, actors, or decision conditions may be missing.
 - When a requirement needs routing to ambiguity, consistency, conflict, or traceability analysis.
+- When reviewing AI/Agent-drafted requirements, acceptance criteria, or change briefs for source support, scope drift, invented constraints, or omissions.
 
 Do not use it to write test cases, execute tests, approve a release, or assign a quality score from unsupported material.
 
@@ -29,6 +30,8 @@ Do not use it to write test cases, execute tests, approve a release, or assign a
 ## Core Constraints
 
 - Keep direct source facts, evidence-backed inferences, recommendations, and Human decisions separate.
+- For AI/Agent-generated material, trace clauses to supplied source requirements and acceptance criteria using available source/run/Human-review evidence. Check unsupported rules, missing constraints, invented thresholds, and unverifiable wording. Mark missing generation information `UNKNOWN`; do not infer authorship.
+- Record AI-draft claims, model/prompt version, source documents, generation run, and Human adoption/approval separately; mark absent material `UNKNOWN` or `UNASSESSED` and never present generated text as an approved requirement.
 - Do not invent business rules, fields, endpoints, thresholds, SLAs, environments, owners, root causes, execution results, or approvals.
 - Do not output a universal numeric quality score or infer Go/No-Go from one requirement.
 - Use `RQ-##` finding IDs and distinguish `missing`, `ambiguous`, `untestable`, `conflict`, and `unassessed`.
@@ -55,6 +58,15 @@ Do not use it to write test cases, execute tests, approve a release, or assign a
 ---
 name: requirement-quality-review
 description: Use this skill when a requirement, acceptance-criteria set, or change brief needs an evidence-bounded quality review before design or testing; triggers include requirement quality review, requirements quality gate, and requirement completeness review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Requirement Quality Review
@@ -66,6 +78,7 @@ Review requirement completeness, clarity, verifiability, feasibility, scope, and
 - Before test design, technical design, or planning when requirement quality is uncertain.
 - When acceptance criteria look complete but exception paths, constraints, actors, or decision conditions may be missing.
 - When a requirement needs routing to ambiguity, consistency, conflict, or traceability analysis.
+- When reviewing AI/Agent-drafted requirements, acceptance criteria, or change briefs for source support, scope drift, invented constraints, or omissions.
 
 Do not use it to write test cases, execute tests, approve a release, or assign a quality score from unsupported material.
 
@@ -91,6 +104,8 @@ Do not use it to write test cases, execute tests, approve a release, or assign a
 ## Core Constraints
 
 - Keep direct source facts, evidence-backed inferences, recommendations, and Human decisions separate.
+- For AI/Agent-generated material, trace clauses to supplied source requirements and acceptance criteria using available source/run/Human-review evidence. Check unsupported rules, missing constraints, invented thresholds, and unverifiable wording. Mark missing generation information `UNKNOWN`; do not infer authorship.
+- Record AI-draft claims, model/prompt version, source documents, generation run, and Human adoption/approval separately; mark absent material `UNKNOWN` or `UNASSESSED` and never present generated text as an approved requirement.
 - Do not invent business rules, fields, endpoints, thresholds, SLAs, environments, owners, root causes, execution results, or approvals.
 - Do not output a universal numeric quality score or infer Go/No-Go from one requirement.
 - Use `RQ-##` finding IDs and distinguish `missing`, `ambiguous`, `untestable`, `conflict`, and `unassessed`.

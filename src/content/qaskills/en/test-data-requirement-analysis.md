@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-data-requirement-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-data-requirement-analysis/SKILL.md
 - description: Use this skill when you need to analyze test-data prerequisites, relationships, privacy, lifecycle, and environment blockers before test design or generation; triggers include test data requirement analysis.
 
@@ -47,6 +47,15 @@ Do not use it to create records, call real data sources, copy production data, w
 ---
 name: test-data-requirement-analysis
 description: Use this skill when you need to analyze test-data prerequisites, relationships, privacy, lifecycle, and environment blockers before test design or generation; triggers include test data requirement analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Data Requirement Analysis
@@ -80,6 +89,13 @@ Do not use it to create records, call real data sources, copy production data, w
 4. Separate facts, preparation inference, open constraints, and Human/compliance decisions.
 5. Deliver bounded requirements when information is missing and state why generation or execution cannot be promised.
 
+## Domain Execution Essentials
+
+1. Map scenario/risk→entities/states/relationships→values/boundaries→quantity basis→source/authority→setup/cleanup. This Skill analyzes needs, not implicit generation or collection.
+2. Quantity derives from concurrency/isolation/repetitions/consumption. Missing counts yield formulas/gaps, not an invented100 rows; session counts are not entity counts.
+3. Without schema separate known business relationships from undefined fields/keys and ask minimal questions. Trace cross-entity states/foreign keys rather than merely naming CSV files.
+4. Prefer synthetic or permitted sanitized personal data with source constraints, retention/cleanup, and acceptance oracle. Unknown authority is BLOCKED; recommendations are no prepared-data evidence.
+
 ## Core Constraints
 
 - Cover applicable entities/fields, referential integrity, valid/invalid/boundary/combination, states, roles, sources, masking, setup, cleanup, and isolation.
@@ -89,6 +105,8 @@ Do not use it to create records, call real data sources, copy production data, w
 - State what later test design or data generation needs; do not replace generation or Human/compliance approval.
 
 ## Reference Files
+
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
 
 - Always read `prompts/test-data-requirement-analysis.md` before producing an analysis.
 - For regression, read `evals/eval.yaml` and matching cases; configuration does not prove data is ready.

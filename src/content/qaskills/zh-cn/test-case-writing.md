@@ -6,7 +6,7 @@
 - slug: test-case-writing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-case-writing/SKILL.md
 - description: Use this skill when you need to create high-quality test cases with normal, exception, and boundary scenarios; triggers include 测试用例编写 and test case writing.
 
@@ -68,6 +68,15 @@
 ---
 name: test-case-writing
 description: Use this skill when you need to create high-quality test cases with normal, exception, and boundary scenarios; triggers include 测试用例编写 and test case writing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试用例编写（中文版）

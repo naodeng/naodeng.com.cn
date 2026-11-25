@@ -6,7 +6,7 @@
 - slug: api-test-bruno
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/api-test-bruno/SKILL.md
 - description: Use this skill when you need to parse multi-format API definitions and generate Bruno collections for executable regression; triggers include Bruno、Bruno 集合 and Bruno API testing.
 
@@ -61,6 +61,15 @@
 ---
 name: api-test-bruno
 description: Use this skill when you need to parse multi-format API definitions and generate Bruno collections for executable regression; triggers include Bruno、Bruno 集合 and Bruno API testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API 测试（Bruno）（中文版）
@@ -71,6 +80,10 @@ description: Use this skill when you need to parse multi-format API definitions 
 
 - 需要把 API 测试结果落到 Bruno 结构或 Bruno 工作流里。
 - 项目已经在用 Bruno，或希望输出直接适配 Bruno。
+
+## 生成与执行边界
+
+生成脚本只生成已知字段的 smoke 断言：必须提供非空 endpoints、明确 expected_statuses；可提供 expected_json 和来源化 max_response_ms。缺数据、未解析参数/变量或 response_schema 待实现时生成失败工件并非零退出，不能运行成绿色。先读 `references/generator-contract.md`，目标与凭据必须显式配置。
 
 ## 执行流程
 

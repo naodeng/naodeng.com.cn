@@ -6,7 +6,7 @@ Author: naodeng
 - slug: technical-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/technical-quality-perspective/SKILL.md
 - description: Use this skill when a technical quality perspective is needed for requirements, strategy, code, test cases, or reports; triggers include technical quality review, architecture review, and code review.
 
@@ -16,6 +16,15 @@ Author: naodeng
 ---
 name: technical-quality-perspective
 description: Use this skill when a technical quality perspective is needed for requirements, strategy, code, test cases, or reports; triggers include technical quality review, architecture review, and code review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Technical quality perspective
@@ -59,6 +68,14 @@ Unless blocked or **Not applicable**, output: **Summary, Facts, Evidence, Techni
 - [ ] Stage-relevant technical dimensions only; no passed-test or code-correctness claim without evidence
 
 Read only the mapped Prompt after stage validation. Read `evals/` only for regression work, never as project evidence.
+
+## Report provenance
+
+Keep the selected `stage`, a stable `source_id`, and supplied `version` in the report header. If a source ID is absent, declare a temporary local locator; if version is absent, write unknown rather than inventing it. Each finding has a stable `finding_id`, its source/evidence locator and status. Each action links its finding and specifies the evidence that would close it; owner, date and action status stay unknown unless supplied. These are standalone report fields, not a dependency on another Skill.
+
+## Static finding location and handoff
+
+For supplied code or line-numbered text, use `file:line@version` and quote the exact supplied evidence. For design-only material, use its document/section/version; do not invent code files or lines. Carry the same finding ID/evidence into a code-review or specialized design-review handoff by Skill name, so the receiving review can refine it without duplicating a claimed runtime defect.
 ```
 
 ## Install

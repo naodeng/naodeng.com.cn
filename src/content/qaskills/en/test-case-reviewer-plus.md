@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-case-reviewer-plus
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-case-reviewer-plus/SKILL.md
 - description: Use this skill when you need structured test-case review findings from requirements, strategy, and case docs; triggers include test case reviewer plus and advanced test case review.
 
@@ -65,6 +65,15 @@ Author: naodeng
 ---
 name: test-case-reviewer-plus
 description: Use this skill when you need structured test-case review findings from requirements, strategy, and case docs; triggers include test case reviewer plus and advanced test case review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # test-case-reviewer-plus (EN)
@@ -75,6 +84,10 @@ description: Use this skill when you need structured test-case review findings f
 
 - Need a stricter review of existing test cases before test execution or release.
 - Need issue severity, business impact, and retest order to be explicit.
+
+## Script capability boundary
+
+Optional `scripts/run_*.py` prepare parsed evidence or source candidates with `NOT_ASSESSED`. They do not call a model, execute the main prompt, or produce semantic conclusions, risk priorities, complete cases, or approval. An agent performs the main prompt. Read `references/script-contract.md` before running helpers.
 
 ## Workflow
 

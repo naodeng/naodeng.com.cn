@@ -6,7 +6,7 @@ Author: naodeng
 - slug: technical-design-quality-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/technical-design-quality-review/SKILL.md
 - description: Use this skill when an architecture note, ADR, component design, or technical proposal needs an evidence-bounded quality review before implementation; triggers include technical design review, design readiness review, and non-functional design audit.
 
@@ -45,6 +45,15 @@ Do not use it to run builds, tests, production probes, or choose a final archite
 ---
 name: technical-design-quality-review
 description: Use this skill when an architecture note, ADR, component design, or technical proposal needs an evidence-bounded quality review before implementation; triggers include technical design review, design readiness review, and non-functional design audit.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Technical Design Quality Review

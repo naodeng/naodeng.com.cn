@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ci-test-optimization
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ci-test-optimization/SKILL.md
 - description: Use this skill when you need evidence-bounded pipeline stages, feedback latency, resources, flakiness, caching/sharding, and rollback boundaries; triggers include CI 测试流水线 and CI test pipeline.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: ci-test-optimization
 description: Use this skill when you need evidence-bounded pipeline stages, feedback latency, resources, flakiness, caching/sharding, and rollback boundaries; triggers include CI 测试流水线 and CI test pipeline.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # CI Test Pipeline Optimization
@@ -60,6 +69,7 @@ description: Use this skill when you need evidence-bounded pipeline stages, feed
 - Default to Markdown organized by domain risk, evidence state, priority, and boundary.
 - When the user requests tables, CSV, JSON, or ticket fields, preserve the same finding fields, evidence, and decision boundaries.
 - Before machine consumption, confirm the schema, enums, required fields, and evidence sources.
+- In Markdown tables, escape literal `|` characters inside cells as `\|` (including inline code), or rephrase them so they do not create extra columns.
 
 ## How to Use
 
@@ -71,10 +81,18 @@ description: Use this skill when you need evidence-bounded pipeline stages, feed
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/ci-test-optimization.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Fix commit/run/runner/config/test-set identities. Decompose events into queue, checkout/install, setup, execute, retry, and report; separate end-to-end waiting from runner busy time.
+2. Compute the actual DAG critical path without summing overlapping jobs. Preserve retry counts and original failures; retry green cannot erase first failure.
+3. Cache keys include relevant lockfile/toolchain/config identity. Compare cold/warm runs, hits, and invalidation evidence; mismatched cache cannot bypass dependency validation.
+4. Match before/after protection obligations, tests, fault detection, resources, and windows. Reject speedups through dropped tests/swallowed failures; propose measurable gains and rollback signals.
 ## Core Constraints
 
 - Keep the analysis focused on pipeline stages, feedback latency, resources, flakiness, caching/sharding, and rollback boundaries; do not replace business owners or Human risk acceptance, exception approval, or release decisions.

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: circuit-breaker-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/circuit-breaker-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded circuit-breaker-testing analysis and validation preparation; triggers include 熔断器测试 and circuit-breaker-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: circuit-breaker-testing
 description: Use this skill when you need evidence-bounded circuit-breaker-testing analysis and validation preparation; triggers include 熔断器测试 and circuit-breaker-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Circuit-Breaker Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded circuit-breaker-testi
 - Read prompts/circuit-breaker-testing.md for every invocation; it is the complete execution contract.
 - Read evals/eval.yaml and the matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Extract failure-count definitions, rolling/consecutive window, threshold, open duration, half-open probe/concurrency allowance, and success/failure transitions.
+- Deliver pre-state/count/action/post-state/fallback per event, distinguishing probes from ordinary calls; state labels are not behavior evidence.
+- When deriving domain candidates, read and follow [prompts/circuit-breaker-testing.md](prompts/circuit-breaker-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

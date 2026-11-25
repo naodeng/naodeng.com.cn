@@ -1,0 +1,144 @@
+---
+title: "MCP Server Testing: Check protocol, tools, and side effects against a declared revision"
+description: "Plan evidence-based MCP server tests for protocol behavior, transports, tool contracts, authorization, errors, and safe side effects."
+date: 2026-11-25T09:00:00.000Z
+draft: true
+author: "nao.deng"
+tags: ["AI Testing", "Agent Skills", "MCP Server Testing"]
+categories: ["AI Testing", "QA Skills"]
+series: ["Awesome QA Skills Field Guides"]
+---
+
+An MCP server may expose tools, resources, and prompts. A successful initialization only shows that a handshake occurred; it does not establish that tool arguments, authorization, error handling, or business side effects meet expectations.
+
+MCP Server Testing starts with the server's declared protocol revision, server and SDK versions, and tool contracts. It then plans tests against the matching specification and separates a plan or fixture review from actual server execution.
+
+## Establish the protocol oracle first
+
+Collect the server or package identity, implementation and SDK versions, declared MCP revision, transports, advertised capabilities, in-scope tool/resource/prompt contracts, authorization rules, environment, and available evidence. Do not infer the protocol revision from a package version or server name.
+
+The upstream package includes a reference pinned to MCP revision `2026-07-28`. Use it only when that is the target revision. For another revision, consult its matching official specification and distinguish required behavior from recommendations and optional capabilities. Test compatibility only for revisions the product says it supports.
+
+## Build an isolated MCP server example
+
+Suppose a local server exposes read and update tools. The following is a test design example; it does not claim that a real server has run and it does not include a production call.
+
+| Area | Test setup | Observable result |
+| --- | --- | --- |
+| Discovery and capabilities | Target revision, initialization messages, capability declarations, and tool list | Responses match the relevant specification; incompatible versions are handled according to contract |
+| Tool contract | Valid, missing, mistyped, boundary, and extra-field arguments | Result shape, error behavior, and validation location can be observed |
+| Transport and session | Separate lifecycle checks for each declared transport | Do not apply stdio lifecycle rules to Streamable HTTP, or vice versa |
+| Identity and authorization | Synthetic principals, allow/deny matrix, and revoked access | Only permitted tools and data are exposed to each identity |
+| Resources and tool descriptions | Isolated resource text and a synthetic malicious-instruction canary | Untrusted descriptions and content cannot expand authority or leak data |
+| Side effects and recovery | Isolated state, audit evidence, cleanup, and only contract-defined retries/cancellation | Count committed effects from state or audit evidence, not tool-call count |
+
+Before any state-changing operation, define the isolated environment, identity permissions, synthetic data, cleanup, and stop condition. A request to test a tool is not authorization to access production.
+
+## Turn a coverage table into executable cases
+
+Give each case enough detail for another person to reproduce and judge it:
+
+| Field | What to record |
+| --- | --- |
+| ID and objective | Protocol capability, tool contract, or security risk |
+| Preconditions | Revision, transport, identity, fixture, and environment |
+| Action | Message, tool call, argument, or interruption |
+| Oracle | Response, state, audit record, or side effect that proves the expectation |
+| Evidence and cleanup | Raw record location, redaction rule, and cleanup steps |
+| Status | Planned, fixture-reviewed, executed, `BLOCKED`, `NOT_RUN`, or `UNKNOWN` |
+
+Protocol conformance does not establish business correctness. A server can return a protocol-valid success while violating its tool's business contract. A model that does not call a tool does not, by itself, prove that the server protocol is wrong.
+
+## A prompt you can adapt
+
+```text
+Use the mcp-server-testing Skill.
+
+Server and versions: [package, server implementation, and SDK]
+Declared protocol revision: [revision the product supports]
+Transport and capabilities: [transport, tools/resources/prompts]
+Tool contracts: [schema, side effects, permissions, and error behavior]
+Identity and environment: [synthetic principals, isolated environment, cleanup]
+Evidence: [logs, fixtures, run IDs, or state that no run exists]
+Scope and limits: [included/excluded behavior, prohibited actions, stop conditions]
+
+Check the official specification that matches the declared revision.
+Prioritize positive, negative, boundary, and compatibility cases by risk.
+For every case, state preconditions, action, observable oracle, evidence, and cleanup.
+Separate plans and fixture review from actual execution. Do not assume production access is authorized.
+```
+
+## Keep server tests separate from Agent behavior
+
+Assign a failure to the layer where it occurs. This avoids folding server protocol, client experience, and model quality into a single unsupported conclusion.
+
+| Concern | Adjacent Skill | Scope boundary |
+| --- | --- | --- |
+| MCP server protocol and tool contract | MCP Server Testing | Server messages, capabilities, transport, authorization, and declared effects |
+| Agent tool choice and invocation | Agent Tool Testing | When an Agent calls a tool, how it builds arguments, and how results re-enter the flow |
+| Structured arguments and results | Structured Output Testing | JSON/schema/domain semantics of model- or Agent-generated output |
+| API contract behind a tool | API Contract Testing | Add only when an MCP tool maps to a separate API contract |
+| Broader API threat surface | API Security Testing | Extend only when that attack surface is in the requested scope |
+
+A team gate can require a declared revision, paired allowed and denied cases, a state or audit oracle for side effects, distinct plan and execution statuses, and an approved safe environment with cleanup.
+
+## Common traps
+
+- Guessing the protocol revision from the package version or server name.
+- Applying one revision's requirements to a different revision.
+- Mixing stdio lifecycle rules with Streamable HTTP behavior.
+- Checking only successful tool responses while omitting authorization, errors, boundaries, and side effects.
+- Treating resources, tool descriptions, or model output as trusted instructions.
+- Claiming full conformance from SDK metadata, static files, or one happy path.
+- Treating a server-reported identity, successful initialization on an older revision, or an installed SDK version as proof of the behavior exercised.
+- Calling production tools without isolated data, explicit authorization, and cleanup.
+
+## Install and invoke
+
+Install the Skill on its own:
+
+```bash
+npx skills add https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mcp-server-testing -g
+```
+
+Start with the server's declared revision and tool contract. A server address by itself does not supply enough information to infer its behavior.
+
+## FAQ
+
+### What if the product has not declared an MCP revision?
+
+Report the gap and ask for the supported compatibility range. The Skill can prepare questions, but it cannot choose a revision on the product's behalf.
+
+### Does an SDK version match prove protocol conformance?
+
+No. Test observable implementation behavior against the declared revision and its specification.
+
+### Can a test plan be marked `PASS`?
+
+No. A plan or static fixture review is not an executed server result. Use `NOT_RUN`, `BLOCKED`, or `UNKNOWN` when there is no runtime evidence, according to what is known.
+
+### If the server is protocol-conformant, are its business tools correct?
+
+Not necessarily. Protocol requirements and tool side effects come from different contracts and need separate oracles and evidence.
+
+### Does this Skill test the AI client's user experience?
+
+Not by default. Host/client UX, model quality, and general application security need a separate scope or an adjacent Skill.
+
+## References
+
+- Upstream Skill: https://github.com/naodeng/awesome-qa-skills/tree/main/skills/en/testing-types/mcp-server-testing
+- Full test prompt: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mcp-server-testing/prompts/mcp-server-testing.md
+- Bundled MCP reference, revision 2026-07-28: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/mcp-server-testing/references/mcp-spec-2026-07-28.md
+- MCP Server Testing Skill page: https://inaodeng.com/en/qaskills/mcp-server-testing/
+- Closely related guide, Agent Tool Testing: https://inaodeng.com/en/blog/ai-testing/awesome-qa-skills-agent-tool-testing/
+- Awesome QA Skills series overview: https://inaodeng.com/en/blog/ai-testing/introduction_of_awesome_qa_skills/
+
+## More Resources
+
+- Agent Tool Testing Skill: https://inaodeng.com/en/qaskills/agent-tool-testing/
+- Structured Output Testing Skill: https://inaodeng.com/en/qaskills/structured-output-testing/
+- API Contract Testing Skill: https://inaodeng.com/en/qaskills/api-contract-testing/
+- MCP overview: https://inaodeng.com/en/AIWiki/model-context-protocol-mcp/
+- More QA Skills: https://inaodeng.com/en/qaskills/
+- Testing Wiki: https://inaodeng.com/en/wiki/

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: resilience-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/resilience-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded resilience-testing analysis and validation preparation; triggers include 韧性测试 and resilience-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: resilience-testing
 description: Use this skill when you need evidence-bounded resilience-testing analysis and validation preparation; triggers include 韧性测试 and resilience-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Resilience Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded resilience-testing an
 - Read prompts/resilience-testing.md for every invocation; it is the complete execution contract.
 - Read evals/eval.yaml and the matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Define pre/during/post-disruption function/data invariants and normal/degraded/unavailable states from business contracts, retaining permitted experience changes.
+- Deliver phase/function/data invariants and degradation/recovery evidence; responding during disruption does not compensate for failed recovery.
+- When deriving domain candidates, read and follow [prompts/resilience-testing.md](prompts/resilience-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

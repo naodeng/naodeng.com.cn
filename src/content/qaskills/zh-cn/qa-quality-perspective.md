@@ -6,7 +6,7 @@
 - slug: qa-quality-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/qa-quality-perspective/SKILL.md
 - description: Use this skill when QA quality perspective is needed for requirements, strategy, review, test cases, or reports; triggers include QA质量视角、测试质量评估 and QA quality perspective.
 
@@ -46,6 +46,15 @@
 ---
 name: qa-quality-perspective
 description: Use this skill when QA quality perspective is needed for requirements, strategy, review, test cases, or reports; triggers include QA质量视角、测试质量评估 and QA quality perspective.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # QA 质量视角（中文版）
@@ -99,6 +108,20 @@ description: Use this skill when QA quality perspective is needed for requiremen
 
 - 仅在 `stage` 有效后读取表中唯一对应的 `prompts/` 文件；需要回归时读取 `evals/`，但不要把 eval 用例当作项目事实。
 - 不要用风险清单替代证据；不要把测试建议、静态阅读或利益相关者的口头判断写成执行通过结论。
+
+## 报告来源
+
+报告头保留所选 `stage`、稳定 `source_id` 和已提供 `version`。缺少来源 ID 时声明临时本地定位；缺少版本写 unknown，不得编造。每项发现含稳定 `finding_id`、来源/证据定位与状态。每项行动回链发现并说明关闭所需证据；负责人、日期和行动状态仅在提供时填写，否则 unknown。这些是独立报告字段，不构成对其他 Skill 的依赖。
+
+## 定性风险锚点
+
+综合影响、已观察发生信号与不确定性进行判断；不是算术乘法或新评分。发生可能性未知时仍写未知。
+
+| 风险 | 影响与发生证据 | 不确定性与行动 |
+| --- | --- | --- |
+| 高 | 关键损失、阻塞缺陷或关键未测路径；有可信复发信号或暴露未排除 | 关键证据缺失时不能自信判低风险，优先验证/升级 |
+| 中 | 影响受限或证据部分齐备，但存在合理失败路径 | 写明缺少证据和定向跟进 |
+| 低 | 影响有限且有控制证据，未提供关键暴露 | 写明残余限制，低风险不等于发布批准 |
 ```
 
 ## 安装

@@ -6,7 +6,7 @@
 - slug: project-delivery-perspective
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/project-delivery-perspective/SKILL.md
 - description: Use this skill when project delivery constraints or action tracking are needed for test strategy, test strategy review, or test report review; triggers include 项目交付视角、交付计划、排期与资源 and project delivery perspective.
 
@@ -53,6 +53,15 @@
 ---
 name: project-delivery-perspective
 description: Use this skill when project delivery constraints or action tracking are needed for test strategy, test strategy review, or test report review; triggers include 项目交付视角、交付计划、排期与资源 and project delivery perspective.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 项目交付视角（中文版）
@@ -111,6 +120,14 @@ description: Use this skill when project delivery constraints or action tracking
 - 不要因截止时间压力而声称缺陷已关闭、测试已通过或发布质量可接受。
 - 不要把“要求修改事实”当作有来源的事实。
 - 不要从未提供的产能、责任人、日期或依赖生成交付计划。
+
+## 报告来源
+
+报告头保留所选 `stage`、稳定 `source_id` 和已提供 `version`。缺少来源 ID 时声明临时本地定位；缺少版本写 unknown，不得编造。每项发现含稳定 `finding_id`、来源/证据定位与状态。每项行动回链发现并说明关闭所需证据；负责人、日期和行动状态仅在提供时填写，否则 unknown。这些是独立报告字段，不构成对其他 Skill 的依赖。
+
+## 交付要求、决定与日期
+
+在项目约束与行动跟踪内分列期望要求、有来源的已授权决定和已观察行动状态；质量证据独立保留。保留时区偏移与日期精度，仅偏移已知时换算 UTC，歧义本地时间需标明。依赖延期只更新有证据的交付影响。缺少负责人/期限保持 unknown，将指派/澄清列为下一协调动作。报告评审时间不构成发布授权。
 ```
 
 ## 安装

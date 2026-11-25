@@ -6,7 +6,7 @@
 - slug: functional-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/functional-testing/SKILL.md
 - description: Use this skill when you need to design functional test plans or cases for business flows, UI, data, and integrations; triggers include 功能测试 and functional testing.
 
@@ -62,6 +62,15 @@
 ---
 name: functional-testing
 description: Use this skill when you need to design functional test plans or cases for business flows, UI, data, and integrations; triggers include 功能测试 and functional testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 功能测试（中文版）

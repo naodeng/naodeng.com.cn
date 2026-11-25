@@ -6,9 +6,9 @@ Author: naodeng
 - slug: api-negative-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-negative-testing/SKILL.md
-- description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 异常测试 and API negative testing.
+- description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 负向测试 and API negative testing.
 
 ## When to Use
 
@@ -43,7 +43,16 @@ Do not use it to execute tests, invent contract or behavior, replace a complete 
 ```markdown
 ---
 name: api-negative-testing
-description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 异常测试 and API negative testing.
+description: Use this skill when you need to design evidence-bounded API failure and rejection scenarios; triggers include API 负向测试 and API negative testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API Negative Testing
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent contract or behavior, replace a complete 
 2. Complete the known, missing, conflicting, stale, out_of_scope, and assumptions input audit before findings.
 3. Record ANT-## with the subject, preconditions, behavior of concern, source evidence, and validation, plus impact/priority, owner role, close condition, and evidence state.
 4. Preserve conflicts, unknown constraints, and open questions when evidence is incomplete.
+
+## Domain Execution Essentials
+
+- Extract field types, required/null rules, ranges, length encoding, payload limits, identity/permission rules, and error contracts with sources.
+- Deliver constraint, input variant, allow/reject expectation, response/side-effect observation, and validation, tracing field and permission rules separately.
+- When deriving domain candidates, read and follow [prompts/api-negative-testing.md](prompts/api-negative-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

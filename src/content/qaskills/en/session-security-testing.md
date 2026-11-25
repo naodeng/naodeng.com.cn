@@ -6,7 +6,7 @@ Author: naodeng
 - slug: session-security-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/session-security-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded session-security-testing analysis and validation preparation; triggers include 会话安全测试 and session-security-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: session-security-testing
 description: Use this skill when you need evidence-bounded session-security-testing analysis and validation preparation; triggers include 会话安全测试 and session-security-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Session-Security Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded session-security-test
 - Read prompts/session-security-testing.md for every invocation.
 - Read evals/eval.yaml and matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Identify Cookie/opaque-session/access+refresh mechanisms and contracts for creation, post-login rotation, fixation, idle/absolute expiry, revocation, logout and concurrent clients.
+- Deliver mechanism-specific credential/permission timelines; successful logout does not prove old credentials are invalid.
+- When deriving domain candidates, read and follow [prompts/session-security-testing.md](prompts/session-security-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

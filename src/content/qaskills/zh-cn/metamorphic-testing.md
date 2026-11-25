@@ -6,7 +6,7 @@
 - slug: metamorphic-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/metamorphic-testing/SKILL.md
 - description: Use this skill when you need to derive test candidates from input transformations and expected relations when a direct oracle is limited; triggers include 蜕变测试设计 and metamorphic test design.
 
@@ -47,6 +47,15 @@
 ---
 name: metamorphic-testing
 description: Use this skill when you need to derive test candidates from input transformations and expected relations when a direct oracle is limited; triggers include 蜕变测试设计 and metamorphic test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 蜕变测试设计
@@ -70,6 +79,12 @@ description: Use this skill when you need to derive test candidates from input t
 2. 按方法合同形成 MT-##，保留来源、证据状态、影响、责任角色、关闭条件和验证方法。
 3. 事实、推断、建议和 Human 决策必须分开。
 4. 只提出后续验证意图，不写成已执行结果。
+
+## 领域执行要点
+
+- 先确定原始输入域、变换 T、输出关系 R 及其来源/适用前提；没有可靠 oracle 不代表可以自行假设任意等价关系。
+- 交付输入→变换→输出关系→前提→反例表，关系的适用性与实现是否满足关系分开。
+- 形成领域候选时，必须读取并遵循 [prompts/metamorphic-testing.md](prompts/metamorphic-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

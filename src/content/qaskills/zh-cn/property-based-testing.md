@@ -6,7 +6,7 @@
 - slug: property-based-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/property-based-testing/SKILL.md
 - description: Use this skill when you need to turn invariants, generation domains, and shrinking strategies into reviewable property-test candidates; triggers include 性质测试设计 and property-based test design.
 
@@ -47,6 +47,15 @@
 ---
 name: property-based-testing
 description: Use this skill when you need to turn invariants, generation domains, and shrinking strategies into reviewable property-test candidates; triggers include 性质测试设计 and property-based test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 性质测试设计
@@ -70,6 +79,12 @@ description: Use this skill when you need to turn invariants, generation domains
 2. 按方法合同形成 PBT-##，保留来源、证据状态、影响、责任角色、关闭条件和验证方法。
 3. 事实、推断、建议和 Human 决策必须分开。
 4. 只提出后续验证意图，不写成已执行结果。
+
+## 领域执行要点
+
+- 从合同列输入域、来源化不变量、前置限制及可观察 oracle；性质不能由函数名或个人常识自行断定。
+- 交付生成域、性质/前提、重放数据及最小反例判据；有序但丢元素不能判满足排序合同。
+- 形成领域候选时，必须读取并遵循 [prompts/property-based-testing.md](prompts/property-based-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

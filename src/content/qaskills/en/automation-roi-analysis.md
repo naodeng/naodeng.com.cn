@@ -6,7 +6,7 @@ Author: naodeng
 - slug: automation-roi-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/automation-roi-analysis/SKILL.md
 - description: Use this skill when you need evidence-bounded automation candidates, build/run/maintenance costs, benefit assumptions, time horizon, and sensitivity; triggers include 自动化投资回报 and automation ROI.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: automation-roi-analysis
 description: Use this skill when you need evidence-bounded automation candidates, build/run/maintenance costs, benefit assumptions, time horizon, and sensitivity; triggers include 自动化投资回报 and automation ROI.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Automation ROI Analysis
@@ -71,10 +80,18 @@ description: Use this skill when you need evidence-bounded automation candidates
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/automation-roi-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Fix candidate, window, and units. Separate Human time, machine occupancy, review, maintenance, and money; conversions need sourced rates.
+2. For one window, net saving = runs×(manual cost/run−automated cost/run)−maintenance−build cost. Define ROI numerator/denominator; absent monetary conversion, report labor only.
+3. If recurring net saving >0, break-even windows = build cost/recurring net saving, rounding up for whole execution windows. If <=0, no break-even under those assumptions.
+4. Vary frequency and change-driven maintenance in project-supplied low/base/high scenarios with sources and sign changes. Missing inputs yield formulas/conditional ranges, never precise invented returns or automatic adoption.
 ## Core Constraints
 
 - Keep the analysis focused on automation candidates, build/run/maintenance costs, benefit assumptions, time horizon, and sensitivity; do not replace business owners or Human risk acceptance, exception approval, or release decisions.

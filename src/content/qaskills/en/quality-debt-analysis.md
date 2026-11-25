@@ -6,7 +6,7 @@ Author: naodeng
 - slug: quality-debt-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/quality-debt-analysis/SKILL.md
 - description: Use this skill when you need evidence-bounded quality-debt items, origins, impact, age, priority, ownership, and paydown tradeoffs; triggers include 质量债务 and quality debt.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: quality-debt-analysis
 description: Use this skill when you need evidence-bounded quality-debt items, origins, impact, age, priority, ownership, and paydown tradeoffs; triggers include 质量债务 and quality debt.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Quality Debt Analysis
@@ -71,9 +80,18 @@ description: Use this skill when you need evidence-bounded quality-debt items, o
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/quality-debt-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Separate active product defects, test/architecture debt, exceptions and evidence gaps. Record source, impact, cause, age and current controls.
+2. Explain accumulated risk through observed maintenance effort, exposure or detection delay. Missing rates yield qualitative or conditional estimates, not invented money.
+3. Rank impact, exposure, detectability, dependencies and repayment effort/benefit; age is one signal. A new severe gap may precede old minor debt.
+4. Closure requires changed assets, independent checks, removed debt effects and accountable acceptance. Tickets alone do not repay debt; accepted risk needs authority and expiry.
 
 ## Core Constraints
 

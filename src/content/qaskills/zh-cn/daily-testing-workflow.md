@@ -6,7 +6,7 @@
 - slug: daily-testing-workflow
 - category: workflow
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-workflows/daily-testing-workflow/SKILL.md
 - description: Use this skill when you need a day-by-day QA routine including planning, execution, bug reporting, and end-of-day wrap-up; triggers include 日常测试工作流程 and daily testing workflow.
 
@@ -26,6 +26,7 @@
 
 - 管阶段与门禁；完整用例/策略/报告交给类型 skill。
 - 按风险排优先级；门禁必须可检查。
+- 环境不可用或当前构建无法冒烟时，启动/环境就绪门禁保持红色；指定恢复负责人不能解除该阻塞。
 - 把「已确认事实」和「当前假设」分开写。
 - 不要编造用户未提供的细节；禁止相对路径链到其他 skill 文件。
 
@@ -57,6 +58,15 @@
 ---
 name: daily-testing-workflow
 description: Use this skill when you need a day-by-day QA routine including planning, execution, bug reporting, and end-of-day wrap-up; triggers include 日常测试工作流程 and daily testing workflow.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-workflows"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 日常测试工作流程（中文版）
@@ -79,6 +89,7 @@ description: Use this skill when you need a day-by-day QA routine including plan
 
 - 管阶段与门禁；完整用例/策略/报告交给类型 skill。
 - 按风险排优先级；门禁必须可检查。
+- 环境不可用或当前构建无法冒烟时，启动/环境就绪门禁保持红色；指定恢复负责人不能解除该阻塞。
 - 把「已确认事实」和「当前假设」分开写。
 - 不要编造用户未提供的细节；禁止相对路径链到其他 skill 文件。
 

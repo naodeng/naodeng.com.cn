@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-schema-validation
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-schema-validation/SKILL.md
 - description: Use this skill when you need to compare API schemas with sourced request and response evidence; triggers include API Schema 校验 and API schema validation.
 
@@ -44,6 +44,15 @@ Do not use it to execute tests, invent contract or behavior, replace a complete 
 ---
 name: api-schema-validation
 description: Use this skill when you need to compare API schemas with sourced request and response evidence; triggers include API Schema 校验 and API schema validation.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # API Schema Validation
@@ -69,6 +78,12 @@ Do not use it to execute tests, invent contract or behavior, replace a complete 
 2. Complete the known, missing, conflicting, stale, out_of_scope, and assumptions input audit before findings.
 3. Record ASV-## with the subject, preconditions, behavior of concern, source evidence, and validation, plus impact/priority, owner role, close condition, and evidence state.
 4. Preserve conflicts, unknown constraints, and open questions when evidence is incomplete.
+
+## Domain Execution Essentials
+
+- Identify OpenAPI/JSON Schema/GraphQL and its version/dialect, operation/direction, content type, reference root and resolution context. Suspend version-dependent decisions when unknown.
+- Deliver dialect, reference-resolution status, and sample/constraint decisions; required presence and a null value must be assessed separately.
+- When deriving domain candidates, read and follow [prompts/api-schema-validation.md](prompts/api-schema-validation.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

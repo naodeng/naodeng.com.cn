@@ -6,7 +6,7 @@ Author: naodeng
 - slug: llm-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/llm-testing/SKILL.md
 - description: Use this skill when you need to test LLM behavior, failure modes, and evidence-based quality boundaries; triggers include llm testing.
 
@@ -25,6 +25,8 @@ Author: naodeng
 5. If information is missing, deliver a bounded first pass and state which conclusions remain unsupported.
 
 ## Core Constraints
+
+- Keep boundaries with feature, Prompt, and Eval design explicit; stratify samples by risk and report repetition denominators, token/cost provenance, and latency metrics with sample counts.
 
 - avoid exact-string assertions alone
 - pin and record model settings
@@ -46,6 +48,15 @@ Author: naodeng
 ---
 name: llm-testing
 description: Use this skill when you need to test LLM behavior, failure modes, and evidence-based quality boundaries; triggers include llm testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.1"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # LLM Testing
@@ -78,12 +89,20 @@ description: Use this skill when you need to test LLM behavior, failure modes, a
 
 ## Core Constraints
 
+- Keep boundaries with feature, Prompt, and Eval design explicit; stratify samples by risk and report repetition denominators, token/cost provenance, and latency metrics with sample counts.
+
 - avoid exact-string assertions alone
 - pin and record model settings
 - evaluate stochastic outputs with repetitions and distributions
 - Never invent system behavior, fields, data, metrics, or root causes absent from the evidence.
 - Link important conclusions to evidence; mark unsupported conclusions as hypotheses with a verification method.
 - Explain priority using business impact, likelihood, or detectability.
+
+## Evaluation Evidence Status
+
+- Include `evaluation_status`: `PASS`, `FAIL`, `BLOCKED`, `NOT_RUN`, or `UNKNOWN` for evaluation conclusions.
+- `PASS` requires in-scope runtime records and evidence for every required assertion. Use `NOT_RUN` when no run results exist, `BLOCKED` when execution was prevented, and `UNKNOWN` when evidence is insufficient. A plan, static check, or file presence alone cannot prove `PASS`.
+- Trace `trace_id`, sample and version identity, parameters, run/trial, parse, schema, semantic status, and evidence reference; decide those checks separately.
 
 ## Delivery Checklist
 

@@ -6,7 +6,7 @@
 - slug: cross-browser-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/cross-browser-testing/SKILL.md
 - description: Use this skill when you need to select evidence-backed browser, engine, device, and version coverage; triggers include 跨浏览器测试 and cross-browser testing.
 
@@ -51,6 +51,15 @@
 ---
 name: cross-browser-testing
 description: Use this skill when you need to select evidence-backed browser, engine, device, and version coverage; triggers include 跨浏览器测试 and cross-browser testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 跨浏览器测试
@@ -76,6 +85,12 @@ description: Use this skill when you need to select evidence-backed browser, eng
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 CBT-## 记录对象、前置条件、关注点、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 把项目支持声明与用户分布映射为引擎×平台×版本×设备矩阵，记录真实浏览器、真实设备、模拟器和自动化引擎各自身份。
+- 交付支持矩阵、风险取样理由和每格证据状态；浏览器品牌数、模拟器数量不能代替目标环境覆盖。
+- 形成领域候选时，必须读取并遵循 [prompts/cross-browser-testing.md](prompts/cross-browser-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

@@ -6,7 +6,7 @@
 - slug: multi-agent-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/multi-agent-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded delegation, coordination, shared state, conflicts, ownership, termination, and traceability; triggers include 多 Agent 协作 and multi-agent coordination.
 
@@ -53,6 +53,15 @@
 ---
 name: multi-agent-testing
 description: Use this skill when you need evidence-bounded delegation, coordination, shared state, conflicts, ownership, termination, and traceability; triggers include 多 Agent 协作 and multi-agent coordination.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 多 Agent 协作测试（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded delegation, coordinat
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/multi-agent-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 用 task/message/correlation ID、sender/receiver、父委派、scope、owner、共享状态版本和 ACK 建立交接轨迹；按真实协议指定接收/拒绝/终止条件。
+2. 认领/提交须依据项目原子所有权或fencing协议，陈旧消息与重复消息不能重新取得所有权或重复写入；未给 exactly-once 协议不假定存在。
+3. 部分失败分别记录已完成、未完成和不确定副作用，重派前核对 committed 状态；任务不因一个子任务失败或超时而静默丢失。
+4. 终止传播核对停止 ACK、终态与剩余责任，租约失效者不得继续提交；对照正常单一认领和有效交接，避免把消息重投本身当故障。
 
 ## 核心约束
 

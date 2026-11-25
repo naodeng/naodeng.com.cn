@@ -6,7 +6,7 @@ Author: naodeng
 - slug: prompt-injection-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/prompt-injection-testing/SKILL.md
 - description: Use this skill when you need to design safe prompt-injection tests for AI systems and tool boundaries; triggers include prompt injection testing.
 
@@ -25,6 +25,8 @@ Author: naodeng
 5. If information is missing, deliver a bounded first pass and state which conclusions remain unsupported.
 
 ## Core Constraints
+
+- Include indirect RAG, MCP resource/tool-description, UI, and attachment surfaces; use synthetic canaries to check exfiltration channels and post-refusal side effects.
 
 - use safe placeholder data in authorized environments
 - do not target real sensitive systems
@@ -46,6 +48,15 @@ Author: naodeng
 ---
 name: prompt-injection-testing
 description: Use this skill when you need to design safe prompt-injection tests for AI systems and tool boundaries; triggers include prompt injection testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.2"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Prompt Injection Testing
@@ -77,6 +88,8 @@ description: Use this skill when you need to design safe prompt-injection tests 
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
 ## Core Constraints
+
+- Include indirect RAG, MCP resource/tool-description, UI, and attachment surfaces; use synthetic canaries to check exfiltration channels and post-refusal side effects.
 
 - use safe placeholder data in authorized environments
 - do not target real sensitive systems

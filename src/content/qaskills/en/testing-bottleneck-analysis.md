@@ -6,7 +6,7 @@ Author: naodeng
 - slug: testing-bottleneck-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/testing-bottleneck-analysis/SKILL.md
 - description: Use this skill when you need evidence-bounded queues, dependencies, capacity, handoffs, and evidence for testing constraints; triggers include 测试瓶颈 and testing bottleneck.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: testing-bottleneck-analysis
 description: Use this skill when you need evidence-bounded queues, dependencies, capacity, handoffs, and evidence for testing constraints; triggers include 测试瓶颈 and testing bottleneck.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Testing Bottleneck Analysis
@@ -71,9 +80,18 @@ description: Use this skill when you need evidence-bounded queues, dependencies,
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/testing-bottleneck-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
+
+## Domain Execution Essentials
+
+1. Fix window, work IDs/complexity, arrival/completion, and state events. Separate queue/dependency waiting, execution, rework, handoffs, and blockers; total cycle time is not labor.
+2. WIP counts unfinished items; throughput counts completed items per matching window. Measure cycle/stage times separately and disclose missing events/sampling; averages alone establish no cause.
+3. Identify the limiting stage/upstream dependency using utilization, arrivals, and completions. Idle resources may be blocked on materials/environment; more concurrency may increase contention and reduce throughput.
+4. Propose small measurable interventions, matched before/after metrics, and rollback signals. Staffing shortage is a hypothesis, not a conclusion from waiting time or a personal ranking.
 
 ## Core Constraints
 

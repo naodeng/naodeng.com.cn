@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-runtime-optimization
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-runtime-optimization/SKILL.md
 - description: Use this skill when you need evidence-bounded slow tests, profiling evidence, setup/teardown, parallelism, isolation, and baselines; triggers include 测试运行时间 and test runtime.
 
@@ -45,6 +45,15 @@ Author: naodeng
 ---
 name: test-runtime-optimization
 description: Use this skill when you need evidence-bounded slow tests, profiling evidence, setup/teardown, parallelism, isolation, and baselines; triggers include 测试运行时间 and test runtime.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Runtime Optimization
@@ -71,10 +80,18 @@ description: Use this skill when you need evidence-bounded slow tests, profiling
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/test-runtime-optimization.md`; it is the complete execution specification for this skill.
 - For evaluation, read `evals/eval.yaml` and the matching cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Profile setup, execution, teardown, and retries with matched commit, obligations, data, resources, and windows. Derive DAG critical paths without adding overlapping jobs.
+2. Separate cold/warm cache, runner limits, concurrency, isolated data, and contention. Record changed factors; different test volumes/environments cannot prove speedups.
+3. Recheck the same business fault against effective assertions while retaining failures/logs/traces. Parallelism cannot share conflicting accounts or swallow errors; faster time cannot offset lost protection.
+4. Give baseline/candidate duration, resource cost, percentage gain, and rollback signals. Comparable actual runs establish observed gains; estimates remain candidates, not production guarantees.
 ## Core Constraints
 
 - Keep the analysis focused on slow tests, profiling evidence, setup/teardown, parallelism, isolation, and baselines; do not replace business owners or Human risk acceptance, exception approval, or release decisions.

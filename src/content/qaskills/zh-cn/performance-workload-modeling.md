@@ -6,7 +6,7 @@
 - slug: performance-workload-modeling
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/performance-workload-modeling/SKILL.md
 - description: Use this skill when you need to model realistic performance workload, traffic, and acceptance assumptions; triggers include 性能负载建模 and performance workload modeling.
 
@@ -54,6 +54,15 @@
 ---
 name: performance-workload-modeling
 description: Use this skill when you need to model realistic performance workload, traffic, and acceptance assumptions; triggers include 性能负载建模 and performance workload modeling.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 性能负载建模（中文版）
@@ -80,9 +89,18 @@ description: Use this skill when you need to model realistic performance workloa
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/performance-workload-modeling.md`；它是本 Skill 的完整执行规范。
 - 需要评测或回归本 Skill 时，读取 `evals/eval.yaml` 与匹配的 `evals/cases/` 用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 将每项输入写为数值、单位、时区/窗口、来源和覆盖：请求/交易/会话/用户不能互换；从交易mix及每交易请求数转换，注明重试与后台流量。
+2. 日请求量只能复算全天平均；峰值需峰时流量比例与窗口宽度，缺窗口保持条件公式/区间，不自定峰时长度或峰倍数。
+3. 明确开放到达率或封闭并发；Little's Law只在稳定窗口且单位一致时用L=λW，不能把在线用户或日活直接当并发。
+4. 给候选曲线、会话长度/think time来源与校验计划；以实测到达/完成量和mix验证，未确认数值不能作为生产容量结论。
 
 ## 核心约束
 

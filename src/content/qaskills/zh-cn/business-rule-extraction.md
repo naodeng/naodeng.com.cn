@@ -6,7 +6,7 @@
 - slug: business-rule-extraction
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/business-rule-extraction/SKILL.md
 - description: Use this skill when requirements, policies, contracts, or workflows need traceable business rules extracted before design or testing; triggers include 业务规则提取, business rule extraction, and policy rule inventory.
 
@@ -53,6 +53,15 @@
 ---
 name: business-rule-extraction
 description: Use this skill when requirements, policies, contracts, or workflows need traceable business rules extracted before design or testing; triggers include 业务规则提取, business rule extraction, and policy rule inventory.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 业务规则提取

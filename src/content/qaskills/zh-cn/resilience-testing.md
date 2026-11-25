@@ -6,7 +6,7 @@
 - slug: resilience-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/resilience-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded resilience-testing analysis and validation preparation; triggers include 韧性测试 and resilience-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: resilience-testing
 description: Use this skill when you need evidence-bounded resilience-testing analysis and validation preparation; triggers include 韧性测试 and resilience-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 韧性测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded resilience-testing an
 - 每次执行必须读取 prompts/resilience-testing.md；它是本 Skill 的完整执行规范。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录实际存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 用业务合同定义扰动前/中/后功能与数据不变量，列正常、降级、不可用状态及允许的体验变化。
+- 交付阶段×功能/数据不变量与降级/恢复证据表，扰动中继续响应但恢复失败不能算完整韧性。
+- 形成领域候选时，必须读取并遵循 [prompts/resilience-testing.md](prompts/resilience-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-case-importer
 - category: type
 - hasEvals: true
-- syncedAt: 2026-11-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-case-importer/SKILL.md
 - description: Use this skill when you need to transform existing test cases from spreadsheets, documents, or tool exports into a target case schema; triggers include test case import, case migration, 用例导入, and 测试用例迁移.
 

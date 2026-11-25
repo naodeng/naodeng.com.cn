@@ -53,6 +53,7 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         },
         "slugs": [
           "release-testing-workflow",
+          "ai-feature-release-workflow",
           "multi-role-quality-synthesis"
         ]
       }
@@ -236,6 +237,7 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         },
         "slugs": [
           "code-review",
+          "ai-generated-code-review",
           "change-impact-analysis",
           "pr-test-impact-analysis",
           "api-contract-testing",
@@ -372,7 +374,8 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
           "en": "AI Feature Requirements and Risk"
         },
         "slugs": [
-          "ai-feature-testing"
+          "ai-feature-testing",
+          "structured-output-testing"
         ]
       },
       {
@@ -400,6 +403,7 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
         "slugs": [
           "ai-agent-testing",
           "agent-tool-testing",
+          "mcp-server-testing",
           "prompt-injection-testing",
           "agent-loop-testing",
           "agent-memory-testing",
@@ -423,7 +427,8 @@ export const QA_SKILL_CATALOG: QASkillCatalogGroup[] = [
       "skill-quality-review",
       "skill-evaluation",
       "skill-prose-review",
-      "skill-prose-trim"
+      "skill-prose-trim",
+      "skill-security-review"
     ],
     "groups": []
   }

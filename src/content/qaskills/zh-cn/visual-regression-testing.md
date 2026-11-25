@@ -6,7 +6,7 @@
 - slug: visual-regression-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/visual-regression-testing/SKILL.md
 - description: Use this skill when you need to define evidence-bounded visual regression candidates, baselines, and comparison conditions; triggers include 视觉回归测试 and visual regression testing.
 
@@ -51,6 +51,15 @@
 ---
 name: visual-regression-testing
 description: Use this skill when you need to define evidence-bounded visual regression candidates, baselines, and comparison conditions; triggers include 视觉回归测试 and visual regression testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 视觉回归测试
@@ -76,6 +85,12 @@ description: Use this skill when you need to define evidence-bounded visual regr
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 VRT-## 记录对象、前置条件、关注点、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 定义baseline键：页面/版本/视口/浏览器/OS/字体/主题/数据，并检查比较双方同条件；条件不同先标不可比或环境差异。
+- 交付环境键、区域差异/阈值、归因证据与基线决策表；超阈值差异不自动等于产品缺陷，更新基线也不能掩盖缺陷。
+- 形成领域候选时，必须读取并遵循 [prompts/visual-regression-testing.md](prompts/visual-regression-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

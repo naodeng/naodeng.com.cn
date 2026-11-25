@@ -6,7 +6,7 @@ Author: naodeng
 - slug: distributed-trace-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/distributed-trace-analysis/SKILL.md
 - description: Use this skill when you need to analyze distributed traces for call paths, latency, errors, and evidence gaps; triggers include distributed trace analysis.
 
@@ -46,6 +46,15 @@ Author: naodeng
 ---
 name: distributed-trace-analysis
 description: Use this skill when you need to analyze distributed traces for call paths, latency, errors, and evidence gaps; triggers include distributed trace analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Distributed Trace Analysis
@@ -72,10 +81,18 @@ description: Use this skill when you need to analyze distributed traces for call
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/distributed-trace-analysis.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Fix trace/span IDs, parent IDs, asynchronous links, service/deployment versions, timestamps, and sampling scope. Check nesting and clock skew; a link is not automatically synchronous parentage.
+2. Within one clock domain, subtract the union of synchronous child intervals to obtain observed exclusive time; overlapping children are not additive. Missing spans limit this to observed intervals, not true exclusive work.
+3. Derive critical paths from actual dependency/blocking order. Queue time requires enqueue/dequeue evidence; unexplained gaps are not automatically queues.
+4. A longest span is an investigation candidate; causation needs logs/metrics/controlled faults. State separate missing-span, sampling, and clock limitations.
 ## Core Constraints
 
 - correlation is not causation

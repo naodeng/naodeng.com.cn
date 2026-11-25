@@ -6,7 +6,7 @@ Author: naodeng
 - slug: dependency-failure-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/dependency-failure-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded dependency-failure-testing analysis and validation preparation; triggers include 依赖故障测试 and dependency-failure-testing.
 
@@ -43,6 +43,15 @@ Author: naodeng
 ---
 name: dependency-failure-testing
 description: Use this skill when you need evidence-bounded dependency-failure-testing analysis and validation preparation; triggers include 依赖故障测试 and dependency-failure-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Dependency-Failure Testing
@@ -72,6 +81,12 @@ description: Use this skill when you need evidence-bounded dependency-failure-te
 - Read prompts/dependency-failure-testing.md for every invocation; it is the complete execution contract.
 - Read evals/eval.yaml and the matching evals/cases/ when evaluating the Skill.
 - Read references/, examples/, scripts/, or output-formats.md only when the directory exists and the task needs it.
+
+## Domain Execution Essentials
+
+- Map caller/dependency, synchronous/asynchronous mode, timeout/retry/fallback contracts and required business/data invariants.
+- Deliver failure-mode/caller/dependency/side-effect cells, distinguishing synchronous rejection, async pending and unknown commit, with recovery validation.
+- When deriving domain candidates, read and follow [prompts/dependency-failure-testing.md](prompts/dependency-failure-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

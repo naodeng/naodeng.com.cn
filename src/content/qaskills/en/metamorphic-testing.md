@@ -6,7 +6,7 @@ Author: naodeng
 - slug: metamorphic-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/metamorphic-testing/SKILL.md
 - description: Use this skill when you need to derive test candidates from input transformations and expected relations when a direct oracle is limited; triggers include 变形测试 and metamorphic test design.
 
@@ -42,6 +42,15 @@ Author: naodeng
 ---
 name: metamorphic-testing
 description: Use this skill when you need to derive test candidates from input transformations and expected relations when a direct oracle is limited; triggers include 变形测试 and metamorphic test design.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Metamorphic Test Design
@@ -66,6 +75,12 @@ Derive test candidates from input transformations and expected relations when a 
 3. Produce MT-## findings with source, evidence state, applicability, impact/priority, owner, close condition, and validation.
 4. Separate facts, evidence-backed inferences, recommendations, and Human decisions.
 5. Recommend follow-up validation without claiming execution.
+
+## Domain Execution Essentials
+
+- Define source input domain, transformation T, output relation R and sourced preconditions. An absent exact oracle does not permit arbitrary equivalence assumptions.
+- Deliver input/transformation/output-relation/precondition/counterexample tables, separating relation applicability from implementation satisfaction.
+- When deriving domain candidates, read and follow [prompts/metamorphic-testing.md](prompts/metamorphic-testing.md) for the domain procedure and oracle; retain valid controls, evidence gaps, and validation actions for each item.
 
 ## Core Constraints
 

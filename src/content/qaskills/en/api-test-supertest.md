@@ -6,7 +6,7 @@ Author: naodeng
 - slug: api-test-supertest
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/api-test-supertest/SKILL.md
 - description: Use this skill when you need to parse multi-format API definitions and generate executable Supertest scripts; triggers include Supertest, Node.js API testing, and Supertest automation.
 
@@ -61,6 +61,15 @@ Author: naodeng
 ---
 name: api-test-supertest
 description: Use this skill when you need to parse multi-format API definitions and generate executable Supertest scripts; triggers include Supertest, Node.js API testing, and Supertest automation.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # api-test-supertest (EN)
@@ -71,6 +80,10 @@ description: Use this skill when you need to parse multi-format API definitions 
 
 - Need API outputs that should land in Supertest based automation.
 - The project is Node.js-based or already uses Supertest/Jest.
+
+## Generation and execution boundary
+
+Generators produce smoke assertions for known fields only: require nonempty endpoints and explicit expected_statuses; optional expected_json and sourced max_response_ms. Missing data, unresolved parameters/variables, or schema assertions produce incomplete scaffolds and a nonzero exit. Read `references/generator-contract.md`; configure target and credentials explicitly.
 
 ## Workflow
 

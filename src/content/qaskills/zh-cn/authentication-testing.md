@@ -6,7 +6,7 @@
 - slug: authentication-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/authentication-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded authentication-testing analysis and validation preparation; triggers include 身份认证测试 and authentication-testing.
 
@@ -50,6 +50,15 @@
 ---
 name: authentication-testing
 description: Use this skill when you need evidence-bounded authentication-testing analysis and validation preparation; triggers include 身份认证测试 and authentication-testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 身份认证测试（中文版）
@@ -79,6 +88,12 @@ description: Use this skill when you need evidence-bounded authentication-testin
 - 每次执行必须读取 prompts/authentication-testing.md。
 - 需要评测时读取 evals/eval.yaml 和匹配的 evals/cases/。
 - 只有目录存在且任务需要时，才读取 references/、examples/、scripts/ 或 output-formats.md。
+
+## 领域执行要点
+
+- 根据已给密码、MFA、恢复或联邦机制建未认证/挑战中/已认证/锁定/恢复中的状态图，标创建、轮换、过期、撤销与重放规则。
+- 输出认证状态迁移与凭证生命周期表，逐事件写预期状态/令牌、材料观察和缺口；身份验证不替代授权。
+- 形成领域候选时，必须读取并遵循 [prompts/authentication-testing.md](prompts/authentication-testing.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

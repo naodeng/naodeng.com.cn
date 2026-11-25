@@ -6,7 +6,7 @@
 - slug: rag-retrieval-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/rag-retrieval-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded query variants, chunking, filters, recall/precision proxies, ranking, freshness, and retrieval evidence; triggers include 检索结果 and retrieval result.
 
@@ -53,6 +53,15 @@
 ---
 name: rag-retrieval-testing
 description: Use this skill when you need evidence-bounded query variants, chunking, filters, recall/precision proxies, ranking, freshness, and retrieval evidence; triggers include 检索结果 and retrieval result.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # RAG 检索测试（中文版）
@@ -79,9 +88,18 @@ description: Use this skill when you need evidence-bounded query variants, chunk
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/rag-retrieval-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
+
+## 领域执行要点
+
+1. 给query及相关集合固定标注规则、文档/chunk粒度、标注者与版本；Recall@k分母为已知相关集合，Precision@k按实际返回数和项目对重复chunk规则计算。
+2. 逐结果核对top-k/rank、relevance、租户/权限过滤、新鲜度与文档版本；越权结果不能因相关而计成功，过时结果不由分数高抵消。
+3. 控制相同query、索引、过滤和资源比较排序或配置变化；无完整相关集合只报代理指标和限制，不宣称真实召回完整。
+4. 区分相关资料未取回的retrieval failure与取回正确但生成错误的generation failure；缺生成输出不能定位生成环节，缺标签保持UNKNOWN。
 
 ## 核心约束
 

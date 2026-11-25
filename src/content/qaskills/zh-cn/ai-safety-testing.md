@@ -6,7 +6,7 @@
 - slug: ai-safety-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-safety-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded safety policy, abuse categories, refusal/redirect behavior, privacy, escalation, and Human risk decisions; triggers include AI 安全 and AI safety.
 
@@ -25,6 +25,8 @@
 5. 信息不足时交付受限初版，明确哪些结论不能成立，不把静态材料写成执行结果。
 
 ## 核心约束
+
+- 红队活动先定授权范围、政策分类、停止/升级条件和有害/良性配对；分别判断安全失败与过度拒答，不把“未发现失败”写成通过。
 
 - 只分析安全政策、滥用类别、拒答/重定向、隐私、升级与 Human 风险决策，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。
 - 不编造系统行为、字段、模型输出、数据、阈值、根因、执行记录或通过结论。
@@ -53,6 +55,15 @@
 ---
 name: ai-safety-testing
 description: Use this skill when you need evidence-bounded safety policy, abuse categories, refusal/redirect behavior, privacy, escalation, and Human risk decisions; triggers include AI 安全 and AI safety.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.2"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # AI 安全测试（中文版）
@@ -79,11 +90,22 @@ description: Use this skill when you need evidence-bounded safety policy, abuse 
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/ai-safety-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 固定政策 ID/版本/适用对象，建立 类别/条件→允许/限制/拒答/升级→可提供内容/禁止副作用→证据 矩阵；缺政策不自行认定安全批准。
+2. 用政策描述的危险样本与近邻正常请求配对；分别检查危险处理正确性、允许请求完成质量和过度拒答，不能只汇总拒答率。
+3. 限制/重定向核对实际内容及工具动作，不能只看拒答开头；升级记录触发原因、责任角色及待 Human 决策状态。
+4. 标签记录政策来源、样本版本、预期分支与实际分支；未提供执行输出保持 NOT_RUN，未知政策边界保持 UNKNOWN。
+
 ## 核心约束
+
+- 红队活动先定授权范围、政策分类、停止/升级条件和有害/良性配对；分别判断安全失败与过度拒答，不把“未发现失败”写成通过。
 
 - 只分析安全政策、滥用类别、拒答/重定向、隐私、升级与 Human 风险决策，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。
 - 不编造系统行为、字段、模型输出、数据、阈值、根因、执行记录或通过结论。

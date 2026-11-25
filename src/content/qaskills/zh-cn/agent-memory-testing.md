@@ -6,7 +6,7 @@
 - slug: agent-memory-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/agent-memory-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded memory write/read/update/delete, retention, contamination, isolation, provenance, and forgetting behavior; triggers include Agent 记忆 and Agent memory.
 
@@ -53,6 +53,15 @@
 ---
 name: agent-memory-testing
 description: Use this skill when you need evidence-bounded memory write/read/update/delete, retention, contamination, isolation, provenance, and forgetting behavior; triggers include Agent 记忆 and Agent memory.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent 记忆测试（中文版）
@@ -79,10 +88,18 @@ description: Use this skill when you need evidence-bounded memory write/read/upd
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/agent-memory-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 为记忆记录 tenant/user ID、memory ID、内容版本、来源、写入时间、有效期、撤回/删除状态；检索结果保留来源版本，不只检查最终回答。
+2. 先依据项目优先级规则选择新旧偏好；冲突未定义时标为待确认，不能默认最后写入或自定保留期。
+3. 两租户同查询分别核对可见集合；版本更新后检索过时内容、到期后返回和删除后仍返回按项目一致性窗口判定。
+4. 删除检查索引、缓存与备份等实际范围；未提供删除传播/备份保留协议时只报告已验证部分。正常允许检索作为隔离检查的对照。
 ## 核心约束
 
 - 只分析记忆写入/读取/更新/删除、保留、污染、隔离、来源和遗忘行为，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。

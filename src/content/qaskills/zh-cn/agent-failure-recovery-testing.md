@@ -6,7 +6,7 @@
 - slug: agent-failure-recovery-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/agent-failure-recovery-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded failure classification, retry/fallback/escalation, state consistency, user notice, and recovery evidence; triggers include Agent 故障恢复 and Agent failure recovery.
 
@@ -53,6 +53,15 @@
 ---
 name: agent-failure-recovery-testing
 description: Use this skill when you need evidence-bounded failure classification, retry/fallback/escalation, state consistency, user notice, and recovery evidence; triggers include Agent 故障恢复 and Agent failure recovery.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent 故障恢复测试（中文版）
@@ -79,10 +88,18 @@ description: Use this skill when you need evidence-bounded failure classificatio
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/agent-failure-recovery-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 按项目协议建立 故障 | 写入是否确认 | 可重试性 | 重试/补偿/升级 | 恢复后状态 | 所需证据 表；暂时错误、永久错误和结果不确定分开。
+2. 超时不能推出未执行：先以 operation_id/幂等键查已提交副作用，再决定读回结果或安全重试；同键不得产生第二次业务写入。
+3. 部分成功按已完成步骤和剩余步骤核对；补偿仅在协议和授权允许时执行，逐步记录补偿结果，失败进入升级。
+4. 永久错误停止原样重试并通知责任人。核对恢复前后业务状态、重试次数、用户可见结果与资源；缺日志时恢复仍待验证。
 ## 核心约束
 
 - 只分析故障分类、重试/回退/升级、状态一致性、用户通知与恢复证据，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。

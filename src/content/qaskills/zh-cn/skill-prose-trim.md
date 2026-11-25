@@ -6,7 +6,7 @@
 - slug: skill-prose-trim
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/skill-engineering/skill-prose-trim/SKILL.md
 - description: Use this skill when auditing or trimming process residue from Skill、Prompt、注释或文档；触发词包括过程性文案清理、审查残留、当前状态改写。
 
@@ -19,7 +19,7 @@
 1. 明确文件范围、语言配对和是否允许修改。
 2. 区分当前事实、契约、历史记录、推理过程和审查对话。
 3. 删除纯过程性内容；把有价值的事实改写成当前状态表述。
-4. 保留异常保证、测量边界、正式引用、归档记录和 fixture fidelity。
+4. 保留负向保证、测量边界、正式引用、归档记录和 fixture fidelity。
 
 ## 核心约束
 
@@ -35,6 +35,15 @@
 ---
 name: skill-prose-trim
 description: Use this skill when auditing or trimming process residue from Skill、Prompt、注释或文档；触发词包括过程性文案清理、审查残留、当前状态改写。
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "skill-engineering"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 过程性文案清理
@@ -48,7 +57,7 @@ description: Use this skill when auditing or trimming process residue from Skill
 1. 明确文件范围、语言配对和是否允许修改。
 2. 区分当前事实、契约、历史记录、推理过程和审查对话。
 3. 删除纯过程性内容；把有价值的事实改写成当前状态表述。
-4. 保留异常保证、测量边界、正式引用、归档记录和 fixture fidelity。
+4. 保留负向保证、测量边界、正式引用、归档记录和 fixture fidelity。
 
 ## 核心约束
 

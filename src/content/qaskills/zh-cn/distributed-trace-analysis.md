@@ -6,7 +6,7 @@
 - slug: distributed-trace-analysis
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/distributed-trace-analysis/SKILL.md
 - description: Use this skill when you need to analyze distributed traces for call paths, latency, errors, and evidence gaps; triggers include 分布式 Trace 分析 and distributed trace analysis.
 
@@ -54,6 +54,15 @@
 ---
 name: distributed-trace-analysis
 description: Use this skill when you need to analyze distributed traces for call paths, latency, errors, and evidence gaps; triggers include 分布式 Trace 分析 and distributed trace analysis.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 分布式链路分析（中文版）
@@ -80,10 +89,18 @@ description: Use this skill when you need to analyze distributed traces for call
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/distributed-trace-analysis.md`；它是本 Skill 的完整执行规范。
 - 需要评测或回归本 Skill 时，读取 `evals/eval.yaml` 与匹配的 `evals/cases/` 用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 固定 trace/span ID、parent ID、异步 links、服务/部署版本、起止时刻和采样范围；核对父子包含关系与时钟偏差，link 不自动当同步父子。
+2. 同一时钟域内按区间并集扣除同步子 span 得 observed exclusive time；重叠子 span 不能相加。缺 span 时只报可见区间，不能宣称真实独占时间。
+3. 关键路径根据真实依赖顺序和阻塞等待识别；queue time 需 enqueue/dequeue 证据，不把未解释空白都归为排队。
+4. 最慢 span 仅是调查候选，根因需日志/指标/故障实验佐证；缺 span、采样和时钟不确定性分别限制结论。
 ## 核心约束
 
 - 相关性不等于根因

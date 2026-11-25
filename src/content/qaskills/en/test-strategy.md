@@ -6,7 +6,7 @@ Author: naodeng
 - slug: test-strategy
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-strategy/SKILL.md
 - description: Use this skill when you need to define a test strategy covering scope, methods, resources, risks, and quality gates; triggers include test strategy and QA planning.
 
@@ -30,6 +30,8 @@ Author: naodeng
 - Keep output executable: concrete scenarios, clear priority, clear next steps.
 
 ## Progressive Disclosure
+
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
 
 - Before producing output, read and follow `prompts/test-strategy.md` (minimum coverage, output structure, quality bar).
 - When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.
@@ -60,6 +62,15 @@ Author: naodeng
 ---
 name: test-strategy
 description: Use this skill when you need to define a test strategy covering scope, methods, resources, risks, and quality gates; triggers include test strategy and QA planning.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Test Strategy
@@ -78,6 +89,13 @@ description: Use this skill when you need to define a test strategy covering sco
 3. If input is incomplete, return a usable first draft and explicitly mark assumptions and gaps.
 4. Default to Markdown; switch formats only when the user asks.
 
+## Domain Execution Essentials
+
+1. Build a minimum executable table linking objective→obligation/scope→layer/depth→data/environment→resources/owner→entry/exit rule source→evidence/residual risk.
+2. Reuse the project stack and actual capacity, protecting critical loss/authority obligations first. Each scenario needs business postconditions/evidence; insufficient resources expose unfinished work and minimal alternatives.
+3. Gates come from the project. Missing thresholds remain open/UNKNOWN; never apply an automatic95% pass gate. Human risk acceptance cannot be replaced by a strategy draft.
+4. Separate design, plan, actual runs, and acceptance. Include dependencies/blockers, changes, stop/reassessment triggers, and owners so another executor can take over.
+
 ## Core Constraints
 
 - Prioritize by risk / business impact — do not treat everything equally.
@@ -86,6 +104,8 @@ description: Use this skill when you need to define a test strategy covering sco
 - Keep output executable: concrete scenarios, clear priority, clear next steps.
 
 ## Progressive Disclosure
+
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
 
 - Before producing output, read and follow `prompts/test-strategy.md` (minimum coverage, output structure, quality bar).
 - When Excel/CSV/JSON/Word is requested: read `output-formats.md` and honor the format.

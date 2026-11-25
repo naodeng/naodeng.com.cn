@@ -6,7 +6,7 @@ Author: naodeng
 - slug: ai-feature-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/ai-feature-testing/SKILL.md
 - description: Use this skill when you need to test an AI-enabled product feature for behavior, safety, and user-impact boundaries; triggers include AI feature testing.
 
@@ -46,6 +46,15 @@ Author: naodeng
 ---
 name: ai-feature-testing
 description: Use this skill when you need to test an AI-enabled product feature for behavior, safety, and user-impact boundaries; triggers include AI feature testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "en"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # AI Feature Testing
@@ -72,10 +81,18 @@ description: Use this skill when you need to test an AI-enabled product feature 
 
 ## Reference Files
 
+- When calibrating domain outcomes, valid controls, or evidence gaps, read [references/domain-decision-example.md](references/domain-decision-example.md) for sanitized input, per-item oracles, and reproducible calculations.
+
 - Always read `prompts/ai-feature-testing.md`; it is the complete execution specification for this skill.
 - For evaluation or regression, read `evals/eval.yaml` and the relevant cases under `evals/cases/`.
 - Load `references/`, `examples/`, `scripts/`, or `output-formats.md` only when those directories exist and the task needs them.
 
+## Domain Execution Essentials
+
+1. Fix model, prompt, knowledge/evaluation data, product, and environment versions. Slice by product task×language×user group×risk, recording sample provenance/counts; aggregates cannot hide minority groups.
+2. Give Human rubric dimensions observable anchors, labelers, disagreement handling, and reference provenance. Calibrate examples before project-defined scores/weights; undefined scoring stays open.
+3. Separate task quality, safety/privacy, required refusal versus answerable controls, and fallback gates. Record source, denominator, and version for each gate; more refusal is not inherently safer.
+4. Missing slice samples or thresholds yield UNKNOWN/open questions. Release recommendations retain unresolved gates and Human decisions; static plans do not establish passed execution.
 ## Core Constraints
 
 - do not test only ideal inputs

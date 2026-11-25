@@ -6,7 +6,7 @@
 - slug: test-strategy-plus
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-strategy-plus/SKILL.md
 - description: Use this skill when you need a structured test strategy from requirement, analysis, tech, and plan docs; triggers include 测试策略增强、test strategy plus and advanced test strategy.
 
@@ -65,6 +65,15 @@
 ---
 name: test-strategy-plus
 description: Use this skill when you need a structured test strategy from requirement, analysis, tech, and plan docs; triggers include 测试策略增强、test strategy plus and advanced test strategy.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试策略增强版（中文版）
@@ -75,6 +84,10 @@ description: Use this skill when you need a structured test strategy from requir
 
 - 需要一份更完整的测试策略，包含里程碑、质量门槛和责任安排。
 - 需要比基础版更强的规划和取舍说明。
+
+## 脚本能力边界
+
+可选 `scripts/run_*.py` 只准备解析后的输入材料或来源候选，输出 `NOT_ASSESSED`，不调用模型、不执行主 Prompt，不生成语义结论、风险优先级、完整用例或批准。正式分析由 Agent 按主 Prompt 执行；需要运行脚本时先读 `references/script-contract.md`。
 
 ## 执行流程
 

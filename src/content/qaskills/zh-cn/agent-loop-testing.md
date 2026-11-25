@@ -6,7 +6,7 @@
 - slug: agent-loop-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/agent-loop-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded loop state, plan/action/observation cycles, stop conditions, budgets, repetition, and trace evidence; triggers include Agent 循环 and Agent loop.
 
@@ -53,6 +53,15 @@
 ---
 name: agent-loop-testing
 description: Use this skill when you need evidence-bounded loop state, plan/action/observation cycles, stop conditions, budgets, repetition, and trace evidence; triggers include Agent 循环 and Agent loop.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # Agent 循环测试（中文版）
@@ -79,10 +88,18 @@ description: Use this skill when you need evidence-bounded loop state, plan/acti
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/agent-loop-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 按 task/run/step ID 记录计划、工具名与归一化参数、观察身份/摘要、业务状态变化和时间/费用累计；敏感参数脱敏但保留去重依据。
+2. 进展以项目目标的新证据或状态前进判断；动作/观察相同且目标未前进记无进展周期。只重复文本或工具成功不算进展。
+3. 使用项目指定无进展上限、重试策略、时间和费用预算；安全/取消立即停止，任一硬预算触顶优先于继续计划，未给上限时提问而不自定数值。
+4. 对重复调用转入项目允许的改变策略、停止或升级分支；输出触发 step、终止类别、剩余工作和无额外副作用证据。
 ## 核心约束
 
 - 只分析循环状态、规划/动作/观察周期、停止条件、预算、重复行为与 trace 证据，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。

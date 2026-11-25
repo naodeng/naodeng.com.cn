@@ -6,7 +6,7 @@
 - slug: agent-long-running-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/agent-long-running-testing/SKILL.md
 - description: Use this skill when you need evidence-bounded checkpoints, heartbeats, resume, cancellation, duplicate submission, timeouts, and resource lifecycle; triggers include 长运行 Agent and long-running Agent.
 
@@ -53,6 +53,15 @@
 ---
 name: agent-long-running-testing
 description: Use this skill when you need evidence-bounded checkpoints, heartbeats, resume, cancellation, duplicate submission, timeouts, and resource lifecycle; triggers include 长运行 Agent and long-running Agent.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 长运行 Agent 测试（中文版）
@@ -79,10 +88,18 @@ description: Use this skill when you need evidence-bounded checkpoints, heartbea
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/agent-long-running-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测时读取 `evals/eval.yaml` 和 `evals/cases/` 下的匹配用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 从实际协议写出 queued→running→checkpointed→interrupted→resuming→completed 和 running→cancelling→cancelled；未定义状态或转换标为待确认。
+2. 每个 checkpoint 记录 task_id、schema/状态版本、已提交 step ID、来源和完整性；恢复先校验版本与已提交效果，版本不兼容不得盲目重放。
+3. 记录 owner、lease/fencing token 和过期规则。租约丢失的 worker 不得继续提交；重复 task_id 按项目幂等协议合并或拒绝，不能假定 exactly-once。
+4. 按时间线检查取消与提交竞争：用项目定义的提交点判定赢家，保留已提交结果；核对终态、资源释放和取消确认，规则缺失交 Human 决策。
 ## 核心约束
 
 - 只分析检查点、心跳、恢复、取消、重复提交、超时与资源生命周期，不替代业务负责人或 Human 的风险接受、例外批准和安全决定。

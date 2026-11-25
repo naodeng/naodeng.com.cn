@@ -6,7 +6,7 @@
 - slug: test-code-review
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/test-code-review/SKILL.md
 - description: Use this skill when you need to review test code for assertions, isolation, determinism, fixtures, and maintainability; triggers include 测试代码评审 and test code review.
 
@@ -51,6 +51,15 @@
 ---
 name: test-code-review
 description: Use this skill when you need to review test code for assertions, isolation, determinism, fixtures, and maintainability; triggers include 测试代码评审 and test code review.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.0.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # 测试代码评审
@@ -76,6 +85,12 @@ description: Use this skill when you need to review test code for assertions, is
 2. 先完成 known、missing、conflicting、stale、out_of_scope、assumptions 六类输入审计。
 3. 用 TCR-## 记录对象、前置条件、关注点、来源证据和验证方法，保留影响/优先级、责任角色、关闭条件和证据状态。
 4. 材料冲突、缺少约束或没有执行证据时，保留双方和待确认问题。
+
+## 领域执行要点
+
+- 先标被测行为和失败时测试应如何失败，逐断言追踪实际值是否来自被测对象，检查恒真、只断类型或吞异常后无失败出口。
+- 交付行号/片段、被保护义务、漏检反例与修复验证；允许正确隔离和有失败出口的测试对照。
+- 形成领域候选时，必须读取并遵循 [prompts/test-code-review.md](prompts/test-code-review.md) 的领域操作与判定流程，逐项保留合法对照、证据缺口和验证动作。
 
 ## 核心约束
 

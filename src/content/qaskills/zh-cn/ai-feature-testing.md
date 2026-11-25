@@ -6,7 +6,7 @@
 - slug: ai-feature-testing
 - category: type
 - hasEvals: true
-- syncedAt: 2026-09-15
+- syncedAt: 2026-11-25
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/zh/testing-types/ai-feature-testing/SKILL.md
 - description: Use this skill when you need to test an AI-enabled product feature for behavior, safety, and user-impact boundaries; triggers include AI 功能测试 and AI feature testing.
 
@@ -54,6 +54,15 @@
 ---
 name: ai-feature-testing
 description: Use this skill when you need to test an AI-enabled product feature for behavior, safety, and user-impact boundaries; triggers include AI 功能测试 and AI feature testing.
+license: PolyForm-Noncommercial-1.0.0
+metadata:
+  version: "1.1.0"
+  compatibility: ""
+  author: "Awesome QA Skills contributors"
+  language: "zh-CN"
+  category: "testing-types"
+  source: "https://github.com/naodeng/awesome-qa-skills"
+  license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
 ---
 
 # AI 功能测试（中文版）
@@ -80,10 +89,18 @@ description: Use this skill when you need to test an AI-enabled product feature 
 
 ## 参考文件
 
+- 校准领域结果、正确对照或证据缺口时，读取 [references/domain-decision-example.md](references/domain-decision-example.md) 的脱敏输入、逐项预期与复算依据。
+
 - 每次执行必须读取 `prompts/ai-feature-testing.md`；它是本 Skill 的完整执行规范。
 - 需要评测或回归本 Skill 时，读取 `evals/eval.yaml` 与匹配的 `evals/cases/` 用例。
 - 只有目录实际存在且任务需要时，才读取 `references/`、`examples/`、`scripts/` 或 `output-formats.md`，不要假设不存在的资产。
 
+## 领域执行要点
+
+1. 固定模型、Prompt、知识/评测数据、产品和环境版本；建立 产品任务×语言×用户群×风险 切片，记录抽样来源及样本量，不以总体平均遮盖小群体。
+2. 人工 rubric 为每个维度写可观察锚点、标签者、分歧处理和参考答案来源；先校准样本，再按项目评分与权重汇总，未定规则不自造分数。
+3. 分开任务质量、安全/隐私、应拒答与正常可回答、降级/回退门槛；记录每门槛来源、分母和版本，拒答多不自动安全。
+4. 切片缺样本或阈值时输出 UNKNOWN/待确认；上线建议保留未决门槛和 Human 决策，不能从静态方案得出已通过。
 ## 核心约束
 
 - 不要只测理想输入
