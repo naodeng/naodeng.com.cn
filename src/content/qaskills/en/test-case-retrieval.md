@@ -10,6 +10,12 @@ Author: naodeng
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-case-retrieval/SKILL.md
 - description: Use this skill when you need to find existing test cases in a supplied or connected test repository by feature, behavior, error, platform, or requirement; triggers include find relevant test cases, test case search, 测试用例检索, and 测试资产检索.
 
+## When to Use
+
+- Finding related cases in an existing test repository, case catalog, or user-provided export.
+- Locating reusable behavior coverage and edge scenarios before reviewing a requirement, defect, or code change.
+- Searching an unfamiliar area by business behavior, API, error code, platform, or ticket reference.
+
 ## Workflow
 
 1. Read `prompts/test-case-retrieval.md` and establish the search intent, source, project/suite filters, and intended use of results.

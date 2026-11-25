@@ -10,6 +10,10 @@ Author: naodeng
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/technical-quality-perspective/SKILL.md
 - description: Use this skill when a technical quality perspective is needed for requirements, strategy, code, test cases, or reports; triggers include technical quality review, architecture review, and code review.
 
+## When to Use
+
+Use this to assess technical quality from declared architecture, API, data, code, security, performance, compatibility, and observability evidence at a selected delivery stage.
+
 ## Raw SKILL.md
 
 ```markdown

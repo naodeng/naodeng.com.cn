@@ -57,6 +57,25 @@ description: Use this skill when you need API tests.
 - Do not pretend completeness.
 `;
 
+const UPSTREAM_EN_SAMPLE = `## When to use
+- Run a Skill evaluation.
+
+## How to use
+1. Read the contract.
+
+## Constraints
+- Keep evidence boundaries clear.
+
+## Progressive disclosure
+- Read supporting files as needed.
+
+## Pre-delivery checklist
+- [ ] Record limitations.
+
+## Common pitfalls
+- Do not overstate results.
+`;
+
 describe("extractCanonicalSections", () => {
   it("maps Chinese headings to canonical keys", () => {
     const sections = extractCanonicalSections(ZH_SAMPLE);
@@ -76,6 +95,16 @@ describe("extractCanonicalSections", () => {
     expect(sections.progressiveDisclosure).toContain("prompts/api-testing.md");
     expect(sections.checklist).toContain("minimum checklist");
     expect(sections.pitfalls).toContain("pretend completeness");
+  });
+
+  it("maps current upstream English heading variants to canonical keys", () => {
+    const sections = extractCanonicalSections(UPSTREAM_EN_SAMPLE);
+    expect(sections.whenToUse).toContain("Skill evaluation");
+    expect(sections.workflow).toContain("Read the contract");
+    expect(sections.coreConstraints).toContain("evidence boundaries");
+    expect(sections.progressiveDisclosure).toContain("supporting files");
+    expect(sections.checklist).toContain("Record limitations");
+    expect(sections.pitfalls).toContain("overstate results");
   });
 
   it("omits missing sections as empty string", () => {

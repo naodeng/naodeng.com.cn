@@ -10,6 +10,12 @@ Author: naodeng
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/multi-role-quality-synthesis/SKILL.md
 - description: Use this skill when multiple role reports for one quality stage must be combined into a traceable synthesis; triggers include multi-role quality synthesis, role report consolidation, disagreement summary..
 
+## When to Use
+
+- One or more role reports exist for the same quality stage and must become a unified, traceable stage synthesis.
+- Roles raised duplicate, complementary, or conflicting quality findings whose sources and disagreements must remain visible.
+- Project-delivery constraints and quality facts appear together, and schedule or stakeholder requests must not override quality evidence.
+
 ## Workflow
 
 1. Read and follow `prompts/multi-role-quality-synthesis.md` in full; it is the standalone execution specification.

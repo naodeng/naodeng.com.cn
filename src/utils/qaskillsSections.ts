@@ -13,16 +13,22 @@ export type CanonicalSections = Record<SectionKey, string>;
 
 const HEADING_TO_KEY: Record<string, SectionKey> = {
   "何时使用": "whenToUse",
+  "When to use": "whenToUse",
   "When to Use": "whenToUse",
   "执行流程": "workflow",
+  "How to use": "workflow",
   Workflow: "workflow",
   "核心约束": "coreConstraints",
+  Constraints: "coreConstraints",
   "Core Constraints": "coreConstraints",
   "按需加载": "progressiveDisclosure",
+  "Progressive disclosure": "progressiveDisclosure",
   "Progressive Disclosure": "progressiveDisclosure",
   "交付前自检": "checklist",
+  "Pre-delivery checklist": "checklist",
   "Pre-delivery Checklist": "checklist",
   "常见误区": "pitfalls",
+  "Common pitfalls": "pitfalls",
   "Common Pitfalls": "pitfalls",
 };
 

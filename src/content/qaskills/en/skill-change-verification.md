@@ -17,6 +17,14 @@ Author: naodeng
 3. Record commands run, results, omitted checks, and reasons.
 4. Report residual risks and claims that are and are not supported.
 
+## Core Constraints
+
+- `skill-up validate` is not runtime semantic validation.
+- Mark undiscoverable commands as confirmation items; never guess.
+- Cover the actual diff instead of hiding gaps behind a full-suite run.
+
+Read `prompts/skill-change-verification.md` before producing a report.
+
 ## Raw SKILL.md
 
 ```markdown

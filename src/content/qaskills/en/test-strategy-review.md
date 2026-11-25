@@ -10,6 +10,12 @@ Author: naodeng
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-strategy-review/SKILL.md
 - description: Use this skill when a proposed test strategy needs evidence-based review before Human approval; triggers include test strategy review, strategy approval review..
 
+## When to Use
+
+- A test strategy draft needs a decision on sufficiency, feasibility, and alignment with business and technical constraints.
+- A review meeting must distinguish blockers, time-bounded conditions, and optional non-blocking improvements.
+- Requirements, role analysis, technical notes, or project constraints conflict and need a traceable AI recommendation for Human decision.
+
 ## Workflow
 
 1. Read and follow `prompts/test-strategy-review.md` in full; it is the standalone execution specification.

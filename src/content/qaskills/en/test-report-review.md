@@ -10,6 +10,12 @@ Author: naodeng
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-types/test-report-review/SKILL.md
 - description: Use this skill when a test report needs an evidence-consistency review before Human approval; triggers include test report review, quality report audit, test evidence review..
 
+## When to Use
+
+- A report claims tests passed, gates are met, or release is ready and needs source-evidence review.
+- Untested scope, evidence contradictions, residual risk, or open actions need to be visible.
+- Schedule or management input may conflict with QA, technical, or source quality facts.
+
 ## Workflow
 
 1. Read [prompts/test-report-review.md](prompts/test-report-review.md) and follow the complete specification.

@@ -17,6 +17,14 @@ Author: naodeng
 3. Delete pure process residue and restate durable facts in present tense.
 4. Preserve negative guarantees, measured bounds, formal references, archives, and fixture fidelity.
 
+## Core Constraints
+
+- Never turn an assumption into a shipped capability.
+- Do not edit generated files, sealed archives, or recorded fixtures without explicit authorization.
+- Keep bilingual meaning aligned.
+
+Read `prompts/skill-prose-trim.md` before producing output.
+
 ## Raw SKILL.md
 
 ```markdown

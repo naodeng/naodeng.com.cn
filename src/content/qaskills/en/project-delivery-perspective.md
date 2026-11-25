@@ -10,6 +10,11 @@ Author: naodeng
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/project-delivery-perspective/SKILL.md
 - description: Use this skill when project delivery constraints or action tracking are needed for test strategy, test strategy review, or test report review; triggers include project delivery perspective, delivery planning, schedule and capacity..
 
+## When to Use
+
+- A supported quality stage needs attributable schedule, capacity, dependency, milestone, owner, or action-status input.
+- Delivery participants need to surface constraints or track follow-up actions without changing quality facts.
+
 ## Workflow
 
 1. Validate `stage`. If it is missing or unsupported, return **Not applicable**, state that only `test-strategy`, `test-strategy-review`, and `test-report-review` are supported, and request a valid stage. Do not produce planning, action, or quality conclusions.
@@ -22,6 +27,25 @@ Author: naodeng
 | `test-strategy` | `prompts/test-strategy.md` |
 | `test-strategy-review` | `prompts/test-strategy-review.md` |
 | `test-report-review` | `prompts/test-report-review.md` |
+
+## Progressive Disclosure
+
+- After stage validation, read only the mapped file in `prompts/`.
+- For evaluation or regression, use `evals/`; never treat eval scenarios as project evidence.
+
+## Pre-delivery Checklist
+
+- [ ] The stage is one of the three supported values and exactly one Prompt was loaded
+- [ ] Every schedule, capacity, dependency, milestone, owner, and status statement carries its supplied source
+- [ ] Project constraints/actions are separate from preserved quality facts
+- [ ] No defect, execution, evidence, quality, or release fact was changed or concluded
+- [ ] Unknown ownership, dates, capacity, dependencies, and status are explicit gaps
+
+## Common Pitfalls
+
+- Do not turn deadline pressure into a claim that a defect is closed, testing passed, or release quality is acceptable.
+- Do not present a requested fact change as a source-backed fact.
+- Do not create a delivery plan from unprovided capacity, owners, dates, or dependencies.
 
 ## Raw SKILL.md
 

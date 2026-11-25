@@ -10,12 +10,35 @@ Author: naodeng
 - sourceSkillUrl: https://github.com/naodeng/awesome-qa-skills/blob/main/skills/en/testing-workflows/tdd-quality-workflow/SKILL.md
 - description: Use this skill when guiding or reviewing test-driven development with evidence for Red, Green, Refactor and test effectiveness; triggers include TDD quality workflow, test-driven development and TDD 质量工作流.
 
+## When to Use
+
+Use for guiding, reviewing, or retrospectively assessing test-driven feature work or fixes with phase evidence and test effectiveness. For a single test artifact, test analysis, or release decision, select the corresponding specialist Skill.
+
 ## Workflow
 
 1. Read `prompts/tdd-quality-workflow.md`; establish the goal, behavior, project conventions, evidence, and authorized scope.
 2. When implementation and execution are authorized, work one observable behavior at a time through Red, Green, and Refactor; for a review, assess the supplied material.
 3. Check the actual result, revision, and provenance of each phase; evaluate business assertions, negative paths, mocks, and evidence of effectiveness.
 4. Apply optional quality gates when appropriate to the project and report phase states, evidence, exceptions, and residual risks.
+
+## Progressive Disclosure
+
+- Before producing output, read the [main prompt](prompts/tdd-quality-workflow.md) for status, evidence, and exception decisions.
+- Use the [evidence report template](output-templates/tdd-evidence-report.md) for a full report.
+- Use `evals/` to evaluate or modify this Skill; recommend other Skills by name without depending on their internal files.
+
+## Pre-delivery Checklist
+
+- [ ] Each phase state matches its evidence, test scope, and revision
+- [ ] Unknowns, non-execution, unexpected failures, and non-TDD exceptions are distinct
+- [ ] Test results, effectiveness risks, and actual gate decisions are separated
+- [ ] Next actions and residual risks stay within the evidence
+
+## Common Pitfalls
+
+- Environment errors, zero collected tests, and skipped tests do not establish the intended failure or a pass.
+- A first passing run after implementation cannot reconstruct an earlier Red record.
+- A passing test, static review, or external rating alone does not prove effectiveness or business acceptance.
 
 ## Raw SKILL.md
 
