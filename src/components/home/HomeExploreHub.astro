@@ -36,28 +36,31 @@ const isZh = locale === "zh-cn";
         </li>
       ))}
     </ul>
-    {productLinks.length > 0 && (
-      <section class="home-product-links" aria-labelledby="home-product-links-title">
-        <div class="home-product-links__heading">
-          <h3 id="home-product-links-title">{isZh ? "产品官网" : "Product sites"}</h3>
-          <span>{isZh ? "继续了解我们的 QA 工具" : "Explore the products behind the work"}</span>
-        </div>
-        <div class="home-product-links__list">
-          {productLinks.map((link) => (
-            <a class="home-product-link" href={link.href}>
-              {link.logo && <img class="home-product-link__logo" src={link.logo} alt="" width="48" height="48" loading="lazy" decoding="async" />}
-              <span class="home-product-link__copy">
-                <strong>{link.title}</strong>
-                <small>{link.desc}</small>
-              </span>
-              <span aria-hidden="true">→</span>
-            </a>
-          ))}
-        </div>
-      </section>
-    )}
   </div>
 </section>
+
+{productLinks.length > 0 && (
+  <section class="home-band home-band--muted home-product-sites" aria-labelledby="home-product-links-title">
+    <div class="home-inner">
+      <HomeSectionHeading
+        id="home-product-links-title"
+        title={isZh ? "产品官网" : "Product sites"}
+      />
+      <div class="home-product-links__list">
+        {productLinks.map((link) => (
+          <a class="home-product-link" href={link.href}>
+            {link.logo && <img class="home-product-link__logo" src={link.logo} alt="" width="48" height="48" loading="lazy" decoding="async" />}
+            <span class="home-product-link__copy">
+              <strong>{link.title}</strong>
+              <small>{link.desc}</small>
+            </span>
+            <span class="home-product-link__arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
 <style>
   .home-grid {
     list-style: none;
@@ -67,6 +70,11 @@ const isZh = locale === "zh-cn";
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
     text-align: start;
+  }
+
+  .home-explore-grid {
+    width: min(100%, 90rem);
+    margin-inline: auto;
   }
 
   .home-grid > li {
@@ -81,7 +89,7 @@ const isZh = locale === "zh-cn";
     display: flex;
     flex-direction: column;
     gap: 0;
-    min-height: 0;
+    min-height: clamp(14rem, 18vw, 18rem);
     height: 100%;
     padding: 1.25rem;
     border: 1px solid var(--color-border);
@@ -182,7 +190,7 @@ const isZh = locale === "zh-cn";
   @media (width < 900px) {
     .home-grid { margin-top: 20px; gap: 0.75rem; }
     .home-grid > li { width: 100%; }
-    .home-card { padding: 1.1rem; }
+    .home-card { min-height: 14rem; padding: 1.1rem; }
     .home-card__signal { font-size: 3.4rem; opacity: 0.09; }
   }
 
@@ -202,54 +210,41 @@ const isZh = locale === "zh-cn";
     }
   }
 
-  .home-product-links {
-    margin-block-start: var(--sp-l);
-    padding-block-start: var(--sp-m);
-    border-block-start: 1px solid var(--color-border);
-  }
-
-  .home-product-links__heading {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--sp-s);
-    margin-block-end: var(--sp-s);
-  }
-
-  .home-product-links__heading h3 {
-    margin: 0;
-    font-size: 1.05rem;
-  }
-
-  .home-product-links__heading span {
-    color: var(--color-text-secondary);
-    font-size: var(--text-sm);
-  }
-
   .home-product-links__list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
+    gap: 1.5rem;
+    width: min(100%, 90rem);
+    margin-inline: auto;
+    margin-block-start: 1.75rem;
   }
 
   .home-product-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 24px;
+    align-items: start;
     gap: 1rem;
-    padding: 0.95rem 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    min-height: 190px;
+    padding: 1.3rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
     color: inherit;
     text-decoration: none;
+    text-align: start;
     transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
   }
 
   .home-product-link:hover,
   .home-product-link:focus-visible {
-    border-color: var(--color-border-strong);
+    border-color: var(--color-theme);
     background: var(--color-theme-soft);
     transform: translateY(-1px);
+  }
+
+  .home-product-link:focus-visible {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 3px;
   }
 
   .home-product-link strong,
@@ -258,43 +253,66 @@ const isZh = locale === "zh-cn";
   }
 
   .home-product-link__logo {
-    flex: 0 0 48px;
     width: 48px;
     height: 48px;
     object-fit: contain;
   }
 
   .home-product-link__copy {
-    flex: 1;
+    display: grid;
+    gap: .55rem;
     min-width: 0;
   }
 
   .home-product-link strong {
     color: var(--color-main);
+    font-size: 1.15rem;
+    line-height: 1.4;
   }
 
   .home-product-link small {
-    margin-block-start: 0.25rem;
     color: var(--color-text-secondary);
-    font-size: var(--text-sm);
+    font-size: .92rem;
+    line-height: 1.65;
   }
 
-  .home-product-link > span:last-child {
+  .home-product-link__arrow {
+    align-self: center;
     color: var(--color-theme);
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    transition: transform var(--transition-fast);
+  }
+
+  .home-product-link:hover .home-product-link__arrow,
+  .home-product-link:focus-visible .home-product-link__arrow {
+    transform: translateX(3px);
   }
 
   @media (max-width: 640px) {
     .home-product-links__list {
       grid-template-columns: 1fr;
     }
-    .home-product-links__heading {
-      display: block;
+    .home-product-link {
+      grid-template-columns: 40px minmax(0, 1fr) 18px;
+      gap: .75rem;
+      min-height: 0;
+      padding: 1rem;
     }
-    .home-product-links__heading span {
-      display: block;
-      margin-block-start: 0.25rem;
+    .home-product-link__logo {
+      width: 40px;
+      height: 40px;
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-card,
+    .home-product-link,
+    .home-product-link__arrow { transition: none; }
+    .home-card:hover,
+    .home-card:focus-visible,
+    .home-product-link:hover,
+    .home-product-link:focus-visible,
+    .home-product-link:hover .home-product-link__arrow,
+    .home-product-link:focus-visible .home-product-link__arrow { transform: none; }
   }
 </style>

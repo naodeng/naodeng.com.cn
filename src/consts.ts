@@ -156,34 +156,56 @@ export const NAV_MORE: Multilingual = {
   "zh-cn": "更多",
 };
 
-/** 站外学习计划站点（30 天系列）。目前仅在中文站的导航「更多」与页脚展示 */
+/** 站外 30 天学习计划站点，供首页、导航与页脚展示 */
 export const LEARNING_SITES: ReadonlyArray<{
   key: string;
   label: { en: string; "zh-cn": string };
+  homeTitle: { en: string; "zh-cn": string };
+  description: { en: string; "zh-cn": string };
   url: string;
   icon: string;
 }> = [
   {
     key: "agent-learning",
     label: { en: "Agent Learning", "zh-cn": "Agent学习" },
+    homeTitle: { en: "AI Agent Learning", "zh-cn": "AI Agent 学习" },
+    description: {
+      en: "Build a practical understanding of agent fundamentals, tool use, and real-world applications, one stage at a time.",
+      "zh-cn": "围绕智能体基础、工具调用与应用实践，按阶段建立完整认知。",
+    },
     url: "https://ai-agent-30-day-learning-plan.inaodeng.com/",
     icon: "smart_toy",
   },
   {
     key: "english-learning",
     label: { en: "English Learning", "zh-cn": "英语学习" },
+    homeTitle: { en: "English Learning", "zh-cn": "英语学习" },
+    description: {
+      en: "Build reading, writing, and professional communication skills through steady daily practice.",
+      "zh-cn": "以稳定的每日练习累积阅读、写作与专业沟通能力。",
+    },
     url: "https://30-day-qa-english-learning-plan.inaodeng.com/",
     icon: "school",
   },
   {
     key: "playwright-learning",
     label: { en: "Playwright Learning", "zh-cn": "Playwright学习" },
+    homeTitle: { en: "Playwright Learning", "zh-cn": "Playwright学习" },
+    description: {
+      en: "Progress from writing and running basic tests to reliable suites, reporting, and CI practice.",
+      "zh-cn": "由基础测试编写、运行与报告逐步深入到稳定性和 CI 实践。",
+    },
     url: "https://30-day-qa-playwright-learning-plan.inaodeng.com/",
     icon: "science",
   },
   {
     key: "deepseek-learning",
     label: { en: "DeepSeek Learning Plan", "zh-cn": "DeepSeek 学习计划" },
+    homeTitle: { en: "DeepSeek Learning Plan", "zh-cn": "DeepSeek 学习计划" },
+    description: {
+      en: "Learn model capabilities, prompt design, and practical testing methods for AI applications.",
+      "zh-cn": "循序掌握模型能力、提示词设计与 AI 应用中的测试方法。",
+    },
     url: "https://30-day-qa-deepseek-learning-plan.inaodeng.com/",
     icon: "psychology",
   },

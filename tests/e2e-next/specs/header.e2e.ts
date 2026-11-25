@@ -6,6 +6,7 @@ for (const locale of ["en", "zh-cn"] as const) {
     await app.open(`/${locale}/`);
     await expect(browser.locator("header.l-header")).toBeVisible();
     await expect(browser.locator("header .site-logo, header .site-title-logo--students")).toBeVisible();
+    await expect(browser.locator(".site-brand-link")).toContainText(locale === "en" ? "Nao's Blog" : "软件测试同学");
     await expect(browser.locator("header nav")).toBeVisible();
     await expect(browser.locator(".site-slogan")).toBeHidden();
     await expect(browser.locator("header button[data-search-open]")).toBeVisible();
@@ -92,6 +93,7 @@ test("mobile header keeps the brand clear of the search and menu controls", asyn
   await app.open("/zh-cn/");
   await expect(browser.locator("header [data-nav-toggle]")).toBeVisible();
   await expect(browser.locator("header button[data-search-open]")).toBeVisible();
+  await expect(browser.locator("header .locale-target")).toBeHidden();
   await expect(browser.locator("header [data-site-nav]")).toBeHidden();
 
   const brandTools = await browser.evaluate(() => {
@@ -105,6 +107,55 @@ test("mobile header keeps the brand clear of the search and menu controls", asyn
   await browser.locator("header [data-nav-toggle]").click();
   await expect(browser.locator("header [data-site-nav]")).toBeVisible();
   await expect(browser.locator("header [data-nav-priority]")).toHaveCount(3);
+});
+
+test("header matches the Figma desktop shell in both locales and Chinese mobile brand", async ({ app, browser }) => {
+  await browser.setViewport({ width: 1440, height: 900 });
+
+  for (const locale of ["zh-cn", "en"] as const) {
+    await app.open(`/${locale}/`);
+    const desktop = await browser.evaluate(() => {
+      const header = document.querySelector("header.l-header")?.getBoundingClientRect();
+      const shell = document.querySelector(".header-shell")?.getBoundingClientRect();
+      return { headerHeight: header?.height, shellWidth: shell?.width };
+    });
+    expect(desktop.headerHeight).toBe(80);
+    expect(desktop.shellWidth).toBeCloseTo(1180, 0);
+    await expect(browser.locator(".site-brand-link")).toContainText(locale === "en" ? "Nao's Blog" : "软件测试同学");
+    const navigation = await browser.evaluate(() => ({
+      background: getComputedStyle(document.querySelector(".site-nav > ul")!).backgroundColor,
+      chevrons: Array.from(document.querySelectorAll(".nav-group-chevron"), (icon) => {
+        const bounds = icon.getBoundingClientRect();
+        return bounds.width > 0 && bounds.height > 0 && getComputedStyle(icon).visibility !== "hidden";
+      }),
+    }));
+    expect(navigation.background).toBe("rgba(0, 0, 0, 0)");
+    expect(navigation.chevrons).toEqual([true, true, true]);
+  }
+
+  for (const width of [2048, 3840]) {
+    await browser.setViewport({ width, height: 1000 });
+    const wideDesktop = await browser.evaluate(() => ({
+      shellWidth: document.querySelector(".header-shell")!.getBoundingClientRect().width,
+      brandFontSize: Number.parseFloat(getComputedStyle(document.querySelector(".site-brand-heading")!).fontSize),
+    }));
+    expect(wideDesktop.shellWidth).toBeGreaterThan(1180);
+    expect(wideDesktop.brandFontSize).toBeGreaterThanOrEqual(20);
+  }
+
+  for (const width of [390, 375]) {
+    await browser.setViewport({ width, height: 844 });
+    await app.open("/zh-cn/");
+    await expect(browser.locator("header .site-title-segment--secondary")).toBeHidden();
+    await expect(browser.locator("header .locale-target")).toBeHidden();
+    const mobileLayout = await browser.evaluate(() => ({
+      headerHeight: document.querySelector("header.l-header")!.getBoundingClientRect().height,
+      viewport: document.documentElement.clientWidth,
+      scroll: document.documentElement.scrollWidth,
+    }));
+    expect(mobileLayout.headerHeight).toBe(60);
+    expect(mobileLayout.scroll).toBeLessThanOrEqual(mobileLayout.viewport + 1);
+  }
 });
 
 test("editorial header uses a solid surface without blur", async ({ app, browser }) => {

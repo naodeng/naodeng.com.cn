@@ -45,6 +45,7 @@ const isProjectsSection = () => isSectionPath("/projects");
 const isResourcesSection = () => isSectionPath("/resources");
 const isSponsorSection = () => isSectionPath("/sponsor");
 const siteTitle = t(SITE_TITLE);
+const brandDisplayTitle = locale === "en" ? "Nao's Blog" : siteTitle;
 
 type NavItem = {
   key: string;
@@ -281,7 +282,7 @@ const mobilePriorityItems = [
                 </span>
               </span>
             ) : (
-              <span>{siteTitle}</span>
+              <span>{brandDisplayTitle}</span>
             )}
           </a>
         </p>
@@ -1786,7 +1787,7 @@ const mobilePriorityItems = [
 
   /* Astro Editorial override: neutral, content-first navigation. */
   .l-header { min-height: var(--header-height); background: var(--color-surface); border-bottom: 1px solid var(--color-border); box-shadow: none; backdrop-filter: none; }
-  .header-shell { min-height: var(--header-height); inline-size: min(var(--layout-max), calc(100% - (2 * var(--layout-gutter)))); max-inline-size: none; padding-inline: 0; }
+  .header-shell { min-height: var(--header-height); inline-size: min(var(--site-shell-max), calc(100% - (2 * var(--layout-gutter)))); max-inline-size: none; padding-inline: 0; gap: clamp(1rem, 1.2vw, 2rem); }
   .site-nav > ul { background: transparent; border: 0; box-shadow: none; }
   .site-nav > ul > li > a, .nav-group-trigger { border-radius: var(--radius-sm); color: var(--color-text-secondary); }
   .site-nav > ul > li > a:hover, .site-nav > ul > li > a.active, .nav-group-trigger:hover, .nav-group-trigger.active { color: var(--color-theme); background: color-mix(in srgb, var(--color-theme) 8%, var(--color-surface)); }
@@ -1795,6 +1796,13 @@ const mobilePriorityItems = [
   .btn-icon, .nav-tool :global(.locale-trigger) { border-color: var(--color-border); background: transparent; box-shadow: none; }
   @media (width < 1100px) { .l-header, .header-shell { min-height: 60px; } .site-nav > ul { background: var(--color-surface); border: 1px solid var(--color-border); } }
   @media (width < 480px) { .header-wechat-entry { display: none; } }
+  @media (min-width: 1750px) {
+    .header-shell { gap: clamp(1.5rem, 1.5vw, 2.5rem); }
+    .site-brand-heading { font-size: clamp(1.25rem, 1.15vw, 1.5rem); }
+    .site-title-logo { width: clamp(24px, 1.25vw, 32px); height: clamp(24px, 1.25vw, 32px); }
+    .site-nav > ul > li > a, .nav-group-trigger { padding-inline: clamp(.65rem, .55vw, 1rem); }
+    .header-utils { gap: clamp(.2rem, .45vw, .75rem); }
+  }
 
   /* SEO-friendly content navigation: descriptions stay in the HTML and remain readable when the menu opens. */
   .nav-submenu {
@@ -1992,6 +2000,162 @@ const mobilePriorityItems = [
     .mobile-priority-nav a:hover,
     .mobile-priority-nav a:focus-visible {
       background: var(--color-theme-soft-hover) !important;
+    }
+  }
+  /* Shared header aligned with the Figma desktop and mobile variants. */
+  .l-header {
+    min-block-size: var(--header-height);
+    background: var(--color-canvas) !important;
+    border-block-end: 1px solid var(--color-border) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .header-shell {
+    inline-size: min(1180px, calc(100% - (2 * var(--layout-gutter))));
+    max-inline-size: none;
+    block-size: var(--header-height);
+    min-block-size: var(--header-height);
+    padding-inline: 24px;
+    gap: 0;
+  }
+  .site-brand { flex: 0 0 auto; min-inline-size: 0; }
+  .site-brand .site-brand-heading {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 26px;
+  }
+  .site-brand-link { min-block-size: 44px; color: var(--color-text-primary); }
+  .site-title-cobrand { gap: 5px; }
+  .site-title-segment { gap: 5px; }
+  .site-title-logo { inline-size: 24px; block-size: 24px; }
+  .site-title-cobrand-x {
+    box-sizing: border-box;
+    min-inline-size: 14px;
+    inline-size: 14px;
+    block-size: 12px;
+    margin: 0 2px;
+    padding-inline: 2px;
+    color: var(--color-theme);
+    background: var(--color-surface-elevated);
+    border-color: var(--color-border-strong);
+    font-size: 10px;
+    line-height: 10px;
+  }
+  .site-nav {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-block-size: var(--header-height);
+  }
+  .site-nav > ul { justify-content: center; width: max-content; max-width: 100%; }
+  .site-nav > ul > li > a,
+  .nav-group-trigger {
+    min-block-size: 44px;
+    padding-inline: clamp(6px, 0.55vw, 12px);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: clamp(14px, 0.65vw, 17px);
+    font-weight: 500;
+    line-height: 23px;
+  }
+  .site-nav > ul > li > a:hover,
+  .site-nav > ul > li > a:focus-visible,
+  .site-nav > ul > li > a.active,
+  .nav-group-trigger:hover,
+  .nav-group-trigger:focus-visible,
+  .nav-group-trigger.active {
+    color: var(--color-theme) !important;
+    background: var(--color-theme-soft) !important;
+  }
+  .site-nav > ul > li > a.active::after,
+  .nav-group-trigger.active::after { display: none !important; }
+  .site-nav .nav-group-chevron {
+    display: inline-flex !important;
+    align-items: center;
+    margin-inline-start: 2px;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .header-utils { flex: 0 0 auto; gap: 8px; }
+  .header-utils .nav-tool :global(.locale-dropdown.compact .locale-trigger),
+  .header-utils .btn-icon {
+    box-sizing: border-box;
+    inline-size: 44px;
+    min-inline-size: 44px;
+    block-size: 44px;
+    min-block-size: 44px;
+    padding: 0;
+    border: 1px solid transparent !important;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .header-utils .nav-tool :global(.locale-dropdown.compact .locale-trigger) {
+    justify-content: center;
+    min-width: 44px;
+    font-size: 18px;
+  }
+  .header-utils :global(.locale-target) { display: none; }
+  .header-utils .nav-tool :global(.icon-lang) { color: currentColor; opacity: 1; }
+  .header-utils .btn-icon:hover,
+  .header-utils .btn-icon:focus-visible,
+  .header-utils .nav-tool :global(.locale-trigger:hover),
+  .header-utils .nav-tool :global(.locale-trigger:focus-visible) {
+    color: var(--color-theme);
+    background: var(--color-surface-muted) !important;
+  }
+  .header-utils .btn-icon:focus-visible,
+  .header-utils .nav-tool :global(.locale-trigger:focus-visible) {
+    outline: 2px solid var(--color-theme);
+    outline-offset: 2px;
+  }
+  .header-wechat-follow { color: #07c160 !important; }
+  :global(html[data-theme="dark"]) .l-header .theme-toggle__light { display: inline-flex !important; }
+  :global(html[data-theme="dark"]) .l-header .theme-toggle__dark { display: none !important; }
+
+  @media (min-width: 1750px) {
+    .header-shell {
+      inline-size: min(var(--site-shell-max), calc(100% - (2 * var(--layout-gutter))));
+      padding-inline: clamp(32px, 1.6vw, 40px);
+    }
+    .site-brand .site-brand-heading { font-size: clamp(1.25rem, 1.15vw, 1.5rem); }
+    .site-title-logo { inline-size: clamp(24px, 1.25vw, 32px); block-size: clamp(24px, 1.25vw, 32px); }
+    .site-nav > ul > li > a,
+    .nav-group-trigger { font-size: clamp(14px, 0.9vw, 20px); }
+    .header-utils .btn-icon .material-icons-sharp { font-size: clamp(20px, 1.1vw, 24px); }
+  }
+  @media (width < 1100px) {
+    .l-header { block-size: 60px; min-block-size: 60px; box-sizing: border-box; }
+    .header-shell {
+      inline-size: calc(100% - 30px);
+      block-size: 60px;
+      min-block-size: 60px;
+      padding-inline: 16px;
+    }
+    .site-brand { flex: 0 1 auto; min-inline-size: 0; }
+    .site-brand .site-brand-heading { font-size: 16px; line-height: 24px; }
+    .site-title-cobrand-x,
+    .site-title-segment--secondary { display: none; }
+    .site-title-logo--students { inline-size: 22px; block-size: 22px; }
+    .site-title-cobrand { gap: 0; }
+    .site-nav { min-block-size: 0; }
+    .site-nav .nav-group-chevron { display: inline-flex !important; }
+    .header-utils { gap: 4px; }
+    .header-wechat-entry { display: none; }
+  }
+  @media (width <= 380px) {
+    .header-shell { inline-size: calc(100% - 24px); padding-inline: 12px; }
+  }
+  @media (min-width: 1100px) {
+    .site-nav > ul {
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
     }
   }
 </style>
