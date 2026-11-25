@@ -2144,6 +2144,11 @@ const mobilePriorityItems = [
     .site-title-logo--students { inline-size: 22px; block-size: 22px; }
     .site-title-cobrand { gap: 0; }
     .site-nav { min-block-size: 0; }
+    .l-header[data-nav-open] .site-nav {
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline: 0;
+    }
     .site-nav .nav-group-chevron { display: inline-flex !important; }
     .header-utils { gap: 4px; }
     .header-wechat-entry { display: none; }

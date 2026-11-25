@@ -5,7 +5,7 @@ test.describe("中文首页微信公众号入口", () => {
     await page.goto("/zh-cn/", { waitUntil: "domcontentloaded" });
 
     const triggers = page.getByRole("button", { name: "关注公众号" });
-    await expect(triggers).toHaveCount(2);
+    await expect(triggers).toHaveCount(1);
     await expect(triggers.first()).toBeVisible();
 
     await triggers.first().click();
@@ -19,7 +19,7 @@ test.describe("中文首页微信公众号入口", () => {
     await page.keyboard.press("Escape");
     await expect(dialog).not.toBeVisible();
 
-    await triggers.last().click();
+    await triggers.first().click();
     await expect(dialog).toBeVisible();
     await dialog.getByRole("button", { name: "关闭二维码" }).click();
     await expect(dialog).not.toBeVisible();

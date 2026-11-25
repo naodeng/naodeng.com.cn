@@ -182,7 +182,7 @@ test.describe("home information architecture", () => {
     const desktopColumns = await page.locator(".task-grid").evaluate((element) =>
       getComputedStyle(element).gridTemplateColumns.split(" ").length,
     );
-    expect(desktopColumns).toBe(2);
+    expect(desktopColumns).toBe(3);
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.locator(".task-grid")).toHaveCSS("grid-template-columns", /.+/);

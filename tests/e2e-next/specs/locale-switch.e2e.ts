@@ -16,7 +16,7 @@ for (const { source, target, lang, equivalent } of localeCases) {
 
     const option = browser.locator(`header [data-locale-option][data-lang="${lang}"]`);
     await expect(option).toHaveAttribute("href", target);
-    await expect(browser.locator(`footer a[href="${target}"]`)).toBeVisible();
+    await expect(browser.locator("footer [data-locale-trigger]")).toHaveCount(0);
 
     const alternate = browser.locator(`head link[hreflang="${lang === "zh-cn" ? "zh-CN" : "en-US"}"]`);
     if (equivalent) {
@@ -40,3 +40,64 @@ test("locale switch updates the document language", async ({ app, browser }) => 
   await browser.locator('header [data-locale-option][data-lang="zh-cn"]').click();
   await expect(browser.locator("html")).toHaveAttribute("lang", /zh/);
 });
+
+test("root route falls back to Chinese when storage and browser language are unavailable", async ({ app, browser }) => {
+  await browser.addInitScript(() => {
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      get() {
+        throw new DOMException("Storage is blocked", "SecurityError");
+      },
+    });
+    Object.defineProperty(navigator, "language", {
+      configurable: true,
+      get() {
+        throw new Error("Browser language is unavailable");
+      },
+    });
+    Object.defineProperty(navigator, "languages", {
+      configurable: true,
+      get() {
+        throw new Error("Browser language list is unavailable");
+      },
+    });
+  });
+
+  await app.open("/");
+  await expect(browser).toHaveURL(/\/zh-cn\/$/);
+  await expect(browser.locator("main")).toBeVisible();
+});
+
+test("root route follows the English browser language when storage is blocked", async ({ app, browser }) => {
+  await browser.addInitScript(() => {
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      get() {
+        throw new DOMException("Storage is blocked", "SecurityError");
+      },
+    });
+    Object.defineProperty(navigator, "language", { configurable: true, value: "en-US" });
+    Object.defineProperty(navigator, "languages", { configurable: true, value: ["en-US"] });
+  });
+
+  await app.open("/");
+  await expect(browser).toHaveURL(/\/en\/$/);
+  await expect(browser.locator("main")).toBeVisible();
+});
+
+for (const item of [
+  { locale: "zh-cn", browserLanguage: "en-US" },
+  { locale: "en", browserLanguage: "zh-CN" },
+] as const) {
+  test(`${item.locale} page keeps manual locale switching without an automatic prompt`, async ({ app, browser }) => {
+    await browser.addInitScript((language) => {
+      Object.defineProperty(navigator, "language", { configurable: true, value: language });
+      Object.defineProperty(navigator, "languages", { configurable: true, value: [language] });
+    }, item.browserLanguage);
+
+    await app.open(`/${item.locale}/`);
+    await expect(browser.locator("#js-languageSuggest")).toHaveCount(0);
+    await expect(browser.locator("header [data-locale-trigger]")).toBeVisible();
+    await expect(browser.locator("footer [data-locale-trigger]")).toHaveCount(0);
+  });
+}

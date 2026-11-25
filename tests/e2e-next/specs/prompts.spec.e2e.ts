@@ -44,6 +44,20 @@ test("prompt explorer finds the exact task, updates its query, then filters by a
   await expect(browser.locator("[data-prompt-card]:not([hidden])").first()).toHaveAttribute("data-area", "api-integration");
 });
 
+test("prompt explorer recovers from a query with no matching prompts", async ({ app, browser }) => {
+  await app.open("/en/prompts/all/");
+  const search = browser.locator("#prompt-explorer-search");
+  await search.fill("zzzz-no-prompt-match");
+
+  await expect(browser.locator("#prompt-explorer-empty")).toBeVisible();
+  await expect(browser.locator("[data-prompt-card]:not([hidden])")).toHaveCount(0);
+
+  await browser.locator("#prompt-clear-filters").click();
+  await expect(search).toHaveValue("");
+  await expect(browser.locator("#prompt-explorer-empty")).toBeHidden();
+  expect(await browser.locator("[data-prompt-card]:not([hidden])").count()).toBeGreaterThan(0);
+});
+
 test("localized prompt detail exposes variants, source, and related prompts", async ({ app, browser, screen }) => {
   await app.open("/en/prompts/test-strategy/");
   await browser.evaluate(() => {

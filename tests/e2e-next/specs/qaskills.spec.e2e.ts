@@ -48,6 +48,13 @@ for (const item of [
   { locale: "en", useLabel: "Use now" },
 ] as const) {
   test(`${item.locale} QA Skill detail exposes source instructions and its install path`, async ({ app, browser, screen }) => {
+    await browser.addInitScript(() => {
+      const testWindow = window as Window & { __e2eClipboard?: string };
+      Object.defineProperty(navigator, "clipboard", {
+        configurable: true,
+        value: { writeText: async (text: string) => { testWindow.__e2eClipboard = text; } },
+      });
+    });
     await app.open(`/${item.locale}/qaskills/requirements-analysis/`);
 
     await expect(browser.locator(".skill-console")).toBeVisible();
@@ -60,7 +67,25 @@ for (const item of [
     await expect(browser).toHaveURL(/#quick-start$/);
     await expect(browser.locator("#quick-start")).toBeVisible();
     await expect(browser.locator("#quick-start h2")).toContainText(/快速开始|Quick Start/i);
-    await screen.getByRole("tab", { name: "SKILL.md" }).click();
+    const promptTab = browser.locator('[data-doc-tab="prompt"]');
+    const skillTab = screen.getByRole("tab", { name: "SKILL.md" });
+    await promptTab.press("ArrowRight");
+    await expect(skillTab).toBeFocused();
+    await expect(skillTab).toHaveAttribute("aria-selected", "true");
     await expect(browser.locator("[data-doc-panel='skill'] .skill-raw")).toContainText("name: requirements-analysis");
+    await skillTab.press("ArrowLeft");
+    await expect(promptTab).toBeFocused();
+    await expect(browser.locator("[data-doc-panel='prompt']")).toBeVisible();
+    await skillTab.click();
+    await expect(skillTab).toHaveAttribute("aria-selected", "true");
+    await promptTab.click();
+    await expect(promptTab).toHaveAttribute("aria-selected", "true");
+
+    const installCopy = browser.locator("#install-section [data-copy]");
+    const installCommand = await installCopy.getAttribute("data-copy");
+    expect(installCommand).toContain("npx skills add");
+    await installCopy.click();
+    await expect(installCopy).toHaveText(item.locale === "zh-cn" ? "已复制" : "Copied");
+    expect(await browser.evaluate(() => (window as Window & { __e2eClipboard?: string }).__e2eClipboard ?? "")).toBe(installCommand);
   });
 }

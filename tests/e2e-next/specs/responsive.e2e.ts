@@ -69,27 +69,35 @@ for (const locale of ["zh-cn", "en"] as const) {
 test("mobile navigation stays above its backdrop after scrolling", async ({ app, browser }) => {
   await browser.setViewport(mobile);
   await app.open("/zh-cn/");
-  await browser.evaluate(() => {
-    window.scrollTo(0, 600);
-    return null;
-  });
+  await browser.evaluate(() => window.scrollTo({ top: 600, behavior: "instant" }));
+  await expect.poll(() => browser.evaluate(() => window.scrollY)).toBe(600);
   await browser.locator("header [data-nav-toggle]").click();
+  await expect.poll(() => browser.evaluate(() =>
+    getComputedStyle(document.querySelector("[data-site-nav]")!).opacity,
+  )).toBe("1");
   const state = await browser.evaluate(() => {
     const nav = document.querySelector("[data-site-nav]");
     const backdrop = document.querySelector("[data-nav-backdrop]");
+    const header = document.querySelector("header.l-header");
     const link = nav?.querySelector("a");
-    if (!(nav instanceof HTMLElement) || !(backdrop instanceof HTMLElement) || !(link instanceof HTMLElement)) return null;
+    if (!(nav instanceof HTMLElement) || !(backdrop instanceof HTMLElement) || !(header instanceof HTMLElement) || !(link instanceof HTMLElement)) return null;
     const rect = link.getBoundingClientRect();
+    const navRect = nav.getBoundingClientRect();
+    const headerRect = header.getBoundingClientRect();
     const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
     const navZ = Number.parseInt(getComputedStyle(nav).zIndex, 10);
     const backdropZ = Number.parseInt(getComputedStyle(backdrop).zIndex, 10);
     return {
       navAboveBackdrop: Number.isFinite(navZ) && Number.isFinite(backdropZ) && navZ > backdropZ,
+      menuStartsBelowHeader: Math.abs(navRect.top - headerRect.bottom) <= 1,
+      linkStaysInViewport: rect.top >= headerRect.bottom && rect.bottom <= window.innerHeight,
       linkReceivesHit: Boolean(hit?.closest("[data-site-nav]")),
       background: getComputedStyle(nav).backgroundColor,
     };
   });
   expect(state).not.toBeNull();
+  expect(state!.menuStartsBelowHeader).toBe(true);
+  expect(state!.linkStaysInViewport).toBe(true);
   expect(state!.navAboveBackdrop).toBe(true);
   expect(state!.linkReceivesHit).toBe(true);
   expect(state!.background).not.toMatch(/rgba?\(\s*0\s*,\s*0\s*,\s*0\s*,\s*0\s*\)/);

@@ -53,12 +53,14 @@ for (const locale of ["en", "zh-cn"] as const) {
   });
 }
 
-test("Chinese footer remains divided into its five content groups", async ({ app, browser }) => {
+test("Chinese footer has its five navigation groups and the official-account QR group", async ({ app, browser }) => {
   await app.open("/zh-cn/");
-  await expect(browser.locator("footer [data-footer-group]")).toHaveCount(5);
+  await expect(browser.locator("footer [data-footer-group]")).toHaveCount(6);
   await expect(browser.locator("footer [data-footer-group='explore']")).toContainText("探索");
   await expect(browser.locator("footer [data-footer-group='knowledge']")).toContainText("知识库");
   await expect(browser.locator("footer [data-footer-group='tools']")).toContainText("工具与学习");
   await expect(browser.locator("footer [data-footer-group='site']")).toContainText("站点");
   await expect(browser.locator("footer [data-footer-group='products']")).toContainText("产品官网");
+  await expect(browser.locator("footer [data-footer-group='wechat'] [data-footer-qr]"))
+    .toHaveAttribute("alt", "软件测试同学微信公众号二维码");
 });

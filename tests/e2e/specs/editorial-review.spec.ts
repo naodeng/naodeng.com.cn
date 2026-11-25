@@ -14,7 +14,7 @@ for (const lang of ["en", "zh-cn"]) {
     const detailWidth = await page.locator(".detail-main").evaluate(el => el.getBoundingClientRect().width);
     expect(detailWidth).toBeLessThanOrEqual(layoutCap + 1);
     await page.goto(`/${lang}/`);
-    await expect(page.locator("footer .lang-label")).toHaveCSS("background-image", "none");
+    await expect(page.locator("footer [data-locale-trigger]")).toHaveCount(0);
     const trigger = page.locator("footer .wechat-follow-trigger");
     if (await trigger.count()) {
       await trigger.click();

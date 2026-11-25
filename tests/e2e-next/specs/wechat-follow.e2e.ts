@@ -4,7 +4,7 @@ import { expect } from "e2e";
 test("Chinese homepage opens and closes the official-account QR dialog", async ({ app, browser, screen }) => {
   await app.open("/zh-cn/");
   const triggers = screen.getByRole("button", { name: "关注公众号" });
-  await expect(triggers).toHaveCount(2);
+  await expect(triggers).toHaveCount(1);
 
   await triggers.first().click();
   const dialog = screen.getByRole("dialog", { name: "关注软件测试同学公众号" });
@@ -16,7 +16,7 @@ test("Chinese homepage opens and closes the official-account QR dialog", async (
   await browser.locator("body").press("Escape");
   await expect(dialog).toBeHidden();
 
-  await triggers.last().click();
+  await triggers.click();
   await expect(dialog).toBeVisible();
   await dialog.getByRole("button", { name: "关闭二维码" }).click();
   await expect(dialog).toBeHidden();

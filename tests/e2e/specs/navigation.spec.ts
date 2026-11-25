@@ -13,7 +13,7 @@ test.describe("语言切换使用有效的本地化地址", () => {
       await page.goto(source, { waitUntil: "domcontentloaded" });
       const option = page.locator(`header [data-locale-option][data-lang="${lang}"]`);
       await expect(option).toHaveAttribute("href", target);
-      await expect(page.locator(`footer a[href="${target}"]`)).toBeVisible();
+      await expect(page.locator("footer [data-locale-trigger]")).toHaveCount(0);
       const alternate = page.locator(`head link[hreflang="${lang === "zh-cn" ? "zh-CN" : "en-US"}"]`);
       if (equivalent) await expect(alternate).toHaveAttribute("href", `https://inaodeng.com${target}`);
       else await expect(alternate).toHaveCount(0);
