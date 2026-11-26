@@ -57,9 +57,10 @@ test("search result selection navigates to the result and Escape returns focus t
   const input = browser.locator("#search-input");
   await input.fill("API");
   const results = browser.locator(".search-result-item");
+  const selectedResult = results.nth(1);
+  await expect(selectedResult).toBeVisible();
   expect(await results.count()).toBeGreaterThan(1);
   const firstResult = results.nth(0);
-  const selectedResult = results.nth(1);
   const href = await selectedResult.getAttribute("href");
   expect(href).toBeTruthy();
   await input.press("ArrowDown");

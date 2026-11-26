@@ -104,6 +104,25 @@ test("mobile navigation stays above its backdrop after scrolling", async ({ app,
 });
 
 for (const viewport of [
+  { name: "phone", width: 430, height: 932 },
+  { name: "iPad portrait", width: 820, height: 1180 },
+]) {
+  test(`mobile navigation fills the available width on ${viewport.name}`, async ({ app, browser }) => {
+    await browser.setViewport({ width: viewport.width, height: viewport.height });
+    await app.open("/zh-cn/");
+    const menu = browser.locator("header [data-site-nav] > ul");
+    await browser.locator("header [data-nav-toggle]").click();
+    await expect(menu).toBeVisible();
+
+    const widths = await browser.evaluate(() => ({
+      nav: document.querySelector("header [data-site-nav]")!.getBoundingClientRect().width,
+      menu: document.querySelector("header [data-site-nav] > ul")!.getBoundingClientRect().width,
+    }));
+    expect(Math.abs(widths.nav - widths.menu)).toBeLessThanOrEqual(1);
+  });
+}
+
+for (const viewport of [
   { name: "tablet", width: 768, height: 1024 },
   { name: "laptop", width: 1024, height: 768 },
   { name: "desktop", width: 1440, height: 900 },

@@ -84,8 +84,24 @@ for (const item of [
     const installCopy = browser.locator("#install-section [data-copy]");
     const installCommand = await installCopy.getAttribute("data-copy");
     expect(installCommand).toContain("npx skills add");
+    await browser.evaluate((copiedLabel) => {
+      const testWindow = window as Window & {
+        __e2eCopyFeedbackSeen?: boolean;
+        __e2eCopyFeedbackObserver?: MutationObserver;
+      };
+      const button = document.querySelector("#install-section [data-copy]");
+      if (!(button instanceof HTMLElement)) throw new Error("Install copy button was not found");
+      testWindow.__e2eCopyFeedbackSeen = false;
+      testWindow.__e2eCopyFeedbackObserver = new MutationObserver(() => {
+        if (button.textContent?.trim() === copiedLabel) {
+          testWindow.__e2eCopyFeedbackSeen = true;
+          testWindow.__e2eCopyFeedbackObserver?.disconnect();
+        }
+      });
+      testWindow.__e2eCopyFeedbackObserver.observe(button, { childList: true, characterData: true, subtree: true });
+    }, item.locale === "zh-cn" ? "已复制" : "Copied");
     await installCopy.click();
-    await expect(installCopy).toHaveText(item.locale === "zh-cn" ? "已复制" : "Copied");
+    await expect.poll(() => browser.evaluate(() => (window as Window & { __e2eCopyFeedbackSeen?: boolean }).__e2eCopyFeedbackSeen === true)).toBe(true);
     expect(await browser.evaluate(() => (window as Window & { __e2eClipboard?: string }).__e2eClipboard ?? "")).toBe(installCommand);
   });
 }
