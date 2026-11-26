@@ -101,3 +101,17 @@ for (const item of [
     await expect(browser.locator("footer [data-locale-trigger]")).toHaveCount(0);
   });
 }
+
+for (const item of [
+  { source: "/en/AIWiki/ai-agent/", target: "/zh-cn/AIWiki/ai-agent/", fallback: "/zh-cn/AIWiki/", lang: "zh-cn" },
+  { source: "/zh-cn/AIWiki/ai-agent/", target: "/en/AIWiki/ai-agent/", fallback: "/en/AIWiki/", lang: "en" },
+] as const) {
+  test(`${item.source} falls back to the section index when the paired article cannot load`, async ({ app, browser }) => {
+    await app.open(item.source);
+    await browser.route(`**${item.target}`, (route) => route.abort());
+    await browser.locator("header [data-locale-trigger]").click();
+    await browser.locator(`header [data-locale-option][data-lang="${item.lang}"]`).click();
+    await expect(browser).toHaveURL(new RegExp(`${item.fallback.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`));
+    await expect(browser.locator("main h1").first()).toBeVisible();
+  });
+}

@@ -20,43 +20,54 @@ for (const item of [
   });
 }
 
-test("prompt explorer finds the exact task, updates its query, then filters by area", async ({ app, browser }) => {
-  await app.open("/en/prompts/all/");
-  const search = browser.locator("#prompt-explorer-search");
-  await expect(search).toBeVisible();
-  expect(await browser.locator("[data-prompt-card]").count()).toBeGreaterThan(0);
+for (const item of [
+  { locale: "en", query: "performance result analysis", title: /Performance Result Analysis/i },
+  { locale: "zh-cn", query: "性能结果分析", title: /性能结果分析/ },
+] as const) {
+  test(`${item.locale} prompt explorer searches the matching prompt, then filters by area`, async ({ app, browser }) => {
+    await app.open(`/${item.locale}/prompts/all/`);
+    const search = browser.locator("#prompt-explorer-search");
+    await expect(search).toBeVisible();
+    expect(await browser.locator("[data-prompt-card]").count()).toBeGreaterThan(0);
 
-  await search.fill("performance result analysis");
-  await expect(browser.locator("[data-prompt-card]:not([hidden])")).toHaveCount(1);
-  await expect(browser.locator("[data-prompt-card]:not([hidden]) h2")).toContainText("Performance Result Analysis");
-  await expect(browser).toHaveURL(/q=performance\+result\+analysis|q=performance%20result%20analysis/);
+    await search.fill(item.query);
+    await expect(browser.locator("[data-prompt-card]:not([hidden])")).toHaveCount(1);
+    await expect(browser.locator("[data-prompt-card]:not([hidden]) h2")).toContainText(item.title);
+    if (item.locale === "en") {
+      await expect(browser).toHaveURL(/q=performance(?:\+|%20)result(?:\+|%20)analysis/);
+    } else {
+      await expect(browser).toHaveURL(new RegExp(`q=${encodeURIComponent(item.query)}`));
+    }
 
-  await browser.locator("#prompt-clear-filters").click();
-  const areaFilter = browser.locator("#prompt-area-filter");
-  const apiArea = await browser.evaluate(() => {
-    const select = document.querySelector<HTMLSelectElement>("#prompt-area-filter");
-    return Array.from(select?.options ?? []).find((option) => /api|接口/i.test(option.textContent ?? ""))?.value ?? null;
+    await browser.locator("#prompt-clear-filters").click();
+    const areaFilter = browser.locator("#prompt-area-filter");
+    const apiArea = await browser.evaluate(() => {
+      const select = document.querySelector<HTMLSelectElement>("#prompt-area-filter");
+      return Array.from(select?.options ?? []).find((option) => /api|接口/i.test(option.textContent ?? ""))?.value ?? null;
+    });
+    expect(apiArea).toBeTruthy();
+    await areaFilter.selectOption({ value: apiArea! });
+    await expect(browser).toHaveURL(/area=api-integration/);
+    expect(await browser.locator("[data-prompt-card]:not([hidden])").count()).toBeGreaterThan(1);
+    await expect(browser.locator("[data-prompt-card]:not([hidden])").first()).toHaveAttribute("data-area", "api-integration");
   });
-  expect(apiArea).toBeTruthy();
-  await areaFilter.selectOption({ value: apiArea! });
-  await expect(browser).toHaveURL(/area=api-integration/);
-  expect(await browser.locator("[data-prompt-card]:not([hidden])").count()).toBeGreaterThan(1);
-  await expect(browser.locator("[data-prompt-card]:not([hidden])").first()).toHaveAttribute("data-area", "api-integration");
-});
+}
 
-test("prompt explorer recovers from a query with no matching prompts", async ({ app, browser }) => {
-  await app.open("/en/prompts/all/");
-  const search = browser.locator("#prompt-explorer-search");
-  await search.fill("zzzz-no-prompt-match");
+for (const locale of ["en", "zh-cn"] as const) {
+  test(`${locale} prompt explorer recovers from a query with no matching prompts`, async ({ app, browser }) => {
+    await app.open(`/${locale}/prompts/all/`);
+    const search = browser.locator("#prompt-explorer-search");
+    await search.fill("zzzz-no-prompt-match");
 
-  await expect(browser.locator("#prompt-explorer-empty")).toBeVisible();
-  await expect(browser.locator("[data-prompt-card]:not([hidden])")).toHaveCount(0);
+    await expect(browser.locator("#prompt-explorer-empty")).toBeVisible();
+    await expect(browser.locator("[data-prompt-card]:not([hidden])")).toHaveCount(0);
 
-  await browser.locator("#prompt-clear-filters").click();
-  await expect(search).toHaveValue("");
-  await expect(browser.locator("#prompt-explorer-empty")).toBeHidden();
-  expect(await browser.locator("[data-prompt-card]:not([hidden])").count()).toBeGreaterThan(0);
-});
+    await browser.locator("#prompt-clear-filters").click();
+    await expect(search).toHaveValue("");
+    await expect(browser.locator("#prompt-explorer-empty")).toBeHidden();
+    expect(await browser.locator("[data-prompt-card]:not([hidden])").count()).toBeGreaterThan(0);
+  });
+}
 
 test("mobile prompt quick searches are reachable and preserve the selected query", async ({ app, browser }) => {
   await browser.setViewport({ width: 390, height: 844 });
@@ -136,21 +147,36 @@ test("localized prompt detail exposes variants, source, and related prompts", as
 });
 
 for (const locale of ["en", "zh-cn"] as const) {
-  test(`${locale} prompt detail TOC supports keyboard navigation on mobile`, async ({ app, browser }) => {
-    await browser.emulateMedia({ reducedMotion: "reduce" });
-    await browser.setViewport({ width: 390, height: 844 });
-    await app.open(`/${locale}/prompts/test-case-writing/`);
+  for (const slug of ["test-case-writing", "workflows/daily"] as const) {
+    test(`${locale} ${slug} prompt TOC supports keyboard navigation on mobile`, async ({ app, browser }) => {
+      await browser.emulateMedia({ reducedMotion: "reduce" });
+      await browser.setViewport({ width: 390, height: 844 });
+      await app.open(`/${locale}/prompts/${slug}/`);
 
-    const toc = browser.locator(".toc-details-mobile");
-    await expect(toc).toBeVisible();
-    await expect(toc).not.toHaveAttribute("open", "");
-    const summary = browser.locator(".toc-details-mobile summary");
-    await summary.press("Enter");
-    await expect(toc).toHaveAttribute("open", "");
-    const link = browser.locator(".toc-details-mobile a").nth(1);
-    const href = await link.getAttribute("href");
-    await link.press("Enter");
-    expect(await browser.url()).toBe(new URL(href!, await browser.url()).href);
-    await expect(toc).not.toHaveAttribute("open", "");
-  });
+      const toc = browser.locator(".toc-details-mobile");
+      await expect(toc).toBeVisible();
+      await expect(toc).not.toHaveAttribute("open", "");
+      const layout = await browser.evaluate(() => {
+        const tocBounds = document.querySelector(".toc-details-mobile")!.getBoundingClientRect();
+        const navigationBounds = document.querySelector(".prompt-detail-sidebar, .workflow-sidebar-left")!.getBoundingClientRect();
+        return { tocTop: tocBounds.top, navigationBottom: navigationBounds.bottom };
+      });
+      expect(layout.tocTop).toBeGreaterThanOrEqual(layout.navigationBottom);
+      const summary = browser.locator(".toc-details-mobile summary");
+      await summary.press("Enter");
+      await expect(toc).toHaveAttribute("open", "");
+      const link = browser.locator(".toc-details-mobile a").nth(1);
+      const href = await link.getAttribute("href");
+      await link.press("Enter");
+      expect(decodeURIComponent(new URL(await browser.url()).hash)).toBe(href);
+      const topOffset = await browser.evaluate((fragment) => {
+        const target = document.getElementById(decodeURIComponent(fragment!.slice(1)));
+        const header = document.querySelector(".l-header")?.getBoundingClientRect().bottom ?? 0;
+        return (target?.getBoundingClientRect().top ?? -1) - header;
+      }, href);
+      expect(topOffset).toBeGreaterThanOrEqual(-1);
+      const widths = await browser.evaluate(() => ({ client: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth }));
+      expect(widths.scroll).toBeLessThanOrEqual(widths.client + 1);
+    });
+  }
 }

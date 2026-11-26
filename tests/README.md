@@ -30,17 +30,20 @@ npm test
 # Unit tests only
 npm run test:unit
 
-# E2E tests against the built preview (starts or reuses localhost:4321)
+# Build the current site and run E2E against its preview
 npm run test:e2e
 
-# Build the site, then run E2E tests
+# Run against an already-built site (CI uses this after the build step)
+npm run test:e2e:run
+
+# Explicit build-then-test alias
 npm run test:e2e:build
 
 # Alias used by CI and repository guidance
 npm run test:e2e:all
 ```
 
-Set `E2E_BASE_URL` to test another site.
+Set `E2E_BASE_URL` to test another site. `PLAYWRIGHT_BASE_URL` remains supported as a compatibility alias.
 
 The old Playwright Test E2E suite and its runner config have been retired after behavior review. The `playwright` package remains only for the optional screenshot sampling utility; install its Chromium browser with `npx playwright install chromium` before running `npm run visual:sampling`. This utility is not part of the E2E suite or CI gate.
 

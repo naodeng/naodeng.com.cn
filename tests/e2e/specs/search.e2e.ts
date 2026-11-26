@@ -50,32 +50,34 @@ for (const { locale, query, searchName } of locales) {
   });
 }
 
-test("search result selection navigates to the result and Escape returns focus to the trigger", async ({ app, browser }) => {
-  await app.open("/zh-cn/");
-  const trigger = browser.locator("header button[data-search-open]");
-  await trigger.click();
-  const input = browser.locator("#search-input");
-  await input.fill("API");
-  const results = browser.locator(".search-result-item");
-  const selectedResult = results.nth(1);
-  await expect(selectedResult).toBeVisible();
-  expect(await results.count()).toBeGreaterThan(1);
-  const firstResult = results.nth(0);
-  const href = await selectedResult.getAttribute("href");
-  expect(href).toBeTruthy();
-  await input.press("ArrowDown");
-  await expect(firstResult).toBeFocused();
-  await browser.keyboard.press("ArrowDown");
-  await expect(selectedResult).toBeFocused();
-  await expect(selectedResult).toHaveAttribute("aria-selected", "true");
-  await browser.keyboard.press("Enter");
-  const destination = new URL(href!, await browser.url()).href;
-  await browser.waitForURL(destination);
-  expect(await browser.url()).toBe(destination);
+for (const locale of ["zh-cn", "en"] as const) {
+  test(`${locale} search result selection navigates and Escape returns focus to the trigger`, async ({ app, browser }) => {
+    await app.open(`/${locale}/`);
+    const trigger = browser.locator("header button[data-search-open]");
+    await trigger.click();
+    const input = browser.locator("#search-input");
+    await input.fill("API");
+    const results = browser.locator(".search-result-item");
+    const selectedResult = results.nth(1);
+    await expect(selectedResult).toBeVisible();
+    expect(await results.count()).toBeGreaterThan(1);
+    const firstResult = results.nth(0);
+    const href = await selectedResult.getAttribute("href");
+    expect(href).toBeTruthy();
+    await input.press("ArrowDown");
+    await expect(firstResult).toBeFocused();
+    await browser.keyboard.press("ArrowDown");
+    await expect(selectedResult).toBeFocused();
+    await expect(selectedResult).toHaveAttribute("aria-selected", "true");
+    await browser.keyboard.press("Enter");
+    const destination = new URL(href!, await browser.url()).href;
+    await browser.waitForURL(destination);
+    expect(await browser.url()).toBe(destination);
 
-  await app.open("/zh-cn/");
-  await trigger.click();
-  await browser.locator("#search-input").press("Escape");
-  await expect(browser.locator("#search-dialog")).toBeHidden();
-  await expect(trigger).toBeFocused();
-});
+    await app.open(`/${locale}/`);
+    await trigger.click();
+    await browser.locator("#search-input").press("Escape");
+    await expect(browser.locator("#search-dialog")).toBeHidden();
+    await expect(trigger).toBeFocused();
+  });
+}

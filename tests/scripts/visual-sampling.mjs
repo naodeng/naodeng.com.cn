@@ -1,10 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 
 const baseURL = process.env.E2E_BASE_URL || "http://127.0.0.1:4321";
 const stamp = new Date().toISOString().slice(0, 10);
-const outDir = path.resolve(process.cwd(), `docs/temporary/seo/visual-regression-${stamp}`);
+const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const outDir = path.join(repositoryRoot, `docs/temporary/seo/visual-regression-${stamp}`);
 fs.mkdirSync(outDir, { recursive: true });
 
 const routes = [
@@ -50,7 +52,7 @@ for (const route of routes) {
 
   rows.push({
     route,
-    screenshot: path.relative(process.cwd(), screenshotPath).replaceAll("\\", "/"),
+    screenshot: path.relative(repositoryRoot, screenshotPath).replaceAll("\\", "/"),
     ...checks,
   });
 }

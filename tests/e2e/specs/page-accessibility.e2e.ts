@@ -18,8 +18,8 @@ async function openAndExpectStatus(
 
 for (const locale of locales) {
   for (const path of [...mainPaths, ...extraPaths]) {
-    test(`${locale}${path} renders a main landmark and page heading`, async ({ app, screen }) => {
-      await app.open(`/${locale}${path}`);
+    test(`${locale}${path} returns HTTP 200 and renders a main landmark and page heading`, async ({ app, browser, screen }) => {
+      await openAndExpectStatus(app, browser, `/${locale}${path}`);
       await expect(screen.getByRole("main")).toBeVisible();
       await expect(screen.getByRole("heading", { level: 1 })).toBeVisible();
     });
@@ -31,7 +31,7 @@ for (const locale of locales) {
     await expect(post).toBeVisible();
     const href = await post.getAttribute("href");
     expect(href).toBeTruthy();
-    await app.open(String(href));
+    await openAndExpectStatus(app, browser, String(href));
     await expect(screen.getByRole("heading", { level: 1 })).toBeVisible();
   });
 
@@ -55,8 +55,8 @@ for (const locale of locales) {
     await expect(screen.getByRole("heading", { level: 1 })).toBeVisible();
   });
 
-  test(`${locale} blog page 2 is reachable`, async ({ app, screen }) => {
-    await app.open(`/${locale}/blog/page/2/`);
+  test(`${locale} blog page 2 is reachable`, async ({ app, browser, screen }) => {
+    await openAndExpectStatus(app, browser, `/${locale}/blog/page/2/`);
     await expect(screen.getByRole("main")).toBeVisible();
     await expect(screen.getByRole("heading", { level: 1 })).toBeVisible();
   });
@@ -66,6 +66,29 @@ for (const locale of locales) {
     await openAndExpectStatus(app, browser, `/${locale}/sitemap`);
   });
 }
+
+test("Chinese series and tag archive pagination stays available on both pages", async ({ app, browser }) => {
+  const routes = [
+    "/zh-cn/series/Awesome%20QA%20Skills%20%E5%AE%9E%E6%88%98/",
+    "/zh-cn/tags/Agent%20Skills/",
+  ];
+  for (const path of routes) {
+    await app.open(path);
+    const firstPage = await browser.evaluate(() => ({
+      cards: document.querySelectorAll("main article.post-card").length,
+      next: document.querySelector<HTMLAnchorElement>("a.pagination-next")?.getAttribute("href"),
+    }));
+    expect(firstPage.cards).toBe(12);
+    expect(firstPage.next).toMatch(/\/page\/2\/$/);
+    await app.open(`${path}page/2/`);
+    await expect(browser.locator("main article.post-card")).toHaveCount(12);
+  }
+});
+
+test("Chinese CI-CD tag keeps its canonical route", async ({ app, browser, screen }) => {
+  await openAndExpectStatus(app, browser, "/zh-cn/tags/CI-CD/");
+  await expect(browser.locator("main h1")).toContainText("#CI-CD");
+});
 
 test("root route resolves to a localized home page", async ({ app, browser, screen }) => {
   await app.open("/");

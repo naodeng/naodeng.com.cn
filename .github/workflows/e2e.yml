@@ -62,7 +62,7 @@ jobs:
         working-directory: tests
 
       - name: Run E2E tests
-        run: npm run test:e2e:all
+        run: npm run test:e2e:run
         working-directory: tests
         env:
           CI: true

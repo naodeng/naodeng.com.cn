@@ -94,3 +94,44 @@ for (const item of [
     await expect(browser.locator(".guild-content")).toContainText("Playwright MCP");
   });
 }
+
+for (const locale of ["zh-cn", "en"] as const) {
+  test(`${locale} Postman directory exposes its demo starter repository`, async ({ app, browser }) => {
+    await app.open(`/${locale}/guild/api-testing/postman/`);
+    const demoLink = browser.locator(".fw-link--primary");
+    await expect(demoLink).toBeVisible();
+    await expect(demoLink).toHaveAttribute("href", "https://github.com/Automation-Test-Starter/Postman-API-Test-Starter");
+    await expect(demoLink).toHaveAttribute("target", "_blank");
+    await expect(demoLink).toHaveAttribute("rel", /noopener/);
+  });
+
+  for (const framework of [
+    { category: "ui-testing", slug: "playwright", count: 6 },
+    { category: "ui-testing", slug: "selenium", count: 5 },
+    { category: "ui-testing", slug: "cypress", count: 5 },
+    { category: "performance-testing", slug: "jmeter", count: 5 },
+  ] as const) {
+    test(`${locale} ${framework.slug} directory count matches its article list and first tutorial opens`, async ({ app, browser }) => {
+      const frameworkPath = `/${locale}/guild/${framework.category}/${framework.slug}/`;
+      await app.open(frameworkPath);
+      const stat = browser.locator(".fw-stat__value").first();
+      const count = Number((await stat.textContent())?.trim());
+      expect(count).toBe(framework.count);
+      const articles = browser.locator("#learning-path .article-card");
+      await expect(articles).toHaveCount(count);
+      const firstArticle = articles.first();
+      const href = await firstArticle.getAttribute("href");
+      expect(href).toMatch(new RegExp(`^/${locale}/guild/${framework.category}/${framework.slug}/.+/$`));
+      await firstArticle.click();
+      await expect(browser).toHaveURL(new RegExp(`/${locale}/guild/${framework.category}/${framework.slug}/.+/$`));
+      await expect(browser.locator(".guild-content")).toBeVisible();
+      await expect(browser.locator(".guild-content")).not.toContainText(/\bDemo\b/);
+
+      for (const directoryPath of [`/${locale}/guild/`, `/${locale}/guild/${framework.category}/`]) {
+        await app.open(directoryPath);
+        const directoryCount = await browser.locator(`.fw-card[href="${frameworkPath}"] .fw-card__count`).textContent();
+        expect(Number(directoryCount?.match(/\d+/)?.[0])).toBe(count);
+      }
+    });
+  }
+}

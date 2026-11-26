@@ -30,17 +30,20 @@ npm test
 # 仅运行单元测试
 npm run test:unit
 
-# 在已构建的预览站点上运行 E2E（自动启动或复用 localhost:4321）
+# 构建最新站点，然后在预览服务上运行 E2E
 npm run test:e2e
 
-# 先构建站点，再运行 E2E
+# 对已有构建运行 E2E（CI 在构建步骤后使用）
+npm run test:e2e:run
+
+# 显式构建后测试的别名
 npm run test:e2e:build
 
 # CI 和仓库指南使用的命令别名
 npm run test:e2e:all
 ```
 
-设置 `E2E_BASE_URL` 可将测试指向其他站点。
+设置 `E2E_BASE_URL` 可将测试指向其他站点；为兼容旧流程也支持 `PLAYWRIGHT_BASE_URL`。
 
 旧 Playwright Test E2E 测试和运行配置已在行为复核后退役。`playwright` 包仅为可选截图抽样工具保留；运行 `npm run visual:sampling` 前，需用 `npx playwright install chromium` 安装其 Chromium 浏览器。这个工具不属于 E2E 套件，也不作为 CI 门禁。
 

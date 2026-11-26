@@ -202,6 +202,57 @@ test("QA Skills lifecycle filters remain readable and reachable on mobile", asyn
   }
 });
 
+for (const locale of ["en", "zh-cn"] as const) {
+  for (const slug of ["negative-scenario-discovery", "manual-testing"] as const) {
+    test(`${locale}/${slug} keeps long skill steps within a phone viewport`, async ({ app, browser }) => {
+      await browser.setViewport({ width: 1440, height: 900 });
+      await app.open(`/${locale}/qaskills/${slug}/`);
+      await browser.setViewport({ width: 390, height: 900 });
+      expect(await browser.locator(".how-it-works li").count()).toBeGreaterThan(0);
+      await expect.poll(() => browser.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+
+      if (locale === "en" && slug === "manual-testing") {
+        const lines = await browser.evaluate(() => {
+          const heading = document.querySelector(".console-hero h1");
+          if (!heading) return [];
+          const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+          let node: Node | null;
+          while ((node = walker.nextNode())) {
+            const start = node.textContent!.indexOf("Exploratory");
+            if (start < 0) continue;
+            return Array.from("Exploratory", (_, index) => {
+              const range = document.createRange();
+              range.setStart(node!, start + index);
+              range.setEnd(node!, start + index + 1);
+              return Math.round(range.getBoundingClientRect().top);
+            });
+          }
+          return [];
+        });
+        expect(lines).toHaveLength("Exploratory".length);
+        expect(new Set(lines).size).toBe(1);
+      }
+    });
+  }
+
+  test(`${locale} skill installation controls and command stay usable on mobile`, async ({ app, browser }) => {
+    await browser.emulateMedia({ reducedMotion: "reduce" });
+    await browser.setViewport({ width: 390, height: 844 });
+    await app.open(`/${locale}/qaskills/requirements-analysis/`);
+    for (const selector of [".console-button", ".console-source-link", ".elevator-link", ".quick-install-top button", ".quick-doc-top button"]) {
+      const heights = await browser.evaluate((query) =>
+        Array.from(document.querySelectorAll(query), (element) => element.getBoundingClientRect().height), selector);
+      expect(heights.length, `${selector} exists`).toBeGreaterThan(0);
+      expect(Math.min(...heights), selector).toBeGreaterThanOrEqual(44);
+    }
+    const width = await browser.evaluate(() => {
+      const element = document.querySelector(".console-hero-command pre")!;
+      return { scroll: element.scrollWidth, client: element.clientWidth };
+    });
+    expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  });
+}
+
 for (const item of [
   { locale: "zh-cn", slug: "requirements-analysis" },
   { locale: "en", slug: "api-testing" },

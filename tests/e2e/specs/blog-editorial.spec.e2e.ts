@@ -51,6 +51,48 @@ for (const locale of ["en", "zh-cn"] as const) {
     await expect(browser).toHaveURL(new RegExp(`/${locale}/copyright/$`));
   });
 
+  test(`${locale} article without sections stays aligned and readable on wide screens`, async ({ app, browser, screen }) => {
+    const route = `/${locale}/blog/others/article-plagiarism-statement/`;
+    await browser.setViewport({ width: 1024, height: 900 });
+    await app.open(route);
+    await expect(browser.locator(".article-sidebar")).toHaveCount(0);
+    const layout = await browser.evaluate(() => ({
+      title: document.querySelector("main h1")!.getBoundingClientRect().left,
+      prose: document.querySelector(".prose")!.getBoundingClientRect().left,
+      width: document.querySelector(".prose")!.getBoundingClientRect().width,
+    }));
+    expect(Math.abs(layout.title - layout.prose)).toBeLessThanOrEqual(1);
+    expect(layout.width).toBeGreaterThanOrEqual(900);
+    expect(layout.width).toBeLessThanOrEqual(1024);
+
+    await browser.setViewport({ width: 2560, height: 1440 });
+    const discovery = screen.getByRole("complementary", {
+      name: locale === "zh-cn" ? "文章发现" : "Article discovery",
+    });
+    await expect(discovery.getByRole("heading", { name: locale === "zh-cn" ? "最近博文" : "Recent articles" })).toBeVisible();
+    const wideLayout = await browser.evaluate(() => {
+      const discovery = document.querySelector(".article-discovery")!.getBoundingClientRect();
+      const body = document.querySelector(".article-body")!.getBoundingClientRect();
+      const title = document.querySelector(".article-title-header")!.getBoundingClientRect();
+      const prose = document.querySelector(".prose")!.getBoundingClientRect();
+      return {
+        discoveryWidth: discovery.width,
+        discoveryRight: discovery.right,
+        bodyLeft: body.left,
+        bodyWidth: body.width,
+        titleLeft: title.left,
+        proseLeft: prose.left,
+        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+      };
+    });
+    expect(wideLayout.discoveryWidth).toBeGreaterThanOrEqual(240);
+    expect(wideLayout.discoveryRight + 24).toBeLessThanOrEqual(wideLayout.bodyLeft);
+    expect(wideLayout.bodyWidth).toBeGreaterThan(1200);
+    expect(Math.abs(wideLayout.titleLeft - wideLayout.bodyLeft)).toBeLessThanOrEqual(1);
+    expect(Math.abs(wideLayout.proseLeft - wideLayout.bodyLeft)).toBeLessThanOrEqual(1);
+    expect(wideLayout.overflow).toBe(false);
+  });
+
   for (const theme of ["light", "dark"] as const) {
     test(`${locale} comments update after the ${theme} theme changes`, async ({ app, browser }) => {
       await browser.emulateMedia({ colorScheme: theme === "light" ? "dark" : "light" });

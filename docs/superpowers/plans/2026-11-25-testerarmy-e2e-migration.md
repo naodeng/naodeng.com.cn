@@ -119,7 +119,7 @@ Existing new-suite viewport checks already exercise the home, header, and footer
 
 - [x] **Step 1: Update scripts and bilingual docs to reflect the single TesterArmy suite and optional Playwright-based screenshot utility.**
 - [x] **Step 2: Run unit tests, the full TesterArmy E2E suite, build, and `git diff --check`** — See the 2026-11-26 checkpoint below.
-- [ ] **Step 3: Review the complete diff and confirm no legacy behavior is removed without replacement evidence.**
+- [x] **Step 3: Review the complete diff and confirm no legacy behavior is removed without replacement evidence.**
 - [ ] **Step 4: Commit and push `develop`, then update existing PR #157 and verify its CI**
 
 ## Progress checkpoint — 2026-11-25 (historical; superseded)
@@ -154,4 +154,16 @@ Local verification on the current changes:
 - `git diff --check`: PASS.
 - Phone (430×932) and iPad (820×1180) menu previews were visually checked; labels are legible at 16px on an opaque panel and links remain navigable.
 
-Fresh whole-branch review, commit/push, and PR #157 CI verification are still pending; do not treat local evidence as remote CI evidence.
+At this checkpoint, fresh whole-branch review and PR #157 CI were still pending. The final verification and remote status will be recorded below.
+
+## Final local verification checkpoint — 2026-11-26
+
+This supersedes the interim local counts above. The full diff was checked against the 46-domain behavior inventory; gaps found during final review were filled with bilingual search selection/focus recovery, bilingual Prompt empty-state recovery, a positive Postman demo-link case, and explicit local sitemap/search-index response checks. The Docs route check fetches all five retired slugs per locale from the local preview and verifies each response body, avoiding redirects to the production site.
+
+- `npm run build`: PASS, 3,601 pages; Astro 0 errors / 0 warnings / 1 pre-existing hint; SEO build check passed with 3,093 sitemap URLs.
+- `npm run test:unit` from `tests/`: PASS, 48 files / 300 tests.
+- Full TesterArmy E2E after all coverage additions: PASS, 46 files / 641 passed / 1 skipped (external Giscus environment).
+- `npm ls --depth=0` from `tests/`: PASS; no `@playwright/test` remains. `playwright` is retained only for optional screenshot sampling.
+- `git diff --cached --check`: PASS on the final staged changes.
+
+Task 5 Step 4 and the fresh whole-branch review remain pending until `develop` is updated and PR #157 checks are verified.

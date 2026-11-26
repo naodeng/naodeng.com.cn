@@ -23,25 +23,40 @@ for (const locale of ["zh-cn", "en"] as const) {
   });
 }
 
-test("Wiki sidebar search stays synchronized with the directory search", async ({ app, browser, screen }) => {
-  await app.open("/zh-cn/wiki/");
-  await expect(screen.getByRole("heading", { name: "测试百科", level: 1 })).toBeVisible();
+for (const locale of ["zh-cn", "en"] as const) {
+  const aiWikiIndexHeading = locale === "zh-cn" ? "AI 百科" : "AI Wiki";
 
-  await browser.locator("#docs-sidebar-search-input").fill("acceptance");
-  await expect(browser.locator("#wiki-search")).toHaveValue("acceptance");
-  await expect(browser.locator(".wiki-letter-link[href='/zh-cn/wiki/acceptance-testing/']")).toBeVisible();
-  await expect(browser.locator(".wiki-letter-link[href='/zh-cn/wiki/manual-testing/']")).toBeHidden();
-});
+  test(`${locale} Wiki detail sidebar search submits to the localized index`, async ({ app, browser, screen }) => {
+    await app.open(`/${locale}/wiki/accessibility-testing/`);
+    await expect(screen.getByRole("heading", { level: 1 })).toBeVisible();
 
-test("AI Wiki directory and detail expose matching localized navigation", async ({ app, browser, screen }) => {
-  await app.open("/en/AIWiki/");
-  await expect(screen.getByRole("heading", { name: "AI Wiki", level: 1 })).toBeVisible();
-  await expect(browser.locator("#aiwiki-search")).toBeVisible();
-  await expect(browser.locator(".docs-sidebar-link[href='/en/AIWiki/ai-agent/']")).toBeVisible();
+    const input = browser.locator("#docs-sidebar-search-input");
+    await expect(input).toBeVisible();
+    await expect(browser.locator(".docs-sidebar-search-form")).toHaveAttribute("action", `/${locale}/wiki/`);
+    await input.fill(locale === "zh-cn" ? "manual" : "acceptance");
+    await input.press("Enter");
+    await expect(browser).toHaveURL(new RegExp(`/${locale}/wiki/\\?q=`));
+    await expect(browser.locator("#wiki-search")).toHaveValue(locale === "zh-cn" ? "manual" : "acceptance");
+  });
 
-  await app.open("/en/AIWiki/ai-agent/");
-  await expect(browser).toHaveURL(/\/en\/AIWiki\/ai-agent\/$/);
-  await expect(browser.locator(".docs-sidebar-link--active")).toHaveAttribute("aria-current", "page");
-  await expect(browser.locator(".docs-content article")).toContainText(/AI agent/i);
-  await expect(browser.locator(".toc-list--desktop .toc-link").first()).toBeVisible();
-});
+  test(`${locale} AI Wiki directory and detail expose localized navigation and sidebar search`, async ({ app, browser, screen }) => {
+    await app.open(`/${locale}/AIWiki/`);
+    await expect(screen.getByRole("heading", { name: aiWikiIndexHeading, level: 1 })).toBeVisible();
+    await expect(browser.locator("#aiwiki-search")).toBeVisible();
+    await expect(browser.locator(`.docs-sidebar-link[href='/${locale}/AIWiki/ai-agent/']`)).toBeVisible();
+
+    await app.open(`/${locale}/AIWiki/ai-agent/`);
+    await expect(browser).toHaveURL(new RegExp(`/${locale}/AIWiki/ai-agent/$`));
+    await expect(browser.locator(".docs-sidebar-link--active")).toHaveAttribute("aria-current", "page");
+    await expect(browser.locator(".docs-content article")).toContainText(/AI Agent/i);
+    await expect(browser.locator(".toc-list--desktop .toc-link").first()).toBeVisible();
+
+    const input = browser.locator("#docs-sidebar-search-input");
+    await expect(input).toBeVisible();
+    await expect(browser.locator(".docs-sidebar-search-form")).toHaveAttribute("action", `/${locale}/AIWiki/`);
+    await input.fill(locale === "zh-cn" ? "agent" : "model");
+    await input.press("Enter");
+    await expect(browser).toHaveURL(new RegExp(`/${locale}/AIWiki/\\?q=`));
+    await expect(browser.locator("#aiwiki-search")).toHaveValue(locale === "zh-cn" ? "agent" : "model");
+  });
+}

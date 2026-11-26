@@ -6,11 +6,12 @@
     "node": "^22.22.3 || >=24.8.0"
   },
   "scripts": {
-    "test": "npm run test:unit && npm run test:e2e",
+    "test": "npm run test:unit && npm run test:e2e:build",
     "test:unit": "vitest --run",
     "test:unit:watch": "vitest",
-    "test:e2e": "e2e run",
-    "test:e2e:build": "npm --prefix .. run build && npm run test:e2e",
+    "test:e2e": "npm run test:e2e:build",
+    "test:e2e:run": "e2e run",
+    "test:e2e:build": "npm --prefix .. run build && npm run test:e2e:run",
     "test:e2e:all": "npm run test:e2e",
     "visual:sampling": "node scripts/visual-sampling.mjs"
   },

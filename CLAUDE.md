@@ -40,7 +40,7 @@ cd tests && npm install
 | Wiki 样式检查 | `npm run wiki:style:check` |
 | Wiki / AI Wiki 完整性检查 | `npm run wiki:integrity:check` |
 
-E2E 在 `tests/` 内运行，默认会先构建并预览站点；也可设置 `PLAYWRIGHT_BASE_URL` 指向已有服务。
+E2E 在 `tests/` 内运行。`npm run test:e2e` 会先构建再预览；已有服务用 `E2E_BASE_URL` 指定（兼容旧变量 `PLAYWRIGHT_BASE_URL`），CI 可在完成构建后运行 `npm run test:e2e:run`。
 
 ## 目录地图
 

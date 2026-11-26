@@ -11,7 +11,7 @@ npm test
 npm run seo:check:strict
 npm run build
 cd tests
-npx playwright test e2e/specs/seo.spec.ts e2e/specs/seo-integrity.spec.ts
+npm run test:e2e:run -- e2e/specs/seo.e2e.ts e2e/specs/seo-integrity.e2e.ts
 ```
 
 `npm run build` 包含 `seo:build:check`，检查所有生成内容页和 sitemap index 声明的分片。已有构建可单独运行 `npm run seo:build:check`，但源码改动后应重新构建。
