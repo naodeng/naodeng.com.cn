@@ -1,0 +1,89 @@
+import { test } from "@e2e-dev/web";
+import { expect } from "e2e";
+
+const article = "/en/blog/ai-testing/ai-test-auditor-static-evidence-for-ai-generated-tests/";
+
+test("code block renders with a usable copy control", async ({ app, browser }) => {
+  await app.open(article);
+  await expect(browser.locator(".code-block-wrapper pre code").first()).toBeVisible();
+  await expect(browser.locator(".code-copy-btn").first()).toHaveAttribute("aria-label", /copy|复制/i);
+});
+
+test("code copy control appears on hover and keyboard focus", async ({ app, browser }) => {
+  await browser.setViewport({ width: 1280, height: 900 });
+  await app.open(article);
+  const wrapper = browser.locator(".code-block-wrapper").first();
+  const button = browser.locator(".code-block-wrapper .code-copy-btn").first();
+  const opacity = () => browser.evaluate(() => getComputedStyle(document.querySelector(".code-copy-btn")!).opacity);
+
+  expect(await opacity()).toBe("0");
+  await wrapper.hover();
+  await expect.poll(opacity).toBe("1");
+  await browser.mouse.move(0, 0);
+  await expect.poll(opacity).toBe("0");
+  await button.focus();
+  await expect.poll(opacity).toBe("1");
+});
+
+test("code copy control remains visible for coarse-pointer devices", async ({ app, browser }) => {
+  await app.open(article);
+
+  // TesterArmy emulates viewport and user preferences, but not pointer capability.
+  // Inspect the emitted media rule so removing touch visibility still fails this E2E check.
+  const coarsePointerRule = await browser.evaluate(() => {
+    const hasVisibleCopyRule = (rules: CSSRuleList): boolean =>
+      Array.from(rules).some((rule) => {
+        if (rule instanceof CSSMediaRule && rule.conditionText.includes("any-pointer: coarse")) {
+          return Array.from(rule.cssRules).some(
+            (mediaRule) =>
+              mediaRule instanceof CSSStyleRule &&
+              mediaRule.selectorText.includes(".code-copy-btn") &&
+              mediaRule.style.opacity === "1",
+          );
+        }
+
+        return "cssRules" in rule && hasVisibleCopyRule((rule as CSSGroupingRule).cssRules);
+      });
+
+    return Array.from(document.styleSheets).some((sheet) => {
+      try {
+        return hasVisibleCopyRule(sheet.cssRules);
+      } catch {
+        return false;
+      }
+    });
+  });
+
+  expect(coarsePointerRule).toBe(true);
+});
+
+test("code copy control becomes visible when keyboard-focused at phone and tablet widths", async ({ app, browser }) => {
+  await app.open(article);
+  const button = browser.locator(".code-copy-btn").first();
+
+  for (const width of [390, 820]) {
+    await browser.setViewport({ width, height: 900 });
+    await expect(button).toBeVisible();
+    const opacity = () => browser.evaluate(() => getComputedStyle(document.querySelector(".code-copy-btn")!).opacity);
+    await expect.poll(opacity).toBe("0");
+    await button.focus();
+    await expect.poll(opacity).toBe("1");
+    await browser.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
+    await expect.poll(opacity).toBe("0");
+  }
+});
+
+test("code copy confirms success after click", async ({ app, browser }) => {
+  await browser.addInitScript(() => {
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: { writeText: () => Promise.resolve() },
+    });
+  });
+  await app.open(article);
+  const button = browser.locator(".code-copy-btn").first();
+  await expect(button).toBeVisible();
+  await button.focus();
+  await button.click();
+  await expect(button).toHaveText(/copied|已复制/i);
+});
