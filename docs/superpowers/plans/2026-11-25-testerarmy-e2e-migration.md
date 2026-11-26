@@ -44,7 +44,7 @@
 
 **Behavior inventory:** Both runners contain 46 matching domain specs. Matching names are only an index, not a parity claim. Core journeys map to `home`, `header`, `navigation`, `locale-switch`, `search`, `theme`, `qaskills`, `prompts`, `wiki`, `guild`, `blog-editorial`, `interaction`, `code-block`, and `responsive` TesterArmy specs. Supporting behavior is grouped in layout, link, accessibility, SEO, RSS, tracking, performance, editorial, and content integrity specs. Presentation-only assertions that pin a transient card style, exact spacing, or obsolete copy are not acceptance behaviors and are not being copied one-for-one.
 
-The remaining old-runner-only browser APIs were found in exactly three specs: `code-block` uses `isMobile`/`hasTouch`; `code-block`, `prompts`, and `dsh-qa` grant clipboard permissions. Copy success/failure and copied payload are already verified with deterministic clipboard shims in the new suite; this proves the page behavior, not OS clipboard permission. Touch visibility is being replaced by a narrow-viewport behavior assertion, which the new runner can exercise reliably.
+The remaining old-runner-only browser APIs were found in exactly three specs: `code-block` uses `isMobile`/`hasTouch`; `code-block`, `prompts`, and `dsh-qa` grant clipboard permissions. Copy success/failure and copied payload are already verified with deterministic clipboard shims in the new suite; this proves the page behavior, not OS clipboard permission. The TesterArmy web engine does not expose pointer-capability emulation, so the new suite checks the emitted coarse-pointer visibility rule and separately checks keyboard focus at phone/tablet widths; this is not a physical-device claim.
 
 Existing new-suite viewport checks already exercise the home, header, and footer at 2048px and 3840px, plus the phone/tablet breakpoints. A concrete gap was found in QA Skills: category result counts, query-dependent facet counts, subcategory filter/reset, unavailable lifecycle filters, and lifecycle entry links were not all represented. Guild stage filtering did not prove the result set changes and recovers, and its directory had only one filter category represented. These gaps are assigned to Tasks 3–4 below.
 
@@ -167,3 +167,16 @@ This supersedes the interim local counts above. The full diff was checked agains
 - `git diff --cached --check`: PASS on the final staged changes.
 
 Task 5 Step 4 and the fresh whole-branch review remain pending until `develop` is updated and PR #157 checks are verified.
+
+## Final review closure — 2026-11-26
+
+The independent review found that unknown RSS and weekly paths left the local preview through the production 404 redirect, and identified missing checks for coarse-pointer copy visibility, language switching with blocked storage, QA Skills clear-state restoration, and the Chinese archive link. The E2E cases now inspect unknown-route responses with same-origin `fetch`, then open the explicit local localized 404 routes; the other four behavior checks are restored. The report records only `http://127.0.0.1:4321` for those unknown-route cases.
+
+- `npm run build`: PASS, 3,601 pages; SEO build check passed with 3,093 sitemap URLs.
+- `npm run test:unit` from `tests/`: PASS, 48 files / 300 tests.
+- Full TesterArmy E2E from `tests/`: PASS, 46 files / 642 passed / 1 skipped (external Giscus environment).
+- Focused affected E2E specs: PASS, 6 files / 56 tests.
+- `node --check tests/scripts/visual-sampling.mjs`: PASS; the script reuses the unit-tested base-URL resolver, preserving `PLAYWRIGHT_BASE_URL` compatibility.
+- `git diff --check`: PASS.
+
+Task 5 Step 4 remains pending until the verified changes are pushed and the updated PR #157 CI finishes.

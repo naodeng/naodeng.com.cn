@@ -39,7 +39,7 @@ npm run test:e2e:run
 # Explicit build-then-test alias
 npm run test:e2e:build
 
-# Alias used by CI and repository guidance
+# Convenience alias that builds and runs the full E2E suite
 npm run test:e2e:all
 ```
 
@@ -89,9 +89,10 @@ test("the localized blog index opens", async ({ app, screen }) => {
 - Non-core E2E behavior has at least one happy path and one reverse/negative case.
 - Coverage is judged by behavior and logic branches, not by matching the old test count. Redundant assertions that only pinned transient styling or duplicate DOM details were not carried over as separate cases.
 - Clipboard shims verify the page's copy feedback and payload. They do not prove operating-system clipboard permissions or physical-device behavior.
+- TesterArmy does not emulate pointer capability; touch-specific copy visibility is checked against the emitted CSS media rule, not a physical touch device.
 
 The migrated suite covers the former 46 E2E domains in the canonical `tests/e2e/specs/` directory. The test framework telemetry can be disabled with `E2E_TELEMETRY_DISABLED=1`; CI already opts out.
 
 ## CI
 
-The E2E workflow runs the unit suite, builds the site, installs the TesterArmy Chromium browser, and runs the single E2E suite with two workers and one retry. It does not install or invoke Playwright Test.
+The E2E workflow runs the unit suite, builds the site, installs the TesterArmy Chromium browser, and runs `test:e2e:run` against that build with two workers and one retry. It does not install or invoke Playwright Test.

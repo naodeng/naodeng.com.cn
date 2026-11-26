@@ -25,6 +25,38 @@ test("code copy control appears on hover and keyboard focus", async ({ app, brow
   await expect.poll(opacity).toBe("1");
 });
 
+test("code copy control remains visible for coarse-pointer devices", async ({ app, browser }) => {
+  await app.open(article);
+
+  // TesterArmy emulates viewport and user preferences, but not pointer capability.
+  // Inspect the emitted media rule so removing touch visibility still fails this E2E check.
+  const coarsePointerRule = await browser.evaluate(() => {
+    const hasVisibleCopyRule = (rules: CSSRuleList): boolean =>
+      Array.from(rules).some((rule) => {
+        if (rule instanceof CSSMediaRule && rule.conditionText.includes("any-pointer: coarse")) {
+          return Array.from(rule.cssRules).some(
+            (mediaRule) =>
+              mediaRule instanceof CSSStyleRule &&
+              mediaRule.selectorText.includes(".code-copy-btn") &&
+              mediaRule.style.opacity === "1",
+          );
+        }
+
+        return "cssRules" in rule && hasVisibleCopyRule((rule as CSSGroupingRule).cssRules);
+      });
+
+    return Array.from(document.styleSheets).some((sheet) => {
+      try {
+        return hasVisibleCopyRule(sheet.cssRules);
+      } catch {
+        return false;
+      }
+    });
+  });
+
+  expect(coarsePointerRule).toBe(true);
+});
+
 test("code copy control becomes visible when keyboard-focused at phone and tablet widths", async ({ app, browser }) => {
   await app.open(article);
   const button = browser.locator(".code-copy-btn").first();

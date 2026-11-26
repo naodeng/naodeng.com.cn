@@ -39,7 +39,7 @@ npm run test:e2e:run
 # 显式构建后测试的别名
 npm run test:e2e:build
 
-# CI 和仓库指南使用的命令别名
+# 本地构建并运行完整 E2E 套件的便捷命令
 npm run test:e2e:all
 ```
 
@@ -89,9 +89,10 @@ test("中文博客首页可以打开", async ({ app, screen }) => {
 - 非核心 E2E 至少覆盖一个 happy path 和一个反向/负向用例。
 - 按行为和逻辑分支评估覆盖，不要求与旧测试数量一致。只锁定短暂样式或重复 DOM 细节的冗余断言不再逐条保留。
 - clipboard shim 可以验证页面复制反馈和复制内容，但不能证明操作系统剪贴板权限或真实设备行为。
+- TesterArmy 目前不模拟指针能力；触屏复制按钮可见性通过构建后的 CSS 媒体规则检查，不代表真实触屏设备验收。
 
 原有 46 个 E2E 测试领域已迁入 `tests/e2e/specs/`。可设置 `E2E_TELEMETRY_DISABLED=1` 关闭框架遥测；CI 已默认关闭。
 
 ## CI
 
-E2E 工作流会运行单元测试、构建站点、安装 TesterArmy Chromium，再以两个 worker 和一次重试运行唯一的 E2E 套件；不再安装或调用 Playwright Test。
+E2E 工作流会运行单元测试、构建站点、安装 TesterArmy Chromium，再对该构建执行 `test:e2e:run`，使用两个 worker 和一次重试运行唯一的 E2E 套件；不再安装或调用 Playwright Test。

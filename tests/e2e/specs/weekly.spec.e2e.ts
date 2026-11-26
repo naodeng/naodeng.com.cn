@@ -31,7 +31,26 @@ for (const locale of ["en", "zh-cn"] as const) {
   });
 
   test(`${locale} unknown weekly issue uses the localized 404 recovery page`, async ({ app, browser }) => {
-    await app.open(`/${locale}/ai-native-qa-weekly/2026/week-99/`);
+    await app.open(`/${locale}/ai-native-qa-weekly/`);
+    const missingIssue = await browser.evaluate(async (path) => {
+      const response = await fetch(path);
+      const html = await response.text();
+      const page = new DOMParser().parseFromString(html, "text/html");
+      return {
+        status: response.status,
+        pageOrigin: location.origin,
+        responseOrigin: new URL(response.url).origin,
+        title: page.title,
+        robots: page.querySelector('meta[name="robots"]')?.getAttribute("content"),
+      };
+    }, `/${locale}/ai-native-qa-weekly/2026/week-99/`);
+
+    expect(missingIssue.status).toBe(404);
+    expect(missingIssue.responseOrigin).toBe(missingIssue.pageOrigin);
+    expect(missingIssue.title).toBe("404 PAGE NOT FOUND");
+    expect(missingIssue.robots).toMatch(/noindex/i);
+
+    await app.open(`/${locale}/404/`);
     await expect(browser).toHaveURL(new RegExp(`/${locale}/404/$`));
     await expect(browser.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/i);
     await expect(browser.locator("main")).toBeVisible();

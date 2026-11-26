@@ -21,6 +21,9 @@ for (const locale of ["zh-cn", "en"] as const) {
     await browser.locator("#qaskills-clear").click();
     await expect(browser.locator("#qaskills-search")).toHaveValue("");
     await expect(browser.locator("#qaskills-empty")).toBeHidden();
+    await expect(browser.locator("[data-qaskills-default-only]").first()).toBeVisible();
+    await expect(browser.locator('a.card[data-slug="api-testing"]')).toBeVisible();
+    expect(await browser.evaluate(() => (document.activeElement as HTMLElement | null)?.id)).toBe("qaskills-search");
   });
 }
 

@@ -107,11 +107,19 @@ for (const item of [
   { source: "/zh-cn/AIWiki/ai-agent/", target: "/en/AIWiki/ai-agent/", fallback: "/en/AIWiki/", lang: "en" },
 ] as const) {
   test(`${item.source} falls back to the section index when the paired article cannot load`, async ({ app, browser }) => {
+    await browser.addInitScript(() => {
+      const setItem = Storage.prototype.setItem;
+      Storage.prototype.setItem = function (key, value) {
+        if (key === "selectedLang") throw new DOMException("Storage is blocked", "SecurityError");
+        setItem.call(this, key, value);
+      };
+    });
     await app.open(item.source);
     await browser.route(`**${item.target}`, (route) => route.abort());
     await browser.locator("header [data-locale-trigger]").click();
     await browser.locator(`header [data-locale-option][data-lang="${item.lang}"]`).click();
     await expect(browser).toHaveURL(new RegExp(`${item.fallback.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`));
     await expect(browser.locator("main h1").first()).toBeVisible();
+    expect(await browser.evaluate(() => localStorage.getItem("selectedLang"))).toBeNull();
   });
 }

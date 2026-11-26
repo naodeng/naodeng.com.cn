@@ -2,8 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
+import { getE2EApp } from "../e2e/support/app.ts";
 
-const baseURL = process.env.E2E_BASE_URL || "http://127.0.0.1:4321";
+const baseURL = getE2EApp(process.env).url;
 const stamp = new Date().toISOString().slice(0, 10);
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const outDir = path.join(repositoryRoot, `docs/temporary/seo/visual-regression-${stamp}`);

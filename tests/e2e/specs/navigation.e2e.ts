@@ -45,11 +45,13 @@ for (const locale of ["en", "zh-cn"] as const) {
   });
 }
 
-test("blog archive links and localized QA wiki links navigate to their destinations", async ({ app, browser }) => {
-  await app.open("/en/blog/");
-  await browser.locator(".headline-actions a[href*='/en/archive']").first().click();
-  await expect(browser).toHaveURL(/\/en\/archive\/?$/);
-  await expect(browser.locator("main")).toBeVisible();
+test("localized blog archive links and QA wiki links navigate to their destinations", async ({ app, browser }) => {
+  for (const locale of ["en", "zh-cn"] as const) {
+    await app.open(`/${locale}/blog/`);
+    await browser.locator(`.headline-actions a[href*='/${locale}/archive']`).first().click();
+    await expect(browser).toHaveURL(new RegExp(`/${locale}/archive/?$`));
+    await expect(browser.locator("main h1")).toContainText(locale === "zh-cn" ? "归档" : /archive/i);
+  }
 
   await app.open("/zh-cn/");
   await browser.locator("header nav [data-nav-group='qa-content'] summary").click();
