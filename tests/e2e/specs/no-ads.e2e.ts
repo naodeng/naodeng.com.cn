@@ -31,6 +31,7 @@ for (const path of routes) {
     });
     await app.open(path);
 
+    await expect(browser.locator("main")).toBeVisible();
     await expect(browser.locator(AD_MARKUP_SELECTOR)).toHaveCount(0);
     await expect(browser.locator('script[src*="googlesyndication"], script[src*="adsbygoogle"], script[src*="doubleclick"]')).toHaveCount(0);
     expect(adRequests).toEqual([]);

@@ -25,6 +25,17 @@ test("code copy control appears on hover and keyboard focus", async ({ app, brow
   await expect.poll(opacity).toBe("1");
 });
 
+test("code copy control stays visible at phone and tablet widths", async ({ app, browser }) => {
+  await app.open(article);
+  const button = browser.locator(".code-copy-btn").first();
+
+  for (const width of [390, 820]) {
+    await browser.setViewport({ width, height: 900 });
+    await expect(button).toBeVisible();
+    await expect.poll(() => browser.evaluate(() => getComputedStyle(document.querySelector(".code-copy-btn")!).opacity)).toBe("1");
+  }
+});
+
 test("code copy confirms success after click", async ({ app, browser }) => {
   await browser.addInitScript(() => {
     Object.defineProperty(navigator, "clipboard", {

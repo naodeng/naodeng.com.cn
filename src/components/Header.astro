@@ -1378,7 +1378,7 @@ const mobilePriorityItems = [
     .mobile-priority-nav__icon {
       font-size: var(--text-lg);
     }
-    .site-nav > ul > li > a,
+    .site-nav > ul > li:not(.mobile-priority-nav) > a,
     .nav-group-trigger {
       min-height: 60px;
       width: 100%;
@@ -2150,6 +2150,13 @@ const mobilePriorityItems = [
       inset-block-start: 100%;
       inset-inline: 0;
     }
+    .site-nav > ul > li:not(.mobile-priority-nav) > a,
+    .nav-group-trigger {
+      min-block-size: 56px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .site-nav > ul > li.mobile-priority-nav > a { font-size: 16px; }
     .site-nav .nav-group-chevron { display: inline-flex !important; }
     .header-utils { gap: 4px; }
     .header-wechat-entry { display: none; }

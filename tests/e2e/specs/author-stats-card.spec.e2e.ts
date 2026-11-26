@@ -18,6 +18,20 @@ for (const locale of ["en", "zh-cn"] as const) {
     const githubLink = browser.locator('.author-social a[aria-label="GitHub"]');
     await expect(githubLink).toHaveAttribute("href", /github\.com/);
     await expect(githubLink).toHaveAttribute("target", "_blank");
+    const destinations = await browser.evaluate(() =>
+      Array.from(document.querySelectorAll(".author-social a"), (link) => link.getAttribute("href") || ""),
+    );
+    expect(destinations.length).toBeGreaterThan(0);
+    expect(
+      destinations.every(
+        (href) => href === `/${locale}/rss.xml` || (/^https?:\/\//i.test(href) && href !== "#"),
+      ),
+    ).toBe(true);
     expect(await browser.locator(".author-social a[target='_blank']").count()).toBeGreaterThanOrEqual(4);
+  });
+
+  test(`${locale} homepage does not show article author statistics`, async ({ app, browser }) => {
+    await app.open(`/${locale}/`);
+    await expect(browser.locator(".author-stats-card")).toHaveCount(0);
   });
 }

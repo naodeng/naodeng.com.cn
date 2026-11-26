@@ -1,7 +1,7 @@
 import { test } from "@e2e-dev/web";
 import type { Browser } from "@e2e-dev/web";
 import { expect } from "e2e";
-import { getExtraPageUrls, getMainPageUrls, getWikiPageUrls } from "../../e2e/support/constants";
+import { getExtraPageUrls, getMainPageUrls, getWikiPageUrls } from "../support/constants";
 
 async function getBrokenSameOriginLinks(browser: Browser) {
   return browser.evaluate(async () => {

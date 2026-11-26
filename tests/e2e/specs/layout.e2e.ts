@@ -1,6 +1,6 @@
 import { test } from "@e2e-dev/web";
 import { expect } from "e2e";
-import { getExtraPageUrls, getMainPageUrls } from "../../e2e/support/constants";
+import { getExtraPageUrls, getMainPageUrls } from "../support/constants";
 
 const pages = [...getMainPageUrls(""), ...getExtraPageUrls()];
 

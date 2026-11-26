@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
-import { chromium } from "@playwright/test";
+import { chromium } from "playwright";
 
-const baseURL = process.env.PLAYWRIGHT_BASE_URL || "http://127.0.0.1:4321";
+const baseURL = process.env.E2E_BASE_URL || "http://127.0.0.1:4321";
 const stamp = new Date().toISOString().slice(0, 10);
 const outDir = path.resolve(process.cwd(), `docs/temporary/seo/visual-regression-${stamp}`);
 fs.mkdirSync(outDir, { recursive: true });

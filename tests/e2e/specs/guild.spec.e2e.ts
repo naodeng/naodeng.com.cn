@@ -23,20 +23,60 @@ for (const locale of ["zh-cn", "en"] as const) {
     await expect(browser).toHaveURL(new RegExp(`${locale}/guild/api-testing/postman/`));
     await expect(browser.locator("#learning-path .article-card").first()).toBeVisible();
   });
+
+  test(`${locale} Guild directory filters test types and restores the full catalog`, async ({ app, browser }) => {
+    await app.open(`/${locale}/guild/`);
+
+    for (const type of ["ui-testing", "api-testing", "performance-testing"] as const) {
+      const filter = browser.locator(`.filter-pill[data-filter="${type}"]`);
+      const selectedSection = browser.locator(`[data-testtype="${type}"]`);
+      await filter.click();
+      await expect(filter).toHaveAttribute("aria-pressed", "true");
+      await expect(selectedSection).toBeVisible();
+      const sections = await browser.evaluate(() =>
+        Array.from(document.querySelectorAll("[data-testtype]")).map((item) => ({
+          type: item.getAttribute("data-testtype"),
+          hidden: item.hasAttribute("hidden"),
+        })),
+      );
+      expect(sections.filter((section) => !section.hidden).map((section) => section.type)).toEqual([type]);
+    }
+
+    const allFilter = browser.locator('.filter-pill[data-filter="all"]');
+    await allFilter.click();
+    await expect(allFilter).toHaveAttribute("aria-pressed", "true");
+    const visibleSections = await browser.evaluate(() =>
+      Array.from(document.querySelectorAll("[data-testtype]")).filter((item) => !item.hasAttribute("hidden")).length,
+    );
+    expect(visibleSections).toBeGreaterThan(1);
+  });
 }
 
 for (const locale of ["zh-cn", "en"] as const) {
   test(`${locale} Postman learning path filters a stage and opens its tutorial`, async ({ app, browser }) => {
     await app.open(`/${locale}/guild/api-testing/postman/`);
     const pills = browser.locator(".lp-pill");
-    const tutorials = browser.locator("#learning-path .article-card");
-    await expect(tutorials.first()).toBeVisible();
+    const allPill = pills.first();
+    const filteredPill = pills.nth(1);
+    const visibleTutorials = browser.locator(".stage-section:not([hidden]) .article-card");
+    await expect(allPill).toHaveAttribute("class", /lp-pill--active/);
+    const allTutorialCount = await visibleTutorials.count();
+    expect(allTutorialCount).toBeGreaterThan(0);
 
-    await pills.nth(1).click();
-    await expect(browser).toHaveClass(pills.nth(1), /lp-pill--active/);
-    await expect(tutorials.first()).toBeVisible();
-    const href = await tutorials.first().getAttribute("href");
-    await tutorials.first().click();
+    await filteredPill.click();
+    await expect(filteredPill).toHaveAttribute("class", /lp-pill--active/);
+    const filteredTutorialCount = await visibleTutorials.count();
+    expect(filteredTutorialCount).toBeGreaterThan(0);
+    expect(filteredTutorialCount).toBeLessThan(allTutorialCount);
+
+    await allPill.click();
+    await expect(allPill).toHaveAttribute("class", /lp-pill--active/);
+    expect(await visibleTutorials.count()).toBe(allTutorialCount);
+
+    await filteredPill.click();
+    const tutorial = visibleTutorials.first();
+    const href = await tutorial.getAttribute("href");
+    await tutorial.click();
     await expect(browser).toHaveURL(new RegExp(`/${locale}/guild/api-testing/postman/.+/`));
     await expect(browser.locator(".guild-content")).toBeVisible();
     expect(href).toContain(`/${locale}/guild/api-testing/postman/`);

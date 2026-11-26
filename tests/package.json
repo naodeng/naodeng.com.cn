@@ -6,22 +6,20 @@
     "node": "^22.22.3 || >=24.8.0"
   },
   "scripts": {
-    "test": "npm run test:unit && npm run test:e2e:all",
+    "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest --run",
     "test:unit:watch": "vitest",
-    "test:e2e": "playwright test",
-    "test:e2e:next": "npm --prefix .. run build && npm run test:e2e:next:run",
-    "test:e2e:next:run": "e2e run",
-    "test:e2e:all": "npm run test:e2e; playwright_status=$?; npm run test:e2e:next:run; next_status=$?; if [ $playwright_status -ne 0 ] || [ $next_status -ne 0 ]; then exit 1; fi",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:report": "playwright show-report"
+    "test:e2e": "e2e run",
+    "test:e2e:build": "npm --prefix .. run build && npm run test:e2e",
+    "test:e2e:all": "npm run test:e2e",
+    "visual:sampling": "node scripts/visual-sampling.mjs"
   },
   "devDependencies": {
     "@e2e-dev/web": "0.15.3",
-    "@playwright/test": "^1.49.0",
     "e2e": "0.21.3",
     "fast-check": "^4.5.3",
     "jsdom": "^28.1.0",
+    "playwright": "^1.58.2",
     "vitest": "^4.0.18"
   },
   "overrides": {

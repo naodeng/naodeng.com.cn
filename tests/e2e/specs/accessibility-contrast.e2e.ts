@@ -1,6 +1,6 @@
 import { test } from "@e2e-dev/web";
 import { expect } from "e2e";
-import { measureContrast } from "../../e2e/support/wcag-contrast";
+import { measureContrast } from "../support/wcag-contrast";
 
 type ContrastSample = {
   name: string;

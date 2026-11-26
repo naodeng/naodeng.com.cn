@@ -58,6 +58,28 @@ test("prompt explorer recovers from a query with no matching prompts", async ({ 
   expect(await browser.locator("[data-prompt-card]:not([hidden])").count()).toBeGreaterThan(0);
 });
 
+test("mobile prompt quick searches are reachable and preserve the selected query", async ({ app, browser }) => {
+  await browser.setViewport({ width: 390, height: 844 });
+
+  for (const locale of ["zh-cn", "en"] as const) {
+    await app.open(`/${locale}/prompts/`);
+    const examples = browser.locator(".prompt-search-examples a");
+    const sizes = await browser.evaluate(() =>
+      Array.from(document.querySelectorAll(".prompt-search-examples a"), (element) => {
+        const rect = element.getBoundingClientRect();
+        return { width: rect.width, height: rect.height };
+      }),
+    );
+    expect(sizes).toHaveLength(4);
+    expect(Math.min(...sizes.map((size) => size.width)), `${locale} minimum width`).toBeGreaterThanOrEqual(44);
+    expect(Math.min(...sizes.map((size) => size.height)), `${locale} minimum height`).toBeGreaterThanOrEqual(44);
+
+    await examples.first().click();
+    await expect(browser).toHaveURL(new RegExp(`/${locale}/prompts/all/\\?q=requirements$`));
+    await expect(browser.locator("#prompt-explorer-search")).toHaveValue("requirements");
+  }
+});
+
 test("localized prompt detail exposes variants, source, and related prompts", async ({ app, browser, screen }) => {
   await app.open("/en/prompts/test-strategy/");
   await browser.evaluate(() => {

@@ -1,5 +1,6 @@
 import { test } from "@e2e-dev/web";
 import { expect } from "e2e";
+import { measureContrast } from "../support/wcag-contrast";
 
 for (const locale of ["en", "zh-cn"] as const) {
   test(`${locale} header has the brand, navigation, search, and no slogan`, async ({ app, browser }) => {
@@ -107,6 +108,59 @@ test("mobile header keeps the brand clear of the search and menu controls", asyn
   await browser.locator("header [data-nav-toggle]").click();
   await expect(browser.locator("header [data-site-nav]")).toBeVisible();
   await expect(browser.locator("header [data-nav-priority]")).toHaveCount(3);
+});
+
+test("mobile and tablet menu labels stay readable and lead to the correct pages", async ({ app, browser }) => {
+  const viewports = [
+    { name: "phone", width: 430, height: 932, locale: "zh-cn", wikiLabel: "Wiki", wikiPath: "/zh-cn/wiki/" },
+    { name: "iPad", width: 820, height: 1180, locale: "en", wikiLabel: "AI Wiki", wikiPath: "/en/AIWiki/" },
+  ] as const;
+
+  for (const viewport of viewports) {
+    await browser.setViewport({ width: viewport.width, height: viewport.height });
+    await app.open(`/${viewport.locale}/`);
+    await browser.locator("header [data-nav-toggle]").click();
+
+    const header = browser.locator("header.l-header");
+    const nav = browser.locator("header [data-site-nav]");
+    await expect(header).toHaveAttribute("data-nav-open", "");
+    await expect(nav).toBeVisible();
+    await expect.poll(() => browser.evaluate(() => getComputedStyle(document.querySelector("[data-site-nav]")!).opacity)).toBe("1");
+
+    const priorityLabels = [
+      ["blog", viewport.locale === "zh-cn" ? "博客" : "Blog", `/${viewport.locale}/blog/`],
+      ["wiki", viewport.wikiLabel, viewport.wikiPath],
+      ["prompts", viewport.locale === "zh-cn" ? "提示词" : "Prompts", `/${viewport.locale}/prompts/`],
+    ] as const;
+
+    for (const [key, label, href] of priorityLabels) {
+      const link = browser.locator(`[data-nav-priority="${key}"]`);
+      await expect(link).toContainText(label);
+      await expect(link).toHaveAttribute("href", href);
+      const fontSize = await browser.evaluate((selector) =>
+        Number.parseFloat(getComputedStyle(document.querySelector(selector)!).fontSize),
+        `[data-nav-priority="${key}"]`,
+      );
+      expect(fontSize, `${viewport.name} ${label} font size`).toBeGreaterThanOrEqual(16);
+      const contrast = await browser.evaluate(measureContrast, `[data-nav-priority="${key}"] span:not(.material-icons-sharp)`);
+      expect(contrast.missing, `${viewport.name} ${label} exists`).toBe(false);
+      expect(contrast.ratio ?? 0, `${viewport.name} ${label} contrast`).toBeGreaterThanOrEqual(contrast.threshold ?? 100);
+    }
+
+    const homeLink = browser.locator("[data-site-nav] a[data-nav-item='home']");
+    await expect(homeLink).toBeVisible();
+    const homeFontSize = await browser.evaluate(() =>
+      Number.parseFloat(getComputedStyle(document.querySelector("[data-site-nav] a[data-nav-item='home']")!).fontSize),
+    );
+    expect(homeFontSize, `${viewport.name} primary menu font size`).toBeGreaterThanOrEqual(16);
+    const homeContrast = await browser.evaluate(measureContrast, "[data-site-nav] a[data-nav-item='home']");
+    expect(homeContrast.ratio ?? 0, `${viewport.name} primary menu contrast`).toBeGreaterThanOrEqual(homeContrast.threshold ?? 100);
+    const panelBackground = await browser.evaluate(() => getComputedStyle(document.querySelector("[data-site-nav]")!).backgroundColor);
+    expect(panelBackground).toMatch(/^rgb\(/);
+
+    await browser.locator(`[data-nav-priority="${viewport.name === "phone" ? "blog" : "wiki"}"]`).click();
+    await expect(browser).toHaveURL(new RegExp(`${viewport.name === "phone" ? "/zh-cn/blog/" : "/en/AIWiki/"}$`));
+  }
 });
 
 test("header matches the Figma desktop shell in both locales and Chinese mobile brand", async ({ app, browser }) => {

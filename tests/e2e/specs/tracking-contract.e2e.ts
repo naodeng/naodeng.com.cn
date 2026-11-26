@@ -85,3 +85,13 @@ test("related Wiki term click emits source and destination slugs", async ({ app,
   expect(typeof event?.payload.from_slug).toBe("string");
   expect(typeof event?.payload.to_slug).toBe("string");
 });
+
+test("ordinary header navigation does not emit a homepage discovery event", async ({ app, browser }) => {
+  await app.open("/zh-cn/");
+  await browser.locator("header a[data-nav-item='blog']").click();
+  const discoveryEvents = await browser.evaluate(() =>
+    ((window as typeof window & { __ndTrackEvents?: TrackingEvent[] }).__ndTrackEvents ?? [])
+      .filter((item) => item.eventName === "home_entry_click"),
+  );
+  expect(discoveryEvents).toEqual([]);
+});

@@ -29,4 +29,11 @@ for (const locale of ["en", "zh-cn"] as const) {
     await expect(browser.locator(".docs-toc-wrap .toc-sidebar--right")).toBeVisible();
     expect(await browser.locator(".docs-toc-wrap .toc-link").count()).toBeGreaterThan(0);
   });
+
+  test(`${locale} unknown weekly issue uses the localized 404 recovery page`, async ({ app, browser }) => {
+    await app.open(`/${locale}/ai-native-qa-weekly/2026/week-99/`);
+    await expect(browser).toHaveURL(new RegExp(`/${locale}/404/$`));
+    await expect(browser.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/i);
+    await expect(browser.locator("main")).toBeVisible();
+  });
 }
